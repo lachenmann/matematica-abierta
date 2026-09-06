@@ -1,0 +1,41 @@
+# Registro de identificadores
+
+## Próximos IDs disponibles
+
+| Tipo | Próximo |
+|---|---|
+| Concepto | MA-CON-0001 |
+| Problema | MA-PRB-0001 |
+| Artículo | MA-ART-0001 |
+| Lección | MA-LES-0001 |
+| Capítulo | MA-BCH-0001 |
+| Curso | MA-CRS-0001 |
+| Libro | MA-BOK-0001 |
+
+## Regla de uso
+
+Cada vez que se asigne un identificador nuevo, este registro debe actualizarse.
+
+Los identificadores no se reutilizan, incluso si una pieza se retira.
+
+## Colección Para matemáticos
+
+| Código | Colección |
+|---|---|
+| PM-FUN | Fundamentos para matemáticos |
+| PM-ALG | Álgebra para matemáticos |
+| PM-CAL | Cálculo para matemáticos |
+| PM-GEO | Geometría para matemáticos |
+| PM-ANA | Análisis para matemáticos |
+| PM-TOP | Topología para matemáticos |
+| PM-EDO | Ecuaciones diferenciales para matemáticos |
+| PM-PRO | Probabilidad para matemáticos |
+| PM-DIS | Matemática discreta para matemáticos |
+| PM-NUM | Teoría de números para matemáticos |
+| PM-COM | Análisis complejo para matemáticos |
+| PM-FIS | Física para matemáticos |
+| PM-PRB | Problemas para matemáticos |
+
+Los códigos PM identifican colecciones editoriales.
+
+Las piezas individuales mantienen siempre su identificador MA global.
