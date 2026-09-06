@@ -3,7 +3,7 @@ title: "Valor absoluto y desigualdades básicas"
 description: "Interpretar el valor absoluto como distancia y resolver desigualdades básicas de la forma |x-a| frente a un radio no negativo."
 content-id: MA-CON-0002
 content-type: concept
-status: draft
+status: review
 draft: true
 date-created: 2026-09-06
 date-modified: 2026-09-06
@@ -169,6 +169,80 @@ u>c.
 $$
 
 Estas equivalencias son especialmente útiles cuando $u$ es una expresión algebraica.
+
+## Por qué funcionan estas equivalencias
+
+Supongamos primero que $c\ge0$ y estudiemos
+
+$$
+|u|\le c.
+$$
+
+Si $u\ge0$, entonces $|u|=u$, así que la condición equivale a
+
+$$
+0\le u\le c.
+$$
+
+Si $u<0$, entonces $|u|=-u$. En ese caso,
+
+$$
+|u|\le c
+\quad\Longleftrightarrow\quad
+-u\le c
+\quad\Longleftrightarrow\quad
+u\ge-c.
+$$
+
+Junto con $u<0$, esto da
+
+$$
+-c\le u<0.
+$$
+
+Uniendo ambos casos obtenemos exactamente
+
+$$
+|u|\le c
+\quad\Longleftrightarrow\quad
+-c\le u\le c.
+$$
+
+El mismo análisis, sustituyendo desigualdades no estrictas por estrictas, produce
+
+$$
+|u|<c
+\quad\Longleftrightarrow\quad
+-c<u<c.
+$$
+
+Las reglas exteriores se obtienen tomando complementos en $\mathbb{R}$. Como
+
+$$
+|u|\ge c
+$$
+
+es la negación de $|u|<c$, resulta
+
+$$
+|u|\ge c
+\quad\Longleftrightarrow\quad
+u\le-c
+\;\text{o}\;
+u\ge c.
+$$
+
+Del mismo modo, $|u|>c$ es la negación de $|u|\le c$, y por tanto
+
+$$
+|u|>c
+\quad\Longleftrightarrow\quad
+u<-c
+\;\text{o}\;
+u>c.
+$$
+
+Así quedan justificadas algebraicamente las cuatro reglas fundamentales.
 
 ## Ejemplo
 

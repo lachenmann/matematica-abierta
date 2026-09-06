@@ -17,7 +17,7 @@
 | ID | Tipo | Título | Ruta | Estado |
 |---|---|---|---|---|
 | MA-CON-0001 | concept | Desigualdades cuadráticas por factorización | `conceptos/desigualdades-cuadraticas-por-factorizacion.md` | published |
-| MA-CON-0002 | concept | Valor absoluto y desigualdades básicas | `conceptos/valor-absoluto-y-desigualdades-basicas.md` | draft |
+| MA-CON-0002 | concept | Valor absoluto y desigualdades básicas | `conceptos/valor-absoluto-y-desigualdades-basicas.md` | review |
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 
 ## Regla de uso
