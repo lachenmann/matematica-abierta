@@ -5,7 +5,7 @@
 | Tipo | Próximo |
 |---|---|
 | Concepto | MA-CON-0002 |
-| Problema | MA-PRB-0001 |
+| Problema | MA-PRB-0002 |
 | Artículo | MA-ART-0001 |
 | Lección | MA-LES-0001 |
 | Capítulo | MA-BCH-0001 |
@@ -17,6 +17,7 @@
 | ID | Tipo | Título | Ruta | Estado |
 |---|---|---|---|---|
 | MA-CON-0001 | concept | Desigualdades cuadráticas por factorización | `conceptos/desigualdades-cuadraticas-por-factorizacion.md` | published |
+| MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | draft |
 
 ## Regla de uso
 
