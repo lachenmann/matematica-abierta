@@ -4,10 +4,10 @@ description: "Determinar el dominio real de una función con raíz cuadrada medi
 content-id: MA-PRB-0001
 content-type: problem
 collection: PM-PRB
-status: draft
+status: review
 draft: true
 date-created: 2026-09-05
-date-modified: 2026-09-05
+date-modified: 2026-09-06
 areas:
   - fundamentos
   - algebra
@@ -130,10 +130,18 @@ $$
 Esto implica
 
 $$
-\left|x+\frac12\right|\le\frac72,
+\left|x+\frac12\right|\le\frac72.
 $$
 
-y por tanto
+Usamos aquí la equivalencia, válida para $c\ge0$,
+
+$$
+|u|\le c
+\quad\Longleftrightarrow\quad
+-c\le u\le c.
+$$
+
+Tomando $u=x+\frac12$ y $c=\frac72$, obtenemos
 
 $$
 -\frac72\le x+\frac12\le\frac72.
