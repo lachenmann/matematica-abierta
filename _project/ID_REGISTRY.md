@@ -16,7 +16,7 @@
 
 | ID | Tipo | Título | Ruta | Estado |
 |---|---|---|---|---|
-| MA-CON-0001 | concept | Desigualdades cuadráticas por factorización | `conceptos/desigualdades-cuadraticas-por-factorizacion.md` | review |
+| MA-CON-0001 | concept | Desigualdades cuadráticas por factorización | `conceptos/desigualdades-cuadraticas-por-factorizacion.md` | published |
 
 ## Regla de uso
 
