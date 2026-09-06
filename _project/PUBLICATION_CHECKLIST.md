@@ -18,7 +18,8 @@ Una pieza sólo puede pasar a `published` cuando cumple todos los controles rele
 - conceptos nuevos explicados;
 - exposición autocontenida;
 - nivel correctamente etiquetado;
-- todo problema incluye solución completa.
+- todo problema incluye solución completa;
+- en problemas, `solution-status: complete`.
 
 ## QA bibliográfico
 
@@ -35,6 +36,16 @@ Una pieza sólo puede pasar a `published` cuando cumple todos los controles rele
 - adaptaciones identificadas;
 - licencia propia correcta;
 - materiales de terceros no se relicencian.
+
+## QA editorial
+
+- `content-id` asignado y registrado;
+- `content-type` correcto;
+- `status` coherente con `draft`;
+- `areas`, `level` y `topics` revisados;
+- relaciones `prerequisites` y `related` revisadas;
+- si pertenece a «Para matemáticos», `collection` usa el código `PM-*` correcto;
+- si es un capítulo de libro, `book-id` apunta al `MA-BOK-*` del libro padre cuando corresponda.
 
 ## QA técnico
 

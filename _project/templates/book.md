@@ -3,7 +3,7 @@ title: "TÍTULO"
 description: "DESCRIPCIÓN"
 content-id: MA-BOK-XXXX
 content-type: book
-book-id: PM-XXX
+collection: PM-XXX
 status: draft
 draft: true
 date-created: YYYY-MM-DD
