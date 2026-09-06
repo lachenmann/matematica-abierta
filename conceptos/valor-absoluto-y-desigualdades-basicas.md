@@ -3,8 +3,7 @@ title: "Valor absoluto y desigualdades básicas"
 description: "Interpretar el valor absoluto como distancia y resolver desigualdades básicas de la forma |x-a| frente a un radio no negativo."
 content-id: MA-CON-0002
 content-type: concept
-status: review
-draft: true
+status: published
 date-created: 2026-09-06
 date-modified: 2026-09-06
 areas:

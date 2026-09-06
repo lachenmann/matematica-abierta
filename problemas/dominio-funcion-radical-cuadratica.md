@@ -22,7 +22,8 @@ techniques:
   - completacion-de-cuadrados
 prerequisites:
   - MA-CON-0001
-related: []
+related:
+  - MA-CON-0002
 solution-status: complete
 provenance:
   type: original
@@ -132,7 +133,7 @@ $$
 \left|x+\frac12\right|\le\frac72.
 $$
 
-Usamos aquí la equivalencia, válida para $c\ge0$,
+Usamos aquí la equivalencia estudiada en [Valor absoluto y desigualdades básicas](../conceptos/valor-absoluto-y-desigualdades-basicas.md) (`MA-CON-0002`), válida para $c\ge0$:
 
 $$
 |u|\le c
