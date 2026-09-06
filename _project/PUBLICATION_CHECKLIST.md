@@ -55,7 +55,11 @@ Una pieza sólo puede pasar a `published` cuando cumple todos los controles rele
 - fórmulas renderizadas correctamente;
 - enlaces internos correctos;
 - bibliografía renderizada;
-- ausencia de material privado.
+- ausencia de material privado;
+- el sitio fija explícitamente `website.draft-mode: gone`;
+- las piezas con `status: draft` o `status: review` mantienen `draft: true`;
+- los borradores no aparecen en navegación, listados, búsqueda ni sitemap;
+- la mera existencia de un HTML de borrador dentro de `_site` no constituye exposición: con `draft-mode: gone`, Quarto puede generar una página vacía para esa URL.
 
 ## Regla final
 
