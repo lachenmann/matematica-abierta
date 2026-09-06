@@ -4,7 +4,7 @@
 
 | Tipo | Próximo |
 |---|---|
-| Concepto | MA-CON-0003 |
+| Concepto | MA-CON-0004 |
 | Problema | MA-PRB-0002 |
 | Artículo | MA-ART-0001 |
 | Lección | MA-LES-0001 |
@@ -18,6 +18,7 @@
 |---|---|---|---|---|
 | MA-CON-0001 | concept | Desigualdades cuadráticas por factorización | `conceptos/desigualdades-cuadraticas-por-factorizacion.md` | published |
 | MA-CON-0002 | concept | Valor absoluto y desigualdades básicas | `conceptos/valor-absoluto-y-desigualdades-basicas.md` | published |
+| MA-CON-0003 | concept | Dominio de funciones reales con radicales | `conceptos/dominio-de-funciones-reales-con-radicales.md` | published |
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 
 ## Regla de uso
