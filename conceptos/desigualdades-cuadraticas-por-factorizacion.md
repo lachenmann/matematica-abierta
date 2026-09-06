@@ -3,7 +3,7 @@ title: "Desigualdades cuadráticas por factorización"
 description: "Cómo resolver desigualdades cuadráticas factorizables mediante el signo de sus factores lineales."
 content-id: MA-CON-0001
 content-type: concept
-status: draft
+status: review
 draft: true
 date-created: 2026-09-05
 date-modified: 2026-09-05
