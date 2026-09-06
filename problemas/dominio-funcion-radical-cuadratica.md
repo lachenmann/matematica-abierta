@@ -4,8 +4,7 @@ description: "Determinar el dominio real de una función con raíz cuadrada medi
 content-id: MA-PRB-0001
 content-type: problem
 collection: PM-PRB
-status: review
-draft: true
+status: published
 date-created: 2026-09-05
 date-modified: 2026-09-06
 areas:
