@@ -44,6 +44,8 @@ Una pieza sólo puede pasar a `published` cuando cumple todos los controles rele
 - `status` coherente con `draft`;
 - `areas`, `level` y `topics` revisados;
 - relaciones `prerequisites` y `related` revisadas;
+- las relaciones visibles de la pieza coinciden con sus metadatos;
+- si una publicación altera la red pública de conceptos y problemas, se actualiza el mapa de relaciones de la landing correspondiente;
 - si pertenece a «Para matemáticos», `collection` usa el código `PM-*` correcto;
 - si es un capítulo de libro, `book-id` apunta al `MA-BOK-*` del libro padre cuando corresponda.
 

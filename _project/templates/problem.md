@@ -21,8 +21,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Problema
-
 ## Enunciado
 
 ## Análisis
@@ -30,3 +28,8 @@ license: GFDL-1.3-or-later
 ## Solución
 
 ## Comprobación
+
+## Relaciones
+
+- **Prerrequisitos:** —
+- **Contenidos relacionados:** —

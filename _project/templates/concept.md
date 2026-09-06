@@ -17,3 +17,9 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 ---
+
+## Relaciones
+
+- **Prerrequisitos:** —
+- **Contenidos relacionados:** —
+- **Problemas que usan este concepto:** —
