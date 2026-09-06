@@ -4,13 +4,19 @@
 
 | Tipo | Próximo |
 |---|---|
-| Concepto | MA-CON-0001 |
+| Concepto | MA-CON-0002 |
 | Problema | MA-PRB-0001 |
 | Artículo | MA-ART-0001 |
 | Lección | MA-LES-0001 |
 | Capítulo | MA-BCH-0001 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0001 |
+
+## IDs asignados
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-CON-0001 | concept | Desigualdades cuadráticas por factorización | `conceptos/desigualdades-cuadraticas-por-factorizacion.md` | draft |
 
 ## Regla de uso
 
