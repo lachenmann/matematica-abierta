@@ -5,7 +5,7 @@ content-id: MA-CON-0009
 content-type: concept
 status: published
 date-created: 2026-09-06
-date-modified: 2026-09-06
+date-modified: 2026-09-07
 areas:
   - fundamentos
   - algebra
@@ -18,6 +18,7 @@ topics:
   - biyectividad
   - imagen
   - preimagen
+  - fibras
   - codominio
   - composicion-de-funciones
 prerequisites:
@@ -435,25 +436,87 @@ f^{-1}(\{y\})
 \{x\in A:f(x)=y\}.
 $$
 
-Este conjunto reúne todos los antecedentes de $y$.
+::: {.ma-block .ma-definicion}
+**Fibra de una función**
 
-Entonces:
+Sea
 
-- $f$ es **inyectiva** si cada conjunto $f^{-1}(\{y\})$ tiene a lo sumo un elemento;
-- $f$ es **sobreyectiva** si cada $f^{-1}(\{y\})$, con $y\in B$, tiene al menos un elemento;
-- $f$ es **biyectiva** si cada $f^{-1}(\{y\})$, con $y\in B$, tiene exactamente un elemento.
+$$
+f:A\to B
+$$
+
+y sea $y\in B$. La **fibra de $f$ sobre $y$** es el conjunto
+
+$$
+\boxed{
+f^{-1}(\{y\})
+=
+\{x\in A:f(x)=y\}
+}.
+$$
+
+Es decir, la fibra sobre $y$ reúne exactamente todos los **antecedentes de $y$** en el dominio.
+:::
+
+La idea permite leer inmediatamente las tres propiedades:
+
+- $f$ es **inyectiva** si cada fibra tiene a lo sumo un elemento;
+- $f$ es **sobreyectiva** si cada fibra sobre $y\in B$ tiene al menos un elemento, es decir, es no vacía;
+- $f$ es **biyectiva** si cada fibra sobre $y\in B$ tiene exactamente un elemento.
 
 Podemos resumirlo así:
 
 $$
 \begin{array}{c|c}
-\text{propiedad} & \text{número de antecedentes de cada }y\in B\\
+\text{propiedad} & \text{número de elementos de cada fibra sobre }y\in B\\
 \hline
 \text{inyectiva} & \le 1\\
 \text{sobreyectiva} & \ge 1\\
 \text{biyectiva} & =1
 \end{array}
 $$
+
+### Ejemplo: fibras de la función cuadrado
+
+Para
+
+$$
+q:\mathbb R\to\mathbb R,
+\qquad
+q(x)=x^2,
+$$
+
+la fibra sobre $4$ es
+
+$$
+q^{-1}(\{4\})=\{-2,2\}.
+$$
+
+Como esta fibra contiene dos elementos, $q$ no es inyectiva.
+
+En cambio,
+
+$$
+q^{-1}(\{-1\})=\varnothing.
+$$
+
+La fibra sobre $-1$ está vacía; como $-1$ pertenece al codominio declarado, esto muestra que $q$ no es sobreyectiva.
+
+Si restringimos dominio y codominio y tomamos
+
+$$
+r:[0,\infty)\to[0,\infty),
+\qquad
+r(x)=x^2,
+$$
+
+entonces, para cada $y\ge0$,
+
+$$
+r^{-1}(\{y\})=\{\sqrt y\}.
+$$
+
+Cada fibra tiene exactamente un elemento, lo que expresa directamente que $r$ es biyectiva.
 
 ::: {.ma-block .ma-error}
 **No confundir preimagen con función inversa**
@@ -464,7 +527,7 @@ $$
 f^{-1}(\{y\})
 $$
 
-tiene sentido para cualquier función: representa la preimagen de un conjunto.
+tiene sentido para cualquier función: representa la preimagen de un conjunto y, en este caso particular, la fibra sobre $y$.
 
 Esto **no** significa que exista una función inversa $f^{-1}$. La existencia de una función inversa requerirá una condición adicional que estudiaremos después.
 :::
