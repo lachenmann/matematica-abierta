@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Cómo combinar límites mediante suma, resta, producto, cociente, potencias y operaciones algebraicas, con demostraciones épsilon-delta y aplicaciones a polinomios y funciones racionales.">
 
-<title>Conceptos – Matemática Abierta</title>
+<title>Leyes algebraicas de los límites – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -76,6 +77,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -443,11 +473,46 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#conceptos" id="toc-conceptos" class="nav-link active" data-scroll-target="#conceptos">Conceptos</a>
+  <li><a href="#marco-común" id="toc-marco-común" class="nav-link active" data-scroll-target="#marco-común">Marco común</a></li>
+  <li><a href="#primeras-leyes-constantes-e-identidad" id="toc-primeras-leyes-constantes-e-identidad" class="nav-link" data-scroll-target="#primeras-leyes-constantes-e-identidad">Primeras leyes: constantes e identidad</a></li>
+  <li><a href="#multiplicación-por-una-constante" id="toc-multiplicación-por-una-constante" class="nav-link" data-scroll-target="#multiplicación-por-una-constante">Multiplicación por una constante</a></li>
+  <li><a href="#ley-de-la-suma" id="toc-ley-de-la-suma" class="nav-link" data-scroll-target="#ley-de-la-suma">Ley de la suma</a>
   <ul class="collapse">
-  <li><a href="#publicados" id="toc-publicados" class="nav-link" data-scroll-target="#publicados">Publicados</a></li>
-  <li><a href="#mapa-de-relaciones" id="toc-mapa-de-relaciones" class="nav-link" data-scroll-target="#mapa-de-relaciones">Mapa de relaciones</a></li>
+  <li><a href="#demostración" id="toc-demostración" class="nav-link" data-scroll-target="#demostración">Demostración</a></li>
   </ul></li>
+  <li><a href="#ley-de-la-resta" id="toc-ley-de-la-resta" class="nav-link" data-scroll-target="#ley-de-la-resta">Ley de la resta</a></li>
+  <li><a href="#un-lema-fundamental-una-función-con-límite-finito-está-localmente-acotada" id="toc-un-lema-fundamental-una-función-con-límite-finito-está-localmente-acotada" class="nav-link" data-scroll-target="#un-lema-fundamental-una-función-con-límite-finito-está-localmente-acotada">Un lema fundamental: una función con límite finito está localmente acotada</a>
+  <ul class="collapse">
+  <li><a href="#demostración-1" id="toc-demostración-1" class="nav-link" data-scroll-target="#demostración-1">Demostración</a></li>
+  </ul></li>
+  <li><a href="#ley-del-producto" id="toc-ley-del-producto" class="nav-link" data-scroll-target="#ley-del-producto">Ley del producto</a>
+  <ul class="collapse">
+  <li><a href="#demostración-2" id="toc-demostración-2" class="nav-link" data-scroll-target="#demostración-2">Demostración</a></li>
+  </ul></li>
+  <li><a href="#potencias-naturales" id="toc-potencias-naturales" class="nav-link" data-scroll-target="#potencias-naturales">Potencias naturales</a></li>
+  <li><a href="#separación-local-de-cero" id="toc-separación-local-de-cero" class="nav-link" data-scroll-target="#separación-local-de-cero">Separación local de cero</a>
+  <ul class="collapse">
+  <li><a href="#demostración-3" id="toc-demostración-3" class="nav-link" data-scroll-target="#demostración-3">Demostración</a></li>
+  </ul></li>
+  <li><a href="#límite-del-recíproco" id="toc-límite-del-recíproco" class="nav-link" data-scroll-target="#límite-del-recíproco">Límite del recíproco</a>
+  <ul class="collapse">
+  <li><a href="#demostración-4" id="toc-demostración-4" class="nav-link" data-scroll-target="#demostración-4">Demostración</a></li>
+  </ul></li>
+  <li><a href="#ley-del-cociente" id="toc-ley-del-cociente" class="nav-link" data-scroll-target="#ley-del-cociente">Ley del cociente</a></li>
+  <li><a href="#resumen-de-las-leyes-algebraicas" id="toc-resumen-de-las-leyes-algebraicas" class="nav-link" data-scroll-target="#resumen-de-las-leyes-algebraicas">Resumen de las leyes algebraicas</a></li>
+  <li><a href="#aplicación-límites-de-polinomios" id="toc-aplicación-límites-de-polinomios" class="nav-link" data-scroll-target="#aplicación-límites-de-polinomios">Aplicación: límites de polinomios</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
+  </ul></li>
+  <li><a href="#aplicación-límites-de-funciones-racionales" id="toc-aplicación-límites-de-funciones-racionales" class="nav-link" data-scroll-target="#aplicación-límites-de-funciones-racionales">Aplicación: límites de funciones racionales</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-1" id="toc-ejemplo-1" class="nav-link" data-scroll-target="#ejemplo-1">Ejemplo</a></li>
+  </ul></li>
+  <li><a href="#cuando-el-denominador-tiende-a-cero" id="toc-cuando-el-denominador-tiende-a-cero" class="nav-link" data-scroll-target="#cuando-el-denominador-tiende-a-cero">Cuando el denominador tiende a cero</a></li>
+  <li><a href="#las-mismas-leyes-para-límites-laterales" id="toc-las-mismas-leyes-para-límites-laterales" class="nav-link" data-scroll-target="#las-mismas-leyes-para-límites-laterales">Las mismas leyes para límites laterales</a></li>
+  <li><a href="#qué-hemos-ganado" id="toc-qué-hemos-ganado" class="nav-link" data-scroll-target="#qué-hemos-ganado">Qué hemos ganado</a></li>
+  <li><a href="#conexión-con-continuidad" id="toc-conexión-con-continuidad" class="nav-link" data-scroll-target="#conexión-con-continuidad">Conexión con continuidad</a></li>
+  <li><a href="#síntesis" id="toc-síntesis" class="nav-link" data-scroll-target="#síntesis">Síntesis</a></li>
   </ul>
 </nav>
     </div>
@@ -457,15 +522,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conceptos</h1>
+<h1 class="title">Leyes algebraicas de los límites</h1>
 </div>
 
+<div>
+  <div class="description">
+    Cómo combinar límites mediante suma, resta, producto, cociente, potencias y operaciones algebraicas, con demostraciones épsilon-delta y aplicaciones a polinomios y funciones racionales.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -474,127 +550,775 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="conceptos" class="level1">
-<h1>Conceptos</h1>
-<p>Esta es una subsección de <a href="../teoria/index.html"><strong>Teoría</strong></a>.</p>
-<p>Reúne páginas autocontenidas dedicadas a ideas matemáticas concretas: definiciones, propiedades, demostraciones, ejemplos y conexiones que sirven de base para cursos, problemas y libros de Matemática Abierta.</p>
-<section id="publicados" class="level2">
-<h2 class="anchored" data-anchor-id="publicados">Publicados</h2>
+<p>Una vez definida rigurosamente la noción de límite, el siguiente paso es entender cómo se comporta frente a las operaciones algebraicas habituales.</p>
+<p>Si sabemos que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\qquad\text{y}\qquad
+\lim_{x\to a}g(x)=M,
+\]</span></p>
+<p>queremos justificar afirmaciones como</p>
+<p><span class="math display">\[
+\lim_{x\to a}(f(x)+g(x))=L+M
+\]</span></p>
+<p>o</p>
+<p><span class="math display">\[
+\lim_{x\to a}(f(x)g(x))=LM.
+\]</span></p>
+<p>Estas fórmulas son familiares, pero en análisis no se aceptan como simples reglas de manipulación simbólica: se deducen de la definición épsilon-delta.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Intuición</strong></p>
+<p>Si <span class="math inline">\(f(x)\)</span> está cerca de <span class="math inline">\(L\)</span> y <span class="math inline">\(g(x)\)</span> está cerca de <span class="math inline">\(M\)</span>, entonces:</p>
 <ul>
-<li><a href="../conceptos/desigualdades-cuadraticas-por-factorizacion.html">Desigualdades cuadráticas por factorización</a> — Cómo resolver desigualdades cuadráticas factorizables mediante el signo de sus factores lineales. (<code>MA-CON-0001</code>)</li>
-<li><a href="../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a> — Interpretar el valor absoluto como distancia y resolver desigualdades básicas asociadas. (<code>MA-CON-0002</code>)</li>
-<li><a href="../conceptos/dominio-de-funciones-reales-con-radicales.html">Dominio de funciones reales con radicales</a> — Cómo determinar el dominio real de expresiones con raíces pares, combinar restricciones y tratar radicales anidados. (<code>MA-CON-0003</code>)</li>
-<li><a href="../conceptos/intervalos-e-interseccion-de-conjuntos-reales.html">Intervalos e intersección de conjuntos reales</a> — Representar subconjuntos de la recta real mediante intervalos y combinar restricciones con intersección y unión. (<code>MA-CON-0004</code>)</li>
-<li><a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a> — Reglas para transformar desigualdades reales controlando signos, sentido del orden y equivalencia. (<code>MA-CON-0005</code>)</li>
-<li><a href="../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a> — Combinar subconjuntos de la recta real y traducir entre operaciones conjuntistas y conectores lógicos. (<code>MA-CON-0006</code>)</li>
-<li><a href="../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> — Definir funciones con precisión y distinguir dominio, codominio, imagen y preimagen. (<code>MA-CON-0007</code>)</li>
-<li><a href="../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a> — Encadenar funciones, controlar el dominio de la composición y entender identidad y asociatividad. (<code>MA-CON-0008</code>)</li>
-<li><a href="../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a> — Clasificar funciones según unicidad de antecedentes y cobertura del codominio. (<code>MA-CON-0009</code>)</li>
-<li><a href="../conceptos/funciones-inversas.html">Funciones inversas</a> — Entender cuándo una función puede invertirse y cómo la biyectividad, las fibras y la composición determinan su inversa. (<code>MA-CON-0010</code>)</li>
-<li><a href="../conceptos/limite-de-una-funcion-en-un-punto.html">Límite de una función en un punto</a> — Formalizar la aproximación de una función mediante la definición épsilon-delta y distinguir el límite del valor de la función. (<code>MA-CON-0011</code>)</li>
-<li><a href="../conceptos/limites-laterales-y-criterio-para-el-limite-bilateral.html">Límites laterales y criterio para el límite bilateral</a> — Separar la aproximación por izquierda y derecha y determinar cuándo ambos lados producen un mismo límite. (<code>MA-CON-0012</code>)</li>
-<li><a href="../conceptos/leyes-algebraicas-de-los-limites.html">Leyes algebraicas de los límites</a> — Combinar límites mediante operaciones algebraicas y justificar rigurosamente suma, producto, cociente, potencias y aplicaciones a polinomios y funciones racionales. (<code>MA-CON-0013</code>)</li>
+<li><span class="math inline">\(f(x)+g(x)\)</span> debe estar cerca de <span class="math inline">\(L+M\)</span>;</li>
+<li><span class="math inline">\(f(x)g(x)\)</span> debe estar cerca de <span class="math inline">\(LM\)</span>;</li>
+<li>si <span class="math inline">\(M\ne0\)</span>, entonces <span class="math inline">\(g(x)\)</span> permanece lejos de <span class="math inline">\(0\)</span> cuando <span class="math inline">\(x\)</span> está suficientemente cerca de <span class="math inline">\(a\)</span>, y por ello <span class="math inline">\(f(x)/g(x)\)</span> debe estar cerca de <span class="math inline">\(L/M\)</span>.</li>
 </ul>
+<p>La dificultad matemática consiste en convertir estas intuiciones en controles cuantitativos precisos.</p>
+</div>
+<section id="marco-común" class="level2">
+<h2 class="anchored" data-anchor-id="marco-común">Marco común</h2>
+<p>En esta página trabajaremos principalmente con dos funciones</p>
+<p><span class="math display">\[
+f,g:D\to\mathbb R,
+\]</span></p>
+<p>definidas sobre un mismo conjunto</p>
+<p><span class="math display">\[
+D\subseteq\mathbb R,
+\]</span></p>
+<p>y con <span class="math inline">\(a\)</span> punto de acumulación de <span class="math inline">\(D\)</span>.</p>
+<p>Supondremos que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L,
+\qquad
+\lim_{x\to a}g(x)=M.
+\]</span></p>
+<p>Trabajar sobre un dominio común evita una dificultad secundaria: si dos funciones están definidas sobre dominios distintos, la suma, el producto o el cociente sólo están definidos donde ambos dominios se intersectan.</p>
+<p>Las leyes que probaremos se aplican igualmente a límites laterales, siempre que el punto sea de acumulación por el lado correspondiente.</p>
 </section>
-<section id="mapa-de-relaciones" class="level2">
-<h2 class="anchored" data-anchor-id="mapa-de-relaciones">Mapa de relaciones</h2>
-<p>Los identificadores estables permiten ver cómo se conectan los contenidos publicados sin depender de su ubicación o de su título.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Concepto</th>
-<th>Prerrequisitos</th>
-<th>Relacionado con</th>
-<th>Problemas que lo usan</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="../conceptos/desigualdades-cuadraticas-por-factorizacion.html">Desigualdades cuadráticas por factorización</a> (<code>MA-CON-0001</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a> (<code>MA-CON-0002</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0006</code>, <code>MA-CON-0011</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>)</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/dominio-de-funciones-reales-con-radicales.html">Dominio de funciones reales con radicales</a> (<code>MA-CON-0003</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0002</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0006</code>, <code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0011</code>, <code>MA-PRB-0001</code></td>
-<td><a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/intervalos-e-interseccion-de-conjuntos-reales.html">Intervalos e intersección de conjuntos reales</a> (<code>MA-CON-0004</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0005</code>, <code>MA-CON-0006</code>, <code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0011</code>, <code>MA-CON-0012</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a> (<code>MA-CON-0005</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0006</code>, <code>MA-CON-0011</code>, <code>MA-CON-0012</code>, <code>MA-CON-0013</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a> (<code>MA-CON-0006</code>)</td>
-<td><code>MA-CON-0004</code></td>
-<td><code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0005</code>, <code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0009</code>, <code>MA-CON-0010</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> (<code>MA-CON-0007</code>)</td>
-<td><code>MA-CON-0004</code>, <code>MA-CON-0006</code></td>
-<td><code>MA-CON-0003</code>, <code>MA-CON-0008</code>, <code>MA-CON-0009</code>, <code>MA-CON-0010</code>, <code>MA-CON-0011</code>, <code>MA-CON-0012</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a> (<code>MA-CON-0008</code>)</td>
-<td><code>MA-CON-0007</code></td>
-<td><code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0006</code>, <code>MA-CON-0009</code>, <code>MA-CON-0010</code></td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a> (<code>MA-CON-0009</code>)</td>
-<td><code>MA-CON-0007</code>, <code>MA-CON-0008</code></td>
-<td><code>MA-CON-0006</code>, <code>MA-CON-0010</code></td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/funciones-inversas.html">Funciones inversas</a> (<code>MA-CON-0010</code>)</td>
-<td><code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0009</code></td>
-<td><code>MA-CON-0006</code>, <code>MA-CON-0011</code></td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/limite-de-una-funcion-en-un-punto.html">Límite de una función en un punto</a> (<code>MA-CON-0011</code>)</td>
-<td><code>MA-CON-0002</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0007</code></td>
-<td><code>MA-CON-0003</code>, <code>MA-CON-0010</code>, <code>MA-CON-0012</code>, <code>MA-CON-0013</code></td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/limites-laterales-y-criterio-para-el-limite-bilateral.html">Límites laterales y criterio para el límite bilateral</a> (<code>MA-CON-0012</code>)</td>
-<td><code>MA-CON-0011</code></td>
-<td><code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0007</code>, <code>MA-CON-0013</code></td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/leyes-algebraicas-de-los-limites.html">Leyes algebraicas de los límites</a> (<code>MA-CON-0013</code>)</td>
-<td><code>MA-CON-0011</code></td>
-<td><code>MA-CON-0005</code>, <code>MA-CON-0012</code></td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
+<section id="primeras-leyes-constantes-e-identidad" class="level2">
+<h2 class="anchored" data-anchor-id="primeras-leyes-constantes-e-identidad">Primeras leyes: constantes e identidad</h2>
+<p>Antes de combinar funciones conviene fijar dos límites básicos.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Límite de una función constante</strong></p>
+<p>Para cualquier <span class="math inline">\(c\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}c=c.
+}
+\]</span></p>
+</div>
+<p>La demostración es inmediata. Para todo <span class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[
+|c-c|=0.
+\]</span></p>
+<p>Por tanto, dado cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, cualquier elección de <span class="math inline">\(\delta&gt;0\)</span> satisface</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|c-c|&lt;\varepsilon.
+\]</span></p>
+<div class="ma-block ma-definicion">
+<p><strong>Límite de la función identidad</strong></p>
+<p>Si <span class="math inline">\(a\)</span> es punto de acumulación de <span class="math inline">\(D\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}x=a.
+}
+\]</span></p>
+</div>
+<p>En efecto,</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta.
+\]</span></p>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, basta elegir</p>
+<p><span class="math display">\[
+\delta=\varepsilon.
+\]</span></p>
+</section>
+<section id="multiplicación-por-una-constante" class="level2">
+<h2 class="anchored" data-anchor-id="multiplicación-por-una-constante">Multiplicación por una constante</h2>
+<p>Sea <span class="math inline">\(c\in\mathbb R\)</span>.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}cf(x)=cL.
+}
+\]</span></p>
+<p>Si <span class="math inline">\(c=0\)</span>, la afirmación es inmediata.</p>
+<p>Si <span class="math inline">\(c\ne0\)</span>, dado <span class="math inline">\(\varepsilon&gt;0\)</span>, como</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L,
+\]</span></p>
+<p>podemos exigir</p>
+<p><span class="math display">\[
+|f(x)-L|&lt;\frac{\varepsilon}{|c|}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+|cf(x)-cL|
+=|c|\,|f(x)-L|
+&lt;\varepsilon.
+\]</span></p>
+</section>
+<section id="ley-de-la-suma" class="level2">
+<h2 class="anchored" data-anchor-id="ley-de-la-suma">Ley de la suma</h2>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema — suma de límites</strong></p>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\lim_{x\to a}g(x)=M,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(f(x)+g(x))=L+M.
+}
+\]</span></p>
+</div>
+<section id="demostración" class="level3">
+<h3 class="anchored" data-anchor-id="demostración">Demostración</h3>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p>Como</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L,
+\]</span></p>
+<p>existe <span class="math inline">\(\delta_f&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta_f
+\quad\Longrightarrow\quad
+|f(x)-L|&lt;\frac{\varepsilon}{2}.
+\]</span></p>
+<p>Del mismo modo, existe <span class="math inline">\(\delta_g&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta_g
+\quad\Longrightarrow\quad
+|g(x)-M|&lt;\frac{\varepsilon}{2}.
+\]</span></p>
+<p>Elegimos</p>
+<p><span class="math display">\[
+\delta=\min\{\delta_f,\delta_g\}.
+\]</span></p>
+<p>Si</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta,
+\]</span></p>
+<p>entonces ambas estimaciones son válidas y, por la desigualdad triangular,</p>
+<p><span class="math display">\[
+\begin{aligned}
+|(f(x)+g(x))-(L+M)|
+&amp;=|(f(x)-L)+(g(x)-M)|\\
+&amp;\le |f(x)-L|+|g(x)-M|\\
+&amp;&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}\\
+&amp;=\varepsilon.
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\lim_{x\to a}(f(x)+g(x))=L+M.
+\]</span></p>
+<div class="ma-block ma-metodo">
+<p><strong>Una técnica que aparecerá repetidamente</strong></p>
+<p>Cuando necesitamos satisfacer simultáneamente varias condiciones locales, obtenemos varios radios</p>
+<p><span class="math display">\[
+\delta_1,\delta_2,\ldots
+\]</span></p>
+<p>y tomamos</p>
+<p><span class="math display">\[
+\boxed{
+\delta=\min\{\delta_1,\delta_2,\ldots\}.
+}
+\]</span></p>
+<p>Así garantizamos que todas las condiciones sean válidas al mismo tiempo.</p>
+</div>
+</section>
+</section>
+<section id="ley-de-la-resta" class="level2">
+<h2 class="anchored" data-anchor-id="ley-de-la-resta">Ley de la resta</h2>
+<p>Como</p>
+<p><span class="math display">\[
+f(x)-g(x)=f(x)+(-1)g(x),
+\]</span></p>
+<p>las leyes anteriores implican inmediatamente</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(f(x)-g(x))=L-M.
+}
+\]</span></p>
+</section>
+<section id="un-lema-fundamental-una-función-con-límite-finito-está-localmente-acotada" class="level2">
+<h2 class="anchored" data-anchor-id="un-lema-fundamental-una-función-con-límite-finito-está-localmente-acotada">Un lema fundamental: una función con límite finito está localmente acotada</h2>
+<p>La suma se controla directamente mediante la desigualdad triangular. El producto requiere una idea adicional.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Lema — acotación local</strong></p>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L,
+\]</span></p>
+<p>entonces existe un <span class="math inline">\(r&gt;0\)</span> y un número <span class="math inline">\(K&gt;0\)</span> tales que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;r
+\quad\Longrightarrow\quad
+|f(x)|\le K.
+\]</span></p>
+</div>
+<section id="demostración-1" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-1">Demostración</h3>
+<p>Tomemos, por ejemplo,</p>
+<p><span class="math display">\[
+\varepsilon=1.
+\]</span></p>
+<p>Por la definición de límite existe <span class="math inline">\(r&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;r
+\quad\Longrightarrow\quad
+|f(x)-L|&lt;1.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+|f(x)|
+\le |f(x)-L|+|L|
+&lt;1+|L|.
+\]</span></p>
+<p>Podemos tomar</p>
+<p><span class="math display">\[
+K=|L|+1.
+\]</span></p>
+<div class="ma-block ma-observacion">
+<p><strong>Qué significa el lema</strong></p>
+<p>La existencia de un límite real impide que la función se vuelva arbitrariamente grande en un entorno perforado suficientemente pequeño del punto.</p>
+<p>No estamos afirmando que <span class="math inline">\(f\)</span> sea globalmente acotada, sino sólo que lo es <strong>localmente cerca de <span class="math inline">\(a\)</span></strong>.</p>
+</div>
+</section>
+</section>
+<section id="ley-del-producto" class="level2">
+<h2 class="anchored" data-anchor-id="ley-del-producto">Ley del producto</h2>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema — producto de límites</strong></p>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\lim_{x\to a}g(x)=M,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}f(x)g(x)=LM.
+}
+\]</span></p>
+</div>
+<section id="demostración-2" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-2">Demostración</h3>
+<p>Queremos controlar</p>
+<p><span class="math display">\[
+|f(x)g(x)-LM|.
+\]</span></p>
+<p>Añadimos y restamos <span class="math inline">\(f(x)M\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(x)g(x)-LM
+&amp;=f(x)g(x)-f(x)M+f(x)M-LM\\
+&amp;=f(x)(g(x)-M)+M(f(x)-L).
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+|f(x)g(x)-LM|
+\le
+|f(x)|\,|g(x)-M|
++|M|\,|f(x)-L|.
+\]</span></p>
+<p>Por el lema de acotación local, existe <span class="math inline">\(r&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;r
+\quad\Longrightarrow\quad
+|f(x)|\le |L|+1.
+\]</span></p>
+<p>Definamos</p>
+<p><span class="math display">\[
+A=|L|+1.
+\]</span></p>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, podemos elegir <span class="math inline">\(\delta_1&gt;0\)</span> de modo que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta_1
+\quad\Longrightarrow\quad
+|g(x)-M|&lt;\frac{\varepsilon}{2A}.
+\]</span></p>
+<p>También elegimos <span class="math inline">\(\delta_2&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta_2
+\quad\Longrightarrow\quad
+|f(x)-L|&lt;\frac{\varepsilon}{2(|M|+1)}.
+\]</span></p>
+<p>Finalmente tomamos</p>
+<p><span class="math display">\[
+\delta=\min\{r,\delta_1,\delta_2\}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+|f(x)g(x)-LM|
+&amp;\le |f(x)|\,|g(x)-M|+|M|\,|f(x)-L|\\
+&amp;&lt; A\frac{\varepsilon}{2A}
++|M|\frac{\varepsilon}{2(|M|+1)}\\
+&amp;&lt;\frac{\varepsilon}{2}+\frac{\varepsilon}{2}\\
+&amp;=\varepsilon.
+\end{aligned}
+\]</span></p>
+<p>Así queda demostrada la ley del producto.</p>
+</section>
+</section>
+<section id="potencias-naturales" class="level2">
+<h2 class="anchored" data-anchor-id="potencias-naturales">Potencias naturales</h2>
+<p>Aplicando repetidamente la ley del producto obtenemos, para todo entero <span class="math inline">\(n\ge1\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(f(x))^n=L^n.
+}
+\]</span></p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+\lim_{x\to a}(f(x))^3
+=
+\left(\lim_{x\to a}f(x)\right)^3.
+\]</span></p>
+<p>Para <span class="math inline">\(n=0\)</span>, cuando la expresión considerada es la función constante <span class="math inline">\(1\)</span>, el resultado se reduce a</p>
+<p><span class="math display">\[
+\lim_{x\to a}1=1.
+\]</span></p>
+</section>
+<section id="separación-local-de-cero" class="level2">
+<h2 class="anchored" data-anchor-id="separación-local-de-cero">Separación local de cero</h2>
+<p>Antes de tratar cocientes necesitamos demostrar que una función cuyo límite es distinto de cero no puede anularse arbitrariamente cerca del punto.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Lema — separación de cero</strong></p>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}g(x)=M
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+M\ne0,
+\]</span></p>
+<p>entonces existe <span class="math inline">\(r&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;r
+\quad\Longrightarrow\quad
+|g(x)|&gt;\frac{|M|}{2}&gt;0.
+\]</span></p>
+</div>
+<section id="demostración-3" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-3">Demostración</h3>
+<p>Tomamos</p>
+<p><span class="math display">\[
+\varepsilon=\frac{|M|}{2}.
+\]</span></p>
+<p>Existe <span class="math inline">\(r&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;r
+\quad\Longrightarrow\quad
+|g(x)-M|&lt;\frac{|M|}{2}.
+\]</span></p>
+<p>Por la desigualdad triangular inversa,</p>
+<p><span class="math display">\[
+|g(x)|
+\ge |M|-|g(x)-M|
+&gt;
+|M|-\frac{|M|}{2}
+=
+\frac{|M|}{2}.
+\]</span></p>
+<p>En particular,</p>
+<p><span class="math display">\[
+g(x)\ne0
+\]</span></p>
+<p>para todo <span class="math inline">\(x\)</span> suficientemente cercano a <span class="math inline">\(a\)</span>, salvo eventualmente el propio punto <span class="math inline">\(a\)</span>.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Consecuencia conceptual</strong></p>
+<p>La condición <span class="math inline">\(M\ne0\)</span> en la ley del cociente no es un detalle formal. Es lo que garantiza que el denominador deja de acercarse peligrosamente a cero en un entorno perforado suficientemente pequeño.</p>
+</div>
+</section>
+</section>
+<section id="límite-del-recíproco" class="level2">
+<h2 class="anchored" data-anchor-id="límite-del-recíproco">Límite del recíproco</h2>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}g(x)=M
+\qquad\text{con}\qquad
+M\ne0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}\frac{1}{g(x)}=\frac{1}{M}.
+}
+\]</span></p>
+<section id="demostración-4" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-4">Demostración</h3>
+<p>Por el lema anterior, para <span class="math inline">\(x\)</span> suficientemente cercano a <span class="math inline">\(a\)</span>,</p>
+<p><span class="math display">\[
+|g(x)|&gt;\frac{|M|}{2}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left|
+\frac1{g(x)}-\frac1M
+\right|
+&amp;=
+\frac{|M-g(x)|}{|g(x)|\,|M|}\\
+&amp;&lt;
+\frac{2}{|M|^2}|g(x)-M|.
+\end{aligned}
+\]</span></p>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, basta exigir simultáneamente</p>
+<p><span class="math display">\[
+|g(x)-M|&lt;\frac{|M|}{2}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+|g(x)-M|&lt;\frac{\varepsilon |M|^2}{2}.
+\]</span></p>
+<p>La definición de límite permite obtener un <span class="math inline">\(\delta&gt;0\)</span> que satisfaga ambas condiciones tomando el mínimo de los radios correspondientes.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\left|
+\frac1{g(x)}-\frac1M
+\right|&lt;\varepsilon.
+\]</span></p>
+</section>
+</section>
+<section id="ley-del-cociente" class="level2">
+<h2 class="anchored" data-anchor-id="ley-del-cociente">Ley del cociente</h2>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema — cociente de límites</strong></p>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L,
+\qquad
+\lim_{x\to a}g(x)=M,
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+M\ne0,
+\]</span></p>
+<p>entonces, donde el cociente está definido,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}\frac{f(x)}{g(x)}
+=
+\frac{L}{M}.
+}
+\]</span></p>
+</div>
+<p>La demostración se obtiene escribiendo</p>
+<p><span class="math display">\[
+\frac{f(x)}{g(x)}
+=
+f(x)\frac1{g(x)}
+\]</span></p>
+<p>y aplicando la ley del producto junto con el límite del recíproco.</p>
+</section>
+<section id="resumen-de-las-leyes-algebraicas" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-de-las-leyes-algebraicas">Resumen de las leyes algebraicas</h2>
+<p>Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\qquad\text{y}\qquad
+\lim_{x\to a}g(x)=M,
+\]</span></p>
+<p>entonces:</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(f+g)=L+M
+}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(f-g)=L-M
+}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(cf)=cL
+}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}(fg)=LM
+}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}f^n=L^n,
+\qquad n\in\mathbb N,\ n\ge1
+}
+\]</span></p>
+<p>y, si <span class="math inline">\(M\ne0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}\frac{f}{g}=\frac{L}{M}.
+}
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>Las leyes no son equivalencias en sentido inverso</strong></p>
+<p>Que exista el límite de una suma o de un producto no implica que existan necesariamente los límites de cada término o factor.</p>
+<p>Por ejemplo, para</p>
+<p><span class="math display">\[
+s(x)=\frac{|x|}{x},
+\qquad x\ne0,
+\]</span></p>
+<p>el límite bilateral de <span class="math inline">\(s(x)\)</span> en <span class="math inline">\(0\)</span> no existe, pero</p>
+<p><span class="math display">\[
+s(x)^2=1
+\]</span></p>
+<p>para todo <span class="math inline">\(x\ne0\)</span>, de modo que</p>
+<p><span class="math display">\[
+\lim_{x\to0}s(x)^2=1.
+\]</span></p>
+<p>La ley del producto dice qué ocurre <strong>si ya conocemos</strong> los límites de los factores; no proporciona el recíproco lógico.</p>
+</div>
+</section>
+<section id="aplicación-límites-de-polinomios" class="level2">
+<h2 class="anchored" data-anchor-id="aplicación-límites-de-polinomios">Aplicación: límites de polinomios</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+p(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+\lim_{x\to a}x=a,
+\]</span></p>
+<p>las leyes de potencias, multiplicación por constantes y suma permiten concluir</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}p(x)=p(a).
+}
+\]</span></p>
+<section id="ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo">Ejemplo</h3>
+<p>Calculemos</p>
+<p><span class="math display">\[
+\lim_{x\to2}(2x^3-5x+4).
+\]</span></p>
+<p>Por las leyes algebraicas,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{x\to2}(2x^3-5x+4)
+&amp;=2\left(\lim_{x\to2}x\right)^3
+-5\left(\lim_{x\to2}x\right)+4\\
+&amp;=2(2)^3-5(2)+4\\
+&amp;=16-10+4\\
+&amp;=10.
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to2}(2x^3-5x+4)=10.
+}
+\]</span></p>
+</section>
+</section>
+<section id="aplicación-límites-de-funciones-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="aplicación-límites-de-funciones-racionales">Aplicación: límites de funciones racionales</h2>
+<p>Sean <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> polinomios y consideremos</p>
+<p><span class="math display">\[
+r(x)=\frac{p(x)}{q(x)}.
+\]</span></p>
+<p>Si</p>
+<p><span class="math display">\[
+q(a)\ne0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}\frac{p(x)}{q(x)}
+=
+\frac{p(a)}{q(a)}.
+}
+\]</span></p>
+<section id="ejemplo-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-1">Ejemplo</h3>
+<p>Consideremos</p>
+<p><span class="math display">\[
+\lim_{x\to1}
+\frac{x^2+3x-1}{2x+5}.
+\]</span></p>
+<p>El denominador en <span class="math inline">\(x=1\)</span> vale</p>
+<p><span class="math display">\[
+2(1)+5=7\ne0.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{x\to1}
+\frac{x^2+3x-1}{2x+5}
+&amp;=
+\frac{1^2+3(1)-1}{2(1)+5}\\
+&amp;=\frac{3}{7}.
+\end{aligned}
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to1}
+\frac{x^2+3x-1}{2x+5}
+=
+\frac37.
+}
+\]</span></p>
+</section>
+</section>
+<section id="cuando-el-denominador-tiende-a-cero" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-el-denominador-tiende-a-cero">Cuando el denominador tiende a cero</h2>
+<p>La condición</p>
+<p><span class="math display">\[
+M\ne0
+\]</span></p>
+<p>en la ley del cociente es indispensable para aplicar el teorema.</p>
+<p>Pero su fracaso <strong>no permite concluir automáticamente que el límite del cociente no exista</strong>.</p>
+<p>Consideremos</p>
+<p><span class="math display">\[
+\frac{x^2-1}{x-1}.
+\]</span></p>
+<p>Cuando <span class="math inline">\(x\to1\)</span>,</p>
+<p><span class="math display">\[
+x-1\to0,
+\]</span></p>
+<p>por lo que la ley del cociente no puede usarse directamente.</p>
+<p>Sin embargo, para <span class="math inline">\(x\ne1\)</span>,</p>
+<p><span class="math display">\[
+\frac{x^2-1}{x-1}
+=x+1.
+\]</span></p>
+<p>Por el principio de localidad desarrollado en <code>MA-CON-0011</code>, ambas expresiones tienen el mismo comportamiento límite en <span class="math inline">\(1\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to1}\frac{x^2-1}{x-1}=2.
+}
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>No confundir “el teorema no se aplica” con “el límite no existe”</strong></p>
+<p>Si el límite del denominador es <span class="math inline">\(0\)</span>, la ley del cociente no proporciona una conclusión.</p>
+<p>A partir de ahí puede ocurrir que:</p>
+<ul>
+<li>el límite exista después de una simplificación;</li>
+<li>el límite no exista;</li>
+<li>aparezca un comportamiento no acotado;</li>
+<li>sea necesario usar otra técnica.</li>
+</ul>
+<p>La imposibilidad de aplicar una ley no es por sí sola un resultado sobre el límite.</p>
+</div>
+</section>
+<section id="las-mismas-leyes-para-límites-laterales" class="level2">
+<h2 class="anchored" data-anchor-id="las-mismas-leyes-para-límites-laterales">Las mismas leyes para límites laterales</h2>
+<p>Supongamos que <span class="math inline">\(a\)</span> es punto de acumulación del dominio por la derecha y que</p>
+<p><span class="math display">\[
+\lim_{x\to a^+}f(x)=L,
+\qquad
+\lim_{x\to a^+}g(x)=M.
+\]</span></p>
+<p>Todas las demostraciones anteriores permanecen válidas reemplazando la condición</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta
+\]</span></p>
+<p>por</p>
+<p><span class="math display">\[
+0&lt;x-a&lt;\delta.
+\]</span></p>
+<p>Por tanto, por ejemplo,</p>
+<p><span class="math display">\[
+\lim_{x\to a^+}(f(x)+g(x))=L+M
+\]</span></p>
+<p>y, si <span class="math inline">\(M\ne0\)</span>,</p>
+<p><span class="math display">\[
+\lim_{x\to a^+}\frac{f(x)}{g(x)}=\frac{L}{M}.
+\]</span></p>
+<p>Lo mismo ocurre para límites por la izquierda.</p>
+<p>Esto permite combinar las leyes algebraicas con el criterio bilateral de <code>MA-CON-0012</code>.</p>
+</section>
+<section id="qué-hemos-ganado" class="level2">
+<h2 class="anchored" data-anchor-id="qué-hemos-ganado">Qué hemos ganado</h2>
+<p>Hasta ahora, la definición épsilon-delta permitía estudiar cada límite desde cero.</p>
+<p>Las leyes algebraicas cambian la escala del trabajo:</p>
+<p><span class="math display">\[
+\text{límites básicos}
+\longrightarrow
+\text{operaciones algebraicas}
+\longrightarrow
+\text{familias completas de funciones}.
+\]</span></p>
+<p>A partir de</p>
+<p><span class="math display">\[
+\lim_{x\to a}x=a
+\]</span></p>
+<p>y del límite de las constantes obtenemos inmediatamente todos los límites de polinomios y, cuando el denominador no se anula en el punto límite, todos los límites de funciones racionales.</p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Control conceptual</strong></p>
+<p>Antes de aplicar una ley de límites conviene comprobar:</p>
+<ol type="1">
+<li>que existen los límites de las piezas que queremos combinar;</li>
+<li>que las funciones están definidas en un dominio común suficientemente cerca del punto;</li>
+<li>que, para un cociente, el límite del denominador es distinto de cero;</li>
+<li>que no estamos usando la conclusión de una ley como si también fuera una condición necesaria.</li>
+</ol>
+</div>
+</section>
+<section id="conexión-con-continuidad" class="level2">
+<h2 class="anchored" data-anchor-id="conexión-con-continuidad">Conexión con continuidad</h2>
+<p>Las identidades</p>
+<p><span class="math display">\[
+\lim_{x\to a}p(x)=p(a)
+\]</span></p>
+<p>para polinomios y</p>
+<p><span class="math display">\[
+\lim_{x\to a}\frac{p(x)}{q(x)}
+=
+\frac{p(a)}{q(a)}
+\]</span></p>
+<p>cuando <span class="math inline">\(q(a)\ne0\)</span> anticipan una noción fundamental.</p>
+<p>Diremos más adelante que una función es <strong>continua en <span class="math inline">\(a\)</span></strong> cuando</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=f(a).
+\]</span></p>
+<p>Las leyes algebraicas mostrarán entonces que la continuidad también se conserva bajo suma, resta, producto y cociente con denominador no nulo.</p>
+</section>
+<section id="síntesis" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis">Síntesis</h2>
+<p>Las leyes algebraicas permiten pasar de límites conocidos a nuevos límites sin reconstruir cada demostración desde la definición.</p>
+<p>El núcleo es:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+\lim(f+g)&amp;=L+M,\\
+\lim(f-g)&amp;=L-M,\\
+\lim(cf)&amp;=cL,\\
+\lim(fg)&amp;=LM,\\
+\lim(f^n)&amp;=L^n,\\
+\lim\frac{f}{g}&amp;=\frac{L}{M}\quad(M\ne0).
+\end{aligned}
+}
+\]</span></p>
+<p>Pero detrás de estas fórmulas hay tres ideas analíticas que conviene conservar:</p>
+<ul>
+<li>combinar varios controles tomando el mínimo de sus radios <span class="math inline">\(\delta\)</span>;</li>
+<li>usar la existencia de un límite para obtener <strong>acotación local</strong>;</li>
+<li>usar un límite no nulo para obtener <strong>separación local de cero</strong>.</li>
+</ul>
+<p>Esas ideas reaparecerán en demostraciones posteriores de continuidad y análisis real.</p>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
