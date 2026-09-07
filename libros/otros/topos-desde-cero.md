@@ -24,7 +24,8 @@ topics:
   - sitios-de-grothendieck
   - topoi
 prerequisites: []
-related: []
+related:
+  - MA-BCH-0002
 provenance:
   type: synthesis
   sources: []
@@ -109,18 +110,20 @@ El primer volumen construye el itinerario que conduce desde el razonamiento mate
 
 La arquitectura completa del volumen es más extensa que esta lista: estos puntos describen el recorrido conceptual, no un índice abreviado definitivo.
 
+## Capítulos en publicación
+
+1. [**Capítulo 1 — Proposiciones y razonamiento deductivo**](../capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.md) (`MA-BCH-0002`).
+   - **1.1 — Proposiciones y valores de verdad:** publicada completa.
+   - **1.2 — Negación, conjunción y disyunción:** siguiente sección prevista.
+
 ## Publicación progresiva
 
-La edición web se publicará desde el comienzo del libro y avanzará sección por sección. No es necesario esperar a que el volumen completo esté cerrado: cada unidad podrá incorporarse cuando haya superado su revisión matemática, editorial y de procedencia.
+La edición web avanza desde el comienzo del libro y sección por sección. No es necesario esperar a que el volumen completo esté cerrado: cada unidad puede incorporarse cuando haya superado su revisión matemática, editorial y de procedencia.
 
-La primera unidad prevista para la edición web es:
-
-**1.1 — Proposiciones y valores de verdad**.
-
-A partir de allí, la versión pública conservará el orden lógico del texto maestro y podrá enlazar conceptos, resultados, métodos y problemas independientes del resto de Matemática Abierta cuando esa separación mejore la reutilización del contenido.
+La versión pública conserva el orden lógico del texto maestro y podrá enlazar conceptos, resultados, métodos y problemas independientes del resto de Matemática Abierta cuando esa separación mejore la reutilización del contenido.
 
 ## Estado
 
-El manuscrito de trabajo ya contiene un desarrollo sustancial del volumen. La migración a Matemática Abierta comienza con esta página de obra y continuará con las primeras secciones del capítulo 1.
+La migración a Matemática Abierta ya comenzó con el **capítulo 1**. La primera sección pública desarrolla la noción de proposición, la distinción entre verdad y conocimiento, las expresiones abiertas, las letras proposicionales y la diferencia entre contenido y forma lógica.
 
 Esta edición es abierta y progresiva. El contenido textual original se publica bajo **GNU Free Documentation License 1.3 o posterior**.
