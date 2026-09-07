@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Qué significa que una función se aproxime a un valor, cómo formalizarlo con la definición épsilon-delta y qué propiedades básicas tiene el límite.">
 
-<title>Conceptos – Matemática Abierta</title>
+<title>Límite de una función en un punto – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -76,6 +77,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -443,11 +473,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#conceptos" id="toc-conceptos" class="nav-link active" data-scroll-target="#conceptos">Conceptos</a>
+  <li><a href="#acercarse-no-significa-llegar" id="toc-acercarse-no-significa-llegar" class="nav-link active" data-scroll-target="#acercarse-no-significa-llegar">Acercarse no significa llegar</a></li>
+  <li><a href="#punto-de-acumulación-del-dominio" id="toc-punto-de-acumulación-del-dominio" class="nav-link" data-scroll-target="#punto-de-acumulación-del-dominio">Punto de acumulación del dominio</a></li>
+  <li><a href="#la-notación-de-límite" id="toc-la-notación-de-límite" class="nav-link" data-scroll-target="#la-notación-de-límite">La notación de límite</a></li>
+  <li><a href="#la-definición-épsilon-delta" id="toc-la-definición-épsilon-delta" class="nav-link" data-scroll-target="#la-definición-épsilon-delta">La definición épsilon-delta</a></li>
+  <li><a href="#qué-significan-varepsilon-y-delta" id="toc-qué-significan-varepsilon-y-delta" class="nav-link" data-scroll-target="#qué-significan-varepsilon-y-delta">Qué significan <span class="math inline">\(\varepsilon\)</span> y <span class="math inline">\(\delta\)</span></a></li>
+  <li><a href="#el-orden-de-los-cuantificadores" id="toc-el-orden-de-los-cuantificadores" class="nav-link" data-scroll-target="#el-orden-de-los-cuantificadores">El orden de los cuantificadores</a></li>
+  <li><a href="#ejemplo-riguroso-una-función-lineal" id="toc-ejemplo-riguroso-una-función-lineal" class="nav-link" data-scroll-target="#ejemplo-riguroso-una-función-lineal">Ejemplo riguroso: una función lineal</a></li>
+  <li><a href="#el-valor-en-el-punto-puede-no-existir" id="toc-el-valor-en-el-punto-puede-no-existir" class="nav-link" data-scroll-target="#el-valor-en-el-punto-puede-no-existir">El valor en el punto puede no existir</a></li>
+  <li><a href="#el-límite-es-una-propiedad-local" id="toc-el-límite-es-una-propiedad-local" class="nav-link" data-scroll-target="#el-límite-es-una-propiedad-local">El límite es una propiedad local</a></li>
+  <li><a href="#el-límite-si-existe-es-único" id="toc-el-límite-si-existe-es-único" class="nav-link" data-scroll-target="#el-límite-si-existe-es-único">El límite, si existe, es único</a>
   <ul class="collapse">
-  <li><a href="#publicados" id="toc-publicados" class="nav-link" data-scroll-target="#publicados">Publicados</a></li>
-  <li><a href="#mapa-de-relaciones" id="toc-mapa-de-relaciones" class="nav-link" data-scroll-target="#mapa-de-relaciones">Mapa de relaciones</a></li>
+  <li><a href="#demostración" id="toc-demostración" class="nav-link" data-scroll-target="#demostración">Demostración</a></li>
   </ul></li>
+  <li><a href="#un-ejemplo-donde-el-límite-no-existe" id="toc-un-ejemplo-donde-el-límite-no-existe" class="nav-link" data-scroll-target="#un-ejemplo-donde-el-límite-no-existe">Un ejemplo donde el límite no existe</a></li>
+  <li><a href="#sustituir-no-es-la-definición-de-límite" id="toc-sustituir-no-es-la-definición-de-límite" class="nav-link" data-scroll-target="#sustituir-no-es-la-definición-de-límite">Sustituir no es la definición de límite</a></li>
+  <li><a href="#comprobación-conceptual" id="toc-comprobación-conceptual" class="nav-link" data-scroll-target="#comprobación-conceptual">Comprobación conceptual</a></li>
+  <li><a href="#relaciones" id="toc-relaciones" class="nav-link" data-scroll-target="#relaciones">Relaciones</a></li>
   </ul>
 </nav>
     </div>
@@ -457,15 +499,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conceptos</h1>
+<h1 class="title">Límite de una función en un punto</h1>
 </div>
 
+<div>
+  <div class="description">
+    Qué significa que una función se aproxime a un valor, cómo formalizarlo con la definición épsilon-delta y qué propiedades básicas tiene el límite.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -474,113 +527,519 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="conceptos" class="level1">
-<h1>Conceptos</h1>
-<p>Esta es una subsección de <a href="../teoria/index.html"><strong>Teoría</strong></a>.</p>
-<p>Reúne páginas autocontenidas dedicadas a ideas matemáticas concretas: definiciones, propiedades, demostraciones, ejemplos y conexiones que sirven de base para cursos, problemas y libros de Matemática Abierta.</p>
-<section id="publicados" class="level2">
-<h2 class="anchored" data-anchor-id="publicados">Publicados</h2>
+<p>El concepto de límite permite describir el comportamiento de una función <strong>cerca de un punto</strong> sin exigir que la función esté definida en ese punto ni que su valor allí coincida con el valor límite.</p>
+<p>Si</p>
+<p><span class="math display">\[
+f:D\to\mathbb R,
+\qquad D\subseteq\mathbb R,
+\]</span></p>
+<p>queremos dar sentido preciso a una afirmación como</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L.
+\]</span></p>
+<p>La idea informal es sencilla: podemos hacer que <span class="math inline">\(f(x)\)</span> esté tan cerca de <span class="math inline">\(L\)</span> como queramos si obligamos a <span class="math inline">\(x\)</span> a estar suficientemente cerca de <span class="math inline">\(a\)</span>, pero sin exigir <span class="math inline">\(x=a\)</span>.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Intuición</strong></p>
+<p>Un límite relaciona dos controles de proximidad:</p>
 <ul>
-<li><a href="../conceptos/desigualdades-cuadraticas-por-factorizacion.html">Desigualdades cuadráticas por factorización</a> — Cómo resolver desigualdades cuadráticas factorizables mediante el signo de sus factores lineales. (<code>MA-CON-0001</code>)</li>
-<li><a href="../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a> — Interpretar el valor absoluto como distancia y resolver desigualdades básicas asociadas. (<code>MA-CON-0002</code>)</li>
-<li><a href="../conceptos/dominio-de-funciones-reales-con-radicales.html">Dominio de funciones reales con radicales</a> — Cómo determinar el dominio real de expresiones con raíces pares, combinar restricciones y tratar radicales anidados. (<code>MA-CON-0003</code>)</li>
-<li><a href="../conceptos/intervalos-e-interseccion-de-conjuntos-reales.html">Intervalos e intersección de conjuntos reales</a> — Representar subconjuntos de la recta real mediante intervalos y combinar restricciones con intersección y unión. (<code>MA-CON-0004</code>)</li>
-<li><a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a> — Reglas para transformar desigualdades reales controlando signos, sentido del orden y equivalencia. (<code>MA-CON-0005</code>)</li>
-<li><a href="../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a> — Combinar subconjuntos de la recta real y traducir entre operaciones conjuntistas y conectores lógicos. (<code>MA-CON-0006</code>)</li>
-<li><a href="../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> — Definir funciones con precisión y distinguir dominio, codominio, imagen y preimagen. (<code>MA-CON-0007</code>)</li>
-<li><a href="../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a> — Encadenar funciones, controlar el dominio de la composición y entender identidad y asociatividad. (<code>MA-CON-0008</code>)</li>
-<li><a href="../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a> — Clasificar funciones según unicidad de antecedentes y cobertura del codominio. (<code>MA-CON-0009</code>)</li>
-<li><a href="../conceptos/funciones-inversas.html">Funciones inversas</a> — Entender cuándo una función puede invertirse y cómo la biyectividad, las fibras y la composición determinan su inversa. (<code>MA-CON-0010</code>)</li>
-<li><a href="../conceptos/limite-de-una-funcion-en-un-punto.html">Límite de una función en un punto</a> — Formalizar la aproximación de una función mediante la definición épsilon-delta y distinguir el límite del valor de la función. (<code>MA-CON-0011</code>)</li>
+<li>controlamos qué tan cerca debe estar <span class="math inline">\(f(x)\)</span> de <span class="math inline">\(L\)</span>;</li>
+<li>respondemos diciendo qué tan cerca debe estar <span class="math inline">\(x\)</span> de <span class="math inline">\(a\)</span>.</li>
+</ul>
+<p>La variable <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span> y, como consecuencia, los valores <span class="math inline">\(f(x)\)</span> quedan forzados a aproximarse a <span class="math inline">\(L\)</span>.</p>
+</div>
+<section id="acercarse-no-significa-llegar" class="level2">
+<h2 class="anchored" data-anchor-id="acercarse-no-significa-llegar">Acercarse no significa llegar</h2>
+<p>La expresión</p>
+<p><span class="math display">\[
+x\to a
+\]</span></p>
+<p>no significa que en algún momento debamos sustituir <span class="math inline">\(x=a\)</span>.</p>
+<p>El límite estudia lo que ocurre para puntos del dominio <strong>arbitrariamente próximos</strong> a <span class="math inline">\(a\)</span>.</p>
+<p>Por eso, en la definición aparecerá la condición</p>
+<p><span class="math display">\[
+0&lt;|x-a|.
+\]</span></p>
+<p>El signo estricto excluye precisamente el punto <span class="math inline">\(x=a\)</span>.</p>
+<p>Esto tendrá una consecuencia fundamental:</p>
+<blockquote class="blockquote">
+<p>cambiar solamente el valor <span class="math inline">\(f(a)\)</span> no cambia el límite de <span class="math inline">\(f\)</span> cuando <span class="math inline">\(x\to a\)</span>.</p>
+</blockquote>
+</section>
+<section id="punto-de-acumulación-del-dominio" class="level2">
+<h2 class="anchored" data-anchor-id="punto-de-acumulación-del-dominio">Punto de acumulación del dominio</h2>
+<p>Antes de definir el límite necesitamos asegurar que realmente existan puntos del dominio que puedan acercarse a <span class="math inline">\(a\)</span>.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Punto de acumulación</strong></p>
+<p>Sea <span class="math inline">\(D\subseteq\mathbb R\)</span>. Decimos que <span class="math inline">\(a\in\mathbb R\)</span> es un <strong>punto de acumulación de <span class="math inline">\(D\)</span></strong> si para todo <span class="math inline">\(\delta&gt;0\)</span> existe algún <span class="math inline">\(x\in D\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta.
+\]</span></p>
+<p>Es decir, cualquier entorno de <span class="math inline">\(a\)</span>, por pequeño que sea, contiene algún punto de <span class="math inline">\(D\)</span> distinto de <span class="math inline">\(a\)</span>.</p>
+</div>
+<p>No es necesario que</p>
+<p><span class="math display">\[
+a\in D.
+\]</span></p>
+<p>Lo único necesario para hablar del límite en <span class="math inline">\(a\)</span> es que haya puntos de <span class="math inline">\(D\)</span> distintos de <span class="math inline">\(a\)</span> arbitrariamente cercanos a él.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Por qué esta condición importa</strong></p>
+<p>Si <span class="math inline">\(a\)</span> fuera un punto aislado del dominio, podríamos elegir un <span class="math inline">\(\delta\)</span> tan pequeño que no hubiera ningún <span class="math inline">\(x\in D\)</span> con</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta.
+\]</span></p>
+<p>Entonces la condición de la definición de límite se cumpliría vacíamente para cualquier número <span class="math inline">\(L\)</span>, y el límite dejaría de ser único.</p>
+<p>Exigir que <span class="math inline">\(a\)</span> sea punto de acumulación evita esta degeneración.</p>
+</div>
+</section>
+<section id="la-notación-de-límite" class="level2">
+<h2 class="anchored" data-anchor-id="la-notación-de-límite">La notación de límite</h2>
+<p>Escribimos</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}f(x)=L
+}
+\]</span></p>
+<p>para expresar que los valores de <span class="math inline">\(f(x)\)</span> se aproximan a <span class="math inline">\(L\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a <span class="math inline">\(a\)</span> dentro del dominio de la función.</p>
+<p>La notación contiene tres elementos distintos:</p>
+<ul>
+<li><span class="math inline">\(x\to a\)</span>: comportamiento de la variable de entrada;</li>
+<li><span class="math inline">\(f(x)\)</span>: valores de la función;</li>
+<li><span class="math inline">\(L\)</span>: valor al que queremos que se aproximen esos valores.</li>
 </ul>
 </section>
-<section id="mapa-de-relaciones" class="level2">
-<h2 class="anchored" data-anchor-id="mapa-de-relaciones">Mapa de relaciones</h2>
-<p>Los identificadores estables permiten ver cómo se conectan los contenidos publicados sin depender de su ubicación o de su título.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Concepto</th>
-<th>Prerrequisitos</th>
-<th>Relacionado con</th>
-<th>Problemas que lo usan</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="../conceptos/desigualdades-cuadraticas-por-factorizacion.html">Desigualdades cuadráticas por factorización</a> (<code>MA-CON-0001</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a> (<code>MA-CON-0002</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0006</code>, <code>MA-CON-0011</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>)</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/dominio-de-funciones-reales-con-radicales.html">Dominio de funciones reales con radicales</a> (<code>MA-CON-0003</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0002</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0006</code>, <code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0011</code>, <code>MA-PRB-0001</code></td>
-<td><a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/intervalos-e-interseccion-de-conjuntos-reales.html">Intervalos e intersección de conjuntos reales</a> (<code>MA-CON-0004</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0005</code>, <code>MA-CON-0006</code>, <code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0011</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a> (<code>MA-CON-0005</code>)</td>
-<td>—</td>
-<td><code>MA-CON-0001</code>, <code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0006</code>, <code>MA-CON-0011</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a> (<code>MA-CON-0006</code>)</td>
-<td><code>MA-CON-0004</code></td>
-<td><code>MA-CON-0002</code>, <code>MA-CON-0003</code>, <code>MA-CON-0005</code>, <code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0009</code>, <code>MA-CON-0010</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> (<code>MA-CON-0007</code>)</td>
-<td><code>MA-CON-0004</code>, <code>MA-CON-0006</code></td>
-<td><code>MA-CON-0003</code>, <code>MA-CON-0008</code>, <code>MA-CON-0009</code>, <code>MA-CON-0010</code>, <code>MA-CON-0011</code>, <code>MA-PRB-0001</code>, <code>MA-PRB-0002</code></td>
-<td><a href="../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a> (<code>MA-PRB-0001</code>); <a href="../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a> (<code>MA-PRB-0002</code>)</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a> (<code>MA-CON-0008</code>)</td>
-<td><code>MA-CON-0007</code></td>
-<td><code>MA-CON-0003</code>, <code>MA-CON-0004</code>, <code>MA-CON-0006</code>, <code>MA-CON-0009</code>, <code>MA-CON-0010</code></td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a> (<code>MA-CON-0009</code>)</td>
-<td><code>MA-CON-0007</code>, <code>MA-CON-0008</code></td>
-<td><code>MA-CON-0006</code>, <code>MA-CON-0010</code></td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td><a href="../conceptos/funciones-inversas.html">Funciones inversas</a> (<code>MA-CON-0010</code>)</td>
-<td><code>MA-CON-0007</code>, <code>MA-CON-0008</code>, <code>MA-CON-0009</code></td>
-<td><code>MA-CON-0006</code>, <code>MA-CON-0011</code></td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><a href="../conceptos/limite-de-una-funcion-en-un-punto.html">Límite de una función en un punto</a> (<code>MA-CON-0011</code>)</td>
-<td><code>MA-CON-0002</code>, <code>MA-CON-0004</code>, <code>MA-CON-0005</code>, <code>MA-CON-0007</code></td>
-<td><code>MA-CON-0003</code>, <code>MA-CON-0010</code></td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
+<section id="la-definición-épsilon-delta" class="level2">
+<h2 class="anchored" data-anchor-id="la-definición-épsilon-delta">La definición épsilon-delta</h2>
+<p>La intuición de proximidad se vuelve rigurosa mediante dos números positivos:</p>
+<ul>
+<li><span class="math inline">\(\varepsilon\)</span> controla la distancia permitida entre <span class="math inline">\(f(x)\)</span> y <span class="math inline">\(L\)</span>;</li>
+<li><span class="math inline">\(\delta\)</span> controla la distancia permitida entre <span class="math inline">\(x\)</span> y <span class="math inline">\(a\)</span>.</li>
+</ul>
+<div class="ma-block ma-definicion">
+<p><strong>Definición de límite</strong></p>
+<p>Sea</p>
+<p><span class="math display">\[
+f:D\to\mathbb R,
+\]</span></p>
+<p>y sea <span class="math inline">\(a\)</span> un punto de acumulación de <span class="math inline">\(D\)</span>. Decimos que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>si para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe un <span class="math inline">\(\delta&gt;0\)</span> tal que, para todo <span class="math inline">\(x\in D\)</span>,</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-L|&lt;\varepsilon.
+\]</span></p>
+</div>
+<p>En símbolos,</p>
+<p><span class="math display">\[
+\boxed{
+\forall \varepsilon&gt;0\;\exists \delta&gt;0\;\forall x\in D:
+\quad
+0&lt;|x-a|&lt;\delta
+\Longrightarrow
+|f(x)-L|&lt;\varepsilon
+}
+\]</span></p>
+<p>Ésta es la definición central.</p>
+</section>
+<section id="qué-significan-varepsilon-y-delta" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significan-varepsilon-y-delta">Qué significan <span class="math inline">\(\varepsilon\)</span> y <span class="math inline">\(\delta\)</span></h2>
+<p>La desigualdad</p>
+<p><span class="math display">\[
+|f(x)-L|&lt;\varepsilon
+\]</span></p>
+<p>equivale a</p>
+<p><span class="math display">\[
+L-\varepsilon&lt;f(x)&lt;L+\varepsilon.
+\]</span></p>
+<p>Así, queremos que los valores de la función entren en el intervalo</p>
+<p><span class="math display">\[
+(L-\varepsilon,L+\varepsilon).
+\]</span></p>
+<p>Por otra parte,</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\]</span></p>
+<p>equivale a</p>
+<p><span class="math display">\[
+a-\delta&lt;x&lt;a+\delta.
+\]</span></p>
+<p>Como además exigimos <span class="math inline">\(x\ne a\)</span>, estamos considerando el <strong>entorno perforado</strong></p>
+<p><span class="math display">\[
+(a-\delta,a+\delta)\setminus\{a\}.
+\]</span></p>
+<p>La definición puede entonces leerse así:</p>
+<blockquote class="blockquote">
+<p>dado cualquier intervalo de tolerancia alrededor de <span class="math inline">\(L\)</span>, por estrecho que sea, podemos encontrar un entorno perforado suficientemente pequeño alrededor de <span class="math inline">\(a\)</span> cuyos puntos del dominio se envían dentro de ese intervalo alrededor de <span class="math inline">\(L\)</span>.</p>
+</blockquote>
+<p>En forma conjuntista:</p>
+<p><span class="math display">\[
+x\in D\cap\big((a-\delta,a+\delta)\setminus\{a\}\big)
+\quad\Longrightarrow\quad
+f(x)\in(L-\varepsilon,L+\varepsilon).
+\]</span></p>
+</section>
+<section id="el-orden-de-los-cuantificadores" class="level2">
+<h2 class="anchored" data-anchor-id="el-orden-de-los-cuantificadores">El orden de los cuantificadores</h2>
+<p>Una parte esencial de la definición es el orden</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\;\exists\delta&gt;0.
+\]</span></p>
+<p>Primero se fija una precisión de salida <span class="math inline">\(\varepsilon\)</span>. Después debemos encontrar una precisión de entrada <span class="math inline">\(\delta\)</span> que garantice esa exigencia.</p>
+<p>El número <span class="math inline">\(\delta\)</span> puede depender de <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Lo que <strong>no</strong> puede ocurrir es escoger un <span class="math inline">\(\delta\)</span> diferente para cada punto <span class="math inline">\(x\)</span> una vez que <span class="math inline">\(\varepsilon\)</span> ya ha sido fijado. El mismo <span class="math inline">\(\delta\)</span> debe funcionar para todos los puntos del dominio que satisfagan</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta.
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente</strong></p>
+<p>No basta demostrar la condición para un solo valor de <span class="math inline">\(\varepsilon\)</span>, como <span class="math inline">\(\varepsilon=0.1\)</span>.</p>
+<p>La definición exige que podamos responder a <strong>todo</strong> <span class="math inline">\(\varepsilon&gt;0\)</span>, por pequeño que sea.</p>
+</div>
+</section>
+<section id="ejemplo-riguroso-una-función-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-riguroso-una-función-lineal">Ejemplo riguroso: una función lineal</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[
+f:\mathbb R\to\mathbb R,
+\qquad
+f(x)=3x+1.
+\]</span></p>
+<p>Vamos a demostrar directamente que</p>
+<p><span class="math display">\[
+\lim_{x\to2}(3x+1)=7.
+\]</span></p>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>. Queremos conseguir</p>
+<p><span class="math display">\[
+|f(x)-7|&lt;\varepsilon.
+\]</span></p>
+<p>Calculamos:</p>
+<p><span class="math display">\[
+|f(x)-7|
+=|3x+1-7|
+=|3x-6|
+=3|x-2|.
+\]</span></p>
+<p>Por tanto, basta imponer</p>
+<p><span class="math display">\[
+3|x-2|&lt;\varepsilon,
+\]</span></p>
+<p>o equivalentemente</p>
+<p><span class="math display">\[
+|x-2|&lt;\frac{\varepsilon}{3}.
+\]</span></p>
+<p>Elegimos entonces</p>
+<p><span class="math display">\[
+\boxed{\delta=\frac{\varepsilon}{3}}.
+\]</span></p>
+<p>Si</p>
+<p><span class="math display">\[
+0&lt;|x-2|&lt;\delta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+|f(x)-7|
+=3|x-2|
+&lt;3\delta
+=\varepsilon.
+\]</span></p>
+<p>Así queda demostrada la afirmación.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Patrón de una demostración épsilon-delta</strong></p>
+<ol type="1">
+<li>Parte del objetivo <span class="math display">\[
+|f(x)-L|&lt;\varepsilon.
+\]</span></li>
+<li>Relaciona esa distancia con <span class="math inline">\(|x-a|\)</span>.</li>
+<li>Determina una elección de <span class="math inline">\(\delta\)</span> en función de <span class="math inline">\(\varepsilon\)</span>.</li>
+<li>Vuelve al comienzo y escribe la demostración en el orden lógico correcto: dado <span class="math inline">\(\varepsilon\)</span>, eliges <span class="math inline">\(\delta\)</span> y verificas la implicación.</li>
+</ol>
+</div>
+</section>
+<section id="el-valor-en-el-punto-puede-no-existir" class="level2">
+<h2 class="anchored" data-anchor-id="el-valor-en-el-punto-puede-no-existir">El valor en el punto puede no existir</h2>
+<p>Consideremos la función</p>
+<p><span class="math display">\[
+g:\mathbb R\setminus\{1\}\to\mathbb R,
+\qquad
+g(x)=\frac{x^2-1}{x-1}.
+\]</span></p>
+<p>La función no está definida en <span class="math inline">\(x=1\)</span>. Sin embargo, para todo <span class="math inline">\(x\ne1\)</span>,</p>
+<p><span class="math display">\[
+g(x)
+=\frac{(x-1)(x+1)}{x-1}
+=x+1.
+\]</span></p>
+<p>Por tanto, cerca de <span class="math inline">\(1\)</span> pero fuera de <span class="math inline">\(1\)</span>, la función se comporta exactamente como <span class="math inline">\(x+1\)</span>.</p>
+<p>Vamos a demostrar que</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to1}\frac{x^2-1}{x-1}=2.
+}
+\]</span></p>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>. Elegimos</p>
+<p><span class="math display">\[
+\delta=\varepsilon.
+\]</span></p>
+<p>Si</p>
+<p><span class="math display">\[
+0&lt;|x-1|&lt;\delta,
+\]</span></p>
+<p>entonces <span class="math inline">\(x\ne1\)</span> y</p>
+<p><span class="math display">\[
+\left|
+\frac{x^2-1}{x-1}-2
+\right|
+=|x+1-2|
+=|x-1|
+&lt;\delta
+=\varepsilon.
+\]</span></p>
+<p>El límite existe aunque <span class="math inline">\(g(1)\)</span> no exista.</p>
+<div class="ma-block ma-observacion">
+<p><strong>El límite no es el valor de la función</strong></p>
+<p>Las expresiones</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+f(a)
+\]</span></p>
+<p>son conceptualmente distintas.</p>
+<p>Puede ocurrir que:</p>
+<ul>
+<li>ambas existan y sean iguales;</li>
+<li>ambas existan pero sean diferentes;</li>
+<li>el límite exista aunque <span class="math inline">\(f(a)\)</span> no esté definido;</li>
+<li><span class="math inline">\(f(a)\)</span> exista pero el límite no exista.</li>
+</ul>
+<p>La coincidencia entre límite y valor de la función será precisamente una parte central de la noción de continuidad.</p>
+</div>
+</section>
+<section id="el-límite-es-una-propiedad-local" class="level2">
+<h2 class="anchored" data-anchor-id="el-límite-es-una-propiedad-local">El límite es una propiedad local</h2>
+<p>Para determinar el límite en <span class="math inline">\(a\)</span> sólo importa lo que la función hace suficientemente cerca de <span class="math inline">\(a\)</span>.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Principio de localidad</strong></p>
+<p>Sean <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> funciones cuyos dominios tienen a <span class="math inline">\(a\)</span> como punto de acumulación. Supongamos que existe un <span class="math inline">\(r&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+f(x)=g(x)
+\]</span></p>
+<p>para todos los puntos de sus dominios comunes que satisfacen</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;r.
+\]</span></p>
+<p>Si una de las dos funciones tiene límite <span class="math inline">\(L\)</span> en <span class="math inline">\(a\)</span>, entonces la otra tiene el mismo límite, siempre que ambas se consideren sobre puntos del dominio arbitrariamente próximos a <span class="math inline">\(a\)</span> donde esa igualdad sea aplicable.</p>
+</div>
+<p>La idea es inmediata: en un entorno perforado suficientemente pequeño ambas funciones tienen exactamente los mismos valores, por lo que cualquier control épsilon-delta válido para una sirve también para la otra tras reducir <span class="math inline">\(\delta\)</span>, si es necesario, para asegurar <span class="math inline">\(\delta\le r\)</span>.</p>
+<p>El ejemplo anterior usa justamente este principio: cerca de <span class="math inline">\(1\)</span>,</p>
+<p><span class="math display">\[
+\frac{x^2-1}{x-1}=x+1
+\]</span></p>
+<p>para <span class="math inline">\(x\ne1\)</span>.</p>
+</section>
+<section id="el-límite-si-existe-es-único" class="level2">
+<h2 class="anchored" data-anchor-id="el-límite-si-existe-es-único">El límite, si existe, es único</h2>
+<p>Una misma función no puede aproximarse a dos números distintos en el sentido de la definición épsilon-delta.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema de unicidad del límite</strong></p>
+<p>Sea <span class="math inline">\(a\)</span> un punto de acumulación del dominio de <span class="math inline">\(f\)</span>. Si</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>y también</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=M,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{L=M}.
+\]</span></p>
+</div>
+<section id="demostración" class="level3">
+<h3 class="anchored" data-anchor-id="demostración">Demostración</h3>
+<p>Supongamos, buscando una contradicción, que</p>
+<p><span class="math display">\[
+L\ne M.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+d=|L-M|&gt;0.
+\]</span></p>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\varepsilon=\frac d3.
+\]</span></p>
+<p>Como <span class="math inline">\(f(x)\to L\)</span>, existe <span class="math inline">\(\delta_1&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta_1
+\quad\Longrightarrow\quad
+|f(x)-L|&lt;\frac d3.
+\]</span></p>
+<p>Como también <span class="math inline">\(f(x)\to M\)</span>, existe <span class="math inline">\(\delta_2&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta_2
+\quad\Longrightarrow\quad
+|f(x)-M|&lt;\frac d3.
+\]</span></p>
+<p>Sea</p>
+<p><span class="math display">\[
+\delta=\min\{\delta_1,\delta_2\}.
+\]</span></p>
+<p>Como <span class="math inline">\(a\)</span> es punto de acumulación del dominio, existe algún <span class="math inline">\(x\)</span> del dominio tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta.
+\]</span></p>
+<p>Para ese <span class="math inline">\(x\)</span>, por la desigualdad triangular,</p>
+<p><span class="math display">\[
+|L-M|
+\le |L-f(x)|+|f(x)-M|
+&lt;\frac d3+\frac d3
+=\frac{2d}{3}.
+\]</span></p>
+<p>Pero <span class="math inline">\(|L-M|=d\)</span>, así que obtendríamos</p>
+<p><span class="math display">\[
+d&lt;\frac{2d}{3},
+\]</span></p>
+<p>lo cual es imposible porque <span class="math inline">\(d&gt;0\)</span>.</p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+L=M.
+\]</span></p>
+</section>
+</section>
+<section id="un-ejemplo-donde-el-límite-no-existe" class="level2">
+<h2 class="anchored" data-anchor-id="un-ejemplo-donde-el-límite-no-existe">Un ejemplo donde el límite no existe</h2>
+<p>Definamos</p>
+<p><span class="math display">\[
+s:\mathbb R\setminus\{0\}\to\mathbb R
+\]</span></p>
+<p>por</p>
+<p><span class="math display">\[
+s(x)=
+\begin{cases}
+-1, &amp; x&lt;0,\\
+1, &amp; x&gt;0.
+\end{cases}
+\]</span></p>
+<p>Intuitivamente, al acercarnos a <span class="math inline">\(0\)</span> por valores negativos obtenemos siempre <span class="math inline">\(-1\)</span>, mientras que al acercarnos por valores positivos obtenemos siempre <span class="math inline">\(1\)</span>.</p>
+<p>Podemos demostrar directamente que no existe un número <span class="math inline">\(L\)</span> tal que</p>
+<p><span class="math display">\[
+\lim_{x\to0}s(x)=L.
+\]</span></p>
+<p>Supongamos que sí existiera. Tomemos</p>
+<p><span class="math display">\[
+\varepsilon=\frac12.
+\]</span></p>
+<p>Entonces existiría un <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x|&lt;\delta
+\quad\Longrightarrow\quad
+|s(x)-L|&lt;\frac12.
+\]</span></p>
+<p>Consideremos los dos puntos</p>
+<p><span class="math display">\[
+x_+=\frac\delta2,
+\qquad
+x_-=-\frac\delta2.
+\]</span></p>
+<p>Ambos satisfacen</p>
+<p><span class="math display">\[
+0&lt;|x_\pm|&lt;\delta.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+|1-L|&lt;\frac12
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+|-1-L|&lt;\frac12.
+\]</span></p>
+<p>Pero entonces, usando la desigualdad triangular,</p>
+<p><span class="math display">\[
+2
+=|1-(-1)|
+\le |1-L|+|L+1|
+&lt;1,
+\]</span></p>
+<p>una contradicción.</p>
+<p>Luego el límite bilateral en <span class="math inline">\(0\)</span> no existe.</p>
+<p>Este ejemplo prepara la necesidad de distinguir posteriormente entre aproximación por la izquierda y aproximación por la derecha.</p>
+</section>
+<section id="sustituir-no-es-la-definición-de-límite" class="level2">
+<h2 class="anchored" data-anchor-id="sustituir-no-es-la-definición-de-límite">Sustituir no es la definición de límite</h2>
+<p>En ejemplos sencillos puede parecer que basta reemplazar <span class="math inline">\(x\)</span> por <span class="math inline">\(a\)</span> en la fórmula de la función.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+\lim_{x\to2}(3x+1)=7
+\]</span></p>
+<p>coincide con</p>
+<p><span class="math display">\[
+f(2)=7.
+\]</span></p>
+<p>Pero el ejemplo</p>
+<p><span class="math display">\[
+\frac{x^2-1}{x-1}
+\]</span></p>
+<p>muestra que un límite puede existir incluso cuando no podemos sustituir directamente <span class="math inline">\(x=a\)</span>.</p>
+<p>Más adelante demostraremos reglas que permiten calcular muchos límites sin repetir una prueba épsilon-delta desde cero. Esas reglas serán consecuencias de la teoría, no sustitutos de la definición.</p>
+<div class="ma-block ma-error">
+<p><strong>Errores frecuentes</strong></p>
+<p>Al trabajar con límites conviene evitar estas confusiones:</p>
+<ul>
+<li>identificar automáticamente <span class="math inline">\(\lim_{x\to a}f(x)\)</span> con <span class="math inline">\(f(a)\)</span>;</li>
+<li>olvidar que la condición usa <span class="math inline">\(0&lt;|x-a|\)</span>, no sólo <span class="math inline">\(|x-a|\)</span>;</li>
+<li>elegir <span class="math inline">\(\delta\)</span> dependiendo del punto <span class="math inline">\(x\)</span> en vez de hacerlo depender de <span class="math inline">\(\varepsilon\)</span>;</li>
+<li>verificar un único valor de <span class="math inline">\(\varepsilon\)</span>;</li>
+<li>creer que una gráfica aproximada constituye por sí sola una demostración rigurosa;</li>
+<li>olvidar que <span class="math inline">\(a\)</span> debe ser un punto de acumulación del dominio para la definición estándar usada aquí.</li>
+</ul>
+</div>
+</section>
+<section id="comprobación-conceptual" class="level2">
+<h2 class="anchored" data-anchor-id="comprobación-conceptual">Comprobación conceptual</h2>
+<div class="ma-block ma-comprobacion">
+<p><strong>Cómo leer una afirmación de límite</strong></p>
+<p>Ante</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L,
+\]</span></p>
+<p>comprueba mentalmente:</p>
+<ol type="1">
+<li>¿hay puntos del dominio distintos de <span class="math inline">\(a\)</span> arbitrariamente cerca de <span class="math inline">\(a\)</span>?</li>
+<li>¿qué significa <span class="math inline">\(|f(x)-L|&lt;\varepsilon\)</span> en términos de proximidad?</li>
+<li>¿qué condición sobre <span class="math inline">\(|x-a|\)</span> garantiza esa proximidad?</li>
+<li>¿la elección de <span class="math inline">\(\delta\)</span> funciona para todos los puntos pertinentes del dominio?</li>
+<li>¿estoy usando accidentalmente el valor <span class="math inline">\(f(a)\)</span>, que la definición no necesita?</li>
+</ol>
+</div>
+<p>La estructura esencial puede condensarse así:</p>
+<p><span class="math display">\[
+\boxed{
+\text{tolerancia en la salida}
+\xrightarrow{\ \varepsilon\ }
+\text{elección de }\delta
+\xrightarrow{}
+\text{control de la entrada}
+\Longrightarrow
+\text{control de }f(x)
+}
+\]</span></p>
+</section>
+<section id="relaciones" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones">Relaciones</h2>
+<ul>
+<li><strong>Prerrequisitos:</strong> <a href="../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a> (<code>MA-CON-0002</code>); <a href="../conceptos/intervalos-e-interseccion-de-conjuntos-reales.html">Intervalos e intersección de conjuntos reales</a> (<code>MA-CON-0004</code>); <a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a> (<code>MA-CON-0005</code>); <a href="../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> (<code>MA-CON-0007</code>).</li>
+<li><strong>Contenidos relacionados:</strong> <a href="../conceptos/dominio-de-funciones-reales-con-radicales.html">Dominio de funciones reales con radicales</a> (<code>MA-CON-0003</code>); <a href="../conceptos/funciones-inversas.html">Funciones inversas</a> (<code>MA-CON-0010</code>).</li>
+<li><strong>Siguiente paso natural:</strong> límites laterales y criterio para la existencia del límite bilateral.</li>
+</ul>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
