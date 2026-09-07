@@ -77,7 +77,7 @@ Esta diferencia con los límites es fundamental: en `MA-CON-0011` el punto $a$ p
 ::: {.ma-block .ma-error}
 **Primer control**
 
-Si $a\notin D$, no decimos que $f$ sea continua o discontinua **en $a$ como punto de su dominio**: simplemente $f(a)$ no existe.
+Si $a\notin D$, $f$ no tiene un valor $f(a)$ y no hablamos de continuidad de $f$ **en $a$ como punto de su dominio**.
 
 Sí puede tener sentido estudiar
 
@@ -85,7 +85,7 @@ $$
 \lim_{x\to a}f(x),
 $$
 
-y ese límite puede permitir construir después una extensión continua.
+y ese límite puede permitir construir una extensión continua.
 :::
 
 ## Definición épsilon-delta
@@ -143,60 +143,50 @@ $$
 |x-a|<\delta.
 $$
 
-Esto incluye el caso $x=a$, pero allí la desigualdad de salida es automática:
+Esto incluye $x=a$, pero allí la desigualdad de salida es automática:
 
 $$
 |f(a)-f(a)|=0<\varepsilon.
 $$
 
-Por tanto, también podríamos escribir la condición sólo para $x\ne a$ y obtener una formulación equivalente cuando $a$ es punto de acumulación del dominio. La forma anterior es más natural porque expresa directamente el control de $f(x)$ alrededor de $f(a)$.
-
 ## Interpretación mediante intervalos
 
-La condición
+Las condiciones
 
 $$
 |x-a|<\delta
 $$
 
-equivale a
-
-$$
-a-\delta<x<a+\delta.
-$$
-
-Y
+y
 
 $$
 |f(x)-f(a)|<\varepsilon
 $$
 
-equivale a
+equivalen respectivamente a
+
+$$
+a-\delta<x<a+\delta
+$$
+
+y
 
 $$
 f(a)-\varepsilon<f(x)<f(a)+\varepsilon.
 $$
 
-Así, la continuidad afirma que para cada intervalo vertical
-
-$$
-(f(a)-\varepsilon,f(a)+\varepsilon)
-$$
-
-podemos encontrar un intervalo horizontal alrededor de $a$ cuya parte perteneciente al dominio sea enviada completamente dentro de ese intervalo vertical.
+Así, para cada intervalo vertical alrededor de $f(a)$ podemos encontrar un intervalo horizontal alrededor de $a$ cuya **parte perteneciente al dominio** es enviada completamente dentro del intervalo vertical.
 
 ::: {.ma-block .ma-intuicion}
-**Lectura geométrica**
+**Continuidad relativa al dominio**
 
-No se exige que toda la recta alrededor de $a$ pertenezca al dominio.
-
-Sólo controlamos los puntos
+No se exige que toda la recta alrededor de $a$ pertenezca al dominio. Sólo se controlan los puntos
 
 $$
 x\in D.
 $$
 
-Por eso la continuidad es siempre relativa al dominio real de la función.
+Esta precisión será esencial en extremos y puntos aislados.
 :::
 
 ## Relación fundamental entre continuidad y límite
@@ -214,10 +204,12 @@ $$
 
 sea $a\in D$ y supongamos que $a$ es punto de acumulación de $D$.
 
-Entonces $f$ es continua en $a$ si y sólo si
+Entonces
 
 $$
 \boxed{
+f\text{ es continua en }a
+\iff
 \lim_{x\to a}f(x)=f(a).
 }
 $$
@@ -225,23 +217,23 @@ $$
 
 ### Demostración: continuidad implica límite
 
-Supongamos que $f$ es continua en $a$.
-
-Dado $\varepsilon>0$, existe $\delta>0$ tal que para todo $x\in D$,
+Si $f$ es continua en $a$, dado $\varepsilon>0$ existe $\delta>0$ tal que
 
 $$
 |x-a|<\delta
 \quad\Longrightarrow\quad
-|f(x)-f(a)|<\varepsilon.
+|f(x)-f(a)|<\varepsilon
 $$
 
-En particular, la misma implicación vale para los puntos que satisfacen además
+para todo $x\in D$.
+
+En particular, la implicación vale cuando además $x\ne a$, es decir, cuando
 
 $$
 0<|x-a|<\delta.
 $$
 
-Ésta es exactamente la definición de
+Por definición,
 
 $$
 \lim_{x\to a}f(x)=f(a).
@@ -249,7 +241,7 @@ $$
 
 ### Demostración: límite igual al valor implica continuidad
 
-Supongamos ahora que
+Supongamos
 
 $$
 \lim_{x\to a}f(x)=f(a).
@@ -263,43 +255,24 @@ $$
 |f(x)-f(a)|<\varepsilon.
 $$
 
-Si $x\in D$ satisface $|x-a|<\delta$, hay dos casos.
-
-Si $x\ne a$, aplicamos la condición del límite. Si $x=a$, entonces
+Si $x\in D$ satisface $|x-a|<\delta$, entonces o bien $x\ne a$ y aplicamos la condición del límite, o bien $x=a$ y
 
 $$
-|f(x)-f(a)|=0<\varepsilon.
+|f(a)-f(a)|=0<\varepsilon.
 $$
 
-Por tanto,
-
-$$
-|x-a|<\delta
-\quad\Longrightarrow\quad
-|f(x)-f(a)|<\varepsilon,
-$$
-
-y $f$ es continua en $a$.
+Por tanto $f$ es continua en $a$.
 
 ## Las tres condiciones prácticas
 
-Cuando $a$ es punto de acumulación del dominio, el criterio anterior puede descomponerse en tres preguntas:
-
-1. ¿Está definido $f(a)$?
-2. ¿Existe
-   $$
-   \lim_{x\to a}f(x)?
-   $$
-3. ¿Coinciden ambos valores?
-
-Es decir,
+Cuando $a$ es punto de acumulación del dominio:
 
 $$
 \boxed{
 \text{continuidad en }a
 \iff
 \begin{cases}
-f(a)\text{ existe},\\
+f(a)\text{ está definido},\\
 \lim_{x\to a}f(x)\text{ existe},\\
 \lim_{x\to a}f(x)=f(a).
 \end{cases}
@@ -307,23 +280,21 @@ f(a)\text{ existe},\\
 $$
 
 ::: {.ma-block .ma-error}
-**Este criterio tiene una hipótesis**
+**La hipótesis de acumulación importa**
 
-La equivalencia anterior usa que $a$ es punto de acumulación del dominio.
-
-Si $a$ es un punto aislado de $D$, la continuidad sigue teniendo sentido, pero el límite ordinario de `MA-CON-0011` no se define allí porque no hay puntos del dominio distintos de $a$ arbitrariamente cerca.
+Si $a$ es un punto aislado de $D$, la continuidad sigue teniendo sentido, pero el límite ordinario de `MA-CON-0011` no está definido allí, porque no existen puntos de $D$ distintos de $a$ arbitrariamente cerca.
 :::
 
 ## Puntos aislados: continuidad automática
 
-Sea $a\in D$ un punto **aislado** del dominio. Esto significa que existe algún $r>0$ tal que
+Sea $a\in D$ un punto **aislado**, es decir, existe $r>0$ tal que
 
 $$
 D\cap(a-r,a+r)=\{a\}.
 $$
 
 ::: {.ma-block .ma-definicion}
-**Proposición — todo punto aislado es punto de continuidad**
+**Proposición — continuidad en puntos aislados**
 
 Toda función
 
@@ -336,63 +307,31 @@ es continua en cada punto aislado $a\in D$.
 
 ### Demostración
 
-Sea $\varepsilon>0$.
-
-Como $a$ es aislado, existe $r>0$ tal que el único punto de $D$ con
-
-$$
-|x-a|<r
-$$
-
-es $x=a$.
-
-Elegimos
+Sea $\varepsilon>0$. Elegimos un $r>0$ que aísle a $a$ y tomamos
 
 $$
 \delta=r.
 $$
 
-Entonces, para todo $x\in D$ con $|x-a|<\delta$, necesariamente $x=a$, y por tanto
+Si $x\in D$ y $|x-a|<\delta$, necesariamente $x=a$. Luego
 
 $$
 |f(x)-f(a)|=0<\varepsilon.
 $$
 
-Así $f$ es continua en $a$.
-
 ::: {.ma-block .ma-observacion}
-**Una consecuencia importante**
-
-La continuidad no significa siempre que haya una curva que podamos seguir a ambos lados del punto.
-
-Es una propiedad formulada **respecto del dominio**. En un punto aislado no existen otros puntos cercanos que puedan violar la condición, y por eso la continuidad es automática.
+La continuidad es una propiedad relativa al dominio. En un punto aislado no hay otros puntos suficientemente cercanos que puedan violar la condición.
 :::
 
 ## Ejemplo épsilon-delta: una función lineal
 
-Consideremos
+Sea
 
 $$
-f:\mathbb R\to\mathbb R,
-\qquad
 f(x)=3x-2.
 $$
 
-Demostremos que $f$ es continua en un punto arbitrario $a\in\mathbb R$.
-
-Tenemos
-
-$$
-f(a)=3a-2.
-$$
-
-Queremos conseguir
-
-$$
-|f(x)-f(a)|<\varepsilon.
-$$
-
-Pero
+Para cualquier $a\in\mathbb R$,
 
 $$
 |f(x)-f(a)|
@@ -400,33 +339,18 @@ $$
 =3|x-a|.
 $$
 
-Por tanto basta imponer
+Dado $\varepsilon>0$, elegimos
 
 $$
-3|x-a|<\varepsilon,
+\boxed{\delta=\frac{\varepsilon}{3}}.
 $$
 
-o sea
+Entonces
 
 $$
-|x-a|<\frac{\varepsilon}{3}.
-$$
-
-Elegimos
-
-$$
-\boxed{
-\delta=\frac{\varepsilon}{3}.
-}
-$$
-
-Si $|x-a|<\delta$, entonces
-
-$$
-|f(x)-f(a)|
-=3|x-a|
-<3\delta
-=\varepsilon.
+|x-a|<\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|<3\delta=\varepsilon.
 $$
 
 Así $f$ es continua en todo $a\in\mathbb R$.
@@ -437,37 +361,24 @@ Consideremos
 
 $$
 r:[0,\infty)\to\mathbb R,
-\qquad
-r(x)=\sqrt{x}.
+\qquad r(x)=\sqrt{x}.
 $$
 
-Queremos estudiar la continuidad en $0$.
+En $0$ sólo hay puntos del dominio por la derecha. Sin embargo, la definición de continuidad cuantifica únicamente sobre $x\in[0,\infty)$.
 
-No hay puntos del dominio a la izquierda de $0$. Eso no impide la continuidad, porque la definición sólo cuantifica sobre
-
-$$
-x\in[0,\infty).
-$$
-
-Tenemos
+Como
 
 $$
-r(0)=0.
+r(0)=0,
 $$
 
-Sea $\varepsilon>0$ y elijamos
+sea $\varepsilon>0$ y elijamos
 
 $$
 \delta=\varepsilon^2.
 $$
 
-Si $x\in[0,\infty)$ y
-
-$$
-|x|<\delta,
-$$
-
-entonces
+Si $x\in[0,\infty)$ y $|x|<\delta$, entonces
 
 $$
 0\le x<\varepsilon^2,
@@ -476,35 +387,22 @@ $$
 y por tanto
 
 $$
-|r(x)-r(0)|
-=\sqrt{x}
-<\varepsilon.
+|r(x)-r(0)|=\sqrt{x}<\varepsilon.
 $$
 
 Luego
 
 $$
-\boxed{
-\sqrt{x}\text{ es continua en }0
-\text{ como función definida en }[0,\infty).
-}
+\boxed{\sqrt{x}\text{ es continua en }0\text{ en su dominio }[0,\infty).}
 $$
 
-Esto concuerda con `MA-CON-0012`: en un extremo derecho del dominio, cuando cerca del punto sólo existen puntos del dominio por la derecha, la condición de continuidad se controla precisamente mediante ese lado.
+Esto concuerda con `MA-CON-0012`: cuando localmente el dominio sólo se aproxima por un lado, sólo ese lado interviene.
 
 ## Qué puede fallar
-
-En un punto de acumulación del dominio, la continuidad puede fallar de maneras distintas.
 
 ### El límite existe pero no coincide con el valor
 
 Definamos
-
-$$
-f:\mathbb R\to\mathbb R
-$$
-
-por
 
 $$
 f(x)=
@@ -517,38 +415,22 @@ $$
 Para $x\ne1$,
 
 $$
-\frac{x^2-1}{x-1}=x+1.
+\frac{x^2-1}{x-1}=x+1,
 $$
 
-Por tanto,
+así que
 
 $$
 \lim_{x\to1}f(x)=2,
-$$
-
-pero
-
-$$
+\qquad
 f(1)=5.
 $$
 
-Así
-
-$$
-\boxed{
-f\text{ no es continua en }1.
-}
-$$
-
-La discrepancia es exactamente
-
-$$
-\lim_{x\to1}f(x)\ne f(1).
-$$
+Por tanto $f$ no es continua en $1$.
 
 ### El límite no existe
 
-Consideremos
+Sea
 
 $$
 g(x)=
@@ -559,27 +441,15 @@ g(x)=
 \end{cases}
 $$
 
-Tenemos
+Entonces
 
 $$
-\lim_{x\to0^-}g(x)=-1
-$$
-
-y
-
-$$
+\lim_{x\to0^-}g(x)=-1,
+\qquad
 \lim_{x\to0^+}g(x)=1.
 $$
 
-Por `MA-CON-0012`, el límite bilateral no existe. Por tanto $g$ no puede ser continua en $0$, independientemente del valor que asignemos a $g(0)$.
-
-::: {.ma-block .ma-observacion}
-**Cambiar sólo el valor en el punto no siempre repara una discontinuidad**
-
-Si el límite bilateral no existe, ningún valor elegido para $f(a)$ puede hacer continua la función en $a$.
-
-En cambio, si el límite existe y es finito, una elección adecuada del valor puede producir una extensión continua.
-:::
+El límite bilateral no existe, de modo que ningún valor elegido para $g(0)$ puede hacer continua la función en $0$.
 
 ## Discontinuidad removible y extensión continua
 
@@ -589,89 +459,42 @@ $$
 \lim_{x\to a}f(x)=L.
 $$
 
-Definimos una nueva función $F$ asignando
+Si definimos una nueva función $F$ manteniendo los valores de $f$ fuera de $a$ y asignando
 
 $$
-F(a)=L
+F(a)=L,
 $$
 
-y dejando los demás valores iguales a los de $f$.
-
-Entonces
+entonces
 
 $$
 \lim_{x\to a}F(x)=L=F(a),
 $$
 
-por lo que $F$ es continua en $a$.
+y $F$ es continua en $a$.
 
 ::: {.ma-block .ma-definicion}
-**Extensión continua en un punto**
+**Extensión continua**
 
-Cuando un límite finito
-
-$$
-\lim_{x\to a}f(x)=L
-$$
-
-existe y el único obstáculo para la continuidad es que $f(a)$ no está definido o tiene un valor diferente, podemos definir
-
-$$
-F(a)=L
-$$
-
-para obtener continuidad en $a$.
-
-A este tipo de defecto se lo denomina habitualmente **discontinuidad removible**.
+Cuando existe un límite finito y el único obstáculo es que el valor en el punto falta o no coincide con el límite, el defecto puede repararse asignando precisamente el valor límite. Este fenómeno se denomina habitualmente **discontinuidad removible**.
 :::
 
-Para
+Por ejemplo,
 
 $$
-f(x)=\frac{x^2-1}{x-1},
-\qquad x\ne1,
+\frac{x^2-1}{x-1},\qquad x\ne1,
 $$
 
-como
-
-$$
-\lim_{x\to1}f(x)=2,
-$$
-
-la extensión
-
-$$
-F(x)=
-\begin{cases}
-\dfrac{x^2-1}{x-1}, & x\ne1,\\
-2, & x=1
-\end{cases}
-$$
-
-es continua en $1$.
+admite una extensión continua en $1$ definiendo el nuevo valor como $2$.
 
 ## Continuidad y operaciones algebraicas
 
-Las leyes de límites de `MA-CON-0013` se convierten inmediatamente en leyes de continuidad.
-
-Supongamos que $f$ y $g$ son continuas en $a$. Entonces
-
-$$
-\lim_{x\to a}f(x)=f(a)
-$$
-
-y
-
-$$
-\lim_{x\to a}g(x)=g(a).
-$$
-
-Aplicando las leyes algebraicas obtenemos los siguientes resultados.
+Las leyes de `MA-CON-0013` producen leyes de continuidad, pero debemos respetar la distinción entre puntos de acumulación y puntos aislados.
 
 ::: {.ma-block .ma-definicion}
 **Teorema — estabilidad algebraica de la continuidad**
 
-Si $f$ y $g$ son continuas en $a$, entonces también son continuas en $a$:
+Sean $f,g:D\to\mathbb R$ continuas en $a\in D$. Entonces también son continuas en $a$:
 
 $$
 f+g,
@@ -695,7 +518,7 @@ $$
 
 para todo entero $n\ge1$.
 
-Además, si
+Si además
 
 $$
 g(a)\ne0,
@@ -710,7 +533,21 @@ $$
 es continua en $a$.
 :::
 
-Por ejemplo,
+### Justificación
+
+Hay dos casos.
+
+**Caso 1: $a$ es punto aislado de $D$.** Todas las funciones definidas sobre $D$ son continuas en $a$, por la proposición anterior. En particular, las combinaciones algebraicas que estén definidas en $a$ también lo son.
+
+**Caso 2: $a$ es punto de acumulación de $D$.** Por continuidad,
+
+$$
+\lim_{x\to a}f(x)=f(a),
+\qquad
+\lim_{x\to a}g(x)=g(a).
+$$
+
+Las leyes algebraicas de los límites dan, por ejemplo,
 
 $$
 \lim_{x\to a}(f+g)(x)
@@ -718,104 +555,52 @@ $$
 =(f+g)(a),
 $$
 
-que es exactamente la continuidad de $f+g$ en $a$.
+y análogamente para resta, multiplicación escalar, producto y potencias.
 
-En el cociente, la condición
-
-$$
-g(a)\ne0
-$$
-
-permite aplicar la ley del cociente porque, por continuidad,
+Si $g(a)\ne0$, entonces
 
 $$
-\lim_{x\to a}g(x)=g(a)\ne0.
+\lim_{x\to a}\frac{f(x)}{g(x)}
+=\frac{f(a)}{g(a)}
+=\left(\frac fg\right)(a),
 $$
 
-## Polinomios y funciones racionales
-
-Como las funciones constantes y la identidad
-
-$$
-x\mapsto x
-$$
-
-son continuas, las operaciones anteriores permiten construir todos los polinomios.
+por lo que el cociente es continuo en $a$.
 
 ::: {.ma-block .ma-comprobacion}
-**Todo polinomio es continuo en $\mathbb R$**
+**Consecuencias**
 
-Si
-
-$$
-p(x)=a_nx^n+\cdots+a_1x+a_0,
-$$
-
-entonces para todo $c\in\mathbb R$,
-
-$$
-\lim_{x\to c}p(x)=p(c).
-$$
-
-Por tanto $p$ es continuo en todo número real.
+- Todo polinomio es continuo en $\mathbb R$.
+- Toda función racional $p/q$ es continua en cada punto de su dominio, es decir, donde $q(a)\ne0$.
 :::
 
-Si
-
-$$
-r(x)=\frac{p(x)}{q(x)},
-$$
-
-con $p$ y $q$ polinomios, entonces $r$ es continua en cada punto de su dominio, es decir, en todo $a$ tal que
-
-$$
-q(a)\ne0.
-$$
-
-Así, para las funciones racionales, la sustitución directa en un punto del dominio no es una regla informal: es una consecuencia de la continuidad.
+Así, para polinomios y funciones racionales en puntos de su dominio, la sustitución directa es una consecuencia de la continuidad, no una regla independiente.
 
 ## Continuidad del valor absoluto
 
-La desigualdad triangular inversa da
+La desigualdad triangular inversa establece
 
 $$
-\big||x|-|a|\big|
-\le|x-a|.
+\big||x|-|a|\big|\le|x-a|.
 $$
 
-Por tanto, dada $\varepsilon>0$, basta elegir
+Dado $\varepsilon>0$, tomamos $\delta=\varepsilon$. Si $|x-a|<\delta$, entonces
 
 $$
-\delta=\varepsilon.
+\big||x|-|a|\big|<\varepsilon.
 $$
 
-Si
-
-$$
-|x-a|<\delta,
-$$
-
-entonces
-
-$$
-\big||x|-|a|\big|
-\le|x-a|
-<\varepsilon.
-$$
-
-Luego la función
+Por tanto,
 
 $$
 x\mapsto|x|
 $$
 
-es continua en todo $a\in\mathbb R$.
-
-Este ejemplo muestra que la continuidad puede demostrarse directamente sin calcular primero un límite separado.
+es continua en todo $\mathbb R$.
 
 ## Composición de funciones continuas
 
-La composición introducida en `MA-CON-0008` preserva continuidad.
+La composición introducida en `MA-CON-0008` preserva continuidad sin necesidad de separar puntos aislados y de acumulación.
 
 ::: {.ma-block .ma-definicion}
 **Teorema — continuidad de una composición**
@@ -823,21 +608,15 @@ La composición introducida en `MA-CON-0008` preserva continuidad.
 Sean
 
 $$
-f:D\to E
-$$
-
-y
-
-$$
+f:D\to E,
+\qquad
 g:E\to\mathbb R.
 $$
 
 Si $f$ es continua en $a\in D$ y $g$ es continua en $f(a)\in E$, entonces
 
 $$
-\boxed{
-g\circ f\text{ es continua en }a.
-}
+\boxed{g\circ f\text{ es continua en }a.}
 $$
 :::
 
@@ -845,7 +624,7 @@ $$
 
 Sea $\varepsilon>0$.
 
-Como $g$ es continua en $f(a)$, existe $\eta>0$ tal que para todo $y\in E$,
+Como $g$ es continua en $f(a)$, existe $\eta>0$ tal que, para todo $y\in E$,
 
 $$
 |y-f(a)|<\eta
@@ -853,7 +632,7 @@ $$
 |g(y)-g(f(a))|<\varepsilon.
 $$
 
-Como $f$ es continua en $a$, para esa tolerancia $\eta$ existe $\delta>0$ tal que para todo $x\in D$,
+Como $f$ es continua en $a$, existe $\delta>0$ tal que, para todo $x\in D$,
 
 $$
 |x-a|<\delta
@@ -861,36 +640,26 @@ $$
 |f(x)-f(a)|<\eta.
 $$
 
-Por tanto, si $x\in D$ y $|x-a|<\delta$, entonces
+Por tanto,
 
 $$
+|x-a|<\delta
+\quad\Longrightarrow\quad
 |g(f(x))-g(f(a))|<\varepsilon.
 $$
 
-Pero
+Como
 
 $$
-(g\circ f)(x)=g(f(x))
+(g\circ f)(x)=g(f(x)),
 $$
 
-y
-
-$$
-(g\circ f)(a)=g(f(a)).
-$$
-
-Luego
-
-$$
-|(g\circ f)(x)-(g\circ f)(a)|<\varepsilon,
-$$
-
-y $g\circ f$ es continua en $a$.
+esto demuestra la continuidad de $g\circ f$ en $a$.
 
 ::: {.ma-block .ma-metodo}
-**Estructura del argumento**
+**La tolerancia viaja hacia atrás**
 
-La tolerancia viaja hacia atrás:
+En la composición aparece el patrón
 
 $$
 \varepsilon
@@ -900,22 +669,18 @@ $$
 \delta.
 $$
 
-Primero preguntamos cuánto debe aproximarse la entrada de $g$ a $f(a)$; después usamos la continuidad de $f$ para garantizar esa aproximación.
+Primero determinamos qué precisión necesita la entrada de $g$; después usamos la continuidad de $f$ para obtenerla.
 :::
 
 ## Las funciones continuas pueden pasar a través del límite
 
-El teorema anterior tiene una versión especialmente útil para calcular límites.
-
-Supongamos que
+Si
 
 $$
 \lim_{x\to a}f(x)=L
 $$
 
-y que $g$ es continua en $L$.
-
-Entonces, siempre que la composición esté definida en los puntos relevantes,
+y $g$ es continua en $L$, entonces, siempre que la composición esté definida en los puntos relevantes,
 
 $$
 \boxed{
@@ -923,23 +688,15 @@ $$
 }
 $$
 
-La demostración repite exactamente el mecanismo
-
-$$
-\varepsilon\to\eta\to\delta.
-$$
-
-Esta propiedad explica por qué, una vez conocida la continuidad de una función exterior, podemos evaluar muchos límites mediante sustitución en su argumento.
+La prueba utiliza el mismo esquema $\varepsilon\to\eta\to\delta$.
 
 ::: {.ma-block .ma-error}
 **La sustitución directa no es la definición de límite**
 
-Es una consecuencia de teoremas de continuidad.
-
-Cuando una función no es continua en el valor relevante, o cuando la expresión sale de su dominio, sustituir formalmente puede ser inválido o no resolver el problema.
+Es una consecuencia de teoremas de continuidad. Si la función exterior no es continua en el valor relevante, o si la expresión queda fuera de su dominio, la sustitución formal puede ser inválida.
 :::
 
-## La continuidad preserva localmente una desigualdad estricta
+## La continuidad preserva localmente el signo estricto
 
 Supongamos que $f$ es continua en $a$ y
 
@@ -950,10 +707,10 @@ $$
 Tomemos
 
 $$
-\varepsilon=\frac{f(a)}{2}>0.
+\varepsilon=\frac{f(a)}{2}.
 $$
 
-Por continuidad existe $\delta>0$ tal que
+Existe $\delta>0$ tal que
 
 $$
 |x-a|<\delta
@@ -964,33 +721,20 @@ $$
 Entonces
 
 $$
-f(x)>f(a)-\frac{f(a)}{2}
-=\frac{f(a)}{2}>0.
-$$
-
-Por tanto,
-
-$$
-\boxed{
-f(a)>0
-\Longrightarrow
-f(x)>0\text{ para }x\text{ suficientemente cercano a }a.
-}
+f(x)>\frac{f(a)}{2}>0.
 $$
 
 Análogamente, si $f(a)<0$, entonces $f(x)<0$ cerca de $a$.
 
-En particular, si
+En particular,
 
 $$
-f(a)\ne0,
+f(a)\ne0
 $$
 
-la función permanece distinta de cero en algún entorno relativo de $a$. Esto recupera, desde continuidad, la separación local de cero utilizada en `MA-CON-0013`.
+implica que $f(x)$ permanece distinto de cero en algún entorno relativo de $a$.
 
 ## Continuidad en un conjunto
-
-La noción puntual se extiende de manera directa.
 
 ::: {.ma-block .ma-definicion}
 **Continuidad en un conjunto**
@@ -1001,14 +745,10 @@ $$
 f:D\to\mathbb R.
 $$
 
-Decimos que $f$ es **continua en $D$** si es continua en cada punto
-
-$$
-a\in D.
-$$
+Decimos que $f$ es **continua en $D$** si es continua en cada punto $a\in D$.
 :::
 
-Esto incluye automáticamente cualquier extremo o punto aislado que pertenezca al dominio: siempre se utiliza la geometría real de $D$, no una prolongación imaginaria fuera de él.
+Esto incluye extremos y puntos aislados utilizando siempre la geometría real del dominio.
 
 ## Errores frecuentes
 
@@ -1019,9 +759,9 @@ Para continuidad necesitamos $f(a)$.
 :::
 
 ::: {.ma-block .ma-error}
-**2. Pensar que continuidad significa solamente que el límite existe**
+**2. Pensar que basta con que el límite exista**
 
-También necesitamos
+En un punto de acumulación también necesitamos
 
 $$
 \lim_{x\to a}f(x)=f(a).
@@ -1031,28 +771,24 @@ $$
 ::: {.ma-block .ma-error}
 **3. Exigir puntos del dominio a ambos lados**
 
-La continuidad se define respecto del dominio. En un extremo puede bastar un solo lado, y en un punto aislado es automática.
+La continuidad es relativa al dominio: en un extremo puede intervenir un solo lado.
 :::
 
 ::: {.ma-block .ma-error}
-**4. Usar el criterio del límite en un punto aislado**
+**4. Aplicar el criterio del límite en un punto aislado**
 
-La continuidad allí se verifica directamente; el límite de `MA-CON-0011` requiere un punto de acumulación.
+La continuidad allí se verifica directamente; el límite de `MA-CON-0011` requiere acumulación.
 :::
 
 ::: {.ma-block .ma-error}
-**5. Aplicar la ley del cociente cuando el denominador vale cero en el punto**
+**5. Usar la ley del cociente con denominador nulo en el punto**
 
-Para concluir continuidad de $f/g$ en $a$ necesitamos
-
-$$
-g(a)\ne0.
-$$
+Para concluir continuidad de $f/g$ en $a$ necesitamos $g(a)\ne0$.
 :::
 
 ## Resumen estructural
 
-Para $a\in D$, la definición fundamental es
+La definición fundamental es
 
 $$
 \boxed{
@@ -1064,7 +800,7 @@ $$
 }
 $$
 
-Si $a$ es además punto de acumulación de $D$, entonces
+Si $a$ es punto de acumulación de $D$,
 
 $$
 \boxed{
@@ -1074,29 +810,17 @@ f\text{ continua en }a
 }
 $$
 
-Las funciones continuas son estables bajo:
-
-$$
-+,
-\quad
--,
-\quad
-\text{multiplicación},
-\quad
-\text{potencias},
-\quad
-\text{cocientes con denominador no nulo},
-\quad
-\text{composición}.
-$$
+Si $a$ es aislado, toda función definida en $a$ es continua allí.
 
 Además:
 
-- todo polinomio es continuo en $\mathbb R$;
-- toda función racional es continua en su dominio;
-- $|x|$ es continua en $\mathbb R$;
-- un punto aislado del dominio es siempre punto de continuidad;
-- en un extremo del dominio se consideran sólo los puntos del dominio disponibles;
-- si un límite finito existe pero falta el valor adecuado en el punto, puede construirse una extensión continua asignando ese límite.
+- los extremos se tratan relativamente al dominio;
+- una discontinuidad removible puede repararse asignando el valor límite;
+- las operaciones algebraicas preservan continuidad cuando están definidas;
+- los polinomios son continuos en $\mathbb R$ y las funciones racionales en su dominio;
+- el valor absoluto es continuo;
+- la composición de funciones continuas es continua;
+- una función continua exterior puede pasar a través de un límite;
+- un valor no nulo de una función continua conserva localmente su signo.
 
-La continuidad convierte así el lenguaje de límites en una propiedad estructural de las funciones y prepara el estudio de resultados globales sobre intervalos, así como la derivación.
+La continuidad convierte así el lenguaje local de límites en una propiedad estructural de las funciones y prepara el estudio de resultados globales sobre intervalos y, posteriormente, la derivación.
