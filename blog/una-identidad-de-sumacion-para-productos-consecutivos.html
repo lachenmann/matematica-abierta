@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Una identidad finita para productos consecutivos, demostrada por inducción y por telescopaje mediante diferencias finitas.">
 
-<title>Artículos – Matemática Abierta</title>
+<title>Una identidad de sumación para productos consecutivos: dos demostraciones – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,7 +27,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -76,6 +96,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -443,10 +492,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#artículos" id="toc-artículos" class="nav-link active" data-scroll-target="#artículos">Artículos</a>
+  <li><a href="#antes-de-demostrar-un-caso-familiar" id="toc-antes-de-demostrar-un-caso-familiar" class="nav-link active" data-scroll-target="#antes-de-demostrar-un-caso-familiar">Antes de demostrar: un caso familiar</a></li>
+  <li><a href="#primera-demostración-inducción-sobre-n" id="toc-primera-demostración-inducción-sobre-n" class="nav-link" data-scroll-target="#primera-demostración-inducción-sobre-n">Primera demostración: inducción sobre <span class="math inline">\(n\)</span></a>
   <ul class="collapse">
-  <li><a href="#publicados" id="toc-publicados" class="nav-link" data-scroll-target="#publicados">Publicados</a></li>
+  <li><a href="#caso-base" id="toc-caso-base" class="nav-link" data-scroll-target="#caso-base">Caso base</a></li>
+  <li><a href="#hipótesis-inductiva" id="toc-hipótesis-inductiva" class="nav-link" data-scroll-target="#hipótesis-inductiva">Hipótesis inductiva</a></li>
+  <li><a href="#paso-de-k-a-k1" id="toc-paso-de-k-a-k1" class="nav-link" data-scroll-target="#paso-de-k-a-k1">Paso de <span class="math inline">\(k\)</span> a <span class="math inline">\(k+1\)</span></a></li>
   </ul></li>
+  <li><a href="#segunda-demostración-una-antiderivada-discreta" id="toc-segunda-demostración-una-antiderivada-discreta" class="nav-link" data-scroll-target="#segunda-demostración-una-antiderivada-discreta">Segunda demostración: una antiderivada discreta</a></li>
+  <li><a href="#comprobación-numérica" id="toc-comprobación-numérica" class="nav-link" data-scroll-target="#comprobación-numérica">Comprobación numérica</a></li>
+  <li><a href="#una-idea-reutilizable" id="toc-una-idea-reutilizable" class="nav-link" data-scroll-target="#una-idea-reutilizable">Una idea reutilizable</a></li>
   </ul>
 </nav>
     </div>
@@ -456,15 +511,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Artículos</h1>
+<h1 class="title">Una identidad de sumación para productos consecutivos: dos demostraciones</h1>
 </div>
 
+<div>
+  <div class="description">
+    Una identidad finita para productos consecutivos, demostrada por inducción y por telescopaje mediante diferencias finitas.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -473,30 +539,259 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="artículos" class="level1">
-<h1>Artículos</h1>
-<p>Piezas matemáticas independientes que no pertenecen necesariamente a una secuencia de curso o libro.</p>
-<p>Aquí pueden publicarse:</p>
+<p>Hay identidades cuya primera demostración confirma que una fórmula es cierta, mientras que una segunda demostración permite entender <strong>por qué tiene precisamente esa forma</strong>. Éste es un ejemplo especialmente limpio.</p>
+<div class="ma-block ma-enunciado">
+<p><strong>Identidad de sumación</strong></p>
+<p>Para <span class="math inline">\(n,m\in\mathbb Z_{\ge 0}\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\sum_{i=0}^{n}\prod_{j=1}^{m}(i+j)
+=
+\frac{1}{m+1}\frac{(n+m+1)!}{n!}
+}
+\]</span></p>
+<p>con la convención usual de que un producto vacío vale <span class="math inline">\(1\)</span> cuando <span class="math inline">\(m=0\)</span>.</p>
+</div>
+<p>El producto del sumando tiene una forma muy concreta:</p>
+<p><span class="math display">\[
+\prod_{j=1}^{m}(i+j)
+=(i+1)(i+2)\cdots(i+m)
+=
+\frac{(i+m)!}{i!}.
+\]</span></p>
+<p>Por tanto, la identidad también puede escribirse como</p>
+<p><span class="math display">\[
+\sum_{i=0}^{n}\frac{(i+m)!}{i!}
+=
+\frac{(n+m+1)!}{(m+1)n!}.
+\]</span></p>
+<div class="ma-block ma-fuente">
+<p><strong>Fuente y procedencia</strong></p>
+<p>La identidad y una demostración por inducción aparecen en la Proposition A.1 del Appendix A.1 de Zigang Pan, <em>Measure-Theoretic Calculus in Abstract Spaces</em>, pp.&nbsp;905–906 <span class="citation" data-cites="pan2023measure">(<a href="#ref-pan2023measure" role="doc-biblioref">Pan 2023, 905-6</a>)</span>.</p>
+<p>La primera demostración que sigue reconstruye ese argumento en redacción propia y desarrolla los pasos algebraicos. La segunda demostración, mediante diferencias finitas y telescopaje, es una elaboración independiente de <strong>Matemática Abierta</strong>.</p>
+</div>
+<section id="antes-de-demostrar-un-caso-familiar" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-demostrar-un-caso-familiar">Antes de demostrar: un caso familiar</h2>
+<p>Si <span class="math inline">\(m=1\)</span>, entonces</p>
+<p><span class="math display">\[
+\prod_{j=1}^{1}(i+j)=i+1,
+\]</span></p>
+<p>y la identidad se reduce a</p>
+<p><span class="math display">\[
+\sum_{i=0}^{n}(i+1)
+=
+\frac12\frac{(n+2)!}{n!}
+=
+\frac{(n+1)(n+2)}2.
+\]</span></p>
+<p>Es decir,</p>
+<p><span class="math display">\[
+1+2+\cdots +(n+1)
+=
+\frac{(n+1)(n+2)}2.
+\]</span></p>
+<p>La fórmula general puede verse, por tanto, como una extensión de la suma de los primeros enteros a sumas de <strong>productos consecutivos</strong>.</p>
+</section>
+<section id="primera-demostración-inducción-sobre-n" class="level2">
+<h2 class="anchored" data-anchor-id="primera-demostración-inducción-sobre-n">Primera demostración: inducción sobre <span class="math inline">\(n\)</span></h2>
+<p>Fijemos <span class="math inline">\(m\in\mathbb Z_{\ge0}\)</span> y demostremos la identidad por inducción en <span class="math inline">\(n\)</span>.</p>
+<section id="caso-base" class="level3">
+<h3 class="anchored" data-anchor-id="caso-base">Caso base</h3>
+<p>Para <span class="math inline">\(n=0\)</span>,</p>
+<p><span class="math display">\[
+\sum_{i=0}^{0}\prod_{j=1}^{m}(i+j)
+=
+\prod_{j=1}^{m}j
+=
+m!.
+\]</span></p>
+<p>Por otro lado,</p>
+<p><span class="math display">\[
+\frac{1}{m+1}\frac{(m+1)!}{0!}
+=
+m!.
+\]</span></p>
+<p>La fórmula vale para <span class="math inline">\(n=0\)</span>.</p>
+</section>
+<section id="hipótesis-inductiva" class="level3">
+<h3 class="anchored" data-anchor-id="hipótesis-inductiva">Hipótesis inductiva</h3>
+<p>Supongamos que para cierto <span class="math inline">\(k\in\mathbb Z_{\ge0}\)</span> se cumple</p>
+<p><span class="math display">\[
+\sum_{i=0}^{k}\prod_{j=1}^{m}(i+j)
+=
+\frac{1}{m+1}\frac{(k+m+1)!}{k!}.
+\]</span></p>
+</section>
+<section id="paso-de-k-a-k1" class="level3">
+<h3 class="anchored" data-anchor-id="paso-de-k-a-k1">Paso de <span class="math inline">\(k\)</span> a <span class="math inline">\(k+1\)</span></h3>
+<p>Separamos el último término:</p>
+<p><span class="math display">\[
+\sum_{i=0}^{k+1}\prod_{j=1}^{m}(i+j)
+=
+\sum_{i=0}^{k}\prod_{j=1}^{m}(i+j)
++
+\prod_{j=1}^{m}(k+1+j).
+\]</span></p>
+<p>Aplicando la hipótesis inductiva y escribiendo el producto mediante factoriales,</p>
+<p><span class="math display">\[
+=
+\frac{1}{m+1}\frac{(k+m+1)!}{k!}
++
+\frac{(k+m+1)!}{(k+1)!}.
+\]</span></p>
+<p>Llevamos ambos términos al denominador común <span class="math inline">\((m+1)(k+1)!\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\frac{(k+1)(k+m+1)!}{(m+1)(k+1)!}
++
+\frac{(m+1)(k+m+1)!}{(m+1)(k+1)!}\\[2mm]
+&amp;=
+\frac{(k+m+2)(k+m+1)!}{(m+1)(k+1)!}\\[2mm]
+&amp;=
+\frac{1}{m+1}\frac{(k+m+2)!}{(k+1)!}.
+\end{aligned}
+\]</span></p>
+<p>Ésta es exactamente la fórmula con <span class="math inline">\(n=k+1\)</span>. Por inducción, la identidad vale para todo <span class="math inline">\(n\in\mathbb Z_{\ge0}\)</span>.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Qué hace funcionar la inducción</strong></p>
+<p>Al pasar de la suma hasta <span class="math inline">\(k\)</span> a la suma hasta <span class="math inline">\(k+1\)</span>, sólo aparece un término nuevo. La forma factorial de ese término encaja exactamente con la expresión dada por la hipótesis inductiva.</p>
+</div>
+</section>
+</section>
+<section id="segunda-demostración-una-antiderivada-discreta" class="level2">
+<h2 class="anchored" data-anchor-id="segunda-demostración-una-antiderivada-discreta">Segunda demostración: una antiderivada discreta</h2>
+<p>La segunda prueba cambia completamente de punto de vista.</p>
+<p>Definamos</p>
+<p><span class="math display">\[
+F(i)
+=
+\frac{1}{m+1}\,i(i+1)\cdots(i+m).
+\]</span></p>
+<p>Calculemos su diferencia finita:</p>
+<p><span class="math display">\[
+\Delta F(i):=F(i+1)-F(i).
+\]</span></p>
+<p>Tenemos</p>
+<p><span class="math display">\[
+F(i+1)
+=
+\frac{1}{m+1}(i+1)(i+2)\cdots(i+m+1),
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+F(i)
+=
+\frac{1}{m+1}i(i+1)\cdots(i+m).
+\]</span></p>
+<p>Factorizando los términos comunes,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(i+1)-F(i)
+&amp;=
+\frac{(i+1)\cdots(i+m)}{m+1}
+\bigl[(i+m+1)-i\bigr]\\[1mm]
+&amp;=
+(i+1)(i+2)\cdots(i+m)\\[1mm]
+&amp;=
+\prod_{j=1}^{m}(i+j).
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+\prod_{j=1}^{m}(i+j)=F(i+1)-F(i).
+}
+\]</span></p>
+<p>Ahora la suma completa se convierte en</p>
+<p><span class="math display">\[
+\sum_{i=0}^{n}\prod_{j=1}^{m}(i+j)
+=
+\sum_{i=0}^{n}\bigl(F(i+1)-F(i)\bigr).
+\]</span></p>
+<p>Al desarrollar,</p>
+<p><span class="math display">\[
+[F(1)-F(0)]+[F(2)-F(1)]+\cdots+[F(n+1)-F(n)],
+\]</span></p>
+<p>todos los términos interiores se cancelan. Queda</p>
+<p><span class="math display">\[
+F(n+1)-F(0).
+\]</span></p>
+<p>Como <span class="math inline">\(F(0)=0\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{i=0}^{n}\prod_{j=1}^{m}(i+j)
+&amp;=F(n+1)\\[1mm]
+&amp;=
+\frac{1}{m+1}(n+1)(n+2)\cdots(n+m+1)\\[1mm]
+&amp;=
+\frac{1}{m+1}\frac{(n+m+1)!}{n!}.
+\end{aligned}
+\]</span></p>
+<p>Y obtenemos de nuevo la identidad.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>La estructura que revela la segunda prueba</strong></p>
+<p>La expresión</p>
+<p><span class="math display">\[
+\prod_{j=1}^{m}(i+j)
+\]</span></p>
+<p>es la <strong>diferencia finita</strong> de otra expresión más simple:</p>
+<p><span class="math display">\[
+\Delta F(i)=F(i+1)-F(i).
+\]</span></p>
+<p>Sumar diferencias finitas juega un papel análogo al de integrar una derivada. Por eso la suma telescopa: estamos realizando una forma de <strong>integración discreta</strong>.</p>
+</div>
+</section>
+<section id="comprobación-numérica" class="level2">
+<h2 class="anchored" data-anchor-id="comprobación-numérica">Comprobación numérica</h2>
+<p>Tomemos <span class="math inline">\(n=2\)</span> y <span class="math inline">\(m=2\)</span>. El lado izquierdo es</p>
+<p><span class="math display">\[
+(1\cdot2)+(2\cdot3)+(3\cdot4)
+=2+6+12
+=20.
+\]</span></p>
+<p>El lado derecho es</p>
+<p><span class="math display">\[
+\frac13\frac{5!}{2!}
+=
+\frac13\frac{120}{2}
+=20.
+\]</span></p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Control</strong></p>
+<p>Ambas demostraciones llegan al mismo resultado, pero aportan información diferente:</p>
 <ul>
-<li>ensayos matemáticos;</li>
-<li>resultados presentados desde más de un punto de vista;</li>
-<li>historia de las matemáticas;</li>
-<li>conexiones amplias entre ideas;</li>
-<li>estrategias de estudio;</li>
-<li>notas editoriales de interés público.</li>
+<li>la <strong>inducción</strong> muestra cómo la fórmula se propaga de <span class="math inline">\(n\)</span> a <span class="math inline">\(n+1\)</span>;</li>
+<li>el <strong>telescopaje</strong> explica la forma cerrada encontrando una antiderivada discreta del sumando.</li>
 </ul>
-<p>Las exposiciones cuya función natural sea definir o desarrollar un concepto pertenecen a <a href="../teoria/index.html">Teoría</a>, no a esta sección.</p>
-<section id="publicados" class="level2">
-<h2 class="anchored" data-anchor-id="publicados">Publicados</h2>
-<ul>
-<li><a href="../blog/una-identidad-de-sumacion-para-productos-consecutivos.html"><strong>Una identidad de sumación para productos consecutivos: dos demostraciones</strong></a> — una identidad finita demostrada primero por inducción y luego por diferencias finitas y telescopaje.</li>
-</ul>
+</div>
+</section>
+<section id="una-idea-reutilizable" class="level2">
+<h2 class="anchored" data-anchor-id="una-idea-reutilizable">Una idea reutilizable</h2>
+<p>Cuando aparezca una suma finita de la forma</p>
+<p><span class="math display">\[
+\sum_{i=a}^{b}u_i,
+\]</span></p>
+<p>vale la pena preguntarse si existe una sucesión <span class="math inline">\(F\)</span> tal que</p>
+<p><span class="math display">\[
+u_i=F(i+1)-F(i).
+\]</span></p>
+<p>Si existe, entonces</p>
+<p><span class="math display">\[
+\sum_{i=a}^{b}u_i
+=
+F(b+1)-F(a).
+\]</span></p>
+<p>Ésta es una de las formas fundamentales de las <strong>sumas telescópicas</strong> y constituye el análogo discreto del teorema fundamental del cálculo.</p>
+
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-pan2023measure" class="csl-entry" role="listitem">
+Pan, Zigang. 2023. <em>Measure-Theoretic Calculus in Abstract Spaces: On the Playground of Infinite-Dimensional Spaces</em>. Birkhäuser. <a href="https://doi.org/10.1007/978-3-031-21912-2">https://doi.org/10.1007/978-3-031-21912-2</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
