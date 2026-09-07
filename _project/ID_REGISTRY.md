@@ -10,7 +10,7 @@
 | Lección | MA-LES-0001 |
 | Capítulo | MA-BCH-0001 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0001 |
+| Libro | MA-BOK-0002 |
 
 ## IDs asignados
 
@@ -37,6 +37,7 @@
 | MA-CON-0019 | concept | Continuidad uniforme y teorema de Heine–Cantor | `conceptos/continuidad-uniforme-y-teorema-de-heine-cantor.md` | published |
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 | MA-PRB-0002 | problem | Dominio de un radical anidado | `problemas/dominio-de-un-radical-anidado.md` | published |
+| MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 
 ## Regla de uso
 
