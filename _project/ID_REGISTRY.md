@@ -4,8 +4,8 @@
 
 | Tipo | Próximo |
 |---|---|
-| Concepto | MA-CON-0020 |
-| Problema | MA-PRB-0006 |
+| Concepto | MA-CON-0021 |
+| Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0001 |
 | Lección | MA-LES-0001 |
 | Capítulo | MA-BCH-0002 |
@@ -35,11 +35,13 @@
 | MA-CON-0017 | concept | Teorema del valor intermedio y teorema de Bolzano | `conceptos/teorema-del-valor-intermedio-y-teorema-de-bolzano.md` | published |
 | MA-CON-0018 | concept | Compacidad en ℝ y teorema de Weierstrass | `conceptos/compacidad-en-r-y-teorema-de-weierstrass.md` | published |
 | MA-CON-0019 | concept | Continuidad uniforme y teorema de Heine–Cantor | `conceptos/continuidad-uniforme-y-teorema-de-heine-cantor.md` | published |
+| MA-CON-0020 | concept | Axiomas de cuerpo y consecuencias algebraicas básicas | `conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md` | published |
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 | MA-PRB-0002 | problem | Dominio de un radical anidado | `problemas/dominio-de-un-radical-anidado.md` | published |
 | MA-PRB-0003 | problem | Divisibilidad por 4 y paridad mediante contraposición | `problemas/divisibilidad-por-4-y-paridad-mediante-contraposicion.md` | published |
 | MA-PRB-0004 | problem | Igualdad de conjuntos por doble inclusión | `problemas/igualdad-de-conjuntos-por-doble-inclusion.md` | published |
 | MA-PRB-0005 | problem | Existencia y unicidad en una ecuación lineal con parámetros | `problemas/existencia-y-unicidad-ecuacion-lineal-parametros.md` | published |
+| MA-PRB-0006 | problem | Producto nulo y cancelación en un cuerpo | `problemas/producto-nulo-y-cancelacion-en-un-cuerpo.md` | published |
 | MA-BCH-0001 | book-chapter | Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones | `libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 
