@@ -114,7 +114,8 @@ La arquitectura completa del volumen es más extensa que esta lista: estos punto
 
 1. [**Capítulo 1 — Proposiciones y razonamiento deductivo**](../capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.md) (`MA-BCH-0002`).
    - **1.1 — Proposiciones y valores de verdad:** publicada completa.
-   - **1.2 — Negación, conjunción y disyunción:** siguiente sección prevista.
+   - **1.2 — Negación, conjunción y disyunción:** publicada completa.
+   - **1.3 — Tablas de verdad y equivalencia lógica:** siguiente sección prevista.
 
 ## Publicación progresiva
 
@@ -124,6 +125,6 @@ La versión pública conserva el orden lógico del texto maestro y podrá enlaza
 
 ## Estado
 
-La migración a Matemática Abierta ya comenzó con el **capítulo 1**. La primera sección pública desarrolla la noción de proposición, la distinción entre verdad y conocimiento, las expresiones abiertas, las letras proposicionales y la diferencia entre contenido y forma lógica.
+La migración a Matemática Abierta ya comprende las dos primeras secciones del **capítulo 1**. La sección 1.1 desarrolla la noción de proposición, la distinción entre verdad y conocimiento, las expresiones abiertas, las letras proposicionales y la diferencia entre contenido y forma lógica. La sección 1.2 introduce negación, conjunción y disyunción, y desarrolla la distinción entre sintaxis y semántica, las reglas de formación, las subfórmulas, la conectiva principal y el alcance de la negación.
 
 Esta edición es abierta y progresiva. El contenido textual original se publica bajo **GNU Free Documentation License 1.3 o posterior**.
