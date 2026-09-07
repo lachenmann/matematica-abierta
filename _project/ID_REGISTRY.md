@@ -6,7 +6,7 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0001 |
+| Artículo | MA-ART-0002 |
 | Lección | MA-LES-0001 |
 | Capítulo | MA-BCH-0002 |
 | Curso | MA-CRS-0001 |
@@ -42,6 +42,7 @@
 | MA-PRB-0004 | problem | Igualdad de conjuntos por doble inclusión | `problemas/igualdad-de-conjuntos-por-doble-inclusion.md` | published |
 | MA-PRB-0005 | problem | Existencia y unicidad en una ecuación lineal con parámetros | `problemas/existencia-y-unicidad-ecuacion-lineal-parametros.md` | published |
 | MA-PRB-0006 | problem | Producto nulo y cancelación en un cuerpo | `problemas/producto-nulo-y-cancelacion-en-un-cuerpo.md` | published |
+| MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
 | MA-BCH-0001 | book-chapter | Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones | `libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 
