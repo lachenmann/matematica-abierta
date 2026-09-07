@@ -243,6 +243,72 @@ para todo $y\in B$.
 
 Luego $f^{-1}$ es la inversa de $f$.
 
+## La equivalencia fundamental
+
+Si $f:A\to B$ es biyectiva, entonces para todo $x\in A$ y todo $y\in B$ se cumple
+
+$$
+\boxed{
+f(x)=y
+\iff
+f^{-1}(y)=x
+}
+$$
+
+En efecto, si $f(x)=y$, al aplicar $f^{-1}$ obtenemos
+
+$$
+f^{-1}(f(x))=f^{-1}(y),
+$$
+
+y por tanto
+
+$$
+x=f^{-1}(y).
+$$
+
+Recíprocamente, si
+
+$$
+f^{-1}(y)=x,
+$$
+
+al aplicar $f$ obtenemos
+
+$$
+f(f^{-1}(y))=f(x),
+$$
+
+y por tanto
+
+$$
+y=f(x).
+$$
+
+::: {.ma-block .ma-intuicion}
+**Lectura operacional**
+
+La igualdad
+
+$$
+f(x)=y
+$$
+
+puede leerse en sentido inverso como
+
+$$
+f^{-1}(y)=x.
+$$
+
+Es la misma correspondencia recorrida en direcciones opuestas:
+
+$$
+x\xrightarrow{f}y
+\qquad\Longleftrightarrow\qquad
+y\xrightarrow{f^{-1}}x.
+$$
+:::
+
 ## La interpretación mediante fibras
 
 Para $y\in B$, la fibra de $f$ sobre $y$ es
@@ -309,7 +375,20 @@ $$
 
 En este segundo uso, $f^{-1}$ es una función.
 
-Cuando $f$ es biyectiva y $C\subseteq B$, ambos lenguajes son compatibles: la preimagen de $C$ por $f$ coincide con la imagen de $C$ mediante la función inversa.
+Cuando $f$ es biyectiva y $C\subseteq B$, ambos lenguajes son compatibles:
+
+$$
+\boxed{
+f^{-1}(C)
+=
+\{f^{-1}(y):y\in C\}.
+}
+$$
+
+Aquí las dos apariciones de $f^{-1}$ tienen funciones notacionales distintas:
+
+- en el lado izquierdo, $f^{-1}(C)$ es la **preimagen de $C$ por $f$**;
+- en el lado derecho, $f^{-1}(y)$ es el **valor de la función inversa** en $y$.
 
 ::: {.ma-block .ma-error}
 **No confundir**
@@ -740,6 +819,42 @@ $$
 $$
 
 Así, cuando escribimos $f^{-1}$, no hay ambigüedad: una función invertible posee una única inversa.
+
+## Invertir dos veces recupera la función
+
+Si $f:A\to B$ es biyectiva, entonces su inversa
+
+$$
+f^{-1}:B\to A
+$$
+
+también es biyectiva. Además, las identidades
+
+$$
+f\circ f^{-1}=\operatorname{id}_B
+$$
+
+y
+
+$$
+f^{-1}\circ f=\operatorname{id}_A
+$$
+
+muestran que $f$ es precisamente la inversa de $f^{-1}$.
+
+Por tanto,
+
+$$
+\boxed{
+(f^{-1})^{-1}=f
+}
+$$
+
+::: {.ma-block .ma-observacion}
+**La inversión es reversible**
+
+Pasar de $f$ a $f^{-1}$ no pierde información: invertir nuevamente devuelve la función original.
+:::
 
 ## Comprobación conceptual
 
