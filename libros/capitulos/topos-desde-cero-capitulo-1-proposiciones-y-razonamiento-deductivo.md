@@ -1,6 +1,6 @@
 ---
 title: "Topos desde cero — Capítulo 1: Proposiciones y razonamiento deductivo"
-description: "Primer capítulo de Topos desde cero. Edición pública progresiva: proposiciones, valores de verdad, expresiones abiertas y forma lógica."
+description: "Primer capítulo de Topos desde cero. Edición pública progresiva: proposiciones, valores de verdad, conectivas, sintaxis y semántica proposicional."
 content-id: MA-BCH-0002
 content-type: book-chapter
 book-id: MA-BOK-0002
@@ -17,6 +17,16 @@ topics:
   - expresiones-abiertas
   - letras-proposicionales
   - forma-logica
+  - negacion
+  - conjuncion
+  - disyuncion
+  - sintaxis-logica
+  - semantica-logica
+  - formulas-bien-formadas
+  - subformulas
+  - conectiva-principal
+  - alcance
+  - traduccion-simbolica
 prerequisites: []
 related:
   - MA-BOK-0002
@@ -29,7 +39,7 @@ license: GFDL-1.3-or-later
 # Capítulo 1 — Proposiciones y razonamiento deductivo
 
 ::: {.callout-note title="Estado de esta edición"}
-Este capítulo se publica progresivamente. La **sección 1.1 — Proposiciones y valores de verdad** está disponible completa en esta versión web. Las secciones siguientes se incorporarán en el mismo orden del manuscrito maestro.
+Este capítulo se publica progresivamente. Las **secciones 1.1 — Proposiciones y valores de verdad** y **1.2 — Negación, conjunción y disyunción** están disponibles completas en esta versión web. Las secciones siguientes se incorporarán en el mismo orden del manuscrito maestro.
 :::
 
 Las matemáticas no consisten únicamente en calcular. También consisten en formular afirmaciones con precisión, determinar qué se sigue de qué y justificar por qué una conclusión es consecuencia de ciertas hipótesis. Antes de aprender a demostrar, necesitamos aprender a leer la forma lógica de aquello que queremos demostrar.
@@ -315,7 +325,7 @@ Conviene separar cuidadosamente:
 
 > «la proposición tiene un valor de verdad»
 
- de:
+de:
 
 > «conocemos ese valor de verdad».
 
@@ -347,7 +357,7 @@ Para esta sección no necesitamos averiguar cuál es el caso. Lo importante es d
 
 > **determinar el valor de verdad**
 
- de:
+de:
 
 > **reconocer que la oración tiene un valor de verdad**.
 
@@ -460,7 +470,7 @@ Considere:
 
 > Si un entero es divisible por 4, entonces es par.
 
- y:
+y:
 
 > Si una figura es un cuadrado, entonces tiene cuatro lados.
 
@@ -474,7 +484,7 @@ Compare:
 
 > Si hoy llueve, la calle se moja.
 
- y:
+y:
 
 > Si 20 es divisible por 5, entonces 20 es divisible por 1.
 
@@ -494,7 +504,7 @@ Compare:
 
 > 8 es par y $8>3$.
 
- con:
+con:
 
 > La puerta está cerrada y la luz está encendida.
 
@@ -860,7 +870,7 @@ Una respuesta posible:
 
 > «10 es par»
 
- tiene un valor de verdad inmediato: verdadero.
+tiene un valor de verdad inmediato: verdadero.
 
 En cambio:
 
@@ -915,7 +925,7 @@ Sus componentes son:
 
 > «12 es par»
 
- y:
+y:
 
 > «$12>0$».
 
@@ -933,7 +943,7 @@ Por ejemplo:
 
 > «10 es par o 10 es primo»,
 
- y:
+y:
 
 > «$3<1$ o $3<5$».
 
@@ -945,7 +955,7 @@ Por ejemplo:
 
 > «Si 8 es divisible por 4, entonces 8 es par»,
 
- y:
+y:
 
 > «Si la alarma suena, entonces la pantalla se enciende».
 
@@ -1024,6 +1034,1195 @@ $$
 junto con su sintaxis y sus condiciones de verdad.
 :::
 
+# 1.2 Negación, conjunción y disyunción {#sec-1-2-conectivas}
+
+::: {.callout-note title="Resultados de aprendizaje"}
+Al terminar esta sección, el lector podrá:
+
+- formar y leer la negación $\neg P$ de una proposición;
+- interpretar la conjunción $P\land Q$ y la disyunción $P\lor Q$;
+- determinar el valor de verdad de estas fórmulas a partir de los valores de sus componentes;
+- distinguir sintaxis y semántica;
+- reconocer fórmulas bien formadas construidas con $\neg$, $\land$ y $\lor$;
+- identificar subfórmulas y la conectiva principal de una fórmula;
+- determinar el alcance de una negación;
+- usar paréntesis para representar sin ambigüedad la estructura de una fórmula;
+- distinguir la disyunción inclusiva de usos exclusivos de «o» en el lenguaje ordinario;
+- traducir entre frases matemáticas sencillas y fórmulas proposicionales.
+:::
+
+::: {.callout-warning title="Motivación"}
+En §1.1 aprendimos a reconocer proposiciones y a sustituir su contenido por letras como
+
+$$
+P,\qquad Q,\qquad R.
+$$
+
+Ahora queremos construir afirmaciones más complejas a partir de ellas. Para hacerlo necesitamos responder dos preguntas distintas:
+
+> **¿cómo está construida una fórmula?**
+
+ y:
+
+> **¿cuándo resulta verdadera?**
+
+La primera pregunta es sintáctica; la segunda, semántica. Mantenerlas separadas desde el principio evita muchos errores posteriores.
+
+En esta sección introduciremos tres conectivas:
+
+$$
+\neg,\qquad \land,\qquad \lor.
+$$
+:::
+
+## 1.2.1 Tres conectivas lógicas
+
+::: {.callout-important title="Definición"}
+Una **conectiva lógica** es una operación que permite construir una fórmula nueva a partir de una o más fórmulas ya disponibles.
+
+En esta sección utilizaremos:
+
+- $\neg$: negación;
+- $\land$: conjunción;
+- $\lor$: disyunción.
+
+La negación es **unaria**: recibe una sola fórmula.
+
+La conjunción y la disyunción son **binarias**: reciben dos fórmulas.
+:::
+
+### Ejemplo guiado 1.2-A
+
+Supongamos que
+
+$$
+P:\quad 8\text{ es par},
+$$
+
+y
+
+$$
+Q:\quad 8>3.
+$$
+
+¿Cuántas fórmulas distintas podemos construir inmediatamente usando una sola aplicación de las conectivas de esta sección?
+
+**Solución.** Podemos negar cada proposición:
+
+$$
+\neg P,\qquad \neg Q.
+$$
+
+También podemos formar conjunciones:
+
+$$
+P\land Q,\qquad Q\land P,
+$$
+
+y disyunciones:
+
+$$
+P\lor Q,\qquad Q\lor P.
+$$
+
+Por ahora no afirmamos que algunas de estas fórmulas tengan siempre el mismo valor de verdad; esa cuestión pertenece a §1.3. Lo importante es reconocer que cada conectiva recibe fórmulas ya disponibles y produce una fórmula nueva.
+
+## 1.2.2 Negación
+
+::: {.callout-important title="Definición"}
+Si $P$ es una proposición, su **negación** se escribe
+
+$$
+\neg P
+$$
+
+y expresa que $P$ es falsa.
+
+La negación invierte el valor de verdad:
+
+| $P$ | $\neg P$ |
+|---|---|
+| V | F |
+| F | V |
+:::
+
+### Ejemplo 2
+
+Sea
+
+$$
+P:\quad 10\text{ es impar}.
+$$
+
+Entonces
+
+$$
+\neg P:\quad 10\text{ no es impar}.
+$$
+
+Como $P$ es falsa, $\neg P$ es verdadera.
+
+### Ejemplo guiado 1.2-B
+
+Sea
+
+$$
+P:\quad 12<9.
+$$
+
+Escribe una negación matemáticamente natural de $P$ y determina su valor de verdad.
+
+**Solución.** Una formulación directa es:
+
+> «No ocurre que $12<9$».
+
+También podemos expresarla, usando el lenguaje usual del orden, como
+
+$$
+12\ge 9.
+$$
+
+Como $12<9$ es falsa, $\neg P$ es verdadera.
+
+### Problema de práctica 2
+
+Escribe la negación de cada proposición sin limitarte a anteponer mecánicamente la palabra «no»:
+
+1. 7 es primo.
+2. $12<9$.
+3. El triángulo es equilátero.
+
+## 1.2.3 Conjunción
+
+::: {.callout-important title="Definición"}
+Si $P$ y $Q$ son fórmulas, la **conjunción**
+
+$$
+P\land Q
+$$
+
+se lee «$P$ y $Q$».
+
+Es verdadera exactamente cuando $P$ y $Q$ son ambas verdaderas.
+
+| $P$ | $Q$ | $P\land Q$ |
+|---|---|---|
+| V | V | V |
+| V | F | F |
+| F | V | F |
+| F | F | F |
+:::
+
+### Ejemplo 3
+
+Sea
+
+$$
+P:\quad 18\text{ es par},\qquad Q:\quad 18\text{ es divisible por }3.
+$$
+
+Ambas proposiciones son verdaderas, por lo que
+
+$$
+P\land Q
+$$
+
+es verdadera.
+
+En español matemático, la conjunción no siempre aparece mediante la palabra «y». Expresiones como «pero», «aunque» o «además» pueden unir dos afirmaciones sin modificar las condiciones de verdad de la conjunción.
+
+### Ejemplo guiado 1.2-C
+
+Sea
+
+$$
+P:\quad 15\text{ es impar},\qquad Q:\quad 15<10.
+$$
+
+Determina el valor de verdad de $P\land Q$.
+
+**Solución.** Tenemos
+
+$$
+P=V,\qquad Q=F.
+$$
+
+La conjunción exige que ambas componentes sean verdaderas. Por tanto:
+
+$$
+P\land Q=F.
+$$
+
+## 1.2.4 Disyunción
+
+::: {.callout-important title="Definición"}
+Si $P$ y $Q$ son fórmulas, la **disyunción**
+
+$$
+P\lor Q
+$$
+
+se lee «$P$ o $Q$».
+
+En la lógica proposicional clásica, es verdadera cuando al menos una de las dos fórmulas es verdadera, incluida la posibilidad de que ambas lo sean.
+
+| $P$ | $Q$ | $P\lor Q$ |
+|---|---|---|
+| V | V | V |
+| V | F | V |
+| F | V | V |
+| F | F | F |
+:::
+
+::: {.callout-warning title="Atención"}
+En el lenguaje cotidiano, «o» puede tener un uso exclusivo. Por ejemplo, en cierto contexto «puedes elegir café o té» puede querer decir que se elige exactamente una opción.
+
+En este libro
+
+$$
+P\lor Q
+$$
+
+designará siempre la **disyunción inclusiva**: permite que $P$ y $Q$ sean simultáneamente verdaderas.
+:::
+
+### Ejemplo 4
+
+Consideremos
+
+$$
+P:\quad 6\text{ es par},\qquad Q:\quad 6\text{ es divisible por }3.
+$$
+
+Entonces
+
+$$
+P\lor Q
+$$
+
+es verdadera. De hecho, ambas proposiciones son verdaderas, y eso no invalida la disyunción.
+
+### Ejemplo guiado 1.2-D
+
+Sean
+
+$$
+P=F,\qquad Q=F.
+$$
+
+¿Qué valor tiene $P\lor Q$?
+
+**Solución.** Una disyunción inclusiva es falsa solo cuando ninguna de sus componentes es verdadera. Como $P=F$ y $Q=F$, obtenemos:
+
+$$
+P\lor Q=F.
+$$
+
+### Problema de práctica 3
+
+Sean
+
+$$
+P:\quad 15\text{ es par},\qquad Q:\quad 15\text{ es divisible por }5.
+$$
+
+Determina el valor de verdad de
+
+$$
+\neg P,\qquad P\land Q,\qquad P\lor Q,\qquad \neg Q.
+$$
+
+## 1.2.5 Sintaxis y semántica
+
+Ya podemos distinguir dos niveles de análisis.
+
+::: {.callout-important title="Definición"}
+La **sintaxis** estudia cómo está construida una fórmula: qué símbolos aparecen, cómo se combinan y qué estructura determinan los paréntesis.
+
+La **semántica** estudia el significado lógico de la fórmula y, en particular, qué valor de verdad recibe cuando conocemos los valores de sus componentes.
+:::
+
+Por ejemplo,
+
+$$
+\neg(P\land Q)
+$$
+
+puede estar perfectamente bien construida aunque todavía no sepamos si es verdadera o falsa.
+
+### Ejemplo guiado 1.2-E
+
+Considere
+
+$$
+\neg(P\lor Q).
+$$
+
+¿Qué podemos saber de ella sin conocer los valores de verdad de $P$ y $Q$?
+
+**Solución.** Podemos analizar su sintaxis. Sabemos que
+
+$$
+P\lor Q
+$$
+
+es una fórmula construida mediante disyunción, y que después se aplica una negación a la fórmula completa:
+
+$$
+\neg(P\lor Q).
+$$
+
+Sin conocer
+
+$$
+P=V\text{ o }F,\qquad Q=V\text{ o }F,
+$$
+
+no podemos todavía determinar el valor de verdad de la fórmula completa. Así:
+
+> **la estructura sintáctica puede analizarse antes que el valor semántico.**
+
+## 1.2.6 Reglas de formación
+
+Los símbolos no pueden combinarse arbitrariamente. Para las conectivas disponibles hasta este punto fijaremos reglas recursivas simples. Usaremos $\varphi$ y $\psi$ como letras que representan fórmulas cualesquiera.
+
+::: {.callout-important title="Definición"}
+Las **fórmulas bien formadas** de nuestro lenguaje actual se construyen así:
+
+1. Toda letra proposicional $P,Q,R,\ldots$ es una fórmula.
+2. Si $\varphi$ es una fórmula, entonces $\neg\varphi$ es una fórmula.
+3. Si $\varphi$ y $\psi$ son fórmulas, entonces $(\varphi\land\psi)$ y $(\varphi\lor\psi)$ son fórmulas.
+4. Nada más se considera una fórmula por estas reglas.
+:::
+
+La cuarta cláusula es importante: no basta con utilizar símbolos lógicos correctos; deben aparecer en una estructura autorizada por las reglas.
+
+### Ejemplo guiado 1.2-F
+
+Decide cuáles de las siguientes cadenas son fórmulas bien formadas:
+
+$$
+\neg P,\qquad (P\land Q),\qquad \neg(P\lor Q),\qquad P\neg Q,\qquad P\land\lor Q.
+$$
+
+**Solución.** Son fórmulas:
+
+$$
+\neg P,\qquad (P\land Q),\qquad \neg(P\lor Q).
+$$
+
+En cambio, $P\neg Q$ no está autorizado por ninguna regla de formación: la negación debe preceder a una fórmula y no funciona como conectiva binaria entre $P$ y $Q$.
+
+Tampoco $P\land\lor Q$ es fórmula, porque después de $\land$ debería aparecer una fórmula completa, y $\lor Q$ no lo es.
+
+Por tanto:
+
+> **símbolos lógicos correctos pueden formar una cadena sintácticamente incorrecta.**
+
+::: {.callout-warning title="Atención"}
+«Bien formada» y «verdadera» son propiedades distintas.
+
+Una fórmula bien formada puede ser verdadera o falsa. Una cadena mal formada no recibe simplemente el valor «falso»: antes de evaluar su verdad, falla ya como expresión del lenguaje.
+:::
+
+## 1.2.7 Subfórmulas
+
+Una fórmula compleja contiene fórmulas más pequeñas como partes estructurales.
+
+::: {.callout-important title="Definición"}
+Una **subfórmula** de una fórmula $\varphi$ es una fórmula que aparece como uno de los componentes utilizados en su construcción recursiva.
+
+La propia fórmula completa cuenta también como subfórmula de sí misma.
+:::
+
+### Ejemplo guiado 1.2-G
+
+Identifica las subfórmulas de
+
+$$
+\neg(P\land Q).
+$$
+
+**Solución.** La construcción ocurre por etapas. $P$ y $Q$ son fórmulas básicas. A partir de ellas formamos
+
+$$
+P\land Q.
+$$
+
+Finalmente negamos esa fórmula:
+
+$$
+\neg(P\land Q).
+$$
+
+Por tanto, las subfórmulas son
+
+$$
+P,\qquad Q,\qquad P\land Q,\qquad \neg(P\land Q).
+$$
+
+## 1.2.8 Conectiva principal
+
+En una fórmula compuesta, la última operación utilizada para construirla determina su nivel exterior.
+
+::: {.callout-important title="Definición"}
+La **conectiva principal** de una fórmula compuesta es la conectiva aplicada en el último paso de su construcción.
+:::
+
+Por ejemplo, en
+
+$$
+\neg(P\land Q)
+$$
+
+la conectiva principal es $\neg$.
+
+En
+
+$$
+P\land(Q\lor R)
+$$
+
+la conectiva principal es $\land$.
+
+### Ejemplo guiado 1.2-H
+
+Identifica la conectiva principal de
+
+$$
+\neg(P\lor Q),\qquad (\neg P)\land Q,\qquad P\lor(Q\land R).
+$$
+
+**Solución.** En $\neg(P\lor Q)$, la última operación es negar $P\lor Q$. La conectiva principal es $\neg$.
+
+En $(\neg P)\land Q$, primero formamos $\neg P$ y después la conjunción con $Q$. La conectiva principal es $\land$.
+
+En $P\lor(Q\land R)$, primero aparece la conjunción $Q\land R$ y finalmente la disyunción con $P$. La conectiva principal es $\lor$.
+
+## 1.2.9 Alcance y paréntesis
+
+El alcance de una conectiva indica qué parte de la fórmula está gobernada por ella. Esta idea es especialmente importante para la negación.
+
+Compare
+
+$$
+\neg(P\land Q)
+$$
+
+con
+
+$$
+(\neg P)\land Q.
+$$
+
+En la primera fórmula, la negación afecta a $P\land Q$. En la segunda, afecta solamente a $P$.
+
+::: {.callout-important title="Definición"}
+En una fórmula $\neg\varphi$, el **alcance de la negación** es la subfórmula $\varphi$ que aparece inmediatamente después de $\neg$.
+:::
+
+Adoptaremos la convención de que $\neg$ tiene prioridad sobre $\land$ y $\lor$. Así,
+
+$$
+\neg P\land Q
+$$
+
+se leerá como
+
+$$
+(\neg P)\land Q.
+$$
+
+No obstante, utilizaremos paréntesis siempre que hagan más visible la estructura.
+
+### Ejemplo 5
+
+Sean
+
+$$
+S:\quad \text{«Ana estudia»},\qquad L:\quad \text{«Ana lee»}.
+$$
+
+Entonces:
+
+$$
+(\neg S)\land L:\quad \text{«Ana no estudia y lee»},
+$$
+
+$$
+\neg(S\land L):\quad \text{«No ocurre que Ana estudie y lea»},
+$$
+
+$$
+S\lor L:\quad \text{«Ana estudia o lee, o ambas cosas»}.
+$$
+
+### Ejemplo guiado 1.2-I
+
+Compara
+
+$$
+\neg(P\lor Q)
+$$
+
+y
+
+$$
+(\neg P)\lor Q.
+$$
+
+Supón
+
+$$
+P=F,\qquad Q=V.
+$$
+
+Calcula el valor de ambas.
+
+**Solución.** Primero,
+
+$$
+P\lor Q=V.
+$$
+
+Por tanto,
+
+$$
+\neg(P\lor Q)=F.
+$$
+
+En la segunda fórmula,
+
+$$
+\neg P=V,
+$$
+
+y
+
+$$
+(\neg P)\lor Q=V\lor V=V.
+$$
+
+Así,
+
+$$
+\neg(P\lor Q)=F,\qquad (\neg P)\lor Q=V.
+$$
+
+Los paréntesis no son decoración: determinan una estructura diferente y, en este caso, un valor de verdad diferente.
+
+## 1.2.10 Un esquema sintáctico jerárquico
+
+Sin introducir todavía diagramas gráficos, podemos representar la estructura de una fórmula mediante sangrado.
+
+Para
+
+$$
+\neg\bigl(P\lor(Q\land R)\bigr)
+$$
+
+la construcción puede leerse así:
+
+```text
+negación
+└─ disyunción
+   ├─ P
+   └─ conjunción
+      ├─ Q
+      └─ R
+```
+
+El nivel más exterior corresponde a la conectiva principal.
+
+### Ejemplo guiado 1.2-J
+
+Describe jerárquicamente
+
+$$
+(P\land\neg Q)\lor R.
+$$
+
+**Solución.** La conectiva principal es $\lor$. Su componente izquierda es $P\land\neg Q$, cuya conectiva principal es $\land$. Dentro de ella aparecen $P$ y $\neg Q$. El componente derecho de la disyunción exterior es $R$.
+
+El esquema es:
+
+```text
+disyunción
+├─ conjunción
+│  ├─ P
+│  └─ negación
+│     └─ Q
+└─ R
+```
+
+## 1.2.11 Traducir del lenguaje natural a símbolos
+
+La simbolización no consiste en reemplazar palabras de manera mecánica. Primero debemos identificar las afirmaciones componentes y después decidir cómo se agrupan.
+
+### Ejemplo guiado 1.2-K
+
+Sean
+
+$$
+P:\quad \text{«el número es positivo»},
+$$
+
+$$
+Q:\quad \text{«el número es entero»}.
+$$
+
+Traduce:
+
+1. El número es positivo y entero.
+2. El número no es positivo.
+3. El número es positivo o entero.
+4. No ocurre que el número sea positivo y entero.
+
+**Solución.** Obtenemos:
+
+1. $P\land Q$.
+2. $\neg P$.
+3. $P\lor Q$.
+4. $\neg(P\land Q)$.
+
+El último caso muestra por qué es necesario identificar primero qué expresión completa queda dentro del alcance de «no ocurre que».
+
+## 1.2.12 Una ambigüedad lingüística frecuente
+
+Considere la frase:
+
+> «No $P$ y $Q$».
+
+Sin contexto o puntuación, puede intentar expresar
+
+$$
+(\neg P)\land Q,
+$$
+
+pero alguien podría haber querido decir
+
+$$
+\neg(P\land Q).
+$$
+
+La notación simbólica obliga a resolver la ambigüedad.
+
+::: {.callout-warning title="Atención"}
+No debemos traducir una frase ambigua como si su estructura lógica estuviera determinada de antemano.
+
+Primero debemos aclarar qué se pretende negar y qué componentes se están combinando. Después simbolizamos.
+:::
+
+### Problema de práctica 4
+
+Sean
+
+$$
+P:\quad \text{«el número es positivo»},\qquad Q:\quad \text{«el número es entero»}.
+$$
+
+Traduce a símbolos:
+
+1. El número es positivo y entero.
+2. El número no es positivo.
+3. El número es positivo o entero.
+4. No ocurre que el número sea positivo y entero.
+
+### Problema de práctica 1.2-A
+
+Para cada fórmula
+
+$$
+\neg(P\land Q),\qquad (\neg P)\lor Q,\qquad P\land(Q\lor R),
+$$
+
+indica:
+
+1. su conectiva principal;
+2. el alcance de cada negación;
+3. sus subfórmulas inmediatas.
+
+### Problema de práctica 1.2-B
+
+Decide cuáles de las siguientes cadenas son fórmulas bien formadas. Justifica usando las reglas de formación:
+
+$$
+\neg(P\lor Q),\qquad (P\land\neg Q),\qquad P\neg Q,\qquad \neg\land P,\qquad (P\lor(Q\land R)).
+$$
+
+::: {.callout-tip title="Mirada hacia adelante"}
+Más adelante veremos una correspondencia estructural muy importante. Cuando una propiedad $P(x)$ determina un conjunto de objetos para los que es verdadera, las operaciones lógicas
+
+$$
+\land,\qquad \lor,\qquad \neg
+$$
+
+se reflejan en operaciones entre conjuntos como intersección, unión y complemento.
+
+No identificaremos todavía unas con otras: primero desarrollaremos cada lenguaje por separado.
+:::
+
+## Soluciones de los problemas de práctica
+
+### Problema de práctica 2
+
+1. 7 no es primo.
+2. No ocurre que $12<9$; equivalentemente, $12\ge 9$.
+3. El triángulo no es equilátero.
+
+### Problema de práctica 3
+
+Como $P$ es falsa y $Q$ es verdadera:
+
+$$
+\neg P:V,\qquad P\land Q:F,\qquad P\lor Q:V,\qquad \neg Q:F.
+$$
+
+### Problema de práctica 4
+
+1. $P\land Q$.
+2. $\neg P$.
+3. $P\lor Q$.
+4. $\neg(P\land Q)$.
+
+### Problema de práctica 1.2-A
+
+Para $\neg(P\land Q)$, la conectiva principal es $\neg$; su alcance es $P\land Q$; y la subfórmula inmediata bajo la negación es precisamente $P\land Q$.
+
+Para $(\neg P)\lor Q$, la conectiva principal es $\lor$; la negación tiene alcance $P$; y las dos subfórmulas inmediatas de la disyunción son $\neg P$ y $Q$.
+
+Para $P\land(Q\lor R)$, la conectiva principal es $\land$; no hay negación; y las subfórmulas inmediatas son $P$ y $Q\lor R$.
+
+### Problema de práctica 1.2-B
+
+Son fórmulas bien formadas:
+
+$$
+\neg(P\lor Q),\qquad (P\land\neg Q),\qquad (P\lor(Q\land R)).
+$$
+
+No son fórmulas $P\neg Q$, porque $\neg$ no es una conectiva binaria que pueda colocarse entre dos fórmulas, y $\neg\land P$, porque después de $\neg$ debe aparecer una fórmula completa y $\land P$ no lo es.
+
+# Ejercicios de la sección 1.2
+
+1. Sean $P$ verdadera y $Q$ falsa. Determina el valor de verdad de $\neg P$, $\neg Q$, $P\land Q$, $P\lor Q$, $(\neg P)\lor Q$.
+2. Sean $P=F$, $Q=V$, $R=F$. Calcula, respetando la estructura de cada fórmula: $\neg(P\lor R)$, $(\neg P)\land Q$, $P\lor(Q\land\neg R)$.
+3. Escribe en español: $P\land\neg Q$, $\neg(P\lor Q)$, $(P\land Q)\lor R$, $P\land(Q\lor R)$.
+4. Traduce a símbolos, definiendo primero tus letras proposicionales:
+   a. «El entero es positivo y par».
+   b. «El conjunto no es vacío».
+   c. «La función es continua o constante».
+   d. «No ocurre que la función sea continua y constante».
+5. Explica por qué $P\lor Q$ puede ser verdadera cuando $P$ y $Q$ son ambas verdaderas.
+6. **Verdadero o falso, con justificación.**
+   a. Si $P$ es falsa, $\neg P$ es verdadera.
+   b. $P\land Q$ es verdadera si al menos una de las dos componentes es verdadera.
+   c. $P\lor Q$ es falsa únicamente cuando ambas componentes son falsas.
+   d. Una fórmula bien formada debe ser verdadera.
+   e. Una cadena mal formada debe considerarse una proposición falsa.
+7. **Encontrar el error.** Un estudiante traduce «No ocurre que $P$ y $Q$» como $(\neg P)\land Q$. Explica el error y escribe la fórmula correcta.
+8. **Encontrar el error.** Un estudiante afirma que $P\neg Q$ «es falsa». Explica por qué el diagnóstico correcto debe hacerse antes de hablar de verdad o falsedad.
+9. Decide cuáles de las siguientes cadenas son fórmulas bien formadas: $\neg(P\lor Q)$, $P\neg Q$, $(P\land Q)\lor\neg R$, $P\land\lor Q$, $\neg\neg P$. Justifica usando las reglas de formación.
+10. Construye, paso a paso, la fórmula $\neg(P\land(Q\lor R))$. Indica qué fórmulas deben construirse antes de llegar a la fórmula completa.
+11. Lista todas las subfórmulas de $\neg(P\lor Q)$.
+12. Lista todas las subfórmulas de $P\land(Q\lor R)$.
+13. Identifica la conectiva principal de $\neg(P\land Q)$, $(\neg P)\land Q$, $P\lor(Q\land R)$, $(P\lor Q)\land R$.
+14. Determina el alcance de cada negación en $\neg(P\lor Q)$, $(\neg P)\lor(\neg Q)$, $\neg(P\land(\neg Q))$.
+15. Compara $\neg(P\lor Q)$ con $(\neg P)\lor Q$. Elige valores de verdad para $P$ y $Q$ que hagan que las fórmulas reciban valores distintos.
+16. Representa mediante un esquema jerárquico textual la estructura de $\neg(P\lor(Q\land R))$.
+17. Explica la diferencia entre las preguntas «¿está bien formada?» y «¿es verdadera?». Da un ejemplo que muestre por qué la primera debe responderse antes que la segunda.
+18. Da un ejemplo cotidiano de «o» usado de manera exclusiva y otro en el que resulte natural una lectura inclusiva. Explica por qué $\lor$ necesita una convención matemática fija.
+19. Sean $P=V$, $Q=F$, $R=V$. Evalúa $(P\land Q)\lor R$ y $P\land(Q\lor R)$. Muestra los pasos intermedios.
+20. **Síntesis.** Para
+
+$$
+\varphi=\neg\bigl(P\lor(Q\land R)\bigr),
+$$
+
+realiza las siguientes tareas:
+   a. demuestra que está bien formada reconstruyendo sus pasos de formación;
+   b. identifica su conectiva principal;
+   c. indica el alcance de la negación exterior;
+   d. enumera sus subfórmulas;
+   e. suponiendo $P=F$, $Q=V$, $R=F$, calcula su valor de verdad de adentro hacia afuera;
+   f. explica en una frase qué parte del análisis fue sintáctica y qué parte fue semántica.
+
+# Soluciones completas de los ejercicios de la sección 1.2
+
+## 1
+
+Como $P=V$ y $Q=F$,
+
+$$
+\neg P=F,\qquad \neg Q=V,\qquad P\land Q=F,\qquad P\lor Q=V.
+$$
+
+Además, $\neg P=F$, por lo que
+
+$$
+(\neg P)\lor Q=F\lor F=F.
+$$
+
+## 2
+
+Tenemos $P=F$, $Q=V$, $R=F$.
+
+Primero,
+
+$$
+P\lor R=F\lor F=F,
+$$
+
+de modo que
+
+$$
+\neg(P\lor R)=V.
+$$
+
+Después,
+
+$$
+\neg P=V,
+$$
+
+así que
+
+$$
+(\neg P)\land Q=V\land V=V.
+$$
+
+Finalmente,
+
+$$
+\neg R=V,
+$$
+
+$$
+Q\land\neg R=V\land V=V,
+$$
+
+y
+
+$$
+P\lor(Q\land\neg R)=F\lor V=V.
+$$
+
+## 3
+
+Una lectura posible es:
+
+- $P\land\neg Q$: «$P$ y no $Q$»;
+- $\neg(P\lor Q)$: «No ocurre que $P$ o $Q$»;
+- $(P\land Q)\lor R$: «$P$ y $Q$, o bien $R$»;
+- $P\land(Q\lor R)$: «$P$, y además $Q$ o $R$».
+
+Los paréntesis determinan qué componentes se agrupan.
+
+## 4
+
+Una elección posible es:
+
+$$
+P:\quad \text{«el entero es positivo»},\qquad Q:\quad \text{«el entero es par»}.
+$$
+
+Entonces (a) es $P\land Q$.
+
+Para
+
+$$
+R:\quad \text{«el conjunto es vacío»},
+$$
+
+obtenemos (b) $\neg R$.
+
+Sean
+
+$$
+C:\quad \text{«la función es continua»},\qquad K:\quad \text{«la función es constante»}.
+$$
+
+Entonces (c) es $C\lor K$, y (d) es $\neg(C\land K)$.
+
+## 5
+
+Nuestra convención para $\lor$ es inclusiva. Esto significa que $P\lor Q$ es verdadera siempre que al menos una componente sea verdadera.
+
+Si ambas son verdaderas, la condición «al menos una» sigue cumpliéndose. Por tanto:
+
+$$
+V\lor V=V.
+$$
+
+## 6
+
+1. **Verdadero.** La negación invierte el valor de verdad.
+2. **Falso.** La conjunción exige que ambas componentes sean verdaderas.
+3. **Verdadero.** Esa es exactamente la única fila falsa de la disyunción inclusiva.
+4. **Falso.** «Bien formada» es una propiedad sintáctica; una fórmula bien formada puede ser falsa.
+5. **Falso.** Una cadena mal formada no recibe simplemente el valor falso: antes falla como fórmula del lenguaje.
+
+## 7
+
+La frase «No ocurre que $P$ y $Q$» niega la conjunción completa $P\land Q$. Por tanto, la fórmula correcta es
+
+$$
+\neg(P\land Q).
+$$
+
+En $(\neg P)\land Q$, solo se niega $P$, mientras $Q$ queda fuera del alcance de la negación.
+
+## 8
+
+La cadena $P\neg Q$ no está autorizada por las reglas de formación.
+
+La negación $\neg$ es unaria: debe aplicarse a una fórmula, como $\neg Q$. No puede insertarse entre $P$ y $Q$ como si fuera una conectiva binaria.
+
+Por tanto, el diagnóstico correcto es **cadena mal formada**, no «proposición falsa».
+
+## 9
+
+- $\neg(P\lor Q)$ es fórmula: primero formamos $P\lor Q$ y luego la negamos.
+- $P\neg Q$ no es fórmula.
+- $(P\land Q)\lor\neg R$ es fórmula: $P\land Q$ y $\neg R$ son fórmulas, y luego se forma su disyunción.
+- $P\land\lor Q$ no es fórmula, porque $\lor Q$ no es una fórmula completa.
+- $\neg\neg P$ sí es fórmula: $P$ es fórmula, luego $\neg P$ y después $\neg(\neg P)$.
+
+## 10
+
+La construcción puede organizarse así:
+
+1. $P$, $Q$ y $R$ son fórmulas.
+2. A partir de $Q$ y $R$, formamos $Q\lor R$.
+3. A partir de $P$ y $Q\lor R$, formamos $P\land(Q\lor R)$.
+4. Finalmente negamos la fórmula completa:
+
+$$
+\neg(P\land(Q\lor R)).
+$$
+
+## 11
+
+Para $\neg(P\lor Q)$, las subfórmulas son
+
+$$
+P,\qquad Q,\qquad P\lor Q,\qquad \neg(P\lor Q).
+$$
+
+## 12
+
+Para $P\land(Q\lor R)$, las subfórmulas son
+
+$$
+P,\qquad Q,\qquad R,\qquad Q\lor R,\qquad P\land(Q\lor R).
+$$
+
+## 13
+
+- En $\neg(P\land Q)$, la conectiva principal es $\neg$.
+- En $(\neg P)\land Q$, es $\land$.
+- En $P\lor(Q\land R)$, es $\lor$.
+- En $(P\lor Q)\land R$, es $\land$.
+
+## 14
+
+En $\neg(P\lor Q)$, el alcance de la negación es $P\lor Q$.
+
+En $(\neg P)\lor(\neg Q)$, la primera negación tiene alcance $P$ y la segunda $Q$.
+
+En $\neg(P\land(\neg Q))$, la negación exterior tiene alcance $P\land(\neg Q)$, mientras que la negación interior tiene alcance $Q$.
+
+## 15
+
+Tomemos
+
+$$
+P=F,\qquad Q=V.
+$$
+
+Entonces
+
+$$
+P\lor Q=V,
+$$
+
+y
+
+$$
+\neg(P\lor Q)=F.
+$$
+
+Por otro lado,
+
+$$
+\neg P=V,
+$$
+
+y
+
+$$
+(\neg P)\lor Q=V\lor V=V.
+$$
+
+Así las dos fórmulas reciben valores distintos.
+
+## 16
+
+Para
+
+$$
+\neg\bigl(P\lor(Q\land R)\bigr),
+$$
+
+un esquema jerárquico es:
+
+```text
+negación
+└─ disyunción
+   ├─ P
+   └─ conjunción
+      ├─ Q
+      └─ R
+```
+
+La negación es la capa exterior; dentro aparece una disyunción y, en su componente derecha, una conjunción.
+
+## 17
+
+«¿Está bien formada?» es una pregunta sintáctica: examina si la cadena fue construida según las reglas del lenguaje.
+
+«¿Es verdadera?» es una pregunta semántica: presupone que ya tenemos una fórmula y pregunta por su valor de verdad bajo cierta asignación.
+
+Por ejemplo, $P\land\lor Q$ falla en la primera pregunta. No corresponde pasar a la segunda y llamarla «falsa».
+
+## 18
+
+Un uso posiblemente exclusivo es:
+
+> «Elige como postre helado o fruta».
+
+En cierto contexto puede significar que se elige una sola opción.
+
+Un uso naturalmente inclusivo es:
+
+> «Puede inscribirse quien haya cursado álgebra o geometría».
+
+Una persona que haya cursado ambas normalmente sigue cumpliendo la condición.
+
+La matemática necesita evitar que el contexto cambie las condiciones de verdad. Por eso fijamos $\lor$ como disyunción inclusiva.
+
+## 19
+
+Tenemos
+
+$$
+P=V,\qquad Q=F,\qquad R=V.
+$$
+
+Primero,
+
+$$
+P\land Q=V\land F=F.
+$$
+
+Entonces
+
+$$
+(P\land Q)\lor R=F\lor V=V.
+$$
+
+Para la segunda fórmula,
+
+$$
+Q\lor R=F\lor V=V,
+$$
+
+y
+
+$$
+P\land(Q\lor R)=V\land V=V.
+$$
+
+En esta asignación ambas fórmulas resultan verdaderas, aunque su estructura sintáctica sea diferente.
+
+## 20
+
+**(a)** Comenzamos con $P$, $Q$ y $R$. Formamos $Q\land R$. Después formamos
+
+$$
+P\lor(Q\land R).
+$$
+
+Finalmente:
+
+$$
+\neg\bigl(P\lor(Q\land R)\bigr).
+$$
+
+Así $\varphi$ está bien formada.
+
+**(b)** La conectiva principal es $\neg$.
+
+**(c)** El alcance de la negación exterior es $P\lor(Q\land R)$.
+
+**(d)** Las subfórmulas son
+
+$$
+P,\qquad Q,\qquad R,\qquad Q\land R,\qquad P\lor(Q\land R),\qquad \neg\bigl(P\lor(Q\land R)\bigr).
+$$
+
+**(e)** Supongamos
+
+$$
+P=F,\qquad Q=V,\qquad R=F.
+$$
+
+Entonces
+
+$$
+Q\land R=V\land F=F.
+$$
+
+Después,
+
+$$
+P\lor(Q\land R)=F\lor F=F.
+$$
+
+Finalmente,
+
+$$
+\varphi=\neg F=V.
+$$
+
+**(f)** Reconstruir los pasos de formación, identificar la conectiva principal, el alcance y las subfórmulas fue análisis sintáctico. Asignar $V$, $F$ y calcular el valor de verdad fue análisis semántico.
+
+::: {.callout-note title="Registro de dependencias"}
+Esta sección introduce y deja disponibles:
+
+- las conectivas $\neg$, $\land$, $\lor$;
+- sus condiciones de verdad;
+- la disyunción inclusiva;
+- la distinción entre sintaxis y semántica;
+- reglas recursivas elementales de formación;
+- fórmula bien formada;
+- subfórmula;
+- conectiva principal;
+- alcance de una negación;
+- uso estructural de paréntesis;
+- traducción elemental entre lenguaje natural y símbolos.
+
+Todavía no se han introducido como herramientas:
+
+- equivalencia lógica;
+- leyes de De Morgan;
+- tautologías, contradicciones y contingencias;
+- implicación;
+- bicondicional.
+
+La siguiente sección desarrollará tablas de verdad completas y utilizará ese procedimiento para definir equivalencia lógica y justificar sistemáticamente leyes entre fórmulas.
+:::
+
 ---
 
-**Siguiente sección:** 1.2 — Negación, conjunción y disyunción.
+**Siguiente sección:** 1.3 — Tablas de verdad y equivalencia lógica.
