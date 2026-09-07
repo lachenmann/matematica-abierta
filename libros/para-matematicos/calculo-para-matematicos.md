@@ -24,7 +24,8 @@ topics:
   - integracion
   - ecuaciones-diferenciales
 prerequisites: []
-related: []
+related:
+  - MA-BCH-0001
 provenance:
   type: synthesis
   sources: []
@@ -78,6 +79,12 @@ La primera parte está organizada actualmente así:
 
 Los capítulos posteriores desarrollarán derivación, aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
 
+## Capítulos publicados
+
+1. [**Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones**](../capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md) (`MA-BCH-0001`).
+
+El primer capítulo inaugura también la publicación coordinada de [Métodos y técnicas](../../teoria/metodos/index.qmd) y de problemas independientes asociados a las estrategias de demostración.
+
 ## Publicación progresiva
 
 El libro no necesita estar terminado para ser útil. Cada capítulo se publica cuando supera su revisión editorial y matemática; el volumen completo puede continuar en desarrollo mientras sus partes ya cerradas permanecen disponibles.
@@ -93,6 +100,6 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública del libro queda abierta con esta página. Los primeros capítulos se incorporarán progresivamente a medida que sean reescritos y auditados para publicación abierta.
+La edición pública está abierta y ya contiene su primer capítulo completo. Los capítulos siguientes se incorporarán progresivamente a medida que sean reescritos y auditados para publicación abierta.
 
-Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver los capítulos que ya estén disponibles.
+Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
