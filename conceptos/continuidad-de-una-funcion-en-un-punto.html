@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Cómo formalizar la continuidad en un punto, relacionarla con el límite, tratar puntos aislados y extremos del dominio, y demostrar su estabilidad bajo operaciones algebraicas y composición.">
+
+<title>Continuidad de una función en un punto – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-edd7520df32f0843e2a37d67594353f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ae1f6155afccd62564ec1af108321d5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Matemática Abierta</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-continuidad-sólo-se-pregunta-en-puntos-del-dominio" id="toc-la-continuidad-sólo-se-pregunta-en-puntos-del-dominio" class="nav-link active" data-scroll-target="#la-continuidad-sólo-se-pregunta-en-puntos-del-dominio">La continuidad sólo se pregunta en puntos del dominio</a></li>
+  <li><a href="#definición-épsilon-delta" id="toc-definición-épsilon-delta" class="nav-link" data-scroll-target="#definición-épsilon-delta">Definición épsilon-delta</a></li>
+  <li><a href="#por-qué-aquí-no-aparece-0x-a" id="toc-por-qué-aquí-no-aparece-0x-a" class="nav-link" data-scroll-target="#por-qué-aquí-no-aparece-0x-a">Por qué aquí no aparece <span class="math inline">\(0&lt;|x-a|\)</span></a></li>
+  <li><a href="#interpretación-mediante-intervalos" id="toc-interpretación-mediante-intervalos" class="nav-link" data-scroll-target="#interpretación-mediante-intervalos">Interpretación mediante intervalos</a></li>
+  <li><a href="#relación-fundamental-entre-continuidad-y-límite" id="toc-relación-fundamental-entre-continuidad-y-límite" class="nav-link" data-scroll-target="#relación-fundamental-entre-continuidad-y-límite">Relación fundamental entre continuidad y límite</a>
+  <ul class="collapse">
+  <li><a href="#demostración-continuidad-implica-límite" id="toc-demostración-continuidad-implica-límite" class="nav-link" data-scroll-target="#demostración-continuidad-implica-límite">Demostración: continuidad implica límite</a></li>
+  <li><a href="#demostración-límite-igual-al-valor-implica-continuidad" id="toc-demostración-límite-igual-al-valor-implica-continuidad" class="nav-link" data-scroll-target="#demostración-límite-igual-al-valor-implica-continuidad">Demostración: límite igual al valor implica continuidad</a></li>
+  </ul></li>
+  <li><a href="#las-tres-condiciones-prácticas" id="toc-las-tres-condiciones-prácticas" class="nav-link" data-scroll-target="#las-tres-condiciones-prácticas">Las tres condiciones prácticas</a></li>
+  <li><a href="#puntos-aislados-continuidad-automática" id="toc-puntos-aislados-continuidad-automática" class="nav-link" data-scroll-target="#puntos-aislados-continuidad-automática">Puntos aislados: continuidad automática</a>
+  <ul class="collapse">
+  <li><a href="#demostración" id="toc-demostración" class="nav-link" data-scroll-target="#demostración">Demostración</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-épsilon-delta-una-función-lineal" id="toc-ejemplo-épsilon-delta-una-función-lineal" class="nav-link" data-scroll-target="#ejemplo-épsilon-delta-una-función-lineal">Ejemplo épsilon-delta: una función lineal</a></li>
+  <li><a href="#continuidad-en-extremos-del-dominio" id="toc-continuidad-en-extremos-del-dominio" class="nav-link" data-scroll-target="#continuidad-en-extremos-del-dominio">Continuidad en extremos del dominio</a></li>
+  <li><a href="#qué-puede-fallar" id="toc-qué-puede-fallar" class="nav-link" data-scroll-target="#qué-puede-fallar">Qué puede fallar</a>
+  <ul class="collapse">
+  <li><a href="#el-límite-existe-pero-no-coincide-con-el-valor" id="toc-el-límite-existe-pero-no-coincide-con-el-valor" class="nav-link" data-scroll-target="#el-límite-existe-pero-no-coincide-con-el-valor">El límite existe pero no coincide con el valor</a></li>
+  <li><a href="#el-límite-no-existe" id="toc-el-límite-no-existe" class="nav-link" data-scroll-target="#el-límite-no-existe">El límite no existe</a></li>
+  </ul></li>
+  <li><a href="#discontinuidad-removible-y-extensión-continua" id="toc-discontinuidad-removible-y-extensión-continua" class="nav-link" data-scroll-target="#discontinuidad-removible-y-extensión-continua">Discontinuidad removible y extensión continua</a></li>
+  <li><a href="#continuidad-y-operaciones-algebraicas" id="toc-continuidad-y-operaciones-algebraicas" class="nav-link" data-scroll-target="#continuidad-y-operaciones-algebraicas">Continuidad y operaciones algebraicas</a></li>
+  <li><a href="#polinomios-y-funciones-racionales" id="toc-polinomios-y-funciones-racionales" class="nav-link" data-scroll-target="#polinomios-y-funciones-racionales">Polinomios y funciones racionales</a></li>
+  <li><a href="#continuidad-del-valor-absoluto" id="toc-continuidad-del-valor-absoluto" class="nav-link" data-scroll-target="#continuidad-del-valor-absoluto">Continuidad del valor absoluto</a></li>
+  <li><a href="#composición-de-funciones-continuas" id="toc-composición-de-funciones-continuas" class="nav-link" data-scroll-target="#composición-de-funciones-continuas">Composición de funciones continuas</a>
+  <ul class="collapse">
+  <li><a href="#demostración-1" id="toc-demostración-1" class="nav-link" data-scroll-target="#demostración-1">Demostración</a></li>
+  </ul></li>
+  <li><a href="#las-funciones-continuas-pueden-pasar-a-través-del-límite" id="toc-las-funciones-continuas-pueden-pasar-a-través-del-límite" class="nav-link" data-scroll-target="#las-funciones-continuas-pueden-pasar-a-través-del-límite">Las funciones continuas pueden pasar a través del límite</a></li>
+  <li><a href="#la-continuidad-preserva-localmente-una-desigualdad-estricta" id="toc-la-continuidad-preserva-localmente-una-desigualdad-estricta" class="nav-link" data-scroll-target="#la-continuidad-preserva-localmente-una-desigualdad-estricta">La continuidad preserva localmente una desigualdad estricta</a></li>
+  <li><a href="#continuidad-en-un-conjunto" id="toc-continuidad-en-un-conjunto" class="nav-link" data-scroll-target="#continuidad-en-un-conjunto">Continuidad en un conjunto</a></li>
+  <li><a href="#errores-frecuentes" id="toc-errores-frecuentes" class="nav-link" data-scroll-target="#errores-frecuentes">Errores frecuentes</a></li>
+  <li><a href="#resumen-estructural" id="toc-resumen-estructural" class="nav-link" data-scroll-target="#resumen-estructural">Resumen estructural</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Continuidad de una función en un punto</h1>
+</div>
+
+<div>
+  <div class="description">
+    Cómo formalizar la continuidad en un punto, relacionarla con el límite, tratar puntos aislados y extremos del dominio, y demostrar su estabilidad bajo operaciones algebraicas y composición.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>La noción de límite estudia qué ocurre con <span class="math inline">\(f(x)\)</span> cuando <span class="math inline">\(x\)</span> se aproxima a un punto. La <strong>continuidad</strong> añade una condición decisiva: el comportamiento cercano debe concordar con el valor que la función toma exactamente en ese punto.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Intuición</strong></p>
+<p>Una función es continua en <span class="math inline">\(a\)</span> cuando pequeños cambios de la entrada alrededor de <span class="math inline">\(a\)</span> producen pequeños cambios de la salida alrededor de <span class="math inline">\(f(a)\)</span>.</p>
+<p>La referencia ya no es un número <span class="math inline">\(L\)</span> desconocido, sino el propio valor</p>
+<p><span class="math display">\[
+f(a).
+\]</span></p>
+<p>Por eso la continuidad combina dos informaciones que en el estudio de límites estaban separadas:</p>
+<ul>
+<li>qué ocurre <strong>cerca</strong> de <span class="math inline">\(a\)</span>;</li>
+<li>qué ocurre <strong>en</strong> <span class="math inline">\(a\)</span>.</li>
+</ul>
+</div>
+<section id="la-continuidad-sólo-se-pregunta-en-puntos-del-dominio" class="level2">
+<h2 class="anchored" data-anchor-id="la-continuidad-sólo-se-pregunta-en-puntos-del-dominio">La continuidad sólo se pregunta en puntos del dominio</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+f:D\to\mathbb R.
+\]</span></p>
+<p>Para preguntar si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span> necesitamos primero que</p>
+<p><span class="math display">\[
+a\in D,
+\]</span></p>
+<p>porque la expresión <span class="math inline">\(f(a)\)</span> debe estar definida.</p>
+<p>Esta diferencia con los límites es fundamental: en <code>MA-CON-0011</code> el punto <span class="math inline">\(a\)</span> podía quedar fuera del dominio, siempre que hubiera puntos del dominio arbitrariamente cerca de él.</p>
+<div class="ma-block ma-error">
+<p><strong>Primer control</strong></p>
+<p>Si <span class="math inline">\(a\notin D\)</span>, no decimos que <span class="math inline">\(f\)</span> sea continua o discontinua <strong>en <span class="math inline">\(a\)</span> como punto de su dominio</strong>: simplemente <span class="math inline">\(f(a)\)</span> no existe.</p>
+<p>Sí puede tener sentido estudiar</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x),
+\]</span></p>
+<p>y ese límite puede permitir construir después una extensión continua.</p>
+</div>
+</section>
+<section id="definición-épsilon-delta" class="level2">
+<h2 class="anchored" data-anchor-id="definición-épsilon-delta">Definición épsilon-delta</h2>
+<div class="ma-block ma-definicion">
+<p><strong>Continuidad en un punto</strong></p>
+<p>Sea</p>
+<p><span class="math display">\[
+f:D\to\mathbb R
+\]</span></p>
+<p>y sea <span class="math inline">\(a\in D\)</span>.</p>
+<p>Decimos que <span class="math inline">\(f\)</span> es <strong>continua en <span class="math inline">\(a\)</span></strong> si para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe un <span class="math inline">\(\delta&gt;0\)</span> tal que, para todo <span class="math inline">\(x\in D\)</span>,</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|&lt;\varepsilon.
+\]</span></p>
+</div>
+<p>En símbolos,</p>
+<p><span class="math display">\[
+\boxed{
+\forall\varepsilon&gt;0\;\exists\delta&gt;0\;\forall x\in D:
+|x-a|&lt;\delta
+\Longrightarrow
+|f(x)-f(a)|&lt;\varepsilon.
+}
+\]</span></p>
+<p>La definición debe leerse en el orden de sus cuantificadores:</p>
+<ol type="1">
+<li>se fija una tolerancia <span class="math inline">\(\varepsilon&gt;0\)</span> en la salida;</li>
+<li>debemos encontrar una tolerancia <span class="math inline">\(\delta&gt;0\)</span> en la entrada;</li>
+<li>esa misma <span class="math inline">\(\delta\)</span> debe funcionar para <strong>todo</strong> punto <span class="math inline">\(x\)</span> del dominio suficientemente cercano a <span class="math inline">\(a\)</span>.</li>
+</ol>
+</section>
+<section id="por-qué-aquí-no-aparece-0x-a" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-aquí-no-aparece-0x-a">Por qué aquí no aparece <span class="math inline">\(0&lt;|x-a|\)</span></h2>
+<p>En la definición de límite escribíamos</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta
+\]</span></p>
+<p>porque el valor de la función en <span class="math inline">\(a\)</span> no debía influir en el límite.</p>
+<p>En continuidad escribimos simplemente</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta.
+\]</span></p>
+<p>Esto incluye el caso <span class="math inline">\(x=a\)</span>, pero allí la desigualdad de salida es automática:</p>
+<p><span class="math display">\[
+|f(a)-f(a)|=0&lt;\varepsilon.
+\]</span></p>
+<p>Por tanto, también podríamos escribir la condición sólo para <span class="math inline">\(x\ne a\)</span> y obtener una formulación equivalente cuando <span class="math inline">\(a\)</span> es punto de acumulación del dominio. La forma anterior es más natural porque expresa directamente el control de <span class="math inline">\(f(x)\)</span> alrededor de <span class="math inline">\(f(a)\)</span>.</p>
+</section>
+<section id="interpretación-mediante-intervalos" class="level2">
+<h2 class="anchored" data-anchor-id="interpretación-mediante-intervalos">Interpretación mediante intervalos</h2>
+<p>La condición</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\]</span></p>
+<p>equivale a</p>
+<p><span class="math display">\[
+a-\delta&lt;x&lt;a+\delta.
+\]</span></p>
+<p>Y</p>
+<p><span class="math display">\[
+|f(x)-f(a)|&lt;\varepsilon
+\]</span></p>
+<p>equivale a</p>
+<p><span class="math display">\[
+f(a)-\varepsilon&lt;f(x)&lt;f(a)+\varepsilon.
+\]</span></p>
+<p>Así, la continuidad afirma que para cada intervalo vertical</p>
+<p><span class="math display">\[
+(f(a)-\varepsilon,f(a)+\varepsilon)
+\]</span></p>
+<p>podemos encontrar un intervalo horizontal alrededor de <span class="math inline">\(a\)</span> cuya parte perteneciente al dominio sea enviada completamente dentro de ese intervalo vertical.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Lectura geométrica</strong></p>
+<p>No se exige que toda la recta alrededor de <span class="math inline">\(a\)</span> pertenezca al dominio.</p>
+<p>Sólo controlamos los puntos</p>
+<p><span class="math display">\[
+x\in D.
+\]</span></p>
+<p>Por eso la continuidad es siempre relativa al dominio real de la función.</p>
+</div>
+</section>
+<section id="relación-fundamental-entre-continuidad-y-límite" class="level2">
+<h2 class="anchored" data-anchor-id="relación-fundamental-entre-continuidad-y-límite">Relación fundamental entre continuidad y límite</h2>
+<p>Cuando <span class="math inline">\(a\)</span> es punto de acumulación de <span class="math inline">\(D\)</span>, podemos comparar directamente la definición de continuidad con la definición de límite.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema — criterio mediante el límite</strong></p>
+<p>Sea</p>
+<p><span class="math display">\[
+f:D\to\mathbb R,
+\]</span></p>
+<p>sea <span class="math inline">\(a\in D\)</span> y supongamos que <span class="math inline">\(a\)</span> es punto de acumulación de <span class="math inline">\(D\)</span>.</p>
+<p>Entonces <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span> si y sólo si</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}f(x)=f(a).
+}
+\]</span></p>
+</div>
+<section id="demostración-continuidad-implica-límite" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-continuidad-implica-límite">Demostración: continuidad implica límite</h3>
+<p>Supongamos que <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, existe <span class="math inline">\(\delta&gt;0\)</span> tal que para todo <span class="math inline">\(x\in D\)</span>,</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|&lt;\varepsilon.
+\]</span></p>
+<p>En particular, la misma implicación vale para los puntos que satisfacen además</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta.
+\]</span></p>
+<p>Ésta es exactamente la definición de</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=f(a).
+\]</span></p>
+</section>
+<section id="demostración-límite-igual-al-valor-implica-continuidad" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-límite-igual-al-valor-implica-continuidad">Demostración: límite igual al valor implica continuidad</h3>
+<p>Supongamos ahora que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=f(a).
+\]</span></p>
+<p>Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, existe <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+0&lt;|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|&lt;\varepsilon.
+\]</span></p>
+<p>Si <span class="math inline">\(x\in D\)</span> satisface <span class="math inline">\(|x-a|&lt;\delta\)</span>, hay dos casos.</p>
+<p>Si <span class="math inline">\(x\ne a\)</span>, aplicamos la condición del límite. Si <span class="math inline">\(x=a\)</span>, entonces</p>
+<p><span class="math display">\[
+|f(x)-f(a)|=0&lt;\varepsilon.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|&lt;\varepsilon,
+\]</span></p>
+<p>y <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+</section>
+</section>
+<section id="las-tres-condiciones-prácticas" class="level2">
+<h2 class="anchored" data-anchor-id="las-tres-condiciones-prácticas">Las tres condiciones prácticas</h2>
+<p>Cuando <span class="math inline">\(a\)</span> es punto de acumulación del dominio, el criterio anterior puede descomponerse en tres preguntas:</p>
+<ol type="1">
+<li>¿Está definido <span class="math inline">\(f(a)\)</span>?</li>
+<li>¿Existe <span class="math display">\[
+\lim_{x\to a}f(x)?
+\]</span></li>
+<li>¿Coinciden ambos valores?</li>
+</ol>
+<p>Es decir,</p>
+<p><span class="math display">\[
+\boxed{
+\text{continuidad en }a
+\iff
+\begin{cases}
+f(a)\text{ existe},\\
+\lim_{x\to a}f(x)\text{ existe},\\
+\lim_{x\to a}f(x)=f(a).
+\end{cases}
+}
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>Este criterio tiene una hipótesis</strong></p>
+<p>La equivalencia anterior usa que <span class="math inline">\(a\)</span> es punto de acumulación del dominio.</p>
+<p>Si <span class="math inline">\(a\)</span> es un punto aislado de <span class="math inline">\(D\)</span>, la continuidad sigue teniendo sentido, pero el límite ordinario de <code>MA-CON-0011</code> no se define allí porque no hay puntos del dominio distintos de <span class="math inline">\(a\)</span> arbitrariamente cerca.</p>
+</div>
+</section>
+<section id="puntos-aislados-continuidad-automática" class="level2">
+<h2 class="anchored" data-anchor-id="puntos-aislados-continuidad-automática">Puntos aislados: continuidad automática</h2>
+<p>Sea <span class="math inline">\(a\in D\)</span> un punto <strong>aislado</strong> del dominio. Esto significa que existe algún <span class="math inline">\(r&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+D\cap(a-r,a+r)=\{a\}.
+\]</span></p>
+<div class="ma-block ma-definicion">
+<p><strong>Proposición — todo punto aislado es punto de continuidad</strong></p>
+<p>Toda función</p>
+<p><span class="math display">\[
+f:D\to\mathbb R
+\]</span></p>
+<p>es continua en cada punto aislado <span class="math inline">\(a\in D\)</span>.</p>
+</div>
+<section id="demostración" class="level3">
+<h3 class="anchored" data-anchor-id="demostración">Demostración</h3>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p>Como <span class="math inline">\(a\)</span> es aislado, existe <span class="math inline">\(r&gt;0\)</span> tal que el único punto de <span class="math inline">\(D\)</span> con</p>
+<p><span class="math display">\[
+|x-a|&lt;r
+\]</span></p>
+<p>es <span class="math inline">\(x=a\)</span>.</p>
+<p>Elegimos</p>
+<p><span class="math display">\[
+\delta=r.
+\]</span></p>
+<p>Entonces, para todo <span class="math inline">\(x\in D\)</span> con <span class="math inline">\(|x-a|&lt;\delta\)</span>, necesariamente <span class="math inline">\(x=a\)</span>, y por tanto</p>
+<p><span class="math display">\[
+|f(x)-f(a)|=0&lt;\varepsilon.
+\]</span></p>
+<p>Así <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Una consecuencia importante</strong></p>
+<p>La continuidad no significa siempre que haya una curva que podamos seguir a ambos lados del punto.</p>
+<p>Es una propiedad formulada <strong>respecto del dominio</strong>. En un punto aislado no existen otros puntos cercanos que puedan violar la condición, y por eso la continuidad es automática.</p>
+</div>
+</section>
+</section>
+<section id="ejemplo-épsilon-delta-una-función-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-épsilon-delta-una-función-lineal">Ejemplo épsilon-delta: una función lineal</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[
+f:\mathbb R\to\mathbb R,
+\qquad
+f(x)=3x-2.
+\]</span></p>
+<p>Demostremos que <span class="math inline">\(f\)</span> es continua en un punto arbitrario <span class="math inline">\(a\in\mathbb R\)</span>.</p>
+<p>Tenemos</p>
+<p><span class="math display">\[
+f(a)=3a-2.
+\]</span></p>
+<p>Queremos conseguir</p>
+<p><span class="math display">\[
+|f(x)-f(a)|&lt;\varepsilon.
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+|f(x)-f(a)|
+=|3x-2-(3a-2)|
+=3|x-a|.
+\]</span></p>
+<p>Por tanto basta imponer</p>
+<p><span class="math display">\[
+3|x-a|&lt;\varepsilon,
+\]</span></p>
+<p>o sea</p>
+<p><span class="math display">\[
+|x-a|&lt;\frac{\varepsilon}{3}.
+\]</span></p>
+<p>Elegimos</p>
+<p><span class="math display">\[
+\boxed{
+\delta=\frac{\varepsilon}{3}.
+}
+\]</span></p>
+<p>Si <span class="math inline">\(|x-a|&lt;\delta\)</span>, entonces</p>
+<p><span class="math display">\[
+|f(x)-f(a)|
+=3|x-a|
+&lt;3\delta
+=\varepsilon.
+\]</span></p>
+<p>Así <span class="math inline">\(f\)</span> es continua en todo <span class="math inline">\(a\in\mathbb R\)</span>.</p>
+</section>
+<section id="continuidad-en-extremos-del-dominio" class="level2">
+<h2 class="anchored" data-anchor-id="continuidad-en-extremos-del-dominio">Continuidad en extremos del dominio</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[
+r:[0,\infty)\to\mathbb R,
+\qquad
+r(x)=\sqrt{x}.
+\]</span></p>
+<p>Queremos estudiar la continuidad en <span class="math inline">\(0\)</span>.</p>
+<p>No hay puntos del dominio a la izquierda de <span class="math inline">\(0\)</span>. Eso no impide la continuidad, porque la definición sólo cuantifica sobre</p>
+<p><span class="math display">\[
+x\in[0,\infty).
+\]</span></p>
+<p>Tenemos</p>
+<p><span class="math display">\[
+r(0)=0.
+\]</span></p>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span> y elijamos</p>
+<p><span class="math display">\[
+\delta=\varepsilon^2.
+\]</span></p>
+<p>Si <span class="math inline">\(x\in[0,\infty)\)</span> y</p>
+<p><span class="math display">\[
+|x|&lt;\delta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+0\le x&lt;\varepsilon^2,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+|r(x)-r(0)|
+=\sqrt{x}
+&lt;\varepsilon.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+\boxed{
+\sqrt{x}\text{ es continua en }0
+\text{ como función definida en }[0,\infty).
+}
+\]</span></p>
+<p>Esto concuerda con <code>MA-CON-0012</code>: en un extremo derecho del dominio, cuando cerca del punto sólo existen puntos del dominio por la derecha, la condición de continuidad se controla precisamente mediante ese lado.</p>
+</section>
+<section id="qué-puede-fallar" class="level2">
+<h2 class="anchored" data-anchor-id="qué-puede-fallar">Qué puede fallar</h2>
+<p>En un punto de acumulación del dominio, la continuidad puede fallar de maneras distintas.</p>
+<section id="el-límite-existe-pero-no-coincide-con-el-valor" class="level3">
+<h3 class="anchored" data-anchor-id="el-límite-existe-pero-no-coincide-con-el-valor">El límite existe pero no coincide con el valor</h3>
+<p>Definamos</p>
+<p><span class="math display">\[
+f:\mathbb R\to\mathbb R
+\]</span></p>
+<p>por</p>
+<p><span class="math display">\[
+f(x)=
+\begin{cases}
+\dfrac{x^2-1}{x-1}, &amp; x\ne1,\\
+5, &amp; x=1.
+\end{cases}
+\]</span></p>
+<p>Para <span class="math inline">\(x\ne1\)</span>,</p>
+<p><span class="math display">\[
+\frac{x^2-1}{x-1}=x+1.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\lim_{x\to1}f(x)=2,
+\]</span></p>
+<p>pero</p>
+<p><span class="math display">\[
+f(1)=5.
+\]</span></p>
+<p>Así</p>
+<p><span class="math display">\[
+\boxed{
+f\text{ no es continua en }1.
+}
+\]</span></p>
+<p>La discrepancia es exactamente</p>
+<p><span class="math display">\[
+\lim_{x\to1}f(x)\ne f(1).
+\]</span></p>
+</section>
+<section id="el-límite-no-existe" class="level3">
+<h3 class="anchored" data-anchor-id="el-límite-no-existe">El límite no existe</h3>
+<p>Consideremos</p>
+<p><span class="math display">\[
+g(x)=
+\begin{cases}
+-1, &amp; x&lt;0,\\
+0, &amp; x=0,\\
+1, &amp; x&gt;0.
+\end{cases}
+\]</span></p>
+<p>Tenemos</p>
+<p><span class="math display">\[
+\lim_{x\to0^-}g(x)=-1
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\lim_{x\to0^+}g(x)=1.
+\]</span></p>
+<p>Por <code>MA-CON-0012</code>, el límite bilateral no existe. Por tanto <span class="math inline">\(g\)</span> no puede ser continua en <span class="math inline">\(0\)</span>, independientemente del valor que asignemos a <span class="math inline">\(g(0)\)</span>.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Cambiar sólo el valor en el punto no siempre repara una discontinuidad</strong></p>
+<p>Si el límite bilateral no existe, ningún valor elegido para <span class="math inline">\(f(a)\)</span> puede hacer continua la función en <span class="math inline">\(a\)</span>.</p>
+<p>En cambio, si el límite existe y es finito, una elección adecuada del valor puede producir una extensión continua.</p>
+</div>
+</section>
+</section>
+<section id="discontinuidad-removible-y-extensión-continua" class="level2">
+<h2 class="anchored" data-anchor-id="discontinuidad-removible-y-extensión-continua">Discontinuidad removible y extensión continua</h2>
+<p>Supongamos que una función está definida cerca de <span class="math inline">\(a\)</span> excepto quizá en <span class="math inline">\(a\)</span>, y que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L.
+\]</span></p>
+<p>Definimos una nueva función <span class="math inline">\(F\)</span> asignando</p>
+<p><span class="math display">\[
+F(a)=L
+\]</span></p>
+<p>y dejando los demás valores iguales a los de <span class="math inline">\(f\)</span>.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\lim_{x\to a}F(x)=L=F(a),
+\]</span></p>
+<p>por lo que <span class="math inline">\(F\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Extensión continua en un punto</strong></p>
+<p>Cuando un límite finito</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>existe y el único obstáculo para la continuidad es que <span class="math inline">\(f(a)\)</span> no está definido o tiene un valor diferente, podemos definir</p>
+<p><span class="math display">\[
+F(a)=L
+\]</span></p>
+<p>para obtener continuidad en <span class="math inline">\(a\)</span>.</p>
+<p>A este tipo de defecto se lo denomina habitualmente <strong>discontinuidad removible</strong>.</p>
+</div>
+<p>Para</p>
+<p><span class="math display">\[
+f(x)=\frac{x^2-1}{x-1},
+\qquad x\ne1,
+\]</span></p>
+<p>como</p>
+<p><span class="math display">\[
+\lim_{x\to1}f(x)=2,
+\]</span></p>
+<p>la extensión</p>
+<p><span class="math display">\[
+F(x)=
+\begin{cases}
+\dfrac{x^2-1}{x-1}, &amp; x\ne1,\\
+2, &amp; x=1
+\end{cases}
+\]</span></p>
+<p>es continua en <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="continuidad-y-operaciones-algebraicas" class="level2">
+<h2 class="anchored" data-anchor-id="continuidad-y-operaciones-algebraicas">Continuidad y operaciones algebraicas</h2>
+<p>Las leyes de límites de <code>MA-CON-0013</code> se convierten inmediatamente en leyes de continuidad.</p>
+<p>Supongamos que <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son continuas en <span class="math inline">\(a\)</span>. Entonces</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=f(a)
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\lim_{x\to a}g(x)=g(a).
+\]</span></p>
+<p>Aplicando las leyes algebraicas obtenemos los siguientes resultados.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema — estabilidad algebraica de la continuidad</strong></p>
+<p>Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son continuas en <span class="math inline">\(a\)</span>, entonces también son continuas en <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[
+f+g,
+\qquad
+f-g,
+\qquad
+cf
+\]</span></p>
+<p>para todo <span class="math inline">\(c\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+fg,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+f^n
+\]</span></p>
+<p>para todo entero <span class="math inline">\(n\ge1\)</span>.</p>
+<p>Además, si</p>
+<p><span class="math display">\[
+g(a)\ne0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\frac{f}{g}
+\]</span></p>
+<p>es continua en <span class="math inline">\(a\)</span>.</p>
+</div>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+\lim_{x\to a}(f+g)(x)
+=f(a)+g(a)
+=(f+g)(a),
+\]</span></p>
+<p>que es exactamente la continuidad de <span class="math inline">\(f+g\)</span> en <span class="math inline">\(a\)</span>.</p>
+<p>En el cociente, la condición</p>
+<p><span class="math display">\[
+g(a)\ne0
+\]</span></p>
+<p>permite aplicar la ley del cociente porque, por continuidad,</p>
+<p><span class="math display">\[
+\lim_{x\to a}g(x)=g(a)\ne0.
+\]</span></p>
+</section>
+<section id="polinomios-y-funciones-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="polinomios-y-funciones-racionales">Polinomios y funciones racionales</h2>
+<p>Como las funciones constantes y la identidad</p>
+<p><span class="math display">\[
+x\mapsto x
+\]</span></p>
+<p>son continuas, las operaciones anteriores permiten construir todos los polinomios.</p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Todo polinomio es continuo en <span class="math inline">\(\mathbb R\)</span></strong></p>
+<p>Si</p>
+<p><span class="math display">\[
+p(x)=a_nx^n+\cdots+a_1x+a_0,
+\]</span></p>
+<p>entonces para todo <span class="math inline">\(c\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+\lim_{x\to c}p(x)=p(c).
+\]</span></p>
+<p>Por tanto <span class="math inline">\(p\)</span> es continuo en todo número real.</p>
+</div>
+<p>Si</p>
+<p><span class="math display">\[
+r(x)=\frac{p(x)}{q(x)},
+\]</span></p>
+<p>con <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> polinomios, entonces <span class="math inline">\(r\)</span> es continua en cada punto de su dominio, es decir, en todo <span class="math inline">\(a\)</span> tal que</p>
+<p><span class="math display">\[
+q(a)\ne0.
+\]</span></p>
+<p>Así, para las funciones racionales, la sustitución directa en un punto del dominio no es una regla informal: es una consecuencia de la continuidad.</p>
+</section>
+<section id="continuidad-del-valor-absoluto" class="level2">
+<h2 class="anchored" data-anchor-id="continuidad-del-valor-absoluto">Continuidad del valor absoluto</h2>
+<p>La desigualdad triangular inversa da</p>
+<p><span class="math display">\[
+\big||x|-|a|\big|
+\le|x-a|.
+\]</span></p>
+<p>Por tanto, dada <span class="math inline">\(\varepsilon&gt;0\)</span>, basta elegir</p>
+<p><span class="math display">\[
+\delta=\varepsilon.
+\]</span></p>
+<p>Si</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\big||x|-|a|\big|
+\le|x-a|
+&lt;\varepsilon.
+\]</span></p>
+<p>Luego la función</p>
+<p><span class="math display">\[
+x\mapsto|x|
+\]</span></p>
+<p>es continua en todo <span class="math inline">\(a\in\mathbb R\)</span>.</p>
+<p>Este ejemplo muestra que la continuidad puede demostrarse directamente sin calcular primero un límite separado.</p>
+</section>
+<section id="composición-de-funciones-continuas" class="level2">
+<h2 class="anchored" data-anchor-id="composición-de-funciones-continuas">Composición de funciones continuas</h2>
+<p>La composición introducida en <code>MA-CON-0008</code> preserva continuidad.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Teorema — continuidad de una composición</strong></p>
+<p>Sean</p>
+<p><span class="math display">\[
+f:D\to E
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+g:E\to\mathbb R.
+\]</span></p>
+<p>Si <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\in D\)</span> y <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(f(a)\in E\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{
+g\circ f\text{ es continua en }a.
+}
+\]</span></p>
+</div>
+<section id="demostración-1" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-1">Demostración</h3>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p>Como <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(f(a)\)</span>, existe <span class="math inline">\(\eta&gt;0\)</span> tal que para todo <span class="math inline">\(y\in E\)</span>,</p>
+<p><span class="math display">\[
+|y-f(a)|&lt;\eta
+\quad\Longrightarrow\quad
+|g(y)-g(f(a))|&lt;\varepsilon.
+\]</span></p>
+<p>Como <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span>, para esa tolerancia <span class="math inline">\(\eta\)</span> existe <span class="math inline">\(\delta&gt;0\)</span> tal que para todo <span class="math inline">\(x\in D\)</span>,</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|&lt;\eta.
+\]</span></p>
+<p>Por tanto, si <span class="math inline">\(x\in D\)</span> y <span class="math inline">\(|x-a|&lt;\delta\)</span>, entonces</p>
+<p><span class="math display">\[
+|g(f(x))-g(f(a))|&lt;\varepsilon.
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+(g\circ f)(x)=g(f(x))
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+(g\circ f)(a)=g(f(a)).
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+|(g\circ f)(x)-(g\circ f)(a)|&lt;\varepsilon,
+\]</span></p>
+<p>y <span class="math inline">\(g\circ f\)</span> es continua en <span class="math inline">\(a\)</span>.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Estructura del argumento</strong></p>
+<p>La tolerancia viaja hacia atrás:</p>
+<p><span class="math display">\[
+\varepsilon
+\xleftarrow{\;g\;}
+\eta
+\xleftarrow{\;f\;}
+\delta.
+\]</span></p>
+<p>Primero preguntamos cuánto debe aproximarse la entrada de <span class="math inline">\(g\)</span> a <span class="math inline">\(f(a)\)</span>; después usamos la continuidad de <span class="math inline">\(f\)</span> para garantizar esa aproximación.</p>
+</div>
+</section>
+</section>
+<section id="las-funciones-continuas-pueden-pasar-a-través-del-límite" class="level2">
+<h2 class="anchored" data-anchor-id="las-funciones-continuas-pueden-pasar-a-través-del-límite">Las funciones continuas pueden pasar a través del límite</h2>
+<p>El teorema anterior tiene una versión especialmente útil para calcular límites.</p>
+<p>Supongamos que</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=L
+\]</span></p>
+<p>y que <span class="math inline">\(g\)</span> es continua en <span class="math inline">\(L\)</span>.</p>
+<p>Entonces, siempre que la composición esté definida en los puntos relevantes,</p>
+<p><span class="math display">\[
+\boxed{
+\lim_{x\to a}g(f(x))=g(L).
+}
+\]</span></p>
+<p>La demostración repite exactamente el mecanismo</p>
+<p><span class="math display">\[
+\varepsilon\to\eta\to\delta.
+\]</span></p>
+<p>Esta propiedad explica por qué, una vez conocida la continuidad de una función exterior, podemos evaluar muchos límites mediante sustitución en su argumento.</p>
+<div class="ma-block ma-error">
+<p><strong>La sustitución directa no es la definición de límite</strong></p>
+<p>Es una consecuencia de teoremas de continuidad.</p>
+<p>Cuando una función no es continua en el valor relevante, o cuando la expresión sale de su dominio, sustituir formalmente puede ser inválido o no resolver el problema.</p>
+</div>
+</section>
+<section id="la-continuidad-preserva-localmente-una-desigualdad-estricta" class="level2">
+<h2 class="anchored" data-anchor-id="la-continuidad-preserva-localmente-una-desigualdad-estricta">La continuidad preserva localmente una desigualdad estricta</h2>
+<p>Supongamos que <span class="math inline">\(f\)</span> es continua en <span class="math inline">\(a\)</span> y</p>
+<p><span class="math display">\[
+f(a)&gt;0.
+\]</span></p>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\varepsilon=\frac{f(a)}{2}&gt;0.
+\]</span></p>
+<p>Por continuidad existe <span class="math inline">\(\delta&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+|x-a|&lt;\delta
+\quad\Longrightarrow\quad
+|f(x)-f(a)|&lt;\frac{f(a)}{2}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+f(x)&gt;f(a)-\frac{f(a)}{2}
+=\frac{f(a)}{2}&gt;0.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+f(a)&gt;0
+\Longrightarrow
+f(x)&gt;0\text{ para }x\text{ suficientemente cercano a }a.
+}
+\]</span></p>
+<p>Análogamente, si <span class="math inline">\(f(a)&lt;0\)</span>, entonces <span class="math inline">\(f(x)&lt;0\)</span> cerca de <span class="math inline">\(a\)</span>.</p>
+<p>En particular, si</p>
+<p><span class="math display">\[
+f(a)\ne0,
+\]</span></p>
+<p>la función permanece distinta de cero en algún entorno relativo de <span class="math inline">\(a\)</span>. Esto recupera, desde continuidad, la separación local de cero utilizada en <code>MA-CON-0013</code>.</p>
+</section>
+<section id="continuidad-en-un-conjunto" class="level2">
+<h2 class="anchored" data-anchor-id="continuidad-en-un-conjunto">Continuidad en un conjunto</h2>
+<p>La noción puntual se extiende de manera directa.</p>
+<div class="ma-block ma-definicion">
+<p><strong>Continuidad en un conjunto</strong></p>
+<p>Sea</p>
+<p><span class="math display">\[
+f:D\to\mathbb R.
+\]</span></p>
+<p>Decimos que <span class="math inline">\(f\)</span> es <strong>continua en <span class="math inline">\(D\)</span></strong> si es continua en cada punto</p>
+<p><span class="math display">\[
+a\in D.
+\]</span></p>
+</div>
+<p>Esto incluye automáticamente cualquier extremo o punto aislado que pertenezca al dominio: siempre se utiliza la geometría real de <span class="math inline">\(D\)</span>, no una prolongación imaginaria fuera de él.</p>
+</section>
+<section id="errores-frecuentes" class="level2">
+<h2 class="anchored" data-anchor-id="errores-frecuentes">Errores frecuentes</h2>
+<div class="ma-block ma-error">
+<p><strong>1. Olvidar que <span class="math inline">\(a\)</span> debe pertenecer al dominio</strong></p>
+<p>Para continuidad necesitamos <span class="math inline">\(f(a)\)</span>.</p>
+</div>
+<div class="ma-block ma-error">
+<p><strong>2. Pensar que continuidad significa solamente que el límite existe</strong></p>
+<p>También necesitamos</p>
+<p><span class="math display">\[
+\lim_{x\to a}f(x)=f(a).
+\]</span></p>
+</div>
+<div class="ma-block ma-error">
+<p><strong>3. Exigir puntos del dominio a ambos lados</strong></p>
+<p>La continuidad se define respecto del dominio. En un extremo puede bastar un solo lado, y en un punto aislado es automática.</p>
+</div>
+<div class="ma-block ma-error">
+<p><strong>4. Usar el criterio del límite en un punto aislado</strong></p>
+<p>La continuidad allí se verifica directamente; el límite de <code>MA-CON-0011</code> requiere un punto de acumulación.</p>
+</div>
+<div class="ma-block ma-error">
+<p><strong>5. Aplicar la ley del cociente cuando el denominador vale cero en el punto</strong></p>
+<p>Para concluir continuidad de <span class="math inline">\(f/g\)</span> en <span class="math inline">\(a\)</span> necesitamos</p>
+<p><span class="math display">\[
+g(a)\ne0.
+\]</span></p>
+</div>
+</section>
+<section id="resumen-estructural" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-estructural">Resumen estructural</h2>
+<p>Para <span class="math inline">\(a\in D\)</span>, la definición fundamental es</p>
+<p><span class="math display">\[
+\boxed{
+\forall\varepsilon&gt;0\;\exists\delta&gt;0:
+|x-a|&lt;\delta
+\Longrightarrow
+|f(x)-f(a)|&lt;\varepsilon
+\quad(x\in D).
+}
+\]</span></p>
+<p>Si <span class="math inline">\(a\)</span> es además punto de acumulación de <span class="math inline">\(D\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{
+f\text{ continua en }a
+\iff
+\lim_{x\to a}f(x)=f(a).
+}
+\]</span></p>
+<p>Las funciones continuas son estables bajo:</p>
+<p><span class="math display">\[
++,
+\quad
+-,
+\quad
+\text{multiplicación},
+\quad
+\text{potencias},
+\quad
+\text{cocientes con denominador no nulo},
+\quad
+\text{composición}.
+\]</span></p>
+<p>Además:</p>
+<ul>
+<li>todo polinomio es continuo en <span class="math inline">\(\mathbb R\)</span>;</li>
+<li>toda función racional es continua en su dominio;</li>
+<li><span class="math inline">\(|x|\)</span> es continua en <span class="math inline">\(\mathbb R\)</span>;</li>
+<li>un punto aislado del dominio es siempre punto de continuidad;</li>
+<li>en un extremo del dominio se consideran sólo los puntos del dominio disponibles;</li>
+<li>si un límite finito existe pero falta el valor adecuado en el punto, puede construirse una extensión continua asignando ese límite.</li>
+</ul>
+<p>La continuidad convierte así el lenguaje de límites en una propiedad estructural de las funciones y prepara el estudio de resultados globales sobre intervalos, así como la derivación.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lachenmann\.github\.io\/matematica-abierta\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
