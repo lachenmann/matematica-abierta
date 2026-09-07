@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -443,7 +472,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#topología" id="toc-topología" class="nav-link active" data-scroll-target="#topología">Topología</a></li>
+  <li><a href="#topología" id="toc-topología" class="nav-link active" data-scroll-target="#topología">Topología</a>
+  <ul class="collapse">
+  <li><a href="#teoría-publicada" id="toc-teoría-publicada" class="nav-link" data-scroll-target="#teoría-publicada">Teoría publicada</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -473,9 +505,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="topología" class="level1">
 <h1>Topología</h1>
 <p>Área dedicada a continuidad, espacios topológicos, propiedades invariantes y estructuras relacionadas.</p>
-<p>Aún no hay contenido público clasificado en esta área.</p>
+<section id="teoría-publicada" class="level2">
+<h2 class="anchored" data-anchor-id="teoría-publicada">Teoría publicada</h2>
+<ul>
+<li><a href="../../conceptos/compacidad-en-r-y-teorema-de-weierstrass.html">Compacidad en ℝ y teorema de Weierstrass</a></li>
+</ul>
+<p><code>MA-CON-0018</code> inaugura el contenido público clasificado explícitamente en Topología. Introduce conjuntos abiertos y cerrados, recubrimientos abiertos y compacidad en <span class="math inline">\(\mathbb R\)</span>; demuestra Heine–Borel y muestra cómo la compacidad se conserva bajo imágenes continuas. La presentación permanece situada en la recta real y sirve como puente entre continuidad elemental y futuras formulaciones topológicas más generales.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
