@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Primer capítulo de Cálculo para matemáticos: lenguaje lógico, cuantificadores, conjuntos y estrategias fundamentales de demostración.">
+
+<title>Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-edd7520df32f0843e2a37d67594353f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ae1f6155afccd62564ec1af108321d5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Matemática Abierta</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#leer-y-escribir-matemáticas" id="toc-leer-y-escribir-matemáticas" class="nav-link active" data-scroll-target="#leer-y-escribir-matemáticas">Leer y escribir matemáticas</a>
+  <ul class="collapse">
+  <li><a href="#ma-bch-0001-ejemplos" id="toc-ma-bch-0001-ejemplos" class="nav-link" data-scroll-target="#ma-bch-0001-ejemplos">1. De observar ejemplos a demostrar</a>
+  <ul class="collapse">
+  <li><a href="#proposición-conjetura-y-contraejemplo" id="toc-proposición-conjetura-y-contraejemplo" class="nav-link" data-scroll-target="#proposición-conjetura-y-contraejemplo">Proposición, conjetura y contraejemplo</a></li>
+  <li><a href="#un-ejemplo-que-sí-conduce-a-una-prueba" id="toc-un-ejemplo-que-sí-conduce-a-una-prueba" class="nav-link" data-scroll-target="#un-ejemplo-que-sí-conduce-a-una-prueba">Un ejemplo que sí conduce a una prueba</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0001-forma-logica" id="toc-ma-bch-0001-forma-logica" class="nav-link" data-scroll-target="#ma-bch-0001-forma-logica">2. La forma lógica de una afirmación</a>
+  <ul class="collapse">
+  <li><a href="#recíproca-y-contrapositiva" id="toc-recíproca-y-contrapositiva" class="nav-link" data-scroll-target="#recíproca-y-contrapositiva">Recíproca y contrapositiva</a></li>
+  <li><a href="#principio-de-contraposición" id="toc-principio-de-contraposición" class="nav-link" data-scroll-target="#principio-de-contraposición">Principio de contraposición</a></li>
+  <li><a href="#condición-suficiente-y-condición-necesaria" id="toc-condición-suficiente-y-condición-necesaria" class="nav-link" data-scroll-target="#condición-suficiente-y-condición-necesaria">Condición suficiente y condición necesaria</a></li>
+  <li><a href="#bicondicional" id="toc-bicondicional" class="nav-link" data-scroll-target="#bicondicional">Bicondicional</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0001-cuantificadores" id="toc-ma-bch-0001-cuantificadores" class="nav-link" data-scroll-target="#ma-bch-0001-cuantificadores">3. Cuantificadores: «para todo» y «existe»</a>
+  <ul class="collapse">
+  <li><a href="#negar-cuantificadores" id="toc-negar-cuantificadores" class="nav-link" data-scroll-target="#negar-cuantificadores">Negar cuantificadores</a></li>
+  <li><a href="#el-orden-importa" id="toc-el-orden-importa" class="nav-link" data-scroll-target="#el-orden-importa">El orden importa</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0001-conjuntos" id="toc-ma-bch-0001-conjuntos" class="nav-link" data-scroll-target="#ma-bch-0001-conjuntos">4. Conjuntos y traducción lógica</a>
+  <ul class="collapse">
+  <li><a href="#met-ma-bch-0001-doble-inclusion" id="toc-met-ma-bch-0001-doble-inclusion" class="nav-link" data-scroll-target="#met-ma-bch-0001-doble-inclusion">Igualdad por doble inclusión</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0001-leer-definiciones" id="toc-ma-bch-0001-leer-definiciones" class="nav-link" data-scroll-target="#ma-bch-0001-leer-definiciones">5. Cómo leer una definición y un teorema</a>
+  <ul class="collapse">
+  <li><a href="#desempaquetar-una-definición" id="toc-desempaquetar-una-definición" class="nav-link" data-scroll-target="#desempaquetar-una-definición">Desempaquetar una definición</a></li>
+  <li><a href="#antes-de-demostrar" id="toc-antes-de-demostrar" class="nav-link" data-scroll-target="#antes-de-demostrar">Antes de demostrar</a></li>
+  </ul></li>
+  <li><a href="#met-ma-bch-0001-directa-contraposicion" id="toc-met-ma-bch-0001-directa-contraposicion" class="nav-link" data-scroll-target="#met-ma-bch-0001-directa-contraposicion">6. Demostración directa y contraposición</a>
+  <ul class="collapse">
+  <li><a href="#demostración-directa" id="toc-demostración-directa" class="nav-link" data-scroll-target="#demostración-directa">Demostración directa</a></li>
+  <li><a href="#cuándo-puede-ayudar-la-contraposición" id="toc-cuándo-puede-ayudar-la-contraposición" class="nav-link" data-scroll-target="#cuándo-puede-ayudar-la-contraposición">Cuándo puede ayudar la contraposición</a></li>
+  </ul></li>
+  <li><a href="#met-ma-bch-0001-contradiccion-casos" id="toc-met-ma-bch-0001-contradiccion-casos" class="nav-link" data-scroll-target="#met-ma-bch-0001-contradiccion-casos">7. Contradicción y demostración por casos</a>
+  <ul class="collapse">
+  <li><a href="#contradicción" id="toc-contradicción" class="nav-link" data-scroll-target="#contradicción">Contradicción</a></li>
+  <li><a href="#casos" id="toc-casos" class="nav-link" data-scroll-target="#casos">Casos</a></li>
+  </ul></li>
+  <li><a href="#met-ma-bch-0001-existencia-unicidad" id="toc-met-ma-bch-0001-existencia-unicidad" class="nav-link" data-scroll-target="#met-ma-bch-0001-existencia-unicidad">8. Existencia y unicidad</a>
+  <ul class="collapse">
+  <li><a href="#existencia" id="toc-existencia" class="nav-link" data-scroll-target="#existencia">Existencia</a></li>
+  <li><a href="#unicidad" id="toc-unicidad" class="nav-link" data-scroll-target="#unicidad">Unicidad</a></li>
+  </ul></li>
+  <li><a href="#met-ma-bch-0001-induccion" id="toc-met-ma-bch-0001-induccion" class="nav-link" data-scroll-target="#met-ma-bch-0001-induccion">9. Inducción matemática</a>
+  <ul class="collapse">
+  <li><a href="#principio-de-inducción-matemática" id="toc-principio-de-inducción-matemática" class="nav-link" data-scroll-target="#principio-de-inducción-matemática">Principio de inducción matemática</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
+  </ul></li>
+  <li><a href="#met-ma-bch-0001-escritura" id="toc-met-ma-bch-0001-escritura" class="nav-link" data-scroll-target="#met-ma-bch-0001-escritura">10. Escribir una demostración</a>
+  <ul class="collapse">
+  <li><a href="#del-esqueleto-a-la-prosa" id="toc-del-esqueleto-a-la-prosa" class="nav-link" data-scroll-target="#del-esqueleto-a-la-prosa">Del esqueleto a la prosa</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0001-laboratorio" id="toc-ma-bch-0001-laboratorio" class="nav-link" data-scroll-target="#ma-bch-0001-laboratorio">11. Elegir una estrategia</a></li>
+  <li><a href="#primeros-problemas-asociados" id="toc-primeros-problemas-asociados" class="nav-link" data-scroll-target="#primeros-problemas-asociados">12. Primeros problemas asociados</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre">Cierre</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones</h1>
+</div>
+
+<div>
+  <div class="description">
+    Primer capítulo de Cálculo para matemáticos: lenguaje lógico, cuantificadores, conjuntos y estrategias fundamentales de demostración.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="leer-y-escribir-matemáticas" class="level1">
+<h1>Leer y escribir matemáticas</h1>
+<p>Aprender cálculo para hacer matemáticas exige algo más que saber transformar expresiones. En algún momento aparece una pregunta que cambia el trabajo por completo:</p>
+<blockquote class="blockquote">
+<p>¿por qué una regla que funcionó en varios ejemplos tiene que funcionar siempre?</p>
+</blockquote>
+<p>Responderla exige aprender a <strong>leer afirmaciones</strong>, distinguir hipótesis de conclusiones, reconocer cuantificadores, utilizar definiciones y construir argumentos que puedan ser comprobados por otra persona.</p>
+<p>Este capítulo desarrolla ese lenguaje sin convertirlo en un curso aislado de lógica formal. El objetivo es operativo: adquirir las herramientas de razonamiento que utilizaremos después con números reales, funciones, sucesiones, límites, continuidad, derivadas e integrales.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Idea rectora</strong></p>
+<p>En Matemática Abierta no queremos separar artificialmente «teoría» y «técnica de demostración». Aprender un resultado incluye aprender a reconocer <strong>qué afirma</strong>, <strong>qué permite usar</strong> y <strong>qué estrategia podría justificarlo</strong>.</p>
+</div>
+<section id="ma-bch-0001-ejemplos" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0001-ejemplos">1. De observar ejemplos a demostrar</h2>
+<p>Consideremos la afirmación</p>
+<p><span class="math display">\[
+n^2+n+1\text{ es primo para todo entero positivo }n.
+\]</span></p>
+<p>Los primeros valores pueden resultar sugerentes:</p>
+<p><span class="math display">\[
+3,\quad 7,\quad 13.
+\]</span></p>
+<p>Sin embargo,</p>
+<p><span class="math display">\[
+4^2+4+1=21,
+\]</span></p>
+<p>de modo que la afirmación es falsa.</p>
+<p>Un conjunto grande de ejemplos favorables puede proporcionar evidencia; no constituye por sí solo una demostración de una afirmación universal.</p>
+<section id="proposición-conjetura-y-contraejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="proposición-conjetura-y-contraejemplo">Proposición, conjetura y contraejemplo</h3>
+<p>Una <strong>proposición</strong> es una afirmación completa a la que puede asignarse un valor de verdad.</p>
+<p>Una <strong>conjetura</strong> es una afirmación que proponemos como verdadera antes de disponer de una demostración.</p>
+<p>Un <strong>contraejemplo</strong> es un objeto que satisface las hipótesis de una afirmación universal pero no su conclusión.</p>
+<p>La asimetría es decisiva:</p>
+<p><span class="math display">\[
+\boxed{
+\text{un solo contraejemplo refuta una afirmación universal.}
+}
+\]</span></p>
+<p>En cambio, acumular casos favorables no demuestra automáticamente una afirmación sobre una colección infinita.</p>
+</section>
+<section id="un-ejemplo-que-sí-conduce-a-una-prueba" class="level3">
+<h3 class="anchored" data-anchor-id="un-ejemplo-que-sí-conduce-a-una-prueba">Un ejemplo que sí conduce a una prueba</h3>
+<p>Queremos justificar que</p>
+<p><span class="math display">\[
+n^2+n
+\]</span></p>
+<p>es par para todo <span class="math inline">\(n\in\mathbb Z\)</span>.</p>
+<p>La transformación</p>
+<p><span class="math display">\[
+n^2+n=n(n+1)
+\]</span></p>
+<p>revela la estructura. Los enteros <span class="math inline">\(n\)</span> y <span class="math inline">\(n+1\)</span> son consecutivos, por lo que uno de ellos es par. El producto contiene entonces un factor par y, por tanto, es par.</p>
+<p>La diferencia entre los primeros cálculos y esta demostración es que el argumento funciona para un <strong>entero arbitrario</strong>: no depende de revisar sus posibles valores uno por uno.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — Buscar la estructura que sustituye a la enumeración</strong></p>
+<p>Cuando una afirmación parece confirmarse en muchos ejemplos, conviene preguntar:</p>
+<ol type="1">
+<li>¿qué patrón común poseen todos los casos?;</li>
+<li>¿puedo reescribir la expresión para hacerlo visible?;</li>
+<li>¿qué propiedad general permite pasar de esa estructura a la conclusión?</li>
+</ol>
+<p>El objetivo es pasar de</p>
+<p><span class="math display">\[
+\text{evidencia particular}
+\longrightarrow
+\text{mecanismo general}.
+\]</span></p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0001-forma-logica" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0001-forma-logica">2. La forma lógica de una afirmación</h2>
+<p>Las palabras <strong>no</strong>, <strong>y</strong>, <strong>o</strong>, <strong>si… entonces…</strong> y <strong>si y solo si</strong> determinan la arquitectura de un enunciado.</p>
+<p>Si escribimos</p>
+<p><span class="math display">\[
+P\Longrightarrow Q,
+\]</span></p>
+<p><span class="math inline">\(P\)</span> es la <strong>hipótesis</strong> y <span class="math inline">\(Q\)</span> es la <strong>conclusión</strong>.</p>
+<p>Una demostración directa de esa implicación comienza suponiendo <span class="math inline">\(P\)</span> y construye un camino hasta <span class="math inline">\(Q\)</span>.</p>
+<section id="recíproca-y-contrapositiva" class="level3">
+<h3 class="anchored" data-anchor-id="recíproca-y-contrapositiva">Recíproca y contrapositiva</h3>
+<p>La <strong>recíproca</strong> de</p>
+<p><span class="math display">\[
+P\Longrightarrow Q
+\]</span></p>
+<p>es</p>
+<p><span class="math display">\[
+Q\Longrightarrow P.
+\]</span></p>
+<p>No es, en general, equivalente al enunciado original.</p>
+<p>La <strong>contrapositiva</strong> es</p>
+<p><span class="math display">\[
+\neg Q\Longrightarrow\neg P.
+\]</span></p>
+<p>Ésta sí es lógicamente equivalente a la implicación original.</p>
+</section>
+<div id="res-ma-bch-0001-contraposicion">
+<section id="principio-de-contraposición" class="level3">
+<h3 class="anchored" data-anchor-id="principio-de-contraposición">Principio de contraposición</h3>
+<p>Para cualesquiera proposiciones <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span>,</p>
+<p><span class="math display">\[
+P\Longrightarrow Q
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\neg Q\Longrightarrow\neg P
+\]</span></p>
+<p>tienen el mismo valor de verdad.</p>
+</section>
+</div>
+<p>Esto transforma un problema de demostración en otro equivalente. No es un truco retórico: cambia el punto de partida sin cambiar lo que finalmente queda demostrado.</p>
+<section id="condición-suficiente-y-condición-necesaria" class="level3">
+<h3 class="anchored" data-anchor-id="condición-suficiente-y-condición-necesaria">Condición suficiente y condición necesaria</h3>
+<p>En</p>
+<p><span class="math display">\[
+P\Longrightarrow Q,
+\]</span></p>
+<p>podemos decir que <span class="math inline">\(P\)</span> es <strong>suficiente</strong> para <span class="math inline">\(Q\)</span> y que <span class="math inline">\(Q\)</span> es <strong>necesaria</strong> para <span class="math inline">\(P\)</span>.</p>
+<p>Por ejemplo,</p>
+<blockquote class="blockquote">
+<p>ser divisible por <span class="math inline">\(12\)</span> es suficiente para ser divisible por <span class="math inline">\(3\)</span>;</p>
+</blockquote>
+<p>pero ser divisible por <span class="math inline">\(3\)</span> no es suficiente para ser divisible por <span class="math inline">\(12\)</span>.</p>
+</section>
+<section id="bicondicional" class="level3">
+<h3 class="anchored" data-anchor-id="bicondicional">Bicondicional</h3>
+<p>Una afirmación</p>
+<p><span class="math display">\[
+P\Longleftrightarrow Q
+\]</span></p>
+<p>contiene dos tareas:</p>
+<p><span class="math display">\[
+P\Longrightarrow Q
+\qquad\text{y}\qquad
+Q\Longrightarrow P.
+\]</span></p>
+<p>Olvidar una dirección es una de las formas más frecuentes de dejar incompleta una demostración.</p>
+</section>
+</section>
+<section id="ma-bch-0001-cuantificadores" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0001-cuantificadores">3. Cuantificadores: «para todo» y «existe»</h2>
+<p>Los cuantificadores indican a cuántos objetos se aplica una propiedad.</p>
+<p>El cuantificador universal se escribe</p>
+<p><span class="math display">\[
+\forall x\in A,
+\]</span></p>
+<p>y se lee «para todo <span class="math inline">\(x\)</span> perteneciente a <span class="math inline">\(A\)</span>».</p>
+<p>El cuantificador existencial se escribe</p>
+<p><span class="math display">\[
+\exists x\in A,
+\]</span></p>
+<p>y se lee «existe al menos un <span class="math inline">\(x\)</span> perteneciente a <span class="math inline">\(A\)</span>».</p>
+<section id="negar-cuantificadores" class="level3">
+<h3 class="anchored" data-anchor-id="negar-cuantificadores">Negar cuantificadores</h3>
+<p>Las reglas fundamentales son</p>
+<p><span class="math display">\[
+\neg(\forall x\in A\;P(x))
+\Longleftrightarrow
+\exists x\in A\;\neg P(x),
+\]</span></p>
+<p><span class="math display">\[
+\neg(\exists x\in A\;P(x))
+\Longleftrightarrow
+\forall x\in A\;\neg P(x).
+\]</span></p>
+<p>En lenguaje ordinario:</p>
+<ul>
+<li>negar «todos» produce «existe al menos uno que no»;</li>
+<li>negar «existe uno» produce «ninguno», es decir, «todos fallan».</li>
+</ul>
+<p>Este principio explica por qué un contraejemplo es exactamente lo que necesitamos para negar una afirmación universal.</p>
+</section>
+<section id="el-orden-importa" class="level3">
+<h3 class="anchored" data-anchor-id="el-orden-importa">El orden importa</h3>
+<p>Comparemos</p>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\exists y\in\mathbb R\;(y&gt;x)
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+\exists y\in\mathbb R\;\forall x\in\mathbb R\;(y&gt;x).
+\]</span></p>
+<p>La primera afirma que, dado cualquier real <span class="math inline">\(x\)</span>, podemos encontrar <strong>algún</strong> real mayor; ese <span class="math inline">\(y\)</span> puede depender de <span class="math inline">\(x\)</span>.</p>
+<p>La segunda exige <strong>un mismo</strong> real <span class="math inline">\(y\)</span> mayor que todos los reales. Es falsa.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Dependencia de los objetos elegidos</strong></p>
+<p>Una expresión</p>
+<p><span class="math display">\[
+\forall x\;\exists y
+\]</span></p>
+<p>permite que <span class="math inline">\(y\)</span> dependa de <span class="math inline">\(x\)</span>. Esta atención al orden de los cuantificadores será central más adelante. Por ejemplo, la diferencia entre continuidad y continuidad uniforme es, en gran medida, una diferencia en el orden de ciertos cuantificadores.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0001-conjuntos" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0001-conjuntos">4. Conjuntos y traducción lógica</h2>
+<p>El lenguaje de conjuntos permite convertir afirmaciones lógicas en afirmaciones sobre pertenencia.</p>
+<p>Escribimos</p>
+<p><span class="math display">\[
+x\in A
+\]</span></p>
+<p>cuando <span class="math inline">\(x\)</span> pertenece a <span class="math inline">\(A\)</span>, y</p>
+<p><span class="math display">\[
+A\subseteq B
+\]</span></p>
+<p>cuando todo elemento de <span class="math inline">\(A\)</span> pertenece también a <span class="math inline">\(B\)</span>.</p>
+<p>Así,</p>
+<p><span class="math display">\[
+A\subseteq B
+\]</span></p>
+<p>significa exactamente</p>
+<p><span class="math display">\[
+\forall x\;(x\in A\Longrightarrow x\in B).
+\]</span></p>
+<p>Esta traducción es importante porque nos dice cómo comenzar una prueba de inclusión:</p>
+<blockquote class="blockquote">
+<p>tomamos un elemento arbitrario de <span class="math inline">\(A\)</span> y mostramos que pertenece a <span class="math inline">\(B\)</span>.</p>
+</blockquote>
+<p>Las operaciones básicas de unión, intersección, complemento y diferencia se desarrollan con detalle en <a href="../../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales</a> (<code>MA-CON-0006</code>). Aquí nos interesa especialmente una técnica de demostración.</p>
+<section id="met-ma-bch-0001-doble-inclusion" class="level3">
+<h3 class="anchored" data-anchor-id="met-ma-bch-0001-doble-inclusion">Igualdad por doble inclusión</h3>
+<p>Para demostrar</p>
+<p><span class="math display">\[
+A=B,
+\]</span></p>
+<p>es suficiente demostrar las dos inclusiones</p>
+<p><span class="math display">\[
+A\subseteq B
+\qquad\text{y}\qquad
+B\subseteq A.
+\]</span></p>
+<p>¿Por qué? Porque la primera afirma que ningún elemento de <span class="math inline">\(A\)</span> queda fuera de <span class="math inline">\(B\)</span> y la segunda que ningún elemento de <span class="math inline">\(B\)</span> queda fuera de <span class="math inline">\(A\)</span>.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — Doble inclusión</strong></p>
+<p>Para probar <span class="math inline">\(A=B\)</span>:</p>
+<ol type="1">
+<li>toma <span class="math inline">\(x\in A\)</span> arbitrario y demuestra <span class="math inline">\(x\in B\)</span>;</li>
+<li>toma <span class="math inline">\(x\in B\)</span> arbitrario y demuestra <span class="math inline">\(x\in A\)</span>;</li>
+<li>concluye que los conjuntos tienen exactamente los mismos elementos.</li>
+</ol>
+<p>Esta técnica reaparecerá en imágenes, preimágenes, intervalos, conjuntos definidos por desigualdades y muchas construcciones posteriores.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0001-leer-definiciones" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0001-leer-definiciones">5. Cómo leer una definición y un teorema</h2>
+<p>Una definición, un teorema y una demostración cumplen funciones diferentes.</p>
+<p>Una <strong>definición</strong> fija el significado de una expresión. No se demuestra; se utiliza para transformar una palabra técnica en condiciones precisas.</p>
+<p>Un <strong>teorema</strong> afirma que, bajo ciertas hipótesis, ocurre una conclusión.</p>
+<p>Una <strong>demostración</strong> establece que esa conclusión se sigue de información previamente admitida.</p>
+<section id="desempaquetar-una-definición" class="level3">
+<h3 class="anchored" data-anchor-id="desempaquetar-una-definición">Desempaquetar una definición</h3>
+<p>Supongamos que queremos demostrar que un entero <span class="math inline">\(n\)</span> es par. La definición nos indica qué forma debe tener:</p>
+<p><span class="math display">\[
+n=2k
+\]</span></p>
+<p>para algún <span class="math inline">\(k\in\mathbb Z\)</span>.</p>
+<p>Una estrategia muy frecuente consiste en traducir primero el objetivo al lenguaje de la definición y trabajar hacia esa forma.</p>
+</section>
+<section id="antes-de-demostrar" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-demostrar">Antes de demostrar</h3>
+<p>Conviene identificar explícitamente:</p>
+<ol type="1">
+<li>los objetos sobre los que habla el enunciado;</li>
+<li>las hipótesis disponibles;</li>
+<li>la conclusión exacta;</li>
+<li>las definiciones que pueden abrirse;</li>
+<li>los resultados anteriores que podemos utilizar.</li>
+</ol>
+<p>Esta lectura evita dos errores comunes: intentar demostrar una afirmación distinta de la pedida y utilizar silenciosamente aquello mismo que se quiere establecer.</p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente — Circularidad</strong></p>
+<p>Una prueba es circular si en algún punto utiliza, explícita o implícitamente, el resultado que pretende demostrar.</p>
+<p>Preguntar «¿qué estoy autorizado a usar en este punto del desarrollo?» es parte del control lógico de una demostración.</p>
+</div>
+</section>
+</section>
+<section id="met-ma-bch-0001-directa-contraposicion" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-bch-0001-directa-contraposicion">6. Demostración directa y contraposición</h2>
+<section id="demostración-directa" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-directa">Demostración directa</h3>
+<p>Para probar</p>
+<p><span class="math display">\[
+P\Longrightarrow Q,
+\]</span></p>
+<p>la ruta directa es:</p>
+<ol type="1">
+<li>suponemos <span class="math inline">\(P\)</span>;</li>
+<li>abrimos las definiciones necesarias;</li>
+<li>derivamos consecuencias de las hipótesis;</li>
+<li>llegamos a <span class="math inline">\(Q\)</span>.</li>
+</ol>
+<p>Por ejemplo, para demostrar que la suma de dos enteros pares es par, escribimos</p>
+<p><span class="math display">\[
+a=2m,
+\qquad
+b=2n,
+\]</span></p>
+<p>con <span class="math inline">\(m,n\in\mathbb Z\)</span>. Entonces</p>
+<p><span class="math display">\[
+a+b=2(m+n),
+\]</span></p>
+<p>y <span class="math inline">\(m+n\in\mathbb Z\)</span>. Hemos obtenido exactamente la forma exigida por la definición de número par.</p>
+</section>
+<section id="cuándo-puede-ayudar-la-contraposición" class="level3">
+<h3 class="anchored" data-anchor-id="cuándo-puede-ayudar-la-contraposición">Cuándo puede ayudar la contraposición</h3>
+<p>A veces la hipótesis directa no produce información manejable, pero la negación de la conclusión sí.</p>
+<p>Por ejemplo, una afirmación sobre «<span class="math inline">\(n\)</span> es par» puede volverse más concreta al suponer «<span class="math inline">\(n\)</span> es impar», porque entonces podemos escribir</p>
+<p><span class="math display">\[
+n=2k+1.
+\]</span></p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — Elegir entre directa y contraposición</strong></p>
+<p>Ante <span class="math inline">\(P\Rightarrow Q\)</span>, compara dos puntos de partida:</p>
+<ul>
+<li>¿qué estructura concreta entrega <span class="math inline">\(P\)</span>?;</li>
+<li>¿qué estructura concreta entrega <span class="math inline">\(\neg Q\)</span>?</li>
+</ul>
+<p>Si <span class="math inline">\(\neg Q\)</span> abre una definición más útil, demostrar la contrapositiva puede simplificar notablemente el argumento.</p>
+</div>
+<p>El problema <a href="../../problemas/divisibilidad-por-4-y-paridad-mediante-contraposicion.html">Divisibilidad por 4 y paridad mediante contraposición</a> (<code>MA-PRB-0003</code>) muestra esta decisión en una prueba completa.</p>
+</section>
+</section>
+<section id="met-ma-bch-0001-contradiccion-casos" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-bch-0001-contradiccion-casos">7. Contradicción y demostración por casos</h2>
+<section id="contradicción" class="level3">
+<h3 class="anchored" data-anchor-id="contradicción">Contradicción</h3>
+<p>Para demostrar una afirmación <span class="math inline">\(P\)</span> por contradicción, suponemos temporalmente</p>
+<p><span class="math display">\[
+\neg P
+\]</span></p>
+<p>y derivamos una imposibilidad.</p>
+<p>La contradicción puede ser, por ejemplo,</p>
+<ul>
+<li>una afirmación y su negación;</li>
+<li>que un entero sea simultáneamente par e impar;</li>
+<li>que un número sea mayor y menor que otro bajo hipótesis incompatibles;</li>
+<li>o que se viole una propiedad ya establecida.</li>
+</ul>
+<p>La conclusión no es que la contradicción sea verdadera, sino que la suposición que nos condujo a ella no puede mantenerse.</p>
+</section>
+<section id="casos" class="level3">
+<h3 class="anchored" data-anchor-id="casos">Casos</h3>
+<p>Una demostración por casos divide el universo de posibilidades en situaciones que cubren todos los objetos relevantes.</p>
+<p>Para un entero <span class="math inline">\(n\)</span>, una separación natural es</p>
+<p><span class="math display">\[
+n\text{ par}
+\qquad\text{o}\qquad
+n\text{ impar}.
+\]</span></p>
+<p>Si demostramos la conclusión en ambos casos, queda demostrada para todo entero.</p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Control obligatorio</strong></p>
+<p>Una demostración por casos sólo es completa si los casos:</p>
+<ol type="1">
+<li>cubren todas las posibilidades pertinentes;</li>
+<li>no dejan un caso intermedio sin analizar.</li>
+</ol>
+<p>No es necesario que sean disjuntos en toda situación, pero sí que su unión cubra el universo que estamos estudiando.</p>
+</div>
+</section>
+</section>
+<section id="met-ma-bch-0001-existencia-unicidad" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-bch-0001-existencia-unicidad">8. Existencia y unicidad</h2>
+<p>Una afirmación de la forma</p>
+<blockquote class="blockquote">
+<p>existe un único <span class="math inline">\(x\)</span> con cierta propiedad</p>
+</blockquote>
+<p>contiene dos afirmaciones distintas.</p>
+<section id="existencia" class="level3">
+<h3 class="anchored" data-anchor-id="existencia">Existencia</h3>
+<p>Debemos mostrar que <strong>al menos un</strong> objeto satisface la propiedad.</p>
+<p>A veces podemos construirlo explícitamente. Otras veces, más adelante, utilizaremos teoremas que garantizan su existencia sin dar inmediatamente una fórmula.</p>
+</section>
+<section id="unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="unicidad">Unicidad</h3>
+<p>Debemos mostrar que <strong>no puede haber dos objetos distintos</strong> con la misma propiedad.</p>
+<p>Una estrategia estándar consiste en suponer que <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> satisfacen la condición y demostrar</p>
+<p><span class="math display">\[
+u=v.
+\]</span></p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — Separar existencia de unicidad</strong></p>
+<p>Cuando el enunciado diga «existe un único», escribe mentalmente dos subtareas:</p>
+<p><span class="math display">\[
+\boxed{
+\text{existencia}
++
+\text{unicidad}.
+}
+\]</span></p>
+<p>Una verificación de un candidato demuestra existencia, pero no unicidad.</p>
+</div>
+<p>El problema <a href="../../problemas/existencia-y-unicidad-ecuacion-lineal-parametros.html">Existencia y unicidad en una ecuación lineal con parámetros</a> (<code>MA-PRB-0005</code>) muestra además cómo una hipótesis puede ser necesaria para la unicidad aunque no lo sea para la existencia.</p>
+</section>
+</section>
+<section id="met-ma-bch-0001-induccion" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-bch-0001-induccion">9. Inducción matemática</h2>
+<p>Algunas afirmaciones aparecen como una familia</p>
+<p><span class="math display">\[
+P(0),P(1),P(2),\ldots
+\]</span></p>
+<p>indexada por los números naturales.</p>
+<p>La inducción matemática permite demostrar toda la familia mediante dos tareas.</p>
+<div id="res-ma-bch-0001-induccion">
+<section id="principio-de-inducción-matemática" class="level3">
+<h3 class="anchored" data-anchor-id="principio-de-inducción-matemática">Principio de inducción matemática</h3>
+<p>Supongamos que <span class="math inline">\(P(n)\)</span> es una proposición definida para <span class="math inline">\(n\in\mathbb N\)</span> y que:</p>
+<ol type="1">
+<li><span class="math inline">\(P(0)\)</span> es verdadera;</li>
+<li>para todo <span class="math inline">\(n\in\mathbb N\)</span>, si <span class="math inline">\(P(n)\)</span> es verdadera, entonces <span class="math inline">\(P(n+1)\)</span> es verdadera.</li>
+</ol>
+<p>Entonces <span class="math inline">\(P(n)\)</span> es verdadera para todo <span class="math inline">\(n\in\mathbb N\)</span>.</p>
+</section>
+</div>
+<p>La primera condición es el <strong>caso base</strong>. La segunda contiene la <strong>hipótesis inductiva</strong> y el <strong>paso inductivo</strong>.</p>
+<section id="ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo">Ejemplo</h3>
+<p>Demostremos</p>
+<p><span class="math display">\[
+1+2+\cdots+n=\frac{n(n+1)}2
+\]</span></p>
+<p>para todo entero <span class="math inline">\(n\ge1\)</span>.</p>
+<p>Para <span class="math inline">\(n=1\)</span>,</p>
+<p><span class="math display">\[
+1=\frac{1\cdot2}{2}.
+\]</span></p>
+<p>Supongamos ahora que</p>
+<p><span class="math display">\[
+1+2+\cdots+n=\frac{n(n+1)}2.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+1+2+\cdots+n+(n+1)
+&amp;=\frac{n(n+1)}2+(n+1)\\
+&amp;=(n+1)\left(\frac n2+1\right)\\
+&amp;=\frac{(n+1)(n+2)}2.
+\end{aligned}
+\]</span></p>
+<p>Ésta es exactamente la fórmula correspondiente a <span class="math inline">\(n+1\)</span>. Por inducción, la identidad vale para todo <span class="math inline">\(n\ge1\)</span>.</p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente — Usar lo que se quiere probar para el mismo índice</strong></p>
+<p>La hipótesis inductiva autoriza a utilizar <span class="math inline">\(P(n)\)</span> para demostrar <span class="math inline">\(P(n+1)\)</span>. No autoriza a suponer directamente <span class="math inline">\(P(n+1)\)</span>.</p>
+</div>
+</section>
+</section>
+<section id="met-ma-bch-0001-escritura" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-bch-0001-escritura">10. Escribir una demostración</h2>
+<p>Encontrar una idea y comunicarla son tareas distintas. Una demostración terminada debe permitir que otra persona reconstruya el argumento sin tener acceso a nuestras intenciones privadas.</p>
+<p>Una buena prueba suele hacer visibles:</p>
+<ul>
+<li>qué se supone;</li>
+<li>qué se quiere demostrar;</li>
+<li>por qué se introduce cada objeto nuevo;</li>
+<li>qué definición o resultado se utiliza;</li>
+<li>dónde aparece el paso decisivo;</li>
+<li>y cuándo se alcanza la conclusión.</li>
+</ul>
+<section id="del-esqueleto-a-la-prosa" class="level3">
+<h3 class="anchored" data-anchor-id="del-esqueleto-a-la-prosa">Del esqueleto a la prosa</h3>
+<p>Durante el descubrimiento podemos escribir un esquema muy comprimido:</p>
+<p><span class="math display">\[
+P
+\Rightarrow
+R_1
+\Rightarrow
+R_2
+\Rightarrow
+Q.
+\]</span></p>
+<p>En la versión final debemos convertirlo en un argumento legible. Eso no significa llenar la página de palabras: significa hacer explícitas las dependencias que contienen razonamiento real.</p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Auditoría breve de una prueba</strong></p>
+<p>Antes de darla por terminada, pregunta:</p>
+<ol type="1">
+<li>¿declaré todas las hipótesis que utilizo?;</li>
+<li>¿abrí correctamente las definiciones?;</li>
+<li>¿cada transformación está autorizada?;</li>
+<li>¿demostré todas las direcciones necesarias?;</li>
+<li>¿introduje una división sin comprobar que el divisor es no nulo?;</li>
+<li>¿mis casos cubren todas las posibilidades?;</li>
+<li>¿la conclusión final coincide exactamente con el enunciado?</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="ma-bch-0001-laboratorio" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0001-laboratorio">11. Elegir una estrategia</h2>
+<p>En los problemas reales, el enunciado rara vez anuncia la técnica que debe utilizarse. Antes de escribir una prueba conviene diagnosticar su forma.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Forma del objetivo</th>
+<th>Primeras estrategias que conviene examinar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(P\Rightarrow Q\)</span></td>
+<td>directa o contraposición</td>
+</tr>
+<tr class="even">
+<td>«no existe…»</td>
+<td>contradicción o análisis de una solución hipotética</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A=B\)</span></td>
+<td>doble inclusión</td>
+</tr>
+<tr class="even">
+<td>«existe un único…»</td>
+<td>separar existencia y unicidad</td>
+</tr>
+<tr class="odd">
+<td>afirmación para todo <span class="math inline">\(n\in\mathbb N\)</span></td>
+<td>inducción, si existe una relación natural entre casos sucesivos</td>
+</tr>
+<tr class="even">
+<td>afirmación universal dudosa</td>
+<td>búsqueda de contraejemplos</td>
+</tr>
+<tr class="odd">
+<td>definición técnica en la conclusión</td>
+<td>abrir la definición y buscar la forma que exige</td>
+</tr>
+</tbody>
+</table>
+<p>Esta tabla no es un algoritmo. Dos técnicas diferentes pueden resolver el mismo problema y, en ocasiones, la parte más creativa consiste precisamente en reformular el objetivo hasta que aparezca una estructura aprovechable.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — Diagnóstico antes de calcular</strong></p>
+<p>Antes de manipular símbolos, intenta responder:</p>
+<p><span class="math display">\[
+\boxed{
+\text{¿qué forma tiene el enunciado y qué tendría que producir una prueba?}
+}
+\]</span></p>
+<p>Esta pregunta evita aplicar procedimientos por semejanza superficial y ayuda a seleccionar una estrategia por su relación lógica con el objetivo.</p>
+</div>
+</section>
+<section id="primeros-problemas-asociados" class="level2">
+<h2 class="anchored" data-anchor-id="primeros-problemas-asociados">12. Primeros problemas asociados</h2>
+<p>El banco completo del manuscrito del libro contiene una progresión mucho más amplia. En Matemática Abierta publicamos como páginas independientes sólo los problemas que resultan especialmente útiles para aprender o reutilizar una técnica.</p>
+<p>Esta primera selección acompaña el capítulo:</p>
+<ol type="1">
+<li><a href="../../problemas/divisibilidad-por-4-y-paridad-mediante-contraposicion.html"><strong>Divisibilidad por 4 y paridad mediante contraposición</strong></a> (<code>MA-PRB-0003</code>) — elegir una prueba indirecta adecuada y traducir «impar» a una forma algebraica.</li>
+<li><a href="../../problemas/igualdad-de-conjuntos-por-doble-inclusion.html"><strong>Igualdad de conjuntos por doble inclusión</strong></a> (<code>MA-PRB-0004</code>) — abrir pertenencias, intersecciones y diferencias en las dos direcciones.</li>
+<li><a href="../../problemas/existencia-y-unicidad-ecuacion-lineal-parametros.html"><strong>Existencia y unicidad en una ecuación lineal con parámetros</strong></a> (<code>MA-PRB-0005</code>) — separar existencia de unicidad y localizar exactamente dónde se usa una hipótesis.</li>
+</ol>
+<p>Los tres problemas incluyen solución completa. El objetivo no es acumular ejercicios, sino convertir cada problema sustancial en una oportunidad para reconocer una estructura de razonamiento reutilizable.</p>
+</section>
+<section id="cierre" class="level2">
+<h2 class="anchored" data-anchor-id="cierre">Cierre</h2>
+<p>El repertorio fundamental de este capítulo puede condensarse así:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c}
+\text{leer la forma lógica}\\
+\downarrow\\
+\text{identificar hipótesis y conclusión}\\
+\downarrow\\
+\text{abrir definiciones}\\
+\downarrow\\
+\text{elegir una estrategia}\\
+\downarrow\\
+\text{construir y auditar la demostración}.
+\end{array}
+}
+\]</span></p>
+<p>El capítulo siguiente del libro trasladará estas herramientas a un nuevo problema: <strong>¿qué estructura matemática estamos suponiendo cuando trabajamos con los números reales?</strong> Allí aparecerán los axiomas de cuerpo y de orden, y después la completitud de <span class="math inline">\(\mathbb R\)</span>.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lachenmann\.github\.io\/matematica-abierta\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
