@@ -4,7 +4,7 @@
 
 | Tipo | Próximo |
 |---|---|
-| Concepto | MA-CON-0019 |
+| Concepto | MA-CON-0020 |
 | Problema | MA-PRB-0003 |
 | Artículo | MA-ART-0001 |
 | Lección | MA-LES-0001 |
@@ -34,6 +34,7 @@
 | MA-CON-0016 | concept | Supremo, ínfimo y completitud de ℝ | `conceptos/supremo-infimo-y-completitud-de-r.md` | published |
 | MA-CON-0017 | concept | Teorema del valor intermedio y teorema de Bolzano | `conceptos/teorema-del-valor-intermedio-y-teorema-de-bolzano.md` | published |
 | MA-CON-0018 | concept | Compacidad en ℝ y teorema de Weierstrass | `conceptos/compacidad-en-r-y-teorema-de-weierstrass.md` | published |
+| MA-CON-0019 | concept | Continuidad uniforme y teorema de Heine–Cantor | `conceptos/continuidad-uniforme-y-teorema-de-heine-cantor.md` | published |
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 | MA-PRB-0002 | problem | Dominio de un radical anidado | `problemas/dominio-de-un-radical-anidado.md` | published |
 

@@ -46,14 +46,15 @@ El valor absoluto y los problemas de dominio forman vías laterales que reutiliz
 - [Supremo, ínfimo y completitud de ℝ](../../conceptos/supremo-infimo-y-completitud-de-r.md) (`MA-CON-0016`)
 - [Teorema del valor intermedio y teorema de Bolzano](../../conceptos/teorema-del-valor-intermedio-y-teorema-de-bolzano.md) (`MA-CON-0017`)
 - [Compacidad en ℝ y teorema de Weierstrass](../../conceptos/compacidad-en-r-y-teorema-de-weierstrass.md) (`MA-CON-0018`)
+- [Continuidad uniforme y teorema de Heine–Cantor](../../conceptos/continuidad-uniforme-y-teorema-de-heine-cantor.md) (`MA-CON-0019`)
 - [Valor absoluto y desigualdades básicas](../../conceptos/valor-absoluto-y-desigualdades-basicas.md) (`MA-CON-0002`)
 - [Dominio de funciones reales con radicales](../../conceptos/dominio-de-funciones-reales-con-radicales.md) (`MA-CON-0003`)
 
 `MA-CON-0005` aporta las reglas de orden que justifican transformaciones algebraicas. `MA-CON-0004` introduce intervalos y las primeras intersecciones. `MA-CON-0006` amplía ese lenguaje a unión, complemento, diferencia y leyes de De Morgan. `MA-CON-0007` define funciones con precisión, `MA-CON-0008` introduce composición, `MA-CON-0009` clasifica funciones por inyectividad y sobreyectividad y `MA-CON-0010` cierra esa rama con funciones inversas.
 
-La ruta analítica comienza en `MA-CON-0011`, pasa por límites laterales y leyes algebraicas, y se bifurca hacia continuidad y hacia comparación por orden. `MA-CON-0016` añade la completitud de $\mathbb R$ y la técnica de construir puntos mediante supremos. `MA-CON-0017` hace confluir continuidad y completitud para obtener valor intermedio y Bolzano. `MA-CON-0018` añade la compacidad como principio global de finitud y deduce el teorema de Weierstrass a partir de la preservación de compactos por funciones continuas.
+La ruta analítica comienza en `MA-CON-0011`, pasa por límites laterales y leyes algebraicas, y se bifurca hacia continuidad y comparación por orden. `MA-CON-0016` añade la completitud de $\mathbb R$ y la técnica de construir puntos mediante supremos. `MA-CON-0017` hace confluir continuidad y completitud para obtener valor intermedio y Bolzano. `MA-CON-0018` añade compacidad, Heine–Borel y Weierstrass. `MA-CON-0019` completa este primer arco demostrando que la compacidad permite convertir la continuidad puntual en continuidad uniforme mediante Heine–Cantor.
 
-La ruta directa hacia el cálculo dispone ahora de cinco capas complementarias:
+La ruta directa hacia el cálculo dispone ahora de seis capas complementarias:
 
 $$
 \begin{array}{rcl}
@@ -61,11 +62,12 @@ $$
 \text{cálculo de límites} &:& \text{álgebra},\ \text{comparación},\ \text{sándwich},\\[1mm]
 \text{estructura de }\mathbb R &:& \text{supremo},\ \text{ínfimo},\ \text{completitud},\\[1mm]
 \text{existencia por continuidad} &:& \text{valor intermedio},\ \text{Bolzano},\\[1mm]
-\text{control global} &:& \text{compacidad},\ \text{Heine--Borel},\ \text{Weierstrass}.
+\text{control global del dominio} &:& \text{compacidad},\ \text{Heine--Borel},\ \text{Weierstrass},\\[1mm]
+\text{control global de la variación} &:& \text{continuidad uniforme},\ \text{Heine--Cantor}.
 \end{array}
 $$
 
-La continuidad y la estructura de los reales dejan así de ser líneas paralelas. La completitud permite construir fronteras y demostrar la compacidad de los intervalos cerrados; la continuidad preserva esa compacidad al pasar a la imagen.
+La continuidad y la estructura de los reales dejan así de ser líneas paralelas. La completitud permite construir fronteras y demostrar la compacidad de los intervalos cerrados; la compacidad, a su vez, convierte infinitos controles locales en finitísimos controles y permite extraer una única escala global.
 
 Y permanece cerrada una segunda ruta estructural básica:
 
@@ -79,7 +81,9 @@ $$
 \text{funciones inversas}.
 $$
 
-La conexión entre orden, completitud, continuidad y compacidad puede representarse ahora así:
+## Orden, completitud y compacidad
+
+La conexión principal puede representarse así:
 
 $$
 \text{orden en }\mathbb R
@@ -90,14 +94,10 @@ $$
 \longrightarrow
 \text{completitud}
 \longrightarrow
-[a,b]\text{ compacto}
-\longrightarrow
-f([a,b])\text{ compacto}
-\longrightarrow
-\text{máximo y mínimo}.
+[a,b]\text{ compacto}.
 $$
 
-En `MA-CON-0018`, la compacidad de $[a,b]$ se demuestra directamente a partir de la propiedad del supremo. Para un recubrimiento abierto $\mathcal U$ se define
+En `MA-CON-0018`, para un recubrimiento abierto $\mathcal U$ de $[a,b]$ se define
 
 $$
 S=\{x\in[a,b]:[a,x]\text{ admite un subrecubrimiento finito de }\mathcal U\}
@@ -109,70 +109,130 @@ $$
 c=\sup S.
 $$
 
-La apertura local permite avanzar más allá de $c$ si $c<b$, contradiciendo su carácter de supremo. Así se obtiene que todo recubrimiento abierto de $[a,b]$ admite un subrecubrimiento finito.
-
-A partir de allí se demuestra Heine–Borel en $\mathbb R$:
+La apertura local permite avanzar más allá de $c$ si $c<b$, contradiciendo su carácter de supremo. De allí se obtiene Heine–Borel:
 
 $$
 \boxed{
-K\text{ compacto}
+K\subseteq\mathbb R\text{ compacto}
 \iff
 K\text{ cerrado y acotado}.
 }
 $$
 
-Después, para una función continua
+## Tres consecuencias globales de la continuidad sobre compactos
+
+Sea
 
 $$
-f:K\to\mathbb R,
+f:K\to\mathbb R
 $$
 
-la compacidad del dominio produce la compacidad de la imagen:
+continua y $K$ compacto.
+
+Los conceptos `MA-CON-0018` y `MA-CON-0019` producen tres resultados distintos:
 
 $$
-\boxed{K\text{ compacto}\Longrightarrow f(K)\text{ compacto}.}
+\boxed{
+\begin{array}{rcl}
+K\text{ compacto} &\Longrightarrow& f(K)\text{ compacto},\\[1mm]
+K\ne\varnothing &\Longrightarrow& f\text{ alcanza máximo y mínimo},\\[1mm]
+K\text{ compacto} &\Longrightarrow& f\text{ es uniformemente continua}.
+\end{array}
+}
 $$
 
-Como los compactos no vacíos de $\mathbb R$ alcanzan su supremo y su ínfimo, se deduce el teorema de Weierstrass.
+El primero conserva la estructura global al pasar a la imagen. El segundo es el teorema de Weierstrass. El tercero es el teorema de Heine–Cantor.
 
-### Dos teoremas globales que se complementan
+## El mecanismo de Heine–Cantor
 
-Los dos últimos conceptos describen aspectos distintos de la imagen de un intervalo cerrado bajo una función continua.
-
-`MA-CON-0017` afirma que no faltan valores intermedios:
+Para cada punto $a\in K$, continuidad produce un radio $r_a>0$ con un control local de la forma
 
 $$
-\text{continuidad}
+|t-a|<r_a
 \Longrightarrow
-\text{sin huecos entre valores alcanzados}.
+|f(t)-f(a)|<\frac\varepsilon2.
 $$
 
-`MA-CON-0018` afirma que los extremos existen y se alcanzan:
+Los intervalos
 
 $$
-\text{continuidad}+\text{compacidad}
+U_a=\left(a-\frac{r_a}{2},a+\frac{r_a}{2}\right)
+$$
+
+cubren $K$.
+
+La compacidad permite escoger sólo
+
+$$
+U_{a_1},\dots,U_{a_N}.
+$$
+
+Entonces puede definirse
+
+$$
+\delta=\frac12\min\{r_{a_1},\dots,r_{a_N}\}>0.
+$$
+
+Ese único $\delta$ funciona para todos los pares $x,y\in K$. Éste es el paso conceptual decisivo:
+
+$$
+\boxed{
+\text{finitud extraída por compacidad}
 \Longrightarrow
-\text{máximo y mínimo}.
+\text{mínimo positivo global}
+\Longrightarrow
+\text{uniformidad}.
+}
 $$
 
-Por tanto, si
+## Tres teoremas globales que se complementan
+
+Para una función continua
 
 $$
-f:[a,b]\to\mathbb R
+f:[a,b]\to\mathbb R,
 $$
 
-es continua, existen $m,M\in\mathbb R$ tales que
+los últimos tres conceptos proporcionan una descripción especialmente fuerte.
+
+`MA-CON-0017` — valor intermedio:
 
 $$
-\boxed{f([a,b])=[m,M].}
+\text{la imagen no tiene huecos}.
 $$
 
-Weierstrass aporta los extremos $m$ y $M$; el teorema del valor intermedio garantiza todos los valores comprendidos entre ellos.
+`MA-CON-0018` — Weierstrass:
 
-### Aplicaciones publicadas
+$$
+\text{la imagen tiene extremos alcanzados}.
+$$
+
+`MA-CON-0019` — Heine–Cantor:
+
+$$
+\text{la variación local admite una escala global}.
+$$
+
+En particular, existen $m,M\in\mathbb R$ tales que
+
+$$
+\boxed{f([a,b])=[m,M],}
+$$
+
+y, además, para cada $\varepsilon>0$ existe un único $\delta>0$ válido en todo $[a,b]$:
+
+$$
+|x-y|<\delta
+\Longrightarrow
+|f(x)-f(y)|<\varepsilon.
+$$
+
+## Aplicaciones publicadas
 
 - [Dominio de una función radical cuadrática](../../problemas/dominio-funcion-radical-cuadratica.md) (`MA-PRB-0001`)
 - [Dominio de un radical anidado](../../problemas/dominio-de-un-radical-anidado.md) (`MA-PRB-0002`)
+
+## Cierre del bloque inicial
 
 Una forma compacta de visualizar las ramas principales es
 
@@ -195,8 +255,6 @@ $$
 \text{ruta de orden y completitud} & : &
 \text{orden}
 \longrightarrow
-\text{comparación}
-\longrightarrow
 \text{supremos e ínfimos}
 \longrightarrow
 \text{completitud},\\[2mm]
@@ -210,12 +268,19 @@ $$
 \text{confluencia global II} & : &
 \text{completitud}
 \longrightarrow
-\text{compacidad de }[a,b]
+\text{compacidad}
 \longrightarrow
-\text{imagen compacta}
+\text{Weierstrass},\\[2mm]
+\text{confluencia global III} & : &
+\text{continuidad}
++\text{compacidad}
 \longrightarrow
-\text{extremos alcanzados}.
+\text{Heine--Cantor}
+\longrightarrow
+\text{control uniforme}.
 \end{array}
 $$
+
+Con `MA-CON-0019` queda cerrado el bloque inicial **Funciones → Análisis**. La siguiente etapa natural puede comenzar con derivación: el cociente incremental y la definición de derivada como límite.
 
 Este mapa crecerá a medida que se incorporen nuevos conceptos y técnicas.
