@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Primer capítulo de Topos desde cero. Edición pública progresiva: proposiciones, valores de verdad, expresiones abiertas y forma lógica.">
+
+<title>Topos desde cero — Capítulo 1: Proposiciones y razonamiento deductivo – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-edd7520df32f0843e2a37d67594353f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ae1f6155afccd62564ec1af108321d5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Matemática Abierta</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#capítulo-1-proposiciones-y-razonamiento-deductivo" id="toc-capítulo-1-proposiciones-y-razonamiento-deductivo" class="nav-link active" data-scroll-target="#capítulo-1-proposiciones-y-razonamiento-deductivo">Capítulo 1 — Proposiciones y razonamiento deductivo</a></li>
+  <li><a href="#sec-1-1-proposiciones" id="toc-sec-1-1-proposiciones" class="nav-link" data-scroll-target="#sec-1-1-proposiciones">1.1 Proposiciones y valores de verdad</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-una-proposición" id="toc-qué-es-una-proposición" class="nav-link" data-scroll-target="#qué-es-una-proposición">1.1.1 Qué es una proposición</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-1" id="toc-ejemplo-1" class="nav-link" data-scroll-target="#ejemplo-1">Ejemplo 1</a></li>
+  </ul></li>
+  <li><a href="#la-forma-gramatical-importa-pero-no-basta" id="toc-la-forma-gramatical-importa-pero-no-basta" class="nav-link" data-scroll-target="#la-forma-gramatical-importa-pero-no-basta">1.1.2 La forma gramatical importa, pero no basta</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-a" id="toc-ejemplo-guiado-1.1-a" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-a">Ejemplo guiado 1.1-A</a></li>
+  <li><a href="#ejemplo-guiado-1.1-b" id="toc-ejemplo-guiado-1.1-b" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-b">Ejemplo guiado 1.1-B</a></li>
+  <li><a href="#ejemplo-guiado-1.1-c" id="toc-ejemplo-guiado-1.1-c" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-c">Ejemplo guiado 1.1-C</a></li>
+  </ul></li>
+  <li><a href="#falso-no-significa-no-proposición" id="toc-falso-no-significa-no-proposición" class="nav-link" data-scroll-target="#falso-no-significa-no-proposición">1.1.3 Falso no significa «no proposición»</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-d" id="toc-ejemplo-guiado-1.1-d" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-d">Ejemplo guiado 1.1-D</a></li>
+  </ul></li>
+  <li><a href="#expresiones-abiertas" id="toc-expresiones-abiertas" class="nav-link" data-scroll-target="#expresiones-abiertas">1.1.4 Expresiones abiertas</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-e" id="toc-ejemplo-guiado-1.1-e" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-e">Ejemplo guiado 1.1-E</a></li>
+  <li><a href="#ejemplo-guiado-1.1-f" id="toc-ejemplo-guiado-1.1-f" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-f">Ejemplo guiado 1.1-F</a></li>
+  </ul></li>
+  <li><a href="#no-toda-expresión-matemática-es-una-proposición" id="toc-no-toda-expresión-matemática-es-una-proposición" class="nav-link" data-scroll-target="#no-toda-expresión-matemática-es-una-proposición">1.1.5 No toda expresión matemática es una proposición</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-g" id="toc-ejemplo-guiado-1.1-g" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-g">Ejemplo guiado 1.1-G</a></li>
+  </ul></li>
+  <li><a href="#verdad-y-conocimiento" id="toc-verdad-y-conocimiento" class="nav-link" data-scroll-target="#verdad-y-conocimiento">1.1.6 Verdad y conocimiento</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-h" id="toc-ejemplo-guiado-1.1-h" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-h">Ejemplo guiado 1.1-H</a></li>
+  <li><a href="#ejemplo-guiado-1.1-i" id="toc-ejemplo-guiado-1.1-i" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-i">Ejemplo guiado 1.1-I</a></li>
+  </ul></li>
+  <li><a href="#letras-proposicionales" id="toc-letras-proposicionales" class="nav-link" data-scroll-target="#letras-proposicionales">1.1.7 Letras proposicionales</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-j" id="toc-ejemplo-guiado-1.1-j" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-j">Ejemplo guiado 1.1-J</a></li>
+  </ul></li>
+  <li><a href="#proposiciones-simples-y-compuestas" id="toc-proposiciones-simples-y-compuestas" class="nav-link" data-scroll-target="#proposiciones-simples-y-compuestas">1.1.8 Proposiciones simples y compuestas</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-k" id="toc-ejemplo-guiado-1.1-k" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-k">Ejemplo guiado 1.1-K</a></li>
+  </ul></li>
+  <li><a href="#contenido-y-forma-lógica" id="toc-contenido-y-forma-lógica" class="nav-link" data-scroll-target="#contenido-y-forma-lógica">1.1.9 Contenido y forma lógica</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-guiado-1.1-l" id="toc-ejemplo-guiado-1.1-l" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-l">Ejemplo guiado 1.1-L</a></li>
+  <li><a href="#ejemplo-guiado-1.1-m" id="toc-ejemplo-guiado-1.1-m" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-m">Ejemplo guiado 1.1-M</a></li>
+  <li><a href="#ejemplo-guiado-1.1-n" id="toc-ejemplo-guiado-1.1-n" class="nav-link" data-scroll-target="#ejemplo-guiado-1.1-n">Ejemplo guiado 1.1-N</a></li>
+  </ul></li>
+  <li><a href="#un-procedimiento-de-clasificación" id="toc-un-procedimiento-de-clasificación" class="nav-link" data-scroll-target="#un-procedimiento-de-clasificación">1.1.10 Un procedimiento de clasificación</a></li>
+  <li><a href="#problemas-de-práctica" id="toc-problemas-de-práctica" class="nav-link" data-scroll-target="#problemas-de-práctica">Problemas de práctica</a>
+  <ul class="collapse">
+  <li><a href="#problema-de-práctica-1" id="toc-problema-de-práctica-1" class="nav-link" data-scroll-target="#problema-de-práctica-1">Problema de práctica 1</a></li>
+  <li><a href="#problema-de-práctica-1.1-a" id="toc-problema-de-práctica-1.1-a" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-a">Problema de práctica 1.1-A</a></li>
+  <li><a href="#problema-de-práctica-1.1-b" id="toc-problema-de-práctica-1.1-b" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-b">Problema de práctica 1.1-B</a></li>
+  <li><a href="#problema-de-práctica-1.1-c" id="toc-problema-de-práctica-1.1-c" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-c">Problema de práctica 1.1-C</a></li>
+  <li><a href="#problema-de-práctica-1.1-d" id="toc-problema-de-práctica-1.1-d" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-d">Problema de práctica 1.1-D</a></li>
+  </ul></li>
+  <li><a href="#soluciones-de-los-problemas-de-práctica" id="toc-soluciones-de-los-problemas-de-práctica" class="nav-link" data-scroll-target="#soluciones-de-los-problemas-de-práctica">Soluciones de los problemas de práctica</a>
+  <ul class="collapse">
+  <li><a href="#problema-de-práctica-1-1" id="toc-problema-de-práctica-1-1" class="nav-link" data-scroll-target="#problema-de-práctica-1-1">Problema de práctica 1</a></li>
+  <li><a href="#problema-de-práctica-1.1-a-1" id="toc-problema-de-práctica-1.1-a-1" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-a-1">Problema de práctica 1.1-A</a></li>
+  <li><a href="#problema-de-práctica-1.1-b-1" id="toc-problema-de-práctica-1.1-b-1" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-b-1">Problema de práctica 1.1-B</a></li>
+  <li><a href="#problema-de-práctica-1.1-c-1" id="toc-problema-de-práctica-1.1-c-1" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-c-1">Problema de práctica 1.1-C</a></li>
+  <li><a href="#problema-de-práctica-1.1-d-1" id="toc-problema-de-práctica-1.1-d-1" class="nav-link" data-scroll-target="#problema-de-práctica-1.1-d-1">Problema de práctica 1.1-D</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#ejercicios-de-la-sección-1.1" id="toc-ejercicios-de-la-sección-1.1" class="nav-link" data-scroll-target="#ejercicios-de-la-sección-1.1">Ejercicios de la sección 1.1</a></li>
+  <li><a href="#soluciones-completas-de-los-ejercicios" id="toc-soluciones-completas-de-los-ejercicios" class="nav-link" data-scroll-target="#soluciones-completas-de-los-ejercicios">Soluciones completas de los ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">7</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">8</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">9</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">10</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">11</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">12</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">13</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">14</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">15</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">16</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">17</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">18</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">19</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">20</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Topos desde cero — Capítulo 1: Proposiciones y razonamiento deductivo</h1>
+</div>
+
+<div>
+  <div class="description">
+    Primer capítulo de Topos desde cero. Edición pública progresiva: proposiciones, valores de verdad, expresiones abiertas y forma lógica.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="capítulo-1-proposiciones-y-razonamiento-deductivo" class="level1">
+<h1>Capítulo 1 — Proposiciones y razonamiento deductivo</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Estado de esta edición">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Estado de esta edición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este capítulo se publica progresivamente. La <strong>sección 1.1 — Proposiciones y valores de verdad</strong> está disponible completa en esta versión web. Las secciones siguientes se incorporarán en el mismo orden del manuscrito maestro.</p>
+</div>
+</div>
+<p>Las matemáticas no consisten únicamente en calcular. También consisten en formular afirmaciones con precisión, determinar qué se sigue de qué y justificar por qué una conclusión es consecuencia de ciertas hipótesis. Antes de aprender a demostrar, necesitamos aprender a leer la forma lógica de aquello que queremos demostrar.</p>
+<p>Este capítulo introduce el lenguaje proposicional elemental. Más adelante, cuando aparezcan cuantificadores, conjuntos, funciones y propiedades universales, volveremos continuamente a estas estructuras lógicas.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Mirada hacia adelante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Mirada hacia adelante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durante buena parte de este volumen trabajaremos con la lógica clásica. Mucho después veremos que un topos posee, en general, una lógica interna intuicionista. Por ahora basta conservar una pregunta: <strong>¿qué estructura tiene una afirmación matemática y cómo depende su verdad de otras afirmaciones?</strong></p>
+</div>
+</div>
+</section>
+<section id="sec-1-1-proposiciones" class="level1">
+<h1>1.1 Proposiciones y valores de verdad</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Resultados de aprendizaje">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Resultados de aprendizaje
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al terminar esta sección, el lector podrá:</p>
+<ul>
+<li>distinguir una proposición de una pregunta, una orden, una exclamación o una expresión abierta;</li>
+<li>distinguir una proposición falsa de una expresión que no es proposición;</li>
+<li>reconocer los valores de verdad <strong>verdadero</strong> y <strong>falso</strong>;</li>
+<li>separar el hecho de que una proposición tenga valor de verdad del hecho de que conozcamos ese valor;</li>
+<li>usar letras proposicionales como <span class="math inline">\(P\)</span>, <span class="math inline">\(Q\)</span> y <span class="math inline">\(R\)</span> para ocultar contenido y conservar estructura;</li>
+<li>distinguir entre contenido matemático y forma lógica;</li>
+<li>reconocer proposiciones simples y compuestas;</li>
+<li>detectar formulaciones vagas que todavía no son adecuadas para el razonamiento formal.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Motivación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Motivación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consideremos las expresiones</p>
+<p><span class="math display">\[
+2+3=5,\qquad 7&lt;4,\qquad \text{«¿cuál es la raíz cuadrada de 9?»},\qquad x+2=7.
+\]</span></p>
+<p>Todas tienen apariencia matemática, pero no cumplen la misma función lógica. La primera afirma algo verdadero; la segunda afirma algo falso; la tercera pregunta; la cuarta contiene una variable cuyo valor todavía no se ha fijado.</p>
+<p>Esta diferencia será fundamental. Una demostración no opera sobre cualquier secuencia de símbolos: opera sobre afirmaciones que pueden ser verdaderas o falsas y sobre la estructura que relaciona unas afirmaciones con otras.</p>
+</div>
+</div>
+<section id="qué-es-una-proposición" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-una-proposición">1.1.1 Qué es una proposición</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Definición">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una <strong>proposición</strong> es una afirmación declarativa, suficientemente precisa, a la que puede atribuirse uno de dos valores de verdad:</p>
+<p><span class="math display">\[
+\boxed{\text{verdadero}}\qquad\text{o}\qquad\boxed{\text{falso}}.
+\]</span></p>
+</div>
+</div>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+P:\quad 5&lt;8
+\]</span></p>
+<p>es una proposición verdadera, mientras que</p>
+<p><span class="math display">\[
+Q:\quad 12\text{ es un número primo}
+\]</span></p>
+<p>es una proposición falsa.</p>
+<p>Que una proposición sea falsa no impide que sea una proposición. Lo decisivo es que formule una afirmación completa y suficientemente determinada.</p>
+<section id="ejemplo-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-1">Ejemplo 1</h3>
+<p>Clasifiquemos algunas expresiones.</p>
+<ol type="1">
+<li><span class="math inline">\(4+7=11\)</span>: proposición verdadera.</li>
+<li><span class="math inline">\(4+7=10\)</span>: proposición falsa.</li>
+<li>«Calcula <span class="math inline">\(4+7\)</span>»: no es una proposición; es una instrucción.</li>
+<li>«¿Es <span class="math inline">\(11\)</span> un número primo?»: no es una proposición; es una pregunta.</li>
+<li><span class="math inline">\(n+1=5\)</span>: todavía no es una proposición cerrada, porque su verdad depende del valor de <span class="math inline">\(n\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="la-forma-gramatical-importa-pero-no-basta" class="level2">
+<h2 class="anchored" data-anchor-id="la-forma-gramatical-importa-pero-no-basta">1.1.2 La forma gramatical importa, pero no basta</h2>
+<p>Una proposición es una oración declarativa, pero no toda secuencia de palabras con apariencia declarativa es suficientemente precisa para el razonamiento matemático.</p>
+<section id="ejemplo-guiado-1.1-a" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-a">Ejemplo guiado 1.1-A</h3>
+<p>Clasifica:</p>
+<blockquote class="blockquote">
+<p>«El número 100 es grande».</p>
+</blockquote>
+<p><strong>Solución.</strong> La oración tiene forma declarativa, pero la palabra «grande» no posee aquí un criterio fijado. ¿Grande respecto de qué escala?</p>
+<p>Sin una convención adicional, no hay una afirmación matemática suficientemente determinada. Por tanto, en este contexto:</p>
+<blockquote class="blockquote">
+<p><strong>no la admitimos todavía como proposición matemática.</strong></p>
+</blockquote>
+<p>Si se fijara, por ejemplo, el criterio «grande significa mayor que 50», la situación cambiaría.</p>
+</section>
+<section id="ejemplo-guiado-1.1-b" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-b">Ejemplo guiado 1.1-B</h3>
+<p>Clasifica:</p>
+<blockquote class="blockquote">
+<p>«Cierra la ventana».</p>
+</blockquote>
+<p><strong>Solución.</strong> La expresión no afirma que algo ocurra o deje de ocurrir. Da una orden. Por tanto:</p>
+<blockquote class="blockquote">
+<p><strong>no es una proposición.</strong></p>
+</blockquote>
+<p>No tiene sentido asignarle, en este uso, el valor verdadero o falso.</p>
+</section>
+<section id="ejemplo-guiado-1.1-c" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-c">Ejemplo guiado 1.1-C</h3>
+<p>Clasifica:</p>
+<blockquote class="blockquote">
+<p>«¡Qué número tan extraño!»</p>
+</blockquote>
+<p><strong>Solución.</strong> Es una exclamación y, además, contiene el término vago «extraño». No formula una afirmación precisa con valor de verdad. Así:</p>
+<blockquote class="blockquote">
+<p><strong>no es una proposición matemática.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="falso-no-significa-no-proposición" class="level2">
+<h2 class="anchored" data-anchor-id="falso-no-significa-no-proposición">1.1.3 Falso no significa «no proposición»</h2>
+<p>Esta distinción merece ser fijada desde el principio.</p>
+<section id="ejemplo-guiado-1.1-d" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-d">Ejemplo guiado 1.1-D</h3>
+<p>Un estudiante dice:</p>
+<blockquote class="blockquote">
+<p>«<span class="math inline">\(9&lt;4\)</span> no es una proposición porque es falso».</p>
+</blockquote>
+<p>¿Dónde está el error?</p>
+<p><strong>Solución.</strong> Precisamente porque la afirmación</p>
+<p><span class="math display">\[
+9&lt;4
+\]</span></p>
+<p>tiene un valor de verdad bien determinado —en este caso, falso— es una proposición.</p>
+<p>El error consiste en confundir dos preguntas distintas:</p>
+<blockquote class="blockquote">
+<p>«¿es una proposición?»</p>
+</blockquote>
+<p>con:</p>
+<blockquote class="blockquote">
+<p>«¿es verdadera?»</p>
+</blockquote>
+<p>La respuesta correcta es:</p>
+<p><span class="math display">\[
+\boxed{9&lt;4\text{ es una proposición falsa}.}
+\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Atención">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Atención
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No debemos usar «falso» como sinónimo de «sin sentido», «incompleto» o «no proposicional».</p>
+<p>Una proposición falsa sigue siendo una proposición. Una pregunta, una orden o una expresión abierta no se vuelve «falsa»: simplemente pertenece a otra categoría lógica.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="expresiones-abiertas" class="level2">
+<h2 class="anchored" data-anchor-id="expresiones-abiertas">1.1.4 Expresiones abiertas</h2>
+<p>Considere:</p>
+<p><span class="math display">\[
+x+2=7.
+\]</span></p>
+<p>No podemos asignarle un único valor de verdad mientras <span class="math inline">\(x\)</span> permanezca sin especificar. Si sustituimos</p>
+<p><span class="math display">\[
+x=5,
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+5+2=7,
+\]</span></p>
+<p>que es verdadera. Si sustituimos</p>
+<p><span class="math display">\[
+x=0,
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+0+2=7,
+\]</span></p>
+<p>que es falsa.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Definición">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Llamaremos provisionalmente <strong>expresión abierta</strong> a una expresión declarativa que contiene una o más variables cuyo valor no se ha fijado y de las cuales depende su verdad.</p>
+<p>La teoría formal de variables, predicados y cuantificadores se desarrollará en el capítulo 2.</p>
+</div>
+</div>
+<section id="ejemplo-guiado-1.1-e" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-e">Ejemplo guiado 1.1-E</h3>
+<p>Clasifica:</p>
+<p><span class="math display">\[
+m^2=16.
+\]</span></p>
+<p><strong>Solución.</strong> Mientras no se especifique <span class="math inline">\(m\)</span>, la expresión puede resultar verdadera para algunos valores y falsa para otros. Por tanto:</p>
+<p><span class="math display">\[
+\boxed{m^2=16\text{ es, por ahora, una expresión abierta}.}
+\]</span></p>
+<p>Al sustituir <span class="math inline">\(m=4\)</span> obtenemos una proposición verdadera; al sustituir <span class="math inline">\(m=3\)</span>, una proposición falsa.</p>
+</section>
+<section id="ejemplo-guiado-1.1-f" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-f">Ejemplo guiado 1.1-F</h3>
+<p>Un estudiante afirma:</p>
+<blockquote class="blockquote">
+<p>«<span class="math inline">\(x&gt;3\)</span> es falso, porque puedo tomar <span class="math inline">\(x=2\)</span>».</p>
+</blockquote>
+<p>Explica el error.</p>
+<p><strong>Solución.</strong> La expresión</p>
+<p><span class="math display">\[
+x&gt;3
+\]</span></p>
+<p>no ha recibido todavía un valor de <span class="math inline">\(x\)</span>. Por eso no estamos ante una proposición cerrada a la que debamos asignar un único valor de verdad.</p>
+<p>Sustituir</p>
+<p><span class="math display">\[
+x=2
+\]</span></p>
+<p>produce la proposición</p>
+<p><span class="math display">\[
+2&gt;3,
+\]</span></p>
+<p>que sí es falsa. Pero esto solo muestra qué ocurre con una sustitución concreta. Por tanto:</p>
+<blockquote class="blockquote">
+<p><strong>el estudiante ha confundido la expresión abierta con una de sus instancias.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="no-toda-expresión-matemática-es-una-proposición" class="level2">
+<h2 class="anchored" data-anchor-id="no-toda-expresión-matemática-es-una-proposición">1.1.5 No toda expresión matemática es una proposición</h2>
+<p>Los símbolos matemáticos pueden formar nombres, cálculos, ecuaciones abiertas o proposiciones.</p>
+<section id="ejemplo-guiado-1.1-g" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-g">Ejemplo guiado 1.1-G</h3>
+<p>Clasifica:</p>
+<p><span class="math display">\[
+7,\qquad 3+5,\qquad 3+5=8.
+\]</span></p>
+<p><strong>Solución.</strong> La expresión</p>
+<p><span class="math display">\[
+7
+\]</span></p>
+<p>nombra un número; no afirma nada.</p>
+<p>La expresión</p>
+<p><span class="math display">\[
+3+5
+\]</span></p>
+<p>representa un cálculo o, una vez evaluada, un número; tampoco afirma nada por sí sola.</p>
+<p>En cambio,</p>
+<p><span class="math display">\[
+3+5=8
+\]</span></p>
+<p>sí afirma una igualdad y posee un valor de verdad. Por tanto:</p>
+<blockquote class="blockquote">
+<p><strong><span class="math inline">\(7\)</span> y <span class="math inline">\(3+5\)</span> no son proposiciones, mientras que <span class="math inline">\(3+5=8\)</span> sí lo es.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="verdad-y-conocimiento" class="level2">
+<h2 class="anchored" data-anchor-id="verdad-y-conocimiento">1.1.6 Verdad y conocimiento</h2>
+<p>Conviene separar cuidadosamente:</p>
+<blockquote class="blockquote">
+<p>«la proposición tiene un valor de verdad»</p>
+</blockquote>
+<p>de:</p>
+<blockquote class="blockquote">
+<p>«conocemos ese valor de verdad».</p>
+</blockquote>
+<p>En la lógica clásica adoptada en esta parte del libro, una proposición suficientemente determinada se considera verdadera o falsa aunque nosotros todavía no sepamos cuál de las dos posibilidades ocurre.</p>
+<section id="ejemplo-guiado-1.1-h" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-h">Ejemplo guiado 1.1-H</h3>
+<p>Considere la afirmación:</p>
+<blockquote class="blockquote">
+<p>«El número <span class="math inline">\(10^{100}+39\)</span> es primo».</p>
+</blockquote>
+<p>¿Deja de ser una proposición si no sabemos inmediatamente decidir si es verdadera?</p>
+<p><strong>Solución.</strong> No.&nbsp;La afirmación es declarativa y suficientemente determinada. Habla de un número concreto y le atribuye una propiedad concreta.</p>
+<p>Que el lector no sepa decidir de inmediato su verdad no cambia su condición lógica. Por tanto:</p>
+<blockquote class="blockquote">
+<p><strong>es una proposición, aunque aquí no determinemos su valor de verdad.</strong></p>
+</blockquote>
+</section>
+<section id="ejemplo-guiado-1.1-i" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-i">Ejemplo guiado 1.1-I</h3>
+<p>Analiza la afirmación:</p>
+<blockquote class="blockquote">
+<p>«La expansión decimal de <span class="math inline">\(\sqrt{2}\)</span> contiene en alguna posición diez sietes consecutivos».</p>
+</blockquote>
+<p><strong>Solución.</strong> La afirmación está formulada de manera determinada: o ese bloque aparece o no aparece.</p>
+<p>Para esta sección no necesitamos averiguar cuál es el caso. Lo importante es distinguir:</p>
+<blockquote class="blockquote">
+<p><strong>determinar el valor de verdad</strong></p>
+</blockquote>
+<p>de:</p>
+<blockquote class="blockquote">
+<p><strong>reconocer que la oración tiene un valor de verdad</strong>.</p>
+</blockquote>
+<p>Así:</p>
+<blockquote class="blockquote">
+<p><strong>es una proposición.</strong></p>
+</blockquote>
+<div class="callout callout-style-default callout-warning callout-titled" title="Atención">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Atención
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La lógica no convierte automáticamente en conocido el valor de verdad de una proposición. Una demostración puede ser precisamente el procedimiento mediante el cual llegamos a conocer que una proposición es verdadera.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="letras-proposicionales" class="level2">
+<h2 class="anchored" data-anchor-id="letras-proposicionales">1.1.7 Letras proposicionales</h2>
+<p>Cuando interesa la estructura lógica y no el contenido particular, representaremos proposiciones mediante letras:</p>
+<p><span class="math display">\[
+P,\qquad Q,\qquad R,\ldots
+\]</span></p>
+<p>Por ejemplo:</p>
+<p><span class="math display">\[
+P:\quad 6\text{ es par},\qquad Q:\quad 6&gt;10.
+\]</span></p>
+<p>Entonces <span class="math inline">\(P\)</span> es verdadera y <span class="math inline">\(Q\)</span> es falsa.</p>
+<p>La letra no cambia el contenido lógico de la afirmación; simplemente nos permite dejarlo temporalmente en segundo plano.</p>
+<section id="ejemplo-guiado-1.1-j" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-j">Ejemplo guiado 1.1-J</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+P:\quad 15\text{ es divisible por }3,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+Q:\quad 15&lt;4.
+\]</span></p>
+<p>¿Qué información conservan <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> y qué información ocultan?</p>
+<p><strong>Solución.</strong> Las letras <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> funcionan como nombres abreviados de proposiciones completas. Al escribir únicamente</p>
+<p><span class="math display">\[
+P,\qquad Q,
+\]</span></p>
+<p>ocultamos provisionalmente el tema concreto —divisibilidad y orden—, pero conservamos el hecho esencial de que cada letra representa una afirmación con valor de verdad. En este ejemplo:</p>
+<p><span class="math display">\[
+P\text{ es verdadera},\qquad Q\text{ es falsa}.
+\]</span></p>
+</section>
+</section>
+<section id="proposiciones-simples-y-compuestas" class="level2">
+<h2 class="anchored" data-anchor-id="proposiciones-simples-y-compuestas">1.1.8 Proposiciones simples y compuestas</h2>
+<p>Algunas proposiciones se presentan como unidades que no estamos descomponiendo en otras proposiciones más pequeñas. Las llamaremos, en este nivel, <strong>simples</strong>.</p>
+<p>Otras se construyen combinando proposiciones.</p>
+<p>Por ejemplo:</p>
+<blockquote class="blockquote">
+<p>«9 es impar y 9 es mayor que 5»</p>
+</blockquote>
+<p>combina:</p>
+<blockquote class="blockquote">
+<p>«9 es impar»</p>
+</blockquote>
+<p>con:</p>
+<blockquote class="blockquote">
+<p>«9 es mayor que 5».</p>
+</blockquote>
+<div class="callout callout-style-default callout-important callout-titled" title="Definición">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En el nivel de análisis adoptado en esta sección:</p>
+<ul>
+<li>una <strong>proposición simple</strong> se trata como una unidad;</li>
+<li>una <strong>proposición compuesta</strong> se obtiene combinando una o más proposiciones mediante expresiones lógicas como «no», «y», «o», «si …, entonces …».</li>
+</ul>
+<p>Las conectivas y sus símbolos se definirán formalmente en las secciones siguientes.</p>
+</div>
+</div>
+<section id="ejemplo-guiado-1.1-k" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-k">Ejemplo guiado 1.1-K</h3>
+<p>Clasifica como simple o compuesta:</p>
+<ol type="1">
+<li>«17 es primo».</li>
+<li>«17 es primo y 17 es impar».</li>
+<li>«No es cierto que <span class="math inline">\(17&lt;3\)</span>».</li>
+</ol>
+<p><strong>Solución.</strong> En el nivel actual:</p>
+<ol type="1">
+<li>la tratamos como simple;</li>
+<li>es compuesta, porque combina dos afirmaciones mediante «y»;</li>
+<li>es compuesta, porque modifica una afirmación mediante «no es cierto que».</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled" title="Atención">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Atención
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>«Simple» no significa «fácil», y «compuesta» no significa «difícil».</p>
+<p>La distinción se refiere a la estructura lógica que decidimos analizar, no a la dificultad matemática del contenido.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="contenido-y-forma-lógica" class="level2">
+<h2 class="anchored" data-anchor-id="contenido-y-forma-lógica">1.1.9 Contenido y forma lógica</h2>
+<p>Una idea guiará todo este capítulo: argumentos de temas completamente distintos pueden compartir la misma forma lógica. Sustituir afirmaciones concretas por letras permite aislar precisamente aquello que importa para el razonamiento.</p>
+<p>Considere:</p>
+<blockquote class="blockquote">
+<p>Si un entero es divisible por 4, entonces es par.</p>
+</blockquote>
+<p>y:</p>
+<blockquote class="blockquote">
+<p>Si una figura es un cuadrado, entonces tiene cuatro lados.</p>
+</blockquote>
+<p>Las oraciones hablan de objetos diferentes, pero comparten una misma estructura verbal:</p>
+<blockquote class="blockquote">
+<p>«Si …, entonces …».</p>
+</blockquote>
+<section id="ejemplo-guiado-1.1-l" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-l">Ejemplo guiado 1.1-L</h3>
+<p>Compare:</p>
+<blockquote class="blockquote">
+<p>Si hoy llueve, la calle se moja.</p>
+</blockquote>
+<p>y:</p>
+<blockquote class="blockquote">
+<p>Si 20 es divisible por 5, entonces 20 es divisible por 1.</p>
+</blockquote>
+<p>¿Qué tienen en común desde el punto de vista lógico?</p>
+<p><strong>Solución.</strong> El contenido es diferente: una habla del clima y la otra de aritmética. Pero ambas tienen la forma verbal:</p>
+<blockquote class="blockquote">
+<p><strong>si ocurre una afirmación, entonces ocurre otra.</strong></p>
+</blockquote>
+<p>En esta sección no simbolizamos todavía esa estructura. Lo importante es aprender a verla independientemente del tema. Por tanto:</p>
+<blockquote class="blockquote">
+<p><strong>contenido distinto puede compartir una misma forma lógica.</strong></p>
+</blockquote>
+</section>
+<section id="ejemplo-guiado-1.1-m" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-m">Ejemplo guiado 1.1-M</h3>
+<p>Compare:</p>
+<blockquote class="blockquote">
+<p>8 es par y <span class="math inline">\(8&gt;3\)</span>.</p>
+</blockquote>
+<p>con:</p>
+<blockquote class="blockquote">
+<p>La puerta está cerrada y la luz está encendida.</p>
+</blockquote>
+<p><strong>Solución.</strong> Cada oración reúne dos afirmaciones mediante «y». Aunque sus contenidos no tienen relación, la arquitectura lógica visible es la misma:</p>
+<blockquote class="blockquote">
+<p><strong>una afirmación y otra afirmación.</strong></p>
+</blockquote>
+<p>La sección siguiente introducirá el nombre y el símbolo de esta operación.</p>
+</section>
+<section id="ejemplo-guiado-1.1-n" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-guiado-1.1-n">Ejemplo guiado 1.1-N</h3>
+<p>¿Por qué es útil reemplazar temporalmente afirmaciones completas por letras proposicionales?</p>
+<p><strong>Solución.</strong> Porque permite separar dos niveles:</p>
+<p><span class="math display">\[
+\boxed{\text{contenido particular}}\qquad\text{y}\qquad\boxed{\text{patrón lógico}}.
+\]</span></p>
+<p>Si dos razonamientos tienen la misma estructura, podemos estudiar esa estructura una sola vez y reutilizar el análisis en contextos distintos.</p>
+<p>Esta abstracción será una práctica recurrente durante todo el libro.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Mirada hacia adelante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Mirada hacia adelante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La separación entre contenido y forma será cada vez más profunda.</p>
+<p>En lógica proposicional abstraemos del contenido de las afirmaciones. En teoría de categorías estudiaremos más adelante estructuras y transformaciones que reaparecen en ramas matemáticas muy diferentes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="un-procedimiento-de-clasificación" class="level2">
+<h2 class="anchored" data-anchor-id="un-procedimiento-de-clasificación">1.1.10 Un procedimiento de clasificación</h2>
+<p>Cuando encontremos una expresión nueva, conviene formular las preguntas en este orden:</p>
+<ol type="1">
+<li>¿Afirma algo, en lugar de preguntar u ordenar?</li>
+<li>¿Está formulada con suficiente precisión?</li>
+<li>¿Quedan variables sin fijar de las que dependa su verdad?</li>
+<li>Si es una afirmación cerrada, ¿es verdadera o falsa?</li>
+</ol>
+<p>Este orden evita dos errores frecuentes: intentar asignar verdad o falsedad a algo que no es proposición y confundir una expresión abierta con una proposición falsa.</p>
+</section>
+<section id="problemas-de-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-de-práctica">Problemas de práctica</h2>
+<section id="problema-de-práctica-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1">Problema de práctica 1</h3>
+<p>Determina cuáles de las siguientes expresiones son proposiciones. Cuando lo sean, indica su valor de verdad si puede determinarse inmediatamente.</p>
+<ol type="1">
+<li><span class="math inline">\(8+5=13\)</span>.</li>
+<li><span class="math inline">\(17&lt;3\)</span>.</li>
+<li>«Encuentra un número mayor que 10».</li>
+<li>«¿Es <span class="math inline">\(\sqrt{2}\)</span> racional?».</li>
+<li>«Todo cuadrado tiene cuatro lados».</li>
+<li><span class="math inline">\(x^2=4\)</span>.</li>
+</ol>
+</section>
+<section id="problema-de-práctica-1.1-a" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-a">Problema de práctica 1.1-A</h3>
+<p>Clasifica y justifica:</p>
+<ol type="1">
+<li>«23 es un número primo».</li>
+<li>«¿Es 23 un número primo?».</li>
+<li>«Escribe un número primo».</li>
+<li><span class="math inline">\(n+3=10\)</span>.</li>
+<li>«1000 es un número enorme».</li>
+</ol>
+</section>
+<section id="problema-de-práctica-1.1-b" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-b">Problema de práctica 1.1-B</h3>
+<p>Un estudiante escribe</p>
+<p><span class="math display">\[
+y^2=9
+\]</span></p>
+<p>y afirma: «Es una proposición falsa, porque <span class="math inline">\(y\)</span> podría valer 2».</p>
+<p>Diagnostica el error y explica qué ocurre al sustituir <span class="math inline">\(y=2\)</span> y al sustituir <span class="math inline">\(y=3\)</span>.</p>
+</section>
+<section id="problema-de-práctica-1.1-c" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-c">Problema de práctica 1.1-C</h3>
+<p>Indica cuáles de las siguientes proposiciones son simples o compuestas en el nivel de análisis actual:</p>
+<ol type="1">
+<li>«5 es primo».</li>
+<li>«5 es primo y 5 es impar».</li>
+<li>«No es cierto que <span class="math inline">\(5&lt;0\)</span>».</li>
+<li>«Si 12 es divisible por 6, entonces 12 es par».</li>
+</ol>
+</section>
+<section id="problema-de-práctica-1.1-d" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-d">Problema de práctica 1.1-D</h3>
+<p>Escribe dos pares de proposiciones de contenidos completamente distintos que compartan, respectivamente, estas formas verbales:</p>
+<ol type="1">
+<li>«… y …»;</li>
+<li>«Si …, entonces …».</li>
+</ol>
+<p>Explica qué parte cambia y qué parte permanece.</p>
+</section>
+</section>
+<section id="soluciones-de-los-problemas-de-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-de-los-problemas-de-práctica">Soluciones de los problemas de práctica</h2>
+<section id="problema-de-práctica-1-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1-1">Problema de práctica 1</h3>
+<ol type="1">
+<li>Es una proposición verdadera.</li>
+<li>Es una proposición falsa.</li>
+<li>No es una proposición: es una instrucción.</li>
+<li>No es una proposición: es una pregunta.</li>
+<li>Es una proposición verdadera.</li>
+<li>Es una expresión abierta: su verdad depende del valor asignado a <span class="math inline">\(x\)</span>.</li>
+</ol>
+</section>
+<section id="problema-de-práctica-1.1-a-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-a-1">Problema de práctica 1.1-A</h3>
+<ol type="1">
+<li>Es una proposición; además, es verdadera.</li>
+<li>No es proposición: es una pregunta.</li>
+<li>No es proposición: es una instrucción.</li>
+<li>Es una expresión abierta, porque el valor de verdad depende de <span class="math inline">\(n\)</span>.</li>
+<li>La palabra «enorme» no tiene un criterio fijado; no la admitimos como proposición matemática precisa.</li>
+</ol>
+</section>
+<section id="problema-de-práctica-1.1-b-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-b-1">Problema de práctica 1.1-B</h3>
+<p>La expresión</p>
+<p><span class="math display">\[
+y^2=9
+\]</span></p>
+<p>es abierta mientras <span class="math inline">\(y\)</span> no esté fijado. Tomar</p>
+<p><span class="math display">\[
+y=2
+\]</span></p>
+<p>produce</p>
+<p><span class="math display">\[
+2^2=9,
+\]</span></p>
+<p>una proposición falsa. Tomar</p>
+<p><span class="math display">\[
+y=3
+\]</span></p>
+<p>produce</p>
+<p><span class="math display">\[
+3^2=9,
+\]</span></p>
+<p>una proposición verdadera. El estudiante ha atribuido a la expresión abierta el valor de verdad de una de sus instancias.</p>
+</section>
+<section id="problema-de-práctica-1.1-c-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-c-1">Problema de práctica 1.1-C</h3>
+<ol type="1">
+<li>Simple, en nuestro nivel actual de análisis.</li>
+<li>Compuesta: reúne dos afirmaciones mediante «y».</li>
+<li>Compuesta: modifica una afirmación mediante una negación verbal.</li>
+<li>Compuesta: presenta una afirmación bajo la forma verbal «si …, entonces …».</li>
+</ol>
+</section>
+<section id="problema-de-práctica-1.1-d-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-1.1-d-1">Problema de práctica 1.1-D</h3>
+<p>Una respuesta posible es:</p>
+<blockquote class="blockquote">
+<p>«8 es par y <span class="math inline">\(8&gt;0\)</span>»,</p>
+<p>«La puerta está cerrada y la lámpara está encendida».</p>
+</blockquote>
+<p>En ambos casos cambia el contenido, pero permanece la forma «una afirmación y otra afirmación».</p>
+<p>Para la segunda forma:</p>
+<blockquote class="blockquote">
+<p>«Si <span class="math inline">\(10&gt;7\)</span>, entonces <span class="math inline">\(10&gt;0\)</span>»,</p>
+<p>«Si llueve, entonces llevo paraguas».</p>
+</blockquote>
+<p>Nuevamente cambia el tema, pero permanece la arquitectura verbal «si …, entonces …».</p>
+</section>
+</section>
+</section>
+<section id="ejercicios-de-la-sección-1.1" class="level1">
+<h1>Ejercicios de la sección 1.1</h1>
+<ol type="1">
+<li>Clasifica cada expresión como proposición, pregunta, instrucción o expresión abierta:
+<ol type="a">
+<li><span class="math inline">\(0=1\)</span>;</li>
+<li>«Abre el libro»;</li>
+<li>«14 es par»;</li>
+<li>«¿Es 17 primo?»;</li>
+<li><span class="math inline">\(n+4=9\)</span>;</li>
+<li>«Calcula <span class="math inline">\(7^2\)</span>».</li>
+</ol></li>
+<li>Para las proposiciones del ejercicio 1, determina su valor de verdad.</li>
+<li>Explica por qué <span class="math inline">\(12&lt;5\)</span> es una proposición aunque sea falsa.</li>
+<li>Explica por qué <span class="math inline">\(x&lt;5\)</span> no debe recibir todavía un único valor de verdad. Da una sustitución que produzca una proposición verdadera y otra que produzca una falsa.</li>
+<li>Clasifica <span class="math inline">\(9\)</span>, <span class="math inline">\(4+5\)</span>, <span class="math inline">\(4+5=9\)</span>, <span class="math inline">\(4+5=8\)</span>. Explica cuáles son proposiciones y cuáles no.</li>
+<li><strong>Encontrar el error.</strong> Un estudiante afirma: «La pregunta “¿es 7 impar?” es una proposición verdadera porque la respuesta es sí». Explica el error.</li>
+<li><strong>Encontrar el error.</strong> Un estudiante afirma: «<span class="math inline">\(m&gt;10\)</span> es falso, porque <span class="math inline">\(m\)</span> podría valer 0». Explica el error.</li>
+<li>Decide cuáles de estas formulaciones son suficientemente precisas para tratarlas como proposiciones matemáticas:
+<ol type="a">
+<li>«<span class="math inline">\(100&gt;20\)</span>»;</li>
+<li>«100 es enorme»;</li>
+<li>«100 es mayor que 20»;</li>
+<li>«Este número es bonito».</li>
+</ol></li>
+<li>Da un ejemplo de una proposición cuyo valor de verdad sea inmediato para ti y otro de una proposición cuyo valor de verdad no conozcas de inmediato. Explica por qué ambas siguen siendo proposiciones.</li>
+<li>Sean <span class="math inline">\(P\)</span>: «18 es divisible por 3» y <span class="math inline">\(Q\)</span>: «<span class="math inline">\(18&lt;2\)</span>». Indica el valor de verdad de <span class="math inline">\(P\)</span> y de <span class="math inline">\(Q\)</span>.</li>
+<li>Explica qué ventaja obtenemos al reemplazar temporalmente las proposiciones del ejercicio 10 por las letras <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span>.</li>
+<li>Clasifica como simple o compuesta, en el nivel actual:
+<ol type="a">
+<li>«11 es primo»;</li>
+<li>«11 es primo y 11 es impar»;</li>
+<li>«No es cierto que <span class="math inline">\(11&lt;0\)</span>»;</li>
+<li>«11 es primo o 11 es par».</li>
+</ol></li>
+<li>Escribe dos proposiciones compuestas que utilicen la palabra «y». Identifica las dos afirmaciones componentes en cada una.</li>
+<li>Escribe dos proposiciones compuestas que utilicen la palabra «o». No intentes todavía formalizar el significado de «o».</li>
+<li>Escribe dos afirmaciones de contenidos distintos con la forma verbal «Si …, entonces …». Explica qué estructura comparten.</li>
+<li>Compare «6 es par y <span class="math inline">\(6&gt;1\)</span>» con «La puerta está abierta y la habitación está iluminada». ¿Qué cambia y qué permanece desde el punto de vista lógico?</li>
+<li>Una afirmación contiene una variable <span class="math inline">\(t\)</span>. Explica por qué preguntar únicamente «¿es verdadera o falsa?» puede ser prematuro.</li>
+<li><strong>Verdadero o falso, con justificación.</strong>
+<ol type="a">
+<li>Toda proposición es verdadera.</li>
+<li>Toda proposición falsa deja de ser proposición.</li>
+<li>Toda pregunta matemática es una proposición.</li>
+<li>Una proposición puede tener un valor de verdad que todavía no conocemos.</li>
+<li>Dos proposiciones de contenidos distintos pueden compartir la misma forma lógica.</li>
+</ol></li>
+<li>Explica la diferencia entre estas dos preguntas: «¿es una proposición?» y «¿es verdadera?». Da un ejemplo en el que las respuestas sean, respectivamente, «sí» y «no».</li>
+<li><strong>Síntesis.</strong> Diseña un procedimiento de cuatro pasos para clasificar una expresión nueva como proposición o no proposición y, cuando corresponda, determinar su valor de verdad. Debe distinguir al menos: pregunta/orden, vaguedad, variable no fijada y verdad/falsedad.</li>
+</ol>
+</section>
+<section id="soluciones-completas-de-los-ejercicios" class="level1">
+<h1>Soluciones completas de los ejercicios</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">1</h2>
+<ol type="1">
+<li><span class="math inline">\(0=1\)</span>: proposición.</li>
+<li>«Abre el libro»: instrucción.</li>
+<li>«14 es par»: proposición.</li>
+<li>«¿Es 17 primo?»: pregunta.</li>
+<li><span class="math inline">\(n+4=9\)</span>: expresión abierta.</li>
+<li>«Calcula <span class="math inline">\(7^2\)</span>»: instrucción.</li>
+</ol>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2</h2>
+<p>Entre las expresiones del ejercicio 1,</p>
+<p><span class="math display">\[
+0=1
+\]</span></p>
+<p>es falsa, mientras que</p>
+<p><span class="math display">\[
+14\text{ es par}
+\]</span></p>
+<p>es verdadera.</p>
+<p>Las demás no reciben aquí los valores verdadero/falso porque no son proposiciones cerradas.</p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">3</h2>
+<p>La afirmación</p>
+<p><span class="math display">\[
+12&lt;5
+\]</span></p>
+<p>es declarativa, precisa y cerrada. Su valor de verdad está perfectamente determinado: es falsa.</p>
+<p>Por tanto:</p>
+<blockquote class="blockquote">
+<p><strong>ser falsa no impide ser proposición.</strong></p>
+</blockquote>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">4</h2>
+<p>La expresión</p>
+<p><span class="math display">\[
+x&lt;5
+\]</span></p>
+<p>depende del valor de <span class="math inline">\(x\)</span>. Por ejemplo, al sustituir</p>
+<p><span class="math display">\[
+x=2,
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+2&lt;5,
+\]</span></p>
+<p>que es verdadera. Al sustituir</p>
+<p><span class="math display">\[
+x=8,
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+8&lt;5,
+\]</span></p>
+<p>que es falsa.</p>
+<p>Así la expresión original es abierta.</p>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">5</h2>
+<p>Las expresiones</p>
+<p><span class="math display">\[
+9\qquad\text{y}\qquad 4+5
+\]</span></p>
+<p>no afirman nada por sí solas; representan objetos o cálculos.</p>
+<p>En cambio,</p>
+<p><span class="math display">\[
+4+5=9
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+4+5=8
+\]</span></p>
+<p>son proposiciones. La primera es verdadera y la segunda falsa.</p>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">6</h2>
+<p>La expresión</p>
+<blockquote class="blockquote">
+<p>«¿es 7 impar?»</p>
+</blockquote>
+<p>es una pregunta, no una afirmación. Que podamos responderla afirmativamente no cambia su forma lógica.</p>
+<p>La proposición correspondiente sería:</p>
+<blockquote class="blockquote">
+<p>«7 es impar»,</p>
+</blockquote>
+<p>que sí es verdadera.</p>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">7</h2>
+<p>La expresión</p>
+<p><span class="math display">\[
+m&gt;10
+\]</span></p>
+<p>es abierta. Sustituir</p>
+<p><span class="math display">\[
+m=0
+\]</span></p>
+<p>produce una instancia falsa:</p>
+<p><span class="math display">\[
+0&gt;10.
+\]</span></p>
+<p>Pero esto no asigna un valor de verdad único a la expresión original.</p>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">8</h2>
+<ol type="1">
+<li>«<span class="math inline">\(100&gt;20\)</span>»: proposición precisa.</li>
+<li>«100 es enorme»: no se ha fijado qué significa «enorme».</li>
+<li>«100 es mayor que 20»: proposición precisa.</li>
+<li>«Este número es bonito»: ni el referente ni el criterio «bonito» están fijados de manera matemática.</li>
+</ol>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">9</h2>
+<p>Una respuesta posible:</p>
+<blockquote class="blockquote">
+<p>«10 es par»</p>
+</blockquote>
+<p>tiene un valor de verdad inmediato: verdadero.</p>
+<p>En cambio:</p>
+<blockquote class="blockquote">
+<p>«<span class="math inline">\(10^{100}+39\)</span> es primo»</p>
+</blockquote>
+<p>es una proposición determinada aunque el lector no conozca de inmediato su valor de verdad.</p>
+<p>La condición de proposición depende de que la afirmación sea precisa, no de nuestra rapidez para decidirla.</p>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">10</h2>
+<p>Tenemos</p>
+<p><span class="math display">\[
+P:\quad 18\text{ es divisible por }3,
+\]</span></p>
+<p>que es verdadera, y</p>
+<p><span class="math display">\[
+Q:\quad 18&lt;2,
+\]</span></p>
+<p>que es falsa.</p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">11</h2>
+<p>Las letras</p>
+<p><span class="math display">\[
+P,\qquad Q
+\]</span></p>
+<p>permiten dejar de lado temporalmente el contenido concreto de las afirmaciones y concentrarnos en su comportamiento lógico.</p>
+<p>Este procedimiento hará posible reconocer patrones comunes entre razonamientos de temas distintos.</p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">12</h2>
+<ol type="1">
+<li>«11 es primo»: simple en el nivel actual.</li>
+<li>«11 es primo y 11 es impar»: compuesta.</li>
+<li>«No es cierto que <span class="math inline">\(11&lt;0\)</span>»: compuesta.</li>
+<li>«11 es primo o 11 es par»: compuesta.</li>
+</ol>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">13</h2>
+<p>Por ejemplo:</p>
+<blockquote class="blockquote">
+<p>«12 es par y <span class="math inline">\(12&gt;0\)</span>».</p>
+</blockquote>
+<p>Sus componentes son:</p>
+<blockquote class="blockquote">
+<p>«12 es par»</p>
+</blockquote>
+<p>y:</p>
+<blockquote class="blockquote">
+<p>«<span class="math inline">\(12&gt;0\)</span>».</p>
+</blockquote>
+<p>Otro ejemplo:</p>
+<blockquote class="blockquote">
+<p>«9 es impar y <span class="math inline">\(9&lt;20\)</span>»,</p>
+</blockquote>
+<p>con componentes:</p>
+<blockquote class="blockquote">
+<p>«9 es impar», «<span class="math inline">\(9&lt;20\)</span>».</p>
+</blockquote>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">14</h2>
+<p>Por ejemplo:</p>
+<blockquote class="blockquote">
+<p>«10 es par o 10 es primo»,</p>
+</blockquote>
+<p>y:</p>
+<blockquote class="blockquote">
+<p>«<span class="math inline">\(3&lt;1\)</span> o <span class="math inline">\(3&lt;5\)</span>».</p>
+</blockquote>
+<p>Ambas son compuestas mediante la palabra «o». Su comportamiento preciso se estudiará en §1.2.</p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">15</h2>
+<p>Por ejemplo:</p>
+<blockquote class="blockquote">
+<p>«Si 8 es divisible por 4, entonces 8 es par»,</p>
+</blockquote>
+<p>y:</p>
+<blockquote class="blockquote">
+<p>«Si la alarma suena, entonces la pantalla se enciende».</p>
+</blockquote>
+<p>El contenido cambia, pero ambas comparten la estructura:</p>
+<blockquote class="blockquote">
+<p><strong>si una afirmación, entonces otra afirmación.</strong></p>
+</blockquote>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">16</h2>
+<p>Cambian los objetos de los que se habla: en una oración aparecen propiedades aritméticas y en la otra hechos sobre una habitación.</p>
+<p>Permanece la estructura:</p>
+<blockquote class="blockquote">
+<p><strong>una afirmación y otra afirmación.</strong></p>
+</blockquote>
+</section>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16">17</h2>
+<p>Si la verdad de la afirmación depende de <span class="math inline">\(t\)</span>, necesitamos saber qué valor tiene la variable o qué procedimiento posterior la vinculará.</p>
+<p>Antes de eso no hay necesariamente un único valor de verdad que asignar.</p>
+</section>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17">18</h2>
+<ol type="1">
+<li><strong>Falso.</strong> Una proposición puede ser falsa.</li>
+<li><strong>Falso.</strong> Precisamente una proposición falsa sigue teniendo un valor de verdad.</li>
+<li><strong>Falso.</strong> Una pregunta solicita información; no afirma algo.</li>
+<li><strong>Verdadero.</strong> Tener un valor de verdad y conocerlo son cuestiones distintas.</li>
+<li><strong>Verdadero.</strong> La forma lógica abstrae del contenido particular.</li>
+</ol>
+</section>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18">19</h2>
+<p>«¿Es una proposición?» pregunta por la clase lógica de la expresión. «¿Es verdadera?» pregunta por el valor de verdad, suponiendo ya que estamos ante una proposición.</p>
+<p>Ejemplo:</p>
+<p><span class="math display">\[
+7&lt;2.
+\]</span></p>
+<p>A la primera pregunta respondemos <strong>sí</strong>; a la segunda, <strong>no</strong>.</p>
+</section>
+<section id="section-19" class="level2">
+<h2 class="anchored" data-anchor-id="section-19">20</h2>
+<p>Un procedimiento posible es:</p>
+<ol type="1">
+<li>Preguntar si la expresión afirma algo o si, por el contrario, pregunta, ordena o exclama.</li>
+<li>Si afirma algo, comprobar que los términos relevantes estén suficientemente precisados y no sean vagos.</li>
+<li>Comprobar si quedan variables no fijadas de las que dependa la verdad; si las hay, clasificar provisionalmente como expresión abierta.</li>
+<li>Solo cuando la afirmación sea cerrada y precisa, preguntar si es verdadera o falsa.</li>
+</ol>
+<p>En forma resumida:</p>
+<p><span class="math display">\[
+\boxed{\text{función lingüística}\longrightarrow\text{precisión}\longrightarrow\text{variables}\longrightarrow\text{valor de verdad}.}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Registro de dependencias">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Registro de dependencias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta sección introduce y deja disponibles:</p>
+<ul>
+<li>proposición;</li>
+<li>valores de verdad verdadero/falso;</li>
+<li>distinción entre proposición falsa y expresión no proposicional;</li>
+<li>expresión abierta, todavía de manera preliminar;</li>
+<li>letra proposicional;</li>
+<li>proposición simple y compuesta;</li>
+<li>diferencia entre contenido y forma lógica.</li>
+</ul>
+<p>No se han introducido todavía símbolos para negación, conjunción, disyunción, implicación o bicondicional. Tampoco se han formalizado variables, predicados ni cuantificadores.</p>
+<p>La siguiente sección introducirá las primeras conectivas:</p>
+<p><span class="math display">\[
+\boxed{\text{negación}}\qquad\boxed{\text{conjunción}}\qquad\boxed{\text{disyunción}},
+\]</span></p>
+<p>junto con su sintaxis y sus condiciones de verdad.</p>
+</div>
+</div>
+<hr>
+<p><strong>Siguiente sección:</strong> 1.2 — Negación, conjunción y disyunción.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lachenmann\.github\.io\/matematica-abierta\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
