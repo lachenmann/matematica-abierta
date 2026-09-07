@@ -4,7 +4,7 @@
 
 | Tipo | Próximo |
 |---|---|
-| Concepto | MA-CON-0014 |
+| Concepto | MA-CON-0015 |
 | Problema | MA-PRB-0003 |
 | Artículo | MA-ART-0001 |
 | Lección | MA-LES-0001 |
@@ -29,6 +29,7 @@
 | MA-CON-0011 | concept | Límite de una función en un punto | `conceptos/limite-de-una-funcion-en-un-punto.md` | published |
 | MA-CON-0012 | concept | Límites laterales y criterio para el límite bilateral | `conceptos/limites-laterales-y-criterio-para-el-limite-bilateral.md` | published |
 | MA-CON-0013 | concept | Leyes algebraicas de los límites | `conceptos/leyes-algebraicas-de-los-limites.md` | published |
+| MA-CON-0014 | concept | Continuidad de una función en un punto | `conceptos/continuidad-de-una-funcion-en-un-punto.md` | published |
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 | MA-PRB-0002 | problem | Dominio de un radical anidado | `problemas/dominio-de-un-radical-anidado.md` | published |
 
