@@ -1,6 +1,6 @@
 ---
 title: "Topos desde cero — Capítulo 1: Proposiciones y razonamiento deductivo"
-description: "Primer capítulo de Topos desde cero. Edición pública progresiva: proposiciones, valores de verdad, conectivas, sintaxis y semántica proposicional."
+description: "Primer capítulo de Topos desde cero. Edición pública progresiva: proposiciones, conectivas, tablas de verdad y equivalencia lógica."
 content-id: MA-BCH-0002
 content-type: book-chapter
 book-id: MA-BOK-0002
@@ -27,6 +27,13 @@ topics:
   - conectiva-principal
   - alcance
   - traduccion-simbolica
+  - valuaciones
+  - tablas-de-verdad
+  - equivalencia-logica
+  - leyes-de-morgan
+  - tautologias
+  - contradicciones
+  - contingencia
 prerequisites: []
 related:
   - MA-BOK-0002
@@ -39,7 +46,7 @@ license: GFDL-1.3-or-later
 # Capítulo 1 — Proposiciones y razonamiento deductivo
 
 ::: {.callout-note title="Estado de esta edición"}
-Este capítulo se publica progresivamente. Las **secciones 1.1 — Proposiciones y valores de verdad** y **1.2 — Negación, conjunción y disyunción** están disponibles completas en esta versión web. Las secciones siguientes se incorporarán en el mismo orden del manuscrito maestro.
+Este capítulo se publica progresivamente. Las **secciones 1.1 — Proposiciones y valores de verdad**, **1.2 — Negación, conjunción y disyunción** y **1.3 — Tablas de verdad y equivalencia lógica** están disponibles completas en esta versión web. Las secciones siguientes se incorporarán en el mismo orden del manuscrito maestro.
 :::
 
 Las matemáticas no consisten únicamente en calcular. También consisten en formular afirmaciones con precisión, determinar qué se sigue de qué y justificar por qué una conclusión es consecuencia de ciertas hipótesis. Antes de aprender a demostrar, necesitamos aprender a leer la forma lógica de aquello que queremos demostrar.
@@ -2223,6 +2230,1164 @@ Todavía no se han introducido como herramientas:
 La siguiente sección desarrollará tablas de verdad completas y utilizará ese procedimiento para definir equivalencia lógica y justificar sistemáticamente leyes entre fórmulas.
 :::
 
+# 1.3 Tablas de verdad y equivalencia lógica {#sec-1-3-tablas-equivalencia}
+
+::: {.callout-note title="Resultados de aprendizaje"}
+Al terminar esta sección, el lector podrá:
+
+- definir y utilizar una asignación de verdad o valuación para un conjunto de letras proposicionales;
+- construir tablas de verdad para fórmulas formadas con $\neg$, $\land$ y $\lor$;
+- interpretar cada fila de una tabla como una asignación de verdad;
+- determinar cuántas filas requiere una tabla con $n$ letras proposicionales;
+- decidir mediante tablas de verdad si dos fórmulas son lógicamente equivalentes;
+- reconocer y utilizar las leyes de De Morgan, conmutativas, asociativas, idempotentes, distributivas, de absorción y de doble negación;
+- distinguir tautologías, contradicciones y fórmulas contingentes;
+- simplificar fórmulas mediante equivalencias previamente justificadas;
+- reconstruir fórmulas sencillas a partir de una tabla de verdad.
+:::
+
+::: {.callout-warning title="Motivación"}
+En la sección anterior aprendimos las reglas de verdad de $\neg$, $\land$ y $\lor$ por separado. Ahora necesitamos un procedimiento sistemático para analizar expresiones más largas. Una tabla de verdad hace exactamente eso: examina todas las combinaciones posibles de valores de verdad de las letras proposicionales y calcula, paso a paso, el valor de la fórmula completa.
+
+Este procedimiento nos permitirá distinguir dos cuestiones que no deben confundirse:
+
+> **que dos fórmulas se parezcan**
+
+ y:
+
+> **que tengan siempre el mismo valor de verdad.**
+
+La segunda noción será nuestra definición de equivalencia lógica.
+:::
+
+## 1.3.1 Asignaciones de verdad y valuaciones
+
+En §1.2 distinguimos la sintaxis de una fórmula de su semántica. Ahora necesitamos hacer más precisa la segunda parte.
+
+::: {.callout-important title="Definición"}
+Fijadas ciertas letras proposicionales, una **asignación de verdad**, o **valuación**, consiste en especificar para cada una de esas letras uno de los dos valores:
+
+$$
+V\qquad\text{o}\qquad F.
+$$
+:::
+
+Por ejemplo,
+
+$$
+\nu:\quad P:V,\qquad Q:F,\qquad R:V
+$$
+
+designa una valuación en la que $P$ y $R$ son verdaderas y $Q$ es falsa.
+
+La letra $\nu$ es simplemente un nombre para la asignación completa. Todavía no necesitamos formalizarla como una función; la teoría de funciones llegará más adelante.
+
+Una vez fijada una valuación, el valor de cualquier fórmula compuesta se determina de manera recursiva usando las reglas de verdad de sus conectivas. La estructura sintáctica construida en §1.2 nos dice precisamente en qué orden debemos hacerlo.
+
+### Ejemplo guiado 1.3-A
+
+Considere la valuación
+
+$$
+\nu:\quad P:F,\qquad Q:V,\qquad R:F.
+$$
+
+Evalúa
+
+$$
+\neg\bigl(P\lor(Q\land R)\bigr).
+$$
+
+**Solución.** La estructura de la fórmula exige comenzar por la subfórmula más interna:
+
+$$
+Q\land R.
+$$
+
+Bajo $\nu$,
+
+$$
+Q=V,\qquad R=F,
+$$
+
+de modo que
+
+$$
+Q\land R=F.
+$$
+
+Después,
+
+$$
+P\lor(Q\land R)=F\lor F=F.
+$$
+
+Finalmente,
+
+$$
+\neg\bigl(P\lor(Q\land R)\bigr)=\neg F=V.
+$$
+
+La valuación fija los valores de las letras; las conectivas determinan, paso a paso, el valor de todas las subfórmulas.
+
+::: {.callout-warning title="Atención"}
+Una fila de una tabla de verdad representa **una sola valuación**.
+
+La tabla completa reúne **todas las valuaciones posibles** de las letras que aparecen en la fórmula.
+
+Esta distinción convierte la tabla de verdad en algo más que una cuadrícula de cálculo: es un examen exhaustivo de todos los casos semánticos posibles.
+:::
+
+## 1.3.2 Construcción sistemática de una tabla de verdad
+
+Si una fórmula contiene una sola letra proposicional $P$, existen dos valuaciones posibles:
+
+$$
+P=V\qquad\text{o}\qquad P=F.
+$$
+
+Con dos letras $P,Q$ existen cuatro valuaciones:
+
+$$
+(V,V),\qquad(V,F),\qquad(F,V),\qquad(F,F).
+$$
+
+Con tres letras hay ocho valuaciones. En general, con $n$ letras proposicionales hay
+
+$$
+\boxed{2^n}
+$$
+
+valuaciones posibles y, por tanto, $2^n$ filas en la tabla completa.
+
+Adoptaremos un orden fijo para no omitir ninguna posibilidad. Para dos letras usaremos:
+
+| $P$ | $Q$ |
+|---|---|
+| V | V |
+| V | F |
+| F | V |
+| F | F |
+
+con más letras procederemos de manera análoga.
+
+### Ejemplo resuelto 6
+
+Construye la tabla de verdad de
+
+$$
+\neg(P\lor\neg Q).
+$$
+
+**Solución.** Gracias al análisis sintáctico de §1.2, conviene calcular primero las subfórmulas de menor complejidad. Cada columna intermedia registra cómo una misma valuación se propaga por la estructura de la fórmula. La dependencia de columnas es
+
+$$
+Q\longrightarrow\neg Q\longrightarrow P\lor\neg Q\longrightarrow\neg(P\lor\neg Q).
+$$
+
+Por tanto:
+
+| $P$ | $Q$ | $\neg Q$ | $P\lor\neg Q$ | $\neg(P\lor\neg Q)$ |
+|---|---|---|---|---|
+| V | V | F | V | F |
+| V | F | V | V | F |
+| F | V | F | F | V |
+| F | F | V | V | F |
+
+La fórmula completa solo es verdadera cuando $P$ es falsa y $Q$ es verdadera.
+
+::: {.callout-warning title="Atención"}
+Una tabla de verdad no debe completarse «de un salto» cuando la fórmula es compuesta. Las columnas intermedias no son decoración: muestran la estructura del cálculo y disminuyen considerablemente el riesgo de error.
+:::
+
+### Ejemplo resuelto 7
+
+¿Cuántas filas necesita la tabla de verdad de
+
+$$
+(P\land Q)\lor(\neg R\land S)?
+$$
+
+**Solución.** La fórmula contiene cuatro letras proposicionales distintas:
+
+$$
+P,\qquad Q,\qquad R,\qquad S.
+$$
+
+Cada una puede tomar dos valores. Por consiguiente, el número de combinaciones es
+
+$$
+2^4=16.
+$$
+
+La tabla necesita 16 filas, independientemente del número de conectivas que aparezcan.
+
+## 1.3.3 Equivalencia lógica
+
+::: {.callout-important title="Definición"}
+Dos fórmulas $A$ y $B$ son **lógicamente equivalentes** si, bajo toda valuación de las letras proposicionales que aparezcan en ellas, ambas reciben el mismo valor de verdad.
+
+Escribiremos
+
+$$
+A\equiv B.
+$$
+:::
+
+Así, $A\equiv B$ no afirma que las fórmulas estén escritas igual, sino que ninguna valuación logra distinguirlas por su valor de verdad.
+
+En esta sección, $\equiv$ expresa una relación **metalingüística** entre fórmulas; no introduce todavía una nueva conectiva proposicional.
+
+Para comprobar $A\equiv B$ mediante una tabla, basta construir ambas columnas finales y verificar que son idénticas fila por fila.
+
+### Ejemplo resuelto 8
+
+Determina si
+
+$$
+\neg(P\land Q)
+$$
+
+y
+
+$$
+\neg P\lor\neg Q
+$$
+
+son equivalentes.
+
+**Solución.**
+
+| $P$ | $Q$ | $\neg(P\land Q)$ | $\neg P\lor\neg Q$ |
+|---|---|---|---|
+| V | V | F | F |
+| V | F | V | V |
+| F | V | V | V |
+| F | F | V | V |
+
+Las dos columnas finales coinciden. Luego
+
+$$
+\boxed{\neg(P\land Q)\equiv\neg P\lor\neg Q.}
+$$
+
+Esta es una de las leyes de De Morgan.
+
+### Ejemplo resuelto 9
+
+¿Es
+
+$$
+\neg(P\land Q)
+$$
+
+equivalente a
+
+$$
+\neg P\land\neg Q?
+$$
+
+**Solución.** No. Basta una sola fila diferente para destruir la equivalencia. Si
+
+$$
+P=V,\qquad Q=F,
+$$
+
+entonces
+
+$$
+P\land Q=F,
+$$
+
+de modo que
+
+$$
+\neg(P\land Q)=V.
+$$
+
+Pero
+
+$$
+\neg P=F,\qquad\neg Q=V,
+$$
+
+y por tanto
+
+$$
+\neg P\land\neg Q=F.
+$$
+
+Las fórmulas toman valores distintos en esta asignación, así que **no son lógicamente equivalentes**.
+
+Este ejemplo ilustra una técnica importante: para demostrar que dos fórmulas no son equivalentes, no hace falta construir siempre la tabla completa; basta encontrar una asignación que las separe.
+
+## 1.3.4 Leyes fundamentales de equivalencia
+
+Las siguientes equivalencias se verifican mediante tablas de verdad. Las utilizaremos después como reglas de transformación, del mismo modo que en álgebra se utilizan identidades ya demostradas.
+
+### Leyes de De Morgan
+
+$$
+\neg(P\land Q)\equiv\neg P\lor\neg Q,
+$$
+
+$$
+\neg(P\lor Q)\equiv\neg P\land\neg Q.
+$$
+
+### Leyes conmutativas
+
+$$
+P\land Q\equiv Q\land P,
+$$
+
+$$
+P\lor Q\equiv Q\lor P.
+$$
+
+### Leyes asociativas
+
+$$
+P\land(Q\land R)\equiv(P\land Q)\land R,
+$$
+
+$$
+P\lor(Q\lor R)\equiv(P\lor Q)\lor R.
+$$
+
+### Leyes idempotentes
+
+$$
+P\land P\equiv P,
+$$
+
+$$
+P\lor P\equiv P.
+$$
+
+### Leyes distributivas
+
+$$
+P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R),
+$$
+
+$$
+P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R).
+$$
+
+### Leyes de absorción
+
+$$
+P\lor(P\land Q)\equiv P,
+$$
+
+$$
+P\land(P\lor Q)\equiv P.
+$$
+
+### Doble negación
+
+$$
+\neg\neg P\equiv P.
+$$
+
+### Ejemplo resuelto 10
+
+Verifica la ley distributiva
+
+$$
+P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R).
+$$
+
+**Solución.** Con tres letras hay $2^3=8$ filas:
+
+| $P$ | $Q$ | $R$ | $Q\lor R$ | $P\land(Q\lor R)$ | $P\land Q$ | $P\land R$ | $(P\land Q)\lor(P\land R)$ |
+|---|---|---|---|---|---|---|---|
+| V | V | V | V | V | V | V | V |
+| V | V | F | V | V | V | F | V |
+| V | F | V | V | V | F | V | V |
+| V | F | F | F | F | F | F | F |
+| F | V | V | V | F | F | F | F |
+| F | V | F | V | F | F | F | F |
+| F | F | V | V | F | F | F | F |
+| F | F | F | F | F | F | F | F |
+
+Las columnas finales coinciden, por lo que la equivalencia queda verificada.
+
+### Ejemplo resuelto 11
+
+Simplifica
+
+$$
+\neg(P\lor\neg Q).
+$$
+
+**Solución.** Aplicamos una ley cada vez:
+
+$$
+\neg(P\lor\neg Q)\equiv\neg P\land\neg\neg Q
+$$
+
+por De Morgan, y luego
+
+$$
+\neg P\land\neg\neg Q\equiv\neg P\land Q
+$$
+
+por doble negación. Así,
+
+$$
+\boxed{\neg(P\lor\neg Q)\equiv\neg P\land Q.}
+$$
+
+Esto coincide con la tabla del ejemplo resuelto 6: la fórmula solo era verdadera cuando $P$ era falsa y $Q$ verdadera.
+
+### Ejemplo resuelto 12
+
+Simplifica
+
+$$
+\neg(Q\land\neg P)\lor P.
+$$
+
+**Solución.** Por De Morgan,
+
+$$
+\neg(Q\land\neg P)\lor P\equiv(\neg Q\lor\neg\neg P)\lor P.
+$$
+
+Por doble negación,
+
+$$
+(\neg Q\lor P)\lor P.
+$$
+
+Por asociatividad,
+
+$$
+\neg Q\lor(P\lor P).
+$$
+
+Por idempotencia,
+
+$$
+\boxed{\neg Q\lor P.}
+$$
+
+### Ejemplo resuelto 13
+
+Simplifica
+
+$$
+P\lor(Q\land\neg P).
+$$
+
+**Solución.** Usamos la distributividad de $\lor$ respecto de $\land$:
+
+$$
+P\lor(Q\land\neg P)\equiv(P\lor Q)\land(P\lor\neg P).
+$$
+
+La segunda componente,
+
+$$
+P\lor\neg P,
+$$
+
+será reconocida en seguida como una tautología. Una conjunción con una tautología no cambia el valor de la otra fórmula, de modo que
+
+$$
+\boxed{P\lor(Q\land\neg P)\equiv P\lor Q.}
+$$
+
+## 1.3.5 Tautologías, contradicciones y contingencias
+
+::: {.callout-important title="Definición"}
+Una fórmula es una **tautología** si es verdadera bajo toda valuación posible.
+
+Es una **contradicción** si es falsa bajo toda valuación posible.
+
+Cuando es verdadera bajo algunas valuaciones y falsa bajo otras, la llamaremos **contingente**.
+
+En una tabla de verdad, estas tres situaciones aparecen respectivamente como:
+
+- todas las filas V;
+- todas las filas F;
+- una mezcla de V y F.
+:::
+
+Dos ejemplos fundamentales de la lógica clásica son
+
+$$
+P\lor\neg P
+$$
+
+y
+
+$$
+P\land\neg P.
+$$
+
+La primera es siempre verdadera; la segunda, siempre falsa.
+
+### Ejemplo resuelto 14
+
+Clasifica
+
+$$
+P\lor(Q\lor\neg P).
+$$
+
+**Solución.** Por asociatividad y conmutatividad,
+
+$$
+P\lor(Q\lor\neg P)\equiv Q\lor(P\lor\neg P).
+$$
+
+Pero $P\lor\neg P$ es siempre verdadera. Por consiguiente, la disyunción completa es siempre verdadera:
+
+$$
+\boxed{P\lor(Q\lor\neg P)\text{ es una tautología}.}
+$$
+
+### Ejemplo resuelto 15
+
+Clasifica
+
+$$
+P\land\neg(Q\lor\neg Q).
+$$
+
+**Solución.** La fórmula
+
+$$
+Q\lor\neg Q
+$$
+
+es una tautología. Su negación es, por tanto, una contradicción:
+
+$$
+\neg(Q\lor\neg Q)
+$$
+
+es siempre falsa. Al conjuntarla con $P$, el resultado sigue siendo siempre falso:
+
+$$
+\boxed{P\land\neg(Q\lor\neg Q)\text{ es una contradicción}.}
+$$
+
+### Ejemplo resuelto 16
+
+Clasifica
+
+$$
+P\lor\neg(Q\lor\neg Q).
+$$
+
+**Solución.** Como antes,
+
+$$
+\neg(Q\lor\neg Q)
+$$
+
+es siempre falsa. Por tanto,
+
+$$
+P\lor\neg(Q\lor\neg Q)\equiv P.
+$$
+
+La fórmula resultante es verdadera cuando $P$ es verdadera y falsa cuando $P$ es falsa. Luego **es contingente**.
+
+::: {.callout-tip title="Mirada hacia adelante"}
+La expresión $P\lor\neg P$ es una tautología de la lógica clásica y recibe el nombre de **ley del tercero excluido**. Mucho más adelante, al estudiar la lógica interna de un topos, veremos por qué no debe suponerse automáticamente en un contexto intuicionista. Por ahora, todas las tablas de verdad de este capítulo pertenecen a la lógica proposicional clásica.
+:::
+
+## 1.3.6 Reconstruir una fórmula a partir de su tabla
+
+Las tablas de verdad no solo sirven para analizar fórmulas existentes. También pueden utilizarse en sentido inverso: dado un patrón de valores, podemos buscar una fórmula que lo produzca.
+
+### Ejemplo resuelto 17
+
+Encuentra una fórmula que sea verdadera exactamente cuando $P$ y $Q$ tienen valores de verdad distintos.
+
+**Solución.** Queremos el patrón:
+
+| $P$ | $Q$ | ? |
+|---|---|---|
+| V | V | F |
+| V | F | V |
+| F | V | V |
+| F | F | F |
+
+Hay dos situaciones favorables:
+
+- $P$ verdadera y $Q$ falsa;
+- $P$ falsa y $Q$ verdadera.
+
+Las expresamos como
+
+$$
+P\land\neg Q
+$$
+
+y
+
+$$
+\neg P\land Q,
+$$
+
+y las unimos mediante una disyunción:
+
+$$
+\boxed{(P\land\neg Q)\lor(\neg P\land Q).}
+$$
+
+Esta fórmula expresa la disyunción exclusiva.
+
+### Ejemplo resuelto 18
+
+Encuentra una fórmula que tenga la tabla
+
+| $P$ | $Q$ | ? |
+|---|---|---|
+| V | V | V |
+| V | F | V |
+| F | V | F |
+| F | F | V |
+
+**Solución.** La única fila falsa es
+
+$$
+P=F,\qquad Q=V.
+$$
+
+Esa situación se describe mediante
+
+$$
+\neg P\land Q.
+$$
+
+Por tanto, negamos precisamente ese caso:
+
+$$
+\neg(\neg P\land Q).
+$$
+
+Usando De Morgan y doble negación,
+
+$$
+\neg(\neg P\land Q)\equiv P\lor\neg Q.
+$$
+
+Así, una respuesta especialmente simple es
+
+$$
+\boxed{P\lor\neg Q.}
+$$
+
+## 1.3.7 Problemas de práctica resueltos
+
+### Problema de práctica 5
+
+Construye una tabla de verdad para
+
+$$
+(P\lor Q)\land\neg P.
+$$
+
+Antes de mirar la solución, intenta predecir verbalmente en qué fila o filas puede ser verdadera.
+
+### Problema de práctica 6
+
+Decide mediante una tabla de verdad si
+
+$$
+\neg(P\lor Q)
+$$
+
+y
+
+$$
+\neg P\land\neg Q
+$$
+
+son equivalentes.
+
+### Problema de práctica 7
+
+Simplifica, justificando cada paso,
+
+$$
+(P\land Q)\lor(P\land\neg Q).
+$$
+
+### Problema de práctica 8
+
+Clasifica como tautología, contradicción o contingencia:
+
+$$
+(P\lor Q)\land(\neg P\lor\neg Q).
+$$
+
+### Problema de práctica 1.3-A
+
+Considere la valuación
+
+$$
+\nu:\quad P:F,\qquad Q:V,\qquad R:V.
+$$
+
+Sin construir una tabla completa, evalúa de adentro hacia afuera:
+
+$$
+\neg\bigl((P\lor Q)\land(\neg P\lor R)\bigr).
+$$
+
+Indica en qué momento utilizas información sintáctica y en qué momento información semántica.
+
+## Soluciones de los problemas de práctica
+
+### Problema de práctica 5
+
+Para que $(P\lor Q)\land\neg P$ sea verdadera, deben ser verdaderas simultáneamente $P\lor Q$ y $\neg P$. La segunda exige $P=F$; entonces la primera exige $Q=V$. La tabla confirma la predicción:
+
+| $P$ | $Q$ | $P\lor Q$ | $\neg P$ | $(P\lor Q)\land\neg P$ |
+|---|---|---|---|---|
+| V | V | V | F | F |
+| V | F | V | F | F |
+| F | V | V | V | V |
+| F | F | F | V | F |
+
+### Problema de práctica 6
+
+| $P$ | $Q$ | $\neg(P\lor Q)$ | $\neg P\land\neg Q$ |
+|---|---|---|---|
+| V | V | F | F |
+| V | F | F | F |
+| F | V | F | F |
+| F | F | V | V |
+
+Las columnas finales coinciden:
+
+$$
+\boxed{\neg(P\lor Q)\equiv\neg P\land\neg Q.}
+$$
+
+Es la segunda ley de De Morgan.
+
+### Problema de práctica 7
+
+Factorizamos $P$ mediante la distributividad:
+
+$$
+(P\land Q)\lor(P\land\neg Q)\equiv P\land(Q\lor\neg Q).
+$$
+
+Como $Q\lor\neg Q$ es una tautología,
+
+$$
+P\land(Q\lor\neg Q)\equiv P.
+$$
+
+Por tanto,
+
+$$
+\boxed{(P\land Q)\lor(P\land\neg Q)\equiv P.}
+$$
+
+### Problema de práctica 8
+
+La fórmula exige que al menos una de $P,Q$ sea verdadera y, a la vez, que al menos una sea falsa. Por tanto, es verdadera exactamente cuando tienen valores distintos:
+
+| $P$ | $Q$ | $(P\lor Q)\land(\neg P\lor\neg Q)$ |
+|---|---|---|
+| V | V | F |
+| V | F | V |
+| F | V | V |
+| F | F | F |
+
+Es verdadera en algunas filas y falsa en otras: **es contingente**.
+
+### Problema de práctica 1.3-A
+
+La estructura sintáctica indica que primero debemos evaluar
+
+$$
+P\lor Q
+$$
+
+y
+
+$$
+\neg P\lor R.
+$$
+
+Bajo
+
+$$
+P=F,\qquad Q=V,\qquad R=V,
+$$
+
+tenemos
+
+$$
+P\lor Q=F\lor V=V.
+$$
+
+Además,
+
+$$
+\neg P=V,
+$$
+
+por lo que
+
+$$
+\neg P\lor R=V\lor V=V.
+$$
+
+Entonces
+
+$$
+(P\lor Q)\land(\neg P\lor R)=V\land V=V.
+$$
+
+Finalmente,
+
+$$
+\neg\bigl((P\lor Q)\land(\neg P\lor R)\bigr)=F.
+$$
+
+Identificar las subfórmulas y el orden de evaluación fue trabajo sintáctico. Sustituir los valores fijados por $\nu$ y aplicar las tablas de $\neg$, $\land$ y $\lor$ fue trabajo semántico.
+
+# Ejercicios de la sección 1.3
+
+1. Construye una tabla de verdad para $\neg P\lor Q$.
+2. Construye una tabla de verdad para $(P\lor Q)\land(\neg P\lor R)$.
+3. Determina, sin construir la tabla completa, cuántas filas requieren las tablas de:
+   a. $(P\land Q)\lor R$;
+   b. $(P\lor Q)\land(R\lor S)$;
+   c. $\neg(P\land Q)$;
+   d. $(P\land Q)\lor(R\land S)\lor T$.
+4. Decide mediante una tabla de verdad cuáles de estas fórmulas son equivalentes:
+
+   $$
+   A=(P\land Q)\lor(\neg P\land\neg Q),
+   $$
+
+   $$
+   B=(P\lor\neg Q)\land(Q\lor\neg P),
+   $$
+
+   $$
+   C=\neg(P\lor Q).
+   $$
+5. Verifica mediante una tabla de verdad la ley de absorción $P\lor(P\land Q)\equiv P$.
+6. Simplifica, indicando la ley empleada en cada paso: $\neg(\neg P\land\neg Q)$.
+7. Simplifica: $(P\land Q)\lor(P\land\neg Q)$.
+8. Simplifica: $\neg(P\land\neg Q)\lor(\neg P\land Q)$.
+9. Clasifica como tautología, contradicción o contingencia: $(P\lor Q)\lor(\neg P\lor\neg Q)$.
+10. Clasifica: $(P\lor Q)\land(\neg P\land\neg Q)$.
+11. Encuentra una fórmula con $\neg,\land,\lor$ que sea verdadera exactamente cuando $P$ y $Q$ sean ambas verdaderas o ambas falsas.
+12. Encuentra una fórmula con la tabla:
+
+| $P$ | $Q$ | ? |
+|---|---|---|
+| V | V | V |
+| V | F | F |
+| F | V | V |
+| F | F | V |
+
+13. **Encontrar el error.** Un estudiante afirma: «Para demostrar que dos fórmulas no son equivalentes hay que completar necesariamente toda la tabla de verdad». Explica por qué es falso.
+14. **Encontrar el error.** Otro estudiante construye una tabla para tres letras con solo seis filas porque «algunas combinaciones parecen repetitivas». Explica el problema y determina el número correcto de filas.
+15. **Desafío.** Demuestra, utilizando únicamente las leyes de De Morgan y de doble negación, que cada una de las dos leyes de De Morgan puede obtenerse a partir de la otra.
+
+# Soluciones completas de los ejercicios de la sección 1.3
+
+## 1
+
+| $P$ | $Q$ | $\neg P$ | $\neg P\lor Q$ |
+|---|---|---|---|
+| V | V | F | V |
+| V | F | F | F |
+| F | V | V | V |
+| F | F | V | V |
+
+## 2
+
+Con las tres letras $P,Q,R$ hay $2^3=8$ filas:
+
+| $P$ | $Q$ | $R$ | $P\lor Q$ | $\neg P\lor R$ | $(P\lor Q)\land(\neg P\lor R)$ |
+|---|---|---|---|---|---|
+| V | V | V | V | V | V |
+| V | V | F | V | F | F |
+| V | F | V | V | V | V |
+| V | F | F | V | F | F |
+| F | V | V | V | V | V |
+| F | V | F | V | V | V |
+| F | F | V | F | V | F |
+| F | F | F | F | V | F |
+
+## 3
+
+El número de filas depende solo del número de letras distintas:
+
+| inciso | letras distintas | filas |
+|---|---|---:|
+| a | $P,Q,R$ | $2^3=8$ |
+| b | $P,Q,R,S$ | $2^4=16$ |
+| c | $P,Q$ | $2^2=4$ |
+| d | $P,Q,R,S,T$ | $2^5=32$ |
+
+## 4
+
+Calculamos las tres columnas:
+
+| $P$ | $Q$ | $A$ | $B$ | $C$ |
+|---|---|---|---|---|
+| V | V | V | V | F |
+| V | F | F | F | F |
+| F | V | F | F | F |
+| F | F | V | V | V |
+
+Las columnas de $A$ y $B$ son idénticas:
+
+$$
+\boxed{A\equiv B.}
+$$
+
+La columna de $C$ es distinta, de modo que $C$ no es equivalente a ellas.
+
+## 5
+
+| $P$ | $Q$ | $P\land Q$ | $P\lor(P\land Q)$ |
+|---|---|---|---|
+| V | V | V | V |
+| V | F | F | V |
+| F | V | F | F |
+| F | F | F | F |
+
+La última columna coincide con la columna de $P$:
+
+$$
+\boxed{P\lor(P\land Q)\equiv P.}
+$$
+
+## 6
+
+Por De Morgan,
+
+$$
+\neg(\neg P\land\neg Q)\equiv\neg\neg P\lor\neg\neg Q,
+$$
+
+y por doble negación,
+
+$$
+\neg\neg P\lor\neg\neg Q\equiv P\lor Q.
+$$
+
+Luego
+
+$$
+\boxed{\neg(\neg P\land\neg Q)\equiv P\lor Q.}
+$$
+
+## 7
+
+Por distributividad,
+
+$$
+(P\land Q)\lor(P\land\neg Q)\equiv P\land(Q\lor\neg Q).
+$$
+
+Como $Q\lor\neg Q$ es una tautología,
+
+$$
+\boxed{(P\land Q)\lor(P\land\neg Q)\equiv P.}
+$$
+
+## 8
+
+Primero,
+
+$$
+\neg(P\land\neg Q)\equiv\neg P\lor\neg\neg Q\equiv\neg P\lor Q.
+$$
+
+Así,
+
+$$
+\neg(P\land\neg Q)\lor(\neg P\land Q)
+\equiv
+(\neg P\lor Q)\lor(\neg P\land Q).
+$$
+
+Por absorción, con $A=\neg P$ y $B=Q$,
+
+$$
+A\lor(A\land B)\equiv A,
+$$
+
+pero aquí aparece además $Q$. Reordenamos:
+
+$$
+(\neg P\lor Q)\lor(\neg P\land Q)
+\equiv
+(\neg P\lor(\neg P\land Q))\lor Q
+\equiv
+\neg P\lor Q.
+$$
+
+Por tanto,
+
+$$
+\boxed{\neg(P\land\neg Q)\lor(\neg P\land Q)\equiv\neg P\lor Q.}
+$$
+
+## 9
+
+Reordenando,
+
+$$
+(P\lor Q)\lor(\neg P\lor\neg Q)
+\equiv
+(P\lor\neg P)\lor(Q\lor\neg Q).
+$$
+
+Cada par contiene una fórmula y su negación. Por tanto, la expresión es siempre verdadera: **tautología**.
+
+## 10
+
+La segunda parte,
+
+$$
+\neg P\land\neg Q,
+$$
+
+exige que $P$ y $Q$ sean ambas falsas. Pero entonces $P\lor Q$ es falsa. Las dos partes nunca pueden ser verdaderas a la vez: **contradicción**.
+
+## 11
+
+Queremos verdad cuando los valores coinciden. Hay dos casos:
+
+$$
+P\land Q
+$$
+
+para el caso $V,V$, y
+
+$$
+\neg P\land\neg Q
+$$
+
+para el caso $F,F$. Los unimos:
+
+$$
+\boxed{(P\land Q)\lor(\neg P\land\neg Q).}
+$$
+
+## 12
+
+La única fila falsa es $P=V$, $Q=F$, es decir,
+
+$$
+P\land\neg Q.
+$$
+
+Negando ese caso obtenemos
+
+$$
+\neg(P\land\neg Q)\equiv\neg P\lor Q.
+$$
+
+Por tanto, una fórmula adecuada es
+
+$$
+\boxed{\neg P\lor Q.}
+$$
+
+## 13
+
+Para refutar una equivalencia basta encontrar una asignación de valores en la que las dos fórmulas difieran. La tabla completa es un método general, pero no es lógicamente necesaria para establecer la no equivalencia.
+
+## 14
+
+Con tres letras hay
+
+$$
+2^3=8
+$$
+
+asignaciones posibles. Eliminar filas porque «parecen repetitivas» puede borrar justamente una asignación en la que cambie el valor de la fórmula. Una tabla exhaustiva debe contener las ocho combinaciones.
+
+## 15
+
+Supongamos conocida
+
+$$
+\neg(P\land Q)\equiv\neg P\lor\neg Q.
+$$
+
+Sustituimos $P$ por $\neg P$ y $Q$ por $\neg Q$:
+
+$$
+\neg(\neg P\land\neg Q)\equiv\neg\neg P\lor\neg\neg Q.
+$$
+
+Por doble negación,
+
+$$
+\neg(\neg P\land\neg Q)\equiv P\lor Q.
+$$
+
+Como la equivalencia puede leerse en ambos sentidos,
+
+$$
+P\lor Q\equiv\neg(\neg P\land\neg Q).
+$$
+
+Negando ambos miembros y aplicando doble negación se obtiene
+
+$$
+\boxed{\neg(P\lor Q)\equiv\neg P\land\neg Q,}
+$$
+
+que es la segunda ley. El procedimiento inverso obtiene la primera a partir de la segunda.
+
+::: {.callout-tip title="Idea central de la sección"}
+El recorrido conceptual puede resumirse así:
+
+$$
+\boxed{\text{sintaxis de la fórmula}+\text{valuación}\longrightarrow\text{valor de verdad}.}
+$$
+
+La sintaxis determina qué subfórmulas deben evaluarse primero. Una valuación fija los valores iniciales de las letras proposicionales. Las reglas de las conectivas propagan esos valores hasta la fórmula completa.
+
+Una tabla de verdad repite este proceso para todas las valuaciones posibles. Por eso
+
+$$
+A\equiv B
+$$
+
+significa que ninguna valuación consigue distinguir semánticamente a $A$ de $B$.
+:::
+
+::: {.callout-note title="Registro de dependencias"}
+Esta sección introduce y deja disponibles:
+
+- asignación de verdad o valuación;
+- evaluación semántica de una fórmula bajo una valuación;
+- tablas de verdad completas como recorrido de todas las valuaciones posibles;
+- equivalencia lógica;
+- leyes elementales de equivalencia;
+- tautología, contradicción y contingencia.
+
+A partir de aquí podremos transformar fórmulas sin reconstruir una tabla en cada ocasión, siempre que indiquemos qué equivalencia justifica cada paso.
+
+La implicación y el bicondicional aún no se han introducido; se estudiarán en las secciones siguientes.
+:::
+
 ---
 
-**Siguiente sección:** 1.3 — Tablas de verdad y equivalencia lógica.
+**Siguiente sección:** 1.4 — Implicación, contrapositiva y recíproca.
