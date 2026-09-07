@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Qué propiedades algebraicas se adoptan como axiomas en un cuerpo y cómo de ellas se deducen unicidad de neutros e inversos, cancelación, producto nulo y resolución de ecuaciones lineales.">
+
+<title>Axiomas de cuerpo y consecuencias algebraicas básicas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-edd7520df32f0843e2a37d67594353f3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ae1f6155afccd62564ec1af108321d5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Matemática Abierta</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#axiomas-de-cuerpo-y-consecuencias-algebraicas-básicas" id="toc-axiomas-de-cuerpo-y-consecuencias-algebraicas-básicas" class="nav-link active" data-scroll-target="#axiomas-de-cuerpo-y-consecuencias-algebraicas-básicas">Axiomas de cuerpo y consecuencias algebraicas básicas</a>
+  <ul class="collapse">
+  <li><a href="#ma-con-0020-estructura" id="toc-ma-con-0020-estructura" class="nav-link" data-scroll-target="#ma-con-0020-estructura">1. Qué estructura queremos aislar</a></li>
+  <li><a href="#ma-con-0020-axiomas" id="toc-ma-con-0020-axiomas" class="nav-link" data-scroll-target="#ma-con-0020-axiomas">2. Los axiomas de cuerpo</a></li>
+  <li><a href="#axioma-no-significa-regla-arbitraria" id="toc-axioma-no-significa-regla-arbitraria" class="nav-link" data-scroll-target="#axioma-no-significa-regla-arbitraria">3. Axioma no significa «regla arbitraria»</a></li>
+  <li><a href="#res-ma-con-0020-unicidad" id="toc-res-ma-con-0020-unicidad" class="nav-link" data-scroll-target="#res-ma-con-0020-unicidad">4. Unicidad de los elementos neutros</a>
+  <ul class="collapse">
+  <li><a href="#el-cero-es-único" id="toc-el-cero-es-único" class="nav-link" data-scroll-target="#el-cero-es-único">4.1. El cero es único</a></li>
+  <li><a href="#el-uno-es-único" id="toc-el-uno-es-único" class="nav-link" data-scroll-target="#el-uno-es-único">4.2. El uno es único</a></li>
+  </ul></li>
+  <li><a href="#unicidad-de-los-inversos" id="toc-unicidad-de-los-inversos" class="nav-link" data-scroll-target="#unicidad-de-los-inversos">5. Unicidad de los inversos</a>
+  <ul class="collapse">
+  <li><a href="#el-inverso-aditivo-de-cada-elemento-es-único" id="toc-el-inverso-aditivo-de-cada-elemento-es-único" class="nav-link" data-scroll-target="#el-inverso-aditivo-de-cada-elemento-es-único">5.1. El inverso aditivo de cada elemento es único</a></li>
+  <li><a href="#el-inverso-multiplicativo-de-un-elemento-no-nulo-es-único" id="toc-el-inverso-multiplicativo-de-un-elemento-no-nulo-es-único" class="nav-link" data-scroll-target="#el-inverso-multiplicativo-de-un-elemento-no-nulo-es-único">5.2. El inverso multiplicativo de un elemento no nulo es único</a></li>
+  </ul></li>
+  <li><a href="#res-ma-con-0020-cero" id="toc-res-ma-con-0020-cero" class="nav-link" data-scroll-target="#res-ma-con-0020-cero">6. El cero absorbe el producto</a></li>
+  <li><a href="#el-cero-no-puede-tener-inverso-multiplicativo" id="toc-el-cero-no-puede-tener-inverso-multiplicativo" class="nav-link" data-scroll-target="#el-cero-no-puede-tener-inverso-multiplicativo">7. El cero no puede tener inverso multiplicativo</a></li>
+  <li><a href="#reglas-de-signos-como-consecuencias" id="toc-reglas-de-signos-como-consecuencias" class="nav-link" data-scroll-target="#reglas-de-signos-como-consecuencias">8. Reglas de signos como consecuencias</a>
+  <ul class="collapse">
+  <li><a href="#multiplicar-por--1" id="toc-multiplicar-por--1" class="nav-link" data-scroll-target="#multiplicar-por--1">8.1. Multiplicar por <span class="math inline">\(-1\)</span></a></li>
+  <li><a href="#mover-un-signo-menos-de-un-factor" id="toc-mover-un-signo-menos-de-un-factor" class="nav-link" data-scroll-target="#mover-un-signo-menos-de-un-factor">8.2. Mover un signo menos de un factor</a></li>
+  <li><a href="#producto-de-dos-negativos" id="toc-producto-de-dos-negativos" class="nav-link" data-scroll-target="#producto-de-dos-negativos">8.3. Producto de dos negativos</a></li>
+  <li><a href="#doble-negación" id="toc-doble-negación" class="nav-link" data-scroll-target="#doble-negación">8.4. Doble negación</a></li>
+  </ul></li>
+  <li><a href="#res-ma-con-0020-cancelacion" id="toc-res-ma-con-0020-cancelacion" class="nav-link" data-scroll-target="#res-ma-con-0020-cancelacion">9. Cancelación aditiva</a></li>
+  <li><a href="#cancelación-multiplicativa" id="toc-cancelación-multiplicativa" class="nav-link" data-scroll-target="#cancelación-multiplicativa">10. Cancelación multiplicativa</a></li>
+  <li><a href="#res-ma-con-0020-producto-nulo" id="toc-res-ma-con-0020-producto-nulo" class="nav-link" data-scroll-target="#res-ma-con-0020-producto-nulo">11. La propiedad del producto nulo</a></li>
+  <li><a href="#met-ma-con-0020-division" id="toc-met-ma-con-0020-division" class="nav-link" data-scroll-target="#met-ma-con-0020-division">12. Qué significa dividir</a>
+  <ul class="collapse">
+  <li><a href="#una-equivalencia-útil" id="toc-una-equivalencia-útil" class="nav-link" data-scroll-target="#una-equivalencia-útil">Una equivalencia útil</a></li>
+  </ul></li>
+  <li><a href="#resolver-una-ecuación-lineal-usando-la-estructura-de-cuerpo" id="toc-resolver-una-ecuación-lineal-usando-la-estructura-de-cuerpo" class="nav-link" data-scroll-target="#resolver-una-ecuación-lineal-usando-la-estructura-de-cuerpo">13. Resolver una ecuación lineal usando la estructura de cuerpo</a>
+  <ul class="collapse">
+  <li><a href="#caso-1-aneq0" id="toc-caso-1-aneq0" class="nav-link" data-scroll-target="#caso-1-aneq0">Caso 1: <span class="math inline">\(a\neq0\)</span></a></li>
+  <li><a href="#existencia" id="toc-existencia" class="nav-link" data-scroll-target="#existencia">Existencia</a></li>
+  <li><a href="#unicidad" id="toc-unicidad" class="nav-link" data-scroll-target="#unicidad">Unicidad</a></li>
+  <li><a href="#caso-2-a0-y-b0" id="toc-caso-2-a0-y-b0" class="nav-link" data-scroll-target="#caso-2-a0-y-b0">Caso 2: <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b=0\)</span></a></li>
+  <li><a href="#caso-3-a0-y-bneq0" id="toc-caso-3-a0-y-bneq0" class="nav-link" data-scroll-target="#caso-3-a0-y-bneq0">Caso 3: <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b\neq0\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejemplos-y-no-ejemplos-de-cuerpos" id="toc-ejemplos-y-no-ejemplos-de-cuerpos" class="nav-link" data-scroll-target="#ejemplos-y-no-ejemplos-de-cuerpos">14. Ejemplos y no ejemplos de cuerpos</a>
+  <ul class="collapse">
+  <li><a href="#ejemplos" id="toc-ejemplos" class="nav-link" data-scroll-target="#ejemplos">14.1. Ejemplos</a></li>
+  <li><a href="#los-enteros-no-forman-un-cuerpo" id="toc-los-enteros-no-forman-un-cuerpo" class="nav-link" data-scroll-target="#los-enteros-no-forman-un-cuerpo">14.2. Los enteros no forman un cuerpo</a></li>
+  </ul></li>
+  <li><a href="#qué-no-se-deduce-todavía" id="toc-qué-no-se-deduce-todavía" class="nav-link" data-scroll-target="#qué-no-se-deduce-todavía">15. Qué NO se deduce todavía</a></li>
+  <li><a href="#un-mapa-de-dependencias-algebraicas" id="toc-un-mapa-de-dependencias-algebraicas" class="nav-link" data-scroll-target="#un-mapa-de-dependencias-algebraicas">16. Un mapa de dependencias algebraicas</a></li>
+  <li><a href="#conexiones-con-el-corpus" id="toc-conexiones-con-el-corpus" class="nav-link" data-scroll-target="#conexiones-con-el-corpus">17. Conexiones con el corpus</a></li>
+  <li><a href="#resumen-operativo" id="toc-resumen-operativo" class="nav-link" data-scroll-target="#resumen-operativo">18. Resumen operativo</a></li>
+  <li><a href="#relaciones" id="toc-relaciones" class="nav-link" data-scroll-target="#relaciones">Relaciones</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Axiomas de cuerpo y consecuencias algebraicas básicas</h1>
+</div>
+
+<div>
+  <div class="description">
+    Qué propiedades algebraicas se adoptan como axiomas en un cuerpo y cómo de ellas se deducen unicidad de neutros e inversos, cancelación, producto nulo y resolución de ecuaciones lineales.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="axiomas-de-cuerpo-y-consecuencias-algebraicas-básicas" class="level1">
+<h1>Axiomas de cuerpo y consecuencias algebraicas básicas</h1>
+<p>En el álgebra escolar usamos continuamente reglas como</p>
+<p><span class="math display">\[
+a+0=a,
+\qquad
+a(-1)=-a,
+\qquad
+ab=0\Longrightarrow a=0\text{ o }b=0,
+\]</span></p>
+<p>o cancelamos una misma cantidad en ambos miembros de una ecuación. Es fácil acostumbrarse a tratarlas como si todas tuviesen el mismo estatuto.</p>
+<p>No lo tienen.</p>
+<p>Algunas propiedades se adoptan como <strong>puntos de partida</strong>. Otras se deducen de esos puntos de partida. Aprender a distinguir ambas capas es parte esencial de la lectura matemática.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Intuición</strong></p>
+<p>Un sistema axiomático no intenta demostrarlo todo desde la nada. Primero declara una estructura mínima y después pregunta:</p>
+<blockquote class="blockquote">
+<p><strong>¿qué consecuencias quedan forzadas por esa estructura?</strong></p>
+</blockquote>
+<p>En esta página la estructura será la de <strong>cuerpo</strong>. Nuestro objetivo no será memorizar una lista de axiomas, sino ver cómo de una lista relativamente corta emergen muchas de las reglas algebraicas que usamos habitualmente.</p>
+</div>
+<p>La idea central puede resumirse así:</p>
+<p><span class="math display">\[
+\boxed{
+\text{axiomas de cuerpo}
+\longrightarrow
+\text{identidades derivadas}
+\longrightarrow
+\text{cancelación y división}
+\longrightarrow
+\text{ecuaciones lineales}
+}
+\]</span></p>
+<p>Todavía <strong>no</strong> introduciremos orden, positividad, desigualdades ni completitud. Esas estructuras requieren axiomas adicionales.</p>
+<section id="ma-con-0020-estructura" class="level2">
+<h2 class="anchored" data-anchor-id="ma-con-0020-estructura">1. Qué estructura queremos aislar</h2>
+<p>Pensemos en un conjunto <span class="math inline">\(F\)</span> provisto de dos operaciones:</p>
+<p><span class="math display">\[
++:F\times F\to F
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\cdot:F\times F\to F.
+\]</span></p>
+<p>La primera la llamamos <strong>suma</strong> y la segunda <strong>producto</strong>.</p>
+<p>Que sean operaciones sobre <span class="math inline">\(F\)</span> significa, en particular, que si <span class="math inline">\(a,b\in F\)</span>, entonces</p>
+<p><span class="math display">\[
+a+b\in F
+\qquad\text{y}\qquad
+ab\in F.
+\]</span></p>
+<p>No estamos diciendo todavía que <span class="math inline">\(F=\mathbb R\)</span>. La misma estructura aparece, por ejemplo, en <span class="math inline">\(\mathbb Q\)</span>, <span class="math inline">\(\mathbb R\)</span> y <span class="math inline">\(\mathbb C\)</span>.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Observación</strong></p>
+<p>La palabra <em>cuerpo</em> describe una <strong>estructura algebraica</strong>. No describe por sí sola una geometría, un orden ni una noción de límite.</p>
+<p>Por eso conviene separar desde el comienzo:</p>
+<p><span class="math display">\[
+\text{estructura de cuerpo}
+\neq
+\text{estructura de cuerpo ordenado}
+\neq
+\text{estructura de cuerpo ordenado completo}.
+\]</span></p>
+</div>
+</section>
+<section id="ma-con-0020-axiomas" class="level2">
+<h2 class="anchored" data-anchor-id="ma-con-0020-axiomas">2. Los axiomas de cuerpo</h2>
+<div class="ma-block ma-definicion">
+<p><strong>Definición — cuerpo</strong></p>
+<p>Un <strong>cuerpo</strong> es un conjunto <span class="math inline">\(F\)</span> con dos operaciones, suma y producto, que satisfacen las siguientes propiedades para todos <span class="math inline">\(a,b,c\in F\)</span>.</p>
+<section id="suma" class="level3">
+<h3 class="anchored" data-anchor-id="suma">Suma</h3>
+<p><strong>Asociatividad</strong></p>
+<p><span class="math display">\[
+(a+b)+c=a+(b+c).
+\]</span></p>
+<p><strong>Conmutatividad</strong></p>
+<p><span class="math display">\[
+a+b=b+a.
+\]</span></p>
+<p><strong>Elemento neutro aditivo</strong></p>
+<p>Existe un elemento <span class="math inline">\(0\in F\)</span> tal que</p>
+<p><span class="math display">\[
+a+0=a.
+\]</span></p>
+<p><strong>Inverso aditivo</strong></p>
+<p>Para cada <span class="math inline">\(a\in F\)</span> existe algún <span class="math inline">\(b\in F\)</span> tal que</p>
+<p><span class="math display">\[
+a+b=0.
+\]</span></p>
+<p>Más adelante demostraremos que ese <span class="math inline">\(b\)</span> es único; solo entonces quedará justificada sin ambigüedad la notación <span class="math inline">\(-a\)</span>.</p>
+</section>
+<section id="producto" class="level3">
+<h3 class="anchored" data-anchor-id="producto">Producto</h3>
+<p><strong>Asociatividad</strong></p>
+<p><span class="math display">\[
+(ab)c=a(bc).
+\]</span></p>
+<p><strong>Conmutatividad</strong></p>
+<p><span class="math display">\[
+ab=ba.
+\]</span></p>
+<p><strong>Elemento neutro multiplicativo</strong></p>
+<p>Existe un elemento <span class="math inline">\(1\in F\)</span>, distinto de <span class="math inline">\(0\)</span>, tal que</p>
+<p><span class="math display">\[
+a\cdot1=a.
+\]</span></p>
+<p><strong>Inverso multiplicativo</strong></p>
+<p>Para cada <span class="math inline">\(a\in F\)</span> con <span class="math inline">\(a\neq0\)</span> existe algún <span class="math inline">\(b\in F\)</span> tal que</p>
+<p><span class="math display">\[
+ab=1.
+\]</span></p>
+<p>También aquí la unicidad será una consecuencia; después podremos escribir ese inverso como <span class="math inline">\(a^{-1}\)</span>.</p>
+</section>
+<section id="compatibilidad-entre-suma-y-producto" class="level3">
+<h3 class="anchored" data-anchor-id="compatibilidad-entre-suma-y-producto">Compatibilidad entre suma y producto</h3>
+<p><strong>Distributividad</strong></p>
+<p><span class="math display">\[
+a(b+c)=ab+ac.
+\]</span></p>
+</section>
+</div>
+<p>La condición</p>
+<p><span class="math display">\[
+0\neq1
+\]</span></p>
+<p>es indispensable. Sin ella, la estructura colapsaría en el sistema de un único elemento y perderíamos la aritmética que queremos modelar.</p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente</strong></p>
+<p>No todos los enunciados familiares acerca de números aparecen en la lista de axiomas.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+0a=0,
+\qquad
+(-a)b=-(ab),
+\qquad
+ab=0\Longrightarrow a=0\text{ o }b=0
+\]</span></p>
+<p><strong>no se han supuesto</strong>.</p>
+<p>Tenemos que demostrarlos.</p>
+</div>
+</section>
+<section id="axioma-no-significa-regla-arbitraria" class="level2">
+<h2 class="anchored" data-anchor-id="axioma-no-significa-regla-arbitraria">3. Axioma no significa «regla arbitraria»</h2>
+<p>Un axioma es un punto de partida declarado dentro de una teoría. La pregunta matemática importante es qué puede deducirse de él junto con los demás axiomas.</p>
+<p>Por ejemplo, el axioma del neutro aditivo afirma que <strong>existe</strong> un elemento <span class="math inline">\(0\)</span> que deja invariantes las sumas:</p>
+<p><span class="math display">\[
+a+0=a.
+\]</span></p>
+<p>Pero el axioma no dice explícitamente que solo pueda existir uno. La unicidad será una consecuencia.</p>
+<p>Esta diferencia entre existencia y unicidad enlaza directamente con el método desarrollado en <a href="../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html"><em>Leer y escribir matemáticas</em></a> (<code>MA-BCH-0001</code>):</p>
+<p><span class="math display">\[
+\text{«existe»}
+\quad\text{y}\quad
+\text{«existe uno solo»}
+\]</span></p>
+<p>son afirmaciones distintas.</p>
+</section>
+<section id="res-ma-con-0020-unicidad" class="level2">
+<h2 class="anchored" data-anchor-id="res-ma-con-0020-unicidad">4. Unicidad de los elementos neutros</h2>
+<section id="el-cero-es-único" class="level3">
+<h3 class="anchored" data-anchor-id="el-cero-es-único">4.1. El cero es único</h3>
+<p>Supongamos que <span class="math inline">\(0\)</span> y <span class="math inline">\(0'\)</span> satisfacen ambos la propiedad de ser neutros aditivos.</p>
+<p>Como <span class="math inline">\(0'\)</span> es neutro,</p>
+<p><span class="math display">\[
+0+0'=0.
+\]</span></p>
+<p>Como <span class="math inline">\(0\)</span> también es neutro,</p>
+<p><span class="math display">\[
+0+0'=0'.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{0=0'}.
+\]</span></p>
+<p>Hemos demostrado que el neutro aditivo es único.</p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Lectura de la prueba</strong></p>
+<p>La demostración no utilizó números concretos. Solo utilizó la propiedad que define a un neutro aditivo.</p>
+<p>La estrategia fue típica de una prueba de unicidad:</p>
+<ol type="1">
+<li>suponer dos candidatos;</li>
+<li>explotar la propiedad que ambos satisfacen;</li>
+<li>demostrar que necesariamente coinciden.</li>
+</ol>
+</div>
+</section>
+<section id="el-uno-es-único" class="level3">
+<h3 class="anchored" data-anchor-id="el-uno-es-único">4.2. El uno es único</h3>
+<p>El argumento es análogo.</p>
+<p>Supongamos que <span class="math inline">\(1\)</span> y <span class="math inline">\(1'\)</span> son neutros multiplicativos. Entonces</p>
+<p><span class="math display">\[
+1\cdot1'=1
+\]</span></p>
+<p>porque <span class="math inline">\(1'\)</span> es neutro, y también</p>
+<p><span class="math display">\[
+1\cdot1'=1'
+\]</span></p>
+<p>porque <span class="math inline">\(1\)</span> es neutro.</p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{1=1'}.
+\]</span></p>
+<p>Así, el neutro multiplicativo también es único.</p>
+</section>
+</section>
+<section id="unicidad-de-los-inversos" class="level2">
+<h2 class="anchored" data-anchor-id="unicidad-de-los-inversos">5. Unicidad de los inversos</h2>
+<section id="el-inverso-aditivo-de-cada-elemento-es-único" class="level3">
+<h3 class="anchored" data-anchor-id="el-inverso-aditivo-de-cada-elemento-es-único">5.1. El inverso aditivo de cada elemento es único</h3>
+<p>Sea <span class="math inline">\(a\in F\)</span>. Supongamos que <span class="math inline">\(b\)</span> y <span class="math inline">\(c\)</span> son ambos inversos aditivos de <span class="math inline">\(a\)</span>:</p>
+<p><span class="math display">\[
+a+b=0
+\qquad\text{y}\qquad
+a+c=0.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+b
+&amp;=b+0\\
+&amp;=b+(a+c)\\
+&amp;=(b+a)+c\\
+&amp;=0+c\\
+&amp;=c.
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{b=c}.
+\]</span></p>
+<p>Esto justifica que podamos escribir <strong>el</strong> inverso aditivo de <span class="math inline">\(a\)</span> y denotarlo sin ambigüedad por</p>
+<p><span class="math display">\[
+-a.
+\]</span></p>
+</section>
+<section id="el-inverso-multiplicativo-de-un-elemento-no-nulo-es-único" class="level3">
+<h3 class="anchored" data-anchor-id="el-inverso-multiplicativo-de-un-elemento-no-nulo-es-único">5.2. El inverso multiplicativo de un elemento no nulo es único</h3>
+<p>Sea <span class="math inline">\(a\neq0\)</span>. Supongamos que <span class="math inline">\(b\)</span> y <span class="math inline">\(c\)</span> satisfacen</p>
+<p><span class="math display">\[
+ab=1
+\qquad\text{y}\qquad
+ac=1.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+b
+&amp;=b\cdot1\\
+&amp;=b(ac)\\
+&amp;=(ba)c\\
+&amp;=1\cdot c\\
+&amp;=c.
+\end{aligned}
+\]</span></p>
+<p>Por tanto, el inverso multiplicativo de <span class="math inline">\(a\)</span> es único:</p>
+<p><span class="math display">\[
+\boxed{b=c}.
+\]</span></p>
+<p>Podemos escribirlo sin ambigüedad como</p>
+<p><span class="math display">\[
+a^{-1}.
+\]</span></p>
+<p>A partir de ahora definimos además la <strong>resta</strong> por</p>
+<p><span class="math display">\[
+a-b:=a+(-b).
+\]</span></p>
+<p>Por tanto, restar <span class="math inline">\(b\)</span> significa sumar su inverso aditivo.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Una consecuencia de lenguaje</strong></p>
+<p>Las notaciones</p>
+<p><span class="math display">\[
+-a
+\qquad\text{y}\qquad
+a^{-1}
+\]</span></p>
+<p>no son simples convenciones gráficas.</p>
+<p>Su uso presupone que los objetos designados existen bajo las hipótesis adecuadas y que son únicos.</p>
+</div>
+</section>
+</section>
+<section id="res-ma-con-0020-cero" class="level2">
+<h2 class="anchored" data-anchor-id="res-ma-con-0020-cero">6. El cero absorbe el producto</h2>
+<p>Ahora demostraremos una regla elemental que no figuraba entre los axiomas:</p>
+<p><span class="math display">\[
+\boxed{0a=0}.
+\]</span></p>
+<p>Sea <span class="math inline">\(a\in F\)</span>. Por distributividad,</p>
+<p><span class="math display">\[
+(0+0)a=0a+0a.
+\]</span></p>
+<p>Pero, como <span class="math inline">\(0+0=0\)</span>,</p>
+<p><span class="math display">\[
+0a=0a+0a.
+\]</span></p>
+<p>Sumemos el inverso aditivo de <span class="math inline">\(0a\)</span> a ambos miembros:</p>
+<p><span class="math display">\[
+0a+(-(0a))
+=
+(0a+0a)+(-(0a)).
+\]</span></p>
+<p>El miembro izquierdo es <span class="math inline">\(0\)</span>. En el derecho, usando asociatividad,</p>
+<p><span class="math display">\[
+(0a+0a)+(-(0a))
+=
+0a+\bigl(0a+(-(0a))\bigr)
+=
+0a+0
+=
+0a.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{0=0a}.
+\]</span></p>
+<p>Como el producto es conmutativo,</p>
+<p><span class="math display">\[
+\boxed{a0=0}.
+\]</span></p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Qué se usó</strong></p>
+<p>La identidad <span class="math inline">\(0a=0\)</span> se dedujo de:</p>
+<ul>
+<li>el neutro aditivo;</li>
+<li>la existencia de inversos aditivos;</li>
+<li>la asociatividad;</li>
+<li>la distributividad.</li>
+</ul>
+<p>No necesitamos ninguna propiedad de orden.</p>
+</div>
+</section>
+<section id="el-cero-no-puede-tener-inverso-multiplicativo" class="level2">
+<h2 class="anchored" data-anchor-id="el-cero-no-puede-tener-inverso-multiplicativo">7. El cero no puede tener inverso multiplicativo</h2>
+<p>Supongamos, para obtener una contradicción, que existiera <span class="math inline">\(c\in F\)</span> tal que</p>
+<p><span class="math display">\[
+0c=1.
+\]</span></p>
+<p>Pero acabamos de demostrar que</p>
+<p><span class="math display">\[
+0c=0.
+\]</span></p>
+<p>Luego tendríamos</p>
+<p><span class="math display">\[
+0=1,
+\]</span></p>
+<p>contradiciendo el axioma</p>
+<p><span class="math display">\[
+0\neq1.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\text{$0$ no tiene inverso multiplicativo}.}
+\]</span></p>
+<p>Ésta es la razón estructural por la que no existe división por cero en un cuerpo.</p>
+</section>
+<section id="reglas-de-signos-como-consecuencias" class="level2">
+<h2 class="anchored" data-anchor-id="reglas-de-signos-como-consecuencias">8. Reglas de signos como consecuencias</h2>
+<section id="multiplicar-por--1" class="level3">
+<h3 class="anchored" data-anchor-id="multiplicar-por--1">8.1. Multiplicar por <span class="math inline">\(-1\)</span></h3>
+<p>Queremos demostrar</p>
+<p><span class="math display">\[
+(-1)a=-a.
+\]</span></p>
+<p>Observemos:</p>
+<p><span class="math display">\[
+a+(-1)a
+=
+1a+(-1)a
+=
+(1+(-1))a
+=
+0a
+=
+0.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\((-1)a\)</span> es un inverso aditivo de <span class="math inline">\(a\)</span>. Como ese inverso es único,</p>
+<p><span class="math display">\[
+\boxed{(-1)a=-a}.
+\]</span></p>
+</section>
+<section id="mover-un-signo-menos-de-un-factor" class="level3">
+<h3 class="anchored" data-anchor-id="mover-un-signo-menos-de-un-factor">8.2. Mover un signo menos de un factor</h3>
+<p>Queremos demostrar</p>
+<p><span class="math display">\[
+(-a)b=-(ab).
+\]</span></p>
+<p>Tenemos</p>
+<p><span class="math display">\[
+ab+(-a)b
+=
+(a+(-a))b
+=
+0b
+=
+0.
+\]</span></p>
+<p>Así, <span class="math inline">\((-a)b\)</span> es el inverso aditivo de <span class="math inline">\(ab\)</span>. Por unicidad,</p>
+<p><span class="math display">\[
+\boxed{(-a)b=-(ab)}.
+\]</span></p>
+<p>Análogamente,</p>
+<p><span class="math display">\[
+\boxed{a(-b)=-(ab)}.
+\]</span></p>
+</section>
+<section id="producto-de-dos-negativos" class="level3">
+<h3 class="anchored" data-anchor-id="producto-de-dos-negativos">8.3. Producto de dos negativos</h3>
+<p>Aplicando dos veces la regla anterior,</p>
+<p><span class="math display">\[
+(-a)(-b)
+=
+-\bigl(a(-b)\bigr)
+=
+-(-(ab)).
+\]</span></p>
+<p>Como el inverso aditivo del inverso aditivo de <span class="math inline">\(ab\)</span> es <span class="math inline">\(ab\)</span>,</p>
+<p><span class="math display">\[
+\boxed{(-a)(-b)=ab}.
+\]</span></p>
+<div class="ma-block ma-intuicion">
+<p><strong>Qué significa realmente «menos por menos es más»</strong></p>
+<p>La regla</p>
+<p><span class="math display">\[
+(-a)(-b)=ab
+\]</span></p>
+<p>no necesita memorizarse como una excepción misteriosa.</p>
+<p>Es una consecuencia forzada por la distributividad y por la estructura de inversos aditivos.</p>
+</div>
+</section>
+<section id="doble-negación" class="level3">
+<h3 class="anchored" data-anchor-id="doble-negación">8.4. Doble negación</h3>
+<p>Como</p>
+<p><span class="math display">\[
+a+(-a)=0,
+\]</span></p>
+<p>el elemento <span class="math inline">\(a\)</span> es un inverso aditivo de <span class="math inline">\(-a\)</span>. Por unicidad,</p>
+<p><span class="math display">\[
+\boxed{-(-a)=a}.
+\]</span></p>
+<p>En particular,</p>
+<p><span class="math display">\[
+\boxed{-0=0}.
+\]</span></p>
+</section>
+</section>
+<section id="res-ma-con-0020-cancelacion" class="level2">
+<h2 class="anchored" data-anchor-id="res-ma-con-0020-cancelacion">9. Cancelación aditiva</h2>
+<p>Supongamos que</p>
+<p><span class="math display">\[
+a+c=b+c.
+\]</span></p>
+<p>Sumando <span class="math inline">\(-c\)</span> a ambos miembros,</p>
+<p><span class="math display">\[
+(a+c)+(-c)=(b+c)+(-c).
+\]</span></p>
+<p>Por asociatividad,</p>
+<p><span class="math display">\[
+a+(c+(-c))=b+(c+(-c)).
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+a+0=b+0,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+\boxed{a=b}.
+\]</span></p>
+<p>Hemos demostrado la <strong>ley de cancelación aditiva</strong>:</p>
+<p><span class="math display">\[
+\boxed{
+a+c=b+c
+\Longrightarrow
+a=b.
+}
+\]</span></p>
+<p>La implicación recíproca también es inmediata: si <span class="math inline">\(a=b\)</span>, entonces <span class="math inline">\(a+c=b+c\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+a+c=b+c
+\Longleftrightarrow
+a=b.
+}
+\]</span></p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — cancelar no es borrar símbolos</strong></p>
+<p>Cuando «cancelamos» una misma suma en ambos miembros, la justificación real es:</p>
+<ol type="1">
+<li>sumar el inverso aditivo;</li>
+<li>reagrupar mediante asociatividad;</li>
+<li>usar el neutro.</li>
+</ol>
+<p>La notación abreviada es legítima porque existe esta demostración estructural detrás.</p>
+</div>
+</section>
+<section id="cancelación-multiplicativa" class="level2">
+<h2 class="anchored" data-anchor-id="cancelación-multiplicativa">10. Cancelación multiplicativa</h2>
+<p>Supongamos</p>
+<p><span class="math display">\[
+ac=bc
+\]</span></p>
+<p>y, además,</p>
+<p><span class="math display">\[
+c\neq0.
+\]</span></p>
+<p>Como <span class="math inline">\(c\neq0\)</span>, existe <span class="math inline">\(c^{-1}\)</span>. Multiplicamos ambos miembros por <span class="math inline">\(c^{-1}\)</span>:</p>
+<p><span class="math display">\[
+(ac)c^{-1}=(bc)c^{-1}.
+\]</span></p>
+<p>Por asociatividad,</p>
+<p><span class="math display">\[
+a(cc^{-1})=b(cc^{-1}).
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+a\cdot1=b\cdot1,
+\]</span></p>
+<p>y concluimos</p>
+<p><span class="math display">\[
+\boxed{a=b}.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+ac=bc,\ c\neq0
+\Longrightarrow
+a=b.
+}
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente — cancelar cero</strong></p>
+<p>La hipótesis <span class="math inline">\(c\neq0\)</span> es esencial.</p>
+<p>Si <span class="math inline">\(c=0\)</span>, entonces</p>
+<p><span class="math display">\[
+ac=0=bc
+\]</span></p>
+<p>para <strong>cualesquiera</strong> <span class="math inline">\(a,b\in F\)</span>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+0\cdot0=1\cdot0,
+\]</span></p>
+<p>pero</p>
+<p><span class="math display">\[
+0\neq1.
+\]</span></p>
+<p>No podemos cancelar un factor cuyo inverso multiplicativo no existe.</p>
+</div>
+</section>
+<section id="res-ma-con-0020-producto-nulo" class="level2">
+<h2 class="anchored" data-anchor-id="res-ma-con-0020-producto-nulo">11. La propiedad del producto nulo</h2>
+<p>Una de las reglas más importantes del álgebra elemental afirma:</p>
+<p><span class="math display">\[
+ab=0
+\Longrightarrow
+a=0\text{ o }b=0.
+\]</span></p>
+<p>En un cuerpo, esta propiedad es una consecuencia de la existencia de inversos multiplicativos.</p>
+<p>Supongamos</p>
+<p><span class="math display">\[
+ab=0.
+\]</span></p>
+<p>Si <span class="math inline">\(a=0\)</span>, ya tenemos una de las alternativas.</p>
+<p>Supongamos entonces</p>
+<p><span class="math display">\[
+a\neq0.
+\]</span></p>
+<p>Existe <span class="math inline">\(a^{-1}\)</span>. Multiplicamos la igualdad por <span class="math inline">\(a^{-1}\)</span>:</p>
+<p><span class="math display">\[
+a^{-1}(ab)=a^{-1}0.
+\]</span></p>
+<p>Por asociatividad y por la propiedad <span class="math inline">\(a^{-1}0=0\)</span>,</p>
+<p><span class="math display">\[
+(a^{-1}a)b=0.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+1b=0,
+\]</span></p>
+<p>y concluimos</p>
+<p><span class="math display">\[
+b=0.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{
+ab=0
+\Longrightarrow
+a=0\text{ o }b=0.
+}
+\]</span></p>
+<p>La recíproca es inmediata porque <span class="math inline">\(0\)</span> absorbe el producto. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+ab=0
+\Longleftrightarrow
+a=0\text{ o }b=0.
+}
+\]</span></p>
+<div class="ma-block ma-observacion">
+<p><strong>Por qué importa</strong></p>
+<p>La factorización de ecuaciones funciona porque podemos combinar</p>
+<p><span class="math display">\[
+uv=0
+\]</span></p>
+<p>con la propiedad de producto nulo y transformar una ecuación multiplicativa en dos alternativas:</p>
+<p><span class="math display">\[
+u=0
+\qquad\text{o}\qquad
+v=0.
+\]</span></p>
+<p>Ésta es la estructura que sostiene buena parte del álgebra de polinomios.</p>
+</div>
+</section>
+<section id="met-ma-con-0020-division" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-con-0020-division">12. Qué significa dividir</h2>
+<p>En un cuerpo, la división por un elemento no nulo no necesita introducirse como una tercera operación independiente.</p>
+<p>Si</p>
+<p><span class="math display">\[
+b\neq0,
+\]</span></p>
+<p>definimos</p>
+<p><span class="math display">\[
+\boxed{
+\frac{a}{b}=ab^{-1}.
+}
+\]</span></p>
+<p>Así, dividir por <span class="math inline">\(b\)</span> significa multiplicar por su inverso.</p>
+<p>La condición</p>
+<p><span class="math display">\[
+b\neq0
+\]</span></p>
+<p>no es un detalle técnico. Es exactamente la condición que garantiza la existencia de <span class="math inline">\(b^{-1}\)</span>.</p>
+<div class="ma-block ma-dominio">
+<p><strong>Dominio de la división</strong></p>
+<p>La expresión</p>
+<p><span class="math display">\[
+\frac ab
+\]</span></p>
+<p>está definida en un cuerpo únicamente cuando</p>
+<p><span class="math display">\[
+b\neq0.
+\]</span></p>
+<p>Antes de cancelar denominadores o multiplicar por sus inversos, hay que controlar esta hipótesis.</p>
+</div>
+<section id="una-equivalencia-útil" class="level3">
+<h3 class="anchored" data-anchor-id="una-equivalencia-útil">Una equivalencia útil</h3>
+<p>Si <span class="math inline">\(b\neq0\)</span>, entonces</p>
+<p><span class="math display">\[
+x=\frac ab
+\]</span></p>
+<p>equivale a</p>
+<p><span class="math display">\[
+bx=a.
+\]</span></p>
+<p>En efecto,</p>
+<p><span class="math display">\[
+x=ab^{-1}
+\]</span></p>
+<p>implica</p>
+<p><span class="math display">\[
+bx=b(ab^{-1})=a(bb^{-1})=a.
+\]</span></p>
+<p>Y si <span class="math inline">\(bx=a\)</span>, multiplicar por <span class="math inline">\(b^{-1}\)</span> da</p>
+<p><span class="math display">\[
+x=b^{-1}a=ab^{-1}=\frac ab.
+\]</span></p>
+</section>
+</section>
+<section id="resolver-una-ecuación-lineal-usando-la-estructura-de-cuerpo" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-una-ecuación-lineal-usando-la-estructura-de-cuerpo">13. Resolver una ecuación lineal usando la estructura de cuerpo</h2>
+<p>Consideremos</p>
+<p><span class="math display">\[
+ax=b,
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+a,b\in F.
+\]</span></p>
+<p>La respuesta depende de si <span class="math inline">\(a\)</span> es nulo.</p>
+<section id="caso-1-aneq0" class="level3">
+<h3 class="anchored" data-anchor-id="caso-1-aneq0">Caso 1: <span class="math inline">\(a\neq0\)</span></h3>
+<p>Como <span class="math inline">\(a^{-1}\)</span> existe,</p>
+<p><span class="math display">\[
+ax=b
+\]</span></p>
+<p>implica</p>
+<p><span class="math display">\[
+a^{-1}(ax)=a^{-1}b.
+\]</span></p>
+<p>Por asociatividad,</p>
+<p><span class="math display">\[
+(a^{-1}a)x=a^{-1}b,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+x=a^{-1}b.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+x=\frac ba.
+}
+\]</span></p>
+</section>
+<section id="existencia" class="level3">
+<h3 class="anchored" data-anchor-id="existencia">Existencia</h3>
+<p>Definamos</p>
+<p><span class="math display">\[
+x=a^{-1}b.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+ax=a(a^{-1}b)=(aa^{-1})b=b.
+\]</span></p>
+<p>Así, existe una solución.</p>
+</section>
+<section id="unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="unicidad">Unicidad</h3>
+<p>Supongamos que <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> satisfacen</p>
+<p><span class="math display">\[
+au=b
+\qquad\text{y}\qquad
+av=b.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+au=av.
+\]</span></p>
+<p>Como <span class="math inline">\(a\neq0\)</span>, la cancelación multiplicativa da</p>
+<p><span class="math display">\[
+u=v.
+\]</span></p>
+<p>Por tanto:</p>
+<p><span class="math display">\[
+\boxed{
+a\neq0
+\Longrightarrow
+\text{$ax=b$ tiene una única solución, }x=\frac ba.
+}
+\]</span></p>
+<p>Este resultado proporciona la justificación estructural de la técnica escolar de «dividir ambos miembros por <span class="math inline">\(a\)</span>».</p>
+</section>
+<section id="caso-2-a0-y-b0" class="level3">
+<h3 class="anchored" data-anchor-id="caso-2-a0-y-b0">Caso 2: <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b=0\)</span></h3>
+<p>La ecuación queda</p>
+<p><span class="math display">\[
+0x=0,
+\]</span></p>
+<p>que es verdadera para todo <span class="math inline">\(x\in F\)</span>.</p>
+<p>Por tanto, hay tantas soluciones como elementos tenga <span class="math inline">\(F\)</span>.</p>
+</section>
+<section id="caso-3-a0-y-bneq0" class="level3">
+<h3 class="anchored" data-anchor-id="caso-3-a0-y-bneq0">Caso 3: <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b\neq0\)</span></h3>
+<p>La ecuación queda</p>
+<p><span class="math display">\[
+0x=b.
+\]</span></p>
+<p>Pero <span class="math inline">\(0x=0\)</span>. Así tendríamos que exigir</p>
+<p><span class="math display">\[
+0=b,
+\]</span></p>
+<p>lo que contradice <span class="math inline">\(b\neq0\)</span>.</p>
+<p>No hay solución.</p>
+<div class="ma-block ma-metodo">
+<p><strong>Método — ecuaciones lineales con parámetro</strong></p>
+<p>Para analizar</p>
+<p><span class="math display">\[
+ax=b,
+\]</span></p>
+<p>no dividas inmediatamente por <span class="math inline">\(a\)</span>.</p>
+<p>Primero separa:</p>
+<ol type="1">
+<li><span class="math inline">\(a\neq0\)</span>: existe <span class="math inline">\(a^{-1}\)</span> y hay una solución única;</li>
+<li><span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=0\)</span>: todo elemento es solución;</li>
+<li><span class="math inline">\(a=0\)</span>, <span class="math inline">\(b\neq0\)</span>: no hay solución.</li>
+</ol>
+<p>La clasificación depende de la disponibilidad del inverso.</p>
+</div>
+<p>Esta estructura refuerza la lectura del problema <a href="../problemas/existencia-y-unicidad-ecuacion-lineal-parametros.html">Existencia y unicidad en una ecuación lineal con parámetros</a> (<code>MA-PRB-0005</code>).</p>
+</section>
+</section>
+<section id="ejemplos-y-no-ejemplos-de-cuerpos" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-no-ejemplos-de-cuerpos">14. Ejemplos y no ejemplos de cuerpos</h2>
+<section id="ejemplos" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplos">14.1. Ejemplos</h3>
+<p>Con sus operaciones usuales,</p>
+<p><span class="math display">\[
+\mathbb Q,\qquad \mathbb R,\qquad \mathbb C
+\]</span></p>
+<p>son cuerpos.</p>
+<p>Por ahora podemos tratarlos como ejemplos conocidos. Una construcción rigurosa de <span class="math inline">\(\mathbb Q\)</span> y una caracterización estructural más completa de <span class="math inline">\(\mathbb R\)</span> pertenecen a etapas posteriores del recorrido.</p>
+</section>
+<section id="los-enteros-no-forman-un-cuerpo" class="level3">
+<h3 class="anchored" data-anchor-id="los-enteros-no-forman-un-cuerpo">14.2. Los enteros no forman un cuerpo</h3>
+<p>El conjunto</p>
+<p><span class="math display">\[
+\mathbb Z
+\]</span></p>
+<p>tiene suma y producto con muchas de las propiedades anteriores, pero falla el axioma de inversos multiplicativos.</p>
+<p>Por ejemplo, <span class="math inline">\(2\neq0\)</span>, pero no existe un entero <span class="math inline">\(m\)</span> tal que</p>
+<p><span class="math display">\[
+2m=1.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\mathbb Z\text{ no es un cuerpo}.}
+\]</span></p>
+<div class="ma-block ma-observacion">
+<p><strong>No basta con poder sumar y multiplicar</strong></p>
+<p>Una estructura puede satisfacer asociatividad, conmutatividad, neutros, inversos aditivos y distributividad, y aun así no ser un cuerpo si los elementos no nulos no poseen inversos multiplicativos dentro del mismo conjunto.</p>
+</div>
+</section>
+</section>
+<section id="qué-no-se-deduce-todavía" class="level2">
+<h2 class="anchored" data-anchor-id="qué-no-se-deduce-todavía">15. Qué NO se deduce todavía</h2>
+<p>Los axiomas de cuerpo organizan la aritmética de suma, producto e inversos. Pero no permiten, por sí solos, hablar de:</p>
+<ul>
+<li>qué elemento es mayor que otro;</li>
+<li>qué significa <span class="math inline">\(a&gt;0\)</span>;</li>
+<li>intervalos;</li>
+<li>desigualdades;</li>
+<li>cotas superiores;</li>
+<li>supremos;</li>
+<li>continuidad o límites;</li>
+<li>completitud.</li>
+</ul>
+<p>Para obtener reglas de orden necesitamos añadir una relación de orden compatible con las operaciones.</p>
+<p>Por eso, aunque en <a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en <span class="math inline">\(\mathbb R\)</span> y manipulación de desigualdades</a> (<code>MA-CON-0005</code>) ya usamos operacionalmente esas propiedades, la arquitectura fundacional completa debe distinguir dos capas:</p>
+<p><span class="math display">\[
+\boxed{
+\text{cuerpo}
+\longrightarrow
+\text{cuerpo ordenado}.
+}
+\]</span></p>
+<p>Y, en el caso de los reales, todavía falta una tercera capa:</p>
+<p><span class="math display">\[
+\boxed{
+\text{cuerpo ordenado}
+\longrightarrow
+\text{cuerpo ordenado completo}.
+}
+\]</span></p>
+<p>La completitud ya está desarrollada en <a href="../conceptos/supremo-infimo-y-completitud-de-r.html">Supremo, ínfimo y completitud de <span class="math inline">\(\mathbb R\)</span></a> (<code>MA-CON-0016</code>).</p>
+</section>
+<section id="un-mapa-de-dependencias-algebraicas" class="level2">
+<h2 class="anchored" data-anchor-id="un-mapa-de-dependencias-algebraicas">16. Un mapa de dependencias algebraicas</h2>
+<p>La lógica interna de esta página puede visualizarse así:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\text{axiomas de suma y producto}\\
+\downarrow\\
+\text{unicidad de }0,1,-a,a^{-1}\\
+\downarrow\\
+0a=0,\quad (-a)b=-(ab),\quad (-a)(-b)=ab\\
+\downarrow\\
+\text{cancelación}\\
+\downarrow\\
+\text{producto nulo y división}\\
+\downarrow\\
+\text{ecuaciones lineales}
+\end{array}
+\]</span></p>
+<p>La dirección importa: cuando una consecuencia aparece abajo, no debe utilizarse circularmente para demostrar los hechos de los que depende.</p>
+<div class="ma-block ma-comprobacion">
+<p><strong>Auditoría de dependencias</strong></p>
+<p>En particular:</p>
+<ul>
+<li>para demostrar <span class="math inline">\(0a=0\)</span> no usamos producto nulo;</li>
+<li>para demostrar producto nulo usamos inversos y <span class="math inline">\(0a=0\)</span>;</li>
+<li>para justificar división usamos la existencia y unicidad de inversos;</li>
+<li>para resolver <span class="math inline">\(ax=b\)</span> con <span class="math inline">\(a\neq0\)</span> usamos precisamente esa noción de división o, equivalentemente, multiplicamos por <span class="math inline">\(a^{-1}\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="conexiones-con-el-corpus" class="level2">
+<h2 class="anchored" data-anchor-id="conexiones-con-el-corpus">17. Conexiones con el corpus</h2>
+<p>Esta página llena una pieza que hasta ahora estaba implícita.</p>
+<ul>
+<li><a href="../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html"><code>MA-BCH-0001</code></a> proporciona el lenguaje de axiomas, demostraciones, existencia y unicidad.</li>
+<li><a href="../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html"><code>MA-CON-0005</code></a> utiliza la capa adicional de orden sobre <span class="math inline">\(\mathbb R\)</span>.</li>
+<li><a href="../conceptos/supremo-infimo-y-completitud-de-r.html"><code>MA-CON-0016</code></a> introduce la propiedad de completitud que distingue a <span class="math inline">\(\mathbb R\)</span> dentro del recorrido analítico.</li>
+<li><a href="../problemas/existencia-y-unicidad-ecuacion-lineal-parametros.html"><code>MA-PRB-0005</code></a> aplica la estructura de existencia y unicidad a una ecuación lineal.</li>
+<li><a href="../problemas/producto-nulo-y-cancelacion-en-un-cuerpo.html"><code>MA-PRB-0006</code></a> ejercita directamente producto nulo, cancelación e hipótesis de no nulidad.</li>
+</ul>
+<p>La secuencia fundacional queda ahora:</p>
+<p><span class="math display">\[
+\boxed{
+\text{lenguaje de demostración}
+\longrightarrow
+\text{axiomas de cuerpo}
+\longrightarrow
+\text{orden}
+\longrightarrow
+\text{completitud}.
+}
+\]</span></p>
+</section>
+<section id="resumen-operativo" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-operativo">18. Resumen operativo</h2>
+<p>En cualquier cuerpo <span class="math inline">\(F\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+0a&amp;=0,\\
+(-1)a&amp;=-a,\\
+(-a)b&amp;=-(ab),\\
+(-a)(-b)&amp;=ab,\\
+a+c=b+c&amp;\Longrightarrow a=b,\\
+ac=bc,\ c\neq0&amp;\Longrightarrow a=b,\\
+ab=0&amp;\Longleftrightarrow a=0\text{ o }b=0,\\
+\frac ab&amp;=ab^{-1}\qquad(b\neq0).
+\end{aligned}
+}
+\]</span></p>
+<p>Y para</p>
+<p><span class="math display">\[
+ax=b,
+\]</span></p>
+<p>tenemos:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c|c}
+\text{condición} &amp; \text{soluciones}\\
+\hline
+a\neq0 &amp; x=a^{-1}b=b/a\text{, única}\\
+a=0,\ b=0 &amp; \text{todo }x\in F\\
+a=0,\ b\neq0 &amp; \text{ninguna}
+\end{array}
+}
+\]</span></p>
+<div class="ma-block ma-intuicion">
+<p><strong>Idea final</strong></p>
+<p>Las reglas algebraicas escolares dejan de verse como una colección de permisos aislados cuando identificamos la estructura que las sostiene.</p>
+<p>El siguiente paso fundacional será añadir una relación de orden compatible con suma y producto y estudiar qué nuevas consecuencias aparecen entonces.</p>
+</div>
+</section>
+<section id="relaciones" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones">Relaciones</h2>
+<ul>
+<li><strong>Prerrequisitos:</strong> <code>MA-BCH-0001</code>.</li>
+<li><strong>Contenidos relacionados:</strong> <code>MA-CON-0005</code>, <code>MA-CON-0016</code>.</li>
+<li><strong>Problemas que usan este concepto:</strong> <code>MA-PRB-0006</code>.</li>
+</ul>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lachenmann\.github\.io\/matematica-abierta\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
