@@ -422,35 +422,62 @@ La coincidencia entre límite y valor de la función será precisamente una part
 
 ## El límite es una propiedad local
 
-Para determinar el límite en $a$ sólo importa lo que la función hace suficientemente cerca de $a$.
+Para determinar el límite en $a$ sólo importa lo que una función hace suficientemente cerca de $a$.
 
 ::: {.ma-block .ma-definicion}
 **Principio de localidad**
 
-Sean $f$ y $g$ funciones cuyos dominios tienen a $a$ como punto de acumulación. Supongamos que existe un $r>0$ tal que
+Sean
 
 $$
-f(x)=g(x)
+f:D\to\mathbb R,
+\qquad
+g:E\to\mathbb R,
 $$
 
-para todos los puntos de sus dominios comunes que satisfacen
+y supongamos que $a$ es punto de acumulación de ambos dominios. Si existe un $r>0$ tal que, para todo $x$ con
 
 $$
-0<|x-a|<r.
+0<|x-a|<r,
 $$
 
-Si una de las dos funciones tiene límite $L$ en $a$, entonces la otra tiene el mismo límite, siempre que ambas se consideren sobre puntos del dominio arbitrariamente próximos a $a$ donde esa igualdad sea aplicable.
+se cumple
+
+$$
+x\in D\iff x\in E
+$$
+
+y, para esos puntos del dominio,
+
+$$
+f(x)=g(x),
+$$
+
+entonces $f$ y $g$ tienen exactamente el mismo comportamiento límite en $a$: si una tiene límite $L$, la otra también tiene límite $L$.
 :::
 
-La idea es inmediata: en un entorno perforado suficientemente pequeño ambas funciones tienen exactamente los mismos valores, por lo que cualquier control épsilon-delta válido para una sirve también para la otra tras reducir $\delta$, si es necesario, para asegurar $\delta\le r$.
-
-El ejemplo anterior usa justamente este principio: cerca de $1$,
+En otras palabras, dentro de algún entorno perforado de $a$ deben coincidir tanto los puntos relevantes de los dominios como los valores de las funciones. Cualquier control épsilon-delta válido para una sirve entonces para la otra tras reemplazar $\delta$ por
 
 $$
-\frac{x^2-1}{x-1}=x+1
+\min\{\delta,r\},
 $$
 
-para $x\ne1$.
+si es necesario.
+
+El ejemplo anterior usa justamente este principio. La función
+
+$$
+g(x)=\frac{x^2-1}{x-1},
+\qquad x\ne1,
+$$
+
+y la función
+
+$$
+h(x)=x+1
+$$
+
+tienen los mismos puntos de dominio y los mismos valores en todo entorno perforado de $1$, aunque $h$ sí esté definida en $1$ y $g$ no.
 
 ## El límite, si existe, es único
 
