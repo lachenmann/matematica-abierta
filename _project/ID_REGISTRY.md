@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0006 |
+| Capítulo | MA-BCH-0007 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0004 |
 
@@ -52,6 +52,7 @@
 | MA-BCH-0003 | book-chapter | Los números reales: orden, valor absoluto, desigualdades y completitud | `libros/capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md` | published |
 | MA-BCH-0004 | book-chapter | Funciones reales: estructura, composición, inversas y gráficas | `libros/capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md` | published |
 | MA-BCH-0005 | book-chapter | Tratado de análisis — Capítulo 0: Fundamento lógico y conjuntista | `libros/capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md` | published |
+| MA-BCH-0006 | book-chapter | Tratado de análisis — Glosario matemático | `libros/otros/tratado-de-analisis-glosario.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
