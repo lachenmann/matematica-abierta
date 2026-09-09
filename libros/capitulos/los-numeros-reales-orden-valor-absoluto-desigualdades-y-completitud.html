@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Segundo capítulo de Cálculo para matemáticos: estructura de ℝ, orden, valor absoluto, supremos, completitud, raíces, propiedad arquimediana, densidad e intervalos encajados.">
+
+<title>Los números reales: orden, valor absoluto, desigualdades y completitud – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#los-números-reales" id="toc-los-números-reales" class="nav-link active" data-scroll-target="#los-números-reales">Los números reales</a>
+  <ul class="collapse">
+  <li><a href="#ma-bch-0003-hueco-racionales" id="toc-ma-bch-0003-hueco-racionales" class="nav-link" data-scroll-target="#ma-bch-0003-hueco-racionales">1. El hueco de los racionales</a>
+  <ul class="collapse">
+  <li><a href="#teorema-irracionalidad-de-sqrt2" id="toc-teorema-irracionalidad-de-sqrt2" class="nav-link" data-scroll-target="#teorema-irracionalidad-de-sqrt2">Teorema — irracionalidad de <span class="math inline">\(\sqrt2\)</span></a></li>
+  <li><a href="#demostración" id="toc-demostración" class="nav-link" data-scroll-target="#demostración">Demostración</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-cuerpo-ordenado" id="toc-ma-bch-0003-cuerpo-ordenado" class="nav-link" data-scroll-target="#ma-bch-0003-cuerpo-ordenado">2. Los reales como cuerpo ordenado</a>
+  <ul class="collapse">
+  <li><a href="#por-qué-dividir-exige-controlar-el-signo" id="toc-por-qué-dividir-exige-controlar-el-signo" class="nav-link" data-scroll-target="#por-qué-dividir-exige-controlar-el-signo">Por qué dividir exige controlar el signo</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-valor-absoluto" id="toc-ma-bch-0003-valor-absoluto" class="nav-link" data-scroll-target="#ma-bch-0003-valor-absoluto">3. Valor absoluto y distancia</a>
+  <ul class="collapse">
+  <li><a href="#desigualdad-triangular" id="toc-desigualdad-triangular" class="nav-link" data-scroll-target="#desigualdad-triangular">Desigualdad triangular</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-cotas" id="toc-ma-bch-0003-cotas" class="nav-link" data-scroll-target="#ma-bch-0003-cotas">4. Cotas, máximos, mínimos, supremos e ínfimos</a>
+  <ul class="collapse">
+  <li><a href="#el-supremo" id="toc-el-supremo" class="nav-link" data-scroll-target="#el-supremo">El supremo</a></li>
+  <li><a href="#caracterización-aproximativa-del-supremo" id="toc-caracterización-aproximativa-del-supremo" class="nav-link" data-scroll-target="#caracterización-aproximativa-del-supremo">Caracterización aproximativa del supremo</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-completitud" id="toc-ma-bch-0003-completitud" class="nav-link" data-scroll-target="#ma-bch-0003-completitud">5. Completitud: la propiedad que falta en <span class="math inline">\(\mathbb Q\)</span></a>
+  <ul class="collapse">
+  <li><a href="#axioma-de-completitud-propiedad-del-supremo" id="toc-axioma-de-completitud-propiedad-del-supremo" class="nav-link" data-scroll-target="#axioma-de-completitud-propiedad-del-supremo">Axioma de completitud — propiedad del supremo</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-raices" id="toc-ma-bch-0003-raices" class="nav-link" data-scroll-target="#ma-bch-0003-raices">6. Completitud en acción: existencia de raíces</a>
+  <ul class="collapse">
+  <li><a href="#teorema-existencia-y-unicidad-de-la-raíz-cuadrada-no-negativa" id="toc-teorema-existencia-y-unicidad-de-la-raíz-cuadrada-no-negativa" class="nav-link" data-scroll-target="#teorema-existencia-y-unicidad-de-la-raíz-cuadrada-no-negativa">Teorema — existencia y unicidad de la raíz cuadrada no negativa</a></li>
+  <li><a href="#demostración-1" id="toc-demostración-1" class="nav-link" data-scroll-target="#demostración-1">Demostración</a></li>
+  <li><a href="#primer-caso-imposible-alpha2a" id="toc-primer-caso-imposible-alpha2a" class="nav-link" data-scroll-target="#primer-caso-imposible-alpha2a">Primer caso imposible: <span class="math inline">\(\alpha^2&lt;a\)</span></a></li>
+  <li><a href="#segundo-caso-imposible-alpha2a" id="toc-segundo-caso-imposible-alpha2a" class="nav-link" data-scroll-target="#segundo-caso-imposible-alpha2a">Segundo caso imposible: <span class="math inline">\(\alpha^2&gt;a\)</span></a></li>
+  <li><a href="#unicidad" id="toc-unicidad" class="nav-link" data-scroll-target="#unicidad">Unicidad</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-arquimediana" id="toc-ma-bch-0003-arquimediana" class="nav-link" data-scroll-target="#ma-bch-0003-arquimediana">7. La propiedad arquimediana</a>
+  <ul class="collapse">
+  <li><a href="#teorema-propiedad-arquimediana" id="toc-teorema-propiedad-arquimediana" class="nav-link" data-scroll-target="#teorema-propiedad-arquimediana">Teorema — propiedad arquimediana</a></li>
+  <li><a href="#demostración-2" id="toc-demostración-2" class="nav-link" data-scroll-target="#demostración-2">Demostración</a></li>
+  <li><a href="#tolerancias-arbitrariamente-pequeñas" id="toc-tolerancias-arbitrariamente-pequeñas" class="nav-link" data-scroll-target="#tolerancias-arbitrariamente-pequeñas">Tolerancias arbitrariamente pequeñas</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-densidad" id="toc-ma-bch-0003-densidad" class="nav-link" data-scroll-target="#ma-bch-0003-densidad">8. Entre dos reales siempre hay más números</a>
+  <ul class="collapse">
+  <li><a href="#encajonamiento-entre-enteros-consecutivos" id="toc-encajonamiento-entre-enteros-consecutivos" class="nav-link" data-scroll-target="#encajonamiento-entre-enteros-consecutivos">Encajonamiento entre enteros consecutivos</a></li>
+  <li><a href="#densidad-de-mathbb-q" id="toc-densidad-de-mathbb-q" class="nav-link" data-scroll-target="#densidad-de-mathbb-q">Densidad de <span class="math inline">\(\mathbb Q\)</span></a></li>
+  <li><a href="#densidad-de-los-irracionales" id="toc-densidad-de-los-irracionales" class="nav-link" data-scroll-target="#densidad-de-los-irracionales">Densidad de los irracionales</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-intervalos-encajados" id="toc-ma-bch-0003-intervalos-encajados" class="nav-link" data-scroll-target="#ma-bch-0003-intervalos-encajados">9. Intervalos encajados y bisección</a>
+  <ul class="collapse">
+  <li><a href="#teorema-existencia-de-un-punto-común-en-intervalos-cerrados-encajados" id="toc-teorema-existencia-de-un-punto-común-en-intervalos-cerrados-encajados" class="nav-link" data-scroll-target="#teorema-existencia-de-un-punto-común-en-intervalos-cerrados-encajados">Teorema — existencia de un punto común en intervalos cerrados encajados</a></li>
+  <li><a href="#demostración-3" id="toc-demostración-3" class="nav-link" data-scroll-target="#demostración-3">Demostración</a></li>
+  <li><a href="#el-caso-de-la-bisección" id="toc-el-caso-de-la-bisección" class="nav-link" data-scroll-target="#el-caso-de-la-bisección">El caso de la bisección</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0003-mapa" id="toc-ma-bch-0003-mapa" class="nav-link" data-scroll-target="#ma-bch-0003-mapa">10. Mapa de dependencias</a></li>
+  <li><a href="#ma-bch-0003-asociadas" id="toc-ma-bch-0003-asociadas" class="nav-link" data-scroll-target="#ma-bch-0003-asociadas">11. Páginas asociadas</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre">Cierre</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Los números reales: orden, valor absoluto, desigualdades y completitud</h1>
+</div>
+
+<div>
+  <div class="description">
+    Segundo capítulo de Cálculo para matemáticos: estructura de ℝ, orden, valor absoluto, supremos, completitud, raíces, propiedad arquimediana, densidad e intervalos encajados.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">9 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="los-números-reales" class="level1">
+<h1>Los números reales</h1>
+<p>En cálculo utilizamos los números reales continuamente, pero hacerlo con rigor exige responder una pregunta previa:</p>
+<blockquote class="blockquote">
+<p>¿qué propiedades de <span class="math inline">\(\mathbb R\)</span> hacen posibles los argumentos del análisis?</p>
+</blockquote>
+<p>Las reglas algebraicas no bastan. Los racionales <span class="math inline">\(\mathbb Q\)</span> también permiten sumar, restar, multiplicar, dividir por elementos no nulos y comparar números mediante un orden compatible con esas operaciones. Sin embargo, <span class="math inline">\(\mathbb Q\)</span> tiene huecos. Una ecuación tan elemental como</p>
+<p><span class="math display">\[
+x^2=2
+\]</span></p>
+<p>no tiene solución racional.</p>
+<p>La estructura que falta es la <strong>completitud</strong>. Este capítulo construye el camino hasta ella y extrae varias consecuencias que utilizaremos después en sucesiones, límites, continuidad e integración.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Idea rectora</strong></p>
+<p>Conviene separar tres niveles:</p>
+<ol type="1">
+<li>las <strong>leyes algebraicas</strong> de un cuerpo;</li>
+<li>las <strong>leyes de orden</strong> que permiten hablar de positividad y desigualdades;</li>
+<li>la <strong>completitud</strong>, que garantiza la existencia de ciertos bordes que el álgebra y el orden, por sí solos, no proporcionan.</li>
+</ol>
+<p>El paso de <span class="math inline">\(\mathbb Q\)</span> a <span class="math inline">\(\mathbb R\)</span> no consiste simplemente en añadir más símbolos: consiste en añadir una propiedad estructural.</p>
+</div>
+<section id="ma-bch-0003-hueco-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-hueco-racionales">1. El hueco de los racionales</h2>
+<p>Comencemos mostrando que <span class="math inline">\(\sqrt2\)</span> no puede ser racional.</p>
+<div id="res-ma-bch-0003-sqrt2-irracional">
+<section id="teorema-irracionalidad-de-sqrt2" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-irracionalidad-de-sqrt2">Teorema — irracionalidad de <span class="math inline">\(\sqrt2\)</span></h3>
+<p>No existe ningún <span class="math inline">\(q\in\mathbb Q\)</span> tal que</p>
+<p><span class="math display">\[
+q^2=2.
+\]</span></p>
+</section>
+</div>
+<section id="demostración" class="level3">
+<h3 class="anchored" data-anchor-id="demostración">Demostración</h3>
+<p>Supongamos, por contradicción, que existe un racional <span class="math inline">\(q\)</span> con <span class="math inline">\(q^2=2\)</span>. Podemos escribir</p>
+<p><span class="math display">\[
+q=\frac pq,
+\]</span></p>
+<p>pero para evitar usar la misma letra en dos funciones distintas escribamos mejor</p>
+<p><span class="math display">\[
+q=\frac mn,
+\]</span></p>
+<p>con <span class="math inline">\(m,n\in\mathbb Z\)</span>, <span class="math inline">\(n\ne0\)</span>, y con la fracción reducida a términos coprimos.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\frac{m^2}{n^2}=2,
+\]</span></p>
+<p>de donde</p>
+<p><span class="math display">\[
+m^2=2n^2.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(m^2\)</span> es par. Si <span class="math inline">\(m\)</span> fuera impar, escribiríamos <span class="math inline">\(m=2k+1\)</span> y obtendríamos</p>
+<p><span class="math display">\[
+m^2=4k^2+4k+1,
+\]</span></p>
+<p>que es impar. Luego <span class="math inline">\(m\)</span> es par. Existe entonces <span class="math inline">\(r\in\mathbb Z\)</span> tal que</p>
+<p><span class="math display">\[
+m=2r.
+\]</span></p>
+<p>Sustituyendo,</p>
+<p><span class="math display">\[
+4r^2=2n^2,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+n^2=2r^2.
+\]</span></p>
+<p>El mismo argumento muestra que <span class="math inline">\(n\)</span> es par.</p>
+<p>Así, <span class="math inline">\(m\)</span> y <span class="math inline">\(n\)</span> tienen al menos el factor común <span class="math inline">\(2\)</span>, contradiciendo que <span class="math inline">\(m/n\)</span> estuviera reducida a términos coprimos. La suposición inicial es imposible. En consecuencia,</p>
+<p><span class="math display">\[
+\boxed{\sqrt2\notin\mathbb Q.}
+\]</span></p>
+<div class="ma-block ma-observacion">
+<p><strong>Qué demuestra realmente este argumento</strong></p>
+<p>No hemos demostrado todavía que exista un número real cuyo cuadrado sea <span class="math inline">\(2\)</span>. Sólo hemos demostrado que <strong>ningún racional</strong> puede desempeñar ese papel.</p>
+<p>La existencia de <span class="math inline">\(\sqrt2\)</span> dentro de <span class="math inline">\(\mathbb R\)</span> requerirá una propiedad adicional: la completitud.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0003-cuerpo-ordenado" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-cuerpo-ordenado">2. Los reales como cuerpo ordenado</h2>
+<p>Trabajaremos con <span class="math inline">\(\mathbb R\)</span> como un sistema numérico en el que las operaciones de suma y producto satisfacen los axiomas de cuerpo y en el que existe un orden total compatible con esas operaciones.</p>
+<p>Las consecuencias algebraicas básicas se desarrollan de manera autocontenida en <a href="../../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.html">Axiomas de cuerpo y consecuencias algebraicas básicas</a> (<code>MA-CON-0020</code>). Entre ellas se encuentran la unicidad de los neutros y de los inversos, la cancelación y la regla del producto nulo.</p>
+<p>Para el orden, utilizaremos principalmente dos compatibilidades:</p>
+<ol type="1">
+<li>si <span class="math inline">\(a&lt;b\)</span>, entonces <span class="math display">\[
+a+c&lt;b+c
+\]</span> para todo <span class="math inline">\(c\in\mathbb R\)</span>;</li>
+<li>si <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(c&gt;0\)</span>, entonces <span class="math display">\[
+ac&lt;bc.
+\]</span></li>
+</ol>
+<p>Si <span class="math inline">\(c&lt;0\)</span>, la desigualdad se invierte.</p>
+<p>Estas reglas y sus consecuencias se estudian con más detalle en <a href="../../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a> (<code>MA-CON-0005</code>).</p>
+<section id="por-qué-dividir-exige-controlar-el-signo" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-dividir-exige-controlar-el-signo">Por qué dividir exige controlar el signo</h3>
+<p>De</p>
+<p><span class="math display">\[
+ax&lt;b
+\]</span></p>
+<p>no podemos pasar mecánicamente a</p>
+<p><span class="math display">\[
+x&lt;\frac ba.
+\]</span></p>
+<p>Primero debemos saber que <span class="math inline">\(a\ne0\)</span>, y después distinguir su signo:</p>
+<ul>
+<li>si <span class="math inline">\(a&gt;0\)</span>, entonces <span class="math inline">\(x&lt;b/a\)</span>;</li>
+<li>si <span class="math inline">\(a&lt;0\)</span>, entonces <span class="math inline">\(x&gt;b/a\)</span>.</li>
+</ul>
+<p>El símbolo de desigualdad contiene información de orden; por eso una transformación algebraicamente admisible puede requerir además una condición de signo.</p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente — Confundir cuerpo ordenado con números reales</strong></p>
+<p>Los racionales <span class="math inline">\(\mathbb Q\)</span> también forman un cuerpo ordenado. Por tanto,</p>
+<p><span class="math display">\[
+\text{axiomas de cuerpo} + \text{axiomas de orden}
+\]</span></p>
+<p>no caracterizan todavía la diferencia esencial entre <span class="math inline">\(\mathbb Q\)</span> y <span class="math inline">\(\mathbb R\)</span>.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0003-valor-absoluto" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-valor-absoluto">3. Valor absoluto y distancia</h2>
+<p>El valor absoluto se define por</p>
+<p><span class="math display">\[
+|x|=
+\begin{cases}
+x,&amp;x\ge0,\\
+-x,&amp;x&lt;0.
+\end{cases}
+\]</span></p>
+<p>Geométricamente, <span class="math inline">\(|x|\)</span> es la distancia entre <span class="math inline">\(x\)</span> y <span class="math inline">\(0\)</span>. Más generalmente,</p>
+<p><span class="math display">\[
+|x-y|
+\]</span></p>
+<p>es la distancia entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> sobre la recta real.</p>
+<p>El tratamiento sistemático está en <a href="../../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a> (<code>MA-CON-0002</code>). Aquí fijaremos las traducciones que utilizaremos una y otra vez.</p>
+<p>Para <span class="math inline">\(r&gt;0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{|x-a|&lt;r\iff a-r&lt;x&lt;a+r.}
+\]</span></p>
+<p>En efecto,</p>
+<p><span class="math display">\[
+|x-a|&lt;r
+\]</span></p>
+<p>equivale a</p>
+<p><span class="math display">\[
+-r&lt;x-a&lt;r,
+\]</span></p>
+<p>y al sumar <span class="math inline">\(a\)</span> obtenemos la desigualdad doble anterior.</p>
+<p>De manera análoga,</p>
+<p><span class="math display">\[
+\boxed{|x-a|\le r\iff a-r\le x\le a+r.}
+\]</span></p>
+<p>Esta equivalencia conecta tres lenguajes:</p>
+<p><span class="math display">\[
+\boxed{
+\text{valor absoluto}
+\longleftrightarrow
+\text{distancia}
+\longleftrightarrow
+\text{intervalos}.
+}
+\]</span></p>
+<section id="desigualdad-triangular" class="level3">
+<h3 class="anchored" data-anchor-id="desigualdad-triangular">Desigualdad triangular</h3>
+<p>Una propiedad central es</p>
+<p><span class="math display">\[
+\boxed{|x+y|\le |x|+|y|.}
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+-|x|\le x\le |x|
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+-|y|\le y\le |y|,
+\]</span></p>
+<p>al sumar miembro a miembro obtenemos</p>
+<p><span class="math display">\[
+-(|x|+|y|)\le x+y\le |x|+|y|.
+\]</span></p>
+<p>Por la caracterización del valor absoluto,</p>
+<p><span class="math display">\[
+|x+y|\le |x|+|y|.
+\]</span></p>
+<p>Aplicando esta desigualdad a</p>
+<p><span class="math display">\[
+x=(x-y)+y
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+|x|\le |x-y|+|y|,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+|x|-|y|\le |x-y|.
+\]</span></p>
+<p>Intercambiando <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> resulta</p>
+<p><span class="math display">\[
+|y|-|x|\le |x-y|.
+\]</span></p>
+<p>Combinando ambas desigualdades,</p>
+<p><span class="math display">\[
+\boxed{\bigl||x|-|y|\bigr|\le |x-y|.}
+\]</span></p>
+<p>Ésta es la <strong>desigualdad triangular inversa</strong>.</p>
+</section>
+</section>
+<section id="ma-bch-0003-cotas" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-cotas">4. Cotas, máximos, mínimos, supremos e ínfimos</h2>
+<p>Sea <span class="math inline">\(A\subseteq\mathbb R\)</span>.</p>
+<p>Un número <span class="math inline">\(M\)</span> es una <strong>cota superior</strong> de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[
+x\le M
+\]</span></p>
+<p>para todo <span class="math inline">\(x\in A\)</span>.</p>
+<p>Un número <span class="math inline">\(m\)</span> es una <strong>cota inferior</strong> si</p>
+<p><span class="math display">\[
+m\le x
+\]</span></p>
+<p>para todo <span class="math inline">\(x\in A\)</span>.</p>
+<p>Una cota no tiene por qué pertenecer al conjunto.</p>
+<p>En cambio, <span class="math inline">\(M\)</span> es el <strong>máximo</strong> de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[
+M\in A
+\]</span></p>
+<p>y además es cota superior. El mínimo se define de manera dual.</p>
+<section id="el-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="el-supremo">El supremo</h3>
+<p>Si <span class="math inline">\(A\)</span> es no vacío y está acotado superiormente, un número <span class="math inline">\(s\)</span> es su <strong>supremo</strong> si:</p>
+<ol type="1">
+<li><span class="math inline">\(s\)</span> es cota superior de <span class="math inline">\(A\)</span>;</li>
+<li>toda cota superior <span class="math inline">\(U\)</span> de <span class="math inline">\(A\)</span> satisface <span class="math inline">\(s\le U\)</span>.</li>
+</ol>
+<p>Escribimos</p>
+<p><span class="math display">\[
+s=\sup A.
+\]</span></p>
+<p>El <strong>ínfimo</strong> es, dualmente, la mayor cota inferior.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+A=(0,1)
+\]</span></p>
+<p>no tiene máximo ni mínimo, pero sí</p>
+<p><span class="math display">\[
+\sup A=1,
+\qquad
+\inf A=0.
+\]</span></p>
+<p>La distinción entre cota, extremo alcanzado y extremo no necesariamente alcanzado se desarrolla en <a href="../../conceptos/supremo-infimo-y-completitud-de-r.html">Supremo, ínfimo y completitud de ℝ</a> (<code>MA-CON-0016</code>).</p>
+</section>
+<section id="caracterización-aproximativa-del-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="caracterización-aproximativa-del-supremo">Caracterización aproximativa del supremo</h3>
+<p>Si</p>
+<p><span class="math display">\[
+s=\sup A,
+\]</span></p>
+<p>entonces para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(x\in A\)</span> tal que</p>
+<p><span class="math display">\[
+\boxed{s-\varepsilon&lt;x\le s.}
+\]</span></p>
+<p>La razón es importante. Si no existiera tal <span class="math inline">\(x\)</span>, todos los elementos de <span class="math inline">\(A\)</span> cumplirían</p>
+<p><span class="math display">\[
+x\le s-\varepsilon,
+\]</span></p>
+<p>de modo que <span class="math inline">\(s-\varepsilon\)</span> sería una cota superior menor que <span class="math inline">\(s\)</span>, contradiciendo que <span class="math inline">\(s\)</span> sea la menor cota superior.</p>
+<p>Esta propiedad será una de las primeras apariciones del lenguaje de aproximación que dominará los capítulos de límites.</p>
+</section>
+</section>
+<section id="ma-bch-0003-completitud" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-completitud">5. Completitud: la propiedad que falta en <span class="math inline">\(\mathbb Q\)</span></h2>
+<p>Hasta ahora hemos definido qué significa que un número sea el supremo de un conjunto. Falta garantizar que tal número exista.</p>
+<div id="res-ma-bch-0003-completitud">
+<section id="axioma-de-completitud-propiedad-del-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="axioma-de-completitud-propiedad-del-supremo">Axioma de completitud — propiedad del supremo</h3>
+<p>Todo subconjunto no vacío de <span class="math inline">\(\mathbb R\)</span> que esté acotado superiormente posee un supremo en <span class="math inline">\(\mathbb R\)</span>.</p>
+</section>
+</div>
+<p>En símbolos,</p>
+<p><span class="math display">\[
+A\subseteq\mathbb R,
+\quad
+A\ne\varnothing,
+\quad
+A\text{ acotado superiormente}
+\Longrightarrow
+\exists\,\sup A\in\mathbb R.
+\]</span></p>
+<p>La propiedad dual para ínfimos se deduce de ésta. Si <span class="math inline">\(A\)</span> es no vacío y está acotado inferiormente, consideramos</p>
+<p><span class="math display">\[
+-A=\{-x:x\in A\}.
+\]</span></p>
+<p>Entonces <span class="math inline">\(-A\)</span> está acotado superiormente y, por completitud, existe <span class="math inline">\(\sup(-A)\)</span>. Se verifica que</p>
+<p><span class="math display">\[
+\boxed{\inf A=-\sup(-A).}
+\]</span></p>
+<div class="ma-block ma-intuicion">
+<p><strong>Qué añade la completitud</strong></p>
+<p>Un cuerpo ordenado permite comparar y operar. La completitud garantiza además que ciertos procesos de aproximación no se dirigen hacia un “hueco” fuera del sistema.</p>
+<p>Ésta es la diferencia estructural que necesitamos para pasar de la aritmética de <span class="math inline">\(\mathbb Q\)</span> al análisis sobre <span class="math inline">\(\mathbb R\)</span>.</p>
+</div>
+</section>
+<section id="ma-bch-0003-raices" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-raices">6. Completitud en acción: existencia de raíces</h2>
+<p>Ahora podemos cerrar la pregunta que abrió el capítulo.</p>
+<div id="res-ma-bch-0003-raiz-positiva">
+<section id="teorema-existencia-y-unicidad-de-la-raíz-cuadrada-no-negativa" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-existencia-y-unicidad-de-la-raíz-cuadrada-no-negativa">Teorema — existencia y unicidad de la raíz cuadrada no negativa</h3>
+<p>Para todo <span class="math inline">\(a&gt;0\)</span> existe un único <span class="math inline">\(\alpha&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+\alpha^2=a.
+\]</span></p>
+</section>
+</div>
+<section id="demostración-1" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-1">Demostración</h3>
+<p>Fijemos <span class="math inline">\(a&gt;0\)</span> y consideremos</p>
+<p><span class="math display">\[
+S_a=\{x\in\mathbb R:x\ge0,\ x^2&lt;a\}.
+\]</span></p>
+<p>El conjunto es no vacío. Por ejemplo, si</p>
+<p><span class="math display">\[
+y=\min\left\{1,\frac a2\right\},
+\]</span></p>
+<p>entonces <span class="math inline">\(y&gt;0\)</span> y <span class="math inline">\(y^2&lt;a\)</span>.</p>
+<p>También está acotado superiormente. El número</p>
+<p><span class="math display">\[
+M=\max\{1,a\}
+\]</span></p>
+<p>es una cota superior: si <span class="math inline">\(x&gt;M\)</span>, entonces <span class="math inline">\(x&gt;1\)</span> y <span class="math inline">\(x&gt;a\)</span>, por lo que</p>
+<p><span class="math display">\[
+x^2&gt;x&gt;a.
+\]</span></p>
+<p>Así, ningún <span class="math inline">\(x&gt;M\)</span> pertenece a <span class="math inline">\(S_a\)</span>.</p>
+<p>Por completitud existe</p>
+<p><span class="math display">\[
+\alpha=\sup S_a.
+\]</span></p>
+<p>Como <span class="math inline">\(S_a\)</span> contiene números positivos, <span class="math inline">\(\alpha&gt;0\)</span>.</p>
+<p>Debemos demostrar que <span class="math inline">\(\alpha^2=a\)</span>.</p>
+</section>
+<section id="primer-caso-imposible-alpha2a" class="level3">
+<h3 class="anchored" data-anchor-id="primer-caso-imposible-alpha2a">Primer caso imposible: <span class="math inline">\(\alpha^2&lt;a\)</span></h3>
+<p>Supongamos</p>
+<p><span class="math display">\[
+\alpha^2&lt;a.
+\]</span></p>
+<p>Sea</p>
+<p><span class="math display">\[
+d=a-\alpha^2&gt;0.
+\]</span></p>
+<p>Elegimos <span class="math inline">\(h&gt;0\)</span> de modo que</p>
+<p><span class="math display">\[
+h&lt;1
+\qquad\text{y}\qquad
+h&lt;\frac{d}{2\alpha+1}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+2\alpha h+h^2
+\le (2\alpha+1)h
+&lt;d.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+(\alpha+h)^2
+=\alpha^2+2\alpha h+h^2
+&lt;\alpha^2+d
+=a.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\alpha+h\in S_a.
+\]</span></p>
+<p>Pero <span class="math inline">\(\alpha+h&gt;\alpha\)</span>, contradiciendo que <span class="math inline">\(\alpha\)</span> sea una cota superior de <span class="math inline">\(S_a\)</span>.</p>
+<p>Luego no puede ocurrir <span class="math inline">\(\alpha^2&lt;a\)</span>.</p>
+</section>
+<section id="segundo-caso-imposible-alpha2a" class="level3">
+<h3 class="anchored" data-anchor-id="segundo-caso-imposible-alpha2a">Segundo caso imposible: <span class="math inline">\(\alpha^2&gt;a\)</span></h3>
+<p>Supongamos ahora</p>
+<p><span class="math display">\[
+\alpha^2&gt;a.
+\]</span></p>
+<p>Sea</p>
+<p><span class="math display">\[
+d=\alpha^2-a&gt;0.
+\]</span></p>
+<p>Como <span class="math inline">\(\alpha&gt;0\)</span>, podemos elegir <span class="math inline">\(h\)</span> con</p>
+<p><span class="math display">\[
+0&lt;h&lt;\alpha
+\qquad\text{y}\qquad
+h&lt;\frac{d}{2\alpha}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+(\alpha-h)^2
+=\alpha^2-2\alpha h+h^2
+&gt;\alpha^2-2\alpha h
+&gt;a.
+\]</span></p>
+<p>Si existiera <span class="math inline">\(x\in S_a\)</span> con <span class="math inline">\(x&gt;\alpha-h\)</span>, como ambos números son no negativos tendríamos</p>
+<p><span class="math display">\[
+x^2&gt;(\alpha-h)^2&gt;a,
+\]</span></p>
+<p>contradiciendo <span class="math inline">\(x^2&lt;a\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+x\le\alpha-h
+\]</span></p>
+<p>para todo <span class="math inline">\(x\in S_a\)</span>.</p>
+<p>Eso significa que <span class="math inline">\(\alpha-h\)</span> es una cota superior de <span class="math inline">\(S_a\)</span> menor que <span class="math inline">\(\alpha\)</span>, contradiciendo la minimalidad del supremo.</p>
+<p>Luego tampoco puede ocurrir <span class="math inline">\(\alpha^2&gt;a\)</span>.</p>
+<p>Las dos alternativas estrictas han sido descartadas. Por tricotomía,</p>
+<p><span class="math display">\[
+\boxed{\alpha^2=a.}
+\]</span></p>
+</section>
+<section id="unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="unicidad">Unicidad</h3>
+<p>Supongamos que <span class="math inline">\(0\le\alpha&lt;\beta\)</span> y que</p>
+<p><span class="math display">\[
+\alpha^2=\beta^2=a.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\beta^2-\alpha^2=(\beta-\alpha)(\beta+\alpha)&gt;0,
+\]</span></p>
+<p>pues ambos factores son positivos. Esto implicaría <span class="math inline">\(\beta^2&gt;\alpha^2\)</span>, contradicción.</p>
+<p>La raíz no negativa es, por tanto, única.</p>
+<p>Para <span class="math inline">\(a=2\)</span> obtenemos un número real <span class="math inline">\(\sqrt2\)</span> y, por la primera sección,</p>
+<p><span class="math display">\[
+\boxed{\sqrt2\in\mathbb R\setminus\mathbb Q.}
+\]</span></p>
+</section>
+</section>
+<section id="ma-bch-0003-arquimediana" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-arquimediana">7. La propiedad arquimediana</h2>
+<p>Una consecuencia fundamental de la completitud es que los números naturales no quedan atrapados bajo ninguna cota real.</p>
+<div id="res-ma-bch-0003-arquimediana">
+<section id="teorema-propiedad-arquimediana" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-propiedad-arquimediana">Teorema — propiedad arquimediana</h3>
+<p>Para todo <span class="math inline">\(x\in\mathbb R\)</span> existe <span class="math inline">\(n\in\mathbb N\)</span> tal que</p>
+<p><span class="math display">\[
+n&gt;x.
+\]</span></p>
+</section>
+</div>
+<section id="demostración-2" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-2">Demostración</h3>
+<p>Supongamos lo contrario: que <span class="math inline">\(\mathbb N\)</span> está acotado superiormente en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Por completitud existiría</p>
+<p><span class="math display">\[
+s=\sup\mathbb N.
+\]</span></p>
+<p>El número <span class="math inline">\(s-1\)</span> no puede ser una cota superior de <span class="math inline">\(\mathbb N\)</span>, porque es menor que el supremo. Por tanto existe <span class="math inline">\(n\in\mathbb N\)</span> tal que</p>
+<p><span class="math display">\[
+s-1&lt;n.
+\]</span></p>
+<p>Sumando <span class="math inline">\(1\)</span>,</p>
+<p><span class="math display">\[
+s&lt;n+1.
+\]</span></p>
+<p>Pero <span class="math inline">\(n+1\in\mathbb N\)</span>, lo cual contradice que <span class="math inline">\(s\)</span> sea una cota superior de <span class="math inline">\(\mathbb N\)</span>.</p>
+<p>Así, <span class="math inline">\(\mathbb N\)</span> no está acotado superiormente.</p>
+</section>
+<section id="tolerancias-arbitrariamente-pequeñas" class="level3">
+<h3 class="anchored" data-anchor-id="tolerancias-arbitrariamente-pequeñas">Tolerancias arbitrariamente pequeñas</h3>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>. Aplicando la propiedad arquimediana a <span class="math inline">\(1/\varepsilon\)</span>, existe <span class="math inline">\(n\in\mathbb N\)</span> tal que</p>
+<p><span class="math display">\[
+n&gt;\frac1\varepsilon.
+\]</span></p>
+<p>Como ambos lados son positivos,</p>
+<p><span class="math display">\[
+\boxed{\frac1n&lt;\varepsilon.}
+\]</span></p>
+<p>Esta consecuencia será una herramienta básica cuando necesitemos construir cantidades menores que una tolerancia dada.</p>
+<div class="ma-block ma-observacion">
+<p><strong>No hay infinitésimos reales positivos</strong></p>
+<p>No existe <span class="math inline">\(x&gt;0\)</span> tal que</p>
+<p><span class="math display">\[
+x&lt;\frac1n
+\]</span></p>
+<p>para todo <span class="math inline">\(n\in\mathbb N\)</span>.</p>
+<p>Si existiera, tomaríamos <span class="math inline">\(\varepsilon=x\)</span> y la propiedad anterior produciría algún <span class="math inline">\(n\)</span> con <span class="math inline">\(1/n&lt;x\)</span>, contradicción.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0003-densidad" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-densidad">8. Entre dos reales siempre hay más números</h2>
+<p>La recta real no sólo carece de los huecos que elimina la completitud. También posee una propiedad local importante: entre dos reales distintos siempre podemos encontrar racionales e irracionales.</p>
+<p>Primero necesitaremos una observación elemental.</p>
+<section id="encajonamiento-entre-enteros-consecutivos" class="level3">
+<h3 class="anchored" data-anchor-id="encajonamiento-entre-enteros-consecutivos">Encajonamiento entre enteros consecutivos</h3>
+<p>Para todo <span class="math inline">\(y\in\mathbb R\)</span> existe <span class="math inline">\(m\in\mathbb Z\)</span> tal que</p>
+<p><span class="math display">\[
+\boxed{m\le y&lt;m+1.}
+\]</span></p>
+<p>En efecto, por la propiedad arquimediana existe <span class="math inline">\(N\in\mathbb N\)</span> con <span class="math inline">\(N&gt;|y|+1\)</span>. Entonces</p>
+<p><span class="math display">\[
+-N&lt;y&lt;N.
+\]</span></p>
+<p>Entre los enteros finitos</p>
+<p><span class="math display">\[
+-N,-N+1,\ldots,N
+\]</span></p>
+<p>hay al menos uno que no supera a <span class="math inline">\(y\)</span>. Tomamos el mayor de ellos y lo llamamos <span class="math inline">\(m\)</span>. Por maximalidad, <span class="math inline">\(m+1\)</span> ya no puede satisfacer <span class="math inline">\(m+1\le y\)</span>. Luego <span class="math inline">\(y&lt;m+1\)</span>.</p>
+</section>
+<section id="densidad-de-mathbb-q" class="level3">
+<h3 class="anchored" data-anchor-id="densidad-de-mathbb-q">Densidad de <span class="math inline">\(\mathbb Q\)</span></h3>
+<p>Sean <span class="math inline">\(a,b\in\mathbb R\)</span> con <span class="math inline">\(a&lt;b\)</span>.</p>
+<p>Como <span class="math inline">\(b-a&gt;0\)</span>, por la propiedad arquimediana podemos elegir <span class="math inline">\(n\in\mathbb N\)</span> tal que</p>
+<p><span class="math display">\[
+n&gt;\frac1{b-a}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+n(b-a)&gt;1.
+\]</span></p>
+<p>Aplicamos el encajonamiento entero a <span class="math inline">\(na\)</span>. Existe <span class="math inline">\(m\in\mathbb Z\)</span> con</p>
+<p><span class="math display">\[
+m\le na&lt;m+1.
+\]</span></p>
+<p>La desigualdad izquierda da</p>
+<p><span class="math display">\[
+m+1\le na+1&lt;nb,
+\]</span></p>
+<p>porque <span class="math inline">\(na+1&lt;nb\)</span> equivale a <span class="math inline">\(1&lt;n(b-a)\)</span>.</p>
+<p>Por otra parte,</p>
+<p><span class="math display">\[
+na&lt;m+1.
+\]</span></p>
+<p>Dividiendo por <span class="math inline">\(n&gt;0\)</span> obtenemos</p>
+<p><span class="math display">\[
+a&lt;\frac{m+1}{n}&lt;b.
+\]</span></p>
+<p>Como <span class="math inline">\((m+1)/n\in\mathbb Q\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\text{entre dos reales distintos existe un racional}.}
+\]</span></p>
+</section>
+<section id="densidad-de-los-irracionales" class="level3">
+<h3 class="anchored" data-anchor-id="densidad-de-los-irracionales">Densidad de los irracionales</h3>
+<p>Sean nuevamente <span class="math inline">\(a&lt;b\)</span>. Ya sabemos que <span class="math inline">\(\sqrt2\)</span> es irracional.</p>
+<p>Por densidad de los racionales existe <span class="math inline">\(q\in\mathbb Q\)</span> tal que</p>
+<p><span class="math display">\[
+a-\sqrt2&lt;q&lt;b-\sqrt2.
+\]</span></p>
+<p>Sumando <span class="math inline">\(\sqrt2\)</span>,</p>
+<p><span class="math display">\[
+a&lt;q+\sqrt2&lt;b.
+\]</span></p>
+<p>El número <span class="math inline">\(q+\sqrt2\)</span> es irracional: si fuera racional, entonces</p>
+<p><span class="math display">\[
+\sqrt2=(q+\sqrt2)-q
+\]</span></p>
+<p>sería diferencia de dos racionales y, por tanto, racional, contradicción.</p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{\text{entre dos reales distintos existe también un irracional}.}
+\]</span></p>
+</section>
+</section>
+<section id="ma-bch-0003-intervalos-encajados" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-intervalos-encajados">9. Intervalos encajados y bisección</h2>
+<p>La completitud permite demostrar un principio geométrico muy útil sin utilizar todavía la teoría de sucesiones.</p>
+<div id="res-ma-bch-0003-intervalos-encajados">
+<section id="teorema-existencia-de-un-punto-común-en-intervalos-cerrados-encajados" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-existencia-de-un-punto-común-en-intervalos-cerrados-encajados">Teorema — existencia de un punto común en intervalos cerrados encajados</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+I_n=[a_n,b_n]
+\]</span></p>
+<p>una familia de intervalos cerrados no vacíos tal que</p>
+<p><span class="math display">\[
+I_{n+1}\subseteq I_n
+\]</span></p>
+<p>para todo <span class="math inline">\(n\in\mathbb N\)</span>.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\bigcap_{n=1}^{\infty} I_n\ne\varnothing.
+\]</span></p>
+</section>
+</div>
+<section id="demostración-3" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-3">Demostración</h3>
+<p>Consideremos el conjunto de extremos izquierdos</p>
+<p><span class="math display">\[
+A=\{a_n:n\in\mathbb N\}.
+\]</span></p>
+<p>Es no vacío y está acotado superiormente por <span class="math inline">\(b_1\)</span>. En efecto, como todos los intervalos están contenidos en <span class="math inline">\(I_1\)</span>,</p>
+<p><span class="math display">\[
+a_n\le b_1
+\]</span></p>
+<p>para todo <span class="math inline">\(n\)</span>.</p>
+<p>Por completitud existe</p>
+<p><span class="math display">\[
+\alpha=\sup A.
+\]</span></p>
+<p>Para cada <span class="math inline">\(n\)</span> tenemos</p>
+<p><span class="math display">\[
+a_n\le\alpha,
+\]</span></p>
+<p>porque <span class="math inline">\(\alpha\)</span> es cota superior de <span class="math inline">\(A\)</span>.</p>
+<p>Ahora fijemos <span class="math inline">\(n\)</span>. Mostremos que <span class="math inline">\(\alpha\le b_n\)</span>. Si <span class="math inline">\(k\ge n\)</span>, el encajamiento implica</p>
+<p><span class="math display">\[
+I_k\subseteq I_n,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+a_k\le b_n.
+\]</span></p>
+<p>Si <span class="math inline">\(k&lt;n\)</span>, como <span class="math inline">\(I_n\subseteq I_k\)</span>, tenemos</p>
+<p><span class="math display">\[
+a_k\le a_n\le b_n.
+\]</span></p>
+<p>Así, <span class="math inline">\(b_n\)</span> es cota superior de <strong>todos</strong> los <span class="math inline">\(a_k\)</span>. Como <span class="math inline">\(\alpha\)</span> es la menor cota superior,</p>
+<p><span class="math display">\[
+\alpha\le b_n.
+\]</span></p>
+<p>Hemos probado</p>
+<p><span class="math display">\[
+a_n\le\alpha\le b_n
+\]</span></p>
+<p>para todo <span class="math inline">\(n\)</span>. Por consiguiente,</p>
+<p><span class="math display">\[
+\alpha\in I_n
+\]</span></p>
+<p>para todo <span class="math inline">\(n\)</span>, y entonces</p>
+<p><span class="math display">\[
+\boxed{\alpha\in\bigcap_{n=1}^{\infty}I_n.}
+\]</span></p>
+</section>
+<section id="el-caso-de-la-bisección" class="level3">
+<h3 class="anchored" data-anchor-id="el-caso-de-la-bisección">El caso de la bisección</h3>
+<p>Si cada intervalo se obtiene dividiendo el anterior por la mitad y conservando una de las dos mitades, entonces su longitud después de <span class="math inline">\(n-1\)</span> bisecciones es</p>
+<p><span class="math display">\[
+\frac{b_1-a_1}{2^{n-1}}.
+\]</span></p>
+<p>En ese caso el punto común es único.</p>
+<p>Supongamos que existieran dos puntos comunes <span class="math inline">\(x&lt;y\)</span>. Su distancia</p>
+<p><span class="math display">\[
+d=y-x
+\]</span></p>
+<p>es positiva. Por la propiedad arquimediana elegimos <span class="math inline">\(m\)</span> suficientemente grande para que</p>
+<p><span class="math display">\[
+2^{m-1}&gt;\frac{b_1-a_1}{d}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\frac{b_1-a_1}{2^{m-1}}&lt;d.
+\]</span></p>
+<p>Pero <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> pertenecerían ambos al intervalo <span class="math inline">\(I_m\)</span>, cuya longitud sería menor que <span class="math inline">\(y-x\)</span>. Eso es imposible: dos puntos de un intervalo cerrado están separados, como máximo, por la longitud del intervalo.</p>
+<p>Por tanto, una cadena infinita de bisecciones encajadas determina exactamente un punto real.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Por qué importan las hipótesis</strong></p>
+<p>El cierre y el encajamiento no son adornos. Por ejemplo,</p>
+<p><span class="math display">\[
+I_n=\left(0,\frac1n\right)
+\]</span></p>
+<p>forma una familia encajada de intervalos abiertos, pero</p>
+<p><span class="math display">\[
+\bigcap_{n=1}^{\infty}I_n=\varnothing.
+\]</span></p>
+<p>El candidato natural sería <span class="math inline">\(0\)</span>, precisamente el extremo que los intervalos abiertos excluyen.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0003-mapa" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-mapa">10. Mapa de dependencias</h2>
+<p>A estas alturas conviene distinguir qué resultados requieren realmente completitud.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Resultado</th>
+<th>Estructura utilizada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>leyes algebraicas y cancelación</td>
+<td>axiomas de cuerpo</td>
+</tr>
+<tr class="even">
+<td>reglas de desigualdad</td>
+<td>cuerpo ordenado</td>
+</tr>
+<tr class="odd">
+<td>desigualdad triangular</td>
+<td>cuerpo ordenado + definición de valor absoluto</td>
+</tr>
+<tr class="even">
+<td>existencia del supremo</td>
+<td>completitud</td>
+</tr>
+<tr class="odd">
+<td>existencia de <span class="math inline">\(\sqrt a\)</span> para <span class="math inline">\(a&gt;0\)</span></td>
+<td>completitud + orden + álgebra</td>
+</tr>
+<tr class="even">
+<td>propiedad arquimediana</td>
+<td>completitud</td>
+</tr>
+<tr class="odd">
+<td>densidad de <span class="math inline">\(\mathbb Q\)</span> en <span class="math inline">\(\mathbb R\)</span></td>
+<td>propiedad arquimediana + estructura de enteros/racionales</td>
+</tr>
+<tr class="even">
+<td>densidad de los irracionales</td>
+<td>densidad de <span class="math inline">\(\mathbb Q\)</span> + existencia de un irracional</td>
+</tr>
+<tr class="odd">
+<td>intervalos cerrados encajados</td>
+<td>completitud</td>
+</tr>
+</tbody>
+</table>
+<div class="ma-block ma-metodo">
+<p><strong>Método — Auditar la estructura usada</strong></p>
+<p>Cuando aparezca un teorema sobre números reales, no preguntes sólo “¿cómo se demuestra?”. Pregunta también:</p>
+<p><span class="math display">\[
+\boxed{\text{¿qué propiedad de }\mathbb R\text{ hace posible esta demostración?}}
+\]</span></p>
+<p>Esta auditoría evita tratar la completitud como una frase aislada y muestra dónde entra realmente en el análisis.</p>
+</div>
+</section>
+<section id="ma-bch-0003-asociadas" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0003-asociadas">11. Páginas asociadas</h2>
+<p>El capítulo se conecta con las siguientes unidades reutilizables de Matemática Abierta:</p>
+<ol type="1">
+<li><a href="../../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.html"><strong>Axiomas de cuerpo y consecuencias algebraicas básicas</strong></a> (<code>MA-CON-0020</code>) — estructura algebraica, inversos, cancelación y producto nulo.</li>
+<li><a href="../../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html"><strong>Propiedades del orden en ℝ y manipulación de desigualdades</strong></a> (<code>MA-CON-0005</code>) — reglas de orden y control de signos.</li>
+<li><a href="../../conceptos/valor-absoluto-y-desigualdades-basicas.html"><strong>Valor absoluto y desigualdades básicas</strong></a> (<code>MA-CON-0002</code>) — valor absoluto, intervalos y desigualdad triangular.</li>
+<li><a href="../../conceptos/supremo-infimo-y-completitud-de-r.html"><strong>Supremo, ínfimo y completitud de ℝ</strong></a> (<code>MA-CON-0016</code>) — cotas, extremos y propiedad del supremo.</li>
+<li><a href="../../problemas/producto-nulo-y-cancelacion-en-un-cuerpo.html"><strong>Producto nulo y cancelación en un cuerpo</strong></a> (<code>MA-PRB-0006</code>) — problema con solución completa sobre consecuencias de los axiomas de cuerpo.</li>
+</ol>
+<p>El banco completo del manuscrito canónico es mucho más amplio. En la web, los problemas que merecen reutilización transversal se publican progresivamente como páginas independientes, siempre con solución desarrollada.</p>
+</section>
+<section id="cierre" class="level2">
+<h2 class="anchored" data-anchor-id="cierre">Cierre</h2>
+<p>El recorrido del capítulo puede resumirse así:</p>
+<p><span class="math display">\[
+\boxed{
+\mathbb Q\text{ tiene huecos}
+\longrightarrow
+\text{cuerpo ordenado}
+\longrightarrow
+\text{supremos e ínfimos}
+\longrightarrow
+\text{completitud de }\mathbb R
+\longrightarrow
+\begin{array}{c}
+\text{raíces}\\
+\text{arquimedianidad}\\
+\text{densidad}\\
+\text{intervalos encajados}
+\end{array}
+}
+\]</span></p>
+<p>El capítulo siguiente cambia de objeto. Una vez fijado el escenario numérico, estudiaremos las <strong>funciones reales</strong>: qué información forma parte de una función, cómo se comportan imágenes y preimágenes, qué significan inyectividad y sobreyectividad, cuándo puede invertirse una función y cómo se organizan composición y gráficas.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
