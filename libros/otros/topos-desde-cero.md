@@ -5,7 +5,7 @@ content-id: MA-BOK-0002
 content-type: book
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-08
+date-modified: 2026-09-09
 areas:
   - fundamentos
   - algebra
@@ -28,6 +28,7 @@ related:
   - MA-BCH-0002
   - MA-LES-0001
   - MA-LES-0002
+  - MA-LES-0003
 provenance:
   type: synthesis
   sources: []
@@ -120,7 +121,8 @@ La arquitectura completa del volumen es más extensa que esta lista: estos punto
    - **1.3 — Tablas de verdad y equivalencia lógica:** publicada completa.
    - [**1.4 — Implicación, contrapositiva y recíproca**](../capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md) (`MA-LES-0001`): publicada completa como unidad web modular.
    - [**1.5 — Bicondicionales y condiciones necesarias y suficientes**](../capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md) (`MA-LES-0002`): publicada completa como unidad web modular.
-   - **1.6 — Argumentos deductivos y validez:** siguiente sección prevista.
+   - [**1.6 — Argumentos deductivos y validez**](../capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md) (`MA-LES-0003`): publicada completa como unidad web modular.
+   - **1.7 — Repaso acumulativo del capítulo 1:** siguiente sección prevista.
 
 ## Publicación progresiva
 
@@ -130,6 +132,6 @@ La versión pública conserva el orden lógico del texto maestro y puede enlazar
 
 ## Estado
 
-La migración a Matemática Abierta ya comprende las **cinco primeras secciones del capítulo 1**. Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo. Las secciones 1.4 y 1.5 se publican como unidades modulares: la primera introduce la implicación y sus formas asociadas; la segunda añade el bicondicional, fija la traducción de «si», «solo si» y «si y solo si», introduce condiciones necesarias y suficientes y distingue cuidadosamente la conectiva $\leftrightarrow$ de la equivalencia lógica $\equiv$.
+La migración a Matemática Abierta ya comprende las **seis primeras secciones del capítulo 1**. Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo. Las secciones 1.4–1.6 se publican como unidades modulares: 1.4 introduce la implicación y sus formas asociadas; 1.5 añade el bicondicional y las condiciones necesarias y suficientes; 1.6 pasa de las fórmulas aisladas a los argumentos deductivos, introduce validez y asignaciones refutadoras, y establece las reglas elementales de inferencia.
 
 Esta edición es abierta y progresiva. El contenido textual original se publica bajo **GNU Free Documentation License 1.3 o posterior**.
