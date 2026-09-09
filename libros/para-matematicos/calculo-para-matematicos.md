@@ -6,7 +6,7 @@ content-type: book
 collection: PM-CAL
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-07
+date-modified: 2026-09-09
 areas:
   - fundamentos
   - calculo
@@ -26,6 +26,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0001
+  - MA-BCH-0003
 provenance:
   type: synthesis
   sources: []
@@ -82,8 +83,9 @@ Los capítulos posteriores desarrollarán derivación, aplicaciones de la deriva
 ## Capítulos publicados
 
 1. [**Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones**](../capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md) (`MA-BCH-0001`).
+2. [**Los números reales: orden, valor absoluto, desigualdades y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
 
-El primer capítulo inaugura también la publicación coordinada de [Métodos y técnicas](../../teoria/metodos/index.qmd) y de problemas independientes asociados a las estrategias de demostración.
+Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
 
 ## Publicación progresiva
 
@@ -100,6 +102,6 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública está abierta y ya contiene su primer capítulo completo. Los capítulos siguientes se incorporarán progresivamente a medida que sean reescritos y auditados para publicación abierta.
+La edición pública está abierta y ya contiene sus dos primeros capítulos completos. El capítulo 3 se incorporará cuando termine su auditoría final y su reescritura para la edición web; los capítulos posteriores continuarán publicándose progresivamente.
 
 Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
