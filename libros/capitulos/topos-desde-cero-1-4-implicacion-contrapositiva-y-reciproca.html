@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Unidad del capítulo 1 de Topos desde cero: implicación, negación del condicional, recíproca, contrapositiva, inversa y errores de inferencia asociados.">
+
+<title>Topos desde cero — 1.4 Implicación, contrapositiva y recíproca – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#sec-1-4-implicacion" id="toc-sec-1-4-implicacion" class="nav-link active" data-scroll-target="#sec-1-4-implicacion">1.4 Implicación, contrapositiva y recíproca</a>
+  <ul class="collapse">
+  <li><a href="#la-conectiva-condicional" id="toc-la-conectiva-condicional" class="nav-link" data-scroll-target="#la-conectiva-condicional">1.4.1 La conectiva condicional</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-resuelto-19" id="toc-ejemplo-resuelto-19" class="nav-link" data-scroll-target="#ejemplo-resuelto-19">Ejemplo resuelto 19</a></li>
+  <li><a href="#ejemplo-resuelto-20" id="toc-ejemplo-resuelto-20" class="nav-link" data-scroll-target="#ejemplo-resuelto-20">Ejemplo resuelto 20</a></li>
+  <li><a href="#ejemplo-resuelto-21" id="toc-ejemplo-resuelto-21" class="nav-link" data-scroll-target="#ejemplo-resuelto-21">Ejemplo resuelto 21</a></li>
+  </ul></li>
+  <li><a href="#qué-ocurre-cuando-el-antecedente-es-falso" id="toc-qué-ocurre-cuando-el-antecedente-es-falso" class="nav-link" data-scroll-target="#qué-ocurre-cuando-el-antecedente-es-falso">1.4.2 Qué ocurre cuando el antecedente es falso</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-resuelto-22" id="toc-ejemplo-resuelto-22" class="nav-link" data-scroll-target="#ejemplo-resuelto-22">Ejemplo resuelto 22</a></li>
+  <li><a href="#ejemplo-resuelto-23" id="toc-ejemplo-resuelto-23" class="nav-link" data-scroll-target="#ejemplo-resuelto-23">Ejemplo resuelto 23</a></li>
+  </ul></li>
+  <li><a href="#negar-una-implicación" id="toc-negar-una-implicación" class="nav-link" data-scroll-target="#negar-una-implicación">1.4.3 Negar una implicación</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-resuelto-24" id="toc-ejemplo-resuelto-24" class="nav-link" data-scroll-target="#ejemplo-resuelto-24">Ejemplo resuelto 24</a></li>
+  <li><a href="#ejemplo-resuelto-25" id="toc-ejemplo-resuelto-25" class="nav-link" data-scroll-target="#ejemplo-resuelto-25">Ejemplo resuelto 25</a></li>
+  </ul></li>
+  <li><a href="#recíproca-contrapositiva-e-inversa" id="toc-recíproca-contrapositiva-e-inversa" class="nav-link" data-scroll-target="#recíproca-contrapositiva-e-inversa">1.4.4 Recíproca, contrapositiva e inversa</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-resuelto-26" id="toc-ejemplo-resuelto-26" class="nav-link" data-scroll-target="#ejemplo-resuelto-26">Ejemplo resuelto 26</a></li>
+  <li><a href="#ejemplo-resuelto-27" id="toc-ejemplo-resuelto-27" class="nav-link" data-scroll-target="#ejemplo-resuelto-27">Ejemplo resuelto 27</a></li>
+  <li><a href="#ejemplo-resuelto-28" id="toc-ejemplo-resuelto-28" class="nav-link" data-scroll-target="#ejemplo-resuelto-28">Ejemplo resuelto 28</a></li>
+  </ul></li>
+  <li><a href="#la-contrapositiva-como-estrategia-futura" id="toc-la-contrapositiva-como-estrategia-futura" class="nav-link" data-scroll-target="#la-contrapositiva-como-estrategia-futura">1.4.5 La contrapositiva como estrategia futura</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-resuelto-29" id="toc-ejemplo-resuelto-29" class="nav-link" data-scroll-target="#ejemplo-resuelto-29">Ejemplo resuelto 29</a></li>
+  </ul></li>
+  <li><a href="#dos-inferencias-engañosas" id="toc-dos-inferencias-engañosas" class="nav-link" data-scroll-target="#dos-inferencias-engañosas">1.4.6 Dos inferencias engañosas</a>
+  <ul class="collapse">
+  <li><a href="#afirmar-el-consecuente" id="toc-afirmar-el-consecuente" class="nav-link" data-scroll-target="#afirmar-el-consecuente">Afirmar el consecuente</a></li>
+  <li><a href="#negar-el-antecedente" id="toc-negar-el-antecedente" class="nav-link" data-scroll-target="#negar-el-antecedente">Negar el antecedente</a></li>
+  <li><a href="#ejemplo-resuelto-30" id="toc-ejemplo-resuelto-30" class="nav-link" data-scroll-target="#ejemplo-resuelto-30">Ejemplo resuelto 30</a></li>
+  <li><a href="#ejemplo-resuelto-31" id="toc-ejemplo-resuelto-31" class="nav-link" data-scroll-target="#ejemplo-resuelto-31">Ejemplo resuelto 31</a></li>
+  </ul></li>
+  <li><a href="#problemas-de-práctica-resueltos" id="toc-problemas-de-práctica-resueltos" class="nav-link" data-scroll-target="#problemas-de-práctica-resueltos">1.4.7 Problemas de práctica resueltos</a>
+  <ul class="collapse">
+  <li><a href="#problema-de-práctica-9" id="toc-problema-de-práctica-9" class="nav-link" data-scroll-target="#problema-de-práctica-9">Problema de práctica 9</a></li>
+  <li><a href="#problema-de-práctica-10" id="toc-problema-de-práctica-10" class="nav-link" data-scroll-target="#problema-de-práctica-10">Problema de práctica 10</a></li>
+  <li><a href="#problema-de-práctica-11" id="toc-problema-de-práctica-11" class="nav-link" data-scroll-target="#problema-de-práctica-11">Problema de práctica 11</a></li>
+  <li><a href="#problema-de-práctica-12" id="toc-problema-de-práctica-12" class="nav-link" data-scroll-target="#problema-de-práctica-12">Problema de práctica 12</a></li>
+  <li><a href="#problema-de-práctica-13" id="toc-problema-de-práctica-13" class="nav-link" data-scroll-target="#problema-de-práctica-13">Problema de práctica 13</a></li>
+  </ul></li>
+  <li><a href="#soluciones-de-los-problemas-de-práctica" id="toc-soluciones-de-los-problemas-de-práctica" class="nav-link" data-scroll-target="#soluciones-de-los-problemas-de-práctica">Soluciones de los problemas de práctica</a>
+  <ul class="collapse">
+  <li><a href="#problema-de-práctica-9-1" id="toc-problema-de-práctica-9-1" class="nav-link" data-scroll-target="#problema-de-práctica-9-1">Problema de práctica 9</a></li>
+  <li><a href="#problema-de-práctica-10-1" id="toc-problema-de-práctica-10-1" class="nav-link" data-scroll-target="#problema-de-práctica-10-1">Problema de práctica 10</a></li>
+  <li><a href="#problema-de-práctica-11-1" id="toc-problema-de-práctica-11-1" class="nav-link" data-scroll-target="#problema-de-práctica-11-1">Problema de práctica 11</a></li>
+  <li><a href="#problema-de-práctica-12-1" id="toc-problema-de-práctica-12-1" class="nav-link" data-scroll-target="#problema-de-práctica-12-1">Problema de práctica 12</a></li>
+  <li><a href="#problema-de-práctica-13-1" id="toc-problema-de-práctica-13-1" class="nav-link" data-scroll-target="#problema-de-práctica-13-1">Problema de práctica 13</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#ejercicios-de-la-sección-1.4" id="toc-ejercicios-de-la-sección-1.4" class="nav-link" data-scroll-target="#ejercicios-de-la-sección-1.4">Ejercicios de la sección 1.4</a></li>
+  <li><a href="#soluciones-completas-de-los-ejercicios-de-la-sección-1.4" id="toc-soluciones-completas-de-los-ejercicios-de-la-sección-1.4" class="nav-link" data-scroll-target="#soluciones-completas-de-los-ejercicios-de-la-sección-1.4">Soluciones completas de los ejercicios de la sección 1.4</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">7</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">8</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">9</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">10</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">11</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">12</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">13</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">14</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">15</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">16</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">17</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">18</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Topos desde cero — 1.4 Implicación, contrapositiva y recíproca</h1>
+</div>
+
+<div>
+  <div class="description">
+    Unidad del capítulo 1 de Topos desde cero: implicación, negación del condicional, recíproca, contrapositiva, inversa y errores de inferencia asociados.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">8 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-1-4-implicacion" class="level1">
+<h1>1.4 Implicación, contrapositiva y recíproca</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Continuidad editorial">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Continuidad editorial
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta unidad continúa el <strong>Capítulo 1 — Proposiciones y razonamiento deductivo</strong> de <em>Topos desde cero</em> (<code>MA-BCH-0002</code>). Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo; desde esta sección la publicación web adopta unidades modulares para mantener cada archivo editorial manejable y reutilizable.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Resultados de aprendizaje">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Resultados de aprendizaje
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al terminar esta sección, el lector podrá:</p>
+<ul>
+<li>interpretar la implicación <span class="math inline">\(P\to Q\)</span> e identificar su antecedente y su consecuente;</li>
+<li>construir y explicar la tabla de verdad de una implicación;</li>
+<li>reconocer que <span class="math inline">\(P\to Q\)</span> solo es falsa cuando <span class="math inline">\(P\)</span> es verdadera y <span class="math inline">\(Q\)</span> es falsa;</li>
+<li>usar las equivalencias <span class="math inline">\(P\to Q\equiv\neg P\lor Q\)</span> y <span class="math inline">\(P\to Q\equiv\neg(P\land\neg Q)\)</span>;</li>
+<li>negar correctamente una implicación;</li>
+<li>distinguir una implicación de su recíproca, su contrapositiva y su inversa;</li>
+<li>justificar que una implicación es equivalente a su contrapositiva, pero no en general a su recíproca;</li>
+<li>detectar los errores de afirmar el consecuente y negar el antecedente.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Motivación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Motivación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una enorme proporción de las afirmaciones matemáticas tiene la forma «si ocurre esto, entonces ocurre aquello». Más adelante, las definiciones, los teoremas y las demostraciones estarán llenos de esta estructura. Por eso necesitamos fijar con precisión qué significa una implicación y, sobre todo, qué no significa.</p>
+<p>El punto más delicado es este: una implicación lógica <strong>no expresa necesariamente causalidad</strong>. Su función es descartar una sola situación, aquella en la que el antecedente se cumple pero el consecuente falla.</p>
+</div>
+</div>
+<section id="la-conectiva-condicional" class="level2">
+<h2 class="anchored" data-anchor-id="la-conectiva-condicional">1.4.1 La conectiva condicional</h2>
+<div class="callout callout-style-default callout-important callout-titled" title="Definición">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> son proposiciones, la <strong>implicación</strong> o <strong>condicional</strong></p>
+<p><span class="math display">\[
+P\to Q
+\]</span></p>
+<p>se lee «si <span class="math inline">\(P\)</span>, entonces <span class="math inline">\(Q\)</span>». La proposición <span class="math inline">\(P\)</span> se llama <strong>antecedente</strong> y <span class="math inline">\(Q\)</span> se llama <strong>consecuente</strong>.</p>
+<p>La tabla de verdad de la implicación es:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(P\to Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La fila decisiva es la segunda. Si afirmamos «si <span class="math inline">\(P\)</span>, entonces <span class="math inline">\(Q\)</span>» y <span class="math inline">\(P\)</span> ocurre mientras <span class="math inline">\(Q\)</span> no ocurre, la afirmación ha fallado. En las otras tres filas no aparece ese fracaso.</p>
+<section id="ejemplo-resuelto-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-19">Ejemplo resuelto 19</h3>
+<p>Sean</p>
+<p><span class="math display">\[
+P:\quad 18\text{ es divisible por }3,
+\]</span></p>
+<p><span class="math display">\[
+Q:\quad 18\text{ es par}.
+\]</span></p>
+<p>Ambas proposiciones son verdaderas. Por tanto,</p>
+<p><span class="math display">\[
+P\to Q
+\]</span></p>
+<p>es verdadera.</p>
+</section>
+<section id="ejemplo-resuelto-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-20">Ejemplo resuelto 20</h3>
+<p>Sean</p>
+<p><span class="math display">\[
+P:\quad 15\text{ es divisible por }3,
+\]</span></p>
+<p><span class="math display">\[
+Q:\quad 15\text{ es par}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(P\)</span> es verdadera y <span class="math inline">\(Q\)</span> es falsa. Esta es precisamente la única combinación que hace falsa una implicación. Luego</p>
+<p><span class="math display">\[
+P\to Q
+\]</span></p>
+<p>es falsa.</p>
+</section>
+<section id="ejemplo-resuelto-21" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-21">Ejemplo resuelto 21</h3>
+<p>Traduce la afirmación:</p>
+<blockquote class="blockquote">
+<p>«Si Ana estudia y no está cansada, entonces termina el capítulo».</p>
+</blockquote>
+<p>Sea</p>
+<p><span class="math display">\[
+E:\quad\text{«Ana estudia»},\qquad
+C:\quad\text{«Ana está cansada»},\qquad
+T:\quad\text{«Ana termina el capítulo»}.
+\]</span></p>
+<p>El antecedente completo es <span class="math inline">\(E\land\neg C\)</span>, y el consecuente es <span class="math inline">\(T\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+(E\land\neg C)\to T.
+\]</span></p>
+<p>Los paréntesis son esenciales: la implicación tiene como antecedente la conjunción completa.</p>
+</section>
+</section>
+<section id="qué-ocurre-cuando-el-antecedente-es-falso" class="level2">
+<h2 class="anchored" data-anchor-id="qué-ocurre-cuando-el-antecedente-es-falso">1.4.2 Qué ocurre cuando el antecedente es falso</h2>
+<p>Las dos últimas filas de la tabla suelen sorprender al principio. Si <span class="math inline">\(P\)</span> es falsa, la implicación <span class="math inline">\(P\to Q\)</span> se considera verdadera, tanto si <span class="math inline">\(Q\)</span> es verdadera como si es falsa.</p>
+<p>La razón se vuelve más transparente mediante una equivalencia fundamental:</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg P\lor Q.}
+\]</span></p>
+<p>Si <span class="math inline">\(P\)</span> es falsa, entonces <span class="math inline">\(\neg P\)</span> es verdadera, y por ello la disyunción <span class="math inline">\(\neg P\lor Q\)</span> es verdadera cualquiera que sea el valor de <span class="math inline">\(Q\)</span>.</p>
+<section id="ejemplo-resuelto-22" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-22">Ejemplo resuelto 22</h3>
+<p>Verifica mediante una tabla que</p>
+<p><span class="math display">\[
+P\to Q\equiv\neg P\lor Q.
+\]</span></p>
+<p><strong>Solución.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(\neg P\)</span></th>
+<th><span class="math inline">\(P\to Q\)</span></th>
+<th><span class="math inline">\(\neg P\lor Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Las dos columnas finales coinciden en todas las filas. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg P\lor Q.}
+\]</span></p>
+<p>Existe una segunda formulación aún más útil:</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg(P\land\neg Q).}
+\]</span></p>
+<p>Una implicación afirma, por tanto, que no ocurre el caso prohibido</p>
+<p><span class="math display">\[
+P\land\neg Q.
+\]</span></p>
+<p>Dicho de otro modo: <strong>no puede darse el antecedente sin el consecuente</strong>.</p>
+</section>
+<section id="ejemplo-resuelto-23" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-23">Ejemplo resuelto 23</h3>
+<p>Deriva</p>
+<p><span class="math display">\[
+P\to Q\equiv\neg(P\land\neg Q)
+\]</span></p>
+<p>a partir de <span class="math inline">\(P\to Q\equiv\neg P\lor Q\)</span>.</p>
+<p><strong>Solución.</strong> Partimos de</p>
+<p><span class="math display">\[
+P\to Q\equiv\neg P\lor Q.
+\]</span></p>
+<p>Por doble negación,</p>
+<p><span class="math display">\[
+\neg P\lor Q\equiv\neg P\lor\neg\neg Q.
+\]</span></p>
+<p>Aplicando De Morgan en sentido inverso,</p>
+<p><span class="math display">\[
+\neg P\lor\neg\neg Q\equiv\neg(P\land\neg Q).
+\]</span></p>
+<p>Por transitividad de la equivalencia lógica,</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg(P\land\neg Q).}
+\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Atención">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Atención
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No debemos leer <span class="math inline">\(P\to Q\)</span> como «<span class="math inline">\(P\)</span> causa <span class="math inline">\(Q\)</span>». La conectiva solo codifica una condición de verdad. Por eso puede ser verdadera una implicación cuyos componentes no tengan ninguna relación causal entre sí. Lo único que la hace falsa es encontrar <span class="math inline">\(P\)</span> verdadera y <span class="math inline">\(Q\)</span> falsa.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="negar-una-implicación" class="level2">
+<h2 class="anchored" data-anchor-id="negar-una-implicación">1.4.3 Negar una implicación</h2>
+<p>La equivalencia anterior permite obtener inmediatamente la negación correcta de una implicación:</p>
+<p><span class="math display">\[
+\neg(P\to Q)
+\equiv
+\neg\neg(P\land\neg Q)
+\equiv
+P\land\neg Q.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\neg(P\to Q)\equiv P\land\neg Q.}
+\]</span></p>
+<p>Esto expresa una idea decisiva para toda la matemática posterior: para refutar una afirmación de la forma «si <span class="math inline">\(P\)</span>, entonces <span class="math inline">\(Q\)</span>» necesitamos un caso en el que <span class="math inline">\(P\)</span> se cumpla y <span class="math inline">\(Q\)</span> falle.</p>
+<section id="ejemplo-resuelto-24" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-24">Ejemplo resuelto 24</h3>
+<p>Niega correctamente:</p>
+<blockquote class="blockquote">
+<p>«Si el número es múltiplo de 6, entonces es par».</p>
+</blockquote>
+<p><strong>Solución.</strong> Si llamamos <span class="math inline">\(P\)</span> a «el número es múltiplo de 6» y <span class="math inline">\(Q\)</span> a «el número es par», la afirmación tiene forma <span class="math inline">\(P\to Q\)</span>. Su negación es</p>
+<p><span class="math display">\[
+P\land\neg Q.
+\]</span></p>
+<p>En palabras:</p>
+<blockquote class="blockquote">
+<p>«El número es múltiplo de 6 y no es par».</p>
+</blockquote>
+<p>No basta decir «si el número es múltiplo de 6, entonces no es par», porque eso sería otra implicación distinta.</p>
+</section>
+<section id="ejemplo-resuelto-25" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-25">Ejemplo resuelto 25</h3>
+<p>Simplifica</p>
+<p><span class="math display">\[
+\neg\bigl((P\land R)\to Q\bigr).
+\]</span></p>
+<p><strong>Solución.</strong> Aplicamos la ley de negación del condicional tomando como antecedente <span class="math inline">\(P\land R\)</span>:</p>
+<p><span class="math display">\[
+\neg\bigl((P\land R)\to Q\bigr)
+\equiv
+(P\land R)\land\neg Q.
+\]</span></p>
+<p>Por asociatividad,</p>
+<p><span class="math display">\[
+\boxed{P\land R\land\neg Q.}
+\]</span></p>
+</section>
+</section>
+<section id="recíproca-contrapositiva-e-inversa" class="level2">
+<h2 class="anchored" data-anchor-id="recíproca-contrapositiva-e-inversa">1.4.4 Recíproca, contrapositiva e inversa</h2>
+<p>A partir de una implicación</p>
+<p><span class="math display">\[
+P\to Q
+\]</span></p>
+<p>podemos formar otras tres expresiones relacionadas.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Definición">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dada <span class="math inline">\(P\to Q\)</span>:</p>
+<ul>
+<li>su <strong>recíproca</strong> es <span class="math inline">\(Q\to P\)</span>;</li>
+<li>su <strong>contrapositiva</strong> es <span class="math inline">\(\neg Q\to\neg P\)</span>;</li>
+<li>su <strong>inversa</strong> es <span class="math inline">\(\neg P\to\neg Q\)</span>.</li>
+</ul>
+</div>
+</div>
+<p>La recíproca intercambia antecedente y consecuente. La contrapositiva, en cambio, los intercambia y además los niega.</p>
+<section id="ejemplo-resuelto-26" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-26">Ejemplo resuelto 26</h3>
+<p>Considera la implicación:</p>
+<blockquote class="blockquote">
+<p>«Si hoy es martes, entonces mañana es miércoles».</p>
+</blockquote>
+<p>Sean</p>
+<p><span class="math display">\[
+P:\quad\text{«Hoy es martes»},\qquad
+Q:\quad\text{«Mañana es miércoles»}.
+\]</span></p>
+<p>Entonces:</p>
+<ul>
+<li>original: <span class="math inline">\(P\to Q\)</span>;</li>
+<li>recíproca: <span class="math inline">\(Q\to P\)</span>, «Si mañana es miércoles, entonces hoy es martes»;</li>
+<li>contrapositiva: <span class="math inline">\(\neg Q\to\neg P\)</span>, «Si mañana no es miércoles, entonces hoy no es martes»;</li>
+<li>inversa: <span class="math inline">\(\neg P\to\neg Q\)</span>, «Si hoy no es martes, entonces mañana no es miércoles».</li>
+</ul>
+</section>
+<section id="ejemplo-resuelto-27" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-27">Ejemplo resuelto 27</h3>
+<p>Compara mediante una tabla la implicación, su recíproca, su contrapositiva y su inversa.</p>
+<p><strong>Solución.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(P\to Q\)</span></th>
+<th><span class="math inline">\(Q\to P\)</span></th>
+<th><span class="math inline">\(\neg Q\to\neg P\)</span></th>
+<th><span class="math inline">\(\neg P\to\neg Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>F</td>
+<td>V</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>F</td>
+<td>V</td>
+<td>F</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Observamos dos pares de columnas idénticas:</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg Q\to\neg P,}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{Q\to P\equiv\neg P\to\neg Q.}
+\]</span></p>
+<p>La original no coincide, en general, con su recíproca.</p>
+</section>
+<section id="ejemplo-resuelto-28" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-28">Ejemplo resuelto 28</h3>
+<p>Demuestra algebraicamente la ley de la contrapositiva:</p>
+<p><span class="math display">\[
+P\to Q\equiv\neg Q\to\neg P.
+\]</span></p>
+<p><strong>Solución.</strong> Usamos la equivalencia condicional:</p>
+<p><span class="math display">\[
+\neg Q\to\neg P
+\equiv
+\neg\neg Q\lor\neg P.
+\]</span></p>
+<p>Por doble negación,</p>
+<p><span class="math display">\[
+\neg\neg Q\lor\neg P
+\equiv
+Q\lor\neg P.
+\]</span></p>
+<p>Por conmutatividad de <span class="math inline">\(\lor\)</span>,</p>
+<p><span class="math display">\[
+Q\lor\neg P
+\equiv
+\neg P\lor Q.
+\]</span></p>
+<p>Y</p>
+<p><span class="math display">\[
+\neg P\lor Q\equiv P\to Q.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg Q\to\neg P.}
+\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Atención">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Atención
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una implicación y su recíproca no son equivalentes en general. Confundirlas es uno de los errores lógicos más frecuentes. Para demostrar que no son equivalentes basta encontrar una asignación en la que sus valores difieran; por ejemplo, <span class="math inline">\(P=V\)</span> y <span class="math inline">\(Q=F\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="la-contrapositiva-como-estrategia-futura" class="level2">
+<h2 class="anchored" data-anchor-id="la-contrapositiva-como-estrategia-futura">1.4.5 La contrapositiva como estrategia futura</h2>
+<p>Como una implicación y su contrapositiva son lógicamente equivalentes, cualquier método que establezca</p>
+<p><span class="math display">\[
+\neg Q\to\neg P
+\]</span></p>
+<p>establece también</p>
+<p><span class="math display">\[
+P\to Q.
+\]</span></p>
+<p>Más adelante convertiremos esta equivalencia en una técnica sistemática de demostración. Por ahora solo necesitamos registrar la identidad lógica que la justifica.</p>
+<section id="ejemplo-resuelto-29" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-29">Ejemplo resuelto 29</h3>
+<p>Supón que queremos establecer una afirmación de forma</p>
+<p><span class="math display">\[
+P\to Q.
+\]</span></p>
+<p>¿Cuál de las siguientes metas sería lógicamente equivalente?</p>
+<ol type="1">
+<li><span class="math inline">\(Q\to P\)</span>;</li>
+<li><span class="math inline">\(\neg P\to\neg Q\)</span>;</li>
+<li><span class="math inline">\(\neg Q\to\neg P\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> La contrapositiva de <span class="math inline">\(P\to Q\)</span> se obtiene negando ambos componentes e invirtiendo su orden:</p>
+<p><span class="math display">\[
+\neg Q\to\neg P.
+\]</span></p>
+<p>Por tanto, la opción correcta es <strong>3</strong>. Las opciones 1 y 2 son recíproca e inversa, respectivamente; estas dos sí son equivalentes entre sí, pero no tienen por qué ser equivalentes a la original.</p>
+</section>
+</section>
+<section id="dos-inferencias-engañosas" class="level2">
+<h2 class="anchored" data-anchor-id="dos-inferencias-engañosas">1.4.6 Dos inferencias engañosas</h2>
+<p>La distinción entre implicación, recíproca e inversa permite detectar dos razonamientos que parecen plausibles, pero no están justificados por una implicación sola.</p>
+<section id="afirmar-el-consecuente" class="level3">
+<h3 class="anchored" data-anchor-id="afirmar-el-consecuente">Afirmar el consecuente</h3>
+<p>De</p>
+<p><span class="math display">\[
+P\to Q
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+Q
+\]</span></p>
+<p>no podemos concluir <span class="math inline">\(P\)</span> en general. Hacerlo equivaldría a sustituir la implicación por su recíproca.</p>
+</section>
+<section id="negar-el-antecedente" class="level3">
+<h3 class="anchored" data-anchor-id="negar-el-antecedente">Negar el antecedente</h3>
+<p>De</p>
+<p><span class="math display">\[
+P\to Q
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\neg P
+\]</span></p>
+<p>no podemos concluir <span class="math inline">\(\neg Q\)</span> en general. Hacerlo equivaldría a sustituir la implicación por su inversa.</p>
+</section>
+<section id="ejemplo-resuelto-30" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-30">Ejemplo resuelto 30</h3>
+<p>Encuentra una asignación que muestre que el esquema</p>
+<p><span class="math display">\[
+P\to Q,\qquad Q,\qquad \therefore P
+\]</span></p>
+<p>puede fallar.</p>
+<p><strong>Solución.</strong> Tomemos</p>
+<p><span class="math display">\[
+P=F,\qquad Q=V.
+\]</span></p>
+<p>Entonces <span class="math inline">\(P\to Q=V\)</span> porque el antecedente es falso, y <span class="math inline">\(Q\)</span> también es verdadera. Sin embargo, <span class="math inline">\(P\)</span> es falsa. Por tanto, las dos premisas pueden ser verdaderas mientras la conclusión es falsa.</p>
+</section>
+<section id="ejemplo-resuelto-31" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-resuelto-31">Ejemplo resuelto 31</h3>
+<p>Encuentra una asignación que muestre que el esquema</p>
+<p><span class="math display">\[
+P\to Q,\qquad\neg P,\qquad\therefore\neg Q
+\]</span></p>
+<p>puede fallar.</p>
+<p><strong>Solución.</strong> De nuevo tomamos</p>
+<p><span class="math display">\[
+P=F,\qquad Q=V.
+\]</span></p>
+<p>Entonces <span class="math inline">\(P\to Q\)</span> es verdadera y <span class="math inline">\(\neg P\)</span> es verdadera, pero <span class="math inline">\(\neg Q\)</span> es falsa. Por consiguiente, negar el antecedente no permite negar el consecuente.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Mirada hacia adelante">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Mirada hacia adelante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En la sección 1.6 definiremos formalmente qué significa que un argumento sea válido y analizaremos con tablas esquemas como el <em>modus ponens</em> y el <em>modus tollens</em>. Aquí solo hemos preparado el terreno distinguiendo correctamente las cuatro formas asociadas a una implicación.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="problemas-de-práctica-resueltos" class="level2">
+<h2 class="anchored" data-anchor-id="problemas-de-práctica-resueltos">1.4.7 Problemas de práctica resueltos</h2>
+<section id="problema-de-práctica-9" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-9">Problema de práctica 9</h3>
+<p>Calcula el valor de verdad de las siguientes implicaciones:</p>
+<ol type="1">
+<li>Si 8 es par, entonces 10 es par.</li>
+<li>Si 8 es par, entonces 9 es par.</li>
+<li>Si 9 es par, entonces 10 es par.</li>
+<li>Si 9 es par, entonces 11 es par.</li>
+</ol>
+</section>
+<section id="problema-de-práctica-10" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-10">Problema de práctica 10</h3>
+<p>Simplifica</p>
+<p><span class="math display">\[
+(P\land Q)\to R
+\]</span></p>
+<p>usando solo <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\lor\)</span> y las equivalencias ya estudiadas.</p>
+</section>
+<section id="problema-de-práctica-11" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-11">Problema de práctica 11</h3>
+<p>Escribe la recíproca, la contrapositiva y la inversa de</p>
+<p><span class="math display">\[
+P\to(Q\land R).
+\]</span></p>
+</section>
+<section id="problema-de-práctica-12" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-12">Problema de práctica 12</h3>
+<p>Niega y simplifica</p>
+<p><span class="math display">\[
+P\to(Q\lor R).
+\]</span></p>
+</section>
+<section id="problema-de-práctica-13" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-13">Problema de práctica 13</h3>
+<p>Decide si</p>
+<p><span class="math display">\[
+(P\to Q)\land(P\to R)
+\]</span></p>
+<p>es equivalente a</p>
+<p><span class="math display">\[
+P\to(Q\land R).
+\]</span></p>
+<p>Justifica la respuesta mediante equivalencias, no mediante una tabla completa.</p>
+</section>
+</section>
+<section id="soluciones-de-los-problemas-de-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-de-los-problemas-de-práctica">Soluciones de los problemas de práctica</h2>
+<section id="problema-de-práctica-9-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-9-1">Problema de práctica 9</h3>
+<ol type="1">
+<li>Antecedente verdadero y consecuente verdadero: la implicación es verdadera.</li>
+<li>Antecedente verdadero y consecuente falso: la implicación es falsa.</li>
+<li>Antecedente falso y consecuente verdadero: la implicación es verdadera.</li>
+<li>Antecedente falso y consecuente falso: la implicación es verdadera.</li>
+</ol>
+<p>Las cuatro respuestas reproducen las cuatro filas de la tabla del condicional.</p>
+</section>
+<section id="problema-de-práctica-10-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-10-1">Problema de práctica 10</h3>
+<p><span class="math display">\[
+(P\land Q)\to R
+\equiv
+\neg(P\land Q)\lor R.
+\]</span></p>
+<p>Por De Morgan,</p>
+<p><span class="math display">\[
+\neg(P\land Q)\lor R
+\equiv
+(\neg P\lor\neg Q)\lor R.
+\]</span></p>
+<p>Por asociatividad,</p>
+<p><span class="math display">\[
+\boxed{\neg P\lor\neg Q\lor R.}
+\]</span></p>
+</section>
+<section id="problema-de-práctica-11-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-11-1">Problema de práctica 11</h3>
+<p>Para</p>
+<p><span class="math display">\[
+P\to(Q\land R),
+\]</span></p>
+<p>tenemos:</p>
+<ul>
+<li>recíproca: <span class="math inline">\((Q\land R)\to P\)</span>;</li>
+<li>contrapositiva: <span class="math inline">\(\neg(Q\land R)\to\neg P\)</span>;</li>
+<li>inversa: <span class="math inline">\(\neg P\to\neg(Q\land R)\)</span>.</li>
+</ul>
+<p>Si se desea, las negaciones compuestas pueden transformarse después mediante De Morgan.</p>
+</section>
+<section id="problema-de-práctica-12-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-12-1">Problema de práctica 12</h3>
+<p><span class="math display">\[
+\neg\bigl(P\to(Q\lor R)\bigr)
+\equiv
+P\land\neg(Q\lor R).
+\]</span></p>
+<p>Por De Morgan,</p>
+<p><span class="math display">\[
+P\land\neg(Q\lor R)
+\equiv
+P\land\neg Q\land\neg R.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\neg\bigl(P\to(Q\lor R)\bigr)\equiv P\land\neg Q\land\neg R.}
+\]</span></p>
+</section>
+<section id="problema-de-práctica-13-1" class="level3">
+<h3 class="anchored" data-anchor-id="problema-de-práctica-13-1">Problema de práctica 13</h3>
+<p>Transformamos el lado izquierdo:</p>
+<p><span class="math display">\[
+(P\to Q)\land(P\to R)
+\equiv
+(\neg P\lor Q)\land(\neg P\lor R).
+\]</span></p>
+<p>Por distributividad,</p>
+<p><span class="math display">\[
+(\neg P\lor Q)\land(\neg P\lor R)
+\equiv
+\neg P\lor(Q\land R).
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+\neg P\lor(Q\land R)
+\equiv
+P\to(Q\land R).
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{(P\to Q)\land(P\to R)\equiv P\to(Q\land R).}
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="ejercicios-de-la-sección-1.4" class="level1">
+<h1>Ejercicios de la sección 1.4</h1>
+<ol type="1">
+<li>Construye la tabla de verdad de <span class="math inline">\(P\to Q\)</span> a partir de la fórmula equivalente <span class="math inline">\(\neg P\lor Q\)</span>.</li>
+<li>Determina el valor de verdad de cada afirmación:
+<ol type="a">
+<li>Si 12 es par, entonces 3 es primo.</li>
+<li>Si 12 es par, entonces 9 es primo.</li>
+<li>Si 15 es par, entonces 3 es primo.</li>
+<li>Si 15 es par, entonces 9 es primo.</li>
+</ol></li>
+<li>Sean <span class="math inline">\(A\)</span>: «abre la biblioteca», <span class="math inline">\(L\)</span>: «Leo estudia» y <span class="math inline">\(M\)</span>: «Marta llama». Traduce:
+<ol type="a">
+<li>Si abre la biblioteca, entonces Leo estudia.</li>
+<li>Si Leo estudia y Marta no llama, entonces abre la biblioteca.</li>
+<li>Si no abre la biblioteca, entonces Marta llama o Leo estudia.</li>
+</ol></li>
+<li>Verifica mediante una tabla que <span class="math inline">\(P\to Q\equiv\neg P\lor Q\)</span>.</li>
+<li>Demuestra mediante equivalencias que <span class="math inline">\(P\to Q\equiv\neg(P\land\neg Q)\)</span>.</li>
+<li>Niega correctamente, primero simbólicamente y luego en palabras: «Si el examen es mañana, entonces hoy estudio».</li>
+<li>Para la afirmación «Si la puerta está abierta, entonces entra luz», escribe su recíproca, su contrapositiva y su inversa.</li>
+<li>Verifica mediante una tabla que una implicación y su contrapositiva son equivalentes.</li>
+<li>Encuentra una asignación que muestre que <span class="math inline">\(P\to Q\)</span> y <span class="math inline">\(Q\to P\)</span> no son equivalentes.</li>
+<li>Clasifica como tautología, contradicción o contingencia: <span class="math inline">\(P\to P\)</span>.</li>
+<li>Simplifica <span class="math inline">\(P\to\neg P\)</span>. Clasifica después la fórmula resultante.</li>
+<li>Simplifica usando solo <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\lor\)</span> y <span class="math inline">\(\land\)</span>: <span class="math inline">\((P\land Q)\to R\)</span>.</li>
+<li>Simplifica <span class="math inline">\(P\to(Q\lor R)\)</span>.</li>
+<li>Decide si son equivalentes <span class="math inline">\(P\to(Q\to R)\)</span> y <span class="math inline">\((P\land Q)\to R\)</span>.</li>
+<li>Reescribe <span class="math inline">\(P\to Q\)</span> usando únicamente <span class="math inline">\(\neg\)</span> y <span class="math inline">\(\lor\)</span>.</li>
+<li><strong>Encontrar el error.</strong> Un estudiante afirma: «Si <span class="math inline">\(P\)</span> es falsa, entonces <span class="math inline">\(P\to Q\)</span> no tiene valor de verdad porque no sabemos qué habría pasado si <span class="math inline">\(P\)</span> hubiera sido verdadera». Explica el error desde la definición veritativo-funcional adoptada.</li>
+<li><strong>Encontrar el error.</strong> Otro estudiante afirma: «<span class="math inline">\(P\to Q\)</span> y <span class="math inline">\(Q\to P\)</span> son equivalentes porque ambas fórmulas contienen las mismas letras». Da una refutación mínima.</li>
+<li><strong>Desafío.</strong> Demuestra que la recíproca <span class="math inline">\(Q\to P\)</span> es equivalente a la inversa <span class="math inline">\(\neg P\to\neg Q\)</span> sin construir una tabla completa.</li>
+</ol>
+</section>
+<section id="soluciones-completas-de-los-ejercicios-de-la-sección-1.4" class="level1">
+<h1>Soluciones completas de los ejercicios de la sección 1.4</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">1</h2>
+<p>Partimos de <span class="math inline">\(\neg P\lor Q\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(\neg P\)</span></th>
+<th><span class="math inline">\(\neg P\lor Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>F</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Como <span class="math inline">\(P\to Q\equiv\neg P\lor Q\)</span>, la última columna es precisamente la tabla del condicional.</p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">2</h2>
+<ol type="1">
+<li>12 es par y 3 es primo: <span class="math inline">\(V\to V=V\)</span>.</li>
+<li>12 es par y 9 no es primo: <span class="math inline">\(V\to F=F\)</span>.</li>
+<li>15 no es par y 3 es primo: <span class="math inline">\(F\to V=V\)</span>.</li>
+<li>15 no es par y 9 no es primo: <span class="math inline">\(F\to F=V\)</span>.</li>
+</ol>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">3</h2>
+<ol type="1">
+<li><span class="math inline">\(A\to L\)</span>.</li>
+<li><span class="math inline">\((L\land\neg M)\to A\)</span>.</li>
+<li><span class="math inline">\(\neg A\to(M\lor L)\)</span>.</li>
+</ol>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">4</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(P\to Q\)</span></th>
+<th><span class="math inline">\(\neg P\lor Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Las columnas finales son idénticas.</p>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">5</h2>
+<p><span class="math display">\[
+P\to Q
+\equiv
+\neg P\lor Q
+\equiv
+\neg P\lor\neg\neg Q
+\equiv
+\neg(P\land\neg Q).
+\]</span></p>
+<p>La última equivalencia es De Morgan leída de derecha a izquierda.</p>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">6</h2>
+<p>Sea <span class="math inline">\(P\)</span>: «el examen es mañana» y <span class="math inline">\(Q\)</span>: «hoy estudio». La frase es <span class="math inline">\(P\to Q\)</span>. Su negación es</p>
+<p><span class="math display">\[
+P\land\neg Q.
+\]</span></p>
+<p>En palabras:</p>
+<blockquote class="blockquote">
+<p>«El examen es mañana y hoy no estudio».</p>
+</blockquote>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">7</h2>
+<p>Sea <span class="math inline">\(P\)</span>: «la puerta está abierta» y <span class="math inline">\(Q\)</span>: «entra luz».</p>
+<ul>
+<li>recíproca: <span class="math inline">\(Q\to P\)</span>, «Si entra luz, entonces la puerta está abierta»;</li>
+<li>contrapositiva: <span class="math inline">\(\neg Q\to\neg P\)</span>, «Si no entra luz, entonces la puerta no está abierta»;</li>
+<li>inversa: <span class="math inline">\(\neg P\to\neg Q\)</span>, «Si la puerta no está abierta, entonces no entra luz».</li>
+</ul>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">8</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(P\to Q\)</span></th>
+<th><span class="math inline">\(\neg Q\to\neg P\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Luego</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg Q\to\neg P.}
+\]</span></p>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">9</h2>
+<p>Tomemos <span class="math inline">\(P=V\)</span> y <span class="math inline">\(Q=F\)</span>. Entonces</p>
+<p><span class="math display">\[
+P\to Q=F,
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+Q\to P=V.
+\]</span></p>
+<p>Una sola asignación distinta basta para probar que no son equivalentes.</p>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">10</h2>
+<p><span class="math display">\[
+P\to P\equiv\neg P\lor P.
+\]</span></p>
+<p>Esta es la ley del tercero excluido, verdadera en toda asignación clásica. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{P\to P\text{ es una tautología}.}
+\]</span></p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">11</h2>
+<p><span class="math display">\[
+P\to\neg P
+\equiv
+\neg P\lor\neg P
+\equiv
+\neg P.
+\]</span></p>
+<p>La fórmula es verdadera cuando <span class="math inline">\(P\)</span> es falsa y falsa cuando <span class="math inline">\(P\)</span> es verdadera. Por tanto es <strong>contingente</strong>.</p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">12</h2>
+<p><span class="math display">\[
+(P\land Q)\to R
+\equiv
+\neg(P\land Q)\lor R
+\equiv
+\neg P\lor\neg Q\lor R.
+\]</span></p>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">13</h2>
+<p><span class="math display">\[
+P\to(Q\lor R)
+\equiv
+\neg P\lor(Q\lor R)
+\equiv
+\neg P\lor Q\lor R.
+\]</span></p>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">14</h2>
+<p>Por la ley condicional,</p>
+<p><span class="math display">\[
+P\to(Q\to R)
+\equiv
+\neg P\lor(\neg Q\lor R)
+\equiv
+\neg P\lor\neg Q\lor R.
+\]</span></p>
+<p>Por otra parte,</p>
+<p><span class="math display">\[
+(P\land Q)\to R
+\equiv
+\neg(P\land Q)\lor R
+\equiv
+\neg P\lor\neg Q\lor R.
+\]</span></p>
+<p>Ambas se reducen a la misma fórmula, de modo que</p>
+<p><span class="math display">\[
+\boxed{P\to(Q\to R)\equiv(P\land Q)\to R.}
+\]</span></p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">15</h2>
+<p>La equivalencia pedida es directamente</p>
+<p><span class="math display">\[
+\boxed{P\to Q\equiv\neg P\lor Q.}
+\]</span></p>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">16</h2>
+<p>En la lógica proposicional clásica que estamos usando, cada conectiva se define por una tabla de verdad. La tabla de <span class="math inline">\(\to\)</span> asigna un valor también cuando el antecedente es falso. En esas dos filas, <span class="math inline">\(P\to Q\)</span> es verdadera. La pregunta contrafáctica «qué habría pasado» no forma parte de la definición de esta conectiva.</p>
+</section>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16">17</h2>
+<p>Basta tomar</p>
+<p><span class="math display">\[
+P=V,\qquad Q=F.
+\]</span></p>
+<p>Entonces <span class="math inline">\(P\to Q\)</span> es falsa y <span class="math inline">\(Q\to P\)</span> es verdadera. Tener las mismas letras no implica tener la misma forma lógica ni la misma tabla de verdad.</p>
+</section>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17">18</h2>
+<p>La inversa de <span class="math inline">\(P\to Q\)</span> es</p>
+<p><span class="math display">\[
+\neg P\to\neg Q.
+\]</span></p>
+<p>Aplicamos la ley de la contrapositiva a la recíproca <span class="math inline">\(Q\to P\)</span>:</p>
+<p><span class="math display">\[
+Q\to P\equiv\neg P\to\neg Q.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{Q\to P\equiv\neg P\to\neg Q.}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Registro de dependencias">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Registro de dependencias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta sección introduce y deja disponibles:</p>
+<ul>
+<li>la implicación <span class="math inline">\(\to\)</span>;</li>
+<li>antecedente y consecuente;</li>
+<li>las leyes condicionales <span class="math inline">\(P\to Q\equiv\neg P\lor Q\)</span> y <span class="math inline">\(P\to Q\equiv\neg(P\land\neg Q)\)</span>;</li>
+<li>la negación de una implicación;</li>
+<li>recíproca, contrapositiva e inversa;</li>
+<li>la equivalencia entre una implicación y su contrapositiva;</li>
+<li>los esquemas no válidos de afirmar el consecuente y negar el antecedente.</li>
+</ul>
+<p>El bicondicional y las expresiones «condición necesaria» y «condición suficiente» quedan reservados para la sección 1.5.</p>
+</div>
+</div>
+<hr>
+<p><strong>Secciones anteriores:</strong> <a href="../../libros/capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.html">Capítulo 1 — 1.1 a 1.3</a>.</p>
+<p><strong>Siguiente sección:</strong> 1.5 — Bicondicionales y condiciones necesarias y suficientes.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
