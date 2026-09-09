@@ -7,7 +7,7 @@
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
-| Lección | MA-LES-0004 |
+| Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0003 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0003 |
@@ -46,6 +46,7 @@
 | MA-LES-0001 | lesson | Topos desde cero — 1.4 Implicación, contrapositiva y recíproca | `libros/capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md` | published |
 | MA-LES-0002 | lesson | Topos desde cero — 1.5 Bicondicionales y condiciones necesarias y suficientes | `libros/capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md` | published |
 | MA-LES-0003 | lesson | Topos desde cero — 1.6 Argumentos deductivos y validez | `libros/capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md` | published |
+| MA-LES-0004 | lesson | Topos desde cero — 1.7 Repaso acumulativo del capítulo 1 | `libros/capitulos/topos-desde-cero-1-7-repaso-acumulativo-del-capitulo-1.md` | published |
 | MA-BCH-0001 | book-chapter | Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones | `libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md` | published |
 | MA-BCH-0002 | book-chapter | Topos desde cero — Capítulo 1: Proposiciones y razonamiento deductivo | `libros/capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
