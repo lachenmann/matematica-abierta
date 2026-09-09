@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0003 |
+| Capítulo | MA-BCH-0004 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0003 |
 
@@ -49,6 +49,7 @@
 | MA-LES-0004 | lesson | Topos desde cero — 1.7 Repaso acumulativo del capítulo 1 | `libros/capitulos/topos-desde-cero-1-7-repaso-acumulativo-del-capitulo-1.md` | published |
 | MA-BCH-0001 | book-chapter | Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones | `libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md` | published |
 | MA-BCH-0002 | book-chapter | Topos desde cero — Capítulo 1: Proposiciones y razonamiento deductivo | `libros/capitulos/topos-desde-cero-capitulo-1-proposiciones-y-razonamiento-deductivo.md` | published |
+| MA-BCH-0003 | book-chapter | Los números reales: orden, valor absoluto, desigualdades y completitud | `libros/capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 
