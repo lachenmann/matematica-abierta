@@ -5,7 +5,7 @@ content-id: MA-BOK-0002
 content-type: book
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-07
+date-modified: 2026-09-08
 areas:
   - fundamentos
   - algebra
@@ -26,6 +26,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0002
+  - MA-LES-0001
 provenance:
   type: synthesis
   sources: []
@@ -116,16 +117,17 @@ La arquitectura completa del volumen es más extensa que esta lista: estos punto
    - **1.1 — Proposiciones y valores de verdad:** publicada completa.
    - **1.2 — Negación, conjunción y disyunción:** publicada completa.
    - **1.3 — Tablas de verdad y equivalencia lógica:** publicada completa.
-   - **1.4 — Implicación, contrapositiva y recíproca:** siguiente sección prevista.
+   - [**1.4 — Implicación, contrapositiva y recíproca**](../capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md) (`MA-LES-0001`): publicada completa como unidad web modular.
+   - **1.5 — Bicondicionales y condiciones necesarias y suficientes:** siguiente sección prevista.
 
 ## Publicación progresiva
 
 La edición web avanza desde el comienzo del libro y sección por sección. No es necesario esperar a que el volumen completo esté cerrado: cada unidad puede incorporarse cuando haya superado su revisión matemática, editorial y de procedencia.
 
-La versión pública conserva el orden lógico del texto maestro y podrá enlazar conceptos, resultados, métodos y problemas independientes del resto de Matemática Abierta cuando esa separación mejore la reutilización del contenido.
+La versión pública conserva el orden lógico del texto maestro y puede enlazar conceptos, resultados, métodos, problemas y unidades pedagógicas independientes del resto de Matemática Abierta cuando esa separación mejore la reutilización y la mantenibilidad del contenido.
 
 ## Estado
 
-La migración a Matemática Abierta ya comprende las tres primeras secciones del **capítulo 1**. La sección 1.1 desarrolla la noción de proposición, la distinción entre verdad y conocimiento, las expresiones abiertas, las letras proposicionales y la diferencia entre contenido y forma lógica. La sección 1.2 introduce negación, conjunción y disyunción, junto con sintaxis, semántica, reglas de formación, subfórmulas, conectiva principal y alcance. La sección 1.3 añade valuaciones, tablas de verdad, equivalencia lógica, leyes fundamentales de equivalencia y la clasificación en tautologías, contradicciones y contingencias.
+La migración a Matemática Abierta ya comprende las **cuatro primeras secciones del capítulo 1**. Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo. La sección 1.4 se publica además como unidad modular: introduce el condicional, las equivalencias fundamentales de la implicación, su negación, la recíproca, la contrapositiva y la inversa, y prepara el análisis formal de inferencias válidas e inválidas que aparecerá en la sección 1.6.
 
 Esta edición es abierta y progresiva. El contenido textual original se publica bajo **GNU Free Documentation License 1.3 o posterior**.
