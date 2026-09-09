@@ -59,7 +59,7 @@ $$
 
 no tiene solución racional.
 
-La estructura que falta es la **completitud**. Este capítulo construye el camino hasta ella y extrae varias consecuencias que utilizaremos después en sucesiones, límites, continuidad e integración.
+La estructura que falta es la **completitud**. Este capítulo construye el camino hasta ella y extrae consecuencias que utilizaremos después en sucesiones, límites, continuidad e integración.
 
 ::: {.ma-block .ma-intuicion}
 **Idea rectora**
@@ -92,18 +92,10 @@ $$
 Supongamos, por contradicción, que existe un racional $q$ con $q^2=2$. Podemos escribir
 
 $$
-q=\frac pq,
-$$
-
-pero para evitar usar la misma letra en dos funciones distintas escribamos mejor
-
-$$
 q=\frac mn,
 $$
 
-con $m,n\in\mathbb Z$, $n\ne0$, y con la fracción reducida a términos coprimos.
-
-Entonces
+con $m,n\in\mathbb Z$, $n\ne0$, y con $m$ y $n$ coprimos. Entonces
 
 $$
 \frac{m^2}{n^2}=2,
@@ -139,9 +131,9 @@ $$
 n^2=2r^2.
 $$
 
-El mismo argumento muestra que $n$ es par.
+El mismo argumento muestra que $n$ es par. Así, $m$ y $n$ tienen el factor común $2$, contradiciendo que fueran coprimos.
 
-Así, $m$ y $n$ tienen al menos el factor común $2$, contradiciendo que $m/n$ estuviera reducida a términos coprimos. La suposición inicial es imposible. En consecuencia,
+En consecuencia,
 
 $$
 \boxed{\sqrt2\notin\mathbb Q.}
@@ -157,25 +149,23 @@ La existencia de $\sqrt2$ dentro de $\mathbb R$ requerirá una propiedad adicion
 
 ## 2. Los reales como cuerpo ordenado {#ma-bch-0003-cuerpo-ordenado}
 
-Trabajaremos con $\mathbb R$ como un sistema numérico en el que las operaciones de suma y producto satisfacen los axiomas de cuerpo y en el que existe un orden total compatible con esas operaciones.
+Trabajaremos con $\mathbb R$ como un sistema numérico en el que la suma y el producto satisfacen los axiomas de cuerpo y existe un orden total compatible con esas operaciones.
 
-Las consecuencias algebraicas básicas se desarrollan de manera autocontenida en [Axiomas de cuerpo y consecuencias algebraicas básicas](../../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md) (`MA-CON-0020`). Entre ellas se encuentran la unicidad de los neutros y de los inversos, la cancelación y la regla del producto nulo.
+Las consecuencias algebraicas básicas se desarrollan en [Axiomas de cuerpo y consecuencias algebraicas básicas](../../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md) (`MA-CON-0020`). Entre ellas se encuentran la unicidad de los neutros y de los inversos, la cancelación y la regla del producto nulo.
 
-Para el orden, utilizaremos principalmente dos compatibilidades:
+Para el orden utilizaremos, entre otras, las compatibilidades
 
-1. si $a<b$, entonces
-   $$
-   a+c<b+c
-   $$
-   para todo $c\in\mathbb R$;
-2. si $a<b$ y $c>0$, entonces
-   $$
-   ac<bc.
-   $$
+$$
+a<b\Longrightarrow a+c<b+c
+$$
 
-Si $c<0$, la desigualdad se invierte.
+para todo $c\in\mathbb R$, y
 
-Estas reglas y sus consecuencias se estudian con más detalle en [Propiedades del orden en ℝ y manipulación de desigualdades](../../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.md) (`MA-CON-0005`).
+$$
+a<b,\ c>0\Longrightarrow ac<bc.
+$$
+
+Si $c<0$, la desigualdad se invierte. Estas reglas se estudian con más detalle en [Propiedades del orden en ℝ y manipulación de desigualdades](../../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.md) (`MA-CON-0005`).
 
 ### Por qué dividir exige controlar el signo
 
@@ -185,18 +175,10 @@ $$
 ax<b
 $$
 
-no podemos pasar mecánicamente a
-
-$$
-x<\frac ba.
-$$
-
-Primero debemos saber que $a\ne0$, y después distinguir su signo:
+no podemos pasar mecánicamente a una única desigualdad para $x$. Primero debemos saber que $a\ne0$ y después distinguir:
 
 - si $a>0$, entonces $x<b/a$;
 - si $a<0$, entonces $x>b/a$.
-
-El símbolo de desigualdad contiene información de orden; por eso una transformación algebraicamente admisible puede requerir además una condición de signo.
 
 ::: {.ma-block .ma-error}
 **Error frecuente — Confundir cuerpo ordenado con números reales**
@@ -204,10 +186,10 @@ El símbolo de desigualdad contiene información de orden; por eso una transform
 Los racionales $\mathbb Q$ también forman un cuerpo ordenado. Por tanto,
 
 $$
-\text{axiomas de cuerpo} + \text{axiomas de orden}
+\text{axiomas de cuerpo}+\text{axiomas de orden}
 $$
 
-no caracterizan todavía la diferencia esencial entre $\mathbb Q$ y $\mathbb R$.
+no distinguen todavía a $\mathbb R$ de $\mathbb Q$.
 :::
 
 ## 3. Valor absoluto y distancia {#ma-bch-0003-valor-absoluto}
@@ -222,7 +204,7 @@ x,&x\ge0,\\
 \end{cases}
 $$
 
-Geométricamente, $|x|$ es la distancia entre $x$ y $0$. Más generalmente,
+Geométricamente, $|x|$ es la distancia entre $x$ y $0$, y
 
 $$
 |x-y|
@@ -230,35 +212,13 @@ $$
 
 es la distancia entre $x$ e $y$ sobre la recta real.
 
-El tratamiento sistemático está en [Valor absoluto y desigualdades básicas](../../conceptos/valor-absoluto-y-desigualdades-basicas.md) (`MA-CON-0002`). Aquí fijaremos las traducciones que utilizaremos una y otra vez.
-
 Para $r>0$,
 
 $$
 \boxed{|x-a|<r\iff a-r<x<a+r.}
 $$
 
-En efecto,
-
-$$
-|x-a|<r
-$$
-
-equivale a
-
-$$
--r<x-a<r,
-$$
-
-y al sumar $a$ obtenemos la desigualdad doble anterior.
-
-De manera análoga,
-
-$$
-\boxed{|x-a|\le r\iff a-r\le x\le a+r.}
-$$
-
-Esta equivalencia conecta tres lenguajes:
+Así conectamos tres lenguajes:
 
 $$
 \boxed{
@@ -270,15 +230,11 @@ $$
 }
 $$
 
+El tratamiento sistemático está en [Valor absoluto y desigualdades básicas](../../conceptos/valor-absoluto-y-desigualdades-basicas.md) (`MA-CON-0002`).
+
 ### Desigualdad triangular
 
-Una propiedad central es
-
-$$
-\boxed{|x+y|\le |x|+|y|.}
-$$
-
-Como
+De
 
 $$
 -|x|\le x\le |x|
@@ -287,52 +243,34 @@ $$
 y
 
 $$
--|y|\le y\le |y|,
+-|y|\le y\le |y|
 $$
 
-al sumar miembro a miembro obtenemos
+obtenemos, al sumar,
 
 $$
 -(|x|+|y|)\le x+y\le |x|+|y|.
 $$
 
-Por la caracterización del valor absoluto,
+Por tanto,
 
 $$
-|x+y|\le |x|+|y|.
+\boxed{|x+y|\le |x|+|y|.}
 $$
 
-Aplicando esta desigualdad a
-
-$$
-x=(x-y)+y
-$$
-
-obtenemos
-
-$$
-|x|\le |x-y|+|y|,
-$$
-
-y por tanto
+Aplicándola a $x=(x-y)+y$ resulta
 
 $$
 |x|-|y|\le |x-y|.
 $$
 
-Intercambiando $x$ e $y$ resulta
-
-$$
-|y|-|x|\le |x-y|.
-$$
-
-Combinando ambas desigualdades,
+Intercambiando $x$ e $y$ y reuniendo ambas desigualdades,
 
 $$
 \boxed{\bigl||x|-|y|\bigr|\le |x-y|.}
 $$
 
-Ésta es la **desigualdad triangular inversa**.
+Esta es la **desigualdad triangular inversa**.
 
 ## 4. Cotas, máximos, mínimos, supremos e ínfimos {#ma-bch-0003-cotas}
 
@@ -344,29 +282,11 @@ $$
 x\le M
 $$
 
-para todo $x\in A$.
+para todo $x\in A$. Una **cota inferior** se define de manera dual.
 
-Un número $m$ es una **cota inferior** si
+Una cota no tiene por qué pertenecer al conjunto. En cambio, $M$ es el **máximo** de $A$ cuando $M\in A$ y, además, es cota superior.
 
-$$
-m\le x
-$$
-
-para todo $x\in A$.
-
-Una cota no tiene por qué pertenecer al conjunto.
-
-En cambio, $M$ es el **máximo** de $A$ si
-
-$$
-M\in A
-$$
-
-y además es cota superior. El mínimo se define de manera dual.
-
-### El supremo
-
-Si $A$ es no vacío y está acotado superiormente, un número $s$ es su **supremo** si:
+Si $A$ es no vacío y está acotado superiormente, un número $s$ es su **supremo** cuando:
 
 1. $s$ es cota superior de $A$;
 2. toda cota superior $U$ de $A$ satisface $s\le U$.
@@ -385,7 +305,7 @@ $$
 A=(0,1)
 $$
 
-no tiene máximo ni mínimo, pero sí
+no tiene máximo ni mínimo, pero
 
 $$
 \sup A=1,
@@ -393,35 +313,23 @@ $$
 \inf A=0.
 $$
 
-La distinción entre cota, extremo alcanzado y extremo no necesariamente alcanzado se desarrolla en [Supremo, ínfimo y completitud de ℝ](../../conceptos/supremo-infimo-y-completitud-de-r.md) (`MA-CON-0016`).
+La distinción se desarrolla en [Supremo, ínfimo y completitud de ℝ](../../conceptos/supremo-infimo-y-completitud-de-r.md) (`MA-CON-0016`).
 
-### Caracterización aproximativa del supremo
+### Aproximación al supremo
 
-Si
-
-$$
-s=\sup A,
-$$
-
-entonces para todo $\varepsilon>0$ existe $x\in A$ tal que
+Si $s=\sup A$, entonces para todo $\varepsilon>0$ existe $x\in A$ tal que
 
 $$
 \boxed{s-\varepsilon<x\le s.}
 $$
 
-La razón es importante. Si no existiera tal $x$, todos los elementos de $A$ cumplirían
+Si no existiera, todos los elementos de $A$ cumplirían $x\le s-\varepsilon$, de modo que $s-\varepsilon$ sería una cota superior menor que $s$. Esto contradice la definición del supremo.
 
-$$
-x\le s-\varepsilon,
-$$
-
-de modo que $s-\varepsilon$ sería una cota superior menor que $s$, contradiciendo que $s$ sea la menor cota superior.
-
-Esta propiedad será una de las primeras apariciones del lenguaje de aproximación que dominará los capítulos de límites.
+Esta es una primera aparición del lenguaje de **aproximación arbitraria** que dominará los capítulos de límites.
 
 ## 5. Completitud: la propiedad que falta en $\mathbb Q$ {#ma-bch-0003-completitud}
 
-Hasta ahora hemos definido qué significa que un número sea el supremo de un conjunto. Falta garantizar que tal número exista.
+Hasta aquí hemos definido qué significa ser supremo. Falta garantizar que tal número exista.
 
 ::: {#res-ma-bch-0003-completitud}
 ### Axioma de completitud — propiedad del supremo
@@ -441,13 +349,13 @@ A\text{ acotado superiormente}
 \exists\,\sup A\in\mathbb R.
 $$
 
-La propiedad dual para ínfimos se deduce de ésta. Si $A$ es no vacío y está acotado inferiormente, consideramos
+La propiedad dual para ínfimos se deduce de ésta. Si $A$ es no vacío y está acotado inferiormente, definimos
 
 $$
 -A=\{-x:x\in A\}.
 $$
 
-Entonces $-A$ está acotado superiormente y, por completitud, existe $\sup(-A)$. Se verifica que
+Entonces $-A$ está acotado superiormente y
 
 $$
 \boxed{\inf A=-\sup(-A).}
@@ -456,9 +364,7 @@ $$
 ::: {.ma-block .ma-intuicion}
 **Qué añade la completitud**
 
-Un cuerpo ordenado permite comparar y operar. La completitud garantiza además que ciertos procesos de aproximación no se dirigen hacia un “hueco” fuera del sistema.
-
-Ésta es la diferencia estructural que necesitamos para pasar de la aritmética de $\mathbb Q$ al análisis sobre $\mathbb R$.
+Un cuerpo ordenado permite comparar y operar. La completitud garantiza además que ciertos procesos de aproximación no se dirigen hacia un “hueco” exterior al sistema.
 :::
 
 ## 6. Completitud en acción: existencia de raíces {#ma-bch-0003-raices}
@@ -483,13 +389,13 @@ $$
 S_a=\{x\in\mathbb R:x\ge0,\ x^2<a\}.
 $$
 
-El conjunto es no vacío. Por ejemplo, si
+El conjunto es no vacío. Por ejemplo,
 
 $$
-y=\min\left\{1,\frac a2\right\},
+y=\min\left\{1,\frac a2\right\}
 $$
 
-entonces $y>0$ y $y^2<a$.
+satisface $y>0$ y $y^2<a$.
 
 También está acotado superiormente. El número
 
@@ -503,8 +409,6 @@ $$
 x^2>x>a.
 $$
 
-Así, ningún $x>M$ pertenece a $S_a$.
-
 Por completitud existe
 
 $$
@@ -515,21 +419,15 @@ Como $S_a$ contiene números positivos, $\alpha>0$.
 
 Debemos demostrar que $\alpha^2=a$.
 
-### Primer caso imposible: $\alpha^2<a$
+### No puede ocurrir $\alpha^2<a$
 
-Supongamos
-
-$$
-\alpha^2<a.
-$$
-
-Sea
+Supongamos $\alpha^2<a$ y escribamos
 
 $$
 d=a-\alpha^2>0.
 $$
 
-Elegimos $h>0$ de modo que
+Elegimos $h>0$ tal que
 
 $$
 h<1
@@ -540,45 +438,26 @@ $$
 Entonces
 
 $$
-2\alpha h+h^2
-\le (2\alpha+1)h
-<d.
+2\alpha h+h^2\le(2\alpha+1)h<d,
 $$
 
-Por tanto,
+y por tanto
 
 $$
-(\alpha+h)^2
-=\alpha^2+2\alpha h+h^2
-<\alpha^2+d
-=a.
+(\alpha+h)^2<a.
 $$
 
-Así,
+Así, $\alpha+h\in S_a$, pero $\alpha+h>\alpha$, contradiciendo que $\alpha$ sea cota superior.
 
-$$
-\alpha+h\in S_a.
-$$
+### No puede ocurrir $\alpha^2>a$
 
-Pero $\alpha+h>\alpha$, contradiciendo que $\alpha$ sea una cota superior de $S_a$.
-
-Luego no puede ocurrir $\alpha^2<a$.
-
-### Segundo caso imposible: $\alpha^2>a$
-
-Supongamos ahora
-
-$$
-\alpha^2>a.
-$$
-
-Sea
+Supongamos ahora $\alpha^2>a$ y escribamos
 
 $$
 d=\alpha^2-a>0.
 $$
 
-Como $\alpha>0$, podemos elegir $h$ con
+Elegimos $h$ con
 
 $$
 0<h<\alpha
@@ -595,25 +474,15 @@ $$
 >a.
 $$
 
-Si existiera $x\in S_a$ con $x>\alpha-h$, como ambos números son no negativos tendríamos
+Si existiera $x\in S_a$ con $x>\alpha-h$, como $x$ y $\alpha-h$ son no negativos tendríamos
 
 $$
 x^2>(\alpha-h)^2>a,
 $$
 
-contradiciendo $x^2<a$. Por tanto,
+contradicción. Luego todo $x\in S_a$ satisface $x\le\alpha-h$. Esto convierte a $\alpha-h$ en una cota superior de $S_a$ menor que $\alpha$, otra contradicción.
 
-$$
-x\le\alpha-h
-$$
-
-para todo $x\in S_a$.
-
-Eso significa que $\alpha-h$ es una cota superior de $S_a$ menor que $\alpha$, contradiciendo la minimalidad del supremo.
-
-Luego tampoco puede ocurrir $\alpha^2>a$.
-
-Las dos alternativas estrictas han sido descartadas. Por tricotomía,
+Por tricotomía sólo queda
 
 $$
 \boxed{\alpha^2=a.}
@@ -621,23 +490,15 @@ $$
 
 ### Unicidad
 
-Supongamos que $0\le\alpha<\beta$ y que
+Si $0\le\alpha<\beta$, entonces
 
 $$
-\alpha^2=\beta^2=a.
+\beta^2-\alpha^2=(\beta-\alpha)(\beta+\alpha)>0.
 $$
 
-Entonces
+Por tanto, dos números no negativos distintos no pueden tener el mismo cuadrado. La raíz no negativa es única.
 
-$$
-\beta^2-\alpha^2=(\beta-\alpha)(\beta+\alpha)>0,
-$$
-
-pues ambos factores son positivos. Esto implicaría $\beta^2>\alpha^2$, contradicción.
-
-La raíz no negativa es, por tanto, única.
-
-Para $a=2$ obtenemos un número real $\sqrt2$ y, por la primera sección,
+Para $a=2$ obtenemos finalmente
 
 $$
 \boxed{\sqrt2\in\mathbb R\setminus\mathbb Q.}
@@ -645,7 +506,7 @@ $$
 
 ## 7. La propiedad arquimediana {#ma-bch-0003-arquimediana}
 
-Una consecuencia fundamental de la completitud es que los números naturales no quedan atrapados bajo ninguna cota real.
+La completitud implica que los números naturales no quedan atrapados bajo ninguna cota real.
 
 ::: {#res-ma-bch-0003-arquimediana}
 ### Teorema — propiedad arquimediana
@@ -659,15 +520,13 @@ $$
 
 ### Demostración
 
-Supongamos lo contrario: que $\mathbb N$ está acotado superiormente en $\mathbb R$.
-
-Por completitud existiría
+Supongamos que $\mathbb N$ estuviera acotado superiormente. Por completitud existiría
 
 $$
 s=\sup\mathbb N.
 $$
 
-El número $s-1$ no puede ser una cota superior de $\mathbb N$, porque es menor que el supremo. Por tanto existe $n\in\mathbb N$ tal que
+Como $s-1<s$, el número $s-1$ no puede ser cota superior. Existe entonces $n\in\mathbb N$ con
 
 $$
 s-1<n.
@@ -679,9 +538,9 @@ $$
 s<n+1.
 $$
 
-Pero $n+1\in\mathbb N$, lo cual contradice que $s$ sea una cota superior de $\mathbb N$.
+Pero $n+1\in\mathbb N$, contradiciendo que $s$ sea una cota superior.
 
-Así, $\mathbb N$ no está acotado superiormente.
+Por tanto, $\mathbb N$ no está acotado superiormente.
 
 ### Tolerancias arbitrariamente pequeñas
 
@@ -691,13 +550,13 @@ $$
 n>\frac1\varepsilon.
 $$
 
-Como ambos lados son positivos,
+Como ambos miembros son positivos,
 
 $$
 \boxed{\frac1n<\varepsilon.}
 $$
 
-Esta consecuencia será una herramienta básica cuando necesitemos construir cantidades menores que una tolerancia dada.
+Esta consecuencia será fundamental para construir cantidades menores que una tolerancia dada.
 
 ::: {.ma-block .ma-observacion}
 **No hay infinitésimos reales positivos**
@@ -708,16 +567,12 @@ $$
 x<\frac1n
 $$
 
-para todo $n\in\mathbb N$.
-
-Si existiera, tomaríamos $\varepsilon=x$ y la propiedad anterior produciría algún $n$ con $1/n<x$, contradicción.
+para todo $n\in\mathbb N$. Si existiera, aplicando la propiedad anterior con $\varepsilon=x$ obtendríamos algún $n$ con $1/n<x$, contradicción.
 :::
 
 ## 8. Entre dos reales siempre hay más números {#ma-bch-0003-densidad}
 
-La recta real no sólo carece de los huecos que elimina la completitud. También posee una propiedad local importante: entre dos reales distintos siempre podemos encontrar racionales e irracionales.
-
-Primero necesitaremos una observación elemental.
+La propiedad arquimediana permite demostrar que tanto los racionales como los irracionales aparecen dentro de todo intervalo abierto no vacío.
 
 ### Encajonamiento entre enteros consecutivos
 
@@ -727,31 +582,23 @@ $$
 \boxed{m\le y<m+1.}
 $$
 
-En efecto, por la propiedad arquimediana existe $N\in\mathbb N$ con $N>|y|+1$. Entonces
-
-$$
--N<y<N.
-$$
-
-Entre los enteros finitos
+En efecto, por la propiedad arquimediana podemos elegir $N\in\mathbb N$ con $N>|y|+1$. Entre los enteros finitos
 
 $$
 -N,-N+1,\ldots,N
 $$
 
-hay al menos uno que no supera a $y$. Tomamos el mayor de ellos y lo llamamos $m$. Por maximalidad, $m+1$ ya no puede satisfacer $m+1\le y$. Luego $y<m+1$.
+existe un mayor entero que no supera a $y$; llamémoslo $m$. Por maximalidad, $m+1>y$.
 
 ### Densidad de $\mathbb Q$
 
-Sean $a,b\in\mathbb R$ con $a<b$.
-
-Como $b-a>0$, por la propiedad arquimediana podemos elegir $n\in\mathbb N$ tal que
+Sean $a<b$. Elegimos $n\in\mathbb N$ tal que
 
 $$
-n>\frac1{b-a}.
+n>\frac1{b-a},
 $$
 
-Entonces
+de modo que
 
 $$
 n(b-a)>1.
@@ -763,43 +610,35 @@ $$
 m\le na<m+1.
 $$
 
-La desigualdad izquierda da
+Además,
 
 $$
-m+1\le na+1<nb,
+m+1\le na+1<nb.
 $$
 
-porque $na+1<nb$ equivale a $1<n(b-a)$.
-
-Por otra parte,
+Por tanto,
 
 $$
-na<m+1.
+na<m+1<nb.
 $$
 
-Dividiendo por $n>0$ obtenemos
+Dividiendo por $n>0$,
 
 $$
-a<\frac{m+1}{n}<b.
+\boxed{a<\frac{m+1}{n}<b.}
 $$
 
-Como $(m+1)/n\in\mathbb Q$,
-
-$$
-\boxed{\text{entre dos reales distintos existe un racional}.}
-$$
+Como $(m+1)/n\in\mathbb Q$, entre dos reales distintos existe un racional.
 
 ### Densidad de los irracionales
 
-Sean nuevamente $a<b$. Ya sabemos que $\sqrt2$ es irracional.
-
-Por densidad de los racionales existe $q\in\mathbb Q$ tal que
+Sean nuevamente $a<b$. Por densidad de $\mathbb Q$ existe $q\in\mathbb Q$ tal que
 
 $$
 a-\sqrt2<q<b-\sqrt2.
 $$
 
-Sumando $\sqrt2$,
+Al sumar $\sqrt2$,
 
 $$
 a<q+\sqrt2<b.
@@ -811,20 +650,20 @@ $$
 \sqrt2=(q+\sqrt2)-q
 $$
 
-sería diferencia de dos racionales y, por tanto, racional, contradicción.
+sería racional. Contradicción.
 
-Así,
+Por tanto,
 
 $$
-\boxed{\text{entre dos reales distintos existe también un irracional}.}
+\boxed{\text{todo intervalo abierto no vacío contiene racionales e irracionales}.}
 $$
 
 ## 9. Intervalos encajados y bisección {#ma-bch-0003-intervalos-encajados}
 
-La completitud permite demostrar un principio geométrico muy útil sin utilizar todavía la teoría de sucesiones.
+La completitud permite demostrar un principio geométrico importante sin utilizar todavía sucesiones.
 
 ::: {#res-ma-bch-0003-intervalos-encajados}
-### Teorema — existencia de un punto común en intervalos cerrados encajados
+### Teorema — intervalos cerrados encajados
 
 Sea
 
@@ -838,12 +677,12 @@ $$
 I_{n+1}\subseteq I_n
 $$
 
-para todo $n\in\mathbb N$.
+para todo $n\ge1$.
 
 Entonces
 
 $$
-\bigcap_{n=1}^{\infty} I_n\ne\varnothing.
+\bigcap_{n=1}^{\infty}I_n\ne\varnothing.
 $$
 :::
 
@@ -852,137 +691,95 @@ $$
 Consideremos el conjunto de extremos izquierdos
 
 $$
-A=\{a_n:n\in\mathbb N\}.
+A=\{a_n:n\ge1\}.
 $$
 
-Es no vacío y está acotado superiormente por $b_1$. En efecto, como todos los intervalos están contenidos en $I_1$,
-
-$$
-a_n\le b_1
-$$
-
-para todo $n$.
-
-Por completitud existe
+Es no vacío y está acotado superiormente por $b_1$. Por completitud existe
 
 $$
 \alpha=\sup A.
 $$
 
-Para cada $n$ tenemos
+Como $\alpha$ es cota superior,
 
 $$
-a_n\le\alpha,
+a_n\le\alpha
 $$
 
-porque $\alpha$ es cota superior de $A$.
+para todo $n$.
 
-Ahora fijemos $n$. Mostremos que $\alpha\le b_n$. Si $k\ge n$, el encajamiento implica
-
-$$
-I_k\subseteq I_n,
-$$
-
-y por tanto
-
-$$
-a_k\le b_n.
-$$
-
-Si $k<n$, como $I_n\subseteq I_k$, tenemos
+Fijemos ahora $n$. Mostremos que $\alpha\le b_n$. Si $k\ge n$, del encajamiento se sigue $I_k\subseteq I_n$ y, por tanto, $a_k\le b_n$. Si $k<n$, entonces $I_n\subseteq I_k$, de modo que
 
 $$
 a_k\le a_n\le b_n.
 $$
 
-Así, $b_n$ es cota superior de **todos** los $a_k$. Como $\alpha$ es la menor cota superior,
+Así, $b_n$ es cota superior de todos los $a_k$. Como $\alpha$ es la menor cota superior,
 
 $$
 \alpha\le b_n.
 $$
 
-Hemos probado
+Por tanto,
 
 $$
 a_n\le\alpha\le b_n
 $$
 
-para todo $n$. Por consiguiente,
-
-$$
-\alpha\in I_n
-$$
-
-para todo $n$, y entonces
+para todo $n$, es decir,
 
 $$
 \boxed{\alpha\in\bigcap_{n=1}^{\infty}I_n.}
 $$
 
-### El caso de la bisección
+### Unicidad en una cadena de bisecciones
 
-Si cada intervalo se obtiene dividiendo el anterior por la mitad y conservando una de las dos mitades, entonces su longitud después de $n-1$ bisecciones es
-
-$$
-\frac{b_1-a_1}{2^{n-1}}.
-$$
-
-En ese caso el punto común es único.
-
-Supongamos que existieran dos puntos comunes $x<y$. Su distancia
+Si cada $I_{n+1}$ es una de las dos mitades cerradas de $I_n$, su longitud es
 
 $$
-d=y-x
+|I_n|=\frac{b_1-a_1}{2^{n-1}}.
 $$
 
-es positiva. Por la propiedad arquimediana elegimos $m$ suficientemente grande para que
+Supongamos que dos puntos $x<y$ pertenecen a todos los intervalos. Como $y-x>0$, podemos elegir $n$ tan grande que
 
 $$
-2^{m-1}>\frac{b_1-a_1}{d}.
+\frac{b_1-a_1}{2^{n-1}}<y-x.
 $$
 
-Entonces
-
-$$
-\frac{b_1-a_1}{2^{m-1}}<d.
-$$
-
-Pero $x$ e $y$ pertenecerían ambos al intervalo $I_m$, cuya longitud sería menor que $y-x$. Eso es imposible: dos puntos de un intervalo cerrado están separados, como máximo, por la longitud del intervalo.
-
-Por tanto, una cadena infinita de bisecciones encajadas determina exactamente un punto real.
+Pero dos puntos de $I_n$ no pueden estar separados por más que la longitud de $I_n$. Contradicción. Luego una cadena de bisecciones determina exactamente un punto real.
 
 ::: {.ma-block .ma-observacion}
-**Por qué importan las hipótesis**
+**Por qué importa el cierre**
 
-El cierre y el encajamiento no son adornos. Por ejemplo,
+Los intervalos
 
 $$
 I_n=\left(0,\frac1n\right)
 $$
 
-forma una familia encajada de intervalos abiertos, pero
+están encajados, pero
 
 $$
 \bigcap_{n=1}^{\infty}I_n=\varnothing.
 $$
 
-El candidato natural sería $0$, precisamente el extremo que los intervalos abiertos excluyen.
+El candidato natural, $0$, es precisamente el extremo excluido.
 :::
 
 ## 10. Mapa de dependencias {#ma-bch-0003-mapa}
 
-A estas alturas conviene distinguir qué resultados requieren realmente completitud.
+Conviene distinguir qué parte de la estructura real utiliza cada resultado.
 
 | Resultado | Estructura utilizada |
 |---|---|
 | leyes algebraicas y cancelación | axiomas de cuerpo |
 | reglas de desigualdad | cuerpo ordenado |
-| desigualdad triangular | cuerpo ordenado + definición de valor absoluto |
+| desigualdad triangular | cuerpo ordenado + valor absoluto |
 | existencia del supremo | completitud |
 | existencia de $\sqrt a$ para $a>0$ | completitud + orden + álgebra |
 | propiedad arquimediana | completitud |
-| densidad de $\mathbb Q$ en $\mathbb R$ | propiedad arquimediana + estructura de enteros/racionales |
-| densidad de los irracionales | densidad de $\mathbb Q$ + existencia de un irracional |
+| densidad de $\mathbb Q$ | arquimedianidad + enteros/racionales |
+| densidad de los irracionales | densidad de $\mathbb Q$ + un irracional |
 | intervalos cerrados encajados | completitud |
 
 ::: {.ma-block .ma-metodo}
@@ -994,12 +791,12 @@ $$
 \boxed{\text{¿qué propiedad de }\mathbb R\text{ hace posible esta demostración?}}
 $$
 
-Esta auditoría evita tratar la completitud como una frase aislada y muestra dónde entra realmente en el análisis.
+Esta auditoría muestra dónde entra realmente la completitud en el análisis.
 :::
 
 ## 11. Páginas asociadas {#ma-bch-0003-asociadas}
 
-El capítulo se conecta con las siguientes unidades reutilizables de Matemática Abierta:
+Este capítulo se conecta con unidades reutilizables de Matemática Abierta:
 
 1. [**Axiomas de cuerpo y consecuencias algebraicas básicas**](../../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md) (`MA-CON-0020`) — estructura algebraica, inversos, cancelación y producto nulo.
 2. [**Propiedades del orden en ℝ y manipulación de desigualdades**](../../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.md) (`MA-CON-0005`) — reglas de orden y control de signos.
