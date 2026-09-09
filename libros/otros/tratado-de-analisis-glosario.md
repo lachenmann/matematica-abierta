@@ -51,10 +51,14 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Lógica clásica](#gl-logica-clasica) ·
 [Metanivel](#gl-metanivel) ·
 [Nivel objeto](#gl-nivel-objeto) ·
+[Par de Kuratowski](#gl-par-kuratowski) ·
 [Par no ordenado](#gl-par-no-ordenado) ·
+[Par ordenado](#gl-par-ordenado) ·
+[Producto cartesiano](#gl-producto-cartesiano) ·
 [Separación restringida](#gl-separacion-restringida) ·
 [Singleton](#gl-singleton) ·
 [Subconjunto](#gl-subconjunto) ·
+[Tupla finita](#gl-tupla-finita) ·
 [Unión](#gl-union) ·
 [ZF](#gl-zf)
 
@@ -192,6 +196,32 @@ Se construye por separación dentro de $A$.
 
 ---
 
+## Par de Kuratowski {#gl-par-kuratowski}
+
+**Idea.** Una realización concreta de la noción de par ordenado mediante conjuntos ordinarios.
+
+**En este tratado.** El par ordenado de $a$ y $b$ se codifica por
+
+$$
+\langle a,b\rangle
+:=
+\bigl\{\{a\},\{a,b\}\bigr\}.
+$$
+
+Esta elección es una implementación conjuntista. Su propiedad esencial es el criterio
+
+$$
+\langle a,b\rangle=\langle c,d\rangle
+\iff
+(a=c\ \text{y}\ b=d).
+$$
+
+**En el Tratado:** [Definición 0.3.1 — Par ordenado de Kuratowski](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-par-ordenado-kuratowski).
+
+**Véase también:** [Par ordenado](#gl-par-ordenado), [Par no ordenado](#gl-par-no-ordenado), [Singleton](#gl-singleton).
+
+---
+
 ## Par no ordenado {#gl-par-no-ordenado}
 
 **Idea.** Un conjunto que contiene exactamente dos objetos, sin distinguir cuál aparece “primero”.
@@ -201,6 +231,38 @@ Se construye por separación dentro de $A$.
 **En el Tratado:** [Notación 0.2.8 — Pares no ordenados y singletons](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-par-no-ordenado-singleton).
 
 **Véase también:** [Singleton](#gl-singleton), [Extensionalidad](#gl-extensionalidad).
+
+---
+
+## Par ordenado {#gl-par-ordenado}
+
+**Idea.** Un objeto con dos componentes en el que importa cuál es la primera y cuál la segunda.
+
+**En este tratado.** Los pares ordenados se realizan mediante la codificación de Kuratowski. Después de demostrar su teorema característico, la notación $\langle a,b\rangle$ podrá usarse atendiendo a sus coordenadas y no a la implementación conjuntista subyacente.
+
+**En el Tratado:** [Definición 0.3.1 — Par ordenado de Kuratowski](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-par-ordenado-kuratowski).
+
+**Véase también:** [Par de Kuratowski](#gl-par-kuratowski), [Producto cartesiano](#gl-producto-cartesiano).
+
+---
+
+## Producto cartesiano {#gl-producto-cartesiano}
+
+**Idea.** El conjunto de todos los pares ordenados cuya primera componente proviene de un conjunto y cuya segunda componente proviene de otro.
+
+**En este tratado.** Para conjuntos $A$ y $B$,
+
+$$
+A\times B
+:=
+\{\langle a,b\rangle:a\in A,\ b\in B\}.
+$$
+
+La existencia de este conjunto se demuestra construyéndolo por separación dentro de $\mathcal P(\mathcal P(A\cup B))$.
+
+**En el Tratado:** [Definición 0.3.6 — Producto cartesiano](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-producto-cartesiano).
+
+**Véase también:** [Par ordenado](#gl-par-ordenado), [Conjunto potencia](#gl-conjunto-potencia), [Separación restringida](#gl-separacion-restringida).
 
 ---
 
@@ -260,6 +322,26 @@ La inclusión propia se escribe $A\subsetneq B$ y exige además $A\neq B$.
 
 ---
 
+## Tupla finita {#gl-tupla-finita}
+
+**Idea.** Una lista ordenada de un número finito de componentes.
+
+**En este tratado.** Las tuplas de longitud mayor que dos se codifican mediante pares ordenados anidados. Salvo indicación contraria,
+
+$$
+\langle a,b,c\rangle
+:=
+\langle a,\langle b,c\rangle\rangle.
+$$
+
+La forma concreta de anidación es representacional y no se considera contenido matemático adicional.
+
+**En el Tratado:** [Convención 0.3.5 — Tuplas finitas](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-tuplas-finitas).
+
+**Véase también:** [Par ordenado](#gl-par-ordenado), [Par de Kuratowski](#gl-par-kuratowski).
+
+---
+
 ## Unión {#gl-union}
 
 **Idea.** El conjunto formado por los elementos que pertenecen a uno u otro de dos conjuntos.
@@ -297,5 +379,5 @@ $$
 ---
 
 ::: {.callout-note title="Glosario vivo"}
-Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.3 añadirá, entre otras, **par ordenado**, **par de Kuratowski**, **tupla finita** y **producto cartesiano**.
+Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.4 añadirá el vocabulario básico de **relaciones**, incluyendo dominio, recorrido, relación inversa, composición y propiedades relacionales.
 :::
