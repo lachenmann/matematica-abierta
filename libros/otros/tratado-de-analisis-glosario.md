@@ -16,7 +16,8 @@ topics:
   - glosario
   - logica-matematica
   - teoria-de-conjuntos
-  - relaciones
+  - relaciones-de-equivalencia
+  - conjuntos-cociente
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -26,7 +27,6 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 ---
-
 
 # Glosario matemático
 
@@ -45,13 +45,16 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 ## Índice actual
 
 [Antisimetría](#gl-antisimetria) ·
+[Clase de equivalencia](#gl-clase-equivalencia) ·
 [Composición de relaciones](#gl-composicion-relaciones) ·
+[Conjunto cociente](#gl-conjunto-cociente) ·
 [Conjunto potencia](#gl-conjunto-potencia) ·
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
 [Extensionalidad](#gl-extensionalidad) ·
+[Igualdad de clases](#gl-igualdad-clases) ·
 [Intersección](#gl-interseccion) ·
 [Lógica clásica](#gl-logica-clasica) ·
 [Metanivel](#gl-metanivel) ·
@@ -59,12 +62,14 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Par de Kuratowski](#gl-par-kuratowski) ·
 [Par no ordenado](#gl-par-no-ordenado) ·
 [Par ordenado](#gl-par-ordenado) ·
+[Partición](#gl-particion) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
 [Reflexividad](#gl-reflexividad) ·
 [Relación binaria](#gl-relacion-binaria) ·
 [Relación de equivalencia](#gl-relacion-equivalencia) ·
 [Relación inversa](#gl-relacion-inversa) ·
+[Representante](#gl-representante) ·
 [Separación restringida](#gl-separacion-restringida) ·
 [Simetría](#gl-simetria) ·
 [Singleton](#gl-singleton) ·
@@ -95,6 +100,24 @@ La antisimetría no significa que $aRb$ impida $bRa$; significa que, si ambas re
 
 ---
 
+## Clase de equivalencia {#gl-clase-equivalencia}
+
+**Idea.** El conjunto de todas las representaciones que la relación de equivalencia considera indistinguibles de una representación dada.
+
+**En este tratado.** Si $\sim$ es una relación de equivalencia sobre $A$ y $a\in A$, definimos
+
+$$
+[a]_{\sim}:=\{x\in A:x\sim a\}.
+$$
+
+Cuando la relación esté clara por el contexto, escribiremos simplemente $[a]$.
+
+**En el Tratado:** [Definición 0.5.1 — Clase de equivalencia](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-clase-equivalencia).
+
+**Véase también:** [Representante](#gl-representante), [Igualdad de clases](#gl-igualdad-clases), [Relación de equivalencia](#gl-relacion-equivalencia), [Conjunto cociente](#gl-conjunto-cociente).
+
+---
+
 ## Composición de relaciones {#gl-composicion-relaciones}
 
 **Idea.** Encadenar dos relaciones haciendo coincidir la salida intermedia de la primera con la entrada de la segunda.
@@ -112,6 +135,32 @@ La composición se lee de derecha a izquierda: primero $R$, después $S$.
 **En el Tratado:** [Definición 0.4.4 — Composición de relaciones](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-composicion-relaciones).
 
 **Véase también:** [Relación binaria](#gl-relacion-binaria), [Producto cartesiano](#gl-producto-cartesiano).
+
+---
+
+## Conjunto cociente {#gl-conjunto-cociente}
+
+**Idea.** El nuevo conjunto cuyos elementos son las clases de equivalencia, no las representaciones individuales.
+
+**En este tratado.** Si $\sim$ es una relación de equivalencia sobre $A$,
+
+$$
+A/{\sim}
+:=
+\{C\in\mathcal P(A):\exists a\in A\;(C=[a])\}.
+$$
+
+Equivalentemente,
+
+$$
+A/{\sim}=\{[a]:a\in A\}.
+$$
+
+La primera expresión es la definición conjuntista canónica; la segunda es notación descriptiva.
+
+**En el Tratado:** [Definición 0.5.7 — Conjunto cociente](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-conjunto-cociente).
+
+**Véase también:** [Clase de equivalencia](#gl-clase-equivalencia), [Partición](#gl-particion), [Representante](#gl-representante).
 
 ---
 
@@ -208,6 +257,26 @@ $$
 **En el Tratado:** [Axioma de extensionalidad](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-axioma-extensionalidad).
 
 **Véase también:** [Subconjunto](#gl-subconjunto), [ZF](#gl-zf).
+
+---
+
+## Igualdad de clases {#gl-igualdad-clases}
+
+**Idea.** Dos representantes determinan la misma clase exactamente cuando son equivalentes.
+
+**En este tratado.** Para $a,b\in A$,
+
+$$
+[a]=[b]
+\quad\Longleftrightarrow\quad
+a\sim b.
+$$
+
+Este criterio permite dejar de depender de un representante particular: cambiar un elemento por otro equivalente no cambia la clase.
+
+**En el Tratado:** [Lema 0.5.3 — Igualdad de clases](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-igualdad-clases).
+
+**Véase también:** [Clase de equivalencia](#gl-clase-equivalencia), [Representante](#gl-representante), [Relación de equivalencia](#gl-relacion-equivalencia).
 
 ---
 
@@ -312,6 +381,24 @@ $$
 **En el Tratado:** [Definición 0.3.1 — Par ordenado de Kuratowski](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-par-ordenado-kuratowski).
 
 **Véase también:** [Par de Kuratowski](#gl-par-kuratowski), [Producto cartesiano](#gl-producto-cartesiano).
+
+---
+
+## Partición {#gl-particion}
+
+**Idea.** Una descomposición de un conjunto en piezas no vacías que no se solapan y que, juntas, cubren todo el conjunto.
+
+**En este tratado.** Una partición de $A$ es un conjunto $\mathscr P$ de subconjuntos de $A$ tal que:
+
+1. $\varnothing\notin\mathscr P$;
+2. si $C,D\in\mathscr P$ y $C\neq D$, entonces $C\cap D=\varnothing$;
+3. todo $a\in A$ pertenece a algún $C\in\mathscr P$.
+
+Las clases de cualquier relación de equivalencia sobre $A$ forman una partición de $A$.
+
+**En el Tratado:** [Definición 0.5.5 — Partición](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-particion).
+
+**Véase también:** [Clase de equivalencia](#gl-clase-equivalencia), [Conjunto cociente](#gl-conjunto-cociente), [Conjuntos disjuntos](#gl-conjuntos-disjuntos).
 
 ---
 
@@ -420,6 +507,24 @@ Esta notación no presupone que $R$ sea una función ni que exista una función 
 **En el Tratado:** [Definición 0.4.3 — Relación inversa](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-inversa).
 
 **Véase también:** [Relación binaria](#gl-relacion-binaria), [Par ordenado](#gl-par-ordenado).
+
+---
+
+## Representante {#gl-representante}
+
+**Idea.** Un elemento usado para nombrar una clase de equivalencia, sin que la clase dependa de cuál de sus elementos elijamos para nombrarla.
+
+**En este tratado.** Si $a\in A$, entonces $a\in[a]$. Llamamos **representante** de una clase a cualquiera de sus elementos. Si $b\in[a]$, entonces $b\sim a$ y, por el criterio de igualdad de clases,
+
+$$
+[b]=[a].
+$$
+
+Por eso ninguna construcción sobre clases deberá depender de escoger un representante privilegiado.
+
+**En el Tratado:** [Proposición 0.5.2 — Existencia y pertenencia del representante](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-representante-clase) y [Lema 0.5.3 — Igualdad de clases](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-igualdad-clases).
+
+**Véase también:** [Clase de equivalencia](#gl-clase-equivalencia), [Igualdad de clases](#gl-igualdad-clases), [Conjunto cociente](#gl-conjunto-cociente).
 
 ---
 
@@ -584,5 +689,5 @@ $$
 ---
 
 ::: {.callout-note title="Glosario vivo"}
-Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.5 añadirá, entre otras, **clase de equivalencia**, **representante**, **partición** y **conjunto cociente**.
+Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.6 añadirá el vocabulario correspondiente a **funciones**, dominio, codominio, grafo, imagen y preimagen, sin adelantarse a las definiciones del manuscrito.
 :::
