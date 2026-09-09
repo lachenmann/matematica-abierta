@@ -10,7 +10,7 @@
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0005 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0003 |
+| Libro | MA-BOK-0004 |
 
 ## IDs asignados
 
@@ -53,6 +53,7 @@
 | MA-BCH-0004 | book-chapter | Funciones reales: estructura, composición, inversas y gráficas | `libros/capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
+| MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
 
 ## Regla de uso
 
