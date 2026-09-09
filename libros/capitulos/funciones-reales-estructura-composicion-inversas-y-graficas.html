@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Tercer capítulo de Cálculo para matemáticos: funciones como objetos completos, imágenes y preimágenes, inyectividad, sobreyectividad, composición, inversas, gráficas y monotonía.">
+
+<title>Funciones reales: estructura, composición, inversas y gráficas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#funciones-reales" id="toc-funciones-reales" class="nav-link active" data-scroll-target="#funciones-reales">Funciones reales</a>
+  <ul class="collapse">
+  <li><a href="#ma-bch-0004-funcion-completa" id="toc-ma-bch-0004-funcion-completa" class="nav-link" data-scroll-target="#ma-bch-0004-funcion-completa">1. Una fórmula no es todavía una función</a>
+  <ul class="collapse">
+  <li><a href="#definición-función-dominio-codominio-e-imagen" id="toc-definición-función-dominio-codominio-e-imagen" class="nav-link" data-scroll-target="#definición-función-dominio-codominio-e-imagen">Definición — función, dominio, codominio e imagen</a></li>
+  <li><a href="#dominio-codominio-e-imagen" id="toc-dominio-codominio-e-imagen" class="nav-link" data-scroll-target="#dominio-codominio-e-imagen">Dominio, codominio e imagen</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-imagen-preimagen" id="toc-ma-bch-0004-imagen-preimagen" class="nav-link" data-scroll-target="#ma-bch-0004-imagen-preimagen">2. Imágenes y preimágenes de conjuntos</a></li>
+  <li><a href="#ma-bch-0004-biyectividad" id="toc-ma-bch-0004-biyectividad" class="nav-link" data-scroll-target="#ma-bch-0004-biyectividad">3. Inyectividad, sobreyectividad y biyectividad</a>
+  <ul class="collapse">
+  <li><a href="#definición-tres-propiedades-fundamentales" id="toc-definición-tres-propiedades-fundamentales" class="nav-link" data-scroll-target="#definición-tres-propiedades-fundamentales">Definición — tres propiedades fundamentales</a></li>
+  <li><a href="#la-misma-fórmula-y-cuatro-clasificaciones" id="toc-la-misma-fórmula-y-cuatro-clasificaciones" class="nav-link" data-scroll-target="#la-misma-fórmula-y-cuatro-clasificaciones">La misma fórmula y cuatro clasificaciones</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-composicion" id="toc-ma-bch-0004-composicion" class="nav-link" data-scroll-target="#ma-bch-0004-composicion">4. Composición e identidad</a>
+  <ul class="collapse">
+  <li><a href="#definición-composición" id="toc-definición-composición" class="nav-link" data-scroll-target="#definición-composición">Definición — composición</a></li>
+  <li><a href="#la-composición-no-es-conmutativa" id="toc-la-composición-no-es-conmutativa" class="nav-link" data-scroll-target="#la-composición-no-es-conmutativa">La composición no es conmutativa</a></li>
+  <li><a href="#asociatividad" id="toc-asociatividad" class="nav-link" data-scroll-target="#asociatividad">Asociatividad</a></li>
+  <li><a href="#identidad" id="toc-identidad" class="nav-link" data-scroll-target="#identidad">Identidad</a></li>
+  <li><a href="#proposición-propiedades-que-se-conservan-al-componer" id="toc-proposición-propiedades-que-se-conservan-al-componer" class="nav-link" data-scroll-target="#proposición-propiedades-que-se-conservan-al-componer">Proposición — propiedades que se conservan al componer</a></li>
+  <li><a href="#demostración" id="toc-demostración" class="nav-link" data-scroll-target="#demostración">Demostración</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-inversas" id="toc-ma-bch-0004-inversas" class="nav-link" data-scroll-target="#ma-bch-0004-inversas">5. Funciones inversas</a>
+  <ul class="collapse">
+  <li><a href="#definición-función-inversa" id="toc-definición-función-inversa" class="nav-link" data-scroll-target="#definición-función-inversa">Definición — función inversa</a></li>
+  <li><a href="#teorema-una-función-es-invertible-si-y-solo-si-es-biyectiva" id="toc-teorema-una-función-es-invertible-si-y-solo-si-es-biyectiva" class="nav-link" data-scroll-target="#teorema-una-función-es-invertible-si-y-solo-si-es-biyectiva">Teorema — una función es invertible si y solo si es biyectiva</a></li>
+  <li><a href="#demostración-1" id="toc-demostración-1" class="nav-link" data-scroll-target="#demostración-1">Demostración</a></li>
+  <li><a href="#inversa-de-una-composición" id="toc-inversa-de-una-composición" class="nav-link" data-scroll-target="#inversa-de-una-composición">Inversa de una composición</a></li>
+  <li><a href="#cuadrado-y-raíz-cuadrada" id="toc-cuadrado-y-raíz-cuadrada" class="nav-link" data-scroll-target="#cuadrado-y-raíz-cuadrada">Cuadrado y raíz cuadrada</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-algebra-imagenes" id="toc-ma-bch-0004-algebra-imagenes" class="nav-link" data-scroll-target="#ma-bch-0004-algebra-imagenes">6. Álgebra de imágenes y preimágenes</a></li>
+  <li><a href="#ma-bch-0004-graficas" id="toc-ma-bch-0004-graficas" class="nav-link" data-scroll-target="#ma-bch-0004-graficas">7. Gráficas: representación y estructura</a>
+  <ul class="collapse">
+  <li><a href="#qué-puede-leerse-de-la-gráfica" id="toc-qué-puede-leerse-de-la-gráfica" class="nav-link" data-scroll-target="#qué-puede-leerse-de-la-gráfica">Qué puede leerse de la gráfica</a></li>
+  <li><a href="#horizontales-inyectividad-y-sobreyectividad" id="toc-horizontales-inyectividad-y-sobreyectividad" class="nav-link" data-scroll-target="#horizontales-inyectividad-y-sobreyectividad">Horizontales, inyectividad y sobreyectividad</a></li>
+  <li><a href="#gráfica-de-la-inversa" id="toc-gráfica-de-la-inversa" class="nav-link" data-scroll-target="#gráfica-de-la-inversa">Gráfica de la inversa</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-tramos-transformaciones" id="toc-ma-bch-0004-tramos-transformaciones" class="nav-link" data-scroll-target="#ma-bch-0004-tramos-transformaciones">8. Funciones por tramos y transformaciones de gráficas</a>
+  <ul class="collapse">
+  <li><a href="#transformar-una-gráfica-siguiendo-sus-puntos" id="toc-transformar-una-gráfica-siguiendo-sus-puntos" class="nav-link" data-scroll-target="#transformar-una-gráfica-siguiendo-sus-puntos">Transformar una gráfica siguiendo sus puntos</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-monotonia" id="toc-ma-bch-0004-monotonia" class="nav-link" data-scroll-target="#ma-bch-0004-monotonia">9. Monotonía e inversas</a>
+  <ul class="collapse">
+  <li><a href="#teorema-la-monotonía-estricta-implica-inyectividad" id="toc-teorema-la-monotonía-estricta-implica-inyectividad" class="nav-link" data-scroll-target="#teorema-la-monotonía-estricta-implica-inyectividad">Teorema — la monotonía estricta implica inyectividad</a></li>
+  <li><a href="#demostración-2" id="toc-demostración-2" class="nav-link" data-scroll-target="#demostración-2">Demostración</a></li>
+  <li><a href="#invertir-sobre-la-imagen" id="toc-invertir-sobre-la-imagen" class="nav-link" data-scroll-target="#invertir-sobre-la-imagen">Invertir sobre la imagen</a></li>
+  <li><a href="#proposición-monotonía-de-la-inversa" id="toc-proposición-monotonía-de-la-inversa" class="nav-link" data-scroll-target="#proposición-monotonía-de-la-inversa">Proposición — monotonía de la inversa</a></li>
+  <li><a href="#demostración-3" id="toc-demostración-3" class="nav-link" data-scroll-target="#demostración-3">Demostración</a></li>
+  <li><a href="#una-frontera-importante-monotonía-no-es-continuidad" id="toc-una-frontera-importante-monotonía-no-es-continuidad" class="nav-link" data-scroll-target="#una-frontera-importante-monotonía-no-es-continuidad">Una frontera importante: monotonía no es continuidad</a></li>
+  </ul></li>
+  <li><a href="#ma-bch-0004-dependencias" id="toc-ma-bch-0004-dependencias" class="nav-link" data-scroll-target="#ma-bch-0004-dependencias">10. Mapa de dependencias del capítulo</a></li>
+  <li><a href="#ma-bch-0004-paginas-asociadas" id="toc-ma-bch-0004-paginas-asociadas" class="nav-link" data-scroll-target="#ma-bch-0004-paginas-asociadas">11. Páginas reutilizables asociadas</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre">Cierre</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Funciones reales: estructura, composición, inversas y gráficas</h1>
+</div>
+
+<div>
+  <div class="description">
+    Tercer capítulo de Cálculo para matemáticos: funciones como objetos completos, imágenes y preimágenes, inyectividad, sobreyectividad, composición, inversas, gráficas y monotonía.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">9 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="funciones-reales" class="level1">
+<h1>Funciones reales</h1>
+<p>En la matemática escolar una función suele aparecer junto a una fórmula:</p>
+<p><span class="math display">\[
+f(x)=x^2,
+\qquad
+f(x)=\frac1x,
+\qquad
+f(x)=\sqrt{x}.
+\]</span></p>
+<p>Para calcular valores, esa asociación puede resultar suficiente. Para hacer análisis, no lo es. Una función no queda determinada por una expresión aislada: necesitamos saber <strong>qué entradas admite</strong>, <strong>en qué conjunto declaramos sus salidas</strong> y <strong>qué regla asigna una única salida a cada entrada</strong>.</p>
+<p>La pregunta rectora de este capítulo será</p>
+<p><span class="math display">\[
+\boxed{\text{¿qué información necesitamos para saber realmente qué función tenemos delante?}}
+\]</span></p>
+<p>El recorrido irá desde la definición completa de función hasta imágenes, preimágenes, composición, inversas, gráficas y monotonía. El objetivo no es acumular vocabulario, sino aprender a reconocer la estructura funcional que más adelante sostendrá sucesiones, límites, continuidad y derivación.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Idea rectora</strong></p>
+<p>Antes de manipular una fórmula, conviene separar cuatro preguntas:</p>
+<ol type="1">
+<li>¿cuál es el dominio de la función?;</li>
+<li>¿cuál es su codominio?;</li>
+<li>¿qué valores alcanza realmente?;</li>
+<li>¿qué propiedades dependen de esos datos y no solamente de la fórmula?</li>
+</ol>
+<p>La misma expresión algebraica puede definir funciones matemáticamente distintas.</p>
+</div>
+<section id="ma-bch-0004-funcion-completa" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-funcion-completa">1. Una fórmula no es todavía una función</h2>
+<p>Consideremos la regla <span class="math inline">\(x\mapsto x^2\)</span> en cuatro declaraciones:</p>
+<p><span class="math display">\[
+f\colon\mathbb R\to\mathbb R,
+\qquad
+f(x)=x^2,
+\]</span></p>
+<p><span class="math display">\[
+g\colon[0,\infty)\to[0,\infty),
+\qquad
+g(x)=x^2,
+\]</span></p>
+<p><span class="math display">\[
+h\colon\mathbb R\to[0,\infty),
+\qquad
+h(x)=x^2,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+k\colon[0,\infty)\to\mathbb R,
+\qquad
+k(x)=x^2.
+\]</span></p>
+<p>La fórmula es la misma, pero dominio y codominio cambian. Por ejemplo, <span class="math inline">\(f(-2)\)</span> está definido, mientras que <span class="math inline">\(g(-2)\)</span> y <span class="math inline">\(k(-2)\)</span> no lo están. Del mismo modo, <span class="math inline">\(f\)</span> declara como posibles salidas todos los reales, aunque ningún número negativo sea un cuadrado.</p>
+<div id="res-ma-bch-0004-def-funcion">
+<section id="definición-función-dominio-codominio-e-imagen" class="level3">
+<h3 class="anchored" data-anchor-id="definición-función-dominio-codominio-e-imagen">Definición — función, dominio, codominio e imagen</h3>
+<p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> conjuntos. Una <strong>función</strong></p>
+<p><span class="math display">\[
+f\colon A\to B
+\]</span></p>
+<p>asigna a cada <span class="math inline">\(x\in A\)</span> exactamente un elemento <span class="math inline">\(f(x)\in B\)</span>.</p>
+<p>El conjunto <span class="math inline">\(A\)</span> es el <strong>dominio</strong> y <span class="math inline">\(B\)</span> el <strong>codominio</strong>. La <strong>imagen</strong> o <strong>recorrido</strong> de <span class="math inline">\(f\)</span> es</p>
+<p><span class="math display">\[
+\operatorname{Im}(f)
+=
+\{f(x):x\in A\}.
+\]</span></p>
+<p>Siempre se cumple</p>
+<p><span class="math display">\[
+\operatorname{Im}(f)\subseteq B.
+\]</span></p>
+</section>
+</div>
+<p>Las palabras «cada» y «exactamente uno» expresan dos exigencias distintas:</p>
+<p><span class="math display">\[
+\forall x\in A\;\exists!y\in B
+\quad\text{tal que}\quad y=f(x).
+\]</span></p>
+<p>Una regla puede fallar porque alguna entrada no tenga salida. Por ejemplo,</p>
+<p><span class="math display">\[
+r\colon\mathbb R\to\mathbb R,
+\qquad
+r(x)=\frac1x
+\]</span></p>
+<p>no define una función sobre todo <span class="math inline">\(\mathbb R\)</span>, porque la expresión no tiene valor real en <span class="math inline">\(x=0\)</span>.</p>
+<p>También puede fallar la unicidad. La instrucción «a cada <span class="math inline">\(x\ge0\)</span> asígnele un real <span class="math inline">\(y\)</span> con <span class="math inline">\(y^2=x\)</span>» no define una función hacia <span class="math inline">\(\mathbb R\)</span>, pues para <span class="math inline">\(x=4\)</span> sirven <span class="math inline">\(2\)</span> y <span class="math inline">\(-2\)</span>. En cambio, el teorema de existencia y unicidad de raíces positivas del capítulo anterior permite definir</p>
+<p><span class="math display">\[
+s\colon[0,\infty)\to[0,\infty),
+\qquad
+s(x)=\sqrt{x}.
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente — Confundir unicidad de la salida con inyectividad</strong></p>
+<p>Ser función significa que <strong>una entrada no puede tener dos salidas</strong>.</p>
+<p>Ser inyectiva significará algo diferente: <strong>dos entradas distintas no pueden compartir una salida</strong>.</p>
+</div>
+<section id="dominio-codominio-e-imagen" class="level3">
+<h3 class="anchored" data-anchor-id="dominio-codominio-e-imagen">Dominio, codominio e imagen</h3>
+<p>Para</p>
+<p><span class="math display">\[
+f\colon\mathbb R\to\mathbb R,
+\qquad
+f(x)=x^2,
+\]</span></p>
+<p>tenemos</p>
+<p><span class="math display">\[
+\operatorname{Dom}(f)=\mathbb R,
+\qquad
+\operatorname{Cod}(f)=\mathbb R,
+\qquad
+\operatorname{Im}(f)=[0,\infty).
+\]</span></p>
+<p>El codominio forma parte de la declaración de la función; la imagen registra las salidas que se alcanzan efectivamente.</p>
+<p>En esta obra adoptaremos la convención de que <strong>dominio, codominio y regla de asignación forman parte de los datos de una función</strong>. Por tanto, las cuatro funciones <span class="math inline">\(f,g,h,k\)</span> anteriores son objetos diferentes.</p>
+<p>Si <span class="math inline">\(E\subseteq A\)</span>, la <strong>restricción</strong> de <span class="math inline">\(f\colon A\to B\)</span> a <span class="math inline">\(E\)</span> es</p>
+<p><span class="math display">\[
+f|_E\colon E\to B,
+\qquad
+f|_E(x)=f(x).
+\]</span></p>
+<p>Restringir el dominio puede cambiar propiedades de la función aun cuando los valores conservados sigan siendo los mismos.</p>
+<p>El desarrollo autónomo de estas distinciones está en <a href="../../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> (<code>MA-CON-0007</code>).</p>
+</section>
+</section>
+<section id="ma-bch-0004-imagen-preimagen" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-imagen-preimagen">2. Imágenes y preimágenes de conjuntos</h2>
+<p>Una función actúa sobre puntos, pero también induce operaciones naturales entre subconjuntos.</p>
+<p>Sea</p>
+<p><span class="math display">\[
+f\colon A\to B.
+\]</span></p>
+<p>Si <span class="math inline">\(E\subseteq A\)</span>, su <strong>imagen directa</strong> es</p>
+<p><span class="math display">\[
+\boxed{f(E)=\{f(x):x\in E\}.}
+\]</span></p>
+<p>Si <span class="math inline">\(F\subseteq B\)</span>, su <strong>preimagen</strong> es</p>
+<p><span class="math display">\[
+\boxed{f^{-1}(F)=\{x\in A:f(x)\in F\}.}
+\]</span></p>
+<p>La imagen avanza desde entradas hacia salidas; la preimagen parte de una condición sobre las salidas y recupera todas las entradas que la satisfacen.</p>
+<p>Por ejemplo, para</p>
+<p><span class="math display">\[
+f\colon\mathbb R\to\mathbb R,
+\qquad
+f(x)=x^2,
+\]</span></p>
+<p>tenemos</p>
+<p><span class="math display">\[
+f([-2,1])=[0,4]
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+f^{-1}([1,4])=[-2,-1]\cup[1,2].
+\]</span></p>
+<p>En el segundo cálculo no hemos «invertido» la función <span class="math inline">\(x^2\)</span>. Hemos resuelto la condición</p>
+<p><span class="math display">\[
+1\le x^2\le4.
+\]</span></p>
+<div class="ma-block ma-observacion">
+<p><strong>La preimagen no exige una función inversa</strong></p>
+<p>La notación <span class="math inline">\(f^{-1}(F)\)</span> para un conjunto <span class="math inline">\(F\subseteq B\)</span> está definida para <strong>toda</strong> función <span class="math inline">\(f\colon A\to B\)</span>.</p>
+<p>Una verdadera función inversa <span class="math inline">\(f^{-1}\colon B\to A\)</span> solo existirá bajo hipótesis adicionales. El contexto distingue ambos usos de la notación.</p>
+</div>
+<p>Dos identidades elementales ayudan a controlar los tipos:</p>
+<p><span class="math display">\[
+f(A)=\operatorname{Im}(f),
+\qquad
+f^{-1}(B)=A.
+\]</span></p>
+<p>Resolver una ecuación puede reinterpretarse como calcular una preimagen. Si <span class="math inline">\(y\in B\)</span>, entonces</p>
+<p><span class="math display">\[
+f(x)=y
+\]</span></p>
+<p>equivale a preguntar por los elementos de</p>
+<p><span class="math display">\[
+f^{-1}(\{y\}).
+\]</span></p>
+<p>Esta perspectiva prepara directamente las nociones de inyectividad y sobreyectividad.</p>
+</section>
+<section id="ma-bch-0004-biyectividad" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-biyectividad">3. Inyectividad, sobreyectividad y biyectividad</h2>
+<p>Sea <span class="math inline">\(f\colon A\to B\)</span>.</p>
+<div id="res-ma-bch-0004-def-biyectividad">
+<section id="definición-tres-propiedades-fundamentales" class="level3">
+<h3 class="anchored" data-anchor-id="definición-tres-propiedades-fundamentales">Definición — tres propiedades fundamentales</h3>
+<p>La función <span class="math inline">\(f\)</span> es <strong>inyectiva</strong> si</p>
+<p><span class="math display">\[
+f(x_1)=f(x_2)
+\Longrightarrow
+x_1=x_2
+\]</span></p>
+<p>para cualesquiera <span class="math inline">\(x_1,x_2\in A\)</span>.</p>
+<p>Es <strong>sobreyectiva</strong> si</p>
+<p><span class="math display">\[
+\forall y\in B\;\exists x\in A
+\quad\text{tal que}\quad
+f(x)=y.
+\]</span></p>
+<p>Equivalentemente,</p>
+<p><span class="math display">\[
+f(A)=B.
+\]</span></p>
+<p>Es <strong>biyectiva</strong> si es simultáneamente inyectiva y sobreyectiva.</p>
+</section>
+</div>
+<p>Las arquitecturas de prueba son distintas:</p>
+<ul>
+<li>para demostrar inyectividad, solemos comenzar suponiendo <span class="math inline">\(f(x_1)=f(x_2)\)</span> y tratamos de deducir <span class="math inline">\(x_1=x_2\)</span>;</li>
+<li>para demostrar sobreyectividad, fijamos un <span class="math inline">\(y\in B\)</span> arbitrario y construimos un antecedente <span class="math inline">\(x\in A\)</span> con <span class="math inline">\(f(x)=y\)</span>.</li>
+</ul>
+<p>Para refutar inyectividad basta exhibir dos entradas distintas con la misma salida. Para refutar sobreyectividad basta exhibir un elemento del codominio que no se alcance.</p>
+<section id="la-misma-fórmula-y-cuatro-clasificaciones" class="level3">
+<h3 class="anchored" data-anchor-id="la-misma-fórmula-y-cuatro-clasificaciones">La misma fórmula y cuatro clasificaciones</h3>
+<p>Volvamos a <span class="math inline">\(x^2\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Función</th>
+<th style="text-align: center;">Inyectiva</th>
+<th style="text-align: center;">Sobreyectiva</th>
+<th style="text-align: center;">Biyectiva</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f\colon\mathbb R\to\mathbb R\)</span></td>
+<td style="text-align: center;">no</td>
+<td style="text-align: center;">no</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(g\colon[0,\infty)\to[0,\infty)\)</span></td>
+<td style="text-align: center;">sí</td>
+<td style="text-align: center;">sí</td>
+<td style="text-align: center;">sí</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(h\colon\mathbb R\to[0,\infty)\)</span></td>
+<td style="text-align: center;">no</td>
+<td style="text-align: center;">sí</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(k\colon[0,\infty)\to\mathbb R\)</span></td>
+<td style="text-align: center;">sí</td>
+<td style="text-align: center;">no</td>
+<td style="text-align: center;">no</td>
+</tr>
+</tbody>
+</table>
+<p>La sobreyectividad de <span class="math inline">\(g\)</span> y <span class="math inline">\(h\)</span> usa una herramienta del capítulo anterior: para todo <span class="math inline">\(y\ge0\)</span> existe <span class="math inline">\(\sqrt y\ge0\)</span> con</p>
+<p><span class="math display">\[
+(\sqrt y)^2=y.
+\]</span></p>
+<p>La inyectividad de <span class="math inline">\(g\)</span> y <span class="math inline">\(k\)</span> se obtiene porque, para <span class="math inline">\(x_1,x_2\ge0\)</span>,</p>
+<p><span class="math display">\[
+x_1^2=x_2^2
+\Longrightarrow
+(x_1-x_2)(x_1+x_2)=0.
+\]</span></p>
+<p>Como <span class="math inline">\(x_1+x_2\ge0\)</span>, la única posibilidad compatible con dos números no negativos distintos de signo opuesto queda excluida; por tanto <span class="math inline">\(x_1=x_2\)</span>.</p>
+<div class="ma-block ma-intuicion">
+<p><strong>Dos sensibilidades diferentes</strong></p>
+<p>La inyectividad detecta <strong>colisiones entre entradas</strong> y depende de manera decisiva del dominio.</p>
+<p>La sobreyectividad pregunta si se alcanza <strong>todo el codominio</strong> y depende de manera decisiva de cuál sea ese codominio.</p>
+</div>
+<p>Consulta también <a href="../../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a> (<code>MA-CON-0009</code>).</p>
+</section>
+</section>
+<section id="ma-bch-0004-composicion" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-composicion">4. Composición e identidad</h2>
+<p>Muchas operaciones del cálculo se realizan por etapas. Si</p>
+<p><span class="math display">\[
+f\colon A\to B,
+\qquad
+g\colon B\to C,
+\]</span></p>
+<p>podemos aplicar primero <span class="math inline">\(f\)</span> y después <span class="math inline">\(g\)</span>.</p>
+<div id="res-ma-bch-0004-def-composicion">
+<section id="definición-composición" class="level3">
+<h3 class="anchored" data-anchor-id="definición-composición">Definición — composición</h3>
+<p>La <strong>composición</strong> de <span class="math inline">\(g\)</span> con <span class="math inline">\(f\)</span> es la función</p>
+<p><span class="math display">\[
+g\circ f\colon A\to C
+\]</span></p>
+<p>dada por</p>
+<p><span class="math display">\[
+\boxed{(g\circ f)(x)=g(f(x)).}
+\]</span></p>
+</section>
+</div>
+<p>El orden de lectura es de derecha a izquierda: primero actúa <span class="math inline">\(f\)</span>, después <span class="math inline">\(g\)</span>.</p>
+<p>Cuando las funciones se presentan mediante fórmulas con dominios que no coinciden automáticamente, la auditoría de tipos es indispensable. El dominio máximo de la expresión compuesta es</p>
+<p><span class="math display">\[
+\{x\in\operatorname{Dom}(f):f(x)\in\operatorname{Dom}(g)\}.
+\]</span></p>
+<p>Por ejemplo, si</p>
+<p><span class="math display">\[
+f(x)=x^2-1,
+\qquad
+g(t)=\sqrt t,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+(g\circ f)(x)=\sqrt{x^2-1}
+\]</span></p>
+<p>solo está definida para</p>
+<p><span class="math display">\[
+|x|\ge1.
+\]</span></p>
+<section id="la-composición-no-es-conmutativa" class="level3">
+<h3 class="anchored" data-anchor-id="la-composición-no-es-conmutativa">La composición no es conmutativa</h3>
+<p>Aun cuando ambas composiciones existan, en general</p>
+<p><span class="math display">\[
+g\circ f\ne f\circ g.
+\]</span></p>
+<p>Por ejemplo, para</p>
+<p><span class="math display">\[
+f(x)=x+1,
+\qquad
+g(x)=x^2,
+\]</span></p>
+<p>tenemos</p>
+<p><span class="math display">\[
+(g\circ f)(x)=(x+1)^2,
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+(f\circ g)(x)=x^2+1.
+\]</span></p>
+</section>
+<section id="asociatividad" class="level3">
+<h3 class="anchored" data-anchor-id="asociatividad">Asociatividad</h3>
+<p>Si</p>
+<p><span class="math display">\[
+f\colon A\to B,
+\qquad
+g\colon B\to C,
+\qquad
+h\colon C\to D,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{h\circ(g\circ f)=(h\circ g)\circ f.}
+\]</span></p>
+<p>En efecto, para todo <span class="math inline">\(x\in A\)</span>,</p>
+<p><span class="math display">\[
+[h\circ(g\circ f)](x)
+=h(g(f(x)))
+=[(h\circ g)\circ f](x).
+\]</span></p>
+<p>Las dos funciones tienen el mismo dominio, el mismo codominio y los mismos valores; por tanto son iguales.</p>
+</section>
+<section id="identidad" class="level3">
+<h3 class="anchored" data-anchor-id="identidad">Identidad</h3>
+<p>Para todo conjunto <span class="math inline">\(A\)</span>, la función identidad es</p>
+<p><span class="math display">\[
+\operatorname{id}_A\colon A\to A,
+\qquad
+\operatorname{id}_A(x)=x.
+\]</span></p>
+<p>Si <span class="math inline">\(f\colon A\to B\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{id}_B\circ f=f
+=f\circ\operatorname{id}_A.
+}
+\]</span></p>
+<p>La posición de cada identidad está determinada por los tipos.</p>
+</section>
+<div id="res-ma-bch-0004-composicion-propiedades">
+<section id="proposición-propiedades-que-se-conservan-al-componer" class="level3">
+<h3 class="anchored" data-anchor-id="proposición-propiedades-que-se-conservan-al-componer">Proposición — propiedades que se conservan al componer</h3>
+<p>Sean</p>
+<p><span class="math display">\[
+f\colon A\to B,
+\qquad
+g\colon B\to C.
+\]</span></p>
+<ol type="1">
+<li>Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son inyectivas, entonces <span class="math inline">\(g\circ f\)</span> es inyectiva.</li>
+<li>Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son sobreyectivas, entonces <span class="math inline">\(g\circ f\)</span> es sobreyectiva.</li>
+<li>Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son biyectivas, entonces <span class="math inline">\(g\circ f\)</span> es biyectiva.</li>
+</ol>
+</section>
+</div>
+<section id="demostración" class="level3">
+<h3 class="anchored" data-anchor-id="demostración">Demostración</h3>
+<p>Para la primera afirmación, supongamos</p>
+<p><span class="math display">\[
+(g\circ f)(x_1)=(g\circ f)(x_2).
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+g(f(x_1))=g(f(x_2)).
+\]</span></p>
+<p>La inyectividad de <span class="math inline">\(g\)</span> implica <span class="math inline">\(f(x_1)=f(x_2)\)</span> y la de <span class="math inline">\(f\)</span> implica <span class="math inline">\(x_1=x_2\)</span>.</p>
+<p>Para la segunda, sea <span class="math inline">\(z\in C\)</span>. Como <span class="math inline">\(g\)</span> es sobreyectiva, existe <span class="math inline">\(y\in B\)</span> con <span class="math inline">\(g(y)=z\)</span>. Como <span class="math inline">\(f\)</span> es sobreyectiva, existe <span class="math inline">\(x\in A\)</span> con <span class="math inline">\(f(x)=y\)</span>. Entonces</p>
+<p><span class="math display">\[
+(g\circ f)(x)=g(f(x))=g(y)=z.
+\]</span></p>
+<p>La tercera afirmación combina las dos anteriores. <span class="math inline">\(\square\)</span></p>
+<p>El tratamiento modular de esta operación está en <a href="../../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a> (<code>MA-CON-0008</code>).</p>
+</section>
+</section>
+<section id="ma-bch-0004-inversas" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-inversas">5. Funciones inversas</h2>
+<p>Invertir una función significa poder deshacerla mediante composición.</p>
+<div id="res-ma-bch-0004-def-inversa">
+<section id="definición-función-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="definición-función-inversa">Definición — función inversa</h3>
+<p>Sea <span class="math inline">\(f\colon A\to B\)</span>. Una función</p>
+<p><span class="math display">\[
+g\colon B\to A
+\]</span></p>
+<p>es una <strong>inversa</strong> de <span class="math inline">\(f\)</span> si</p>
+<p><span class="math display">\[
+g\circ f=\operatorname{id}_A
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+f\circ g=\operatorname{id}_B.
+\]</span></p>
+<p>Cuando existe, se denota por <span class="math inline">\(f^{-1}\)</span>.</p>
+</section>
+</div>
+<p>La existencia de una inversa exige exactamente dos cosas: que cada salida de <span class="math inline">\(B\)</span> tenga antecedente y que ese antecedente sea único.</p>
+<div id="res-ma-bch-0004-inversa-biyectiva">
+<section id="teorema-una-función-es-invertible-si-y-solo-si-es-biyectiva" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-una-función-es-invertible-si-y-solo-si-es-biyectiva">Teorema — una función es invertible si y solo si es biyectiva</h3>
+<p>Sea <span class="math inline">\(f\colon A\to B\)</span>. Existe una función inversa</p>
+<p><span class="math display">\[
+f^{-1}\colon B\to A
+\]</span></p>
+<p>si y solo si <span class="math inline">\(f\)</span> es biyectiva.</p>
+</section>
+</div>
+<section id="demostración-1" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-1">Demostración</h3>
+<p>Supongamos primero que existe <span class="math inline">\(f^{-1}\)</span>. Si</p>
+<p><span class="math display">\[
+f(x_1)=f(x_2),
+\]</span></p>
+<p>aplicamos <span class="math inline">\(f^{-1}\)</span> a ambos lados:</p>
+<p><span class="math display">\[
+f^{-1}(f(x_1))=f^{-1}(f(x_2)),
+\]</span></p>
+<p>y obtenemos <span class="math inline">\(x_1=x_2\)</span>. Luego <span class="math inline">\(f\)</span> es inyectiva.</p>
+<p>Ahora sea <span class="math inline">\(y\in B\)</span>. Tomemos</p>
+<p><span class="math display">\[
+x=f^{-1}(y).
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+f(x)=f(f^{-1}(y))=y,
+\]</span></p>
+<p>por lo que <span class="math inline">\(f\)</span> es sobreyectiva. Así, <span class="math inline">\(f\)</span> es biyectiva.</p>
+<p>Recíprocamente, supongamos que <span class="math inline">\(f\)</span> es biyectiva. Para cada <span class="math inline">\(y\in B\)</span>, la sobreyectividad garantiza que existe al menos un <span class="math inline">\(x\in A\)</span> con <span class="math inline">\(f(x)=y\)</span>, y la inyectividad garantiza que ese <span class="math inline">\(x\)</span> es único. Definimos</p>
+<p><span class="math display">\[
+f^{-1}(y)=x.
+\]</span></p>
+<p>Por construcción,</p>
+<p><span class="math display">\[
+f^{-1}(f(x))=x
+\]</span></p>
+<p>para todo <span class="math inline">\(x\in A\)</span>, y</p>
+<p><span class="math display">\[
+f(f^{-1}(y))=y
+\]</span></p>
+<p>para todo <span class="math inline">\(y\in B\)</span>. Por tanto, <span class="math inline">\(f^{-1}\)</span> es una inversa de <span class="math inline">\(f\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La prueba también muestra que la inversa es única.</p>
+</section>
+<section id="inversa-de-una-composición" class="level3">
+<h3 class="anchored" data-anchor-id="inversa-de-una-composición">Inversa de una composición</h3>
+<p>Si</p>
+<p><span class="math display">\[
+f\colon A\to B,
+\qquad
+g\colon B\to C
+\]</span></p>
+<p>son biyectivas, entonces</p>
+<p><span class="math display">\[
+\boxed{(g\circ f)^{-1}=f^{-1}\circ g^{-1}.}
+\]</span></p>
+<p>El orden se invierte porque, para deshacer la cadena</p>
+<p><span class="math display">\[
+A\xrightarrow{f}B\xrightarrow{g}C,
+\]</span></p>
+<p>primero debemos deshacer <span class="math inline">\(g\)</span> y después <span class="math inline">\(f\)</span>.</p>
+</section>
+<section id="cuadrado-y-raíz-cuadrada" class="level3">
+<h3 class="anchored" data-anchor-id="cuadrado-y-raíz-cuadrada">Cuadrado y raíz cuadrada</h3>
+<p>La función</p>
+<p><span class="math display">\[
+f\colon\mathbb R\to\mathbb R,
+\qquad
+f(x)=x^2
+\]</span></p>
+<p>no tiene inversa: no es inyectiva ni sobreyectiva. Pero su restricción</p>
+<p><span class="math display">\[
+g\colon[0,\infty)\to[0,\infty),
+\qquad
+g(x)=x^2
+\]</span></p>
+<p>sí es biyectiva. Su inversa es</p>
+<p><span class="math display">\[
+g^{-1}(y)=\sqrt y.
+\]</span></p>
+<p>La identidad</p>
+<p><span class="math display">\[
+\sqrt{x^2}=|x|
+\]</span></p>
+<p>explica por qué la raíz cuadrada no puede deshacer globalmente a <span class="math inline">\(x^2\)</span> sobre todo <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Consulta también <a href="../../conceptos/funciones-inversas.html">Funciones inversas</a> (<code>MA-CON-0010</code>).</p>
+</section>
+</section>
+<section id="ma-bch-0004-algebra-imagenes" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-algebra-imagenes">6. Álgebra de imágenes y preimágenes</h2>
+<p>Las operaciones de conjuntos estudiadas en el primer capítulo interactúan de manera distinta con imágenes y preimágenes.</p>
+<p>Sean <span class="math inline">\(E,F\subseteq A\)</span> y <span class="math inline">\(S,T\subseteq B\)</span>.</p>
+<p>Para las imágenes directas siempre tenemos</p>
+<p><span class="math display">\[
+\boxed{f(E\cup F)=f(E)\cup f(F)}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\boxed{f(E\cap F)\subseteq f(E)\cap f(F).}
+\]</span></p>
+<p>La segunda inclusión puede ser estricta. Para</p>
+<p><span class="math display">\[
+f(x)=x^2,
+\qquad
+E=\{-1\},
+\qquad
+F=\{1\},
+\]</span></p>
+<p>tenemos</p>
+<p><span class="math display">\[
+E\cap F=\varnothing,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+f(E\cap F)=\varnothing,
+\]</span></p>
+<p>pero</p>
+<p><span class="math display">\[
+f(E)\cap f(F)=\{1\}.
+\]</span></p>
+<p>La razón lógica es importante: un elemento de <span class="math inline">\(f(E)\cap f(F)\)</span> puede provenir de <strong>dos antecedentes distintos</strong>, uno en <span class="math inline">\(E\)</span> y otro en <span class="math inline">\(F\)</span>.</p>
+<p>Si <span class="math inline">\(f\)</span> es inyectiva, esos dos antecedentes deben coincidir y recuperamos la igualdad:</p>
+<p><span class="math display">\[
+\boxed{
+f\text{ inyectiva}
+\Longrightarrow
+f(E\cap F)=f(E)\cap f(F).
+}
+\]</span></p>
+<p>Las preimágenes se comportan de manera más exacta. Siempre se cumple</p>
+<p><span class="math display">\[
+\boxed{f^{-1}(S\cup T)=f^{-1}(S)\cup f^{-1}(T),}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{f^{-1}(S\cap T)=f^{-1}(S)\cap f^{-1}(T),}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{f^{-1}(B\setminus S)=A\setminus f^{-1}(S),}
+\]</span></p>
+<p>y, por tanto,</p>
+<p><span class="math display">\[
+\boxed{f^{-1}(S\setminus T)=f^{-1}(S)\setminus f^{-1}(T).}
+\]</span></p>
+<p>Por ejemplo, para la intersección,</p>
+<p><span class="math display">\[
+\begin{aligned}
+x\in f^{-1}(S\cap T)
+&amp;\iff f(x)\in S\cap T\\
+&amp;\iff f(x)\in S\ \text{y}\ f(x)\in T\\
+&amp;\iff x\in f^{-1}(S)\ \text{y}\ x\in f^{-1}(T)\\
+&amp;\iff x\in f^{-1}(S)\cap f^{-1}(T).
+\end{aligned}
+\]</span></p>
+<p>Aquí no aparecen dos testigos que deban identificarse: toda la argumentación sigue al mismo elemento <span class="math inline">\(x\)</span>.</p>
+<p>Estas leyes conectan naturalmente con <a href="../../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a> (<code>MA-CON-0006</code>).</p>
+</section>
+<section id="ma-bch-0004-graficas" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-graficas">7. Gráficas: representación y estructura</h2>
+<p>Si <span class="math inline">\(A,B\subseteq\mathbb R\)</span> y <span class="math inline">\(f\colon A\to B\)</span>, la <strong>gráfica</strong> de <span class="math inline">\(f\)</span> es</p>
+<p><span class="math display">\[
+\Gamma_f
+=
+\{(x,f(x)):x\in A\}
+\subseteq A\times B.
+\]</span></p>
+<p>La primera coordenada registra una entrada y la segunda su salida.</p>
+<p>Un subconjunto</p>
+<p><span class="math display">\[
+R\subseteq A\times B
+\]</span></p>
+<p>es la gráfica de una función <span class="math inline">\(A\to B\)</span> exactamente cuando</p>
+<p><span class="math display">\[
+\forall x\in A\;\exists!y\in B
+\quad\text{tal que}\quad
+(x,y)\in R.
+\]</span></p>
+<p>Éste es el contenido preciso del llamado <strong>criterio de la recta vertical</strong>: cada vertical correspondiente a una entrada del dominio debe encontrar exactamente un punto de la gráfica.</p>
+<section id="qué-puede-leerse-de-la-gráfica" class="level3">
+<h3 class="anchored" data-anchor-id="qué-puede-leerse-de-la-gráfica">Qué puede leerse de la gráfica</h3>
+<p>Las primeras coordenadas de <span class="math inline">\(\Gamma_f\)</span> recuperan el dominio:</p>
+<p><span class="math display">\[
+A=\{x:\exists y\ ((x,y)\in\Gamma_f)\}.
+\]</span></p>
+<p>Las segundas coordenadas recuperan la imagen:</p>
+<p><span class="math display">\[
+\operatorname{Im}(f)
+=\{y:\exists x\ ((x,y)\in\Gamma_f)\}.
+\]</span></p>
+<p>La gráfica, sin información adicional, no determina un codominio mayor que la imagen. Dos funciones con la misma regla, el mismo dominio y codominios distintos pueden tener exactamente el mismo conjunto de puntos como gráfica.</p>
+</section>
+<section id="horizontales-inyectividad-y-sobreyectividad" class="level3">
+<h3 class="anchored" data-anchor-id="horizontales-inyectividad-y-sobreyectividad">Horizontales, inyectividad y sobreyectividad</h3>
+<p>Una horizontal <span class="math inline">\(y=b\)</span> pregunta por las soluciones de</p>
+<p><span class="math display">\[
+f(x)=b.
+\]</span></p>
+<p>Por tanto:</p>
+<ul>
+<li><span class="math inline">\(f\)</span> es inyectiva si cada horizontal corta la gráfica <strong>a lo sumo una vez</strong>;</li>
+<li><span class="math inline">\(f\)</span> es sobreyectiva sobre el codominio <span class="math inline">\(B\)</span> si, para cada <span class="math inline">\(b\in B\)</span>, la horizontal <span class="math inline">\(y=b\)</span> corta la gráfica <strong>al menos una vez</strong>.</li>
+</ul>
+<p>La segunda afirmación no puede decidirse sin conocer el codominio declarado.</p>
+</section>
+<section id="gráfica-de-la-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="gráfica-de-la-inversa">Gráfica de la inversa</h3>
+<p>Si <span class="math inline">\(f\colon A\to B\)</span> es biyectiva, entonces</p>
+<p><span class="math display">\[
+(x,y)\in\Gamma_f
+\iff
+y=f(x)
+\iff
+x=f^{-1}(y)
+\iff
+(y,x)\in\Gamma_{f^{-1}}.
+\]</span></p>
+<p>Así, intercambiar las coordenadas transforma la gráfica de <span class="math inline">\(f\)</span> en la de <span class="math inline">\(f^{-1}\)</span>. Geométricamente, esto corresponde a reflejar respecto de la diagonal <span class="math inline">\(y=x\)</span>.</p>
+<div class="ma-block ma-observacion">
+<p><strong>La gráfica no sustituye la definición completa</strong></p>
+<p>Fórmula, tabla, algoritmo y gráfica son representaciones de una función. Ninguna de ellas debe hacer olvidar los datos de dominio y codominio.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0004-tramos-transformaciones" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-tramos-transformaciones">8. Funciones por tramos y transformaciones de gráficas</h2>
+<p>Una función puede utilizar reglas distintas en distintas partes de su dominio. Supongamos</p>
+<p><span class="math display">\[
+f(x)=
+\begin{cases}
+f_1(x),&amp;x\in A_1,\\
+\vdots&amp;\\
+f_n(x),&amp;x\in A_n.
+\end{cases}
+\]</span></p>
+<p>Para que esta receta defina una función sobre <span class="math inline">\(A\)</span>, deben cumplirse dos condiciones:</p>
+<ol type="1">
+<li><strong>cobertura:</strong> <span class="math display">\[
+A=A_1\cup\cdots\cup A_n;
+\]</span></li>
+<li><strong>compatibilidad:</strong> si <span class="math inline">\(x\in A_i\cap A_j\)</span>, entonces <span class="math display">\[
+f_i(x)=f_j(x).
+\]</span></li>
+</ol>
+<p>No es obligatorio que los tramos sean disjuntos; lo obligatorio es que ningún punto quede sin salida y que ningún punto reciba dos salidas incompatibles.</p>
+<p>El valor absoluto es el ejemplo básico:</p>
+<p><span class="math display">\[
+|x|=
+\begin{cases}
+x,&amp;x\ge0,\\
+-x,&amp;x&lt;0.
+\end{cases}
+\]</span></p>
+<section id="transformar-una-gráfica-siguiendo-sus-puntos" class="level3">
+<h3 class="anchored" data-anchor-id="transformar-una-gráfica-siguiendo-sus-puntos">Transformar una gráfica siguiendo sus puntos</h3>
+<p>Sea <span class="math inline">\(f\colon D\to\mathbb R\)</span> y supongamos que <span class="math inline">\((u,y)\)</span> pertenece a su gráfica, es decir, <span class="math inline">\(y=f(u)\)</span>.</p>
+<p>Las transformaciones elementales pueden deducirse sin memorizar reglas aisladas:</p>
+<p><span class="math display">\[
+\begin{array}{ccl}
+f(x)+c&amp;:&amp;(u,y)\mapsto(u,y+c),\\[4pt]
+f(x-c)&amp;:&amp;(u,y)\mapsto(u+c,y),\\[4pt]
+-f(x)&amp;:&amp;(u,y)\mapsto(u,-y),\\[4pt]
+f(-x)&amp;:&amp;(u,y)\mapsto(-u,y).
+\end{array}
+\]</span></p>
+<p>Si <span class="math inline">\(a,b\ne0\)</span>, para</p>
+<p><span class="math display">\[
+g(x)=a f(bx)
+\]</span></p>
+<p>un punto <span class="math inline">\((u,y)\)</span> de la gráfica de <span class="math inline">\(f\)</span> produce el punto</p>
+<p><span class="math display">\[
+\boxed{\left(\frac{u}{b},ay\right)}
+\]</span></p>
+<p>de la gráfica de <span class="math inline">\(g\)</span>.</p>
+<p>Pero la geometría no debe ocultar el dominio. Para <span class="math inline">\(g(x)=a f(bx)\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{Dom}(g)
+=
+\{x\in\mathbb R:bx\in D\}.
+\]</span></p>
+<div class="ma-block ma-error">
+<p><strong>Error frecuente — Transformar el dibujo antes de auditar la función</strong></p>
+<p>Las modificaciones «dentro» de la fórmula pueden cambiar el dominio. El orden seguro es:</p>
+<ol type="1">
+<li>escribir la nueva función;</li>
+<li>determinar su dominio;</li>
+<li>calcular cómo cambian los puntos;</li>
+<li>interpretar la geometría.</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="ma-bch-0004-monotonia" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-monotonia">9. Monotonía e inversas</h2>
+<p>La estructura de orden de <span class="math inline">\(\mathbb R\)</span> permite comparar entradas y salidas.</p>
+<p>Sea <span class="math inline">\(D\subseteq\mathbb R\)</span> y <span class="math inline">\(f\colon D\to\mathbb R\)</span>.</p>
+<p>Decimos que <span class="math inline">\(f\)</span> es:</p>
+<ul>
+<li><strong>no decreciente</strong> si <span class="math inline">\(x_1&lt;x_2\)</span> implica <span class="math inline">\(f(x_1)\le f(x_2)\)</span>;</li>
+<li><strong>no creciente</strong> si <span class="math inline">\(x_1&lt;x_2\)</span> implica <span class="math inline">\(f(x_1)\ge f(x_2)\)</span>;</li>
+<li><strong>estrictamente creciente</strong> si <span class="math inline">\(x_1&lt;x_2\)</span> implica <span class="math inline">\(f(x_1)&lt;f(x_2)\)</span>;</li>
+<li><strong>estrictamente decreciente</strong> si <span class="math inline">\(x_1&lt;x_2\)</span> implica <span class="math inline">\(f(x_1)&gt;f(x_2)\)</span>.</li>
+</ul>
+<div id="res-ma-bch-0004-monotona-inyectiva">
+<section id="teorema-la-monotonía-estricta-implica-inyectividad" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-la-monotonía-estricta-implica-inyectividad">Teorema — la monotonía estricta implica inyectividad</h3>
+<p>Toda función estrictamente creciente o estrictamente decreciente es inyectiva.</p>
+</section>
+</div>
+<section id="demostración-2" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-2">Demostración</h3>
+<p>Supongamos primero que <span class="math inline">\(f\)</span> es estrictamente creciente. Sean <span class="math inline">\(x_1,x_2\in D\)</span> y supongamos</p>
+<p><span class="math display">\[
+f(x_1)=f(x_2).
+\]</span></p>
+<p>Si <span class="math inline">\(x_1&lt;x_2\)</span>, la monotonía estricta daría</p>
+<p><span class="math display">\[
+f(x_1)&lt;f(x_2),
+\]</span></p>
+<p>contradicción. Si <span class="math inline">\(x_2&lt;x_1\)</span>, obtendríamos análogamente</p>
+<p><span class="math display">\[
+f(x_2)&lt;f(x_1),
+\]</span></p>
+<p>otra contradicción. Por tricotomía, sólo queda <span class="math inline">\(x_1=x_2\)</span>.</p>
+<p>El caso estrictamente decreciente es idéntico con las desigualdades invertidas. <span class="math inline">\(\square\)</span></p>
+<p>La palabra «estrictamente» es esencial: una función constante es no decreciente y no creciente, pero no es inyectiva si su dominio contiene más de un punto.</p>
+</section>
+<section id="invertir-sobre-la-imagen" class="level3">
+<h3 class="anchored" data-anchor-id="invertir-sobre-la-imagen">Invertir sobre la imagen</h3>
+<p>Si <span class="math inline">\(f\colon D\to\mathbb R\)</span> es estrictamente monótona, el teorema anterior muestra que es inyectiva. Definamos</p>
+<p><span class="math display">\[
+J=f(D)
+\]</span></p>
+<p>y consideremos la misma regla con codominio ajustado:</p>
+<p><span class="math display">\[
+\widetilde f\colon D\to J,
+\qquad
+\widetilde f(x)=f(x).
+\]</span></p>
+<p>Por definición de <span class="math inline">\(J\)</span>, <span class="math inline">\(\widetilde f\)</span> es sobreyectiva; por monotonía estricta, es inyectiva. Por tanto es biyectiva y posee inversa</p>
+<p><span class="math display">\[
+\widetilde f^{-1}\colon J\to D.
+\]</span></p>
+<p>Además, el orden de la inversa queda controlado.</p>
+</section>
+<div id="res-ma-bch-0004-monotonia-inversa">
+<section id="proposición-monotonía-de-la-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="proposición-monotonía-de-la-inversa">Proposición — monotonía de la inversa</h3>
+<p>Si <span class="math inline">\(f\colon D\to J\)</span> es biyectiva y estrictamente creciente, entonces <span class="math inline">\(f^{-1}\)</span> es estrictamente creciente.</p>
+<p>Si <span class="math inline">\(f\)</span> es estrictamente decreciente, entonces <span class="math inline">\(f^{-1}\)</span> es estrictamente decreciente.</p>
+</section>
+</div>
+<section id="demostración-3" class="level3">
+<h3 class="anchored" data-anchor-id="demostración-3">Demostración</h3>
+<p>Supongamos que <span class="math inline">\(f\)</span> es estrictamente creciente y tomemos <span class="math inline">\(y_1&lt;y_2\)</span> en <span class="math inline">\(J\)</span>. Escribamos</p>
+<p><span class="math display">\[
+x_1=f^{-1}(y_1),
+\qquad
+x_2=f^{-1}(y_2).
+\]</span></p>
+<p>Si fuera <span class="math inline">\(x_2&lt;x_1\)</span>, la monotonía de <span class="math inline">\(f\)</span> implicaría</p>
+<p><span class="math display">\[
+y_2=f(x_2)&lt;f(x_1)=y_1,
+\]</span></p>
+<p>contradicción. Tampoco puede ocurrir <span class="math inline">\(x_1=x_2\)</span>, pues entonces <span class="math inline">\(y_1=y_2\)</span>. Luego</p>
+<p><span class="math display">\[
+x_1&lt;x_2,
+\]</span></p>
+<p>y <span class="math inline">\(f^{-1}\)</span> es estrictamente creciente. El caso decreciente se demuestra del mismo modo. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="una-frontera-importante-monotonía-no-es-continuidad" class="level3">
+<h3 class="anchored" data-anchor-id="una-frontera-importante-monotonía-no-es-continuidad">Una frontera importante: monotonía no es continuidad</h3>
+<p>No debemos adelantar resultados del capítulo de continuidad. Una función estrictamente creciente definida en un intervalo puede tener una imagen que <strong>no sea un intervalo</strong>.</p>
+<p>Consideremos</p>
+<p><span class="math display">\[
+f\colon\mathbb R\to\mathbb R,
+\qquad
+f(x)=
+\begin{cases}
+x,&amp;x&lt;0,\\
+x+1,&amp;x\ge0.
+\end{cases}
+\]</span></p>
+<p>Esta función es estrictamente creciente. Si <span class="math inline">\(x_1&lt;x_2\)</span> y ambos están a un mismo lado de <span class="math inline">\(0\)</span>, la desigualdad se conserva inmediatamente; si <span class="math inline">\(x_1&lt;0\le x_2\)</span>, entonces</p>
+<p><span class="math display">\[
+f(x_1)=x_1&lt;0&lt;1\le x_2+1=f(x_2).
+\]</span></p>
+<p>Sin embargo,</p>
+<p><span class="math display">\[
+f(\mathbb R)=(-\infty,0)\cup[1,\infty),
+\]</span></p>
+<p>que no es un intervalo.</p>
+<div class="ma-block ma-observacion">
+<p><strong>Qué hemos demostrado y qué todavía no</strong></p>
+<p>La monotonía estricta basta para obtener inyectividad y, al ajustar el codominio a la imagen, una función inversa.</p>
+<p>No basta para garantizar que la función tome todos los valores intermedios entre dos salidas. Esa propiedad requerirá herramientas posteriores.</p>
+</div>
+</section>
+</section>
+<section id="ma-bch-0004-dependencias" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-dependencias">10. Mapa de dependencias del capítulo</h2>
+<p>Las ideas construidas aquí no aparecen aisladas. Dependen directamente de los dos capítulos anteriores.</p>
+<p>Del lenguaje lógico y de conjuntos necesitamos:</p>
+<ul>
+<li>cuantificadores;</li>
+<li>existencia y unicidad;</li>
+<li>igualdad de conjuntos por doble inclusión;</li>
+<li>producto cartesiano;</li>
+<li>técnicas de prueba y contraejemplo.</li>
+</ul>
+<p>De la estructura de <span class="math inline">\(\mathbb R\)</span> necesitamos:</p>
+<ul>
+<li>orden y tricotomía;</li>
+<li>manipulación rigurosa de desigualdades;</li>
+<li>intervalos;</li>
+<li>existencia y unicidad de raíces no negativas.</li>
+</ul>
+<p>Con esas herramientas obtenemos la cadena</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c}
+\text{función completa}\\
+\downarrow\\
+\text{imagen y preimagen}\\
+\downarrow\\
+\text{inyectividad / sobreyectividad / biyectividad}\\
+\downarrow\\
+\text{composición e identidad}\\
+\downarrow\\
+\text{función inversa}\\
+\downarrow\\
+\text{gráfica y transformaciones}\\
+\downarrow\\
+\text{monotonía e invertibilidad sobre la imagen}.
+\end{array}}
+\]</span></p>
+<p>Esta arquitectura será reutilizada inmediatamente. Una <strong>sucesión</strong> será, antes que nada, una función cuyo dominio es <span class="math inline">\(\mathbb N\)</span>. El capítulo siguiente añadirá una pregunta nueva: qué significa que los valores de esa función se aproximen a un número cuando el índice crece.</p>
+</section>
+<section id="ma-bch-0004-paginas-asociadas" class="level2">
+<h2 class="anchored" data-anchor-id="ma-bch-0004-paginas-asociadas">11. Páginas reutilizables asociadas</h2>
+<p>Para consultar partes del capítulo de forma independiente:</p>
+<ul>
+<li><a href="../../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a> — <code>MA-CON-0007</code>.</li>
+<li><a href="../../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a> — <code>MA-CON-0008</code>.</li>
+<li><a href="../../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a> — <code>MA-CON-0009</code>.</li>
+<li><a href="../../conceptos/funciones-inversas.html">Funciones inversas</a> — <code>MA-CON-0010</code>.</li>
+<li><a href="../../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a> — <code>MA-CON-0006</code>.</li>
+</ul>
+<p>El recorrido completo pertenece a <a href="../../libros/para-matematicos/calculo-para-matematicos.html">Cálculo para matemáticos</a> (<code>MA-BOK-0001</code>).</p>
+</section>
+<section id="cierre" class="level2">
+<h2 class="anchored" data-anchor-id="cierre">Cierre</h2>
+<p>El paso esencial de este capítulo puede resumirse así:</p>
+<p><span class="math display">\[
+\boxed{
+\text{una función no es una fórmula: es una estructura de asignación con dominio y codominio.}
+}
+\]</span></p>
+<p>Una vez fijada esa estructura, imágenes, preimágenes, composición, inyectividad, inversas, gráficas y monotonía dejan de ser temas separados y se convierten en diferentes maneras de interrogar al mismo objeto matemático.</p>
+<p>Con este lenguaje ya disponible, el siguiente paso del libro será estudiar <strong>sucesiones</strong> como funciones y construir sobre ellas la primera noción rigurosa de límite.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
