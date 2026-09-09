@@ -35,7 +35,6 @@ license: GFDL-1.3-or-later
 
 *Parte I — Fundamentos y construcción de los números reales*
 
-
 ---
 
 ## 0.0. Propósito y posición deductiva
@@ -76,7 +75,10 @@ Antes de construir objetos matemáticos conviene precisar qué parte de la maqui
 
 Esta sección no pretende convertir el tratado en un curso de lógica o teoría de conjuntos. Su función es más austera: fijar el suelo sobre el que caminaremos. A partir de ese suelo, las construcciones posteriores deberán justificarse dentro del propio desarrollo.
 
-### Convención 0.1.1 — Metanivel y nivel objeto
+### Convención 0.1.1 — Metanivel y nivel objeto {#ta-metanivel-nivel-objeto}
+
+*Glosario: [metanivel](../otros/tratado-de-analisis-glosario.md#gl-metanivel) · [nivel objeto](../otros/tratado-de-analisis-glosario.md#gl-nivel-objeto)*
+
 Distinguiremos permanentemente:
 
 1. el **metanivel**, en el que hablamos de fórmulas, demostraciones, variables, definiciones y dependencias;
@@ -86,7 +88,10 @@ Los numerales usados para numerar capítulos, secciones o resultados pertenecen 
 
 ---
 
-### Convención 0.1.2 — Lógica ambiente
+### Convención 0.1.2 — Lógica ambiente {#ta-logica-ambiente}
+
+*Glosario: [lógica clásica](../otros/tratado-de-analisis-glosario.md#gl-logica-clasica)*
+
 Se trabaja en lógica clásica de primer orden con igualdad. Se permiten, entre otros, modus ponens, introducción y eliminación usual de cuantificadores, sustitución de iguales, contrapositiva, reducción al absurdo y tercero excluido.
 
 La igualdad `=` es lógica y primitiva. La pertenencia $\in$ es el único símbolo no lógico primitivo del lenguaje conjuntista.
@@ -95,11 +100,15 @@ No registraremos como resultados del tratado las tautologías puramente lógicas
 
 ---
 
-### 0.1.1. Inventario axiomático
+### 0.1.1. Inventario axiomático {#ta-zf}
+
+*Glosario: [ZF](../otros/tratado-de-analisis-glosario.md#gl-zf)*
 
 Los axiomas siguientes son **fundamento admitido**, no teoremas del tratado. Se los reproduce aquí para que las dependencias de las construcciones posteriores sean visibles.
 
-#### Extensionalidad
+#### Extensionalidad {#ta-axioma-extensionalidad}
+
+*Glosario: [extensionalidad](../otros/tratado-de-analisis-glosario.md#gl-extensionalidad)*
 
 $$
 \forall A\,\forall B\,
@@ -179,7 +188,10 @@ El axioma de fundación está disponible por pertenecer a ZF, pero ningún resul
 
 ---
 
-### Notación 0.1.3 — Separación restringida
+### Notación 0.1.3 — Separación restringida {#ta-separacion-restringida}
+
+*Glosario: [separación restringida](../otros/tratado-de-analisis-glosario.md#gl-separacion-restringida)*
+
 Cuando $A$ es un conjunto y $P(x)$ una propiedad, escribiremos
 
 $$
@@ -196,7 +208,10 @@ Esta notación **no** autoriza expresiones irrestrictas de la forma $\{x:P(x)\}$
 
 El lenguaje primitivo sólo nos da pertenencia e igualdad. Para trabajar matemáticamente necesitamos derivar de él formas estables de comparar y combinar conjuntos. La primera es la inclusión: en vez de preguntar por un elemento aislado, preguntamos si **todo** elemento de un conjunto pertenece a otro. De esa relación surgirán luego las operaciones usuales —unión, intersección, diferencia y conjunto potencia— y, con ellas, los conjuntos ambientes en los que podremos construir productos, relaciones y funciones.
 
-### Definición 0.2.1 — Subconjunto
+### Definición 0.2.1 — Subconjunto {#ta-subconjunto}
+
+*Glosario: [subconjunto](../otros/tratado-de-analisis-glosario.md#gl-subconjunto)*
+
 Sean $A$ y $B$ conjuntos. Definimos
 
 $$
@@ -210,6 +225,7 @@ Si $A\subseteq B$ y $A\neq B$, escribiremos $A\subsetneq B$.
 ---
 
 ### Proposición 0.2.2 — Reflexividad de la inclusión
+
 Para todo conjunto $A$,
 
 $$
@@ -222,6 +238,7 @@ Sea $x\in A$. Entonces $x\in A$. Por la Definición 0.2.1, $A\subseteq A$. ∎
 ---
 
 ### Proposición 0.2.3 — Transitividad de la inclusión
+
 Si $A\subseteq B$ y $B\subseteq C$, entonces $A\subseteq C$.
 
 **Demostración.**  
@@ -230,6 +247,7 @@ Sea $x\in A$. Como $A\subseteq B$, tenemos $x\in B$; como $B\subseteq C$, tenemo
 ---
 
 ### Teorema 0.2.4 — Criterio extensional por doble inclusión
+
 Para cualesquiera conjuntos $A$ y $B$,
 
 $$
@@ -251,7 +269,8 @@ Por extensionalidad, $A=B$. ∎
 
 ---
 
-### Proposición 0.2.5 — Existencia y unicidad del conjunto vacío
+### Proposición 0.2.5 — Existencia y unicidad del conjunto vacío {#ta-existencia-vacio}
+
 Existe un único conjunto que no tiene elementos.
 
 **Demostración.**  
@@ -273,7 +292,10 @@ pues ambas proposiciones son falsas. Por extensionalidad, $E=F$. ∎
 
 ---
 
-### Notación 0.2.6 — Conjunto vacío
+### Notación 0.2.6 — Conjunto vacío {#ta-conjunto-vacio}
+
+*Glosario: [conjunto vacío](../otros/tratado-de-analisis-glosario.md#gl-conjunto-vacio)*
+
 Denotaremos por
 
 $$
@@ -285,6 +307,7 @@ el único conjunto sin elementos cuya existencia y unicidad fueron demostradas e
 ---
 
 ### Proposición 0.2.7 — El vacío está contenido en todo conjunto
+
 Para todo conjunto $A$,
 
 $$
@@ -296,7 +319,10 @@ No existe $x\in\varnothing$. Por tanto, la implicación $x\in\varnothing\Rightar
 
 ---
 
-### Notación 0.2.8 — Pares no ordenados y singletons
+### Notación 0.2.8 — Pares no ordenados y singletons {#ta-par-no-ordenado-singleton}
+
+*Glosario: [par no ordenado](../otros/tratado-de-analisis-glosario.md#gl-par-no-ordenado) · [singleton](../otros/tratado-de-analisis-glosario.md#gl-singleton)*
+
 Por el axioma del par, para conjuntos $a,b$ existe un único conjunto cuyos elementos son exactamente $a$ y $b$. Lo denotaremos
 
 $$
@@ -313,7 +339,10 @@ La unicidad en ambos casos se sigue de extensionalidad.
 
 ---
 
-### Definición 0.2.9 — Unión binaria
+### Definición 0.2.9 — Unión binaria {#ta-union-binaria}
+
+*Glosario: [unión](../otros/tratado-de-analisis-glosario.md#gl-union)*
+
 Sean $A,B$ conjuntos. Definimos
 
 $$
@@ -324,7 +353,10 @@ Por los axiomas del par y de unión, $A\cup B$ existe como conjunto.
 
 ---
 
-### Definición 0.2.10 — Intersección binaria
+### Definición 0.2.10 — Intersección binaria {#ta-interseccion-binaria}
+
+*Glosario: [intersección](../otros/tratado-de-analisis-glosario.md#gl-interseccion)*
+
 Sean $A,B$ conjuntos. Definimos
 
 $$
@@ -333,7 +365,10 @@ $$
 
 ---
 
-### Definición 0.2.11 — Diferencia conjuntista
+### Definición 0.2.11 — Diferencia conjuntista {#ta-diferencia-conjuntista}
+
+*Glosario: [diferencia conjuntista](../otros/tratado-de-analisis-glosario.md#gl-diferencia-conjuntista)*
+
 Sean $A,B$ conjuntos. Definimos
 
 $$
@@ -344,7 +379,10 @@ La notación `A-B` queda reservada para contextos algebraicos y no se utilizará
 
 ---
 
-### Definición 0.2.12 — Conjunto potencia
+### Definición 0.2.12 — Conjunto potencia {#ta-conjunto-potencia}
+
+*Glosario: [conjunto potencia](../otros/tratado-de-analisis-glosario.md#gl-conjunto-potencia)*
+
 Para cada conjunto $A$, el axioma del conjunto potencia garantiza un conjunto, que denotaremos
 
 $$
@@ -362,6 +400,7 @@ $$
 ---
 
 ### Proposición 0.2.13 — Leyes de pertenencia de las operaciones binarias
+
 Para cualesquiera conjuntos $A,B$ y cualquier $x$,
 
 $$
@@ -397,7 +436,10 @@ si y sólo si existe $C\in\{A,B\}$ tal que $x\in C$. Por la definición del par 
 
 ---
 
-### Definición 0.2.14 — Conjuntos disjuntos
+### Definición 0.2.14 — Conjuntos disjuntos {#ta-conjuntos-disjuntos}
+
+*Glosario: [conjuntos disjuntos](../otros/tratado-de-analisis-glosario.md#gl-conjuntos-disjuntos)*
+
 Dos conjuntos $A$ y $B$ son **disjuntos** si
 
 $$
@@ -406,8 +448,8 @@ $$
 
 ---
 
----
-
 ::: {.callout-note title="Publicación progresiva"}
 Esta primera entrega del capítulo comprende §§0.0–0.2. La siguiente incorporará **0.3 — Pares ordenados y productos cartesianos** y continuará en el orden del manuscrito maestro.
+
+El [**Glosario matemático del Tratado**](../otros/tratado-de-analisis-glosario.md) crece paralelamente a la edición web y enlaza cada término con el lugar donde se introduce.
 :::
