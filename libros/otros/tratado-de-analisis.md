@@ -65,10 +65,10 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 
 ## Contenido disponible
 
-1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación disponible hasta §0.3: lógica ambiente, axiomas conjuntistas, inclusión y operaciones de conjuntos, pares ordenados de Kuratowski y productos cartesianos.
-2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de §§0.0–0.3.
+1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación disponible hasta §0.4: lógica ambiente, axiomas conjuntistas, inclusión y operaciones de conjuntos, pares ordenados de Kuratowski, productos cartesianos y relaciones.
+2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de §§0.0–0.4.
 
-La siguiente incorporación continuará dentro del Capítulo 0 con **§0.4 — Relaciones**. En el mismo paso se añadirán al glosario las nociones nuevas correspondientes: relación binaria, dominio, recorrido, inversa, composición y propiedades relacionales.
+La siguiente incorporación continuará dentro del Capítulo 0 con **§0.5 — Clases de equivalencia, particiones y cocientes**. En el mismo paso se añadirán al glosario las nociones nuevas correspondientes, entre ellas clase de equivalencia, representante, partición y conjunto cociente.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

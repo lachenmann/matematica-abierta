@@ -16,6 +16,7 @@ topics:
   - glosario
   - logica-matematica
   - teoria-de-conjuntos
+  - relaciones
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -25,6 +26,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 ---
+
 
 # Glosario matemático
 
@@ -42,10 +44,13 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 
 ## Índice actual
 
+[Antisimetría](#gl-antisimetria) ·
+[Composición de relaciones](#gl-composicion-relaciones) ·
 [Conjunto potencia](#gl-conjunto-potencia) ·
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
+[Dominio de una relación](#gl-dominio-relacion) ·
 [Extensionalidad](#gl-extensionalidad) ·
 [Intersección](#gl-interseccion) ·
 [Lógica clásica](#gl-logica-clasica) ·
@@ -55,12 +60,58 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Par no ordenado](#gl-par-no-ordenado) ·
 [Par ordenado](#gl-par-ordenado) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
+[Recorrido de una relación](#gl-recorrido-relacion) ·
+[Reflexividad](#gl-reflexividad) ·
+[Relación binaria](#gl-relacion-binaria) ·
+[Relación de equivalencia](#gl-relacion-equivalencia) ·
+[Relación inversa](#gl-relacion-inversa) ·
 [Separación restringida](#gl-separacion-restringida) ·
+[Simetría](#gl-simetria) ·
 [Singleton](#gl-singleton) ·
 [Subconjunto](#gl-subconjunto) ·
+[Totalidad (conexidad)](#gl-totalidad) ·
+[Transitividad](#gl-transitividad) ·
 [Tupla finita](#gl-tupla-finita) ·
 [Unión](#gl-union) ·
 [ZF](#gl-zf)
+
+---
+
+## Antisimetría {#gl-antisimetria}
+
+**Idea.** Una relación no puede relacionar mutuamente dos elementos distintos en ambos sentidos.
+
+**En este tratado.** Una relación $R$ sobre $A$ es **antisimétrica** si
+
+$$
+(aRb\land bRa)\Longrightarrow a=b.
+$$
+
+La antisimetría no significa que $aRb$ impida $bRa$; significa que, si ambas relaciones ocurren, entonces los elementos deben coincidir.
+
+**En el Tratado:** [Definición 0.4.6 — Propiedades de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion).
+
+**Véase también:** [Simetría](#gl-simetria), [Reflexividad](#gl-reflexividad), [Transitividad](#gl-transitividad).
+
+---
+
+## Composición de relaciones {#gl-composicion-relaciones}
+
+**Idea.** Encadenar dos relaciones haciendo coincidir la salida intermedia de la primera con la entrada de la segunda.
+
+**En este tratado.** Si $R\subseteq A\times B$ y $S\subseteq B\times C$, definimos
+
+$$
+S\circ R
+:=
+\{\langle a,c\rangle\in A\times C:\exists b\in B\;(aRb\land bSc)\}.
+$$
+
+La composición se lee de derecha a izquierda: primero $R$, después $S$.
+
+**En el Tratado:** [Definición 0.4.4 — Composición de relaciones](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-composicion-relaciones).
+
+**Véase también:** [Relación binaria](#gl-relacion-binaria), [Producto cartesiano](#gl-producto-cartesiano).
 
 ---
 
@@ -127,6 +178,24 @@ La notación $A-B$ no se usa para diferencia de conjuntos, porque se reserva par
 **En el Tratado:** [Definición 0.2.11 — Diferencia conjuntista](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-diferencia-conjuntista).
 
 **Véase también:** [Separación restringida](#gl-separacion-restringida), [Subconjunto](#gl-subconjunto).
+
+---
+
+## Dominio de una relación {#gl-dominio-relacion}
+
+**Idea.** Los elementos que aparecen como primera componente de algún par perteneciente a la relación.
+
+**En este tratado.** Si $R\subseteq A\times B$,
+
+$$
+\operatorname{dom}R
+:=
+\{a\in A:\exists b\in B\;(aRb)\}.
+$$
+
+**En el Tratado:** [Definición 0.4.2 — Dominio y recorrido de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-dominio-recorrido-relacion).
+
+**Véase también:** [Recorrido de una relación](#gl-recorrido-relacion), [Relación binaria](#gl-relacion-binaria).
 
 ---
 
@@ -266,6 +335,94 @@ La existencia de este conjunto se demuestra construyéndolo por separación dent
 
 ---
 
+## Recorrido de una relación {#gl-recorrido-relacion}
+
+**Idea.** Los elementos que aparecen como segunda componente de algún par perteneciente a la relación.
+
+**En este tratado.** Si $R\subseteq A\times B$,
+
+$$
+\operatorname{ran}R
+:=
+\{b\in B:\exists a\in A\;(aRb)\}.
+$$
+
+Usaremos `ran` para relaciones y reservaremos `im` para la imagen de un subconjunto bajo una función.
+
+**En el Tratado:** [Definición 0.4.2 — Dominio y recorrido de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-dominio-recorrido-relacion).
+
+**Véase también:** [Dominio de una relación](#gl-dominio-relacion), [Relación binaria](#gl-relacion-binaria).
+
+---
+
+## Reflexividad {#gl-reflexividad}
+
+**Idea.** Cada elemento está relacionado consigo mismo.
+
+**En este tratado.** Una relación $R$ sobre $A$ es **reflexiva** si
+
+$$
+\forall a\in A,\quad aRa.
+$$
+
+**En el Tratado:** [Definición 0.4.6 — Propiedades de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion).
+
+**Véase también:** [Simetría](#gl-simetria), [Transitividad](#gl-transitividad), [Relación de equivalencia](#gl-relacion-equivalencia).
+
+---
+
+## Relación binaria {#gl-relacion-binaria}
+
+**Idea.** Una selección de pares ordenados que indica qué elementos de un conjunto se relacionan con elementos de otro.
+
+**En este tratado.** Una relación binaria de $A$ en $B$ es un conjunto
+
+$$
+R\subseteq A\times B.
+$$
+
+Cuando $A=B$, hablamos de una relación **sobre** $A$. La escritura $aRb$ abrevia $\langle a,b\rangle\in R$.
+
+**En el Tratado:** [Definición 0.4.1 — Relación binaria](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-binaria).
+
+**Véase también:** [Par ordenado](#gl-par-ordenado), [Producto cartesiano](#gl-producto-cartesiano), [Dominio de una relación](#gl-dominio-relacion).
+
+---
+
+## Relación de equivalencia {#gl-relacion-equivalencia}
+
+**Idea.** Una relación que permite considerar como indistinguibles, para cierto propósito, elementos que pertenecen a una misma clase.
+
+**En este tratado.** Una relación $\sim$ sobre $A$ es una **relación de equivalencia** si es reflexiva, simétrica y transitiva.
+
+La noción de clase de equivalencia se introducirá sólo en la sección siguiente.
+
+**En el Tratado:** [Definición 0.4.7 — Relación de equivalencia](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-equivalencia).
+
+**Véase también:** [Reflexividad](#gl-reflexividad), [Simetría](#gl-simetria), [Transitividad](#gl-transitividad).
+
+---
+
+## Relación inversa {#gl-relacion-inversa}
+
+**Idea.** La relación obtenida al intercambiar la primera y la segunda componente de cada par.
+
+**En este tratado.** Si $R\subseteq A\times B$,
+
+$$
+R^{-1}
+:=
+\{\langle b,a\rangle\in B\times A:aRb\}.
+$$
+
+Esta notación no presupone que $R$ sea una función ni que exista una función inversa.
+
+**En el Tratado:** [Definición 0.4.3 — Relación inversa](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-inversa).
+
+**Véase también:** [Relación binaria](#gl-relacion-binaria), [Par ordenado](#gl-par-ordenado).
+
+---
+
 ## Separación restringida {#gl-separacion-restringida}
 
 **Idea.** Formar un subconjunto seleccionando, dentro de un conjunto ya existente, los elementos que satisfacen una propiedad.
@@ -281,6 +438,22 @@ denota el subconjunto de $A$ formado por los $x$ que satisfacen $P(x)$. Esta not
 **En el Tratado:** [Notación 0.1.3 — Separación restringida](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-separacion-restringida).
 
 **Véase también:** [Subconjunto](#gl-subconjunto), [ZF](#gl-zf).
+
+---
+
+## Simetría {#gl-simetria}
+
+**Idea.** Si un elemento se relaciona con otro, la relación también vale en sentido contrario.
+
+**En este tratado.** Una relación $R$ sobre $A$ es **simétrica** si
+
+$$
+aRb\Longrightarrow bRa.
+$$
+
+**En el Tratado:** [Definición 0.4.6 — Propiedades de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion).
+
+**Véase también:** [Antisimetría](#gl-antisimetria), [Reflexividad](#gl-reflexividad), [Relación de equivalencia](#gl-relacion-equivalencia).
 
 ---
 
@@ -319,6 +492,38 @@ La inclusión propia se escribe $A\subsetneq B$ y exige además $A\neq B$.
 **En el Tratado:** [Definición 0.2.1 — Subconjunto](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-subconjunto).
 
 **Véase también:** [Extensionalidad](#gl-extensionalidad), [Conjunto potencia](#gl-conjunto-potencia).
+
+---
+
+## Totalidad (conexidad) {#gl-totalidad}
+
+**Idea.** Cualquier par de elementos puede compararse en al menos uno de los dos sentidos de la relación.
+
+**En este tratado.** Una relación $R$ sobre $A$ es **total** o **conexa** si, para cualesquiera $a,b\in A$,
+
+$$
+aRb\quad\text{o}\quad bRa.
+$$
+
+**En el Tratado:** [Definición 0.4.6 — Propiedades de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion).
+
+**Véase también:** [Relación binaria](#gl-relacion-binaria), [Antisimetría](#gl-antisimetria), [Transitividad](#gl-transitividad).
+
+---
+
+## Transitividad {#gl-transitividad}
+
+**Idea.** Dos pasos consecutivos de la relación pueden comprimirse en uno.
+
+**En este tratado.** Una relación $R$ sobre $A$ es **transitiva** si
+
+$$
+(aRb\land bRc)\Longrightarrow aRc.
+$$
+
+**En el Tratado:** [Definición 0.4.6 — Propiedades de una relación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion).
+
+**Véase también:** [Reflexividad](#gl-reflexividad), [Simetría](#gl-simetria), [Relación de equivalencia](#gl-relacion-equivalencia).
 
 ---
 
@@ -379,5 +584,5 @@ $$
 ---
 
 ::: {.callout-note title="Glosario vivo"}
-Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.4 añadirá el vocabulario básico de **relaciones**, incluyendo dominio, recorrido, relación inversa, composición y propiedades relacionales.
+Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.5 añadirá, entre otras, **clase de equivalencia**, **representante**, **partición** y **conjunto cociente**.
 :::

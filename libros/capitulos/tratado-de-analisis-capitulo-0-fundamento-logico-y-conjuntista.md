@@ -35,6 +35,7 @@ license: GFDL-1.3-or-later
 
 *Parte I â€” Fundamentos y construcciÃ³n de los nÃºmeros reales*
 
+
 ---
 
 ## 0.0. PropÃ³sito y posiciÃ³n deductiva
@@ -225,7 +226,6 @@ Si $A\subseteq B$ y $A\neq B$, escribiremos $A\subsetneq B$.
 ---
 
 ### ProposiciÃ³n 0.2.2 â€” Reflexividad de la inclusiÃ³n
-
 Para todo conjunto $A$,
 
 $$
@@ -238,7 +238,6 @@ Sea $x\in A$. Entonces $x\in A$. Por la DefiniciÃ³n 0.2.1, $A\subseteq A$. âˆ
 ---
 
 ### ProposiciÃ³n 0.2.3 â€” Transitividad de la inclusiÃ³n
-
 Si $A\subseteq B$ y $B\subseteq C$, entonces $A\subseteq C$.
 
 **DemostraciÃ³n.**  
@@ -247,7 +246,6 @@ Sea $x\in A$. Como $A\subseteq B$, tenemos $x\in B$; como $B\subseteq C$, tenemo
 ---
 
 ### Teorema 0.2.4 â€” Criterio extensional por doble inclusiÃ³n
-
 Para cualesquiera conjuntos $A$ y $B$,
 
 $$
@@ -277,383 +275,9 @@ Existe un Ãºnico conjunto que no tiene elementos.
 **Existencia.** Del axioma de infinito se sigue que existe al menos un conjunto $A$. Por separaciÃ³n existe
 
 $$
-E:=\{x\in A:x\neq x\}.
+E:=\{x\in A:xneq x\}.
 $$
 
 No existe $x\in E$, pues $x\neq x$ es falso por reflexividad de la igualdad.
 
-**Unicidad.** Sean $E$ y $F$ conjuntos sin elementos. Para todo $x$,
-
-$$
-x\in E\iff x\in F,
-$$
-
-pues ambas proposiciones son falsas. Por extensionalidad, $E=F$. âˆ
-
----
-
-### NotaciÃ³n 0.2.6 â€” Conjunto vacÃ­o {#ta-conjunto-vacio}
-
-*Glosario: [conjunto vacÃ­o](../otros/tratado-de-analisis-glosario.md#gl-conjunto-vacio)*
-
-Denotaremos por
-
-$$
-\varnothing
-$$
-
-el Ãºnico conjunto sin elementos cuya existencia y unicidad fueron demostradas en la ProposiciÃ³n 0.2.5.
-
----
-
-### ProposiciÃ³n 0.2.7 â€” El vacÃ­o estÃ¡ contenido en todo conjunto
-
-Para todo conjunto $A$,
-
-$$
-\varnothing\subseteq A.
-$$
-
-**DemostraciÃ³n.**  
-No existe $x\in\varnothing$. Por tanto, la implicaciÃ³n $x\in\varnothing\Rightarrow x\in A$ es verdadera para todo $x$. Aplicando la DefiniciÃ³n 0.2.1, $\varnothing\subseteq A$. âˆ
-
----
-
-### NotaciÃ³n 0.2.8 â€” Pares no ordenados y singletons {#ta-par-no-ordenado-singleton}
-
-*Glosario: [par no ordenado](../otros/tratado-de-analisis-glosario.md#gl-par-no-ordenado) Â· [singleton](../otros/tratado-de-analisis-glosario.md#gl-singleton)*
-
-Por el axioma del par, para conjuntos $a,b$ existe un Ãºnico conjunto cuyos elementos son exactamente $a$ y $b$. Lo denotaremos
-
-$$
-\{a,b\}.
-$$
-
-Definimos el singleton de $a$ por
-
-$$
-\{a\}:=\{a,a\}.
-$$
-
-La unicidad en ambos casos se sigue de extensionalidad.
-
----
-
-### DefiniciÃ³n 0.2.9 â€” UniÃ³n binaria {#ta-union-binaria}
-
-*Glosario: [uniÃ³n](../otros/tratado-de-analisis-glosario.md#gl-union)*
-
-Sean $A,B$ conjuntos. Definimos
-
-$$
-A\cup B:=\bigcup\{A,B\}.
-$$
-
-Por los axiomas del par y de uniÃ³n, $A\cup B$ existe como conjunto.
-
----
-
-### DefiniciÃ³n 0.2.10 â€” IntersecciÃ³n binaria {#ta-interseccion-binaria}
-
-*Glosario: [intersecciÃ³n](../otros/tratado-de-analisis-glosario.md#gl-interseccion)*
-
-Sean $A,B$ conjuntos. Definimos
-
-$$
-A\cap B:=\{x\in A:x\in B\}.
-$$
-
----
-
-### DefiniciÃ³n 0.2.11 â€” Diferencia conjuntista {#ta-diferencia-conjuntista}
-
-*Glosario: [diferencia conjuntista](../otros/tratado-de-analisis-glosario.md#gl-diferencia-conjuntista)*
-
-Sean $A,B$ conjuntos. Definimos
-
-$$
-A\setminus B:=\{x\in A:x\notin B\}.
-$$
-
-La notaciÃ³n `A-B` queda reservada para contextos algebraicos y no se utilizarÃ¡ para diferencia de conjuntos.
-
----
-
-### DefiniciÃ³n 0.2.12 â€” Conjunto potencia {#ta-conjunto-potencia}
-
-*Glosario: [conjunto potencia](../otros/tratado-de-analisis-glosario.md#gl-conjunto-potencia)*
-
-Para cada conjunto $A$, el axioma del conjunto potencia garantiza un conjunto, que denotaremos
-
-$$
-\mathcal P(A),
-$$
-
-caracterizado por
-
-$$
-X\in\mathcal P(A)
-\quad\Longleftrightarrow\quad
-X\subseteq A.
-$$
-
----
-
-### ProposiciÃ³n 0.2.13 â€” Leyes de pertenencia de las operaciones binarias
-
-Para cualesquiera conjuntos $A,B$ y cualquier $x$,
-
-$$
-x\in A\cup B
-\iff
-(x\in A\lor x\in B),
-$$
-
-$$
-x\in A\cap B
-\iff
-(x\in A\land x\in B),
-$$
-
-y
-
-$$
-x\in A\setminus B
-\iff
-(x\in A\land x\notin B).
-$$
-
-**DemostraciÃ³n.**  
-La segunda y la tercera equivalencia son exactamente las condiciones definitorias de las Definiciones 0.2.10 y 0.2.11.
-
-Para la primera,
-
-$$
-x\in\bigcup\{A,B\}
-$$
-
-si y sÃ³lo si existe $C\in\{A,B\}$ tal que $x\in C$. Por la definiciÃ³n del par no ordenado, esto equivale a $x\in A$ o $x\in B$. âˆ
-
----
-
-### DefiniciÃ³n 0.2.14 â€” Conjuntos disjuntos {#ta-conjuntos-disjuntos}
-
-*Glosario: [conjuntos disjuntos](../otros/tratado-de-analisis-glosario.md#gl-conjuntos-disjuntos)*
-
-Dos conjuntos $A$ y $B$ son **disjuntos** si
-
-$$
-A\cap B=\varnothing.
-$$
-
----
-
-## 0.3. Pares ordenados y productos cartesianos {#sec-ta-0-3}
-
-Los conjuntos ordinarios no recuerdan posiciones: $\{a,b\}=\{b,a\}$. Esa simetrÃ­a es adecuada cuando sÃ³lo importa quÃ© elementos estÃ¡n presentes, pero resulta insuficiente en cuanto queremos distinguir una **primera** y una **segunda** coordenada. Una relaciÃ³n entre $a$ y $b$, el valor de una funciÃ³n en un argumento o un punto de un producto cartesiano requieren precisamente esa distinciÃ³n.
-
-Por ello construiremos ahora, usando Ãºnicamente conjuntos ya disponibles, un objeto que codifique el orden de dos componentes. La prueba decisiva no serÃ¡ la definiciÃ³n misma, sino demostrar que **dos pares ordenados son iguales exactamente cuando coinciden sus primeras componentes y coinciden sus segundas componentes**.
-
-Una vez obtenido ese criterio, podremos utilizar pares ordenados sin volver continuamente a su implementaciÃ³n conjuntista.
-
-### DefiniciÃ³n 0.3.1 â€” Par ordenado de Kuratowski {#ta-par-ordenado-kuratowski}
-
-*Glosario: [par ordenado](../otros/tratado-de-analisis-glosario.md#gl-par-ordenado) Â· [par de Kuratowski](../otros/tratado-de-analisis-glosario.md#gl-par-kuratowski)*
-
-Para conjuntos $a,b$, definimos
-
-$$
-\boxed{
-\langle a,b\rangle
-:=
-\bigl\{\{a\},\{a,b\}\bigr\}.
-}
-$$
-
----
-
-### Lema 0.3.2 â€” Igualdad de singletons
-
-Para cualesquiera conjuntos $a,c$,
-
-$$
-\{a\}=\{c\}
-\quad\Longleftrightarrow\quad
-a=c.
-$$
-
-**DemostraciÃ³n.**  
-Si $a=c$, los singletons son iguales por sustituciÃ³n.
-
-RecÃ­procamente, si $\{a\}=\{c\}$, entonces $a\in\{a\}=\{c\}$, de modo que $a=c$. âˆ
-
----
-
-### Lema 0.3.3 â€” Igualdad de pares no ordenados
-
-Para cualesquiera conjuntos $a,b,c,d$,
-
-$$
-\{a,b\}=\{c,d\}
-$$
-
-si y sÃ³lo si
-
-$$
-(a=c\land b=d)
-\quad\text{o}\quad
-(a=d\land b=c).
-$$
-
-**DemostraciÃ³n.**  
-Supongamos $\{a,b\}=\{c,d\}$. Como $a$ pertenece al miembro izquierdo, $a=c$ o $a=d$.
-
-Si $a=c$, entonces $b\in\{c,d\}$, asÃ­ que $b=c$ o $b=d$. Si $b=d$, obtenemos la primera alternativa. Si $b=c=a$, la igualdad $\{a,b\}=\{a\}=\{c,d\}$ fuerza $d=a=b$, y ambas alternativas son entonces verdaderas.
-
-El caso $a=d$ es simÃ©trico.
-
-La recÃ­proca se obtiene por sustituciÃ³n y extensionalidad. âˆ
-
----
-
-### Teorema 0.3.4 â€” Teorema caracterÃ­stico del par ordenado
-
-Para cualesquiera conjuntos $a,b,c,d$,
-
-$$
-\langle a,b\rangle=\langle c,d\rangle
-\quad\Longleftrightarrow\quad
-(a=c\ \text{y}\ b=d).
-$$
-
-**DemostraciÃ³n.**  
-La implicaciÃ³n de derecha a izquierda es inmediata por sustituciÃ³n en la DefiniciÃ³n 0.3.1.
-
-Para la recÃ­proca, supongamos
-
-$$
-\bigl\{\{a\},\{a,b\}\bigr\}
-=
-\bigl\{\{c\},\{c,d\}\bigr\}.
-$$
-
-Por el Lema 0.3.3, ocurre una de dos posibilidades.
-
-**Caso 1.**
-
-$$
-\{a\}=\{c\},
-\qquad
-\{a,b\}=\{c,d\}.
-$$
-
-Por el Lema 0.3.2, $a=c$. Sustituyendo en la segunda igualdad, $\{a,b\}=\{a,d\}$. Si $b\neq a$, el elemento $b$ del miembro izquierdo debe ser $d$, de modo que $b=d$; si $b=a$, la igualdad obliga igualmente a $d=a=b$. Por tanto $b=d$.
-
-**Caso 2.**
-
-$$
-\{a\}=\{c,d\},
-\qquad
-\{a,b\}=\{c\}.
-$$
-
-La primera igualdad implica $c=d=a$, pues $\{c,d\}$ tiene un Ãºnico elemento. La segunda implica $a=b=c$. Luego nuevamente $a=c$ y $b=d$.
-
-En ambos casos, $a=c$ y $b=d$. âˆ
-
----
-
-### ConvenciÃ³n 0.3.5 â€” Tuplas finitas {#ta-tuplas-finitas}
-
-*Glosario: [tupla finita](../otros/tratado-de-analisis-glosario.md#gl-tupla-finita)*
-
-Las tuplas finitas de longitud mayor que dos se codificarÃ¡n mediante pares ordenados anidados. Salvo que se indique otra cosa,
-
-$$
-\langle a,b,c\rangle
-:=
-\langle a,\langle b,c\rangle\rangle.
-$$
-
-Esta codificaciÃ³n es representacional y no se atribuirÃ¡ contenido matemÃ¡tico a la forma concreta de anidaciÃ³n.
-
----
-
-### DefiniciÃ³n 0.3.6 â€” Producto cartesiano {#ta-producto-cartesiano}
-
-*Glosario: [producto cartesiano](../otros/tratado-de-analisis-glosario.md#gl-producto-cartesiano)*
-
-Sean $A,B$ conjuntos. Definimos
-
-$$
-A\times B
-:=
-\{\langle a,b\rangle:a\in A,\ b\in B\}.
-$$
-
-La expresiÃ³n anterior es todavÃ­a una descripciÃ³n. La existencia conjuntista del objeto se establece en la proposiciÃ³n siguiente.
-
----
-
-### ProposiciÃ³n 0.3.7 â€” Existencia del producto cartesiano
-
-Para cualesquiera conjuntos $A$ y $B$, $A\times B$ existe como conjunto.
-
-**DemostraciÃ³n.**  
-Sea
-
-$$
-U:=A\cup B.
-$$
-
-Si $a\in A$ y $b\in B$, entonces $a,b\in U$. Por tanto,
-
-$$
-\{a\}\subseteq U,
-\qquad
-\{a,b\}\subseteq U,
-$$
-
-de modo que
-
-$$
-\{a\},\{a,b\}\in\mathcal P(U).
-$$
-
-AsÃ­,
-
-$$
-\langle a,b\rangle
-=
-\bigl\{\{a\},\{a,b\}\bigr\}
-\subseteq
-\mathcal P(U),
-$$
-
-y por consiguiente
-
-$$
-\langle a,b\rangle\in\mathcal P(\mathcal P(U)).
-$$
-
-Luego
-
-$$
-A\times B
-=
-\left\{
-p\in\mathcal P(\mathcal P(U)):
-\exists a\in A\,\exists b\in B\,
-p=\langle a,b\rangle
-\right\},
-$$
-
-que existe por separaciÃ³n. âˆ
-
----
-
-::: {.callout-note title="PublicaciÃ³n progresiva"}
-Esta entrega del capÃ­tulo comprende ya Â§Â§0.0â€“0.3. La siguiente incorporarÃ¡ **0.4 â€” Relaciones** y continuarÃ¡ en el orden del manuscrito maestro.
-
-El [**Glosario matemÃ¡tico del Tratado**](../otros/tratado-de-analisis-glosario.md) se actualiza en paralelo: esta incorporaciÃ³n aÃ±ade **par ordenado**, **par de Kuratowski**, **tupla finita** y **producto cartesiano**.
-:::
+%'‰ÈiÔjq2Ê'éí¢Ë"é^™éí¢ÃÚ­«hvŒqŠq"}übœZnzÆ¦m«)®Šh²'"¢w¬²‰ßj[°ú+{^È¨©bu§DÚ-iÈ§Ón‚¢xîÚ/iÊ-iÊ'éí¢öœŠ¥¢Æ«Š‡(;§¶‹Úrè¶º,şÚÚµ§huæ§jX¬ŠÈ%¢Æ«Š‰‚W(;§¶‹Úr*zz-j·¦¢Êh®ö«‹aŠx–xœ¡Ê'éí¢È§zW¦z{h±Ë²iìb²×§r&²ºxœ‰Ö~ç«¢w^š‹-­§Z±éåhúè¦‹"r)ôÛ“ë¢š,‰È§ÓnÄ–öœ¡ë-r‰ízx¡éí¡Ú¢xîÚj¶­¡Ú¢xîÚ ½ªç¢Øb.nÇ­z zj,¶¶œŠsh{¬µìbö«‹aŠx¢»ZÚ%j)©–'r)ñŠ{Ú®z-†)àF(!µªë£bœ¬½êİi×«j–«jÚ£)–'Ú%h7ŸŠxœŠ}6Öö«‹aŠx,¹»µê€6‹Zr)ôÛÃÚ­ë'¢Šİzv¢Ì¬Šx%zÚ'²Ö©j¹è¢·^§h²)à•ëhœih±ªâ¢–«Š+uéÚvè¶º,şÚÚµ§huæ§jX¬ŠÈ%¢Æ«Š‰‚ZZ®z(­×§iÚ,Šx%zÚ'ş‹k¢Ïí­«Zv‡^jv¥ŠÈ¬‚Z,j¸¨™Ø%²)à•ëhœú+zV±Š‰šuéijºZ­§(;§¶‹mìb²×®xœ¡Ê'éí¡Ë²¢Ç¥zg§¶‹,¢w±iËZ™éíy¬›.‡^‹Z­é¨±¦Ãyø§Šj,z["	^¶‰İyªh­
