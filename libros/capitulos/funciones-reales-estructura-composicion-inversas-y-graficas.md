@@ -353,7 +353,13 @@ x_1^2=x_2^2
 (x_1-x_2)(x_1+x_2)=0.
 $$
 
-Como $x_1+x_2\ge0$, la única posibilidad compatible con dos números no negativos distintos de signo opuesto queda excluida; por tanto $x_1=x_2$.
+Por el producto nulo, o bien $x_1=x_2$, o bien $x_1=-x_2$. En el segundo caso, como $x_1,x_2\ge0$, necesariamente
+
+$$
+x_1=x_2=0.
+$$
+
+En ambos casos $x_1=x_2$.
 
 ::: {.ma-block .ma-intuicion}
 **Dos sensibilidades diferentes**
