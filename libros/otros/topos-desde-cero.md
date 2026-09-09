@@ -27,6 +27,7 @@ prerequisites: []
 related:
   - MA-BCH-0002
   - MA-LES-0001
+  - MA-LES-0002
 provenance:
   type: synthesis
   sources: []
@@ -118,7 +119,8 @@ La arquitectura completa del volumen es más extensa que esta lista: estos punto
    - **1.2 — Negación, conjunción y disyunción:** publicada completa.
    - **1.3 — Tablas de verdad y equivalencia lógica:** publicada completa.
    - [**1.4 — Implicación, contrapositiva y recíproca**](../capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md) (`MA-LES-0001`): publicada completa como unidad web modular.
-   - **1.5 — Bicondicionales y condiciones necesarias y suficientes:** siguiente sección prevista.
+   - [**1.5 — Bicondicionales y condiciones necesarias y suficientes**](../capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md) (`MA-LES-0002`): publicada completa como unidad web modular.
+   - **1.6 — Argumentos deductivos y validez:** siguiente sección prevista.
 
 ## Publicación progresiva
 
@@ -128,6 +130,6 @@ La versión pública conserva el orden lógico del texto maestro y puede enlazar
 
 ## Estado
 
-La migración a Matemática Abierta ya comprende las **cuatro primeras secciones del capítulo 1**. Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo. La sección 1.4 se publica además como unidad modular: introduce el condicional, las equivalencias fundamentales de la implicación, su negación, la recíproca, la contrapositiva y la inversa, y prepara el análisis formal de inferencias válidas e inválidas que aparecerá en la sección 1.6.
+La migración a Matemática Abierta ya comprende las **cinco primeras secciones del capítulo 1**. Las secciones 1.1–1.3 permanecen reunidas en la página del capítulo. Las secciones 1.4 y 1.5 se publican como unidades modulares: la primera introduce la implicación y sus formas asociadas; la segunda añade el bicondicional, fija la traducción de «si», «solo si» y «si y solo si», introduce condiciones necesarias y suficientes y distingue cuidadosamente la conectiva $\leftrightarrow$ de la equivalencia lógica $\equiv$.
 
 Esta edición es abierta y progresiva. El contenido textual original se publica bajo **GNU Free Documentation License 1.3 o posterior**.
