@@ -20,7 +20,8 @@ topics:
   - numeros-reales
   - completitud
 prerequisites: []
-related: []
+related:
+  - MA-BCH-0005
 provenance:
   type: original
   sources: []
@@ -61,9 +62,11 @@ $$
 
 Si este tratado consigue que una demostración rigurosa no se sienta como un obstáculo para comprender, sino como una forma más profunda de comprensión, habrá cumplido una parte esencial de su propósito.
 
-## Publicación en curso
+## Capítulos en publicación
 
-La edición web comienza con este prefacio. La próxima incorporación será el **Capítulo 0 — Fundamento lógico-conjuntista**, seguido por la construcción de los números naturales, enteros, racionales y reales.
+1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación iniciada con §§0.0–0.2: posición deductiva, lógica ambiente, axiomas conjuntistas disponibles, inclusión y operaciones elementales de conjuntos.
+
+La siguiente incorporación continuará dentro del mismo capítulo con **§0.3 — Pares ordenados y productos cartesianos**. Después seguirán relaciones, cocientes, funciones y órdenes antes de comenzar la construcción de los números naturales.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
