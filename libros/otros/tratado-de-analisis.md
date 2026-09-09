@@ -22,6 +22,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0005
+  - MA-BCH-0006
 provenance:
   type: original
   sources: []
@@ -62,11 +63,12 @@ $$
 
 Si este tratado consigue que una demostración rigurosa no se sienta como un obstáculo para comprender, sino como una forma más profunda de comprensión, habrá cumplido una parte esencial de su propósito.
 
-## Capítulos en publicación
+## Contenido disponible
 
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación iniciada con §§0.0–0.2: posición deductiva, lógica ambiente, axiomas conjuntistas disponibles, inclusión y operaciones elementales de conjuntos.
+2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; crece al mismo ritmo que la edición web.
 
-La siguiente incorporación continuará dentro del mismo capítulo con **§0.3 — Pares ordenados y productos cartesianos**. Después seguirán relaciones, cocientes, funciones y órdenes antes de comenzar la construcción de los números naturales.
+La siguiente incorporación continuará dentro del Capítulo 0 con **§0.3 — Pares ordenados y productos cartesianos**. En el mismo paso se añadirán al glosario las nociones nuevas correspondientes. Después seguirán relaciones, cocientes, funciones y órdenes antes de comenzar la construcción de los números naturales.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
