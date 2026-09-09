@@ -482,7 +482,7 @@ Cuando $A=B$, hablamos de una relación **sobre** $A$. La escritura $aRb$ abrevi
 
 **En este tratado.** Una relación $\sim$ sobre $A$ es una **relación de equivalencia** si es reflexiva, simétrica y transitiva.
 
-La noción de clase de equivalencia se introducirá sólo en la sección siguiente.
+Las clases de equivalencia y el conjunto cociente se construyen en §0.5 a partir de esta noción.
 
 **En el Tratado:** [Definición 0.4.7 — Relación de equivalencia](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-equivalencia).
 
