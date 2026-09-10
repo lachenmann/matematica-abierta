@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0010 |
+| Capítulo | MA-BCH-0011 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0006 |
 
@@ -56,6 +56,7 @@
 | MA-BCH-0007 | book-chapter | Del cálculo aritmético al lenguaje algebraico | `libros/capitulos/algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md` | published |
 | MA-BCH-0008 | book-chapter | Lógica proposicional y álgebra de proposiciones | `libros/capitulos/algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md` | published |
 | MA-BCH-0009 | book-chapter | Teorías físicas: fenómenos, modelos y leyes | `libros/capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md` | published |
+| MA-BCH-0010 | book-chapter | Sucesiones y la primera noción rigurosa de límite | `libros/capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |

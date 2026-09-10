@@ -6,7 +6,7 @@ content-type: book
 collection: PM-CAL
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 areas:
   - fundamentos
   - calculo
@@ -28,6 +28,7 @@ related:
   - MA-BCH-0001
   - MA-BCH-0003
   - MA-BCH-0004
+  - MA-BCH-0010
 provenance:
   type: synthesis
   sources: []
@@ -86,6 +87,7 @@ Los capítulos posteriores desarrollarán derivación, aplicaciones de la deriva
 1. [**Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones**](../capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md) (`MA-BCH-0001`).
 2. [**Los números reales: orden, valor absoluto, desigualdades y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
 3. [**Funciones reales: estructura, composición, inversas y gráficas**](../capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md) (`MA-BCH-0004`).
+4. [**Sucesiones y la primera noción rigurosa de límite**](../capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) (`MA-BCH-0010`).
 
 Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
 
@@ -104,6 +106,6 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública está abierta y ya contiene sus **tres primeros capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
+La edición pública está abierta y ya contiene sus **cuatro primeros capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
 
 Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
