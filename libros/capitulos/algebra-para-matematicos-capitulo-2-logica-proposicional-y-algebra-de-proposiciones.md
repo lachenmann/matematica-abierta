@@ -4,7 +4,7 @@ description: "Segundo capítulo de Álgebra para matemáticos: proposiciones, co
 content-id: MA-BCH-0008
 content-type: book-chapter
 collection: PM-ALG
-book-id: MA-BOK-0002
+book-id: MA-BOK-0004
 status: published
 date-created: 2026-09-10
 date-modified: 2026-09-10
@@ -24,7 +24,7 @@ topics:
 prerequisites:
   - MA-BCH-0007
 related:
-  - MA-BOK-0002
+  - MA-BOK-0004
   - MA-BCH-0007
 provenance:
   type: original

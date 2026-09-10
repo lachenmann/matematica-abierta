@@ -4,10 +4,10 @@ description: "Primer capítulo de Álgebra para matemáticos: estructura de expr
 content-id: MA-BCH-0007
 content-type: book-chapter
 collection: PM-ALG
-book-id: MA-BOK-0002
+book-id: MA-BOK-0004
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 areas:
   - fundamentos
   - algebra
@@ -24,7 +24,7 @@ topics:
   - transformacion-algebraica
 prerequisites: []
 related:
-  - MA-BOK-0002
+  - MA-BOK-0004
 provenance:
   type: original
   sources: []

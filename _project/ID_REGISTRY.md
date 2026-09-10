@@ -8,9 +8,9 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0007 |
+| Capítulo | MA-BCH-0010 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0004 |
+| Libro | MA-BOK-0006 |
 
 ## IDs asignados
 
@@ -53,9 +53,14 @@
 | MA-BCH-0004 | book-chapter | Funciones reales: estructura, composición, inversas y gráficas | `libros/capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md` | published |
 | MA-BCH-0005 | book-chapter | Tratado de análisis — Capítulo 0: Fundamento lógico y conjuntista | `libros/capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md` | published |
 | MA-BCH-0006 | book-chapter | Tratado de análisis — Glosario matemático | `libros/otros/tratado-de-analisis-glosario.md` | published |
+| MA-BCH-0007 | book-chapter | Del cálculo aritmético al lenguaje algebraico | `libros/capitulos/algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md` | published |
+| MA-BCH-0008 | book-chapter | Lógica proposicional y álgebra de proposiciones | `libros/capitulos/algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md` | published |
+| MA-BCH-0009 | book-chapter | Teorías físicas: fenómenos, modelos y leyes | `libros/capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
+| MA-BOK-0004 | book | Álgebra para matemáticos | `libros/para-matematicos/algebra-para-matematicos.md` | published |
+| MA-BOK-0005 | book | Física para matemáticos | `libros/para-matematicos/fisica-para-matematicos.md` | published |
 
 ## Regla de uso
 

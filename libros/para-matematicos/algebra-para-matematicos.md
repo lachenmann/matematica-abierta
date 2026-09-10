@@ -1,7 +1,7 @@
 ---
 title: "Álgebra para matemáticos"
 description: "Libro abierto de álgebra que conduce desde el lenguaje simbólico elemental hasta el álgebra lineal, las estructuras abstractas y la teoría de Galois."
-content-id: MA-BOK-0002
+content-id: MA-BOK-0004
 content-type: book
 collection: PM-ALG
 status: published
