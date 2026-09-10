@@ -69,19 +69,42 @@ Este capítulo abre *Física para matemáticos* antes de introducir una teoría 
 En física, resolver una ecuación es sólo una parte del trabajo. Antes hay que construir el problema; después hay que interpretar la solución y decidir hasta dónde el modelo sigue siendo adecuado.
 :::
 
-{{< include _fisica-c01-01-02.md >}}
-
-{{< include _fisica-c01-03-04.md >}}
-
-{{< include _fisica-c01-05-06.md >}}
-
-{{< include _fisica-c01-07-08.md >}}
-
-{{< include _fisica-c01-09-10.md >}}
-
-{{< include _fisica-c01-11-12.md >}}
-
-{{< include _fisica-c01-13-14.md >}}
+{{< include _fisica-c01-chunk-01.md >}}
+{{< include _fisica-c01-chunk-02.md >}}
+{{< include _fisica-c01-chunk-03.md >}}
+{{< include _fisica-c01-chunk-04.md >}}
+{{< include _fisica-c01-chunk-05.md >}}
+{{< include _fisica-c01-chunk-06.md >}}
+{{< include _fisica-c01-chunk-07.md >}}
+{{< include _fisica-c01-chunk-08.md >}}
+{{< include _fisica-c01-chunk-09.md >}}
+{{< include _fisica-c01-chunk-10.md >}}
+{{< include _fisica-c01-chunk-11.md >}}
+{{< include _fisica-c01-chunk-12.md >}}
+{{< include _fisica-c01-chunk-13.md >}}
+{{< include _fisica-c01-chunk-14.md >}}
+{{< include _fisica-c01-chunk-15.md >}}
+{{< include _fisica-c01-chunk-16.md >}}
+{{< include _fisica-c01-chunk-17.md >}}
+{{< include _fisica-c01-chunk-18.md >}}
+{{< include _fisica-c01-chunk-19.md >}}
+{{< include _fisica-c01-chunk-20.md >}}
+{{< include _fisica-c01-chunk-21.md >}}
+{{< include _fisica-c01-chunk-22.md >}}
+{{< include _fisica-c01-chunk-23.md >}}
+{{< include _fisica-c01-chunk-24.md >}}
+{{< include _fisica-c01-chunk-25.md >}}
+{{< include _fisica-c01-chunk-26.md >}}
+{{< include _fisica-c01-chunk-27.md >}}
+{{< include _fisica-c01-chunk-28.md >}}
+{{< include _fisica-c01-chunk-29.md >}}
+{{< include _fisica-c01-chunk-30.md >}}
+{{< include _fisica-c01-chunk-31.md >}}
+{{< include _fisica-c01-chunk-32.md >}}
+{{< include _fisica-c01-chunk-33.md >}}
+{{< include _fisica-c01-chunk-34.md >}}
+{{< include _fisica-c01-chunk-35.md >}}
+{{< include _fisica-c01-chunk-36.md >}}
 
 ## Referencias {#referencias}
 
