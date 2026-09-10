@@ -6,7 +6,7 @@ content-type: book
 collection: PM-ALG
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-09
+date-modified: 2026-09-10
 areas:
   - fundamentos
   - algebra
@@ -26,6 +26,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0007
+  - MA-BCH-0008
 provenance:
   type: original
   sources: []
@@ -119,8 +120,7 @@ A partir de allí el tomo desarrolla álgebra simbólica rigurosa, polinomios, e
 ## Capítulos publicados
 
 1. [**Del cálculo aritmético al lenguaje algebraico**](../capitulos/algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md) (`MA-BCH-0007`).
-
-El segundo capítulo, **Lógica proposicional y álgebra de proposiciones**, ya está cerrado en el manuscrito canónico y se incorporará a la edición web después de su adaptación editorial específica.
+2. [**Lógica proposicional y álgebra de proposiciones**](../capitulos/algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md) (`MA-BCH-0008`).
 
 ## Publicación progresiva
 
