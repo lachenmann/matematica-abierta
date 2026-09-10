@@ -438,6 +438,8 @@ El diagnóstico es una nueva tarea de modelización.
 **Principio FPM-I-01-MP20 — Un fallo predictivo exige auditoría, no culpable automático**
 Si una predicción fiable contradice una observación fiable, debe revisarse el paquete de premisas que produjo la predicción. La discrepancia, por sí sola, no identifica cuál hipótesis, condición, aproximación o regla de observación es responsable.
 :::
+
+Este principio es la lectura metodológica directa de `P02`.
 ### 12.15. Qué ocurre con una solución físicamente absurda
 
 A veces el problema aparece incluso antes de realizar el experimento.
@@ -476,7 +478,8 @@ Este punto prepara §13.
 11. **Prueba nueva:** ¿qué experimento distinguiría las causas restantes?
 12. **Revisión:** ¿qué nivel del modelo o teoría debe modificarse?
 :::
-### 12.17. Ejercicio FPM-I-01-E029 — Modus tollens compuesto
+::: {.ma-block .ma-enunciado #fpm-i-01-e029}
+**Ejercicio FPM-I-01-E029 — Modus tollens compuesto**
 
 **Familia:** `E-PROOF / CORE`
 
@@ -497,7 +500,10 @@ $$
 $$
 
 no se sigue de las premisas.
-#### Solución
+:::
+
+::: {.ma-block .ma-comprobacion}
+**Solución**
 
 Definamos:
 
@@ -507,13 +513,13 @@ Q
 H\land I\land A\land M.
 $$
 
-Entonces la primera premisa es:
+La primera parte de la hipótesis es:
 
 $$
 Q\to P.
 $$
 
-También tenemos:
+La segunda es:
 
 $$
 \neg P.
@@ -533,13 +539,13 @@ $$
 }
 $$
 
-La conclusión:
+Ahora preguntamos si podemos concluir:
 
 $$
-\neg H
+\neg H.
 $$
 
-no se sigue porque la negación de una conjunción solo implica que al menos uno de sus componentes falla.
+No.
 
 Por De Morgan:
 
@@ -555,118 +561,130 @@ $$
 \neg M.
 $$
 
-Por ejemplo, es lógicamente posible que:
+La disyunción puede ser verdadera aunque:
 
 $$
-H=\text{verdadero},
+H
+$$
+
+sea verdadera.
+
+Por ejemplo, consideremos:
+
+$$
+H=\text{V},
+\qquad
+I=\text{F},
+\qquad
+A=\text{V},
+\qquad
+M=\text{V}.
+$$
+
+Entonces:
+
+$$
+H\land I\land A\land M
+=
+\text{F},
+$$
+
+y por tanto:
+
+$$
+\neg(H\land I\land A\land M)
+=
+\text{V},
 $$
 
 pero:
 
 $$
-A=\text{falso}.
-$$
-
-Entonces la conjunción total sería falsa aunque $H$ siguiera siendo verdadera.
-### 12.18. Ejercicio FPM-I-01-E030 — De Morgan y diagnóstico físico
-
-**Familia:** `E-CON / ADVANCED`
-
-Una predicción falla y sabemos:
-
-$$
-\neg(H\land I\land A\land M).
-$$
-
-Además, mediante pruebas independientes establecemos:
-
-$$
-H,
-\qquad
-I,
-\qquad
-M.
-$$
-
-1. Demuestra que debe cumplirse:
-
-$$
-\neg A.
-$$
-
-2. Interpreta físicamente el resultado.
-3. Explica por qué esta conclusión era imposible antes de obtener la evidencia independiente sobre $H$, $I$ y $M$.
-#### Solución
-
-##### 1. Demostración
-
-Por De Morgan:
-
-$$
-\neg(H\land I\land A\land M)
-$$
-
-es equivalente a:
-
-$$
 \neg H
-\lor
-\neg I
-\lor
-\neg A
-\lor
-\neg M.
+=
+\text{F}.
 $$
 
-Pero sabemos:
-
-$$
-H,
-\qquad
-I,
-\qquad
-M.
-$$
+Así existe una valuación donde la conclusión de `P02` es verdadera y $\neg H$ es falsa.
 
 Por tanto:
 
 $$
-\neg H,
-\qquad
-\neg I,
-\qquad
-\neg M
+\boxed{
+\neg(H\land I\land A\land M)
+\not\Rightarrow
+\neg H.
+}
+$$
+:::
+::: {.ma-block .ma-enunciado #fpm-i-01-e030}
+**Ejercicio FPM-I-01-E030 — De Morgan y diagnóstico físico**
+
+**Familia:** `E-PROOF / CORE`
+
+Un experimento se modela mediante el siguiente paquete:
+
+- $H$: la relación física central utilizada es adecuada;
+- $I$: las condiciones iniciales y parámetros fueron correctamente determinados;
+- $A$: las aproximaciones e idealizaciones siguen dentro de su régimen;
+- $M$: el procedimiento de observación y calibración es correcto.
+
+Se ha demostrado que:
+
+$$
+(H\land I\land A\land M)\to P.
 $$
 
-son falsas.
+Una observación fiable es incompatible con $P$.
 
-La única posibilidad restante en la disyunción es:
+1. Escribe la conclusión lógica mínima.
+2. Aplica De Morgan.
+3. Un control independiente confirma $I$.
+4. Una calibración independiente confirma $M$.
+5. Una prueba adicional muestra que la aproximación principal está fuera de su régimen.
+6. ¿Qué revisión está entonces directamente justificada?
+7. ¿Se sigue de este diagnóstico que $H$ es falsa?
+8. Explica qué habría ocurrido si se hubiera saltado directamente de $\neg P$ a $\neg H$.
+:::
+
+::: {.ma-block .ma-comprobacion}
+**Solución**
+
+#### 1. Conclusión mínima
+
+Tenemos:
+
+$$
+(H\land I\land A\land M)\to P
+$$
+
+y:
+
+$$
+\neg P.
+$$
+
+Por modus tollens:
 
 $$
 \boxed{
-\neg A.
+\neg(H\land I\land A\land M).
 }
 $$
+#### 2. De Morgan
 
-##### 2. Interpretación física
-
-Dentro del esquema, la discrepancia debe atribuirse a alguna idealización o aproximación contenida en $A$.
-
-Esto no nos dice todavía cuál.
-
-Puede ser necesario descomponer:
+Aplicamos:
 
 $$
-A=A_1\land A_2\land\cdots\land A_k
+\neg(X\land Y)
+\equiv
+\neg X\lor\neg Y.
 $$
 
-y realizar nuevas pruebas.
-
-##### 3. Por qué antes no era posible
-
-Inicialmente solo sabíamos:
+Extendida a las cuatro premisas:
 
 $$
+\boxed{
 \neg H
 \lor
 \neg I
@@ -674,34 +692,151 @@ $$
 \neg A
 \lor
 \neg M.
+}
+$$
+#### 3. Confirmación de $I$
+
+La evidencia independiente autoriza mantener:
+
+$$
+I.
 $$
 
-La lógica no privilegiaba ningún término.
+Por tanto, dentro del diagnóstico actual podemos eliminar:
 
-La evidencia adicional eliminó tres alternativas.
+$$
+\neg I.
+$$
 
-El diagnóstico se volvió posible porque añadimos nuevas premisas.
+La disyunción se reduce informativamente a:
 
-Esto ilustra:
+$$
+\neg H
+\lor
+\neg A
+\lor
+\neg M.
+$$
+#### 4. Confirmación de $M$
+
+La calibración independiente autoriza mantener:
+
+$$
+M.
+$$
+
+La disyunción restante es:
+
+$$
+\neg H
+\lor
+\neg A.
+$$
+#### 5. La aproximación está fuera de régimen
+
+La nueva prueba proporciona evidencia específica para:
+
+$$
+\neg A.
+$$
+
+Ahora tenemos una causa concreta capaz de explicar la discrepancia.
+#### 6. Revisión justificada
+
+La revisión directamente justificada es:
+
+> abandonar o modificar la aproximación que produjo $A$, o sustituirla por una descripción válida en el nuevo régimen.
+
+En símbolos, la evidencia favorece:
+
+$$
+\boxed{\neg A}.
+$$
+#### 7. ¿Implica esto $\neg H$?
+
+No.
+
+La disyunción:
+
+$$
+\neg H\lor\neg A
+$$
+
+queda satisfecha si:
+
+$$
+\neg A
+$$
+
+es verdadera.
+
+Por tanto, el fallo de la aproximación no obliga lógicamente a rechazar:
+
+$$
+H.
+$$
+
+La relación física central puede continuar siendo adecuada.
+#### 8. Error del salto directo
+
+Si hubiéramos inferido inmediatamente:
+
+$$
+\neg P
+\Longrightarrow
+\neg H,
+$$
+
+habríamos cometido un error lógico.
+
+La predicción dependía de:
+
+$$
+H\land I\land A\land M,
+$$
+
+no de $H$ sola.
+
+La inferencia válida era:
+
+$$
+\neg P
+\Longrightarrow
+\neg(H\land I\land A\land M),
+$$
+
+dado el condicional predictivo.
+
+El diagnóstico posterior requirió evidencia nueva.
+
+La lección es:
 
 $$
 \boxed{
-\text{revisión física}
-=
-\text{lógica}
-+
-\text{evidencia adicional}.
+\text{fallo predictivo}
+\neq
+\text{identificación automática de la causa}.
 }
 $$
+:::
 ### 12.19. Síntesis
 
-La segunda proposición formal del capítulo establece:
+La segunda proposición formal del capítulo es:
 
 $$
+\boxed{
 [(H\land I\land A\land M)\to P]
 \land
 \neg P
 \Longrightarrow
+\neg(H\land I\land A\land M).
+}
+$$
+
+Por De Morgan:
+
+$$
+\boxed{
 \neg H
 \lor
 \neg I
@@ -709,55 +844,31 @@ $$
 \neg A
 \lor
 \neg M.
+}
 $$
 
-La consecuencia física es clara:
+La matemática nos dice exactamente cuánto podemos concluir.
+
+No menos:
+
+> alguna parte del paquete debe revisarse.
+
+Pero tampoco más:
+
+> la lógica por sí sola no identifica cuál.
+
+Por eso `P02` conduce al principio metodológico:
 
 $$
 \boxed{
 \text{predicción fallida}
-\not\Rightarrow
-\text{teoría automáticamente falsa}.
+\longrightarrow
+\text{auditoría de premisas}.
 }
 $$
 
-Un fallo obliga a auditar:
+La tarea física comienza entonces de nuevo:
 
-- hipótesis;
-- condiciones;
-- aproximaciones;
-- mediación observacional;
-- régimen.
-
-Y después a diseñar pruebas que permitan localizar la discrepancia.
-
-Esta lógica completa el ciclo iniciado en §1:
-
-$$
-\boxed{
-\text{pregunta}
-\to
-\text{modelo}
-\to
-\text{predicción}
-\to
-\text{experimento}
-\to
-\text{auditoría}
-\to
-\text{revisión}.
-}
-$$
-
-La ciencia no termina cuando una predicción acierta.
-
-Tampoco termina cuando falla.
-
-Un modelo puede:
-
-- sobrevivir;
-- restringir su dominio;
-- cambiar parámetros;
 - revisar condiciones;
 - revisar régimen;
 - revisar aproximaciones;
