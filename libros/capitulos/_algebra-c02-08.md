@@ -52,45 +52,19 @@ Pero el orden importa: **una equivalencia solo podrá usarse como ley después d
 
 Necesitaremos abreviar dos tipos de fórmulas que ya conocemos.
 
-Sea:
-
-$$
-T
-$$
-
-una fórmula tautológica cualquiera, y sea:
+Sea $T$ una fórmula tautológica cualquiera, y sea:
 
 $$
 C
 $$
 
-una fórmula contradictoria cualquiera.
+una fórmula contradictoria cualquiera. Por tanto, bajo toda asignación relevante: $T=\mathrm V$ y $C=\mathrm F$.
 
-Por tanto, bajo toda asignación relevante:
-
-$$
-T=\mathrm V
-$$
-
-y:
-
-$$
-C=\mathrm F.
-$$
-
-Por ejemplo, podemos tomar:
-
-$$
-T=P\lor\neg P
-$$
-
-y:
-
-$$
-C=P\land\neg P.
-$$
+Por ejemplo, podemos tomar: $T=P\lor\neg P$ y $C=P\land\neg P$.
 
 ::: {.ma-block .ma-observacion}
+**Observación**
+
 Las letras $T$ y $C$ no son nuevos valores de verdad. Son abreviaturas para **fórmulas**: $T$ representa una tautología y $C$ una contradicción.
 
 Los valores de verdad del capítulo siguen siendo:
@@ -118,34 +92,20 @@ $$
 P\land T,
 $$
 
-la segunda parte siempre vale $\mathrm V$. Por tanto, el valor de la conjunción queda determinado exactamente por el valor de $P$.
+la segunda parte siempre vale $\mathrm V$. El valor de la conjunción queda determinado exactamente por el valor de $P$.
 
 | $P$ | $T$ | $P\land T$ |
 |---|---|---|
 | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ |
 | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ |
 
-Así:
-
-$$
-P\land T\equiv P.
-$$
-
-De manera dual, como una contradicción siempre recibe $\mathrm F$:
+Así, $P\land T\equiv P$. De manera dual, como una contradicción siempre recibe $\mathrm F$:
 
 $$
 P\lor C\equiv P.
 $$
 
-Estas son **leyes de identidad**.
-
-Ahora observemos:
-
-$$
-P\lor T.
-$$
-
-Como $T$ siempre es verdadera, toda la disyunción es verdadera:
+Estas son **leyes de identidad**. Ahora observemos $P\lor T$ Como $T$ siempre es verdadera, toda la disyunción es verdadera:
 
 $$
 P\lor T\equiv T.
@@ -157,9 +117,7 @@ $$
 P\land C\equiv C.
 $$
 
-Estas son **leyes de dominación**.
-
-Podemos reunir:
+Estas son **leyes de dominación**. Podemos reunir:
 
 $$
 \boxed{
@@ -198,13 +156,7 @@ Para la disyunción:
 | $\mathrm V$ | $\mathrm V$ |
 | $\mathrm F$ | $\mathrm F$ |
 
-Así:
-
-$$
-P\lor P\equiv P.
-$$
-
-Estas son las **leyes de idempotencia**:
+Así, $P\lor P\equiv P$. Estas son las **leyes de idempotencia**:
 
 $$
 \boxed{
@@ -230,9 +182,7 @@ $$
 P\land\neg P
 $$
 
-es siempre falsa.
-
-En nuestra notación:
+es siempre falsa. En nuestra notación:
 
 $$
 \boxed{
@@ -242,9 +192,7 @@ P\land\neg P\equiv C.
 }
 $$
 
-Estas son las **leyes de complemento**.
-
-Obsérvese nuevamente que $T$ y $C$ representan fórmulas tautológicas y contradictorias, no los valores $\mathrm V$ y $\mathrm F$.
+Estas son las **leyes de complemento**. Obsérvese nuevamente que $T$ y $C$ representan fórmulas tautológicas y contradictorias, no los valores $\mathrm V$ y $\mathrm F$.
 
 ---
 
@@ -260,9 +208,9 @@ La negación invierte el valor de una fórmula. Una segunda negación vuelve a i
 Por tanto:
 
 $$
-\boxed{
+
 \neg\neg P\equiv P.
-}
+
 $$
 
 Esta será nuestra **ley de doble negación**.
@@ -271,17 +219,7 @@ Esta será nuestra **ley de doble negación**.
 
 ### 8.6 Conmutatividad
 
-Comparemos:
-
-$$
-P\land Q
-$$
-
-y:
-
-$$
-Q\land P.
-$$
+Comparemos $P\land Q$ y $Q\land P$.
 
 | $P$ | $Q$ | $P\land Q$ | $Q\land P$ |
 |---|---|---|---|
@@ -324,19 +262,7 @@ $$
 P,\qquad Q,\qquad R.
 $$
 
-Para la conjunción podemos agrupar:
-
-$$
-(P\land Q)\land R
-$$
-
-o:
-
-$$
-P\land(Q\land R).
-$$
-
-La tabla conjunta es:
+Para la conjunción podemos agrupar: $(P\land Q)\land R$ o $P\land(Q\land R)$. La tabla conjunta es:
 
 | $P$ | $Q$ | $R$ | $(P\land Q)\land R$ | $P\land(Q\land R)$ |
 |---|---|---|---|---|
@@ -462,13 +388,7 @@ Por tanto, todas las equivalencias enunciadas quedan demostradas.
 
 Para calcular algebraicamente necesitamos hacer explícita una operación que hasta ahora hemos usado solo de manera intuitiva.
 
-Supongamos:
-
-$$
-A\equiv B.
-$$
-
-Entonces, en cada asignación, $A$ y $B$ reciben el mismo valor.
+Supongamos $A\equiv B$. Entonces, en cada asignación, $A$ y $B$ reciben el mismo valor.
 
 Por tanto:
 
@@ -504,23 +424,13 @@ No necesitamos todavía una teoría general de sustitución para fórmulas arbit
 
 Una vez que una ley está demostrada, ya no necesitamos reconstruir su tabla cada vez.
 
-Por ejemplo:
-
-$$
-P\lor P\equiv P
-$$
-
-puede utilizarse directamente como idempotencia.
-
-Y:
+Por ejemplo, $P\lor P\equiv P$ puede utilizarse directamente como idempotencia. Y:
 
 $$
 \neg\neg P\equiv P
 $$
 
-puede utilizarse directamente como doble negación.
-
-Esto cambia el modo de trabajo.
+puede utilizarse directamente como doble negación. Esto cambia el modo de trabajo.
 
 Antes:
 
@@ -550,7 +460,6 @@ Pero cada paso debe citar una ley válida.
 
 ::: {.ma-block .ma-observacion #apm-i-x0016}
 **Ejemplo — Simplificar sin reconstruir una tabla completa**
-
 :::
 
 Simplifiquemos:
@@ -592,11 +501,11 @@ $$
 Por tanto:
 
 $$
-\boxed{
+
 (P\land P)\lor(Q\land\neg Q)
 \equiv
 P.
-}
+
 $$
 
 La cadena completa puede presentarse de manera compacta:
@@ -616,11 +525,9 @@ $$
 Este es el nuevo tipo de cálculo que iremos desarrollando.
 
 ---
-
 ## Ejercicios
 
 ### Simplificaciones elementales {#apm-i-e0102}
-
 Simplifica mediante [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002) y justifica cada paso.
 
 #### a)
@@ -636,6 +543,7 @@ $$
 $$
 
 #### Solución
+
 
 #### a)
 
@@ -708,7 +616,6 @@ $$
 ---
 
 ### Reordenar y eliminar repeticiones {#apm-i-e0103}
-
 Simplifica:
 
 $$
@@ -718,6 +625,7 @@ $$
 Utiliza únicamente asociatividad, conmutatividad e idempotencia.
 
 #### Solución
+
 
 Por asociatividad:
 
@@ -764,7 +672,6 @@ $$
 ---
 
 ### Justificar la conmutatividad {#apm-i-e0104}
-
 Demuestra mediante una tabla que:
 
 $$
@@ -776,6 +683,7 @@ $$
 Explica después por qué esa tabla autoriza a utilizar la conmutatividad de $\lor$ como ley de reescritura.
 
 #### Solución
+
 
 | $P$ | $Q$ | $P\lor Q$ | $Q\lor P$ |
 |---|---|---|---|
@@ -797,7 +705,6 @@ Como la equivalencia ya ha sido demostrada para fórmulas arbitrarias $P,Q$, pue
 ---
 
 ### Justificar una equivalencia derivada {#apm-i-e0105}
-
 Demuestra mediante una cadena de leyes que:
 
 $$
@@ -809,6 +716,7 @@ $$
 Indica la ley usada en cada paso.
 
 #### Solución
+
 
 Por doble negación:
 
@@ -841,7 +749,6 @@ Cada paso utiliza una ley ya demostrada en [la proposición «Primeras leyes del
 ---
 
 ### ¿Por qué la identidad vale para cualquier tautología? {#apm-i-e0106}
-
 Sea $T$ una tautología cualquiera.
 
 Justifica directamente desde las definiciones, sin elegir una fórmula tautológica particular, que:
@@ -851,6 +758,7 @@ P\land T\equiv P.
 $$
 
 #### Solución
+
 
 Como $T$ es una tautología, en toda asignación:
 
@@ -923,7 +831,6 @@ La demostración no depende de qué tautología concreta representa $T$.
 ---
 
 ### Explorar la dualidad de las primeras leyes {#apm-i-e0107}
-
 Observa las parejas:
 
 $$
@@ -953,6 +860,7 @@ Busca el mismo patrón en las leyes de complemento.
 Formula con tus palabras la regularidad observada, sin convertirla todavía en una nueva ley formal.
 
 #### Solución
+
 
 #### a)
 
@@ -1007,7 +915,6 @@ Esta regularidad sugiere una simetría interna del álgebra proposicional. Por a
 ---
 
 ### Síntesis: una cadena larga {#apm-i-e0108}
-
 Simplifica:
 
 $$
@@ -1019,6 +926,7 @@ $$
 Utiliza únicamente las leyes de [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002). Justifica cada paso importante.
 
 #### Solución
+
 
 Comenzamos por la doble negación:
 
@@ -1134,7 +1042,7 @@ Primero establecimos por tablas o argumentos semánticos las leyes de:
 Todas quedaron reunidas en:
 
 $$
-\boxed{\text{primeras leyes del álgebra proposicional}.}
+\texttt{[la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002)}.
 $$
 
 Después justificamos por qué una subfórmula puede reemplazarse localmente por otra equivalente dentro de:
@@ -1160,20 +1068,18 @@ donde cada paso debe indicar la ley que lo autoriza.
 La diferencia con una manipulación meramente simbólica es esencial:
 
 $$
-\boxed{
+
 \text{no movemos símbolos porque «parece funcionar»;}
 \quad
 \text{reescribimos mediante equivalencias ya demostradas}.
-}
+
 $$
 
 ---
 
 ## Hacia la sección siguiente
 
-Nuestro primer paquete de leyes todavía está incompleto.
-
-En álgebra elemental, una operación puede distribuirse sobre otra.
+Nuestro primer paquete de leyes todavía está incompleto. En álgebra elemental, una operación puede distribuirse sobre otra.
 
 En lógica proposicional ocurre algo particularmente interesante: la conjunción y la disyunción presentan una simetría mucho más fuerte de la que encontramos en la aritmética.
 

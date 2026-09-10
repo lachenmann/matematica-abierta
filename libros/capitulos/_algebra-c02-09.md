@@ -26,9 +26,7 @@ $$
 a(b+c)=ab+ac.
 $$
 
-La multiplicación se distribuye sobre la suma.
-
-En lógica proposicional aparecerá algo parecido, pero con una diferencia estructural notable:
+La multiplicación se distribuye sobre la suma. En lógica proposicional aparecerá algo parecido, pero con una diferencia estructural notable:
 
 > **la conjunción se distribuye sobre la disyunción y la disyunción se distribuye sobre la conjunción.**
 
@@ -43,13 +41,7 @@ Con estas herramientas el álgebra proposicional empieza a adquirir una fisonom�
 
 ### 9.1 La conjunción distribuye sobre la disyunción
 
-Consideremos:
-
-$$
-P\land(Q\lor R).
-$$
-
-La fórmula afirma que $P$ es verdadera y que, además, al menos una de $Q,R$ es verdadera.
+Consideremos $P\land(Q\lor R)$. La fórmula afirma que $P$ es verdadera y que, además, al menos una de $Q,R$ es verdadera.
 
 Comparemos con:
 
@@ -62,19 +54,11 @@ Esta segunda fórmula afirma que se cumple al menos una de las dos posibilidades
 - $P$ y $Q$ son verdaderas;
 - $P$ y $R$ son verdaderas.
 
-Ambas descripciones tienen el mismo comportamiento lógico.
-
-Podemos verlo sin una tabla de ocho filas completa.
+Ambas descripciones tienen el mismo comportamiento lógico. Podemos verlo sin una tabla de ocho filas completa.
 
 #### Si $P=\mathrm F$
 
-Entonces:
-
-$$
-P\land(Q\lor R)=\mathrm F.
-$$
-
-También:
+Entonces $P\land(Q\lor R)=\mathrm F$ También:
 
 $$
 P\land Q=\mathrm F,
@@ -90,13 +74,7 @@ $$
 
 #### Si $P=\mathrm V$
 
-Entonces:
-
-$$
-P\land(Q\lor R)
-$$
-
-recibe exactamente el valor de:
+Entonces $P\land(Q\lor R)$ recibe exactamente el valor de:
 
 $$
 Q\lor R.
@@ -114,15 +92,7 @@ $$
 P\land R
 $$
 
-recibe el valor de $R$.
-
-Así:
-
-$$
-(P\land Q)\lor(P\land R)
-$$
-
-también recibe exactamente el valor de:
+recibe el valor de $R$. Así, $(P\land Q)\lor(P\land R)$ también recibe exactamente el valor de:
 
 $$
 Q\lor R.
@@ -142,35 +112,13 @@ $$
 
 ### 9.2 La disyunción también distribuye sobre la conjunción
 
-Ahora comparemos:
-
-$$
-P\lor(Q\land R)
-$$
-
-con:
-
-$$
-(P\lor Q)\land(P\lor R).
-$$
+Ahora comparemos $P\lor(Q\land R)$ con $(P\lor Q)\land(P\lor R)$.
 
 #### Si $P=\mathrm V$
 
 La primera fórmula es verdadera porque contiene una disyunción con $P=\mathrm V$.
 
-En la segunda:
-
-$$
-P\lor Q=\mathrm V
-$$
-
-y:
-
-$$
-P\lor R=\mathrm V.
-$$
-
-Por tanto, su conjunción también es verdadera.
+En la segunda: $P\lor Q=\mathrm V$ y $P\lor R=\mathrm V$. Por tanto, su conjunción también es verdadera.
 
 #### Si $P=\mathrm F$
 
@@ -192,9 +140,7 @@ $$
 P\lor R
 $$
 
-recibe el valor de $R$.
-
-Por tanto:
+recibe el valor de $R$. Por tanto:
 
 $$
 (P\lor Q)\land(P\lor R)
@@ -238,25 +184,13 @@ Esta simetría será muy útil para transformar fórmulas.
 
 ### 9.3 Absorción
 
-Consideremos:
-
-$$
-P\lor(P\land Q).
-$$
-
-Puede parecer que la segunda parte aporta información adicional.
+Consideremos $P\lor(P\land Q)$ Puede parecer que la segunda parte aporta información adicional.
 
 Pero si $P$ es verdadera, toda la disyunción ya es verdadera.
 
-Y si $P$ es falsa, entonces:
+Y si $P$ es falsa, entonces $P\land Q$ también es falsa.
 
-$$
-P\land Q
-$$
-
-también es falsa.
-
-Por tanto, la fórmula completa tiene siempre el mismo valor que $P$:
+La fórmula completa tiene siempre el mismo valor que $P$:
 
 $$
 P\lor(P\land Q)\equiv P.
@@ -268,9 +202,7 @@ $$
 P\land(P\lor Q)\equiv P.
 $$
 
-Estas son las **leyes de absorción**.
-
-La palabra es apropiada: una aparición de $P$ absorbe una expresión mayor que ya contiene a $P$ de la forma adecuada.
+Estas son las **leyes de absorción**. La palabra es apropiada: una aparición de $P$ absorbe una expresión mayor que ya contiene a $P$ de la forma adecuada.
 
 ---
 
@@ -329,13 +261,7 @@ Para la primera ley de absorción, fijemos una asignación.
   $$
   que nuevamente coincide con $P$.
 
-Así:
-
-$$
-P\lor(P\land Q)\equiv P.
-$$
-
-La segunda absorción se verifica de manera dual:
+Así, $P\lor(P\land Q)\equiv P$. La segunda absorción se verifica de manera dual:
 
 - si $P=\mathrm F$, toda la conjunción es falsa;
 - si $P=\mathrm V$, entonces $P\lor Q$ es verdadera y toda la conjunción es verdadera.
@@ -352,13 +278,7 @@ Quedan demostradas las cuatro equivalencias.
 
 ### 9.5 Negar una conjunción
 
-Consideremos:
-
-$$
-\neg(P\land Q).
-$$
-
-La fórmula es verdadera cuando:
+Consideremos $\neg(P\land Q)$. La fórmula es verdadera cuando:
 
 $$
 P\land Q
@@ -399,27 +319,9 @@ Esta equivalencia ya había aparecido semánticamente en §7. Ahora queda incorp
 
 ### 9.6 Negar una disyunción
 
-Ahora consideremos:
+Ahora consideremos $\neg(P\lor Q)$ Para que una disyunción sea falsa, ambos componentes deben ser falsos.
 
-$$
-\neg(P\lor Q).
-$$
-
-Para que una disyunción sea falsa, ambos componentes deben ser falsos.
-
-Por tanto, su negación será verdadera exactamente cuando:
-
-$$
-\neg P
-$$
-
-y:
-
-$$
-\neg Q
-$$
-
-sean ambas verdaderas.
+Por tanto, su negación será verdadera exactamente cuando: $\neg P$ y $\neg Q$ sean ambas verdaderas.
 
 La tabla lo confirma:
 
@@ -476,43 +378,15 @@ Por la definición de equivalencia lógica, ambas equivalencias quedan demostrad
 
 Las leyes de De Morgan no dicen simplemente que «la negación entra al paréntesis».
 
-Al atravesar el conectivo, la negación **intercambia**:
+Al atravesar el conectivo, la negación **intercambia**: $\land$ con $\lor$.
 
-$$
-\land
-$$
-
-con:
-
-$$
-\lor.
-$$
-
-Así:
-
-$$
-\neg(P\land Q)
-$$
-
-no se transforma en:
+Así, $\neg(P\land Q)$ no se transforma en:
 
 $$
 \neg P\land\neg Q,
 $$
 
-sino en:
-
-$$
-\neg P\lor\neg Q.
-$$
-
-Y:
-
-$$
-\neg(P\lor Q)
-$$
-
-no se transforma en:
+sino en: $\neg P\lor\neg Q$ Y $\neg(P\lor Q)$ no se transforma en:
 
 $$
 \neg P\lor\neg Q,
@@ -527,11 +401,11 @@ $$
 La regla estructural es:
 
 $$
-\boxed{
+
 \text{negar cada componente}
 \quad+\quad
 \text{intercambiar }\land\text{ y }\lor.
-}
+
 $$
 
 Esta formulación será útil, pero nunca sustituye la justificación matemática: la regla es válida porque [la proposición «Leyes de De Morgan»](#apm-i-p0004) ya está demostrado.
@@ -584,7 +458,6 @@ Por ahora basta registrar que el álgebra proposicional tiene una **dualidad vis
 
 ::: {.ma-block .ma-observacion #apm-i-x0017}
 **Ejemplo — De Morgan y absorción en una misma cadena**
-
 :::
 
 Simplifiquemos:
@@ -599,9 +472,7 @@ $$
 P\land(P\lor Q)\equiv P.
 $$
 
-Pero queremos mostrar cómo interactúan las leyes nuevas.
-
-Primero aplicamos De Morgan:
+Pero queremos mostrar cómo interactúan las leyes nuevas. Primero aplicamos De Morgan:
 
 $$
 \neg\bigl(P\land(P\lor Q)\bigr)
@@ -667,21 +538,19 @@ $$
 Así:
 
 $$
-\boxed{
+
 \neg\bigl(P\land(P\lor Q)\bigr)
 \equiv
 \neg P.
-}
+
 $$
 
 Este ejemplo muestra algo importante: una transformación puede ser correcta por rutas diferentes. Lo decisivo es que cada paso esté autorizado por una equivalencia previamente demostrada.
 
 ---
-
 ## Ejercicios
 
 ### Distribuir y simplificar {#apm-i-e0109}
-
 Simplifica:
 
 $$
@@ -691,6 +560,7 @@ $$
 Utiliza distributividad y las leyes de [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002).
 
 #### Solución
+
 
 Por distributividad:
 
@@ -743,7 +613,6 @@ La simplificación coincide, naturalmente, con la ley de absorción en su forma 
 ---
 
 ### Justificar la segunda distributividad {#apm-i-e0110}
-
 Demuestra mediante una tabla de verdad que:
 
 $$
@@ -753,6 +622,7 @@ P\lor(Q\land R)
 $$
 
 #### Solución
+
 
 | $P$ | $Q$ | $R$ | $Q\land R$ | $P\lor(Q\land R)$ | $P\lor Q$ | $P\lor R$ | $(P\lor Q)\land(P\lor R)$ |
 |---|---|---|---|---|---|---|---|
@@ -780,7 +650,6 @@ $$
 ---
 
 ### Justificar absorción {#apm-i-e0111}
-
 Demuestra directamente desde los valores de verdad, sin usar la ley de absorción como premisa, que:
 
 $$
@@ -788,6 +657,7 @@ P\land(P\lor Q)\equiv P.
 $$
 
 #### Solución
+
 
 Consideremos los dos valores posibles de $P$.
 
@@ -848,7 +718,6 @@ $$
 ---
 
 ### Demostrar la segunda ley de De Morgan {#apm-i-e0112}
-
 Construye una tabla para demostrar:
 
 $$
@@ -858,6 +727,7 @@ $$
 $$
 
 #### Solución
+
 
 | $P$ | $Q$ | $P\lor Q$ | $\neg(P\lor Q)$ | $\neg P$ | $\neg Q$ | $\neg P\land\neg Q$ |
 |---|---|---|---|---|---|---|
@@ -893,7 +763,6 @@ $$
 ---
 
 ### Explorar la dualidad {#apm-i-e0113}
-
 Considera las cuatro leyes:
 
 $$
@@ -944,6 +813,7 @@ $$
 
 #### Solución
 
+
 #### a)
 
 Las dos leyes distributivas forman una pareja.
@@ -979,7 +849,6 @@ La observación estructural no autoriza reescrituras que no estén respaldadas p
 ---
 
 ### Una falsa ley de De Morgan {#apm-i-e0114}
-
 Alguien propone:
 
 $$
@@ -991,6 +860,7 @@ $$
 Refuta la pretendida equivalencia con una sola contraasignación.
 
 #### Solución
+
 
 Tomemos:
 
@@ -1043,7 +913,6 @@ La contraasignación muestra exactamente qué error contiene la falsa regla: al 
 ---
 
 ### Síntesis: dos caminos hacia la misma simplificación {#apm-i-e0115}
-
 Simplifica:
 
 $$
@@ -1058,6 +927,7 @@ Realiza **dos derivaciones**:
 2. otra que comience aplicando De Morgan a la negación exterior.
 
 #### Solución
+
 
 ### Primer camino — Distributividad en el interior
 
@@ -1229,9 +1099,9 @@ $$
 El principio operativo es:
 
 $$
-\boxed{
+
 \text{cada reescritura debe corresponder a una equivalencia ya establecida}.
-}
+
 $$
 
 Con [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002), [la proposición «Distributividad y absorción»](#apm-i-p0003) y [la proposición «Leyes de De Morgan»](#apm-i-p0004) disponemos ya de un verdadero núcleo de álgebra proposicional.
@@ -1240,17 +1110,7 @@ Con [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002
 
 ## Hacia la sección siguiente
 
-Todavía quedan dos conectivos que no hemos incorporado plenamente al cálculo:
-
-$$
-\Rightarrow
-$$
-
-y:
-
-$$
-\leftrightarrow.
-$$
+Todavía quedan dos conectivos que no hemos incorporado plenamente al cálculo: $\Rightarrow$ y $\leftrightarrow$.
 
 Hasta ahora sabemos evaluarlos mediante sus tablas, pero nuestras leyes de transformación trabajan sobre todo con:
 

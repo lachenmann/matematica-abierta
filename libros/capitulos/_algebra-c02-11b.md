@@ -1,8 +1,250 @@
+### 11.9 El teorema de existencia
+
+Ya tenemos el mecanismo necesario para demostrar el resultado general.
+
+::: {.ma-block .ma-enunciado #apm-i-t0001}
+**Teorema — Existencia de formas normales proposicionales**
+
+Sea $F$ una fórmula proposicional cuyas variables proposicionales distintas sean:
+
+$$
+p_1,\ldots,p_n,
+$$
+
+con:
+
+$$
+n\ge1.
+$$
+
+Entonces existe una fórmula en FND lógicamente equivalente a $F$, y existe una fórmula en FNC lógicamente equivalente a $F$.
+:::
+
+#### Lectura
+
+El teorema no afirma que exista una única FND o una única FNC.
+
+Afirma algo más básico y más importante:
+
+> cualquier comportamiento semántico descrito por una tabla finita puede representarse mediante una fórmula organizada en cualquiera de estas dos arquitecturas.
+
+#### Estrategia
+
+Usaremos la tabla completa de $F$. Para la FND:
+
+1. observaremos las filas donde $F=\mathrm V$;
+2. construiremos una conjunción que reconozca exactamente cada una de esas filas;
+3. disyuntaremos todas esas conjunciones.
+
+Para la FNC:
+
+1. observaremos las filas donde $F=\mathrm F$;
+2. construiremos una disyunción que falle exactamente en cada una de esas filas;
+3. conjuntaremos todas esas disyunciones.
+
+#### Demostración — construcción de la FND
+
+La tabla de $F$ tiene:
+
+$$
+2^n
+$$
+
+filas. Consideremos una fila donde:
+
+$$
+F=\mathrm V.
+$$
+
+Para esa fila formamos una conjunción con exactamente un literal por variable.
+
+Para cada:
+
+$$
+p_i,
+$$
+
+elegimos:
+
+$$
+p_i
+$$
+
+si en la fila:
+
+$$
+p_i=\mathrm V,
+$$
+
+y elegimos:
+
+$$
+\neg p_i
+$$
+
+si en la fila:
+
+$$
+p_i=\mathrm F.
+$$
+
+La conjunción obtenida es verdadera exactamente en esa fila.
+
+En efecto, para que toda la conjunción sea verdadera, cada variable debe recibir precisamente el valor que la fila especifica.
+
+Repetimos esta construcción para cada fila donde $F$ sea verdadera.
+
+Si hay al menos una fila verdadera, disyuntamos todas las conjunciones obtenidas.
+
+Llamemos:
+
+$$
+D
+$$
+
+a esa disyunción. En una fila donde $F=\mathrm V$, aparece en $D$ la conjunción construida específicamente para esa fila; por tanto:
+
+$$
+D=\mathrm V.
+$$
+
+En una fila donde $F=\mathrm F$, ninguna de las conjunciones correspondientes a filas verdaderas puede ser verdadera, porque cada una exige una asignación distinta.
+
+Por tanto:
+
+$$
+D=\mathrm F.
+$$
+
+Así, $D$ y $F$ tienen la misma columna. Luego:
+
+$$
+F\equiv D.
+$$
+
+Y $D$ está en FND.
+
+#### Caso extremo: contradicción
+
+Si $F$ no tiene ninguna fila verdadera, entonces $F$ es una contradicción.
+
+Como:
+
+$$
+n\ge1,
+$$
+
+podemos usar, por ejemplo:
+
+$$
+p_1\land\neg p_1.
+$$
+
+Esta fórmula está en FND y es una contradicción.
+
+Es lógicamente equivalente a $F$. Así queda probada la existencia de una FND en todos los casos.
+
+#### Demostración — construcción de la FNC
+
+Ahora consideremos una fila donde:
+
+$$
+F=\mathrm F.
+$$
+
+Para esa fila formamos una disyunción con exactamente un literal por variable.
+
+Para cada:
+
+$$
+p_i,
+$$
+
+elegimos:
+
+$$
+\neg p_i
+$$
+
+si en la fila:
+
+$$
+p_i=\mathrm V,
+$$
+
+y elegimos:
+
+$$
+p_i
+$$
+
+si en la fila:
+
+$$
+p_i=\mathrm F.
+$$
+
+La disyunción obtenida es falsa exactamente en esa fila.
+
+En efecto, allí todos sus literales son falsos. Si cambia cualquiera de los valores de la fila, el literal correspondiente se vuelve verdadero y, por tanto, toda la disyunción se vuelve verdadera.
+
+Repetimos esta construcción para cada fila donde $F$ sea falsa.
+
+Si hay al menos una fila falsa, conjuntamos todas las disyunciones obtenidas.
+
+Llamemos:
+
+$$
+N
+$$
+
+a esa conjunción. En una fila donde $F=\mathrm F$, la cláusula construida específicamente para esa fila es falsa; por tanto:
+
+$$
+N=\mathrm F.
+$$
+
+En una fila donde $F=\mathrm V$, ninguna de las cláusulas correspondientes a filas falsas puede ser falsa, porque cada una falla únicamente en su propia fila.
+
+Por tanto:
+
+$$
+N=\mathrm V.
+$$
+
+Así, $N$ y $F$ tienen la misma columna. Luego:
+
+$$
+F\equiv N.
+$$
+
+Y $N$ está en FNC.
+
+#### Caso extremo: tautología
+
+Si $F$ no tiene ninguna fila falsa, entonces $F$ es una tautología.
+
+Podemos usar:
+
+$$
+p_1\lor\neg p_1.
+$$
+
+Esta fórmula está en FNC y es una tautología.
+
+Por tanto, es lógicamente equivalente a $F$. Con ello queda probada también la existencia de una FNC.
+
+Toda fórmula proposicional del lenguaje considerado admite una FND y una FNC lógicamente equivalentes.
+
+$$
+\text{Queda demostrado [el teorema «Existencia de formas normales proposicionales»](#apm-i-t0001).}
+$$
+
+---
+
 ### 11.10 Qué demuestra realmente el teorema
 
-El resultado tiene una interpretación importante.
-
-Una fórmula puede haber sido construida con:
+El resultado tiene una interpretación importante. Una fórmula puede haber sido construida con:
 
 $$
 \neg,\qquad
@@ -24,9 +266,7 @@ $$
 \lor,
 $$
 
-con una organización especialmente regular.
-
-Así:
+con una organización especialmente regular. Así:
 
 $$
 \boxed{
@@ -46,23 +286,13 @@ $$
 }
 $$
 
-La tabla no solo analiza una fórmula.
-
-También puede **fabricar otra fórmula con exactamente el mismo comportamiento lógico**.
+La tabla no solo analiza una fórmula. También puede **fabricar otra fórmula con exactamente el mismo comportamiento lógico**.
 
 ---
 
 ### 11.11 Las formas normales no son únicas
 
-El teorema afirma existencia, no unicidad.
-
-Consideremos:
-
-$$
-p.
-$$
-
-Esta fórmula ya está en FND.
+El teorema afirma existencia, no unicidad. Consideremos $p$. Esta fórmula ya está en FND.
 
 Pero también:
 
@@ -70,9 +300,7 @@ $$
 (p\land q)\lor(p\land\neg q)
 $$
 
-está en FND.
-
-Por distributividad:
+está en FND. Por distributividad:
 
 $$
 (p\land q)\lor(p\land\neg q)
@@ -108,18 +336,14 @@ $$
 p
 $$
 
-es una FNC equivalente a $p$.
-
-Así, una misma fórmula puede admitir muchas FND y muchas FNC.
+es una FNC equivalente a $p$. Así, una misma fórmula puede admitir muchas FND y muchas FNC.
 
 La construcción por filas del teorema proporciona una forma **sistemática**, no necesariamente la más corta.
 
 ---
-
 ## Ejercicios
 
 ### Reconocer formas normales {#apm-i-e0124}
-
 Decide si cada fórmula está en FND, en FNC, en ambas o en ninguna.
 
 #### a)
@@ -147,6 +371,7 @@ $$
 $$
 
 #### Solución
+
 
 #### a)
 
@@ -215,7 +440,6 @@ y esta última sí está en ambas formas según nuestras convenciones.
 ---
 
 ### Construir desde las filas verdaderas {#apm-i-e0125}
-
 Una fórmula $F$ tiene la tabla:
 
 | $p$ | $q$ | $F$ |
@@ -228,6 +452,7 @@ Una fórmula $F$ tiene la tabla:
 Construye una FND equivalente a $F$ directamente desde las filas verdaderas.
 
 #### Solución
+
 
 Las filas verdaderas son:
 
@@ -268,7 +493,6 @@ Esta FND es verdadera exactamente en las dos filas verdaderas de $F$.
 ---
 
 ### La conjunción y la cláusula de una fila {#apm-i-e0126}
-
 Considera la asignación:
 
 $$
@@ -292,6 +516,7 @@ Construye una disyunción de literales falsa exactamente en esa fila.
 Explica por qué las construcciones tienen esas propiedades.
 
 #### Solución
+
 
 #### a)
 
@@ -338,7 +563,6 @@ La disyunción es falsa solo cuando sus tres literales son falsos simultáneamen
 ---
 
 ### Explorar la no unicidad {#apm-i-e0127}
-
 Demuestra mediante las leyes ya establecidas que:
 
 $$
@@ -358,6 +582,7 @@ $$
 Explica qué muestran estas dos equivalencias sobre las formas normales.
 
 #### Solución
+
 
 Para la primera:
 
@@ -430,7 +655,6 @@ Esto demuestra que la FND y la FNC de una fórmula no son únicas.
 ---
 
 ### Casos extremos {#apm-i-e0128}
-
 #### a)
 
 Da una FND y una FNC para una tautología.
@@ -444,6 +668,7 @@ Da una FND y una FNC para una contradicción.
 Explica por qué estas fórmulas resuelven los casos extremos de [el teorema «Existencia de formas normales proposicionales»](#apm-i-t0001).
 
 #### Solución
+
 
 Podemos usar una variable $p$.
 
@@ -516,7 +741,6 @@ proporciona una FNC tautológica equivalente.
 ---
 
 ### Síntesis: tabla, FND, FNC y simplificación {#apm-i-e0129}
-
 Considera:
 
 $$
@@ -540,6 +764,7 @@ A partir de las filas falsas, construye una FNC.
 Simplifica algebraicamente $F$ y compara el resultado con la FNC obtenida.
 
 #### Solución
+
 
 #### a) Tabla
 
@@ -691,34 +916,32 @@ Una **FNC** es una conjunción de disyunciones de literales.
 La tabla de verdad proporciona dos construcciones sistemáticas:
 
 $$
-\boxed{
+
 \text{filas }\mathrm V
 \longrightarrow
 \text{conjunciones que reconocen cada fila}
 \longrightarrow
 \text{FND}
-}
+
 $$
 
 y:
 
 $$
-\boxed{
+
 \text{filas }\mathrm F
 \longrightarrow
 \text{disyunciones que fallan en cada fila}
 \longrightarrow
 \text{FNC}.
-}
+
 $$
 
 Con ello demostramos:
 
 > [el teorema «Existencia de formas normales proposicionales»](#apm-i-t0001) — toda fórmula proposicional del lenguaje considerado admite una FND y una FNC lógicamente equivalentes.
 
-El resultado no garantiza unicidad ni minimalidad.
-
-Garantiza **existencia mediante un procedimiento explícito**.
+El resultado no garantiza unicidad ni minimalidad. Garantiza **existencia mediante un procedimiento explícito**.
 
 ---
 

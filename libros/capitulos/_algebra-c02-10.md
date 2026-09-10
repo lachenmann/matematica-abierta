@@ -61,20 +61,14 @@ $$
 Las columnas coinciden. Por tanto:
 
 $$
-\boxed{P\Rightarrow Q\equiv\neg P\lor Q.}
+P\Rightarrow Q\equiv\neg P\lor Q.
 $$
 
 Esta equivalencia traduce la idea ya conocida: una implicación falla únicamente cuando el antecedente es verdadero y el consecuente es falso.
 
 ### 10.2 Contraposición
 
-Consideremos:
-
-$$
-\neg Q\Rightarrow\neg P.
-$$
-
-Aplicando la equivalencia recién demostrada:
+Consideremos $\neg Q\Rightarrow\neg P$. Aplicando la equivalencia recién demostrada:
 
 $$
 \neg Q\Rightarrow\neg P
@@ -110,13 +104,7 @@ La implicación y su contraposición asociada son lógicamente equivalentes. No 
 
 ### 10.3 Negar una implicación
 
-Consideremos:
-
-$$
-\neg(P\Rightarrow Q).
-$$
-
-Eliminamos la implicación:
+Consideremos $\neg(P\Rightarrow Q)$. Eliminamos la implicación:
 
 $$
 \neg(P\Rightarrow Q)
@@ -167,17 +155,7 @@ La primera equivalencia se estableció por tabla en §10.1. La segunda se deriv�
 
 ### 10.5 El bicondicional como dos implicaciones
 
-Desde §4 sabemos que «$P$ si y solo si $Q$» exige dos direcciones:
-
-$$
-P\Rightarrow Q
-$$
-
-y:
-
-$$
-Q\Rightarrow P.
-$$
+Desde §4 sabemos que «$P$ si y solo si $Q$» exige dos direcciones: $P\Rightarrow Q$ y $Q\Rightarrow P$.
 
 Ahora podemos demostrar formalmente:
 
@@ -239,17 +217,7 @@ $$
 
 ### 10.7 Negar un bicondicional
 
-Si el bicondicional afirma que $P$ y $Q$ tienen el mismo valor, su negación expresa que tienen valores distintos. Los dos casos posibles son:
-
-$$
-P\land\neg Q
-$$
-
-y:
-
-$$
-\neg P\land Q.
-$$
+Si el bicondicional afirma que $P$ y $Q$ tienen el mismo valor, su negación expresa que tienen valores distintos. Los dos casos posibles son: $P\land\neg Q$ y $\neg P\land Q$.
 
 La tabla verifica:
 
@@ -300,7 +268,7 @@ Ante una fórmula que contiene varios conectivos, seguiremos como guía:
 2. **Eliminar bicondicionales:** usar una forma de [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006) adecuada al objetivo.
 3. **Eliminar implicaciones:** usar $P\Rightarrow Q\equiv\neg P\lor Q$.
 4. **Empujar negaciones hacia dentro:** De Morgan, doble negación o las negaciones ya demostradas.
-5. **Simplificar:** usar [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002)–[la proposición «Leyes de De Morgan»](#apm-i-p0004).
+5. **Simplificar:** usar [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002)–P0004.
 6. **Revisar cada paso:** toda transición de una cadena debe estar autorizada.
 
 ::: {.ma-block .ma-intuicion}
@@ -313,7 +281,6 @@ No existe obligación de seguir siempre el mismo camino. Distintas rutas pueden 
 
 ::: {.ma-block .ma-observacion #apm-i-x0018}
 **Ejemplo — Una transformación larga con justificación línea por línea**
-
 :::
 
 Demostremos:
@@ -368,11 +335,11 @@ $$
 Por tanto:
 
 $$
-\boxed{
+
 \neg[(p\Rightarrow q)\land(r\lor\neg q)]
 \equiv
 (p\land\neg q)\lor(\neg r\land q).
-}
+
 $$
 
 En forma compacta:
@@ -390,11 +357,9 @@ $$
 $$
 
 La fórmula final ya no contiene implicaciones.
-
 ## Ejercicios
 
 ### Eliminar implicaciones {#apm-i-e0116}
-
 Reescribe utilizando únicamente $\neg,\land,\lor$ y simplifica cuando sea posible.
 
 #### a)
@@ -416,6 +381,7 @@ P\Rightarrow\neg Q
 $$
 
 #### Solución
+
 
 #### a)
 
@@ -452,7 +418,6 @@ $$
 $$
 
 ### Contraposición algebraica {#apm-i-e0117}
-
 Demuestra mediante una cadena de equivalencias, sin construir una tabla nueva, que:
 
 $$
@@ -460,6 +425,7 @@ P\Rightarrow Q\equiv\neg Q\Rightarrow\neg P.
 $$
 
 #### Solución
+
 
 Partimos de la contraposición asociada:
 
@@ -478,7 +444,6 @@ $$
 Los pasos usan, respectivamente, eliminación de implicación, doble negación, conmutatividad y `P0005` en sentido inverso.
 
 ### Eliminar un bicondicional {#apm-i-e0118}
-
 Transforma:
 
 $$
@@ -488,6 +453,7 @@ $$
 en una fórmula que use únicamente $\neg,\land,\lor$, partiendo de las dos implicaciones.
 
 #### Solución
+
 
 Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
 
@@ -511,7 +477,6 @@ $$
 $$
 
 ### Justificar la negación del bicondicional {#apm-i-e0119}
-
 Demuestra mediante una tabla completa:
 
 $$
@@ -521,6 +486,7 @@ $$
 $$
 
 #### Solución
+
 
 | $P$ | $Q$ | $P\leftrightarrow Q$ | $\neg(P\leftrightarrow Q)$ | $P\land\neg Q$ | $\neg P\land Q$ | $(P\land\neg Q)\lor(\neg P\land Q)$ |
 |---|---|---|---|---|---|---|
@@ -536,7 +502,6 @@ $$
 $$
 
 ### Una equivalencia de implicaciones anidadas {#apm-i-e0120}
-
 Demuestra que:
 
 $$
@@ -560,6 +525,7 @@ $$
 es una tautología.
 
 #### Solución
+
 
 Comenzamos por:
 
@@ -623,7 +589,6 @@ $$
 es una tautología.
 
 ### Refutar una transformación incorrecta {#apm-i-e0121}
-
 Alguien propone:
 
 $$
@@ -633,6 +598,7 @@ $$
 Refuta la equivalencia con una sola contraasignación y explica cuál es la forma correcta.
 
 #### Solución
+
 
 Tomemos:
 
@@ -661,7 +627,6 @@ $$
 $$
 
 ### Síntesis con bicondicional y negación {#apm-i-e0122}
-
 Simplifica:
 
 $$
@@ -671,6 +636,7 @@ $$
 hasta una fórmula equivalente construida como disyunción de conjunciones de literales.
 
 #### Solución
+
 
 Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
 
@@ -700,7 +666,6 @@ $$
 La fórmula final no contiene $\Rightarrow$ ni $\leftrightarrow$. La clasificación sistemática de esta forma pertenece a la sección siguiente.
 
 ### Síntesis larga: elegir una ruta eficiente {#apm-i-e0123}
-
 Transforma y simplifica:
 
 $$
@@ -710,6 +675,7 @@ $$
 El resultado final no debe contener $\Rightarrow$ ni $\leftrightarrow$.
 
 #### Solución
+
 
 Aplicamos De Morgan:
 
@@ -795,7 +761,7 @@ Con ello podemos transformar una fórmula hasta eliminar $\Rightarrow$ y $\leftr
 El protocolo general queda:
 
 $$
-\boxed{
+
 \text{eliminar bicondicionales}
 \to
 \text{eliminar implicaciones}
@@ -803,7 +769,7 @@ $$
 \text{empujar negaciones}
 \to
 \text{simplificar}.
-}
+
 $$
 
 No es una receta rígida: una equivalencia más directa puede ahorrar pasos. Pero toda transformación debe permanecer justificada.
@@ -818,6 +784,4 @@ $$
 
 ¿Podemos organizar **cualquier fórmula proposicional** en formas sistemáticas de este tipo?
 
-La respuesta será afirmativa.
-
-La siguiente sección introducirá:
+La respuesta será afirmativa. La siguiente sección introducirá:

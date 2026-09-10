@@ -1,7 +1,266 @@
+### 12.6 Demostrar una tautología mediante equivalencias
+
+Consideremos $(P\land Q)\Rightarrow P$. Podemos construir una tabla.
+
+Pero la transformación algebraica es muy corta. Eliminamos la implicación:
+
+$$
+(P\land Q)\Rightarrow P
+\equiv
+\neg(P\land Q)\lor P.
+$$
+
+Por De Morgan:
+
+$$
+\equiv
+(\neg P\lor\neg Q)\lor P.
+$$
+
+Por asociatividad y conmutatividad:
+
+$$
+\equiv
+(\neg P\lor P)\lor\neg Q.
+$$
+
+Por complemento:
+
+$$
+\equiv
+T\lor\neg Q.
+$$
+
+Por dominación:
+
+$$
+\equiv
+T.
+$$
+
+Por tanto:
+
+$$
+\boxed{
+(P\land Q)\Rightarrow P
+\text{ es una tautología}.
+}
+$$
+
+Aquí la cadena de equivalencias revela además **por qué** la fórmula es siempre verdadera.
+
+---
+
+### 12.7 Demostrar una tautología mediante una tabla
+
+Ahora tomemos una fórmula más compleja:
+
+$$
+(p\Rightarrow(q\Rightarrow r))
+\leftrightarrow
+((p\land q)\Rightarrow r).
+$$
+
+En [el ejercicio «Una equivalencia de implicaciones anidadas»](#apm-i-e0120) ya demostramos algebraicamente que las dos partes del bicondicional son lógicamente equivalentes.
+
+Ahora construiremos la tabla completa para comprobarlo semánticamente. Necesitamos ocho filas.
+
+| $p$ | $q$ | $r$ | $q\Rightarrow r$ | $p\Rightarrow(q\Rightarrow r)$ | $p\land q$ | $(p\land q)\Rightarrow r$ | Fórmula completa |
+|---|---|---|---|---|---|---|---|
+| $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ |
+| $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ |
+| $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
+| $\mathrm V$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
+| $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
+| $\mathrm F$ | $\mathrm V$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
+| $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
+| $\mathrm F$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
+
+La columna final contiene únicamente:
+
+$$
+\mathrm V.
+$$
+
+Por definición:
+
+$$
+\boxed{
+(p\Rightarrow(q\Rightarrow r))
+\leftrightarrow
+((p\land q)\Rightarrow r)
+}
+$$
+
+es una tautología.
+
+---
+
+### 12.8 Ejemplo desarrollado
+
+::: {.ma-block .ma-observacion #apm-i-x0020}
+**Ejemplo — Una tautología por dos métodos**
+:::
+
+Demostremos nuevamente que:
+
+$$
+(p\Rightarrow(q\Rightarrow r))
+\leftrightarrow
+((p\land q)\Rightarrow r)
+$$
+
+es una tautología, pero ahora comparemos deliberadamente dos métodos.
+
+#### Método A — Tabla
+
+La tabla de §12.7 muestra que la columna final contiene:
+
+$$
+\mathrm V
+$$
+
+en las ocho asignaciones. La fórmula es una tautología.
+
+#### Método B — Transformación algebraica
+
+Estudiemos primero el lado izquierdo del bicondicional:
+
+$$
+p\Rightarrow(q\Rightarrow r).
+$$
+
+Eliminamos la implicación exterior:
+
+$$
+\equiv
+\neg p\lor(q\Rightarrow r).
+$$
+
+Eliminamos la implicación interior:
+
+$$
+\equiv
+\neg p\lor(\neg q\lor r).
+$$
+
+Por asociatividad:
+
+$$
+\equiv
+(\neg p\lor\neg q)\lor r.
+$$
+
+Por De Morgan en sentido inverso:
+
+$$
+\equiv
+\neg(p\land q)\lor r.
+$$
+
+Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005) en sentido inverso:
+
+$$
+\equiv
+(p\land q)\Rightarrow r.
+$$
+
+Por tanto:
+
+$$
+\boxed{
+p\Rightarrow(q\Rightarrow r)
+\equiv
+(p\land q)\Rightarrow r.
+}
+$$
+
+Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001), el bicondicional entre dos fórmulas lógicamente equivalentes es una tautología.
+
+Luego:
+
+$$
+\boxed{
+(p\Rightarrow(q\Rightarrow r))
+\leftrightarrow
+((p\land q)\Rightarrow r)
+}
+$$
+
+es una tautología.
+
+#### Comparación
+
+La tabla tiene una ventaja:
+
+> hace visible el comportamiento completo de las ocho asignaciones.
+
+La transformación tiene otra:
+
+> muestra que las dos partes son en realidad dos escrituras equivalentes de la misma condición lógica.
+
+Ambos métodos son rigurosos.
+
+Pero responden a intuiciones diferentes.
+
+---
+
+### 12.9 Elegir un método no significa adivinar
+
+La elección estratégica puede apoyarse en preguntas concretas.
+
+#### ¿Hay pocas variables?
+
+Una tabla puede ser razonable.
+
+#### ¿Reconozco una ley inmediata?
+
+Conviene intentar equivalencias.
+
+#### ¿La afirmación que quiero demostrar parece falsa?
+
+Antes de construir una tabla completa, conviene buscar una contraasignación.
+
+#### ¿Tengo una tabla y quiero reconstruir la fórmula?
+
+Las formas normales son naturales.
+
+#### ¿Una primera ruta se vuelve larga?
+
+Puede ser señal de que otra herramienta es mejor.
+
+No hay contradicción en cambiar de método durante una solución.
+
+La lógica matemática no exige fidelidad a una técnica.
+
+Exige que cada conclusión esté justificada.
+
+---
+
+### 12.10 Verificar y demostrar
+
+Una tabla completa puede demostrar una afirmación semántica porque enumera todas las asignaciones posibles.
+
+Una cadena de equivalencias puede demostrarla porque cada paso conserva el comportamiento lógico.
+
+Una contraasignación puede refutarla porque una sola excepción basta.
+
+Una forma normal puede reconstruirla porque está diseñada para reproducir exactamente las filas verdaderas o falsas.
+
+Los cuatro procedimientos son diferentes manifestaciones de una misma disciplina:
+
+$$
+\boxed{
+\text{no basta obtener el resultado;}
+\quad
+\text{hay que controlar por qué el procedimiento lo garantiza}.
+}
+$$
+
+---
 ## Ejercicios
 
 ### Elegir el método {#apm-i-e0130}
-
 Para cada tarea, indica qué método intentarías primero entre:
 
 - tabla de verdad;
@@ -38,6 +297,7 @@ Construir una fórmula a partir de una tabla que especifica exactamente tres fil
 Comparar semánticamente dos fórmulas de dos variables cuando no reconoces todavía una transformación útil.
 
 #### Solución
+
 
 #### a)
 
@@ -99,7 +359,6 @@ Con solo dos variables, una **tabla de verdad conjunta** requiere cuatro filas y
 ---
 
 ### Una tautología por cálculo {#apm-i-e0131}
-
 Demuestra mediante equivalencias que:
 
 $$
@@ -109,6 +368,7 @@ $$
 es una tautología.
 
 #### Solución
+
 
 Eliminamos la implicación:
 
@@ -167,7 +427,6 @@ $$
 ---
 
 ### Refutar sin tabla completa {#apm-i-e0132}
-
 Decide si:
 
 $$
@@ -179,6 +438,7 @@ es una tautología.
 Si no lo es, refútalo mediante una sola contraasignación.
 
 #### Solución
+
 
 Para hacer falsa la implicación exterior necesitamos:
 
@@ -237,7 +497,6 @@ Una sola contraasignación basta.
 ---
 
 ### Dos fórmulas, una misma condición {#apm-i-e0133}
-
 Demuestra:
 
 $$
@@ -249,6 +508,7 @@ $$
 Después explica qué método resultó especialmente natural.
 
 #### Solución
+
 
 Transformemos el lado izquierdo:
 
@@ -315,7 +575,6 @@ Una tabla de ocho filas también funcionaría, pero sería más larga.
 ---
 
 ### Síntesis final {#apm-i-e0134}
-
 Determina, con un método adecuado y una justificación completa, si:
 
 $$
@@ -327,6 +586,7 @@ $$
 es una tautología.
 
 #### Solución
+
 
 Una cadena de equivalencias permite aprovechar directamente las leyes ya construidas.
 
@@ -541,9 +801,7 @@ $$
 P\equiv Q
 $$
 
-y convertimos equivalencias demostradas en leyes de cálculo.
-
-Construimos progresivamente:
+y convertimos equivalencias demostradas en leyes de cálculo. Construimos progresivamente:
 
 - identidad y dominación;
 - idempotencia y complemento;
@@ -559,7 +817,7 @@ Finalmente demostramos que toda fórmula del lenguaje considerado admite formas 
 El recorrido completo puede condensarse así:
 
 $$
-\boxed{
+
 \text{proposiciones}
 \to
 \text{fórmulas}
@@ -571,13 +829,13 @@ $$
 \text{leyes}
 \to
 \text{cálculo lógico}.
-}
+
 $$
 
 Volvemos así a una idea estructural que acompañará todo este tratado:
 
 $$
-\boxed{
+
 \text{una estructura}
 =
 \text{objetos}
@@ -585,7 +843,7 @@ $$
 \text{operaciones}
 +
 \text{leyes}.
-}
+
 $$
 
 En este capítulo:
@@ -638,4 +896,4 @@ Para representar rigurosamente estas afirmaciones necesitaremos abrir la proposi
 
 Ese será el objeto del próximo capítulo:
 
-## T1-C03 — Predicados, cuantificadores y lenguaje matemático
+[**Capítulo 3. Predicados, cuantificadores y lenguaje matemático**](algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md)

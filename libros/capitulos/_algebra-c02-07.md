@@ -1,16 +1,6 @@
 ## §7. Equivalencia lógica
 
-En [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-i-e0089) construimos una tabla para:
-
-$$
-p\Rightarrow q
-$$
-
-y:
-
-$$
-\neg q\Rightarrow\neg p.
-$$
+En [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-i-e0089) construimos una tabla para: $p\Rightarrow q$ y $\neg q\Rightarrow\neg p$.
 
 Obtuvimos:
 
@@ -23,9 +13,7 @@ Obtuvimos:
 
 Las dos fórmulas tienen formas distintas.
 
-Sin embargo, sus columnas coinciden fila por fila.
-
-Eso sugiere una idea nueva.
+Sin embargo, sus columnas coinciden fila por fila. Eso sugiere una idea nueva.
 
 Hasta ahora preguntábamos:
 
@@ -35,46 +23,20 @@ Ahora preguntaremos:
 
 > «¿Pueden dos fórmulas distintas tener exactamente el mismo comportamiento bajo todas las asignaciones?»
 
-La respuesta es sí.
-
-Y esta será la noción que convertirá poco a poco la lógica proposicional en un **álgebra de fórmulas**.
+La respuesta es sí. Y esta será la noción que convertirá poco a poco la lógica proposicional en un **álgebra de fórmulas**.
 
 ---
 
 ### 7.1 Misma columna, mismo comportamiento lógico
 
-Consideremos dos fórmulas:
-
-$$
-P
-$$
-
-y:
-
-$$
-Q.
-$$
-
-Para compararlas debemos construir una tabla conjunta que incluya todas las variables proposicionales que aparezcan en cualquiera de las dos.
+Consideremos dos fórmulas: $P$ y $Q$ Para compararlas debemos construir una tabla conjunta que incluya todas las variables proposicionales que aparezcan en cualquiera de las dos.
 
 Supongamos que, fila por fila, ocurre siempre:
 
 - cuando $P$ recibe $\mathrm V$, también $Q$ recibe $\mathrm V$;
 - cuando $P$ recibe $\mathrm F$, también $Q$ recibe $\mathrm F$.
 
-Entonces las columnas de:
-
-$$
-P
-$$
-
-y:
-
-$$
-Q
-$$
-
-son idénticas.
+Entonces las columnas de: $P$ y $Q$ son idénticas.
 
 No significa necesariamente que las fórmulas tengan la misma escritura.
 
@@ -106,9 +68,7 @@ P\equiv Q
 }
 $$
 
-Esta definición contiene una exigencia fuerte.
-
-No basta con encontrar:
+Esta definición contiene una exigencia fuerte. No basta con encontrar:
 
 - una fila donde coincidan;
 - varias filas donde coincidan;
@@ -126,39 +86,9 @@ las columnas deben coincidir en **toda** la tabla conjunta.
 
 ### 7.3 Cómo refutar una pretendida equivalencia
 
-Supongamos que alguien afirma:
+Supongamos que alguien afirma $P\equiv Q$ Para refutarlo basta encontrar una asignación donde: $P$ y $Q$ reciban valores distintos.
 
-$$
-P\equiv Q.
-$$
-
-Para refutarlo basta encontrar una asignación donde:
-
-$$
-P
-$$
-
-y:
-
-$$
-Q
-$$
-
-reciban valores distintos.
-
-Por ejemplo, comparemos:
-
-$$
-p\lor q
-$$
-
-y:
-
-$$
-p\land q.
-$$
-
-Tomemos:
+Por ejemplo, comparemos: $p\lor q$ y $p\land q$. Tomemos:
 
 $$
 p=\mathrm V,
@@ -166,31 +96,13 @@ p=\mathrm V,
 q=\mathrm F.
 $$
 
-Entonces:
-
-$$
-p\lor q=\mathrm V,
-$$
-
-mientras que:
+Entonces $p\lor q=\mathrm V$, mientras que:
 
 $$
 p\land q=\mathrm F.
 $$
 
-Por tanto:
-
-$$
-p\lor q
-$$
-
-y:
-
-$$
-p\land q
-$$
-
-no son lógicamente equivalentes.
+Por tanto: $p\lor q$ y $p\land q$ no son lógicamente equivalentes.
 
 No necesitamos completar las otras tres filas para refutar la equivalencia.
 
@@ -202,49 +114,23 @@ p=\mathrm V,
 q=\mathrm F
 $$
 
-funciona como **contraasignación**.
-
-Así:
+funciona como **contraasignación**. Así:
 
 $$
-\boxed{
+
 \text{una sola fila distinta refuta una pretendida equivalencia}.
-}
+
 $$
 
 ---
 
 ### 7.4 Bicondicional y equivalencia lógica no son lo mismo
 
-Esta es una distinción central del capítulo.
+Esta es una distinción central del capítulo. La escritura $P\leftrightarrow Q$ es una **fórmula proposicional**.
 
-La escritura:
+En cada asignación recibe: $\mathrm V$ o $\mathrm F$.
 
-$$
-P\leftrightarrow Q
-$$
-
-es una **fórmula proposicional**.
-
-En cada asignación recibe:
-
-$$
-\mathrm V
-$$
-
-o:
-
-$$
-\mathrm F.
-$$
-
-En cambio:
-
-$$
-P\equiv Q
-$$
-
-expresa que las fórmulas $P$ y $Q$ tienen la misma columna completa.
+En cambio, $P\equiv Q$ expresa que las fórmulas $P$ y $Q$ tienen la misma columna completa.
 
 En este capítulo, $\equiv$ pertenece al lenguaje con el que **hablamos acerca de las fórmulas**: no añadimos una columna «$P\equiv Q$» a la tabla como si fuera un nuevo conectivo. Para verificarlo, comparamos las columnas de $P$ y $Q$.
 
@@ -309,9 +195,7 @@ $$
 P\leftrightarrow Q
 $$
 
-es una tautología.
-
-Y el razonamiento también funciona en la dirección inversa.
+es una tautología. Y el razonamiento también funciona en la dirección inversa.
 
 Podemos formularlo como nuestro primer resultado formal del capítulo.
 
@@ -358,7 +242,7 @@ $$
 
 recibe $\mathrm V$ exactamente cuando $P$ y $Q$ tienen el mismo valor.
 
-Por tanto, en cada fila:
+En cada fila:
 
 $$
 P\leftrightarrow Q=\mathrm V.
@@ -386,33 +270,11 @@ $$
 P\leftrightarrow Q
 $$
 
-es una tautología.
+es una tautología. Entonces su columna recibe $\mathrm V$ en cada fila de la tabla conjunta.
 
-Entonces su columna recibe:
+Por la definición del bicondicional, eso significa que en cada fila: $P$ y $Q$ reciben el mismo valor de verdad.
 
-$$
-\mathrm V
-$$
-
-en cada fila de la tabla conjunta.
-
-Por la definición del bicondicional, eso significa que en cada fila:
-
-$$
-P
-$$
-
-y:
-
-$$
-Q
-$$
-
-reciben el mismo valor de verdad.
-
-Por tanto, sus columnas coinciden fila por fila.
-
-Luego:
+Por tanto, sus columnas coinciden fila por fila. Luego:
 
 $$
 P\equiv Q.
@@ -437,19 +299,7 @@ A partir de ahora tenemos dos procedimientos semánticos muy próximos.
 
 #### Procedimiento A — Comparar columnas
 
-Construimos la tabla de:
-
-$$
-P
-$$
-
-y:
-
-$$
-Q.
-$$
-
-Si las columnas coinciden completamente:
+Construimos la tabla de: $P$ y $Q$. Si las columnas coinciden completamente:
 
 $$
 P\equiv Q.
@@ -483,19 +333,7 @@ Más adelante aprenderemos a demostrar equivalencias mediante **leyes ya estable
 
 ### 7.7 Una equivalencia puede cambiar mucho la forma
 
-Consideremos:
-
-$$
-\neg(p\land q)
-$$
-
-y:
-
-$$
-\neg p\lor\neg q.
-$$
-
-Las fórmulas no se parecen superficialmente.
+Consideremos $\neg(p\land q)$ y $\neg p\lor\neg q$. Las fórmulas no se parecen superficialmente.
 
 La primera tiene como conectivo principal:
 
@@ -518,21 +356,9 @@ Construyamos una tabla:
 | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ |
 | $\mathrm F$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ |
 
-Las dos columnas destacadas conceptualmente son:
+Las dos columnas destacadas conceptualmente son: $\neg(p\land q)$ y $\neg p\lor\neg q$.
 
-$$
-\neg(p\land q)
-$$
-
-y:
-
-$$
-\neg p\lor\neg q.
-$$
-
-Coinciden fila por fila.
-
-Por tanto:
+Coinciden fila por fila. Por tanto:
 
 $$
 \boxed{
@@ -562,9 +388,7 @@ $$
 =
 $$
 
-expresa igualdad entre valores matemáticos.
-
-En lógica proposicional escribiremos:
+expresa igualdad entre valores matemáticos. En lógica proposicional escribiremos:
 
 $$
 \neg(p\land q)
@@ -578,20 +402,18 @@ $$
 \equiv
 $$
 
-expresa equivalencia lógica entre fórmulas.
-
-No intercambiaremos ambos símbolos.
+expresa equivalencia lógica entre fórmulas. No intercambiaremos ambos símbolos.
 
 La disciplina de notación queda:
 
 $$
-\boxed{
+
 =
 \neq
 \equiv
 \neq
 \leftrightarrow.
-}
+
 $$
 
 Cada símbolo expresa una relación diferente.
@@ -600,24 +422,12 @@ Cada símbolo expresa una relación diferente.
 
 ### 7.9 Cadenas de equivalencias
 
-Supongamos que ya hemos justificado:
-
-$$
-P\equiv Q
-$$
-
-y:
-
-$$
-Q\equiv R.
-$$
-
-En cada fila:
+Supongamos que ya hemos justificado: $P\equiv Q$ y $Q\equiv R$. En cada fila:
 
 - $P$ y $Q$ tienen el mismo valor;
 - $Q$ y $R$ tienen el mismo valor.
 
-Por tanto, en esa misma fila:
+En esa misma fila:
 
 - $P$ y $R$ tienen el mismo valor.
 
@@ -645,9 +455,7 @@ Pero aparece una nueva exigencia de rigor:
 Cada paso de una cadena de equivalencias debe estar justificado.
 :::
 
-Todavía conocemos pocas equivalencias reutilizables.
-
-Las secciones siguientes construirán precisamente ese repertorio.
+Todavía conocemos pocas equivalencias reutilizables. Las secciones siguientes construirán precisamente ese repertorio.
 
 ---
 
@@ -655,7 +463,6 @@ Las secciones siguientes construirán precisamente ese repertorio.
 
 ::: {.ma-block .ma-observacion #apm-i-x0015}
 **Ejemplo — Demostrar una equivalencia por tabla**
-
 :::
 
 Demostremos:
@@ -721,19 +528,7 @@ $$
 | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm F$ | $\mathrm V$ |
 | $\mathrm F$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ |
 
-Las columnas de:
-
-$$
-\neg(p\land q)
-$$
-
-y:
-
-$$
-\neg p\lor\neg q
-$$
-
-son idénticas.
+Las columnas de: $\neg(p\land q)$ y $\neg p\lor\neg q$ son idénticas.
 
 #### Conclusión
 
@@ -758,11 +553,9 @@ $$
 es una tautología.
 
 ---
-
 ## Ejercicios
 
 ### Doble negación por tabla {#apm-i-e0096}
-
 Construye una tabla para comparar:
 
 $$
@@ -778,6 +571,7 @@ $$
 Decide si son lógicamente equivalentes.
 
 #### Solución
+
 
 | $p$ | $\neg p$ | $\neg\neg p$ |
 |---|---|---|
@@ -807,7 +601,6 @@ $$
 ---
 
 ### Una fila no basta {#apm-i-e0097}
-
 Un estudiante sabe que, para:
 
 $$
@@ -833,6 +626,7 @@ $$
 Explica el error.
 
 #### Solución
+
 
 La verdad de:
 
@@ -877,7 +671,6 @@ no son lógicamente equivalentes.
 ---
 
 ### Idempotencia descubierta semánticamente {#apm-i-e0098}
-
 Demuestra mediante una tabla que:
 
 $$
@@ -887,6 +680,7 @@ p.
 $$
 
 #### Solución
+
 
 | $p$ | $p\lor p$ |
 |---|---|
@@ -908,7 +702,6 @@ Más adelante incorporaremos esta equivalencia a un conjunto sistemático de ley
 ---
 
 ### Simetría de la equivalencia {#apm-i-e0099}
-
 Supón que ya se ha establecido:
 
 $$
@@ -922,6 +715,7 @@ Q\equiv P.
 $$
 
 #### Solución
+
 
 Si:
 
@@ -946,7 +740,6 @@ No hemos utilizado ninguna ley adicional; solo la definición de equivalencia l�
 ---
 
 ### Refutar una equivalencia {#apm-i-e0100}
-
 Alguien propone:
 
 $$
@@ -958,6 +751,7 @@ $$
 Refuta la afirmación con una sola contraasignación.
 
 #### Solución
+
 
 Tomemos:
 
@@ -997,7 +791,6 @@ Una sola fila distinta basta para refutar la equivalencia.
 ---
 
 ### Síntesis: una fórmula más simple con la misma columna {#apm-i-e0101}
-
 Decide si:
 
 $$
@@ -1013,6 +806,7 @@ $$
 Construye una tabla conjunta y justifica tu conclusión.
 
 #### Solución
+
 
 Necesitamos calcular:
 
@@ -1069,26 +863,14 @@ Esta fórmula muestra por primera vez con claridad la utilidad futura del álgeb
 
 ## Síntesis
 
-Dos fórmulas:
-
-$$
-P
-$$
-
-y:
-
-$$
-Q
-$$
-
-son lógicamente equivalentes cuando sus columnas coinciden en toda la tabla conjunta.
+Dos fórmulas: $P$ y $Q$ son lógicamente equivalentes cuando sus columnas coinciden en toda la tabla conjunta.
 
 Escribimos:
 
 $$
-\boxed{
+
 P\equiv Q.
-}
+
 $$
 
 Para demostrar una equivalencia mediante tablas debemos considerar todas las asignaciones.
@@ -1098,18 +880,16 @@ Para refutarla basta una sola contraasignación donde los valores difieran.
 La distinción notacional fundamental es:
 
 $$
-\boxed{
+
 P\leftrightarrow Q
 \neq
 P\equiv Q.
-}
+
 $$
 
 El primero es un bicondicional, es decir, una fórmula.
 
-El segundo expresa equivalencia lógica entre fórmulas.
-
-La conexión entre ambos quedó establecida por:
+El segundo expresa equivalencia lógica entre fórmulas. La conexión entre ambos quedó establecida por:
 
 > [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001) — $P$ y $Q$ son lógicamente equivalentes si y solo si $P\leftrightarrow Q$ es una tautología.
 
@@ -1121,17 +901,7 @@ Con esta proposición cerramos el bloque puramente semántico del capítulo.
 
 Hasta ahora, para establecer equivalencias hemos utilizado tablas.
 
-Pero ya hemos descubierto ejemplos como:
-
-$$
-\neg\neg p\equiv p
-$$
-
-y:
-
-$$
-p\lor p\equiv p.
-$$
+Pero ya hemos descubierto ejemplos como: $\neg\neg p\equiv p$ y $p\lor p\equiv p$.
 
 Si acumulamos equivalencias de este tipo, podremos empezar a **transformar fórmulas** sin reconstruir una tabla completa cada vez.
 

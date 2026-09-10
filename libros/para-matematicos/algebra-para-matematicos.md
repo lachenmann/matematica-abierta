@@ -27,6 +27,7 @@ prerequisites: []
 related:
   - MA-BCH-0007
   - MA-BCH-0008
+  - MA-BCH-0011
 provenance:
   type: original
   sources: []
@@ -121,6 +122,7 @@ A partir de allí el tomo desarrolla álgebra simbólica rigurosa, polinomios, e
 
 1. [**Del cálculo aritmético al lenguaje algebraico**](../capitulos/algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md) (`MA-BCH-0007`).
 2. [**Lógica proposicional y álgebra de proposiciones**](../capitulos/algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md) (`MA-BCH-0008`).
+3. [**Predicados, cuantificadores y lenguaje matemático**](../capitulos/algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md) (`MA-BCH-0011`).
 
 ## Publicación progresiva
 
