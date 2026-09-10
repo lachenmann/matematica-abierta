@@ -39,7 +39,7 @@
 | MA-PRB-0001 | problem | Dominio de una función radical cuadrática | `problemas/dominio-funcion-radical-cuadratica.md` | published |
 | MA-PRB-0002 | problem | Dominio de un radical anidado | `problemas/dominio-de-un-radical-anidado.md` | published |
 | MA-PRB-0003 | problem | Divisibilidad por 4 y paridad mediante contraposición | `problemas/divisibilidad-por-4-y-paridad-mediante-contraposicion.md` | published |
-| MA-PRB-0004 | problem | Igualdad de conjuntos por doble inclusión | `problemas/igualdad-de-conjuntos-reales.md` | published |
+| MA-PRB-0004 | problem | Igualdad de conjuntos por doble inclusión | `problemas/igualdad-de-conjuntos-por-doble-inclusion.md` | published |
 | MA-PRB-0005 | problem | Existencia y unicidad en una ecuación lineal con parámetros | `problemas/existencia-y-unicidad-ecuacion-lineal-parametros.md` | published |
 | MA-PRB-0006 | problem | Producto nulo y cancelación en un cuerpo | `problemas/producto-nulo-y-cancelacion-en-un-cuerpo.md` | published |
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
