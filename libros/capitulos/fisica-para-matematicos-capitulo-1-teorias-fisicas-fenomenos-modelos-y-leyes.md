@@ -74,7 +74,7 @@ En física, resolver una ecuación es sólo una parte del trabajo. Antes hay que
 {{< include _fisica-c01-chunk-03.md >}}
 {{< include _fisica-c01-chunk-04.md >}}
 {{< include _fisica-c01-chunk-05.md >}}
-{{< include _fisica-c01-chunk-06.md >}}
+{{< include _fisica-c01-chunk-06-fixed.md >}}
 {{< include _fisica-c01-chunk-07.md >}}
 {{< include _fisica-c01-chunk-08.md >}}
 {{< include _fisica-c01-chunk-09.md >}}
