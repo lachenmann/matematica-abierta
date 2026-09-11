@@ -30,18 +30,9 @@ jobs:
 
           root = Path('libros/capitulos')
           chapters = {
-              'c01': (
-                  'APM-T1-C01', 'MA-BCH-0007',
-                  root / 'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md'
-              ),
-              'c02': (
-                  'APM-T1-C02', 'MA-BCH-0008',
-                  root / 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md'
-              ),
-              'c03': (
-                  'APM-T1-C03', 'MA-BCH-0011',
-                  root / 'algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md'
-              ),
+              'c01': ('APM-T1-C01', 'MA-BCH-0007', root / 'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md'),
+              'c02': ('APM-T1-C02', 'MA-BCH-0008', root / 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md'),
+              'c03': ('APM-T1-C03', 'MA-BCH-0011', root / 'algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md'),
           }
 
           all_fragments = []
@@ -49,7 +40,6 @@ jobs:
               fragments = sorted(root.glob(f'_algebra-{chapter}-*.md'))
               if not fragments:
                   raise SystemExit(f'No fragments found for {chapter}')
-
               for path in fragments:
                   text = path.read_text(encoding='utf-8')
                   text = text.replace('APM-I-', source_id + '-')
@@ -60,78 +50,51 @@ jobs:
               text = wrapper.read_text(encoding='utf-8')
               if f'content-id: {content_id}' not in text:
                   raise SystemExit(f'{wrapper.name}: expected content-id {content_id}')
-
               lines = text.splitlines()
               source_index = next((i for i, line in enumerate(lines) if line.startswith('source-id:')), None)
               if source_index is not None:
                   lines[source_index] = f'source-id: {source_id}'
               else:
-                  content_index = next(
-                      (i for i, line in enumerate(lines) if line.strip() == f'content-id: {content_id}'),
-                      None
-                  )
+                  content_index = next((i for i, line in enumerate(lines) if line.strip() == f'content-id: {content_id}'), None)
                   if content_index is None:
                       raise SystemExit(f'{wrapper.name}: cannot locate content-id line')
                   lines.insert(content_index + 1, f'source-id: {source_id}')
               wrapper.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
+          policy_text = (
+              '# Política de identificadores\n\n'
+              'Matemática Abierta utiliza dos capas de identificadores con funciones distintas.\n\n'
+              '## 1. Identificador global público\n\n'
+              'Formato: `MA-TIPO-NNNN`, por ejemplo `MA-BCH-0007`.\n\n'
+              '- Es global para todo el sitio.\n'
+              '- Es inmutable.\n'
+              '- No se reutiliza aunque una pieza se retire.\n'
+              '- Identifica la pieza editorial publicada, no su posición interna en un manuscrito.\n\n'
+              '## 2. Identificador editorial de fuente\n\n'
+              'Formato base: `PROYECTO-TOMO-CAPITULO`, por ejemplo `APM-T1-C01`.\n\n'
+              'Debe ser autosuficiente: `T1-C01` por sí solo no es un identificador canónico porque puede colisionar entre libros.\n\n'
+              'Códigos iniciales:\n\n'
+              '- `APM` — Álgebra para matemáticos.\n'
+              '- `CPM` — Cálculo para matemáticos.\n'
+              '- `FPM` — Fundamentos para matemáticos.\n'
+              '- `FISPM` — Física para matemáticos.\n\n'
+              '## 3. Objetos internos de un capítulo\n\n'
+              'Formato: `PROYECTO-TOMO-CAPITULO-TIPO-NNNN`.\n\n'
+              'Ejemplos:\n\n'
+              '- `APM-T1-C01-D0001` — definición.\n'
+              '- `APM-T1-C01-E0001` — ejercicio.\n'
+              '- `APM-T1-C01-X0001` — observación u objeto auxiliar.\n\n'
+              'La numeración histórica puede conservarse; la cualificación con proyecto, tomo y capítulo es obligatoria en la edición web y en nuevos documentos canónicos.\n\n'
+              '## 4. Compatibilidad histórica\n\n'
+              'Los identificadores heredados del tipo `APM-I-D0001` no se renumeran destructivamente dentro de manuscritos cerrados o congelados. Durante la migración se consideran alias históricos. La capa web usa el identificador cualificado `APM-T1-Cxx-*` para evitar colisiones.\n\n'
+              '## 5. Regla de publicación\n\n'
+              'Cada capítulo publicado declara simultáneamente `content-id: MA-BCH-NNNN` y `source-id: APM-T1-CNN`.\n\n'
+              '`content-id` enlaza con el registro global del sitio; `source-id` enlaza con el canon editorial del libro.\n'
+          )
           policy = Path('_project/IDENTIFIER_POLICY.md')
           policy.parent.mkdir(parents=True, exist_ok=True)
-          policy.write_text('''# Política de identificadores
+          policy.write_text(policy_text, encoding='utf-8')
 
-Matemática Abierta utiliza dos capas de identificadores con funciones distintas.
-
-## 1. Identificador global público
-
-Formato: `MA-TIPO-NNNN`, por ejemplo `MA-BCH-0007`.
-
-- Es global para todo el sitio.
-- Es inmutable.
-- No se reutiliza aunque una pieza se retire.
-- Identifica la pieza editorial publicada, no su posición interna en un manuscrito.
-
-## 2. Identificador editorial de fuente
-
-Formato base: `PROYECTO-TOMO-CAPITULO`, por ejemplo `APM-T1-C01`.
-
-Debe ser autosuficiente: `T1-C01` por sí solo no es un identificador canónico porque puede colisionar entre libros.
-
-Códigos iniciales:
-
-- `APM` — Álgebra para matemáticos.
-- `CPM` — Cálculo para matemáticos.
-- `FPM` — Fundamentos para matemáticos.
-- `FISPM` — Física para matemáticos.
-
-## 3. Objetos internos de un capítulo
-
-Formato: `PROYECTO-TOMO-CAPITULO-TIPO-NNNN`.
-
-Ejemplos:
-
-- `APM-T1-C01-D0001` — definición.
-- `APM-T1-C01-E0001` — ejercicio.
-- `APM-T1-C01-X0001` — observación u objeto auxiliar.
-
-La numeración histórica puede conservarse; la cualificación con proyecto, tomo y capítulo es obligatoria en la edición web y en nuevos documentos canónicos.
-
-## 4. Compatibilidad histórica
-
-Los identificadores heredados del tipo `APM-I-D0001` no se renumeran destructivamente dentro de manuscritos cerrados o congelados. Durante la migración se consideran alias históricos. La capa web usa el identificador cualificado `APM-T1-Cxx-*` para evitar colisiones.
-
-## 5. Regla de publicación
-
-Cada capítulo publicado declara simultáneamente:
-
-```yaml
-content-id: MA-BCH-NNNN
-source-id: APM-T1-CNN
-```
-
-`content-id` enlaza con el registro global del sitio; `source-id` enlaza con el canon editorial del libro.
-''', encoding='utf-8')
-
-          # Structural QA without changing the current fragment architecture.
           first = root / '_algebra-c01-01.md'
           if 'trasfondo preteórico' not in first.read_text(encoding='utf-8'):
               raise SystemExit('C1 provenance check failed: expected phrase missing')
@@ -149,12 +112,7 @@ source-id: APM-T1-CNN
               anchor_prefix = source_id.lower()
               if f'#{anchor_prefix}-' not in chapter_text.lower():
                   raise SystemExit(f'{chapter}: qualified anchors missing')
-
-              exercises = len(re.findall(
-                  rf'^#{{1,6}}\s+.*\{{#{re.escape(anchor_prefix)}-e\d{{4}}\}}\s*$',
-                  chapter_text,
-                  flags=re.M | re.I,
-              ))
+              exercises = len(re.findall(rf'^#{{1,6}}\s+.*\{{#{re.escape(anchor_prefix)}-e\d{{4}}\}}\s*$', chapter_text, flags=re.M | re.I))
               solutions = len(re.findall(r'^####\s+Solución\s*$', chapter_text, flags=re.M | re.I))
               by_chapter[chapter] = (exercises, solutions, len(fragments))
               exercise_total += exercises
@@ -167,10 +125,7 @@ source-id: APM-T1-CNN
                   raise SystemExit(f'{wrapper.name}: source-id missing')
 
               for path in fragments:
-                  standalone_math = sum(
-                      1 for line in path.read_text(encoding='utf-8').splitlines()
-                      if line.strip() == '$$'
-                  )
+                  standalone_math = sum(1 for line in path.read_text(encoding='utf-8').splitlines() if line.strip() == '$$')
                   if standalone_math % 2:
                       raise SystemExit(f'{path.name}: unbalanced standalone $$ ({standalone_math})')
 
@@ -179,7 +134,6 @@ source-id: APM-T1-CNN
               actual = by_chapter[chapter][0]
               if actual != expected:
                   raise SystemExit(f'{chapter}: expected {expected} exercises, found {actual}')
-
           if exercise_total != 206:
               raise SystemExit(f'Expected 206 exercises, found {exercise_total}')
           if solution_total != 206:
