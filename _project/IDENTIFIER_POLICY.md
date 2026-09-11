@@ -2,6 +2,8 @@
 
 Matemática Abierta utiliza dos capas de identificadores con funciones distintas.
 
+**Estado:** política canónica desde 2026-09-11.
+
 ## 1. Identificador global público
 
 Formato: `MA-TIPO-NNNN`, por ejemplo `MA-BCH-0007`.
