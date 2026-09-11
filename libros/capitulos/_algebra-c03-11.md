@@ -23,7 +23,7 @@ Esta fórmula contiene tres capas lógicas:
 
 No conviene intentar transformarla «de un vistazo». La estrategia será leer y operar **desde fuera hacia dentro**, una capa a la vez.
 
-Aplicando [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007) al cuantificador exterior:
+Aplicando [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007) al cuantificador exterior:
 
 $$
 \neg\forall x\,\exists y\,R(x,y)
@@ -31,7 +31,7 @@ $$
 \exists x\,\neg\exists y\,R(x,y).
 $$
 
-Aplicamos de nuevo [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos de nuevo [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \exists x\,\neg\exists y\,R(x,y)
@@ -105,7 +105,7 @@ $$
 
 ### 11.2 Una negación atraviesa los cuantificadores uno por uno
 
-Recordemos [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Recordemos [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall x\,P(x)
@@ -167,7 +167,7 @@ $$
 \exists y\,R(x,y).
 $$
 
-Aplicamos nuevamente [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos nuevamente [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists y\,R(x,y)
@@ -403,7 +403,7 @@ No saltar varias capas a la vez.
 
 #### Paso 4 — Repetir desde la nueva operación exterior relevante
 
-Si queda: $\neg\forall$ o $\neg\exists$, volver a usar [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007).
+Si queda: $\neg\forall$ o $\neg\exists$, volver a usar [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007).
 
 #### Paso 5 — Cuando la negación llegue a conectivos, usar las leyes de [el capítulo 2](algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md)
 
@@ -559,7 +559,7 @@ Este ejemplo no reemplaza la derivación. Funciona como **control semántico**.
 
 ### 11.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0031}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0031}
 **Ejemplo — Negar dos cuantificadores sin perder el orden**
 :::
 
@@ -579,7 +579,7 @@ $$
 \forall x.
 $$
 
-Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall x\,\exists y\,R(x,y)
@@ -589,7 +589,7 @@ $$
 
 #### Paso 2 — Identificar la segunda capa
 
-Ahora tenemos $\neg\exists y\,R(x,y)$. Aplicamos de nuevo [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Ahora tenemos $\neg\exists y\,R(x,y)$. Aplicamos de nuevo [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists y\,R(x,y)
@@ -658,7 +658,7 @@ según correspondía.
 ---
 ## Ejercicios
 
-### Negar dos cuantificadores {#apm-i-e0195}
+### Negar dos cuantificadores {#apm-t1-c03-e0195}
 Niega y transforma completamente:
 
 $$
@@ -676,7 +676,7 @@ $$
 \neg\forall x\,\exists y\,R(x,y).
 $$
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall x\,\exists y\,R(x,y)
@@ -684,7 +684,7 @@ $$
 \exists x\,\neg\exists y\,R(x,y).
 $$
 
-Aplicamos nuevamente [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos nuevamente [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists y\,R(x,y)
@@ -704,7 +704,7 @@ $$
 
 ---
 
-### Negar un cuantificador y una conjunción {#apm-i-e0196}
+### Negar un cuantificador y una conjunción {#apm-t1-c03-e0196}
 Niega completamente:
 
 $$
@@ -720,7 +720,7 @@ $$
 \neg\exists x\,\bigl(P(x)\land Q(x)\bigr).
 $$
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists x\,\bigl(P(x)\land Q(x)\bigr)
@@ -748,7 +748,7 @@ $$
 
 ---
 
-### Justificar cada cambio {#apm-i-e0197}
+### Justificar cada cambio {#apm-t1-c03-e0197}
 Explica cada paso de:
 
 $$
@@ -772,7 +772,7 @@ $$
 \exists x.
 $$
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists x\,\forall y\,P(x,y)
@@ -786,7 +786,7 @@ $$
 \forall y.
 $$
 
-Aplicamos nuevamente [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos nuevamente [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall y\,P(x,y)
@@ -824,7 +824,7 @@ se conservó.
 
 ---
 
-### Detectar una negación incorrecta {#apm-i-e0198}
+### Detectar una negación incorrecta {#apm-t1-c03-e0198}
 Trabajamos con valores enteros y definimos:
 
 $$
@@ -917,11 +917,11 @@ $$
 }
 $$
 
-La transformación incorrecta no cambió los tipos de cuantificador como exige [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007).
+La transformación incorrecta no cambió los tipos de cuantificador como exige [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007).
 
 ---
 
-### Transformar y volver a la prosa {#apm-i-e0199}
+### Transformar y volver a la prosa {#apm-t1-c03-e0199}
 El dominio está previamente fijado.
 
 Niega completamente:
@@ -987,7 +987,7 @@ $$
 
 ---
 
-### Tres capas y conectivos {#apm-i-e0200}
+### Tres capas y conectivos {#apm-t1-c03-e0200}
 Niega completamente:
 
 $$
@@ -1013,7 +1013,7 @@ $$
 
 #### Primera capa
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \equiv
@@ -1025,7 +1025,7 @@ $$
 
 #### Segunda capa
 
-De nuevo por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+De nuevo por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \equiv

@@ -135,7 +135,7 @@ $$
 
 La igualdad expresa, por tanto, un mismo patrón algebraico.
 
-::: {.ma-block .ma-definicion #apm-i-d0006}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0006}
 **Definición — Identidad**
 
 En este primer sentido operativo, una **identidad** es una igualdad que es válida para todos los valores permitidos de las letras que aparecen en ella, dentro del contexto considerado.
@@ -291,7 +291,7 @@ $$
 
 En este tipo de problema, la letra representa un valor que debe cumplir la igualdad.
 
-::: {.ma-block .ma-definicion #apm-i-d0007}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0007}
 **Definición — Ecuación**
 
 En este primer sentido operativo, una **ecuación** es una igualdad en la que una o más letras se tratan como valores por determinar y se pregunta qué valores permitidos hacen verdadera la igualdad.
@@ -396,7 +396,7 @@ Este tipo de lectura será esencial cuando lleguemos a estudiar ecuaciones con p
 
 ### 6.6 Ejemplo desarrollado: dos igualdades, dos funciones
 
-::: {.ma-block .ma-observacion #apm-i-x0005}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0005}
 **Ejemplo — Identidad frente a ecuación**
 
 :::
@@ -603,7 +603,7 @@ Estas tres preguntas evitan una lectura mecánica de los símbolos.
 
 ## Ejercicios
 
-### Identidad o ecuación {#apm-i-e0029}
+### Identidad o ecuación {#apm-t1-c01-e0029}
 
 En cada caso, indica si la escritura se está usando como identidad o como ecuación. Explica tu decisión.
 
@@ -667,7 +667,7 @@ Se está usando como **ecuación**.
 
 ---
 
-### Comprobar valores en una ecuación {#apm-i-e0030}
+### Comprobar valores en una ecuación {#apm-t1-c01-e0030}
 
 Considera:
 
@@ -759,7 +759,7 @@ Por tanto, $x=-4$ no hace verdadera la ecuación.
 
 ---
 
-### ¿Bastan tres casos? {#apm-i-e0031}
+### ¿Bastan tres casos? {#apm-t1-c01-e0031}
 
 Un estudiante quiere demostrar que:
 
@@ -851,7 +851,7 @@ Esta es la razón estructural que justifica la identidad.
 
 ---
 
-### Refutar una supuesta identidad {#apm-i-e0032}
+### Refutar una supuesta identidad {#apm-t1-c01-e0032}
 
 Un estudiante afirma que:
 
@@ -901,7 +901,7 @@ No necesitamos examinar todos los valores: un solo caso donde falle basta para d
 
 ---
 
-### La misma escritura, distinta pregunta {#apm-i-e0033}
+### La misma escritura, distinta pregunta {#apm-t1-c01-e0033}
 
 Considera:
 

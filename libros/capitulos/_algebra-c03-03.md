@@ -90,7 +90,7 @@ se lee:
 
 ### 3.2 El cuantificador universal
 
-::: {.ma-block .ma-definicion #apm-i-d0028}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0028}
 **Definición — Cuantificador universal**
 
 El **cuantificador universal** es el símbolo:
@@ -396,7 +396,7 @@ Este hábito de lectura será cada vez más importante cuando las fórmulas cont
 
 ### 3.9 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0023}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0023}
 **Ejemplo — Una afirmación universal y una excepción**
 :::
 
@@ -451,7 +451,7 @@ falsa en ese mismo dominio. La diferencia no está en el símbolo $\forall$ Est�
 ---
 ## Ejercicios
 
-### Escribir «para todo» {#apm-i-e0147}
+### Escribir «para todo» {#apm-t1-c03-e0147}
 En el dominio de los enteros, sea:
 
 $$
@@ -493,7 +493,7 @@ Ambas escrituras expresan la misma afirmación universal en el dominio declarado
 
 ---
 
-### Qué exige un universal {#apm-i-e0148}
+### Qué exige un universal {#apm-t1-c03-e0148}
 Explica con tus propias palabras qué significa:
 
 $$
@@ -519,7 +519,7 @@ Debe cumplirse sin excepciones dentro del dominio.
 
 ---
 
-### Verificar varios casos no basta {#apm-i-e0149}
+### Verificar varios casos no basta {#apm-t1-c03-e0149}
 El dominio es el de los enteros.
 
 Supón que hemos comprobado que:
@@ -566,7 +566,7 @@ $$
 
 ---
 
-### Refutar mediante un contraejemplo {#apm-i-e0150}
+### Refutar mediante un contraejemplo {#apm-t1-c03-e0150}
 En el dominio de los enteros, considera:
 
 $$
@@ -622,7 +622,7 @@ es falsa en el dominio de los enteros.
 
 ---
 
-### La misma fórmula en dos dominios {#apm-i-e0151}
+### La misma fórmula en dos dominios {#apm-t1-c03-e0151}
 Considera:
 
 $$
@@ -732,7 +732,7 @@ La comparación muestra que el dominio forma parte del significado de la afirmac
 
 ---
 
-### Formular, leer y decidir {#apm-i-e0152}
+### Formular, leer y decidir {#apm-t1-c03-e0152}
 Trabajamos con valores enteros y definimos:
 
 $$

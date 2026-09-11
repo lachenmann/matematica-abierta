@@ -2,6 +2,7 @@
 title: "Del cálculo aritmético al lenguaje algebraico"
 description: "Primer capítulo de Álgebra para matemáticos: estructura de expresiones, variables, sustitución, igualdad, identidades, ecuaciones y transformación simbólica rigurosa."
 content-id: MA-BCH-0007
+source-id: APM-T1-C01
 content-type: book-chapter
 collection: PM-ALG
 book-id: MA-BOK-0004

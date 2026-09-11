@@ -56,7 +56,7 @@ Todo lo demás en esta sección se organizará alrededor de este hecho.
 
 ### 3.1 La implicación
 
-::: {.ma-block .ma-definicion #apm-i-d0015}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0015}
 **Definición — Implicación**
 
 La **implicación** de dos fórmulas $P$ y $Q$ es la fórmula:
@@ -586,7 +586,7 @@ En esta sección la contraposición es una fórmula asociada. No la usamos todav
 
 ### 3.11 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0011}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0011}
 **Ejemplo — Una implicación y sus cuatro asignaciones**
 
 :::
@@ -685,7 +685,7 @@ $$
 
 ## Ejercicios
 
-### Evaluar implicaciones {#apm-i-e0069}
+### Evaluar implicaciones {#apm-t1-c02-e0069}
 
 Determina el valor de verdad.
 
@@ -751,7 +751,7 @@ $$
 
 ---
 
-### Evaluar desde proposiciones concretas {#apm-i-e0070}
+### Evaluar desde proposiciones concretas {#apm-t1-c02-e0070}
 
 Sea:
 
@@ -839,7 +839,7 @@ $$
 
 ---
 
-### Suficiente y necesaria {#apm-i-e0071}
+### Suficiente y necesaria {#apm-t1-c02-e0071}
 
 Supón que:
 
@@ -889,7 +889,7 @@ puede leerse simultáneamente desde sus dos extremos: suficiente desde el antece
 
 ---
 
-### «Si» frente a «solo si» {#apm-i-e0072}
+### «Si» frente a «solo si» {#apm-t1-c02-e0072}
 
 Traduce a símbolos.
 
@@ -937,7 +937,7 @@ Las frases contienen las mismas letras, pero organizan la dependencia lógica en
 
 ---
 
-### ¿Causalidad o implicación? {#apm-i-e0073}
+### ¿Causalidad o implicación? {#apm-t1-c02-e0073}
 
 Sean:
 
@@ -995,7 +995,7 @@ no expresa por sí mismo una relación causal.
 
 ---
 
-### Explorar el antecedente falso {#apm-i-e0074}
+### Explorar el antecedente falso {#apm-t1-c02-e0074}
 
 Supón que:
 
@@ -1047,7 +1047,7 @@ $$
 
 ---
 
-### Una contraasignación para la conversa {#apm-i-e0075}
+### Una contraasignación para la conversa {#apm-t1-c02-e0075}
 
 Considera las dos fórmulas:
 
@@ -1115,7 +1115,7 @@ muestra que una implicación y su conversa no tienen necesariamente el mismo val
 
 ---
 
-### Síntesis: leer una condición {#apm-i-e0076}
+### Síntesis: leer una condición {#apm-t1-c02-e0076}
 
 Sea:
 

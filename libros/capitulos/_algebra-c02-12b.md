@@ -61,7 +61,7 @@ $$
 ((p\land q)\Rightarrow r).
 $$
 
-En [el ejercicio «Una equivalencia de implicaciones anidadas»](#apm-i-e0120) ya demostramos algebraicamente que las dos partes del bicondicional son lógicamente equivalentes.
+En [el ejercicio «Una equivalencia de implicaciones anidadas»](#apm-t1-c02-e0120) ya demostramos algebraicamente que las dos partes del bicondicional son lógicamente equivalentes.
 
 Ahora construiremos la tabla completa para comprobarlo semánticamente. Necesitamos ocho filas.
 
@@ -98,7 +98,7 @@ es una tautología.
 
 ### 12.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0020}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0020}
 **Ejemplo — Una tautología por dos métodos**
 :::
 
@@ -158,7 +158,7 @@ $$
 \neg(p\land q)\lor r.
 $$
 
-Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005) en sentido inverso:
+Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-t1-c02-p0005) en sentido inverso:
 
 $$
 \equiv
@@ -175,7 +175,7 @@ p\Rightarrow(q\Rightarrow r)
 }
 $$
 
-Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001), el bicondicional entre dos fórmulas lógicamente equivalentes es una tautología.
+Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-t1-c02-p0001), el bicondicional entre dos fórmulas lógicamente equivalentes es una tautología.
 
 Luego:
 
@@ -260,7 +260,7 @@ $$
 ---
 ## Ejercicios
 
-### Elegir el método {#apm-i-e0130}
+### Elegir el método {#apm-t1-c02-e0130}
 Para cada tarea, indica qué método intentarías primero entre:
 
 - tabla de verdad;
@@ -358,7 +358,7 @@ Con solo dos variables, una **tabla de verdad conjunta** requiere cuatro filas y
 
 ---
 
-### Una tautología por cálculo {#apm-i-e0131}
+### Una tautología por cálculo {#apm-t1-c02-e0131}
 Demuestra mediante equivalencias que:
 
 $$
@@ -426,7 +426,7 @@ $$
 
 ---
 
-### Refutar sin tabla completa {#apm-i-e0132}
+### Refutar sin tabla completa {#apm-t1-c02-e0132}
 Decide si:
 
 $$
@@ -496,7 +496,7 @@ Una sola contraasignación basta.
 
 ---
 
-### Dos fórmulas, una misma condición {#apm-i-e0133}
+### Dos fórmulas, una misma condición {#apm-t1-c02-e0133}
 Demuestra:
 
 $$
@@ -574,7 +574,7 @@ Una tabla de ocho filas también funcionaría, pero sería más larga.
 
 ---
 
-### Síntesis final {#apm-i-e0134}
+### Síntesis final {#apm-t1-c02-e0134}
 Determina, con un método adecuado y una justificación completa, si:
 
 $$
@@ -618,7 +618,7 @@ $$
 (P\Rightarrow R).
 $$
 
-Usamos [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005):
+Usamos [la proposición «Equivalencias fundamentales de la implicación»](#apm-t1-c02-p0005):
 
 $$
 \neg(P\Rightarrow Q)

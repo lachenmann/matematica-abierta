@@ -220,7 +220,7 @@ Este no es un truco tipográfico. Es una consecuencia de la estructura que apren
 
 ### 4.3 Ejemplo desarrollado: un número negativo
 
-::: {.ma-block .ma-observacion #apm-i-x0002}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0002}
 **Ejemplo — Sustituir sin perder el signo**
 
 :::
@@ -321,7 +321,7 @@ El error no estaría en la aritmética final. Estaría mucho antes: habríamos a
 
 Ya podemos fijar el vocabulario central de la sección.
 
-::: {.ma-block .ma-definicion #apm-i-d0004}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0004}
 **Definición — Evaluación de una expresión**
 
 **Evaluar una expresión** para valores dados de sus símbolos consiste en sustituir esos valores en todas las apariciones correspondientes y, cuando sea posible, realizar las operaciones resultantes.
@@ -552,7 +552,7 @@ La expresión $a+b$ ocupa exactamente el lugar estructural que antes ocupaba $x$
 
 ### 4.8 Ejemplo desarrollado: una expresión por otra expresión
 
-::: {.ma-block .ma-observacion #apm-i-x0003}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0003}
 **Ejemplo — Sustituir una expresión completa**
 
 :::
@@ -726,7 +726,7 @@ La sustitución no solo debe respetar el símbolo reemplazado. Debe respetar tam
 
 ## Ejercicios
 
-### Sustitución directa {#apm-i-e0016}
+### Sustitución directa {#apm-t1-c01-e0016}
 
 Evalúa cada expresión para el valor indicado.
 
@@ -813,7 +813,7 @@ $$
 
 ---
 
-### Todas las apariciones {#apm-i-e0017}
+### Todas las apariciones {#apm-t1-c01-e0017}
 
 Evalúa:
 
@@ -871,7 +871,7 @@ Hay que sustituir dos veces porque ambas apariciones del símbolo $x$ representa
 
 ---
 
-### El peligro del signo negativo {#apm-i-e0018}
+### El peligro del signo negativo {#apm-t1-c01-e0018}
 
 Evalúa:
 
@@ -941,7 +941,7 @@ Por eso eliminar los paréntesis cambiaría la estructura y produciría una eval
 
 ---
 
-### Dos variables {#apm-i-e0019}
+### Dos variables {#apm-t1-c01-e0019}
 
 Evalúa:
 
@@ -999,7 +999,7 @@ $$
 
 ---
 
-### Sustituir una expresión {#apm-i-e0020}
+### Sustituir una expresión {#apm-t1-c01-e0020}
 
 En:
 
@@ -1037,7 +1037,7 @@ No es necesario expandir.
 
 ---
 
-### Detectar una sustitución incorrecta {#apm-i-e0021}
+### Detectar una sustitución incorrecta {#apm-t1-c01-e0021}
 
 Un estudiante quiere sustituir:
 
@@ -1113,7 +1113,7 @@ $$
 
 ---
 
-### Sustitución o transformación {#apm-i-e0022}
+### Sustitución o transformación {#apm-t1-c01-e0022}
 
 Considera:
 

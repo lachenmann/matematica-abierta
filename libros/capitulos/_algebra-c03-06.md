@@ -50,7 +50,7 @@ $$
 
 Diremos que esa parte constituye el **alcance** del cuantificador.
 
-::: {.ma-block .ma-definicion #apm-i-d0030}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0030}
 **Definición — Alcance de un cuantificador**
 
 El **alcance** de un cuantificador es la parte de la fórmula sobre la que ese cuantificador actúa.
@@ -126,7 +126,7 @@ $$
 
 Diremos que esas apariciones están **ligadas** por el cuantificador.
 
-::: {.ma-block .ma-definicion #apm-i-d0031}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0031}
 **Definición — Aparición ligada**
 
 Una aparición de una variable está **ligada** si se encuentra dentro del alcance de un cuantificador que cuantifica esa misma variable.
@@ -168,7 +168,7 @@ $$
 
 no está bajo ningún cuantificador que cuantifique $y$. Diremos que esa aparición es **libre**.
 
-::: {.ma-block .ma-definicion #apm-i-d0032}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0032}
 **Definición — Aparición libre**
 
 Una aparición de una variable está **libre** si no se encuentra dentro del alcance de ningún cuantificador que cuantifique esa misma variable.
@@ -283,7 +283,7 @@ $$
 
 No queda ninguna aparición libre.
 
-::: {.ma-block .ma-definicion #apm-i-d0033}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0033}
 **Definición — Fórmula cerrada**
 
 Una **fórmula cerrada** es una fórmula que no contiene ninguna aparición libre de variables.
@@ -447,7 +447,7 @@ La sustitución elige un valor particular. La cuantificación determina cómo de
 
 ### 6.11 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0026}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0026}
 **Ejemplo — Qué queda libre y qué queda ligado**
 :::
 
@@ -548,7 +548,7 @@ No queda ninguna aparición libre. La nueva fórmula es cerrada.
 ---
 ## Ejercicios
 
-### Identificar el alcance {#apm-i-e0165}
+### Identificar el alcance {#apm-t1-c03-e0165}
 Considera:
 
 $$
@@ -598,7 +598,7 @@ No cuantifica $y$.
 
 ---
 
-### Marcar apariciones libres y ligadas {#apm-i-e0166}
+### Marcar apariciones libres y ligadas {#apm-t1-c03-e0166}
 Considera:
 
 $$
@@ -649,7 +649,7 @@ Así:
 
 ---
 
-### La misma letra, dos situaciones {#apm-i-e0167}
+### La misma letra, dos situaciones {#apm-t1-c03-e0167}
 Considera:
 
 $$
@@ -717,7 +717,7 @@ Por eso la clasificación se aplica con precisión a **apariciones de variables*
 
 ---
 
-### ¿Abierta o cerrada? {#apm-i-e0168}
+### ¿Abierta o cerrada? {#apm-t1-c03-e0168}
 Clasifica cada fórmula como abierta o cerrada.
 
 #### a)
@@ -797,7 +797,7 @@ No queda ninguna aparición libre.
 
 ---
 
-### Por qué los paréntesis importan {#apm-i-e0169}
+### Por qué los paréntesis importan {#apm-t1-c03-e0169}
 Compara:
 
 $$
@@ -865,7 +865,7 @@ Así, los paréntesis hacen visible hasta dónde actúa el cuantificador y cambi
 
 ---
 
-### Análisis completo {#apm-i-e0170}
+### Análisis completo {#apm-t1-c03-e0170}
 Considera:
 
 $$

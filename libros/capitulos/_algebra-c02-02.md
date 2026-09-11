@@ -54,7 +54,7 @@ $$
 
 ### 2.1 Variables proposicionales
 
-::: {.ma-block .ma-definicion #apm-i-d0010}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0010}
 **Definición — Variable proposicional**
 
 Una **variable proposicional** es un símbolo, como $p$, $q$ o $r$, que puede representar una proposición y, por tanto, recibir un valor de verdad.
@@ -168,7 +168,7 @@ $$
 
 Estas escrituras ya no son variables proposicionales aisladas. Son expresiones lógicas construidas a partir de ellas.
 
-::: {.ma-block .ma-definicion #apm-i-d0011}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0011}
 **Definición — Fórmula proposicional**
 
 Una **fórmula proposicional** es una expresión lógica construida a partir de variables proposicionales mediante los conectivos permitidos.
@@ -210,7 +210,7 @@ es una **fórmula compuesta**.
 
 La primera operación lógica que estudiaremos cambia el valor de verdad de una fórmula.
 
-::: {.ma-block .ma-definicion #apm-i-d0012}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0012}
 **Definición — Negación**
 
 La **negación** de una fórmula $P$ es la fórmula:
@@ -281,7 +281,7 @@ Todavía no necesitamos decidir si ambas fórmulas pueden coincidir en algún ca
 
 ### 2.4 Conjunción
 
-::: {.ma-block .ma-definicion #apm-i-d0013}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0013}
 **Definición — Conjunción**
 
 La **conjunción** de dos fórmulas $P$ y $Q$ es:
@@ -342,7 +342,7 @@ Basta con que una de las dos fórmulas sea falsa para que la conjunción complet
 
 ### 2.5 Disyunción inclusiva
 
-::: {.ma-block .ma-definicion #apm-i-d0014}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0014}
 **Definición — Disyunción**
 
 La **disyunción** de dos fórmulas $P$ y $Q$ es:
@@ -671,7 +671,7 @@ Este procedimiento será la base de las tablas de verdad que sistematizaremos m�
 
 ### 2.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0010}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0010}
 **Ejemplo — Leer una fórmula desde fuera hacia dentro**
 
 :::
@@ -795,7 +795,7 @@ $$
 
 ## Ejercicios
 
-### Traducir y evaluar {#apm-i-e0062}
+### Traducir y evaluar {#apm-t1-c02-e0062}
 
 Sea:
 
@@ -877,7 +877,7 @@ $$
 
 ---
 
-### Conectivo principal {#apm-i-e0063}
+### Conectivo principal {#apm-t1-c02-e0063}
 
 Identifica el conectivo principal de cada fórmula.
 
@@ -955,7 +955,7 @@ $$
 
 ---
 
-### Evaluar desde dentro {#apm-i-e0064}
+### Evaluar desde dentro {#apm-t1-c02-e0064}
 
 Supón:
 
@@ -1053,7 +1053,7 @@ $$
 
 ---
 
-### La «o» inclusiva {#apm-i-e0065}
+### La «o» inclusiva {#apm-t1-c02-e0065}
 
 Sean $p$ y $q$ dos proposiciones verdaderas.
 
@@ -1091,7 +1091,7 @@ En el lenguaje cotidiano, algunas expresiones con «o» sugieren una elección e
 
 ---
 
-### El alcance de la negación {#apm-i-e0066}
+### El alcance de la negación {#apm-t1-c02-e0066}
 
 Compara:
 
@@ -1193,7 +1193,7 @@ El cambio de alcance cambia la estructura y puede cambiar el valor de verdad.
 
 ---
 
-### Los paréntesis importan {#apm-i-e0067}
+### Los paréntesis importan {#apm-t1-c02-e0067}
 
 Considera:
 
@@ -1277,7 +1277,7 @@ La agrupación modifica la estructura.
 
 ---
 
-### Síntesis: construir, leer y evaluar {#apm-i-e0068}
+### Síntesis: construir, leer y evaluar {#apm-t1-c02-e0068}
 
 Sea:
 

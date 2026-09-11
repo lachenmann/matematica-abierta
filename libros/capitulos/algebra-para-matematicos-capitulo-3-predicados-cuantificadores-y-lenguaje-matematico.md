@@ -2,6 +2,7 @@
 title: "Predicados, cuantificadores y lenguaje matemático"
 description: "Tercer capítulo de Álgebra para matemáticos: fórmulas abiertas, predicados, cuantificadores, alcance, variables libres y ligadas, orden de cuantificadores, parámetros y existencia única."
 content-id: MA-BCH-0011
+source-id: APM-T1-C03
 content-type: book-chapter
 collection: PM-ALG
 book-id: MA-BOK-0004

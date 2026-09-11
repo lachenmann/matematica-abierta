@@ -58,7 +58,7 @@ $$
 
 ### 5.1 Asignaciones de valores de verdad
 
-::: {.ma-block .ma-definicion #apm-i-d0017}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0017}
 **Definición — Asignación de valores de verdad**
 
 Una **asignación de valores de verdad** para unas variables proposicionales consiste en elegir para cada una de ellas uno de los dos valores:
@@ -452,7 +452,7 @@ Esta distinción será decisiva en la sección siguiente.
 
 ### 5.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0013}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0013}
 **Ejemplo — Tabla completa de una fórmula de tres variables**
 
 :::
@@ -538,7 +538,7 @@ Por ahora basta con haber determinado exhaustivamente qué ocurre.
 
 ## Ejercicios
 
-### Generar todas las asignaciones {#apm-i-e0083}
+### Generar todas las asignaciones {#apm-t1-c02-e0083}
 
 #### a)
 
@@ -616,7 +616,7 @@ asignaciones.
 
 ---
 
-### Tabla de dos variables {#apm-i-e0084}
+### Tabla de dos variables {#apm-t1-c02-e0084}
 
 Construye la tabla completa de:
 
@@ -647,7 +647,7 @@ $$
 
 ---
 
-### Tres variables y dos niveles {#apm-i-e0085}
+### Tres variables y dos niveles {#apm-t1-c02-e0085}
 
 Construye la tabla de:
 
@@ -684,7 +684,7 @@ $$
 
 ---
 
-### Una tabla con implicación {#apm-i-e0086}
+### Una tabla con implicación {#apm-t1-c02-e0086}
 
 Construye la tabla de:
 
@@ -719,7 +719,7 @@ Guardaremos esta observación para la sección siguiente.
 
 ---
 
-### ¿Por qué aparecen $2^n$ filas? {#apm-i-e0087}
+### ¿Por qué aparecen $2^n$ filas? {#apm-t1-c02-e0087}
 
 Explica por qué una fórmula que contiene cuatro variables proposicionales distintas requiere:
 
@@ -769,7 +769,7 @@ Cada nueva variable duplica el número de asignaciones.
 
 ---
 
-### Diagnosticar una tabla incompleta {#apm-i-e0088}
+### Diagnosticar una tabla incompleta {#apm-t1-c02-e0088}
 
 Un estudiante quiere construir una tabla para una fórmula con tres variables y escribe únicamente estas filas:
 
@@ -836,7 +836,7 @@ Una tabla completa debe enumerar **cada combinación posible**, no solo utilizar
 
 ---
 
-### Síntesis: implicación y contraposición asociada {#apm-i-e0089}
+### Síntesis: implicación y contraposición asociada {#apm-t1-c02-e0089}
 
 Construye una tabla completa para:
 
@@ -957,7 +957,7 @@ $$
 
 ## Hacia la sección siguiente
 
-En [el ejercicio «Una tabla con implicación»](#apm-i-e0086) apareció una fórmula cuya columna final contiene:
+En [el ejercicio «Una tabla con implicación»](#apm-t1-c02-e0086) apareció una fórmula cuya columna final contiene:
 
 $$
 \mathrm V
@@ -965,7 +965,7 @@ $$
 
 en todas las filas.
 
-En [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-i-e0089) ocurrió lo mismo con una fórmula más compleja.
+En [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-t1-c02-e0089) ocurrió lo mismo con una fórmula más compleja.
 
 También podríamos encontrar fórmulas que sean falsas en todas las filas, o fórmulas que cambien de valor según la asignación.
 

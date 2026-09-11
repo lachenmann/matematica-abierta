@@ -97,7 +97,7 @@ El valor del parámetro puede cambiar cuando cambiamos de contexto.
 
 ### 9.2 Parámetro
 
-::: {.ma-block .ma-definicion #apm-i-d0034}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0034}
 **Definición — Parámetro**
 
 Un **parámetro** es un símbolo cuyo valor se mantiene fijo dentro de una discusión, mientras otras variables pueden seguir variando o siendo cuantificadas.
@@ -413,7 +413,7 @@ Esta forma de pensar será muy frecuente más adelante: estudiamos una afirmaci�
 
 ### 9.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0029}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0029}
 **Ejemplo — Un parámetro fijo y una variable que cambia**
 :::
 
@@ -525,7 +525,7 @@ $$
 ---
 ## Ejercicios
 
-### Parámetro y variable {#apm-i-e0183}
+### Parámetro y variable {#apm-t1-c03-e0183}
 Trabajamos con enteros.
 
 Se declara:
@@ -585,7 +585,7 @@ Dentro de ese contexto, $3$ permanece fijo mientras $x$ puede variar.
 
 ---
 
-### ¿Qué significa «fijemos $a$»? {#apm-i-e0184}
+### ¿Qué significa «fijemos $a$»? {#apm-t1-c03-e0184}
 Explica con tus propias palabras qué significa la instrucción:
 
 > «Fijemos un entero $a$».
@@ -613,7 +613,7 @@ En otra discusión podemos fijar otro valor de $a$, pero debemos indicar explíc
 
 ---
 
-### Dos contextos distintos {#apm-i-e0185}
+### Dos contextos distintos {#apm-t1-c03-e0185}
 Considera:
 
 $$
@@ -703,7 +703,7 @@ La idea de parámetro permite precisamente repetir un mismo tipo de análisis ba
 
 ---
 
-### Por qué no puede cambiar de papel en silencio {#apm-i-e0186}
+### Por qué no puede cambiar de papel en silencio {#apm-t1-c03-e0186}
 Una argumentación comienza:
 
 > «Fijemos $a=4$».
@@ -755,7 +755,7 @@ Así el papel de $a$ permanece coherente dentro de cada discusión.
 
 ---
 
-### Explorar varios valores de un parámetro {#apm-i-e0187}
+### Explorar varios valores de un parámetro {#apm-t1-c03-e0187}
 Trabajamos con enteros y consideramos:
 
 $$
@@ -865,7 +865,7 @@ Al cambiar el valor fijado del parámetro cambia la condición concreta y, con e
 
 ---
 
-### Parámetro y cuantificador {#apm-i-e0188}
+### Parámetro y cuantificador {#apm-t1-c03-e0188}
 Trabajamos con enteros.
 
 Se declara:

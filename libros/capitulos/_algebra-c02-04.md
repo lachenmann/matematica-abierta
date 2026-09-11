@@ -49,7 +49,7 @@ $$
 
 ### 4.1 El bicondicional
 
-::: {.ma-block .ma-definicion #apm-i-d0016}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0016}
 **Definición — Bicondicional**
 
 El **bicondicional** de dos fórmulas $P$ y $Q$ es la fórmula:
@@ -440,7 +440,7 @@ La estructura de evaluación sigue siendo la misma:
 
 ### 4.9 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0012}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0012}
 **Ejemplo — Dos direcciones de un «si y solo si»**
 
 :::
@@ -527,7 +527,7 @@ Esto no constituye todavía una demostración de una ley general entre esas fór
 
 ## Ejercicios
 
-### Evaluar el bicondicional {#apm-i-e0077}
+### Evaluar el bicondicional {#apm-t1-c02-e0077}
 
 Determina el valor de verdad.
 
@@ -596,7 +596,7 @@ $$
 
 ---
 
-### ¿Basta con que ambas sean verdaderas? {#apm-i-e0078}
+### ¿Basta con que ambas sean verdaderas? {#apm-t1-c02-e0078}
 
 Un estudiante afirma:
 
@@ -638,7 +638,7 @@ $$
 
 ---
 
-### Necesaria y suficiente {#apm-i-e0079}
+### Necesaria y suficiente {#apm-t1-c02-e0079}
 
 Supón que se afirma:
 
@@ -686,7 +686,7 @@ $$
 
 ---
 
-### Justificar una fila {#apm-i-e0080}
+### Justificar una fila {#apm-t1-c02-e0080}
 
 Explica, sin limitarte a copiar la tabla, por qué:
 
@@ -718,7 +718,7 @@ Otra manera de leerlo es observar que ninguna de las dos proposiciones es verdad
 
 ---
 
-### Leer una fórmula compuesta {#apm-i-e0081}
+### Leer una fórmula compuesta {#apm-t1-c02-e0081}
 
 Supón:
 
@@ -808,7 +808,7 @@ $$
 
 ---
 
-### Síntesis: una caracterización concreta {#apm-i-e0082}
+### Síntesis: una caracterización concreta {#apm-t1-c02-e0082}
 
 Sea:
 

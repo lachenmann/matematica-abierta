@@ -470,7 +470,7 @@ Si la frase recuperada no coincide con la inicial, hay un error estructural.
 
 ### 12.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0032}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0032}
 **Ejemplo — Expediente de tres errores**
 :::
 

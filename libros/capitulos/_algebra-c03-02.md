@@ -68,7 +68,7 @@ $$
 
 solo nos permite referirnos a ella de manera breve y hacer visible que depende de $x$.
 
-::: {.ma-block .ma-definicion #apm-i-d0027}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0027}
 **Definición — Predicado**
 
 Un **predicado** es una fórmula abierta considerada como una condición acerca de una o más variables.
@@ -337,7 +337,7 @@ Debemos conservar el dominio fijado por el contexto.
 
 ### 2.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0022}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0022}
 **Ejemplo — Predicados de una y dos variables**
 :::
 
@@ -422,7 +422,7 @@ ha recibido una sustitución parcial, pero todavía permanece abierta.
 ---
 ## Ejercicios
 
-### Nombrar una fórmula abierta {#apm-i-e0141}
+### Nombrar una fórmula abierta {#apm-t1-c03-e0141}
 En el dominio de los enteros, considera:
 
 $$
@@ -498,7 +498,7 @@ la proposición es falsa.
 
 ---
 
-### Sustituir en uno y dos lugares {#apm-i-e0142}
+### Sustituir en uno y dos lugares {#apm-t1-c03-e0142}
 Trabajamos con valores enteros.
 
 Sea:
@@ -588,7 +588,7 @@ es falsa.
 
 ---
 
-### Predicado, variable y sustitución {#apm-i-e0143}
+### Predicado, variable y sustitución {#apm-t1-c03-e0143}
 Considera:
 
 $$
@@ -658,7 +658,7 @@ que es verdadera.
 
 ---
 
-### Por qué no llamamos función a $P$ {#apm-i-e0144}
+### Por qué no llamamos función a $P$ {#apm-t1-c03-e0144}
 En este capítulo escribimos:
 
 $$
@@ -697,7 +697,7 @@ Por tanto, interpretar $P(x)$ como notación de **dependencia lógica** es sufic
 
 ---
 
-### Una sustitución parcial {#apm-i-e0145}
+### Una sustitución parcial {#apm-t1-c03-e0145}
 Trabajamos con valores enteros.
 
 Sea:
@@ -783,7 +783,7 @@ la proposición es falsa.
 
 ---
 
-### Construir y analizar un predicado de dos variables {#apm-i-e0146}
+### Construir y analizar un predicado de dos variables {#apm-t1-c03-e0146}
 Trabajamos con valores enteros.
 
 Construye un predicado:

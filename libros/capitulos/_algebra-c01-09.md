@@ -430,7 +430,7 @@ La cancelación es inválida.
 
 ### 9.6 Ejemplo desarrollado: qué puede cancelarse
 
-::: {.ma-block .ma-observacion #apm-i-x0007}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0007}
 **Ejemplo — Cancelar factores, no términos**
 
 :::
@@ -697,7 +697,7 @@ Este protocolo convierte el error en una oportunidad de lectura algebraica.
 
 ## Ejercicios
 
-### Cuadrado de una suma {#apm-i-e0046}
+### Cuadrado de una suma {#apm-t1-c01-e0046}
 
 Un estudiante escribe:
 
@@ -760,7 +760,7 @@ $$
 
 ---
 
-### ¿Cancelación válida? {#apm-i-e0047}
+### ¿Cancelación válida? {#apm-t1-c01-e0047}
 
 Decide si cada paso es válido. Justifica.
 
@@ -856,7 +856,7 @@ $$
 
 ---
 
-### Mismo aspecto, distinta estructura {#apm-i-e0048}
+### Mismo aspecto, distinta estructura {#apm-t1-c01-e0048}
 
 Decide si cada transformación es correcta. En los casos correctos, identifica el factor común. En los incorrectos, explica qué parte de la estructura cambia.
 
@@ -1011,7 +1011,7 @@ $$
 $$
 
 
-### Refutar con un contraejemplo {#apm-i-e0049}
+### Refutar con un contraejemplo {#apm-t1-c01-e0049}
 
 Encuentra valores sencillos que refuten cada supuesta identidad.
 
@@ -1115,7 +1115,7 @@ $$
 
 ---
 
-### Detectar la regla mal aplicada {#apm-i-e0050}
+### Detectar la regla mal aplicada {#apm-t1-c01-e0050}
 
 En cada caso, explica qué regla verdadera parece haber sido utilizada fuera de su contexto.
 
@@ -1183,7 +1183,7 @@ No existe un factor común $x$ en ambos términos.
 
 ---
 
-### Diagnóstico completo {#apm-i-e0051}
+### Diagnóstico completo {#apm-t1-c01-e0051}
 
 Un estudiante escribe:
 

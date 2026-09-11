@@ -262,7 +262,7 @@ $$
 
 Ya podemos formular el resultado general.
 
-::: {.ma-block .ma-enunciado #apm-i-p0007}
+::: {.ma-block .ma-enunciado #apm-t1-c03-p0007}
 **Proposición — Leyes de negación de cuantificadores**
 
 Sea $P(x)$ un predicado sobre un dominio no vacío previamente fijado. Entonces:
@@ -428,7 +428,7 @@ Consideremos $\neg\forall x\,(x^2=x)$ No debemos detenernos en:
 
 Esa frase es correcta, pero podemos expresar la negación en una forma equivalente más informativa.
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall x\,(x^2=x)
@@ -472,7 +472,7 @@ $$
 \neg\exists x\,(2x=1).
 $$
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists x\,(2x=1)
@@ -508,7 +508,7 @@ y:
 
 ### 5.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0025}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0025}
 **Ejemplo — De «no todos» a «existe una excepción»**
 :::
 
@@ -536,7 +536,7 @@ Escribimos $\neg\forall x\,P(x)$. En prosa:
 
 > «No todos los enteros satisfacen $P$».
 
-#### Paso 2 — Aplicar [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007)
+#### Paso 2 — Aplicar [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007)
 
 Tenemos:
 
@@ -593,7 +593,7 @@ $$
 ---
 ## Ejercicios
 
-### Negar un universal {#apm-i-e0159}
+### Negar un universal {#apm-t1-c03-e0159}
 Trabajamos con valores enteros.
 
 Niega correctamente:
@@ -607,7 +607,7 @@ Expresa el resultado en símbolos y en prosa.
 #### Solución
 
 
-Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall x\,(x+0=x)
@@ -645,7 +645,7 @@ Eso es coherente con que la afirmación universal original sea verdadera.
 
 ---
 
-### Negar un existencial {#apm-i-e0160}
+### Negar un existencial {#apm-t1-c03-e0160}
 Trabajamos con valores enteros.
 
 Niega correctamente:
@@ -659,7 +659,7 @@ Expresa el resultado en símbolos y en prosa.
 #### Solución
 
 
-Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists x\,(2x=1)
@@ -697,7 +697,7 @@ Equivalentemente:
 
 ---
 
-### «No todos» frente a «todos no» {#apm-i-e0161}
+### «No todos» frente a «todos no» {#apm-t1-c03-e0161}
 El dominio contiene únicamente los valores:
 
 $$
@@ -791,7 +791,7 @@ $$
 
 ---
 
-### Justificar la primera ley {#apm-i-e0162}
+### Justificar la primera ley {#apm-t1-c03-e0162}
 Explica, sin limitarte a repetir la fórmula, por qué:
 
 $$
@@ -847,7 +847,7 @@ $$
 
 ---
 
-### Justificar la segunda ley {#apm-i-e0163}
+### Justificar la segunda ley {#apm-t1-c03-e0163}
 Explica por qué:
 
 $$
@@ -897,7 +897,7 @@ $$
 
 ---
 
-### De la prosa a la negación y de vuelta {#apm-i-e0164}
+### De la prosa a la negación y de vuelta {#apm-t1-c03-e0164}
 Trabajamos con valores enteros.
 
 Considera la afirmación:
@@ -914,7 +914,7 @@ Escribe su negación.
 
 #### c)
 
-Transforma la negación mediante [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007).
+Transforma la negación mediante [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007).
 
 #### d)
 
@@ -945,7 +945,7 @@ $$
 
 #### c)
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\forall x\,(x^2=x)

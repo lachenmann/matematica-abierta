@@ -78,7 +78,7 @@ $$
 
 obtenemos $6-2=5$, que es falsa. Por tanto, mientras no hayamos fijado $x$, la escritura $x-2=5$ no posee todavía un único valor de verdad.
 
-::: {.ma-block .ma-definicion #apm-i-d0025}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0025}
 **Definición — Fórmula abierta**
 
 En esta primera etapa, llamaremos **fórmula abierta** a una fórmula que contiene una o más variables cuyos valores no han sido fijados y que, por ello, todavía no determina por sí sola una proposición.
@@ -178,7 +178,7 @@ que es verdadera. La escritura $2x=1$ es la misma.
 
 Lo que cambia es la colección de objetos entre los que permitimos variar a $x$.
 
-::: {.ma-block .ma-definicion #apm-i-d0026}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0026}
 **Definición — Dominio de discurso**
 
 El **dominio de discurso** es la colección de objetos admitidos como posibles valores de una variable durante una discusión.
@@ -358,7 +358,7 @@ $$
 
 ### 1.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0021}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0021}
 **Ejemplo — La misma escritura y dos dominios**
 :::
 
@@ -448,7 +448,7 @@ El dominio determina qué sustituciones están disponibles.
 ---
 ## Ejercicios
 
-### Proposición o fórmula abierta {#apm-i-e0135}
+### Proposición o fórmula abierta {#apm-t1-c03-e0135}
 Clasifica cada expresión como **proposición** o **fórmula abierta**.
 
 #### a)
@@ -520,7 +520,7 @@ Su valor de verdad depende del valor que ocupe el lugar de $y$.
 
 ---
 
-### No hay todavía un único valor de verdad {#apm-i-e0136}
+### No hay todavía un único valor de verdad {#apm-t1-c03-e0136}
 Explica por qué:
 
 $$
@@ -574,7 +574,7 @@ Mientras no hayamos fijado $x$, la fórmula sigue abierta y no posee un único v
 
 ---
 
-### ¿Qué valores están permitidos? {#apm-i-e0137}
+### ¿Qué valores están permitidos? {#apm-t1-c03-e0137}
 Compara los siguientes dos contextos para la fórmula:
 
 $$
@@ -646,7 +646,7 @@ es la misma en ambos contextos, pero el repertorio de sustituciones permitidas c
 
 ---
 
-### Por qué debemos declarar el dominio {#apm-i-e0138}
+### Por qué debemos declarar el dominio {#apm-t1-c03-e0138}
 Considera:
 
 $$
@@ -682,7 +682,7 @@ no cambia gráficamente, pero la discusión matemática sí cambia según el dom
 
 ---
 
-### El dominio puede cambiar lo que encontramos {#apm-i-e0139}
+### El dominio puede cambiar lo que encontramos {#apm-t1-c03-e0139}
 Estudia:
 
 $$
@@ -750,7 +750,7 @@ La fórmula escrita es la misma, pero los valores disponibles para la variable n
 
 ---
 
-### Análisis completo de una fórmula abierta {#apm-i-e0140}
+### Análisis completo de una fórmula abierta {#apm-t1-c03-e0140}
 Considera:
 
 $$

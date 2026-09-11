@@ -4,19 +4,19 @@ Hasta ahora, para demostrar una equivalencia lógica hemos regresado a la semán
 
 Ese procedimiento es seguro, pero empieza a resultar costoso.
 
-En [el ejercicio «Doble negación por tabla»](#apm-i-e0096) vimos:
+En [el ejercicio «Doble negación por tabla»](#apm-t1-c02-e0096) vimos:
 
 $$
 \neg\neg P\equiv P.
 $$
 
-En [el ejercicio «Idempotencia descubierta semánticamente»](#apm-i-e0098) apareció:
+En [el ejercicio «Idempotencia descubierta semánticamente»](#apm-t1-c02-e0098) apareció:
 
 $$
 P\lor P\equiv P.
 $$
 
-Y en [el ejemplo «Demostrar una equivalencia por tabla»](#apm-i-x0015) establecimos:
+Y en [el ejemplo «Demostrar una equivalencia por tabla»](#apm-t1-c02-x0015) establecimos:
 
 $$
 \neg(P\land Q)\equiv\neg P\lor\neg Q.
@@ -312,7 +312,7 @@ Estas son las **leyes asociativas**.
 
 Podemos reunir lo anterior en un solo resultado.
 
-::: {.ma-block .ma-enunciado #apm-i-p0002}
+::: {.ma-block .ma-enunciado #apm-t1-c02-p0002}
 **Proposición — Primeras leyes del álgebra proposicional**
 
 Para fórmulas proposicionales arbitrarias $P,Q,R$, una tautología $T$ y una contradicción $C$, se cumplen las siguientes equivalencias.
@@ -378,7 +378,7 @@ $$
 
 Las tablas y argumentos semánticos de §§8.2–8.7 muestran, para cada familia, que las fórmulas situadas a ambos lados de $\equiv$ reciben el mismo valor en todas las asignaciones.
 
-Por [la definición «Equivalencia lógica»](#apm-i-d0021), eso es exactamente afirmar que son lógicamente equivalentes.
+Por [la definición «Equivalencia lógica»](#apm-t1-c02-d0021), eso es exactamente afirmar que son lógicamente equivalentes.
 
 Por tanto, todas las equivalencias enunciadas quedan demostradas.
 
@@ -458,7 +458,7 @@ Pero cada paso debe citar una ley válida.
 
 ### 8.11 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0016}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0016}
 **Ejemplo — Simplificar sin reconstruir una tabla completa**
 :::
 
@@ -527,8 +527,8 @@ Este es el nuevo tipo de cálculo que iremos desarrollando.
 ---
 ## Ejercicios
 
-### Simplificaciones elementales {#apm-i-e0102}
-Simplifica mediante [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002) y justifica cada paso.
+### Simplificaciones elementales {#apm-t1-c02-e0102}
+Simplifica mediante [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002) y justifica cada paso.
 
 #### a)
 
@@ -615,7 +615,7 @@ $$
 
 ---
 
-### Reordenar y eliminar repeticiones {#apm-i-e0103}
+### Reordenar y eliminar repeticiones {#apm-t1-c02-e0103}
 Simplifica:
 
 $$
@@ -671,7 +671,7 @@ $$
 
 ---
 
-### Justificar la conmutatividad {#apm-i-e0104}
+### Justificar la conmutatividad {#apm-t1-c02-e0104}
 Demuestra mediante una tabla que:
 
 $$
@@ -704,7 +704,7 @@ Como la equivalencia ya ha sido demostrada para fórmulas arbitrarias $P,Q$, pue
 
 ---
 
-### Justificar una equivalencia derivada {#apm-i-e0105}
+### Justificar una equivalencia derivada {#apm-t1-c02-e0105}
 Demuestra mediante una cadena de leyes que:
 
 $$
@@ -744,11 +744,11 @@ P.
 }
 $$
 
-Cada paso utiliza una ley ya demostrada en [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002).
+Cada paso utiliza una ley ya demostrada en [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002).
 
 ---
 
-### ¿Por qué la identidad vale para cualquier tautología? {#apm-i-e0106}
+### ¿Por qué la identidad vale para cualquier tautología? {#apm-t1-c02-e0106}
 Sea $T$ una tautología cualquiera.
 
 Justifica directamente desde las definiciones, sin elegir una fórmula tautológica particular, que:
@@ -830,7 +830,7 @@ La demostración no depende de qué tautología concreta representa $T$.
 
 ---
 
-### Explorar la dualidad de las primeras leyes {#apm-i-e0107}
+### Explorar la dualidad de las primeras leyes {#apm-t1-c02-e0107}
 Observa las parejas:
 
 $$
@@ -914,7 +914,7 @@ Esta regularidad sugiere una simetría interna del álgebra proposicional. Por a
 
 ---
 
-### Síntesis: una cadena larga {#apm-i-e0108}
+### Síntesis: una cadena larga {#apm-t1-c02-e0108}
 Simplifica:
 
 $$
@@ -923,7 +923,7 @@ $$
 (S\lor\neg S).
 $$
 
-Utiliza únicamente las leyes de [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002). Justifica cada paso importante.
+Utiliza únicamente las leyes de [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002). Justifica cada paso importante.
 
 #### Solución
 
@@ -943,7 +943,7 @@ $$
 \end{aligned}
 $$
 
-En [el ejercicio «Reordenar y eliminar repeticiones»](#apm-i-e0103) vimos, usando asociatividad, conmutatividad e idempotencia, que:
+En [el ejercicio «Reordenar y eliminar repeticiones»](#apm-t1-c02-e0103) vimos, usando asociatividad, conmutatividad e idempotencia, que:
 
 $$
 (P\land Q)\land P
@@ -1042,7 +1042,7 @@ Primero establecimos por tablas o argumentos semánticos las leyes de:
 Todas quedaron reunidas en:
 
 $$
-\texttt{[la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002)}.
+\texttt{[la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002)}.
 $$
 
 Después justificamos por qué una subfórmula puede reemplazarse localmente por otra equivalente dentro de:

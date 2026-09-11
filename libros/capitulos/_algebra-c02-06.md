@@ -61,7 +61,7 @@ $$
 
 La columna final contiene $\mathrm V$ en todas las filas.
 
-::: {.ma-block .ma-definicion #apm-i-d0018}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0018}
 **Definición — Tautología**
 
 Una **tautología** es una fórmula proposicional que recibe el valor $\mathrm V$ en todas las asignaciones posibles de sus variables proposicionales.
@@ -187,7 +187,7 @@ $$
 
 La columna final contiene $\mathrm F$ en todas las filas.
 
-::: {.ma-block .ma-definicion #apm-i-d0019}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0019}
 **Definición — Contradicción**
 
 Una **contradicción** es una fórmula proposicional que recibe el valor $\mathrm F$ en todas las asignaciones posibles de sus variables proposicionales.
@@ -255,7 +255,7 @@ $$
 
 Su columna final contiene ambos valores.
 
-::: {.ma-block .ma-definicion #apm-i-d0020}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0020}
 **Definición — Contingencia**
 
 Una **contingencia** es una fórmula proposicional que recibe el valor $\mathrm V$ en al menos una asignación y el valor $\mathrm F$ en al menos otra.
@@ -352,7 +352,7 @@ La tabla completa sigue siendo el procedimiento general de referencia. Pero, cua
 
 ### 6.9 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0014}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0014}
 **Ejemplo — Tres comportamientos semánticos**
 
 :::
@@ -412,7 +412,7 @@ $$
 
 ## Ejercicios
 
-### Clasificar por tabla {#apm-i-e0090}
+### Clasificar por tabla {#apm-t1-c02-e0090}
 
 Clasifica cada fórmula como tautología, contradicción o contingencia.
 
@@ -467,7 +467,7 @@ $$
 \boxed{\text{contingencia}}.
 $$
 
-### Verdadera no significa tautológica {#apm-i-e0091}
+### Verdadera no significa tautológica {#apm-t1-c02-e0091}
 
 Un estudiante observa que $p\Rightarrow q$ es verdadera cuando:
 
@@ -509,7 +509,7 @@ $$
 \boxed{p\Rightarrow q\text{ es una contingencia}.}
 $$
 
-### Explorar una fórmula {#apm-i-e0092}
+### Explorar una fórmula {#apm-t1-c02-e0092}
 
 Considera:
 
@@ -554,7 +554,7 @@ $$
 \boxed{(p\land q)\Rightarrow q\text{ es una tautología}.}
 $$
 
-### Contraasignación {#apm-i-e0093}
+### Contraasignación {#apm-t1-c02-e0093}
 
 Alguien afirma que:
 
@@ -594,7 +594,7 @@ $$
 
 Una tautología tendría que ser verdadera en todas las asignaciones. Una sola fila falsa basta para refutar la afirmación.
 
-### Refutar una pretendida contradicción {#apm-i-e0094}
+### Refutar una pretendida contradicción {#apm-t1-c02-e0094}
 
 Un estudiante afirma que:
 
@@ -630,7 +630,7 @@ Una contradicción debe ser falsa en todas las asignaciones. Esta única fila ve
 
 De hecho, como la fórmula también es falsa en otras asignaciones, es una contingencia.
 
-### Síntesis: clasificar con estrategia {#apm-i-e0095}
+### Síntesis: clasificar con estrategia {#apm-t1-c02-e0095}
 
 Clasifica:
 
@@ -731,7 +731,7 @@ Para demostrar que una fórmula es contingente basta exhibir dos asignaciones ad
 
 Hasta ahora hemos clasificado **una fórmula** observando su columna final.
 
-Pero en [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-i-e0089) vimos algo diferente: dos fórmulas distintas,
+Pero en [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-t1-c02-e0089) vimos algo diferente: dos fórmulas distintas,
 
 $$
 p\Rightarrow q

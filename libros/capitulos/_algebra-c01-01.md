@@ -196,7 +196,7 @@ A esas partes internas las llamaremos **subexpresiones**.
 
 Hasta aquí hemos usado la palabra «expresión» varias veces. Conviene fijar qué entenderemos por ella.
 
-::: {.ma-block .ma-definicion #apm-i-d0001}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0001}
 **Definición — Expresión matemática**
 
 Una **expresión matemática** es una combinación de símbolos construida de acuerdo con ciertas reglas de escritura y destinada a representar un objeto o un valor matemático.
@@ -414,7 +414,7 @@ Una vez más, los paréntesis no son un adorno tipográfico. Revelan la estructu
 
 ### 1.6 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0001}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0001}
 **Ejemplo — Los mismos símbolos, dos estructuras**
 
 :::
@@ -533,7 +533,7 @@ $$
 
 ## Ejercicios
 
-### Operación principal {#apm-i-e0001}
+### Operación principal {#apm-t1-c01-e0001}
 
 En cada expresión, identifica la operación principal. No calcules todavía.
 
@@ -603,7 +603,7 @@ $$
 
 ---
 
-### Los paréntesis cambian la estructura {#apm-i-e0002}
+### Los paréntesis cambian la estructura {#apm-t1-c01-e0002}
 
 Usa los números $2$, $3$ y $4$, en ese orden, y los signos $+$ y $\cdot$.
 
@@ -655,7 +655,7 @@ Los valores son distintos porque las expresiones tienen estructuras distintas. E
 
 ---
 
-### Expresión y valor {#apm-i-e0003}
+### Expresión y valor {#apm-t1-c01-e0003}
 
 Para cada expresión:
 
@@ -763,7 +763,7 @@ El valor es $13$.
 
 ---
 
-### Una expresión en palabras {#apm-i-e0004}
+### Una expresión en palabras {#apm-t1-c01-e0004}
 
 Describe con palabras la estructura de:
 
@@ -821,7 +821,7 @@ $$
 
 ---
 
-### Construcción {#apm-i-e0005}
+### Construcción {#apm-t1-c01-e0005}
 
 Construye dos expresiones diferentes que:
 

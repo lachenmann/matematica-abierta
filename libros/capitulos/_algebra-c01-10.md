@@ -350,7 +350,7 @@ $$
 
 ## Problemas de síntesis
 
-### Una expresión, varias preguntas {#apm-i-e0052}
+### Una expresión, varias preguntas {#apm-t1-c01-e0052}
 
 Considera:
 
@@ -458,7 +458,7 @@ $$
 
 ---
 
-### Una línea, dos estructuras {#apm-i-e0053}
+### Una línea, dos estructuras {#apm-t1-c01-e0053}
 
 Considera la escritura lineal:
 
@@ -561,7 +561,7 @@ $$
 $$
 
 
-### Reparar una cadena {#apm-i-e0054}
+### Reparar una cadena {#apm-t1-c01-e0054}
 
 Un estudiante quiere calcular:
 
@@ -628,7 +628,7 @@ Por eso todos los miembros de una cadena correcta de igualdades deben representa
 
 ---
 
-### Identidad, ecuación o falsa regla {#apm-i-e0055}
+### Identidad, ecuación o falsa regla {#apm-t1-c01-e0055}
 
 Clasifica cada escritura en el contexto indicado.
 
@@ -712,7 +712,7 @@ la supuesta identidad queda refutada.
 
 ---
 
-### Diagnóstico final {#apm-i-e0056}
+### Diagnóstico final {#apm-t1-c01-e0056}
 
 Un estudiante escribe:
 

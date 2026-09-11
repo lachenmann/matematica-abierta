@@ -308,7 +308,7 @@ no cambia esa exigencia. El comportamiento es, por tanto, diferente cuando los c
 
 ### 7.6 Conmutación de cuantificadores del mismo tipo
 
-::: {.ma-block .ma-enunciado #apm-i-p0008}
+::: {.ma-block .ma-enunciado #apm-t1-c03-p0008}
 **Proposición — Conmutación de cuantificadores consecutivos del mismo tipo**
 
 Sean $x$ e $y$ variables con sus dominios no vacíos previamente fijados, y sea $R(x,y)$ un predicado. Entonces:
@@ -390,9 +390,9 @@ Quedan demostradas ambas equivalencias.
 
 ---
 
-### 7.7 Qué no dice [la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-i-p0008)
+### 7.7 Qué no dice [la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-t1-c03-p0008)
 
-[la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-i-p0008) no autoriza a intercambiar arbitrariamente cuantificadores.
+[la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-t1-c03-p0008) no autoriza a intercambiar arbitrariamente cuantificadores.
 
 La proposición se refiere únicamente a cuantificadores consecutivos del mismo tipo: $\forall\forall$ o $\exists\exists$ No afirma:
 
@@ -488,7 +488,7 @@ Cada patrón impone una exigencia diferente.
 
 ### 7.9 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0027}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0027}
 **Ejemplo — El mismo predicado, dos órdenes**
 :::
 
@@ -583,7 +583,7 @@ El orden de los cuantificadores mixtos ha cambiado el significado y el valor de 
 ---
 ## Ejercicios
 
-### Leer una cadena de cuantificadores {#apm-i-e0171}
+### Leer una cadena de cuantificadores {#apm-t1-c03-e0171}
 Trabajamos con valores enteros.
 
 Lee en prosa:
@@ -617,7 +617,7 @@ Por tanto, primero consideramos un valor de $x$ y después exigimos que haya alg
 
 ---
 
-### Qué puede cambiar {#apm-i-e0172}
+### Qué puede cambiar {#apm-t1-c03-e0172}
 Trabajamos con valores enteros y definimos:
 
 $$
@@ -671,7 +671,7 @@ No se exige que el mismo $y$ funcione para todos los valores de $x$.
 
 ---
 
-### Justificar una conmutación válida {#apm-i-e0173}
+### Justificar una conmutación válida {#apm-t1-c03-e0173}
 Explica por qué:
 
 $$
@@ -680,7 +680,7 @@ $$
 \exists y\,\exists x\,R(x,y).
 $$
 
-No te limites a citar [la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-i-p0008): explica el significado de ambas fórmulas.
+No te limites a citar [la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-t1-c03-p0008): explica el significado de ambas fórmulas.
 
 #### Solución
 
@@ -721,7 +721,7 @@ $$
 
 ---
 
-### Un intercambio inválido {#apm-i-e0174}
+### Un intercambio inválido {#apm-t1-c03-e0174}
 Trabajamos con valores enteros y definimos:
 
 $$
@@ -803,7 +803,7 @@ Por tanto, no pueden ser lógicamente equivalentes en general.
 
 ---
 
-### Construir un segundo contraejemplo {#apm-i-e0175}
+### Construir un segundo contraejemplo {#apm-t1-c03-e0175}
 Trabajamos con valores enteros y definimos:
 
 $$
@@ -907,7 +907,7 @@ tienen valores de verdad distintos.
 
 ---
 
-### Cuatro patrones cuantificados {#apm-i-e0176}
+### Cuatro patrones cuantificados {#apm-t1-c03-e0176}
 Trabajamos con valores enteros y definimos:
 
 $$

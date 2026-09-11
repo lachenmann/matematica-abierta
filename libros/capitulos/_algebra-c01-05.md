@@ -139,7 +139,7 @@ $$
 
 representan el mismo valor.
 
-::: {.ma-block .ma-definicion #apm-i-d0005}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0005}
 **Definición — Igualdad**
 
 Una **igualdad** es una afirmación de que dos expresiones representan el mismo objeto o el mismo valor en el contexto considerado.
@@ -417,7 +417,7 @@ Pero no debemos utilizar $=$ para significar simplemente «y después».
 
 ### 5.6 Ejemplo desarrollado: reparar una cadena
 
-::: {.ma-block .ma-observacion #apm-i-x0004}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0004}
 **Ejemplo — Una cadena de igualdades debe conservar el valor**
 
 :::
@@ -674,7 +674,7 @@ Esta precisión evita usar el mismo símbolo para relaciones matemáticas difere
 
 ## Ejercicios
 
-### ¿Es correcta la cadena? {#apm-i-e0023}
+### ¿Es correcta la cadena? {#apm-t1-c01-e0023}
 
 Decide si cada cadena de igualdades es correcta. Justifica tu respuesta.
 
@@ -790,7 +790,7 @@ Por tanto, es incorrecta.
 
 ---
 
-### Reparar una escritura {#apm-i-e0024}
+### Reparar una escritura {#apm-t1-c01-e0024}
 
 Un estudiante quiere calcular:
 
@@ -851,7 +851,7 @@ $$
 
 ---
 
-### Leer la igualdad al revés {#apm-i-e0025}
+### Leer la igualdad al revés {#apm-t1-c01-e0025}
 
 Reescribe cada igualdad intercambiando sus dos miembros.
 
@@ -901,7 +901,7 @@ No hemos cambiado el contenido de la afirmación.
 
 ---
 
-### Completar una cadena {#apm-i-e0026}
+### Completar una cadena {#apm-t1-c01-e0026}
 
 Completa los espacios para obtener una cadena correcta:
 
@@ -951,7 +951,7 @@ Los tres miembros representan el mismo número, $20$.
 
 ---
 
-### Encontrar el primer error {#apm-i-e0027}
+### Encontrar el primer error {#apm-t1-c01-e0027}
 
 Un estudiante escribe:
 
@@ -1017,7 +1017,7 @@ Todas las líneas representan $17$.
 
 ---
 
-### Igualdad exacta o no {#apm-i-e0028}
+### Igualdad exacta o no {#apm-t1-c01-e0028}
 
 Decide cuáles de estas escrituras expresan una igualdad exacta.
 

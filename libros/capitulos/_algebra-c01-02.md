@@ -230,7 +230,7 @@ Para hacerlo necesitaremos cuantificadores y lenguaje lógico. Todavía no los i
 
 En una discusión matemática solemos distinguir entre cantidades cuyo valor consideramos fijado y cantidades que pueden asumir distintos valores permitidos.
 
-::: {.ma-block .ma-definicion #apm-i-d0002}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0002}
 **Definición — Constante**
 
 En un contexto dado, una **constante** es una cantidad o un símbolo cuyo valor se considera fijo durante la discusión.
@@ -286,7 +286,7 @@ Una letra puede representar una constante.
 
 Ahora podemos formular una primera definición operativa.
 
-::: {.ma-block .ma-definicion #apm-i-d0003}
+::: {.ma-block .ma-definicion #apm-t1-c01-d0003}
 **Definición — Variable**
 
 En un contexto dado, una **variable** es un símbolo cuyo valor no se fija de una vez para toda la discusión y que puede representar distintos valores permitidos por ese contexto.
@@ -485,7 +485,7 @@ Esta capacidad de expresar patrones es una de las razones por las que el álgebr
 
 ## Ejercicios
 
-### ¿Qué papel tiene la letra? {#apm-i-e0006}
+### ¿Qué papel tiene la letra? {#apm-t1-c01-e0006}
 
 En cada situación, explica el papel que desempeña la letra.
 
@@ -551,7 +551,7 @@ Por tanto, $x$ desempeña el papel de variable.
 
 ---
 
-### La misma letra en contextos distintos {#apm-i-e0007}
+### La misma letra en contextos distintos {#apm-t1-c01-e0007}
 
 Explica por qué no podemos afirmar, sin contexto, que la letra $x$ «es una incógnita».
 
@@ -585,7 +585,7 @@ Por tanto, el símbolo $x$ no posee un papel fijo por el simple hecho de ser una
 
 ---
 
-### Constantes y variable en una expresión {#apm-i-e0008}
+### Constantes y variable en una expresión {#apm-t1-c01-e0008}
 
 Supongamos que:
 
@@ -639,7 +639,7 @@ No hemos asignado ningún valor concreto a $x$.
 
 ---
 
-### De un patrón verbal a una expresión {#apm-i-e0009}
+### De un patrón verbal a una expresión {#apm-t1-c01-e0009}
 
 Usa una letra para escribir cada descripción.
 
@@ -697,7 +697,7 @@ No hay nada especial en las letras elegidas. Podríamos haber usado otros símbo
 
 ---
 
-### ¿Qué información falta? {#apm-i-e0010}
+### ¿Qué información falta? {#apm-t1-c01-e0010}
 
 Considera la expresión:
 

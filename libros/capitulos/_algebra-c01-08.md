@@ -623,7 +623,7 @@ La buena escritura matemática no busca siempre el mínimo número posible de si
 
 ### 8.10 Ejemplo desarrollado: leer una expresión compleja
 
-::: {.ma-block .ma-observacion #apm-i-x0008}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0008}
 **Ejemplo — Alcance y estructura en una expresión anidada**
 
 :::
@@ -789,7 +789,7 @@ $$
 
 ## Ejercicios
 
-### Mismo símbolo, distinto alcance {#apm-i-e0041}
+### Mismo símbolo, distinto alcance {#apm-t1-c01-e0041}
 
 Explica la diferencia estructural entre cada par. No te limites a calcular.
 
@@ -885,7 +885,7 @@ La diferencia en los tres pares es una diferencia de **alcance**.
 
 ---
 
-### Barras de fracción {#apm-i-e0042}
+### Barras de fracción {#apm-t1-c01-e0042}
 
 Describe la estructura de:
 
@@ -921,7 +921,7 @@ Los paréntesis son necesarios para indicar que las dos sumas completas son el n
 
 ---
 
-### Dos escrituras lineales {#apm-i-e0043}
+### Dos escrituras lineales {#apm-t1-c01-e0043}
 
 Interpreta las siguientes escrituras lineales y escríbelas con fracciones verticales.
 
@@ -993,7 +993,7 @@ Las tres estructuras difieren porque las operaciones no tienen el mismo alcance.
 
 ---
 
-### Elige la escritura inequívoca {#apm-i-e0044}
+### Elige la escritura inequívoca {#apm-t1-c01-e0044}
 
 Escribe en una sola línea, usando `/`, cada expresión.
 
@@ -1047,7 +1047,7 @@ Los paréntesis conservan las dos agrupaciones de la fracción original.
 
 ---
 
-### Lectura jerárquica {#apm-i-e0045}
+### Lectura jerárquica {#apm-t1-c01-e0045}
 
 Considera:
 

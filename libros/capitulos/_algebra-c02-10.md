@@ -129,7 +129,7 @@ La fórmula resultante expresa exactamente el único caso que hace falsa una imp
 
 ### 10.4 Equivalencias fundamentales de la implicación
 
-::: {.ma-block .ma-enunciado #apm-i-p0005}
+::: {.ma-block .ma-enunciado #apm-t1-c02-p0005}
 **Proposición — Equivalencias fundamentales de la implicación**
 
 Para fórmulas proposicionales arbitrarias $P,Q$:
@@ -236,7 +236,7 @@ $$
 
 ### 10.8 Equivalencias fundamentales del bicondicional
 
-::: {.ma-block .ma-enunciado #apm-i-p0006}
+::: {.ma-block .ma-enunciado #apm-t1-c02-p0006}
 **Proposición — Equivalencias fundamentales del bicondicional**
 
 Para fórmulas proposicionales arbitrarias $P,Q$:
@@ -265,10 +265,10 @@ Las tres equivalencias fueron verificadas semánticamente en §§10.5–10.7 med
 Ante una fórmula que contiene varios conectivos, seguiremos como guía:
 
 1. **Identificar la estructura:** conectivo principal y subfórmulas.
-2. **Eliminar bicondicionales:** usar una forma de [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006) adecuada al objetivo.
+2. **Eliminar bicondicionales:** usar una forma de [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006) adecuada al objetivo.
 3. **Eliminar implicaciones:** usar $P\Rightarrow Q\equiv\neg P\lor Q$.
 4. **Empujar negaciones hacia dentro:** De Morgan, doble negación o las negaciones ya demostradas.
-5. **Simplificar:** usar [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002)–P0004.
+5. **Simplificar:** usar [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002)–P0004.
 6. **Revisar cada paso:** toda transición de una cadena debe estar autorizada.
 
 ::: {.ma-block .ma-intuicion}
@@ -279,7 +279,7 @@ No existe obligación de seguir siempre el mismo camino. Distintas rutas pueden 
 
 ### 10.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0018}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0018}
 **Ejemplo — Una transformación larga con justificación línea por línea**
 :::
 
@@ -304,7 +304,7 @@ $$
 \neg(p\Rightarrow q)\lor\neg(r\lor\neg q).
 $$
 
-Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005):
+Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-t1-c02-p0005):
 
 $$
 \neg(p\Rightarrow q)\equiv p\land\neg q.
@@ -359,7 +359,7 @@ $$
 La fórmula final ya no contiene implicaciones.
 ## Ejercicios
 
-### Eliminar implicaciones {#apm-i-e0116}
+### Eliminar implicaciones {#apm-t1-c02-e0116}
 Reescribe utilizando únicamente $\neg,\land,\lor$ y simplifica cuando sea posible.
 
 #### a)
@@ -385,7 +385,7 @@ $$
 
 #### a)
 
-Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005):
+Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-t1-c02-p0005):
 
 $$
 \boxed{P\Rightarrow Q\equiv\neg P\lor Q.}
@@ -417,7 +417,7 @@ $$
 \boxed{P\Rightarrow\neg Q\equiv\neg P\lor\neg Q\equiv\neg(P\land Q).}
 $$
 
-### Contraposición algebraica {#apm-i-e0117}
+### Contraposición algebraica {#apm-t1-c02-e0117}
 Demuestra mediante una cadena de equivalencias, sin construir una tabla nueva, que:
 
 $$
@@ -443,7 +443,7 @@ $$
 
 Los pasos usan, respectivamente, eliminación de implicación, doble negación, conmutatividad y `P0005` en sentido inverso.
 
-### Eliminar un bicondicional {#apm-i-e0118}
+### Eliminar un bicondicional {#apm-t1-c02-e0118}
 Transforma:
 
 $$
@@ -455,7 +455,7 @@ en una fórmula que use únicamente $\neg,\land,\lor$, partiendo de las dos impl
 #### Solución
 
 
-Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
+Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006):
 
 $$
 P\leftrightarrow Q
@@ -476,7 +476,7 @@ $$
 \boxed{P\leftrightarrow Q\equiv(\neg P\lor Q)\land(\neg Q\lor P).}
 $$
 
-### Justificar la negación del bicondicional {#apm-i-e0119}
+### Justificar la negación del bicondicional {#apm-t1-c02-e0119}
 Demuestra mediante una tabla completa:
 
 $$
@@ -501,7 +501,7 @@ $$
 \boxed{\neg(P\leftrightarrow Q)\equiv(P\land\neg Q)\lor(\neg P\land Q).}
 $$
 
-### Una equivalencia de implicaciones anidadas {#apm-i-e0120}
+### Una equivalencia de implicaciones anidadas {#apm-t1-c02-e0120}
 Demuestra que:
 
 $$
@@ -580,7 +580,7 @@ $$
 \boxed{p\Rightarrow(q\Rightarrow r)\equiv(p\land q)\Rightarrow r.}
 $$
 
-Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001), el bicondicional entre dos fórmulas equivalentes es una tautología. Luego:
+Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-t1-c02-p0001), el bicondicional entre dos fórmulas equivalentes es una tautología. Luego:
 
 $$
 \boxed{(p\Rightarrow(q\Rightarrow r))\leftrightarrow((p\land q)\Rightarrow r)}
@@ -588,7 +588,7 @@ $$
 
 es una tautología.
 
-### Refutar una transformación incorrecta {#apm-i-e0121}
+### Refutar una transformación incorrecta {#apm-t1-c02-e0121}
 Alguien propone:
 
 $$
@@ -626,7 +626,7 @@ $$
 \boxed{P\Rightarrow Q\equiv\neg P\lor Q.}
 $$
 
-### Síntesis con bicondicional y negación {#apm-i-e0122}
+### Síntesis con bicondicional y negación {#apm-t1-c02-e0122}
 Simplifica:
 
 $$
@@ -638,7 +638,7 @@ hasta una fórmula equivalente construida como disyunción de conjunciones de li
 #### Solución
 
 
-Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
+Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006):
 
 $$
 \neg(P\leftrightarrow Q)
@@ -665,7 +665,7 @@ $$
 
 La fórmula final no contiene $\Rightarrow$ ni $\leftrightarrow$. La clasificación sistemática de esta forma pertenece a la sección siguiente.
 
-### Síntesis larga: elegir una ruta eficiente {#apm-i-e0123}
+### Síntesis larga: elegir una ruta eficiente {#apm-t1-c02-e0123}
 Transforma y simplifica:
 
 $$
@@ -685,7 +685,7 @@ $$
 \neg(P\leftrightarrow Q)\lor\neg(P\Rightarrow Q).
 $$
 
-Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
+Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006):
 
 $$
 \neg(P\leftrightarrow Q)
@@ -693,7 +693,7 @@ $$
 (P\land\neg Q)\lor(\neg P\land Q).
 $$
 
-Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005):
+Por [la proposición «Equivalencias fundamentales de la implicación»](#apm-t1-c02-p0005):
 
 $$
 \neg(P\Rightarrow Q)
@@ -728,7 +728,7 @@ $$
 
 ## Síntesis
 
-La implicación queda incorporada al cálculo mediante [la proposición «Equivalencias fundamentales de la implicación»](#apm-i-p0005):
+La implicación queda incorporada al cálculo mediante [la proposición «Equivalencias fundamentales de la implicación»](#apm-t1-c02-p0005):
 
 $$
 P\Rightarrow Q\equiv\neg P\lor Q,
@@ -742,7 +742,7 @@ $$
 \neg(P\Rightarrow Q)\equiv P\land\neg Q.
 $$
 
-El bicondicional queda incorporado mediante [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
+El bicondicional queda incorporado mediante [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006):
 
 $$
 P\leftrightarrow Q\equiv(P\Rightarrow Q)\land(Q\Rightarrow P),

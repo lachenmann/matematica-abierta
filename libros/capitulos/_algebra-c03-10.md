@@ -96,7 +96,7 @@ $$
 
 ### 10.2 La abreviatura \(\exists!\)
 
-::: {.ma-block .ma-definicion #apm-i-d0035}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0035}
 **Definición — Existencia única**
 
 La escritura:
@@ -461,7 +461,7 @@ $$
 
 ### 10.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0030}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0030}
 **Ejemplo — Existencia y unicidad por separado**
 :::
 
@@ -577,7 +577,7 @@ es falsa. La diferencia es exactamente la unicidad.
 ---
 ## Ejercicios
 
-### Leer \(\exists!\) {#apm-i-e0189}
+### Leer \(\exists!\) {#apm-t1-c03-e0189}
 Trabajamos con valores enteros.
 
 Lee en prosa:
@@ -604,7 +604,7 @@ indica que la afirmación contiene dos exigencias:
 
 ---
 
-### Al menos uno y exactamente uno {#apm-i-e0190}
+### Al menos uno y exactamente uno {#apm-t1-c03-e0190}
 Compara:
 
 $$
@@ -663,7 +663,7 @@ La diferencia es:
 
 ---
 
-### Las dos cláusulas {#apm-i-e0191}
+### Las dos cláusulas {#apm-t1-c03-e0191}
 Explica qué función cumple cada parte de:
 
 $$
@@ -710,7 +710,7 @@ Por tanto, la fórmula completa afirma que existe un valor y que ningún valor d
 
 ---
 
-### Existencia y unicidad en tres casos {#apm-i-e0192}
+### Existencia y unicidad en tres casos {#apm-t1-c03-e0192}
 Trabajamos con valores enteros.
 
 Clasifica cada condición según ocurra:
@@ -794,7 +794,7 @@ Por tanto, hay existencia única.
 
 ---
 
-### Expandir \(\exists!\) {#apm-i-e0193}
+### Expandir \(\exists!\) {#apm-t1-c03-e0193}
 Expande completamente:
 
 $$
@@ -841,7 +841,7 @@ La segunda afirma unicidad.
 
 ---
 
-### Formular una existencia única {#apm-i-e0194}
+### Formular una existencia única {#apm-t1-c03-e0194}
 Trabajamos con valores enteros.
 
 Escribe simbólicamente:

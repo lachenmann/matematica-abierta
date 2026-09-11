@@ -403,7 +403,7 @@ La expresión no cambia de valor en ningún paso.
 
 ### 7.6 Ejemplo desarrollado: justificar cada transformación
 
-::: {.ma-block .ma-observacion #apm-i-x0006}
+::: {.ma-block .ma-observacion #apm-t1-c01-x0006}
 **Ejemplo — De \(3(x+2)+2x\) a \(5x+6\)**
 
 :::
@@ -735,7 +735,7 @@ Si no podemos responder, debemos revisar el paso.
 
 ## Ejercicios
 
-### Nombrar la ley {#apm-i-e0034}
+### Nombrar la ley {#apm-t1-c01-e0034}
 
 Indica qué ley justifica cada igualdad.
 
@@ -817,7 +817,7 @@ usa la **conmutatividad del producto**.
 
 ---
 
-### Justificar cada paso {#apm-i-e0035}
+### Justificar cada paso {#apm-t1-c01-e0035}
 
 Completa las razones de la transformación:
 
@@ -875,7 +875,7 @@ usa aritmética.
 
 ---
 
-### Transformar sin saltos {#apm-i-e0036}
+### Transformar sin saltos {#apm-t1-c01-e0036}
 
 Transforma:
 
@@ -949,7 +949,7 @@ $$
 
 ---
 
-### Dos caminos {#apm-i-e0037}
+### Dos caminos {#apm-t1-c01-e0037}
 
 Transforma:
 
@@ -1013,7 +1013,7 @@ El segundo camino reconoce antes la estructura común.
 
 ---
 
-### Encontrar el primer paso inválido {#apm-i-e0038}
+### Encontrar el primer paso inválido {#apm-t1-c01-e0038}
 
 Un estudiante escribe:
 
@@ -1067,7 +1067,7 @@ $$
 
 ---
 
-### ¿Puede reunirse? {#apm-i-e0039}
+### ¿Puede reunirse? {#apm-t1-c01-e0039}
 
 Decide si la transformación propuesta está justificada. Explica por qué.
 
@@ -1163,7 +1163,7 @@ La transformación propuesta no está justificada.
 
 ---
 
-### Elegir una forma útil {#apm-i-e0040}
+### Elegir una forma útil {#apm-t1-c01-e0040}
 
 Considera:
 

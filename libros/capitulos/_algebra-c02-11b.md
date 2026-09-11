@@ -2,7 +2,7 @@
 
 Ya tenemos el mecanismo necesario para demostrar el resultado general.
 
-::: {.ma-block .ma-enunciado #apm-i-t0001}
+::: {.ma-block .ma-enunciado #apm-t1-c02-t0001}
 **Teorema — Existencia de formas normales proposicionales**
 
 Sea $F$ una fórmula proposicional cuyas variables proposicionales distintas sean:
@@ -237,7 +237,7 @@ Por tanto, es lógicamente equivalente a $F$. Con ello queda probada también la
 Toda fórmula proposicional del lenguaje considerado admite una FND y una FNC lógicamente equivalentes.
 
 $$
-\text{Queda demostrado [el teorema «Existencia de formas normales proposicionales»](#apm-i-t0001).}
+\text{Queda demostrado [el teorema «Existencia de formas normales proposicionales»](#apm-t1-c02-t0001).}
 $$
 
 ---
@@ -343,7 +343,7 @@ La construcción por filas del teorema proporciona una forma **sistemática**, n
 ---
 ## Ejercicios
 
-### Reconocer formas normales {#apm-i-e0124}
+### Reconocer formas normales {#apm-t1-c02-e0124}
 Decide si cada fórmula está en FND, en FNC, en ambas o en ninguna.
 
 #### a)
@@ -439,7 +439,7 @@ y esta última sí está en ambas formas según nuestras convenciones.
 
 ---
 
-### Construir desde las filas verdaderas {#apm-i-e0125}
+### Construir desde las filas verdaderas {#apm-t1-c02-e0125}
 Una fórmula $F$ tiene la tabla:
 
 | $p$ | $q$ | $F$ |
@@ -492,7 +492,7 @@ Esta FND es verdadera exactamente en las dos filas verdaderas de $F$.
 
 ---
 
-### La conjunción y la cláusula de una fila {#apm-i-e0126}
+### La conjunción y la cláusula de una fila {#apm-t1-c02-e0126}
 Considera la asignación:
 
 $$
@@ -562,7 +562,7 @@ La disyunción es falsa solo cuando sus tres literales son falsos simultáneamen
 
 ---
 
-### Explorar la no unicidad {#apm-i-e0127}
+### Explorar la no unicidad {#apm-t1-c02-e0127}
 Demuestra mediante las leyes ya establecidas que:
 
 $$
@@ -654,7 +654,7 @@ Esto demuestra que la FND y la FNC de una fórmula no son únicas.
 
 ---
 
-### Casos extremos {#apm-i-e0128}
+### Casos extremos {#apm-t1-c02-e0128}
 #### a)
 
 Da una FND y una FNC para una tautología.
@@ -665,7 +665,7 @@ Da una FND y una FNC para una contradicción.
 
 #### c)
 
-Explica por qué estas fórmulas resuelven los casos extremos de [el teorema «Existencia de formas normales proposicionales»](#apm-i-t0001).
+Explica por qué estas fórmulas resuelven los casos extremos de [el teorema «Existencia de formas normales proposicionales»](#apm-t1-c02-t0001).
 
 #### Solución
 
@@ -740,7 +740,7 @@ proporciona una FNC tautológica equivalente.
 
 ---
 
-### Síntesis: tabla, FND, FNC y simplificación {#apm-i-e0129}
+### Síntesis: tabla, FND, FNC y simplificación {#apm-t1-c02-e0129}
 Considera:
 
 $$
@@ -841,7 +841,7 @@ Esta es una FNC de una sola cláusula.
 
 #### d) Simplificación algebraica
 
-Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006):
+Por [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006):
 
 $$
 \neg(p\leftrightarrow q)
@@ -939,7 +939,7 @@ $$
 
 Con ello demostramos:
 
-> [el teorema «Existencia de formas normales proposicionales»](#apm-i-t0001) — toda fórmula proposicional del lenguaje considerado admite una FND y una FNC lógicamente equivalentes.
+> [el teorema «Existencia de formas normales proposicionales»](#apm-t1-c02-t0001) — toda fórmula proposicional del lenguaje considerado admite una FND y una FNC lógicamente equivalentes.
 
 El resultado no garantiza unicidad ni minimalidad. Garantiza **existencia mediante un procedimiento explícito**.
 

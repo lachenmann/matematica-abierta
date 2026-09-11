@@ -193,7 +193,7 @@ $$
 \neg\exists x\,(P(x)\land Q(x)).
 $$
 
-Por las leyes ya demostradas en [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007), ambas formulaciones expresan la misma exclusión.
+Por las leyes ya demostradas en [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007), ambas formulaciones expresan la misma exclusión.
 
 Así:
 
@@ -235,7 +235,7 @@ $$
 \neg\forall x\,P(x).
 $$
 
-Pero [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007) nos permite escribir una forma equivalente:
+Pero [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007) nos permite escribir una forma equivalente:
 
 $$
 \exists x\,\neg P(x).
@@ -457,7 +457,7 @@ $$
 
 ### 8.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0028}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0028}
 **Ejemplo — Traducir en ambos sentidos**
 :::
 
@@ -527,7 +527,7 @@ $$
 
 #### D. «No todos los objetos cumplen $P$»
 
-Escribimos $\neg\forall x\,P(x)$. Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Escribimos $\neg\forall x\,P(x)$. Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \boxed{
@@ -588,7 +588,7 @@ La traducción preserva:
 ---
 ## Ejercicios
 
-### De una frase universal a símbolos {#apm-i-e0177}
+### De una frase universal a símbolos {#apm-t1-c03-e0177}
 El dominio está previamente fijado.
 
 Sean:
@@ -632,7 +632,7 @@ $$
 
 ---
 
-### Una existencia con dos condiciones {#apm-i-e0178}
+### Una existencia con dos condiciones {#apm-t1-c03-e0178}
 El dominio está previamente fijado.
 
 Traduce:
@@ -674,14 +674,14 @@ $$
 
 ---
 
-### De símbolos a prosa {#apm-i-e0179}
+### De símbolos a prosa {#apm-t1-c03-e0179}
 Lee en prosa:
 
 $$
 \neg\exists x\,(P(x)\land Q(x)).
 $$
 
-Después da una segunda formulación equivalente utilizando [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007).
+Después da una segunda formulación equivalente utilizando [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007).
 
 #### Solución
 
@@ -690,7 +690,7 @@ Una lectura natural es:
 
 > «No existe ningún objeto del dominio que cumpla simultáneamente $P$ y $Q$».
 
-Por [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007):
+Por [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007):
 
 $$
 \neg\exists x\,(P(x)\land Q(x))
@@ -720,7 +720,7 @@ En prosa:
 
 ---
 
-### Por qué no podemos invertir los cuantificadores {#apm-i-e0180}
+### Por qué no podemos invertir los cuantificadores {#apm-t1-c03-e0180}
 Trabajamos con valores enteros y definimos:
 
 $$
@@ -786,7 +786,7 @@ En este ejemplo, la primera es verdadera y la segunda es falsa.
 
 ---
 
-### Una implicación dentro del alcance {#apm-i-e0181}
+### Una implicación dentro del alcance {#apm-t1-c03-e0181}
 El dominio está previamente fijado.
 
 Sean:
@@ -864,7 +864,7 @@ $$
 
 ---
 
-### Traducción bidireccional con dos cuantificadores {#apm-i-e0182}
+### Traducción bidireccional con dos cuantificadores {#apm-t1-c03-e0182}
 Trabajamos con valores enteros y definimos:
 
 $$

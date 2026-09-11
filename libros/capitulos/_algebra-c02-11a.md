@@ -52,7 +52,7 @@ También se convertirá en un procedimiento de **síntesis de fórmulas**.
 
 Las piezas más pequeñas de las formas normales serán muy sencillas.
 
-::: {.ma-block .ma-definicion #apm-i-d0022}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0022}
 **Definición — Literal**
 
 Un **literal** es una variable proposicional o la negación de una variable proposicional.
@@ -118,7 +118,7 @@ $$
 
 puede considerarse una conjunción de un solo literal.
 
-::: {.ma-block .ma-definicion #apm-i-d0023}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0023}
 **Definición — Forma normal disyuntiva**
 
 Una fórmula está en **forma normal disyuntiva**, abreviada **FND**, cuando es una disyunción de una o más conjunciones de uno o más literales.
@@ -164,7 +164,7 @@ $$
 
 es una disyunción de uno o más literales.
 
-::: {.ma-block .ma-definicion #apm-i-d0024}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0024}
 **Definición — Forma normal conjuntiva**
 
 Una fórmula está en **forma normal conjuntiva**, abreviada **FNC**, cuando es una conjunción de una o más disyunciones de uno o más literales.
@@ -434,7 +434,7 @@ La misma tabla nos ha producido ahora una FNC.
 
 ### 11.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0019}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0019}
 **Ejemplo — De una tabla a FND y FNC**
 :::
 
@@ -495,7 +495,7 @@ p\leftrightarrow q
 (p\land q)\lor(\neg p\land\neg q).
 $$
 
-Esta es precisamente una equivalencia que ya habíamos demostrado en [la proposición «Equivalencias fundamentales del bicondicional»](#apm-i-p0006).
+Esta es precisamente una equivalencia que ya habíamos demostrado en [la proposición «Equivalencias fundamentales del bicondicional»](#apm-t1-c02-p0006).
 
 #### FNC desde las filas falsas
 

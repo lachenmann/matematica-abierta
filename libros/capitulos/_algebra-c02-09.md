@@ -210,7 +210,7 @@ Estas son las **leyes de absorción**. La palabra es apropiada: una aparición d
 
 Reunimos estas leyes.
 
-::: {.ma-block .ma-enunciado #apm-i-p0003}
+::: {.ma-block .ma-enunciado #apm-t1-c02-p0003}
 **Proposición — Distributividad y absorción**
 
 Para fórmulas proposicionales arbitrarias $P,Q,R$:
@@ -346,7 +346,7 @@ $$
 
 ### 9.7 Las leyes de De Morgan
 
-::: {.ma-block .ma-enunciado #apm-i-p0004}
+::: {.ma-block .ma-enunciado #apm-t1-c02-p0004}
 **Proposición — Leyes de De Morgan**
 
 Para fórmulas proposicionales arbitrarias $P,Q$:
@@ -408,7 +408,7 @@ $$
 
 $$
 
-Esta formulación será útil, pero nunca sustituye la justificación matemática: la regla es válida porque [la proposición «Leyes de De Morgan»](#apm-i-p0004) ya está demostrado.
+Esta formulación será útil, pero nunca sustituye la justificación matemática: la regla es válida porque [la proposición «Leyes de De Morgan»](#apm-t1-c02-p0004) ya está demostrado.
 
 ---
 
@@ -456,7 +456,7 @@ Por ahora basta registrar que el álgebra proposicional tiene una **dualidad vis
 
 ### 9.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0017}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0017}
 **Ejemplo — De Morgan y absorción en una misma cadena**
 :::
 
@@ -550,14 +550,14 @@ Este ejemplo muestra algo importante: una transformación puede ser correcta por
 ---
 ## Ejercicios
 
-### Distribuir y simplificar {#apm-i-e0109}
+### Distribuir y simplificar {#apm-t1-c02-e0109}
 Simplifica:
 
 $$
 P\land(Q\lor P).
 $$
 
-Utiliza distributividad y las leyes de [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002).
+Utiliza distributividad y las leyes de [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002).
 
 #### Solución
 
@@ -612,7 +612,7 @@ La simplificación coincide, naturalmente, con la ley de absorción en su forma 
 
 ---
 
-### Justificar la segunda distributividad {#apm-i-e0110}
+### Justificar la segunda distributividad {#apm-t1-c02-e0110}
 Demuestra mediante una tabla de verdad que:
 
 $$
@@ -649,7 +649,7 @@ $$
 
 ---
 
-### Justificar absorción {#apm-i-e0111}
+### Justificar absorción {#apm-t1-c02-e0111}
 Demuestra directamente desde los valores de verdad, sin usar la ley de absorción como premisa, que:
 
 $$
@@ -717,7 +717,7 @@ $$
 
 ---
 
-### Demostrar la segunda ley de De Morgan {#apm-i-e0112}
+### Demostrar la segunda ley de De Morgan {#apm-t1-c02-e0112}
 Construye una tabla para demostrar:
 
 $$
@@ -762,7 +762,7 @@ $$
 
 ---
 
-### Explorar la dualidad {#apm-i-e0113}
+### Explorar la dualidad {#apm-t1-c02-e0113}
 Considera las cuatro leyes:
 
 $$
@@ -848,7 +848,7 @@ La observación estructural no autoriza reescrituras que no estén respaldadas p
 
 ---
 
-### Una falsa ley de De Morgan {#apm-i-e0114}
+### Una falsa ley de De Morgan {#apm-t1-c02-e0114}
 Alguien propone:
 
 $$
@@ -912,7 +912,7 @@ La contraasignación muestra exactamente qué error contiene la falsa regla: al 
 
 ---
 
-### Síntesis: dos caminos hacia la misma simplificación {#apm-i-e0115}
+### Síntesis: dos caminos hacia la misma simplificación {#apm-t1-c02-e0115}
 Simplifica:
 
 $$
@@ -1052,11 +1052,11 @@ Las dos rutas son válidas porque cada paso está justificado por una equivalenc
 
 El repertorio de cálculo proposicional se amplía ahora con:
 
-> [la proposición «Distributividad y absorción»](#apm-i-p0003) — distributividad y absorción;
+> [la proposición «Distributividad y absorción»](#apm-t1-c02-p0003) — distributividad y absorción;
 
 y:
 
-> [la proposición «Leyes de De Morgan»](#apm-i-p0004) — leyes de De Morgan.
+> [la proposición «Leyes de De Morgan»](#apm-t1-c02-p0004) — leyes de De Morgan.
 
 Las distributividades son:
 
@@ -1104,7 +1104,7 @@ $$
 
 $$
 
-Con [la proposición «Primeras leyes del álgebra proposicional»](#apm-i-p0002), [la proposición «Distributividad y absorción»](#apm-i-p0003) y [la proposición «Leyes de De Morgan»](#apm-i-p0004) disponemos ya de un verdadero núcleo de álgebra proposicional.
+Con [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002), [la proposición «Distributividad y absorción»](#apm-t1-c02-p0003) y [la proposición «Leyes de De Morgan»](#apm-t1-c02-p0004) disponemos ya de un verdadero núcleo de álgebra proposicional.
 
 ---
 

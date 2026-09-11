@@ -76,7 +76,7 @@ $$
 
 ### 4.2 El cuantificador existencial
 
-::: {.ma-block .ma-definicion #apm-i-d0029}
+::: {.ma-block .ma-definicion #apm-t1-c03-d0029}
 **Definición — Cuantificador existencial**
 
 El **cuantificador existencial** es el símbolo:
@@ -393,7 +393,7 @@ Ninguno de los dos es correcto.
 
 ### 4.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0024}
+::: {.ma-block .ma-observacion #apm-t1-c03-x0024}
 **Ejemplo — Existencia, testigos y ausencia de unicidad**
 :::
 
@@ -454,7 +454,7 @@ son cuestiones distintas.
 ---
 ## Ejercicios
 
-### Escribir «existe» {#apm-i-e0153}
+### Escribir «existe» {#apm-t1-c03-e0153}
 En el dominio de los enteros, sea:
 
 $$
@@ -502,7 +502,7 @@ es un testigo.
 
 ---
 
-### «Existe» significa «al menos uno» {#apm-i-e0154}
+### «Existe» significa «al menos uno» {#apm-t1-c03-e0154}
 Explica por qué:
 
 $$
@@ -542,7 +542,7 @@ Por tanto, existencia y unicidad son afirmaciones diferentes.
 
 ---
 
-### Por qué basta un testigo {#apm-i-e0155}
+### Por qué basta un testigo {#apm-t1-c03-e0155}
 Trabajamos con valores enteros.
 
 Considera:
@@ -590,7 +590,7 @@ No necesitamos encontrar todos los valores que funcionen para concluir que la af
 
 ---
 
-### Más de un testigo {#apm-i-e0156}
+### Más de un testigo {#apm-t1-c03-e0156}
 Trabajamos con valores enteros.
 
 Considera:
@@ -664,7 +664,7 @@ $$
 
 ---
 
-### Formular una afirmación existencial {#apm-i-e0157}
+### Formular una afirmación existencial {#apm-t1-c03-e0157}
 Trabajamos con valores enteros.
 
 Escribe simbólicamente:
@@ -700,7 +700,7 @@ Por tanto, $4$ es un testigo y la afirmación existencial es verdadera.
 
 ---
 
-### La misma existencia en dos dominios {#apm-i-e0158}
+### La misma existencia en dos dominios {#apm-t1-c03-e0158}
 Considera:
 
 $$

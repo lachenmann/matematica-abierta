@@ -134,7 +134,7 @@ Una expresión puede formar parte de una afirmación, pero no toda expresión es
 
 Necesitamos un nombre para las afirmaciones a las que podemos atribuir verdad o falsedad.
 
-::: {.ma-block .ma-definicion #apm-i-d0008}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0008}
 **Definición — Proposición**
 
 En este capítulo, una **proposición** es una afirmación cuyo valor de verdad está determinado en el contexto considerado: es verdadera o es falsa, y no ambas.
@@ -170,7 +170,7 @@ La lógica no estudia solamente afirmaciones verdaderas. También necesita repre
 
 En la lógica proposicional clásica que estudiaremos en este capítulo trabajaremos con dos valores de verdad.
 
-::: {.ma-block .ma-definicion #apm-i-d0009}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0009}
 **Definición — Valor de verdad**
 
 El **valor de verdad** de una proposición indica si la proposición es verdadera o falsa. Usaremos:
@@ -406,7 +406,7 @@ $$
 
 ### 1.8 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0009}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0009}
 **Ejemplo — Expresión, pregunta, instrucción o proposición**
 
 :::
@@ -479,7 +479,7 @@ $$
 
 ## Ejercicios
 
-### Clasificar y evaluar {#apm-i-e0057}
+### Clasificar y evaluar {#apm-t1-c02-e0057}
 
 Clasifica cada escritura como expresión, proposición, pregunta o instrucción. Cuando sea proposición, indica su valor de verdad.
 
@@ -529,7 +529,7 @@ d) Pregunta; no tiene valor de verdad.
 
 e) Instrucción; no tiene valor de verdad.
 
-### Una proposición falsa sigue siendo proposición {#apm-i-e0058}
+### Una proposición falsa sigue siendo proposición {#apm-t1-c02-e0058}
 
 Un estudiante afirma:
 
@@ -559,7 +559,7 @@ $$
 \boxed{\mathrm F}.
 $$
 
-### El papel del contexto {#apm-i-e0059}
+### El papel del contexto {#apm-t1-c02-e0059}
 
 Considera:
 
@@ -607,7 +607,7 @@ $$
 \mathrm F.
 $$
 
-### No saber todavía {#apm-i-e0060}
+### No saber todavía {#apm-t1-c02-e0060}
 
 Considera:
 
@@ -645,7 +645,7 @@ $$
 \boxed{\mathrm V}.
 $$
 
-### Síntesis {#apm-i-e0061}
+### Síntesis {#apm-t1-c02-e0061}
 
 Considera:
 

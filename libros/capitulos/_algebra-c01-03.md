@@ -634,7 +634,7 @@ Nombrar partes de una expresión es útil solo si nos permite ver su organizaci�
 
 ## Ejercicios
 
-### Términos y factores {#apm-i-e0011}
+### Términos y factores {#apm-t1-c01-e0011}
 
 En cada expresión, identifica los términos de la suma exterior. Después, cuando corresponda, identifica los factores de cada término.
 
@@ -732,7 +732,7 @@ $$
 
 ---
 
-### Bases y exponentes {#apm-i-e0012}
+### Bases y exponentes {#apm-t1-c01-e0012}
 
 Identifica la base y el exponente de cada potencia.
 
@@ -802,7 +802,7 @@ y el exponente es $4$.
 
 ---
 
-### Numerador, denominador y estructura {#apm-i-e0013}
+### Numerador, denominador y estructura {#apm-t1-c01-e0013}
 
 Considera:
 
@@ -850,7 +850,7 @@ $$
 
 ---
 
-### Expresión o afirmación {#apm-i-e0014}
+### Expresión o afirmación {#apm-t1-c01-e0014}
 
 Indica cuáles de las siguientes escrituras son solo expresiones y cuáles afirman una igualdad.
 
@@ -908,7 +908,7 @@ Todavía no estamos estudiando formalmente qué significa que esta igualdad sea 
 
 ---
 
-### Lectura por capas {#apm-i-e0015}
+### Lectura por capas {#apm-t1-c01-e0015}
 
 Describe la estructura de
 

@@ -1,6 +1,6 @@
 ## §7. Equivalencia lógica
 
-En [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-i-e0089) construimos una tabla para: $p\Rightarrow q$ y $\neg q\Rightarrow\neg p$.
+En [el ejercicio «Síntesis: implicación y contraposición asociada»](#apm-t1-c02-e0089) construimos una tabla para: $p\Rightarrow q$ y $\neg q\Rightarrow\neg p$.
 
 Obtuvimos:
 
@@ -46,7 +46,7 @@ Significa que **ninguna asignación de valores de verdad permite distinguirlas s
 
 ### 7.2 Equivalencia lógica
 
-::: {.ma-block .ma-definicion #apm-i-d0021}
+::: {.ma-block .ma-definicion #apm-t1-c02-d0021}
 **Definición — Equivalencia lógica**
 
 Dos fórmulas proposicionales $P$ y $Q$ son **lógicamente equivalentes** cuando reciben el mismo valor de verdad en cada asignación de valores de verdad de todas las variables que aparecen en $P$ o en $Q$.
@@ -199,7 +199,7 @@ es una tautología. Y el razonamiento también funciona en la dirección inversa
 
 Podemos formularlo como nuestro primer resultado formal del capítulo.
 
-::: {.ma-block .ma-enunciado #apm-i-p0001}
+::: {.ma-block .ma-enunciado #apm-t1-c02-p0001}
 **Proposición — Criterio bicondicional para la equivalencia lógica**
 
 Sean $P$ y $Q$ fórmulas proposicionales. Entonces $P$ y $Q$ son lógicamente equivalentes si y solo si:
@@ -319,7 +319,7 @@ $$
 \mathrm V,
 $$
 
-entonces, por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001):
+entonces, por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-t1-c02-p0001):
 
 $$
 P\equiv Q.
@@ -461,7 +461,7 @@ Todavía conocemos pocas equivalencias reutilizables. Las secciones siguientes c
 
 ### 7.10 Ejemplo desarrollado
 
-::: {.ma-block .ma-observacion #apm-i-x0015}
+::: {.ma-block .ma-observacion #apm-t1-c02-x0015}
 **Ejemplo — Demostrar una equivalencia por tabla**
 :::
 
@@ -542,7 +542,7 @@ $$
 }
 $$
 
-Además, por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001), podemos concluir que:
+Además, por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-t1-c02-p0001), podemos concluir que:
 
 $$
 \neg(p\land q)
@@ -555,7 +555,7 @@ es una tautología.
 ---
 ## Ejercicios
 
-### Doble negación por tabla {#apm-i-e0096}
+### Doble negación por tabla {#apm-t1-c02-e0096}
 Construye una tabla para comparar:
 
 $$
@@ -600,7 +600,7 @@ $$
 
 ---
 
-### Una fila no basta {#apm-i-e0097}
+### Una fila no basta {#apm-t1-c02-e0097}
 Un estudiante sabe que, para:
 
 $$
@@ -670,7 +670,7 @@ no son lógicamente equivalentes.
 
 ---
 
-### Idempotencia descubierta semánticamente {#apm-i-e0098}
+### Idempotencia descubierta semánticamente {#apm-t1-c02-e0098}
 Demuestra mediante una tabla que:
 
 $$
@@ -701,7 +701,7 @@ Más adelante incorporaremos esta equivalencia a un conjunto sistemático de ley
 
 ---
 
-### Simetría de la equivalencia {#apm-i-e0099}
+### Simetría de la equivalencia {#apm-t1-c02-e0099}
 Supón que ya se ha establecido:
 
 $$
@@ -739,7 +739,7 @@ No hemos utilizado ninguna ley adicional; solo la definición de equivalencia l�
 
 ---
 
-### Refutar una equivalencia {#apm-i-e0100}
+### Refutar una equivalencia {#apm-t1-c02-e0100}
 Alguien propone:
 
 $$
@@ -790,7 +790,7 @@ Una sola fila distinta basta para refutar la equivalencia.
 
 ---
 
-### Síntesis: una fórmula más simple con la misma columna {#apm-i-e0101}
+### Síntesis: una fórmula más simple con la misma columna {#apm-t1-c02-e0101}
 Decide si:
 
 $$
@@ -847,7 +847,7 @@ p.
 }
 $$
 
-Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001), también sabemos que:
+Por [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-t1-c02-p0001), también sabemos que:
 
 $$
 \bigl((p\land q)\lor(p\land\neg q)\bigr)
@@ -891,7 +891,7 @@ El primero es un bicondicional, es decir, una fórmula.
 
 El segundo expresa equivalencia lógica entre fórmulas. La conexión entre ambos quedó establecida por:
 
-> [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-i-p0001) — $P$ y $Q$ son lógicamente equivalentes si y solo si $P\leftrightarrow Q$ es una tautología.
+> [la proposición «Criterio bicondicional para la equivalencia lógica»](#apm-t1-c02-p0001) — $P$ y $Q$ son lógicamente equivalentes si y solo si $P\leftrightarrow Q$ es una tautología.
 
 Con esta proposición cerramos el bloque puramente semántico del capítulo.
 

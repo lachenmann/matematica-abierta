@@ -2,6 +2,7 @@
 title: "Lógica proposicional y álgebra de proposiciones"
 description: "Segundo capítulo de Álgebra para matemáticos: proposiciones, conectivos, implicación y bicondicional, tablas de verdad, tautologías, equivalencia lógica, cálculo proposicional y formas normales."
 content-id: MA-BCH-0008
+source-id: APM-T1-C02
 content-type: book-chapter
 collection: PM-ALG
 book-id: MA-BOK-0004

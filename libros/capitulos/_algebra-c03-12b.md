@@ -1,6 +1,6 @@
 ## Ejercicios
 
-### El dominio que falta {#apm-i-e0201}
+### El dominio que falta {#apm-t1-c03-e0201}
 Considera:
 
 $$
@@ -72,7 +72,7 @@ $$
 
 ---
 
-### «No todos» no es «todos no» {#apm-i-e0202}
+### «No todos» no es «todos no» {#apm-t1-c03-e0202}
 El dominio contiene únicamente los valores:
 
 $$
@@ -166,7 +166,7 @@ $$
 
 ---
 
-### La variable que quedó libre {#apm-i-e0203}
+### La variable que quedó libre {#apm-t1-c03-e0203}
 Considera:
 
 $$
@@ -254,7 +254,7 @@ Por tanto, primero debemos reconstruir la intención y solo después reparar la 
 
 ---
 
-### Refutar una inversión de cuantificadores {#apm-i-e0204}
+### Refutar una inversión de cuantificadores {#apm-t1-c03-e0204}
 Trabajamos con valores enteros y definimos:
 
 $$
@@ -337,7 +337,7 @@ El contraejemplo muestra que los cuantificadores mixtos no pueden intercambiarse
 
 ---
 
-### Existencia no implica unicidad {#apm-i-e0205}
+### Existencia no implica unicidad {#apm-t1-c03-e0205}
 Trabajamos con valores enteros.
 
 Una persona observa que:
@@ -405,7 +405,7 @@ El error consiste en inferir **unicidad** a partir de un solo testigo.
 
 ---
 
-### Diagnóstico integral {#apm-i-e0206}
+### Diagnóstico integral {#apm-t1-c03-e0206}
 Trabajamos con valores enteros.
 
 Queremos expresar:
@@ -430,7 +430,7 @@ Escribe primero la traducción directa correcta de la frase, conservando la nega
 
 #### b)
 
-Transforma completamente esa negación mediante [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007).
+Transforma completamente esa negación mediante [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007).
 
 #### c)
 
@@ -475,7 +475,7 @@ $$
 
 #### b)
 
-Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-i-p0007) una capa a la vez:
+Aplicamos [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007) una capa a la vez:
 
 $$
 \neg\forall x\,\exists y\,(x+y=0)
