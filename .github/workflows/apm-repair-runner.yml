@@ -24,11 +24,10 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import re
+          import base64, re
 
           root = Path('libros/capitulos')
 
-          # 1. Qualify every historical chapter-local APM-I-* identifier.
           for chapter in (1, 2, 3):
               prefix = f'APM-T1-C0{chapter}'
               for path in sorted(root.glob(f'_algebra-c0{chapter}-*.md')):
@@ -37,7 +36,6 @@ jobs:
                   text = text.replace('#apm-i-', '#' + prefix.lower() + '-')
                   path.write_text(text, encoding='utf-8')
 
-          # 2. Normalize fragments that had been split only for transport/render convenience.
           groups = {
               root / '_algebra-c02-11.md': [root / '_algebra-c02-11a.md', root / '_algebra-c02-11b.md'],
               root / '_algebra-c02-12.md': [root / '_algebra-c02-12a.md', root / '_algebra-c02-12b.md'],
@@ -49,10 +47,9 @@ jobs:
                   raise SystemExit(f'Missing split fragments for {target.name}: {missing}')
               chunks = [p.read_text(encoding='utf-8').strip() for p in parts]
               target.write_text('\n\n'.join(chunks) + '\n', encoding='utf-8')
-              for p in parts:
-                  p.unlink()
+              for part in parts:
+                  part.unlink()
 
-          # 3. Add source-id metadata and point wrappers at normalized fragments.
           wrappers = {
               root / 'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md': 'APM-T1-C01',
               root / 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md': 'APM-T1-C02',
@@ -61,15 +58,14 @@ jobs:
           for path, source_id in wrappers.items():
               text = path.read_text(encoding='utf-8')
               if 'source-id:' not in text:
-                  text, n = re.subn(r'^(content-id:\s*MA-BCH-\d+)\s*$', r'\1\nsource-id: ' + source_id, text, count=1, flags=re.M)
-                  if n != 1:
+                  text, count = re.subn(r'^(content-id:\s*MA-BCH-\d+)\s*$', r'\1\nsource-id: ' + source_id, text, count=1, flags=re.M)
+                  if count != 1:
                       raise SystemExit(f'Could not insert source-id into {path.name}')
               else:
                   text = re.sub(r'^source-id:.*$', 'source-id: ' + source_id, text, count=1, flags=re.M)
               path.write_text(text, encoding='utf-8')
 
-          replacements = {
-              wrappers.keys().__iter__().__next__(): [],
+          include_replacements = {
               root / 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md': [
                   ('{{< include _algebra-c02-11a.md >}}\n\n{{< include _algebra-c02-11b.md >}}', '{{< include _algebra-c02-11.md >}}'),
                   ('{{< include _algebra-c02-12a.md >}}\n\n{{< include _algebra-c02-12b.md >}}', '{{< include _algebra-c02-12.md >}}'),
@@ -78,74 +74,18 @@ jobs:
                   ('{{< include _algebra-c03-12a.md >}}\n\n{{< include _algebra-c03-12b.md >}}\n\n{{< include _algebra-c03-12c.md >}}', '{{< include _algebra-c03-12.md >}}'),
               ],
           }
-          for path, reps in replacements.items():
-              if not reps:
-                  continue
+          for path, replacements in include_replacements.items():
               text = path.read_text(encoding='utf-8')
-              for old, new in reps:
+              for old, new in replacements:
                   if old not in text:
-                      raise SystemExit(f'Expected include sequence not found in {path.name}: {old}')
+                      raise SystemExit(f'Expected include sequence not found in {path.name}')
                   text = text.replace(old, new)
               path.write_text(text, encoding='utf-8')
 
-          # 4. Install the repository-wide identifier policy.
+          policy_b64 = 'IyBQb2zDrXRpY2EgZGUgaWRlbnRpZmljYWRvcmVzCgpNYXRlbcOhdGljYSBBYmllcnRhIHV0aWxpemEgZG9zIGNhcGFzIGRlIGlkZW50aWZpY2Fkb3JlcyBxdWUgY3VtcGxlbiBmdW5jaW9uZXMgZGlzdGludGFzIHkgbm8gZGViZW4gY29uZnVuZGlyc2UuCgojIyAxLiBJZGVudGlmaWNhZG9yIGdsb2JhbCBww7pibGljbwoKRm9ybWF0bzogYE1BLVRJUE8tTk5OTmAsIHBvciBlamVtcGxvIGBNQS1CQ0gtMDAwN2AuCgotIEVzIGdsb2JhbCBwYXJhIHRvZG8gZWwgc2l0aW8uCi0gRXMgaW5tdXRhYmxlLgotIE5vIHNlIHJldXRpbGl6YSBhdW5xdWUgdW5hIHBpZXphIHNlIHJldGlyZS4KLSBJZGVudGlmaWNhIGxhIHBpZXphIGVkaXRvcmlhbCBwdWJsaWNhZGEsIG5vIHN1IHBvc2ljacOzbiBpbnRlcm5hIGVuIHVuIG1hbnVzY3JpdG8uCgojIyAyLiBJZGVudGlmaWNhZG9yIGVkaXRvcmlhbCBkZSBmdWVudGUKCkZvcm1hdG8gYmFzZTogYFBST1lFQ1RPLVRPTU8tQ0FQSVRVTE9gLCBwb3IgZWplbXBsbyBgQVBNLVQxLUMwMWAuCgpEZWJlIHNlciBhdXRvc3VmaWNpZW50ZTogYFQxLUMwMWAgcG9yIHPDrSBzb2xvIGVzdMOhIHByb2hpYmlkbyBjb21vIGlkZW50aWZpY2Fkb3IgY2Fuw7NuaWNvIHBvcnF1ZSBwdWVkZSBjb2xpc2lvbmFyIGVudHJlIGxpYnJvcy4KCkPDs2RpZ29zIGluaWNpYWxlczoKCi0gYEFQTWAg4oCUIMOBbGdlYnJhIHBhcmEgbWF0ZW3DoXRpY29zCi0gYENQTWAg4oCUIEPDoWxjdWxvIHBhcmEgbWF0ZW3DoXRpY29zCi0gYEZQTWAg4oCUIEZ1bmRhbWVudG9zIHBhcmEgbWF0ZW3DoXRpY29zCi0gYEZJU1BNYCDigJQgRsOtc2ljYSBwYXJhIG1hdGVtw6F0aWNvcwoKIyMgMy4gT2JqZXRvcyBpbnRlcm5vcyBkZSB1biBjYXDDrXR1bG8KCkZvcm1hdG86IGBQUk9ZRUNUTy1UT01PLUNBUElUVUxPLVRJUE8tTk5OTmAuCgpFamVtcGxvczoKCi0gYEFQTS1UMS1DMDEtRDAwMDFgIOKAlCBkZWZpbmljacOzbgotIGBBUE0tVDEtQzAxLUUwMDAxYCDigJQgZWplcmNpY2lvCi0gYEFQTS1UMS1DMDEtWDAwMDFgIOKAlCBlamVtcGxvCi0gYEFQTS1UMS1DMDItUDAwMDFgIOKAlCBwcm9wb3NpY2nDs24KLSBgQVBNLVQxLUMwMi1UMDAwMWAg4oCUIHRlb3JlbWEKCkxhIG51bWVyYWNpw7NuIGhpc3TDs3JpY2EgcHVlZGUgY29uc2VydmFyc2U7IGxhIGN1YWxpZmljYWNpw7NuIGNvbiBwcm95ZWN0bywgdG9tbyB5IGNhcMOtdHVsbyBlcyBvYmxpZ2F0b3JpYSBlbiBsYSBlZGljacOzbiB3ZWIgeSBlbiBudWV2b3MgZG9jdW1lbnRvcyBjYW7Ds25pY29zLgoKIyMgNC4gQ29tcGF0aWJpbGlkYWQgY29uIGlkZW50aWZpY2Fkb3JlcyBoaXN0w7NyaWNvcwoKTG9zIGlkZW50aWZpY2Fkb3JlcyBoaXN0w7NyaWNvcyBkZWwgdGlwbyBgQVBNLUktRDAwMDFgIG5vIHNlIHJlbnVtZXJhbiBkZXN0cnVjdGl2YW1lbnRlIGVuIG1hbnVzY3JpdG9zIGNlcnJhZG9zLiBEdXJhbnRlIGxhIG1pZ3JhY2nDs24gc2UgY29uc2lkZXJhbiBhbGlhc2VzIGhpc3TDs3JpY29zLiBMYSBlZGljacOzbiB3ZWIgdXNhIGVsIGlkZW50aWZpY2Fkb3IgY3VhbGlmaWNhZG8gYEFQTS1UMS1DeHgtKmAuCgojIyA1LiBSZWdsYSBkZSBwdWJsaWNhY2nDs24KCkNhZGEgY2Fww610dWxvIHB1YmxpY2FkbyBkZWJlIGRlY2xhcmFyIHNpbXVsdMOhbmVhbWVudGU6CgpgYGB5YW1sCmNvbnRlbnQtaWQ6IE1BLUJDSC1OTk5OCnNvdXJjZS1pZDogQVBNLVQxLUNOTgpgYGAKCmBjb250ZW50LWlkYCBlbmxhemEgY29uIGVsIHJlZ2lzdHJvIGdsb2JhbCBkZWwgc2l0aW87IGBzb3VyY2UtaWRgIGVubGF6YSBjb24gZWwgY2Fub24gZWRpdG9yaWFsIGRlbCBsaWJyby4K'
           policy = Path('_project/IDENTIFIER_POLICY.md')
           policy.parent.mkdir(parents=True, exist_ok=True)
-          policy.write_text('''# Política de identificadores
-
-Matemática Abierta utiliza dos capas de identificadores que cumplen funciones distintas y no deben confundirse.
-
-## 1. Identificador global público
-
-Formato: `MA-TIPO-NNNN`, por ejemplo `MA-BCH-0007`.
-
-- Es global para todo el sitio.
-- Es inmutable.
-- No se reutiliza aunque una pieza se retire.
-- Identifica la pieza editorial publicada, no su posición interna en un manuscrito.
-
-## 2. Identificador editorial de fuente
-
-Formato base: `PROYECTO-TOMO-CAPITULO`, por ejemplo `APM-T1-C01`.
-
-Debe ser autosuficiente: `T1-C01` por sí solo está prohibido como identificador canónico porque puede colisionar entre libros.
-
-Códigos iniciales:
-
-- `APM` — Álgebra para matemáticos
-- `CPM` — Cálculo para matemáticos
-- `FPM` — Fundamentos para matemáticos
-- `FISPM` — Física para matemáticos
-
-## 3. Objetos internos de un capítulo
-
-Formato: `PROYECTO-TOMO-CAPITULO-TIPO-NNNN`.
-
-Ejemplos:
-
-- `APM-T1-C01-D0001` — definición
-- `APM-T1-C01-E0001` — ejercicio
-- `APM-T1-C01-X0001` — ejemplo
-- `APM-T1-C02-P0001` — proposición
-- `APM-T1-C02-T0001` — teorema
-
-La numeración histórica puede conservarse; la cualificación con proyecto, tomo y capítulo es obligatoria en la edición web y en nuevos documentos canónicos.
-
-## 4. Compatibilidad con identificadores históricos
-
-Los identificadores históricos del tipo `APM-I-D0001` no se renumeran destructivamente en manuscritos cerrados. Durante la migración se consideran aliases históricos. La edición web usa el identificador cualificado `APM-T1-Cxx-*`.
-
-## 5. Regla de publicación
-
-Cada capítulo publicado debe declarar simultáneamente:
-
-```yaml
-content-id: MA-BCH-NNNN
-source-id: APM-T1-CNN
-```
-
-`content-id` enlaza con el registro global del sitio; `source-id` enlaza con el canon editorial del libro.
-''', encoding='utf-8')
+          policy.write_bytes(base64.b64decode(policy_b64))
           PY
 
       - name: Structural QA
@@ -155,11 +95,9 @@ source-id: APM-T1-CNN
           python3 - <<'PY'
           from pathlib import Path
           import re
-
           root = Path('libros/capitulos')
           expected = {1: 10, 2: 12, 3: 12}
           total_exercises = 0
-
           for chapter, count in expected.items():
               files = sorted(root.glob(f'_algebra-c0{chapter}-*.md'))
               assert len(files) == count, (chapter, len(files), [p.name for p in files])
@@ -171,9 +109,7 @@ source-id: APM-T1-CNN
                   assert text.count('$$') % 2 == 0, ('unbalanced $$', path)
                   assert text.count(':::') % 2 == 0, ('unbalanced div', path)
                   total_exercises += len(re.findall(r'^### .*\{#' + qualified + r'e\d{4}\}\s*$', text, re.M | re.I))
-
           assert total_exercises == 206, total_exercises
-
           wrappers = {
               'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md': ('MA-BCH-0007', 'APM-T1-C01'),
               'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md': ('MA-BCH-0008', 'APM-T1-C02'),
@@ -183,12 +119,7 @@ source-id: APM-T1-CNN
               text = (root / filename).read_text(encoding='utf-8')
               assert f'content-id: {content_id}' in text, filename
               assert f'source-id: {source_id}' in text, filename
-
-          obsolete = [
-              '_algebra-c02-11a.md', '_algebra-c02-11b.md',
-              '_algebra-c02-12a.md', '_algebra-c02-12b.md',
-              '_algebra-c03-12a.md', '_algebra-c03-12b.md', '_algebra-c03-12c.md',
-          ]
+          obsolete = ['_algebra-c02-11a.md', '_algebra-c02-11b.md', '_algebra-c02-12a.md', '_algebra-c02-12b.md', '_algebra-c03-12a.md', '_algebra-c03-12b.md', '_algebra-c03-12c.md']
           assert not any((root / name).exists() for name in obsolete), obsolete
           assert Path('_project/IDENTIFIER_POLICY.md').is_file()
           print(f'QA OK: fragments=34 exercises={total_exercises}')
