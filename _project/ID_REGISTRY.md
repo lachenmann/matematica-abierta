@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0015 |
+| Capítulo | MA-BCH-0016 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0007 |
 
@@ -58,6 +58,7 @@
 | MA-BCH-0012 | book-chapter | El álgebra como lenguaje de relaciones y estructuras | `libros/capitulos/el-algebra-como-lenguaje-de-relaciones-y-estructuras.md` | published |
 | MA-BCH-0013 | book-chapter | Expresiones, variables, igualdad e identidad | `libros/capitulos/expresiones-variables-igualdad-e-identidad.md` | published |
 | MA-BCH-0014 | book-chapter | Leyes de las operaciones y transformaciones justificadas | `libros/capitulos/leyes-de-las-operaciones-y-transformaciones-justificadas.md` | published |
+| MA-BCH-0015 | book-chapter | Proposiciones y conectivos lógicos | `libros/capitulos/proposiciones-y-conectivos-logicos.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
