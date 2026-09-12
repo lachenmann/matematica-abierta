@@ -23,6 +23,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0012
+  - MA-BCH-0013
 provenance:
   type: original
   sources: []
@@ -57,6 +58,7 @@ Sus 22 capítulos recorren pensamiento algebraico, expresiones y leyes de las op
 ## Capítulos publicados
 
 1. [**El álgebra como lenguaje de relaciones y estructuras**](../capitulos/el-algebra-como-lenguaje-de-relaciones-y-estructuras.md) (`MA-BCH-0012`).
+2. [**Expresiones, variables, igualdad e identidad**](../capitulos/expresiones-variables-igualdad-e-identidad.md) (`MA-BCH-0013`).
 
 ## Criterio de publicación
 
@@ -66,4 +68,4 @@ Los ejercicios sustanciales incluyen soluciones desarrolladas en el propio capí
 
 ## Estado
 
-La segunda fundación editorial de la obra está activa. El Tomo I tiene actualmente cerrados y aprobados sus primeros nueve capítulos; la edición web comienza de manera deliberadamente progresiva con el Capítulo 1 para verificar navegación, renderizado y consistencia editorial antes de incorporar los siguientes capítulos.
+La segunda fundación editorial de la obra está activa. El Tomo I tiene actualmente cerrados y aprobados sus primeros nueve capítulos. La edición web ha publicado ya los capítulos 1 y 2 mediante el flujo canónico de derivación, QA y despliegue progresivo.
