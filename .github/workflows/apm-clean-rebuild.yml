@@ -1,0 +1,155 @@
+name: APM clean rebuild
+
+on:
+  push:
+    branches:
+      - rebuild/apm-clean-2026-09-11
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-and-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out rebuild branch
+        uses: actions/checkout@v7
+        with:
+          ref: rebuild/apm-clean-2026-09-11
+
+      - name: Rebuild APM chapters as standalone pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path('libros/capitulos')
+          specs = [
+              {
+                  'chapter': 1,
+                  'wrapper': 'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md',
+                  'title': 'Del cálculo aritmético al lenguaje algebraico',
+                  'parts': [f'_algebra-c01-{i:02d}.md' for i in range(1, 11)],
+                  'prefix': 'APM-T1-C01-',
+                  'expected': 56,
+              },
+              {
+                  'chapter': 2,
+                  'wrapper': 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md',
+                  'title': 'Lógica proposicional y álgebra de proposiciones',
+                  'parts': [f'_algebra-c02-{i:02d}.md' for i in range(1, 11)] + ['_algebra-c02-11a.md','_algebra-c02-11b.md','_algebra-c02-12a.md','_algebra-c02-12b.md'],
+                  'prefix': 'APM-T1-C02-',
+                  'expected': 78,
+              },
+              {
+                  'chapter': 3,
+                  'wrapper': 'algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md',
+                  'title': 'Predicados, cuantificadores y lenguaje matemático',
+                  'parts': [f'_algebra-c03-{i:02d}.md' for i in range(1, 12)] + ['_algebra-c03-12a.md','_algebra-c03-12b.md','_algebra-c03-12c.md'],
+                  'prefix': 'APM-T1-C03-',
+                  'expected': 72,
+              },
+          ]
+
+          all_parts = []
+          for s in specs:
+              wrapper = root / s['wrapper']
+              original = wrapper.read_text(encoding='utf-8')
+              m = re.match(r'\A(---\n.*?\n---\n)', original, flags=re.S)
+              if not m:
+                  raise SystemExit(f'No YAML front matter in {wrapper}')
+              front = m.group(1).rstrip() + '\n\n'
+
+              bodies = []
+              for part_name in s['parts']:
+                  part = root / part_name
+                  if not part.exists():
+                      raise SystemExit(f'Missing fragment: {part}')
+                  bodies.append(part.read_text(encoding='utf-8').strip())
+                  all_parts.append(part)
+
+              body = '\n\n'.join(bodies).strip() + '\n'
+              text = front + f"# {s['title']}\n\n" + body
+
+              if '{{< include ' in text:
+                  raise SystemExit(f'Include directive survived in {wrapper}')
+              if 'APM-I-' in text or '#apm-i-' in text.lower():
+                  raise SystemExit(f'Legacy APM-I identifier survived in {wrapper}')
+
+              exercises = len(re.findall(rf'(?m)^###\s+{re.escape(s["prefix"])}E\d{{4}}\b', text))
+              solutions = text.count('[!solution]')
+              if exercises != s['expected'] or solutions != s['expected']:
+                  raise SystemExit(f"QA failed for C{s['chapter']}: exercises={exercises}, solutions={solutions}, expected={s['expected']}")
+
+              wrapper.write_text(text, encoding='utf-8')
+              print(f"C{s['chapter']}: {exercises} exercises / {solutions} solutions")
+
+          # Remove the obsolete split-fragment layer only after all standalone pages pass QA.
+          for part in sorted(set(all_parts)):
+              part.unlink()
+
+          # No live include is allowed to point at the removed APM fragments.
+          refs = []
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or '.git' in p.parts:
+                  continue
+              try:
+                  t = p.read_text(encoding='utf-8')
+              except Exception:
+                  continue
+              if '_algebra-c01-' in t or '_algebra-c02-' in t or '_algebra-c03-' in t:
+                  refs.append(str(p))
+          if refs:
+              raise SystemExit('Obsolete APM fragment references remain: ' + ', '.join(refs))
+
+          print('TOTAL: 206 exercises / 206 solutions')
+          PY
+
+      - name: Commit clean standalone reconstruction
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A libros/capitulos
+          if git diff --cached --quiet; then
+            echo "No reconstruction changes to commit"
+          else
+            git commit -m "Rebuild APM chapters as standalone pages"
+            git push origin HEAD:rebuild/apm-clean-2026-09-11
+          fi
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: Render full site
+        shell: bash
+        run: quarto render
+
+      - name: Final structural QA
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('libros/capitulos')
+          files = [
+              ('algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md','APM-T1-C01-',56),
+              ('algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md','APM-T1-C02-',78),
+              ('algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md','APM-T1-C03-',72),
+          ]
+          total_e = total_s = 0
+          for fn,prefix,expected in files:
+              t=(root/fn).read_text(encoding='utf-8')
+              e=len(re.findall(rf'(?m)^###\s+{re.escape(prefix)}E\d{{4}}\b',t))
+              s=t.count('[!solution]')
+              assert e==s==expected,(fn,e,s)
+              assert '{{< include ' not in t
+              assert 'APM-I-' not in t
+              total_e += e; total_s += s
+          assert total_e == total_s == 206
+          print(f'PASS: {total_e} exercises / {total_s} solutions; full Quarto render succeeded')
+          PY
