@@ -116,6 +116,7 @@ Subsecciones canónicas:
 Colección editorial principal.
 
 - `PM-FUN` — Fundamentos para matemáticos
+- `PM-ALG` — Álgebra para matemáticos
 - `PM-CAL` — Cálculo para matemáticos
 - `PM-GEO` — Geometría para matemáticos
 - `PM-ANA` — Análisis para matemáticos

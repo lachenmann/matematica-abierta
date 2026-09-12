@@ -1,0 +1,69 @@
+---
+title: "Álgebra para matemáticos"
+description: "Obra abierta en seis tomos que reconstruye el álgebra desde el pensamiento algebraico elemental hasta álgebra lineal, grupos, anillos, cuerpos y teoría de Galois."
+content-id: MA-BOK-0006
+content-type: book
+collection: PM-ALG
+editorial-project: APM
+status: published
+date-created: 2026-09-12
+date-modified: 2026-09-12
+areas:
+  - algebra
+  - fundamentos
+level: introductorio
+topics:
+  - pensamiento-algebraico
+  - razonamiento-matematico
+  - algebra-lineal
+  - grupos
+  - anillos
+  - cuerpos
+  - teoria-de-galois
+prerequisites: []
+related:
+  - MA-BCH-0012
+provenance:
+  type: original
+  sources: []
+license: GFDL-1.3-or-later
+---
+
+# Álgebra para matemáticos
+
+**Álgebra para matemáticos** es una obra abierta de Matemática Abierta concebida como un recorrido progresivo desde el paso inicial de la aritmética al pensamiento algebraico hasta las estructuras que culminan en la teoría de Galois.
+
+La obra no trata el álgebra como una colección de reglas de manipulación simbólica. Su hilo conductor es aprender a reconocer **objetos, operaciones, relaciones, transformaciones e invariantes**, justificar cada paso y pasar gradualmente del cálculo concreto al razonamiento estructural.
+
+## Arquitectura general
+
+El proyecto está organizado en seis tomos:
+
+1. **Fundamentos algebraicos y razonamiento matemático**.
+2. **Álgebra lineal y transformaciones**.
+3. **Grupos, simetrías y acciones**.
+4. **Anillos, ideales y factorización**.
+5. **Cuerpos y extensiones**.
+6. **Teoría de Galois y síntesis algebraica**.
+
+La arquitectura completa comprende 106 capítulos previstos. La publicación es progresiva: cada capítulo aparece cuando ha cerrado su redacción, sus ejercicios y soluciones, y su control matemático y editorial.
+
+## Tomo I — Fundamentos algebraicos y razonamiento matemático
+
+El primer tomo reconstruye el álgebra elemental desde un punto de vista matemático y desarrolla, al mismo tiempo, las herramientas de lenguaje, lógica, demostración y razonamiento necesarias para avanzar hacia el álgebra lineal y el álgebra abstracta.
+
+Sus 22 capítulos recorren pensamiento algebraico, expresiones y leyes de las operaciones; lógica, cuantificadores, conjuntos, relaciones y funciones; métodos de demostración e inducción; divisibilidad, congruencias, ecuaciones e inequaciones; polinomios y números complejos.
+
+## Capítulos publicados
+
+1. [**El álgebra como lenguaje de relaciones y estructuras**](../capitulos/el-algebra-como-lenguaje-de-relaciones-y-estructuras.md) (`MA-BCH-0012`).
+
+## Criterio de publicación
+
+La fuente canónica de la obra se mantiene en el manuscrito editorial de Matemática Abierta. La edición web deriva cada capítulo cerrado a **un único archivo Markdown público**, evitando cadenas de fragmentos o reconstrucciones paralelas.
+
+Los ejercicios sustanciales incluyen soluciones desarrolladas en el propio capítulo, de modo que la edición pública pueda utilizarse tanto para lectura como para estudio autónomo.
+
+## Estado
+
+La segunda fundación editorial de la obra está activa. El Tomo I tiene actualmente cerrados y aprobados sus primeros nueve capítulos; la edición web comienza de manera deliberadamente progresiva con el Capítulo 1 para verificar navegación, renderizado y consistencia editorial antes de incorporar los siguientes capítulos.
