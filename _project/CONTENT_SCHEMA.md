@@ -27,7 +27,6 @@ El identificador global se almacena en `content-id` y no cambia aunque cambien e
 Los códigos `PM-*` identifican colecciones editoriales, no piezas individuales ni libros concretos.
 
 - `PM-FUN` — Fundamentos para matemáticos
-- `PM-ALG` — Álgebra para matemáticos
 - `PM-CAL` — Cálculo para matemáticos
 - `PM-GEO` — Geometría para matemáticos
 - `PM-ANA` — Análisis para matemáticos
