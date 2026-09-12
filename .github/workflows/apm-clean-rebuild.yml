@@ -18,6 +18,41 @@ jobs:
         with:
           ref: rebuild/apm-clean-2026-09-11
 
+      - name: Normalize internal horizontal rules
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          paths = [
+              Path('libros/capitulos/algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md'),
+              Path('libros/capitulos/algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md'),
+              Path('libros/capitulos/algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md'),
+          ]
+
+          for p in paths:
+              lines = p.read_text(encoding='utf-8').splitlines(keepends=True)
+              yaml_delims = 0
+              changed = 0
+              out = []
+              in_fence = False
+              for line in lines:
+                  stripped = line.strip()
+                  if stripped.startswith('```'):
+                      in_fence = not in_fence
+                  if not in_fence and stripped == '---':
+                      yaml_delims += 1
+                      if yaml_delims > 2:
+                          ending = '\n' if line.endswith('\n') else ''
+                          out.append('***' + ending)
+                          changed += 1
+                          continue
+                  out.append(line)
+              assert yaml_delims >= 2, f'Missing YAML front matter in {p}'
+              p.write_text(''.join(out), encoding='utf-8')
+              print(f'{p}: normalized {changed} internal separators')
+          PY
+
       - name: Structural QA
         shell: bash
         run: |
@@ -41,11 +76,11 @@ jobs:
               assert e == s == expected, (fn, e, s, expected)
               assert '{{< include ' not in t, fn
               assert 'APM-I-' not in t, fn
+              assert len(re.findall(r'(?m)^---\s*$', t)) == 2, f'Unexpected YAML-like delimiter in body: {fn}'
               total_e += e
               total_s += s
 
           assert total_e == total_s == 206
-
           obsolete = [p for p in root.glob('_algebra-c0*.md') if p.is_file()]
           assert not obsolete, f'Obsolete APM fragments remain: {obsolete}'
           print(f'PASS: {total_e} exercises / {total_s} solutions; standalone pages only')
@@ -56,23 +91,22 @@ jobs:
         with:
           version: 1.10.18
 
-      - name: Render full site and persist diagnostics on failure
+      - name: Render full site
         shell: bash
         run: |
-          set +e
-          quarto render > _project/APM_QUARTO_RENDER.log 2>&1
-          status=$?
-          cat _project/APM_QUARTO_RENDER.log
-          echo "$status" > _project/APM_QUARTO_RENDER.status
-          if [ "$status" -ne 0 ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add _project/APM_QUARTO_RENDER.log _project/APM_QUARTO_RENDER.status
-            git commit -m "Capture APM Quarto render failure [skip ci]" || true
-            git push origin HEAD:rebuild/apm-clean-2026-09-11
-            exit "$status"
-          fi
           rm -f _project/APM_QUARTO_RENDER.log _project/APM_QUARTO_RENDER.status
+          quarto render
+
+      - name: Persist validated rebuild
+        shell: bash
+        run: |
+          rm -f _project/APM_QUARTO_RENDER.log _project/APM_QUARTO_RENDER.status
+          rm -f .github/workflows/apm-clean-rebuild.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Validate clean standalone APM chapters [skip ci]"
+          git push origin HEAD:rebuild/apm-clean-2026-09-11
 
       - name: Final QA
         shell: bash
