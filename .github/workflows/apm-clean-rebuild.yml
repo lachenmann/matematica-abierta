@@ -78,7 +78,7 @@ jobs:
               if 'APM-I-' in text or '#apm-i-' in text.lower():
                   raise SystemExit(f'Legacy APM-I identifier survived in {wrapper}')
 
-              exercises = len(re.findall(rf'#({re.escape(s["anchor_prefix"])}\d{{4}})\b', text, flags=re.I))
+              exercises = len(re.findall(rf'(?mi)^###\s+.*\{{#{re.escape(s["anchor_prefix"])}\d{{4}}\}}\s*$', text))
               solutions = len(re.findall(r'(?m)^####\s+Solución\s*$', text))
               if exercises != s['expected'] or solutions != s['expected']:
                   raise SystemExit(f"QA failed for C{s['chapter']}: exercises={exercises}, solutions={solutions}, expected={s['expected']}")
@@ -86,11 +86,9 @@ jobs:
               wrapper.write_text(text, encoding='utf-8')
               print(f"C{s['chapter']}: {exercises} exercises / {solutions} solutions")
 
-          # Remove the obsolete split-fragment layer only after all standalone pages pass QA.
           for part in sorted(set(all_parts)):
               part.unlink()
 
-          # No live Markdown page may still point to the removed APM fragments.
           refs = []
           for p in Path('libros').rglob('*.md'):
               if not p.is_file():
@@ -141,7 +139,7 @@ jobs:
           total_e = total_s = 0
           for fn,prefix,expected in files:
               t=(root/fn).read_text(encoding='utf-8')
-              e=len(re.findall(rf'#({re.escape(prefix)}\d{{4}})\b',t,flags=re.I))
+              e=len(re.findall(rf'(?mi)^###\s+.*\{{#{re.escape(prefix)}\d{{4}}\}}\s*$',t))
               s=len(re.findall(r'(?m)^####\s+Solución\s*$',t))
               assert e==s==expected,(fn,e,s)
               assert '{{< include ' not in t
