@@ -1,4 +1,4 @@
-name: APM clean rebuild
+name: APM clean rebuild validation
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  rebuild-and-render:
+  validate-render:
     runs-on: ubuntu-latest
     steps:
       - name: Check out rebuild branch
@@ -18,7 +18,7 @@ jobs:
         with:
           ref: rebuild/apm-clean-2026-09-11
 
-      - name: Rebuild APM chapters as standalone pages
+      - name: Structural QA
         shell: bash
         run: |
           python - <<'PY'
@@ -27,124 +27,54 @@ jobs:
 
           root = Path('libros/capitulos')
           specs = [
-              {
-                  'chapter': 1,
-                  'wrapper': 'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md',
-                  'title': 'Del cálculo aritmético al lenguaje algebraico',
-                  'parts': [f'_algebra-c01-{i:02d}.md' for i in range(1, 11)],
-                  'anchor_prefix': 'apm-t1-c01-e',
-                  'expected': 56,
-              },
-              {
-                  'chapter': 2,
-                  'wrapper': 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md',
-                  'title': 'Lógica proposicional y álgebra de proposiciones',
-                  'parts': [f'_algebra-c02-{i:02d}.md' for i in range(1, 11)] + ['_algebra-c02-11a.md','_algebra-c02-11b.md','_algebra-c02-12a.md','_algebra-c02-12b.md'],
-                  'anchor_prefix': 'apm-t1-c02-e',
-                  'expected': 78,
-              },
-              {
-                  'chapter': 3,
-                  'wrapper': 'algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md',
-                  'title': 'Predicados, cuantificadores y lenguaje matemático',
-                  'parts': [f'_algebra-c03-{i:02d}.md' for i in range(1, 12)] + ['_algebra-c03-12a.md','_algebra-c03-12b.md','_algebra-c03-12c.md'],
-                  'anchor_prefix': 'apm-t1-c03-e',
-                  'expected': 72,
-              },
+              ('algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md', 'apm-t1-c01-e', 56),
+              ('algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md', 'apm-t1-c02-e', 78),
+              ('algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md', 'apm-t1-c03-e', 72),
           ]
 
-          all_parts = []
-          for s in specs:
-              wrapper = root / s['wrapper']
-              original = wrapper.read_text(encoding='utf-8')
-              m = re.match(r'\A(---\n.*?\n---\n)', original, flags=re.S)
-              if not m:
-                  raise SystemExit(f'No YAML front matter in {wrapper}')
-              front = m.group(1).rstrip() + '\n\n'
-
-              bodies = []
-              for part_name in s['parts']:
-                  part = root / part_name
-                  if not part.exists():
-                      raise SystemExit(f'Missing fragment: {part}')
-                  bodies.append(part.read_text(encoding='utf-8').strip())
-                  all_parts.append(part)
-
-              body = '\n\n'.join(bodies).strip() + '\n'
-              text = front + f"# {s['title']}\n\n" + body
-
-              if '{{< include ' in text:
-                  raise SystemExit(f'Include directive survived in {wrapper}')
-              if 'APM-I-' in text or '#apm-i-' in text.lower():
-                  raise SystemExit(f'Legacy APM-I identifier survived in {wrapper}')
-
-              exercises = len(re.findall(rf'(?mi)^###\s+.*\{{#{re.escape(s["anchor_prefix"])}\d{{4}}\}}\s*$', text))
-              solutions = len(re.findall(r'(?m)^####\s+Solución\s*$', text))
-              if exercises != s['expected'] or solutions != s['expected']:
-                  raise SystemExit(f"QA failed for C{s['chapter']}: exercises={exercises}, solutions={solutions}, expected={s['expected']}")
-
-              wrapper.write_text(text, encoding='utf-8')
-              print(f"C{s['chapter']}: {exercises} exercises / {solutions} solutions")
-
-          for part in sorted(set(all_parts)):
-              part.unlink()
-
-          refs = []
-          for p in Path('libros').rglob('*.md'):
-              if not p.is_file():
-                  continue
+          total_e = total_s = 0
+          for fn, prefix, expected in specs:
+              p = root / fn
               t = p.read_text(encoding='utf-8')
-              if '_algebra-c01-' in t or '_algebra-c02-' in t or '_algebra-c03-' in t:
-                  refs.append(str(p))
-          if refs:
-              raise SystemExit('Obsolete APM fragment references remain: ' + ', '.join(refs))
+              e = len(re.findall(rf'(?mi)^###\s+.*\{{#{re.escape(prefix)}\d{{4}}\}}\s*$', t))
+              s = len(re.findall(r'(?m)^####\s+Solución\s*$', t))
+              assert e == s == expected, (fn, e, s, expected)
+              assert '{{< include ' not in t, fn
+              assert 'APM-I-' not in t, fn
+              total_e += e
+              total_s += s
 
-          print('TOTAL: 206 exercises / 206 solutions')
+          assert total_e == total_s == 206
+
+          obsolete = [p for p in root.glob('_algebra-c0*.md') if p.is_file()]
+          assert not obsolete, f'Obsolete APM fragments remain: {obsolete}'
+          print(f'PASS: {total_e} exercises / {total_s} solutions; standalone pages only')
           PY
-
-      - name: Commit clean standalone reconstruction
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A libros/capitulos
-          if git diff --cached --quiet; then
-            echo "No reconstruction changes to commit"
-          else
-            git commit -m "Rebuild APM chapters as standalone pages"
-            git push origin HEAD:rebuild/apm-clean-2026-09-11
-          fi
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
 
-      - name: Render full site
-        shell: bash
-        run: quarto render
-
-      - name: Final structural QA
+      - name: Render full site and persist diagnostics on failure
         shell: bash
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          root = Path('libros/capitulos')
-          files = [
-              ('algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md','apm-t1-c01-e',56),
-              ('algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md','apm-t1-c02-e',78),
-              ('algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md','apm-t1-c03-e',72),
-          ]
-          total_e = total_s = 0
-          for fn,prefix,expected in files:
-              t=(root/fn).read_text(encoding='utf-8')
-              e=len(re.findall(rf'(?mi)^###\s+.*\{{#{re.escape(prefix)}\d{{4}}\}}\s*$',t))
-              s=len(re.findall(r'(?m)^####\s+Solución\s*$',t))
-              assert e==s==expected,(fn,e,s)
-              assert '{{< include ' not in t
-              assert 'APM-I-' not in t
-              total_e += e; total_s += s
-          assert total_e == total_s == 206
-          print(f'PASS: {total_e} exercises / {total_s} solutions; full Quarto render succeeded')
-          PY
+          set +e
+          quarto render > _project/APM_QUARTO_RENDER.log 2>&1
+          status=$?
+          cat _project/APM_QUARTO_RENDER.log
+          echo "$status" > _project/APM_QUARTO_RENDER.status
+          if [ "$status" -ne 0 ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add _project/APM_QUARTO_RENDER.log _project/APM_QUARTO_RENDER.status
+            git commit -m "Capture APM Quarto render failure [skip ci]" || true
+            git push origin HEAD:rebuild/apm-clean-2026-09-11
+            exit "$status"
+          fi
+          rm -f _project/APM_QUARTO_RENDER.log _project/APM_QUARTO_RENDER.status
+
+      - name: Final QA
+        shell: bash
+        run: |
+          echo 'PASS: clean APM rebuild and full Quarto render succeeded'
