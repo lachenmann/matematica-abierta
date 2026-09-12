@@ -110,7 +110,7 @@ Este será nuestro primer cambio de perspectiva:
 Antes de calcular una expresión, conviene aprender a **leer su estructura**.
 :::
 
----
+***
 
 ### 1.1 Una cuenta tiene arquitectura
 
@@ -226,7 +226,7 @@ $$
 
 A esas partes internas las llamaremos **subexpresiones**.
 
----
+***
 
 ### 1.2 Expresión y valor
 
@@ -297,7 +297,7 @@ no queremos afirmar que un número como $23$ no pueda aparecer escrito como expr
 
 Esta distinción será cada vez más importante.
 
----
+***
 
 ### 1.3 Leer de fuera hacia dentro
 
@@ -354,7 +354,7 @@ $$
 
 No es una regla destinada a hacer más lenta una cuenta sencilla. Es un entrenamiento para cuando las expresiones dejen de ser sencillas.
 
----
+***
 
 ### 1.4 Mini ejemplo: la importancia del signo exterior
 
@@ -396,7 +396,7 @@ $$
 
 Los mismos números y los mismos signos pueden describir estructuras diferentes.
 
----
+***
 
 ### 1.5 Mini ejemplo: una potencia dentro de una suma
 
@@ -446,7 +446,7 @@ $$
 
 Una vez más, los paréntesis no son un adorno tipográfico. Revelan la estructura.
 
----
+***
 
 ### 1.6 Ejemplo desarrollado
 
@@ -565,7 +565,7 @@ $$
 }
 $$
 
----
+***
 
 ## Ejercicios
 
@@ -637,7 +637,7 @@ $$
 
 **Operación principal:** suma.
 
----
+***
 
 ### Los paréntesis cambian la estructura {#apm-t1-c01-e0002}
 
@@ -689,7 +689,7 @@ $$
 
 Los valores son distintos porque las expresiones tienen estructuras distintas. En la primera, la operación principal es la suma; en la segunda, es la multiplicación.
 
----
+***
 
 ### Expresión y valor {#apm-t1-c01-e0003}
 
@@ -797,7 +797,7 @@ $$
 
 El valor es $13$.
 
----
+***
 
 ### Una expresión en palabras {#apm-t1-c01-e0004}
 
@@ -855,7 +855,7 @@ $$
 55.
 $$
 
----
+***
 
 ### Construcción {#apm-t1-c01-e0005}
 
@@ -915,7 +915,7 @@ $$
 
 La diferencia no proviene de los números ni de las operaciones utilizadas, que son los mismos. Proviene de la manera en que esas operaciones están organizadas.
 
----
+***
 
 ## Resumen de la sección
 
@@ -951,7 +951,7 @@ $$
 }
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -1053,7 +1053,7 @@ En matemáticas, **el significado de una letra depende del contexto en que se us
 
 Esa será la idea central de esta sección.
 
----
+***
 
 ### 2.1 Una letra puede ser un nombre
 
@@ -1101,7 +1101,7 @@ $$
 
 Necesitamos saber cómo ha sido introducida.
 
----
+***
 
 ### 2.2 Una letra puede representar un número desconocido
 
@@ -1145,7 +1145,7 @@ Una letra no «nace» siendo incógnita, variable o constante. Su papel matemát
 
 La teoría sistemática de ecuaciones y de sus soluciones vendrá mucho más adelante. Aquí solo queremos aprender a leer correctamente la situación.
 
----
+***
 
 ### 2.3 Una letra puede representar un número arbitrario
 
@@ -1205,7 +1205,7 @@ o
 
 Para hacerlo necesitaremos cuantificadores y lenguaje lógico. Todavía no los introduciremos.
 
----
+***
 
 ### 2.4 ¿Qué es una constante?
 
@@ -1261,7 +1261,7 @@ Lo importante aquí es comprender que «constante» describe un **papel dentro d
 
 Una letra puede representar una constante.
 
----
+***
 
 ### 2.5 ¿Qué es una variable?
 
@@ -1321,7 +1321,7 @@ $$
 
 una variable es un símbolo cuyo valor puede variar **dentro de las posibilidades que el contexto admite**.
 
----
+***
 
 ### 2.6 El contexto decide el papel
 
@@ -1391,7 +1391,7 @@ El símbolo $x$ no contiene internamente las instrucciones «soy una incógnita�
 
 Esta observación será muy importante cuando nuestras fórmulas contengan muchas letras.
 
----
+***
 
 ### 2.7 No todas las letras cumplen el mismo papel en una fórmula
 
@@ -1428,7 +1428,7 @@ Por eso no debemos intentar deducir el papel de una letra únicamente por su pos
 
 Más adelante introduciremos otros nombres para ciertos papeles especiales —por ejemplo, el de **parámetro**—, pero todavía no los necesitamos.
 
----
+***
 
 ### 2.8 Las letras permiten expresar patrones
 
@@ -1462,7 +1462,7 @@ $$
 
 Esta capacidad de expresar patrones es una de las razones por las que el álgebra es mucho más que una técnica para «encontrar $x$».
 
----
+***
 
 ## Ejercicios
 
@@ -1530,7 +1530,7 @@ $$
 
 Por tanto, $x$ desempeña el papel de variable.
 
----
+***
 
 ### La misma letra en contextos distintos {#apm-t1-c01-e0007}
 
@@ -1564,7 +1564,7 @@ En la tercera, $x$ puede representar distintos valores permitidos.
 
 Por tanto, el símbolo $x$ no posee un papel fijo por el simple hecho de ser una letra. El contexto determina su interpretación.
 
----
+***
 
 ### Constantes y variable en una expresión {#apm-t1-c01-e0008}
 
@@ -1618,7 +1618,7 @@ $$
 
 No hemos asignado ningún valor concreto a $x$.
 
----
+***
 
 ### De un patrón verbal a una expresión {#apm-t1-c01-e0009}
 
@@ -1676,7 +1676,7 @@ $$
 
 No hay nada especial en las letras elegidas. Podríamos haber usado otros símbolos, siempre que dejáramos claro qué representan.
 
----
+***
 
 ### ¿Qué información falta? {#apm-t1-c01-e0010}
 
@@ -1722,7 +1722,7 @@ $$
 }
 $$
 
----
+***
 
 ## Resumen de la sección
 
@@ -1766,7 +1766,7 @@ $$
 }
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -1844,7 +1844,7 @@ La palabra «mínimo» es importante. No queremos aprender una lista de nombres 
 El vocabulario algebraico sirve para indicar **cómo está construida una expresión**.
 :::
 
----
+***
 
 ### 3.1 Sumas y términos
 
@@ -1922,7 +1922,7 @@ es un **término** respecto de la suma exterior y un **producto** cuando la exam
 
 Esta manera de hablar evita una dificultad frecuente: creer que cada símbolo debe recibir una sola etiqueta absoluta.
 
----
+***
 
 ### 3.2 Productos y factores
 
@@ -2007,7 +2007,7 @@ suma
 
 No pretendemos que este diagrama sea una definición formal. Es una ayuda para aprender a leer por niveles.
 
----
+***
 
 ### 3.3 Restas y signos
 
@@ -2063,7 +2063,7 @@ Esta lectura será especialmente útil más adelante, cuando estudiemos polinomi
 No debemos confundir el signo menos que pertenece a un término con una instrucción informal de «cambiar el signo» o «mover algo al otro lado». Las transformaciones de ecuaciones se estudiarán más adelante con precisión.
 :::
 
----
+***
 
 ### 3.4 Potencias: base y exponente
 
@@ -2133,7 +2133,7 @@ $$
 
 En la primera, solo $b$ está elevado al cuadrado. En la segunda, toda la suma está elevada al cuadrado.
 
----
+***
 
 ### 3.5 Cocientes: numerador y denominador
 
@@ -2184,7 +2184,7 @@ En la primera expresión, la operación principal es la división. En la segunda
 
 La barra de fracción cumple un papel semejante al de unos paréntesis extensos: agrupa todo el numerador y todo el denominador.
 
----
+***
 
 ### 3.6 Leer una expresión por capas
 
@@ -2290,7 +2290,7 @@ $$
 }
 $$
 
----
+***
 
 ### 3.7 Una expresión representa; una igualdad afirma
 
@@ -2340,7 +2340,7 @@ $$
 
 Esta diferencia será decisiva en las secciones siguientes.
 
----
+***
 
 ### 3.8 ¿Qué llamaremos fórmula?
 
@@ -2372,7 +2372,7 @@ La usaremos como una palabra funcional para una escritura matemática que expres
 Más adelante, en lógica matemática, la palabra «fórmula» puede adquirir un significado técnico más preciso. Cuando lleguemos allí distinguiremos cuidadosamente ese uso formal del uso corriente que hacemos ahora.
 :::
 
----
+***
 
 ### 3.9 Ejemplo guiado: leer sin simplificar
 
@@ -2446,7 +2446,7 @@ No hemos calculado ni simplificado nada. Y, sin embargo, ahora comprendemos much
 Nombrar partes de una expresión es útil solo si nos permite ver su organización.
 :::
 
----
+***
 
 ## Ejercicios
 
@@ -2546,7 +2546,7 @@ $$
 x.
 $$
 
----
+***
 
 ### Bases y exponentes {#apm-t1-c01-e0012}
 
@@ -2616,7 +2616,7 @@ $$
 
 y el exponente es $4$.
 
----
+***
 
 ### Numerador, denominador y estructura {#apm-t1-c01-e0013}
 
@@ -2664,7 +2664,7 @@ $$
 y.
 $$
 
----
+***
 
 ### Expresión o afirmación {#apm-t1-c01-e0014}
 
@@ -2722,7 +2722,7 @@ afirma una igualdad entre dos expresiones.
 
 Todavía no estamos estudiando formalmente qué significa que esta igualdad sea válida para distintos valores; eso vendrá más adelante.
 
----
+***
 
 ### Lectura por capas {#apm-t1-c01-e0015}
 
@@ -2816,7 +2816,7 @@ $$
 
 La expresión completa queda organizada en capas, desde el cociente exterior hasta las subexpresiones interiores.
 
----
+***
 
 ## Resumen de la sección
 
@@ -2865,7 +2865,7 @@ Todavía no hemos formalizado el concepto lógico de afirmación; simplemente he
 
 Finalmente, usaremos la palabra **fórmula** de manera no técnica para una escritura que expresa compactamente una regla, una relación o un patrón.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -2955,7 +2955,7 @@ Sustituir no significa «borrar una letra y poner otra cosa en su lugar» de cua
 Sustituir significa **reemplazar el símbolo por una nueva expresión conservando intacta la estructura que lo rodea**.
 :::
 
----
+***
 
 ### 4.1 Sustituir es reemplazar todas las apariciones
 
@@ -3037,7 +3037,7 @@ $$
 }
 $$
 
----
+***
 
 ### 4.2 Los paréntesis protegen la estructura
 
@@ -3123,7 +3123,7 @@ Cuando sustituimos una variable por un número negativo, los paréntesis conserv
 
 Este no es un truco tipográfico. Es una consecuencia de la estructura que aprendimos a leer en §1 y §3.
 
----
+***
 
 ### 4.3 Ejemplo desarrollado: un número negativo
 
@@ -3222,7 +3222,7 @@ $$
 
 El error no estaría en la aritmética final. Estaría mucho antes: habríamos alterado la estructura al reemplazar $x$ por $-3$ sin agrupar el valor completo.
 
----
+***
 
 ### 4.4 Evaluar una expresión
 
@@ -3278,7 +3278,7 @@ $$
 }
 $$
 
----
+***
 
 ### 4.5 El cero también debe sustituirse
 
@@ -3330,7 +3330,7 @@ $$
 
 El método no cambia porque el valor elegido sea cero.
 
----
+***
 
 ### 4.6 Sustitución con varias letras
 
@@ -3401,7 +3401,7 @@ $$
 
 De nuevo, los paréntesis protegen el valor negativo de $b$.
 
----
+***
 
 ### 4.7 Sustituir una expresión completa
 
@@ -3455,7 +3455,7 @@ $$
 
 La expresión $a+b$ ocupa exactamente el lugar estructural que antes ocupaba $x$.
 
----
+***
 
 ### 4.8 Ejemplo desarrollado: una expresión por otra expresión
 
@@ -3526,7 +3526,7 @@ $$
 
 Esta distinción evita hacer varias operaciones mentalmente al mismo tiempo.
 
----
+***
 
 ### 4.9 Sustituir no es simplificar
 
@@ -3581,7 +3581,7 @@ Primero sustituimos correctamente.
 Solo después, si el problema lo requiere, simplificamos o transformamos.
 :::
 
----
+***
 
 ### 4.10 Un error típico: cambiar solo lo visible
 
@@ -3629,7 +3629,7 @@ Aquí se ha perdido el hecho de que **toda** la subexpresión $x+1$ estaba eleva
 
 La sustitución no solo debe respetar el símbolo reemplazado. Debe respetar también todas las operaciones que actuaban sobre él y sobre las expresiones que lo contienen.
 
----
+***
 
 ## Ejercicios
 
@@ -3718,7 +3718,7 @@ $$
 1.
 $$
 
----
+***
 
 ### Todas las apariciones {#apm-t1-c01-e0017}
 
@@ -3776,7 +3776,7 @@ $$
 
 Hay que sustituir dos veces porque ambas apariciones del símbolo $x$ representan el mismo valor fijado para esta evaluación.
 
----
+***
 
 ### El peligro del signo negativo {#apm-t1-c01-e0018}
 
@@ -3846,7 +3846,7 @@ $$
 
 Por eso eliminar los paréntesis cambiaría la estructura y produciría una evaluación incorrecta.
 
----
+***
 
 ### Dos variables {#apm-t1-c01-e0019}
 
@@ -3904,7 +3904,7 @@ $$
 \boxed{1}.
 $$
 
----
+***
 
 ### Sustituir una expresión {#apm-t1-c01-e0020}
 
@@ -3942,7 +3942,7 @@ $$
 
 No es necesario expandir.
 
----
+***
 
 ### Detectar una sustitución incorrecta {#apm-t1-c01-e0021}
 
@@ -4018,7 +4018,7 @@ $$
 \boxed{13}.
 $$
 
----
+***
 
 ### Sustitución o transformación {#apm-t1-c01-e0022}
 
@@ -4081,7 +4081,7 @@ Separar las etapas permite comprobar dos cosas distintas:
 
 Escribir todo de una vez puede ocultar dónde apareció un error.
 
----
+***
 
 ## Resumen de la sección
 
@@ -4124,7 +4124,7 @@ $$
 }
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -4263,7 +4263,7 @@ El signo $=$ no es una orden de cálculo ni una flecha de proceso.
 Es una afirmación de igualdad.
 :::
 
----
+***
 
 ### 5.1 Qué significa escribir \(A=B\)
 
@@ -4332,7 +4332,7 @@ A=B
 }
 $$
 
----
+***
 
 ### 5.2 El signo igual no significa «da»
 
@@ -4408,7 +4408,7 @@ $$
 }
 $$
 
----
+***
 
 ### 5.3 Leer una igualdad en ambas direcciones
 
@@ -4462,7 +4462,7 @@ $$
 3\cdot4=12.
 $$
 
----
+***
 
 ### 5.4 Cadenas de igualdades
 
@@ -4536,7 +4536,7 @@ En palabras:
 
 No necesitamos demostrar formalmente esta propiedad aquí. La utilizaremos como una característica básica de la igualdad.
 
----
+***
 
 ### 5.5 Una cadena correcta cuenta una sola historia
 
@@ -4587,7 +4587,7 @@ Cuando queremos describir un procedimiento donde el objeto cambia, podemos:
 
 Pero no debemos utilizar $=$ para significar simplemente «y después».
 
----
+***
 
 ### 5.6 Ejemplo desarrollado: reparar una cadena
 
@@ -4688,7 +4688,7 @@ $$
 }
 $$
 
----
+***
 
 ### 5.7 Igualdades verdaderas e igualdades falsas
 
@@ -4758,7 +4758,7 @@ Por ahora queremos advertir solamente:
 Una escritura con $=$ no es automáticamente correcta por el mero hecho de estar escrita. Es una afirmación matemática que debe interpretarse y, cuando sea necesario, justificarse.
 :::
 
----
+***
 
 ### 5.8 El formato vertical ayuda a pensar
 
@@ -4800,7 +4800,7 @@ Cada línea representa el mismo número.
 
 En §7 utilizaremos este formato para añadir, junto a cada paso, la ley algebraica que lo justifica.
 
----
+***
 
 ### 5.9 Igualdad no significa aproximación
 
@@ -4844,7 +4844,7 @@ $$
 
 Esta precisión evita usar el mismo símbolo para relaciones matemáticas diferentes.
 
----
+***
 
 ## Ejercicios
 
@@ -4962,7 +4962,7 @@ $$
 
 Por tanto, es incorrecta.
 
----
+***
 
 ### Reparar una escritura {#apm-t1-c01-e0024}
 
@@ -5023,7 +5023,7 @@ $$
 \end{aligned}
 $$
 
----
+***
 
 ### Leer la igualdad al revés {#apm-t1-c01-e0025}
 
@@ -5073,7 +5073,7 @@ Estamos utilizando la **simetría de la igualdad**: si $A=B$, entonces también 
 
 No hemos cambiado el contenido de la afirmación.
 
----
+***
 
 ### Completar una cadena {#apm-t1-c01-e0026}
 
@@ -5123,7 +5123,7 @@ $$
 
 Los tres miembros representan el mismo número, $20$.
 
----
+***
 
 ### Encontrar el primer error {#apm-t1-c01-e0027}
 
@@ -5189,7 +5189,7 @@ $$
 
 Todas las líneas representan $17$.
 
----
+***
 
 ### Igualdad exacta o no {#apm-t1-c01-e0028}
 
@@ -5269,7 +5269,7 @@ $$
 2.5.
 $$
 
----
+***
 
 ## Resumen de la sección
 
@@ -5314,7 +5314,7 @@ $$
 
 Este principio será indispensable cuando comencemos a transformar expresiones algebraicas más complejas.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -5447,7 +5447,7 @@ Parece haber, por tanto, dos situaciones distintas:
 
 Esta es la primera distinción que queremos aprender.
 
----
+***
 
 ### 6.1 Una igualdad que expresa un patrón general
 
@@ -5507,7 +5507,7 @@ $$
 
 En estos casos las letras no representan valores especiales que debamos descubrir. Representan valores generales dentro del contexto.
 
----
+***
 
 ### 6.2 Probar casos no basta para demostrar una identidad
 
@@ -5595,7 +5595,7 @@ Probar ejemplos puede **comprobar casos** y detectar errores, pero no demuestra 
 
 Esta diferencia entre evidencia y demostración se volverá central en el capítulo 5.
 
----
+***
 
 ### 6.3 Una igualdad que impone una condición
 
@@ -5649,7 +5649,7 @@ Ese será el objetivo principal del capítulo 11.
 
 Por ahora solo queremos reconocer qué clase de pregunta plantea una ecuación.
 
----
+***
 
 ### 6.4 Identidad y ecuación no se distinguen solo por su apariencia
 
@@ -5684,7 +5684,7 @@ En este capítulo usaremos normalmente:
 
 Más adelante podremos formular esta distinción con herramientas lógicas más precisas.
 
----
+***
 
 ### 6.5 Una ecuación puede ser verdadera para un valor y falsa para otro
 
@@ -5738,7 +5738,7 @@ Está imponiendo una condición.
 
 Este tipo de lectura será esencial cuando lleguemos a estudiar ecuaciones con precisión.
 
----
+***
 
 ### 6.6 Ejemplo desarrollado: dos igualdades, dos funciones
 
@@ -5869,7 +5869,7 @@ En la ecuación preguntamos:
 
 Esa es la distinción fundamental de la sección.
 
----
+***
 
 ### 6.7 Un contraejemplo puede descartar una supuesta identidad
 
@@ -5923,7 +5923,7 @@ $$
 
 Todavía no desarrollaremos formalmente el método del contraejemplo. Lo utilizaremos aquí únicamente como herramienta de diagnóstico.
 
----
+***
 
 ### 6.8 Tres preguntas distintas ante una igualdad con letras
 
@@ -5945,7 +5945,7 @@ Si estamos ante una ecuación, ¿qué valores hacen verdadera la igualdad?
 
 Estas tres preguntas evitan una lectura mecánica de los símbolos.
 
----
+***
 
 ## Ejercicios
 
@@ -6011,7 +6011,7 @@ La pregunta pide determinar qué valores hacen verdadera la igualdad.
 
 Se está usando como **ecuación**.
 
----
+***
 
 ### Comprobar valores en una ecuación {#apm-t1-c01-e0030}
 
@@ -6103,7 +6103,7 @@ que es falso.
 
 Por tanto, $x=-4$ no hace verdadera la ecuación.
 
----
+***
 
 ### ¿Bastan tres casos? {#apm-t1-c01-e0031}
 
@@ -6195,7 +6195,7 @@ $$
 
 Esta es la razón estructural que justifica la identidad.
 
----
+***
 
 ### Refutar una supuesta identidad {#apm-t1-c01-e0032}
 
@@ -6245,7 +6245,7 @@ Así, la igualdad no puede ser una identidad.
 
 No necesitamos examinar todos los valores: un solo caso donde falle basta para descartar una afirmación que pretendía valer siempre.
 
----
+***
 
 ### La misma escritura, distinta pregunta {#apm-t1-c01-e0033}
 
@@ -6298,7 +6298,7 @@ También importa la función que cumple la igualdad:
 - expresar una relación general;
 - o plantear una pregunta sobre los valores que la hacen verdadera.
 
----
+***
 
 ## Resumen de la sección
 
@@ -6346,7 +6346,7 @@ Los ejemplos pueden apoyar una conjetura o detectar un error. La justificación 
 
 Finalmente, hemos visto que un solo contraejemplo puede refutar una supuesta identidad.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -6438,7 +6438,7 @@ Transformar una expresión consiste en reemplazarla por otra expresión que cons
 
 Por tanto, aprender álgebra no significa memorizar movimientos de símbolos. Significa aprender **qué transformaciones conservan el valor y por qué**.
 
----
+***
 
 ### 7.1 Una transformación no es un desplazamiento de símbolos
 
@@ -6530,7 +6530,7 @@ $$
 
 Este formato será uno de nuestros hábitos fundamentales.
 
----
+***
 
 ### 7.2 Tres leyes operativas
 
@@ -6620,7 +6620,7 @@ $$
 
 Son expresiones distintas, pero representan el mismo valor para los valores permitidos en el contexto.
 
----
+***
 
 ### 7.3 La dirección de una transformación depende del objetivo
 
@@ -6673,7 +6673,7 @@ Esto será cada vez más importante.
 
 Una misma expresión puede tener varias formas correctas, y cada forma puede revelar una estructura distinta.
 
----
+***
 
 ### 7.4 La distributividad funciona en ambas direcciones
 
@@ -6731,7 +6731,7 @@ ni ninguna combinación semejante. Lo que hacemos es reconocer un factor común.
 
 La lectura estructural determina la transformación correcta.
 
----
+***
 
 ### 7.5 Reordenar exige una razón
 
@@ -6785,7 +6785,7 @@ $$
 
 La expresión no cambia de valor en ningún paso.
 
----
+***
 
 ### 7.6 Ejemplo desarrollado: justificar cada transformación
 
@@ -6876,7 +6876,7 @@ No hemos aplicado una receta de «quitar paréntesis y juntar letras».
 
 Hemos construido una cadena de igualdades, y cada igualdad tiene una justificación.
 
----
+***
 
 ### 7.7 Dos caminos correctos pueden llegar al mismo lugar
 
@@ -6964,7 +6964,7 @@ $$
 
 La corrección y la eficiencia son cuestiones distintas.
 
----
+***
 
 ### 7.8 Cómo detectar un paso inválido
 
@@ -7026,7 +7026,7 @@ La comprobación numérica no sustituye la explicación estructural, pero puede 
 Una transformación algebraica no es válida porque «parezca habitual». Debemos poder indicar la ley que la justifica.
 :::
 
----
+***
 
 ### 7.9 «Mover», «pasar» y «cancelar» pueden ocultar matemáticas
 
@@ -7065,7 +7065,7 @@ Por ahora adoptaremos una regla editorial para todo el libro:
 Podemos usar una abreviatura verbal solo después de que la operación matemática que resume haya quedado clara. Nunca reemplazaremos una justificación por la imagen de que los símbolos «se trasladan» solos.
 :::
 
----
+***
 
 ### 7.10 Transformar no es cambiar arbitrariamente
 
@@ -7117,7 +7117,7 @@ La pregunta decisiva ante cada paso es:
 
 Si no podemos responder, debemos revisar el paso.
 
----
+***
 
 ## Ejercicios
 
@@ -7201,7 +7201,7 @@ $$
 
 usa la **conmutatividad del producto**.
 
----
+***
 
 ### Justificar cada paso {#apm-t1-c01-e0035}
 
@@ -7259,7 +7259,7 @@ $$
 
 usa aritmética.
 
----
+***
 
 ### Transformar sin saltos {#apm-t1-c01-e0036}
 
@@ -7333,7 +7333,7 @@ $$
 \end{aligned}
 $$
 
----
+***
 
 ### Dos caminos {#apm-t1-c01-e0037}
 
@@ -7397,7 +7397,7 @@ $$
 
 El segundo camino reconoce antes la estructura común.
 
----
+***
 
 ### Encontrar el primer paso inválido {#apm-t1-c01-e0038}
 
@@ -7451,7 +7451,7 @@ $$
 \boxed{5x+8}.
 $$
 
----
+***
 
 ### ¿Puede reunirse? {#apm-t1-c01-e0039}
 
@@ -7547,7 +7547,7 @@ $$
 
 La transformación propuesta no está justificada.
 
----
+***
 
 ### Elegir una forma útil {#apm-t1-c01-e0040}
 
@@ -7605,7 +7605,7 @@ hace visible inmediatamente que tenemos una suma de dos términos.
 
 Ninguna forma es absolutamente «mejor». Cada una revela una estructura distinta.
 
----
+***
 
 ## Resumen de la sección
 
@@ -7673,7 +7673,7 @@ $$
 }
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -7779,7 +7779,7 @@ La respuesta combinará convenciones de precedencia, paréntesis, barras de frac
 Una buena notación no obliga al lector a adivinar la estructura.
 :::
 
----
+***
 
 ### 8.1 La escritura también tiene jerarquía
 
@@ -7829,7 +7829,7 @@ No queremos convertir esta lista en una mnemotecnia ciega.
 
 El objetivo es entender que las convenciones tipográficas hacen visible una **estructura jerárquica**.
 
----
+***
 
 ### 8.2 Los paréntesis cambian el alcance
 
@@ -7899,7 +7899,7 @@ $$
 
 Los paréntesis no son decoración. Determinan qué expresión queda agrupada y, por tanto, cuál es el alcance de una operación exterior.
 
----
+***
 
 ### 8.3 El signo menos merece atención especial
 
@@ -7955,7 +7955,7 @@ $$
 
 Cuando $x\ne0$, estas expresiones tienen signos opuestos.
 
----
+***
 
 ### 8.4 La barra de fracción agrupa
 
@@ -8025,7 +8025,7 @@ para estos valores.
 
 La fracción vertical hace visible la agrupación.
 
----
+***
 
 ### 8.5 Cuando escribimos en una sola línea
 
@@ -8079,7 +8079,7 @@ La regla práctica es sencilla:
 Al pasar una expresión bidimensional a una línea de texto, añade los paréntesis necesarios para conservar exactamente la estructura original.
 :::
 
----
+***
 
 ### 8.6 Multiplicación implícita: brevedad sin confusión
 
@@ -8167,7 +8167,7 @@ $$
 La notación matemática no debe convertirse en una prueba de adivinación. Cuando una escritura breve pueda generar una lectura razonablemente distinta, preferiremos la forma más explícita.
 :::
 
----
+***
 
 ### 8.7 Los exponentes también tienen alcance
 
@@ -8229,7 +8229,7 @@ $$
 \boxed{\text{debemos saber qué expresión está dentro del alcance del exponente}.}
 $$
 
----
+***
 
 ### 8.8 Paréntesis anidados
 
@@ -8277,7 +8277,7 @@ Matemáticamente, los corchetes pueden cumplir aquí el mismo papel de agrupamie
 
 La claridad tipográfica debe acompañar a la estructura matemática.
 
----
+***
 
 ### 8.9 No todos los paréntesis son obligatorios, pero algunos son útiles
 
@@ -8332,7 +8332,7 @@ Sin embargo, si estamos estudiando específicamente la subexpresión $b+c$, cons
 
 La buena escritura matemática no busca siempre el mínimo número posible de signos. Busca una relación equilibrada entre economía y claridad.
 
----
+***
 
 ### 8.10 Ejemplo desarrollado: leer una expresión compleja
 
@@ -8458,7 +8458,7 @@ $$
 }
 $$
 
----
+***
 
 ### 8.11 Una regla editorial: escribir para otro lector
 
@@ -8498,7 +8498,7 @@ $$
 }
 $$
 
----
+***
 
 ## Ejercicios
 
@@ -8596,7 +8596,7 @@ la base completa es $a+b$.
 
 La diferencia en los tres pares es una diferencia de **alcance**.
 
----
+***
 
 ### Barras de fracción {#apm-t1-c01-e0042}
 
@@ -8632,7 +8632,7 @@ Para conservar esa estructura en una sola línea debemos escribir:
 
 Los paréntesis son necesarios para indicar que las dos sumas completas son el numerador y el denominador.
 
----
+***
 
 ### Dos escrituras lineales {#apm-t1-c01-e0043}
 
@@ -8704,7 +8704,7 @@ La suma $b+c$ completa forma el denominador.
 
 Las tres estructuras difieren porque las operaciones no tienen el mismo alcance.
 
----
+***
 
 ### Elige la escritura inequívoca {#apm-t1-c01-e0044}
 
@@ -8758,7 +8758,7 @@ Debemos escribir:
 
 Los paréntesis conservan las dos agrupaciones de la fracción original.
 
----
+***
 
 ### Lectura jerárquica {#apm-t1-c01-e0045}
 
@@ -8835,7 +8835,7 @@ un producto entre $2$ y $z$.
 
 La lectura completa comienza por el signo exterior y avanza hacia las subexpresiones internas.
 
----
+***
 
 ## Resumen de la sección
 
@@ -8889,7 +8889,7 @@ $$
 }
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -9004,7 +9004,7 @@ Este ejemplo muestra una estrategia que usaremos durante toda la sección:
 Un paso algebraico no se vuelve correcto porque se parezca a una regla conocida. Debe respetar exactamente la estructura a la que esa regla se aplica.
 :::
 
----
+***
 
 ### 9.1 Primer error: distribuir una potencia sobre una suma
 
@@ -9075,7 +9075,7 @@ $$
 
 Un solo caso donde falla basta para saber que no puede ser una identidad.
 
----
+***
 
 ### 9.2 Segundo error: cancelar dentro de una suma
 
@@ -9153,7 +9153,7 @@ $$
 }
 $$
 
----
+***
 
 ### 9.3 Qué significa cancelar correctamente
 
@@ -9213,7 +9213,7 @@ $$
 
 La diferencia no es visualmente enorme, pero estructuralmente es decisiva.
 
----
+***
 
 ### 9.4 Tercer error: sumar términos que no tienen la misma estructura
 
@@ -9297,7 +9297,7 @@ La igualdad propuesta es falsa.
 «Términos semejantes» no significa «términos que están uno al lado del otro». La posibilidad de reunirlos debe venir de una estructura común, como un factor compartido.
 :::
 
----
+***
 
 ### 9.5 Cuarto error: cancelar expresiones que aparecen sumando
 
@@ -9353,7 +9353,7 @@ $$
 
 La cancelación es inválida.
 
----
+***
 
 ### 9.6 Ejemplo desarrollado: qué puede cancelarse
 
@@ -9452,7 +9452,7 @@ $$
 
 en el numerador y el denominador.
 
----
+***
 
 ### 9.7 Un contraejemplo no explica todo, pero decide mucho
 
@@ -9515,7 +9515,7 @@ Por tanto, debemos distinguir dos funciones del contraejemplo:
 
 Esta sección usa ambas funciones de manera informal.
 
----
+***
 
 ### 9.8 Una regla verdadera puede usarse en el lugar equivocado
 
@@ -9575,7 +9575,7 @@ $$
 }
 $$
 
----
+***
 
 ### 9.9 Un protocolo para revisar una transformación sospechosa
 
@@ -9620,7 +9620,7 @@ Conviene escribir la transformación correcta y explicar qué estructura la perm
 
 Este protocolo convierte el error en una oportunidad de lectura algebraica.
 
----
+***
 
 ## Ejercicios
 
@@ -9685,7 +9685,7 @@ $$
 \boxed{(x+2)^2=x^2+4x+4}.
 $$
 
----
+***
 
 ### ¿Cancelación válida? {#apm-t1-c01-e0047}
 
@@ -9781,7 +9781,7 @@ $$
 1+\frac3x.
 $$
 
----
+***
 
 ### Mismo aspecto, distinta estructura {#apm-t1-c01-e0048}
 
@@ -10040,7 +10040,7 @@ $$
 2\ne0.
 $$
 
----
+***
 
 ### Detectar la regla mal aplicada {#apm-t1-c01-e0050}
 
@@ -10108,7 +10108,7 @@ en una situación donde el primer término es $3$, no $3x$.
 
 No existe un factor común $x$ en ambos términos.
 
----
+***
 
 ### Diagnóstico completo {#apm-t1-c01-e0051}
 
@@ -10192,7 +10192,7 @@ $$
 x+2.
 $$
 
----
+***
 
 ## Resumen de la sección
 
@@ -10252,7 +10252,7 @@ La pregunta que debemos acostumbrarnos a formular es:
 
 > **¿qué ley justifica exactamente este paso?**
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -10322,7 +10322,7 @@ A veces debemos detenernos y preguntar:
 
 Esta última sección no introducirá nuevas reglas. Su función es reunir las anteriores en problemas donde la técnica apropiada no viene anunciada de antemano.
 
----
+***
 
 ### 10.1 Una misma escritura puede invitar a preguntas distintas
 
@@ -10400,7 +10400,7 @@ Las tres respuestas hablan de la misma expresión, pero responden a preguntas di
 Una buena lectura comienza identificando **qué problema se está planteando**, no aplicando automáticamente la última técnica aprendida.
 :::
 
----
+***
 
 ### 10.2 Antes de transformar, comprueba qué estás transformando
 
@@ -10444,7 +10444,7 @@ La diferencia no consiste en que una expresión sea «larga» y otra «corta».
 
 Consiste en que una ley algebraica ofrece una transformación útil.
 
----
+***
 
 ### 10.3 Antes de confiar en una igualdad, pregúntate qué afirma
 
@@ -10504,7 +10504,7 @@ Así, una misma lectura estructural nos permite:
 - reconocer una ecuación;
 - refutar una supuesta identidad.
 
----
+***
 
 ### 10.4 Antes de cancelar, busca factores
 
@@ -10543,7 +10543,7 @@ La pregunta adecuada antes de tachar símbolos es:
 
 El hábito de **leer antes de operar** evita aquí un error que no podría corregirse únicamente con rapidez de cálculo.
 
----
+***
 
 ### 10.5 Antes de aceptar una notación, reconstruye su alcance
 
@@ -10584,7 +10584,7 @@ Este procedimiento no añade una regla nueva al álgebra.
 
 Añade disciplina a la lectura.
 
----
+***
 
 ### 10.6 Un protocolo mínimo para afrontar una expresión
 
@@ -10630,7 +10630,7 @@ $$
 }
 $$
 
----
+***
 
 ## Problemas de síntesis
 
@@ -10740,7 +10740,7 @@ $$
 \boxed{4(x-1)+2x=6x-4}.
 $$
 
----
+***
 
 ### Una línea, dos estructuras {#apm-t1-c01-e0053}
 
@@ -10910,7 +10910,7 @@ Cada signo igual afirma que las expresiones que conecta representan el mismo val
 
 Por eso todos los miembros de una cadena correcta de igualdades deben representar lo mismo.
 
----
+***
 
 ### Identidad, ecuación o falsa regla {#apm-t1-c01-e0055}
 
@@ -10994,7 +10994,7 @@ $$
 
 la supuesta identidad queda refutada.
 
----
+***
 
 ### Diagnóstico final {#apm-t1-c01-e0056}
 
@@ -11096,7 +11096,7 @@ $$
 
 El error consistió en dividir correctamente $2x$ por $2$, pero no dividir también $6$ por $2$.
 
----
+***
 
 ## Cierre del capítulo
 
@@ -11136,7 +11136,7 @@ El resultado no es todavía una teoría abstracta del álgebra.
 
 Es algo previo y necesario: una disciplina del lenguaje simbólico.
 
----
+***
 
 ## Hacia el capítulo siguiente
 

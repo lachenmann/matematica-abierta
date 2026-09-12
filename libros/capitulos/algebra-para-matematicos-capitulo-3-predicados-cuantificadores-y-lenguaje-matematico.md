@@ -87,7 +87,7 @@ $$
 }
 $$
 
----
+***
 
 ### 1.1 Una expresión con un lugar todavía abierto
 
@@ -129,7 +129,7 @@ En esta sección trabajaremos únicamente con fórmulas abiertas muy sencillas.
 
 Más adelante precisaremos esta noción cuando podamos distinguir formalmente entre apariciones libres y ligadas.
 
----
+***
 
 ### 1.2 Sustituir un valor
 
@@ -175,7 +175,7 @@ Y eso conduce a una segunda pregunta:
 
 > ¿qué valores están permitidos?
 
----
+***
 
 ### 1.3 El dominio importa
 
@@ -237,7 +237,7 @@ o:
 
 En ambos casos el dominio queda determinado.
 
----
+***
 
 ### 1.4 Una misma fórmula, distintas preguntas
 
@@ -285,7 +285,7 @@ Esto es importante incluso cuando las sustituciones que hacen verdadera la fórm
 
 El dominio forma parte del significado de la discusión.
 
----
+***
 
 ### 1.5 Tres preguntas distintas
 
@@ -331,7 +331,7 @@ obtenemos $0^2=4$, que es falsa. Mantener separadas estas tres preguntas evita u
 
 Distintas sustituciones pueden producir proposiciones con valores diferentes.
 
----
+***
 
 ### 1.6 Fórmula abierta no significa fórmula falsa
 
@@ -365,7 +365,7 @@ $$
 }
 $$
 
----
+***
 
 ### 1.7 El dominio también puede cambiar el comportamiento
 
@@ -393,7 +393,7 @@ $$
 
 $$
 
----
+***
 
 ### 1.8 Ejemplo desarrollado
 
@@ -484,7 +484,7 @@ La fórmula abierta es el patrón. La sustitución concreta produce una proposic
 
 El dominio determina qué sustituciones están disponibles.
 
----
+***
 ## Ejercicios
 
 ### Proposición o fórmula abierta {#apm-t1-c03-e0135}
@@ -557,7 +557,7 @@ es una fórmula abierta.
 
 Su valor de verdad depende del valor que ocupe el lugar de $y$.
 
----
+***
 
 ### No hay todavía un único valor de verdad {#apm-t1-c03-e0136}
 Explica por qué:
@@ -611,7 +611,7 @@ puede producir proposiciones con valores de verdad distintos.
 
 Mientras no hayamos fijado $x$, la fórmula sigue abierta y no posee un único valor de verdad determinado.
 
----
+***
 
 ### ¿Qué valores están permitidos? {#apm-t1-c03-e0137}
 Compara los siguientes dos contextos para la fórmula:
@@ -683,7 +683,7 @@ $$
 
 es la misma en ambos contextos, pero el repertorio de sustituciones permitidas cambia con el dominio.
 
----
+***
 
 ### Por qué debemos declarar el dominio {#apm-t1-c03-e0138}
 Considera:
@@ -719,7 +719,7 @@ $$
 
 no cambia gráficamente, pero la discusión matemática sí cambia según el dominio fijado.
 
----
+***
 
 ### El dominio puede cambiar lo que encontramos {#apm-t1-c03-e0139}
 Estudia:
@@ -787,7 +787,7 @@ El ejemplo muestra que el dominio puede cambiar el comportamiento que observamos
 
 La fórmula escrita es la misma, pero los valores disponibles para la variable no son los mismos.
 
----
+***
 
 ### Análisis completo de una fórmula abierta {#apm-t1-c03-e0140}
 Considera:
@@ -917,7 +917,7 @@ $$
 
 es una fórmula abierta en el contexto considerado.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -973,7 +973,7 @@ $$
 }
 $$
 
----
+***
 
 ### 2.1 Dar nombre a una condición
 
@@ -1019,7 +1019,7 @@ En este capítulo la escritura $P(x)$ expresa **dependencia lógica**.
 
 Todavía no estamos definiendo formalmente $P$ como una función.
 
----
+***
 
 ### 2.2 Predicado y fórmula abierta
 
@@ -1053,7 +1053,7 @@ No necesitamos convertir esta diferencia en dos objetos matemáticos distintos.
 
 Se trata de dos maneras de mirar la misma clase de expresiones.
 
----
+***
 
 ### 2.3 Sustituir en un predicado de una variable
 
@@ -1103,7 +1103,7 @@ La primera escritura conserva una variable cuyo valor puede cambiar.
 
 La segunda ya contiene un valor concreto en su lugar.
 
----
+***
 
 ### 2.4 Predicados con más de una variable
 
@@ -1147,7 +1147,7 @@ $$
 R(5,2)=\mathrm F.
 $$
 
----
+***
 
 ### 2.5 Sustitución parcial
 
@@ -1209,7 +1209,7 @@ $$
 
 $$
 
----
+***
 
 ### 2.6 No confundir el nombre con el contenido
 
@@ -1244,7 +1244,7 @@ $$
 
 obtenemos $P(5):\quad 5+1=6$ No hemos «reemplazado $P$ por $5$». Hemos reemplazado la variable $x$ por $5$ dentro de la condición nombrada por $P$.
 
----
+***
 
 ### 2.7 El dominio sigue siendo parte del contexto
 
@@ -1264,7 +1264,7 @@ no contiene por sí sola toda la información semántica.
 
 Debemos conservar el dominio fijado por el contexto.
 
----
+***
 
 ### 2.8 Ejemplo desarrollado
 
@@ -1350,7 +1350,7 @@ $$
 
 ha recibido una sustitución parcial, pero todavía permanece abierta.
 
----
+***
 ## Ejercicios
 
 ### Nombrar una fórmula abierta {#apm-t1-c03-e0141}
@@ -1427,7 +1427,7 @@ $$
 
 la proposición es falsa.
 
----
+***
 
 ### Sustituir en uno y dos lugares {#apm-t1-c03-e0142}
 Trabajamos con valores enteros.
@@ -1517,7 +1517,7 @@ $$
 
 es falsa.
 
----
+***
 
 ### Predicado, variable y sustitución {#apm-t1-c03-e0143}
 Considera:
@@ -1587,7 +1587,7 @@ $$
 
 que es verdadera.
 
----
+***
 
 ### Por qué no llamamos función a $P$ {#apm-t1-c03-e0144}
 En este capítulo escribimos:
@@ -1626,7 +1626,7 @@ La teoría formal de funciones todavía no ha sido desarrollada en el tratado.
 
 Por tanto, interpretar $P(x)$ como notación de **dependencia lógica** es suficiente y evita utilizar prematuramente un concepto que aún no hemos construido.
 
----
+***
 
 ### Una sustitución parcial {#apm-t1-c03-e0145}
 Trabajamos con valores enteros.
@@ -1712,7 +1712,7 @@ $$
 
 la proposición es falsa.
 
----
+***
 
 ### Construir y analizar un predicado de dos variables {#apm-t1-c03-e0146}
 Trabajamos con valores enteros.
@@ -1814,7 +1814,7 @@ $$
 
 es falsa.
 
----
+***
 
 ## Síntesis
 
@@ -1924,7 +1924,7 @@ ni ningún otro valor particular. Queremos afirmar que la condición $x+0=x$ se 
 
 Para expresar esa idea necesitamos una nueva operación lógica.
 
----
+***
 
 ### 3.1 De un caso particular a todos los casos
 
@@ -1974,7 +1974,7 @@ se lee:
 
 > «Para todo valor entero de $x$, $x+0=x$».
 
----
+***
 
 ### 3.2 El cuantificador universal
 
@@ -2006,7 +2006,7 @@ podemos escribir $\forall x\,(x+0=x)$. El cuantificador $\forall x$ nos dice có
 
 > no elegimos un caso particular; exigimos que la condición se cumpla en todos los casos permitidos.
 
----
+***
 
 ### 3.3 Una afirmación universal es una proposición
 
@@ -2050,7 +2050,7 @@ $$
 
 En una sustitución fijamos **un valor particular**. Con el cuantificador universal afirmamos algo acerca de **cada valor permitido**.
 
----
+***
 
 ### 3.4 Qué exige realmente «para todo»
 
@@ -2122,7 +2122,7 @@ sea verdadera, cada valor permitido debe hacer verdadera la condición.
 
 Un solo valor permitido que produzca una proposición falsa basta para que la afirmación universal sea falsa.
 
----
+***
 
 ### 3.5 Contraejemplo
 
@@ -2160,7 +2160,7 @@ Por ahora utilizaremos el contraejemplo únicamente con este sentido semántico.
 
 Más adelante estudiaremos de manera sistemática cómo se organizan las demostraciones matemáticas.
 
----
+***
 
 ### 3.6 Ver algunos casos no basta para afirmar «todos»
 
@@ -2202,7 +2202,7 @@ $$
 
 Esta observación será esencial en toda la matemática posterior.
 
----
+***
 
 ### 3.7 El dominio forma parte de la afirmación
 
@@ -2254,7 +2254,7 @@ $$
 }
 $$
 
----
+***
 
 ### 3.8 Leer antes de calcular
 
@@ -2280,7 +2280,7 @@ Describe una condición que debe cumplirse sin excepciones en el dominio.
 
 Este hábito de lectura será cada vez más importante cuando las fórmulas contengan varios conectivos y, más adelante, varios cuantificadores.
 
----
+***
 
 ### 3.9 Ejemplo desarrollado
 
@@ -2336,7 +2336,7 @@ $$
 
 falsa en ese mismo dominio. La diferencia no está en el símbolo $\forall$ Está en si la condición que sigue al cuantificador se cumple efectivamente para **cada** valor del dominio.
 
----
+***
 ## Ejercicios
 
 ### Escribir «para todo» {#apm-t1-c03-e0147}
@@ -2379,7 +2379,7 @@ $$
 
 Ambas escrituras expresan la misma afirmación universal en el dominio declarado.
 
----
+***
 
 ### Qué exige un universal {#apm-t1-c03-e0148}
 Explica con tus propias palabras qué significa:
@@ -2405,7 +2405,7 @@ No basta con que la condición sea verdadera para algunos valores, para muchos v
 
 Debe cumplirse sin excepciones dentro del dominio.
 
----
+***
 
 ### Verificar varios casos no basta {#apm-t1-c03-e0149}
 El dominio es el de los enteros.
@@ -2452,7 +2452,7 @@ $$
 \forall x\,P(x).
 $$
 
----
+***
 
 ### Refutar mediante un contraejemplo {#apm-t1-c03-e0150}
 En el dominio de los enteros, considera:
@@ -2508,7 +2508,7 @@ $$
 
 es falsa en el dominio de los enteros.
 
----
+***
 
 ### La misma fórmula en dos dominios {#apm-t1-c03-e0151}
 Considera:
@@ -2618,7 +2618,7 @@ es falsa en el contexto B.
 
 La comparación muestra que el dominio forma parte del significado de la afirmación cuantificada.
 
----
+***
 
 ### Formular, leer y decidir {#apm-t1-c03-e0152}
 Trabajamos con valores enteros y definimos:
@@ -2692,7 +2692,7 @@ $$
 
 es verdadera.
 
----
+***
 
 ## Síntesis
 
@@ -2793,7 +2793,7 @@ Por tanto, aunque la condición no se cumple para todos los enteros, podemos afi
 
 Para expresar esta idea utilizaremos nuestro segundo cuantificador fundamental.
 
----
+***
 
 ### 4.1 «Existe» significa «hay al menos uno»
 
@@ -2827,7 +2827,7 @@ $$
 x=3.
 $$
 
----
+***
 
 ### 4.2 El cuantificador existencial
 
@@ -2853,7 +2853,7 @@ El dominio sigue siendo indispensable. La expresión $\exists x\,P(x)$ no nos di
 
 Esa información debe estar declarada por el contexto.
 
----
+***
 
 ### 4.3 Una tercera manera de pasar de fórmula abierta a proposición
 
@@ -2903,7 +2903,7 @@ $$
 
 Las tres afirmaciones tienen exigencias lógicas distintas.
 
----
+***
 
 ### 4.4 Testigos de una afirmación existencial
 
@@ -2945,7 +2945,7 @@ $$
 
 No necesitamos encontrar todos los valores que funcionan. Basta uno.
 
----
+***
 
 ### 4.5 Existencia no significa unicidad
 
@@ -2987,7 +2987,7 @@ $$
 
 Más adelante estudiaremos cómo expresar simbólicamente la existencia única.
 
----
+***
 
 ### 4.6 Una afirmación existencial también puede ser falsa
 
@@ -3017,7 +3017,7 @@ $$
 }
 $$
 
----
+***
 
 ### 4.7 El dominio puede cambiar una afirmación existencial
 
@@ -3069,7 +3069,7 @@ $$
 }
 $$
 
----
+***
 
 ### 4.8 Universal y existencial no dicen lo mismo
 
@@ -3113,7 +3113,7 @@ $$
 }
 $$
 
----
+***
 
 ### 4.9 Encontrar muchos casos tampoco cambia el significado de «existe»
 
@@ -3144,7 +3144,7 @@ Por eso debemos resistir dos errores opuestos:
 
 Ninguno de los dos es correcto.
 
----
+***
 
 ### 4.10 Ejemplo desarrollado
 
@@ -3206,7 +3206,7 @@ $$
 
 son cuestiones distintas.
 
----
+***
 ## Ejercicios
 
 ### Escribir «existe» {#apm-t1-c03-e0153}
@@ -3255,7 +3255,7 @@ $$
 
 es un testigo.
 
----
+***
 
 ### «Existe» significa «al menos uno» {#apm-t1-c03-e0154}
 Explica por qué:
@@ -3295,7 +3295,7 @@ $$
 
 Por tanto, existencia y unicidad son afirmaciones diferentes.
 
----
+***
 
 ### Por qué basta un testigo {#apm-t1-c03-e0155}
 Trabajamos con valores enteros.
@@ -3343,7 +3343,7 @@ Por tanto, la exigencia existencial ya está satisfecha.
 
 No necesitamos encontrar todos los valores que funcionen para concluir que la afirmación es verdadera.
 
----
+***
 
 ### Más de un testigo {#apm-t1-c03-e0156}
 Trabajamos con valores enteros.
@@ -3417,7 +3417,7 @@ $$
 }
 $$
 
----
+***
 
 ### Formular una afirmación existencial {#apm-t1-c03-e0157}
 Trabajamos con valores enteros.
@@ -3453,7 +3453,7 @@ $$
 
 Por tanto, $4$ es un testigo y la afirmación existencial es verdadera.
 
----
+***
 
 ### La misma existencia en dos dominios {#apm-t1-c03-e0158}
 Considera:
@@ -3543,7 +3543,7 @@ La fórmula es la misma, pero un valor permitido en un dominio puede no estar pe
 
 Por eso el dominio forma parte del significado de la afirmación existencial.
 
----
+***
 
 ## Síntesis
 
@@ -3683,7 +3683,7 @@ $$
 
 Estas dos equivalencias serán las primeras leyes formales de lógica cuantificacional del capítulo.
 
----
+***
 
 ### 5.1 Negar «todos»
 
@@ -3747,7 +3747,7 @@ $$
 }
 $$
 
----
+***
 
 ### 5.2 «No todos» no significa «ninguno»
 
@@ -3811,7 +3811,7 @@ La negación de «todos» no produce «ninguno». Produce:
 
 > «al menos uno no».
 
----
+***
 
 ### 5.3 Negar «existe»
 
@@ -3873,7 +3873,7 @@ $$
 }
 $$
 
----
+***
 
 ### 5.4 Las dos leyes
 
@@ -3975,7 +3975,7 @@ $$
 
 Quedan demostradas las dos leyes.
 
----
+***
 
 ### 5.5 Una manera de recordarlas
 
@@ -4035,7 +4035,7 @@ $$
 
 $$
 
----
+***
 
 ### 5.6 La negación debe llegar hasta la condición
 
@@ -4079,7 +4079,7 @@ equivale a:
 
 Por ejemplo, $x=2$ confirma la segunda afirmación.
 
----
+***
 
 ### 5.7 Negar una existencia concreta
 
@@ -4121,7 +4121,7 @@ y:
 
 > «Todo entero incumple $2x=1$».
 
----
+***
 
 ### 5.8 Ejemplo desarrollado
 
@@ -4207,7 +4207,7 @@ $$
 
 $$
 
----
+***
 ## Ejercicios
 
 ### Negar un universal {#apm-t1-c03-e0159}
@@ -4260,7 +4260,7 @@ Esta negación es falsa, porque sumar cero no cambia ningún entero.
 
 Eso es coherente con que la afirmación universal original sea verdadera.
 
----
+***
 
 ### Negar un existencial {#apm-t1-c03-e0160}
 Trabajamos con valores enteros.
@@ -4312,7 +4312,7 @@ Equivalentemente:
 
 > «Ningún entero satisface $2x=1$».
 
----
+***
 
 ### «No todos» frente a «todos no» {#apm-t1-c03-e0161}
 El dominio contiene únicamente los valores:
@@ -4406,7 +4406,7 @@ $$
 }
 $$
 
----
+***
 
 ### Justificar la primera ley {#apm-t1-c03-e0162}
 Explica, sin limitarte a repetir la fórmula, por qué:
@@ -4462,7 +4462,7 @@ $$
 }
 $$
 
----
+***
 
 ### Justificar la segunda ley {#apm-t1-c03-e0163}
 Explica por qué:
@@ -4512,7 +4512,7 @@ $$
 }
 $$
 
----
+***
 
 ### De la prosa a la negación y de vuelta {#apm-t1-c03-e0164}
 Trabajamos con valores enteros.
@@ -4600,7 +4600,7 @@ $$
 
 Por tanto, la negación es verdadera.
 
----
+***
 
 ## Síntesis
 
@@ -4708,7 +4708,7 @@ Y una cuarta idea nos permitirá reconocer cuándo una fórmula ya no depende de
 
 - **fórmula cerrada**.
 
----
+***
 
 ### 6.1 El alcance de un cuantificador
 
@@ -4748,7 +4748,7 @@ $$
 
 Los paréntesis no son decoración. Nos dicen qué parte de la fórmula debe leerse bajo el cuantificador.
 
----
+***
 
 ### 6.2 Por qué el alcance importa
 
@@ -4778,7 +4778,7 @@ Esto muestra que no basta con ver el símbolo $\forall x$ También debemos pregu
 
 > **¿hasta dónde llega?**
 
----
+***
 
 ### 6.3 Apariciones ligadas
 
@@ -4826,7 +4826,7 @@ La palabra importante es **aparición**. No conviene decir simplemente:
 
 En fórmulas más grandes, una misma letra puede tener una aparición ligada en una parte y otra aparición libre en otra.
 
----
+***
 
 ### 6.4 Apariciones libres
 
@@ -4865,7 +4865,7 @@ La fórmula ya no depende de una elección posterior de $x$.
 
 Pero todavía depende del valor que ocupe el lugar de $y$.
 
----
+***
 
 ### 6.5 Una misma letra puede aparecer libre y ligada
 
@@ -4905,7 +4905,7 @@ Esta es la razón por la que nuestra terminología habla de **apariciones** libr
 
 El símbolo utilizado puede ser el mismo. Lo que cambia es su posición respecto del alcance de los cuantificadores.
 
----
+***
 
 ### 6.6 Fórmulas que todavía permanecen abiertas
 
@@ -4935,7 +4935,7 @@ obtenemos $\forall x\,(x-1=0)$. La fórmula original no expresaba todavía una p
 
 La cuantificación de una variable no cierra necesariamente todas las demás.
 
----
+***
 
 ### 6.7 Fórmulas cerradas
 
@@ -4985,7 +4985,7 @@ Por ejemplo, $\forall x\,(x+0=x)$ es una fórmula cerrada.
 
 En cambio, $\forall x\,(x+y=0)$ no lo es, porque $y$ aparece libre.
 
----
+***
 
 ### 6.8 Cerrar una fórmula
 
@@ -5037,7 +5037,7 @@ En cada paso podemos preguntar:
 
 Esa pregunta permite reconocer si la fórmula sigue abierta o ya está cerrada.
 
----
+***
 
 ### 6.9 Los paréntesis controlan la lectura
 
@@ -5077,7 +5077,7 @@ queda fuera de su alcance y, por tanto, está libre.
 
 En APM preferiremos la parentetización explícita precisamente para evitar que el lector deba adivinar hasta dónde llega un cuantificador.
 
----
+***
 
 ### 6.10 No confundir «ligada» con «sustituida»
 
@@ -5119,7 +5119,7 @@ $$
 
 La sustitución elige un valor particular. La cuantificación determina cómo debe leerse la variable a lo largo de un alcance.
 
----
+***
 
 ### 6.11 Ejemplo desarrollado
 
@@ -5221,7 +5221,7 @@ $$
 
 No queda ninguna aparición libre. La nueva fórmula es cerrada.
 
----
+***
 ## Ejercicios
 
 ### Identificar el alcance {#apm-t1-c03-e0165}
@@ -5272,7 +5272,7 @@ $$
 
 No cuantifica $y$.
 
----
+***
 
 ### Marcar apariciones libres y ligadas {#apm-t1-c03-e0166}
 Considera:
@@ -5323,7 +5323,7 @@ Así:
 - $x$: una aparición libre;
 - $y$: dos apariciones ligadas.
 
----
+***
 
 ### La misma letra, dos situaciones {#apm-t1-c03-e0167}
 Considera:
@@ -5391,7 +5391,7 @@ tiene una aparición ligada y otra libre dentro de la misma fórmula.
 
 Por eso la clasificación se aplica con precisión a **apariciones de variables**, no necesariamente a la letra considerada de manera global.
 
----
+***
 
 ### ¿Abierta o cerrada? {#apm-t1-c03-e0168}
 Clasifica cada fórmula como abierta o cerrada.
@@ -5471,7 +5471,7 @@ $$
 
 No queda ninguna aparición libre.
 
----
+***
 
 ### Por qué los paréntesis importan {#apm-t1-c03-e0169}
 Compara:
@@ -5539,7 +5539,7 @@ queda fuera de su alcance y está libre.
 
 Así, los paréntesis hacen visible hasta dónde actúa el cuantificador y cambian la estructura lógica de la fórmula.
 
----
+***
 
 ### Análisis completo {#apm-t1-c03-e0170}
 Considera:
@@ -5687,7 +5687,7 @@ Ahora las apariciones de $x$, $y$ y $z$ están ligadas.
 
 La fórmula resultante es cerrada.
 
----
+***
 
 ## Síntesis
 
@@ -5778,7 +5778,7 @@ El orden de los cuantificadores puede determinar qué valores pueden ajustarse a
 
 Este será el problema central de la sección.
 
----
+***
 
 ### 7.1 Leer desde fuera hacia dentro
 
@@ -5818,7 +5818,7 @@ Después debemos poder encontrar algún valor de $y$ que haga verdadera la condi
 
 Ese valor de $y$ **puede ser distinto para distintos valores de $x$**.
 
----
+***
 
 ### 7.2 Cuando la elección interior puede cambiar
 
@@ -5883,7 +5883,7 @@ $$
 
 No estamos introduciendo todavía una estructura matemática adicional. Solo estamos describiendo el significado lógico del orden de los cuantificadores.
 
----
+***
 
 ### 7.3 Invertir el orden cambia la exigencia
 
@@ -5959,7 +5959,7 @@ $$
 
 en general.
 
----
+***
 
 ### 7.4 El orden codifica una dependencia
 
@@ -6009,7 +6009,7 @@ $$
 
 Esta diferencia aparecerá constantemente en matemáticas.
 
----
+***
 
 ### 7.5 No todo cambio de orden altera el significado
 
@@ -6051,7 +6051,7 @@ $$
 
 no cambia esa exigencia. El comportamiento es, por tanto, diferente cuando los cuantificadores consecutivos son del **mismo tipo**.
 
----
+***
 
 ### 7.6 Conmutación de cuantificadores del mismo tipo
 
@@ -6135,7 +6135,7 @@ $$
 
 Quedan demostradas ambas equivalencias.
 
----
+***
 
 ### 7.7 Qué no dice [la proposición «Conmutación de cuantificadores consecutivos del mismo tipo»](#apm-t1-c03-p0008)
 
@@ -6165,7 +6165,7 @@ La expresión «en general» es importante. Para algún predicado particular, am
 
 Lo que no podemos hacer es suponer que son equivalentes para todo predicado y todo dominio.
 
----
+***
 
 ### 7.8 Cuatro patrones diferentes
 
@@ -6231,7 +6231,7 @@ dice:
 
 Cada patrón impone una exigencia diferente.
 
----
+***
 
 ### 7.9 Ejemplo desarrollado
 
@@ -6327,7 +6327,7 @@ $$
 
 El orden de los cuantificadores mixtos ha cambiado el significado y el valor de verdad.
 
----
+***
 ## Ejercicios
 
 ### Leer una cadena de cuantificadores {#apm-t1-c03-e0171}
@@ -6362,7 +6362,7 @@ $$
 
 Por tanto, primero consideramos un valor de $x$ y después exigimos que haya algún valor de $y$ adecuado para ese caso.
 
----
+***
 
 ### Qué puede cambiar {#apm-t1-c03-e0172}
 Trabajamos con valores enteros y definimos:
@@ -6416,7 +6416,7 @@ Por tanto, después de considerar cada valor de $x$, podemos encontrar un valor 
 
 No se exige que el mismo $y$ funcione para todos los valores de $x$.
 
----
+***
 
 ### Justificar una conmutación válida {#apm-t1-c03-e0173}
 Explica por qué:
@@ -6466,7 +6466,7 @@ $$
 }
 $$
 
----
+***
 
 ### Un intercambio inválido {#apm-t1-c03-e0174}
 Trabajamos con valores enteros y definimos:
@@ -6548,7 +6548,7 @@ La primera fórmula es verdadera y la segunda es falsa bajo el mismo dominio y e
 
 Por tanto, no pueden ser lógicamente equivalentes en general.
 
----
+***
 
 ### Construir un segundo contraejemplo {#apm-t1-c03-e0175}
 Trabajamos con valores enteros y definimos:
@@ -6652,7 +6652,7 @@ $$
 
 tienen valores de verdad distintos.
 
----
+***
 
 ### Cuatro patrones cuantificados {#apm-t1-c03-e0176}
 Trabajamos con valores enteros y definimos:
@@ -6799,7 +6799,7 @@ $$
 
 Los cuatro patrones imponen exigencias lógicas diferentes.
 
----
+***
 
 ## Síntesis
 
@@ -6916,7 +6916,7 @@ $$
 
 Traducir es reconstruir la **estructura lógica** de una afirmación.
 
----
+***
 
 ### 8.1 Antes de traducir: fijar el dominio
 
@@ -6946,7 +6946,7 @@ $$
 
 El dominio no desaparece al pasar a símbolos. Permanece fijado por el contexto.
 
----
+***
 
 ### 8.2 «Todo $P$ es $Q$»: aparece una implicación
 
@@ -7004,7 +7004,7 @@ $$
 }
 $$
 
----
+***
 
 ### 8.3 «Algún $P$ es $Q$»: aparece una conjunción
 
@@ -7048,7 +7048,7 @@ $$
 
 La primera formula una condición universal. La segunda afirma la existencia de un caso donde ambas propiedades se cumplen.
 
----
+***
 
 ### 8.4 Traducir «ningún»
 
@@ -7100,7 +7100,7 @@ $$
 
 La elección entre ambas formas puede depender de cuál sea más clara en el contexto.
 
----
+***
 
 ### 8.5 Traducir «no todos»
 
@@ -7142,7 +7142,7 @@ Eso diría:
 
 La diferencia lingüística corresponde exactamente a la diferencia lógica estudiada en §5.
 
----
+***
 
 ### 8.6 Dos cuantificadores: preservar el orden
 
@@ -7188,7 +7188,7 @@ $$
 
 No podemos decidir el orden por comodidad tipográfica.
 
----
+***
 
 ### 8.7 El alcance también debe conservarse
 
@@ -7240,7 +7240,7 @@ $$
 }
 $$
 
----
+***
 
 ### 8.8 Símbolos hacia prosa: no leer mecánicamente
 
@@ -7270,7 +7270,7 @@ puede leerse:
 
 La traducción hacia prosa debe conservar la estructura lógica, pero puede utilizar una redacción natural.
 
----
+***
 
 ### 8.9 Un procedimiento de traducción
 
@@ -7332,7 +7332,7 @@ $$
 }
 $$
 
----
+***
 
 ### 8.10 Ejemplo desarrollado
 
@@ -7464,7 +7464,7 @@ La traducción preserva:
 - la implicación;
 - el alcance de los cuantificadores.
 
----
+***
 ## Ejercicios
 
 ### De una frase universal a símbolos {#apm-t1-c03-e0177}
@@ -7509,7 +7509,7 @@ $$
 }
 $$
 
----
+***
 
 ### Una existencia con dos condiciones {#apm-t1-c03-e0178}
 El dominio está previamente fijado.
@@ -7551,7 +7551,7 @@ $$
 }
 $$
 
----
+***
 
 ### De símbolos a prosa {#apm-t1-c03-e0179}
 Lee en prosa:
@@ -7597,7 +7597,7 @@ En prosa:
 
 > «Para todo objeto del dominio, o bien no cumple $P$, o bien no cumple $Q$».
 
----
+***
 
 ### Por qué no podemos invertir los cuantificadores {#apm-t1-c03-e0180}
 Trabajamos con valores enteros y definimos:
@@ -7663,7 +7663,7 @@ La fórmula incorrecta exige un único $y$ que funcione para todos los enteros $
 
 En este ejemplo, la primera es verdadera y la segunda es falsa.
 
----
+***
 
 ### Una implicación dentro del alcance {#apm-t1-c03-e0181}
 El dominio está previamente fijado.
@@ -7741,7 +7741,7 @@ $$
 R(x,y).
 $$
 
----
+***
 
 ### Traducción bidireccional con dos cuantificadores {#apm-t1-c03-e0182}
 Trabajamos con valores enteros y definimos:
@@ -7876,7 +7876,7 @@ Al traducir debemos conservar necesariamente:
 
 Cambiar alguno de esos elementos puede producir una afirmación distinta.
 
----
+***
 
 ## Síntesis
 
@@ -7997,7 +7997,7 @@ La letra $a$ recibe entonces el papel de **parámetro**.
 
 Esta distinción será fundamental en álgebra.
 
----
+***
 
 ### 9.1 Fijar no significa elegir para siempre
 
@@ -8057,7 +8057,7 @@ $$
 
 El valor del parámetro puede cambiar cuando cambiamos de contexto.
 
----
+***
 
 ### 9.2 Parámetro
 
@@ -8102,7 +8102,7 @@ $$
 
 El subíndice solo nos recuerda que la condición que estudiamos depende del valor que haya sido fijado para $a$.
 
----
+***
 
 ### 9.3 Variable y parámetro no son tipos de letras
 
@@ -8152,7 +8152,7 @@ $$
 
 Las convenciones de letras ayudan a leer, pero no sustituyen una declaración explícita.
 
----
+***
 
 ### 9.4 Parámetro y variable cuantificada
 
@@ -8186,7 +8186,7 @@ x:\ \text{ligado por el cuantificador}.
 
 $$
 
----
+***
 
 ### 9.5 Un parámetro puede aparecer muchas veces
 
@@ -8221,7 +8221,7 @@ El parámetro $a$ permanece fijo. El hecho de que una letra aparezca muchas vece
 
 Lo determina el papel que le hemos asignado en el contexto.
 
----
+***
 
 ### 9.6 Cambiar un parámetro entre contextos
 
@@ -8263,7 +8263,7 @@ como distintas condiciones obtenidas al fijar distintos valores de $a$.
 
 No necesitamos formalizar todavía esa colección como una función.
 
----
+***
 
 ### 9.7 Lo que no debemos hacer: cambiar de papel en silencio
 
@@ -8293,7 +8293,7 @@ $$
 }
 $$
 
----
+***
 
 ### 9.8 Parámetro no significa valor desconocido
 
@@ -8339,7 +8339,7 @@ La distinción pertinente es:
 
 > **qué permanece fijo y qué puede variar**.
 
----
+***
 
 ### 9.9 Una fórmula puede depender de un parámetro sin cuantificarlo
 
@@ -8373,7 +8373,7 @@ Pero en cada discusión concreta, $a$ mantiene un único valor.
 
 Esta forma de pensar será muy frecuente más adelante: estudiamos una afirmación **para una variable que recorre un dominio**, mientras uno o varios parámetros se mantienen fijos.
 
----
+***
 
 ### 9.10 Ejemplo desarrollado
 
@@ -8486,7 +8486,7 @@ $$
 }
 $$
 
----
+***
 ## Ejercicios
 
 ### Parámetro y variable {#apm-t1-c03-e0183}
@@ -8547,7 +8547,7 @@ $$
 
 Dentro de ese contexto, $3$ permanece fijo mientras $x$ puede variar.
 
----
+***
 
 ### ¿Qué significa «fijemos $a$»? {#apm-t1-c03-e0184}
 Explica con tus propias palabras qué significa la instrucción:
@@ -8575,7 +8575,7 @@ No significa que:
 
 En otra discusión podemos fijar otro valor de $a$, pero debemos indicar explícitamente que hemos cambiado de contexto.
 
----
+***
 
 ### Dos contextos distintos {#apm-t1-c03-e0185}
 Considera:
@@ -8665,7 +8665,7 @@ En cada uno, $a$ permanece fijo.
 
 La idea de parámetro permite precisamente repetir un mismo tipo de análisis bajo distintos valores fijados.
 
----
+***
 
 ### Por qué no puede cambiar de papel en silencio {#apm-t1-c03-e0186}
 Una argumentación comienza:
@@ -8717,7 +8717,7 @@ La redacción puede corregirse diciendo, por ejemplo:
 
 Así el papel de $a$ permanece coherente dentro de cada discusión.
 
----
+***
 
 ### Explorar varios valores de un parámetro {#apm-t1-c03-e0187}
 Trabajamos con enteros y consideramos:
@@ -8827,7 +8827,7 @@ $$
 
 Al cambiar el valor fijado del parámetro cambia la condición concreta y, con ella, el valor de $x$ que la satisface.
 
----
+***
 
 ### Parámetro y cuantificador {#apm-t1-c03-e0188}
 Trabajamos con enteros.
@@ -8929,7 +8929,7 @@ $$
 
 El número $7$ ocupa ahora el lugar del parámetro fijado, mientras $x$ continúa cuantificada.
 
----
+***
 
 ## Síntesis
 
@@ -9073,7 +9073,7 @@ Además, ningún otro entero la satisface. Aquí queremos expresar algo más fue
 
 > existe **exactamente un** valor.
 
----
+***
 
 ### 10.1 Dos preguntas distintas
 
@@ -9119,7 +9119,7 @@ $$
 
 $$
 
----
+***
 
 ### 10.2 La abreviatura \(\exists!\)
 
@@ -9164,7 +9164,7 @@ $$
 
 Por eso conviene saber siempre expandirlo.
 
----
+***
 
 ### 10.3 Leer la expansión
 
@@ -9219,7 +9219,7 @@ Así, el valor cuya existencia afirmamos no solo satisface $P$.
 
 También absorbe todos los posibles casos: cualquiera que satisfaga $P$ tiene que coincidir con él.
 
----
+***
 
 ### 10.4 La cláusula de existencia
 
@@ -9255,7 +9255,7 @@ $$
 
 $$
 
----
+***
 
 ### 10.5 La cláusula de unicidad
 
@@ -9297,7 +9297,7 @@ $$
 }
 $$
 
----
+***
 
 ### 10.6 Un ejemplo verdaderamente único
 
@@ -9361,7 +9361,7 @@ $$
 
 $$
 
----
+***
 
 ### 10.7 No confundir «el» con una prueba de unicidad
 
@@ -9407,7 +9407,7 @@ $$
 }
 $$
 
----
+***
 
 ### 10.8 Dos maneras equivalentes de expresar unicidad
 
@@ -9438,7 +9438,7 @@ En este capítulo mantendremos como forma canónica la primera, porque hace visi
 
 No necesitamos introducir otra abreviatura.
 
----
+***
 
 ### 10.9 Existencia única y dominio
 
@@ -9484,7 +9484,7 @@ $$
 }
 $$
 
----
+***
 
 ### 10.10 Ejemplo desarrollado
 
@@ -9601,7 +9601,7 @@ $$
 
 es falsa. La diferencia es exactamente la unicidad.
 
----
+***
 ## Ejercicios
 
 ### Leer \(\exists!\) {#apm-t1-c03-e0189}
@@ -9629,7 +9629,7 @@ indica que la afirmación contiene dos exigencias:
 - al menos un entero satisface la ecuación;
 - ningún entero distinto puede satisfacerla también.
 
----
+***
 
 ### Al menos uno y exactamente uno {#apm-t1-c03-e0190}
 Compara:
@@ -9688,7 +9688,7 @@ La diferencia es:
 - $\exists$ exige al menos un valor;
 - $\exists!$ exige exactamente uno.
 
----
+***
 
 ### Las dos cláusulas {#apm-t1-c03-e0191}
 Explica qué función cumple cada parte de:
@@ -9735,7 +9735,7 @@ es la **cláusula de unicidad**: cualquier valor $y$ que también satisfaga $P$ 
 
 Por tanto, la fórmula completa afirma que existe un valor y que ningún valor distinto puede satisfacer la misma condición.
 
----
+***
 
 ### Existencia y unicidad en tres casos {#apm-t1-c03-e0192}
 Trabajamos con valores enteros.
@@ -9819,7 +9819,7 @@ $$
 
 Por tanto, hay existencia única.
 
----
+***
 
 ### Expandir \(\exists!\) {#apm-t1-c03-e0193}
 Expande completamente:
@@ -9866,7 +9866,7 @@ La primera parte afirma existencia.
 
 La segunda afirma unicidad.
 
----
+***
 
 ### Formular una existencia única {#apm-t1-c03-e0194}
 Trabajamos con valores enteros.
@@ -9948,7 +9948,7 @@ $$
 \boxed{5}.
 $$
 
----
+***
 
 ## Síntesis
 
@@ -10081,7 +10081,7 @@ $$
 
 La transformación no intercambia arbitrariamente cuantificadores. Cada cambio ocurre porque una negación atraviesa un cuantificador.
 
----
+***
 
 ### 11.1 Leer la estructura antes de transformar
 
@@ -10131,7 +10131,7 @@ $$
 
 $$
 
----
+***
 
 ### 11.2 Una negación atraviesa los cuantificadores uno por uno
 
@@ -10213,7 +10213,7 @@ $$
 \exists x\,\forall y\,\neg R(x,y).
 $$
 
----
+***
 
 ### 11.3 El orden final no se elige libremente
 
@@ -10267,7 +10267,7 @@ $$
 
 $$
 
----
+***
 
 ### 11.4 Llegar hasta el predicado
 
@@ -10307,7 +10307,7 @@ $$
 
 De nuevo, la negación ha llegado hasta el predicado.
 
----
+***
 
 ### 11.5 Cuando dentro hay conectivos
 
@@ -10361,7 +10361,7 @@ equivale a:
 
 Aquí se combinan una ley cuantificacional y una ley proposicional.
 
----
+***
 
 ### 11.6 De Morgan dentro de una fórmula cuantificada
 
@@ -10409,7 +10409,7 @@ $$
 }
 $$
 
----
+***
 
 ### 11.7 Un protocolo de lectura y transformación
 
@@ -10475,7 +10475,7 @@ $$
 }
 $$
 
----
+***
 
 ### 11.8 No cambiar más de lo que autoriza cada ley
 
@@ -10529,7 +10529,7 @@ Si un cuantificador cambia, debemos poder señalar qué negación lo atravesó.
 
 Si un conectivo cambia, debemos poder señalar qué ley proposicional estamos usando.
 
----
+***
 
 ### 11.9 Comprobación semántica con un dominio pequeño
 
@@ -10585,7 +10585,7 @@ La fórmula es verdadera. Las dos formas tienen el mismo valor de verdad, como c
 
 Este ejemplo no reemplaza la derivación. Funciona como **control semántico**.
 
----
+***
 
 ### 11.10 Ejemplo desarrollado
 
@@ -10685,7 +10685,7 @@ $$
 
 según correspondía.
 
----
+***
 ## Ejercicios
 
 ### Negar dos cuantificadores {#apm-t1-c03-e0195}
@@ -10732,7 +10732,7 @@ $$
 }
 $$
 
----
+***
 
 ### Negar un cuantificador y una conjunción {#apm-t1-c03-e0196}
 Niega completamente:
@@ -10776,7 +10776,7 @@ $$
 }
 $$
 
----
+***
 
 ### Justificar cada cambio {#apm-t1-c03-e0197}
 Explica cada paso de:
@@ -10852,7 +10852,7 @@ $$
 
 se conservó.
 
----
+***
 
 ### Detectar una negación incorrecta {#apm-t1-c03-e0198}
 Trabajamos con valores enteros y definimos:
@@ -10949,7 +10949,7 @@ $$
 
 La transformación incorrecta no cambió los tipos de cuantificador como exige [la proposición «Leyes de negación de cuantificadores»](#apm-t1-c03-p0007).
 
----
+***
 
 ### Transformar y volver a la prosa {#apm-t1-c03-e0199}
 El dominio está previamente fijado.
@@ -11015,7 +11015,7 @@ $$
 \forall x\,\exists y.
 $$
 
----
+***
 
 ### Tres capas y conectivos {#apm-t1-c03-e0200}
 Niega completamente:
@@ -11148,7 +11148,7 @@ Después la negación alcanzó la implicación y finalmente las condiciones elem
 
 No se permutó ninguna variable.
 
----
+***
 
 ## Síntesis
 
@@ -11245,7 +11245,7 @@ Por eso la lectura matemática debe incluir una pregunta crítica:
 
 > **¿La fórmula dice realmente lo que creemos que dice?**
 
----
+***
 
 ### 12.1 Ocho errores que debemos poder detectar
 
@@ -11375,7 +11375,7 @@ $$
 
 después de fijar el dominio. La escritura explícita evita que una aparición libre sea interpretada como cuantificada sin justificación.
 
----
+***
 
 ### 12.2 Un diagnóstico debe identificar el tipo de error
 
@@ -11409,7 +11409,7 @@ $$
 
 La capacidad de nombrar el error ayuda a corregirlo sin modificar otras partes que sí estaban bien.
 
----
+***
 
 ### 12.3 Diagnosticar por capas
 
@@ -11467,7 +11467,7 @@ $$
 }
 $$
 
----
+***
 
 ### 12.4 El dominio puede revelar un error invisible
 
@@ -11493,7 +11493,7 @@ Esto muestra que el diagnóstico lógico no se limita a inspeccionar símbolos.
 
 También debemos revisar el contexto que les da significado.
 
----
+***
 
 ### 12.5 Las variables libres son una señal de alarma
 
@@ -11531,7 +11531,7 @@ $$
 
 si $y$ ha sido declarada como parámetro. El diagnóstico debe recuperar primero la intención.
 
----
+***
 
 ### 12.6 Un contraejemplo puede detectar una traducción equivocada
 
@@ -11565,7 +11565,7 @@ es falsa. Así detectamos que intercambiar cuantificadores mixtos no es una tran
 
 El contraejemplo funciona aquí como control semántico de una traducción o equivalencia propuesta.
 
----
+***
 
 ### 12.7 Existencia no autoriza el singular
 
@@ -11605,7 +11605,7 @@ La fórmula $\exists!x\,(x^2=4)$ es falsa sobre los enteros. El diagnóstico es:
 
 > **se confundió existencia con unicidad.**
 
----
+***
 
 ### 12.8 No corregir una fórmula antes de reconstruir la intención
 
@@ -11641,7 +11641,7 @@ $$
 
 Primero reconstruimos el significado pretendido. Después reparamos la escritura.
 
----
+***
 
 ### 12.9 La lectura en prosa es una prueba de control
 
@@ -11681,7 +11681,7 @@ $$
 
 Si la frase recuperada no coincide con la inicial, hay un error estructural.
 
----
+***
 
 ### 12.10 Ejemplo desarrollado
 
@@ -11725,7 +11725,7 @@ Declaramos:
 
 La fórmula queda entonces correctamente interpretada.
 
----
+***
 
 #### Formulación B
 
@@ -11757,7 +11757,7 @@ $$
 }
 $$
 
----
+***
 
 #### Formulación C
 
@@ -11789,7 +11789,7 @@ $$
 }
 $$
 
----
+***
 
 #### Control semántico
 
@@ -11821,7 +11821,7 @@ Los tres errores eran diferentes:
 
 La reparación correcta apareció solo después de identificar con precisión el problema de cada caso.
 
----
+***
 
 ## Ejercicios
 
@@ -11895,7 +11895,7 @@ $$
 }
 $$
 
----
+***
 
 ### «No todos» no es «todos no» {#apm-t1-c03-e0202}
 El dominio contiene únicamente los valores:
@@ -11989,7 +11989,7 @@ $$
 
 «Todos no» significa que todos incumplen la condición.
 
----
+***
 
 ### La variable que quedó libre {#apm-t1-c03-e0203}
 Considera:
@@ -12077,7 +12077,7 @@ Incluso podría ocurrir que $y$ debiera ser fijada como parámetro.
 
 Por tanto, primero debemos reconstruir la intención y solo después reparar la fórmula.
 
----
+***
 
 ### Refutar una inversión de cuantificadores {#apm-t1-c03-e0204}
 Trabajamos con valores enteros y definimos:
@@ -12160,7 +12160,7 @@ $$
 
 El contraejemplo muestra que los cuantificadores mixtos no pueden intercambiarse en general.
 
----
+***
 
 ### Existencia no implica unicidad {#apm-t1-c03-e0205}
 Trabajamos con valores enteros.
@@ -12228,7 +12228,7 @@ La parte válida del razonamiento establece **existencia**.
 
 El error consiste en inferir **unicidad** a partir de un solo testigo.
 
----
+***
 
 ### Diagnóstico integral {#apm-t1-c03-e0206}
 Trabajamos con valores enteros.
@@ -12459,7 +12459,7 @@ $$
 }
 $$
 
----
+***
 
 ## Síntesis del capítulo
 

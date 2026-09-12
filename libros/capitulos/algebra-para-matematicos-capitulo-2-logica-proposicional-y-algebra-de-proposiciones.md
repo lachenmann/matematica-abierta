@@ -843,7 +843,7 @@ $$
 }
 $$
 
----
+***
 
 ### 2.1 Variables proposicionales
 
@@ -923,7 +923,7 @@ $$
 
 para variables proposicionales atómicas.
 
----
+***
 
 ### 2.2 De proposiciones simples a fórmulas
 
@@ -997,7 +997,7 @@ $$
 
 es una **fórmula compuesta**.
 
----
+***
 
 ### 2.3 Negación
 
@@ -1070,7 +1070,7 @@ $$
 
 Todavía no necesitamos decidir si ambas fórmulas pueden coincidir en algún caso. Lo importante aquí es reconocer que **su estructura es diferente**.
 
----
+***
 
 ### 2.4 Conjunción
 
@@ -1131,7 +1131,7 @@ Su tabla elemental es:
 
 Basta con que una de las dos fórmulas sea falsa para que la conjunción completa sea falsa.
 
----
+***
 
 ### 2.5 Disyunción inclusiva
 
@@ -1208,7 +1208,7 @@ es verdadera en el sentido lógico inclusivo.
 En el lenguaje cotidiano, «o» puede usarse a veces con sentido exclusivo: una cosa o la otra, pero no ambas. En este capítulo, salvo indicación expresa, $\lor$ será siempre inclusiva.
 :::
 
----
+***
 
 ### 2.6 El conectivo principal
 
@@ -1284,7 +1284,7 @@ $$
 }
 $$
 
----
+***
 
 ### 2.7 Subfórmulas
 
@@ -1346,7 +1346,7 @@ conjunción
 
 La estructura no depende de la longitud de la fórmula, sino de cómo están agrupados sus componentes.
 
----
+***
 
 ### 2.8 Paréntesis y precedencia
 
@@ -1402,7 +1402,7 @@ $$
 
 La notación debe mostrar la estructura, no esconderla.
 
----
+***
 
 ### 2.9 Evaluar una fórmula sin construir todavía una tabla completa
 
@@ -1460,7 +1460,7 @@ Esto abrevia la frase: «una conjunción cuyos componentes reciben los valores $
 
 Este procedimiento será la base de las tablas de verdad que sistematizaremos más adelante.
 
----
+***
 
 ### 2.10 Ejemplo desarrollado
 
@@ -1584,7 +1584,7 @@ $$
 }
 $$
 
----
+***
 
 ## Ejercicios
 
@@ -1668,7 +1668,7 @@ $$
 \mathrm V\lor\mathrm F=\mathrm V.
 $$
 
----
+***
 
 ### Conectivo principal {#apm-t1-c02-e0063}
 
@@ -1746,7 +1746,7 @@ $$
 \lor.
 $$
 
----
+***
 
 ### Evaluar desde dentro {#apm-t1-c02-e0064}
 
@@ -1844,7 +1844,7 @@ $$
 \mathrm V.
 $$
 
----
+***
 
 ### La «o» inclusiva {#apm-t1-c02-e0065}
 
@@ -1882,7 +1882,7 @@ En lógica proposicional clásica, $\lor$ es inclusiva: basta con que una de las
 
 En el lenguaje cotidiano, algunas expresiones con «o» sugieren una elección exclusiva. Ese no será el significado de $\lor$ en este capítulo.
 
----
+***
 
 ### El alcance de la negación {#apm-t1-c02-e0066}
 
@@ -1984,7 +1984,7 @@ $$
 
 El cambio de alcance cambia la estructura y puede cambiar el valor de verdad.
 
----
+***
 
 ### Los paréntesis importan {#apm-t1-c02-e0067}
 
@@ -2068,7 +2068,7 @@ $$
 
 La agrupación modifica la estructura.
 
----
+***
 
 ### Síntesis: construir, leer y evaluar {#apm-t1-c02-e0068}
 
@@ -2192,7 +2192,7 @@ $$
 \mathrm V.
 $$
 
----
+***
 
 ## Síntesis
 
@@ -2258,7 +2258,7 @@ $$
 
 preferiremos paréntesis explícitos cuando ayuden a que la estructura se vea sin esfuerzo.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -2340,7 +2340,7 @@ $$
 
 Todo lo demás en esta sección se organizará alrededor de este hecho.
 
----
+***
 
 ### 3.1 La implicación
 
@@ -2392,7 +2392,7 @@ La tabla puede parecer menos inmediata que las de conjunción o disyunción.
 
 Por eso debemos entender qué afirma realmente una implicación.
 
----
+***
 
 ### 3.2 La implicación descarta un caso
 
@@ -2492,7 +2492,7 @@ $$
 Una implicación no afirma que su antecedente sea verdadero. Afirma qué debe ocurrir con el consecuente **si** el antecedente es verdadero.
 :::
 
----
+***
 
 ### 3.3 ¿Por qué una implicación con antecedente falso es verdadera?
 
@@ -2546,7 +2546,7 @@ Podemos pensar la implicación como una regla que solo puede violarse cuando el 
 
 Esta interpretación será especialmente útil cuando construyamos tablas más complejas.
 
----
+***
 
 ### 3.4 Implicación no significa causalidad
 
@@ -2588,7 +2588,7 @@ El símbolo $\Rightarrow$ expresa la implicación de la lógica proposicional cl
 
 En argumentos matemáticos, las proposiciones implicadas suelen tener además una relación conceptual importante. Pero esa relación no forma parte de la tabla de verdad del conectivo.
 
----
+***
 
 ### 3.5 Varias maneras de decir la misma implicación
 
@@ -2638,7 +2638,7 @@ P\Rightarrow Q.
 }
 $$
 
----
+***
 
 ### 3.6 Condición suficiente
 
@@ -2680,7 +2680,7 @@ $$
 
 La palabra «suficiente» señala el antecedente.
 
----
+***
 
 ### 3.7 Condición necesaria
 
@@ -2715,7 +2715,7 @@ expresa simultáneamente:
 
 Esta pareja de formulaciones debe aprenderse como una sola estructura.
 
----
+***
 
 ### 3.8 «Si» y «solo si» apuntan en direcciones distintas
 
@@ -2771,7 +2771,7 @@ Esta inversión es una fuente frecuente de errores de lectura.
 
 No conviene memorizarla sin sentido: basta preguntar **qué condición obliga a cuál**.
 
----
+***
 
 ### 3.9 La conversa
 
@@ -2828,7 +2828,7 @@ Pero este ejemplo concreto no demuestra una regla general sobre implicaciones y 
 
 Más adelante tendremos herramientas para comparar sistemáticamente fórmulas.
 
----
+***
 
 ### 3.10 La contraposición asociada
 
@@ -2870,7 +2870,7 @@ Y, todavía después, estudiaremos cómo puede aprovecharse esa relación en una
 En esta sección la contraposición es una fórmula asociada. No la usamos todavía como método general de demostración.
 :::
 
----
+***
 
 ### 3.11 Ejemplo desarrollado
 
@@ -2969,7 +2969,7 @@ $$
 }
 $$
 
----
+***
 
 ## Ejercicios
 
@@ -3037,7 +3037,7 @@ $$
 }
 $$
 
----
+***
 
 ### Evaluar desde proposiciones concretas {#apm-t1-c02-e0070}
 
@@ -3125,7 +3125,7 @@ $$
 \mathrm V.
 $$
 
----
+***
 
 ### Suficiente y necesaria {#apm-t1-c02-e0071}
 
@@ -3175,7 +3175,7 @@ $$
 
 puede leerse simultáneamente desde sus dos extremos: suficiente desde el antecedente y necesaria desde el consecuente.
 
----
+***
 
 ### «Si» frente a «solo si» {#apm-t1-c02-e0072}
 
@@ -3223,7 +3223,7 @@ En el segundo, $Q$ funciona como condición necesaria para $P$.
 
 Las frases contienen las mismas letras, pero organizan la dependencia lógica en direcciones contrarias.
 
----
+***
 
 ### ¿Causalidad o implicación? {#apm-t1-c02-e0073}
 
@@ -3281,7 +3281,7 @@ $$
 
 no expresa por sí mismo una relación causal.
 
----
+***
 
 ### Explorar el antecedente falso {#apm-t1-c02-e0074}
 
@@ -3333,7 +3333,7 @@ $$
 \mathrm V\Rightarrow\mathrm F.
 $$
 
----
+***
 
 ### Una contraasignación para la conversa {#apm-t1-c02-e0075}
 
@@ -3401,7 +3401,7 @@ $$
 
 muestra que una implicación y su conversa no tienen necesariamente el mismo valor de verdad.
 
----
+***
 
 ### Síntesis: leer una condición {#apm-t1-c02-e0076}
 
@@ -3543,7 +3543,7 @@ $$
 
 Este ejemplo concreto muestra que las tres fórmulas resultan verdaderas con esta asignación. No demuestra, por sí solo, una relación general entre ellas.
 
----
+***
 
 ## Síntesis
 
@@ -3610,7 +3610,7 @@ $$
 
 Por ahora no afirmamos que estas fórmulas se comporten de la misma manera. Esa comparación necesitará herramientas que todavía estamos construyendo.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -3678,7 +3678,7 @@ Q
 }
 $$
 
----
+***
 
 ### 4.1 El bicondicional
 
@@ -3727,7 +3727,7 @@ $$
 Esto significa que un bicondicional cuyas dos partes reciben $\mathrm F$ recibe el valor $\mathrm V$.
 :::
 
----
+***
 
 ### 4.2 Un bicondicional no exige que ambas partes sean verdaderas
 
@@ -3789,7 +3789,7 @@ $$
 (\mathrm F,\mathrm F).
 $$
 
----
+***
 
 ### 4.3 Dos direcciones
 
@@ -3826,7 +3826,7 @@ $$
 }
 $$
 
----
+***
 
 ### 4.4 Necesaria y suficiente
 
@@ -3870,7 +3870,7 @@ estamos afirmando que:
 
 En este capítulo nos concentraremos en la estructura lógica de esta expresión, no en caracterizaciones geométricas particulares.
 
----
+***
 
 ### 4.5 «Si y solo si» frente a «solo si»
 
@@ -3906,7 +3906,7 @@ $$
 
 El término adicional «si» cambia la estructura: ahora se exige también la dirección inversa.
 
----
+***
 
 ### 4.6 El bicondicional es una fórmula
 
@@ -3955,7 +3955,7 @@ No confundiremos ambas ideas:
 
 Todavía no necesitamos la notación de esa relación.
 
----
+***
 
 ### 4.7 Bicondicional y conectivo principal
 
@@ -4023,7 +4023,7 @@ $$
 
 según la estructura que realmente queramos expresar.
 
----
+***
 
 ### 4.8 Evaluar un bicondicional compuesto
 
@@ -4069,7 +4069,7 @@ La estructura de evaluación sigue siendo la misma:
 2. evaluar las subfórmulas;
 3. aplicar la tabla del conectivo exterior.
 
----
+***
 
 ### 4.9 Ejemplo desarrollado
 
@@ -4156,7 +4156,7 @@ En este ejemplo concreto, las dos direcciones y el bicondicional resultan verdad
 
 Esto no constituye todavía una demostración de una ley general entre esas fórmulas. Para establecer una relación general tendremos que considerar todas las asignaciones posibles.
 
----
+***
 
 ## Ejercicios
 
@@ -4227,7 +4227,7 @@ $$
 }
 $$
 
----
+***
 
 ### ¿Basta con que ambas sean verdaderas? {#apm-t1-c02-e0078}
 
@@ -4269,7 +4269,7 @@ P\leftrightarrow Q
 \mathrm V.
 $$
 
----
+***
 
 ### Necesaria y suficiente {#apm-t1-c02-e0079}
 
@@ -4317,7 +4317,7 @@ $$
 Q\Rightarrow P.
 $$
 
----
+***
 
 ### Justificar una fila {#apm-t1-c02-e0080}
 
@@ -4349,7 +4349,7 @@ $$
 
 Otra manera de leerlo es observar que ninguna de las dos proposiciones es verdadera mientras la otra es falsa.
 
----
+***
 
 ### Leer una fórmula compuesta {#apm-t1-c02-e0081}
 
@@ -4439,7 +4439,7 @@ $$
 \mathrm V.
 $$
 
----
+***
 
 ### Síntesis: una caracterización concreta {#apm-t1-c02-e0082}
 
@@ -4541,7 +4541,7 @@ Un ejemplo particular no establece por sí mismo una afirmación acerca de todos
 
 La formulación general requeriría herramientas que todavía no hemos introducido en este capítulo.
 
----
+***
 
 ## Síntesis
 
@@ -4600,7 +4600,7 @@ Finalmente, debemos conservar una distinción que pronto será decisiva:
 
 mientras que, más adelante, la equivalencia lógica comparará dos fórmulas a través de **todas** las asignaciones.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -4686,7 +4686,7 @@ $$
 \boxed{\text{enumerar exhaustivamente todas las asignaciones posibles}.}
 $$
 
----
+***
 
 ### 5.1 Asignaciones de valores de verdad
 
@@ -4728,7 +4728,7 @@ $$
 
 La tabla de verdad de una fórmula debe contener todas las asignaciones posibles de las variables que intervienen en ella.
 
----
+***
 
 ### 5.2 ¿Cuántas filas necesitamos?
 
@@ -4814,7 +4814,7 @@ asignaciones posibles.
 
 La razón es sencilla: cada nueva variable duplica el número de filas.
 
----
+***
 
 ### 5.3 Cómo generar las filas sin olvidar ninguna
 
@@ -4847,7 +4847,7 @@ El orden concreto de las filas no cambia la semántica de la fórmula. Lo esenci
 
 Usaremos este orden estándar porque facilita revisar tablas y compararlas.
 
----
+***
 
 ### 5.4 Una tabla se construye por subfórmulas
 
@@ -4906,7 +4906,7 @@ $$
 }
 $$
 
----
+***
 
 ### 5.5 Columnas auxiliares
 
@@ -4942,7 +4942,7 @@ Una tabla con menos columnas puede ser correcta, pero no siempre será pedagógi
 
 En este libro preferiremos mostrar las subfórmulas relevantes mientras estamos aprendiendo el procedimiento.
 
----
+***
 
 ### 5.6 Algoritmo de construcción
 
@@ -5036,7 +5036,7 @@ $$
 }
 $$
 
----
+***
 
 ### 5.7 Una tabla no es una muestra
 
@@ -5080,7 +5080,7 @@ $$
 
 Esta distinción será decisiva en la sección siguiente.
 
----
+***
 
 ### 5.8 Ejemplo desarrollado
 
@@ -5166,7 +5166,7 @@ Todavía no necesitamos poner un nombre especial a este comportamiento.
 
 Por ahora basta con haber determinado exhaustivamente qué ocurre.
 
----
+***
 
 ## Ejercicios
 
@@ -5246,7 +5246,7 @@ $$
 
 asignaciones.
 
----
+***
 
 ### Tabla de dos variables {#apm-t1-c02-e0084}
 
@@ -5277,7 +5277,7 @@ $$
 | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ | $\mathrm V$ |
 | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm V$ |
 
----
+***
 
 ### Tres variables y dos niveles {#apm-t1-c02-e0085}
 
@@ -5314,7 +5314,7 @@ $$
 | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ | $\mathrm F$ | $\mathrm F$ |
 | $\mathrm F$ | $\mathrm F$ | $\mathrm F$ | $\mathrm F$ | $\mathrm V$ | $\mathrm F$ |
 
----
+***
 
 ### Una tabla con implicación {#apm-t1-c02-e0086}
 
@@ -5349,7 +5349,7 @@ en las cuatro filas.
 
 Guardaremos esta observación para la sección siguiente.
 
----
+***
 
 ### ¿Por qué aparecen $2^n$ filas? {#apm-t1-c02-e0087}
 
@@ -5399,7 +5399,7 @@ $$
 
 Cada nueva variable duplica el número de asignaciones.
 
----
+***
 
 ### Diagnosticar una tabla incompleta {#apm-t1-c02-e0088}
 
@@ -5466,7 +5466,7 @@ $$
 
 Una tabla completa debe enumerar **cada combinación posible**, no solo utilizar ambos valores en cada variable.
 
----
+***
 
 ### Síntesis: implicación y contraposición asociada {#apm-t1-c02-e0089}
 
@@ -5537,7 +5537,7 @@ Todavía no necesitamos poner un nombre técnico a estos dos hechos.
 
 En las secciones siguientes estudiaremos precisamente qué significa que una fórmula sea verdadera en todas las asignaciones y qué significa que dos fórmulas tengan columnas idénticas.
 
----
+***
 
 ## Síntesis
 
@@ -5585,7 +5585,7 @@ $$
 \boxed{\text{no deja ninguna asignación fuera}.}
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -6385,7 +6385,7 @@ Ahora preguntaremos:
 
 La respuesta es sí. Y esta será la noción que convertirá poco a poco la lógica proposicional en un **álgebra de fórmulas**.
 
----
+***
 
 ### 7.1 Misma columna, mismo comportamiento lógico
 
@@ -6402,7 +6402,7 @@ No significa necesariamente que las fórmulas tengan la misma escritura.
 
 Significa que **ninguna asignación de valores de verdad permite distinguirlas semánticamente**.
 
----
+***
 
 ### 7.2 Equivalencia lógica
 
@@ -6442,7 +6442,7 @@ $$
 
 las columnas deben coincidir en **toda** la tabla conjunta.
 
----
+***
 
 ### 7.3 Cómo refutar una pretendida equivalencia
 
@@ -6482,7 +6482,7 @@ $$
 
 $$
 
----
+***
 
 ### 7.4 Bicondicional y equivalencia lógica no son lo mismo
 
@@ -6525,7 +6525,7 @@ El bicondicional compara los valores de $P$ y $Q$ **dentro de una asignación**.
 La equivalencia lógica exige que esa coincidencia se mantenga **a través de todas las asignaciones**.
 :::
 
----
+***
 
 ### 7.5 El criterio mediante el bicondicional
 
@@ -6651,7 +6651,7 @@ P\leftrightarrow Q
 }
 $$
 
----
+***
 
 ### 7.6 Dos procedimientos para demostrar una equivalencia
 
@@ -6689,7 +6689,7 @@ En esta etapa ambos métodos siguen dependiendo de tablas.
 
 Más adelante aprenderemos a demostrar equivalencias mediante **leyes ya establecidas**, sin reconstruir una tabla completa cada vez.
 
----
+***
 
 ### 7.7 Una equivalencia puede cambiar mucho la forma
 
@@ -6732,7 +6732,7 @@ Más adelante este hecho formará parte de una familia de leyes con nombre propi
 
 Por ahora lo importante es cómo lo hemos establecido: **directamente desde la semántica**.
 
----
+***
 
 ### 7.8 Igualdad y equivalencia tampoco son lo mismo
 
@@ -6778,7 +6778,7 @@ $$
 
 Cada símbolo expresa una relación diferente.
 
----
+***
 
 ### 7.9 Cadenas de equivalencias
 
@@ -6817,7 +6817,7 @@ Cada paso de una cadena de equivalencias debe estar justificado.
 
 Todavía conocemos pocas equivalencias reutilizables. Las secciones siguientes construirán precisamente ese repertorio.
 
----
+***
 
 ### 7.10 Ejemplo desarrollado
 
@@ -6912,7 +6912,7 @@ $$
 
 es una tautología.
 
----
+***
 ## Ejercicios
 
 ### Doble negación por tabla {#apm-t1-c02-e0096}
@@ -6958,7 +6958,7 @@ $$
 }
 $$
 
----
+***
 
 ### Una fila no basta {#apm-t1-c02-e0097}
 Un estudiante sabe que, para:
@@ -7028,7 +7028,7 @@ $$
 
 no son lógicamente equivalentes.
 
----
+***
 
 ### Idempotencia descubierta semánticamente {#apm-t1-c02-e0098}
 Demuestra mediante una tabla que:
@@ -7059,7 +7059,7 @@ $$
 
 Más adelante incorporaremos esta equivalencia a un conjunto sistemático de leyes.
 
----
+***
 
 ### Simetría de la equivalencia {#apm-t1-c02-e0099}
 Supón que ya se ha establecido:
@@ -7097,7 +7097,7 @@ $$
 
 No hemos utilizado ninguna ley adicional; solo la definición de equivalencia lógica.
 
----
+***
 
 ### Refutar una equivalencia {#apm-t1-c02-e0100}
 Alguien propone:
@@ -7148,7 +7148,7 @@ $$
 
 Una sola fila distinta basta para refutar la equivalencia.
 
----
+***
 
 ### Síntesis: una fórmula más simple con la misma columna {#apm-t1-c02-e0101}
 Decide si:
@@ -7219,7 +7219,7 @@ es una tautología.
 
 Esta fórmula muestra por primera vez con claridad la utilidad futura del álgebra proposicional: una fórmula relativamente larga puede tener exactamente el mismo comportamiento lógico que otra mucho más simple.
 
----
+***
 
 ## Síntesis
 
@@ -7255,7 +7255,7 @@ El segundo expresa equivalencia lógica entre fórmulas. La conexión entre ambo
 
 Con esta proposición cerramos el bloque puramente semántico del capítulo.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -7315,7 +7315,7 @@ $$
 
 Pero el orden importa: **una equivalencia solo podrá usarse como ley después de haber sido justificada**.
 
----
+***
 
 ### 8.1 Dos fórmulas especiales: una siempre verdadera y otra siempre falsa
 
@@ -7345,7 +7345,7 @@ $$
 
 Esta distinción evita mezclar el nivel de las fórmulas con el nivel de sus valores.
 
----
+***
 
 ### 8.2 Identidad y dominación
 
@@ -7399,7 +7399,7 @@ P\land C&\equiv C.
 }
 $$
 
----
+***
 
 ### 8.3 Idempotencia
 
@@ -7435,7 +7435,7 @@ P\lor P\equiv P.
 }
 $$
 
----
+***
 
 ### 8.4 Complemento
 
@@ -7463,7 +7463,7 @@ $$
 
 Estas son las **leyes de complemento**. Obsérvese nuevamente que $T$ y $C$ representan fórmulas tautológicas y contradictorias, no los valores $\mathrm V$ y $\mathrm F$.
 
----
+***
 
 ### 8.5 Doble negación
 
@@ -7484,7 +7484,7 @@ $$
 
 Esta será nuestra **ley de doble negación**.
 
----
+***
 
 ### 8.6 Conmutatividad
 
@@ -7521,7 +7521,7 @@ $$
 
 El orden de los dos componentes no cambia el comportamiento lógico de una conjunción ni de una disyunción.
 
----
+***
 
 ### 8.7 Asociatividad
 
@@ -7575,7 +7575,7 @@ $$
 
 Estas son las **leyes asociativas**.
 
----
+***
 
 ### 8.8 Primer paquete de leyes
 
@@ -7651,7 +7651,7 @@ Por [la definición «Equivalencia lógica»](#apm-t1-c02-d0021), eso es exactam
 
 Por tanto, todas las equivalencias enunciadas quedan demostradas.
 
----
+***
 
 ### 8.9 Por qué podemos reemplazar una subfórmula por otra equivalente
 
@@ -7687,7 +7687,7 @@ Reemplazar una subfórmula por otra equivalente está permitido porque la equiva
 
 No necesitamos todavía una teoría general de sustitución para fórmulas arbitrarias. Estas observaciones locales bastan para las reescrituras con $\neg,\land,\lor$ que realizaremos ahora.
 
----
+***
 
 ### 8.10 De tabla a cálculo
 
@@ -7723,7 +7723,7 @@ $$
 
 Pero cada paso debe citar una ley válida.
 
----
+***
 
 ### 8.11 Ejemplo desarrollado
 
@@ -7793,7 +7793,7 @@ $$
 
 Este es el nuevo tipo de cálculo que iremos desarrollando.
 
----
+***
 ## Ejercicios
 
 ### Simplificaciones elementales {#apm-t1-c02-e0102}
@@ -7882,7 +7882,7 @@ $$
 }
 $$
 
----
+***
 
 ### Reordenar y eliminar repeticiones {#apm-t1-c02-e0103}
 Simplifica:
@@ -7938,7 +7938,7 @@ P\land Q.
 }
 $$
 
----
+***
 
 ### Justificar la conmutatividad {#apm-t1-c02-e0104}
 Demuestra mediante una tabla que:
@@ -7971,7 +7971,7 @@ $$
 
 Como la equivalencia ya ha sido demostrada para fórmulas arbitrarias $P,Q$, puede reutilizarse como ley sin reconstruir esta tabla en cada aplicación.
 
----
+***
 
 ### Justificar una equivalencia derivada {#apm-t1-c02-e0105}
 Demuestra mediante una cadena de leyes que:
@@ -8015,7 +8015,7 @@ $$
 
 Cada paso utiliza una ley ya demostrada en [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002).
 
----
+***
 
 ### ¿Por qué la identidad vale para cualquier tautología? {#apm-t1-c02-e0106}
 Sea $T$ una tautología cualquiera.
@@ -8097,7 +8097,7 @@ $$
 
 La demostración no depende de qué tautología concreta representa $T$.
 
----
+***
 
 ### Explorar la dualidad de las primeras leyes {#apm-t1-c02-e0107}
 Observa las parejas:
@@ -8181,7 +8181,7 @@ Las primeras leyes aparecen organizadas en parejas: al intercambiar conjunción 
 
 Esta regularidad sugiere una simetría interna del álgebra proposicional. Por ahora la registramos como observación estructural.
 
----
+***
 
 ### Síntesis: una cadena larga {#apm-t1-c02-e0108}
 Simplifica:
@@ -8292,7 +8292,7 @@ P\land Q.
 }
 $$
 
----
+***
 
 ## Síntesis
 
@@ -8344,7 +8344,7 @@ $$
 
 $$
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -8398,7 +8398,7 @@ Además, encontraremos dos nuevas familias de leyes:
 
 Con estas herramientas el álgebra proposicional empieza a adquirir una fisonomía propia.
 
----
+***
 
 ### 9.1 La conjunción distribuye sobre la disyunción
 
@@ -8469,7 +8469,7 @@ P\land(Q\lor R)
 }
 $$
 
----
+***
 
 ### 9.2 La disyunción también distribuye sobre la conjunción
 
@@ -8541,7 +8541,7 @@ $$
 
 Esta simetría será muy útil para transformar fórmulas.
 
----
+***
 
 ### 9.3 Absorción
 
@@ -8565,7 +8565,7 @@ $$
 
 Estas son las **leyes de absorción**. La palabra es apropiada: una aparición de $P$ absorbe una expresión mayor que ya contiene a $P$ de la forma adecuada.
 
----
+***
 
 ### 9.4 Distributividad y absorción
 
@@ -8635,7 +8635,7 @@ $$
 
 Quedan demostradas las cuatro equivalencias.
 
----
+***
 
 ### 9.5 Negar una conjunción
 
@@ -8676,7 +8676,7 @@ $$
 
 Esta equivalencia ya había aparecido semánticamente en §7. Ahora queda incorporada formalmente al repertorio de leyes de cálculo.
 
----
+***
 
 ### 9.6 Negar una disyunción
 
@@ -8703,7 +8703,7 @@ $$
 }
 $$
 
----
+***
 
 ### 9.7 Las leyes de De Morgan
 
@@ -8733,7 +8733,7 @@ Las tablas de §§9.5–9.6 muestran que, en cada caso, las columnas situadas a 
 
 Por la definición de equivalencia lógica, ambas equivalencias quedan demostradas.
 
----
+***
 
 ### 9.8 Qué hace De Morgan
 
@@ -8771,7 +8771,7 @@ $$
 
 Esta formulación será útil, pero nunca sustituye la justificación matemática: la regla es válida porque [la proposición «Leyes de De Morgan»](#apm-t1-c02-p0004) ya está demostrado.
 
----
+***
 
 ### 9.9 Una simetría que empieza a hacerse visible
 
@@ -8813,7 +8813,7 @@ No convertiremos todavía esta observación en un principio abstracto.
 
 Por ahora basta registrar que el álgebra proposicional tiene una **dualidad visible** entre conjunción y disyunción.
 
----
+***
 
 ### 9.10 Ejemplo desarrollado
 
@@ -8908,7 +8908,7 @@ $$
 
 Este ejemplo muestra algo importante: una transformación puede ser correcta por rutas diferentes. Lo decisivo es que cada paso esté autorizado por una equivalencia previamente demostrada.
 
----
+***
 ## Ejercicios
 
 ### Distribuir y simplificar {#apm-t1-c02-e0109}
@@ -8971,7 +8971,7 @@ $$
 
 La simplificación coincide, naturalmente, con la ley de absorción en su forma conmutada.
 
----
+***
 
 ### Justificar la segunda distributividad {#apm-t1-c02-e0110}
 Demuestra mediante una tabla de verdad que:
@@ -9008,7 +9008,7 @@ P\lor(Q\land R)
 }
 $$
 
----
+***
 
 ### Justificar absorción {#apm-t1-c02-e0111}
 Demuestra directamente desde los valores de verdad, sin usar la ley de absorción como premisa, que:
@@ -9076,7 +9076,7 @@ P\land(P\lor Q)\equiv P.
 }
 $$
 
----
+***
 
 ### Demostrar la segunda ley de De Morgan {#apm-t1-c02-e0112}
 Construye una tabla para demostrar:
@@ -9121,7 +9121,7 @@ $$
 }
 $$
 
----
+***
 
 ### Explorar la dualidad {#apm-t1-c02-e0113}
 Considera las cuatro leyes:
@@ -9207,7 +9207,7 @@ no son lógicamente equivalentes en general.
 
 La observación estructural no autoriza reescrituras que no estén respaldadas por una ley demostrada.
 
----
+***
 
 ### Una falsa ley de De Morgan {#apm-t1-c02-e0114}
 Alguien propone:
@@ -9271,7 +9271,7 @@ Por tanto, no son lógicamente equivalentes.
 
 La contraasignación muestra exactamente qué error contiene la falsa regla: al atravesar una conjunción, la negación debe cambiar $\land$ por $\lor$.
 
----
+***
 
 ### Síntesis: dos caminos hacia la misma simplificación {#apm-t1-c02-e0115}
 Simplifica:
@@ -9407,7 +9407,7 @@ $$
 
 Las dos rutas son válidas porque cada paso está justificado por una equivalencia ya demostrada.
 
----
+***
 
 ## Síntesis
 
@@ -9467,7 +9467,7 @@ $$
 
 Con [la proposición «Primeras leyes del álgebra proposicional»](#apm-t1-c02-p0002), [la proposición «Distributividad y absorción»](#apm-t1-c02-p0003) y [la proposición «Leyes de De Morgan»](#apm-t1-c02-p0004) disponemos ya de un verdadero núcleo de álgebra proposicional.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -10319,7 +10319,7 @@ La tabla de verdad dejará así de ser solamente un instrumento de evaluación.
 
 También se convertirá en un procedimiento de **síntesis de fórmulas**.
 
----
+***
 
 ### 11.1 Literales
 
@@ -10363,7 +10363,7 @@ $$
 
 no son literales. La negación de un literal, en el sentido que necesitaremos, debe estar aplicada directamente a una variable proposicional.
 
----
+***
 
 ### 11.2 Forma normal disyuntiva
 
@@ -10415,7 +10415,7 @@ también puede verse como una FND con un único término conjuntivo.
 
 No exigiremos por ahora que una FND sea mínima, irredundante ni única.
 
----
+***
 
 ### 11.3 Forma normal conjuntiva
 
@@ -10455,7 +10455,7 @@ Y una sola disyunción $p\lor q$ puede considerarse una FNC con una única cláu
 
 De nuevo, no exigiremos minimalidad ni unicidad.
 
----
+***
 
 ### 11.4 Una fila verdadera produce una conjunción
 
@@ -10523,7 +10523,7 @@ $$
 
 Esta es la pieza fundamental de la construcción de una FND desde una tabla.
 
----
+***
 
 ### 11.5 Construir la FND desde las filas verdaderas
 
@@ -10592,7 +10592,7 @@ $$
 
 La tabla ha producido directamente una FND.
 
----
+***
 
 ### 11.6 Una fila falsa produce una disyunción
 
@@ -10640,7 +10640,7 @@ $$
 
 Esta es la pieza fundamental de la construcción de una FNC.
 
----
+***
 
 ### 11.7 Construir la FNC desde las filas falsas
 
@@ -10703,7 +10703,7 @@ $$
 
 La misma tabla nos ha producido ahora una FNC.
 
----
+***
 
 ### 11.8 Ejemplo desarrollado
 
@@ -10814,7 +10814,7 @@ $$
 
 La tabla de verdad ha producido dos fórmulas con estructuras diferentes, pero ambas equivalentes al bicondicional.
 
----
+***
 
 ### 11.9 El teorema de existencia
 
@@ -11058,7 +11058,7 @@ $$
 \text{Queda demostrado [el teorema «Existencia de formas normales proposicionales»](#apm-t1-c02-t0001).}
 $$
 
----
+***
 
 ### 11.10 Qué demuestra realmente el teorema
 
@@ -11106,7 +11106,7 @@ $$
 
 La tabla no solo analiza una fórmula. También puede **fabricar otra fórmula con exactamente el mismo comportamiento lógico**.
 
----
+***
 
 ### 11.11 Las formas normales no son únicas
 
@@ -11158,7 +11158,7 @@ es una FNC equivalente a $p$. Así, una misma fórmula puede admitir muchas FND 
 
 La construcción por filas del teorema proporciona una forma **sistemática**, no necesariamente la más corta.
 
----
+***
 ## Ejercicios
 
 ### Reconocer formas normales {#apm-t1-c02-e0124}
@@ -11255,7 +11255,7 @@ $$
 
 y esta última sí está en ambas formas según nuestras convenciones.
 
----
+***
 
 ### Construir desde las filas verdaderas {#apm-t1-c02-e0125}
 Una fórmula $F$ tiene la tabla:
@@ -11308,7 +11308,7 @@ $$
 
 Esta FND es verdadera exactamente en las dos filas verdaderas de $F$.
 
----
+***
 
 ### La conjunción y la cláusula de una fila {#apm-t1-c02-e0126}
 Considera la asignación:
@@ -11378,7 +11378,7 @@ La conjunción exige simultáneamente los tres valores de la fila. Si cualquiera
 
 La disyunción es falsa solo cuando sus tres literales son falsos simultáneamente, lo que ocurre exactamente en la asignación dada.
 
----
+***
 
 ### Explorar la no unicidad {#apm-t1-c02-e0127}
 Demuestra mediante las leyes ya establecidas que:
@@ -11470,7 +11470,7 @@ Así, $p$ posee formas normales más largas equivalentes.
 
 Esto demuestra que la FND y la FNC de una fórmula no son únicas.
 
----
+***
 
 ### Casos extremos {#apm-t1-c02-e0128}
 #### a)
@@ -11556,7 +11556,7 @@ $$
 
 proporciona una FNC tautológica equivalente.
 
----
+***
 
 ### Síntesis: tabla, FND, FNC y simplificación {#apm-t1-c02-e0129}
 Considera:
@@ -11721,7 +11721,7 @@ $$
 
 El ejercicio muestra dos rutas distintas hacia la misma forma: una semántica, desde la tabla, y otra algebraica, mediante equivalencias.
 
----
+***
 
 ## Síntesis
 
@@ -11761,7 +11761,7 @@ Con ello demostramos:
 
 El resultado no garantiza unicidad ni minimalidad. Garantiza **existencia mediante un procedimiento explícito**.
 
----
+***
 
 ## Hacia la sección siguiente
 
@@ -11811,7 +11811,7 @@ Intentar simplificar algebraicamente una fórmula cuando basta una sola contraas
 
 La madurez lógica comienza cuando podemos reconocer esa diferencia.
 
----
+***
 
 ### 12.1 Método 1 — Tabla de verdad
 
@@ -11868,7 +11868,7 @@ $$
 
 Por tanto, una tabla completa es conceptualmente sencilla, pero puede crecer rápidamente.
 
----
+***
 
 ### 12.2 Método 2 — Cadena de equivalencias
 
@@ -11921,7 +11921,7 @@ La exigencia es igualmente clara:
 
 > cada paso debe estar autorizado por una equivalencia previamente demostrada.
 
----
+***
 
 ### 12.3 Método 3 — Contraasignación
 
@@ -11973,7 +11973,7 @@ $$
 
 No hace falta calcular las otras tres filas.
 
----
+***
 
 ### 12.4 Método 4 — Formas normales
 
@@ -12011,7 +12011,7 @@ $$
 
 más que para garantizar simplificación mínima.
 
----
+***
 
 ### 12.5 Una guía de elección
 
@@ -12031,7 +12031,7 @@ Esta tabla no es un algoritmo obligatorio. Una misma tarea puede admitir varios 
 
 La elección depende de la estructura concreta de la fórmula.
 
----
+***
 
 ### 12.6 Demostrar una tautología mediante equivalencias
 
@@ -12084,7 +12084,7 @@ $$
 
 Aquí la cadena de equivalencias revela además **por qué** la fórmula es siempre verdadera.
 
----
+***
 
 ### 12.7 Demostrar una tautología mediante una tabla
 
@@ -12129,7 +12129,7 @@ $$
 
 es una tautología.
 
----
+***
 
 ### 12.8 Ejemplo desarrollado
 
@@ -12238,7 +12238,7 @@ Ambos métodos son rigurosos.
 
 Pero responden a intuiciones diferentes.
 
----
+***
 
 ### 12.9 Elegir un método no significa adivinar
 
@@ -12270,7 +12270,7 @@ La lógica matemática no exige fidelidad a una técnica.
 
 Exige que cada conclusión esté justificada.
 
----
+***
 
 ### 12.10 Verificar y demostrar
 
@@ -12292,7 +12292,7 @@ $$
 }
 $$
 
----
+***
 ## Ejercicios
 
 ### Elegir el método {#apm-t1-c02-e0130}
@@ -12391,7 +12391,7 @@ Utilizaría **formas normales**, concretamente la FND construida a partir de las
 
 Con solo dos variables, una **tabla de verdad conjunta** requiere cuatro filas y permite comparar exhaustivamente ambas fórmulas.
 
----
+***
 
 ### Una tautología por cálculo {#apm-t1-c02-e0131}
 Demuestra mediante equivalencias que:
@@ -12459,7 +12459,7 @@ $$
 }
 $$
 
----
+***
 
 ### Refutar sin tabla completa {#apm-t1-c02-e0132}
 Decide si:
@@ -12529,7 +12529,7 @@ $$
 
 Una sola contraasignación basta.
 
----
+***
 
 ### Dos fórmulas, una misma condición {#apm-t1-c02-e0133}
 Demuestra:
@@ -12607,7 +12607,7 @@ La cadena de equivalencias es especialmente natural porque las leyes de eliminac
 
 Una tabla de ocho filas también funcionaría, pero sería más larga.
 
----
+***
 
 ### Síntesis final {#apm-t1-c02-e0134}
 Determina, con un método adecuado y una justificación completa, si:
@@ -12796,7 +12796,7 @@ es una tautología.
 
 La fórmula expresa, dentro de la lógica proposicional, la transitividad esperada de una cadena de implicaciones.
 
----
+***
 
 ## Síntesis del capítulo
 
@@ -12888,7 +12888,7 @@ En este capítulo:
 - la **semántica** asigna valores de verdad;
 - las **leyes** son equivalencias lógicas que permiten transformar fórmulas sin alterar su comportamiento.
 
----
+***
 
 ## Hacia el capítulo siguiente
 
