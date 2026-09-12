@@ -21,6 +21,7 @@ Debe ser autosuficiente: `T1-C01` por sí solo no es un identificador canónico 
 
 Códigos iniciales:
 
+- `APM` — Álgebra para matemáticos.
 - `CPM` — Cálculo para matemáticos.
 - `FPM` — Fundamentos para matemáticos.
 - `FISPM` — Física para matemáticos.
@@ -31,6 +32,7 @@ Formato: `PROYECTO-TOMO-CAPITULO-TIPO-NNNN`.
 
 Ejemplos:
 
+- `APM-T1-C01-D0001` — definición.
 - `CPM-T1-C01-D0001` — definición.
 - `CPM-T1-C01-E0001` — ejercicio.
 - `CPM-T1-C01-X0001` — observación u objeto auxiliar.
@@ -46,3 +48,5 @@ Los identificadores heredados de versiones anteriores no se renumeran destructiv
 Cada capítulo publicado declara simultáneamente un `content-id: MA-BCH-NNNN` y un `source-id` editorial completamente cualificado.
 
 `content-id` enlaza con el registro global del sitio; `source-id` enlaza con el canon editorial de la obra correspondiente.
+
+Cuando el canon privado de una obra mantiene además un identificador editorial propio de tomo o capítulo, éste puede conservarse en metadatos auxiliares (`editorial-id`) sin sustituir al `content-id` global público ni al `source-id` de publicación.
