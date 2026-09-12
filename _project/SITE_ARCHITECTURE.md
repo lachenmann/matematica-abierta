@@ -75,7 +75,7 @@ Agrupación por taxonomía matemática.
 
 ### 3.3 Por técnica
 
-Agrupación por métodos principales de resolución, demostración o cálculo.
+Agrupación por métodos principales de resolución.
 
 ### 3.4 Por dificultad
 
