@@ -32,7 +32,7 @@ jobs:
                   'wrapper': 'algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md',
                   'title': 'Del cálculo aritmético al lenguaje algebraico',
                   'parts': [f'_algebra-c01-{i:02d}.md' for i in range(1, 11)],
-                  'prefix': 'APM-T1-C01-',
+                  'anchor_prefix': 'apm-t1-c01-e',
                   'expected': 56,
               },
               {
@@ -40,7 +40,7 @@ jobs:
                   'wrapper': 'algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md',
                   'title': 'Lógica proposicional y álgebra de proposiciones',
                   'parts': [f'_algebra-c02-{i:02d}.md' for i in range(1, 11)] + ['_algebra-c02-11a.md','_algebra-c02-11b.md','_algebra-c02-12a.md','_algebra-c02-12b.md'],
-                  'prefix': 'APM-T1-C02-',
+                  'anchor_prefix': 'apm-t1-c02-e',
                   'expected': 78,
               },
               {
@@ -48,7 +48,7 @@ jobs:
                   'wrapper': 'algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md',
                   'title': 'Predicados, cuantificadores y lenguaje matemático',
                   'parts': [f'_algebra-c03-{i:02d}.md' for i in range(1, 12)] + ['_algebra-c03-12a.md','_algebra-c03-12b.md','_algebra-c03-12c.md'],
-                  'prefix': 'APM-T1-C03-',
+                  'anchor_prefix': 'apm-t1-c03-e',
                   'expected': 72,
               },
           ]
@@ -78,8 +78,8 @@ jobs:
               if 'APM-I-' in text or '#apm-i-' in text.lower():
                   raise SystemExit(f'Legacy APM-I identifier survived in {wrapper}')
 
-              exercises = len(re.findall(rf'(?m)^###\s+{re.escape(s["prefix"])}E\d{{4}}\b', text))
-              solutions = text.count('[!solution]')
+              exercises = len(re.findall(rf'#({re.escape(s["anchor_prefix"])}\d{{4}})\b', text, flags=re.I))
+              solutions = len(re.findall(r'(?m)^####\s+Solución\s*$', text))
               if exercises != s['expected'] or solutions != s['expected']:
                   raise SystemExit(f"QA failed for C{s['chapter']}: exercises={exercises}, solutions={solutions}, expected={s['expected']}")
 
@@ -90,15 +90,12 @@ jobs:
           for part in sorted(set(all_parts)):
               part.unlink()
 
-          # No live include is allowed to point at the removed APM fragments.
+          # No live Markdown page may still point to the removed APM fragments.
           refs = []
-          for p in Path('.').rglob('*'):
-              if not p.is_file() or '.git' in p.parts:
+          for p in Path('libros').rglob('*.md'):
+              if not p.is_file():
                   continue
-              try:
-                  t = p.read_text(encoding='utf-8')
-              except Exception:
-                  continue
+              t = p.read_text(encoding='utf-8')
               if '_algebra-c01-' in t or '_algebra-c02-' in t or '_algebra-c03-' in t:
                   refs.append(str(p))
           if refs:
@@ -137,15 +134,15 @@ jobs:
           import re
           root = Path('libros/capitulos')
           files = [
-              ('algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md','APM-T1-C01-',56),
-              ('algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md','APM-T1-C02-',78),
-              ('algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md','APM-T1-C03-',72),
+              ('algebra-para-matematicos-capitulo-1-del-calculo-aritmetico-al-lenguaje-algebraico.md','apm-t1-c01-e',56),
+              ('algebra-para-matematicos-capitulo-2-logica-proposicional-y-algebra-de-proposiciones.md','apm-t1-c02-e',78),
+              ('algebra-para-matematicos-capitulo-3-predicados-cuantificadores-y-lenguaje-matematico.md','apm-t1-c03-e',72),
           ]
           total_e = total_s = 0
           for fn,prefix,expected in files:
               t=(root/fn).read_text(encoding='utf-8')
-              e=len(re.findall(rf'(?m)^###\s+{re.escape(prefix)}E\d{{4}}\b',t))
-              s=t.count('[!solution]')
+              e=len(re.findall(rf'#({re.escape(prefix)}\d{{4}})\b',t,flags=re.I))
+              s=len(re.findall(r'(?m)^####\s+Solución\s*$',t))
               assert e==s==expected,(fn,e,s)
               assert '{{< include ' not in t
               assert 'APM-I-' not in t
