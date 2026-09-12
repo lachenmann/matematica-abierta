@@ -8,9 +8,9 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0012 |
+| Capítulo | MA-BCH-0013 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0006 |
+| Libro | MA-BOK-0007 |
 
 ## IDs asignados
 
@@ -55,10 +55,12 @@
 | MA-BCH-0006 | book-chapter | Tratado de análisis — Glosario matemático | `libros/otros/tratado-de-analisis-glosario.md` | published |
 | MA-BCH-0009 | book-chapter | Teorías físicas: fenómenos, modelos y leyes | `libros/capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md` | published |
 | MA-BCH-0010 | book-chapter | Sucesiones y la primera noción rigurosa de límite | `libros/capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md` | published |
+| MA-BCH-0012 | book-chapter | El álgebra como lenguaje de relaciones y estructuras | `libros/capitulos/el-algebra-como-lenguaje-de-relaciones-y-estructuras.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
 | MA-BOK-0005 | book | Física para matemáticos | `libros/para-matematicos/fisica-para-matematicos.md` | published |
+| MA-BOK-0006 | book | Álgebra para matemáticos | `libros/para-matematicos/algebra-para-matematicos.md` | published |
 
 ## Regla de uso
 
@@ -71,6 +73,7 @@ Los identificadores no se reutilizan, incluso si una pieza se retira.
 | Código | Colección |
 |---|---|
 | PM-FUN | Fundamentos para matemáticos |
+| PM-ALG | Álgebra para matemáticos |
 | PM-CAL | Cálculo para matemáticos |
 | PM-GEO | Geometría para matemáticos |
 | PM-ANA | Análisis para matemáticos |
