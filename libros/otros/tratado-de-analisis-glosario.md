@@ -131,5 +131,3 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-04.md >}}
 
 {{< include _tratado-glosario-05.md >}}
-
-{{< include _tratado-glosario-06.md >}}
