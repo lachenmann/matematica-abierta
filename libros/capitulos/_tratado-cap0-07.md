@@ -181,6 +181,6 @@ Las expresiones $\sup S$ e $\inf S$ no se considerarán definidas bajo hipótesi
 
 ---
 
-::: {.callout-note title="Publicación progresiva"}
-Con §0.7 queda publicada la última sección conceptual del fundamento lógico y conjuntista. La siguiente entrega incorporará **§§0.8–0.10**, con el resumen de notación, el cierre deductivo del capítulo y la transición hacia la construcción de $\mathbb N$.
+::: {.callout-tip title="Capítulo 0 completo"}
+Con §§0.8–0.10 queda completo el **Capítulo 0 — Fundamento lógico y conjuntista**. La publicación progresiva continuará con el **Capítulo 1 — Los números naturales**.
 :::
