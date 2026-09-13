@@ -23,7 +23,7 @@
 - Ejercicios 2A: **20/20 resueltos**; soluciones `VERIFICADO`.
 - Total acumulado de ejercicios resueltos: **67**.
 - Glosario terminológico: **v0.5**.
-- Siguiente bloque: **2B — Bases**.
+- Siguiente bloque activo: **2B — Bases**.
 
 ## QA de 1A
 
