@@ -4,15 +4,23 @@ Traducción española abierta y colaborativa de *Linear Algebra Done Right*, 4.�
 
 > **Estado:** trabajo en curso. No es una traducción oficial ni está avalada por Sheldon Axler o Springer.
 
+## Fuente canónica
+
+Se trabaja contra el PDF oficial más reciente publicado por Sheldon Axler:
+
+- <https://linear.axler.net/LADR4e.pdf>
+- sitio oficial: <https://linear.axler.net/>
+- errata oficial: <https://linear.axler.net/LADRErrata4e.html>
+
+La versión canónica actualmente fijada es la de **16 de agosto de 2026**. Las copias anteriores se usan sólo como testimonio de control.
+
 ## Licencia
 
 La obra original de Sheldon Axler está publicada bajo **Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)**. Esta traducción/adaptación y, salvo indicación expresa, las contribuciones originales integradas en este subproyecto se distribuyen también bajo **CC BY-NC 4.0**.
 
 Este subdirectorio constituye una excepción explícita a la licencia general del repositorio `matematica-abierta`.
 
-Fuente oficial: https://linear.axler.net/
-
-Licencia: https://creativecommons.org/licenses/by-nc/4.0/
+Licencia: <https://creativecommons.org/licenses/by-nc/4.0/>.
 
 ## Colaborar
 
@@ -37,7 +45,18 @@ Separamos siempre cinco capas:
 - `[NOTA]` ampliaciones propias;
 - `[ERRATA]` correcciones o intervenciones respecto de la fuente.
 
-La fuente canónica del proyecto es el PDF oficial más reciente disponible en el sitio de Axler. Las unidades se publican inicialmente como borradores y sólo pasan a estado cerrado después de cotejo matemático, terminológico y editorial.
+Las unidades se publican inicialmente como borradores y sólo pasan a estado cerrado después de cotejo matemático, terminológico y editorial.
+
+## Estado actual
+
+- Prefacio para estudiantes: borrador cotejado.
+- Apertura del Capítulo 1: borrador cotejado.
+- **Sección 1A — $\mathbf R^n$ y $\mathbf C^n$: cotejada contra la fuente oficial de 16-08-2026.**
+- **Ejercicios 1A: 15/15 resueltos y verificados.**
+- Glosario terminológico: v0.2.
+- Siguiente bloque: **1B — Definición de espacio vectorial**.
+
+Consulta [STATUS.md](STATUS.md) para el detalle.
 
 ## Terminología
 
