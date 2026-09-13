@@ -7,53 +7,59 @@
 - Obra: Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición.
 - Fuente canónica: PDF oficial de Sheldon Axler, versión **16-08-2026**.
 - Copia de trabajo inicial: 25-03-2024.
-- Secciones 1A, 1B y 1C cotejadas directamente contra el PDF oficial de 16-08-2026.
-- Errata oficial revisada para 1A–1C: no hay correcciones específicas listadas para estas secciones.
+- Capítulo 1 y Sección 2A cotejados contra el PDF oficial de 16-08-2026.
+- La errata oficial fue revisada para 2A; el PDF canónico ya incorpora las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`).
 
 ## Avance público
 
 - Prefacio para estudiantes: `BORRADOR COTEJADO`.
 - Apertura del capítulo 1: `BORRADOR COTEJADO`.
-- Sección 1A — $\mathbf R^n$ y $\mathbf C^n$: `COTEJADO`.
-- Ejercicios 1A: **15/15 resueltos**; soluciones `VERIFICADO`.
-- Sección 1B — Definición de espacio vectorial: `COTEJADO`.
-- Ejercicios 1B: **8/8 resueltos**; soluciones `VERIFICADO`.
-- Sección 1C — Subespacios: `COTEJADO`.
-- Ejercicios 1C: **24/24 resueltos**; soluciones `VERIFICADO`.
-- Total de ejercicios resueltos del capítulo 1: **47/47**.
-- Glosario terminológico: **v0.4**.
-- Capítulo 1: traducción estructuralmente completa en 1A–1C, pendiente de QA global y revisión comunitaria antes de promoverlo a `CERRADO`.
-- Siguiente bloque: **Capítulo 2, Sección 2A — Span e independencia lineal**.
+- Sección 1A — $\mathbf R^n$ y $\mathbf C^n$: `COTEJADO`; **15/15 ejercicios resueltos**.
+- Sección 1B — Definición de espacio vectorial: `COTEJADO`; **8/8 ejercicios resueltos**.
+- Sección 1C — Subespacios: `COTEJADO`; **24/24 ejercicios resueltos**.
+- Capítulo 1: **47/47 ejercicios**, primera pasada pública completa; `CHAPTER1_QA.md` disponible.
+- Apertura del capítulo 2 — Espacios vectoriales de dimensión finita: `COTEJADO`.
+- Sección 2A — Span e independencia lineal: `COTEJADO`.
+- Ejercicios 2A: **20/20 resueltos**; soluciones `VERIFICADO`.
+- Total acumulado de ejercicios resueltos: **67**.
+- Glosario terminológico: **v0.5**.
+- Siguiente bloque: **2B — Bases**.
 
 ## QA de 1A
 
 - numeración 1.1–1.18 preservada;
 - ejercicios 1–15 preservados;
 - fórmulas cotejadas con la fuente 2026;
-- soluciones sin uso de resultados posteriores;
-- figuras: por ahora se conservan referencias/pies, sin incorporar todavía los recursos gráficos.
+- soluciones sin uso de resultados posteriores.
 
 ## QA de 1B
 
 - numeración 1.19–1.32 preservada;
 - ejercicios 1–8 preservados;
 - diferencia entre $0\in\mathbf F$ y el vector $0\in V$ mantenida explícitamente;
-- ejercicio 5 resuelto en ambas direcciones, como exige «puede reemplazarse»;
-- ejercicio 6 incluye contraejemplo explícito a la asociatividad;
-- ejercicio 8 verifica la estructura compleja de la complexificación sin usar teoría posterior.
+- ejercicio 5 resuelto en ambas direcciones;
+- ejercicio 8 verifica la estructura compleja de la complexificación sin teoría posterior.
 
 ## QA de 1C
 
 - numeración 1.33–1.46 preservada;
 - ejercicios 1–24 preservados y resueltos;
-- separación explícita entre suma de subespacios y suma directa;
-- criterios 1.45 y 1.46 reproducidos y usados en las soluciones;
-- ejercicio 13 resuelto usando sólo resultados disponibles hasta 1C y la existencia de dos escalares no nulos distintos en $\mathbf R$ o $\mathbf C$;
-- ejercicio 24 desarrolla la descomposición par/impar y prueba existencia y unicidad;
-- no se detectaron discrepancias de 1C con la errata oficial vigente.
+- separación entre suma de subespacios y suma directa;
+- criterios 1.45 y 1.46 usados en las soluciones;
+- ejercicio 24 prueba existencia y unicidad de la descomposición par/impar.
+
+## QA de 2A
+
+- numeración 2.1–2.25 preservada;
+- ecuación numerada 2.20 preservada;
+- definiciones de span, dimensión finita/infinita, independencia y dependencia lineal cotejadas;
+- lema de dependencia lineal 2.19 y teorema de comparación de longitudes 2.22 incluidos con demostración;
+- correcciones oficiales de pp. 28 y 35 incorporadas desde la fuente canónica 2026;
+- 20/20 ejercicios resueltos;
+- ejercicio 20 resuelto sin recurrir a división/factorización polinómica posterior: se construye directamente una lista generadora de longitud $m$ para $\{p:p(2)=0\}$.
 
 ## Estados
 
 `PENDIENTE → BORRADOR → COTEJADO → VERIFICADO → CERRADO`
 
-Una unidad `CERRADA` ha superado cotejo con la fuente canónica, control matemático, terminológico y editorial. Las secciones 1A–1C permanecen abiertas a revisión comunitaria antes de promoverse a `CERRADO`.
+Una unidad `CERRADA` ha superado cotejo con la fuente canónica, control matemático, terminológico y editorial. Las unidades publicadas permanecen abiertas a revisión comunitaria antes de la promoción definitiva a `CERRADO`.
