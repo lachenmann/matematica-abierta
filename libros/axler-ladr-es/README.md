@@ -55,9 +55,12 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
 - **Ejercicios 1A: 15/15 resueltos y verificados.**
 - **Sección 1B — Definición de espacio vectorial: cotejada contra la fuente oficial de 16-08-2026.**
 - **Ejercicios 1B: 8/8 resueltos y verificados.**
-- Total de ejercicios resueltos en 1A–1B: **23/23**.
-- Glosario terminológico: v0.3.
-- Siguiente bloque: **1C — Subespacios**.
+- **Sección 1C — Subespacios: cotejada contra la fuente oficial de 16-08-2026.**
+- **Ejercicios 1C: 24/24 resueltos y verificados.**
+- Total de ejercicios resueltos del Capítulo 1: **47/47**.
+- Glosario terminológico: v0.4.
+- Capítulo 1: completo en primera pasada pública; pendiente de QA global y revisión comunitaria.
+- Siguiente bloque: **2A — Span e independencia lineal**.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
