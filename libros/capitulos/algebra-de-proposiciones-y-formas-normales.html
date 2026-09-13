@@ -1,0 +1,3598 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Quinto capítulo del Tomo I de Álgebra para matemáticos: equivalencia lógica, leyes del álgebra proposicional, reemplazo de equivalentes, formas normales disyuntiva y conjuntiva, formas canónicas y estrategias de normalización.">
+
+<title>Álgebra de proposiciones y formas normales – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#álgebra-de-proposiciones-y-formas-normales" id="toc-álgebra-de-proposiciones-y-formas-normales" class="nav-link active" data-scroll-target="#álgebra-de-proposiciones-y-formas-normales">5. Álgebra de proposiciones y formas normales</a>
+  <ul class="collapse">
+  <li><a href="#de-la-coincidencia-semántica-a-la-equivalencia-lógica" id="toc-de-la-coincidencia-semántica-a-la-equivalencia-lógica" class="nav-link" data-scroll-target="#de-la-coincidencia-semántica-a-la-equivalencia-lógica">5.1. De la coincidencia semántica a la equivalencia lógica</a>
+  <ul class="collapse">
+  <li><a href="#criterio-por-bicondicional" id="toc-criterio-por-bicondicional" class="nav-link" data-scroll-target="#criterio-por-bicondicional">Criterio por bicondicional</a></li>
+  <li><a href="#refutar-una-equivalencia" id="toc-refutar-una-equivalencia" class="nav-link" data-scroll-target="#refutar-una-equivalencia">Refutar una equivalencia</a></li>
+  </ul></li>
+  <li><a href="#una-equivalencia-es-una-regla-de-reemplazo" id="toc-una-equivalencia-es-una-regla-de-reemplazo" class="nav-link" data-scroll-target="#una-equivalencia-es-una-regla-de-reemplazo">5.2. Una equivalencia es una regla de reemplazo</a>
+  <ul class="collapse">
+  <li><a href="#principio-de-sustitución-de-equivalentes" id="toc-principio-de-sustitución-de-equivalentes" class="nav-link" data-scroll-target="#principio-de-sustitución-de-equivalentes">Principio de sustitución de equivalentes</a></li>
+  <li><a href="#la-forma-debe-coincidir" id="toc-la-forma-debe-coincidir" class="nav-link" data-scroll-target="#la-forma-debe-coincidir">La forma debe coincidir</a></li>
+  </ul></li>
+  <li><a href="#leyes-estructurales-identidad-dominación-idempotencia-y-complemento" id="toc-leyes-estructurales-identidad-dominación-idempotencia-y-complemento" class="nav-link" data-scroll-target="#leyes-estructurales-identidad-dominación-idempotencia-y-complemento">5.3. Leyes estructurales: identidad, dominación, idempotencia y complemento</a>
+  <ul class="collapse">
+  <li><a href="#identidad" id="toc-identidad" class="nav-link" data-scroll-target="#identidad">Identidad</a></li>
+  <li><a href="#dominación" id="toc-dominación" class="nav-link" data-scroll-target="#dominación">Dominación</a></li>
+  <li><a href="#idempotencia" id="toc-idempotencia" class="nav-link" data-scroll-target="#idempotencia">Idempotencia</a></li>
+  <li><a href="#complemento" id="toc-complemento" class="nav-link" data-scroll-target="#complemento">Complemento</a></li>
+  <li><a href="#doble-negación" id="toc-doble-negación" class="nav-link" data-scroll-target="#doble-negación">Doble negación</a></li>
+  <li><a href="#una-primera-simplificación" id="toc-una-primera-simplificación" class="nav-link" data-scroll-target="#una-primera-simplificación">Una primera simplificación</a></li>
+  </ul></li>
+  <li><a href="#conmutatividad-y-asociatividad-preparar-el-terreno" id="toc-conmutatividad-y-asociatividad-preparar-el-terreno" class="nav-link" data-scroll-target="#conmutatividad-y-asociatividad-preparar-el-terreno">5.4. Conmutatividad y asociatividad: preparar el terreno</a></li>
+  <li><a href="#leyes-de-de-morgan-y-control-de-negaciones" id="toc-leyes-de-de-morgan-y-control-de-negaciones" class="nav-link" data-scroll-target="#leyes-de-de-morgan-y-control-de-negaciones">5.5. Leyes de De Morgan y control de negaciones</a>
+  <ul class="collapse">
+  <li><a href="#la-negación-atraviesa-el-conectivo-y-lo-cambia" id="toc-la-negación-atraviesa-el-conectivo-y-lo-cambia" class="nav-link" data-scroll-target="#la-negación-atraviesa-el-conectivo-y-lo-cambia">La negación atraviesa el conectivo y lo cambia</a></li>
+  <li><a href="#negaciones-anidadas" id="toc-negaciones-anidadas" class="nav-link" data-scroll-target="#negaciones-anidadas">Negaciones anidadas</a></li>
+  <li><a href="#error-típico" id="toc-error-típico" class="nav-link" data-scroll-target="#error-típico">Error típico</a></li>
+  </ul></li>
+  <li><a href="#distributividad-y-factorización-lógica" id="toc-distributividad-y-factorización-lógica" class="nav-link" data-scroll-target="#distributividad-y-factorización-lógica">5.6. Distributividad y factorización lógica</a>
+  <ul class="collapse">
+  <li><a href="#desarrollar-y-factorizar" id="toc-desarrollar-y-factorizar" class="nav-link" data-scroll-target="#desarrollar-y-factorizar">Desarrollar y factorizar</a></li>
+  <li><a href="#un-ejemplo-no-intuitivo" id="toc-un-ejemplo-no-intuitivo" class="nav-link" data-scroll-target="#un-ejemplo-no-intuitivo">Un ejemplo no intuitivo</a></li>
+  </ul></li>
+  <li><a href="#absorción-y-simplificación-estratégica" id="toc-absorción-y-simplificación-estratégica" class="nav-link" data-scroll-target="#absorción-y-simplificación-estratégica">5.7. Absorción y simplificación estratégica</a>
+  <ul class="collapse">
+  <li><a href="#absorción-escondida" id="toc-absorción-escondida" class="nav-link" data-scroll-target="#absorción-escondida">Absorción escondida</a></li>
+  </ul></li>
+  <li><a href="#eliminar-implicaciones-y-bicondicionales" id="toc-eliminar-implicaciones-y-bicondicionales" class="nav-link" data-scroll-target="#eliminar-implicaciones-y-bicondicionales">5.8. Eliminar implicaciones y bicondicionales</a>
+  <ul class="collapse">
+  <li><a href="#implicación" id="toc-implicación" class="nav-link" data-scroll-target="#implicación">Implicación</a></li>
+  <li><a href="#bicondicional" id="toc-bicondicional" class="nav-link" data-scroll-target="#bicondicional">Bicondicional</a></li>
+  <li><a href="#elegir-la-expansión-según-el-objetivo" id="toc-elegir-la-expansión-según-el-objetivo" class="nav-link" data-scroll-target="#elegir-la-expansión-según-el-objetivo">Elegir la expansión según el objetivo</a></li>
+  </ul></li>
+  <li><a href="#cadenas-largas-de-equivalencias" id="toc-cadenas-largas-de-equivalencias" class="nav-link" data-scroll-target="#cadenas-largas-de-equivalencias">5.9. Cadenas largas de equivalencias</a>
+  <ul class="collapse">
+  <li><a href="#una-ruta-más-larga-también-puede-ser-correcta" id="toc-una-ruta-más-larga-también-puede-ser-correcta" class="nav-link" data-scroll-target="#una-ruta-más-larga-también-puede-ser-correcta">Una ruta más larga también puede ser correcta</a></li>
+  <li><a href="#igualdad-de-destino-diversidad-de-rutas" id="toc-igualdad-de-destino-diversidad-de-rutas" class="nav-link" data-scroll-target="#igualdad-de-destino-diversidad-de-rutas">Igualdad de destino, diversidad de rutas</a></li>
+  </ul></li>
+  <li><a href="#literales-términos-y-cláusulas" id="toc-literales-términos-y-cláusulas" class="nav-link" data-scroll-target="#literales-términos-y-cláusulas">5.10. Literales, términos y cláusulas</a>
+  <ul class="collapse">
+  <li><a href="#término-no-significa-verdadero" id="toc-término-no-significa-verdadero" class="nav-link" data-scroll-target="#término-no-significa-verdadero">Término no significa «verdadero»</a></li>
+  </ul></li>
+  <li><a href="#forma-normal-disyuntiva" id="toc-forma-normal-disyuntiva" class="nav-link" data-scroll-target="#forma-normal-disyuntiva">5.11. Forma normal disyuntiva</a>
+  <ul class="collapse">
+  <li><a href="#procedimiento-por-leyes" id="toc-procedimiento-por-leyes" class="nav-link" data-scroll-target="#procedimiento-por-leyes">Procedimiento por leyes</a></li>
+  <li><a href="#fnd-no-significa-mínima" id="toc-fnd-no-significa-mínima" class="nav-link" data-scroll-target="#fnd-no-significa-mínima">FND no significa mínima</a></li>
+  </ul></li>
+  <li><a href="#forma-normal-conjuntiva" id="toc-forma-normal-conjuntiva" class="nav-link" data-scroll-target="#forma-normal-conjuntiva">5.12. Forma normal conjuntiva</a>
+  <ul class="collapse">
+  <li><a href="#procedimiento-por-leyes-1" id="toc-procedimiento-por-leyes-1" class="nav-link" data-scroll-target="#procedimiento-por-leyes-1">Procedimiento por leyes</a></li>
+  <li><a href="#dos-arquitecturas-para-una-misma-fórmula" id="toc-dos-arquitecturas-para-una-misma-fórmula" class="nav-link" data-scroll-target="#dos-arquitecturas-para-una-misma-fórmula">Dos arquitecturas para una misma fórmula</a></li>
+  </ul></li>
+  <li><a href="#formas-normales-canónicas-desde-tablas-de-verdad" id="toc-formas-normales-canónicas-desde-tablas-de-verdad" class="nav-link" data-scroll-target="#formas-normales-canónicas-desde-tablas-de-verdad">5.13. Formas normales canónicas desde tablas de verdad</a>
+  <ul class="collapse">
+  <li><a href="#fnd-canónica-mirar-las-filas-verdaderas" id="toc-fnd-canónica-mirar-las-filas-verdaderas" class="nav-link" data-scroll-target="#fnd-canónica-mirar-las-filas-verdaderas">FND canónica: mirar las filas verdaderas</a></li>
+  <li><a href="#fnc-canónica-mirar-las-filas-falsas" id="toc-fnc-canónica-mirar-las-filas-falsas" class="nav-link" data-scroll-target="#fnc-canónica-mirar-las-filas-falsas">FNC canónica: mirar las filas falsas</a></li>
+  <li><a href="#teorema-de-existencia-de-formas-normales" id="toc-teorema-de-existencia-de-formas-normales" class="nav-link" data-scroll-target="#teorema-de-existencia-de-formas-normales">Teorema de existencia de formas normales</a></li>
+  </ul></li>
+  <li><a href="#normalizar-no-es-minimizar" id="toc-normalizar-no-es-minimizar" class="nav-link" data-scroll-target="#normalizar-no-es-minimizar">5.14. Normalizar no es minimizar</a>
+  <ul class="collapse">
+  <li><a href="#una-forma-canónica-puede-crecer-mucho" id="toc-una-forma-canónica-puede-crecer-mucho" class="nav-link" data-scroll-target="#una-forma-canónica-puede-crecer-mucho">Una forma canónica puede crecer mucho</a></li>
+  <li><a href="#canonizar-puede-facilitar-comparación" id="toc-canonizar-puede-facilitar-comparación" class="nav-link" data-scroll-target="#canonizar-puede-facilitar-comparación">Canonizar puede facilitar comparación</a></li>
+  <li><a href="#primera-advertencia-algorítmica" id="toc-primera-advertencia-algorítmica" class="nav-link" data-scroll-target="#primera-advertencia-algorítmica">Primera advertencia algorítmica</a></li>
+  </ul></li>
+  <li><a href="#estrategias-de-transformación" id="toc-estrategias-de-transformación" class="nav-link" data-scroll-target="#estrategias-de-transformación">5.15. Estrategias de transformación</a>
+  <ul class="collapse">
+  <li><a href="#estrategia-a-normalización-sistemática" id="toc-estrategia-a-normalización-sistemática" class="nav-link" data-scroll-target="#estrategia-a-normalización-sistemática">Estrategia A — normalización sistemática</a></li>
+  <li><a href="#estrategia-b-simplificación-oportunista" id="toc-estrategia-b-simplificación-oportunista" class="nav-link" data-scroll-target="#estrategia-b-simplificación-oportunista">Estrategia B — simplificación oportunista</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
+  <li><a href="#verificar-por-una-segunda-vía" id="toc-verificar-por-una-segunda-vía" class="nav-link" data-scroll-target="#verificar-por-una-segunda-vía">Verificar por una segunda vía</a></li>
+  </ul></li>
+  <li><a href="#cierre-protocolo-de-transformación-proposicional" id="toc-cierre-protocolo-de-transformación-proposicional" class="nav-link" data-scroll-target="#cierre-protocolo-de-transformación-proposicional">5.16. Cierre — protocolo de transformación proposicional</a></li>
+  </ul></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#a.-reconocer-equivalencia-y-no-equivalencia" id="toc-a.-reconocer-equivalencia-y-no-equivalencia" class="nav-link" data-scroll-target="#a.-reconocer-equivalencia-y-no-equivalencia">A. Reconocer equivalencia y no equivalencia</a></li>
+  <li><a href="#b.-leyes-básicas" id="toc-b.-leyes-básicas" class="nav-link" data-scroll-target="#b.-leyes-básicas">B. Leyes básicas</a></li>
+  <li><a href="#c.-reordenar-y-reagrupar-estratégicamente" id="toc-c.-reordenar-y-reagrupar-estratégicamente" class="nav-link" data-scroll-target="#c.-reordenar-y-reagrupar-estratégicamente">C. Reordenar y reagrupar estratégicamente</a></li>
+  <li><a href="#d.-de-morgan-y-negaciones-anidadas" id="toc-d.-de-morgan-y-negaciones-anidadas" class="nav-link" data-scroll-target="#d.-de-morgan-y-negaciones-anidadas">D. De Morgan y negaciones anidadas</a></li>
+  <li><a href="#e.-distributividad-y-absorción" id="toc-e.-distributividad-y-absorción" class="nav-link" data-scroll-target="#e.-distributividad-y-absorción">E. Distributividad y absorción</a></li>
+  <li><a href="#f.-eliminar-implicaciones-y-bicondicionales" id="toc-f.-eliminar-implicaciones-y-bicondicionales" class="nav-link" data-scroll-target="#f.-eliminar-implicaciones-y-bicondicionales">F. Eliminar implicaciones y bicondicionales</a></li>
+  <li><a href="#g.-cadenas-largas-justificadas" id="toc-g.-cadenas-largas-justificadas" class="nav-link" data-scroll-target="#g.-cadenas-largas-justificadas">G. Cadenas largas justificadas</a></li>
+  <li><a href="#h.-diagnóstico-de-derivaciones" id="toc-h.-diagnóstico-de-derivaciones" class="nav-link" data-scroll-target="#h.-diagnóstico-de-derivaciones">H. Diagnóstico de derivaciones</a></li>
+  <li><a href="#i.-forma-normal-disyuntiva" id="toc-i.-forma-normal-disyuntiva" class="nav-link" data-scroll-target="#i.-forma-normal-disyuntiva">I. Forma normal disyuntiva</a></li>
+  <li><a href="#j.-forma-normal-conjuntiva" id="toc-j.-forma-normal-conjuntiva" class="nav-link" data-scroll-target="#j.-forma-normal-conjuntiva">J. Forma normal conjuntiva</a></li>
+  <li><a href="#k.-formas-canónicas-desde-tablas" id="toc-k.-formas-canónicas-desde-tablas" class="nav-link" data-scroll-target="#k.-formas-canónicas-desde-tablas">K. Formas canónicas desde tablas</a></li>
+  <li><a href="#l.-síntesis-y-transferencia" id="toc-l.-síntesis-y-transferencia" class="nav-link" data-scroll-target="#l.-síntesis-y-transferencia">L. Síntesis y transferencia</a></li>
+  <li><a href="#m.-problemas-avanzados-tipo-prueba" id="toc-m.-problemas-avanzados-tipo-prueba" class="nav-link" data-scroll-target="#m.-problemas-avanzados-tipo-prueba">M. Problemas avanzados tipo prueba</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#a.-reconocer-equivalencia-y-no-equivalencia-1" id="toc-a.-reconocer-equivalencia-y-no-equivalencia-1" class="nav-link" data-scroll-target="#a.-reconocer-equivalencia-y-no-equivalencia-1">A. Reconocer equivalencia y no equivalencia</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">1</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">2</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">3</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">4</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">5</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">6</a></li>
+  </ul></li>
+  <li><a href="#b.-leyes-básicas-1" id="toc-b.-leyes-básicas-1" class="nav-link" data-scroll-target="#b.-leyes-básicas-1">B. Leyes básicas</a>
+  <ul class="collapse">
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">7</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">8</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">9</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">10</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">11</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">12</a></li>
+  </ul></li>
+  <li><a href="#c.-reordenar-y-reagrupar-estratégicamente-1" id="toc-c.-reordenar-y-reagrupar-estratégicamente-1" class="nav-link" data-scroll-target="#c.-reordenar-y-reagrupar-estratégicamente-1">C. Reordenar y reagrupar estratégicamente</a>
+  <ul class="collapse">
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">13</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">14</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">15</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">16</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">17</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">18</a></li>
+  </ul></li>
+  <li><a href="#d.-de-morgan-y-negaciones-anidadas-1" id="toc-d.-de-morgan-y-negaciones-anidadas-1" class="nav-link" data-scroll-target="#d.-de-morgan-y-negaciones-anidadas-1">D. De Morgan y negaciones anidadas</a>
+  <ul class="collapse">
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">19</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">20</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">21</a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">22</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">23</a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">24</a></li>
+  </ul></li>
+  <li><a href="#e.-distributividad-y-absorción-1" id="toc-e.-distributividad-y-absorción-1" class="nav-link" data-scroll-target="#e.-distributividad-y-absorción-1">E. Distributividad y absorción</a>
+  <ul class="collapse">
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">25</a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">26</a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26">27</a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27">28</a></li>
+  <li><a href="#section-28" id="toc-section-28" class="nav-link" data-scroll-target="#section-28">29</a></li>
+  <li><a href="#section-29" id="toc-section-29" class="nav-link" data-scroll-target="#section-29">30</a></li>
+  </ul></li>
+  <li><a href="#f.-eliminar-implicaciones-y-bicondicionales-1" id="toc-f.-eliminar-implicaciones-y-bicondicionales-1" class="nav-link" data-scroll-target="#f.-eliminar-implicaciones-y-bicondicionales-1">F. Eliminar implicaciones y bicondicionales</a>
+  <ul class="collapse">
+  <li><a href="#section-30" id="toc-section-30" class="nav-link" data-scroll-target="#section-30">31</a></li>
+  <li><a href="#section-31" id="toc-section-31" class="nav-link" data-scroll-target="#section-31">32</a></li>
+  <li><a href="#section-32" id="toc-section-32" class="nav-link" data-scroll-target="#section-32">33</a></li>
+  <li><a href="#section-33" id="toc-section-33" class="nav-link" data-scroll-target="#section-33">34</a></li>
+  <li><a href="#section-34" id="toc-section-34" class="nav-link" data-scroll-target="#section-34">35</a></li>
+  <li><a href="#section-35" id="toc-section-35" class="nav-link" data-scroll-target="#section-35">36</a></li>
+  </ul></li>
+  <li><a href="#g.-cadenas-largas-justificadas-1" id="toc-g.-cadenas-largas-justificadas-1" class="nav-link" data-scroll-target="#g.-cadenas-largas-justificadas-1">G. Cadenas largas justificadas</a>
+  <ul class="collapse">
+  <li><a href="#section-36" id="toc-section-36" class="nav-link" data-scroll-target="#section-36">37</a></li>
+  <li><a href="#section-37" id="toc-section-37" class="nav-link" data-scroll-target="#section-37">38</a></li>
+  <li><a href="#section-38" id="toc-section-38" class="nav-link" data-scroll-target="#section-38">39</a></li>
+  <li><a href="#section-39" id="toc-section-39" class="nav-link" data-scroll-target="#section-39">40</a></li>
+  <li><a href="#section-40" id="toc-section-40" class="nav-link" data-scroll-target="#section-40">41</a></li>
+  <li><a href="#section-41" id="toc-section-41" class="nav-link" data-scroll-target="#section-41">42</a></li>
+  <li><a href="#section-42" id="toc-section-42" class="nav-link" data-scroll-target="#section-42">43</a></li>
+  <li><a href="#section-43" id="toc-section-43" class="nav-link" data-scroll-target="#section-43">44</a></li>
+  </ul></li>
+  <li><a href="#h.-diagnóstico-de-derivaciones-1" id="toc-h.-diagnóstico-de-derivaciones-1" class="nav-link" data-scroll-target="#h.-diagnóstico-de-derivaciones-1">H. Diagnóstico de derivaciones</a>
+  <ul class="collapse">
+  <li><a href="#section-44" id="toc-section-44" class="nav-link" data-scroll-target="#section-44">45</a></li>
+  <li><a href="#section-45" id="toc-section-45" class="nav-link" data-scroll-target="#section-45">46</a></li>
+  <li><a href="#section-46" id="toc-section-46" class="nav-link" data-scroll-target="#section-46">47</a></li>
+  <li><a href="#section-47" id="toc-section-47" class="nav-link" data-scroll-target="#section-47">48</a></li>
+  <li><a href="#section-48" id="toc-section-48" class="nav-link" data-scroll-target="#section-48">49</a></li>
+  <li><a href="#section-49" id="toc-section-49" class="nav-link" data-scroll-target="#section-49">50</a></li>
+  </ul></li>
+  <li><a href="#i.-forma-normal-disyuntiva-1" id="toc-i.-forma-normal-disyuntiva-1" class="nav-link" data-scroll-target="#i.-forma-normal-disyuntiva-1">I. Forma normal disyuntiva</a>
+  <ul class="collapse">
+  <li><a href="#section-50" id="toc-section-50" class="nav-link" data-scroll-target="#section-50">51</a></li>
+  <li><a href="#section-51" id="toc-section-51" class="nav-link" data-scroll-target="#section-51">52</a></li>
+  <li><a href="#section-52" id="toc-section-52" class="nav-link" data-scroll-target="#section-52">53</a></li>
+  <li><a href="#section-53" id="toc-section-53" class="nav-link" data-scroll-target="#section-53">54</a></li>
+  <li><a href="#section-54" id="toc-section-54" class="nav-link" data-scroll-target="#section-54">55</a></li>
+  <li><a href="#section-55" id="toc-section-55" class="nav-link" data-scroll-target="#section-55">56</a></li>
+  </ul></li>
+  <li><a href="#j.-forma-normal-conjuntiva-1" id="toc-j.-forma-normal-conjuntiva-1" class="nav-link" data-scroll-target="#j.-forma-normal-conjuntiva-1">J. Forma normal conjuntiva</a>
+  <ul class="collapse">
+  <li><a href="#section-56" id="toc-section-56" class="nav-link" data-scroll-target="#section-56">57</a></li>
+  <li><a href="#section-57" id="toc-section-57" class="nav-link" data-scroll-target="#section-57">58</a></li>
+  <li><a href="#section-58" id="toc-section-58" class="nav-link" data-scroll-target="#section-58">59</a></li>
+  <li><a href="#section-59" id="toc-section-59" class="nav-link" data-scroll-target="#section-59">60</a></li>
+  <li><a href="#section-60" id="toc-section-60" class="nav-link" data-scroll-target="#section-60">61</a></li>
+  <li><a href="#section-61" id="toc-section-61" class="nav-link" data-scroll-target="#section-61">62</a></li>
+  </ul></li>
+  <li><a href="#k.-formas-canónicas-desde-tablas-1" id="toc-k.-formas-canónicas-desde-tablas-1" class="nav-link" data-scroll-target="#k.-formas-canónicas-desde-tablas-1">K. Formas canónicas desde tablas</a>
+  <ul class="collapse">
+  <li><a href="#section-62" id="toc-section-62" class="nav-link" data-scroll-target="#section-62">63</a></li>
+  <li><a href="#section-63" id="toc-section-63" class="nav-link" data-scroll-target="#section-63">64</a></li>
+  <li><a href="#section-64" id="toc-section-64" class="nav-link" data-scroll-target="#section-64">65</a></li>
+  <li><a href="#section-65" id="toc-section-65" class="nav-link" data-scroll-target="#section-65">66</a></li>
+  <li><a href="#section-66" id="toc-section-66" class="nav-link" data-scroll-target="#section-66">67</a></li>
+  <li><a href="#section-67" id="toc-section-67" class="nav-link" data-scroll-target="#section-67">68</a></li>
+  </ul></li>
+  <li><a href="#l.-síntesis-y-transferencia-1" id="toc-l.-síntesis-y-transferencia-1" class="nav-link" data-scroll-target="#l.-síntesis-y-transferencia-1">L. Síntesis y transferencia</a>
+  <ul class="collapse">
+  <li><a href="#section-68" id="toc-section-68" class="nav-link" data-scroll-target="#section-68">69</a></li>
+  <li><a href="#section-69" id="toc-section-69" class="nav-link" data-scroll-target="#section-69">70</a></li>
+  <li><a href="#section-70" id="toc-section-70" class="nav-link" data-scroll-target="#section-70">71</a></li>
+  <li><a href="#section-71" id="toc-section-71" class="nav-link" data-scroll-target="#section-71">72</a></li>
+  </ul></li>
+  <li><a href="#m.-problemas-avanzados-tipo-prueba-1" id="toc-m.-problemas-avanzados-tipo-prueba-1" class="nav-link" data-scroll-target="#m.-problemas-avanzados-tipo-prueba-1">M. Problemas avanzados tipo prueba</a>
+  <ul class="collapse">
+  <li><a href="#section-72" id="toc-section-72" class="nav-link" data-scroll-target="#section-72">73</a></li>
+  <li><a href="#section-73" id="toc-section-73" class="nav-link" data-scroll-target="#section-73">74</a></li>
+  <li><a href="#section-74" id="toc-section-74" class="nav-link" data-scroll-target="#section-74">75</a></li>
+  <li><a href="#section-75" id="toc-section-75" class="nav-link" data-scroll-target="#section-75">76</a></li>
+  <li><a href="#section-76" id="toc-section-76" class="nav-link" data-scroll-target="#section-76">77</a></li>
+  <li><a href="#section-77" id="toc-section-77" class="nav-link" data-scroll-target="#section-77">78</a></li>
+  <li><a href="#section-78" id="toc-section-78" class="nav-link" data-scroll-target="#section-78">79</a></li>
+  <li><a href="#section-79" id="toc-section-79" class="nav-link" data-scroll-target="#section-79">80</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Álgebra de proposiciones y formas normales</h1>
+</div>
+
+<div>
+  <div class="description">
+    Quinto capítulo del Tomo I de Álgebra para matemáticos: equivalencia lógica, leyes del álgebra proposicional, reemplazo de equivalentes, formas normales disyuntiva y conjuntiva, formas canónicas y estrategias de normalización.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">12 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="álgebra-de-proposiciones-y-formas-normales" class="level1">
+<h1>5. Álgebra de proposiciones y formas normales</h1>
+<p>En C4 aprendimos a <strong>leer</strong> una fórmula proposicional. Sabemos localizar su conectivo principal, construir una tabla de verdad, distinguir implicación de bicondicional y reconocer tautologías, contradicciones y contingencias.</p>
+<p>Ahora cambia la pregunta.</p>
+<p>Supongamos que dos fórmulas producen exactamente la misma columna final en todas las valuaciones. ¿Podemos reemplazar una por la otra? ¿Podemos transformar una fórmula extensa hasta hacer visible una estructura más simple? ¿Podemos llevar cualquier fórmula a una forma estandarizada?</p>
+<p>Ése es el paso propiamente algebraico.</p>
+<blockquote class="blockquote">
+<p><strong>Transformar una fórmula proposicional no consiste en cambiar símbolos libremente: consiste en sustituir subfórmulas por otras de comportamiento semántico idéntico.</strong></p>
+</blockquote>
+<p>La disciplina será la misma que en C3: cada paso debe tener una ley, una dirección y un alcance precisos.</p>
+<hr>
+<section id="de-la-coincidencia-semántica-a-la-equivalencia-lógica" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-coincidencia-semántica-a-la-equivalencia-lógica">5.1. De la coincidencia semántica a la equivalencia lógica</h2>
+<p>Consideremos las fórmulas <span class="math inline">\(P\Rightarrow Q\)</span> y <span class="math inline">\(\neg Q\Rightarrow\neg P\)</span>. En C4 verificamos mediante tabla que sus columnas finales coinciden.</p>
+<p>Cuando dos fórmulas tienen el mismo valor de verdad bajo <strong>toda</strong> valuación de sus variables proposicionales, diremos que son <strong>lógicamente equivalentes</strong>.</p>
+<p>Escribiremos</p>
+<p><span class="math inline">\(A\equiv B\)</span>.</p>
+<p>La expresión <span class="math inline">\(A\equiv B\)</span> no introduce un nuevo conectivo dentro de la fórmula proposicional que estamos analizando. Es una afirmación acerca de dos fórmulas: dice que, semánticamente, se comportan igual en todas las valuaciones.</p>
+<p>Esto debe distinguirse de <span class="math inline">\(A\Leftrightarrow B\)</span>. El bicondicional es una fórmula y, para una valuación concreta, puede ser verdadero o falso. En cambio, <span class="math inline">\(A\equiv B\)</span> afirma una coincidencia global.</p>
+<section id="criterio-por-bicondicional" class="level3">
+<h3 class="anchored" data-anchor-id="criterio-por-bicondicional">Criterio por bicondicional</h3>
+<p>Tenemos un criterio inmediato:</p>
+<blockquote class="blockquote">
+<p><strong>Dos fórmulas <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son lógicamente equivalentes si y sólo si <span class="math inline">\(A\Leftrightarrow B\)</span> es una tautología.</strong></p>
+</blockquote>
+<p>La razón es directa. El bicondicional es verdadero exactamente cuando sus dos componentes tienen el mismo valor de verdad. Por tanto, será verdadero en todas las valuaciones exactamente cuando <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> coincidan en todas ellas.</p>
+</section>
+<section id="refutar-una-equivalencia" class="level3">
+<h3 class="anchored" data-anchor-id="refutar-una-equivalencia">Refutar una equivalencia</h3>
+<p>Para demostrar <span class="math inline">\(A\equiv B\)</span> por tabla debemos revisar todas las valuaciones relevantes.</p>
+<p>Para demostrar que <span class="math inline">\(A\not\equiv B\)</span> basta mucho menos: encontrar <strong>una sola valuación</strong> en la que difieran.</p>
+<p>Ese patrón reaparecerá constantemente en matemática: una afirmación universal exige control global; un contraejemplo basta para refutarla.</p>
+<hr>
+</section>
+</section>
+<section id="una-equivalencia-es-una-regla-de-reemplazo" class="level2">
+<h2 class="anchored" data-anchor-id="una-equivalencia-es-una-regla-de-reemplazo">5.2. Una equivalencia es una regla de reemplazo</h2>
+<p>La utilidad algebraica de <span class="math inline">\(A\equiv B\)</span> aparece cuando <span class="math inline">\(A\)</span> no está aislada, sino dentro de una fórmula mayor.</p>
+<p>Supongamos que sabemos</p>
+<p><span class="math inline">\(\neg\neg P\equiv P\)</span>.</p>
+<p>Entonces, dentro de</p>
+<p><span class="math inline">\((Q\lor\neg\neg P)\land R\)</span></p>
+<p>podemos reemplazar únicamente la subfórmula <span class="math inline">\(\neg\neg P\)</span> por <span class="math inline">\(P\)</span> y obtener</p>
+<p><span class="math inline">\((Q\lor P)\land R\)</span>.</p>
+<p>No hemos cambiado arbitrariamente el resto de la fórmula.</p>
+<section id="principio-de-sustitución-de-equivalentes" class="level3">
+<h3 class="anchored" data-anchor-id="principio-de-sustitución-de-equivalentes">Principio de sustitución de equivalentes</h3>
+<blockquote class="blockquote">
+<p><strong>Si una subfórmula se reemplaza por otra lógicamente equivalente, el valor de verdad de la fórmula completa se conserva bajo toda valuación.</strong></p>
+</blockquote>
+<p>La intuición es composicional: los conectivos determinan su resultado únicamente a partir de los valores de verdad de sus componentes. Si un componente conserva siempre su valor, la fórmula mayor no puede detectar el reemplazo.</p>
+</section>
+<section id="la-forma-debe-coincidir" class="level3">
+<h3 class="anchored" data-anchor-id="la-forma-debe-coincidir">La forma debe coincidir</h3>
+<p>Una ley sólo puede aplicarse a una subfórmula que tenga la estructura adecuada.</p>
+<p>Saber que <span class="math inline">\(\neg\neg X\equiv X\)</span> no autoriza a borrar dos signos de negación que no formen una doble negación sobre la <strong>misma subfórmula</strong>.</p>
+<p>De manera semejante, la ley de absorción que veremos más adelante no se aplica por semejanza visual: debe localizarse exactamente su patrón.</p>
+<p>Esta precisión de alcance será indispensable en cadenas largas.</p>
+<hr>
+</section>
+</section>
+<section id="leyes-estructurales-identidad-dominación-idempotencia-y-complemento" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-estructurales-identidad-dominación-idempotencia-y-complemento">5.3. Leyes estructurales: identidad, dominación, idempotencia y complemento</h2>
+<p>Comenzamos con leyes sencillas que eliminan información redundante.</p>
+<section id="identidad" class="level3">
+<h3 class="anchored" data-anchor-id="identidad">Identidad</h3>
+<p><span class="math inline">\(P\land V\equiv P\)</span> y <span class="math inline">\(P\lor F\equiv P\)</span>.</p>
+<p>Conjuntar con una verdad segura no añade restricción; disyuntar con una falsedad segura no añade posibilidad.</p>
+</section>
+<section id="dominación" class="level3">
+<h3 class="anchored" data-anchor-id="dominación">Dominación</h3>
+<p><span class="math inline">\(P\lor V\equiv V\)</span> y <span class="math inline">\(P\land F\equiv F\)</span>.</p>
+<p>Una verdad basta para hacer verdadera una disyunción; una falsedad basta para hacer falsa una conjunción.</p>
+</section>
+<section id="idempotencia" class="level3">
+<h3 class="anchored" data-anchor-id="idempotencia">Idempotencia</h3>
+<p><span class="math inline">\(P\lor P\equiv P\)</span> y <span class="math inline">\(P\land P\equiv P\)</span>.</p>
+<p>Repetir una condición no cambia su contenido lógico.</p>
+</section>
+<section id="complemento" class="level3">
+<h3 class="anchored" data-anchor-id="complemento">Complemento</h3>
+<p><span class="math inline">\(P\lor\neg P\equiv V\)</span> y <span class="math inline">\(P\land\neg P\equiv F\)</span>.</p>
+<p>La primera es el tercero excluido en este marco bivalente; la segunda expresa que una proposición y su negación no pueden ser simultáneamente verdaderas.</p>
+</section>
+<section id="doble-negación" class="level3">
+<h3 class="anchored" data-anchor-id="doble-negación">Doble negación</h3>
+<p><span class="math inline">\(\neg\neg P\equiv P\)</span>.</p>
+<p>Estas leyes parecen elementales, pero en una fórmula extensa su valor es estratégico. Con frecuencia una transformación previa tiene como objetivo <strong>hacer aparecer</strong> un patrón de complemento, idempotencia o dominación.</p>
+</section>
+<section id="una-primera-simplificación" class="level3">
+<h3 class="anchored" data-anchor-id="una-primera-simplificación">Una primera simplificación</h3>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+(P\land Q)\lor(P\land\neg Q)
+\equiv P\land(Q\lor\neg Q)
+\equiv P\land V
+\equiv P.
+\]</span></p>
+<p>La simplificación no estaba visible al comienzo. Fue necesario factorizar <span class="math inline">\(P\)</span> para producir el complemento <span class="math inline">\(Q\lor\neg Q\)</span>.</p>
+<hr>
+</section>
+</section>
+<section id="conmutatividad-y-asociatividad-preparar-el-terreno" class="level2">
+<h2 class="anchored" data-anchor-id="conmutatividad-y-asociatividad-preparar-el-terreno">5.4. Conmutatividad y asociatividad: preparar el terreno</h2>
+<p>La conjunción y la disyunción son conmutativas:</p>
+<p><span class="math inline">\(P\land Q\equiv Q\land P\)</span>,</p>
+<p><span class="math inline">\(P\lor Q\equiv Q\lor P\)</span>.</p>
+<p>También son asociativas:</p>
+<p><span class="math inline">\((P\land Q)\land R\equiv P\land(Q\land R)\)</span>,</p>
+<p><span class="math inline">\((P\lor Q)\lor R\equiv P\lor(Q\lor R)\)</span>.</p>
+<p>Estas leyes rara vez simplifican por sí solas. Su función más importante es <strong>reorganizar</strong> la fórmula para que otra ley pueda actuar.</p>
+<p>Consideremos</p>
+<p><span class="math inline">\((P\lor Q)\lor\neg P\)</span>.</p>
+<p>Podemos reordenar y reagrupar:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(P\lor Q)\lor\neg P
+&amp;\equiv P\lor(Q\lor\neg P) &amp;&amp; \text{[asociatividad]}\\
+&amp;\equiv P\lor(\neg P\lor Q) &amp;&amp; \text{[conmutatividad]}\\
+&amp;\equiv (P\lor\neg P)\lor Q &amp;&amp; \text{[asociatividad]}\\
+&amp;\equiv V\lor Q &amp;&amp; \text{[complemento]}\\
+&amp;\equiv V. &amp;&amp; \text{[dominación]}
+\end{aligned}
+\]</span></p>
+<p>El paso conceptual importante no es que podamos permutar símbolos, sino que sabemos <strong>para qué</strong> hacerlo.</p>
+<hr>
+</section>
+<section id="leyes-de-de-morgan-y-control-de-negaciones" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-de-de-morgan-y-control-de-negaciones">5.5. Leyes de De Morgan y control de negaciones</h2>
+<p>Las leyes de De Morgan son:</p>
+<p><span class="math inline">\(\neg(P\land Q)\equiv\neg P\lor\neg Q\)</span>,</p>
+<p><span class="math inline">\(\neg(P\lor Q)\equiv\neg P\land\neg Q\)</span>.</p>
+<p>Pueden verificarse por tabla de verdad. Pero una vez establecidas, ya no necesitamos reconstruir la tabla cada vez: se convierten en reglas de transformación.</p>
+<section id="la-negación-atraviesa-el-conectivo-y-lo-cambia" class="level3">
+<h3 class="anchored" data-anchor-id="la-negación-atraviesa-el-conectivo-y-lo-cambia">La negación atraviesa el conectivo y lo cambia</h3>
+<p>Un modo útil de recordar la estructura —sin sustituir la comprensión— es:</p>
+<pre class="text"><code>¬ atraviesa ∧  →  ∨
+¬ atraviesa ∨  →  ∧</code></pre>
+<p>Cada componente queda negado.</p>
+</section>
+<section id="negaciones-anidadas" class="level3">
+<h3 class="anchored" data-anchor-id="negaciones-anidadas">Negaciones anidadas</h3>
+<p>Consideremos</p>
+<p><span class="math inline">\(\neg(P\lor(Q\land\neg R))\)</span>.</p>
+<p>Aplicamos De Morgan desde afuera hacia adentro:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\neg(P\lor(Q\land\neg R))
+&amp;\equiv \neg P\land\neg(Q\land\neg R)\\
+&amp;\equiv \neg P\land(\neg Q\lor\neg\neg R)\\
+&amp;\equiv \neg P\land(\neg Q\lor R).
+\end{aligned}
+\]</span></p>
+<p>Al final, cada negación afecta directamente a una proposición atómica. Esa configuración será esencial para las formas normales.</p>
+</section>
+<section id="error-típico" class="level3">
+<h3 class="anchored" data-anchor-id="error-típico">Error típico</h3>
+<p>Es falso que</p>
+<p><span class="math inline">\(\neg(P\land Q)\equiv\neg P\land\neg Q\)</span>.</p>
+<p>Basta la valuación <span class="math inline">\(P=V,Q=F\)</span>: la primera fórmula es verdadera y la segunda falsa.</p>
+<p>Una ley recordada con el conectivo equivocado deja de ser una equivalencia.</p>
+<hr>
+</section>
+</section>
+<section id="distributividad-y-factorización-lógica" class="level2">
+<h2 class="anchored" data-anchor-id="distributividad-y-factorización-lógica">5.6. Distributividad y factorización lógica</h2>
+<p>La lógica proposicional posee dos leyes distributivas:</p>
+<p><span class="math inline">\(P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R)\)</span>,</p>
+<p><span class="math inline">\(P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)\)</span>.</p>
+<p>La primera recuerda de inmediato a la distributividad algebraica ordinaria. La segunda suele resultar menos familiar, porque en aritmética la suma no distribuye sobre el producto. Aquí ambas son válidas.</p>
+<section id="desarrollar-y-factorizar" class="level3">
+<h3 class="anchored" data-anchor-id="desarrollar-y-factorizar">Desarrollar y factorizar</h3>
+<p>Las equivalencias pueden leerse en ambas direcciones.</p>
+<p>De izquierda a derecha <strong>desarrollamos</strong>. De derecha a izquierda <strong>factorizamos</strong>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math inline">\((P\land Q)\lor(P\land R)\equiv P\land(Q\lor R)\)</span>.</p>
+<p>La dirección adecuada depende del objetivo.</p>
+<ul>
+<li>Para obtener una FND puede convenir desarrollar una conjunción sobre una disyunción.</li>
+<li>Para simplificar puede convenir factorizar y hacer visible un complemento o una absorción.</li>
+<li>Para obtener una FNC puede convenir distribuir una disyunción sobre una conjunción.</li>
+</ul>
+</section>
+<section id="un-ejemplo-no-intuitivo" class="level3">
+<h3 class="anchored" data-anchor-id="un-ejemplo-no-intuitivo">Un ejemplo no intuitivo</h3>
+<p>Para llevar <span class="math inline">\(P\lor(Q\land R)\)</span> a forma conjuntiva:</p>
+<p><span class="math inline">\(P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)\)</span>.</p>
+<p>La fórmula resultante es una conjunción de disyunciones: ya tiene la arquitectura básica de una FNC.</p>
+<hr>
+</section>
+</section>
+<section id="absorción-y-simplificación-estratégica" class="level2">
+<h2 class="anchored" data-anchor-id="absorción-y-simplificación-estratégica">5.7. Absorción y simplificación estratégica</h2>
+<p>Las leyes de absorción son:</p>
+<p><span class="math inline">\(P\lor(P\land Q)\equiv P\)</span>,</p>
+<p><span class="math inline">\(P\land(P\lor Q)\equiv P\)</span>.</p>
+<p>Podemos justificarlas algebraicamente a partir de leyes anteriores. Por ejemplo:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\lor(P\land Q)
+&amp;\equiv (P\land V)\lor(P\land Q) &amp;&amp; \text{[identidad]}\\
+&amp;\equiv P\land(V\lor Q) &amp;&amp; \text{[distributividad inversa]}\\
+&amp;\equiv P\land V &amp;&amp; \text{[dominación]}\\
+&amp;\equiv P. &amp;&amp; \text{[identidad]}
+\end{aligned}
+\]</span></p>
+<section id="absorción-escondida" class="level3">
+<h3 class="anchored" data-anchor-id="absorción-escondida">Absorción escondida</h3>
+<p>En una fórmula larga el patrón puede no aparecer literalmente.</p>
+<p>Consideremos</p>
+<p><span class="math inline">\((Q\land P)\lor P\)</span>.</p>
+<p>Por conmutatividad,</p>
+<p><span class="math inline">\((Q\land P)\lor P\equiv(P\land Q)\lor P\)</span>,</p>
+<p>y por conmutatividad de <span class="math inline">\(\lor\)</span>,</p>
+<p><span class="math inline">\((P\land Q)\lor P\equiv P\lor(P\land Q)\equiv P\)</span>.</p>
+<p>Aquí reordenar no fue un fin: fue una preparación para reconocer absorción.</p>
+<hr>
+</section>
+</section>
+<section id="eliminar-implicaciones-y-bicondicionales" class="level2">
+<h2 class="anchored" data-anchor-id="eliminar-implicaciones-y-bicondicionales">5.8. Eliminar implicaciones y bicondicionales</h2>
+<p>Las formas normales que estudiaremos se expresarán usando únicamente <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\land\)</span> y <span class="math inline">\(\lor\)</span>. Por eso necesitamos eliminar <span class="math inline">\(\Rightarrow\)</span> y <span class="math inline">\(\Leftrightarrow\)</span>.</p>
+<section id="implicación" class="level3">
+<h3 class="anchored" data-anchor-id="implicación">Implicación</h3>
+<p>La equivalencia fundamental es</p>
+<p><span class="math inline">\(P\Rightarrow Q\equiv\neg P\lor Q\)</span>.</p>
+<p>Puede verificarse directamente por tabla: ambas fórmulas son falsas sólo cuando <span class="math inline">\(P=V\)</span> y <span class="math inline">\(Q=F\)</span>.</p>
+<p>La negación de una implicación queda entonces:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\neg(P\Rightarrow Q)
+&amp;\equiv\neg(\neg P\lor Q)\\
+&amp;\equiv\neg\neg P\land\neg Q\\
+&amp;\equiv P\land\neg Q.
+\end{aligned}
+\]</span></p>
+<p>Esto recupera una idea de C4: un condicional falla exactamente cuando el antecedente es verdadero y el consecuente falso.</p>
+</section>
+<section id="bicondicional" class="level3">
+<h3 class="anchored" data-anchor-id="bicondicional">Bicondicional</h3>
+<p>Podemos usar</p>
+<p><span class="math inline">\(P\Leftrightarrow Q\equiv(P\Rightarrow Q)\land(Q\Rightarrow P)\)</span>.</p>
+<p>Eliminando las implicaciones:</p>
+<p><span class="math inline">\(P\Leftrightarrow Q\equiv(\neg P\lor Q)\land(\neg Q\lor P)\)</span>.</p>
+<p>Otra forma útil es</p>
+<p><span class="math inline">\(P\Leftrightarrow Q\equiv(P\land Q)\lor(\neg P\land\neg Q)\)</span>.</p>
+<p>La primera forma ya tiene arquitectura de FNC; la segunda, de FND.</p>
+</section>
+<section id="elegir-la-expansión-según-el-objetivo" class="level3">
+<h3 class="anchored" data-anchor-id="elegir-la-expansión-según-el-objetivo">Elegir la expansión según el objetivo</h3>
+<p>Si buscamos FND, la segunda representación suele ser más conveniente.</p>
+<p>Si buscamos FNC, la primera suele ahorrar trabajo.</p>
+<p>Ésta es una primera muestra de estrategia: una equivalencia puede ser correcta en varias formas, pero no todas son igualmente útiles para el objetivo presente.</p>
+<hr>
+</section>
+</section>
+<section id="cadenas-largas-de-equivalencias" class="level2">
+<h2 class="anchored" data-anchor-id="cadenas-largas-de-equivalencias">5.9. Cadenas largas de equivalencias</h2>
+<p>Una cadena lógica extensa debe leerse como un argumento matemático. Cada enlace afirma que la fórmula de la izquierda puede reemplazarse por la de la derecha sin cambiar el valor de verdad bajo ninguna valuación.</p>
+<p>Consideremos</p>
+<p><span class="math inline">\(\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\)</span>.</p>
+<p>Queremos simplificarla.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\\
+&amp;\equiv \neg[(\neg P\lor Q)\land(\neg P\lor\neg Q)]
+&amp;&amp;\text{[eliminar implicaciones]}\\
+&amp;\equiv \neg[\neg P\lor(Q\land\neg Q)]
+&amp;&amp;\text{[distributividad inversa]}\\
+&amp;\equiv \neg[\neg P\lor F]
+&amp;&amp;\text{[complemento]}\\
+&amp;\equiv \neg(\neg P)
+&amp;&amp;\text{[identidad]}\\
+&amp;\equiv P.
+&amp;&amp;\text{[doble negación]}
+\end{aligned}
+\]</span></p>
+<p>La ruta es corta porque reconocimos una factorización decisiva.</p>
+<section id="una-ruta-más-larga-también-puede-ser-correcta" class="level3">
+<h3 class="anchored" data-anchor-id="una-ruta-más-larga-también-puede-ser-correcta">Una ruta más larga también puede ser correcta</h3>
+<p>Podríamos haber aplicado De Morgan a la negación exterior, eliminado después cada implicación, distribuido y simplificado. El resultado sería el mismo, pero con más pasos.</p>
+<p>En este capítulo no buscamos siempre la cadena más corta. Primero queremos una cadena <strong>segura y auditable</strong>. Luego aprenderemos a mejorarla.</p>
+</section>
+<section id="igualdad-de-destino-diversidad-de-rutas" class="level3">
+<h3 class="anchored" data-anchor-id="igualdad-de-destino-diversidad-de-rutas">Igualdad de destino, diversidad de rutas</h3>
+<p>Dos estudiantes pueden producir cadenas distintas y ambas ser correctas. La pregunta editorial no es «¿usó exactamente la ruta modelo?», sino:</p>
+<ol type="1">
+<li>¿cada paso es una equivalencia válida?;</li>
+<li>¿el alcance de la ley está controlado?;</li>
+<li>¿la estrategia llega al objetivo pedido?;</li>
+<li>¿la escritura permite auditar el razonamiento?</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="literales-términos-y-cláusulas" class="level2">
+<h2 class="anchored" data-anchor-id="literales-términos-y-cláusulas">5.10. Literales, términos y cláusulas</h2>
+<p>Para hablar de formas normales necesitamos algunas unidades estructurales.</p>
+<p>Un <strong>literal</strong> es una proposición atómica o la negación de una proposición atómica.</p>
+<p>Ejemplos: <span class="math inline">\(P\)</span>, <span class="math inline">\(\neg P\)</span>, <span class="math inline">\(Q\)</span>, <span class="math inline">\(\neg R\)</span>.</p>
+<p>Un <strong>término conjuntivo</strong> es una conjunción de uno o más literales.</p>
+<p>Ejemplos:</p>
+<p><span class="math inline">\(P\land\neg Q\)</span>,</p>
+<p><span class="math inline">\(P\land Q\land\neg R\)</span>.</p>
+<p>Una <strong>cláusula disyuntiva</strong> es una disyunción de uno o más literales.</p>
+<p>Ejemplos:</p>
+<p><span class="math inline">\(P\lor\neg Q\)</span>,</p>
+<p><span class="math inline">\(\neg P\lor Q\lor R\)</span>.</p>
+<p>Estas definiciones no dicen todavía que una fórmula sea normal. Nos entregan los bloques con los que construiremos FND y FNC.</p>
+<section id="término-no-significa-verdadero" class="level3">
+<h3 class="anchored" data-anchor-id="término-no-significa-verdadero">Término no significa «verdadero»</h3>
+<p>Un término conjuntivo puede ser verdadero o falso según la valuación. Lo mismo una cláusula. Los nombres describen <strong>estructura sintáctica</strong>, no valor de verdad.</p>
+<hr>
+</section>
+</section>
+<section id="forma-normal-disyuntiva" class="level2">
+<h2 class="anchored" data-anchor-id="forma-normal-disyuntiva">5.11. Forma normal disyuntiva</h2>
+<p>Una fórmula está en <strong>forma normal disyuntiva (FND)</strong> cuando es una disyunción de uno o más términos conjuntivos de literales.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[(P\land\neg Q)\lor(\neg P\land R)\]</span></p>
+<p>está en FND.</p>
+<p>En cambio,</p>
+<p><span class="math inline">\(P\land(Q\lor R)\)</span></p>
+<p>no está en FND porque la disyunción aparece dentro de una conjunción.</p>
+<section id="procedimiento-por-leyes" class="level3">
+<h3 class="anchored" data-anchor-id="procedimiento-por-leyes">Procedimiento por leyes</h3>
+<p>Para obtener una FND suele funcionar:</p>
+<ol type="1">
+<li>eliminar <span class="math inline">\(\Leftrightarrow\)</span>;</li>
+<li>eliminar <span class="math inline">\(\Rightarrow\)</span>;</li>
+<li>llevar negaciones hasta los literales;</li>
+<li>distribuir <span class="math inline">\(\land\)</span> sobre <span class="math inline">\(\lor\)</span>;</li>
+<li>simplificar términos imposibles o redundantes.</li>
+</ol>
+<p>Ejemplo:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\land(Q\lor\neg R)
+&amp;\equiv(P\land Q)\lor(P\land\neg R).
+\end{aligned}
+\]</span></p>
+<p>Ya tenemos una FND.</p>
+</section>
+<section id="fnd-no-significa-mínima" class="level3">
+<h3 class="anchored" data-anchor-id="fnd-no-significa-mínima">FND no significa mínima</h3>
+<p>La fórmula</p>
+<p><span class="math inline">\((P\land Q)\lor(P\land\neg Q)\)</span></p>
+<p>está en FND, pero además se simplifica a <span class="math inline">\(P\)</span>. Por tanto, estar en forma normal no garantiza ser la escritura más corta.</p>
+<hr>
+</section>
+</section>
+<section id="forma-normal-conjuntiva" class="level2">
+<h2 class="anchored" data-anchor-id="forma-normal-conjuntiva">5.12. Forma normal conjuntiva</h2>
+<p>Una fórmula está en <strong>forma normal conjuntiva (FNC)</strong> cuando es una conjunción de una o más cláusulas disyuntivas de literales.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[(P\lor\neg Q)\land(\neg P\lor R)\]</span></p>
+<p>está en FNC.</p>
+<p>La fórmula</p>
+<p><span class="math inline">\(P\lor(Q\land R)\)</span></p>
+<p>no está en FNC, pero distributividad produce</p>
+<p><span class="math display">\[(P\lor Q)\land(P\lor R),\]</span></p>
+<p>que sí está en FNC.</p>
+<section id="procedimiento-por-leyes-1" class="level3">
+<h3 class="anchored" data-anchor-id="procedimiento-por-leyes-1">Procedimiento por leyes</h3>
+<p>Para obtener FNC:</p>
+<ol type="1">
+<li>eliminar <span class="math inline">\(\Leftrightarrow\)</span>;</li>
+<li>eliminar <span class="math inline">\(\Rightarrow\)</span>;</li>
+<li>llevar negaciones hasta los literales;</li>
+<li>distribuir <span class="math inline">\(\lor\)</span> sobre <span class="math inline">\(\land\)</span>;</li>
+<li>simplificar cláusulas tautológicas o redundantes cuando sea útil.</li>
+</ol>
+</section>
+<section id="dos-arquitecturas-para-una-misma-fórmula" class="level3">
+<h3 class="anchored" data-anchor-id="dos-arquitecturas-para-una-misma-fórmula">Dos arquitecturas para una misma fórmula</h3>
+<p>Una fórmula puede tener una FND y una FNC equivalentes entre sí y con la fórmula original. No se trata de dos significados distintos, sino de dos representaciones normalizadas del mismo comportamiento semántico.</p>
+<hr>
+</section>
+</section>
+<section id="formas-normales-canónicas-desde-tablas-de-verdad" class="level2">
+<h2 class="anchored" data-anchor-id="formas-normales-canónicas-desde-tablas-de-verdad">5.13. Formas normales canónicas desde tablas de verdad</h2>
+<p>Las transformaciones algebraicas pueden requerir ingenio. La tabla de verdad ofrece, en cambio, un procedimiento universal.</p>
+<section id="fnd-canónica-mirar-las-filas-verdaderas" class="level3">
+<h3 class="anchored" data-anchor-id="fnd-canónica-mirar-las-filas-verdaderas">FND canónica: mirar las filas verdaderas</h3>
+<p>Para cada fila donde una fórmula <span class="math inline">\(F\)</span> sea verdadera construimos un término que sea verdadero <strong>exactamente en esa fila</strong>.</p>
+<p>Si una fila tiene</p>
+<p><span class="math inline">\(P=V,Q=F,R=V\)</span>,</p>
+<p>el término correspondiente es</p>
+<p><span class="math inline">\(P\land\neg Q\land R\)</span>.</p>
+<p>Usamos la variable sin negar cuando vale <span class="math inline">\(V\)</span> y negada cuando vale <span class="math inline">\(F\)</span>.</p>
+<p>Luego disyuntamos todos los términos correspondientes a filas verdaderas.</p>
+</section>
+<section id="fnc-canónica-mirar-las-filas-falsas" class="level3">
+<h3 class="anchored" data-anchor-id="fnc-canónica-mirar-las-filas-falsas">FNC canónica: mirar las filas falsas</h3>
+<p>Para cada fila donde <span class="math inline">\(F\)</span> sea falsa construimos una cláusula que sea falsa <strong>exactamente en esa fila</strong>.</p>
+<p>Si una fila tiene</p>
+<p><span class="math inline">\(P=V,Q=F,R=V\)</span>,</p>
+<p>queremos una disyunción cuyos tres literales sean falsos en esa fila. Por tanto usamos</p>
+<p><span class="math inline">\(\neg P\lor Q\lor\neg R\)</span>.</p>
+<p>Aquí el signo se invierte respecto del valor de la fila:</p>
+<ul>
+<li>si una variable vale <span class="math inline">\(V\)</span>, usamos su negación;</li>
+<li>si vale <span class="math inline">\(F\)</span>, usamos la variable sin negar.</li>
+</ul>
+<p>Luego conjuntamos todas las cláusulas correspondientes a filas falsas.</p>
+</section>
+<section id="teorema-de-existencia-de-formas-normales" class="level3">
+<h3 class="anchored" data-anchor-id="teorema-de-existencia-de-formas-normales">Teorema de existencia de formas normales</h3>
+<blockquote class="blockquote">
+<p><strong>Toda fórmula proposicional finita es lógicamente equivalente a alguna FND y a alguna FNC.</strong></p>
+</blockquote>
+<p>La demostración es constructiva.</p>
+<ul>
+<li>Si la fórmula tiene filas verdaderas, la disyunción de los términos que representan esas filas es verdadera exactamente donde la fórmula original lo es.</li>
+<li>Si tiene filas falsas, la conjunción de las cláusulas que excluyen esas filas es falsa exactamente donde la fórmula original lo es.</li>
+</ul>
+<p>Los casos extremos se representan por <span class="math inline">\(F\)</span> para una contradicción y por <span class="math inline">\(V\)</span> para una tautología, o mediante formas equivalentes que contengan literales si se desea conservar variables.</p>
+<p>No necesitamos una teoría más avanzada para garantizar la existencia: la propia tabla de verdad construye las formas.</p>
+<hr>
+</section>
+</section>
+<section id="normalizar-no-es-minimizar" class="level2">
+<h2 class="anchored" data-anchor-id="normalizar-no-es-minimizar">5.14. Normalizar no es minimizar</h2>
+<p>Una <strong>forma normal</strong> cumple una arquitectura sintáctica determinada.</p>
+<p>Una <strong>forma mínima</strong> busca reducir algún criterio de tamaño: número de literales, número de conectivos, número de cláusulas u otro.</p>
+<p>Son problemas diferentes.</p>
+<section id="una-forma-canónica-puede-crecer-mucho" class="level3">
+<h3 class="anchored" data-anchor-id="una-forma-canónica-puede-crecer-mucho">Una forma canónica puede crecer mucho</h3>
+<p>Con <span class="math inline">\(n\)</span> variables existen <span class="math inline">\(2^n\)</span> valuaciones. Si una fórmula es verdadera en muchas filas, su FND canónica puede contener muchos términos, cada uno con <span class="math inline">\(n\)</span> literales.</p>
+<p>Una fórmula corta como <span class="math inline">\(P\lor Q\)</span> tiene tabla con tres filas verdaderas. Su FND canónica respecto de las variables <span class="math inline">\(P,Q\)</span> es</p>
+<p><span class="math display">\[(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q).\]</span></p>
+<p>Es correcta y canónica, pero mucho más larga que <span class="math inline">\(P\lor Q\)</span>.</p>
+</section>
+<section id="canonizar-puede-facilitar-comparación" class="level3">
+<h3 class="anchored" data-anchor-id="canonizar-puede-facilitar-comparación">Canonizar puede facilitar comparación</h3>
+<p>La utilidad de una forma canónica no es necesariamente compactar. Es ofrecer una representación sistemática derivada directamente de la semántica.</p>
+<p>Dos fórmulas con la misma tabla producirán la misma FND canónica y la misma FNC canónica, salvo reordenamientos triviales.</p>
+</section>
+<section id="primera-advertencia-algorítmica" class="level3">
+<h3 class="anchored" data-anchor-id="primera-advertencia-algorítmica">Primera advertencia algorítmica</h3>
+<p>El crecimiento de <span class="math inline">\(2^n\)</span> anuncia un fenómeno que reaparecerá muchas veces: un procedimiento completamente sistemático puede ser costoso. Aquí sólo registramos la idea; no desarrollaremos teoría de complejidad.</p>
+<hr>
+</section>
+</section>
+<section id="estrategias-de-transformación" class="level2">
+<h2 class="anchored" data-anchor-id="estrategias-de-transformación">5.15. Estrategias de transformación</h2>
+<p>Conocer las leyes no basta. Una fórmula extensa puede admitir muchas transformaciones correctas, pero algunas nos alejan del objetivo.</p>
+<section id="estrategia-a-normalización-sistemática" class="level3">
+<h3 class="anchored" data-anchor-id="estrategia-a-normalización-sistemática">Estrategia A — normalización sistemática</h3>
+<p>Si el objetivo es obtener FND o FNC y no vemos un atajo claro:</p>
+<pre class="text"><code>1. eliminar ↔
+2. eliminar →
+3. empujar ¬ hasta los literales
+4. decidir si buscamos FND o FNC
+5. distribuir en la dirección necesaria
+6. simplificar</code></pre>
+<p>Es una estrategia robusta, aunque no siempre corta.</p>
+</section>
+<section id="estrategia-b-simplificación-oportunista" class="level3">
+<h3 class="anchored" data-anchor-id="estrategia-b-simplificación-oportunista">Estrategia B — simplificación oportunista</h3>
+<p>Antes de expandir conviene mirar:</p>
+<ul>
+<li>¿hay un complemento escondido?;</li>
+<li>¿puedo absorber una parte?;</li>
+<li>¿puedo factorizar?;</li>
+<li>¿puedo reagrupar para producir <span class="math inline">\(P\lor\neg P\)</span> o <span class="math inline">\(P\land\neg P\)</span>?;</li>
+<li>¿una expansión va a duplicar innecesariamente grandes subfórmulas?</li>
+</ul>
+</section>
+<section id="ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo">Ejemplo</h3>
+<p>Para</p>
+<p><span class="math inline">\((P\land Q)\lor(P\land\neg Q)\)</span>,</p>
+<p>una expansión no ayuda. Factorizar produce inmediatamente</p>
+<p><span class="math inline">\(P\land(Q\lor\neg Q)\equiv P\)</span>.</p>
+</section>
+<section id="verificar-por-una-segunda-vía" class="level3">
+<h3 class="anchored" data-anchor-id="verificar-por-una-segunda-vía">Verificar por una segunda vía</h3>
+<p>En problemas importantes puede ser útil comprobar el resultado por tabla de verdad. La tabla no reemplaza la derivación cuando se pide una cadena algebraica, pero puede detectar un error.</p>
+<p>Aprender matemática implica también desarrollar controles independientes.</p>
+<hr>
+</section>
+</section>
+<section id="cierre-protocolo-de-transformación-proposicional" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-protocolo-de-transformación-proposicional">5.16. Cierre — protocolo de transformación proposicional</h2>
+<p>Ante una fórmula extensa, preguntaremos:</p>
+<ol type="1">
+<li><strong>¿Qué quiero obtener?</strong> ¿Simplificar, demostrar equivalencia, producir FND o FNC?</li>
+<li><strong>¿Cuál es el conectivo principal?</strong></li>
+<li><strong>¿Hay <span class="math inline">\(\Rightarrow\)</span> o <span class="math inline">\(\Leftrightarrow\)</span> que convenga eliminar?</strong></li>
+<li><strong>¿Las negaciones afectan ya sólo a literales?</strong></li>
+<li><strong>¿Puedo reordenar o reagrupar para hacer visible una ley?</strong></li>
+<li><strong>¿Hay complementos, idempotencias, dominaciones o absorciones?</strong></li>
+<li><strong>¿Conviene distribuir o factorizar?</strong></li>
+<li><strong>¿Cada paso es una equivalencia y no sólo una implicación?</strong></li>
+<li><strong>¿La forma final cumple realmente la estructura pedida?</strong></li>
+<li><strong>¿Puedo verificar el resultado mediante una segunda estrategia?</strong></li>
+</ol>
+<p>La nueva competencia puede formularse así:</p>
+<blockquote class="blockquote">
+<p><strong>Transformar proposicionalmente es diseñar una cadena de sustituciones equivalentes, controlando estructura, alcance y objetivo.</strong></p>
+</blockquote>
+<p>C4 enseñó a leer la verdad de una fórmula. C5 enseña a transformar su forma sin cambiar esa verdad.</p>
+<hr>
+</section>
+</section>
+<section id="ejercicios" class="level1">
+<h1>Ejercicios</h1>
+<p>Todos los ejercicios son originales para <em>Álgebra para matemáticos</em> y han sido calibrados con el corpus rector del capítulo. En las cadenas de equivalencias, justifica los pasos sustantivos.</p>
+<section id="a.-reconocer-equivalencia-y-no-equivalencia" class="level2">
+<h2 class="anchored" data-anchor-id="a.-reconocer-equivalencia-y-no-equivalencia">A. Reconocer equivalencia y no equivalencia</h2>
+<!-- ID: MA-EX-APM-01-005-001 | PROVENANCE: ORIGINAL -->
+<ol type="1">
+<li>Mediante tabla de verdad, decide si <span class="math inline">\(P\Rightarrow Q\equiv\neg P\lor Q\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-002 | PROVENANCE: ORIGINAL -->
+<ol start="2" type="1">
+<li>Decide si <span class="math inline">\(P\land Q\equiv P\lor Q\)</span>. Si no lo son, da una valuación que lo muestre.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-003 | PROVENANCE: ORIGINAL -->
+<ol start="3" type="1">
+<li>Explica la diferencia entre escribir <span class="math inline">\(P\Leftrightarrow Q\)</span> y escribir <span class="math inline">\(P\equiv Q\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-004 | PROVENANCE: ORIGINAL -->
+<ol start="4" type="1">
+<li>Verifica por tabla que <span class="math inline">\(P\Rightarrow Q\equiv\neg Q\Rightarrow\neg P\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-005 | PROVENANCE: ORIGINAL -->
+<ol start="5" type="1">
+<li>Decide si <span class="math inline">\(P\Rightarrow Q\equiv Q\Rightarrow P\)</span> y produce una contra-valuación si falla.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-006 | PROVENANCE: ORIGINAL -->
+<ol start="6" type="1">
+<li>Demuestra que <span class="math inline">\(A\equiv B\)</span> si y sólo si <span class="math inline">\(A\Leftrightarrow B\)</span> es tautología.</li>
+</ol>
+</section>
+<section id="b.-leyes-básicas" class="level2">
+<h2 class="anchored" data-anchor-id="b.-leyes-básicas">B. Leyes básicas</h2>
+<!-- ID: MA-EX-APM-01-005-007 | PROVENANCE: ORIGINAL -->
+<ol start="7" type="1">
+<li>Simplifica <span class="math inline">\(P\land V\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-008 | PROVENANCE: ORIGINAL -->
+<ol start="8" type="1">
+<li>Simplifica <span class="math inline">\(P\lor F\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-009 | PROVENANCE: ORIGINAL -->
+<ol start="9" type="1">
+<li>Simplifica <span class="math inline">\((P\lor P)\land Q\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-010 | PROVENANCE: ORIGINAL -->
+<ol start="10" type="1">
+<li>Simplifica <span class="math inline">\(P\lor\neg P\)</span> y clasifica el resultado.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-011 | PROVENANCE: ORIGINAL -->
+<ol start="11" type="1">
+<li>Simplifica <span class="math inline">\(P\land\neg P\)</span> y clasifica el resultado.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-012 | PROVENANCE: ORIGINAL -->
+<ol start="12" type="1">
+<li>Simplifica <span class="math inline">\(\neg\neg(P\lor Q)\)</span>.</li>
+</ol>
+</section>
+<section id="c.-reordenar-y-reagrupar-estratégicamente" class="level2">
+<h2 class="anchored" data-anchor-id="c.-reordenar-y-reagrupar-estratégicamente">C. Reordenar y reagrupar estratégicamente</h2>
+<!-- ID: MA-EX-APM-01-005-013 | PROVENANCE: ORIGINAL -->
+<ol start="13" type="1">
+<li>Simplifica <span class="math inline">\((P\lor Q)\lor\neg P\)</span> justificando los reordenamientos.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-014 | PROVENANCE: ORIGINAL -->
+<ol start="14" type="1">
+<li>Simplifica <span class="math inline">\((P\land Q)\land P\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-015 | PROVENANCE: ORIGINAL -->
+<ol start="15" type="1">
+<li>Reordena <span class="math inline">\(Q\lor(\neg P\lor P)\)</span> para hacer visible una ley de complemento y simplifica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-016 | PROVENANCE: ORIGINAL -->
+<ol start="16" type="1">
+<li>Simplifica <span class="math inline">\((Q\land\neg P)\land P\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-017 | PROVENANCE: ORIGINAL -->
+<ol start="17" type="1">
+<li>Transforma <span class="math inline">\((P\lor Q)\lor(R\lor\neg Q)\)</span> hasta una forma donde sea inmediata la simplificación.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-018 | PROVENANCE: ORIGINAL -->
+<ol start="18" type="1">
+<li>Explica por qué conmutatividad y asociatividad suelen funcionar como leyes <strong>preparatorias</strong> y da un ejemplo propio.</li>
+</ol>
+</section>
+<section id="d.-de-morgan-y-negaciones-anidadas" class="level2">
+<h2 class="anchored" data-anchor-id="d.-de-morgan-y-negaciones-anidadas">D. De Morgan y negaciones anidadas</h2>
+<!-- ID: MA-EX-APM-01-005-019 | PROVENANCE: ORIGINAL -->
+<ol start="19" type="1">
+<li>Lleva <span class="math inline">\(\neg(P\land Q)\)</span> a una forma donde las negaciones afecten sólo a literales.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-020 | PROVENANCE: ORIGINAL -->
+<ol start="20" type="1">
+<li>Lleva <span class="math inline">\(\neg(P\lor(Q\land R))\)</span> a forma con negaciones sólo sobre literales.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-021 | PROVENANCE: ORIGINAL -->
+<ol start="21" type="1">
+<li>Simplifica <span class="math inline">\(\neg\neg(\neg P\lor Q)\)</span> dejando negaciones sólo sobre literales.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-022 | PROVENANCE: ORIGINAL -->
+<ol start="22" type="1">
+<li>Lleva <span class="math inline">\(\neg[(P\lor Q)\land(\neg R\lor S)]\)</span> a una forma donde cada negación afecte a una proposición atómica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-023 | PROVENANCE: ORIGINAL -->
+<ol start="23" type="1">
+<li>Decide si <span class="math inline">\(\neg(P\land Q)\equiv\neg P\land\neg Q\)</span>. Si falla, produce una contra-valuación.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-024 | PROVENANCE: ORIGINAL -->
+<ol start="24" type="1">
+<li>Transforma <span class="math inline">\(\neg[\neg P\lor\neg(Q\land R)]\)</span> hasta una fórmula sin dobles negaciones y con negaciones sólo sobre literales.</li>
+</ol>
+</section>
+<section id="e.-distributividad-y-absorción" class="level2">
+<h2 class="anchored" data-anchor-id="e.-distributividad-y-absorción">E. Distributividad y absorción</h2>
+<!-- ID: MA-EX-APM-01-005-025 | PROVENANCE: ORIGINAL -->
+<ol start="25" type="1">
+<li>Lleva <span class="math inline">\(P\land(Q\lor R)\)</span> a una disyunción de conjunciones.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-026 | PROVENANCE: ORIGINAL -->
+<ol start="26" type="1">
+<li>Lleva <span class="math inline">\(P\lor(Q\land R)\)</span> a una conjunción de disyunciones.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-027 | PROVENANCE: ORIGINAL -->
+<ol start="27" type="1">
+<li>Factoriza <span class="math inline">\((P\land Q)\lor(P\land R)\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-028 | PROVENANCE: ORIGINAL -->
+<ol start="28" type="1">
+<li>Simplifica <span class="math inline">\(P\lor(P\land Q)\)</span> demostrando la absorción mediante leyes anteriores.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-029 | PROVENANCE: ORIGINAL -->
+<ol start="29" type="1">
+<li>Simplifica <span class="math inline">\((Q\land P)\lor P\)</span> haciendo visible primero el patrón de absorción.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-030 | PROVENANCE: ORIGINAL -->
+<ol start="30" type="1">
+<li>Simplifica <span class="math inline">\((P\lor Q)\land(P\lor\neg Q)\)</span> sin tabla de verdad.</li>
+</ol>
+</section>
+<section id="f.-eliminar-implicaciones-y-bicondicionales" class="level2">
+<h2 class="anchored" data-anchor-id="f.-eliminar-implicaciones-y-bicondicionales">F. Eliminar implicaciones y bicondicionales</h2>
+<!-- ID: MA-EX-APM-01-005-031 | PROVENANCE: ORIGINAL -->
+<ol start="31" type="1">
+<li>Reescribe <span class="math inline">\(P\Rightarrow Q\)</span> usando sólo <span class="math inline">\(\neg,\lor\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-032 | PROVENANCE: ORIGINAL -->
+<ol start="32" type="1">
+<li>Reescribe <span class="math inline">\(\neg(P\Rightarrow Q)\)</span> usando sólo <span class="math inline">\(\neg,\land,\lor\)</span> y simplifica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-033 | PROVENANCE: ORIGINAL -->
+<ol start="33" type="1">
+<li>Reescribe <span class="math inline">\((P\Rightarrow Q)\land R\)</span> sin <span class="math inline">\(\Rightarrow\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-034 | PROVENANCE: ORIGINAL -->
+<ol start="34" type="1">
+<li>Reescribe <span class="math inline">\(P\Leftrightarrow Q\)</span> en una FNC que use sólo <span class="math inline">\(\neg,\land,\lor\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-035 | PROVENANCE: ORIGINAL -->
+<ol start="35" type="1">
+<li>Reescribe <span class="math inline">\(P\Leftrightarrow Q\)</span> en una FND que use sólo <span class="math inline">\(\neg,\land,\lor\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-036 | PROVENANCE: ORIGINAL -->
+<ol start="36" type="1">
+<li>Elimina <span class="math inline">\(\Rightarrow\)</span> y <span class="math inline">\(\Leftrightarrow\)</span> de <span class="math inline">\((P\Leftrightarrow Q)\Rightarrow R\)</span> sin exigir todavía una forma normal final.</li>
+</ol>
+</section>
+<section id="g.-cadenas-largas-justificadas" class="level2">
+<h2 class="anchored" data-anchor-id="g.-cadenas-largas-justificadas">G. Cadenas largas justificadas</h2>
+<!-- ID: MA-EX-APM-01-005-037 | PROVENANCE: ORIGINAL -->
+<ol start="37" type="1">
+<li>Simplifica <span class="math inline">\(\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\)</span> mediante una cadena sistemática de <strong>al menos ocho transformaciones justificadas</strong> y llega a una sola literal.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-038 | PROVENANCE: ORIGINAL -->
+<ol start="38" type="1">
+<li>Demuestra por equivalencias, mediante una cadena de <strong>8–15 transformaciones justificadas</strong>, que <span class="math inline">\([(P\Rightarrow Q)\land(Q\Rightarrow R)\land P]\Rightarrow R\)</span> es una tautología.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-039 | PROVENANCE: ORIGINAL -->
+<ol start="39" type="1">
+<li>Demuestra que <span class="math inline">\(\neg(P\Leftrightarrow Q)\equiv(P\land\neg Q)\lor(\neg P\land Q)\)</span> mediante <strong>al menos ocho transformaciones explícitas</strong>, eliminando conectivos paso a paso.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-040 | PROVENANCE: ORIGINAL -->
+<ol start="40" type="1">
+<li>Simplifica <span class="math inline">\([(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]\)</span> mediante <strong>al menos ocho transformaciones explícitas</strong> y clasifica la fórmula final.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-041 | PROVENANCE: ORIGINAL -->
+<ol start="41" type="1">
+<li>Simplifica <span class="math inline">\((P\Rightarrow Q)\land(P\Rightarrow\neg Q)\)</span> hasta una fórmula con una sola variable proposicional.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-042 | PROVENANCE: ORIGINAL -->
+<ol start="42" type="1">
+<li>Lleva <span class="math inline">\(\neg[(P\Rightarrow Q)\lor(R\Rightarrow P)]\)</span> mediante una cadena de <strong>al menos ocho transformaciones justificadas</strong> a una fórmula que use sólo literales, <span class="math inline">\(\land\)</span> y <span class="math inline">\(\lor\)</span>, y simplifica todo lo posible.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-043 | PROVENANCE: ORIGINAL -->
+<ol start="43" type="1">
+<li>Demuestra que <span class="math inline">\((P\Rightarrow(Q\land R))\equiv(P\Rightarrow Q)\land(P\Rightarrow R)\)</span> mediante una cadena de equivalencias.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-044 | PROVENANCE: ORIGINAL -->
+<ol start="44" type="1">
+<li>Encuentra dos rutas distintas para simplificar <span class="math inline">\((P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q)\)</span>: una por factorización estratégica y otra mediante una expansión o reagrupación diferente. Compara las longitudes.</li>
+</ol>
+</section>
+<section id="h.-diagnóstico-de-derivaciones" class="level2">
+<h2 class="anchored" data-anchor-id="h.-diagnóstico-de-derivaciones">H. Diagnóstico de derivaciones</h2>
+<!-- ID: MA-EX-APM-01-005-045 | PROVENANCE: ORIGINAL -->
+<ol start="45" type="1">
+<li>Encuentra el primer paso inválido:</li>
+</ol>
+<p><span class="math display">\[
+\neg(P\land Q)\equiv\neg P\land\neg Q\equiv\neg(Q\land P).
+\]</span></p>
+<!-- ID: MA-EX-APM-01-005-046 | PROVENANCE: ORIGINAL -->
+<ol start="46" type="1">
+<li>Un estudiante escribe <span class="math inline">\(P\lor(Q\land R)\equiv(P\lor Q)\land R\)</span>. Diagnostica la ley mal aplicada y corrige el paso.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-047 | PROVENANCE: ORIGINAL -->
+<ol start="47" type="1">
+<li>Encuentra el primer paso inválido:</li>
+</ol>
+<p><span class="math display">\[
+P\Rightarrow Q\equiv P\lor Q\equiv Q\lor P.
+\]</span></p>
+<!-- ID: MA-EX-APM-01-005-048 | PROVENANCE: ORIGINAL -->
+<ol start="48" type="1">
+<li>Un estudiante simplifica <span class="math inline">\(P\lor(P\land Q)\)</span> como <span class="math inline">\((P\lor P)\land Q\equiv P\land Q\)</span>. Localiza el error y repara la derivación.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-049 | PROVENANCE: ORIGINAL -->
+<ol start="49" type="1">
+<li>Un estudiante afirma que <span class="math inline">\((P\land Q)\lor(\neg P\land Q)\equiv P\lor\neg P\land Q\)</span>. Explica el problema de estructura/paréntesis y produce una derivación correcta.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-050 | PROVENANCE: ORIGINAL -->
+<ol start="50" type="1">
+<li>En una supuesta cadena de equivalencias aparece el paso <span class="math inline">\(P\Rightarrow Q\to\neg P\lor Q\)</span>, escrito con una flecha de implicación entre fórmulas de la cadena. Explica por qué esa notación no expresa correctamente lo que se necesita en una cadena de equivalencias.</li>
+</ol>
+</section>
+<section id="i.-forma-normal-disyuntiva" class="level2">
+<h2 class="anchored" data-anchor-id="i.-forma-normal-disyuntiva">I. Forma normal disyuntiva</h2>
+<!-- ID: MA-EX-APM-01-005-051 | PROVENANCE: ORIGINAL -->
+<ol start="51" type="1">
+<li>Decide si <span class="math inline">\((P\land\neg Q)\lor(R\land Q)\)</span> está en FND y justifica por definición.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-052 | PROVENANCE: ORIGINAL -->
+<ol start="52" type="1">
+<li>Decide si <span class="math inline">\(P\land(Q\lor R)\)</span> está en FND. Si no, conviértela a FND.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-053 | PROVENANCE: ORIGINAL -->
+<ol start="53" type="1">
+<li>Obtén una FND de <span class="math inline">\(P\land(Q\Rightarrow R)\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-054 | PROVENANCE: ORIGINAL -->
+<ol start="54" type="1">
+<li>Obtén una FND de <span class="math inline">\(\neg(P\Rightarrow Q)\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-055 | PROVENANCE: ORIGINAL -->
+<ol start="55" type="1">
+<li>Obtén una FND de <span class="math inline">\(P\Leftrightarrow Q\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-056 | PROVENANCE: ORIGINAL -->
+<ol start="56" type="1">
+<li>Lleva <span class="math inline">\((P\lor Q)\land R\)</span> a FND y verifica que cada término final sea una conjunción de literales.</li>
+</ol>
+</section>
+<section id="j.-forma-normal-conjuntiva" class="level2">
+<h2 class="anchored" data-anchor-id="j.-forma-normal-conjuntiva">J. Forma normal conjuntiva</h2>
+<!-- ID: MA-EX-APM-01-005-057 | PROVENANCE: ORIGINAL -->
+<ol start="57" type="1">
+<li>Decide si <span class="math inline">\((P\lor\neg Q)\land(R\lor Q)\)</span> está en FNC y justifica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-058 | PROVENANCE: ORIGINAL -->
+<ol start="58" type="1">
+<li>Decide si <span class="math inline">\(P\lor(Q\land R)\)</span> está en FNC. Si no, conviértela a FNC.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-059 | PROVENANCE: ORIGINAL -->
+<ol start="59" type="1">
+<li>Obtén una FNC de <span class="math inline">\(P\Rightarrow(Q\land R)\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-060 | PROVENANCE: ORIGINAL -->
+<ol start="60" type="1">
+<li>Obtén una FNC de <span class="math inline">\(\neg(P\land Q)\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-061 | PROVENANCE: ORIGINAL -->
+<ol start="61" type="1">
+<li>Obtén una FNC de <span class="math inline">\(P\Leftrightarrow Q\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-062 | PROVENANCE: ORIGINAL -->
+<ol start="62" type="1">
+<li>Lleva <span class="math inline">\((P\land Q)\lor R\)</span> a FNC y verifica la arquitectura final.</li>
+</ol>
+</section>
+<section id="k.-formas-canónicas-desde-tablas" class="level2">
+<h2 class="anchored" data-anchor-id="k.-formas-canónicas-desde-tablas">K. Formas canónicas desde tablas</h2>
+<!-- ID: MA-EX-APM-01-005-063 | PROVENANCE: ORIGINAL -->
+<ol start="63" type="1">
+<li>Construye la FND canónica de <span class="math inline">\(P\lor Q\)</span> a partir de sus filas verdaderas.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-064 | PROVENANCE: ORIGINAL -->
+<ol start="64" type="1">
+<li>Construye la FNC canónica de <span class="math inline">\(P\land Q\)</span> a partir de sus filas falsas.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-065 | PROVENANCE: ORIGINAL -->
+<ol start="65" type="1">
+<li>Una fórmula <span class="math inline">\(F(P,Q)\)</span> es verdadera sólo en las filas <span class="math inline">\((V,F)\)</span> y <span class="math inline">\((F,V)\)</span>. Construye su FND canónica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-066 | PROVENANCE: ORIGINAL -->
+<ol start="66" type="1">
+<li>Para la misma fórmula del ejercicio 65, construye su FNC canónica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-067 | PROVENANCE: ORIGINAL -->
+<ol start="67" type="1">
+<li>La fórmula <span class="math inline">\(G(P,Q,R)\)</span> es falsa únicamente en la fila <span class="math inline">\((V,F,V)\)</span>. Construye su FNC canónica.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-068 | PROVENANCE: ORIGINAL -->
+<ol start="68" type="1">
+<li>Explica constructivamente por qué toda fórmula proposicional finita admite FND y FNC.</li>
+</ol>
+</section>
+<section id="l.-síntesis-y-transferencia" class="level2">
+<h2 class="anchored" data-anchor-id="l.-síntesis-y-transferencia">L. Síntesis y transferencia</h2>
+<!-- ID: MA-EX-APM-01-005-069 | PROVENANCE: ORIGINAL -->
+<ol start="69" type="1">
+<li>Sin que se indique el método, simplifica y clasifica</li>
+</ol>
+<p><span class="math display">\[
+[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\Rightarrow\neg P.
+\]</span></p>
+<!-- ID: MA-EX-APM-01-005-070 | PROVENANCE: ORIGINAL -->
+<ol start="70" type="1">
+<li>Construye una fórmula en FND que sea verdadera exactamente cuando <strong>exactamente una</strong> de <span class="math inline">\(P,Q,R\)</span> sea verdadera.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-071 | PROVENANCE: ORIGINAL -->
+<ol start="71" type="1">
+<li>Construye una FNC que sea falsa exactamente cuando <span class="math inline">\(P=V,Q=F,R=V\)</span>, y explica por qué una sola cláusula basta.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-072 | PROVENANCE: ORIGINAL -->
+<ol start="72" type="1">
+<li>Compara dos estrategias para estudiar</li>
+</ol>
+<p><span class="math display">\[
+(P\Leftrightarrow Q)\land(Q\Leftrightarrow R).
+\]</span></p>
+<p>Una debe partir de equivalencias algebraicas y otra de la tabla de verdad. Explica qué revela mejor cada método y construye una FND razonable de la fórmula.</p>
+</section>
+<section id="m.-problemas-avanzados-tipo-prueba" class="level2">
+<h2 class="anchored" data-anchor-id="m.-problemas-avanzados-tipo-prueba">M. Problemas avanzados tipo prueba</h2>
+<!-- ID: MA-EX-APM-01-005-073 | PROVENANCE: ORIGINAL | LEVEL: E -->
+<ol start="73" type="1">
+<li><strong>Nivel E — prueba algebraica larga.</strong> Demuestra, sin tabla de verdad, la <strong>ley de consenso</strong> <span class="math display">\[
+(P\land Q)\lor(\neg P\land R)\lor(Q\land R)
+\equiv
+(P\land Q)\lor(\neg P\land R).
+\]</span> La demostración debe hacer explícito por qué el término <span class="math inline">\(Q\land R\)</span> es redundante y contener una cadena suficientemente detallada de equivalencias justificadas.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-074 | PROVENANCE: ORIGINAL | LEVEL: E -->
+<ol start="74" type="1">
+<li><strong>Nivel E — resolución proposicional.</strong> Demuestra algebraicamente que <span class="math display">\[
+[(P\lor Q)\land(\neg P\lor R)]\Rightarrow(Q\lor R)
+\]</span> es una tautología. No uses una tabla de verdad como método principal: elimina primero la implicación y lleva la fórmula, mediante equivalencias, hasta <span class="math inline">\(V\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-075 | PROVENANCE: ORIGINAL | LEVEL: F -->
+<ol start="75" type="1">
+<li><strong>Nivel F — formas normales y reducción.</strong> Sea <span class="math inline">\(M(P,Q,R)\)</span> la fórmula que debe ser verdadera exactamente cuando <strong>al menos dos</strong> de <span class="math inline">\(P,Q,R\)</span> son verdaderas.</li>
+</ol>
+<ol type="a">
+<li>Construye la FND canónica de <span class="math inline">\(M\)</span>.<br>
+</li>
+<li>Obtén y demuestra una FND reducida.<br>
+</li>
+<li>Construye la FNC canónica de <span class="math inline">\(M\)</span>.<br>
+</li>
+<li>Obtén y demuestra una FNC reducida.<br>
+</li>
+<li>Demuestra algebraicamente, sin tabla, que tus formas reducidas FND y FNC son equivalentes.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-076 | PROVENANCE: ORIGINAL | LEVEL: F -->
+<ol start="76" type="1">
+<li><strong>Nivel F — normalización completa.</strong> Simplifica mediante una cadena de al menos diez transformaciones justificadas <span class="math display">\[
+F=\neg[(P\Leftrightarrow Q)\Rightarrow(R\lor\neg P)].
+\]</span> Elimina primero <span class="math inline">\(\Rightarrow\)</span> y <span class="math inline">\(\Leftrightarrow\)</span>, empuja todas las negaciones hasta literales y simplifica hasta una conjunción mínima. Explica por qué la forma final puede leerse simultáneamente como FND y como FNC.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-077 | PROVENANCE: ORIGINAL | LEVEL: F -->
+<ol start="77" type="1">
+<li><strong>Nivel F — ciclo de implicaciones.</strong> Considera <span class="math display">\[
+G=(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow P).
+\]</span></li>
+</ol>
+<ol type="a">
+<li>Obtén una FNC inmediata eliminando las implicaciones.<br>
+</li>
+<li>Deriva algebraicamente una FND reducida.<br>
+</li>
+<li>Determina exactamente qué valuaciones satisfacen <span class="math inline">\(G\)</span>.<br>
+</li>
+<li>Explica por qué <span class="math inline">\(G\)</span> expresa que <span class="math inline">\(P,Q,R\)</span> deben compartir valor de verdad.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-078 | PROVENANCE: ORIGINAL | LEVEL: G -->
+<ol start="78" type="1">
+<li><strong>Nivel G — teorema de cancelación booleana.</strong> Sean <span class="math inline">\(A,B,C\)</span> fórmulas cualesquiera. Demuestra que si <span class="math display">\[
+A\land C\equiv B\land C
+\qquad\text{y}\qquad
+A\lor C\equiv B\lor C,
+\]</span> entonces necesariamente <span class="math inline">\(A\equiv B\)</span>.</li>
+</ol>
+<p>Da dos demostraciones: una por valuaciones, separando los casos <span class="math inline">\(C=V\)</span> y <span class="math inline">\(C=F\)</span>, y otra puramente algebraica. Finalmente muestra, con contraejemplos, que ninguna de las dos hipótesis por separado basta.</p>
+<!-- ID: MA-EX-APM-01-005-079 | PROVENANCE: ORIGINAL | LEVEL: G -->
+<ol start="79" type="1">
+<li><strong>Nivel G — cuatro variables y dependencia estructural.</strong> Sea <span class="math display">\[
+H=(P\Leftrightarrow Q)\land(Q\Leftrightarrow\neg R)\land(R\Leftrightarrow S).
+\]</span></li>
+</ol>
+<ol type="a">
+<li>Sin construir una tabla completa de dieciséis filas, determina todas las valuaciones que satisfacen <span class="math inline">\(H\)</span>.<br>
+</li>
+<li>Construye la FND canónica.<br>
+</li>
+<li>Obtén una FNC compacta eliminando los bicondicionales.<br>
+</li>
+<li>Justifica rigurosamente que las dos formas obtenidas son equivalentes a <span class="math inline">\(H\)</span>.</li>
+</ol>
+<!-- ID: MA-EX-APM-01-005-080 | PROVENANCE: ORIGINAL | LEVEL: G -->
+<ol start="80" type="1">
+<li><strong>Nivel G — síntesis tipo prueba.</strong> Demuestra que <span class="math display">\[
+[(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow S)]
+\Rightarrow
+(P\Rightarrow S)
+\]</span> es una tautología de dos maneras independientes:</li>
+</ol>
+<ol type="a">
+<li>mediante una cadena algebraica extensa que elimine todas las implicaciones y termine en <span class="math inline">\(V\)</span>;<br>
+</li>
+<li>suponiendo falsa la fórmula y mostrando que las condiciones necesarias conducen a contradicción.</li>
+</ol>
+<p>Concluye explicando qué estructura general de las implicaciones está haciendo visible el ejercicio.</p>
+<hr>
+</section>
+</section>
+<section id="soluciones" class="level1">
+<h1>Soluciones</h1>
+<section id="a.-reconocer-equivalencia-y-no-equivalencia-1" class="level2">
+<h2 class="anchored" data-anchor-id="a.-reconocer-equivalencia-y-no-equivalencia-1">A. Reconocer equivalencia y no equivalencia</h2>
+<!-- ID: MA-SOL-APM-01-005-001 | FOR: MA-EX-APM-01-005-001 -->
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">1</h3>
+<p>Construimos:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(P\Rightarrow Q\)</span></th>
+<th><span class="math inline">\(\neg P\)</span></th>
+<th><span class="math inline">\(\neg P\lor Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>F</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Las columnas finales coinciden. Por tanto,</p>
+<p><span class="math inline">\(P\Rightarrow Q\equiv\neg P\lor Q\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-002 | FOR: MA-EX-APM-01-005-002 -->
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">2</h3>
+<p>No son equivalentes. Con <span class="math inline">\(P=V,Q=F\)</span>,</p>
+<p><span class="math inline">\(P\land Q=F\)</span>,</p>
+<p>pero <span class="math inline">\(P\lor Q=V\)</span>.</p>
+<p>Una sola contra-valuación basta para refutar la equivalencia.</p>
+<!-- ID: MA-SOL-APM-01-005-003 | FOR: MA-EX-APM-01-005-003 -->
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">3</h3>
+<p><span class="math inline">\(P\Leftrightarrow Q\)</span> es una <strong>fórmula</strong> cuyo valor depende de la valuación de <span class="math inline">\(P,Q\)</span>.</p>
+<p><span class="math inline">\(P\equiv Q\)</span> es una afirmación metalingüística: asegura que <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> —entendidos aquí como fórmulas— tienen el mismo valor bajo toda valuación. Para proposiciones atómicas independientes, normalmente <span class="math inline">\(P\not\equiv Q\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-004 | FOR: MA-EX-APM-01-005-004 -->
+</section>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">4</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(P\)</span></th>
+<th><span class="math inline">\(Q\)</span></th>
+<th><span class="math inline">\(P\Rightarrow Q\)</span></th>
+<th><span class="math inline">\(\neg Q\)</span></th>
+<th><span class="math inline">\(\neg P\)</span></th>
+<th><span class="math inline">\(\neg Q\Rightarrow\neg P\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>V</td>
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr class="odd">
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>F</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+<td>V</td>
+</tr>
+</tbody>
+</table>
+<p>Las columnas relevantes son <span class="math inline">\(V,F,V,V\)</span> en ambos casos. Son equivalentes.</p>
+<!-- ID: MA-SOL-APM-01-005-005 | FOR: MA-EX-APM-01-005-005 -->
+</section>
+<section id="section-4" class="level3">
+<h3 class="anchored" data-anchor-id="section-4">5</h3>
+<p>No.&nbsp;Con <span class="math inline">\(P=V,Q=F\)</span>,</p>
+<p><span class="math inline">\(P\Rightarrow Q=F\)</span>,</p>
+<p>mientras <span class="math inline">\(Q\Rightarrow P=V\)</span> porque su antecedente <span class="math inline">\(Q\)</span> es falso.</p>
+<!-- ID: MA-SOL-APM-01-005-006 | FOR: MA-EX-APM-01-005-006 -->
+</section>
+<section id="section-5" class="level3">
+<h3 class="anchored" data-anchor-id="section-5">6</h3>
+<p>Por definición, <span class="math inline">\(A\equiv B\)</span> significa que para toda valuación <span class="math inline">\(v\)</span>, <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> reciben el mismo valor.</p>
+<p>El bicondicional <span class="math inline">\(A\Leftrightarrow B\)</span> es verdadero exactamente cuando sus componentes tienen el mismo valor. Por tanto:</p>
+<ul>
+<li>si <span class="math inline">\(A\equiv B\)</span>, el bicondicional es verdadero en toda valuación y es tautología;</li>
+<li>si <span class="math inline">\(A\Leftrightarrow B\)</span> es tautología, en toda valuación sus componentes coinciden, luego <span class="math inline">\(A\equiv B\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="b.-leyes-básicas-1" class="level2">
+<h2 class="anchored" data-anchor-id="b.-leyes-básicas-1">B. Leyes básicas</h2>
+<!-- ID: MA-SOL-APM-01-005-007 | FOR: MA-EX-APM-01-005-007 -->
+<section id="section-6" class="level3">
+<h3 class="anchored" data-anchor-id="section-6">7</h3>
+<p><span class="math inline">\(P\land V\equiv P\)</span> por identidad de la conjunción.</p>
+<!-- ID: MA-SOL-APM-01-005-008 | FOR: MA-EX-APM-01-005-008 -->
+</section>
+<section id="section-7" class="level3">
+<h3 class="anchored" data-anchor-id="section-7">8</h3>
+<p><span class="math inline">\(P\lor F\equiv P\)</span> por identidad de la disyunción.</p>
+<!-- ID: MA-SOL-APM-01-005-009 | FOR: MA-EX-APM-01-005-009 -->
+</section>
+<section id="section-8" class="level3">
+<h3 class="anchored" data-anchor-id="section-8">9</h3>
+<p><span class="math display">\[
+(P\lor P)\land Q\equiv P\land Q
+\]</span></p>
+<p>por idempotencia de <span class="math inline">\(\lor\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-010 | FOR: MA-EX-APM-01-005-010 -->
+</section>
+<section id="section-9" class="level3">
+<h3 class="anchored" data-anchor-id="section-9">10</h3>
+<p><span class="math inline">\(P\lor\neg P\equiv V\)</span> por complemento. Es una tautología.</p>
+<!-- ID: MA-SOL-APM-01-005-011 | FOR: MA-EX-APM-01-005-011 -->
+</section>
+<section id="section-10" class="level3">
+<h3 class="anchored" data-anchor-id="section-10">11</h3>
+<p><span class="math inline">\(P\land\neg P\equiv F\)</span> por complemento. Es una contradicción.</p>
+<!-- ID: MA-SOL-APM-01-005-012 | FOR: MA-EX-APM-01-005-012 -->
+</section>
+<section id="section-11" class="level3">
+<h3 class="anchored" data-anchor-id="section-11">12</h3>
+<p>Por doble negación aplicada a la subfórmula completa,</p>
+<p><span class="math inline">\(\neg\neg(P\lor Q)\equiv P\lor Q\)</span>.</p>
+</section>
+</section>
+<section id="c.-reordenar-y-reagrupar-estratégicamente-1" class="level2">
+<h2 class="anchored" data-anchor-id="c.-reordenar-y-reagrupar-estratégicamente-1">C. Reordenar y reagrupar estratégicamente</h2>
+<!-- ID: MA-SOL-APM-01-005-013 | FOR: MA-EX-APM-01-005-013 -->
+<section id="section-12" class="level3">
+<h3 class="anchored" data-anchor-id="section-12">13</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(P\lor Q)\lor\neg P
+&amp;\equiv P\lor(Q\lor\neg P) &amp;&amp; \text{[asociatividad]}\\
+&amp;\equiv P\lor(\neg P\lor Q) &amp;&amp; \text{[conmutatividad]}\\
+&amp;\equiv(P\lor\neg P)\lor Q &amp;&amp; \text{[asociatividad]}\\
+&amp;\equiv V\lor Q &amp;&amp; \text{[complemento]}\\
+&amp;\equiv V. &amp;&amp; \text{[dominación]}
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-014 | FOR: MA-EX-APM-01-005-014 -->
+</section>
+<section id="section-13" class="level3">
+<h3 class="anchored" data-anchor-id="section-13">14</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(P\land Q)\land P
+&amp;\equiv P\land(Q\land P)\\
+&amp;\equiv P\land(P\land Q)\\
+&amp;\equiv(P\land P)\land Q\\
+&amp;\equiv P\land Q.
+\end{aligned}
+\]</span></p>
+<p>Se usaron asociatividad, conmutatividad e idempotencia.</p>
+<!-- ID: MA-SOL-APM-01-005-015 | FOR: MA-EX-APM-01-005-015 -->
+</section>
+<section id="section-14" class="level3">
+<h3 class="anchored" data-anchor-id="section-14">15</h3>
+<p><span class="math display">\[
+\begin{aligned}
+Q\lor(\neg P\lor P)
+&amp;\equiv Q\lor(P\lor\neg P) &amp;&amp; \text{[conmutatividad]}\\
+&amp;\equiv Q\lor V &amp;&amp; \text{[complemento]}\\
+&amp;\equiv V. &amp;&amp; \text{[dominación]}
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-016 | FOR: MA-EX-APM-01-005-016 -->
+</section>
+<section id="section-15" class="level3">
+<h3 class="anchored" data-anchor-id="section-15">16</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(Q\land\neg P)\land P
+&amp;\equiv Q\land(\neg P\land P) &amp;&amp; \text{[asociatividad]}\\
+&amp;\equiv Q\land F &amp;&amp; \text{[complemento]}\\
+&amp;\equiv F. &amp;&amp; \text{[dominación]}
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-017 | FOR: MA-EX-APM-01-005-017 -->
+</section>
+<section id="section-16" class="level3">
+<h3 class="anchored" data-anchor-id="section-16">17</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(P\lor Q)\lor(R\lor\neg Q)
+&amp;\equiv P\lor Q\lor R\lor\neg Q\\
+&amp;\equiv P\lor R\lor(Q\lor\neg Q)\\
+&amp;\equiv P\lor R\lor V\\
+&amp;\equiv V.
+\end{aligned}
+\]</span></p>
+<p>Las dos primeras reescrituras condensan asociatividad y conmutatividad.</p>
+<!-- ID: MA-SOL-APM-01-005-018 | FOR: MA-EX-APM-01-005-018 -->
+</section>
+<section id="section-17" class="level3">
+<h3 class="anchored" data-anchor-id="section-17">18</h3>
+<p>Conmutatividad y asociatividad no suelen eliminar conectivos; permiten colocar componentes en una posición útil para otra ley. Por ejemplo,</p>
+<p><span class="math inline">\(Q\lor(\neg P\lor P)\)</span></p>
+<p>se reordena como <span class="math inline">\(Q\lor(P\lor\neg P)\)</span> para hacer visible <span class="math inline">\(P\lor\neg P\equiv V\)</span>, después de lo cual dominación produce <span class="math inline">\(V\)</span>.</p>
+</section>
+</section>
+<section id="d.-de-morgan-y-negaciones-anidadas-1" class="level2">
+<h2 class="anchored" data-anchor-id="d.-de-morgan-y-negaciones-anidadas-1">D. De Morgan y negaciones anidadas</h2>
+<!-- ID: MA-SOL-APM-01-005-019 | FOR: MA-EX-APM-01-005-019 -->
+<section id="section-18" class="level3">
+<h3 class="anchored" data-anchor-id="section-18">19</h3>
+<p><span class="math inline">\(\neg(P\land Q)\equiv\neg P\lor\neg Q\)</span>.</p>
+<p>Las negaciones ya afectan sólo a literales.</p>
+<!-- ID: MA-SOL-APM-01-005-020 | FOR: MA-EX-APM-01-005-020 -->
+</section>
+<section id="section-19" class="level3">
+<h3 class="anchored" data-anchor-id="section-19">20</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\neg(P\lor(Q\land R))
+&amp;\equiv\neg P\land\neg(Q\land R)\\
+&amp;\equiv\neg P\land(\neg Q\lor\neg R).
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-021 | FOR: MA-EX-APM-01-005-021 -->
+</section>
+<section id="section-20" class="level3">
+<h3 class="anchored" data-anchor-id="section-20">21</h3>
+<p>La doble negación afecta a toda la subfórmula:</p>
+<p><span class="math inline">\(\neg\neg(\neg P\lor Q)\equiv\neg P\lor Q\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-022 | FOR: MA-EX-APM-01-005-022 -->
+</section>
+<section id="section-21" class="level3">
+<h3 class="anchored" data-anchor-id="section-21">22</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\neg[(P\lor Q)\land(\neg R\lor S)]
+&amp;\equiv\neg(P\lor Q)\lor\neg(\neg R\lor S)\\
+&amp;\equiv(\neg P\land\neg Q)\lor(\neg\neg R\land\neg S)\\
+&amp;\equiv(\neg P\land\neg Q)\lor(R\land\neg S).
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-023 | FOR: MA-EX-APM-01-005-023 -->
+</section>
+<section id="section-22" class="level3">
+<h3 class="anchored" data-anchor-id="section-22">23</h3>
+<p>No.&nbsp;Con <span class="math inline">\(P=V,Q=F\)</span>:</p>
+<p><span class="math inline">\(\neg(P\land Q)=\neg F=V\)</span>,</p>
+<p>pero <span class="math inline">\(\neg P\land\neg Q=F\land V=F\)</span>.</p>
+<p>La ley correcta cambia <span class="math inline">\(\land\)</span> por <span class="math inline">\(\lor\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-024 | FOR: MA-EX-APM-01-005-024 -->
+</section>
+<section id="section-23" class="level3">
+<h3 class="anchored" data-anchor-id="section-23">24</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\neg[\neg P\lor\neg(Q\land R)]
+&amp;\equiv\neg\neg P\land\neg\neg(Q\land R) &amp;&amp; \text{[De Morgan]}\\
+&amp;\equiv P\land(Q\land R) &amp;&amp; \text{[doble negación]}\\
+&amp;\equiv P\land Q\land R. &amp;&amp; \text{[asociatividad]}
+\end{aligned}
+\]</span></p>
+</section>
+</section>
+<section id="e.-distributividad-y-absorción-1" class="level2">
+<h2 class="anchored" data-anchor-id="e.-distributividad-y-absorción-1">E. Distributividad y absorción</h2>
+<!-- ID: MA-SOL-APM-01-005-025 | FOR: MA-EX-APM-01-005-025 -->
+<section id="section-24" class="level3">
+<h3 class="anchored" data-anchor-id="section-24">25</h3>
+<p><span class="math inline">\(P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R)\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-026 | FOR: MA-EX-APM-01-005-026 -->
+</section>
+<section id="section-25" class="level3">
+<h3 class="anchored" data-anchor-id="section-25">26</h3>
+<p><span class="math inline">\(P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-027 | FOR: MA-EX-APM-01-005-027 -->
+</section>
+<section id="section-26" class="level3">
+<h3 class="anchored" data-anchor-id="section-26">27</h3>
+<p>Por distributividad en sentido inverso,</p>
+<p><span class="math inline">\((P\land Q)\lor(P\land R)\equiv P\land(Q\lor R)\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-028 | FOR: MA-EX-APM-01-005-028 -->
+</section>
+<section id="section-27" class="level3">
+<h3 class="anchored" data-anchor-id="section-27">28</h3>
+<p>Una derivación de absorción es:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\lor(P\land Q)
+&amp;\equiv(P\land V)\lor(P\land Q) &amp;&amp; \text{[identidad]}\\
+&amp;\equiv P\land(V\lor Q) &amp;&amp; \text{[distributividad inversa]}\\
+&amp;\equiv P\land V &amp;&amp; \text{[dominación]}\\
+&amp;\equiv P. &amp;&amp; \text{[identidad]}
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-029 | FOR: MA-EX-APM-01-005-029 -->
+</section>
+<section id="section-28" class="level3">
+<h3 class="anchored" data-anchor-id="section-28">29</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(Q\land P)\lor P
+&amp;\equiv(P\land Q)\lor P &amp;&amp; \text{[conmutatividad]}\\
+&amp;\equiv P\lor(P\land Q) &amp;&amp; \text{[conmutatividad]}\\
+&amp;\equiv P. &amp;&amp; \text{[absorción]}
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-030 | FOR: MA-EX-APM-01-005-030 -->
+</section>
+<section id="section-29" class="level3">
+<h3 class="anchored" data-anchor-id="section-29">30</h3>
+<p>Usamos la distributividad inversa en la forma <span class="math inline">\((A\lor B)\land(A\lor C)\equiv A\lor(B\land C)\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(P\lor Q)\land(P\lor\neg Q)
+&amp;\equiv P\lor(Q\land\neg Q)\\
+&amp;\equiv P\lor F\\
+&amp;\equiv P.
+\end{aligned}
+\]</span></p>
+</section>
+</section>
+<section id="f.-eliminar-implicaciones-y-bicondicionales-1" class="level2">
+<h2 class="anchored" data-anchor-id="f.-eliminar-implicaciones-y-bicondicionales-1">F. Eliminar implicaciones y bicondicionales</h2>
+<!-- ID: MA-SOL-APM-01-005-031 | FOR: MA-EX-APM-01-005-031 -->
+<section id="section-30" class="level3">
+<h3 class="anchored" data-anchor-id="section-30">31</h3>
+<p><span class="math inline">\(P\Rightarrow Q\equiv\neg P\lor Q\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-032 | FOR: MA-EX-APM-01-005-032 -->
+</section>
+<section id="section-31" class="level3">
+<h3 class="anchored" data-anchor-id="section-31">32</h3>
+<p><span class="math display">\[
+\begin{aligned}
+\neg(P\Rightarrow Q)
+&amp;\equiv\neg(\neg P\lor Q)\\
+&amp;\equiv\neg\neg P\land\neg Q\\
+&amp;\equiv P\land\neg Q.
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-033 | FOR: MA-EX-APM-01-005-033 -->
+</section>
+<section id="section-32" class="level3">
+<h3 class="anchored" data-anchor-id="section-32">33</h3>
+<p><span class="math inline">\((P\Rightarrow Q)\land R\equiv(\neg P\lor Q)\land R\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-034 | FOR: MA-EX-APM-01-005-034 -->
+</section>
+<section id="section-33" class="level3">
+<h3 class="anchored" data-anchor-id="section-33">34</h3>
+<p><span class="math display">\[
+P\Leftrightarrow Q
+\equiv(P\Rightarrow Q)\land(Q\Rightarrow P)
+\equiv(\neg P\lor Q)\land(\neg Q\lor P).
+\]</span></p>
+<p>Ésta es una FNC.</p>
+<!-- ID: MA-SOL-APM-01-005-035 | FOR: MA-EX-APM-01-005-035 -->
+</section>
+<section id="section-34" class="level3">
+<h3 class="anchored" data-anchor-id="section-34">35</h3>
+<p>El bicondicional es verdadero cuando ambos valores coinciden:</p>
+<p><span class="math inline">\(P\Leftrightarrow Q\equiv(P\land Q)\lor(\neg P\land\neg Q)\)</span>.</p>
+<p>Ésta es una FND.</p>
+<!-- ID: MA-SOL-APM-01-005-036 | FOR: MA-EX-APM-01-005-036 -->
+</section>
+<section id="section-35" class="level3">
+<h3 class="anchored" data-anchor-id="section-35">36</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(P\Leftrightarrow Q)\Rightarrow R
+&amp;\equiv\neg(P\Leftrightarrow Q)\lor R\\
+&amp;\equiv\neg[(P\land Q)\lor(\neg P\land\neg Q)]\lor R.
+\end{aligned}
+\]</span></p>
+<p>Ya no aparecen <span class="math inline">\(\Rightarrow\)</span> ni <span class="math inline">\(\Leftrightarrow\)</span>. Si se quisiera continuar hacia forma normal, aplicaríamos De Morgan a la negación exterior.</p>
+</section>
+</section>
+<section id="g.-cadenas-largas-justificadas-1" class="level2">
+<h2 class="anchored" data-anchor-id="g.-cadenas-largas-justificadas-1">G. Cadenas largas justificadas</h2>
+<!-- ID: MA-SOL-APM-01-005-037 | FOR: MA-EX-APM-01-005-037 -->
+<section id="section-36" class="level3">
+<h3 class="anchored" data-anchor-id="section-36">37</h3>
+<p>Aplicamos deliberadamente una sola transformación sustantiva por línea:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\\
+&amp;\equiv \neg(P\Rightarrow Q)\lor\neg(P\Rightarrow\neg Q)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv \neg(\neg P\lor Q)\lor\neg(P\Rightarrow\neg Q)
+&amp;&amp;\text{[eliminar la primera implicación]}\\
+&amp;\equiv \neg(\neg P\lor Q)\lor\neg(\neg P\lor\neg Q)
+&amp;&amp;\text{[eliminar la segunda implicación]}\\
+&amp;\equiv (\neg\neg P\land\neg Q)\lor\neg(\neg P\lor\neg Q)
+&amp;&amp;\text{[De Morgan, primer término]}\\
+&amp;\equiv (\neg\neg P\land\neg Q)\lor(\neg\neg P\land\neg\neg Q)
+&amp;&amp;\text{[De Morgan, segundo término]}\\
+&amp;\equiv (P\land\neg Q)\lor(\neg\neg P\land\neg\neg Q)
+&amp;&amp;\text{[doble negación]}\\
+&amp;\equiv (P\land\neg Q)\lor(P\land Q)
+&amp;&amp;\text{[doble negación]}\\
+&amp;\equiv P\land(\neg Q\lor Q)
+&amp;&amp;\text{[distributividad inversa]}\\
+&amp;\equiv P\land V
+&amp;&amp;\text{[complemento]}\\
+&amp;\equiv P.
+&amp;&amp;\text{[identidad]}
+\end{aligned}
+\]</span></p>
+<p>La ruta sistemática tiene diez transformaciones. Una ruta estratégica más corta sería factorizar antes de negar; ambas son correctas, pero ésta hace visible la disciplina de sustitución local.</p>
+<!-- ID: MA-SOL-APM-01-005-038 | FOR: MA-EX-APM-01-005-038 -->
+</section>
+<section id="section-37" class="level3">
+<h3 class="anchored" data-anchor-id="section-37">38</h3>
+<p>Sea</p>
+<p><span class="math inline">\(F=[(P\Rightarrow Q)\land(Q\Rightarrow R)\land P]\Rightarrow R\)</span>.</p>
+<p>Eliminamos la implicación exterior y luego las interiores:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv\neg[(P\Rightarrow Q)\land(Q\Rightarrow R)\land P]\lor R\\
+&amp;\equiv\neg[(\neg P\lor Q)\land(\neg Q\lor R)\land P]\lor R\\
+&amp;\equiv[\neg(\neg P\lor Q)\lor\neg(\neg Q\lor R)\lor\neg P]\lor R\\
+&amp;\equiv[(P\land\neg Q)\lor(Q\land\neg R)\lor\neg P]\lor R\\
+&amp;\equiv(\neg P\lor(P\land\neg Q))\lor(Q\land\neg R)\lor R\\
+&amp;\equiv(\neg P\lor\neg Q)\lor(Q\land\neg R)\lor R\\
+&amp;\equiv\neg P\lor[\neg Q\lor(Q\land\neg R)]\lor R\\
+&amp;\equiv\neg P\lor(\neg Q\lor\neg R)\lor R\\
+&amp;\equiv\neg P\lor\neg Q\lor(\neg R\lor R)\\
+&amp;\equiv\neg P\lor\neg Q\lor V\\
+&amp;\equiv V.
+\end{aligned}
+\]</span></p>
+<p>En dos pasos usamos la identidad derivada <span class="math inline">\(A\lor(\neg A\land B)\equiv A\lor B\)</span>, que puede verificarse por distributividad y absorción. La conclusión <span class="math inline">\(F\equiv V\)</span> demuestra que la fórmula es tautológica.</p>
+<p><strong>Cómo pensar este problema.</strong> La fórmula expresa transitividad del razonamiento: si <span class="math inline">\(P\)</span> lleva a <span class="math inline">\(Q\)</span>, <span class="math inline">\(Q\)</span> lleva a <span class="math inline">\(R\)</span> y además <span class="math inline">\(P\)</span> ocurre, entonces <span class="math inline">\(R\)</span> debe ocurrir. La derivación algebraica confirma esa estructura.</p>
+<!-- ID: MA-SOL-APM-01-005-039 | FOR: MA-EX-APM-01-005-039 -->
+</section>
+<section id="section-38" class="level3">
+<h3 class="anchored" data-anchor-id="section-38">39</h3>
+<p>Partimos de la definición del bicondicional por dos condicionales y reemplazamos una subfórmula por vez:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\neg(P\Leftrightarrow Q)
+&amp;\equiv\neg[(P\Rightarrow Q)\land(Q\Rightarrow P)]
+&amp;&amp;\text{[bicondicional]}\\
+&amp;\equiv\neg(P\Rightarrow Q)\lor\neg(Q\Rightarrow P)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv\neg(\neg P\lor Q)\lor\neg(Q\Rightarrow P)
+&amp;&amp;\text{[eliminar primera implicación]}\\
+&amp;\equiv\neg(\neg P\lor Q)\lor\neg(\neg Q\lor P)
+&amp;&amp;\text{[eliminar segunda implicación]}\\
+&amp;\equiv(\neg\neg P\land\neg Q)\lor\neg(\neg Q\lor P)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv(\neg\neg P\land\neg Q)\lor(\neg\neg Q\land\neg P)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv(P\land\neg Q)\lor(\neg\neg Q\land\neg P)
+&amp;&amp;\text{[doble negación]}\\
+&amp;\equiv(P\land\neg Q)\lor(Q\land\neg P)
+&amp;&amp;\text{[doble negación]}\\
+&amp;\equiv(P\land\neg Q)\lor(\neg P\land Q).
+&amp;&amp;\text{[conmutatividad]}
+\end{aligned}
+\]</span></p>
+<p>La fórmula final dice exactamente que <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> tienen valores distintos: uno verdadero y el otro falso.</p>
+<!-- ID: MA-SOL-APM-01-005-040 | FOR: MA-EX-APM-01-005-040 -->
+</section>
+<section id="section-39" class="level3">
+<h3 class="anchored" data-anchor-id="section-39">40</h3>
+<p>Aplicamos los reemplazos de manera local para que la cadena sea auditable:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]
+\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]\\
+&amp;\equiv[(\neg P\lor Q)\land(P\Rightarrow\neg Q)]
+\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]
+&amp;&amp;\text{[eliminar implicación]}\\
+&amp;\equiv[(\neg P\lor Q)\land(\neg P\lor\neg Q)]
+\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]
+&amp;&amp;\text{[eliminar implicación]}\\
+&amp;\equiv[\neg P\lor(Q\land\neg Q)]
+\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]
+&amp;&amp;\text{[distributividad inversa]}\\
+&amp;\equiv[\neg P\lor F]
+\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]
+&amp;&amp;\text{[complemento]}\\
+&amp;\equiv\neg P\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]
+&amp;&amp;\text{[identidad]}\\
+&amp;\equiv\neg P\lor[(P\lor R)\land(\neg P\Rightarrow\neg R)]
+&amp;&amp;\text{[eliminar implicación]}\\
+&amp;\equiv\neg P\lor[(P\lor R)\land(P\lor\neg R)]
+&amp;&amp;\text{[eliminar implicación]}\\
+&amp;\equiv\neg P\lor[P\lor(R\land\neg R)]
+&amp;&amp;\text{[distributividad inversa]}\\
+&amp;\equiv\neg P\lor(P\lor F)
+&amp;&amp;\text{[complemento]}\\
+&amp;\equiv\neg P\lor P
+&amp;&amp;\text{[identidad]}\\
+&amp;\equiv V.
+&amp;&amp;\text{[complemento]}
+\end{aligned}
+\]</span></p>
+<p>La fórmula es una <strong>tautología</strong>. Estructuralmente, el primer bloque equivale a <span class="math inline">\(\neg P\)</span> y el segundo a <span class="math inline">\(P\)</span>; por eso su disyunción cubre todos los casos.</p>
+<!-- ID: MA-SOL-APM-01-005-041 | FOR: MA-EX-APM-01-005-041 -->
+</section>
+<section id="section-40" class="level3">
+<h3 class="anchored" data-anchor-id="section-40">41</h3>
+<p><span class="math display">\[
+\begin{aligned}
+(P\Rightarrow Q)\land(P\Rightarrow\neg Q)
+&amp;\equiv(\neg P\lor Q)\land(\neg P\lor\neg Q)\\
+&amp;\equiv\neg P\lor(Q\land\neg Q)\\
+&amp;\equiv\neg P\lor F\\
+&amp;\equiv\neg P.
+\end{aligned}
+\]</span></p>
+<p>La fórmula afirma, en efecto, que si <span class="math inline">\(P\)</span> obligara simultáneamente a <span class="math inline">\(Q\)</span> y a <span class="math inline">\(\neg Q\)</span>, entonces <span class="math inline">\(P\)</span> no puede ser verdadero.</p>
+<!-- ID: MA-SOL-APM-01-005-042 | FOR: MA-EX-APM-01-005-042 -->
+</section>
+<section id="section-41" class="level3">
+<h3 class="anchored" data-anchor-id="section-41">42</h3>
+<p>Aplicamos una transformación local por línea:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\neg[(P\Rightarrow Q)\lor(R\Rightarrow P)]\\
+&amp;\equiv\neg(P\Rightarrow Q)\land\neg(R\Rightarrow P)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv\neg(\neg P\lor Q)\land\neg(R\Rightarrow P)
+&amp;&amp;\text{[eliminar primera implicación]}\\
+&amp;\equiv\neg(\neg P\lor Q)\land\neg(\neg R\lor P)
+&amp;&amp;\text{[eliminar segunda implicación]}\\
+&amp;\equiv(\neg\neg P\land\neg Q)\land\neg(\neg R\lor P)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv(\neg\neg P\land\neg Q)\land(\neg\neg R\land\neg P)
+&amp;&amp;\text{[De Morgan]}\\
+&amp;\equiv(P\land\neg Q)\land(\neg\neg R\land\neg P)
+&amp;&amp;\text{[doble negación]}\\
+&amp;\equiv(P\land\neg Q)\land(R\land\neg P)
+&amp;&amp;\text{[doble negación]}\\
+&amp;\equiv(P\land\neg P)\land(\neg Q\land R)
+&amp;&amp;\text{[conmutatividad y asociatividad]}\\
+&amp;\equiv F\land(\neg Q\land R)
+&amp;&amp;\text{[complemento]}\\
+&amp;\equiv F.
+&amp;&amp;\text{[dominación]}
+\end{aligned}
+\]</span></p>
+<p>La contradicción tiene además una lectura semántica: para que <span class="math inline">\(P\Rightarrow Q\)</span> sea falsa necesitamos <span class="math inline">\(P=V\)</span>, mientras para que <span class="math inline">\(R\Rightarrow P\)</span> sea falsa necesitamos <span class="math inline">\(P=F\)</span>. Es imposible satisfacer ambas exigencias a la vez.</p>
+<!-- ID: MA-SOL-APM-01-005-043 | FOR: MA-EX-APM-01-005-043 -->
+</section>
+<section id="section-42" class="level3">
+<h3 class="anchored" data-anchor-id="section-42">43</h3>
+<p><span class="math display">\[
+\begin{aligned}
+P\Rightarrow(Q\land R)
+&amp;\equiv\neg P\lor(Q\land R) &amp;&amp; \text{[eliminar $\Rightarrow$]}\\
+&amp;\equiv(\neg P\lor Q)\land(\neg P\lor R) &amp;&amp; \text{[distributividad]}\\
+&amp;\equiv(P\Rightarrow Q)\land(P\Rightarrow R). &amp;&amp; \text{[reintroducir $\Rightarrow$]}
+\end{aligned}
+\]</span></p>
+<p>Cada paso es reversible, por lo que tenemos equivalencia.</p>
+<!-- ID: MA-SOL-APM-01-005-044 | FOR: MA-EX-APM-01-005-044 -->
+</section>
+<section id="section-43" class="level3">
+<h3 class="anchored" data-anchor-id="section-43">44</h3>
+<p><strong>Ruta 1: factorizar respecto de <span class="math inline">\(P\)</span>.</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q)\\
+&amp;\equiv P\land(Q\lor\neg Q)\lor(\neg P\land Q)\\
+&amp;\equiv P\lor(\neg P\land Q)\\
+&amp;\equiv(P\lor\neg P)\land(P\lor Q)\\
+&amp;\equiv V\land(P\lor Q)\\
+&amp;\equiv P\lor Q.
+\end{aligned}
+\]</span></p>
+<p><strong>Ruta 2: factorizar respecto de <span class="math inline">\(Q\)</span> los términos primero y tercero.</strong></p>
+<p>Reordenamos:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q)\\
+&amp;\equiv[(P\land Q)\lor(\neg P\land Q)]\lor(P\land\neg Q)\\
+&amp;\equiv[(P\lor\neg P)\land Q]\lor(P\land\neg Q)\\
+&amp;\equiv Q\lor(P\land\neg Q)\\
+&amp;\equiv(Q\lor P)\land(Q\lor\neg Q)\\
+&amp;\equiv(P\lor Q)\land V\\
+&amp;\equiv P\lor Q.
+\end{aligned}
+\]</span></p>
+<p>Las rutas tienen longitudes semejantes pero hacen visibles estructuras distintas. La primera reconoce una partición por <span class="math inline">\(Q\)</span> dentro del caso <span class="math inline">\(P\)</span>; la segunda reconoce una partición por <span class="math inline">\(P\)</span> dentro del caso <span class="math inline">\(Q\)</span>.</p>
+</section>
+</section>
+<section id="h.-diagnóstico-de-derivaciones-1" class="level2">
+<h2 class="anchored" data-anchor-id="h.-diagnóstico-de-derivaciones-1">H. Diagnóstico de derivaciones</h2>
+<!-- ID: MA-SOL-APM-01-005-045 | FOR: MA-EX-APM-01-005-045 -->
+<section id="section-44" class="level3">
+<h3 class="anchored" data-anchor-id="section-44">45</h3>
+<p>El primer paso es inválido:</p>
+<p><span class="math inline">\(\neg(P\land Q)\not\equiv\neg P\land\neg Q\)</span>.</p>
+<p>De Morgan exige cambiar <span class="math inline">\(\land\)</span> por <span class="math inline">\(\lor\)</span>:</p>
+<p><span class="math inline">\(\neg(P\land Q)\equiv\neg P\lor\neg Q\)</span>.</p>
+<p>Por ejemplo, con <span class="math inline">\(P=V,Q=F\)</span>, la fórmula correcta vale <span class="math inline">\(V\)</span>, mientras <span class="math inline">\(\neg P\land\neg Q\)</span> vale <span class="math inline">\(F\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-046 | FOR: MA-EX-APM-01-005-046 -->
+</section>
+<section id="section-45" class="level3">
+<h3 class="anchored" data-anchor-id="section-45">46</h3>
+<p>Se aplicó distributividad de forma incompleta. La ley correcta es</p>
+<p><span class="math inline">\(P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)\)</span>.</p>
+<p>El factor <span class="math inline">\(P\)</span> debe aparecer en <strong>ambas</strong> cláusulas.</p>
+<!-- ID: MA-SOL-APM-01-005-047 | FOR: MA-EX-APM-01-005-047 -->
+</section>
+<section id="section-46" class="level3">
+<h3 class="anchored" data-anchor-id="section-46">47</h3>
+<p>El primer paso es inválido. La eliminación correcta de la implicación es</p>
+<p><span class="math inline">\(P\Rightarrow Q\equiv\neg P\lor Q\)</span>,</p>
+<p>no <span class="math inline">\(P\lor Q\)</span>.</p>
+<p>Con <span class="math inline">\(P=V,Q=F\)</span>, el condicional vale <span class="math inline">\(F\)</span> y <span class="math inline">\(P\lor Q\)</span> vale <span class="math inline">\(V\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-048 | FOR: MA-EX-APM-01-005-048 -->
+</section>
+<section id="section-47" class="level3">
+<h3 class="anchored" data-anchor-id="section-47">48</h3>
+<p>La distribución fue mal aplicada. De <span class="math inline">\(P\lor(P\land Q)\)</span> se obtiene</p>
+<p><span class="math display">\[(P\lor P)\land(P\lor Q),\]</span></p>
+<p>no <span class="math inline">\((P\lor P)\land Q\)</span>.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+(P\lor P)\land(P\lor Q)
+\equiv P\land(P\lor Q)
+\equiv P
+\]</span></p>
+<p>por idempotencia y absorción.</p>
+<!-- ID: MA-SOL-APM-01-005-049 | FOR: MA-EX-APM-01-005-049 -->
+</section>
+<section id="section-48" class="level3">
+<h3 class="anchored" data-anchor-id="section-48">49</h3>
+<p>Sin paréntesis, <span class="math inline">\(P\lor\neg P\land Q\)</span> es ambiguo o depende de una convención de precedencia; además no muestra correctamente la factorización.</p>
+<p>La derivación correcta es</p>
+<p><span class="math display">\[
+\begin{aligned}
+(P\land Q)\lor(\neg P\land Q)
+&amp;\equiv(P\lor\neg P)\land Q\\
+&amp;\equiv V\land Q\\
+&amp;\equiv Q.
+\end{aligned}
+\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-050 | FOR: MA-EX-APM-01-005-050 -->
+</section>
+<section id="section-49" class="level3">
+<h3 class="anchored" data-anchor-id="section-49">50</h3>
+<p>Una cadena de equivalencias necesita afirmar que cada fórmula puede sustituirse por la siguiente en ambas direcciones semánticamente. El símbolo apropiado es <span class="math inline">\(\equiv\)</span> en el metanivel de la derivación:</p>
+<p><span class="math inline">\(P\Rightarrow Q\equiv\neg P\lor Q\)</span>.</p>
+<p>Escribir sólo una implicación entre las dos fórmulas afirmaría una relación más débil y no justificaría un reemplazo reversible en una cadena de equivalencias.</p>
+</section>
+</section>
+<section id="i.-forma-normal-disyuntiva-1" class="level2">
+<h2 class="anchored" data-anchor-id="i.-forma-normal-disyuntiva-1">I. Forma normal disyuntiva</h2>
+<!-- ID: MA-SOL-APM-01-005-051 | FOR: MA-EX-APM-01-005-051 -->
+<section id="section-50" class="level3">
+<h3 class="anchored" data-anchor-id="section-50">51</h3>
+<p>Sí. Es una disyunción de dos términos conjuntivos:</p>
+<ul>
+<li><span class="math inline">\(P\land\neg Q\)</span>;</li>
+<li><span class="math inline">\(R\land Q\)</span>.</li>
+</ul>
+<p>Cada componente de esos términos es un literal.</p>
+<!-- ID: MA-SOL-APM-01-005-052 | FOR: MA-EX-APM-01-005-052 -->
+</section>
+<section id="section-51" class="level3">
+<h3 class="anchored" data-anchor-id="section-51">52</h3>
+<p>No está en FND porque contiene una disyunción dentro de una conjunción. Distribuimos:</p>
+<p><span class="math inline">\(P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R)\)</span>.</p>
+<p>La forma final sí es FND.</p>
+<!-- ID: MA-SOL-APM-01-005-053 | FOR: MA-EX-APM-01-005-053 -->
+</section>
+<section id="section-52" class="level3">
+<h3 class="anchored" data-anchor-id="section-52">53</h3>
+<p><span class="math display">\[
+\begin{aligned}
+P\land(Q\Rightarrow R)
+&amp;\equiv P\land(\neg Q\lor R)\\
+&amp;\equiv(P\land\neg Q)\lor(P\land R).
+\end{aligned}
+\]</span></p>
+<p>Es FND.</p>
+<!-- ID: MA-SOL-APM-01-005-054 | FOR: MA-EX-APM-01-005-054 -->
+</section>
+<section id="section-53" class="level3">
+<h3 class="anchored" data-anchor-id="section-53">54</h3>
+<p>Ya obtuvimos:</p>
+<p><span class="math inline">\(\neg(P\Rightarrow Q)\equiv P\land\neg Q\)</span>.</p>
+<p>Un único término conjuntivo cuenta como FND.</p>
+<!-- ID: MA-SOL-APM-01-005-055 | FOR: MA-EX-APM-01-005-055 -->
+</section>
+<section id="section-54" class="level3">
+<h3 class="anchored" data-anchor-id="section-54">55</h3>
+<p>Una FND natural es</p>
+<p><span class="math inline">\((P\land Q)\lor(\neg P\land\neg Q)\)</span>.</p>
+<p>Cada término representa uno de los dos casos en que <span class="math inline">\(P,Q\)</span> comparten valor de verdad.</p>
+<!-- ID: MA-SOL-APM-01-005-056 | FOR: MA-EX-APM-01-005-056 -->
+</section>
+<section id="section-55" class="level3">
+<h3 class="anchored" data-anchor-id="section-55">56</h3>
+<p><span class="math display">\[
+(P\lor Q)\land R
+\equiv(P\land R)\lor(Q\land R).
+\]</span></p>
+<p>Los dos términos finales son conjunciones de literales, por lo que la fórmula está en FND.</p>
+</section>
+</section>
+<section id="j.-forma-normal-conjuntiva-1" class="level2">
+<h2 class="anchored" data-anchor-id="j.-forma-normal-conjuntiva-1">J. Forma normal conjuntiva</h2>
+<!-- ID: MA-SOL-APM-01-005-057 | FOR: MA-EX-APM-01-005-057 -->
+<section id="section-56" class="level3">
+<h3 class="anchored" data-anchor-id="section-56">57</h3>
+<p>Sí. Es una conjunción de dos cláusulas disyuntivas:</p>
+<ul>
+<li><span class="math inline">\(P\lor\neg Q\)</span>;</li>
+<li><span class="math inline">\(R\lor Q\)</span>.</li>
+</ul>
+<p>Todos sus componentes son literales.</p>
+<!-- ID: MA-SOL-APM-01-005-058 | FOR: MA-EX-APM-01-005-058 -->
+</section>
+<section id="section-57" class="level3">
+<h3 class="anchored" data-anchor-id="section-57">58</h3>
+<p>No está en FNC. Aplicamos distributividad:</p>
+<p><span class="math inline">\(P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-059 | FOR: MA-EX-APM-01-005-059 -->
+</section>
+<section id="section-58" class="level3">
+<h3 class="anchored" data-anchor-id="section-58">59</h3>
+<p><span class="math display">\[
+\begin{aligned}
+P\Rightarrow(Q\land R)
+&amp;\equiv\neg P\lor(Q\land R)\\
+&amp;\equiv(\neg P\lor Q)\land(\neg P\lor R).
+\end{aligned}
+\]</span></p>
+<p>Es FNC.</p>
+<!-- ID: MA-SOL-APM-01-005-060 | FOR: MA-EX-APM-01-005-060 -->
+</section>
+<section id="section-59" class="level3">
+<h3 class="anchored" data-anchor-id="section-59">60</h3>
+<p>Por De Morgan,</p>
+<p><span class="math inline">\(\neg(P\land Q)\equiv\neg P\lor\neg Q\)</span>.</p>
+<p>Una sola cláusula disyuntiva cuenta como FNC.</p>
+<!-- ID: MA-SOL-APM-01-005-061 | FOR: MA-EX-APM-01-005-061 -->
+</section>
+<section id="section-60" class="level3">
+<h3 class="anchored" data-anchor-id="section-60">61</h3>
+<p>Una FNC inmediata es</p>
+<p><span class="math inline">\((\neg P\lor Q)\land(\neg Q\lor P)\)</span>.</p>
+<p>Proviene de <span class="math inline">\((P\Rightarrow Q)\land(Q\Rightarrow P)\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-062 | FOR: MA-EX-APM-01-005-062 -->
+</section>
+<section id="section-61" class="level3">
+<h3 class="anchored" data-anchor-id="section-61">62</h3>
+<p>Distribuimos <span class="math inline">\(R\)</span> sobre la conjunción:</p>
+<p><span class="math display">\[(P\land Q)\lor R\equiv(P\lor R)\land(Q\lor R).\]</span></p>
+<p>La forma final es una conjunción de dos cláusulas disyuntivas de literales.</p>
+</section>
+</section>
+<section id="k.-formas-canónicas-desde-tablas-1" class="level2">
+<h2 class="anchored" data-anchor-id="k.-formas-canónicas-desde-tablas-1">K. Formas canónicas desde tablas</h2>
+<!-- ID: MA-SOL-APM-01-005-063 | FOR: MA-EX-APM-01-005-063 -->
+<section id="section-62" class="level3">
+<h3 class="anchored" data-anchor-id="section-62">63</h3>
+<p>La tabla de <span class="math inline">\(P\lor Q\)</span> es verdadera en <span class="math inline">\((V,V)\)</span>, <span class="math inline">\((V,F)\)</span> y <span class="math inline">\((F,V)\)</span>.</p>
+<p>Los términos correspondientes son:</p>
+<ul>
+<li><span class="math inline">\((V,V)\)</span>: <span class="math inline">\(P\land Q\)</span>;</li>
+<li><span class="math inline">\((V,F)\)</span>: <span class="math inline">\(P\land\neg Q\)</span>;</li>
+<li><span class="math inline">\((F,V)\)</span>: <span class="math inline">\(\neg P\land Q\)</span>.</li>
+</ul>
+<p>Por tanto, la FND canónica es</p>
+<p><span class="math display">\[(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q).\]</span></p>
+<p>Se simplifica a <span class="math inline">\(P\lor Q\)</span>, pero la forma canónica conserva explícitamente cada fila verdadera.</p>
+<!-- ID: MA-SOL-APM-01-005-064 | FOR: MA-EX-APM-01-005-064 -->
+</section>
+<section id="section-63" class="level3">
+<h3 class="anchored" data-anchor-id="section-63">64</h3>
+<p><span class="math inline">\(P\land Q\)</span> es falsa en <span class="math inline">\((V,F)\)</span>, <span class="math inline">\((F,V)\)</span> y <span class="math inline">\((F,F)\)</span>.</p>
+<p>Construimos una cláusula falsa en cada fila:</p>
+<ul>
+<li><span class="math inline">\((V,F)\)</span>: <span class="math inline">\(\neg P\lor Q\)</span>;</li>
+<li><span class="math inline">\((F,V)\)</span>: <span class="math inline">\(P\lor\neg Q\)</span>;</li>
+<li><span class="math inline">\((F,F)\)</span>: <span class="math inline">\(P\lor Q\)</span>.</li>
+</ul>
+<p>La FNC canónica es</p>
+<p><span class="math display">\[(\neg P\lor Q)\land(P\lor\neg Q)\land(P\lor Q).\]</span></p>
+<p>Aunque se puede simplificar a <span class="math inline">\(P\land Q\)</span>, ésa es la forma canónica obtenida directamente de las filas falsas.</p>
+<!-- ID: MA-SOL-APM-01-005-065 | FOR: MA-EX-APM-01-005-065 -->
+</section>
+<section id="section-64" class="level3">
+<h3 class="anchored" data-anchor-id="section-64">65</h3>
+<p>Las filas verdaderas son <span class="math inline">\((V,F)\)</span> y <span class="math inline">\((F,V)\)</span>. Por tanto,</p>
+<p><span class="math display">\[(P\land\neg Q)\lor(\neg P\land Q).\]</span></p>
+<p>Es la FND canónica del XOR de dos variables.</p>
+<!-- ID: MA-SOL-APM-01-005-066 | FOR: MA-EX-APM-01-005-066 -->
+</section>
+<section id="section-65" class="level3">
+<h3 class="anchored" data-anchor-id="section-65">66</h3>
+<p>La fórmula es falsa en <span class="math inline">\((V,V)\)</span> y <span class="math inline">\((F,F)\)</span>.</p>
+<ul>
+<li>Para <span class="math inline">\((V,V)\)</span>, la cláusula falsa exacta es <span class="math inline">\(\neg P\lor\neg Q\)</span>.</li>
+<li>Para <span class="math inline">\((F,F)\)</span>, la cláusula falsa exacta es <span class="math inline">\(P\lor Q\)</span>.</li>
+</ul>
+<p>Por tanto,</p>
+<p><span class="math display">\[(\neg P\lor\neg Q)\land(P\lor Q).\]</span></p>
+<!-- ID: MA-SOL-APM-01-005-067 | FOR: MA-EX-APM-01-005-067 -->
+</section>
+<section id="section-66" class="level3">
+<h3 class="anchored" data-anchor-id="section-66">67</h3>
+<p>Queremos una cláusula falsa exactamente cuando <span class="math inline">\(P=V,Q=F,R=V\)</span>.</p>
+<p>Los literales deben ser falsos en esa fila:</p>
+<ul>
+<li>para <span class="math inline">\(P=V\)</span>: <span class="math inline">\(\neg P\)</span>;</li>
+<li>para <span class="math inline">\(Q=F\)</span>: <span class="math inline">\(Q\)</span>;</li>
+<li>para <span class="math inline">\(R=V\)</span>: <span class="math inline">\(\neg R\)</span>.</li>
+</ul>
+<p>Así,</p>
+<p><span class="math inline">\(G\equiv\neg P\lor Q\lor\neg R\)</span>.</p>
+<p>Como sólo hay una fila falsa, una sola cláusula forma la FNC canónica.</p>
+<!-- ID: MA-SOL-APM-01-005-068 | FOR: MA-EX-APM-01-005-068 -->
+</section>
+<section id="section-67" class="level3">
+<h3 class="anchored" data-anchor-id="section-67">68</h3>
+<p>Sea <span class="math inline">\(F\)</span> una fórmula con <span class="math inline">\(n\)</span> variables.</p>
+<p>Para cada fila donde <span class="math inline">\(F\)</span> sea verdadera construimos una conjunción de <span class="math inline">\(n\)</span> literales que sea verdadera exactamente en esa fila: variable positiva si en la fila vale <span class="math inline">\(V\)</span>, negada si vale <span class="math inline">\(F\)</span>. La disyunción de todos esos términos coincide con <span class="math inline">\(F\)</span> en todas las filas; por tanto es una FND equivalente.</p>
+<p>Para cada fila falsa construimos una disyunción de <span class="math inline">\(n\)</span> literales que sea falsa exactamente en esa fila: variable negada si en la fila vale <span class="math inline">\(V\)</span>, positiva si vale <span class="math inline">\(F\)</span>. La conjunción de esas cláusulas coincide con <span class="math inline">\(F\)</span> en todas las filas; por tanto es una FNC equivalente.</p>
+<p>Los casos tautología y contradicción se representan por <span class="math inline">\(V\)</span> y <span class="math inline">\(F\)</span> respectivamente. Así, toda fórmula finita admite ambas formas normales.</p>
+</section>
+</section>
+<section id="l.-síntesis-y-transferencia-1" class="level2">
+<h2 class="anchored" data-anchor-id="l.-síntesis-y-transferencia-1">L. Síntesis y transferencia</h2>
+<!-- ID: MA-SOL-APM-01-005-069 | FOR: MA-EX-APM-01-005-069 -->
+<section id="section-68" class="level3">
+<h3 class="anchored" data-anchor-id="section-68">69</h3>
+<p>Sea</p>
+<p><span class="math inline">\(A=(P\Rightarrow Q)\land(P\Rightarrow\neg Q)\)</span>.</p>
+<p>Del ejercicio 41 sabemos, o podemos reconstruir, que</p>
+<p><span class="math inline">\(A\equiv\neg P\)</span>.</p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+A\Rightarrow\neg P
+&amp;\equiv\neg P\Rightarrow\neg P\\
+&amp;\equiv\neg(\neg P)\lor\neg P\\
+&amp;\equiv P\lor\neg P\\
+&amp;\equiv V.
+\end{aligned}
+\]</span></p>
+<p>La fórmula es una tautología.</p>
+<p><strong>Cómo pensar este problema.</strong> Antes de expandir el condicional exterior, conviene simplificar su antecedente. Esa decisión evita una expansión mucho mayor.</p>
+<!-- ID: MA-SOL-APM-01-005-070 | FOR: MA-EX-APM-01-005-070 -->
+</section>
+<section id="section-69" class="level3">
+<h3 class="anchored" data-anchor-id="section-69">70</h3>
+<p>«Exactamente una» de <span class="math inline">\(P,Q,R\)</span> verdadera significa que ocurre uno de tres casos mutuamente excluyentes:</p>
+<ol type="1">
+<li><span class="math inline">\(P\)</span> verdadera, <span class="math inline">\(Q,R\)</span> falsas;</li>
+<li><span class="math inline">\(Q\)</span> verdadera, <span class="math inline">\(P,R\)</span> falsas;</li>
+<li><span class="math inline">\(R\)</span> verdadera, <span class="math inline">\(P,Q\)</span> falsas.</li>
+</ol>
+<p>La FND es</p>
+<p><span class="math display">\[(P\land\neg Q\land\neg R)
+\lor(\neg P\land Q\land\neg R)
+\lor(\neg P\land\neg Q\land R).\]</span></p>
+<p>Es además la FND canónica relativa a esas tres filas verdaderas.</p>
+<!-- ID: MA-SOL-APM-01-005-071 | FOR: MA-EX-APM-01-005-071 -->
+</section>
+<section id="section-70" class="level3">
+<h3 class="anchored" data-anchor-id="section-70">71</h3>
+<p>Para ser falsa exactamente en <span class="math inline">\((P,Q,R)=(V,F,V)\)</span>, una cláusula debe contener literales todos falsos en esa fila:</p>
+<p><span class="math inline">\(\neg P\lor Q\lor\neg R\)</span>.</p>
+<p>En cualquier otra fila al menos uno de esos literales cambia a verdadero, por lo que la cláusula se vuelve verdadera. Una sola cláusula basta porque sólo queremos excluir una valuación.</p>
+<!-- ID: MA-SOL-APM-01-005-072 | FOR: MA-EX-APM-01-005-072 -->
+</section>
+<section id="section-71" class="level3">
+<h3 class="anchored" data-anchor-id="section-71">72</h3>
+<p>La fórmula</p>
+<p><span class="math inline">\(F=(P\Leftrightarrow Q)\land(Q\Leftrightarrow R)\)</span></p>
+<p>exige que <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> compartan valor y que <span class="math inline">\(Q\)</span> y <span class="math inline">\(R\)</span> también lo compartan. Por tanto, las tres variables deben tener el mismo valor.</p>
+<p><strong>Ruta semántica.</strong> La tabla de ocho filas muestra que <span class="math inline">\(F\)</span> sólo es verdadera en</p>
+<p><span class="math inline">\((V,V,V)\)</span> y <span class="math inline">\((F,F,F)\)</span>.</p>
+<p>Por eso una FND canónica inmediata es</p>
+<p><span class="math display">\[(P\land Q\land R)\lor(\neg P\land\neg Q\land\neg R).\]</span></p>
+<p><strong>Ruta algebraica.</strong> Sustituimos cada bicondicional por su FND:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv[(P\land Q)\lor(\neg P\land\neg Q)]
+\land[(Q\land R)\lor(\neg Q\land\neg R)].
+\end{aligned}
+\]</span></p>
+<p>Al distribuir aparecen cuatro combinaciones. Dos contienen <span class="math inline">\(Q\land\neg Q\)</span> y desaparecen por contradicción; sobreviven exactamente</p>
+<p><span class="math inline">\(P\land Q\land R\)</span></p>
+<p>y</p>
+<p><span class="math inline">\(\neg P\land\neg Q\land\neg R\)</span>.</p>
+<p>La tabla revela de manera transparente <strong>qué valuaciones</strong> sobreviven. La vía algebraica revela <strong>por qué los casos mixtos se anulan estructuralmente</strong>. Ambas son útiles, pero responden preguntas distintas.</p>
+</section>
+</section>
+<section id="m.-problemas-avanzados-tipo-prueba-1" class="level2">
+<h2 class="anchored" data-anchor-id="m.-problemas-avanzados-tipo-prueba-1">M. Problemas avanzados tipo prueba</h2>
+<!-- ID: MA-SOL-APM-01-005-073 | FOR: MA-EX-APM-01-005-073 -->
+<section id="section-72" class="level3">
+<h3 class="anchored" data-anchor-id="section-72">73</h3>
+<p>Sea <span class="math display">\[
+F=(P\land Q)\lor(\neg P\land R)\lor(Q\land R).
+\]</span></p>
+<p>El término sospechoso es <span class="math inline">\(Q\land R\)</span>. Para decidir si aporta valuaciones nuevas introducimos una tautología dentro de él:</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q\land R
+&amp;\equiv Q\land R\land V\\
+&amp;\equiv Q\land R\land(P\lor\neg P)\\
+&amp;\equiv(P\land Q\land R)\lor(\neg P\land Q\land R).
+\end{aligned}
+\]</span></p>
+<p>Sustituyendo en <span class="math inline">\(F\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv(P\land Q)\lor(\neg P\land R)
+   \lor(P\land Q\land R)\lor(\neg P\land Q\land R)\\
+&amp;\equiv\big[(P\land Q)\lor(P\land Q\land R)\big]
+   \lor\big[(\neg P\land R)\lor(\neg P\land Q\land R)\big]\\
+&amp;\equiv(P\land Q)\lor(\neg P\land R),
+\end{aligned}
+\]</span></p>
+<p>porque</p>
+<p><span class="math display">\[
+(P\land Q)\lor[(P\land Q)\land R]\equiv P\land Q
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+(\neg P\land R)\lor[(\neg P\land R)\land Q]\equiv\neg P\land R
+\]</span></p>
+<p>por absorción.</p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+(P\land Q)\lor(\neg P\land R)\lor(Q\land R)
+\equiv
+(P\land Q)\lor(\neg P\land R)
+}.
+\]</span></p>
+<p>La razón estructural es precisa: si <span class="math inline">\(Q\land R\)</span> es verdadera, entonces o bien <span class="math inline">\(P\)</span> es verdadera, en cuyo caso ya es verdadero <span class="math inline">\(P\land Q\)</span>, o bien <span class="math inline">\(P\)</span> es falsa, en cuyo caso ya es verdadero <span class="math inline">\(\neg P\land R\)</span>. El término de consenso no añade ninguna valuación nueva.</p>
+<!-- ID: MA-SOL-APM-01-005-074 | FOR: MA-EX-APM-01-005-074 -->
+</section>
+<section id="section-73" class="level3">
+<h3 class="anchored" data-anchor-id="section-73">74</h3>
+<p>Partimos de</p>
+<p><span class="math display">\[
+F=[(P\lor Q)\land(\neg P\lor R)]\Rightarrow(Q\lor R).
+\]</span></p>
+<p>Eliminamos la implicación:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv
+\neg[(P\lor Q)\land(\neg P\lor R)]\lor(Q\lor R)\\
+&amp;\equiv
+\neg(P\lor Q)\lor\neg(\neg P\lor R)\lor Q\lor R\\
+&amp;\equiv
+(\neg P\land\neg Q)\lor(P\land\neg R)\lor Q\lor R.
+\end{aligned}
+\]</span></p>
+<p>Reordenamos para agrupar los términos útiles:</p>
+<p><span class="math display">\[
+F\equiv
+[Q\lor(\neg P\land\neg Q)]
+\lor
+[R\lor(P\land\neg R)].
+\]</span></p>
+<p>Aplicamos distributividad:</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q\lor(\neg P\land\neg Q)
+&amp;\equiv(Q\lor\neg P)\land(Q\lor\neg Q)\\
+&amp;\equiv(Q\lor\neg P)\land V\\
+&amp;\equiv Q\lor\neg P,
+\end{aligned}
+\]</span></p>
+<p>y, análogamente,</p>
+<p><span class="math display">\[
+\begin{aligned}
+R\lor(P\land\neg R)
+&amp;\equiv(R\lor P)\land(R\lor\neg R)\\
+&amp;\equiv(R\lor P)\land V\\
+&amp;\equiv R\lor P.
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv(Q\lor\neg P)\lor(R\lor P)\\
+&amp;\equiv Q\lor R\lor(\neg P\lor P)\\
+&amp;\equiv Q\lor R\lor V\\
+&amp;\equiv V.
+\end{aligned}
+\]</span></p>
+<p>La fórmula es una tautología:</p>
+<p><span class="math display">\[
+\boxed{F\equiv V}.
+\]</span></p>
+<p>La lectura semántica subyacente es la regla de resolución: si <span class="math inline">\(P\lor Q\)</span> y <span class="math inline">\(\neg P\lor R\)</span> son verdaderas, el valor de <span class="math inline">\(P\)</span> obliga a que al menos una de <span class="math inline">\(Q,R\)</span> sea verdadera.</p>
+<!-- ID: MA-SOL-APM-01-005-075 | FOR: MA-EX-APM-01-005-075 -->
+</section>
+<section id="section-74" class="level3">
+<h3 class="anchored" data-anchor-id="section-74">75</h3>
+<p>La condición “al menos dos verdaderas” se cumple en cuatro filas:</p>
+<p><span class="math display">\[
+(V,V,F),\quad(V,F,V),\quad(F,V,V),\quad(V,V,V).
+\]</span></p>
+<p><strong>(a) FND canónica.</strong> Cada fila verdadera produce un mintermino:</p>
+<p><span class="math display">\[
+\begin{aligned}
+M\equiv&amp;
+(P\land Q\land\neg R)
+\lor(P\land\neg Q\land R)\\
+&amp;\lor(\neg P\land Q\land R)
+\lor(P\land Q\land R).
+\end{aligned}
+\]</span></p>
+<p><strong>(b) FND reducida.</strong> La condición “al menos dos” equivale a que sea verdadera alguna pareja:</p>
+<p><span class="math display">\[
+\boxed{
+M\equiv(P\land Q)\lor(P\land R)\lor(Q\land R).
+}
+\]</span></p>
+<p>Para justificarla algebraicamente, expandimos cada término con la variable ausente:</p>
+<p><span class="math display">\[
+P\land Q
+\equiv
+(P\land Q\land R)\lor(P\land Q\land\neg R),
+\]</span></p>
+<p><span class="math display">\[
+P\land R
+\equiv
+(P\land Q\land R)\lor(P\land\neg Q\land R),
+\]</span></p>
+<p><span class="math display">\[
+Q\land R
+\equiv
+(P\land Q\land R)\lor(\neg P\land Q\land R).
+\]</span></p>
+<p>Al unir los tres desarrollos y eliminar repeticiones por idempotencia recuperamos exactamente la FND canónica.</p>
+<p><strong>(c) FNC canónica.</strong> <span class="math inline">\(M\)</span> es falsa cuando hay cero o una proposición verdadera:</p>
+<p><span class="math display">\[
+(F,F,F),\quad(V,F,F),\quad(F,V,F),\quad(F,F,V).
+\]</span></p>
+<p>Las cláusulas canónicas correspondientes son</p>
+<p><span class="math display">\[
+\begin{aligned}
+M\equiv&amp;
+(P\lor Q\lor R)
+\land(\neg P\lor Q\lor R)\\
+&amp;\land(P\lor\neg Q\lor R)
+\land(P\lor Q\lor\neg R).
+\end{aligned}
+\]</span></p>
+<p><strong>(d) FNC reducida.</strong> Para que al menos dos sean verdaderas, no puede ocurrir que ninguna de las parejas tenga un miembro verdadero. Equivalentemente:</p>
+<p><span class="math display">\[
+\boxed{
+M\equiv(P\lor Q)\land(P\lor R)\land(Q\lor R).
+}
+\]</span></p>
+<p><strong>(e) Equivalencia algebraica de las formas reducidas.</strong> Partimos de la FNC:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;(P\lor Q)\land(P\lor R)\land(Q\lor R)\\
+&amp;\equiv[P\lor(Q\land R)]\land(Q\lor R)\\
+&amp;\equiv[P\land(Q\lor R)]\lor[(Q\land R)\land(Q\lor R)]\\
+&amp;\equiv[(P\land Q)\lor(P\land R)]\lor(Q\land R)\\
+&amp;\equiv(P\land Q)\lor(P\land R)\lor(Q\land R).
+\end{aligned}
+\]</span></p>
+<p>Así las dos formas reducidas son equivalentes sin recurrir a una tabla.</p>
+<!-- ID: MA-SOL-APM-01-005-076 | FOR: MA-EX-APM-01-005-076 -->
+</section>
+<section id="section-75" class="level3">
+<h3 class="anchored" data-anchor-id="section-75">76</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+F=\neg[(P\Leftrightarrow Q)\Rightarrow(R\lor\neg P)].
+\]</span></p>
+<p>Comenzamos usando <span class="math inline">\(\neg(A\Rightarrow B)\equiv A\land\neg B\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv(P\Leftrightarrow Q)\land\neg(R\lor\neg P)\\
+&amp;\equiv(P\Leftrightarrow Q)\land(\neg R\land\neg\neg P)\\
+&amp;\equiv(P\Leftrightarrow Q)\land\neg R\land P.
+\end{aligned}
+\]</span></p>
+<p>Eliminamos ahora el bicondicional en FNC:</p>
+<p><span class="math display">\[
+P\Leftrightarrow Q
+\equiv
+(\neg P\lor Q)\land(\neg Q\lor P).
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv
+(\neg P\lor Q)\land(\neg Q\lor P)\land\neg R\land P\\
+&amp;\equiv
+P\land(\neg P\lor Q)\land(\neg Q\lor P)\land\neg R\\
+&amp;\equiv
+[(P\land\neg P)\lor(P\land Q)]
+\land(\neg Q\lor P)\land\neg R\\
+&amp;\equiv
+[F\lor(P\land Q)]\land(\neg Q\lor P)\land\neg R\\
+&amp;\equiv
+(P\land Q)\land(\neg Q\lor P)\land\neg R.
+\end{aligned}
+\]</span></p>
+<p>Distribuimos una vez más:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(P\land Q)\land(\neg Q\lor P)
+&amp;\equiv
+(P\land Q\land\neg Q)\lor(P\land Q\land P)\\
+&amp;\equiv F\lor(P\land Q)\\
+&amp;\equiv P\land Q.
+\end{aligned}
+\]</span></p>
+<p>Finalmente,</p>
+<p><span class="math display">\[
+\boxed{F\equiv P\land Q\land\neg R}.
+\]</span></p>
+<p>Esta expresión es una <strong>FND</strong> porque es una disyunción de un solo término, y ese término es una conjunción de literales. También puede leerse como <strong>FNC</strong>:</p>
+<p><span class="math display">\[
+(P)\land(Q)\land(\neg R),
+\]</span></p>
+<p>es decir, una conjunción de tres cláusulas unitarias.</p>
+<p>La simplificación muestra además exactamente cuándo la fórmula original es verdadera: <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> deben ser verdaderas y <span class="math inline">\(R\)</span> falsa.</p>
+<!-- ID: MA-SOL-APM-01-005-077 | FOR: MA-EX-APM-01-005-077 -->
+</section>
+<section id="section-76" class="level3">
+<h3 class="anchored" data-anchor-id="section-76">77</h3>
+<p>Consideremos</p>
+<p><span class="math display">\[
+G=(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow P).
+\]</span></p>
+<p><strong>(a) FNC inmediata.</strong> Eliminando las implicaciones:</p>
+<p><span class="math display">\[
+\boxed{
+G\equiv
+(\neg P\lor Q)\land(\neg Q\lor R)\land(\neg R\lor P).
+}
+\]</span></p>
+<p>Cada factor es ya una cláusula.</p>
+<p><strong>(b) FND reducida.</strong> Distribuimos primero las dos primeras cláusulas:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\neg P\lor Q)\land(\neg Q\lor R)
+\equiv&amp;
+(\neg P\land\neg Q)
+\lor(\neg P\land R)\\
+&amp;\lor(Q\land\neg Q)
+\lor(Q\land R)\\
+\equiv&amp;
+(\neg P\land\neg Q)
+\lor(\neg P\land R)
+\lor(Q\land R).
+\end{aligned}
+\]</span></p>
+<p>Ahora conjuntamos con <span class="math inline">\((\neg R\lor P)\)</span>.</p>
+<p>Para el primer término:</p>
+<p><span class="math display">\[
+(\neg P\land\neg Q)\land(\neg R\lor P)
+\equiv
+(\neg P\land\neg Q\land\neg R)\lor F.
+\]</span></p>
+<p>Para el segundo:</p>
+<p><span class="math display">\[
+(\neg P\land R)\land(\neg R\lor P)
+\equiv F\lor F\equiv F.
+\]</span></p>
+<p>Para el tercero:</p>
+<p><span class="math display">\[
+(Q\land R)\land(\neg R\lor P)
+\equiv F\lor(P\land Q\land R).
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+G\equiv
+(\neg P\land\neg Q\land\neg R)
+\lor(P\land Q\land R).
+}
+\]</span></p>
+<p><strong>(c) Valuaciones.</strong> Sólo satisfacen <span class="math inline">\(G\)</span></p>
+<p><span class="math display">\[
+(F,F,F)\quad\text{y}\quad(V,V,V).
+\]</span></p>
+<p><strong>(d) Interpretación.</strong> Si alguna proposición del ciclo es verdadera, las implicaciones fuerzan sucesivamente la verdad de las otras dos. Si alguna es falsa, recorrer el ciclo en sentido lógico impide que aparezca una combinación mixta estable. El ciclo completo obliga a que las tres compartan valor.</p>
+<!-- ID: MA-SOL-APM-01-005-078 | FOR: MA-EX-APM-01-005-078 -->
+</section>
+<section id="section-77" class="level3">
+<h3 class="anchored" data-anchor-id="section-77">78</h3>
+<p>Supongamos</p>
+<p><span class="math display">\[
+A\land C\equiv B\land C
+\tag{1}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+A\lor C\equiv B\lor C.
+\tag{2}
+\]</span></p>
+<p><strong>Primera demostración: por valuaciones.</strong></p>
+<p>Sea <span class="math inline">\(v\)</span> una valuación arbitraria.</p>
+<ul>
+<li>Si <span class="math inline">\(v(C)=V\)</span>, de (1) obtenemos <span class="math inline">\(v(A\land C)=v(A)\)</span> y <span class="math inline">\(v(B\land C)=v(B)\)</span>. Como ambos valores son iguales, <span class="math inline">\(v(A)=v(B)\)</span>.</li>
+<li>Si <span class="math inline">\(v(C)=F\)</span>, de (2) obtenemos <span class="math inline">\(v(A\lor C)=v(A)\)</span> y <span class="math inline">\(v(B\lor C)=v(B)\)</span>. Nuevamente <span class="math inline">\(v(A)=v(B)\)</span>.</li>
+</ul>
+<p>En toda valuación, independientemente del valor de <span class="math inline">\(C\)</span>, <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> coinciden. Por definición,</p>
+<p><span class="math display">\[
+\boxed{A\equiv B}.
+\]</span></p>
+<p><strong>Segunda demostración: algebraica.</strong></p>
+<p>De (2), conjuntamos ambos lados con <span class="math inline">\(\neg C\)</span>:</p>
+<p><span class="math display">\[
+(A\lor C)\land\neg C
+\equiv
+(B\lor C)\land\neg C.
+\]</span></p>
+<p>Distribuyendo,</p>
+<p><span class="math display">\[
+(A\land\neg C)\lor(C\land\neg C)
+\equiv
+(B\land\neg C)\lor(C\land\neg C),
+\]</span></p>
+<p>de donde</p>
+<p><span class="math display">\[
+A\land\neg C\equiv B\land\neg C.
+\tag{3}
+\]</span></p>
+<p>Ahora descomponemos <span class="math inline">\(A\)</span> según <span class="math inline">\(C\lor\neg C\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+A
+&amp;\equiv A\land V\\
+&amp;\equiv A\land(C\lor\neg C)\\
+&amp;\equiv(A\land C)\lor(A\land\neg C)\\
+&amp;\equiv(B\land C)\lor(B\land\neg C) &amp;&amp;\text{por (1) y (3)}\\
+&amp;\equiv B\land(C\lor\neg C)\\
+&amp;\equiv B.
+\end{aligned}
+\]</span></p>
+<p><strong>Cada hipótesis aislada es insuficiente.</strong></p>
+<p>Para la primera, toma <span class="math inline">\(C=F\)</span>, <span class="math inline">\(A=P\)</span>, <span class="math inline">\(B=Q\)</span>. Entonces</p>
+<p><span class="math display">\[
+A\land C\equiv F\equiv B\land C,
+\]</span></p>
+<p>pero <span class="math inline">\(P\not\equiv Q\)</span>.</p>
+<p>Para la segunda, toma <span class="math inline">\(C=V\)</span>, <span class="math inline">\(A=P\)</span>, <span class="math inline">\(B=Q\)</span>. Entonces</p>
+<p><span class="math display">\[
+A\lor C\equiv V\equiv B\lor C,
+\]</span></p>
+<p>pero nuevamente <span class="math inline">\(P\not\equiv Q\)</span>.</p>
+<p>Las dos hipótesis se complementan: una controla el caso <span class="math inline">\(C=V\)</span> y la otra el caso <span class="math inline">\(C=F\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-079 | FOR: MA-EX-APM-01-005-079 -->
+</section>
+<section id="section-78" class="level3">
+<h3 class="anchored" data-anchor-id="section-78">79</h3>
+<p>La fórmula es</p>
+<p><span class="math display">\[
+H=(P\Leftrightarrow Q)\land(Q\Leftrightarrow\neg R)\land(R\Leftrightarrow S).
+\]</span></p>
+<p><strong>(a) Valuaciones sin tabla completa.</strong></p>
+<p>Las tres condiciones imponen:</p>
+<p><span class="math display">\[
+Q=P,\qquad Q=\neg R,\qquad S=R.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+R=\neg P,\qquad S=\neg P.
+\]</span></p>
+<p>Todo queda determinado por el valor de <span class="math inline">\(P\)</span>.</p>
+<p>Si <span class="math inline">\(P=V\)</span>:</p>
+<p><span class="math display">\[
+(P,Q,R,S)=(V,V,F,F).
+\]</span></p>
+<p>Si <span class="math inline">\(P=F\)</span>:</p>
+<p><span class="math display">\[
+(P,Q,R,S)=(F,F,V,V).
+\]</span></p>
+<p>No hay otras posibilidades.</p>
+<p><strong>(b) FND canónica.</strong></p>
+<p>Los dos minterminos correspondientes son</p>
+<p><span class="math display">\[
+\boxed{
+H\equiv
+(P\land Q\land\neg R\land\neg S)
+\lor
+(\neg P\land\neg Q\land R\land S).
+}
+\]</span></p>
+<p><strong>(c) FNC compacta.</strong></p>
+<p>Usamos</p>
+<p><span class="math display">\[
+A\Leftrightarrow B
+\equiv
+(\neg A\lor B)\land(\neg B\lor A).
+\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P\Leftrightarrow Q
+&amp;\equiv(\neg P\lor Q)\land(\neg Q\lor P),\\
+Q\Leftrightarrow\neg R
+&amp;\equiv(\neg Q\lor\neg R)\land(R\lor Q),\\
+R\Leftrightarrow S
+&amp;\equiv(\neg R\lor S)\land(\neg S\lor R).
+\end{aligned}
+\]</span></p>
+<p>Por tanto una FNC compacta es</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+H\equiv&amp;
+(\neg P\lor Q)\land(\neg Q\lor P)\\
+&amp;\land(\neg Q\lor\neg R)\land(R\lor Q)\\
+&amp;\land(\neg R\lor S)\land(\neg S\lor R).
+\end{aligned}
+}
+\]</span></p>
+<p><strong>(d) Justificación de equivalencia.</strong></p>
+<p>La FNC procede directamente de reemplazar cada bicondicional por una fórmula equivalente; por sustitución de equivalentes, conserva exactamente el valor de <span class="math inline">\(H\)</span>.</p>
+<p>La FND canónica enumera exactamente las dos valuaciones que satisfacen simultáneamente las tres igualdades lógicas deducidas en (a). Cada mintermino es verdadero en una y sólo una de ellas. En cualquier otra valuación falla al menos uno de los tres bicondicionales.</p>
+<p>Por tanto ambas formas representan exactamente la misma función booleana que <span class="math inline">\(H\)</span>.</p>
+<!-- ID: MA-SOL-APM-01-005-080 | FOR: MA-EX-APM-01-005-080 -->
+</section>
+<section id="section-79" class="level3">
+<h3 class="anchored" data-anchor-id="section-79">80</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+F=
+[(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow S)]
+\Rightarrow(P\Rightarrow S).
+\]</span></p>
+<p><strong>(a) Demostración algebraica.</strong></p>
+<p>Eliminamos la implicación principal:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv
+\neg[(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow S)]
+\lor(\neg P\lor S).
+\end{aligned}
+\]</span></p>
+<p>Aplicamos De Morgan:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv
+\neg(P\Rightarrow Q)
+\lor\neg(Q\Rightarrow R)
+\lor\neg(R\Rightarrow S)
+\lor\neg P\lor S.
+\end{aligned}
+\]</span></p>
+<p>Usamos <span class="math inline">\(\neg(A\Rightarrow B)\equiv A\land\neg B\)</span>:</p>
+<p><span class="math display">\[
+F\equiv
+(P\land\neg Q)
+\lor(Q\land\neg R)
+\lor(R\land\neg S)
+\lor\neg P\lor S.
+\]</span></p>
+<p>Reordenamos:</p>
+<p><span class="math display">\[
+F\equiv
+[\neg P\lor(P\land\neg Q)]
+\lor(Q\land\neg R)
+\lor(R\land\neg S)
+\lor S.
+\]</span></p>
+<p>Simplificamos el primer corchete:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\neg P\lor(P\land\neg Q)
+&amp;\equiv(\neg P\lor P)\land(\neg P\lor\neg Q)\\
+&amp;\equiv V\land(\neg P\lor\neg Q)\\
+&amp;\equiv\neg P\lor\neg Q.
+\end{aligned}
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+F\equiv
+\neg P\lor[\neg Q\lor(Q\land\neg R)]
+\lor(R\land\neg S)\lor S.
+\]</span></p>
+<p>Ahora</p>
+<p><span class="math display">\[
+\begin{aligned}
+\neg Q\lor(Q\land\neg R)
+&amp;\equiv(\neg Q\lor Q)\land(\neg Q\lor\neg R)\\
+&amp;\equiv\neg Q\lor\neg R.
+\end{aligned}
+\]</span></p>
+<p>Por tanto</p>
+<p><span class="math display">\[
+F\equiv
+\neg P\lor\neg Q\lor[\neg R\lor(R\land\neg S)]\lor S.
+\]</span></p>
+<p>Una vez más,</p>
+<p><span class="math display">\[
+\neg R\lor(R\land\neg S)
+\equiv
+\neg R\lor\neg S.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\begin{aligned}
+F
+&amp;\equiv
+\neg P\lor\neg Q\lor\neg R\lor\neg S\lor S\\
+&amp;\equiv
+\neg P\lor\neg Q\lor\neg R\lor V\\
+&amp;\equiv V.
+\end{aligned}
+\]</span></p>
+<p>Luego <span class="math inline">\(F\)</span> es tautología.</p>
+<p><strong>(b) Demostración por contradicción semántica.</strong></p>
+<p>Para que una implicación sea falsa, su antecedente debe ser verdadero y su consecuente falso.</p>
+<p>Supongamos entonces que <span class="math inline">\(F\)</span> es falsa. Deben cumplirse simultáneamente:</p>
+<p><span class="math display">\[
+P\Rightarrow Q,\qquad
+Q\Rightarrow R,\qquad
+R\Rightarrow S,
+\]</span></p>
+<p>y debe ser falsa <span class="math inline">\(P\Rightarrow S\)</span>.</p>
+<p>La falsedad de <span class="math inline">\(P\Rightarrow S\)</span> exige</p>
+<p><span class="math display">\[
+P=V,\qquad S=F.
+\]</span></p>
+<p>Como <span class="math inline">\(P=V\)</span> y <span class="math inline">\(P\Rightarrow Q\)</span> es verdadera, necesariamente <span class="math inline">\(Q=V\)</span>.</p>
+<p>Como <span class="math inline">\(Q=V\)</span> y <span class="math inline">\(Q\Rightarrow R\)</span> es verdadera, necesariamente <span class="math inline">\(R=V\)</span>.</p>
+<p>Como <span class="math inline">\(R=V\)</span> y <span class="math inline">\(R\Rightarrow S\)</span> es verdadera, necesariamente <span class="math inline">\(S=V\)</span>.</p>
+<p>Pero ya habíamos obtenido <span class="math inline">\(S=F\)</span>. Contradicción.</p>
+<p>Por tanto no existe valuación que haga falsa a <span class="math inline">\(F\)</span>, y nuevamente</p>
+<p><span class="math display">\[
+\boxed{F\equiv V}.
+\]</span></p>
+<p>La estructura general es la <strong>transitividad encadenada de la implicación</strong>: si la verdad de <span class="math inline">\(P\)</span> fuerza la de <span class="math inline">\(Q\)</span>, la de <span class="math inline">\(Q\)</span> fuerza la de <span class="math inline">\(R\)</span> y la de <span class="math inline">\(R\)</span> fuerza la de <span class="math inline">\(S\)</span>, entonces la verdad de <span class="math inline">\(P\)</span> fuerza necesariamente la de <span class="math inline">\(S\)</span>.</p>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
