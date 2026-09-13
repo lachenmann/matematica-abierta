@@ -55,15 +55,15 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
   - 1C: 24/24 ejercicios resueltos.
   - Total Capítulo 1: **47/47**.
   - [QA global del Capítulo 1](CHAPTER1_QA.md).
-- **Capítulo 2 — Espacios vectoriales de dimensión finita:** iniciado.
+- **Capítulo 2 — Espacios vectoriales de dimensión finita:** en desarrollo.
   - apertura: cotejada;
-  - **2A — Span e independencia lineal: traducción completa y cotejada**;
-  - **Ejercicios 2A: 20/20 resueltos y verificados**.
-- Total acumulado de ejercicios resueltos: **67**.
-- Glosario terminológico: **v0.5**.
-- Siguiente bloque: **2B — Bases**.
+  - **2A — Span e independencia lineal: traducción completa y cotejada; 20/20 ejercicios resueltos y verificados**;
+  - **2B — Bases: traducción completa y cotejada; 11/11 ejercicios resueltos y verificados**.
+- Total acumulado de ejercicios resueltos: **78**.
+- Glosario terminológico: **v0.6**.
+- Siguiente bloque: **2C — Dimensión**.
 
-La Sección 2A incorpora las dos correcciones de la errata oficial que afectan a sus páginas impresas: p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`), ambas ya corregidas en el PDF canónico de 16-08-2026.
+La Sección 2A incorpora las dos correcciones de la errata oficial que afectan a sus páginas impresas: p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`), ambas ya corregidas en el PDF canónico de 16-08-2026. La errata oficial no registra correcciones específicas para las pp. 39–43 de 2B.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
