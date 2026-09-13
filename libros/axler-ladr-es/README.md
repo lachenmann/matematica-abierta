@@ -53,8 +53,11 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
 - Apertura del Capítulo 1: borrador cotejado.
 - **Sección 1A — $\mathbf R^n$ y $\mathbf C^n$: cotejada contra la fuente oficial de 16-08-2026.**
 - **Ejercicios 1A: 15/15 resueltos y verificados.**
-- Glosario terminológico: v0.2.
-- Siguiente bloque: **1B — Definición de espacio vectorial**.
+- **Sección 1B — Definición de espacio vectorial: cotejada contra la fuente oficial de 16-08-2026.**
+- **Ejercicios 1B: 8/8 resueltos y verificados.**
+- Total de ejercicios resueltos en 1A–1B: **23/23**.
+- Glosario terminológico: v0.3.
+- Siguiente bloque: **1C — Subespacios**.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
