@@ -1062,7 +1062,6 @@ $A\cap(B\setminus C)=A\cap(B\cap C^c)=(A\cap B)\cap C^c=(A\cap B)\setminus C$.
 Partimos de $(A\cup B)\setminus(A\cap B)$. Esto es $(A\cup B)\cap(A\cap B)^c$. Por De Morgan, $(A\cap B)^c=A^c\cup B^c$. Por tanto $A\triangle B=(A\cup B)\cap(A^c\cup B^c)$.
 
 ### 53
-
 Por De Morgan, $(A\cup B)^c=A^c\cap B^c$. Entonces la expresión es $(A^c\cap B^c)\cup(A\cap B^c)$. Factorizando $B^c$: $B^c\cap(A^c\cup A)=B^c\cap U=B^c$.
 
 ### 54
@@ -1327,4 +1326,3 @@ A\subseteq B
 $$
 
 Así las cinco condiciones son equivalentes.
-
