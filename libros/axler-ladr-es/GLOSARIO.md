@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.5
+# Glosario terminológico · v0.6
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -57,6 +57,10 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | polynomial | polinomio | Estándar. |
 | degree of a polynomial | grado de un polinomio | $\deg p$. |
 | basis | base | Estándar. |
+| standard basis | base estándar | Adoptado para $\mathbf F^n$ y $\mathcal P_m(\mathbf F)$. |
+| criterion for basis | criterio para una base | Nombre descriptivo de 2.28. |
+| reduce a spanning list to a basis | reducir una lista generadora a una base | Formulación usada en 2.30. |
+| extend a linearly independent list to a basis | extender una lista linealmente independiente a una base | Formulación usada en 2.32. |
 | dimension | dimensión | Estándar. |
 | null space | espacio nulo | Registrar «núcleo» como sinónimo estándar; decisión abierta para el texto principal. |
 | range | imagen | Evitar «rango» aquí para no confundir con rank. |
