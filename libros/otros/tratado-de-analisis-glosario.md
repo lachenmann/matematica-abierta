@@ -20,10 +20,12 @@ topics:
   - conjuntos-cociente
   - funciones
   - ordenes
+  - numeros-naturales
 prerequisites: []
 related:
   - MA-BOK-0003
   - MA-BCH-0005
+  - MA-BCH-0007
 provenance:
   type: original
   sources: []
@@ -33,7 +35,8 @@ license: GFDL-1.3-or-later
 # Glosario matemático
 
 [**← Volver al Tratado de análisis**](tratado-de-analisis.md) ·
-[**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md)
+[**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) ·
+[**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md)
 
 Este glosario acompaña la publicación progresiva del *Tratado de análisis*. **No se adelanta al texto**: una entrada se incorpora cuando la noción correspondiente ya ha sido definida, construida o fijada en la edición pública.
 
@@ -49,13 +52,16 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Acotado inferiormente](#gl-acotado-inferiormente) ·
 [Acotado superiormente](#gl-acotado-superiormente) ·
 [Antisimetría](#gl-antisimetria) ·
+[Axioma de infinito](#gl-axioma-infinito) ·
 [Biyectividad](#gl-biyectividad) ·
+[Cero](#gl-cero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
 [Codominio](#gl-codominio) ·
 [Composición de funciones](#gl-composicion-funciones) ·
 [Composición de relaciones](#gl-composicion-relaciones) ·
 [Conjunto cociente](#gl-conjunto-cociente) ·
 [Conjunto de funciones](#gl-conjunto-funciones) ·
+[Conjunto inductivo](#gl-conjunto-inductivo) ·
 [Conjunto potencia](#gl-conjunto-potencia) ·
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
@@ -80,6 +86,9 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Metanivel](#gl-metanivel) ·
 [Mínimo](#gl-minimo) ·
 [Nivel objeto](#gl-nivel-objeto) ·
+[Núcleo inductivo](#gl-nucleo-inductivo) ·
+[Números naturales](#gl-numeros-naturales) ·
+[$\omega$](#gl-omega) ·
 [Orden estricto](#gl-orden-estricto) ·
 [Orden parcial](#gl-orden-parcial) ·
 [Orden total](#gl-orden-total) ·
@@ -90,6 +99,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Preimagen](#gl-preimagen) ·
 [Preorden](#gl-preorden) ·
 [Principio de definición sobre clases](#gl-definicion-sobre-clases) ·
+[Principio de inducción](#gl-principio-induccion) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
@@ -103,6 +113,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Singleton](#gl-singleton) ·
 [Sobreyectividad](#gl-sobreyectividad) ·
 [Subconjunto](#gl-subconjunto) ·
+[Sucesor](#gl-sucesor) ·
 [Supremo](#gl-supremo) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
@@ -120,3 +131,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-04.md >}}
 
 {{< include _tratado-glosario-05.md >}}
+
+{{< include _tratado-glosario-06.md >}}
