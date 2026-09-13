@@ -54,6 +54,7 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
   - 1B: 8/8 ejercicios resueltos.
   - 1C: 24/24 ejercicios resueltos.
   - Total Capítulo 1: **47/47**.
+  - [QA global del Capítulo 1](CHAPTER1_QA.md).
 - **Capítulo 2 — Espacios vectoriales de dimensión finita:** iniciado.
   - apertura: cotejada;
   - **2A — Span e independencia lineal: traducción completa y cotejada**;
