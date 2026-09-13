@@ -65,10 +65,10 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 
 ## Contenido disponible
 
-1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación disponible hasta §0.6: lógica ambiente, axiomas conjuntistas, operaciones de conjuntos, pares ordenados y productos cartesianos, relaciones, clases de equivalencia y cocientes, funciones, composición, biyectividad, imagen y preimagen, proyección canónica, definición sobre clases y familias indexadas.
-2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de §§0.0–0.6.
+1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación disponible hasta §0.7: lógica ambiente, axiomas conjuntistas, operaciones de conjuntos, pares ordenados y productos cartesianos, relaciones, clases de equivalencia y cocientes, funciones, composición, biyectividad, imagen y preimagen, proyección canónica, definición sobre clases, familias indexadas y teoría abstracta del orden.
+2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de §§0.0–0.7.
 
-La siguiente incorporación continuará dentro del Capítulo 0 con **§0.7 — Órdenes**, última sección fundacional antes de comenzar la construcción de los números naturales. En el mismo paso se incorporará al glosario el vocabulario correspondiente a preórdenes, órdenes parciales y totales, orden estricto, cotas, máximo, mínimo, supremo e ínfimo.
+La siguiente incorporación cerrará editorialmente el Capítulo 0 con **§§0.8–0.10**: resumen de notación, cierre deductivo y transición hacia la construcción de los números naturales. Después de ese cierre comenzará el **Capítulo 1 — Los números naturales**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
