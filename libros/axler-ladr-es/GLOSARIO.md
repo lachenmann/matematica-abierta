@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.4
+# Glosario terminológico · v0.5
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -8,6 +8,8 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | vector space over $\mathbf F$ | espacio vectorial sobre $\mathbf F$ | Preferido frente a «espacio vectorial sobre el cuerpo $\mathbf F$» cuando $\mathbf F$ ya está fijado. |
 | real vector space | espacio vectorial real | Estándar. |
 | complex vector space | espacio vectorial complejo | Estándar. |
+| finite-dimensional vector space | espacio vectorial de dimensión finita | Forma principal adoptada en 2A. |
+| infinite-dimensional vector space | espacio vectorial de dimensión infinita | Forma principal adoptada en 2A. |
 | vector | vector | Estándar. |
 | point | punto | Axler lo usa como lenguaje geométrico alternativo para elementos de un espacio vectorial. |
 | subspace | subespacio | Preferido; «subespacio lineal» se registra como sinónimo señalado por Axler. |
@@ -35,6 +37,7 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | field | cuerpo | Preferido en el texto principal; «campo» queda como variante regional. Se conserva $\mathbf F$ porque procede del inglés *field*. |
 | algebraically closed field | cuerpo algebraicamente cerrado | Estándar. |
 | list | lista | Axler usa listas, no conjuntos, para secuencias finitas ordenadas. |
+| list of vectors | lista de vectores | En 2A se conserva la convención de escribirla sin paréntesis exteriores. |
 | n-tuple | $n$-tupla | Sinónimo señalado por Axler para una lista de longitud $n$. |
 | sequence | sucesión | Para elementos de $\mathbf F^\infty$; no traducir como «lista» porque Axler distingue ambos conceptos. |
 | coordinate | coordenada | Estándar. |
@@ -42,9 +45,17 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | dot product | producto punto | Preferido para distinguirlo de *scalar multiplication* y de *inner product*. |
 | function space | espacio de funciones | Cuando se usa como descripción de $\mathbf F^S$ o $V^S$. |
 | complexification | complexificación | Término estándar; $V_{\mathbf C}=V\times V$ con la estructura compleja indicada por Axler. |
-| span | subespacio generado / span | En prosa: «subespacio generado»; conservar `span` cuando sea parte de notación definida. |
+| span | subespacio generado / span | En prosa: «subespacio generado»; conservar $\operatorname{span}$ como operador definido por Axler. |
+| linear span | subespacio generado | Sinónimo de *span* señalado por Axler. |
+| spans | genera | «La lista genera $V$». |
+| spanning list | lista generadora | Lista cuyo span es todo el espacio. |
 | linear combination | combinación lineal | Estándar. |
 | linear independence | independencia lineal | Estándar. |
+| linearly independent | linealmente independiente | Forma adjetival. |
+| linearly dependent | linealmente dependiente | Forma adjetival. |
+| linear dependence lemma | lema de dependencia lineal | Nombre adoptado para 2.19. |
+| polynomial | polinomio | Estándar. |
+| degree of a polynomial | grado de un polinomio | $\deg p$. |
 | basis | base | Estándar. |
 | dimension | dimensión | Estándar. |
 | null space | espacio nulo | Registrar «núcleo» como sinónimo estándar; decisión abierta para el texto principal. |
@@ -68,6 +79,7 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 3. `range`: imagen vs. recorrido.
 4. `inner product`: producto interno vs. producto escalar.
 5. `field`: mantener «cuerpo» como forma principal o adoptar «campo» por uso latinoamericano.
-6. traducción del título *Linear Algebra Done Right*.
+6. `span`: mantener el operador inglés `span` en la edición pública o introducir además una notación española sólo en prosa.
+7. traducción del título *Linear Algebra Done Right*.
 
 Las propuestas terminológicas pueden discutirse mediante Issues o Pull Requests, idealmente aportando referencias de uso matemático en español.
