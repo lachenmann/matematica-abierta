@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.3
+# Glosario terminológico · v0.4
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -10,6 +10,19 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | complex vector space | espacio vectorial complejo | Estándar. |
 | vector | vector | Estándar. |
 | point | punto | Axler lo usa como lenguaje geométrico alternativo para elementos de un espacio vectorial. |
+| subspace | subespacio | Preferido; «subespacio lineal» se registra como sinónimo señalado por Axler. |
+| linear subspace | subespacio lineal | Sinónimo de subespacio; no se usa como forma principal. |
+| closed under addition | cerrado bajo la suma | Terminología estructural estándar. |
+| closed under scalar multiplication | cerrado bajo la multiplicación por escalares | Coherente con la traducción de *scalar multiplication*. |
+| sum of subspaces | suma de subespacios | Para $V_1+\cdots+V_m$. |
+| summand | sumando | Subespacio participante en una suma de subespacios. |
+| direct sum | suma directa | Para la suma con representación única; símbolo $\oplus$. |
+| intersection | intersección | Para $U\cap W$. |
+| union | unión | Para $U\cup W$. |
+| contained in | contenido en | Se prefiere «$U$ está contenido en $W$» para $U\subseteq W$. |
+| periodic function | función periódica | Estándar. |
+| even function | función par | Estándar. |
+| odd function | función impar | Estándar. |
 | linear map | aplicación lineal | Preferido frente a «transformación lineal» para conservar la distinción map/operator. |
 | linear operator | operador lineal | Para $T:V\to V$. |
 | complex number | número complejo | Estándar. |
