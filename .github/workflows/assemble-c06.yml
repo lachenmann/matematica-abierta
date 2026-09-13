@@ -1,0 +1,36 @@
+name: Assemble C6
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - publish/algebra-v2-c06
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+        with:
+          ref: publish/algebra-v2-c06
+          fetch-depth: 0
+
+      - name: Assemble public chapter
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f .tmp/c06/part-07.md ]; then
+            echo "C6 fragments already assembled; nothing to do."
+            exit 0
+          fi
+          mkdir -p libros/capitulos
+          cat .tmp/c06/part-*.md > libros/capitulos/cuantificadores-predicados-y-lenguaje-matematico.md
+          rm -rf .tmp/c06
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .tmp libros/capitulos/cuantificadores-predicados-y-lenguaje-matematico.md
+          git commit -m "Assemble Algebra chapter 6 public source"
+          git push origin HEAD:publish/algebra-v2-c06
