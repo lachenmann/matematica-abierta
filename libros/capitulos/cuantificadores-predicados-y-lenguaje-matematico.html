@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Sexto capítulo del Tomo I de Álgebra para matemáticos: predicados, dominios, variables libres y ligadas, cuantificadores universal y existencial, negación, alcance, dependencia, orden de cuantificadores y existencia única.">
+
+<title>Cuantificadores, predicados y lenguaje matemático – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#cuantificadores-predicados-y-lenguaje-matemático" id="toc-cuantificadores-predicados-y-lenguaje-matemático" class="nav-link active" data-scroll-target="#cuantificadores-predicados-y-lenguaje-matemático">6. Cuantificadores, predicados y lenguaje matemático</a>
+  <ul class="collapse">
+  <li><a href="#de-una-expresión-abierta-a-una-afirmación" id="toc-de-una-expresión-abierta-a-una-afirmación" class="nav-link" data-scroll-target="#de-una-expresión-abierta-a-una-afirmación">6.1. De una expresión abierta a una afirmación</a></li>
+  <li><a href="#predicados-y-dominio-de-discurso" id="toc-predicados-y-dominio-de-discurso" class="nav-link" data-scroll-target="#predicados-y-dominio-de-discurso">6.2. Predicados y dominio de discurso</a>
+  <ul class="collapse">
+  <li><a href="#el-mismo-símbolo-distinta-afirmación" id="toc-el-mismo-símbolo-distinta-afirmación" class="nav-link" data-scroll-target="#el-mismo-símbolo-distinta-afirmación">El mismo símbolo, distinta afirmación</a></li>
+  </ul></li>
+  <li><a href="#variables-libres-y-variables-ligadas" id="toc-variables-libres-y-variables-ligadas" class="nav-link" data-scroll-target="#variables-libres-y-variables-ligadas">6.3. Variables libres y variables ligadas</a>
+  <ul class="collapse">
+  <li><a href="#el-nombre-de-la-variable-no-es-lo-esencial" id="toc-el-nombre-de-la-variable-no-es-lo-esencial" class="nav-link" data-scroll-target="#el-nombre-de-la-variable-no-es-lo-esencial">El nombre de la variable no es lo esencial</a></li>
+  </ul></li>
+  <li><a href="#el-cuantificador-universal" id="toc-el-cuantificador-universal" class="nav-link" data-scroll-target="#el-cuantificador-universal">6.4. El cuantificador universal</a>
+  <ul class="collapse">
+  <li><a href="#una-afirmación-universal-es-fuerte" id="toc-una-afirmación-universal-es-fuerte" class="nav-link" data-scroll-target="#una-afirmación-universal-es-fuerte">Una afirmación universal es fuerte</a></li>
+  <li><a href="#universal-con-condición" id="toc-universal-con-condición" class="nav-link" data-scroll-target="#universal-con-condición">Universal con condición</a></li>
+  </ul></li>
+  <li><a href="#refutar-un-universal-el-poder-de-un-contraejemplo" id="toc-refutar-un-universal-el-poder-de-un-contraejemplo" class="nav-link" data-scroll-target="#refutar-un-universal-el-poder-de-un-contraejemplo">6.5. Refutar un universal: el poder de un contraejemplo</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-no-es-demostración" id="toc-ejemplo-no-es-demostración" class="nav-link" data-scroll-target="#ejemplo-no-es-demostración">Ejemplo no es demostración</a></li>
+  </ul></li>
+  <li><a href="#el-cuantificador-existencial" id="toc-el-cuantificador-existencial" class="nav-link" data-scroll-target="#el-cuantificador-existencial">6.6. El cuantificador existencial</a>
+  <ul class="collapse">
+  <li><a href="#existencia-no-significa-sé-cuál-es" id="toc-existencia-no-significa-sé-cuál-es" class="nav-link" data-scroll-target="#existencia-no-significa-sé-cuál-es">Existencia no significa “sé cuál es”</a></li>
+  <li><a href="#refutar-un-existencial" id="toc-refutar-un-existencial" class="nav-link" data-scroll-target="#refutar-un-existencial">Refutar un existencial</a></li>
+  </ul></li>
+  <li><a href="#negar-cuantificadores" id="toc-negar-cuantificadores" class="nav-link" data-scroll-target="#negar-cuantificadores">6.7. Negar cuantificadores</a>
+  <ul class="collapse">
+  <li><a href="#la-negación-debe-seguir-avanzando" id="toc-la-negación-debe-seguir-avanzando" class="nav-link" data-scroll-target="#la-negación-debe-seguir-avanzando">La negación debe seguir avanzando</a></li>
+  <li><a href="#no-todos-y-ninguno-no-son-lo-mismo" id="toc-no-todos-y-ninguno-no-son-lo-mismo" class="nav-link" data-scroll-target="#no-todos-y-ninguno-no-son-lo-mismo">“No todos” y “ninguno” no son lo mismo</a></li>
+  </ul></li>
+  <li><a href="#cuantificación-restringida" id="toc-cuantificación-restringida" class="nav-link" data-scroll-target="#cuantificación-restringida">6.8. Cuantificación restringida</a>
+  <ul class="collapse">
+  <li><a href="#negaciones-restringidas" id="toc-negaciones-restringidas" class="nav-link" data-scroll-target="#negaciones-restringidas">Negaciones restringidas</a></li>
+  </ul></li>
+  <li><a href="#alcance-paréntesis-y-variables" id="toc-alcance-paréntesis-y-variables" class="nav-link" data-scroll-target="#alcance-paréntesis-y-variables">6.9. Alcance, paréntesis y variables</a>
+  <ul class="collapse">
+  <li><a href="#renombrar-sin-capturar" id="toc-renombrar-sin-capturar" class="nav-link" data-scroll-target="#renombrar-sin-capturar">Renombrar sin capturar</a></li>
+  </ul></li>
+  <li><a href="#dos-cuantificadores-el-orden-importa" id="toc-dos-cuantificadores-el-orden-importa" class="nav-link" data-scroll-target="#dos-cuantificadores-el-orden-importa">6.10. Dos cuantificadores: el orden importa</a>
+  <ul class="collapse">
+  <li><a href="#cuantificadores-del-mismo-tipo" id="toc-cuantificadores-del-mismo-tipo" class="nav-link" data-scroll-target="#cuantificadores-del-mismo-tipo">Cuantificadores del mismo tipo</a></li>
+  </ul></li>
+  <li><a href="#dependencia-entre-variables-y-elección-de-testigos" id="toc-dependencia-entre-variables-y-elección-de-testigos" class="nav-link" data-scroll-target="#dependencia-entre-variables-y-elección-de-testigos">6.11. Dependencia entre variables y elección de testigos</a>
+  <ul class="collapse">
+  <li><a href="#una-advertencia" id="toc-una-advertencia" class="nav-link" data-scroll-target="#una-advertencia">Una advertencia</a></li>
+  </ul></li>
+  <li><a href="#existe-un-único-el-cuantificador-de-unicidad" id="toc-existe-un-único-el-cuantificador-de-unicidad" class="nav-link" data-scroll-target="#existe-un-único-el-cuantificador-de-unicidad">6.12. “Existe un único”: el cuantificador de unicidad</a></li>
+  <li><a href="#traducir-lenguaje-matemático-a-símbolos" id="toc-traducir-lenguaje-matemático-a-símbolos" class="nav-link" data-scroll-target="#traducir-lenguaje-matemático-a-símbolos">6.13. Traducir lenguaje matemático a símbolos</a>
+  <ul class="collapse">
+  <li><a href="#palabras-que-revelan-estructura" id="toc-palabras-que-revelan-estructura" class="nav-link" data-scroll-target="#palabras-que-revelan-estructura">Palabras que revelan estructura</a></li>
+  </ul></li>
+  <li><a href="#traducir-símbolos-a-lenguaje-matemático" id="toc-traducir-símbolos-a-lenguaje-matemático" class="nav-link" data-scroll-target="#traducir-símbolos-a-lenguaje-matemático">6.14. Traducir símbolos a lenguaje matemático</a>
+  <ul class="collapse">
+  <li><a href="#leer-desde-afuera-hacia-adentro" id="toc-leer-desde-afuera-hacia-adentro" class="nav-link" data-scroll-target="#leer-desde-afuera-hacia-adentro">Leer desde afuera hacia adentro</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-errores-de-cuantificación" id="toc-diagnóstico-de-errores-de-cuantificación" class="nav-link" data-scroll-target="#diagnóstico-de-errores-de-cuantificación">6.15. Diagnóstico de errores de cuantificación</a>
+  <ul class="collapse">
+  <li><a href="#error-1-cambiar-el-cuantificador-al-traducir" id="toc-error-1-cambiar-el-cuantificador-al-traducir" class="nav-link" data-scroll-target="#error-1-cambiar-el-cuantificador-al-traducir">Error 1: cambiar el cuantificador al traducir</a></li>
+  <li><a href="#error-2-negar-sin-cambiar-cuantificador" id="toc-error-2-negar-sin-cambiar-cuantificador" class="nav-link" data-scroll-target="#error-2-negar-sin-cambiar-cuantificador">Error 2: negar sin cambiar cuantificador</a></li>
+  <li><a href="#error-3-ignorar-el-dominio" id="toc-error-3-ignorar-el-dominio" class="nav-link" data-scroll-target="#error-3-ignorar-el-dominio">Error 3: ignorar el dominio</a></li>
+  <li><a href="#error-4-confundir-testigo-dependiente-con-testigo-fijo" id="toc-error-4-confundir-testigo-dependiente-con-testigo-fijo" class="nav-link" data-scroll-target="#error-4-confundir-testigo-dependiente-con-testigo-fijo">Error 4: confundir testigo dependiente con testigo fijo</a></li>
+  <li><a href="#error-5-confundir-existencia-con-unicidad" id="toc-error-5-confundir-existencia-con-unicidad" class="nav-link" data-scroll-target="#error-5-confundir-existencia-con-unicidad">Error 5: confundir existencia con unicidad</a></li>
+  <li><a href="#error-6-perder-el-alcance" id="toc-error-6-perder-el-alcance" class="nav-link" data-scroll-target="#error-6-perder-el-alcance">Error 6: perder el alcance</a></li>
+  </ul></li>
+  <li><a href="#cierre-protocolo-de-lectura-cuantificada" id="toc-cierre-protocolo-de-lectura-cuantificada" class="nav-link" data-scroll-target="#cierre-protocolo-de-lectura-cuantificada">6.16. Cierre — protocolo de lectura cuantificada</a></li>
+  <li><a href="#ejercicios-del-capítulo" id="toc-ejercicios-del-capítulo" class="nav-link" data-scroll-target="#ejercicios-del-capítulo">Ejercicios del capítulo</a>
+  <ul class="collapse">
+  <li><a href="#a-predicados-y-dominios" id="toc-a-predicados-y-dominios" class="nav-link" data-scroll-target="#a-predicados-y-dominios">A — Predicados y dominios</a></li>
+  <li><a href="#b-variables-libres-y-ligadas" id="toc-b-variables-libres-y-ligadas" class="nav-link" data-scroll-target="#b-variables-libres-y-ligadas">B — Variables libres y ligadas</a></li>
+  <li><a href="#c-universales-y-contraejemplos" id="toc-c-universales-y-contraejemplos" class="nav-link" data-scroll-target="#c-universales-y-contraejemplos">C — Universales y contraejemplos</a></li>
+  <li><a href="#d-existenciales-y-testigos" id="toc-d-existenciales-y-testigos" class="nav-link" data-scroll-target="#d-existenciales-y-testigos">D — Existenciales y testigos</a></li>
+  <li><a href="#e-negación-de-cuantificadores" id="toc-e-negación-de-cuantificadores" class="nav-link" data-scroll-target="#e-negación-de-cuantificadores">E — Negación de cuantificadores</a></li>
+  <li><a href="#f-cuantificación-restringida" id="toc-f-cuantificación-restringida" class="nav-link" data-scroll-target="#f-cuantificación-restringida">F — Cuantificación restringida</a></li>
+  <li><a href="#g-alcance-y-paréntesis" id="toc-g-alcance-y-paréntesis" class="nav-link" data-scroll-target="#g-alcance-y-paréntesis">G — Alcance y paréntesis</a></li>
+  <li><a href="#h-orden-de-cuantificadores" id="toc-h-orden-de-cuantificadores" class="nav-link" data-scroll-target="#h-orden-de-cuantificadores">H — Orden de cuantificadores</a></li>
+  <li><a href="#i-dependencia-y-elección-de-testigos" id="toc-i-dependencia-y-elección-de-testigos" class="nav-link" data-scroll-target="#i-dependencia-y-elección-de-testigos">I — Dependencia y elección de testigos</a></li>
+  <li><a href="#j-existencia-única" id="toc-j-existencia-única" class="nav-link" data-scroll-target="#j-existencia-única">J — Existencia única</a></li>
+  <li><a href="#k-traducción-bidireccional" id="toc-k-traducción-bidireccional" class="nav-link" data-scroll-target="#k-traducción-bidireccional">K — Traducción bidireccional</a></li>
+  <li><a href="#l-diagnóstico-y-síntesis" id="toc-l-diagnóstico-y-síntesis" class="nav-link" data-scroll-target="#l-diagnóstico-y-síntesis">L — Diagnóstico y síntesis</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">Soluciones razonadas</a>
+  <ul class="collapse">
+  <li><a href="#soluciones-a-predicados-y-dominios" id="toc-soluciones-a-predicados-y-dominios" class="nav-link" data-scroll-target="#soluciones-a-predicados-y-dominios">Soluciones — A — Predicados y dominios</a></li>
+  <li><a href="#soluciones-b-variables-libres-y-ligadas" id="toc-soluciones-b-variables-libres-y-ligadas" class="nav-link" data-scroll-target="#soluciones-b-variables-libres-y-ligadas">Soluciones — B — Variables libres y ligadas</a></li>
+  <li><a href="#soluciones-c-universales-y-contraejemplos" id="toc-soluciones-c-universales-y-contraejemplos" class="nav-link" data-scroll-target="#soluciones-c-universales-y-contraejemplos">Soluciones — C — Universales y contraejemplos</a></li>
+  <li><a href="#soluciones-d-existenciales-y-testigos" id="toc-soluciones-d-existenciales-y-testigos" class="nav-link" data-scroll-target="#soluciones-d-existenciales-y-testigos">Soluciones — D — Existenciales y testigos</a></li>
+  <li><a href="#soluciones-e-negación-de-cuantificadores" id="toc-soluciones-e-negación-de-cuantificadores" class="nav-link" data-scroll-target="#soluciones-e-negación-de-cuantificadores">Soluciones — E — Negación de cuantificadores</a></li>
+  <li><a href="#soluciones-f-cuantificación-restringida" id="toc-soluciones-f-cuantificación-restringida" class="nav-link" data-scroll-target="#soluciones-f-cuantificación-restringida">Soluciones — F — Cuantificación restringida</a></li>
+  <li><a href="#soluciones-g-alcance-y-paréntesis" id="toc-soluciones-g-alcance-y-paréntesis" class="nav-link" data-scroll-target="#soluciones-g-alcance-y-paréntesis">Soluciones — G — Alcance y paréntesis</a></li>
+  <li><a href="#soluciones-h-orden-de-cuantificadores" id="toc-soluciones-h-orden-de-cuantificadores" class="nav-link" data-scroll-target="#soluciones-h-orden-de-cuantificadores">Soluciones — H — Orden de cuantificadores</a></li>
+  <li><a href="#soluciones-i-dependencia-y-elección-de-testigos" id="toc-soluciones-i-dependencia-y-elección-de-testigos" class="nav-link" data-scroll-target="#soluciones-i-dependencia-y-elección-de-testigos">Soluciones — I — Dependencia y elección de testigos</a></li>
+  <li><a href="#soluciones-j-existencia-única" id="toc-soluciones-j-existencia-única" class="nav-link" data-scroll-target="#soluciones-j-existencia-única">Soluciones — J — Existencia única</a></li>
+  <li><a href="#soluciones-k-traducción-bidireccional" id="toc-soluciones-k-traducción-bidireccional" class="nav-link" data-scroll-target="#soluciones-k-traducción-bidireccional">Soluciones — K — Traducción bidireccional</a></li>
+  <li><a href="#soluciones-l-diagnóstico-y-síntesis" id="toc-soluciones-l-diagnóstico-y-síntesis" class="nav-link" data-scroll-target="#soluciones-l-diagnóstico-y-síntesis">Soluciones — L — Diagnóstico y síntesis</a></li>
+  <li><a href="#soluciones-m-problemas-tipo-prueba" id="toc-soluciones-m-problemas-tipo-prueba" class="nav-link" data-scroll-target="#soluciones-m-problemas-tipo-prueba">Soluciones — M — Problemas tipo prueba</a></li>
+  <li><a href="#autoevaluación-de-salida" id="toc-autoevaluación-de-salida" class="nav-link" data-scroll-target="#autoevaluación-de-salida">Autoevaluación de salida</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cuantificadores, predicados y lenguaje matemático</h1>
+</div>
+
+<div>
+  <div class="description">
+    Sexto capítulo del Tomo I de Álgebra para matemáticos: predicados, dominios, variables libres y ligadas, cuantificadores universal y existencial, negación, alcance, dependencia, orden de cuantificadores y existencia única.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">12 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="cuantificadores-predicados-y-lenguaje-matemático" class="level1">
+<h1>6. Cuantificadores, predicados y lenguaje matemático</h1>
+<p>En los capítulos 4 y 5 trabajamos con proposiciones completas: afirmaciones que ya podían ser verdaderas o falsas. Pero la matemática real está llena de frases como “<span class="math inline">\(x\)</span> es par”, “<span class="math inline">\(x^2&lt;y\)</span>”, “<span class="math inline">\(n\)</span> divide a <span class="math inline">\(m\)</span>” o “<span class="math inline">\(x\)</span> tiene una raíz cuadrada”. Antes de decidir su verdad necesitamos saber <strong>qué objetos pueden ocupar esas variables</strong> y <strong>qué estamos afirmando acerca de ellos</strong>.</p>
+<p>Aquí aparece una capa nueva del lenguaje matemático. Ya no basta con combinar proposiciones mediante <span class="math inline">\(\neg\)</span>, <span class="math inline">\(\land\)</span>, <span class="math inline">\(\lor\)</span> o <span class="math inline">\(\Rightarrow\)</span>. Debemos aprender a manejar <strong>predicados, dominios, variables libres y ligadas, cuantificadores, alcance y dependencia</strong>.</p>
+<p>La pregunta rectora del capítulo es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Cómo convertimos una condición abierta en una afirmación matemática precisa, y cómo leemos exactamente qué promete una frase con “para todo”, “existe” o “existe un único”?</strong></p>
+</blockquote>
+<p>Salvo indicación contraria, los dominios que usemos serán no vacíos. No desarrollaremos todavía una teoría formal de lógica de primer orden; el objetivo es operativo y matemático: leer, escribir, negar y comparar afirmaciones cuantificadas con la precisión que exigirá todo el resto del libro.</p>
+<hr>
+<section id="de-una-expresión-abierta-a-una-afirmación" class="level2">
+<h2 class="anchored" data-anchor-id="de-una-expresión-abierta-a-una-afirmación">6.1. De una expresión abierta a una afirmación</h2>
+<p>Comparemos tres escrituras:</p>
+<ul>
+<li><span class="math inline">\(x+3\)</span>;</li>
+<li><span class="math inline">\(x+3=7\)</span>;</li>
+<li><span class="math inline">\(4+3=7\)</span>.</li>
+</ul>
+<p>La primera es una <strong>expresión</strong>: representa un objeto numérico una vez que se conoce <span class="math inline">\(x\)</span>. La segunda es una <strong>condición abierta</strong>: según el valor que adopte <span class="math inline">\(x\)</span>, puede resultar verdadera o falsa. La tercera ya es una <strong>proposición</strong>: no queda ninguna variable sin determinar y podemos asignarle un valor de verdad.</p>
+<p>A una condición como</p>
+<p><span class="math inline">\(P(x): x+3=7\)</span></p>
+<p>la llamaremos <strong>predicado</strong> en la variable <span class="math inline">\(x\)</span>. Si sustituimos <span class="math inline">\(x=4\)</span>, obtenemos la proposición verdadera <span class="math inline">\(P(4)\)</span>. Si sustituimos <span class="math inline">\(x=10\)</span>, obtenemos la proposición falsa <span class="math inline">\(P(10)\)</span>.</p>
+<p>Hay otra forma de cerrar la condición: cuantificarla. Por ejemplo,</p>
+<p><span class="math inline">\(\exists x\in\mathbb R\;(x+3=7)\)</span></p>
+<p>dice que existe al menos un real que satisface la condición, mientras que</p>
+<p><span class="math inline">\(\forall x\in\mathbb R\;(x+3=7)\)</span></p>
+<p>dice que todos los reales la satisfacen. La primera afirmación es verdadera; la segunda, falsa.</p>
+<p>La lección inicial es sencilla pero decisiva:</p>
+<blockquote class="blockquote">
+<p><strong>Una fórmula con variables libres no es, en general, una afirmación completa. Para obtener una proposición debemos fijar valores o ligar las variables mediante cuantificadores.</strong></p>
+</blockquote>
+</section>
+<section id="predicados-y-dominio-de-discurso" class="level2">
+<h2 class="anchored" data-anchor-id="predicados-y-dominio-de-discurso">6.2. Predicados y dominio de discurso</h2>
+<p>El predicado no vive aislado del conjunto de objetos que estamos autorizados a considerar. Ese conjunto se llama <strong>dominio</strong>, <strong>universo de discurso</strong> o simplemente universo.</p>
+<p>Consideremos</p>
+<p><span class="math inline">\(P(x): x^2=2\)</span>.</p>
+<p>La pregunta “¿existe un <span class="math inline">\(x\)</span> tal que <span class="math inline">\(P(x)\)</span>?” tiene respuestas distintas según el dominio:</p>
+<ul>
+<li>en <span class="math inline">\(\mathbb Z\)</span>, no hay solución;</li>
+<li>en <span class="math inline">\(\mathbb Q\)</span>, tampoco;</li>
+<li>en <span class="math inline">\(\mathbb R\)</span>, sí: <span class="math inline">\(x=\sqrt2\)</span> y <span class="math inline">\(x=-\sqrt2\)</span>.</li>
+</ul>
+<p>Por eso la escritura</p>
+<p><span class="math inline">\(\exists x\;P(x)\)</span></p>
+<p>es incompleta si el contexto no deja claro qué objetos puede recorrer <span class="math inline">\(x\)</span>.</p>
+<p>El dominio puede aparecer explícitamente, como en <span class="math inline">\(\forall n\in\mathbb Z\)</span>, o quedar fijado por el contexto. En un texto bien escrito, esa información nunca debería ser ambigua.</p>
+<section id="el-mismo-símbolo-distinta-afirmación" class="level3">
+<h3 class="anchored" data-anchor-id="el-mismo-símbolo-distinta-afirmación">El mismo símbolo, distinta afirmación</h3>
+<p>La fórmula</p>
+<p><span class="math inline">\(\forall x\;(x^2\ge x)\)</span></p>
+<p>es verdadera si el dominio es <span class="math inline">\(\{0,1\}\)</span>, pero falsa sobre <span class="math inline">\(\mathbb R\)</span>, pues <span class="math inline">\(x=\tfrac12\)</span> da <span class="math inline">\(\tfrac14&lt;\tfrac12\)</span>.</p>
+<p>El dominio no es un detalle externo: forma parte del significado matemático de la afirmación.</p>
+</section>
+</section>
+<section id="variables-libres-y-variables-ligadas" class="level2">
+<h2 class="anchored" data-anchor-id="variables-libres-y-variables-ligadas">6.3. Variables libres y variables ligadas</h2>
+<p>Una variable es <strong>libre</strong> cuando todavía no está controlada por un cuantificador dentro de la expresión considerada. Es <strong>ligada</strong> cuando un cuantificador determina su alcance.</p>
+<p>Ejemplos:</p>
+<ul>
+<li>en <span class="math inline">\(x^2&gt;0\)</span>, la variable <span class="math inline">\(x\)</span> es libre;</li>
+<li>en <span class="math inline">\(\forall x\in\mathbb R\;(x^2\ge0)\)</span>, <span class="math inline">\(x\)</span> está ligada por <span class="math inline">\(\forall\)</span>;</li>
+<li>en <span class="math inline">\(\forall x\,P(x,y)\)</span>, <span class="math inline">\(x\)</span> está ligada y <span class="math inline">\(y\)</span> queda libre;</li>
+<li>en <span class="math inline">\(\forall x\,\exists y\,R(x,y)\)</span>, ambas variables están ligadas.</li>
+</ul>
+<p>Una fórmula puede contener simultáneamente variables libres y ligadas. Mientras quede una variable libre cuyo valor no esté fijado por el contexto, no tenemos todavía una proposición cerrada.</p>
+<section id="el-nombre-de-la-variable-no-es-lo-esencial" class="level3">
+<h3 class="anchored" data-anchor-id="el-nombre-de-la-variable-no-es-lo-esencial">El nombre de la variable no es lo esencial</h3>
+<p>Las afirmaciones</p>
+<p><span class="math inline">\(\forall x\in\mathbb R\;(x^2\ge0)\)</span></p>
+<p>y</p>
+<p><span class="math inline">\(\forall t\in\mathbb R\;(t^2\ge0)\)</span></p>
+<p>tienen el mismo significado. Cambiar el nombre de una variable ligada es inocuo si se hace de manera coherente y no se produce una colisión con otra variable que ya tenga función distinta.</p>
+<p>Más adelante veremos un error típico: renombrar una variable ligada con el mismo nombre de una variable libre puede cambiar el significado al <strong>capturarla</strong>.</p>
+</section>
+</section>
+<section id="el-cuantificador-universal" class="level2">
+<h2 class="anchored" data-anchor-id="el-cuantificador-universal">6.4. El cuantificador universal</h2>
+<p>El símbolo <span class="math inline">\(\forall\)</span> se lee “para todo” o “para cada”. La afirmación</p>
+<p><span class="math display">\[
+\forall x\in D\;P(x)
+\]</span></p>
+<p>dice que <strong>cada elemento</strong> del dominio <span class="math inline">\(D\)</span> satisface el predicado <span class="math inline">\(P\)</span>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math inline">\(\forall n\in\mathbb Z\;(n+0=n)\)</span></p>
+<p>es verdadera. No afirma que exista algún entero con esa propiedad, sino que ninguno queda fuera.</p>
+<section id="una-afirmación-universal-es-fuerte" class="level3">
+<h3 class="anchored" data-anchor-id="una-afirmación-universal-es-fuerte">Una afirmación universal es fuerte</h3>
+<p>Para establecer <span class="math inline">\(\forall x\in D\;P(x)\)</span> no basta comprobar muchos casos. Incluso un millón de ejemplos compatibles no elimina la posibilidad de que exista un caso posterior que falle.</p>
+<p>En un dominio finito pequeño podríamos revisar todos los elementos. En dominios grandes o infinitos, normalmente necesitaremos un argumento general. Ese repertorio de argumentos será tema de C10; aquí nos importa reconocer la estructura lógica del objetivo.</p>
+</section>
+<section id="universal-con-condición" class="level3">
+<h3 class="anchored" data-anchor-id="universal-con-condición">Universal con condición</h3>
+<p>Una forma extremadamente común es</p>
+<p><span class="math display">\[
+\forall x\in D\;[A(x)\Rightarrow B(x)].
+\]</span></p>
+<p>Se lee: “para todo <span class="math inline">\(x\)</span> del dominio, si <span class="math inline">\(x\)</span> cumple <span class="math inline">\(A\)</span>, entonces cumple <span class="math inline">\(B\)</span>”. Los objetos que no satisfacen <span class="math inline">\(A\)</span> no constituyen contraejemplos, porque en ellos el antecedente es falso.</p>
+</section>
+</section>
+<section id="refutar-un-universal-el-poder-de-un-contraejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="refutar-un-universal-el-poder-de-un-contraejemplo">6.5. Refutar un universal: el poder de un contraejemplo</h2>
+<p>Hay una asimetría fundamental entre demostrar y refutar una afirmación universal.</p>
+<p>Para confirmar</p>
+<p><span class="math inline">\(\forall x\in D\;P(x)\)</span></p>
+<p>necesitamos controlar todos los casos. Para refutarla basta encontrar un solo elemento <span class="math inline">\(a\in D\)</span> tal que <span class="math inline">\(P(a)\)</span> sea falsa.</p>
+<p>Ese elemento se llama <strong>contraejemplo</strong>.</p>
+<p>Consideremos la afirmación:</p>
+<blockquote class="blockquote">
+<p>Para todo entero <span class="math inline">\(n\)</span>, se cumple <span class="math inline">\(n^2&gt;n\)</span>.</p>
+</blockquote>
+<p>Basta tomar <span class="math inline">\(n=0\)</span>. Entonces <span class="math inline">\(0^2&gt;0\)</span> es falso. Por tanto la afirmación universal es falsa.</p>
+<p>Un contraejemplo debe respetar exactamente el dominio y las hipótesis. Si la afirmación dice “todo entero par mayor que <span class="math inline">\(2\)</span>…”, un número impar o el entero <span class="math inline">\(2\)</span> no puede refutarla.</p>
+<section id="ejemplo-no-es-demostración" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-no-es-demostración">Ejemplo no es demostración</h3>
+<p>Encontrar cinco casos en los que una propiedad funciona puede sugerir una conjetura. No demuestra una afirmación universal. En cambio, encontrar un solo caso en el que falla sí decide la cuestión en sentido negativo.</p>
+</section>
+</section>
+<section id="el-cuantificador-existencial" class="level2">
+<h2 class="anchored" data-anchor-id="el-cuantificador-existencial">6.6. El cuantificador existencial</h2>
+<p>El símbolo <span class="math inline">\(\exists\)</span> se lee “existe al menos uno”. La afirmación</p>
+<p><span class="math display">\[
+\exists x\in D\;P(x)
+\]</span></p>
+<p>dice que hay <strong>por lo menos un elemento</strong> del dominio que satisface <span class="math inline">\(P\)</span>.</p>
+<p>Para demostrar una afirmación existencial concreta suele bastar exhibir un <strong>testigo</strong>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math inline">\(\exists n\in\mathbb Z\;(n^2=49)\)</span></p>
+<p>es verdadera porque <span class="math inline">\(n=7\)</span> es un testigo. También <span class="math inline">\(n=-7\)</span> lo es. La existencia no implica unicidad.</p>
+<section id="existencia-no-significa-sé-cuál-es" class="level3">
+<h3 class="anchored" data-anchor-id="existencia-no-significa-sé-cuál-es">Existencia no significa “sé cuál es”</h3>
+<p>En matemática avanzada existen demostraciones de existencia que no construyen explícitamente el objeto. En este capítulo, sin embargo, la mayoría de nuestros ejemplos serán constructivos: producir un testigo será el modo más transparente de entender el cuantificador.</p>
+</section>
+<section id="refutar-un-existencial" class="level3">
+<h3 class="anchored" data-anchor-id="refutar-un-existencial">Refutar un existencial</h3>
+<p>Para mostrar que <span class="math inline">\(\exists x\in D\;P(x)\)</span> es falsa debemos establecer que <strong>ningún</strong> elemento del dominio funciona. La mera frase “no encontré ninguno” no es un argumento.</p>
+</section>
+</section>
+<section id="negar-cuantificadores" class="level2">
+<h2 class="anchored" data-anchor-id="negar-cuantificadores">6.7. Negar cuantificadores</h2>
+<p>Éste es uno de los núcleos del capítulo.</p>
+<p>Negar “todos cumplen <span class="math inline">\(P\)</span>” significa afirmar “hay al menos uno que no cumple <span class="math inline">\(P\)</span>”. Por eso:</p>
+<p><span class="math display">\[
+\neg(\forall x\,P(x))\equiv\exists x\,\neg P(x).
+\]</span></p>
+<p>Del mismo modo, negar “existe alguno que cumple <span class="math inline">\(P\)</span>” significa afirmar “ninguno cumple <span class="math inline">\(P\)</span>”, es decir:</p>
+<p><span class="math display">\[
+\neg(\exists x\,P(x))\equiv\forall x\,\neg P(x).
+\]</span></p>
+<p>Estas leyes son los análogos cuantificados de las leyes de De Morgan de C5: al atravesar el cuantificador, la negación <strong>cambia <span class="math inline">\(\forall\)</span> por <span class="math inline">\(\exists\)</span> y <span class="math inline">\(\exists\)</span> por <span class="math inline">\(\forall\)</span></strong>.</p>
+<section id="la-negación-debe-seguir-avanzando" class="level3">
+<h3 class="anchored" data-anchor-id="la-negación-debe-seguir-avanzando">La negación debe seguir avanzando</h3>
+<p>Supongamos</p>
+<p><span class="math display">\[
+\forall n\in\mathbb Z\;[E(n)\Rightarrow E(n^2)],
+\]</span></p>
+<p>donde <span class="math inline">\(E(n)\)</span> significa “<span class="math inline">\(n\)</span> es par”. Su negación no es simplemente cambiar <span class="math inline">\(\forall\)</span> por <span class="math inline">\(\exists\)</span>. Debemos negar también el contenido:</p>
+<p><span class="math display">\[
+\exists n\in\mathbb Z\;\neg[E(n)\Rightarrow E(n^2)].
+\]</span></p>
+<p>Por C5, <span class="math inline">\(\neg(A\Rightarrow B)\equiv A\land\neg B\)</span>. Así obtenemos</p>
+<p><span class="math display">\[
+\exists n\in\mathbb Z\;[E(n)\land\neg E(n^2)].
+\]</span></p>
+<p>Es decir: “existe un entero par cuyo cuadrado no es par”.</p>
+</section>
+<section id="no-todos-y-ninguno-no-son-lo-mismo" class="level3">
+<h3 class="anchored" data-anchor-id="no-todos-y-ninguno-no-son-lo-mismo">“No todos” y “ninguno” no son lo mismo</h3>
+<p>“no todos los elementos cumplen <span class="math inline">\(P\)</span>” se traduce como <span class="math inline">\(\exists x\,\neg P(x)\)</span>.</p>
+<p>“ningún elemento cumple <span class="math inline">\(P\)</span>” se traduce como <span class="math inline">\(\forall x\,\neg P(x)\)</span>.</p>
+<p>Confundir estas dos frases es uno de los errores lógicos más frecuentes.</p>
+</section>
+</section>
+<section id="cuantificación-restringida" class="level2">
+<h2 class="anchored" data-anchor-id="cuantificación-restringida">6.8. Cuantificación restringida</h2>
+<p>La notación</p>
+<p><span class="math inline">\(\forall x\in A\;P(x)\)</span></p>
+<p>dice que sólo nos interesan los elementos de <span class="math inline">\(A\)</span>. Conceptualmente puede leerse como</p>
+<p><span class="math display">\[
+\forall x\;[x\in A\Rightarrow P(x)].
+\]</span></p>
+<p>En cambio,</p>
+<p><span class="math inline">\(\exists x\in A\;P(x)\)</span></p>
+<p>se interpreta como</p>
+<p><span class="math display">\[
+\exists x\;[x\in A\land P(x)].
+\]</span></p>
+<p>La diferencia entre implicación y conjunción es esencial.</p>
+<p>Para un universal restringido, un objeto que no pertenece a <span class="math inline">\(A\)</span> no debe convertirse en contraejemplo. Para un existencial restringido, el testigo debe cumplir simultáneamente dos requisitos: pertenecer a <span class="math inline">\(A\)</span> y satisfacer <span class="math inline">\(P\)</span>.</p>
+<p>No desarrollaremos aún operaciones con conjuntos; C7 dará a <span class="math inline">\(\in\)</span>, subconjunto, unión, intersección y complemento un tratamiento sistemático. Aquí usamos la pertenencia sólo para expresar dominios restringidos.</p>
+<section id="negaciones-restringidas" class="level3">
+<h3 class="anchored" data-anchor-id="negaciones-restringidas">Negaciones restringidas</h3>
+<p>De las reglas anteriores obtenemos directamente:</p>
+<p><span class="math display">\[
+\neg[\forall x\in A\;P(x)]\equiv\exists x\in A\;\neg P(x),
+\]</span></p>
+<p><span class="math display">\[
+\neg[\exists x\in A\;P(x)]\equiv\forall x\in A\;\neg P(x).
+\]</span></p>
+</section>
+</section>
+<section id="alcance-paréntesis-y-variables" class="level2">
+<h2 class="anchored" data-anchor-id="alcance-paréntesis-y-variables">6.9. Alcance, paréntesis y variables</h2>
+<p>Todo cuantificador tiene un <strong>alcance</strong>: la parte de la fórmula sobre la cual actúa.</p>
+<p>Comparemos:</p>
+<p><span class="math display">\[
+\forall x\,[P(x)\lor Q(x)]
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+(\forall x\,P(x))\lor Q(x).
+\]</span></p>
+<p>En la primera fórmula, las dos apariciones de <span class="math inline">\(x\)</span> están bajo el alcance del cuantificador. En la segunda, sólo la aparición dentro de <span class="math inline">\(P(x)\)</span> está ligada; la <span class="math inline">\(x\)</span> de <span class="math inline">\(Q(x)\)</span> queda libre.</p>
+<p>Los paréntesis no son decoración. Determinan qué fragmento está cuantificado.</p>
+<section id="renombrar-sin-capturar" class="level3">
+<h3 class="anchored" data-anchor-id="renombrar-sin-capturar">Renombrar sin capturar</h3>
+<p>En</p>
+<p><span class="math inline">\(\forall x\,P(x,y)\)</span></p>
+<p>podemos cambiar la variable ligada <span class="math inline">\(x\)</span> por <span class="math inline">\(t\)</span> y escribir <span class="math inline">\(\forall t\,P(t,y)\)</span>. Pero no deberíamos renombrarla como <span class="math inline">\(y\)</span> sin más, porque la <span class="math inline">\(y\)</span> original era libre. La escritura <span class="math inline">\(\forall y\,P(y,y)\)</span> ha ligado una variable que antes no lo estaba y, por tanto, puede expresar algo distinto.</p>
+<p>La disciplina de alcance cumple aquí la misma función que el control de subfórmulas en C5: antes de transformar símbolos debemos saber <strong>qué estructura estamos modificando</strong>.</p>
+</section>
+</section>
+<section id="dos-cuantificadores-el-orden-importa" class="level2">
+<h2 class="anchored" data-anchor-id="dos-cuantificadores-el-orden-importa">6.10. Dos cuantificadores: el orden importa</h2>
+<p>Cuando aparecen cuantificadores de distinto tipo, cambiar su orden puede cambiar radicalmente el significado.</p>
+<p>Consideremos, sobre <span class="math inline">\(\mathbb R\)</span>:</p>
+<p><span class="math display">\[
+\forall x\;\exists y\;(y&gt;x).
+\]</span></p>
+<p>La afirmación es verdadera: dado un real <span class="math inline">\(x\)</span>, podemos elegir <span class="math inline">\(y=x+1\)</span>.</p>
+<p>Comparemos con</p>
+<p><span class="math display">\[
+\exists y\;\forall x\;(y&gt;x).
+\]</span></p>
+<p>Ahora se pide un único real <span class="math inline">\(y\)</span> que sea mayor que <strong>todos</strong> los reales. Eso es imposible.</p>
+<p>La diferencia verbal es:</p>
+<ul>
+<li><span class="math inline">\(\forall x\exists y\)</span>: <strong>para cada</strong> <span class="math inline">\(x\)</span> podemos buscar un <span class="math inline">\(y\)</span>, posiblemente distinto;</li>
+<li><span class="math inline">\(\exists y\forall x\)</span>: debe existir <strong>un mismo</strong> <span class="math inline">\(y\)</span> que funcione para todos los <span class="math inline">\(x\)</span>.</li>
+</ul>
+<section id="cuantificadores-del-mismo-tipo" class="level3">
+<h3 class="anchored" data-anchor-id="cuantificadores-del-mismo-tipo">Cuantificadores del mismo tipo</h3>
+<p>Bajo condiciones ordinarias,</p>
+<p><span class="math inline">\(\forall x\forall y\,P(x,y)\)</span></p>
+<p>y</p>
+<p><span class="math inline">\(\forall y\forall x\,P(x,y)\)</span></p>
+<p>expresan lo mismo. Análogamente ocurre con dos existenciales. El peligro aparece especialmente al intercambiar <span class="math inline">\(\forall\)</span> y <span class="math inline">\(\exists\)</span>.</p>
+</section>
+</section>
+<section id="dependencia-entre-variables-y-elección-de-testigos" class="level2">
+<h2 class="anchored" data-anchor-id="dependencia-entre-variables-y-elección-de-testigos">6.11. Dependencia entre variables y elección de testigos</h2>
+<p>En</p>
+<p><span class="math display">\[
+\forall x\;\exists y\;R(x,y),
+\]</span></p>
+<p>el valor de <span class="math inline">\(y\)</span> puede elegirse <strong>después</strong> de conocer <span class="math inline">\(x\)</span>. Por ello el testigo puede depender de <span class="math inline">\(x\)</span>.</p>
+<p>Ejemplo:</p>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\exists y\in\mathbb R\;(y=2x).
+\]</span></p>
+<p>Una elección natural es <span class="math inline">\(y=2x\)</span>. No estamos exhibiendo un único número real; estamos dando una regla de elección que produce un testigo para cada <span class="math inline">\(x\)</span>.</p>
+<p>En cambio, en</p>
+<p><span class="math display">\[
+\exists y\;\forall x\;R(x,y),
+\]</span></p>
+<p>el <span class="math inline">\(y\)</span> debe fijarse <strong>antes</strong> de recorrer todos los <span class="math inline">\(x\)</span>. Ya no puede adaptarse a cada caso.</p>
+<p>Esta idea anticipa un tema futuro: una regla que asigna a cada entrada una salida. C9 estudiará las funciones de forma sistemática. Aquí sólo necesitamos comprender la dependencia lógica.</p>
+<section id="una-advertencia" class="level3">
+<h3 class="anchored" data-anchor-id="una-advertencia">Una advertencia</h3>
+<p>De <span class="math inline">\(\forall x\exists y\,R(x,y)\)</span> no se sigue automáticamente que haya un único <span class="math inline">\(y\)</span> para cada <span class="math inline">\(x\)</span>, ni que la elección sea canónica. La afirmación promete existencia local, nada más.</p>
+</section>
+</section>
+<section id="existe-un-único-el-cuantificador-de-unicidad" class="level2">
+<h2 class="anchored" data-anchor-id="existe-un-único-el-cuantificador-de-unicidad">6.12. “Existe un único”: el cuantificador de unicidad</h2>
+<p>La notación</p>
+<p><span class="math display">\[
+\exists!x\;P(x)
+\]</span></p>
+<p>se lee “existe un único <span class="math inline">\(x\)</span> tal que <span class="math inline">\(P(x)\)</span>”. Contiene dos afirmaciones distintas:</p>
+<ol type="1">
+<li><strong>existencia:</strong> al menos un elemento satisface <span class="math inline">\(P\)</span>;</li>
+<li><strong>unicidad:</strong> no hay dos elementos distintos que satisfagan <span class="math inline">\(P\)</span>.</li>
+</ol>
+<p>Una expansión útil es</p>
+<p><span class="math display">\[
+\exists x\,[P(x)\land\forall y\,(P(y)\Rightarrow y=x)].
+\]</span></p>
+<p>El primer <span class="math inline">\(P(x)\)</span> garantiza existencia. El universal posterior dice que cualquier otro candidato <span class="math inline">\(y\)</span> que satisfaga <span class="math inline">\(P\)</span> debe coincidir con <span class="math inline">\(x\)</span>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math inline">\(\exists!x\in\mathbb R\;(x+3=5)\)</span></p>
+<p>es verdadera: <span class="math inline">\(x=2\)</span> existe y cualquier real que satisfaga la ecuación debe ser <span class="math inline">\(2\)</span>.</p>
+<p>En cambio,</p>
+<p><span class="math inline">\(\exists!x\in\mathbb R\;(x^2=4)\)</span></p>
+<p>es falsa. Hay soluciones, pero son dos: <span class="math inline">\(2\)</span> y <span class="math inline">\(-2\)</span>.</p>
+<p>Existencia y unicidad deben comprobarse por separado.</p>
+</section>
+<section id="traducir-lenguaje-matemático-a-símbolos" class="level2">
+<h2 class="anchored" data-anchor-id="traducir-lenguaje-matemático-a-símbolos">6.13. Traducir lenguaje matemático a símbolos</h2>
+<p>La traducción correcta comienza identificando tres cosas:</p>
+<ol type="1">
+<li><strong>dominio</strong>;</li>
+<li><strong>cuantificador</strong>;</li>
+<li><strong>predicado y conectivos internos</strong>.</li>
+</ol>
+<p>Ejemplo:</p>
+<blockquote class="blockquote">
+<p>Todo entero par es divisible por <span class="math inline">\(2\)</span>.</p>
+</blockquote>
+<p>Una formalización natural es</p>
+<p><span class="math display">\[
+\forall n\in\mathbb Z\;[E(n)\Rightarrow D_2(n)],
+\]</span></p>
+<p>donde <span class="math inline">\(E(n)\)</span> significa “<span class="math inline">\(n\)</span> es par” y <span class="math inline">\(D_2(n)\)</span> significa “<span class="math inline">\(2\)</span> divide a <span class="math inline">\(n\)</span>”.</p>
+<p>Ejemplo:</p>
+<blockquote class="blockquote">
+<p>Algunos enteros no son cuadrados perfectos.</p>
+</blockquote>
+<p>Puede escribirse</p>
+<p><span class="math display">\[
+\exists n\in\mathbb Z\;\neg C(n),
+\]</span></p>
+<p>donde <span class="math inline">\(C(n)\)</span> significa “<span class="math inline">\(n\)</span> es un cuadrado perfecto”.</p>
+<section id="palabras-que-revelan-estructura" class="level3">
+<h3 class="anchored" data-anchor-id="palabras-que-revelan-estructura">Palabras que revelan estructura</h3>
+<ul>
+<li>“todo”, “cada”, “cualquiera” suelen señalar <span class="math inline">\(\forall\)</span>;</li>
+<li>“algún”, “existe”, “hay al menos uno” suelen señalar <span class="math inline">\(\exists\)</span>;</li>
+<li>“ningún” suele convertirse en <span class="math inline">\(\forall x\,\neg P(x)\)</span> o, equivalentemente, <span class="math inline">\(\neg\exists x\,P(x)\)</span>;</li>
+<li>“no todos” significa <span class="math inline">\(\exists x\,\neg P(x)\)</span>;</li>
+<li>“exactamente uno” señala <span class="math inline">\(\exists!\)</span>.</li>
+</ul>
+<p>No debemos traducir palabra por palabra: debemos traducir <strong>estructura por estructura</strong>.</p>
+</section>
+</section>
+<section id="traducir-símbolos-a-lenguaje-matemático" class="level2">
+<h2 class="anchored" data-anchor-id="traducir-símbolos-a-lenguaje-matemático">6.14. Traducir símbolos a lenguaje matemático</h2>
+<p>La dirección inversa exige la misma disciplina. Consideremos</p>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\exists y\in\mathbb R\;(y&gt;x).
+\]</span></p>
+<p>Una lectura fiel es:</p>
+<blockquote class="blockquote">
+<p>Para todo número real <span class="math inline">\(x\)</span>, existe un número real <span class="math inline">\(y\)</span> mayor que <span class="math inline">\(x\)</span>.</p>
+</blockquote>
+<p>Una lectura defectuosa sería:</p>
+<blockquote class="blockquote">
+<p>Existe un real mayor que todos los reales.</p>
+</blockquote>
+<p>Esa frase corresponde al orden inverso de cuantificadores.</p>
+<section id="leer-desde-afuera-hacia-adentro" class="level3">
+<h3 class="anchored" data-anchor-id="leer-desde-afuera-hacia-adentro">Leer desde afuera hacia adentro</h3>
+<p>Una rutina segura es:</p>
+<ol type="1">
+<li>leer el cuantificador más externo;</li>
+<li>fijar mentalmente su variable;</li>
+<li>pasar al siguiente cuantificador;</li>
+<li>respetar el orden;</li>
+<li>leer finalmente el predicado interno.</li>
+</ol>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+\exists m\in\mathbb Z\;\forall n\in\mathbb Z\;(m+n=n)
+\]</span></p>
+<p>se lee: “existe un entero <span class="math inline">\(m\)</span> tal que, para todo entero <span class="math inline">\(n\)</span>, se cumple <span class="math inline">\(m+n=n\)</span>”. La afirmación resulta verdadera porque <span class="math inline">\(m=0\)</span> funciona para todos los <span class="math inline">\(n\)</span>.</p>
+</section>
+</section>
+<section id="diagnóstico-de-errores-de-cuantificación" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-errores-de-cuantificación">6.15. Diagnóstico de errores de cuantificación</h2>
+<p>Los errores más importantes de este capítulo no son de cálculo, sino de significado.</p>
+<section id="error-1-cambiar-el-cuantificador-al-traducir" class="level3">
+<h3 class="anchored" data-anchor-id="error-1-cambiar-el-cuantificador-al-traducir">Error 1: cambiar el cuantificador al traducir</h3>
+<p>“Todo entero tiene un sucesor entero” no significa “existe un entero que es sucesor de todos los enteros”.</p>
+</section>
+<section id="error-2-negar-sin-cambiar-cuantificador" class="level3">
+<h3 class="anchored" data-anchor-id="error-2-negar-sin-cambiar-cuantificador">Error 2: negar sin cambiar cuantificador</h3>
+<p>La negación de <span class="math inline">\(\forall x\,P(x)\)</span> no es <span class="math inline">\(\forall x\,\neg P(x)\)</span>, sino <span class="math inline">\(\exists x\,\neg P(x)\)</span>.</p>
+</section>
+<section id="error-3-ignorar-el-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="error-3-ignorar-el-dominio">Error 3: ignorar el dominio</h3>
+<p>El predicado <span class="math inline">\(x^2=2\)</span> produce afirmaciones existenciales distintas sobre <span class="math inline">\(\mathbb Q\)</span> y sobre <span class="math inline">\(\mathbb R\)</span>.</p>
+</section>
+<section id="error-4-confundir-testigo-dependiente-con-testigo-fijo" class="level3">
+<h3 class="anchored" data-anchor-id="error-4-confundir-testigo-dependiente-con-testigo-fijo">Error 4: confundir testigo dependiente con testigo fijo</h3>
+<p>En <span class="math inline">\(\forall x\exists y\)</span>, el <span class="math inline">\(y\)</span> puede variar con <span class="math inline">\(x\)</span>. En <span class="math inline">\(\exists y\forall x\)</span>, no.</p>
+</section>
+<section id="error-5-confundir-existencia-con-unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="error-5-confundir-existencia-con-unicidad">Error 5: confundir existencia con unicidad</h3>
+<p>Encontrar un testigo prueba existencia, no existencia única.</p>
+</section>
+<section id="error-6-perder-el-alcance" class="level3">
+<h3 class="anchored" data-anchor-id="error-6-perder-el-alcance">Error 6: perder el alcance</h3>
+<p>Mover paréntesis o renombrar variables puede ligar una variable que antes era libre.</p>
+<p>Ante una solución dudosa conviene localizar <strong>el primer paso donde cambia el significado</strong>, no sólo el lugar donde aparece un resultado falso.</p>
+</section>
+</section>
+<section id="cierre-protocolo-de-lectura-cuantificada" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-protocolo-de-lectura-cuantificada">6.16. Cierre — protocolo de lectura cuantificada</h2>
+<p>Cuando encuentres una afirmación con variables y cuantificadores, utiliza esta rutina:</p>
+<pre class="text"><code>1. ¿CUÁL ES EL DOMINIO?
+2. ¿CUÁL ES EL PREDICADO?
+3. ¿QUÉ VARIABLES ESTÁN LIBRES?
+4. ¿QUÉ VARIABLES ESTÁN LIGADAS?
+5. ¿QUÉ CUANTIFICADOR LIGA A CADA VARIABLE?
+6. ¿CUÁL ES EL ALCANCE DE CADA CUANTIFICADOR?
+7. ¿EN QUÉ ORDEN APARECEN?
+8. ¿UN TESTIGO PUEDE DEPENDER DE VARIABLES ANTERIORES?
+9. ¿CÓMO SE NIEGA LA AFIRMACIÓN COMPLETA?
+10. ¿QUÉ BASTARÍA PARA REFUTARLA O PARA EXHIBIR EXISTENCIA?</code></pre>
+<p>El paso conceptual de C6 puede resumirse así:</p>
+<p><span class="math display">\[
+\text{condición abierta}
+\longrightarrow
+\text{dominio + cuantificación}
+\longrightarrow
+\text{afirmación precisa}.
+\]</span></p>
+<p>A partir de ahora, expresiones como “para todo”, “existe” y “existe un único” dejarán de ser palabras de apoyo y se convertirán en parte visible de la estructura matemática.</p>
+<hr>
+</section>
+<section id="ejercicios-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-del-capítulo">Ejercicios del capítulo</h2>
+<section id="a-predicados-y-dominios" class="level3">
+<h3 class="anchored" data-anchor-id="a-predicados-y-dominios">A — Predicados y dominios</h3>
+<p><strong>1.</strong> Clasifica cada escritura como <strong>expresión</strong>, <strong>predicado abierto</strong> o <strong>proposición</strong>: (a) <span class="math inline">\(x+1\)</span>; (b) <span class="math inline">\(x+1=5\)</span>; (c) <span class="math inline">\(4+1=5\)</span>; (d) <span class="math inline">\(n\)</span> es par; (e) “<span class="math inline">\(6\)</span> es par”.</p>
+<p><strong>2.</strong> Sea <span class="math inline">\(P(x):x^2=2\)</span>. Decide la verdad de <span class="math inline">\(\exists x\,P(x)\)</span> cuando el dominio es (a) <span class="math inline">\(\mathbb Z\)</span>; (b) <span class="math inline">\(\mathbb Q\)</span>; (c) <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>3.</strong> Sea <span class="math inline">\(P(x):x^2\ge x\)</span>. Decide si <span class="math inline">\(\forall x\,P(x)\)</span> es verdadera sobre (a) <span class="math inline">\(\{0,1\}\)</span>; (b) <span class="math inline">\(\mathbb Z\)</span>; (c) <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>4.</strong> Para <span class="math inline">\(Q(x):1/x&gt;0\)</span>, explica por qué el dominio <span class="math inline">\(\mathbb R\)</span> exige una precisión adicional antes de evaluar <span class="math inline">\(Q(0)\)</span>.</p>
+<p><strong>5.</strong> Da un dominio finito <span class="math inline">\(D\)</span> con al menos dos elementos para el cual <span class="math inline">\(\forall x\in D\;(x^2=1)\)</span> sea verdadera, y otro dominio finito <span class="math inline">\(E\)</span> para el cual sea falsa.</p>
+<p><strong>6.</strong> Sea <span class="math inline">\(R(x):x^2&lt;4\)</span>. Compara <span class="math inline">\(\forall x\,R(x)\)</span> y <span class="math inline">\(\exists x\,R(x)\)</span> sobre los dominios <span class="math inline">\(\mathbb Z\)</span> y <span class="math inline">\(\mathbb R\)</span>.</p>
+</section>
+<section id="b-variables-libres-y-ligadas" class="level3">
+<h3 class="anchored" data-anchor-id="b-variables-libres-y-ligadas">B — Variables libres y ligadas</h3>
+<p><strong>7.</strong> Identifica las variables libres y ligadas en <span class="math inline">\(\forall x\,P(x,y)\)</span>.</p>
+<p><strong>8.</strong> Identifica las variables libres y ligadas en <span class="math inline">\(\exists y\,[R(x,y)\land Q(y,z)]\)</span>.</p>
+<p><strong>9.</strong> ¿Es una proposición cerrada <span class="math inline">\(\forall x\,\exists y\,R(x,y)\)</span>? ¿Y <span class="math inline">\(\forall x\,\exists y\,R(x,y,z)\)</span>?</p>
+<p><strong>10.</strong> Convierte el predicado <span class="math inline">\(P(x):x^2=9\)</span> en (a) una proposición mediante sustitución; (b) una proposición existencial; (c) una proposición universal, usando dominio <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>11.</strong> En <span class="math inline">\(\forall x\,[P(x,y)\Rightarrow\exists z\,R(x,z)]\)</span>, clasifica <span class="math inline">\(x,y,z\)</span> como libres o ligadas.</p>
+<p><strong>12.</strong> Reescribe <span class="math inline">\(\forall x\,P(x,y)\)</span> cambiando el nombre de la variable ligada sin cambiar el significado. Explica por qué <span class="math inline">\(\forall y\,P(y,y)\)</span> no es, en general, una renominación válida.</p>
+</section>
+<section id="c-universales-y-contraejemplos" class="level3">
+<h3 class="anchored" data-anchor-id="c-universales-y-contraejemplos">C — Universales y contraejemplos</h3>
+<p><strong>13.</strong> Decide si <span class="math inline">\(\forall n\in\mathbb Z\;(n^2\ge0)\)</span> es verdadera y explica qué tipo de justificación requiere.</p>
+<p><strong>14.</strong> Refuta <span class="math inline">\(\forall n\in\mathbb Z\;(n^2&gt;n)\)</span> con un contraejemplo.</p>
+<p><strong>15.</strong> Refuta la afirmación “la suma de dos enteros impares es impar”.</p>
+<p><strong>16.</strong> Un estudiante verifica que <span class="math inline">\(n^2+n+17\)</span> es primo para <span class="math inline">\(n=0,1,\dots,15\)</span> y concluye que es primo para todo <span class="math inline">\(n\ge0\)</span>. Explica el error y encuentra un contraejemplo.</p>
+<p><strong>17.</strong> La afirmación es: “para todo entero <span class="math inline">\(n\)</span>, si <span class="math inline">\(n\)</span> es par entonces <span class="math inline">\(n^2\)</span> es par”. ¿Puede un entero impar ser contraejemplo? Justifica.</p>
+<p><strong>18.</strong> Da un contraejemplo a “para todo real <span class="math inline">\(x\)</span>, si <span class="math inline">\(x^2&gt;1\)</span> entonces <span class="math inline">\(x&gt;1\)</span>”.</p>
+</section>
+<section id="d-existenciales-y-testigos" class="level3">
+<h3 class="anchored" data-anchor-id="d-existenciales-y-testigos">D — Existenciales y testigos</h3>
+<p><strong>19.</strong> Demuestra exhibiendo un testigo que <span class="math inline">\(\exists n\in\mathbb Z\;(n^2=49)\)</span>.</p>
+<p><strong>20.</strong> Decide si <span class="math inline">\(\exists n\in\mathbb Z\;(2n=7)\)</span> es verdadera.</p>
+<p><strong>21.</strong> Exhibe un testigo para <span class="math inline">\(\exists x\in\mathbb R\;(0&lt;x&lt;1\land x^2&lt;x)\)</span>.</p>
+<p><strong>22.</strong> Exhibe enteros <span class="math inline">\(a,b\)</span> que prueben <span class="math inline">\(\exists a,b\in\mathbb Z\;(a^2-b^2=15)\)</span>.</p>
+<p><strong>23.</strong> Demuestra que <span class="math inline">\(\exists n\in\mathbb Z\;(n&gt;1000)\)</span> exhibiendo un testigo. ¿Qué demuestra este ejercicio sobre el tamaño del testigo?</p>
+<p><strong>24.</strong> Un estudiante encuentra dos testigos distintos para <span class="math inline">\(\exists x\,P(x)\)</span> y concluye que la afirmación era falsa porque “<span class="math inline">\(x\)</span> no es único”. Diagnostica el error.</p>
+</section>
+<section id="e-negación-de-cuantificadores" class="level3">
+<h3 class="anchored" data-anchor-id="e-negación-de-cuantificadores">E — Negación de cuantificadores</h3>
+<p><strong>25.</strong> Niega <span class="math inline">\(\forall x\in\mathbb R\;(x^2\ge0)\)</span> sin dejar una negación delante del cuantificador.</p>
+<p><strong>26.</strong> Niega <span class="math inline">\(\exists n\in\mathbb Z\;(n^2=2)\)</span>.</p>
+<p><strong>27.</strong> Niega <span class="math inline">\(\forall n\in\mathbb Z\;[E(n)\Rightarrow E(n^2)]\)</span>, donde <span class="math inline">\(E(k)\)</span> significa “<span class="math inline">\(k\)</span> es par”.</p>
+<p><strong>28.</strong> Niega <span class="math inline">\(\exists x\in\mathbb R\;(x&gt;0\land x^2&lt;1)\)</span>.</p>
+<p><strong>29.</strong> Niega <span class="math inline">\(\forall x\in\mathbb R\;\exists y\in\mathbb R\;(y&gt;x)\)</span>.</p>
+<p><strong>30.</strong> Niega <span class="math inline">\(\exists y\in\mathbb R\;\forall x\in\mathbb R\;(y&gt;x)\)</span>.</p>
+<p><strong>31.</strong> Traduce simbólicamente: “No todos los enteros son positivos”.</p>
+<p><strong>32.</strong> Explica con un ejemplo por qué <span class="math inline">\(\neg\forall x\,P(x)\)</span> no equivale a <span class="math inline">\(\forall x\,\neg P(x)\)</span>.</p>
+</section>
+<section id="f-cuantificación-restringida" class="level3">
+<h3 class="anchored" data-anchor-id="f-cuantificación-restringida">F — Cuantificación restringida</h3>
+<p><strong>33.</strong> Reescribe <span class="math inline">\(\forall n\in\mathbb Z\;P(n)\)</span> usando un dominio mayor <span class="math inline">\(D\)</span> que contiene a <span class="math inline">\(\mathbb Z\)</span> y una implicación con pertenencia.</p>
+<p><strong>34.</strong> Reescribe <span class="math inline">\(\exists n\in\mathbb Z\;(n^2=9)\)</span> usando un dominio mayor <span class="math inline">\(D\)</span> y una conjunción con pertenencia.</p>
+<p><strong>35.</strong> Niega <span class="math inline">\(\forall x\in A\;P(x)\)</span>.</p>
+<p><strong>36.</strong> Niega <span class="math inline">\(\exists x\in A\;P(x)\)</span>.</p>
+<p><strong>37.</strong> Un estudiante escribe “todo entero es racional” como <span class="math inline">\(\forall x\,[x\in\mathbb Z\land x\in\mathbb Q]\)</span>. Explica por qué esa forma es incorrecta y corrígela suponiendo un dominio numérico mayor.</p>
+<p><strong>38.</strong> Un estudiante escribe “existe un entero negativo” como <span class="math inline">\(\exists x\,[x\in\mathbb Z\Rightarrow x&lt;0]\)</span>. Diagnostica el error y corrige.</p>
+</section>
+<section id="g-alcance-y-paréntesis" class="level3">
+<h3 class="anchored" data-anchor-id="g-alcance-y-paréntesis">G — Alcance y paréntesis</h3>
+<p><strong>39.</strong> En <span class="math inline">\(\forall x\,[P(x)\Rightarrow(Q(x)\lor R)]\)</span>, ¿qué apariciones de <span class="math inline">\(x\)</span> están ligadas?</p>
+<p><strong>40.</strong> En <span class="math inline">\((\forall x\,P(x,y))\lor Q(y)\)</span>, ¿qué variables quedan libres?</p>
+<p><strong>41.</strong> Compara <span class="math inline">\(\forall x\,[P(x)\lor Q(x)]\)</span> con <span class="math inline">\((\forall x\,P(x))\lor Q(x)\)</span>. ¿Por qué no son la misma clase de expresión?</p>
+<p><strong>42.</strong> Renombra la variable ligada en <span class="math inline">\(\exists x\,[x&gt;y\land P(x)]\)</span> sin alterar la variable libre <span class="math inline">\(y\)</span>.</p>
+<p><strong>43.</strong> Explica por qué sustituir <span class="math inline">\(\forall x\,P(x,y)\)</span> por <span class="math inline">\(\forall y\,P(y,y)\)</span> puede cambiar el significado.</p>
+<p><strong>44.</strong> Distingue <span class="math inline">\(\forall x\,[P(x)\land Q(x)]\)</span> de <span class="math inline">\((\forall x\,P(x))\land Q(x)\)</span>.</p>
+</section>
+<section id="h-orden-de-cuantificadores" class="level3">
+<h3 class="anchored" data-anchor-id="h-orden-de-cuantificadores">H — Orden de cuantificadores</h3>
+<p><strong>45.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, decide la verdad de (a) <span class="math inline">\(\forall x\exists y\;(y&gt;x)\)</span>; (b) <span class="math inline">\(\exists y\forall x\;(y&gt;x)\)</span>.</p>
+<p><strong>46.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, compara <span class="math inline">\(\forall x\exists y\;(y=x+1)\)</span> con <span class="math inline">\(\exists y\forall x\;(y=x+1)\)</span>.</p>
+<p><strong>47.</strong> Sobre <span class="math inline">\(\mathbb Z\)</span>, decide <span class="math inline">\(\forall n\exists m\;(m=n+2)\)</span> y su versión con cuantificadores invertidos.</p>
+<p><strong>48.</strong> Sobre <span class="math inline">\(\mathbb Z\)</span>, decide (a) <span class="math inline">\(\exists n\forall m\;(n+m=m)\)</span>; (b) <span class="math inline">\(\forall m\exists n\;(n+m=m)\)</span>.</p>
+<p><strong>49.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, decide <span class="math inline">\(\forall x\exists y\;(xy=1)\)</span>. ¿Qué cambia si el dominio de <span class="math inline">\(x\)</span> es <span class="math inline">\(\mathbb R\setminus\{0\}\)</span>?</p>
+<p><strong>50.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, decide (a) <span class="math inline">\(\exists y\forall x\;(xy=x)\)</span>; (b) <span class="math inline">\(\forall x\exists y\;(xy=x)\)</span>.</p>
+<p><strong>51.</strong> Explica por qué <span class="math inline">\(\forall x\forall y\,P(x,y)\)</span> puede reordenarse como <span class="math inline">\(\forall y\forall x\,P(x,y)\)</span>, y análogamente para dos existenciales, mientras que el intercambio <span class="math inline">\(\forall x\exists y\leftrightarrow\exists y\forall x\)</span> no es válido en general.</p>
+<p><strong>52.</strong> En el dominio <span class="math inline">\(D=\{1,2\}\)</span>, sea <span class="math inline">\(R(x,y)\)</span> la relación “<span class="math inline">\(x=y\)</span>”. Decide <span class="math inline">\(\forall x\exists y\,R(x,y)\)</span> y <span class="math inline">\(\exists y\forall x\,R(x,y)\)</span>.</p>
+</section>
+<section id="i-dependencia-y-elección-de-testigos" class="level3">
+<h3 class="anchored" data-anchor-id="i-dependencia-y-elección-de-testigos">I — Dependencia y elección de testigos</h3>
+<p><strong>53.</strong> Para <span class="math inline">\(\forall x\in\mathbb R\exists y\in\mathbb R\;(y=2x)\)</span>, da una elección de testigo y explica su dependencia.</p>
+<p><strong>54.</strong> Explica por qué en <span class="math inline">\(\forall x\in\mathbb R\exists y\in\mathbb R\;(y&gt;x)\)</span> no puede usarse un único <span class="math inline">\(y\)</span> fijo para todos los <span class="math inline">\(x\)</span>, aunque la afirmación sea verdadera.</p>
+<p><strong>55.</strong> Interpreta la dependencia en <span class="math inline">\(\forall n\in\mathbb Z\exists m\in\mathbb Z\;(m=n^2)\)</span>.</p>
+<p><strong>56.</strong> En <span class="math inline">\(\exists m\in\mathbb Z\forall n\in\mathbb Z\;(m+n=n)\)</span>, encuentra el testigo y explica por qué debe ser fijo.</p>
+<p><strong>57.</strong> ¿Implica <span class="math inline">\(\forall x\exists y\,R(x,y)\)</span> que para cada <span class="math inline">\(x\)</span> haya exactamente un <span class="math inline">\(y\)</span> con <span class="math inline">\(R(x,y)\)</span>? Justifica.</p>
+<p><strong>58.</strong> Sea <span class="math inline">\(M(p,q)\)</span> el predicado “<span class="math inline">\(q\)</span> es madre de <span class="math inline">\(p\)</span>”. Traduce y compara: (a) “toda persona tiene alguna madre”; (b) “existe una persona que es madre de todas las personas”.</p>
+</section>
+<section id="j-existencia-única" class="level3">
+<h3 class="anchored" data-anchor-id="j-existencia-única">J — Existencia única</h3>
+<p><strong>59.</strong> Decide <span class="math inline">\(\exists!x\in\mathbb R\;(x+3=5)\)</span> y justifica existencia y unicidad.</p>
+<p><strong>60.</strong> Decide <span class="math inline">\(\exists!n\in\mathbb Z\;(2n=6)\)</span>.</p>
+<p><strong>61.</strong> Decide <span class="math inline">\(\exists!x\in\mathbb R\;(x^2=4)\)</span>.</p>
+<p><strong>62.</strong> Expande <span class="math inline">\(\exists!x\,P(x)\)</span> usando sólo <span class="math inline">\(\exists\)</span>, <span class="math inline">\(\forall\)</span>, <span class="math inline">\(\land\)</span>, <span class="math inline">\(\Rightarrow\)</span> e igualdad.</p>
+</section>
+<section id="k-traducción-bidireccional" class="level3">
+<h3 class="anchored" data-anchor-id="k-traducción-bidireccional">K — Traducción bidireccional</h3>
+<p><strong>63.</strong> Formaliza: “Todo entero tiene un entero mayor”.</p>
+<p><strong>64.</strong> Formaliza: “Entre un entero <span class="math inline">\(n\)</span> y su sucesor <span class="math inline">\(n+1\)</span> no existe ningún entero”.</p>
+<p><strong>65.</strong> Formaliza: “Existe un real positivo cuyo cuadrado es menor que él mismo”.</p>
+<p><strong>66.</strong> Formaliza: “No todo número real es positivo”.</p>
+<p><strong>67.</strong> Traduce a lenguaje verbal: <span class="math inline">\(\forall n\in\mathbb Z\;[O(n)\Rightarrow O(n^2)]\)</span>, donde <span class="math inline">\(O(k)\)</span> significa “<span class="math inline">\(k\)</span> es impar”.</p>
+<p><strong>68.</strong> Traduce a lenguaje verbal: <span class="math inline">\(\exists m\in\mathbb Z\;\forall n\in\mathbb Z\;(m+n=n)\)</span>.</p>
+</section>
+<section id="l-diagnóstico-y-síntesis" class="level3">
+<h3 class="anchored" data-anchor-id="l-diagnóstico-y-síntesis">L — Diagnóstico y síntesis</h3>
+<p><strong>69.</strong> Un estudiante niega <span class="math inline">\(\forall x\in\mathbb R\;(x^2\ge0)\)</span> escribiendo <span class="math inline">\(\forall x\in\mathbb R\;(x^2&lt;0)\)</span>. Localiza el primer error y repara la negación.</p>
+<p><strong>70.</strong> Un estudiante traduce “para cada estudiante hay un libro que ese estudiante eligió” como <span class="math inline">\(\exists b\forall e\,E(e,b)\)</span>. Explica el cambio de significado y corrige.</p>
+<p><strong>71.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, decide la verdad de: (a) <span class="math inline">\(\forall x\exists y\;(x+y=0)\)</span>; (b) <span class="math inline">\(\exists y\forall x\;(x+y=0)\)</span>; (c) <span class="math inline">\(\forall x\forall y\;(x+y=0)\)</span>; (d) <span class="math inline">\(\exists x\exists y\;(x+y=0)\)</span>. Niega además la afirmación (a).</p>
+<p><strong>72.</strong> Analiza la afirmación: “Para todo real <span class="math inline">\(x\)</span> existe un único real <span class="math inline">\(y\)</span> tal que <span class="math inline">\(2y+x=0\)</span>”. (a) Escríbela simbólicamente; (b) decide su verdad; (c) identifica la dependencia de <span class="math inline">\(y\)</span>; (d) escribe su negación sin usar <span class="math inline">\(\exists!\)</span>.</p>
+<hr>
+<section id="m-problemas-tipo-prueba" class="level4">
+<h4 class="anchored" data-anchor-id="m-problemas-tipo-prueba">M — Problemas tipo prueba</h4>
+<p>Los siguientes ejercicios están pensados como problemas de evaluación escrita. Exigen desarrollo completo, control del alcance de los cuantificadores y justificación explícita de testigos, contraejemplos o dependencias.</p>
+<p><strong>73.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, analiza las cuatro afirmaciones siguientes. Para cada una: (i) decide si es verdadera o falsa; (ii) si es verdadera, da una regla explícita para elegir el testigo; (iii) si es falsa, exhibe una contradicción o un contraejemplo; (iv) explica qué cambia al invertir el orden de los cuantificadores.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\forall x\in\mathbb R\setminus\{0\}\;\exists y\in\mathbb R\;(xy=1)\)</span>.</p></li>
+<li><p><span class="math inline">\(\exists y\in\mathbb R\;\forall x\in\mathbb R\setminus\{0\}\;(xy=1)\)</span>.</p></li>
+<li><p><span class="math inline">\(\forall x\in\mathbb R\;\exists y\in\mathbb R\;(y&gt;x)\)</span>.</p></li>
+<li><p><span class="math inline">\(\exists y\in\mathbb R\;\forall x\in\mathbb R\;(y&gt;x)\)</span>.</p></li>
+</ol>
+<p><strong>74.</strong> Considera la afirmación</p>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\Big[x\ge0\Rightarrow\exists y\in\mathbb R\;(y\ge0\land y^2=x)\Big].
+\]</span></p>
+<ol type="a">
+<li>Exprésala en lenguaje natural.<br>
+</li>
+<li>Négala paso a paso hasta obtener una fórmula en la que la negación actúe sólo sobre relaciones atómicas.<br>
+</li>
+<li>Decide la verdad de la afirmación original y de su negación.<br>
+</li>
+<li>Explica por qué cambiar sólo <span class="math inline">\(\forall\)</span> por <span class="math inline">\(\exists\)</span> no produce todavía la negación correcta.</li>
+</ol>
+<p><strong>75.</strong> Estudia la afirmación</p>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\exists!y\in\mathbb R\;(3y-2=x).
+\]</span></p>
+<ol type="a">
+<li>Expande <span class="math inline">\(\exists!\)</span> usando únicamente <span class="math inline">\(\exists\)</span>, <span class="math inline">\(\forall\)</span>, igualdad e implicación.<br>
+</li>
+<li>Demuestra existencia y unicidad para un <span class="math inline">\(x\)</span> arbitrario.<br>
+</li>
+<li>Escribe una negación equivalente que exprese explícitamente las dos maneras en que puede fallar la unicidad existencial: inexistencia o existencia de dos testigos distintos.<br>
+</li>
+<li>Compara con <span class="math inline">\(\exists!y\in\mathbb R\;\forall x\in\mathbb R\;(3y-2=x)\)</span> y decide su valor de verdad.</li>
+</ol>
+<p><strong>76.</strong> Sobre <span class="math inline">\(\mathbb Z\)</span>, compara</p>
+<p><span class="math display">\[
+A:\quad \forall m\;\exists n\;\forall k\;(k\ge n\Rightarrow k&gt;m)
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+B:\quad \exists n\;\forall m\;\forall k\;(k\ge n\Rightarrow k&gt;m).
+\]</span></p>
+<ol type="a">
+<li>Decide la verdad de <span class="math inline">\(A\)</span> y construye un testigo <span class="math inline">\(n\)</span> en función de <span class="math inline">\(m\)</span>.<br>
+</li>
+<li>Decide la verdad de <span class="math inline">\(B\)</span> y da un contraejemplo que funcione para cualquier candidato <span class="math inline">\(n\)</span>.<br>
+</li>
+<li>Niega <span class="math inline">\(A\)</span> empujando la negación hasta la relación atómica.<br>
+</li>
+<li>Explica en una frase qué dependencia permite <span class="math inline">\(A\)</span> y prohíbe <span class="math inline">\(B\)</span>.</li>
+</ol>
+<p><strong>77.</strong> Para un dominio <span class="math inline">\(D\)</span>, considera</p>
+<p><span class="math display">\[
+S(D):\quad \forall x\in D\;\exists y\in D\;(y^2=x^2+1).
+\]</span></p>
+<ol type="a">
+<li>Decide si <span class="math inline">\(S(\mathbb R)\)</span> es verdadera y justifica una elección de <span class="math inline">\(y\)</span> para cada <span class="math inline">\(x\)</span>.<br>
+</li>
+<li>Decide si <span class="math inline">\(S(\mathbb Z)\)</span> es verdadera. Si es falsa, encuentra el contraejemplo más simple que puedas.<br>
+</li>
+<li>Escribe la negación de <span class="math inline">\(S(\mathbb Z)\)</span> sin dejar una negación delante de un cuantificador.<br>
+</li>
+<li>Explica por qué la misma fórmula sintáctica expresa afirmaciones diferentes al cambiar el dominio.</li>
+</ol>
+<p><strong>78.</strong> Sean <span class="math inline">\(E\)</span> el conjunto de estudiantes, <span class="math inline">\(P\)</span> el conjunto de problemas y <span class="math inline">\(S(e,p)\)</span> el predicado “el estudiante <span class="math inline">\(e\)</span> resolvió el problema <span class="math inline">\(p\)</span>”. Formaliza la frase:</p>
+<blockquote class="blockquote">
+<p>Todo estudiante resolvió al menos un problema que ningún otro estudiante resolvió.</p>
+</blockquote>
+<ol type="a">
+<li>Escribe una fórmula cuantificada completa.<br>
+</li>
+<li>Niega tu fórmula y lleva la negación hasta los predicados atómicos.<br>
+</li>
+<li>Traduce la negación obtenida nuevamente al castellano.<br>
+</li>
+<li>Explica por qué mover el cuantificador <span class="math inline">\(\exists p\)</span> delante de <span class="math inline">\(\forall e\)</span> cambia el significado.</li>
+</ol>
+<p><strong>79.</strong> Considera la fórmula abierta</p>
+<p><span class="math display">\[
+F(y,z):\quad \forall x\,[P(x,y)\Rightarrow\exists y\,Q(x,y,z)].
+\]</span></p>
+<ol type="a">
+<li>Identifica todas las apariciones libres y ligadas de variables.<br>
+</li>
+<li>Renombra la variable ligada del cuantificador existencial para eliminar la reutilización del símbolo <span class="math inline">\(y\)</span> sin cambiar el significado.<br>
+</li>
+<li>Explica por qué renombrar ingenuamente el <span class="math inline">\(\forall x\)</span> como <span class="math inline">\(\forall y\)</span> puede capturar una variable que antes era libre.<br>
+</li>
+<li>Forma la clausura universal de la fórmula corregida.<br>
+</li>
+<li>Niega esa clausura universal hasta obtener una fórmula donde la negación actúe sólo sobre <span class="math inline">\(Q\)</span>.</li>
+</ol>
+<p><strong>80.</strong> Analiza la afirmación</p>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\exists!y\in\mathbb R\;
+\Big[y&gt;x\land\forall z\in\mathbb R\,(z&gt;x\Rightarrow y\le z)\Big].
+\]</span></p>
+<ol type="a">
+<li>Traduce cuidadosamente la afirmación al castellano.<br>
+</li>
+<li>Decide si es verdadera o falsa.<br>
+</li>
+<li>Si suponemos que un <span class="math inline">\(y\)</span> satisface la condición para cierto <span class="math inline">\(x\)</span>, construye explícitamente un real <span class="math inline">\(z\)</span> que destruya esa posibilidad.<br>
+</li>
+<li>Explica si el fracaso está en la existencia, en la unicidad o en ambas.<br>
+</li>
+<li>Escribe en lenguaje natural una negación exacta de la afirmación original.</li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level1">
+<h1>Soluciones razonadas</h1>
+<p>Las soluciones forman parte del capítulo canónico. En los ejercicios de traducción puede haber variantes lingüísticas equivalentes; lo esencial es conservar dominio, cuantificadores, alcance y dependencia.</p>
+<section id="soluciones-a-predicados-y-dominios" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-a-predicados-y-dominios">Soluciones — A — Predicados y dominios</h3>
+<p><strong>Solución 1.</strong> (a) <span class="math inline">\(x+1\)</span> es una expresión: representa un número una vez fijado <span class="math inline">\(x\)</span>. (b) <span class="math inline">\(x+1=5\)</span> es un predicado abierto porque su verdad depende de <span class="math inline">\(x\)</span>. (c) <span class="math inline">\(4+1=5\)</span> es una proposición y es verdadera. (d) “<span class="math inline">\(n\)</span> es par” es un predicado abierto. (e) “<span class="math inline">\(6\)</span> es par” es una proposición verdadera.</p>
+<p><strong>Solución 2.</strong> En <span class="math inline">\(\mathbb Z\)</span> no existe entero con cuadrado <span class="math inline">\(2\)</span>, así que es falsa. En <span class="math inline">\(\mathbb Q\)</span> también es falsa: <span class="math inline">\(\sqrt2\)</span> no es racional. En <span class="math inline">\(\mathbb R\)</span> es verdadera, con testigos <span class="math inline">\(\sqrt2\)</span> y <span class="math inline">\(-\sqrt2\)</span>. El ejercicio muestra que el dominio forma parte del significado.</p>
+<p><strong>Solución 3.</strong> Sobre <span class="math inline">\(\{0,1\}\)</span> es verdadera: hay sólo dos casos y ambos dan igualdad. Sobre <span class="math inline">\(\mathbb Z\)</span> también es verdadera, pues <span class="math inline">\(x^2-x=x(x-1)\)</span> y para todo entero <span class="math inline">\(x\)</span> el producto es no negativo: si <span class="math inline">\(x\le0\)</span>, ambos factores son no positivos; si <span class="math inline">\(x\ge1\)</span>, ambos son no negativos. Sobre <span class="math inline">\(\mathbb R\)</span> es falsa: <span class="math inline">\(x=1/2\)</span> produce <span class="math inline">\(1/4&lt;1/2\)</span>.</p>
+<p><strong>Solución 4.</strong> La expresión <span class="math inline">\(1/x\)</span> no está definida en <span class="math inline">\(x=0\)</span>. Por tanto, si queremos usar <span class="math inline">\(Q\)</span> como predicado numérico debemos restringir el dominio a valores donde tenga sentido, por ejemplo <span class="math inline">\(\mathbb R\setminus\{0\}\)</span>. No es correcto declarar simplemente <span class="math inline">\(Q(0)\)</span> falsa: la fórmula ni siquiera está definida allí.</p>
+<p><strong>Solución 5.</strong> Una elección es <span class="math inline">\(D=\{-1,1\}\)</span>: ambos elementos satisfacen <span class="math inline">\(x^2=1\)</span>. Para que sea falsa basta incluir un contraejemplo; por ejemplo <span class="math inline">\(E=\{-1,0,1\}\)</span>, porque <span class="math inline">\(0^2\ne1\)</span>.</p>
+<p><strong>Solución 6.</strong> Sobre <span class="math inline">\(\mathbb Z\)</span>, el universal es falso porque <span class="math inline">\(x=2\)</span> da <span class="math inline">\(4&lt;4\)</span>, falso; el existencial es verdadero, por ejemplo con <span class="math inline">\(x=0\)</span>. Sobre <span class="math inline">\(\mathbb R\)</span>, el universal también es falso, por ejemplo con <span class="math inline">\(x=3\)</span>, y el existencial es verdadero con <span class="math inline">\(x=0\)</span>. Las dos afirmaciones conservan aquí su valor de verdad al cambiar de dominio, aunque sus conjuntos de testigos y contraejemplos cambian.</p>
+</section>
+<section id="soluciones-b-variables-libres-y-ligadas" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-b-variables-libres-y-ligadas">Soluciones — B — Variables libres y ligadas</h3>
+<p><strong>Solución 7.</strong> El cuantificador <span class="math inline">\(\forall x\)</span> liga a <span class="math inline">\(x\)</span> dentro de <span class="math inline">\(P(x,y)\)</span>. La variable <span class="math inline">\(y\)</span> no tiene cuantificador y queda libre. Por ello la fórmula completa sigue siendo abierta respecto de <span class="math inline">\(y\)</span>.</p>
+<p><strong>Solución 8.</strong> <span class="math inline">\(y\)</span> está ligada por <span class="math inline">\(\exists y\)</span> en todo el alcance entre corchetes. Las variables <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span> quedan libres.</p>
+<p><strong>Solución 9.</strong> La primera es cerrada: todas las variables que aparecen, <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, están ligadas. La segunda no es cerrada porque <span class="math inline">\(z\)</span> queda libre. Su valor de verdad puede depender del valor o interpretación de <span class="math inline">\(z\)</span>.</p>
+<p><strong>Solución 10.</strong> (a) Por ejemplo, sustituyendo <span class="math inline">\(x=3\)</span> obtenemos <span class="math inline">\(3^2=9\)</span>, verdadera. (b) <span class="math inline">\(\exists x\in\mathbb R\;(x^2=9)\)</span>, verdadera. (c) <span class="math inline">\(\forall x\in\mathbb R\;(x^2=9)\)</span>, falsa. Las tres operaciones cierran la variable, pero producen proposiciones diferentes.</p>
+<p><strong>Solución 11.</strong> <span class="math inline">\(x\)</span> está ligada por el cuantificador universal y su alcance incluye tanto <span class="math inline">\(P(x,y)\)</span> como <span class="math inline">\(R(x,z)\)</span>. <span class="math inline">\(z\)</span> está ligada por <span class="math inline">\(\exists z\)</span> dentro del consecuente. <span class="math inline">\(y\)</span> queda libre porque no aparece cuantificada.</p>
+<p><strong>Solución 12.</strong> Podemos escribir <span class="math inline">\(\forall t\,P(t,y)\)</span>: <span class="math inline">\(t\)</span> reemplaza coherentemente a la variable ligada <span class="math inline">\(x\)</span>, mientras <span class="math inline">\(y\)</span> permanece libre. En cambio, <span class="math inline">\(\forall y\,P(y,y)\)</span> hace que el cuantificador ligue también la posición que antes correspondía a la <span class="math inline">\(y\)</span> libre. Se produce captura de variable y el significado puede cambiar.</p>
+</section>
+<section id="soluciones-c-universales-y-contraejemplos" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-c-universales-y-contraejemplos">Soluciones — C — Universales y contraejemplos</h3>
+<p><strong>Solución 13.</strong> Es verdadera. No basta una lista de ejemplos; usamos el hecho general de que el cuadrado de todo real, y por tanto de todo entero, es no negativo. La justificación debe cubrir simultáneamente todos los enteros.</p>
+<p><strong>Solución 14.</strong> Toma <span class="math inline">\(n=0\)</span>. Entonces <span class="math inline">\(0^2&gt;0\)</span> es <span class="math inline">\(0&gt;0\)</span>, falso. Por tanto el universal queda refutado. También <span class="math inline">\(n=1\)</span> funciona como contraejemplo.</p>
+<p><strong>Solución 15.</strong> Basta un par de enteros impares cuya suma sea par. Por ejemplo, <span class="math inline">\(1\)</span> y <span class="math inline">\(3\)</span> son impares y <span class="math inline">\(1+3=4\)</span> es par. En realidad la afirmación correcta es la contraria: la suma de dos impares es par.</p>
+<p><strong>Solución 16.</strong> Comprobar finitos casos no demuestra una afirmación universal sobre todos los enteros no negativos. En <span class="math inline">\(n=16\)</span> se obtiene <span class="math inline">\(16^2+16+17=289=17^2\)</span>, que no es primo. Éste es un contraejemplo decisivo.</p>
+<p><strong>Solución 17.</strong> No.&nbsp;La forma lógica es <span class="math inline">\(\forall n\,[E(n)\Rightarrow E(n^2)]\)</span>. Para un entero impar, el antecedente <span class="math inline">\(E(n)\)</span> es falso; por tanto la implicación no falla allí. Un contraejemplo tendría que ser un entero par cuyo cuadrado fuera impar.</p>
+<p><strong>Solución 18.</strong> Toma <span class="math inline">\(x=-2\)</span>. Se cumple <span class="math inline">\(x^2=4&gt;1\)</span>, pero <span class="math inline">\(x=-2\)</span> no es mayor que <span class="math inline">\(1\)</span>. Por tanto el antecedente es verdadero y el consecuente falso: exactamente la forma necesaria para refutar una implicación universal.</p>
+</section>
+<section id="soluciones-d-existenciales-y-testigos" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-d-existenciales-y-testigos">Soluciones — D — Existenciales y testigos</h3>
+<p><strong>Solución 19.</strong> El entero <span class="math inline">\(n=7\)</span> sirve: <span class="math inline">\(7^2=49\)</span>. Con un solo testigo válido queda demostrada la existencia. También <span class="math inline">\(-7\)</span> es testigo, lo que muestra que la afirmación no contiene unicidad.</p>
+<p><strong>Solución 20.</strong> Sería necesario <span class="math inline">\(n=7/2\)</span>, pero <span class="math inline">\(7/2\)</span> no es entero. Por tanto ningún <span class="math inline">\(n\in\mathbb Z\)</span> satisface la ecuación y la afirmación es falsa.</p>
+<p><strong>Solución 21.</strong> Toma <span class="math inline">\(x=1/2\)</span>. Entonces <span class="math inline">\(0&lt;1/2&lt;1\)</span> y <span class="math inline">\((1/2)^2=1/4&lt;1/2\)</span>. Por tanto <span class="math inline">\(x=1/2\)</span> satisface simultáneamente todas las condiciones.</p>
+<p><strong>Solución 22.</strong> Elige <span class="math inline">\(a=4\)</span> y <span class="math inline">\(b=1\)</span>. Entonces <span class="math inline">\(a^2-b^2=16-1=15\)</span>. El par <span class="math inline">\((4,1)\)</span> es un testigo para la existencia conjunta de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>.</p>
+<p><strong>Solución 23.</strong> Por ejemplo <span class="math inline">\(n=1001\)</span> es un testigo. No se necesita encontrar el “mejor” ni el menor testigo salvo que el enunciado lo exija; cualquier elemento del dominio que satisfaga el predicado basta para la existencia.</p>
+<p><strong>Solución 24.</strong> El cuantificador <span class="math inline">\(\exists\)</span> significa “existe al menos uno”, no “existe exactamente uno”. Tener dos testigos refuerza la existencia; no la contradice. La unicidad requeriría <span class="math inline">\(\exists!x\,P(x)\)</span>.</p>
+</section>
+<section id="soluciones-e-negación-de-cuantificadores" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-e-negación-de-cuantificadores">Soluciones — E — Negación de cuantificadores</h3>
+<p><strong>Solución 25.</strong> La negación es <span class="math inline">\(\exists x\in\mathbb R\;(x^2&lt;0)\)</span>. Cambiamos <span class="math inline">\(\forall\)</span> por <span class="math inline">\(\exists\)</span> y negamos <span class="math inline">\(x^2\ge0\)</span>, cuya negación sobre los reales es <span class="math inline">\(x^2&lt;0\)</span>.</p>
+<p><strong>Solución 26.</strong> La negación es <span class="math inline">\(\forall n\in\mathbb Z\;(n^2\ne2)\)</span>. Cambiamos <span class="math inline">\(\exists\)</span> por <span class="math inline">\(\forall\)</span> y negamos la igualdad.</p>
+<p><strong>Solución 27.</strong> Primero: <span class="math inline">\(\neg\forall n\,A(n)\equiv\exists n\,\neg A(n)\)</span>. Luego <span class="math inline">\(\neg(E(n)\Rightarrow E(n^2))\equiv E(n)\land\neg E(n^2)\)</span>. La negación completa es <span class="math inline">\(\exists n\in\mathbb Z\;[E(n)\land\neg E(n^2)]\)</span>.</p>
+<p><strong>Solución 28.</strong> La negación es <span class="math inline">\(\forall x\in\mathbb R\;\neg(x&gt;0\land x^2&lt;1)\)</span>. Por De Morgan, queda <span class="math inline">\(\forall x\in\mathbb R\;(x\le0\lor x^2\ge1)\)</span>.</p>
+<p><strong>Solución 29.</strong> Negamos desde afuera: <span class="math inline">\(\exists x\in\mathbb R\;\neg\exists y\in\mathbb R\;(y&gt;x)\)</span>. Luego cambia <span class="math inline">\(\exists y\)</span> por <span class="math inline">\(\forall y\)</span>: <span class="math inline">\(\exists x\in\mathbb R\;\forall y\in\mathbb R\;\neg(y&gt;x)\)</span>. Por tanto, <span class="math inline">\(\exists x\in\mathbb R\;\forall y\in\mathbb R\;(y\le x)\)</span>.</p>
+<p><strong>Solución 30.</strong> La negación es <span class="math inline">\(\forall y\in\mathbb R\;\exists x\in\mathbb R\;\neg(y&gt;x)\)</span>, es decir, <span class="math inline">\(\forall y\in\mathbb R\;\exists x\in\mathbb R\;(y\le x)\)</span>.</p>
+<p><strong>Solución 31.</strong> “No todos” niega un universal: <span class="math inline">\(\neg\forall n\in\mathbb Z\;(n&gt;0)\)</span>. En forma positiva equivalente: <span class="math inline">\(\exists n\in\mathbb Z\;(n\le0)\)</span>. Por ejemplo <span class="math inline">\(0\)</span> es un testigo.</p>
+<p><strong>Solución 32.</strong> Toma dominio <span class="math inline">\(D=\{1,2\}\)</span> y <span class="math inline">\(P(x)\)</span> = “<span class="math inline">\(x=1\)</span>”. Entonces <span class="math inline">\(\neg\forall x\,P(x)\)</span> es verdadera porque no todos los elementos son <span class="math inline">\(1\)</span>; concretamente <span class="math inline">\(2\)</span> falla. Pero <span class="math inline">\(\forall x\,\neg P(x)\)</span> es falsa porque <span class="math inline">\(P(1)\)</span> es verdadera. La primera dice “al menos uno falla”; la segunda, “todos fallan”.</p>
+</section>
+<section id="soluciones-f-cuantificación-restringida" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-f-cuantificación-restringida">Soluciones — F — Cuantificación restringida</h3>
+<p><strong>Solución 33.</strong> La forma conceptual es <span class="math inline">\(\forall n\in D\;[n\in\mathbb Z\Rightarrow P(n)]\)</span>. Los elementos de <span class="math inline">\(D\)</span> que no son enteros no deben actuar como contraejemplos; por eso aparece una implicación.</p>
+<p><strong>Solución 34.</strong> La forma es <span class="math inline">\(\exists n\in D\;[n\in\mathbb Z\land n^2=9]\)</span>. Un testigo debe cumplir a la vez pertenecer a <span class="math inline">\(\mathbb Z\)</span> y satisfacer la ecuación.</p>
+<p><strong>Solución 35.</strong> La negación es <span class="math inline">\(\exists x\in A\;\neg P(x)\)</span>. En palabras: existe al menos un elemento de <span class="math inline">\(A\)</span> que no satisface <span class="math inline">\(P\)</span>.</p>
+<p><strong>Solución 36.</strong> La negación es <span class="math inline">\(\forall x\in A\;\neg P(x)\)</span>. En palabras: ningún elemento de <span class="math inline">\(A\)</span> satisface <span class="math inline">\(P\)</span>.</p>
+<p><strong>Solución 37.</strong> La conjunción exige que <strong>todo elemento del dominio mayor</strong> sea simultáneamente entero y racional, lo cual es mucho más fuerte. La forma correcta es <span class="math inline">\(\forall x\,[x\in\mathbb Z\Rightarrow x\in\mathbb Q]\)</span>: sólo los elementos que son enteros activan la condición.</p>
+<p><strong>Solución 38.</strong> En un existencial restringido necesitamos que el testigo sea entero <strong>y</strong> negativo. La implicación puede ser verdadera para un objeto no entero sin demostrar lo deseado. La forma correcta es <span class="math inline">\(\exists x\,[x\in\mathbb Z\land x&lt;0]\)</span>.</p>
+</section>
+<section id="soluciones-g-alcance-y-paréntesis" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-g-alcance-y-paréntesis">Soluciones — G — Alcance y paréntesis</h3>
+<p><strong>Solución 39.</strong> Las dos apariciones de <span class="math inline">\(x\)</span>, en <span class="math inline">\(P(x)\)</span> y <span class="math inline">\(Q(x)\)</span>, están dentro del alcance del cuantificador y por tanto ligadas. <span class="math inline">\(R\)</span> no contiene <span class="math inline">\(x\)</span>.</p>
+<p><strong>Solución 40.</strong> Dentro de <span class="math inline">\(P(x,y)\)</span>, <span class="math inline">\(x\)</span> está ligada por <span class="math inline">\(\forall x\)</span> y <span class="math inline">\(y\)</span> permanece libre. En <span class="math inline">\(Q(y)\)</span>, <span class="math inline">\(y\)</span> también es libre. Por tanto la fórmula completa tiene a <span class="math inline">\(y\)</span> como variable libre.</p>
+<p><strong>Solución 41.</strong> En la primera, todas las apariciones de <span class="math inline">\(x\)</span> están ligadas y la fórmula puede ser cerrada. En la segunda, la <span class="math inline">\(x\)</span> de <span class="math inline">\(Q(x)\)</span> queda fuera del alcance del cuantificador, así que la expresión sigue abierta respecto de <span class="math inline">\(x\)</span>. Cambiar los paréntesis cambia el alcance y, por tanto, la estructura lógica.</p>
+<p><strong>Solución 42.</strong> Podemos escribir, por ejemplo, <span class="math inline">\(\exists t\,[t&gt;y\land P(t)]\)</span>. El cuantificador y todas las apariciones ligadas de <span class="math inline">\(x\)</span> se sustituyen coherentemente por <span class="math inline">\(t\)</span>; <span class="math inline">\(y\)</span> permanece libre.</p>
+<p><strong>Solución 43.</strong> La <span class="math inline">\(y\)</span> original era libre: podía representar un parámetro fijado externamente. Al renombrar <span class="math inline">\(x\)</span> como <span class="math inline">\(y\)</span>, el cuantificador <span class="math inline">\(\forall y\)</span> pasa a ligar ambas posiciones. Esa variable libre queda capturada. La transformación no es una mera renominación, sino un cambio de estructura.</p>
+<p><strong>Solución 44.</strong> La primera afirma que cada <span class="math inline">\(x\)</span> satisface simultáneamente <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span>. La segunda afirma que todos satisfacen <span class="math inline">\(P\)</span>, pero deja <span class="math inline">\(Q(x)\)</span> como condición abierta sobre una <span class="math inline">\(x\)</span> libre. No son expresiones equivalentes ni tienen el mismo estatus lógico.</p>
+</section>
+<section id="soluciones-h-orden-de-cuantificadores" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-h-orden-de-cuantificadores">Soluciones — H — Orden de cuantificadores</h3>
+<p><strong>Solución 45.</strong> (a) Verdadera: dado <span class="math inline">\(x\)</span>, elige <span class="math inline">\(y=x+1\)</span>. (b) Falsa: si se propone un real fijo <span class="math inline">\(y\)</span>, tomando <span class="math inline">\(x=y+1\)</span> obtenemos <span class="math inline">\(y&gt;x\)</span> falso. El cambio de orden altera la dependencia permitida.</p>
+<p><strong>Solución 46.</strong> La primera es verdadera: para cada <span class="math inline">\(x\)</span>, elige <span class="math inline">\(y=x+1\)</span>. La segunda es falsa: un mismo <span class="math inline">\(y\)</span> no puede ser simultáneamente <span class="math inline">\(x+1\)</span> para todos los reales <span class="math inline">\(x\)</span>; por ejemplo exigiría <span class="math inline">\(y=1\)</span> cuando <span class="math inline">\(x=0\)</span> y <span class="math inline">\(y=2\)</span> cuando <span class="math inline">\(x=1\)</span>.</p>
+<p><strong>Solución 47.</strong> <span class="math inline">\(\forall n\exists m\;(m=n+2)\)</span> es verdadera: para cada <span class="math inline">\(n\)</span>, toma <span class="math inline">\(m=n+2\)</span>. <span class="math inline">\(\exists m\forall n\;(m=n+2)\)</span> es falsa: un entero fijo <span class="math inline">\(m\)</span> no puede valer <span class="math inline">\(n+2\)</span> para todos los enteros <span class="math inline">\(n\)</span>.</p>
+<p><strong>Solución 48.</strong> Ambas son verdaderas. En (a), el testigo fijo <span class="math inline">\(n=0\)</span> funciona para todo <span class="math inline">\(m\)</span>. En (b), para cada <span class="math inline">\(m\)</span> podemos elegir <span class="math inline">\(n=0\)</span>; de hecho la elección no necesita depender de <span class="math inline">\(m\)</span>. Que ambas sean verdaderas no significa que las formas lógicas sean equivalentes en general.</p>
+<p><strong>Solución 49.</strong> Sobre todo <span class="math inline">\(\mathbb R\)</span> es falsa: para <span class="math inline">\(x=0\)</span> no existe <span class="math inline">\(y\)</span> con <span class="math inline">\(0\cdot y=1\)</span>. Si restringimos <span class="math inline">\(x\)</span> a <span class="math inline">\(\mathbb R\setminus\{0\}\)</span>, es verdadera: dado <span class="math inline">\(x\ne0\)</span>, elige <span class="math inline">\(y=1/x\)</span>.</p>
+<p><strong>Solución 50.</strong> (a) Verdadera con <span class="math inline">\(y=1\)</span>, pues <span class="math inline">\(1\cdot x=x\)</span> para todo real <span class="math inline">\(x\)</span>. (b) También verdadera; incluso puede usarse el mismo <span class="math inline">\(y=1\)</span> para cada <span class="math inline">\(x\)</span>. Este ejemplo recuerda que invertir cuantificadores puede cambiar el significado aunque ocasionalmente ambas afirmaciones resulten verdaderas.</p>
+<p><strong>Solución 51.</strong> Dos universales exigen que <span class="math inline">\(P\)</span> sea verdadera para todos los pares <span class="math inline">\((x,y)\)</span>; el orden en que recorremos los componentes no cambia esa exigencia. Dos existenciales sólo piden que exista algún par <span class="math inline">\((x,y)\)</span> y el orden tampoco cambia eso. En cambio, <span class="math inline">\(\forall x\exists y\)</span> permite que <span class="math inline">\(y\)</span> dependa de <span class="math inline">\(x\)</span>, mientras <span class="math inline">\(\exists y\forall x\)</span> exige un único <span class="math inline">\(y\)</span> fijo; por eso no son equivalentes en general.</p>
+<p><strong>Solución 52.</strong> <span class="math inline">\(\forall x\exists y\,R(x,y)\)</span> es verdadera: para <span class="math inline">\(x=1\)</span> elige <span class="math inline">\(y=1\)</span>, y para <span class="math inline">\(x=2\)</span> elige <span class="math inline">\(y=2\)</span>. En cambio, <span class="math inline">\(\exists y\forall x\,R(x,y)\)</span> es falsa: ningún único <span class="math inline">\(y\)</span> es igual simultáneamente a <span class="math inline">\(1\)</span> y a <span class="math inline">\(2\)</span>.</p>
+</section>
+<section id="soluciones-i-dependencia-y-elección-de-testigos" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-i-dependencia-y-elección-de-testigos">Soluciones — I — Dependencia y elección de testigos</h3>
+<p><strong>Solución 53.</strong> La elección <span class="math inline">\(y=2x\)</span> funciona. El testigo no es un número fijo: depende del valor de <span class="math inline">\(x\)</span> que haya sido dado. Esa dependencia es permitida porque <span class="math inline">\(\exists y\)</span> aparece después de <span class="math inline">\(\forall x\)</span>.</p>
+<p><strong>Solución 54.</strong> Si fijamos cualquier real <span class="math inline">\(y\)</span>, podemos tomar <span class="math inline">\(x=y+1\)</span> y entonces <span class="math inline">\(y&gt;x\)</span> falla. La afirmación sigue siendo verdadera porque permite elegir un <span class="math inline">\(y\)</span> nuevo después de conocer cada <span class="math inline">\(x\)</span>, por ejemplo <span class="math inline">\(y=x+1\)</span>.</p>
+<p><strong>Solución 55.</strong> Para cada entero <span class="math inline">\(n\)</span> podemos elegir el testigo <span class="math inline">\(m=n^2\)</span>. En general cambia cuando cambia <span class="math inline">\(n\)</span>. La afirmación no promete un único entero <span class="math inline">\(m\)</span> que sea igual al cuadrado de todos los enteros.</p>
+<p><strong>Solución 56.</strong> El testigo es <span class="math inline">\(m=0\)</span>. Como <span class="math inline">\(\exists m\)</span> aparece primero, debemos elegir un solo entero antes de considerar los distintos <span class="math inline">\(n\)</span>. Ese mismo <span class="math inline">\(m=0\)</span> funciona para todos porque <span class="math inline">\(0+n=n\)</span>.</p>
+<p><strong>Solución 57.</strong> No.&nbsp;El cuantificador existencial sólo garantiza al menos un testigo. Puede haber varios. Por ejemplo, sobre <span class="math inline">\(\mathbb R\)</span>, si <span class="math inline">\(R(x,y)\)</span> significa <span class="math inline">\(y&gt;x\)</span>, para cada <span class="math inline">\(x\)</span> hay infinitos valores de <span class="math inline">\(y\)</span> posibles. La unicidad requeriría una condición adicional.</p>
+<p><strong>Solución 58.</strong> (a) <span class="math inline">\(\forall p\exists q\,M(p,q)\)</span>. El testigo <span class="math inline">\(q\)</span> puede depender de <span class="math inline">\(p\)</span>. (b) <span class="math inline">\(\exists q\forall p\,M(p,q)\)</span>. Aquí se exige una sola persona <span class="math inline">\(q\)</span> que satisfaga la relación con todas las personas. Las frases no tienen la misma estructura.</p>
+</section>
+<section id="soluciones-j-existencia-única" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-j-existencia-única">Soluciones — J — Existencia única</h3>
+<p><strong>Solución 59.</strong> Existe: <span class="math inline">\(x=2\)</span> satisface <span class="math inline">\(2+3=5\)</span>. Es único porque si <span class="math inline">\(x+3=5\)</span>, restando <span class="math inline">\(3\)</span> en ambos lados se obtiene necesariamente <span class="math inline">\(x=2\)</span>. Por tanto la afirmación es verdadera.</p>
+<p><strong>Solución 60.</strong> Existe el entero <span class="math inline">\(n=3\)</span>. Si <span class="math inline">\(2n=6\)</span>, dividir por <span class="math inline">\(2\)</span> obliga a <span class="math inline">\(n=3\)</span>, así que no hay otro entero posible. La afirmación es verdadera.</p>
+<p><strong>Solución 61.</strong> Es falsa. Hay existencia, pues <span class="math inline">\(x=2\)</span> funciona, pero también <span class="math inline">\(x=-2\)</span>. Como hay dos testigos distintos, falla la unicidad.</p>
+<p><strong>Solución 62.</strong> Una expansión estándar es <span class="math inline">\(\exists x\,[P(x)\land\forall y\,(P(y)\Rightarrow y=x)]\)</span>. La primera parte afirma existencia; la segunda fuerza que cualquier otro candidato que cumpla <span class="math inline">\(P\)</span> coincida con el testigo <span class="math inline">\(x\)</span>.</p>
+</section>
+<section id="soluciones-k-traducción-bidireccional" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-k-traducción-bidireccional">Soluciones — K — Traducción bidireccional</h3>
+<p><strong>Solución 63.</strong> <span class="math inline">\(\forall n\in\mathbb Z\;\exists m\in\mathbb Z\;(m&gt;n)\)</span>. El orden es universal-existencial porque el entero mayor puede depender del entero inicial.</p>
+<p><strong>Solución 64.</strong> Una forma es <span class="math inline">\(\forall n\in\mathbb Z\;\neg\exists m\in\mathbb Z\;(n&lt;m&lt;n+1)\)</span>. Equivalentemente, <span class="math inline">\(\forall n\in\mathbb Z\;\forall m\in\mathbb Z\;\neg(n&lt;m&lt;n+1)\)</span>.</p>
+<p><strong>Solución 65.</strong> <span class="math inline">\(\exists x\in\mathbb R\;(x&gt;0\land x^2&lt;x)\)</span>. También podría escribirse <span class="math inline">\(\exists x\in\mathbb R\;(0&lt;x&lt;1)\)</span> si ya se ha justificado la equivalencia pertinente para positivos, pero la traducción directa conserva exactamente el enunciado dado.</p>
+<p><strong>Solución 66.</strong> <span class="math inline">\(\neg\forall x\in\mathbb R\;(x&gt;0)\)</span>, equivalente a <span class="math inline">\(\exists x\in\mathbb R\;(x\le0)\)</span>.</p>
+<p><strong>Solución 67.</strong> “Para todo entero <span class="math inline">\(n\)</span>, si <span class="math inline">\(n\)</span> es impar, entonces <span class="math inline">\(n^2\)</span> es impar.” También puede decirse: “el cuadrado de todo entero impar es impar”.</p>
+<p><strong>Solución 68.</strong> “Existe un entero <span class="math inline">\(m\)</span> tal que, para todo entero <span class="math inline">\(n\)</span>, se cumple <span class="math inline">\(m+n=n\)</span>.” La estructura exige un mismo <span class="math inline">\(m\)</span> para todos los <span class="math inline">\(n\)</span>; concretamente ese entero es <span class="math inline">\(0\)</span>.</p>
+</section>
+<section id="soluciones-l-diagnóstico-y-síntesis" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-l-diagnóstico-y-síntesis">Soluciones — L — Diagnóstico y síntesis</h3>
+<p><strong>Solución 69.</strong> El primer error es conservar el cuantificador universal. Al negar un universal debe aparecer un existencial. La forma correcta es <span class="math inline">\(\exists x\in\mathbb R\;(x^2&lt;0)\)</span>. Luego observamos que esta negación es falsa, coherente con la verdad del enunciado original.</p>
+<p><strong>Solución 70.</strong> La traducción propuesta dice que existe <strong>un mismo libro</strong> <span class="math inline">\(b\)</span> elegido por todos los estudiantes. La frase original permite que cada estudiante haya elegido un libro distinto. La forma adecuada es <span class="math inline">\(\forall e\exists b\,E(e,b)\)</span>.</p>
+<p><strong>Solución 71.</strong> (a) Verdadera: dado <span class="math inline">\(x\)</span>, toma <span class="math inline">\(y=-x\)</span>. (b) Falsa: un único <span class="math inline">\(y\)</span> no puede satisfacer <span class="math inline">\(x+y=0\)</span> para todos los reales <span class="math inline">\(x\)</span>; por ejemplo, <span class="math inline">\(x=0\)</span> exige <span class="math inline">\(y=0\)</span> y <span class="math inline">\(x=1\)</span> exige <span class="math inline">\(y=-1\)</span>. (c) Falsa: basta <span class="math inline">\(x=y=1\)</span>, pues <span class="math inline">\(1+1\ne0\)</span>. (d) Verdadera: por ejemplo <span class="math inline">\(x=0,y=0\)</span>. La negación de (a) es <span class="math inline">\(\exists x\forall y\;(x+y\ne0)\)</span>, que es falsa porque para cualquier <span class="math inline">\(x\)</span> siempre podemos elegir <span class="math inline">\(y=-x\)</span>.</p>
+<p><strong>Solución 72.</strong> (a) <span class="math inline">\(\forall x\in\mathbb R\;\exists!y\in\mathbb R\;(2y+x=0)\)</span>. (b) Es verdadera: dado <span class="math inline">\(x\)</span>, la ecuación obliga a <span class="math inline">\(y=-x/2\)</span>, que es real. (c) El testigo depende de <span class="math inline">\(x\)</span> mediante la regla <span class="math inline">\(y=-x/2\)</span>; no hay un único <span class="math inline">\(y\)</span> global para todos los <span class="math inline">\(x\)</span>. (d) Expandiendo unicidad, el original dice que para todo <span class="math inline">\(x\)</span> existe un <span class="math inline">\(y\)</span> con <span class="math inline">\(2y+x=0\)</span> y cualquier <span class="math inline">\(z\)</span> que también satisfaga <span class="math inline">\(2z+x=0\)</span> debe ser igual a <span class="math inline">\(y\)</span>. Su negación puede expresarse conceptualmente como: <span class="math inline">\(\exists x\in\mathbb R\)</span> tal que <strong>o bien</strong> no existe ningún <span class="math inline">\(y\)</span> con <span class="math inline">\(2y+x=0\)</span>, <strong>o bien</strong> existen dos reales distintos <span class="math inline">\(y,z\)</span> que satisfacen ambos la ecuación. Simbólicamente:</p>
+<p><span class="math display">\[
+\exists x\in\mathbb R\;\Big([\forall y\in\mathbb R\;(2y+x\ne0)]\lor[\exists y,z\in\mathbb R\;(y\ne z\land 2y+x=0\land 2z+x=0)]\Big).
+\]</span></p>
+<p>En este caso la negación es falsa porque para cada <span class="math inline">\(x\)</span> existe exactamente el único valor <span class="math inline">\(-x/2\)</span>.</p>
+<hr>
+</section>
+<section id="soluciones-m-problemas-tipo-prueba" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones-m-problemas-tipo-prueba">Soluciones — M — Problemas tipo prueba</h3>
+<p><strong>Solución 73.</strong></p>
+<ol type="a">
+<li><p>Es verdadera. Dado <span class="math inline">\(x\ne0\)</span>, basta elegir <span class="math inline">\(y=1/x\)</span>. Entonces <span class="math inline">\(xy=1\)</span>. El testigo depende de <span class="math inline">\(x\)</span>.</p></li>
+<li><p>Es falsa. Si existiera un real fijo <span class="math inline">\(y\)</span> tal que <span class="math inline">\(xy=1\)</span> para todo <span class="math inline">\(x\ne0\)</span>, al tomar <span class="math inline">\(x=1\)</span> obtendríamos <span class="math inline">\(y=1\)</span>, mientras que con <span class="math inline">\(x=2\)</span> obtendríamos <span class="math inline">\(y=1/2\)</span>. Contradicción.</p></li>
+<li><p>Es verdadera. Para cada <span class="math inline">\(x\)</span> podemos tomar <span class="math inline">\(y=x+1\)</span>, y entonces <span class="math inline">\(y&gt;x\)</span>.</p></li>
+<li><p>Es falsa. Si existiera un real <span class="math inline">\(y\)</span> mayor que todo real <span class="math inline">\(x\)</span>, tomando <span class="math inline">\(x=y+1\)</span> tendríamos <span class="math inline">\(y&gt;y+1\)</span>, contradicción.</p></li>
+</ol>
+<p>En (a) y (c), el existencial está dentro del alcance del universal: el testigo puede variar con la entrada. En (b) y (d), el testigo debe fijarse antes y funcionar para todos los valores universales.</p>
+<p><strong>Solución 74.</strong></p>
+<ol type="a">
+<li><p>Dice: “Todo real no negativo posee una raíz cuadrada real no negativa”.</p></li>
+<li></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\neg\forall x\in\mathbb R\;\Big[x\ge0\Rightarrow\exists y\in\mathbb R\;(y\ge0\land y^2=x)\Big]\\
+&amp;\equiv \exists x\in\mathbb R\;\neg\Big[x\ge0\Rightarrow\exists y\in\mathbb R\;(y\ge0\land y^2=x)\Big]\\
+&amp;\equiv \exists x\in\mathbb R\;\Big[x\ge0\land\neg\exists y\in\mathbb R\;(y\ge0\land y^2=x)\Big]\\
+&amp;\equiv \exists x\in\mathbb R\;\Big[x\ge0\land\forall y\in\mathbb R\;\neg(y\ge0\land y^2=x)\Big]\\
+&amp;\equiv \exists x\in\mathbb R\;\Big[x\ge0\land\forall y\in\mathbb R\;(y&lt;0\lor y^2\ne x)\Big].
+\end{aligned}
+\]</span></p>
+<ol start="3" type="a">
+<li><p>La afirmación original es verdadera: si <span class="math inline">\(x\ge0\)</span>, existe <span class="math inline">\(y=\sqrt{x}\ge0\)</span> y <span class="math inline">\(y^2=x\)</span>. Por tanto su negación es falsa.</p></li>
+<li><p>Cambiar sólo <span class="math inline">\(\forall\)</span> por <span class="math inline">\(\exists\)</span> niega únicamente la capa externa. También deben negarse la implicación y el existencial interior.</p></li>
+</ol>
+<p><strong>Solución 75.</strong></p>
+<ol type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+\forall x\in\mathbb R\;\exists y\in\mathbb R\;
+\Big[(3y-2=x)\land
+\forall z\in\mathbb R\,(3z-2=x\Rightarrow z=y)\Big].
+\]</span></p>
+<ol start="2" type="a">
+<li><p>Fijado <span class="math inline">\(x\)</span>, la ecuación obliga a <span class="math inline">\(y=(x+2)/3\)</span>, que es real. Si <span class="math inline">\(z\)</span> también satisface <span class="math inline">\(3z-2=x\)</span>, entonces <span class="math inline">\(3z-2=3y-2\)</span>, de donde <span class="math inline">\(z=y\)</span>. Hay existencia y unicidad.</p></li>
+<li><p>La negación expresa que existe algún <span class="math inline">\(x\)</span> para el cual o no hay solución o hay dos soluciones distintas:</p></li>
+</ol>
+<p><span class="math display">\[
+\exists x\in\mathbb R\;
+\Big(
+[\forall y\in\mathbb R\;(3y-2\ne x)]
+\lor
+[\exists y,z\in\mathbb R\;(y\ne z\land 3y-2=x\land 3z-2=x)]
+\Big).
+\]</span></p>
+<ol start="4" type="a">
+<li><span class="math inline">\(\exists!y\,\forall x\,(3y-2=x)\)</span> es falsa: fijado <span class="math inline">\(y\)</span>, <span class="math inline">\(3y-2\)</span> es un solo real y no puede coincidir con todos los reales <span class="math inline">\(x\)</span>.</li>
+</ol>
+<p><strong>Solución 76.</strong></p>
+<ol type="a">
+<li><p><span class="math inline">\(A\)</span> es verdadera. Dado <span class="math inline">\(m\)</span>, elige <span class="math inline">\(n=m+1\)</span>. Si <span class="math inline">\(k\ge n\)</span>, entonces <span class="math inline">\(k\ge m+1&gt;m\)</span>.</p></li>
+<li><p><span class="math inline">\(B\)</span> es falsa. Para cualquier candidato fijo <span class="math inline">\(n\)</span>, toma <span class="math inline">\(m=n\)</span> y <span class="math inline">\(k=n\)</span>. Entonces <span class="math inline">\(k\ge n\)</span> es verdadera, pero <span class="math inline">\(k&gt;m\)</span> se convierte en <span class="math inline">\(n&gt;n\)</span>, falsa.</p></li>
+<li></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+\neg A
+&amp;\equiv \exists m\;\forall n\;\exists k\;\neg(k\ge n\Rightarrow k&gt;m)\\
+&amp;\equiv \exists m\;\forall n\;\exists k\;(k\ge n\land k\le m).
+\end{aligned}
+\]</span></p>
+<ol start="4" type="a">
+<li>En <span class="math inline">\(A\)</span>, <span class="math inline">\(n\)</span> puede depender de <span class="math inline">\(m\)</span>. En <span class="math inline">\(B\)</span>, <span class="math inline">\(n\)</span> debe elegirse una sola vez y funcionar para todos los <span class="math inline">\(m\)</span>.</li>
+</ol>
+<p><strong>Solución 77.</strong></p>
+<ol type="a">
+<li><p>Es verdadera en <span class="math inline">\(\mathbb R\)</span>: dado <span class="math inline">\(x\)</span>, elige <span class="math inline">\(y=\sqrt{x^2+1}\)</span>.</p></li>
+<li><p>Es falsa en <span class="math inline">\(\mathbb Z\)</span>. Para <span class="math inline">\(x=1\)</span> se exigiría <span class="math inline">\(y^2=2\)</span>, imposible para un entero.</p></li>
+<li></li>
+</ol>
+<p><span class="math display">\[
+\exists x\in\mathbb Z\;\forall y\in\mathbb Z\;(y^2\ne x^2+1).
+\]</span></p>
+<p>El valor <span class="math inline">\(x=1\)</span> es un testigo.</p>
+<ol start="4" type="a">
+<li>Los cuantificadores recorren objetos distintos según el dominio. El mismo patrón formal puede ser verdadero en <span class="math inline">\(\mathbb R\)</span> y falso en <span class="math inline">\(\mathbb Z\)</span> porque cambian los testigos permitidos.</li>
+</ol>
+<p><strong>Solución 78.</strong></p>
+<ol type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+\forall e\in E\;\exists p\in P\;
+\Big[
+S(e,p)\land
+\forall e'\in E\;(e'\ne e\Rightarrow\neg S(e',p))
+\Big].
+\]</span></p>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\neg\forall e\in E\;\exists p\in P\;
+\Big[S(e,p)\land\forall e'\in E\;(e'\ne e\Rightarrow\neg S(e',p))\Big]\\
+&amp;\equiv
+\exists e\in E\;\forall p\in P\;
+\Big[\neg S(e,p)\lor
+\exists e'\in E\;(e'\ne e\land S(e',p))\Big].
+\end{aligned}
+\]</span></p>
+<ol start="3" type="a">
+<li><p>“Existe un estudiante tal que, para cada problema, o bien ese estudiante no lo resolvió, o bien algún otro estudiante también lo resolvió.” Es decir, existe un estudiante que no posee ningún problema resuelto exclusivamente por él.</p></li>
+<li><p>Mover <span class="math inline">\(\exists p\)</span> delante de <span class="math inline">\(\forall e\)</span> obliga a escoger un mismo problema para todos los estudiantes. La frase original permite que el problema dependa del estudiante.</p></li>
+</ol>
+<p><strong>Solución 79.</strong></p>
+<ol type="a">
+<li><p>En <span class="math inline">\(\forall x\,[P(x,y)\Rightarrow\exists y\,Q(x,y,z)]\)</span>, <span class="math inline">\(x\)</span> está ligada por <span class="math inline">\(\forall\)</span>. La <span class="math inline">\(y\)</span> de <span class="math inline">\(P(x,y)\)</span> es libre; la <span class="math inline">\(y\)</span> de <span class="math inline">\(Q(x,y,z)\)</span> está ligada por <span class="math inline">\(\exists\)</span>; <span class="math inline">\(z\)</span> es libre.</p></li>
+<li><p>Una renominación segura es</p></li>
+</ol>
+<p><span class="math display">\[
+\forall x\,[P(x,y)\Rightarrow\exists t\,Q(x,t,z)].
+\]</span></p>
+<ol start="3" type="a">
+<li><p>Si se reemplaza ingenuamente <span class="math inline">\(\forall x\)</span> por <span class="math inline">\(\forall y\)</span>, la <span class="math inline">\(y\)</span> libre que aparece en <span class="math inline">\(P(x,y)\)</span> quedaría bajo el alcance del nuevo cuantificador. Esa captura cambia el significado.</p></li>
+<li><p>Una clausura universal es</p></li>
+</ol>
+<p><span class="math display">\[
+\forall y\;\forall z\;\forall x\;
+[P(x,y)\Rightarrow\exists t\,Q(x,t,z)].
+\]</span></p>
+<ol start="5" type="a">
+<li></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\neg\forall y\forall z\forall x\,[P(x,y)\Rightarrow\exists t\,Q(x,t,z)]\\
+&amp;\equiv
+\exists y\exists z\exists x\,[P(x,y)\land\neg\exists t\,Q(x,t,z)]\\
+&amp;\equiv
+\exists y\exists z\exists x\,[P(x,y)\land\forall t\,\neg Q(x,t,z)].
+\end{aligned}
+\]</span></p>
+<p><strong>Solución 80.</strong></p>
+<ol type="a">
+<li><p>Afirma que para todo real <span class="math inline">\(x\)</span> existe un único real <span class="math inline">\(y\)</span> que es estrictamente mayor que <span class="math inline">\(x\)</span> y que es menor o igual que cualquier otro real estrictamente mayor que <span class="math inline">\(x\)</span>. Es decir, afirma que todo real tiene un menor real estrictamente mayor que él.</p></li>
+<li><p>Es falsa.</p></li>
+<li><p>Fijemos <span class="math inline">\(x\)</span> y supongamos <span class="math inline">\(y&gt;x\)</span>. Toma</p></li>
+</ol>
+<p><span class="math display">\[
+z=\frac{x+y}{2}.
+\]</span></p>
+<p>Entonces <span class="math inline">\(x&lt;z&lt;y\)</span>. Como <span class="math inline">\(z&gt;x\)</span>, la condición universal exigiría <span class="math inline">\(y\le z\)</span>, contradicción.</p>
+<ol start="4" type="a">
+<li><p>Falla ya la existencia: para ningún <span class="math inline">\(x\)</span> existe un <span class="math inline">\(y\)</span> con la propiedad. Por tanto la unicidad ni siquiera llega a entrar en juego.</p></li>
+<li><p>Una negación exacta es: “Existe un real <span class="math inline">\(x\)</span> para el cual no existe exactamente un real <span class="math inline">\(y\)</span> que sea el menor real estrictamente mayor que <span class="math inline">\(x\)</span>”. De hecho hemos probado algo más fuerte: para todo <span class="math inline">\(x\)</span> no existe ninguno.</p></li>
+</ol>
+<hr>
+</section>
+<section id="autoevaluación-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="autoevaluación-de-salida">Autoevaluación de salida</h2>
+<p>Antes de continuar a C7, deberías poder responder afirmativamente:</p>
+<ul>
+<li>¿distingo una expresión de un predicado y de una proposición?</li>
+<li>¿puedo declarar el dominio relevante?</li>
+<li>¿identifico variables libres y ligadas?</li>
+<li>¿leo <span class="math inline">\(\forall\)</span>, <span class="math inline">\(\exists\)</span> y <span class="math inline">\(\exists!\)</span> sin perder su alcance?</li>
+<li>¿sé que un contraejemplo refuta un universal?</li>
+<li>¿sé que un testigo establece una existencia?</li>
+<li>¿puedo negar cuantificadores cambiando <span class="math inline">\(\forall\leftrightarrow\exists\)</span> y negando el contenido interno?</li>
+<li>¿distingo <span class="math inline">\(\forall x\exists y\)</span> de <span class="math inline">\(\exists y\forall x\)</span>?</li>
+<li>¿puedo explicar cuándo un testigo depende de una variable previa?</li>
+<li>¿puedo traducir afirmaciones de complejidad media en ambos sentidos?</li>
+</ul>
+<p>Si alguna respuesta es negativa, vuelve primero a las secciones 6.7, 6.9–6.11 y a los ejercicios de los bloques E, G, H y L. Son los puntos de mayor transferencia del capítulo.</p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
