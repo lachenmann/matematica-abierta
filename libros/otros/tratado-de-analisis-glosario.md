@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-09
+date-modified: 2026-09-13
 areas:
   - fundamentos
   - analisis
@@ -18,6 +18,7 @@ topics:
   - teoria-de-conjuntos
   - relaciones-de-equivalencia
   - conjuntos-cociente
+  - funciones
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -45,17 +46,29 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 ## Índice actual
 
 [Antisimetría](#gl-antisimetria) ·
+[Biyectividad](#gl-biyectividad) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
+[Codominio](#gl-codominio) ·
+[Composición de funciones](#gl-composicion-funciones) ·
 [Composición de relaciones](#gl-composicion-relaciones) ·
 [Conjunto cociente](#gl-conjunto-cociente) ·
+[Conjunto de funciones](#gl-conjunto-funciones) ·
 [Conjunto potencia](#gl-conjunto-potencia) ·
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
+[Dominio de una función](#gl-dominio-funcion) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
 [Extensionalidad](#gl-extensionalidad) ·
+[Familia indexada](#gl-familia-indexada) ·
+[Función](#gl-funcion) ·
+[Función identidad](#gl-funcion-identidad) ·
+[Función inversa](#gl-funcion-inversa) ·
+[Grafo de una función](#gl-grafo-funcion) ·
 [Igualdad de clases](#gl-igualdad-clases) ·
+[Imagen directa](#gl-imagen-directa) ·
 [Intersección](#gl-interseccion) ·
+[Inyectividad](#gl-inyectividad) ·
 [Lógica clásica](#gl-logica-clasica) ·
 [Metanivel](#gl-metanivel) ·
 [Nivel objeto](#gl-nivel-objeto) ·
@@ -63,7 +76,10 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Par no ordenado](#gl-par-no-ordenado) ·
 [Par ordenado](#gl-par-ordenado) ·
 [Partición](#gl-particion) ·
+[Preimagen](#gl-preimagen) ·
+[Principio de definición sobre clases](#gl-definicion-sobre-clases) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
+[Proyección canónica](#gl-proyeccion-canonica) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
 [Reflexividad](#gl-reflexividad) ·
 [Relación binaria](#gl-relacion-binaria) ·
@@ -73,6 +89,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Separación restringida](#gl-separacion-restringida) ·
 [Simetría](#gl-simetria) ·
 [Singleton](#gl-singleton) ·
+[Sobreyectividad](#gl-sobreyectividad) ·
 [Subconjunto](#gl-subconjunto) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
@@ -100,6 +117,18 @@ La antisimetría no significa que $aRb$ impida $bRa$; significa que, si ambas re
 
 ---
 
+## Biyectividad {#gl-biyectividad}
+
+**Idea.** Una función que establece una correspondencia uno a uno entre dominio y codominio.
+
+**En este tratado.** Una función $f:A\to B$ es **biyectiva** cuando es a la vez inyectiva y sobreyectiva. Equivalentemente, es biyectiva si y sólo si posee una función inversa $f^{-1}:B\to A$.
+
+**En el Tratado:** [Definición 0.6.6 — Inyectividad, sobreyectividad y biyectividad](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-inyectiva-sobreyectiva-biyectiva) y [Teorema 0.6.7 — Caracterización de las funciones invertibles](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funciones-invertibles).
+
+**Véase también:** [Inyectividad](#gl-inyectividad), [Sobreyectividad](#gl-sobreyectividad), [Función inversa](#gl-funcion-inversa).
+
+---
+
 ## Clase de equivalencia {#gl-clase-equivalencia}
 
 **Idea.** El conjunto de todas las representaciones que la relación de equivalencia considera indistinguibles de una representación dada.
@@ -115,6 +144,40 @@ Cuando la relación esté clara por el contexto, escribiremos simplemente $[a]$.
 **En el Tratado:** [Definición 0.5.1 — Clase de equivalencia](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-clase-equivalencia).
 
 **Véase también:** [Representante](#gl-representante), [Igualdad de clases](#gl-igualdad-clases), [Relación de equivalencia](#gl-relacion-equivalencia), [Conjunto cociente](#gl-conjunto-cociente).
+
+---
+
+## Codominio {#gl-codominio}
+
+**Idea.** El conjunto de llegada declarado como parte de los datos de una función.
+
+**En este tratado.** Si
+$$
+f=\langle A,B,G_f\rangle,
+$$
+entonces $B$ es el **codominio** de $f$. El codominio forma parte de la identidad de la función: dos funciones con el mismo dominio y el mismo grafo, pero codominios distintos, son funciones distintas.
+
+**En el Tratado:** [Definición 0.6.1 — Función como dominio, codominio y grafo](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion).
+
+**Véase también:** [Función](#gl-funcion), [Dominio de una función](#gl-dominio-funcion), [Grafo de una función](#gl-grafo-funcion).
+
+---
+
+## Composición de funciones {#gl-composicion-funciones}
+
+**Idea.** Aplicar una función y, sobre su resultado, aplicar una segunda función.
+
+**En este tratado.** Si $f:A\to B$ y $g:B\to C$, definimos
+$$
+g\circ f:A\to C,
+\qquad
+(g\circ f)(a):=g(f(a)).
+$$
+Su grafo coincide con la composición relacional de los grafos correspondientes.
+
+**En el Tratado:** [Definición 0.6.4 — Identidad y composición de funciones](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-identidad-composicion-funciones).
+
+**Véase también:** [Función](#gl-funcion), [Función identidad](#gl-funcion-identidad), [Composición de relaciones](#gl-composicion-relaciones).
 
 ---
 
@@ -161,6 +224,22 @@ La primera expresión es la definición conjuntista canónica; la segunda es not
 **En el Tratado:** [Definición 0.5.7 — Conjunto cociente](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-conjunto-cociente).
 
 **Véase también:** [Clase de equivalencia](#gl-clase-equivalencia), [Partición](#gl-particion), [Representante](#gl-representante).
+
+---
+
+## Conjunto de funciones {#gl-conjunto-funciones}
+
+**Idea.** El conjunto formado por todas las funciones que tienen un dominio y un codominio fijados.
+
+**En este tratado.** Para conjuntos $A$ y $B$,
+$$
+B^A
+$$
+denota el conjunto de todas las funciones $f:A\to B$. Su existencia se demuestra dentro de ZF a partir de $\mathcal P(A\times B)$, reemplazo y separación.
+
+**En el Tratado:** [Definición 0.6.11 — Conjunto de funciones](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-conjunto-funciones).
+
+**Véase también:** [Función](#gl-funcion), [Conjunto potencia](#gl-conjunto-potencia), [Producto cartesiano](#gl-producto-cartesiano).
 
 ---
 
@@ -230,6 +309,22 @@ La notación $A-B$ no se usa para diferencia de conjuntos, porque se reserva par
 
 ---
 
+## Dominio de una función {#gl-dominio-funcion}
+
+**Idea.** El conjunto de entradas sobre las que una función está definida.
+
+**En este tratado.** Si
+$$
+f=\langle A,B,G_f\rangle,
+$$
+entonces $A$ es el **dominio** de $f$. No se recupera sólo del grafo por convención: forma parte explícita del objeto función.
+
+**En el Tratado:** [Definición 0.6.1 — Función como dominio, codominio y grafo](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion).
+
+**Véase también:** [Función](#gl-funcion), [Codominio](#gl-codominio), [Dominio de una relación](#gl-dominio-relacion).
+
+---
+
 ## Dominio de una relación {#gl-dominio-relacion}
 
 **Idea.** Los elementos que aparecen como primera componente de algún par perteneciente a la relación.
@@ -260,6 +355,90 @@ $$
 
 ---
 
+## Familia indexada {#gl-familia-indexada}
+
+**Idea.** Una colección cuyos elementos están organizados por un conjunto de índices.
+
+**En este tratado.** Una **familia indexada** de elementos de $X$, con conjunto de índices $I$, es una función
+$$
+x:I\to X.
+$$
+La escribimos $(x_i)_{i\in I}$, con $x_i:=x(i)$. Para familias de subconjuntos de un ambiente $U$, esta notación permite definir uniones e intersecciones indexadas.
+
+**En el Tratado:** [Definición 0.6.16 — Familia indexada](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-familia-indexada).
+
+**Véase también:** [Función](#gl-funcion), [Imagen directa](#gl-imagen-directa), [Unión](#gl-union), [Intersección](#gl-interseccion).
+
+---
+
+## Función {#gl-funcion}
+
+**Idea.** Una asignación que proporciona a cada entrada exactamente una salida.
+
+**En este tratado.** Una función $f$ de $A$ en $B$ es el objeto
+$$
+f=\langle A,B,G_f\rangle,
+$$
+donde $G_f\subseteq A\times B$ y para todo $a\in A$ existe un único $b\in B$ con $\langle a,b\rangle\in G_f$. Dominio, codominio y grafo forman parte de los datos de la función.
+
+**En el Tratado:** [Definición 0.6.1 — Función como dominio, codominio y grafo](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion).
+
+**Véase también:** [Dominio de una función](#gl-dominio-funcion), [Codominio](#gl-codominio), [Grafo de una función](#gl-grafo-funcion).
+
+---
+
+## Función identidad {#gl-funcion-identidad}
+
+**Idea.** La función que deja cada elemento donde está.
+
+**En este tratado.** Para un conjunto $A$,
+$$
+\operatorname{id}_A:A\to A,
+\qquad
+\operatorname{id}_A(a)=a.
+$$
+Actúa como identidad para la composición de funciones.
+
+**En el Tratado:** [Definición 0.6.4 — Identidad y composición de funciones](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-identidad-composicion-funciones).
+
+**Véase también:** [Composición de funciones](#gl-composicion-funciones), [Función](#gl-funcion).
+
+---
+
+## Función inversa {#gl-funcion-inversa}
+
+**Idea.** La función que deshace una función biyectiva.
+
+**En este tratado.** Si $f:A\to B$ es biyectiva, $f^{-1}:B\to A$ denota la única función que satisface
+$$
+f^{-1}\circ f=\operatorname{id}_A,
+\qquad
+f\circ f^{-1}=\operatorname{id}_B.
+$$
+El símbolo $f^{-1}$ sólo se usa como función inversa después de demostrar la biyectividad de $f$.
+
+**En el Tratado:** [Notación 0.6.8 — Función inversa](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion-inversa).
+
+**Véase también:** [Biyectividad](#gl-biyectividad), [Relación inversa](#gl-relacion-inversa), [Preimagen](#gl-preimagen).
+
+---
+
+## Grafo de una función {#gl-grafo-funcion}
+
+**Idea.** El conjunto de todos los pares entrada–salida de una función.
+
+**En este tratado.** Si $f:A\to B$, su grafo $G_f$ es un subconjunto de $A\times B$ tal que para cada $a\in A$ existe un único $b\in B$ con
+$$
+\langle a,b\rangle\in G_f.
+$$
+La escritura $f(a)=b$ abrevia precisamente esta pertenencia al grafo.
+
+**En el Tratado:** [Definición 0.6.1](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion) y [Notación 0.6.2 — Flecha y evaluación](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-flecha-evaluacion).
+
+**Véase también:** [Función](#gl-funcion), [Producto cartesiano](#gl-producto-cartesiano), [Relación binaria](#gl-relacion-binaria).
+
+---
+
 ## Igualdad de clases {#gl-igualdad-clases}
 
 **Idea.** Dos representantes determinan la misma clase exactamente cuando son equivalentes.
@@ -280,6 +459,24 @@ Este criterio permite dejar de depender de un representante particular: cambiar 
 
 ---
 
+## Imagen directa {#gl-imagen-directa}
+
+**Idea.** Los valores que una función alcanza a partir de un subconjunto del dominio.
+
+**En este tratado.** Si $f:A\to B$ y $X\subseteq A$,
+$$
+f[X]
+:=
+\{b\in B:\exists x\in X\;(f(x)=b)\}.
+$$
+Los corchetes distinguen la imagen de subconjuntos de la evaluación puntual $f(a)$.
+
+**En el Tratado:** [Definición 0.6.9 — Imagen y preimagen](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-imagen-preimagen).
+
+**Véase también:** [Preimagen](#gl-preimagen), [Función](#gl-funcion), [Sobreyectividad](#gl-sobreyectividad).
+
+---
+
 ## Intersección {#gl-interseccion}
 
 **Idea.** La parte común de dos conjuntos.
@@ -295,6 +492,21 @@ Se construye por separación dentro de $A$.
 **En el Tratado:** [Definición 0.2.10 — Intersección binaria](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-interseccion-binaria).
 
 **Véase también:** [Unión](#gl-union), [Separación restringida](#gl-separacion-restringida), [Conjuntos disjuntos](#gl-conjuntos-disjuntos).
+
+---
+
+## Inyectividad {#gl-inyectividad}
+
+**Idea.** Entradas distintas no pueden producir la misma salida.
+
+**En este tratado.** Una función $f:A\to B$ es **inyectiva** si
+$$
+f(a)=f(a')\Longrightarrow a=a'.
+$$
+
+**En el Tratado:** [Definición 0.6.6 — Inyectividad, sobreyectividad y biyectividad](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-inyectiva-sobreyectiva-biyectiva).
+
+**Véase también:** [Sobreyectividad](#gl-sobreyectividad), [Biyectividad](#gl-biyectividad).
 
 ---
 
@@ -402,6 +614,46 @@ Las clases de cualquier relación de equivalencia sobre $A$ forman una partició
 
 ---
 
+## Preimagen {#gl-preimagen}
+
+**Idea.** Los elementos del dominio cuyos valores caen en un subconjunto dado del codominio.
+
+**En este tratado.** Si $f:A\to B$ y $Y\subseteq B$,
+$$
+f^{-1}[Y]
+:=
+\{a\in A:f(a)\in Y\}.
+$$
+Esta notación no presupone que $f$ sea biyectiva y no debe confundirse con la función inversa.
+
+**En el Tratado:** [Definición 0.6.9 — Imagen y preimagen](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-imagen-preimagen).
+
+**Véase también:** [Imagen directa](#gl-imagen-directa), [Función inversa](#gl-funcion-inversa), [Función](#gl-funcion).
+
+---
+
+## Principio de definición sobre clases {#gl-definicion-sobre-clases}
+
+**Idea.** Una regla definida sobre representantes desciende al cociente exactamente cuando no cambia al sustituir un representante por otro equivalente.
+
+**En este tratado.** Si $\sim$ es una relación de equivalencia sobre $A$ y $\varphi:A\to B$ satisface
+$$
+a\sim a'
+\Longrightarrow
+\varphi(a)=\varphi(a'),
+$$
+entonces existe una única función
+$$
+\overline{\varphi}:A/{\sim}\to B
+$$
+con $\overline{\varphi}([a])=\varphi(a)$.
+
+**En el Tratado:** [Teorema 0.6.15 — Principio de definición sobre clases](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-definicion-sobre-clases).
+
+**Véase también:** [Conjunto cociente](#gl-conjunto-cociente), [Proyección canónica](#gl-proyeccion-canonica), [Representante](#gl-representante).
+
+---
+
 ## Producto cartesiano {#gl-producto-cartesiano}
 
 **Idea.** El conjunto de todos los pares ordenados cuya primera componente proviene de un conjunto y cuya segunda componente proviene de otro.
@@ -419,6 +671,24 @@ La existencia de este conjunto se demuestra construyéndolo por separación dent
 **En el Tratado:** [Definición 0.3.6 — Producto cartesiano](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-producto-cartesiano).
 
 **Véase también:** [Par ordenado](#gl-par-ordenado), [Conjunto potencia](#gl-conjunto-potencia), [Separación restringida](#gl-separacion-restringida).
+
+---
+
+## Proyección canónica {#gl-proyeccion-canonica}
+
+**Idea.** La función que envía cada representante a su clase de equivalencia.
+
+**En este tratado.** Si $\sim$ es una relación de equivalencia sobre $A$,
+$$
+\pi_{\sim}:A\to A/{\sim},
+\qquad
+\pi_{\sim}(a):=[a].
+$$
+Esta función es sobreyectiva.
+
+**En el Tratado:** [Definición 0.6.13 — Proyección canónica de un cociente](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-proyeccion-canonica).
+
+**Véase también:** [Conjunto cociente](#gl-conjunto-cociente), [Clase de equivalencia](#gl-clase-equivalencia), [Principio de definición sobre clases](#gl-definicion-sobre-clases).
 
 ---
 
@@ -580,6 +850,21 @@ El singleton se obtiene como caso degenerado del par no ordenado.
 
 ---
 
+## Sobreyectividad {#gl-sobreyectividad}
+
+**Idea.** Todo elemento del codominio es alcanzado por alguna entrada.
+
+**En este tratado.** Una función $f:A\to B$ es **sobreyectiva** si para todo $b\in B$ existe $a\in A$ tal que
+$$
+f(a)=b.
+$$
+
+**En el Tratado:** [Definición 0.6.6 — Inyectividad, sobreyectividad y biyectividad](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-inyectiva-sobreyectiva-biyectiva).
+
+**Véase también:** [Inyectividad](#gl-inyectividad), [Biyectividad](#gl-biyectividad), [Codominio](#gl-codominio).
+
+---
+
 ## Subconjunto {#gl-subconjunto}
 
 **Idea.** $A$ está contenido en $B$ cuando todo elemento de $A$ también pertenece a $B$.
@@ -689,5 +974,5 @@ $$
 ---
 
 ::: {.callout-note title="Glosario vivo"}
-Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La publicación de §0.6 añadirá el vocabulario correspondiente a **funciones**, dominio, codominio, grafo, imagen y preimagen, sin adelantarse a las definiciones del manuscrito.
+Las próximas entradas se incorporarán al mismo ritmo que el Tratado. La siguiente publicación, **§0.7 — Órdenes**, añadirá el vocabulario correspondiente a preórdenes, órdenes parciales y totales, orden estricto, cotas, máximo, mínimo, supremo e ínfimo.
 :::

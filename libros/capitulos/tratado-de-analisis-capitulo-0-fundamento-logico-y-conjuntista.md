@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-09
+date-modified: 2026-09-13
 areas:
   - fundamentos
   - analisis
@@ -49,3 +49,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap0-04.md >}}
 
 {{< include _tratado-cap0-05.md >}}
+
+{{< include _tratado-cap0-06.md >}}
