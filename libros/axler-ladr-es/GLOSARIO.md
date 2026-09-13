@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.6
+# Glosario terminológico · v0.7
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -14,9 +14,12 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | point | punto | Axler lo usa como lenguaje geométrico alternativo para elementos de un espacio vectorial. |
 | subspace | subespacio | Preferido; «subespacio lineal» se registra como sinónimo señalado por Axler. |
 | linear subspace | subespacio lineal | Sinónimo de subespacio; no se usa como forma principal. |
+| dimension of a subspace | dimensión de un subespacio | Nombre descriptivo de 2.37. |
+| full dimension | dimensión completa | En 2.39: un subespacio con la misma dimensión que el espacio ambiente. |
 | closed under addition | cerrado bajo la suma | Terminología estructural estándar. |
 | closed under scalar multiplication | cerrado bajo la multiplicación por escalares | Coherente con la traducción de *scalar multiplication*. |
 | sum of subspaces | suma de subespacios | Para $V_1+\cdots+V_m$. |
+| dimension of a sum | dimensión de una suma | Fórmula de 2.43. |
 | summand | sumando | Subespacio participante en una suma de subespacios. |
 | direct sum | suma directa | Para la suma con representación única; símbolo $\oplus$. |
 | intersection | intersección | Para $U\cap W$. |
@@ -38,6 +41,7 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | algebraically closed field | cuerpo algebraicamente cerrado | Estándar. |
 | list | lista | Axler usa listas, no conjuntos, para secuencias finitas ordenadas. |
 | list of vectors | lista de vectores | En 2A se conserva la convención de escribirla sin paréntesis exteriores. |
+| length of a list | longitud de una lista | Se usa también para la longitud de una base. |
 | n-tuple | $n$-tupla | Sinónimo señalado por Axler para una lista de longitud $n$. |
 | sequence | sucesión | Para elementos de $\mathbf F^\infty$; no traducir como «lista» porque Axler distingue ambos conceptos. |
 | coordinate | coordenada | Estándar. |
@@ -56,12 +60,15 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | linear dependence lemma | lema de dependencia lineal | Nombre adoptado para 2.19. |
 | polynomial | polinomio | Estándar. |
 | degree of a polynomial | grado de un polinomio | $\deg p$. |
+| Bernstein polynomials | polinomios de Bernstein | Término usado en el ejercicio 10 de 2C. |
 | basis | base | Estándar. |
 | standard basis | base estándar | Adoptado para $\mathbf F^n$ y $\mathcal P_m(\mathbf F)$. |
+| basis length | longitud de una base | 2.34 establece que es independiente de la base elegida. |
 | criterion for basis | criterio para una base | Nombre descriptivo de 2.28. |
 | reduce a spanning list to a basis | reducir una lista generadora a una base | Formulación usada en 2.30. |
 | extend a linearly independent list to a basis | extender una lista linealmente independiente a una base | Formulación usada en 2.32. |
-| dimension | dimensión | Estándar. |
+| dimension | dimensión | Longitud de cualquier base de un espacio de dimensión finita, según 2.35. |
+| right length | longitud correcta | Expresión expositiva de 2.38 y 2.42: longitud igual a $\dim V$. |
 | null space | espacio nulo | Registrar «núcleo» como sinónimo estándar; decisión abierta para el texto principal. |
 | range | imagen | Evitar «rango» aquí para no confundir con rank. |
 | injective | inyectiva | Estándar. |
