@@ -1,0 +1,76 @@
+name: Update C6 support files
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - publish/algebra-v2-c06
+
+jobs:
+  update-support:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v7
+        with:
+          ref: publish/algebra-v2-c06
+          fetch-depth: 0
+
+      - name: Update publication navigation and ID registry
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          chapter_id = 'MA-BCH-0017'
+          chapter_title = 'Cuantificadores, predicados y lenguaje matemático'
+          chapter_path = 'libros/capitulos/cuantificadores-predicados-y-lenguaje-matematico.md'
+
+          reg = Path('_project/ID_REGISTRY.md')
+          s = reg.read_text(encoding='utf-8')
+          if f'| {chapter_id} | book-chapter |' not in s:
+              s = s.replace('| Capítulo | MA-BCH-0017 |', '| Capítulo | MA-BCH-0018 |', 1)
+              anchor = '| MA-BCH-0016 | book-chapter | Álgebra de proposiciones y formas normales | `libros/capitulos/algebra-de-proposiciones-y-formas-normales.md` | published |'
+              newrow = f'| {chapter_id} | book-chapter | {chapter_title} | `{chapter_path}` | published |'
+              s = s.replace(anchor, anchor + '\n' + newrow, 1)
+              reg.write_text(s, encoding='utf-8')
+
+          book = Path('libros/para-matematicos/algebra-para-matematicos.md')
+          s = book.read_text(encoding='utf-8')
+          if '  - MA-BCH-0017' not in s:
+              s = s.replace('  - MA-BCH-0016\nprovenance:', '  - MA-BCH-0016\n  - MA-BCH-0017\nprovenance:', 1)
+          item = '6. [**Cuantificadores, predicados y lenguaje matemático**](../capitulos/cuantificadores-predicados-y-lenguaje-matematico.md) (`MA-BCH-0017`).'
+          if item not in s:
+              anchor = '5. [**Álgebra de proposiciones y formas normales**](../capitulos/algebra-de-proposiciones-y-formas-normales.md) (`MA-BCH-0016`).'
+              s = s.replace(anchor, anchor + '\n' + item, 1)
+          s = s.replace('los capítulos 1, 2, 3, 4 y 5 mediante el flujo canónico', 'los capítulos 1, 2, 3, 4, 5 y 6 mediante el flujo canónico', 1)
+          book.write_text(s, encoding='utf-8')
+
+          idx = Path('libros/capitulos/index.qmd')
+          s = idx.read_text(encoding='utf-8')
+          item = '- [**Cuantificadores, predicados y lenguaje matemático**](cuantificadores-predicados-y-lenguaje-matematico.md) (`MA-BCH-0017`) — Sexto capítulo del Tomo I: predicados, dominios, variables libres y ligadas, cuantificadores universal y existencial, negación, alcance, dependencia, orden de cuantificadores y existencia única; incluye 80 ejercicios con soluciones desarrolladas.'
+          if item not in s:
+              anchor = '- [**Álgebra de proposiciones y formas normales**](algebra-de-proposiciones-y-formas-normales.md) (`MA-BCH-0016`) — Quinto capítulo del Tomo I: equivalencia lógica, leyes de transformación, De Morgan, distributividad, absorción, eliminación de implicaciones y bicondicionales, FND/FNC y formas canónicas; incluye 80 ejercicios con soluciones desarrolladas.'
+              s = s.replace(anchor, anchor + '\n' + item, 1)
+              idx.write_text(s, encoding='utf-8')
+
+          area = Path('explorar/areas/algebra.qmd')
+          s = area.read_text(encoding='utf-8')
+          item = '- [**Cuantificadores, predicados y lenguaje matemático**](../../libros/capitulos/cuantificadores-predicados-y-lenguaje-matematico.md) (`MA-BCH-0017`) — Sexto capítulo publicado del Tomo I: predicados, dominios, variables libres y ligadas, cuantificadores, negación, alcance, dependencia y existencia única.'
+          if item not in s:
+              anchor = '- [**Álgebra de proposiciones y formas normales**](../../libros/capitulos/algebra-de-proposiciones-y-formas-normales.md) (`MA-BCH-0016`) — Quinto capítulo publicado del Tomo I: equivalencia lógica, leyes del álgebra proposicional, formas normales disyuntiva y conjuntiva, formas canónicas y estrategias de normalización.'
+              s = s.replace(anchor, anchor + '\n' + item, 1)
+              area.write_text(s, encoding='utf-8')
+          PY
+          if git diff --quiet -- _project/ID_REGISTRY.md libros/para-matematicos/algebra-para-matematicos.md libros/capitulos/index.qmd explorar/areas/algebra.qmd; then
+            echo "Support files already updated; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _project/ID_REGISTRY.md libros/para-matematicos/algebra-para-matematicos.md libros/capitulos/index.qmd explorar/areas/algebra.qmd
+          git commit -m "Update Algebra chapter 6 publication navigation"
+          git push origin HEAD:publish/algebra-v2-c06
