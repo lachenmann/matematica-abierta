@@ -26,6 +26,7 @@ related:
   - MA-BCH-0013
   - MA-BCH-0014
   - MA-BCH-0015
+  - MA-BCH-0016
 provenance:
   type: original
   sources: []
@@ -63,6 +64,7 @@ Sus 22 capítulos recorren pensamiento algebraico, expresiones y leyes de las op
 2. [**Expresiones, variables, igualdad e identidad**](../capitulos/expresiones-variables-igualdad-e-identidad.md) (`MA-BCH-0013`).
 3. [**Leyes de las operaciones y transformaciones justificadas**](../capitulos/leyes-de-las-operaciones-y-transformaciones-justificadas.md) (`MA-BCH-0014`).
 4. [**Proposiciones y conectivos lógicos**](../capitulos/proposiciones-y-conectivos-logicos.md) (`MA-BCH-0015`).
+5. [**Álgebra de proposiciones y formas normales**](../capitulos/algebra-de-proposiciones-y-formas-normales.md) (`MA-BCH-0016`).
 
 ## Criterio de publicación
 
@@ -72,4 +74,4 @@ Los ejercicios sustanciales incluyen soluciones desarrolladas en el propio capí
 
 ## Estado
 
-La segunda fundación editorial de la obra está activa. El Tomo I tiene actualmente cerrados y aprobados sus primeros diez capítulos. La edición web ha publicado ya los capítulos 1, 2, 3 y 4 mediante el flujo canónico de derivación, QA y despliegue progresivo.
+La segunda fundación editorial de la obra está activa. El Tomo I tiene actualmente cerrados y aprobados sus primeros once capítulos. La edición web ha publicado ya los capítulos 1, 2, 3, 4 y 5 mediante el flujo canónico de derivación, QA y despliegue progresivo.
