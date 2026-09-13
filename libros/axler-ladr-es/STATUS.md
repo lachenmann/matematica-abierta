@@ -17,7 +17,7 @@
 - Sección 1A — $\mathbf R^n$ y $\mathbf C^n$: `COTEJADO`; **15/15 ejercicios resueltos**.
 - Sección 1B — Definición de espacio vectorial: `COTEJADO`; **8/8 ejercicios resueltos**.
 - Sección 1C — Subespacios: `COTEJADO`; **24/24 ejercicios resueltos**.
-- Capítulo 1: **47/47 ejercicios**, primera pasada pública completa; `CHAPTER1_QA.md` disponible.
+- Capítulo 1: **47/47 ejercicios**, primera pasada pública completa; QA global registrado en `CHAPTER1_QA.md`.
 - Apertura del capítulo 2 — Espacios vectoriales de dimensión finita: `COTEJADO`.
 - Sección 2A — Span e independencia lineal: `COTEJADO`.
 - Ejercicios 2A: **20/20 resueltos**; soluciones `VERIFICADO`.
