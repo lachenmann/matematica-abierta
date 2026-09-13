@@ -65,10 +65,10 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 
 ## Contenido disponible
 
-1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — publicación disponible hasta §0.7: lógica ambiente, axiomas conjuntistas, operaciones de conjuntos, pares ordenados y productos cartesianos, relaciones, clases de equivalencia y cocientes, funciones, composición, biyectividad, imagen y preimagen, proyección canónica, definición sobre clases, familias indexadas y teoría abstracta del orden.
-2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de §§0.0–0.7.
+1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
+2. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; cubre el vocabulario conceptual del Capítulo 0.
 
-La siguiente incorporación cerrará editorialmente el Capítulo 0 con **§§0.8–0.10**: resumen de notación, cierre deductivo y transición hacia la construcción de los números naturales. Después de ese cierre comenzará el **Capítulo 1 — Los números naturales**.
+La siguiente incorporación abrirá el **Capítulo 1 — Los números naturales**. Comenzaremos con el axioma de infinito, los conjuntos inductivos y la construcción del menor conjunto inductivo $\omega$; sólo después definiremos $\mathbb N:=\omega$ y desarrollaremos la recursión necesaria para introducir las operaciones aritméticas.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

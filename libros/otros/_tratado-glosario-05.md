@@ -16,5 +16,5 @@ La definición no garantiza existencia. Sólo cuando ésta haya sido demostrada 
 
 ---
 ::: {.callout-note title="Glosario vivo"}
-Con la publicación de **§0.7 — Órdenes**, el glosario cubre ya el vocabulario conceptual de §§0.0–0.7. La siguiente entrega del Capítulo 0 incorporará §§0.8–0.10, de carácter recapitulativo y de transición hacia la construcción de los números naturales.
+Con el cierre del **Capítulo 0 — Fundamento lógico y conjuntista**, el glosario cubre ya todo su vocabulario conceptual. Las §§0.8–0.10 son recapitulativas y de transición, por lo que no añaden nuevas entradas. El glosario continuará creciendo con el **Capítulo 1 — Los números naturales** a medida que se introduzcan sus nuevas nociones.
 :::
