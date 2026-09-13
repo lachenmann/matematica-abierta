@@ -95,429 +95,310 @@ Esta diferencia será una de las disciplinas notacionales centrales del capítul
 
 ## 7.2. Describir un conjunto: extensión y comprensión
 
-Hay dos formas fundamentales de presentar un conjunto.
-
-### Por extensión
-
-Listamos sus elementos:
+Un conjunto finito pequeño puede describirse por **extensión**, enumerando sus elementos:
 
 $A=\{2,4,6,8\}$.
 
-En un conjunto, el orden no importa y las repeticiones no crean elementos nuevos:
+El orden no importa y las repeticiones tampoco. Por tanto,
 
-$\{1,2,3\}=\{3,2,1\}=\{1,1,2,3\}$.
+$\{2,4,6,8\}=\{8,6,4,2\}=\{2,2,4,6,8,8\}$.
 
-### Por comprensión
+Estas escrituras determinan el mismo conjunto porque contienen exactamente los mismos elementos.
 
-Describimos la propiedad que caracteriza a sus elementos. Por ejemplo,
+Otra posibilidad es describir el conjunto mediante una **propiedad**:
 
 $$
-A=\{x\in\mathbb Z:x>0\text{ y }x<5\}.
+A=\{n\in\mathbb N: 2\mid n\text{ y }2\le n\le8\}.
 $$
 
-La lectura es: «el conjunto de los enteros $x$ tales que $x$ es mayor que $0$ y menor que $5$». Por extensión,
+Aquí reutilizamos C6. La parte $n\in\mathbb N$ fija el dominio y la condición posterior selecciona cuáles elementos pertenecen al conjunto.
 
-$A=\{1,2,3,4\}$.
+### Comprensión restringida
 
-La notación por comprensión está ligada al lenguaje de predicados de C6. Si $P(x)$ es una condición, entonces
+La notación
 
 $$
 \{x\in D:P(x)\}
 $$
 
-representa los elementos del dominio $D$ que satisfacen $P$.
-
-### Comprensión restringida
-
-Es importante que el dominio de partida esté controlado. En este libro evitaremos escribir expresiones de la forma «el conjunto de todos los objetos que cumplen... » sin especificar el contexto matemático relevante. El objetivo es mantener un uso operativo seguro sin abrir todavía cuestiones fundacionales.
+significa «los elementos $x$ del dominio $D$ que satisfacen $P$». En este libro utilizaremos sistemáticamente una base o dominio previamente reconocido. No necesitaremos una regla irrestricta que permita formar «el conjunto de todos los objetos que cumplen cualquier propiedad imaginable».
 
 ### Una descripción puede ocultar el mismo conjunto
 
-Los conjuntos
+El conjunto
 
-$$
-A=\{x\in\mathbb Z:x^2=1\}
-$$
+$\{x\in\mathbb Z:x^2=1\}$
 
-y
+es simplemente $\{-1,1\}$.
 
-$B=\{-1,1\}$
-
-son iguales, aunque estén presentados de maneras distintas.
+Reconocer que dos descripciones distintas producen los mismos elementos será el punto de partida de la igualdad extensional.
 
 ***
 
 ## 7.3. Igualdad extensional
 
-Dos conjuntos son iguales cuando tienen exactamente los mismos elementos. Simbólicamente,
+Dos conjuntos son iguales cuando tienen exactamente los mismos elementos. Operativamente:
 
 $$
-A=B
-\Longleftrightarrow
-\forall x\,(x\in A\Leftrightarrow x\in B).
+A=B\quad\Longleftrightarrow\quad\forall x\,(x\in A\Leftrightarrow x\in B).
 $$
 
-Esta caracterización se llama principio extensional: la identidad de un conjunto viene determinada por su contenido.
+Este principio se llama **extensionalidad**.
 
-Por ejemplo,
+No importa cómo se hayan descrito los conjuntos. Por ejemplo,
 
-$\{1,2,3\}=\{3,1,2\}$
+$$
+\{-1,1\}=\{x\in\mathbb Z:x^2=1\}.
+$$
 
-porque todo elemento de uno pertenece al otro y viceversa.
+La igualdad no se decide por semejanza visual de las expresiones, sino por coincidencia de pertenencia.
 
 ### Para demostrar que dos conjuntos son distintos
 
-Basta encontrar un elemento que pertenezca a uno y no al otro.
+Basta encontrar un elemento que pertenezca a uno y no al otro. Ese elemento funciona como un testigo de desigualdad.
 
-Si
+Si $A=\{1,2,3\}$ y $B=\{1,2,4\}$, el elemento $3$ muestra que $A\ne B$ porque $3\in A$ y $3\notin B$.
 
-$A=\{1,2,3\}$ y $B=\{1,2,4\}$,
-
-entonces $3\in A$ pero $3\notin B$. Por tanto $A\ne B$.
-
-Ese elemento funciona como un testigo de desigualdad entre conjuntos.
+Esta idea es el análogo conjuntista del contraejemplo lógico.
 
 ***
 
 ## 7.4. El conjunto vacío y los conjuntos unitarios
 
-El **conjunto vacío** se denota por
+El **conjunto vacío**, denotado por $\varnothing$, es el conjunto que no contiene elementos.
 
-$\varnothing$
+No debemos confundirlo con $\{\varnothing\}$. El primero no tiene elementos; el segundo tiene exactamente uno: el conjunto vacío.
 
-o también por $\{\}$.
+También debemos distinguir:
 
-Es el conjunto que no tiene elementos:
+- $a$, un objeto;
+- $\{a\}$, el conjunto cuyo único elemento es $a$;
+- $\{\{a\}\}$, el conjunto cuyo único elemento es el conjunto $\{a\}$.
 
-$$
-\forall x\;(x\notin\varnothing).
-$$
-
-Un **conjunto unitario** contiene exactamente un elemento. Por ejemplo,
-
-$\{5\}$
-
-tiene un solo elemento, el número $5$.
-
-No debemos confundir
-
-$5$
-
-con
-
-$\{5\}$.
-
-El primero es un número; el segundo es un conjunto cuyo único elemento es ese número.
+La cantidad de llaves importa porque cambia el tipo de objeto del que estamos hablando.
 
 ### El vacío puede aparecer como elemento
 
-El conjunto
+Si
 
-$\{\varnothing\}$
+$A=\{\varnothing,1\}$,
 
-no está vacío. Tiene exactamente un elemento: $\varnothing$.
+entonces $\varnothing\in A$.
 
-Análogamente,
-
-$\{\{\varnothing\}\}$
-
-tiene también un elemento, pero ahora ese elemento es el conjunto unitario $\{\varnothing\}$.
+Pero también $\varnothing\subseteq A$, por una razón completamente distinta: el vacío es subconjunto de todo conjunto. Una misma escritura puede participar en relaciones diferentes; debemos mirar el símbolo relacional.
 
 ***
 
 ## 7.5. Subconjuntos e inclusión
 
-Decimos que $A$ es **subconjunto** de $B$ si todo elemento de $A$ pertenece también a $B$:
+Decimos que $A$ es **subconjunto** de $B$, y escribimos $A\subseteq B$, cuando todo elemento de $A$ pertenece también a $B$:
 
 $$
-A\subseteq B
-\Longleftrightarrow
-\forall x\,(x\in A\Rightarrow x\in B).
+A\subseteq B\quad\Longleftrightarrow\quad\forall x\,(x\in A\Rightarrow x\in B).
 $$
 
-Por ejemplo,
-
-$\{1,3\}\subseteq\{1,2,3,4\}$.
-
-La inclusión es una afirmación universal condicional: cada vez que un objeto pertenece a $A$, debe pertenecer a $B$.
+La inclusión es, por tanto, una afirmación universal construida a partir de una implicación.
 
 ### Propiedades inmediatas
 
-Todo conjunto está contenido en sí mismo:
+Todo conjunto es subconjunto de sí mismo:
 
 $A\subseteq A$.
 
-El conjunto vacío está contenido en todo conjunto:
+Si $A\subseteq B$ y $B\subseteq C$, entonces $A\subseteq C$.
+
+Y el conjunto vacío es subconjunto de todo conjunto:
 
 $\varnothing\subseteq A$.
 
-La segunda propiedad puede parecer extraña al principio. Pero para refutarla necesitaríamos encontrar un elemento de $\varnothing$ que no pertenezca a $A$; como no hay elementos en $\varnothing$, tal contraejemplo no existe.
+La última afirmación puede resultar extraña hasta recordar su forma lógica. Para que $\varnothing\subseteq A$ fuese falsa tendría que existir un $x\in\varnothing$ que no perteneciera a $A$. Pero no existe ningún $x\in\varnothing$.
 
 ### Subconjunto propio
 
-Cuando $A\subseteq B$ y $A\ne B$, diremos que $A$ es un **subconjunto propio** de $B$. Según la convención tipográfica usada en distintas fuentes, esto puede escribirse como $A\subsetneq B$ o, en algunos textos, simplemente $A\subset B$. Para evitar ambigüedades, aquí preferiremos $\subseteq$ para inclusión general y $\subsetneq$ para inclusión propia.
+Cuando $A\subseteq B$ y $A\ne B$, diremos que $A$ es un subconjunto propio de $B$. Evitaremos depender de convenciones tipográficas variables para $\subset$ y escribiremos las dos condiciones cuando sea importante.
 
 ***
 
 ## 7.6. Igualdad por doble inclusión
 
-De la extensionalidad obtenemos un método fundamental:
+La extensionalidad proporciona un criterio extremadamente útil:
 
 $$
-A=B
-\Longleftrightarrow
-(A\subseteq B\text{ y }B\subseteq A).
+A=B\quad\Longleftrightarrow\quad A\subseteq B\text{ y }B\subseteq A.
 $$
 
-Para demostrar $A=B$ podemos probar dos direcciones:
+Este criterio se llama **doble inclusión**.
+
+Para demostrar $A=B$ podemos proceder así:
 
 1. tomar un elemento arbitrario $x\in A$ y demostrar que $x\in B$;
 2. tomar un elemento arbitrario $x\in B$ y demostrar que $x\in A$.
 
-Este patrón aparecerá constantemente.
-
 ### Ejemplo
 
-Sean
+Sea
 
-$$
-A=\{x\in\mathbb Z:x\text{ es múltiplo de }6\}
-$$
+$A=\{x\in\mathbb R:x^2=1\}$
 
 y
 
-$$
-B=\{x\in\mathbb Z:x\text{ es múltiplo de }2\text{ y de }3\}.
-$$
+$B=\{-1,1\}$.
 
-Si $x\in A$, entonces $x=6k$ para algún entero $k$, de modo que $x=2(3k)$ y $x=3(2k)$; por tanto $x\in B$.
+Si $x\in A$, entonces $x^2=1$, de modo que $(x-1)(x+1)=0$ y por tanto $x=1$ o $x=-1$: así $x\in B$.
 
-Recíprocamente, si $x\in B$, entonces existen enteros $m,n$ tales que $x=2m=3n$. En este caso, por la divisibilidad elemental de los enteros, $x$ es múltiplo de $6$. Luego $x\in A$.
+Recíprocamente, si $x\in B$, entonces $x=1$ o $x=-1$, y en ambos casos $x^2=1$. Por tanto $x\in A$.
 
-Así $A=B$.
+La conclusión es $A=B$.
 
-No necesitamos todavía convertir este ejemplo en una teoría completa de divisibilidad; esa parte llegará en C14–C17. Lo importante aquí es el patrón lógico de doble inclusión.
+El patrón de doble inclusión aparecerá muchas veces en matemática posterior.
 
 ***
 
 ## 7.7. El conjunto potencia
 
-El **conjunto potencia** de $A$, denotado por $\mathcal P(A)$, es el conjunto de todos los subconjuntos de $A$:
+Dado un conjunto $A$, su **conjunto potencia** es el conjunto de todos los subconjuntos de $A$:
 
 $$
 \mathcal P(A)=\{B:B\subseteq A\}.
 $$
 
-Si $A=\{1,2\}$, sus subconjuntos son
-
-$\varnothing$, $\{1\}$, $\{2\}$ y $\{1,2\}$.
-
-Por tanto,
+Si $A=\{a,b\}$, entonces
 
 $$
-\mathcal P(A)=\{\varnothing,\{1\},\{2\},\{1,2\}\}.
+\mathcal P(A)=\{\varnothing,\{a\},\{b\},\{a,b\}\}.
 $$
 
-Aquí aparece nuevamente la diferencia entre pertenencia e inclusión:
+Aquí conviene distinguir con extremo cuidado:
 
-- $\{1\}\subseteq A$;
-- $\{1\}\in\mathcal P(A)$.
+- $a\in A$;
+- $\{a\}\subseteq A$;
+- $\{a\}\in\mathcal P(A)$.
 
-Ambas afirmaciones son equivalentes por definición del conjunto potencia.
+Las dos últimas afirmaciones son equivalentes por definición del conjunto potencia.
 
 ### Cuántos subconjuntos hay
 
-Si un conjunto finito $A$ tiene $n$ elementos, entonces tiene $2^n$ subconjuntos. La razón intuitiva es que, al construir un subconjunto, para cada elemento de $A$ hay dos posibilidades: incluirlo o no incluirlo.
+Si $A$ tiene $n$ elementos, cada elemento puede ser incluido o no incluido en un subconjunto. En el caso finito, esto produce $2^n$ subconjuntos:
 
-No desarrollaremos aún la combinatoria formal de esta cuenta; volveremos sobre ella en C13.
+$$
+|\mathcal P(A)|=2^{|A|}.
+$$
+
+No desarrollaremos todavía una teoría de cardinalidad; sólo utilizaremos este hecho para conjuntos finitos.
 
 ***
 
 ## 7.8. Unión e intersección
 
-La **unión** de $A$ y $B$ contiene los elementos que pertenecen a al menos uno de los dos conjuntos:
+La **unión** de $A$ y $B$ contiene los elementos que pertenecen a por lo menos uno de ellos:
 
 $$
-x\in A\cup B
-\Longleftrightarrow
-(x\in A)\lor(x\in B).
+x\in A\cup B\quad\Longleftrightarrow\quad(x\in A)\lor(x\in B).
 $$
 
-La **intersección** contiene los elementos que pertenecen simultáneamente a ambos:
+La **intersección** contiene los elementos que pertenecen a ambos:
 
 $$
-x\in A\cap B
-\Longleftrightarrow
-(x\in A)\land(x\in B).
+x\in A\cap B\quad\Longleftrightarrow\quad(x\in A)\land(x\in B).
 $$
 
-La conexión con la lógica es inmediata:
-
-$$
-\cup\leftrightarrow\lor,
-\qquad
-\cap\leftrightarrow\land.
-$$
+Este paralelismo no es decorativo. Permite transportar equivalencias lógicas de C5 al álgebra de conjuntos.
 
 ### Ejemplo finito
 
-Si
+Si $A=\{1,2,3,4\}$ y $B=\{3,4,5\}$, entonces
 
-$A=\{1,2,3\}$,
+$A\cup B=\{1,2,3,4,5\}$
 
-$B=\{3,4,5\}$,
+y
 
-entonces
+$A\cap B=\{3,4\}$.
 
-$$
-A\cup B=\{1,2,3,4,5\},
-$$
-
-$$
-A\cap B=\{3\}.
-$$
-
-Dos conjuntos son **disjuntos** cuando su intersección es vacía:
-
-$$
-A\cap B=\varnothing.
-$$
+No contamos dos veces los elementos comunes porque un conjunto registra pertenencia, no multiplicidad.
 
 ***
 
 ## 7.9. Diferencia y complemento
 
-La **diferencia** $A\setminus B$ contiene los elementos que están en $A$ pero no en $B$:
+La **diferencia** $A\setminus B$ contiene los elementos de $A$ que no pertenecen a $B$:
 
 $$
-x\in A\setminus B
-\Longleftrightarrow
-(x\in A)\land(x\notin B).
+A\setminus B=\{x:x\in A\land x\notin B\}.
 $$
 
-En general,
+A diferencia de unión e intersección, la diferencia no es conmutativa en general:
 
-$A\setminus B\ne B\setminus A$.
+$A\setminus B$ y $B\setminus A$
 
-Por ejemplo, si
-
-$A=\{1,2,3\}$ y $B=\{3,4\}$,
-
-entonces
-
-$A\setminus B=\{1,2\}$,
-
-mientras
-
-$B\setminus A=\{4\}$.
+pueden ser completamente distintos.
 
 ### Complemento
 
-Para hablar del complemento necesitamos un **universo** $U$. Si $A\subseteq U$, definimos
+Para hablar del complemento de $A$ debemos haber fijado un universo $U$. Entonces
 
 $$
 A^c=U\setminus A.
 $$
 
-El complemento no tiene significado absoluto: depende del universo elegido.
+El mismo conjunto $A$ puede tener complementos diferentes bajo universos distintos.
 
-Si $U=\{1,2,3,4,5\}$ y $A=\{1,3,5\}$, entonces
+Por ejemplo, si $A=\{1,2\}$, su complemento en $U=\{1,2,3\}$ es $\{3\}$; en $V=\{1,2,3,4\}$ es $\{3,4\}$.
 
-$A^c=\{2,4\}$.
-
-Pero si cambiamos el universo, cambia el complemento.
+El complemento es la traducción conjuntista de la negación respecto de un dominio fijado.
 
 ***
 
 ## 7.10. Diferencia simétrica
 
-La **diferencia simétrica** de $A$ y $B$ contiene los elementos que pertenecen a exactamente uno de los dos conjuntos:
+La **diferencia simétrica** de $A$ y $B$ contiene los elementos que pertenecen exactamente a uno de los dos conjuntos:
 
 $$
 A\triangle B=(A\setminus B)\cup(B\setminus A).
 $$
 
-También puede escribirse como
+También puede escribirse
 
 $$
 A\triangle B=(A\cup B)\setminus(A\cap B).
 $$
 
-Esta operación será un buen laboratorio para trasladar identidades lógicas al lenguaje de conjuntos.
+La primera forma destaca las dos regiones exclusivas; la segunda muestra que retiramos de la unión la parte común.
 
 ### Lectura lógica
 
-La condición
+Si $P$ significa $x\in A$ y $Q$ significa $x\in B$, entonces
 
 $x\in A\triangle B$
 
-corresponde a
-
-$$
-[(x\in A)\land(x\notin B)]
-\lor
-[(x\notin A)\land(x\in B)].
-$$
-
-Es exactamente la estructura del «o exclusivo».
+corresponde a «$P$ o $Q$, pero no ambos». La diferencia simétrica es una versión conjuntista de la disyunción exclusiva.
 
 ***
 
 ## 7.11. Leyes del álgebra de conjuntos
 
-Las operaciones entre conjuntos satisfacen leyes que reflejan las equivalencias proposicionales de C5.
-
-Supondremos $A,B,C\subseteq U$.
+Fijemos un universo $U$. Las operaciones de unión, intersección y complemento satisfacen leyes que recuerdan exactamente al álgebra proposicional.
 
 ### Identidad y dominación
 
-$$
-A\cup\varnothing=A,
-\qquad
-A\cap U=A,
-$$
+$A\cup\varnothing=A$,  $A\cap U=A$,
 
-$$
-A\cup U=U,
-\qquad
-A\cap\varnothing=\varnothing.
-$$
+$A\cup U=U$,  $A\cap\varnothing=\varnothing$.
 
 ### Idempotencia
 
-$$
-A\cup A=A,
-\qquad
-A\cap A=A.
-$$
+$A\cup A=A$,  $A\cap A=A$.
 
 ### Complemento
 
-$$
-A\cup A^c=U,
-\qquad
-A\cap A^c=\varnothing,
-$$
-
-$$
-(A^c)^c=A.
-$$
+$A\cup A^c=U$,  $A\cap A^c=\varnothing$,  $(A^c)^c=A$.
 
 ### Conmutatividad y asociatividad
 
-$$
-A\cup B=B\cup A,
-\qquad
-A\cap B=B\cap A,
-$$
+$A\cup B=B\cup A$,  $A\cap B=B\cap A$,
 
-$$
-(A\cup B)\cup C=A\cup(B\cup C),
-$$
+$(A\cup B)\cup C=A\cup(B\cup C)$,
 
-$$
-(A\cap B)\cap C=A\cap(B\cap C).
-$$
+$(A\cap B)\cap C=A\cap(B\cap C)$.
 
 ### Distributividad
 
@@ -531,13 +412,9 @@ $$
 
 ### Absorción
 
-$$
-A\cup(A\cap B)=A,
-$$
+$A\cup(A\cap B)=A$,
 
-$$
-A\cap(A\cup B)=A.
-$$
+$A\cap(A\cup B)=A$.
 
 ### De Morgan
 
@@ -549,236 +426,181 @@ $$
 (A\cap B)^c=A^c\cup B^c.
 $$
 
-Estas leyes no son una lista arbitraria. Cada una puede justificarse traduciendo la pertenencia en una fórmula lógica.
+Estas leyes no forman una lista arbitraria. Todas pueden leerse elemento a elemento como equivalencias lógicas.
 
 ***
 
 ## 7.12. De la lógica a los conjuntos
 
-Tomemos, por ejemplo,
+Para un elemento fijo $x$, pongamos
+
+$P: x\in A$,
+
+$Q: x\in B$.
+
+Entonces aparece el diccionario:
+
+| Lógica | Conjuntos |
+|---|---|
+| $P$ | $x\in A$ |
+| $P\lor Q$ | $x\in A\cup B$ |
+| $P\land Q$ | $x\in A\cap B$ |
+| $\neg P$ | $x\in A^c$ |
+| $P\Rightarrow Q$ | $A\subseteq B$ |
+| $P\Leftrightarrow Q$ | $A=B$ |
+
+Por ejemplo, la ley lógica de De Morgan
+
+$$
+\neg(P\lor Q)\equiv(\neg P)\land(\neg Q)
+$$
+
+se convierte, al leerla como pertenencia, en
 
 $$
 (A\cup B)^c=A^c\cap B^c.
 $$
 
-Para un elemento arbitrario $x$:
-
-$$
-\begin{aligned}
-x\in(A\cup B)^c
-&\Longleftrightarrow x\notin A\cup B\\
-&\Longleftrightarrow \neg[(x\in A)\lor(x\in B)]\\
-&\Longleftrightarrow (x\notin A)\land(x\notin B)\\
-&\Longleftrightarrow x\in A^c\cap B^c.
-\end{aligned}
-$$
-
-La tercera línea es la ley de De Morgan proposicional estudiada en C5.
-
-De manera semejante,
-
-$$
-A\cap(B\cup C)=(A\cap B)\cup(A\cap C)
-$$
-
-corresponde a la distributividad
-
-$$
-p\land(q\lor r)\equiv(p\land q)\lor(p\land r).
-$$
-
 ### El puente funciona elemento a elemento
 
-La idea general es:
+No estamos afirmando que un conjunto sea literalmente una proposición. Estamos diciendo que la condición «$x$ pertenece al conjunto resultante» está gobernada por la misma estructura lógica.
 
-$$
-\text{identidad de conjuntos}
-\longleftrightarrow
-\text{equivalencia de condiciones de pertenencia}.
-$$
-
-Este puente evita memorizar leyes como reglas aisladas.
+Esta observación explica por qué podemos tratar ciertas expresiones de conjuntos como un álgebra.
 
 ***
 
 ## 7.13. Probar identidades de conjuntos
 
-Hay tres métodos principales que utilizaremos.
+Hay al menos tres métodos útiles.
 
 ### 1. Transformación algebraica
 
-Partimos de un lado y aplicamos leyes conocidas hasta obtener el otro.
-
-Ejemplo:
-
-$$
-A\setminus(B\cup C)
-=A\cap(B\cup C)^c
-=A\cap(B^c\cap C^c)
-=(A\cap B^c)\cap C^c.
-$$
+Podemos aplicar leyes ya establecidas, igual que en C5 transformábamos fórmulas lógicas.
 
 ### 2. Pertenencia elemento a elemento
 
-Tomamos un elemento arbitrario y transformamos lógicamente su condición de pertenencia.
+Para probar $X=Y$, tomamos un elemento arbitrario $x$ y mostramos
 
-Para probar
+$x\in X\Leftrightarrow x\in Y$.
 
-$$
-A\setminus(B\cup C)
-=(A\setminus B)\cap(A\setminus C),
-$$
-
-escribimos
-
-$$
-\begin{aligned}
-x\in A\setminus(B\cup C)
-&\Longleftrightarrow x\in A\land x\notin(B\cup C)\\
-&\Longleftrightarrow x\in A\land(x\notin B\land x\notin C)\\
-&\Longleftrightarrow (x\in A\land x\notin B)\land(x\in A\land x\notin C)\\
-&\Longleftrightarrow x\in(A\setminus B)\cap(A\setminus C).
-\end{aligned}
-$$
+La equivalencia puede desarrollarse usando lógica proposicional.
 
 ### 3. Doble inclusión
 
-Probamos que el primer conjunto está contenido en el segundo y luego la inclusión inversa.
-
-Este método es especialmente útil cuando la transformación algebraica no es inmediata.
+Podemos demostrar $X\subseteq Y$ y $Y\subseteq X$ por separado.
 
 ### ¿Y los diagramas de Venn?
 
-Los diagramas pueden ayudar a formular una conjetura o visualizar una identidad, pero no serán nuestro método principal de prueba. El argumento debe poder escribirse en términos de pertenencia, inclusión o leyes demostradas.
+Un diagrama puede ser excelente para visualizar una identidad o descubrir un contraejemplo en una configuración simple. Pero cuando la tarea exige una prueba general, el argumento debe poder expresarse simbólicamente o elemento a elemento.
 
 ### Refutar una identidad
 
-Para mostrar que una supuesta identidad es falsa basta construir conjuntos y un elemento que pertenezca a un lado pero no al otro.
+Si una supuesta identidad afirma $X=Y$, basta elegir conjuntos concretos y encontrar un elemento que pertenezca a un lado y no al otro.
 
 ***
 
 ## 7.14. Producto cartesiano y pares ordenados
 
-Dados dos conjuntos $A$ y $B$, su **producto cartesiano** es
+Un **par ordenado** $(a,b)$ registra dos componentes en orden. En general,
+
+$(a,b)\ne(b,a)$
+
+cuando $a\ne b$.
+
+El **producto cartesiano** de $A$ y $B$ es
 
 $$
 A\times B=\{(a,b):a\in A,\ b\in B\}.
 $$
 
-Si
-
-$A=\{1,2\}$ y $B=\{x,y\}$,
-
-entonces
+Si $A=\{1,2\}$ y $B=\{u,v\}$, entonces
 
 $$
-A\times B=\{(1,x),(1,y),(2,x),(2,y)\}.
+A\times B=\{(1,u),(1,v),(2,u),(2,v)\}.
 $$
 
-El orden de las coordenadas importa:
-
-$(1,x)\ne(x,1)$
-
-salvo que los objetos involucrados y la igualdad lo permitan de manera excepcional.
-
-Por eso, en general,
+Mientras
 
 $$
-A\times B\ne B\times A.
+B\times A=\{(u,1),(u,2),(v,1),(v,2)\}.
 $$
 
-### Productos con el vacío
+En general no son iguales.
 
-$$
-A\times\varnothing=\varnothing,
-$$
+### Producto con el vacío
 
-$$
-\varnothing\times A=\varnothing.
-$$
+No existe ningún par cuyo primer elemento esté en $\varnothing$. Por eso
 
-No puede formarse ningún par ordenado si uno de los conjuntos no ofrece elementos para una coordenada.
+$\varnothing\times A=\varnothing$
 
-### Cardinalidad finita
+y, del mismo modo,
 
-Si $A$ y $B$ son finitos, entonces
+$A\times\varnothing=\varnothing$.
 
-$$
-|A\times B|=|A|\,|B|.
-$$
+### Tamaño en el caso finito
 
-Esta observación anticipa la regla del producto de combinatoria, pero no la desarrollaremos todavía.
+Si $A$ tiene $m$ elementos y $B$ tiene $n$, entonces $A\times B$ tiene $mn$ pares.
+
+El producto cartesiano será el punto de partida de C8, donde estudiaremos relaciones. Aquí nos detenemos antes de esa definición.
 
 ***
 
-## 7.15. Compatibilidad de operaciones con inclusión
+## 7.15. Errores estructurales frecuentes
 
-Las operaciones de conjuntos interactúan con la inclusión de maneras previsibles.
+### Error 1: confundir $\in$ con $\subseteq$
 
-Si $A\subseteq B$, entonces para cualquier $C$:
+Si $A=\{1,2\}$, entonces $1\in A$ y $\{1\}\subseteq A$. Intercambiar los símbolos cambia el tipo de afirmación.
 
-$$
-A\cup C\subseteq B\cup C,
-$$
+### Error 2: confundir $\varnothing$ con $\{\varnothing\}$
 
-$$
-A\cap C\subseteq B\cap C.
-$$
+El primero tiene cero elementos; el segundo, uno.
 
-En cambio, para complementos la inclusión se invierte:
+### Error 3: hablar de $A^c$ sin universo
 
-$$
-A\subseteq B
-\Longrightarrow
-B^c\subseteq A^c.
-$$
+El complemento depende del universo de referencia.
 
-La razón es lógica: si todo elemento de $A$ pertenece a $B$, entonces un objeto que queda fuera de $B$ necesariamente queda fuera de $A$.
+### Error 4: suponer que la diferencia es conmutativa
 
-También obtenemos
+En general $A\setminus B\ne B\setminus A$.
 
-$$
-A\subseteq B
-\Longrightarrow
-A\setminus C\subseteq B\setminus C.
-$$
+### Error 5: inferir igualdad desde una sola inclusión
 
-pero la diferencia respecto del primer argumento se comporta de manera inversa:
+$A\subseteq B$ no implica $A=B$. Falta controlar la inclusión inversa.
 
-$$
-A\subseteq B
-\Longrightarrow
-C\setminus B\subseteq C\setminus A.
-$$
+### Error 6: tratar operaciones de conjuntos como aritmética
 
-Estas relaciones preparan el terreno para trabajar con operaciones de forma estructural y no sólo calculativa.
+No existen reglas de «cancelación» automáticas como
+
+$A\cup C=B\cup C\Rightarrow A=B$.
+
+Por ejemplo, si $C=U$, ambos lados son $U$ para cualesquiera $A,B$.
+
+### Error 7: olvidar el orden del producto cartesiano
+
+$A\times B$ no suele coincidir con $B\times A$.
+
+### Error 8: convertir un dibujo en demostración
+
+La visualización ayuda, pero la prueba debe controlar la definición para todos los elementos pertinentes.
 
 ***
 
-## 7.16. Cierre — una rutina para problemas de conjuntos
+## 7.16. Protocolo de lectura conjuntista
 
-Ante una expresión o identidad conjuntista, conviene preguntar:
+Antes de transformar una expresión de conjuntos, preguntar:
 
-```text
-1. ¿CUÁL ES EL UNIVERSO?
-2. ¿ESTOY HABLANDO DE PERTENENCIA O DE INCLUSIÓN?
-3. ¿PUEDO TRADUCIR LA OPERACIÓN A CONECTIVOS LÓGICOS?
-4. ¿LA IGUALDAD SE PRUEBA MEJOR POR LEYES, POR PERTENENCIA O POR DOBLE INCLUSIÓN?
-5. ¿SI ES FALSA, PUEDO ENCONTRAR UN ELEMENTO TESTIGO?
-6. ¿HAY COMPLEMENTOS? ENTONCES: ¿RESPECTO DE QUÉ UNIVERSO?
-7. ¿APARECE UN CONJUNTO POTENCIA? RECUERDA: X∈P(A) SIGNIFICA X⊆A.
-8. ¿APARECE UN PRODUCTO CARTESIANO? RESPETA EL ORDEN DE LAS COORDENADAS.
-```
+1. **¿Cuál es el universo o dominio?**
+2. **¿Qué símbolos representan elementos y cuáles conjuntos?**
+3. **¿Aparece pertenencia $\in$ o inclusión $\subseteq$?**
+4. **¿Cómo está definido cada conjunto?**
+5. **¿Qué operación aparece: unión, intersección, diferencia, complemento o producto?**
+6. **¿Qué condición lógica significa pertenecer al resultado?**
+7. **Si hay complemento, está fijado el universo?**
+8. **¿La igualdad puede traducirse a una equivalencia sobre un elemento arbitrario?**
+9. **¿Conviene transformar algebraicamente o usar doble inclusión?**
+10. **Si aparece un producto cartesiano, estoy respetando el orden de las coordenadas?**
 
-El paso conceptual central de C7 puede resumirse así:
-
-$$
-\text{lógica de pertenencia}
-\longrightarrow
-\text{operaciones entre conjuntos}
-\longrightarrow
-\text{álgebra de conjuntos}.
-$$
+La meta del capítulo puede resumirse así:
 
 > **El álgebra de conjuntos es la lógica de pertenencia escrita como operaciones entre colecciones.**
 
@@ -825,288 +647,234 @@ Los ejercicios son de redacción original para *Álgebra para matemáticos*. Alg
 
 15. Demuestra que la inclusión es transitiva: si $A\subseteq B$ y $B\subseteq C$, entonces $A\subseteq C$.
 
-16. Prueba que si $A\subseteq B$ y $B\subseteq A$, entonces $A=B$.
+16. Sea $A=\{1,2,3\}$ y $B=\{3,2,1\}$. Justifica $A=B$ sin apelar a que “se ven iguales”.
 
-17. Sean $A=\{x\in\mathbb Z:2\mid x\}$ y $B=\{x\in\mathbb Z:x=2k\text{ para algún }k\in\mathbb Z\}$. Prueba $A=B$.
+17. Sean $A=\{x\in\mathbb Z:-1\le x\le2\}$ y $B=\{-1,0,1,2\}$. Prueba $A=B$ por doble inclusión.
 
-18. Encuentra conjuntos $A,B$ tales que $A\in B$ pero $A\not\subseteq B$.
+18. Da un contraejemplo a la afirmación: “si $A\subseteq B$, entonces $A=B$”.
 
-19. Encuentra conjuntos $A,B$ tales que $A\subseteq B$ pero $A\notin B$.
+19. Supón $A\subseteq B$ y $B\subseteq A$. Explica por qué no es necesario conocer una lista de los elementos para concluir $A=B$.
 
-20. Si $A\subsetneq B$ y $B\subsetneq C$, ¿se sigue $A\subsetneq C$? Demuestra o refuta.
+20. Sean $A,B,C$ conjuntos. Si $A\subseteq B$ y $A\subseteq C$, ¿se sigue $A\subseteq B\cap C$? Demuéstralo o da contraejemplo.
 
 
 ## D. Conjunto potencia
 
-21. Calcula $\mathcal P(\varnothing)$.
+21. Calcula $\mathcal P(\{a,b\})$.
 
-22. Calcula $\mathcal P(\{a\})$.
+22. Lista todos los elementos de $\mathcal P(\{1,2,3\})$.
 
-23. Calcula $\mathcal P(\{a,b,c\})$ y verifica que tiene $2^3$ elementos.
+23. Sea $A=\{1,2\}$. Decide: $1\in\mathcal P(A)$, $\{1\}\in\mathcal P(A)$, $A\in\mathcal P(A)$ y $\varnothing\in\mathcal P(A)$.
 
-24. Si $A\subseteq B$, demuestra que $\mathcal P(A)\subseteq\mathcal P(B)$.
+24. Demuestra que $\mathcal P(A\cap B)=\mathcal P(A)\cap\mathcal P(B)$.
 
-25. Decide si $\mathcal P(A\cap B)=\mathcal P(A)\cap\mathcal P(B)$ para todo $A,B$. Demuestra o refuta.
+25. ¿Es siempre cierto que $\mathcal P(A\cup B)=\mathcal P(A)\cup\mathcal P(B)$? Si no, produce un contraejemplo.
 
-26. Decide si $\mathcal P(A\cup B)=\mathcal P(A)\cup\mathcal P(B)$ para todo $A,B$. Demuestra o refuta.
+26. Un conjunto finito $A$ tiene $32$ subconjuntos. ¿Cuántos elementos tiene $A$? Justifica.
 
 
 ## E. Unión e intersección
 
-27. Para $A=\{1,2,3\}$ y $B=\{3,4,5\}$ calcula $A\cup B$ y $A\cap B$.
+27. Sean $A=\{1,2,3,4\}$ y $B=\{3,4,5\}$. Calcula $A\cup B$ y $A\cap B$.
 
-28. Prueba $A\cap B\subseteq A\subseteq A\cup B$.
+28. Sean $A=\{x\in\mathbb Z:x\ge0\}$ y $B=\{x\in\mathbb Z:x\le2\}$. Describe $A\cap B$ por extensión.
 
-29. Demuestra $A\cup B=B\cup A$ mediante pertenencia.
+29. Con los conjuntos del ejercicio anterior, describe $A\cup B$ y decide si coincide con $\mathbb Z$.
 
-30. Demuestra $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$ mediante pertenencia.
+30. Demuestra $A\cap B\subseteq A\subseteq A\cup B$.
 
-31. Si $A\cap B=\varnothing$, prueba que $A\setminus B=A$.
+31. Prueba $A\cup\varnothing=A$ por extensionalidad.
 
-32. Da conjuntos $A,B,C$ tales que $A\cap B=A\cap C$ pero $B\ne C$.
+32. Prueba $A\cap A=A$ por extensionalidad.
 
-33. Decide si $A\cup B=A\cup C$ implica $B=C$. Si es falso, da contraejemplo.
+33. Si $A\subseteq B$, demuestra $A\cup B=B$ y $A\cap B=A$.
 
-34. Prueba que $A\subseteq B$ si y sólo si $A\cap B=A$.
+34. ¿Es verdadera la recíproca: si $A\cap B=A$, entonces $A\subseteq B$? Justifica.
 
 
 ## F. Diferencia y complemento
 
-35. Para $U=\{1,2,3,4,5,6\}$, $A=\{1,2,3,4\}$ y $B=\{3,4,5\}$, calcula $A\setminus B$, $B\setminus A$, $A^c$ y $B^c$.
+35. Sean $A=\{1,2,3,4\}$ y $B=\{3,4,5\}$. Calcula $A\setminus B$ y $B\setminus A$.
 
-36. Prueba $A\setminus B=A\cap B^c$.
+36. Sea $U=\{1,2,3,4,5\}$ y $A=\{1,3,5\}$. Calcula $A^c$.
 
-37. Demuestra $(A\cup B)^c=A^c\cap B^c$.
+37. Usa $A=\{1,2\}$ y dos universos distintos para mostrar que el complemento depende del universo.
 
-38. Demuestra $(A\cap B)^c=A^c\cup B^c$.
+38. Demuestra $A\setminus B=A\cap B^c$ respecto de un universo que contenga a $A$ y $B$.
 
-39. Prueba $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$.
+39. Prueba $(A^c)^c=A$.
 
-40. Prueba $A\setminus(B\cap C)=(A\setminus B)\cup(A\setminus C)$.
+40. Prueba la ley de De Morgan $(A\cup B)^c=A^c\cap B^c$.
 
-41. Encuentra un ejemplo donde el complemento de $A$ cambie al cambiar el universo.
+41. ¿Es cierto que $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$? Demuéstralo.
 
-42. Si $A\subseteq B$, demuestra $B^c\subseteq A^c$.
+42. Da un contraejemplo a $A\setminus(B\setminus C)=(A\setminus B)\setminus C$.
 
 
 ## G. Diferencia simétrica
 
-43. Calcula $A\triangle B$ para $A=\{1,2,3\}$ y $B=\{3,4\}$.
+43. Sean $A=\{1,2,3\}$ y $B=\{3,4\}$. Calcula $A\triangle B$.
 
 44. Demuestra $A\triangle B=(A\cup B)\setminus(A\cap B)$.
 
-45. Prueba $A\triangle B=B\triangle A$.
+45. Prueba que $A\triangle B=B\triangle A$.
 
-46. Decide si $A\triangle(A\triangle B)=B$. Demuestra o refuta.
+46. Determina todas las condiciones bajo las cuales $A\triangle B=\varnothing$.
 
 
 ## H. Leyes y transformaciones
 
-47. Simplifica $(A\cup B)\cap(A\cup B^c)$.
+47. Simplifica $A\cap(A\cup B)$.
 
-48. Simplifica $(A\cap B)\cup(A\cap B^c)$.
+48. Simplifica $(A\cup B)\cap(A\cup B^c)$.
 
-49. Simplifica $(A\cup B)\cap(A^c\cup B)$.
+49. Simplifica $(A\cap B)\cup(A\cap B^c)$.
 
-50. Simplifica $(A\cap B)\cup(A^c\cap B)$.
+50. Demuestra $A\cup(B\cap C)=(A\cup B)\cap(A\cup C)$ usando el diccionario lógico.
 
-51. Demuestra $A\cup(A\cap B)=A$.
+51. Prueba $A\cap(B\setminus C)=(A\cap B)\setminus C$.
 
-52. Demuestra $A\cap(A\cup B)=A$.
+52. Prueba $A\triangle B=(A\cup B)\cap(A^c\cup B^c)$.
 
-53. Simplifica $[(A\cup B)^c\cup B]^c$.
+53. Transforma $(A\cup B)^c\cup(A\cap B^c)$ hasta una forma sin complementos de uniones.
 
-54. Sean $A,B,C\subseteq U$. Demuestra que
-
-$$
-A\setminus(B\cap C)=(A\setminus B)\cup(A\setminus C)
-$$
-
-y utiliza la identidad para transformar
-
-$$
-(A\setminus B)\cup(A\setminus C)\cup(B\cap C)
-$$
-
-en una forma que no contenga diferencias. Justifica cada ley empleada.
+54. Caracteriza cuándo $\mathcal P(A)\cup\mathcal P(B)=\mathcal P(A\cup B)$.
 
 
-## I. Pertenencia y doble inclusión
+## I. Demostraciones por elementos y doble inclusión
 
-55. Demuestra por doble inclusión que $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$.
+55. Demuestra por doble inclusión $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$.
 
-56. Demuestra por doble inclusión que $(A\cap B)\cup(A\setminus B)=A$.
+56. Demuestra por elementos $(A\cap B)\setminus C=A\cap(B\setminus C)$.
 
-57. Prueba que $A\subseteq B$ si y sólo si $A\cup B=B$.
+57. Demuestra que $A\triangle B=(A\cup B)\setminus(A\cap B)$ por doble inclusión.
 
-58. Sean $A,B\subseteq U$. Demuestra la equivalencia
+58. Supón $A\cap B\subseteq C$. Demuestra $A\cap C^c\subseteq B^c$.
 
-$$
-A\subseteq B
-\Longleftrightarrow
-A\cap B^c=\varnothing
-\Longleftrightarrow
-A\cup B=B.
-$$
+59. Refuta con un contraejemplo la identidad $A\cup(B\setminus C)=(A\cup B)\setminus C$.
 
-No uses diagramas como argumento final.
-
-59. Si $A\cap C=B\cap C$ y $A\cup C=B\cup C$, demuestra que $A=B$.
-
-60. Decide si $A\setminus C=B\setminus C$ y $A\cap C=B\cap C$ implican $A=B$. Demuestra o refuta.
+60. Demuestra $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$ de dos maneras: por una ley algebraica y por pertenencia.
 
 
 ## J. Producto cartesiano
 
-61. Calcula $A\times B$ y $B\times A$ para $A=\{1,2\}$, $B=\{a,b\}$.
+61. Sean $A=\{1,2\}$ y $B=\{a,b,c\}$. Escribe $A\times B$.
 
-62. Prueba $A\times\varnothing=\varnothing$.
+62. Con los conjuntos del ejercicio anterior, escribe $B\times A$ y explica por qué no es igual a $A\times B$.
 
-63. Si $A\subseteq B$, demuestra $A\times C\subseteq B\times C$.
+63. Demuestra $A\times\varnothing=\varnothing$.
 
-64. Decide si $(A\cup B)\times C=(A\times C)\cup(B\times C)$. Demuestra o refuta.
+64. Demuestra $(A\cup B)\times C=(A\times C)\cup(B\times C)$.
 
-65. Decide si $(A\cap B)\times(C\cap D)=(A\times C)\cap(B\times D)$. Demuestra o refuta.
+65. Caracteriza cuándo $A\times B=B\times A$.
 
-66. Si $A,B$ son finitos con $|A|=m$, $|B|=n$, explica por qué $|A\times B|=mn$.
+66. Si $|A|=4$ y $|B|=7$, calcula $|A\times B|$. Explica el principio.
 
 
 ## K. Diagnóstico y transferencia
 
-67. Un estudiante escribe $x\subseteq A$ donde $x$ es un número. Diagnostica el error y corrige la notación posible según lo que quiera expresar.
+67. Un estudiante escribe: “como $1\in A$, entonces $1\subseteq A$”. Diagnostica y repara.
 
-68. Un estudiante afirma $\{1\}\in\{1,2,3\}$. Explica por qué es falso y escribe dos afirmaciones cercanas que sí sean verdaderas.
+68. Un estudiante calcula el complemento de $A=\{1,2\}$ como “todos los números salvo $1$ y $2$”. Explica qué información falta.
 
-69. Refuta $A\setminus(B\cup C)=(A\setminus B)\cup(A\setminus C)$ con conjuntos pequeños.
+69. Un estudiante demuestra $A=B$ mostrando únicamente $A\subseteq B$. ¿Qué falta? Da un ejemplo que muestre por qué.
 
-70. Decide si $\mathcal P(A\cap B)=\mathcal P(A)\cap\mathcal P(B)$ y justifica la respuesta.
+70. Explica por qué un diagrama de Venn puede sugerir $(A\cup B)^c=A^c\cap B^c$, pero una prueba por pertenencia es conceptualmente más general.
 
-71. Explica por qué un diagrama de Venn correcto puede sugerir una identidad pero no sustituye una demostración escrita.
+71. Determina si la afirmación $A\cup C=B\cup C\Rightarrow A=B$ es verdadera. Si es falsa, produce un contraejemplo y explica por qué falla la “cancelación”.
 
-72. Sea $U$ un universo y $A,B,C\subseteq U$. Elige una de estas dos afirmaciones y demuéstrala por dos métodos distintos: (i) transformación algebraica; (ii) pertenencia elemento a elemento:
-
-$$
-(A\cup B)\setminus C=(A\setminus C)\cup(B\setminus C)
-$$
-
-o
-
-$$
-A\cap(B\triangle C)=(A\cap B)\triangle(A\cap C).
-$$
+72. Síntesis: explica en 8–12 líneas por qué las leyes de conjuntos pueden entenderse como una segunda realización del álgebra lógica de C5. Incluye pertenencia, unión, intersección, complemento, inclusión y extensionalidad.
 
 
 ## L. Problemas tipo prueba
 
-73. Sean $A,B,C\subseteq U$. Demuestra que las siguientes condiciones son equivalentes:
+Los siguientes problemas están diseñados para evaluación escrita. Se espera una demostración completa, no sólo el resultado final.
 
-1. $A\cap B\subseteq C$;
-2. $A\subseteq B^c\cup C$;
-3. $B\subseteq A^c\cup C$.
-
-Da una demostración por pertenencia y explica en qué paso aparece la equivalencia lógica
+73. Demuestra, para conjuntos arbitrarios $A$ y $B$, que
 
 $$
-(p\land q)\Rightarrow r
-\equiv
-p\Rightarrow(\neg q\lor r).
+\mathcal P(A)\cap\mathcal P(B)=\mathcal P(A\cap B).
 $$
 
-74. Sean $A,B\subseteq U$. Demuestra que
+Deduce además que
 
 $$
-\mathcal P(A\cap B)=\mathcal P(A)\cap\mathcal P(B)
+\mathcal P(A)\subseteq\mathcal P(B)\quad\Longleftrightarrow\quad A\subseteq B.
 $$
 
-y compara cuidadosamente con
+74. Caracteriza exactamente cuándo se cumple
 
 $$
-\mathcal P(A\cup B)=\mathcal P(A)\cup\mathcal P(B).
+\mathcal P(A)\cup\mathcal P(B)=\mathcal P(A\cup B).
 $$
 
-Determina una condición necesaria y suficiente sobre $A$ y $B$ para que la segunda igualdad sea verdadera.
+Demuestra que la igualdad vale si y sólo si $A\subseteq B$ o $B\subseteq A$.
 
-75. Sean $A,B,C\subseteq U$. Decide si la siguiente afirmación es verdadera:
-
-$$
-A\triangle B=A\triangle C
-\Longrightarrow
-B=C.
-$$
-
-Si es verdadera, demuéstrala sin apelar a diagramas. Si es falsa, da un contraejemplo mínimo.
-
-76. Sean $A,B,C\subseteq U$. Supón
+75. Usando $A\triangle B=(A\setminus B)\cup(B\setminus A)$, demuestra que la diferencia simétrica es asociativa:
 
 $$
-A\cap C=B\cap C
+(A\triangle B)\triangle C=A\triangle(B\triangle C).
 $$
 
-y
+Tu demostración debe explicar por qué un elemento pertenece a cualquiera de los dos lados exactamente cuando pertenece a un número impar de los conjuntos $A,B,C$.
+
+76. Sea $U$ un universo fijo y sean $A,B\subseteq U$. Estudia la ecuación de conjuntos
 
 $$
-A\cup C=B\cup C.
+X\cap A=B.
 $$
 
-Demuestra $A=B$ mediante un argumento con un elemento arbitrario $x$, separando los casos $x\in C$ y $x\notin C$.
+(a) Determina una condición necesaria y suficiente sobre $A$ y $B$ para que exista al menos una solución $X\subseteq U$.  
+(b) Bajo esa condición, describe **todas** las soluciones.  
+(c) Demuestra que tu descripción es completa.
 
-77. Sean $A,B,C,D$ conjuntos. Investiga la identidad
-
-$$
-(A\times B)\cap(C\times D)
-=(A\cap C)\times(B\cap D).
-$$
-
-Demuestra la igualdad a partir de la definición de par ordenado en un producto cartesiano. Luego deduce una condición para que dos productos cartesianos no vacíos $A\times B$ y $C\times D$ sean iguales.
-
-78. Sea $U$ un universo y define, para $A,B\subseteq U$,
+77. Sea $U$ un universo fijo y sean $A,B\subseteq U$. Estudia la ecuación
 
 $$
-d(A,B)=A\triangle B.
+X\cup A=B.
 $$
 
-Demuestra las identidades
+(a) Determina una condición necesaria y suficiente para que exista solución.  
+(b) Caracteriza todas las soluciones mediante inclusiones.  
+(c) Da una parametrización de todas las soluciones usando un subconjunto arbitrario de $A$.
+
+78. Sean $A,B,C,D$ conjuntos. Demuestra que
 
 $$
-A\triangle A=\varnothing,
-\qquad
-A\triangle\varnothing=A,
+A\times B\subseteq C\times D
 $$
 
+si y sólo si se cumple al menos una de las siguientes condiciones:
+
+- $A=\varnothing$;
+- $B=\varnothing$;
+- $A\subseteq C$ y $B\subseteq D$.
+
+Tu prueba debe justificar por qué la no vacuidad es indispensable para deducir las dos inclusiones coordenada a coordenada.
+
+79. Supón que
+
 $$
-A\triangle B=B\triangle A,
+A\cup C=B\cup C
 $$
 
 y
 
 $$
-A\triangle(B\triangle C)=(A\triangle B)\triangle C.
+A\cap C=B\cap C.
 $$
 
-Interpreta qué estructura algebraica sugieren estas leyes sobre $\mathcal P(U)$ respecto de $\triangle$.
+Demuestra que $A=B$. Luego muestra, mediante contraejemplos, que ninguna de las dos hipótesis por separado basta para concluir la igualdad.
 
-79. Sean $A,B\subseteq U$. Prueba que son equivalentes:
+80. Para $A,B\subseteq U$, demuestra que las siguientes cinco afirmaciones son equivalentes:
 
 1. $A\subseteq B$;
 2. $A\cap B=A$;
 3. $A\cup B=B$;
-4. $B^c\subseteq A^c$;
+4. $A\setminus B=\varnothing$;
 5. $\mathcal P(A)\subseteq\mathcal P(B)$.
 
-Organiza la demostración mediante una cadena eficiente de implicaciones, evitando demostrar todas las parejas de equivalencias por separado.
-
-80. Sean $A,B,C\subseteq U$. Considera la identidad
-
-$$
-A\triangle(B\cap C)
-\stackrel{?}{=}
-(A\triangle B)\cap(A\triangle C).
-$$
-
-(a) Decide si es verdadera para todos los conjuntos.  
-(b) Si es falsa, encuentra un contraejemplo con un universo de cardinalidad mínima.  
-(c) Determina una condición suficiente no trivial bajo la cual sí sea verdadera.  
-(d) Reescribe ambos lados usando únicamente $\cup$, $\cap$ y complemento, y explica dónde divergen las expresiones.
+Organiza la demostración de manera eficiente, indicando una cadena de implicaciones suficiente para establecer la equivalencia de las cinco condiciones.
 
 # Soluciones
 
@@ -1138,205 +906,123 @@ Si $x\in A$, entonces $x^2=4$, de modo que $(x-2)(x+2)=0$ y $x=2$ o $x=-2$; así
 $\varnothing$ tiene $0$ elementos. $\{\varnothing\}$ tiene $1$ elemento, a saber $\varnothing$. $\{\{\varnothing\}\}$ también tiene $1$ elemento, pero ese elemento es $\{\varnothing\}$.
 
 ### 8
-$\varnothing\in\{\varnothing,1\}$ es verdadera porque $\varnothing$ aparece como elemento. También $\varnothing\subseteq\{\varnothing,1\}$ es verdadera porque el vacío es subconjunto de todo conjunto. Las dos afirmaciones tienen razones distintas.
+Ambas son verdaderas, pero por razones distintas. La primera es verdadera porque $\varnothing$ aparece como elemento. La segunda es verdadera porque el conjunto vacío es subconjunto de todo conjunto.
 
 ### 9
-$1\in A$ es verdadera. $\{1\}\in A$ también es verdadera, pues $\{1\}$ aparece explícitamente como elemento. $\{1\}\subseteq A$ es verdadera porque el único elemento de $\{1\}$ es $1$, y $1\in A$. Finalmente, $\varnothing\in A$ es verdadera.
+Las cuatro afirmaciones son verdaderas. $1$ y $\{1\}$ aparecen como elementos; como $1\in A$, el conjunto unitario $\{1\}$ es subconjunto de $A$; y $\varnothing$ también aparece como elemento.
 
 ### 10
-Por ejemplo, $A=\{\varnothing\}$. Entonces $\varnothing\in A$, pero $\{\varnothing\}$ no es elemento de $A$.
+Por ejemplo $A=\{\varnothing\}$. Entonces $\varnothing\in A$, mientras $\{\varnothing\}$ no es uno de sus elementos: el único elemento de $A$ es $\varnothing$.
 
 ### 11
-Necesitamos que $\varnothing\in A$ para que $\{\varnothing\}\subseteq A$, pero que $\{\varnothing\}$ no aparezca como elemento. Sirve nuevamente $A=\{\varnothing\}$.
+Por ejemplo $A=\{\varnothing,1\}$. Como $\varnothing\in A$, se tiene $\{\varnothing\}\subseteq A$. Pero $\{\varnothing\}$ no es elemento de $A$; los elementos son $\varnothing$ y $1$.
 
 ### 12
-Por definición, $\varnothing$ no tiene elementos. Por tanto no existe $x$ con $x\in\varnothing$. Una implicación $x\in\varnothing\Rightarrow P(x)$ es verdadera para todo $x$ porque su antecedente nunca se cumple.
+Por definición, $\varnothing$ no tiene elementos. Por tanto no hay ningún caso que satisfaga el antecedente $x\in\varnothing$. En una afirmación universal $\forall x\,(x\in\varnothing\Rightarrow P(x))$, el antecedente es falso para todo $x$, de modo que la implicación resulta verdadera para cada caso. Ésta es la razón lógica de $\varnothing\subseteq A$ para todo $A$.
 
 
 ## C. Subconjuntos e igualdad
 
 ### 13
-$A\subseteq B$ es verdadera; $B\subseteq A$ es falsa porque $3\in B$ y $3\notin A$. $A\in B$ es falsa porque los elementos de $B$ son números, no el conjunto $A$. La escritura $2\subseteq B$ no tiene sentido bajo la convención usual porque $2$ no es un conjunto en este contexto.
+$A\subseteq B$ es verdadera. $B\subseteq A$ es falsa porque $3\in B$ y $3\notin A$. $A\in B$ es falsa: los elementos de $B$ son números, no el conjunto $A$. La escritura $2\subseteq B$ no es apropiada en este contexto porque $2$ no se está tratando como un conjunto.
 
 ### 14
-Para probar $\varnothing\subseteq A$ debemos mostrar que todo elemento de $\varnothing$ pertenece a $A$. No hay elementos de $\varnothing$, así que no existe contraejemplo. Formalmente, $x\in\varnothing\Rightarrow x\in A$ es verdadera para todo $x$.
+Por definición, necesitaríamos verificar que todo $x\in\varnothing$ pertenece a $A$. Pero no existe ningún $x\in\varnothing$. Por tanto no hay contraejemplo a la implicación $x\in\varnothing\Rightarrow x\in A$, y se concluye $\varnothing\subseteq A$.
 
 ### 15
-Toma $x\in A$. Como $A\subseteq B$, se tiene $x\in B$. Como $B\subseteq C$, se obtiene $x\in C$. Luego todo elemento de $A$ pertenece a $C$, por lo que $A\subseteq C$.
+Sea $x\in A$. Como $A\subseteq B$, se sigue $x\in B$. Como $B\subseteq C$, se sigue $x\in C$. Por tanto todo elemento de $A$ pertenece a $C$, es decir, $A\subseteq C$.
 
 ### 16
-De $A\subseteq B$ se obtiene $x\in A\Rightarrow x\in B$. De $B\subseteq A$ se obtiene la implicación inversa. Por tanto $x\in A\Leftrightarrow x\in B$ para todo $x$. Por extensionalidad, $A=B$.
+Cada elemento de $A$ es uno de $1,2,3$ y pertenece a $B$, así que $A\subseteq B$. Recíprocamente, cada elemento de $B$ es uno de $1,2,3$ y pertenece a $A$, así que $B\subseteq A$. Por doble inclusión, $A=B$.
 
 ### 17
-La condición $2\mid x$ significa precisamente que existe $k\in\mathbb Z$ con $x=2k$. Por tanto las dos descripciones tienen exactamente los mismos elementos y $A=B$.
+Si $x\in A$, entonces $x$ es un entero entre $-1$ y $2$, de modo que necesariamente $x\in\{-1,0,1,2\}=B$. Recíprocamente, cada elemento de $B$ es entero y satisface $-1\le x\le2$, por lo que pertenece a $A$. Por doble inclusión, $A=B$.
 
 ### 18
-Por ejemplo, toma $A=\{1\}$ y $B=\{\{1\},2\}$. Entonces $A\in B$ porque $\{1\}$ aparece como elemento, pero $A\not\subseteq B$ porque $1\notin B$.
+Toma $A=\{1\}$ y $B=\{1,2\}$. Se cumple $A\subseteq B$, pero $2\in B$ y $2\notin A$, así que $A\ne B$.
 
 ### 19
-Por ejemplo, $A=\{1\}$ y $B=\{1,2\}$. Entonces $A\subseteq B$, pero $A\notin B$ porque los elementos de $B$ son los números $1$ y $2$, no el conjunto $\{1\}$.
+Las dos inclusiones dicen exactamente que todo elemento de $A$ está en $B$ y todo elemento de $B$ está en $A$. Por extensionalidad, ambos conjuntos tienen los mismos elementos, independientemente de cómo estén descritos. Por tanto $A=B$.
 
 ### 20
-Sí. De $A\subsetneq B$ y $B\subsetneq C$ obtenemos $A\subseteq C$. Si $A=C$, entonces $C=A\subseteq B$, y junto con $B\subseteq C=A$ tendríamos $A=B=C$, contradicción con que las inclusiones son propias. Por tanto $A\subsetneq C$.
+Sí. Sea $x\in A$. De $A\subseteq B$ obtenemos $x\in B$, y de $A\subseteq C$, $x\in C$. Por definición de intersección, $x\in B\cap C$. Luego $A\subseteq B\cap C$.
 
 
 ## D. Conjunto potencia
 
 ### 21
-El único subconjunto de $\varnothing$ es el propio vacío. Por tanto $\mathcal P(\varnothing)=\{\varnothing\}$.
+Los subconjuntos son $\varnothing$, $\{a\}$, $\{b\}$ y $\{a,b\}$. Por tanto $\mathcal P(\{a,b\})=\{\varnothing,\{a\},\{b\},\{a,b\}\}$.
 
 ### 22
-Los subconjuntos de $\{a\}$ son $\varnothing$ y $\{a\}$. Por tanto $\mathcal P(\{a\})=\{\varnothing,\{a\}\}$.
+Hay $2^3=8$ subconjuntos: $\varnothing$, $\{1\}$, $\{2\}$, $\{3\}$, $\{1,2\}$, $\{1,3\}$, $\{2,3\}$ y $\{1,2,3\}$.
 
 ### 23
-Los ocho subconjuntos son
-
-$$
-\varnothing,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}.
-$$
-
-Así $|\mathcal P(\{a,b,c\})|=8=2^3$.
+$1\in\mathcal P(A)$ es falsa porque los elementos de $\mathcal P(A)$ son subconjuntos de $A$, y en este contexto $1$ no es uno de ellos. Las otras tres son verdaderas: $\{1\}\subseteq A$, $A\subseteq A$ y $\varnothing\subseteq A$.
 
 ### 24
-Sea $X\in\mathcal P(A)$. Entonces $X\subseteq A$. Como $A\subseteq B$, por transitividad $X\subseteq B$. Por tanto $X\in\mathcal P(B)$. Luego $\mathcal P(A)\subseteq\mathcal P(B)$.
+Sea $X$ un conjunto. $X\in\mathcal P(A\cap B)$ equivale a $X\subseteq A\cap B$. Esto ocurre exactamente cuando $X\subseteq A$ y $X\subseteq B$. A su vez, eso equivale a $X\in\mathcal P(A)$ y $X\in\mathcal P(B)$, es decir, $X\in\mathcal P(A)\cap\mathcal P(B)$. Por extensionalidad, los conjuntos son iguales.
 
 ### 25
-Sí. Para cualquier conjunto $X$,
-
-$$
-\begin{aligned}
-X\in\mathcal P(A)\cap\mathcal P(B)
-&\Longleftrightarrow X\subseteq A\land X\subseteq B\\
-&\Longleftrightarrow X\subseteq A\cap B\\
-&\Longleftrightarrow X\in\mathcal P(A\cap B).
-\end{aligned}
-$$
-
-Luego los conjuntos son iguales.
+No. Toma $A=\{1\}$ y $B=\{2\}$. Entonces $\{1,2\}\in\mathcal P(A\cup B)$, pero $\{1,2\}\notin\mathcal P(A)$ y $\{1,2\}\notin\mathcal P(B)$. Por tanto no pertenece a $\mathcal P(A)\cup\mathcal P(B)$.
 
 ### 26
-No en general. Toma $A=\{1\}$ y $B=\{2\}$. El conjunto $\{1,2\}$ pertenece a $\mathcal P(A\cup B)$, pero no pertenece ni a $\mathcal P(A)$ ni a $\mathcal P(B)$. Por tanto no pertenece a su unión.
+Si $|A|=n$, entonces $|\mathcal P(A)|=2^n$. Como $32=2^5$, se sigue $n=5$. Por tanto $A$ tiene $5$ elementos.
 
 
 ## E. Unión e intersección
 
 ### 27
-$A\cup B=\{1,2,3,4,5\}$ y $A\cap B=\{3\}$.
+$A\cup B=\{1,2,3,4,5\}$ y $A\cap B=\{3,4\}$.
 
 ### 28
-Si $x\in A\cap B$, entonces $x\in A$, de modo que $A\cap B\subseteq A$. Si $x\in A$, entonces $x\in A$ o $x\in B$, así que $x\in A\cup B$. Por tanto $A\subseteq A\cup B$.
+Un entero pertenece a ambos conjuntos exactamente cuando $0\le x\le2$. Por tanto $A\cap B=\{0,1,2\}$.
 
 ### 29
-Para todo $x$,
-
-$$
-x\in A\cup B
-\Longleftrightarrow
-x\in A\lor x\in B
-\Longleftrightarrow
-x\in B\lor x\in A
-\Longleftrightarrow
-x\in B\cup A.
-$$
-
-Por extensionalidad, los conjuntos son iguales.
+Todo entero satisface al menos una de las condiciones $x\ge0$ o $x\le2$; de hecho, ambas cubren conjuntamente a todos los enteros. Por tanto $A\cup B=\mathbb Z$.
 
 ### 30
-Para todo $x$,
-
-$$
-\begin{aligned}
-x\in A\cap(B\cup C)
-&\Longleftrightarrow x\in A\land(x\in B\lor x\in C)\\
-&\Longleftrightarrow (x\in A\land x\in B)\lor(x\in A\land x\in C)\\
-&\Longleftrightarrow x\in(A\cap B)\cup(A\cap C).
-\end{aligned}
-$$
-
-La equivalencia central es distributividad lógica.
+Si $x\in A\cap B$, entonces por definición $x\in A$, de modo que $A\cap B\subseteq A$. Si $x\in A$, entonces la disyunción $x\in A$ o $x\in B$ es verdadera, así $x\in A\cup B$. Por tanto $A\subseteq A\cup B$.
 
 ### 31
-Si $x\in A\setminus B$, entonces $x\in A$, así que $A\setminus B\subseteq A$. Recíprocamente, si $x\in A$ y $A\cap B=\varnothing$, no puede ocurrir $x\in B$, pues entonces $x$ estaría en la intersección. Por tanto $x\in A\setminus B$.
+Para cualquier $x$, $x\in A\cup\varnothing$ equivale a $(x\in A)\lor(x\in\varnothing)$. La segunda proposición es siempre falsa, así que la condición equivale a $x\in A$. Por extensionalidad, $A\cup\varnothing=A$.
 
 ### 32
-Toma $A=\{1\}$, $B=\{1,2\}$ y $C=\{1,3\}$. Entonces $A\cap B=A\cap C=\{1\}$, pero $B\ne C$.
+Para cualquier $x$, $x\in A\cap A$ equivale a $(x\in A)\land(x\in A)$, que es lógicamente equivalente a $x\in A$. Luego $A\cap A=A$.
 
 ### 33
-No. Toma $A=\{1,2,3\}$, $B=\{1\}$ y $C=\{2\}$. Entonces $A\cup B=A=A\cup C$, pero $B\ne C$.
+Para la unión, todo elemento de $B$ pertenece a $A\cup B$, y si $x\in A\cup B$, entonces $x\in A$ o $x\in B$; en el primer caso $A\subseteq B$ da $x\in B$, y en el segundo ya lo sabemos. Así $A\cup B=B$. Para la intersección, $A\cap B\subseteq A$ siempre, y si $x\in A$, la hipótesis da $x\in B$, por lo que $x\in A\cap B$. Entonces $A\cap B=A$.
 
 ### 34
-Si $A\subseteq B$, entonces todo elemento de $A$ pertenece a ambos conjuntos, de modo que $A\cap B=A$. Recíprocamente, si $A\cap B=A$ y $x\in A$, entonces $x\in A\cap B$, por lo que $x\in B$. Así $A\subseteq B$.
+Sí. Si $x\in A$, entonces como $A=A\cap B$, se tiene $x\in A\cap B$. Por definición de intersección, $x\in B$. Por tanto $A\subseteq B$.
 
 
 ## F. Diferencia y complemento
 
 ### 35
-$A\setminus B=\{1,2\}$, $B\setminus A=\{5\}$, $A^c=\{5,6\}$ y $B^c=\{1,2,6\}$ respecto del universo dado.
+$A\setminus B=\{1,2\}$ y $B\setminus A=\{5\}$. Esto muestra que la diferencia no es conmutativa.
 
 ### 36
-Para todo $x$,
-
-$$
-x\in A\setminus B
-\Longleftrightarrow
-x\in A\land x\notin B
-\Longleftrightarrow
-x\in A\land x\in B^c
-\Longleftrightarrow
-x\in A\cap B^c.
-$$
+Respecto de $U$, $A^c=U\setminus A=\{2,4\}$.
 
 ### 37
-Para todo $x$,
-
-$$
-x\in(A\cup B)^c
-\Longleftrightarrow
-\neg(x\in A\lor x\in B)
-\Longleftrightarrow
-x\notin A\land x\notin B
-\Longleftrightarrow
-x\in A^c\cap B^c.
-$$
+Con $U=\{1,2,3\}$, $A^c=\{3\}$. Con $V=\{1,2,3,4\}$, $A^c=\{3,4\}$. El símbolo $A^c$ sólo queda determinado cuando el universo está fijado.
 
 ### 38
-Análogamente,
-
-$$
-x\in(A\cap B)^c
-\Longleftrightarrow
-\neg(x\in A\land x\in B)
-\Longleftrightarrow
-x\notin A\lor x\notin B
-\Longleftrightarrow
-x\in A^c\cup B^c.
-$$
+Para cualquier $x$, $x\in A\setminus B$ equivale a $x\in A$ y $x\notin B$. Respecto del universo fijado, $x\notin B$ equivale a $x\in B^c$. Por tanto la condición equivale a $x\in A\cap B^c$. Por extensionalidad, $A\setminus B=A\cap B^c$.
 
 ### 39
-Usando diferencia como intersección con complemento y De Morgan:
-
-$$
-A\setminus(B\cup C)
-=A\cap(B\cup C)^c
-=A\cap(B^c\cap C^c)
-=(A\cap B^c)\cap(A\cap C^c)
-=(A\setminus B)\cap(A\setminus C).
-$$
+Para cualquier $x\in U$, $x\in(A^c)^c$ equivale a $x\notin A^c$, que equivale a no ser cierto que $x\notin A$, es decir, $x\in A$. Por extensionalidad, $(A^c)^c=A$.
 
 ### 40
-$$
-A\setminus(B\cap C)
-=A\cap(B\cap C)^c
-=A\cap(B^c\cup C^c)
-=(A\cap B^c)\cup(A\cap C^c)
-=(A\setminus B)\cup(A\setminus C).
-$$
+Para $x\in U$,
+$x\in(A\cup B)^c$ equivale a $x\notin A\cup B$. Esto equivale a negar $[(x\in A)\lor(x\in B)]$, que por De Morgan es $(x\notin A)\land(x\notin B)$. Eso equivale a $x\in A^c\cap B^c$. Por extensionalidad, los conjuntos son iguales.
 
 ### 41
-Sea $A=\{1\}$. Si $U=\{1,2\}$, entonces $A^c=\{2\}$. Si $U'=\{1,2,3\}$, entonces el complemento es $\{2,3\}$. El conjunto $A$ es el mismo, pero el complemento cambia con el universo.
+Sí. Usando diferencia como intersección con complemento y De Morgan:
+$A\setminus(B\cup C)=A\cap(B\cup C)^c=A\cap(B^c\cap C^c)=(A\cap B^c)\cap(A\cap C^c)=(A\setminus B)\cap(A\setminus C)$.
 
 ### 42
-Sea $x\in B^c$. Entonces $x\notin B$. Si $x\in A$, como $A\subseteq B$, tendríamos $x\in B$, contradicción. Por tanto $x\notin A$, es decir, $x\in A^c$. Luego $B^c\subseteq A^c$.
+Toma $A=\{1\}$, $B=\{1\}$ y $C=\{1\}$. Entonces $B\setminus C=\varnothing$, así que $A\setminus(B\setminus C)=A=\{1\}$. En cambio $A\setminus B=\varnothing$, y luego $(A\setminus B)\setminus C=\varnothing$. Los lados son distintos.
 
 
 ## G. Diferencia simétrica
@@ -1345,230 +1031,117 @@ Sea $x\in B^c$. Entonces $x\notin B$. Si $x\in A$, como $A\subseteq B$, tendría
 $A\setminus B=\{1,2\}$ y $B\setminus A=\{4\}$. Por tanto $A\triangle B=\{1,2,4\}$.
 
 ### 44
-Un elemento está en $A\triangle B$ exactamente cuando está en uno de los conjuntos y no en el otro. Eso equivale a pertenecer a la unión pero no a la intersección. Formalmente,
-
-$$
-[(p\land\neg q)\lor(\neg p\land q)]
-\equiv
-(p\lor q)\land\neg(p\land q).
-$$
-
-Sustituyendo $p$ por $x\in A$ y $q$ por $x\in B$ obtenemos la identidad.
+Un elemento pertenece a $A\triangle B$ exactamente cuando pertenece a uno de $A,B$ pero no a ambos. Esto equivale a pertenecer a $A\cup B$ y no pertenecer a $A\cap B$. Por definición, esa condición es pertenecer a $(A\cup B)\setminus(A\cap B)$.
 
 ### 45
-La definición es simétrica en $A$ y $B$:
-
-$$
-A\triangle B=(A\setminus B)\cup(B\setminus A)
-=(B\setminus A)\cup(A\setminus B)=B\triangle A.
-$$
+Por definición, $A\triangle B=(A\setminus B)\cup(B\setminus A)$. Al intercambiar $A$ y $B$ obtenemos los mismos dos conjuntos unidos en orden inverso. Como la unión es conmutativa, $A\triangle B=B\triangle A$.
 
 ### 46
-Sí. Para cada elemento, pertenecer a $A\triangle X$ equivale a cambiar el valor lógico de «pertenece a $A$». Aplicar dos veces la diferencia simétrica con $A$ revierte el cambio. Algebraicamente, usando asociatividad de $\triangle$ —que puede probarse por pertenencia—,
-
-$$
-A\triangle(A\triangle B)
-=(A\triangle A)\triangle B
-=\varnothing\triangle B=B.
-$$
+$A\triangle B=\varnothing$ exactamente cuando no existe ningún elemento que pertenezca a uno de los conjuntos sin pertenecer al otro. Eso significa $A\subseteq B$ y $B\subseteq A$. Por doble inclusión, equivale a $A=B$.
 
 
 ## H. Leyes y transformaciones
 
 ### 47
-Por distributividad,
-
-$$
-(A\cup B)\cap(A\cup B^c)
-=A\cup(B\cap B^c)
-=A\cup\varnothing=A.
-$$
+Por la ley de absorción, $A\cap(A\cup B)=A$. Elemento a elemento: si $x\in A$, entonces ciertamente $x\in A\cup B$; exigir ambas condiciones no añade nada a $x\in A$.
 
 ### 48
-$$
-(A\cap B)\cup(A\cap B^c)
-=A\cap(B\cup B^c)
-=A\cap U=A.
-$$
+Por distributividad, $(A\cup B)\cap(A\cup B^c)=A\cup(B\cap B^c)=A\cup\varnothing=A$.
 
 ### 49
-Aplicamos $(X\cup Y)\cap(Z\cup Y)=Y\cup(X\cap Z)$:
-
-$$
-(A\cup B)\cap(A^c\cup B)
-=B\cup(A\cap A^c)=B.
-$$
+Factorizando $A$ mediante distributividad: $(A\cap B)\cup(A\cap B^c)=A\cap(B\cup B^c)=A\cap U=A$.
 
 ### 50
-$$
-(A\cap B)\cup(A^c\cap B)
-=(A\cup A^c)\cap B
-=U\cap B=B.
-$$
+Para un elemento $x$, la pertenencia al lado izquierdo corresponde a $P\lor(Q\land R)$, donde $P:x\in A$, $Q:x\in B$, $R:x\in C$. La distributividad lógica da $(P\lor Q)\land(P\lor R)$, que corresponde a $x\in(A\cup B)\cap(A\cup C)$. Como la equivalencia vale para todo $x$, los conjuntos son iguales.
 
 ### 51
-Por absorción, $A\cup(A\cap B)=A$. Elemento a elemento: si $x$ pertenece al lado izquierdo, entonces o bien $x\in A$, o bien $x\in A$ y $x\in B$; en ambos casos $x\in A$. La inclusión inversa es inmediata.
+Usamos $B\setminus C=B\cap C^c$:
+$A\cap(B\setminus C)=A\cap(B\cap C^c)=(A\cap B)\cap C^c=(A\cap B)\setminus C$.
 
 ### 52
-Análogamente, $A\cap(A\cup B)=A$. Si $x\in A$, entonces $x\in A\cup B$, así que pertenece al lado izquierdo; la otra inclusión es inmediata por la intersección.
+Partimos de $(A\cup B)\setminus(A\cap B)$. Esto es $(A\cup B)\cap(A\cap B)^c$. Por De Morgan, $(A\cap B)^c=A^c\cup B^c$. Por tanto $A\triangle B=(A\cup B)\cap(A^c\cup B^c)$.
 
 ### 53
-Primero $(A\cup B)^c=A^c\cap B^c$. Entonces
 
-$$
-[(A\cup B)^c\cup B]^c
-=[(A^c\cap B^c)\cup B]^c.
-$$
-
-Usando distributividad,
-
-$$
-(A^c\cap B^c)\cup B
-=(A^c\cup B)\cap(B^c\cup B)
-=A^c\cup B.
-$$
-
-Por tanto
-
-$$
-[(A\cup B)^c\cup B]^c
-=(A^c\cup B)^c
-=A\cap B^c.
-$$
+Por De Morgan, $(A\cup B)^c=A^c\cap B^c$. Entonces la expresión es $(A^c\cap B^c)\cup(A\cap B^c)$. Factorizando $B^c$: $B^c\cap(A^c\cup A)=B^c\cap U=B^c$.
 
 ### 54
-La identidad inicial es justamente una ley de De Morgan aplicada dentro de una diferencia:
+Siempre $\mathcal P(A)\cup\mathcal P(B)\subseteq\mathcal P(A\cup B)$. Para la igualdad, supongamos primero $A\subseteq B$. Entonces $A\cup B=B$ y $\mathcal P(A)\subseteq\mathcal P(B)$, de modo que ambos lados son $\mathcal P(B)$. Lo mismo si $B\subseteq A$.
 
-$$
-A\setminus(B\cap C)
-=A\cap(B\cap C)^c
-=A\cap(B^c\cup C^c)
-=(A\cap B^c)\cup(A\cap C^c).
-$$
-
-Por tanto,
-
-$$
-(A\setminus B)\cup(A\setminus C)\cup(B\cap C)
-=[A\cap(B^c\cup C^c)]\cup(B\cap C).
-$$
-
-Esta expresión ya no contiene diferencias. También puede escribirse
-
-$$
-[A\cap(B\cap C)^c]\cup(B\cap C).
-$$
-
-No se simplifica en general a $A$ ni a $U$: por ejemplo, si $A=\varnothing$ y $B=C\ne\varnothing$, queda $B\cap C$.
+Recíprocamente, supongamos la igualdad y que ni $A\subseteq B$ ni $B\subseteq A$. Entonces existen $a\in A\setminus B$ y $b\in B\setminus A$. El conjunto $\{a,b\}$ es subconjunto de $A\cup B$, así que pertenece a $\mathcal P(A\cup B)$; pero no es subconjunto de $A$ ni de $B$, por lo que no pertenece a $\mathcal P(A)\cup\mathcal P(B)$, contradicción. Por tanto debe cumplirse $A\subseteq B$ o $B\subseteq A$.
 
 
-## I. Pertenencia y doble inclusión
+## I. Demostraciones por elementos y doble inclusión
 
 ### 55
-Primera inclusión: sea $x\in A\cap(B\cup C)$. Entonces $x\in A$ y $x\in B\cup C$. Si $x\in B$, entonces $x\in A\cap B$; si $x\in C$, entonces $x\in A\cap C$. En ambos casos $x\in(A\cap B)\cup(A\cap C)$.
+Primera inclusión: si $x\in A\setminus(B\cup C)$, entonces $x\in A$, $x\notin B$ y $x\notin C$. Por tanto $x\in A\setminus B$ y $x\in A\setminus C$, así que pertenece a la intersección.
 
-Segunda inclusión: sea $x\in(A\cap B)\cup(A\cap C)$. Si $x\in A\cap B$, entonces $x\in A$ y $x\in B\subseteq B\cup C$; si $x\in A\cap C$, ocurre análogamente. Por tanto $x\in A\cap(B\cup C)$.
+Segunda inclusión: si $x\in(A\setminus B)\cap(A\setminus C)$, entonces $x\in A$, $x\notin B$ y $x\notin C$. Luego $x\notin B\cup C$, de modo que $x\in A\setminus(B\cup C)$.
 
 ### 56
-Si $x\in(A\cap B)\cup(A\setminus B)$, entonces en ambos casos $x\in A$, así que el lado izquierdo está contenido en $A$. Recíprocamente, toma $x\in A$. O bien $x\in B$, y entonces $x\in A\cap B$, o bien $x\notin B$, y entonces $x\in A\setminus B$. Por tanto $x$ pertenece a la unión.
+Para cualquier $x$, $x\in(A\cap B)\setminus C$ equivale a $x\in A$, $x\in B$ y $x\notin C$. La misma condición equivale a $x\in A$ y $x\in B\setminus C$, es decir, $x\in A\cap(B\setminus C)$. Por extensionalidad, hay igualdad.
 
 ### 57
-Si $A\subseteq B$, entonces $A\cup B=B$ porque todo elemento de $A$ ya pertenece a $B$. Recíprocamente, si $A\cup B=B$ y $x\in A$, entonces $x\in A\cup B=B$, de modo que $x\in B$. Luego $A\subseteq B$.
+Si $x\in A\triangle B$, pertenece exactamente a uno de $A,B$; por ello está en $A\cup B$ y no en $A\cap B$, de modo que pertenece al lado derecho. Recíprocamente, si $x\in(A\cup B)\setminus(A\cap B)$, pertenece a por lo menos uno de $A,B$ pero no a ambos; entonces pertenece exactamente a uno, por lo que $x\in A\triangle B$.
 
 ### 58
-Ya sabemos
-
-$$
-A\subseteq B\Longleftrightarrow A\cup B=B.
-$$
-
-Además,
-
-$$
-A\subseteq B
-\Longleftrightarrow
-\text{no existe }x\in A\text{ con }x\notin B
-\Longleftrightarrow
-A\cap B^c=\varnothing.
-$$
-
-Así las tres condiciones son equivalentes.
+Sea $x\in A\cap C^c$. Entonces $x\in A$ y $x\notin C$. Si $x\in B$, tendríamos $x\in A\cap B$, y la hipótesis implicaría $x\in C$, contradicción. Por tanto $x\notin B$, es decir, $x\in B^c$. Luego $A\cap C^c\subseteq B^c$.
 
 ### 59
-Toma $x\in A$. Si $x\in C$, entonces $x\in A\cap C=B\cap C$, así que $x\in B$. Si $x\notin C$, entonces $x\in A\cup C=B\cup C$; como $x\notin C$, debe ocurrir $x\in B$. Por tanto $A\subseteq B$. El mismo argumento intercambiando $A$ y $B$ da $B\subseteq A$. Luego $A=B$.
+Toma $A=\{1\}$, $B=\varnothing$ y $C=\{1\}$. El lado izquierdo es $\{1\}\cup\varnothing=\{1\}$. El lado derecho es $(\{1\}\cup\varnothing)\setminus\{1\}=\varnothing$. Por tanto la identidad es falsa.
 
 ### 60
-Sí. Si $x\in A$, hay dos casos. Si $x\in C$, entonces $x\in A\cap C=B\cap C$, así que $x\in B$. Si $x\notin C$, entonces $x\in A\setminus C=B\setminus C$, así que $x\in B$. De esta forma $A\subseteq B$, y simétricamente $B\subseteq A$. Por tanto $A=B$.
+Método algebraico: es exactamente la distributividad de $\cap$ respecto de $\cup$.
+
+Método por pertenencia: $x\in A\cap(B\cup C)$ equivale a $x\in A$ y $(x\in B$ o $x\in C)$. Por distributividad lógica, esto equivale a $(x\in A$ y $x\in B)$ o $(x\in A$ y $x\in C)$, que equivale a $x\in(A\cap B)\cup(A\cap C)$.
 
 
 ## J. Producto cartesiano
 
 ### 61
-$$
-A\times B=\{(1,a),(1,b),(2,a),(2,b)\},
-$$
-
-$$
-B\times A=\{(a,1),(a,2),(b,1),(b,2)\}.
-$$
-
-En general son distintos porque los pares ordenados distinguen primera y segunda coordenada.
+$A\times B=\{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)\}$.
 
 ### 62
-Si existiera $(a,b)\in A\times\varnothing$, entonces tendríamos $b\in\varnothing$, imposible. Por tanto no hay elementos y $A\times\varnothing=\varnothing$.
+$B\times A=\{(a,1),(a,2),(b,1),(b,2),(c,1),(c,2)\}$. Los pares tienen las coordenadas en orden inverso. Por ejemplo $(1,a)\in A\times B$ pero $(1,a)\notin B\times A$.
 
 ### 63
-Sea $(a,c)\in A\times C$. Entonces $a\in A$ y $c\in C$. Como $A\subseteq B$, tenemos $a\in B$. Luego $(a,c)\in B\times C$.
+Si existiera $(a,b)\in A\times\varnothing$, entonces $b\in\varnothing$, lo cual es imposible. Por tanto el producto no contiene pares y es el conjunto vacío.
 
 ### 64
-Sí. Para todo par $(x,y)$,
-
-$$
-(x,y)\in(A\cup B)\times C
-\Longleftrightarrow
-(x\in A\lor x\in B)\land y\in C.
-$$
-
-Por distributividad lógica, esto equivale a
-
-$$
-(x\in A\land y\in C)\lor(x\in B\land y\in C),
-$$
-
-que es precisamente pertenecer a $(A\times C)\cup(B\times C)$.
+Un par $(x,y)$ pertenece a $(A\cup B)\times C$ exactamente cuando $x\in A\cup B$ y $y\in C$, es decir, cuando $(x\in A$ o $x\in B)$ y $y\in C$. Esto equivale a $[(x\in A\land y\in C)\lor(x\in B\land y\in C)]$, que significa $(x,y)\in(A\times C)\cup(B\times C)$.
 
 ### 65
-Sí. Un par $(x,y)$ pertenece al lado izquierdo si y sólo si $x\in A\cap B$ y $y\in C\cap D$, es decir, si y sólo si $x\in A$, $x\in B$, $y\in C$ y $y\in D$. Esto equivale a pertenecer simultáneamente a $A\times C$ y a $B\times D$.
+Si $A=\varnothing$ o $B=\varnothing$, ambos productos son vacíos y son iguales. Supongamos ahora $A$ y $B$ no vacíos y $A\times B=B\times A$. Elige $a_0\in A$ y $b_0\in B$. Para cualquier $a\in A$, $(a,b_0)\in A\times B=B\times A$, luego $a\in B$. Así $A\subseteq B$. Simétricamente $B\subseteq A$, por lo que $A=B$. Recíprocamente, si $A=B$, los productos son iguales. Por tanto la igualdad ocurre exactamente cuando $A=B$ o al menos uno de los conjuntos es vacío.
 
 ### 66
-Para cada uno de los $m$ elementos de $A$ hay exactamente $n$ posibilidades para la segunda coordenada en $B$. Por tanto se forman $m\cdot n$ pares ordenados.
+Hay $4$ opciones para la primera coordenada y, para cada una, $7$ opciones para la segunda. Por tanto $|A\times B|=4\cdot7=28$.
 
 
 ## K. Diagnóstico y transferencia
 
 ### 67
-La escritura $x\subseteq A$ exige que $x$ sea un conjunto. Si se quiere decir que el número $x$ es elemento de $A$, debe escribirse $x\in A$. Si se quiere hablar del unitario, puede escribirse $\{x\}\subseteq A$.
+El error es confundir pertenencia con inclusión. Si $1$ es un número, la afirmación correcta es $1\in A$. Si se quiere hablar de inclusión, puede escribirse $\{1\}\subseteq A$, que sí se sigue de $1\in A$.
 
 ### 68
-Es falso porque los elementos del conjunto son los números $1,2,3$, no el conjunto $\{1\}$. Son verdaderas $1\in\{1,2,3\}$ y $\{1\}\subseteq\{1,2,3\}$.
+Falta especificar el universo. Si el universo es $\mathbb Z$, el complemento son los enteros distintos de $1,2$; si es $\{1,2,3\}$, el complemento es $\{3\}$. Sin universo, $A^c$ no queda determinado.
 
 ### 69
-La igualdad propuesta es falsa. Toma $A=\{1\}$, $B=\{1\}$, $C=\varnothing$. Entonces
-
-$$
-A\setminus(B\cup C)=\varnothing,
-$$
-
-mientras
-
-$$
-(A\setminus B)\cup(A\setminus C)=\varnothing\cup\{1\}=\{1\}.
-$$
-
-La ley correcta usa intersección a la derecha.
+Falta demostrar $B\subseteq A$. Por ejemplo $A=\{1\}$ y $B=\{1,2\}$ satisfacen $A\subseteq B$ pero no son iguales. La igualdad requiere doble inclusión.
 
 ### 70
-Es verdadera. El argumento es el mismo de 25:
+El diagrama representa regiones y puede hacer visible la coincidencia para una configuración gráfica. La prueba por pertenencia parte de un elemento arbitrario y usa sólo definiciones y lógica: $x\notin A\cup B$ equivale a $x\notin A$ y $x\notin B$. Esa equivalencia establece la identidad sin depender de una figura particular y hace explícita la razón lógica.
+
+### 71
+Es falsa. Toma $C=\{1,2\}$, $A=\{1\}$ y $B=\{2\}$. Entonces $A\cup C=C=B\cup C$, pero $A\ne B$. La unión puede ocultar diferencias entre $A$ y $B$ porque los elementos discrepantes ya están contenidos en $C$; no existe una ley general de cancelación para $\cup$.
+
+### 72
+Respuesta modelo: Para estudiar una expresión de conjuntos podemos fijar un elemento arbitrario $x$ y traducir cada afirmación de pertenencia a una proposición. La condición $x\in A\cup B$ corresponde a $(x\in A)\lor(x\in B)$; la intersección corresponde a conjunción y el complemento a negación respecto de un universo. La inclusión $A\subseteq B$ expresa que para todo $x$, $x\in A$ implica $x\in B$. La extensionalidad dice que $A=B$ cuando para todo $x$ son equivalentes las proposiciones $x\in A$ y $x\in B$. Por eso conmutatividad, distributividad, absorción y De Morgan reaparecen en el álgebra de conjuntos: son las mismas formas lógicas aplicadas a predicados de pertenencia. Los conjuntos no son proposiciones, pero su pertenencia está gobernada por la misma estructura lógica.
+
+## L. Problemas tipo prueba
+
+### 73
+
+Sea $X$ un conjunto. Entonces
 
 $$
 \begin{aligned}
@@ -1579,271 +1152,179 @@ X\in\mathcal P(A)\cap\mathcal P(B)
 \end{aligned}
 $$
 
-### 71
-Un diagrama representa regiones y puede hacer visible una conjetura, pero no establece por sí mismo que todos los elementos satisfagan la equivalencia requerida. La demostración formal debe traducir la pertenencia o utilizar leyes previamente justificadas.
-
-### 72
-Tomemos la primera identidad. Algebraicamente:
+Por extensionalidad,
 
 $$
-(A\cup B)\setminus C
-=(A\cup B)\cap C^c
-=(A\cap C^c)\cup(B\cap C^c)
-=(A\setminus C)\cup(B\setminus C).
+\mathcal P(A)\cap\mathcal P(B)=\mathcal P(A\cap B).
 $$
 
-Elemento a elemento:
+Si $A\subseteq B$ y $X\in\mathcal P(A)$, entonces $X\subseteq A\subseteq B$, de modo que $X\in\mathcal P(B)$. Así $\mathcal P(A)\subseteq\mathcal P(B)$.
 
-$$
-\begin{aligned}
-x\in(A\cup B)\setminus C
-&\Longleftrightarrow (x\in A\lor x\in B)\land x\notin C\\
-&\Longleftrightarrow (x\in A\land x\notin C)\lor(x\in B\land x\notin C)\\
-&\Longleftrightarrow x\in(A\setminus C)\cup(B\setminus C).
-\end{aligned}
-$$
-
-
-## L. Problemas tipo prueba
-
-### 73
-Debemos demostrar la equivalencia cíclicamente.
-
-Supongamos $A\cap B\subseteq C$. Si $x\in A$, hay dos casos. Si $x\notin B$, entonces $x\in B^c\subseteq B^c\cup C$. Si $x\in B$, entonces $x\in A\cap B\subseteq C$, así que también $x\in B^c\cup C$. Por tanto $A\subseteq B^c\cup C$.
-
-Ahora supongamos $A\subseteq B^c\cup C$. Tomemos $x\in B$. Si $x\in A$, entonces por la inclusión anterior $x\in B^c\cup C$. Como $x\in B$, no puede estar en $B^c$; luego $x\in C$. Si $x\notin A$, entonces $x\in A^c$. En ambos casos, para todo $x\in B$ se cumple $x\in A^c\cup C$, de modo que $B\subseteq A^c\cup C$.
-
-Finalmente, supongamos $B\subseteq A^c\cup C$ y sea $x\in A\cap B$. Como $x\in B$, tenemos $x\in A^c\cup C$. Pero $x\in A$, por lo que $x\notin A^c$; entonces $x\in C$. Así $A\cap B\subseteq C$.
-
-La equivalencia lógica relevante aparece al pasar de «si $x\in A$ y $x\in B$, entonces $x\in C$» a «si $x\in A$, entonces $x\notin B$ o $x\in C$».
+Recíprocamente, si $\mathcal P(A)\subseteq\mathcal P(B)$, entonces $A\in\mathcal P(A)$, por lo que $A\in\mathcal P(B)$. Esto significa $A\subseteq B$.
 
 ### 74
-La primera igualdad siempre vale:
+
+Si $A\subseteq B$, entonces $\mathcal P(A)\subseteq\mathcal P(B)$ y $A\cup B=B$. Por tanto
 
 $$
-\begin{aligned}
-X\in\mathcal P(A\cap B)
-&\Longleftrightarrow X\subseteq A\cap B\\
-&\Longleftrightarrow X\subseteq A\land X\subseteq B\\
-&\Longleftrightarrow X\in\mathcal P(A)\cap\mathcal P(B).
-\end{aligned}
+\mathcal P(A)\cup\mathcal P(B)=\mathcal P(B)=\mathcal P(A\cup B).
 $$
 
-Para la segunda igualdad, siempre tenemos
+El caso $B\subseteq A$ es simétrico.
+
+Para la recíproca, supongamos
 
 $$
-\mathcal P(A)\cup\mathcal P(B)\subseteq\mathcal P(A\cup B),
+\mathcal P(A)\cup\mathcal P(B)=\mathcal P(A\cup B)
 $$
 
-pero la inclusión inversa puede fallar porque un subconjunto de $A\cup B$ puede mezclar elementos exclusivos de ambos conjuntos.
-
-La igualdad
+y que ninguna inclusión vale. Entonces existen
 
 $$
-\mathcal P(A\cup B)=\mathcal P(A)\cup\mathcal P(B)
+a\in A\setminus B,\qquad b\in B\setminus A.
 $$
 
-es verdadera si y sólo si $A\subseteq B$ o $B\subseteq A$. En efecto, si $A\subseteq B$, entonces $A\cup B=B$ y $\mathcal P(A)\subseteq\mathcal P(B)$, así que ambos lados son $\mathcal P(B)$; análogamente si $B\subseteq A$. Recíprocamente, si ninguno contiene al otro, existen $a\in A\setminus B$ y $b\in B\setminus A$. Entonces $\{a,b\}\subseteq A\cup B$, pero $\{a,b\}$ no es subconjunto de $A$ ni de $B$, contradiciendo la igualdad.
+Como $\{a,b\}\subseteq A\cup B$, tenemos $\{a,b\}\in\mathcal P(A\cup B)$. Pero $\{a,b\}\not\subseteq A$ porque $b\notin A$, y $\{a,b\}\not\subseteq B$ porque $a\notin B$. Por tanto $\{a,b\}$ no pertenece a $\mathcal P(A)\cup\mathcal P(B)$, contradicción.
+
+Luego la igualdad vale exactamente cuando $A\subseteq B$ o $B\subseteq A$.
 
 ### 75
-La afirmación es verdadera. Usamos asociatividad de la diferencia simétrica:
+
+La condición $x\in A\triangle B$ significa que $x$ pertenece a exactamente uno de $A$ y $B$.
+
+Por tanto $x\in(A\triangle B)\triangle C$ si y sólo si:
+
+- $x$ pertenece a exactamente uno de $A,B$ y no pertenece a $C$, o
+- $x$ pertenece a $C$ y no pertenece a exactamente uno de $A,B$.
+
+Eso ocurre exactamente cuando $x$ pertenece a uno o a tres de los conjuntos $A,B,C$, es decir, a un número impar de ellos.
+
+El mismo criterio describe $x\in A\triangle(B\triangle C)$. Luego, para todo $x$,
 
 $$
-A\triangle B=A\triangle C.
+x\in(A\triangle B)\triangle C
+\Longleftrightarrow
+x\in A\triangle(B\triangle C),
 $$
 
-Aplicando $A\triangle$ a ambos lados,
-
-$$
-A\triangle(A\triangle B)
-=A\triangle(A\triangle C).
-$$
-
-Por asociatividad y $A\triangle A=\varnothing$,
-
-$$
-B=C.
-$$
-
-También puede demostrarse elemento a elemento interpretando $\triangle$ como XOR.
+y por extensionalidad la diferencia simétrica es asociativa.
 
 ### 76
-Sea $x$ arbitrario. Supongamos $x\in A$.
 
-Si $x\in C$, entonces $x\in A\cap C=B\cap C$, y por tanto $x\in B$.
+Si $X\cap A=B$, entonces necesariamente $B\subseteq A$.
 
-Si $x\notin C$, entonces $x\in A\cup C=B\cup C$. Como no pertenece a $C$, debe pertenecer a $B$.
+Recíprocamente, si $B\subseteq A$, existe solución; por ejemplo $X=B$, pues $B\cap A=B$.
 
-Así $A\subseteq B$. El argumento es completamente simétrico para obtener $B\subseteq A$. Por doble inclusión, $A=B$.
+Bajo la condición $B\subseteq A$, todas las soluciones son
+
+$$
+X=B\cup C,\qquad C\subseteq A^c.
+$$
+
+En efecto,
+
+$$
+(B\cup C)\cap A=(B\cap A)\cup(C\cap A)=B.
+$$
+
+Para demostrar que no falta ninguna, sea $X$ una solución cualquiera. Entonces
+
+$$
+X=(X\cap A)\cup(X\cap A^c)=B\cup(X\cap A^c).
+$$
+
+Tomando $C=X\cap A^c$ obtenemos exactamente la forma descrita.
 
 ### 77
-Para cualquier par ordenado $(x,y)$:
+
+Si $X\cup A=B$, entonces $A\subseteq B$. Esta condición también es suficiente: si $A\subseteq B$, tomar $X=B$ produce una solución.
+
+Supongamos ahora $A\subseteq B$. De $X\cup A=B$ se deduce $X\subseteq B$. Además, todo elemento de $B\setminus A$ debe pertenecer a $X$, porque no puede venir de $A$. Por tanto
 
 $$
-\begin{aligned}
-(x,y)\in(A\times B)\cap(C\times D)
-&\Longleftrightarrow (x\in A\land y\in B)\land(x\in C\land y\in D)\\
-&\Longleftrightarrow (x\in A\cap C)\land(y\in B\cap D)\\
-&\Longleftrightarrow (x,y)\in(A\cap C)\times(B\cap D).
-\end{aligned}
+B\setminus A\subseteq X\subseteq B.
 $$
 
-Luego la identidad es válida.
+Estas inclusiones también son suficientes: si se cumplen, entonces $X\cup A\subseteq B$; y si $b\in B$, o $b\in A$, o $b\in B\setminus A\subseteq X$, así que $B\subseteq X\cup A$.
 
-Si $A\times B=C\times D\ne\varnothing$, todos los factores son no vacíos. Fijemos $(a,b)$ en el producto. Para cualquier $x\in A$, $(x,b)\in A\times B=C\times D$, así $x\in C$; por simetría $A=C$. Del mismo modo, $B=D$. Por tanto, para productos no vacíos,
+Equivalentemente, todas las soluciones son
 
 $$
-A\times B=C\times D
-\Longleftrightarrow
-A=C\text{ y }B=D.
+X=(B\setminus A)\cup C,\qquad C\subseteq A.
 $$
 
 ### 78
-Las tres primeras identidades se obtienen directamente de la lectura XOR:
+
+Si $A=\varnothing$ o $B=\varnothing$, entonces $A\times B=\varnothing$, de modo que la inclusión en $C\times D$ es automática.
+
+Supongamos ahora $A\ne\varnothing$, $B\ne\varnothing$ y
 
 $$
-A\triangle A=\varnothing,
+A\times B\subseteq C\times D.
 $$
 
-porque ningún elemento pertenece a exactamente uno de dos conjuntos iguales;
+Elige $b_0\in B$. Para cualquier $a\in A$, $(a,b_0)\in A\times B$, luego $(a,b_0)\in C\times D$. Por tanto $a\in C$, y así $A\subseteq C$.
 
-$$
-A\triangle\varnothing=A,
-$$
+Elige ahora $a_0\in A$. Para cualquier $b\in B$, $(a_0,b)\in A\times B\subseteq C\times D$, de donde $b\in D$. Luego $B\subseteq D$.
 
-porque pertenecer a exactamente uno de $A$ y $\varnothing$ equivale a pertenecer a $A$;
+Recíprocamente, si $A\subseteq C$ y $B\subseteq D$, todo par de $A\times B$ pertenece a $C\times D$.
 
-y la conmutatividad es inmediata por simetría.
-
-Para asociatividad, fijemos un elemento $x$ y sean $p,q,r$ las proposiciones $x\in A$, $x\in B$, $x\in C$. Pertenecer a $A\triangle(B\triangle C)$ significa que un número impar de $p,q,r$ es verdadero. La misma condición caracteriza $(A\triangle B)\triangle C$. Luego los conjuntos son iguales.
-
-Sobre $\mathcal P(U)$, la operación $\triangle$ tiene neutro $\varnothing$, cada conjunto es su propio inverso y la operación es asociativa y conmutativa. Esto sugiere una estructura de grupo abeliano; su estudio abstracto corresponde a tomos posteriores.
+La no vacuidad es esencial: si $B=\varnothing$, entonces $A\times B=\varnothing$ cualquiera sea $A$, por lo que la inclusión del producto no permite concluir nada sobre $A\subseteq C$.
 
 ### 79
-Podemos organizar una cadena circular eficiente.
 
-$1\Rightarrow2$: si $A\subseteq B$, entonces $A\cap B=A$.
+Sea $x$ arbitrario.
 
-$2\Rightarrow3$: si $A\cap B=A$, por absorción
+Si $x\in C$, entonces
 
 $$
-A\cup B=(A\cap B)\cup B=B.
+x\in A
+\Longleftrightarrow
+x\in A\cap C
+\Longleftrightarrow
+x\in B\cap C
+\Longleftrightarrow
+x\in B.
 $$
 
-$3\Rightarrow4$: si $A\cup B=B$, entonces $A\subseteq B$; por inversión del complemento, $B^c\subseteq A^c$.
+Si $x\notin C$, la igualdad $A\cup C=B\cup C$ da
 
-$4\Rightarrow1$: tomando complementos, $B^c\subseteq A^c$ implica $A\subseteq B$.
+$$
+x\in A
+\Longleftrightarrow
+x\in A\cup C
+\Longleftrightarrow
+x\in B\cup C
+\Longleftrightarrow
+x\in B.
+$$
 
-Además,
+Luego $A=B$ por extensionalidad.
 
-$1\Rightarrow5$: si $A\subseteq B$, todo subconjunto de $A$ es subconjunto de $B$, por lo que $\mathcal P(A)\subseteq\mathcal P(B)$.
+Cada hipótesis por separado es insuficiente:
 
-$5\Rightarrow1$: como $A\in\mathcal P(A)$, la inclusión $\mathcal P(A)\subseteq\mathcal P(B)$ implica $A\in\mathcal P(B)$, es decir, $A\subseteq B$.
+- toma $A=\{1\}$, $B=\{2\}$ y $C=\{1,2\}$. Entonces $A\cup C=B\cup C$, pero $A\ne B$;
+- toma $A=\{1\}$, $B=\{2\}$ y $C=\varnothing$. Entonces $A\cap C=B\cap C$, pero $A\ne B$.
+
+### 80
+
+Basta establecer una cadena cíclica entre las primeras cuatro condiciones y conectar una de ellas con la quinta.
+
+**$(1)\Rightarrow(2)$.** Si $A\subseteq B$, entonces los elementos comunes a $A$ y $B$ son exactamente los de $A$, de modo que $A\cap B=A$.
+
+**$(2)\Rightarrow(3)$.** Si $A\cap B=A$, entonces $A\subseteq B$. Por tanto $A\cup B=B$.
+
+**$(3)\Rightarrow(4)$.** Si $A\cup B=B$, todo elemento de $A$ pertenece a $B$, así que $A\setminus B=\varnothing$.
+
+**$(4)\Rightarrow(1)$.** Si $A\setminus B=\varnothing$ y $x\in A$, entonces $x\notin B$ produciría $x\in A\setminus B$, contradicción. Luego $x\in B$, y por tanto $A\subseteq B$.
+
+Finalmente, por el ejercicio 73,
+
+$$
+A\subseteq B
+\Longleftrightarrow
+\mathcal P(A)\subseteq\mathcal P(B).
+$$
 
 Así las cinco condiciones son equivalentes.
 
-### 80
-La identidad no es válida en general.
-
-(a) Es falsa.
-
-(b) Basta un universo de un elemento. Toma $U=\{1\}$, $A=\{1\}$ y $B=C=\varnothing$. Entonces
-
-$$
-A\triangle(B\cap C)=A\triangle\varnothing=A=\{1\},
-$$
-
-mientras
-
-$$
-(A\triangle B)\cap(A\triangle C)=A\cap A=A=\{1\}.
-$$
-
-Este intento no refuta; por tanto probamos otra configuración. Toma $U=\{1\}$, $A=\varnothing$, $B=\{1\}$, $C=\varnothing$. Entonces
-
-$$
-A\triangle(B\cap C)=\varnothing,
-$$
-
-pero
-
-$$
-(A\triangle B)\cap(A\triangle C)=\{1\}\cap\varnothing=\varnothing.
-$$
-
-Tampoco refuta. Con un universo unitario, una verificación de los ocho casos posibles muestra que la identidad resulta verdadera. Por tanto se necesita al menos un universo de dos elementos.
-
-Toma $U=\{1,2\}$,
-
-$$
-A=\{1\},\qquad B=\{1\},\qquad C=\{2\}.
-$$
-
-Entonces $B\cap C=\varnothing$ y
-
-$$
-A\triangle(B\cap C)=\{1\}.
-$$
-
-Por otra parte,
-
-$$
-A\triangle B=\varnothing,
-$$
-
-$$
-A\triangle C=\{1,2\},
-$$
-
-de modo que el lado derecho es $\varnothing$. Éste es un contraejemplo, y $|U|=2$ es mínimo.
-
-(c) Una condición suficiente no trivial es $A\subseteq B\cap C$. Bajo esa hipótesis,
-
-$$
-A\triangle B=B\setminus A,
-\qquad
-A\triangle C=C\setminus A,
-$$
-
-y
-
-$$
-A\triangle(B\cap C)=(B\cap C)\setminus A.
-$$
-
-Además,
-
-$$
-(B\setminus A)\cap(C\setminus A)
-=(B\cap C)\setminus A.
-$$
-
-Por tanto la identidad vale.
-
-(d) Usando
-
-$$
-X\triangle Y=(X\cap Y^c)\cup(X^c\cap Y),
-$$
-
-el lado izquierdo es
-
-$$
-[A\cap(B\cap C)^c]\cup[A^c\cap B\cap C],
-$$
-
-es decir,
-
-$$
-[A\cap(B^c\cup C^c)]\cup[A^c\cap B\cap C].
-$$
-
-El lado derecho es
-
-$$
-[(A\cap B^c)\cup(A^c\cap B)]
-\cap
-[(A\cap C^c)\cup(A^c\cap C)].
-$$
-
-Al distribuir aparecen términos que exigen simultáneamente las condiciones de ambos XOR; esa estructura no coincide en general con el XOR respecto de $B\cap C$.
