@@ -49,18 +49,20 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
 
 ## Estado actual
 
-- Prefacio para estudiantes: borrador cotejado.
-- Apertura del Capítulo 1: borrador cotejado.
-- **Sección 1A — $\mathbf R^n$ y $\mathbf C^n$: cotejada contra la fuente oficial de 16-08-2026.**
-- **Ejercicios 1A: 15/15 resueltos y verificados.**
-- **Sección 1B — Definición de espacio vectorial: cotejada contra la fuente oficial de 16-08-2026.**
-- **Ejercicios 1B: 8/8 resueltos y verificados.**
-- **Sección 1C — Subespacios: cotejada contra la fuente oficial de 16-08-2026.**
-- **Ejercicios 1C: 24/24 resueltos y verificados.**
-- Total de ejercicios resueltos del Capítulo 1: **47/47**.
-- Glosario terminológico: v0.4.
-- Capítulo 1: completo en primera pasada pública; pendiente de QA global y revisión comunitaria.
-- Siguiente bloque: **2A — Span e independencia lineal**.
+- **Capítulo 1 — Espacios vectoriales:** primera pasada pública completa.
+  - 1A: 15/15 ejercicios resueltos.
+  - 1B: 8/8 ejercicios resueltos.
+  - 1C: 24/24 ejercicios resueltos.
+  - Total Capítulo 1: **47/47**.
+- **Capítulo 2 — Espacios vectoriales de dimensión finita:** iniciado.
+  - apertura: cotejada;
+  - **2A — Span e independencia lineal: traducción completa y cotejada**;
+  - **Ejercicios 2A: 20/20 resueltos y verificados**.
+- Total acumulado de ejercicios resueltos: **67**.
+- Glosario terminológico: **v0.5**.
+- Siguiente bloque: **2B — Bases**.
+
+La Sección 2A incorpora las dos correcciones de la errata oficial que afectan a sus páginas impresas: p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`), ambas ya corregidas en el PDF canónico de 16-08-2026.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
