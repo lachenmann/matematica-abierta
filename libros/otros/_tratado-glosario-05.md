@@ -161,7 +161,3 @@ En particular, $x\in S(x)$. Esta operación permite formular la noción de conju
 **Véase también:** [Cero](#gl-cero), [Conjunto inductivo](#gl-conjunto-inductivo), [Números naturales](#gl-numeros-naturales).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con la publicación de **§1.1 — Conjuntos inductivos y construcción de $\omega$**, el glosario incorpora por primera vez vocabulario aritmético construido dentro del tratado. La siguiente ampliación acompañará **§1.2 — Estructura de los naturales y Peano**.
-:::
