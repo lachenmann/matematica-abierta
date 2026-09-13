@@ -7,8 +7,8 @@
 - Obra: Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición.
 - Fuente canónica: PDF oficial de Sheldon Axler, versión **16-08-2026**.
 - Copia de trabajo inicial: 25-03-2024.
-- Capítulo 1 y Sección 2A cotejados contra el PDF oficial de 16-08-2026.
-- La errata oficial fue revisada para 2A; el PDF canónico ya incorpora las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`).
+- Capítulo 1 y secciones 2A–2B cotejados contra el PDF oficial de 16-08-2026.
+- La errata oficial fue revisada para 2A–2B. Las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`) afectan a 2A y ya están incorporadas; no se listan erratas específicas para las pp. 39–43 de 2B.
 
 ## Avance público
 
@@ -19,11 +19,11 @@
 - Sección 1C — Subespacios: `COTEJADO`; **24/24 ejercicios resueltos**.
 - Capítulo 1: **47/47 ejercicios**, primera pasada pública completa; QA global registrado en `CHAPTER1_QA.md`.
 - Apertura del capítulo 2 — Espacios vectoriales de dimensión finita: `COTEJADO`.
-- Sección 2A — Span e independencia lineal: `COTEJADO`.
-- Ejercicios 2A: **20/20 resueltos**; soluciones `VERIFICADO`.
-- Total acumulado de ejercicios resueltos: **67**.
-- Glosario terminológico: **v0.5**.
-- Siguiente bloque activo: **2B — Bases**.
+- Sección 2A — Span e independencia lineal: `COTEJADO`; **20/20 ejercicios resueltos**, soluciones `VERIFICADO`.
+- Sección 2B — Bases: `COTEJADO`; **11/11 ejercicios resueltos**, soluciones `VERIFICADO`.
+- Total acumulado de ejercicios resueltos: **78**.
+- Glosario terminológico: **v0.6**.
+- Siguiente bloque activo: **2C — Dimensión**.
 
 ## QA de 1A
 
@@ -56,7 +56,19 @@
 - lema de dependencia lineal 2.19 y teorema de comparación de longitudes 2.22 incluidos con demostración;
 - correcciones oficiales de pp. 28 y 35 incorporadas desde la fuente canónica 2026;
 - 20/20 ejercicios resueltos;
-- ejercicio 20 resuelto sin recurrir a división/factorización polinómica posterior: se construye directamente una lista generadora de longitud $m$ para $\{p:p(2)=0\}$.
+- ejercicio 20 resuelto sin recurrir a división/factorización polinómica posterior.
+
+## QA de 2B
+
+- numeración 2.26–2.33 preservada, incluida la ecuación 2.29;
+- definición y criterio de base cotejados;
+- teoremas 2.30, 2.31, 2.32 y 2.33 incluidos con demostración;
+- errata oficial revisada: sin correcciones específicas para 2B;
+- 11/11 ejercicios resueltos;
+- ejercicio 2 verifica todas las afirmaciones de 2.27;
+- ejercicios 3 y 4 construyen explícitamente base, extensión y complemento directo;
+- ejercicios 6 y 8 incluyen contraejemplos explícitos;
+- ejercicio 11 usa la complexificación definida en 1B y verifica generación e independencia sobre $\mathbf C$.
 
 ## Estados
 
