@@ -63,6 +63,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Conjunto de funciones](#gl-conjunto-funciones) ·
 [Conjunto inductivo](#gl-conjunto-inductivo) ·
 [Conjunto potencia](#gl-conjunto-potencia) ·
+[Conjunto transitivo](#gl-conjunto-transitivo) ·
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
 [Cota inferior](#gl-cota-inferior) ·
@@ -96,10 +97,12 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Par no ordenado](#gl-par-no-ordenado) ·
 [Par ordenado](#gl-par-ordenado) ·
 [Partición](#gl-particion) ·
+[Predecesor](#gl-predecesor) ·
 [Preimagen](#gl-preimagen) ·
 [Preorden](#gl-preorden) ·
 [Principio de definición sobre clases](#gl-definicion-sobre-clases) ·
 [Principio de inducción](#gl-principio-induccion) ·
+[Propiedades de Peano](#gl-propiedades-peano) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
@@ -119,8 +122,8 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Transitividad](#gl-transitividad) ·
 [Tupla finita](#gl-tupla-finita) ·
 [Unión](#gl-union) ·
+[Uno](#gl-uno) ·
 [ZF](#gl-zf)
-
 
 {{< include _tratado-glosario-01.md >}}
 
@@ -131,3 +134,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-04.md >}}
 
 {{< include _tratado-glosario-05.md >}}
+
+{{< include _tratado-glosario-06.md >}}
