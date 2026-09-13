@@ -1,24 +1,34 @@
-# Glosario terminológico · v0.2
+# Glosario terminológico · v0.3
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
 | Inglés | Español preferido | Observación |
 |---|---|---|
 | vector space | espacio vectorial | Estándar. |
+| vector space over $\mathbf F$ | espacio vectorial sobre $\mathbf F$ | Preferido frente a «espacio vectorial sobre el cuerpo $\mathbf F$» cuando $\mathbf F$ ya está fijado. |
+| real vector space | espacio vectorial real | Estándar. |
+| complex vector space | espacio vectorial complejo | Estándar. |
+| vector | vector | Estándar. |
+| point | punto | Axler lo usa como lenguaje geométrico alternativo para elementos de un espacio vectorial. |
 | linear map | aplicación lineal | Preferido frente a «transformación lineal» para conservar la distinción map/operator. |
 | linear operator | operador lineal | Para $T:V\to V$. |
 | complex number | número complejo | Estándar. |
 | ordered pair | par ordenado | Estándar. |
 | scalar | escalar | Estándar. |
+| additive identity | identidad aditiva | Estándar. |
 | additive inverse | inverso aditivo | Estándar; se mantiene la terminología estructural de Axler. |
+| multiplicative identity | identidad multiplicativa | Estándar. |
 | multiplicative inverse | inverso multiplicativo | Estándar. |
 | field | cuerpo | Preferido en el texto principal; «campo» queda como variante regional. Se conserva $\mathbf F$ porque procede del inglés *field*. |
 | algebraically closed field | cuerpo algebraicamente cerrado | Estándar. |
 | list | lista | Axler usa listas, no conjuntos, para secuencias finitas ordenadas. |
 | n-tuple | $n$-tupla | Sinónimo señalado por Axler para una lista de longitud $n$. |
+| sequence | sucesión | Para elementos de $\mathbf F^\infty$; no traducir como «lista» porque Axler distingue ambos conceptos. |
 | coordinate | coordenada | Estándar. |
 | scalar multiplication | multiplicación por escalares | Preferido frente a «multiplicación escalar» para evitar ambigüedad. |
 | dot product | producto punto | Preferido para distinguirlo de *scalar multiplication* y de *inner product*. |
+| function space | espacio de funciones | Cuando se usa como descripción de $\mathbf F^S$ o $V^S$. |
+| complexification | complexificación | Término estándar; $V_{\mathbf C}=V\times V$ con la estructura compleja indicada por Axler. |
 | span | subespacio generado / span | En prosa: «subespacio generado»; conservar `span` cuando sea parte de notación definida. |
 | linear combination | combinación lineal | Estándar. |
 | linear independence | independencia lineal | Estándar. |
