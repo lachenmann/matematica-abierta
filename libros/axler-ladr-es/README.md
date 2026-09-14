@@ -61,11 +61,14 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
   - 2C — Dimensión: **20/20 ejercicios resueltos y verificados**.
   - Total Capítulo 2: **51/51**.
   - [QA global del Capítulo 2](CHAPTER2_QA.md).
-- Total acumulado de ejercicios resueltos: **98**.
-- Glosario terminológico: **v0.7**.
-- Siguiente bloque: **Capítulo 3, Sección 3A — Espacio vectorial de aplicaciones lineales**.
+- **Capítulo 3 — Aplicaciones lineales:** en desarrollo.
+  - apertura: cotejada;
+  - **3A — Espacio vectorial de aplicaciones lineales: traducción completa y cotejada; 17/17 ejercicios resueltos y verificados**.
+- Total acumulado de ejercicios resueltos: **115**.
+- Glosario terminológico: **v0.8**.
+- Siguiente bloque: **3B — Espacios nulos e imágenes**.
 
-El Capítulo 2 incorpora las correcciones oficiales de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`), ya presentes en el PDF canónico de 16-08-2026. La errata oficial vigente no registra correcciones específicas para las pp. 39–50 de 2B–2C.
+La errata oficial vigente no registra correcciones específicas para las pp. 51–58 de la apertura y 3A. La imagen de tercero incluida por Axler en la apertura del capítulo 3 no se reproduce en esta edición de trabajo; su tratamiento licenciatario queda separado del texto CC BY-NC.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
