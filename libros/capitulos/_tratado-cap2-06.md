@@ -156,9 +156,3 @@ es un **[anillo conmutativo](../otros/tratado-de-analisis-glosario.md#gl-anillo-
 Las leyes del grupo aditivo demostradas en §2.4 establecen que $(\mathbb Z,+,0_{\mathbb Z})$ es un grupo abeliano. La Proposición 2.6.1 demuestra asociatividad y conmutatividad del producto, existencia de la unidad multiplicativa y distributividad respecto de la suma. Éstas son exactamente las leyes exigidas por la convención anterior. ∎
 
 Este teorema resume una estructura, pero no reemplaza sus pruebas. La información matemática está en las proposiciones que lo preceden.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.6, $\mathbb Z$ queda reconocido como anillo conmutativo con identidad. La siguiente entrega será **§2.7 — Incrustación canónica de $\mathbb N$**, donde demostraremos rigurosamente que la aritmética natural se reproduce dentro de la aritmética entera.
-:::
