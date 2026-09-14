@@ -33,7 +33,3 @@ Esto expresa que la aritmética natural se reproduce fielmente dentro de $\mathb
 **Véase también:** [Inyectividad](#gl-inyectividad), [Número entero](#gl-numero-entero), [Números naturales](#gl-numeros-naturales).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.7 — Incrustación canónica de $\mathbb N$** se incorpora la noción de incrustación canónica entre sistemas numéricos construidos. La siguiente ampliación acompañará **§2.8 — Forma normal con signo y ausencia de divisores de cero**.
-:::
