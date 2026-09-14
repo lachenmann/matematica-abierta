@@ -55,7 +55,3 @@ Es una consecuencia inmediata de que $\leq_{\mathbb Z}$ es un orden total y de l
 **Véase también:** [Orden entero](#gl-orden-entero), [Orden total](#gl-orden-total), [Orden estricto](#gl-orden-estricto), [Totalidad (conexidad)](#gl-totalidad).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.9 — Orden de los enteros** se incorporan el orden entero y la tricotomía en $\mathbb Z$. La siguiente ampliación acompañará las secciones de cierre del capítulo cuando aparezca nuevo vocabulario matemático.
-:::
