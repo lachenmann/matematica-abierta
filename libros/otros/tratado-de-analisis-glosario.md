@@ -83,6 +83,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cero entero](#gl-cero-entero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
 [Clase entera](#gl-clase-entera) ·
+[Clase racional](#gl-clase-racional) ·
 [Codominio](#gl-codominio) ·
 [Composición de funciones](#gl-composicion-funciones) ·
 [Composición de relaciones](#gl-composicion-relaciones) ·
@@ -127,8 +128,10 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Multiplicación entera](#gl-multiplicacion-entera) ·
 [Multiplicación natural](#gl-multiplicacion-natural) ·
 [Nivel objeto](#gl-nivel-objeto) ·
+[Notación fraccionaria](#gl-notacion-fraccionaria) ·
 [Núcleo inductivo](#gl-nucleo-inductivo) ·
 [Número entero](#gl-numero-entero) ·
+[Número racional](#gl-numero-racional) ·
 [Números naturales](#gl-numeros-naturales) ·
 [$\omega$](#gl-omega) ·
 [Opuesto entero](#gl-opuesto-entero) ·
@@ -158,6 +161,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Relación binaria](#gl-relacion-binaria) ·
 [Relación de equivalencia](#gl-relacion-equivalencia) ·
 [Relación de equivalencia entera](#gl-relacion-equivalencia-entera) ·
+[Relación de equivalencia racional](#gl-relacion-equivalencia-racional) ·
 [Relación inversa](#gl-relacion-inversa) ·
 [Representante](#gl-representante) ·
 [Representante fraccionario](#gl-representante-fraccionario) ·
@@ -221,3 +225,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-19.md >}}
 
 {{< include _tratado-glosario-20.md >}}
+
+{{< include _tratado-glosario-21.md >}}
