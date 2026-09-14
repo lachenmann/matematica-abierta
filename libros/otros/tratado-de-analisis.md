@@ -76,17 +76,17 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación iniciada con **§2.0 — Por qué necesitamos los enteros**: la sustracción como operación no siempre disponible en $\mathbb N$, la representación heurística de diferencias mediante pares de naturales y el programa de construcción de $\mathbb Z$ mediante una relación de equivalencia y el cociente correspondiente.
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.1**: motivación de la extensión, diferencias formales como pares de naturales y definición de la relación
 
    $$
-   \mathbb N\longrightarrow\mathbb N\times\mathbb N\longrightarrow
-   \text{diferencias formales}\longrightarrow
-   \text{relación de equivalencia}\longrightarrow\mathbb Z.
+   (a,b)\sim_{\mathbb Z}(c,d)\iff a+d=b+c,
    $$
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión, la aritmética y el orden naturales.
+   demostrada reflexiva, simétrica y transitiva antes de formar el cociente entero.
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.1 — Diferencias formales**, donde los pares de naturales adquirirán su primera definición explícita en la construcción de $\mathbb Z$.
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión, la aritmética natural, el orden y el comienzo de la construcción de los enteros.
+
+La siguiente incorporación continuará el Capítulo 2 con **§2.2 — Construcción del conjunto $\mathbb Z$**, formando el cociente de las diferencias formales por $\sim_{\mathbb Z}$.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
