@@ -50,8 +50,8 @@ $$
 xy=0_R\Longrightarrow x=0_R\ \text{o}\ y=0_R.
 $$
 
-La noción queda fijada en §2.6. La demostración de que $\mathbb Z$ satisface estas condiciones se realizará posteriormente, una vez establecida la forma normal con signo y la ausencia de divisores de cero.
+La noción queda fijada en §2.6. En §2.8 se demuestra que $\mathbb Z$ satisface estas condiciones: $0_{\mathbb Z}\neq1_{\mathbb Z}$ y el producto de dos enteros sólo puede ser cero si alguno de sus factores es cero. Por tanto, $\mathbb Z$ es un dominio de integridad.
 
-**En el Tratado:** [Convención 2.6.2 — Terminología algebraica](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-terminologia-algebraica).
+**En el Tratado:** [Convención 2.6.2 — Terminología algebraica](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-terminologia-algebraica) y [Teorema 2.8.4 — $\mathbb Z$ es un dominio de integridad](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-dominio-integridad-enteros).
 
-**Véase también:** [Anillo](#gl-anillo), [Anillo conmutativo](#gl-anillo-conmutativo), [Producto nulo](#gl-producto-nulo).
+**Véase también:** [Anillo](#gl-anillo), [Anillo conmutativo](#gl-anillo-conmutativo), [Producto nulo](#gl-producto-nulo), [Forma normal con signo](#gl-forma-normal-signo).

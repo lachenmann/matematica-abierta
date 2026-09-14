@@ -106,7 +106,3 @@ $$
 La relación canónica entre ambos sistemas es la función inyectiva $\iota$.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.7 queda construida la incrustación canónica $\iota_{\mathbb N}^{\mathbb Z}$ y demostrado que preserva $0$, $1$, suma y producto. La siguiente entrega será **§2.8 — Forma normal con signo y ausencia de divisores de cero**.
-:::

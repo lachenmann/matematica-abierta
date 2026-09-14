@@ -138,25 +138,35 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.7**: diferencias formales y cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.8**: diferencias formales y cociente
 
    $$
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}};
    $$
 
-   operaciones aritméticas bien definidas sobre clases, sustracción total y estructura de anillo conmutativo con identidad. Además se construye la incrustación canónica
+   operaciones aritméticas bien definidas sobre clases, sustracción total, estructura de anillo conmutativo con identidad e incrustación canónica
 
    $$
-   \boxed{
-   \iota_{\mathbb N}^{\mathbb Z}(n)=[(n,0)]
-   }
+   \iota_{\mathbb N}^{\mathbb Z}(n)=[(n,0)].
    $$
 
-   y se demuestra que es inyectiva y preserva $0$, $1$, suma y producto. Así queda establecido rigurosamente que la aritmética natural se reproduce dentro de $\mathbb Z$, sin identificar todavía literalmente $\mathbb N$ con un subconjunto de $\mathbb Z$.
+   La forma normal con signo demuestra que todo entero es exactamente $0_{\mathbb Z}$, $\iota(n)$ o $-\iota(n)$ para un único $n\neq0$ en los casos no nulos. A partir de ella se obtiene
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la construcción de $\mathbb Z$ hasta su estructura de anillo y la incrustación canónica de $\mathbb N$ en $\mathbb Z$.
+   $$
+   0_{\mathbb Z}\neq1_{\mathbb Z},
+   \qquad
+   xy=0_{\mathbb Z}\Longrightarrow x=0_{\mathbb Z}\ \text{o}\ y=0_{\mathbb Z},
+   $$
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.8 — Forma normal con signo y ausencia de divisores de cero**.
+   y, por tanto,
+
+   $$
+   \boxed{\mathbb Z\text{ es un dominio de integridad}.}
+   $$
+
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la forma normal con signo y el estatuto demostrado de $\mathbb Z$ como dominio de integridad.
+
+La siguiente incorporación continuará el Capítulo 2 con **§2.9 — Orden de los enteros**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

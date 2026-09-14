@@ -22,6 +22,7 @@ topics:
   - multiplicacion
   - anillos
   - incrustaciones
+  - dominios-de-integridad
 prerequisites:
   - MA-BCH-0007
 related:
@@ -58,3 +59,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap2-06.md >}}
 
 {{< include _tratado-cap2-07.md >}}
+
+{{< include _tratado-cap2-08.md >}}
