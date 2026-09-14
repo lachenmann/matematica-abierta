@@ -25,7 +25,3 @@ $$
 Esta disciplina será decisiva en el capítulo siguiente. Los números racionales volverán a construirse mediante un cociente, esta vez para hacer posible la división por todo entero no nulo.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.11 queda explicitado el patrón metodológico que sostiene la construcción de $\mathbb Z$ y que volverá a utilizarse en $\mathbb Q$. La siguiente entrega será **§2.12 — Notas bibliográficas**.
-:::
