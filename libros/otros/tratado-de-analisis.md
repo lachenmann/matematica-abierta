@@ -138,7 +138,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.2**: diferencias formales como pares de naturales; relación
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.3**: diferencias formales como pares de naturales; relación
 
    $$
    (a,b)\sim_{\mathbb Z}(c,d)\iff a+d=b+c;
@@ -150,15 +150,18 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}},
    $$
 
-   notación de clases enteras y criterio
+   criterio de igualdad de clases y primera operación bien definida sobre el cociente:
 
    $$
-   [(a,b)]=[(c,d)]\iff a+d=b+c.
+   [(a,b)]+_{\mathbb Z}[(c,d)]
+   =[(a+c,b+d)].
    $$
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión, la aritmética natural, el orden y la construcción inicial de $\mathbb Z$.
+   La independencia respecto de los representantes se demuestra mediante un principio binario de definición sobre clases.
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.3 — Suma de enteros**, definiendo la primera operación sobre clases y demostrando su independencia del representante.
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión, la aritmética natural, el orden y la construcción inicial de $\mathbb Z$, incluida su suma.
+
+La siguiente incorporación continuará el Capítulo 2 con **§2.4 — Cero, opuesto y sustracción**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
