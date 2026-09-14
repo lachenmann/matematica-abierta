@@ -7,8 +7,8 @@
 - Obra: Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición.
 - Fuente canónica: PDF oficial de Sheldon Axler, versión **16-08-2026**.
 - Copia de trabajo inicial: 25-03-2024.
-- Capítulos 1–2 cotejados contra el PDF oficial de 16-08-2026.
-- Errata oficial revisada para el Capítulo 2: las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`) afectan a 2A y ya están incorporadas; no se listan correcciones específicas para las pp. 39–50 de 2B–2C.
+- Capítulos 1–2 y apertura/Sección 3A cotejados contra el PDF oficial de 16-08-2026.
+- Errata oficial revisada: las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`) afectan a 2A y ya están incorporadas; no se listan correcciones específicas para las pp. 39–58 de 2B–2C y 3A.
 
 ## Avance público
 
@@ -23,9 +23,11 @@
 - Sección 2B — Bases: `COTEJADO`; **11/11 ejercicios resueltos**, soluciones `VERIFICADO`.
 - Sección 2C — Dimensión: `COTEJADO`; **20/20 ejercicios resueltos**, soluciones `VERIFICADO`.
 - Capítulo 2: **51/51 ejercicios**, primera pasada pública completa; QA global en `CHAPTER2_QA.md`.
-- Total acumulado de ejercicios resueltos: **98**.
-- Glosario terminológico: **v0.7**.
-- Siguiente bloque activo: **Capítulo 3, Sección 3A — Espacio vectorial de aplicaciones lineales**.
+- Apertura del capítulo 3 — Aplicaciones lineales: `COTEJADO`.
+- Sección 3A — Espacio vectorial de aplicaciones lineales: `COTEJADO`; **17/17 ejercicios resueltos**, soluciones `VERIFICADO`.
+- Total acumulado de ejercicios resueltos: **115**.
+- Glosario terminológico: **v0.8**.
+- Siguiente bloque activo: **3B — Espacios nulos e imágenes**.
 
 ## QA de 1A
 
@@ -85,8 +87,23 @@
 - ejercicio 19 aporta contraejemplo explícito a la falsa inclusión–exclusión de tres subespacios;
 - ejercicio 20 demuestra la identidad simétrica correcta sumando tres aplicaciones de 2.43.
 
+## QA de 3A
+
+- apertura del capítulo 3 preservada, incluidos los supuestos permanentes sobre $\mathbf F,U,V,W$;
+- la fotografía de la apertura, material de tercero bajo CC BY-SA, no se reproduce y queda señalada editorialmente;
+- numeración 3.1–3.10 preservada;
+- definición de aplicación lineal, notación $\mathcal L(V,W)$ y ejemplos 3.3 cotejados;
+- lema de la aplicación lineal 3.4 incluido con demostración completa;
+- suma, multiplicación por escalares y producto/composición de aplicaciones lineales preservados;
+- propiedades 3.8 y resultado 3.10 preservados;
+- errata oficial revisada: sin correcciones específicas para las pp. 51–58;
+- 17/17 ejercicios resueltos;
+- ejercicios 5 y 6 desarrollan las demostraciones que Axler deja al lector en 3.6 y 3.8;
+- ejercicio 11 demuestra que el centro de $\mathcal L(V)$ está formado por los múltiplos escalares de $I$ sin usar matrices;
+- ejercicio 17 demuestra que los únicos ideales bilaterales de $\mathcal L(V)$ son $\{0\}$ y $\mathcal L(V)$ mediante aplicaciones elementales definidas sobre una base, sin anticipar 3C.
+
 ## Estados
 
 `PENDIENTE → BORRADOR → COTEJADO → VERIFICADO → CERRADO`
 
-Una unidad `CERRADA` ha superado cotejo con la fuente canónica, control matemático, terminológico y editorial. Los capítulos 1 y 2 permanecen abiertos a revisión comunitaria antes de la promoción definitiva a `CERRADO`.
+Una unidad `CERRADA` ha superado cotejo con la fuente canónica, control matemático, terminológico y editorial. Los capítulos 1 y 2 y la Sección 3A permanecen abiertos a revisión comunitaria antes de la promoción definitiva a `CERRADO`.
