@@ -67,7 +67,7 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 ## Contenido disponible
 
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
-2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — publicación disponible hasta **§1.8**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión, suma y producto naturales, construcción del orden natural como orden total compatible con las operaciones, principio de buen orden, inducción fuerte y balance estructural. Las notas bibliográficas explicitan que las referencias del capítulo funcionan como orientación y contraste metodológico, sin importar teoremas externos.
+2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — **capítulo completo**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión, suma y producto naturales, construcción del orden natural como orden total compatible con las operaciones, principio de buen orden, inducción fuerte, balance estructural, notas bibliográficas y transición hacia los números enteros.
 
    $$
    m\leq n\iff\exists k\in\mathbb N\;(n=m+k)\iff m\subseteq n,
@@ -77,7 +77,7 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 
 3. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión, la aritmética y el orden naturales.
 
-La siguiente incorporación cerrará el Capítulo 1 con **§1.9 — Hacia los números enteros**, preparando la construcción de $\mathbb Z$ mediante diferencias formales y clases de equivalencia.
+La siguiente incorporación comenzará el **Capítulo 2 — Los números enteros**, construyendo $\mathbb Z$ a partir de pares de naturales, una relación de equivalencia y el cociente correspondiente.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
