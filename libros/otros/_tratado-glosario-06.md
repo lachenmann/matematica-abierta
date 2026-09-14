@@ -71,7 +71,3 @@ No se presupone como símbolo numérico previo: aparece después de haber constr
 **Véase también:** [Cero](#gl-cero), [Sucesor](#gl-sucesor), [Números naturales](#gl-numeros-naturales).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con la publicación de **§1.2 — Estructura de los naturales y Peano**, el glosario incorpora la estructura conjuntista interna de los naturales y las propiedades de Peano como teoremas. La siguiente ampliación acompañará **§1.3 — Teorema de recursión**.
-:::
