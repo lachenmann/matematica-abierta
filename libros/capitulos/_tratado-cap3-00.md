@@ -57,7 +57,3 @@ $$
 La notación fraccionaria $\frac ab$ sólo se legitimará **después** de formar el cociente; inmediatamente después se demostrará el criterio de igualdad de clases que permite reconocer cuándo dos de esas escrituras designan el mismo racional. No se utilizará el axioma de elección.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.0 queda planteado el problema algebraico que obliga a ampliar $\mathbb Z$: la división por enteros no nulos no está siempre disponible. La siguiente entrega será **§3.1 — Lemas enteros preparatorios**.
-:::
