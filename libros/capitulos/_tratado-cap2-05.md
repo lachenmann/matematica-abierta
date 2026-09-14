@@ -185,9 +185,3 @@ $$
 $$
 
 De nuevo, $1_{\mathbb Z}$ y el natural $1$ no han sido identificados.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.5 queda construida la multiplicación de enteros como una operación bien definida sobre clases, junto con su unidad $1_{\mathbb Z}$. La siguiente entrega será **§2.6 — Estructura algebraica**.
-:::
