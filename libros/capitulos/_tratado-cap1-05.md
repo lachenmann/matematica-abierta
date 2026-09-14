@@ -204,7 +204,3 @@ $$
 por lo que la Proposición 1.4.7 — Suma nula da $a=0$. La recíproca se sigue de las dos leyes absorbentes del cero. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.5 quedan construidas las dos operaciones aritméticas básicas de $\mathbb N$ y demostradas sus leyes algebraicas fundamentales. La siguiente entrega será **§1.6 — Orden natural**, definido mediante alcanzabilidad aditiva y demostrado después como orden total.
-:::

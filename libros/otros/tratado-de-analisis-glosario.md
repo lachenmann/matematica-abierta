@@ -23,6 +23,8 @@ topics:
   - numeros-naturales
   - recursion
   - aritmetica-natural
+  - orden-natural
+  - buen-orden
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -54,12 +56,14 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Acotado inferiormente](#gl-acotado-inferiormente) ·
 [Acotado superiormente](#gl-acotado-superiormente) ·
 [Adición natural](#gl-adicion-natural) ·
+[Alcanzabilidad aditiva](#gl-alcanzabilidad-aditiva) ·
 [Antisimetría](#gl-antisimetria) ·
 [Aproximación finita de una recursión](#gl-aproximacion-finita-recursion) ·
 [Asociatividad de la suma](#gl-asociatividad-suma) ·
 [Asociatividad del producto](#gl-asociatividad-producto) ·
 [Axioma de infinito](#gl-axioma-infinito) ·
 [Biyectividad](#gl-biyectividad) ·
+[Buen orden](#gl-buen-orden) ·
 [Cancelación aditiva](#gl-cancelacion-aditiva) ·
 [Cero](#gl-cero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
@@ -89,6 +93,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Grafo de una función](#gl-grafo-funcion) ·
 [Igualdad de clases](#gl-igualdad-clases) ·
 [Imagen directa](#gl-imagen-directa) ·
+[Inducción fuerte](#gl-induccion-fuerte) ·
 [Ínfimo](#gl-infimo) ·
 [Intersección](#gl-interseccion) ·
 [Inyectividad](#gl-inyectividad) ·
@@ -102,6 +107,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Números naturales](#gl-numeros-naturales) ·
 [$\omega$](#gl-omega) ·
 [Orden estricto](#gl-orden-estricto) ·
+[Orden natural](#gl-orden-natural) ·
 [Orden parcial](#gl-orden-parcial) ·
 [Orden total](#gl-orden-total) ·
 [Par de Kuratowski](#gl-par-kuratowski) ·
@@ -159,3 +165,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-08.md >}}
 
 {{< include _tratado-glosario-09.md >}}
+
+{{< include _tratado-glosario-10.md >}}
