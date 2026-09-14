@@ -1,14 +1,15 @@
 # Estado del proyecto
 
-Última actualización: 2026-09-13
+Última actualización: 2026-09-14
 
 ## Fuente
 
 - Obra: Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición.
 - Fuente canónica: PDF oficial de Sheldon Axler, versión **16-08-2026**.
 - Copia de trabajo inicial: 25-03-2024.
-- Capítulos 1–2 y apertura/Secciones 3A–3B cotejados contra el PDF oficial de 16-08-2026.
-- Errata oficial revisada: las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`) afectan a 2A y ya están incorporadas; no se listan correcciones específicas para las pp. 39–68 de 2B–2C y 3A–3B.
+- Capítulos 1–2 y apertura/Secciones 3A–3C cotejados contra el PDF oficial de 16-08-2026.
+- Errata oficial revisada: las correcciones de p. 28 (`F` → `R`) y p. 35 (`w_m` → `w_n`) afectan a 2A y ya están incorporadas; no se listan correcciones específicas para las pp. 39–81 de 2B–2C y 3A–3C.
+- Control de versión 3C: el PDF canónico 2026 incluye el caso `c=0` en la demostración de 3.57 y la hipótesis de espacios no nulos en el Ejercicio 2; ambas formulaciones difieren de la copia de referencia de 25-03-2024 y se siguen aquí como texto canónico actual.
 
 ## Avance público
 
@@ -26,9 +27,10 @@
 - Apertura del capítulo 3 — Aplicaciones lineales: `COTEJADO`.
 - Sección 3A — Espacio vectorial de aplicaciones lineales: `COTEJADO`; **17/17 ejercicios resueltos**, soluciones `VERIFICADO`.
 - Sección 3B — Espacios nulos e imágenes: `COTEJADO`; **33/33 ejercicios resueltos**, soluciones `VERIFICADO`.
-- Total acumulado de ejercicios resueltos: **148**.
-- Glosario terminológico: **v0.9**.
-- Siguiente bloque activo: **3C — Matrices**.
+- Sección 3C — Matrices: `COTEJADO`; **17/17 ejercicios resueltos**, soluciones `VERIFICADO`.
+- Total acumulado de ejercicios resueltos: **165**.
+- Glosario terminológico: **v0.10**.
+- Siguiente bloque activo: **3D — Invertibilidad e isomorfismos**.
 
 ## QA de 1A
 
@@ -119,8 +121,24 @@
 - ejercicio 32 usa la clasificación de ideales bilaterales de 3A;
 - ejercicio 33 verifica la complexificación de una aplicación lineal y conecta con el Ejercicio 8 de 1B.
 
+## QA de 3C
+
+- numeración 3.29–3.58 preservada, incluida la ecuación 3.47;
+- representación matricial de aplicaciones lineales cotejada, con dependencia explícita de las bases;
+- suma, multiplicación por escalares y estructura de $\mathbf F^{m,n}$ preservadas;
+- multiplicación matricial motivada a partir de $\mathcal M(ST)=\mathcal M(S)\mathcal M(T)$, no introducida como regla aislada;
+- resultados 3.46, 3.48, 3.50 y 3.51 preservados para las interpretaciones fila/columna del producto;
+- factorización columna–fila 3.56 y teorema 3.57 rango columna = rango fila preservados con demostración;
+- se sigue el PDF canónico 2026 en el caso $c=0$ de 3.57, ausente en la copia de trabajo 2024;
+- se sigue el PDF canónico 2026 en el Ejercicio 2, que exige $V,W$ no nulos;
+- 17/17 ejercicios resueltos y verificados;
+- ejercicio 5 construye la forma canónica por elección de bases usando 3.21, sin anticipar 3D;
+- ejercicio 7 usa una funcional coordenada y su espacio nulo;
+- ejercicio 12 prueba asociatividad trasladando el problema a composición de aplicaciones lineales, siguiendo la sugerencia conceptual de Axler/Artin;
+- ejercicios 16–17 conectan rango, factorización de rango uno e inyectividad sin usar invertibilidad posterior.
+
 ## Estados
 
 `PENDIENTE → BORRADOR → COTEJADO → VERIFICADO → CERRADO`
 
-Una unidad `CERRADA` ha superado cotejo con la fuente canónica, control matemático, terminológico y editorial. Los capítulos 1 y 2 y las Secciones 3A–3B permanecen abiertos a revisión comunitaria antes de la promoción definitiva a `CERRADO`.
+Una unidad `CERRADA` ha superado cotejo con la fuente canónica, control matemático, terminológico y editorial. Los capítulos 1 y 2 y las Secciones 3A–3C permanecen abiertos a revisión comunitaria antes de la promoción definitiva a `CERRADO`.
