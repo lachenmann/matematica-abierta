@@ -1,6 +1,6 @@
 ---
 title: "Tratado de análisis — Capítulo 1: Los números naturales"
-description: "Construcción conjuntista de los números naturales: axioma de infinito, conjuntos inductivos, conjunto omega y principio de inducción."
+description: "Construcción conjuntista de los números naturales: axioma de infinito, omega, inducción y propiedades de Peano."
 author: "Gustav A. Tachek"
 content-id: MA-BCH-0007
 content-type: book-chapter
@@ -16,6 +16,7 @@ topics:
   - numeros-naturales
   - teoria-de-conjuntos
   - induccion
+  - peano
 prerequisites:
   - MA-BCH-0005
 related:
@@ -39,3 +40,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap1-00.md >}}
 
 {{< include _tratado-cap1-01.md >}}
+
+{{< include _tratado-cap1-02.md >}}
