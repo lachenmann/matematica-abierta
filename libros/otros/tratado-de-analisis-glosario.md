@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-13
+date-modified: 2026-09-14
 areas:
   - fundamentos
   - analisis
@@ -57,6 +57,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Antisimetría](#gl-antisimetria) ·
 [Aproximación finita de una recursión](#gl-aproximacion-finita-recursion) ·
 [Asociatividad de la suma](#gl-asociatividad-suma) ·
+[Asociatividad del producto](#gl-asociatividad-producto) ·
 [Axioma de infinito](#gl-axioma-infinito) ·
 [Biyectividad](#gl-biyectividad) ·
 [Cancelación aditiva](#gl-cancelacion-aditiva) ·
@@ -73,9 +74,11 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
 [Conmutatividad de la suma](#gl-conmutatividad-suma) ·
+[Conmutatividad del producto](#gl-conmutatividad-producto) ·
 [Cota inferior](#gl-cota-inferior) ·
 [Cota superior](#gl-cota-superior) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
+[Distributividad](#gl-distributividad-producto) ·
 [Dominio de una función](#gl-dominio-funcion) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
 [Extensionalidad](#gl-extensionalidad) ·
@@ -93,6 +96,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Máximo](#gl-maximo) ·
 [Metanivel](#gl-metanivel) ·
 [Mínimo](#gl-minimo) ·
+[Multiplicación natural](#gl-multiplicacion-natural) ·
 [Nivel objeto](#gl-nivel-objeto) ·
 [Núcleo inductivo](#gl-nucleo-inductivo) ·
 [Números naturales](#gl-numeros-naturales) ·
@@ -109,8 +113,9 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Preorden](#gl-preorden) ·
 [Principio de definición sobre clases](#gl-definicion-sobre-clases) ·
 [Principio de inducción](#gl-principio-induccion) ·
-[Propiedades de Peano](#gl-propiedades-peano) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
+[Producto nulo](#gl-producto-nulo) ·
+[Propiedades de Peano](#gl-propiedades-peano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
 [Recursión](#gl-recursion) ·
@@ -132,6 +137,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
 [Tupla finita](#gl-tupla-finita) ·
+[Unidad multiplicativa](#gl-unidad-multiplicativa) ·
 [Unión](#gl-union) ·
 [Uno](#gl-uno) ·
 [ZF](#gl-zf)
@@ -151,3 +157,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-07.md >}}
 
 {{< include _tratado-glosario-08.md >}}
+
+{{< include _tratado-glosario-09.md >}}
