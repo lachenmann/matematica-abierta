@@ -26,6 +26,7 @@ topics:
   - aritmetica-natural
   - orden-natural
   - buen-orden
+  - grupos-abelianos
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -69,6 +70,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Buen orden](#gl-buen-orden) ·
 [Cancelación aditiva](#gl-cancelacion-aditiva) ·
 [Cero](#gl-cero) ·
+[Cero entero](#gl-cero-entero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
 [Clase entera](#gl-clase-entera) ·
 [Codominio](#gl-codominio) ·
@@ -96,6 +98,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Función identidad](#gl-funcion-identidad) ·
 [Función inversa](#gl-funcion-inversa) ·
 [Grafo de una función](#gl-grafo-funcion) ·
+[Grupo abeliano](#gl-grupo-abeliano) ·
 [Igualdad de clases](#gl-igualdad-clases) ·
 [Imagen directa](#gl-imagen-directa) ·
 [Inducción fuerte](#gl-induccion-fuerte) ·
@@ -112,6 +115,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Número entero](#gl-numero-entero) ·
 [Números naturales](#gl-numeros-naturales) ·
 [$\omega$](#gl-omega) ·
+[Opuesto entero](#gl-opuesto-entero) ·
 [Orden estricto](#gl-orden-estricto) ·
 [Orden natural](#gl-orden-natural) ·
 [Orden parcial](#gl-orden-parcial) ·
@@ -149,6 +153,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Suma entera](#gl-suma-entera) ·
 [Suma nula](#gl-suma-nula) ·
 [Supremo](#gl-supremo) ·
+[Sustracción entera](#gl-sustraccion-entera) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
 [Tupla finita](#gl-tupla-finita) ·
@@ -182,3 +187,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-12.md >}}
 
 {{< include _tratado-glosario-13.md >}}
+
+{{< include _tratado-glosario-14.md >}}
