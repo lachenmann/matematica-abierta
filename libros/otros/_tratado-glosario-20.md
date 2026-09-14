@@ -20,7 +20,7 @@ $$
 
 ## Conjunto de representantes racionales {#gl-conjunto-representantes-racionales}
 
-**Idea.** Antes de formar $\mathbb Q$, trabajamos con pares de enteros cuyo segundo componente no es cero; esos pares son los datos concretos que luego serán identificados mediante una relación de equivalencia.
+**Idea.** Antes de formar $\mathbb Q$, trabajamos con pares de enteros cuyo segundo componente no es cero; esos pares son los datos concretos que la relación racional de equivalencia identifica cuando expresan el mismo cociente.
 
 **En este tratado.** Definimos
 
@@ -32,13 +32,13 @@ $$
 
 **En el Tratado:** [Definición 3.1.6 — Conjunto de representantes racionales](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-conjunto-representantes-racionales).
 
-**Véase también:** [Enteros no nulos](#gl-enteros-no-nulos), [Representante fraccionario](#gl-representante-fraccionario), [Producto cartesiano](#gl-producto-cartesiano).
+**Véase también:** [Enteros no nulos](#gl-enteros-no-nulos), [Representante fraccionario](#gl-representante-fraccionario), [Relación de equivalencia racional](#gl-relacion-equivalencia-racional), [Producto cartesiano](#gl-producto-cartesiano).
 
 ---
 
 ## Enteros no nulos {#gl-enteros-no-nulos}
 
-**Idea.** Son los enteros distintos del cero; aparecerán como posibles segundos componentes de los representantes racionales.
+**Idea.** Son los enteros distintos del cero; aparecen como posibles segundos componentes de los representantes racionales.
 
 **En este tratado.** Escribimos
 
@@ -56,7 +56,7 @@ $$
 
 ## Representante fraccionario {#gl-representante-fraccionario}
 
-**Idea.** Es un par de enteros $(a,b)$ con $b\neq0$ que servirá como representante de un racional; todavía no es, por sí solo, una fracción entendida como cociente ya construido.
+**Idea.** Es un par de enteros $(a,b)$ con $b\neq0$ que representa una clase racional; no debe confundirse con el número racional mismo.
 
 **En este tratado.** Un elemento
 
@@ -64,14 +64,10 @@ $$
 (a,b)\in D_{\mathbb Q}
 $$
 
-se llama **representante fraccionario**. La identificación entre distintos representantes se introducirá después mediante la relación racional de equivalencia.
+se llama **representante fraccionario**. Dos representantes fraccionarios determinan el mismo racional exactamente cuando son equivalentes respecto de $\sim_{\mathbb Q}$.
 
-**En el Tratado:** [Definición 3.1.6 — Conjunto de representantes racionales](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-conjunto-representantes-racionales).
+**En el Tratado:** [Definición 3.1.6 — Conjunto de representantes racionales](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-conjunto-representantes-racionales) y [Definición 3.2.1 — Relación de equivalencia racional](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-relacion-equivalencia-racional).
 
-**Véase también:** [Representante](#gl-representante), [Conjunto de representantes racionales](#gl-conjunto-representantes-racionales), [Enteros no nulos](#gl-enteros-no-nulos).
+**Véase también:** [Representante](#gl-representante), [Conjunto de representantes racionales](#gl-conjunto-representantes-racionales), [Enteros no nulos](#gl-enteros-no-nulos), [Relación de equivalencia racional](#gl-relacion-equivalencia-racional), [Clase racional](#gl-clase-racional).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§3.1 — Lemas enteros preparatorios** se incorporan la cancelación multiplicativa, los enteros no nulos y el lenguaje de representantes racionales. La próxima ampliación acompañará la construcción efectiva del cociente $\mathbb Q$.
-:::
