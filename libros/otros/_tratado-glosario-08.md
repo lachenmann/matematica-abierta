@@ -93,7 +93,3 @@ $$
 **Véase también:** [Adición natural](#gl-adicion-natural), [Cero](#gl-cero), [Predecesor](#gl-predecesor).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con la publicación de **§1.4 — Suma de números naturales**, el glosario incorpora la primera operación aritmética construida en el tratado y sus leyes fundamentales. La siguiente ampliación acompañará **§1.5 — Producto de números naturales**.
-:::
