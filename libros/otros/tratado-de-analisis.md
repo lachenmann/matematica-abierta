@@ -138,30 +138,28 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.5**: diferencias formales y relación de equivalencia entera; construcción del cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.6**: diferencias formales y cociente
 
    $$
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}};
    $$
 
-   suma bien definida sobre clases, cero, opuesto y sustracción total; además, la multiplicación queda construida mediante
-
-   $$
-   [(a,b)]\cdot_{\mathbb Z}[(c,d)]
-   =[(ac+bd,\;ad+bc)],
-   $$
-
-   después de demostrar que la fórmula no depende de los representantes. La unidad multiplicativa queda fijada como
+   suma, cero, opuesto y sustracción total; multiplicación bien definida sobre clases y unidad
 
    $$
    1_{\mathbb Z}=[(1,0)].
    $$
 
-   Las leyes multiplicativas y distributivas se demostrarán en la sección siguiente.
+   Se demuestran asociatividad y conmutatividad del producto, ambas leyes distributivas y la propiedad de unidad. Con las convenciones algebraicas fijadas en la propia sección, queda establecido que
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la construcción de $\mathbb Z$ hasta su estructura aditiva, sustracción, multiplicación y unidad entera.
+   $$
+   \boxed{(\mathbb Z,+,\cdot,0_{\mathbb Z},1_{\mathbb Z})
+   \text{ es un anillo conmutativo con identidad}.}
+   $$
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.6 — Estructura algebraica**.
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la construcción de $\mathbb Z$ hasta su estructura de anillo y las convenciones de anillo, anillo conmutativo y dominio de integridad.
+
+La siguiente incorporación continuará el Capítulo 2 con **§2.7 — Incrustación canónica de $\mathbb N$**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
