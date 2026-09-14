@@ -113,7 +113,3 @@ $$
 **Véase también:** [Multiplicación natural](#gl-multiplicacion-natural), [Uno](#gl-uno).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con la publicación de **§1.5 — Producto de números naturales**, el glosario incorpora la multiplicación y sus leyes algebraicas fundamentales. La siguiente ampliación acompañará **§1.6 — Orden natural**.
-:::
