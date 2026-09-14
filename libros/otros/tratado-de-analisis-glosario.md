@@ -70,6 +70,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cancelación aditiva](#gl-cancelacion-aditiva) ·
 [Cero](#gl-cero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
+[Clase entera](#gl-clase-entera) ·
 [Codominio](#gl-codominio) ·
 [Composición de funciones](#gl-composicion-funciones) ·
 [Composición de relaciones](#gl-composicion-relaciones) ·
@@ -108,6 +109,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Multiplicación natural](#gl-multiplicacion-natural) ·
 [Nivel objeto](#gl-nivel-objeto) ·
 [Núcleo inductivo](#gl-nucleo-inductivo) ·
+[Número entero](#gl-numero-entero) ·
 [Números naturales](#gl-numeros-naturales) ·
 [$\omega$](#gl-omega) ·
 [Orden estricto](#gl-orden-estricto) ·
@@ -174,3 +176,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-10.md >}}
 
 {{< include _tratado-glosario-11.md >}}
+
+{{< include _tratado-glosario-12.md >}}

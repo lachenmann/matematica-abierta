@@ -33,9 +33,3 @@ Se demuestra que $\sim_{\mathbb Z}$ es reflexiva, simétrica y transitiva antes 
 **En el Tratado:** [Definición 2.1.1 — Relación de equivalencia entera](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-relacion-equivalencia-entera) y [Proposición 2.1.2 — $\sim_{\mathbb Z}$ es una relación de equivalencia](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-equivalencia-entera).
 
 **Véase también:** [Diferencia formal](#gl-diferencia-formal), [Relación de equivalencia](#gl-relacion-equivalencia), [Conjunto cociente](#gl-conjunto-cociente).
-
----
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.1 — Diferencias formales** comienza el vocabulario específico de la construcción de $\mathbb Z$. Las próximas entradas se incorporarán a medida que el capítulo forme el cociente y construya las operaciones enteras.
-:::
