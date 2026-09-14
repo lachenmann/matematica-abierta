@@ -21,6 +21,7 @@ topics:
   - funciones
   - ordenes
   - numeros-naturales
+  - recursion
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -52,6 +53,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Acotado inferiormente](#gl-acotado-inferiormente) ·
 [Acotado superiormente](#gl-acotado-superiormente) ·
 [Antisimetría](#gl-antisimetria) ·
+[Aproximación finita de una recursión](#gl-aproximacion-finita-recursion) ·
 [Axioma de infinito](#gl-axioma-infinito) ·
 [Biyectividad](#gl-biyectividad) ·
 [Cero](#gl-cero) ·
@@ -106,11 +108,14 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Producto cartesiano](#gl-producto-cartesiano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
+[Recursión](#gl-recursion) ·
+[Recursión con parámetros](#gl-recursion-parametros) ·
 [Reflexividad](#gl-reflexividad) ·
 [Relación binaria](#gl-relacion-binaria) ·
 [Relación de equivalencia](#gl-relacion-equivalencia) ·
 [Relación inversa](#gl-relacion-inversa) ·
 [Representante](#gl-representante) ·
+[Restricción de una función](#gl-restriccion-funcion) ·
 [Separación restringida](#gl-separacion-restringida) ·
 [Simetría](#gl-simetria) ·
 [Singleton](#gl-singleton) ·
@@ -136,3 +141,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-05.md >}}
 
 {{< include _tratado-glosario-06.md >}}
+
+{{< include _tratado-glosario-07.md >}}
