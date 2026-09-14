@@ -65,6 +65,68 @@ $$
 
 Si este tratado consigue que una demostración rigurosa no se sienta como un obstáculo para comprender, sino como una forma más profunda de comprensión, habrá cumplido una parte esencial de su propósito.
 
+---
+
+## Cómo leer este libro
+
+Este libro ha sido escrito como un **tratado**. Esa palabra no designa aquí simplemente un libro extenso, sino una forma particular de organizar el conocimiento matemático: cada concepto debe aparecer cuando existen ya los elementos necesarios para definirlo; cada resultado debe apoyarse únicamente en aquello que ha sido establecido antes; y cada nueva estructura debe construirse, en la medida de lo posible, a partir de las anteriores.
+
+El principio que gobierna toda la obra puede formularse así:
+
+> **Nada se utiliza antes de haber sido definido, construido o demostrado, salvo aquello que pertenezca expresamente al fundamento declarado del libro.**
+
+Esta elección tiene consecuencias para la lectura.
+
+En muchos textos de análisis se comienza dando por conocidos los números reales, sus operaciones, su orden y sus propiedades fundamentales. Aquí el camino es diferente. Partimos mucho antes. Construiremos sucesivamente los objetos y las estructuras que harán posible el análisis: conjuntos, relaciones, funciones, números naturales, enteros, racionales y, finalmente, los números reales por más de un procedimiento.
+
+Esto significa que ciertos capítulos iniciales pueden parecer alejados de aquello que habitualmente se entiende por análisis. No lo están. Cada uno prepara una parte del lenguaje que después utilizaremos sin ambigüedad. Cuando aparezca una cortadura de Dedekind, una sucesión de Cauchy, un supremo, una función continua o una derivada, las nociones necesarias para comprender exactamente qué clase de objeto estamos manipulando ya habrán sido construidas.
+
+No es necesario, sin embargo, leer todas las páginas con la misma intensidad.
+
+Una **primera lectura** puede seguir el hilo principal: las motivaciones que abren cada construcción, las definiciones, los enunciados de los resultados fundamentales y los comentarios que explican qué se ha ganado después de demostrarlos. Esta lectura permite comprender la arquitectura de la teoría sin detenerse necesariamente en cada detalle técnico de cada demostración.
+
+Una **segunda lectura**, más lenta, puede concentrarse en las demostraciones. En ella conviene preguntarse no sólo por qué el argumento es correcto, sino también por qué las hipótesis son necesarias, qué resultados anteriores están siendo utilizados y qué cambiaría si alguna de esas piezas faltara. Buena parte del contenido matemático profundo de un tratado se encuentra precisamente en esas relaciones.
+
+Existe también una tercera forma de lectura, más cercana a la verificación: reconstruir la cadena deductiva completa. La edición web facilita esta lectura mediante encabezados estables, enlaces internos y el [glosario matemático](tratado-de-analisis-glosario.md), que permiten regresar al lugar exacto donde una noción fue introducida o un resultado quedó establecido.
+
+Estas herramientas de navegación no sustituyen a la exposición matemática. Su función es hacer más visible una estructura deductiva que en muchos libros permanece implícita.
+
+Algunas partes de la obra poseen además una verificación formal complementaria mediante asistentes de prueba. Esta capa tampoco reemplaza las demostraciones destinadas al lector humano. Una prueba formal certifica que cierta cadena de inferencias puede ser verificada dentro de un sistema preciso; una demostración matemática debe, además, mostrar por qué la idea funciona, cuáles son sus puntos decisivos y cómo se relaciona con el resto de la teoría. Ambas tareas son valiosas, pero no son idénticas.
+
+Por esta razón, las demostraciones de este libro procuran no reducirse a una sucesión de manipulaciones simbólicas. Antes de las construcciones importantes se explicará qué problema intentamos resolver y por qué las herramientas anteriores todavía no bastan. Después de los resultados principales se señalará qué nueva posibilidad matemática ha quedado abierta.
+
+Hay también una precaución terminológica importante. Los distintos sistemas numéricos que aparecen en el libro son **objetos construidos**. Por ello no identificaremos silenciosamente, por ejemplo, un número racional con el real que posteriormente lo representa. Primero construiremos una aplicación canónica
+
+$$
+\mathbb Q\longrightarrow\mathbb R,
+$$
+
+demostraremos las propiedades pertinentes de esa aplicación y sólo entonces utilizaremos, cuando sea conveniente, las identificaciones habituales. Esta insistencia puede parecer excesiva al principio, pero evita una de las fuentes más comunes de circularidad cuando se intenta construir rigurosamente los números reales.
+
+Algo semejante sucede con resultados conocidos. Que un teorema sea familiar no significa que pueda utilizarse antes de que sus hipótesis y conceptos estén disponibles. El orden de exposición importa. En este tratado, una afirmación elemental situada demasiado pronto puede ser lógicamente más problemática que un teorema difícil situado en el lugar correcto.
+
+Esto no significa que el lector deba retener en la memoria todas las definiciones y todos los lemas anteriores. El libro está pensado también como obra de consulta. Cuando un término técnico, una construcción o una propiedad no resulte inmediata, las referencias internas y el glosario permiten regresar al lugar exacto donde fue introducido.
+
+Conviene, por último, no confundir **lentitud** con **dificultad**.
+
+Algunas páginas avanzarán despacio porque estaremos construyendo cuidadosamente los cimientos. Otras recorrerán grandes distancias con relativa rapidez porque esos cimientos ya estarán disponibles. La paciencia invertida al comienzo produce economía más adelante: una vez demostrado un resultado estructural, podrá reutilizarse sin reconstruir continuamente sus detalles.
+
+El objetivo de este libro no es que el lector acepte que los números reales existen, ni que aprenda solamente a operar con ellos. Es mostrar cómo puede levantarse, desde fundamentos explícitos, la estructura sobre la cual descansa el análisis.
+
+Por eso la pregunta que acompaña toda la obra no es únicamente
+
+$$
+\text{«¿es verdadero?»}
+$$
+
+sino también
+
+$$
+\boxed{\text{«¿de dónde viene, de qué depende y por qué podemos usarlo aquí?»}}
+$$
+
+Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
+
 ## Contenido disponible
 
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
