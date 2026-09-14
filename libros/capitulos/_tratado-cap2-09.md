@@ -426,7 +426,3 @@ $$
 Es la tricotomía propia de todo orden total, aplicada al Teorema 2.9.3. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.9, $\mathbb Z$ queda provisto de un orden total compatible con su suma y con la multiplicación por enteros no negativos, y la incrustación $\iota$ preserva y refleja el orden natural. La siguiente entrega será **§2.10 — Qué hemos construido**.
-:::
