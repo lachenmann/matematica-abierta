@@ -106,6 +106,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Grupo abeliano](#gl-grupo-abeliano) ·
 [Igualdad de clases](#gl-igualdad-clases) ·
 [Imagen directa](#gl-imagen-directa) ·
+[Incrustación canónica](#gl-incrustacion-canonica) ·
 [Inducción fuerte](#gl-induccion-fuerte) ·
 [Ínfimo](#gl-infimo) ·
 [Intersección](#gl-interseccion) ·
@@ -200,3 +201,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-15.md >}}
 
 {{< include _tratado-glosario-16.md >}}
+
+{{< include _tratado-glosario-17.md >}}
