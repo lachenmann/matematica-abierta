@@ -25,6 +25,7 @@ related:
   - MA-BCH-0006
   - MA-BCH-0007
   - MA-BCH-0019
+  - MA-BCH-0020
 provenance:
   type: original
   sources: []
@@ -184,9 +185,23 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicación iniciada con **§3.0 — El problema de la división**. La primera sección parte de la ecuación
 
-El **Capítulo 2 — Los números enteros** queda completo en la edición web. Su sección final deja planteada la transición constructiva hacia $\mathbb Q$.
+   $$
+   (1_{\mathbb Z}+1_{\mathbb Z})x=1_{\mathbb Z},
+   $$
+
+   que no tiene solución entera, y motiva la representación de cocientes mediante pares $(a,b)$ de enteros con $b\neq0_{\mathbb Z}$. Sin utilizar todavía división, la igualdad esperada entre fracciones se traduce en la condición
+
+   $$
+   ad=bc,
+   $$
+
+   preparando la construcción de $\mathbb Q$ como un nuevo cociente.
+
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
+
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** ha comenzado su publicación progresiva. La siguiente incorporación será **§3.1 — Lemas enteros preparatorios**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
