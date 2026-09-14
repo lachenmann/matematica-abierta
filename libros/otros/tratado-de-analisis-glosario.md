@@ -21,6 +21,7 @@ topics:
   - funciones
   - ordenes
   - numeros-naturales
+  - numeros-enteros
   - recursion
   - aritmetica-natural
   - orden-natural
@@ -30,6 +31,7 @@ related:
   - MA-BOK-0003
   - MA-BCH-0005
   - MA-BCH-0007
+  - MA-BCH-0019
 provenance:
   type: original
   sources: []
@@ -40,7 +42,8 @@ license: GFDL-1.3-or-later
 
 [**← Volver al Tratado de análisis**](tratado-de-analisis.md) ·
 [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) ·
-[**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md)
+[**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) ·
+[**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md)
 
 Este glosario acompaña la publicación progresiva del *Tratado de análisis*. **No se adelanta al texto**: una entrada se incorpora cuando la noción correspondiente ya ha sido definida, construida o fijada en la edición pública.
 
@@ -82,6 +85,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cota inferior](#gl-cota-inferior) ·
 [Cota superior](#gl-cota-superior) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
+[Diferencia formal](#gl-diferencia-formal) ·
 [Distributividad](#gl-distributividad-producto) ·
 [Dominio de una función](#gl-dominio-funcion) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
@@ -129,6 +133,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Reflexividad](#gl-reflexividad) ·
 [Relación binaria](#gl-relacion-binaria) ·
 [Relación de equivalencia](#gl-relacion-equivalencia) ·
+[Relación de equivalencia entera](#gl-relacion-equivalencia-entera) ·
 [Relación inversa](#gl-relacion-inversa) ·
 [Representante](#gl-representante) ·
 [Restricción de una función](#gl-restriccion-funcion) ·
@@ -167,3 +172,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-09.md >}}
 
 {{< include _tratado-glosario-10.md >}}
+
+{{< include _tratado-glosario-11.md >}}
