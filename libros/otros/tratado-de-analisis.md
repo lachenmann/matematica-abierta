@@ -67,10 +67,10 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 ## Contenido disponible
 
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
-2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — publicación disponible hasta **§1.2**: construcción de $\mathbb N=\omega$, principio de inducción, estructura transitiva de los naturales, clausura e inyectividad del sucesor, propiedades de Peano, predecesor único para todo natural no nulo y definición de $1=S(0)$.
-3. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la estructura de Peano de los naturales.
+2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — publicación disponible hasta **§1.3**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano y teorema de recursión sobre $\mathbb N$, incluida su versión con parámetros y la demostración explícita de existencia y unicidad sin usar elección.
+3. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión sobre los naturales.
 
-La siguiente incorporación continuará el Capítulo 1 con **§1.3 — Teorema de recursión**. Allí justificaremos rigurosamente que una regla de inicio y una regla de sucesión determinan una función única sobre $\mathbb N$; sólo después se introducirán recursivamente las operaciones aritméticas.
+La siguiente incorporación continuará el Capítulo 1 con **§1.4 — Suma de números naturales**. La operación se definirá mediante recursión con parámetros sobre el segundo argumento y sus leyes de neutro, sucesor, asociatividad, conmutatividad y cancelación aparecerán después como teoremas.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
