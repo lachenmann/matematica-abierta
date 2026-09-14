@@ -28,6 +28,7 @@ topics:
   - orden-natural
   - buen-orden
   - grupos-abelianos
+  - anillos
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -62,6 +63,8 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Acotado superiormente](#gl-acotado-superiormente) ·
 [Adición natural](#gl-adicion-natural) ·
 [Alcanzabilidad aditiva](#gl-alcanzabilidad-aditiva) ·
+[Anillo](#gl-anillo) ·
+[Anillo conmutativo](#gl-anillo-conmutativo) ·
 [Antisimetría](#gl-antisimetria) ·
 [Aproximación finita de una recursión](#gl-aproximacion-finita-recursion) ·
 [Asociatividad de la suma](#gl-asociatividad-suma) ·
@@ -91,6 +94,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
 [Diferencia formal](#gl-diferencia-formal) ·
 [Distributividad](#gl-distributividad-producto) ·
+[Dominio de integridad](#gl-dominio-integridad) ·
 [Dominio de una función](#gl-dominio-funcion) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
 [Extensionalidad](#gl-extensionalidad) ·
@@ -194,3 +198,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-14.md >}}
 
 {{< include _tratado-glosario-15.md >}}
+
+{{< include _tratado-glosario-16.md >}}

@@ -35,9 +35,3 @@ En este punto $1_{\mathbb Z}$ sigue siendo un objeto construido en $\mathbb Z$ y
 **En el Tratado:** [Notación 2.5.4 — Unidad entera](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-unidad-entera).
 
 **Véase también:** [Multiplicación entera](#gl-multiplicacion-entera), [Número entero](#gl-numero-entero), [Unidad multiplicativa](#gl-unidad-multiplicativa).
-
----
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.5 — Multiplicación de enteros** se incorporan la multiplicación entera y su unidad $1_{\mathbb Z}$. La siguiente ampliación acompañará **§2.6 — Estructura algebraica**.
-:::

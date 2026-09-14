@@ -20,6 +20,7 @@ topics:
   - sustraccion
   - grupos-abelianos
   - multiplicacion
+  - anillos
 prerequisites:
   - MA-BCH-0007
 related:
@@ -52,3 +53,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap2-04.md >}}
 
 {{< include _tratado-cap2-05.md >}}
+
+{{< include _tratado-cap2-06.md >}}
