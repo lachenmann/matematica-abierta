@@ -185,23 +185,23 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicación iniciada con **§3.0 — El problema de la división**. La primera sección parte de la ecuación
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.1 — Lemas enteros preparatorios**. §3.0 plantea el problema de la división en $\mathbb Z$. §3.1 establece las herramientas que permitirán formar el cociente racional: cancelación multiplicativa, invariancia del orden por traslación, escalamiento por enteros positivos y positividad del producto. Además fija
 
    $$
-   (1_{\mathbb Z}+1_{\mathbb Z})x=1_{\mathbb Z},
+   \mathbb Z_{\neq0}=\{b\in\mathbb Z:b\neq0_{\mathbb Z}\}
    $$
 
-   que no tiene solución entera, y motiva la representación de cocientes mediante pares $(a,b)$ de enteros con $b\neq0_{\mathbb Z}$. Sin utilizar todavía división, la igualdad esperada entre fracciones se traduce en la condición
+   y define el dominio de representantes fraccionarios
 
    $$
-   ad=bc,
+   D_{\mathbb Q}=\mathbb Z\times\mathbb Z_{\neq0}.
    $$
 
-   preparando la construcción de $\mathbb Q$ como un nuevo cociente.
+   La notación $x^2:=x\cdot x$ queda fijada únicamente para el cuadrado; las potencias naturales generales aún no se presuponen.
 
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la cancelación multiplicativa, los enteros no nulos, el conjunto $D_{\mathbb Q}$ y el concepto de representante fraccionario.
 
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** ha comenzado su publicación progresiva. La siguiente incorporación será **§3.1 — Lemas enteros preparatorios**.
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.1. La siguiente incorporación será **§3.2 — Equivalencia y cociente racional**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
