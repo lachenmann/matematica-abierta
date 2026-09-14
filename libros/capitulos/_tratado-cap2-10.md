@@ -104,7 +104,3 @@ $$
 Los dos sistemas siguen siendo, conjuntísticamente, objetos diferentes. Lo que hemos construido es una incrustación canónica que justifica una futura convención de identificación con la imagen cuando esa convención resulte útil y sea declarada explícitamente.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.10 queda reunida en una sola síntesis la construcción completa de $\mathbb Z$ alcanzada hasta aquí. La siguiente entrega será **§2.11 — Por qué la construcción funciona**, donde se explicará el patrón metodológico de representantes, equivalencia, cociente y buena definición que volverá a utilizarse en la construcción de $\mathbb Q$.
-:::
