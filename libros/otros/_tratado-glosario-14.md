@@ -61,9 +61,3 @@ Desde este punto la sustracción es una operación total sobre $\mathbb Z$, y to
 **En el Tratado:** [Definición 2.4.5 — Sustracción en $\mathbb Z$](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-sustraccion-enteros) y [Proposición 2.4.6 — Resolución universal de ecuaciones aditivas](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-resolucion-ecuaciones-aditivas-enteros).
 
 **Véase también:** [Opuesto entero](#gl-opuesto-entero), [Grupo abeliano](#gl-grupo-abeliano), [Suma entera](#gl-suma-entera).
-
----
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.4 — Cero, opuesto y sustracción** se incorporan el cero entero, el opuesto, la estructura de grupo abeliano y la sustracción total en $\mathbb Z$. La siguiente ampliación acompañará **§2.5 — Multiplicación de enteros**.
-:::

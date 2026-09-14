@@ -24,6 +24,7 @@ topics:
   - numeros-enteros
   - recursion
   - aritmetica-natural
+  - aritmetica-entera
   - orden-natural
   - buen-orden
   - grupos-abelianos
@@ -109,6 +110,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Máximo](#gl-maximo) ·
 [Metanivel](#gl-metanivel) ·
 [Mínimo](#gl-minimo) ·
+[Multiplicación entera](#gl-multiplicacion-entera) ·
 [Multiplicación natural](#gl-multiplicacion-natural) ·
 [Nivel objeto](#gl-nivel-objeto) ·
 [Núcleo inductivo](#gl-nucleo-inductivo) ·
@@ -157,6 +159,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
 [Tupla finita](#gl-tupla-finita) ·
+[Unidad entera](#gl-unidad-entera) ·
 [Unidad multiplicativa](#gl-unidad-multiplicativa) ·
 [Unión](#gl-union) ·
 [Uno](#gl-uno) ·
@@ -189,3 +192,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-13.md >}}
 
 {{< include _tratado-glosario-14.md >}}
+
+{{< include _tratado-glosario-15.md >}}

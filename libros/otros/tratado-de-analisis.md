@@ -138,37 +138,30 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.4**: diferencias formales y relación de equivalencia entera; construcción del cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.5**: diferencias formales y relación de equivalencia entera; construcción del cociente
 
    $$
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}};
    $$
 
-   suma bien definida sobre clases,
+   suma bien definida sobre clases, cero, opuesto y sustracción total; además, la multiplicación queda construida mediante
 
    $$
-   [(a,b)]+_{\mathbb Z}[(c,d)]=[(a+c,b+d)];
+   [(a,b)]\cdot_{\mathbb Z}[(c,d)]
+   =[(ac+bd,\;ad+bc)],
    $$
 
-   cero y opuesto enteros,
+   después de demostrar que la fórmula no depende de los representantes. La unidad multiplicativa queda fijada como
 
    $$
-   0_{\mathbb Z}=[(0,0)],
-   \qquad
-   -[(a,b)]=[(b,a)],
+   1_{\mathbb Z}=[(1,0)].
    $$
 
-   y la demostración de que $(\mathbb Z,+)$ es un grupo abeliano. La sustracción queda definida como operación total por
+   Las leyes multiplicativas y distributivas se demostrarán en la sección siguiente.
 
-   $$
-   x-y:=x+(-y),
-   $$
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la construcción de $\mathbb Z$ hasta su estructura aditiva, sustracción, multiplicación y unidad entera.
 
-   de modo que toda ecuación $x+y=z$ posee la solución única $y=z-x$.
-
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la construcción inicial de $\mathbb Z$, su suma, el cero entero, el opuesto, la estructura de grupo abeliano y la sustracción.
-
-La siguiente incorporación continuará el Capítulo 2 con **§2.5 — Multiplicación de enteros**.
+La siguiente incorporación continuará el Capítulo 2 con **§2.6 — Estructura algebraica**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
