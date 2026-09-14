@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.8
+# Glosario terminológico · v0.9
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -42,6 +42,17 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | commute | conmutar | $S$ y $T$ conmutan cuando $ST=TS$. |
 | two-sided ideal | ideal bilateral | Subespacio $\mathcal E\subseteq\mathcal L(V)$ estable bajo multiplicación por ambos lados. |
 | backward shift | desplazamiento hacia atrás | Aplicación de 3.3 sobre $\mathbf F^\infty$. |
+| null space | espacio nulo | Forma principal adoptada en 3B. Se conserva $\operatorname{null}T$ como notación del original; «núcleo» es sinónimo estándar. |
+| kernel | núcleo | Sinónimo de *null space* señalado expresamente por Axler en 3.12; no es la forma principal del texto. |
+| range | imagen | Forma principal adoptada en 3B. Se conserva $\operatorname{range}T$ como notación del original; evitar «rango» para no confundir con *rank*. |
+| injective | inyectiva | Estándar. |
+| one-to-one | inyectiva | Sinónimo señalado por Axler. |
+| surjective | sobreyectiva | Preferido. |
+| onto | sobreyectiva | Sinónimo señalado por Axler. |
+| fundamental theorem of linear maps | teorema fundamental de las aplicaciones lineales | Nombre de 3.21. |
+| homogeneous system of linear equations | sistema homogéneo de ecuaciones lineales | Los términos constantes del lado derecho son todos $0$. |
+| inhomogeneous system of linear equations | sistema no homogéneo de ecuaciones lineales | Al menos un término constante del lado derecho no es $0$. |
+| complexification of a linear map | complexificación de una aplicación lineal | $T_{\mathbf C}(u+iv)=Tu+iTv$, Ejercicio 33 de 3B. |
 | complex number | número complejo | Estándar. |
 | ordered pair | par ordenado | Estándar. |
 | scalar | escalar | Estándar. |
@@ -81,10 +92,6 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | extend a linearly independent list to a basis | extender una lista linealmente independiente a una base | Formulación usada en 2.32. |
 | dimension | dimensión | Longitud de cualquier base de un espacio de dimensión finita, según 2.35. |
 | right length | longitud correcta | Expresión expositiva de 2.38 y 2.42: longitud igual a $\dim V$. |
-| null space | espacio nulo | Registrar «núcleo» como sinónimo estándar; decisión abierta para el texto principal. |
-| range | imagen | Evitar «rango» aquí para no confundir con rank. |
-| injective | inyectiva | Estándar. |
-| surjective | sobreyectiva | Preferido. |
 | rank | rango | Para dimensión de la imagen / rango de matriz según contexto. |
 | quotient space | espacio cociente | Estándar. |
 | dual space | espacio dual | Estándar. |
@@ -98,7 +105,7 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 ## Decisiones abiertas prioritarias
 
 1. `linear map`: aplicación lineal vs. transformación lineal.
-2. `null space`: espacio nulo vs. núcleo.
+2. `null space`: mantener «espacio nulo» como forma principal o adoptar «núcleo» en una futura revisión comunitaria.
 3. `range`: imagen vs. recorrido.
 4. `inner product`: producto interno vs. producto escalar.
 5. `field`: mantener «cuerpo» como forma principal o adoptar «campo» por uso latinoamericano.
