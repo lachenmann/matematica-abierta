@@ -257,7 +257,3 @@ El anillo conmutativo $\mathbb Z$ es un **[dominio de integridad](../otros/trata
 En §2.6 demostramos que $\mathbb Z$ es un anillo conmutativo con identidad. La Proposición 2.8.2 demuestra $0_{\mathbb Z}\neq1_{\mathbb Z}$ y la Proposición 2.8.3 demuestra la ausencia de divisores de cero. Éstas son exactamente las condiciones fijadas en la convención de dominio de integridad. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.8 queda demostrado que todo entero posee una forma normal con signo y que $\mathbb Z$ no tiene divisores de cero; por tanto, $\mathbb Z$ es un dominio de integridad. La siguiente entrega será **§2.9 — Orden de los enteros**.
-:::
