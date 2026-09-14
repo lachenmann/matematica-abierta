@@ -6,7 +6,7 @@ content-id: MA-BOK-0003
 content-type: book
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-13
+date-modified: 2026-09-14
 areas:
   - fundamentos
   - analisis
@@ -67,10 +67,16 @@ Si este tratado consigue que una demostración rigurosa no se sienta como un obs
 ## Contenido disponible
 
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
-2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — publicación disponible hasta **§1.4**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión y primera operación aritmética, la suma natural, junto con sus leyes de neutro, sucesor, asociatividad, conmutatividad, cancelación y suma nula.
-3. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión y de la suma natural.
+2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — publicación disponible hasta **§1.5**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión y construcción de la suma y el producto naturales, con sus leyes algebraicas fundamentales demostradas desde las definiciones recursivas.
+3. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión y de las operaciones aritméticas naturales.
 
-La siguiente incorporación continuará el Capítulo 1 con **§1.5 — Producto de números naturales**. La multiplicación se definirá por recursión acumulando copias del primer factor mediante la suma ya construida, y sus leyes algebraicas aparecerán después como teoremas.
+La siguiente incorporación continuará el Capítulo 1 con **§1.6 — Orden natural**. El orden se definirá mediante alcanzabilidad aditiva,
+
+$$
+m\leq n\iff\exists k\in\mathbb N\;(n=m+k),
+$$
+
+y después se demostrará que la relación obtenida es un orden total.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
