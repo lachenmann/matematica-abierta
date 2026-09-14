@@ -121,9 +121,3 @@ $$
 
 **Demostración.**  
 Si $b=S(k)$, entonces $a+b=S(a+k)\neq0$. Luego $b=0$; entonces $a=a+b=0$. La recíproca es inmediata. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.4 queda construida la primera operación aritmética del tratado y demostradas sus leyes básicas. La siguiente entrega será **§1.5 — Producto de números naturales**, definido nuevamente por recursión, ahora acumulando sumas.
-:::
