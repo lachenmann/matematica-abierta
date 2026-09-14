@@ -123,6 +123,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Predecesor](#gl-predecesor) ·
 [Preimagen](#gl-preimagen) ·
 [Preorden](#gl-preorden) ·
+[Principio de definición binaria sobre clases](#gl-definicion-binaria-clases) ·
 [Principio de definición sobre clases](#gl-definicion-sobre-clases) ·
 [Principio de inducción](#gl-principio-induccion) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
@@ -145,6 +146,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Sobreyectividad](#gl-sobreyectividad) ·
 [Subconjunto](#gl-subconjunto) ·
 [Sucesor](#gl-sucesor) ·
+[Suma entera](#gl-suma-entera) ·
 [Suma nula](#gl-suma-nula) ·
 [Supremo](#gl-supremo) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
@@ -178,3 +180,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-11.md >}}
 
 {{< include _tratado-glosario-12.md >}}
+
+{{< include _tratado-glosario-13.md >}}
