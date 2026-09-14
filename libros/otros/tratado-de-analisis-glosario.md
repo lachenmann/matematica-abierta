@@ -22,6 +22,7 @@ topics:
   - ordenes
   - numeros-naturales
   - numeros-enteros
+  - numeros-racionales
   - recursion
   - aritmetica-natural
   - aritmetica-entera
@@ -37,6 +38,7 @@ related:
   - MA-BCH-0005
   - MA-BCH-0007
   - MA-BCH-0019
+  - MA-BCH-0020
 provenance:
   type: original
   sources: []
@@ -48,7 +50,8 @@ license: GFDL-1.3-or-later
 [**← Volver al Tratado de análisis**](tratado-de-analisis.md) ·
 [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) ·
 [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) ·
-[**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md)
+[**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) ·
+[**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md)
 
 Este glosario acompaña la publicación progresiva del *Tratado de análisis*. **No se adelanta al texto**: una entrada se incorpora cuando la noción correspondiente ya ha sido definida, construida o fijada en la edición pública.
 
@@ -75,6 +78,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Biyectividad](#gl-biyectividad) ·
 [Buen orden](#gl-buen-orden) ·
 [Cancelación aditiva](#gl-cancelacion-aditiva) ·
+[Cancelación multiplicativa](#gl-cancelacion-multiplicativa) ·
 [Cero](#gl-cero) ·
 [Cero entero](#gl-cero-entero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
@@ -84,6 +88,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Composición de relaciones](#gl-composicion-relaciones) ·
 [Conjunto cociente](#gl-conjunto-cociente) ·
 [Conjunto de funciones](#gl-conjunto-funciones) ·
+[Conjunto de representantes racionales](#gl-conjunto-representantes-racionales) ·
 [Conjunto inductivo](#gl-conjunto-inductivo) ·
 [Conjunto potencia](#gl-conjunto-potencia) ·
 [Conjunto transitivo](#gl-conjunto-transitivo) ·
@@ -99,6 +104,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Dominio de integridad](#gl-dominio-integridad) ·
 [Dominio de una función](#gl-dominio-funcion) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
+[Enteros no nulos](#gl-enteros-no-nulos) ·
 [Extensionalidad](#gl-extensionalidad) ·
 [Familia indexada](#gl-familia-indexada) ·
 [Forma normal con signo](#gl-forma-normal-signo) ·
@@ -154,6 +160,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Relación de equivalencia entera](#gl-relacion-equivalencia-entera) ·
 [Relación inversa](#gl-relacion-inversa) ·
 [Representante](#gl-representante) ·
+[Representante fraccionario](#gl-representante-fraccionario) ·
 [Restricción de una función](#gl-restriccion-funcion) ·
 [Separación restringida](#gl-separacion-restringida) ·
 [Simetría](#gl-simetria) ·
@@ -212,3 +219,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-18.md >}}
 
 {{< include _tratado-glosario-19.md >}}
+
+{{< include _tratado-glosario-20.md >}}
