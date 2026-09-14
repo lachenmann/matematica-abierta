@@ -40,3 +40,5 @@ license: GFDL-1.3-or-later
 ---
 
 {{< include _tratado-cap2-00.md >}}
+
+{{< include _tratado-cap2-01.md >}}

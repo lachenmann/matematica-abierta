@@ -81,7 +81,3 @@ Así, el orden aritmético y la estructura conjuntista de los naturales coincide
 **Véase también:** [Alcanzabilidad aditiva](#gl-alcanzabilidad-aditiva), [Orden total](#gl-orden-total), [Orden estricto](#gl-orden-estricto), [Subconjunto](#gl-subconjunto).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§1.6 — Orden natural** quedó incorporado el último vocabulario nuevo del Capítulo 1. **§§1.7–1.9** reutilizan nociones ya definidas, y **§2.0 — Por qué necesitamos los enteros** presenta sólo la motivación y el programa de construcción. El glosario volverá a ampliarse con **§2.1 — Diferencias formales**, cuando los nuevos objetos reciban definición matemática explícita.
-:::
