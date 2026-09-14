@@ -64,15 +64,16 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
 - **Capítulo 3 — Aplicaciones lineales:** en desarrollo.
   - apertura: cotejada;
   - **3A — Espacio vectorial de aplicaciones lineales:** traducción completa y cotejada; **17/17 ejercicios resueltos y verificados**;
-  - **3B — Espacios nulos e imágenes:** traducción completa y cotejada; **33/33 ejercicios resueltos y verificados**; incluye el teorema fundamental de las aplicaciones lineales 3.21.
-- Total acumulado de ejercicios resueltos: **148**.
-- Glosario terminológico: **v0.9**.
-- Siguiente bloque: **3C — Matrices**.
+  - **3B — Espacios nulos e imágenes:** traducción completa y cotejada; **33/33 ejercicios resueltos y verificados**; incluye el teorema fundamental de las aplicaciones lineales 3.21;
+  - **3C — Matrices:** traducción completa y cotejada; **17/17 ejercicios resueltos y verificados**; incluye factorización columna–fila y la igualdad entre rango columna y rango fila.
+- Total acumulado de ejercicios resueltos: **165**.
+- Glosario terminológico: **v0.10**.
+- Siguiente bloque: **3D — Invertibilidad e isomorfismos**.
 
-La errata oficial vigente no registra correcciones específicas para las pp. 51–68 de la apertura, 3A y 3B. La imagen de tercero incluida por Axler en la apertura del capítulo 3 no se reproduce en esta edición de trabajo; su tratamiento licenciatario queda separado del texto CC BY-NC.
+La errata oficial vigente no registra correcciones específicas para las pp. 51–81 de la apertura y 3A–3C. En 3C seguimos dos mejoras presentes en el PDF canónico de 16-08-2026 frente a la copia de 25-03-2024: el caso $c=0$ en la demostración de 3.57 y la hipótesis de espacios no nulos en el Ejercicio 2. La imagen de tercero incluida por Axler en la apertura del capítulo 3 no se reproduce en esta edición de trabajo; su tratamiento licenciatario queda separado del texto CC BY-NC.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
 ## Terminología
 
-Preferimos una traducción matemáticamente fiel y natural en español. En 3B mantenemos `null T` y `range T` en las fórmulas para conservar la notación de Axler, mientras que en la prosa usamos **espacio nulo** e **imagen**. Las decisiones terminológicas se documentan en el glosario y pueden ser discutidas mediante Issues o Pull Requests.
+Preferimos una traducción matemáticamente fiel y natural en español. En 3B mantenemos `null T` y `range T` en las fórmulas para conservar la notación de Axler, mientras que en la prosa usamos **espacio nulo** e **imagen**. En 3C reservamos **rango** para *rank*, con **rango columna** y **rango fila** antes de 3.58. Las decisiones terminológicas se documentan en el glosario y pueden ser discutidas mediante Issues o Pull Requests.
