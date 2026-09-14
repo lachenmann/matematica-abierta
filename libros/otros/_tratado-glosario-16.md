@@ -55,9 +55,3 @@ La noción queda fijada en §2.6. La demostración de que $\mathbb Z$ satisface 
 **En el Tratado:** [Convención 2.6.2 — Terminología algebraica](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-terminologia-algebraica).
 
 **Véase también:** [Anillo](#gl-anillo), [Anillo conmutativo](#gl-anillo-conmutativo), [Producto nulo](#gl-producto-nulo).
-
----
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.6 — Estructura algebraica** se fijan las convenciones de anillo, anillo conmutativo y dominio de integridad. La siguiente ampliación acompañará **§2.7 — Incrustación canónica de $\mathbb N$**.
-:::
