@@ -103,7 +103,3 @@ La restricción permite comparar aproximaciones recursivas de distintas longitud
 **Véase también:** [Función](#gl-funcion), [Aproximación finita de una recursión](#gl-aproximacion-finita-recursion), [Recursión](#gl-recursion).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con la publicación de **§1.3 — Teorema de recursión**, el glosario incorpora el mecanismo que permite pasar de definiciones locales paso a paso a funciones globales sobre $\mathbb N$. La siguiente ampliación acompañará **§1.4 — Suma de números naturales**.
-:::
