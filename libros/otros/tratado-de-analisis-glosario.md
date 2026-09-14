@@ -26,6 +26,7 @@ topics:
   - aritmetica-natural
   - aritmetica-entera
   - orden-natural
+  - orden-entero
   - buen-orden
   - grupos-abelianos
   - anillos
@@ -125,6 +126,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Números naturales](#gl-numeros-naturales) ·
 [$\omega$](#gl-omega) ·
 [Opuesto entero](#gl-opuesto-entero) ·
+[Orden entero](#gl-orden-entero) ·
 [Orden estricto](#gl-orden-estricto) ·
 [Orden natural](#gl-orden-natural) ·
 [Orden parcial](#gl-orden-parcial) ·
@@ -165,6 +167,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Sustracción entera](#gl-sustraccion-entera) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
+[Tricotomía](#gl-tricotomia) ·
 [Tupla finita](#gl-tupla-finita) ·
 [Unidad entera](#gl-unidad-entera) ·
 [Unidad multiplicativa](#gl-unidad-multiplicativa) ·
@@ -207,3 +210,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-17.md >}}
 
 {{< include _tratado-glosario-18.md >}}
+
+{{< include _tratado-glosario-19.md >}}
