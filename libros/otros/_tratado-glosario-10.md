@@ -83,5 +83,5 @@ Así, el orden aritmético y la estructura conjuntista de los naturales coincide
 ---
 
 ::: {.callout-note title="Glosario vivo"}
-Con **§1.6 — Orden natural** quedó incorporado el vocabulario nuevo de este tramo. **§1.7 — Balance estructural** reutiliza nociones ya definidas y, por tanto, no añade entradas al glosario. La próxima ampliación se realizará cuando el texto introduzca nuevo vocabulario matemático.
+Con **§1.6 — Orden natural** quedó incorporado el vocabulario nuevo de este tramo. **§§1.7–1.8** reutilizan nociones ya definidas y, por tanto, no añaden entradas al glosario. La próxima ampliación se realizará cuando el texto introduzca nuevo vocabulario matemático.
 :::
