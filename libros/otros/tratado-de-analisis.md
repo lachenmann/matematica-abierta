@@ -138,35 +138,39 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.8**: diferencias formales y cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.9**: diferencias formales y cociente
 
    $$
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}};
    $$
 
-   operaciones aritméticas bien definidas sobre clases, sustracción total, estructura de anillo conmutativo con identidad e incrustación canónica
+   operaciones aritméticas bien definidas sobre clases, sustracción total, estructura de anillo conmutativo con identidad, incrustación canónica y ausencia de divisores de cero. Por tanto, $\mathbb Z$ es un dominio de integridad. El orden entero se define por
 
    $$
-   \iota_{\mathbb N}^{\mathbb Z}(n)=[(n,0)].
+   x\leq_{\mathbb Z}y
+   \iff
+   \exists n\in\mathbb N\;\bigl(y=x+\iota(n)\bigr),
    $$
 
-   La forma normal con signo demuestra que todo entero es exactamente $0_{\mathbb Z}$, $\iota(n)$ o $-\iota(n)$ para un único $n\neq0$ en los casos no nulos. A partir de ella se obtiene
+   y satisface
 
    $$
-   0_{\mathbb Z}\neq1_{\mathbb Z},
-   \qquad
-   xy=0_{\mathbb Z}\Longrightarrow x=0_{\mathbb Z}\ \text{o}\ y=0_{\mathbb Z},
+   [(a,b)]\leq_{\mathbb Z}[(c,d)]
+   \iff
+   a+d\leq c+b.
    $$
 
-   y, por tanto,
+   Se demuestra que $\leq_{\mathbb Z}$ es un orden total compatible con la suma y con la multiplicación por enteros no negativos, y que
 
    $$
-   \boxed{\mathbb Z\text{ es un dominio de integridad}.}
+   m\leq n
+   \iff
+   \iota(m)\leq_{\mathbb Z}\iota(n).
    $$
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la forma normal con signo y el estatuto demostrado de $\mathbb Z$ como dominio de integridad.
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.9 — Orden de los enteros**.
+La siguiente incorporación continuará el Capítulo 2 con **§2.10 — Qué hemos construido**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
