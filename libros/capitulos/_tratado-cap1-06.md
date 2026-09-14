@@ -217,9 +217,3 @@ entonces $P(n)$ vale para todo $n\in\mathbb N$.
 
 **Demostración.**  
 Si el conjunto $C=\{n\in\mathbb N:\neg P(n)\}$ fuera no vacío, tendría un mínimo $c$. Todo $m<c$ estaría fuera de $C$, luego satisfaría $P(m)$; la hipótesis daría $P(c)$, contradicción. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.6 el orden natural queda construido aritméticamente, identificado con la inclusión y la pertenencia en la representación de von Neumann, y reforzado por el principio de buen orden y la inducción fuerte. La siguiente entrega será **§1.7 — Balance estructural**.
-:::
