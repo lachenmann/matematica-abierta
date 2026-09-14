@@ -83,5 +83,5 @@ Así, el orden aritmético y la estructura conjuntista de los naturales coincide
 ---
 
 ::: {.callout-note title="Glosario vivo"}
-Con **§1.6 — Orden natural** quedó incorporado el último vocabulario nuevo del Capítulo 1. **§§1.7–1.9** reutilizan nociones ya definidas y cierran el capítulo sin añadir entradas. El glosario volverá a ampliarse cuando el **Capítulo 2 — Los números enteros** introduzca formalmente diferencias, equivalencia e incrustación canónica.
+Con **§1.6 — Orden natural** quedó incorporado el último vocabulario nuevo del Capítulo 1. **§§1.7–1.9** reutilizan nociones ya definidas, y **§2.0 — Por qué necesitamos los enteros** presenta sólo la motivación y el programa de construcción. El glosario volverá a ampliarse con **§2.1 — Diferencias formales**, cuando los nuevos objetos reciban definición matemática explícita.
 :::
