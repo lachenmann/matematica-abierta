@@ -138,7 +138,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.10 — Qué hemos construido**. A partir de diferencias formales y del cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.11 — Por qué la construcción funciona**. A partir de diferencias formales y del cociente
 
    $$
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}},
@@ -166,11 +166,27 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    a+d\leq c+b.
    $$
 
-   La síntesis de §2.10 subraya además que todavía no se identifica literalmente $\mathbb N$ con un subconjunto de $\mathbb Z$: la relación entre ambos sistemas sigue mediada por $\iota$.
+   §2.11 explicita el patrón metodológico que sostiene toda la construcción:
+
+   $$
+   \boxed{
+   \text{representantes}
+   \to
+   \text{equivalencia}
+   \to
+   \text{cociente}
+   \to
+   \text{buena definición}
+   \to
+   \text{estructura}.
+   }
+   $$
+
+   Este mismo esquema preparará la construcción de $\mathbb Q$ mediante clases de representantes enteros.
 
 4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.11 — Por qué la construcción funciona**.
+La siguiente incorporación continuará el Capítulo 2 con **§2.12 — Notas bibliográficas**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
