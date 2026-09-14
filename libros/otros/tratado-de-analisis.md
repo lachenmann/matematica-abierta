@@ -138,30 +138,37 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.3**: diferencias formales como pares de naturales; relación
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.4**: diferencias formales y relación de equivalencia entera; construcción del cociente
 
    $$
-   (a,b)\sim_{\mathbb Z}(c,d)\iff a+d=b+c;
+   \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}};
    $$
 
-   construcción del cociente
+   suma bien definida sobre clases,
 
    $$
-   \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}},
+   [(a,b)]+_{\mathbb Z}[(c,d)]=[(a+c,b+d)];
    $$
 
-   criterio de igualdad de clases y primera operación bien definida sobre el cociente:
+   cero y opuesto enteros,
 
    $$
-   [(a,b)]+_{\mathbb Z}[(c,d)]
-   =[(a+c,b+d)].
+   0_{\mathbb Z}=[(0,0)],
+   \qquad
+   -[(a,b)]=[(b,a)],
    $$
 
-   La independencia respecto de los representantes se demuestra mediante un principio binario de definición sobre clases.
+   y la demostración de que $(\mathbb Z,+)$ es un grupo abeliano. La sustracción queda definida como operación total por
 
-4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el vocabulario de la recursión, la aritmética natural, el orden y la construcción inicial de $\mathbb Z$, incluida su suma.
+   $$
+   x-y:=x+(-y),
+   $$
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.4 — Cero, opuesto y sustracción**.
+   de modo que toda ecuación $x+y=z$ posee la solución única $y=z-x$.
+
+4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la construcción inicial de $\mathbb Z$, su suma, el cero entero, el opuesto, la estructura de grupo abeliano y la sustracción.
+
+La siguiente incorporación continuará el Capítulo 2 con **§2.5 — Multiplicación de enteros**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

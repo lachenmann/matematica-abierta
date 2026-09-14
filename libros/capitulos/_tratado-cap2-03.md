@@ -250,9 +250,3 @@ $$
 Cuando el tipo sea inequívoco escribiremos simplemente $x+y$.
 
 La buena definición no está contenida en la fórmula: está contenida en la Proposición 2.3.3 y en el principio binario de descenso. Desde este punto la expresión $x+y$ para $x,y\in\mathbb Z$ es una operación genuina sobre clases.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.3 queda construida la suma de enteros como una operación bien definida sobre clases de equivalencia, sin elección global de representantes. La siguiente entrega será **§2.4 — Cero, opuesto y sustracción**.
-:::

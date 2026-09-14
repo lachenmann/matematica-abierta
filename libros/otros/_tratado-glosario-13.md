@@ -51,9 +51,3 @@ La fórmula representa una operación genuina sobre $\mathbb Z$ porque se demues
 **En el Tratado:** [Definición 2.3.4 — Suma en $\mathbb Z$](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-suma-enteros), apoyada en [Proposición 2.3.3 — Compatibilidad de la suma con $\sim_{\mathbb Z}$](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-compatibilidad-suma-enteros).
 
 **Véase también:** [Clase entera](#gl-clase-entera), [Diferencia formal](#gl-diferencia-formal), [Relación de equivalencia entera](#gl-relacion-equivalencia-entera).
-
----
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.3 — Suma de enteros** se incorporan el principio binario de descenso a cocientes y la suma entera. La siguiente ampliación acompañará **§2.4 — Cero, opuesto y sustracción**.
-:::
