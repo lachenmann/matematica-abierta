@@ -57,7 +57,3 @@ $$
 En ningún momento utilizaremos el axioma de elección.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.0 queda planteado el problema que motiva la construcción de los enteros. La siguiente entrega será **§2.1 — Diferencias formales**, donde los pares de naturales pasarán de intuición heurística a objeto matemático explícito.
-:::
