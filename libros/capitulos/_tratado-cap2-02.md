@@ -72,9 +72,3 @@ $$
 ∎
 
 Tenemos ya el conjunto de los enteros, pero todavía no una aritmética sobre él. Las operaciones deberán definirse sobre clases, y esto exige demostrar que no dependen del representante escogido.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.2 queda construido el conjunto $\mathbb Z$ como cociente de las diferencias formales. La siguiente entrega será **§2.3 — Suma de enteros**, donde comenzaremos a definir operaciones sobre clases y a demostrar que son independientes del representante.
-:::

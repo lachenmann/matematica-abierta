@@ -41,7 +41,3 @@ y un número entero es, por definición, un elemento de $\mathbb Z$. Por tanto, 
 **Véase también:** [Clase entera](#gl-clase-entera), [Conjunto cociente](#gl-conjunto-cociente), [Diferencia formal](#gl-diferencia-formal), [Relación de equivalencia entera](#gl-relacion-equivalencia-entera).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.2 — Construcción del conjunto $\mathbb Z$** quedan incorporadas las nociones de número entero y clase entera. Las próximas ampliaciones acompañarán la construcción de las operaciones sobre $\mathbb Z$.
-:::
