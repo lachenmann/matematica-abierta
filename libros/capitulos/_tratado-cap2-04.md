@@ -287,9 +287,3 @@ $$
 La solución es única. ∎
 
 La sustracción ha dejado de ser una operación parcial. Esto es exactamente lo que $\mathbb N$ no podía proporcionar.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.4, $(\mathbb Z,+)$ queda establecido como grupo abeliano y la sustracción se convierte en una operación total. La siguiente entrega será **§2.5 — Multiplicación de enteros**.
-:::
