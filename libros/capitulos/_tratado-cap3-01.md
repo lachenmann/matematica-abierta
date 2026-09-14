@@ -171,7 +171,3 @@ $$
 Esta convención introduce **únicamente el cuadrado**. Las potencias naturales generales se definirán más adelante, cuando su construcción sea necesaria; no se las presupone aquí.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.1 queda preparada la infraestructura entera necesaria para construir los racionales: cancelación multiplicativa, control del orden bajo traslaciones y factores positivos, el conjunto $\mathbb Z_{\neq0}$ y el dominio de representantes $D_{\mathbb Q}$. La siguiente entrega será **§3.2 — Equivalencia y cociente racional**.
-:::
