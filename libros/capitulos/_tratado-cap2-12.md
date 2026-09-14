@@ -10,7 +10,3 @@ Este capítulo no importa ningún teorema externo; las demostraciones son propia
 No se ha utilizado el axioma de elección.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.12 quedan consignadas las referencias metodológicas del capítulo y su independencia de teoremas externos. La siguiente entrega será **§2.13 — Hacia los números racionales**.
-:::
