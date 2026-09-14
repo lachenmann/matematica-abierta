@@ -27,7 +27,3 @@ Esta forma normal permite distinguir rigurosamente los enteros nulos, positivos 
 **Véase también:** [Incrustación canónica](#gl-incrustacion-canonica), [Opuesto entero](#gl-opuesto-entero), [Dominio de integridad](#gl-dominio-integridad).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§2.8 — Forma normal con signo y ausencia de divisores de cero** se incorpora la forma normal con signo y queda actualizado el estatuto de $\mathbb Z$ como dominio de integridad. La siguiente ampliación acompañará **§2.9 — Orden de los enteros** si aparecen nuevas nociones de vocabulario.
-:::
