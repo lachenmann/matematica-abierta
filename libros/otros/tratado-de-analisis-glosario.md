@@ -22,6 +22,7 @@ topics:
   - ordenes
   - numeros-naturales
   - recursion
+  - aritmetica-natural
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -52,10 +53,13 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 
 [Acotado inferiormente](#gl-acotado-inferiormente) ·
 [Acotado superiormente](#gl-acotado-superiormente) ·
+[Adición natural](#gl-adicion-natural) ·
 [Antisimetría](#gl-antisimetria) ·
 [Aproximación finita de una recursión](#gl-aproximacion-finita-recursion) ·
+[Asociatividad de la suma](#gl-asociatividad-suma) ·
 [Axioma de infinito](#gl-axioma-infinito) ·
 [Biyectividad](#gl-biyectividad) ·
+[Cancelación aditiva](#gl-cancelacion-aditiva) ·
 [Cero](#gl-cero) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
 [Codominio](#gl-codominio) ·
@@ -68,6 +72,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Conjunto transitivo](#gl-conjunto-transitivo) ·
 [Conjunto vacío](#gl-conjunto-vacio) ·
 [Conjuntos disjuntos](#gl-conjuntos-disjuntos) ·
+[Conmutatividad de la suma](#gl-conmutatividad-suma) ·
 [Cota inferior](#gl-cota-inferior) ·
 [Cota superior](#gl-cota-superior) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
@@ -122,6 +127,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Sobreyectividad](#gl-sobreyectividad) ·
 [Subconjunto](#gl-subconjunto) ·
 [Sucesor](#gl-sucesor) ·
+[Suma nula](#gl-suma-nula) ·
 [Supremo](#gl-supremo) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
@@ -143,3 +149,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-06.md >}}
 
 {{< include _tratado-glosario-07.md >}}
+
+{{< include _tratado-glosario-08.md >}}
