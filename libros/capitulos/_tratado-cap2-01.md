@@ -120,9 +120,3 @@ a-b=c-d=e-f,
 $$
 
 porque esas restas todavía no existen en el nivel objeto. Todo el argumento se realiza con las operaciones ya construidas en $\mathbb N$.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §2.1 queda construida y verificada la relación que identifica pares de naturales que representan la misma diferencia formal. La siguiente entrega será **§2.2 — Construcción del conjunto $\mathbb Z$**, donde formaremos el cociente $(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}}$.
-:::
