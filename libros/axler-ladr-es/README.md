@@ -63,15 +63,16 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
   - [QA global del Capítulo 2](CHAPTER2_QA.md).
 - **Capítulo 3 — Aplicaciones lineales:** en desarrollo.
   - apertura: cotejada;
-  - **3A — Espacio vectorial de aplicaciones lineales: traducción completa y cotejada; 17/17 ejercicios resueltos y verificados**.
-- Total acumulado de ejercicios resueltos: **115**.
-- Glosario terminológico: **v0.8**.
-- Siguiente bloque: **3B — Espacios nulos e imágenes**.
+  - **3A — Espacio vectorial de aplicaciones lineales:** traducción completa y cotejada; **17/17 ejercicios resueltos y verificados**;
+  - **3B — Espacios nulos e imágenes:** traducción completa y cotejada; **33/33 ejercicios resueltos y verificados**; incluye el teorema fundamental de las aplicaciones lineales 3.21.
+- Total acumulado de ejercicios resueltos: **148**.
+- Glosario terminológico: **v0.9**.
+- Siguiente bloque: **3C — Matrices**.
 
-La errata oficial vigente no registra correcciones específicas para las pp. 51–58 de la apertura y 3A. La imagen de tercero incluida por Axler en la apertura del capítulo 3 no se reproduce en esta edición de trabajo; su tratamiento licenciatario queda separado del texto CC BY-NC.
+La errata oficial vigente no registra correcciones específicas para las pp. 51–68 de la apertura, 3A y 3B. La imagen de tercero incluida por Axler en la apertura del capítulo 3 no se reproduce en esta edición de trabajo; su tratamiento licenciatario queda separado del texto CC BY-NC.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
 ## Terminología
 
-Preferimos una traducción matemáticamente fiel y natural en español. Las decisiones terminológicas se documentan en el glosario y pueden ser discutidas mediante Issues o Pull Requests.
+Preferimos una traducción matemáticamente fiel y natural en español. En 3B mantenemos `null T` y `range T` en las fórmulas para conservar la notación de Axler, mientras que en la prosa usamos **espacio nulo** e **imagen**. Las decisiones terminológicas se documentan en el glosario y pueden ser discutidas mediante Issues o Pull Requests.
