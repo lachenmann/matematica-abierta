@@ -1,6 +1,6 @@
 ---
 title: "Tratado de análisis — Capítulo 1: Los números naturales"
-description: "Construcción conjuntista de los números naturales: axioma de infinito, omega, inducción, Peano y teorema de recursión."
+description: "Construcción conjuntista de los números naturales: axioma de infinito, omega, inducción, Peano, recursión y suma natural."
 author: "Gustav A. Tachek"
 content-id: MA-BCH-0007
 content-type: book-chapter
@@ -18,6 +18,7 @@ topics:
   - induccion
   - peano
   - recursion
+  - adicion
 prerequisites:
   - MA-BCH-0005
 related:
@@ -45,3 +46,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap1-02.md >}}
 
 {{< include _tratado-cap1-03.md >}}
+
+{{< include _tratado-cap1-04.md >}}
