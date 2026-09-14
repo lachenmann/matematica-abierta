@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.7
+# Glosario terminológico · v0.8
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -29,7 +29,19 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | even function | función par | Estándar. |
 | odd function | función impar | Estándar. |
 | linear map | aplicación lineal | Preferido frente a «transformación lineal» para conservar la distinción map/operator. |
+| linear transformation | transformación lineal | Sinónimo de *linear map* señalado por Axler; no es la forma principal. |
 | linear operator | operador lineal | Para $T:V\to V$. |
+| zero linear map | aplicación lineal cero | Elemento cero de $\mathcal L(V,W)$; se distingue del vector $0\in W$. |
+| identity operator | operador identidad | Denotado por $I$; satisface $Iv=v$. |
+| additivity | aditividad | Una de las dos propiedades definitorias de una aplicación lineal. |
+| homogeneity | homogeneidad | Propiedad $T(\lambda v)=\lambda Tv$. |
+| domain | dominio | Espacio de partida de una aplicación. |
+| target space | espacio de llegada | Forma adoptada para el espacio $W$ en $T:V\to W$; evita introducir todavía una discusión separada de «codominio». |
+| composition | composición | Para aplicaciones lineales se usa además la notación de producto $ST=S\circ T$. |
+| product of linear maps | producto de aplicaciones lineales | Composición $ST$ definida en 3.7 cuando los espacios son compatibles. |
+| commute | conmutar | $S$ y $T$ conmutan cuando $ST=TS$. |
+| two-sided ideal | ideal bilateral | Subespacio $\mathcal E\subseteq\mathcal L(V)$ estable bajo multiplicación por ambos lados. |
+| backward shift | desplazamiento hacia atrás | Aplicación de 3.3 sobre $\mathbf F^\infty$. |
 | complex number | número complejo | Estándar. |
 | ordered pair | par ordenado | Estándar. |
 | scalar | escalar | Estándar. |
