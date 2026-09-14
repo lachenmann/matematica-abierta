@@ -138,7 +138,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.11 — Por qué la construcción funciona**. A partir de diferencias formales y del cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.12 — Notas bibliográficas**. A partir de diferencias formales y del cociente
 
    $$
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}},
@@ -182,11 +182,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    }
    $$
 
-   Este mismo esquema preparará la construcción de $\mathbb Q$ mediante clases de representantes enteros.
+   §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. El mismo esquema preparará la construcción de $\mathbb Q$ mediante clases de representantes enteros.
 
 4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.12 — Notas bibliográficas**.
+La siguiente incorporación continuará el Capítulo 2 con **§2.13 — Hacia los números racionales**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
