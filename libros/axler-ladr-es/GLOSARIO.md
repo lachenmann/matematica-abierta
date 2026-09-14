@@ -1,4 +1,4 @@
-# Glosario terminológico · v0.9
+# Glosario terminológico · v0.10
 
 Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición matemática en español y revisión comunitaria.
 
@@ -53,6 +53,21 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | homogeneous system of linear equations | sistema homogéneo de ecuaciones lineales | Los términos constantes del lado derecho son todos $0$. |
 | inhomogeneous system of linear equations | sistema no homogéneo de ecuaciones lineales | Al menos un término constante del lado derecho no es $0$. |
 | complexification of a linear map | complexificación de una aplicación lineal | $T_{\mathbf C}(u+iv)=Tu+iTv$, Ejercicio 33 de 3B. |
+| matrix | matriz | Arreglo rectangular de escalares; 3.29. |
+| $m$-by-$n$ matrix | matriz $m$ por $n$ | Se prefiere «$m$ por $n$» frente a «$m\times n$» en prosa. |
+| matrix entry | entrada de una matriz | $A_{j,k}$: fila $j$, columna $k$. |
+| row | fila | Primer índice de $A_{j,k}$. |
+| column | columna | Segundo índice de $A_{j,k}$. |
+| matrix of a linear map | matriz de una aplicación lineal | $\mathcal M(T)$ respecto de bases especificadas o implícitas. |
+| matrix addition | suma de matrices | Suma entrada a entrada, 3.34. |
+| scalar multiplication of a matrix | multiplicación de una matriz por un escalar | Se realiza entrada a entrada, 3.36. |
+| matrix multiplication | multiplicación de matrices | Producto definido en 3.41; motivado por $\mathcal M(ST)=\mathcal M(S)\mathcal M(T)$. |
+| matrix product | producto de matrices | Resultado de la multiplicación matricial. |
+| transpose | transpuesta | $A^t$; intercambio de filas y columnas, 3.54. |
+| column rank | rango columna | Dimensión del subespacio generado por las columnas. |
+| row rank | rango fila | Dimensión del subespacio generado por las filas. |
+| column–row factorization | factorización columna–fila | Factorización $A=CR$ de 3.56. |
+| rank | rango | En 3C, rango de una matriz = rango columna = rango fila; se evita «rango» como traducción de *range*. |
 | complex number | número complejo | Estándar. |
 | ordered pair | par ordenado | Estándar. |
 | scalar | escalar | Estándar. |
@@ -92,7 +107,6 @@ Estado: **PROVISIONAL**. Debe estabilizarse por uso, cotejo con la tradición ma
 | extend a linearly independent list to a basis | extender una lista linealmente independiente a una base | Formulación usada en 2.32. |
 | dimension | dimensión | Longitud de cualquier base de un espacio de dimensión finita, según 2.35. |
 | right length | longitud correcta | Expresión expositiva de 2.38 y 2.42: longitud igual a $\dim V$. |
-| rank | rango | Para dimensión de la imagen / rango de matriz según contexto. |
 | quotient space | espacio cociente | Estándar. |
 | dual space | espacio dual | Estándar. |
 | eigenvalue | valor propio | Preferido frente a «autovalor». |
