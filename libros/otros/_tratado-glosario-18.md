@@ -20,10 +20,10 @@ z=-\iota(n)
 \quad\text{para un único }n\in\mathbb N,\ n\neq0.
 $$
 
-Esta forma normal permite distinguir rigurosamente los enteros nulos, positivos y negativos antes de introducir el orden entero, y es la herramienta utilizada para demostrar que $\mathbb Z$ no tiene divisores de cero.
+Esta forma normal separa rigurosamente el caso nulo y las dos formas no nulas $\iota(n)$ y $-\iota(n)$. Una vez construido el orden entero en §2.9, estas formas corresponden respectivamente a los enteros positivos y negativos. La forma normal es además la herramienta utilizada para demostrar que $\mathbb Z$ no tiene divisores de cero.
 
 **En el Tratado:** [Teorema 2.8.1 — Forma normal con signo](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-forma-normal-signo).
 
-**Véase también:** [Incrustación canónica](#gl-incrustacion-canonica), [Opuesto entero](#gl-opuesto-entero), [Dominio de integridad](#gl-dominio-integridad).
+**Véase también:** [Incrustación canónica](#gl-incrustacion-canonica), [Opuesto entero](#gl-opuesto-entero), [Dominio de integridad](#gl-dominio-integridad), [Orden entero](#gl-orden-entero).
 
 ---
