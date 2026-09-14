@@ -138,13 +138,19 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    m<n\iff m\in n.
    $$
 
-3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.9**: diferencias formales y cociente
+3. [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) (`MA-BCH-0019`) — publicación disponible hasta **§2.10 — Qué hemos construido**. A partir de diferencias formales y del cociente
 
    $$
-   \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}};
+   \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}},
    $$
 
-   operaciones aritméticas bien definidas sobre clases, sustracción total, estructura de anillo conmutativo con identidad, incrustación canónica y ausencia de divisores de cero. Por tanto, $\mathbb Z$ es un dominio de integridad. El orden entero se define por
+   se construyen suma, opuesto, sustracción y producto sobre clases. Se demuestra que $\mathbb Z$ es un dominio de integridad totalmente ordenado. La incrustación canónica
+
+   $$
+   \iota_{\mathbb N}^{\mathbb Z}(n)=[(n,0)]
+   $$
+
+   es inyectiva y preserva $0$, $1$, suma, producto y orden. El orden entero satisface
 
    $$
    x\leq_{\mathbb Z}y
@@ -152,7 +158,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    \exists n\in\mathbb N\;\bigl(y=x+\iota(n)\bigr),
    $$
 
-   y satisface
+   y, sobre representantes,
 
    $$
    [(a,b)]\leq_{\mathbb Z}[(c,d)]
@@ -160,17 +166,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    a+d\leq c+b.
    $$
 
-   Se demuestra que $\leq_{\mathbb Z}$ es un orden total compatible con la suma y con la multiplicación por enteros no negativos, y que
-
-   $$
-   m\leq n
-   \iff
-   \iota(m)\leq_{\mathbb Z}\iota(n).
-   $$
+   La síntesis de §2.10 subraya además que todavía no se identifica literalmente $\mathbb N$ con un subconjunto de $\mathbb Z$: la relación entre ambos sistemas sigue mediada por $\iota$.
 
 4. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora el orden entero, la tricotomía en $\mathbb Z$ y la preservación/reflexión del orden por la incrustación canónica.
 
-La siguiente incorporación continuará el Capítulo 2 con **§2.10 — Qué hemos construido**.
+La siguiente incorporación continuará el Capítulo 2 con **§2.11 — Por qué la construcción funciona**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
