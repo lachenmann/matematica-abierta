@@ -67,7 +67,7 @@ $$
 (x,y)\in R.
 $$
 
-La definición importada corresponde a `TA-DEF-00009`.
+La definición importada corresponde a [`TA-DEF-00009`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-binaria).
 
 ## 2. Reflexividad, simetría y transitividad
 
@@ -92,7 +92,7 @@ $$
 \bigl((xRy\land yRz)\Longrightarrow xRz\bigr).
 $$
 
-Estas nociones se importan de `TA-DEF-00013`.
+Estas nociones se importan de [`TA-DEF-00013`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion).
 
 ## 3. Relación de equivalencia
 
@@ -112,7 +112,7 @@ $$
 }
 $$
 
-La definición correspondiente es `TA-DEF-00014`.
+La definición correspondiente es [`TA-DEF-00014`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-equivalencia).
 
 El propósito algebraico de una equivalencia no es declarar que dos elementos sean literalmente iguales. Permite afirmar que, para una construcción determinada, serán tratados como representantes de una misma clase.
 
@@ -126,7 +126,7 @@ $$
 \{x\in A:x\sim a\}.
 $$
 
-Esta construcción corresponde a `TA-DEF-00015`.
+Esta construcción corresponde a [`TA-DEF-00015`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-clase-equivalencia).
 
 Hay aquí una distinción que será obligatoria durante todo el tratado:
 
@@ -149,7 +149,7 @@ C\in\mathcal P(A):
 \right\}.
 $$
 
-Ésta es la construcción autorizada por `TA-DEF-00017`.
+Ésta es la construcción autorizada por [`TA-DEF-00017`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-conjunto-cociente).
 
 Por tanto, los elementos de $A/{\sim}$ son clases de equivalencia, y cada una de ellas es un subconjunto de $A$:
 
@@ -157,7 +157,7 @@ $$
 A/{\sim}\subseteq\mathcal P(A).
 $$
 
-La existencia conjuntista de este cociente está garantizada por `TA-PRO-00010`.
+La existencia conjuntista de este cociente está garantizada por [`TA-PRO-00010`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-pro-00010).
 
 ## 6. Representantes y buena definición
 
@@ -229,12 +229,12 @@ A partir de esta interfaz quedan fijadas las siguientes reglas.
 
 La interfaz importa únicamente los siguientes nodos cerrados del fundamento lógico-conjuntista:
 
-- `TA-DEF-00009` — relación binaria;
-- `TA-DEF-00013` — reflexividad, simetría y transitividad;
-- `TA-DEF-00014` — relación de equivalencia;
-- `TA-DEF-00015` — clase de equivalencia;
-- `TA-DEF-00017` — conjunto cociente;
-- `TA-PRO-00010` — existencia del cociente.
+- [`TA-DEF-00009`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-binaria) — relación binaria;
+- [`TA-DEF-00013`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion) — reflexividad, simetría y transitividad;
+- [`TA-DEF-00014`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-equivalencia) — relación de equivalencia;
+- [`TA-DEF-00015`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-clase-equivalencia) — clase de equivalencia;
+- [`TA-DEF-00017`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-conjunto-cociente) — conjunto cociente;
+- [`TA-PRO-00010`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-pro-00010) — existencia del cociente.
 
 Los pares ordenados y productos cartesianos ya estaban disponibles mediante `TALG-IMP-00001`, de modo que esta interfaz no los duplica.
 
@@ -263,7 +263,7 @@ Este punto será decisivo en los cocientes de grupos: allí la normalidad dejar�
 - **Fundamento:** ZF + lógica clásica.
 - **Axioma de elección:** no utilizado.
 - **Dependencia interna:** `TALG-IMP-00001`.
-- **Dependencias importadas:** `TA-DEF-00009`, `TA-DEF-00013`, `TA-DEF-00014`, `TA-DEF-00015`, `TA-DEF-00017`, `TA-PRO-00010`.
+- **Dependencias importadas:** [`TA-DEF-00009`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-binaria), [`TA-DEF-00013`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-propiedades-relacion), [`TA-DEF-00014`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-relacion-equivalencia), [`TA-DEF-00015`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-clase-equivalencia), [`TA-DEF-00017`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-conjunto-cociente), [`TA-PRO-00010`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-pro-00010).
 - **Particiones:** no importadas como infraestructura autónoma.
 - **Proyección cociente general:** no importada.
 - **Teorema general de descenso:** no importado.
