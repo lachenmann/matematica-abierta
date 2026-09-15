@@ -26,6 +26,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0021
+  - MA-BCH-0022
 provenance:
   type: original
   sources: []
@@ -201,6 +202,7 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 ## Contenido disponible
 
 1. [**Capítulo 0 — Interfaz fundacional para Álgebra**](../capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md) (`MA-BCH-0021`) — establece la interfaz explícita con el fundamento lógico-conjuntista: pares ordenados, productos cartesianos, funciones, identidad y composición; verifica la ausencia de circularidad y deja habilitada la definición formal de operación binaria.
+2. [**Interfaz funcional II — Biyectividad e inversas**](../capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md) (`MA-BCH-0022`) — incorpora inyectividad, sobreyectividad, biyectividad y función inversa; separa explícitamente la biyectividad de la compatibilidad algebraica y prepara la noción de isomorfismo.
 
 ### Ruta prevista
 
@@ -209,4 +211,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será **§0.1 — Interfaz funcional: biyectividad e inversas**.
+La siguiente incorporación pública de la Parte 0 será la **interfaz de relaciones de equivalencia y cocientes**.
