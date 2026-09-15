@@ -33,9 +33,3 @@ $$
 $$
 
 No construiremos todavía ningún número real.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.0 queda fijado el problema estructural que gobernará el capítulo. La siguiente entrega será **§4.1 — Cuerpos ordenados**, donde se abstraerán las compatibilidades algebraicas y de orden ya verificadas en $\mathbb Q$.
-:::
