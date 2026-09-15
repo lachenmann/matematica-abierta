@@ -55,7 +55,7 @@ $$
 f:A\to B,
 $$
 
-usaremos las nociones de inyectividad, sobreyectividad y biyectividad con el significado conjuntista ya establecido en `TA-DEF-00020`.
+usaremos las nociones de inyectividad, sobreyectividad y biyectividad con el significado conjuntista ya establecido en [`TA-DEF-00020`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-inyectiva-sobreyectiva-biyectiva).
 
 En particular:
 
@@ -73,7 +73,7 @@ Estas propiedades corresponden a la función subyacente. Por sí solas no expres
 
 ### 1.2. Caracterización de las funciones invertibles
 
-Una función
+El resultado [`TA-THM-00004`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funciones-invertibles) establece que una función
 
 $$
 f:A\to B
@@ -97,7 +97,7 @@ Este resultado es la pieza que permite pasar rigurosamente de la biyectividad a 
 
 ### 1.3. Función inversa
 
-Sólo después de establecer que $f$ es biyectiva escribiremos
+Siguiendo [`TA-NOT-00005`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion-inversa), sólo después de establecer que $f$ es biyectiva escribiremos
 
 $$
 f^{-1}:B\to A
@@ -161,9 +161,9 @@ Esta separación permitirá demostrar después que la inversa de un isomorfismo 
 
 La nueva importación amplía `TALG-IMP-00001` únicamente con tres nodos funcionales ya cerrados en el fundamento lógico-conjuntista:
 
-- `TA-DEF-00020` — inyectividad, sobreyectividad y biyectividad;
-- `TA-THM-00004` — caracterización de las funciones invertibles;
-- `TA-NOT-00005` — notación para la función inversa.
+- [`TA-DEF-00020`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-inyectiva-sobreyectiva-biyectiva) — inyectividad, sobreyectividad y biyectividad;
+- [`TA-THM-00004`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funciones-invertibles) — caracterización de las funciones invertibles;
+- [`TA-NOT-00005`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion-inversa) — notación para la función inversa.
 
 El capítulo fuente no depende de resultados `TALG-*`. Por tanto, esta ampliación tampoco crea un camino de retorno ni un ciclo entre tratados.
 
@@ -196,7 +196,7 @@ La respuesta conduce a los **isomorfismos de estructuras algebraicas**.
 - **Fundamento:** ZF + lógica clásica.
 - **Axioma de elección:** no utilizado.
 - **Dependencia interna:** `TALG-IMP-00001`.
-- **Dependencias importadas:** `TA-DEF-00020`, `TA-THM-00004`, `TA-NOT-00005`.
+- **Dependencias importadas:** [`TA-DEF-00020`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-inyectiva-sobreyectiva-biyectiva), [`TA-THM-00004`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funciones-invertibles), [`TA-NOT-00005`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion-inversa).
 - **Circularidad intertratados:** ninguna.
 - **Siguiente nodo habilitado:** `TALG-DEF-00020` — isomorfismo de magmas.
 
