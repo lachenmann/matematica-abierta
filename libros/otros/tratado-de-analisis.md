@@ -185,7 +185,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.4 — Producto y estructura de cuerpo**. Después de construir
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.5 — Incrustación canónica de $\mathbb Z$**. Después de construir
 
    $$
    \mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}},
@@ -193,31 +193,21 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    (a,b)\sim_{\mathbb Q}(c,d)\iff ad=bc,
    $$
 
-   §3.3 establece la estructura de grupo abeliano aditivo. En §3.4 la multiplicación desciende al cociente mediante
+   §3.3 establece la estructura de grupo abeliano aditivo y §3.4 hace descender la multiplicación al cociente, define $1_{\mathbb Q}$, demuestra las leyes multiplicativas y distributivas y establece $0_{\mathbb Q}\neq1_{\mathbb Q}$. En §3.5 se construye la incrustación canónica
 
    $$
-   \frac ab\cdot\frac cd
+   \boxed{
+   \jmath_{\mathbb Z}^{\mathbb Q}(a)
    =
-   \frac{ac}{bd},
+   \frac{a}{1_{\mathbb Z}}.
+   }
    $$
 
-   se define
+   La aplicación $\jmath$ es inyectiva y preserva $0$, $1$, suma, producto y opuesto. Por ello los enteros quedan incorporados estructuralmente en los racionales sin identificarlos todavía de manera literal como un subconjunto. La estructura de cuerpo aún no se da por demostrada: los inversos multiplicativos se construirán en §3.6.
 
-   $$
-   1_{\mathbb Q}:=\frac{1_{\mathbb Z}}{1_{\mathbb Z}},
-   $$
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya la infraestructura de cocientes, la aritmética racional y las nociones generales de incrustación canónica e inyectividad utilizadas en §3.5.
 
-   se demuestran asociatividad y conmutatividad del producto, las dos leyes distributivas y
-
-   $$
-   \boxed{0_{\mathbb Q}\neq1_{\mathbb Q}}.
-   $$
-
-   La estructura de cuerpo todavía no se da por demostrada: los inversos multiplicativos se construirán posteriormente, después de la incrustación canónica de $\mathbb Z$.
-
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora multiplicación racional y unidad racional, además de la suma, el cero, el opuesto, la sustracción, el cociente y sus representantes.
-
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.4. La siguiente incorporación será **§3.5 — Incrustación canónica de $\mathbb Z$**.
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.5. La siguiente incorporación será **§3.6 — Inversos multiplicativos**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

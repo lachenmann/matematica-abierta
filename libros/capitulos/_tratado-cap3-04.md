@@ -211,7 +211,3 @@ $$
 contradiciendo la [Proposición 2.8.2 — $0_{\mathbb Z}\neq1_{\mathbb Z}$](tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-cero-uno-enteros-distintos). ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.4 la multiplicación ha descendido rigurosamente desde los representantes al cociente. Junto con §3.3 quedan establecidas la suma, el producto, las unidades $0_{\mathbb Q}$ y $1_{\mathbb Q}$, las leyes distributivas y la distinción $0_{\mathbb Q}\neq1_{\mathbb Q}$. Todavía no hemos demostrado que $\mathbb Q$ sea un cuerpo: antes construiremos la **incrustación canónica de $\mathbb Z$** en §3.5 y después los inversos multiplicativos en §3.6.
-:::
