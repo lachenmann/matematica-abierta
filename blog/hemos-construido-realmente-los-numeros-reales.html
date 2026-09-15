@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Una lectura crítica de las objeciones de Norman J. Wildberger a los números reales, ZFC y el axioma de elección, y una propuesta constructiva para enriquecer el rigor matemático.">
 
-<title>Artículos – Matemática Abierta</title>
+<title>¿Hemos construido realmente los números reales? – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -77,6 +78,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -445,10 +475,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#artículos" id="toc-artículos" class="nav-link active" data-scroll-target="#artículos">Artículos</a>
+  <li><a href="#qué-significa-construir" id="toc-qué-significa-construir" class="nav-link active" data-scroll-target="#qué-significa-construir">1. ¿Qué significa «construir»?</a></li>
+  <li><a href="#una-cortadura-concreta-y-una-cortadura-arbitraria" id="toc-una-cortadura-concreta-y-una-cortadura-arbitraria" class="nav-link" data-scroll-target="#una-cortadura-concreta-y-una-cortadura-arbitraria">2. Una cortadura concreta y una cortadura arbitraria</a></li>
+  <li><a href="#sucesiones-de-cauchy-el-problema-reaparece" id="toc-sucesiones-de-cauchy-el-problema-reaparece" class="nav-link" data-scroll-target="#sucesiones-de-cauchy-el-problema-reaparece">3. Sucesiones de Cauchy: el problema reaparece</a></li>
+  <li><a href="#el-problema-empieza-antes-qué-es-una-función" id="toc-el-problema-empieza-antes-qué-es-una-función" class="nav-link" data-scroll-target="#el-problema-empieza-antes-qué-es-una-función">4. El problema empieza antes: ¿qué es una función?</a></li>
+  <li><a href="#zfc-y-el-lenguaje-en-que-hablamos-de-sus-axiomas" id="toc-zfc-y-el-lenguaje-en-que-hablamos-de-sus-axiomas" class="nav-link" data-scroll-target="#zfc-y-el-lenguaje-en-que-hablamos-de-sus-axiomas">5. ZFC y el lenguaje en que hablamos de sus axiomas</a></li>
+  <li><a href="#el-axioma-de-elección-existencia-sin-selección-explícita" id="toc-el-axioma-de-elección-existencia-sin-selección-explícita" class="nav-link" data-scroll-target="#el-axioma-de-elección-existencia-sin-selección-explícita">6. El axioma de elección: existencia sin selección explícita</a></li>
+  <li><a href="#lo-que-zfc-responde-y-lo-que-no-pretende-responder" id="toc-lo-que-zfc-responde-y-lo-que-no-pretende-responder" class="nav-link" data-scroll-target="#lo-que-zfc-responde-y-lo-que-no-pretende-responder">7. Lo que ZFC responde —y lo que no pretende responder</a></li>
+  <li><a href="#no-necesitamos-elegir-entre-wildberger-y-la-matemática-clásica" id="toc-no-necesitamos-elegir-entre-wildberger-y-la-matemática-clásica" class="nav-link" data-scroll-target="#no-necesitamos-elegir-entre-wildberger-y-la-matemática-clásica">8. No necesitamos elegir entre Wildberger y la matemática clásica</a></li>
+  <li><a href="#un-principio-editorial-no-ocultar" id="toc-un-principio-editorial-no-ocultar" class="nav-link" data-scroll-target="#un-principio-editorial-no-ocultar">9. Un principio editorial: no ocultar</a></li>
+  <li><a href="#un-decálogo-crítico-para-las-construcciones-matemáticas" id="toc-un-decálogo-crítico-para-las-construcciones-matemáticas" class="nav-link" data-scroll-target="#un-decálogo-crítico-para-las-construcciones-matemáticas">10. Un decálogo crítico para las construcciones matemáticas</a>
   <ul class="collapse">
-  <li><a href="#publicados" id="toc-publicados" class="nav-link" data-scroll-target="#publicados">Publicados</a></li>
+  <li><a href="#qué-objeto-estamos-introduciendo" id="toc-qué-objeto-estamos-introduciendo" class="nav-link" data-scroll-target="#qué-objeto-estamos-introduciendo">1. ¿Qué objeto estamos introduciendo?</a></li>
+  <li><a href="#qué-significa-que-esté-definido" id="toc-qué-significa-que-esté-definido" class="nav-link" data-scroll-target="#qué-significa-que-esté-definido">2. ¿Qué significa que esté definido?</a></li>
+  <li><a href="#cómo-sabemos-que-existe" id="toc-cómo-sabemos-que-existe" class="nav-link" data-scroll-target="#cómo-sabemos-que-existe">3. ¿Cómo sabemos que existe?</a></li>
+  <li><a href="#podemos-construirlo" id="toc-podemos-construirlo" class="nav-link" data-scroll-target="#podemos-construirlo">4. ¿Podemos construirlo?</a></li>
+  <li><a href="#podemos-calcular-con-él" id="toc-podemos-calcular-con-él" class="nav-link" data-scroll-target="#podemos-calcular-con-él">5. ¿Podemos calcular con él?</a></li>
+  <li><a href="#podemos-decidir-cuándo-dos-objetos-son-iguales" id="toc-podemos-decidir-cuándo-dos-objetos-son-iguales" class="nav-link" data-scroll-target="#podemos-decidir-cuándo-dos-objetos-son-iguales">6. ¿Podemos decidir cuándo dos objetos son iguales?</a></li>
+  <li><a href="#podemos-decidir-sus-propiedades-básicas" id="toc-podemos-decidir-sus-propiedades-básicas" class="nav-link" data-scroll-target="#podemos-decidir-sus-propiedades-básicas">7. ¿Podemos decidir sus propiedades básicas?</a></li>
+  <li><a href="#qué-infinitud-estamos-utilizando" id="toc-qué-infinitud-estamos-utilizando" class="nav-link" data-scroll-target="#qué-infinitud-estamos-utilizando">8. ¿Qué infinitud estamos utilizando?</a></li>
+  <li><a href="#qué-principios-lógicos-o-de-elección-intervienen" id="toc-qué-principios-lógicos-o-de-elección-intervienen" class="nav-link" data-scroll-target="#qué-principios-lógicos-o-de-elección-intervienen">9. ¿Qué principios lógicos o de elección intervienen?</a></li>
+  <li><a href="#qué-sobrevive-bajo-exigencias-constructivas-o-efectivas" id="toc-qué-sobrevive-bajo-exigencias-constructivas-o-efectivas" class="nav-link" data-scroll-target="#qué-sobrevive-bajo-exigencias-constructivas-o-efectivas">10. ¿Qué sobrevive bajo exigencias constructivas o efectivas?</a></li>
   </ul></li>
+  <li><a href="#wildberger-como-prueba-de-estrés" id="toc-wildberger-como-prueba-de-estrés" class="nav-link" data-scroll-target="#wildberger-como-prueba-de-estrés">11. Wildberger como prueba de estrés</a></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión">Conclusión</a></li>
+  <li><a href="#referencias-y-lecturas" id="toc-referencias-y-lecturas" class="nav-link" data-scroll-target="#referencias-y-lecturas">Referencias y lecturas</a></li>
   </ul>
 </nav>
     </div>
@@ -458,15 +509,27 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Artículos</h1>
+<h1 class="title">¿Hemos construido realmente los números reales?</h1>
+<p class="subtitle lead">Wildberger y una matemática que no oculte sus fundamentos</p>
 </div>
 
+<div>
+  <div class="description">
+    Una lectura crítica de las objeciones de Norman J. Wildberger a los números reales, ZFC y el axioma de elección, y una propuesta constructiva para enriquecer el rigor matemático.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">15 de septiembre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -475,31 +538,434 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="artículos" class="level1">
-<h1>Artículos</h1>
-<p>Piezas matemáticas independientes que no pertenecen necesariamente a una secuencia de curso o libro.</p>
-<p>Aquí pueden publicarse:</p>
+<p>Hay una pregunta que rara vez aparece después de una construcción rigurosa de los números reales:</p>
+<p><span class="math display">\[
+\boxed{\text{¿Qué significa exactamente que los hemos construido?}}
+\]</span></p>
+<p>Podemos definir los reales mediante cortaduras de Dedekind. Podemos obtenerlos como clases de equivalencia de sucesiones de Cauchy. Podemos definir sobre ellos suma, producto y orden, y demostrar que forman un cuerpo ordenado completo.</p>
+<p>Todo eso constituye matemática clásica perfectamente legítima dentro de su marco formal.</p>
+<p>Pero aún podemos preguntar:</p>
 <ul>
-<li>ensayos matemáticos;</li>
-<li>resultados presentados desde más de un punto de vista;</li>
-<li>historia de las matemáticas;</li>
-<li>conexiones amplias entre ideas;</li>
-<li>estrategias de estudio;</li>
-<li>notas editoriales de interés público.</li>
+<li>¿qué clase de objeto hemos construido?;</li>
+<li>¿cómo está especificado?;</li>
+<li>¿puede representarse mediante información finita?;</li>
+<li>¿podemos calcular con él?;</li>
+<li>¿podemos decidir cuándo dos de estos objetos son iguales?;</li>
+<li>¿qué principios lógicos y conjuntistas hemos utilizado para demostrar que existe?</li>
 </ul>
-<p>Las exposiciones cuya función natural sea definir o desarrollar un concepto pertenecen a <a href="../teoria/index.html">Teoría</a>, no a esta sección.</p>
-<section id="publicados" class="level2">
-<h2 class="anchored" data-anchor-id="publicados">Publicados</h2>
+<p>Estas preguntas están en el centro de las críticas que Norman J. Wildberger ha dirigido contra la teoría moderna de conjuntos, los números reales y el uso del infinito actual. Su lenguaje suele ser deliberadamente provocador, y algunas de sus conclusiones van mucho más lejos de lo que la matemática estándar está dispuesta a conceder. Sin embargo, descartar por ese motivo todas sus preguntas sería un error.</p>
+<p>En <em>Real numbers: A critique and way forward</em> (2015), Wildberger cuestiona las presentaciones habituales mediante decimales infinitos, sucesiones de Cauchy y cortaduras de Dedekind. Su preocupación recurrente es que hablamos de objetos infinitos sin prestar suficiente atención a la manera en que tales objetos pueden especificarse o manipularse mediante información finita.</p>
+<p>No es necesario aceptar su programa finitista para reconocer que la pregunta merece una respuesta mejor que «así se hace en la matemática estándar».</p>
+<p>La ortodoxia no constituye una demostración.</p>
+<section id="qué-significa-construir" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-construir">1. ¿Qué significa «construir»?</h2>
+<p>Supongamos que definimos</p>
+<p><span class="math display">\[
+\mathbb R_D
+\]</span></p>
+<p>como la colección de las cortaduras de Dedekind de <span class="math inline">\(\mathbb Q\)</span>.</p>
+<p>Dentro de una teoría clásica de conjuntos suficientemente fuerte podemos definir rigurosamente qué es una cortadura, definir las operaciones y el orden, y demostrar finalmente que</p>
+<p><span class="math display">\[
+(\mathbb R_D,+_D,\cdot_D,\le_D)
+\]</span></p>
+<p>es un cuerpo ordenado completo.</p>
+<p>En un sentido formal hemos construido <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Pero la palabra <em>construcción</em> puede ocultar varias nociones diferentes:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\text{existencia formal},\\
+&amp;\text{definibilidad},\\
+&amp;\text{especificación finita},\\
+&amp;\text{construcción efectiva},\\
+&amp;\text{computabilidad}.
+\end{aligned}
+\]</span></p>
+<p>Estas nociones no son equivalentes.</p>
+<p>Una demostración clásica de</p>
+<p><span class="math display">\[
+\exists x\,P(x)
+\]</span></p>
+<p>establece que existe un objeto que satisface cierta propiedad. No necesariamente proporciona un procedimiento para obtenerlo.</p>
+<p>En buena parte de la matemática constructiva, en cambio, la afirmación de existencia está ligada a la posibilidad de producir un testigo o una construcción. La diferencia no es terminológica: cambia el contenido informativo de una prueba.</p>
+<p>Por eso podemos reformular una de las intuiciones de Wildberger de un modo menos polémico:</p>
+<p><span class="math display">\[
+\boxed{\text{¿qué información contiene realmente nuestra prueba de existencia?}}
+\]</span></p>
+<p>Ésta sí es una pregunta matemática.</p>
+</section>
+<section id="una-cortadura-concreta-y-una-cortadura-arbitraria" class="level2">
+<h2 class="anchored" data-anchor-id="una-cortadura-concreta-y-una-cortadura-arbitraria">2. Una cortadura concreta y una cortadura arbitraria</h2>
+<p>Consideremos, por ejemplo, la cortadura asociada a <span class="math inline">\(\sqrt2\)</span>:</p>
+<p><span class="math display">\[
+L_{\sqrt2}
+=
+\{q\in\mathbb Q:q&lt;0\text{ o }q^2&lt;2\}.
+\]</span></p>
+<p>Dado un racional <span class="math inline">\(q\)</span>, podemos determinar mediante un cálculo finito si pertenece o no a esta cortadura.</p>
+<p>Tenemos un procedimiento explícito.</p>
+<p>Pero la definición clásica de número real mediante Dedekind no contiene solamente cortaduras de este tipo. Considera cortaduras arbitrarias que satisfacen determinadas propiedades estructurales.</p>
+<p>Entonces aparece la pregunta:</p>
+<p><span class="math display">\[
+q\stackrel{?}{\in}L.
+\]</span></p>
+<p>La teoría clásica puede permitirnos hablar perfectamente bien de <span class="math inline">\(L\subseteq\mathbb Q\)</span> sin exigir que poseamos un algoritmo general que decida esa pertenencia.</p>
+<p>Aquí Wildberger localiza una dificultad: ¿qué significa tratar esa totalidad infinita como un objeto matemático completamente dado cuando no disponemos de una especificación efectiva de su membresía?</p>
+<p>La respuesta clásica es coherente:</p>
+<blockquote class="blockquote">
+<p>Un objeto matemático no tiene que ser computable para existir.</p>
+</blockquote>
+<p>Pero observemos qué ha ocurrido. No hemos mostrado que la pregunta computacional carezca de sentido. Hemos adoptado un criterio de existencia más amplio.</p>
+<p>Conviene que esta diferencia permanezca visible:</p>
+<p><span class="math display">\[
+\boxed{
+\text{existencia clásica}
+\neq
+\text{decidibilidad}
+\neq
+\text{computabilidad}.
+}
+\]</span></p>
+</section>
+<section id="sucesiones-de-cauchy-el-problema-reaparece" class="level2">
+<h2 class="anchored" data-anchor-id="sucesiones-de-cauchy-el-problema-reaparece">3. Sucesiones de Cauchy: el problema reaparece</h2>
+<p>Otra construcción habitual define los reales mediante sucesiones racionales de Cauchy, identificando dos cuando su diferencia converge a cero:</p>
+<p><span class="math display">\[
+(a_n)\sim(b_n)
+\iff
+|a_n-b_n|\longrightarrow0.
+\]</span></p>
+<p>Un real aparece entonces como una clase de equivalencia</p>
+<p><span class="math display">\[
+[(a_n)].
+\]</span></p>
+<p>Nuevamente, la construcción clásica funciona.</p>
+<p>Pero surgen preguntas adicionales.</p>
+<p>¿Cómo está dada la sucesión?</p>
+<p>¿Existe un algoritmo que produzca <span class="math inline">\(a_n\)</span> a partir de <span class="math inline">\(n\)</span>?</p>
+<p>¿Tenemos información efectiva sobre su convergencia?</p>
+<p>Además de saber que</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\;\exists N\;\forall m,n\ge N,
+\qquad |a_m-a_n|&lt;\varepsilon,
+\]</span></p>
+<p>¿podemos determinar un control explícito</p>
+<p><span class="math display">\[
+N=N(\varepsilon)?
+\]</span></p>
+<p>La diferencia es crucial.</p>
+<p>Una sucesión puede estar bien definida y ser convergente en sentido clásico sin proporcionarnos información efectiva suficiente para calcular su límite.</p>
+<p>El análisis computable ofrece ejemplos especialmente instructivos: existen sucesiones computables de racionales, crecientes y acotadas, cuyos límites no son reales computables. Las llamadas sucesiones de Specker muestran que</p>
+<p><span class="math display">\[
+\boxed{
+\text{podemos calcular cada término}
+\not\Rightarrow
+\text{podemos calcular el límite}.
+}
+\]</span></p>
+<p>Por eso la información efectiva de convergencia no es un detalle técnico. Forma parte del contenido computacional del teorema.</p>
+</section>
+<section id="el-problema-empieza-antes-qué-es-una-función" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-empieza-antes-qué-es-una-función">4. El problema empieza antes: ¿qué es una función?</h2>
+<p>La crítica de Wildberger retrocede todavía un paso más.</p>
+<p>¿Qué es una función?</p>
+<p>En teoría clásica de conjuntos puede definirse una función <span class="math inline">\(f:A\to B\)</span> como una relación que satisface</p>
+<p><span class="math display">\[
+\forall x\in A\;\exists!y\in B
+\quad (x,y)\in f.
+\]</span></p>
+<p>Si las relaciones y los pares ordenados se representan mediante conjuntos, una función puede codificarse enteramente dentro de ZF o ZFC.</p>
+<p>Por tanto, tomada literalmente, la afirmación «ZFC no puede definir funciones» sería demasiado fuerte. ZFC puede formalizar perfectamente funciones como objetos extensionales.</p>
+<p>Pero la objeción interesante no termina ahí.</p>
+<p>Consideremos</p>
+<p><span class="math display">\[
+f(n)=n^2+1.
+\]</span></p>
+<p>Podemos pensar esta función extensionalmente, como el conjunto de todos sus pares entrada-salida:</p>
+<p><span class="math display">\[
+\{(0,1),(1,2),(2,5),(3,10),\ldots\},
+\]</span></p>
+<p>o intensionalmente, mediante la regla:</p>
+<p><span class="math display">\[
+\boxed{\text{dado }n,\text{ elevarlo al cuadrado y sumar }1.}
+\]</span></p>
+<p>La primera descripción registra qué valores tiene la función.</p>
+<p>La segunda proporciona un procedimiento para obtenerlos.</p>
+<p>En matemática clásica, dos funciones con los mismos valores son la misma función extensional. En computación, teoría de tipos y otras perspectivas intensionales, puede ser relevante conservar también la forma de producir esos valores.</p>
+<p>Así aparece una distinción fundamental:</p>
+<p><span class="math display">\[
+\boxed{
+\text{función extensional}
+\neq
+\text{algoritmo que la realiza}.
+}
+\]</span></p>
+<p>ZFC responde con precisión a la primera noción. Una crítica constructiva o computacional pregunta además por la segunda.</p>
+</section>
+<section id="zfc-y-el-lenguaje-en-que-hablamos-de-sus-axiomas" class="level2">
+<h2 class="anchored" data-anchor-id="zfc-y-el-lenguaje-en-que-hablamos-de-sus-axiomas">5. ZFC y el lenguaje en que hablamos de sus axiomas</h2>
+<p>Wildberger también critica la manera en que suelen presentarse los axiomas de la teoría de conjuntos. En <em>Set Theory: Should You Believe?</em> pregunta por nociones como «propiedad», «función» o «familia» cuando éstas aparecen informalmente al explicar los axiomas.</p>
+<p>Aquí es importante no confundir la presentación pedagógica de ZFC con su formulación formal.</p>
+<p>El lenguaje de primer orden de la teoría de conjuntos puede tomarse con una estructura extremadamente austera: esencialmente igualdad y la relación de pertenencia <span class="math inline">\(\in\)</span>. Los esquemas de separación y reemplazo no necesitan introducir «propiedades» o «funciones» como nuevos objetos primitivos del lenguaje; se formulan mediante fórmulas de ese lenguaje.</p>
+<p>Por ejemplo, reemplazo puede trabajar con una fórmula funcional <span class="math inline">\(\varphi(x,y)\)</span> que satisfaga una condición de unicidad apropiada. Ésta es una noción metalingüística de fórmula funcional, distinta de una función que ya sea un conjunto interno al universo.</p>
+<p>Esa distinción muestra que varias críticas populares a ZFC confunden niveles formales diferentes.</p>
+<p>Pero también revela algo que merece explicarse: la frase informal</p>
+<blockquote class="blockquote">
+<p>«una función es simplemente un conjunto de pares ordenados»</p>
+</blockquote>
+<p>no cuenta toda la historia de cómo razonamos, definimos y presentamos funciones en la práctica matemática.</p>
+<p>Precisar estos niveles no debilita la teoría de conjuntos. La hace más transparente.</p>
+</section>
+<section id="el-axioma-de-elección-existencia-sin-selección-explícita" class="level2">
+<h2 class="anchored" data-anchor-id="el-axioma-de-elección-existencia-sin-selección-explícita">6. El axioma de elección: existencia sin selección explícita</h2>
+<p>El axioma de elección hace todavía más visible la tensión entre existencia y construcción.</p>
+<p>En una de sus formulaciones, permite afirmar la existencia de una función de elección para una familia apropiada de conjuntos no vacíos aun cuando no se haya especificado una regla uniforme concreta que realice las selecciones.</p>
+<p>Su fuerza matemática es profunda. Entre los resultados equivalentes al axioma de elección completo, trabajando sobre ZF, está el enunciado:</p>
+<p><span class="math display">\[
+\boxed{\text{Todo espacio vectorial posee una base.}}
+\]</span></p>
+<p>La afirmación es perfectamente precisa dentro de la matemática clásica.</p>
+<p>Pero desde una perspectiva constructiva podemos hacer una pregunta adicional. Cuando afirmamos que un espacio vectorial arbitrario <span class="math inline">\(V\)</span> posee una base <span class="math inline">\(B\)</span>,</p>
+<p><span class="math display">\[
+\exists B\subseteq V,
+\]</span></p>
+<p>¿hemos construido efectivamente esa base?</p>
+<p>No necesariamente.</p>
+<p>Una vez más,</p>
+<p><span class="math display">\[
+\boxed{
+\text{existencia clásica}
+\neq
+\text{procedimiento de construcción}.
+}
+\]</span></p>
+<p>Esto no convierte al axioma de elección en incorrecto. Significa que una exposición rigurosa puede ganar mucho haciendo visible cuándo una conclusión depende de un principio de elección.</p>
+<p>La regla metodológica adecuada no tiene por qué ser</p>
+<p><span class="math display">\[
+\text{«no usar elección»}.
+\]</span></p>
+<p>Puede ser algo más útil:</p>
+<p><span class="math display">\[
+\boxed{\text{no usar elección inadvertidamente}.}
+\]</span></p>
+</section>
+<section id="lo-que-zfc-responde-y-lo-que-no-pretende-responder" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-zfc-responde-y-lo-que-no-pretende-responder">7. Lo que ZFC responde —y lo que no pretende responder</h2>
+<p>Debemos ser igualmente rigurosos con la matemática clásica y con Wildberger.</p>
+<p>ZFC permite formalizar conjuntos, relaciones, funciones, sucesiones, cortaduras y las construcciones usuales de los reales. Si aceptamos ese marco, una cortadura infinita no constituye por sí misma una contradicción.</p>
+<p>Por tanto, las objeciones de Wildberger no son normalmente refutaciones internas de ZFC.</p>
+<p>Con frecuencia son objeciones al criterio de legitimidad matemática que ZFC permite adoptar.</p>
+<p>De manera semejante,</p>
+<p><span class="math display">\[
+\text{no computable}
+\]</span></p>
+<p>no significa</p>
+<p><span class="math display">\[
+\text{inconsistente}.
+\]</span></p>
+<p>Cuando alguien exige que todo objeto matemático admita una especificación finita efectiva, está imponiendo una condición adicional que la teoría clásica no adopta en general.</p>
+<p>Pero tampoco debemos pedirle a ZFC que responda preguntas que pertenecen a otro nivel.</p>
+<p>ZFC puede responder:</p>
+<blockquote class="blockquote">
+<p>¿puede formalizarse este objeto dentro de la teoría?</p>
+</blockquote>
+<p>La teoría de la computabilidad pregunta además:</p>
+<blockquote class="blockquote">
+<p>¿podemos calcularlo?</p>
+</blockquote>
+<p>La matemática constructiva pregunta:</p>
+<blockquote class="blockquote">
+<p>¿qué construcción contiene la prueba de existencia?</p>
+</blockquote>
+<p>La teoría de la decisión pregunta:</p>
+<blockquote class="blockquote">
+<p>¿podemos decidir esta propiedad mediante un procedimiento general?</p>
+</blockquote>
+<p>La complejidad pregunta:</p>
+<blockquote class="blockquote">
+<p>aun cuando podamos calcularlo, ¿con qué recursos?</p>
+</blockquote>
+<p>Son preguntas distintas.</p>
+<p>Una exposición rigurosa debe evitar colapsarlas en una sola.</p>
+</section>
+<section id="no-necesitamos-elegir-entre-wildberger-y-la-matemática-clásica" class="level2">
+<h2 class="anchored" data-anchor-id="no-necesitamos-elegir-entre-wildberger-y-la-matemática-clásica">8. No necesitamos elegir entre Wildberger y la matemática clásica</h2>
+<p>Existe una falsa dicotomía frecuente:</p>
+<p><span class="math display">\[
+\text{matemática clásica}
+\qquad\text{vs.}\qquad
+\text{finitismo radical}.
+\]</span></p>
+<p>La tradición constructiva muestra que existe un territorio enorme entre ambos extremos.</p>
+<p>Errett Bishop desarrolló una parte sustancial del análisis desde una orientación constructiva. La teoría de tipos, el análisis computable y distintas formas de matemática constructiva han profundizado después la relación entre existencia, información y cálculo.</p>
+<p>Esto sugiere una actitud metodológica especialmente fértil:</p>
+<p><span class="math display">\[
+\boxed{
+\text{construir cuando podamos; declarar con precisión cuándo no lo hacemos.}
+}
+\]</span></p>
+<p>No necesitamos renunciar automáticamente a un teorema porque su prueba clásica sea no constructiva.</p>
+<p>Podemos hacer algo más informativo:</p>
+<ol type="1">
+<li>demostrar el resultado clásico;</li>
+<li>identificar sus dependencias lógicas y conjuntistas relevantes;</li>
+<li>determinar qué información efectiva proporciona la demostración;</li>
+<li>buscar, cuando tenga sentido, una versión constructiva o computable;</li>
+<li>comparar exactamente qué se gana y qué se pierde.</li>
+</ol>
+<p>Entonces las diferencias fundacionales dejan de ser únicamente una disputa filosófica y se convierten en información matemática.</p>
+</section>
+<section id="un-principio-editorial-no-ocultar" class="level2">
+<h2 class="anchored" data-anchor-id="un-principio-editorial-no-ocultar">9. Un principio editorial: no ocultar</h2>
+<p>Podemos resumir esta posición en una regla:</p>
+<p><span class="math display">\[
+\boxed{
+\text{No prohibir la matemática no constructiva;}
+\quad
+\text{prohibir que su carácter no constructivo permanezca invisible.}
+}
+\]</span></p>
+<p>Lo mismo vale para el infinito y para el axioma de elección.</p>
+<p>No proponemos:</p>
+<p><span class="math display">\[
+\text{«Sólo existen números computables».}
+\]</span></p>
+<p>Preguntamos:</p>
+<p><span class="math display">\[
+\boxed{\text{¿este número es computable y, si lo es, mediante qué representación?}}
+\]</span></p>
+<p>No proponemos abandonar la completitud clásica.</p>
+<p>Distinguimos:</p>
+<p><span class="math display">\[
+\text{completitud clásica}
+\]</span></p>
+<p>de</p>
+<p><span class="math display">\[
+\text{completitud efectiva}.
+\]</span></p>
+<p>No rechazamos una demostración porque use elección.</p>
+<p>Registramos qué forma de elección utiliza, si puede evitarse y si el propio teorema necesita realmente esa fuerza o sólo la necesita la prueba elegida.</p>
+<p>Esta diferencia enriquece los resultados. No los empobrece.</p>
+</section>
+<section id="un-decálogo-crítico-para-las-construcciones-matemáticas" class="level2">
+<h2 class="anchored" data-anchor-id="un-decálogo-crítico-para-las-construcciones-matemáticas">10. Un decálogo crítico para las construcciones matemáticas</h2>
+<p>De esta discusión emerge un protocolo que puede aplicarse a prácticamente cualquier construcción matemática.</p>
+<section id="qué-objeto-estamos-introduciendo" class="level3">
+<h3 class="anchored" data-anchor-id="qué-objeto-estamos-introduciendo">1. ¿Qué objeto estamos introduciendo?</h3>
+<p>Precisar su naturaleza matemática y no esconderla detrás de una notación conveniente.</p>
+</section>
+<section id="qué-significa-que-esté-definido" class="level3">
+<h3 class="anchored" data-anchor-id="qué-significa-que-esté-definido">2. ¿Qué significa que esté definido?</h3>
+<p>Distinguir definición formal, descripción finita, especificación efectiva y mera caracterización existencial.</p>
+</section>
+<section id="cómo-sabemos-que-existe" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-sabemos-que-existe">3. ¿Cómo sabemos que existe?</h3>
+<p>Identificar el argumento exacto de existencia y los principios sobre los que descansa.</p>
+</section>
+<section id="podemos-construirlo" class="level3">
+<h3 class="anchored" data-anchor-id="podemos-construirlo">4. ¿Podemos construirlo?</h3>
+<p>Preguntar si la demostración proporciona el objeto cuya existencia afirma.</p>
+</section>
+<section id="podemos-calcular-con-él" class="level3">
+<h3 class="anchored" data-anchor-id="podemos-calcular-con-él">5. ¿Podemos calcular con él?</h3>
+<p>No confundir operaciones formalmente definidas con operaciones efectivamente computables.</p>
+</section>
+<section id="podemos-decidir-cuándo-dos-objetos-son-iguales" class="level3">
+<h3 class="anchored" data-anchor-id="podemos-decidir-cuándo-dos-objetos-son-iguales">6. ¿Podemos decidir cuándo dos objetos son iguales?</h3>
+<p>Una relación de igualdad puede estar perfectamente definida aunque no exista un algoritmo general que la decida.</p>
+</section>
+<section id="podemos-decidir-sus-propiedades-básicas" class="level3">
+<h3 class="anchored" data-anchor-id="podemos-decidir-sus-propiedades-básicas">7. ¿Podemos decidir sus propiedades básicas?</h3>
+<p>Para una cortadura <span class="math inline">\(L\subseteq\mathbb Q\)</span>, por ejemplo:</p>
+<p><span class="math display">\[
+q\in L\;?
+\]</span></p>
+<p>¿existe un procedimiento efectivo que determine la respuesta?</p>
+</section>
+<section id="qué-infinitud-estamos-utilizando" class="level3">
+<h3 class="anchored" data-anchor-id="qué-infinitud-estamos-utilizando">8. ¿Qué infinitud estamos utilizando?</h3>
+<p>Distinguir un proceso potencialmente indefinido de una totalidad infinita tratada como objeto completo.</p>
+</section>
+<section id="qué-principios-lógicos-o-de-elección-intervienen" class="level3">
+<h3 class="anchored" data-anchor-id="qué-principios-lógicos-o-de-elección-intervienen">9. ¿Qué principios lógicos o de elección intervienen?</h3>
+<p>Cuando sean relevantes, hacer visibles lógica clásica, tercero excluido, elección numerable, elección dependiente, principios de ideales primos, Zorn o elección completa.</p>
+</section>
+<section id="qué-sobrevive-bajo-exigencias-constructivas-o-efectivas" class="level3">
+<h3 class="anchored" data-anchor-id="qué-sobrevive-bajo-exigencias-constructivas-o-efectivas">10. ¿Qué sobrevive bajo exigencias constructivas o efectivas?</h3>
+<p>Después del resultado clásico, preguntar:</p>
+<p><span class="math display">\[
+\boxed{
+\text{¿cuál es la versión constructiva o computable más fuerte que podemos conservar?}
+}
+\]</span></p>
+</section>
+</section>
+<section id="wildberger-como-prueba-de-estrés" class="level2">
+<h2 class="anchored" data-anchor-id="wildberger-como-prueba-de-estrés">11. Wildberger como prueba de estrés</h2>
+<p>Wildberger puede estar equivocado en una objeción determinada.</p>
+<p>Puede ocurrir que una respuesta formal resuelva otra completamente.</p>
+<p>También puede ocurrir que una objeción sólo tenga fuerza si aceptamos previamente su criterio finitista de legitimidad matemática.</p>
+<p>Pero la peor respuesta sería ignorar la pregunta porque procede de una posición minoritaria.</p>
+<p>Una matemática segura de sus fundamentos debería poder enfrentarse a sus adversarios más incómodos.</p>
+<p>Por eso resulta útil tratar a Wildberger no necesariamente como un guía, sino como una <strong>prueba de estrés</strong>.</p>
+<p>Ante una construcción podemos preguntar:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\text{¿qué acabamos de introducir?}\\
+&amp;\text{¿cómo se especifica?}\\
+&amp;\text{¿cómo demostramos que existe?}\\
+&amp;\text{¿podemos construirlo?}\\
+&amp;\text{¿podemos calcular con él?}\\
+&amp;\text{¿podemos decidir igualdad?}\\
+&amp;\text{¿qué axiomas estamos utilizando?}
+\end{aligned}
+\]</span></p>
+<p>Si la teoría puede responder satisfactoriamente, la objeción habrá servido para fortalecerla.</p>
+<p>Si no puede hacerlo, entonces hemos descubierto algo que merecía hacerse visible.</p>
+</section>
+<section id="conclusión" class="level2">
+<h2 class="anchored" data-anchor-id="conclusión">Conclusión</h2>
+<p>La discusión sobre los números reales no debería reducirse a decidir si Dedekind tenía razón o si Wildberger está equivocado.</p>
+<p>La cuestión más fértil es otra:</p>
+<blockquote class="blockquote">
+<p>¿qué podemos aprender sobre nuestra propia matemática cuando tomamos en serio las preguntas del crítico?</p>
+</blockquote>
+<p>Una construcción clásica puede ser correcta y, al mismo tiempo, no ser efectiva.</p>
+<p>Una función puede estar formalmente definida y no venir acompañada de un algoritmo.</p>
+<p>Una existencia puede estar demostrada sin que podamos exhibir un testigo.</p>
+<p>Un teorema puede depender de un principio de elección que permanece invisible en su formulación cotidiana.</p>
+<p>Nada de esto invalida automáticamente la matemática clásica.</p>
+<p>Pero todo ello pertenece al contenido matemático del resultado.</p>
+<p>Por eso adoptamos una orientación deliberadamente constructiva sin convertirla en dogma:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{gathered}
+\text{construir siempre que sea razonablemente posible,}\\
+\text{hacer explícitas las dependencias cuando no lo sea,}\\
+\text{y utilizar las objeciones para aumentar, no disminuir, el rigor.}
+\end{gathered}
+}
+\]</span></p>
+<p>Quizá ésta sea una respuesta más interesante a Wildberger que aceptarlo o descartarlo en bloque.</p>
+<p>No ignorarlo.</p>
+<p>No seguirlo ciegamente.</p>
+<p>Sino permitir que sus preguntas nos obliguen a precisar mejor qué queremos decir cuando afirmamos que algo <strong>existe</strong>, que algo está <strong>construido</strong> o que una operación está <strong>definida</strong> en matemáticas.</p>
+<hr>
+</section>
+<section id="referencias-y-lecturas" class="level2">
+<h2 class="anchored" data-anchor-id="referencias-y-lecturas">Referencias y lecturas</h2>
 <ul>
-<li><a href="../blog/hemos-construido-realmente-los-numeros-reales.html"><strong>¿Hemos construido realmente los números reales?</strong></a> — Wildberger, Dedekind, constructivismo, computabilidad y elección como prueba de estrés para el rigor matemático.</li>
-<li><a href="../blog/una-identidad-de-sumacion-para-productos-consecutivos.html"><strong>Una identidad de sumación para productos consecutivos: dos demostraciones</strong></a> — una identidad finita demostrada primero por inducción y luego por diferencias finitas y telescopaje.</li>
+<li>Bishop, Errett. <em>Foundations of Constructive Analysis</em>. McGraw-Hill, 1967.</li>
+<li>Bridges, Douglas; Richman, Fred. <em>Varieties of Constructive Mathematics</em>. Cambridge University Press, 1987.</li>
+<li>Stanford Encyclopedia of Philosophy. “<a href="https://plato.stanford.edu/entries/mathematics-constructive/">Constructive Mathematics</a>”.</li>
+<li>Stanford Encyclopedia of Philosophy. “<a href="https://plato.stanford.edu/entries/axiom-choice/">The Axiom of Choice</a>”.</li>
+<li>Wildberger, Norman J. “Real numbers: A critique and way forward”. 2015. DOI: 10.13140/RG.2.1.3673.8406.</li>
+<li>Wildberger, Norman J. “<a href="https://web.maths.unsw.edu.au/~norman/papers/SetTheory.pdf">Set Theory: Should You Believe?</a>”. 2015.</li>
 </ul>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
