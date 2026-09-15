@@ -99,7 +99,3 @@ Esta relación es reflexiva, simétrica y transitiva, y por tanto permite formar
 **Véase también:** [Relación de equivalencia](#gl-relacion-equivalencia), [Conjunto de representantes racionales](#gl-conjunto-representantes-racionales), [Número racional](#gl-numero-racional).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§3.2 — Equivalencia y cociente racional** quedan incorporados el número racional, la relación de equivalencia racional, la clase racional y la notación fraccionaria. La próxima ampliación acompañará las operaciones aritméticas sobre $\mathbb Q$.
-:::
