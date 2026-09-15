@@ -144,6 +144,8 @@ La primera forma será considerada la definición conjuntista canónica; la segu
 
 ---
 
+<span id="ta-pro-00010"></span>
+
 ### Proposición 0.5.8 — Existencia del cociente
 $A/{\sim}$ existe como conjunto y satisface
 
