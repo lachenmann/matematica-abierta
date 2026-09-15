@@ -48,13 +48,13 @@ Quedan disponibles para el *Tratado moderno de Álgebra*, con el significado ya 
 
 | nodo fuente | contenido importado | función en Álgebra |
 |---|---|---|
-| `TA-DEF-00007` | par ordenado de Kuratowski | codificación de datos estructurados |
-| `TA-THM-00002` | criterio característico del par ordenado | igualdad de pares |
-| `TA-DEF-00008` | producto cartesiano $A\times B$ | dominio natural de operaciones binarias |
-| `TA-PRO-00006` | existencia conjuntista de $A\times B$ | legitimidad de la construcción |
-| `TA-DEF-00018` | función como dominio, codominio y grafo | operaciones y morfismos |
-| `TA-NOT-00004` | notación $f:A\to B$ | tipado explícito |
-| `TA-DEF-00019` | identidad y composición | composición de morfismos |
+| [`TA-DEF-00007`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-par-ordenado-kuratowski) | par ordenado de Kuratowski | codificación de datos estructurados |
+| [`TA-THM-00002`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-thm-00002) | criterio característico del par ordenado | igualdad de pares |
+| [`TA-DEF-00008`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-producto-cartesiano) | producto cartesiano $A\times B$ | dominio natural de operaciones binarias |
+| [`TA-PRO-00006`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-pro-00006) | existencia conjuntista de $A\times B$ | legitimidad de la construcción |
+| [`TA-DEF-00018`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-funcion) | función como dominio, codominio y grafo | operaciones y morfismos |
+| [`TA-NOT-00004`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-flecha-evaluacion) | notación $f:A\to B$ | tipado explícito |
+| [`TA-DEF-00019`](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-identidad-composicion-funciones) | identidad y composición | composición de morfismos |
 
 No se importan todavía relaciones de equivalencia, cocientes, órdenes ni sistemas numéricos. Esas dependencias se abrirán únicamente cuando una sección algebraica las necesite.
 
