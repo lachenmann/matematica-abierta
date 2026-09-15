@@ -6,7 +6,7 @@ content-id: MA-BOK-0007
 content-type: book
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-14
+date-modified: 2026-09-15
 areas:
   - algebra
   - fundamentos
@@ -29,6 +29,7 @@ related:
   - MA-BCH-0022
   - MA-BCH-0023
   - MA-BCH-0024
+  - MA-BCH-0025
 provenance:
   type: original
   sources: []
@@ -207,6 +208,7 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 2. [**Interfaz funcional II — Biyectividad e inversas**](../capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md) (`MA-BCH-0022`) — incorpora inyectividad, sobreyectividad, biyectividad y función inversa; separa explícitamente la biyectividad de la compatibilidad algebraica y prepara la noción de isomorfismo.
 3. [**Interfaz fundacional III — Relaciones de equivalencia y cocientes**](../capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md) (`MA-BCH-0023`) — incorpora relaciones de equivalencia, clases y conjuntos cociente; fija la distinción entre representante y clase y exige pruebas explícitas de buena definición para operaciones sobre cocientes.
 4. [**Capítulo 1 — Operaciones binarias y estructuras elementales**](../capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) (`MA-BCH-0024`) — inicia la Parte I con la definición de operación binaria interna, la notación infija, el magma como estructura mínima y la asociatividad como primera ley algebraica.
+5. [**Capítulo 2 — Semigrupos**](../capitulos/tratado-de-algebra-capitulo-2-semigrupos.md) (`MA-BCH-0025`) — abre la Parte II definiendo el semigrupo como magma asociativo y separa lo que la asociatividad permite de las propiedades que todavía no se han introducido.
 
 ### Ruta prevista
 
@@ -215,4 +217,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será el **Capítulo 2 — Semigrupos**.
+La siguiente incorporación pública será el **Capítulo 3 — Elementos neutros y monoides**.

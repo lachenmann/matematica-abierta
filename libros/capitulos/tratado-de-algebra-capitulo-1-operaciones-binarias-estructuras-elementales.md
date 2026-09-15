@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-14
+date-modified: 2026-09-15
 areas:
   - algebra
   - fundamentos
@@ -25,6 +25,7 @@ related:
   - MA-BCH-0021
   - MA-BCH-0022
   - MA-BCH-0023
+  - MA-BCH-0025
 provenance:
   type: original
   sources: []
@@ -59,7 +60,7 @@ El paso siguiente, ya en la Parte II, será combinar magma y asociatividad para 
 
 Una expresión como $a+b$ o $xy$ sugiere una regla que recibe dos entradas y devuelve una salida. Para que esa regla sea una operación **sobre** un conjunto $A$, no basta con que acepte pares de elementos de $A$: el resultado debe volver a pertenecer a $A$. En nuestro formalismo, esta condición de cierre queda incorporada en el propio codominio de la función.
 
-### Definición 1.1.1 — Operación binaria sobre un conjunto
+### Definición 1.1.1 — Operación binaria sobre un conjunto {#talg-def-00001}
 
 **Coordenada:** `TALG-DEF-00001`
 
@@ -77,7 +78,7 @@ La palabra *interna* señala precisamente que el codominio vuelve a ser $A$. Una
 
 La definición no exige que $A$ sea no vacío. La no vacuidad aparecerá cuando definamos las primeras estructuras algebraicas.
 
-### Notación 1.1.2 — Escritura infija
+### Notación 1.1.2 — Escritura infija {#talg-not-00001}
 
 **Coordenada:** `TALG-NOT-00001`
 
@@ -101,7 +102,7 @@ Cuando una estructura concreta utilice símbolos como $+$, $\cdot$ o $\circ$, ca
 
 Una operación aislada es una función. Para estudiar algebraicamente esa operación debemos recordar simultáneamente **sobre qué conjunto actúa** y **cuál es la operación escogida**. El primer objeto estructural del tratado será, por tanto, un par formado por esos dos datos.
 
-### Definición 1.2.1 — Magma
+### Definición 1.2.1 — Magma {#talg-def-00002}
 
 **Coordenada:** `TALG-DEF-00002`
 
@@ -134,7 +135,7 @@ $$
 
 Nada en la definición de operación binaria obliga a que coincidan. La asociatividad es precisamente la ley que afirma esa coincidencia para todas las ternas.
 
-### Definición 1.3.1 — Operación asociativa
+### Definición 1.3.1 — Operación asociativa {#talg-def-00003}
 
 **Coordenada:** `TALG-DEF-00003`
 
@@ -182,4 +183,4 @@ $$
 
 La construcción utiliza únicamente ZF y lógica clásica; **no utiliza el axioma de elección**. Las nociones de dominio, codominio, producto cartesiano y función proceden de la interfaz fundacional ya cerrada, por lo que no se introduce ninguna dependencia circular.
 
-**Siguiente nodo deductivo:** `TALG-DEF-00004` — semigrupo.
+**Siguiente nodo deductivo:** [`TALG-DEF-00004`](tratado-de-algebra-capitulo-2-semigrupos.md#talg-def-00004) — semigrupo.
