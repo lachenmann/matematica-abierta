@@ -113,7 +113,3 @@ es no vacío y acotado superiormente, pero no posee supremo en $\mathbb Q$.
 Ésta es la primera aparición formal del problema de la **completitud**.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.10 queda reunida en una sola vista la construcción de $\mathbb Q$: cociente, operaciones, estructura de cuerpo, incrustaciones canónicas, orden total, densidad, propiedad arquimediana y la falla de completitud exhibida por $S_2$. La siguiente entrega será **§3.11 — Notas bibliográficas**.
-:::
