@@ -6,7 +6,7 @@ content-id: MA-BOK-0003
 content-type: book
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-14
+date-modified: 2026-09-15
 areas:
   - fundamentos
   - analisis
@@ -26,6 +26,7 @@ related:
   - MA-BCH-0007
   - MA-BCH-0019
   - MA-BCH-0020
+  - MA-BCH-0028
 provenance:
   type: original
   sources: []
@@ -191,11 +192,13 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    S_2=\{q\in\mathbb Q:0\leq q,\ q^2<2\}
    $$
 
-   es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**. La siguiente etapa será el **Capítulo 4 — Cuerpos ordenados y el problema de la completitud**.
+   es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **orden racional**, **densidad del orden racional**, **propiedad arquimediana**, **paridad natural** e **incompletitud de $\mathbb Q$**, además de la infraestructura previa.
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0028`) — publicado hasta **§4.0 — Del caso racional al problema estructural**. La apertura separa la riqueza algebraica y de orden de $\mathbb Q$ de su defecto global de completitud y fija la secuencia conceptual del capítulo: cuerpo ordenado → valor absoluto → intervalos → arquimedianidad → densidad racional → completitud. La siguiente incorporación será **§4.1 — Cuerpos ordenados**.
 
-Los **Capítulos 0–3** están completos en la edición web. La siguiente incorporación será el **Capítulo 4 — Cuerpos ordenados y el problema de la completitud**.
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **orden racional**, **densidad del orden racional**, **propiedad arquimediana**, **paridad natural** e **incompletitud de $\mathbb Q$**, además de la infraestructura previa.
+
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.0. La siguiente incorporación será **§4.1 — Cuerpos ordenados**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

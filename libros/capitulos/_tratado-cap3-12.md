@@ -28,5 +28,5 @@ Las dos construcciones deberán realizarse desde sus propios datos y sólo despu
 ---
 
 ::: {.callout-note title="Capítulo 3 completo"}
-Con §3.12 queda cerrado el **Capítulo 3 — Los números racionales**. Hemos construido $\mathbb Q$ como cuerpo ordenado, denso y arquimediano, y hemos aislado una falla concreta de completitud que obliga a ampliar el sistema. La siguiente etapa del tratado es el **Capítulo 4 — Cuerpos ordenados y el problema de la completitud**, donde se abstraerá la estructura necesaria antes de construir los números reales.
+Con §3.12 queda cerrado el **Capítulo 3 — Los números racionales**. Hemos construido $\mathbb Q$ como cuerpo ordenado, denso y arquimediano, y hemos aislado una falla concreta de completitud que obliga a ampliar el sistema. La publicación continúa en el [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md), donde se abstraerá la estructura necesaria antes de construir los números reales.
 :::
