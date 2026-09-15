@@ -280,7 +280,3 @@ x-y:=x+(-y).
 $$
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.3 la suma y el opuesto han descendido rigurosamente desde los representantes al cociente, y $\mathbb Q$ ya posee estructura de **grupo abeliano aditivo**. La siguiente entrega será **§3.4 — Producto y estructura de cuerpo**.
-:::
