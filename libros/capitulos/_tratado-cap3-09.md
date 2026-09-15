@@ -699,7 +699,3 @@ Ambos casos son imposibles. Por tanto $S_2$ no tiene supremo en $\mathbb Q$. ∎
 Este resultado identifica el problema que obligará a construir los números reales. El fallo de $\mathbb Q$ no consiste en una pobreza local —entre dos racionales siempre hay otro— ni en falta de alcance arquimediano. Consiste en que ciertos subconjuntos no vacíos y acotados superiormente determinan una frontera que **no pertenece al propio sistema**.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.9 queda exhibida una falla concreta de completitud de $\mathbb Q$: el conjunto $S_2$ es no vacío y acotado superiormente, pero carece de supremo racional. La siguiente entrega será **§3.10 — Qué hemos construido**.
-:::
