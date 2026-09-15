@@ -35,6 +35,8 @@ topics:
   - cuerpos
   - cuerpos-ordenados
   - subcuerpos
+  - valor-absoluto
+  - desigualdades
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -109,6 +111,8 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cuerpo](#gl-cuerpo) ·
 [Cuerpo ordenado](#gl-cuerpo-ordenado) ·
 [Densidad del orden racional](#gl-densidad-orden-racional) ·
+[Desigualdad triangular](#gl-desigualdad-triangular) ·
+[Desigualdad triangular inversa](#gl-desigualdad-triangular-inversa) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
 [Diferencia formal](#gl-diferencia-formal) ·
 [Distributividad](#gl-distributividad-producto) ·
@@ -208,6 +212,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Unidad racional](#gl-unidad-racional) ·
 [Unión](#gl-union) ·
 [Uno](#gl-uno) ·
+[Valor absoluto](#gl-valor-absoluto) ·
 [ZF](#gl-zf)
 
 {{< include _tratado-glosario-01.md >}}
@@ -265,3 +270,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-27.md >}}
 
 {{< include _tratado-glosario-28.md >}}
+
+{{< include _tratado-glosario-29.md >}}
