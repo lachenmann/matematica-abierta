@@ -22,6 +22,7 @@ prerequisites:
 related:
   - MA-BOK-0007
   - MA-BCH-0024
+  - MA-BCH-0026
 provenance:
   type: original
   sources: []
@@ -128,7 +129,7 @@ Para pasar de semigrupo a monoide añadiremos un elemento neutro. Antes de incor
 
 El siguiente nodo reservado es, por tanto,
 
-`TALG-DEF-00005` — **elemento neutro**.
+[`TALG-DEF-00005`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-def-00005) — **elemento neutro**.
 
 ## Cierre deductivo
 
@@ -137,8 +138,8 @@ El siguiente nodo reservado es, por tanto,
 - **Dependencias algebraicas:** [`TALG-DEF-00002`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00002) y [`TALG-DEF-00003`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00003).
 - **Estructura obtenida:** `TALG-DEF-00004` — semigrupo.
 - **No se supone:** neutro, inversos, conmutatividad ni cancelación.
-- **Siguiente nodo:** `TALG-DEF-00005` — elemento neutro.
+- **Siguiente nodo:** [`TALG-DEF-00005`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-def-00005) — elemento neutro.
 
 ---
 
-[← **Capítulo 1 — Operaciones binarias y estructuras elementales**](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 1 — Operaciones binarias y estructuras elementales**](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) · [**Capítulo 3 — Elementos neutros y monoides** →](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md)

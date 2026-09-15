@@ -30,6 +30,7 @@ related:
   - MA-BCH-0023
   - MA-BCH-0024
   - MA-BCH-0025
+  - MA-BCH-0026
 provenance:
   type: original
   sources: []
@@ -209,6 +210,7 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 3. [**Interfaz fundacional III — Relaciones de equivalencia y cocientes**](../capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md) (`MA-BCH-0023`) — incorpora relaciones de equivalencia, clases y conjuntos cociente; fija la distinción entre representante y clase y exige pruebas explícitas de buena definición para operaciones sobre cocientes.
 4. [**Capítulo 1 — Operaciones binarias y estructuras elementales**](../capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) (`MA-BCH-0024`) — inicia la Parte I con la definición de operación binaria interna, la notación infija, el magma como estructura mínima y la asociatividad como primera ley algebraica.
 5. [**Capítulo 2 — Semigrupos**](../capitulos/tratado-de-algebra-capitulo-2-semigrupos.md) (`MA-BCH-0025`) — abre la Parte II definiendo el semigrupo como magma asociativo y separa lo que la asociatividad permite de las propiedades que todavía no se han introducido.
+6. [**Capítulo 3 — Elementos neutros y monoides**](../capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) (`MA-BCH-0026`) — distingue neutros izquierdo, derecho y bilateral; demuestra la coincidencia de neutros laterales y la unicidad del neutro sin usar asociatividad; define monoide como semigrupo con neutro bilateral.
 
 ### Ruta prevista
 
@@ -217,4 +219,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será el **Capítulo 3 — Elementos neutros y monoides**.
+La siguiente incorporación pública será el **Capítulo 4 — Inversos y grupos**.
