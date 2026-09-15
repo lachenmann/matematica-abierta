@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0019 |
+| Capítulo | MA-BCH-0022 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -62,6 +62,9 @@
 | MA-BCH-0016 | book-chapter | Álgebra de proposiciones y formas normales | `libros/capitulos/algebra-de-proposiciones-y-formas-normales.md` | published |
 | MA-BCH-0017 | book-chapter | Cuantificadores, predicados y lenguaje matemático | `libros/capitulos/cuantificadores-predicados-y-lenguaje-matematico.md` | published |
 | MA-BCH-0018 | book-chapter | Conjuntos y álgebra de conjuntos | `libros/capitulos/conjuntos-y-algebra-de-conjuntos.md` | published |
+| MA-BCH-0019 | book-chapter | Tratado de análisis — Capítulo 2: Los números enteros | `libros/capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md` | published |
+| MA-BCH-0020 | book-chapter | Tratado de análisis — Capítulo 3: Los números racionales | `libros/capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md` | published |
+| MA-BCH-0021 | book-chapter | Tratado moderno de Álgebra — Capítulo 0: Interfaz fundacional para Álgebra | `libros/capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
