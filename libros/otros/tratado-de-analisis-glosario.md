@@ -81,6 +81,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cancelación multiplicativa](#gl-cancelacion-multiplicativa) ·
 [Cero](#gl-cero) ·
 [Cero entero](#gl-cero-entero) ·
+[Cero racional](#gl-cero-racional) ·
 [Clase de equivalencia](#gl-clase-equivalencia) ·
 [Clase entera](#gl-clase-entera) ·
 [Clase racional](#gl-clase-racional) ·
@@ -135,6 +136,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Números naturales](#gl-numeros-naturales) ·
 [$\omega$](#gl-omega) ·
 [Opuesto entero](#gl-opuesto-entero) ·
+[Opuesto racional](#gl-opuesto-racional) ·
 [Orden entero](#gl-orden-entero) ·
 [Orden estricto](#gl-orden-estricto) ·
 [Orden natural](#gl-orden-natural) ·
@@ -174,8 +176,10 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Sucesor](#gl-sucesor) ·
 [Suma entera](#gl-suma-entera) ·
 [Suma nula](#gl-suma-nula) ·
+[Suma racional](#gl-suma-racional) ·
 [Supremo](#gl-supremo) ·
 [Sustracción entera](#gl-sustraccion-entera) ·
+[Sustracción racional](#gl-sustraccion-racional) ·
 [Totalidad (conexidad)](#gl-totalidad) ·
 [Transitividad](#gl-transitividad) ·
 [Tricotomía](#gl-tricotomia) ·
@@ -227,3 +231,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-20.md >}}
 
 {{< include _tratado-glosario-21.md >}}
+
+{{< include _tratado-glosario-22.md >}}
