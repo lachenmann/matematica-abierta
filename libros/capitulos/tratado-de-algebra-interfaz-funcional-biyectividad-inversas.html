@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Gustav A. Tachek">
+<meta name="description" content="Interfaz funcional que incorpora inyectividad, sobreyectividad, biyectividad y función inversa como infraestructura previa a los isomorfismos algebraicos.">
 
-<title>Álgebra – Matemática Abierta</title>
+<title>Tratado moderno de Álgebra — Interfaz funcional II: Biyectividad e inversas – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -77,6 +79,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -445,12 +476,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#álgebra" id="toc-álgebra" class="nav-link active" data-scroll-target="#álgebra">Álgebra</a>
+  <li><a href="#interfaz-funcional-ii-biyectividad-e-inversas" id="toc-interfaz-funcional-ii-biyectividad-e-inversas" class="nav-link active" data-scroll-target="#interfaz-funcional-ii-biyectividad-e-inversas">Interfaz funcional II — Biyectividad e inversas</a>
   <ul class="collapse">
-  <li><a href="#libros" id="toc-libros" class="nav-link" data-scroll-target="#libros">Libros</a></li>
-  <li><a href="#tratado-moderno-de-álgebra-capítulos-publicados" id="toc-tratado-moderno-de-álgebra-capítulos-publicados" class="nav-link" data-scroll-target="#tratado-moderno-de-álgebra-capítulos-publicados">Tratado moderno de Álgebra — capítulos publicados</a></li>
-  <li><a href="#teoría-publicada" id="toc-teoría-publicada" class="nav-link" data-scroll-target="#teoría-publicada">Teoría publicada</a></li>
-  <li><a href="#problemas-publicados" id="toc-problemas-publicados" class="nav-link" data-scroll-target="#problemas-publicados">Problemas publicados</a></li>
+  <li><a href="#propósito" id="toc-propósito" class="nav-link" data-scroll-target="#propósito">0. Propósito</a></li>
+  <li><a href="#interfaz-importada" id="toc-interfaz-importada" class="nav-link" data-scroll-target="#interfaz-importada">1. Interfaz importada</a>
+  <ul class="collapse">
+  <li><a href="#inyectividad-sobreyectividad-y-biyectividad" id="toc-inyectividad-sobreyectividad-y-biyectividad" class="nav-link" data-scroll-target="#inyectividad-sobreyectividad-y-biyectividad">1.1. Inyectividad, sobreyectividad y biyectividad</a></li>
+  <li><a href="#caracterización-de-las-funciones-invertibles" id="toc-caracterización-de-las-funciones-invertibles" class="nav-link" data-scroll-target="#caracterización-de-las-funciones-invertibles">1.2. Caracterización de las funciones invertibles</a></li>
+  <li><a href="#función-inversa" id="toc-función-inversa" class="nav-link" data-scroll-target="#función-inversa">1.3. Función inversa</a></li>
+  </ul></li>
+  <li><a href="#reglas-de-uso-dentro-del-tratado" id="toc-reglas-de-uso-dentro-del-tratado" class="nav-link" data-scroll-target="#reglas-de-uso-dentro-del-tratado">2. Reglas de uso dentro del tratado</a></li>
+  <li><a href="#biyectividad-no-es-isomorfía" id="toc-biyectividad-no-es-isomorfía" class="nav-link" data-scroll-target="#biyectividad-no-es-isomorfía">3. Biyectividad no es isomorfía</a></li>
+  <li><a href="#auditoría-intertratados" id="toc-auditoría-intertratados" class="nav-link" data-scroll-target="#auditoría-intertratados">4. Auditoría intertratados</a></li>
+  <li><a href="#qué-se-ha-ganado" id="toc-qué-se-ha-ganado" class="nav-link" data-scroll-target="#qué-se-ha-ganado">5. Qué se ha ganado</a></li>
+  <li><a href="#cierre-deductivo" id="toc-cierre-deductivo" class="nav-link" data-scroll-target="#cierre-deductivo">6. Cierre deductivo</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -461,15 +500,32 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Álgebra</h1>
+<h1 class="title">Tratado moderno de Álgebra — Interfaz funcional II: Biyectividad e inversas</h1>
 </div>
 
+<div>
+  <div class="description">
+    Interfaz funcional que incorpora inyectividad, sobreyectividad, biyectividad y función inversa como infraestructura previa a los isomorfismos algebraicos.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gustav A. Tachek </p>
+          </div>
+  </div>
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">14 de septiembre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -478,61 +534,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="álgebra" class="level1">
-<h1>Álgebra</h1>
-<p>Área dedicada a expresiones, ecuaciones, desigualdades, estructuras algebraicas y métodos simbólicos.</p>
-<section id="libros" class="level2">
-<h2 class="anchored" data-anchor-id="libros">Libros</h2>
-<ul>
-<li><a href="../../libros/otros/tratado-de-algebra.html"><strong>Tratado moderno de Álgebra</strong></a> (<code>MA-BOK-0007</code>) — Tratado formal que construye operaciones y estructuras algebraicas desde fundamentos explícitos; publicación progresiva.</li>
-<li><a href="../../libros/para-matematicos/algebra-para-matematicos.html"><strong>Álgebra para matemáticos</strong></a> (<code>MA-BOK-0006</code>) — Obra abierta en seis tomos, desde los fundamentos del pensamiento algebraico hasta la teoría de Galois.</li>
-<li><a href="../../libros/capitulos/el-algebra-como-lenguaje-de-relaciones-y-estructuras.html"><strong>El álgebra como lenguaje de relaciones y estructuras</strong></a> (<code>MA-BCH-0012</code>) — Primer capítulo publicado del Tomo I: objetos, operaciones, relaciones, patrones, representaciones, invariantes y generalización.</li>
-<li><a href="../../libros/capitulos/expresiones-variables-igualdad-e-identidad.html"><strong>Expresiones, variables, igualdad e identidad</strong></a> (<code>MA-BCH-0013</code>) — Segundo capítulo publicado del Tomo I: variables, parámetros, estructura de expresiones, igualdad, ecuaciones, identidades y dominio.</li>
-<li><a href="../../libros/capitulos/leyes-de-las-operaciones-y-transformaciones-justificadas.html"><strong>Leyes de las operaciones y transformaciones justificadas</strong></a> (<code>MA-BCH-0014</code>) — Tercer capítulo publicado del Tomo I: leyes de las operaciones, inversos, distributividad, cancelación, dominio y transformaciones reversibles.</li>
-<li><a href="../../libros/capitulos/proposiciones-y-conectivos-logicos.html"><strong>Proposiciones y conectivos lógicos</strong></a> (<code>MA-BCH-0015</code>) — Cuarto capítulo publicado del Tomo I: proposiciones, conectivos, condiciones necesarias y suficientes, contraposición, bicondicional, sintaxis y tablas de verdad.</li>
-<li><a href="../../libros/capitulos/algebra-de-proposiciones-y-formas-normales.html"><strong>Álgebra de proposiciones y formas normales</strong></a> (<code>MA-BCH-0016</code>) — Quinto capítulo publicado del Tomo I: equivalencia lógica, leyes del álgebra proposicional, formas normales disyuntiva y conjuntiva, formas canónicas y estrategias de normalización.</li>
-<li><a href="../../libros/capitulos/cuantificadores-predicados-y-lenguaje-matematico.html"><strong>Cuantificadores, predicados y lenguaje matemático</strong></a> (<code>MA-BCH-0017</code>) — Sexto capítulo publicado del Tomo I: predicados, dominios, variables libres y ligadas, cuantificadores, negación, alcance, dependencia y existencia única.</li>
-<li><a href="../../libros/capitulos/conjuntos-y-algebra-de-conjuntos.html"><strong>Conjuntos y álgebra de conjuntos</strong></a> (<code>MA-BCH-0018</code>) — Séptimo capítulo publicado del Tomo I: pertenencia, extensionalidad, inclusión, conjunto potencia, operaciones y leyes del álgebra de conjuntos, doble inclusión y producto cartesiano.</li>
-</ul>
+<section id="interfaz-funcional-ii-biyectividad-e-inversas" class="level1">
+<h1>Interfaz funcional II — Biyectividad e inversas</h1>
+<p><strong>Coordenada deductiva:</strong> <code>TALG-0011</code><br>
+<strong>Importación interna:</strong> <code>TALG-IMP-00002</code></p>
+<section id="propósito" class="level2">
+<h2 class="anchored" data-anchor-id="propósito">0. Propósito</h2>
+<p>El tratado ya dispone, mediante la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.html"><strong>interfaz fundacional</strong></a>, de pares ordenados, productos cartesianos, funciones, identidad y composición. Para definir con precisión los isomorfismos necesitamos ahora una ampliación estrictamente funcional: <strong>inyectividad, sobreyectividad, biyectividad y función inversa</strong>.</p>
+<p>No importamos todavía imágenes, preimágenes, relaciones de equivalencia ni cocientes. La ampliación se mantiene deliberadamente mínima para evitar dependencias prematuras.</p>
 </section>
-<section id="tratado-moderno-de-álgebra-capítulos-publicados" class="level2">
-<h2 class="anchored" data-anchor-id="tratado-moderno-de-álgebra-capítulos-publicados">Tratado moderno de Álgebra — capítulos publicados</h2>
+<section id="interfaz-importada" class="level2">
+<h2 class="anchored" data-anchor-id="interfaz-importada">1. Interfaz importada</h2>
+<p>Quedan autorizados en el <em>Tratado moderno de Álgebra</em> los siguientes resultados y convenciones ya cerrados en el capítulo fundacional del <em>Tratado moderno de Análisis</em>.</p>
+<section id="inyectividad-sobreyectividad-y-biyectividad" class="level3">
+<h3 class="anchored" data-anchor-id="inyectividad-sobreyectividad-y-biyectividad">1.1. Inyectividad, sobreyectividad y biyectividad</h3>
+<p>Para una función</p>
+<p><span class="math display">\[
+f:A\to B,
+\]</span></p>
+<p>usaremos las nociones de inyectividad, sobreyectividad y biyectividad con el significado conjuntista ya establecido en <code>TA-DEF-00020</code>.</p>
+<p>En particular:</p>
 <ul>
-<li><a href="../../libros/capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.html"><strong>Capítulo 0 — Interfaz fundacional para Álgebra</strong></a> (<code>MA-BCH-0021</code>) — importa de forma explícita la infraestructura de pares ordenados, productos cartesianos y funciones, controla la circularidad entre tratados y prepara la noción de operación binaria.</li>
-<li><a href="../../libros/capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.html"><strong>Interfaz funcional II — Biyectividad e inversas</strong></a> (<code>MA-BCH-0022</code>) — incorpora las nociones funcionales necesarias para definir isomorfismos sin confundir biyectividad con compatibilidad algebraica.</li>
+<li><span class="math inline">\(f\)</span> es <strong>inyectiva</strong> cuando <span class="math display">\[
+f(x)=f(y)\Longrightarrow x=y;
+\]</span></li>
+<li><span class="math inline">\(f\)</span> es <strong>sobreyectiva</strong> cuando <span class="math display">\[
+\forall b\in B\;\exists a\in A\;(f(a)=b);
+\]</span></li>
+<li><span class="math inline">\(f\)</span> es <strong>biyectiva</strong> cuando es simultáneamente inyectiva y sobreyectiva.</li>
 </ul>
+<p>Estas propiedades corresponden a la función subyacente. Por sí solas no expresan ninguna compatibilidad algebraica.</p>
 </section>
-<section id="teoría-publicada" class="level2">
-<h2 class="anchored" data-anchor-id="teoría-publicada">Teoría publicada</h2>
-<ul>
-<li><a href="../../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.html">Axiomas de cuerpo y consecuencias algebraicas básicas</a> (<code>MA-CON-0020</code>)</li>
-<li><a href="../../conceptos/desigualdades-cuadraticas-por-factorizacion.html">Desigualdades cuadráticas por factorización</a></li>
-<li><a href="../../conceptos/valor-absoluto-y-desigualdades-basicas.html">Valor absoluto y desigualdades básicas</a></li>
-<li><a href="../../conceptos/dominio-de-funciones-reales-con-radicales.html">Dominio de funciones reales con radicales</a></li>
-<li><a href="../../conceptos/intervalos-e-interseccion-de-conjuntos-reales.html">Intervalos e intersección de conjuntos reales</a></li>
-<li><a href="../../conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.html">Propiedades del orden en ℝ y manipulación de desigualdades</a></li>
-<li><a href="../../conceptos/operaciones-con-conjuntos-reales.html">Operaciones con conjuntos reales: unión, intersección, complemento y diferencia</a></li>
-<li><a href="../../conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.html">Funciones reales: dominio, codominio, imagen y preimagen</a></li>
-<li><a href="../../conceptos/composicion-de-funciones-e-identidad.html">Composición de funciones e identidad</a></li>
-<li><a href="../../conceptos/inyectividad-sobreyectividad-y-biyectividad.html">Inyectividad, sobreyectividad y biyectividad</a></li>
-<li><a href="../../conceptos/funciones-inversas.html">Funciones inversas</a></li>
-</ul>
-<p><code>MA-CON-0020</code> abre explícitamente la línea de estructuras algebraicas: muestra qué reglas se adoptan como axiomas de cuerpo y cuáles se deducen de ellos.</p>
+<section id="caracterización-de-las-funciones-invertibles" class="level3">
+<h3 class="anchored" data-anchor-id="caracterización-de-las-funciones-invertibles">1.2. Caracterización de las funciones invertibles</h3>
+<p>Una función</p>
+<p><span class="math display">\[
+f:A\to B
+\]</span></p>
+<p>es biyectiva si y sólo si existe una única función</p>
+<p><span class="math display">\[
+g:B\to A
+\]</span></p>
+<p>tal que</p>
+<p><span class="math display">\[
+g\circ f=\operatorname{id}_A,
+\qquad
+f\circ g=\operatorname{id}_B.
+\]</span></p>
+<p>Este resultado es la pieza que permite pasar rigurosamente de la biyectividad a la existencia de una inversa funcional.</p>
 </section>
-<section id="problemas-publicados" class="level2">
-<h2 class="anchored" data-anchor-id="problemas-publicados">Problemas publicados</h2>
+<section id="función-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="función-inversa">1.3. Función inversa</h3>
+<p>Sólo después de establecer que <span class="math inline">\(f\)</span> es biyectiva escribiremos</p>
+<p><span class="math display">\[
+f^{-1}:B\to A
+\]</span></p>
+<p>para la única función que satisface</p>
+<p><span class="math display">\[
+f^{-1}\circ f=\operatorname{id}_A,
+\qquad
+f\circ f^{-1}=\operatorname{id}_B.
+\]</span></p>
+<p>La notación <span class="math inline">\(f^{-1}\)</span> no debe interpretarse como una operación puramente simbólica: designa una función cuya existencia y unicidad dependen de la biyectividad de <span class="math inline">\(f\)</span>.</p>
+</section>
+</section>
+<section id="reglas-de-uso-dentro-del-tratado" class="level2">
+<h2 class="anchored" data-anchor-id="reglas-de-uso-dentro-del-tratado">2. Reglas de uso dentro del tratado</h2>
+<p>Conviene separar cuidadosamente varias nociones que emplean una notación parecida.</p>
+<ol type="1">
+<li>El símbolo <span class="math inline">\(f^{-1}\)</span> como <strong>función inversa</strong> sólo se utilizará después de haber probado que <span class="math inline">\(f\)</span> es biyectiva.</li>
+<li>La expresión <span class="math inline">\(a^{-1}\)</span>, cuando <span class="math inline">\(a\)</span> es un elemento de un grupo, significará el <strong>inverso algebraico del elemento</strong>. El tipo del objeto distingue ambas situaciones.</li>
+<li>Una estructura algebraica no será tratada implícitamente como una función ni como un conjunto. Las funciones se escribirán entre los conjuntos subyacentes: <span class="math display">\[
+f:A\to B,
+\]</span> aunque <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> soporten estructuras algebraicas adicionales.</li>
+<li>La biyectividad no implica que una función preserve una operación.</li>
+<li>La compatibilidad con las operaciones deberá añadirse mediante una condición algebraica específica —por ejemplo, la condición de homomorfismo—.</li>
+</ol>
+<p>La distinción del punto 4 será fundamental. Una biyección puede reorganizar perfectamente los elementos de dos conjuntos y, sin embargo, destruir por completo la estructura algebraica que éstos soportan.</p>
+</section>
+<section id="biyectividad-no-es-isomorfía" class="level2">
+<h2 class="anchored" data-anchor-id="biyectividad-no-es-isomorfía">3. Biyectividad no es isomorfía</h2>
+<p>Supongamos que <span class="math inline">\((A,\star)\)</span> y <span class="math inline">\((B,\diamond)\)</span> son estructuras algebraicas y que</p>
+<p><span class="math display">\[
+f:A\to B
+\]</span></p>
+<p>es biyectiva.</p>
+<p>La biyectividad garantiza que cada elemento de <span class="math inline">\(B\)</span> corresponde exactamente a uno de <span class="math inline">\(A\)</span>. Pero para que <span class="math inline">\(f\)</span> compare realmente las estructuras necesitamos además una condición del tipo</p>
+<p><span class="math display">\[
+f(x\star y)=f(x)\diamond f(y).
+\]</span></p>
+<p>Por tanto, la futura noción de isomorfismo combinará dos ingredientes lógicamente distintos:</p>
+<p><span class="math display">\[
+\boxed{
+\text{compatibilidad algebraica}
+\; + \;
+\text{biyectividad}
+}
+\]</span></p>
+<p>Esta separación permitirá demostrar después que la inversa de un isomorfismo vuelve a ser un morfismo adecuado, en vez de incorporarlo silenciosamente como parte de la notación.</p>
+</section>
+<section id="auditoría-intertratados" class="level2">
+<h2 class="anchored" data-anchor-id="auditoría-intertratados">4. Auditoría intertratados</h2>
+<p>La nueva importación amplía <code>TALG-IMP-00001</code> únicamente con tres nodos funcionales ya cerrados en el fundamento lógico-conjuntista:</p>
 <ul>
-<li><a href="../../problemas/dominio-funcion-radical-cuadratica.html">Dominio de una función radical cuadrática</a></li>
-<li><a href="../../problemas/dominio-de-un-radical-anidado.html">Dominio de un radical anidado</a></li>
-<li><a href="../../problemas/existencia-y-unicidad-ecuacion-lineal-parametros.html">Existencia y unicidad en una ecuación lineal con parámetros</a></li>
-<li><a href="../../problemas/producto-nulo-y-cancelacion-en-un-cuerpo.html">Producto nulo y cancelación en un cuerpo</a></li>
+<li><code>TA-DEF-00020</code> — inyectividad, sobreyectividad y biyectividad;</li>
+<li><code>TA-THM-00004</code> — caracterización de las funciones invertibles;</li>
+<li><code>TA-NOT-00005</code> — notación para la función inversa.</li>
 </ul>
+<p>El capítulo fuente no depende de resultados <code>TALG-*</code>. Por tanto, esta ampliación tampoco crea un camino de retorno ni un ciclo entre tratados.</p>
+<p>La dirección sigue siendo:</p>
+<p><span class="math display">\[
+\text{fundamento lógico-conjuntista}
+\longrightarrow
+\text{interfaz funcional de Álgebra}.
+\]</span></p>
+</section>
+<section id="qué-se-ha-ganado" class="level2">
+<h2 class="anchored" data-anchor-id="qué-se-ha-ganado">5. Qué se ha ganado</h2>
+<p>Con esta interfaz disponemos de una noción rigurosa de correspondencia invertible entre conjuntos:</p>
+<p><span class="math display">\[
+A\overset{\sim}{\longleftrightarrow}B
+\]</span></p>
+<p>cuando existe una biyección entre ellos. Todavía no llamaremos a esa correspondencia <em>isomorfismo algebraico</em>: falta imponer que preserve la operación pertinente.</p>
+<p>La distinción prepara exactamente el siguiente problema:</p>
+<blockquote class="blockquote">
+<p>¿qué debe satisfacer una biyección entre dos estructuras para que transporte no sólo sus elementos, sino también la forma en que éstos se combinan?</p>
+</blockquote>
+<p>La respuesta conduce a los <strong>isomorfismos de estructuras algebraicas</strong>.</p>
+</section>
+<section id="cierre-deductivo" class="level2">
+<h2 class="anchored" data-anchor-id="cierre-deductivo">6. Cierre deductivo</h2>
+<ul>
+<li><strong>Fundamento:</strong> ZF + lógica clásica.</li>
+<li><strong>Axioma de elección:</strong> no utilizado.</li>
+<li><strong>Dependencia interna:</strong> <code>TALG-IMP-00001</code>.</li>
+<li><strong>Dependencias importadas:</strong> <code>TA-DEF-00020</code>, <code>TA-THM-00004</code>, <code>TA-NOT-00005</code>.</li>
+<li><strong>Circularidad intertratados:</strong> ninguna.</li>
+<li><strong>Siguiente nodo habilitado:</strong> <code>TALG-DEF-00020</code> — isomorfismo de magmas.</li>
+</ul>
+<hr>
+<p><a href="../../libros/otros/tratado-de-algebra.html">← Volver al <strong>Tratado moderno de Álgebra</strong></a></p>
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
