@@ -185,35 +185,36 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.7 — Orden racional**. Tras construir $\mathbb Q$ como cuerpo e incorporar canónicamente $\mathbb Z$, §3.7 demuestra que toda clase racional admite un representante con denominador positivo y que la comparación cruzada es independiente de la representación. Se define
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.8 — Incrustación natural, densidad y propiedad arquimediana**. La incrustación canónica
 
    $$
-   \frac ab\leq_{\mathbb Q}\frac cd
-   \iff
-   ad\leq_{\mathbb Z}bc
-   \qquad (b,d>0),
+   \nu_{\mathbb N}^{\mathbb Q}
+   :=
+   \jmath_{\mathbb Z}^{\mathbb Q}\circ\iota_{\mathbb N}^{\mathbb Z}
    $$
 
-   y se prueba que $\leq_{\mathbb Q}$ es un orden total. El criterio estricto es
+   incorpora $\mathbb N$ en $\mathbb Q$ preservando $0$, $1$, suma, producto y orden, y además refleja el orden. §3.8 demuestra la densidad del orden racional:
 
    $$
-   \frac ab<_{\mathbb Q}\frac cd
-   \iff
-   ad<_{\mathbb Z}bc
-   \qquad (b,d>0).
+   x<y
+   \Longrightarrow
+   \exists z\in\mathbb Q\;(x<z<y),
    $$
 
-   El orden es compatible con la suma y con la multiplicación por racionales no negativos; además, la incrustación
+   y establece la propiedad arquimediana respecto de la copia canónica de los naturales:
 
    $$
-   \jmath_{\mathbb Z}^{\mathbb Q}:\mathbb Z\hookrightarrow\mathbb Q
+   \boxed{
+   \forall q\in\mathbb Q\;\exists n\in\mathbb N
+   \quad q<\nu(n).
+   }
    $$
 
-   preserva y refleja el orden. El cierre de §3.7 establece también la positividad del producto y del recíproco de racionales positivos, así como el escalamiento estricto por un factor positivo. La siguiente etapa será §3.8 — Incrustación natural, densidad y propiedad arquimediana.
+   La siguiente etapa será **§3.9 — Incompletitud de $\mathbb Q$**, donde se mostrará que densidad y arquimedianidad todavía no bastan para obtener completitud.
 
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **racionales no nulos**, **recíproco racional** y **orden racional**, además de la infraestructura algebraica previa.
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **racionales no nulos**, **recíproco racional**, **orden racional**, **densidad del orden racional** y **propiedad arquimediana**, además de la infraestructura algebraica previa.
 
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.7. La siguiente incorporación será **§3.8 — Incrustación natural, densidad y propiedad arquimediana**.
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.8. La siguiente incorporación será **§3.9 — Incompletitud de $\mathbb Q$**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

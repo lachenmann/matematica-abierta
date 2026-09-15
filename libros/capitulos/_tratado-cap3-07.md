@@ -528,7 +528,3 @@ $$
 ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.7 los racionales quedan provistos de un orden total compatible con la suma y con la multiplicación por elementos no negativos; la copia canónica de $\mathbb Z$ preserva y refleja ese orden. La siguiente entrega será **§3.8 — Incrustación natural, densidad y propiedad arquimediana**.
-:::
