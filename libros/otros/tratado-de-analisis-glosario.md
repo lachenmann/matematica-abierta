@@ -121,6 +121,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Grupo abeliano](#gl-grupo-abeliano) ·
 [Igualdad de clases](#gl-igualdad-clases) ·
 [Imagen directa](#gl-imagen-directa) ·
+[Incompletitud de $\mathbb Q$](#gl-incompletitud-racionales) ·
 [Incrustación canónica](#gl-incrustacion-canonica) ·
 [Inducción fuerte](#gl-induccion-fuerte) ·
 [Ínfimo](#gl-infimo) ·
@@ -151,6 +152,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Par de Kuratowski](#gl-par-kuratowski) ·
 [Par no ordenado](#gl-par-no-ordenado) ·
 [Par ordenado](#gl-par-ordenado) ·
+[Paridad natural](#gl-paridad-natural) ·
 [Partición](#gl-particion) ·
 [Predecesor](#gl-predecesor) ·
 [Preimagen](#gl-preimagen) ·
@@ -251,3 +253,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-25.md >}}
 
 {{< include _tratado-glosario-26.md >}}
+
+{{< include _tratado-glosario-27.md >}}
