@@ -10,7 +10,7 @@
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0019 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0007 |
+| Libro | MA-BOK-0008 |
 
 ## IDs asignados
 
@@ -67,6 +67,7 @@
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
 | MA-BOK-0005 | book | Física para matemáticos | `libros/para-matematicos/fisica-para-matematicos.md` | published |
 | MA-BOK-0006 | book | Álgebra para matemáticos | `libros/para-matematicos/algebra-para-matematicos.md` | published |
+| MA-BOK-0007 | book | Tratado moderno de Álgebra | `libros/otros/tratado-de-algebra.md` | published |
 
 ## Regla de uso
 
