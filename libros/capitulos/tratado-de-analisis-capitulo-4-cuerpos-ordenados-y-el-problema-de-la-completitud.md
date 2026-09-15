@@ -2,7 +2,7 @@
 title: "Tratado de análisis — Capítulo 4: Cuerpos ordenados y el problema de la completitud"
 description: "Abstracción de la estructura de cuerpo ordenado, desarrollo de arquimedianidad y completitud, y preparación de las construcciones de los números reales."
 author: "Gustav A. Tachek"
-content-id: MA-BCH-0028
+content-id: MA-BCH-0029
 content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
@@ -38,3 +38,5 @@ license: GFDL-1.3-or-later
 ---
 
 {{< include _tratado-cap4-00.md >}}
+
+{{< include _tratado-cap4-01.md >}}
