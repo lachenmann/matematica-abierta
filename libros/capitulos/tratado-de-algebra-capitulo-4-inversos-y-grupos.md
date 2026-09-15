@@ -25,6 +25,7 @@ related:
   - MA-BOK-0007
   - MA-BCH-0025
   - MA-BCH-0026
+  - MA-BCH-0028
 provenance:
   type: original
   sources: []
@@ -243,7 +244,7 @@ La conmutatividad es una ley adicional de la operación y debe definirse antes d
 
 El siguiente resultado reservado es:
 
-`TALG-DEF-00009` — **operación conmutativa**.
+[`TALG-DEF-00009`](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md#talg-def-00009) — **operación conmutativa**.
 
 ## Cierre deductivo
 
@@ -256,8 +257,8 @@ El siguiente resultado reservado es:
 - **Dependencia estructural externa al capítulo:** [`TALG-DEF-00006`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-def-00006) — monoide.
 - **Conmutatividad:** no supuesta.
 - **Circularidad:** ninguna.
-- **Siguiente nodo:** `TALG-DEF-00009` — operación conmutativa.
+- **Siguiente nodo:** [`TALG-DEF-00009`](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md#talg-def-00009) — operación conmutativa.
 
 ---
 
-[← **Capítulo 3 — Elementos neutros y monoides**](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 3 — Elementos neutros y monoides**](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) · [**Capítulo 5 — Conmutatividad y grupos abelianos** →](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md)
