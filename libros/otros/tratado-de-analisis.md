@@ -185,45 +185,39 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.3 — Suma, cero, opuesto y sustracción**. §3.0 plantea el problema de la división, §3.1 prepara el dominio de representantes y §3.2 construye
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.4 — Producto y estructura de cuerpo**. Después de construir
 
    $$
    \mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}},
    \qquad
-   (a,b)\sim_{\mathbb Q}(c,d)\iff ad=bc.
+   (a,b)\sim_{\mathbb Q}(c,d)\iff ad=bc,
    $$
 
-   §3.3 hace descender al cociente las primeras operaciones aritméticas. La suma queda definida por
+   §3.3 establece la estructura de grupo abeliano aditivo. En §3.4 la multiplicación desciende al cociente mediante
 
    $$
-   \frac ab+\frac cd
+   \frac ab\cdot\frac cd
    =
-   \frac{ad+bc}{bd},
+   \frac{ac}{bd},
    $$
 
-   el cero racional por
+   se define
 
    $$
-   0_{\mathbb Q}:=\frac{0_{\mathbb Z}}{1_{\mathbb Z}},
+   1_{\mathbb Q}:=\frac{1_{\mathbb Z}}{1_{\mathbb Z}},
    $$
 
-   y el opuesto por
+   se demuestran asociatividad y conmutatividad del producto, las dos leyes distributivas y
 
    $$
-   -\frac ab=\frac{-a}{b}.
+   \boxed{0_{\mathbb Q}\neq1_{\mathbb Q}}.
    $$
 
-   Se demuestra que
+   La estructura de cuerpo todavía no se da por demostrada: los inversos multiplicativos se construirán posteriormente, después de la incrustación canónica de $\mathbb Z$.
 
-   $$
-   \boxed{(\mathbb Q,+,0_{\mathbb Q})\text{ es un grupo abeliano}},
-   $$
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora multiplicación racional y unidad racional, además de la suma, el cero, el opuesto, la sustracción, el cociente y sus representantes.
 
-   y se define la sustracción racional mediante $x-y:=x+(-y)$.
-
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora suma racional, cero racional, opuesto racional y sustracción racional, además de la construcción del cociente y de sus representantes.
-
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.3. La siguiente incorporación será **§3.4 — Producto y estructura de cuerpo**.
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.4. La siguiente incorporación será **§3.5 — Incrustación canónica de $\mathbb Z$**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
