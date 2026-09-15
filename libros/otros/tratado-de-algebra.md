@@ -24,7 +24,8 @@ topics:
   - cuerpos
   - espacios-vectoriales
 prerequisites: []
-related: []
+related:
+  - MA-BCH-0021
 provenance:
   type: original
   sources: []
@@ -195,7 +196,11 @@ Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas
 
 ## Estado de la publicación
 
-La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fundamentos, operaciones, semigrupos, monoides y grupos hasta el **primer teorema de isomorfía para grupos**. La edición web comenzará incorporando esas unidades una a una, preservando el orden deductivo.
+La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fundamentos, operaciones, semigrupos, monoides y grupos hasta el **primer teorema de isomorfía para grupos**. La edición web incorpora esas unidades una a una, preservando el orden deductivo.
+
+## Contenido disponible
+
+1. [**Capítulo 0 — Interfaz fundacional para Álgebra**](../capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md) (`MA-BCH-0021`) — establece la interfaz explícita con el fundamento lógico-conjuntista: pares ordenados, productos cartesianos, funciones, identidad y composición; verifica la ausencia de circularidad y deja habilitada la definición formal de operación binaria.
 
 ### Ruta prevista
 
@@ -204,4 +209,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será la **Parte 0 — Fundamentos y lenguaje**.
+La siguiente incorporación pública será **§0.1 — Interfaz funcional: biyectividad e inversas**.
