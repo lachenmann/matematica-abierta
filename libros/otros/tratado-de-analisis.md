@@ -185,35 +185,35 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.6 — Inversos multiplicativos**. Después de construir el cociente racional, la estructura aditiva, el producto y la incrustación canónica
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.7 — Orden racional**. Tras construir $\mathbb Q$ como cuerpo e incorporar canónicamente $\mathbb Z$, §3.7 demuestra que toda clase racional admite un representante con denominador positivo y que la comparación cruzada es independiente de la representación. Se define
 
    $$
-   \jmath_{\mathbb Z}^{\mathbb Q}:\mathbb Z\hookrightarrow\mathbb Q,
+   \frac ab\leq_{\mathbb Q}\frac cd
+   \iff
+   ad\leq_{\mathbb Z}bc
+   \qquad (b,d>0),
    $$
 
-   §3.6 caracteriza el cero racional mediante
+   y se prueba que $\leq_{\mathbb Q}$ es un orden total. El criterio estricto es
 
    $$
-   \frac ab=0_{\mathbb Q}\iff a=0_{\mathbb Z},
+   \frac ab<_{\mathbb Q}\frac cd
+   \iff
+   ad<_{\mathbb Z}bc
+   \qquad (b,d>0).
    $$
 
-   define $\mathbb Q_{\neq0}$ y construye el recíproco
+   El orden es compatible con la suma y con la multiplicación por racionales no negativos; además, la incrustación
 
    $$
-   \left(\frac ab\right)^{-1}=\frac ba
+   \jmath_{\mathbb Z}^{\mathbb Q}:\mathbb Z\hookrightarrow\mathbb Q
    $$
 
-   sin elegir representantes. Se introduce la división por $x/y:=xy^{-1}$ y se demuestra finalmente
+   preserva y refleja el orden. El cierre de §3.7 establece también la positividad del producto y del recíproco de racionales positivos, así como el escalamiento estricto por un factor positivo. La siguiente etapa será §3.8 — Incrustación natural, densidad y propiedad arquimediana.
 
-   $$
-   \boxed{\mathbb Q\text{ es un cuerpo}.}
-   $$
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **racionales no nulos**, **recíproco racional** y **orden racional**, además de la infraestructura algebraica previa.
 
-   Como consecuencia, $\mathbb Q$ carece de divisores de cero. El orden racional se construirá a continuación en §3.7.
-
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **racionales no nulos** y **recíproco racional**, además de la infraestructura algebraica previa.
-
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.6. La siguiente incorporación será **§3.7 — Orden racional**.
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.7. La siguiente incorporación será **§3.8 — Incrustación natural, densidad y propiedad arquimediana**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
