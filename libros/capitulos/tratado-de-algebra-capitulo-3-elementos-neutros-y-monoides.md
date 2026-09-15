@@ -24,6 +24,7 @@ related:
   - MA-BOK-0007
   - MA-BCH-0024
   - MA-BCH-0025
+  - MA-BCH-0027
 provenance:
   type: original
   sources: []
@@ -252,8 +253,8 @@ Hasta este punto no se ha supuesto que todo elemento posea inverso. Ésa será l
 - **Notación del neutro:** [`TALG-NOT-00002`](#talg-not-00002).
 - **Dependencia estructural externa al capítulo:** [`TALG-DEF-00004`](tratado-de-algebra-capitulo-2-semigrupos.md#talg-def-00004) — semigrupo.
 - **Circularidad:** ninguna.
-- **Siguiente nodo:** `TALG-DEF-00007` — elemento inverso.
+- **Siguiente nodo:** [`TALG-DEF-00007`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00007) — elemento inverso.
 
 ---
 
-[← **Capítulo 2 — Semigrupos**](tratado-de-algebra-capitulo-2-semigrupos.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 2 — Semigrupos**](tratado-de-algebra-capitulo-2-semigrupos.md) · [**Capítulo 4 — Inversos y grupos** →](tratado-de-algebra-capitulo-4-inversos-y-grupos.md)
