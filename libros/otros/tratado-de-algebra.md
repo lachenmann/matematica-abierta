@@ -31,6 +31,7 @@ related:
   - MA-BCH-0024
   - MA-BCH-0025
   - MA-BCH-0026
+  - MA-BCH-0027
 provenance:
   type: original
   sources: []
@@ -211,6 +212,7 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 4. [**Capítulo 1 — Operaciones binarias y estructuras elementales**](../capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) (`MA-BCH-0024`) — inicia la Parte I con la definición de operación binaria interna, la notación infija, el magma como estructura mínima y la asociatividad como primera ley algebraica.
 5. [**Capítulo 2 — Semigrupos**](../capitulos/tratado-de-algebra-capitulo-2-semigrupos.md) (`MA-BCH-0025`) — abre la Parte II definiendo el semigrupo como magma asociativo y separa lo que la asociatividad permite de las propiedades que todavía no se han introducido.
 6. [**Capítulo 3 — Elementos neutros y monoides**](../capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) (`MA-BCH-0026`) — distingue neutros izquierdo, derecho y bilateral; demuestra la coincidencia de neutros laterales y la unicidad del neutro sin usar asociatividad; define monoide como semigrupo con neutro bilateral.
+7. [**Capítulo 4 — Inversos y grupos**](../capitulos/tratado-de-algebra-capitulo-4-inversos-y-grupos.md) (`MA-BCH-0027`) — distingue inversos izquierdo, derecho y bilateral; demuestra mediante asociatividad que los inversos laterales coinciden y que el inverso es único; define grupo como monoide en el que todo elemento posee inverso bilateral.
 
 ### Ruta prevista
 
@@ -219,4 +221,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será el **Capítulo 4 — Inversos y grupos**.
+La siguiente incorporación pública será el **Capítulo 5 — Conmutatividad y grupos abelianos**.
