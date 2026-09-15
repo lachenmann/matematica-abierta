@@ -128,6 +128,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Mínimo](#gl-minimo) ·
 [Multiplicación entera](#gl-multiplicacion-entera) ·
 [Multiplicación natural](#gl-multiplicacion-natural) ·
+[Multiplicación racional](#gl-multiplicacion-racional) ·
 [Nivel objeto](#gl-nivel-objeto) ·
 [Notación fraccionaria](#gl-notacion-fraccionaria) ·
 [Núcleo inductivo](#gl-nucleo-inductivo) ·
@@ -186,6 +187,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Tupla finita](#gl-tupla-finita) ·
 [Unidad entera](#gl-unidad-entera) ·
 [Unidad multiplicativa](#gl-unidad-multiplicativa) ·
+[Unidad racional](#gl-unidad-racional) ·
 [Unión](#gl-union) ·
 [Uno](#gl-uno) ·
 [ZF](#gl-zf)
@@ -233,3 +235,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-21.md >}}
 
 {{< include _tratado-glosario-22.md >}}
+
+{{< include _tratado-glosario-23.md >}}
