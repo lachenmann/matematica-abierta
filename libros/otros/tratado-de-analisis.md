@@ -185,33 +185,31 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.9 — Incompletitud de $\mathbb Q$**. Después de establecer que $\mathbb Q$ es un cuerpo ordenado, denso y arquimediano, §3.9 demuestra que no existe $q\in\mathbb Q$ con
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.10 — Qué hemos construido**. El balance de §3.10 reúne la construcción de
 
    $$
-   q^2=2_{\mathbb Q}.
+   \mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}},
    $$
 
-   A continuación se define
+   las operaciones de cuerpo, las incrustaciones canónicas
 
    $$
-   S_2
-   :=
-   \{q\in\mathbb Q:0_{\mathbb Q}\leq q\ \text{y}\ q^2<2_{\mathbb Q}\},
+   \mathbb Z\longrightarrow\mathbb Q,
+   \qquad
+   \mathbb N\longrightarrow\mathbb Q,
    $$
 
-   se prueba que $S_2$ es no vacío y está acotado superiormente, pero
+   y el orden racional, que es total y compatible con las operaciones. También resume la densidad y la propiedad arquimediana, y recuerda la obstrucción decisiva:
 
    $$
-   \boxed{
-   \nexists s\in\mathbb Q\quad s=\sup S_2.
-   }
+   S_2=\{q\in\mathbb Q:0\leq q,\ q^2<2\}
    $$
 
-   Así queda exhibida una falla concreta de completitud: densidad y arquimedianidad no garantizan que toda frontera determinada por el orden pertenezca al propio sistema. La siguiente etapa será **§3.10 — Qué hemos construido**.
+   es no vacío y acotado superiormente, pero no posee supremo en $\mathbb Q$. Ésta es la primera aparición formal del problema de la **completitud**. La siguiente etapa será **§3.11 — Notas bibliográficas**.
 
 5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **orden racional**, **densidad del orden racional**, **propiedad arquimediana**, **paridad natural** e **incompletitud de $\mathbb Q$**, además de la infraestructura previa.
 
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.9. La siguiente incorporación será **§3.10 — Qué hemos construido**.
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.10. La siguiente incorporación será **§3.11 — Notas bibliográficas**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
