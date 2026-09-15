@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-14
+date-modified: 2026-09-15
 areas:
   - fundamentos
   - analisis
@@ -33,6 +33,8 @@ topics:
   - anillos
   - dominios-de-integridad
   - cuerpos
+  - cuerpos-ordenados
+  - subcuerpos
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -40,6 +42,7 @@ related:
   - MA-BCH-0007
   - MA-BCH-0019
   - MA-BCH-0020
+  - MA-BCH-0029
 provenance:
   type: original
   sources: []
@@ -52,7 +55,8 @@ license: GFDL-1.3-or-later
 [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) ·
 [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) ·
 [**Capítulo 2 — Los números enteros**](../capitulos/tratado-de-analisis-capitulo-2-los-numeros-enteros.md) ·
-[**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md)
+[**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) ·
+[**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md)
 
 Este glosario acompaña la publicación progresiva del *Tratado de análisis*. **No se adelanta al texto**: una entrada se incorpora cuando la noción correspondiente ya ha sido definida, construida o fijada en la edición pública.
 
@@ -72,6 +76,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Anillo](#gl-anillo) ·
 [Anillo conmutativo](#gl-anillo-conmutativo) ·
 [Antisimetría](#gl-antisimetria) ·
+[Aplicación canónica de numerales naturales](#gl-numerales-naturales-cuerpo-ordenado) ·
 [Aproximación finita de una recursión](#gl-aproximacion-finita-recursion) ·
 [Asociatividad de la suma](#gl-asociatividad-suma) ·
 [Asociatividad del producto](#gl-asociatividad-producto) ·
@@ -102,6 +107,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cota inferior](#gl-cota-inferior) ·
 [Cota superior](#gl-cota-superior) ·
 [Cuerpo](#gl-cuerpo) ·
+[Cuerpo ordenado](#gl-cuerpo-ordenado) ·
 [Densidad del orden racional](#gl-densidad-orden-racional) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
 [Diferencia formal](#gl-diferencia-formal) ·
@@ -184,6 +190,8 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Singleton](#gl-singleton) ·
 [Sobreyectividad](#gl-sobreyectividad) ·
 [Subconjunto](#gl-subconjunto) ·
+[Subcuerpo](#gl-subcuerpo) ·
+[Subcuerpo primo](#gl-subcuerpo-primo) ·
 [Sucesor](#gl-sucesor) ·
 [Suma entera](#gl-suma-entera) ·
 [Suma nula](#gl-suma-nula) ·
@@ -255,3 +263,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-26.md >}}
 
 {{< include _tratado-glosario-27.md >}}
+
+{{< include _tratado-glosario-28.md >}}
