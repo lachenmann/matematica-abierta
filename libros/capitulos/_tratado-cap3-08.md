@@ -273,7 +273,3 @@ $$
 En ambos casos se encuentra el natural requerido. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.8 la copia canónica de $\mathbb N$ queda integrada en $\mathbb Q$, el orden racional resulta denso y se demuestra la propiedad arquimediana. La siguiente entrega será **§3.9 — Incompletitud de $\mathbb Q$**, donde se mostrará concretamente que estas propiedades todavía no bastan para obtener completitud.
-:::
