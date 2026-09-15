@@ -145,6 +145,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Orden estricto](#gl-orden-estricto) ·
 [Orden natural](#gl-orden-natural) ·
 [Orden parcial](#gl-orden-parcial) ·
+[Orden racional](#gl-orden-racional) ·
 [Orden total](#gl-orden-total) ·
 [Par de Kuratowski](#gl-par-kuratowski) ·
 [Par no ordenado](#gl-par-no-ordenado) ·
@@ -244,3 +245,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-23.md >}}
 
 {{< include _tratado-glosario-24.md >}}
+
+{{< include _tratado-glosario-25.md >}}
