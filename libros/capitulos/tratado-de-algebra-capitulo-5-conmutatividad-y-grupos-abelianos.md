@@ -24,6 +24,7 @@ related:
   - MA-BOK-0007
   - MA-BCH-0024
   - MA-BCH-0027
+  - MA-BCH-0030
 provenance:
   type: original
   sources: []
@@ -165,8 +166,8 @@ Esta jerarquía será reutilizada posteriormente para los grupos aditivos de ani
 - **Dependencias externas al capítulo:** [`TALG-DEF-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00001) — operación binaria; [`TALG-NOT-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-not-00001) — notación infija; [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo.
 - **Conmutatividad distinguida de asociatividad:** sí.
 - **Circularidad:** ninguna.
-- **Siguiente bloque:** subestructuras de grupos y criterio de subgrupo.
+- **Siguiente nodo:** [`TALG-DEF-00011`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-def-00011) — subconjunto cerrado bajo una operación binaria.
 
 ---
 
-[← **Capítulo 4 — Inversos y grupos**](tratado-de-algebra-capitulo-4-inversos-y-grupos.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 4 — Inversos y grupos**](tratado-de-algebra-capitulo-4-inversos-y-grupos.md) · [**Capítulo 6 — Subestructuras y criterio de subgrupo** →](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md)
