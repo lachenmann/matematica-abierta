@@ -55,7 +55,3 @@ $$
 **Véase también:** [Cero racional](#gl-cero-racional), [Multiplicación racional](#gl-multiplicacion-racional), [Unidad multiplicativa](#gl-unidad-multiplicativa).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§3.4 — Producto y estructura de cuerpo** quedan incorporadas la multiplicación racional y la unidad racional. La próxima ampliación acompañará **§3.5 — Incrustación canónica de $\mathbb Z$**.
-:::
