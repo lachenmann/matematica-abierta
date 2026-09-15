@@ -102,6 +102,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cota inferior](#gl-cota-inferior) ·
 [Cota superior](#gl-cota-superior) ·
 [Cuerpo](#gl-cuerpo) ·
+[Densidad del orden racional](#gl-densidad-orden-racional) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
 [Diferencia formal](#gl-diferencia-formal) ·
 [Distributividad](#gl-distributividad-producto) ·
@@ -159,6 +160,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Principio de inducción](#gl-principio-induccion) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
 [Producto nulo](#gl-producto-nulo) ·
+[Propiedad arquimediana](#gl-propiedad-arquimediana) ·
 [Propiedades de Peano](#gl-propiedades-peano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
 [Racionales no nulos](#gl-racionales-no-nulos) ·
@@ -247,3 +249,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-24.md >}}
 
 {{< include _tratado-glosario-25.md >}}
+
+{{< include _tratado-glosario-26.md >}}
