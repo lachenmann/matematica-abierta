@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0029 |
+| Capítulo | MA-BCH-0031 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -72,6 +72,8 @@
 | MA-BCH-0026 | book-chapter | Tratado moderno de Álgebra — Capítulo 3: Elementos neutros y monoides | `libros/capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md` | published |
 | MA-BCH-0027 | book-chapter | Tratado moderno de Álgebra — Capítulo 4: Inversos y grupos | `libros/capitulos/tratado-de-algebra-capitulo-4-inversos-y-grupos.md` | published |
 | MA-BCH-0028 | book-chapter | Tratado moderno de Álgebra — Capítulo 5: Conmutatividad y grupos abelianos | `libros/capitulos/tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md` | published |
+| MA-BCH-0029 | book-chapter | Tratado de análisis — Capítulo 4: Cuerpos ordenados y el problema de la completitud | `libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md` | published |
+| MA-BCH-0030 | book-chapter | Tratado moderno de Álgebra — Capítulo 6: Subestructuras y criterio de subgrupo | `libros/capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
