@@ -17,6 +17,7 @@ topics:
   - completitud
   - arquimedianidad
   - numeros-reales
+  - valor-absoluto
 prerequisites:
   - MA-BCH-0020
 related:
@@ -40,3 +41,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap4-00.md >}}
 
 {{< include _tratado-cap4-01.md >}}
+
+{{< include _tratado-cap4-02.md >}}

@@ -389,9 +389,3 @@ $$
 y por tanto $m<y$. ∎
 
 Este teorema separa desde ahora dos ideas que a menudo se confunden: **densidad del orden** y **completitud**. Todo cuerpo ordenado es denso en sí mismo; $\mathbb Q$ falla por una razón diferente.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.1 queda establecida la teoría básica de los cuerpos ordenados, sus numerales naturales, sus subcuerpos y la densidad intrínseca de su orden. La siguiente entrega será **§4.2 — Valor absoluto**.
-:::
