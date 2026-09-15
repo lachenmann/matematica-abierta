@@ -26,6 +26,8 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0021
+  - MA-BCH-0022
+  - MA-BCH-0023
 provenance:
   type: original
   sources: []
@@ -66,7 +68,7 @@ El tratado cumple además una función intermedia dentro de una biblioteca matem
 
 Las demostraciones destinadas al lector seguirán siendo demostraciones matemáticas humanas. Procuraremos que sean completas, pero también legibles: que indiquen la idea del argumento, hagan visibles las hipótesis realmente utilizadas y distingan los pasos conceptuales de las manipulaciones rutinarias. La notación debe comprimir el pensamiento, no sustituirlo.
 
-Detrás del texto existe una infraestructura de control: registros de resultados, grafos de dependencias, auditorías de notación y fundamento, clasificación explícita del uso del axioma de elección y, cuando aporte valor, verificación formal asistida por computadora. Estas capas permiten controlar una obra extensa, pero no constituyen por sí mismas la exposición.
+Detrás del texto existe además una infraestructura de control: registros de resultados, grafos de dependencias, auditorías de notación y fundamento, clasificación explícita del uso del axioma de elección y, cuando aporte valor, verificación formal asistida por computadora. Estas capas permiten controlar una obra extensa, pero no constituyen por sí mismas la exposición.
 
 La regla editorial es sencilla:
 
@@ -201,6 +203,8 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 ## Contenido disponible
 
 1. [**Capítulo 0 — Interfaz fundacional para Álgebra**](../capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md) (`MA-BCH-0021`) — establece la interfaz explícita con el fundamento lógico-conjuntista: pares ordenados, productos cartesianos, funciones, identidad y composición; verifica la ausencia de circularidad y deja habilitada la definición formal de operación binaria.
+2. [**Interfaz funcional II — Biyectividad e inversas**](../capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md) (`MA-BCH-0022`) — incorpora inyectividad, sobreyectividad, biyectividad y función inversa; separa explícitamente la biyectividad de la compatibilidad algebraica y prepara la noción de isomorfismo.
+3. [**Interfaz fundacional III — Relaciones de equivalencia y cocientes**](../capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md) (`MA-BCH-0023`) — incorpora relaciones de equivalencia, clases y conjuntos cociente; fija la distinción entre representante y clase y exige pruebas explícitas de buena definición para operaciones sobre cocientes.
 
 ### Ruta prevista
 
@@ -209,4 +213,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será **§0.1 — Interfaz funcional: biyectividad e inversas**.
+La siguiente incorporación pública será la **Parte I — Operaciones y estructuras**.
