@@ -10,7 +10,3 @@ Este capítulo no importa ningún teorema externo; todas las demostraciones son 
 Las demostraciones y la arquitectura local son propias. No se utiliza el axioma de elección.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.11 queda consignado el marco bibliográfico y metodológico del capítulo: las fuentes funcionan como contraste y orientación, mientras las demostraciones y la arquitectura local son propias. La siguiente entrega será **§3.12 — Hacia los números reales**.
-:::

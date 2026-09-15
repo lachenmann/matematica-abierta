@@ -185,11 +185,17 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.11 — Notas bibliográficas**. Tras completar la construcción de $\mathbb Q$ como cuerpo ordenado, denso y arquimediano, y exhibir mediante $S_2$ una falla concreta de completitud, §3.11 consigna el marco bibliográfico del capítulo: **Landau** como contraste para la extensión $\mathbb Z\to\mathbb Q$ y la disciplina algebraica de las fracciones; **Tao** para clases de equivalencia, buena definición y transición hacia completitud; **Garling** para la continuidad entre cuerpos ordenados, arquimedianidad y análisis real; y **Conway** para la próxima etapa de completitud y la construcción de Dedekind. Las demostraciones y la arquitectura local son propias y no se utiliza el axioma de elección. La siguiente etapa será **§3.12 — Hacia los números reales**.
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — **capítulo completo**. Se construye $\mathbb Q$ como cociente de representantes fraccionarios y se desarrollan sus operaciones hasta demostrar que es un cuerpo ordenado. Las incrustaciones canónicas de $\mathbb Z$ y $\mathbb N$ preservan la estructura correspondiente; el orden racional es total, denso y arquimediano. El conjunto
+
+   $$
+   S_2=\{q\in\mathbb Q:0\leq q,\ q^2<2\}
+   $$
+
+   es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**. La siguiente etapa será el **Capítulo 4 — Cuerpos ordenados y el problema de la completitud**.
 
 5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **orden racional**, **densidad del orden racional**, **propiedad arquimediana**, **paridad natural** e **incompletitud de $\mathbb Q$**, además de la infraestructura previa.
 
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.11. La siguiente incorporación será **§3.12 — Hacia los números reales**.
+Los **Capítulos 0–3** están completos en la edición web. La siguiente incorporación será el **Capítulo 4 — Cuerpos ordenados y el problema de la completitud**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
