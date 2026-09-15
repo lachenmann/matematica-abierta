@@ -64,6 +64,8 @@ La recíproca se obtiene por sustitución y extensionalidad. ∎
 
 ---
 
+<span id="ta-thm-00002"></span>
+
 ### Teorema 0.3.4 — Teorema característico del par ordenado
 Para cualesquiera conjuntos $a,b,c,d$,
 
@@ -141,6 +143,8 @@ $$
 La expresión anterior es todavía una descripción. La existencia conjuntista del objeto se establece en la proposición siguiente.
 
 ---
+
+<span id="ta-pro-00006"></span>
 
 ### Proposición 0.3.7 — Existencia del producto cartesiano
 Para cualesquiera conjuntos $A$ y $B$, $A\times B$ existe como conjunto.
