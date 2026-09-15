@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-14
+date-modified: 2026-09-15
 areas:
   - algebra
   - fundamentos
@@ -40,7 +40,7 @@ license: GFDL-1.3-or-later
 
 La importación se hace, por ello, de forma **explícita, granular y acíclica**.
 
-### Resultado importado 0.0.1 — Interfaz básica de pares, productos y funciones
+### Resultado importado 0.0.1 — Interfaz básica de pares, productos y funciones {#talg-imp-00001}
 
 **Identificador estable:** `TALG-IMP-00001`.
 
