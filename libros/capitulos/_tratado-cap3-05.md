@@ -150,7 +150,3 @@ $$
 Cuando más adelante adoptemos identificaciones convencionales, lo haremos apoyándonos en esta incrustación y no en una igualdad conjuntista silenciosa.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.5 los enteros quedan incorporados canónicamente en los racionales mediante una aplicación inyectiva que preserva $0$, $1$, suma, producto y opuesto. La siguiente entrega será **§3.6 — Inversos multiplicativos**, donde se construirá el recíproco de todo racional no nulo y finalmente se demostrará que $\mathbb Q$ es un cuerpo.
-:::

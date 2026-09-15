@@ -185,29 +185,35 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.5 — Incrustación canónica de $\mathbb Z$**. Después de construir
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.6 — Inversos multiplicativos**. Después de construir el cociente racional, la estructura aditiva, el producto y la incrustación canónica
 
    $$
-   \mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}},
-   \qquad
-   (a,b)\sim_{\mathbb Q}(c,d)\iff ad=bc,
+   \jmath_{\mathbb Z}^{\mathbb Q}:\mathbb Z\hookrightarrow\mathbb Q,
    $$
 
-   §3.3 establece la estructura de grupo abeliano aditivo y §3.4 hace descender la multiplicación al cociente, define $1_{\mathbb Q}$, demuestra las leyes multiplicativas y distributivas y establece $0_{\mathbb Q}\neq1_{\mathbb Q}$. En §3.5 se construye la incrustación canónica
+   §3.6 caracteriza el cero racional mediante
 
    $$
-   \boxed{
-   \jmath_{\mathbb Z}^{\mathbb Q}(a)
-   =
-   \frac{a}{1_{\mathbb Z}}.
-   }
+   \frac ab=0_{\mathbb Q}\iff a=0_{\mathbb Z},
    $$
 
-   La aplicación $\jmath$ es inyectiva y preserva $0$, $1$, suma, producto y opuesto. Por ello los enteros quedan incorporados estructuralmente en los racionales sin identificarlos todavía de manera literal como un subconjunto. La estructura de cuerpo aún no se da por demostrada: los inversos multiplicativos se construirán en §3.6.
+   define $\mathbb Q_{\neq0}$ y construye el recíproco
 
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya la infraestructura de cocientes, la aritmética racional y las nociones generales de incrustación canónica e inyectividad utilizadas en §3.5.
+   $$
+   \left(\frac ab\right)^{-1}=\frac ba
+   $$
 
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.5. La siguiente incorporación será **§3.6 — Inversos multiplicativos**.
+   sin elegir representantes. Se introduce la división por $x/y:=xy^{-1}$ y se demuestra finalmente
+
+   $$
+   \boxed{\mathbb Q\text{ es un cuerpo}.}
+   $$
+
+   Como consecuencia, $\mathbb Q$ carece de divisores de cero. El orden racional se construirá a continuación en §3.7.
+
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo**, **división racional**, **racionales no nulos** y **recíproco racional**, además de la infraestructura algebraica previa.
+
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.6. La siguiente incorporación será **§3.7 — Orden racional**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
