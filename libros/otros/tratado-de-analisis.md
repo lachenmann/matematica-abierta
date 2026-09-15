@@ -194,11 +194,21 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.1 — Cuerpos ordenados**. Se define la estructura abstracta de cuerpo ordenado, se desarrollan las reglas elementales de signos, se verifica que $\mathbb Q$ es un cuerpo ordenado, se construye $\nu_F:\mathbb N\to F$, se introducen subcuerpos y subcuerpo primo y se demuestra que todo cuerpo ordenado es densamente ordenado. La siguiente incorporación será **§4.2 — Valor absoluto**.
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.2 — Valor absoluto**. Tras abstraer la estructura de cuerpo ordenado y demostrar su densidad intrínseca, se define
 
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado**, **aplicación canónica de numerales naturales**, **subcuerpo** y **subcuerpo primo**, además de la infraestructura previa.
+   $$
+   |x|=
+   \begin{cases}
+   x,&0\leq x,\\
+   -x,&x<0,
+   \end{cases}
+   $$
 
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.1. La siguiente incorporación será **§4.2 — Valor absoluto**.
+   y se prueban sus propiedades fundamentales, incluida la multiplicatividad, la caracterización $|x|\leq r\iff -r\leq x\leq r$, la desigualdad triangular y la desigualdad triangular inversa. La siguiente incorporación será **§4.3 — Intervalos**.
+
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **valor absoluto**, **desigualdad triangular** y **desigualdad triangular inversa**, además de la infraestructura previa.
+
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.2. La siguiente incorporación será **§4.3 — Intervalos**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
