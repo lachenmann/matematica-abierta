@@ -185,39 +185,45 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.2 — Equivalencia y cociente racional**. §3.0 plantea el problema de la división en $\mathbb Z$ y §3.1 prepara la infraestructura entera y el dominio
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — publicado hasta **§3.3 — Suma, cero, opuesto y sustracción**. §3.0 plantea el problema de la división, §3.1 prepara el dominio de representantes y §3.2 construye
 
    $$
-   D_{\mathbb Q}=\mathbb Z\times\mathbb Z_{\neq0}.
-   $$
-
-   §3.2 define
-
-   $$
-   (a,b)\sim_{\mathbb Q}(c,d)
-   \iff
-   ad=bc,
-   $$
-
-   demuestra que $\sim_{\mathbb Q}$ es una relación de equivalencia y construye
-
-   $$
-   \boxed{
-   \mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}}.
-   }
-   $$
-
-   A partir de ese momento la notación fraccionaria queda legitimada por
-
-   $$
-   \frac ab:=[(a,b)]_{\mathbb Q},
+   \mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}},
    \qquad
-   \frac ab=\frac cd\iff ad=bc.
+   (a,b)\sim_{\mathbb Q}(c,d)\iff ad=bc.
    $$
 
-5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora la relación de equivalencia racional, el número racional, la clase racional y la notación fraccionaria, además de la infraestructura de representantes de §3.1.
+   §3.3 hace descender al cociente las primeras operaciones aritméticas. La suma queda definida por
 
-El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.2. La siguiente incorporación será **§3.3 — Suma, cero, opuesto y sustracción**.
+   $$
+   \frac ab+\frac cd
+   =
+   \frac{ad+bc}{bd},
+   $$
+
+   el cero racional por
+
+   $$
+   0_{\mathbb Q}:=\frac{0_{\mathbb Z}}{1_{\mathbb Z}},
+   $$
+
+   y el opuesto por
+
+   $$
+   -\frac ab=\frac{-a}{b}.
+   $$
+
+   Se demuestra que
+
+   $$
+   \boxed{(\mathbb Q,+,0_{\mathbb Q})\text{ es un grupo abeliano}},
+   $$
+
+   y se define la sustracción racional mediante $x-y:=x+(-y)$.
+
+5. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; ya incorpora suma racional, cero racional, opuesto racional y sustracción racional, además de la construcción del cociente y de sus representantes.
+
+El **Capítulo 2 — Los números enteros** está completo en la edición web y el **Capítulo 3 — Los números racionales** está publicado hasta §3.3. La siguiente incorporación será **§3.4 — Producto y estructura de cuerpo**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

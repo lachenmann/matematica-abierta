@@ -142,13 +142,3 @@ $$
 Por el [Lema 0.5.3 — Igualdad de clases](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-igualdad-clases), dos clases de equivalencia coinciden si y sólo si sus representantes son equivalentes. La definición de $\sim_{\mathbb Q}$ transforma esa condición exactamente en $ad=bc$. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.2 queda construido formalmente el conjunto de los números racionales,
-
-$$
-\mathbb Q=D_{\mathbb Q}/{\sim_{\mathbb Q}},
-$$
-
-y la escritura $\frac ab$ pasa a designar una clase racional, no un par. La siguiente entrega será **§3.3 — Suma, cero, opuesto y sustracción**.
-:::
