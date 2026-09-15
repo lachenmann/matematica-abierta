@@ -300,7 +300,3 @@ $$
 Por tanto $x=0_{\mathbb Q}$ o $y=0_{\mathbb Q}$. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §3.6 la aritmética racional alcanza su estructura de cuerpo: todo racional no nulo posee recíproco, la división queda definida y $\mathbb Q$ carece de divisores de cero. La siguiente entrega será **§3.7 — Orden racional**, donde la comparación se construirá mediante representantes con denominador positivo.
-:::
