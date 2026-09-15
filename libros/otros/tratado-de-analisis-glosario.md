@@ -32,6 +32,7 @@ topics:
   - grupos-abelianos
   - anillos
   - dominios-de-integridad
+  - cuerpos
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -100,9 +101,11 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Conmutatividad del producto](#gl-conmutatividad-producto) ·
 [Cota inferior](#gl-cota-inferior) ·
 [Cota superior](#gl-cota-superior) ·
+[Cuerpo](#gl-cuerpo) ·
 [Diferencia conjuntista](#gl-diferencia-conjuntista) ·
 [Diferencia formal](#gl-diferencia-formal) ·
 [Distributividad](#gl-distributividad-producto) ·
+[División racional](#gl-division-racional) ·
 [Dominio de integridad](#gl-dominio-integridad) ·
 [Dominio de una función](#gl-dominio-funcion) ·
 [Dominio de una relación](#gl-dominio-relacion) ·
@@ -157,6 +160,8 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Producto nulo](#gl-producto-nulo) ·
 [Propiedades de Peano](#gl-propiedades-peano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
+[Racionales no nulos](#gl-racionales-no-nulos) ·
+[Recíproco racional](#gl-reciproco-racional) ·
 [Recorrido de una relación](#gl-recorrido-relacion) ·
 [Recursión](#gl-recursion) ·
 [Recursión con parámetros](#gl-recursion-parametros) ·
@@ -237,3 +242,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-22.md >}}
 
 {{< include _tratado-glosario-23.md >}}
+
+{{< include _tratado-glosario-24.md >}}
