@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0026 |
+| Capítulo | MA-BCH-0027 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -69,6 +69,7 @@
 | MA-BCH-0023 | book-chapter | Tratado moderno de Álgebra — Interfaz fundacional III: Relaciones de equivalencia y cocientes | `libros/capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md` | published |
 | MA-BCH-0024 | book-chapter | Tratado moderno de Álgebra — Capítulo 1: Operaciones binarias y estructuras elementales | `libros/capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md` | published |
 | MA-BCH-0025 | book-chapter | Tratado moderno de Álgebra — Capítulo 2: Semigrupos | `libros/capitulos/tratado-de-algebra-capitulo-2-semigrupos.md` | published |
+| MA-BCH-0026 | book-chapter | Tratado moderno de Álgebra — Capítulo 3: Elementos neutros y monoides | `libros/capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
