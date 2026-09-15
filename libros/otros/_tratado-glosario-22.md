@@ -91,7 +91,3 @@ $$
 **Véase también:** [Suma racional](#gl-suma-racional), [Opuesto racional](#gl-opuesto-racional), [Sustracción entera](#gl-sustraccion-entera).
 
 ---
-
-::: {.callout-note title="Glosario vivo"}
-Con **§3.3 — Suma, cero, opuesto y sustracción** quedan incorporadas las primeras operaciones aritméticas propias de $\mathbb Q$. La próxima ampliación acompañará **§3.4 — Producto y estructura de cuerpo**.
-:::
