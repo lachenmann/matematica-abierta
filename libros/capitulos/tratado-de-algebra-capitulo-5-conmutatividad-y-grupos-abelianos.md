@@ -133,7 +133,7 @@ $$
 
 entendiendo cada flecha como «la estructura situada a la derecha satisface todas las condiciones de la situada a la izquierda y añade nuevas leyes».
 
-En sentido constructivo, la progresión puede leerse como
+En sentido de construcción estructural, la progresión puede leerse como
 
 $$
 \text{magma}
