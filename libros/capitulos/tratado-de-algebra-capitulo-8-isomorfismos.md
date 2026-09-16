@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: 2026-09-15
-date-modified: 2026-09-15
+date-modified: 2026-09-16
 areas:
   - algebra
   - fundamentos
@@ -32,6 +32,7 @@ related:
   - MA-BCH-0026
   - MA-BCH-0027
   - MA-BCH-0032
+  - MA-BCH-0034
 provenance:
   type: original
   sources: []
@@ -424,8 +425,8 @@ El tratado no sustituirá estructuras isomorfas por estructuras iguales sin una 
 - **Isomorfía como relación reflexiva, simétrica y transitiva:** [`TALG-PRO-00013`](#talg-pro-00013), con prueba [`TALG-PRF-00016`](#talg-prf-00016).
 - **Isomorfismos de grupos y monoides:** [`TALG-COR-00002`](#talg-cor-00002), con prueba [`TALG-PRF-00017`](#talg-prf-00017).
 - **Circularidad:** ninguna.
-- **Siguiente nodo:** `TALG-DEF-00024` — núcleo de un homomorfismo de grupos.
+- **Siguiente nodo:** [`TALG-DEF-00024`](tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md#talg-def-00024) — núcleo de un homomorfismo de grupos.
 
 ---
 
-[← **Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) · [**Capítulo 9 — Núcleo e imagen de homomorfismos de grupos** →](tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md)
