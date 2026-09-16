@@ -160,7 +160,3 @@ Por la [Proposición 4.1.9](#ta-minimalidad-subcuerpo-primo), $P_F\subseteq K$. 
 La conclusión explica una característica decisiva de los cuerpos arquimedianos: el subcuerpo primo ya es suficientemente fino para aproximar por orden a cualquier elemento del cuerpo. Esto anticipa la futura densidad de la copia de $\mathbb Q$ en $\mathbb R$.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.5 queda demostrada la densidad del subcuerpo primo —y, por inclusión, de todo subcuerpo— en un cuerpo ordenado arquimediano. La siguiente entrega será **§4.6 — Propiedad del supremo**.
-:::
