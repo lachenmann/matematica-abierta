@@ -207,7 +207,3 @@ Así $2$ implica $1$, y las cuatro condiciones son equivalentes. ∎
 No incluimos todavía equivalencias formuladas mediante sucesiones monótonas, sucesiones de Cauchy o convergencia de intervalos encajados con longitudes tendiendo a cero. Esas formulaciones exigen conceptos que aún no han sido construidos y serán incorporadas en el momento deductivamente correcto.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.7 quedan disponibles cuatro formulaciones equivalentes de la completitud de orden: supremos, ínfimos, separación e intersección de intervalos cerrados. La siguiente entrega será **§4.8 — Programa de completación de $\mathbb Q$**.
-:::
