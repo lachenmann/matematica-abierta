@@ -66,3 +66,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap4-08.md >}}
 
 {{< include _tratado-cap4-09.md >}}
+
+{{< include _tratado-cap4-10.md >}}

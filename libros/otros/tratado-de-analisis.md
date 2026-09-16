@@ -194,11 +194,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.9 — Qué hemos establecido**. El capítulo reúne ya la teoría abstracta de cuerpos ordenados, numerales y subcuerpo primo, valor absoluto e intervalos, arquimedianidad y densidad, completitud mediante supremos y sus formulaciones equivalentes, y el programa de completación ordenada de $\mathbb Q$. §4.9 explicita este balance estructural y deja preparado el cierre bibliográfico. La siguiente incorporación será **§4.10 — Notas bibliográficas**.
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.10 — Notas bibliográficas**. El capítulo reúne la teoría abstracta de cuerpos ordenados, numerales y subcuerpo primo, valor absoluto e intervalos, arquimedianidad y densidad, completitud mediante supremos y sus formulaciones equivalentes, y el programa de completación ordenada de $\mathbb Q$. §4.10 identifica las referencias de contraste y precisa que las demostraciones son internas. La siguiente incorporación será **§4.11 — Hacia las cortaduras de Dedekind**, cierre del capítulo.
 
 6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
 
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.9. La siguiente incorporación será **§4.10 — Notas bibliográficas**.
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.10. La siguiente incorporación será **§4.11 — Hacia las cortaduras de Dedekind**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
