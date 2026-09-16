@@ -19,139 +19,49 @@ $$
 z=[(a,b)].
 $$
 
-Por totalidad del orden natural,
+Aplicamos la [tricotomía decidible de los naturales](tratado-de-analisis-capitulo-1-los-numeros-naturales.md#ta-tricotomia-decidible-naturales) a $a$ y $b$.
+
+**Caso $a=b$.** El criterio de igualdad de clases da
 
 $$
-b\leq a
-\qquad\text{o}\qquad
-a\leq b.
+[(a,b)]=[(0,0)]=0_{\mathbb Z}.
 $$
 
-Supongamos primero $b\leq a$. Por definición del orden en $\mathbb N$, existe $n\in\mathbb N$ tal que
+**Caso $b<a$.** Entonces $b\leq a$, de modo que existe $n\in\mathbb N$ con
 
 $$
 a=b+n.
 $$
 
-Entonces
+Además $n\neq0$: si $n=0$, tendríamos $a=b$, contradicción. El criterio de igualdad de clases da
 
 $$
-[(a,b)]=[(n,0)],
+[(a,b)]=[(n,0)]=\iota(n).
 $$
 
-porque el criterio de igualdad de clases exige
+**Caso $a<b$.** Existe $n\in\mathbb N$ con
 
 $$
-a+0=b+n,
+b=a+n,
 $$
 
-que es precisamente la igualdad anterior. Por tanto
+y nuevamente $n\neq0$. Entonces
 
 $$
-z=\iota(n).
+[(a,b)]=[(0,n)]=-\iota(n).
 $$
 
-Si $n=0$, entonces $a=b$ y $z=[(0,0)]=0_{\mathbb Z}$. Si $n\neq0$, obtenemos la segunda alternativa.
+Queda la unicidad dentro de las dos formas no nulas y su exclusión mutua. Si $\iota(m)=\iota(n)$, la inyectividad de $\iota$ da $m=n$. Si $-\iota(m)=-\iota(n)$, el criterio de igualdad de clases aplicado a $[(0,m)]$ y $[(0,n)]$ da $m=n$.
 
-Si, en cambio, $a\leq b$, existe $n\in\mathbb N$ tal que
-
-$$
-b=a+n.
-$$
-
-Entonces
-
-$$
-[(a,b)]=[(0,n)].
-$$
-
-Pero
-
-$$
--\iota(n)
-=
--[(n,0)]
-=
-[(0,n)],
-$$
-
-de modo que
-
-$$
-z=-\iota(n).
-$$
-
-Nuevamente, $n=0$ produce $z=0_{\mathbb Z}$ y $n\neq0$ produce la tercera alternativa.
-
-Queda demostrar unicidad y exclusión mutua.
-
-Si
-
-$$
-\iota(m)=\iota(n),
-$$
-
-la inyectividad de $\iota$ da $m=n$. Si
-
-$$
--\iota(m)=-\iota(n),
-$$
-
-entonces, usando la definición del opuesto,
-
-$$
-[(0,m)]=[(0,n)].
-$$
-
-El criterio de igualdad da
-
-$$
-0+n=m+0,
-$$
-
-y por tanto $m=n$.
-
-Las alternativas no nulas tampoco pueden confundirse con el cero. Si
-
-$$
-\iota(n)=0_{\mathbb Z},
-$$
-
-entonces $\iota(n)=\iota(0)$ y la inyectividad de $\iota$ da $n=0$. Del mismo modo, si
-
-$$
--\iota(n)=0_{\mathbb Z},
-$$
-
-entonces
-
-$$
-[(0,n)]=[(0,0)],
-$$
-
-y el criterio de igualdad da $n=0$.
-
-Finalmente, si para $m,n\neq0$
+Si $\iota(n)=0_{\mathbb Z}$ o $-\iota(n)=0_{\mathbb Z}$, el mismo criterio fuerza $n=0$. Finalmente, si $m,n\neq0$ y
 
 $$
 \iota(m)=-\iota(n),
 $$
 
-entonces
+entonces $[(m,0)]=[(0,n)]$, y por tanto $m+n=0$. La propiedad de suma nula en $\mathbb N$ fuerza $m=n=0$, contradicción.
 
-$$
-[(m,0)]=[(0,n)].
-$$
-
-Por el criterio de igualdad,
-
-$$
-m+n=0.
-$$
-
-La propiedad de suma nula en $\mathbb N$ obliga a $m=0$ y $n=0$, contradicción. Por tanto las alternativas positiva y negativa no pueden coincidir cuando los índices son no nulos.
-
-Las tres alternativas son, pues, exhaustivas y mutuamente excluyentes. ∎
+Como la tricotomía de $a,b$ es decidible y exhaustiva, las tres formas anteriores son exhaustivas y mutuamente excluyentes. ∎
 
 ### Proposición 2.8.2 — $0_{\mathbb Z}\neq1_{\mathbb Z}$ {#ta-cero-uno-enteros-distintos}
 
@@ -174,7 +84,7 @@ $$
 0=1.
 $$
 
-Pero $1=S(0)$ y, por las propiedades de Peano demostradas para $\mathbb N$, $0$ no es sucesor de ningún natural. Contradicción. ∎
+Pero $1=S(0)$ y las propiedades de Peano afirman que $0$ no es sucesor. Contradicción. ∎
 
 ### Proposición 2.8.3 — Ausencia de divisores de cero {#ta-ausencia-divisores-cero-enteros}
 
@@ -189,65 +99,35 @@ y=0_{\mathbb Z}.
 $$
 
 **Demostración.**  
-Demostraremos la contraposición. Supongamos
+Supongamos $xy=0_{\mathbb Z}$ y apliquemos el Teorema 2.8.1 a $x$ y a $y$.
+
+Si alguna de las dos formas normales es $0_{\mathbb Z}$, la conclusión es inmediata. Quedan sólo los cuatro casos en que existen $m,n\in\mathbb N$, ambos no nulos, y
 
 $$
-x\neq0_{\mathbb Z},
+x\in\{\iota(m),-\iota(m)\},
 \qquad
-y\neq0_{\mathbb Z}.
+y\in\{\iota(n),-\iota(n)\}.
 $$
 
-Por el teorema de forma normal con signo existen $m,n\in\mathbb N$, ambos no nulos, tales que cada uno de $x$ e $y$ es, respectivamente, una de las dos formas
+Por la definición del producto entero, en esos cuatro casos $xy$ es respectivamente una de las clases
 
 $$
-\iota(m)=[(m,0)],
-\qquad
--\iota(m)=[(0,m)],
+\iota(mn)
+\qquad\text{o}\qquad
+-\iota(mn).
 $$
 
-y
+Como $m\neq0$ y $n\neq0$, el producto nulo en $\mathbb N$ da $mn\neq0$. La forma normal implica entonces que ni $\iota(mn)$ ni $-\iota(mn)$ es $0_{\mathbb Z}$, contradiciendo $xy=0_{\mathbb Z}$.
+
+Por tanto los cuatro casos no nulos son imposibles y necesariamente
 
 $$
-\iota(n)=[(n,0)],
-\qquad
--\iota(n)=[(0,n)].
+x=0_{\mathbb Z}
+\quad\text{o}\quad
+y=0_{\mathbb Z}.
 $$
 
-Calculamos los cuatro casos directamente con la definición del producto:
-
-$$
-[(m,0)][(n,0)]=[(mn,0)]=\iota(mn),
-$$
-
-$$
-[(m,0)][(0,n)]=[(0,mn)]=-\iota(mn),
-$$
-
-$$
-[(0,m)][(n,0)]=[(0,mn)]=-\iota(mn),
-$$
-
-y
-
-$$
-[(0,m)][(0,n)]=[(mn,0)]=\iota(mn).
-$$
-
-Por tanto $xy$ es siempre una de las dos clases $\iota(mn)$ o $-\iota(mn)$.
-
-Como $m\neq0$ y $n\neq0$, la propiedad de producto nulo ya demostrada en $\mathbb N$ implica
-
-$$
-mn\neq0.
-$$
-
-El teorema de forma normal con signo muestra que ni $\iota(mn)$ ni $-\iota(mn)$ es $0_{\mathbb Z}$. Por tanto
-
-$$
-xy\neq0_{\mathbb Z}.
-$$
-
-La contraposición queda demostrada. ∎
+∎
 
 ### Teorema 2.8.4 — $\mathbb Z$ es un dominio de integridad {#ta-dominio-integridad-enteros}
 
