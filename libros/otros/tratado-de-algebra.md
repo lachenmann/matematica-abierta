@@ -35,6 +35,7 @@ related:
   - MA-BCH-0028
   - MA-BCH-0030
   - MA-BCH-0032
+  - MA-BCH-0033
 provenance:
   type: original
   sources: []
@@ -219,6 +220,7 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 8. [**Capítulo 5 — Conmutatividad y grupos abelianos**](../capitulos/tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md) (`MA-BCH-0028`) — introduce la conmutatividad como una ley independiente de una operación binaria y define el grupo abeliano como grupo con operación conmutativa, cerrando la primera jerarquía estructural del tratado.
 9. [**Capítulo 6 — Subestructuras y criterio de subgrupo**](../capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) (`MA-BCH-0030`) — construye la restricción canónica de una operación a subconjuntos cerrados, define submagmas, subsemigrupos, submonoides y subgrupos y demuestra el criterio de subgrupo de una sola condición.
 10. [**Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](../capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) (`MA-BCH-0032`) — introduce la noción de homomorfismo desde magmas hasta grupos, demuestra estabilidad bajo identidad y composición y prueba que, en grupos, la preservación del neutro y de los inversos se deduce de la preservación de la operación.
+11. [**Capítulo 8 — Isomorfismos**](../capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md) (`MA-BCH-0033`) — define isomorfismos como homomorfismos biyectivos, demuestra estabilidad bajo inversas, identidades y composición, introduce la relación de isomorfía y la distingue de la igualdad literal.
 
 ### Ruta prevista
 
@@ -227,4 +229,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será el **Capítulo 8 — Isomorfismos**.
+La siguiente incorporación pública será el **Capítulo 9 — Núcleo e imagen de homomorfismos de grupos**.
