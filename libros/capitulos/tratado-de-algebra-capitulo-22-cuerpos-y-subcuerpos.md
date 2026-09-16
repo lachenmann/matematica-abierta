@@ -342,11 +342,9 @@ criterio por 1, diferencias, productos e inversos
 
 No se ha utilizado el axioma de elección. En particular, no se ha elegido una familia de inversos: para cada elemento no nulo el inverso multiplicativo es único por [Proposición 15.2.1](tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md#talg-pro-00026).
 
-El siguiente nodo canónico será
+El siguiente nodo canónico será:
 
-$$
-\boxed{\text{[Definición 23.1.1](tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md#talg-def-00050) — Homomorfismo de cuerpos}.}
-$$
+[**Definición 23.1.1 — Homomorfismo de cuerpos**](tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md#talg-def-00050).
 
 Ese paso reutilizará la teoría de homomorfismos de anillos y la trivialidad de los ideales de un cuerpo para aislar la inyectividad característica de los homomorfismos entre cuerpos no triviales.
 
