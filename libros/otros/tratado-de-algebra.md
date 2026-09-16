@@ -22,6 +22,7 @@ topics:
   - cocientes
   - anillos
   - cuerpos
+  - estructuras-ordenadas
   - espacios-vectoriales
 prerequisites: []
 related:
@@ -37,6 +38,22 @@ related:
   - MA-BCH-0032
   - MA-BCH-0033
   - MA-BCH-0034
+  - MA-BCH-0035
+  - MA-BCH-0036
+  - MA-BCH-0037
+  - MA-BCH-0038
+  - MA-BCH-0039
+  - MA-BCH-0040
+  - MA-BCH-0041
+  - MA-BCH-0042
+  - MA-BCH-0043
+  - MA-BCH-0044
+  - MA-BCH-0045
+  - MA-BCH-0046
+  - MA-BCH-0047
+  - MA-BCH-0048
+  - MA-BCH-0049
+  - MA-BCH-0050
 provenance:
   type: original
   sources: []
@@ -49,7 +66,7 @@ license: GFDL-1.3-or-later
 
 Este tratado construye de manera deductivamente explícita las estructuras algebraicas que sirven de infraestructura reutilizable para la matemática posterior. La edición web se publica por etapas: sólo se incorporan unidades que han superado su revisión matemática y editorial.
 
-La arquitectura inicial avanza desde operaciones binarias, magmas, semigrupos, monoides y grupos hacia subestructuras, morfismos, núcleos, imágenes, cocientes e isomorfismos; después continuará con anillos, cuerpos, estructuras ordenadas, espacios vectoriales y álgebra multilineal.
+La arquitectura inicial avanza desde operaciones binarias, magmas, semigrupos, monoides y grupos hacia subestructuras, morfismos, núcleos, imágenes, cocientes e isomorfismos; después continúa con anillos, cuerpos y estructuras ordenadas, antes de avanzar hacia espacios vectoriales y álgebra multilineal.
 
 ## Prefacio
 
@@ -207,7 +224,9 @@ Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas
 
 ## Estado de la publicación
 
-La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fundamentos, operaciones, semigrupos, monoides y grupos hasta el **primer teorema de isomorfía para grupos**. La edición web incorpora esas unidades una a una, preservando el orden deductivo.
+La fuente canónica tiene cerrados los capítulos 1–25 y la edición web incorpora ya ese bloque completo, desde operaciones binarias hasta grupos ordenados. Las referencias visibles para el lector siguen localizadores editoriales, mientras que los identificadores estables permanecen como infraestructura de navegación y auditoría.
+
+El capítulo 26 — **Anillos ordenados** — permanece abierto en la fuente de trabajo y no forma parte de esta publicación.
 
 ## Contenido disponible
 
@@ -223,12 +242,31 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 10. [**Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](../capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) (`MA-BCH-0032`) — introduce la noción de homomorfismo desde magmas hasta grupos, demuestra estabilidad bajo identidad y composición y prueba que, en grupos, la preservación del neutro y de los inversos se deduce de la preservación de la operación.
 11. [**Capítulo 8 — Isomorfismos**](../capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md) (`MA-BCH-0033`) — define isomorfismos como homomorfismos biyectivos, demuestra estabilidad bajo inversas, identidades y composición, introduce la relación de isomorfía y la distingue de la igualdad literal.
 12. [**Capítulo 9 — Núcleo e imagen de homomorfismos de grupos**](../capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md) (`MA-BCH-0034`) — construye núcleo e imagen como subgrupos canónicos de un homomorfismo y caracteriza la inyectividad mediante el núcleo trivial y la sobreyectividad mediante la imagen total.
+13. [**Capítulo 10 — Subgrupos normales**](../capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md) (`MA-BCH-0035`) — introduce la normalidad mediante conjugación y demuestra la normalidad de núcleos y de subgrupos de grupos abelianos.
+14. [**Capítulo 11 — Clases laterales y caracterización de la normalidad**](../capitulos/tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md) (`MA-BCH-0036`) — construye clases laterales y conecta su igualdad con la normalidad.
+15. [**Capítulo 12 — Cocientes de grupos**](../capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.md) (`MA-BCH-0037`) — construye grupos cociente y la proyección canónica después de demostrar la buena definición del producto.
+16. [**Capítulo 13 — Primer teorema de isomorfía para grupos**](../capitulos/tratado-de-algebra-capitulo-13-primer-teorema-de-isomorfia-para-grupos.md) (`MA-BCH-0038`) — identifica el cociente por el núcleo con la estructura inducida sobre la imagen.
+17. [**Capítulo 14 — Anillos**](../capitulos/tratado-de-algebra-capitulo-14-anillos.md) (`MA-BCH-0039`) — abre la teoría de anillos asociativos unitarios y desarrolla sus primeras leyes estructurales.
+18. [**Capítulo 15 — Unidades de un anillo**](../capitulos/tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md) (`MA-BCH-0040`) — construye el conjunto y el grupo de unidades de un anillo.
+19. [**Capítulo 16 — No trivialidad y divisores de cero**](../capitulos/tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md) (`MA-BCH-0041`) — introduce no trivialidad, divisores de cero laterales y criterios de cancelación.
+20. [**Capítulo 17 — Subanillos y homomorfismos de anillos**](../capitulos/tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md) (`MA-BCH-0042`) — fija la convención unital de subanillos y morfismos y estudia su núcleo e imagen.
+21. [**Capítulo 18 — Ideales**](../capitulos/tratado-de-algebra-capitulo-18-ideales.md) (`MA-BCH-0043`) — introduce ideales laterales y bilaterales y su relación con núcleos.
+22. [**Capítulo 19 — Cocientes de anillos**](../capitulos/tratado-de-algebra-capitulo-19-cocientes-de-anillos.md) (`MA-BCH-0044`) — construye congruencias y operaciones bien definidas sobre clases módulo un ideal.
+23. [**Capítulo 20 — Isomorfismos y primer teorema de isomorfía para anillos**](../capitulos/tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md) (`MA-BCH-0045`) — desarrolla la isomorfía de anillos y su primer teorema fundamental.
+24. [**Capítulo 21 — Dominios íntegros**](../capitulos/tratado-de-algebra-capitulo-21-dominios-integros.md) (`MA-BCH-0046`) — define dominios íntegros y sus caracterizaciones mediante producto nulo y cancelación.
+25. [**Capítulo 22 — Cuerpos y subcuerpos**](../capitulos/tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md) (`MA-BCH-0047`) — introduce cuerpos y subcuerpos sobre la infraestructura anular previa.
+26. [**Capítulo 23 — Homomorfismos de cuerpos**](../capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md) (`MA-BCH-0048`) — especializa los homomorfismos de anillos y demuestra la inyectividad automática entre cuerpos.
+27. [**Capítulo 24 — Cuerpo de fracciones de un dominio íntegro**](../capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) (`MA-BCH-0049`) — construye el cuerpo de fracciones sin elección global de representantes y establece la inmersión canónica del dominio.
+28. [**Capítulo 25 — Grupos ordenados**](../capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md) (`MA-BCH-0050`) — abre la Parte V con compatibilidad entre orden y operación de grupo y la reconstrucción mediante conos.
 
 ### Ruta prevista
 
 - **Parte 0 — Fundamentos y lenguaje:** interfaz fundacional; funciones, biyectividad e inversas; relaciones de equivalencia y cocientes.
 - **Parte I — Operaciones y estructuras:** operaciones binarias, magmas y asociatividad.
-- **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
-- **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
+- **Parte II — Monoides y grupos:** publicada hasta el primer teorema de isomorfía para grupos.
+- **Parte III — Anillos y dominios:** publicada hasta dominios íntegros.
+- **Parte IV — Cuerpos:** publicada hasta el cuerpo de fracciones de un dominio íntegro.
+- **Parte V — Estructuras ordenadas:** publicada actualmente hasta grupos ordenados.
+- **Partes posteriores:** anillos ordenados, espacios vectoriales, homomorfismos y cocientes en estructuras posteriores y álgebra multilineal básica.
 
-La siguiente incorporación pública será el **Capítulo 10 — Subgrupos normales**.
+El **Capítulo 26 — Anillos ordenados** permanece abierto en la fuente canónica y no se incorpora en esta sincronización.
