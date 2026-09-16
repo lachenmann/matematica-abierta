@@ -159,7 +159,3 @@ es no vacío y está acotado superiormente. El [Teorema 3.9.9](tratado-de-analis
 Tenemos ahora una formulación abstracta del defecto detectado al final del capítulo anterior: $\mathbb Q$ es arquimediano, pero no completo.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.6 queda formulada la completitud de orden mediante la propiedad del supremo; se obtiene la propiedad del ínfimo, se demuestra que todo cuerpo ordenado completo es arquimediano y se recupera la densidad del subcuerpo primo. Además, $\mathbb Q$ queda identificado abstractamente como cuerpo ordenado no completo. La siguiente entrega será **§4.7 — Formulaciones equivalentes de completitud**.
-:::
