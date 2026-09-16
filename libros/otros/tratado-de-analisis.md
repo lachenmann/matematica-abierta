@@ -194,17 +194,17 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.5 — Densidad de un subcuerpo**. En un cuerpo ordenado arquimediano se demuestra que el subcuerpo primo satisface
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.6 — Propiedad del supremo**. Se define un cuerpo ordenado completo mediante la condición
 
    $$
-   \forall x,y\in F\;\bigl(x<y\Longrightarrow\exists q\in P_F\;(x<q<y)\bigr),
+   \forall A\subseteq F\;\bigl(A\neq\varnothing\ \text{y $A$ acotado superiormente}\Longrightarrow\exists\sup A\in F\bigr).
    $$
 
-   y, como $P_F$ está contenido en todo subcuerpo, se obtiene la densidad de cualquier $K\subseteq F$ que sea subcuerpo. La prueba registra explícitamente su dependencia clásica en el buen orden de un subconjunto de $\mathbb N$ y no afirma un algoritmo uniforme para localizar el elemento intermedio. La siguiente incorporación será **§4.6 — Propiedad del supremo**.
+   De ella se deduce la propiedad dual del ínfimo. Después se demuestra que todo cuerpo ordenado completo es arquimediano y, por tanto, que su subcuerpo primo es denso. Finalmente, el conjunto racional $S_2$ del capítulo anterior muestra que $\mathbb Q$ no satisface la propiedad del supremo. La exposición mantiene explícita la distinción entre existencia y computabilidad y registra las dependencias clásicas de la prueba completo $\Rightarrow$ arquimediano. La siguiente incorporación será **§4.7 — Formulaciones equivalentes de completitud**.
 
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; las entradas **Subcuerpo** y **Subcuerpo primo** incorporan ya la densidad en cuerpos ordenados arquimedianos, además de la formulación abstracta de la propiedad arquimediana y la infraestructura previa.
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo** y **propiedad del supremo**, además de la infraestructura de orden, arquimedianidad y subcuerpos desarrollada previamente.
 
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.5. La siguiente incorporación será **§4.6 — Propiedad del supremo**.
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.6. La siguiente incorporación será **§4.7 — Formulaciones equivalentes de completitud**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
