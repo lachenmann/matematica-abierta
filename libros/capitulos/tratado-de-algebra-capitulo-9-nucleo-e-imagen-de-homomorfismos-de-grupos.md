@@ -1,32 +1,33 @@
 ---
-title: "Tratado moderno de Álgebra — Capítulo 9: Núcleo e imagen de homomorfismos de grupos"
-description: "Construcción del núcleo y la imagen de un homomorfismo de grupos, prueba de que ambos son subgrupos y caracterizaciones algebraicas de inyectividad y sobreyectividad."
-author: "Gustav A. Tachek"
+title: 'Tratado moderno de Álgebra — Capítulo 9: Núcleo e imagen de homomorfismos de grupos'
+description: Construcción del núcleo y la imagen de un homomorfismo de grupos, prueba de que ambos son subgrupos y caracterizaciones algebraicas de inyectividad y sobreyectividad.
+author: Gustav A. Tachek
 content-id: MA-BCH-0034
 content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
-date-created: 2026-09-16
-date-modified: 2026-09-16
+date-created: '2026-09-16'
+date-modified: '2026-09-16'
 areas:
-  - algebra
-  - fundamentos
+- algebra
+- fundamentos
 level: avanzado
 topics:
-  - nucleo
-  - imagen
-  - homomorfismos-de-grupos
-  - subgrupos
-  - inyectividad
-  - sobreyectividad
+- nucleo
+- imagen
+- homomorfismos-de-grupos
+- subgrupos
+- inyectividad
+- sobreyectividad
 prerequisites:
-  - MA-BCH-0032
-  - MA-BCH-0030
-  - MA-BCH-0022
+- MA-BCH-0032
+- MA-BCH-0030
+- MA-BCH-0022
 related:
-  - MA-BOK-0007
-  - MA-BCH-0027
-  - MA-BCH-0033
+- MA-BOK-0007
+- MA-BCH-0027
+- MA-BCH-0033
+- MA-BCH-0035
 provenance:
   type: original
   sources: []
@@ -34,10 +35,6 @@ license: GFDL-1.3-or-later
 ---
 
 # Capítulo 9 — Núcleo e imagen de homomorfismos de grupos
-
-**Coordenada deductiva:** `TALG-0013`
-
-[**← Volver al Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
 
 ## 9.0. Propósito y posición deductiva
 
@@ -74,10 +71,6 @@ La normalidad del núcleo y los cocientes se posponen hasta introducir formalmen
 
 ### Definición 9.1.1 — Núcleo de un homomorfismo de grupos {#talg-def-00024}
 
-**Coordenada:** [`TALG-DEF-00024`](#talg-def-00024)
-
-**Dependencias deductivas:** [`TALG-DEF-00019`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00019) — homomorfismo de grupos; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — notación del neutro.
-
 Sean
 
 $$
@@ -106,10 +99,6 @@ La definición depende del homomorfismo completo, incluido su codominio: el neut
 
 ### Notación 9.1.2 — Núcleo {#talg-not-00006}
 
-**Coordenada:** [`TALG-NOT-00006`](#talg-not-00006)
-
-**Dependencias deductivas:** [`TALG-DEF-00024`](#talg-def-00024) — núcleo de un homomorfismo de grupos.
-
 En la situación anterior escribiremos
 
 $$
@@ -130,10 +119,6 @@ La notación $\ker f$ no se utilizará para una función arbitraria: en este tra
 
 ### Proposición 9.1.3 — El núcleo es un subgrupo {#talg-pro-00014}
 
-**Coordenada:** [`TALG-PRO-00014`](#talg-pro-00014)
-
-**Dependencias deductivas:** [`TALG-DEF-00024`](#talg-def-00024) — núcleo de un homomorfismo de grupos; [`TALG-NOT-00006`](#talg-not-00006) — notación del núcleo; [`TALG-LEM-00004`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) — criterio constructivo de subgrupo; [`TALG-DEF-00019`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00019) — homomorfismo de grupos; [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-PRO-00007`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007) — preservación del neutro; [`TALG-PRO-00008`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008) — preservación de inversos; [`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) — unicidad del inverso; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — notación del neutro; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — notación del inverso.
-
 Sea
 
 $$
@@ -144,11 +129,9 @@ un homomorfismo de grupos. Entonces $\ker f$ determina un subgrupo de $\mathcal 
 
 #### Demostración {#talg-prf-00018}
 
-**Coordenada de prueba:** [`TALG-PRF-00018`](#talg-prf-00018)
+Aplicaremos el [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) al subconjunto $\ker f\subseteq G$.
 
-Aplicaremos [`TALG-LEM-00004`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) al subconjunto $\ker f\subseteq G$.
-
-Por [`TALG-PRO-00007`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
+Por la [Proposición 7.4.2](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
 
 $$
 f(e_{\mathcal G})=e_{\mathcal H},
@@ -170,7 +153,7 @@ f(a)=e_{\mathcal H}
 f(b)=e_{\mathcal H}.
 $$
 
-Por [`TALG-PRO-00008`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008),
+Por la [Proposición 7.4.3](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008),
 
 $$
 f(b^{-1})=f(b)^{-1}=e_{\mathcal H}^{-1}.
@@ -182,7 +165,7 @@ $$
 e_{\mathcal H}\diamond e_{\mathcal H}=e_{\mathcal H}.
 $$
 
-Por unicidad del inverso ([`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)),
+Por unicidad del inverso ([Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)),
 
 $$
 e_{\mathcal H}^{-1}=e_{\mathcal H}.
@@ -205,17 +188,13 @@ $$
 a\star b^{-1}\in\ker f.
 $$
 
-El criterio constructivo [`TALG-LEM-00004`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) implica que $\ker f$ determina un subgrupo de $\mathcal G$. $\square$
+El [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) implica que $\ker f$ determina un subgrupo de $\mathcal G$. $\square$
 
 ---
 
 ## 9.2. Imagen de un homomorfismo
 
 ### Definición 9.2.1 — Imagen de un homomorfismo de grupos {#talg-def-00025}
-
-**Coordenada:** [`TALG-DEF-00025`](#talg-def-00025)
-
-**Dependencias deductivas:** [`TALG-DEF-00019`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00019) — homomorfismo de grupos.
 
 Sean
 
@@ -245,10 +224,6 @@ No se necesita aquí importar la operación general de imagen de subconjuntos de
 
 ### Notación 9.2.2 — Imagen {#talg-not-00007}
 
-**Coordenada:** [`TALG-NOT-00007`](#talg-not-00007)
-
-**Dependencias deductivas:** [`TALG-DEF-00025`](#talg-def-00025) — imagen de un homomorfismo de grupos.
-
 En la situación anterior escribiremos
 
 $$
@@ -267,10 +242,6 @@ $$
 
 ### Proposición 9.2.3 — La imagen es un subgrupo {#talg-pro-00015}
 
-**Coordenada:** [`TALG-PRO-00015`](#talg-pro-00015)
-
-**Dependencias deductivas:** [`TALG-DEF-00025`](#talg-def-00025) — imagen de un homomorfismo de grupos; [`TALG-NOT-00007`](#talg-not-00007) — notación de la imagen; [`TALG-LEM-00004`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) — criterio constructivo de subgrupo; [`TALG-DEF-00019`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00019) — homomorfismo de grupos; [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-PRO-00007`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007) — preservación del neutro; [`TALG-PRO-00008`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008) — preservación de inversos; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — notación del neutro; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — notación del inverso.
-
 Sea
 
 $$
@@ -281,11 +252,9 @@ un homomorfismo de grupos. Entonces $\operatorname{im}f$ determina un subgrupo d
 
 #### Demostración {#talg-prf-00019}
 
-**Coordenada de prueba:** [`TALG-PRF-00019`](#talg-prf-00019)
+Aplicaremos el [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) al subconjunto $\operatorname{im}f\subseteq H$.
 
-Aplicaremos [`TALG-LEM-00004`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) al subconjunto $\operatorname{im}f\subseteq H$.
-
-Por [`TALG-PRO-00007`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
+Por la [Proposición 7.4.2](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
 
 $$
 f(e_{\mathcal G})=e_{\mathcal H},
@@ -307,7 +276,7 @@ f(a)=u,
 f(b)=v.
 $$
 
-Por [`TALG-PRO-00008`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008),
+Por la [Proposición 7.4.3](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008),
 
 $$
 f(b^{-1})=f(b)^{-1}=v^{-1}.
@@ -329,17 +298,13 @@ $$
 u\diamond v^{-1}\in\operatorname{im}f.
 $$
 
-Por [`TALG-LEM-00004`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004), $\operatorname{im}f$ determina un subgrupo de $\mathcal H$. $\square$
+Por el [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004), $\operatorname{im}f$ determina un subgrupo de $\mathcal H$. $\square$
 
 ---
 
 ## 9.3. Caracterizaciones funcionales
 
 ### Teorema 9.3.1 — Inyectividad y núcleo trivial {#talg-thm-00002}
-
-**Coordenada:** [`TALG-THM-00002`](#talg-thm-00002)
-
-**Dependencias deductivas:** [`TALG-DEF-00024`](#talg-def-00024) — núcleo de un homomorfismo de grupos; [`TALG-NOT-00006`](#talg-not-00006) — notación del núcleo; [`TALG-DEF-00019`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00019) — homomorfismo de grupos; [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-PRO-00007`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007) — preservación del neutro; [`TALG-PRO-00008`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008) — preservación de inversos; [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002) — interfaz funcional: inyectividad, sobreyectividad y biyectividad; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — notación del neutro; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — notación del inverso.
 
 Sea
 
@@ -356,9 +321,7 @@ Cuando se cumple la segunda condición diremos que $f$ tiene **núcleo trivial**
 
 #### Demostración {#talg-prf-00020}
 
-**Coordenada de prueba:** [`TALG-PRF-00020`](#talg-prf-00020)
-
-**$(1)\Rightarrow(2)$.** Supongamos que $f$ es inyectiva. Por [`TALG-PRO-00007`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
+**$(1)\Rightarrow(2)$.** Supongamos que $f$ es inyectiva. Por la [Proposición 7.4.2](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
 
 $$
 f(e_{\mathcal G})=e_{\mathcal H},
@@ -400,7 +363,7 @@ $$
 f(x)=f(y).
 $$
 
-Por [`TALG-PRO-00008`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008),
+Por la [Proposición 7.4.3](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00008),
 
 $$
 f(y^{-1})=f(y)^{-1}.
@@ -448,10 +411,6 @@ Así, $f(x)=f(y)$ implica $x=y$. Por la definición de inyectividad importada me
 
 ### Proposición 9.3.2 — Sobreyectividad e imagen total {#talg-pro-00016}
 
-**Coordenada:** [`TALG-PRO-00016`](#talg-pro-00016)
-
-**Dependencias deductivas:** [`TALG-DEF-00025`](#talg-def-00025) — imagen de un homomorfismo de grupos; [`TALG-NOT-00007`](#talg-not-00007) — notación de la imagen; [`TALG-DEF-00019`](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00019) — homomorfismo de grupos; [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002) — interfaz funcional: inyectividad, sobreyectividad y biyectividad.
-
 Sea
 
 $$
@@ -464,8 +423,6 @@ un homomorfismo de grupos. Son equivalentes:
 2. $\operatorname{im}f=H$.
 
 #### Demostración {#talg-prf-00021}
-
-**Coordenada de prueba:** [`TALG-PRF-00021`](#talg-prf-00021)
 
 **$(1)\Rightarrow(2)$.** Por definición,
 
@@ -537,26 +494,10 @@ f\text{ sobreyectiva}
 \operatorname{im}f=H.
 $$
 
-Además, [`TALG-PRO-00014`](#talg-pro-00014) y [`TALG-PRO-00015`](#talg-pro-00015) muestran que ambos subconjuntos son algebraicamente estables: no son subconjuntos accidentales, sino subgrupos canónicos asociados a $f$.
+Además, la [Proposición 9.1.3](tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md#talg-pro-00014) y la [Proposición 9.2.3](tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md#talg-pro-00015) muestran que ambos subconjuntos son algebraicamente estables: no son subconjuntos accidentales, sino subgrupos canónicos asociados a $f$.
 
 El siguiente paso será distinguir una propiedad especial del núcleo que todavía no ha sido definida: la **normalidad**. Sólo después se construirán cocientes de grupos y los teoremas de isomorfía.
 
 ---
 
-## Cierre deductivo
-
-- **Fundamento:** ZF + lógica clásica.
-- **Axioma de elección:** no utilizado.
-- **Núcleo de un homomorfismo:** [`TALG-DEF-00024`](#talg-def-00024), con notación [`TALG-NOT-00006`](#talg-not-00006).
-- **El núcleo es un subgrupo:** [`TALG-PRO-00014`](#talg-pro-00014), con prueba [`TALG-PRF-00018`](#talg-prf-00018).
-- **Imagen de un homomorfismo:** [`TALG-DEF-00025`](#talg-def-00025), con notación [`TALG-NOT-00007`](#talg-not-00007).
-- **La imagen es un subgrupo:** [`TALG-PRO-00015`](#talg-pro-00015), con prueba [`TALG-PRF-00019`](#talg-prf-00019).
-- **Inyectividad y núcleo trivial:** [`TALG-THM-00002`](#talg-thm-00002), con prueba [`TALG-PRF-00020`](#talg-prf-00020).
-- **Sobreyectividad e imagen total:** [`TALG-PRO-00016`](#talg-pro-00016), con prueba [`TALG-PRF-00021`](#talg-prf-00021).
-- **Construcción conjuntista:** núcleo e imagen existen por Separación; no se importa la infraestructura general de imágenes y preimágenes de `TA-0003`.
-- **Circularidad:** ninguna.
-- **Siguiente nodo:** `TALG-DEF-00026` — subgrupo normal.
-
----
-
-[← **Capítulo 8 — Isomorfismos**](tratado-de-algebra-capitulo-8-isomorfismos.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 8 — Isomorfismos**](tratado-de-algebra-capitulo-8-isomorfismos.md) · [**Capítulo 10 — Subgrupos normales** →](tratado-de-algebra-capitulo-10-subgrupos-normales.md)
