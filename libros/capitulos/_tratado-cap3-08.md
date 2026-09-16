@@ -20,9 +20,7 @@ Así, para $n\in\mathbb N$,
 
 $$
 \boxed{
-\nu(n)
-=
-\frac{\iota(n)}{1_{\mathbb Z}}.
+\nu(n)=\frac{\iota(n)}{1_{\mathbb Z}}.
 }
 $$
 
@@ -45,7 +43,7 @@ $$
 \jmath:\mathbb Z\to\mathbb Q.
 $$
 
-La primera es inyectiva y preserva $0$, $1$, suma, producto y orden por los resultados del Capítulo 2. La segunda es inyectiva y preserva $0$, $1$, suma, producto y opuestos por la [Proposición 3.5.2](#ta-incrustacion-entera-preserva-aritmetica), y preserva y refleja el orden por la [Proposición 3.7.8](#ta-incrustacion-zq-preserva-refleja-orden). Por composición, $\nu$ posee las propiedades indicadas. ∎
+La primera es inyectiva y preserva $0$, $1$, suma, producto y orden por los resultados del Capítulo 2. La segunda es inyectiva y preserva $0$, $1$, suma, producto y opuestos por la [Proposición 3.5.2](#ta-incrustacion-entera-preserva-aritmetica), y preserva y refleja el orden por la [Proposición 3.7.9](#ta-incrustacion-zq-preserva-refleja-orden). Por composición, $\nu$ posee las propiedades indicadas. ∎
 
 ### Teorema 3.8.3 — Densidad del orden racional {#ta-densidad-orden-racional}
 
@@ -94,13 +92,7 @@ $$
 b=b+0\leq b+d.
 $$
 
-Si hubiera igualdad $b=b+d$, la cancelación aditiva daría $d=0$, contradicción. Así
-
-$$
-b<b+d.
-$$
-
-Como $0<b$, por transitividad,
+Si hubiera igualdad $b=b+d$, la cancelación aditiva daría $d=0$, contradicción. Así $b<b+d$; como $0<b$, por transitividad
 
 $$
 0<b+d.
@@ -132,9 +124,7 @@ $$
 ad+cd<bc+cd,
 $$
 
-y nuevamente se sigue de $ad<bc$ por el mismo argumento de traslación estricta.
-
-Los denominadores $b$, $d$ y $b+d$ son positivos. Por tanto el criterio estricto convierte estas dos desigualdades cruzadas en
+y nuevamente se sigue de $ad<bc$ por el mismo argumento de traslación estricta. Los denominadores $b$, $d$ y $b+d$ son positivos, de modo que el criterio estricto convierte estas dos desigualdades cruzadas en
 
 $$
 x<z<y.
@@ -168,19 +158,9 @@ $$
 q=\frac a{\iota(k)}
 $$
 
-con $k\in\mathbb N$, $k\neq0$, y
+con $k\in\mathbb N$, $k\neq0$, y $\iota(k)>0$.
 
-$$
-\iota(k)>0.
-$$
-
-Si
-
-$$
-a\leq0_{\mathbb Z},
-$$
-
-entonces
+Si $a\leq0_{\mathbb Z}$, entonces
 
 $$
 a<\iota(k)=\iota(k)\iota(1),
@@ -192,13 +172,7 @@ $$
 q<\nu(1).
 $$
 
-Supongamos ahora
-
-$$
-a>0.
-$$
-
-Por la forma normal con signo de los enteros, existe $m\in\mathbb N$, $m\neq0$, tal que
+Supongamos ahora $a>0$. La forma normal con signo en $\mathbb Z$ obliga a que exista $m\in\mathbb N$, $m\neq0$, con
 
 $$
 a=\iota(m).
@@ -210,13 +184,7 @@ $$
 n:=S(m).
 $$
 
-Como $k\neq0$, el resultado previamente demostrado de que todo natural no nulo es sucesor proporciona $r\in\mathbb N$ con
-
-$$
-k=S(r).
-$$
-
-Por las leyes de la suma natural,
+Como $k\neq0$, el teorema de predecesor da $r\in\mathbb N$ con $k=S(r)$. Por las leyes de la suma natural,
 
 $$
 k=1+r.
@@ -234,19 +202,13 @@ $$
 n\leq kn.
 $$
 
-Además
-
-$$
-m<S(m)=n.
-$$
-
-Por transitividad,
+Además $m<S(m)=n$. Por transitividad,
 
 $$
 m<kn.
 $$
 
-La incrustación $\iota:\mathbb N\to\mathbb Z$ preserva el orden no estricto y es inyectiva; por tanto preserva también esta desigualdad estricta:
+La relación $m<kn$ significa $m\leq kn$ y $m\neq kn$. La incrustación $\iota:\mathbb N\to\mathbb Z$ preserva la desigualdad no estricta y, por su inyectividad, preserva también esta desigualdad estricta; por tanto
 
 $$
 a=\iota(m)<\iota(kn).
