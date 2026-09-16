@@ -4,8 +4,6 @@ Ya podemos expresar con precisión el objetivo de las dos construcciones siguien
 
 ### Definición 4.8.1 — Incrustación de cuerpos ordenados {#ta-incrustacion-cuerpos-ordenados}
 
-*Glosario: [incrustación de cuerpos ordenados](../otros/tratado-de-analisis-glosario.md#gl-incrustacion-cuerpos-ordenados)*
-
 Sean $F$ y $E$ cuerpos ordenados. Una función
 
 $$
@@ -37,8 +35,6 @@ x\leq_F y
 $$
 
 ### Definición 4.8.2 — Completación ordenada de $\mathbb Q$ {#ta-completacion-ordenada-q}
-
-*Glosario: [completación ordenada de $\mathbb Q$](../otros/tratado-de-analisis-glosario.md#gl-completacion-ordenada-q)*
 
 Una **completación ordenada de $\mathbb Q$** es un par $(E,\iota)$ tal que:
 
