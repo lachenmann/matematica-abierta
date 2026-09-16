@@ -33,6 +33,7 @@ El conjunto $A$ es el **dominio**, $B$ el **codominio** y $G_f$ el **grafo**.
 ---
 
 ### Notación 0.6.2 — Flecha y evaluación {#ta-flecha-evaluacion}
+
 Para una función con dominio $A$ y codominio $B$, escribiremos
 
 $$
@@ -47,9 +48,16 @@ $$
 
 La expresión $f(a)$ es abreviatura de una relación de pertenencia al grafo; no es una operación primitiva.
 
+> **Nota fundacional.** La definición anterior fija una función como objeto **extensional**: dominio, codominio y grafo determinan completamente la aplicación. Esto no proporciona, por sí solo, un procedimiento efectivo para obtener $f(a)$ a partir de una codificación de $a$. Mantendremos explícita la distinción
+>
+> $$
+> \boxed{\text{función conjuntista}\neq\text{algoritmo de evaluación}.}
+> $$
+
 ---
 
 ### Proposición 0.6.3 — Criterio de igualdad de funciones {#ta-igualdad-funciones}
+
 Sean
 
 $$
@@ -71,7 +79,7 @@ A=C,\qquad B=D,\qquad G_f=G_g.
 $$
 
 **Demostración.**  
-La afirmación se sigue del criterio característico del par ordenado aplicado recursivamente a la codificación de triples fijada en Convención 0.3.5. ∎
+La afirmación se sigue del criterio característico del par ordenado aplicado recursivamente a la codificación de triples fijada en el Capítulo 0. ∎
 
 **Escolio.** El codominio forma parte de la identidad de una función. Dos aplicaciones con el mismo grafo y dominios iguales, pero codominios distintos, son formalmente funciones distintas.
 
@@ -114,6 +122,7 @@ Su grafo coincide con la composición relacional de los grafos correspondientes.
 ---
 
 ### Proposición 0.6.5 — Asociatividad y leyes de identidad {#ta-asociatividad-identidad-funciones}
+
 Si
 
 $$
@@ -147,7 +156,7 @@ h(g(f(a)))
 [(h\circ g)\circ f](a).
 $$
 
-Por unicidad de los valores, sus grafos coinciden; por Proposición 0.6.3, las funciones son iguales. Las leyes de identidad se prueban del mismo modo. ∎
+Por unicidad de los valores, sus grafos coinciden; por la Proposición 0.6.3, las funciones son iguales. Las leyes de identidad se prueban del mismo modo. ∎
 
 ---
 
@@ -164,6 +173,7 @@ Sea $f:A\to B$.
 ---
 
 ### Teorema 0.6.7 — Caracterización de las funciones invertibles {#ta-funciones-invertibles}
+
 Una función $f:A\to B$ es biyectiva si y sólo si existe una función $g:B\to A$ tal que
 
 $$
@@ -227,7 +237,7 @@ g\circ(f\circ g')
 g',
 $$
 
-usando Proposición 0.6.5. ∎
+usando la Proposición 0.6.5. ∎
 
 ---
 
@@ -241,9 +251,9 @@ $$
 f^{-1}:B\to A
 $$
 
-la única función cuya existencia garantiza Teorema 0.6.7.
+la única función cuya existencia garantiza el Teorema 0.6.7.
 
-El símbolo $f^{-1}$ **no** se utilizará para una función antes de demostrar que $f$ es biyectiva. Para relaciones, $R^{-1}$ conserva el significado de Definición 0.4.3.
+El símbolo $f^{-1}$ **no** se utilizará para una función antes de demostrar que $f$ es biyectiva. Para relaciones, $R^{-1}$ conserva el significado fijado en la sección de relaciones binarias.
 
 ---
 
@@ -274,6 +284,7 @@ Los corchetes distinguen estas operaciones sobre subconjuntos de la evaluación 
 ---
 
 ### Proposición 0.6.10 — Leyes elementales de preimagen {#ta-leyes-preimagen}
+
 Si $f:A\to B$ y $Y,Z\subseteq B$, entonces
 
 $$
@@ -330,43 +341,62 @@ La notación recuerda la convención habitual de que el dominio aparece en el ex
 ---
 
 ### Proposición 0.6.12 — Existencia de $B^A$ {#ta-existencia-conjunto-funciones}
+
 Para cualesquiera conjuntos $A,B$, $B^A$ existe como conjunto.
 
 **Demostración.**  
-Por Proposición 0.3.7, $A\times B$ es un conjunto; por tanto, por conjunto potencia,
+Por la existencia del producto cartesiano, $A\times B$ es un conjunto y, por conjunto potencia,
 
 $$
 \mathcal P(A\times B)
 $$
 
-es un conjunto. Para cada $G\in\mathcal P(A\times B)$ existe un único triple, según la codificación de Convención 0.3.5,
+es un conjunto. Formemos
 
 $$
-T_G:=\langle A,B,G\rangle.
+U:=\{A,B\}\cup\mathcal P(A\times B)
 $$
 
-La regla $G\mapsto T_G$ es funcional y definible. Por reemplazo existe el conjunto
+y después
+
+$$
+V:=U\cup\mathcal P(\mathcal P(U)).
+$$
+
+Ambos existen usando únicamente par, unión y conjunto potencia.
+
+Sea ahora $G\in\mathcal P(A\times B)$. Entonces $A,B,G\in U$. Por la codificación de pares de Kuratowski, $\langle B,G\rangle\in\mathcal P(\mathcal P(U))$, y por tanto $A,\langle B,G\rangle\in V$. Aplicando una vez más la misma codificación,
+
+$$
+\langle A,B,G\rangle
+=
+\langle A,\langle B,G\rangle\rangle
+\in
+\mathcal P(\mathcal P(V)).
+$$
+
+Tenemos así un conjunto ambiente fijo que contiene todos los triples candidatos. Por separación existe
 
 $$
 T
 :=
-\{\langle A,B,G\rangle:G\in\mathcal P(A\times B)\}.
+\left\{
+ t\in\mathcal P(\mathcal P(V)):
+ \exists G\in\mathcal P(A\times B)
+ \;t=\langle A,B,G\rangle
+\right\}.
 $$
 
-Ahora separamos dentro de $T$ aquellos triples cuyo tercer componente $G$ satisface
+Separamos ahora dentro de $T$ aquellos triples $\langle A,B,G\rangle$ cuyo tercer componente satisface
 
 $$
 \forall a\in A\;\exists!b\in B\;
 \langle a,b\rangle\in G.
 $$
 
-El subconjunto así obtenido existe por separación y, por Definición 0.6.1, es exactamente $B^A$. ∎
+El subconjunto resultante existe por separación y, por la Definición 0.6.1, es exactamente $B^A$. ∎
 
-> **Nota fundacional.** No se necesita elección: no seleccionamos una función de una familia de conjuntos; formamos el conjunto de todos los grafos que ya satisfacen una propiedad definible.
-
----
-
-Volvamos ahora a los cocientes. Cada elemento $a\in A$ determina su clase $[a]$, de modo que existe una aplicación natural desde el conjunto de representantes al conjunto cociente. Esta aplicación será el puente entre una construcción definida sobre representantes y el objeto cociente propiamente dicho.
+> **Nota fundacional.** Esta construcción no necesita Reemplazo: conjunto potencia, par, unión y separación bastan para obtener un conjunto ambiente que contiene todas las funciones $A\to B$. Tampoco interviene Choice: no seleccionamos una función de una familia de conjuntos; formamos la totalidad extensional de los grafos que satisfacen una propiedad definible.
 
 ### Definición 0.6.13 — Proyección canónica de un cociente {#ta-proyeccion-canonica}
 
@@ -385,6 +415,7 @@ Cuando la relación sea inequívoca, escribiremos simplemente $\pi$.
 ---
 
 ### Proposición 0.6.14 — Sobreyectividad de la proyección canónica {#ta-sobreyectividad-proyeccion}
+
 La proyección canónica
 
 $$
@@ -400,7 +431,7 @@ $$
 \pi_{\sim}(a)=[a]=C.
 $$
 
-Por Definición 0.6.6, $\pi_{\sim}$ es sobreyectiva. ∎
+Por la definición de sobreyectividad, $\pi_{\sim}$ es sobreyectiva. ∎
 
 ---
 
@@ -469,7 +500,7 @@ $$
 C=[a]=[a']
 $$
 
-y que los valores propuestos son $\varphi(a)$ y $\varphi(a')$. Por Lema 0.5.3, $a\sim a'$. La hipótesis de constancia sobre clases da
+y que los valores propuestos son $\varphi(a)$ y $\varphi(a')$. Por el [Lema 0.5.3 — Igualdad de clases](#ta-igualdad-clases), $a\sim a'$. La hipótesis de constancia sobre clases da
 
 $$
 \varphi(a)=\varphi(a').
@@ -489,7 +520,7 @@ $$
 
 de modo que las dos funciones son iguales.
 
-**Unicidad.** Si $\psi:A/{\sim}\to B$ satisface $\psi\circ\pi_{\sim}=\varphi$, sea $C\in A/{\sim}$. Por sobreyectividad de $\pi_{\sim}$ (Proposición 0.6.14), existe $a\in A$ con $C=\pi_{\sim}(a)$. Entonces
+**Unicidad.** Si $\psi:A/{\sim}\to B$ satisface $\psi\circ\pi_{\sim}=\varphi$, sea $C\in A/{\sim}$. Por sobreyectividad de $\pi_{\sim}$, existe $a\in A$ con $C=\pi_{\sim}(a)$. Entonces
 
 $$
 \psi(C)
@@ -532,7 +563,7 @@ Si $U$ es un conjunto y la familia toma valores en $\mathcal P(U)$, escribiremos
 $$
 \bigcup_{i\in I}A_i
 :=
-\bigcup A[I],
+\bigcup \operatorname{ran}(A),
 $$
 
 y
@@ -546,9 +577,3 @@ $$
 Para $I=\varnothing$, esta última definición da $\bigcap_{i\in I}A_i=U$; por ello el conjunto ambiente $U$ forma parte de la convención.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Esta entrega del capítulo comprende ya §§0.0–0.6. La siguiente incorporará **0.7 — Órdenes** y cerrará el fundamento lógico-conjuntista necesario antes de comenzar la construcción de los números naturales.
-
-El [**Glosario matemático del Tratado**](../otros/tratado-de-analisis-glosario.md) se actualiza en paralelo con el vocabulario de funciones: dominio, codominio, grafo, composición, inyectividad, sobreyectividad, biyectividad, inversa, imagen, preimagen, funciones entre conjuntos, proyección canónica, definición sobre clases y familias indexadas.
-:::
