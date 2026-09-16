@@ -114,7 +114,3 @@ $$
 que es exactamente la condición de la Definición 4.4.1. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.4 queda formulada la arquimedianidad para cuerpos ordenados, caracterizada mediante recíprocos arbitrariamente pequeños y reconciliada con el caso racional ya construido. La siguiente entrega será **§4.5 — Densidad de un subcuerpo**.
-:::
