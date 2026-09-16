@@ -132,7 +132,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 ## Contenido disponible
 
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
-2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — **capítulo completo**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión, suma y producto naturales, construcción del orden natural como orden total compatible con las operaciones, principio de buen orden, inducción fuerte, balance estructural, notas bibliográficas y transición hacia los números enteros.
+2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — **capítulo completo**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión, suma y producto naturales, construcción del orden natural como orden total compatible con las operaciones, tricotomía decidible, principio de buen orden e inducción fuerte, balance estructural, notas bibliográficas y transición hacia los números enteros.
 
    $$
    m\leq n\iff\exists k\in\mathbb N\;(n=m+k)\iff m\subseteq n,
@@ -146,7 +146,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
    \mathbb Z=(\mathbb N\times\mathbb N)/{\sim_{\mathbb Z}},
    $$
 
-   se construyen suma, opuesto, sustracción y producto sobre clases. Se demuestra que $\mathbb Z$ es un dominio de integridad totalmente ordenado. La incrustación canónica
+   se construyen suma, opuesto, sustracción y producto sobre clases. Se demuestra que $\mathbb Z$ es un dominio de integridad totalmente ordenado, con tricotomía decidible. La incrustación canónica
 
    $$
    \iota_{\mathbb N}^{\mathbb Z}(n)=[(n,0)]
@@ -186,7 +186,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    §2.12 consigna las referencias metodológicas del capítulo, aclara que las demostraciones son propias y deja explícito que no se utilizó el axioma de elección. §2.13 identifica la obstrucción multiplicativa que permanece en $\mathbb Z$ y prepara la construcción de $\mathbb Q$ mediante pares de enteros con segundo componente no nulo y un nuevo cociente.
 
-4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — **capítulo completo**. Se construye $\mathbb Q$ como cociente de representantes fraccionarios y se desarrollan sus operaciones hasta demostrar que es un cuerpo ordenado. Las incrustaciones canónicas de $\mathbb Z$ y $\mathbb N$ preservan la estructura correspondiente; el orden racional es total, denso y arquimediano. El conjunto
+4. [**Capítulo 3 — Los números racionales**](../capitulos/tratado-de-analisis-capitulo-3-los-numeros-racionales.md) (`MA-BCH-0020`) — **capítulo completo**. Se construye $\mathbb Q$ como cociente de representantes fraccionarios y se desarrollan sus operaciones hasta demostrar que es un cuerpo ordenado. La igualdad y la tricotomía racional quedan decidibles a partir de representantes finitos. Las incrustaciones canónicas de $\mathbb Z$ y $\mathbb N$ preservan la estructura correspondiente; el orden racional es total, denso y arquimediano. El conjunto
 
    $$
    S_2=\{q\in\mathbb Q:0\leq q,\ q^2<2\}
@@ -197,14 +197,10 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.2 — Valor absoluto**. Tras abstraer la estructura de cuerpo ordenado y demostrar su densidad intrínseca, se define
 
    $$
-   |x|=
-   \begin{cases}
-   x,&0\leq x,\\
-   -x,&x<0,
-   \end{cases}
+   |x|:=\max\{x,-x\},
    $$
 
-   y se prueban sus propiedades fundamentales, incluida la multiplicatividad, la caracterización $|x|\leq r\iff -r\leq x\leq r$, la desigualdad triangular y la desigualdad triangular inversa. La siguiente incorporación será **§4.3 — Intervalos**.
+   una formulación que usa únicamente la comparabilidad del orden total y no presupone una decisión previa del signo. Se prueban sus propiedades fundamentales, incluida la multiplicatividad, la caracterización $|x|\leq r\iff -r\leq x\leq r$, la desigualdad triangular y la desigualdad triangular inversa. La siguiente incorporación será **§4.3 — Intervalos**.
 
 6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **valor absoluto**, **desigualdad triangular** y **desigualdad triangular inversa**, además de la infraestructura previa.
 

@@ -15,29 +15,17 @@ es correcta cuando los denominadores $b$ y $d$ son positivos. Sin esa hipótesis
 Para todo $q\in\mathbb Q$ existen $a\in\mathbb Z$ y $n\in\mathbb N$ con $n\neq0$ tales que
 
 $$
-q
-=
-\frac{a}{\iota_{\mathbb N}^{\mathbb Z}(n)}
+q=\frac{a}{\iota_{\mathbb N}^{\mathbb Z}(n)}
 $$
 
 y
 
 $$
-0_{\mathbb Z}
-<
-\iota_{\mathbb N}^{\mathbb Z}(n).
+0_{\mathbb Z}<\iota_{\mathbb N}^{\mathbb Z}(n).
 $$
 
 **Demostración.**  
-Tomemos una representación
-
-$$
-q=\frac ab,
-\qquad
-b\neq0_{\mathbb Z}.
-$$
-
-Por la forma normal con signo de los enteros demostrada en el Capítulo 2, existe un único $n\in\mathbb N$, $n\neq0$, tal que
+Tome una representación $q=a/b$ con $b\neq0$. Por la [forma normal con signo de los enteros](tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-forma-normal-signo), existe un único $n\neq0$ tal que
 
 $$
 b=\iota(n)
@@ -45,7 +33,13 @@ b=\iota(n)
 b=-\iota(n).
 $$
 
-Como $0\leq n$ en $\mathbb N$ y $n\neq0$, tenemos $0<n$. La [incrustación natural en los enteros](tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-incrustacion-preserva-orden) preserva y refleja el orden, de modo que
+Como $0\leq n$ en $\mathbb N$ y $n\neq0$, la definición del orden estricto da $0<n$. La [incrustación natural en los enteros](tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-incrustacion-preserva-orden) proporciona
+
+$$
+\iota(0)\leq_{\mathbb Z}\iota(n),
+$$
+
+mientras que la inyectividad de $\iota$ y $n\neq0$ dan $\iota(n)\neq\iota(0)$. Como $\iota(0)=0_{\mathbb Z}$, concluimos
 
 $$
 0_{\mathbb Z}<\iota(n).
@@ -54,20 +48,10 @@ $$
 Si $b=\iota(n)$, ya terminamos. Si $b=-\iota(n)$, entonces
 
 $$
-\frac ab
-=
-\frac{-a}{-b}
-=
-\frac{-a}{\iota(n)},
+\frac ab=\frac{-a}{-b}=\frac{-a}{\iota(n)},
 $$
 
-porque
-
-$$
-a(-b)=b(-a)
-$$
-
-en el anillo conmutativo $\mathbb Z$. Así toda clase racional admite una representación con denominador positivo. ∎
+porque $a(-b)=b(-a)$ en el anillo conmutativo $\mathbb Z$. Así toda clase admite una representación con denominador positivo de la forma indicada. ∎
 
 ### Lema 3.7.2 — Invariancia de la comparación cruzada {#ta-invariancia-comparacion-cruzada}
 
@@ -107,17 +91,13 @@ $$
 Supongamos $ad\leq bc$. Como $b'd'>0$ por el [producto de enteros positivos](#ta-producto-enteros-positivos), el [escalamiento por un entero positivo](#ta-escalamiento-entero-positivo) permite multiplicar la desigualdad por $b'd'$ sin alterar su sentido:
 
 $$
-ad\,b'd'
-\leq
-bc\,b'd'.
+ad\,b'd'\leq bc\,b'd'.
 $$
 
 Usando las dos igualdades anteriores y reordenando factores,
 
 $$
-bd(a'd')
-\leq
-bd(b'c').
+bd(a'd')\leq bd(b'c').
 $$
 
 Como $bd>0$, aplicamos la implicación inversa del mismo lema de escalamiento y obtenemos
@@ -135,9 +115,7 @@ La recíproca se obtiene intercambiando los pares primados y no primados. ∎
 Para $q,r\in\mathbb Q$ definimos
 
 $$
-\boxed{
-q\leq_{\mathbb Q}r
-}
+\boxed{q\leq_{\mathbb Q}r}
 $$
 
 si existen representaciones
@@ -186,13 +164,7 @@ La relación $\leq_{\mathbb Q}$ es un orden total sobre $\mathbb Q$.
 **Demostración.**  
 Por el Lema 3.7.1, todo racional admite representación con denominador positivo.
 
-**Reflexividad.** Si $q=a/b$ con $b>0$, entonces
-
-$$
-ab=ba,
-$$
-
-luego $ab\leq ba$ y $q\leq_{\mathbb Q}q$.
+**Reflexividad.** Si $q=a/b$ con $b>0$, entonces $ab=ba$, luego $ab\leq ba$ y $q\leq_{\mathbb Q}q$.
 
 **Antisimetría.** Sean
 
@@ -230,19 +202,7 @@ ad\leq bc,
 cf\leq de.
 $$
 
-Como $f>0$, el Lema 3.1.3 da
-
-$$
-adf\leq bcf.
-$$
-
-Como $b>0$,
-
-$$
-bcf\leq bde.
-$$
-
-Por transitividad,
+Como $f>0$, el Lema 3.1.3 da $adf\leq bcf$. Como $b>0$, $bcf\leq bde$. Por transitividad,
 
 $$
 adf\leq bde.
@@ -254,13 +214,7 @@ $$
 d(af)\leq d(be).
 $$
 
-Como $d>0$, el Lema 3.1.3 permite cancelar el factor positivo:
-
-$$
-af\leq be.
-$$
-
-Por la Proposición 3.7.4, $q\leq s$.
+Como $d>0$, el Lema 3.1.3 permite cancelar el factor positivo y obtenemos $af\leq be$. Por la Proposición 3.7.4, $q\leq s$.
 
 **Totalidad.** Para representaciones positivas $q=a/b$ y $r=c/d$, la totalidad del orden entero aplicada a $ad$ y $bc$ da
 
@@ -270,19 +224,54 @@ ad\leq bc
 bc\leq ad.
 $$
 
-Por la Proposición 3.7.4, esto equivale a
-
-$$
-q\leq r
-\qquad\text{o}\qquad
-r\leq q.
-$$
-
-Así $\leq_{\mathbb Q}$ es reflexivo, antisimétrico, transitivo y total. ∎
+Por la Proposición 3.7.4, esto equivale a $q\leq r$ o $r\leq q$. ∎
 
 Desde ahora, $<_{\mathbb Q}$ denota el orden estricto asociado a $\leq_{\mathbb Q}$.
 
-### Corolario 3.7.6 — Criterio estricto de comparación cruzada {#ta-criterio-estricto-orden-racional}
+### Proposición 3.7.6 — Tricotomía decidible de los racionales {#ta-tricotomia-decidible-racionales}
+
+*Glosario: [tricotomía](../otros/tratado-de-analisis-glosario.md#gl-tricotomia)*
+
+Para cualesquiera $q,r\in\mathbb Q$, exactamente una de las relaciones
+
+$$
+q<_{\mathbb Q}r,
+\qquad
+q=r,
+\qquad
+r<_{\mathbb Q}q
+$$
+
+se cumple. Además, la alternativa correcta es decidible a partir de representantes fraccionarios finitos.
+
+**Demostración.**  
+Por el Lema 3.7.1, tomemos representaciones
+
+$$
+q=\frac ab,
+\qquad
+r=\frac cd,
+\qquad
+0<b,
+\quad
+0<d.
+$$
+
+La [tricotomía decidible de los enteros](tratado-de-analisis-capitulo-2-los-numeros-enteros.md#ta-tricotomia-enteros) determina exactamente una de
+
+$$
+ad<bc,
+\qquad
+ad=bc,
+\qquad
+bc<ad.
+$$
+
+Si $ad=bc$, el criterio de igualdad racional da $q=r$. Si $ad<bc$, entonces $ad\leq bc$, de modo que la Proposición 3.7.4 da $q\leq r$; además el criterio de igualdad excluye $q=r$, por lo que $q<r$. El tercer caso es simétrico.
+
+Todas las operaciones involucradas —producto entero, comparación entera y comparación cruzada— son efectivas sobre los nombres finitos construidos en los capítulos 2 y 3. ∎
+
+### Corolario 3.7.7 — Criterio estricto de comparación cruzada {#ta-criterio-estricto-orden-racional}
 
 Si $b,d>0$ en $\mathbb Z$, entonces
 
@@ -309,15 +298,9 @@ $$
 \frac ab\neq\frac cd.
 $$
 
-Por la Proposición 3.7.4, la primera condición equivale a $ad\leq bc$; por el criterio de igualdad racional, la segunda equivale a $ad\neq bc$. Juntas son exactamente
+Por la Proposición 3.7.4, la primera condición equivale a $ad\leq bc$; por el criterio de igualdad racional, la segunda equivale a $ad\neq bc$. Juntas son exactamente $ad<bc$ en el orden estricto asociado de $\mathbb Z$. La recíproca es la misma cadena de equivalencias leída de derecha a izquierda. ∎
 
-$$
-ad<bc
-$$
-
-en el orden estricto asociado de $\mathbb Z$. La recíproca es la misma cadena de equivalencias leída de derecha a izquierda. ∎
-
-### Proposición 3.7.7 — Compatibilidad del orden con las operaciones {#ta-orden-racional-compatible-operaciones}
+### Proposición 3.7.8 — Compatibilidad del orden con las operaciones {#ta-orden-racional-compatible-operaciones}
 
 Para $x,y,z\in\mathbb Q$:
 
@@ -339,11 +322,7 @@ y=\frac cd,\qquad
 z=\frac ef
 $$
 
-con $b,d,f>0$. La hipótesis $x\leq y$ equivale a
-
-$$
-ad\leq bc.
-$$
+con $b,d,f>0$. La hipótesis $x\leq y$ equivale a $ad\leq bc$.
 
 Para la suma,
 
@@ -362,38 +341,26 @@ $$
 Sumando $bdef$ a ambos miembros,
 
 $$
-adf^2+bdef
-\leq
-bcf^2+bdef.
+adf^2+bdef\leq bcf^2+bdef.
 $$
 
 Esto es, tras factorizar,
 
 $$
-(af+be)(df)
-\leq
-(bf)(cf+de),
+(af+be)(df)\leq(bf)(cf+de),
 $$
 
-y por la Proposición 3.7.4 concluimos
+y por la Proposición 3.7.4 concluimos $x+z\leq y+z$.
+
+Supongamos además $0_{\mathbb Q}\leq z$. Como $0_{\mathbb Q}=0/1$ y $f>0$, el criterio de orden da $0\leq e$.
+
+Para justificar $0\leq ef$, primero observamos que la distributividad entera y la cancelación aditiva dan $0_{\mathbb Z}f=0_{\mathbb Z}$. Entonces la compatibilidad multiplicativa del orden entero, aplicada a $0\leq e$ y al factor no negativo $f$, produce
 
 $$
-x+z\leq y+z.
+0_{\mathbb Z}=0_{\mathbb Z}f\leq ef.
 $$
 
-Supongamos además $0_{\mathbb Q}\leq z$. Como $0_{\mathbb Q}=0/1$ y $f>0$, el criterio de orden da
-
-$$
-0\leq e.
-$$
-
-Como $f>0$, también $0\leq f$; por la compatibilidad multiplicativa del orden entero,
-
-$$
-0\leq ef.
-$$
-
-Multiplicando ahora $ad\leq bc$ por el entero no negativo $ef$ obtenemos
+Multiplicando ahora $ad\leq bc$ por el entero no negativo $ef$,
 
 $$
 adef\leq bcef.
@@ -413,15 +380,9 @@ $$
 (ae)(df)\leq(bf)(ce).
 $$
 
-Luego, por la Proposición 3.7.4,
+Luego $xz\leq yz$. ∎
 
-$$
-xz\leq yz.
-$$
-
-∎
-
-### Proposición 3.7.8 — La incrustación $\mathbb Z\to\mathbb Q$ preserva y refleja el orden {#ta-incrustacion-zq-preserva-refleja-orden}
+### Proposición 3.7.9 — La incrustación $\mathbb Z\to\mathbb Q$ preserva y refleja el orden {#ta-incrustacion-zq-preserva-refleja-orden}
 
 Para $a,c\in\mathbb Z$,
 
@@ -434,13 +395,19 @@ a\leq_{\mathbb Z}c
 $$
 
 **Demostración.**  
-El entero $1_{\mathbb Z}$ es positivo. En $\mathbb N$ tenemos $0<1$, y la incrustación $\iota:\mathbb N\to\mathbb Z$ preserva y refleja el orden; por tanto
+El entero $1_{\mathbb Z}$ es positivo. En $\mathbb N$ tenemos $0<1$. Por la preservación del orden de la incrustación natural en los enteros,
+
+$$
+\iota(0)\leq_{\mathbb Z}\iota(1),
+$$
+
+y por la inyectividad de $\iota$ estos dos enteros son distintos. Como $\iota(0)=0_{\mathbb Z}$ e $\iota(1)=1_{\mathbb Z}$, resulta
 
 $$
 0_{\mathbb Z}<1_{\mathbb Z}.
 $$
 
-Las representaciones
+Por tanto las representaciones
 
 $$
 \jmath(a)=\frac a1,
@@ -448,7 +415,7 @@ $$
 \jmath(c)=\frac c1
 $$
 
-tienen así denominador positivo. La Proposición 3.7.4 da
+tienen denominador positivo. La Proposición 3.7.4 da
 
 $$
 \jmath(a)\leq\jmath(c)
@@ -460,7 +427,7 @@ $$
 
 ∎
 
-### Lema 3.7.9 — Positividad y escalamiento estricto en $\mathbb Q$ {#ta-positividad-escalamiento-estricto-q}
+### Lema 3.7.10 — Positividad y escalamiento estricto en $\mathbb Q$ {#ta-positividad-escalamiento-estricto-q}
 
 En $\mathbb Q$:
 
@@ -469,21 +436,9 @@ En $\mathbb Q$:
 3. si $x<y$ y $0<z$, entonces $xz<yz$.
 
 **Demostración.**  
-Para (1), de $0\leq x$ y $0\leq y$, la Proposición 3.7.7 da $0\leq xy$. Si $xy=0$, el [Corolario 3.6.9](#ta-sin-divisores-cero-racionales) implicaría $x=0$ o $y=0$, contradicción. Luego $0<xy$.
+Para (1), de $0\leq x$ y $0\leq y$, la Proposición 3.7.8 da $0\leq xy$. Si $xy=0$, el [Corolario 3.6.9](#ta-sin-divisores-cero-racionales) implicaría $x=0$ o $y=0$, contradicción. Luego $0<xy$.
 
-Para (2), sea $x>0$. El inverso $x^{-1}$ no es cero, porque
-
-$$
-xx^{-1}=1_{\mathbb Q}\neq0_{\mathbb Q}.
-$$
-
-Si no fuera positivo, la tricotomía del orden total daría $x^{-1}<0$. En particular,
-
-$$
-x^{-1}\leq0.
-$$
-
-Como $0\leq x$, la compatibilidad multiplicativa aplicada a $x^{-1}\leq0$ produce
+Para (2), sea $x>0$. El inverso $x^{-1}$ no es cero, porque $xx^{-1}=1_{\mathbb Q}\neq0_{\mathbb Q}$. Si no fuera positivo, la tricotomía daría $x^{-1}<0$. En particular $x^{-1}\leq0$. Como $0\leq x$, la compatibilidad multiplicativa aplicada a $x^{-1}\leq0$ produce
 
 $$
 x^{-1}x\leq0_{\mathbb Q}x.
@@ -495,36 +450,22 @@ $$
 0_{\mathbb Q}x=0_{\mathbb Q},
 $$
 
-de modo que
+de modo que $1_{\mathbb Q}\leq0_{\mathbb Q}$.
 
-$$
-1_{\mathbb Q}\leq0_{\mathbb Q}.
-$$
-
-Por la Proposición 3.7.8 y $0_{\mathbb Z}<1_{\mathbb Z}$ obtenemos, en cambio,
+Por otra parte, como $0<1$ en $\mathbb N$, la preservación e inyectividad de la incrustación natural dan $0_{\mathbb Z}<1_{\mathbb Z}$; aplicando la Proposición 3.7.9 y la definición del orden estricto obtenemos
 
 $$
 0_{\mathbb Q}<1_{\mathbb Q},
 $$
 
-contradicción. Por tanto
+contradicción. Por tanto $0<x^{-1}$.
 
-$$
-0<x^{-1}.
-$$
-
-Para (3), la Proposición 3.7.7 da $xz\leq yz$. Si hubiera igualdad, entonces
+Para (3), la Proposición 3.7.8 da $xz\leq yz$. Si hubiera igualdad, entonces
 
 $$
 (y-x)z=0_{\mathbb Q}.
 $$
 
-Como $x<y$, tenemos $y-x\neq0_{\mathbb Q}$; además $z\neq0_{\mathbb Q}$. Esto contradice la ausencia de divisores de cero. Por tanto $xz\neq yz$, y así
-
-$$
-xz<yz.
-$$
-
-∎
+Como $x<y$, tenemos $y-x\neq0_{\mathbb Q}$; además $z\neq0_{\mathbb Q}$. Esto contradice la ausencia de divisores de cero en $\mathbb Q$. Por tanto $xz\neq yz$, y así $xz<yz$. ∎
 
 ---

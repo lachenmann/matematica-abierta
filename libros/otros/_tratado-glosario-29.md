@@ -38,17 +38,15 @@ Se deduce de la desigualdad triangular aplicada a $x=(x-y)+y$ y, simétricamente
 
 **Idea.** El valor absoluto mide la magnitud algebraica de un elemento prescindiendo de su signo.
 
-**En este tratado.** Si $F$ es un cuerpo ordenado y $x\in F$,
+**En este tratado.** Si $F$ es un cuerpo ordenado y $x\in F$, se define sin presuponer decidibilidad del signo mediante
 
 $$
-|x|=
-\begin{cases}
-x,&0\leq x,\\
--x,&x<0.
-\end{cases}
+\boxed{|x|:=\max\{x,-x\}.}
 $$
 
-Se demuestra que $|x|\geq0$, que $|x|=0$ exactamente cuando $x=0$, que $|-x|=|x|$, que $|xy|=|x||y|$ y que, para $r\geq0$,
+La comparabilidad del orden total garantiza que el máximo existe y es único. De esta definición se deduce que $|x|=x$ cuando $0\leq x$ y que $|x|=-x$ cuando $x\leq0$; ambas descripciones coinciden en $x=0$.
+
+Se demuestra además que $|x|\geq0$, que $|x|=0$ exactamente cuando $x=0$, que $|-x|=|x|$, que $|xy|=|x||y|$ y que, para $r\geq0$,
 
 $$
 |x|\leq r

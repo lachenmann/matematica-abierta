@@ -6,20 +6,33 @@ El orden permite medir algebraicamente la magnitud de un elemento sin distinguir
 
 *Glosario: [valor absoluto](../otros/tratado-de-analisis-glosario.md#gl-valor-absoluto)*
 
-Sea $F$ un cuerpo ordenado. Para $x\in F$ definimos
+Sea $F$ un cuerpo ordenado y $x\in F$. Por totalidad,
+
+$$
+x\leq -x
+\qquad\text{o}\qquad
+-x\leq x.
+$$
+
+Por tanto el conjunto finito $\{x,-x\}$ posee un máximo; por la unicidad del máximo ese elemento es único. Definimos
 
 $$
 \boxed{
-|x|
-:=
-\begin{cases}
-x,&0\leq x,\\
--x,&x<0.
-\end{cases}
+|x|:=\max\{x,-x\}.
 }
 $$
 
-La totalidad del orden y la incompatibilidad entre $0\leq x$ y $x<0$ hacen que la definición sea unívoca.
+Así, por definición de máximo,
+
+$$
+\boxed{
+x\leq |x|
+\qquad\text{y}\qquad
+-x\leq |x|.
+}
+$$
+
+> **Nota fundacional.** Esta definición usa únicamente la comparabilidad positiva del orden total. No requiere decidir entre $x=0$, $x>0$ y $x<0$. Si además $0\leq x$, entonces $|x|=x$; si $x\leq0$, entonces $|x|=-x$. Las dos conclusiones coinciden cuando $x=0$.
 
 ### Proposición 4.2.2 — Propiedades elementales del valor absoluto {#ta-propiedades-elementales-valor-absoluto}
 
@@ -39,55 +52,48 @@ Para $x,y\in F$:
 
 **Demostración.**
 
-Para (1), si $0\leq x$, entonces $|x|=x\geq0$. Si $x<0$, el [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado) da $0<-x$, y $|x|=-x>0$.
+Por la Definición 4.2.1, $|x|$ es el máximo de $\{x,-x\}$.
 
-Para (2), si $x=0$, la primera rama de la definición da $|x|=0$. Recíprocamente, supongamos $|x|=0$. Si $0\leq x$, entonces $|x|=x$, luego $x=0$. Si $x<0$, entonces $|x|=-x=0$ y, tomando opuestos, nuevamente $x=0$; este segundo caso contradice de hecho $x<0$, pero la conclusión basta.
+Para (1), la totalidad da $0\leq x$ o $x\leq0$. En el primer caso $0\leq x\leq|x|$. En el segundo, el [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado) da $0\leq -x\leq|x|$. Luego siempre $0\leq|x|$.
 
-Para (3), si $x=0$ la igualdad es inmediata. Si $0<x$, entonces $-x<0$ por el [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado), y
-
-$$
-|-x|=-(-x)=x=|x|.
-$$
-
-Si $x<0$, entonces $0<-x$ y
-
-$$
-|-x|=-x=|x|.
-$$
-
-Para (4), si $0\leq x$, entonces $|x|=x$, de modo que $x\leq|x|$ es igualdad; además $-x\leq x$ porque $-x\leq0\leq x$. Si $x<0$, entonces $|x|=-x$ y $-|x|=x$, mientras que $x\leq -x$ se obtiene de $x<0<-x$. Así en ambos casos
+Para (4), la propiedad de máximo da directamente $x\leq|x|$ y $-x\leq|x|$. Invirtiendo la segunda desigualdad mediante el Lema 4.1.3 obtenemos $-|x|\leq x$. Por tanto
 
 $$
 -|x|\leq x\leq|x|.
 $$
 
-Para (5) consideramos los signos de $x$ e $y$. Si alguno es cero, ambos miembros son cero por el [Lema 4.1.2](#ta-identidades-elementales-cuerpo) y (2). Supongamos, pues, $x,y\neq0$.
-
-Si $x>0$ e $y>0$, el [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado) da $xy>0$, por lo que
+Para (2), si $x=0$, entonces $\{x,-x\}=\{0\}$ y $|x|=0$. Recíprocamente, si $|x|=0$, (4) da
 
 $$
-|xy|=xy=|x||y|.
+0=-|x|\leq x\leq|x|=0,
 $$
 
-Si $x<0$ e $y<0$, entonces $-x>0$ y $-y>0$; por el [Lema 4.1.2](#ta-identidades-elementales-cuerpo),
+y la antisimetría implica $x=0$.
+
+Para (3), los conjuntos cuyos máximos se toman son idénticos:
 
 $$
-xy=(-x)(-y)>0,
+\{-x,-(-x)\}=\{-x,x\}=\{x,-x\}.
 $$
 
-y por tanto
+Por unicidad del máximo, $|-x|=|x|$.
 
-$$
-|xy|=xy=(-x)(-y)=|x||y|.
-$$
+Para (5), usamos sólo la comparabilidad positiva $0\leq x\lor x\leq0$ y $0\leq y\lor y\leq0$. Si $0\leq x$, entonces $|x|=x$; si $x\leq0$, entonces $|x|=-x$, y análogamente para $y$.
 
-Si $x<0<y$, entonces $-x>0$ y el [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado) da $(-x)y>0$. Como el [Lema 4.1.2](#ta-identidades-elementales-cuerpo) afirma $(-x)y=-(xy)$, se sigue $xy<0$. Luego
-
-$$
-|xy|=-(xy)=(-x)y=|x||y|.
-$$
-
-El caso $y<0<x$ es simétrico.
+- Si $0\leq x$ y $0\leq y$, entonces $0\leq xy$ y
+  $$
+  |xy|=xy=|x||y|.
+  $$
+- Si $x\leq0$ y $y\leq0$, entonces $0\leq -x$ y $0\leq -y$, y
+  $$
+  xy=(-x)(-y)\geq0,
+  $$
+  de modo que $|xy|=xy=(-x)(-y)=|x||y|$.
+- Si $x\leq0\leq y$, entonces $(-x)y\geq0$ y $xy=-((-x)y)\leq0$, de modo que
+  $$
+  |xy|=-xy=(-x)y=|x||y|.
+  $$
+- El caso $y\leq0\leq x$ es simétrico.
 
 Para (6), supongamos primero $|x|\leq r$. Por (4),
 
@@ -101,7 +107,7 @@ $$
 -r\leq x\leq r.
 $$
 
-Recíprocamente, si $-r\leq x\leq r$, distinguimos el signo de $x$. Si $x\geq0$, $|x|=x\leq r$. Si $x<0$, de $-r\leq x$ y la inversión del orden se obtiene $-x\leq r$, y $|x|=-x\leq r$. ∎
+Recíprocamente, si $-r\leq x\leq r$, entonces $x\leq r$ y, al invertir $-r\leq x$, también $-x\leq r$. Como $|x|$ es el máximo de $x$ y $-x$, se sigue $|x|\leq r$. ∎
 
 ### Teorema 4.2.3 — Desigualdad triangular {#ta-desigualdad-triangular}
 
