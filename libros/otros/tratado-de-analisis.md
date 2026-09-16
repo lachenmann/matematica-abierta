@@ -194,17 +194,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.6 — Propiedad del supremo**. Se define un cuerpo ordenado completo mediante la condición
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.7 — Formulaciones equivalentes de completitud**. La propiedad del supremo queda caracterizada mediante la propiedad de separación y el principio de intersección de intervalos cerrados. Junto con la dualidad supremo–ínfimo, quedan reunidas cuatro formulaciones equivalentes de completitud en el desarrollo actual. La exposición registra explícitamente que la clasicidad residual procede de convertir no vaciedad en datos de habitabilidad y no introduce ninguna función de elección. Tampoco adelanta equivalencias mediante sucesiones o límites. La siguiente incorporación será **§4.8 — Programa de completación de $\mathbb Q$**.
 
-   $$
-   \forall A\subseteq F\;\bigl(A\neq\varnothing\ \text{y $A$ acotado superiormente}\Longrightarrow\exists\sup A\in F\bigr).
-   $$
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
 
-   De ella se deduce la propiedad dual del ínfimo. Después se demuestra que todo cuerpo ordenado completo es arquimediano y, por tanto, que su subcuerpo primo es denso. Finalmente, el conjunto racional $S_2$ del capítulo anterior muestra que $\mathbb Q$ no satisface la propiedad del supremo. La exposición mantiene explícita la distinción entre existencia y computabilidad y registra las dependencias clásicas de la prueba completo $\Rightarrow$ arquimediano. La siguiente incorporación será **§4.7 — Formulaciones equivalentes de completitud**.
-
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo** y **propiedad del supremo**, además de la infraestructura de orden, arquimedianidad y subcuerpos desarrollada previamente.
-
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.6. La siguiente incorporación será **§4.7 — Formulaciones equivalentes de completitud**.
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.7. La siguiente incorporación será **§4.8 — Programa de completación de $\mathbb Q$**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
