@@ -1,35 +1,35 @@
 ---
-title: "Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos"
-description: "Construcción de la noción de homomorfismo desde magmas hasta grupos, con identidad y composición y demostraciones de preservación del neutro y de los inversos."
-author: "Gustav A. Tachek"
+title: 'Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos'
+description: Construcción de la noción de homomorfismo desde magmas hasta grupos, con identidad y composición y demostraciones de preservación del neutro y de los inversos.
+author: Gustav A. Tachek
 content-id: MA-BCH-0032
 content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
-date-created: 2026-09-15
-date-modified: 2026-09-15
+date-created: '2026-09-15'
+date-modified: '2026-09-16'
 areas:
-  - algebra
-  - fundamentos
+- algebra
+- fundamentos
 level: avanzado
 topics:
-  - homomorfismos
-  - magmas
-  - semigrupos
-  - monoides
-  - grupos
-  - preservacion-de-estructura
-  - morfismos
+- homomorfismos
+- magmas
+- semigrupos
+- monoides
+- grupos
+- preservacion-de-estructura
+- morfismos
 prerequisites:
-  - MA-BCH-0027
+- MA-BCH-0027
 related:
-  - MA-BOK-0007
-  - MA-BCH-0022
-  - MA-BCH-0024
-  - MA-BCH-0025
-  - MA-BCH-0026
-  - MA-BCH-0027
-  - MA-BCH-0030
+- MA-BOK-0007
+- MA-BCH-0022
+- MA-BCH-0024
+- MA-BCH-0025
+- MA-BCH-0026
+- MA-BCH-0027
+- MA-BCH-0030
 provenance:
   type: original
   sources: []
@@ -37,10 +37,6 @@ license: GFDL-1.3-or-later
 ---
 
 # Capítulo 7 — Homomorfismos de magmas, monoides y grupos
-
-**Coordenada deductiva:** `TALG-0010`
-
-[**← Volver al Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
 
 ## 7.0. Propósito y criterio de economía axiomática
 
@@ -62,10 +58,6 @@ Esta asimetría entre monoides y grupos no es terminológica: refleja una difere
 ## 7.1. Homomorfismos de magmas
 
 ### Definición 7.1.1 — Homomorfismo de magmas {#talg-def-00016}
-
-**Coordenada:** `TALG-DEF-00016`
-
-**Dependencias deductivas:** [`TALG-DEF-00002`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00002) — magma; [`TALG-NOT-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-not-00001) — notación infija.
 
 Sean
 
@@ -95,10 +87,6 @@ El dominio y el codominio de $f$ forman parte de la función; por tanto, hablar 
 
 ### Proposición 7.1.2 — Identidad y composición de homomorfismos de magmas {#talg-pro-00006}
 
-**Coordenada:** `TALG-PRO-00006`
-
-**Dependencias deductivas:** [`TALG-IMP-00001`](tratado-de-algebra-capitulo-0-interfaz-fundacional.md#talg-imp-00001) — identidad y composición de funciones; [`TALG-DEF-00016`](#talg-def-00016) — homomorfismo de magmas.
-
 Sean
 
 $$
@@ -120,8 +108,6 @@ magmas.
 
 #### Demostración {#talg-prf-00008}
 
-**Coordenada de prueba:** `TALG-PRF-00008`
-
 Para la identidad, sean $x,y\in A$. Entonces
 
 $$
@@ -132,7 +118,7 @@ x\star y
 \operatorname{id}_A(x)\star\operatorname{id}_A(y).
 $$
 
-Por [`TALG-DEF-00016`](#talg-def-00016), $\operatorname{id}_A$ es un homomorfismo de magmas.
+Por la [Definición 7.1.1](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00016), $\operatorname{id}_A$ es un homomorfismo de magmas.
 
 Para la composición, sean $x,y\in A$. Como $f$ es homomorfismo,
 
@@ -168,10 +154,6 @@ Luego $g\circ f$ es un homomorfismo de magmas. $\square$
 
 ### Definición 7.2.1 — Homomorfismo de semigrupos {#talg-def-00017}
 
-**Coordenada:** `TALG-DEF-00017`
-
-**Dependencias deductivas:** [`TALG-DEF-00004`](tratado-de-algebra-capitulo-2-semigrupos.md#talg-def-00004) — semigrupo; [`TALG-DEF-00016`](#talg-def-00016) — homomorfismo de magmas.
-
 Sean
 $$
 \mathcal S=\langle S,\star\rangle,
@@ -193,10 +175,6 @@ Cuando sea necesario evitar cualquier ambigüedad tipográfica, se escribirán e
 ## 7.3. Homomorfismos de monoides
 
 ### Definición 7.3.1 — Homomorfismo de monoides {#talg-def-00018}
-
-**Coordenada:** `TALG-DEF-00018`
-
-**Dependencias deductivas:** [`TALG-DEF-00006`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-def-00006) — monoide; [`TALG-DEF-00016`](#talg-def-00016) — homomorfismo de magmas; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — neutro de un monoide.
 
 Sean
 
@@ -234,10 +212,6 @@ Equivalente y más brevemente: un homomorfismo de monoides es un homomorfismo de
 ## 7.4. Homomorfismos de grupos
 
 ### Definición 7.4.1 — Homomorfismo de grupos {#talg-def-00019}
-
-**Coordenada:** `TALG-DEF-00019`
-
-**Dependencias deductivas:** [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-DEF-00016`](#talg-def-00016) — homomorfismo de magmas.
 
 Sean
 
@@ -279,10 +253,6 @@ Ambas identidades serán consecuencias de la multiplicatividad y de la existenci
 
 ### Proposición 7.4.2 — Preservación del neutro por homomorfismos de grupos {#talg-pro-00007}
 
-**Coordenada:** `TALG-PRO-00007`
-
-**Dependencias deductivas:** [`TALG-DEF-00019`](#talg-def-00019) — homomorfismo de grupos; [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — neutro; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — inverso.
-
 Sea
 $$
 f:G\to H
@@ -300,8 +270,6 @@ f(e_{\mathcal G})=e_{\mathcal H}.
 $$
 
 #### Demostración {#talg-prf-00009}
-
-**Coordenada de prueba:** `TALG-PRF-00009`
 
 Pongamos
 
@@ -355,10 +323,6 @@ No se ha supuesto la preservación del neutro; se ha deducido de la multiplicati
 
 ### Proposición 7.4.3 — Preservación de inversos por homomorfismos de grupos {#talg-pro-00008}
 
-**Coordenada:** `TALG-PRO-00008`
-
-**Dependencias deductivas:** [`TALG-DEF-00019`](#talg-def-00019) — homomorfismo de grupos; [`TALG-PRO-00007`](#talg-pro-00007) — preservación del neutro; [`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) — unicidad del inverso; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — inverso.
-
 Sea
 $$
 f:G\to H
@@ -376,8 +340,6 @@ f(x^{-1})=f(x)^{-1}.
 $$
 
 #### Demostración {#talg-prf-00010}
-
-**Coordenada de prueba:** `TALG-PRF-00010`
 
 Sea $x\in G$. En $\mathcal G$,
 
@@ -403,13 +365,13 @@ f(x)\diamond f(x^{-1})
 f(e_{\mathcal G}).
 $$
 
-Por [`TALG-PRO-00007`](#talg-pro-00007),
+Por la [Proposición 7.4.2](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007),
 
 $$
 f(e_{\mathcal G})=e_{\mathcal H}.
 $$
 
-Luego $f(x^{-1})$ es un inverso bilateral de $f(x)$ en $\mathcal H$. Por unicidad del inverso ([`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)),
+Luego $f(x^{-1})$ es un inverso bilateral de $f(x)$ en $\mathcal H$. Por unicidad del inverso ([Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)),
 
 $$
 f(x^{-1})=f(x)^{-1}.
@@ -421,10 +383,6 @@ $\square$
 
 ### Corolario 7.4.4 — Todo homomorfismo de grupos es un homomorfismo de monoides {#talg-cor-00001}
 
-**Coordenada:** `TALG-COR-00001`
-
-**Dependencias deductivas:** [`TALG-DEF-00018`](#talg-def-00018) — homomorfismo de monoides; [`TALG-DEF-00019`](#talg-def-00019) — homomorfismo de grupos; [`TALG-PRO-00007`](#talg-pro-00007) — preservación del neutro.
-
 Sean
 $$
 \mathcal G=\langle G,\star\rangle,
@@ -435,9 +393,7 @@ grupos. Si $f:G\to H$ es un homomorfismo de grupos, entonces, al considerar $\ma
 
 #### Demostración {#talg-prf-00011}
 
-**Coordenada de prueba:** `TALG-PRF-00011`
-
-Por definición de homomorfismo de grupos, $f$ preserva la operación. Por [`TALG-PRO-00007`](#talg-pro-00007), preserva además el neutro. Éstas son exactamente las dos condiciones de [`TALG-DEF-00018`](#talg-def-00018). $\square$
+Por definición de homomorfismo de grupos, $f$ preserva la operación. Por la [Proposición 7.4.2](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00007), preserva además el neutro. Éstas son exactamente las dos condiciones de la [Definición 7.3.1](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-def-00018). $\square$
 
 ---
 
@@ -463,28 +419,10 @@ $$
 \text{preserva inversos}.
 $$
 
-El resultado [`TALG-PRO-00006`](#talg-pro-00006) garantiza además que la identidad y la composición ya funcionan correctamente desde el nivel de magmas.
+La [Proposición 7.1.2](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md#talg-pro-00006) garantiza además que la identidad y la composición ya funcionan correctamente desde el nivel de magmas.
 
-La ampliación funcional necesaria para definir isomorfismos ya está disponible públicamente mediante [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002): inyectividad, sobreyectividad, biyectividad e inversa funcional. Por tanto, el siguiente capítulo puede combinar directamente esa capa conjuntista con la teoría de homomorfismos cerrada aquí.
-
----
-
-## Cierre deductivo
-
-- **Fundamento:** ZF + lógica clásica.
-- **Axioma de elección:** no utilizado.
-- **Homomorfismo de magmas:** [`TALG-DEF-00016`](#talg-def-00016).
-- **Identidad y composición:** [`TALG-PRO-00006`](#talg-pro-00006), con prueba [`TALG-PRF-00008`](#talg-prf-00008).
-- **Homomorfismo de semigrupos:** [`TALG-DEF-00017`](#talg-def-00017).
-- **Homomorfismo de monoides:** [`TALG-DEF-00018`](#talg-def-00018).
-- **Homomorfismo de grupos:** [`TALG-DEF-00019`](#talg-def-00019).
-- **Preservación del neutro en grupos:** [`TALG-PRO-00007`](#talg-pro-00007), con prueba [`TALG-PRF-00009`](#talg-prf-00009).
-- **Preservación de inversos en grupos:** [`TALG-PRO-00008`](#talg-pro-00008), con prueba [`TALG-PRF-00010`](#talg-prf-00010).
-- **Todo homomorfismo de grupos es homomorfismo de monoides:** [`TALG-COR-00001`](#talg-cor-00001), con prueba [`TALG-PRF-00011`](#talg-prf-00011).
-- **Interfaz funcional ya disponible:** [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002).
-- **Circularidad:** ninguna.
-- **Siguiente nodo:** `TALG-DEF-00020` — isomorfismo de magmas.
+Antes de definir isomorfismos será necesario ampliar de manera explícita la interfaz fundacional con las nociones ya cerradas en `TA-0003` de inyectividad, sobreyectividad, biyectividad e inversa funcional. Esa ampliación se registrará como una nueva importación intertratados, sin alterar retrospectivamente la interfaz mínima anterior.
 
 ---
 
-[← **Capítulo 6 — Subestructuras y criterio de subgrupo**](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 6 — Subestructuras y criterio de subgrupo**](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) · [**Capítulo 8 — Isomorfismos** →](tratado-de-algebra-capitulo-8-isomorfismos.md)

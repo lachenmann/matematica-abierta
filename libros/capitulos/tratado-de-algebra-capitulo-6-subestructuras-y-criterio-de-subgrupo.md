@@ -1,34 +1,34 @@
 ---
-title: "Tratado moderno de Álgebra — Capítulo 6: Subestructuras y criterio de subgrupo"
-description: "Construcción formal de operaciones restringidas, submagmas, subsemigrupos, submonoides y subgrupos, culminando en el criterio de subgrupo de una sola condición."
-author: "Gustav A. Tachek"
+title: 'Tratado moderno de Álgebra — Capítulo 6: Subestructuras y criterio de subgrupo'
+description: Construcción formal de operaciones restringidas, submagmas, subsemigrupos, submonoides y subgrupos, culminando en el criterio de subgrupo de una sola condición.
+author: Gustav A. Tachek
 content-id: MA-BCH-0030
 content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
-date-created: 2026-09-15
-date-modified: 2026-09-15
+date-created: '2026-09-15'
+date-modified: '2026-09-16'
 areas:
-  - algebra
-  - fundamentos
+- algebra
+- fundamentos
 level: avanzado
 topics:
-  - subestructuras
-  - subgrupos
-  - submonoides
-  - restricciones
-  - cierre
-  - criterio-de-subgrupo
-  - estructuras-algebraicas
+- subestructuras
+- subgrupos
+- submonoides
+- restricciones
+- cierre
+- criterio-de-subgrupo
+- estructuras-algebraicas
 prerequisites:
-  - MA-BCH-0028
+- MA-BCH-0028
 related:
-  - MA-BOK-0007
-  - MA-BCH-0024
-  - MA-BCH-0025
-  - MA-BCH-0026
-  - MA-BCH-0027
-  - MA-BCH-0028
+- MA-BOK-0007
+- MA-BCH-0024
+- MA-BCH-0025
+- MA-BCH-0026
+- MA-BCH-0027
+- MA-BCH-0028
 provenance:
   type: original
   sources: []
@@ -36,10 +36,6 @@ license: GFDL-1.3-or-later
 ---
 
 # Capítulo 6 — Subestructuras y criterio de subgrupo
-
-**Coordenada deductiva:** `TALG-0009`
-
-[**← Volver al Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
 
 ## 6.0. Propósito y posición deductiva
 
@@ -68,13 +64,11 @@ $$
 
 El capítulo termina demostrando el criterio práctico de subgrupo mediante una sola condición algebraica.
 
+---
+
 ## 6.1. Cierre y restricción de una operación
 
 ### Definición 6.1.1 — Subconjunto cerrado bajo una operación binaria {#talg-def-00011}
-
-**Coordenada:** `TALG-DEF-00011`
-
-**Dependencias deductivas:** [`TALG-DEF-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00001) — operación binaria; [`TALG-NOT-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-not-00001) — notación infija.
 
 Sea
 
@@ -94,11 +88,9 @@ La condición de cierre es relativa a la operación. Un mismo subconjunto puede 
 
 La definición no exige $B\neq\varnothing$. La no vacuidad se añadirá únicamente cuando la estructura inducida deba ser un magma, pues los magmas de este tratado son no vacíos.
 
+---
+
 ### Lema 6.1.2 — Restricción canónica de una operación a un subconjunto cerrado {#talg-lem-00001}
-
-**Coordenada:** `TALG-LEM-00001`
-
-**Dependencias deductivas:** [`TALG-IMP-00001`](tratado-de-algebra-capitulo-0-interfaz-fundacional.md#talg-imp-00001) — interfaz de pares, productos y funciones; [`TALG-DEF-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00001) — operación binaria; [`TALG-DEF-00011`](#talg-def-00011) — cierre.
 
 Sea $\star:A\times A\to A$ una operación binaria y sea $B\subseteq A$ cerrado bajo $\star$. Entonces existe una única operación binaria
 
@@ -113,8 +105,6 @@ x\star_B y=x\star y.
 $$
 
 #### Demostración {#talg-prf-00003}
-
-**Coordenada de prueba:** `TALG-PRF-00003`
 
 **Hipótesis.** $\star:A\times A\to A$ es una operación binaria, $B\subseteq A$ y $B$ es cerrado bajo $\star$.
 
@@ -170,11 +160,9 @@ La operación restringida es, por tanto, única. $\square$
 
 > **Nota fundacional.** No se ha usado elección. El grafo restringido se obtiene por Separación dentro del grafo ya existente de $\star$.
 
+---
+
 ### Notación 6.1.3 — Operación y estructura inducidas {#talg-not-00004}
-
-**Coordenada:** `TALG-NOT-00004`
-
-**Dependencia deductiva:** [`TALG-LEM-00001`](#talg-lem-00001) — restricción canónica.
 
 En la situación del lema anterior, $\star_B$ denotará la única operación binaria inducida sobre $B$.
 
@@ -196,13 +184,11 @@ siempre que $B\subseteq A$ sea cerrado bajo $\star$ y el contexto requiera consi
 
 La barra vertical expresa **restricción de estructura**, no una nueva operación independiente.
 
+---
+
 ## 6.2. Submagmas y subsemigrupos
 
 ### Definición 6.2.1 — Submagma {#talg-def-00012}
-
-**Coordenada:** `TALG-DEF-00012`
-
-**Dependencias deductivas:** [`TALG-DEF-00002`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00002) — magma; [`TALG-DEF-00011`](#talg-def-00011) — cierre; [`TALG-NOT-00004`](#talg-not-00004) — estructura inducida.
 
 Sea
 
@@ -221,13 +207,11 @@ donde
 1. $\varnothing\neq B\subseteq A$;
 2. $B$ es cerrado bajo $\star$.
 
-Por [`TALG-LEM-00001`](#talg-lem-00001), $\star_B$ es una operación binaria sobre $B$; por la no vacuidad de $B$, la estructura inducida es entonces un magma.
+Por el [Lema 6.1.2](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00001), $\star_B$ es una operación binaria sobre $B$; por la no vacuidad de $B$, la estructura inducida es entonces un magma.
+
+---
 
 ### Proposición 6.2.2 — La asociatividad se hereda por restricción {#talg-pro-00003}
-
-**Coordenada:** `TALG-PRO-00003`
-
-**Dependencias deductivas:** [`TALG-DEF-00003`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00003) — asociatividad; [`TALG-DEF-00011`](#talg-def-00011) — cierre; [`TALG-NOT-00004`](#talg-not-00004) — operación inducida.
 
 Sea $\star:A\times A\to A$ asociativa y sea $B\subseteq A$ cerrado bajo $\star$. Entonces la operación inducida
 
@@ -238,8 +222,6 @@ $$
 es asociativa.
 
 #### Demostración {#talg-prf-00004}
-
-**Coordenada de prueba:** `TALG-PRF-00004`
 
 Sean $x,y,z\in B$. Por cierre,
 
@@ -283,11 +265,9 @@ $$
 
 para todo $x,y,z\in B$. Luego $\star_B$ es asociativa. $\square$
 
+---
+
 ### Definición 6.2.3 — Subsemigrupo {#talg-def-00013}
-
-**Coordenada:** `TALG-DEF-00013`
-
-**Dependencias deductivas:** [`TALG-DEF-00004`](tratado-de-algebra-capitulo-2-semigrupos.md#talg-def-00004) — semigrupo; [`TALG-DEF-00012`](#talg-def-00012) — submagma; [`TALG-PRO-00003`](#talg-pro-00003) — herencia de asociatividad.
 
 Sea
 
@@ -303,17 +283,15 @@ $$
 
 determinado por un subconjunto no vacío $B\subseteq S$ cerrado bajo $\star$.
 
-Por [`TALG-PRO-00003`](#talg-pro-00003), $\star_B$ es asociativa; por tanto toda estructura así obtenida es un semigrupo.
+Por la [Proposición 6.2.2](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-pro-00003), $\star_B$ es asociativa; por tanto toda estructura así obtenida es un semigrupo.
+
+---
 
 ## 6.3. Submonoides
 
 Para los monoides adoptaremos una convención unital: un submonoide debe contener el neutro del monoide ambiente. No llamaremos submonoide a un subconjunto que sea accidentalmente un monoide bajo la operación restringida pero cuyo neutro sea distinto del neutro ambiente.
 
 ### Proposición 6.3.1 — Herencia del neutro {#talg-pro-00004}
-
-**Coordenada:** `TALG-PRO-00004`
-
-**Dependencias deductivas:** [`TALG-DEF-00006`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-def-00006) — monoide; [`TALG-DEF-00011`](#talg-def-00011) — cierre; [`TALG-NOT-00002`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-not-00002) — neutro; [`TALG-NOT-00004`](#talg-not-00004) — estructura inducida; [`TALG-PRO-00003`](#talg-pro-00003) — herencia de asociatividad; [`TALG-PRO-00001`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-pro-00001) — unicidad del neutro.
 
 Sea $\mathcal M=\langle M,\star\rangle$ un monoide y sea $B\subseteq M$ cerrado bajo $\star$. Si
 
@@ -331,9 +309,7 @@ es un monoide y su neutro es precisamente $e_{\mathcal M}$.
 
 #### Demostración {#talg-prf-00005}
 
-**Coordenada de prueba:** `TALG-PRF-00005`
-
-Como $e_{\mathcal M}\in B$, el conjunto $B$ es no vacío. Por [`TALG-PRO-00003`](#talg-pro-00003), la asociatividad de $\star$ se hereda a $\star_B$.
+Como $e_{\mathcal M}\in B$, el conjunto $B$ es no vacío. Por la [Proposición 6.2.2](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-pro-00003), la asociatividad de $\star$ se hereda a $\star_B$.
 
 Sea $b\in B$. Como $e_{\mathcal M}$ es neutro bilateral en $\mathcal M$,
 
@@ -351,28 +327,24 @@ e_{\mathcal M}\star_B b=b
 b\star_B e_{\mathcal M}=b.
 $$
 
-Así, $e_{\mathcal M}$ es neutro bilateral para $\star_B$. La estructura inducida es un semigrupo con neutro y, por tanto, un monoide. Por unicidad del neutro ([`TALG-PRO-00001`](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-pro-00001)), su neutro es exactamente $e_{\mathcal M}$. $\square$
+Así, $e_{\mathcal M}$ es neutro bilateral para $\star_B$. La estructura inducida es un semigrupo con neutro y, por tanto, un monoide. Por unicidad del neutro ([Proposición 3.1.2](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-pro-00001)), su neutro es exactamente $e_{\mathcal M}$. $\square$
+
+---
 
 ### Definición 6.3.2 — Submonoide {#talg-def-00014}
-
-**Coordenada:** `TALG-DEF-00014`
-
-**Dependencia deductiva:** [`TALG-PRO-00004`](#talg-pro-00004) — herencia del neutro.
 
 Sea $\mathcal M=\langle M,\star\rangle$ un monoide. Un **submonoide** de $\mathcal M$ es la estructura inducida $\mathcal M|_B$ por un subconjunto $B\subseteq M$ que satisface:
 
 1. $e_{\mathcal M}\in B$;
 2. para todos $x,y\in B$, $x\star y\in B$.
 
-Por [`TALG-PRO-00004`](#talg-pro-00004), estas dos condiciones garantizan que $\mathcal M|_B$ es un monoide con el mismo neutro que $\mathcal M$.
+Por la [Proposición 6.3.1](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-pro-00004), estas dos condiciones garantizan que $\mathcal M|_B$ es un monoide con el mismo neutro que $\mathcal M$.
+
+---
 
 ## 6.4. Subgrupos
 
 ### Proposición 6.4.1 — Herencia de la estructura de grupo {#talg-pro-00005}
-
-**Coordenada:** `TALG-PRO-00005`
-
-**Dependencias deductivas:** [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-DEF-00014`](#talg-def-00014) — submonoide; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — notación del inverso; [`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) — unicidad del inverso; [`TALG-PRO-00004`](#talg-pro-00004) — herencia del neutro.
 
 Sea $\mathcal G=\langle G,\star\rangle$ un grupo y sea $H\subseteq G$ tal que:
 
@@ -390,9 +362,7 @@ es un grupo. Su neutro es $e_{\mathcal G}$ y, para cada $x\in H$, su inverso en 
 
 #### Demostración {#talg-prf-00006}
 
-**Coordenada de prueba:** `TALG-PRF-00006`
-
-Por las condiciones 1 y 2, $H$ determina un submonoide de $\mathcal G$; por [`TALG-PRO-00004`](#talg-pro-00004), $\mathcal G|_H$ es un monoide cuyo neutro es $e_{\mathcal G}$.
+Por las condiciones 1 y 2, $H$ determina un submonoide de $\mathcal G$; por la [Proposición 6.3.1](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-pro-00004), $\mathcal G|_H$ es un monoide cuyo neutro es $e_{\mathcal G}$.
 
 Sea $x\in H$. Por la condición 3, $x^{-1}\in H$. En el grupo ambiente,
 
@@ -410,13 +380,11 @@ x^{-1}\star_H x=e_{\mathcal G}
 x\star_H x^{-1}=e_{\mathcal G}.
 $$
 
-Por tanto cada $x\in H$ posee inverso en el monoide inducido. Luego $\mathcal G|_H$ es un grupo. Por unicidad del inverso ([`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)), el inverso inducido de $x$ coincide con el inverso ambiente $x^{-1}$. $\square$
+Por tanto cada $x\in H$ posee inverso en el monoide inducido. Luego $\mathcal G|_H$ es un grupo. Por unicidad del inverso ([Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)), el inverso inducido de $x$ coincide con el inverso ambiente $x^{-1}$. $\square$
+
+---
 
 ### Definición 6.4.2 — Subgrupo {#talg-def-00015}
-
-**Coordenada:** `TALG-DEF-00015`
-
-**Dependencia deductiva:** [`TALG-PRO-00005`](#talg-pro-00005) — herencia de la estructura de grupo.
 
 Sea $\mathcal G=\langle G,\star\rangle$ un grupo. Un **subgrupo** de $\mathcal G$ es la estructura inducida $\mathcal G|_H$ por un subconjunto $H\subseteq G$ que satisface:
 
@@ -424,13 +392,11 @@ Sea $\mathcal G=\langle G,\star\rangle$ un grupo. Un **subgrupo** de $\mathcal G
 2. $H$ es cerrado bajo $\star$;
 3. $H$ es cerrado bajo inversos, es decir, $x\in H$ implica $x^{-1}\in H$.
 
-Por [`TALG-PRO-00005`](#talg-pro-00005), estas condiciones garantizan que la estructura inducida es un grupo y que neutro e inversos coinciden con los del grupo ambiente.
+Por la [Proposición 6.4.1](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-pro-00005), estas condiciones garantizan que la estructura inducida es un grupo y que neutro e inversos coinciden con los del grupo ambiente.
+
+---
 
 ### Teorema 6.4.3 — Criterio de subgrupo de una sola condición {#talg-thm-00001}
-
-**Coordenada:** `TALG-THM-00001`
-
-**Dependencias deductivas:** [`TALG-DEF-00015`](#talg-def-00015) — subgrupo; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — inverso; [`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) — unicidad del inverso.
 
 Sea $\mathcal G=\langle G,\star\rangle$ un grupo y sea $H\subseteq G$. Son equivalentes:
 
@@ -442,8 +408,6 @@ a\star b^{-1}\in H.
 $$
 
 #### Demostración {#talg-prf-00007}
-
-**Coordenada de prueba:** `TALG-PRF-00007`
 
 **$(1)\Rightarrow(2)$.** Si $H$ determina un subgrupo, entonces $e_{\mathcal G}\in H$, luego $H\neq\varnothing$. Sean $a,b\in H$. Como $H$ es cerrado bajo inversos,
 
@@ -495,7 +459,7 @@ b\star b^{-1}=e_{\mathcal G}
 b^{-1}\star b=e_{\mathcal G}.
 $$
 
-Por unicidad del inverso ([`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)),
+Por unicidad del inverso ([Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)),
 
 $$
 (b^{-1})^{-1}=b.
@@ -507,15 +471,13 @@ $$
 a\star b\in H.
 $$
 
-Hemos demostrado que $H$ contiene el neutro, es cerrado bajo $\star$ y es cerrado bajo inversos. Por [`TALG-DEF-00015`](#talg-def-00015), $H$ determina un subgrupo de $\mathcal G$.
+Hemos demostrado que $H$ contiene el neutro, es cerrado bajo $\star$ y es cerrado bajo inversos. Por la [Definición 6.4.2](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-def-00015), $H$ determina un subgrupo de $\mathcal G$.
 
-No se ha utilizado elección. Sí se ha utilizado lógica clásica en el paso $H\neq\varnothing\Rightarrow\exists h\in H$; por ello esta formulación debe leerse como un criterio clásico. La variante constructivamente compatible correspondiente se registra en [`TALG-LEM-00004`](#talg-lem-00004). $\square$
+No se ha utilizado elección. Sí se ha utilizado lógica clásica en el paso $H\neq\varnothing\Rightarrow\exists h\in H$; por ello esta formulación se clasifica como clásica en la auditoría fundacional. La variante constructiva correspondiente se registra en el [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004). $\square$
+
+---
 
 ### Lema 6.4.4 — Criterio constructivo de subgrupo para subconjuntos habitados {#talg-lem-00004}
-
-**Coordenada:** `TALG-LEM-00004`
-
-**Dependencias deductivas:** [`TALG-DEF-00015`](#talg-def-00015) — subgrupo; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — inverso; [`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) — unicidad del inverso.
 
 Sea $\mathcal G=\langle G,\star\rangle$ un grupo y sea $H\subseteq G$. Son equivalentes:
 
@@ -530,8 +492,6 @@ Sea $\mathcal G=\langle G,\star\rangle$ un grupo y sea $H\subseteq G$. Son equiv
    $$
 
 #### Demostración {#talg-prf-00088}
-
-**Coordenada de prueba:** `TALG-PRF-00088`
 
 **$(1)\Rightarrow(2)$.** Si $H$ determina un subgrupo, entonces $e_{\mathcal G}\in H$. Por tanto $H$ está habitado, con testigo explícito $e_{\mathcal G}$. Si $a,b\in H$, el cierre bajo inversos da $b^{-1}\in H$ y el cierre bajo $\star$ produce
 
@@ -569,17 +529,19 @@ $$
 a\star(b^{-1})^{-1}\in H.
 $$
 
-Por unicidad del inverso ([`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)), $(b^{-1})^{-1}=b$, de modo que
+Por unicidad del inverso ([Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)), $(b^{-1})^{-1}=b$, de modo que
 
 $$
 a\star b\in H.
 $$
 
-Hemos obtenido el neutro ambiente, cierre bajo la operación y cierre bajo inversos. Por [`TALG-DEF-00015`](#talg-def-00015), $H$ determina un subgrupo de $\mathcal G$.
+Hemos obtenido el neutro ambiente, cierre bajo la operación y cierre bajo inversos. Por la [Definición 6.4.2](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-def-00015), $H$ determina un subgrupo de $\mathcal G$.
 
 No se ha utilizado lógica clásica sustantiva ni elección. El testigo de habitabilidad se usa sólo localmente mediante eliminación existencial. $\square$
 
-> **Lectura fundacional.** [`TALG-THM-00001`](#talg-thm-00001) y [`TALG-LEM-00004`](#talg-lem-00004) tienen el mismo contenido en lógica clásica. Bajo lectura constructiva, `TALG-LEM-00004` es más informativo porque la habitabilidad aporta exactamente el testigo que la prueba necesita.
+> **Lectura fundacional.** El [Teorema 6.4.3](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-thm-00001) y el [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) tienen el mismo contenido en lógica clásica. Bajo lectura constructiva, el [Lema 6.4.4](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-lem-00004) es más informativo porque la habitabilidad aporta exactamente el testigo que la prueba necesita.
+
+---
 
 ## 6.5. Lectura estructural
 
@@ -593,26 +555,7 @@ El bloque anterior muestra una pauta que reaparecerá en anillos, cuerpos y espa
 
 El criterio de subgrupo condensa varias de estas verificaciones en una sola condición, pero su validez depende de la teoría ya construida de neutros e inversos.
 
-## Cierre deductivo
-
-- **Fundamento:** ZF + lógica clásica.
-- **Axioma de elección:** no utilizado.
-- **Cierre:** [`TALG-DEF-00011`](#talg-def-00011).
-- **Restricción canónica:** [`TALG-LEM-00001`](#talg-lem-00001), con prueba [`TALG-PRF-00003`](#talg-prf-00003).
-- **Notación inducida:** [`TALG-NOT-00004`](#talg-not-00004).
-- **Submagma:** [`TALG-DEF-00012`](#talg-def-00012).
-- **Herencia de asociatividad:** [`TALG-PRO-00003`](#talg-pro-00003), con prueba [`TALG-PRF-00004`](#talg-prf-00004).
-- **Subsemigrupo:** [`TALG-DEF-00013`](#talg-def-00013).
-- **Herencia del neutro:** [`TALG-PRO-00004`](#talg-pro-00004), con prueba [`TALG-PRF-00005`](#talg-prf-00005).
-- **Submonoide:** [`TALG-DEF-00014`](#talg-def-00014).
-- **Herencia de grupo:** [`TALG-PRO-00005`](#talg-pro-00005), con prueba [`TALG-PRF-00006`](#talg-prf-00006).
-- **Subgrupo:** [`TALG-DEF-00015`](#talg-def-00015).
-- **Criterio clásico de subgrupo:** [`TALG-THM-00001`](#talg-thm-00001), con prueba [`TALG-PRF-00007`](#talg-prf-00007); usa negación cuantificacional clásica en $H\neq\varnothing\Rightarrow\exists h\in H$.
-- **Criterio constructivamente compatible para subconjuntos habitados:** [`TALG-LEM-00004`](#talg-lem-00004), con prueba [`TALG-PRF-00088`](#talg-prf-00088).
-- **Axioma de elección:** no utilizado en ninguno de los dos criterios.
-- **Circularidad:** ninguna.
-- **Siguiente nodo:** `TALG-DEF-00016` — homomorfismo de magmas.
 
 ---
 
-[← **Capítulo 5 — Conmutatividad y grupos abelianos**](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 5 — Conmutatividad y grupos abelianos**](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md) · [**Capítulo 7 — Homomorfismos de magmas, monoides y grupos** →](tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md)
