@@ -34,6 +34,16 @@ Sea $F$ un cuerpo y sean $x,y,r\in F$. Entonces:
 3. si $r\neq0_F$ y $rx=ry$, entonces $x=y$;
 4. si $xy=0_F$, entonces $x=0_F$ o $y=0_F$.
 
+Además, sin utilizar la disyunción del punto 4, se tiene la forma negativa constructivamente más fuerte:
+
+$$
+\boxed{
+x\neq0_F\ \text{y}\ y\neq0_F
+\quad\Longrightarrow\quad
+xy\neq0_F.
+}
+$$
+
 **Demostración.**
 
 Por distributividad,
@@ -62,13 +72,21 @@ $$
 x=(r^{-1}r)x=(r^{-1}r)y=y.
 $$
 
-Finalmente, si $xy=0_F$ y $x\neq0_F$, multiplicar por $x^{-1}$ da
+La forma negativa del producto nulo es directa. Si $x\neq0_F$, $y\neq0_F$ y $xy=0_F$, entonces
 
 $$
-y=x^{-1}(xy)=x^{-1}0_F=0_F.
+y=x^{-1}(xy)=x^{-1}0_F=0_F,
 $$
 
-Así $xy=0_F$ implica $x=0_F$ o $y=0_F$. ∎
+contradicción. Por tanto $xy\neq0_F$.
+
+Para obtener la formulación disyuntiva 4 desde $xy=0_F$, usamos aquí la lógica clásica ambiente: por tercero excluido, $x=0_F$ o $x\neq0_F$; en el segundo caso la misma multiplicación por $x^{-1}$ da $y=0_F$. Así
+
+$$
+xy=0_F\Longrightarrow x=0_F\lor y=0_F.
+$$
+
+La dependencia clásica se concentra únicamente en esta conversión disyuntiva. La forma negativa anterior coincide con la interfaz constructivamente más robusta que emplearemos cuando no sea necesaria la disyunción. ∎
 
 ### Lema 4.1.3 — Cálculo elemental de signos en un cuerpo ordenado {#ta-calculo-signos-cuerpo-ordenado}
 
@@ -102,7 +120,7 @@ $$
 0\leq(-1)(-1)=1.
 $$
 
-Junto con $1\leq0$, la antisimetría produciría $1=0$, contradiciendo la definición de cuerpo. Por tanto $1\leq0$ es imposible. Debe cumplirse $0\leq1$, y como $0\neq1$, resulta $0<1$.
+Junto con $1\leq0$, la antisimetría produciría $1=0$, contradiciendo la definición de cuerpo. Por tanto queda la alternativa $0\leq1$, y como $0\neq1$, resulta $0<1$.
 
 Para (4), por totalidad, $0\leq x$ o $x\leq0$. En el primer caso $0\leq x^2$ por compatibilidad multiplicativa. En el segundo, (2) da $0\leq -x$ y
 
@@ -112,19 +130,31 @@ $$
 
 de modo que nuevamente $0\leq x^2$.
 
-Para (5), las hipótesis implican $0\leq x$ y $0\leq y$, luego $0\leq xy$. Además $x$ y $y$ son no nulos. Si $xy=0$, el Lema 4.1.2(4) daría $x=0$ o $y=0$, contradicción. Por tanto $xy\neq0$ y, por definición del orden estricto, $0<xy$.
+Para (5), las hipótesis implican $0\leq x$ y $0\leq y$, luego $0\leq xy$. Además $x\neq0$ y $y\neq0$. Si $xy=0$, como $x\neq0$ podemos multiplicar por $x^{-1}$ y obtener $y=0$, contradicción. Por tanto $xy\neq0$ y, por definición del orden estricto, $0<xy$. No se ha usado la disyunción clásica del Lema 4.1.2(4).
 
-Para (6), sea $x>0$. Como $x^{-1}\neq0$, por totalidad exactamente uno de $x^{-1}>0$ y $x^{-1}<0$ puede ocurrir. Si $x^{-1}<0$, entonces (2) implica $0<-x^{-1}$; por (5),
+Para (6), sea $x>0$. Por (4),
 
 $$
-0<x(-x^{-1})=-1.
+0\leq (x^{-1})^2.
 $$
 
-Aplicando (2) a $0<-1$ obtenemos $1<0$, contradicción con (3). Luego $x^{-1}>0$.
+Como $0\leq x$ y el producto de no negativos es no negativo,
 
-Antes de (7) registramos las dos reglas estrictas que también utilizaremos después. Para (8), si $x<y$, la compatibilidad aditiva da $x+z\leq y+z$. La igualdad $x+z=y+z$ implicaría $x=y$ al sumar $-z$, contradicción; luego $x+z<y+z$. La recíproca se obtiene sumando $-z$.
+$$
+0\leq x(x^{-1})^2=x^{-1}.
+$$
 
-Para (9), sea $r>0$. Si $x<y$, la compatibilidad multiplicativa da $xr\leq yr$. Si hubiera igualdad, al multiplicar por $r^{-1}$ —que existe porque $r\neq0$— obtendríamos $x=y$; luego $xr<yr$. Recíprocamente, si $xr<yr$ y no fuera $x<y$, la totalidad daría $y\leq x$. Como $0<r$, la compatibilidad multiplicativa produciría $yr\leq xr$, contradicción. Por tanto $x<y$.
+Además $x^{-1}\neq0$, pues de $x^{-1}=0$ seguiría $1=xx^{-1}=0$. Por tanto $0<x^{-1}$.
+
+Para (8), si $x<y$, la compatibilidad aditiva da $x+z\leq y+z$. La igualdad $x+z=y+z$ implicaría $x=y$ al sumar $-z$, contradicción; luego $x+z<y+z$. La recíproca se obtiene sumando $-z$.
+
+Para (9), sea $r>0$. Si $x<y$, la compatibilidad multiplicativa da $xr\leq yr$. Si hubiera igualdad, al multiplicar por $r^{-1}$ obtendríamos $x=y$; luego $xr<yr$. Recíprocamente, si $xr<yr$, por (6) tenemos $r^{-1}>0$. Aplicando la implicación ya demostrada al factor positivo $r^{-1}$,
+
+$$
+(xr)r^{-1}<(yr)r^{-1},
+$$
+
+y por las leyes del cuerpo obtenemos $x<y$.
 
 Finalmente, si $0<x<y$, por (6) los inversos son positivos. Aplicando (9) a $x<y$ con el factor positivo $x^{-1}y^{-1}$ obtenemos
 
@@ -133,6 +163,8 @@ y^{-1}<x^{-1}.
 $$
 
 La positividad de ambos inversos completa (7). ∎
+
+> **Nota fundacional.** La totalidad del orden se usa aquí sólo en su forma positiva $a\leq b\lor b\leq a$. No se ha supuesto que el orden o la igualdad de un cuerpo ordenado abstracto sean decidibles.
 
 El lema anterior es la caja de herramientas mínima para trabajar abstractamente con orden y operaciones. En particular, la positividad de $1$ no se ha añadido a la definición: está forzada por los axiomas de cuerpo ordenado.
 
@@ -156,7 +188,7 @@ $$
 x\leq y\Longrightarrow x+z\leq y+z,
 $$
 
-es la primera parte de [la Proposición 3.7.7](tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-orden-racional-compatible-operaciones).
+es la primera parte de [la Proposición 3.7.8](tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-orden-racional-compatible-operaciones).
 
 Supongamos ahora $0\leq x$ y $0\leq y$. La segunda parte de esa misma proposición, aplicada a $0\leq x$ con el factor no negativo $y$, da
 
@@ -173,6 +205,8 @@ $$
 Se satisfacen exactamente las dos compatibilidades de la Definición 4.1.1. ∎
 
 ### Definición 4.1.5 — Aplicación de numerales naturales en un cuerpo ordenado {#ta-numerales-naturales-cuerpo-ordenado}
+
+*Glosario: [aplicación canónica de numerales naturales](../otros/tratado-de-analisis-glosario.md#gl-numerales-naturales-cuerpo-ordenado)*
 
 Sea $F$ un cuerpo ordenado. Por el teorema de recursión sobre $\mathbb N$ existe una única función
 
@@ -191,8 +225,6 @@ $$
 $$
 
 La llamaremos **aplicación canónica de numerales naturales** de $F$.
-
-*Glosario: [aplicación canónica de numerales naturales](../otros/tratado-de-analisis-glosario.md#gl-numerales-naturales-cuerpo-ordenado)*
 
 No se está identificando $n\in\mathbb N$ con un elemento de $F$. La función $\nu_F$ es precisamente el puente que permite comparar ambos sistemas.
 
@@ -261,19 +293,13 @@ $$
 
 Por transitividad con $0\leq\nu_F(r)$, resulta $0<\nu_F(S(r))$, y en particular $0\leq\nu_F(S(r))$.
 
-Si $k\neq0$, el resultado del Capítulo 1 según el cual todo natural no nulo es sucesor da $r\in\mathbb N$ con $k=S(r)$. Por lo anterior,
+Si $k\neq0$, el teorema de predecesor da $r\in\mathbb N$ con $k=S(r)$. Por lo anterior,
 
 $$
 0<\nu_F(k).
 $$
 
-Probemos (4). Si $m<n$, entonces $m\leq n$ y $m\neq n$. Por la definición del orden natural existe $k\in\mathbb N$ tal que
-
-$$
-n=m+k.
-$$
-
-Necesariamente $k\neq0$, pues $k=0$ daría $n=m$. Por (2),
+Probemos (4). Si $m<n$, entonces por la definición del orden natural existe $k\in\mathbb N$ tal que $n=m+k$. Necesariamente $k\neq0$, pues $k=0$ daría $n=m$. Por (2),
 
 $$
 \nu_F(n)=\nu_F(m)+\nu_F(k),
@@ -285,9 +311,9 @@ $$
 \nu_F(m)<\nu_F(n).
 $$
 
-Si $\nu_F(m)=\nu_F(n)$ y $m\neq n$, la totalidad del orden natural da $m<n$ o $n<m$, contradiciendo (4). Luego $\nu_F$ es inyectiva.
+Para la inyectividad, la [tricotomía decidible de los naturales](tratado-de-analisis-capitulo-1-los-numeros-naturales.md#ta-tricotomia-decidible-naturales) decide exactamente uno de los casos $m<n$, $m=n$, $n<m$. Si $\nu_F(m)=\nu_F(n)$, los dos casos estrictos contradicen (4), de modo que necesariamente $m=n$.
 
-La preservación de $\leq$ se obtiene de $n=m+k$ y (2), usando $0\leq\nu_F(k)$. Para la reflexión, si $\nu_F(m)\leq\nu_F(n)$ pero $n<m$, (4) daría $\nu_F(n)<\nu_F(m)$, contradicción. Por totalidad natural, debe ser $m\leq n$. ∎
+La preservación de $\leq$ se obtiene de $n=m+k$ y (2), usando $0\leq\nu_F(k)$. Para la reflexión, supongamos $\nu_F(m)\leq\nu_F(n)$. La tricotomía decidible descarta $n<m$, pues (4) produciría $\nu_F(n)<\nu_F(m)$; por tanto $m=n$ o $m<n$, y en ambos casos $m\leq n$. ∎
 
 ### Definición 4.1.7 — Subcuerpo {#ta-subcuerpo}
 
@@ -303,6 +329,8 @@ Sea $F$ un cuerpo. Un subconjunto $K\subseteq F$ es un **subcuerpo de $F$** si:
 Con las operaciones restringidas, $K$ es entonces un cuerpo.
 
 ### Definición 4.1.8 — Subcuerpo primo {#ta-subcuerpo-primo}
+
+*Glosario: [subcuerpo primo](../otros/tratado-de-analisis-glosario.md#gl-subcuerpo-primo)*
 
 Sea $F$ un cuerpo. Por separación en $\mathcal P(F)$ existe el conjunto
 
@@ -321,8 +349,6 @@ P_F:=\bigcap_{K\in\mathcal S_F}K.
 $$
 
 Llamaremos $P_F$ **subcuerpo primo** de $F$.
-
-*Glosario: [subcuerpo primo](../otros/tratado-de-analisis-glosario.md#gl-subcuerpo-primo)*
 
 ### Proposición 4.1.9 — Minimalidad del subcuerpo primo {#ta-minimalidad-subcuerpo-primo}
 
@@ -389,3 +415,9 @@ $$
 y por tanto $m<y$. ∎
 
 Este teorema separa desde ahora dos ideas que a menudo se confunden: **densidad del orden** y **completitud**. Todo cuerpo ordenado es denso en sí mismo; $\mathbb Q$ falla por una razón diferente.
+
+---
+
+::: {.callout-note title="Publicación progresiva"}
+Con §4.1 queda establecida la teoría básica de los cuerpos ordenados, sus numerales naturales, sus subcuerpos y la densidad intrínseca de su orden. La siguiente entrega es **§4.2 — Valor absoluto**.
+:::
