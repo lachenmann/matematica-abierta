@@ -41,7 +41,3 @@ es arquimediano pero no completo.
 Finalmente, la propiedad del supremo quedó caracterizada, en la base clásica del tratado, mediante separación e intersección de intervalos cerrados; se registraron también sus formas positivas con datos de habitabilidad. Se fijó formalmente qué entenderemos por una completación ordenada de $\mathbb Q$, distinguiendo completitud extensional de cualquier pretensión algorítmica de calcular supremos.
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.9 queda cerrado el balance matemático del capítulo: cuerpo ordenado, arquimedianidad, densidad, completitud y completación aparecen ya integrados en una sola arquitectura. La siguiente entrega será **§4.10 — Notas bibliográficas**.
-:::
