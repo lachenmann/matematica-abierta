@@ -60,9 +60,9 @@ $$
 A:=\{k\in\mathbb N:Nu\leq\nu_F(k)\}
 $$
 
-está habitado. Aplicamos ahora el principio de buen orden de $\mathbb N$, demostrado en el [Capítulo 1](tratado-de-analisis-capitulo-1-los-numeros-naturales.md): éste es el único paso esencialmente clásico de la prueba, pues la membresía de $A$ no se ha demostrado decidible para un cuerpo ordenado abstracto. Sea $k$ el mínimo de $A$.
+está habitado. Aplicamos ahora el [Teorema 1.6.13 — Principio de buen orden](tratado-de-analisis-capitulo-1-los-numeros-naturales.md#ta-principio-buen-orden-naturales): éste es el único paso esencialmente clásico de la prueba, pues la membresía de $A$ no se ha demostrado decidible para un cuerpo ordenado abstracto. Sea $k$ el mínimo de $A$.
 
-Como $Nu>0=\nu_F(0)$, no puede ser $k=0$. Por el teorema del predecesor de los naturales, existe $j\in\mathbb N$ con $k=S(j)$. Entonces $j<k$, de modo que la minimalidad de $k$ implica $j\notin A$, es decir,
+Como $Nu>0=\nu_F(0)$, no puede ser $k=0$. Por el [Teorema 1.2.7 — Predecesor de todo natural no nulo](tratado-de-analisis-capitulo-1-los-numeros-naturales.md#ta-predecesor-natural), existe $j\in\mathbb N$ con $k=S(j)$. Entonces $j<k$, de modo que la minimalidad de $k$ implica $j\notin A$, es decir,
 
 $$
 \neg\bigl(Nu\leq\nu_F(j)\bigr).
@@ -141,7 +141,7 @@ $$
 q<x+\delta=y.
 $$
 
-Finalmente, el [Corolario 4.1.10](#ta-numerales-en-subcuerpo-primo) da $\nu_F(S(k)),N,\nu_F(p)\in P_F$; como $P_F$ es subcuerpo y $N\neq0$, también $N^{-1}\in P_F$, y por clausura bajo las operaciones $q\in P_F$. Así $x<q<y$. ∎
+Finalmente, el [Corolario 4.1.10](#ta-numerales-subcuerpo-primo) da $\nu_F(S(k)),N,\nu_F(p)\in P_F$; como $P_F$ es subcuerpo y $N\neq0$, también $N^{-1}\in P_F$, y por clausura bajo las operaciones $q\in P_F$. Así $x<q<y$. ∎
 
 > **Nota fundacional.** El mínimo de $A$ es único y, por tanto, canónico una vez demostrada su existencia; esto no utiliza Choice. Sin embargo, como no disponemos de un procedimiento de decisión para $Nu\leq\nu_F(k)$ en un cuerpo ordenado abstracto, el buen orden aplicado a $A$ no proporciona aquí un algoritmo uniforme para localizar $k$.
 
