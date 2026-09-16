@@ -99,7 +99,7 @@ $$
 s:=\sup N_F.
 $$
 
-Por [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado), $0_F<1_F$ y, al sumar $s-1_F$, se obtiene $s-1_F<s$. El elemento $s-1_F$ no puede ser una cota superior de $N_F$, pues de lo contrario sería una cota superior estrictamente menor que el supremo $s$.
+Por el [Lema 4.1.3](#ta-calculo-signos-cuerpo-ordenado), $0_F<1_F$ y, al sumar $s-1_F$, se obtiene $s-1_F<s$. El elemento $s-1_F$ no puede ser una cota superior de $N_F$, pues de lo contrario sería una cota superior estrictamente menor que el supremo $s$.
 
 Decir que $s-1_F$ no es cota superior es negar un universal. Por negación clásica de cuantificadores existe, por tanto, $n\in\mathbb N$ tal que
 
@@ -140,7 +140,7 @@ $$
 
 **Demostración.**
 
-[Teorema 4.6.3](#ta-completo-implica-arquimediano) da arquimedianidad y [Teorema 4.5.1](#ta-densidad-subcuerpo-primo-arquimediano) da la densidad de $P_F$. ∎
+El [Teorema 4.6.3](#ta-completo-implica-arquimediano) da arquimedianidad y el [Teorema 4.5.1](#ta-densidad-subcuerpo-primo-arquimediano) da la densidad de $P_F$. ∎
 
 ### Proposición 4.6.5 — $\mathbb Q$ no es un cuerpo ordenado completo {#ta-q-no-completo}
 
@@ -148,13 +148,13 @@ El cuerpo ordenado $\mathbb Q$ no tiene la propiedad del supremo.
 
 **Demostración.**
 
-[Proposición 3.9.8](tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-s2-no-vacio-acotado) demuestra que
+La [Proposición 3.9.8](tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-s2-no-vacio-acotado) demuestra que
 
 $$
 S_2=\{q\in\mathbb Q:0\leq q,\ q^2<2\}
 $$
 
-es no vacío y está acotado superiormente. [Teorema 3.9.9](tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-s2-sin-supremo-racional) demuestra que $S_2$ no posee supremo racional. Esto contradice exactamente la condición de [Definición 4.6.1](#ta-propiedad-supremo-cuerpo-completo). ∎
+es no vacío y está acotado superiormente. El [Teorema 3.9.9](tratado-de-analisis-capitulo-3-los-numeros-racionales.md#ta-s2-sin-supremo-racional) demuestra que $S_2$ no posee supremo racional. Esto contradice exactamente la condición de la [Definición 4.6.1](#ta-propiedad-supremo-cuerpo-completo). ∎
 
 Tenemos ahora una formulación abstracta del defecto detectado al final del capítulo anterior: $\mathbb Q$ es arquimediano, pero no completo.
 
