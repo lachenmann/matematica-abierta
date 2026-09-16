@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0035 |
+| Capítulo | MA-BCH-0051 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -78,6 +78,22 @@
 | MA-BCH-0032 | book-chapter | Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos | `libros/capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md` | published |
 | MA-BCH-0033 | book-chapter | Tratado moderno de Álgebra — Capítulo 8: Isomorfismos | `libros/capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md` | published |
 | MA-BCH-0034 | book-chapter | Tratado moderno de Álgebra — Capítulo 9: Núcleo e imagen de homomorfismos de grupos | `libros/capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md` | published |
+| MA-BCH-0035 | book-chapter | Tratado moderno de Álgebra — Capítulo 10: Subgrupos normales | `libros/capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md` | published |
+| MA-BCH-0036 | book-chapter | Tratado moderno de Álgebra — Capítulo 11: Clases laterales y caracterización de la normalidad | `libros/capitulos/tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md` | published |
+| MA-BCH-0037 | book-chapter | Tratado moderno de Álgebra — Capítulo 12: Cocientes de grupos | `libros/capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.md` | published |
+| MA-BCH-0038 | book-chapter | Tratado moderno de Álgebra — Capítulo 13: Primer teorema de isomorfía para grupos | `libros/capitulos/tratado-de-algebra-capitulo-13-primer-teorema-de-isomorfia-para-grupos.md` | published |
+| MA-BCH-0039 | book-chapter | Tratado moderno de Álgebra — Capítulo 14: Anillos | `libros/capitulos/tratado-de-algebra-capitulo-14-anillos.md` | published |
+| MA-BCH-0040 | book-chapter | Tratado moderno de Álgebra — Capítulo 15: Unidades de un anillo | `libros/capitulos/tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md` | published |
+| MA-BCH-0041 | book-chapter | Tratado moderno de Álgebra — Capítulo 16: No trivialidad y divisores de cero | `libros/capitulos/tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md` | published |
+| MA-BCH-0042 | book-chapter | Tratado moderno de Álgebra — Capítulo 17: Subanillos y homomorfismos de anillos | `libros/capitulos/tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md` | published |
+| MA-BCH-0043 | book-chapter | Tratado moderno de Álgebra — Capítulo 18: Ideales | `libros/capitulos/tratado-de-algebra-capitulo-18-ideales.md` | published |
+| MA-BCH-0044 | book-chapter | Tratado moderno de Álgebra — Capítulo 19: Cocientes de anillos | `libros/capitulos/tratado-de-algebra-capitulo-19-cocientes-de-anillos.md` | published |
+| MA-BCH-0045 | book-chapter | Tratado moderno de Álgebra — Capítulo 20: Isomorfismos y primer teorema de isomorfía para anillos | `libros/capitulos/tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md` | published |
+| MA-BCH-0046 | book-chapter | Tratado moderno de Álgebra — Capítulo 21: Dominios íntegros | `libros/capitulos/tratado-de-algebra-capitulo-21-dominios-integros.md` | published |
+| MA-BCH-0047 | book-chapter | Tratado moderno de Álgebra — Capítulo 22: Cuerpos y subcuerpos | `libros/capitulos/tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md` | published |
+| MA-BCH-0048 | book-chapter | Tratado moderno de Álgebra — Capítulo 23: Homomorfismos de cuerpos | `libros/capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md` | published |
+| MA-BCH-0049 | book-chapter | Tratado moderno de Álgebra — Capítulo 24: Cuerpo de fracciones de un dominio íntegro | `libros/capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md` | published |
+| MA-BCH-0050 | book-chapter | Tratado moderno de Álgebra — Capítulo 25: Grupos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
