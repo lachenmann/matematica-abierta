@@ -194,17 +194,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.5 — Densidad de un subcuerpo**. En un cuerpo ordenado arquimediano se demuestra que el subcuerpo primo satisface
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.7 — Formulaciones equivalentes de completitud**. La propiedad del supremo queda caracterizada mediante la propiedad de separación y el principio de intersección de intervalos cerrados. Junto con la dualidad supremo–ínfimo, quedan reunidas cuatro formulaciones equivalentes de completitud en el desarrollo actual. La exposición registra explícitamente que la clasicidad residual procede de convertir no vaciedad en datos de habitabilidad y no introduce ninguna función de elección. Tampoco adelanta equivalencias mediante sucesiones o límites. La siguiente incorporación será **§4.8 — Programa de completación de $\mathbb Q$**.
 
-   $$
-   \forall x,y\in F\;\bigl(x<y\Longrightarrow\exists q\in P_F\;(x<q<y)\bigr),
-   $$
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
 
-   y, como $P_F$ está contenido en todo subcuerpo, se obtiene la densidad de cualquier $K\subseteq F$ que sea subcuerpo. La prueba registra explícitamente su dependencia clásica en el buen orden de un subconjunto de $\mathbb N$ y no afirma un algoritmo uniforme para localizar el elemento intermedio. La siguiente incorporación será **§4.6 — Propiedad del supremo**.
-
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; las entradas **Subcuerpo** y **Subcuerpo primo** incorporan ya la densidad en cuerpos ordenados arquimedianos, además de la formulación abstracta de la propiedad arquimediana y la infraestructura previa.
-
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.5. La siguiente incorporación será **§4.6 — Propiedad del supremo**.
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.7. La siguiente incorporación será **§4.8 — Programa de completación de $\mathbb Q$**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

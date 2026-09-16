@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-15
+date-modified: 2026-09-16
 areas:
   - fundamentos
   - analisis
@@ -35,6 +35,10 @@ topics:
   - cuerpos
   - cuerpos-ordenados
   - subcuerpos
+  - completitud
+  - propiedad-del-supremo
+  - propiedad-de-separacion
+  - interseccion-de-intervalos
   - valor-absoluto
   - desigualdades
   - intervalos
@@ -111,6 +115,7 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Cota superior](#gl-cota-superior) ·
 [Cuerpo](#gl-cuerpo) ·
 [Cuerpo ordenado](#gl-cuerpo-ordenado) ·
+[Cuerpo ordenado completo](#gl-cuerpo-ordenado-completo) ·
 [Densidad del orden racional](#gl-densidad-orden-racional) ·
 [Desigualdad triangular](#gl-desigualdad-triangular) ·
 [Desigualdad triangular inversa](#gl-desigualdad-triangular-inversa) ·
@@ -173,9 +178,12 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Principio de definición binaria sobre clases](#gl-definicion-binaria-clases) ·
 [Principio de definición sobre clases](#gl-definicion-sobre-clases) ·
 [Principio de inducción](#gl-principio-induccion) ·
+[Principio de intersección de intervalos cerrados](#gl-principio-interseccion-intervalos-cerrados) ·
 [Producto cartesiano](#gl-producto-cartesiano) ·
 [Producto nulo](#gl-producto-nulo) ·
 [Propiedad arquimediana](#gl-propiedad-arquimediana) ·
+[Propiedad de separación](#gl-propiedad-separacion) ·
+[Propiedad del supremo](#gl-propiedad-supremo) ·
 [Propiedades de Peano](#gl-propiedades-peano) ·
 [Proyección canónica](#gl-proyeccion-canonica) ·
 [Racionales no nulos](#gl-racionales-no-nulos) ·
