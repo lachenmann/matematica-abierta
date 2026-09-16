@@ -186,9 +186,3 @@ $$
 $$
 
 Por la caracterización del valor absoluto mediante dos desigualdades, se sigue el resultado. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.2 queda construido el valor absoluto en un cuerpo ordenado y demostradas sus desigualdades fundamentales. La siguiente entrega será **§4.3 — Intervalos**.
-:::
