@@ -124,7 +124,3 @@ $$
 $$
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.8 queda fijado el programa estructural que deberán satisfacer las dos construcciones de los números reales y se demuestra que toda completación ordenada de $\mathbb Q$ contiene una copia racional densa. La siguiente entrega será **§4.9 — Qué hemos establecido**.
-:::
