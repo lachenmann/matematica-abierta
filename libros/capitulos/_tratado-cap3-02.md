@@ -141,4 +141,6 @@ $$
 **Demostración.**  
 Por el [Lema 0.5.3 — Igualdad de clases](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-igualdad-clases), dos clases de equivalencia coinciden si y sólo si sus representantes son equivalentes. La definición de $\sim_{\mathbb Q}$ transforma esa condición exactamente en $ad=bc$. ∎
 
+> **Nota de decidibilidad.** El criterio anterior no sólo caracteriza la igualdad del cociente: para nombres fraccionarios finitos la reduce a la igualdad entera $ad=bc$. Como la igualdad en $\mathbb Z$ es decidible mediante representantes naturales, la igualdad en $\mathbb Q$ es decidible sobre estos nombres. Esto no identifica la clase extensional con una codificación particular: el procedimiento opera sobre representantes finitos y su resultado es independiente del representante por la Proposición 3.2.6.
+
 ---
