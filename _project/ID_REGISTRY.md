@@ -8,7 +8,7 @@
 | Problema | MA-PRB-0007 |
 | Artículo | MA-ART-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0034 |
+| Capítulo | MA-BCH-0035 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -77,6 +77,7 @@
 | MA-BCH-0031 | book-chapter | Magnitudes, unidades y análisis dimensional | `libros/capitulos/fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md` | published |
 | MA-BCH-0032 | book-chapter | Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos | `libros/capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md` | published |
 | MA-BCH-0033 | book-chapter | Tratado moderno de Álgebra — Capítulo 8: Isomorfismos | `libros/capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md` | published |
+| MA-BCH-0034 | book-chapter | Tratado moderno de Álgebra — Capítulo 9: Núcleo e imagen de homomorfismos de grupos | `libros/capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
