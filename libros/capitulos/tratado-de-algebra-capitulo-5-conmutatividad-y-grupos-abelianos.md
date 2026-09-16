@@ -1,30 +1,30 @@
 ---
-title: "Tratado moderno de Álgebra — Capítulo 5: Conmutatividad y grupos abelianos"
-description: "Introducción formal de la conmutatividad como ley independiente y definición de grupo abeliano como grupo con operación conmutativa."
-author: "Gustav A. Tachek"
+title: 'Tratado moderno de Álgebra — Capítulo 5: Conmutatividad y grupos abelianos'
+description: Introducción formal de la conmutatividad como ley independiente y definición de grupo abeliano como grupo con operación conmutativa.
+author: Gustav A. Tachek
 content-id: MA-BCH-0028
 content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
-date-created: 2026-09-15
-date-modified: 2026-09-15
+date-created: '2026-09-15'
+date-modified: '2026-09-16'
 areas:
-  - algebra
-  - fundamentos
+- algebra
+- fundamentos
 level: avanzado
 topics:
-  - conmutatividad
-  - grupos-abelianos
-  - grupos
-  - operaciones-binarias
-  - estructuras-algebraicas
+- conmutatividad
+- grupos-abelianos
+- grupos
+- operaciones-binarias
+- estructuras-algebraicas
 prerequisites:
-  - MA-BCH-0027
+- MA-BCH-0027
 related:
-  - MA-BOK-0007
-  - MA-BCH-0024
-  - MA-BCH-0027
-  - MA-BCH-0030
+- MA-BOK-0007
+- MA-BCH-0024
+- MA-BCH-0027
+- MA-BCH-0030
 provenance:
   type: original
   sources: []
@@ -33,15 +33,11 @@ license: GFDL-1.3-or-later
 
 # Capítulo 5 — Conmutatividad y grupos abelianos
 
-**Coordenada deductiva:** `TALG-0008`
+## 5.0. Propósito
 
-[**← Volver al Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+La definición de grupo controla cierre, asociatividad, neutro e inversos, pero no impone ninguna simetría al intercambiar los argumentos de la operación. La conmutatividad es una ley independiente y debe introducirse como tal.
 
-## 5.0. Propósito y posición deductiva
-
-La definición de [**grupo**](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) controla cierre, asociatividad, neutro e inversos, pero no impone ninguna simetría al intercambiar los argumentos de la operación. La conmutatividad es una ley independiente y debe introducirse como tal.
-
-La cadena de este capítulo es:
+La cadena es:
 
 $$
 \text{operación binaria}
@@ -51,15 +47,12 @@ $$
 \text{grupo abeliano}.
 $$
 
-Es importante el orden deductivo: la conmutatividad no se define primero para grupos, sino para una operación binaria cualquiera. Sólo después se combina con la estructura de grupo.
+---
 
 ## 5.1. Conmutatividad
 
 ### Definición 5.1.1 — Operación conmutativa {#talg-def-00009}
 
-**Coordenada:** `TALG-DEF-00009`
-
-**Dependencias deductivas:** [`TALG-DEF-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00001) — operación binaria; [`TALG-NOT-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-not-00001) — notación infija.
 
 Sea
 
@@ -75,29 +68,14 @@ $$
 a\star b=b\star a.
 $$
 
-La conmutatividad compara los resultados obtenidos al intercambiar los dos argumentos.
+La conmutatividad compara los resultados obtenidos al intercambiar los dos argumentos. No debe confundirse con asociatividad: ésta modifica la agrupación de tres elementos, mientras que la conmutatividad modifica su orden.
 
-No debe confundirse con la [**asociatividad**](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00003): la asociatividad modifica la agrupación de tres elementos,
-
-$$
-(a\star b)\star c=a\star(b\star c),
-$$
-
-mientras que la conmutatividad modifica el orden de dos argumentos,
-
-$$
-a\star b=b\star a.
-$$
-
-Ninguna de estas leyes contiene a la otra en su definición.
+---
 
 ## 5.2. Grupos abelianos
 
 ### Definición 5.2.1 — Grupo abeliano {#talg-def-00010}
 
-**Coordenada:** `TALG-DEF-00010`
-
-**Dependencias deductivas:** [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo; [`TALG-DEF-00009`](#talg-def-00009) — operación conmutativa.
 
 Un **grupo abeliano** es un grupo
 
@@ -113,7 +91,9 @@ $$
 a\star b=b\star a.
 $$
 
-El adjetivo *abeliano* añade exactamente esta ley. No modifica la noción de neutro ni la de inverso, que continúan siendo las ya establecidas para grupos.
+El adjetivo *abeliano* añade exactamente esta ley; no modifica la noción de neutro ni la de inverso.
+
+---
 
 ## 5.3. Cierre de la primera jerarquía estructural
 
@@ -147,26 +127,8 @@ $$
 \to\text{grupo abeliano}.
 $$
 
-La red deductiva permite recorrer cada uno de estos escalones hasta su definición exacta:
+Esta jerarquía será reutilizada posteriormente para grupos aditivos de anillos, cuerpos y espacios vectoriales.
 
-- [magma](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00002),
-- [semigrupo](tratado-de-algebra-capitulo-2-semigrupos.md#talg-def-00004),
-- [monoide](tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md#talg-def-00006),
-- [grupo](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008),
-- [grupo abeliano](#talg-def-00010).
-
-Esta jerarquía será reutilizada posteriormente para los grupos aditivos de anillos, cuerpos y espacios vectoriales.
-
-## Cierre deductivo
-
-- **Fundamento:** ZF + lógica clásica.
-- **Axioma de elección:** no utilizado.
-- **Operación conmutativa:** [`TALG-DEF-00009`](#talg-def-00009).
-- **Grupo abeliano:** [`TALG-DEF-00010`](#talg-def-00010).
-- **Dependencias externas al capítulo:** [`TALG-DEF-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-def-00001) — operación binaria; [`TALG-NOT-00001`](tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md#talg-not-00001) — notación infija; [`TALG-DEF-00008`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-def-00008) — grupo.
-- **Conmutatividad distinguida de asociatividad:** sí.
-- **Circularidad:** ninguna.
-- **Siguiente nodo:** [`TALG-DEF-00011`](tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md#talg-def-00011) — subconjunto cerrado bajo una operación binaria.
 
 ---
 
