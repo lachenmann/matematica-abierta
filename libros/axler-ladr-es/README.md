@@ -24,14 +24,7 @@ Licencia: <https://creativecommons.org/licenses/by-nc/4.0/>.
 
 ## Colaborar
 
-La comunidad puede proponer correcciones y mejoras mediante **Issues** y **Pull Requests**. Son especialmente bienvenidas:
-
-- correcciones de traducción;
-- observaciones terminológicas;
-- erratas matemáticas o tipográficas;
-- mejoras de claridad;
-- correcciones de soluciones propias;
-- QA de LaTeX, referencias y numeración.
+La comunidad puede proponer correcciones y mejoras mediante **Issues** y **Pull Requests**. Son especialmente bienvenidas las correcciones de traducción y soluciones, observaciones terminológicas, erratas matemáticas o tipográficas, mejoras de claridad y QA de LaTeX, referencias y numeración.
 
 Consulta [CONTRIBUTING.md](CONTRIBUTING.md) antes de enviar una propuesta.
 
@@ -49,31 +42,17 @@ Las unidades se publican inicialmente como borradores y sólo pasan a estado cer
 
 ## Estado actual
 
-- **Capítulo 1 — Espacios vectoriales:** primera pasada pública completa.
-  - 1A: 15/15 ejercicios resueltos.
-  - 1B: 8/8 ejercicios resueltos.
-  - 1C: 24/24 ejercicios resueltos.
-  - Total Capítulo 1: **47/47**.
-  - [QA global del Capítulo 1](CHAPTER1_QA.md).
-- **Capítulo 2 — Espacios vectoriales de dimensión finita:** primera pasada pública completa.
-  - 2A — Span e independencia lineal: **20/20 ejercicios resueltos y verificados**.
-  - 2B — Bases: **11/11 ejercicios resueltos y verificados**.
-  - 2C — Dimensión: **20/20 ejercicios resueltos y verificados**.
-  - Total Capítulo 2: **51/51**.
-  - [QA global del Capítulo 2](CHAPTER2_QA.md).
-- **Capítulo 3 — Aplicaciones lineales:** en desarrollo.
-  - apertura: cotejada;
-  - **3A — Espacio vectorial de aplicaciones lineales:** traducción completa y cotejada; **17/17 ejercicios resueltos y verificados**;
-  - **3B — Espacios nulos e imágenes:** traducción completa y cotejada; **33/33 ejercicios resueltos y verificados**; incluye el teorema fundamental de las aplicaciones lineales 3.21;
-  - **3C — Matrices:** traducción completa y cotejada; **17/17 ejercicios resueltos y verificados**; incluye factorización columna–fila y la igualdad entre rango columna y rango fila.
-- Total acumulado de ejercicios resueltos: **165**.
-- Glosario terminológico: **v0.10**.
-- Siguiente bloque: **3D — Invertibilidad e isomorfismos**.
+- **Capítulo 1 — Espacios vectoriales:** primera pasada pública completa; 1A 15/15, 1B 8/8 y 1C 24/24. Total **47/47**. [QA global](CHAPTER1_QA.md).
+- **Capítulo 2 — Espacios vectoriales de dimensión finita:** primera pasada completa; 2A 20/20, 2B 11/11 y 2C 20/20. Total **51/51**. [QA global](CHAPTER2_QA.md).
+- **Capítulo 3 — Aplicaciones lineales:** en desarrollo. Apertura cotejada; 3A **17/17**; 3B **33/33**, incluye 3.21; 3C **17/17**, incluye rango fila = rango columna; **3D** traducción 3.59–3.86 y enunciados 1–24 publicados, **24 soluciones originales en primera revisión matemática**, pendiente del cierre editorial y del caso de matriz vacía en ejercicio 22.
+- Total: **189 soluciones redactadas**; **165 previas verificadas** y **24 de 3D en primera revisión**.
+- Glosario terminológico: **v0.10**, con suplemento de 3D en [`GLOSARIO_3D.md`](GLOSARIO_3D.md).
+- Siguiente bloque tras QA final de 3D: **3E — Productos y cocientes de espacios vectoriales**.
 
-La errata oficial vigente no registra correcciones específicas para las pp. 51–81 de la apertura y 3A–3C. En 3C seguimos dos mejoras presentes en el PDF canónico de 16-08-2026 frente a la copia de 25-03-2024: el caso $c=0$ en la demostración de 3.57 y la hipótesis de espacios no nulos en el Ejercicio 2. La imagen de tercero incluida por Axler en la apertura del capítulo 3 no se reproduce en esta edición de trabajo; su tratamiento licenciatario queda separado del texto CC BY-NC.
+La errata oficial vigente no registra correcciones específicas para las pp. 51–81 de la apertura y 3A–3C, pero **sí** registra en p. 85 una corrección a **3.68**: intercambiar $V$ y $W$ en la última línea del enunciado, ya incorporada en el PDF 2026. En 3C seguimos dos diferencias del PDF de 2026 respecto del de 2024: caso $c=0$ en 3.57 y no nulidad de $V,W$ en el ejercicio 2. La fotografía de tercero en la apertura del capítulo 3 no se reproduce por su licencia diferenciada.
 
 Consulta [STATUS.md](STATUS.md) para el detalle.
 
 ## Terminología
 
-Preferimos una traducción matemáticamente fiel y natural en español. En 3B mantenemos `null T` y `range T` en las fórmulas para conservar la notación de Axler, mientras que en la prosa usamos **espacio nulo** e **imagen**. En 3C reservamos **rango** para *rank*, con **rango columna** y **rango fila** antes de 3.58. Las decisiones terminológicas se documentan en el glosario y pueden ser discutidas mediante Issues o Pull Requests.
+Preferimos español matemáticamente fiel y natural. Conservamos `null T` y `range T` en fórmulas; en prosa, **espacio nulo** e **imagen**. Reservamos **rango** para *rank*; en 3D añadimos **aplicación invertible**, **isomorfismo**, **matriz de cambio de base** y **matrices semejantes**. Los criterios son discutibles mediante Issues y PRs.
