@@ -194,17 +194,23 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.2 — Valor absoluto**. Tras abstraer la estructura de cuerpo ordenado y demostrar su densidad intrínseca, se define
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.3 — Intervalos**. Tras abstraer la estructura de cuerpo ordenado y desarrollar el valor absoluto mediante
 
    $$
    |x|:=\max\{x,-x\},
    $$
 
-   una formulación que usa únicamente la comparabilidad del orden total y no presupone una decisión previa del signo. Se prueban sus propiedades fundamentales, incluida la multiplicatividad, la caracterización $|x|\leq r\iff -r\leq x\leq r$, la desigualdad triangular y la desigualdad triangular inversa. La siguiente incorporación será **§4.3 — Intervalos**.
+   se fijan los intervalos acotados, se caracteriza su habitabilidad mediante testigos explícitos y se distingue esa formulación positiva de la mera no vaciedad clásica. Para $r\geq0$ se establece además
 
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **valor absoluto**, **desigualdad triangular** y **desigualdad triangular inversa**, además de la infraestructura previa.
+   $$
+   x\in[a-r,a+r]\iff |x-a|\leq r.
+   $$
 
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.2. La siguiente incorporación será **§4.3 — Intervalos**.
+   La siguiente incorporación será **§4.4 — Propiedad arquimediana**.
+
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **intervalos acotados** e **intervalos centrados**, además de valor absoluto, desigualdad triangular y la infraestructura previa.
+
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.3. La siguiente incorporación será **§4.4 — Propiedad arquimediana**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
