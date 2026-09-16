@@ -6,7 +6,7 @@ content-type: book
 collection: PM-FIS
 status: published
 date-created: 2026-09-10
-date-modified: 2026-09-10
+date-modified: 2026-09-15
 areas:
   - fisica-matematica
   - fundamentos
@@ -25,6 +25,7 @@ topics:
 prerequisites: []
 related:
   - MA-BCH-0009
+  - MA-BCH-0031
 provenance:
   type: synthesis
   sources:
@@ -118,6 +119,7 @@ La demostración matemática comienza después de declarar las premisas físicas
 ## Capítulos publicados
 
 1. [**Teorías físicas: fenómenos, modelos y leyes**](../capitulos/fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md) (`MA-BCH-0009`) — capítulo fundacional sobre fenómeno, observación, sistema, estado, representación, idealización, ley, modelo, teoría, predicción, selección y revisión de modelos, dominio de validez y exactitud física.
+2. [**Magnitudes, unidades y análisis dimensional**](../capitulos/fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md) (`MA-BCH-0031`) — capítulo completo sobre magnitudes y unidades, SI contemporáneo, dimensión y homogeneidad, cantidades de dimensión uno, escalas, adimensionalización, semejanza, teorema $\Pi$ de Buckingham y modelización dimensional.
 
 ## Publicación progresiva
 
