@@ -115,7 +115,3 @@ $$
 Como $r\geq0$, la [Proposición 4.2.2(6)](#ta-propiedades-elementales-valor-absoluto) equivale esta condición a $|x-a|\leq r$. ∎
 
 ---
-
-::: {.callout-note title="Publicación progresiva"}
-Con §4.3 queda fijada la notación de intervalos acotados y su relación con el valor absoluto. La siguiente entrega será **§4.4 — Propiedad arquimediana**.
-:::

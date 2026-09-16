@@ -6,7 +6,7 @@ content-id: MA-BOK-0003
 content-type: book
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-15
+date-modified: 2026-09-16
 areas:
   - fundamentos
   - analisis
@@ -194,23 +194,23 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.3 — Intervalos**. Tras abstraer la estructura de cuerpo ordenado y desarrollar el valor absoluto mediante
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.4 — Propiedad arquimediana**. Tras abstraer la estructura de cuerpo ordenado, desarrollar el valor absoluto e introducir intervalos, se define la arquimedianidad mediante
 
    $$
-   |x|:=\max\{x,-x\},
+   \forall x\in F\;\exists n\in\mathbb N\quad x<\nu_F(n),
    $$
 
-   se fijan los intervalos acotados, se caracteriza su habitabilidad mediante testigos explícitos y se distingue esa formulación positiva de la mera no vaciedad clásica. Para $r\geq0$ se establece además
+   y se demuestra su equivalencia con la existencia de recíprocos positivos arbitrariamente pequeños:
 
    $$
-   x\in[a-r,a+r]\iff |x-a|\leq r.
+   \forall\varepsilon>0\;\exists n\neq0\quad 0<\nu_F(n)^{-1}<\varepsilon.
    $$
 
-   La siguiente incorporación será **§4.4 — Propiedad arquimediana**.
+   La formulación abstracta recupera exactamente el caso de $\mathbb Q$ probado en el capítulo anterior. La siguiente incorporación será **§4.5 — Densidad de un subcuerpo**.
 
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **intervalos acotados** e **intervalos centrados**, además de valor absoluto, desigualdad triangular y la infraestructura previa.
+6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya la formulación abstracta de la **propiedad arquimediana**, además de intervalos, valor absoluto, desigualdad triangular y la infraestructura previa.
 
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.3. La siguiente incorporación será **§4.4 — Propiedad arquimediana**.
+Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.4. La siguiente incorporación será **§4.5 — Densidad de un subcuerpo**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
