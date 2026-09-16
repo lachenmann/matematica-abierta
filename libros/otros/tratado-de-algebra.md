@@ -6,7 +6,7 @@ content-id: MA-BOK-0007
 content-type: book
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-15
+date-modified: 2026-09-16
 areas:
   - algebra
   - fundamentos
@@ -36,6 +36,7 @@ related:
   - MA-BCH-0030
   - MA-BCH-0032
   - MA-BCH-0033
+  - MA-BCH-0034
 provenance:
   type: original
   sources: []
@@ -221,6 +222,7 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 9. [**Capítulo 6 — Subestructuras y criterio de subgrupo**](../capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) (`MA-BCH-0030`) — construye la restricción canónica de una operación a subconjuntos cerrados, define submagmas, subsemigrupos, submonoides y subgrupos y demuestra el criterio de subgrupo de una sola condición.
 10. [**Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](../capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) (`MA-BCH-0032`) — introduce la noción de homomorfismo desde magmas hasta grupos, demuestra estabilidad bajo identidad y composición y prueba que, en grupos, la preservación del neutro y de los inversos se deduce de la preservación de la operación.
 11. [**Capítulo 8 — Isomorfismos**](../capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md) (`MA-BCH-0033`) — define isomorfismos como homomorfismos biyectivos, demuestra estabilidad bajo inversas, identidades y composición, introduce la relación de isomorfía y la distingue de la igualdad literal.
+12. [**Capítulo 9 — Núcleo e imagen de homomorfismos de grupos**](../capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md) (`MA-BCH-0034`) — construye núcleo e imagen como subgrupos canónicos de un homomorfismo y caracteriza la inyectividad mediante el núcleo trivial y la sobreyectividad mediante la imagen total.
 
 ### Ruta prevista
 
@@ -229,4 +231,4 @@ La fuente de trabajo tiene cerrada actualmente la infraestructura inicial de fun
 - **Parte II — Monoides y grupos:** semigrupos, monoides, grupos, grupos abelianos, subgrupos, homomorfismos, isomorfismos, núcleo e imagen, subgrupos normales, clases laterales, grupos cociente y primer teorema de isomorfía.
 - **Partes posteriores:** anillos y dominios; cuerpos; estructuras ordenadas; espacios vectoriales; homomorfismos y cocientes en estructuras posteriores; álgebra multilineal básica.
 
-La siguiente incorporación pública será el **Capítulo 9 — Núcleo e imagen de homomorfismos de grupos**.
+La siguiente incorporación pública será el **Capítulo 10 — Subgrupos normales**.
