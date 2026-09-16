@@ -120,7 +120,7 @@ $$
 
 **Objetivo.** Construir y demostrar única una función $\star_B:B\times B\to B$ que coincida con $\star$ sobre $B\times B$.
 
-Por [`TALG-IMP-00001`](tratado-de-algebra-capitulo-0-interfaz-fundacional.md#talg-imp-00001), la operación $\star$ es una función con dominio $A\times A$, codominio $A$ y cierto grafo $G_\star$. Mediante Separación formamos
+Por [`TALG-IMP-00001`](tratado-de-algebra-capitulo-0-interfaz-fundacional.md#talg-imp-00001), la operación $\star$ es una función con dominio $A\times A$, codominio $A$ y cierto grafo $G_\star$. Mediante separación formamos
 
 $$
 G_B
@@ -221,7 +221,7 @@ donde
 1. $\varnothing\neq B\subseteq A$;
 2. $B$ es cerrado bajo $\star$.
 
-Por [`TALG-LEM-00001`](#talg-lem-00001), $\star_B$ es una operación binaria sobre $B$; por la no vacuidad de $B$, la estructura inducida es efectivamente un magma.
+Por [`TALG-LEM-00001`](#talg-lem-00001), $\star_B$ es una operación binaria sobre $B$; por la no vacuidad de $B$, la estructura inducida es entonces un magma.
 
 ### Proposición 6.2.2 — La asociatividad se hereda por restricción {#talg-pro-00003}
 
@@ -465,7 +465,7 @@ $$
 a\star b^{-1}\in H.
 $$
 
-Como $H$ es no vacío, existe $h\in H$. Aplicando la condición a $a=h$ y $b=h$,
+Como trabajamos en lógica clásica, de $H\neq\varnothing$ obtenemos $\exists h\in H$ por negación cuantificacional clásica. Sea, pues, $h\in H$. Aplicando la condición a $a=h$ y $b=h$,
 
 $$
 h\star h^{-1}=e_{\mathcal G}\in H.
@@ -509,7 +509,77 @@ $$
 
 Hemos demostrado que $H$ contiene el neutro, es cerrado bajo $\star$ y es cerrado bajo inversos. Por [`TALG-DEF-00015`](#talg-def-00015), $H$ determina un subgrupo de $\mathcal G$.
 
-No se ha utilizado elección: el elemento $h\in H$ se toma mediante eliminación existencial a partir de la hipótesis $H\neq\varnothing$. $\square$
+No se ha utilizado elección. Sí se ha utilizado lógica clásica en el paso $H\neq\varnothing\Rightarrow\exists h\in H$; por ello esta formulación debe leerse como un criterio clásico. La variante constructivamente compatible correspondiente se registra en [`TALG-LEM-00004`](#talg-lem-00004). $\square$
+
+### Lema 6.4.4 — Criterio constructivo de subgrupo para subconjuntos habitados {#talg-lem-00004}
+
+**Coordenada:** `TALG-LEM-00004`
+
+**Dependencias deductivas:** [`TALG-DEF-00015`](#talg-def-00015) — subgrupo; [`TALG-NOT-00003`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-not-00003) — inverso; [`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) — unicidad del inverso.
+
+Sea $\mathcal G=\langle G,\star\rangle$ un grupo y sea $H\subseteq G$. Son equivalentes:
+
+1. $H$ determina un subgrupo de $\mathcal G$;
+2. $H$ está **habitado**, es decir,
+   $$
+   \exists h\in H,
+   $$
+   y para todos $a,b\in H$,
+   $$
+   a\star b^{-1}\in H.
+   $$
+
+#### Demostración {#talg-prf-00088}
+
+**Coordenada de prueba:** `TALG-PRF-00088`
+
+**$(1)\Rightarrow(2)$.** Si $H$ determina un subgrupo, entonces $e_{\mathcal G}\in H$. Por tanto $H$ está habitado, con testigo explícito $e_{\mathcal G}$. Si $a,b\in H$, el cierre bajo inversos da $b^{-1}\in H$ y el cierre bajo $\star$ produce
+
+$$
+a\star b^{-1}\in H.
+$$
+
+**$(2)\Rightarrow(1)$.** Supongamos
+
+$$
+\exists h\in H
+$$
+
+y
+
+$$
+\forall a,b\in H,\qquad a\star b^{-1}\in H.
+$$
+
+Por eliminación existencial ordinaria, tomemos localmente un testigo $h\in H$. Entonces
+
+$$
+h\star h^{-1}=e_{\mathcal G}\in H.
+$$
+
+Si $b\in H$, como $e_{\mathcal G}\in H$, la hipótesis aplicada a $e_{\mathcal G}$ y $b$ da
+
+$$
+e_{\mathcal G}\star b^{-1}=b^{-1}\in H.
+$$
+
+Así, $H$ es cerrado bajo inversos. Finalmente, si $a,b\in H$, entonces $b^{-1}\in H$ y la hipótesis aplicada a $a$ y $b^{-1}$ da
+
+$$
+a\star(b^{-1})^{-1}\in H.
+$$
+
+Por unicidad del inverso ([`TALG-PRO-00002`](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)), $(b^{-1})^{-1}=b$, de modo que
+
+$$
+a\star b\in H.
+$$
+
+Hemos obtenido el neutro ambiente, cierre bajo la operación y cierre bajo inversos. Por [`TALG-DEF-00015`](#talg-def-00015), $H$ determina un subgrupo de $\mathcal G$.
+
+No se ha utilizado lógica clásica sustantiva ni elección. El testigo de habitabilidad se usa sólo localmente mediante eliminación existencial. $\square$
+
+> **Lectura fundacional.** [`TALG-THM-00001`](#talg-thm-00001) y [`TALG-LEM-00004`](#talg-lem-00004) tienen el mismo contenido en lógica clásica. Bajo lectura constructiva, `TALG-LEM-00004` es más informativo porque la habitabilidad aporta exactamente el testigo que la prueba necesita.
 
 ## 6.5. Lectura estructural
 
@@ -537,7 +607,9 @@ El criterio de subgrupo condensa varias de estas verificaciones en una sola cond
 - **Submonoide:** [`TALG-DEF-00014`](#talg-def-00014).
 - **Herencia de grupo:** [`TALG-PRO-00005`](#talg-pro-00005), con prueba [`TALG-PRF-00006`](#talg-prf-00006).
 - **Subgrupo:** [`TALG-DEF-00015`](#talg-def-00015).
-- **Criterio de subgrupo:** [`TALG-THM-00001`](#talg-thm-00001), con prueba [`TALG-PRF-00007`](#talg-prf-00007).
+- **Criterio clásico de subgrupo:** [`TALG-THM-00001`](#talg-thm-00001), con prueba [`TALG-PRF-00007`](#talg-prf-00007); usa negación cuantificacional clásica en $H\neq\varnothing\Rightarrow\exists h\in H$.
+- **Criterio constructivamente compatible para subconjuntos habitados:** [`TALG-LEM-00004`](#talg-lem-00004), con prueba [`TALG-PRF-00088`](#talg-prf-00088).
+- **Axioma de elección:** no utilizado en ninguno de los dos criterios.
 - **Circularidad:** ninguna.
 - **Siguiente nodo:** `TALG-DEF-00016` — homomorfismo de magmas.
 
