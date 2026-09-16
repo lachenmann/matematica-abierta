@@ -16,6 +16,8 @@ topics:
   - cuerpos-ordenados
   - completitud
   - arquimedianidad
+  - densidad
+  - subcuerpos
   - numeros-reales
   - valor-absoluto
   - intervalos
@@ -48,3 +50,5 @@ license: GFDL-1.3-or-later
 {{< include _tratado-cap4-03.md >}}
 
 {{< include _tratado-cap4-04.md >}}
+
+{{< include _tratado-cap4-05.md >}}
