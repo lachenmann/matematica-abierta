@@ -37,6 +37,7 @@ topics:
   - subcuerpos
   - valor-absoluto
   - desigualdades
+  - intervalos
 prerequisites: []
 related:
   - MA-BOK-0003
@@ -136,6 +137,8 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 [Inducción fuerte](#gl-induccion-fuerte) ·
 [Ínfimo](#gl-infimo) ·
 [Intersección](#gl-interseccion) ·
+[Intervalos acotados](#gl-intervalos-acotados) ·
+[Intervalos centrados](#gl-intervalos-centrados) ·
 [Inyectividad](#gl-inyectividad) ·
 [Lógica clásica](#gl-logica-clasica) ·
 [Máximo](#gl-maximo) ·
@@ -272,3 +275,5 @@ El enlace **En el Tratado** conduce al punto exacto donde la noción se introduc
 {{< include _tratado-glosario-28.md >}}
 
 {{< include _tratado-glosario-29.md >}}
+
+{{< include _tratado-glosario-30.md >}}
