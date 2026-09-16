@@ -195,8 +195,10 @@ este libro mantendrá constantemente otras tres:
 $$
 \boxed{
 \text{«¿qué estructura estamos usando?»}
-\qquad\text{«¿qué se preserva?»}
-\qquad\text{«¿de qué depende?»}
+\qquad
+\text{«¿qué se preserva?»}
+\qquad
+\text{«¿de qué depende?»}
 }
 $$
 
