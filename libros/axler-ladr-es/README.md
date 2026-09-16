@@ -1,58 +1,28 @@
 # Linear Algebra Done Right — edición española abierta
 
-Traducción española abierta y colaborativa de *Linear Algebra Done Right*, 4.ª edición, de Sheldon Axler.
+Traducción española abierta y colaborativa de *Linear Algebra Done Right*, 4.ª edición, de Sheldon Axler. **Edición no oficial:** no está avalada por Sheldon Axler ni por Springer.
 
-> **Estado:** trabajo en curso. No es una traducción oficial ni está avalada por Sheldon Axler o Springer.
+## Fuente canónica y licencia
 
-## Fuente canónica
+- [PDF oficial del autor](https://linear.axler.net/LADR4e.pdf), versión de 16 de agosto de 2026.
+- [Página del autor](https://linear.axler.net/) y [errata oficial](https://linear.axler.net/LADRErrata4e.html).
+- Original de Sheldon Axler ©2024, **Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)**. Traducción y aportaciones originales bajo esa misma licencia, salvo indicación expresa. [Texto de la licencia](https://creativecommons.org/licenses/by-nc/4.0/). Este subdirectorio es una excepción expresa a la licencia general del repositorio.
+- No se aloja una copia del PDF original en GitHub; las imágenes de terceros requieren examen licenciatario separado. La fotografía de la apertura del capítulo 3 no se reproduce.
 
-Se trabaja contra el PDF oficial más reciente publicado por Sheldon Axler:
+## Colaboración y aparato
 
-- <https://linear.axler.net/LADR4e.pdf>
-- sitio oficial: <https://linear.axler.net/>
-- errata oficial: <https://linear.axler.net/LADRErrata4e.html>
+Se reciben correcciones en Issues y Pull Requests; consultar [CONTRIBUTING.md](CONTRIBUTING.md). Se mantienen diferenciadas las capas `[AXLER]` original, `[TRAD]` traducción, `[SOL]` soluciones propias, `[NOTA]` aportes propios y `[ERRATA]` intervenciones/correcciones de fuente. No atribuir al autor las soluciones o notas de Matemática Abierta. Publicación como **contenido abierto no comercial**, no «open source» en el sentido estricto de OSI.
 
-La versión canónica actualmente fijada es la de **16 de agosto de 2026**. Las copias anteriores se usan sólo como testimonio de control.
+## Avance de la primera pasada
 
-## Licencia
+- **Capítulo 1 — Espacios vectoriales:** 1A (15), 1B (8), 1C (24); **47/47 soluciones verificadas**; [QA](CHAPTER1_QA.md).
+- **Capítulo 2 — Espacios vectoriales de dimensión finita:** 2A (20), 2B (11), 2C (20); **51/51 verificadas**; [QA](CHAPTER2_QA.md).
+- **Capítulo 3 — Aplicaciones lineales:** 3A (17), 3B (33), 3C (17), todos verificados en el estado de primera pasada registrado; total 3A–3C: 67.
+- **3D — Invertibilidad e isomorfismos:** texto 3.59–3.86 y 24 enunciados traducidos; **24 soluciones redactadas**, revisión independiente pendiente. El problema de la matriz vacía del ejercicio 22 queda resuelto *en el plano editorial*, sin atribuir a Axler una convención adicional; consultar [QA de 3D](CHAPTER3D_QA.md).
+- **3E — Productos y cocientes de espacios vectoriales:** [texto 3.87–3.107](traduccion/03-capitulo-3/3e-productos-cocientes.md), [19 enunciados](traduccion/03-capitulo-3/3e-ejercicios.md), [19 soluciones originales](soluciones/03-capitulo-3/3e.md); **primera pasada publicada, segunda revisión pendiente**. [QA de 3E](CHAPTER3E_QA.md).
 
-La obra original de Sheldon Axler está publicada bajo **Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)**. Esta traducción/adaptación y, salvo indicación expresa, las contribuciones originales integradas en este subproyecto se distribuyen también bajo **CC BY-NC 4.0**.
+**Acumulado: 208 soluciones redactadas; 165 de las secciones anteriores ya constaban como verificadas, 43 de 3D–3E siguen pendientes de QA final.** Ninguna unidad se promueve a `CERRADO` sin segunda lectura y revisión editorial.
 
-Este subdirectorio constituye una excepción explícita a la licencia general del repositorio `matematica-abierta`.
+**Terminología:** [glosario principal v0.10](GLOSARIO.md), [suplemento 3D](GLOSARIO_3D.md) y [suplemento 3E](GLOSARIO_3E.md); ambos suplementos están pendientes de integración y no incrementan de forma ficticia la versión general. Se preserva $\operatorname{null}T$, $\operatorname{range}T$ y la distinción *range* = imagen frente a *rank* = rango.
 
-Licencia: <https://creativecommons.org/licenses/by-nc/4.0/>.
-
-## Colaborar
-
-La comunidad puede proponer correcciones y mejoras mediante **Issues** y **Pull Requests**. Son especialmente bienvenidas las correcciones de traducción y soluciones, observaciones terminológicas, erratas matemáticas o tipográficas, mejoras de claridad y QA de LaTeX, referencias y numeración.
-
-Consulta [CONTRIBUTING.md](CONTRIBUTING.md) antes de enviar una propuesta.
-
-## Criterio editorial
-
-Separamos siempre cinco capas:
-
-- `[AXLER]` contenido del original;
-- `[TRAD]` traducción;
-- `[SOL]` soluciones propias;
-- `[NOTA]` ampliaciones propias;
-- `[ERRATA]` correcciones o intervenciones respecto de la fuente.
-
-Las unidades se publican inicialmente como borradores y sólo pasan a estado cerrado después de cotejo matemático, terminológico y editorial.
-
-## Estado actual
-
-- **Capítulo 1 — Espacios vectoriales:** primera pasada pública completa; 1A 15/15, 1B 8/8 y 1C 24/24. Total **47/47**. [QA global](CHAPTER1_QA.md).
-- **Capítulo 2 — Espacios vectoriales de dimensión finita:** primera pasada completa; 2A 20/20, 2B 11/11 y 2C 20/20. Total **51/51**. [QA global](CHAPTER2_QA.md).
-- **Capítulo 3 — Aplicaciones lineales:** en desarrollo. Apertura cotejada; 3A **17/17**; 3B **33/33**, incluye 3.21; 3C **17/17**, incluye rango fila = rango columna; **3D** traducción 3.59–3.86 y enunciados 1–24 publicados, **24 soluciones originales en primera revisión matemática**, pendiente del cierre editorial y del caso de matriz vacía en ejercicio 22.
-- Total: **189 soluciones redactadas**; **165 previas verificadas** y **24 de 3D en primera revisión**.
-- Glosario terminológico: **v0.10**, con suplemento de 3D en [`GLOSARIO_3D.md`](GLOSARIO_3D.md).
-- Siguiente bloque tras QA final de 3D: **3E — Productos y cocientes de espacios vectoriales**.
-
-La errata oficial vigente no registra correcciones específicas para las pp. 51–81 de la apertura y 3A–3C, pero **sí** registra en p. 85 una corrección a **3.68**: intercambiar $V$ y $W$ en la última línea del enunciado, ya incorporada en el PDF 2026. En 3C seguimos dos diferencias del PDF de 2026 respecto del de 2024: caso $c=0$ en 3.57 y no nulidad de $V,W$ en el ejercicio 2. La fotografía de tercero en la apertura del capítulo 3 no se reproduce por su licencia diferenciada.
-
-Consulta [STATUS.md](STATUS.md) para el detalle.
-
-## Terminología
-
-Preferimos español matemáticamente fiel y natural. Conservamos `null T` y `range T` en fórmulas; en prosa, **espacio nulo** e **imagen**. Reservamos **rango** para *rank*; en 3D añadimos **aplicación invertible**, **isomorfismo**, **matriz de cambio de base** y **matrices semejantes**. Los criterios son discutibles mediante Issues y PRs.
+**Siguiente bloque:** revisión editorial independiente de 3D–3E y **3F — Dualidad**. Para detalles del estado y dependencias, consultar [STATUS.md](STATUS.md).
