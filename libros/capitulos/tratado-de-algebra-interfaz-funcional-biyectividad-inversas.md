@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-14
+date-modified: 2026-09-15
 areas:
   - algebra
   - fundamentos
@@ -43,7 +43,7 @@ El tratado ya dispone, mediante la [**interfaz fundacional**](tratado-de-algebra
 
 No importamos todavía imágenes, preimágenes, relaciones de equivalencia ni cocientes. La ampliación se mantiene deliberadamente mínima para evitar dependencias prematuras.
 
-## 1. Interfaz importada
+## 1. Interfaz importada {#talg-imp-00002}
 
 Quedan autorizados en el *Tratado moderno de Álgebra* los siguientes resultados y convenciones ya cerrados en el capítulo fundacional del *Tratado moderno de Análisis*.
 
