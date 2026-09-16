@@ -62,9 +62,11 @@ Las reglas usuales de signos, la positividad de $1_F$ y la inversión del orden 
 
 **En este tratado.** Un subconjunto $K\subseteq F$ es subcuerpo de un cuerpo $F$ cuando contiene $0_F$ y $1_F$, es cerrado bajo suma, producto y opuestos, y contiene $x^{-1}$ siempre que $x\in K$ sea no nulo. Con las operaciones restringidas, $K$ es entonces un cuerpo.
 
-**En el Tratado:** [Definición 4.1.7 — Subcuerpo](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-subcuerpo).
+Si además $F$ es un cuerpo ordenado arquimediano, todo subcuerpo $K\subseteq F$ es **denso en $F$**: para cualesquiera $x<y$ existe $q\in K$ con $x<q<y$.
 
-**Véase también:** [Cuerpo](#gl-cuerpo), [Subconjunto](#gl-subconjunto), [Subcuerpo primo](#gl-subcuerpo-primo).
+**En el Tratado:** [Definición 4.1.7 — Subcuerpo](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-subcuerpo) y [Corolario 4.5.2 — Todo subcuerpo de un cuerpo arquimediano es denso](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-todo-subcuerpo-denso-arquimediano).
+
+**Véase también:** [Cuerpo](#gl-cuerpo), [Subconjunto](#gl-subconjunto), [Subcuerpo primo](#gl-subcuerpo-primo), [Propiedad arquimediana](#gl-propiedad-arquimediana).
 
 ---
 
@@ -78,10 +80,10 @@ $$
 P_F:=\bigcap_{K\in\mathcal S_F}K.
 $$
 
-Se demuestra que $P_F$ es un subcuerpo de $F$ y que está contenido en todo subcuerpo de $F$. En un cuerpo ordenado, todos los numerales $\nu_F(n)$ pertenecen a $P_F$.
+Se demuestra que $P_F$ es un subcuerpo de $F$ y que está contenido en todo subcuerpo de $F$. En un cuerpo ordenado, todos los numerales $\nu_F(n)$ pertenecen a $P_F$. Si el cuerpo ordenado es además arquimediano, $P_F$ es denso: entre cualesquiera $x<y$ en $F$ existe $q\in P_F$ con $x<q<y$.
 
-**En el Tratado:** [Definición 4.1.8 — Subcuerpo primo](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-subcuerpo-primo) y [Proposición 4.1.9 — Minimalidad del subcuerpo primo](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-minimalidad-subcuerpo-primo).
+**En el Tratado:** [Definición 4.1.8 — Subcuerpo primo](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-subcuerpo-primo), [Proposición 4.1.9 — Minimalidad del subcuerpo primo](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-minimalidad-subcuerpo-primo) y [Teorema 4.5.1 — Densidad del subcuerpo primo en un cuerpo arquimediano](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-densidad-subcuerpo-primo-arquimediano).
 
-**Véase también:** [Subcuerpo](#gl-subcuerpo), [Aplicación canónica de numerales naturales](#gl-numerales-naturales-cuerpo-ordenado).
+**Véase también:** [Subcuerpo](#gl-subcuerpo), [Aplicación canónica de numerales naturales](#gl-numerales-naturales-cuerpo-ordenado), [Propiedad arquimediana](#gl-propiedad-arquimediana).
 
 ---
