@@ -24,7 +24,7 @@
 | MA-CON-0005 | concept | Propiedades del orden en ℝ y manipulación de desigualdades | `conceptos/propiedades-del-orden-en-r-y-manipulacion-de-desigualdades.md` | published |
 | MA-CON-0006 | concept | Operaciones con conjuntos reales: unión, intersección, complemento y diferencia | `conceptos/operaciones-con-conjuntos-reales.md` | published |
 | MA-CON-0007 | concept | Funciones reales: dominio, codominio, imagen y preimagen | `conceptos/funciones-reales-dominio-codominio-imagen-y-preimagen.md` | published |
-| MA-CON-0008 | concept | Composición de funciones e identidad | `conceptos/composicion-de-funciones-e-identidad.md` | published |
+| MA-CON-0008 | concept | Composición de funciones e identidad | `conceptos/composicion-de-funciones-identidad.md` | published |
 | MA-CON-0009 | concept | Inyectividad, sobreyectividad y biyectividad | `conceptos/inyectividad-sobreyectividad-y-biyectividad.md` | published |
 | MA-CON-0010 | concept | Funciones inversas | `conceptos/funciones-inversas.md` | published |
 | MA-CON-0011 | concept | Límite de una función en un punto | `conceptos/limite-de-una-funcion-en-un-punto.md` | published |
@@ -79,7 +79,7 @@
 | MA-BCH-0029 | book-chapter | Tratado de análisis — Capítulo 4: Cuerpos ordenados y el problema de la completitud | `libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md` | published |
 | MA-BCH-0030 | book-chapter | Tratado moderno de Álgebra — Capítulo 6: Subestructuras y criterio de subgrupo | `libros/capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md` | published |
 | MA-BCH-0031 | book-chapter | Magnitudes, unidades y análisis dimensional | `libros/capitulos/fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md` | published |
-| MA-BCH-0032 | book-chapter | Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos | `libros/capitulos/tratado-de-algebra-capitulo-7-homomorfismos-magma-monoides-grupos.md` | published |
+| MA-BCH-0032 | book-chapter | Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos | `libros/capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md` | published |
 | MA-BCH-0033 | book-chapter | Tratado moderno de Álgebra — Capítulo 8: Isomorfismos | `libros/capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md` | published |
 | MA-BCH-0034 | book-chapter | Tratado moderno de Álgebra — Capítulo 9: Núcleo e imagen de homomorfismos de grupos | `libros/capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md` | published |
 | MA-BCH-0035 | book-chapter | Tratado moderno de Álgebra — Capítulo 10: Subgrupos normales | `libros/capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md` | published |
