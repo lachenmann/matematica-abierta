@@ -12,7 +12,7 @@ La demostración se obtiene encajando $x$ e $y$ entre sus valores absolutos y ap
 
 **En el Tratado:** [Teorema 4.2.3 — Desigualdad triangular](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-desigualdad-triangular).
 
-**Artículo transversal:** [Desigualdad triangular: demostraciones, variantes y aplicaciones](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) (`MA-ART-0002`).
+**Artículo transversal:** [Desigualdad triangular: demostraciones, variantes y aplicaciones](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) (`MA-ART-0003`).
 
 **Véase también:** [Valor absoluto](#gl-valor-absoluto), [Desigualdad triangular inversa](#gl-desigualdad-triangular-inversa).
 
