@@ -22,6 +22,14 @@ jobs:
           node --check teoria/resultados/interactive/desigualdad-triangular.js
           node --test tests/triangle-lab.test.mjs
 
+      - name: Verify canonical article ID and embedded laboratory
+        run: |
+          article=teoria/resultados/desigualdad-triangular.qmd
+          grep -qx 'content-id: MA-ART-0003' "$article"
+          ! grep -q 'MA-ART-0002' "$article"
+          grep -q 'tri-historia' "$article"
+          grep -q '<iframe src="interactive/desigualdad-triangular.html"' "$article"
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
