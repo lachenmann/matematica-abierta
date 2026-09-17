@@ -88,7 +88,8 @@ Para (5), usamos sólo la comparabilidad positiva $0\leq x\lor x\leq0$ y $0\leq 
   $$
   xy=(-x)(-y)\geq0,
   $$
-  de modo que $|xy|=xy=(-x)(-y)=|x||y|$.
+  de modo que $|xy|=xy=(-x)(-y)=|x||y|.
+  $$
 - Si $x\leq0\leq y$, entonces $(-x)y\geq0$ y $xy=-((-x)y)\leq0$, de modo que
   $$
   |xy|=-xy=(-x)y=|x||y|.
@@ -112,6 +113,8 @@ Recíprocamente, si $-r\leq x\leq r$, entonces $x\leq r$ y, al invertir $-r\leq 
 ### Teorema 4.2.3 — Desigualdad triangular {#ta-desigualdad-triangular}
 
 *Glosario: [desigualdad triangular](../otros/tratado-de-analisis-glosario.md#gl-desigualdad-triangular)*
+
+*Referencia transversal: [demostraciones, variantes y aplicaciones de la desigualdad triangular](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) (`MA-ART-0003`).*
 
 Para $x,y\in F$,
 
@@ -153,6 +156,8 @@ $$
 
 *Glosario: [desigualdad triangular inversa](../otros/tratado-de-analisis-glosario.md#gl-desigualdad-triangular-inversa)*
 
+*Referencia transversal: [desigualdad triangular inversa y su demostración](../../teoria/resultados/desigualdad-triangular.qmd#tri-inversa).*
+
 Para $x,y\in F$,
 
 $$
@@ -186,3 +191,9 @@ $$
 $$
 
 Por la caracterización del valor absoluto mediante dos desigualdades, se sigue el resultado. ∎
+
+---
+
+::: {.callout-note title="Publicación progresiva"}
+Con §4.2 queda construido el valor absoluto en un cuerpo ordenado y demostradas sus desigualdades fundamentales. La siguiente entrega será **§4.3 — Intervalos**.
+:::

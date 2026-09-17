@@ -7,7 +7,7 @@ collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-10
+date-modified: 2026-09-16
 areas:
   - fundamentos
   - calculo
@@ -38,6 +38,7 @@ related:
   - MA-CON-0002
   - MA-CON-0016
   - MA-PRB-0006
+  - MA-ART-0003
   - MA-BOK-0001
 provenance:
   type: original
@@ -62,6 +63,10 @@ license: GFDL-1.3-or-later
 {{< include _calculo-t1-c02-02d.md >}}
 
 {{< include _calculo-t1-c02-03.md >}}
+
+::: {.callout-note title="Referencia transversal: desigualdad triangular"}
+Las demostraciones de esta sección se complementan con el artículo [La desigualdad triangular: demostraciones, variantes y su papel en el análisis](../../teoria/resultados/desigualdad-triangular.qmd) (`MA-ART-0003`). Consulta directamente la [desigualdad en cuerpos ordenados](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) o su [variante inversa](../../teoria/resultados/desigualdad-triangular.qmd#tri-inversa), según el resultado citado.
+:::
 
 {{< include _calculo-t1-c02-04.md >}}
 

@@ -17,6 +17,19 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
 
+      - name: Check laboratory JavaScript and interactions
+        run: |
+          node --check teoria/resultados/interactive/desigualdad-triangular.js
+          node --test tests/triangle-lab.test.mjs
+
+      - name: Verify canonical article ID and embedded laboratory
+        run: |
+          article=teoria/resultados/desigualdad-triangular.qmd
+          grep -qx 'content-id: MA-ART-0003' "$article"
+          ! grep -q 'MA-ART-0002' "$article"
+          grep -q 'tri-historia' "$article"
+          grep -q '<iframe src="interactive/desigualdad-triangular.html"' "$article"
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
@@ -24,3 +37,22 @@ jobs:
 
       - name: Render site
         run: quarto render
+
+      - name: Verify laboratory assets and rendered page
+        run: |
+          test -s _site/teoria/resultados/desigualdad-triangular.html
+          test -s _site/teoria/resultados/laboratorio-desigualdad-triangular.html
+          test -s _site/teoria/resultados/interactive/desigualdad-triangular.html
+          test -s _site/teoria/resultados/interactive/desigualdad-triangular.css
+          test -s _site/teoria/resultados/interactive/desigualdad-triangular.js
+          grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/desigualdad-triangular.html
+          grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
+          grep -q 'MA-ART-0003' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
+
+      - name: Preserve rendered site for visual and link QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: triangular-site-qa
+          path: _site/
+          retention-days: 2
+          if-no-files-found: error
