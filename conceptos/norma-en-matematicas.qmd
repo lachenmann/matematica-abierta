@@ -1,0 +1,541 @@
+---
+title: "La norma en matemáticas: medir magnitudes, distancias y estructuras"
+description: "De Pitágoras a los espacios normados: axiomas, demostraciones, normas p, equivalencia, geometría, funciones, operadores, convergencia y completitud."
+content-id: MA-ART-0006
+content-type: article
+status: published
+date-created: 2026-09-17
+date-modified: 2026-09-17
+areas:
+  - fundamentos
+  - algebra-lineal
+  - analisis
+  - geometria
+topics:
+  - norma
+  - espacios-normados
+  - desigualdad-triangular
+  - metrica
+  - convergencia
+level: intermedio-avanzado
+related:
+  - MA-ART-0003
+  - MA-ART-0004
+publication-target: "conceptos/norma-en-matematicas.qmd"
+publication-state: "web-source"
+provenance:
+  type: original-synthesis
+  note: "Versión web derivada de la fuente maestra MA-ART-0006, conservada en la bóveda Obsidian de Matemática Abierta."
+license: GFDL-1.3-or-later
+---
+
+# La norma en matemáticas: medir magnitudes, distancias y estructuras
+
+::: {.callout-note title="Idea central"}
+Una **norma** asigna a cada vector una magnitud no negativa, compatible con la multiplicación por escalares y con la suma. Sus requisitos esenciales son la **positividad definida**, la **homogeneidad absoluta** y la **desigualdad triangular**. La elección de una norma permite definir distancias, bolas, convergencia y continuidad; no toda norma procede de un producto interno y no toda distancia procede de una norma.
+:::
+
+¿Qué significa medir un objeto matemático? En geometría euclidiana hablamos de longitudes. En análisis podemos querer medir el tamaño de una función, el error de una aproximación o cuánto amplifica una transformación lineal una perturbación. No buscamos una fórmula universal, sino las propiedades que deben compartir distintas maneras coherentes de medir.
+
+**Objetivo de lectura.** Reconocer y demostrar que una función es una norma; distinguir normas, métricas y seminormas; demostrar consecuencias fundamentales; comparar las normas principales de $\mathbb R^n$; y explicar el papel de la norma en análisis. Para la sección sobre normas $p$ generales conviene conocer desigualdades elementales y derivación.
+
+## 1. De Pitágoras a la idea de norma {#norma-intuicion}
+
+### 1.1. Recordatorio: la longitud de la hipotenusa
+
+El **teorema de Pitágoras** afirma que, en un triángulo rectángulo con catetos de longitudes $a$ y $b$ e hipotenusa de longitud $c$,
+
+$$
+c^2=a^2+b^2,\qquad c=\sqrt{a^2+b^2},
+$$
+
+porque la longitud $c$ es no negativa. Un desplazamiento de $3$ unidades horizontales y $4$ verticales tiene longitud $\sqrt{3^2+4^2}=5$. Las componentes de un vector $v=(x,y)$ forman los catetos; su longitud habitual es
+
+$$
+L(v)=\sqrt{x^2+y^2}.
+$$
+
+Los signos indican el sentido del desplazamiento, pero no afectan a la longitud.
+
+### 1.2. Del plano a espacios con más coordenadas
+
+En el espacio tridimensional aplicamos Pitágoras dos veces: a la proyección horizontal y después a esta proyección junto con la componente vertical. Así,
+
+$$
+L(x,y,z)=\sqrt{(x^2+y^2)+z^2}=\sqrt{x^2+y^2+z^2}.
+$$
+
+El patrón se extiende a $n$ coordenadas reales:
+
+$$
+\boxed{L(x_1,\ldots,x_n)=\sqrt{x_1^2+\cdots+x_n^2}.}
+$$
+
+Para $n>3$ no precisamos visualizar literalmente el espacio: la fórmula expresa la generalización algebraica de la longitud euclidiana. Más adelante la llamaremos *norma euclidiana* y verificaremos sus axiomas: el nombre geométrico no sustituye una prueba.
+
+### 1.3. ¿Es ésta la única manera razonable de medir?
+
+Para el vector $v=(3,4)$ podemos obtener mediciones distintas:
+
+$$
+\underbrace{\sqrt{3^2+4^2}}_{5},\qquad
+\underbrace{|3|+|4|}_{7},\qquad
+\underbrace{\max\{|3|,|4|\}}_{4}.
+$$
+
+Las tres reglas se generalizan al plano:
+
+$$
+\|v\|_1=|v_1|+|v_2|,\qquad
+\|v\|_2=\sqrt{v_1^2+v_2^2},\qquad
+\|v\|_\infty=\max\{|v_1|,|v_2|\}.
+$$
+
+¿Por qué llamar «medidas» a todas? Aunque asignan números distintos, únicamente el vector cero tiene medida cero; escalar un vector multiplica su medida por el valor absoluto del factor; y la medida de una suma no supera la suma de medidas.
+
+::: {.callout-tip title="Antes de formalizar"}
+Para $(3,4)$, explica por qué las tres reglas dan $5$, $7$ y $4$. Si duplicamos el vector, ¿qué ocurre con cada resultado? ¿Podría una regla que asigna la misma medida a $v$ y a $2v$, con $v\ne0$, expresar una longitud compatible con la escala?
+:::
+
+**El paso conceptual** es abandonar la exigencia de una fórmula pitagórica, pero conservar las propiedades que hacen coherente la medición. No toda norma satisface una identidad pitagórica: esta pertenece a la geometría de los productos internos, no a la definición general.
+
+## 2. Definición rigurosa de norma {#norma-definicion}
+
+**Definición.** Sea $V$ un espacio vectorial sobre $\mathbb K$, con $\mathbb K=\mathbb R$ o $\mathbb C$. Una **norma** es una aplicación
+
+$$
+\|\cdot\|:V\longrightarrow[0,\infty)
+$$
+
+que satisface, para cualesquiera $x,y\in V$ y $\lambda\in\mathbb K$:
+
+1. **Positividad definida:** $\|x\|=0$ si y sólo si $x=0$.
+2. **Homogeneidad absoluta:** $\|\lambda x\|=|\lambda|\,\|x\|$.
+3. **Desigualdad triangular:** $\|x+y\|\le\|x\|+\|y\|$.
+
+El codominio asegura $\|x\|\ge0$. Se llama **espacio vectorial normado** al par $(V,\|\cdot\|)$. La primera propiedad impide que un vector no nulo tenga magnitud cero; la segunda rige los cambios de escala, incluido $\|-x\|=\|x\|$; la tercera controla las sumas, sin afirmar que la magnitud de una suma sea siempre la suma de magnitudes: puede haber cancelación.
+
+::: {.callout-warning title="Precisión terminológica"}
+La norma de un vector o de una función, en este sentido, no debe confundirse sin más con la norma de un elemento de una extensión de cuerpos en teoría algebraica de números: comparten una palabra, pero no sus axiomas ni sus objetivos.
+:::
+
+## 3. Primeras consecuencias de los axiomas {#norma-consecuencias}
+
+**Proposición 1 (opuesto, resta y sumas finitas).** Para $x,y\in V$ y $x_1,\ldots,x_m\in V$, con $m\ge1$,
+
+$$
+\|-x\|=\|x\|,\qquad
+\|x-y\|\le\|x\|+\|y\|,\qquad
+\left\|\sum_{j=1}^{m}x_j\right\|\le\sum_{j=1}^{m}\|x_j\|.
+$$
+
+*Demostración.* La primera identidad es la homogeneidad con $\lambda=-1$. Aplicar la triangular a $x+(-y)$ prueba la segunda. La tercera sigue por inducción: vale como igualdad para $m=1$ y, si vale para $m$, entonces
+
+$$
+\left\|\sum_{j=1}^{m+1}x_j\right\|
+\le\left\|\sum_{j=1}^{m}x_j\right\|+\|x_{m+1}\|
+\le\sum_{j=1}^{m+1}\|x_j\|.\quad\square
+$$
+
+**Proposición 2 (desigualdad triangular inversa).** Para todo $x,y\in V$,
+
+$$
+\boxed{\big|\|x\|-\|y\|\big|\le\|x-y\|.}
+$$
+
+*Estrategia.* Compara $\|x\|$ con $\|y\|$, escribiendo $x=(x-y)+y$, e intercambia luego los papeles.
+
+*Demostración.* La triangular da $\|x\|\le\|x-y\|+\|y\|$, por lo que $\|x\|-\|y\|\le\|x-y\|$. Intercambiando $x$ e $y$ y usando $\|y-x\|=\|x-y\|$, también $\|y\|-\|x\|\le\|x-y\|$. Juntas equivalen al valor absoluto anunciado. $\square$
+
+**Consecuencia.** La función $x\mapsto\|x\|$ es $1$-Lipschitz para la distancia asociada y, en particular, continua. No necesitamos derivadas ni un producto interno.
+
+## 4. De una norma a una distancia {#norma-metrica}
+
+**Teorema 3.** Toda norma en $V$ define una métrica por
+
+$$
+\boxed{d(x,y)=\|x-y\|.}
+$$
+
+*Demostración.* Tenemos $d(x,y)\ge0$ y $d(x,y)=0$ exactamente cuando $x-y=0$, es decir, $x=y$. Además, $d(x,y)=\|x-y\|=\|-(y-x)\|=d(y,x)$. Finalmente, como $x-z=(x-y)+(y-z)$, la desigualdad triangular da
+
+$$
+d(x,z)\le d(x,y)+d(y,z).
+$$
+
+Son precisamente los axiomas de una métrica. $\square$
+
+Una métrica inducida por una norma también es **invariante por traslaciones** y **compatible con escalas**:
+
+$$
+d(x+a,y+a)=d(x,y),\qquad d(\lambda x,\lambda y)=|\lambda|d(x,y).
+$$
+
+**La recíproca general es falsa.** En $\mathbb R$, la métrica discreta vale $0$ si $x=y$ y $1$ si $x\ne y$. Si viniera de una norma, tendríamos $\|1\|=1$ y la homogeneidad daría $\|2\|=2$; sin embargo, la propia métrica exige $\|2\|=d(2,0)=1$: contradicción.
+
+::: {.callout-tip title="Reconstruye la prueba"}
+¿Dónde empleamos positividad definida? ¿En qué paso usamos homogeneidad con $-1$? ¿Qué axioma de la norma proporciona la desigualdad triangular de la distancia?
+:::
+
+## 5. Tres normas fundamentales en espacios de coordenadas {#norma-ejemplos}
+
+Sea $n\ge1$ y $x=(x_1,\ldots,x_n)\in\mathbb K^n$.
+
+### 5.1. La norma $1$ {#norma-uno}
+
+$$
+\|x\|_1=\sum_{i=1}^{n}|x_i|.
+$$
+
+Es no negativa y se anula exactamente si todas las coordenadas son cero. La homogeneidad resulta de $|\lambda x_i|=|\lambda||x_i|$. Por la desigualdad triangular escalar, coordenada a coordenada,
+
+$$
+\|x+y\|_1=\sum_i|x_i+y_i|
+\le\sum_i(|x_i|+|y_i|)=\|x\|_1+\|y\|_1.
+$$
+
+Por tanto, es una norma.
+
+### 5.2. La norma del máximo {#norma-infinito}
+
+$$
+\|x\|_\infty=\max_{1\le i\le n}|x_i|.
+$$
+
+Positividad definida y homogeneidad se verifican directamente. Para cada índice,
+
+$$
+|x_i+y_i|\le|x_i|+|y_i|\le\|x\|_\infty+\|y\|_\infty.
+$$
+
+Tomar el máximo del lado izquierdo demuestra la propiedad triangular.
+
+### 5.3. La norma euclidiana {#norma-euclidiana}
+
+$$
+\|x\|_2=\left(\sum_{i=1}^{n}|x_i|^2\right)^{1/2}.
+$$
+
+La positividad definida sigue de que los sumandos son no negativos; la homogeneidad, de $|\lambda x_i|^2=|\lambda|^2|x_i|^2$. Falta **demostrar** la triangular: no podemos presuponerla por haber llamado «longitud» a la fórmula.
+
+*Demostración de la propiedad triangular.* Con el producto interno usual $\langle x,y\rangle=\sum_i x_i\overline{y_i}$, la desigualdad de Cauchy–Schwarz afirma $|\langle x,y\rangle|\le\|x\|_2\|y\|_2$. En consecuencia,
+
+$$
+\begin{aligned}
+\|x+y\|_2^2
+&=\|x\|_2^2+2\operatorname{Re}\langle x,y\rangle+\|y\|_2^2\\
+&\le\|x\|_2^2+2\|x\|_2\|y\|_2+\|y\|_2^2\\
+&=(\|x\|_2+\|y\|_2)^2.
+\end{aligned}
+$$
+
+Ambos extremos son no negativos: tomar raíces cuadradas conserva el orden y da $\|x+y\|_2\le\|x\|_2+\|y\|_2$. $\square$
+
+**Dependencia lógica.** La prueba usa Cauchy–Schwarz, que debe demostrarse a partir del producto interno, sin presuponer esta misma desigualdad triangular euclidiana. Véanse [«La desigualdad de Cauchy–Schwarz»](../teoria/resultados/desigualdad-cauchy-schwarz.qmd) y [«La desigualdad triangular»](../teoria/resultados/desigualdad-triangular.qmd). La desigualdad triangular escalar es un resultado anterior diferente. Los vínculos complementan, no sustituyen, la prueba local.
+
+## 6. La forma de las bolas unitarias {#norma-geometria}
+
+La **bola unitaria cerrada** es $B=\{x:\|x\|\le1\}$. En $\mathbb R^2$:
+
+- Para $\|x\|_1\le1$, es un rombo con vértices $(\pm1,0)$ y $(0,\pm1)$.
+- Para $\|x\|_2\le1$, es el disco euclidiano de radio uno.
+- Para $\|x\|_\infty\le1$, es el cuadrado $[-1,1]^2$.
+
+Aunque tienen formas diferentes, todas contienen el origen, son simétricas respecto de él y convexas.
+
+**Proposición 4 (convexidad).** Si $\|x\|\le1$, $\|y\|\le1$ y $0\le t\le1$, entonces
+
+$$
+\|tx+(1-t)y\|\le t\|x\|+(1-t)\|y\|\le1.
+$$
+
+Combinamos triangular y homogeneidad; esto demuestra la convexidad sin recurrir al dibujo. La misma prueba funciona para una bola cualquiera después de trasladar y reescalar. $\square$
+
+**Pregunta de diagnóstico.** ¿Bastan convexidad y simetría para que cualquier conjunto sea la bola unitaria de una norma? No: en dimensión finita también hacen falta condiciones adicionales, como acotación y que el origen sea interior. No confundir propiedades necesarias con una caracterización completa.
+
+## 7. ¿Cuándo hay igualdad en la desigualdad triangular? {#norma-igualdad}
+
+La desigualdad triangular es un axioma general, pero sus condiciones de igualdad dependen de la norma. Con $x=(1,0)$ e $y=(0,1)$,
+
+$$
+\|x+y\|_1=2=\|x\|_1+\|y\|_1,
+\qquad \|x+y\|_2=\sqrt2<2.
+$$
+
+Para la norma euclidiana real, hay igualdad exactamente si uno de los vectores es cero o ambos son múltiplos no negativos de un mismo vector no nulo. En efecto, al elevar al cuadrado y desarrollar, la igualdad equivale a $\langle x,y\rangle=\|x\|_2\|y\|_2$. Para vectores no nulos, la igualdad de Cauchy–Schwarz exige dependencia lineal; el signo positivo fuerza el mismo sentido. Recíprocamente, si $x=au$, $y=bu$, con $a,b\ge0$, la homogeneidad da
+
+$$
+\|x+y\|_2=(a+b)\|u\|_2=\|x\|_2+\|y\|_2.
+$$
+
+El caso nulo es inmediato. $\square$
+
+Para la norma $1$ real, la igualdad se cumple si y sólo si $x_i y_i\ge0$ para cada coordenada. La diferencia entre ambos miembros es la suma de términos no negativos $|x_i|+|y_i|-|x_i+y_i|$; se anula exactamente cuando cada término se anula.
+
+## 8. Las normas $p$ y la frontera $p=1$ {#norma-p}
+
+Para $1\le p<\infty$, definimos
+
+$$
+\|x\|_p=\left(\sum_{i=1}^{n}|x_i|^p\right)^{1/p}.
+$$
+
+**Teorema 5.** Esta expresión es una norma para cada $p\ge1$ (finito). Positividad definida y homogeneidad son inmediatas, y el caso $p=1$ ya se probó. Para demostrar la triangular cuando $p>1$ estableceremos dos desigualdades auxiliares.
+
+**Lema (Young).** Si $p,q>1$, $1/p+1/q=1$ y $a,b\ge0$, entonces
+
+$$
+ab\le\frac{a^p}{p}+\frac{b^q}{q}.
+$$
+
+*Demostración.* Para $b=0$ es inmediato. Si $b>0$, la función $F(t)=t^p/p-bt+b^q/q$, para $t\ge0$, tiene derivada $F'(t)=t^{p-1}-b$. Su mínimo se alcanza en $t=b^{1/(p-1)}$ y allí $F(t)=0$, dado que $q=p/(p-1)$. Por ello $F(a)\ge0$. $\square$
+
+**Lema (Hölder finita).** Con esos exponentes conjugados,
+
+$$
+\sum_i|a_i b_i|\le
+\left(\sum_i|a_i|^p\right)^{1/p}
+\left(\sum_i|b_i|^q\right)^{1/q}.
+$$
+
+*Demostración.* Denotemos por $A$ y $B$ las raíces del lado derecho. Si alguna es cero, todos los productos son cero. Si son positivas, aplicamos Young a $|a_i|/A$ y $|b_i|/B$ y sumamos:
+
+$$
+\sum_i\frac{|a_i b_i|}{AB}
+\le\frac1p\sum_i\frac{|a_i|^p}{A^p}
++\frac1q\sum_i\frac{|b_i|^q}{B^q}
+=\frac1p+\frac1q=1.
+$$
+
+Multiplicar por $AB$ concluye. $\square$
+
+**Demostración de Minkowski finita.** Escribamos $S=\sum_i|x_i+y_i|^p$. Si $S=0$, la desigualdad es trivial. Si $S>0$, la triangular escalar seguida de Hölder, aplicada al segundo factor $|x_i+y_i|^{p-1}$ con $q=p/(p-1)$, produce
+
+$$
+\begin{aligned}
+S&\le\sum_i(|x_i|+|y_i|)|x_i+y_i|^{p-1}\\
+&\le(\|x\|_p+\|y\|_p)
+\left(\sum_i|x_i+y_i|^{(p-1)q}\right)^{1/q}\\
+&=(\|x\|_p+\|y\|_p)S^{(p-1)/p}.
+\end{aligned}
+$$
+
+Dividimos por $S^{(p-1)/p}>0$ y obtenemos
+
+$$
+\boxed{\|x+y\|_p\le\|x\|_p+\|y\|_p.}
+$$
+
+Así quedan probados los tres axiomas. $\square$
+
+**¿Por qué $p\ge1$?** Para $0<p<1$, tomando $e_1=(1,0)$ y $e_2=(0,1)$, la misma fórmula da
+
+$$
+\|e_1+e_2\|_p=2^{1/p}>2=\|e_1\|_p+\|e_2\|_p.
+$$
+
+La desigualdad triangular falla. Aquí la expresión es una *cuasinorma*, no una norma. La restricción de exponentes es una hipótesis matemática, no una convención tipográfica.
+
+## 9. Comparación de las normas en $\mathbb K^n$ {#norma-comparacion}
+
+**Proposición 6.** Para $n\ge1$ y todo $x\in\mathbb K^n$,
+
+$$
+\boxed{\|x\|_\infty\le\|x\|_2\le\|x\|_1
+\le\sqrt n\,\|x\|_2\le n\,\|x\|_\infty.}
+$$
+
+*Demostración.* El mayor de los $|x_i|^2$ no supera la suma, y tomar raíces da la primera desigualdad. La expansión
+
+$$
+\left(\sum_i|x_i|\right)^2
+=\sum_i|x_i|^2+2\sum_{i<j}|x_ix_j|
+\ge\sum_i|x_i|^2
+$$
+
+prueba la segunda. Cauchy–Schwarz aplicada a $(|x_1|,\ldots,|x_n|)$ y $(1,\ldots,1)$ da $\|x\|_1\le\sqrt n\,\|x\|_2$. Finalmente, $\|x\|_2^2\le n\|x\|_\infty^2$, que combinada con la anterior completa la cadena. $\square$
+
+**Definición (equivalencia de normas).** Dos normas $N_1,N_2$ sobre el mismo espacio son equivalentes cuando existen $c,C>0$ tales que
+
+$$
+cN_1(x)\le N_2(x)\le CN_1(x)\qquad\text{para todo }x.
+$$
+
+Las cotas permiten trasladar convergencia, sucesiones de Cauchy y conjuntos abiertos de una norma a la otra. Equivalencia no significa igualdad numérica de las normas.
+
+**Teorema 7. Todas las normas en un espacio vectorial real o complejo de dimensión finita son equivalentes.**
+
+*Demostración.* Si $V=\{0\}$, es inmediato. Para $\dim V=n\ge1$, elijamos una base e identifiquemos $V$ con $\mathbb K^n$. Sea $N$ una norma. Por triangular y homogeneidad,
+
+$$
+N(x)=N\!\left(\sum_{i=1}^{n}x_i e_i\right)
+\le\sum_i|x_i|N(e_i)
+\le M\,\|x\|_2,
+\qquad M:=\sum_iN(e_i)>0.
+$$
+
+La desigualdad triangular inversa implica $|N(x)-N(y)|\le N(x-y)\le M\|x-y\|_2$, por lo que $N$ es continua para la distancia euclidiana. La esfera $S=\{x:\|x\|_2=1\}$ es compacta y $N$ alcanza allí un mínimo $m>0$: no se anula en ningún punto de $S$. Para $x\ne0$, aplicar las cotas a $x/\|x\|_2$ y usar homogeneidad produce
+
+$$
+m\|x\|_2\le N(x)\le M\|x\|_2.
+$$
+
+También vale para $x=0$. Cada norma es equivalente a la euclidiana, luego dos normas arbitrarias son equivalentes entre sí. $\square$
+
+**La dimensión importa.** En el espacio $C([0,1])$ de funciones continuas reales, consideremos
+
+$$
+\|f\|_\infty=\max_{t\in[0,1]}|f(t)|,
+\qquad \|f\|_1=\int_0^1|f(t)|\,dt.
+$$
+
+Ambas son normas. Para la integral, si $\int|f|=0$ pero $f$ no es idénticamente nula, su continuidad asegura un pequeño intervalo donde $|f|>0$, lo que hace positiva la integral: contradicción. Para $f_n(t)=\max\{1-nt,0\}$,
+
+$$
+\|f_n\|_\infty=1,
+\qquad\|f_n\|_1=\int_0^{1/n}(1-nt)\,dt=\frac1{2n}.
+$$
+
+Si existiera una constante $C$ con $\|f\|_\infty\le C\|f\|_1$ para toda función continua, tendríamos $1\le C/(2n)$ para todo $n$, imposible. Estas normas **no son equivalentes**.
+
+## 10. Normas de funciones y operadores {#norma-funciones}
+
+Una función puede ser un vector: sumamos funciones punto a punto y las multiplicamos por escalares. Si $a<b$, en $C([a,b])$ la **norma uniforme** es
+
+$$
+\|f\|_\infty=\max_{x\in[a,b]}|f(x)|.
+$$
+
+El máximo existe por continuidad y compacidad; los axiomas se verifican como para la norma del máximo de coordenadas. La distancia $\|f-g\|_\infty$ es el mayor error puntual de la aproximación de $f$ por $g$.
+
+También se usan $\|f\|_p=(\int_a^b|f|^p)^{1/p}$ para $p\ge1$. Sobre $C([a,b])$ son normas. Sobre funciones medibles consideradas punto a punto, una función distinta de cero sólo sobre un conjunto de medida nula puede tener integral nula. Por eso los espacios $L^p$ utilizan **clases de equivalencia de funciones iguales casi en todas partes**. La desigualdad triangular integral es una versión de Minkowski y requiere su propia justificación.
+
+Sean $V,W$ espacios normados y $T:V\to W$ una aplicación lineal **acotada**: existe $C<\infty$ con $\|Tx\|_W\le C\|x\|_V$ para todo $x$. Su **norma operatorial** es
+
+$$
+\|T\|_{\mathrm{op}}=
+\sup_{\|x\|_V\le1}\|Tx\|_W.
+$$
+
+Si $V\ne\{0\}$, equivale a $\sup_{x\ne0}\|Tx\|_W/\|x\|_V$, reescalando los vectores no nulos a norma uno. Si $V=\{0\}$, la primera expresión vale cero y no se utiliza el segundo supremo. Por acotación, la norma es finita. Es no negativa; si vale cero, $Tx=0$ para todo $x$; la homogeneidad es inmediata y, para operadores acotados $S,T$,
+
+$$
+\|(S+T)x\|_W\le\|Sx\|_W+\|Tx\|_W
+\le(\|S\|_{\mathrm{op}}+\|T\|_{\mathrm{op}})\|x\|_V.
+$$
+
+Tomando supremos en la bola unitaria se demuestra el axioma triangular. Para composiciones compatibles,
+
+$$
+\boxed{\|S\circ T\|_{\mathrm{op}}
+\le\|S\|_{\mathrm{op}}\,\|T\|_{\mathrm{op}},}
+$$
+
+pues $\|S(Tx)\|\le\|S\|_{\mathrm{op}}\|Tx\|\le\|S\|_{\mathrm{op}}\|T\|_{\mathrm{op}}\|x\|$.
+
+## 11. Norma, convergencia y completitud {#norma-analisis}
+
+Una sucesión $(x_n)$ **converge** a $x$ en norma si $\|x_n-x\|\to0$. Es **de Cauchy** si para todo $\varepsilon>0$ existe $N$ tal que $\|x_n-x_m\|<\varepsilon$ cuando $n,m\ge N$.
+
+Un espacio normado es **completo**, o **espacio de Banach**, si toda sucesión de Cauchy converge a un elemento del propio espacio. Tener una norma no garantiza completitud.
+
+**Contraejemplo.** El espacio de los polinomios sobre $[0,1]$, con norma uniforme, no es completo. Los polinomios $p_n(t)=\sum_{k=0}^{n}t^k/k!$ convergen uniformemente a $e^t$ en $[0,1]$: el resto de Taylor se acota por una cantidad que tiende a cero. Son, por tanto, de Cauchy en norma uniforme, pero $e^t$ no es un polinomio; la unicidad del límite uniforme excluye que converjan a otro elemento del espacio.
+
+Todo espacio normado de dimensión finita es completo: por equivalencia de normas basta comprobarlo en $\mathbb K^n$, donde una sucesión es de Cauchy si y sólo si cada coordenada lo es en $\mathbb K$.
+
+## 12. Normas inducidas por productos internos {#norma-producto-interno}
+
+En un espacio con producto interno, la fórmula
+
+$$
+\|x\|=\sqrt{\langle x,x\rangle}
+$$
+
+define una norma: positividad definida y homogeneidad provienen del producto interno y la triangular se deduce de Cauchy–Schwarz como en §5.3.
+
+**No toda norma proviene de un producto interno.** Toda norma inducida por uno satisface la **ley del paralelogramo**:
+
+$$
+\boxed{\|x+y\|^2+\|x-y\|^2
+=2\|x\|^2+2\|y\|^2.}
+$$
+
+*Demostración.* Desarrollar ambos cuadrados mediante el producto interno: los términos cruzados $\pm2\operatorname{Re}\langle x,y\rangle$ se cancelan. $\square$
+
+La norma $1$ de $\mathbb R^2$ falla esta identidad con $x=(1,0)$ e $y=(0,1)$: el lado izquierdo es $2^2+2^2=8$ y el derecho es $2(1^2+1^2)=4$. Así, no puede proceder de ningún producto interno.
+
+El **teorema de Jordan–von Neumann** establece también la recíproca: sobre $\mathbb R$ o $\mathbb C$, una norma proviene de un producto interno si y sólo si satisface la ley del paralelogramo. La recíproca no se demuestra aquí: requiere construir un producto interno mediante una identidad de polarización y verificar sus axiomas. En el caso real, la expresión candidata es
+
+$$
+\langle x,y\rangle=
+\frac{\|x+y\|^2-\|x-y\|^2}{4}.
+$$
+
+Distinguir la implicación demostrada de esta recíproca adicional.
+
+## 13. Seminormas y falsas normas {#norma-no-ejemplos}
+
+Una **seminorma** cumple homogeneidad absoluta y triangular, pero puede anularse en vectores no nulos. En $\mathbb R^2$, $p(x_1,x_2)=|x_1|$ es una seminorma: $p(0,1)=0$ aunque $(0,1)\ne(0,0)$. Su distancia asociada es una *seudométrica*: no necesariamente separa puntos distintos.
+
+Otros candidatos fallan por distintas razones:
+
+- $N(x)=\|x\|_2^2$ no es homogénea de grado uno: $N(2x)=4N(x)$, no $2N(x)$ en general.
+- $N(x_1,x_2)=|x_1|+|x_2|+1$ nunca vale cero, ni en el vector nulo.
+- La fórmula $\|x\|_p$ con $0<p<1$ falla la triangular, como vimos en §8.
+
+**Método de control.** Basta un vector o un par de vectores para refutar un axioma de una supuesta norma. Para demostrar que sí es norma, hay que verificar todos los axiomas para todos los vectores y escalares.
+
+## 14. Aplicaciones: por qué interesa elegir bien la norma {#norma-aplicaciones}
+
+Para una aproximación $\widetilde x$ de $x$, el error es $e=x-\widetilde x$ y su magnitud es $\|e\|$. En cálculo numérico, $\|e\|_\infty$ representa el mayor error de coordenada y $\|e\|_2$ un error agregado euclidiano: preguntas distintas, aunque comparables por §9.
+
+Para funciones, $\|f-g\|_\infty$ controla el error **en todos los puntos simultáneamente**. La norma integral controla un error agregado: una desviación grande en una región estrecha puede contribuir poco; la familia $f_n$ de §9 exhibe la diferencia.
+
+Para un operador lineal acotado $T$,
+
+$$
+\|T(x+e)-T(x)\|=\|Te\|\le\|T\|_{\mathrm{op}}\,\|e\|,
+$$
+
+lo que acota la propagación de una perturbación de entrada a la salida.
+
+## 15. Ejercicios y reconstrucción {#norma-ejercicios}
+
+**A. Reconocimiento.** (1) Demuestra que $x\mapsto3\|x\|$ es una norma si $\|\cdot\|$ lo es. (2) Explica por qué $x\mapsto\min\{|x_1|,|x_2|\}$ no es una norma en $\mathbb R^2$. (3) Verifica los axiomas para $N(x_1,x_2)=2|x_1|+3|x_2|$.
+
+**B. Reconstrucción de pruebas.** (4) Demuestra la triangular inversa sin consultar §3. (5) Deduce que convergencia en norma implica convergencia de las normas numéricas. (6) Reconstruye el uso preciso de Hölder en Minkowski.
+
+**C. Hipótesis y contraejemplos.** (7) Da una métrica que no provenga de norma e identifica el obstáculo. (8) Construye una seminorma que no sea norma en $\mathbb R^3$. (9) Encuentra dos vectores con igualdad triangular en norma $1$ y desigualdad estricta en norma $2$.
+
+**D. Conexiones.** (10) Dibuja las tres bolas unitarias de $\mathbb R^2$ y prueba su convexidad sin dibujos. (11) Demuestra que normas equivalentes tienen las mismas sucesiones de Cauchy. (12) Explica con $f_n$ por qué un pequeño error integral no implica una cota uniforme pequeña del error máximo.
+
+::: {.callout-tip title="Autoexplicación final"}
+¿Qué añade exactamente una norma a un espacio vectorial? ¿Por qué un producto interno es una estructura más fuerte? ¿Qué resultados dependen de dimensión finita y cuáles funcionan en cualquier espacio normado?
+:::
+
+## 16. Síntesis conceptual {#norma-sintesis}
+
+Una norma no es una única longitud, sino una regla abstracta para medir vectores: sólo cero tiene magnitud nula, las escalas actúan proporcionalmente y la suma queda controlada por la desigualdad triangular. De ella nace una distancia y un lenguaje de convergencia, continuidad, error y completitud. Normas distintas pueden medir de manera diferente; en dimensión finita generan las mismas nociones de convergencia y abiertos, pero en dimensión infinita pueden ser inequivalentes. La pregunta crucial no es «¿qué fórmula da la longitud verdadera?», sino «¿qué propiedades satisface esta medición y qué fenómeno necesitamos controlar?».
+
+## 17. Preguntas frecuentes {#norma-faq}
+
+**¿Una norma siempre es una distancia?** No literalmente: la norma recibe un vector y la métrica recibe dos puntos. Toda norma induce $d(x,y)=\|x-y\|$; la recíproca general es falsa.
+
+**¿Toda norma procede de Pitágoras?** No. Las normas $1$ y del máximo cumplen los axiomas sin proceder de un producto interno en dimensión al menos dos.
+
+**¿Por qué aparecen barras dobles?** Es la notación convencional que distingue normas de, por ejemplo, valores absolutos escalares. Las barras por sí solas no prueban los axiomas.
+
+**¿Equivalentes significa iguales?** No: pueden asignar números diferentes y, sin embargo, inducir la misma convergencia y topología gracias a cotas multiplicativas uniformes.
+
+**¿Por qué una integral puede dar cero para una función no nula?** Una función medible puede diferir de cero sólo sobre un conjunto de medida nula. En $L^p$ se identifican funciones iguales casi en todas partes; la continuidad lo impide para normas integrales sobre $C([a,b])$.
+
+**¿Ser normado implica ser completo?** No. Los polinomios con la norma uniforme son un contraejemplo; un espacio normado completo es un espacio de Banach.
+
+## Referencias y enlaces de estudio {#norma-referencias}
+
+- Noam D. Elkies, [*Math 55a: Norm basics*](https://abel.math.harvard.edu/~elkies/M55a.17/norm.html), Harvard University. Definición, métricas inducidas y equivalencia de normas.
+- MIT OpenCourseWare, [*Introduction to Functional Analysis*](https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/pages/lecture-notes-and-readings/). Espacios normados, de Banach, funciones y operadores.
+- Steven G. Johnson, MIT OpenCourseWare, [*Lecture 4: Norms on Vector Spaces*](https://ocw.mit.edu/courses/18-335j-introduction-to-numerical-methods-spring-2019/pages/week-2/). Normas vectoriales y errores numéricos.
+- Eric W. Weisstein, [*Minkowski's Inequalities*](https://mathworld.wolfram.com/MinkowskisInequalities.html), MathWorld.
+- Norwegian University of Science and Technology, [*Linear Methods: Lecture Notes*](https://www.math.ntnu.no/emner/TMA4145/2024h/Lecture_notes.pdf), §4.7, ley del paralelogramo y teorema de Jordan–von Neumann.
+- Referencias internas: [La desigualdad triangular](../teoria/resultados/desigualdad-triangular.qmd) y [La desigualdad de Cauchy–Schwarz](../teoria/resultados/desigualdad-cauchy-schwarz.qmd).
