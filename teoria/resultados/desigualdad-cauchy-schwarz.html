@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Demostraciones completas de Cauchy–Schwarz: sumas de cuadrados, inducción, Labbé, Steele, identidad de Lagrange, igualdad, espacios con producto interno e integrales.">
+
+<title>La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-desigualdad-de-cauchyschwarz" id="toc-la-desigualdad-de-cauchyschwarz" class="nav-link active" data-scroll-target="#la-desigualdad-de-cauchyschwarz">La desigualdad de Cauchy–Schwarz</a>
+  <ul class="collapse">
+  <li><a href="#cs-intuicion" id="toc-cs-intuicion" class="nav-link" data-scroll-target="#cs-intuicion">1. Comenzar con números: el caso de un solo término</a>
+  <ul class="collapse">
+  <li><a href="#cs-historia" id="toc-cs-historia" class="nav-link" data-scroll-target="#cs-historia">1.1. Breve ubicación histórica, sin confundir versiones</a></li>
+  </ul></li>
+  <li><a href="#cs-dos-terminos" id="toc-cs-dos-terminos" class="nav-link" data-scroll-target="#cs-dos-terminos">2. Dos términos: el cuadrado que descubre la desigualdad</a></li>
+  <li><a href="#cs-enunciado" id="toc-cs-enunciado" class="nav-link" data-scroll-target="#cs-enunciado">3. Todas las sumas finitas: inducción antes de las abreviaturas</a>
+  <ul class="collapse">
+  <li><a href="#cs-induccion" id="toc-cs-induccion" class="nav-link" data-scroll-target="#cs-induccion">3.1. La prueba por inducción</a></li>
+  </ul></li>
+  <li><a href="#cs-labbe" id="toc-cs-labbe" class="nav-link" data-scroll-target="#cs-labbe">4. El ejercicio de Labbé: una segunda puerta de entrada</a></li>
+  <li><a href="#cs-prueba-cuadratica" id="toc-cs-prueba-cuadratica" class="nav-link" data-scroll-target="#cs-prueba-cuadratica">5. El mismo mecanismo visto al revés: parámetro y discriminante</a>
+  <ul class="collapse">
+  <li><a href="#cs-discriminante" id="toc-cs-discriminante" class="nav-link" data-scroll-target="#cs-discriminante">5.1. Alternativa: examinar el discriminante</a></li>
+  </ul></li>
+  <li><a href="#cs-prueba-normalizada" id="toc-cs-prueba-normalizada" class="nav-link" data-scroll-target="#cs-prueba-normalizada">6. ¿Qué tan buena es una cota? Escala y normalización</a>
+  <ul class="collapse">
+  <li><a href="#cs-escalas" id="toc-cs-escalas" class="nav-link" data-scroll-target="#cs-escalas">6.1. Ajuste de escala: de lo aditivo a lo multiplicativo</a></li>
+  <li><a href="#cs-normalizacion" id="toc-cs-normalizacion" class="nav-link" data-scroll-target="#cs-normalizacion">6.2. Normalización: otra manera de reconocer la elección óptima</a></li>
+  </ul></li>
+  <li><a href="#cs-notacion" id="toc-cs-notacion" class="nav-link" data-scroll-target="#cs-notacion">7. Ahora sí: introducir producto interno y norma</a></li>
+  <li><a href="#cs-igualdad" id="toc-cs-igualdad" class="nav-link" data-scroll-target="#cs-igualdad">8. Igualdad: ¿cuándo se alcanza la cota?</a></li>
+  <li><a href="#cs-lagrange" id="toc-cs-lagrange" class="nav-link" data-scroll-target="#cs-lagrange">9. La identidad de Lagrange: cuantificar lo que falta para la igualdad</a></li>
+  <li><a href="#cs-geometria" id="toc-cs-geometria" class="nav-link" data-scroll-target="#cs-geometria">10. Geometría: proyección, ángulos y matriz de Gram</a></li>
+  <li><a href="#cs-producto-interno" id="toc-cs-producto-interno" class="nav-link" data-scroll-target="#cs-producto-interno">11. Desde productos internos reales hasta espacios complejos y abstractos</a>
+  <ul class="collapse">
+  <li><a href="#cs-real-abstracto" id="toc-cs-real-abstracto" class="nav-link" data-scroll-target="#cs-real-abstracto">11.1. Producto interno real: la versión sin coordenadas</a></li>
+  <li><a href="#cs-complejo" id="toc-cs-complejo" class="nav-link" data-scroll-target="#cs-complejo">11.2. Producto interno complejo: por qué aparece la conjugación</a></li>
+  <li><a href="#cs-abstracto" id="toc-cs-abstracto" class="nav-link" data-scroll-target="#cs-abstracto">11.3. La formulación abstracta y sus límites</a></li>
+  </ul></li>
+  <li><a href="#cs-variantes" id="toc-cs-variantes" class="nav-link" data-scroll-target="#cs-variantes">12. Variantes: pesos, series e integrales</a>
+  <ul class="collapse">
+  <li><a href="#cs-ponderada" id="toc-cs-ponderada" class="nav-link" data-scroll-target="#cs-ponderada">12.1. Cauchy–Schwarz ponderada</a></li>
+  <li><a href="#cs-series" id="toc-cs-series" class="nav-link" data-scroll-target="#cs-series">12.2. Series de cuadrados sumables: de lo finito a lo infinito</a></li>
+  <li><a href="#cs-integral" id="toc-cs-integral" class="nav-link" data-scroll-target="#cs-integral">12.3. Versión integral para funciones continuas</a></li>
+  <li><a href="#cs-l2" id="toc-cs-l2" class="nav-link" data-scroll-target="#cs-l2">12.4. Versión avanzada en <span class="math inline">\(L^2\)</span></a></li>
+  </ul></li>
+  <li><a href="#cs-aplicaciones" id="toc-cs-aplicaciones" class="nav-link" data-scroll-target="#cs-aplicaciones">13. Aplicaciones: transformar una interacción en una cota</a>
+  <ul class="collapse">
+  <li><a href="#cs-triangular" id="toc-cs-triangular" class="nav-link" data-scroll-target="#cs-triangular">13.1. Demostrar la desigualdad triangular euclidiana</a></li>
+  <li><a href="#cs-continuidad" id="toc-cs-continuidad" class="nav-link" data-scroll-target="#cs-continuidad">13.2. El producto interno como función acotada</a></li>
+  <li><a href="#cs-medias" id="toc-cs-medias" class="nav-link" data-scroll-target="#cs-medias">13.3. Estimar una media y comparar normas</a></li>
+  <li><a href="#cs-covarianza" id="toc-cs-covarianza" class="nav-link" data-scroll-target="#cs-covarianza">13.4. Covarianza y correlación: aplicación posterior</a></li>
+  </ul></li>
+  <li><a href="#cs-errores" id="toc-cs-errores" class="nav-link" data-scroll-target="#cs-errores">14. Errores previsibles y contraejemplos</a></li>
+  <li><a href="#cs-actividades" id="toc-cs-actividades" class="nav-link" data-scroll-target="#cs-actividades">15. Actividades de reconstrucción y transferencia</a></li>
+  <li><a href="#cs-sintesis" id="toc-cs-sintesis" class="nav-link" data-scroll-target="#cs-sintesis">16. Síntesis: qué hemos demostrado y por qué importa</a></li>
+  <li><a href="#cs-faq" id="toc-cs-faq" class="nav-link" data-scroll-target="#cs-faq">17. Preguntas frecuentes</a>
+  <ul class="collapse">
+  <li><a href="#cs-faq-enunciado" id="toc-cs-faq-enunciado" class="nav-link" data-scroll-target="#cs-faq-enunciado">¿Cuál es exactamente la desigualdad que estamos demostrando?</a></li>
+  <li><a href="#cs-faq-casos" id="toc-cs-faq-casos" class="nav-link" data-scroll-target="#cs-faq-casos">¿Por qué empezamos con <span class="math inline">\(n=1\)</span> y <span class="math inline">\(n=2\)</span>?</a></li>
+  <li><a href="#cs-faq-labbe" id="toc-cs-faq-labbe" class="nav-link" data-scroll-target="#cs-faq-labbe">¿Qué aporta la pista del ejercicio de Labbé?</a></li>
+  <li><a href="#cs-faq-nulo" id="toc-cs-faq-nulo" class="nav-link" data-scroll-target="#cs-faq-nulo">¿Por qué se separa el caso en que una lista es nula?</a></li>
+  <li><a href="#cs-faq-circularidad" id="toc-cs-faq-circularidad" class="nav-link" data-scroll-target="#cs-faq-circularidad">¿Estamos usando la desigualdad triangular para demostrar Cauchy–Schwarz? ¿Hay circularidad?</a></li>
+  <li><a href="#cs-faq-cotas" id="toc-cs-faq-cotas" class="nav-link" data-scroll-target="#cs-faq-cotas">¿Por qué la cota aditiva puede ser peor?</a></li>
+  <li><a href="#cs-faq-norma" id="toc-cs-faq-norma" class="nav-link" data-scroll-target="#cs-faq-norma">¿Por qué aparecen las dobles barras tan tarde?</a></li>
+  <li><a href="#cs-faq-igualdad" id="toc-cs-faq-igualdad" class="nav-link" data-scroll-target="#cs-faq-igualdad">¿Cuándo hay igualdad? ¿Deben apuntar en el mismo sentido?</a></li>
+  <li><a href="#cs-faq-ortogonalidad" id="toc-cs-faq-ortogonalidad" class="nav-link" data-scroll-target="#cs-faq-ortogonalidad">¿Qué indica una suma de productos igual a cero?</a></li>
+  <li><a href="#cs-faq-defecto" id="toc-cs-faq-defecto" class="nav-link" data-scroll-target="#cs-faq-defecto">¿Qué mide el «defecto» y por qué no es una distancia?</a></li>
+  <li><a href="#cs-faq-otras-normas" id="toc-cs-faq-otras-normas" class="nav-link" data-scroll-target="#cs-faq-otras-normas">¿Funciona la misma fórmula con cualquier norma?</a></li>
+  <li><a href="#cs-faq-complejo" id="toc-cs-faq-complejo" class="nav-link" data-scroll-target="#cs-faq-complejo">¿Qué cambia para números complejos?</a></li>
+  <li><a href="#cs-faq-infinitos" id="toc-cs-faq-infinitos" class="nav-link" data-scroll-target="#cs-faq-infinitos">¿Se puede aplicar a series o integrales sin más?</a></li>
+  <li><a href="#cs-faq-applet" id="toc-cs-faq-applet" class="nav-link" data-scroll-target="#cs-faq-applet">¿Puede una applet demostrar la desigualdad?</a></li>
+  <li><a href="#cs-fuentes" id="toc-cs-fuentes" class="nav-link" data-scroll-target="#cs-fuentes">Fuentes para el contexto histórico y referencias matemáticas</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno</h1>
+</div>
+
+<div>
+  <div class="description">
+    Demostraciones completas de Cauchy–Schwarz: sumas de cuadrados, inducción, Labbé, Steele, identidad de Lagrange, igualdad, espacios con producto interno e integrales.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">17 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="la-desigualdad-de-cauchyschwarz" class="level1">
+<h1>La desigualdad de Cauchy–Schwarz</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Primera lectura: ninguna notación nueva">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Primera lectura: ninguna notación nueva
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para <span class="math inline">\(n\ge1\)</span> y números reales <span class="math inline">\(a_1,\ldots,a_n,b_1,\ldots,b_n\)</span>, demostraremos que <span class="math display">\[
+\boxed{\left(\sum_{i=1}^{n}a_i b_i\right)^2\le
+\left(\sum_{i=1}^{n}a_i^2\right)\left(\sum_{i=1}^{n}b_i^2\right).}
+\]</span> La prueba comenzará con uno y dos pares de números. Aplazaremos la escritura abreviada con producto interno y norma hasta que haya una razón matemática para introducirla.</p>
+</div>
+</div>
+<p><strong>Ruta de lectura y dependencia lógica.</strong> Primero identificaremos el caso trivial <span class="math inline">\(n=1\)</span>, descubriremos en <span class="math inline">\(n=2\)</span> un cuadrado que explica la desigualdad y usaremos ese caso para construir una demostración inductiva. El ejercicio 13 de §1.8 de <em>Cálculo I</em> de Gustavo Labbé Morales proporcionará otra estrategia mediante un polinomio cuadrático; la <em>Master Class</em> de J. Michael Steele orientará el contraste de pruebas y estimaciones. Después de comparar las cotas, definiremos las abreviaturas que permiten pasar a geometría, integrales y análisis. Todas las ampliaciones posteriores tienen hipótesis y justificaciones propias.</p>
+<p><strong>Distinción de las fuentes.</strong> Labbé presenta un ejercicio y una sugerencia, no la prueba desarrollada a continuación. Steele propone un recorrido de descubrimiento con inducción, normalización, examen de igualdad e identidad de Lagrange. Seguimos esas ideas pedagógicas con enunciados, transiciones y ejercicios propios, sin reproducir sus páginas ni convertir este artículo en una traducción de sus libros. La bibliografía precisa está al final.</p>
+<section id="cs-intuicion" class="level2">
+<h2 class="anchored" data-anchor-id="cs-intuicion">1. Comenzar con números: el caso de un solo término</h2>
+<p>El problema consiste en <strong>controlar una suma de productos mediante sumas de cuadrados</strong>. Por el momento, <span class="math inline">\(a_i\)</span> y <span class="math inline">\(b_i\)</span> son sólo números reales. El producto de sumas del miembro derecho es no negativo, pues cada cuadrado es no negativo. El de la izquierda también es un cuadrado, pero contiene términos cruzados que debemos entender.</p>
+<p>En el caso de una sola pareja de números, la fórmula se reduce a</p>
+<p><span class="math display">\[
+(a_1b_1)^2\le a_1^2b_1^2.
+\]</span></p>
+<p>Aquí en realidad hay <strong>igualdad</strong>: es una identidad algebraica. El caso <span class="math inline">\(n=1\)</span> comprueba la coherencia del enunciado, pero no revela el mecanismo que necesitamos para sumas de más términos.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Pregunta de activación">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Pregunta de activación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¿Qué cambia al pasar de <span class="math inline">\(a_1b_1\)</span> a <span class="math inline">\(a_1b_1+a_2b_2\)</span>? Antes de leer la sección siguiente, desarrolla el cuadrado de la suma y busca el término que todavía no podemos acotar.</p>
+</div>
+</div>
+<section id="cs-historia" class="level3">
+<h3 class="anchored" data-anchor-id="cs-historia">1.1. Breve ubicación histórica, sin confundir versiones</h3>
+<p>La formulación de sumas finitas se remonta a Augustin-Louis Cauchy (1821). Viktor Bunyakovski desarrolló una variante integral en 1859, mientras que Hermann Amandus Schwarz estudió formulaciones posteriores relacionadas con problemas variacionales. El nombre «Cauchy–Bunyakovski–Schwarz» recuerda esas contribuciones, pero no debe confundirse la fórmula algebraica inicial con la formulación moderna para productos internos. Las fechas de las versiones y la cautela sobre la atribución a Schwarz se amplían en las fuentes históricas citadas al final.</p>
+</section>
+</section>
+<section id="cs-dos-terminos" class="level2">
+<h2 class="anchored" data-anchor-id="cs-dos-terminos">2. Dos términos: el cuadrado que descubre la desigualdad</h2>
+<p><strong>Proposición (caso <span class="math inline">\(n=2\)</span>).</strong> Para cualesquiera <span class="math inline">\(a_1,a_2,b_1,b_2\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+\boxed{(a_1b_1+a_2b_2)^2\le(a_1^2+a_2^2)(b_1^2+b_2^2).}
+\]</span></p>
+<p><strong>Demostración.</strong> No tenemos que adivinar cuál miembro es mayor: restamos el cuadrado de la suma al producto de las sumas y desarrollamos por completo:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;(a_1^2+a_2^2)(b_1^2+b_2^2)-(a_1b_1+a_2b_2)^2\\
+&amp;=a_1^2b_2^2+a_2^2b_1^2-2a_1a_2b_1b_2\\
+&amp;=(a_1b_2-a_2b_1)^2\ge0.
+\end{aligned}
+\]</span></p>
+<p>La diferencia es un cuadrado real, luego no puede ser negativa. <span class="math inline">\(\square\)</span></p>
+<p><strong>Leer la prueba en sentido inverso.</strong> Si la desigualdad fuera falsa, su diferencia sería negativa, pero acabamos de identificarla con un cuadrado. La igualdad equivale aquí a <span class="math inline">\(a_1b_2=a_2b_1\)</span>; más adelante explicaremos qué significa eso para dos vectores, incluso cuando alguno es nulo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Tres pruebas de estrés">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Tres pruebas de estrés
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Con <span class="math inline">\((a_1,a_2)=(1,2)\)</span> y <span class="math inline">\((b_1,b_2)=(2,1)\)</span>: izquierda <span class="math inline">\(16\)</span>, derecha <span class="math inline">\(25\)</span>.</li>
+<li>Con <span class="math inline">\((a_1,a_2)=(1,2)\)</span> y <span class="math inline">\((b_1,b_2)=(-2,-4)\)</span>: izquierda <span class="math inline">\(100\)</span>, derecha <span class="math inline">\(100\)</span>.</li>
+<li>Con <span class="math inline">\((a_1,a_2)=(0,0)\)</span>: ambos lados se anulan; ninguna división por un número positivo está autorizada.</li>
+</ul>
+</div>
+</div>
+<p><strong>Pregunta genuina.</strong> Hemos demostrado algo para dos términos. ¿Basta con repetir el mismo cálculo para cada <span class="math inline">\(n\)</span> o podemos aprovechar el resultado de dos términos para agregar un término nuevo?</p>
+</section>
+<section id="cs-enunciado" class="level2">
+<h2 class="anchored" data-anchor-id="cs-enunciado">3. Todas las sumas finitas: inducción antes de las abreviaturas</h2>
+<p><strong>Teorema (Cauchy–Schwarz finito, versión real).</strong> Para <span class="math inline">\(n\ge1\)</span> y cualesquiera números reales <span class="math inline">\(a_1,\ldots,a_n,b_1,\ldots,b_n\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\left(\sum_{i=1}^na_ib_i\right)^2\le
+\left(\sum_{i=1}^na_i^2\right)\left(\sum_{i=1}^nb_i^2\right).}
+\]</span></p>
+<p>Puesto que ambos lados son no negativos, la formulación equivalente con raíces cuadradas es</p>
+<p><span class="math display">\[
+\boxed{\left|\sum_{i=1}^na_ib_i\right|\le
+\sqrt{\sum_{i=1}^na_i^2}\sqrt{\sum_{i=1}^nb_i^2}.}
+\]</span></p>
+<p>El valor absoluto controla tanto las sumas positivas como las negativas. Si sólo escribiéramos la desigualdad sin él, obtendríamos una consecuencia verdadera, pero menos informativa; más tarde compararemos esa versión unilateral con la de valor absoluto.</p>
+<p><strong>Lema de dos bloques.</strong> Si <span class="math inline">\(A,B\ge0\)</span> y <span class="math inline">\(x,y\in\mathbb R\)</span>, entonces</p>
+<p><span class="math display">\[
+AB+|xy|\le\sqrt{A^2+x^2}\sqrt{B^2+y^2}.
+\]</span></p>
+<p><strong>Demostración.</strong> Los miembros son no negativos y</p>
+<p><span class="math display">\[
+(A^2+x^2)(B^2+y^2)-(AB+|xy|)^2
+=(A|y|-B|x|)^2\ge0.
+\]</span></p>
+<p>Tomamos las raíces cuadradas no negativas. <span class="math inline">\(\square\)</span></p>
+<section id="cs-induccion" class="level3">
+<h3 class="anchored" data-anchor-id="cs-induccion">3.1. La prueba por inducción</h3>
+<p><strong>Demostración por inducción del teorema.</strong> Para <span class="math inline">\(n=1\)</span> hay igualdad, como vimos en §1. Supongamos que la desigualdad con valor absoluto vale para <span class="math inline">\(n\)</span> sumandos y definamos, sólo para abreviar esta línea,</p>
+<p><span class="math display">\[
+S_n=\sum_{i=1}^na_ib_i,\qquad
+A=\sqrt{\sum_{i=1}^na_i^2},\qquad
+B=\sqrt{\sum_{i=1}^nb_i^2}.
+\]</span></p>
+<p>La hipótesis inductiva dice <span class="math inline">\(|S_n|\le AB\)</span>. La desigualdad triangular <strong>para números reales</strong>, que ya está demostrada independientemente, y el lema anterior dan</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left|\sum_{i=1}^{n+1}a_ib_i\right|
+&amp;=|S_n+a_{n+1}b_{n+1}|\\
+&amp;\le |S_n|+|a_{n+1}b_{n+1}|\\
+&amp;\le AB+|a_{n+1}b_{n+1}|\\
+&amp;\le\sqrt{\sum_{i=1}^{n+1}a_i^2}
+       \sqrt{\sum_{i=1}^{n+1}b_i^2}.
+\end{aligned}
+\]</span></p>
+<p>Queda demostrado el caso <span class="math inline">\(n+1\)</span> y, por inducción, todos los casos finitos. <span class="math inline">\(\square\)</span></p>
+<p><strong>Control de rigor.</strong> El lema se demostró sin invocar el teorema general. La triangular usada es la de <em>números reales</em>, no la triangular euclidiana que deduciremos posteriormente de Cauchy–Schwarz. La prueba no supone un producto interno, una norma vectorial ni completitud de un espacio de vectores.</p>
+<p><strong>Una decisión de lectura tomada de Steele.</strong> La prueba de <span class="math inline">\(n=2\)</span> es algo más que un ejemplo: es la pieza reutilizable que une el caso <span class="math inline">\(n\)</span> con el caso <span class="math inline">\(n+1\)</span>. El procedimiento enseña a <strong>componer resultados previamente obtenidos</strong>, en vez de expandir una cantidad cada vez mayor de términos sin estrategia.</p>
+</section>
+</section>
+<section id="cs-labbe" class="level2">
+<h2 class="anchored" data-anchor-id="cs-labbe">4. El ejercicio de Labbé: una segunda puerta de entrada</h2>
+<p>Gustavo Labbé Morales formula el resultado al cuadrado como ejercicio 13 de §1.8 de <em>Cálculo I</em> (p.&nbsp;24) y sugiere desarrollar la expresión <span class="math inline">\(\sum_{i=1}^n(a_ix+b_i)^2\)</span>. Esta pista propone una construcción <strong>distinta</strong> de la inducción: si el cuadrado de cada número es no negativo, también lo será cualquier suma de esos cuadrados, sea cual sea <span class="math inline">\(x\in\mathbb R\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Reconstrucción antes de la solución">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Reconstrucción antes de la solución
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Desarrolla <span class="math inline">\(\sum_i(a_ix+b_i)^2\)</span>. ¿Qué coeficientes aparecen frente a <span class="math inline">\(x^2\)</span> y <span class="math inline">\(x\)</span>? ¿Cómo podrías elegir <span class="math inline">\(x\)</span> para que la condición «la expresión nunca es negativa» se convierta en una relación entre las tres sumas?</p>
+</div>
+</div>
+<p><strong>Demostración desarrollada a partir de la pista.</strong> Si <span class="math inline">\(a_1=\cdots=a_n=0\)</span>, ambos miembros del teorema valen cero. Supongamos que no todas esas coordenadas son nulas y escribamos</p>
+<p><span class="math display">\[
+A=\sum_{i=1}^na_i^2&gt;0,\qquad
+B=\sum_{i=1}^nb_i^2,\qquad
+C=\sum_{i=1}^na_ib_i.
+\]</span></p>
+<p>Aquí <span class="math inline">\(B=\sum_i b_i^2\ge0\)</span>; la letra es un recurso temporal de cálculo, no una nueva operación. Para todo real <span class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[
+0\le\sum_{i=1}^n(a_ix+b_i)^2
+=Ax^2+2Cx+B.
+\]</span></p>
+<p>Podemos completar el cuadrado:</p>
+<p><span class="math display">\[
+Ax^2+2Cx+B=A\left(x+\frac CA\right)^2
++\left(B-\frac{C^2}{A}\right).
+\]</span></p>
+<p>Elegimos <span class="math inline">\(x_0=-C/A\)</span> (válido porque <span class="math inline">\(A&gt;0\)</span>); el primer término se anula y queda</p>
+<p><span class="math display">\[
+0\le B-\frac{C^2}{A}.
+\]</span></p>
+<p>Multiplicando por <span class="math inline">\(A&gt;0\)</span> obtenemos <span class="math inline">\(C^2\le AB\)</span>, que es exactamente la desigualdad de §3. También queda resuelto el caso inicialmente excluido. <span class="math inline">\(\square\)</span></p>
+<p><strong>Qué hace posible la elección.</strong> El parámetro no es una ocurrencia: permite probar que un polinomio cuadrático de coeficiente principal positivo no toma valores negativos. La igualdad se alcanza cuando cada sumando <span class="math inline">\((a_ix_0+b_i)^2\)</span> vale cero, propiedad que analizaremos en §8.</p>
+<p><strong>Cotejo con la fuente.</strong> La expresión sugerida aparece en Labbé, pero la elección explícita de <span class="math inline">\(x_0\)</span>, la separación del caso nulo y esta lectura pedagógica se han redactado y verificado aquí. No se atribuye al autor una demostración que su libro deja como ejercicio.</p>
+</section>
+<section id="cs-prueba-cuadratica" class="level2">
+<h2 class="anchored" data-anchor-id="cs-prueba-cuadratica">5. El mismo mecanismo visto al revés: parámetro y discriminante</h2>
+<p>La pista de Labbé considera <span class="math inline">\(a_ix+b_i\)</span>. También podemos estudiar <span class="math inline">\(a_i-tb_i\)</span>: intercambiamos qué lista acompaña al parámetro y llegamos al mismo resultado.</p>
+<p><strong>Otra demostración completa.</strong> Si <span class="math inline">\(b_1=\cdots=b_n=0\)</span>, hay igualdad. Si no, fijemos</p>
+<p><span class="math display">\[
+P=\sum_{i=1}^na_i^2,\qquad
+Q=\sum_{i=1}^nb_i^2&gt;0,\qquad
+R=\sum_{i=1}^na_ib_i.
+\]</span></p>
+<p>Para cada real <span class="math inline">\(t\)</span>, la suma de cuadrados satisface</p>
+<p><span class="math display">\[
+0\le\sum_{i=1}^n(a_i-tb_i)^2=P-2Rt+Qt^2.
+\]</span></p>
+<p>Al completar el cuadrado,</p>
+<p><span class="math display">\[
+P-2Rt+Qt^2
+=Q\left(t-\frac RQ\right)^2+P-\frac{R^2}{Q}.
+\]</span></p>
+<p>En <span class="math inline">\(t_0=R/Q\)</span> el primer sumando se anula. Por tanto <span class="math inline">\(0\le P-R^2/Q\)</span>, y multiplicar por <span class="math inline">\(Q&gt;0\)</span> da <span class="math inline">\(R^2\le PQ\)</span>. <span class="math inline">\(\square\)</span></p>
+<section id="cs-discriminante" class="level3">
+<h3 class="anchored" data-anchor-id="cs-discriminante">5.1. Alternativa: examinar el discriminante</h3>
+<p>El polinomio <span class="math inline">\(q(t)=Qt^2-2Rt+P\)</span> es no negativo para <em>todo</em> <span class="math inline">\(t\in\mathbb R\)</span>, y <span class="math inline">\(Q&gt;0\)</span>. Si su discriminante fuera positivo, tendría dos raíces distintas y tomaría valores negativos entre ambas; imposible. Así,</p>
+<p><span class="math display">\[
+\Delta=(-2R)^2-4QP\le0,
+\qquad\text{es decir,}\qquad R^2\le PQ.
+\]</span></p>
+<p>No es una hipótesis nueva ni una tercera desigualdad: es otra manera de leer el mismo polinomio. En el caso de lista <span class="math inline">\(b\)</span> nula no dividimos por <span class="math inline">\(Q\)</span>, pues ese caso ya se separó.</p>
+<p><strong>Comparar las dos construcciones.</strong> Labbé lleva a separar la lista <span class="math inline">\(a\)</span> nula y dividir por <span class="math inline">\(\sum_i a_i^2\)</span>; el argumento alternativo separa la lista <span class="math inline">\(b\)</span> nula y divide por <span class="math inline">\(\sum_i b_i^2\)</span>. El resultado y la generalidad son idénticos. El parámetro óptimo se interpretará geométricamente <em>después</em> de definir el producto interno y la norma, no antes.</p>
+</section>
+</section>
+<section id="cs-prueba-normalizada" class="level2">
+<h2 class="anchored" data-anchor-id="cs-prueba-normalizada">6. ¿Qué tan buena es una cota? Escala y normalización</h2>
+<p>Steele plantea una operación intelectual distinta: no basta con obtener una cota verdadera, también debemos examinar <strong>cuánto se aleja del valor que intentamos controlar</strong>. Comencemos con una desigualdad de dos números, válida para cualesquiera reales <span class="math inline">\(r,s\)</span>:</p>
+<p><span class="math display">\[
+0\le(|r|-|s|)^2=r^2+s^2-2|rs|,
+\qquad\text{luego}\qquad 2|rs|\le r^2+s^2.
+\]</span></p>
+<p>Sumando esta relación término a término obtenemos la <strong>cota aditiva</strong></p>
+<p><span class="math display">\[
+\sum_{i=1}^n|a_ib_i|\le\frac12
+\left(\sum_{i=1}^na_i^2+\sum_{i=1}^nb_i^2\right).
+\]</span></p>
+<p>Es útil, pero a veces es muy débil. Para las listas <span class="math inline">\((10,0)\)</span> y <span class="math inline">\((1,0)\)</span>, su miembro derecho vale <span class="math inline">\(50{,}5\)</span> y la suma que acota vale exactamente <span class="math inline">\(10\)</span>. ¿Podemos afinarla sin suponer de antemano Cauchy–Schwarz?</p>
+<section id="cs-escalas" class="level3">
+<h3 class="anchored" data-anchor-id="cs-escalas">6.1. Ajuste de escala: de lo aditivo a lo multiplicativo</h3>
+<p>Pongamos <span class="math inline">\(A=\sqrt{\sum_i a_i^2}\)</span> y <span class="math inline">\(B=\sqrt{\sum_i b_i^2}\)</span>. Si alguno es cero, la suma de productos también es cero. En caso contrario, para cada <span class="math inline">\(t&gt;0\)</span> escribimos <span class="math inline">\(|a_ib_i|=|(ta_i)(b_i/t)|\)</span> y aplicamos la cota elemental:</p>
+<p><span class="math display">\[
+\sum_i|a_ib_i|\le\frac12\left(t^2A^2+\frac{B^2}{t^2}\right).
+\]</span></p>
+<p>Elegir <span class="math inline">\(t=\sqrt{B/A}\)</span> iguala los términos <span class="math inline">\(t^2A^2=B^2/t^2=AB\)</span>. La estimación se afina hasta</p>
+<p><span class="math display">\[
+\boxed{\sum_i|a_ib_i|\le
+\sqrt{\sum_i a_i^2}\sqrt{\sum_i b_i^2}.}
+\]</span></p>
+<p>Finalmente, la desigualdad triangular escalar produce <span class="math inline">\(|\sum_i a_ib_i|\le\sum_i|a_ib_i|\)</span>. La cota obtenida es la misma que en §3, pero controla además la suma de los <strong>valores absolutos individuales</strong>.</p>
+</section>
+<section id="cs-normalizacion" class="level3">
+<h3 class="anchored" data-anchor-id="cs-normalizacion">6.2. Normalización: otra manera de reconocer la elección óptima</h3>
+<p>Si <span class="math inline">\(A,B&gt;0\)</span>, definamos <span class="math inline">\(\alpha_i=|a_i|/A\)</span> y <span class="math inline">\(\beta_i=|b_i|/B\)</span>. Por su construcción,</p>
+<p><span class="math display">\[
+\sum_i\alpha_i^2=\sum_i\beta_i^2=1.
+\]</span></p>
+<p>La desigualdad <span class="math inline">\(2rs\le r^2+s^2\)</span>, aplicada a <span class="math inline">\(r=\alpha_i\)</span>, <span class="math inline">\(s=\beta_i\)</span> y sumada, da</p>
+<p><span class="math display">\[
+\sum_i\alpha_i\beta_i\le\frac12
+\left(\sum_i\alpha_i^2+\sum_i\beta_i^2\right)=1.
+\]</span></p>
+<p>Al multiplicar por <span class="math inline">\(AB&gt;0\)</span> recuperamos <span class="math inline">\(\sum_i|a_ib_i|\le AB\)</span> y, por la triangular escalar, <span class="math inline">\(|\sum_i a_ib_i|\le AB\)</span>. Si una lista es nula, ambas desigualdades son inmediatas. <span class="math inline">\(\square\)</span></p>
+<p><strong>No confundir dos pérdidas de información.</strong> El cambio de escala corrige una cota excesiva; la desigualdad <span class="math inline">\(|\sum_i a_ib_i|\le\sum_i|a_ib_i|\)</span> puede ser estricta debido a cancelaciones de signo. Por ejemplo, con las listas <span class="math inline">\((1,1)\)</span> y <span class="math inline">\((1,-1)\)</span>, la suma de los valores absolutos es <span class="math inline">\(2\)</span> pero la suma de los productos es <span class="math inline">\(0\)</span>. En §8 volveremos a la igualdad exacta del teorema.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Comparación de estrategias">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Comparación de estrategias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Reconstruye la misma desigualdad de tres maneras: (i) el caso de dos términos más inducción; (ii) el polinomio sugerido por Labbé; (iii) normalización o ajuste de escala. ¿Cuál exige separar una lista nula? ¿Dónde interviene la triangular <em>escalar</em>? ¿Qué método proporciona directamente la elección de un parámetro óptimo?</p>
+</div>
+</div>
+</section>
+</section>
+<section id="cs-notacion" class="level2">
+<h2 class="anchored" data-anchor-id="cs-notacion">7. Ahora sí: introducir producto interno y norma</h2>
+<p>La fórmula con sumas es completa, pero escribir repetidamente tres sumas dificulta comparar demostraciones y pasar a otros dominios. <strong>Es el momento de introducir abreviaturas, no de añadir una hipótesis.</strong> Para dos vectores reales <span class="math inline">\(a=(a_1,\ldots,a_n)\)</span> y <span class="math inline">\(b=(b_1,\ldots,b_n)\)</span> definimos primero su producto escalar usual</p>
+<p><span class="math display">\[
+\langle a,b\rangle:=\sum_{i=1}^n a_i b_i.
+\]</span></p>
+<p>Definimos después la longitud euclidiana asociada,</p>
+<p><span class="math display">\[
+\|a\|_2:=\sqrt{\sum_{i=1}^n a_i^2}
+=\sqrt{\langle a,a\rangle}.
+\]</span></p>
+<p>La <strong>barra simple</strong> <span class="math inline">\(|x|\)</span> mide el valor absoluto de un número real (más adelante, el módulo de un complejo). La <strong>doble barra</strong> <span class="math inline">\(\|a\|_2\)</span> mide la norma de un vector; el subíndice distingue esta norma de otras. Esta distinción no se necesita para entender las seis primeras secciones: ahora nos ahorra notación y permite identificar la estructura.</p>
+<p><strong>La tercera forma del mismo teorema.</strong> La desigualdad de §3 se reescribe, sin cambiar su contenido, como</p>
+<p><span class="math display">\[
+\boxed{|\langle a,b\rangle|\le\|a\|_2\,\|b\|_2.}
+\]</span></p>
+<p>No se ha usado que <span class="math inline">\(\|\cdot\|_2\)</span> satisfaga la desigualdad triangular vectorial para obtener esta fórmula. Por el contrario, esa propiedad será un <strong>corolario</strong> demostrado en §13.1. En espacios abstractos escribiremos simplemente <span class="math inline">\(\|u\|\)</span> cuando el producto interno determine una norma inequívocamente.</p>
+<p><strong>Traducción bidireccional.</strong> Sustituye <span class="math inline">\(\langle a,b\rangle\)</span> y cada doble barra por sus definiciones y recupera literalmente la fórmula de §3. A la inversa, encuentra las tres expresiones repetidas en §4 y escribe el polinomio de Labbé usando esta notación. Reconocer que una forma compacta equivale a otra desarrollada es parte de comprender el teorema.</p>
+</section>
+<section id="cs-igualdad" class="level2">
+<h2 class="anchored" data-anchor-id="cs-igualdad">8. Igualdad: ¿cuándo se alcanza la cota?</h2>
+<p><strong>Proposición.</strong> En la desigualdad de Cauchy–Schwarz para <span class="math inline">\(\mathbb R^n\)</span> hay igualdad si y sólo si <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son <strong>linealmente dependientes</strong>; es decir, alguno es cero o, siendo ambos no nulos, existe <span class="math inline">\(\lambda\in\mathbb R\setminus\{0\}\)</span> tal que <span class="math inline">\(a=\lambda b\)</span>.</p>
+<p><strong>Demostración.</strong> Cuando <span class="math inline">\(b=0\)</span> ya vimos que hay igualdad. Si <span class="math inline">\(b\ne0\)</span>, la identidad obtenida al completar el cuadrado en §5 puede reorganizarse como</p>
+<p><span class="math display">\[
+\|a\|_2^2\|b\|_2^2-\langle a,b\rangle^2
+=\|b\|_2^2\|a-t_0b\|_2^2.
+\]</span></p>
+<p>El miembro derecho vale cero exactamente cuando <span class="math inline">\(\|a-t_0b\|_2^2=0\)</span>, esto es, cuando <span class="math inline">\(a=t_0b\)</span>. Recíprocamente, si <span class="math inline">\(a=\lambda b\)</span>, entonces</p>
+<p><span class="math display">\[
+|\langle a,b\rangle|
+=|\lambda|\,\|b\|_2^2
+=\|a\|_2\|b\|_2.
+\]</span></p>
+<p>También están cubiertos los casos nulos. <span class="math inline">\(\square\)</span></p>
+<p>No hemos impuesto <span class="math inline">\(\lambda&gt;0\)</span>. Si <span class="math inline">\(a=-2b\ne0\)</span>, el producto escalar es negativo pero su <strong>valor absoluto</strong> alcanza la cota. Esa es la diferencia decisiva con el criterio de igualdad de la desigualdad triangular euclidiana.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Prueba de estrés de la igualdad">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Prueba de estrés de la igualdad
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><span class="math inline">\(a=(1,2)\)</span>, <span class="math inline">\(b=(2,4)\)</span>: proporcionales en el mismo sentido; hay igualdad.</li>
+<li><span class="math inline">\(a=(1,2)\)</span>, <span class="math inline">\(b=(-2,-4)\)</span>: proporcionales en sentidos opuestos; también hay igualdad.</li>
+<li><span class="math inline">\(a=(1,0)\)</span>, <span class="math inline">\(b=(0,1)\)</span>: producto escalar cero y longitudes positivas; la desigualdad es estricta.</li>
+<li><span class="math inline">\(a=0\)</span>, <span class="math inline">\(b\)</span> arbitrario: ambos miembros son cero, sin necesidad de dividir por <span class="math inline">\(\|a\|\)</span>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="cs-lagrange" class="level2">
+<h2 class="anchored" data-anchor-id="cs-lagrange">9. La identidad de Lagrange: cuantificar lo que falta para la igualdad</h2>
+<p>Las pruebas por sumas de cuadrados de las secciones 4 y 5 demuestran que cierta diferencia es no negativa. La <strong>identidad de Lagrange</strong> explica de qué está hecha esa diferencia: de una suma de cuadrados, uno por cada par de índices.</p>
+<p><strong>Proposición (identidad de Lagrange, versión real).</strong> Para <span class="math inline">\(a,b\in\mathbb R^n\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\left(\sum_i a_i^2\right)
+\left(\sum_i b_i^2\right)
+-\left(\sum_i a_i b_i\right)^2
+=\sum_{1\le i&lt;j\le n}(a_i b_j-a_j b_i)^2.
+}
+\]</span></p>
+<p><strong>Demostración.</strong> Desarrollamos el producto de sumas y el cuadrado de la suma:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left(\sum_i a_i^2\right)\left(\sum_j b_j^2\right)
+&amp;=\sum_{i,j}a_i^2b_j^2,\\
+\left(\sum_i a_i b_i\right)^2
+&amp;=\sum_{i,j}a_i b_i a_j b_j.
+\end{aligned}
+\]</span></p>
+<p>Restándolos, los términos con <span class="math inline">\(i=j\)</span> se cancelan. Agrupar para cada pareja <span class="math inline">\(i&lt;j\)</span> los términos de orden <span class="math inline">\((i,j)\)</span> y <span class="math inline">\((j,i)\)</span> deja</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;a_i^2b_j^2+a_j^2b_i^2-2a_i b_i a_j b_j\\
+&amp;\qquad=(a_i b_j-a_j b_i)^2.
+\end{aligned}
+\]</span></p>
+<p>Sumando sobre todas las parejas resulta la identidad. Como cada sumando del lado derecho es no negativo, Cauchy–Schwarz se sigue inmediatamente. <span class="math inline">\(\square\)</span></p>
+<p><strong>Lectura inversa.</strong> Si queremos demostrar que un producto de sumas de cuadrados es mayor o igual que el cuadrado de una suma de productos, podemos intentar <strong>restar</strong> ambas expresiones y reorganizar el resultado en cuadrados manifiestamente no negativos. No necesitamos entonces elegir ningún parámetro.</p>
+<p>Para <span class="math inline">\(n=2\)</span> sólo queda un término:</p>
+<p><span class="math display">\[
+\boxed{
+(a_1^2+a_2^2)(b_1^2+b_2^2)
+-(a_1b_1+a_2b_2)^2
+=(a_1b_2-a_2b_1)^2.
+}
+\]</span></p>
+<p>El determinante <span class="math inline">\(a_1b_2-a_2b_1\)</span> mide el área orientada del paralelogramo formado por los vectores del plano; su cuadrado desaparece exactamente cuando son dependientes. En dimensiones mayores, todos los determinantes de orden dos deben anularse para que haya igualdad.</p>
+<p><strong>Caso límite <span class="math inline">\(n=1\)</span>.</strong> La suma sobre <span class="math inline">\(i&lt;j\)</span> es vacía y vale <span class="math inline">\(0\)</span>: Cauchy–Schwarz es siempre igualdad para dos vectores de <span class="math inline">\(\mathbb R^1\)</span>. Esto no es una excepción a la proposición anterior, porque dos vectores de un espacio unidimensional siempre son linealmente dependientes.</p>
+<p><strong>Una pregunta sobre la precisión de la estimación.</strong> Siguiendo la línea de investigación del capítulo 3 de Steele, definamos el <em>defecto cuadrático</em></p>
+<p><span class="math display">\[
+D(a,b):=\|a\|_2^2\|b\|_2^2-\langle a,b\rangle^2
+=\sum_{i&lt;j}(a_ib_j-a_jb_i)^2.
+\]</span></p>
+<p>Esta expresión aporta una información que se pierde si sólo escribimos <span class="math inline">\(D(a,b)\ge0\)</span>: permite localizar las parejas de coordenadas que impiden la proporcionalidad. Su anulación caracteriza la igualdad. No debemos llamarla «distancia entre vectores»: para <span class="math inline">\(a\ne0\)</span> tenemos <span class="math inline">\(D(a,2a)=0\)</span> aunque <span class="math inline">\(a\ne2a\)</span>, lo que contradice la separación de puntos exigida a una métrica. Además, sustituir <span class="math inline">\(a\)</span> por <span class="math inline">\(sa\)</span> multiplica el defecto por <span class="math inline">\(s^2\)</span>. En §10 recuperaremos su interpretación geométrica.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Laboratorio interactivo · MA-APP-0002">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Laboratorio interactivo · MA-APP-0002
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Contrasta el cuadrado de §2 con la identidad de Lagrange, explora el parámetro de Labbé y, después de introducir la notación de §7, interpreta los vectores. El laboratorio permite investigar ejemplos; <strong>no sustituye las demostraciones universales</strong>.</p>
+</div>
+</div>
+<iframe src="interactive/cauchy-schwarz.html" class="cs-lab-frame" data-cs-lab="" title="Laboratorio de Cauchy–Schwarz: sumas, parámetro de Labbé y geometría" loading="lazy" referrerpolicy="no-referrer" style="display:block;width:100%;height:1650px;border:1px solid #8097ac;border-radius:8px">
+</iframe>
+<p><a href="../../teoria/resultados/laboratorio-cauchy-schwarz.html"><strong>Abrir el laboratorio en una página independiente</strong></a>.</p>
+<script src="interactive/cauchy-schwarz-embed.js" defer=""></script>
+</section>
+<section id="cs-geometria" class="level2">
+<h2 class="anchored" data-anchor-id="cs-geometria">10. Geometría: proyección, ángulos y matriz de Gram</h2>
+<p>Para <span class="math inline">\(u,v\in\mathbb R^n\)</span> y <span class="math inline">\(v\ne0\)</span> definimos la proyección de <span class="math inline">\(u\)</span> sobre la recta generada por <span class="math inline">\(v\)</span> mediante</p>
+<p><span class="math display">\[
+\operatorname{proj}_v(u)
+=\frac{\langle u,v\rangle}{\|v\|^2}v=\alpha v,
+\qquad r=u-\alpha v.
+\]</span></p>
+<p>La elección de <span class="math inline">\(\alpha\)</span> asegura <span class="math inline">\(\langle r,v\rangle=0\)</span>. Se trata de una descomposición en una parte paralela a <span class="math inline">\(v\)</span> y un resto ortogonal. Al expandir el cuadrado, los términos cruzados se anulan, y obtenemos una identidad pitagórica:</p>
+<p><span class="math display">\[
+\boxed{\|u\|^2
+=\frac{|\langle u,v\rangle|^2}{\|v\|^2}+\|r\|^2.}
+\]</span></p>
+<p>Cauchy–Schwarz es la consecuencia inmediata de descartar el término no negativo <span class="math inline">\(\|r\|^2\)</span>. La igualdad significa que <strong>no queda resto ortogonal</strong>: <span class="math inline">\(r=0\)</span>. Esta identidad describe más que una cota: nos dice cuánto se pierde cuando hay desigualdad estricta.</p>
+<p>En un espacio real, si <span class="math inline">\(u,v\ne0\)</span>, el cociente <span class="math inline">\(\langle u,v\rangle/(\|u\|\|v\|)\)</span> pertenece al intervalo <span class="math inline">\([-1,1]\)</span> por Cauchy–Schwarz; por ello podemos definir el ángulo <span class="math inline">\(\theta\in[0,\pi]\)</span> mediante</p>
+<p><span class="math display">\[
+\cos\theta=\frac{\langle u,v\rangle}{\|u\|\|v\|}.
+\]</span></p>
+<p>Así, la igualdad en Cauchy–Schwarz corresponde a <span class="math inline">\(\theta=0\)</span> <strong>o</strong> <span class="math inline">\(\theta=\pi\)</span>. El caso perpendicular tiene <span class="math inline">\(\theta=\pi/2\)</span> y producto escalar cero. No introduzcamos esta fórmula como prueba previa de Cauchy–Schwarz si la existencia del ángulo se está definiendo precisamente con ayuda de la desigualdad: hacerlo invertiría el orden lógico.</p>
+<p><strong>Corolario (determinante de Gram).</strong> La matriz</p>
+<p><span class="math display">\[
+G(u,v)=\begin{pmatrix}
+\langle u,u\rangle&amp;\langle u,v\rangle\\
+\langle v,u\rangle&amp;\langle v,v\rangle
+\end{pmatrix}
+\]</span></p>
+<p>tiene determinante real no negativo:</p>
+<p><span class="math display">\[
+\det G(u,v)=\|u\|^2\|v\|^2-|\langle u,v\rangle|^2\ge0.
+\]</span></p>
+<p>En el plano real, la identidad de §9 identifica esta diferencia con el cuadrado del área del paralelogramo. Después de introducir productos internos abstractos en §11, el determinante conservará el significado algebraico de <strong>medir la falta de dependencia lineal</strong> de los dos vectores.</p>
+</section>
+<section id="cs-producto-interno" class="level2">
+<h2 class="anchored" data-anchor-id="cs-producto-interno">11. Desde productos internos reales hasta espacios complejos y abstractos</h2>
+<section id="cs-real-abstracto" class="level3">
+<h3 class="anchored" data-anchor-id="cs-real-abstracto">11.1. Producto interno real: la versión sin coordenadas</h3>
+<p>Las sumas de productos de la sección 7 son un ejemplo de una estructura más general. Sea <span class="math inline">\(V\)</span> un espacio vectorial real y sea <span class="math inline">\(\langle\cdot,\cdot\rangle:V\times V\to\mathbb R\)</span> una aplicación simétrica, lineal en cada variable y definida positiva: <span class="math inline">\(\langle u,u\rangle\ge0\)</span>, con igualdad sólo si <span class="math inline">\(u=0\)</span>. Definimos <span class="math inline">\(\|u\|=\sqrt{\langle u,u\rangle}\)</span>. Todavía <strong>no suponemos</strong> que esta función cumpla la desigualdad triangular.</p>
+<p><strong>Teorema (versión real de producto interno).</strong> Para todo <span class="math inline">\(u,v\in V\)</span>,</p>
+<p><span class="math display">\[
+\boxed{|\langle u,v\rangle|^2\le\langle u,u\rangle\langle v,v\rangle.}
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(v=0\)</span>, ambos miembros valen cero. Si <span class="math inline">\(v\ne0\)</span>, la positividad definida garantiza <span class="math inline">\(\langle v,v\rangle&gt;0\)</span>. Para <span class="math inline">\(t=\langle u,v\rangle/\langle v,v\rangle\)</span>, la expansión por bilinealidad y simetría da</p>
+<p><span class="math display">\[
+0\le\langle u-tv,u-tv\rangle
+=\langle u,u\rangle-\frac{\langle u,v\rangle^2}{\langle v,v\rangle}.
+\]</span></p>
+<p>Multiplicamos por <span class="math inline">\(\langle v,v\rangle&gt;0\)</span> y obtenemos el resultado. La igualdad exige <span class="math inline">\(\langle u-tv,u-tv\rangle=0\)</span> y, por positividad definida, <span class="math inline">\(u=tv\)</span>; el caso <span class="math inline">\(v=0\)</span> también es dependencia lineal. La recíproca se comprueba sustituyendo <span class="math inline">\(u=\lambda v\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Lo que se ha generalizado.</strong> Sólo usamos las propiedades del producto interno y los cuadrados no negativos; ni las coordenadas, ni la dimensión finita, ni la completitud aparecen en el argumento. Esto permite trasladar la demostración, sin copiar una fórmula que sólo funcionaba para listas finitas.</p>
+</section>
+<section id="cs-complejo" class="level3">
+<h3 class="anchored" data-anchor-id="cs-complejo">11.2. Producto interno complejo: por qué aparece la conjugación</h3>
+<p>En <span class="math inline">\(\mathbb C^n\)</span> el producto interno estándar exige conjugación. Fijemos explícitamente la convención <strong>lineal en la primera variable</strong>:</p>
+<p><span class="math display">\[
+\langle u,v\rangle=\sum_{i=1}^n u_i\overline{v_i},
+\qquad
+\|u\|:=\sqrt{\langle u,u\rangle}
+=\sqrt{\sum_i|u_i|^2}.
+\]</span></p>
+<p>Entonces <span class="math inline">\(\langle v,u\rangle=\overline{\langle u,v\rangle}\)</span>, y <span class="math inline">\(\langle u,u\rangle\)</span> es un número real no negativo. Algunas obras adoptan la convención opuesta, lineal en la segunda variable; no cambia la desigualdad, pero sí la fórmula concreta del coeficiente de proyección. Toda prueba debe declarar su convención.</p>
+<p><strong>Teorema (Cauchy–Schwarz complejo).</strong> Para <span class="math inline">\(u,v\in\mathbb C^n\)</span>,</p>
+<p><span class="math display">\[
+\boxed{|\langle u,v\rangle|^2
+\le\langle u,u\rangle\langle v,v\rangle.}
+\]</span></p>
+<p>Hay igualdad si y sólo si los vectores son linealmente dependientes sobre <span class="math inline">\(\mathbb C\)</span>.</p>
+<p><strong>Demostración.</strong> El caso <span class="math inline">\(v=0\)</span> es inmediato. Si <span class="math inline">\(v\ne0\)</span>, elegimos el escalar complejo</p>
+<p><span class="math display">\[
+\alpha=\frac{\langle u,v\rangle}{\langle v,v\rangle}.
+\]</span></p>
+<p>La linealidad en la primera variable da <span class="math inline">\(\langle u-\alpha v,v\rangle=0\)</span>. Al desarrollar y utilizar la simetría conjugada,</p>
+<p><span class="math display">\[
+\begin{aligned}
+0\le\|u-\alpha v\|^2
+&amp;=\|u\|^2
+-\overline\alpha\langle u,v\rangle
+-\alpha\langle v,u\rangle
++|\alpha|^2\|v\|^2\\
+&amp;=\|u\|^2-\frac{|\langle u,v\rangle|^2}{\|v\|^2}.
+\end{aligned}
+\]</span></p>
+<p>Multiplicar por <span class="math inline">\(\|v\|^2&gt;0\)</span> entrega la desigualdad. La igualdad obliga a <span class="math inline">\(u-\alpha v=0\)</span>, y la dependencia lineal produce recíprocamente igualdad. <span class="math inline">\(\square\)</span></p>
+<p><strong>Por qué no basta con copiar literalmente la prueba real.</strong> Para <span class="math inline">\(z\in\mathbb C\)</span> no existe un orden compatible con las operaciones que permita escribir «<span class="math inline">\(z\ge0\)</span>» con el significado usado antes. La expresión <span class="math inline">\(\|u-\alpha v\|^2\)</span>, en cambio, sigue siendo un <strong>real no negativo</strong>. Además, <span class="math inline">\(\langle u,v\rangle^2\)</span> no es en general real ni no negativo; el término correcto es <span class="math inline">\(|\langle u,v\rangle|^2\)</span>.</p>
+</section>
+<section id="cs-abstracto" class="level3">
+<h3 class="anchored" data-anchor-id="cs-abstracto">11.3. La formulación abstracta y sus límites</h3>
+<p>Un <strong>espacio con producto interno</strong> sobre <span class="math inline">\(\mathbb R\)</span> o <span class="math inline">\(\mathbb C\)</span> es un espacio vectorial <span class="math inline">\(V\)</span> equipado con una función <span class="math inline">\(\langle\cdot,\cdot\rangle\)</span> lineal en la primera variable, conjugadamente simétrica y definida positiva: <span class="math inline">\(\langle x,x\rangle&gt;0\)</span> si <span class="math inline">\(x\ne0\)</span>. Definimos <span class="math inline">\(\|x\|=\sqrt{\langle x,x\rangle}\)</span>.</p>
+<p>El cálculo precedente no utiliza coordenadas, dimensión finita ni completitud: solamente esas propiedades. Por tanto, para todo <span class="math inline">\(u,v\in V\)</span>,</p>
+<p><span class="math display">\[
+\boxed{|\langle u,v\rangle|\le\|u\|\,\|v\|,}
+\]</span></p>
+<p>con igualdad exactamente cuando <span class="math inline">\(u,v\)</span> son linealmente dependientes. En el caso real se puede tomar <span class="math inline">\(\alpha=\langle u,v\rangle/\|v\|^2\)</span>; en el complejo, la misma fórmula funciona <strong>con nuestra convención</strong>.</p>
+<p>La completitud caracteriza a los espacios de Hilbert, pero <strong>no se ha utilizado</strong>: la desigualdad es válida también en espacios prehilbertianos no completos. Un espacio normado general no trae consigo necesariamente un producto interno; el enunciado <span class="math inline">\(|\langle u,v\rangle|\le\|u\|\|v\|\)</span> no puede trasladarse sin más a una norma arbitraria y un producto bilineal elegido independientemente.</p>
+</section>
+</section>
+<section id="cs-variantes" class="level2">
+<h2 class="anchored" data-anchor-id="cs-variantes">12. Variantes: pesos, series e integrales</h2>
+<section id="cs-ponderada" class="level3">
+<h3 class="anchored" data-anchor-id="cs-ponderada">12.1. Cauchy–Schwarz ponderada</h3>
+<p>Sean <span class="math inline">\(w_1,\ldots,w_n\ge0\)</span> y <span class="math inline">\(a_i,b_i\in\mathbb R\)</span>. Si aplicamos el teorema finito a <span class="math inline">\(\sqrt{w_i}a_i\)</span> y <span class="math inline">\(\sqrt{w_i}b_i\)</span>, obtenemos</p>
+<p><span class="math display">\[
+\boxed{
+\left(\sum_i w_i a_i b_i\right)^2
+\le\left(\sum_i w_i a_i^2\right)
+\left(\sum_i w_i b_i^2\right).
+}
+\]</span></p>
+<p><strong>Demostración.</strong> La desigualdad es exactamente la de §3 con las nuevas coordenadas; todos los pesos admiten raíz cuadrada real porque son no negativos. <span class="math inline">\(\square\)</span></p>
+<p><strong>Igualdad y pesos nulos.</strong> Si todos los pesos son positivos, hay igualdad si y sólo si <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son proporcionales. Si algunos pesos son cero, <strong>sólo importan las coordenadas con <span class="math inline">\(w_i&gt;0\)</span></strong>: hay igualdad si y sólo si los vectores <span class="math inline">\((\sqrt{w_i}a_i)_i\)</span> y <span class="math inline">\((\sqrt{w_i}b_i)_i\)</span> son dependientes. Exigir proporcionalidad de las coordenadas ignoradas sería una condición falsa.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Una hipótesis necesaria">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Una hipótesis necesaria
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No podemos admitir pesos negativos y conservar el argumento de las raíces. Por ejemplo, con <span class="math inline">\(w=(1,-1)\)</span>, <span class="math inline">\(a=(1,0)\)</span> y <span class="math inline">\(b=(0,1)\)</span>, el producto del lado derecho es <span class="math inline">\(1\cdot(-1)=-1\)</span>, mientras que el cuadrado del lado izquierdo vale <span class="math inline">\(0\)</span>: la desigualdad propuesta sería <span class="math inline">\(0\le-1\)</span>, falsa.</p>
+</div>
+</div>
+</section>
+<section id="cs-series" class="level3">
+<h3 class="anchored" data-anchor-id="cs-series">12.2. Series de cuadrados sumables: de lo finito a lo infinito</h3>
+<p>El capítulo 1 de Steele utiliza el tránsito desde una desigualdad cuantitativa a una conclusión cualitativa sobre series. Podemos reconstruirlo con las herramientas usuales de sucesiones, <strong>sin usar teoría de la medida</strong>.</p>
+<p><strong>Proposición.</strong> Si <span class="math inline">\((a_k)_{k\ge1}\)</span> y <span class="math inline">\((b_k)_{k\ge1}\)</span> son sucesiones reales tales que</p>
+<p><span class="math display">\[
+A^2:=\sum_{k=1}^{\infty}a_k^2&lt;\infty,
+\qquad
+B^2:=\sum_{k=1}^{\infty}b_k^2&lt;\infty,
+\]</span></p>
+<p>entonces la serie <span class="math inline">\(\sum_{k=1}^{\infty}a_kb_k\)</span> converge absolutamente y</p>
+<p><span class="math display">\[
+\boxed{\sum_{k=1}^{\infty}|a_kb_k|\le AB,
+\qquad
+\left|\sum_{k=1}^{\infty}a_kb_k\right|\le AB.}
+\]</span></p>
+<p><strong>Demostración.</strong> Para cada <span class="math inline">\(N\ge1\)</span>, aplicamos la desigualdad <strong>finita ya demostrada</strong> a los vectores <span class="math inline">\((|a_1|,\ldots,|a_N|)\)</span> y <span class="math inline">\((|b_1|,\ldots,|b_N|)\)</span>:</p>
+<p><span class="math display">\[
+0\le S_N:=\sum_{k=1}^N|a_kb_k|
+\le\left(\sum_{k=1}^Na_k^2\right)^{1/2}
+\left(\sum_{k=1}^Nb_k^2\right)^{1/2}\le AB.
+\]</span></p>
+<p>La sucesión real <span class="math inline">\((S_N)\)</span> es no decreciente y está acotada superiormente por <span class="math inline">\(AB\)</span>; <strong>la completitud de <span class="math inline">\(\mathbb R\)</span></strong>, mediante el teorema de convergencia monótona de sucesiones, garantiza que <span class="math inline">\(S_N\)</span> converge. Ésta es precisamente la convergencia absoluta de <span class="math inline">\(\sum a_kb_k\)</span>. Como toda serie real absolutamente convergente es convergente y la desigualdad triangular finita pasa al límite, obtenemos la segunda cota. <span class="math inline">\(\square\)</span></p>
+<p><strong>Auditoría de dependencia.</strong> No se ha supuesto que el espacio de sucesiones <span class="math inline">\(\ell^2\)</span> sea completo. Sólo se utilizaron Cauchy–Schwarz para <em>vectores finitos</em> y resultados previos sobre series reales. En particular, no es legítimo presentar esta demostración como fundamento de la versión finita: la dirección lógica es la contraria.</p>
+</section>
+<section id="cs-integral" class="level3">
+<h3 class="anchored" data-anchor-id="cs-integral">12.3. Versión integral para funciones continuas</h3>
+<p>Sean <span class="math inline">\(f,g:[a,b]\to\mathbb R\)</span> continuas, con <span class="math inline">\(a&lt;b\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{
+\left|\int_a^b f(x)g(x)\,dx\right|^2
+\le
+\left(\int_a^b f(x)^2\,dx\right)
+\left(\int_a^b g(x)^2\,dx\right).
+}
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(\int_a^b g^2=0\)</span>, la continuidad y la no negatividad de <span class="math inline">\(g^2\)</span> implican <span class="math inline">\(g\equiv0\)</span> en <span class="math inline">\([a,b]\)</span>; ambos lados son cero. Supongamos, por tanto, <span class="math inline">\(B:=\int_a^b g^2&gt;0\)</span> y pongamos <span class="math inline">\(A:=\int_a^b f^2\)</span>, <span class="math inline">\(C:=\int_a^b fg\)</span>. Para cada <span class="math inline">\(t\in\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+0\le\int_a^b(f-tg)^2
+=A-2tC+t^2B.
+\]</span></p>
+<p>Con <span class="math inline">\(t=C/B\)</span> obtenemos <span class="math inline">\(0\le A-C^2/B\)</span>, esto es, <span class="math inline">\(C^2\le AB\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Igualdad.</strong> Para <span class="math inline">\(B&gt;0\)</span>, es equivalente a <span class="math inline">\(\int_a^b(f-(C/B)g)^2=0\)</span>. La función integranda es continua y no negativa; por tanto se anula <strong>en todos los puntos</strong> del intervalo. Así, <span class="math inline">\(f=(C/B)g\)</span> en <span class="math inline">\([a,b]\)</span>. Si <span class="math inline">\(B=0\)</span>, uno de los dos factores es la función nula. La condición correcta es dependencia lineal de las funciones, incluido el caso nulo.</p>
+<p><strong>Qué cambió y qué permaneció.</strong> Sustituimos una suma finita de cuadrados por una integral de un cuadrado. La continuidad permite justificar tanto la integrabilidad como la implicación «integral de una función continua no negativa igual a cero <span class="math inline">\(\Rightarrow\)</span> función idénticamente nula». No hemos demostrado esta variante mediante un límite informal de sumas: hemos reproducido el mecanismo algebraico con las propiedades autorizadas de la integral.</p>
+</section>
+<section id="cs-l2" class="level3">
+<h3 class="anchored" data-anchor-id="cs-l2">12.4. Versión avanzada en <span class="math inline">\(L^2\)</span></h3>
+<p>Si ya se ha construido la integral de Lebesgue, sea <span class="math inline">\((X,\mathcal A,\mu)\)</span> un espacio de medida y sean <span class="math inline">\(f,g\in L^2(X,\mu;\mathbb C)\)</span>. La desigualdad elemental</p>
+<p><span class="math display">\[
+2|fg|\le|f|^2+|g|^2
+\]</span></p>
+<p>garantiza primero que <span class="math inline">\(f\overline g\)</span> es integrable. Sobre las <strong>clases de equivalencia módulo igualdad casi en todas partes</strong> definimos <span class="math inline">\(\langle f,g\rangle=\int_X f\overline g\,d\mu\)</span>, un producto interno. El teorema abstracto da</p>
+<p><span class="math display">\[
+\boxed{
+\left|\int_X f\overline g\,d\mu\right|
+\le
+\left(\int_X|f|^2\,d\mu\right)^{1/2}
+\left(\int_X|g|^2\,d\mu\right)^{1/2}.
+}
+\]</span></p>
+<p>Aquí la igualdad equivale a dependencia lineal en <span class="math inline">\(L^2\)</span>, esto es, <span class="math inline">\(f=\lambda g\)</span> <strong>casi en todas partes</strong>, con el correspondiente caso de función nula. No debemos sustituir «casi en todas partes» por «en todos los puntos»: en <span class="math inline">\(L^2\)</span> las funciones que difieren sólo en un conjunto de medida cero representan el mismo vector. Esta subsección requiere teoría de la medida y es una <strong>ampliación posterior</strong>, no una dependencia de las pruebas finitas.</p>
+</section>
+</section>
+<section id="cs-aplicaciones" class="level2">
+<h2 class="anchored" data-anchor-id="cs-aplicaciones">13. Aplicaciones: transformar una interacción en una cota</h2>
+<section id="cs-triangular" class="level3">
+<h3 class="anchored" data-anchor-id="cs-triangular">13.1. Demostrar la desigualdad triangular euclidiana</h3>
+<p>Sea <span class="math inline">\(V\)</span> un espacio con producto interno y <span class="math inline">\(\|u\|=\sqrt{\langle u,u\rangle}\)</span>. Para cualesquiera <span class="math inline">\(u,v\in V\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|u+v\|^2
+&amp;=\|u\|^2+2\operatorname{Re}\langle u,v\rangle+\|v\|^2\\
+&amp;\le\|u\|^2+2|\langle u,v\rangle|+\|v\|^2\\
+&amp;\le\bigl(\|u\|+\|v\|\bigr)^2.
+\end{aligned}
+\]</span></p>
+<p>Ambas cantidades que vamos a comparar son no negativas; tomamos raíces:</p>
+<p><span class="math display">\[
+\boxed{\|u+v\|\le\|u\|+\|v\|.}
+\]</span></p>
+<p>Esto <strong>prueba</strong> el axioma triangular para la norma inducida por un producto interno. El resultado enlaza con <a href="../../teoria/resultados/desigualdad-triangular.html">el artículo complementario sobre la desigualdad triangular</a>, §7.1. No hemos supuesto la desigualdad triangular vectorial para probar Cauchy–Schwarz; las dependencias van en una sola dirección.</p>
+<p><strong>Igualdad.</strong> Para <span class="math inline">\(u,v\ne0\)</span>, ambas estimaciones anteriores son igualdades exactamente cuando Cauchy–Schwarz alcanza la igualdad y <span class="math inline">\(\langle u,v\rangle\)</span> es real no negativo. Por tanto, <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> han de ser múltiplos <strong>positivos</strong> uno del otro; el caso nulo también produce igualdad. En cambio, Cauchy–Schwarz sola admite múltiplos negativos en el caso real, o múltiplos de cualquier fase en el complejo.</p>
+</section>
+<section id="cs-continuidad" class="level3">
+<h3 class="anchored" data-anchor-id="cs-continuidad">13.2. El producto interno como función acotada</h3>
+<p>Fijado <span class="math inline">\(v\in V\)</span>, definimos <span class="math inline">\(T_v(u)=\langle u,v\rangle\)</span>. Para <span class="math inline">\(u,w\in V\)</span>, por linealidad y Cauchy–Schwarz,</p>
+<p><span class="math display">\[
+|T_v(u)-T_v(w)|
+=|\langle u-w,v\rangle|
+\le\|v\|\,\|u-w\|.
+\]</span></p>
+<p>Hemos demostrado que <span class="math inline">\(T_v\)</span> es <strong>lipschitziana</strong>, y por consiguiente continua. Además, para <span class="math inline">\(v\ne0\)</span> su constante óptima de acotación sobre la esfera unitaria es <span class="math inline">\(\|v\|\)</span>, porque la igualdad se alcanza con <span class="math inline">\(u=v/\|v\|\)</span>; para <span class="math inline">\(v=0\)</span> la función es idénticamente nula. Este argumento no exige dimensión finita ni completitud.</p>
+</section>
+<section id="cs-medias" class="level3">
+<h3 class="anchored" data-anchor-id="cs-medias">13.3. Estimar una media y comparar normas</h3>
+<p>Tomando <span class="math inline">\(b=(1,\dots,1)\)</span> en el teorema finito,</p>
+<p><span class="math display">\[
+\boxed{\left(\sum_{i=1}^n a_i\right)^2
+\le n\sum_{i=1}^n a_i^2.}
+\]</span></p>
+<p>Si dividimos entre <span class="math inline">\(n^2\)</span>, resulta</p>
+<p><span class="math display">\[
+\left|\frac1n\sum_i a_i\right|
+\le\sqrt{\frac1n\sum_i a_i^2}.
+\]</span></p>
+<p>La magnitud de la media aritmética no supera la raíz cuadrática media; cuando todos los <span class="math inline">\(a_i\)</span> son no negativos, también la media aritmética ordinaria está acotada por la cuadrática. Hay igualdad exactamente cuando <span class="math inline">\(a\)</span> es proporcional a <span class="math inline">\((1,\ldots,1)\)</span>, es decir, cuando <strong>todos los valores son iguales</strong>.</p>
+<p>De igual modo, aplicar Cauchy–Schwarz a los vectores <span class="math inline">\((|a_1|,\ldots,|a_n|)\)</span> y <span class="math inline">\((1,\ldots,1)\)</span> proporciona</p>
+<p><span class="math display">\[
+\boxed{\|a\|_1\le\sqrt n\,\|a\|_2.}
+\]</span></p>
+<p>Esta comparación es útil al pasar de estimaciones cuadráticas a sumas de magnitudes. La igualdad exige que todos los <span class="math inline">\(|a_i|\)</span> sean iguales, no necesariamente que las coordenadas tengan el mismo signo.</p>
+</section>
+<section id="cs-covarianza" class="level3">
+<h3 class="anchored" data-anchor-id="cs-covarianza">13.4. Covarianza y correlación: aplicación posterior</h3>
+<p>Para variables aleatorias reales <span class="math inline">\(X,Y\)</span> con segundos momentos finitos, definimos <span class="math inline">\(X_0=X-\mathbb EX\)</span> y <span class="math inline">\(Y_0=Y-\mathbb EY\)</span>. El producto interno en el espacio <span class="math inline">\(L^2\)</span> de variables aleatorias permite escribir</p>
+<p><span class="math display">\[
+\begin{aligned}
+|\operatorname{Cov}(X,Y)|
+&amp;=|\mathbb E(X_0Y_0)|\\
+&amp;\le\sqrt{\mathbb E(X_0^2)}\sqrt{\mathbb E(Y_0^2)}\\
+&amp;=\sigma_X\sigma_Y.
+\end{aligned}
+\]</span></p>
+<p>Si ambas desviaciones estándar son positivas, el coeficiente <span class="math inline">\(\rho=\operatorname{Cov}(X,Y)/(\sigma_X\sigma_Y)\)</span> está en <span class="math inline">\([-1,1]\)</span>. Si alguna desviación es cero, la división que define <span class="math inline">\(\rho\)</span> no está permitida; la desigualdad de covarianzas sigue siendo válida. Aquí la igualdad en el valor absoluto corresponde a dependencia lineal <em>casi segura</em> de las variables centradas. Esta subsección depende de probabilidad e integración y no se utilizará como fundamento de las pruebas anteriores.</p>
+</section>
+</section>
+<section id="cs-errores" class="level2">
+<h2 class="anchored" data-anchor-id="cs-errores">14. Errores previsibles y contraejemplos</h2>
+<ol type="1">
+<li><strong>Omitir el valor absoluto.</strong> El producto escalar puede ser negativo; el enunciado acota su magnitud. La cota unilateral <span class="math inline">\(\langle u,v\rangle\le\|u\|\|v\|\)</span> es verdadera, pero pierde información respecto de la cota bilateral.</li>
+<li><strong>Confundir igualdad con «mismo sentido».</strong> En Cauchy–Schwarz real, <span class="math inline">\(u=-v\ne0\)</span> también da igualdad; el requisito de mismo sentido corresponde a la triangular euclidiana.</li>
+<li><strong>Dividir por <span class="math inline">\(\|v\|^2\)</span> sin comprobar que <span class="math inline">\(v\ne0\)</span>.</strong> La prueba separa primero el vector nulo. Éste sí satisface el teorema y el caso de igualdad.</li>
+<li><strong>Suponer que la versión compleja compara cuadrados complejos.</strong> El objeto no negativo es <span class="math inline">\(|\langle u,v\rangle|^2\)</span>, no <span class="math inline">\(\langle u,v\rangle^2\)</span>.</li>
+<li><strong>Usar una norma cualquiera con el producto escalar usual.</strong> En <span class="math inline">\(\mathbb R^2\)</span>, toma <span class="math inline">\(u=v=(1,1)\)</span> y la norma del máximo: <span class="math inline">\(|u\cdot v|=2\)</span>, pero <span class="math inline">\(\|u\|_\infty\|v\|_\infty=1\)</span>. Cauchy–Schwarz no afirma esa desigualdad para una norma ajena al producto interno.</li>
+<li><strong>Inferir proporcionalidad de todas las coordenadas con pesos nulos.</strong> La versión ponderada sólo restringe las posiciones con peso positivo.</li>
+<li><strong>Confundir cero integral con cero puntual para funciones arbitrarias.</strong> En <span class="math inline">\(L^2\)</span> la condición de igualdad es casi en todas partes; el argumento puntual de §12.3 usa continuidad en un intervalo no degenerado.</li>
+<li><strong>Suponer que Cauchy–Schwarz requiere completitud.</strong> La prueba abstracta no utiliza límites ni completitud: funciona antes de completar un espacio prehilbertiano.</li>
+<li><strong>Razonar en círculo.</strong> Probar Cauchy–Schwarz usando la triangular euclidiana y luego la triangular euclidiana usando Cauchy–Schwarz no establece ninguno de los dos resultados; debemos partir de la no negatividad de los cuadrados o de otra propiedad ya demostrada.</li>
+</ol>
+</section>
+<section id="cs-actividades" class="level2">
+<h2 class="anchored" data-anchor-id="cs-actividades">15. Actividades de reconstrucción y transferencia</h2>
+<p><strong>A. Reconstrucción de la prueba.</strong> Sin consultar §5, desarrolla <span class="math inline">\(\|a-tb\|_2^2\)</span>. Si <span class="math inline">\(b\ne0\)</span>, determina el valor de <span class="math inline">\(t\)</span> que produce la cota más fuerte. Identifica exactamente en qué línea utilizas que <span class="math inline">\(\|b\|_2^2&gt;0\)</span>.</p>
+<p><strong>B. Diagnóstico de igualdad.</strong> Decide para cada par si hay igualdad, desigualdad estricta o caso nulo: <span class="math inline">\((1,2),(2,4)\)</span>; <span class="math inline">\((1,2),(-2,-4)\)</span>; <span class="math inline">\((1,0),(0,1)\)</span>; <span class="math inline">\((0,0),(3,-1)\)</span>. Justifica la respuesta mediante dependencia lineal, no sólo por cálculo numérico.</p>
+<p><strong>C. Prueba de estrés.</strong> Un compañero propone <span class="math inline">\(|u\cdot v|\le\|u\|_\infty\|v\|_\infty\)</span> para todos los vectores reales, conservando el producto escalar euclidiano. Encuentra un contraejemplo y explica qué relación estructural falta entre producto y norma.</p>
+<p><strong>D. Variación de pesos.</strong> Demuestra la versión ponderada y examina <span class="math inline">\(w=(1,0)\)</span>, <span class="math inline">\(a=(1,17)\)</span>, <span class="math inline">\(b=(2,-3)\)</span>. ¿Hay igualdad? ¿Por qué no necesita ser cierta la proporcionalidad de las segundas coordenadas?</p>
+<p><strong>E. Lectura de una identidad.</strong> Prueba directamente para <span class="math inline">\(n=2\)</span> que <span class="math inline">\(\|a\|_2^2\|b\|_2^2-(a\cdot b)^2=(a_1b_2-a_2b_1)^2\)</span>. Interpreta cuándo se anula el término derecho.</p>
+<p><strong>F. Transferencia al análisis, con solución.</strong> Sea <span class="math inline">\(v\in V\)</span> fijo en un espacio con producto interno. Demuestra directamente, con la definición <span class="math inline">\(\varepsilon\)</span>–<span class="math inline">\(\delta\)</span>, que la función <span class="math inline">\(u\mapsto\langle u,v\rangle\)</span> es continua en todo punto.</p>
+<p><strong>G. Reconstrucción desde Labbé.</strong> Empieza sólo con <span class="math inline">\(\sum_i(a_ix+b_i)^2\ge0\)</span>. Expande, identifica el coeficiente cuadrático, separa el caso <span class="math inline">\(a=0\)</span> y elige <span class="math inline">\(x\)</span> para obtener Cauchy–Schwarz. Compáralo con §5: ¿qué papel intercambiaron los vectores?</p>
+<p><strong>H. Afinar una cota como problema de investigación.</strong> Demuestra <span class="math inline">\(\sum_i|a_ib_i|\le(A^2+B^2)/2\)</span> sin usar Cauchy–Schwarz, donde <span class="math inline">\(A=\|a\|_2\)</span> y <span class="math inline">\(B=\|b\|_2\)</span>. Para <span class="math inline">\(a=(12,0)\)</span> y <span class="math inline">\(b=(1,0)\)</span>, calcula esa cota y la cota <span class="math inline">\(AB\)</span>. A continuación aplica el mismo lema a <span class="math inline">\(ta_i\)</span> y <span class="math inline">\(b_i/t\)</span>: deduce qué <span class="math inline">\(t&gt;0\)</span> iguala los dos sumandos y por qué la cota resultante es más ajustada.</p>
+<p><strong>I. El defecto no es una distancia.</strong> Calcula <span class="math inline">\(D((1,0),(0,1))\)</span> y <span class="math inline">\(D((3,0),(0,1))\)</span>. Determina cómo varía <span class="math inline">\(D(sa,b)\)</span> con <span class="math inline">\(s\in\mathbb R\)</span>. Explica por qué <span class="math inline">\(D(a,b)=0\)</span> no significa <span class="math inline">\(a=b\)</span> y qué propiedad geométrica sí detecta.</p>
+<p><strong>J. Transferencia a sucesiones.</strong> Justifica cada uno de estos pasos sin invocar la completitud de <span class="math inline">\(\ell^2\)</span>: <span class="math inline">\(S_N=\sum_{k\le N}|a_kb_k|\)</span> es monótona; <span class="math inline">\(S_N\le AB\)</span>; <span class="math inline">\(S_N\)</span> converge; la serie <span class="math inline">\(\sum_k a_kb_k\)</span> converge absolutamente. Indica con precisión el teorema de sucesiones reales que se utiliza.</p>
+<p><strong>K. Reconstrucción inductiva.</strong> Demuestra primero la identidad <span class="math inline">\((A^2+x^2)(B^2+y^2)-(AB+|xy|)^2=(A|y|-B|x|)^2\)</span> para <span class="math inline">\(A,B\ge0\)</span>. Sin consultar §3, usa ese caso bidimensional y la hipótesis para <span class="math inline">\(n\)</span> coordenadas para obtener el caso <span class="math inline">\(n+1\)</span>. Identifica los tres recursos distintos: caso base, hipótesis de inducción y triangular escalar.</p>
+<p><strong>Solución de F.</strong> Fijemos <span class="math inline">\(u_0\in V\)</span> y <span class="math inline">\(\varepsilon&gt;0\)</span>. Si <span class="math inline">\(v=0\)</span>, la función es constante y cualquier <span class="math inline">\(\delta&gt;0\)</span> sirve. Si <span class="math inline">\(v\ne0\)</span>, escojamos <span class="math inline">\(\delta=\varepsilon/\|v\|\)</span>. Cuando <span class="math inline">\(\|u-u_0\|&lt;\delta\)</span>, Cauchy–Schwarz asegura</p>
+<p><span class="math display">\[
+|\langle u,v\rangle-\langle u_0,v\rangle|
+=|\langle u-u_0,v\rangle|
+\le\|u-u_0\|\|v\|&lt;\varepsilon.
+\]</span></p>
+<p>Ésta es exactamente la continuidad en <span class="math inline">\(u_0\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="cs-sintesis" class="level2">
+<h2 class="anchored" data-anchor-id="cs-sintesis">16. Síntesis: qué hemos demostrado y por qué importa</h2>
+<p>La desigualdad comenzó con uno y dos pares de números, pasó a sumas finitas mediante inducción y volvió a demostrarse a partir de la pista cuadrática de Labbé. Comparamos una cota aditiva con una multiplicativa óptima y sólo entonces introdujimos las abreviaturas de producto interno y norma. El argumento por parámetros anticipó la proyección y la identidad de Lagrange mostró toda la diferencia entre los dos lados. El caso de igualdad surgió de la prueba, no de una conjetura visual: los vectores deben ser linealmente dependientes.</p>
+<p>El argumento sobrevive al paso del producto escalar usual a productos internos reales, complejos y abstractos porque conserva un hecho esencial: <span class="math inline">\(\langle x,x\rangle\)</span> es un real no negativo y sólo vale cero para el vector nulo. Las sumas ponderadas y las integrales exigen adaptar con cuidado el dominio y el significado de la igualdad. La completitud, la teoría de la medida y la probabilidad sólo entran cuando esas variantes concretas las requieren.</p>
+<p>La consecuencia estructural más inmediata es que <strong>el producto interno induce una norma cuya propiedad triangular se demuestra</strong>, en lugar de suponerse. La misma estimación controla productos internos como funciones, medias, comparaciones de normas y covarianzas. En todos los casos reaparece el mismo método: reemplazar una interacción difícil de calcular por dos magnitudes sobre las que tenemos control.</p>
+</section>
+<section id="cs-faq" class="level2">
+<h2 class="anchored" data-anchor-id="cs-faq">17. Preguntas frecuentes</h2>
+<p>Estas respuestas retoman las dudas que surgen en la progresión de §§1–13. Las preguntas elementales se responden con sumas explícitas; la notación de producto interno y norma aparece sólo en aquellas que dependen de §7 o posteriores.</p>
+<p><strong>Ir a una pregunta:</strong> <a href="#cs-faq-enunciado">¿Cuál es exactamente la desigualdad que estamos demostrando?</a> · <a href="#cs-faq-casos">¿Por qué empezamos con <span class="math inline">\(n=1\)</span> y <span class="math inline">\(n=2\)</span>?</a> · <a href="#cs-faq-labbe">¿Qué aporta la pista del ejercicio de Labbé?</a> · <a href="#cs-faq-nulo">¿Por qué se separa el caso en que una lista es nula?</a> · <a href="#cs-faq-circularidad">¿Estamos usando la desigualdad triangular para demostrar Cauchy–Schwarz? ¿Hay circularidad?</a> · <a href="#cs-faq-cotas">¿Por qué la cota aditiva puede ser peor?</a> · <a href="#cs-faq-norma">¿Por qué aparecen las dobles barras tan tarde?</a> · <a href="#cs-faq-igualdad">¿Cuándo hay igualdad? ¿Deben apuntar en el mismo sentido?</a> · <a href="#cs-faq-ortogonalidad">¿Qué indica una suma de productos igual a cero?</a> · <a href="#cs-faq-defecto">¿Qué mide el «defecto» y por qué no es una distancia?</a> · <a href="#cs-faq-otras-normas">¿Funciona la misma fórmula con cualquier norma?</a> · <a href="#cs-faq-complejo">¿Qué cambia para números complejos?</a> · <a href="#cs-faq-infinitos">¿Se puede aplicar a series o integrales sin más?</a> · <a href="#cs-faq-applet">¿Puede una applet demostrar la desigualdad?</a>.</p>
+<section id="cs-faq-enunciado" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-enunciado">¿Cuál es exactamente la desigualdad que estamos demostrando?</h3>
+<p>Para números reales <span class="math inline">\(a_1,\ldots,a_n,b_1,\ldots,b_n\)</span>, la suma de productos está acotada por las raíces de las sumas de cuadrados:</p>
+<p><span class="math display">\[
+\left|\sum_{i=1}^na_ib_i\right|\le
+\sqrt{\sum_{i=1}^na_i^2}\sqrt{\sum_{i=1}^nb_i^2}.
+\]</span></p>
+<p>La forma con ambos miembros al cuadrado es equivalente porque son no negativos (§3). No estamos comparando coordenadas una a una.</p>
+</section>
+<section id="cs-faq-casos" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-casos">¿Por qué empezamos con <span class="math inline">\(n=1\)</span> y <span class="math inline">\(n=2\)</span>?</h3>
+<p>Para un término obtenemos una igualdad algebraica. En dos términos aparece el primer obstáculo no trivial y la identidad <span class="math inline">\((a_1^2+a_2^2)(b_1^2+b_2^2)-(a_1b_1+a_2b_2)^2=(a_1b_2-a_2b_1)^2\)</span>. Ese cuadrado explica la desigualdad en el plano y permite construir el paso inductivo (§§1–3). Comprobar muchos ejemplos no equivale a demostrar el caso general.</p>
+</section>
+<section id="cs-faq-labbe" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-labbe">¿Qué aporta la pista del ejercicio de Labbé?</h3>
+<p>Propone estudiar <span class="math inline">\(\sum_i(a_ix+b_i)^2\ge0\)</span> para <em>todo</em> número real <span class="math inline">\(x\)</span>. Al desarrollar surge un polinomio cuadrático que contiene las tres sumas relevantes. Elegir el valor que lo minimiza permite deducir la desigualdad sin inducción (§4). La pista pertenece al ejercicio; el desarrollo escrito aquí es propio del artículo.</p>
+</section>
+<section id="cs-faq-nulo" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-nulo">¿Por qué se separa el caso en que una lista es nula?</h3>
+<p>Si <span class="math inline">\(a_1=\cdots=a_n=0\)</span>, los dos miembros valen cero y hay igualdad. En la prueba de Labbé sólo se divide por <span class="math inline">\(\sum_i a_i^2\)</span> cuando esta suma es estrictamente positiva. Dividir por cero no es una simplificación permitida (§4). En la prueba con <span class="math inline">\(a_i-tb_i\)</span> se separa análogamente la lista <span class="math inline">\(b\)</span> nula (§5).</p>
+</section>
+<section id="cs-faq-circularidad" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-circularidad">¿Estamos usando la desigualdad triangular para demostrar Cauchy–Schwarz? ¿Hay circularidad?</h3>
+<p>En la inducción de §3 se usa únicamente la desigualdad triangular <strong>del valor absoluto de números reales</strong>, ya disponible de forma independiente: <span class="math inline">\(|x+y|\le|x|+|y|\)</span>. No se utiliza la desigualdad triangular para la norma euclidiana de vectores; ésta se demuestra <em>después</em>, como consecuencia de Cauchy–Schwarz en §13.1.</p>
+</section>
+<section id="cs-faq-cotas" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-cotas">¿Por qué la cota aditiva puede ser peor?</h3>
+<p>La relación <span class="math inline">\(2|rs|\le r^2+s^2\)</span> produce una cota válida pero sensible a las escalas de ambas listas. En §6, reemplazar <span class="math inline">\(a_i\)</span> por <span class="math inline">\(ta_i\)</span> y <span class="math inline">\(b_i\)</span> por <span class="math inline">\(b_i/t\)</span>, con <span class="math inline">\(t&gt;0\)</span>, conserva los productos individuales y permite elegir un parámetro que equilibra los dos términos. La normalización conduce a una cota multiplicativa más ajustada. Además, pasar de <span class="math inline">\(\sum|a_ib_i|\)</span> a <span class="math inline">\(|\sum a_ib_i|\)</span> puede introducir cancelaciones de signo: son dos fenómenos distintos.</p>
+</section>
+<section id="cs-faq-norma" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-norma">¿Por qué aparecen las dobles barras tan tarde?</h3>
+<p>En §7 definimos <span class="math inline">\(\langle a,b\rangle=\sum_i a_ib_i\)</span> y <span class="math inline">\(\|a\|_2=\sqrt{\sum_i a_i^2}\)</span>. Sólo entonces escribimos <span class="math inline">\(|\langle a,b\rangle|\le\|a\|_2\|b\|_2\)</span>. La barra simple corresponde al valor absoluto de un escalar; la doble barra, a la norma de un vector. Se trata primero de una <strong>abreviatura justificada</strong> de la misma desigualdad, no de una hipótesis nueva.</p>
+</section>
+<section id="cs-faq-igualdad" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-igualdad">¿Cuándo hay igualdad? ¿Deben apuntar en el mismo sentido?</h3>
+<p>Hay igualdad exactamente cuando los dos vectores son linealmente dependientes: alguno es nulo o, si ambos son no nulos, uno es múltiplo real del otro (§8). Los sentidos <em>opuestos</em> también dan igualdad en Cauchy–Schwarz, porque el producto escalar aparece dentro de un valor absoluto. «Mismo sentido» corresponde al caso de igualdad de la desigualdad triangular euclidiana, no al criterio completo de Cauchy–Schwarz.</p>
+</section>
+<section id="cs-faq-ortogonalidad" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-ortogonalidad">¿Qué indica una suma de productos igual a cero?</h3>
+<p>Significa que los vectores son ortogonales según el producto escalar usual; <strong>no</strong> implica que haya igualdad. Si ambos vectores son no nulos y ortogonales, el lado izquierdo es cero y el producto de las longitudes es positivo, de modo que la desigualdad es estricta (§10).</p>
+</section>
+<section id="cs-faq-defecto" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-defecto">¿Qué mide el «defecto» y por qué no es una distancia?</h3>
+<p>Para dos listas reales en el plano, la diferencia entre el producto de las sumas de cuadrados y el cuadrado de la suma de productos es <span class="math inline">\((a_1b_2-a_2b_1)^2\)</span>. Es el cuadrado del área del paralelogramo; se anula cuando los vectores son dependientes (§9). No es una distancia entre vectores porque puede anularse entre vectores distintos, como <span class="math inline">\(a\)</span> y <span class="math inline">\(2a\)</span>.</p>
+</section>
+<section id="cs-faq-otras-normas" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-otras-normas">¿Funciona la misma fórmula con cualquier norma?</h3>
+<p>No si conservamos el producto escalar usual y sustituimos arbitrariamente la norma euclidiana. Por ejemplo, con <span class="math inline">\(u=v=(1,1)\)</span> se tiene <span class="math inline">\(|u\cdot v|=2\)</span> pero <span class="math inline">\(\|u\|_\infty\|v\|_\infty=1\)</span>, así que esa sustitución fallaría. La versión abstracta emplea la norma <strong>inducida por el propio producto interno</strong> (§§7, 11 y 14).</p>
+</section>
+<section id="cs-faq-complejo" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-complejo">¿Qué cambia para números complejos?</h3>
+<p>El producto interno incluye conjugación según la convención elegida y la desigualdad controla el <strong>módulo</strong> <span class="math inline">\(|\langle u,v\rangle|\)</span>, no el orden de una cantidad compleja: los números complejos no disponen del orden compatible de los reales usado en la prueba elemental (§11.2). El cuadrado no negativo pertinente es <span class="math inline">\(|\langle u,v\rangle|^2\)</span>.</p>
+</section>
+<section id="cs-faq-infinitos" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-infinitos">¿Se puede aplicar a series o integrales sin más?</h3>
+<p>No basta con reemplazar un signo de suma finita por <span class="math inline">\(\infty\)</span> o por <span class="math inline">\(\int\)</span>. Para series, §12.2 supone que ambas series de cuadrados convergen y justifica el paso al límite. Para funciones continuas, §12.3 utiliza la integral de Riemann y establece la igualdad puntual apropiada. En <span class="math inline">\(L^2\)</span>, §12.4 trabaja con clases de funciones y la proporcionalidad se entiende <strong>casi en todas partes</strong>.</p>
+</section>
+<section id="cs-faq-applet" class="level3">
+<h3 class="anchored" data-anchor-id="cs-faq-applet">¿Puede una applet demostrar la desigualdad?</h3>
+<p>No: experimentar con una cantidad finita de datos, aunque el cálculo sea exacto en ejemplos determinados, no demuestra una proposición universal. El laboratorio <a href="../../teoria/resultados/laboratorio-cauchy-schwarz.html">MA-APP-0002</a> permite formular conjeturas, localizar casos nulos o de igualdad y visualizar el cuadrado del defecto; las pruebas válidas para todo <span class="math inline">\(n\)</span> están en §§3–5 y §9.</p>
+</section>
+<section id="cs-fuentes" class="level3">
+<h3 class="anchored" data-anchor-id="cs-fuentes">Fuentes para el contexto histórico y referencias matemáticas</h3>
+<ul>
+<li>Cauchy, A.-L., <em>Cours d’analyse de l’École royale polytechnique</em>, primera parte, <em>Analyse algébrique</em> (1821), especialmente pp.&nbsp;373–377 de la edición original: <a href="https://fr.wikisource.org/wiki/Cours_d%E2%80%99analyse_de_l%E2%80%99%C3%A9cole_royale_polytechnique/Texte_entier">texto de la obra de 1821</a>. La ubicación de las páginas se consigna siguiendo las referencias bibliográficas modernas, sin afirmar aquí una colación página a página del facsímil.</li>
+<li><em>Encyclopedia of Mathematics</em>, «<a href="https://encyclopediaofmath.org/wiki/Cauchy-Schwarz_inequality">Cauchy–Schwarz inequality</a>»: versión de sumas finitas y distinción de la versión integral.</li>
+<li>MacTutor History of Mathematics, «<a href="https://mathshistory.st-andrews.ac.uk/Miller/mathword/c/">Earliest Known Uses of Some of the Words of Mathematics, C</a>»: notas sobre las atribuciones Cauchy, Bunyakovski y Schwarz y la historia del nombre.</li>
+<li>Axler, Sheldon, <em>Linear Algebra Done Right</em>, capítulo sobre espacios con producto interno: teorema, proyección ortogonal y criterio de igualdad. Referencia de consulta; las demostraciones de este manuscrito se presentan de forma autocontenida.</li>
+<li>Labbé Morales, Gustavo, <em>Cálculo I</em>, edición PDF consultada de 126 páginas, §1.7 (definición y propiedades del valor absoluto, pp.&nbsp;20–22) y §1.8, ejercicio 13 (Cauchy–Schwarz y pista algebraica, p.&nbsp;24). El libro presenta el resultado como ejercicio, no como la demostración desarrollada en §4 de este artículo; no se atribuye aquí un año editorial no verificado.</li>
+<li>Steele, J. Michael, <em>The Cauchy–Schwarz Master Class: An Introduction to the Art of Mathematical Inequalities</em>, Mathematical Association of America / Cambridge University Press, 2004, cap. 1 «Starting with Cauchy» (pp.&nbsp;1–18) y cap. 3 «Lagrange’s Identity and Minkowski’s Conjecture» (pp.&nbsp;37–50). Referencia para el enfoque de problemas, la normalización, la comparación de cotas, el estudio de series y el defecto de la desigualdad. Los problemas y desarrollos añadidos al manuscrito están redactados de nuevo; no se reproducen los ejercicios del libro.</li>
+<li><a href="../../teoria/resultados/desigualdad-triangular.html">«La desigualdad triangular»</a>, especialmente §§2, 5 y 7.1: desigualdad escalar para sumas, dependencia de Cauchy–Schwarz y norma euclidiana.</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
