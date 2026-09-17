@@ -1,0 +1,459 @@
+---
+title: "La desigualdad triangular: demostraciones, variantes y su papel en el análisis"
+description: "Referencia transversal sobre la desigualdad triangular en cuerpos ordenados, números complejos, normas y métricas; pruebas, igualdad, desigualdad inversa y aplicaciones al análisis."
+content-id: MA-ART-0002
+content-type: article
+status: published
+date-created: 2026-09-16
+date-modified: 2026-09-16
+areas:
+  - fundamentos
+  - analisis
+  - geometria
+level: intermedio
+topics:
+  - desigualdad-triangular
+  - valor-absoluto
+  - desigualdades
+  - normas
+  - espacios-metricos
+  - limites
+  - convergencia
+prerequisites:
+  - MA-CON-0002
+related:
+  - MA-CON-0002
+  - MA-BCH-0029
+provenance:
+  type: synthesis
+  sources: []
+license: GFDL-1.3-or-later
+---
+
+# La desigualdad triangular
+
+La desigualdad triangular expresa que **el tamaño de una suma no excede la suma de los tamaños de sus términos**. En la recta real se escribe
+
+$$
+\boxed{|x+y|\leq |x|+|y|.}
+$$
+
+Su nombre recuerda que, en un triángulo, la longitud de un lado no supera la suma de las longitudes de los otros dos. Pero su alcance es mayor: permite controlar errores, comparar distancias y trasladar estimaciones algebraicas a afirmaciones sobre límites y convergencia.
+
+Esta página es una **referencia transversal**: contiene pruebas completas de sus versiones fundamentales, indica qué hipótesis se utilizan y distingue los resultados demostrados de los axiomas que aparecen al generalizarla. La [formulación deductiva en cuerpos ordenados del *Tratado de análisis*, Teorema 4.2.3](../../libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-desigualdad-triangular), conserva su lugar en el tratado; aquí estudiamos el resultado y sus conexiones sin sustituir esa demostración.
+
+## 1. Una imagen geométrica y una advertencia {#tri-intuicion}
+
+Si avanzamos de $A$ a $B$ y después de $B$ a $C$, el recorrido quebrado no puede ser más corto que la distancia directa de $A$ a $C$. Para números reales, el desplazamiento $x+y$ puede experimentar cancelaciones: avanzar $5$ y retroceder $3$ produce un desplazamiento de magnitud $2$, aunque las magnitudes recorridas suman $8$.
+
+Esta imagen ayuda a recordar la desigualdad, **pero no es una demostración**: la prueba matemática debe deducirla de propiedades previamente establecidas del valor absoluto, el orden o la norma.
+
+## 2. Teorema en un cuerpo ordenado {#tri-cuerpo-ordenado}
+
+**Teorema (desigualdad triangular).** Sea $F$ un cuerpo ordenado y sean $x,y\in F$. Si $|t|=\max\{t,-t\}$, entonces
+
+$$
+\boxed{|x+y|\leq |x|+|y|.}
+$$
+
+**Demostración por cotas bilaterales.** De la definición de valor absoluto se deduce, para cualquier $t\in F$,
+
+$$
+-|t|\leq t\leq |t|.
+$$
+
+Aplicándola a $x$ y a $y$, y sumando las respectivas desigualdades mediante la compatibilidad del orden con la suma, obtenemos
+
+$$
+-(|x|+|y|)\leq x+y\leq |x|+|y|.
+$$
+
+Además $|x|+|y|\geq0$. Para todo $r\geq0$ vale
+
+$$
+-r\leq t\leq r\quad\Longleftrightarrow\quad |t|\leq r,
+$$
+
+pues la cota doble afirma exactamente que tanto $t$ como $-t$ son menores o iguales que $r$, y $|t|$ es su máximo. Tomando $t=x+y$ y $r=|x|+|y|$ concluimos
+
+$$
+|x+y|\leq |x|+|y|.\qquad\square
+$$
+
+**Dependencias.** La prueba sólo usa los axiomas del cuerpo ordenado y las propiedades elementales del valor absoluto. No necesita supremos, completitud, sucesiones ni límites. Por tanto, también vale en $\mathbb Q$ y en cualquier cuerpo ordenado, arquimediano o no.
+
+### Otra demostración para números reales {#tri-prueba-cuadrados}
+
+En $\mathbb R$ podemos usar cuadrados, sin recurrir a figuras. Por definición, $|x||y|\geq xy$: en efecto, $|xy|=|x||y|$ y $xy\leq|xy|$. Así,
+
+$$
+\begin{aligned}
+(|x|+|y|)^2-(x+y)^2
+&=x^2+2|x||y|+y^2-(x^2+2xy+y^2)\\
+&=2(|x||y|-xy)\geq0.
+\end{aligned}
+$$
+
+Los dos números $|x+y|$ y $|x|+|y|$ son no negativos, y sus cuadrados satisfacen
+
+$$
+|x+y|^2=(x+y)^2\leq(|x|+|y|)^2.
+$$
+
+Si dos números no negativos $a,b$ cumplieran $a^2\leq b^2$ y $a>b$, la multiplicación por $a+b>0$ daría $(a-b)(a+b)>0$, contradicción. Luego $a\leq b$ y obtenemos nuevamente la desigualdad triangular. $\square$
+
+**Cómo pensar las pruebas.** La primera encierra cada sumando entre dos cotas; la segunda compara cuadrados. La primera es más estructural: sobrevive en cualquier cuerpo ordenado sin introducir herramientas propias de $\mathbb R$.
+
+## 3. ¿Cuándo hay igualdad? {#tri-igualdad-real}
+
+**Proposición.** Para $x,y\in F$, con $F$ un cuerpo ordenado,
+
+$$
+|x+y|=|x|+|y|\quad\Longleftrightarrow\quad xy\geq0.
+$$
+
+**Demostración.** Si $xy\geq0$, los dos números tienen el mismo signo no estricto. Si $x,y\geq0$, su suma es no negativa y $|x+y|=x+y=|x|+|y|$. Si $x,y\leq0$, su suma es no positiva y $|x+y|=-(x+y)=|x|+|y|$. La condición $xy\geq0$ implica una de esas situaciones: si $x=0$ o $y=0$ la igualdad es inmediata; si ambos son no nulos y tuvieran signos opuestos, las reglas de signos producirían $xy<0$, contradicción.
+
+Recíprocamente, si hay igualdad, al elevar al cuadrado y desarrollar obtenemos
+
+$$
+(x+y)^2=(|x|+|y|)^2\quad\Longrightarrow\quad xy=|x||y|\geq0.
+$$
+
+Queda probada la equivalencia. $\square$
+
+Por ejemplo, $|2+3|=|2|+|3|=5$; en cambio, $|2-3|=1<5$. **No** puede afirmarse que la desigualdad sea siempre estricta.
+
+## 4. Desigualdad triangular inversa {#tri-inversa}
+
+**Teorema.** Para $x,y$ en un cuerpo ordenado,
+
+$$
+\boxed{\bigl||x|-|y|\bigr|\leq |x-y|.}
+$$
+
+**Demostración.** Escribiendo $x=(x-y)+y$ y aplicando la desigualdad triangular,
+
+$$
+|x|\leq |x-y|+|y|,
+\qquad\text{de donde}\qquad
+|x|-|y|\leq|x-y|.
+$$
+
+Intercambiamos $x$ e $y$:
+
+$$
+|y|-|x|\leq|y-x|=|x-y|.
+$$
+
+Las dos cotas equivalen a
+
+$$
+-|x-y|\leq |x|-|y|\leq|x-y|.
+$$
+
+Como $|x-y|\geq0$, la caracterización bilateral del valor absoluto proporciona el resultado. $\square$
+
+Una forma simétrica útil, obtenida al juntar ambas desigualdades, es
+
+$$
+\boxed{\bigl||x|-|y|\bigr|\leq|x-y|\leq |x|+|y|.}
+$$
+
+En particular, el valor absoluto no puede cambiar más que su argumento. Véase también el [Corolario 4.2.4 del *Tratado de análisis*](../../libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-desigualdad-triangular-inversa).
+
+## 5. Sumas y diferencias finitas {#tri-sumas-finitas}
+
+**Proposición (versión finita).** Si $x_1,\ldots,x_n\in F$ y $n\geq1$, entonces
+
+$$
+\boxed{\left|\sum_{k=1}^{n}x_k\right|\leq\sum_{k=1}^{n}|x_k|.}
+$$
+
+**Demostración por inducción.** Para $n=1$ ambos miembros son $|x_1|$. Supongamos válida la desigualdad para $n$. Entonces
+
+$$
+\begin{aligned}
+\left|\sum_{k=1}^{n+1}x_k\right|
+&=\left|\left(\sum_{k=1}^{n}x_k\right)+x_{n+1}\right|\\
+&\leq\left|\sum_{k=1}^{n}x_k\right|+|x_{n+1}|\\
+&\leq\sum_{k=1}^{n+1}|x_k|.
+\end{aligned}
+$$
+
+El principio de inducción concluye la prueba. $\square$
+
+Sustituyendo $y$ por $-y$ en la desigualdad de dos términos se obtiene $|x-y|\leq|x|+|y|$. Además, para cualquier índice fijo $j$,
+
+$$
+\left|\sum_{k=1}^{n}x_k\right|
+\geq |x_j|-\sum_{k\ne j}|x_k|.
+$$
+
+Para demostrar esta última cota basta escribir $x_j=\sum_k x_k-\sum_{k\ne j}x_k$, aplicar la desigualdad triangular y después la versión finita al segundo sumando. La cota puede combinarse con la no negatividad del valor absoluto tomando el máximo con cero.
+
+## 6. Números complejos {#tri-complejos}
+
+La relación de orden de $\mathbb R$ no se extiende a $\mathbb C$ como un orden de cuerpo. En cambio, el módulo $|a+ib|=\sqrt{a^2+b^2}$ sí satisface una desigualdad triangular.
+
+**Teorema.** Para $z,w\in\mathbb C$,
+
+$$
+\boxed{|z+w|\leq |z|+|w|.}
+$$
+
+**Demostración.** Escribamos $u=z\overline w=a+ib$. Como $a\leq\sqrt{a^2+b^2}=|u|=|z||w|$, tenemos $\operatorname{Re}(z\overline w)\leq|z||w|$. Por tanto,
+
+$$
+\begin{aligned}
+|z+w|^2
+&=(z+w)(\overline z+\overline w)\\
+&=|z|^2+|w|^2+2\operatorname{Re}(z\overline w)\\
+&\leq(|z|+|w|)^2.
+\end{aligned}
+$$
+
+Ambos miembros antes de elevar al cuadrado son no negativos; tomando raíces cuadradas concluimos el teorema. $\square$
+
+**Igualdad en $\mathbb C$.** La prueba muestra que hay igualdad exactamente cuando $\operatorname{Re}(z\overline w)=|z\overline w|$, es decir, cuando $z\overline w$ es real no negativo. Si ninguno es cero, esto equivale a que $z=t w$ para algún $t>0$ real; si alguno es cero, también hay igualdad. Los sumandos no nulos deben apuntar en la misma dirección del plano complejo.
+
+La prueba de la desigualdad inversa y la inducción para sumas finitas funcionan palabra por palabra con el módulo complejo: sólo emplean la desigualdad triangular y $|-z|=|z|$.
+
+## 7. Espacios euclidianos y normas {#tri-normas}
+
+En $\mathbb R^n$ definimos la norma euclidiana por $\|u\|_2=\sqrt{\sum_{i=1}^n u_i^2}$. Su desigualdad triangular descansa en Cauchy–Schwarz, cuya prueba incluimos para no ocultar la dependencia.
+
+**Lema (Cauchy–Schwarz).** Para $u,v\in\mathbb R^n$,
+
+$$
+|\langle u,v\rangle|\leq\|u\|_2\|v\|_2.
+$$
+
+**Demostración.** Si $v=0$ la afirmación es inmediata. En otro caso, para todo $t\in\mathbb R$,
+
+$$
+0\leq\|u-tv\|_2^2
+=\|u\|_2^2-2t\langle u,v\rangle+t^2\|v\|_2^2.
+$$
+
+Tomando $t=\langle u,v\rangle/\|v\|_2^2$ obtenemos
+
+$$
+0\leq\|u\|_2^2-\frac{\langle u,v\rangle^2}{\|v\|_2^2},
+$$
+
+por lo que $\langle u,v\rangle^2\leq\|u\|_2^2\|v\|_2^2$. Extraer raíces de cantidades no negativas da el lema. $\square$
+
+**Teorema (desigualdad triangular euclidiana).** Para $u,v\in\mathbb R^n$,
+
+$$
+\|u+v\|_2\leq\|u\|_2+\|v\|_2.
+$$
+
+**Demostración.** Por el lema,
+
+$$
+\begin{aligned}
+\|u+v\|_2^2
+&=\|u\|_2^2+2\langle u,v\rangle+\|v\|_2^2\\
+&\leq\|u\|_2^2+2\|u\|_2\|v\|_2+\|v\|_2^2\\
+&=(\|u\|_2+\|v\|_2)^2.
+\end{aligned}
+$$
+
+Al extraer raíces concluimos. $\square$
+
+La igualdad euclidiana se da si alguno de los vectores es cero o si $u=t v$ para algún $t>0$; se deduce del caso de igualdad en Cauchy–Schwarz y de que el producto escalar debe ser no negativo.
+
+### Otras normas concretas {#tri-normas-ejemplos}
+
+Para $u=(u_1,\dots,u_n)$, la norma $\ell^1$ cumple
+
+$$
+\|u+v\|_1=\sum_i|u_i+v_i|\leq\sum_i(|u_i|+|v_i|)=\|u\|_1+\|v\|_1,
+$$
+
+aplicando la desigualdad escalar coordenada por coordenada. Para la norma del máximo,
+
+$$
+\|u+v\|_\infty=\max_i|u_i+v_i|
+\leq\max_i|u_i|+\max_i|v_i|=\|u\|_\infty+\|v\|_\infty.
+$$
+
+En general, una **norma** sobre un espacio vectorial real o complejo $V$ se define por positividad definida, homogeneidad absoluta y la condición
+
+$$
+\boxed{\|u+v\|\leq\|u\|+\|v\|.}
+$$
+
+En un espacio normado arbitrario esta desigualdad es **un axioma de la norma**, no un teorema deducible de los otros dos requisitos. Sus consecuencias sí vuelven a demostrarse a partir del axioma. Por ejemplo, usando $u=(u-v)+v$ y luego intercambiando $u,v$,
+
+$$
+\boxed{|\|u\|-\|v\||\leq\|u-v\|.}
+$$
+
+**Cuidado con la igualdad.** El criterio «dos vectores apuntan en la misma dirección» no caracteriza la igualdad en cualquier norma: en $\ell^1$, $u=(1,0)$ y $v=(0,1)$ satisfacen $\|u+v\|_1=2=\|u\|_1+\|v\|_1$, pese a no ser paralelos.
+
+### La familia $\ell^p$ y la frontera $p=1$ {#tri-lp}
+
+Para $1<p<\infty$, ponemos $\|u\|_p=(\sum_i|u_i|^p)^{1/p}$. Demostraremos su desigualdad triangular, conocida en esta forma como **desigualdad de Minkowski**, mediante un argumento finito que explicita el paso auxiliar.
+
+**Lema (Hölder finito).** Si $p,q>1$ y $1/p+1/q=1$, entonces
+
+$$
+\sum_i |a_i b_i|\leq
+\left(\sum_i|a_i|^p\right)^{1/p}
+\left(\sum_i|b_i|^q\right)^{1/q}.
+$$
+
+**Demostración.** Primero, para $s,t\geq0$ vale $st\leq s^p/p+t^q/q$ (Young). En efecto, para $t$ fijo, la función $h(s)=s^p/p-st+t^q/q$ alcanza su mínimo en $s=t^{1/(p-1)}=t^{q-1}$, donde vale cero; si $t=0$, la conclusión es inmediata. Sean ahora $A=(\sum|a_i|^p)^{1/p}$ y $B=(\sum|b_i|^q)^{1/q}$. Si alguno es cero, todos los correspondientes términos son cero. En otro caso, Young aplicado a $s=|a_i|/A$ y $t=|b_i|/B$ y sumado en $i$ proporciona
+
+$$
+\frac{\sum_i|a_i b_i|}{AB}
+\leq\frac1p\sum_i\frac{|a_i|^p}{A^p}+
+\frac1q\sum_i\frac{|b_i|^q}{B^q}
+=\frac1p+\frac1q=1.
+$$
+
+Multiplicando por $AB$ resulta Hölder. $\square$
+
+**Teorema (Minkowski finito).** Para $p\geq1$, se tiene $\|u+v\|_p\leq\|u\|_p+\|v\|_p$, con la definición anterior si $p<\infty$ y la norma del máximo si $p=\infty$.
+
+**Demostración.** Los casos $p=1$ y $p=\infty$ ya están demostrados. Sea $1<p<\infty$ y $S=\sum_i|u_i+v_i|^p$. Si $S=0$, la afirmación es trivial. Si $S>0$, usando primero la desigualdad triangular escalar y después Hölder con $q=p/(p-1)$,
+
+$$
+\begin{aligned}
+S&\leq\sum_i|u_i|\,|u_i+v_i|^{p-1}
++\sum_i|v_i|\,|u_i+v_i|^{p-1}\\
+&\leq(\|u\|_p+\|v\|_p)
+\left(\sum_i|u_i+v_i|^{(p-1)q}\right)^{1/q}\\
+&=(\|u\|_p+\|v\|_p)S^{(p-1)/p}.
+\end{aligned}
+$$
+
+Dividimos por $S^{(p-1)/p}>0$ y obtenemos $S^{1/p}\leq\|u\|_p+\|v\|_p$. $\square$
+
+Para $0<p<1$ la expresión $(\sum_i|u_i|^p)^{1/p}$ **no es una norma en general**: con $u=(1,0)$ y $v=(0,1)$, su valor en $u+v$ es $2^{1/p}>2=\|u\|_p+\|v\|_p$. Esta prueba de estrés muestra que el rango $p\geq1$ no es un detalle ornamental.
+
+## 8. Espacios métricos: la desigualdad como axioma {#tri-metricas}
+
+Una **métrica** sobre $X$ es una función $d:X\times X\to[0,\infty)$ tal que $d(x,y)=0$ exactamente cuando $x=y$, es simétrica y cumple
+
+$$
+\boxed{d(x,z)\leq d(x,y)+d(y,z)}
+\qquad(x,y,z\in X).
+$$
+
+Esta última propiedad es el **axioma triangular** de una métrica. Si $V$ está normado, la función $d(u,v)=\|u-v\|$ satisface ese axioma, porque
+
+$$
+\|u-w\|=\|(u-v)+(v-w)\|
+\leq\|u-v\|+\|v-w\|.
+$$
+
+Las otras propiedades métricas se siguen de la positividad definida y de $\|-(u-v)\|=\|u-v\|$, consecuencia de la homogeneidad de una norma.
+
+**Desigualdad inversa para distancias.** Por el axioma triangular,
+
+$$
+d(x,z)\leq d(x,y)+d(y,z)
+\quad\Longrightarrow\quad
+d(x,z)-d(y,z)\leq d(x,y).
+$$
+
+Intercambiando $x$ e $y$ y usando simetría se obtiene la cota contraria. En consecuencia,
+
+$$
+\boxed{|d(x,z)-d(y,z)|\leq d(x,y).}
+$$
+
+Así, la distancia a un punto fijo cambia como máximo en la magnitud del desplazamiento entre los puntos comparados.
+
+## 9. Por qué sostiene el análisis {#tri-analisis}
+
+### Control de errores y límites de sucesiones {#tri-limites}
+
+Si $a_n\to a$ y $b_n\to b$ en un espacio normado, entonces
+
+$$
+\|(a_n+b_n)-(a+b)\|
+\leq\|a_n-a\|+\|b_n-b\|.
+$$
+
+**Prueba de la regla de la suma.** Fijado $\varepsilon>0$, elegimos $N_1$ tal que $\|a_n-a\|<\varepsilon/2$ cuando $n\geq N_1$ y $N_2$ análogo para $b_n$. Para $n\geq\max\{N_1,N_2\}$, la desigualdad anterior da una cota estrictamente menor que $\varepsilon$. Así $a_n+b_n\to a+b$.
+
+**Unicidad del límite.** Si $a_n\to a$ y $a_n\to b$, entonces
+
+$$
+\|a-b\|\leq\|a-a_n\|+\|a_n-b\|.
+$$
+
+Dado $\varepsilon>0$, para $n$ suficientemente grande cada sumando es menor que $\varepsilon/2$; por tanto $\|a-b\|<\varepsilon$ para todo $\varepsilon>0$. Si $\|a-b\|$ fuese positivo, elegir $\varepsilon=\|a-b\|$ sería contradictorio. Así $\|a-b\|=0$ y $a=b$. El mismo argumento funciona en espacios métricos.
+
+### Continuidad de la norma y de la distancia {#tri-continuidad}
+
+La desigualdad inversa prueba que
+
+$$
+|\|u\|-\|v\||\leq\|u-v\|.
+$$
+
+Por consiguiente, la función $u\mapsto\|u\|$ es **1-Lipschitz** y, en particular, continua: si $\|u-v\|<\varepsilon$, entonces $|\|u\|-\|v\||<\varepsilon$. Análogamente, para todo $z$ fijo en un espacio métrico, $x\mapsto d(x,z)$ es 1-Lipschitz por la versión métrica de la desigualdad inversa.
+
+### Bolas abiertas y geometría local {#tri-bolas}
+
+En un espacio métrico, sea $B(a,r)=\{x:d(a,x)<r\}$, con $r>0$. Para probar que esta bola es abierta, tomamos $x\in B(a,r)$ y elegimos $\delta=r-d(a,x)>0$. Si $d(x,y)<\delta$, entonces
+
+$$
+d(a,y)\leq d(a,x)+d(x,y)<d(a,x)+\delta=r,
+$$
+
+por lo que $y\in B(a,r)$. La desigualdad triangular construye así un entorno completo alrededor de cada punto de la bola.
+
+### Sucesiones de Cauchy y series {#tri-cauchy}
+
+Si $x_n=\sum_{k=1}^n u_k$ son sumas parciales en un espacio normado y $m>n$, la versión finita da
+
+$$
+\|x_m-x_n\|=\left\|\sum_{k=n+1}^{m}u_k\right\|
+\leq\sum_{k=n+1}^{m}\|u_k\|.
+$$
+
+Supongamos que la serie numérica $\sum_{k=1}^{\infty}\|u_k\|$ converge. Por el criterio de Cauchy para series reales, para cada $\varepsilon>0$ existe $N$ tal que, si $m>n\geq N$, la suma de la derecha es menor que $\varepsilon$. Las sumas parciales $(x_n)$ son, por tanto, una sucesión de Cauchy.
+
+**La hipótesis de completitud no debe ocultarse:** sólo cuando el espacio normado es completo (un espacio de Banach) podemos concluir que las sumas parciales convergen en él. La desigualdad triangular por sí sola no garantiza esa convergencia.
+
+### La estrategia que se repite {#tri-estrategia}
+
+En innumerables demostraciones de análisis reaparece el mismo procedimiento: insertar un punto o término intermedio y descomponer un error complicado en otros controlables. Para $x,y,z$ reales,
+
+$$
+|x-z|=|(x-y)+(y-z)|\leq|x-y|+|y-z|.
+$$
+
+En pruebas con $\varepsilon$, escogemos después los umbrales de modo que la suma de las cotas sea menor que $\varepsilon$. El razonamiento se mantiene en normas y métricas; cambian los objetos, no el mecanismo.
+
+## 10. Errores frecuentes y pruebas de estrés {#tri-errores}
+
+- **Invertir la desigualdad:** de $|x+y|\leq|x|+|y|$ no se deduce $|x+y|\geq|x|+|y|$. Tomando $x=1$ e $y=-1$, el lado izquierdo vale $0$ y el derecho $2$.
+- **Eliminar los valores absolutos:** $x+y\leq|x|+|y|$ es cierto, pero no reemplaza la formulación completa, que también controla $-(x+y)$.
+- **Exigir una desigualdad estricta:** con $x,y\geq0$ se obtiene igualdad.
+- **Generalizar indebidamente el criterio de igualdad:** las condiciones de igualdad dependen de la norma concreta.
+- **Confundir axioma y teorema:** en una métrica arbitraria la propiedad triangular se postula; en la distancia inducida por una norma se demuestra usando el axioma normado.
+- **Concluir convergencia desde Cauchy sin completitud:** el control de las colas demuestra que las sumas parciales son de Cauchy, no que exista un límite dentro de cualquier espacio normado.
+
+## 11. Para reconstruir la idea {#tri-actividad}
+
+**Preguntas de autoexplicación.** ¿Qué paso de la primera prueba necesita que el orden sea compatible con la suma? ¿Por qué el argumento de la desigualdad inversa requiere usar dos veces la triangular? ¿En qué lugar de la prueba de Minkowski se utiliza Hölder? ¿Qué argumento adicional hace falta para pasar de una sucesión de Cauchy a una suma convergente?
+
+**Ejercicio con solución.** Demuestra que para $x,y,z$ en un espacio métrico
+
+$$
+|d(x,z)-d(y,z)|\leq d(x,y)
+$$
+
+y utilízalo para probar que si $x_n\to x$, entonces $d(x_n,z)\to d(x,z)$. **Solución:** el primer enunciado se obtiene aplicando dos veces la desigualdad triangular y reuniendo las cotas, como en §8. Luego $|d(x_n,z)-d(x,z)|\leq d(x_n,x)\to0$, que es exactamente la definición de convergencia de la sucesión de distancias.
+
+---
+
+**Referencia interna de Matemática Abierta.** Identificador: `MA-ART-0002`. Para citar este resultado desde un libro o tratado, enlazar esta página o directamente el ancla pertinente: [teorema en cuerpo ordenado](#tri-cuerpo-ordenado), [desigualdad inversa](#tri-inversa), [suma finita](#tri-sumas-finitas), [módulo complejo](#tri-complejos), [normas](#tri-normas), [espacios métricos](#tri-metricas) o [aplicaciones al análisis](#tri-analisis). La demostración primaria del tratado permanece identificada por su [ancla deductiva original](../../libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md#ta-desigualdad-triangular).
