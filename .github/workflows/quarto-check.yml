@@ -30,6 +30,12 @@ jobs:
           grep -q 'tri-historia' "$article"
           grep -q '<iframe src="interactive/desigualdad-triangular.html"' "$article"
 
+      - name: Validate Cauchy-Schwarz source and laboratory
+        run: |
+          python3 tests/cauchy_static.py
+          node --check teoria/resultados/interactive/cauchy-schwarz.js
+          node --check teoria/resultados/interactive/cauchy-schwarz-embed.js
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
@@ -48,6 +54,19 @@ jobs:
           grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/desigualdad-triangular.html
           grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
           grep -q 'MA-ART-0003' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
+
+      - name: Verify Cauchy-Schwarz rendered pages and assets
+        run: |
+          test -s _site/teoria/resultados/desigualdad-cauchy-schwarz.html
+          test -s _site/teoria/resultados/laboratorio-cauchy-schwarz.html
+          test -s _site/teoria/resultados/interactive/cauchy-schwarz.html
+          test -s _site/teoria/resultados/interactive/cauchy-schwarz.css
+          test -s _site/teoria/resultados/interactive/cauchy-schwarz.js
+          test -s _site/teoria/resultados/interactive/cauchy-schwarz-embed.js
+          grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/desigualdad-cauchy-schwarz.html
+          grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
+          grep -q 'MA-APP-0002' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
+          grep -q 'desigualdad-cauchy-schwarz.html' _site/teoria/resultados/index.html
 
       - name: Preserve rendered site for visual and link QA
         uses: actions/upload-artifact@v4
