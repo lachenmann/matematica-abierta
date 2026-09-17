@@ -40,9 +40,19 @@ jobs:
 
       - name: Verify laboratory assets and rendered page
         run: |
+          test -s _site/teoria/resultados/desigualdad-triangular.html
           test -s _site/teoria/resultados/laboratorio-desigualdad-triangular.html
           test -s _site/teoria/resultados/interactive/desigualdad-triangular.html
           test -s _site/teoria/resultados/interactive/desigualdad-triangular.css
           test -s _site/teoria/resultados/interactive/desigualdad-triangular.js
+          grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/desigualdad-triangular.html
           grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
           grep -q 'MA-ART-0003' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
+
+      - name: Preserve rendered site for visual and link QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: triangular-site-qa
+          path: _site/
+          retention-days: 2
+          if-no-files-found: error
