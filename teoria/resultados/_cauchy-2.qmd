@@ -1,0 +1,154 @@
+## 5. El mismo mecanismo visto al revés: parámetro y discriminante {#cs-prueba-cuadratica}
+
+La pista de Labbé considera $a_ix+b_i$. También podemos estudiar $a_i-tb_i$: intercambiamos qué lista acompaña al parámetro y llegamos al mismo resultado.
+
+**Otra demostración completa.** Si $b_1=\cdots=b_n=0$, hay igualdad. Si no, fijemos
+
+$$
+P=\sum_{i=1}^na_i^2,\qquad
+Q=\sum_{i=1}^nb_i^2>0,\qquad
+R=\sum_{i=1}^na_ib_i.
+$$
+
+Para cada real $t$, la suma de cuadrados satisface
+
+$$
+0\le\sum_{i=1}^n(a_i-tb_i)^2=P-2Rt+Qt^2.
+$$
+
+Al completar el cuadrado,
+
+$$
+P-2Rt+Qt^2
+=Q\left(t-\frac RQ\right)^2+P-\frac{R^2}{Q}.
+$$
+
+En $t_0=R/Q$ el primer sumando se anula. Por tanto $0\le P-R^2/Q$, y multiplicar por $Q>0$ da $R^2\le PQ$. $\square$
+
+### 5.1. Alternativa: examinar el discriminante {#cs-discriminante}
+
+El polinomio $q(t)=Qt^2-2Rt+P$ es no negativo para *todo* $t\in\mathbb R$, y $Q>0$. Si su discriminante fuera positivo, tendría dos raíces distintas y tomaría valores negativos entre ambas; imposible. Así,
+
+$$
+\Delta=(-2R)^2-4QP\le0,
+\qquad\text{es decir,}\qquad R^2\le PQ.
+$$
+
+No es una hipótesis nueva ni una tercera desigualdad: es otra manera de leer el mismo polinomio. En el caso de lista $b$ nula no dividimos por $Q$, pues ese caso ya se separó.
+
+**Comparar las dos construcciones.** Labbé lleva a separar la lista $a$ nula y dividir por $\sum_i a_i^2$; el argumento alternativo separa la lista $b$ nula y divide por $\sum_i b_i^2$. El resultado y la generalidad son idénticos. El parámetro óptimo se interpretará geométricamente *después* de definir el producto interno y la norma, no antes.
+
+## 6. ¿Qué tan buena es una cota? Escala y normalización {#cs-prueba-normalizada}
+
+Steele plantea una operación intelectual distinta: no basta con obtener una cota verdadera, también debemos examinar **cuánto se aleja del valor que intentamos controlar**. Comencemos con una desigualdad de dos números, válida para cualesquiera reales $r,s$:
+
+$$
+0\le(|r|-|s|)^2=r^2+s^2-2|rs|,
+\qquad\text{luego}\qquad 2|rs|\le r^2+s^2.
+$$
+
+Sumando esta relación término a término obtenemos la **cota aditiva**
+
+$$
+\sum_{i=1}^n|a_ib_i|\le\frac12
+\left(\sum_{i=1}^na_i^2+\sum_{i=1}^nb_i^2\right).
+$$
+
+Es útil, pero a veces es muy débil. Para las listas $(10,0)$ y $(1,0)$, su miembro derecho vale $50{,}5$ y la suma que acota vale exactamente $10$. ¿Podemos afinarla sin suponer de antemano Cauchy–Schwarz?
+
+### 6.1. Ajuste de escala: de lo aditivo a lo multiplicativo {#cs-escalas}
+
+Pongamos $A=\sqrt{\sum_i a_i^2}$ y $B=\sqrt{\sum_i b_i^2}$. Si alguno es cero, la suma de productos también es cero. En caso contrario, para cada $t>0$ escribimos $|a_ib_i|=|(ta_i)(b_i/t)|$ y aplicamos la cota elemental:
+
+$$
+\sum_i|a_ib_i|\le\frac12\left(t^2A^2+\frac{B^2}{t^2}\right).
+$$
+
+Elegir $t=\sqrt{B/A}$ iguala los términos $t^2A^2=B^2/t^2=AB$. La estimación se afina hasta
+
+$$
+\boxed{\sum_i|a_ib_i|\le
+\sqrt{\sum_i a_i^2}\sqrt{\sum_i b_i^2}.}
+$$
+
+Finalmente, la desigualdad triangular escalar produce $|\sum_i a_ib_i|\le\sum_i|a_ib_i|$. La cota obtenida es la misma que en §3, pero controla además la suma de los **valores absolutos individuales**.
+
+### 6.2. Normalización: otra manera de reconocer la elección óptima {#cs-normalizacion}
+
+Si $A,B>0$, definamos $\alpha_i=|a_i|/A$ y $\beta_i=|b_i|/B$. Por su construcción,
+
+$$
+\sum_i\alpha_i^2=\sum_i\beta_i^2=1.
+$$
+
+La desigualdad $2rs\le r^2+s^2$, aplicada a $r=\alpha_i$, $s=\beta_i$ y sumada, da
+
+$$
+\sum_i\alpha_i\beta_i\le\frac12
+\left(\sum_i\alpha_i^2+\sum_i\beta_i^2\right)=1.
+$$
+
+Al multiplicar por $AB>0$ recuperamos $\sum_i|a_ib_i|\le AB$ y, por la triangular escalar, $|\sum_i a_ib_i|\le AB$. Si una lista es nula, ambas desigualdades son inmediatas. $\square$
+
+**No confundir dos pérdidas de información.** El cambio de escala corrige una cota excesiva; la desigualdad $|\sum_i a_ib_i|\le\sum_i|a_ib_i|$ puede ser estricta debido a cancelaciones de signo. Por ejemplo, con las listas $(1,1)$ y $(1,-1)$, la suma de los valores absolutos es $2$ pero la suma de los productos es $0$. En §8 volveremos a la igualdad exacta del teorema.
+
+::: {.callout-tip title="Comparación de estrategias"}
+Reconstruye la misma desigualdad de tres maneras: (i) el caso de dos términos más inducción; (ii) el polinomio sugerido por Labbé; (iii) normalización o ajuste de escala. ¿Cuál exige separar una lista nula? ¿Dónde interviene la triangular *escalar*? ¿Qué método proporciona directamente la elección de un parámetro óptimo?
+:::
+
+## 7. Ahora sí: introducir producto interno y norma {#cs-notacion}
+
+La fórmula con sumas es completa, pero escribir repetidamente tres sumas dificulta comparar demostraciones y pasar a otros dominios. **Es el momento de introducir abreviaturas, no de añadir una hipótesis.** Para dos vectores reales $a=(a_1,\ldots,a_n)$ y $b=(b_1,\ldots,b_n)$ definimos primero su producto escalar usual
+
+$$
+\langle a,b\rangle:=\sum_{i=1}^n a_i b_i.
+$$
+
+Definimos después la longitud euclidiana asociada,
+
+$$
+\|a\|_2:=\sqrt{\sum_{i=1}^n a_i^2}
+=\sqrt{\langle a,a\rangle}.
+$$
+
+La **barra simple** $|x|$ mide el valor absoluto de un número real (más adelante, el módulo de un complejo). La **doble barra** $\|a\|_2$ mide la norma de un vector; el subíndice distingue esta norma de otras. Esta distinción no se necesita para entender las seis primeras secciones: ahora nos ahorra notación y permite identificar la estructura.
+
+**La tercera forma del mismo teorema.** La desigualdad de §3 se reescribe, sin cambiar su contenido, como
+
+$$
+\boxed{|\langle a,b\rangle|\le\|a\|_2\,\|b\|_2.}
+$$
+
+No se ha usado que $\|\cdot\|_2$ satisfaga la desigualdad triangular vectorial para obtener esta fórmula. Por el contrario, esa propiedad será un **corolario** demostrado en §13.1. En espacios abstractos escribiremos simplemente $\|u\|$ cuando el producto interno determine una norma inequívocamente.
+
+**Traducción bidireccional.** Sustituye $\langle a,b\rangle$ y cada doble barra por sus definiciones y recupera literalmente la fórmula de §3. A la inversa, encuentra las tres expresiones repetidas en §4 y escribe el polinomio de Labbé usando esta notación. Reconocer que una forma compacta equivale a otra desarrollada es parte de comprender el teorema.
+
+## 8. Igualdad: ¿cuándo se alcanza la cota? {#cs-igualdad}
+
+**Proposición.** En la desigualdad de Cauchy–Schwarz para $\mathbb R^n$ hay igualdad si y sólo si $a$ y $b$ son **linealmente dependientes**; es decir, alguno es cero o, siendo ambos no nulos, existe $\lambda\in\mathbb R\setminus\{0\}$ tal que $a=\lambda b$.
+
+**Demostración.** Cuando $b=0$ ya vimos que hay igualdad. Si $b\ne0$, la identidad obtenida al completar el cuadrado en §5 puede reorganizarse como
+
+$$
+\|a\|_2^2\|b\|_2^2-\langle a,b\rangle^2
+=\|b\|_2^2\|a-t_0b\|_2^2.
+$$
+
+El miembro derecho vale cero exactamente cuando $\|a-t_0b\|_2^2=0$, esto es, cuando $a=t_0b$. Recíprocamente, si $a=\lambda b$, entonces
+
+$$
+|\langle a,b\rangle|
+=|\lambda|\,\|b\|_2^2
+=\|a\|_2\|b\|_2.
+$$
+
+También están cubiertos los casos nulos. $\square$
+
+No hemos impuesto $\lambda>0$. Si $a=-2b\ne0$, el producto escalar es negativo pero su **valor absoluto** alcanza la cota. Esa es la diferencia decisiva con el criterio de igualdad de la desigualdad triangular euclidiana.
+
+::: {.callout-important title="Prueba de estrés de la igualdad"}
+- $a=(1,2)$, $b=(2,4)$: proporcionales en el mismo sentido; hay igualdad.
+- $a=(1,2)$, $b=(-2,-4)$: proporcionales en sentidos opuestos; también hay igualdad.
+- $a=(1,0)$, $b=(0,1)$: producto escalar cero y longitudes positivas; la desigualdad es estricta.
+- $a=0$, $b$ arbitrario: ambos miembros son cero, sin necesidad de dividir por $\|a\|$.
+:::
