@@ -249,40 +249,16 @@ $$
 
 con $k\in\mathbb Z_{>0}$, $p>q>0$, $\gcd(p,q)=1$ y paridades distintas, salvo intercambio de los catetos.
 
-## 7. Exploración interactiva
+## 7. Laboratorio: de una recta a una terna pitagórica
 
-Modifica $p$ y $q$. El generador garantiza $p>q$ y muestra la identidad pitagórica, la pendiente racional, el punto correspondiente de la circunferencia unidad y la condición de primitividad. **Intenta encontrar una terna no primitiva con $p,q$ coprimos:** ¿qué sucede si ambos son impares?
+La fórmula permite calcular resultados, pero también invita a investigar **por qué** aparecen. En el laboratorio independiente recorrerás dos experiencias conectadas:
 
-<!-- Publicación: cargar diofanto-triples.js una sola vez desde la plantilla de la web.
-     Este Markdown no ejecuta scripts en línea: el HTML de abajo ofrece una vista
-     estática matemáticamente correcta si el JS no está disponible. -->
-<div class="diofanto-widget" data-diofanto-widget style="border:1px solid #c5cbd3; padding:1.25rem; border-radius:12px; margin:1.5rem 0; background:var(--background-secondary,#f8fafc); color:var(--text-normal,#17202a);">
-  <h3 style="margin:0 0 1rem;">Generador de ternas pitagóricas</h3>
-  <label style="display:block;">Parámetro p: <strong data-p-value>2</strong>
-    <input data-p type="range" min="2" max="20" value="2" step="1" style="display:block; width:100%; margin:0.25rem 0 1rem;" />
-  </label>
-  <label style="display:block;">Parámetro q: <strong data-q-value>1</strong>
-    <input data-q type="range" min="1" max="1" value="1" step="1" style="display:block; width:100%; margin:0.25rem 0 1rem;" />
-  </label>
-  <div style="line-height:1.8;">
-    <div><strong data-identity>4² + 3² = 5²</strong></div>
-    <div>Pendiente: <span data-slope>m = 2/1</span></div>
-    <div>Punto racional (circunferencia unidad): <span data-point>(4/5, 3/5)</span></div>
-    <div>mcd(p,q): <span data-gcd>1</span></div>
-    <div><strong data-status>Terna primitiva</strong></div>
-  </div>
-  <svg data-triangle viewBox="0 0 260 250" width="260" height="250" role="img" aria-label="Triángulo rectángulo de catetos 4 y 3 e hipotenusa 5" style="display:block; max-width:100%; margin:1rem auto; overflow:visible;">
-    <polygon data-polygon points="55,210 205,210 55,97.5" fill="#dbeafe" stroke="#2563eb" stroke-width="2" />
-    <polyline data-right-angle points="55,198 67,198 67,210" fill="none" stroke="#2563eb" stroke-width="1.5" />
-    <text data-label-a x="130" y="231" fill="currentColor" font-size="14" text-anchor="middle">4</text>
-    <text data-label-b x="38" y="153.75" fill="currentColor" font-size="14" text-anchor="middle">3</text>
-    <text data-label-c x="143" y="144.75" fill="currentColor" font-size="14" text-anchor="middle">5</text>
-  </svg>
-  <p data-fallback style="font-size:0.9em; margin:0.4rem 0;">Vista estática: el generador interactivo requiere que la web cargue su archivo JavaScript.</p>
-  <p data-announcement role="status" aria-live="polite" aria-atomic="true" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;">Parámetros 2 y 1. Terna 4, 3, 5. Primitiva.</p>
-  <p style="font-size:0.85em; margin:0; opacity:0.85;">El dibujo respeta las proporciones de los catetos. El máximo de q se ajusta a p − 1; se muestran también la pendiente reducida y las coordenadas racionales simplificadas.</p>
-  <noscript><p>Para modificar los parámetros, habilita JavaScript en la versión web.</p></noscript>
-</div>
+1. **Geometría racional:** elige una pendiente $m=p/q$ y un radio $c$, observa la recta que pasa por $(0,-c)$ y comprueba las coordenadas exactas de su segunda intersección.
+2. **Aritmética:** escala las coordenadas para generar una terna entera, formula una predicción sobre su primitividad y confróntala con el máximo común divisor, la coprimalidad y la paridad.
+
+[**Abrir el laboratorio de Diofanto — investigación interactiva**](../assets/labs/laboratorio-diofanto.html){.btn .btn-primary}
+
+**Desafío previo:** antes de abrirlo, predice qué cambia y qué permanece cuando sustituyes $(p,q)=(2,1)$ por $(4,2)$. ¿Conservas el mismo punto de la circunferencia? ¿Conservas la misma terna entera? Justifica ambas respuestas.
 
 ## 8. De Diofanto a Fermat
 
@@ -309,5 +285,3 @@ La decisión de Diofanto de expresar una incógnita mediante la otra transforma 
 - Diofanto, *Arithmetica*, II.8: traducción y comentario de Henry Mendell, California State University, Los Angeles, a partir de la edición de Tannery (1893). [Consultar II.8–10](https://web.calstatela.edu/faculty/hmendel/Ancient%20Mathematics/Diophantus/Arithmetica/Diophantus.II.8-10.html).
 - Euclides, *Elementos*, libro X, proposición 29, lema 1; edición digital y comentario de David E. Joyce. [Consultar el texto y el lema](https://mathcs.clarku.edu/~djoyce/elements/bookX/propX29.html).
 - Frank J. Swetz, «Mathematical Treasure: Bachet's Arithmetic of Diophantus», *Convergence*, Mathematical Association of America. [Consultar el estudio y la edición de 1670](https://old.maa.org/press/periodicals/convergence/mathematical-treasure-bachets-arithmetic-of-diophantus).
-
-<script src="../assets/js/diofanto-triples.js" defer></script>
