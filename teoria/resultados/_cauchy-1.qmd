@@ -1,0 +1,153 @@
+## 1. Comenzar con números: el caso de un solo término {#cs-intuicion}
+
+El problema consiste en **controlar una suma de productos mediante sumas de cuadrados**. Por el momento, $a_i$ y $b_i$ son sólo números reales. El producto de sumas del miembro derecho es no negativo, pues cada cuadrado es no negativo. El de la izquierda también es un cuadrado, pero contiene términos cruzados que debemos entender.
+
+En el caso de una sola pareja de números, la fórmula se reduce a
+
+$$
+(a_1b_1)^2\le a_1^2b_1^2.
+$$
+
+Aquí en realidad hay **igualdad**: es una identidad algebraica. El caso $n=1$ comprueba la coherencia del enunciado, pero no revela el mecanismo que necesitamos para sumas de más términos.
+
+::: {.callout-tip title="Pregunta de activación"}
+¿Qué cambia al pasar de $a_1b_1$ a $a_1b_1+a_2b_2$? Antes de leer la sección siguiente, desarrolla el cuadrado de la suma y busca el término que todavía no podemos acotar.
+:::
+
+### 1.1. Breve ubicación histórica, sin confundir versiones {#cs-historia}
+
+La formulación de sumas finitas se remonta a Augustin-Louis Cauchy (1821). Viktor Bunyakovski desarrolló una variante integral en 1859, mientras que Hermann Amandus Schwarz estudió formulaciones posteriores relacionadas con problemas variacionales. El nombre «Cauchy–Bunyakovski–Schwarz» recuerda esas contribuciones, pero no debe confundirse la fórmula algebraica inicial con la formulación moderna para productos internos. Las fechas de las versiones y la cautela sobre la atribución a Schwarz se amplían en las fuentes históricas citadas al final.
+
+## 2. Dos términos: el cuadrado que descubre la desigualdad {#cs-dos-terminos}
+
+**Proposición (caso $n=2$).** Para cualesquiera $a_1,a_2,b_1,b_2\in\mathbb R$,
+
+$$
+\boxed{(a_1b_1+a_2b_2)^2\le(a_1^2+a_2^2)(b_1^2+b_2^2).}
+$$
+
+**Demostración.** No tenemos que adivinar cuál miembro es mayor: restamos el cuadrado de la suma al producto de las sumas y desarrollamos por completo:
+
+$$
+\begin{aligned}
+&(a_1^2+a_2^2)(b_1^2+b_2^2)-(a_1b_1+a_2b_2)^2\\
+&=a_1^2b_2^2+a_2^2b_1^2-2a_1a_2b_1b_2\\
+&=(a_1b_2-a_2b_1)^2\ge0.
+\end{aligned}
+$$
+
+La diferencia es un cuadrado real, luego no puede ser negativa. $\square$
+
+**Leer la prueba en sentido inverso.** Si la desigualdad fuera falsa, su diferencia sería negativa, pero acabamos de identificarla con un cuadrado. La igualdad equivale aquí a $a_1b_2=a_2b_1$; más adelante explicaremos qué significa eso para dos vectores, incluso cuando alguno es nulo.
+
+::: {.callout-important title="Tres pruebas de estrés"}
+- Con $(a_1,a_2)=(1,2)$ y $(b_1,b_2)=(2,1)$: izquierda $16$, derecha $25$.
+- Con $(a_1,a_2)=(1,2)$ y $(b_1,b_2)=(-2,-4)$: izquierda $100$, derecha $100$.
+- Con $(a_1,a_2)=(0,0)$: ambos lados se anulan; ninguna división por un número positivo está autorizada.
+:::
+
+**Pregunta genuina.** Hemos demostrado algo para dos términos. ¿Basta con repetir el mismo cálculo para cada $n$ o podemos aprovechar el resultado de dos términos para agregar un término nuevo?
+
+## 3. Todas las sumas finitas: inducción antes de las abreviaturas {#cs-enunciado}
+
+**Teorema (Cauchy–Schwarz finito, versión real).** Para $n\ge1$ y cualesquiera números reales $a_1,\ldots,a_n,b_1,\ldots,b_n$,
+
+$$
+\boxed{\left(\sum_{i=1}^na_ib_i\right)^2\le
+\left(\sum_{i=1}^na_i^2\right)\left(\sum_{i=1}^nb_i^2\right).}
+$$
+
+Puesto que ambos lados son no negativos, la formulación equivalente con raíces cuadradas es
+
+$$
+\boxed{\left|\sum_{i=1}^na_ib_i\right|\le
+\sqrt{\sum_{i=1}^na_i^2}\sqrt{\sum_{i=1}^nb_i^2}.}
+$$
+
+El valor absoluto controla tanto las sumas positivas como las negativas. Si sólo escribiéramos la desigualdad sin él, obtendríamos una consecuencia verdadera, pero menos informativa; más tarde compararemos esa versión unilateral con la de valor absoluto.
+
+**Lema de dos bloques.** Si $A,B\ge0$ y $x,y\in\mathbb R$, entonces
+
+$$
+AB+|xy|\le\sqrt{A^2+x^2}\sqrt{B^2+y^2}.
+$$
+
+**Demostración.** Los miembros son no negativos y
+
+$$
+(A^2+x^2)(B^2+y^2)-(AB+|xy|)^2
+=(A|y|-B|x|)^2\ge0.
+$$
+
+Tomamos las raíces cuadradas no negativas. $\square$
+
+### 3.1. La prueba por inducción {#cs-induccion}
+
+**Demostración por inducción del teorema.** Para $n=1$ hay igualdad, como vimos en §1. Supongamos que la desigualdad con valor absoluto vale para $n$ sumandos y definamos, sólo para abreviar esta línea,
+
+$$
+S_n=\sum_{i=1}^na_ib_i,\qquad
+A=\sqrt{\sum_{i=1}^na_i^2},\qquad
+B=\sqrt{\sum_{i=1}^nb_i^2}.
+$$
+
+La hipótesis inductiva dice $|S_n|\le AB$. La desigualdad triangular **para números reales**, que ya está demostrada independientemente, y el lema anterior dan
+
+$$
+\begin{aligned}
+\left|\sum_{i=1}^{n+1}a_ib_i\right|
+&=|S_n+a_{n+1}b_{n+1}|\\
+&\le |S_n|+|a_{n+1}b_{n+1}|\\
+&\le AB+|a_{n+1}b_{n+1}|\\
+&\le\sqrt{\sum_{i=1}^{n+1}a_i^2}
+       \sqrt{\sum_{i=1}^{n+1}b_i^2}.
+\end{aligned}
+$$
+
+Queda demostrado el caso $n+1$ y, por inducción, todos los casos finitos. $\square$
+
+**Control de rigor.** El lema se demostró sin invocar el teorema general. La triangular usada es la de *números reales*, no la triangular euclidiana que deduciremos posteriormente de Cauchy–Schwarz. La prueba no supone un producto interno, una norma vectorial ni completitud de un espacio de vectores.
+
+**Una decisión de lectura tomada de Steele.** La prueba de $n=2$ es algo más que un ejemplo: es la pieza reutilizable que une el caso $n$ con el caso $n+1$. El procedimiento enseña a **componer resultados previamente obtenidos**, en vez de expandir una cantidad cada vez mayor de términos sin estrategia.
+
+## 4. El ejercicio de Labbé: una segunda puerta de entrada {#cs-labbe}
+
+Gustavo Labbé Morales formula el resultado al cuadrado como ejercicio 13 de §1.8 de *Cálculo I* (p. 24) y sugiere desarrollar la expresión $\sum_{i=1}^n(a_ix+b_i)^2$. Esta pista propone una construcción **distinta** de la inducción: si el cuadrado de cada número es no negativo, también lo será cualquier suma de esos cuadrados, sea cual sea $x\in\mathbb R$.
+
+::: {.callout-tip title="Reconstrucción antes de la solución"}
+Desarrolla $\sum_i(a_ix+b_i)^2$. ¿Qué coeficientes aparecen frente a $x^2$ y $x$? ¿Cómo podrías elegir $x$ para que la condición «la expresión nunca es negativa» se convierta en una relación entre las tres sumas?
+:::
+
+**Demostración desarrollada a partir de la pista.** Si $a_1=\cdots=a_n=0$, ambos miembros del teorema valen cero. Supongamos que no todas esas coordenadas son nulas y escribamos
+
+$$
+A=\sum_{i=1}^na_i^2>0,\qquad
+B=\sum_{i=1}^nb_i^2,\qquad
+C=\sum_{i=1}^na_ib_i.
+$$
+
+Aquí $B=\sum_i b_i^2\ge0$; la letra es un recurso temporal de cálculo, no una nueva operación. Para todo real $x$,
+
+$$
+0\le\sum_{i=1}^n(a_ix+b_i)^2
+=Ax^2+2Cx+B.
+$$
+
+Podemos completar el cuadrado:
+
+$$
+Ax^2+2Cx+B=A\left(x+\frac CA\right)^2
++\left(B-\frac{C^2}{A}\right).
+$$
+
+Elegimos $x_0=-C/A$ (válido porque $A>0$); el primer término se anula y queda
+
+$$
+0\le B-\frac{C^2}{A}.
+$$
+
+Multiplicando por $A>0$ obtenemos $C^2\le AB$, que es exactamente la desigualdad de §3. También queda resuelto el caso inicialmente excluido. $\square$
+
+**Qué hace posible la elección.** El parámetro no es una ocurrencia: permite probar que un polinomio cuadrático de coeficiente principal positivo no toma valores negativos. La igualdad se alcanza cuando cada sumando $(a_ix_0+b_i)^2$ vale cero, propiedad que analizaremos en §8.
+
+**Cotejo con la fuente.** La expresión sugerida aparece en Labbé, pero la elección explícita de $x_0$, la separación del caso nulo y esta lectura pedagógica se han redactado y verificado aquí. No se atribuye al autor una demostración que su libro deja como ejercicio.

@@ -1,0 +1,191 @@
+## 12. Variantes: pesos, series e integrales {#cs-variantes}
+
+### 12.1. Cauchy–Schwarz ponderada {#cs-ponderada}
+
+Sean $w_1,\ldots,w_n\ge0$ y $a_i,b_i\in\mathbb R$. Si aplicamos el teorema finito a $\sqrt{w_i}a_i$ y $\sqrt{w_i}b_i$, obtenemos
+
+$$
+\boxed{
+\left(\sum_i w_i a_i b_i\right)^2
+\le\left(\sum_i w_i a_i^2\right)
+\left(\sum_i w_i b_i^2\right).
+}
+$$
+
+**Demostración.** La desigualdad es exactamente la de §3 con las nuevas coordenadas; todos los pesos admiten raíz cuadrada real porque son no negativos. $\square$
+
+**Igualdad y pesos nulos.** Si todos los pesos son positivos, hay igualdad si y sólo si $a$ y $b$ son proporcionales. Si algunos pesos son cero, **sólo importan las coordenadas con $w_i>0$**: hay igualdad si y sólo si los vectores $(\sqrt{w_i}a_i)_i$ y $(\sqrt{w_i}b_i)_i$ son dependientes. Exigir proporcionalidad de las coordenadas ignoradas sería una condición falsa.
+
+::: {.callout-important title="Una hipótesis necesaria"}
+No podemos admitir pesos negativos y conservar el argumento de las raíces. Por ejemplo, con $w=(1,-1)$, $a=(1,0)$ y $b=(0,1)$, el producto del lado derecho es $1\cdot(-1)=-1$, mientras que el cuadrado del lado izquierdo vale $0$: la desigualdad propuesta sería $0\le-1$, falsa.
+:::
+
+### 12.2. Series de cuadrados sumables: de lo finito a lo infinito {#cs-series}
+
+El capítulo 1 de Steele utiliza el tránsito desde una desigualdad cuantitativa a una conclusión cualitativa sobre series. Podemos reconstruirlo con las herramientas usuales de sucesiones, **sin usar teoría de la medida**.
+
+**Proposición.** Si $(a_k)_{k\ge1}$ y $(b_k)_{k\ge1}$ son sucesiones reales tales que
+
+$$
+A^2:=\sum_{k=1}^{\infty}a_k^2<\infty,
+\qquad
+B^2:=\sum_{k=1}^{\infty}b_k^2<\infty,
+$$
+
+entonces la serie $\sum_{k=1}^{\infty}a_kb_k$ converge absolutamente y
+
+$$
+\boxed{\sum_{k=1}^{\infty}|a_kb_k|\le AB,
+\qquad
+\left|\sum_{k=1}^{\infty}a_kb_k\right|\le AB.}
+$$
+
+**Demostración.** Para cada $N\ge1$, aplicamos la desigualdad **finita ya demostrada** a los vectores $(|a_1|,\ldots,|a_N|)$ y $(|b_1|,\ldots,|b_N|)$:
+
+$$
+0\le S_N:=\sum_{k=1}^N|a_kb_k|
+\le\left(\sum_{k=1}^Na_k^2\right)^{1/2}
+\left(\sum_{k=1}^Nb_k^2\right)^{1/2}\le AB.
+$$
+
+La sucesión real $(S_N)$ es no decreciente y está acotada superiormente por $AB$; **la completitud de $\mathbb R$**, mediante el teorema de convergencia monótona de sucesiones, garantiza que $S_N$ converge. Ésta es precisamente la convergencia absoluta de $\sum a_kb_k$. Como toda serie real absolutamente convergente es convergente y la desigualdad triangular finita pasa al límite, obtenemos la segunda cota. $\square$
+
+**Auditoría de dependencia.** No se ha supuesto que el espacio de sucesiones $\ell^2$ sea completo. Sólo se utilizaron Cauchy–Schwarz para *vectores finitos* y resultados previos sobre series reales. En particular, no es legítimo presentar esta demostración como fundamento de la versión finita: la dirección lógica es la contraria.
+
+### 12.3. Versión integral para funciones continuas {#cs-integral}
+
+Sean $f,g:[a,b]\to\mathbb R$ continuas, con $a<b$. Entonces
+
+$$
+\boxed{
+\left|\int_a^b f(x)g(x)\,dx\right|^2
+\le
+\left(\int_a^b f(x)^2\,dx\right)
+\left(\int_a^b g(x)^2\,dx\right).
+}
+$$
+
+**Demostración.** Si $\int_a^b g^2=0$, la continuidad y la no negatividad de $g^2$ implican $g\equiv0$ en $[a,b]$; ambos lados son cero. Supongamos, por tanto, $B:=\int_a^b g^2>0$ y pongamos $A:=\int_a^b f^2$, $C:=\int_a^b fg$. Para cada $t\in\mathbb R$,
+
+$$
+0\le\int_a^b(f-tg)^2
+=A-2tC+t^2B.
+$$
+
+Con $t=C/B$ obtenemos $0\le A-C^2/B$, esto es, $C^2\le AB$. $\square$
+
+**Igualdad.** Para $B>0$, es equivalente a $\int_a^b(f-(C/B)g)^2=0$. La función integranda es continua y no negativa; por tanto se anula **en todos los puntos** del intervalo. Así, $f=(C/B)g$ en $[a,b]$. Si $B=0$, uno de los dos factores es la función nula. La condición correcta es dependencia lineal de las funciones, incluido el caso nulo.
+
+**Qué cambió y qué permaneció.** Sustituimos una suma finita de cuadrados por una integral de un cuadrado. La continuidad permite justificar tanto la integrabilidad como la implicación «integral de una función continua no negativa igual a cero $\Rightarrow$ función idénticamente nula». No hemos demostrado esta variante mediante un límite informal de sumas: hemos reproducido el mecanismo algebraico con las propiedades autorizadas de la integral.
+
+### 12.4. Versión avanzada en $L^2$ {#cs-l2}
+
+Si ya se ha construido la integral de Lebesgue, sea $(X,\mathcal A,\mu)$ un espacio de medida y sean $f,g\in L^2(X,\mu;\mathbb C)$. La desigualdad elemental
+
+$$
+2|fg|\le|f|^2+|g|^2
+$$
+
+garantiza primero que $f\overline g$ es integrable. Sobre las **clases de equivalencia módulo igualdad casi en todas partes** definimos $\langle f,g\rangle=\int_X f\overline g\,d\mu$, un producto interno. El teorema abstracto da
+
+$$
+\boxed{
+\left|\int_X f\overline g\,d\mu\right|
+\le
+\left(\int_X|f|^2\,d\mu\right)^{1/2}
+\left(\int_X|g|^2\,d\mu\right)^{1/2}.
+}
+$$
+
+Aquí la igualdad equivale a dependencia lineal en $L^2$, esto es, $f=\lambda g$ **casi en todas partes**, con el correspondiente caso de función nula. No debemos sustituir «casi en todas partes» por «en todos los puntos»: en $L^2$ las funciones que difieren sólo en un conjunto de medida cero representan el mismo vector. Esta subsección requiere teoría de la medida y es una **ampliación posterior**, no una dependencia de las pruebas finitas.
+
+
+## 13. Aplicaciones: transformar una interacción en una cota {#cs-aplicaciones}
+
+### 13.1. Demostrar la desigualdad triangular euclidiana {#cs-triangular}
+
+Sea $V$ un espacio con producto interno y $\|u\|=\sqrt{\langle u,u\rangle}$. Para cualesquiera $u,v\in V$,
+
+$$
+\begin{aligned}
+\|u+v\|^2
+&=\|u\|^2+2\operatorname{Re}\langle u,v\rangle+\|v\|^2\\
+&\le\|u\|^2+2|\langle u,v\rangle|+\|v\|^2\\
+&\le\bigl(\|u\|+\|v\|\bigr)^2.
+\end{aligned}
+$$
+
+Ambas cantidades que vamos a comparar son no negativas; tomamos raíces:
+
+$$
+\boxed{\|u+v\|\le\|u\|+\|v\|.}
+$$
+
+Esto **prueba** el axioma triangular para la norma inducida por un producto interno. El resultado enlaza con [el artículo complementario sobre la desigualdad triangular](desigualdad-triangular.qmd), §7.1. No hemos supuesto la desigualdad triangular vectorial para probar Cauchy–Schwarz; las dependencias van en una sola dirección.
+
+**Igualdad.** Para $u,v\ne0$, ambas estimaciones anteriores son igualdades exactamente cuando Cauchy–Schwarz alcanza la igualdad y $\langle u,v\rangle$ es real no negativo. Por tanto, $u$ y $v$ han de ser múltiplos **positivos** uno del otro; el caso nulo también produce igualdad. En cambio, Cauchy–Schwarz sola admite múltiplos negativos en el caso real, o múltiplos de cualquier fase en el complejo.
+
+### 13.2. El producto interno como función acotada {#cs-continuidad}
+
+Fijado $v\in V$, definimos $T_v(u)=\langle u,v\rangle$. Para $u,w\in V$, por linealidad y Cauchy–Schwarz,
+
+$$
+|T_v(u)-T_v(w)|
+=|\langle u-w,v\rangle|
+\le\|v\|\,\|u-w\|.
+$$
+
+Hemos demostrado que $T_v$ es **lipschitziana**, y por consiguiente continua. Además, para $v\ne0$ su constante óptima de acotación sobre la esfera unitaria es $\|v\|$, porque la igualdad se alcanza con $u=v/\|v\|$; para $v=0$ la función es idénticamente nula. Este argumento no exige dimensión finita ni completitud.
+
+### 13.3. Estimar una media y comparar normas {#cs-medias}
+
+Tomando $b=(1,\dots,1)$ en el teorema finito,
+
+$$
+\boxed{\left(\sum_{i=1}^n a_i\right)^2
+\le n\sum_{i=1}^n a_i^2.}
+$$
+
+Si dividimos entre $n^2$, resulta
+
+$$
+\left|\frac1n\sum_i a_i\right|
+\le\sqrt{\frac1n\sum_i a_i^2}.
+$$
+
+La magnitud de la media aritmética no supera la raíz cuadrática media; cuando todos los $a_i$ son no negativos, también la media aritmética ordinaria está acotada por la cuadrática. Hay igualdad exactamente cuando $a$ es proporcional a $(1,\ldots,1)$, es decir, cuando **todos los valores son iguales**.
+
+De igual modo, aplicar Cauchy–Schwarz a los vectores $(|a_1|,\ldots,|a_n|)$ y $(1,\ldots,1)$ proporciona
+
+$$
+\boxed{\|a\|_1\le\sqrt n\,\|a\|_2.}
+$$
+
+Esta comparación es útil al pasar de estimaciones cuadráticas a sumas de magnitudes. La igualdad exige que todos los $|a_i|$ sean iguales, no necesariamente que las coordenadas tengan el mismo signo.
+
+### 13.4. Covarianza y correlación: aplicación posterior {#cs-covarianza}
+
+Para variables aleatorias reales $X,Y$ con segundos momentos finitos, definimos $X_0=X-\mathbb EX$ y $Y_0=Y-\mathbb EY$. El producto interno en el espacio $L^2$ de variables aleatorias permite escribir
+
+$$
+\begin{aligned}
+|\operatorname{Cov}(X,Y)|
+&=|\mathbb E(X_0Y_0)|\\
+&\le\sqrt{\mathbb E(X_0^2)}\sqrt{\mathbb E(Y_0^2)}\\
+&=\sigma_X\sigma_Y.
+\end{aligned}
+$$
+
+Si ambas desviaciones estándar son positivas, el coeficiente $\rho=\operatorname{Cov}(X,Y)/(\sigma_X\sigma_Y)$ está en $[-1,1]$. Si alguna desviación es cero, la división que define $\rho$ no está permitida; la desigualdad de covarianzas sigue siendo válida. Aquí la igualdad en el valor absoluto corresponde a dependencia lineal *casi segura* de las variables centradas. Esta subsección depende de probabilidad e integración y no se utilizará como fundamento de las pruebas anteriores.
+
+## 14. Errores previsibles y contraejemplos {#cs-errores}
+
+1. **Omitir el valor absoluto.** El producto escalar puede ser negativo; el enunciado acota su magnitud. La cota unilateral $\langle u,v\rangle\le\|u\|\|v\|$ es verdadera, pero pierde información respecto de la cota bilateral.
+2. **Confundir igualdad con «mismo sentido».** En Cauchy–Schwarz real, $u=-v\ne0$ también da igualdad; el requisito de mismo sentido corresponde a la triangular euclidiana.
+3. **Dividir por $\|v\|^2$ sin comprobar que $v\ne0$.** La prueba separa primero el vector nulo. Éste sí satisface el teorema y el caso de igualdad.
+4. **Suponer que la versión compleja compara cuadrados complejos.** El objeto no negativo es $|\langle u,v\rangle|^2$, no $\langle u,v\rangle^2$.
+5. **Usar una norma cualquiera con el producto escalar usual.** En $\mathbb R^2$, toma $u=v=(1,1)$ y la norma del máximo: $|u\cdot v|=2$, pero $\|u\|_\infty\|v\|_\infty=1$. Cauchy–Schwarz no afirma esa desigualdad para una norma ajena al producto interno.
+6. **Inferir proporcionalidad de todas las coordenadas con pesos nulos.** La versión ponderada sólo restringe las posiciones con peso positivo.
+7. **Confundir cero integral con cero puntual para funciones arbitrarias.** En $L^2$ la condición de igualdad es casi en todas partes; el argumento puntual de §12.3 usa continuidad en un intervalo no degenerado.
+8. **Suponer que Cauchy–Schwarz requiere completitud.** La prueba abstracta no utiliza límites ni completitud: funciona antes de completar un espacio prehilbertiano.
+9. **Razonar en círculo.** Probar Cauchy–Schwarz usando la triangular euclidiana y luego la triangular euclidiana usando Cauchy–Schwarz no establece ninguno de los dos resultados; debemos partir de la no negatividad de los cuadrados o de otra propiedad ya demostrada.

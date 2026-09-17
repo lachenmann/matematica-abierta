@@ -1,0 +1,197 @@
+## 9. La identidad de Lagrange: cuantificar lo que falta para la igualdad {#cs-lagrange}
+
+Las pruebas por sumas de cuadrados de las secciones 4 y 5 demuestran que cierta diferencia es no negativa. La **identidad de Lagrange** explica de qué está hecha esa diferencia: de una suma de cuadrados, uno por cada par de índices.
+
+**Proposición (identidad de Lagrange, versión real).** Para $a,b\in\mathbb R^n$,
+
+$$
+\boxed{
+\left(\sum_i a_i^2\right)
+\left(\sum_i b_i^2\right)
+-\left(\sum_i a_i b_i\right)^2
+=\sum_{1\le i<j\le n}(a_i b_j-a_j b_i)^2.
+}
+$$
+
+**Demostración.** Desarrollamos el producto de sumas y el cuadrado de la suma:
+
+$$
+\begin{aligned}
+\left(\sum_i a_i^2\right)\left(\sum_j b_j^2\right)
+&=\sum_{i,j}a_i^2b_j^2,\\
+\left(\sum_i a_i b_i\right)^2
+&=\sum_{i,j}a_i b_i a_j b_j.
+\end{aligned}
+$$
+
+Restándolos, los términos con $i=j$ se cancelan. Agrupar para cada pareja $i<j$ los términos de orden $(i,j)$ y $(j,i)$ deja
+
+$$
+\begin{aligned}
+&a_i^2b_j^2+a_j^2b_i^2-2a_i b_i a_j b_j\\
+&\qquad=(a_i b_j-a_j b_i)^2.
+\end{aligned}
+$$
+
+Sumando sobre todas las parejas resulta la identidad. Como cada sumando del lado derecho es no negativo, Cauchy–Schwarz se sigue inmediatamente. $\square$
+
+**Lectura inversa.** Si queremos demostrar que un producto de sumas de cuadrados es mayor o igual que el cuadrado de una suma de productos, podemos intentar **restar** ambas expresiones y reorganizar el resultado en cuadrados manifiestamente no negativos. No necesitamos entonces elegir ningún parámetro.
+
+Para $n=2$ sólo queda un término:
+
+$$
+\boxed{
+(a_1^2+a_2^2)(b_1^2+b_2^2)
+-(a_1b_1+a_2b_2)^2
+=(a_1b_2-a_2b_1)^2.
+}
+$$
+
+El determinante $a_1b_2-a_2b_1$ mide el área orientada del paralelogramo formado por los vectores del plano; su cuadrado desaparece exactamente cuando son dependientes. En dimensiones mayores, todos los determinantes de orden dos deben anularse para que haya igualdad.
+
+**Caso límite $n=1$.** La suma sobre $i<j$ es vacía y vale $0$: Cauchy–Schwarz es siempre igualdad para dos vectores de $\mathbb R^1$. Esto no es una excepción a la proposición anterior, porque dos vectores de un espacio unidimensional siempre son linealmente dependientes.
+
+**Una pregunta sobre la precisión de la estimación.** Siguiendo la línea de investigación del capítulo 3 de Steele, definamos el *defecto cuadrático*
+
+$$
+D(a,b):=\|a\|_2^2\|b\|_2^2-\langle a,b\rangle^2
+=\sum_{i<j}(a_ib_j-a_jb_i)^2.
+$$
+
+Esta expresión aporta una información que se pierde si sólo escribimos $D(a,b)\ge0$: permite localizar las parejas de coordenadas que impiden la proporcionalidad. Su anulación caracteriza la igualdad. No debemos llamarla «distancia entre vectores»: para $a\ne0$ tenemos $D(a,2a)=0$ aunque $a\ne2a$, lo que contradice la separación de puntos exigida a una métrica. Además, sustituir $a$ por $sa$ multiplica el defecto por $s^2$. En §10 recuperaremos su interpretación geométrica.
+
+::: {.callout-tip title="Laboratorio interactivo · MA-APP-0002"}
+Contrasta el cuadrado de §2 con la identidad de Lagrange, explora el parámetro de Labbé y, después de introducir la notación de §7, interpreta los vectores. El laboratorio permite investigar ejemplos; **no sustituye las demostraciones universales**.
+:::
+
+<iframe src="interactive/cauchy-schwarz.html" class="cs-lab-frame" data-cs-lab title="Laboratorio de Cauchy–Schwarz: sumas, parámetro de Labbé y geometría" loading="lazy" referrerpolicy="no-referrer" style="display:block;width:100%;height:1650px;border:1px solid #8097ac;border-radius:8px"></iframe>
+
+[**Abrir el laboratorio en una página independiente**](laboratorio-cauchy-schwarz.qmd).
+
+<script src="interactive/cauchy-schwarz-embed.js" defer></script>
+
+## 10. Geometría: proyección, ángulos y matriz de Gram {#cs-geometria}
+
+Para $u,v\in\mathbb R^n$ y $v\ne0$ definimos la proyección de $u$ sobre la recta generada por $v$ mediante
+
+$$
+\operatorname{proj}_v(u)
+=\frac{\langle u,v\rangle}{\|v\|^2}v=\alpha v,
+\qquad r=u-\alpha v.
+$$
+
+La elección de $\alpha$ asegura $\langle r,v\rangle=0$. Se trata de una descomposición en una parte paralela a $v$ y un resto ortogonal. Al expandir el cuadrado, los términos cruzados se anulan, y obtenemos una identidad pitagórica:
+
+$$
+\boxed{\|u\|^2
+=\frac{|\langle u,v\rangle|^2}{\|v\|^2}+\|r\|^2.}
+$$
+
+Cauchy–Schwarz es la consecuencia inmediata de descartar el término no negativo $\|r\|^2$. La igualdad significa que **no queda resto ortogonal**: $r=0$. Esta identidad describe más que una cota: nos dice cuánto se pierde cuando hay desigualdad estricta.
+
+En un espacio real, si $u,v\ne0$, el cociente $\langle u,v\rangle/(\|u\|\|v\|)$ pertenece al intervalo $[-1,1]$ por Cauchy–Schwarz; por ello podemos definir el ángulo $\theta\in[0,\pi]$ mediante
+
+$$
+\cos\theta=\frac{\langle u,v\rangle}{\|u\|\|v\|}.
+$$
+
+Así, la igualdad en Cauchy–Schwarz corresponde a $\theta=0$ **o** $\theta=\pi$. El caso perpendicular tiene $\theta=\pi/2$ y producto escalar cero. No introduzcamos esta fórmula como prueba previa de Cauchy–Schwarz si la existencia del ángulo se está definiendo precisamente con ayuda de la desigualdad: hacerlo invertiría el orden lógico.
+
+**Corolario (determinante de Gram).** La matriz
+
+$$
+G(u,v)=\begin{pmatrix}
+\langle u,u\rangle&\langle u,v\rangle\\
+\langle v,u\rangle&\langle v,v\rangle
+\end{pmatrix}
+$$
+
+tiene determinante real no negativo:
+
+$$
+\det G(u,v)=\|u\|^2\|v\|^2-|\langle u,v\rangle|^2\ge0.
+$$
+
+En el plano real, la identidad de §9 identifica esta diferencia con el cuadrado del área del paralelogramo. Después de introducir productos internos abstractos en §11, el determinante conservará el significado algebraico de **medir la falta de dependencia lineal** de los dos vectores.
+
+## 11. Desde productos internos reales hasta espacios complejos y abstractos {#cs-producto-interno}
+
+### 11.1. Producto interno real: la versión sin coordenadas {#cs-real-abstracto}
+
+Las sumas de productos de la sección 7 son un ejemplo de una estructura más general. Sea $V$ un espacio vectorial real y sea $\langle\cdot,\cdot\rangle:V\times V\to\mathbb R$ una aplicación simétrica, lineal en cada variable y definida positiva: $\langle u,u\rangle\ge0$, con igualdad sólo si $u=0$. Definimos $\|u\|=\sqrt{\langle u,u\rangle}$. Todavía **no suponemos** que esta función cumpla la desigualdad triangular.
+
+**Teorema (versión real de producto interno).** Para todo $u,v\in V$,
+
+$$
+\boxed{|\langle u,v\rangle|^2\le\langle u,u\rangle\langle v,v\rangle.}
+$$
+
+**Demostración.** Si $v=0$, ambos miembros valen cero. Si $v\ne0$, la positividad definida garantiza $\langle v,v\rangle>0$. Para $t=\langle u,v\rangle/\langle v,v\rangle$, la expansión por bilinealidad y simetría da
+
+$$
+0\le\langle u-tv,u-tv\rangle
+=\langle u,u\rangle-\frac{\langle u,v\rangle^2}{\langle v,v\rangle}.
+$$
+
+Multiplicamos por $\langle v,v\rangle>0$ y obtenemos el resultado. La igualdad exige $\langle u-tv,u-tv\rangle=0$ y, por positividad definida, $u=tv$; el caso $v=0$ también es dependencia lineal. La recíproca se comprueba sustituyendo $u=\lambda v$. $\square$
+
+**Lo que se ha generalizado.** Sólo usamos las propiedades del producto interno y los cuadrados no negativos; ni las coordenadas, ni la dimensión finita, ni la completitud aparecen en el argumento. Esto permite trasladar la demostración, sin copiar una fórmula que sólo funcionaba para listas finitas.
+
+### 11.2. Producto interno complejo: por qué aparece la conjugación {#cs-complejo}
+
+En $\mathbb C^n$ el producto interno estándar exige conjugación. Fijemos explícitamente la convención **lineal en la primera variable**:
+
+$$
+\langle u,v\rangle=\sum_{i=1}^n u_i\overline{v_i},
+\qquad
+\|u\|:=\sqrt{\langle u,u\rangle}
+=\sqrt{\sum_i|u_i|^2}.
+$$
+
+Entonces $\langle v,u\rangle=\overline{\langle u,v\rangle}$, y $\langle u,u\rangle$ es un número real no negativo. Algunas obras adoptan la convención opuesta, lineal en la segunda variable; no cambia la desigualdad, pero sí la fórmula concreta del coeficiente de proyección. Toda prueba debe declarar su convención.
+
+**Teorema (Cauchy–Schwarz complejo).** Para $u,v\in\mathbb C^n$,
+
+$$
+\boxed{|\langle u,v\rangle|^2
+\le\langle u,u\rangle\langle v,v\rangle.}
+$$
+
+Hay igualdad si y sólo si los vectores son linealmente dependientes sobre $\mathbb C$.
+
+**Demostración.** El caso $v=0$ es inmediato. Si $v\ne0$, elegimos el escalar complejo
+
+$$
+\alpha=\frac{\langle u,v\rangle}{\langle v,v\rangle}.
+$$
+
+La linealidad en la primera variable da $\langle u-\alpha v,v\rangle=0$. Al desarrollar y utilizar la simetría conjugada,
+
+$$
+\begin{aligned}
+0\le\|u-\alpha v\|^2
+&=\|u\|^2
+ -\overline\alpha\langle u,v\rangle
+ -\alpha\langle v,u\rangle
+ +|\alpha|^2\|v\|^2\\
+&=\|u\|^2-\frac{|\langle u,v\rangle|^2}{\|v\|^2}.
+\end{aligned}
+$$
+
+Multiplicar por $\|v\|^2>0$ entrega la desigualdad. La igualdad obliga a $u-\alpha v=0$, y la dependencia lineal produce recíprocamente igualdad. $\square$
+
+**Por qué no basta con copiar literalmente la prueba real.** Para $z\in\mathbb C$ no existe un orden compatible con las operaciones que permita escribir «$z\ge0$» con el significado usado antes. La expresión $\|u-\alpha v\|^2$, en cambio, sigue siendo un **real no negativo**. Además, $\langle u,v\rangle^2$ no es en general real ni no negativo; el término correcto es $|\langle u,v\rangle|^2$.
+
+### 11.3. La formulación abstracta y sus límites {#cs-abstracto}
+
+Un **espacio con producto interno** sobre $\mathbb R$ o $\mathbb C$ es un espacio vectorial $V$ equipado con una función $\langle\cdot,\cdot\rangle$ lineal en la primera variable, conjugadamente simétrica y definida positiva: $\langle x,x\rangle>0$ si $x\ne0$. Definimos $\|x\|=\sqrt{\langle x,x\rangle}$.
+
+El cálculo precedente no utiliza coordenadas, dimensión finita ni completitud: solamente esas propiedades. Por tanto, para todo $u,v\in V$,
+
+$$
+\boxed{|\langle u,v\rangle|\le\|u\|\,\|v\|,}
+$$
+
+con igualdad exactamente cuando $u,v$ son linealmente dependientes. En el caso real se puede tomar $\alpha=\langle u,v\rangle/\|v\|^2$; en el complejo, la misma fórmula funciona **con nuestra convención**.
+
+La completitud caracteriza a los espacios de Hilbert, pero **no se ha utilizado**: la desigualdad es válida también en espacios prehilbertianos no completos. Un espacio normado general no trae consigo necesariamente un producto interno; el enunciado $|\langle u,v\rangle|\le\|u\|\|v\|$ no puede trasladarse sin más a una norma arbitraria y un producto bilineal elegido independientemente.
