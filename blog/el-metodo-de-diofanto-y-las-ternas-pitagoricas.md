@@ -264,7 +264,7 @@ La fórmula permite calcular resultados, pero también invita a investigar **por
 
 Este problema tiene una historia posterior singular. Pierre de Fermat anotó en el margen de su ejemplar de la traducción latina de la *Arithmetica* publicada por **Claude-Gaspard Bachet en 1621** que, a diferencia de lo que sucede con los cuadrados, una potencia de exponente entero mayor que $2$ no puede descomponerse en la suma de dos potencias positivas del mismo exponente. Afirmó haber hallado una demostración que no cabía en el margen.
 
-La observación está asoci precisamente al **problema II.8**. El ejemplar anotado por Fermat no se conserva; el texto de su observación fue publicado póstumamente por su hijo Samuel en la edición de **1670**. Hoy conocemos la afirmación como el *Último Teorema de Fermat*.
+La observación está asociada precisamente al **problema II.8**. El ejemplar anotado por Fermat no se conserva; el texto de su observación fue publicado póstumamente por su hijo Samuel en la edición de **1670**. Hoy conocemos la afirmación como el *Último Teorema de Fermat*.
 
 El contraste matemático es elocuente: la ecuación cuadrática $x^2+y^2=z^2$ tiene infinitas soluciones enteras positivas, mientras que el Último Teorema de Fermat afirma que $x^n+y^n=z^n$ no tiene ninguna solución en enteros positivos cuando $n>2$. La identidad pitagórica demostrada arriba **no constituye una demostración de ese teorema**.
 
