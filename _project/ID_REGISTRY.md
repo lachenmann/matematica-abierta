@@ -6,7 +6,8 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0003 |
+| Artículo | MA-ART-0004 |
+| Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0051 |
 | Curso | MA-CRS-0001 |
@@ -43,7 +44,9 @@
 | MA-PRB-0005 | problem | Existencia y unicidad en una ecuación lineal con parámetros | `problemas/existencia-y-unicidad-ecuacion-lineal-parametros.md` | published |
 | MA-PRB-0006 | problem | Producto nulo y cancelación en un cuerpo | `problemas/producto-nulo-y-cancelacion-en-un-cuerpo.md` | published |
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
-| MA-ART-0002 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | published |
+| MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | Obsidian: `Matemática Abierta/Artículos/MA-ART-0002 - Hemos construido realmente los números reales.md` | reserved: canonical-draft; not on web |
+| MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | review; sync pending |
+| MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
 | MA-LES-0001 | lesson | Topos desde cero — 1.4 Implicación, contrapositiva y recíproca | `libros/capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md` | published |
 | MA-LES-0002 | lesson | Topos desde cero — 1.5 Bicondicionales y condiciones necesarias y suficientes | `libros/capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md` | published |
 | MA-LES-0003 | lesson | Topos desde cero — 1.6 Argumentos deductivos y validez | `libros/capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md` | published |
@@ -76,7 +79,7 @@
 | MA-BCH-0029 | book-chapter | Tratado de análisis — Capítulo 4: Cuerpos ordenados y el problema de la completitud | `libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md` | published |
 | MA-BCH-0030 | book-chapter | Tratado moderno de Álgebra — Capítulo 6: Subestructuras y criterio de subgrupo | `libros/capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md` | published |
 | MA-BCH-0031 | book-chapter | Magnitudes, unidades y análisis dimensional | `libros/capitulos/fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md` | published |
-| MA-BCH-0032 | book-chapter | Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos | `libros/capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md` | published |
+| MA-BCH-0032 | book-chapter | Tratado moderno de Álgebra — Capítulo 7: Homomorfismos de magmas, monoides y grupos | `libros/capitulos/tratado-de-algebra-capitulo-7-homomorfismos-magma-monoides-grupos.md` | published |
 | MA-BCH-0033 | book-chapter | Tratado moderno de Álgebra — Capítulo 8: Isomorfismos | `libros/capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md` | published |
 | MA-BCH-0034 | book-chapter | Tratado moderno de Álgebra — Capítulo 9: Núcleo e imagen de homomorfismos de grupos | `libros/capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md` | published |
 | MA-BCH-0035 | book-chapter | Tratado moderno de Álgebra — Capítulo 10: Subgrupos normales | `libros/capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md` | published |
