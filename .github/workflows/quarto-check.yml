@@ -21,14 +21,23 @@ jobs:
         run: |
           node --check teoria/resultados/interactive/desigualdad-triangular.js
           node --test tests/triangle-lab.test.mjs
+          node --check js/diofanto-triples.js
+          node --test tests/diofanto-triples.test.mjs
 
-      - name: Verify canonical article ID and embedded laboratory
+      - name: Verify canonical article IDs and interactive resources
         run: |
           article=teoria/resultados/desigualdad-triangular.qmd
           grep -qx 'content-id: MA-ART-0003' "$article"
           ! grep -q 'MA-ART-0002' "$article"
           grep -q 'tri-historia' "$article"
           grep -q '<iframe src="interactive/desigualdad-triangular.html"' "$article"
+          diofanto=blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.qmd
+          grep -qx 'content-id: MA-ART-0005' "$diofanto"
+          grep -qx 'status: published' "$diofanto"
+          grep -q 'data-diofanto-widget' "$diofanto"
+          grep -q 'data-fallback' "$diofanto"
+          grep -q 'src="../js/diofanto-triples.js"' "$diofanto"
+          grep -q 'el-metodo-de-diofanto-y-las-ternas-pitagoricas.qmd' blog/index.qmd
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -38,7 +47,7 @@ jobs:
       - name: Render site
         run: quarto render
 
-      - name: Verify laboratory assets and rendered page
+      - name: Verify laboratory and article assets
         run: |
           test -s _site/teoria/resultados/desigualdad-triangular.html
           test -s _site/teoria/resultados/laboratorio-desigualdad-triangular.html
@@ -48,11 +57,16 @@ jobs:
           grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/desigualdad-triangular.html
           grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
           grep -q 'MA-ART-0003' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
+          test -s _site/blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.html
+          test -s _site/js/diofanto-triples.js
+          grep -q 'data-diofanto-widget' _site/blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.html
+          grep -q 'diofanto-triples.js' _site/blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.html
+          grep -q 'el-metodo-de-diofanto-y-las-ternas-pitagoricas.html' _site/blog/index.html
 
       - name: Preserve rendered site for visual and link QA
         uses: actions/upload-artifact@v4
         with:
-          name: triangular-site-qa
+          name: mathematical-site-qa
           path: _site/
           retention-days: 2
           if-no-files-found: error

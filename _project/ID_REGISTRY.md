@@ -6,7 +6,7 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0004 |
+| Artículo | MA-ART-0006 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0051 |
@@ -46,6 +46,8 @@
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
 | MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | Obsidian: `Matemática Abierta/Artículos/MA-ART-0002 - Hemos construido realmente los números reales.md` | reserved: canonical-draft; not on web |
 | MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | review; sync pending |
+| MA-ART-0004 | article | La desigualdad de Cauchy-Schwarz | Obsidian: `Matemática Abierta/Artículos/MA-ART-0004 - La desigualdad de Cauchy-Schwarz.md` | reserved: working-draft; not on web |
+| MA-ART-0005 | article | El método de Diofanto y la parametrización racional de las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.qmd` | published |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
 | MA-LES-0001 | lesson | Topos desde cero — 1.4 Implicación, contrapositiva y recíproca | `libros/capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md` | published |
 | MA-LES-0002 | lesson | Topos desde cero — 1.5 Bicondicionales y condiciones necesarias y suficientes | `libros/capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md` | published |
