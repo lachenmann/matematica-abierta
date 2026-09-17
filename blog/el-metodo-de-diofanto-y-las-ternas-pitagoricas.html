@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Del problema II.8 de la Aritmética de Diofanto a los puntos racionales de la circunferencia y las ternas pitagóricas.">
 
-<title>Artículos – Matemática Abierta</title>
+<title>El método de Diofanto y la parametrización racional de las ternas pitagóricas – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -77,6 +78,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -445,10 +475,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#artículos" id="toc-artículos" class="nav-link active" data-scroll-target="#artículos">Artículos</a>
+  <li><a href="#el-problema-original-dividir-16-en-dos-cuadrados" id="toc-el-problema-original-dividir-16-en-dos-cuadrados" class="nav-link active" data-scroll-target="#el-problema-original-dividir-16-en-dos-cuadrados">1. El problema original: dividir <span class="math inline">\(16\)</span> en dos cuadrados</a></li>
+  <li><a href="#el-truco-partir-de-una-solución-conocida" id="toc-el-truco-partir-de-una-solución-conocida" class="nav-link" data-scroll-target="#el-truco-partir-de-una-solución-conocida">2. El truco: partir de una solución conocida</a></li>
+  <li><a href="#generalización-sustituir-el-2-por-una-pendiente-racional" id="toc-generalización-sustituir-el-2-por-una-pendiente-racional" class="nav-link" data-scroll-target="#generalización-sustituir-el-2-por-una-pendiente-racional">3. Generalización: sustituir el <span class="math inline">\(2\)</span> por una pendiente racional</a></li>
+  <li><a href="#la-circunferencia-unidad-y-sus-puntos-racionales" id="toc-la-circunferencia-unidad-y-sus-puntos-racionales" class="nav-link" data-scroll-target="#la-circunferencia-unidad-y-sus-puntos-racionales">4. La circunferencia unidad y sus puntos racionales</a></li>
+  <li><a href="#de-puntos-racionales-a-ternas-enteras" id="toc-de-puntos-racionales-a-ternas-enteras" class="nav-link" data-scroll-target="#de-puntos-racionales-a-ternas-enteras">5. De puntos racionales a ternas enteras</a></li>
+  <li><a href="#cuándo-es-primitiva-una-terna" id="toc-cuándo-es-primitiva-una-terna" class="nav-link" data-scroll-target="#cuándo-es-primitiva-una-terna">6. ¿Cuándo es primitiva una terna?</a>
   <ul class="collapse">
-  <li><a href="#publicados" id="toc-publicados" class="nav-link" data-scroll-target="#publicados">Publicados</a></li>
+  <li><a href="#se-obtienen-todas-las-ternas-primitivas" id="toc-se-obtienen-todas-las-ternas-primitivas" class="nav-link" data-scroll-target="#se-obtienen-todas-las-ternas-primitivas">¿Se obtienen todas las ternas primitivas?</a></li>
   </ul></li>
+  <li><a href="#exploración-interactiva" id="toc-exploración-interactiva" class="nav-link" data-scroll-target="#exploración-interactiva">7. Exploración interactiva</a></li>
+  <li><a href="#de-diofanto-a-fermat" id="toc-de-diofanto-a-fermat" class="nav-link" data-scroll-target="#de-diofanto-a-fermat">8. De Diofanto a Fermat</a></li>
+  <li><a href="#para-investigar-y-demostrar" id="toc-para-investigar-y-demostrar" class="nav-link" data-scroll-target="#para-investigar-y-demostrar">9. Para investigar y demostrar</a></li>
+  <li><a href="#qué-hemos-aprendido" id="toc-qué-hemos-aprendido" class="nav-link" data-scroll-target="#qué-hemos-aprendido">10. Qué hemos aprendido</a></li>
+  <li><a href="#fuentes-y-lecturas" id="toc-fuentes-y-lecturas" class="nav-link" data-scroll-target="#fuentes-y-lecturas">Fuentes y lecturas</a></li>
   </ul>
 </nav>
     </div>
@@ -458,15 +498,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Artículos</h1>
+<h1 class="title">El método de Diofanto y la parametrización racional de las ternas pitagóricas</h1>
 </div>
 
+<div>
+  <div class="description">
+    Del problema II.8 de la Aritmética de Diofanto a los puntos racionales de la circunferencia y las ternas pitagóricas.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">17 de septiembre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -475,32 +526,264 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="artículos" class="level1">
-<h1>Artículos</h1>
-<p>Piezas matemáticas independientes que no pertenecen necesariamente a una secuencia de curso o libro.</p>
-<p>Aquí pueden publicarse:</p>
+<p><strong>¿Cómo dividir un cuadrado en dos cuadrados?</strong> En el problema II.8 de la <em>Arithmetica</em>, Diofanto de Alejandría propone dividir el número <span class="math inline">\(16=4^2\)</span> en dos números que sean, a su vez, cuadrados. Su elección algebraica permite encontrar una solución racional. Vamos a reproducir primero ese cálculo y, después, a <strong>generalizarlo con notación moderna</strong>. Así aparecerán las ternas pitagóricas, los puntos racionales de una circunferencia y una fórmula clásica asociada con Euclides.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Dos niveles de lectura
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La resolución particular de <span class="math inline">\(16\)</span> pertenece a Diofanto. La pendiente variable <span class="math inline">\(m\)</span>, la interpretación mediante rectas y la parametrización general que desarrollamos a continuación son una <strong>reconstrucción matemática moderna</strong> de su procedimiento, no una transcripción literal de su texto.</p>
+</div>
+</div>
+<section id="el-problema-original-dividir-16-en-dos-cuadrados" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-original-dividir-16-en-dos-cuadrados">1. El problema original: dividir <span class="math inline">\(16\)</span> en dos cuadrados</h2>
+<p>Buscamos números racionales positivos <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> tales que</p>
+<p><span class="math display">\[
+x^2+y^2=16.
+\]</span></p>
+<p>Diofanto elige como raíz del segundo cuadrado una expresión que, en nuestra notación, se escribe</p>
+<p><span class="math display">\[
+y=2x-4.
+\]</span></p>
+<p>Sustituimos esta elección en la condición del problema:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x^2+(2x-4)^2&amp;=16,\\
+x^2+4x^2-16x+16&amp;=16,\\
+5x^2-16x&amp;=0,\\
+x(5x-16)&amp;=0.
+\end{aligned}
+\]</span></p>
+<p>La raíz <span class="math inline">\(x=0\)</span> no sirve para la descomposición buscada en <strong>dos cuadrados positivos</strong>. La otra raíz proporciona</p>
+<p><span class="math display">\[
+x=\frac{16}{5},\qquad y=2\cdot\frac{16}{5}-4=\frac{12}{5}.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{16=\left(\frac{16}{5}\right)^2+\left(\frac{12}{5}\right)^2}
+\]</span></p>
+<p>porque <span class="math inline">\(256/25+144/25=400/25=16\)</span>.</p>
+<p><strong>Pregunta para pensar.</strong> ¿Por qué la elección <span class="math inline">\(2x-4\)</span>, que parece complicar el problema, hace desaparecer el término constante después de sustituir?</p>
+</section>
+<section id="el-truco-partir-de-una-solución-conocida" class="level2">
+<h2 class="anchored" data-anchor-id="el-truco-partir-de-una-solución-conocida">2. El truco: partir de una solución conocida</h2>
+<p>La ecuación <span class="math inline">\(x^2+y^2=16\)</span> ya tiene una solución sencilla:</p>
+<p><span class="math display">\[
+(0,-4).
+\]</span></p>
+<p>La recta <span class="math inline">\(y=2x-4\)</span> pasa precisamente por ese punto. Al sustituirla en la ecuación de la circunferencia, encontramos dos intersecciones: la conocida, asociada con <span class="math inline">\(x=0\)</span>, y la nueva, asociada con <span class="math inline">\(x=16/5\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Idea clave
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Conocer un punto racional de una circunferencia permite buscar otro trazando por él una recta de pendiente racional. Como una de las intersecciones ya es conocida, la ecuación cuadrática se factoriza y deja una ecuación lineal para la segunda. La representación mediante una recta es nuestra lectura geométrica moderna del cálculo.</p>
+</div>
+</div>
+</section>
+<section id="generalización-sustituir-el-2-por-una-pendiente-racional" class="level2">
+<h2 class="anchored" data-anchor-id="generalización-sustituir-el-2-por-una-pendiente-racional">3. Generalización: sustituir el <span class="math inline">\(2\)</span> por una pendiente racional</h2>
+<p>Sea <span class="math inline">\(c&gt;0\)</span> un número racional. Buscamos soluciones racionales de</p>
+<p><span class="math display">\[
+x^2+y^2=c^2.
+\]</span></p>
+<p>Ahora reemplazamos la elección particular de Diofanto por la familia de rectas</p>
+<p><span class="math display">\[
+y=mx-c,\qquad m\in\mathbb{Q}.
+\]</span></p>
+<p>Todas pasan por el punto conocido <span class="math inline">\((0,-c)\)</span>. Sustituyendo,</p>
+<p><span class="math display">\[
+\begin{aligned}
+x^2+(mx-c)^2&amp;=c^2,\\
+(1+m^2)x^2-2mcx&amp;=0,\\
+x\bigl((1+m^2)x-2mc\bigr)&amp;=0.
+\end{aligned}
+\]</span></p>
+<p>La solución <span class="math inline">\(x=0\)</span> representa el punto desde el que empezamos. Para hallar la segunda intersección, si <span class="math inline">\(m\ne0\)</span>, tomamos el otro factor y obtenemos</p>
+<p><span class="math display">\[
+\boxed{x=\frac{2mc}{1+m^2}}.
+\]</span></p>
+<p>Sustituyendo en <span class="math inline">\(y=mx-c\)</span>,</p>
+<p><span class="math display">\[
+\boxed{y=\frac{c(m^2-1)}{1+m^2}}.
+\]</span></p>
+<p>El denominador <span class="math inline">\(1+m^2\)</span> nunca se anula para <span class="math inline">\(m\)</span> racional. Por ello, <strong>cada pendiente racional</strong> produce un punto racional de la circunferencia. Para <span class="math inline">\(m=0\)</span>, ambas intersecciones coinciden en <span class="math inline">\((0,-c)\)</span>; si buscamos dos raíces positivas, basta elegir <span class="math inline">\(m&gt;1\)</span>.</p>
+<p><strong>Comprobación.</strong> Para <span class="math inline">\(c=4\)</span> y <span class="math inline">\(m=2\)</span> reaparecen exactamente <span class="math inline">\(x=16/5\)</span> e <span class="math inline">\(y=12/5\)</span>, los valores encontrados en el problema de Diofanto.</p>
+</section>
+<section id="la-circunferencia-unidad-y-sus-puntos-racionales" class="level2">
+<h2 class="anchored" data-anchor-id="la-circunferencia-unidad-y-sus-puntos-racionales">4. La circunferencia unidad y sus puntos racionales</h2>
+<p>Dividamos las coordenadas por <span class="math inline">\(c\)</span>:</p>
+<p><span class="math display">\[
+X=\frac{x}{c},\qquad Y=\frac{y}{c},\qquad X^2+Y^2=1.
+\]</span></p>
+<p>Obtenemos la <strong>parametrización racional</strong></p>
+<p><span class="math display">\[
+\boxed{(X,Y)=\left(\frac{2m}{1+m^2},\frac{m^2-1}{1+m^2}\right)},\qquad m\in\mathbb{Q}.
+\]</span></p>
+<p>No se trata solo de un método para construir ejemplos. Si <span class="math inline">\((X,Y)\)</span> es un punto racional de la circunferencia y <span class="math inline">\(X\ne0\)</span>, la recta que une <span class="math inline">\((0,-1)\)</span> con ese punto tiene pendiente racional</p>
+<p><span class="math display">\[
+m=\frac{Y+1}{X}.
+\]</span></p>
+<p>Por tanto, la fórmula recupera <strong>todos los puntos racionales de la circunferencia con <span class="math inline">\(X\ne0\)</span></strong>. El punto <span class="math inline">\((0,-1)\)</span> también aparece al tomar <span class="math inline">\(m=0\)</span>; el único punto no representado por una pendiente finita es <span class="math inline">\((0,1)\)</span>, al que corresponde la recta vertical <span class="math inline">\(X=0\)</span>. En el primer cuadrante, <span class="math inline">\(m&gt;1\)</span> produce <span class="math inline">\(X,Y&gt;0\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Del ejemplo al resultado general
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¿Qué se conserva al pasar del caso concreto <span class="math inline">\(16\)</span> a un cuadrado racional cualquiera? ¿Qué papel cumple el punto inicial <span class="math inline">\((0,-c)\)</span> y por qué necesitamos que <span class="math inline">\(m\)</span> sea racional?</p>
+</div>
+</div>
+</section>
+<section id="de-puntos-racionales-a-ternas-enteras" class="level2">
+<h2 class="anchored" data-anchor-id="de-puntos-racionales-a-ternas-enteras">5. De puntos racionales a ternas enteras</h2>
+<p>Escribamos una pendiente racional positiva mayor que <span class="math inline">\(1\)</span> como</p>
+<p><span class="math display">\[
+m=\frac pq,\qquad p,q\in\mathbb Z_{&gt;0},\quad p&gt;q.
+\]</span></p>
+<p>En la circunferencia unidad, las coordenadas son</p>
+<p><span class="math display">\[
+X=\frac{2pq}{p^2+q^2},\qquad
+Y=\frac{p^2-q^2}{p^2+q^2}.
+\]</span></p>
+<p>Si ahora <strong>elegimos el radio</strong> <span class="math inline">\(c=p^2+q^2\)</span> —equivalentemente, multiplicamos las coordenadas anteriores por su denominador común—, obtenemos tres enteros positivos:</p>
+<p><span class="math display">\[
+\boxed{A=2pq,\qquad B=p^2-q^2,\qquad C=p^2+q^2.}
+\]</span></p>
+<p>Son una terna pitagórica porque</p>
+<p><span class="math display">\[
+\begin{aligned}
+A^2+B^2
+&amp;=(2pq)^2+(p^2-q^2)^2\\
+&amp;=4p^2q^2+p^4-2p^2q^2+q^4\\
+&amp;=(p^2+q^2)^2=C^2.
+\end{aligned}
+\]</span></p>
+<p>Esta es la forma habitual de la <strong>fórmula de Euclides</strong>. El lema 1 que acompaña a <em>Elementos</em> X.29 documenta una construcción antigua de cuadrados cuya suma también es un cuadrado; la fórmula que usamos aquí está escrita en notación algebraica moderna.</p>
+<p><strong>Ejemplo.</strong> Si <span class="math inline">\(p=2\)</span> y <span class="math inline">\(q=1\)</span>, entonces</p>
+<p><span class="math display">\[
+(A,B,C)=(4,3,5),\qquad 4^2+3^2=5^2.
+\]</span></p>
+<p><strong>Precisión importante.</strong> Cuando partimos de un cuadrado fijo <span class="math inline">\(c^2\)</span>, no podemos cambiar su radio sin modificar el problema. Para generar ternas enteras hemos pasado deliberadamente a la circunferencia unidad y después la hemos escalado al radio <span class="math inline">\(C=p^2+q^2\)</span>.</p>
+</section>
+<section id="cuándo-es-primitiva-una-terna" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-es-primitiva-una-terna">6. ¿Cuándo es primitiva una terna?</h2>
+<p>Una terna pitagórica <span class="math inline">\((A,B,C)\)</span> es <strong>primitiva</strong> cuando <span class="math inline">\(\gcd(A,B,C)=1\)</span>; es decir, sus tres términos no comparten un divisor entero mayor que <span class="math inline">\(1\)</span>.</p>
+<p><strong>Proposición.</strong> Sean <span class="math inline">\(p&gt;q&gt;0\)</span> enteros. La terna</p>
+<p><span class="math display">\[
+(2pq,\ p^2-q^2,\ p^2+q^2)
+\]</span></p>
+<p>es primitiva <strong>si y solo si</strong></p>
+<p><span class="math display">\[
+\boxed{\gcd(p,q)=1\quad\text{y}\quad p,q\text{ tienen distinta paridad}.}
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(d=\gcd(p,q)&gt;1\)</span>, entonces <span class="math inline">\(d^2\)</span> divide las tres entradas de la terna. Si <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> son impares, los tres términos son pares. En cualquiera de estos dos casos la terna no es primitiva.</p>
+<p>Recíprocamente, supongamos que <span class="math inline">\(p,q\)</span> son coprimos y de distinta paridad. Entonces <span class="math inline">\(C=p^2+q^2\)</span> es impar. Si un primo impar <span class="math inline">\(r\)</span> dividiera los tres términos, en particular dividiría <span class="math inline">\(2pq\)</span> y <span class="math inline">\(C\)</span>; como <span class="math inline">\(r\)</span> es impar, dividiría <span class="math inline">\(p\)</span> o <span class="math inline">\(q\)</span>. Si <span class="math inline">\(r\mid p\)</span>, de <span class="math inline">\(r\mid p^2+q^2\)</span> se deduce <span class="math inline">\(r\mid q\)</span>, contradicción; el otro caso es simétrico. Tampoco <span class="math inline">\(2\)</span> puede dividir a los tres términos, pues <span class="math inline">\(C\)</span> es impar. No existe ningún divisor primo común: la terna es primitiva. <span class="math inline">\(\square\)</span></p>
+<p><strong>No-ejemplo.</strong> <span class="math inline">\(p=3,q=1\)</span> genera <span class="math inline">\((6,8,10)\)</span>, que satisface Pitágoras pero no es primitiva: su máximo común divisor es <span class="math inline">\(2\)</span>. En cambio, <span class="math inline">\(p=2,q=1\)</span> genera <span class="math inline">\((4,3,5)\)</span>, que sí lo es.</p>
+<section id="se-obtienen-todas-las-ternas-primitivas" class="level3">
+<h3 class="anchored" data-anchor-id="se-obtienen-todas-las-ternas-primitivas">¿Se obtienen todas las ternas primitivas?</h3>
+<p>Sí, salvo el orden de los catetos. Consideremos una terna primitiva positiva <span class="math inline">\((A,B,C)\)</span> y llamemos <span class="math inline">\(A\)</span> a su cateto par. El otro cateto <span class="math inline">\(B\)</span> y la hipotenusa <span class="math inline">\(C\)</span> son impares. Definamos</p>
+<p><span class="math display">\[
+u=\frac{C+B}{2},\qquad v=\frac{C-B}{2}.
+\]</span></p>
+<p>Como <span class="math inline">\(0&lt;B&lt;C\)</span>, ambos son enteros positivos. Además,</p>
+<p><span class="math display">\[
+uv=\frac{C^2-B^2}{4}=\left(\frac A2\right)^2.
+\]</span></p>
+<p>Los enteros <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> son coprimos: un divisor común dividiría tanto <span class="math inline">\(u+v=C\)</span> como <span class="math inline">\(u-v=B\)</span>, y <span class="math inline">\(\gcd(B,C)=1\)</span>: si un primo dividiera <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span>, dividiría <span class="math inline">\(A^2=C^2-B^2\)</span> y, por tanto, también <span class="math inline">\(A\)</span>, contradiciendo la primitividad de la terna. Puesto que el producto de dos enteros positivos coprimos es un cuadrado, <strong>cada factor es un cuadrado</strong>. Existen, pues, enteros <span class="math inline">\(p&gt;q&gt;0\)</span> tales que <span class="math inline">\(u=p^2\)</span> y <span class="math inline">\(v=q^2\)</span>. De aquí,</p>
+<p><span class="math display">\[
+C=p^2+q^2,\qquad B=p^2-q^2,\qquad A=2pq.
+\]</span></p>
+<p>La primitividad exige, según la proposición anterior, que <span class="math inline">\(p,q\)</span> sean coprimos y de distinta paridad. Queda demostrada la afirmación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Y las ternas no primitivas:</strong> toda terna pitagórica positiva es un múltiplo entero <span class="math inline">\(k\ge1\)</span> de una primitiva. Por tanto, la descripción completa es</p>
+<p><span class="math display">\[
+\boxed{(A,B,C)=k\bigl(2pq,\ p^2-q^2,\ p^2+q^2\bigr)},
+\]</span></p>
+<p>con <span class="math inline">\(k\in\mathbb Z_{&gt;0}\)</span>, <span class="math inline">\(p&gt;q&gt;0\)</span>, <span class="math inline">\(\gcd(p,q)=1\)</span> y paridades distintas, salvo intercambio de los catetos.</p>
+</section>
+</section>
+<section id="exploración-interactiva" class="level2">
+<h2 class="anchored" data-anchor-id="exploración-interactiva">7. Exploración interactiva</h2>
+<p>Modifica <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span>. El generador garantiza <span class="math inline">\(p&gt;q\)</span> y muestra la identidad pitagórica, la pendiente racional, el punto correspondiente de la circunferencia unidad y la condición de primitividad. <strong>Intenta encontrar una terna no primitiva con <span class="math inline">\(p,q\)</span> coprimos:</strong> ¿qué sucede si ambos son impares?</p>
+<!-- Publicación: cargar diofanto-triples.js una sola vez desde la plantilla de la web.
+     Este Markdown no ejecuta scripts en línea: el HTML de abajo ofrece una vista
+     estática matemáticamente correcta si el JS no está disponible. -->
+<div class="diofanto-widget" data-diofanto-widget="" style="border:1px solid #c5cbd3; padding:1.25rem; border-radius:12px; margin:1.5rem 0; background:var(--background-secondary,#f8fafc); color:var(--text-normal,#17202a);">
+<h3 style="margin:0 0 1rem;" class="anchored">
+Generador de ternas pitagóricas
+</h3>
+<label style="display:block;">Parámetro p: <strong data-p-value="">2</strong> <input data-p="" type="range" min="2" max="20" value="2" step="1" style="display:block; width:100%; margin:0.25rem 0 1rem;"> </label> <label style="display:block;">Parámetro q: <strong data-q-value="">1</strong> <input data-q="" type="range" min="1" max="1" value="1" step="1" style="display:block; width:100%; margin:0.25rem 0 1rem;"> </label>
+<div style="line-height:1.8;">
+<pre><code>&lt;div&gt;&lt;strong data-identity&gt;4² + 3² = 5²&lt;/strong&gt;&lt;/div&gt;
+&lt;div&gt;Pendiente: &lt;span data-slope&gt;m = 2/1&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;Punto racional (circunferencia unidad): &lt;span data-point&gt;(4/5, 3/5)&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;mcd(p,q): &lt;span data-gcd&gt;1&lt;/span&gt;&lt;/div&gt;
+&lt;div&gt;&lt;strong data-status&gt;Terna primitiva&lt;/strong&gt;&lt;/div&gt;</code></pre>
+</div>
+<svg data-triangle="" viewbox="0 0 260 250" width="260" height="250" role="img" aria-label="Triángulo rectángulo de catetos 4 y 3 e hipotenusa 5" style="display:block; max-width:100%; margin:1rem auto; overflow:visible;"> <polygon data-polygon="" points="55,210 205,210 55,97.5" fill="#dbeafe" stroke="#2563eb" stroke-width="2"></polygon> <polyline data-right-angle="" points="55,198 67,198 67,210" fill="none" stroke="#2563eb" stroke-width="1.5"></polyline> <text data-label-a="" x="130" y="231" fill="currentColor" font-size="14" text-anchor="middle">4</text> <text data-label-b="" x="38" y="153.75" fill="currentColor" font-size="14" text-anchor="middle">3</text> <text data-label-c="" x="143" y="144.75" fill="currentColor" font-size="14" text-anchor="middle">5</text> </svg>
+<p data-fallback="" style="font-size:0.9em; margin:0.4rem 0;">
+Vista estática: el generador interactivo requiere que la web cargue su archivo JavaScript.
+</p>
+<p data-announcement="" role="status" aria-live="polite" aria-atomic="true" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;">
+Parámetros 2 y 1. Terna 4, 3, 5. Primitiva.
+</p>
+<p style="font-size:0.85em; margin:0; opacity:0.85;">
+El dibujo respeta las proporciones de los catetos. El máximo de q se ajusta a p − 1; se muestran también la pendiente reducida y las coordenadas racionales simplificadas.
+</p>
+<noscript>
+<p>
+Para modificar los parámetros, habilita JavaScript en la versión web.
+</p>
+</noscript>
+</div>
+</section>
+<section id="de-diofanto-a-fermat" class="level2">
+<h2 class="anchored" data-anchor-id="de-diofanto-a-fermat">8. De Diofanto a Fermat</h2>
+<p>Este problema tiene una historia posterior singular. Pierre de Fermat anotó en el margen de su ejemplar de la traducción latina de la <em>Arithmetica</em> publicada por <strong>Claude-Gaspard Bachet en 1621</strong> que, a diferencia de lo que sucede con los cuadrados, una potencia de exponente entero mayor que <span class="math inline">\(2\)</span> no puede descomponerse en la suma de dos potencias positivas del mismo exponente. Afirmó haber hallado una demostración que no cabía en el margen.</p>
+<p>La observación está asociada precisamente al <strong>problema II.8</strong>. El ejemplar anotado por Fermat no se conserva; el texto de su observación fue publicado póstumamente por su hijo Samuel en la edición de <strong>1670</strong>. Hoy conocemos la afirmación como el <em>Último Teorema de Fermat</em>.</p>
+<p>El contraste matemático es elocuente: la ecuación cuadrática <span class="math inline">\(x^2+y^2=z^2\)</span> tiene infinitas soluciones enteras positivas, mientras que el Último Teorema de Fermat afirma que <span class="math inline">\(x^n+y^n=z^n\)</span> no tiene ninguna solución en enteros positivos cuando <span class="math inline">\(n&gt;2\)</span>. La identidad pitagórica demostrada arriba <strong>no constituye una demostración de ese teorema</strong>.</p>
+</section>
+<section id="para-investigar-y-demostrar" class="level2">
+<h2 class="anchored" data-anchor-id="para-investigar-y-demostrar">9. Para investigar y demostrar</h2>
+<ol type="1">
+<li>Repite el problema de Diofanto con <span class="math inline">\(c=5\)</span> y <span class="math inline">\(m=3/2\)</span>. Comprueba por sustitución los dos valores obtenidos.</li>
+<li>Explica por qué el factor <span class="math inline">\(x=0\)</span> aparece al intersectar la circunferencia con <span class="math inline">\(y=mx-c\)</span>. ¿Qué pasa si <span class="math inline">\(m=0\)</span>?</li>
+<li>Prueba directamente que la parametrización de la circunferencia satisface <span class="math inline">\(X^2+Y^2=1\)</span> para todo <span class="math inline">\(m\in\mathbb Q\)</span>.</li>
+<li>Determina las ternas que resultan de <span class="math inline">\((p,q)=(3,2)\)</span> y <span class="math inline">\((3,1)\)</span>. Comprueba qué condición de primitividad falla en el segundo caso.</li>
+<li>Investiga si la terna <span class="math inline">\((9,12,15)\)</span> puede obtenerse <strong>sin</strong> factor <span class="math inline">\(k\)</span> utilizando la fórmula <span class="math inline">\(2pq,p^2-q^2,p^2+q^2\)</span> con parámetros enteros. ¿Qué aporta <span class="math inline">\(k\)</span> a la descripción completa?</li>
+</ol>
+</section>
+<section id="qué-hemos-aprendido" class="level2">
+<h2 class="anchored" data-anchor-id="qué-hemos-aprendido">10. Qué hemos aprendido</h2>
+<p>La decisión de Diofanto de expresar una incógnita mediante la otra transforma un problema cuadrático en uno lineal. Al reconstruir esa idea con pendientes racionales, obtenemos puntos racionales de una circunferencia; al escalar convenientemente, aparecen las ternas pitagóricas. La relación entre <strong>un punto conocido, una recta racional y un segundo punto racional</strong> ofrece una puerta de entrada a métodos más generales de la teoría de números y la geometría algebraica, aunque esos desarrollos requieren herramientas adicionales.</p>
+</section>
+<section id="fuentes-y-lecturas" class="level2">
+<h2 class="anchored" data-anchor-id="fuentes-y-lecturas">Fuentes y lecturas</h2>
 <ul>
-<li>ensayos matemáticos;</li>
-<li>resultados presentados desde más de un punto de vista;</li>
-<li>historia de las matemáticas;</li>
-<li>conexiones amplias entre ideas;</li>
-<li>estrategias de estudio;</li>
-<li>notas editoriales de interés público.</li>
+<li>Diofanto, <em>Arithmetica</em>, II.8: traducción y comentario de Henry Mendell, California State University, Los Angeles, a partir de la edición de Tannery (1893). <a href="https://web.calstatela.edu/faculty/hmendel/Ancient%20Mathematics/Diophantus/Arithmetica/Diophantus.II.8-10.html">Consultar II.8–10</a>.</li>
+<li>Euclides, <em>Elementos</em>, libro X, proposición 29, lema 1; edición digital y comentario de David E. Joyce. <a href="https://mathcs.clarku.edu/~djoyce/elements/bookX/propX29.html">Consultar el texto y el lema</a>.</li>
+<li>Frank J. Swetz, «Mathematical Treasure: Bachet’s Arithmetic of Diophantus», <em>Convergence</em>, Mathematical Association of America. <a href="https://old.maa.org/press/periodicals/convergence/mathematical-treasure-bachets-arithmetic-of-diophantus">Consultar el estudio y la edición de 1670</a>.</li>
 </ul>
-<p>Las exposiciones cuya función natural sea definir o desarrollar un concepto pertenecen a <a href="../teoria/index.html">Teoría</a>, no a esta sección.</p>
-<section id="publicados" class="level2">
-<h2 class="anchored" data-anchor-id="publicados">Publicados</h2>
-<ul>
-<li><a href="../blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.html"><strong>El método de Diofanto y la parametrización racional de las ternas pitagóricas</strong></a> — del problema II.8 de la <em>Arithmetica</em> a la parametrización racional de la circunferencia, la fórmula de Euclides y las ternas primitivas.</li>
-<li><a href="../blog/hemos-construido-realmente-los-numeros-reales.html"><strong>¿Hemos construido realmente los números reales?</strong></a> — Wildberger, Dedekind, constructivismo, computabilidad y elección como prueba de estrés para el rigor matemático.</li>
-<li><a href="../blog/una-identidad-de-sumacion-para-productos-consecutivos.html"><strong>Una identidad de sumación para productos consecutivos: dos demostraciones</strong></a> — una identidad finita demostrada primero por inducción y luego por diferencias finitas y telescopaje.</li>
-</ul>
+<script src="../assets/js/diofanto-triples.js" defer=""></script>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
