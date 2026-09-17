@@ -113,7 +113,7 @@ Recíprocamente, si $-r\leq x\leq r$, entonces $x\leq r$ y, al invertir $-r\leq 
 
 *Glosario: [desigualdad triangular](../otros/tratado-de-analisis-glosario.md#gl-desigualdad-triangular)*
 
-*Referencia transversal: [demostraciones, variantes y aplicaciones de la desigualdad triangular](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) (`MA-ART-0002`).*
+*Referencia transversal: [demostraciones, variantes y aplicaciones de la desigualdad triangular](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) (`MA-ART-0003`).*
 
 Para $x,y\in F$,
 
