@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Demostraciones rigurosas, igualdad, historia y aplicaciones de la desigualdad triangular en cuerpos ordenados, complejos, normas y métricas.">
+
+<title>La desigualdad triangular: demostraciones, variantes y su papel en el análisis – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-desigualdad-triangular" id="toc-la-desigualdad-triangular" class="nav-link active" data-scroll-target="#la-desigualdad-triangular">La desigualdad triangular</a>
+  <ul class="collapse">
+  <li><a href="#tri-intuicion" id="toc-tri-intuicion" class="nav-link" data-scroll-target="#tri-intuicion">1. Qué significa y qué no significa</a>
+  <ul class="collapse">
+  <li><a href="#tri-historia" id="toc-tri-historia" class="nav-link" data-scroll-target="#tri-historia">1.1. Una observación histórica: de los lados de un triángulo a una desigualdad general</a></li>
+  </ul></li>
+  <li><a href="#tri-cuerpo-ordenado" id="toc-tri-cuerpo-ordenado" class="nav-link" data-scroll-target="#tri-cuerpo-ordenado">2. Demostración en un cuerpo ordenado</a>
+  <ul class="collapse">
+  <li><a href="#tri-prueba-cuadrados" id="toc-tri-prueba-cuadrados" class="nav-link" data-scroll-target="#tri-prueba-cuadrados">2.1. Segunda prueba: comparar cuadrados</a></li>
+  </ul></li>
+  <li><a href="#tri-igualdad-real" id="toc-tri-igualdad-real" class="nav-link" data-scroll-target="#tri-igualdad-real">3. Casos de igualdad en la recta</a></li>
+  <li><a href="#tri-inversa" id="toc-tri-inversa" class="nav-link" data-scroll-target="#tri-inversa">4. La desigualdad triangular inversa</a></li>
+  <li><a href="#tri-sumas-finitas" id="toc-tri-sumas-finitas" class="nav-link" data-scroll-target="#tri-sumas-finitas">5. Sumas y diferencias finitas</a></li>
+  <li><a href="#tri-complejos" id="toc-tri-complejos" class="nav-link" data-scroll-target="#tri-complejos">6. Módulo complejo</a></li>
+  <li><a href="#tri-normas" id="toc-tri-normas" class="nav-link" data-scroll-target="#tri-normas">7. Normas: teorema concreto y axioma abstracto</a>
+  <ul class="collapse">
+  <li><a href="#tri-euclidiana" id="toc-tri-euclidiana" class="nav-link" data-scroll-target="#tri-euclidiana">7.1. Norma euclidiana y Cauchy–Schwarz</a></li>
+  <li><a href="#tri-l1-linfty" id="toc-tri-l1-linfty" class="nav-link" data-scroll-target="#tri-l1-linfty">7.2. Las normas <span class="math inline">\(\ell^1\)</span> y del máximo</a></li>
+  <li><a href="#tri-lp" id="toc-tri-lp" class="nav-link" data-scroll-target="#tri-lp">7.3. El caso <span class="math inline">\(\ell^p\)</span>: Hölder y Minkowski</a></li>
+  <li><a href="#tri-norma-abstracta" id="toc-tri-norma-abstracta" class="nav-link" data-scroll-target="#tri-norma-abstracta">7.4. Norma abstracta</a></li>
+  </ul></li>
+  <li><a href="#tri-metricas" id="toc-tri-metricas" class="nav-link" data-scroll-target="#tri-metricas">8. Métricas: de sumar vectores a recorrer puntos</a></li>
+  <li><a href="#tri-analisis" id="toc-tri-analisis" class="nav-link" data-scroll-target="#tri-analisis">9. Para qué sirve en análisis</a>
+  <ul class="collapse">
+  <li><a href="#tri-limites" id="toc-tri-limites" class="nav-link" data-scroll-target="#tri-limites">9.1. La regla de la suma de límites</a></li>
+  <li><a href="#tri-unicidad" id="toc-tri-unicidad" class="nav-link" data-scroll-target="#tri-unicidad">9.2. Unicidad del límite</a></li>
+  <li><a href="#tri-continuidad" id="toc-tri-continuidad" class="nav-link" data-scroll-target="#tri-continuidad">9.3. Continuidad de la norma</a></li>
+  <li><a href="#tri-bolas" id="toc-tri-bolas" class="nav-link" data-scroll-target="#tri-bolas">9.4. Las bolas abiertas son abiertas</a></li>
+  <li><a href="#tri-cauchy" id="toc-tri-cauchy" class="nav-link" data-scroll-target="#tri-cauchy">9.5. Series y la hipótesis de completitud</a></li>
+  <li><a href="#tri-estrategia" id="toc-tri-estrategia" class="nav-link" data-scroll-target="#tri-estrategia">9.6. El patrón común</a></li>
+  </ul></li>
+  <li><a href="#tri-errores" id="toc-tri-errores" class="nav-link" data-scroll-target="#tri-errores">10. Errores previsibles y comprobaciones</a></li>
+  <li><a href="#tri-actividad" id="toc-tri-actividad" class="nav-link" data-scroll-target="#tri-actividad">11. Actividades de reconstrucción</a></li>
+  <li><a href="#tri-sintesis" id="toc-tri-sintesis" class="nav-link" data-scroll-target="#tri-sintesis">12. Síntesis: una propiedad, varias funciones matemáticas</a>
+  <ul class="collapse">
+  <li><a href="#tri-fuentes-historicas" id="toc-tri-fuentes-historicas" class="nav-link" data-scroll-target="#tri-fuentes-historicas">Fuentes para el contexto histórico</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">La desigualdad triangular: demostraciones, variantes y su papel en el análisis</h1>
+</div>
+
+<div>
+  <div class="description">
+    Demostraciones rigurosas, igualdad, historia y aplicaciones de la desigualdad triangular en cuerpos ordenados, complejos, normas y métricas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">16 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="la-desigualdad-triangular" class="level1">
+<h1>La desigualdad triangular</h1>
+<div class="callout callout-style-default callout-note callout-titled" title="Idea central">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Idea central
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La magnitud de una suma no excede la suma de las magnitudes de sus sumandos:</p>
+<p><span class="math display">\[
+\boxed{|x+y|\le |x|+|y|.}
+\]</span></p>
+<p>Una misma idea aparece en el valor absoluto, el módulo complejo, las normas y las métricas. Es una de las herramientas que permiten <strong>descomponer un error difícil en errores controlables</strong>.</p>
+</div>
+</div>
+<p>Una desigualdad puede parecer menos informativa que una fórmula exacta: nos dice hasta dónde puede llegar una magnitud, no cuánto vale necesariamente. Aquí reside precisamente su utilidad. Cuando desconocemos cuánto se cancelan dos cantidades, podemos seguir acotando el tamaño de su suma. Esa operación —sacrificar información exacta para obtener una cota segura— reaparecerá en las demostraciones de límites, continuidad y convergencia.</p>
+<p>El artículo tiene dos recorridos complementarios. El primero <strong>demuestra</strong> la desigualdad para objetos concretos, partiendo de propiedades anteriores: valor absoluto, módulo complejo y normas específicas. El segundo explica por qué, al definir una norma o una distancia abstractas, se adopta como <strong>axioma</strong> una propiedad que ya se había verificado en los ejemplos. La distinción impide confundir lo que se prueba con lo que se exige por definición.</p>
+<section id="tri-intuicion" class="level2">
+<h2 class="anchored" data-anchor-id="tri-intuicion">1. Qué significa y qué no significa</h2>
+<p>Al ir de <span class="math inline">\(A\)</span> a <span class="math inline">\(C\)</span> pasando por <span class="math inline">\(B\)</span>, la distancia directa no supera la longitud del recorrido quebrado. En la recta, avanzar <span class="math inline">\(5\)</span> y retroceder <span class="math inline">\(3\)</span> ocasiona un desplazamiento neto de magnitud <span class="math inline">\(2\)</span>, mientras que la suma de las magnitudes recorridas es <span class="math inline">\(8\)</span>.</p>
+<p>La imagen geométrica ayuda a anticipar la fórmula, pero no sustituye una demostración. La pregunta lógica es: ¿qué propiedades del valor absoluto permiten probar la cota, incluso antes de haber construido los números reales completos?</p>
+<p>Conviene reparar en la diferencia entre <strong>desplazamiento</strong> y <strong>longitud recorrida</strong>. El primero conserva la orientación: avanzar y retroceder puede producir cancelación. La segunda cuenta ambos tramos positivamente. La desigualdad dice que, por mucha cancelación que se produzca, la magnitud final no puede superar la suma de las magnitudes individuales. No afirma que sea necesario desviarse, ni que la suma de distancias sea siempre estrictamente mayor.</p>
+<section id="tri-historia" class="level3">
+<h3 class="anchored" data-anchor-id="tri-historia">1.1. Una observación histórica: de los lados de un triángulo a una desigualdad general</h3>
+<p>En la proposición I.20 de los <em>Elementos</em>, Euclides establece que, en un triángulo, la suma de dos lados es <strong>mayor</strong> que el tercero. Su demostración es geométrica: prolonga un lado, construye un segmento de igual longitud que otro y compara ángulos y lados. Véase <a href="https://www.maths.tcd.ie/~dwilkins/Courses/MA232A/Euclid_ETexts/EuclidBookI_Heath1908/EuclidBookIProp20_Heath1908.php">Euclides, <em>Elementos</em>, I.20, en la edición de Heath</a>.</p>
+<p>¿Por qué escribimos hoy <span class="math inline">\(\le\)</span> y no <span class="math inline">\(&lt;\)</span>? El triángulo de la proposición euclidiana es no degenerado. La formulación moderna también contempla tres puntos alineados, o un desplazamiento nulo. Si <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> y <span class="math inline">\(C\)</span> están en ese orden sobre una recta, entonces <span class="math inline">\(d(A,C)=d(A,B)+d(B,C)\)</span>: el camino «quebrado» se ha convertido en un solo segmento. La igualdad no contradice a Euclides; el enunciado moderno posee un dominio de aplicación más amplio.</p>
+<p>El paso de esta afirmación geométrica a las formas algebraica, vectorial y métrica que estudiaremos constituye aquí un <strong>recorrido conceptual</strong>, no la pretensión de que todas sus formulaciones hayan aparecido históricamente en ese mismo orden. Lo importante es advertir cómo una misma estructura de razonamiento deja de depender de dibujar un triángulo físico.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Laboratorio interactivo · MA-APP-0001">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Laboratorio interactivo · MA-APP-0001
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explora el recorrido entre tres puntos, los desplazamientos sobre la recta y los casos de igualdad. Después, reconstruye una demostración válida para cualquier configuración euclidiana. <strong>La experimentación no reemplaza la prueba.</strong></p>
+</div>
+</div>
+<iframe src="interactive/desigualdad-triangular.html" title="Laboratorio interactivo de la desigualdad triangular: geometría, recta real y prueba guiada" loading="lazy" style="width:100%;min-height:1120px;border:1px solid #8097ac;border-radius:8px" referrerpolicy="no-referrer">
+</iframe>
+<p><a href="../../teoria/resultados/laboratorio-desigualdad-triangular.html"><strong>Abrir el laboratorio en una página independiente</strong></a>.</p>
+</section>
+</section>
+<section id="tri-cuerpo-ordenado" class="level2">
+<h2 class="anchored" data-anchor-id="tri-cuerpo-ordenado">2. Demostración en un cuerpo ordenado</h2>
+<p><strong>Teorema.</strong> Sea <span class="math inline">\(F\)</span> un cuerpo ordenado; para <span class="math inline">\(x\in F\)</span> definimos <span class="math inline">\(|x|=\max\{x,-x\}\)</span>. Para cualesquiera <span class="math inline">\(x,y\in F\)</span>,</p>
+<p><span class="math display">\[
+\boxed{|x+y|\le |x|+|y|.}
+\]</span></p>
+<p>Antes de operar con signos, observemos la estructura de la definición: <span class="math inline">\(|t|\)</span> es el mayor de <span class="math inline">\(t\)</span> y <span class="math inline">\(-t\)</span>. Por tanto, para demostrar que <span class="math inline">\(|t|\)</span> está por debajo de una cota, hay que controlar <strong>simultáneamente</strong> ambas posibilidades. El siguiente lema convierte una expresión con valor absoluto en dos desigualdades ordinarias; es el mecanismo central de la primera prueba.</p>
+<p><strong>Lema auxiliar.</strong> Para <span class="math inline">\(r\ge0\)</span> y <span class="math inline">\(t\in F\)</span>,</p>
+<p><span class="math display">\[
+|t|\le r\quad\Longleftrightarrow\quad-r\le t\le r.
+\]</span></p>
+<p><strong>Prueba del lema.</strong> Si <span class="math inline">\(|t|\le r\)</span>, como <span class="math inline">\(t\le |t|\)</span> y <span class="math inline">\(-t\le |t|\)</span>, obtenemos <span class="math inline">\(t\le r\)</span> y <span class="math inline">\(-t\le r\)</span>, esta última equivalente a <span class="math inline">\(-r\le t\)</span>. Recíprocamente, de <span class="math inline">\(-r\le t\le r\)</span> se desprende que <span class="math inline">\(t\le r\)</span> y <span class="math inline">\(-t\le r\)</span>; el máximo de <span class="math inline">\(t\)</span> y <span class="math inline">\(-t\)</span> es, por tanto, menor o igual que <span class="math inline">\(r\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración del teorema (cotas bilaterales).</strong> Por definición,</p>
+<p><span class="math display">\[
+-|x|\le x\le |x|,\qquad -|y|\le y\le |y|.
+\]</span></p>
+<p>Sumamos los extremos inferiores, los términos centrales y los extremos superiores, usando la compatibilidad del orden con la adición:</p>
+<p><span class="math display">\[
+-(|x|+|y|)\le x+y\le |x|+|y|.
+\]</span></p>
+<p>Dado que <span class="math inline">\(|x|+|y|\ge0\)</span>, el lema con <span class="math inline">\(t=x+y\)</span> y <span class="math inline">\(r=|x|+|y|\)</span> da la desigualdad buscada. <span class="math inline">\(\square\)</span></p>
+<p><strong>Lectura de la demostración.</strong> No hemos tenido que distinguir cuatro casos de signos para <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Hemos sustituido ese análisis por dos intervalos simétricos alrededor de cero, los hemos sumado y luego hemos reconocido de nuevo un intervalo del mismo tipo. La estrategia es reutilizable: cuando una cantidad está entre <span class="math inline">\(-r\)</span> y <span class="math inline">\(r\)</span>, su valor absoluto es como máximo <span class="math inline">\(r\)</span>.</p>
+<p><strong>Auditoría de dependencias.</strong> Se utilizaron únicamente las leyes del cuerpo ordenado, la existencia del máximo de dos elementos comparables y propiedades elementales del valor absoluto. No se utilizaron completitud, propiedad arquimediana, supremos ni límites. El mismo argumento funciona en <span class="math inline">\(\mathbb Q\)</span> y en cualquier cuerpo ordenado. Esto es más que una curiosidad: permite utilizar el resultado mientras todavía estamos construyendo el análisis, sin invocar anticipadamente propiedades exclusivas de los reales completos.</p>
+<section id="tri-prueba-cuadrados" class="level3">
+<h3 class="anchored" data-anchor-id="tri-prueba-cuadrados">2.1. Segunda prueba: comparar cuadrados</h3>
+<p>Para <span class="math inline">\(x,y\in\mathbb R\)</span> (en realidad, en cualquier cuerpo ordenado), <span class="math inline">\(|xy|=|x||y|\ge xy\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+(|x|+|y|)^2-(x+y)^2
+&amp;=2(|x||y|-xy)\\
+&amp;\ge0.
+\end{aligned}
+\]</span></p>
+<p>Como <span class="math inline">\(|x+y|\)</span> y <span class="math inline">\(|x|+|y|\)</span> son no negativos, de la desigualdad de sus cuadrados se sigue</p>
+<p><span class="math display">\[
+|x+y|\le|x|+|y|.
+\]</span></p>
+<p>En efecto, si <span class="math inline">\(a,b\ge0\)</span> y <span class="math inline">\(a&gt;b\)</span>, entonces <span class="math inline">\((a-b)(a+b)&gt;0\)</span>, de modo que <span class="math inline">\(a^2&gt;b^2\)</span>; la contraposición justifica el paso anterior. <span class="math inline">\(\square\)</span></p>
+<p><strong>Lectura comparada.</strong> La primera demostración transforma una desigualdad con valor absoluto en dos cotas ordinarias y vuelve a reunirlas. La segunda transforma el problema en la comparación de cuadrados. Elegir entre ambas es también una decisión matemática, no sólo estilística.</p>
+<p>La prueba por cuadrados resulta natural cuando hay productos y expresiones cuadráticas; la de cotas bilaterales se transporta con facilidad a desigualdades que no implican multiplicar los sumandos. En ambas, el paso final requiere una justificación de orden: comparar cuadrados permite comparar las cantidades originales <strong>porque son no negativas</strong>. Si se omitiera esta hipótesis, de <span class="math inline">\((-3)^2&gt;2^2\)</span> no podría concluirse <span class="math inline">\(-3&gt;2\)</span>.</p>
+</section>
+</section>
+<section id="tri-igualdad-real" class="level2">
+<h2 class="anchored" data-anchor-id="tri-igualdad-real">3. Casos de igualdad en la recta</h2>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(F\)</span> es un cuerpo ordenado,</p>
+<p><span class="math display">\[
+\boxed{|x+y|=|x|+|y|\iff xy\ge0.}
+\]</span></p>
+<p><strong>Demostración.</strong> Cuando <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> son ambos no negativos, <span class="math inline">\(|x+y|=x+y=|x|+|y|\)</span>. Si ambos son no positivos, <span class="math inline">\(|x+y|=-(x+y)=|x|+|y|\)</span>. Si uno es cero, la igualdad es inmediata. Estas posibilidades cubren <span class="math inline">\(xy\ge0\)</span>: cuando ninguno es cero, el producto no negativo exige signos iguales.</p>
+<p>En sentido inverso, de <span class="math inline">\(|x+y|=|x|+|y|\)</span> se sigue, elevando al cuadrado y desarrollando,</p>
+<p><span class="math display">\[
+x^2+2xy+y^2=x^2+2|x||y|+y^2,
+\]</span></p>
+<p>luego <span class="math inline">\(xy=|x||y|\ge0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Prueba de estrés.</strong> <span class="math inline">\(|2+3|=5=|2|+|3|\)</span>, mientras que <span class="math inline">\(|2-3|=1&lt;5\)</span>. No se puede reemplazar sin más <span class="math inline">\(\le\)</span> por <span class="math inline">\(&lt;\)</span>.</p>
+<p>El criterio <span class="math inline">\(xy\ge0\)</span> expresa con precisión la intuición de «no cancelar»: los dos desplazamientos tienen el mismo sentido o alguno es nulo. Si tienen signos opuestos y ambos son no nulos, el resultado es estrictamente menor que la suma de sus magnitudes. Conviene comprender aquí el caso de igualdad, pues en varias dimensiones y para diferentes normas la respuesta ya no será idéntica.</p>
+</section>
+<section id="tri-inversa" class="level2">
+<h2 class="anchored" data-anchor-id="tri-inversa">4. La desigualdad triangular inversa</h2>
+<p><strong>Teorema.</strong> Para <span class="math inline">\(x,y\)</span> en un cuerpo ordenado,</p>
+<p><span class="math display">\[
+\boxed{\bigl||x|-|y|\bigr|\le|x-y|.}
+\]</span></p>
+<p><strong>Demostración.</strong> Descomponemos <span class="math inline">\(x=(x-y)+y\)</span>. Por la desigualdad triangular,</p>
+<p><span class="math display">\[
+|x|\le|x-y|+|y|,
+\quad\text{por tanto}\quad |x|-|y|\le|x-y|.
+\]</span></p>
+<p>Intercambiando <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, y usando <span class="math inline">\(|y-x|=|x-y|\)</span>, obtenemos</p>
+<p><span class="math display">\[
+|y|-|x|\le|x-y|.
+\]</span></p>
+<p>Las dos cotas reunidas dicen</p>
+<p><span class="math display">\[
+-|x-y|\le |x|-|y|\le|x-y|.
+\]</span></p>
+<p>La caracterización bilateral del valor absoluto prueba el enunciado. <span class="math inline">\(\square\)</span></p>
+<p>En particular,</p>
+<p><span class="math display">\[
+\boxed{\bigl||x|-|y|\bigr|\le|x-y|\le|x|+|y|.}
+\]</span></p>
+<p>La desigualdad inversa <strong>no</strong> se obtiene cambiando de dirección la desigualdad original: compara dos magnitudes y usa la diferencia de sus argumentos.</p>
+<p>Su significado puede formularse así: <strong>si modificamos un número en una cantidad pequeña, su magnitud no puede variar más que esa modificación</strong>. Por ejemplo, cambiar <span class="math inline">\(10\)</span> por <span class="math inline">\(10{,}1\)</span> altera el valor absoluto en exactamente <span class="math inline">\(0{,}1\)</span>; cambiar <span class="math inline">\(-10\)</span> por <span class="math inline">\(-9{,}9\)</span> produce la misma estimación. La desigualdad inversa permite demostrar continuidad sin analizar por separado los signos de los números y anticipa la noción de función lipschitziana.</p>
+</section>
+<section id="tri-sumas-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="tri-sumas-finitas">5. Sumas y diferencias finitas</h2>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(n\ge1\)</span> y <span class="math inline">\(x_1,\dots,x_n\in F\)</span>,</p>
+<p><span class="math display">\[
+\boxed{\left|\sum_{k=1}^{n}x_k\right|\le\sum_{k=1}^{n}|x_k|.}
+\]</span></p>
+<p><strong>Demostración por inducción.</strong> Para <span class="math inline">\(n=1\)</span> hay igualdad. Suponemos establecida la afirmación para <span class="math inline">\(n\)</span>. Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left|\sum_{k=1}^{n+1}x_k\right|
+&amp;=\left|\left(\sum_{k=1}^{n}x_k\right)+x_{n+1}\right|\\
+&amp;\le\left|\sum_{k=1}^{n}x_k\right|+|x_{n+1}|\\
+&amp;\le\sum_{k=1}^{n+1}|x_k|.
+\end{aligned}
+\]</span></p>
+<p>La inducción concluye la prueba. <span class="math inline">\(\square\)</span></p>
+<p>La inducción no introduce una idea geométrica nueva. Simplemente reutiliza el resultado para dos términos: agrupamos los primeros <span class="math inline">\(n\)</span> como un único sumando y añadimos el último. Esta observación ayuda a reconocer el mismo procedimiento cuando aparecen diez términos, cien o los sumandos de una cola de serie; la estimación finita es el instrumento que más adelante controlará esas colas.</p>
+<p>Al reemplazar <span class="math inline">\(y\)</span> por <span class="math inline">\(-y\)</span> se obtiene <span class="math inline">\(|x-y|\le|x|+|y|\)</span>. Para un índice fijo <span class="math inline">\(j\)</span> existe otra estimación útil:</p>
+<p><span class="math display">\[
+\left|\sum_{k=1}^{n}x_k\right|\ge |x_j|-\sum_{k\ne j}|x_k|.
+\]</span></p>
+<p>En efecto, escribimos <span class="math inline">\(x_j=\sum_kx_k-\sum_{k\ne j}x_k\)</span> y aplicamos sucesivamente la desigualdad triangular y su versión finita. Como el lado izquierdo es no negativo, podemos mejorar la cota sustituyendo el derecho por su máximo con <span class="math inline">\(0\)</span>.</p>
+<p>La cota superior es útil cuando todos los términos son pequeños; esta cota inferior sirve cuando uno de ellos es grande y los demás no pueden compensarlo por completo. Ambas nacen de la misma desigualdad, pero responden a preguntas distintas: «¿cuánto puede crecer la suma?» y «¿cuánta magnitud debe conservar?».</p>
+</section>
+<section id="tri-complejos" class="level2">
+<h2 class="anchored" data-anchor-id="tri-complejos">6. Módulo complejo</h2>
+<p>El cuerpo <span class="math inline">\(\mathbb C\)</span> no admite un orden compatible con sus operaciones como el de un cuerpo ordenado. Por eso no podemos trasladar literalmente el argumento de las cotas <span class="math inline">\(-z\le z\le|z|\)</span>: tal comparación carece aquí de significado. Sin embargo, cada número complejo se representa por un punto del plano y su módulo <span class="math inline">\(|a+ib|=\sqrt{a^2+b^2}\)</span> mide la distancia al origen. La operación de sumar complejos corresponde a componer desplazamientos del plano, lo que hace razonable buscar una versión de la misma desigualdad. En efecto, el módulo satisface</p>
+<p><span class="math display">\[
+\boxed{|z+w|\le |z|+|w|.}
+\]</span></p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(u=z\overline w=a+ib\)</span>. Como <span class="math inline">\(a\le\sqrt{a^2+b^2}=|u|=|z||w|\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{Re}(z\overline w)\le|z||w|.
+\]</span></p>
+<p>Por expansión del producto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+|z+w|^2
+&amp;=(z+w)(\overline z+\overline w)\\
+&amp;=|z|^2+|w|^2+2\operatorname{Re}(z\overline w)\\
+&amp;\le(|z|+|w|)^2.
+\end{aligned}
+\]</span></p>
+<p>Ambos miembros no elevados al cuadrado son no negativos. Por monotonía de la raíz cuadrada, <span class="math inline">\(|z+w|\le|z|+|w|\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Qué ha reemplazado al orden.</strong> La cantidad <span class="math inline">\(\operatorname{Re}(z\overline w)\)</span> mide el término cruzado que aparece al desarrollar el cuadrado del módulo. La desigualdad <span class="math inline">\(\operatorname{Re}(z\overline w)\le|z||w|\)</span> lo controla sin necesidad de ordenar los complejos. Esta es la razón algebraica por la que la prueba funciona: las cantidades comparadas son reales, aunque los sumandos originales no lo sean.</p>
+<p><strong>Igualdad.</strong> En la prueba sólo puede perderse igualdad en <span class="math inline">\(\operatorname{Re}(z\overline w)\le|z\overline w|\)</span>. Hay igualdad exactamente cuando <span class="math inline">\(z\overline w\)</span> es real no negativo. Si <span class="math inline">\(z,w\ne0\)</span>, equivale a <span class="math inline">\(z=tw\)</span> para cierto <span class="math inline">\(t&gt;0\)</span> real; si cualquiera es cero, la igualdad es automática. No basta con decir «vectores paralelos»: una dirección opuesta puede producir cancelación.</p>
+<p>La desigualdad inversa compleja y la versión para sumas finitas se prueban repitiendo los argumentos anteriores, pues sólo exigen la desigualdad triangular y la identidad <span class="math inline">\(|-z|=|z|\)</span>.</p>
+</section>
+<section id="tri-normas" class="level2">
+<h2 class="anchored" data-anchor-id="tri-normas">7. Normas: teorema concreto y axioma abstracto</h2>
+<section id="tri-euclidiana" class="level3">
+<h3 class="anchored" data-anchor-id="tri-euclidiana">7.1. Norma euclidiana y Cauchy–Schwarz</h3>
+<p>En <span class="math inline">\(\mathbb R^n\)</span> definimos <span class="math inline">\(\|u\|_2=\sqrt{\langle u,u\rangle}\)</span>. La longitud de un vector depende de todas sus coordenadas; ya no basta con disponer de un orden en el conjunto de los vectores. Si desarrollamos el cuadrado de la longitud de <span class="math inline">\(u+v\)</span>, aparece un término cruzado <span class="math inline">\(2\langle u,v\rangle\)</span>. Para dominarlo necesitamos una desigualdad previa.</p>
+<p><strong>Contexto histórico.</strong> Augustin-Louis Cauchy demostró en 1821 la desigualdad correspondiente para sumas finitas de productos de números reales; sus extensiones a integrales se asocian también con Bunyakovskii y Schwarz. El nombre «Cauchy–Schwarz» resume parte de esta historia, pero aquí utilizamos exclusivamente la versión finita, cuya prueba queda dentro del álgebra de <span class="math inline">\(\mathbb R^n\)</span>. Véase <a href="https://encyclopediaofmath.org/wiki/Cauchy-Schwarz_inequality"><em>Encyclopedia of Mathematics</em>, «Cauchy–Schwarz inequality»</a>.</p>
+<p>Primero necesitamos el siguiente lema.</p>
+<p><strong>Lema (Cauchy–Schwarz finito).</strong> Para <span class="math inline">\(u,v\in\mathbb R^n\)</span>,</p>
+<p><span class="math display">\[
+|\langle u,v\rangle|\le\|u\|_2\|v\|_2.
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(v=0\)</span>, ambos lados son cero. En otro caso, la cantidad <span class="math inline">\(\|u-tv\|_2^2\)</span> es no negativa para cualquier <span class="math inline">\(t\in\mathbb R\)</span>. Tomando <span class="math inline">\(t=\langle u,v\rangle/\|v\|_2^2\)</span> en</p>
+<p><span class="math display">\[
+0\le\|u\|_2^2-2t\langle u,v\rangle+t^2\|v\|_2^2,
+\]</span></p>
+<p>resulta</p>
+<p><span class="math display">\[
+0\le\|u\|_2^2-\frac{\langle u,v\rangle^2}{\|v\|_2^2}.
+\]</span></p>
+<p>Multiplicando por <span class="math inline">\(\|v\|_2^2&gt;0\)</span> y extrayendo raíces no negativas se obtiene el lema. <span class="math inline">\(\square\)</span></p>
+<p>La elección de <span class="math inline">\(t\)</span> no es un truco adivinatorio: minimiza la distancia cuadrática entre <span class="math inline">\(u\)</span> y los vectores de la forma <span class="math inline">\(tv\)</span>. Al escoger ese valor, eliminamos el término lineal en <span class="math inline">\(t\)</span> y la no negatividad del cuadrado produce exactamente la cota buscada. Por eso la prueba muestra también una manera de descubrir una demostración: buscar una expresión que sabemos no negativa y ajustar un parámetro hasta que revele la desigualdad necesaria.</p>
+<p><strong>Teorema (triangular euclidiana).</strong> Por Cauchy–Schwarz,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|u+v\|_2^2
+&amp;=\|u\|_2^2+2\langle u,v\rangle+\|v\|_2^2\\
+&amp;\le\|u\|_2^2+2\|u\|_2\|v\|_2+\|v\|_2^2\\
+&amp;=(\|u\|_2+\|v\|_2)^2.
+\end{aligned}
+\]</span></p>
+<p>Al tomar raíces, <span class="math inline">\(\boxed{\|u+v\|_2\le\|u\|_2+\|v\|_2}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En la norma euclidiana, hay igualdad cuando alguno de los vectores es cero o cuando ambos no nulos son múltiplos positivos uno del otro. Esto se deduce del caso de igualdad de Cauchy–Schwarz y del signo del producto escalar.</p>
+</section>
+<section id="tri-l1-linfty" class="level3">
+<h3 class="anchored" data-anchor-id="tri-l1-linfty">7.2. Las normas <span class="math inline">\(\ell^1\)</span> y del máximo</h3>
+<p>Para <span class="math inline">\(u=(u_1,\ldots,u_n)\)</span>, aplicando la desigualdad escalar en cada coordenada,</p>
+<p><span class="math display">\[
+\|u+v\|_1=\sum_i|u_i+v_i|\le\sum_i(|u_i|+|v_i|)=\|u\|_1+\|v\|_1.
+\]</span></p>
+<p>Asimismo,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\|u+v\|_\infty
+&amp;=\max_i|u_i+v_i|\\
+&amp;\le\max_i(|u_i|+|v_i|)\\
+&amp;\le\max_i|u_i|+\max_i|v_i|.
+\end{aligned}
+\]</span></p>
+<p>El criterio euclidiano de igualdad <strong>no</strong> funciona para todas las normas: con <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(0,1)\)</span> se tiene <span class="math inline">\(\|u+v\|_1=2=\|u\|_1+\|v\|_1\)</span>, aunque los vectores no son paralelos.</p>
+<p>Estas dos normas muestran que la desigualdad triangular no depende de una única noción de longitud. La norma <span class="math inline">\(\ell^1\)</span> suma las contribuciones de las coordenadas; la norma del máximo sólo registra la mayor contribución. El resultado se obtiene, respectivamente, <strong>sumando</strong> cotas coordenada a coordenada o <strong>tomando su máximo</strong>. Comparar sus demostraciones enseña a adaptar una técnica a la definición efectiva de la magnitud que queremos acotar.</p>
+</section>
+<section id="tri-lp" class="level3">
+<h3 class="anchored" data-anchor-id="tri-lp">7.3. El caso <span class="math inline">\(\ell^p\)</span>: Hölder y Minkowski</h3>
+<p>Para <span class="math inline">\(p=2\)</span> ya conocemos la norma euclidiana; <span class="math inline">\(p=1\)</span> y <span class="math inline">\(p=\infty\)</span> se resolvieron directamente. Queda preguntarse qué sucede con las magnitudes que agregan las potencias <span class="math inline">\(p\)</span>-ésimas de las coordenadas. La prueba exige ahora algo más que aplicar la desigualdad escalar: necesitamos controlar productos de sucesiones, y para ello utilizaremos Hölder.</p>
+<p><strong>Dependencia adicional:</strong> la siguiente prueba de Hölder utiliza la desigualdad de Young, que aquí justificamos mediante cálculo diferencial elemental; no debe importarse a un capítulo anterior a la derivada sin reemplazar esa dependencia por una demostración ya disponible.</p>
+<p>Sean <span class="math inline">\(1&lt;p&lt;\infty\)</span> y <span class="math inline">\(q=p/(p-1)\)</span>; así <span class="math inline">\(1/p+1/q=1\)</span>. Para <span class="math inline">\(a,b\ge0\)</span> vale <strong>Young</strong>:</p>
+<p><span class="math display">\[
+ab\le\frac{a^p}{p}+\frac{b^q}{q}.
+\]</span></p>
+<p><strong>Prueba de Young.</strong> Fijado <span class="math inline">\(b&gt;0\)</span>, la función <span class="math inline">\(h(a)=a^p/p-ab+b^q/q\)</span> en <span class="math inline">\(a\ge0\)</span> alcanza su mínimo en <span class="math inline">\(a=b^{1/(p-1)}=b^{q-1}\)</span>: su derivada es <span class="math inline">\(a^{p-1}-b\)</span>, negativa antes de ese punto y positiva después. Sustituyéndolo se obtiene <span class="math inline">\(h=0\)</span>. Cuando <span class="math inline">\(b=0\)</span>, Young es inmediata. <span class="math inline">\(\square\)</span></p>
+<p><strong>Por qué aparece Hölder.</strong> La elección <span class="math inline">\(1/p+1/q=1\)</span> permite que los exponentes se complementen. Al normalizar las sucesiones para que sus sumas de potencias sean <span class="math inline">\(1\)</span>, Young convierte cada producto en una suma de dos términos cuyo total podemos calcular. Sin normalización, el método dejaría factores de escala difíciles de seguir.</p>
+<p><strong>Hölder finito.</strong> Si <span class="math inline">\(A=(\sum_i|u_i|^p)^{1/p}\)</span> y <span class="math inline">\(B=(\sum_i|v_i|^q)^{1/q}\)</span>, la desigualdad es evidente si <span class="math inline">\(AB=0\)</span>. Si <span class="math inline">\(AB&gt;0\)</span>, aplicamos Young a <span class="math inline">\(|u_i|/A\)</span> y <span class="math inline">\(|v_i|/B\)</span>, sumamos y usamos <span class="math inline">\(1/p+1/q=1\)</span>:</p>
+<p><span class="math display">\[
+\frac{\sum_i|u_iv_i|}{AB}
+\le\frac1p\sum_i\frac{|u_i|^p}{A^p}
++\frac1q\sum_i\frac{|v_i|^q}{B^q}=1.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{\sum_i|u_iv_i|\le\|u\|_p\|v\|_q.}
+\]</span></p>
+<p>La desigualdad que sigue, conocida como <strong>desigualdad de Minkowski</strong>, expresa exactamente la propiedad triangular de las normas <span class="math inline">\(\ell^p\)</span>. Está vinculada al nombre de Hermann Minkowski; no debe confundirse con otros resultados también llamados «de Minkowski», como los de la geometría de números. Véase <a href="https://encyclopediaofmath.org/wiki/Minkowski_inequality"><em>Encyclopedia of Mathematics</em>, «Minkowski inequality»</a>.</p>
+<p><strong>Minkowski finito.</strong> Para <span class="math inline">\(p\ge1\)</span>, definimos <span class="math inline">\(\|u\|_p=(\sum_i|u_i|^p)^{1/p}\)</span> si <span class="math inline">\(p&lt;\infty\)</span>. Los casos <span class="math inline">\(p=1\)</span> y <span class="math inline">\(p=\infty\)</span> ya están probados. Para <span class="math inline">\(1&lt;p&lt;\infty\)</span>, pongamos <span class="math inline">\(S=\sum_i|u_i+v_i|^p\)</span>. Si <span class="math inline">\(S=0\)</span>, la conclusión es trivial. En caso contrario, la triangular escalar y Hölder dan</p>
+<p><span class="math display">\[
+\begin{aligned}
+S&amp;\le\sum_i|u_i|\,|u_i+v_i|^{p-1}
++\sum_i|v_i|\,|u_i+v_i|^{p-1}\\
+&amp;\le(\|u\|_p+\|v\|_p)
+\left(\sum_i|u_i+v_i|^{(p-1)q}\right)^{1/q}\\
+&amp;=(\|u\|_p+\|v\|_p)S^{(p-1)/p}.
+\end{aligned}
+\]</span></p>
+<p>Dividimos entre <span class="math inline">\(S^{(p-1)/p}&gt;0\)</span> y queda</p>
+<p><span class="math display">\[
+\boxed{\|u+v\|_p\le\|u\|_p+\|v\|_p.}\qquad\square
+\]</span></p>
+<p><strong>Contraejemplo en la frontera.</strong> Para <span class="math inline">\(0&lt;p&lt;1\)</span>, si <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(0,1)\)</span>, entonces</p>
+<p><span class="math display">\[
+\|u+v\|_p=2^{1/p}&gt;2=\|u\|_p+\|v\|_p.
+\]</span></p>
+<p>La expresión usual deja de ser una norma en general: la condición <span class="math inline">\(p\ge1\)</span> tiene contenido matemático. El ejemplo no sólo localiza un fallo técnico de nuestra prueba; demuestra que el enunciado es falso fuera del intervalo indicado. Distinguir «la demostración no funciona» de «el teorema es falso» es una comprobación esencial del razonamiento.</p>
+</section>
+<section id="tri-norma-abstracta" class="level3">
+<h3 class="anchored" data-anchor-id="tri-norma-abstracta">7.4. Norma abstracta</h3>
+<p>Una norma <span class="math inline">\(\|\cdot\|\)</span> sobre un espacio vectorial real o complejo se define mediante positividad definida, homogeneidad absoluta y</p>
+<p><span class="math display">\[
+\boxed{\|u+v\|\le\|u\|+\|v\|.}
+\]</span></p>
+<p>En este grado de generalidad la desigualdad triangular <strong>es un axioma</strong>, no una consecuencia de los otros dos. Los ejemplos de <span class="math inline">\(\ell^p\)</span> para <span class="math inline">\(0&lt;p&lt;1\)</span> lo ponen en evidencia: la expresión es positiva salvo en el vector cero y absolutamente homogénea, pero incumple la triangular. La definición abstracta conserva justamente las propiedades que han resultado necesarias en los casos concretos; no exige que todos los espacios posean producto escalar, ni que su geometría tenga las mismas condiciones de igualdad que la euclidiana.</p>
+<p>De él, escribiendo <span class="math inline">\(u=(u-v)+v\)</span> y luego invirtiendo los papeles, se deduce</p>
+<p><span class="math display">\[
+\boxed{|\|u\|-\|v\||\le\|u-v\|.}
+\]</span></p>
+</section>
+</section>
+<section id="tri-metricas" class="level2">
+<h2 class="anchored" data-anchor-id="tri-metricas">8. Métricas: de sumar vectores a recorrer puntos</h2>
+<p>La abstracción puede ir todavía más lejos. Para medir la distancia entre dos funciones, conjuntos u otros objetos no siempre existe una resta con sentido, y mucho menos una longitud euclidiana. Basta pedir propiedades a una función de dos puntos. Maurice Fréchet introdujo en su tesis de 1906 un tratamiento de distancias en conjuntos abstractos, con la intención de estudiar límites y continuidad más allá de los espacios clásicos; el nombre «espacio métrico» se asocia posteriormente con Hausdorff. Véanse <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Frechet/">MacTutor, biografía de Fréchet</a> y <a href="https://doi.org/10.1090/noti2776"><em>Notices of the AMS</em>, estudio histórico de los espacios métricos</a>.</p>
+<p>Una métrica <span class="math inline">\(d:X\times X\to[0,\infty)\)</span> cumple separación (<span class="math inline">\(d(x,y)=0\iff x=y\)</span>), simetría y el <strong>axioma triangular</strong></p>
+<p><span class="math display">\[
+\boxed{d(x,z)\le d(x,y)+d(y,z).}
+\]</span></p>
+<p>Toda norma induce la métrica <span class="math inline">\(d(u,v)=\|u-v\|\)</span>. En efecto,</p>
+<p><span class="math display">\[
+\|u-w\|=\|(u-v)+(v-w)\|\le\|u-v\|+\|v-w\|.
+\]</span></p>
+<p>La separación procede de la positividad definida y la simetría de <span class="math inline">\(\|-(u-v)\|=\|u-v\|\)</span>. En una métrica arbitraria la triangular vuelve a ser <strong>axioma</strong>.</p>
+<p><strong>Un ejemplo sin vectores.</strong> En cualquier conjunto <span class="math inline">\(X\)</span>, podemos definir la <em>métrica discreta</em>: <span class="math inline">\(d(x,y)=0\)</span> si <span class="math inline">\(x=y\)</span> y <span class="math inline">\(d(x,y)=1\)</span> si <span class="math inline">\(x\ne y\)</span>. Si <span class="math inline">\(x\ne z\)</span>, al menos una de las relaciones <span class="math inline">\(x\ne y\)</span> o <span class="math inline">\(y\ne z\)</span> es verdadera; por eso <span class="math inline">\(d(x,y)+d(y,z)\ge1=d(x,z)\)</span>. Si <span class="math inline">\(x=z\)</span>, la desigualdad es inmediata. Este ejemplo muestra que la noción de distancia ya no depende de coordenadas ni de operaciones vectoriales.</p>
+<p><strong>Desigualdad inversa métrica.</strong> De <span class="math inline">\(d(x,z)\le d(x,y)+d(y,z)\)</span> obtenemos <span class="math inline">\(d(x,z)-d(y,z)\le d(x,y)\)</span>. Intercambiando <span class="math inline">\(x,y\)</span> y usando simetría obtenemos la cota opuesta; juntas equivalen a</p>
+<p><span class="math display">\[
+\boxed{|d(x,z)-d(y,z)|\le d(x,y).}
+\]</span></p>
+<p>En particular, la distancia a un punto fijo es 1-Lipschitz. La terminología significa que, al mover <span class="math inline">\(x\)</span> una distancia <span class="math inline">\(h\)</span>, el número <span class="math inline">\(d(x,z)\)</span> cambia a lo sumo <span class="math inline">\(h\)</span>. La propiedad que antes demostramos para el valor absoluto es ahora válida para toda distancia métrica: tenemos una generalización auténtica, no sólo un cambio de notación.</p>
+</section>
+<section id="tri-analisis" class="level2">
+<h2 class="anchored" data-anchor-id="tri-analisis">9. Para qué sirve en análisis</h2>
+<p>Las aplicaciones siguientes comparten un gesto intelectual: <strong>introducir un punto, una suma parcial o un valor límite intermedio</strong> para que un error difícil se convierta en dos errores conocidos. La triangular es el paso que hace legítima esa descomposición. No garantiza por sí misma que los errores sean pequeños; esa parte procede de las hipótesis de convergencia, continuidad o completitud que correspondan.</p>
+<section id="tri-limites" class="level3">
+<h3 class="anchored" data-anchor-id="tri-limites">9.1. La regla de la suma de límites</h3>
+<p>Supongamos que <span class="math inline">\(a_n\to a\)</span> y <span class="math inline">\(b_n\to b\)</span> en un espacio normado. La descomposición adecuada del error es</p>
+<p><span class="math display">\[
+\|(a_n+b_n)-(a+b)\|\le\|a_n-a\|+\|b_n-b\|.
+\]</span></p>
+<p>Fijado <span class="math inline">\(\varepsilon&gt;0\)</span>, existen <span class="math inline">\(N_1,N_2\)</span> tales que los dos términos derechos son, respectivamente, menores que <span class="math inline">\(\varepsilon/2\)</span> si <span class="math inline">\(n\ge N_1\)</span> y <span class="math inline">\(n\ge N_2\)</span>. Para <span class="math inline">\(n\ge\max\{N_1,N_2\}\)</span>, el error total es menor que <span class="math inline">\(\varepsilon\)</span>. Esto prueba <span class="math inline">\(a_n+b_n\to a+b\)</span>.</p>
+<p>La selección <span class="math inline">\(\varepsilon/2\)</span> no es una receta independiente: reparte el presupuesto del error entre las partes en que hemos descompuesto la expresión. Si tuviéramos tres sumandos, podríamos asignar <span class="math inline">\(\varepsilon/3\)</span> a cada uno, o repartir <span class="math inline">\(\varepsilon\)</span> de otra manera, siempre que las cotas sumen como máximo el presupuesto previsto. Primero se diseña la descomposición; después se decide cómo distribuir la precisión.</p>
+</section>
+<section id="tri-unicidad" class="level3">
+<h3 class="anchored" data-anchor-id="tri-unicidad">9.2. Unicidad del límite</h3>
+<p>Si <span class="math inline">\(x_n\to a\)</span> y <span class="math inline">\(x_n\to b\)</span>, entonces</p>
+<p><span class="math display">\[
+\|a-b\|\le\|a-x_n\|+\|x_n-b\|.
+\]</span></p>
+<p>Para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span> escogemos <span class="math inline">\(n\)</span> grande de modo que cada término del lado derecho sea menor que <span class="math inline">\(\varepsilon/2\)</span>. Así <span class="math inline">\(\|a-b\|&lt;\varepsilon\)</span>. Si <span class="math inline">\(\|a-b\|&gt;0\)</span>, elegir <span class="math inline">\(\varepsilon=\|a-b\|\)</span> es una contradicción. Por tanto <span class="math inline">\(a=b\)</span>. La misma demostración, con <span class="math inline">\(d\)</span>, funciona en todo espacio métrico.</p>
+<p><strong>Qué hace el punto intermedio.</strong> No conocemos de antemano la distancia entre dos supuestos límites, pero sí conocemos la distancia de cada uno a <span class="math inline">\(x_n\)</span> para <span class="math inline">\(n\)</span> grande. Insertar <span class="math inline">\(x_n\)</span> permite comparar una cantidad fija, <span class="math inline">\(\|a-b\|\)</span>, con dos cantidades que pueden hacerse arbitrariamente pequeñas. La contradicción surge porque una distancia fija positiva no puede ser menor que todo número positivo.</p>
+</section>
+<section id="tri-continuidad" class="level3">
+<h3 class="anchored" data-anchor-id="tri-continuidad">9.3. Continuidad de la norma</h3>
+<p>Como <span class="math inline">\(|\|u\|-\|v\||\le\|u-v\|\)</span>, la aplicación <span class="math inline">\(u\mapsto\|u\|\)</span> es 1-Lipschitz y, en consecuencia, continua: cuando <span class="math inline">\(\|u-v\|&lt;\varepsilon\)</span>, la diferencia de las normas también es menor que <span class="math inline">\(\varepsilon\)</span>. Análogamente, <span class="math inline">\(x\mapsto d(x,z)\)</span> es 1-Lipschitz en un espacio métrico.</p>
+<p>La conclusión dice algo más fuerte que la mera continuidad: la constante de control es exactamente <span class="math inline">\(1\)</span> y no depende del punto alrededor del cual nos movamos. En términos pedagógicos, la desigualdad inversa ha convertido una pregunta sobre límites en una estimación algebraica directa.</p>
+</section>
+<section id="tri-bolas" class="level3">
+<h3 class="anchored" data-anchor-id="tri-bolas">9.4. Las bolas abiertas son abiertas</h3>
+<p>Sea <span class="math inline">\(B(a,r)=\{x:d(a,x)&lt;r\}\)</span>, con <span class="math inline">\(r&gt;0\)</span>. Si <span class="math inline">\(x\in B(a,r)\)</span>, sea <span class="math inline">\(\delta=r-d(a,x)&gt;0\)</span>. Todo <span class="math inline">\(y\)</span> con <span class="math inline">\(d(x,y)&lt;\delta\)</span> verifica</p>
+<p><span class="math display">\[
+d(a,y)\le d(a,x)+d(x,y)&lt;d(a,x)+\delta=r.
+\]</span></p>
+<p>Así, <span class="math inline">\(B(x,\delta)\subseteq B(a,r)\)</span>: cada punto de la bola posee otra bola contenida en ella.</p>
+<p>La cantidad <span class="math inline">\(r-d(a,x)\)</span> es el <strong>margen disponible</strong> entre la distancia actual al centro y el radio de la bola. La demostración consiste en escoger el nuevo movimiento menor que ese margen. No se necesita representar la bola como un disco redondo: en una métrica discreta o en una norma no euclidiana, el mismo razonamiento funciona sin modificar una sola desigualdad.</p>
+</section>
+<section id="tri-cauchy" class="level3">
+<h3 class="anchored" data-anchor-id="tri-cauchy">9.5. Series y la hipótesis de completitud</h3>
+<p>Sea <span class="math inline">\(s_n=\sum_{k=1}^n u_k\)</span> en un espacio normado. Si <span class="math inline">\(m&gt;n\)</span>, la versión finita implica</p>
+<p><span class="math display">\[
+\|s_m-s_n\|=\left\|\sum_{k=n+1}^{m}u_k\right\|
+\le\sum_{k=n+1}^{m}\|u_k\|.
+\]</span></p>
+<p>Si <span class="math inline">\(\sum_{k=1}^{\infty}\|u_k\|\)</span> converge, sus colas son pequeñas por el criterio de Cauchy de las series numéricas. Por tanto <span class="math inline">\((s_n)\)</span> es Cauchy. <strong>Para concluir que converge en el mismo espacio es indispensable la completitud</strong> (un espacio de Banach). La triangular por sí sola no produce el límite.</p>
+<p>Es importante localizar exactamente lo demostrado: las sumas parciales se aproximan <strong>entre sí</strong>, pero aún no hemos encontrado un elemento del espacio al cual converjan. En <span class="math inline">\(\mathbb Q\)</span> con la distancia usual existen sucesiones racionales de Cauchy que se aproximan a <span class="math inline">\(\sqrt2\)</span> y carecen de límite racional. La completitud es la hipótesis que permite pasar de «los términos terminan próximos entre sí» a «hay un límite dentro del espacio».</p>
+</section>
+<section id="tri-estrategia" class="level3">
+<h3 class="anchored" data-anchor-id="tri-estrategia">9.6. El patrón común</h3>
+<p>En cada prueba se inserta una referencia intermedia:</p>
+<p><span class="math display">\[
+\boxed{\text{error total}=\text{primer error}+\text{segundo error}.}
+\]</span></p>
+<p>Después se aplica la triangular y se controla cada término por separado. En general, para puntos <span class="math inline">\(x,y,z\)</span>,</p>
+<p><span class="math display">\[
+d(x,z)\le d(x,y)+d(y,z).
+\]</span></p>
+<p>La elección estratégica de <span class="math inline">\(y\)</span> suele ser la parte creativa de la demostración. Se reconoce una prueba bien diseñada cuando el punto intermedio no es arbitrario: se elige porque conecta el objeto desconocido con dos situaciones sobre las que las hipótesis ya ofrecen información. Así, la triangular es una herramienta de estimación y también un método para <strong>inventar la descomposición correcta</strong>.</p>
+</section>
+</section>
+<section id="tri-errores" class="level2">
+<h2 class="anchored" data-anchor-id="tri-errores">10. Errores previsibles y comprobaciones</h2>
+<ol type="1">
+<li><strong>Cambiar <span class="math inline">\(\le\)</span> por <span class="math inline">\(\ge\)</span>.</strong> <span class="math inline">\(|1+(-1)|=0\)</span>, pero <span class="math inline">\(|1|+|-1|=2\)</span>.</li>
+<li><strong>Olvidar los dos sentidos en la inversa.</strong> Una sola estimación de <span class="math inline">\(|x|-|y|\)</span> no basta para acotar su valor absoluto.</li>
+<li><strong>Suponer igualdad sólo para vectores paralelos en cualquier norma.</strong> El contraejemplo <span class="math inline">\(\ell^1\)</span> de §7.2 lo refuta.</li>
+<li><strong>Confundir demostración con definición.</strong> Es teorema para el módulo complejo concreto; es axioma de una norma abstracta y de una métrica.</li>
+<li><strong>Deducir convergencia a partir de Cauchy en un espacio no completo.</strong> La prueba de §9.5 termina en Cauchy salvo que se añada completitud.</li>
+<li><strong>Importar pruebas fuera del orden deductivo.</strong> La versión avanzada de Hölder/Minkowski de §7.3 usa cálculo diferencial; un tratado que aún no ha desarrollado derivadas necesita otra prueba autorizada o debe posponerla.</li>
+</ol>
+</section>
+<section id="tri-actividad" class="level2">
+<h2 class="anchored" data-anchor-id="tri-actividad">11. Actividades de reconstrucción</h2>
+<p><strong>A. Lectura de una definición.</strong> Reconstruye por qué <span class="math inline">\(|t|\le r\)</span> equivale a dos desigualdades ordinarias cuando <span class="math inline">\(r\ge0\)</span>. Señala dónde se usa que el orden sea total.</p>
+<p><strong>B. Diagnóstico.</strong> Un estudiante afirma que <span class="math inline">\(|x+y|\ge|x|+|y|\)</span> porque «el recorrido contiene dos tramos». Da un contraejemplo numérico y explica qué confunde el argumento.</p>
+<p><strong>C. Variación.</strong> Prueba <span class="math inline">\(|x-z|\le|x-y|+|y-z|\)</span> partiendo de la versión aditiva. Identifica la sustitución exacta.</p>
+<p><strong>D. Igualdad.</strong> Encuentra dos vectores de <span class="math inline">\(\mathbb R^2\)</span> no proporcionales con igualdad para <span class="math inline">\(\|\cdot\|_1\)</span>. Explica por qué no contradicen la afirmación euclidiana.</p>
+<p><strong>E. Transferencia, con solución.</strong> Prueba que, si <span class="math inline">\(x_n\to x\)</span> en un espacio métrico y <span class="math inline">\(z\)</span> es fijo, entonces <span class="math inline">\(d(x_n,z)\to d(x,z)\)</span>.</p>
+<p><strong>Solución.</strong> Por la desigualdad inversa métrica,</p>
+<p><span class="math display">\[
+|d(x_n,z)-d(x,z)|\le d(x_n,x).
+\]</span></p>
+<p>Como el miembro derecho tiende a cero, para cada <span class="math inline">\(\varepsilon&gt;0\)</span> es menor que <span class="math inline">\(\varepsilon\)</span> para todo <span class="math inline">\(n\)</span> suficientemente grande; lo mismo ocurre con el izquierdo. Es exactamente la definición del límite de la sucesión real <span class="math inline">\(d(x_n,z)\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="tri-sintesis" class="level2">
+<h2 class="anchored" data-anchor-id="tri-sintesis">12. Síntesis: una propiedad, varias funciones matemáticas</h2>
+<p>El recorrido comenzó con un hecho sobre longitudes de segmentos. En un cuerpo ordenado se convirtió en un teorema elemental del valor absoluto; en el plano complejo y en <span class="math inline">\(\mathbb R^n\)</span>, en una consecuencia de identidades cuadráticas y de Cauchy–Schwarz; en <span class="math inline">\(\ell^p\)</span>, en la desigualdad de Minkowski; y, finalmente, en una propiedad definitoria de normas y métricas.</p>
+<p>El cambio de contexto no debe ocultar lo que permanece: <strong>una magnitud compuesta puede controlarse mediante magnitudes más sencillas</strong>. Tampoco debe ocultar lo que cambia: la demostración concreta, las hipótesis, los casos de igualdad y el punto del desarrollo deductivo en que estamos autorizados a utilizar cada resultado. En análisis, esta atención a la estructura y a las dependencias hace posible estimar errores sin confundir una buena cota con una identidad, ni una sucesión de Cauchy con una sucesión necesariamente convergente.</p>
+<section id="tri-fuentes-historicas" class="level3">
+<h3 class="anchored" data-anchor-id="tri-fuentes-historicas">Fuentes para el contexto histórico</h3>
+<ul>
+<li>Euclides, <em>Elementos</em>, libro I, proposición 20; texto en la edición de T. L. Heath (1908): <a href="https://www.maths.tcd.ie/~dwilkins/Courses/MA232A/Euclid_ETexts/EuclidBookI_Heath1908/EuclidBookIProp20_Heath1908.php">Trinity College Dublin, Euclid e-texts</a>.</li>
+<li><em>Encyclopedia of Mathematics</em>, «<a href="https://encyclopediaofmath.org/wiki/Cauchy-Schwarz_inequality">Cauchy–Schwarz inequality</a>»: versión finita atribuida a Cauchy (1821) y distinción de la versión integral.</li>
+<li><em>Encyclopedia of Mathematics</em>, «<a href="https://encyclopediaofmath.org/wiki/Minkowski_inequality">Minkowski inequality</a>»: formulaciones para sumas y generalizaciones.</li>
+<li>MacTutor, «<a href="https://mathshistory.st-andrews.ac.uk/Biographies/Frechet/">Maurice Fréchet</a>»; <em>Notices of the American Mathematical Society</em>, <a href="https://doi.org/10.1090/noti2776">artículo sobre historia de los espacios métricos</a>.</li>
+</ul>
+<hr>
+<p><strong>Referencia deductiva.</strong> La <a href="../../libros/capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.html#ta-desigualdad-triangular">formulación del <em>Tratado de análisis</em>, Teorema 4.2.3</a> conserva su demostración en el tratado. El laboratorio complementa, pero no sustituye, las pruebas de este artículo.</p>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
