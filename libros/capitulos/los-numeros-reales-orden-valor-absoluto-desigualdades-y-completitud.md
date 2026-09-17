@@ -77,3 +77,25 @@ Las demostraciones de esta sección se complementan con el artículo [La desigua
 {{< include _calculo-t1-c02-07.md >}}
 
 {{< include _calculo-t1-c02-08.md >}}
+
+{{< include _calculo-t1-c02-09.md >}}
+
+{{< include _calculo-t1-c02-10.md >}}
+
+{{< include _calculo-t1-c02-11a.md >}}
+
+{{< include _calculo-t1-c02-11b.md >}}
+
+{{< include _calculo-t1-c02-11c.md >}}
+
+{{< include _calculo-t1-c02-11d.md >}}
+
+{{< include _calculo-t1-c02-11e.md >}}
+
+{{< include _calculo-t1-c02-11f.md >}}
+
+{{< include _calculo-t1-c02-11g.md >}}
+
+{{< include _calculo-t1-c02-11h.md >}}
+
+{{< include _calculo-t1-c02-11i.md >}}
