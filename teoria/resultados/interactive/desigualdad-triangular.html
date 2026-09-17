@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laboratorio interactivo de la desigualdad triangular · Matemática Abierta</title>
+  <link rel="stylesheet" href="desigualdad-triangular.css">
+  <script src="desigualdad-triangular.js" defer></script>
+</head>
+<body>
+<main class="lab" id="lab">
+  <header class="lab-header">
+    <p class="eyebrow">Matemática Abierta · MA-APP-0001</p>
+    <h1>Laboratorio interactivo de la desigualdad triangular</h1>
+    <p>Mueve el punto intermedio, compara los dos recorridos y reconstruye la demostración.</p>
+  </header>
+  <nav class="modes" role="tablist" aria-label="Vistas del laboratorio">
+    <button type="button" role="tab" id="tab-plane" aria-controls="panel-plane" aria-selected="true" data-mode="plane">1. Tres puntos</button>
+    <button type="button" role="tab" id="tab-real" aria-controls="panel-real" aria-selected="false" tabindex="-1" data-mode="real">2. Recta real</button>
+    <button type="button" role="tab" id="tab-proof" aria-controls="panel-proof" aria-selected="false" tabindex="-1" data-mode="proof">3. Demostración</button>
+  </nav>
+  <section role="tabpanel" id="panel-plane" aria-labelledby="tab-plane">
+    <h2>Distancia directa frente a recorrido quebrado</h2>
+    <p>Arrastra B o modifica sus coordenadas. A y C permanecen fijos en cada configuración; puedes cambiarlos con los casos preparados.</p>
+    <div class="layout">
+      <div class="visual">
+        <svg id="plane-svg" viewBox="0 0 600 440" role="img" aria-labelledby="plane-title plane-desc" touch-action="none">
+          <title id="plane-title">Puntos A, B y C en el plano euclidiano</title>
+          <desc id="plane-desc">El segmento directo A–C se compara con los tramos A–B y B–C. Los valores exactos y aproximados están en el panel de resultados.</desc>
+          <g id="plane-grid"></g>
+          <path id="plane-direct" class="direct" d="M110 220 L254 52"></path>
+          <path id="plane-route" class="route" d="M110 220 L254 220 L254 52"></path>
+          <g id="plane-points"></g>
+        </svg>
+        <p class="legend"><span class="key direct-key">━━</span> Distancia directa AC <span class="key route-key">┄┄</span> Recorrido A–B–C</p>
+      </div>
+      <div class="controls">
+        <label for="plane-preset">Configuración</label>
+        <select id="plane-preset">
+          <option value="triangle">Triángulo genuino</option>
+          <option value="inside">Igualdad interior</option>
+          <option value="outside">Alineados, pero desviados</option>
+          <option value="endpoint">Punto intermedio en el extremo</option>
+          <option value="same-ends">Extremos coincidentes</option>
+          <option value="same-all">Tres puntos coincidentes</option>
+        </select>
+        <fieldset class="coords"><legend>Coordenadas de B (también editables con teclado)</legend>
+          <label for="bx">B<sub>x</sub><input type="number" id="bx" min="-2" max="9" step="0.05" value="3" inputmode="decimal"></label>
+          <label for="by">B<sub>y</sub><input type="number" id="by" min="-4.5" max="4.5" step="0.05" value="0" inputmode="decimal"></label>
+        </fieldset>
+        <p id="plane-input-error" class="error" role="alert" hidden></p>
+        <label class="check"><input id="show-direct" type="checkbox" checked> Mostrar distancia directa</label>
+        <label class="check"><input id="show-route" type="checkbox" checked> Mostrar recorrido</label>
+        <div class="actions"><button type="button" id="plane-equal">Mostrar igualdad</button><button type="button" id="plane-outside">¿Basta con estar alineados?</button><button type="button" id="plane-reset">Restablecer</button></div>
+      </div>
+    </div>
+    <div class="results" aria-label="Resultados geométricos"><p><strong>Distancia directa:</strong> <span id="plane-d">5</span></p><p><strong>Recorrido pasando por B:</strong> <span id="plane-r">7</span></p><p><strong>Exceso del recorrido:</strong> <span id="plane-gap">2</span></p><p class="equation">d(A,C) ≤ d(A,B) + d(B,C)</p><p id="plane-message">Desigualdad estricta: el recorrido mide 7 y la distancia directa, 5.</p></div>
+    <fieldset class="prediction"><legend>Antes de demostrar: si mueves B, ¿podrá el recorrido ser menor que la distancia directa?</legend><label><input type="radio" name="prediction" value="yes"> Sí</label><label><input type="radio" name="prediction" value="no"> No</label><label><input type="radio" name="prediction" value="unsure"> No lo sé</label><p id="prediction-message" aria-live="polite">Elige una respuesta y contrástala con los casos de igualdad y retroceso.</p></fieldset>
+    <p class="note">Las cifras del dibujo son aproximaciones numéricas. Los casos preparados se certifican por sus coordenadas; arrastrar puntos no constituye una demostración universal.</p>
+    <button type="button" class="to-proof">Ver demostración</button>
+  </section>
+  <section role="tabpanel" id="panel-real" aria-labelledby="tab-real" hidden>
+    <h2>Valor absoluto: desplazamiento y longitud recorrida</h2>
+    <p>Los signos expresan dirección; el valor absoluto mide magnitud. Cambia x e y e investiga cuándo se cancelan.</p>
+    <div class="layout"><div class="visual"><svg id="real-svg" viewBox="0 0 600 240" role="img" aria-labelledby="real-title real-desc"><title id="real-title">Desplazamientos en la recta real</title><desc id="real-desc">Se representa el trayecto de 0 a x, luego de x a x+y, y el desplazamiento directo de 0 a x+y.</desc><g id="real-figure"></g></svg><p class="legend"><span class="key direct-key">━━</span> Magnitud directa <span class="key route-key">┄┄</span> Dos desplazamientos</p></div>
+    <div class="controls"><label for="real-preset">Ejemplo preparado</label><select id="real-preset"><option value="same">Mismo sentido: x=2, y=3</option><option value="cancel">Cancelación: x=5, y=−3</option><option value="zero">Un movimiento nulo: x=0, y=−4</option><option value="negative">Ambos negativos: x=−2, y=−3</option><option value="opposite">Cancelación completa: x=1, y=−1</option></select><div class="real-controls"><label for="real-x">x: <output id="real-x-out">2</output><input type="range" id="real-x" min="-10" max="10" step="0.5" value="2"></label><label for="real-y">y: <output id="real-y-out">3</output><input type="range" id="real-y" min="-10" max="10" step="0.5" value="3"></label></div><div class="actions"><button type="button" id="real-equal">Igualdad</button><button type="button" id="real-cancel">Cancelación</button><button type="button" id="real-reset">Restablecer</button></div></div></div>
+    <div class="results" aria-label="Resultados sobre la recta"><p><strong>|x+y|:</strong> <span id="real-d">5</span></p><p><strong>|x|+|y|:</strong> <span id="real-r">5</span></p><p><strong>Exceso:</strong> <span id="real-gap">0</span></p><p class="equation">|x+y| ≤ |x| + |y|</p><p id="real-message">Igualdad: no hay cancelación.</p></div><p class="note">Pregunta: ¿cómo cambia el exceso al invertir el signo de un sumando sin cambiar su magnitud? Criterio exacto para los números introducidos: |x+y|=|x|+|y| si, y sólo si, xy≥0. <a href="../desigualdad-triangular.html#tri-igualdad-real" target="_parent">Consulta la prueba escalar en el artículo</a>.</p><button type="button" class="to-proof">Ver demostración euclidiana</button>
+  </section>
+  <section role="tabpanel" id="panel-proof" aria-labelledby="tab-proof" hidden>
+    <h2>De la imagen a una demostración general</h2><p>Los ejemplos sugieren la desigualdad. Ahora razonaremos para puntos arbitrarios A, B y C del plano, sin utilizar medidas redondeadas.</p><div class="proof"><p id="proof-count">Paso 0 de 7</p><h3 id="proof-heading">Preparación</h3><div id="proof-content"><p>Consideraremos puntos arbitrarios. Selecciona «Siguiente» para reconstruir la prueba.</p></div><p id="proof-reason" class="reason">La demostración emplea Cauchy–Schwarz, probado en el artículo.</p><div class="actions"><button type="button" id="proof-prev" disabled>Anterior</button><button type="button" id="proof-next">Siguiente</button><button type="button" id="proof-reset">Reiniciar demostración</button></div></div><p><a href="../desigualdad-triangular.html#tri-euclidiana" target="_parent">Ver la demostración completa de Cauchy–Schwarz y la triangular euclidiana</a>. Para una métrica abstracta, la propiedad triangular se exige como axioma: esta prueba euclidiana no demuestra todos los casos.</p><div class="transfer"><strong>Transferencia al análisis.</strong> Si B es una aproximación intermedia entre A y un objetivo C, el error total está acotado por los errores parciales: d(A,C) ≤ d(A,B) + d(B,C). <a href="../desigualdad-triangular.html#tri-analisis" target="_parent">Aplicaciones a límites y convergencia</a>.</div></section>
+  <footer>La figura ayuda a formular una conjetura; la demostración explica por qué vale para cualquier configuración euclidiana. · <a href="../desigualdad-triangular.html#tri-intuicion" target="_parent">Artículo MA-ART-0003</a></footer>
+  <noscript><p class="fallback">Sin JavaScript: para A=(0,0), B=(3,0) y C=(3,4), la distancia directa es 5 y el recorrido vale 3+4=7. La prueba para todos los casos está en <a href="../desigualdad-triangular.html#tri-euclidiana" target="_parent">el artículo de la desigualdad triangular</a>.</p></noscript>
+</main>
+</body>
+</html>
