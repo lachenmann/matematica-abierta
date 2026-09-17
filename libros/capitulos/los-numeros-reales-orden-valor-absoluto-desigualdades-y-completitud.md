@@ -38,7 +38,7 @@ related:
   - MA-CON-0002
   - MA-CON-0016
   - MA-PRB-0006
-  - MA-ART-0002
+  - MA-ART-0003
   - MA-BOK-0001
 provenance:
   type: original
@@ -65,7 +65,7 @@ license: GFDL-1.3-or-later
 {{< include _calculo-t1-c02-03.md >}}
 
 ::: {.callout-note title="Referencia transversal: desigualdad triangular"}
-Las demostraciones de esta sección se complementan con el artículo [La desigualdad triangular: demostraciones, variantes y su papel en el análisis](../../teoria/resultados/desigualdad-triangular.qmd) (`MA-ART-0002`). Consulta directamente la [desigualdad en cuerpos ordenados](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) o su [variante inversa](../../teoria/resultados/desigualdad-triangular.qmd#tri-inversa), según el resultado citado.
+Las demostraciones de esta sección se complementan con el artículo [La desigualdad triangular: demostraciones, variantes y su papel en el análisis](../../teoria/resultados/desigualdad-triangular.qmd) (`MA-ART-0003`). Consulta directamente la [desigualdad en cuerpos ordenados](../../teoria/resultados/desigualdad-triangular.qmd#tri-cuerpo-ordenado) o su [variante inversa](../../teoria/resultados/desigualdad-triangular.qmd#tri-inversa), según el resultado citado.
 :::
 
 {{< include _calculo-t1-c02-04.md >}}
@@ -77,25 +77,3 @@ Las demostraciones de esta sección se complementan con el artículo [La desigua
 {{< include _calculo-t1-c02-07.md >}}
 
 {{< include _calculo-t1-c02-08.md >}}
-
-{{< include _calculo-t1-c02-09.md >}}
-
-{{< include _calculo-t1-c02-10.md >}}
-
-{{< include _calculo-t1-c02-11a.md >}}
-
-{{< include _calculo-t1-c02-11b.md >}}
-
-{{< include _calculo-t1-c02-11c.md >}}
-
-{{< include _calculo-t1-c02-11d.md >}}
-
-{{< include _calculo-t1-c02-11e.md >}}
-
-{{< include _calculo-t1-c02-11f.md >}}
-
-{{< include _calculo-t1-c02-11g.md >}}
-
-{{< include _calculo-t1-c02-11h.md >}}
-
-{{< include _calculo-t1-c02-11i.md >}}
