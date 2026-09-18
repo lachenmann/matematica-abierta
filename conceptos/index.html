@@ -504,6 +504,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="../conceptos/continuidad-uniforme-y-teorema-de-heine-cantor.html">Continuidad uniforme y teorema de Heine–Cantor</a> — Distinguir continuidad puntual de control uniforme y usar la compacidad para demostrar que toda función continua sobre un compacto es uniformemente continua. (<code>MA-CON-0019</code>)</li>
 <li><a href="../conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.html">Axiomas de cuerpo y consecuencias algebraicas básicas</a> — Separar axiomas de consecuencias y deducir la aritmética estructural de neutros, inversos, cancelación, producto nulo, división y ecuaciones lineales. (<code>MA-CON-0020</code>)</li>
 <li><a href="../conceptos/norma-en-matematicas.html"><strong>La norma en matemáticas: medir magnitudes, distancias y estructuras</strong></a> — De Pitágoras a los axiomas de norma, ejemplos, desigualdades, equivalencia, funciones, operadores y completitud. (<code>MA-ART-0006</code>)</li>
+<li><a href="../conceptos/supremo-infimo-maximo-minimo.html"><strong>Supremo e ínfimo: cotas óptimas, máximo y mínimo</strong></a> — Construcción formal, criterios épsilon y laboratorio geométrico interactivo. (<code>MA-ART-0007</code>)</li>
 </ul>
 </section>
 <section id="mapa-de-relaciones" class="level2">
@@ -645,6 +646,12 @@ ul.task-list li input[type="checkbox"] {
 <td><code>MA-ART-0003</code>, <code>MA-ART-0004</code>; métricas, convergencia, operadores</td>
 <td>—</td>
 </tr>
+<tr class="even">
+<td><a href="../conceptos/supremo-infimo-maximo-minimo.html">Supremo e ínfimo: cotas óptimas, máximo y mínimo</a> (<code>MA-ART-0007</code>)</td>
+<td><code>MA-CON-0005</code>, <code>MA-CON-0016</code></td>
+<td><code>MA-ART-0002</code>, <code>MA-ART-0006</code>; completitud, extremos</td>
+<td>Ejercicios 1–5 del artículo</td>
+</tr>
 </tbody>
 </table>
 
@@ -653,6 +660,63 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 </main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

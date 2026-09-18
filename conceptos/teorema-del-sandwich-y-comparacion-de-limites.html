@@ -1223,6 +1223,63 @@ h(x)\to L,
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

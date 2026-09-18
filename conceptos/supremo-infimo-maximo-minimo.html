@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Definiciones y demostraciones de cotas óptimas, criterios épsilon, máximos y mínimos; laboratorio geométrico interactivo.">
+
+<title>Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#i.-construcción-formal" id="toc-i.-construcción-formal" class="nav-link active" data-scroll-target="#i.-construcción-formal">I. Construcción formal</a>
+  <ul class="collapse">
+  <li><a href="#cotas-definiciones" id="toc-cotas-definiciones" class="nav-link" data-scroll-target="#cotas-definiciones">1. Cotas y extremos: cuatro definiciones distintas</a></li>
+  <li><a href="#completitud" id="toc-completitud" class="nav-link" data-scroll-target="#completitud">2. Existencia: el papel preciso de la completitud</a></li>
+  <li><a href="#caracterizacion-epsilon" id="toc-caracterizacion-epsilon" class="nav-link" data-scroll-target="#caracterizacion-epsilon">3. Caracterización aproximativa: la frontera se puede alcanzar arbitrariamente de cerca</a></li>
+  <li><a href="#supremo-maximo" id="toc-supremo-maximo" class="nav-link" data-scroll-target="#supremo-maximo">4. Relación exacta con máximo y mínimo</a></li>
+  <li><a href="#propiedades" id="toc-propiedades" class="nav-link" data-scroll-target="#propiedades">5. Cálculo y comportamiento de las cotas óptimas</a></li>
+  <li><a href="#ejemplos-formales" id="toc-ejemplos-formales" class="nav-link" data-scroll-target="#ejemplos-formales">6. Ejemplos calculados antes de mirar los diagramas</a></li>
+  </ul></li>
+  <li><a href="#intuicion" id="toc-intuicion" class="nav-link" data-scroll-target="#intuicion">II. Traducción geométrica e intuición</a>
+  <ul class="collapse">
+  <li><a href="#diagramas-recta" id="toc-diagramas-recta" class="nav-link" data-scroll-target="#diagramas-recta">7. Cómo leer una recta numérica</a></li>
+  <li><a href="#diagrama-epsilon" id="toc-diagrama-epsilon" class="nav-link" data-scroll-target="#diagrama-epsilon">8. La banda <span class="math inline">\(\varepsilon\)</span>: por qué ninguna cota menor basta</a></li>
+  <li><a href="#diagrama-disco" id="toc-diagrama-disco" class="nav-link" data-scroll-target="#diagrama-disco">9. Del intervalo al disco: una frontera en dos dimensiones</a></li>
+  <li><a href="#laboratorio" id="toc-laboratorio" class="nav-link" data-scroll-target="#laboratorio">10. Laboratorio manipulable</a></li>
+  </ul></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">III. Verificación de comprensión</a>
+  <ul class="collapse">
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones comentadas breves</a></li>
+  <li><a href="#relaciones" id="toc-relaciones" class="nav-link" data-scroll-target="#relaciones">Relaciones y procedencia</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo</h1>
+</div>
+
+<div>
+  <div class="description">
+    Definiciones y demostraciones de cotas óptimas, criterios épsilon, máximos y mínimos; laboratorio geométrico interactivo.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">18 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tesis</strong> El <strong>supremo</strong> es la menor de las cotas superiores de un conjunto; el <strong>ínfimo</strong>, la mayor de sus cotas inferiores. El <strong>máximo</strong> y el <strong>mínimo</strong> exigen algo más: pertenecer al conjunto. Ésta es una distinción de orden, no una diferencia entre notaciones.</p>
+</div>
+</div>
+<p>El análisis requiere hablar con precisión de conjuntos que se aproximan a un extremo sin alcanzarlo. La notación «el mayor valor» resulta insuficiente: puede no haber ningún elemento mayor que todos los demás y, sin embargo, existir una frontera exacta por encima de la cual todos quedan situados. Desarrollaremos primero la teoría deductiva en <span class="math inline">\(\mathbb R\)</span>; después la traduciremos a la recta, al plano y a un laboratorio manipulable.</p>
+<p><strong>Prerrequisitos.</strong> Orden de los reales, desigualdades, intervalos y cuantificadores. Utilizaremos la propiedad de completitud de <span class="math inline">\(\mathbb R\)</span> de forma explícita; cuando trabajemos en otro conjunto ordenado, lo indicaremos.</p>
+<section id="i.-construcción-formal" class="level2">
+<h2 class="anchored" data-anchor-id="i.-construcción-formal">I. Construcción formal</h2>
+<section id="cotas-definiciones" class="level3">
+<h3 class="anchored" data-anchor-id="cotas-definiciones">1. Cotas y extremos: cuatro definiciones distintas</h3>
+<p><strong>Definición 1 (cota superior e inferior).</strong> Sea <span class="math inline">\(A\subseteq\mathbb R\)</span>. Un número <span class="math inline">\(u\in\mathbb R\)</span> es una <strong>cota superior</strong> de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[\forall a\in A,\quad a\le u.\]</span></p>
+<p>Un número <span class="math inline">\(\ell\in\mathbb R\)</span> es una <strong>cota inferior</strong> de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[\forall a\in A,\quad \ell\le a.\]</span></p>
+<p>Diremos que <span class="math inline">\(A\)</span> está <em>acotado superiormente</em> si admite alguna cota superior, <em>acotado inferiormente</em> si admite alguna cota inferior y <em>acotado</em> si cumple ambas condiciones. Ninguna de estas definiciones exige que <span class="math inline">\(u\)</span> o <span class="math inline">\(\ell\)</span> pertenezcan a <span class="math inline">\(A\)</span>.</p>
+<p><strong>Definición 2 (supremo).</strong> El número <span class="math inline">\(s\in\mathbb R\)</span> es el <strong>supremo</strong> de <span class="math inline">\(A\)</span>, y escribimos <span class="math inline">\(s=\sup A\)</span>, si cumple simultáneamente:</p>
+<ol type="1">
+<li><span class="math inline">\(\forall a\in A,\ a\le s\)</span> (es cota superior);</li>
+<li><span class="math inline">\(\forall u\in\mathbb R,\ [ (\forall a\in A,\ a\le u)\Rightarrow s\le u]\)</span> (es la menor de todas las cotas superiores).</li>
+</ol>
+<p><strong>Definición 3 (ínfimo).</strong> El número <span class="math inline">\(i\in\mathbb R\)</span> es el <strong>ínfimo</strong> de <span class="math inline">\(A\)</span>, y escribimos <span class="math inline">\(i=\inf A\)</span>, si:</p>
+<ol type="1">
+<li><span class="math inline">\(\forall a\in A,\ i\le a\)</span> (es cota inferior);</li>
+<li><span class="math inline">\(\forall \ell\in\mathbb R,\ [ (\forall a\in A,\ \ell\le a)\Rightarrow \ell\le i]\)</span> (es la mayor de todas las cotas inferiores).</li>
+</ol>
+<p><strong>Definición 4 (máximo y mínimo).</strong> Un número <span class="math inline">\(M\)</span> es un <strong>máximo</strong> de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[M\in A\quad\text{y}\quad \forall a\in A,\ a\le M.\]</span></p>
+<p>Un número <span class="math inline">\(m\)</span> es un <strong>mínimo</strong> de <span class="math inline">\(A\)</span> si</p>
+<p><span class="math display">\[m\in A\quad\text{y}\quad \forall a\in A,\ m\le a.\]</span></p>
+<p>Una cota superior puede estar muy por encima de <span class="math inline">\(A\)</span>; el supremo es la cota superior ajustada. En cambio, «máximo» significa que uno de los elementos realiza efectivamente el extremo. Los enunciados duales corresponden al ínfimo y al mínimo.</p>
+<p><strong>Proposición 1 (unicidad).</strong> Si existe, cada uno de los cuatro extremos es único.</p>
+<p><em>Demostración.</em> Si <span class="math inline">\(s\)</span> y <span class="math inline">\(t\)</span> son supremos, cada uno es cota superior; la condición de minimalidad de <span class="math inline">\(s\)</span> da <span class="math inline">\(s\le t\)</span> y la de <span class="math inline">\(t\)</span> da <span class="math inline">\(t\le s\)</span>. Por antisimetría, <span class="math inline">\(s=t\)</span>. El razonamiento dual prueba la unicidad del ínfimo. Si <span class="math inline">\(M,N\)</span> son máximos, ambos pertenecen a <span class="math inline">\(A\)</span>; como <span class="math inline">\(M\)</span> domina a todos, <span class="math inline">\(N\le M\)</span>, y como <span class="math inline">\(N\)</span> domina a todos, <span class="math inline">\(M\le N\)</span>. Así, <span class="math inline">\(M=N\)</span>. La prueba para mínimos es dual. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="completitud" class="level3">
+<h3 class="anchored" data-anchor-id="completitud">2. Existencia: el papel preciso de la completitud</h3>
+<p><strong>Axioma de completitud (propiedad del supremo).</strong> Todo subconjunto no vacío de <span class="math inline">\(\mathbb R\)</span> que está acotado superiormente tiene supremo en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>El axioma garantiza la existencia del supremo <em>bajo dos hipótesis</em>: <span class="math inline">\(A\ne\varnothing\)</span> y acotación superior. No garantiza que el supremo sea elemento del conjunto.</p>
+<p><strong>Teorema 2 (existencia del ínfimo).</strong> Todo subconjunto no vacío de <span class="math inline">\(\mathbb R\)</span> acotado inferiormente tiene ínfimo real.</p>
+<p><em>Demostración.</em> Sea <span class="math inline">\(-A=\{-a:a\in A\}\)</span>. Este conjunto es no vacío. Si <span class="math inline">\(\ell\)</span> es cota inferior de <span class="math inline">\(A\)</span>, entonces <span class="math inline">\(-\ell\)</span> es cota superior de <span class="math inline">\(-A\)</span>. Por completitud existe <span class="math inline">\(s=\sup(-A)\)</span>. Para cualquier <span class="math inline">\(a\in A\)</span> tenemos <span class="math inline">\(-a\le s\)</span>, luego <span class="math inline">\(-s\le a\)</span>: <span class="math inline">\(-s\)</span> es cota inferior de <span class="math inline">\(A\)</span>. Si <span class="math inline">\(b\)</span> es otra cota inferior, <span class="math inline">\(-b\)</span> es cota superior de <span class="math inline">\(-A\)</span>, así que <span class="math inline">\(s\le-b\)</span> y <span class="math inline">\(b\le-s\)</span>. Por definición, <span class="math inline">\(\inf A=-\sup(-A)\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Advertencia sobre el dominio.</strong> En el orden usual de <span class="math inline">\(\mathbb Q\)</span> la propiedad del supremo falla. El conjunto</p>
+<p><span class="math display">\[B=\{q\in\mathbb Q:0&lt;q,\ q^2&lt;2\}\]</span></p>
+<p>es no vacío y está acotado, pero no tiene supremo <em>racional</em>: en <span class="math inline">\(\mathbb R\)</span> su supremo es <span class="math inline">\(\sqrt2\)</span>, que no pertenece a <span class="math inline">\(\mathbb Q\)</span>. La expresión <span class="math inline">\(\sup B\)</span> exige especificar el universo ordenado cuando exista ambigüedad.</p>
+<p><strong>Casos límite.</strong> El conjunto vacío no tiene supremo ni ínfimo <em>reales</em>: cualquier real es simultáneamente cota superior e inferior, y <span class="math inline">\(\mathbb R\)</span> no tiene ni menor ni mayor elemento. Asimismo, un conjunto no acotado superiormente carece de supremo real; uno no acotado inferiormente carece de ínfimo real. En la <strong>recta real extendida</strong>, por convención, se escribe <span class="math inline">\(\sup\varnothing=-\infty\)</span>, <span class="math inline">\(\inf\varnothing=+\infty\)</span>, y se admiten extremos infinitos para conjuntos no acotados. Estas convenciones no producen máximos ni mínimos reales.</p>
+</section>
+<section id="caracterizacion-epsilon" class="level3">
+<h3 class="anchored" data-anchor-id="caracterizacion-epsilon">3. Caracterización aproximativa: la frontera se puede alcanzar arbitrariamente de cerca</h3>
+<p><strong>Teorema 3 (criterio <span class="math inline">\(\varepsilon\)</span> para el supremo).</strong> Sea <span class="math inline">\(A\subseteq\mathbb R\)</span> no vacío y <span class="math inline">\(s\in\mathbb R\)</span>. Son equivalentes:</p>
+<ol type="1">
+<li><p><span class="math inline">\(s=\sup A\)</span>;</p></li>
+<li><p><span class="math inline">\(s\)</span> es cota superior de <span class="math inline">\(A\)</span> y</p>
+<p><span class="math display">\[\forall\varepsilon&gt;0\quad\exists a_\varepsilon\in A:\quad s-\varepsilon&lt;a_\varepsilon\le s.\]</span></p></li>
+</ol>
+<p><em>Demostración, <span class="math inline">\(1\Rightarrow2\)</span>.</em> Si <span class="math inline">\(s=\sup A\)</span>, es cota superior. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, el número <span class="math inline">\(s-\varepsilon&lt;s\)</span> no puede ser una cota superior, pues <span class="math inline">\(s\)</span> es la menor. Por tanto existe <span class="math inline">\(a_\varepsilon\in A\)</span> con <span class="math inline">\(a_\varepsilon&gt;s-\varepsilon\)</span>. La condición de cota da <span class="math inline">\(a_\varepsilon\le s\)</span>.</p>
+<p><em>Demostración, <span class="math inline">\(2\Rightarrow1\)</span>.</em> Supongamos la condición aproximativa. Si hubiera una cota superior <span class="math inline">\(u&lt;s\)</span>, elegiríamos <span class="math inline">\(\varepsilon=s-u&gt;0\)</span>. Existiría <span class="math inline">\(a_\varepsilon\in A\)</span> tal que <span class="math inline">\(u=s-\varepsilon&lt;a_\varepsilon\)</span>, contradicción. Luego toda cota superior es mayor o igual que <span class="math inline">\(s\)</span> y, puesto que <span class="math inline">\(s\)</span> es una de ellas, <span class="math inline">\(s=\sup A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Teorema 4 (criterio <span class="math inline">\(\varepsilon\)</span> para el ínfimo).</strong> Para <span class="math inline">\(A\ne\varnothing\)</span> e <span class="math inline">\(i\in\mathbb R\)</span> son equivalentes:</p>
+<p><span class="math display">\[i=\inf A\]</span></p>
+<p>y la conjunción de «<span class="math inline">\(i\)</span> es cota inferior» con</p>
+<p><span class="math display">\[\forall\varepsilon&gt;0\quad\exists a_\varepsilon\in A:\quad i\le a_\varepsilon&lt;i+\varepsilon.\]</span></p>
+<p><em>Demostración.</em> Si <span class="math inline">\(i\)</span> es la mayor cota inferior, <span class="math inline">\(i+\varepsilon\)</span> no puede ser una cota inferior; algún <span class="math inline">\(a_\varepsilon\)</span> satisface <span class="math inline">\(a_\varepsilon&lt;i+\varepsilon\)</span>, mientras <span class="math inline">\(i\le a_\varepsilon\)</span>. Recíprocamente, si una cota inferior <span class="math inline">\(\ell\)</span> fuera mayor que <span class="math inline">\(i\)</span>, tomar <span class="math inline">\(\varepsilon=\ell-i&gt;0\)</span> produciría <span class="math inline">\(a_\varepsilon&lt;\ell\)</span>, una contradicción. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Cuantificadores</strong> «Para <strong>todo</strong> <span class="math inline">\(\varepsilon&gt;0\)</span> existe <strong>algún</strong> <span class="math inline">\(a_\varepsilon\in A\)</span>» no significa «existe un único <span class="math inline">\(a\in A\)</span> que funciona para todo <span class="math inline">\(\varepsilon\)</span>». El punto testigo puede cambiar con la precisión solicitada. Precisamente esta posibilidad permite que el supremo no pertenezca a <span class="math inline">\(A\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="supremo-maximo" class="level3">
+<h3 class="anchored" data-anchor-id="supremo-maximo">4. Relación exacta con máximo y mínimo</h3>
+<p><strong>Teorema 5 (pertenencia).</strong> Sean <span class="math inline">\(A\subseteq\mathbb R\)</span> no vacío y acotado superiormente, y <span class="math inline">\(s=\sup A\)</span>. Entonces</p>
+<p><span class="math display">\[\boxed{\max A\text{ existe}\ \Longleftrightarrow\ s\in A,\qquad\text{y, si existe, }\max A=s.}\]</span></p>
+<p><em>Demostración.</em> Si existe un máximo <span class="math inline">\(M\)</span>, éste es una cota superior. Como <span class="math inline">\(s\)</span> es la menor cota superior, <span class="math inline">\(s\le M\)</span>. Puesto que <span class="math inline">\(M\in A\)</span> y <span class="math inline">\(s\)</span> es cota superior, <span class="math inline">\(M\le s\)</span>. Por tanto <span class="math inline">\(s=M\in A\)</span>. Recíprocamente, si <span class="math inline">\(s\in A\)</span>, la condición de cota superior asegura <span class="math inline">\(a\le s\)</span> para todo <span class="math inline">\(a\in A\)</span>; luego <span class="math inline">\(s\)</span> es el máximo. <span class="math inline">\(\square\)</span></p>
+<p><strong>Teorema 6 (dualidad).</strong> Si <span class="math inline">\(A\ne\varnothing\)</span> está acotado inferiormente e <span class="math inline">\(i=\inf A\)</span>, entonces</p>
+<p><span class="math display">\[\boxed{\min A\text{ existe}\ \Longleftrightarrow\ i\in A,\qquad\text{y, si existe, }\min A=i.}\]</span></p>
+<p><em>Demostración.</em> Si <span class="math inline">\(m=\min A\)</span>, es cota inferior, así que <span class="math inline">\(m\le i\)</span>; como <span class="math inline">\(m\in A\)</span> e <span class="math inline">\(i\)</span> es cota inferior, <span class="math inline">\(i\le m\)</span>. Luego <span class="math inline">\(i=m\in A\)</span>. Si <span class="math inline">\(i\in A\)</span>, domina inferiormente a todos los elementos y por tanto es mínimo. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corolario 7.</strong> Todo conjunto finito no vacío de números reales tiene máximo y mínimo, y ambos coinciden respectivamente con su supremo e ínfimo.</p>
+<p><em>Demostración.</em> Para un conjunto de un elemento la afirmación es inmediata. Al añadir un elemento <span class="math inline">\(x\)</span> a un conjunto finito que ya tiene máximo <span class="math inline">\(M\)</span> y mínimo <span class="math inline">\(m\)</span>, los nuevos extremos son <span class="math inline">\(\max\{M,x\}\)</span> y <span class="math inline">\(\min\{m,x\}\)</span>. Por inducción todos los conjuntos finitos no vacíos admiten ambos extremos; se aplican los teoremas 5 y 6. <span class="math inline">\(\square\)</span></p>
+<p><strong>Consecuencia importante.</strong> Un conjunto infinito puede tener máximo y mínimo, uno solo o ninguno. La infinitud por sí misma no decide la existencia de extremos realizados.</p>
+</section>
+<section id="propiedades" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades">5. Cálculo y comportamiento de las cotas óptimas</h3>
+<p><strong>Proposición 8 (inclusión y orden).</strong> Si <span class="math inline">\(\varnothing\ne A\subseteq B\subseteq\mathbb R\)</span> y <span class="math inline">\(B\)</span> está acotado, entonces</p>
+<p><span class="math display">\[\inf B\le\inf A\le\sup A\le\sup B.\]</span></p>
+<p><em>Demostración.</em> Toda cota superior de <span class="math inline">\(B\)</span> también acota superiormente a <span class="math inline">\(A\)</span>; en particular <span class="math inline">\(\sup B\)</span> es cota superior de <span class="math inline">\(A\)</span>, de donde <span class="math inline">\(\sup A\le\sup B\)</span>. Análogamente, <span class="math inline">\(\inf B\)</span> es cota inferior de <span class="math inline">\(A\)</span>, así que <span class="math inline">\(\inf B\le\inf A\)</span>. Elegido <span class="math inline">\(a\in A\)</span>, se cumple <span class="math inline">\(\inf A\le a\le\sup A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 9 (unión finita).</strong> Si <span class="math inline">\(A,B\ne\varnothing\)</span> están acotados superior e inferiormente, entonces</p>
+<p><span class="math display">\[\sup(A\cup B)=\max\{\sup A,\sup B\},\qquad
+\inf(A\cup B)=\min\{\inf A,\inf B\}.\]</span></p>
+<p><em>Demostración.</em> El mayor de ambos supremos acota superiormente a la unión. Cualquier cota superior de la unión es cota superior de cada conjunto, de modo que no puede ser menor que ninguno de los dos supremos; por tanto no es menor que su máximo. La segunda identidad se obtiene intercambiando «superior/mayor» por «inferior/menor». <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 10 (traslación y cambio de escala).</strong> Si <span class="math inline">\(A\ne\varnothing\)</span> está acotado y <span class="math inline">\(t\in\mathbb R\)</span>, escribamos <span class="math inline">\(A+t=\{a+t:a\in A\}\)</span> y <span class="math inline">\(\lambda A=\{\lambda a:a\in A\}\)</span>. Entonces</p>
+<p><span class="math display">\[\sup(A+t)=\sup A+t,\qquad\inf(A+t)=\inf A+t.\]</span></p>
+<p>Para <span class="math inline">\(\lambda&gt;0\)</span>,</p>
+<p><span class="math display">\[\sup(\lambda A)=\lambda\sup A,\qquad\inf(\lambda A)=\lambda\inf A;\]</span></p>
+<p>y para <span class="math inline">\(\lambda&lt;0\)</span>,</p>
+<p><span class="math display">\[\sup(\lambda A)=\lambda\inf A,\qquad\inf(\lambda A)=\lambda\sup A.\]</span></p>
+<p>Si <span class="math inline">\(\lambda=0\)</span>, ambos extremos de <span class="math inline">\(\lambda A=\{0\}\)</span> son <span class="math inline">\(0\)</span>.</p>
+<p><em>Demostración.</em> Sumar <span class="math inline">\(t\)</span> o multiplicar por un escalar positivo conserva las desigualdades y transforma las cotas en correspondencia biyectiva, preservando su orden. Un escalar negativo invierte el orden: las cotas superiores de <span class="math inline">\(\lambda A\)</span> corresponden a las cotas inferiores de <span class="math inline">\(A\)</span> y viceversa. Para <span class="math inline">\(\lambda=0\)</span> la imagen es el conjunto unitario indicado. <span class="math inline">\(\square\)</span></p>
+<p><strong>Teorema 11 (suma de conjuntos).</strong> Sean <span class="math inline">\(A,B\subseteq\mathbb R\)</span> no vacíos y acotados, y sea <span class="math inline">\(A+B=\{a+b:a\in A,\ b\in B\}\)</span>. Entonces</p>
+<p><span class="math display">\[\boxed{\sup(A+B)=\sup A+\sup B,\qquad\inf(A+B)=\inf A+\inf B.}\]</span></p>
+<p><em>Demostración.</em> Sean <span class="math inline">\(s=\sup A\)</span> y <span class="math inline">\(t=\sup B\)</span>. Para todo <span class="math inline">\(a\in A\)</span>, <span class="math inline">\(b\in B\)</span>, tenemos <span class="math inline">\(a+b\le s+t\)</span>; es cota superior. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, el teorema 3 proporciona <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(b\in B\)</span> tales que <span class="math inline">\(a&gt;s-\varepsilon/2\)</span> y <span class="math inline">\(b&gt;t-\varepsilon/2\)</span>. Así, <span class="math inline">\(a+b&gt;s+t-\varepsilon\)</span>. Por el mismo criterio, <span class="math inline">\(s+t=\sup(A+B)\)</span>. Para los ínfimos, aplicamos el teorema 4 con la misma partición de <span class="math inline">\(\varepsilon\)</span> y las desigualdades invertidas. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Una inferencia falsa</strong> De <span class="math inline">\(A\subseteq B\)</span> no se deduce que <span class="math inline">\(\max A\le\max B\)</span> sin verificar antes que <strong>ambos máximos existen</strong>. La desigualdad entre supremos sí está garantizada cuando los conjuntos no vacíos están acotados superiormente.</p>
+</div>
+</div>
+</section>
+<section id="ejemplos-formales" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplos-formales">6. Ejemplos calculados antes de mirar los diagramas</h3>
+<p><strong>Ejemplo 1.</strong> <span class="math inline">\(A=(0,1)\)</span>. Se tiene <span class="math inline">\(\inf A=0\)</span> y <span class="math inline">\(\sup A=1\)</span>. El número <span class="math inline">\(1\)</span> es cota superior; para todo <span class="math inline">\(\varepsilon&gt;0\)</span> sirve, por ejemplo, <span class="math inline">\(a_\varepsilon=1-\min\{\varepsilon/2,1/2\}\in(0,1)\)</span>, que satisface <span class="math inline">\(1-\varepsilon&lt;a_\varepsilon\)</span>. Del mismo modo, <span class="math inline">\(b_\varepsilon=\min\{\varepsilon/2,1/2\}\)</span> acredita el ínfimo. Ni <span class="math inline">\(0\)</span> ni <span class="math inline">\(1\)</span> pertenecen al conjunto: no hay mínimo ni máximo.</p>
+<p><strong>Ejemplo 2.</strong> <span class="math inline">\(B=[0,1]\)</span>. Sus extremos numéricos siguen siendo <span class="math inline">\(\inf B=0\)</span> y <span class="math inline">\(\sup B=1\)</span>, pero ahora <span class="math inline">\(0,1\in B\)</span> y, por los teoremas 5 y 6, <span class="math inline">\(\min B=0\)</span>, <span class="math inline">\(\max B=1\)</span>.</p>
+<p><strong>Ejemplo 3.</strong> <span class="math inline">\(C=(0,1]\)</span>. <span class="math inline">\(\inf C=0\)</span> sin mínimo; <span class="math inline">\(\sup C=1=\max C\)</span>. El conjunto <span class="math inline">\([0,1)\)</span> invierte estos dos comportamientos.</p>
+<p><strong>Ejemplo 4 (sucesión como conjunto).</strong> <span class="math inline">\(D=\{1-1/n:n\in\mathbb N,\ n\ge2\}\)</span>. Para cada <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(1/2\le1-1/n&lt;1\)</span>. Como <span class="math inline">\(1-1/2=1/2\)</span>, <span class="math inline">\(\inf D=\min D=1/2\)</span>. Dado <span class="math inline">\(\varepsilon&gt;0\)</span>, por la propiedad arquimediana existe <span class="math inline">\(n\ge2\)</span> con <span class="math inline">\(n&gt;1/\varepsilon\)</span>; entonces <span class="math inline">\(1-\varepsilon&lt;1-1/n&lt;1\)</span>. Así, <span class="math inline">\(\sup D=1\)</span>; no existe máximo porque <span class="math inline">\(1\notin D\)</span>.</p>
+<p><strong>Ejemplo 5 (un punto aislado altera el extremo).</strong> <span class="math inline">\(E=(0,1)\cup\{2\}\)</span>. El supremo es <span class="math inline">\(2\)</span> y, como <span class="math inline">\(2\in E\)</span>, también es máximo; el ínfimo es <span class="math inline">\(0\)</span>, pero no existe mínimo. El intervalo abierto sigue aportando puntos arbitrariamente próximos a <span class="math inline">\(0\)</span>.</p>
+<p><strong>Ejemplo 6 (sin cota superior).</strong> <span class="math inline">\(F=[0,+\infty)\)</span>. Su ínfimo real y mínimo son <span class="math inline">\(0\)</span>; no posee cota superior ni supremo real ni máximo. Escribir <span class="math inline">\(\sup F=+\infty\)</span> sólo tiene sentido con la convención de los reales extendidos.</p>
+<p><strong>Ejemplo 7 (el cuerpo importa).</strong> Para <span class="math inline">\(B=\{q\in\mathbb Q:0&lt;q,\ q^2&lt;2\}\)</span>, visto como subconjunto de <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(\sup_{\mathbb R}B=\sqrt2\)</span> y <span class="math inline">\(\inf_{\mathbb R}B=0\)</span>. La densidad de <span class="math inline">\(\mathbb Q\)</span> asegura que para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(q\in\mathbb Q\)</span> entre <span class="math inline">\(\max\{0,\sqrt2-\varepsilon\}\)</span> y <span class="math inline">\(\sqrt2\)</span>; tal <span class="math inline">\(q\)</span> pertenece a <span class="math inline">\(B\)</span>. Hay racionales positivos arbitrariamente pequeños, luego el ínfimo es <span class="math inline">\(0\)</span>. No hay máximo ni mínimo. Considerado dentro de <span class="math inline">\(\mathbb Q\)</span>, <span class="math inline">\(B\)</span> no tiene supremo: todo racional menor que <span class="math inline">\(\sqrt2\)</span> deja racionales de <span class="math inline">\(B\)</span> por encima, y cualquier racional mayor que <span class="math inline">\(\sqrt2\)</span> admite otro racional intermedio que sigue siendo cota superior. Como <span class="math inline">\(\sqrt2\notin\mathbb Q\)</span>, no queda ningún candidato.</p>
+</section>
+</section>
+<section id="intuicion" class="level2">
+<h2 class="anchored" data-anchor-id="intuicion">II. Traducción geométrica e intuición</h2>
+<section id="diagramas-recta" class="level3">
+<h3 class="anchored" data-anchor-id="diagramas-recta">7. Cómo leer una recta numérica</h3>
+<p>En un dibujo de <span class="math inline">\(A=(0,1)\)</span>, los extremos <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> aparecen como <strong>círculos vacíos</strong>: señalan una frontera que no es elemento. La zona entre ellos sí representa números del conjunto. Al cerrar el intervalo, <span class="math inline">\([0,1]\)</span>, los círculos pasan a ser <strong>puntos llenos</strong>. Las cotas óptimas no cambian; cambia la pertenencia y, con ella, la existencia de máximo y mínimo.</p>
+<p>No confundamos un círculo abierto con un «número ligeramente menor que <span class="math inline">\(1\)</span>»: no existe el mayor real menor que <span class="math inline">\(1\)</span>. Para cualquier <span class="math inline">\(x&lt;1\)</span> dentro de <span class="math inline">\((0,1)\)</span>, el promedio <span class="math inline">\((x+1)/2\)</span> todavía pertenece al intervalo y es mayor que <span class="math inline">\(x\)</span>. Análogamente, <span class="math inline">\(x/2\)</span> pertenece a él y es menor que <span class="math inline">\(x\)</span>. Este argumento constructivo excluye simultáneamente máximo y mínimo.</p>
+<p>En el laboratorio <a href="../assets/labs/MA-APP-0003-supremo-infimo.html">laboratorio MA-APP-0003</a> hay una recta SVG donde se pueden elegir intervalos abiertos o cerrados, una sucesión de puntos y un conjunto con punto aislado. El cursor <span class="math inline">\(c\)</span> distingue «ser cota superior» de «ser el supremo»; una banda de anchura <span class="math inline">\(\varepsilon\)</span> hace visible el teorema 3. Los puntos dibujados de una sucesión infinita son sólo una <strong>muestra finita</strong>: la afirmación de que no hay máximo depende de la fórmula general, no de la cantidad de puntos que quepan en pantalla.</p>
+</section>
+<section id="diagrama-epsilon" class="level3">
+<h3 class="anchored" data-anchor-id="diagrama-epsilon">8. La banda <span class="math inline">\(\varepsilon\)</span>: por qué ninguna cota menor basta</h3>
+<p>Fijemos <span class="math inline">\(s=\sup A\)</span>. Para cualquier anchura positiva <span class="math inline">\(\varepsilon\)</span>, la franja <span class="math inline">\((s-\varepsilon,s]\)</span> debe contener al menos un elemento de <span class="math inline">\(A\)</span>. Si una franja no contuviera ninguno, <span class="math inline">\(s-\varepsilon\)</span> sería una cota superior menor que <span class="math inline">\(s\)</span>, contradicción. El extremo derecho puede estar lleno o vacío; la existencia del testigo cerca de él no depende de que <span class="math inline">\(s\)</span> pertenezca a <span class="math inline">\(A\)</span>.</p>
+<p>La afirmación dual es que toda franja <span class="math inline">\([i,i+\varepsilon)\)</span> contiene un elemento del conjunto cuando <span class="math inline">\(i=\inf A\)</span>. Ambos hechos describen una <strong>aproximación arbitrariamente precisa</strong>, no una obligación de alcanzar el extremo.</p>
+</section>
+<section id="diagrama-disco" class="level3">
+<h3 class="anchored" data-anchor-id="diagrama-disco">9. Del intervalo al disco: una frontera en dos dimensiones</h3>
+<p>Sea <span class="math inline">\(D=\{(x,y)\in\mathbb R^2:x^2+y^2&lt;1\}\)</span> el disco <strong>abierto</strong> y <span class="math inline">\(\overline D=\{(x,y):x^2+y^2\le1\}\)</span> el disco <strong>cerrado</strong>. El concepto de supremo se aplica a números reales, no directamente a puntos sin un orden dado. Por eso escogemos una dirección unitaria <span class="math inline">\(u=(\cos\theta,\sin\theta)\)</span> y estudiamos las proyecciones escalares</p>
+<p><span class="math display">\[P_u(D)=\{u\cdot p:p\in D\}\subset\mathbb R.\]</span></p>
+<p>Por Cauchy–Schwarz, <span class="math inline">\(u\cdot p\le\|p\|_2&lt;1\)</span> para <span class="math inline">\(p\in D\)</span>. Además, <span class="math inline">\(p=(1-\delta)u\in D\)</span> para <span class="math inline">\(0&lt;\delta&lt;1\)</span>, y <span class="math inline">\(u\cdot p=1-\delta\to1\)</span>. Por tanto <span class="math inline">\(\sup P_u(D)=1\)</span>, pero no hay máximo. En el disco cerrado, <span class="math inline">\(p=u\)</span> pertenece al conjunto y realiza <span class="math inline">\(\max P_u(\overline D)=1\)</span>. En ambas variantes <span class="math inline">\(\inf=-1\)</span>, pero sólo en el disco cerrado existe un mínimo, realizado en <span class="math inline">\(p=-u\)</span>.</p>
+<p>Geométricamente, la recta <span class="math inline">\(u\cdot p=1\)</span> es una <strong>recta de soporte del disco cerrado</strong> <span class="math inline">\(\overline D\)</span>: éste queda en el semiplano <span class="math inline">\(u\cdot p\le1\)</span> y la recta lo intersecta en <span class="math inline">\(p=u\)</span>. La misma recta acota superiormente las proyecciones del disco abierto <span class="math inline">\(D\)</span>, pero no lo intersecta; bajo la definición de recta de soporte que exige contacto con el conjunto, es recta de soporte de <span class="math inline">\(\overline D\)</span>, no de <span class="math inline">\(D\)</span>. Al girar la dirección <span class="math inline">\(u\)</span> en la aplicación, giran la recta y el punto testigo. Esto generaliza la lectura de los extremos de la recta numérica a una frontera bidimensional sin atribuir un orden artificial a <span class="math inline">\(\mathbb R^2\)</span>.</p>
+</section>
+<section id="laboratorio" class="level3">
+<h3 class="anchored" data-anchor-id="laboratorio">10. Laboratorio manipulable</h3>
+<p><strong>Recurso:</strong> <a href="../assets/labs/MA-APP-0003-supremo-infimo.html">abrir el laboratorio MA-APP-0003 en una página independiente</a>. La aplicación incorpora rectas numéricas dinámicas, bandas <span class="math inline">\(\varepsilon\)</span>, un diagrama del disco con recta de soporte orientable y preguntas de comprobación. Si el panel integrado no funciona en tu navegador, usa el enlace anterior.</p>
+<iframe src="../assets/labs/MA-APP-0003-supremo-infimo.html" title="Laboratorio interactivo de supremo, ínfimo, máximo y mínimo" width="100%" height="1800" loading="lazy" style="border:1px solid #cbd5e1;border-radius:12px" allowfullscreen="">
+</iframe>
+<p>Recorrido recomendado: (1) seleccionar <span class="math inline">\((0,1)\)</span> y desplazar <span class="math inline">\(c\)</span> por debajo y por encima de <span class="math inline">\(1\)</span>; (2) cerrar el extremo derecho sin mover el supremo; (3) reducir <span class="math inline">\(\varepsilon\)</span> y observar cómo cambia el testigo; (4) sustituir el intervalo por la sucesión <span class="math inline">\(1-1/n\)</span>; (5) pasar al disco, girar la dirección y alternar frontera abierta/cerrada. En cada paso se deben justificar los hechos con definiciones, no sólo con la imagen.</p>
+</section>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">III. Verificación de comprensión</h2>
+<p><strong>Ejercicio 1.</strong> Sea <span class="math inline">\(A=(-2,3]\)</span>. Determine <span class="math inline">\(\sup A\)</span>, <span class="math inline">\(\inf A\)</span>, <span class="math inline">\(\max A\)</span> y <span class="math inline">\(\min A\)</span>, indicando cuáles existen.</p>
+<p><strong>Ejercicio 2.</strong> Calcule los cuatro extremos de <span class="math inline">\(A=\{(-1)^n+1/n:n\in\mathbb N,\ n\ge1\}\)</span>, cuando existan. Justifique por qué los términos de paridad opuesta se deben examinar por separado.</p>
+<p><strong>Ejercicio 3.</strong> Demuestre que si <span class="math inline">\(A\ne\varnothing\)</span> está acotado superiormente, entonces <span class="math inline">\(\sup A\in\overline A\)</span>, donde la clausura se toma en la topología usual de <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>Ejercicio 4.</strong> Construya dos conjuntos no vacíos y acotados <span class="math inline">\(A,B\)</span> con <span class="math inline">\(A\cap B\ne\varnothing\)</span> tales que <span class="math inline">\(\sup(A\cap B)&lt;\min\{\sup A,\sup B\}\)</span>. Explique por qué la fórmula de la unión no se puede copiar cambiando <span class="math inline">\(\cup\)</span> por <span class="math inline">\(\cap\)</span>.</p>
+<p><strong>Ejercicio 5.</strong> Para el disco abierto del §9 y una dirección unitaria <span class="math inline">\(u\)</span>, encuentre explícitamente, dado <span class="math inline">\(0&lt;\varepsilon&lt;2\)</span>, un punto <span class="math inline">\(p\in D\)</span> con <span class="math inline">\(u\cdot p&gt;1-\varepsilon\)</span>. ¿Qué cambia en el disco cerrado?</p>
+<section id="soluciones" class="level3">
+<h3 class="anchored" data-anchor-id="soluciones">Soluciones comentadas breves</h3>
+<ol type="1">
+<li><span class="math inline">\(\inf A=-2\)</span> sin mínimo; <span class="math inline">\(\sup A=3=\max A\)</span>.</li>
+<li>Para <span class="math inline">\(n\)</span> par: <span class="math inline">\(1+1/n\)</span>, cuyo mayor término es <span class="math inline">\(3/2\)</span> (<span class="math inline">\(n=2\)</span>) y cuyos valores disminuyen hacia <span class="math inline">\(1\)</span>. Para <span class="math inline">\(n\)</span> impar: <span class="math inline">\(-1+1/n\)</span>, cuyo primer término es <span class="math inline">\(0\)</span> (<span class="math inline">\(n=1\)</span>) y cuyos valores disminuyen hacia <span class="math inline">\(-1\)</span>. Por tanto <span class="math inline">\(\sup A=\max A=3/2\)</span>, <span class="math inline">\(\inf A=-1\)</span> y no existe mínimo.</li>
+<li>Para cualquier entorno <span class="math inline">\((s-\varepsilon,s+\varepsilon)\)</span> de <span class="math inline">\(s=\sup A\)</span>, el teorema 3 da <span class="math inline">\(a_\varepsilon\in A\)</span> con <span class="math inline">\(s-\varepsilon&lt;a_\varepsilon\le s&lt;s+\varepsilon\)</span>. Por definición, <span class="math inline">\(s\in\overline A\)</span>.</li>
+<li>Tome <span class="math inline">\(A=[0,1]\cup\{3\}\)</span> y <span class="math inline">\(B=[0,1]\cup\{4\}\)</span>. Su intersección es <span class="math inline">\([0,1]\)</span>, con supremo <span class="math inline">\(1&lt;\min\{3,4\}=3\)</span>.</li>
+<li>Tome <span class="math inline">\(p=(1-\varepsilon/2)u\)</span> para <span class="math inline">\(0&lt;\varepsilon&lt;2\)</span>: <span class="math inline">\(|1-\varepsilon/2|&lt;1\)</span> y <span class="math inline">\(u\cdot p=1-\varepsilon/2&gt;1-\varepsilon\)</span>. En el cerrado puede tomarse simplemente <span class="math inline">\(p=u\)</span>, que realiza el máximo.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Para recordar</strong> <strong>Cota:</strong> desigualdad válida para todos los elementos. <strong>Supremo/ínfimo:</strong> cota óptima, cuya existencia en los reales se obtiene bajo no vaciedad y acotación apropiada. <strong>Máximo/mínimo:</strong> esa cota óptima, además, pertenece al conjunto. <strong>Criterio <span class="math inline">\(\varepsilon\)</span>:</strong> todos los intervalos de aproximación, por estrechos que sean, contienen elementos del conjunto.</p>
+</div>
+</div>
+</section>
+<section id="relaciones" class="level3">
+<h3 class="anchored" data-anchor-id="relaciones">Relaciones y procedencia</h3>
+<ul>
+<li><a href="https://matematicaabierta.cl/conceptos/supremo-infimo-y-completitud-de-r.html">Supremo, ínfimo y completitud de ℝ</a> (<code>MA-CON-0016</code>): introducción ya publicada; el presente artículo es un desarrollo formal complementario con propiedades adicionales y diagramas interactivos.</li>
+<li><a href="../blog/hemos-construido-realmente-los-numeros-reales.html">¿Hemos construido realmente los números reales?</a>: construcción de los reales y completitud.</li>
+<li><a href="../conceptos/norma-en-matematicas.html">La norma en matemáticas</a>: norma euclidiana, distancia y proyecciones geométricas.</li>
+<li><a href="../assets/labs/MA-APP-0003-supremo-infimo.html">laboratorio MA-APP-0003</a>: especificación y controles de la aplicación.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
