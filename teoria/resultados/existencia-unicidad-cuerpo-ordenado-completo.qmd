@@ -1,0 +1,453 @@
+---
+title: "Existencia y unicidad del cuerpo ordenado completo"
+subtitle: "De las cortaduras de Dedekind a la caracterización de los números reales"
+description: "Construcción de los reales como cuerpo ordenado, demostración de la propiedad del supremo y unicidad estructural."
+content-id: MA-ART-0008
+content-type: article
+status: draft
+publication-state: pending-qa-and-pr
+date-created: 2026-09-18
+date-modified: 2026-09-18
+categories:
+  - Fundamentos
+  - Análisis
+  - Teoremas
+related:
+  - MA-ART-0002
+  - MA-ART-0007
+provenance:
+  type: original-synthesis
+  note: "Versión web derivada del manuscrito canónico de Obsidian MA-ART-0008. No publicada ni sometida a Quarto QA."
+---
+
+
+::: {.callout-note}
+**Resultado central.** Existe un cuerpo ordenado en el que todo subconjunto no vacío y acotado superiormente tiene supremo. Además, cualesquiera dos cuerpos con esas propiedades son isomorfos mediante un único isomorfismo de cuerpos ordenados. En consecuencia, «el cuerpo de los números reales» designa una estructura determinada **hasta un único isomorfismo**, y no una codificación conjuntista obligatoria.
+:::
+
+La propiedad del supremo suele aparecer al comienzo del análisis como axioma. Es lícito tomarla como punto de partida de un curso, pero entonces surge una pregunta fundacional: **¿sabemos que existe alguna estructura que cumpla simultáneamente los axiomas de cuerpo, las leyes del orden y ese principio de completitud?** Una lista de axiomas no proporciona por sí sola un objeto que los satisfaga. Lo construiremos a partir de los racionales, sin presuponer números reales en ninguna etapa.
+
+Conviene separar tres tareas: especificar un conjunto concreto, definir sobre él operaciones y orden que constituyan un cuerpo ordenado y, finalmente, demostrar que ese orden posee supremos. Después resolveremos un problema distinto: si otra construcción satisface lo mismo, ¿representa una estructura esencialmente diferente?
+
+**Prerrequisitos.** Conjuntos y funciones, orden total, aritmética y densidad de $\mathbb Q$, axiomas de cuerpo. El argumento trabaja en ZF con lógica clásica y no necesita el axioma de elección. Todas las referencias `TA-*` corresponden a los resultados cerrados del *Tratado moderno de Análisis*; su función es permitir auditar cada dependencia sin repetir íntegramente varios capítulos.
+
+## 1. Enunciado y alcance {#enunciado}
+
+**Definición 1 (cuerpo ordenado completo).** Una estructura
+
+$$
+F=(F,+,\cdot,0,1,\leq)
+$$
+
+es un **cuerpo ordenado** si $(F,+,\cdot,0,1)$ es un cuerpo, $\leq$ es un orden total, la suma conserva el orden y el producto de dos elementos no negativos es no negativo. Diremos que es **completo en el sentido del supremo** si
+
+$$
+\forall A\subseteq F\;\bigl[
+ A\neq\varnothing\ \land\
+ (\exists u\in F\;\forall a\in A\;a\leq u)
+ \Longrightarrow
+ \exists s\in F\;s=\sup_F A
+\bigr].
+$$
+
+La expresión $s=\sup_F A$ significa simultáneamente que $s$ es cota superior de $A$ y que $s\leq u$ para toda cota superior $u$ de $A$. No presupone que $s\in A$.
+
+**Teorema 2 (existencia y unicidad del cuerpo ordenado completo).**
+
+1. Existe un cuerpo ordenado con la propiedad del supremo.
+2. Si $E$ y $F$ son dos cuerpos ordenados con la propiedad del supremo, existe exactamente un isomorfismo de cuerpos ordenados $T:E\to F$.
+
+La unicidad aquí significa unicidad de la **función que preserva las operaciones, las unidades y el orden**, no igualdad literal de los conjuntos $E$ y $F$. El teorema corresponde a `TA-THM-00083` y `TA-COR-00045`; demostraremos primero su existencia y luego su unicidad.
+
+## 2. Una insuficiencia de los racionales {#racionales}
+
+Los racionales ya forman un cuerpo ordenado. Su densidad —entre dos racionales diferentes hay otro racional— no equivale a completitud. Considérese, por ejemplo,
+
+$$
+A=\{q\in\mathbb Q:q\geq0\ \text{y}\ q^2<2\}.
+$$
+
+El conjunto es no vacío y está acotado superiormente en $\mathbb Q$, pero no posee supremo racional. Para advertir el obstáculo, supongamos que una cota óptima racional fuese $s$. Una pequeña perturbación racional de $s$ permitiría mejorarla hacia arriba si $s^2<2$, o hacia abajo si $s^2>2$; por tanto tendría que cumplirse $s^2=2$. Sin embargo, no hay racional cuyo cuadrado sea $2$: escribir $s=m/n$ en términos mínimos llevaría a $m^2=2n^2$, de donde $m$ y luego $n$ serían pares, contradicción.
+
+No necesitamos inventar de antemano un punto llamado $\sqrt2$. Necesitamos construir un dominio capaz de representar la frontera que determina ese conjunto. Dedekind propone representar una posición por **todos los racionales situados estrictamente debajo de ella**.
+
+## 3. Construcción del conjunto y de su orden {#construccion}
+
+**Definición 3 (cortadura inferior).** Una cortadura es un subconjunto $\alpha\subseteq\mathbb Q$ tal que:
+
+1. $\alpha\neq\varnothing$;
+2. $\alpha\neq\mathbb Q$;
+3. si $a\in\alpha$ y $b<a$, entonces $b\in\alpha$;
+4. si $a\in\alpha$, existe $b\in\alpha$ con $a<b$.
+
+Sea $\Phi(\alpha)$ la conjunción de estas condiciones. Definimos
+
+$$
+\boxed{\mathbb R_D:=\{\alpha\in\mathcal P(\mathbb Q):\Phi(\alpha)\}.}
+$$
+
+**Proposición 4 (existencia del conjunto subyacente).** $\mathbb R_D$ es un conjunto y no es vacío.
+
+*Demostración.* Puesto que $\mathbb Q$ es un conjunto, el axioma del conjunto potencia proporciona $\mathcal P(\mathbb Q)$; Separación extrae de él exactamente los subconjuntos que cumplen $\Phi$. Además,
+
+$$
+\delta_0:=\{q\in\mathbb Q:q<0\}
+$$
+
+es una cortadura: contiene $-1$, no contiene $0$, es inferior y no tiene máximo por densidad de $\mathbb Q$. Por tanto $\delta_0\in\mathbb R_D$. $\square$
+
+Para todo $r\in\mathbb Q$ definamos
+
+$$
+\delta_r=\{q\in\mathbb Q:q<r\},\qquad
+\iota_D(r)=\delta_r.
+$$
+
+Cada $\delta_r$ es una cortadura por el argumento precedente trasladado por $r$.
+
+**Proposición 5 (orden por inclusión).** La relación
+
+$$
+\boxed{\alpha\leq_D\beta\iff\alpha\subseteq\beta}
+$$
+
+es un orden total sobre $\mathbb R_D$, y
+
+$$
+ p\leq q\iff\delta_p\subseteq\delta_q.
+$$
+
+*Demostración.* Inclusión es reflexiva, antisimétrica y transitiva. Para probar la totalidad, supongamos $\alpha\nsubseteq\beta$ y tomemos $a\in\alpha\setminus\beta$. Si $b\in\beta$, no puede ocurrir $a\leq b$: la igualdad contradiría $a\notin\beta$, y $a<b$ implicaría $a\in\beta$ por clausura inferior. Luego $b<a$, de donde $b\in\alpha$. Así $\beta\subseteq\alpha$. Finalmente, si $p\leq q$, cualquier $r<p$ satisface $r<q$. Si $p>q$, el propio $q$ pertenece a $\delta_p$ pero no a $\delta_q$. Esto establece la equivalencia y la inyectividad de $\iota_D$. $\square$
+
+Fijemos $0_D:=\delta_0$ y $1_D:=\delta_1$. Como $0<1$, se cumple $0_D<_D1_D$. La notación $\iota_D:\mathbb Q\hookrightarrow\mathbb R_D$ significa que obtenemos una **copia** de los racionales; no afirmamos que un racional sea literalmente igual a su conjunto de racionales inferiores.
+
+## 4. Construcción de las operaciones de cuerpo {#aritmetica}
+
+Esta sección exhibe las operaciones y justifica cómo se ensamblan las leyes algebraicas. El tratado contiene las comprobaciones atomizadas y sus pruebas identificadas en el capítulo 6; aquí damos una demostración modular, con los pasos cruciales y las dependencias que evitan circularidad.
+
+### 4.1. Suma, cero y opuesto {#suma-opuesto}
+
+Para $\alpha,\beta\in\mathbb R_D$ definimos
+
+$$
+\boxed{\alpha+_D\beta:=\{a+b:a\in\alpha,\ b\in\beta\}.}
+$$
+
+**Lema 6 (clausura de la suma).** $\alpha+_D\beta$ es una cortadura.
+
+*Demostración.* Es no vacía porque $\alpha$ y $\beta$ lo son. Elijamos $u\notin\alpha$ y $v\notin\beta$. Cada $a\in\alpha$ satisface $a<u$: en caso contrario la clausura inferior obligaría a incluir $u$. Análogamente, $b<v$ para todo $b\in\beta$. Así $a+b<u+v$, y $u+v$ no pertenece a la suma: ésta es propia. Si $r<a+b$, entonces $r-b<a$, por lo que $r-b\in\alpha$ y $r=(r-b)+b$ pertenece a la suma. Por último, si $x=a+b$ pertenece a la suma, la ausencia de máximo en $\alpha$ proporciona $a'>a$ en $\alpha$ y $x<a'+b$; tampoco la suma tiene máximo. $\square$
+
+Por asociatividad y conmutatividad de la suma racional, ambas leyes pasan a la suma de cortaduras: en la asociatividad se comparan las dos representaciones $x=(a+b)+c=a+(b+c)$. La cortadura $0_D$ es neutra. Para la inclusión $\alpha+_D0_D\subseteq\alpha$, basta observar que $a+b<a$ si $b<0$; para la inversa, dado $x\in\alpha$, elegimos $a\in\alpha$ con $x<a$ y escribimos $x=a+(x-a)$, donde $x-a<0$.
+
+Definimos el opuesto por
+
+$$
+\boxed{-_D\alpha:=\{q\in\mathbb Q:\exists s\notin\alpha\;(q<-s)\}.}
+$$
+
+Este conjunto es una cortadura: un exterior $s$ proporciona elementos inferiores a $-s$; si $a\in\alpha$, entonces $-a$ no puede pertenecer al opuesto, pues $-a<-s$ implicaría $s<a$ y, por clausura inferior, $s\in\alpha$; la clausura inferior y la ausencia de máximo siguen de la desigualdad estricta y la densidad racional.
+
+**Lema 7 (aproximación racional de una frontera).** Dados $\alpha\in\mathbb R_D$ y $\varepsilon\in\mathbb Q$ positivo, existen $a\in\alpha$ y $s\notin\alpha$ tales que $0<s-a<\varepsilon$.
+
+*Demostración.* Tomemos $a_0\in\alpha$ y $s_0\notin\alpha$; necesariamente $a_0<s_0$. Elegimos $N\in\mathbb N_{>0}$ con $(s_0-a_0)/N<\varepsilon$ y dividimos $[a_0,s_0]$ en una malla racional de $N$ pasos. Entre los $N+1$ puntos de la malla hay un primer punto exterior a $\alpha$, pues el inicial es interior y el final exterior. El punto inmediatamente anterior es interior; la diferencia entre ambos es $(s_0-a_0)/N<\varepsilon$. Es una búsqueda finita clásica, sin elección de una familia infinita de testigos. $\square$
+
+**Proposición 8 (inverso aditivo).** Para toda cortadura $\alpha$,
+
+$$
+\alpha+_D(-_D\alpha)=0_D.
+$$
+
+*Demostración.* Si $q=a+b$ con $a\in\alpha$ y $b<-s$ para algún $s\notin\alpha$, entonces $a<s$, luego $q<a-s<0$. Así la suma está contenida en $0_D$. Recíprocamente, si $q<0$, aplicamos el lema 7 con $\varepsilon=-q$ y obtenemos $a\in\alpha$, $s\notin\alpha$, $s-a<-q$, es decir, $q-a<-s$. Por definición, $q-a\in-_D\alpha$, y $q=a+(q-a)$ pertenece a la suma. $\square$
+
+La conmutatividad proporciona también $(-_D\alpha)+_D\alpha=0_D$. Hemos demostrado que $(\mathbb R_D,+_D,0_D)$ es un **grupo abeliano** (`TA-THM-00043`).
+
+### 4.2. Producto positivo y regla de signos {#producto}
+
+Para $\alpha>_D0_D$ existe un racional positivo dentro de $\alpha$; escribamos $\alpha_{>0}=\{a\in\alpha:a>0\}$. Si $\alpha,\beta>_D0_D$, definimos
+
+$$
+\boxed{\alpha\cdot_D^+\beta:=
+\{q\in\mathbb Q:\exists a\in\alpha_{>0}\;\exists b\in\beta_{>0}\;(q<ab)\}.}
+$$
+
+**Lema 9 (clausura positiva).** El conjunto anterior es una cortadura estrictamente positiva.
+
+*Demostración.* Hay $a,b>0$ interiores, así que $0<ab$ y $0$ pertenece al producto. Tomemos exteriores $u\notin\alpha$ y $v\notin\beta$; necesariamente $u,v>0$. Para todo par interior positivo se cumple $ab<uv$, de modo que $uv$ es exterior al producto y éste es propio. La clausura inferior es inmediata. Si $q<ab$, la densidad proporciona $q<q'<ab$, y el mismo par de testigos prueba que no hay máximo. Como $0$ está dentro, el producto es mayor que $0_D$. $\square$
+
+La conmutatividad es inmediata intercambiando $a$ y $b$. La asociatividad procede de la equivalencia, para $q>0$,
+
+$$
+q\in(\alpha\cdot_D^+\beta)\cdot_D^+\gamma
+\iff
+\exists a\in\alpha_{>0},\,b\in\beta_{>0},\,c\in\gamma_{>0}:q<abc,
+$$
+
+que vale también para el producto asociado a la derecha. Para obtener el sentido no inmediato, de $q<abc$ elegimos un racional $u$ con $q/c<u<ab$ y luego usamos $q<uc$; los elementos $q\leq0$ pertenecen automáticamente a ambos productos positivos. Los detalles corresponden a `TA-THM-00048`.
+
+La distributividad positiva también admite una comprobación directa. Si $\alpha,\beta,\gamma>0_D$, entonces
+
+$$
+\alpha\cdot_D^+(\beta+_D\gamma)
+=(\alpha\cdot_D^+\beta)+_D(\alpha\cdot_D^+\gamma).
+$$
+
+En efecto, cualquier racional positivo $u\in\beta+_D\gamma$ se escribe $u=b+c$ con $b\in\beta_{>0}$ y $c\in\gamma_{>0}$: si una representación inicial tiene, por ejemplo, $b_0\leq0$, elegimos $0<b<\min\{u,b_+\}$ con $b_+\in\beta_{>0}$, y $c=u-b$ es positivo y pertenece a $\gamma$ por clausura inferior. Si $q<a(b+c)$, elegimos $r\in\mathbb Q$ con $q-ac<r<ab$ y ponemos $s=q-r$: entonces $r\in\alpha\beta$, $s\in\alpha\gamma$ y $q=r+s$. Recíprocamente, si $q=r+s$, $r<a_1b$ y $s<a_2c$ para testigos positivos, escogemos $a\in\alpha$ mayor que $a_1$ y $a_2$ (ausencia de máximo); se obtiene $q<a(b+c)$, y $b+c\in\beta+\gamma$ es positivo. Es la prueba por doble inclusión de `TA-THM-00049`.
+
+Definimos el producto general por la regla de signos: es $0_D$ si algún factor es $0_D$; para dos factores positivos utilizamos $\cdot_D^+$; para dos negativos multiplicamos sus opuestos; si sólo uno es negativo, tomamos el opuesto del producto de sus valores positivos. La tricotomía del orden por inclusión hace que los casos sean exhaustivos y disjuntos. Las leyes positivas, junto con
+
+$$
+(-_D\alpha)\cdot_D\beta=-_D(\alpha\cdot_D\beta),
+\qquad
+(-_D\alpha)\cdot_D(-_D\beta)=\alpha\cdot_D\beta,
+$$
+
+permiten demostrar la asociatividad y conmutatividad globales: si ningún factor es cero, su producto se obtiene multiplicando sus opuestos positivos y asignando el signo según la paridad de los factores negativos. Ambas formas de asociar tres factores tienen el mismo producto positivo y el mismo signo; los casos con un factor nulo son inmediatos.
+
+**Distributividad para todos los signos.** Fijemos $x>_D0_D$. Ya hemos probado $x(u+v)=xu+xv$ para $u,v>_D0_D$, y los casos con cero son inmediatos. Por la regla de signos, $x(-u)=-(xu)$. Si $y>_D0_D$ y $z<_D0_D$, distinguimos dos situaciones. Cuando $y+z\geq_D0_D$, escribimos $y=(y+z)+(-z)$ y aplicamos la distributividad no negativa: $xy=x(y+z)+x(-z)=x(y+z)-xz$. Por tanto $x(y+z)=xy+xz$. Cuando $y+z<_D0_D$, escribimos $-z=y+[-(y+z)]$, donde ambos sumandos son positivos. La distributividad positiva da $-xz=xy-x(y+z)$, que conduce a la misma conclusión. El caso $y<_D0_D<z$ se obtiene intercambiando los sumandos. Si $y,z<_D0_D$, usamos $-(y+z)=(-y)+(-z)$ y obtenemos
+
+$$
+x(y+z)=-x(-(y+z))=-[x(-y)+x(-z)]=xy+xz.
+$$
+
+Esto demuestra la distributividad para $x>_D0_D$ y sumandos arbitrarios. Si $x<_D0_D$, aplicamos lo ya probado a $-x>_D0_D$ y cambiamos el signo de ambos miembros; si $x=0_D$, la igualdad es trivial. La distributividad por la derecha sigue de la conmutatividad. El desarrollo atomizado corresponde a `TA-THM-00050`–`TA-THM-00052`; no se utiliza completitud.
+
+### 4.3. Unidad e inversos multiplicativos {#inversos}
+
+La unidad es $1_D=\delta_1$. Para $\alpha>_D0_D$, el producto positivo satisface $\alpha\cdot_D^+1_D=\alpha$: si $q<ab$ con $a\in\alpha$ positivo y $0<b<1$, entonces $q<a$; para la inclusión inversa, dado $q>0$ en $\alpha$, elegimos $a\in\alpha$ con $q<a$ y un racional $b$ entre $q/a$ y $1$. El caso $q\leq0$ es inmediato porque $\alpha$ contiene racionales positivos. La extensión por signos prueba que $1_D$ es neutro global (`TA-THM-00044`).
+
+Para $\alpha>_D0_D$ definimos
+
+$$
+\boxed{I^+(\alpha)=\{q\in\mathbb Q:q\leq0\ \text{o}\
+\exists s\in\mathbb Q\;(s>0,\ s\notin\alpha,\ q<s^{-1})\}.}
+$$
+
+Es una cortadura positiva: contiene $0$; cualquier $a>0$ de $\alpha$ proporciona un exterior $a^{-1}$ al candidato; la clausura inferior es inmediata y la ausencia de máximo se obtiene por densidad. Si $q\in\alpha\cdot_D^+I^+(\alpha)$, existen $a\in\alpha_{>0}$, $b\in I^+(\alpha)_{>0}$ y un exterior positivo $s\notin\alpha$ con $q<ab<a/s<1$. Por tanto,
+
+$$
+\alpha\cdot_D^+I^+(\alpha)\subseteq1_D.
+$$
+
+Para la inclusión inversa tomemos $0<q<1$ y un racional $c>0$ interior a $\alpha$. Fijamos una tolerancia racional $h_0$ tal que $0<h_0<(1-q)c$. El lema 7 proporciona un interior $a\in\alpha$ y un exterior $s\notin\alpha$ con $0<s-a<h_0$. Escribamos $d:=s-a$. Como $c\in\alpha$ y $s\notin\alpha$, tenemos $c<s$; por tanto $a>c-d>c-h_0>qc>0$. Además, $d<h_0<(1-q)c$, de donde
+
+$$
+(1-q)a>(1-q)(c-d)>qd.
+$$
+
+Esta desigualdad se reordena como $a>q(a+d)=qs$, y por consiguiente $q/a<1/s$.
+
+Elegimos $b\in\mathbb Q$ con $q/a<b<1/s$; entonces $b\in I^+(\alpha)$ y $q<ab$. Si $q\leq0$, cualquier par de factores interiores positivos muestra pertenencia. Se concluye
+
+$$
+\boxed{\alpha\cdot_D^+I^+(\alpha)=1_D.}
+$$
+
+La misma prueba funciona en el orden inverso. Para una cortadura negativa, definimos su inverso como $-_DI^+(-_D\alpha)$. Así todo elemento no nulo tiene inverso (`TA-THM-00046`).
+
+**Conclusión algebraica.** La suma forma un grupo abeliano; el producto es asociativo, conmutativo, distributivo, tiene neutro $1_D\neq0_D$ y todo elemento no nulo es invertible. Por tanto,
+
+$$
+\boxed{(\mathbb R_D,+_D,\cdot_D,0_D,1_D)\ \text{es un cuerpo}.}
+$$
+
+Las demostraciones desglosadas están registradas en `TA-THM-00053`. El orden por inclusión es compatible con la suma porque $\alpha\subseteq\beta$ implica $\alpha+_D\gamma\subseteq\beta+_D\gamma$; la recíproca se obtiene trasladando por $-_D\gamma$. La multiplicación de dos cortaduras no negativas es no negativa por su definición y la regla de signos. Como $\leq_D$ es total,
+
+$$
+\boxed{(\mathbb R_D,+_D,\cdot_D,0_D,1_D,\leq_D)\ \text{es un cuerpo ordenado}.}
+$$
+
+Éste es `TA-THM-00054`. Las identidades $\delta_p+\delta_q=\delta_{p+q}$ y $\delta_p\delta_q=\delta_{pq}$ se verifican mediante la densidad racional y la regla de signos; junto con la compatibilidad del orden, muestran que $\iota_D$ es una incrustación de cuerpos ordenados (`TA-COR-00023`). Hemos alcanzado este punto **sin utilizar la propiedad del supremo**.
+
+## 5. La propiedad del supremo: la prueba decisiva {#supremo}
+
+Ahora sí abordamos la completitud. Sea $\mathcal A\subseteq\mathbb R_D$ una familia no vacía y acotada superiormente. Cada elemento de $\mathcal A$ es un conjunto de racionales; su unión existe por el axioma de Unión. Definamos
+
+$$
+U:=\bigcup\mathcal A
+=\{q\in\mathbb Q:\exists\alpha\in\mathcal A\;(q\in\alpha)\}.
+$$
+
+**Lema 10 (la unión es una cortadura).** $U\in\mathbb R_D$.
+
+*Demostración.* Verificamos separadamente las cuatro condiciones.
+
+**No vaciedad.** Como $\mathcal A\neq\varnothing$, tomamos $\alpha_0\in\mathcal A$; como $\alpha_0\neq\varnothing$, tomamos $q\in\alpha_0$. Entonces $q\in U$.
+
+**Conjunto propio.** Existe una cota superior $\beta\in\mathbb R_D$ de $\mathcal A$. Por la definición del orden, $\alpha\subseteq\beta$ para toda $\alpha\in\mathcal A$; luego $U\subseteq\beta$. Como $\beta\subsetneq\mathbb Q$, también $U\subsetneq\mathbb Q$.
+
+**Clausura inferior.** Si $q\in U$ y $r<q$, existe $\alpha\in\mathcal A$ con $q\in\alpha$. La clausura inferior de $\alpha$ da $r\in\alpha\subseteq U$.
+
+**Ausencia de máximo.** Si $q\in U$, pertenece a alguna $\alpha\in\mathcal A$. Como $\alpha$ no tiene máximo, existe $r\in\alpha$ con $q<r$. Entonces $r\in U$.
+
+Las cuatro condiciones se satisfacen y $U\in\mathbb R_D$. $\square$
+
+Observemos la distribución exacta de las hipótesis: la no vaciedad de la familia garantiza que su unión no sea vacía; la cota superior impide que sea todo $\mathbb Q$; las otras dos condiciones se transmiten localmente de cada cortadura a la unión.
+
+**Teorema 11 (fórmula del supremo).** Para toda familia no vacía y acotada superiormente $\mathcal A\subseteq\mathbb R_D$,
+
+$$
+\boxed{\sup_{\mathbb R_D}\mathcal A=\bigcup\mathcal A.}
+$$
+
+*Demostración.* El lema 10 garantiza que $U=\bigcup\mathcal A$ es un elemento de $\mathbb R_D$. Para cada $\alpha\in\mathcal A$ tenemos $\alpha\subseteq U$, es decir, $\alpha\leq_D U$; luego $U$ es cota superior. Sea ahora $\gamma\in\mathbb R_D$ cualquier otra cota superior. Entonces $\alpha\subseteq\gamma$ para toda $\alpha\in\mathcal A$. Si $q\in U$, pertenece a alguna de esas $\alpha$, por lo que $q\in\gamma$. En consecuencia, $U\subseteq\gamma$, esto es, $U\leq_D\gamma$. $U$ es menor o igual que toda cota superior y, por definición, es el supremo. $\square$
+
+Esta demostración corresponde a `TA-PRO-00105` y `TA-THM-00055`. Junto con el resultado algebraico de la sección 4 establece el siguiente corolario.
+
+**Corolario 12 (existencia).** El conjunto de cortaduras, con las operaciones y el orden definidos, es un cuerpo ordenado completo:
+
+$$
+\boxed{\exists F\;(F\text{ es un cuerpo ordenado con la propiedad del supremo}).}
+$$
+
+*Demostración.* Tomamos $F=\mathbb R_D$. La sección 4 prueba que es un cuerpo ordenado y el teorema 11 garantiza el supremo de todo subconjunto no vacío y acotado superiormente de $F$. $\square$
+
+**Ejemplo verificable.** Sea $\mathcal A=\{\delta_q:q\in\mathbb Q,\ 0<q,\ q^2<2\}$. Esta familia tiene cota superior, por ejemplo $\delta_2$. Su supremo en el modelo construido es la unión de sus cortaduras:
+
+$$
+\sup_{\mathbb R_D}\mathcal A
+=\bigcup_{\substack{q\in\mathbb Q\\0<q,\ q^2<2}}\delta_q.
+$$
+
+La fórmula exhibe el objeto frontera sin presuponer que exista previamente una raíz cuadrada real. El supremo es una **cortadura**, no un racional oculto.
+
+## 6. La unicidad: dos modelos tienen la misma estructura {#unicidad}
+
+La existencia no impone una codificación única. Otra construcción puede definir reales como clases de sucesiones de Cauchy y obtener un conjunto literalmente diferente. Probaremos que la estructura de cuerpo ordenado completo fuerza un único modo de identificar ambos modelos.
+
+### 6.1. Consecuencias de la completitud {#arquimediano}
+
+**Lema 13 (propiedad arquimediana).** En un cuerpo ordenado completo $F$, los naturales identificados con $1_F+\cdots+1_F$ no están acotados superiormente.
+
+*Demostración.* Supongamos que el conjunto $N_F=\{n1_F:n\in\mathbb N\}$ tuviera supremo $s$. Como $s-1_F<s$, este elemento no podría ser una cota superior; existiría $n$ con $s-1_F<n1_F$. Al sumar $1_F$ obtenemos $s<(n+1)1_F$, contradicción con que $s$ acota a $N_F$. $\square$
+
+Todo cuerpo ordenado contiene una copia canónica de $\mathbb Q$: los enteros se obtienen sumando y restando $1$, y sus cocientes mediante inversos. Es la única incrustación de cuerpos ordenados $\jmath_F:\mathbb Q\hookrightarrow F$ (`TA-THM-00074`–`TA-THM-00075`).
+
+**Lema 14 (densidad de la copia racional).** Si $x<y$ en un cuerpo ordenado arquimediano $F$, existe $q\in\mathbb Q$ con
+
+$$
+x<\jmath_F(q)<y.
+$$
+
+*Demostración.* Por arquimedianidad, elegimos $n\geq1$ con $1_F<n(y-x)$. La propiedad elemental de la parte entera en un cuerpo arquimediano proporciona un entero $m$ tal que $nx<m1_F\leq nx+1_F$ (puede tomarse el menor entero estrictamente mayor que $nx$). Entonces $m1_F<ny$ y $x<\jmath_F(m/n)<y$. $\square$
+
+La existencia del entero inmediato superior se obtiene del hecho de que $\mathbb Z$ es discreto y no está acotado en ninguna dirección en un cuerpo arquimediano; no utiliza supremos ni elección adicional. Los resultados corresponden a `TA-THM-00037` y `TA-THM-00076`.
+
+### 6.2. La traza racional de un elemento {#traza-racional}
+
+Sean $E,F$ cuerpos ordenados completos y denotemos por $\jmath_E,\jmath_F$ sus incrustaciones racionales canónicas. Para $x\in E$, definamos su **traza racional inferior**
+
+$$
+L_E(x):=\{q\in\mathbb Q:\jmath_E(q)<x\}.
+$$
+
+Es una cortadura: no vacía y propia por arquimedianidad, inferior por transitividad y sin máximo por densidad racional. La traza identifica a $x$ de manera única: si $x<y$, existe un racional estrictamente entre ambos y, con otro racional intermedio si hace falta, se comprueba que $L_E(x)\subsetneq L_E(y)$.
+
+**Lema 15 (un real se reconstruye desde su traza).** Para todo $x\in E$,
+
+$$
+x=\sup_E\{\jmath_E(q):q\in L_E(x)\}.
+$$
+
+*Demostración.* El conjunto interior es no vacío y está acotado por $x$. Sea $s$ su supremo; entonces $s\leq x$. Si $s<x$, la densidad racional proporciona $q$ con $s<\jmath_E(q)<x$. Ese $q$ pertenece a $L_E(x)$, contradiciendo que $s$ fuera cota superior. Por tanto $s=x$. $\square$
+
+Definimos ahora
+
+$$
+\boxed{T(x):=\sup_F\{\jmath_F(q):q\in L_E(x)\}.}
+$$
+
+La definición tiene sentido: el conjunto es no vacío y, como $L_E(x)$ es propio, existe un racional exterior $r\notin L_E(x)$ que lo acota superiormente mediante $\jmath_F(r)$. La completitud de $F$ garantiza el supremo.
+
+**Lema 16 (conservación exacta de la traza).** Para todo $x\in E$,
+
+$$
+\boxed{L_F(T(x))=L_E(x).}
+$$
+
+*Demostración.* Si $r\in L_E(x)$, la ausencia de máximo proporciona $t\in L_E(x)$ con $r<t$. Así $\jmath_F(r)<\jmath_F(t)\leq T(x)$ y $r\in L_F(T(x))$. Recíprocamente, si $\jmath_F(r)<T(x)$, entonces $\jmath_F(r)$ no es cota superior del conjunto que define a $T(x)$: algún $q\in L_E(x)$ satisface $r<q$. Como $q\in L_E(x)$ y la traza es inferior, $r\in L_E(x)$. $\square$
+
+En particular, $T$ es estrictamente creciente e inyectiva, porque la igualdad de trazas determina el elemento. Es también sobreyectiva: dado $y\in F$, construimos en $E$ el supremo de $\{\jmath_E(q):q\in L_F(y)\}$; el lema 16 aplicado simétricamente a este supremo y la identidad del lema 15 implican que su imagen por $T$ es $y$.
+
+### 6.3. Preservación de suma y producto {#isomorfismo}
+
+Primero, para cada $q\in\mathbb Q$,
+
+$$
+L_E(\jmath_E(q))=\delta_q=L_F(\jmath_F(q)),
+$$
+
+y la unicidad determinada por la traza da $T(\jmath_E(q))=\jmath_F(q)$. En particular $T(0_E)=0_F$ y $T(1_E)=1_F$.
+
+**Lema 17 (suma de trazas).** Para $x,y\in E$,
+
+$$
+L_E(x+y)=\{r+s:r\in L_E(x),\ s\in L_E(y)\}.
+$$
+
+*Demostración.* Si $r<x$ y $s<y$ (entendiendo los racionales dentro de $E$), entonces $r+s<x+y$. Recíprocamente, dado un racional $q<x+y$, se cumple $q-y<x$; elegimos por densidad un racional $r$ con $q-y<r<x$ y ponemos $s=q-r$. Entonces $s<y$ y $q=r+s$. $\square$
+
+El lema 16, aplicado en ambos cuerpos, y el lema 17 demuestran que $T(x+y)$ y $T(x)+T(y)$ tienen la misma traza; luego son iguales:
+
+$$
+\boxed{T(x+y)=T(x)+T(y).}
+$$
+
+Para $x,y>0$ usamos una identidad igualmente precisa. Todo racional $q\leq0$ pertenece a $L_E(xy)$; para $q>0$,
+
+$$
+\boxed{q<xy\iff\exists r,s\in\mathbb Q\;(0<r<x,\ 0<s<y,\ q<rs).}
+$$
+
+La implicación hacia la izquierda se prueba eligiendo por densidad $r$ entre $q/y$ y $x$, y después $s$ entre $q/r$ y $y$; la otra se sigue de $rs<xy$. En consecuencia, la traza del producto positivo se determina únicamente por las trazas de sus factores y la multiplicación racional. Como $T$ conserva trazas y racionales,
+
+$$
+T(xy)=T(x)T(y)\qquad(x,y>0).
+$$
+
+La aditividad implica $T(-x)=-T(x)$; el orden y la preservación de cero garantizan que $T$ conserva los signos. Aplicando las reglas de signos extendemos la identidad multiplicativa a factores negativos o nulos. Por tanto $T$ es una biyección que preserva suma, producto, cero, unidad y orden: **un isomorfismo de cuerpos ordenados**.
+
+### 6.4. Unicidad de la función {#unicidad-isomorfismo}
+
+Sea $S:E\to F$ cualquier otro isomorfismo de cuerpos ordenados. Como preserva $0$, $1$, suma, producto e inversos, fija la copia racional: $S(\jmath_E(q))=\jmath_F(q)$ para todo $q\in\mathbb Q$. Como preserva y refleja el orden,
+
+$$
+q\in L_E(x)
+\iff\jmath_E(q)<x
+\iff\jmath_F(q)<S(x)
+\iff q\in L_F(S(x)).
+$$
+
+De este modo $L_F(S(x))=L_E(x)=L_F(T(x))$. Por el lema 15, dos elementos de $F$ con la misma traza son iguales: $S(x)=T(x)$ para todo $x$, luego $S=T$. Hemos obtenido la unicidad del isomorfismo (`TA-THM-00082`). $\square$
+
+## 7. Síntesis lógica de la demostración {#sintesis}
+
+Hemos construido un modelo concreto $\mathbb R_D$ mediante conjuntos de racionales, probado que las operaciones lo hacen cuerpo ordenado y verificado la completitud mediante una identidad conjuntista:
+
+$$
+\boxed{\sup_{\mathbb R_D}\mathcal A=\bigcup\mathcal A.}
+$$
+
+A continuación mostramos que cualquier cuerpo ordenado completo es arquimediano, contiene una copia racional canónica y queda determinado por las trazas inferiores de sus elementos. Esas trazas inducen un único isomorfismo entre dos modelos cualesquiera. Por tanto,
+
+$$
+\boxed{
+\text{Existe un cuerpo ordenado completo y es único hasta único isomorfismo.}
+}
+$$
+
+**Qué se ha demostrado exactamente.** La existencia es una afirmación relativa a los axiomas de ZF y a la lógica clásica; no constituye una prueba de consistencia absoluta de ZF ni un algoritmo uniforme para decidir la pertenencia a una cortadura arbitraria. Tampoco se ha usado el axioma de elección. La unicidad es estructural: $\mathbb R_D$ y el modelo de Cauchy pueden ser distintos como conjuntos y, aun así, describir el mismo cuerpo ordenado completo hasta isomorfismo.
+
+**Consecuencia pedagógica.** Al desarrollar análisis podemos introducir la propiedad del supremo axiomáticamente, siempre que sepamos dónde está justificada la existencia de un modelo. Aquí la justificación es explícita y puede consultarse desde cualquier resultado que dependa de completitud.
+
+## 8. Dependencias y conexiones en Matemática Abierta {#dependencias}
+
+- **Construcción conjuntista, orden y copia racional:** Capítulo 5: Cortaduras de Dedekind (`TA-0008`, capítulo 5).
+- **Operaciones y verificación exhaustiva de las leyes de cuerpo:** Capítulo 6: Aritmética de las cortaduras (`TA-0009`; `TA-THM-00043`–`TA-THM-00054`).
+- **Unión de cortaduras y completitud:** Capítulo 7: Completitud de los reales de Dedekind (`TA-0010`; `TA-PRO-00105`, `TA-THM-00055`, `TA-THM-00056`).
+- **Unicidad, caracterización global y ausencia de hipótesis arquimediana adicional:** Capítulo 12: Unicidad (`TA-0015`; `TA-THM-00082`, `TA-THM-00083`, `TA-COR-00045`).
+- **Lectura complementaria sobre qué significa construir:** [¿Hemos construido realmente los números reales?](https://matematicaabierta.cl/blog/hemos-construido-realmente-los-numeros-reales.html).
+- **Precisiones sobre supremo, ínfimo, máximo y mínimo:** [MA-ART-0007: Supremo e ínfimo, máximo y mínimo](../../conceptos/supremo-infimo-maximo-minimo.qmd).
+
+::: {.callout-note}
+**Criterio editorial.** Este artículo es una exposición de conjunto y una puerta de entrada al teorema. Los capítulos del tratado conservan sus propias demostraciones, numeración y dependencias; las referencias anteriores proporcionan la auditoría completa de los sublemas. La derivación web debe enlazar esos capítulos allí donde estén publicados, sin inventar direcciones ni sustituir las pruebas locales.
+:::
