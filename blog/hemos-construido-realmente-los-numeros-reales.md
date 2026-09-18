@@ -1,12 +1,12 @@
 ---
 title: "¿Hemos construido realmente los números reales?"
-subtitle: "Wildberger y una matemática que no oculte sus fundamentos"
-description: "Una lectura crítica de las objeciones de Norman J. Wildberger a los números reales, ZFC y el axioma de elección, y una propuesta constructiva para enriquecer el rigor matemático."
+subtitle: "Wildberger, la existencia matemática y el problema de la construcción"
+description: "Una indagación sobre qué afirmamos al construir los números reales: existencia formal, representación, información efectiva y dependencias lógicas, a partir de las objeciones de Norman J. Wildberger."
 content-id: MA-ART-0002
 content-type: article
 status: published
 date-created: 2026-09-15
-date-modified: 2026-09-15
+date-modified: 2026-09-18
 areas:
   - fundamentos
   - analisis
@@ -27,572 +27,217 @@ related:
 provenance:
   type: original-synthesis
   sources:
-    - Norman J. Wildberger, "Real numbers: A critique and way forward" (2015)
-    - Norman J. Wildberger, "Set Theory: Should You Believe?" (2015)
+    - Norman J. Wildberger, "Real numbers: A critique and way forward" (versión difundida en ResearchGate, 2015)
+    - Norman J. Wildberger, "Set Theory: Should You Believe?" (circulaba en 2006; versión difundida en ResearchGate, 2015)
     - Errett Bishop, "Foundations of Constructive Analysis" (1967)
     - Stanford Encyclopedia of Philosophy, "Constructive Mathematics"
     - Stanford Encyclopedia of Philosophy, "The Axiom of Choice"
 license: GFDL-1.3-or-later
+publication-target: matematicaabierta.cl/blog
 ---
 
-Hay una pregunta que rara vez aparece después de una construcción rigurosa de los números reales:
+Es habitual que, una vez completada la construcción de los números reales, abandonemos el asunto de su existencia y comencemos a trabajar con ellos como si hubiesen estado allí desde siempre. Partimos de los racionales, introducimos cortaduras de Dedekind o clases de equivalencia de sucesiones de Cauchy, definimos las operaciones y el orden, demostramos las propiedades correspondientes y obtenemos, finalmente, un cuerpo ordenado completo. El resultado de este recorrido es extraordinariamente fecundo: sobre él edificamos el análisis, buena parte de la geometría y numerosos modelos de las ciencias. Sin embargo, hay una pregunta que el éxito de la construcción tiende a dejar en segundo plano: ¿qué queremos decir, exactamente, cuando afirmamos que hemos *construido* un número real?
+
+Quizá parezca una pregunta innecesaria. Hemos entregado definiciones, hemos establecido teoremas y sabemos operar dentro del sistema resultante. ¿Qué más podría exigirse? Pero basta examinar con detenimiento el verbo *construir* para advertir que no siempre designa la misma actividad. Una cosa es demostrar que cierto objeto existe de acuerdo con unos axiomas; otra, especificarlo individualmente; otra, disponer de un procedimiento que permita aproximarlo tanto como deseemos; y otra, finalmente, decidir de manera efectiva las propiedades que le atribuimos. Las distinciones pueden pasar inadvertidas mientras utilizamos los números reales de manera ordinaria, pero reaparecen apenas preguntamos qué información contiene, en realidad, una demostración de existencia.
+
+Norman J. Wildberger ha hecho de esta incomodidad una crítica explícita. En *Real numbers: A critique and way forward* cuestiona las presentaciones habituales del continuo mediante decimales infinitos, sucesiones de Cauchy y cortaduras; en *Set Theory: Should You Believe?* extiende sus objeciones a los fundamentos conjuntistas y al tratamiento del infinito actual. Su posición es marcadamente finitista y sus juicios sobre la matemática contemporánea son mucho más radicales que las conclusiones que defenderemos aquí. Conviene, por lo mismo, distinguir sus tesis de las preguntas que permiten formular: atender una objeción no equivale a aceptar el programa filosófico del que procede.
+
+Mi propósito no es sustituir una ortodoxia por otra. Me interesa examinar qué afirma efectivamente una construcción clásica, qué deja abierto desde una perspectiva computacional y de qué manera podemos incorporar esas diferencias a una práctica matemática más explícita. Si logramos hacerlo, la controversia dejará de ser una disputa sobre la respetabilidad de los objetos infinitos y se convertirá en una investigación sobre los diversos sentidos de la palabra *existir*.
+
+## 1. Los diversos sentidos de una construcción
+
+Comencemos con una afirmación aparentemente sencilla: existe un objeto $x$ que satisface la propiedad $P$. En el lenguaje de la lógica escribimos
 
 $$
-\boxed{\text{¿Qué significa exactamente que los hemos construido?}}
+\exists x\,P(x).
 $$
 
-Podemos definir los reales mediante cortaduras de Dedekind. Podemos obtenerlos como clases de equivalencia de sucesiones de Cauchy. Podemos definir sobre ellos suma, producto y orden, y demostrar que forman un cuerpo ordenado completo.
+Dentro de una teoría clásica, una demostración de esta fórmula establece la existencia de un testigo en el sentido admitido por la teoría. No se sigue de ello que la demostración entregue un algoritmo para encontrarlo; incluso puede ocurrir que el argumento dependa del principio del tercero excluido o de alguna forma de elección sin producir una descripción efectiva del objeto. Nada de esto constituye, por sí solo, un defecto lógico. Constituye una característica de la información que la prueba proporciona.
 
-Todo eso constituye matemática clásica perfectamente legítima dentro de su marco formal.
+Pensemos, en contraste, en una construcción que nos permita entregar, para cada precisión solicitada, una aproximación racional acompañada de una cota de error. En ese caso poseemos algo más que una caracterización existencial: contamos con un procedimiento de cálculo. Pero tampoco debemos identificar apresuradamente *ser computable* con *ser decidible*. Podemos calcular aproximaciones de un número sin disponer de un algoritmo uniforme que resuelva todas las preguntas de igualdad entre números dados mediante programas de aproximación.
 
-Pero aún podemos preguntar:
-
-- ¿qué clase de objeto hemos construido?;
-- ¿cómo está especificado?;
-- ¿puede representarse mediante información finita?;
-- ¿podemos calcular con él?;
-- ¿podemos decidir cuándo dos de estos objetos son iguales?;
-- ¿qué principios lógicos y conjuntistas hemos utilizado para demostrar que existe?
-
-Estas preguntas están en el centro de las críticas que Norman J. Wildberger ha dirigido contra la teoría moderna de conjuntos, los números reales y el uso del infinito actual. Su lenguaje suele ser deliberadamente provocador, y algunas de sus conclusiones van mucho más lejos de lo que la matemática estándar está dispuesta a conceder. Sin embargo, descartar por ese motivo todas sus preguntas sería un error.
-
-En *Real numbers: A critique and way forward* (2015), Wildberger cuestiona las presentaciones habituales mediante decimales infinitos, sucesiones de Cauchy y cortaduras de Dedekind. Su preocupación recurrente es que hablamos de objetos infinitos sin prestar suficiente atención a la manera en que tales objetos pueden especificarse o manipularse mediante información finita.
-
-No es necesario aceptar su programa finitista para reconocer que la pregunta merece una respuesta mejor que «así se hace en la matemática estándar».
-
-La ortodoxia no constituye una demostración.
-
-## 1. ¿Qué significa «construir»?
-
-Supongamos que definimos
+La diferencia puede expresarse así, sin convertirla en una jerarquía de legitimidad:
 
 $$
-\mathbb R_D
+\text{existencia formal},\qquad
+\text{definición},\qquad
+\text{representación},\qquad
+\text{computabilidad},\qquad
+\text{decidibilidad}.
 $$
 
-como la colección de las cortaduras de Dedekind de $\mathbb Q$.
+Son nociones relacionadas, pero ninguna debe sustituirse automáticamente por otra. Además, una definición puede ser finita en su extensión escrita y, sin embargo, determinar un objeto que no sea computable: una fórmula breve no es necesariamente un algoritmo. Del mismo modo, no disponer de una especificación efectiva para un objeto arbitrario no significa que el sistema formal que lo contiene sea inconsistente.
 
-Dentro de una teoría clásica de conjuntos suficientemente fuerte podemos definir rigurosamente qué es una cortadura, definir las operaciones y el orden, y demostrar finalmente que
+La pregunta que conviene conservar a lo largo de este ensayo no es, entonces, si los reales existen *de verdad*, formulación que mezcla problemas matemáticos y ontológicos antes de haberlos delimitado. Es otra, más precisa: cuando una teoría nos autoriza a afirmar que existe un número real, ¿qué clase de información hemos obtenido y qué principios hicieron posible esa afirmación?
 
-$$
-(\mathbb R_D,+_D,\cdot_D,\le_D)
-$$
+## 2. Dedekind: un corte en los racionales
 
-es un cuerpo ordenado completo.
+Recordemos brevemente una de las construcciones clásicas. Una cortadura inferior de Dedekind es un subconjunto $L\subsetneq\mathbb Q$ que no está vacío, es cerrado hacia abajo y carece de máximo. Con la convención usual para las cortaduras inferiores, sus elementos representan los racionales situados estrictamente a la izquierda del real correspondiente. Podemos reunir todas las cortaduras en una colección $\mathbb R_D$, definir sobre ella suma, producto y orden, y demostrar que posee la estructura de un cuerpo ordenado completo. La construcción mediante cortaduras puede desarrollarse en la teoría de conjuntos ZF; **no requiere, por sí sola, añadir el axioma de elección completo**.
 
-En un sentido formal hemos construido $\mathbb R$.
+Hasta aquí no hay indeterminación alguna en el sentido lógico: las condiciones que debe satisfacer una cortadura son precisas. La dificultad que Wildberger quiere poner en primer plano aparece cuando pasamos de una cortadura especialmente accesible a una cortadura arbitraria.
 
-Pero la palabra *construcción* puede ocultar varias nociones diferentes:
+Tomemos como ejemplo la asociada a $\sqrt 2$:
 
 $$
-\begin{aligned}
-&\text{existencia formal},\\
-&\text{definibilidad},\\
-&\text{especificación finita},\\
-&\text{construcción efectiva},\\
-&\text{computabilidad}.
-\end{aligned}
+L_{\sqrt 2}
+:=
+\bigl\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\bigr\}.
 $$
 
-Estas nociones no son equivalentes.
-
-Una demostración clásica de
+Si alguien nos entrega un racional $q$, podemos decidir en un número finito de operaciones si pertenece a $L_{\sqrt 2}$. Primero comprobamos si es negativo; si no lo es, comparamos exactamente $q^2$ con $2$. La pertenencia está sometida a una regla efectiva. Más aún: comenzando con el intervalo $[1,2]$, podemos dividirlo sucesivamente por la mitad y conservar en cada paso el subintervalo cuyos extremos encierran la raíz positiva de $2$. Después de $n$ bisecciones obtenemos extremos racionales $a_n,b_n$ tales que
 
 $$
-\exists x\,P(x)
+a_n^2\leq 2\leq b_n^2,
+\qquad
+0\leq b_n-a_n=2^{-n}.
 $$
 
-establece que existe un objeto que satisface cierta propiedad. No necesariamente proporciona un procedimiento para obtenerlo.
+Hemos producido una representación que permite aproximar $\sqrt 2$ con un error controlado. La cortadura no se limita, en este caso, a decirnos qué objeto existe: nos proporciona una puerta de entrada al cálculo.
 
-En buena parte de la matemática constructiva, en cambio, la afirmación de existencia está ligada a la posibilidad de producir un testigo o una construcción. La diferencia no es terminológica: cambia el contenido informativo de una prueba.
-
-Por eso podemos reformular una de las intuiciones de Wildberger de un modo menos polémico:
+Ahora consideremos una cortadura $L$ cualquiera. La definición estructural nos dice qué condiciones satisface, pero no nos entrega necesariamente un algoritmo que, para cada $q\in\mathbb Q$, decida
 
 $$
-\boxed{\text{¿qué información contiene realmente nuestra prueba de existencia?}}
+q\in L\;?
 $$
 
-Ésta sí es una pregunta matemática.
+En la teoría clásica podemos cuantificar sobre esas cortaduras sin imponerles un procedimiento uniforme de pertenencia. Esta es una distinción genuina: *definir la clase de todas las cortaduras* no equivale a *poseer un programa que reconozca la pertenencia a cada cortadura que la integra*.
 
-## 2. Una cortadura concreta y una cortadura arbitraria
+La objeción finitista cuestiona el tratamiento de tales totalidades como objetos ya dados. La respuesta clásica consiste en señalar que sus criterios de existencia y de definición no incluyen la exigencia de computabilidad. Ambas posiciones divergen, por tanto, en sus condiciones de admisión de los objetos, no en una contradicción descubierta dentro de la construcción de Dedekind. Si queremos avanzar, debemos hacer explícito ese desacuerdo en lugar de presentarlo como si alguna de las partes hubiese probado más de lo que realmente probó.
 
-Consideremos, por ejemplo, la cortadura asociada a $\sqrt2$:
+## 3. Cauchy: una sucesión que se aproxima a algo
 
-$$
-L_{\sqrt2}
-=
-\{q\in\mathbb Q:q<0\text{ o }q^2<2\}.
-$$
-
-Dado un racional $q$, podemos determinar mediante un cálculo finito si pertenece o no a esta cortadura.
-
-Tenemos un procedimiento explícito.
-
-Pero la definición clásica de número real mediante Dedekind no contiene solamente cortaduras de este tipo. Considera cortaduras arbitrarias que satisfacen determinadas propiedades estructurales.
-
-Entonces aparece la pregunta:
-
-$$
-q\stackrel{?}{\in}L.
-$$
-
-La teoría clásica puede permitirnos hablar perfectamente bien de $L\subseteq\mathbb Q$ sin exigir que poseamos un algoritmo general que decida esa pertenencia.
-
-Aquí Wildberger localiza una dificultad: ¿qué significa tratar esa totalidad infinita como un objeto matemático completamente dado cuando no disponemos de una especificación efectiva de su membresía?
-
-La respuesta clásica es coherente:
-
-> Un objeto matemático no tiene que ser computable para existir.
-
-Pero observemos qué ha ocurrido. No hemos mostrado que la pregunta computacional carezca de sentido. Hemos adoptado un criterio de existencia más amplio.
-
-Conviene que esta diferencia permanezca visible:
-
-$$
-\boxed{
-\text{existencia clásica}
-\neq
-\text{decidibilidad}
-\neq
-\text{computabilidad}.
-}
-$$
-
-## 3. Sucesiones de Cauchy: el problema reaparece
-
-Otra construcción habitual define los reales mediante sucesiones racionales de Cauchy, identificando dos cuando su diferencia converge a cero:
+La segunda construcción usual parece, a primera vista, más cercana a la actividad de calcular. Consideramos sucesiones de números racionales $(a_n)$ que satisfacen la condición de Cauchy y declaramos equivalentes dos de ellas cuando su diferencia converge a cero:
 
 $$
 (a_n)\sim(b_n)
-\iff
-|a_n-b_n|\longrightarrow0.
+\quad\Longleftrightarrow\quad
+\lim_{n\to\infty}|a_n-b_n|=0.
 $$
 
-Un real aparece entonces como una clase de equivalencia
+Un número real queda representado por una clase de equivalencia $[(a_n)]$. En el marco clásico habitual, esta construcción y la de Dedekind conducen al cuerpo ordenado completo de los reales. En contextos constructivos, sin embargo, la relación entre ambas exige prestar atención a la representación elegida y a los principios de elección disponibles: no conviene trasladar sin examen todas las equivalencias de un marco lógico a otro.
+
+La propia condición de Cauchy nos permite localizar el problema de la información. Saber que
 
 $$
-[(a_n)].
+\forall\varepsilon>0\;\exists N\;\forall m,n\geq N,
+\qquad |a_m-a_n|<\varepsilon
 $$
 
-Nuevamente, la construcción clásica funciona.
-
-Pero surgen preguntas adicionales.
-
-¿Cómo está dada la sucesión?
-
-¿Existe un algoritmo que produzca $a_n$ a partir de $n$?
-
-¿Tenemos información efectiva sobre su convergencia?
-
-Además de saber que
+no significa, por sí mismo, que podamos *calcular* un valor adecuado de $N$ a partir de $\varepsilon$. Para ello necesitamos información adicional: un **módulo efectivo de Cauchy**, por ejemplo una función computable $N:\mathbb N\to\mathbb N$ que cumpla
 
 $$
-\forall\varepsilon>0\;\exists N\;\forall m,n\ge N,
-\qquad |a_m-a_n|<\varepsilon,
+\forall k\in\mathbb N\;\forall m,n\geq N(k),
+\qquad |a_m-a_n|<2^{-k}.
 $$
 
-¿podemos determinar un control explícito
+Si podemos calcular también los términos racionales $a_n$, un módulo de esta clase nos permite producir aproximaciones al límite con precisión prescrita. Sin él, el simple hecho de generar uno tras otro los términos de una sucesión no asegura que podamos calcular su límite.
 
-$$
-N=N(\varepsilon)?
-$$
+No se trata de una sutileza vacía. Las **sucesiones de Specker** son sucesiones computables de racionales, monótonamente crecientes y acotadas, cuyo límite clásico no es un real computable. Cada término puede calcularse; el límite, en cambio, no admite aproximación algorítmica uniforme con error arbitrariamente prescrito. La completitud clásica garantiza el límite; la información efectiva disponible en la sucesión no alcanza para calcularlo.
 
-La diferencia es crucial.
+Aquí aparece una diferencia que merece acompañarnos cuando estudiemos el análisis: la afirmación de que toda sucesión de Cauchy converge pertenece a la estructura de completitud que hemos construido, mientras que la extracción de un límite computable a partir de datos computables exige examinar cómo se presenta esa sucesión y qué control de convergencia se conoce. Hablar simplemente de *completitud efectiva* sin fijar las representaciones y los datos de entrada sería trasladar la ambigüedad de una palabra a otra.
 
-Una sucesión puede estar bien definida y ser convergente en sentido clásico sin proporcionarnos información efectiva suficiente para calcular su límite.
+## 4. Una totalidad mayor que nuestros programas
 
-El análisis computable ofrece ejemplos especialmente instructivos: existen sucesiones computables de racionales, crecientes y acotadas, cuyos límites no son reales computables. Las llamadas sucesiones de Specker muestran que
+Podemos contemplar la distancia entre existencia clásica y computabilidad desde otro ángulo. Todo programa es un texto finito escrito sobre un alfabeto finito. En consecuencia, el conjunto de programas posibles es numerable. Si cada programa que calcula un real determina, a lo sumo, un número real, la colección de los reales computables también es numerable. Los números reales clásicos, en cambio, no lo son: el argumento diagonal de Cantor permite demostrar que no pueden ponerse en correspondencia biunívoca con los naturales.
 
-$$
-\boxed{
-\text{podemos calcular cada término}
-\not\Rightarrow
-\text{podemos calcular el límite}.
-}
-$$
+La conclusión, dentro de la matemática clásica, es inmediata: existen reales que no son computables. Obsérvese el sentido de esta frase. No afirma que alguien haya fabricado una máquina imposible, ni que nuestra notación decimal esconda una contradicción. Afirma que una colección definida con criterios conjuntistas contiene más elementos que los que pueden ser producidos por programas finitos. Precisamente aquí se separan los horizontes de dos concepciones de existencia.
 
-Por eso la información efectiva de convergencia no es un detalle técnico. Forma parte del contenido computacional del teorema.
+Wildberger considera problemático admitir esa totalidad como si todos sus integrantes estuvieran matemáticamente disponibles. El matemático clásico puede responder que *estar definido por una teoría* y *ser individualmente calculable* son condiciones distintas. Sin embargo, esa respuesta no debería borrar la cuestión práctica: cuando un teorema trabaja con un real particular, vale la pena preguntar si ese real puede representarse, aproximarse o reconocerse de manera efectiva, y cuál de esas tareas exige realmente el problema que tenemos delante.
 
-## 4. El problema empieza antes: ¿qué es una función?
+## 5. La función: objeto extensional y regla de cálculo
 
-La crítica de Wildberger retrocede todavía un paso más.
-
-¿Qué es una función?
-
-En teoría clásica de conjuntos puede definirse una función $f:A\to B$ como una relación que satisface
+La controversia alcanza también un concepto anterior al de número real: el de función. En teoría de conjuntos, podemos representar una función $f:A\to B$ como una relación $f\subseteq A\times B$ para la cual se verifica
 
 $$
 \forall x\in A\;\exists!y\in B
 \quad (x,y)\in f.
 $$
 
-Si las relaciones y los pares ordenados se representan mediante conjuntos, una función puede codificarse enteramente dentro de ZF o ZFC.
+En este sentido, ZF y ZFC formalizan perfectamente las funciones. Los pares ordenados y las relaciones pueden codificarse mediante conjuntos; afirmar que la teoría de conjuntos es incapaz de definir una función sería, por tanto, un error.
 
-Por tanto, tomada literalmente, la afirmación «ZFC no puede definir funciones» sería demasiado fuerte. ZFC puede formalizar perfectamente funciones como objetos extensionales.
-
-Pero la objeción interesante no termina ahí.
-
-Consideremos
+Pero nuestro uso cotidiano de la palabra *función* reúne dos perspectivas que no siempre coinciden. Consideremos
 
 $$
-f(n)=n^2+1.
+f:\mathbb N\longrightarrow\mathbb N,
+\qquad f(n)=n^2+1.
 $$
 
-Podemos pensar esta función extensionalmente, como el conjunto de todos sus pares entrada-salida:
+Podemos identificar $f$ con el conjunto de pares
 
 $$
 \{(0,1),(1,2),(2,5),(3,10),\ldots\},
 $$
 
-o intensionalmente, mediante la regla:
+o describirla mediante la instrucción «elevar el argumento al cuadrado y sumar uno». La primera presentación atiende a los valores de la función; la segunda exhibe un procedimiento para obtenerlos. En un enfoque extensional, dos funciones con el mismo dominio y los mismos valores son una sola función. En una perspectiva computacional puede interesarnos distinguir, además, entre diferentes algoritmos que realizan esa misma correspondencia, o averiguar si existe alguno.
+
+Ninguna de estas observaciones invalida la formalización conjuntista. Nos impide, simplemente, confundir un objeto extensional con una regla efectiva. Una función puede estar determinada como conjunto de pares sin que dispongamos de un algoritmo que transforme una representación de $x$ en una de $f(x)$. Y una fórmula que describe cierta correspondencia tampoco garantiza, por el solo hecho de ser breve, que exista un procedimiento de cálculo para sus valores.
+
+Conviene llevar esta distinción todavía más lejos: la existencia de un algoritmo depende también de *cómo* se representan las entradas y las salidas. Preguntar «¿es computable esta función?» sin precisar esos datos puede ser tan insuficiente como preguntar «¿cuánto mide este objeto?» sin indicar qué magnitud deseamos medir. La computabilidad no es una propiedad que debamos adjudicar descuidadamente a cualquier expresión que contenga la letra $f$.
+
+## 6. Qué dicen los axiomas y qué dicen nuestras paráfrasis
+
+En *Set Theory: Should You Believe?*, Wildberger dirige parte de su crítica a las explicaciones habituales de los axiomas conjuntistas y pregunta qué significan términos como *propiedad*, *función* o *familia*. El cuestionamiento merece una respuesta precisa, porque una exposición informal y un sistema formal no operan en el mismo nivel.
+
+El lenguaje usual de primer orden para ZF contiene la relación de pertenencia $\in$ y la igualdad lógica. Los llamados esquemas axiomáticos de separación y reemplazo se formulan mediante expresiones de ese lenguaje. Así, el esquema de reemplazo puede considerar una fórmula $\varphi(x,y,\vec p)$ que, para cada $x$ perteneciente a un conjunto $A$, determine un único $y$, y asegurar que esos valores forman un conjunto. No es necesario postular la palabra *función* como un símbolo primitivo adicional para que el esquema tenga sentido formal.
+
+Cuando explicamos informalmente el reemplazo diciendo «la imagen de un conjunto bajo una función también es un conjunto», estamos utilizando una paráfrasis. Puede ser pedagógicamente provechosa, pero no debe confundirse con la formulación completa del esquema. Una crítica que encuentre indefiniciones en la paráfrasis no habrá demostrado, sin más, que la formulación formal es incoherente. El rigor exige examinar cada afirmación en el nivel donde efectivamente se formula.
+
+Ahora bien, ¿significa esto que la pregunta por el significado de los axiomas desaparece? De ninguna manera. La sintaxis establece qué fórmulas están bien formadas y las reglas de inferencia fijan cómo derivamos unas de otras; todavía podemos investigar sus modelos, su consistencia relativa, su fuerza y las razones filosóficas para aceptarlas como fundamentos. Pero esas investigaciones no son intercambiables. Una objeción al criterio ontológico de una teoría, una dificultad de computabilidad y una contradicción formal constituyen problemas distintos y requieren argumentos distintos.
+
+La propia teoría de conjuntos nos permite aprender esta lección: para estudiar críticamente sus fundamentos no necesitamos describirlos como una caja negra, pero tampoco basta con impugnar el vocabulario de una explicación divulgativa. Debemos reconstruir sus afirmaciones con la misma exigencia de precisión que pediríamos a cualquier otro campo de la matemática.
+
+## 7. El axioma de elección y las formas de la existencia
+
+Hay un caso en que la distancia entre afirmar una existencia y exhibir una construcción se vuelve especialmente visible. Sea $(A_i)_{i\in I}$ una familia de conjuntos no vacíos. El axioma de elección asegura que existe una función $c$ definida sobre $I$ tal que
 
 $$
-\boxed{\text{dado }n,\text{ elevarlo al cuadrado y sumar }1.}
+\forall i\in I,
+\qquad c(i)\in A_i.
 $$
 
-La primera descripción registra qué valores tiene la función.
+No exige que hayamos proporcionado una regla uniforme y efectiva que efectúe cada elección. Por ello, cuando una demostración depende de este principio, puede establecer una existencia sin producir un procedimiento de selección. Esta es una característica lógica reconocible de su argumento y no una prueba de que el axioma incurra en contradicción.
 
-La segunda proporciona un procedimiento para obtenerlos.
+Un resultado que muestra su alcance es el teorema según el cual **todo espacio vectorial tiene una base**. Formulado para todos los espacios vectoriales, sobre todos los cuerpos, este enunciado es equivalente al axioma de elección sobre ZF. Su demostración habitual mediante el lema de Zorn nos garantiza la existencia de una base en el marco apropiado; no convierte automáticamente esa demostración en un algoritmo para calcular una base de un espacio arbitrario.
 
-En matemática clásica, dos funciones con los mismos valores son la misma función extensional. En computación, teoría de tipos y otras perspectivas intensionales, puede ser relevante conservar también la forma de producir esos valores.
+Sería un error trasladar esta observación indiscriminadamente a todos los casos. Para un espacio vectorial de dimensión finita, dado mediante información efectiva adecuada, podemos obtener una base mediante procedimientos de álgebra lineal. La afirmación universal y un caso efectivamente presentado no contienen necesariamente la misma clase de información. Tampoco debemos suponer que toda construcción de números reales usa elección: como ya señalamos, las cortaduras de Dedekind pueden organizarse en ZF sin añadir el axioma completo.
 
-Así aparece una distinción fundamental:
+La consecuencia metodológica es concreta. Cuando un teorema utiliza elección, necesitamos saber qué principio se ha empleado y dónde. El axioma completo, la elección numerable y la elección dependiente no son nombres distintos de una única hipótesis indiferenciada; su fuerza y sus aplicaciones deben examinarse por separado. También conviene averiguar si el principio es necesario para el enunciado, o solamente para la demostración que hemos elegido. Una prueba puede necesitar más recursos que el resultado mismo.
 
-$$
-\boxed{
-\text{función extensional}
-\neq
-\text{algoritmo que la realiza}.
-}
-$$
+La pregunta no es, pues, cómo desterrar la elección de la matemática, sino cómo impedir que su intervención quede confundida con una construcción explícita.
 
-ZFC responde con precisión a la primera noción. Una crítica constructiva o computacional pregunta además por la segunda.
+## 8. Entre el finitismo y la matemática clásica hay más de un camino
 
-## 5. ZFC y el lenguaje en que hablamos de sus axiomas
+Hasta este punto podría parecer que sólo tenemos dos alternativas: aceptar todas las construcciones clásicas sin interrogar su contenido efectivo o renunciar a los objetos cuya existencia no pueda reducirse a un procedimiento finito. La historia y la práctica contemporánea de los fundamentos muestran que ese dilema es insuficiente.
 
-Wildberger también critica la manera en que suelen presentarse los axiomas de la teoría de conjuntos. En *Set Theory: Should You Believe?* pregunta por nociones como «propiedad», «función» o «familia» cuando éstas aparecen informalmente al explicar los axiomas.
+En *Foundations of Constructive Analysis*, Errett Bishop desarrolla un análisis en el que las afirmaciones de existencia se entienden en términos constructivos. Otras tradiciones —el intuicionismo, distintas teorías de tipos y el análisis computable, entre ellas— estudian con herramientas y compromisos diferentes las relaciones entre prueba, existencia y cálculo. No forman una escuela única: divergen en su interpretación de las sucesiones, sus principios lógicos y las formas de elección que admiten. Lo que comparten, en distintos grados, es la importancia concedida a la información contenida en las construcciones.
 
-Aquí es importante no confundir la presentación pedagógica de ZFC con su formulación formal.
+La enseñanza que extraigo de estas tradiciones no consiste en prometer que cada teorema clásico podrá traducirse, intacto, a un resultado efectivo. Sabemos que esa promesa sería falsa: el ejemplo de Specker ya nos advierte que ciertas conclusiones clásicas no sobreviven cuando exigimos algoritmos para los límites. Pero el fracaso de una traslación automática es también una fuente de conocimiento. Nos obliga a determinar qué hipótesis adicionales son necesarias, qué resultados pueden reformularse y qué noción de número real estamos utilizando.
 
-El lenguaje de primer orden de la teoría de conjuntos puede tomarse con una estructura extremadamente austera: esencialmente igualdad y la relación de pertenencia $\in$. Los esquemas de separación y reemplazo no necesitan introducir «propiedades» o «funciones» como nuevos objetos primitivos del lenguaje; se formulan mediante fórmulas de ese lenguaje.
+De hecho, incluso la equivalencia que en un curso clásico parece transparente entre reales de Dedekind y reales de Cauchy exige cuidado al modificar la lógica de fondo. En determinados sistemas constructivos sin elección numerable, las dos construcciones pueden diferir y los reales de Cauchy pueden no ser completos en el sentido correspondiente. La cuestión que parecía puramente filosófica desemboca, de esta manera, en enunciados matemáticos precisos acerca de modelos y principios de elección.
 
-Por ejemplo, reemplazo puede trabajar con una fórmula funcional $\varphi(x,y)$ que satisfaga una condición de unicidad apropiada. Ésta es una noción metalingüística de fórmula funcional, distinta de una función que ya sea un conjunto interno al universo.
+No hay necesidad de convertir a Wildberger en árbitro del análisis para aprovechar este tipo de preguntas. Sus objeciones pueden servir como punto de partida; las respuestas deben buscarse en demostraciones, contraejemplos y delimitaciones lógicas, allí donde cada afirmación admite un examen propio.
 
-Esa distinción muestra que varias críticas populares a ZFC confunden niveles formales diferentes.
+## 9. No ocultar los fundamentos: una propuesta para nuestra práctica matemática
 
-Pero también revela algo que merece explicarse: la frase informal
+¿Qué cambiaría, concretamente, en la manera de enseñar y escribir matemáticas si tomáramos en serio estas distinciones? No creo que debamos interrumpir cada demostración para discutir la naturaleza última de los objetos. Bastaría, para comenzar, con exigir a nuestras exposiciones una honestidad adicional respecto de sus propias construcciones.
 
-> «una función es simplemente un conjunto de pares ordenados»
+Al introducir un número, una función o un espacio, podemos señalar cuál es su definición, en qué teoría trabajamos y qué garantiza su existencia. Si el objeto se presenta mediante una sucesión, conviene saber si sus términos se calculan y si contamos con un módulo efectivo de convergencia. Si aparece una igualdad entre objetos descritos algorítmicamente, debemos distinguir su significado matemático de la posibilidad de decidirla mediante un procedimiento general. Si una prueba utiliza un principio de elección, interesa identificarlo, en lugar de dejarlo oculto bajo la expresión «tomemos un elemento para cada caso».
 
-no cuenta toda la historia de cómo razonamos, definimos y presentamos funciones en la práctica matemática.
+Nada de esto obliga a que todos los artículos se conviertan en tratados de lógica. La profundidad de la discusión debe ser proporcional a su relevancia para el resultado. Una demostración elemental que construye una base de un espacio de dimensión finita no requiere un excursus sobre el axioma de elección; un teorema acerca de las bases de espacios arbitrarios, en cambio, gana precisión cuando identifica su dependencia. Un algoritmo de aproximación racional necesita declarar la precisión que garantiza; una afirmación puramente estructural no debe simular que entrega ese algoritmo si no lo hace.
 
-Precisar estos niveles no debilita la teoría de conjuntos. La hace más transparente.
+Propongo, por tanto, una regla editorial para *Matemática Abierta*: **mantener visible la distancia —cuando exista— entre lo que un teorema asegura y lo que su demostración permite efectuar**. Es una regla que alcanza tanto a la matemática clásica como a los enfoques constructivos. No debe utilizarse para insinuar que un resultado no computacional carece de rigor, ni para atribuir a una construcción efectiva propiedades que todavía no hemos demostrado. Su función es más modesta y, por ello mismo, más exigente: impedir que una palabra conveniente haga desaparecer una diferencia matemática real.
 
-## 6. El axioma de elección: existencia sin selección explícita
+En ocasiones, el resultado de esta práctica será una segunda prueba, ahora constructiva. En otras, un algoritmo acompañado de su cota de error. Tal vez encontremos un contraejemplo que demuestre que no existe la generalización efectiva que esperábamos. O quizá descubramos que la prueba conocida usa una hipótesis más fuerte de lo necesario. Todos estos desenlaces aumentan nuestro conocimiento: ninguno requiere desacreditar de antemano la teoría de la que partimos.
 
-El axioma de elección hace todavía más visible la tensión entre existencia y construcción.
+## Conclusión. ¿Qué hemos construido?
 
-En una de sus formulaciones, permite afirmar la existencia de una función de elección para una familia apropiada de conjuntos no vacíos aun cuando no se haya especificado una regla uniforme concreta que realice las selecciones.
+Regresemos a la pregunta inicial. ¿Hemos construido realmente los números reales? Si por construcción entendemos una definición rigurosa acompañada de la demostración de sus propiedades dentro de un marco clásico, la respuesta es afirmativa. Las cortaduras de Dedekind proporcionan esa construcción y no necesitan, por sí solas, el axioma de elección completo. Si por construcción entendemos disponer de una representación efectiva de cada real arbitrario, la respuesta cambia: la totalidad clásica contiene números no computables, y la propia noción de representación exige distinguir datos y procedimientos.
 
-Su fuerza matemática es profunda. Entre los resultados equivalentes al axioma de elección completo, trabajando sobre ZF, está el enunciado:
+No hay contradicción entre ambas respuestas una vez que advertimos que contestan preguntas diferentes. La confusión aparece cuando atribuimos a la primera todo el contenido de la segunda, o cuando tomamos la ausencia de un algoritmo como prueba de una inconsistencia que nadie ha establecido. El rigor matemático no consiste en exigir que todas las escuelas admitan idénticos objetos, sino en formular con exactitud las hipótesis, los métodos y las conclusiones de cada argumento.
 
-$$
-\boxed{\text{Todo espacio vectorial posee una base.}}
-$$
+Las críticas de Wildberger resultan útiles en la medida en que nos obligan a hacer esas distinciones. No es indispensable aceptar su concepción finitista, ni tampoco basta invocar la autoridad de una tradición para declarar resuelto el problema. Hay que volver a las definiciones, examinar las demostraciones y determinar qué información obtenemos al afirmar que un objeto existe.
 
-La afirmación es perfectamente precisa dentro de la matemática clásica.
-
-Pero desde una perspectiva constructiva podemos hacer una pregunta adicional. Cuando afirmamos que un espacio vectorial arbitrario $V$ posee una base $B$,
-
-$$
-\exists B\subseteq V,
-$$
-
-¿hemos construido efectivamente esa base?
-
-No necesariamente.
-
-Una vez más,
-
-$$
-\boxed{
-\text{existencia clásica}
-\neq
-\text{procedimiento de construcción}.
-}
-$$
-
-Esto no convierte al axioma de elección en incorrecto. Significa que una exposición rigurosa puede ganar mucho haciendo visible cuándo una conclusión depende de un principio de elección.
-
-La regla metodológica adecuada no tiene por qué ser
-
-$$
-\text{«no usar elección»}.
-$$
-
-Puede ser algo más útil:
-
-$$
-\boxed{\text{no usar elección inadvertidamente}.}
-$$
-
-## 7. Lo que ZFC responde —y lo que no pretende responder
-
-Debemos ser igualmente rigurosos con la matemática clásica y con Wildberger.
-
-ZFC permite formalizar conjuntos, relaciones, funciones, sucesiones, cortaduras y las construcciones usuales de los reales. Si aceptamos ese marco, una cortadura infinita no constituye por sí misma una contradicción.
-
-Por tanto, las objeciones de Wildberger no son normalmente refutaciones internas de ZFC.
-
-Con frecuencia son objeciones al criterio de legitimidad matemática que ZFC permite adoptar.
-
-De manera semejante,
-
-$$
-\text{no computable}
-$$
-
-no significa
-
-$$
-\text{inconsistente}.
-$$
-
-Cuando alguien exige que todo objeto matemático admita una especificación finita efectiva, está imponiendo una condición adicional que la teoría clásica no adopta en general.
-
-Pero tampoco debemos pedirle a ZFC que responda preguntas que pertenecen a otro nivel.
-
-ZFC puede responder:
-
-> ¿puede formalizarse este objeto dentro de la teoría?
-
-La teoría de la computabilidad pregunta además:
-
-> ¿podemos calcularlo?
-
-La matemática constructiva pregunta:
-
-> ¿qué construcción contiene la prueba de existencia?
-
-La teoría de la decisión pregunta:
-
-> ¿podemos decidir esta propiedad mediante un procedimiento general?
-
-La complejidad pregunta:
-
-> aun cuando podamos calcularlo, ¿con qué recursos?
-
-Son preguntas distintas.
-
-Una exposición rigurosa debe evitar colapsarlas en una sola.
-
-## 8. No necesitamos elegir entre Wildberger y la matemática clásica
-
-Existe una falsa dicotomía frecuente:
-
-$$
-\text{matemática clásica}
-\qquad\text{vs.}\qquad
-\text{finitismo radical}.
-$$
-
-La tradición constructiva muestra que existe un territorio enorme entre ambos extremos.
-
-Errett Bishop desarrolló una parte sustancial del análisis desde una orientación constructiva. La teoría de tipos, el análisis computable y distintas formas de matemática constructiva han profundizado después la relación entre existencia, información y cálculo.
-
-Esto sugiere una actitud metodológica especialmente fértil:
-
-$$
-\boxed{
-\text{construir cuando podamos; declarar con precisión cuándo no lo hacemos.}
-}
-$$
-
-No necesitamos renunciar automáticamente a un teorema porque su prueba clásica sea no constructiva.
-
-Podemos hacer algo más informativo:
-
-1. demostrar el resultado clásico;
-2. identificar sus dependencias lógicas y conjuntistas relevantes;
-3. determinar qué información efectiva proporciona la demostración;
-4. buscar, cuando tenga sentido, una versión constructiva o computable;
-5. comparar exactamente qué se gana y qué se pierde.
-
-Entonces las diferencias fundacionales dejan de ser únicamente una disputa filosófica y se convierten en información matemática.
-
-## 9. Un principio editorial: no ocultar
-
-Podemos resumir esta posición en una regla:
-
-$$
-\boxed{
-\text{No prohibir la matemática no constructiva;}
-\quad
-\text{prohibir que su carácter no constructivo permanezca invisible.}
-}
-$$
-
-Lo mismo vale para el infinito y para el axioma de elección.
-
-No proponemos:
-
-$$
-\text{«Sólo existen números computables».}
-$$
-
-Preguntamos:
-
-$$
-\boxed{\text{¿este número es computable y, si lo es, mediante qué representación?}}
-$$
-
-No proponemos abandonar la completitud clásica.
-
-Distinguimos:
-
-$$
-\text{completitud clásica}
-$$
-
-de
-
-$$
-\text{completitud efectiva}.
-$$
-
-No rechazamos una demostración porque use elección.
-
-Registramos qué forma de elección utiliza, si puede evitarse y si el propio teorema necesita realmente esa fuerza o sólo la necesita la prueba elegida.
-
-Esta diferencia enriquece los resultados. No los empobrece.
-
-## 10. Un decálogo crítico para las construcciones matemáticas
-
-De esta discusión emerge un protocolo que puede aplicarse a prácticamente cualquier construcción matemática.
-
-### 1. ¿Qué objeto estamos introduciendo?
-
-Precisar su naturaleza matemática y no esconderla detrás de una notación conveniente.
-
-### 2. ¿Qué significa que esté definido?
-
-Distinguir definición formal, descripción finita, especificación efectiva y mera caracterización existencial.
-
-### 3. ¿Cómo sabemos que existe?
-
-Identificar el argumento exacto de existencia y los principios sobre los que descansa.
-
-### 4. ¿Podemos construirlo?
-
-Preguntar si la demostración proporciona el objeto cuya existencia afirma.
-
-### 5. ¿Podemos calcular con él?
-
-No confundir operaciones formalmente definidas con operaciones efectivamente computables.
-
-### 6. ¿Podemos decidir cuándo dos objetos son iguales?
-
-Una relación de igualdad puede estar perfectamente definida aunque no exista un algoritmo general que la decida.
-
-### 7. ¿Podemos decidir sus propiedades básicas?
-
-Para una cortadura $L\subseteq\mathbb Q$, por ejemplo:
-
-$$
-q\in L\;?
-$$
-
-¿existe un procedimiento efectivo que determine la respuesta?
-
-### 8. ¿Qué infinitud estamos utilizando?
-
-Distinguir un proceso potencialmente indefinido de una totalidad infinita tratada como objeto completo.
-
-### 9. ¿Qué principios lógicos o de elección intervienen?
-
-Cuando sean relevantes, hacer visibles lógica clásica, tercero excluido, elección numerable, elección dependiente, principios de ideales primos, Zorn o elección completa.
-
-### 10. ¿Qué sobrevive bajo exigencias constructivas o efectivas?
-
-Después del resultado clásico, preguntar:
-
-$$
-\boxed{
-\text{¿cuál es la versión constructiva o computable más fuerte que podemos conservar?}
-}
-$$
-
-## 11. Wildberger como prueba de estrés
-
-Wildberger puede estar equivocado en una objeción determinada.
-
-Puede ocurrir que una respuesta formal resuelva otra completamente.
-
-También puede ocurrir que una objeción sólo tenga fuerza si aceptamos previamente su criterio finitista de legitimidad matemática.
-
-Pero la peor respuesta sería ignorar la pregunta porque procede de una posición minoritaria.
-
-Una matemática segura de sus fundamentos debería poder enfrentarse a sus adversarios más incómodos.
-
-Por eso resulta útil tratar a Wildberger no necesariamente como un guía, sino como una **prueba de estrés**.
-
-Ante una construcción podemos preguntar:
-
-$$
-\begin{aligned}
-&\text{¿qué acabamos de introducir?}\\
-&\text{¿cómo se especifica?}\\
-&\text{¿cómo demostramos que existe?}\\
-&\text{¿podemos construirlo?}\\
-&\text{¿podemos calcular con él?}\\
-&\text{¿podemos decidir igualdad?}\\
-&\text{¿qué axiomas estamos utilizando?}
-\end{aligned}
-$$
-
-Si la teoría puede responder satisfactoriamente, la objeción habrá servido para fortalecerla.
-
-Si no puede hacerlo, entonces hemos descubierto algo que merecía hacerse visible.
-
-## Conclusión
-
-La discusión sobre los números reales no debería reducirse a decidir si Dedekind tenía razón o si Wildberger está equivocado.
-
-La cuestión más fértil es otra:
-
-> ¿qué podemos aprender sobre nuestra propia matemática cuando tomamos en serio las preguntas del crítico?
-
-Una construcción clásica puede ser correcta y, al mismo tiempo, no ser efectiva.
-
-Una función puede estar formalmente definida y no venir acompañada de un algoritmo.
-
-Una existencia puede estar demostrada sin que podamos exhibir un testigo.
-
-Un teorema puede depender de un principio de elección que permanece invisible en su formulación cotidiana.
-
-Nada de esto invalida automáticamente la matemática clásica.
-
-Pero todo ello pertenece al contenido matemático del resultado.
-
-Por eso adoptamos una orientación deliberadamente constructiva sin convertirla en dogma:
-
-$$
-\boxed{
-\begin{gathered}
-\text{construir siempre que sea razonablemente posible,}\\
-\text{hacer explícitas las dependencias cuando no lo sea,}\\
-\text{y utilizar las objeciones para aumentar, no disminuir, el rigor.}
-\end{gathered}
-}
-$$
-
-Quizá ésta sea una respuesta más interesante a Wildberger que aceptarlo o descartarlo en bloque.
-
-No ignorarlo.
-
-No seguirlo ciegamente.
-
-Sino permitir que sus preguntas nos obliguen a precisar mejor qué queremos decir cuando afirmamos que algo **existe**, que algo está **construido** o que una operación está **definida** en matemáticas.
+En el fondo, esta controversia nos devuelve a una cuestión más amplia que atraviesa toda la actividad matemática. Cuando introducimos una noción y comenzamos a operar con ella, no sólo ampliamos nuestro repertorio de objetos; también adoptamos criterios acerca de qué cuenta como descripción, qué cuenta como prueba y qué cuenta como construcción. Hacer explícitos esos criterios no empobrece la disciplina. Nos permite comprender, con mayor precisión, qué hemos logrado y qué permanece todavía por investigar.
 
 ---
 
@@ -600,7 +245,9 @@ Sino permitir que sus preguntas nos obliguen a precisar mejor qué queremos deci
 
 - Bishop, Errett. *Foundations of Constructive Analysis*. McGraw-Hill, 1967.
 - Bridges, Douglas; Richman, Fred. *Varieties of Constructive Mathematics*. Cambridge University Press, 1987.
-- Stanford Encyclopedia of Philosophy. “[Constructive Mathematics](https://plato.stanford.edu/entries/mathematics-constructive/)”.
-- Stanford Encyclopedia of Philosophy. “[The Axiom of Choice](https://plato.stanford.edu/entries/axiom-choice/)”.
-- Wildberger, Norman J. “Real numbers: A critique and way forward”. 2015. DOI: 10.13140/RG.2.1.3673.8406.
-- Wildberger, Norman J. “[Set Theory: Should You Believe?](https://web.maths.unsw.edu.au/~norman/papers/SetTheory.pdf)”. 2015.
+- Lubarsky, Robert. «On the Cauchy Completeness of the Constructive Cauchy Reals». *Mathematical Logic Quarterly* 53, n.os 4–5 (2007): 396–414. DOI: [10.1002/malq.200710007](https://doi.org/10.1002/malq.200710007).
+- Powell, Thomas. «A note on the finitization of Abelian and Tauberian theorems». *Mathematical Logic Quarterly* (2020), sección 3, dedicada a las sucesiones de Specker. [DOI: 10.1002/malq.201900076](https://doi.org/10.1002/malq.201900076).
+- *Stanford Encyclopedia of Philosophy*. [«Constructive Mathematics»](https://plato.stanford.edu/entries/mathematics-constructive/), revisión de 2022.
+- *Stanford Encyclopedia of Philosophy*. [«The Axiom of Choice»](https://plato.stanford.edu/entries/axiom-choice/), revisión de 2021.
+- Wildberger, Norman J. [«Real numbers: A critique and way forward»](https://www.researchgate.net/publication/280387376_Real_numbers_A_critique_and_way_forward). Versión difundida en ResearchGate, julio de 2015. DOI: 10.13140/RG.2.1.3673.8406.
+- Wildberger, Norman J. [«Set Theory: Should You Believe?»](https://web.maths.unsw.edu.au/~norman/papers/SetTheory.pdf). Texto documentado en circulación en 2006; versión difundida en ResearchGate en julio de 2015, DOI: 10.13140/RG.2.1.1314.5445.
