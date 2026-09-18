@@ -5,7 +5,7 @@ description: "Construcción de los reales como cuerpo ordenado, demostración de
 content-id: MA-ART-0008
 content-type: article
 status: draft
-publication-state: pending-qa-and-pr
+publication-state: revision-incrustacion-pending-qa-and-pr
 date-created: 2026-09-18
 date-modified: 2026-09-18
 categories:
@@ -17,7 +17,7 @@ related:
   - MA-ART-0007
 provenance:
   type: original-synthesis
-  note: "Versión web derivada del manuscrito canónico de Obsidian MA-ART-0008. No publicada ni sometida a Quarto QA."
+  note: "Versión web derivada del manuscrito canónico de Obsidian MA-ART-0008. La versión inicial se integró mediante PR #93; esta ampliación de las pruebas aún requiere QA y PR."
 ---
 
 
@@ -256,7 +256,94 @@ $$
 \boxed{(\mathbb R_D,+_D,\cdot_D,0_D,1_D,\leq_D)\ \text{es un cuerpo ordenado}.}
 $$
 
-Éste es `TA-THM-00054`. Las identidades $\delta_p+\delta_q=\delta_{p+q}$ y $\delta_p\delta_q=\delta_{pq}$ se verifican mediante la densidad racional y la regla de signos; junto con la compatibilidad del orden, muestran que $\iota_D$ es una incrustación de cuerpos ordenados (`TA-COR-00023`). Hemos alcanzado este punto **sin utilizar la propiedad del supremo**.
+Éste es `TA-THM-00054`. Para cerrar la construcción sin dejar implícita la identificación de los racionales, desarrollamos las identidades algebraicas anunciadas en `TA-COR-00023`.
+
+### 4.4. La copia racional es una incrustación de cuerpos ordenados {#incrustacion-racional}
+
+Recordemos que $\iota_D(p)=\delta_p=\{r\in\mathbb Q:r<p\}$. La proposición 5 ya demostró que esta función está bien definida, es inyectiva y preserva y refleja el orden:
+
+$$
+p\le q\iff\delta_p\subseteq\delta_q.
+$$
+
+**Proposición (compatibilidad con la suma).** Para cualesquiera $p,q\in\mathbb Q$,
+
+$$
+\boxed{\delta_p+_D\delta_q=\delta_{p+q}.}
+$$
+
+*Demostración.* Si $x\in\delta_p+_D\delta_q$, existen $a<p$ y $b<q$ tales que $x=a+b$. De aquí $x<p+q$, luego $x\in\delta_{p+q}$.
+
+Para la otra inclusión, tomemos $x<p+q$. Entonces $x-q<p$; por densidad racional existe $a$ con $x-q<a<p$. Definimos $b=x-a$. Se cumplen $a\in\delta_p$, $b<q$, y $x=a+b$. Así $x\in\delta_p+_D\delta_q$. Las dos inclusiones prueban la igualdad. $\square$
+
+**Lema (opuestos de las cortaduras racionales).** Para todo $p\in\mathbb Q$,
+
+$$
+\boxed{-_D\delta_p=\delta_{-p}.}
+$$
+
+*Demostración.* Por la definición del opuesto,
+
+$$
+\begin{aligned}
+r\in-_D\delta_p
+&\iff \exists s\notin\delta_p\;(r<-s)\\
+&\iff \exists s\ge p\;(r<-s)\\
+&\iff r<-p\\
+&\iff r\in\delta_{-p}.
+\end{aligned}
+$$
+
+En la tercera equivalencia, el sentido directo usa $-s\le-p$; para el recíproco basta elegir $s=p$. $\square$
+
+**Proposición (compatibilidad con el producto).** Para cualesquiera $p,q\in\mathbb Q$,
+
+$$
+\boxed{\delta_p\cdot_D\delta_q=\delta_{pq}.}
+$$
+
+*Demostración.* Distinguimos los signos, de acuerdo con la definición de $\cdot_D$.
+
+**Caso $p,q>0$.** La definición del producto positivo da
+
+$$
+\delta_p\cdot_D\delta_q=
+\{x\in\mathbb Q:\exists a,b\in\mathbb Q\;(0<a<p,\ 0<b<q,\ x<ab)\}.
+$$
+
+Si $x$ pertenece a este producto, entonces $x<ab<pq$, de modo que $x\in\delta_{pq}$.
+
+Recíprocamente, supongamos $x<pq$. Si $x\le0$, elegimos $a=p/2$ y $b=q/2$; ambos son positivos y $x<ab$. Si $x>0$, la desigualdad $x/q<p$ permite escoger, por densidad, un racional $a$ tal que $x/q<a<p$. Como $a>0$ y $x/a<q$, escogemos luego un racional $b$ con $x/a<b<q$. En ambos casos obtenemos $0<a<p$, $0<b<q$ y $x<ab$. Por ello $x$ pertenece al producto y queda probada la igualdad para factores positivos.
+
+**Caso $p=0$ o $q=0$.** Por la definición del producto general, $\delta_p\cdot_D\delta_q=0_D=\delta_0=\delta_{pq}$.
+
+**Caso $p<0<q$.** Utilizando la regla de signos, el lema anterior y el caso positivo,
+
+$$
+\delta_p\cdot_D\delta_q
+=-_D(\delta_{-p}\cdot_D\delta_q)
+=-_D\delta_{(-p)q}
+=\delta_{pq}.
+$$
+
+El caso $q<0<p$ se deduce por conmutatividad. Si $p<0$ y $q<0$, la regla de signos proporciona
+
+$$
+\delta_p\cdot_D\delta_q
+=\delta_{-p}\cdot_D\delta_{-q}
+=\delta_{(-p)(-q)}
+=\delta_{pq}.
+$$
+
+Los casos cubren todos los pares de racionales. $\square$
+
+Finalmente, por definición $\iota_D(0)=\delta_0=0_D$ y $\iota_D(1)=\delta_1=1_D$. Junto con la proposición 5 y las identidades recién demostradas, resulta que
+
+$$
+\boxed{\iota_D:\mathbb Q\hookrightarrow\mathbb R_D\quad\text{es una incrustación de cuerpos ordenados}.}
+$$
+
+Esta conclusión corresponde a `TA-COR-00023`. Hemos alcanzado este punto **sin utilizar la propiedad del supremo**.
 
 ## 5. La propiedad del supremo: la prueba decisiva {#supremo}
 
