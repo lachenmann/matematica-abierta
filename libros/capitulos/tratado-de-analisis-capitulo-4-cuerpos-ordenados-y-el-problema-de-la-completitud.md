@@ -41,7 +41,7 @@ license: GFDL-1.3-or-later
 
 # Capítulo 4 — Cuerpos ordenados y el problema de la completitud
 
-[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md)
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md)
 
 *Parte I — Fundamentos y construcción de los números reales*
 

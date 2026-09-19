@@ -27,6 +27,7 @@ related:
   - MA-BCH-0019
   - MA-BCH-0020
   - MA-BCH-0029
+  - MA-BCH-0051
 provenance:
   type: original
   sources: []
@@ -196,9 +197,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — **capítulo completo (§§4.0–4.11)**. Desarrolla cuerpos ordenados, valor absoluto, intervalos, arquimedianidad, densidad y completitud; §4.11 prepara la construcción de los reales por cortaduras de Dedekind.
 
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
+6. [**Capítulo 5 — Cortaduras de Dedekind**](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md) (`MA-BCH-0051`) — **capítulo completo**. Construye las cortaduras como subconjuntos de $\mathbb Q$, ordena el nuevo sistema por inclusión e incrusta canónicamente a $\mathbb Q$. La aritmética de cortaduras se desarrolla en el capítulo siguiente.
 
-Los **Capítulos 0–4** están completos en la edición web. La siguiente incorporación será el **Capítulo 5 — Cortaduras de Dedekind**.
+7. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
+
+Los **Capítulos 0–5** están completos en la edición web. La siguiente incorporación será el **Capítulo 6 — Aritmética de las cortaduras**.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
