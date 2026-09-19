@@ -47,7 +47,8 @@ Un conjunto $I$ es **inductivo** si
 
 Existe al menos un conjunto inductivo.
 
-**Demostración.**  
+**Demostración.**
+
 Es el contenido del axioma de infinito, en la forma admitida en el [inventario axiomático del Capítulo 0](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md#ta-zf), una vez introducidas las notaciones $0$ y $S$. ∎
 
 La existencia de algún conjunto inductivo resuelve sólo la mitad del problema. Falta extraer de él el menor núcleo que no contenga nada salvo lo que todas las construcciones inductivas están obligadas a contener. La definición siguiente realiza precisamente esa intersección de manera interna, por separación, sin formar una colección ilegítima de «todos los conjuntos inductivos».
@@ -70,7 +71,8 @@ Su existencia se obtiene por separación sobre $I$; no se forma «el conjunto de
 
 ### Proposición 1.1.6 — $\omega_I$ es inductivo {#ta-omega-i-inductivo}
 
-**Demostración.**  
+**Demostración.**
+
 Todo subconjunto inductivo de $I$ contiene $0$, luego $0\in\omega_I$. Si $x\in\omega_I$, entonces $x\in I$ y por inductividad $S(x)\in I$; además, cada subconjunto inductivo $J\subseteq I$ que contiene $x$ contiene también $S(x)$. Por tanto $S(x)\in\omega_I$. ∎
 
 ---
@@ -83,7 +85,8 @@ $$
 \omega_I\subseteq J.
 $$
 
-**Demostración.**  
+**Demostración.**
+
 $I\cap J$ es un subconjunto inductivo de $I$. Por definición de $\omega_I$, todo elemento de $\omega_I$ pertenece a $I\cap J$, y por tanto a $J$. ∎
 
 ---
@@ -96,7 +99,8 @@ $$
 \omega_I=\omega_J.
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Como $\omega_J$ es inductivo, la minimalidad da $\omega_I\subseteq\omega_J$; intercambiando $I$ y $J$, $\omega_J\subseteq\omega_I$. Aplicamos doble inclusión. ∎
 
 La minimalidad muestra que $\omega_I$ está contenido en todo conjunto inductivo; la independencia demuestra algo todavía más importante: el resultado no depende del conjunto $I$ que usamos como ambiente inicial. Hemos obtenido, por tanto, un objeto **canónico**. Ya podemos retirar el subíndice auxiliar y reconocer en este conjunto el sistema de los naturales.
@@ -129,11 +133,6 @@ $$
 
 Equivalentemente, si una propiedad $P$ satisface $P(0)$ y $P(n)\Rightarrow P(S(n))$, entonces vale para todo $n\in\mathbb N$.
 
-**Demostración.**  
+**Demostración.**
+
 Las hipótesis hacen de $A$ un conjunto inductivo. Por minimalidad $\mathbb N\subseteq A$; junto con $A\subseteq\mathbb N$, obtenemos igualdad. La versión para $P$ se aplica a $\{n\in\mathbb N:P(n)\}$. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.1 queda construida canónicamente $\mathbb N=\omega$ y demostrado el principio de inducción. La siguiente entrega será **§1.2 — Estructura de los naturales y Peano**, donde las propiedades de Peano aparecerán como teoremas de esta construcción, no como axiomas adicionales.
-:::

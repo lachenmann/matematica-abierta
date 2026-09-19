@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-13
-date-modified: 2026-09-14
+date-modified: 2026-09-19
 areas:
   - fundamentos
   - analisis
@@ -36,7 +36,7 @@ license: GFDL-1.3-or-later
 
 # Capítulo 1 — Los números naturales
 
-[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md)
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-2-los-numeros-enteros.md)
 
 *Parte I — Fundamentos y construcción de los números reales*
 

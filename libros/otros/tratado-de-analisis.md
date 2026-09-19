@@ -6,7 +6,7 @@ content-id: MA-BOK-0003
 content-type: book
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-16
+date-modified: 2026-09-19
 areas:
   - fundamentos
   - analisis
@@ -27,6 +27,17 @@ related:
   - MA-BCH-0019
   - MA-BCH-0020
   - MA-BCH-0029
+  - MA-BCH-0051
+  - MA-BCH-0052
+  - MA-BCH-0053
+  - MA-BCH-0054
+  - MA-BCH-0055
+  - MA-BCH-0056
+  - MA-BCH-0057
+  - MA-BCH-0058
+  - MA-BCH-0059
+  - MA-BCH-0060
+  - MA-BCH-0061
 provenance:
   type: original
   sources: []
@@ -194,11 +205,33 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
    es no vacío y acotado superiormente, pero no posee supremo racional, exhibiendo una falla concreta de completitud. §3.11 consigna el marco bibliográfico y metodológico, y §3.12 cierra el capítulo formulando la transición hacia dos construcciones independientes de los números reales: **cortaduras de Dedekind** y **sucesiones de Cauchy**.
 
-5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — publicado hasta **§4.10 — Notas bibliográficas**. El capítulo reúne la teoría abstracta de cuerpos ordenados, numerales y subcuerpo primo, valor absoluto e intervalos, arquimedianidad y densidad, completitud mediante supremos y sus formulaciones equivalentes, y el programa de completación ordenada de $\mathbb Q$. §4.10 identifica las referencias de contraste y precisa que las demostraciones son internas. La siguiente incorporación será **§4.11 — Hacia las cortaduras de Dedekind**, cierre del capítulo.
+5. [**Capítulo 4 — Cuerpos ordenados y el problema de la completitud**](../capitulos/tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md) (`MA-BCH-0029`) — **capítulo completo (§§4.0–4.11)**. Desarrolla cuerpos ordenados, valor absoluto, intervalos, arquimedianidad, densidad y completitud; §4.11 prepara la construcción de los reales por cortaduras de Dedekind.
 
-6. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
+6. [**Capítulo 5 — Cortaduras de Dedekind**](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md) (`MA-BCH-0051`) — **capítulo completo**. Construye las cortaduras como subconjuntos de $\mathbb Q$, ordena el nuevo sistema por inclusión e incrusta canónicamente a $\mathbb Q$. La aritmética de cortaduras se desarrolla en el capítulo siguiente.
 
-Los **Capítulos 0–3** están completos en la edición web y el **Capítulo 4** está publicado hasta §4.10. La siguiente incorporación será **§4.11 — Hacia las cortaduras de Dedekind**.
+7. [**Capítulo 6 — Aritmética de las cortaduras**](../capitulos/tratado-de-analisis-capitulo-6-aritmetica-de-las-cortaduras.md) (`MA-BCH-0052`) — **capítulo completo**: Del orden a la aritmética; Suma de cortaduras; El cero de Dedekind; Notas de cierre y control fundacional.
+
+8. [**Capítulo 7 — Completitud de los reales de Dedekind**](../capitulos/tratado-de-analisis-capitulo-7-completitud-de-los-reales-de-dedekind.md) (`MA-BCH-0053`) — **capítulo completo**: El problema que queda; Cotas en $\mathbb R_D$; Construcción del candidato a supremo; Qué hemos alcanzado.
+
+9. [**Capítulo 8 — Sucesiones racionales y aproximación**](../capitulos/tratado-de-analisis-capitulo-8-sucesiones-racionales-y-aproximacion.md) (`MA-BCH-0054`) — **capítulo completo**: De las fronteras a los procesos de aproximación; Sucesiones en $\mathbb Q$; Distancia racional y valor absoluto; Incompletitud secuencial de $\mathbb Q$.
+
+10. [**Capítulo 9 — El cuerpo de Cauchy**](../capitulos/tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md) (`MA-BCH-0055`) — **capítulo completo**: El conjunto de sucesiones racionales de Cauchy; Sucesiones nulas; Relación de equivalencia; Compatibilidad del orden con las operaciones.
+
+11. [**Capítulo 10 — Completitud del cuerpo de Cauchy**](../capitulos/tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md) (`MA-BCH-0056`) — **capítulo completo**: Sucesiones de Cauchy en $\mathbb R_C$; Aproximantes racionales y política de elección; Construcción diagonal; Conclusión: la completación de Cauchy de $\mathbb Q$.
+
+12. [**Capítulo 11 — Dedekind y Cauchy**](../capitulos/tratado-de-analisis-capitulo-11-dedekind-y-cauchy.md) (`MA-BCH-0057`) — **capítulo completo**: Del proceso racional a la cortadura; Buena definición sobre clases; Homomorfismo; Conclusión.
+
+13. [**Capítulo 12 — Unicidad**](../capitulos/tratado-de-analisis-capitulo-12-unicidad.md) (`MA-BCH-0058`) — **capítulo completo**: De dos modelos concretos a la unicidad general; Subcuerpo primo de un cuerpo ordenado; Copia canónica de $\mathbb Q$; Qué significa $\mathbb R$ a partir de ahora.
+
+14. [**Capítulo 13 — Sucesiones reales**](../capitulos/tratado-de-analisis-capitulo-13-sucesiones-reales.md) (`MA-BCH-0059`) — **capítulo completo**: De la construcción de los reales al análisis sobre los reales; Sucesiones como funciones; Colas y propiedades eventuales; Límites inferior y superior.
+
+15. [**Capítulo 14 — Series numéricas**](../capitulos/tratado-de-analisis-capitulo-14-series-numericas.md) (`MA-BCH-0060`) — **capítulo completo**: De una sucesión de términos a una sucesión de sumas; Serie, sumas parciales y convergencia; Criterio de Cauchy para series y condición necesaria de convergencia; Criterio de la raíz y límite superior finito.
+
+16. [**Capítulo 15 — Topología de la recta real**](../capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md) (`MA-BCH-0061`) — **capítulo completo**: De las aproximaciones a la proximidad; Bolas abiertas y vecindades; Puntos interiores y conjuntos abiertos; Densidad e intervalos.
+
+17. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
+
+Los **Capítulos 0–15** están completos en la edición web. El **Capítulo 16 — Límites de funciones** permanece en elaboración y todavía no se publica.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 

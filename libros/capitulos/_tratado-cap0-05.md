@@ -40,7 +40,8 @@ Cuando no haya riesgo de ambigüedad, escribiremos simplemente $[a]$.
 
 Para todo $a\in A$, la clase $[a]$ es un conjunto, satisface $[a]\subseteq A$ y contiene a $a$.
 
-**Demostración.**  
+**Demostración.**
+
 La existencia y la inclusión $[a]\subseteq A$ se siguen de la definición por separación. Como $\sim$ es reflexiva, $a\sim a$; por Definición 0.5.1, $a\in[a]$. ∎
 
 ---
@@ -57,7 +58,8 @@ $$
 a\sim b.
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Si $[a]=[b]$, entonces $a\in[a]=[b]$ por Proposición 0.5.2; por la definición de $[b]$, $a\sim b$.
 
 Recíprocamente, supongamos $a\sim b$. Sea $x\in[a]$. Entonces $x\sim a$. Como $a\sim b$ y $\sim$ es transitiva, $x\sim b$, luego $x\in[b]$. Por tanto $[a]\subseteq[b]$.
@@ -69,7 +71,8 @@ Por simetría, $b\sim a$, y el mismo argumento da $[b]\subseteq[a]$. Aplicando T
 ### Proposición 0.5.4 — Clases iguales o disjuntas
 Para $a,b\in A$, o bien $[a]=[b]$, o bien $[a]$ y $[b]$ son disjuntas.
 
-**Demostración.**  
+**Demostración.**
+
 Supongamos que $[a]\cap[b]\neq\varnothing$. Entonces existe $x$ con $x\in[a]$ y $x\in[b]$. Por definición,
 
 $$
@@ -99,7 +102,8 @@ Una **partición** de un conjunto $A$ es un conjunto $\mathscr P$ de subconjunto
 ### Teorema 0.5.6 — Las clases de equivalencia forman una partición
 El conjunto de todas las clases de equivalencia de $\sim$ forma una partición de $A$.
 
-**Demostración.**  
+**Demostración.**
+
 Consideremos
 
 $$
@@ -153,13 +157,6 @@ $$
 A/{\sim}\subseteq\mathcal P(A).
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Por Definición 0.5.7, $A/{\sim}$ se obtiene por separación dentro de $\mathcal P(A)$. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Esta entrega del capítulo comprende ya §§0.0–0.5. La siguiente incorporará **0.6 — Funciones** y continuará en el orden del manuscrito maestro.
-
-El [**Glosario matemático del Tratado**](../otros/tratado-de-analisis-glosario.md) se actualiza en paralelo: esta incorporación añade **clase de equivalencia**, **representante**, **igualdad de clases**, **partición** y **conjunto cociente**.
-:::

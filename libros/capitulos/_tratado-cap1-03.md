@@ -34,7 +34,8 @@ cuyo grafo es $G_f\cap(C\times B)$.
 
 La regla anterior determina una única función $f\upharpoonright C:C\to B$.
 
-**Demostración.**  
+**Demostración.**
+
 Para cada $c\in C\subseteq A$, el grafo de $f$ contiene un único par $\langle c,b\rangle$ con $b\in B$; la intersección con $C\times B$ conserva exactamente esos pares. La definición de función y el criterio de igualdad de funciones dan existencia y unicidad. ∎
 
 La restricción nos permite comparar una solución más larga con sus etapas anteriores. Introducimos ahora los fragmentos finitos que servirán como piezas de la construcción global.
@@ -77,7 +78,8 @@ $$
 h^+(S(n))=g(h(n)).
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Por la Proposición 1.2.2, $S(n)\notin S(n)$. Añadimos al grafo de $h$ el único par nuevo
 
 $$
@@ -96,7 +98,8 @@ Si $S(k)\in S(S(n))$, o bien $S(k)\in S(n)$ y rige la recursión anterior, o bie
 
 Para cada $n\in\mathbb N$ existe una única $n$-aproximación para $(X,x_0,g)$.
 
-**Demostración.**  
+**Demostración.**
+
 Inducimos sobre $n$. Para $n=0$, $S(0)=\{0\}$ y existe una única función que envía $0$ a $x_0$; la ecuación recursiva es vacía porque ningún sucesor es $0$. En el paso inductivo, la existencia y unicidad de la extensión vienen del lema anterior. Cualquier otra aproximación en $S(S(n))$, restringida a $S(n)$, es la única $n$-aproximación y su valor nuevo está forzado por la recursión. ∎
 
 ### Lema 1.3.6 — Coherencia de las aproximaciones {#ta-coherencia-aproximaciones}
@@ -109,7 +112,8 @@ $$
 
 entonces $h(k)=q(k)$.
 
-**Demostración.**  
+**Demostración.**
+
 Inducimos sobre $k$ la afirmación de que cualesquiera dos aproximaciones cuyos dominios contienen a $k$ coinciden en $k$. En $0$ ambas toman $x_0$. Si coinciden en $k$ y ambos dominios contienen $S(k)$, por transitividad contienen también a $k$, y
 
 $$
@@ -143,7 +147,8 @@ $$
 \qquad(n\in\mathbb N).
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Por existencia del producto cartesiano existe $\mathbb N\times X$. Definimos por separación $G\subseteq\mathbb N\times X$ declarando que
 
 $$
@@ -192,11 +197,6 @@ $$
 F(p,S(n))=r(p,F(p,n)).
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Para cada parámetro $p$, el Teorema 1.3.7 da una única función recursiva $f_p$. El grafo de $F$ se define por separación en $(P\times\mathbb N)\times X$ mediante la fórmula «$x$ es el valor en $n$ de la única función recursiva asociada a $p$». La unicidad local garantiza funcionalidad y elimina cualquier necesidad de elección. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.3 queda justificada rigurosamente la definición por recursión sobre $\mathbb N$, incluida su versión con parámetros. La siguiente entrega será **§1.4 — Suma de números naturales**, donde este corolario producirá la operación $+\colon\mathbb N\times\mathbb N\to\mathbb N$ antes de demostrar sus leyes algebraicas.
-:::
