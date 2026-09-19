@@ -13,5 +13,3 @@ Esta transición nos lleva a una nueva pregunta: ¿qué propiedades de un subcon
 Para responderla no introduciremos una topología abstracta, un espacio métrico arbitrario ni resultados sobre funciones continuas. Trabajaremos directamente con el cuerpo ordenado completo $\mathbb R$, estructuralmente fijado en §12.9. La noción de distancia que aparecerá no es un nuevo objeto primitivo: es el valor absoluto de una diferencia, ya disponible desde §4.2. Los intervalos, definidos en §4.3, permitirán interpretar inmediatamente las primeras construcciones.
 
 La ruta del capítulo será: proximidad y vecindades; interior y exterior; abiertos y cerrados; adherencia y acumulación; interior, clausura y frontera como operaciones sobre conjuntos; leyes de unión e intersección; descripciones secuenciales; densidad e intervalos. Los primeros pasos se desarrollarán antes de dar por supuesto cualquiera de los posteriores.
-
----

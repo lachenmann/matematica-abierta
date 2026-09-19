@@ -30,10 +30,6 @@ $$
 
 No se selecciona un representante de cada clase: el cociente es el conjunto de las clases mismas. ∎
 
-> **Auditoría fundacional.** La construcción heredada de Proposición 0.5.8 — Existencia del cociente utiliza conjunto potencia y separación. No requiere una función de elección ni una familia escogida de representantes.
-
----
-
 ### Definición 9.4.2 — El conjunto de los reales de Cauchy
 
 Definimos el **conjunto de los reales de Cauchy** por
@@ -49,8 +45,6 @@ $$
 En este punto $\mathbb R_C$ es únicamente un conjunto. Todavía no hemos definido en él suma, producto, cero, unidad, opuestos, inversos ni orden, y por tanto **no** hemos demostrado aún que sea un cuerpo ordenado ni que sea completo.
 
 El subíndice $C$ se conservará hasta comparar esta construcción con el modelo de Dedekind $\mathbb R_D$.
-
----
 
 ### Notación 9.4.3 — Clases de Cauchy
 
@@ -91,8 +85,6 @@ a\in\mathcal C_{\mathbb Q},
 $$
 
 Una sucesión es un representante; una clase es el nuevo objeto numérico. No se escribirá $a=[a]_C$.
-
----
 
 ### Proposición 9.4.4 — Representantes y criterio de igualdad de clases de Cauchy
 
@@ -164,10 +156,6 @@ Esto prueba las tres afirmaciones. ∎
 > caracteriza exactamente la igualdad, pero no la vuelve decidible para representantes arbitrarios:
 > $$ \boxed{\text{igualdad caracterizada}\neq\text{igualdad decidible en }\mathbb R_C.} $$
 
-> **Auditoría de elección.** La afirmación de que cada clase posee un representante no requiere escoger simultáneamente uno para cada clase. Para un elemento fijo $x\in\mathbb R_C$, la propia definición del cociente proporciona un testigo local $a$ con $x=[a]_C$. No se construye ninguna sección global del cociente.
-
----
-
 ### Lo que hemos ganado
 
 Por primera vez en la construcción de Cauchy disponemos de un conjunto que contiene los futuros números reales:
@@ -191,5 +179,3 @@ a-b\in\mathcal N_{\mathbb Q}
 $$
 
 será precisamente la herramienta de control. El siguiente problema es §9.5: demostrar que suma y producto término a término son compatibles con $\sim_C$ y, sólo después, hacerlas descender al cociente.
-
----

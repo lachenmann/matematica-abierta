@@ -61,5 +61,3 @@ $$
 $$
 
 Comenzamos por el objeto más elemental, antes de atribuirle cualquier comportamiento asintótico.
-
----

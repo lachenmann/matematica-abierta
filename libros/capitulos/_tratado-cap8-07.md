@@ -47,8 +47,6 @@ $$
 
 Construiremos una de ellas mediante una bisección enteramente racional asociada a la ecuación $x^2=2_{\mathbb Q}$.
 
----
-
 ### Definición 8.7.2 — Operador racional de bisección para $x^2=2$
 
 Para $x,y\in\mathbb Q$ definimos su punto medio racional
@@ -106,8 +104,6 @@ y cada entrada determina un único valor.
 > **Nota fundacional.** La definición no efectúa una elección entre múltiples testigos: el nuevo par queda determinado por una condición decidida sobre un único punto medio racional. No interviene Choice.
 
 > `classical-use: none`; `constructive-status: constructive-compatible`; `effective-status: effective`.
-
----
 
 ### Proposición 8.7.3 — Existencia y unicidad de las sucesiones de bisección
 
@@ -217,12 +213,8 @@ $$
 
 La ecuación recursiva de $p$ se traduce exactamente en las fórmulas afirmadas para $a$ y $b$. La unicidad de $p$ implica la unicidad del par $(a,b)$. ∎
 
-> **Auditoría de elección.** La función de estados $p$ viene dada por el teorema de recursión y cada coordenada está determinada de manera única. No se elige una sucesión de ramas ni una familia de representantes.
-
 > **Contenido efectivo.** Como la rama de $\Phi_2$ se decide racionalmente en cada etapa, la recursión
 > produce sucesiones computables $n\mapsto a_n$ y $n\mapsto b_n$.
-
----
 
 ### Lema 8.7.4 — Invariantes de la bisección racional
 
@@ -459,8 +451,6 @@ Esto completa la demostración. ∎
 > **Nota fundacional.** La dicotomía usada en cada etapa no es una apelación a LEM sobre una
 > proposición arbitraria: $m_n^2<2_{\mathbb Q}$ es una comparación racional decidible por P0-B.
 
----
-
 ### Lema 8.7.5 — Las anchuras se hacen arbitrariamente pequeñas
 
 Para todo $\varepsilon\in\mathbb Q$ con $0<\varepsilon$, existe $N\in\mathbb N$ tal que, para todo $n\in\mathbb N$,
@@ -690,15 +680,11 @@ $$
 
 Esto prueba la afirmación. ∎
 
-> **Auditoría de elección.** Para una precisión $\varepsilon$ se usa una sola instancia de la propiedad arquimediana. No se construye una elección simultánea de índices para todas las precisiones.
-
 > **Módulo efectivo de anchura.** Puesto que $N\mapsto2_{\mathbb Q}^{-N}$ es computable y la
 > comparación racional es decidible, podemos buscar sucesivamente el primer $N$ con
 > $$ 2_{\mathbb Q}^{-N}<\varepsilon. $$
 > La prueba garantiza que la búsqueda termina. Así se obtiene un módulo computable de
 > estrechamiento y, usando el anidamiento, un módulo computable de Cauchy para la sucesión inferior.
-
----
 
 ### Teorema 8.7.6 — Una sucesión de Cauchy racional sin límite racional
 
@@ -912,10 +898,6 @@ $\ell\in\mathbb Q$ con $a_n\to_{\mathbb Q}\ell$. ∎
 
 > **Nota conceptual.** No hemos construido ni utilizado la raíz real de $2$. La contradicción final es completamente local: si existiera un límite racional $\ell$, los intervalos encajados forzarían $\ell^2=2_{\mathbb Q}$, contra Teorema 3.9.5 — No existe una raíz cuadrada racional de $2$. La prueba ya no depende de reconstruir un supremo racional de $S_2$.
 
-> **Auditoría de elección.** El proceso de bisección es recursivo y determinista. Los índices usados en la prueba de Cauchy y en la contradicción de convergencia son testigos locales para precisiones fijadas. No se forma ninguna función de elección.
-
----
-
 ### Corolario 8.7.7 — $\mathbb Q$ no es secuencialmente completo
 
 El cuerpo ordenado $\mathbb Q$ no es secuencialmente completo.
@@ -929,8 +911,6 @@ a\in\mathcal C_{\mathbb Q}
 $$
 
 que no converge racionalmente a ningún elemento de $\mathbb Q$. Esto niega exactamente la condición de Definición 8.7.1 — Completitud secuencial de $\mathbb Q$. ∎
-
----
 
 ### Cierre del capítulo
 

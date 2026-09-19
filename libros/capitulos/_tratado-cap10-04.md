@@ -20,8 +20,6 @@ $$
 
 Falta demostrar que esa clase realiza efectivamente la aproximación que motivó su construcción. Antes de hacerlo debemos formular la convergencia en $\mathbb R_C$ sin apelar a ningún modelo externo de los reales.
 
----
-
 ### Definición 10.4.1 — Convergencia en $\mathbb R_C$
 
 Sean
@@ -51,8 +49,6 @@ $$
 
 La definición utiliza únicamente la estructura de cuerpo ordenado ya construida en $\mathbb R_C$. No presupone completitud y no menciona $\mathbb R_D$.
 
----
-
 ### Notación 10.4.2 — Convergencia en el modelo de Cauchy
 
 Cuando se cumpla Definición 10.4.1 — Convergencia en $\mathbb R_C$ escribiremos
@@ -64,8 +60,6 @@ x_n\to_C L.
 $$
 
 El subíndice $C$ recuerda que la convergencia se está formulando dentro del cuerpo $\mathbb R_C$. No introducimos todavía la notación $\lim$, que permanece reservada para una etapa posterior.
-
----
 
 ### Proposición 10.4.3 — Criterio racional para la convergencia en $\mathbb R_C$
 
@@ -143,10 +137,6 @@ $$
 $$
 
 Así $x_n\to_C L$. ∎
-
-> **Auditoría de elección.** Para cada tolerancia real positiva se usa un único racional testigo suministrado localmente por Lema 10.1.2 — Escalas racionales positivas dentro de toda escala positiva de $\mathbb R_C$. No se construye una función que escoja simultáneamente un racional para todas las tolerancias.
-
----
 
 ### Teorema 10.4.4 — Unicidad del límite en $\mathbb R_C$
 
@@ -245,11 +235,7 @@ $$
 
 contradicción con la irreflexividad del orden estricto. Luego $L=M$. ∎
 
-> **Auditoría de elección.** Sólo se combinan dos testigos locales $N_0,N_1$ mediante la totalidad del orden natural. No se realiza ninguna selección infinita.
-
 > **Nota lógica.** La prueba parte de $L\neq M$ y, tras obtener contradicción, concluye $L=M$. Como la igualdad en $\mathbb R_C$ no es decidible en general, este cierre se clasifica como reductio/DNE clásico. No hay, sin embargo, ningún uso de Choice.
-
----
 
 ### Lema 10.4.5 — Un representante de Cauchy converge a su propia clase
 
@@ -424,10 +410,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** El representante $q$ forma parte de la hipótesis del lema; no se escoge dentro de una familia de clases. Para cada $\varepsilon$ se usa un único índice $N$ suministrado por la condición de Cauchy de $q$.
-
----
-
 ### Teorema 10.4.6 — Convergencia al elemento diagonal canónico
 
 Sea
@@ -547,10 +529,6 @@ $$
 
 La unicidad se sigue de Teorema 10.4.4 — Unicidad del límite en $\mathbb R_C$. ∎
 
-> **Auditoría de elección.** Tanto $q=\operatorname{diag}_C(x)$ como $L=[q]_C$ están determinados canónicamente. Los únicos índices utilizados en la prueba son testigos locales de dos propiedades de convergencia y se combinan mediante una comparación finita. No se escoge ningún representante de los $x_n$.
-
----
-
 ### Definición 10.4.7 — Completitud secuencial de $\mathbb R_C$
 
 Diremos que $\mathbb R_C$ es **secuencialmente completo** si toda sucesión de Cauchy
@@ -566,8 +544,6 @@ x_n\to_C L.
 $$
 
 Esta definición es el análogo, dentro del modelo de Cauchy, de Definición 8.7.1 — Completitud secuencial de $\mathbb Q$ para $\mathbb Q$.
-
----
 
 ### Corolario 10.4.8 — $\mathbb R_C$ es secuencialmente completo
 
@@ -595,5 +571,3 @@ Esto verifica exactamente Definición 10.4.7 — Completitud secuencial de $\mat
 > **Conclusión de la sección.** La insuficiencia secuencial detectada en $\mathbb Q$ ha desaparecido en $\mathbb R_C$: todo proceso de Cauchy de elementos del nuevo cuerpo posee un límite en el propio cuerpo. La demostración no eligió una familia de representantes; el límite se obtuvo mediante la diagonal canónica construida en §§10.2–10.3.
 
 > **Nota fundacional.** Ésta es una **completitud secuencial clásica sin $AC_\omega$**. El límite queda canónicamente determinado por la diagonal, pero la diagonal usa el selector clásico Definición 10.2.8 — Selector canónico de aproximantes racionales; por ello la conclusión no debe leerse como un algoritmo general de límite. Bajo nombres uniformemente computables y un módulo computable de Cauchy exterior, la misma estrategia admite una versión efectiva paralela.
-
----

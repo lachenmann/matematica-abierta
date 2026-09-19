@@ -55,8 +55,6 @@ Cuando tanto $n\mapsto q_n$ como $\mu_C$ son computables, diremos que $q$ está 
 La existencia clásica de algún índice para cada precisión no suministra automáticamente un módulo
 computable. Incluso el módulo mínimo obtenido por buen orden puede ser canónico sin ser efectivo.
 
----
-
 ### Definición 8.4.2 — Conjunto de las sucesiones racionales de Cauchy
 
 Definimos
@@ -94,8 +92,6 @@ Como $\mathbb Q^{\mathbb N}$ ya existe y la condición anterior es una propiedad
 > Además, la pertenencia $q\in\mathcal C_{\mathbb Q}$ contiene una alternancia
 > $\forall\varepsilon\,\exists N\,\forall m,n$. Para una sucesión arbitraria, esa propiedad no es
 > decidible en general.
-
----
 
 ### Proposición 8.4.3 — Formulaciones equivalentes de la condición de Cauchy
 
@@ -136,8 +132,6 @@ q_n-\varepsilon<q_m<q_n+\varepsilon.
 $$
 
 Como estas equivalencias no alteran ninguno de los cuantificadores exteriores, las tres formulaciones son equivalentes. ∎
-
----
 
 ### Proposición 8.4.4 — Las sucesiones constantes son de Cauchy
 
@@ -183,8 +177,6 @@ $$
 
 Así $\mathcal C_{\mathbb Q}$ contiene, por ejemplo, la sucesión constante $\underline{0_{\mathbb Q}}$, y por tanto no es vacío. ∎
 
----
-
 ### Lo que hemos ganado
 
 La condición de Cauchy permite reconocer una forma de estabilización racional que no menciona ningún límite:
@@ -198,4 +190,3 @@ significa que los términos tardíos de $q$ pueden hacerse mutuamente tan próxi
 Éste es el cambio conceptual que necesitábamos para la segunda construcción de los reales. Una sucesión puede ser de Cauchy aun cuando todavía no hayamos demostrado que posea un límite racional; de hecho, esa posibilidad será precisamente la que permitirá superar la insuficiencia de $\mathbb Q$.
 
 Antes de usar las sucesiones de Cauchy como representaciones de nuevos números debemos establecer el puente mínimo con la noción anterior de convergencia: **todo proceso que ya converge racionalmente debe satisfacer necesariamente la condición de Cauchy**. Ése será el contenido de §8.5.
----

@@ -4,8 +4,6 @@ La aritmética ya ha sido transportada por $\Phi$, pero la comparación entre lo
 
 El lema de traza racional de §11.4 permite demostrarlo sin recurrir a las operaciones. La idea es puramente ordinal: si $x<_Cy$, todo racional situado bajo $x$ está también bajo $y$; y la densidad de la copia racional proporciona además un racional situado estrictamente entre ambos, que pertenece a $\Phi(y)$ pero no a $\Phi(x)$. Recíprocamente, si las cortaduras están estrictamente incluidas en el orden contrario al que permitiría $x$ y $y$, la totalidad de $\le_C$ produce una contradicción.
 
----
-
 ### Proposición 11.5.1 — Preservación y reflexión del orden estricto
 
 Para cualesquiera $x,y\in\mathbb R_C$,
@@ -178,11 +176,7 @@ Queda demostrada la equivalencia.
 
 ∎
 
-> **Auditoría de elección.** En la implicación directa se utiliza una sola aplicación local de la densidad para los elementos fijos $x<y$, produciendo un racional $r$ entre ambos. No se forma una familia de racionales intermedios. La implicación recíproca no introduce testigos: usa totalidad del orden y una inclusión demostrada elemento a elemento. No interviene Choice.
-
 La proposición anterior es más fuerte que una mera monotonía: $\Phi$ **refleja** también el orden estricto. Por tanto ninguna desigualdad estricta puede perderse al pasar de un modelo al otro.
-
----
 
 ### Corolario 11.5.2 — Preservación y reflexión del orden no estricto
 
@@ -272,10 +266,4 @@ $$
 
 ∎
 
-> **Auditoría de elección.** El paso del orden estricto al no estricto sólo usa una separación finita de casos y la totalidad de los órdenes ya construidos. No se introduce ningún testigo ni selección adicional.
-
 Es importante mantener todavía separado este resultado de la inyectividad formal. La equivalencia de órdenes contiene ya toda la información necesaria para demostrarla, pero la arquitectura del capítulo reserva esa consecuencia como una unidad propia, de modo que preservación de estructura e inyectividad no queden fusionadas en un único paso.
-
----
-
----

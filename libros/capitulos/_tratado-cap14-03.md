@@ -63,8 +63,6 @@ como consecuencia de la cláusula recursiva inicial. Esta convención no expresa
 
 > **Control de lectura.** La expresión $r^n$ acaba de adquirir significado para **todo** $r\in\mathbb R$ y $n\in\mathbb N$. No estamos usando una potencia previamente disponible de manera informal: la hemos construido por recursión.
 
----
-
 ### Proposición 14.3.2 — Identidad finita de la suma geométrica
 
 Para todo $r\in\mathbb R$ y todo $n\in\mathbb N$,
@@ -130,8 +128,6 @@ El principio de inducción Teorema 1.1.10 — Principio de inducción concluye l
 
 > **Frontera deductiva.** Esta proposición es puramente algebraica y finita. No se ha tomado ningún límite y no se ha dividido por $1-r$. En particular, el caso $r=1$ está incluido y produce la identidad trivial $0=0$. La convergencia de la serie geométrica y la fórmula de su suma requerirán un argumento adicional, que constituirá el siguiente tramo de §14.3.
 
----
-
 ### Lema 14.3.3 — El valor absoluto conmuta con las potencias naturales
 
 Para todo $r\in\mathbb R$ y todo $n\in\mathbb N$,
@@ -161,8 +157,6 @@ $$
 $$
 
 El principio de inducción Teorema 1.1.10 — Principio de inducción concluye la igualdad para todo $n\in\mathbb N$. ∎
-
----
 
 ### Teorema 14.3.4 — Las potencias de una base de módulo menor que uno tienden a cero
 
@@ -244,8 +238,6 @@ $$
 
 > **Lectura estructural.** La completitud se usa para garantizar la existencia del límite de la sucesión monótona $|r|^n$. No se construye un módulo efectivo de convergencia; la ecuación satisfecha por el límite es la que permite identificarlo como $0$.
 
----
-
 ### Teorema 14.3.5 — Convergencia y suma de la serie geométrica para $|r|<1$
 
 Sea $r\in\mathbb R$ y supongamos $|r|<1$. Entonces la serie geométrica
@@ -322,8 +314,6 @@ Por Definición 14.1.4 — Convergencia, divergencia y suma de una serie, la ser
 > $$
 > Los casos $|r|\ge1$ se resuelven a continuación, usando la condición necesaria sobre el término general ya cerrada en §14.2.
 
----
-
 ### Proposición 14.3.6 — Si $|r|\ge1$, las potencias no tienden a cero
 
 Sea $r\in\mathbb R$ y supongamos $|r|\ge1$. Entonces
@@ -361,8 +351,6 @@ En particular, para $n=N$ tendríamos simultáneamente $1\le|r^N|<1$, contradicc
 
 > **Control de casos fronterizos.** El argumento incluye $r=1$ y $r=-1$, además de toda base con $|r|>1$. No necesita demostrar que las potencias crezcan sin cota: basta la cota inferior uniforme de su módulo. No se ha usado completitud ni Choice.
 
----
-
 ### Teorema 14.3.7 — Clasificación completa de la serie geométrica
 
 Para todo $r\in\mathbb R$, la serie geométrica cumple
@@ -393,5 +381,3 @@ Recíprocamente, supongamos que la serie converge. No puede cumplirse $|r|\ge1$,
 > **Interpretación.** La fórmula $1/(1-r)$ sólo representa la suma de la serie cuando $|r|<1$. Para $r=-1$, el denominador es no nulo y el cociente algebraico existe, pero la serie $1-1+1-1+\cdots$ diverge: no está permitido atribuirle ese cociente como suma ordinaria. Para $r=1$, además de divergir, el cociente ni siquiera está definido.
 
 La serie geométrica nos ha permitido distinguir una **fórmula finita**, una **condición de convergencia** y el **valor de la suma**. En §14.4 pasaremos a las series de términos no negativos, donde la monotonía de las sumas parciales conducirá al primer criterio estructural de convergencia para una clase amplia de series.
-
----

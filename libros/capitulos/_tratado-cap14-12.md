@@ -72,6 +72,4 @@ La desigualdad $c^n\ge1$ se prueba por inducción a partir de $c>1$ y $c^0=1$. S
 >
 > **Alcance fundacional.** Este resultado no atribuye un valor $+\infty$ a $\limsup r_n$ si $r$ no está acotada. Para sucesiones no acotadas siguen vigentes las versiones de cotas eventuales del criterio de §14.9; no extendemos aquí el dominio de Definición 13.12.2 — Límite inferior y límite superior. Los supremos de las colas son únicos: no se realiza una elección de valores, y tampoco se obtiene un procedimiento efectivo general para decidir la convergencia.
 
----
-
 La teoría de series ha mostrado que el comportamiento de una sucesión de sumas depende de las cotas de sus términos, de la estructura de las colas y, en el caso de las series condicionales, también de su orden. El capítulo siguiente trasladará estas herramientas de límite y orden al estudio de los **conjuntos de puntos de la recta real**: comenzaremos por precisar, mediante el valor absoluto, qué significa que un punto esté cerca de otro.

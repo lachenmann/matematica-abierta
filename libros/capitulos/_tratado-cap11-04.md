@@ -48,11 +48,7 @@ $$
 
 ∎
 
-> **Auditoría de elección.** El representante $a$ se toma únicamente después de fijar un elemento concreto $x$. No se construye una sección de la proyección $\mathcal C_{\mathbb Q}\to\mathbb R_C$. El enunciado final ya no contiene representantes. `choice-use: none`.
-
 El lema muestra que $\Phi(x)$ es exactamente la **traza racional inferior** de $x$ dentro del cuerpo de Cauchy. Esta descripción no identifica los modelos: el miembro izquierdo es pertenencia a una cortadura de $\mathbb R_D$ y el derecho es una desigualdad en $\mathbb R_C$.
-
----
 
 ### Proposición 11.4.2 — Preservación de la suma
 
@@ -190,10 +186,6 @@ Hemos probado ambas inclusiones; Teorema 0.2.4 — Criterio extensional por dobl
 
 ∎
 
-> **Auditoría de elección.** Para un racional fijo $r$ en la inclusión recíproca se usa una sola aplicación de densidad para obtener un racional intermedio $p$; después $q=r-p$ queda determinado. No se eligen simultáneamente descomposiciones para todos los racionales. `choice-use: none`.
-
----
-
 ### Corolario 11.4.3 — Preservación del cero y del opuesto
 
 Para todo $x\in\mathbb R_C$,
@@ -263,8 +255,6 @@ $$
 ∎
 
 Este corolario no introduce una comparación general de órdenes entre los dos modelos. Registra únicamente las dos identidades algebraicas que serán necesarias para extender el producto desde el cono positivo a todos los signos.
-
----
 
 ### Lema 11.4.4 — Preservación del producto en el cono positivo
 
@@ -502,11 +492,7 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Para un $r$ fijado se utilizan, según el caso, una o dos aplicaciones sucesivas de densidad. Cada testigo se elige localmente dentro de una demostración existencial y el segundo, cuando aparece, puede depender del primero. No se construye ninguna familia de aproximantes ni una función de selección. `choice-use: none`.
-
 La demostración anterior es la única parte realmente analítica de la compatibilidad multiplicativa: expresa que todo racional situado bajo $xy$ queda por debajo de algún producto $pq$ con $0<p<x$ y $0<q<y$, donde las comparaciones se entienden a través de $\iota_C$.
-
----
 
 ### Proposición 11.4.5 — Preservación del producto
 
@@ -658,7 +644,3 @@ $$
 Los casos son exhaustivos por la totalidad del orden de $\mathbb R_C$. Queda demostrada la preservación del producto para todos $x,y$.
 
 ∎
-
-> **Auditoría de elección.** Una vez establecido el caso positivo, la extensión a signos no introduce testigos: es un análisis finito y exhaustivo determinado por el orden total. No interviene ninguna selección de representantes ni Choice.
-
----

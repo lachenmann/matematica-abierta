@@ -61,8 +61,6 @@ La inducción queda completa. Todo $m\ge N$ puede escribirse $m=N+j$ para algún
 
 > **Lo que se ha probado, y lo que no.** Las desigualdades entre términos se transfieren a las sumas finitas por inducción. La proposición no supone convergencia ni compara todavía valores de sumas infinitas. Tampoco usa completitud.
 
----
-
 ### Teorema 14.5.2 — Criterio de comparación directa
 
 Sean $a,b:\mathbb N\to\mathbb R$ sucesiones tales que
@@ -108,10 +106,6 @@ Como $0\le s_n\le B$ para cada $n$, tanto $0$ como cota inferior de los valores 
 **Segunda afirmación.** Supongamos que la serie de términos $a$ diverge. Si la serie de términos $b$ convergiera, la primera afirmación demostraría que la de términos $a$ también converge, contradicción. Luego la serie de términos $b$ diverge. Es la contraposición de la implicación de convergencia ya demostrada, no un criterio independiente. ∎
 
 > **Direcciones de uso.** Una *cota superior por una serie convergente* prueba convergencia de la serie menor. Una *cota inferior por una serie divergente* prueba divergencia de la serie mayor. No cabe invertir esas flechas: saber que converge la serie menor o que diverge la mayor, sin otras hipótesis, no resuelve el comportamiento de la otra.
-
-> **Auditoría.** La transferencia de cotas es algebraica y de orden; la conclusión de convergencia utiliza la completitud real exclusivamente a través de Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos. La divergencia se obtiene por contraposición. Ningún paso requiere Choice ni proporciona automáticamente un procedimiento computable para determinar las sumas.
-
----
 
 ### Corolario 14.5.3 — Comparación válida a partir de cierto índice
 
@@ -169,8 +163,4 @@ $$
 
 Los primeros términos pueden alterar el valor total aunque no alteren la conclusión comparativa sobre convergencia. La prueba no ha necesitado definir sumas vacías, asignar un valor $+\infty$ a una serie divergente ni convertir una comparación eventual en una desigualdad global falsa.
 
----
-
 Las dos versiones del criterio permiten sustituir la búsqueda de una suma exacta por la comparación con una serie conocida. La serie geométrica del §14.3 proporciona ya una familia de referencia cuando su razón tiene módulo menor que uno; el criterio no autoriza, sin embargo, a inferir el resultado inverso a partir de una sola desigualdad. En §14.6 estudiaremos la comparación por límite, que exige precisar cómo una razón entre términos conserva —o deja de conservar— estas cotas.
-
----

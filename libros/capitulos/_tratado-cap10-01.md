@@ -39,8 +39,6 @@ La definición es enteramente interna al cuerpo ordenado $\mathbb R_C$. En parti
 
 Conviene observar también que la tolerancia $\varepsilon$ pertenece aquí a $\mathbb R_C$. Todavía no hemos demostrado completitud ni densidad de la copia racional; por tanto, no sustituiremos esa cuantificación por una cuantificación racional sin una prueba previa.
 
----
-
 ### Lema 10.1.2 — Escalas racionales positivas dentro de toda escala positiva de $\mathbb R_C$
 
 Para todo $\varepsilon\in\mathbb R_C$ con
@@ -185,11 +183,7 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Sólo se toma un representante de un elemento fijo $\varepsilon$ y los testigos $\delta,N$ suministrados por una única instancia de Proposición 9.8.6 — Criterio de separación eventual para el orden estricto. No se selecciona una familia de representantes ni una familia de racionales para todos los $\varepsilon$ simultáneamente.
-
 El lema no afirma todavía que $\iota_C[\mathbb Q]$ sea denso en todo $\mathbb R_C$. Afirma exactamente lo que necesitamos en este punto: los racionales positivos incrustados forman una familia de escalas suficientemente pequeñas alrededor de cero.
-
----
 
 ### Proposición 10.1.3 — Criterio racional para las sucesiones de Cauchy en $\mathbb R_C$
 
@@ -285,8 +279,4 @@ Como $\varepsilon>_C0_C$ era arbitraria, Definición 10.1.1 — Sucesión de Cau
 
 ∎
 
-> **Auditoría de elección.** En la implicación recíproca, para una tolerancia $\varepsilon$ fija se usa un único racional $q$ cuya existencia garantiza Lema 10.1.2 — Escalas racionales positivas dentro de toda escala positiva de $\mathbb R_C$. No se define todavía una función $\varepsilon\mapsto q$ ni se necesita elegir simultáneamente racionales para todas las tolerancias.
-
 La proposición permite trabajar desde ahora con tolerancias racionales positivas sin modificar la noción intrínseca de Cauchy en $\mathbb R_C$. Éste es el puente exacto que necesitaremos para la construcción de aproximantes racionales.
-
----

@@ -20,8 +20,6 @@ $$
 
 La relación entre ambos sistemas debe, por tanto, construirse mediante una función. La elección canónica es la que ya sugiere la interpretación de una sucesión constante: representar el racional $q$ por el proceso que permanece siempre igual a $q$.
 
----
-
 ### Definición 9.9.1 — Aplicación canónica de $\mathbb Q$ en $\mathbb R_C$
 
 Para cada $q\in\mathbb Q$, la sucesión constante $\underline q$ pertenece a $\mathcal C_{\mathbb Q}$ por Proposición 8.4.4 — Las sucesiones constantes son de Cauchy. Por tanto su clase $[\underline q]_C$ pertenece a $\mathbb R_C$.
@@ -52,8 +50,6 @@ $$
 El producto cartesiano existe por Proposición 0.3.7 — Existencia del producto cartesiano y el subconjunto indicado existe por separación. Para cada $q\in\mathbb Q$ existe exactamente un $x\in\mathbb R_C$ que satisface la condición, a saber, la clase $[\underline q]_C$. Por la definición de función, $G_{\iota_C}$ es el grafo de una función con dominio $\mathbb Q$ y codominio $\mathbb R_C$.
 
 > **Nota fundacional.** No se selecciona un representante de cada clase de $\mathbb R_C$. A cada racional fijo se le asigna determinísticamente su propia sucesión constante y luego la clase de esa sucesión. No interviene Choice.
-
----
 
 ### Proposición 9.9.2 — Igualdad de imágenes e inyectividad de $\iota_C$
 
@@ -142,8 +138,6 @@ $$
 La equivalencia queda demostrada, y su implicación directa es precisamente la inyectividad de $\iota_C$. ∎
 
 > **Consecuencia tipológica.** Desde ahora podemos hablar de la **copia canónica** $\iota_C[\mathbb Q]$ dentro de $\mathbb R_C$, pero todavía no escribiremos $\mathbb Q\subseteq\mathbb R_C$: los racionales y sus imágenes siguen siendo objetos conjuntistas distintos.
-
----
 
 ### Proposición 9.9.3 — Preservación de la aritmética racional
 
@@ -257,8 +251,6 @@ $$
 
 Todas las identidades provienen de operaciones término a término ya construidas y de sus operaciones inducidas en el cociente. ∎
 
----
-
 ### Corolario 9.9.4 — Compatibilidad con los recíprocos racionales
 
 Si $q\in\mathbb Q$ y $q\neq0_{\mathbb Q}$, entonces
@@ -319,8 +311,6 @@ $$
 $$
 
 ∎
-
----
 
 ### Proposición 9.9.5 — Preservación y reflexión del orden racional
 
@@ -476,10 +466,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** En la implicación $q<r\Rightarrow\iota_C(q)<_C\iota_C(r)$ se utiliza un único racional intermedio $s$ para el par fijo $(q,r)$. Se trata de eliminación local de un cuantificador existencial proporcionado por densidad; no se define una función que elija simultáneamente un intermedio para todos los pares racionales.
-
----
-
 ### Lo que hemos ganado
 
 La relación entre el sistema racional ya construido y el nuevo cuerpo de Cauchy está ahora expresada por una función canónica, no por una identificación conjuntista:
@@ -509,5 +495,3 @@ Por ello, $\iota_C[\mathbb Q]$ es ya una copia algebraica y ordenada exacta de l
 Hay, sin embargo, una última cautela deductiva. La definición general de **incrustación de cuerpos ordenados** (Definición 4.8.1 — Incrustación de cuerpos ordenados) exige que tanto el dominio como el codominio sean cuerpos ordenados. Ya sabemos que $\mathbb Q$ lo es y que $\mathbb R_C$ es un cuerpo provisto de un orden total, pero todavía no hemos demostrado que las operaciones de $\mathbb R_C$ sean compatibles con $\le_C$. Por esa razón no aplicaremos todavía formalmente esa denominación a $\iota_C$.
 
 La tarea de §9.10 queda así aislada con precisión: demostrar la compatibilidad de $\le_C$ con la suma y con el producto de elementos no negativos. Una vez hecho esto, $\mathbb R_C$ será un cuerpo ordenado y los resultados de esta sección convertirán inmediatamente a $\iota_C$ en una incrustación de cuerpos ordenados.
-
----

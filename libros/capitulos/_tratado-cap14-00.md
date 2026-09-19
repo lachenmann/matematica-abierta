@@ -31,5 +31,3 @@ Los términos $a_n$ son los datos; los números $s_n$ son sumas finitas; el núm
 > **Pregunta de lectura.** Que todas las sumas parciales existan no significa que exista su límite. ¿En cuál de los tres niveles se formula la convergencia? La respuesta será siempre: en la sucesión de sumas parciales, no en la mera existencia de cada suma finita.
 
 Trabajaremos con la realización estructural de $\mathbb R$ fijada en §12.9 y con la noción de sucesión real cerrada en el Capítulo 13. No identificaremos el conjunto $\mathbb Q$ con un subconjunto literal de $\mathbb R$ ni confundiremos una sucesión de términos con su sucesión de sumas parciales.
-
----

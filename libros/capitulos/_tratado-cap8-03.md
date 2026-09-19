@@ -70,8 +70,6 @@ $$
 
 > **Nota fundacional.** La definición no usa Choice. Para cada $\varepsilon$ se afirma la existencia de algún índice $N$; no se forma ni se presupone una función global $\varepsilon\mapsto N$.
 
----
-
 ### Notación 8.3.2 — Flecha de convergencia racional
 
 Cuando $q=(q_n)_{n\in\mathbb N}$ converge racionalmente a $\ell$, escribiremos
@@ -89,8 +87,6 @@ $$
 $$
 
 El subíndice $\mathbb Q$ recuerda que tanto la sucesión como el límite pertenecen al sistema racional. No se omitirá mientras la construcción de Cauchy siga siendo independiente de $\mathbb R_D$.
-
----
 
 ### Proposición 8.3.3 — Formulaciones equivalentes de la convergencia racional
 
@@ -137,8 +133,6 @@ $$
 Por tanto, para cada $\varepsilon>0$, cualquiera de las tres condiciones vale a partir de un índice $N$ si y sólo si valen las otras dos a partir del mismo índice. Los cuantificadores exteriores son idénticos, de modo que las tres formulaciones son equivalentes. ∎
 
 La segunda forma mide el error mediante una diferencia absoluta; la tercera dice que todos los términos suficientemente tardíos quedan atrapados en cualquier ventana racional centrada en $\ell$.
-
----
 
 ### Proposición 8.3.4 — Las sucesiones constantes convergen a su valor
 
@@ -189,8 +183,6 @@ $$
 ∎
 
 Esta proposición no identifica el racional $c$ con la sucesión $\underline c$. Afirma únicamente que el proceso constante asociado a $c$ tiene a $c$ como límite racional.
-
----
 
 ### Teorema 8.3.5 — Unicidad del límite racional
 
@@ -365,10 +357,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** De cada una de las dos hipótesis de convergencia extraemos un único testigo $N_\ell$ y $N_m$ para la precisión fija $\varepsilon$. Son dos instanciaciones existenciales locales. La comparación de ambos índices se realiza por totalidad del orden natural; no se escoge simultáneamente una familia de índices y no interviene Choice.
-
----
-
 ### Lo que hemos ganado
 
 La noción de aproximación posee ya una forma rigurosa dentro de $\mathbb Q$:
@@ -384,5 +372,3 @@ Además, si tal racional $\ell$ existe, es único. Por ello tiene sentido hablar
 Pero la definición contiene una limitación decisiva: para afirmar convergencia debemos conocer de antemano un candidato $\ell\in\mathbb Q$. Precisamente las aproximaciones que deberían representar los racionales ausentes —como las que se organizan alrededor de la ecuación $x^2=2$— pueden no disponer de tal límite dentro de $\mathbb Q$.
 
 Necesitamos, por tanto, una condición que mida si los términos de una sucesión se estabilizan **entre sí**, sin mencionar todavía ningún objeto exterior a la sucesión. Ése será el papel de **§8.4 — Sucesiones de Cauchy**.
-
----

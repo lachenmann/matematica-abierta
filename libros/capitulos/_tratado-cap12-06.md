@@ -12,8 +12,6 @@ No introduciremos una segunda construcción del transporte ni apelaremos a la un
 
 Comenzaremos verificando que el transporte fija la copia racional canónica. Después describiremos la traza de una suma exclusivamente mediante las trazas de los sumandos. Para el producto será necesario aislar primero el cono no negativo, donde la multiplicación es monótona; los signos permitirán extender luego el resultado a todo el cuerpo.
 
----
-
 ### Lema 12.6.1 — Traza de un racional canónico
 
 Sea $G$ un cuerpo ordenado y sea $q\in\mathbb Q$. Entonces
@@ -63,8 +61,6 @@ $$
 ∎
 
 El lema identifica la traza, no los objetos. El racional $q$, su imagen $\jmath_{\mathbb Q}^{G}(q)$ y la cortadura $\delta_q$ siguen perteneciendo a tipos distintos.
-
----
 
 ### Proposición 12.6.2 — El transporte fija la copia racional canónica
 
@@ -143,8 +139,6 @@ $$
 ∎
 
 No se ha identificado $\mathbb Q$ con un subconjunto literal de ninguno de los dos cuerpos. El transporte conmuta con dos funciones explícitamente construidas.
-
----
 
 ### Lema 12.6.3 — Caracterización racional de la suma
 
@@ -301,10 +295,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Para un $q$ fijo se usan dos aplicaciones sucesivas de la densidad, cada una de las cuales proporciona un único testigo existencial local para esa demostración. No se construyen funciones $q\mapsto r_q$ ni $q\mapsto s_q$.
-
----
-
 ### Teorema 12.6.4 — El transporte preserva la suma
 
 Sean $(E,\iota_E)$ y $(F,\iota_F)$ completaciones ordenadas de $\mathbb Q$. Para todos $x,y\in E$,
@@ -392,8 +382,6 @@ $$
 
 ∎
 
----
-
 ### Corolario 12.6.5 — Cero, opuesto y sustracción
 
 Para toda pareja de completaciones ordenadas $(E,\iota_E)$ y $(F,\iota_F)$ y todo $x,y\in E$,
@@ -465,8 +453,6 @@ $$
 $$
 
 ∎
-
----
 
 ### Lema 12.6.6 — Caracterización racional del producto no negativo
 
@@ -730,10 +716,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Cuando $q\ge0$ se obtienen sucesivamente dos racionales, primero $r$ y después $s$, mediante densidad en dos intervalos determinados por los datos ya fijados. No se define una selección simultánea de aproximantes para todos los triples $(x,y,q)$.
-
----
-
 ### Teorema 12.6.7 — El transporte preserva el producto
 
 Sean $(E,\iota_E)$ y $(F,\iota_F)$ completaciones ordenadas de $\mathbb Q$. Para todos $x,y\in E$,
@@ -855,8 +837,6 @@ $$
 $$
 
 Los cuatro casos cubren todas las posibilidades. ∎
-
----
 
 ### Teorema 12.6.8 — El transporte es un isomorfismo de cuerpos ordenados
 
@@ -982,5 +962,3 @@ T\circ\iota_E=\iota_F.
 $$
 
 §12.7 demostrará que esto es imposible: cualquier aplicación con esas propiedades debe preservar todas las trazas racionales y, por tanto, coincidir punto por punto con $\Psi_{E,F}$.
-
----

@@ -47,8 +47,6 @@ Puede, en cambio, saltar tantos índices como quiera entre dos selecciones conse
 
 > **Prueba de estrés.** Una función constante $\phi(k)=N$ no es un selector: repite siempre el mismo índice. Una permutación que intercambie dos índices tampoco lo es si destruye el orden estricto. En cambio, $k\mapsto N+k$ sí será un selector y producirá exactamente la cola reindexada introducida en §13.2.
 
----
-
 ### Proposición 13.9.2 — Crecimiento, inyectividad y cofinalidad de los selectores de índices
 
 Sea $\phi:\mathbb N\to\mathbb N$ un selector de índices. Entonces:
@@ -216,8 +214,6 @@ Esto demuestra $3$. ∎
 
 > **Lectura conceptual.** La desigualdad $n\leq\phi(n)$ es más importante de lo que parece. Nos dice que la extracción puede acelerar el recorrido de los índices, pero nunca retrasarlo indefinidamente. Por eso cualquier propiedad que ya vale después de un umbral $N$ seguirá siendo accesible desde una subsucesión: basta tomar índices de la nueva sucesión a partir de $N$.
 
----
-
 ### Definición 13.9.3 — Subsucesión de una sucesión real
 
 Sean
@@ -261,8 +257,6 @@ La equivalencia entre ambas escrituras es sólo la definición de composición y
 > La subsucesión es la composición de ambos niveles.
 
 > **Nota fundacional.** La definición es existencial: para afirmar que una sucesión concreta $b$ es subsucesión de $a$ debe existir un selector que la testimonie. No se escoge simultáneamente un selector para todas las posibles subsucesiones y no interviene Choice.
-
----
 
 ### Proposición 13.9.4 — Las colas son subsucesiones y las subsucesiones se componen
 
@@ -349,8 +343,6 @@ Luego $c$ es una subsucesión de $a$. ∎
 
 La segunda parte muestra que «extraer de una extracción» no produce una noción nueva: dos etapas de selección pueden comprimirse en un único selector estrictamente creciente.
 
----
-
 ### Teorema 13.9.5 — Toda subsucesión de una sucesión convergente converge al mismo límite
 
 Sea $a=(a_n)$ una sucesión real y sea $b=(b_k)$ una subsucesión de $a$. Si
@@ -424,8 +416,6 @@ $$
 > $$
 > Ésta es la razón estructural por la que una subsucesión de una sucesión convergente no puede escapar de su límite.
 
----
-
 ### Proposición 13.9.6 — Acotación y condición de Cauchy pasan a las subsucesiones
 
 Sea $b$ una subsucesión de una sucesión real $a$.
@@ -492,8 +482,6 @@ Esto es exactamente la condición de Cauchy para $b$. ∎
 > $$
 > esa ruta escondería innecesariamente la simplicidad del argumento y haría intervenir completitud donde no hace falta.
 
----
-
 ### Corolario 13.9.7 — Caracterización de la convergencia mediante subsucesiones
 
 Para una sucesión real $a=(a_n)$ y un real $\ell$, son equivalentes:
@@ -536,5 +524,3 @@ $$
 Una consecuencia inmediata, combinando Teorema 13.9.5 — Toda subsucesión de una sucesión convergente converge al mismo límite con la unicidad del límite Teorema 13.3.5 — Unicidad del límite real, es la siguiente rigidez: si $a_n\to\ell$, ninguna subsucesión de $a$ puede converger a un real distinto de $\ell$.
 
 Esta observación señala exactamente el concepto siguiente. Una sucesión que no converge puede contener, sin embargo, subsucesiones convergentes; diferentes extracciones pueden incluso revelar comportamientos asintóticos distintos. El próximo paso será convertir esos límites obtenidos por extracción en objetos de estudio propios: los **puntos límite secuenciales** de una sucesión.
-
----

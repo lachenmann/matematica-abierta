@@ -44,8 +44,6 @@ El primero es una función; el segundo es un racional; el tercero es el conjunto
 > $$ \boxed{\text{sucesión}\neq\text{algoritmo}.} $$
 > La noción de **nombre efectivo** se introducirá sólo cuando la función venga acompañada de un procedimiento computable para sus términos.
 
----
-
 ### Proposición 8.1.2 — Criterio término a término para la igualdad de sucesiones
 
 Sean
@@ -155,8 +153,6 @@ a=b.
 $$
 
 Esto demuestra la equivalencia. ∎
-
----
 
 ### Definición 8.1.3 — Operaciones puntuales sobre sucesiones racionales
 
@@ -311,8 +307,6 @@ $$
 
 > **Nota fundacional.** Ninguna de estas construcciones utiliza el axioma de elección. Para cada índice, el valor correspondiente está determinado de manera única por una operación racional ya construida; los grafos se obtienen por separación dentro de conjuntos ambientes previamente existentes.
 
----
-
 ### Definición 8.1.4 — Sucesiones constantes
 
 Sea $c\in\mathbb Q$. Definimos la **sucesión constante de valor $c$** por
@@ -368,8 +362,6 @@ c\in\mathbb Q,
 $$
 
 El racional $c$ y la sucesión constante $\underline c$ no son el mismo objeto. No identificaremos $\mathbb Q$ con un subconjunto de $\mathbb Q^{\mathbb N}$.
-
----
 
 ### Proposición 8.1.5 — Compatibilidad de las sucesiones constantes con las operaciones puntuales
 
@@ -493,8 +485,6 @@ $$
 
 Quedan demostradas las cuatro identidades. ∎
 
----
-
 ### Lo que hemos ganado
 
 El objeto
@@ -516,5 +506,3 @@ Todavía no hemos definido ninguna noción de proximidad entre dos términos rac
 Ésa es precisamente la siguiente dificultad.
 
 Para expresar que dos términos de una sucesión están “cerca” necesitamos convertir su diferencia en una cantidad racional no negativa que mida separación sin depender del orden de los términos. El siguiente paso será, por tanto, construir la **distancia racional** que servirá de lenguaje cuantitativo para las aproximaciones.
-
----

@@ -46,8 +46,6 @@ Por último, la igualdad de intersecciones para cualquier número finito de conj
 
 La asimetría es deliberada: el interior **preserva intersecciones finitas**, pero una unión puede crear puntos interiores que no lo eran en ninguno de los sumandos. En una intersección infinita puede ocurrir lo contrario: los márgenes positivos disponibles para cada factor pueden desaparecer al exigirlos todos a la vez.
 
----
-
 ### Proposición 15.7.2 — Dos inclusiones del interior pueden ser estrictas
 
 Existen conjuntos $A,B\subseteq\mathbb R$ tales que
@@ -83,8 +81,6 @@ $$
 
 El índice $I$, la familia de bolas y su intersección están definidos por fórmulas anteriores: no hay selección de radios ni elección numerable. ∎
 
----
-
 **Síntesis de las dos primeras operaciones.** Por Proposición 15.4.4 — Extensividad y monotonía de la clausura y Proposición 15.4.8 — Idempotencia de la clausura, la clausura es extensiva, monótona e idempotente. Por Proposición 15.7.1 — Monotonía y leyes del interior, el interior es contractivo, monótono e idempotente. La clausura conserva las uniones finitas y satisface las inclusiones indexadas de Teorema 15.4.10 — Clausura de uniones e intersecciones, cuyos límites exactos se demostraron en Proposición 15.4.11 — Dos inclusiones que pueden ser estrictas. La dualidad ya obtenida en §15.4 toma la forma
 
 $$
@@ -94,8 +90,6 @@ A^\circ=\mathbb R\setminus\overline{\mathbb R\setminus A},
 $$
 
 Estas igualdades expresan una correspondencia entre interior y clausura mediante complementos **relativos a $\mathbb R$**. No las usamos para reemplazar las demostraciones anteriores ni introducimos una topología abstracta.
-
----
 
 ### Teorema 15.7.3 — Frontera de uniones e intersecciones binarias
 
@@ -145,8 +139,6 @@ En el primer caso, $x\in\overline C$ y también $x\in\overline A$, de donde $x\i
 
 La frontera de una unión o intersección no puede surgir fuera de las fronteras de los conjuntos iniciales; sin embargo, algunas fronteras **pueden desaparecer** cuando dos conjuntos se unen o se intersectan.
 
----
-
 ### Proposición 15.7.4 — Las dos inclusiones fronterizas pueden ser estrictas
 
 Existen $A,B\subseteq\mathbb R$ para los cuales **ambas** inclusiones de Teorema 15.7.3 — Frontera de uniones e intersecciones binarias son propias.
@@ -174,8 +166,6 @@ $$
 
 Como $a<b<c$, tanto $\{a,c\}$ como $\{b\}$ están propiamente incluidos en $\{a,b,c\}$. El mismo par de conjuntos certifica la estrictez de las dos inclusiones. ∎
 
----
-
 ### Corolario 15.7.5 — Frontera de una diferencia de conjuntos
 
 Para $A,B\subseteq\mathbb R$,
@@ -195,8 +185,6 @@ $$
 $$
 
 Concluye la prueba. ∎
-
----
 
 ### Proposición 15.7.6 — La frontera después de tomar interior o clausura
 
@@ -227,4 +215,3 @@ donde usamos la idempotencia de Proposición 15.7.1 — Monotonía y leyes del i
 **Estrictez de la segunda inclusión.** Tomemos $A=\mathbb R\setminus\{a\}$. Proposición 15.4.11 — Dos inclusiones que pueden ser estrictas probó explícitamente $\overline A=\mathbb R$, de modo que $\partial(\overline A)=\partial\mathbb R=\varnothing$ por Proposición 15.6.8 — Ejemplos: extremos, singletons y falta de monotonía. En cambio, por la simetría bajo complemento de Proposición 15.6.5 — La frontera es cerrada y no cambia al tomar el complemento, $\partial A=\partial\{a\}=\{a\}$. La inclusión es estricta. ∎
 
 > **Interpretación.** Interior y clausura disponen de leyes de monotonía e idempotencia; la frontera no. Sin embargo, las tres están ligadas por $\partial A=\overline A\setminus A^\circ$: tomar primero interior o clausura puede eliminar parte de la frontera original, pero no crea puntos fronterizos fuera de ella. Estos resultados son relativos a la recta real; las descripciones mediante sucesiones y las cuestiones de densidad siguen pendientes en las unidades posteriores.
----

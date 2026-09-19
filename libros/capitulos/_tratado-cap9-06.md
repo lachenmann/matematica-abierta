@@ -44,8 +44,6 @@ $$
 
 Estas definiciones no identifican $0_{\mathbb Q}$ con $0_C$, ni $1_{\mathbb Q}$ con $1_C$. Los primeros son racionales; los segundos son clases de equivalencia de sucesiones racionales de Cauchy.
 
----
-
 ### Proposición 9.6.2 — Leyes del cero y de la unidad
 
 Para todo $x\in\mathbb R_C$,
@@ -183,10 +181,6 @@ $$
 
 El caso $0_Cx=0_C$ es análogo. ∎
 
-> **Auditoría de elección.** Para el elemento fijo $x$ se utiliza un único representante local $a$, cuya existencia proporciona el cociente. No se selecciona una familia de representantes para todos los elementos de $\mathbb R_C$.
-
----
-
 ### Proposición 9.6.3 — El opuesto término a término preserva Cauchy y respeta $\sim_C$
 
 Se cumplen las dos afirmaciones siguientes:
@@ -273,8 +267,6 @@ $$
 
 ∎
 
----
-
 ### Proposición 9.6.4 — Existencia y unicidad de la operación de opuesto
 
 Existe una única función
@@ -359,10 +351,6 @@ $$
 
 La unicidad de la función sigue de Proposición 0.6.3 — Criterio de igualdad de funciones, pues su valor queda forzado en toda clase $[a]_C$. ∎
 
-> **Auditoría de elección.** La definición no selecciona un representante para cada clase. El grafo contiene exactamente los pares cuyo segundo componente está forzado por cualquier representante local del primero; la compatibilidad con $\sim_C$ garantiza que todos esos representantes producen la misma clase.
-
----
-
 ### Definición 9.6.5 — Opuesto y sustracción en $\mathbb R_C$
 
 Para $x\in\mathbb R_C$ definimos su **opuesto aditivo** por
@@ -398,8 +386,6 @@ $$
 $$
 
 No se introduce una nueva operación primitiva: la sustracción queda definida a partir de la suma y del opuesto, exactamente como en los sistemas numéricos anteriores.
-
----
 
 ### Teorema 9.6.6 — $\mathbb R_C$ es un anillo conmutativo con identidad
 
@@ -575,8 +561,6 @@ Hemos probado las leyes de grupo abeliano para la suma, de monoide conmutativo p
 
 > **Nota estructural.** La prueba no «transfiere» informalmente las leyes desde $\mathbb Q$. Cada igualdad en el cociente se reduce primero a una identidad entre sucesiones representantes y ésta, a su vez, se verifica término a término en $\mathbb Q$.
 
----
-
 ### Proposición 9.6.7 — Distinción entre cero y unidad
 
 En $\mathbb R_C$,
@@ -666,8 +650,6 @@ $$
 $$
 
 ∎
-
----
 
 ### Lo que hemos ganado
 

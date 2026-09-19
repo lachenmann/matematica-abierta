@@ -72,8 +72,6 @@ La definición no escoge un elemento de cada conjunto $K_D(\alpha,h)$: el buen o
 > $$ e_{\mathbb Q}(k)\in\alpha \quad\text{y}\quad e_{\mathbb Q}(k)+h\notin\alpha. $$
 > Por tanto, que exista un índice mínimo único no implica que ese índice sea computablemente localizable. El selector resuelve el problema de Choice, no el de efectividad.
 
----
-
 ### Proposición 11.7.2 — Corrección del selector de frontera
 
 Si $\alpha\in\mathbb R_D$ y $h\in\mathbb Q$ satisfacen $0<h$, entonces
@@ -109,8 +107,6 @@ e_{\mathbb Q}\bigl(m_D(\alpha,h)\bigr),
 $$
 
 se obtienen las dos afirmaciones. ∎
-
----
 
 ### Definición 11.7.3 — Sucesión canónica asociada a una cortadura
 
@@ -149,8 +145,6 @@ $$
 es una función. Su grafo puede obtenerse por Separación dentro de $\mathbb R_D\times\mathbb Q^{\mathbb N}$.
 
 No se ha elegido una sucesión de aproximantes: cada término es el valor de una función previamente determinada. El grafo se obtiene por Separación dentro del producto ya existente; no se necesita Reemplazo en esta construcción concreta.
-
----
 
 ### Proposición 11.7.4 — La sucesión canónica es de Cauchy
 
@@ -239,10 +233,6 @@ $$
 $$
 
 ∎
-
-> **Auditoría de elección.** Para una precisión $\varepsilon$ se usa un único índice $N$ suministrado por la convergencia de la escala explícita $h_n$. Los términos $a_n$ no son testigos escogidos: están dados por la función $\operatorname{sel}_D$. No hay elección numerable.
-
----
 
 ### Proposición 11.7.5 — Recuperación exacta de la cortadura
 
@@ -382,7 +372,6 @@ $$
 
 > **Nota fundacional.** La segunda inclusión ya no se prueba por contrapositiva. Una vez construida la sucesión canónica, la recuperación de la cortadura usa directamente un término interior $a_N$ y la clausura inferior. La clasicidad de la dirección Dedekind $\to$ Cauchy permanece concentrada en la construcción previa de Definición 11.7.1 — Selector canónico de frontera de Dedekind, no en esta recuperación.
 >
-> **Auditoría de elección.** Tras fijar $q\in\alpha$, la condición «sin máximo» proporciona un único testigo local $r$ para esa instancia. No se forma una función que escoja simultáneamente un $r$ para cada $q$.
 
 ### Teorema 11.7.6 — Sobreyectividad de $\Phi$
 
@@ -445,10 +434,6 @@ $$
 
 Como $\alpha$ era arbitraria, todo elemento de $\mathbb R_D$ posee una preimagen. Por Definición 0.6.6 — Inyectividad, sobreyectividad y biyectividad, $\Phi$ es sobreyectiva. ∎
 
-> **Auditoría de elección.** La preimagen $x_\alpha$ no se obtiene aplicando Choice a la familia de fibras de $\Phi$. Para cada $\alpha$ está dada por una fórmula explícita: enumeración racional fijada $\to$ mínimo natural $\to$ selector de frontera $\to$ sucesión $\to$ clase de Cauchy. La construcción es funcional en $\alpha$.
-
----
-
 ### Corolario 11.7.7 — Biyectividad de la aplicación canónica
 
 La aplicación canónica
@@ -467,5 +452,3 @@ Proposición 11.6.1 — Igualdad de imágenes e inyectividad de $\Phi$ demuestra
 La comparación ha alcanzado ahora un punto decisivo: $\Phi$ preserva suma, producto y orden, y además establece una correspondencia uno a uno y sobre entre los dos conjuntos subyacentes. Seguimos sin identificarlos literalmente: una clase de sucesiones de Cauchy continúa siendo un objeto conjuntista distinto de una cortadura de Dedekind.
 
 Aunque la biyectividad ya permitiría considerar la función inversa mediante Teorema 0.6.7 — Caracterización de las funciones invertibles, no necesitaremos todavía activar una notación nueva para ella. Mantendremos Notación 11.9.2 — Inversa de la comparación canónica libre hasta la conclusión estructural del capítulo, donde el isomorfismo completo será empaquetado formalmente.
-
----

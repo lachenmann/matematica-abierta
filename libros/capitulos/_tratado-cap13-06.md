@@ -8,8 +8,6 @@ La dirección **estricta** es positiva: si dos límites satisfacen $\alpha<\beta
 
 Esta distinción será visible en las demostraciones.
 
----
-
 ### Proposición 13.6.1 — Límites estrictamente ordenados separan eventualmente las sucesiones
 
 Sean $x=(x_n)$ e $y=(y_n)$ sucesiones reales tales que
@@ -139,8 +137,6 @@ para todo índice suficientemente grande. ∎
 
 > **Nota fundacional.** No intervienen completitud, Choice ni lógica clásica sustantiva. El inverso $s^{-1}$ es el inverso ordinario de un real no nulo ya disponible en la estructura de cuerpo; no se está introduciendo todavía el recíproco de una sucesión.
 
----
-
 ### Teorema 13.6.2 — Preservación del orden en el paso al límite
 
 Sean $x=(x_n)$ e $y=(y_n)$ sucesiones reales tales que
@@ -241,8 +237,6 @@ $$
 
 ∎
 
-> **Auditoría lógica.** El contenido cuantitativo de la prueba establece sin lógica clásica sustantiva que el orden eventual impide la desigualdad opuesta entre los límites: $\neg(\beta<\alpha)$. En la interfaz abstracta de cuerpo ordenado adoptada por el tratado no hemos identificado esa negación con $\alpha\le\beta$ por definición. El último paso usa, por tanto, eliminación clásica de doble negación. No se está suponiendo que el orden de $\mathbb R$ sea decidible.
-
 Como casos particulares, si $x_n\to\alpha$ y $x_n\le c$ eventualmente, entonces
 
 $$
@@ -258,8 +252,6 @@ $$
 pues la sucesión constante $\underline c$ converge a $c$.
 
 La hipótesis no estricta sólo permite una conclusión no estricta: incluso cuando todos los términos satisfacen una cota, el límite puede situarse exactamente sobre ella.
-
----
 
 ### Proposición 13.6.3 — Estabilidad eventual del signo estricto
 
@@ -330,8 +322,6 @@ eventualmente. ∎
 
 > **Interpretación.** Un límite estrictamente positivo no permite que la sucesión siga visitando valores no positivos arbitrariamente lejos; un límite estrictamente negativo impone el comportamiento simétrico. El signo estricto del límite acaba dominando el signo de la cola.
 
----
-
 ### Corolario 13.6.4 — Un límite no nulo fuerza no anulación eventual
 
 Sea $x=(x_n)$ una sucesión real. Si
@@ -400,8 +390,6 @@ $$
 eventualmente, lo que nuevamente implica $x_n\ne0$ eventualmente. ∎
 
 > **Puente hacia los cocientes.** Esta es exactamente la pieza que faltaba al final de §13.5: si el límite del denominador es no nulo, entonces el denominador es no nulo desde algún índice. Todavía no definimos aquí el recíproco de una sucesión; sólo hemos demostrado que, bajo la hipótesis correcta, la cola necesaria para hacerlo existe sin ninguna elección.
-
----
 
 ### Teorema 13.6.5 — Teorema del sándwich
 
@@ -499,8 +487,6 @@ $$
 
 > **Nota fundacional.** No se usa completitud, Choice ni lógica clásica sustantiva. El teorema del sándwich es una consecuencia directa del significado cuantificado de convergencia y de la transitividad del orden.
 
----
-
 ### Corolario 13.6.6 — Criterio absoluto de sándwich
 
 Sean $x=(x_n)$ e $y=(y_n)$ sucesiones reales. Si
@@ -574,8 +560,6 @@ $$
 
 Este corolario será una forma de uso muy frecuente del sándwich: para demostrar que una sucesión tiende a cero basta a menudo dominar su valor absoluto por otra sucesión que ya sabemos que tiende a cero.
 
----
-
 La sección ha separado cuatro fenómenos que suelen comprimirse bajo la frase «el límite respeta el orden»:
 
 $$
@@ -601,4 +585,3 @@ $$
 Ninguno de estos resultados utiliza todavía la completitud de $\mathbb R$. Hasta aquí hemos estudiado qué propiedades **debe** tener un límite, suponiendo que ya existe.
 
 La situación cambia en la sección siguiente. Introduciremos sucesiones monótonas y preguntaremos cuándo el orden y la acotación bastan para **producir** un límite. Allí aparecerá por primera vez de manera esencial la completitud de $\mathbb R$ mediante supremos e ínfimos.
----

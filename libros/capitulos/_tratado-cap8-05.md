@@ -177,9 +177,6 @@ Esto demuestra la afirmación. ∎
 > $$ \boxed{\mu_C(\varepsilon)=\mu(\varepsilon/2_{\mathbb Q}).} $$
 > Por tanto un módulo computable de convergencia induce un módulo computable de Cauchy.
 >
-> **Auditoría de elección.** Para una precisión racional positiva arbitraria $\varepsilon$ construimos canónicamente $\eta=\varepsilon/s$ y extraemos de la hipótesis de convergencia un único testigo $N$ para esa precisión. No se selecciona simultáneamente una familia de índices y no interviene el axioma de elección.
-
----
 
 ### Lo que hemos ganado
 
@@ -198,5 +195,3 @@ Por tanto, la condición de Cauchy es una **condición necesaria** para que una 
 La recíproca no ha sido demostrada y no debe suponerse. Precisamente porque la definición de Cauchy no menciona un límite, puede detectar procesos racionales coherentes cuya eventual “posición” todavía no sabemos representar dentro de $\mathbb Q$.
 
 Antes de exhibir esa insuficiencia secuencial debemos establecer una propiedad estructural básica de estos procesos: **toda sucesión racional de Cauchy es acotada**. Ése será el contenido de §8.6.
-
----

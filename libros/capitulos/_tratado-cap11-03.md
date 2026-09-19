@@ -74,11 +74,7 @@ $$
 }
 $$
 
-> **Auditoría de elección.** La construcción no elige un representante de cada clase. El teorema de definición sobre clases factoriza directamente la función ya existente $\Lambda_C$ a través de la proyección sobreyectiva $\pi_{\sim_C}$. La constancia demostrada en §11.2 garantiza que el valor descendido es único. `choice-use: none`.
-
 La fórmula anterior debe leerse con cuidado. No afirma que una clase $[a]_C$ **sea** una cortadura, ni que $a$ sea un representante privilegiado. Afirma que la función $\Phi$ envía la clase completa al único lado inferior racional determinado por cualquiera de sus representantes.
-
----
 
 ### Proposición 11.3.2 — Caracterización universal de $\Phi$
 
@@ -168,8 +164,4 @@ $$
 
 ∎
 
-> **Auditoría de elección.** En la implicación recíproca se fija primero un elemento arbitrario $x$ y se usa después un representante cuya existencia local garantiza Proposición 9.4.4 — Representantes y criterio de igualdad de clases de Cauchy. No se construye una función $x\mapsto a_x$ ni se seleccionan representantes simultáneamente para todas las clases. Por tanto no aparece Choice.
-
 La caracterización universal muestra que $\Phi$ no depende de una presentación particular del cociente. Es la única función $\mathbb R_C\to\mathbb R_D$ cuyo valor sobre una clase de Cauchy es la cortadura producida por cualquiera de sus representantes.
-
----

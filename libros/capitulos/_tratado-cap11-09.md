@@ -27,8 +27,6 @@ para afirmar que existe un isomorfismo de cuerpos ordenados entre $F$ y $E$.
 
 El símbolo $\cong$ expresa equivalencia estructural, no igualdad conjuntista. En particular, de $F\cong E$ no se sigue que $F=E$ como conjuntos.
 
----
-
 ### Notación 11.9.2 — Inversa de la comparación canónica
 
 Por Corolario 11.7.7 — Biyectividad de la aplicación canónica,
@@ -54,8 +52,6 @@ $$
 $$
 
 No hay aquí elección de preimágenes: la inversa de una biyección está determinada unívocamente por su grafo inverso.
-
----
 
 ### Proposición 11.9.3 — Fórmula explícita para la inversa
 
@@ -104,10 +100,6 @@ x_\alpha
 $$
 
 Esto prueba la fórmula. ∎
-
-> **Auditoría de elección.** La fórmula no selecciona un elemento arbitrario de cada fibra de $\Phi$. La sucesión $\operatorname{seq}_D(\alpha)$ ya fue construida funcionalmente mediante mínimos naturales, y la inversa de una biyección es única. `choice-use: none`.
-
----
 
 ### Teorema 11.9.4 — Isomorfismo canónico entre las completaciones de Cauchy y Dedekind
 
@@ -206,10 +198,6 @@ Por tanto el isomorfismo no sólo compara las estructuras completas: identifica 
 > Tampoco debe confundirse esta canonicidad estructural con una equivalencia computacional automática de códigos:
 > $$ \boxed{ \text{isomorfía estructural} \neq \text{conversión computable entre presentaciones arbitrarias}. } $$
 > Una equivalencia efectiva entre nombres de Cauchy y cortaduras localizadas requiere datos intensionales adicionales y pertenece a la capa P1.
-
-> **Auditoría de elección.** El teorema final sólo reúne resultados ya obtenidos sin Choice. La única etapa potencialmente delicada —la construcción simultánea de aproximantes racionales de una cortadura— fue resuelta en §11.7 mediante la enumeración canónica de $\mathbb Q$ y mínimos naturales. La función inversa se obtiene de una biyección y posee además la fórmula explícita de Proposición 11.9.3 — Fórmula explícita para la inversa. No se usa el axioma de elección.
-
----
 
 ## Cierre del capítulo
 

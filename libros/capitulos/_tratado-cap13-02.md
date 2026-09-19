@@ -40,8 +40,6 @@ de modo que todo segmento final es no vacío.
 
 La expresión «para todo $n$ suficientemente grande» significará precisamente «para todo $n$ perteneciente a algún segmento final $\mathbb N_{\ge N}$». No introduce una noción métrica de tamaño: sólo utiliza el orden ya construido en $\mathbb N$.
 
----
-
 ### Proposición 13.2.2 — Monotonía de los segmentos finales
 
 Si $N,M\in\mathbb N$ y
@@ -84,8 +82,6 @@ $$
 
 La dirección de la inclusión merece atención: cuanto **mayor** es el umbral, **menor** es el segmento final. Pedir una propiedad desde $M$ con $N\le M$ permite descartar al menos tantos términos iniciales como pedirla desde $N$.
 
----
-
 ### Definición 13.2.3 — Cola reindexada de una sucesión
 
 Sea
@@ -126,8 +122,6 @@ que existe por Separación. Para cada $k\in\mathbb N$, la suma natural $N+k$ per
 La reindexación es deliberada. La familia restringida a $\mathbb N_{\ge N}$ tendría dominio $\mathbb N_{\ge N}$, no $\mathbb N$; en cambio $a^{\langle N\rangle}$ vuelve a ser una sucesión real en el sentido exacto de Definición 13.1.1 — Sucesión real.
 
 > **Lectura conceptual.** Tomar una cola no significa reemplazar la sucesión por el conjunto de sus valores tardíos. Conservamos el orden de aparición y las repeticiones; únicamente desplazamos el origen de los índices.
-
----
 
 ### Definición 13.2.4 — Conjunto eventual y propiedad eventual
 
@@ -171,8 +165,6 @@ Esta definición distingue dos ideas que no deben confundirse:
 - que, desde algún índice en adelante, **no vuelva a fallar**.
 
 Sólo la segunda es eventualidad.
-
----
 
 ### Proposición 13.2.5 — Reglas elementales de eventualidad
 
@@ -256,11 +248,7 @@ El caso $M\le N$ es simétrico, tomando $N$ como umbral común. Así $E\cap F$ e
 
 Las dos formulaciones en lenguaje de propiedades son traducciones directas de (2) y (3) mediante los conjuntos de verdad correspondientes. ∎
 
-> **Auditoría de elección.** En la intersección de dos propiedades eventuales sólo intervienen dos testigos concretos $N$ y $M$. La totalidad del orden decide cuál sirve como umbral común. No se selecciona simultáneamente una familia infinita de umbrales y no se usa Choice.
-
 La tercera regla es el mecanismo que más adelante permitirá combinar varias estimaciones: si una desigualdad vale desde un índice y otra desde quizá otro índice, podemos pasar a un único umbral después del cual ambas son verdaderas.
-
----
 
 ### Definición 13.2.6 — Coincidencia eventual de sucesiones reales
 
@@ -297,8 +285,6 @@ N\le n\Longrightarrow a_n=b_n.
 $$
 
 La coincidencia eventual es estrictamente más débil que la igualdad de sucesiones. La igualdad exige coincidencia en **todo** índice; $a\sim_{\mathrm{ev}}b$ permite discrepancias antes de algún umbral.
-
----
 
 ### Proposición 13.2.7 — La coincidencia eventual es una relación de equivalencia
 
@@ -359,8 +345,6 @@ a\sim_{\mathrm{ev}}c.
 $$
 
 Se satisfacen las tres condiciones de Definición 0.4.7 — Relación de equivalencia. ∎
-
----
 
 ### Proposición 13.2.8 — Caracterización por igualdad de colas
 
@@ -463,5 +447,3 @@ La proposición expresa con exactitud la intuición que necesitábamos: **dos su
 > **Prueba de estrés conceptual.** «Eventualmente» no significa «para muchos índices», «para infinitos índices» ni «cada vez con mayor frecuencia». Significa que existe un único umbral tras el cual ya no aparecen excepciones. Esta diferencia será decisiva cuando cuantifiquemos sobre tolerancias en la definición de convergencia.
 
 La infraestructura lógica está ahora preparada. En la sección siguiente podremos formular rigurosamente qué significa que los términos de una sucesión real permanezcan eventualmente dentro de **cada** tolerancia positiva alrededor de un número real, conservando visible el orden de los cuantificadores.
-
----

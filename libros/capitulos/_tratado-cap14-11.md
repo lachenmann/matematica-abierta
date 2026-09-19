@@ -23,8 +23,6 @@ Por tanto $a_{2k}=b_{2k}$ y $a_{2k+1}=-b_{2k+1}$. La dicotomía de paridad Lema 
 
 Si deseamos comenzar con signo negativo, tomaremos el opuesto de esta sucesión; no modificaremos silenciosamente la convención (14.11.1). Admitimos magnitudes nulas y, por consiguiente, no exigimos que cada término tenga signo estrictamente positivo o negativo.
 
----
-
 ### Lema 14.11.2 — Las sumas parciales pares decrecen y las impares crecen
 
 Supongamos que $b_n\ge0$ y $b_{n+1}\le b_n$ para todo $n\in\mathbb N$. Sean $a_n=(-1)^n b_n$ y $s=\operatorname{PS}(a)$. Definamos, sólo como abreviaturas de sucesiones reales ya determinadas,
@@ -76,8 +74,6 @@ Apliquemos ahora el teorema de convergencia monótona Teorema 13.7.3 — Teorema
 
 > **Lectura geométrica.** Las sumas de índice par descienden por escalones; las de índice impar ascienden. En cada etapa el intervalo $[O_k,E_k]$ tiene longitud $b_{2k+1}$. Si esa longitud tiende a cero, los dos límites no pueden seguir siendo distintos.
 
----
-
 ### Teorema 14.11.3 — Criterio de Leibniz
 
 Sea $b:\mathbb N\to\mathbb R$ una sucesión tal que, para todo $n\in\mathbb N$,
@@ -128,8 +124,6 @@ Hemos probado $s_n\to S$, que es exactamente la definición de convergencia de l
 
 > **Alcance.** «Decreciente» significa aquí *no creciente*: se permiten igualdades y ceros. El teorema no declara que la serie de magnitudes $\sum b_n$ converja. Precisamente por eso será útil para reconocer convergencia condicional.
 
----
-
 ### Corolario 14.11.4 — Encierro de la suma y cota del primer término omitido
 
 Bajo las hipótesis del criterio de Leibniz, escribamos $S=\sum_{k=0}^{\infty}(-1)^k b_k$ y $s_n=\sum_{k=0}^{n}(-1)^k b_k$. Para **todo** $n\in\mathbb N$,
@@ -167,8 +161,6 @@ En ambos casos $S$ se encuentra entre las dos sumas parciales consecutivas. El s
 >
 > **La cota es óptima como constante universal.** Con $b_0=b_1=1$ y $b_n=0$ para $n\ge2$, la suma de la serie es $0$, mientras $s_0=1$ y $b_1=1$; por tanto $|S-s_0|=b_1$. No puede reemplazarse el factor $1$ por una constante estrictamente menor válida para todas las series del teorema.
 
----
-
 ### Corolario 14.11.5 — Caracterización para magnitudes decrecientes
 
 Si $b_n\ge0$ y $b_{n+1}\le b_n$ para todos los naturales, entonces
@@ -184,8 +176,6 @@ $$
 La implicación de derecha a izquierda es Teorema 14.11.3 — Criterio de Leibniz. Para la recíproca, la convergencia de la serie implica $a_n=(-1)^n b_n\to0$ por Teorema 14.2.4 — Condición necesaria de convergencia: el término general tiende a cero. Como $|(-1)^n|=|-1|^n=1$ (potencias y Lema 14.3.3 — El valor absoluto conmuta con las potencias naturales) y $b_n\ge0$, tenemos $|a_n|=b_n$. El valor absoluto preserva límites (Proposición 13.5.5 — El valor absoluto preserva límites), de modo que $b_n=|a_n|\to|0|=0$. ∎
 
 El resultado no debe leerse como un criterio universal para series con signos mezclados: presupone exactamente la forma alternada y la monotonía de $b$. Tampoco da una condición necesaria y suficiente de **convergencia absoluta**; esa última pregunta se refiere, por definición, a $\sum b_n$.
-
----
 
 ### Proposición 14.11.6 — La serie armónica alternada converge condicionalmente
 
@@ -205,8 +195,6 @@ Los numerales $\nu_{\mathbb R}(n+1)$ son estrictamente positivos y $\nu_{\mathbb
 En cambio, $|(-1)^n h_n|=h_n$, y la serie armónica $\sum h_n$ diverge por Proposición 14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica. Por definición de §14.8, la convergencia es condicional. No asignamos aquí un valor cerrado a la suma: su existencia se ha demostrado sin logaritmos ni integración. ∎
 
 > **Contraste con §14.8.** Allí construimos una serie condicional cuyo par de términos consecutivos se cancela exactamente. Aquí no hay cancelación exacta de todas las parejas, pero las sumas pares e impares quedan encajadas y su separación tiende a cero. Son dos demostraciones distintas de convergencia, no dos justificaciones intercambiables.
-
----
 
 ### Proposición 14.11.7 — Alternancia y anulación sin decrecimiento no bastan
 
@@ -239,10 +227,6 @@ La serie armónica de términos no negativos diverge (Proposición 14.2.7 — La
 
 > **Dos errores que conviene evitar.** Con $b_n=1$ los signos alternan y las magnitudes decrecen en sentido no estricto, pero los términos no tienden a cero: la serie diverge por Corolario 14.2.5 — Criterio de divergencia por el término general. Con (14.11.11), en cambio, las magnitudes sí tienden a cero, pero un término nulo alterna con uno positivo; se pierde la monotonía y las sumas acumulan toda la serie armónica.
 
----
-
 El criterio de Leibniz completa un segundo mecanismo de convergencia junto a la convergencia absoluta: una serie puede converger por cancelación **controlada**, aunque la serie de magnitudes diverja. La cota del resto cuantifica esta cancelación sin presuponer una suma infinita de cola. Las permutaciones estudiadas en §14.10 no deben confundirse con una teoría general de agrupaciones consecutivas, que no hemos introducido.
 
 El último asunto pendiente concierne a los criterios de crecimiento: ¿qué podemos concluir si las raíces de los términos no tienen límite ordinario? El límite superior finito desarrollado para sucesiones acotadas permitirá formular una respuesta exacta.
-
----

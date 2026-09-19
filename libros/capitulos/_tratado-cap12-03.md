@@ -74,11 +74,7 @@ $$
 
 como se quería. ∎
 
-> **Auditoría de elección.** El argumento utiliza únicamente el testigo existencial $r$ suministrado por la densidad de $P_F$ y, para ese $r$ fijo, el testigo $q$ contenido en la afirmación $r\in\jmath_{\mathbb Q}^{F}[\mathbb Q]$. No se define una elección simultánea de racionales para todos los intervalos de $F$.
-
 > **Nota fundacional.** La dependencia clásica está heredada de Teorema 4.5.1 — Densidad del subcuerpo primo en un cuerpo arquimediano, cuya prueba localiza un mínimo en un subconjunto arbitrario de $\mathbb N$. La extracción posterior de un racional para este intervalo fijo es local y no constituye Choice.
-
----
 
 ### Corolario 12.3.2 — Densidad racional en todo cuerpo ordenado completo
 
@@ -112,5 +108,3 @@ $$
 que coincide con la densidad de la imagen racional probada anteriormente en Proposición 4.8.3 — La imagen racional de una completación es densa, pero ahora sabemos además que la incrustación que aparece allí no es un dato arbitrario: es la única copia racional posible en $E$.
 
 Este punto es decisivo para la siguiente construcción. Dado $x\in E$, podremos considerar el conjunto de todos los racionales cuya imagen canónica queda estrictamente por debajo de $x$. La densidad recién establecida garantizará que ese conjunto codifica con suficiente precisión la posición de $x$ dentro del orden. Ése será el punto de partida de §12.4.
-
----

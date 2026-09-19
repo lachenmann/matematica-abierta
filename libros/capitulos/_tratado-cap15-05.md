@@ -15,8 +15,6 @@ Equivalentemente, para todo $r>0$ existe $y\in A$ tal que $0<|y-x|<r$: la primer
 
 > **Distinción lógica.** Adherencia exige $B_r(x)\cap A\ne\varnothing$ para todo $r>0$; acumulación exige además un testigo diferente del centro. La diferencia entre ambas nociones es significativa precisamente cuando $x\in A$.
 
----
-
 ### Definición 15.5.2 — Conjunto derivado o conjunto de puntos de acumulación
 
 Para cada $A\subseteq\mathbb R$ definimos su **conjunto derivado** mediante
@@ -30,8 +28,6 @@ $$
 La Separación sobre $\mathbb R$ proporciona este conjunto; la extensionalidad lo determina de manera única. También queda definida una función total $\operatorname{Acc}:\mathcal P(\mathbb R)\to\mathcal P(\mathbb R)$: se separan en $\mathcal P(\mathbb R)\times\mathcal P(\mathbb R)$ los pares cuyo segundo componente satisface exactamente la fórmula exhibida para el primero. No se selecciona ningún punto de las intersecciones que aparecen en ella.
 
 Escribimos $\operatorname{Acc}(A)$ en vez de introducir aquí $A'$: la abreviatura evita anticipar la notación de derivadas de funciones. La expresión designa un conjunto, no una operación de diferenciación.
-
----
 
 ### Proposición 15.5.3 — Acumulación implica adherencia y respeta la inclusión
 
@@ -49,8 +45,6 @@ Sea $x\in\operatorname{Acc}(A)$ y fijemos $r>0$. Por definición existe $y\in(B_
 Supongamos ahora $A\subseteq B$ y fijemos $x\in\operatorname{Acc}(A)$. Dado cualquier $r>0$, el testigo $y\in B_r(x)\setminus\{x\}$ anterior pertenece a $A$ y, por la inclusión, también a $B$. Por consiguiente $(B_r(x)\setminus\{x\})\cap B\ne\varnothing$ para cada radio positivo; así $x\in\operatorname{Acc}(B)$. ∎
 
 La primera inclusión puede ser estricta: un punto que pertenece a un singleton es adherente a él, pero veremos que no puede ser punto de acumulación de ese singleton.
-
----
 
 ### Teorema 15.5.4 — Descomposición de la clausura y criterio de cerradura
 
@@ -76,8 +70,6 @@ Si $A$ es cerrado, Corolario 15.4.7 — Un conjunto es cerrado si y sólo si coi
 
 > **Lectura del resultado.** La clausura reúne los puntos que ya están en $A$ y los puntos que no pueden separarse de él mediante bolas perforadas. No afirma que $\operatorname{Acc}(A)$ esté incluido en $A$: esa inclusión es precisamente una caracterización de los conjuntos cerrados.
 
----
-
 ### Definición 15.5.5 — Punto aislado
 
 Un punto $x$ es **aislado en $A\subseteq\mathbb R$** si $x\in A$ y existe un radio $r>0$ tal que
@@ -87,8 +79,6 @@ $$
 $$
 
 La pertenencia $x\in A$ es indispensable: una bola que no encuentre ningún punto de $A$ describe un punto exterior, no un punto aislado *de $A$*. La igualdad exige que dentro de cierta bola el único punto del conjunto sea el centro; otros puntos de $A$ pueden existir fuera de ella.
-
----
 
 ### Proposición 15.5.6 — Los puntos aislados son los puntos propios no acumulativos
 
@@ -108,8 +98,6 @@ Supongamos que $x$ es aislado. Entonces $x\in A$ y existe $r>0$ con $B_r(x)\cap 
 Recíprocamente, supongamos $x\in A$ y $x\notin\operatorname{Acc}(A)$. La negación clásica de la condición universal de Definición 15.5.1 — Punto de acumulación proporciona un $r>0$ tal que $(B_r(x)\setminus\{x\})\cap A=\varnothing$. Como $x\in A$ y, por Proposición 15.1.2 — Las bolas son intervalos abiertos centrados, $x\in B_r(x)$, tenemos $x\in B_r(x)\cap A$. Si $y$ es cualquier otro elemento de esta intersección, $y\ne x$ lo situaría en la intersección perforada vacía, contradicción. Por tanto $B_r(x)\cap A=\{x\}$ y $x$ es aislado. La descripción del conjunto de puntos aislados se obtiene por Separación en $A$. ∎
 
 La oposición entre «aislado» y «de acumulación» concierne a los puntos **que pertenecen a $A$**: un punto exterior también puede no ser de acumulación, pero nunca se le llamará aislado en $A$.
-
----
 
 ### Teorema 15.5.7 — El conjunto de puntos de acumulación es cerrado
 
@@ -146,8 +134,6 @@ Por tanto $z\in B_r(x)\setminus\{x\}$, y así $B_\delta(y)\subseteq B_r(x)\setmi
 Hemos hallado para cada $x\notin\operatorname{Acc}(A)$ un radio positivo $r$ con $B_r(x)\cap\operatorname{Acc}(A)=\varnothing$. El criterio de cerradura Proposición 15.3.6 — Criterio de cerradura mediante puntos exteriores completa la demostración. ∎
 
 La prueba es local: una única bola que evita a $A$ salvo, eventualmente, por su centro también evita a **todos** los puntos de acumulación de $A$. No se extrajeron sucesiones de puntos, por lo que tampoco se requirió elección numerable.
-
----
 
 ### Teorema 15.5.8 — El conjunto derivado conserva las uniones binarias
 
@@ -187,8 +173,6 @@ Esto contradice $x\in\operatorname{Acc}(A\cup B)$. Por lógica clásica, $x$ per
 
 Una unión **finita** de conjuntos derivados se trata por inducción a partir de la igualdad binaria y del caso vacío que verificaremos enseguida. Para uniones arbitrarias, la inclusión inversa puede fallar.
 
----
-
 ### Proposición 15.5.9 — Ejemplos y límite de la ley de unión
 
 Dados $a,b\in\mathbb R$ con $a<b$, se tienen las identidades
@@ -224,5 +208,3 @@ $$
 Pero $\bigcup_{t\in I}F_t=(0,1)$, cuyo conjunto derivado es $[0,1]$ por la tercera identidad (entendiendo ahora $0,1$ como elementos del cuerpo real). En particular, $0$ pertenece al derivado de la unión y no a la unión de los derivados. La inclusión indexada de Teorema 15.5.8 — El conjunto derivado conserva las uniones binarias puede ser estricta. ∎
 
 Los ejemplos fijan el alcance de la noción: **una pertenencia solitaria no produce acumulación**, mientras que los extremos de un intervalo pueden acumular puntos aun sin pertenecer al intervalo. El próximo paso será estudiar los puntos de frontera mediante la relación simultánea con un conjunto y su complemento, sin confundir frontera con conjunto derivado.
-
----

@@ -48,8 +48,6 @@ $$
 
 expresada mediante la copia canónica de $\mathbb N$ en $\mathbb Q$.
 
----
-
 ### Proposición 10.3.2 — Positividad y nulidad de la escala canónica
 
 Para todo $n\in\mathbb N$,
@@ -152,10 +150,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Para una precisión $\varepsilon$ fija, la arquimedianidad proporciona un único testigo existencial local $N$. No se escoge una familia de índices para todas las precisiones. `choice-use: none`.
-
----
-
 ### Lema 10.3.3 — La incrustación racional preserva el valor absoluto
 
 Para todo $r\in\mathbb Q$,
@@ -220,8 +214,6 @@ $$
 
 ∎
 
----
-
 ### Definición 10.3.4 — Operador diagonal de aproximación
 
 Sea
@@ -271,8 +263,6 @@ La definición existe para toda sucesión en $\mathbb R_C$; sólo cuando la suce
 > }
 > $$
 > Bajo nombres uniformemente computables y un procedimiento efectivo de aproximación racional, puede construirse una diagonal efectiva sin exigir el mínimo clásico usado por $A_C$.
-
----
 
 ### Teorema 10.3.5 — La diagonal de una sucesión de Cauchy es racionalmente de Cauchy
 
@@ -465,8 +455,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** La sucesión $q$ no se obtiene escogiendo representantes de los $x_n$: está dada por la función $\operatorname{diag}_C$. Para cada $\varepsilon$ se obtienen sólo dos índices locales, $N_0$ y $N_1$, que se combinan mediante una comparación finita en el orden total de $\mathbb N$. No se usa elección numerable ni ninguna forma de Choice.
-
 El teorema produce ya un elemento legítimo de $\mathbb R_C$:
 
 $$
@@ -478,5 +466,3 @@ $$
 $$
 
 Éste será el candidato a límite de la sucesión exterior $x$.
-
----

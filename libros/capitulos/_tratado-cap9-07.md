@@ -20,8 +20,6 @@ $$
 
 No elegiremos simultáneamente representantes para todas las clases. El representante se utilizará sólo como testigo local dentro de una prueba de existencia; la función inversa sobre el cociente se construirá después mediante un grafo definido por la ecuación $xy=1_C$.
 
----
-
 ### Proposición 9.7.1 — Criterio de nulidad de una clase de Cauchy
 
 Para todo $a\in\mathcal C_{\mathbb Q}$,
@@ -83,8 +81,6 @@ a\in\mathcal N_{\mathbb Q}.
 $$
 
 Negando ambos miembros obtenemos la segunda equivalencia. ∎
-
----
 
 ### Lema 9.7.2 — Separación eventual respecto de cero
 
@@ -221,14 +217,11 @@ $$
 
 Como $n\ge N_0$ era arbitrario, queda demostrada la separación eventual. ∎
 
-> **Auditoría de elección.** La negación de la nulidad produce un único testigo $\varepsilon_0$ para la sucesión fija $a$. Después se toma un único índice $k$ correspondiente al índice fijo $N_0$. No se construye ninguna función $N\mapsto k_N$ ni se seleccionan testigos simultáneamente.
 >
 > **Frontera clásica.** El paso desde la información negativa
 > $$ a\notin\mathcal N_{\mathbb Q} $$
 > hasta un margen positivo eventual $\delta<|a_n|$ usa negación clásica de cuantificadores. En una
 > futura interfaz constructiva, ese margen debe tratarse como **apartness positiva** dada explícitamente.
-
----
 
 ### Definición 9.7.3 — Recíproco seguro de una sucesión racional
 
@@ -279,8 +272,6 @@ No se ha elegido ningún valor arbitrario: tanto en el caso $a_n\neq0$ como en e
 > **Contenido efectivo.** Esta definición por casos sí es efectiva sobre nombres racionales, porque la
 > igualdad $a_n=0_{\mathbb Q}$ es decidible para cada término racional. Aquí “canónico” y
 > “computable” coinciden por una razón adicional explícita: la decidibilidad racional.
-
----
 
 ### Lema 9.7.4 — El recíproco seguro de un representante no nulo es de Cauchy
 
@@ -506,8 +497,6 @@ $$
 
 > **Nota estructural.** Los valores de $\rho_0(a)$ antes de $N_0$ son irrelevantes para la clase asintótica. La modificación queda confinada al segmento inicial $n<N_0$, porque la separación eventual garantiza que, desde $N_0$ en adelante, ningún término de $a$ vuelve a ser cero.
 
----
-
 ### Definición 9.7.5 — Reales de Cauchy no nulos
 
 Definimos
@@ -521,8 +510,6 @@ $$
 $$
 
 Este conjunto existe por separación dentro de $\mathbb R_C$.
-
----
 
 ### Proposición 9.7.6 — Existencia local de inversos multiplicativos
 
@@ -616,10 +603,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** La prueba usa un representante $a$ únicamente para el elemento fijo $x$. No se define una familia de representantes de todas las clases. La existencia de la futura función inversa se obtendrá por unicidad algebraica, no por una elección global de representantes.
-
----
-
 ### Proposición 9.7.7 — Construcción de la función inversa en $\mathbb R_C$
 
 Existe una única función
@@ -689,8 +672,6 @@ $$
 
 No se ha elegido ningún representante ni ningún inverso entre varias posibilidades: el valor queda determinado de manera única por la ecuación $xy=1_C$. ∎
 
----
-
 ### Notación 9.7.8 — Recíproco de un real de Cauchy
 
 Para $x\in\mathbb R_{C,\neq0}$ escribiremos
@@ -702,8 +683,6 @@ x^{-1}:=\operatorname{inv}_C(x).
 $$
 
 El símbolo $x^{-1}$ está sobrecargado por tipo: para racionales designa el recíproco definido en Notación 3.6.4 — Recíproco; para reales de Cauchy designa la función anterior. No debe confundirse con $f^{-1}$, que para funciones denota la función inversa de una biyección.
-
----
 
 ### Proposición 9.7.9 — Ley del inverso multiplicativo en $\mathbb R_C$
 
@@ -724,8 +703,6 @@ xx^{-1}=1_C.
 $$
 
 La segunda se sigue de la conmutatividad del producto establecida en Teorema 9.6.6 — $\mathbb R_C$ es un anillo conmutativo con identidad. ∎
-
----
 
 ### Teorema 9.7.10 — $\mathbb R_C$ es un cuerpo
 
@@ -764,8 +741,6 @@ $$
 > fundacional aparece al construir inversos de clases meramente **no nulas**, porque la separación
 > cuantitativa respecto de cero se obtiene mediante Lema 9.7.2 — Separación eventual respecto de cero. Por ello:
 > $$ \boxed{\text{no nulidad negativa}\neq\text{apartness positiva}.} $$
-
----
 
 ### Lo que hemos ganado
 

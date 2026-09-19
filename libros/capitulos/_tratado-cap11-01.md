@@ -46,8 +46,6 @@ El conjunto $\mathcal L_C(a)$ existe por Separación sobre $\mathbb Q$. La fórm
 
 La presencia del margen $\varepsilon>0$ es esencial. Exigir simplemente que $q<a_n$ eventualmente no sería estable frente a perturbaciones nulas: una sucesión puede oscilar alrededor de una frontera sin mantenerse de un solo lado. El margen positivo expresa que $q$ se encuentra **estrictamente** por debajo de la posición asintótica representada por $a$.
 
----
-
 ### Proposición 11.1.2 — Caracterización mediante el orden de $\mathbb R_C$
 
 Para todo $a\in\mathcal C_{\mathbb Q}$ y todo $q\in\mathbb Q$,
@@ -112,8 +110,6 @@ $$
 ∎
 
 > **Nota conceptual.** La proposición no redefine $\mathcal L_C(a)$ mediante $\mathbb R_C$. La definición permanece enteramente racional; el resultado demuestra después que esa condición racional coincide con estar por debajo de la clase $[a]_C$ en el cuerpo de Cauchy.
-
----
 
 ### Proposición 11.1.3 — El lado inferior de Cauchy es una cortadura de Dedekind
 
@@ -357,5 +353,3 @@ a\sim_C b
 $$
 
 Éste es exactamente el problema de §11.2.
-
----

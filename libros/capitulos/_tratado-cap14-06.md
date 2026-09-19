@@ -47,8 +47,6 @@ Por la definición de suma de una serie y la unicidad del límite, la serie de t
 
 > **Lectura del alcance.** Para $c=0$ sigue siendo correcta la identidad entre sumas parciales, y la serie de términos nulos converge; no es válida la equivalencia de convergencia: multiplicar por cero borra toda información sobre la serie inicial. Utilizaremos únicamente escalares estrictamente positivos al comparar términos no negativos, para conservar la dirección de las desigualdades.
 
----
-
 ### Definición 14.6.2 — Cociente secuencial totalizado y cociente eventual
 
 Para dos sucesiones reales $a,b\in\mathbb R^{\mathbb N}$ definimos su **cociente totalizado** $\operatorname{quo}_0(a,b)\in\mathbb R^{\mathbb N}$, con valores
@@ -80,8 +78,6 @@ $$
 significará exclusivamente que la sucesión real total $\operatorname{quo}_0(a,b)$ converge a $\ell$. La convención $0$ en los índices anteriores a $N_0$ no afecta a la convergencia: cualquier otra sucesión real que coincida con esos cocientes desde $N_0$ es eventualmente igual a $\operatorname{quo}_0(a,b)$, y Proposición 13.3.7 — Invariancia de la convergencia bajo coincidencia eventual conserva exactamente su límite. **No** se interpreta esta notación cuando el denominador pueda anularse arbitrariamente tarde sin una hipótesis adicional que legitime los cocientes.
 
 > **Control de tipos.** $a$, $b$ y $\operatorname{quo}_0(a,b)$ son funciones $\mathbb N\to\mathbb R$; $a_n/b_n$ es un número real únicamente si $b_n\ne0$. La función totalizada facilita formular límites sin dejar indefinido el objeto secuencial, pero no sustituye la condición de denominador eventualmente positivo del criterio que sigue.
-
----
 
 ### Lema 14.6.3 — Un límite positivo proporciona dos cotas multiplicativas
 
@@ -130,8 +126,6 @@ Las desigualdades no estrictas requeridas se deducen inmediatamente. Como $\ell>
 
 > **Por qué importa $\ell>0$.** La cota inferior útil procede de una vecindad del límite que no alcance el cero. Si el límite fuese cero, no existiría por este argumento una constante $c>0$ que garantizase $cb_n\le a_n$; sólo se conservaría la cota superior.
 
----
-
 ### Teorema 14.6.4 — Criterio de comparación por límite positivo
 
 Sean $a,b:\mathbb N\to\mathbb R$ sucesiones cuyos términos son **no negativos**. Supongamos que $b_n>0$ para todo $n$ suficientemente grande y que, en el sentido preciso de la definición anterior,
@@ -171,8 +165,6 @@ Se han demostrado ambas implicaciones. Si una serie divergiese mientras la otra 
 
 > **Qué no afirma el teorema.** El límite $\ell$ compara *términos*, no determina la razón entre las sumas de las series. Tampoco decide por sí solo cuál de las dos series converge: suministra una equivalencia y requiere una serie de referencia cuyo comportamiento ya esté establecido. En particular, si $a_n=b_n=1$ ambas divergen con cociente igual a $1$; si $a_n=b_n=(1/2)^n$, ambas convergen con el mismo cociente, por el criterio geométrico de §14.3.
 
----
-
 ### Corolario 14.6.5 — Límite nulo y comparación unilateral
 
 Sean $a,b$ sucesiones de términos no negativos y supongamos que $b_n>0$ eventualmente. Si
@@ -211,7 +203,4 @@ Las dos parejas cumplen las mismas hipótesis del corolario, incluida la diverge
 
 > **Mapa lógico del criterio.** Si el cociente tiende a un real estrictamente positivo, hay cotas *superior e inferior* por múltiplos positivos y se obtiene equivalencia. Si tiende a cero, sólo se deduce la comparación eventual $a_n\le b_n$ y queda una implicación de convergencia. Para términos no negativos y denominador eventualmente positivo, un límite real del cociente no puede ser negativo: los cocientes son eventualmente no negativos y el paso al límite conserva ese orden (Teorema 13.6.2 — Preservación del orden en el paso al límite). El caso de cocientes sin límite, o de crecimiento no acotado sin límite real, no entra en este teorema; no anticipamos límites infinitos.
 
----
-
 Esta distinción entre comparación bilateral y unilateral será esencial al elegir series de referencia. Hemos necesitado sólo el límite real de sucesiones, las reglas de orden y la comparación directa de §14.5. En §14.7 abordaremos la **condensación de Cauchy**, que organiza los términos de una serie monótona no negativa en bloques de longitud creciente y requiere justificar cuidadosamente la indexación de esos bloques antes de comparar sus sumas.
----

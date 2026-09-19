@@ -48,8 +48,6 @@ Ambos extremos son reales porque los recorridos son no vacíos y están acotados
 
 > **Dependencia decisiva.** La existencia de los extremos de cada cola y la convergencia de sus envolventes son dos intervenciones diferenciadas de la completitud. No se deduce que exista un procedimiento para calcular ninguno de esos extremos.
 
----
-
 ### Definición 13.12.2 — Límite inferior y límite superior
 
 Sea $a=(a_n)$ una **sucesión real acotada**. Definimos su **límite inferior** y su **límite superior** por
@@ -88,8 +86,6 @@ En estas expresiones, el supremo y el ínfimo exteriores se aplican a los conjun
 
 > **Restricción de dominio.** No definimos todavía $\liminf$ o $\limsup$ para sucesiones reales no acotadas: podrían requerir límites infinitos y los reales extendidos, que no forman parte de la infraestructura actual. La acotación garantiza aquí que ambas expresiones denotan reales finitos.
 
----
-
 ### Lema 13.12.3 — Aproximación de los extremos de cada cola por valores de la cola
 
 Sean $a$ una sucesión real acotada, $N\in\mathbb N$ y $\eta>0$. Existen índices $m,n\in\mathbb N$, ambos mayores o iguales que $N$, tales que
@@ -126,8 +122,6 @@ La definición de imagen $T_N(a)=a[\mathbb N_{\ge N}]$ proporciona un índice $m
 De modo dual, $U_N(a)$ es cota superior de $T_N(a)$. Si ningún $y\in T_N(a)$ satisficiera $U_N(a)-\eta<y$, entonces todos cumplirían $y\le U_N(a)-\eta$. Este último número sería una cota superior estrictamente menor que el supremo $U_N(a)$, contradicción. Existe $y\in T_N(a)$ con $U_N(a)-\eta<y\le U_N(a)$ y, por ser valor de la cola, existe $n\ge N$ con $a_n=y$. ∎
 
 > **Qué se obtiene realmente.** Para cada par fijo $(N,\eta)$ se demuestra la existencia de índices de aproximación. No se ha elegido una familia simultánea de índices para todos los pares. Este lema no afirma que el supremo o ínfimo de la cola deban alcanzarse: sólo exige valores arbitrariamente próximos por el lado apropiado.
-
----
 
 ### Proposición 13.12.4 — Orden de los límites extremos y confinamiento de los puntos límite
 
@@ -187,8 +181,6 @@ $$
 Quedan probadas ambas afirmaciones. ∎
 
 > **Precaución lógica.** El resultado no afirma que todo real entre $\alpha$ y $\beta$ sea punto límite. Sólo dice que ninguno puede quedar fuera del intervalo cerrado determinado por ambos extremos.
-
----
 
 ### Teorema 13.12.5 — Los límites inferior y superior son puntos límite secuenciales
 
@@ -258,8 +250,6 @@ Por tanto $|a_n-\beta|<\varepsilon$ para algún $n\ge N$. Como $\varepsilon,N$ e
 
 > **Arquitectura de la prueba.** Primero hacemos que el extremo de una cola quede cerca de su límite; después usamos la propiedad característica de ínfimo o supremo para encontrar **un término de esa misma cola** próximo al extremo. El criterio de visitas ya cerrado convierte esas aproximaciones en una subsucesión convergente usando mínimos naturales. No hemos escogido de forma arbitraria una sucesión de testigos.
 
----
-
 ### Corolario 13.12.6 — Extremos del conjunto de puntos límite
 
 Para toda sucesión real acotada $a$, el conjunto $\operatorname{LimSub}(a)$ tiene mínimo y máximo, y
@@ -279,8 +269,6 @@ $$
 Sean $\alpha=\liminf a_n$ y $\beta=\limsup a_n$. Teorema 13.12.5 — Los límites inferior y superior son puntos límite secuenciales establece que ambos pertenecen a $\operatorname{LimSub}(a)$; en particular, el conjunto no es vacío. Por Proposición 13.12.4 — Orden de los límites extremos y confinamiento de los puntos límite, todo $x$ en él verifica $\alpha\le x\le\beta$. Así $\alpha$ pertenece al conjunto y es menor o igual que cualquiera de sus elementos, por lo que es su mínimo. Dualmente, $\beta$ es su máximo. ∎
 
 La palabra «extremo» adquiere ahora su sentido exacto: los límites inferior y superior no son sólo cotas abstractas de los límites de subsucesiones; **son límites de subsucesiones y constituyen los extremos de todos ellos**.
-
----
 
 ### Teorema 13.12.7 — Criterio de convergencia mediante los límites extremos
 
@@ -322,8 +310,6 @@ El teorema del sándwich Teorema 13.6.5 — Teorema del sándwich demuestra ento
 
 > **Dónde es indispensable la hipótesis.** Para una sucesión no acotada no están definidos aquí los límites extremos, y la condición «un único punto límite» **no** bastaría por sí sola para concluir convergencia. El ejemplo de §13.11 que alterna ceros con numerales reales crecientes tiene $0$ como único límite de subsucesiones convergentes, pero no converge como sucesión completa. La acotación impide precisamente que una porción de la sucesión escape sin dejar puntos límite adicionales.
 
----
-
 ### Proposición 13.12.8 — Invariancia de los límites extremos bajo coincidencia eventual
 
 Sean $a,b$ sucesiones reales acotadas que coinciden eventualmente. Entonces
@@ -355,8 +341,6 @@ $$
 
 Así $L(a)$ y $L(b)$ coinciden eventualmente, lo mismo que $U(a)$ y $U(b)$. Sus cuatro límites existen por Teorema 13.12.1 — Convergencia de las envolventes de colas. La estabilidad de la convergencia bajo coincidencia eventual Proposición 13.3.7 — Invariancia de la convergencia bajo coincidencia eventual y la unicidad Teorema 13.3.5 — Unicidad del límite real igualan cada par de límites. Por Definición 13.12.2 — Límite inferior y límite superior, son precisamente las dos identidades buscadas. ∎
 
----
-
 **Ejemplos y pruebas de estrés.** En la sucesión alternante $0,1,0,1,\ldots$ de §13.10, cada cola contiene ambos valores. En consecuencia, $L_N=0$ y $U_N=1$ para todo $N$; su límite inferior es $0$, su límite superior es $1$ y el conjunto de puntos límite es exactamente $\{0,1\}$. No todos los números del intervalo $[0,1]$ son puntos límite: por ejemplo, $1/2$ no lo es. En cambio, si $a_0=100$ y $a_n=0$ para $n\ge1$, el supremo del recorrido total es $100$, pero las envolventes de toda cola con $N\ge1$ valen $0$; de aquí $\liminf a_n=\limsup a_n=0$, y la sucesión converge a $0$. Los límites extremos registran el comportamiento persistente, no los accidentes de un prefijo finito.
 
 Hemos cerrado así la cadena
@@ -376,5 +360,3 @@ $$
 La teoría anterior se ha desarrollado exclusivamente para sucesiones reales acotadas. Con ella queda cerrado el primer capítulo propiamente analítico de la Parte II: la completitud de $\mathbb R$ se ha convertido en una teoría operativa de convergencia, Cauchy, subsucesiones, puntos límite y extremos asintóticos.
 
 El paso siguiente cambia el objeto sin cambiar todavía la noción de convergencia: una **serie numérica** será estudiada mediante la sucesión de sus sumas parciales. El Capítulo 14 comenzará, por tanto, reutilizando íntegramente la infraestructura secuencial construida aquí.
-
----

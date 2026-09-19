@@ -24,8 +24,6 @@ La aplicación de numerales $\nu_{\mathbb R}:\mathbb N\to\mathbb R$ y la multipl
 
 > **Control de tipos.** $d_k$ es un índice natural; $\nu_{\mathbb R}(d_k)$ es su numeral real. La expresión usual $2^k a_{2^k}$ abrevia aquí $\nu_{\mathbb R}(d_k)a_{d_k}$, una vez verificada la relación de $d_k$ con las potencias reales de dos. No se declara una inclusión literal $\mathbb N\subseteq\mathbb R$.
 
----
-
 ### Proposición 14.7.2 — Crecimiento y aritmética de los índices diádicos
 
 Para todo $k\in\mathbb N$ se verifican las siguientes propiedades:
@@ -59,8 +57,6 @@ $$
 Estas son exactamente las ecuaciones recursivas que definen, por Definición 14.3.1 — Potencias naturales de un número real, las potencias reales $(1+1)^k$. La unicidad por inducción da $\nu_{\mathbb R}(d_k)=(1+1)^k$ para cada $k$. Por último, tomando $k=N+1$ en la cota ya probada, $d_{N+1}\ge N+2>N$. ∎
 
 > **Interpretación.** Ahora podemos leer legítimamente $b_k$ como el término convencional $2^k a_{2^k}$, con el subíndice $2^k$ entendido como el natural $d_k$ y el coeficiente como su numeral real. La estricta monotonía impide repetir bloques; la desigualdad $d_k\ge k+1$ garantiza que sus extremos llegan arbitrariamente lejos.
-
----
 
 ### Lema 14.7.3 — Cotas bilaterales de un bloque diádico
 
@@ -139,8 +135,6 @@ $$
 
 > **Pregunta de lectura.** ¿Por qué los extremos de la estimación llevan índices distintos? Dentro del bloque, el término mayor está cerca de su comienzo y el menor en su extremo final; por eso la cota superior utiliza $a_{d_k}$ y la inferior utiliza $a_{d_{k+1}}$. El desplazamiento de un índice en $b_{k+1}$ será esencial al sumar las desigualdades.
 
----
-
 ### Proposición 14.7.4 — Telescopía y comparación de los bloques
 
 Bajo las hipótesis del lema anterior, sean $s=\operatorname{PS}(a)$ y $B=\operatorname{PS}(b)$; denotemos por $T=(T_k)_{k\in\mathbb N}$ la sucesión de sumas de bloques. Para cada $m\in\mathbb N$,
@@ -205,8 +199,6 @@ $$
 Sustituyendo las dos identidades recién probadas obtenemos exactamente la estimación final. ∎
 
 > **Qué se ha hecho.** No hemos reordenado una serie infinita ni intercambiado límites: hemos sumado un número finito de bloques consecutivos y cancelado las sumas parciales intermedias. La serie de bloques $T$ es distinta de la serie condensada $b$, y el desplazamiento $b_{k+1}$ no se elimina sin compensarlo mediante el término inicial $b_0$.
-
----
 
 ### Teorema 14.7.5 — Criterio de condensación de Cauchy
 
@@ -274,10 +266,6 @@ La misma constante acota $B_0=b_0$, pues $M-s_1\ge0$. Por tanto acota **todas** 
 
 Las dos implicaciones establecen la equivalencia. Puesto que divergencia significa ausencia de convergencia real, también comparten la divergencia. ∎
 
-> **Auditoría de la prueba.** Sólo se usa la completitud real a través del criterio para series no negativas Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos; las estimaciones diádicas, la telescopía y la construcción de índices son finitas. La elección explícita $m=n$ evita cualquier selección simultánea de bloques para cada índice. No utilizamos Choice, logaritmos, integrales, sumas infinitas divergentes ni límites infinitos considerados números reales.
-
----
-
 ### Corolario 14.7.6 — Nueva demostración de la divergencia armónica
 
 La serie armónica del §14.2, cuyos términos son
@@ -315,8 +303,6 @@ Por la definición de límite, una sucesión cuyos términos están todos por en
 
 > **Dos demostraciones, una misma conclusión.** La prueba de §14.2 construía bloques de suma uniformemente grande y violaba el criterio de Cauchy. La condensación reúne esos bloques en una nueva sucesión, cuyos términos ni siquiera tienden a cero. La segunda demostración no reutiliza la *conclusión* de divergencia de Proposición 14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica.
 
----
-
 ### Proposición 14.7.7 — La monotonía es una hipótesis esencial
 
 Existen sucesiones de términos no negativos para las que la serie condensada converge y la original diverge. En consecuencia, la hipótesis de monotonía no puede suprimirse del teorema 14.7.5.
@@ -350,8 +336,4 @@ Esta serie condensada converge, pues sus sumas parciales son constantemente cero
 
 > **Alcance exacto.** La condensación no es un muestreo válido para cualquier sucesión no negativa. Sin monotonía se pueden ocultar términos grandes entre los índices diádicos: la condensada ve ceros, mientras que la serie original conserva infinitos términos de valor uno. La conclusión del criterio se aplica exclusivamente bajo sus hipótesis.
 
----
-
 Los bloques diádicos transforman un problema de suma infinita en dos familias de desigualdades finitas, y la completitud decide después la convergencia. Para avanzar convendrá distinguir otra forma de estabilidad: si los términos de una serie pueden cambiar de signo, la convergencia de sus valores absolutos ofrece un control que la mera convergencia no proporciona. Éste será el tema de §14.8, **convergencia absoluta y condicional**.
-
----

@@ -52,8 +52,6 @@ Aquí $a$ es una función, $a_n$ es un número real y $\{a_n:n\in\mathbb N\}$ es
 
 > **Nota fundacional.** Al igual que en el Capítulo 8, la sucesión es un objeto extensional. La existencia de una función $a:\mathbb N\to\mathbb R$ no afirma que exista un algoritmo que calcule $a_n$ a partir de $n$. No confundiremos existencia conjuntista, especificación matemática y computabilidad.
 
----
-
 ### Proposición 13.1.2 — Criterio término a término para la igualdad de sucesiones reales
 
 Sean
@@ -141,8 +139,6 @@ $$
 Queda demostrada la equivalencia. ∎
 
 La proposición anterior será utilizada constantemente. En adelante, para demostrar una igualdad entre sucesiones podremos trabajar término a término, siempre que la igualdad obtenida valga para **todo** índice natural.
-
----
 
 ### Definición 13.1.3 — Operaciones puntuales sobre sucesiones reales
 
@@ -262,10 +258,6 @@ Cuando el tipo sea inequívoco omitiremos el subíndice `seq`.
 
 > **Principio de lectura.** Las operaciones sobre sucesiones se realizan **índice por índice**. Esto permite heredar identidades algebraicas del cuerpo real, pero no autoriza todavía a intercambiar operaciones con límites: esa será una afirmación matemática posterior que deberá demostrarse.
 
-> **Auditoría fundacional.** No interviene ninguna forma de Choice. Cada término de la sucesión resultante está determinado de manera única por operaciones ya definidas en $\mathbb R$; los grafos se obtienen por Separación dentro de productos cartesianos existentes.
-
----
-
 ### Definición 13.1.4 — Sucesiones reales constantes
 
 Sea $c\in\mathbb R$. Definimos la **sucesión real constante de valor $c$** por
@@ -321,8 +313,6 @@ $$
 $$
 
 No identificaremos un número real con la sucesión constante que determina.
-
----
 
 ### Proposición 13.1.5 — Compatibilidad de las sucesiones constantes con las operaciones puntuales
 
@@ -410,5 +400,3 @@ $$
 Esto prueba todas las afirmaciones. ∎
 
 La aplicación $\kappa_{\mathbb R}$ reproduce así, dentro de las sucesiones, la aritmética del cuerpo real. No necesitamos todavía clasificar esta observación mediante vocabulario algebraico adicional; lo importante para el análisis es que las sucesiones constantes proporcionan el primer modelo de comportamiento asintótico perfectamente estable.
-
----

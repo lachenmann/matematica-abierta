@@ -14,8 +14,6 @@ $$
 
 Equivalentemente, *cada punto de la recta* es adherente a $D$. La definición no dice que $D=\mathbb R$, que tenga puntos interiores ni que haya una sucesión de elementos de $D$ convergente a cada real. Esta última formulación no se importará indebidamente de la sección anterior.
 
----
-
 ### Teorema 15.9.2 — Tres caracterizaciones de la densidad
 
 Sea $D\subseteq\mathbb R$. Son equivalentes las siguientes afirmaciones:
@@ -34,8 +32,6 @@ Sea $D\subseteq\mathbb R$. Son equivalentes las siguientes afirmaciones:
 
 > **Lectura de cuantificadores.** El criterio de intervalos afirma $\forall a\,\forall b\,(a<b\Rightarrow\exists d\in D\ (a<d<b))$. No proporciona una única función que escoja simultáneamente un punto para cada intervalo; tampoco es necesaria para demostrar densidad.
 
----
-
 ### Proposición 15.9.3 — Densidad de la copia racional canónica
 
 Sea $D_{\mathbb Q}=j[\mathbb Q]$. Entonces
@@ -49,8 +45,6 @@ En particular, todo abierto no vacío de la recta contiene la imagen de algún n
 **Demostración.**
 
 El corolario Corolario 12.3.2 — Densidad racional en todo cuerpo ordenado completo, ya cerrado en §12.3, establece que para cada par $a<b$ de reales existe $q\in\mathbb Q$ con $a<j(q)<b$. Por tanto, todo intervalo abierto no degenerado corta a $D_{\mathbb Q}$, que satisface la condición (3) de Teorema 15.9.2 — Tres caracterizaciones de la densidad. El mismo teorema concluye que $D_{\mathbb Q}$ es denso y que corta todos los abiertos no vacíos. No estamos volviendo a probar la densidad *de orden* del Capítulo 12: la utilizamos para obtener su caracterización topológica. ∎
-
----
 
 ### Proposición 15.9.4 — Densidad, interior del complemento y frontera
 
@@ -80,8 +74,6 @@ Por doble complementación relativa a $\mathbb R$, esta clausura es toda la rect
 
 **Advertencia.** Un conjunto denso puede tener interior no vacío: $A=\mathbb R$ es un ejemplo inmediato. La densidad de $A$ sólo fuerza el **vacío del interior de su complemento**. Las dos propiedades no deben confundirse.
 
----
-
 ### Proposición 15.9.5 — Intersección de un denso con un abierto
 
 Si $D\subseteq\mathbb R$ es denso y $U\subseteq\mathbb R$ es abierto, entonces
@@ -110,8 +102,6 @@ Tomamos clausuras a ambos lados: la monotonía y la idempotencia (Proposición 1
 
 La igualdad expresa con precisión que, **dentro de cualquier región abierta**, los puntos de un conjunto denso se aproximan a todos los puntos de esa región y, por clausura, a sus puntos adherentes.
 
----
-
 ### Definición 15.9.6 — Familia de intervalos con extremos racionales
 
 Denotemos por $\mathcal B_{\mathbb Q}$ la siguiente **familia de subconjuntos de la recta**:
@@ -123,8 +113,6 @@ $$
 $$
 
 Cada intervalo de esta familia es abierto y no vacío. El conjunto $\mathcal B_{\mathbb Q}$ existe por Separación **dentro de $\mathcal P(\mathbb R)$**; no es una colección irrestricta. Sus extremos son *imágenes de racionales* y por ello pertenecen a $\mathbb R$. No se ha añadido una nueva topología ni se identifica $\mathbb Q$ con su imagen.
-
----
 
 ### Teorema 15.9.7 — Todo abierto es unión de intervalos con extremos racionales
 
@@ -162,8 +150,6 @@ Luego $V\in\mathcal F_U$ y $x\in\bigcup\mathcal F_U$. Como $x$ era arbitrario, $
 
 > **Por qué no interviene Choice.** Sería incorrecto deducir sin más una función global $x\mapsto r_x$ a partir de que cada $x\in U$ posee *algún* radio. En lugar de escoger radios o intervalos, construimos el conjunto de **todos** los intervalos racionales que caben en $U$. Cada punto pertenece localmente a alguno y eso basta para la igualdad.
 
----
-
 ### Proposición 15.9.8 — Interior, clausura y frontera de los intervalos semiabiertos
 
 Sean $a,b\in\mathbb R$ con $a<b$ y sea $H$ cualquiera de los dos intervalos $[a,b)$ o $(a,b]$. Entonces
@@ -197,8 +183,6 @@ $$
 $$
 
 No hemos redefinido intervalos ni repetido las pruebas de los casos abierto y cerrado: las dos cadenas de inclusiones completan los casos semiabiertos. ∎
-
----
 
 ### Proposición 15.9.9 — Dos subconjuntos densos disjuntos
 
@@ -236,8 +220,6 @@ contradicción. Por tanto, todo intervalo no degenerado corta a $I_{\mathbb R}$.
 El intervalo $(a,b)$ era arbitrario. Por Teorema 15.9.2 — Tres caracterizaciones de la densidad, $I_{\mathbb R}$ es denso. La densidad de $D_{\mathbb Q}$ ya quedó demostrada en Proposición 15.9.3 — Densidad de la copia racional canónica. Ambos conjuntos son disjuntos por la definición del complemento, y Proposición 15.9.4 — Densidad, interior del complemento y frontera aplicada en ambos sentidos muestra que sus interiores son vacíos. Como uno de ellos es denso y tiene interior vacío, su frontera es toda la recta; la simetría Proposición 15.6.5 — La frontera es cerrada y no cambia al tomar el complemento da lo mismo para el otro. ∎
 
 > **Consecuencia conceptual.** Dos conjuntos disjuntos pueden ser densos simultáneamente. No debemos confundir «todo intervalo contiene elementos del conjunto» con «algún intervalo está contenido en el conjunto». La primera condición es densidad; la segunda, existencia de interior no vacío.
-
----
 
 Las definiciones y leyes topológicas básicas de la recta quedan así conectadas con su orden y con la copia racional construida en la Parte I. La sección se apoya exclusivamente en las condiciones con bolas y en los teoremas racionales ya cerrados: no utiliza la caracterización secuencial condicional de §15.8, no introduce espacios topológicos abstractos y no exige una elección de puntos para una familia de intervalos.
 

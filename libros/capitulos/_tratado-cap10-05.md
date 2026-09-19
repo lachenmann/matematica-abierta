@@ -13,8 +13,6 @@ La estrategia tiene cuatro etapas:
 
 La construcción es deliberadamente funcional. En cada etapa de bisección la pregunta «¿es el punto medio una cota superior?» tiene una respuesta lógica determinada; no escogeremos un elemento de $A$ en cada paso ni construiremos una familia de elecciones.
 
----
-
 ### Lema 10.5.1 — Compatibilidad de los numerales naturales con $\iota_C$
 
 Sea
@@ -74,8 +72,6 @@ $$
 La inducción concluye la afirmación. ∎
 
 > **Consecuencia tipológica.** Esta igualdad no identifica $\mathbb N$, $\mathbb Q$ y $\mathbb R_C$. Expresa la compatibilidad de las dos aplicaciones canónicas que conectan esos sistemas.
-
----
 
 ### Proposición 10.5.2 — El cuerpo de Cauchy es arquimediano
 
@@ -142,11 +138,7 @@ $$
 
 Hemos verificado la condición de recíprocos positivos arbitrariamente pequeños. Por la implicación recíproca de Proposición 4.4.2 — Caracterización por recíprocos pequeños, $\mathbb R_C$ es arquimediano. ∎
 
-> **Auditoría de elección.** Para una tolerancia $\varepsilon$ fija se usan un único racional $q$ y un único natural $n$, ambos como testigos locales de existencias previamente demostradas. No se define ninguna función de elección sobre las tolerancias.
-
 La arquimedianidad es la pieza que permite hacer cuantitativamente pequeña una bisección. Ahora fijaremos el mecanismo de bisección sin seleccionar puntos del conjunto en cada etapa.
-
----
 
 ### Definición 10.5.3 — Operador de bisección respecto de las cotas superiores
 
@@ -223,8 +215,6 @@ La lógica clásica garantiza que exactamente una de las dos ramas se aplica y c
 > }
 > $$
 
----
-
 ### Proposición 10.5.4 — Sucesiones de encajamiento asociadas a $A$
 
 Sean $A\subseteq\mathbb R_C$, $a\in A$ y $u\in\mathbb R_C$ una cota superior de $A$. Existen sucesiones únicas
@@ -293,10 +283,6 @@ $$
 Para cada $n$, el valor $p(n)$ es un único par de elementos de $\mathbb R_C$. Definimos $\ell_n$ y $r_n$ como su primera y segunda coordenada, respectivamente. Los grafos de ambas sucesiones se obtienen por separación y la unicidad de $p$ implica la unicidad de las dos coordenadas en cada índice.
 
 Las condiciones inicial y recursiva son exactamente las anunciadas. ∎
-
-> **Auditoría de elección.** Los elementos $a$ y $u$ son dos testigos fijos incluidos en las hipótesis. Una vez fijados, toda la sucesión de estados queda determinada por recursión. No se elige una rama ni un elemento de $A$ en cada índice.
-
----
 
 ### Lema 10.5.5 — Invariantes del encajamiento
 
@@ -463,8 +449,6 @@ r_n\le_Cr_m.
 $$
 
 Junto con $\ell_n<_Cr_n$ obtenemos la última fórmula. ∎
-
----
 
 ### Lema 10.5.6 — Las anchuras se hacen arbitrariamente pequeñas
 
@@ -660,10 +644,6 @@ $$
 
 Esto prueba la afirmación. ∎
 
-> **Auditoría de elección.** Para cada $\varepsilon$ se usa una sola instancia de la arquimedianidad. La prueba no selecciona índices simultáneamente para todas las tolerancias y no introduce potencias generales de $2$.
-
----
-
 ### Teorema 10.5.7 — Los extremos encajados convergen a una frontera común
 
 En la situación de Proposición 10.5.4 — Sucesiones de encajamiento asociadas a $A$, manteniendo $\delta_n:=r_n-\ell_n$, existe un elemento $L\in\mathbb R_C$ tal que
@@ -785,10 +765,6 @@ r_n\to_C L.
 $$
 
 Ambas sucesiones convergen, por tanto, a la misma frontera. ∎
-
-> **Auditoría de elección.** La completitud secuencial aporta un único límite para una única sucesión de Cauchy ya construida. Después sólo se combinan dos índices locales. No se selecciona una familia de límites ni de representantes.
-
----
 
 ### Teorema 10.5.8 — Propiedad del supremo de $\mathbb R_C$
 
@@ -987,10 +963,6 @@ $$
 > }
 > $$
 
-> **Auditoría de elección.** Se instancian dos existenciales una sola vez: un elemento $a\in A$ y una cota superior $u$. No se selecciona un elemento de $A$ para cada etapa de bisección. La sucesión completa es producida por el operador determinista **en sentido extensional** $\beta_A$ y recursión sobre $\mathbb N$.
-
----
-
 ### Corolario 10.5.9 — $\mathbb R_C$ es un cuerpo ordenado completo
 
 Se tiene
@@ -1007,7 +979,3 @@ $$
 Teorema 9.10.3 — $\mathbb R_C$ es un cuerpo ordenado demuestra que $\mathbb R_C$ es un cuerpo ordenado. Teorema 10.5.8 — Propiedad del supremo de $\mathbb R_C$ demuestra que todo subconjunto no vacío y acotado superiormente de $\mathbb R_C$ posee supremo. Ésta es exactamente la propiedad exigida por Definición 4.6.1 — Propiedad del supremo y cuerpo ordenado completo para ser un cuerpo ordenado completo. ∎
 
 > **Conclusión de la sección.** La construcción por Cauchy ha alcanzado ahora la misma propiedad estructural que se exigió abstractamente en el capítulo 4: $\mathbb R_C$ no sólo absorbe todas sus sucesiones de Cauchy, sino que tampoco contiene huecos de orden. La prueba se obtuvo desde su propia completitud secuencial y su propia estructura ordenada, sin utilizar cortaduras de Dedekind.
-
----
-
----

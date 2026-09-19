@@ -14,8 +14,6 @@ La palabra «abierta» es aquí el nombre tradicional de la bola. **Todavía no 
 
 > **Pregunta de lectura.** ¿Pertenecen a $B_r(a)$ los dos puntos cuya distancia al centro es exactamente $r$? No: la desigualdad definitoria es estricta. El siguiente resultado convierte esta observación en una identidad de conjuntos.
 
----
-
 ### Proposición 15.1.2 — Las bolas son intervalos abiertos centrados
 
 Para todo $a\in\mathbb R$ y todo $r>0$ se cumplen las siguientes afirmaciones:
@@ -54,8 +52,6 @@ Además, $|a-a|=0<r$, de modo que $a\in B_r(a)$. Finalmente, si $0<s\le r$ y $x\
 
 > **Interpretación.** Una bola de la recta no es un objeto distinto de los intervalos que ya construimos: es un intervalo expresado mediante centro y radio. La ventaja de la descripción métrica es que se transportará con facilidad a argumentos de proximidad y, posteriormente, a otros espacios.
 
----
-
 ### Proposición 15.1.3 — Una bola contiene una bola alrededor de cada uno de sus puntos
 
 Sean $a\in\mathbb R$, $r>0$ y $y\in B_r(a)$. Entonces el número
@@ -89,8 +85,6 @@ Luego $z\in B_r(a)$. Como $z$ era arbitrario, se obtiene la inclusión. ∎
 
 La elección del radio no ha sido arbitraria ni simultánea para una familia de puntos: para cada $y$ se dispone de la fórmula explícita $r-|y-a|$. Este hecho elemental será la herramienta principal para verificar que las bolas son conjuntos abiertos cuando esa noción se introduzca.
 
----
-
 ### Definición 15.1.4 — Vecindad de un punto
 
 Sea $a\in\mathbb R$. Un conjunto $V\subseteq\mathbb R$ se denomina **vecindad de $a$** si contiene alguna bola abierta centrada en $a$; es decir,
@@ -103,8 +97,6 @@ $$
 No exigimos que $V$ sea una bola ni, por ahora, que sea un conjunto abierto: sólo debe contener un margen positivo alrededor de $a$. En particular, la pertenencia aislada $a\in V$ no basta para que $V$ sea vecindad de $a$. Esta distinción será indispensable al definir puntos interiores.
 
 La noción está tipada sobre subconjuntos de la recta; si se necesita el conjunto de todas las vecindades de un punto fijo, puede obtenerse por Separación dentro de $\mathcal P(\mathbb R)$. No introducimos todavía un símbolo nuevo para tal familia.
-
----
 
 ### Proposición 15.1.5 — Propiedades elementales de las vecindades
 
@@ -132,5 +124,3 @@ Por tanto $V\cap W$ contiene una bola de radio positivo centrada en $a$ y es una
 > **No-ejemplo.** El conjunto $\{a\}$ contiene su único punto, pero no es vecindad de $a$: para cualquier $r>0$, el punto $a+r/(1+1)$ es distinto de $a$ y pertenece a $B_r(a)$, por lo que ninguna bola centrada en $a$ está contenida en el singleton. Aquí $1+1$ y su inverso son operaciones del cuerpo real; no se identifica ningún natural con un real por inclusión literal.
 
 Las vecindades formalizan así una exigencia más fuerte que la mera pertenencia: deben proporcionar un margen completo de puntos alrededor del centro. La siguiente unidad utilizará esta distinción para definir **puntos interiores y conjuntos abiertos** sin circularidad.
-
----

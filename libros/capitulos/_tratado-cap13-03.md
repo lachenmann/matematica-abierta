@@ -85,8 +85,6 @@ La definición contiene tres dependencias lógicas que no deben alterarse:
 
 > **Nota estructural.** La completitud de $\mathbb R$ no interviene en la definición. La misma noción tiene sentido en cualquier cuerpo ordenado. La completitud será necesaria después para demostrar que ciertas sucesiones **poseen** un límite, no para explicar qué significa converger a uno ya dado.
 
----
-
 ### Notación 13.3.2 — Flecha de convergencia real
 
 Cuando $a=(a_n)$ converge a $\ell\in\mathbb R$, escribiremos
@@ -114,8 +112,6 @@ x_n\to_C L,
 $$
 
 la flecha sin subíndice se reserva desde ahora para la convergencia en el $\mathbb R$ estructural de la Parte II.
-
----
 
 ### Proposición 13.3.3 — Formulaciones equivalentes de la convergencia
 
@@ -248,8 +244,6 @@ $$
 
 La tercera y la cuarta formulación hacen especialmente visible la geometría de la recta: toda ventana abierta centrada en $\ell$, por pequeña que sea, contiene finalmente todos los términos de la sucesión.
 
----
-
 ### Proposición 13.3.4 — Las sucesiones constantes convergen a su valor
 
 Para todo $c\in\mathbb R$,
@@ -289,8 +283,6 @@ $$
 ∎
 
 La proposición no identifica $c$ con $\underline c$. Afirma que el proceso constante asociado a $c$ tiene a $c$ como límite.
-
----
 
 ### Teorema 13.3.5 — Unicidad del límite real
 
@@ -480,11 +472,7 @@ $$
 
 ∎
 
-> **Auditoría fundacional.** La prueba no usa Choice. Sí utiliza lógica clásica en el último paso: a diferencia de lo ocurrido para $\mathbb Q$, no hemos establecido que la igualdad de números reales sea decidible. El argumento anterior produce constructivamente la imposibilidad de que dos candidatos distintos sean límites; convertir $\neg(\ell\ne m)$ en $\ell=m$ usa la lógica clásica declarada en el contrato fundacional.
-
 La unicidad permite pasar ahora de «un límite» a **el límite** de una sucesión convergente.
-
----
 
 ### Notación 13.3.6 — Límite de una sucesión convergente
 
@@ -509,8 +497,6 @@ $$
 La expresión $n\to\infty$ pertenece a la notación de límite; **no** afirma que $\infty$ sea un número real ni introduce un nuevo elemento en $\mathbb R$.
 
 La notación sólo se utilizará cuando la convergencia haya sido establecida o cuando aparezca dentro de una afirmación condicional que la suponga.
-
----
 
 ### Proposición 13.3.7 — Invariancia de la convergencia bajo coincidencia eventual
 
@@ -605,4 +591,3 @@ $$
 $$
 
 El paso siguiente será introducir la **acotación de sucesiones reales** y demostrar que toda sucesión convergente es acotada. Ese resultado proporcionará la infraestructura necesaria para el producto de sucesiones convergentes y para los argumentos de compacidad secuencial posteriores.
----

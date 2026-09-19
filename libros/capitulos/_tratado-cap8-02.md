@@ -44,8 +44,6 @@ El conjunto ambiente existe por Proposición 0.3.7 — Existencia del producto c
 
 Aunque el codominio declarado sea $\mathbb Q$, veremos inmediatamente que sus valores son siempre no negativos.
 
----
-
 ### Proposición 8.2.2 — Propiedades fundamentales de la distancia racional
 
 Para cualesquiera $x,y,z\in\mathbb Q$:
@@ -175,8 +173,6 @@ Quedan demostradas las cinco propiedades. ∎
 
 > **Nota conceptual.** Las cuatro primeras propiedades son precisamente las que más adelante permitirían reconocer a $d_{\mathbb Q}$ como una métrica. No necesitamos todavía desarrollar la teoría abstracta de espacios métricos; para la construcción de Cauchy basta trabajar directamente con estas propiedades racionales.
 
----
-
 ### Proposición 8.2.3 — Caracterización $\varepsilon$-local de la distancia racional
 
 Sean $x,y,\varepsilon\in\mathbb Q$ con
@@ -305,8 +301,6 @@ $$
 
 Las tres condiciones son equivalentes. ∎
 
----
-
 ### Lo que hemos ganado
 
 La frase informal “$x$ está cerca de $y$” dispone ahora de una formulación enteramente racional:
@@ -330,5 +324,3 @@ $$
 como pertenencia a una ventana racional centrada en $y$.
 
 Con esto ya tenemos el lenguaje necesario para formular rigurosamente qué significa que los términos de una sucesión se acerquen a un racional.
-
----

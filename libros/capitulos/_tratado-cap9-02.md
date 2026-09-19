@@ -50,8 +50,6 @@ $$
 
 No hay aquí una nueva noción de convergencia: «nula» es el caso particular del límite racional igual a cero.
 
----
-
 ### Proposición 9.2.2 — Toda sucesión nula es de Cauchy
 
 Se tiene
@@ -85,8 +83,6 @@ $$
 $$
 
 ∎
-
----
 
 ### Proposición 9.2.3 — Estabilidad aditiva de las sucesiones nulas
 
@@ -257,10 +253,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Los índices $N_u$ y $N_v$ son dos testigos locales para una precisión fija. Se comparan mediante la totalidad del orden natural; no se construye una función global que seleccione índices para todas las precisiones.
-
----
-
 ### Lema 9.2.4 — Producto de una sucesión acotada por una sucesión nula
 
 Sean
@@ -391,8 +383,6 @@ $$
 
 > **Nota fundacional.** De la acotación se utiliza un único testigo $M$ para la sucesión fija $u$, y de la nulidad un único índice para la precisión $\delta$ construida. No interviene Choice.
 
----
-
 ### Corolario 9.2.5 — Producto de una sucesión de Cauchy por una sucesión nula
 
 Si
@@ -427,8 +417,6 @@ $$
 
 ∎
 
----
-
 ### Lo que hemos ganado
 
 Disponemos ahora de dos capas de sucesiones racionales:
@@ -460,5 +448,3 @@ a-b\in\mathcal N_{\mathbb Q}.
 $$
 
 Ése será el contenido de §9.3. Todavía no formaremos el cociente hasta haber demostrado que $\sim_C$ es una relación de equivalencia.
-
----

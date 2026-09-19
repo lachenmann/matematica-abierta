@@ -55,8 +55,6 @@ La definición tiene sentido en cualquier cuerpo ordenado. Para que $L_E(x)$ sea
 > $$ \boxed{ \text{traza extensional} \neq \text{membresía decidible}. } $$
 > Decidir $q\in L_E(x)$ equivale a decidir la comparación estricta $\jmath_{\mathbb Q}^{E}(q)<x$, algo que no está disponible uniformemente en un cuerpo ordenado completo arbitrario.
 
----
-
 ### Proposición 12.4.2 — La traza racional de un cuerpo arquimediano es una cortadura
 
 Sea $E$ un cuerpo ordenado arquimediano y sea $x\in E$. Entonces
@@ -177,10 +175,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** Las dos primeras aplicaciones de densidad producen testigos para el elemento fijo $x$, y la última produce un testigo para un racional fijo $r\in L_E(x)$. No se construye una función que seleccione simultáneamente testigos para todos los $x$ o todos los $r$.
-
----
-
 ### Lema 12.4.3 — La imagen transportada de una traza es no vacía y acotada
 
 Sean $(E,\iota_E)$ y $(F,\iota_F)$ completaciones ordenadas de $\mathbb Q$, y sea $x\in E$. Entonces el subconjunto de $F$
@@ -279,9 +273,6 @@ $$
 > $$ L_E(x)\neq\varnothing, \qquad L_E(x)\neq\mathbb Q $$
 > en testigos. La clasicidad permanece exactamente donde corresponde: en la densidad abstracta heredada de Corolario 12.3.2 — Densidad racional en todo cuerpo ordenado completo.
 >
-> **Auditoría de elección.** Las dos aplicaciones de densidad son locales para $x$. No se forma una función que seleccione simultáneamente racionales para todos los elementos de $E$.
-
----
 
 ### Definición 12.4.4 — Transporte canónico determinado por cortes racionales
 
@@ -317,8 +308,6 @@ La definición no escoge un elemento de $F$ entre varios candidatos. El valor es
 
 > **Nota fundacional.** Aquí «canónico» significa **únicamente determinado por la estructura**. La propiedad del supremo garantiza existencia y unicidad extensional, pero no proporciona un procedimiento uniforme para calcular el supremo a partir de una presentación arbitraria de la traza. Por tanto,
 > $$ \boxed{ \text{canónico por unicidad} \neq \text{computable}. } $$
-
----
 
 ### Teorema 12.4.5 — El transporte reconstruye exactamente la misma traza racional
 
@@ -460,8 +449,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** El único testigo nuevo aparece al aplicar, para un $q$ fijo perteneciente a la cortadura, la condición «sin máximo». No se selecciona simultáneamente un sucesor racional para cada $q$. El elemento de $F$ correspondiente a $x$ es el supremo único de un conjunto definido canónicamente.
-
 > **Nota fundacional.** La segunda inclusión es una frontera clásica real, no sólo una elección estilística de prueba. Una demostración positiva a partir de
 > $$ \jmath_{\mathbb Q}^{F}(q)<\sup A $$
 > necesitaría producir algún $a\in A$ con $\jmath_{\mathbb Q}^{F}(q)<a$. La completitud clásica garantiza el supremo, pero no incorpora ese testigo de aproximación desde abajo. La prueba actual evita esa extracción trabajando por contrapositiva; obtener el testigo directamente requeriría información positiva adicional sobre la completitud o una negación clásica de cuantificadores.
@@ -469,5 +456,3 @@ $$
 El teorema expresa el núcleo de la construcción. El elemento $\Psi_{E,F}(x)$ no se ha obtenido intentando copiar la codificación conjuntista de $x$; se ha reconstruido exclusivamente a partir de su **posición racional**. La completitud del cuerpo de llegada interviene exactamente una vez: garantiza que esa posición racional tiene una frontera interna.
 
 Todavía no hemos demostrado que $\Psi_{E,F}$ preserve el orden, sea biyectiva o respete las operaciones. El paso siguiente será mostrar que en un cuerpo completo la traza racional inferior determina completamente el orden de sus elementos. La identidad de trazas recién probada convertirá entonces a $\Psi_{E,F}$ en un isomorfismo de órdenes. Ése será el contenido de §12.5.
-
----

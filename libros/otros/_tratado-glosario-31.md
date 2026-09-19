@@ -6,8 +6,6 @@
 
 **En el Tratado:** [Definición 5.1.1](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md#sec-ta-5-1).
 
----
-
 ## Real de Dedekind {#gl-real-dedekind}
 
 **Idea.** Un número real se representa mediante una cortadura racional.
@@ -15,8 +13,6 @@
 **En este tratado.** Los elementos de $\mathbb R_D$ son exactamente las cortaduras de Dedekind de $\mathbb Q$.
 
 **En el Tratado:** [Definición 5.1.3](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md#sec-ta-5-1).
-
----
 
 ## Orden de Dedekind {#gl-orden-dedekind}
 
@@ -26,8 +22,6 @@
 
 **En el Tratado:** [Definición 5.4.1](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md#sec-ta-5-4).
 
----
-
 ## Sucesión racional de Cauchy {#gl-sucesion-racional-cauchy}
 
 **Idea.** Sus términos se aproximan entre sí de forma arbitrariamente precisa en las colas.
@@ -35,8 +29,6 @@
 **En este tratado.** Para todo $\varepsilon\in\mathbb Q$ positivo existe $N$ tal que $|q_m-q_n|<\varepsilon$ cuando $m,n\geq N$.
 
 **En el Tratado:** [Definición 8.4.1](../capitulos/tratado-de-analisis-capitulo-8-sucesiones-racionales-y-aproximacion.md#sec-ta-8-4).
-
----
 
 ## Equivalencia de Cauchy {#gl-equivalencia-cauchy}
 
@@ -46,8 +38,6 @@
 
 **En el Tratado:** [Definición 9.3.1](../capitulos/tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md#sec-ta-9-3).
 
----
-
 ## Real de Cauchy {#gl-real-cauchy}
 
 **Idea.** Un real puede representarse por una clase de sucesiones racionales de Cauchy equivalentes.
@@ -55,8 +45,6 @@
 **En este tratado.** $\mathbb R_C$ es el cociente de las sucesiones racionales de Cauchy por la equivalencia de Cauchy.
 
 **En el Tratado:** [Definición 9.4.2](../capitulos/tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md#sec-ta-9-4).
-
----
 
 ## Completitud secuencial de los reales de Cauchy {#gl-completitud-secuencial-cauchy}
 
@@ -66,8 +54,6 @@
 
 **En el Tratado:** [Definición 10.4.7 y demostración](../capitulos/tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md#sec-ta-10-4).
 
----
-
 ## Isomorfismo de cuerpos ordenados {#gl-isomorfismo-cuerpos-ordenados}
 
 **Idea.** Dos cuerpos ordenados tienen la misma estructura cuando una biyección preserva sus operaciones y su orden.
@@ -75,8 +61,6 @@
 **En este tratado.** La comparación entre los modelos de Dedekind y Cauchy se formula mediante un isomorfismo que respeta las copias racionales.
 
 **En el Tratado:** [Definición 11.9.1](../capitulos/tratado-de-analisis-capitulo-11-dedekind-y-cauchy.md#sec-ta-11-9).
-
----
 
 ## Sucesión real {#gl-sucesion-real}
 
@@ -86,8 +70,6 @@
 
 **En el Tratado:** [Definición 13.1.1](../capitulos/tratado-de-analisis-capitulo-13-sucesiones-reales.md#sec-ta-13-1).
 
----
-
 ## Serie numérica {#gl-serie-numerica}
 
 **Idea.** La suma indefinida de una sucesión se estudia mediante sus sumas parciales.
@@ -95,8 +77,6 @@
 **En este tratado.** Una serie real queda asociada a la sucesión de sumas parciales de sus términos; su convergencia es la convergencia de esa sucesión.
 
 **En el Tratado:** [Definiciones 14.1.1 y 14.1.4](../capitulos/tratado-de-analisis-capitulo-14-series-numericas.md#sec-ta-14-1).
-
----
 
 ## Convergencia absoluta {#gl-convergencia-absoluta}
 
@@ -106,8 +86,6 @@
 
 **En el Tratado:** [Definición 14.8.1](../capitulos/tratado-de-analisis-capitulo-14-series-numericas.md#sec-ta-14-8).
 
----
-
 ## Bola abierta en la recta {#gl-bola-abierta-recta}
 
 **Idea.** Reúne los puntos cuya distancia al centro es menor que un radio positivo.
@@ -116,8 +94,6 @@
 
 **En el Tratado:** [Definición 15.1.1](../capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md#sec-ta-15-1).
 
----
-
 ## Punto de acumulación {#gl-punto-acumulacion}
 
 **Idea.** Todo entorno del punto contiene elementos del conjunto distintos del propio punto.
@@ -125,8 +101,6 @@
 **En este tratado.** La condición se formula con bolas abiertas de radio positivo.
 
 **En el Tratado:** [Definición 15.5.1](../capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md#sec-ta-15-5).
-
----
 
 ## Subconjunto denso de la recta {#gl-subconjunto-denso-recta}
 

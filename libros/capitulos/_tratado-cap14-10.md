@@ -27,8 +27,6 @@ $$
 
 La composición de funciones ya construida hace existir $b$ como elemento de $\mathbb R^{\mathbb N}$. La biyección garantiza que cada término de la sucesión original aparece exactamente una vez, pero **no** garantiza por definición ni la convergencia ni la igualdad de las sumas. Una agrupación de términos consecutivos es una operación distinta: no se definirá aquí como si fuera una permutación.
 
----
-
 ### Lema 14.10.2 — Identidad de suma finita sobre índices distintos
 
 Sean $m,K\in\mathbb N$ y sea $f:\mathbb N\to\mathbb N$ una función cuyos valores $f(0),\ldots,f(m)$ son **distintos dos a dos** y satisfacen $f(j)\le K$ para $0\le j\le m$. Para cualquier sucesión real $a$ definamos
@@ -82,8 +80,6 @@ Finalmente, repitamos (14.10.2) con los pesos $|a_k|$. La sucesión auxiliar cor
 
 > **Punto lógico.** La desigualdad (14.10.3) no afirma que los índices elegidos sean consecutivos. Cada índice aparece como máximo una vez, y los pesos son no negativos. Ambas condiciones intervienen en la demostración.
 
----
-
 ### Lema 14.10.3 — Captura de un prefijo y cota de la cola reordenada
 
 Sean $a$ una sucesión real, $\pi$ una permutación y $s,t,u$ las sumas parciales, respectivamente, de $a$, $a\circ\pi$ y $\operatorname{Abs}(a)$. Fijado $N\in\mathbb N$, existe $M\in\mathbb N$ tal que para todo $m\ge M$ existe $K\ge N$ con
@@ -119,8 +115,6 @@ $$
 La penúltima desigualdad usa $|c_k|\le|a_k|$ y la comparación finita de bloques; la última igualdad es la definición de bloque de las magnitudes. La monotonía de $u$ proporciona $u_K-u_N\ge0$. Todos los pasos anteriores son finitos. ∎
 
 > **Interpretación.** Después de cierto lugar de la nueva lista, ya han aparecido *todos* los términos del prefijo original que queríamos conservar. Lo que se añade o se omite hasta un extremo finito $K$ sólo puede proceder de la cola posterior a $N$.
-
----
 
 ### Teorema 14.10.4 — Invariancia de la suma bajo reordenamientos absolutamente convergentes
 
@@ -177,8 +171,6 @@ Repetimos **el argumento ya demostrado** con la sucesión de términos $x_k:=|a_
 
 > **Lectura estructural.** La absoluta convergencia garantiza una cota para la *masa completa* de cualquier cola. La biyección sólo asegura que cada prefijo finito acaba apareciendo. Al combinar ambos hechos, el nuevo orden se vuelve irrelevante para el límite.
 
----
-
 ### Proposición 14.10.5 — Una permutación de soporte finito preserva cualquier suma convergente
 
 Sea $\pi$ una permutación para la que existe $N$ con $\pi(n)=n$ para todo $n\ge N$. Entonces, para cualquier serie convergente $\sum a_n$, la serie $\sum a_{\pi(n)}$ converge y tiene **la misma suma**, aunque no se presuponga convergencia absoluta.
@@ -190,8 +182,6 @@ Aumentemos $N$, si hace falta, para que sea al menos $1$. La biyección lleva el
 El lema de suma finita Lema 14.10.2 — Identidad de suma finita sobre índices distintos, aplicado a la lista $\pi(0),\ldots,\pi(N)$ con $K=N$, da $t_N=s_N$. Como $\pi(n)=n$ para todo $n>N$, las recurrencias de sumas parciales permiten concluir por inducción que $t_m=s_m$ para cada $m\ge N$. Ambas sucesiones tienen, por ello, el mismo límite. ∎
 
 > **Contraste.** Cambiar sólo un número finito de posiciones no modifica el valor de una serie convergente. Lo que exige absoluta convergencia en el teorema anterior es la garantía para **toda** permutación, incluidas las que siguen alterando el orden a índices arbitrariamente grandes.
-
----
 
 ### Proposición 14.10.6 — Una serie condicional puede cambiar de suma por reordenamiento
 
@@ -263,8 +253,4 @@ Como $h_n\to0$, ambos términos añadidos tienden a cero. Todo índice $n\ge2$ e
 
 > **Advertencia conceptual.** Este ejemplo no cambia ni duplica términos: cambia únicamente el orden de aparición. La hipótesis de convergencia absoluta en Teorema 14.10.4 — Invariancia de la suma bajo reordenamientos absolutamente convergentes no puede omitirse de una afirmación universal de invariancia. Eso no significa que *toda* permutación de *toda* serie condicional cambie su suma; las de soporte finito siguen sometidas a la proposición anterior.
 
----
-
 La convergencia absoluta garantiza invariancia frente a permutaciones; la convergencia ordinaria, por sí sola, no. En §14.11 estudiaremos un mecanismo diferente de convergencia basado precisamente en la alternancia de signos y el decrecimiento de las magnitudes: el criterio de Leibniz y su estimación del resto.
-
----

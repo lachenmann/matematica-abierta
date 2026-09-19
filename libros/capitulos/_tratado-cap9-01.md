@@ -20,5 +20,3 @@ También sabemos ya dos hechos esenciales:
 El segundo hecho será decisivo cuando estudiemos el producto: una perturbación que tienda a cero seguirá tendiendo a cero después de multiplicarla por una sucesión de Cauchy, precisamente porque ésta es acotada.
 
 Antes de usar esa observación debemos aislar formalmente las sucesiones que tienden a cero.
-
----

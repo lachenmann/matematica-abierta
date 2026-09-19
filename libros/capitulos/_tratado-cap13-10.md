@@ -24,8 +24,6 @@ Equivalentemente, $x$ es el límite de alguna subsucesión de $a$. El cuantifica
 
 > **Lectura de la definición.** El real $x$ no necesita aparecer como término de $a$: puede ser sólo el destino de valores extraídos. Recíprocamente, que $x=a_j$ para algún índice aislado no lo convierte en punto límite; la extracción debe contener términos con índices estrictamente crecientes y, por tanto, arbitrariamente tardíos.
 
----
-
 Para caracterizar la definición necesitamos una escala positiva que tienda a cero. No identificaremos el natural $n$ con su numeral real: utilizaremos la aplicación $\nu_{\mathbb R}:\mathbb N\to\mathbb R$ de Definición 4.1.5 — Aplicación de numerales naturales en un cuerpo ordenado.
 
 ### Lema 13.10.2 — Los recíprocos de los numerales positivos tienden a cero
@@ -76,8 +74,6 @@ $$
 Por la definición de convergencia, $r_k\to0$. ∎
 
 > **Control fundacional.** La escala se define mediante numerales reales, no por una identificación conjuntista $\mathbb N\subseteq\mathbb R$. La prueba no usa Choice; sí hereda la lógica clásica con la que Teorema 4.6.3 — Todo cuerpo ordenado completo es arquimediano dedujo la arquimedianidad de la completitud. No se afirma que los umbrales obtenidos sean calculables para una presentación arbitraria de los reales.
-
----
 
 ### Proposición 13.10.3 — Criterio de visitas arbitrariamente tardías
 
@@ -176,9 +172,6 @@ Así $a_{\phi(k)}\to x$, y $x$ es un punto límite secuencial. ∎
 
 > **Arquitectura de la extracción.** Visitas tardías para cada par $(\varepsilon,N)$ $\to$ conjuntos no vacíos de índices admisibles $\to$ mínimo único de cada conjunto $\to$ recursión de un selector estrictamente creciente $\to$ convergencia por $r_k\to0$.
 >
-> **Auditoría lógica.** La minimización usa Teorema 1.6.13 — Principio de buen orden, cuyo enunciado general y demostración vigente son clásicos; también se hereda la clasicidad de la arquimedianidad deducida de completitud. Ninguna de esas aplicaciones es Choice: cada conjunto no vacío tiene un mínimo *único*, y las asignaciones se construyen como funciones por Separación y recursión. La comparación real $|a_n-x|<r_k$ no se ha demostrado decidible: la extracción es formalmente canónica, **no un algoritmo certificado**.
-
----
 
 ### Definición 13.10.4 — Conjunto de puntos límite secuenciales
 
@@ -204,8 +197,6 @@ $$
 
 > **Distinción editorial.** $\operatorname{LimSub}(a)$ no redefine las envolventes $L_N(a),U_N(a)$ de §13.8 ni introduce todavía $\liminf$ o $\limsup$, que serán números determinados por otras definiciones cuando corresponda.
 
----
-
 ### Proposición 13.10.5 — Puntos límite de una sucesión convergente
 
 Si $a_n\to\ell$, entonces
@@ -221,8 +212,6 @@ La sucesión $a$ es subsucesión de sí misma, como se probó en Corolario 13.9.
 Recíprocamente, sea $x\in\operatorname{LimSub}(a)$. Existe una subsucesión $b$ con $b_k\to x$. Por Teorema 13.9.5 — Toda subsucesión de una sucesión convergente converge al mismo límite, la convergencia original también implica $b_k\to\ell$. La unicidad Teorema 13.3.5 — Unicidad del límite real da $x=\ell$. Ambas inclusiones y el criterio extensional Teorema 0.2.4 — Criterio extensional por doble inclusión prueban la igualdad. ∎
 
 El resultado es unidireccional. La afirmación de que **tener un solo punto límite basta para converger** no se ha demostrado y no se utilizará como recíproca.
-
----
 
 ### Proposición 13.10.6 — Invariancia frente a cambios iniciales finitos
 
@@ -245,8 +234,6 @@ Como $n\ge T$, $a_n=b_n$; y como $n\ge N$, ese mismo índice muestra que $b$ sat
 No se confunde aquí un término inicial excepcional con un comportamiento que puede seguir observándose arbitrariamente tarde.
 
 > **Ejemplos para contrastar.** Si $a_0=100$ y $a_n=0$ para $n\ge1$, entonces $a$ coincide eventualmente con la sucesión constante nula; por la proposición y Proposición 13.10.5 — Puntos límite de una sucesión convergente, su único punto límite secuencial es $0$, no $100$. Por otra parte, definamos recursivamente $c_0=0$ y $c_{S(n)}=1-c_n$. Por inducción, $c_{k+k}=0$ y $c_{S(k+k)}=1$; los selectores $k\mapsto k+k$ y $k\mapsto S(k+k)$ dan subsucesiones constantes de límites distintos. La sucesión $c$ no converge, pues la unicidad del límite y Teorema 13.9.5 — Toda subsucesión de una sucesión convergente converge al mismo límite impedirían esos dos límites. Así, una sucesión puede admitir varios puntos límite aunque carezca de límite ordinario.
-
----
 
 ### Proposición 13.10.7 — Los puntos límite de una sucesión acotada están acotados
 
@@ -277,8 +264,6 @@ Por la definición de intervalo cerrado, $x\in[-M,M]$. Como $x$ era arbitrario, 
 >
 > La posibilidad de vacío es real: para $a_n=\nu_{\mathbb R}(n)$, todo selector satisface $\phi(k)\ge k$. Por arquimedianidad, dado $x\in\mathbb R$ existe $K$ con $\nu_{\mathbb R}(K)>x+1$; para $k\ge K$, la preservación del orden de los numerales da $a_{\phi(k)}>x+1$. Ninguna subsucesión converge a $x$: la condición de convergencia falla para $\varepsilon=1$. Por tanto $\operatorname{LimSub}(a)=\varnothing$. La acotación en Bolzano--Weierstrass no es ornamental.
 
----
-
 La lectura conjunta de esta sección identifica el problema que queda pendiente:
 
 $$
@@ -290,5 +275,3 @@ $$
 $$
 
 La respuesta exigirá construir una extracción convergente usando la completitud de la recta; será el **teorema de Bolzano--Weierstrass** de §13.11. Hasta entonces no debemos invocarlo, ni utilizar formulaciones generales de compacidad o topología aún no desarrolladas.
-
----

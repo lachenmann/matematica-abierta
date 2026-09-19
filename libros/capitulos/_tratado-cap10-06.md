@@ -44,10 +44,6 @@ $$
 
 es una completación ordenada de $\mathbb Q$. ∎
 
-> **Auditoría de elección.** El resultado sólo reúne dos propiedades ya demostradas. No se selecciona ningún representante, aproximante, límite ni elemento de una familia.
-
----
-
 ### Corolario 10.6.2 — Densidad de la copia racional en $\mathbb R_C$
 
 Si
@@ -77,8 +73,6 @@ $$
 ∎
 
 > **Nota conceptual.** En §10.1 sólo habíamos demostrado que dentro de toda escala positiva de $\mathbb R_C$ cabe una escala racional positiva. Ahora obtenemos la densidad global de la copia racional entre dos elementos arbitrarios del cuerpo. No es una hipótesis añadida a la construcción: es una consecuencia de haber alcanzado la estructura de completación ordenada.
-
----
 
 ## Cierre del capítulo
 

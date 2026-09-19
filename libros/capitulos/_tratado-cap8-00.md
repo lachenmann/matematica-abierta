@@ -45,5 +45,3 @@ junto con la aritmética y el orden racionales ya demostrados.
 En particular, no diremos todavía que una sucesión “se aproxima a un número”. Esa frase sólo adquirirá significado matemático después de definir una noción cuantitativa de cercanía y, posteriormente, los conceptos de convergencia y sucesión de Cauchy.
 
 Nuestro primer objetivo es más elemental: construir rigurosamente el espacio de todos los procesos racionales indexados por los naturales y dotarlo de las operaciones algebraicas que actúan término a término.
-
----

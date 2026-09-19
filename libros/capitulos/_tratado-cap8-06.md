@@ -31,8 +31,6 @@ Equivalentemente, todos los términos de la sucesión quedan contenidos en el in
 
 La exigencia $0_{\mathbb Q}\leq M$ no es una restricción artificial: el valor absoluto de cada término es ya no negativo.
 
----
-
 ### Lema 8.6.2 — Acotación de todo segmento inicial
 
 Sea $q=(q_n)_{n\in\mathbb N}$ una sucesión racional. Para todo $N\in\mathbb N$ existe $M\in\mathbb Q$ tal que
@@ -136,10 +134,6 @@ n<S(N)\Longrightarrow |q_n|\leq M'.
 $$
 
 Hemos construido una cota racional no negativa para el segmento inicial de longitud $S(N)$. El principio de inducción Teorema 1.1.10 — Principio de inducción concluye el resultado para todo $N\in\mathbb N$. ∎
-
-> **Auditoría de elección.** La prueba es inductiva y cada nueva cota se obtiene canónicamente mediante $M'=M+|q_N|$. No se selecciona una familia arbitraria de cotas y no interviene Choice.
-
----
 
 ### Teorema 8.6.3 — Toda sucesión racional de Cauchy es acotada
 
@@ -282,15 +276,11 @@ $$
 
 con $B\in\mathbb Q$ y $0_{\mathbb Q}\leq B$. Por Definición 8.6.1 — Sucesión racional acotada, la sucesión $q$ es acotada. ∎
 
-> **Auditoría de elección.** De la condición de Cauchy se extrae un único índice $N$ para la tolerancia fija $1_{\mathbb Q}$. La cota del segmento inicial se obtiene por inducción y la cota global se construye explícitamente como $B=M+(1_{\mathbb Q}+|q_N|)$. No interviene Choice.
-
 > **Contenido efectivo.** Si $q$ viene con un módulo computable de Cauchy, podemos tomar
 > $N=\mu_C(1_{\mathbb Q})$. El segmento inicial $q_0,\ldots,q_{N-1}$ es finito y sus valores
 > racionales pueden compararse efectivamente; junto con $1+|q_N|$ obtenemos una cota global
 > computable. La acotación abstracta de una sucesión de Cauchy y la computación de una cota a partir
 > de datos efectivos son, por tanto, dos niveles distintos.
-
----
 
 ### Lo que hemos ganado
 
@@ -312,5 +302,3 @@ $$
 La demostración separa dos mecanismos distintos: la condición de Cauchy controla la cola, mientras la inducción controla el segmento inicial.
 
 Esta propiedad será necesaria para analizar la **incompletitud secuencial de $\mathbb Q$**. En §8.7 construiremos un proceso racional de Cauchy que no converge racionalmente, sin apelar a la construcción de Dedekind.
-
----

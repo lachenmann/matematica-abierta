@@ -32,8 +32,6 @@ Ambos conjuntos existen por Separación en los conjuntos indicados. Por definici
 
 > **Tres preguntas distintas.** ¿Converge $\sum a_n$? ¿Converge $\sum|a_n|$? Si convergen ambas, ¿se relacionan sus sumas mediante una desigualdad? La primera y la segunda se deciden aplicando a dos sucesiones diferentes la definición de §14.1; la tercera requiere un argumento adicional.
 
----
-
 ### Lema 14.8.2 — Desigualdad triangular para sumas finitas y bloques
 
 Sea $a$ una sucesión real, y pongamos $s=\operatorname{PS}(a)$ y $u=\operatorname{PS}(\operatorname{Abs}(a))$. Entonces se cumplen las desigualdades siguientes:
@@ -91,8 +89,6 @@ La inducción cubre todos los extremos $m=n+d$ con $d\ge1$, pues todo natural no
 
 > **Lectura de la desigualdad.** En un bloque, las cancelaciones pueden disminuir $|s_m-s_n|$; nunca pueden hacerla mayor que la suma de los valores absolutos de sus términos. No hemos supuesto que ninguna de las dos series converja: las desigualdades son finitas.
 
----
-
 ### Teorema 14.8.3 — La convergencia absoluta implica convergencia ordinaria
 
 Si la serie de valores absolutos de $a$ converge, entonces la serie de $a$ converge. Más precisamente, si ambas tienen sumas reales $A$ y $S$, respectivamente, se verifica
@@ -131,8 +127,6 @@ Para obtener la desigualdad entre las sumas, el primer apartado del lema estable
 
 > **Alcance exacto.** La desigualdad $|S|\le A$ no afirma que $S=A$, ni que los términos deban ser no negativos. La prueba controla **todos** los bloques tardíos con un solo umbral; no basta observar que $|a_n|\to0$. La recíproca de la implicación se pondrá a prueba al final de la sección.
 
----
-
 ### Corolario 14.8.4 — Dominación absoluta eventual
 
 Sean $a,b$ sucesiones reales y supongamos que $b_n\ge0$ para todo $n$.
@@ -145,8 +139,6 @@ Sean $a,b$ sucesiones reales y supongamos que $b_n\ge0$ para todo $n$.
 Para la primera afirmación, fijemos su umbral $N$. La sucesión $c=\operatorname{Abs}(a)$ cumple $0\le c_n=|a_n|$ para cada índice y $c_n\le b_n$ para $n\ge N$. La comparación eventual Corolario 14.5.3 — Comparación válida a partir de cierto índice, aplicada a las series no negativas de $c$ y $b$, demuestra que la convergencia de la segunda implica la de la primera. Por definición, esto es convergencia absoluta de $a$, y Teorema 14.8.3 — La convergencia absoluta implica convergencia ordinaria da la convergencia ordinaria.
 
 Para la segunda afirmación, tomemos su umbral, posiblemente distinto del anterior, supongamos $b_n\le c_n$ para todos los índices desde él y que la serie de $b$ diverge. La contraposición divergente de la misma comparación eventual establece que la serie de $c$ diverge. Así $a\notin\mathcal A_{\mathrm{ser}}$. No se ha establecido nada más sobre la convergencia de la serie con signos $a$: ésta será una distinción efectiva, no meramente lógica, en el ejemplo de §14.8.6. ∎
-
----
 
 ### Proposición 14.8.5 — Estabilidad de la convergencia absoluta bajo suma y producto por escalares
 
@@ -181,8 +173,6 @@ $$
 Si $c\ne0$, entonces $|c|>0$, y Proposición 14.6.1 — Multiplicación de una serie por un escalar no nulo preserva la convergencia de la serie de $x$ al multiplicarla por $|c|$. Si $c=0$, todos los términos $|ca_n|$ son cero y las sumas parciales correspondientes son constantemente cero, caso cubierto por Proposición 14.1.6 — Estabilización de sumas parciales cuando los términos tardíos son nulos. Concluimos en ambos casos que la serie de $ca$ converge absolutamente. ∎
 
 > **Interpretación algebraica.** Las sucesiones cuyos términos generan series absolutamente convergentes son estables bajo suma y multiplicación por escalares reales. No afirmamos todavía que la convergencia *condicional* tenga una estabilidad análoga ni introducimos aquí reordenamientos de series.
-
----
 
 ### Teorema 14.8.6 — Existe una serie condicionalmente convergente
 
@@ -270,5 +260,3 @@ contradicción: el factor $(1+1)^{-1}$ es positivo. Por tanto la serie de magnit
 > **Por qué funciona el ejemplo.** Cada pareja suma exactamente cero, mientras que las magnitudes de sus dos términos suman $h_k+h_k$. Los valores absolutos destruyen la cancelación que estabiliza la suma original. El ejemplo se ha construido directamente con la armónica cerrada: no depende del criterio para series alternadas ni de un teorema de reordenamiento, ambos reservados para más adelante.
 
 **Un contraste adicional.** La presencia de signos alternados tampoco basta para concluir que una serie es sólo condicionalmente convergente. Para $r=-(1+1)^{-1}$ tenemos $|r|=(1+1)^{-1}<1$. El teorema geométrico Teorema 14.3.5 — Convergencia y suma de la serie geométrica para $|r|<1$ prueba la convergencia de $\sum r^n$, mientras que Lema 14.3.3 — El valor absoluto conmuta con las potencias naturales da $|r^n|=|r|^n$ y el mismo teorema prueba que la serie de magnitudes converge. Por tanto esta serie con signos alternados converge **absolutamente**. No se utiliza ninguna regla nueva de intercambio de sumas infinitas.
-
----

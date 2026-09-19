@@ -65,8 +65,6 @@ La definición no menciona ningún candidato a límite. Toda la información es 
 
 > **Nota fundacional.** La definición afirma la existencia de un umbral $N$ para cada precisión positiva. No proporciona por sí sola una función $\varepsilon\mapsto N$, y mucho menos un procedimiento computable para producirla. Como en el Capítulo 8, un **módulo de Cauchy** sería información adicional y no forma parte de la definición extensional.
 
----
-
 ### Teorema 13.8.2 — Toda sucesión real convergente es de Cauchy
 
 Sea $a=(a_n)$ una sucesión real y sea $\ell\in\mathbb R$. Si
@@ -151,10 +149,6 @@ Hemos encontrado un mismo umbral $N$ que sirve simultáneamente para todos los p
 
 > **Arquitectura de la prueba.** La convergencia coloca todos los términos tardíos en una misma ventana de radio $\eta$, con $\eta+\eta=\varepsilon$, alrededor de $\ell$; la desigualdad triangular convierte esa ventana común en proximidad mutua menor que $\varepsilon$.
 
-> **Auditoría fundacional.** No intervienen completitud, Choice ni lógica clásica sustantiva. Para la precisión fija $\eta$ se utiliza un único testigo de convergencia. Si se dispusiera además de un módulo efectivo de convergencia, esta misma prueba produciría un módulo de Cauchy mediante la transformación $\varepsilon\mapsto\varepsilon(1+1)^{-1}$.
-
----
-
 ### Teorema 13.8.3 — Toda sucesión real de Cauchy es acotada
 
 Toda sucesión real de Cauchy es acotada.
@@ -215,10 +209,6 @@ La proposición Proposición 13.4.4 — Una cota eventual se extiende a una cota
 > \text{acotación global}.
 > }
 > $$
-
-> **Auditoría fundacional.** Se extrae un único umbral para la precisión fija $1$ y se utiliza el término determinado $a_N$ como centro de la cola. No se forma ninguna familia de elecciones. Tampoco se utiliza completitud.
-
----
 
 ### Definición 13.8.4 — Envolventes inferior y superior de las colas
 
@@ -293,11 +283,7 @@ $$
 
 El mismo argumento produce $U(a)$.
 
-> **Auditoría de elección.** Aunque para cada $N$ aparece un extremo de la cola, no estamos eligiendo arbitrariamente un elemento entre varios. Supremo e ínfimo, cuando existen, son únicos; los grafos anteriores quedan determinados por una propiedad funcional y se obtienen por Separación dentro de $\mathbb N\times\mathbb R$. No interviene Choice.
-
 > **Contenido efectivo.** La existencia extensional de $L_N(a)$ y $U_N(a)$ no proporciona algoritmos para calcularlos a partir de una descripción de $a$. La construcción usa la completitud de orden de $\mathbb R$ en su sentido clásico actual.
-
----
 
 ### Proposición 13.8.5 — Monotonía y encajamiento de las envolventes de colas
 
@@ -392,8 +378,6 @@ y en particular la cadena anunciada. ∎
 > T_0(a)\supseteq T_1(a)\supseteq T_2(a)\supseteq\cdots.
 > $$
 > Sus ínfimos sólo pueden subir y sus supremos sólo pueden bajar. Las dos envolventes forman así un corredor ordenado que contiene al término $a_N$.
-
----
 
 ### Lema 13.8.6 — En una sucesión de Cauchy la anchura de las envolventes tiende a cero
 
@@ -536,8 +520,6 @@ $$
 > }
 > $$
 
----
-
 ### Teorema 13.8.7 — Toda sucesión real de Cauchy converge
 
 Toda sucesión real de Cauchy converge a un número real.
@@ -636,10 +618,6 @@ Por tanto $a$ converge en $\mathbb R$. ∎
 
 > **Dónde entra la completitud.** La condición de Cauchy por sí sola sólo estrecha las colas. La completitud de $\mathbb R$ garantiza que los extremos de esas colas existen y que las dos envolventes monótonas poseen límites reales. Éste es exactamente el paso que falla en $\mathbb Q$.
 
-> **Auditoría fundacional.** No interviene Choice. Las envolventes están determinadas de manera única; los límites de las sucesiones monótonas existen por completitud. La prueba sí hereda la lógica clásica ya declarada en la interfaz actual de ínfimo, en el teorema de convergencia monótona y en la unicidad del límite. Tampoco proporciona, a partir de una sucesión de Cauchy dada extensionalmente, un algoritmo para calcular su límite.
-
----
-
 ### Corolario 13.8.8 — Criterio de Cauchy en $\mathbb R$
 
 Para toda sucesión real $a=(a_n)$,
@@ -687,8 +665,6 @@ $$
 $$
 
 No ha cambiado la definición de Cauchy; ha cambiado el sistema numérico en el que vive la sucesión. La completitud convierte una condición interna de coherencia asintótica en **existencia formal de un límite real**, sin que ello implique computabilidad del límite.
-
----
 
 Con §13.8 disponemos ya de dos grandes mecanismos de existencia de límites:
 

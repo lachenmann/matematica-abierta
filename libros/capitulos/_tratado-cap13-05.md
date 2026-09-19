@@ -107,8 +107,6 @@ La formulación con $\lim$ se sigue de Notación 13.3.6 — Límite de una suces
 >
 > Una demostración de límite debe diseñar primero el **presupuesto de error** y sólo después buscar un umbral.
 
----
-
 ### Proposición 13.5.2 — Límite del opuesto y de una diferencia
 
 Sea $x=(x_n)$ una sucesión real. Si
@@ -186,8 +184,6 @@ $$
 ∎
 
 La resta no exige una nueva estimación: una vez demostrados el opuesto y la suma, aparece como consecuencia estructural de las operaciones ya definidas.
-
----
 
 ### Teorema 13.5.3 — Límite de un producto
 
@@ -342,8 +338,6 @@ $$
 
 > **Nota fundacional.** La extracción de un testigo $M$ desde la afirmación existencial de acotación ocurre dentro de una única demostración. No se selecciona una familia de cotas para una familia de sucesiones; no interviene Choice. Tampoco se usa completitud de $\mathbb R$.
 
----
-
 ### Corolario 13.5.4 — Compatibilidad con la multiplicación por una constante
 
 Sea $c\in\mathbb R$. Si
@@ -377,8 +371,6 @@ $$
 ∎
 
 En particular, las combinaciones lineales finitas de sucesiones convergentes pueden tratarse iterando suma y multiplicación por constantes. No afirmamos aquí todavía un teorema para familias finitas arbitrarias: las operaciones binarias ya bastan para las aplicaciones inmediatas.
-
----
 
 ### Proposición 13.5.5 — El valor absoluto preserva límites
 
@@ -463,8 +455,6 @@ $$
 
 Cuando una operación satisface una estimación de este tipo, la convergencia puede transportarse sin modificar siquiera la tolerancia.
 
----
-
 Los resultados de esta sección muestran que el paso al límite respeta las operaciones algebraicas que ya están disponibles término a término:
 
 $$
@@ -496,4 +486,3 @@ $$
 No hemos usado todavía la completitud de $\mathbb R$. Los cinco resultados de esta sección son compatibles con una lectura constructiva relativa a la estructura fija del cuerpo ordenado real y no emplean Choice. Esto no altera la clasificación ya registrada de Teorema 13.3.5 — Unicidad del límite real: la unicidad del límite conserva su último paso clásico de eliminación de doble negación sobre la igualdad real.
 
 La siguiente sección estudiará cómo la convergencia interactúa con el **orden** y culminará en el **teorema del sándwich**. Ese será el puente natural hacia las sucesiones monótonas, donde la completitud empezará finalmente a producir nuevos límites.
----

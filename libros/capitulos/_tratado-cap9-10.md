@@ -30,8 +30,6 @@ $$
 
 La primera se transmitirá directamente desde la comparación asintótica de representantes. Para la segunda conviene aprovechar el criterio estricto ya obtenido: dos clases estrictamente positivas admiten representantes que, a partir de cierto índice, están separados de cero por márgenes racionales positivos; el producto de esos márgenes vuelve a ser positivo.
 
----
-
 ### Proposición 9.10.1 — Invariancia del orden de Cauchy por traslación
 
 Para cualesquiera $x,y,z\in\mathbb R_C$,
@@ -119,10 +117,6 @@ x+z\le_C y+z.
 $$
 
 ∎
-
-> **Auditoría de elección.** Se usan únicamente tres representantes locales de los elementos fijos $x,y,z$ y, para una tolerancia fija $\varepsilon$, un único índice proporcionado por $a\preccurlyeq_C b$. No se seleccionan representantes ni índices de manera global.
-
----
 
 ### Proposición 9.10.2 — El producto de elementos no negativos es no negativo
 
@@ -263,12 +257,9 @@ $$
 
 ∎
 
-> **Auditoría fundacional.** La prueba no separa los casos $x=0_C$ y $x\neq0_C$, ni utiliza
 > apartness de los factores. Sólo usa el preorder asintótico, acotación racional y decisiones de signo
 > para términos racionales individuales. Por ello no hereda la clasicidad de Lema 9.7.2 — Separación eventual respecto de cero ni de la
 > totalidad de $\mathbb R_C$. Tampoco utiliza Choice.
-
----
 
 ### Teorema 9.10.3 — $\mathbb R_C$ es un cuerpo ordenado
 
@@ -315,8 +306,6 @@ es Proposición 9.10.2 — El producto de elementos no negativos es no negativo.
 
 Se satisfacen, por tanto, todas las condiciones de Definición 4.1.1 — Cuerpo ordenado. ∎
 
----
-
 ### Corolario 9.10.4 — La aplicación racional es una incrustación de cuerpos ordenados
 
 La función
@@ -359,8 +348,6 @@ $$
 
 Éstas son exactamente las condiciones de Definición 4.8.1 — Incrustación de cuerpos ordenados. ∎
 
----
-
 ### Lo que hemos ganado
 
 La construcción de Cauchy ya no consiste sólo en un cociente de sucesiones con operaciones y un orden definidos por separado. Las dos estructuras han quedado acopladas:
@@ -387,5 +374,3 @@ Desde este punto, todos los resultados abstractos demostrados en el Capítulo 4 
 No hemos usado para ello ningún hecho de completitud de $\mathbb R_D$, ni hemos identificado los racionales con un subconjunto literal de $\mathbb R_C$, ni hemos recurrido a Choice.
 
 Con esto termina la construcción **algebraica y ordenada** del cuerpo de Cauchy. Lo que todavía falta para convertirlo en una completación ordenada de $\mathbb Q$ en el sentido de Definición 4.8.2 — Completación ordenada de $\mathbb Q$ es demostrar su **completitud**. Ése será el objeto del capítulo siguiente.
-
----

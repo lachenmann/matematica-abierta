@@ -16,8 +16,6 @@ $$
 
 Los dos cuantificadores existenciales implícitos en las intersecciones no vacías se refieren a un radio **fijado**. No se pide una función que asigne testigos a todos los radios. Tampoco se exige $x\in A$: el centro puede pertenecer al conjunto o a su complemento. En ambos casos debe haber puntos de los dos lados tan próximos como se quiera.
 
----
-
 ### Definición 15.6.2 — Frontera de un conjunto
 
 Para $A\subseteq\mathbb R$, definimos su **frontera** como el conjunto de todos sus puntos de frontera:
@@ -36,8 +34,6 @@ $$
 $$
 
 existe por Separación dentro de ese producto y define una función total de $\mathcal P(\mathbb R)$ en sí mismo. La escritura $\partial A$ queda reservada a esta operación sobre subconjuntos de la recta; no designa la derivada de una función ni presupone una topología abstracta. Ninguna de las dos construcciones selecciona puntos de las intersecciones.
-
----
 
 ### Teorema 15.6.3 — Caracterización de la frontera por dos clausuras
 
@@ -58,8 +54,6 @@ $$
 Para la inclusión inversa, sea $x\in\overline A\cap\overline{\mathbb R\setminus A}$. Fijemos un radio arbitrario $r>0$. La primera pertenencia afirma que $B_r(x)\cap A\ne\varnothing$; la segunda afirma que $B_r(x)\cap(\mathbb R\setminus A)\ne\varnothing$. Ambas condiciones se cumplen para el **mismo** radio arbitrario, luego $x$ es fronterizo y pertenece a $\partial A$. La doble inclusión y la extensionalidad completan la prueba. ∎
 
 > **Interpretación.** La frontera no es simplemente el conjunto de puntos que están fuera de $A$ ni su conjunto derivado. Es el lugar donde la adherencia a $A$ y la adherencia a su complemento coinciden.
-
----
 
 ### Teorema 15.6.4 — Descomposición de la recta en interior, frontera y exterior
 
@@ -107,8 +101,6 @@ Finalmente, Proposición 15.4.3 — La adherencia es la negación de la exterior
 
 Esta descomposición no dice que $A$ coincida con su interior unido a la frontera: lo que coincide con esa unión es **la clausura de $A$**. Según cómo se hayan incluido sus puntos fronterizos, dos conjuntos distintos pueden tener la misma clausura y la misma frontera.
 
----
-
 ### Proposición 15.6.5 — La frontera es cerrada y no cambia al tomar el complemento
 
 Para todo $A\subseteq\mathbb R$,
@@ -135,8 +127,6 @@ La doble complementación tiene lugar siempre **dentro de $\mathbb R$**. La conm
 
 La simetría expresa que una frontera no privilegia ninguno de los dos lados: intercambiar $A$ con su complemento no modifica la región en la que ambos se aproximan.
 
----
-
 ### Teorema 15.6.6 — Criterios de apertura y cerradura mediante la frontera
 
 Sea $A\subseteq\mathbb R$. Entonces
@@ -161,8 +151,6 @@ $$
 
 La apertura exige que **ningún punto del propio conjunto** sea fronterizo; la cerradura exige, por el contrario, que **todos los puntos fronterizos** estén incluidos en él. No se deduce de aquí que todo conjunto sea abierto o cerrado: puede no satisfacer ninguna de las dos exigencias.
 
----
-
 ### Corolario 15.6.7 — Frontera vacía y conjuntos abiertos y cerrados
 
 Para $A\subseteq\mathbb R$,
@@ -176,8 +164,6 @@ $$
 Si $\partial A=\varnothing$, tanto $A\cap\partial A=\varnothing$ como $\partial A\subseteq A$ se cumplen; las dos equivalencias de Teorema 15.6.6 — Criterios de apertura y cerradura mediante la frontera hacen a $A$ abierto y cerrado. Recíprocamente, si $A$ es abierto y cerrado, esas equivalencias dan $A\cap\partial A=\varnothing$ y $\partial A\subseteq A$. Cualquier $x\in\partial A$ pertenecería entonces a $A\cap\partial A$, contradicción. Por tanto, $\partial A$ no tiene elementos y es vacío por extensionalidad. ∎
 
 Todavía **no** afirmamos que los únicos subconjuntos simultáneamente abiertos y cerrados de $\mathbb R$ sean $\varnothing$ y $\mathbb R$: tal afirmación necesita su propia demostración y no se obtiene sólo de las definiciones anteriores.
-
----
 
 ### Proposición 15.6.8 — Ejemplos: extremos, singletons y falta de monotonía
 
@@ -217,4 +203,3 @@ $$
 **Ausencia de monotonía.** Tomemos $A=\{a\}$ y $B=\mathbb R$. Ciertamente $A\subseteq B$, pero acabamos de demostrar $\partial A=\{a\}$ y $\partial B=\varnothing$. La inclusión $\partial A\subseteq\partial B$ es falsa. ∎
 
 Estos ejemplos muestran por qué «frontera» no significa «puntos exteriores» ni «puntos de acumulación»: la frontera de un singleton contiene a su centro, aunque Proposición 15.5.9 — Ejemplos y límite de la ley de unión prueba que dicho singleton no tiene puntos de acumulación. Asimismo, un intervalo abierto y su versión cerrada tienen idéntica frontera, aun cuando difieren en la pertenencia de los extremos. Más adelante estudiaremos las leyes de la frontera bajo operaciones de conjuntos y su relación con otras caracterizaciones de proximidad; ninguna de ellas ha sido supuesta en esta unidad.
----

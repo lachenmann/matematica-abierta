@@ -6,8 +6,6 @@ Por ejemplo, aunque dos sucesiones representen la misma clase, no hay razón par
 
 La idea será primero comparar **representantes** mediante una relación asintótica estable bajo perturbaciones nulas y sólo después hacerla descender a $\mathbb R_C$.
 
----
-
 ### Definición 9.8.1 — Comparación asintótica de representantes
 
 Sean
@@ -62,8 +60,6 @@ $$
 El producto cartesiano existe y el subconjunto indicado existe por separación. Por tanto $\preccurlyeq_C$ es una relación bien formada sobre $\mathcal C_{\mathbb Q}$.
 
 La presencia de **toda** tolerancia racional positiva es esencial. La condición no dice que $a_n\le b_n$ para todo índice suficientemente grande; dice que, por pequeña que sea la tolerancia positiva prescrita, la primera sucesión queda finalmente por debajo de la segunda salvo ese error.
-
----
 
 > **Nota fundacional.** El preorder asintótico es una relación extensional bien definida, pero su
 > verdad no es decidible en general a partir de representantes arbitrarios.
@@ -271,10 +267,6 @@ $$
 
 ∎
 
-> **Auditoría de elección.** En $2$, $3$ y $4$ sólo se combinan finitos índices ya obtenidos para una tolerancia fija. La totalidad del orden natural permite escoger explícitamente uno que domine a los demás. No se define una función que seleccione índices para todas las tolerancias.
-
----
-
 ### Lema 9.8.3 — Dicotomía eventual de signo
 
 Sea
@@ -449,8 +441,6 @@ $$
 
 contradicción. Por tanto exactamente una de las dos alternativas ocurre. ∎
 
----
-
 ### Definición 9.8.4 — Orden de Cauchy
 
 Definimos una relación $\le_C$ sobre $\mathbb R_C$ por
@@ -531,8 +521,6 @@ x\neq y.
 $$
 
 No se define $<_C$ de manera independiente: es el orden estricto asociado a $\le_C$.
-
----
 
 ### Teorema 9.8.5 — $\le_C$ es un orden total
 
@@ -727,12 +715,9 @@ $$
 
 Hemos probado las cuatro propiedades de un orden total. ∎
 
-> **Auditoría fundacional.** La totalidad utiliza lógica clásica únicamente para la disyunción $a\sim_C b$ o $a\not\sim_C b$. Los representantes de $x$ e $y$ son testigos locales para dos elementos fijos del cociente; no se selecciona simultáneamente un representante de cada clase.
 >
 > En particular,
 > $$ \boxed{ \text{preorder asintótico} \neq \text{orden total clásico} \neq \text{comparación decidible}. } $$
-
----
 
 ### Proposición 9.8.6 — Criterio de separación eventual para el orden estricto
 
@@ -930,8 +915,6 @@ $$
 > clasicidad de Lema 9.8.3 — Dicotomía eventual de signo. La dirección inversa —margen positivo dado $\Rightarrow x<_Cy$—
 > es constructivamente robusta. Este margen es el candidato natural para una futura relación de
 > apartness/orden positivo.
-
----
 
 ### Lo que hemos ganado
 

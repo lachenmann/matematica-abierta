@@ -65,10 +65,6 @@ $$
 
 En efecto, su grafo se obtiene por Separación dentro de $\mathbb R^{\mathbb N}\times\mathbb R^{\mathbb N}$ imponiendo las ecuaciones recursivas anteriores. La existencia y unicidad para cada $a$ aseguran que se trata del grafo de una función.
 
-> **Auditoría fundacional.** No hemos escogido una suma para cada índice mediante Choice: la recursión construye una única función completa. Tampoco afirmamos que, para una sucesión arbitraria dada sólo extensionalmente, exista un procedimiento computable capaz de evaluar sus términos. La recursión proporciona una definición matemática, no un algoritmo uniforme sin datos efectivos de entrada.
-
----
-
 ### Notación 14.1.2 — Suma finita de términos consecutivos
 
 Para todo $n\in\mathbb N$ escribiremos
@@ -89,8 +85,6 @@ $$
 $$
 
 El símbolo de suma finita abrevia la recursión ya legitimada; no es una operación primitiva ni presupone una suma infinita. La convención inicial es $k=0$ porque $\mathbb N$ contiene $0$. Todavía no utilizamos la notación para una suma vacía ni para límites inferiores arbitrarios: se definirán cuando resulten necesarios.
-
----
 
 ### Proposición 14.1.3 — Recuperación de los términos y unicidad del proceso de sumación
 
@@ -130,8 +124,6 @@ $$
 Si $\operatorname{PS}(a)=\operatorname{PS}(b)=s$, las fórmulas anteriores dan $a_0=b_0$ y $a_{n+1}=b_{n+1}$ para todo $n$. Todo natural es $0$ o el sucesor de otro natural (Teorema 1.2.7 — Predecesor de todo natural no nulo, o directamente el principio de inducción Teorema 1.1.10 — Principio de inducción); por ello $a_n=b_n$ para todo $n\in\mathbb N$. Proposición 13.1.2 — Criterio término a término para la igualdad de sucesiones reales demuestra $a=b$. ∎
 
 > **Interpretación.** Los términos y las sumas parciales cumplen funciones distintas, aunque cada sucesión de sumas parciales determina inequívocamente los términos que la generaron. Una sucesión de valores no se transforma en una suma real por cambiarle el nombre: necesitamos todavía una condición de convergencia.
-
----
 
 ### Definición 14.1.4 — Convergencia, divergencia y suma de una serie
 
@@ -181,8 +173,6 @@ Si $a\notin\mathcal C_{\mathrm{ser}}$, la sucesión de sumas parciales sigue exi
 
 > **Prueba de estrés.** «La serie converge» no significa «cada término es una suma bien definida», porque esa propiedad se cumple para cualquier sucesión real. Significa que la sucesión completa de sumas parciales tiene un límite **real**. La definición tampoco exige que todos los términos sean no negativos o que la sucesión original sea convergente: esas serán cuestiones separadas, cuya relación precisa demostraremos más adelante.
 
----
-
 ### Notación 14.1.5 — Símbolo de serie y valor de una suma infinita
 
 La expresión
@@ -208,8 +198,6 @@ $$
 $$
 
 No escribiremos una igualdad numérica con $\sum_{k=0}^{\infty}a_k$ si la convergencia no ha sido demostrada. La expresión puede nombrar una serie divergente, pero en ese caso **no denota un número real**.
-
----
 
 ### Proposición 14.1.6 — Estabilización de sumas parciales cuando los términos tardíos son nulos
 
@@ -267,5 +255,3 @@ Por ejemplo, si $a_0=c$, $a_1=d$ y $a_n=0$ para todo $n\ge2$, entonces las sumas
 > **Dos controles cognitivos.** Una serie puede converger porque sus sumas parciales llegan a estabilizarse exactamente; también puede divergir aunque cada suma parcial sea un número real. En los siguientes apartados estudiaremos criterios que permitan decidir entre ambas situaciones sin calcular explícitamente todas las sumas parciales.
 
 La definición de suma de serie transforma el problema en uno secuencial. En §14.2 aplicaremos primero el criterio de Cauchy del Capítulo 13 a las sumas parciales y deduciremos de él la condición necesaria de que los términos tiendan a cero. Ninguno de esos resultados ha sido supuesto en la presente construcción.
-
----

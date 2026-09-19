@@ -25,8 +25,6 @@ corta todos los segmentos finales $\mathbb N_{\ge N}$. Existe por Separación de
 
 > **Dos cuantificadores que no deben intercambiarse.** La recurrencia es $\forall N\,\exists n\ge N$; la pertenencia eventual al intervalo sería $\exists N\,\forall n\ge N$. Un intervalo puede ser recurrente sin contener toda la cola. Por ejemplo, la sucesión alternante de ceros y unos visita $[0,0]$ arbitrariamente tarde, pero no pertenece eventualmente a ese intervalo.
 
----
-
 ### Lema 13.11.2 — Una mitad de un intervalo recurrente sigue siendo recurrente
 
 Sea $[p,q]$ recurrente para $a$. Definamos
@@ -91,10 +89,6 @@ a_n\in[m,q].
 $$
 
 Además $n\ge N$. Como $N$ era arbitrario, $[m,q]$ es recurrente. La alternativa clásica «la mitad izquierda es recurrente o no lo es» fija cuál de las dos mitades se toma; no selecciona un elemento arbitrario de ninguna familia. La anchura de la mitad seleccionada es, en ambos casos, $h(q-p)$. ∎
-
-> **Auditoría de decisión.** El predicado «este intervalo es recurrente» cuantifica sobre infinitos índices y comparaciones reales; no se ha demostrado decidible. La regla anterior es una *definición por casos en lógica clásica*, no un algoritmo de bisección certificado. Al ser única la salida de cada caso, la operación resultante puede construirse como función por Separación, sin Choice.
-
----
 
 ### Proposición 13.11.3 — Bisección recursiva canónica
 
@@ -163,8 +157,6 @@ Esto es $w_{k+1}=hw_k$ si escribimos $k+1=S(k)$, y $w_k\ge0$ resulta de $l_k\le 
 
 > **Estructura de la construcción.** La prueba no postula una sucesión de intervalos preexistente. Construye el conjunto de estados, demuestra que la transición es una función total y **sólo entonces** aplica recursión. En cada etapa se conserva el predicado de recurrencia, no se escoge «una mitad cualquiera».
 
----
-
 ### Lema 13.11.4 — Las anchuras de la bisección tienden a cero
 
 Para las anchuras $w_k=u_k-l_k$ de Proposición 13.11.3 — Bisección recursiva canónica se cumple
@@ -222,8 +214,6 @@ $$
 El factor $1-h$ es positivo y, en particular, no nulo. Multiplicando por su inverso, concluimos $d=0$. ∎
 
 > **Por qué no utilizamos potencias prematuras.** La identidad $w_{k+1}=hw_k$ sugiere escribir $w_k=h^kw_0$, pero el tratado ha introducido hasta aquí el cuadrado, no las potencias naturales generales. No necesitamos anticiparlas: la convergencia monótona y la ecuación satisfecha por el límite prueban que las anchuras se anulan asintóticamente.
-
----
 
 ### Teorema 13.11.5 — Bolzano–Weierstrass para sucesiones reales
 
@@ -348,10 +338,6 @@ Por Definición 13.3.1 — Convergencia de una sucesión real, $a_{\phi(k)}\to x
 
 > **Dónde se utiliza cada hipótesis.** La acotación proporciona $I_0$; sin ella no disponemos en general de un intervalo cerrado y acotado inicial que contenga todos los términos. La completitud se utiliza para asegurar la intersección no vacía y, mediante el teorema de convergencia monótona, para probar $w_k\to0$. El crecimiento de los índices procede del buen orden de $\mathbb N$ y de la restricción $n\ge S(t)$, no de la completitud.
 
-> **Auditoría fundacional.** La bisección utiliza lógica clásica para decidir formalmente el predicado de recurrencia y el buen orden general en las minimizaciones. No se supone decidibilidad de la comparación de reales ni se obtiene un algoritmo efectivo. No interviene Choice: la mitad se fija por una regla de casos, cada índice es el **mínimo único** de un conjunto no vacío, ambas funciones se construyen por Separación y recursión, y el punto de intersección es único. La existencia formal de $x$ y de $\phi$ no equivale a poder computarlos a partir de una presentación extensional arbitraria de $a$.
-
----
-
 ### Corolario 13.11.6 — Existencia de puntos límite secuenciales para sucesiones acotadas
 
 Si $a$ es una sucesión real acotada, entonces
@@ -366,8 +352,6 @@ Por Teorema 13.11.5 — Bolzano–Weierstrass para sucesiones reales existen un 
 
 > **Prueba de estrés.** La conclusión no afirma que la sucesión completa converja: la sucesión alternante de §13.10 es acotada y tiene al menos dos puntos límite. Tampoco admite la conversa «tener un punto límite implica estar acotada»: si $c$ es la alternante de §13.10 y definimos $d_n:=\nu_{\mathbb R}(n)c_n$, entonces $d_{k+k}=0$ y $d_{S(k+k)}=\nu_{\mathbb R}(S(k+k))$. La primera extracción es constante nula, mientras que la segunda no está acotada por arquimedianidad. Así $d$ tiene un punto límite sin estar acotada. Bolzano--Weierstrass asegura **una extracción convergente a partir de acotación global**, nada más.
 
----
-
 Hemos obtenido la afirmación que permanecía abierta desde §13.10:
 
 $$
@@ -379,5 +363,3 @@ $$
 $$
 
 La infraestructura de §13.8 permite ahora afinar esta existencia: sus envolventes $L_N(a)$ y $U_N(a)$ convergen por monotonía y completitud. La sección siguiente estudiará los **límites inferior y superior**, establecerá su relación exacta con $\operatorname{LimSub}(a)$ y fijará la notación $\liminf$ y $\limsup$ sólo después de justificar la existencia de los números que denotan.
-
----

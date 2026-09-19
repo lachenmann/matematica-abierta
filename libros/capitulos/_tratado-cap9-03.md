@@ -66,8 +66,6 @@ $$
 
 Así, $a\sim_C b$ significa exactamente que ambas sucesiones se hacen mutuamente arbitrariamente próximas en sentido racional.
 
----
-
 ### Proposición 9.3.2 — $\sim_C$ es una relación de equivalencia
 
 La relación $\sim_C$ es reflexiva, simétrica y transitiva sobre $\mathcal C_{\mathbb Q}$. En consecuencia, es una relación de equivalencia.
@@ -211,10 +209,6 @@ $$
 
 Hemos verificado reflexividad, simetría y transitividad. Por Definición 0.4.7 — Relación de equivalencia, $\sim_C$ es una relación de equivalencia sobre $\mathcal C_{\mathbb Q}$. ∎
 
-> **Auditoría fundacional.** La prueba no selecciona representantes ni índices dependientes de infinitas precisiones. Utiliza únicamente identidades algebraicas término a término y la estabilidad de $\mathcal N_{\mathbb Q}$ ya demostrada. `choice-use: none`.
-
----
-
 ### Lo que hemos ganado
 
 Ya no tenemos solamente una colección de sucesiones de Cauchy, sino una noción rigurosa de cuándo dos de ellas describen la misma posición asintótica:
@@ -234,5 +228,3 @@ $$
 $$
 
 Sólo en §9.4 daremos a ese cociente el nombre $\mathbb R_C$; hasta entonces no identificamos ninguna sucesión con su futura clase de equivalencia.
-
----

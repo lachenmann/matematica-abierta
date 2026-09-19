@@ -64,8 +64,6 @@ pues para cada $(a,b)\in D_{\mathbb Q}$ la fórmula anterior determina un único
 
 La función $\psi_F$ vive todavía en el nivel de representantes. El paso decisivo es demostrar que la equivalencia racional no altera su valor.
 
----
-
 ### Proposición 12.2.2 — Invariancia bajo la equivalencia racional
 
 Si
@@ -115,8 +113,6 @@ $$
 
 Por Definición 12.2.1 — Evaluación de representantes racionales en un cuerpo ordenado, los dos miembros son respectivamente $\psi_F(a,b)$ y $\psi_F(c,d)$. ∎
 
----
-
 ### Definición 12.2.3 — Copia canónica de los racionales en un cuerpo ordenado
 
 Como
@@ -145,8 +141,6 @@ $$
 Llamaremos a $\jmath_{\mathbb Q}^{F}$ la **copia canónica de los racionales en $F$**.
 
 La fórmula no depende de una selección de representantes: la independencia ya fue demostrada antes de definir la función sobre el cociente. En particular, seguimos sin identificar literalmente $\mathbb Q$ con un subconjunto de $F$.
-
----
 
 ### Proposición 12.2.4 — Compatibilidad algebraica de la copia racional
 
@@ -347,10 +341,6 @@ $$
 
 Todas las compatibilidades quedan demostradas. ∎
 
-> **Auditoría de elección.** Sólo se fijan representantes para los racionales concretos que intervienen en cada argumento. La función $\jmath_{\mathbb Q}^{F}$ ya fue definida por descenso al cociente y no depende de ninguna sección de representantes.
-
----
-
 ### Teorema 12.2.5 — La copia racional es una incrustación de cuerpos ordenados
 
 La función
@@ -497,8 +487,6 @@ $$
 
 Se satisfacen todas las condiciones de Definición 4.8.1 — Incrustación de cuerpos ordenados; por tanto $\jmath_{\mathbb Q}^{F}$ es una incrustación de cuerpos ordenados. ∎
 
----
-
 ### Lema 12.2.6 — La imagen de la copia racional es un subcuerpo
 
 El subconjunto
@@ -558,8 +546,6 @@ $$
 que pertenece de nuevo a la imagen.
 
 Se satisfacen las cuatro condiciones de Definición 4.1.7 — Subcuerpo. ∎
-
----
 
 ### Corolario 12.2.7 — La copia racional es exactamente el subcuerpo primo
 
@@ -628,8 +614,6 @@ $$
 Las dos inclusiones dan la igualdad. ∎
 
 > **Interpretación.** El subcuerpo primo abstracto construido en el Capítulo 4 ha quedado ahora identificado estructuralmente: en todo cuerpo ordenado es exactamente la imagen de la copia canónica de los racionales. Esto no significa que $P_F$ sea literalmente el mismo conjunto que $\mathbb Q$; significa que $\jmath_{\mathbb Q}^{F}$ proporciona un isomorfismo de $\mathbb Q$ sobre $P_F$ con las operaciones y el orden heredados.
-
----
 
 ### Teorema 12.2.8 — Unicidad de la incrustación racional
 
@@ -799,8 +783,6 @@ La existencia de una incrustación está dada por Teorema 12.2.5 — La copia ra
 
 > **Consecuencia estructural.** La palabra «canónica» ya no significa sólo que poseemos una fórmula preferida. La copia racional es canónica en sentido fuerte: está determinada de manera única por la estructura de cuerpo ordenado.
 
----
-
 ### Corolario 12.2.9 — La copia racional de toda completación es la copia canónica
 
 Sea $(E,\iota_E)$ una completación ordenada de $\mathbb Q$. Entonces
@@ -836,5 +818,3 @@ $$
 La sección ha eliminado una ambigüedad que permanecía abierta desde el Capítulo 4. En un cuerpo ordenado no hay varias maneras estructuralmente distintas de insertar los racionales: la copia está forzada por $0$, $1$ y las operaciones del cuerpo. En una completación, por tanto, la incrustación racional que forma parte de los datos no añade libertad adicional.
 
 El siguiente problema es de orden. Para comparar dos completaciones necesitaremos que esa copia racional única sea suficientemente rica dentro del cuerpo: entre dos elementos distintos deberá aparecer un racional. Esa densidad será el objeto de §12.3.
-
----

@@ -44,8 +44,6 @@ El principio de inducción concluye también este segundo aserto. ∎
 
 > **Uso de la cota.** La desigualdad (14.9.1) controla una potencia al modificar ligeramente su base. No presupone continuidad de funciones, derivadas, un binomio general ni raíces previamente definidas. El exponente se escribe $k+1$ para no utilizar una resta natural que no hemos introducido como operación total.
 
----
-
 ### Teorema 14.9.2 — Existencia y unicidad de la raíz no negativa de índice positivo
 
 Para cada $k\in\mathbb N$ y cada real $x\ge0$ existe **un único** $r\ge0$ tal que
@@ -103,10 +101,6 @@ Todo $t\in S$ satisface $t<r-\delta$: de lo contrario, la monotonía de las pote
 
 La tricotomía excluye ambos casos y entrega $r^m=x$. Si $0\le r<s$ fueran dos soluciones, la estricta monotonía de Lema 14.9.1 — Monotonía de las potencias positivas y cota de variación finita daría $r^m<s^m$, imposible. La solución es única. Si $x>0$ no puede ser $r=0$. Finalmente, si $x\le y$ y sus raíces fueran $r>s$, la misma monotonía produciría $x=r^m>s^m=y$, contradicción. ∎
 
-> **Auditoría fundacional.** Se toma el supremo de *un conjunto explícito*, no una familia de elecciones. Las perturbaciones $\delta$ son expresiones unívocas de reales previamente fijados. La demostración no presupone el teorema del valor intermedio ni una continuidad general de $t\mapsto t^m$; la estimación finita del lema proporciona exactamente lo necesario.
-
----
-
 ### Notación 14.9.3 — Raíz enésima real no negativa
 
 Si $m\in\mathbb N$ es positivo y $x\in\mathbb R$ satisface $x\ge0$, denotamos por
@@ -118,8 +112,6 @@ $$
 el único real no negativo cuya potencia $m$-ésima es $x$. La asignación $(m,x)\mapsto\sqrt[m]{x}$ es una función sobre el conjunto $\mathbb N_{\ge1}\times\mathbb R_{\ge0}$: su grafo existe por Separación dentro de $(\mathbb N_{\ge1}\times\mathbb R_{\ge0})\times\mathbb R$, y el teorema precedente garantiza existencia y unicidad para cada entrada. Aquí $\mathbb N_{\ge1}$ es el segmento final ya definido en §13.2 y $\mathbb R_{\ge0}:=\{x\in\mathbb R:x\ge0\}$ es una abreviatura conjuntista explícita.
 
 No definimos $\sqrt[0]{x}$, raíces reales de radicandos negativos ni raíces complejas. La raíz conserva el orden para cada índice fijo y, si $c\ge0$, cumple $\sqrt[m]{c^m}=c$ por unicidad. Los índices pertenecen a $\mathbb N$, mientras que radicandos y raíces pertenecen a $\mathbb R$.
-
----
 
 ### Definición 14.9.4 — Sucesión de raíces asociada a una serie
 
@@ -134,8 +126,6 @@ $$
 Para cada índice positivo el radicando es no negativo y la raíz existe y es única; en $n=0$ se asigna expresamente $0$, sin escribir una raíz de índice cero. El grafo de $R(a)$ existe por Separación dentro de $\mathbb N\times\mathbb R$ y es total y funcional. Asimismo existe el operador $R:\mathbb R^{\mathbb N}\to\mathbb R^{\mathbb N}$ por Separación en el producto de conjuntos de sucesiones.
 
 Todos los términos de $R(a)$ son no negativos. Su posible límite es, pues, no negativo por la preservación del orden al límite (Teorema 13.6.2 — Preservación del orden en el paso al límite). El valor convencional de $R(a)_0$ no afecta a la convergencia. No presupone que $a_n$ sea positivo ni que la serie de $a$ converja.
-
----
 
 ### Lema 14.9.5 — Las raíces enésimas de una constante positiva tienden a uno
 
@@ -197,8 +187,6 @@ $$
 
 La primera desigualdad se deduce de $(1+\eta)(1-\eta)=1-\eta^2<1$ y $\eta<\varepsilon$. Así también $\sqrt[n]{C}\to1$. El valor elegido en el índice cero carece de efecto. ∎
 
----
-
 ### Teorema 14.9.6 — Criterio de la raíz
 
 Sea $a\in\mathbb R^{\mathbb N}$ y supongamos que la sucesión $R(a)$ converge a un **número real** $L$. Entonces $L\ge0$ y:
@@ -228,8 +216,6 @@ $$
 pues $r^0=1$ y la recurrencia de las potencias conserva la cota $r^n\ge1$. Por definición, $a_n\not\to0$ (basta la tolerancia $1$), así que la condición necesaria Corolario 14.2.5 — Criterio de divergencia por el término general implica divergencia. La versión con $R(a)_n\ge r$ es idéntica, usando $|a_n|\ge1$. El valor $L=1$ no permite obtener de la sola convergencia ninguna de las dos cotas estrictas que acabamos de utilizar; los contraejemplos de §14.9.9 establecen formalmente la indecisión anunciada. ∎
 
 > **Lectura del criterio.** La raíz compara $|a_n|$ con $q^n$ **para el mismo índice $n$**. No exige que cada término sea no nulo: $\sqrt[n]{0}=0$ está definida para $n\ge1$. Si la sucesión de raíces carece de límite, las dos versiones de cota eventual siguen siendo válidas; el teorema no inventa un límite superior extendido $+\infty$.
-
----
 
 ### Teorema 14.9.7 — Criterio de la razón con denominadores eventualmente no nulos
 
@@ -276,8 +262,6 @@ $$
 La desigualdad se prueba por inducción; la segunda usa $d^j\ge1$, y la última la hipótesis $a_N\ne0$. La tolerancia $\varepsilon=|a_N|$ impide que $a_n\to0$, así que la serie diverge por Corolario 14.2.5 — Criterio de divergencia por el término general. El mismo razonamiento cubre la cota eventual $q_n\ge d>1$. La frontera $L=1$ queda resuelta por los ejemplos de §14.9.9, no por este argumento. ∎
 
 > **Hipótesis insustituible.** No se permite dividir por $|a_n|$ cuando pueda ser cero arbitrariamente tarde. Si una serie tiene términos nulos en índices no acotados, el criterio de la razón en esta forma no se aplica, pero la serie podría converger o divergir. La definición totalizada del cociente no debe ocultar esa restricción.
-
----
 
 ### Proposición 14.9.8 — Un límite de razones determina el límite de las raíces
 
@@ -327,8 +311,6 @@ $$
 El lema Lema 14.9.5 — Las raíces enésimas de una constante positiva tienden a uno y la compatibilidad del límite con multiplicación por una constante hacen converger las cotas izquierda y derecha a $r$ y $R$. Para verificar exactamente $R(a)_n\to L$, demos un $\varepsilon>0$: elegimos $r,R>0$ tales que $L-\varepsilon/2<r<L<R<L+\varepsilon/2$ (si $\varepsilon$ es grande, la condición $r>0$ sigue siendo posible porque $L>0$). A partir de un índice suficientemente grande, los términos de las cotas en (14.9.9) difieren de $r,R$, respectivamente, en menos de $\varepsilon/2$. Se obtiene entonces $L-\varepsilon<R(a)_n<L+\varepsilon$, como exige la definición de límite.
 
 Si $L=0$, sea $\varepsilon>0$ y elijamos $0<c<\min\{1,\varepsilon/2\}$. Eventualmente $0\le q_n<c$; la inducción anterior aporta un $D>0$ con $|a_n|\le Dc^n$ para todos los índices de una cola. La monotonía de la raíz da $0\le R(a)_n\le c\sqrt[n]{D}$. Como $\sqrt[n]{D}\to1$, eventualmente $\sqrt[n]{D}<2$, y $0\le R(a)_n<2c<\varepsilon$. Por tanto también $R(a)_n\to0=L$. No se ha requerido calcular logaritmos ni utilizar una forma extendida de $\limsup$. ∎
-
----
 
 ### Proposición 14.9.9 — La frontera de ambos criterios es indecisiva
 
@@ -384,8 +366,4 @@ De nuevo Proposición 14.9.8 — Un límite de razones determina el límite de l
 
 > **Diagnóstico pedagógico.** El cociente mide un cambio *entre términos consecutivos*; la raíz compara la magnitud del término *con una escala geométrica desde el origen*. Que ambos límites den $1$ expresa la ausencia de una separación exponencial estricta respecto de esa escala; no significa que las sumas parciales se comporten igual.
 
----
-
 Los criterios de razón y raíz están ahora fundamentados sin notación de raíces anterior a su teorema de existencia, sin divisiones por cero y sin confundir la frontera $1$ con una conclusión de convergencia. El siguiente frente, **§14.10 — Reordenamientos y estabilidad de la suma bajo convergencia absoluta**, deberá distinguir expresamente una permutación de índices de una partición meramente finita: modificar el orden de una suma infinita exige un teorema, no una aplicación informal de la conmutatividad finita.
-
----

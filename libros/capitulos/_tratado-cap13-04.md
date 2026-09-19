@@ -48,8 +48,6 @@ Finalmente, $a$ es **acotada** si está acotada tanto superior como inferiorment
 
 > **Nota de tipos.** No identificamos la sucesión $a$ con su recorrido $a[\mathbb N]$. La definición transporta a la sucesión una propiedad de ese subconjunto, pero ambos objetos siguen siendo distintos: $a$ es una función y $a[\mathbb N]$ es un conjunto de números reales.
 
----
-
 ### Proposición 13.4.2 — Caracterización de la acotación mediante el valor absoluto
 
 Sea $a=(a_n)$ una sucesión real. Son equivalentes:
@@ -126,8 +124,6 @@ para todo índice. Por tanto $M$ es una cota superior, $-M$ es una cota inferior
 
 Esta formulación será especialmente útil en estimaciones: en lugar de transportar simultáneamente una cota superior y otra inferior, podremos trabajar con un único número no negativo que controle $|a_n|$.
 
----
-
 ### Proposición 13.4.3 — Todo prefijo finito de una sucesión real está acotado
 
 Sea $a=(a_n)$ una sucesión real. Para todo $N\in\mathbb N$ existe $B\in\mathbb R$ tal que
@@ -193,10 +189,6 @@ $$
 pues $B\ge0$.
 
 Así el mismo enunciado vale para $S(N)$. El principio de inducción Teorema 1.1.10 — Principio de inducción concluye la proposición para todo $N\in\mathbb N$. ∎
-
-> **Auditoría fundacional.** La inducción produce un testigo para cada prefijo a partir del testigo del paso anterior. No hemos escogido simultáneamente una familia $(B_N)_{N\in\mathbb N}$ de cotas. Por tanto el argumento no utiliza Choice.
-
----
 
 ### Proposición 13.4.4 — Una cota eventual se extiende a una cota global
 
@@ -281,8 +273,6 @@ $$
 La caracterización Proposición 13.4.2 — Caracterización de la acotación mediante el valor absoluto concluye que $a$ es acotada. ∎
 
 La proposición anterior formaliza una operación que en análisis se realiza constantemente: **absorber un prefijo finito dentro de una cota global**.
-
----
 
 ### Teorema 13.4.5 — Toda sucesión real convergente es acotada
 
@@ -371,5 +361,3 @@ $$
 $$
 
 La siguiente sección desarrollará la **álgebra de los límites**, comenzando por suma y opuesto y utilizando la acotación precisamente cuando el producto la requiera.
-
----

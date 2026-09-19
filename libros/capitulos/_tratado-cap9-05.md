@@ -198,10 +198,6 @@ $$
 
 Esto prueba ambas afirmaciones. ∎
 
-> **Auditoría de elección.** Los acotantes $A$ y $B$ son dos testigos locales proporcionados por Teorema 8.6.3 — Toda sucesión racional de Cauchy es acotada para las dos sucesiones fijadas. Los índices de Cauchy se eligen únicamente para una precisión racional fija y se unifican mediante la totalidad del orden natural. No se construye ninguna función global de elección.
-
----
-
 ### Proposición 9.5.2 — Compatibilidad de suma y producto con $\sim_C$
 
 Sean
@@ -307,8 +303,6 @@ $$
 Quedan demostradas ambas compatibilidades. ∎
 
 > **Interpretación.** Este resultado es el verdadero criterio de buena definición. No afirma todavía que haya suma o producto en $\mathbb R_C$; afirma que las operaciones sobre representantes son constantes sobre las clases de equivalencia pertinentes.
-
----
 
 ### Proposición 9.5.3 — Existencia y unicidad de las operaciones inducidas
 
@@ -484,10 +478,6 @@ $$
 
 con la propiedad requerida. ∎
 
-> **Auditoría de elección.** Para un par fijo $\langle x,y\rangle$ se usan representantes cuya existencia está garantizada por Proposición 9.4.4 — Representantes y criterio de igualdad de clases de Cauchy. No se selecciona simultáneamente un representante para cada clase. La unicidad del valor hace que el grafo funcional quede definido por separación sin construir una sección del cociente.
-
----
-
 ### Definición 9.5.4 — Suma y producto en $\mathbb R_C$
 
 Sean $+_C$ y $\cdot_C$ las funciones únicas proporcionadas por Proposición 9.5.3 — Existencia y unicidad de las operaciones inducidas:
@@ -542,8 +532,6 @@ Estas fórmulas no son reglas informales sobre representantes: son las ecuacione
 
 > **Decisión de notación.** No se consume un nuevo `TA-NOT`: los símbolos $+$ y $\cdot$ ya están activos y se sobrecargan por tipado, como en las extensiones numéricas anteriores. Los símbolos explícitos $+_C$ y $\cdot_C$ quedan disponibles cuando sea necesario distinguir la operación de Cauchy de otras operaciones.
 
----
-
 ### Lo que hemos ganado
 
 El conjunto $\mathbb R_C$ ya posee dos operaciones binarias internas,
@@ -558,5 +546,3 @@ obtenidas directamente de la suma y el producto término a término de sucesione
 Todavía no hemos probado que estas operaciones satisfagan los axiomas de anillo o de cuerpo. En particular, aún debemos identificar sus elementos neutros, construir el opuesto aditivo, verificar las leyes algebraicas heredadas y, más adelante, resolver el problema sustancial de construir el inverso multiplicativo de una clase no nula.
 
 La construcción continúa sin utilizar completitud de Dedekind, sin identificar $\mathbb Q$ con un subconjunto de $\mathbb R_C$ y sin ninguna forma de elección.
-
----

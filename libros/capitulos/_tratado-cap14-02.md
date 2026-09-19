@@ -14,8 +14,6 @@ $$
 
 El bloque comienza en $n+1$, **no** en $n$: el término $a_n$ ya está contenido en $s_n$. Esta notación sólo se utiliza aquí cuando $n<m$, por lo que el bloque contiene al menos un término. No definimos todavía sumas vacías ni intervalos arbitrarios de índices. La igualdad precedente es una definición de una cantidad real finita, no una serie infinita.
 
----
-
 ### Proposición 14.2.2 — Identidades de los bloques de sumación
 
 Si $a$ es una sucesión real, $s=\operatorname{PS}(a)$ y $n<m$ son naturales, entonces:
@@ -73,8 +71,6 @@ Por definición, el miembro izquierdo es el bloque completo. ∎
 
 Las dos primeras identidades verifican además que nuestra notación reproduce exactamente la adición finita ordinaria de los términos $a_{n+1},\ldots,a_m$: empieza por el primero y incorpora sucesivamente los restantes. No hemos introducido una suma infinita encubierta.
 
----
-
 ### Teorema 14.2.3 — Criterio de Cauchy para una serie numérica
 
 Sea $a=(a_n)$ una sucesión real. Son equivalentes:
@@ -111,10 +107,6 @@ $$
 Recíprocamente, supongamos (2) y fijemos $\varepsilon>0$. Tomemos el umbral $N$ que proporciona (2). Sean $m,n\ge N$. La tricotomía natural ya cerrada en Proposición 1.6.7 — Tricotomía decidible de los naturales permite distinguir tres posibilidades. Si $n<m$, la identidad del bloque entrega $|s_m-s_n|<\varepsilon$. Si $m<n$, aplicamos (2) al par ordenado $m<n$ y utilizamos $|s_m-s_n|=|s_n-s_m|$, propiedad ya probada en Proposición 4.2.2 — Propiedades elementales del valor absoluto (3). Si $m=n$, obtenemos $|s_m-s_n|=0<\varepsilon$. Por consiguiente, $s$ es de Cauchy según Definición 13.8.1 — Sucesión real de Cauchy y converge en $\mathbb R$ por Corolario 13.8.8 — Criterio de Cauchy en $\mathbb R$. La definición de serie concluye (1). ∎
 
 > **Qué mide el criterio.** No pide que una sola suma parcial sea pequeña ni que los términos individuales se hagan pequeños: exige que **cada bloque finito completo** suficientemente alejado del origen tenga suma de valor absoluto menor que la tolerancia. Los dos extremos $n,m$ se cuantifican después de elegir un único umbral $N$.
-
-> **Auditoría fundacional.** La implicación «serie convergente $\Rightarrow$ bloques pequeños» utiliza sólo «convergente $\Rightarrow$ Cauchy», sin completitud. Para la recíproca importamos la completitud de $\mathbb R$ ya encapsulada en Corolario 13.8.8 — Criterio de Cauchy en $\mathbb R$ y su lógica clásica declarada. No usamos Choice: el criterio afirma un umbral por tolerancia, no una selección global de umbrales. Tampoco obtenemos un módulo computable de convergencia.
-
----
 
 ### Teorema 14.2.4 — Condición necesaria de convergencia: el término general tiende a cero
 
@@ -154,8 +146,6 @@ Hemos probado que para cada $\varepsilon>0$ existe un umbral $N'$ que sirve para
 
 > **Una implicación, no una equivalencia.** El resultado demuestra que los términos de una serie convergente se anulan asintóticamente. No afirma que la mera anulación asintótica controle la suma de bloques con un número arbitrariamente grande de términos.
 
----
-
 ### Corolario 14.2.5 — Criterio de divergencia por el término general
 
 Si $a_n$ **no converge a cero**, entonces la serie $\sum_{k=0}^{\infty}a_k$ diverge. En particular, si $a_n\to\ell$ para algún $\ell\in\mathbb R$ con $\ell\ne0$, la serie diverge.
@@ -165,8 +155,6 @@ Si $a_n$ **no converge a cero**, entonces la serie $\sum_{k=0}^{\infty}a_k$ dive
 Si la serie convergiera, Teorema 14.2.4 — Condición necesaria de convergencia: el término general tiende a cero implicaría $a_n\to0$, en contradicción con la hipótesis. Para la segunda afirmación, si además $a_n\to\ell$ y la serie convergiera, la unicidad del límite Teorema 13.3.5 — Unicidad del límite real produciría $\ell=0$, contra $\ell\ne0$. ∎
 
 Por ejemplo, recuperamos inmediatamente la divergencia de la serie de términos constantes iguales a $1_{\mathbb R}$, ya mostrada en §14.1. El corolario permite detectarla mirando los términos. No debemos, sin embargo, invertir esta regla lógica: para decidir si una sucesión de términos que sí tiende a cero genera una serie convergente, necesitamos información adicional.
-
----
 
 ### Lema 14.2.6 — Cota inferior para un bloque de términos acotados inferiormente
 
@@ -217,8 +205,6 @@ $$
 El paso usa sólo que sumar desigualdades preserva el orden en el cuerpo real; no se exige $c\ge0$. La inducción concluye el resultado para cada $d\ge1$. ∎
 
 > **Lectura de la estimación.** Una cota inferior para cada término de un bloque produce una cota para la suma que depende también de **cuántos términos tiene**. Ese número de términos será precisamente lo que impida invertir el teorema anterior.
-
----
 
 ### Proposición 14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica
 
@@ -304,8 +290,4 @@ pues la suma del bloque es al menos $\eta>0$. Esto contradice la condición de C
 
 > **Frontera deductiva.** La prueba no usa logaritmos, potencias naturales generales, el criterio de comparación ni la condensación de Cauchy; todos ellos quedan fuera de esta unidad. Los recíprocos de numerales y la arquimedianidad se importan de Lema 13.10.2 — Los recíprocos de los numerales positivos tienden a cero. No se presupone una suma infinita real para la serie armónica: precisamente demostramos que no existe.
 
----
-
 La sección nos deja una distinción operacional: la convergencia de una serie es una propiedad de sus **sumas parciales**; el criterio de Cauchy la mide mediante **bloques enteros**; y la anulación del término general es sólo una consecuencia necesaria. El siguiente apartado podrá estudiar series geométricas a partir de identidades finitas, sin confundir una fórmula para sumas parciales con una suma infinita ya existente.
-
----

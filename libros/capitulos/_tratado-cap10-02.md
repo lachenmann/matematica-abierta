@@ -41,8 +41,6 @@ $$
 
 No pretendemos que $\kappa_2$ recorra consecutivamente todos los naturales. Sólo necesitamos que pares distintos reciban códigos distintos.
 
----
-
 ### Lema 10.2.2 — Inyectividad del código de pares
 
 La función $\kappa_2$ es inyectiva.
@@ -159,8 +157,6 @@ $$
 
 y $\kappa_2$ es inyectiva. ∎
 
----
-
 ### Definición 10.2.3 — Decodificador canónico de pares
 
 Definimos
@@ -193,8 +189,6 @@ $$
 
 La primera rama determina a lo sumo un par por Lema 10.2.2 — Inyectividad del código de pares; la segunda determina explícitamente el valor cuando $n$ no es código de ningún par. El grafo de $d_2$ se obtiene por separación, de modo que $d_2$ es una función total y definible.
 
----
-
 ### Proposición 10.2.4 — Sobreyectividad del decodificador
 
 La función
@@ -222,8 +216,6 @@ $$
 Todo par natural aparece, por tanto, como valor de $d_2$. ∎
 
 > **Nota.** $d_2$ puede repetir el par $(0,0)$ en los naturales que no son códigos. Esto es irrelevante: lo que necesitaremos es sobreyectividad, no biyectividad.
-
----
 
 ### Definición 10.2.5 — Enumeración racional canónica
 
@@ -290,8 +282,6 @@ $$
 La fracción de la derecha es una clase racional legítima porque su denominador entero es no nulo.
 
 Esta función queda fijada desde ahora para todo el tratado. La palabra **enumeración** se usa en el sentido de aplicación sobreyectiva; no se exige ausencia de repeticiones.
-
----
 
 ### Proposición 10.2.6 — La enumeración racional es sobreyectiva
 
@@ -384,10 +374,6 @@ q.
 $$
 
 Así todo racional aparece en la enumeración. ∎
-
-> **Auditoría de elección.** Los índices $i,j,n$ son testigos locales en la prueba de sobreyectividad para un racional fijo. La función $e_{\mathbb Q}$ ya ha sido definida explícitamente; no se obtiene eligiendo una enumeración entre muchas posibles.
-
----
 
 ### Proposición 10.2.7 — Aproximación racional de todo real de Cauchy
 
@@ -571,11 +557,7 @@ $$
 
 ∎
 
-> **Auditoría de elección.** La prueba usa un representante de un único $x$ fijo y un único índice $N$ para una tolerancia fija. Esto demuestra existencia de aproximantes; todavía no se ha escogido simultáneamente un aproximante para una familia de reales.
-
 El resultado anterior establece la densidad que necesitamos en forma operativa. La siguiente definición es la que elimina el posible uso de elección cuando debamos aproximar una sucesión entera de reales de Cauchy.
-
----
 
 ### Definición 10.2.8 — Selector canónico de aproximantes racionales
 
@@ -648,8 +630,6 @@ La importancia fundacional de esta definición es que $A_C(x,\eta)$ no es «un r
 > }
 > $$
 > $A_C$ resuelve el problema de selección simultánea en ZF clásico; no convierte una clase de Cauchy arbitraria en un objeto algorítmico.
-
----
 
 ### Proposición 10.2.9 — Corrección y selección simultánea sin Choice
 
@@ -770,7 +750,3 @@ x_n-\iota_C(q_n)
 $$
 
 ∎
-
-> **Auditoría de elección.** Éste es el punto fundacional central de §10.2. La existencia local de muchos aproximantes no se convierte en una familia mediante elección numerable. Se define primero una única función global $A_C$ por mínimos naturales; después cualquier familia de aproximantes se obtiene simplemente por composición. `choice-use: none`.
-
----

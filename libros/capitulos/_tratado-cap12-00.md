@@ -59,5 +59,3 @@ P_F=\bigcap\{K\subseteq F:K\text{ es subcuerpo de }F\},
 $$
 
 Proposición 4.1.9 — Minimalidad del subcuerpo primo probó su minimalidad y Corolario 4.1.10 — Los numerales naturales pertenecen al subcuerpo primo demostró que contiene todos los numerales $\nu_F(n)$. La tarea de §12.1 es completar la parte que entonces no necesitábamos: identificar dentro de un cuerpo ordenado la copia canónica de los **enteros** generada por esos numerales. Sólo después podremos pasar, mediante inversos, a la copia canónica de $\mathbb Q$.
-
----

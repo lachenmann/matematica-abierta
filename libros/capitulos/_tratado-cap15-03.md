@@ -13,8 +13,6 @@ $$
 
 Como $a\in B_r(a)$ para cada $r>0$ (Proposición 15.1.2 — Las bolas son intervalos abiertos centrados), la condición implica $a\notin A$. No vale la implicación inversa en general: de $a\notin A$ sólo conocemos la posición del centro, no la de los restantes puntos de una bola. Tampoco se define aquí un punto «de frontera» por exclusión: esa noción necesitará primero el estudio de los puntos adherentes.
 
----
-
 ### Definición 15.3.2 — Exterior de un conjunto
 
 Definimos el **exterior** de $A\subseteq\mathbb R$ como el conjunto de sus puntos exteriores:
@@ -26,8 +24,6 @@ $$
 $$
 
 La existencia se obtiene por Separación sobre $\mathbb R\setminus A$, que existe por Definición 0.2.11 — Diferencia conjuntista. Restringir la comprensión al complemento hace visible la condición de tipo $\operatorname{Ext}(A)\subseteq\mathbb R\setminus A$, aunque la definición anterior ya implica que todo punto exterior está fuera de $A$. Para cada $A$ este conjunto es único por extensionalidad; por Separación dentro de $\mathcal P(\mathbb R)\times\mathcal P(\mathbb R)$, la asignación $A\mapsto\operatorname{Ext}(A)$ determina asimismo una función total de $\mathcal P(\mathbb R)$ en sí mismo. No escogemos radios para construir dicha función.
-
----
 
 ### Proposición 15.3.3 — El exterior es el interior del complemento
 
@@ -47,8 +43,6 @@ Recíprocamente, si $x\in(\mathbb R\setminus A)^\circ$, algún $r>0$ satisface $
 
 > **Interpretación.** El exterior no necesita una teoría distinta del interior: es el interior obtenido después de tomar el complemento. Este hecho no autoriza a identificarlo con todo el complemento; los puntos que estén fuera pero no posean una bola enteramente exterior quedarán fuera de $\operatorname{Ext}(A)$.
 
----
-
 ### Proposición 15.3.4 — Separación y antitonicidad del exterior
 
 Para $A,C\subseteq\mathbb R$ se cumplen:
@@ -64,8 +58,6 @@ Supongamos $A\subseteq C$ y fijemos $x\in\operatorname{Ext}(C)$. Existe $r>0$ ta
 
 La inclusión se invierte: **a mayor conjunto, menor exterior**. No se afirma que cada punto de la recta sea necesariamente interior o exterior; una tercera posibilidad será estudiada después.
 
----
-
 ### Definición 15.3.5 — Conjunto cerrado de la recta
 
 Un conjunto $F\subseteq\mathbb R$ se denomina **cerrado (en $\mathbb R$)** cuando su complemento en la recta es abierto:
@@ -75,8 +67,6 @@ $$
 $$
 
 La palabra «cerrado» no significa «no abierto». La definición afirma una propiedad positiva del **complemento**: cada punto exterior a $F$ en el sentido conjuntista deberá disponer de un margen completo fuera de $F$. El ambiente es siempre $\mathbb R$ y no se presupone ninguna noción de cerrado relativo a un subespacio.
-
----
 
 ### Proposición 15.3.6 — Criterio de cerradura mediante puntos exteriores
 
@@ -93,8 +83,6 @@ Por Proposición 15.3.3 — El exterior es el interior del complemento, $\operat
 Si vale (2) y $x\in\mathbb R\setminus F$, entonces $x\in\operatorname{Ext}(F)$; la definición de punto exterior proporciona el radio requerido en (3). Si vale (3), cada punto del complemento pertenece al exterior. Por ello $\mathbb R\setminus F\subseteq\operatorname{Ext}(F)$; la inclusión inversa forma parte de Definición 15.3.2 — Exterior de un conjunto. La doble inclusión da (2). ∎
 
 > **Lectura de cuantificadores.** Para que un conjunto sea cerrado se exige un radio para *cada punto de su complemento*. El radio puede variar con el punto; no afirmamos la existencia de un radio uniforme ni de una función que seleccione simultáneamente todos esos radios.
-
----
 
 ### Teorema 15.3.7 — Leyes fundamentales de los conjuntos cerrados
 
@@ -120,8 +108,6 @@ Así $B_t(x)$ no contiene puntos de $F$ ni de $G$, por lo que $B_t(x)\cap(F\cup 
 
 Las reglas son duales a las de los abiertos, pero no idénticas: los cerrados admiten **intersecciones arbitrarias y uniones finitas**. El calificativo «finita» no puede eliminarse de la segunda operación en general; demostraremos un contraejemplo explícito antes de terminar la sección.
 
----
-
 ### Proposición 15.3.8 — Las dos semirrectas estrictas son abiertas
 
 Para cada $c\in\mathbb R$, los conjuntos
@@ -138,8 +124,6 @@ son abiertos en $\mathbb R$. Las letras $L_c,R_c$ son abreviaturas **locales** p
 Sea $x\in L_c$, de manera que $x<c$. Definamos $r=c-x>0$. Para cualquier $y\in B_r(x)$, la identidad bola–intervalo de Proposición 15.1.2 — Las bolas son intervalos abiertos centrados da $y<x+r=c$; por tanto $y\in L_c$ y $B_r(x)\subseteq L_c$. Como $x$ es arbitrario, $L_c$ es abierto.
 
 Análogamente, si $x\in R_c$, el radio $s=x-c>0$ cumple que todo $y\in B_s(x)$ satisface $y>x-s=c$. Luego $B_s(x)\subseteq R_c$, y $R_c$ también es abierto. ∎
-
----
 
 ### Corolario 15.3.9 — Los intervalos cerrados y los singletons son cerrados
 
@@ -158,8 +142,6 @@ En efecto, un real está fuera de $[a,b]$ precisamente cuando es menor que $a$ o
 De modo idéntico, $\mathbb R\setminus\{a\}=L_a\cup R_a$, abierto, luego $\{a\}$ es cerrado. Su falta de apertura ya fue demostrada en Proposición 15.2.9 — Ejemplos: intervalos abiertos y singletons. Por último, $\varnothing$ y $\mathbb R$ son abiertos por Teorema 15.2.7 — Leyes fundamentales de los conjuntos abiertos y cerrados por Teorema 15.3.7 — Leyes fundamentales de los conjuntos cerrados. ∎
 
 > **Advertencia terminológica.** No hay contradicción en que un conjunto sea abierto y cerrado a la vez. Tampoco hay contradicción en que no sea ninguno de los dos: las definiciones se aplican independientemente al conjunto y a su complemento.
-
----
 
 ### Proposición 15.3.10 — Un conjunto que no es ni abierto ni cerrado
 
@@ -185,8 +167,6 @@ $$
 Como $0<t\le(b-a)/(1+1)<b-a$, resulta $a<z<b$, y por tanto $z\in H$. Además, $t\le r/(1+1)<r$ y $|z-b|=t$, de modo que $z\in B_r(b)$. Así, **toda** bola centrada en $b$ intersecta $H$, aunque $b\notin H$. Por Proposición 15.3.6 — Criterio de cerradura mediante puntos exteriores, $H$ no es cerrado. ∎
 
 No hemos recurrido a la noción aún no definida de «punto adherente»: basta negar directamente la condición cuantificada de punto exterior. El ejemplo distingue rigurosamente «no abierto» de «cerrado».
-
----
 
 ### Proposición 15.3.11 — Las restricciones de finitud son necesarias
 
@@ -226,4 +206,3 @@ Así $\bigcup_{r\in I}F_r=\mathbb R\setminus\{a\}$. Esta unión **no es cerrada*
 > **Balance conceptual.** La dualidad entre abiertos y cerrados fija exactamente la forma de sus leyes: uniones arbitrarias e intersecciones finitas para abiertos; intersecciones arbitrarias y uniones finitas para cerrados. Ni la palabra «abierto» ni la palabra «cerrado» se deducen de incluir o excluir individualmente un punto.
 
 El siguiente paso consistirá en estudiar los puntos cuya **toda** vecindad encuentra al conjunto. Esa condición —distinta de ser interior o exterior— permitirá introducir la adherencia y construir la clausura sin circularidad en §15.4.
----

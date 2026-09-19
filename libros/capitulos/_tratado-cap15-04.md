@@ -15,8 +15,6 @@ La negación de «la intersección es vacía» equivale a que existe algún $y\i
 
 > **Pregunta de lectura.** ¿Puede un punto adherente quedar fuera de $A$? Sí: el extremo $b$ del conjunto $H=\{x\in\mathbb R:a\le x<b\}$ de §15.3 no pertenece a $H$, pero la prueba de Proposición 15.3.10 — Un conjunto que no es ni abierto ni cerrado exhibe un elemento de $B_r(b)\cap H$ para cada $r>0$.
 
----
-
 ### Definición 15.4.2 — Clausura de un conjunto
 
 Para $A\subseteq\mathbb R$, definimos su **clausura** como el conjunto de todos los puntos adherentes a $A$:
@@ -29,8 +27,6 @@ $$
 El conjunto existe por Separación sobre $\mathbb R$: no estamos intentando reunir puntos sin un conjunto ambiente. La extensionalidad asegura su unicidad. En particular, la asignación $A\mapsto\overline A$ define una operación total $\mathcal P(\mathbb R)\to\mathcal P(\mathbb R)$: su grafo se obtiene por Separación dentro de $\mathcal P(\mathbb R)\times\mathcal P(\mathbb R)$, utilizando la fórmula anterior, y cada argumento tiene una única imagen. No se construye una función de elección de puntos de las intersecciones, porque la definición sólo cuantifica su existencia **por cada radio**.
 
 La barra superior se aplica a **subconjuntos de $\mathbb R$**; no se confunde con la barra de una función inducida en un cociente ni se interpreta como límite de una sucesión. «Clausura» nombra inicialmente este conjunto definido por bolas: todavía falta demostrar que es cerrado.
-
----
 
 ### Proposición 15.4.3 — La adherencia es la negación de la exterioridad
 
@@ -55,8 +51,6 @@ Hemos probado la equivalencia para un $x\in\mathbb R$ arbitrario. Por extensiona
 
 La equivalencia también muestra que interioridad, exterioridad y adherencia responden a preguntas diferentes. El punto $x$ es interior si **una** bola está contenida en $A$; es exterior si **una** bola evita $A$; es adherente si **ninguna** bola evita $A$.
 
----
-
 ### Proposición 15.4.4 — Extensividad y monotonía de la clausura
 
 Para cualesquiera $A,B\subseteq\mathbb R$ se cumplen:
@@ -77,8 +71,6 @@ Para la monotonía, supongamos $A\subseteq B$ y fijemos $x\in\overline A$. Sea $
 
 > **Interpretación.** La clausura no descarta puntos del conjunto inicial. Además, al añadir elementos a $A$ no se pierden puntos adherentes; la operación respeta la inclusión.
 
----
-
 ### Teorema 15.4.5 — La clausura es un conjunto cerrado
 
 Para todo $A\subseteq\mathbb R$, el conjunto $\overline A$ es cerrado.
@@ -94,8 +86,6 @@ $$
 Por Proposición 15.3.3 — El exterior es el interior del complemento, el exterior de cualquier conjunto es abierto. En consecuencia, el complemento de $\overline A$ es abierto. La definición Definición 15.3.5 — Conjunto cerrado de la recta de conjunto cerrado, aplicada **después** de haber construido la clausura, demuestra que $\overline A$ es cerrado. ∎
 
 No hemos definido la clausura como «el cerrado más pequeño»: esta propiedad aparecerá ahora como un teorema y no como una petición circular de existencia.
-
----
 
 ### Teorema 15.4.6 — La clausura es el menor cerrado que contiene al conjunto
 
@@ -129,8 +119,6 @@ La minimalidad recién probada implica $\overline A\subseteq F$ para cada $F\in\
 
 La caracterización por intersección concuerda con las leyes de cerrados de §15.3: una intersección de cerrados es cerrada. La demostración anterior es además una **prueba de existencia** del mínimo: no se ha supuesto que tal mínimo exista para después denominarlo clausura.
 
----
-
 ### Corolario 15.4.7 — Un conjunto es cerrado si y sólo si coincide con su clausura
 
 Para todo $A\subseteq\mathbb R$,
@@ -144,8 +132,6 @@ $$
 Si $A$ es cerrado, se puede usar $F=A$ en la propiedad de minimalidad de Teorema 15.4.6 — La clausura es el menor cerrado que contiene al conjunto. La inclusión $A\subseteq F$ es reflexiva y se obtiene $\overline A\subseteq A$. La inclusión opuesta $A\subseteq\overline A$ es Proposición 15.4.4 — Extensividad y monotonía de la clausura; por extensionalidad, $\overline A=A$.
 
 Recíprocamente, si $\overline A=A$, el teorema Teorema 15.4.5 — La clausura es un conjunto cerrado dice que $\overline A$ es cerrado; sustituyendo conjuntos iguales, $A$ también es cerrado. ∎
-
----
 
 ### Proposición 15.4.8 — Idempotencia de la clausura
 
@@ -161,8 +147,6 @@ La primera clausura $\overline A$ es cerrada por Teorema 15.4.5 — La clausura 
 
 El operador no añade nuevos puntos al repetirse: el resultado de la primera aplicación ya es cerrado.
 
----
-
 ### Proposición 15.4.9 — Clausura del vacío, de la recta y de un singleton
 
 Para todo $a\in\mathbb R$,
@@ -176,8 +160,6 @@ $$
 **Demostración.**
 
 Por Teorema 15.3.7 — Leyes fundamentales de los conjuntos cerrados, $\varnothing$ y $\mathbb R$ son cerrados. Por Corolario 15.3.9 — Los intervalos cerrados y los singletons son cerrados, también lo es $\{a\}$. Apliquemos a cada uno, por separado, Corolario 15.4.7 — Un conjunto es cerrado si y sólo si coincide con su clausura: al ser cerrados coinciden con sus clausuras, lo que proporciona exactamente las tres identidades. En particular, el vacío no posee puntos adherentes; no se interpreta la clausura como una operación que necesariamente agregue nuevos elementos. ∎
-
----
 
 ### Teorema 15.4.10 — Clausura de uniones e intersecciones
 
@@ -225,8 +207,6 @@ Las dos inclusiones demuestran la igualdad.
 Para la segunda, escribamos $V:=\bigcap_{i\in I}A_i$, con ambiente $\mathbb R$. Cada $i\in I$ satisface $V\subseteq A_i$; por monotonía, $\overline V\subseteq\overline{A_i}$. Así, todos los puntos de $\overline V$ pertenecen a todas las clausuras y, por definición de intersección, $\overline V\subseteq\bigcap_i\overline{A_i}$. Si $I=\varnothing$, la primera inclusión se reduce a $\varnothing\subseteq\overline\varnothing$ y la segunda a $\overline{\mathbb R}\subseteq\mathbb R$, válidas por Proposición 15.4.9 — Clausura del vacío, de la recta y de un singleton. Ninguna parte seleccionó simultáneamente un índice o un punto para todos los radios. ∎
 
 > **Lectura conceptual.** La clausura **conserva exactamente las uniones finitas**; para intersecciones siempre se obtiene al menos una inclusión. En familias arbitrarias, las dos leyes anteriores sólo proporcionan inclusiones. La siguiente proposición muestra por qué ninguna de esas dos inclusiones puede convertirse automáticamente en igualdad.
-
----
 
 ### Proposición 15.4.11 — Dos inclusiones que pueden ser estrictas
 
@@ -283,5 +263,3 @@ $$
 como queríamos. Toda la familia está determinada por una fórmula, sin seleccionar radios ni usar un axioma de elección. ∎
 
 La clausura puede entenderse, por tanto, tanto mediante bolas como mediante cerrados: es el conjunto de los puntos cuya proximidad con $A$ resulta inevitable y, simultáneamente, el menor cerrado que contiene a $A$. La siguiente unidad distinguirá ahora los **puntos de acumulación** de los meramente adherentes; en particular, deberá exigir que las bolas contengan puntos de $A$ *diferentes del propio centro*.
-
----

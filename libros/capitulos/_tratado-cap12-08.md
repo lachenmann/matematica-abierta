@@ -82,11 +82,7 @@ Como $E$ era arbitrario, toda completación ordenada es estructuralmente idénti
 
 La formulación equivalente para dos completaciones arbitrarias es precisamente Teorema 12.7.2 — Unicidad del isomorfismo entre completaciones ordenadas. ∎
 
-> **Auditoría de elección.** La existencia utiliza el objeto concreto ya construido $(\mathbb R_D,\iota_D)$. La unicidad utiliza una función ya determinada por Teorema 12.7.2 — Unicidad del isomorfismo entre completaciones ordenadas. En ningún paso se escoge un representante de cada clase ni un isomorfismo de una familia de posibles isomorfismos; la función está caracterizada de manera única. No interviene Choice.
-
 El teorema anterior caracteriza primero una **completación de $\mathbb Q$**. Pero la arquitectura inicial del tratado formulaba la meta de manera ligeramente distinta, hablando de un cuerpo ordenado completo arquimediano. A esta altura podemos eliminar esa redundancia.
-
----
 
 ### Corolario 12.8.2 — Todo cuerpo ordenado completo realiza la completación única
 
@@ -154,8 +150,6 @@ Finalmente, Teorema 4.6.3 — Todo cuerpo ordenado completo es arquimediano afir
 
 Este corolario da la forma intrínseca de la caracterización: una vez fijadas las operaciones, el orden total compatible y la propiedad del supremo, no queda libertad estructural. La copia de $\mathbb Q$ tampoco es un dato adicional arbitrario, pues §12.2 demostró que es canónica.
 
----
-
 ### Corolario 12.8.3 — El isomorfismo concreto de Cauchy–Dedekind es el transporte canónico
 
 El isomorfismo
@@ -207,5 +201,3 @@ $$
 El corolario cierra el círculo entre los dos niveles del tratado. El Capítulo 11 produjo un isomorfismo mediante las codificaciones concretas de Cauchy y Dedekind; el Capítulo 12 demuestra que, una vez olvidadas esas codificaciones, ese isomorfismo no podía ser otro.
 
 El problema de existencia y unicidad está, por tanto, resuelto. Podemos fijar ahora la convención estructural que cerrará la Parte I.
-
----

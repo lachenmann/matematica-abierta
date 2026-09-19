@@ -88,10 +88,6 @@ $$
 
 Esto es exactamente la afirmación. ∎
 
-> **Auditoría de elección.** La prueba no introduce testigos ni familias auxiliares. Es una cadena de equivalencias válida para un racional arbitrario; por tanto no interviene ninguna forma de elección.
-
----
-
 ### Teorema 12.7.2 — Unicidad del isomorfismo entre completaciones ordenadas
 
 Sean
@@ -235,5 +231,3 @@ Por tanto existe exactamente un isomorfismo de cuerpos ordenados entre las dos c
 El resultado completa la parte de **unicidad** prometida por el capítulo. La palabra «los reales» ya no designa una codificación privilegiada: cualquier completación ordenada de $\mathbb Q$ posee exactamente la misma estructura, hasta el único isomorfismo compatible con la copia racional.
 
 Todavía falta formular esta conclusión como un teorema de caracterización autónomo. §12.8 reunirá existencia y unicidad en una forma abstracta que permita reconocer a los números reales sin mencionar ni cortaduras de Dedekind ni sucesiones de Cauchy.
-
----

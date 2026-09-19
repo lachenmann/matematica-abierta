@@ -44,8 +44,6 @@ pues para cada par $(m,n)$ el término $\nu_F(m)-\nu_F(n)$ determina un único e
 
 La función $\theta_F$ todavía vive sobre pares de naturales. Para obtener una función definida sobre $\mathbb Z$ debemos demostrar que dos pares equivalentes producen el mismo valor.
 
----
-
 ### Proposición 12.1.2 — Invariancia bajo la equivalencia entera
 
 Si
@@ -94,8 +92,6 @@ $$
 
 Por tanto $\theta_F$ es constante sobre cada clase de la equivalencia que define a $\mathbb Z$. ∎
 
----
-
 ### Definición 12.1.3 — Copia canónica de los enteros en un cuerpo ordenado
 
 Como
@@ -125,8 +121,6 @@ $$
 Llamaremos a $\jmath_{\mathbb Z}^{F}$ la **copia canónica de los enteros en $F$**.
 
 No se ha escogido un representante de cada entero. La función inducida existe porque una función ya definida sobre todos los representantes es constante en cada clase; el descenso al cociente es funcional y canónico.
-
----
 
 ### Proposición 12.1.4 — Compatibilidad aritmética de la copia entera
 
@@ -287,10 +281,6 @@ $$
 
 Quedan verificadas todas las identidades. ∎
 
-> **Auditoría de elección.** Los representantes $x=[(a,b)]$ y $y=[(c,d)]$ se fijan únicamente para los dos enteros concretos presentes en la demostración. No se define una selección simultánea de representantes de todos los enteros. Además, la igualdad obtenida es independiente de los representantes por Proposición 12.1.2 — Invariancia bajo la equivalencia entera.
-
----
-
 ### Teorema 12.1.5 — La copia entera es una incrustación ordenada
 
 La función
@@ -437,8 +427,6 @@ $$
 
 El teorema contiene un hecho estructural importante: **todo cuerpo ordenado tiene característica cero** en el sentido relevante para este tratado. Los enteros construidos en el Capítulo 2 aparecen en él de una manera canónica e inyectiva; no pueden colapsar dos enteros distintos.
 
----
-
 ### Corolario 12.1.6 — La copia entera está contenida en el subcuerpo primo
 
 Para todo cuerpo ordenado $F$,
@@ -487,9 +475,6 @@ $$
 
 Como $z$ era arbitrario, la imagen entera está contenida en $P_F$. ∎
 
-> **Auditoría de elección.** La forma normal se aplica a un entero fijo. No se elige simultáneamente un natural para cada entero; por tanto no se usa Choice.
-
 El corolario no afirma que la imagen de $\mathbb Z$ sea ya todo $P_F$. En general no lo es: el subcuerpo primo debe ser también cerrado bajo el inverso de cada elemento no nulo. La etapa que falta consiste precisamente en añadir a la copia entera todas las fracciones determinadas por esos inversos.
 
 Así, la siguiente sección no construirá un nuevo sistema racional. Utilizará el $\mathbb Q$ ya construido en el Capítulo 3 para demostrar que todo cuerpo ordenado contiene una **única copia canónica de $\mathbb Q$**, y que su imagen es exactamente $P_F$.
----

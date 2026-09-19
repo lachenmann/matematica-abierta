@@ -32,8 +32,6 @@ La inducción prueba la afirmación para todo $d$. Dados $n\le m$, por la defini
 
 > **Clave de lectura.** El signo de los términos controla la dirección de las sumas parciales, pero no garantiza por sí solo un límite: una sucesión creciente todavía puede carecer de cota superior.
 
----
-
 ### Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos
 
 Sea $a=(a_n)_{n\in\mathbb N}$ una sucesión real con $a_n\ge0$ para todo $n$, y pongamos
@@ -75,5 +73,3 @@ Por la definición de convergencia de una serie, ésta converge; la unicidad del
 > **Dependencias y fundamento.** La monotonía se deduce de la recursión y del orden, sin completitud. La implicación de convergencia a acotación usa sólo la acotación de sucesiones convergentes. La recíproca y la identificación con el supremo importan exactamente la completitud y la lógica clásica documentadas en Teorema 13.7.3 — Teorema de convergencia monótona. No se seleccionan elementos, cotas o índices mediante Choice ni se afirma computabilidad del supremo.
 
 La convergencia queda así reducida, para términos no negativos, a una pregunta de orden. En §14.5 estudiaremos cómo usar cotas entre términos de **dos series distintas** para trasladar conclusiones de convergencia o divergencia: será el punto de partida de los criterios de comparación.
-
----

@@ -81,12 +81,9 @@ $$
 
 Por la definición de inyectividad Definición 0.6.6 — Inyectividad, sobreyectividad y biyectividad, $\Phi$ es inyectiva. ∎
 
-> **Auditoría de elección.** La demostración no construye representantes, aproximantes ni testigos auxiliares. Sólo utiliza igualdad, reflexividad, reflexión del orden y antisimetría. No interviene Choice.
 >
 > **Nota de decidibilidad.** La equivalencia
 > $$ \Phi(x)=\Phi(y)\iff x=y $$
 > es un criterio extensional de igualdad y una prueba de inyectividad. No proporciona un algoritmo que decida igualdad ni en $\mathbb R_C$ ni en $\mathbb R_D$.
 
 La inyectividad muestra que la traducción de Cauchy a Dedekind no pierde información: dos elementos del cociente de Cauchy determinan la misma cortadura únicamente cuando ya eran el mismo elemento de $\mathbb R_C$. Todavía no sabemos, sin embargo, si toda cortadura aparece de esta manera.
-
----

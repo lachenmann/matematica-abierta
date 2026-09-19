@@ -36,8 +36,6 @@ Una sucesión constante es simultáneamente creciente y decreciente. La definici
 
 > **Lectura conceptual.** La monotonía es una condición global sobre pares de índices. No afirma todavía que exista límite. Lo que impide a una sucesión creciente escapar hacia arriba no es la monotonía, sino la presencia adicional de una cota superior; dualmente, una sucesión decreciente necesitará una cota inferior.
 
----
-
 ### Proposición 13.7.2 — La acotación pertinente de una sucesión monótona es unilateral
 
 Sea $a=(a_n)$ una sucesión real.
@@ -89,8 +87,6 @@ $$
 para todo $n$; por tanto $a_0$ es una cota superior. Si además existe una cota inferior, la sucesión es acotada. ∎
 
 > **Consecuencia estructural.** En presencia de monotonía, una de las dos cotas viene gratis del primer término. El problema auténtico de existencia del límite queda reducido a impedir el escape en la dirección en que la sucesión se mueve.
-
----
 
 ### Teorema 13.7.3 — Teorema de convergencia monótona
 
@@ -309,8 +305,6 @@ Quedan demostradas ambas afirmaciones. ∎
 
 > **Prueba de estrés.** La acotación y la monotonía cumplen funciones distintas. La cota produce un extremo dentro de $\mathbb R$; la monotonía impide que, después de alcanzar una zona próxima a ese extremo, la sucesión vuelva a alejarse de ella. Quitar cualquiera de las dos hipótesis destruye el mecanismo de la prueba.
 
----
-
 ### Corolario 13.7.4 — Criterio de convergencia para sucesiones monótonas
 
 Sea $a=(a_n)$ una sucesión real monótona. Entonces
@@ -350,8 +344,6 @@ $$
 
 La equivalencia no sería verdadera en $\mathbb Q$: allí pueden existir sucesiones racionales monótonas y acotadas cuyo extremo natural no pertenece al cuerpo. La diferencia no está en la definición de sucesión ni en la de monotonía, sino en la completitud del espacio numérico en el que viven sus términos.
 
----
-
 La sección ha producido por primera vez un límite sin suponerlo de antemano. El esquema esencial queda fijado como
 
 $$
@@ -367,4 +359,3 @@ $$
 $$
 
 El siguiente paso será abandonar la monotonía y buscar una condición interna sobre la propia sucesión que detecte convergencia sin conocer previamente el límite. Esa condición será la **condición de Cauchy**. En §13.8 definiremos sucesiones de Cauchy en $\mathbb R$ y demostraremos el criterio de Cauchy usando la completitud ya disponible.
----

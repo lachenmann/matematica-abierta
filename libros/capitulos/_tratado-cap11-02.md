@@ -104,9 +104,4 @@ $$
 
 ∎
 
-> **Auditoría de elección.** La prueba no selecciona representantes ni testigos. Parte de dos representantes $a,b$ ya dados y utiliza sólo la igualdad de sus clases, equivalencias lógicas y extensionalidad. `choice-use: none`.
-
 La proposición establece exactamente la condición de compatibilidad exigida para descender una función definida sobre representantes a un cociente. A partir de este punto, $\Lambda_C$ es constante sobre cada clase de $\sim_C$.
-
----
----

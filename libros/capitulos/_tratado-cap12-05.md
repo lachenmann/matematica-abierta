@@ -162,11 +162,7 @@ $$
 
 Quedan demostradas ambas equivalencias. ∎
 
-> **Auditoría de elección.** Las dos aplicaciones de densidad se realizan para pares fijos $x,y$. Cada una afirma la existencia de un solo racional intermedio en la demostración correspondiente. No se construye una selección simultánea de racionales para todos los pares de elementos.
-
 La proposición permite leer el orden del cuerpo directamente en $\mathcal P(\mathbb Q)$. Dos elementos tienen la misma posición ordenada exactamente cuando sus lados racionales inferiores coinciden; y avanzar estrictamente en el cuerpo equivale a ampliar estrictamente la traza.
-
----
 
 ### Teorema 12.5.2 — El transporte preserva y refleja el orden
 
@@ -250,8 +246,6 @@ La antisimetría del orden de $E$ da $x=y$. Por tanto $\Psi_{E,F}$ es inyectiva.
 
 El teorema ya muestra que $\Psi_{E,F}$ no deforma la recta ordenada: preserva y refleja exactamente todas las comparaciones. Falta comprobar que ningún elemento de $F$ queda fuera de su imagen. Para ello no necesitaremos buscar una preimagen; la construcción realizada con los cuerpos intercambiados proporciona una función canónica en sentido contrario.
 
----
-
 ### Corolario 12.5.3 — Los transportes simétricos son inversos
 
 Sean $(E,\iota_E)$ y $(F,\iota_F)$ completaciones ordenadas de $\mathbb Q$. Entonces, para todo $x\in E$ y todo $y\in F$,
@@ -332,8 +326,6 @@ $$
 $$
 
 ∎
-
-> **Auditoría de elección.** La sobreyectividad no se prueba escogiendo, para cada $y\in F$, alguna preimagen. La preimagen está dada por el término canónico $\Psi_{F,E}(y)$, construido previamente por el mismo procedimiento de supremo. No interviene ninguna función de elección.
 
 Con esto, $\Psi_{E,F}$ es ya un **isomorfismo de órdenes** entre las dos completaciones. La construcción depende únicamente de sus trazas racionales y la función inversa no requiere una definición adicional: es el mismo transporte con los cuerpos intercambiados.
 
