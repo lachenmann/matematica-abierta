@@ -132,11 +132,3 @@ Sea $R$ una relación sobre $A$.
 *Glosario: [relación de equivalencia](../otros/tratado-de-analisis-glosario.md#gl-relacion-equivalencia)*
 
 Una relación $\sim$ sobre $A$ es una **relación de equivalencia** si es reflexiva, simétrica y transitiva.
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Esta entrega del capítulo comprende ya §§0.0–0.4. La siguiente incorporará **0.5 — Clases de equivalencia, particiones y cocientes** y continuará en el orden del manuscrito maestro.
-
-El [**Glosario matemático del Tratado**](../otros/tratado-de-analisis-glosario.md) se actualiza en paralelo: esta incorporación añade **relación binaria**, **dominio**, **recorrido**, **relación inversa**, **composición**, **reflexividad**, **simetría**, **antisimetría**, **transitividad**, **totalidad** y **relación de equivalencia**.
-:::

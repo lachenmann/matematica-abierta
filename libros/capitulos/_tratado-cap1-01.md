@@ -131,9 +131,3 @@ Equivalentemente, si una propiedad $P$ satisface $P(0)$ y $P(n)\Rightarrow P(S(n
 
 **Demostración.**  
 Las hipótesis hacen de $A$ un conjunto inductivo. Por minimalidad $\mathbb N\subseteq A$; junto con $A\subseteq\mathbb N$, obtenemos igualdad. La versión para $P$ se aplica a $\{n\in\mathbb N:P(n)\}$. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.1 queda construida canónicamente $\mathbb N=\omega$ y demostrado el principio de inducción. La siguiente entrega será **§1.2 — Estructura de los naturales y Peano**, donde las propiedades de Peano aparecerán como teoremas de esta construcción, no como axiomas adicionales.
-:::

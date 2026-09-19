@@ -194,9 +194,3 @@ $$
 
 **Demostración.**  
 Para cada parámetro $p$, el Teorema 1.3.7 da una única función recursiva $f_p$. El grafo de $F$ se define por separación en $(P\times\mathbb N)\times X$ mediante la fórmula «$x$ es el valor en $n$ de la única función recursiva asociada a $p$». La unicidad local garantiza funcionalidad y elimina cualquier necesidad de elección. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.3 queda justificada rigurosamente la definición por recursión sobre $\mathbb N$, incluida su versión con parámetros. La siguiente entrega será **§1.4 — Suma de números naturales**, donde este corolario producirá la operación $+\colon\mathbb N\times\mathbb N\to\mathbb N$ antes de demostrar sus leyes algebraicas.
-:::

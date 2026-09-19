@@ -77,9 +77,3 @@ Definimos
 $$
 \boxed{1:=S(0).}
 $$
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Con §1.2 las propiedades de Peano han quedado demostradas dentro de la construcción conjuntista de $\mathbb N$. La siguiente entrega será **§1.3 — Teorema de recursión**, que justificará las definiciones paso a paso sobre los naturales antes de introducir la suma.
-:::

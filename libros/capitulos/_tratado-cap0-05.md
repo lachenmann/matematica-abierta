@@ -155,11 +155,3 @@ $$
 
 **Demostración.**  
 Por Definición 0.5.7, $A/{\sim}$ se obtiene por separación dentro de $\mathcal P(A)$. ∎
-
----
-
-::: {.callout-note title="Publicación progresiva"}
-Esta entrega del capítulo comprende ya §§0.0–0.5. La siguiente incorporará **0.6 — Funciones** y continuará en el orden del manuscrito maestro.
-
-El [**Glosario matemático del Tratado**](../otros/tratado-de-analisis-glosario.md) se actualiza en paralelo: esta incorporación añade **clase de equivalencia**, **representante**, **igualdad de clases**, **partición** y **conjunto cociente**.
-:::

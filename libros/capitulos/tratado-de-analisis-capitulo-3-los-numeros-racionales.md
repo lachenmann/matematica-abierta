@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-14
+date-modified: 2026-09-19
 areas:
   - fundamentos
   - analisis
@@ -32,7 +32,7 @@ license: GFDL-1.3-or-later
 
 # Capítulo 3 — Los números racionales
 
-[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md)
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-2-los-numeros-enteros.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-4-cuerpos-ordenados-y-el-problema-de-la-completitud.md)
 
 *Parte I — Fundamentos y construcción de los números reales*
 
