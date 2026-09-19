@@ -108,7 +108,8 @@ $$
 S\circ R\subseteq A\times C.
 $$
 
-**Demostración.**  
+**Demostración.**
+
 Ambas inclusiones forman parte de las condiciones definitorias de las Definiciones 0.4.3 y 0.4.4: cada construcción se obtiene por separación dentro del producto cartesiano correspondiente. ∎
 
 ---

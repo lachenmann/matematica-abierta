@@ -35,7 +35,6 @@ license: GFDL-1.3-or-later
 
 *Parte I — Fundamentos y construcción de los números reales*
 
-
 ---
 
 {{< include _tratado-cap0-00.md >}}

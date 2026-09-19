@@ -76,7 +76,7 @@ Para $A\subseteq\mathbb R$, definimos su **clausura secuencial** como
 
 $$
 \boxed{\operatorname{SCl}(A):=
-\{x\in\mathbb R:\exists s\in\mathbb R^{\mathbb N}\ 
+\{x\in\mathbb R:\exists s\in\mathbb R^{\mathbb N}\;
 [\,\forall n\in\mathbb N\ (s_n\in A)\ \land\ s_n\to x\,]\}.}
 $$
 
@@ -154,13 +154,13 @@ Sea $A\subseteq\mathbb R$ y supongamos **dada** una sobreyección $e:\mathbb N\t
 
 $$
 \boxed{x\in\overline A\iff
-\exists s\in\mathbb R^{\mathbb N}\ 
+\exists s\in\mathbb R^{\mathbb N}\;
 [\,\forall n\ (s_n\in A)\ \land\ s_n\to x\,],}
 $$
 
 $$
 \boxed{x\in\operatorname{Acc}(A)\iff
-\exists s\in\mathbb R^{\mathbb N}\ 
+\exists s\in\mathbb R^{\mathbb N}\;
 [\,\forall n\ (s_n\in A\setminus\{x\})\ \land\ s_n\to x\,].}
 $$
 

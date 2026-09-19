@@ -220,19 +220,19 @@ La ecuación recursiva de $p$ se traduce exactamente en las fórmulas afirmadas 
 
 Para todo $n\in\mathbb N$ se cumplen:
 
-1. 
+1.
    $$
    0_{\mathbb Q}<a_n<b_n;
    $$
-2. 
+2.
    $$
    a_n^2<2_{\mathbb Q}<b_n^2;
    $$
-3. 
+3.
    $$
    a_n\leq a_{S(n)}<b_{S(n)}\leq b_n;
    $$
-4. 
+4.
    $$
    b_{S(n)}-a_{S(n)}
    =
