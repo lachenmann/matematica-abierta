@@ -6,7 +6,7 @@ content-id: MA-BOK-0007
 content-type: book
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-16
+date-modified: 2026-09-19
 areas:
   - algebra
   - fundamentos
@@ -54,6 +54,7 @@ related:
   - MA-BCH-0048
   - MA-BCH-0049
   - MA-BCH-0050
+  - MA-BCH-0062
 provenance:
   type: original
   sources: []
@@ -258,6 +259,7 @@ El capítulo 26 — **Anillos ordenados** — permanece abierto en la fuente de 
 26. [**Capítulo 23 — Homomorfismos de cuerpos**](../capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md) (`MA-BCH-0048`) — especializa los homomorfismos de anillos y demuestra la inyectividad automática entre cuerpos.
 27. [**Capítulo 24 — Cuerpo de fracciones de un dominio íntegro**](../capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) (`MA-BCH-0049`) — construye el cuerpo de fracciones sin elección global de representantes y establece la inmersión canónica del dominio.
 28. [**Capítulo 25 — Grupos ordenados**](../capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md) (`MA-BCH-0050`) — abre la Parte V con compatibilidad entre orden y operación de grupo y la reconstrucción mediante conos.
+29. [**Capítulo 26 — Anillos ordenados**](../capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md) (`MA-BCH-0062`) — estudia la compatibilidad multiplicativa del orden y las hipótesis necesarias para las desigualdades estrictas.
 
 ### Ruta prevista
 
@@ -266,7 +268,7 @@ El capítulo 26 — **Anillos ordenados** — permanece abierto en la fuente de 
 - **Parte II — Monoides y grupos:** publicada hasta el primer teorema de isomorfía para grupos.
 - **Parte III — Anillos y dominios:** publicada hasta dominios íntegros.
 - **Parte IV — Cuerpos:** publicada hasta el cuerpo de fracciones de un dominio íntegro.
-- **Parte V — Estructuras ordenadas:** publicada actualmente hasta grupos ordenados.
-- **Partes posteriores:** anillos ordenados, espacios vectoriales, homomorfismos y cocientes en estructuras posteriores y álgebra multilineal básica.
+- **Parte V — Estructuras ordenadas:** publicada actualmente hasta anillos ordenados.
+- **Partes posteriores:** cuerpos ordenados aún en elaboración; espacios vectoriales, homomorfismos y cocientes en estructuras posteriores y álgebra multilineal básica.
 
-El **Capítulo 26 — Anillos ordenados** permanece abierto en la fuente canónica y no se incorpora en esta sincronización.
+El **Capítulo 27 — Cuerpos ordenados** permanece activo en la fuente canónica y no se incorpora en esta sincronización.

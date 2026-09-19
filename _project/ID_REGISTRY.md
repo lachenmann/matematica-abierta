@@ -1,5 +1,7 @@
 # Registro de identificadores
 
+> **Reconciliación pendiente:** los capítulos 5–15 del Tratado de análisis ya usan `MA-BCH-0051`–`MA-BCH-0061` en sus propios metadatos y en `libros/capitulos/index.qmd`, pero aún no figuran en esta tabla. Se reserva `MA-BCH-0062` para el capítulo 26 del Tratado moderno de Álgebra. Antes de nuevas asignaciones, incorporar esas once entradas al registro.
+
 ## Próximos IDs disponibles
 
 | Tipo | Próximo |
@@ -9,7 +11,7 @@
 | Artículo | MA-ART-0004 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0051 |
+| Capítulo | MA-BCH-0063 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -98,6 +100,7 @@
 | MA-BCH-0048 | book-chapter | Tratado moderno de Álgebra — Capítulo 23: Homomorfismos de cuerpos | `libros/capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md` | published |
 | MA-BCH-0049 | book-chapter | Tratado moderno de Álgebra — Capítulo 24: Cuerpo de fracciones de un dominio íntegro | `libros/capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md` | published |
 | MA-BCH-0050 | book-chapter | Tratado moderno de Álgebra — Capítulo 25: Grupos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md` | published |
+| MA-BCH-0062 | book-chapter | Tratado moderno de Álgebra — Capítulo 26: Anillos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |

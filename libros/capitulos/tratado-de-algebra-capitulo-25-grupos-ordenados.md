@@ -633,4 +633,4 @@ El último paso prepara directamente el capítulo siguiente. Para ordenar un ani
 
 ---
 
-[← **Capítulo 24 — Cuerpo de fracciones de un dominio íntegro**](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) · [**Tratado moderno de Álgebra** →](../otros/tratado-de-algebra.md)
+[← **Capítulo 24 — Cuerpo de fracciones de un dominio íntegro**](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 26 — Anillos ordenados** →](tratado-de-algebra-capitulo-26-anillos-ordenados.md)
