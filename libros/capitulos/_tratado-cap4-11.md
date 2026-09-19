@@ -21,4 +21,3 @@ $$
 $$
 
 Sólo una vez concluida esta construcción emprenderemos, de manera independiente, la vía de las sucesiones de Cauchy y compararemos ambos modelos.
-

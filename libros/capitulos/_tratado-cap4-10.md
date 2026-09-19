@@ -6,4 +6,3 @@ Este capítulo no importa ningún teorema externo. Las demostraciones son intern
 - **Tao** sirve como contraste para la estructura de cuerpos ordenados, arquimedianidad y propiedad del supremo.
 - **Garling** orienta especialmente la continuidad entre cuerpos ordenados completos y el análisis real posterior.
 - **Conway** será la referencia arquitectónica principal para la construcción de Dedekind que comienza en el capítulo siguiente.
-
