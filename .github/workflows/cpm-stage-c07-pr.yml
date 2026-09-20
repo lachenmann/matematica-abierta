@@ -25,17 +25,18 @@ jobs:
           ref: cpm/publicacion-capitulo-7
       - name: Install read-only Drive client
         run: python -m pip install --disable-pip-version-check google-api-python-client google-auth
-      - name: Accept valid LaTeX row spacing in source checking
+      - name: Avoid rejecting valid TeX spacing in an ephemeral script
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
           path = Path('scripts/cpm_stage_c07_public.py')
-          source = path.read_text(encoding='utf-8')
-          needle = " or '\\[' in body"
-          if source.count(needle) != 1:
+          lines = path.read_text(encoding='utf-8').splitlines(keepends=True)
+          matches = [i for i, line in enumerate(lines) if line.strip().startswith("if '[[' in body or ")]
+          if len(matches) != 1:
               raise SystemExit('Unexpected staging script version')
-          path.write_text(source.replace(needle, '', 1), encoding='utf-8')
+          lines[matches[0]] = "    if '[[' in body:\n"
+          path.write_text(''.join(lines), encoding='utf-8')
           PY
       - name: Prepare derivative and validate exact private source
         run: python scripts/cpm_stage_c07_public.py
