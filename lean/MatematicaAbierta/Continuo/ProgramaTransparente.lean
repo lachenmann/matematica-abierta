@@ -815,10 +815,10 @@ theorem programaVisible_estable
     (h : programaVisible χA χB p n = some b) :
     programaVisible χA χB p (n + k) = some b := by
   induction k with
-  | zero => simpa using h
+  | zero => exact h
   | succ k ih =>
       have hs := programaVisible_estable_succ χA χB p (n + k) b ih
-      simpa [Nat.add_succ] using hs
+      exact hs
 
 /-- La observación ejecutable implementa, por definición, el grafo AUD-021. -/
 theorem programaVisible_grafo_iff
