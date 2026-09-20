@@ -67,6 +67,49 @@ jobs:
           )"
           CPM_CHROME_BIN="$CHROME" python "$CPM_ROOT/00 - Administración/CPM_C08_QA_MATHJAX4_NAVEGACION_v01.py" "$CPM_ROOT"
 
+      # Los registros de un repositorio público no deben mostrar páginas privadas ni URLs
+      # del manuscrito. Solo se emiten nombres de comprobaciones y estadísticas agregadas.
+      - name: Report privacy-safe visual failure categories
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, re
+          path = pathlib.Path(os.environ['CPM_ROOT']) / '99 - Build/QA_C08_MATHJAX4_NAV/CPM_C08_QA_MATHJAX4_NAV_RESULTADO.json'
+          if not path.is_file():
+              print('DIAGNOSTICS_UNAVAILABLE: no browser JSON was generated')
+          else:
+              report = json.loads(path.read_text(encoding='utf-8'))
+              browser = report.get('browser', {})
+              print('QA_STATUS:', report.get('status', 'UNKNOWN'))
+              print('QA_FAILURE_COUNT:', len(browser.get('failures', [])))
+              for viewport in browser.get('viewports', []):
+                  width = viewport.get('width_requested', 'unknown')
+                  if 'error' in viewport:
+                      print('QA_VIEWPORT_EXCEPTION:', width)
+                  for name, passed in viewport.get('checks', {}).items():
+                      if not passed:
+                          print('QA_CHECK_FAILED:', width, name)
+              print('QA_JS_ERROR_COUNT:', len(browser.get('javascript_errors', [])))
+              print('QA_FAILED_REQUEST_COUNT:', len(browser.get('failed_requests', [])))
+              print('QA_HTTP_ERROR_COUNT:', len(browser.get('http_errors', [])))
+              classified = set()
+              for failure in browser.get('failures', []):
+                  match = re.match(r'^(\d+px) ([a-z_]+)(?::|\s)', failure)
+                  if match:
+                      classified.add(match.group(1) + ' ' + match.group(2))
+                  elif 'errores JavaScript' in failure:
+                      classified.add('javascript_errors')
+                  elif 'recursos no descargados' in failure:
+                      classified.add('failed_requests')
+                  elif 'errores HTTP' in failure:
+                      classified.add('http_errors')
+                  else:
+                      classified.add('other_failure')
+              for item in sorted(classified):
+                  print('QA_FAILURE_CATEGORY:', item)
+          PY
+
       - name: Store JSON and screenshots in private canonical Drive build folder
         if: always()
         shell: bash
