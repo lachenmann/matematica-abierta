@@ -1,0 +1,2458 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gustav A. Tachek">
+<meta name="description" content="Capítulo del Tratado moderno de Álgebra dedicado a anillos ordenados, publicado desde la fuente canónica cerrada del tratado.">
+
+<title>Tratado moderno de Álgebra — Capítulo 26: Anillos ordenados – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#capítulo-26-anillos-ordenados" id="toc-capítulo-26-anillos-ordenados" class="nav-link active" data-scroll-target="#capítulo-26-anillos-ordenados">Capítulo 26 — Anillos ordenados</a>
+  <ul class="collapse">
+  <li><a href="#el-problema-hacer-compatible-el-orden-con-dos-operaciones" id="toc-el-problema-hacer-compatible-el-orden-con-dos-operaciones" class="nav-link" data-scroll-target="#el-problema-hacer-compatible-el-orden-con-dos-operaciones">26.0. El problema: hacer compatible el orden con dos operaciones</a></li>
+  <li><a href="#de-grupo-aditivo-ordenado-a-anillo-ordenado" id="toc-de-grupo-aditivo-ordenado-a-anillo-ordenado" class="nav-link" data-scroll-target="#de-grupo-aditivo-ordenado-a-anillo-ordenado">26.1. De grupo aditivo ordenado a anillo ordenado</a>
+  <ul class="collapse">
+  <li><a href="#talg-def-00059" id="toc-talg-def-00059" class="nav-link" data-scroll-target="#talg-def-00059">Definición 26.1.1 — Anillo ordenado</a></li>
+  </ul></li>
+  <li><a href="#qué-exige-y-qué-no-exige-la-definición" id="toc-qué-exige-y-qué-no-exige-la-definición" class="nav-link" data-scroll-target="#qué-exige-y-qué-no-exige-la-definición">26.2. Qué exige —y qué no exige— la definición</a>
+  <ul class="collapse">
+  <li><a href="#la-suma-ya-aporta-la-invariancia-por-traslación" id="toc-la-suma-ya-aporta-la-invariancia-por-traslación" class="nav-link" data-scroll-target="#la-suma-ya-aporta-la-invariancia-por-traslación">26.2.1. La suma ya aporta la invariancia por traslación</a></li>
+  <li><a href="#la-multiplicación-no-se-declara-monótona-para-factores-arbitrarios" id="toc-la-multiplicación-no-se-declara-monótona-para-factores-arbitrarios" class="nav-link" data-scroll-target="#la-multiplicación-no-se-declara-monótona-para-factores-arbitrarios">26.2.2. La multiplicación no se declara monótona para factores arbitrarios</a></li>
+  <li><a href="#el-orden-no-tiene-por-qué-ser-total" id="toc-el-orden-no-tiene-por-qué-ser-total" class="nav-link" data-scroll-target="#el-orden-no-tiene-por-qué-ser-total">26.2.3. El orden no tiene por qué ser total</a></li>
+  <li><a href="#la-multiplicación-no-tiene-por-qué-ser-conmutativa" id="toc-la-multiplicación-no-tiene-por-qué-ser-conmutativa" class="nav-link" data-scroll-target="#la-multiplicación-no-tiene-por-qué-ser-conmutativa">26.2.4. La multiplicación no tiene por qué ser conmutativa</a></li>
+  <li><a href="#no-se-postula-todavía-positividad-estricta" id="toc-no-se-postula-todavía-positividad-estricta" class="nav-link" data-scroll-target="#no-se-postula-todavía-positividad-estricta">26.2.5. No se postula todavía positividad estricta</a></li>
+  <li><a href="#no-se-impone-01" id="toc-no-se-impone-01" class="nav-link" data-scroll-target="#no-se-impone-01">26.2.6. No se impone <span class="math inline">\(0&lt;1\)</span></a></li>
+  <li><a href="#totalidad-no-significa-decidibilidad" id="toc-totalidad-no-significa-decidibilidad" class="nav-link" data-scroll-target="#totalidad-no-significa-decidibilidad">26.2.7. Totalidad no significa decidibilidad</a></li>
+  </ul></li>
+  <li><a href="#cambio-de-representación-del-orden-al-sector-no-negativo" id="toc-cambio-de-representación-del-orden-al-sector-no-negativo" class="nav-link" data-scroll-target="#cambio-de-representación-del-orden-al-sector-no-negativo">26.3. Cambio de representación: del orden al sector no negativo</a></li>
+  <li><a href="#prueba-de-estrés-de-la-definición" id="toc-prueba-de-estrés-de-la-definición" class="nav-link" data-scroll-target="#prueba-de-estrés-de-la-definición">26.4. Prueba de estrés de la definición</a></li>
+  <li><a href="#monotonía-multiplicativa-bajo-una-hipótesis-de-signo" id="toc-monotonía-multiplicativa-bajo-una-hipótesis-de-signo" class="nav-link" data-scroll-target="#monotonía-multiplicativa-bajo-una-hipótesis-de-signo">26.6. Monotonía multiplicativa bajo una hipótesis de signo</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00068" id="toc-talg-pro-00068" class="nav-link" data-scroll-target="#talg-pro-00068">Proposición 26.6.1 — Monotonía multiplicativa por factores no negativos</a></li>
+  </ul></li>
+  <li><a href="#multiplicar-por-un-factor-no-positivo-invierte-el-orden" id="toc-multiplicar-por-un-factor-no-positivo-invierte-el-orden" class="nav-link" data-scroll-target="#multiplicar-por-un-factor-no-positivo-invierte-el-orden">26.8. Multiplicar por un factor no positivo invierte el orden</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00069" id="toc-talg-pro-00069" class="nav-link" data-scroll-target="#talg-pro-00069">Proposición 26.8.1 — Antitonicidad multiplicativa por factores no positivos</a></li>
+  </ul></li>
+  <li><a href="#el-producto-de-dos-elementos-no-positivos" id="toc-el-producto-de-dos-elementos-no-positivos" class="nav-link" data-scroll-target="#el-producto-de-dos-elementos-no-positivos">26.10. El producto de dos elementos no positivos</a>
+  <ul class="collapse">
+  <li><a href="#talg-cor-00017" id="toc-talg-cor-00017" class="nav-link" data-scroll-target="#talg-cor-00017">Corolario 26.10.1 — Producto de dos elementos no positivos es no negativo</a></li>
+  </ul></li>
+  <li><a href="#cuando-todas-las-parejas-son-comparables" id="toc-cuando-todas-las-parejas-son-comparables" class="nav-link" data-scroll-target="#cuando-todas-las-parejas-son-comparables">26.12. Cuando todas las parejas son comparables</a>
+  <ul class="collapse">
+  <li><a href="#talg-def-00060" id="toc-talg-def-00060" class="nav-link" data-scroll-target="#talg-def-00060">Definición 26.12.1 — Anillo totalmente ordenado</a></li>
+  </ul></li>
+  <li><a href="#por-qué-la-totalidad-garantiza-la-no-negatividad-de-los-cuadrados" id="toc-por-qué-la-totalidad-garantiza-la-no-negatividad-de-los-cuadrados" class="nav-link" data-scroll-target="#por-qué-la-totalidad-garantiza-la-no-negatividad-de-los-cuadrados">26.14. Por qué la totalidad garantiza la no negatividad de los cuadrados</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00070" id="toc-talg-pro-00070" class="nav-link" data-scroll-target="#talg-pro-00070">Proposición 26.14.1 — Todo cuadrado es no negativo en un anillo totalmente ordenado</a></li>
+  </ul></li>
+  <li><a href="#la-posición-de-la-unidad-multiplicativa" id="toc-la-posición-de-la-unidad-multiplicativa" class="nav-link" data-scroll-target="#la-posición-de-la-unidad-multiplicativa">26.16. La posición de la unidad multiplicativa</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00071" id="toc-talg-pro-00071" class="nav-link" data-scroll-target="#talg-pro-00071">Proposición 26.16.1 — La unidad es no negativa y, bajo no trivialidad, positiva</a></li>
+  </ul></li>
+  <li><a href="#de-la-no-negatividad-a-la-positividad-del-producto" id="toc-de-la-no-negatividad-a-la-positividad-del-producto" class="nav-link" data-scroll-target="#de-la-no-negatividad-a-la-positividad-del-producto">26.18. De la no negatividad a la positividad del producto</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00072" id="toc-talg-pro-00072" class="nav-link" data-scroll-target="#talg-pro-00072">Proposición 26.18.1 — Positividad estricta del producto bajo ausencia de divisores de cero</a></li>
+  </ul></li>
+  <li><a href="#una-desigualdad-estricta-y-el-producto-de-su-diferencia" id="toc-una-desigualdad-estricta-y-el-producto-de-su-diferencia" class="nav-link" data-scroll-target="#una-desigualdad-estricta-y-el-producto-de-su-diferencia">26.20. Una desigualdad estricta y el producto de su diferencia</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00073" id="toc-talg-pro-00073" class="nav-link" data-scroll-target="#talg-pro-00073">Proposición 26.20.1 — Monotonía multiplicativa estricta por factores positivos sin productos nulos</a></li>
+  </ul></li>
+  <li><a href="#de-la-monotonía-estricta-a-la-inversión-estricta" id="toc-de-la-monotonía-estricta-a-la-inversión-estricta" class="nav-link" data-scroll-target="#de-la-monotonía-estricta-a-la-inversión-estricta">26.22. De la monotonía estricta a la inversión estricta</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00074" id="toc-talg-pro-00074" class="nav-link" data-scroll-target="#talg-pro-00074">Proposición 26.22.1 — Antitonicidad multiplicativa estricta por factores negativos sin productos nulos</a></li>
+  </ul></li>
+  <li><a href="#signos-opuestos-del-orden-no-estricto-al-estricto" id="toc-signos-opuestos-del-orden-no-estricto-al-estricto" class="nav-link" data-scroll-target="#signos-opuestos-del-orden-no-estricto-al-estricto">26.24. Signos opuestos: del orden no estricto al estricto</a>
+  <ul class="collapse">
+  <li><a href="#talg-cor-00018" id="toc-talg-cor-00018" class="nav-link" data-scroll-target="#talg-cor-00018">Corolario 26.24.1 — Producto de factores de signo opuesto: no positividad y negatividad estricta bajo no nulidad</a></li>
+  </ul></li>
+  <li><a href="#cuándo-un-cuadrado-es-estrictamente-positivo" id="toc-cuándo-un-cuadrado-es-estrictamente-positivo" class="nav-link" data-scroll-target="#cuándo-un-cuadrado-es-estrictamente-positivo">26.26. Cuándo un cuadrado es estrictamente positivo</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00075" id="toc-talg-pro-00075" class="nav-link" data-scroll-target="#talg-pro-00075">Proposición 26.26.1 — Positividad estricta de cuadrados no nulos en anillos totalmente ordenados</a></li>
+  </ul></li>
+  <li><a href="#de-dos-factores-negativos-a-un-producto-estrictamente-positivo" id="toc-de-dos-factores-negativos-a-un-producto-estrictamente-positivo" class="nav-link" data-scroll-target="#de-dos-factores-negativos-a-un-producto-estrictamente-positivo">26.28. De dos factores negativos a un producto estrictamente positivo</a>
+  <ul class="collapse">
+  <li><a href="#talg-cor-00019" id="toc-talg-cor-00019" class="nav-link" data-scroll-target="#talg-cor-00019">Corolario 26.28.1 — Positividad estricta de productos de factores negativos bajo no nulidad</a></li>
+  </ul></li>
+  <li><a href="#preservar-una-comparación-no-equivale-a-reflejarla" id="toc-preservar-una-comparación-no-equivale-a-reflejarla" class="nav-link" data-scroll-target="#preservar-una-comparación-no-equivale-a-reflejarla">26.30. Preservar una comparación no equivale a reflejarla</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00076" id="toc-talg-pro-00076" class="nav-link" data-scroll-target="#talg-pro-00076">Proposición 26.30.1 — Reflexión del orden estricto por factores positivos en anillos totalmente ordenados</a></li>
+  </ul></li>
+  <li><a href="#multiplicar-por-un-negativo-recuperar-y-transmitir-el-orden" id="toc-multiplicar-por-un-negativo-recuperar-y-transmitir-el-orden" class="nav-link" data-scroll-target="#multiplicar-por-un-negativo-recuperar-y-transmitir-el-orden">26.32. Multiplicar por un negativo: recuperar y transmitir el orden</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00077" id="toc-talg-pro-00077" class="nav-link" data-scroll-target="#talg-pro-00077">Proposición 26.32.1 — Reflexión de la antitonicidad estricta por factores negativos en anillos totalmente ordenados</a></li>
+  </ul></li>
+  <li><a href="#una-desigualdad-no-estricta-puede-ocultar-una-igualdad-de-productos" id="toc-una-desigualdad-no-estricta-puede-ocultar-una-igualdad-de-productos" class="nav-link" data-scroll-target="#una-desigualdad-no-estricta-puede-ocultar-una-igualdad-de-productos">26.34. Una desigualdad no estricta puede ocultar una igualdad de productos</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00078" id="toc-talg-pro-00078" class="nav-link" data-scroll-target="#talg-pro-00078">Proposición 26.34.1 — Reflexión del orden no estricto bajo ausencia de productos nulos en anillos totalmente ordenados</a></li>
+  </ul></li>
+  <li><a href="#síntesis-deductiva-del-capítulo" id="toc-síntesis-deductiva-del-capítulo" class="nav-link" data-scroll-target="#síntesis-deductiva-del-capítulo">26.36. Síntesis deductiva del capítulo</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tratado moderno de Álgebra — Capítulo 26: Anillos ordenados</h1>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo del Tratado moderno de Álgebra dedicado a anillos ordenados, publicado desde la fuente canónica cerrada del tratado.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gustav A. Tachek </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">19 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="capítulo-26-anillos-ordenados" class="level1">
+<h1>Capítulo 26 — Anillos ordenados</h1>
+<section id="el-problema-hacer-compatible-el-orden-con-dos-operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-hacer-compatible-el-orden-con-dos-operaciones">26.0. El problema: hacer compatible el orden con dos operaciones</h2>
+<p>Un grupo ordenado combina una operación con una relación de orden. Un anillo introduce una dificultad nueva: sobre el mismo conjunto conviven <strong>suma</strong> y <strong>multiplicación</strong>, y el orden no interactúa con ambas de la misma manera.</p>
+<p>Para la suma, la compatibilidad natural es global. Si</p>
+<p><span class="math display">\[
+a\le b,
+\]</span></p>
+<p>entonces añadir el mismo elemento a ambos miembros debe conservar la comparación:</p>
+<p><span class="math display">\[
+a+c\le b+c.
+\]</span></p>
+<p>Eso ya está contenido en la teoría de grupos ordenados del capítulo anterior.</p>
+<p>La multiplicación exige más cuidado. No sería correcto postular que multiplicar una desigualdad por un elemento arbitrario conserva siempre el sentido del orden. La experiencia elemental con los números muestra precisamente el obstáculo: el signo del factor importa. Por ello la compatibilidad multiplicativa se formulará en torno a la región no negativa.</p>
+<p>La pregunta estructural es entonces:</p>
+<blockquote class="blockquote">
+<p><strong>¿qué condición mínima debe relacionar multiplicación y orden para que la noción de “producto de elementos no negativos” tenga el comportamiento esperado?</strong></p>
+</blockquote>
+<p>La respuesta será exigir que la no negatividad sea estable bajo multiplicación.</p>
+<blockquote class="blockquote">
+<p><strong>Profundidad pedagógica — P3.</strong> El punto cognitivo central de este capítulo es distinguir tres capas: la estructura aditiva ordenada, la estructura multiplicativa del anillo y la ley que las conecta. No se debe trasladar mecánicamente a la multiplicación la regla de monotonía de la suma. La dirección correcta será primero fijar la estabilidad de los no negativos y, después, deducir de ella reglas de monotonía multiplicativa bajo hipótesis de signo.</p>
+</blockquote>
+<p>La Parte V continúa siendo estrictamente algebraico-ordenada. En particular, en este capítulo no se introducen completitud, supremos, convergencia ni propiedades arquimedianas.</p>
+<hr>
+</section>
+<section id="de-grupo-aditivo-ordenado-a-anillo-ordenado" class="level2">
+<h2 class="anchored" data-anchor-id="de-grupo-aditivo-ordenado-a-anillo-ordenado">26.1. De grupo aditivo ordenado a anillo ordenado</h2>
+<p>El capítulo 14 fijó que un anillo</p>
+<p><span class="math display">\[
+\mathcal R=\langle R,+,\cdot\rangle
+\]</span></p>
+<p>tiene como estructura aditiva un grupo abeliano. El capítulo 25 fijó qué significa dotar a un grupo de un orden parcial compatible con sus traslaciones.</p>
+<p>Por tanto, la primera parte de la definición siguiente no crea una nueva noción de compatibilidad aditiva: reutiliza exactamente la Definición 25.2.1 sobre el grupo</p>
+<p><span class="math display">\[
+\langle R,+\rangle.
+\]</span></p>
+<p>La segunda parte es genuinamente nueva y conecta el orden con la multiplicación.</p>
+<section id="talg-def-00059" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00059">Definición 26.1.1 — Anillo ordenado</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+\mathcal R=\langle R,+,\cdot\rangle
+\]</span></p>
+<p>un anillo y sea <span class="math inline">\(\le\)</span> un orden parcial sobre <span class="math inline">\(R\)</span>. Diremos que la estructura</p>
+<p><span class="math display">\[
+\langle R,+,\cdot,\le\rangle
+\]</span></p>
+<p>es un <strong>anillo ordenado</strong> si se cumplen las dos condiciones siguientes:</p>
+<ol type="1">
+<li><p>el grupo aditivo</p>
+<p><span class="math display">\[
+\langle R,+\rangle
+\]</span></p>
+<p>junto con <span class="math inline">\(\le\)</span> es un grupo ordenado;</p></li>
+<li><p>para todos <span class="math inline">\(a,b\in R\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+0\le a\ \land\ 0\le b
+\Longrightarrow
+0\le a\cdot b.
+}
+\]</span></p></li>
+</ol>
+<p>La expresión <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> es una abreviatura tipográfica de una codificación conjuntista mediante pares anidados; no introduce una cuádrupla primitiva.</p>
+<p>La segunda condición puede leerse así:</p>
+<p><span class="math display">\[
+\boxed{
+\text{no negativo}\times\text{no negativo}
+\Longrightarrow
+\text{no negativo}.
+}
+\]</span></p>
+<p>Es la compatibilidad multiplicativa básica del anillo ordenado.</p>
+<hr>
+</section>
+</section>
+<section id="qué-exige-y-qué-no-exige-la-definición" class="level2">
+<h2 class="anchored" data-anchor-id="qué-exige-y-qué-no-exige-la-definición">26.2. Qué exige —y qué no exige— la definición</h2>
+<p>La definición tiene una arquitectura deliberadamente austera.</p>
+<section id="la-suma-ya-aporta-la-invariancia-por-traslación" class="level3">
+<h3 class="anchored" data-anchor-id="la-suma-ya-aporta-la-invariancia-por-traslación">26.2.1. La suma ya aporta la invariancia por traslación</h3>
+<p>Como <span class="math inline">\(\langle R,+\rangle\)</span> es abeliano, la compatibilidad bilateral de la Definición 25.2.1 se reduce, por el Corolario 25.3.2, a la regla familiar</p>
+<p><span class="math display">\[
+a\le b
+\Longrightarrow
+a+c\le b+c.
+\]</span></p>
+<p>No es necesario añadir esta condición de nuevo como un axioma independiente del anillo ordenado.</p>
+</section>
+<section id="la-multiplicación-no-se-declara-monótona-para-factores-arbitrarios" class="level3">
+<h3 class="anchored" data-anchor-id="la-multiplicación-no-se-declara-monótona-para-factores-arbitrarios">26.2.2. La multiplicación no se declara monótona para factores arbitrarios</h3>
+<p>No se postula</p>
+<p><span class="math display">\[
+a\le b
+\Longrightarrow
+ac\le bc
+\]</span></p>
+<p>para todo <span class="math inline">\(c\in R\)</span>.</p>
+<p>Una regla de ese tipo sólo será válida bajo hipótesis apropiadas sobre el signo de <span class="math inline">\(c\)</span>. Precisamente por eso la definición parte de la estabilidad multiplicativa de los no negativos. Las reglas de monotonía se demostrarán después; no se incorporan clandestinamente a la definición.</p>
+</section>
+<section id="el-orden-no-tiene-por-qué-ser-total" class="level3">
+<h3 class="anchored" data-anchor-id="el-orden-no-tiene-por-qué-ser-total">26.2.3. El orden no tiene por qué ser total</h3>
+<p>Un anillo ordenado, en el sentido fijado aquí, puede poseer elementos incomparables. No se exige</p>
+<p><span class="math display">\[
+a\le b\ \lor\ b\le a.
+\]</span></p>
+<p>La totalidad será una condición adicional cuando resulte necesaria.</p>
+</section>
+<section id="la-multiplicación-no-tiene-por-qué-ser-conmutativa" class="level3">
+<h3 class="anchored" data-anchor-id="la-multiplicación-no-tiene-por-qué-ser-conmutativa">26.2.4. La multiplicación no tiene por qué ser conmutativa</h3>
+<p>La palabra <em>anillo</em> conserva la convención establecida en la Definición 14.1.1: la multiplicación es asociativa y unital, pero no necesariamente conmutativa.</p>
+<p>Por ello la definición de anillo ordenado tampoco añade conmutatividad. En desarrollos posteriores será importante distinguir, cuando corresponda, multiplicación por la izquierda y por la derecha.</p>
+</section>
+<section id="no-se-postula-todavía-positividad-estricta" class="level3">
+<h3 class="anchored" data-anchor-id="no-se-postula-todavía-positividad-estricta">26.2.5. No se postula todavía positividad estricta</h3>
+<p>La condición</p>
+<p><span class="math display">\[
+0\le a,
+\qquad
+0\le b
+\]</span></p>
+<p>implica solamente</p>
+<p><span class="math display">\[
+0\le ab.
+\]</span></p>
+<p>No se reemplaza por una afirmación estricta del tipo</p>
+<p><span class="math display">\[
+0&lt;a,
+\qquad
+0&lt;b
+\Longrightarrow
+0&lt;ab.
+\]</span></p>
+<p>Tal fortalecimiento interactúa con divisores de cero, no trivialidad y totalidad, y debe analizarse por separado.</p>
+</section>
+<section id="no-se-impone-01" class="level3">
+<h3 class="anchored" data-anchor-id="no-se-impone-01">26.2.6. No se impone <span class="math inline">\(0&lt;1\)</span></h3>
+<p>La definición general tampoco incorpora</p>
+<p><span class="math display">\[
+0&lt;1.
+\]</span></p>
+<p>El tratado ya distingue la estructura de anillo de su no trivialidad, y aquí mantendremos esa separación. Cuando se introduzcan estructuras ordenadas más fuertes, las condiciones necesarias sobre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> se deducirán o se añadirán explícitamente, según corresponda.</p>
+</section>
+<section id="totalidad-no-significa-decidibilidad" class="level3">
+<h3 class="anchored" data-anchor-id="totalidad-no-significa-decidibilidad">26.2.7. Totalidad no significa decidibilidad</h3>
+<p>Incluso si más adelante el orden se supone total, la afirmación</p>
+<p><span class="math display">\[
+a\le b\ \lor\ b\le a
+\]</span></p>
+<p>no se identificará con la existencia de un algoritmo que decida cuál de las dos relaciones se cumple. Del mismo modo, esta definición no establece decidibilidad de la igualdad, de la no negatividad ni de la comparación.</p>
+<hr>
+</section>
+</section>
+<section id="cambio-de-representación-del-orden-al-sector-no-negativo" class="level2">
+<h2 class="anchored" data-anchor-id="cambio-de-representación-del-orden-al-sector-no-negativo">26.3. Cambio de representación: del orden al sector no negativo</h2>
+<p>La definición anterior puede leerse desde el cono no negativo del grupo aditivo. Si</p>
+<p><span class="math display">\[
+P_{\mathcal R}
+=
+\{a\in R:0\le a\},
+\]</span></p>
+<p>entonces la condición multiplicativa nueva dice precisamente que</p>
+<p><span class="math display">\[
+a,b\in P_{\mathcal R}
+\Longrightarrow
+ab\in P_{\mathcal R}.
+\]</span></p>
+<p>Es decir, al pasar de grupos ordenados a anillos ordenados, el cono no negativo no sólo debe codificar el orden aditivo: debe ser además <strong>cerrado bajo la multiplicación del anillo</strong>.</p>
+<p>Este cambio de representación será útil porque concentra la interacción entre las dos operaciones en un solo subconjunto estructuralmente distinguido.</p>
+<blockquote class="blockquote">
+<p><strong>Autoexplicación.</strong> En un grupo ordenado, el cono responde a la pregunta «¿qué elementos están por encima del origen?». En un anillo ordenado aparece una pregunta adicional: «¿qué hace la multiplicación con esa región?». La nueva exigencia responde: la mantiene cerrada.</p>
+</blockquote>
+<hr>
+</section>
+<section id="prueba-de-estrés-de-la-definición" class="level2">
+<h2 class="anchored" data-anchor-id="prueba-de-estrés-de-la-definición">26.4. Prueba de estrés de la definición</h2>
+<p>Antes de usar la nueva noción conviene separar afirmaciones que la definición <strong>sí</strong> proporciona de otras que todavía requieren demostración.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Afirmación</th>
+<th>Estado tras la Definición 26.1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(a\le b\Rightarrow a+c\le b+c\)</span></td>
+<td>disponible por la estructura aditiva ordenada</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(0\le a\)</span> y <span class="math inline">\(0\le b\Rightarrow0\le ab\)</span></td>
+<td>axioma multiplicativo de la definición</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a\le b\)</span> y <span class="math inline">\(0\le c\Rightarrow ac\le bc\)</span></td>
+<td>demostrado en la Proposición 26.6.1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(a\le b\)</span> y <span class="math inline">\(0\le c\Rightarrow ca\le cb\)</span></td>
+<td>demostrado en la Proposición 26.6.1</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a\le b\)</span> y <span class="math inline">\(c\le0\Rightarrow bc\le ac\)</span></td>
+<td>demostrado en la Proposición 26.8.1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(a\le b\)</span> y <span class="math inline">\(c\le0\Rightarrow cb\le ca\)</span></td>
+<td>demostrado en la Proposición 26.8.1</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a\le0\)</span> y <span class="math inline">\(b\le0\Rightarrow0\le ab\)</span></td>
+<td>demostrado en el Corolario 26.10.1</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(0&lt;a\)</span> y <span class="math inline">\(0&lt;b\Rightarrow0&lt;ab\)</span></td>
+<td>no establecido</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a\le b\lor b\le a\)</span></td>
+<td>no establecido</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(ab=ba\)</span></td>
+<td>no establecido</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(0&lt;1\)</span></td>
+<td>no establecido</td>
+</tr>
+<tr class="even">
+<td>comparabilidad decidible</td>
+<td>no establecido</td>
+</tr>
+</tbody>
+</table>
+<p>La distinción evita un error frecuente: leer como parte de la definición propiedades que en realidad dependen de distributividad, reglas de signos, hipótesis de no negatividad o condiciones estructurales posteriores.</p>
+<hr>
+</section>
+<section id="monotonía-multiplicativa-bajo-una-hipótesis-de-signo" class="level2">
+<h2 class="anchored" data-anchor-id="monotonía-multiplicativa-bajo-una-hipótesis-de-signo">26.6. Monotonía multiplicativa bajo una hipótesis de signo</h2>
+<p>La Definición 26.1.1 no declara que la multiplicación preserve el orden. Lo que declara es algo más elemental: el producto de dos elementos no negativos vuelve a ser no negativo. Ahora podemos convertir esa estabilidad en una regla de comparación.</p>
+<p>La idea de la demostración tiene tres movimientos:</p>
+<pre class="text"><code>a ≤ b
+↓ trasladar por -a
+0 ≤ b + (-a)
+↓ multiplicar por un elemento no negativo
+0 ≤ diferencia de los productos
+↓ trasladar de nuevo
+comparación entre los productos</code></pre>
+<p>El paso central es exactamente el lugar donde se necesita la hipótesis de signo sobre el factor.</p>
+<section id="talg-pro-00068" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00068">Proposición 26.6.1 — Monotonía multiplicativa por factores no negativos</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+\langle R,+,\cdot,\le\rangle
+\]</span></p>
+<p>un anillo ordenado. Para cualesquiera <span class="math inline">\(a,b,c\in R\)</span>, si</p>
+<p><span class="math display">\[
+a\le b
+\qquad\text{y}\qquad
+0\le c,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+a\cdot c\le b\cdot c.
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+c\cdot a\le c\cdot b.
+\]</span></p>
+<p>Es decir: multiplicar por un elemento no negativo preserva el orden tanto por la derecha como por la izquierda.</p>
+<section id="talg-prf-00109" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00109">Demostración</h4>
+<p>Supongamos</p>
+<p><span class="math display">\[
+a\le b
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+0\le c.
+\]</span></p>
+<p>Como el grupo aditivo de un anillo ordenado es un grupo ordenado, podemos trasladar la primera desigualdad por <span class="math inline">\(-a\)</span>. Obtenemos</p>
+<p><span class="math display">\[
+(-a)+a
+\le
+(-a)+b.
+\]</span></p>
+<p>El miembro izquierdo es <span class="math inline">\(0\)</span> y, por conmutatividad de la suma,</p>
+<p><span class="math display">\[
+0\le b+(-a).
+\]</span></p>
+<p>Ahora tanto <span class="math inline">\(b+(-a)\)</span> como <span class="math inline">\(c\)</span> son no negativos. Por la condición multiplicativa de la Definición 26.1.1,</p>
+<p><span class="math display">\[
+0\le \bigl(b+(-a)\bigr)\cdot c.
+\]</span></p>
+<p>Usando distributividad por la derecha y la regla de signos de la Proposición 14.4.1,</p>
+<p><span class="math display">\[
+(b+(-a))\cdot c
+= b\cdot c+(-a)\cdot c
+= b\cdot c+(-(a\cdot c)).
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+0\le b\cdot c+\bigl(-(a\cdot c)\bigr).
+\]</span></p>
+<p>Trasladando ahora por <span class="math inline">\(a\cdot c\)</span> en el grupo aditivo ordenado,</p>
+<p><span class="math display">\[
+a\cdot c
+\le
+a\cdot c+\bigl(b\cdot c+(-(a\cdot c))\bigr).
+\]</span></p>
+<p>Por asociatividad y conmutatividad de la suma, el miembro derecho se reduce a <span class="math inline">\(b\cdot c\)</span>. Luego</p>
+<p><span class="math display">\[
+a\cdot c\le b\cdot c.
+\]</span></p>
+<p>Para la multiplicación por la izquierda partimos de la misma desigualdad</p>
+<p><span class="math display">\[
+0\le b+(-a).
+\]</span></p>
+<p>Como <span class="math inline">\(0\le c\)</span>, la definición de anillo ordenado da</p>
+<p><span class="math display">\[
+0\le c\cdot\bigl(b+(-a)\bigr).
+\]</span></p>
+<p>Por distributividad por la izquierda y la regla de signos,</p>
+<p><span class="math display">\[
+c\cdot(b+(-a))
+= c\cdot b+c\cdot(-a)
+= c\cdot b+(-(c\cdot a)).
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+0\le c\cdot b+\bigl(-(c\cdot a)\bigr).
+\]</span></p>
+<p>Trasladando por <span class="math inline">\(c\cdot a\)</span>,</p>
+<p><span class="math display">\[
+c\cdot a\le c\cdot b.
+\]</span></p>
+<p>Esto demuestra ambas afirmaciones. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Dónde trabaja la hipótesis <span class="math inline">\(0\le c\)</span>.</strong> No se utiliza para trasladar la desigualdad <span class="math inline">\(a\le b\)</span>; esa tarea pertenece al grupo aditivo ordenado. Se utiliza exactamente cuando pasamos de <span class="math inline">\(0\le b+(-a)\)</span> a la no negatividad de su producto con <span class="math inline">\(c\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Error plausible.</strong> De <span class="math inline">\(a\le b\)</span> no puede escribirse inmediatamente <span class="math inline">\(ac\le bc\)</span> sólo porque el anillo esté ordenado. Esa conclusión requiere controlar el signo de <span class="math inline">\(c\)</span>. La definición no contiene una monotonía multiplicativa global.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Lateralidad.</strong> Las dos conclusiones se demuestran por separado. En un anillo no conmutativo, <span class="math inline">\(a\cdot c\)</span> y <span class="math inline">\(c\cdot a\)</span> no son intercambiables y una de las dos desigualdades no debe obtenerse de la otra por una conmutatividad inexistente.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="multiplicar-por-un-factor-no-positivo-invierte-el-orden" class="level2">
+<h2 class="anchored" data-anchor-id="multiplicar-por-un-factor-no-positivo-invierte-el-orden">26.8. Multiplicar por un factor no positivo invierte el orden</h2>
+<p>La Proposición 26.6.1 resolvió el caso de un factor no negativo: la multiplicación preserva el orden. El caso no positivo no exige un axioma nuevo. La inversión del sentido de la desigualdad se obtiene convirtiendo primero el factor en uno no negativo mediante el opuesto aditivo.</p>
+<p>El mecanismo puede leerse así:</p>
+<pre class="text"><code>c ≤ 0
+↓ tomar opuestos
+0 ≤ -c
+↓ aplicar monotonía multiplicativa
+productos con -c conservan el orden
+↓ reescribir signos y tomar opuestos
+los productos con c invierten el orden</code></pre>
+<p>Este argumento contiene <strong>dos inversiones de signo distintas</strong>: una sobre el factor, que permite usar la Proposición 26.6.1, y otra sobre los productos, que revierte la comparación final.</p>
+<section id="talg-pro-00069" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00069">Proposición 26.8.1 — Antitonicidad multiplicativa por factores no positivos</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+\langle R,+,\cdot,\le\rangle
+\]</span></p>
+<p>un anillo ordenado. Para cualesquiera <span class="math inline">\(a,b,c\in R\)</span>, si</p>
+<p><span class="math display">\[
+a\le b
+\qquad\text{y}\qquad
+c\le0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+b\cdot c\le a\cdot c
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+c\cdot b\le c\cdot a.
+\]</span></p>
+<p>Es decir: multiplicar por un elemento no positivo invierte el orden tanto por la derecha como por la izquierda.</p>
+<section id="talg-prf-00110" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00110">Demostración</h4>
+<p>Supongamos</p>
+<p><span class="math display">\[
+a\le b
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+c\le0.
+\]</span></p>
+<p>Como el grupo aditivo de un anillo ordenado es un grupo ordenado, trasladamos</p>
+<p><span class="math display">\[
+c\le0
+\]</span></p>
+<p>por <span class="math inline">\(-c\)</span>. Obtenemos</p>
+<p><span class="math display">\[
+c+(-c)\le0+(-c),
+\]</span></p>
+<p>y por las leyes del grupo aditivo,</p>
+<p><span class="math display">\[
+0\le -c.
+\]</span></p>
+<p>Ya podemos aplicar la Proposición 26.6.1 al factor no negativo <span class="math inline">\(-c\)</span>. Por multiplicación a la derecha,</p>
+<p><span class="math display">\[
+a\cdot(-c)\le b\cdot(-c).
+\]</span></p>
+<p>Por las reglas de signos de la Proposición 14.4.1,</p>
+<p><span class="math display">\[
+-(a\cdot c)\le -(b\cdot c).
+\]</span></p>
+<p>Aplicando nuevamente la Proposición 25.4.1, ahora a esta desigualdad del grupo aditivo, la inversión revierte el orden y obtenemos</p>
+<p><span class="math display">\[
+b\cdot c\le a\cdot c.
+\]</span></p>
+<p>Para la multiplicación por la izquierda, la misma Proposición 26.6.1 da</p>
+<p><span class="math display">\[
+(-c)\cdot a\le(-c)\cdot b.
+\]</span></p>
+<p>Las reglas de signos transforman esta desigualdad en</p>
+<p><span class="math display">\[
+-(c\cdot a)\le -(c\cdot b).
+\]</span></p>
+<p>Aplicando otra vez la antitonicidad del opuesto aditivo,</p>
+<p><span class="math display">\[
+c\cdot b\le c\cdot a.
+\]</span></p>
+<p>Quedan demostradas ambas lateralidades. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Caso frontera.</strong> La hipótesis es <span class="math inline">\(c\le0\)</span>, no <span class="math inline">\(c&lt;0\)</span>. Si <span class="math inline">\(c=0\)</span>, ambas conclusiones se reducen a <span class="math inline">\(0\le0\)</span>. Por eso el resultado es antitónico en sentido no estricto.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Error plausible.</strong> No basta recordar la regla escolar «multiplicar por un negativo cambia el signo». Aquí hay que justificarla estructuralmente: primero se convierte <span class="math inline">\(c\le0\)</span> en <span class="math inline">\(0\le-c\)</span>; después se usa la monotonía ya demostrada para factores no negativos; finalmente las reglas de signos y la antitonicidad del opuesto producen la inversión de la desigualdad.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Lateralidad.</strong> Tampoco aquí se usa conmutatividad multiplicativa. Las desigualdades <span class="math inline">\(bc\le ac\)</span> y <span class="math inline">\(cb\le ca\)</span> proceden de las dos lateralidades distintas de la Proposición 26.6.1.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="el-producto-de-dos-elementos-no-positivos" class="level2">
+<h2 class="anchored" data-anchor-id="el-producto-de-dos-elementos-no-positivos">26.10. El producto de dos elementos no positivos</h2>
+<p>La Proposición 26.8.1 permite extraer una regla de signos ordenada sin convertirla en un axioma independiente. Si ambos factores están por debajo de <span class="math inline">\(0\)</span>, uno de ellos puede usarse como factor no positivo aplicado a la comparación del otro con <span class="math inline">\(0\)</span>.</p>
+<p>El mecanismo es mínimo:</p>
+<pre class="text"><code>a ≤ 0,  b ≤ 0
+↓ usar b como factor no positivo sobre a ≤ 0
+0·b ≤ a·b
+↓ absorción del cero
+0 ≤ a·b</code></pre>
+<section id="talg-cor-00017" class="level3">
+<h3 class="anchored" data-anchor-id="talg-cor-00017">Corolario 26.10.1 — Producto de dos elementos no positivos es no negativo</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+\langle R,+,\cdot,\le\rangle
+\]</span></p>
+<p>un anillo ordenado. Si <span class="math inline">\(a,b\in R\)</span> satisfacen</p>
+<p><span class="math display">\[
+a\le0
+\qquad\text{y}\qquad
+b\le0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+0\le a\cdot b.
+\]</span></p>
+<section id="talg-prf-00111" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00111">Demostración</h4>
+<p>Partimos de</p>
+<p><span class="math display">\[
+a\le0
+\]</span></p>
+<p>y usamos <span class="math inline">\(b\le0\)</span> como hipótesis de signo para multiplicar por la derecha. Por la Proposición 26.8.1,</p>
+<p><span class="math display">\[
+0\cdot b\le a\cdot b.
+\]</span></p>
+<p>La Proposición 14.3.1 da</p>
+<p><span class="math display">\[
+0\cdot b=0.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+0\le a\cdot b.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Lectura estructural.</strong> La regla escolar «negativo por negativo da positivo» aparece aquí en una forma más precisa: <em>no positivo por no positivo es no negativo</em>. No se postula como una ley de signos adicional; se deduce de la antitonicidad multiplicativa y de la absorción del cero.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Sin conmutatividad.</strong> La prueba no intercambia los factores. También podría usarse la lateralidad izquierda de la Proposición 26.8.1 sobre <span class="math inline">\(b\le0\)</span> con factor <span class="math inline">\(a\le0\)</span>, pero no es necesario identificar <span class="math inline">\(ab\)</span> con <span class="math inline">\(ba\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Frontera lógica.</strong> El corolario no afirma que <span class="math inline">\(ab&gt;0\)</span> cuando <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(b&lt;0\)</span>. La positividad estricta requiere hipótesis adicionales y permanece fuera de este nodo.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="cuando-todas-las-parejas-son-comparables" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-todas-las-parejas-son-comparables">26.12. Cuando todas las parejas son comparables</h2>
+<p>La noción general de anillo ordenado no exige que dos elementos cualesquiera puedan compararse. Para algunos resultados, sin embargo, la totalidad del orden permite convertir una propiedad local de signo en una dicotomía exhaustiva.</p>
+<p>La nueva estructura no altera las leyes del anillo ni fortalece por sí misma la compatibilidad multiplicativa. Añade únicamente comparabilidad global:</p>
+<p><span class="math display">\[
+\text{anillo ordenado}
+\quad+\quad
+\text{orden total}
+\quad\Longrightarrow\quad
+\text{anillo totalmente ordenado}.
+\]</span></p>
+<section id="talg-def-00060" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00060">Definición 26.12.1 — Anillo totalmente ordenado</h3>
+<p>Un <strong>anillo totalmente ordenado</strong> es un anillo ordenado</p>
+<p><span class="math display">\[
+\langle R,+,\cdot,\le\rangle
+\]</span></p>
+<p>cuyo grupo aditivo ordenado es un grupo totalmente ordenado.</p>
+<p>Equivalentemente, además de las condiciones de la Definición 26.1.1, la relación <span class="math inline">\(\le\)</span> es un orden total sobre <span class="math inline">\(R\)</span>. Por tanto, para cualesquiera <span class="math inline">\(a,b\in R\)</span>,</p>
+<p><span class="math display">\[
+a\le b\ \lor\ b\le a.
+\]</span></p>
+<p>Esta disyunción expresa <strong>totalidad matemática</strong>, no un procedimiento que decida cuál comparación vale para elementos dados.</p>
+<blockquote class="blockquote">
+<p><strong>Separación conceptual.</strong> Un anillo ordenado puede tener elementos incomparables; un anillo totalmente ordenado no. La nueva palabra no añade conmutatividad multiplicativa, no exige <span class="math inline">\(0&lt;1\)</span>, no impone no trivialidad y no convierte automáticamente la comparación en una operación computable.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Por qué importa.</strong> La totalidad permite ahora aplicar argumentos por casos de signo. En particular, para cualquier <span class="math inline">\(a\in R\)</span> podremos usar la comparación entre <span class="math inline">\(a\)</span> y <span class="math inline">\(0\)</span> para distinguir los casos <span class="math inline">\(0\le a\)</span> y <span class="math inline">\(a\le0\)</span>. Esa dicotomía será el mecanismo del siguiente resultado sobre cuadrados.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="por-qué-la-totalidad-garantiza-la-no-negatividad-de-los-cuadrados" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-la-totalidad-garantiza-la-no-negatividad-de-los-cuadrados">26.14. Por qué la totalidad garantiza la no negatividad de los cuadrados</h2>
+<p>La condición multiplicativa de la Definición 26.1.1 sólo controla directamente productos cuyos dos factores son no negativos. El Corolario 26.10.1 aporta el segundo caso: también es no negativo el producto de dos factores no positivos. Para aplicar una de estas reglas a un elemento arbitrario necesitamos saber que se encuentra en al menos uno de los dos sectores.</p>
+<p>La totalidad proporciona exactamente la disyunción que falta:</p>
+<p><span class="math display">\[
+0\le a\ \lor\ a\le0.
+\]</span></p>
+<p>Ambas alternativas pueden cumplirse simultáneamente cuando <span class="math inline">\(a=0\)</span>. No necesitamos elegir una de manera exclusiva ni disponer de un algoritmo que decida el signo: basta con demostrar la misma conclusión bajo cada hipótesis.</p>
+<p>Escribiremos <span class="math inline">\(a^2\)</span> como abreviatura local del producto <span class="math inline">\(a\cdot a\)</span>; no se introduce en este punto una teoría general de potencias.</p>
+<section id="talg-pro-00070" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00070">Proposición 26.14.1 — Todo cuadrado es no negativo en un anillo totalmente ordenado</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+\langle R,+,\cdot,\le\rangle
+\]</span></p>
+<p>un anillo totalmente ordenado. Para todo <span class="math inline">\(a\in R\)</span>,</p>
+<p><span class="math display">\[
+0\le a^2,
+\qquad a^2:=a\cdot a.
+\]</span></p>
+<section id="talg-prf-00112" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00112">Demostración</h4>
+<p>Fijemos <span class="math inline">\(a\in R\)</span>. Como el orden es total por la Definición 26.12.1, aplicándolo a los elementos <span class="math inline">\(0\)</span> y <span class="math inline">\(a\)</span> obtenemos</p>
+<p><span class="math display">\[
+0\le a\ \lor\ a\le0.
+\]</span></p>
+<p><strong>Primer caso: <span class="math inline">\(0\le a\)</span>.</strong> Aplicamos la condición multiplicativa de la Definición 26.1.1 a los dos factores iguales <span class="math inline">\(a\)</span> y <span class="math inline">\(a\)</span>. Resulta</p>
+<p><span class="math display">\[
+0\le a\cdot a.
+\]</span></p>
+<p><strong>Segundo caso: <span class="math inline">\(a\le0\)</span>.</strong> Aplicamos el Corolario 26.10.1 a los dos factores iguales <span class="math inline">\(a\)</span> y <span class="math inline">\(a\)</span>. Obtenemos igualmente</p>
+<p><span class="math display">\[
+0\le a\cdot a.
+\]</span></p>
+<p>Puesto que ambas alternativas de la disyunción conducen a la misma desigualdad, concluimos por eliminación de la disyunción que</p>
+<p><span class="math display">\[
+0\le a^2.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Dónde trabaja la totalidad.</strong> No se usa para multiplicar desigualdades: ambas reglas multiplicativas ya estaban demostradas para anillos parcialmente ordenados. Se usa exclusivamente para garantizar que un <span class="math inline">\(a\)</span> arbitrario satisface <span class="math inline">\(0\le a\)</span> o <span class="math inline">\(a\le0\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Dos casos no significa un test computable.</strong> La demostración deduce una conclusión común a partir de una disyunción matemática. No construye una función que, dado <span class="math inline">\(a\)</span>, devuelva su signo; tampoco demuestra la decidibilidad de <span class="math inline">\(a\le0\)</span> ni de <span class="math inline">\(a=0\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés: sin totalidad, la afirmación puede fallar.</strong> En un anillo unitario no trivial provisto del <em>orden de igualdad</em>, definido por <span class="math inline">\(x\le y\)</span> si y sólo si <span class="math inline">\(x=y\)</span>, la estructura aditiva está ordenada y el único elemento no negativo es <span class="math inline">\(0\)</span>, cuyo producto consigo mismo vuelve a ser <span class="math inline">\(0\)</span>. Así se satisfacen los axiomas de anillo ordenado. Sin embargo, <span class="math inline">\(1^2=1\ne0\)</span> y, para este orden, <span class="math inline">\(0\nleq1^2\)</span>. La totalidad es una hipótesis suficiente real, no una decoración del enunciado.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Frontera.</strong> El resultado no asegura que <span class="math inline">\(a^2&gt;0\)</span> para todo <span class="math inline">\(a\ne0\)</span>; tampoco presupone ausencia de divisores de cero, conmutatividad multiplicativa ni <span class="math inline">\(0&lt;1\)</span>.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="la-posición-de-la-unidad-multiplicativa" class="level2">
+<h2 class="anchored" data-anchor-id="la-posición-de-la-unidad-multiplicativa">26.16. La posición de la unidad multiplicativa</h2>
+<p>Hasta aquí no hemos añadido <span class="math inline">\(0&lt;1\)</span> como parte de la definición de anillo ordenado. Ahora podemos <strong>deducir la comparación no estricta</strong> en un anillo totalmente ordenado, en lugar de introducirla como un axioma independiente. Para pasar de ella a una comparación estricta necesitaremos, y declararemos separadamente, la no trivialidad.</p>
+<p>La estrategia consiste en aprovechar un elemento cuya multiplicación consigo mismo ya conocemos algebraicamente:</p>
+<p><span class="math display">\[
+1^2=1\cdot1=1.
+\]</span></p>
+<section id="talg-pro-00071" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00071">Proposición 26.16.1 — La unidad es no negativa y, bajo no trivialidad, positiva</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo totalmente ordenado, con unidad multiplicativa <span class="math inline">\(1\)</span> y neutro aditivo <span class="math inline">\(0\)</span>. Entonces</p>
+<p><span class="math display">\[
+0\le1.
+\]</span></p>
+<p>Si además el anillo es <strong>no trivial</strong>, es decir, <span class="math inline">\(0\ne1\)</span>, entonces</p>
+<p><span class="math display">\[
+0&lt;1.
+\]</span></p>
+<section id="talg-prf-00113" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00113">Demostración</h4>
+<p>Por la Proposición 26.14.1, todo cuadrado es no negativo. Apliquémosla al elemento <span class="math inline">\(1\in R\)</span>:</p>
+<p><span class="math display">\[
+0\le1^2.
+\]</span></p>
+<p>La ley de unidad multiplicativa, contenida en la definición de anillo (Definición 14.1.1), establece que</p>
+<p><span class="math display">\[
+1^2=1\cdot1=1.
+\]</span></p>
+<p>Sustituyendo, obtenemos <span class="math inline">\(0\le1\)</span>, sin haber supuesto que el anillo sea no trivial.</p>
+<p>Supongamos ahora adicionalmente <span class="math inline">\(0\ne1\)</span>, que es exactamente la condición de no trivialidad de la Definición 16.1.1. Según la definición del orden estricto asociado, recogida en la Interfaz 25.1.1,</p>
+<p><span class="math display">\[
+0&lt;1\quad\Longleftrightarrow\quad 0\le1\ \land\ 0\ne1.
+\]</span></p>
+<p>Acabamos de demostrar ambas condiciones del segundo miembro; por tanto, <span class="math inline">\(0&lt;1\)</span>. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Lectura de la prueba.</strong> La primera conclusión procede de un cuadrado y de la ley multiplicativa <span class="math inline">\(1\cdot1=1\)</span>. La segunda no exige multiplicar otra desigualdad: añade exactamente la información <span class="math inline">\(0\ne1\)</span> que faltaba para usar la definición de <span class="math inline">\(&lt;\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés: retirar la no trivialidad.</strong> En el anillo cero, <span class="math inline">\(0=1\)</span> y el único orden es total. Sigue siendo verdadero <span class="math inline">\(0\le1\)</span>, por reflexividad, pero es falso <span class="math inline">\(0&lt;1\)</span>. Por ello no debe incorporarse la positividad estricta a la definición general de anillo totalmente ordenado.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés: retirar la totalidad.</strong> En un anillo no trivial con el orden de igualdad, <span class="math inline">\(1\)</span> es incomparable con <span class="math inline">\(0\)</span>. Como se señaló tras la Proposición 26.14.1, ese orden satisface la definición de anillo ordenado, pero no se deduce <span class="math inline">\(0\le1\)</span>. La hipótesis de totalidad no puede omitirse de este enunciado sin reemplazarla por alguna condición adicional.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Frontera deductiva.</strong> De <span class="math inline">\(0&lt;1\)</span> no se infiere todavía <span class="math inline">\(0&lt;ab\)</span> para todos <span class="math inline">\(0&lt;a\)</span> y <span class="math inline">\(0&lt;b\)</span>. La definición sólo garantiza <span class="math inline">\(0\le ab\)</span>; convertir esa relación en estricta requiere excluir <span class="math inline">\(ab=0\)</span>, lo que remite a hipótesis sobre divisores de cero.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="de-la-no-negatividad-a-la-positividad-del-producto" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-no-negatividad-a-la-positividad-del-producto">26.18. De la no negatividad a la positividad del producto</h2>
+<p>La definición de anillo ordenado garantiza que el producto de dos elementos no negativos es no negativo. Si los factores son estrictamente positivos, no basta repetir esa misma conclusión y sustituir <span class="math inline">\(\le\)</span> por <span class="math inline">\(&lt;\)</span>: debemos excluir que el producto sea cero.</p>
+<p>El mecanismo tiene dos pasos independientes:</p>
+<pre class="text"><code>0 &lt; a, 0 &lt; b
+↓ cierre multiplicativo del cono no negativo
+0 ≤ a·b
++ hipótesis independiente a·b ≠ 0
+↓ definición del orden estricto
+0 &lt; a·b</code></pre>
+<p>En un anillo general no necesariamente conmutativo, la condición global apropiada se expresará <strong>sin ambigüedad lateral</strong>:</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\ \land\ y\ne0)\Longrightarrow x\cdot y\ne0.
+\]</span></p>
+<p>Esta propiedad es la ausencia de productos nulos formados por dos factores no nulos; en un anillo no trivial excluye las dos nociones laterales de divisor de cero de la Definición 16.2.1. No se ha añadido como axioma a la definición de anillo ordenado.</p>
+<section id="talg-pro-00072" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00072">Proposición 26.18.1 — Positividad estricta del producto bajo ausencia de divisores de cero</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo ordenado, sin suponer que el orden sea total ni que la multiplicación sea conmutativa. Si <span class="math inline">\(a,b\in R\)</span> cumplen</p>
+<p><span class="math display">\[
+0&lt;a,\qquad 0&lt;b,\qquad a\cdot b\ne0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+0&lt;a\cdot b.
+\]</span></p>
+<p><strong>En particular</strong>, si el anillo satisface la condición global</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\ \land\ y\ne0)\Longrightarrow x\cdot y\ne0,
+\]</span></p>
+<p>se cumple, para todos <span class="math inline">\(a,b\in R\)</span>,</p>
+<p><span class="math display">\[
+0&lt;a\ \land\ 0&lt;b\Longrightarrow0&lt;a\cdot b.
+\]</span></p>
+<section id="talg-prf-00114" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00114">Demostración</h4>
+<p>Supongamos <span class="math inline">\(0&lt;a\)</span> y <span class="math inline">\(0&lt;b\)</span>. Por la definición de orden estricto asociado (Interfaz 25.1.1), obtenemos</p>
+<p><span class="math display">\[
+0\le a,\qquad 0\le b,\qquad a\ne0,\qquad b\ne0.
+\]</span></p>
+<p>La condición multiplicativa de la Definición 26.1.1, aplicada a <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, proporciona</p>
+<p><span class="math display">\[
+0\le a\cdot b.
+\]</span></p>
+<p>Si además <span class="math inline">\(a\cdot b\ne0\)</span>, la definición del orden estricto asociado permite concluir de inmediato</p>
+<p><span class="math display">\[
+0&lt;a\cdot b.
+\]</span></p>
+<p>Esto establece el primer enunciado. Para el segundo, fijemos dos factores estrictamente positivos <span class="math inline">\(a,b\)</span>. Ya hemos obtenido <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(b\ne0\)</span>; la condición global asumida implica, por instanciación con <span class="math inline">\(x=a\)</span> e <span class="math inline">\(y=b\)</span>, que <span class="math inline">\(a\cdot b\ne0\)</span>. Aplicamos entonces el primer enunciado y concluimos <span class="math inline">\(0&lt;a\cdot b\)</span>. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Dónde trabaja cada hipótesis.</strong> El orden del anillo sólo proporciona <span class="math inline">\(0\le ab\)</span>. La exclusión de productos nulos sólo proporciona <span class="math inline">\(ab\ne0\)</span> cuando los factores son no nulos. El orden estricto asociado combina exactamente ambas informaciones. Ninguna de estas operaciones requiere comparar todos los pares de elementos del anillo.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Precisión terminológica.</strong> En un anillo no trivial, excluir productos nulos de dos factores no nulos equivale a la ausencia de divisores de cero por la izquierda y, asimismo, por la derecha en el sentido de la Definición 16.2.1. La formulación universal evita ocultar una convención lateral. No se está afirmando que el anillo sea conmutativo ni se invoca la definición especializada de divisor de cero para anillos conmutativos.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés: la totalidad no sustituye la hipótesis multiplicativa.</strong> Como modelo ilustrativo externo, considérese el anillo de números duales enteros <span class="math inline">\(\mathbb Z[\varepsilon]/(\varepsilon^2)\)</span>, representado por pares <span class="math inline">\((m,n)\)</span> con producto <span class="math inline">\((m,n)(p,q)=(mp,mq+np)\)</span> y orden lexicográfico. La suma respeta ese orden, y el producto de dos pares lexicográficamente no negativos vuelve a ser no negativo: si ambos primeros componentes son positivos, su producto es positivo; si alguno es cero, el segundo componente del producto es no negativo. El orden es total, pero <span class="math inline">\(\varepsilon=(0,1)&gt;0\)</span> y <span class="math inline">\(\varepsilon^2=0\)</span>. Por tanto, <strong>un anillo totalmente ordenado puede tener un producto nulo de factores estrictamente positivos bajo nuestra definición</strong>. Este ejemplo sirve de contraste pedagógico; no interviene como dependencia en la demostración.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>No se ha probado una regla más fuerte de monotonía estricta.</strong> El paso de <span class="math inline">\(a&lt;b\)</span> a <span class="math inline">\(ac&lt;bc\)</span> exige analizar el producto <span class="math inline">\((b+(-a))c\)</span> y sus hipótesis de no nulidad. Queda reservado para un resultado posterior.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="una-desigualdad-estricta-y-el-producto-de-su-diferencia" class="level2">
+<h2 class="anchored" data-anchor-id="una-desigualdad-estricta-y-el-producto-de-su-diferencia">26.20. Una desigualdad estricta y el producto de su diferencia</h2>
+<p>La Proposición 26.6.1 afirma que un factor no negativo preserva una desigualdad no estricta. Cambiar simplemente el símbolo <span class="math inline">\(\le\)</span> por <span class="math inline">\(&lt;\)</span> sería ilegítimo: si la diferencia entre ambos miembros se anula al multiplicarla por el factor, los productos pueden coincidir.</p>
+<p>La estrategia correcta consiste en convertir la comparación inicial en una desigualdad respecto de cero:</p>
+<pre class="text"><code>a &lt; b
+↓ trasladar estrictamente por -a
+0 &lt; b + (-a)
+↓ multiplicar por c &gt; 0 y excluir el producto nulo
+0 &lt; (b + (-a))c      y      0 &lt; c(b + (-a))
+↓ distribuir, reescribir signos y trasladar
+ac &lt; bc              y      ca &lt; cb</code></pre>
+<p>El diagrama reúne dos rutas que se <strong>justifican por separado</strong>: la multiplicación por la derecha no puede sustituirse por la izquierda en un anillo no conmutativo.</p>
+<section id="talg-pro-00073" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00073">Proposición 26.20.1 — Monotonía multiplicativa estricta por factores positivos sin productos nulos</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo ordenado y sean <span class="math inline">\(a,b,c\in R\)</span> tales que</p>
+<p><span class="math display">\[
+a&lt;b,\qquad 0&lt;c.
+\]</span></p>
+<p>Escribamos <span class="math inline">\(d:=b+(-a)\)</span>. Se cumplen las dos afirmaciones siguientes:</p>
+<ol type="1">
+<li>Si <span class="math inline">\(d\cdot c\ne0\)</span>, entonces <span class="math inline">\(a\cdot c&lt;b\cdot c\)</span>.</li>
+<li>Si <span class="math inline">\(c\cdot d\ne0\)</span>, entonces <span class="math inline">\(c\cdot a&lt;c\cdot b\)</span>.</li>
+</ol>
+<p><strong>En particular</strong>, si el anillo satisface la condición global</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\ \land\ y\ne0)\Longrightarrow x\cdot y\ne0,
+\]</span></p>
+<p>entonces ambas conclusiones valen simultáneamente para todos <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(0&lt;c\)</span>:</p>
+<p><span class="math display">\[
+a\cdot c&lt;b\cdot c,
+\qquad
+c\cdot a&lt;c\cdot b.
+\]</span></p>
+<section id="talg-prf-00115" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00115">Demostración</h4>
+<p>Por hipótesis, <span class="math inline">\(a&lt;b\)</span>. La traslación estricta del grupo aditivo ordenado, establecida en la Proposición 25.5.1, permite sumar <span class="math inline">\(-a\)</span> a ambos miembros:</p>
+<p><span class="math display">\[
+a+(-a)&lt;b+(-a).
+\]</span></p>
+<p>Como <span class="math inline">\(a+(-a)=0\)</span>, resulta</p>
+<p><span class="math display">\[
+0&lt;d,
+\qquad d:=b+(-a).
+\]</span></p>
+<p>También suponemos <span class="math inline">\(0&lt;c\)</span>. Por tanto, <span class="math inline">\(d\)</span> y <span class="math inline">\(c\)</span> son estrictamente positivos.</p>
+<p><strong>Primera afirmación: multiplicación por la derecha.</strong> Si además <span class="math inline">\(d\cdot c\ne0\)</span>, aplicamos la primera parte de la Proposición 26.18.1 a <span class="math inline">\(d\)</span> y <span class="math inline">\(c\)</span>:</p>
+<p><span class="math display">\[
+0&lt;d\cdot c.
+\]</span></p>
+<p>La distributividad por la derecha y las reglas de signos de la Proposición 14.4.1 dan</p>
+<p><span class="math display">\[
+d\cdot c
+=(b+(-a))\cdot c
+=b\cdot c+(-a)\cdot c
+=b\cdot c+(-(a\cdot c)).
+\]</span></p>
+<p>Sustituimos en la desigualdad y trasladamos estrictamente por <span class="math inline">\(a\cdot c\)</span>:</p>
+<p><span class="math display">\[
+a\cdot c
+&lt;a\cdot c+\bigl(b\cdot c+(-(a\cdot c))\bigr)
+=b\cdot c.
+\]</span></p>
+<p>La última igualdad utiliza únicamente las leyes del grupo aditivo abeliano. Queda probado <span class="math inline">\(a\cdot c&lt;b\cdot c\)</span>.</p>
+<p><strong>Segunda afirmación: multiplicación por la izquierda.</strong> Si además <span class="math inline">\(c\cdot d\ne0\)</span>, la misma Proposición 26.18.1, ahora aplicada a los factores <span class="math inline">\(c\)</span> y <span class="math inline">\(d\)</span> en ese orden, proporciona</p>
+<p><span class="math display">\[
+0&lt;c\cdot d.
+\]</span></p>
+<p>Usando la distributividad por la izquierda y las reglas de signos,</p>
+<p><span class="math display">\[
+c\cdot d
+=c\cdot(b+(-a))
+=c\cdot b+c\cdot(-a)
+=c\cdot b+(-(c\cdot a)).
+\]</span></p>
+<p>Trasladando estrictamente por <span class="math inline">\(c\cdot a\)</span> y simplificando en el grupo aditivo,</p>
+<p><span class="math display">\[
+c\cdot a&lt;c\cdot b.
+\]</span></p>
+<p>Finalmente, supongamos la condición global del enunciado. De <span class="math inline">\(0&lt;d\)</span> y <span class="math inline">\(0&lt;c\)</span> se deduce <span class="math inline">\(d\ne0\)</span> y <span class="math inline">\(c\ne0\)</span> por definición del orden estricto. La condición global aplicada tanto a <span class="math inline">\((d,c)\)</span> como a <span class="math inline">\((c,d)\)</span> da</p>
+<p><span class="math display">\[
+d\cdot c\ne0,
+\qquad
+c\cdot d\ne0.
+\]</span></p>
+<p>Las dos afirmaciones anteriores producen simultáneamente las conclusiones deseadas. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Dónde trabaja cada condición.</strong> La hipótesis <span class="math inline">\(a&lt;b\)</span> proporciona una diferencia positiva; <span class="math inline">\(0&lt;c\)</span> proporciona el segundo factor positivo. La no nulidad de <span class="math inline">\(dc\)</span> sirve sólo para la desigualdad derecha, mientras que la de <span class="math inline">\(cd\)</span> sirve sólo para la izquierda. La condición global las garantiza por separado, sin introducir <span class="math inline">\(dc=cd\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés: un factor positivo no basta.</strong> En el anillo totalmente ordenado de números duales enteros del contraste posterior a la Proposición 26.18.1, tomemos <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=\varepsilon\)</span> y <span class="math inline">\(c=\varepsilon\)</span>. Entonces <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(0&lt;c\)</span>, pero <span class="math inline">\(ac=bc=0\)</span> y <span class="math inline">\(ca=cb=0\)</span>, pues <span class="math inline">\(\varepsilon^2=0\)</span>. El orden total no rescata ninguna de las dos desigualdades estrictas. Se trata de un ejemplo ilustrativo, no de una premisa de la prueba.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Lo que no se ha demostrado.</strong> La proposición no afirma monotonía estricta al multiplicar por un elemento arbitrario ni convierte la ausencia de divisores de cero en un axioma para todos los anillos ordenados. Tampoco requiere que el orden sea total o que pueda decidirse computacionalmente.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="de-la-monotonía-estricta-a-la-inversión-estricta" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-monotonía-estricta-a-la-inversión-estricta">26.22. De la monotonía estricta a la inversión estricta</h2>
+<p>En la Proposición 26.20.1 comprobamos que un factor positivo preserva las comparaciones estrictas si el producto de ese factor por la diferencia no se anula. Para un factor <strong>negativo</strong> no es preciso introducir otra ley de compatibilidad: el opuesto del factor es positivo, y tomar opuestos invierte el orden.</p>
+<p>La prueba se organiza en cuatro movimientos:</p>
+<pre class="text"><code>a &lt; b, c &lt; 0
+↓ inversión estricta del signo de c
+0 &lt; -c
+↓ productos de la diferencia con -c no nulos
+multiplicación estrictamente monótona por -c, en ambos lados
+↓ reglas de signos e inversión estricta
+bc &lt; ac                  cb &lt; ca</code></pre>
+<p>La no nulidad de cada producto de la diferencia sigue siendo una hipótesis <strong>lateral</strong>; no se deduce del mero hecho de que <span class="math inline">\(c\)</span> sea negativo.</p>
+<section id="talg-pro-00074" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00074">Proposición 26.22.1 — Antitonicidad multiplicativa estricta por factores negativos sin productos nulos</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo ordenado y sean <span class="math inline">\(a,b,c\in R\)</span> con</p>
+<p><span class="math display">\[
+a&lt;b,\qquad c&lt;0.
+\]</span></p>
+<p>Escribamos <span class="math inline">\(d:=b+(-a)\)</span>. Valen separadamente:</p>
+<ol type="1">
+<li>Si <span class="math inline">\(d\cdot c\ne0\)</span>, entonces <span class="math inline">\(b\cdot c&lt;a\cdot c\)</span>.</li>
+<li>Si <span class="math inline">\(c\cdot d\ne0\)</span>, entonces <span class="math inline">\(c\cdot b&lt;c\cdot a\)</span>.</li>
+</ol>
+<p><strong>En particular</strong>, si el anillo cumple la condición global</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\ \land\ y\ne0)\Longrightarrow x\cdot y\ne0,
+\]</span></p>
+<p>entonces para todos <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(c&lt;0\)</span> se obtienen <strong>ambas</strong> desigualdades estrictas:</p>
+<p><span class="math display">\[
+b\cdot c&lt;a\cdot c,\qquad c\cdot b&lt;c\cdot a.
+\]</span></p>
+<section id="talg-prf-00116" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00116">Demostración</h4>
+<p>La traslación estricta de la Proposición 25.5.1, aplicada a <span class="math inline">\(a&lt;b\)</span>, da</p>
+<p><span class="math display">\[
+0&lt;b+(-a)=d.
+\]</span></p>
+<p>Como <span class="math inline">\(c&lt;0\)</span>, la inversión del orden estricto de la misma proposición implica</p>
+<p><span class="math display">\[
+0=-0&lt;-c.
+\]</span></p>
+<p>Pongamos <span class="math inline">\(h:=-c\)</span>. Tenemos <span class="math inline">\(0&lt;h\)</span>. Además, las reglas de signos de la Proposición 14.4.1 proporcionan</p>
+<p><span class="math display">\[
+dh=d(-c)=-(dc),\qquad hd=(-c)d=-(cd).
+\]</span></p>
+<p>En el grupo aditivo, tomar opuestos es involutivo y <span class="math inline">\(-0=0\)</span>; por ello <span class="math inline">\(dc\ne0\)</span> implica <span class="math inline">\(dh\ne0\)</span>, y <span class="math inline">\(cd\ne0\)</span> implica <span class="math inline">\(hd\ne0\)</span>. En efecto, <span class="math inline">\(dh=0\)</span> implicaría <span class="math inline">\(dc=-0=0\)</span>; el segundo caso es análogo.</p>
+<p><strong>Primera afirmación: multiplicación por la derecha.</strong> Supongamos <span class="math inline">\(dc\ne0\)</span>. La consecuencia recién demostrada asegura <span class="math inline">\(dh\ne0\)</span>. Aplicando la Proposición 26.20.1 a <span class="math inline">\(a&lt;b\)</span> y al factor <span class="math inline">\(h&gt;0\)</span>, por su lateralidad derecha obtenemos</p>
+<p><span class="math display">\[
+a\cdot h&lt;b\cdot h.
+\]</span></p>
+<p>Sustituimos <span class="math inline">\(h=-c\)</span> y usamos las reglas de signos:</p>
+<p><span class="math display">\[
+-(a\cdot c)&lt;-(b\cdot c).
+\]</span></p>
+<p>La inversión estricta del orden (Proposición 25.5.1) transforma esta desigualdad en</p>
+<p><span class="math display">\[
+b\cdot c&lt;a\cdot c.
+\]</span></p>
+<p><strong>Segunda afirmación: multiplicación por la izquierda.</strong> Supongamos ahora <span class="math inline">\(cd\ne0\)</span>. Entonces <span class="math inline">\(hd\ne0\)</span> y podemos aplicar la lateralidad izquierda de la Proposición 26.20.1:</p>
+<p><span class="math display">\[
+h\cdot a&lt;h\cdot b.
+\]</span></p>
+<p>De nuevo, las reglas de signos dan</p>
+<p><span class="math display">\[
+-(c\cdot a)&lt;-(c\cdot b).
+\]</span></p>
+<p>Invertimos estrictamente el orden y concluimos</p>
+<p><span class="math display">\[
+c\cdot b&lt;c\cdot a.
+\]</span></p>
+<p>Por último, bajo la condición global, las desigualdades <span class="math inline">\(0&lt;d\)</span> y <span class="math inline">\(c&lt;0\)</span> implican <span class="math inline">\(d\ne0\)</span> y <span class="math inline">\(c\ne0\)</span>. Aplicando la condición global a los pares ordenados <span class="math inline">\((d,c)\)</span> y <span class="math inline">\((c,d)\)</span> obtenemos respectivamente <span class="math inline">\(dc\ne0\)</span> y <span class="math inline">\(cd\ne0\)</span>. Las dos partes anteriores demuestran las conclusiones simultáneas. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Lectura de las hipótesis.</strong> La negatividad de <span class="math inline">\(c\)</span> convierte <span class="math inline">\(-c\)</span> en un factor positivo; la condición <span class="math inline">\(dc\ne0\)</span> permite preservar estrictamente el orden a la derecha antes de invertirlo, mientras que <span class="math inline">\(cd\ne0\)</span> hace lo mismo a la izquierda. En ningún punto se identifica <span class="math inline">\(dc\)</span> con <span class="math inline">\(cd\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés: la negatividad sola es insuficiente.</strong> En el anillo totalmente ordenado de números duales enteros descrito después de la Proposición 26.18.1, elijamos <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=\varepsilon\)</span> y <span class="math inline">\(c=-\varepsilon\)</span>. Se cumple <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(c&lt;0\)</span>, pero <span class="math inline">\(bc=ac=cb=ca=0\)</span>, pues <span class="math inline">\(\varepsilon^2=0\)</span>. La totalidad del orden no impide que la diferencia se anule al multiplicarla por un factor negativo. Este ejemplo ilustra la necesidad de la hipótesis; no interviene como premisa de la demostración.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Conexión con el siguiente paso.</strong> La antitonicidad no estricta ya controla productos de factores de signos opuestos. La versión estricta recién demostrada permitirá distinguir con precisión <em>producto no positivo</em> de <em>producto estrictamente negativo</em>.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="signos-opuestos-del-orden-no-estricto-al-estricto" class="level2">
+<h2 class="anchored" data-anchor-id="signos-opuestos-del-orden-no-estricto-al-estricto">26.24. Signos opuestos: del orden no estricto al estricto</h2>
+<p>Las dos reglas de antitonicidad anteriores permiten sintetizar una ley de signos sin convertirla en un axioma: el producto de un factor no negativo por uno no positivo no puede ser positivo. Para afirmar que es <em>estrictamente negativo</em> hace falta excluir el caso en que el producto se anula. Como no hemos exigido conmutatividad, esa exclusión deberá comprobarse para cada orden de los factores.</p>
+<p>El recorrido deductivo es el siguiente:</p>
+<pre class="text"><code>0 ≤ a, b ≤ 0               0 &lt; a, b &lt; 0
+      ↓ 26.8.1                  ↓ 26.22.1 + producto no nulo
+ab ≤ 0, ba ≤ 0             ab &lt; 0, ba &lt; 0</code></pre>
+<section id="talg-cor-00018" class="level3">
+<h3 class="anchored" data-anchor-id="talg-cor-00018">Corolario 26.24.1 — Producto de factores de signo opuesto: no positividad y negatividad estricta bajo no nulidad</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo ordenado, no necesariamente conmutativo ni totalmente ordenado, y sean <span class="math inline">\(a,b\in R\)</span>.</p>
+<p><strong>I. Signos opuestos no estrictos.</strong> Si</p>
+<p><span class="math display">\[
+0\le a,\qquad b\le0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+ab\le0\qquad\text{y}\qquad ba\le0.
+\]</span></p>
+<p>También se obtienen ambas conclusiones si <span class="math inline">\(a\le0\)</span> y <span class="math inline">\(0\le b\)</span>.</p>
+<p><strong>II. Signos opuestos estrictos.</strong> Si</p>
+<p><span class="math display">\[
+0&lt;a,\qquad b&lt;0,
+\]</span></p>
+<p>se tienen dos implicaciones independientes:</p>
+<p><span class="math display">\[
+ab\ne0\Longrightarrow ab&lt;0,
+\qquad
+ba\ne0\Longrightarrow ba&lt;0.
+\]</span></p>
+<p>Las mismas implicaciones valen para <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(0&lt;b\)</span>, intercambiando los nombres de los factores. En particular, si se cumple la condición global</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\land y\ne0)\Longrightarrow xy\ne0,
+\]</span></p>
+<p>cualquiera de los dos órdenes de multiplicación de factores de signos estrictamente opuestos produce un elemento estrictamente negativo.</p>
+<section id="talg-prf-00117" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00117">Demostración</h4>
+<p><strong>I. No positividad.</strong> Supongamos <span class="math inline">\(0\le a\)</span> y <span class="math inline">\(b\le0\)</span>. Aplicamos la antitonicidad no estricta de la Proposición 26.8.1 a la comparación <span class="math inline">\(0\le a\)</span>, tomando <span class="math inline">\(b\)</span> como factor no positivo. La multiplicación por la derecha proporciona</p>
+<p><span class="math display">\[
+a\cdot b\le0\cdot b=0;
+\]</span></p>
+<p>y la multiplicación por la izquierda proporciona</p>
+<p><span class="math display">\[
+b\cdot a\le b\cdot0=0.
+\]</span></p>
+<p>Las igualdades finales son casos de la absorción bilateral del cero demostrada en la Proposición 14.3.1. Si <span class="math inline">\(a\le0\)</span> y <span class="math inline">\(0\le b\)</span>, aplicamos lo ya probado al par <span class="math inline">\((b,a)\)</span>: así obtenemos <span class="math inline">\(ba\le0\)</span> y <span class="math inline">\(ab\le0\)</span>, sin intercambiar ilícitamente los factores dentro de un producto.</p>
+<p><strong>II. Negatividad estricta.</strong> Supongamos <span class="math inline">\(0&lt;a\)</span> y <span class="math inline">\(b&lt;0\)</span>. Aplicamos la antitonicidad estricta de la Proposición 26.22.1 a la comparación <span class="math inline">\(0&lt;a\)</span> y al factor negativo <span class="math inline">\(b\)</span>. La diferencia del término mayor con el menor es <span class="math inline">\(a+(-0)=a\)</span>.</p>
+<p>Si <span class="math inline">\(ab\ne0\)</span>, se cumple la hipótesis local de la multiplicación por la derecha y obtenemos</p>
+<p><span class="math display">\[
+a\cdot b&lt;0\cdot b=0.
+\]</span></p>
+<p>Si, independientemente, <span class="math inline">\(ba\ne0\)</span>, la hipótesis local de la multiplicación por la izquierda produce</p>
+<p><span class="math display">\[
+b\cdot a&lt;b\cdot0=0.
+\]</span></p>
+<p>En ambas cadenas usamos sólo la absorción del cero. Si <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(0&lt;b\)</span>, intercambiamos los nombres <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> al aplicar los dos resultados recién demostrados; se obtienen por separado los productos <span class="math inline">\(ba\)</span> y <span class="math inline">\(ab\)</span> estrictamente negativos bajo sus respectivas hipótesis de no nulidad.</p>
+<p>Finalmente, bajo la condición global, los signos estrictos implican <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(b\ne0\)</span>. La condición global aplicada a los pares ordenados <span class="math inline">\((a,b)\)</span> y <span class="math inline">\((b,a)\)</span> da respectivamente <span class="math inline">\(ab\ne0\)</span> y <span class="math inline">\(ba\ne0\)</span>. Las dos implicaciones locales concluyen la demostración. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Lectura guiada.</strong> La propiedad <span class="math inline">\(ab\le0\)</span> no implica por sí sola <span class="math inline">\(ab&lt;0\)</span>: el orden estricto asociado exige además <span class="math inline">\(ab\ne0\)</span>. En un anillo sin conmutatividad no se deduce <span class="math inline">\(ba\ne0\)</span> únicamente de <span class="math inline">\(ab\ne0\)</span>; la prueba registra ambas hipótesis y las utiliza por separado.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Casos frontera.</strong> Si <span class="math inline">\(a=0\)</span> o <span class="math inline">\(b=0\)</span>, los dos productos son cero, incluso en un anillo sin divisores de cero. Por eso la primera parte admite signos no estrictos, mientras que la segunda exige factores de signos estrictos.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Contraejemplo a la supresión de la no nulidad.</strong> En el anillo de números duales enteros con orden lexicográfico descrito después de la Proposición 26.18.1, <span class="math inline">\(a=\varepsilon&gt;0\)</span> y <span class="math inline">\(b=-\varepsilon&lt;0\)</span> satisfacen <span class="math inline">\(ab=ba=-\varepsilon^2=0\)</span>. Ni siquiera la totalidad del orden permite deducir la negatividad estricta sin la hipótesis multiplicativa correspondiente. Este ejemplo es ilustrativo, no una dependencia de la prueba.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Conexión.</strong> Combinando la no negatividad de cuadrados ya demostrada para anillos totalmente ordenados con una condición de no nulidad de <span class="math inline">\(a^2\)</span> será posible obtener positividad estricta de cuadrados no nulos, sin añadir tal conclusión a la definición de anillo ordenado.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="cuándo-un-cuadrado-es-estrictamente-positivo" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-un-cuadrado-es-estrictamente-positivo">26.26. Cuándo un cuadrado es estrictamente positivo</h2>
+<p>La Proposición 26.14.1 garantiza que todo cuadrado de un anillo totalmente ordenado es <strong>no negativo</strong>. No garantiza que sea estrictamente positivo cuando el elemento original es distinto de cero: un factor no nulo puede tener cuadrado nulo. El fortalecimiento correcto consiste en añadir la no nulidad del <strong>cuadrado</strong>, no sólo la del factor.</p>
+<p>La distinción puede representarse sin confundir los dos enunciados:</p>
+<pre class="text"><code>anillo totalmente ordenado ── Proposición 26.14.1 ──→ 0 ≤ a²
+                                                      │
+                                  hipótesis a² ≠ 0 ────┤
+                                                      ↓
+                                                    0 &lt; a²
+
+hipótesis global: x ≠ 0, y ≠ 0 ⇒ xy ≠ 0
+                     + a ≠ 0
+                         ↓ aplicar a (a,a)
+                       a² ≠ 0</code></pre>
+<p>La primera ruta exige una condición <strong>local</strong> sobre <span class="math inline">\(a^2\)</span>; la segunda exhibe una condición <strong>global suficiente</strong> para obtenerla a partir de <span class="math inline">\(a\ne0\)</span>.</p>
+<section id="talg-pro-00075" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00075">Proposición 26.26.1 — Positividad estricta de cuadrados no nulos en anillos totalmente ordenados</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo totalmente ordenado. Para todo <span class="math inline">\(a\in R\)</span>, escribamos <span class="math inline">\(a^2:=a\cdot a\)</span>. Entonces:</p>
+<ol type="1">
+<li><p><strong>Criterio local exacto:</strong></p>
+<p><span class="math display">\[
+0&lt;a^2\quad\Longleftrightarrow\quad a^2\ne0.
+\]</span></p></li>
+<li><p><strong>Relación entre las dos no nulidades:</strong> <span class="math inline">\(a^2\ne0\)</span> implica <span class="math inline">\(a\ne0\)</span>. No se afirma aquí la recíproca.</p></li>
+<li><p><strong>Condición global suficiente:</strong> si el anillo satisface</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\ \land\ y\ne0)\Longrightarrow x\cdot y\ne0,
+\]</span></p>
+<p>entonces, para todo <span class="math inline">\(a\in R\)</span>,</p>
+<p><span class="math display">\[
+a\ne0\Longrightarrow 0&lt;a^2.
+\]</span></p></li>
+</ol>
+<section id="talg-prf-00118" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00118">Demostración</h4>
+<p>Fijemos <span class="math inline">\(a\in R\)</span>. Puesto que el anillo es totalmente ordenado, la Proposición 26.14.1 proporciona</p>
+<p><span class="math display">\[
+0\le a^2.
+\]</span></p>
+<p><strong>1. Criterio local.</strong> Supongamos primero <span class="math inline">\(a^2\ne0\)</span>. La definición del orden estricto asociado, fijada en la Interfaz 25.1.1, es</p>
+<p><span class="math display">\[
+x&lt;y\quad\Longleftrightarrow\quad x\le y\ \land\ x\ne y.
+\]</span></p>
+<p>Aplicada a <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=a^2\)</span>, combina exactamente las dos condiciones disponibles y da <span class="math inline">\(0&lt;a^2\)</span>. A la inversa, si <span class="math inline">\(0&lt;a^2\)</span>, la misma definición contiene como una de sus cláusulas <span class="math inline">\(0\ne a^2\)</span>, equivalente a <span class="math inline">\(a^2\ne0\)</span>. Concluimos</p>
+<p><span class="math display">\[
+0&lt;a^2\quad\Longleftrightarrow\quad a^2\ne0.
+\]</span></p>
+<p><strong>2. No nulidad del factor.</strong> Supongamos <span class="math inline">\(a^2\ne0\)</span>. Para demostrar <span class="math inline">\(a\ne0\)</span>, supongamos provisionalmente <span class="math inline">\(a=0\)</span>. La sustitución en <span class="math inline">\(a^2=a\cdot a\)</span> y la absorción del cero de la Proposición 14.3.1 darían</p>
+<p><span class="math display">\[
+a^2=0\cdot0=0,
+\]</span></p>
+<p>contradicción con la hipótesis. Así, <span class="math inline">\(a\ne0\)</span>.</p>
+<p><strong>3. Garantía global.</strong> Supongamos ahora la condición global del enunciado y fijemos <span class="math inline">\(a\in R\)</span> tal que <span class="math inline">\(a\ne0\)</span>. Podemos aplicarla al par concreto <span class="math inline">\((x,y)=(a,a)\)</span>: sus dos antecedentes son precisamente la misma hipótesis <span class="math inline">\(a\ne0\)</span>. Obtenemos</p>
+<p><span class="math display">\[
+a\cdot a=a^2\ne0.
+\]</span></p>
+<p>La primera parte transforma inmediatamente esta no nulidad en <span class="math inline">\(0&lt;a^2\)</span>. Como <span class="math inline">\(a\)</span> era arbitrario, queda probada la última implicación. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Lectura de la prueba.</strong> La totalidad interviene únicamente al disponer de la no negatividad de todos los cuadrados mediante la Proposición 26.14.1; no se utiliza para decidir algorítmicamente el signo de <span class="math inline">\(a\)</span>. La no nulidad local convierte <span class="math inline">\(0\le a^2\)</span> en <span class="math inline">\(0&lt;a^2\)</span>. La hipótesis global interviene sólo para deducir <span class="math inline">\(a^2\ne0\)</span> a partir de <span class="math inline">\(a\ne0\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Contraejemplo a sustituir <span class="math inline">\(a^2\ne0\)</span> por <span class="math inline">\(a\ne0\)</span>.</strong> En el anillo totalmente ordenado de números duales enteros ya descrito después de la Proposición 26.18.1, <span class="math inline">\(\varepsilon\ne0\)</span> e incluso <span class="math inline">\(0&lt;\varepsilon\)</span>, pero <span class="math inline">\(\varepsilon^2=0\)</span>. Por consiguiente, ni la totalidad ni el signo estricto del factor justifican <span class="math inline">\(0&lt;a^2\)</span> para todo <span class="math inline">\(a\ne0\)</span> sin una condición adicional. El ejemplo no es una dependencia deductiva.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Alcance.</strong> No se ha supuesto multiplicación conmutativa ni no trivialidad como axioma independiente. La condición global es suficiente, no parte de la definición de anillo totalmente ordenado. Tampoco se afirman decidibilidad, algoritmos de comparación o resultados analíticos.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="de-dos-factores-negativos-a-un-producto-estrictamente-positivo" class="level2">
+<h2 class="anchored" data-anchor-id="de-dos-factores-negativos-a-un-producto-estrictamente-positivo">26.28. De dos factores negativos a un producto estrictamente positivo</h2>
+<p>Ya sabemos, por el Corolario 26.10.1, que multiplicar dos elementos <strong>no positivos</strong> produce un elemento no negativo. La pregunta pendiente es cuándo podemos fortalecer esa conclusión. La respuesta exige distinguir el signo de los factores de la eventual anulación de su producto.</p>
+<pre class="text"><code>a &lt; 0, b &lt; 0
+       │
+       ├── ambos factores son no positivos
+       │                ↓ Corolario 26.10.1
+       │          0 ≤ ab  y  0 ≤ ba
+       │
+       ├── añadir ab ≠ 0 ────────────────→ 0 &lt; ab
+       └── añadir ba ≠ 0 ────────────────→ 0 &lt; ba</code></pre>
+<p>El diagrama mantiene separados <span class="math inline">\(ab\)</span> y <span class="math inline">\(ba\)</span>: en un anillo no conmutativo, la no nulidad de uno de estos productos no se sustituye por la del otro. Tampoco hace falta que todos los elementos sean comparables; aquí las comparaciones con cero forman parte de las hipótesis.</p>
+<section id="talg-cor-00019" class="level3">
+<h3 class="anchored" data-anchor-id="talg-cor-00019">Corolario 26.28.1 — Positividad estricta de productos de factores negativos bajo no nulidad</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo ordenado y sean <span class="math inline">\(a,b\in R\)</span> tales que <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(b&lt;0\)</span>. Entonces se verifican las afirmaciones siguientes:</p>
+<ol type="1">
+<li><p><strong>No negatividad bilateral:</strong></p>
+<p><span class="math display">\[
+0\le ab,\qquad 0\le ba.
+\]</span></p></li>
+<li><p><strong>Criterios locales exactos, independientes entre sí:</strong></p>
+<p><span class="math display">\[
+0&lt;ab\quad\Longleftrightarrow\quad ab\ne0,
+\]</span></p>
+<p><span class="math display">\[
+0&lt;ba\quad\Longleftrightarrow\quad ba\ne0.
+\]</span></p></li>
+<li><p><strong>Condición global suficiente:</strong> si se verifica</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad
+(x\ne0\ \land\ y\ne0)\Longrightarrow xy\ne0,
+\]</span></p>
+<p>entonces <span class="math inline">\(0&lt;ab\)</span> y <span class="math inline">\(0&lt;ba\)</span>.</p></li>
+</ol>
+<section id="talg-prf-00119" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00119">Demostración</h4>
+<p><strong>1. De signos estrictamente negativos a productos no negativos.</strong> Por la definición del orden estricto asociado, <span class="math inline">\(a&lt;0\)</span> implica <span class="math inline">\(a\le0\)</span>, y <span class="math inline">\(b&lt;0\)</span> implica <span class="math inline">\(b\le0\)</span>. El Corolario 26.10.1 aplicado a estos dos elementos proporciona</p>
+<p><span class="math display">\[
+0\le ab.
+\]</span></p>
+<p>El mismo corolario, ahora aplicado a los factores en el orden <span class="math inline">\((b,a)\)</span>, proporciona independientemente</p>
+<p><span class="math display">\[
+0\le ba.
+\]</span></p>
+<p>No se ha reemplazado un producto por el otro mediante conmutatividad.</p>
+<p><strong>2. Conversión local al orden estricto.</strong> La definición del orden estricto asociado, recordada en la Interfaz 25.1.1, establece para todo <span class="math inline">\(z\in R\)</span>:</p>
+<p><span class="math display">\[
+0&lt;z\quad\Longleftrightarrow\quad (0\le z\ \land\ z\ne0).
+\]</span></p>
+<p>Para <span class="math inline">\(z=ab\)</span> ya conocemos <span class="math inline">\(0\le ab\)</span>. Por consiguiente, añadir <span class="math inline">\(ab\ne0\)</span> es suficiente para obtener <span class="math inline">\(0&lt;ab\)</span>; recíprocamente, <span class="math inline">\(0&lt;ab\)</span> contiene necesariamente la condición <span class="math inline">\(ab\ne0\)</span>. Se obtiene así la primera equivalencia.</p>
+<p>Repetimos el argumento con <span class="math inline">\(z=ba\)</span> y con la no negatividad demostrada por separado. La hipótesis y conclusión correspondientes son <span class="math inline">\(ba\ne0\)</span> y <span class="math inline">\(0&lt;ba\)</span>. Queda establecida la segunda equivalencia, sin suponer que <span class="math inline">\(ab=ba\)</span> ni que la no nulidad de uno garantice la del otro.</p>
+<p><strong>3. Exclusión global de productos nulos.</strong> Si vale la condición global, las hipótesis <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(b&lt;0\)</span> proporcionan también <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(b\ne0\)</span> por la definición de orden estricto. Aplicando la condición global al par ordenado <span class="math inline">\((a,b)\)</span>, deducimos <span class="math inline">\(ab\ne0\)</span>. Aplicándola <em>otra vez</em> al par <span class="math inline">\((b,a)\)</span>, deducimos <span class="math inline">\(ba\ne0\)</span>. Las dos equivalencias locales del paso anterior concluyen</p>
+<p><span class="math display">\[
+0&lt;ab,\qquad 0&lt;ba.
+\]</span></p>
+<p>Esto completa la demostración. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Lectura guiada.</strong> «Negativo por negativo es positivo» se descompone en dos pasos matemáticos: primero se prueba que el producto es no negativo; después se excluye que sea cero. La no nulidad de los factores no reemplaza por sí sola la segunda comprobación en un anillo con divisores de cero.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Contraejemplo a eliminar la hipótesis local.</strong> En el anillo totalmente ordenado de números duales enteros descrito después de la Proposición 26.18.1, tomemos <span class="math inline">\(a=b=-\varepsilon\)</span>. Se cumple <span class="math inline">\(a&lt;0\)</span> y <span class="math inline">\(b&lt;0\)</span>, pero <span class="math inline">\(ab=ba=\varepsilon^2=0\)</span>. La totalidad no sustituye la no nulidad del producto. El ejemplo es un control pedagógico, no una premisa de la demostración.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Alcance estructural.</strong> El enunciado vale para órdenes parciales y multiplicación posiblemente no conmutativa; no exige decidir la igualdad ni el signo, y no introduce elección ni nociones analíticas.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="preservar-una-comparación-no-equivale-a-reflejarla" class="level2">
+<h2 class="anchored" data-anchor-id="preservar-una-comparación-no-equivale-a-reflejarla">26.30. Preservar una comparación no equivale a reflejarla</h2>
+<p>La Proposición 26.20.1 proporciona una implicación directa: si <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(c&gt;0\)</span>, la desigualdad <span class="math inline">\(ac&lt;bc\)</span> se obtiene <strong>cuando el producto de la diferencia por <span class="math inline">\(c\)</span> no se anula</strong>. La cuestión recíproca es diferente. Si ya sabemos que <span class="math inline">\(ac&lt;bc\)</span>, ¿podemos recuperar <span class="math inline">\(a&lt;b\)</span>? En un orden total, la respuesta es afirmativa, aun cuando el anillo tenga divisores de cero: la monotonía no estricta descarta la comparación opuesta.</p>
+<pre class="text"><code>                 anillo totalmente ordenado, c &gt; 0
+
+  ac &lt; bc ── totalidad + monotonía no estricta ──→ a &lt; b
+  ca &lt; cb ── totalidad + monotonía no estricta ──→ a &lt; b
+
+  a &lt; b ── (b-a)c ≠ 0 ──→ ac &lt; bc
+  a &lt; b ── c(b-a) ≠ 0 ──→ ca &lt; cb</code></pre>
+<p>El dibujo separa dos operaciones lógicas: <em>reflejar</em> una desigualdad ya observada y <em>preservar estrictamente</em> una desigualdad inicial. Las condiciones de no nulidad sólo aparecen en las flechas que van desde <span class="math inline">\(a&lt;b\)</span> hacia los productos.</p>
+<section id="talg-pro-00076" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00076">Proposición 26.30.1 — Reflexión del orden estricto por factores positivos en anillos totalmente ordenados</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un <strong>anillo totalmente ordenado</strong> y sean <span class="math inline">\(a,b,c\in R\)</span> con <span class="math inline">\(0&lt;c\)</span>. Entonces:</p>
+<ol type="1">
+<li><p><strong>Reflexión estricta por la derecha:</strong> <span class="math inline">\(ac&lt;bc\Longrightarrow a&lt;b\)</span>.</p></li>
+<li><p><strong>Reflexión estricta por la izquierda:</strong> <span class="math inline">\(ca&lt;cb\Longrightarrow a&lt;b\)</span>.</p></li>
+<li><p><strong>Criterios locales exactos:</strong> si además <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(d:=b+(-a)\)</span>, entonces</p>
+<p><span class="math display">\[
+ac&lt;bc\quad\Longleftrightarrow\quad dc\ne0,
+\]</span></p>
+<p><span class="math display">\[
+ca&lt;cb\quad\Longleftrightarrow\quad cd\ne0.
+\]</span></p></li>
+<li><p><strong>Equivalencias bajo una condición global suficiente:</strong> si</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad (x\ne0\ \land\ y\ne0)\Longrightarrow xy\ne0,
+\]</span></p>
+<p>entonces, para todo <span class="math inline">\(a,b\in R\)</span> y todo <span class="math inline">\(c&gt;0\)</span>,</p>
+<p><span class="math display">\[
+a&lt;b\quad\Longleftrightarrow\quad ac&lt;bc,
+\]</span></p>
+<p><span class="math display">\[
+a&lt;b\quad\Longleftrightarrow\quad ca&lt;cb.
+\]</span></p></li>
+</ol>
+<p>En las dos primeras afirmaciones puede debilitarse <span class="math inline">\(0&lt;c\)</span> a <span class="math inline">\(0\le c\)</span>. Esta mejora no se extiende automáticamente a las implicaciones directas del cuarto apartado.</p>
+<section id="talg-prf-00120" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00120">Demostración</h4>
+<p><strong>1. Reflexión por la derecha.</strong> Supongamos <span class="math inline">\(ac&lt;bc\)</span>. Como <span class="math inline">\(0&lt;c\)</span>, también <span class="math inline">\(0\le c\)</span>. Por totalidad, aplicada a <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, disponemos de la disyunción</p>
+<p><span class="math display">\[
+a\le b\quad\lor\quad b\le a.
+\]</span></p>
+<p>En la segunda alternativa, la monotonía no estricta por la derecha de la Proposición 26.6.1 daría <span class="math inline">\(bc\le ac\)</span>. Pero <span class="math inline">\(ac&lt;bc\)</span> significa <span class="math inline">\(ac\le bc\)</span> y <span class="math inline">\(ac\ne bc\)</span>. La antisimetría aplicada a <span class="math inline">\(ac\le bc\)</span> y <span class="math inline">\(bc\le ac\)</span> impondría <span class="math inline">\(ac=bc\)</span>, contradicción. Por tanto, la segunda alternativa es imposible y subsiste <span class="math inline">\(a\le b\)</span>.</p>
+<p>Si <span class="math inline">\(a=b\)</span>, la sustitución en el producto por la derecha produciría <span class="math inline">\(ac=bc\)</span>, otra contradicción. Así, <span class="math inline">\(a\ne b\)</span>. Por definición de orden estricto asociado,</p>
+<p><span class="math display">\[
+a\le b\ \land\ a\ne b\quad\Longrightarrow\quad a&lt;b.
+\]</span></p>
+<p>La prueba no ha empleado una ley de cancelación multiplicativa ni ha supuesto que <span class="math inline">\(c\)</span> sea regular.</p>
+<p><strong>2. Reflexión por la izquierda.</strong> Ahora supongamos <span class="math inline">\(ca&lt;cb\)</span>. La misma totalidad ofrece <span class="math inline">\(a\le b\)</span> o <span class="math inline">\(b\le a\)</span>. En la segunda alternativa, la lateralidad <strong>izquierda</strong> de la Proposición 26.6.1 da <span class="math inline">\(cb\le ca\)</span>, que contradice <span class="math inline">\(ca&lt;cb\)</span> por antisimetría. Luego <span class="math inline">\(a\le b\)</span>. Si <span class="math inline">\(a=b\)</span>, se seguiría <span class="math inline">\(ca=cb\)</span>, incompatible con la desigualdad estricta inicial. Por consiguiente, <span class="math inline">\(a&lt;b\)</span>. No se ha intercambiado <span class="math inline">\(ac\)</span> con <span class="math inline">\(ca\)</span>.</p>
+<p>Ambos argumentos sólo emplearon <span class="math inline">\(0\le c\)</span>. Si <span class="math inline">\(c=0\)</span>, la absorción del cero de la Proposición 14.3.1 hace que los productos comparados sean iguales y, por tanto, el antecedente estricto simplemente no se cumple. Esto demuestra también la versión debilitada anunciada.</p>
+<p><strong>3. Caracterización de la conservación estricta.</strong> Supongamos ahora <span class="math inline">\(a&lt;b\)</span> y definamos <span class="math inline">\(d:=b+(-a)\)</span>. La traslación estricta de la Proposición 25.5.1 proporciona <span class="math inline">\(0&lt;d\)</span>, luego <span class="math inline">\(d\ne0\)</span>. La distributividad y las reglas de signos de la Proposición 14.4.1 dan dos identidades, cada una en su lateralidad:</p>
+<p><span class="math display">\[
+dc=(b+(-a))c=bc+(-(ac)),
+\]</span></p>
+<p><span class="math display">\[
+cd=c(b+(-a))=cb+(-(ca)).
+\]</span></p>
+<p>En un grupo aditivo, <span class="math inline">\(bc+(-(ac))=0\)</span> equivale a <span class="math inline">\(bc=ac\)</span>. Por consiguiente,</p>
+<p><span class="math display">\[
+dc\ne0\quad\Longleftrightarrow\quad ac\ne bc.
+\]</span></p>
+<p>Análogamente, sin permutar factores,</p>
+<p><span class="math display">\[
+cd\ne0\quad\Longleftrightarrow\quad ca\ne cb.
+\]</span></p>
+<p>Por la Proposición 26.6.1, <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(0&lt;c\)</span> proporcionan <span class="math inline">\(ac\le bc\)</span> y <span class="math inline">\(ca\le cb\)</span>. Al añadir respectivamente las dos desigualdades entre productos, la definición de <span class="math inline">\(&lt;\)</span> transforma estas comparaciones no estrictas en las equivalencias locales enunciadas. De modo equivalente, la suficiencia de cada no nulidad está demostrada ya en la Proposición 26.20.1.</p>
+<p><strong>4. Condición global.</strong> Si ningún producto de dos factores no nulos se anula, <span class="math inline">\(0&lt;d\)</span> y <span class="math inline">\(0&lt;c\)</span> aseguran <span class="math inline">\(dc\ne0\)</span> aplicando la condición al par <span class="math inline">\((d,c)\)</span> y <span class="math inline">\(cd\ne0\)</span> aplicándola al par <span class="math inline">\((c,d)\)</span>. Las equivalencias locales del paso 3 dan las dos implicaciones directas. Las implicaciones inversas fueron demostradas en los pasos 1 y 2, sin necesidad de esa condición global. Obtenemos ambas equivalencias para todos <span class="math inline">\(a,b\)</span> y todo <span class="math inline">\(c&gt;0\)</span>. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés de la totalidad.</strong> En <span class="math inline">\(R=\mathbb Z\times\mathbb Z\)</span> con suma y producto por coordenadas y orden parcial por coordenadas, consideremos <span class="math inline">\(a=(0,1)\)</span>, <span class="math inline">\(b=(1,0)\)</span> y <span class="math inline">\(c=(1,0)&gt;0\)</span>. Se tiene <span class="math inline">\(ac=(0,0)&lt;(1,0)=bc\)</span>; sin embargo, <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son incomparables. El cono no negativo es cerrado bajo la multiplicación, de modo que este sí es un anillo ordenado. La totalidad no se puede suprimir sin reemplazarla por alguna propiedad específica de reflexión del factor. El ejemplo es ilustrativo y no interviene en la prueba.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Prueba de estrés de la no nulidad.</strong> En el anillo totalmente ordenado de números duales enteros del §26.18, fijemos <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=\varepsilon\)</span> y <span class="math inline">\(c=\varepsilon&gt;0\)</span>. Se cumple <span class="math inline">\(a&lt;b\)</span>, pero <span class="math inline">\(ac=bc=ca=cb=0\)</span>, porque <span class="math inline">\(\varepsilon^2=0\)</span>. La reflexión sigue siendo válida; lo que falla sin hipótesis locales es la conservación estricta.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Lectura guiada.</strong> Si una comparación estricta <em>sobrevive</em> a la multiplicación por un factor positivo, la totalidad permite recuperar la comparación original. No significa que toda comparación estricta deba sobrevivir: esa afirmación exige excluir la anulación de un producto determinado. La diferencia entre ambas direcciones impide confundir monotonía estricta, cancelación e inmersión de orden.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="multiplicar-por-un-negativo-recuperar-y-transmitir-el-orden" class="level2">
+<h2 class="anchored" data-anchor-id="multiplicar-por-un-negativo-recuperar-y-transmitir-el-orden">26.32. Multiplicar por un negativo: recuperar y transmitir el orden</h2>
+<p>La Proposición 26.22.1 establece que, si <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(c&lt;0\)</span>, podemos concluir <span class="math inline">\(bc&lt;ac\)</span> cuando se ha comprobado que <span class="math inline">\((b-a)c\)</span> no es cero. La pregunta inversa parte de una información diferente: <strong>si ya observamos <span class="math inline">\(bc&lt;ac\)</span>, ¿qué sabemos acerca de <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>?</strong> En un anillo totalmente ordenado recuperaremos <span class="math inline">\(a&lt;b\)</span> sin recurrir a cancelación multiplicativa ni exigir ausencia de divisores de cero.</p>
+<pre class="text"><code>                anillo totalmente ordenado; c &lt; 0
+
+    bc &lt; ac ── totalidad + antitonicidad no estricta ──→ a &lt; b
+    cb &lt; ca ── totalidad + antitonicidad no estricta ──→ a &lt; b
+
+    a &lt; b ── (b-a)c ≠ 0 ──────────────────────────────→ bc &lt; ac
+    a &lt; b ── c(b-a) ≠ 0 ──────────────────────────────→ cb &lt; ca</code></pre>
+<p><strong>Problema de lectura.</strong> La inversión del signo del orden aparece en ambos sentidos de la comparación, pero la exigencia de no nulidad aparece solamente cuando queremos <em>producir</em> una desigualdad estricta entre productos a partir de <span class="math inline">\(a&lt;b\)</span>. El producto puede anular la diferencia incluso si el multiplicador es estrictamente negativo.</p>
+<section id="talg-pro-00077" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00077">Proposición 26.32.1 — Reflexión de la antitonicidad estricta por factores negativos en anillos totalmente ordenados</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un <strong>anillo totalmente ordenado</strong> y sean <span class="math inline">\(a,b,c\in R\)</span>, con <span class="math inline">\(c&lt;0\)</span>. Se cumplen las siguientes afirmaciones:</p>
+<ol type="1">
+<li><p><strong>Reflexión estricta por la derecha:</strong> <span class="math inline">\(bc&lt;ac\Longrightarrow a&lt;b\)</span>.</p></li>
+<li><p><strong>Reflexión estricta por la izquierda:</strong> <span class="math inline">\(cb&lt;ca\Longrightarrow a&lt;b\)</span>.</p></li>
+<li><p><strong>Criterios locales exactos:</strong> si además <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(d:=b+(-a)\)</span>, entonces</p>
+<p><span class="math display">\[
+bc&lt;ac\quad\Longleftrightarrow\quad dc\ne0,
+\]</span></p>
+<p><span class="math display">\[
+cb&lt;ca\quad\Longleftrightarrow\quad cd\ne0.
+\]</span></p></li>
+<li><p><strong>Equivalencias bajo una condición global suficiente:</strong> si</p>
+<p><span class="math display">\[
+\forall x,y\in R,\qquad(x\ne0\ \land\ y\ne0)\Longrightarrow xy\ne0,
+\]</span></p>
+<p>entonces, para cualesquiera <span class="math inline">\(a,b\in R\)</span> y todo <span class="math inline">\(c&lt;0\)</span>,</p>
+<p><span class="math display">\[
+a&lt;b\quad\Longleftrightarrow\quad bc&lt;ac,
+\]</span></p>
+<p><span class="math display">\[
+a&lt;b\quad\Longleftrightarrow\quad cb&lt;ca.
+\]</span></p></li>
+</ol>
+<p>Las dos primeras implicaciones son válidas incluso bajo la hipótesis debilitada <span class="math inline">\(c\le0\)</span>. Las equivalencias del cuarto apartado exigen <span class="math inline">\(c&lt;0\)</span>; el factor cero no conserva ninguna desigualdad estricta.</p>
+<section id="talg-prf-00121" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00121">Demostración</h4>
+<p><strong>1. Reflexión por la derecha.</strong> Supongamos <span class="math inline">\(bc&lt;ac\)</span>. Como <span class="math inline">\(c&lt;0\)</span>, tenemos <span class="math inline">\(c\le0\)</span>. La totalidad del orden, aplicada a <span class="math inline">\(a,b\)</span>, proporciona</p>
+<p><span class="math display">\[
+a\le b\quad\lor\quad b\le a.
+\]</span></p>
+<p>Si <span class="math inline">\(b\le a\)</span>, la antitonicidad no estricta <strong>por la derecha</strong> de la Proposición 26.8.1, aplicada a esta comparación y al factor <span class="math inline">\(c\le0\)</span>, implica</p>
+<p><span class="math display">\[
+ac\le bc.
+\]</span></p>
+<p>Sin embargo, <span class="math inline">\(bc&lt;ac\)</span> significa <span class="math inline">\(bc\le ac\)</span> y <span class="math inline">\(bc\ne ac\)</span>. Por antisimetría, las desigualdades <span class="math inline">\(bc\le ac\)</span> y <span class="math inline">\(ac\le bc\)</span> obligarían a <span class="math inline">\(bc=ac\)</span>, contradicción. En consecuencia, la segunda alternativa de la totalidad es imposible y queda <span class="math inline">\(a\le b\)</span>. Además, <span class="math inline">\(a=b\)</span> produciría <span class="math inline">\(bc=ac\)</span> por sustitución, también imposible. Tenemos <span class="math inline">\(a\le b\)</span> y <span class="math inline">\(a\ne b\)</span>, es decir, <span class="math inline">\(a&lt;b\)</span> por definición del orden estricto asociado.</p>
+<p>Esta reflexión no divide por <span class="math inline">\(c\)</span> y no aplica cancelación multiplicativa: sólo excluye una comparación incompatible con la desigualdad estricta observada.</p>
+<p><strong>2. Reflexión por la izquierda.</strong> Supongamos <span class="math inline">\(cb&lt;ca\)</span>. De nuevo, la totalidad da <span class="math inline">\(a\le b\)</span> o <span class="math inline">\(b\le a\)</span>. Si <span class="math inline">\(b\le a\)</span>, la parte <strong>izquierda</strong> de la Proposición 26.8.1 da <span class="math inline">\(ca\le cb\)</span>. Junto con <span class="math inline">\(cb&lt;ca\)</span>, la antisimetría conduciría a <span class="math inline">\(cb=ca\)</span>, una contradicción. Por tanto, <span class="math inline">\(a\le b\)</span>. La igualdad <span class="math inline">\(a=b\)</span> también es imposible porque implicaría <span class="math inline">\(cb=ca\)</span>. Concluimos <span class="math inline">\(a&lt;b\)</span>. Nunca se identificaron los productos <span class="math inline">\(bc\)</span> y <span class="math inline">\(cb\)</span>.</p>
+<p>En ambas reflexiones bastó <span class="math inline">\(c\le0\)</span>. Para <span class="math inline">\(c=0\)</span>, la absorción del cero de la Proposición 14.3.1 da <span class="math inline">\(bc=ac=cb=ca=0\)</span>; ningún antecedente estricto puede cumplirse. La afirmación debilitada permanece válida, aunque vacuamente en ese caso.</p>
+<p><strong>3. Criterios locales de conservación estricta.</strong> Añadamos <span class="math inline">\(a&lt;b\)</span> y definamos <span class="math inline">\(d:=b+(-a)\)</span>. La compatibilidad del orden estricto con traslaciones, recogida en la Proposición 25.5.1, proporciona <span class="math inline">\(0&lt;d\)</span> y, por tanto, <span class="math inline">\(d\ne0\)</span>. Por distributividad y por las reglas de signos de la Proposición 14.4.1,</p>
+<p><span class="math display">\[
+dc=(b+(-a))c=bc+(-(ac)),
+\]</span></p>
+<p><span class="math display">\[
+cd=c(b+(-a))=cb+(-(ca)).
+\]</span></p>
+<p>Las leyes del grupo aditivo establecen las equivalencias</p>
+<p><span class="math display">\[
+dc=0\quad\Longleftrightarrow\quad bc=ac,
+\]</span></p>
+<p><span class="math display">\[
+cd=0\quad\Longleftrightarrow\quad cb=ca.
+\]</span></p>
+<p>Por la antitonicidad no estricta de la Proposición 26.8.1, de <span class="math inline">\(a&lt;b\)</span> y <span class="math inline">\(c&lt;0\)</span> se sigue <span class="math inline">\(bc\le ac\)</span> y <span class="math inline">\(cb\le ca\)</span>. En cada caso, la desigualdad estricta equivale a que los dos productos comparados no sean iguales. Las identidades anteriores proporcionan exactamente</p>
+<p><span class="math display">\[
+bc&lt;ac\quad\Longleftrightarrow\quad dc\ne0,
+\]</span></p>
+<p><span class="math display">\[
+cb&lt;ca\quad\Longleftrightarrow\quad cd\ne0.
+\]</span></p>
+<p>La suficiencia de ambas condiciones de no nulidad también está contenida en la Proposición 26.22.1. Aquí hemos establecido además su necesidad sin cancelar factores.</p>
+<p><strong>4. Garantía global y equivalencias.</strong> Supongamos que ningún producto de dos factores no nulos se anula. De <span class="math inline">\(0&lt;d\)</span> y <span class="math inline">\(c&lt;0\)</span> deducimos <span class="math inline">\(d\ne0\)</span> y <span class="math inline">\(c\ne0\)</span>. Aplicamos la condición global al par ordenado <span class="math inline">\((d,c)\)</span> para obtener <span class="math inline">\(dc\ne0\)</span>, y de forma independiente al par <span class="math inline">\((c,d)\)</span> para obtener <span class="math inline">\(cd\ne0\)</span>. El apartado 3 demuestra que <span class="math inline">\(a&lt;b\)</span> implica <span class="math inline">\(bc&lt;ac\)</span> y <span class="math inline">\(cb&lt;ca\)</span>. Las dos implicaciones recíprocas se probaron en los apartados 1 y 2 sin la condición global. Quedan establecidas las equivalencias para todo <span class="math inline">\(a,b\)</span> y cada <span class="math inline">\(c&lt;0\)</span>. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Totalidad frente a orden parcial.</strong> Consideremos <span class="math inline">\(R=\mathbb Z\times\mathbb Z\)</span>, con operaciones y orden parcial por coordenadas, y <span class="math inline">\(a=(0,1)\)</span>, <span class="math inline">\(b=(1,0)\)</span>, <span class="math inline">\(c=(-1,0)&lt;0\)</span>. Se obtiene <span class="math inline">\(bc=(-1,0)&lt;(0,0)=ac\)</span> y también <span class="math inline">\(cb&lt;ca\)</span>, pero <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son incomparables. Es un anillo ordenado: el cono no negativo es cerrado bajo el producto coordenado. El ejemplo prueba que no puede suprimirse sin más la totalidad en las implicaciones de reflexión; no interviene en la demostración.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Signo negativo frente a productos nulos.</strong> En el anillo totalmente ordenado de números duales enteros descrito en §26.18, tomemos <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=\varepsilon&gt;0\)</span> y <span class="math inline">\(c=-\varepsilon&lt;0\)</span>. Entonces <span class="math inline">\(a&lt;b\)</span>, pero <span class="math inline">\(bc=ac=cb=ca=0\)</span> porque <span class="math inline">\(\varepsilon^2=0\)</span>. El signo negativo del factor no garantiza conservación estricta. El ejemplo es exclusivamente pedagógico.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Lectura guiada.</strong> Una desigualdad estricta entre productos <em>ya observada</em> permite recuperar <span class="math inline">\(a&lt;b\)</span> bajo totalidad. En cambio, para producir esa desigualdad a partir de <span class="math inline">\(a&lt;b\)</span> necesitamos que no se anule el producto concreto de la diferencia por el factor. Las lateralidades y los sentidos de implicación son independientes.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="una-desigualdad-no-estricta-puede-ocultar-una-igualdad-de-productos" class="level2">
+<h2 class="anchored" data-anchor-id="una-desigualdad-no-estricta-puede-ocultar-una-igualdad-de-productos">26.34. Una desigualdad no estricta puede ocultar una igualdad de productos</h2>
+<p>Las Proposiciones 26.30.1 y 26.32.1 reflejan una comparación <em>estricta</em> observada después de multiplicar: la estrictitud impide que los productos sean iguales. Para una comparación no estricta, esa salida ya no está disponible. Aunque <span class="math inline">\(c&gt;0\)</span>, de <span class="math inline">\(ac\le bc\)</span> podrían resultar simplemente dos productos iguales, sin que esto determine la relación entre <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> si el factor anula diferencias no nulas.</p>
+<p>La hipótesis global que excluye esos colapsos será</p>
+<p><span class="math display">\[
+\tag{NZ}
+\forall x,y\in R,\qquad (x\ne0\ \land\ y\ne0)\Longrightarrow xy\ne0.
+\]</span></p>
+<p>La prueba conservará la multiplicación no conmutativa: necesitaremos dos argumentos de cancelación, uno para <span class="math inline">\((u-v)c\)</span> y otro para <span class="math inline">\(c(u-v)\)</span>.</p>
+<pre class="text"><code>                      totalidad + (NZ); c ≠ 0
+
+   c &gt; 0     a ≤ b  ⇔  ac ≤ bc       a ≤ b  ⇔  ca ≤ cb
+   c &lt; 0     a ≤ b  ⇔  bc ≤ ac       a ≤ b  ⇔  cb ≤ ca
+
+            conservación: ley de signo ya demostrada
+            reflexión: totalidad + exclusión de colapsos</code></pre>
+<blockquote class="blockquote">
+<p><strong>Pregunta de control.</strong> ¿Por qué no bastaba repetir la reflexión estricta? Porque de <span class="math inline">\(ac\le bc\)</span> no obtenemos <span class="math inline">\(ac&lt;bc\)</span> hasta descartar la posibilidad <span class="math inline">\(ac=bc\)</span>. La condición (NZ) hace precisamente posible recuperar la igualdad original en ese caso.</p>
+</blockquote>
+<section id="talg-pro-00078" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00078">Proposición 26.34.1 — Reflexión del orden no estricto bajo ausencia de productos nulos en anillos totalmente ordenados</h3>
+<p>Sea <span class="math inline">\(\langle R,+,\cdot,\le\rangle\)</span> un anillo totalmente ordenado que satisface (NZ), y sean <span class="math inline">\(a,b,c\in R\)</span>.</p>
+<ol type="1">
+<li><p>Si <span class="math inline">\(0&lt;c\)</span>, se cumplen, <strong>independientemente por cada lateralidad</strong>,</p>
+<p><span class="math display">\[
+a\le b\quad\Longleftrightarrow\quad ac\le bc,
+\]</span></p>
+<p><span class="math display">\[
+a\le b\quad\Longleftrightarrow\quad ca\le cb.
+\]</span></p></li>
+<li><p>Si <span class="math inline">\(c&lt;0\)</span>, se cumplen las equivalencias de <strong>orden invertido</strong>,</p>
+<p><span class="math display">\[
+a\le b\quad\Longleftrightarrow\quad bc\le ac,
+\]</span></p>
+<p><span class="math display">\[
+a\le b\quad\Longleftrightarrow\quad cb\le ca.
+\]</span></p></li>
+</ol>
+<p>La condición global (NZ) puede sustituirse por la regularidad <em>lateral correspondiente</em> del factor <span class="math inline">\(c\)</span>: <span class="math inline">\(xc=0\Rightarrow x=0\)</span> para las dos afirmaciones derechas, o <span class="math inline">\(cx=0\Rightarrow x=0\)</span> para las dos izquierdas, para todo <span class="math inline">\(x\in R\)</span>. La regularidad se toma aquí como una hipótesis explícita y no como consecuencia del mero signo.</p>
+<section id="talg-prf-00122" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00122">Demostración</h4>
+<p><strong>1. Cancelación previa, separada por lateralidad.</strong> Fijemos <span class="math inline">\(c\ne0\)</span>. Primero, supongamos <span class="math inline">\(uc=vc\)</span>. Por distributividad y las reglas de signos de la Proposición 14.4.1,</p>
+<p><span class="math display">\[
+(u+(-v))c=uc+(-(vc))=0.
+\]</span></p>
+<p>Si <span class="math inline">\(u\ne v\)</span>, las leyes del grupo aditivo implican <span class="math inline">\(u+(-v)\ne0\)</span>: de la igualdad <span class="math inline">\(u+(-v)=0\)</span> se recuperaría <span class="math inline">\(u=v\)</span> trasladando por <span class="math inline">\(v\)</span>. Por (NZ), aplicado al par ordenado <span class="math inline">\((u+(-v),c)\)</span>, deberíamos tener <span class="math inline">\((u+(-v))c\ne0\)</span>, contradicción. Hemos demostrado <span class="math inline">\(\neg(u\ne v)\)</span>, esto es, <span class="math inline">\(\neg\neg(u=v)\)</span>. <strong>En este único paso utilizamos la lógica clásica del fundamento ZF</strong> para concluir <span class="math inline">\(u=v\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+uc=vc\quad\Longrightarrow\quad u=v.
+\]</span></p>
+<p>La cancelación izquierda se demuestra <em>de nuevo</em>, no permutando los factores. Si <span class="math inline">\(cu=cv\)</span>, entonces</p>
+<p><span class="math display">\[
+c(u+(-v))=cu+(-(cv))=0.
+\]</span></p>
+<p>Si <span class="math inline">\(u\ne v\)</span>, (NZ) aplicado a <span class="math inline">\((c,u+(-v))\)</span> contradice esta igualdad. La misma eliminación clásica de doble negación da <span class="math inline">\(u=v\)</span>, y queda</p>
+<p><span class="math display">\[
+cu=cv\quad\Longrightarrow\quad u=v.
+\]</span></p>
+<p>Alternativamente, si se adopta directamente la ley <span class="math inline">\(xy=0\Rightarrow x=0\lor y=0\)</span>, o la regularidad lateral formulada en el enunciado, estos argumentos de cancelación no necesitan el paso de doble negación. Aquí hemos mantenido la hipótesis (NZ) ya fijada en el tratado y registrado fielmente la inferencia clásica.</p>
+<p><strong>2. Factor positivo: conservación.</strong> Supongamos <span class="math inline">\(0&lt;c\)</span>, de donde <span class="math inline">\(0\le c\)</span> y <span class="math inline">\(c\ne0\)</span>. Si <span class="math inline">\(a\le b\)</span>, la monotonía bilateral de la Proposición 26.6.1 produce, por separado, <span class="math inline">\(ac\le bc\)</span> y <span class="math inline">\(ca\le cb\)</span>. No se necesita (NZ) para estas dos implicaciones.</p>
+<p><strong>3. Factor positivo: reflexión por la derecha.</strong> Supongamos <span class="math inline">\(ac\le bc\)</span>. La totalidad suministra <span class="math inline">\(a\le b\)</span> o <span class="math inline">\(b\le a\)</span>. En el primer caso ya tenemos lo buscado. En el segundo, la monotonía de la Proposición 26.6.1 da <span class="math inline">\(bc\le ac\)</span>. Por antisimetría,</p>
+<p><span class="math display">\[
+ac=bc.
+\]</span></p>
+<p>Como <span class="math inline">\(c\ne0\)</span>, la cancelación <strong>derecha</strong> demostrada en el paso 1 da <span class="math inline">\(a=b\)</span> y, por reflexividad, <span class="math inline">\(a\le b\)</span>. Ambos casos de la disyunción concluyen lo mismo.</p>
+<p><strong>4. Factor positivo: reflexión por la izquierda.</strong> Si <span class="math inline">\(ca\le cb\)</span>, la totalidad vuelve a dar <span class="math inline">\(a\le b\)</span> o <span class="math inline">\(b\le a\)</span>. En la segunda rama la monotonía izquierda produce <span class="math inline">\(cb\le ca\)</span>; por antisimetría <span class="math inline">\(ca=cb\)</span>. La cancelación <strong>izquierda</strong> del paso 1 implica <span class="math inline">\(a=b\)</span>, luego <span class="math inline">\(a\le b\)</span>. Quedan probadas las dos equivalencias del apartado 1.</p>
+<p><strong>5. Factor negativo: conservación.</strong> Si <span class="math inline">\(c&lt;0\)</span>, tenemos <span class="math inline">\(c\le0\)</span> y <span class="math inline">\(c\ne0\)</span>. Partiendo de <span class="math inline">\(a\le b\)</span>, la Proposición 26.8.1, en sus dos lateralidades, da <span class="math inline">\(bc\le ac\)</span> y <span class="math inline">\(cb\le ca\)</span>. Estas implicaciones tampoco precisan (NZ).</p>
+<p><strong>6. Factor negativo: reflexión por la derecha.</strong> Partamos de <span class="math inline">\(bc\le ac\)</span> y de la disyunción total <span class="math inline">\(a\le b\lor b\le a\)</span>. La primera rama concluye. Si <span class="math inline">\(b\le a\)</span>, la antitonicidad por la derecha da <span class="math inline">\(ac\le bc\)</span>. La antisimetría impone <span class="math inline">\(bc=ac\)</span>, y la cancelación derecha por <span class="math inline">\(c\ne0\)</span> impone <span class="math inline">\(b=a\)</span>. Así <span class="math inline">\(a\le b\)</span> también en esta rama.</p>
+<p><strong>7. Factor negativo: reflexión por la izquierda.</strong> Partamos de <span class="math inline">\(cb\le ca\)</span>. Si la totalidad da <span class="math inline">\(a\le b\)</span>, ya está. En la otra rama, <span class="math inline">\(b\le a\)</span> implica <span class="math inline">\(ca\le cb\)</span> por antitonicidad izquierda; la antisimetría produce <span class="math inline">\(cb=ca\)</span>. Cancelamos por la izquierda, obtenemos <span class="math inline">\(b=a\)</span> y concluimos <span class="math inline">\(a\le b\)</span>.</p>
+<p>Las cuatro equivalencias están demostradas sin conmutatividad de la multiplicación. La inspección de los pasos 3, 4, 6 y 7 muestra que sólo se emplea la cancelación lateral respectiva; por ello basta, en cada caso, la regularidad correspondiente de <span class="math inline">\(c\)</span> indicada en el enunciado. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Contraejemplo: el signo no garantiza reflexión no estricta.</strong> En el anillo totalmente ordenado de números duales enteros del §26.18, <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math inline">\(\varepsilon^2=0\)</span>. Sean <span class="math inline">\(a=\varepsilon\)</span>, <span class="math inline">\(b=0\)</span> y <span class="math inline">\(c=\varepsilon&gt;0\)</span>. Entonces <span class="math inline">\(ac=bc=ca=cb=0\)</span>, de modo que las dos comparaciones de productos son verdaderas, aunque <span class="math inline">\(a\le b\)</span> es falsa. Si se toma <span class="math inline">\(c=-\varepsilon&lt;0\)</span>, ocurre la misma igualdad y fallan igualmente las reflexiones negativas. Esto demuestra la necesidad de controlar colapsos; no demuestra que la condición global (NZ) sea <em>necesaria</em> en todos los casos particulares.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Factor cero.</strong> Cuando <span class="math inline">\(c=0\)</span>, la Proposición 14.3.1 da <span class="math inline">\(ac=bc=ca=cb=0\)</span> para cualesquiera <span class="math inline">\(a,b\)</span>. Por tanto, salvo circunstancias degeneradas, la comparación entre productos carece de información sobre <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>. Las equivalencias del enunciado exigen signo <em>estricto</em> y nunca incluyen <span class="math inline">\(c=0\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Lectura inversa.</strong> En las desigualdades estrictas, la información <span class="math inline">\(ac&lt;bc\)</span> bastaba para reflejar el orden mediante totalidad. En las no estrictas hay que atender además a la rama de igualdad <span class="math inline">\(ac=bc\)</span>: la exclusión de productos nulos garantiza cancelación, y sólo entonces permite volver a <span class="math inline">\(a\le b\)</span>. El razonamiento es simétrico en su arquitectura, pero no identifica productos izquierdos y derechos.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+</section>
+<section id="síntesis-deductiva-del-capítulo" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis-deductiva-del-capítulo">26.36. Síntesis deductiva del capítulo</h2>
+<p>El problema planteado en §26.0 era hacer compatibles las dos operaciones de un anillo con una relación de orden, <strong>sin atribuir a la multiplicación la invariancia que pertenece a las traslaciones aditivas</strong>. La cadena de resultados cerrados permite ahora dar una respuesta sistemática:</p>
+<pre class="text"><code>anillo + grupo aditivo ordenado + cierre multiplicativo de los no negativos
+           │
+           ├── anillo ordenado (§26.1)
+           │   ├── factor c ≥ 0: conservación de ≤ (§26.6)
+           │   ├── factor c ≤ 0: inversión de ≤ (§26.8)
+           │   └── producto de dos no positivos ≥ 0 (§26.10)
+           │
+           └── orden total (§26.12)
+               ├── cuadrados ≥ 0; unidad ≥ 0 (§§26.14–26.16)
+               ├── producto no nulo: control de estrictitud (§§26.18–26.28)
+               ├── reflexión estricta sin cancelar (§§26.30–26.32)
+               └── reflexión no estricta: cancelación o regularidad (§26.34)</code></pre>
+<p>La <strong>totalidad</strong> aporta comparabilidad; no prohíbe que se anulen productos de factores no nulos. La <strong>ausencia de productos nulos</strong> es una condición distinta que permite controlar la igualdad de productos y garantizar algunas desigualdades estrictas. El <strong>cuerpo</strong> se introdujo previamente en el capítulo 22 como una estructura conmutativa, no trivial y con inversos para todos sus elementos no nulos. La siguiente unidad reunirá esa noción con el orden total aquí construido.</p>
+<p>No se introdujeron completitud, topología, límites, supremos, axioma arquimediano ni algoritmos de comparación. Los contraejemplos con anillos coordenados y números duales delimitan las hipótesis; no sustituyen las pruebas.</p>
+<hr>
+<p><a href="../../libros/capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.html">← <strong>Capítulo 25 — Grupos ordenados</strong></a> · <a href="../../libros/otros/tratado-de-algebra.html"><strong>Tratado moderno de Álgebra</strong></a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
