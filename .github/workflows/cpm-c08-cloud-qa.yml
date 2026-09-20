@@ -1,0 +1,89 @@
+name: CPM C08 Cloud Visual QA
+
+# Nunca se incorpora un manuscrito abierto al repositorio público.
+# Este workflow usa copias efímeras descargadas de Drive con una identidad autorizada.
+on:
+  push:
+    branches:
+      - cpm/cloud-qa-c08
+    paths:
+      - scripts/cpm_drive_cloud_qa.py
+      - .github/workflows/cpm-c08-cloud-qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cpm-c08-visual-qa
+  cancel-in-progress: false
+
+jobs:
+  visual-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      CPM_ROOT: ${{ runner.temp }}/cpm-c08-workspace
+      CPM_DRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.CPM_DRIVE_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - name: Check out infrastructure code only
+        uses: actions/checkout@v4
+
+      - name: Require explicit Drive authorization
+        shell: bash
+        run: |
+          if [ -z "$CPM_DRIVE_SERVICE_ACCOUNT_JSON" ]; then
+            echo 'AUTHORIZATION_REQUIRED: configure CPM_DRIVE_SERVICE_ACCOUNT_JSON and grant the service account Drive access.' >&2
+            exit 2
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Drive client and Playwright
+        run: |
+          python -m pip install --disable-pip-version-check google-api-python-client google-auth playwright==1.55.0
+          python -m playwright install --with-deps chromium
+
+      - name: Download exact private Drive snapshot into temporary runner
+        run: python scripts/cpm_drive_cloud_qa.py download --root "$CPM_ROOT"
+
+      - name: Run strict static preflight on unmodified Quarto output
+        run: |
+          python "$CPM_ROOT/00 - Administración/CPM_C08_QA_MATHJAX4_NAVEGACION_v01.py" "$CPM_ROOT" --preflight
+
+      - name: Run real MathJax 4, CHTML, navigation, viewport and screenshot checks
+        id: browser
+        continue-on-error: true
+        shell: bash
+        run: |
+          CHROME="$(python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as playwright:
+              print(playwright.chromium.executable_path)
+          PY
+          )"
+          CPM_CHROME_BIN="$CHROME" python "$CPM_ROOT/00 - Administración/CPM_C08_QA_MATHJAX4_NAVEGACION_v01.py" "$CPM_ROOT"
+
+      - name: Store JSON and screenshots in private canonical Drive build folder
+        if: always()
+        shell: bash
+        run: |
+          if [ -f "$CPM_ROOT/99 - Build/QA_C08_MATHJAX4_NAV/CPM_C08_QA_MATHJAX4_NAV_RESULTADO.json" ]; then
+            python scripts/cpm_drive_cloud_qa.py upload --root "$CPM_ROOT" --run-id "$GITHUB_RUN_ID"
+          else
+            echo 'NO_EVIDENCE: stage/preflight failed before an executable browser report could be produced.' >&2
+          fi
+
+      - name: Block approval whenever the browser gate fails
+        if: always()
+        env:
+          BROWSER_RESULT: ${{ steps.browser.outcome }}
+        run: |
+          if [ "$BROWSER_RESULT" != success ]; then
+            echo 'EXACT_VISUAL_QA_NOT_PASSED: C08 remains OPEN and must not be published.' >&2
+            exit 1
+          fi
+          echo 'AUTOMATED_CHECKS_PASSED: human visual approval and publication are still pending.'
