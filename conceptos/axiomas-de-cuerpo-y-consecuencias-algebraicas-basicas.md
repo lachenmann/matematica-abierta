@@ -5,7 +5,7 @@ content-id: MA-CON-0020
 content-type: concept
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-07
+date-modified: 2026-09-20
 areas:
   - fundamentos
   - algebra
@@ -80,6 +80,16 @@ $$
 $$
 
 Todavía **no** introduciremos orden, positividad, desigualdades ni completitud. Esas estructuras requieren axiomas adicionales.
+
+::: {.ma-block .ma-comprobacion}
+**Verificación formal en Lean 4 — seis consecuencias de los axiomas de cuerpo**
+
+La biblioteca de Matemática Abierta ha comprobado **para un cuerpo arbitrario** `F` seis resultados de este artículo: unicidad del neutro aditivo (§4.1: `neutro_aditivo_unico`), unicidad del neutro multiplicativo (§4.2: `neutro_multiplicativo_unico`), unicidad del inverso aditivo (§5.1: `inverso_aditivo_unico`), absorción del cero por el producto (§6: `cero_absorbe_producto`), cancelación multiplicativa con factor no nulo (§10: `cancelacion_multiplicativa`) y equivalencia del producto nulo (§11: `producto_nulo_iff`).
+
+[Consultar el módulo Lean en una revisión fija](https://github.com/lachenmann/matematica-abierta/blob/5c1aa455eac9d74b9a4b95f315086eb6c551341d/lean/MatematicaAbierta/ConsecuenciasCuerpo.lean) · [Ver la PR #99 y sus comprobaciones](https://github.com/lachenmann/matematica-abierta/pull/99).
+
+**Alcance preciso.** Las demostraciones explicitan pasos algebraicos y emplean las leyes de la estructura `Field F` proporcionadas por Mathlib. No se ha formalizado aquí una construcción independiente de un cuerpo ni cada axioma desde primeros principios. Esta certificación no abarca el resto del artículo: por ejemplo, la unicidad del inverso multiplicativo (§5.2), la imposibilidad de invertir el cero (§7), las reglas de signos (§8), la cancelación aditiva (§9), la división o la resolución de ecuaciones lineales. Tampoco certifica por sí sola cada paso de las pruebas manuscritas.
+:::
 
 ## 1. Qué estructura queremos aislar {#ma-con-0020-estructura}
 
