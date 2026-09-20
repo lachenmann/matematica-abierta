@@ -35,7 +35,8 @@ theorem identidad_cuadratica_cauchy_finita {ι : Type*} (s : Finset ι)
       ring
     _ = Q ^ 2 * P - (2 * Q * R) * R + R ^ 2 * Q := by
       simp only [Finset.sum_add_distrib, Finset.sum_sub_distrib,
-        ← Finset.mul_sum] <;> ring
+        ← Finset.mul_sum]
+      ring
     _ = Q * (P * Q - R ^ 2) := by ring
 
 /-- MA-ART-0004, §3: Cauchy–Schwarz para un conjunto finito cualquiera,
