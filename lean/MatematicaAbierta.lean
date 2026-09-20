@@ -1,6 +1,7 @@
 import MatematicaAbierta.PrimerosResultados
 import MatematicaAbierta.DesigualdadTriangular
 import MatematicaAbierta.ConsecuenciasCuerpo
+import MatematicaAbierta.CauchySchwarz
 
 /-!
 # Matemática Abierta: biblioteca formal
