@@ -5,6 +5,7 @@ import MatematicaAbierta.CauchySchwarz
 import MatematicaAbierta.CauchySchwarzFinito
 import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
 import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
+import MatematicaAbierta.TeoriaDeFunciones.Correspondencias
 import MatematicaAbierta.Continuo.ProgramaTransparente
 
 /-!
