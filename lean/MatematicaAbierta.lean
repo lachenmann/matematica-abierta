@@ -4,6 +4,7 @@ import MatematicaAbierta.ConsecuenciasCuerpo
 import MatematicaAbierta.CauchySchwarz
 import MatematicaAbierta.CauchySchwarzFinito
 import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
+import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
 
 /-!
 # Matemática Abierta: biblioteca formal
