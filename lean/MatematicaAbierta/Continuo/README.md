@@ -2,14 +2,14 @@
 
 ## Procedencia y trazabilidad
 
-Módulo: `ProgramaTransparente.lean`, incorporado a `MatematicaAbierta.lean` para que Lake lo compile. Fuente canónica: Google Drive, `03_Formalizacion/FDC_T002_programa_transparente.lean`, SHA-256 original `b5893820588c0f0d51887a7eb596436cd9ea0041a0c6d68920216cae19ded786`, blob Git original `aef0754071eb6fdfde0e698737831f81f09e5e4a`. Se preservan los 40 teoremas heredados de AUD-021. El primer CI de la PR #105 descubrió una recursión excesiva de la simplificación en el teorema de estabilidad de un paso, línea 816. Una primera corrección que reducía un solo paso de `buscarHasta` pero reescribía la hipótesis seguía agotando el límite de recursión, línea 818. La segunda corrección utiliza directamente `congrArg` sobre la ecuación de búsqueda y no invoca tácticas de simplificación ni de reescritura en ese punto. Los hashes de las versiones reparadas difieren de la fuente original; solo la compilación CI de la última versión acredita las demostraciones.
+Módulo: `ProgramaTransparente.lean`, incorporado a `MatematicaAbierta.lean` para que Lake lo compile. Fuente canónica: Google Drive, `03_Formalizacion/FDC_T002_programa_transparente.lean`, SHA-256 original `b5893820588c0f0d51887a7eb596436cd9ea0041a0c6d68920216cae19ded786`, blob Git original `aef0754071eb6fdfde0e698737831f81f09e5e4a`. Se preservan los 40 teoremas heredados de AUD-021. El primer CI de la PR #105 encontró una recursión excesiva de la simplificación en el teorema de estabilidad de un paso, línea 816. Una primera corrección con reescritura siguió agotando el límite de recursión, línea 818. La siguiente versión demuestra el paso directamente por `congrArg`. La compilación posterior llegó al siguiente teorema, pero falló al simplificar la aritmética del paso inductivo, línea 821; su prueba se sustituyó por aplicaciones directas de las igualdades definicionales `n + 0 = n` y `n + (k + 1) = (n + k) + 1`. También se evitó la última simplificación general al elegir `k = 0` para establecer estabilización. Las versiones reparadas tienen hashes diferentes de la fuente original; solo un CI satisfactorio sobre el último commit acredita los siete teoremas.
 
 ## Siete teoremas añadidos — pruebas desarrolladas en el proyecto
 
 | Declaración (namespace `Continuo.Semantica`) | Dependencias directas y contenido |
 | --- | --- |
 | `programaVisible_estable_succ` | Definición de `programaVisible`, ecuación recursiva de `buscarHasta` y congruencia de la igualdad: una respuesta permanece al sumar un paso de combustible. |
-| `programaVisible_estable` | `programaVisible_estable_succ`, inducción natural y `Nat.add_succ`: estabilidad con cualquier combustible adicional. |
+| `programaVisible_estable` | `programaVisible_estable_succ`, inducción natural e igualdades definicionales de la suma: estabilidad con cualquier combustible adicional. |
 | `programaVisible_grafo_iff` | Definiciones de `programaVisible` y `Responde`: igualdad definicional de los grafos. |
 | `programaVisible_estabiliza_iff` | `programaVisible_estable`, testigo existencial y especialización `k=0`: respuesta eventual si y solo si estabilidad eventual. |
 | `programaVisible_correcto` | Teorema propio heredado `responde_correcta` y `programaVisible_grafo_iff`: corrección condicionada por decididores correctos y cortes inferiores. |
