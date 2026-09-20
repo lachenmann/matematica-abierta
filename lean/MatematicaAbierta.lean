@@ -7,6 +7,7 @@ import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
 import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
 import MatematicaAbierta.TeoriaDeFunciones.Correspondencias
 import MatematicaAbierta.Continuo.ProgramaTransparente
+import MatematicaAbierta.Continuo.SimulacionAcotada
 
 /-!
 # Matemática Abierta: biblioteca formal
