@@ -7,8 +7,11 @@ con acceso concedido expresamente a los archivos y carpetas necesarios de Drive.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import io
 import json
 import os
+import tarfile
 from pathlib import Path
 import sys
 
@@ -23,6 +26,10 @@ VERIFIER_ID = '1Uk9SaWlnlqms30tR5av_by10bXxxW3GR'
 PREVIEW_FOLDER_ID = '1jkBgGT9OEohTz2ThdSOpaW2qWbNfoLO4'
 BUILD_FOLDER_ID = '1a0BzGVD_nI6vuYmfFjvqJRDNonRARbsL'
 QA_FOLDER = 'QA_C08_MATHJAX4_NAV'
+# Archivo temporal propiedad del usuario, creado mediante la conexión OAuth de Work.
+# La cuenta de servicio solo actualiza sus bytes; no crea archivos sin cuota.
+TRANSFER_FILE_ID = '1ODLPkMURkM6THxdfi-Fn9SWv8Bo8-Xbi'
+QA_FOLDER_ID = '11iMBg0Rk2kq2nMjMWi_YQLsJlpWXsVD5'
 FOLDER_MIME = 'application/vnd.google-apps.folder'
 
 
@@ -109,23 +116,58 @@ def find_or_create_folder(api, parent, name):
 
 
 def upload(api, root, run_id):
+    """Entrega privada de evidencias reales a un archivo propiedad del usuario.
+
+    Work descarga luego este paquete y crea los archivos finales con OAuth del
+    propietario. No se usan artefactos de GitHub ni nuevos secretos.
+    """
     source = root / '99 - Build/QA_C08_MATHJAX4_NAV'
-    if not source.is_dir():
-        raise RuntimeError('No hay directorio de resultados; no se inventará evidencia.')
     report = source / 'CPM_C08_QA_MATHJAX4_NAV_RESULTADO.json'
     if not report.is_file():
-        raise RuntimeError('Falta JSON de ejecución; no se subirán capturas huérfanas.')
-    parent = find_or_create_folder(api, BUILD_FOLDER_ID, QA_FOLDER)
-    run = find_or_create_folder(api, parent, 'github-run-' + run_id)
+        raise RuntimeError('Falta JSON de ejecución; no se transferirán capturas huérfanas.')
+    expected_png = {
+        'C08_MATHJAX4_NAV_390_MENU.png',
+        'C08_MATHJAX4_1440_SECCION_7_8.png',
+        'C08_MATHJAX4_390_TABLA_7_8.png',
+        'C08_MATHJAX4_390_EJERCICIOS.png',
+        'C08_MATHJAX4_390_ULTIMA_SOLUCION.png',
+        'C08_MATHJAX4_1440_DESKTOP.png',
+    }
     paths = [report] + sorted(source.glob('*.png'))
-    for path in paths:
-        mime = 'application/json' if path.suffix == '.json' else 'image/png'
-        media = MediaFileUpload(str(path), mimetype=mime, resumable=False)
-        api.files().create(body={'name': path.name, 'parents': [run]},
-                           media_body=media, fields='id', supportsAllDrives=True).execute()
-    print('EVIDENCE_DRIVE_FOLDER_ID=' + run)
-    print('EVIDENCE_FILES=' + str(len(paths)))
-    print('Evidencia privada en Drive; no se cargaron artefactos a GitHub.')
+    if not expected_png.issubset({p.name for p in paths}):
+        raise RuntimeError('Faltan capturas obligatorias; no se transferirá evidencia incompleta.')
+    meta = api.files().get(fileId=TRANSFER_FILE_ID,
+        fields='id,name,parents,owners(emailAddress),trashed',
+        supportsAllDrives=True).execute()
+    if meta.get('trashed') or QA_FOLDER_ID not in meta.get('parents', []):
+        raise RuntimeError('El archivo de transferencia no está en la carpeta QA privada.')
+    owners = {x.get('emailAddress') for x in meta.get('owners', [])}
+    if 'alevip@gmail.com' not in owners:
+        raise RuntimeError('El archivo de transferencia no pertenece al propietario OAuth.')
+    archive = source / ('CPM_C08_PRIVATE_TRANSFER_' + run_id + '.tar.gz')
+    manifest = {'run_id': run_id, 'files': {}}
+    with tarfile.open(archive, 'w:gz') as tar:
+        for path in paths:
+            data = path.read_bytes()
+            manifest['files'][path.name] = hashlib.sha256(data).hexdigest()
+            tar.add(path, arcname=path.name, recursive=False)
+        payload = json.dumps(manifest, sort_keys=True).encode('utf-8')
+        info = tarfile.TarInfo('manifest.json')
+        info.size = len(payload)
+        tar.addfile(info, io.BytesIO(payload))
+    expected_sha = hashlib.sha256(archive.read_bytes()).hexdigest()
+    media = MediaFileUpload(str(archive), mimetype='application/gzip', resumable=False)
+    api.files().update(fileId=TRANSFER_FILE_ID,
+        body={'name': archive.name, 'mimeType': 'application/gzip'},
+        media_body=media, fields='id,name,size', supportsAllDrives=True).execute()
+    actual = api.files().get_media(fileId=TRANSFER_FILE_ID,
+        supportsAllDrives=True).execute()
+    if hashlib.sha256(actual).hexdigest() != expected_sha:
+        raise RuntimeError('La lectura de vuelta del paquete Drive no coincide con SHA-256.')
+    print('PRIVATE_OWNER_OWNED_TRANSFER_ID=' + TRANSFER_FILE_ID)
+    print('PRIVATE_TRANSFER_SHA256=' + expected_sha)
+    print('PRIVATE_TRANSFER_FILES=' + str(len(paths)))
+    print('OAuth de Work debe extraer y guardar el JSON y las capturas por separado.')
 
 
 def main():
