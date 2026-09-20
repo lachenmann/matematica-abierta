@@ -7,7 +7,7 @@ collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-07
+date-modified: 2026-09-19
 areas:
   - fundamentos
 level: fundamental
@@ -38,6 +38,11 @@ license: GFDL-1.3-or-later
 ---
 
 # Leer y escribir matemáticas
+
+::: {.callout-note title="Material histórico"}
+Esta página corresponde a la edición anterior de **Cálculo para matemáticos**. Ya no forma parte del índice ni de la numeración del libro vigente, que comienza con [Los números reales](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md). Se conserva en su dirección original para mantener los enlaces históricos.
+:::
+
 
 Aprender cálculo para hacer matemáticas exige algo más que saber transformar expresiones. En algún momento aparece una pregunta que cambia el trabajo por completo:
 

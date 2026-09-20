@@ -1,12 +1,12 @@
 ---
 title: "Cálculo para matemáticos"
-description: "Libro abierto de cálculo desarrollado con lenguaje de demostración, estructura de los números reales, métodos, problemas y conexiones con el análisis."
+description: "Libro abierto de cálculo: números reales, funciones, sucesiones, límites, continuidad y derivada."
 content-id: MA-BOK-0001
 content-type: book
 collection: PM-CAL
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-10
+date-modified: 2026-09-19
 areas:
   - fundamentos
   - calculo
@@ -24,11 +24,13 @@ topics:
   - integracion
   - ecuaciones-diferenciales
 prerequisites: []
-related:
-  - MA-BCH-0001
+related: 
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
+  - MA-BCH-0062
+  - MA-BCH-0063
+  - MA-BCH-0064
 provenance:
   type: synthesis
   sources: []
@@ -39,7 +41,7 @@ license: GFDL-1.3-or-later
 
 **Cálculo para matemáticos** es un libro abierto en construcción dentro de la colección *Para matemáticos*. Su objetivo es desarrollar el cálculo de una variable con suficiente rigor para servir de puente hacia el análisis, pero sin convertir la exposición en una sucesión comprimida de definiciones y teoremas.
 
-El libro parte de una idea sencilla: aprender cálculo no consiste solamente en adquirir técnicas de derivación e integración. También exige aprender a leer una afirmación matemática, reconocer sus hipótesis, construir una demostración, controlar un argumento algebraico y entender qué estructura de los números reales hace posibles los principales teoremas del cálculo.
+La edición vigente comienza con los números reales. Conserva una idea sencilla: aprender cálculo no consiste solamente en adquirir técnicas de derivación e integración. También exige aprender a leer una afirmación matemática, reconocer sus hipótesis, construir una demostración, controlar un argumento algebraico y entender qué estructura de los números reales hace posibles los principales teoremas del cálculo.
 
 ## Principios de la obra
 
@@ -69,25 +71,27 @@ En particular, el libro procura:
 
 ## Tomo I — Fundamentos del cálculo de una variable
 
-El primer tomo avanza desde el lenguaje de la demostración y la estructura de los números reales hasta el cálculo diferencial e integral de una variable y las ecuaciones diferenciales elementales.
+El primer tomo avanza desde la estructura de los números reales hasta el cálculo diferencial e integral de una variable y las ecuaciones diferenciales elementales.
 
-La primera parte está organizada actualmente así:
+Los capítulos completos disponibles son:
 
-1. **Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones**.
-2. **Los números reales: orden, valor absoluto, desigualdades y completitud**.
-3. **Funciones reales: estructura, composición, inversas y gráficas**.
-4. **Sucesiones y la primera noción rigurosa de límite**.
-5. **Límites de funciones**.
-6. **Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**.
+1. **Los números reales: axiomas de cuerpo, orden y completitud**.
+2. **Funciones reales: estructura, composición, inversas y gráficas**.
+3. **Sucesiones y la primera noción rigurosa de límite**.
+4. **Límites de funciones**.
+5. **Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**.
+6. **La derivada y la aproximación lineal local**.
 
 Los capítulos posteriores desarrollarán derivación, aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
 
 ## Capítulos publicados
 
-1. [**Leer y escribir matemáticas: proposiciones, cuantificadores y demostraciones**](../capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.md) (`MA-BCH-0001`).
-2. [**Los números reales: orden, valor absoluto, desigualdades y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
-3. [**Funciones reales: estructura, composición, inversas y gráficas**](../capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md) (`MA-BCH-0004`).
-4. [**Sucesiones y la primera noción rigurosa de límite**](../capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) (`MA-BCH-0010`).
+1. [**Los números reales: axiomas de cuerpo, orden y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
+2. [**Funciones reales: estructura, composición, inversas y gráficas**](../capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md) (`MA-BCH-0004`).
+3. [**Sucesiones y la primera noción rigurosa de límite**](../capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) (`MA-BCH-0010`).
+4. [**Límites de funciones**](../capitulos/limites-de-funciones.md) (`MA-BCH-0062`).
+5. [**Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**](../capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) (`MA-BCH-0063`).
+6. [**La derivada y la aproximación lineal local**](../capitulos/la-derivada-y-la-aproximacion-lineal-local.md) (`MA-BCH-0064`).
 
 Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
 
@@ -106,6 +110,6 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública está abierta y ya contiene sus **cuatro primeros capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
+La edición pública está abierta y contiene **seis capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
 
 Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
