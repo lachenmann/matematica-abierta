@@ -6,9 +6,10 @@ import Mathlib
 Correspondencia editorial: MA-CON-0020, publicado en
 `conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md`.
 
-Todos los enunciados se formulan para un cuerpo arbitrario `F`.
+Los resultados multiplicativos se formulan para un cuerpo arbitrario `F`.
+La cancelación aditiva se formula con la hipótesis más débil `[AddGroup G]`.
 Las pruebas expresan pasos algebraicos explícitos y reutilizan las leyes
-estructurales de la instancia `Field F` de Mathlib.
+estructurales de Mathlib.
 -/
 
 namespace MatematicaAbierta
@@ -35,6 +36,18 @@ theorem inverso_aditivo_unico (a b c : F)
     _ = (a + b) + c := by rw [add_comm b a]
     _ = 0 + c := by rw [hb]
     _ = c := zero_add c
+
+/-- MA-CON-0020, §5.2: dos inversos multiplicativos del mismo elemento coinciden;
+la demostración no utiliza cancelación multiplicativa ni necesita `a ≠ 0`. -/
+theorem inverso_multiplicativo_unico (a b c : F)
+    (hb : a * b = 1) (hc : a * c = 1) : b = c := by
+  calc
+    b = b * 1 := (mul_one b).symm
+    _ = b * (a * c) := by rw [hc]
+    _ = (b * a) * c := (mul_assoc b a c).symm
+    _ = (a * b) * c := by rw [mul_comm b a]
+    _ = 1 * c := by rw [hb]
+    _ = c := one_mul c
 
 /-- MA-CON-0020, §6: absorción del cero, deducida por distributividad y cancelación aditiva. -/
 theorem cero_absorbe_producto (a : F) : (0 : F) * a = 0 := by
@@ -75,5 +88,19 @@ theorem producto_nulo_iff (a b : F) : a * b = 0 ↔ a = 0 ∨ b = 0 := by
     rcases hab with ha | hb
     · rw [ha, cero_absorbe_producto]
     · rw [hb, mul_zero]
+
+variable {G : Type*} [AddGroup G]
+
+/-- MA-CON-0020, §9: cancelación aditiva derecha, válida incluso en un grupo
+aditivo no conmutativo; solo utiliza asociatividad, inverso y neutro. -/
+theorem cancelacion_aditiva (a b c : G) (h : a + c = b + c) : a = b := by
+  calc
+    a = a + 0 := (add_zero a).symm
+    _ = a + (c + -c) := by rw [add_neg_cancel]
+    _ = (a + c) + -c := (add_assoc a c (-c)).symm
+    _ = (b + c) + -c := congrArg (fun x : G => x + -c) h
+    _ = b + (c + -c) := add_assoc b c (-c)
+    _ = b + 0 := by rw [add_neg_cancel]
+    _ = b := add_zero b
 
 end MatematicaAbierta
