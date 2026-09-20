@@ -804,7 +804,10 @@ theorem programaVisible_estable_succ
   change (match buscarHasta χA χB p n with
     | some c => some c
     | none => etapaConcreta χA χB p (n + 1)) = some b
-  rw [h]
+  exact congrArg (fun r : Option Bool =>
+    match r with
+    | some c => some c
+    | none => etapaConcreta χA χB p (n + 1)) h
 
 /-- Estabilidad con cualquier cantidad adicional de combustible. -/
 theorem programaVisible_estable
