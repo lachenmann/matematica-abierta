@@ -1,4 +1,4 @@
-import Mathlib.Algebra.Order.Ring.Abs
+import Mathlib
 
 namespace MatematicaAbierta
 
