@@ -1,0 +1,45 @@
+name: Lean 4 · comprobación formal
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'lean/**'
+      - '.devcontainer/**'
+      - '.github/workflows/lean.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'lean/**'
+      - '.devcontainer/**'
+      - '.github/workflows/lean.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reject incomplete proof placeholders
+        run: |
+          if grep -RInE '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' \
+            lean/MatematicaAbierta.lean lean/MatematicaAbierta/; then
+            echo 'Found sorry/admit in a published Lean module.'
+            exit 1
+          fi
+
+      - name: Build Lean library using pinned dependencies and Mathlib cache
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          build: true
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+          build-args: '--wfail'
