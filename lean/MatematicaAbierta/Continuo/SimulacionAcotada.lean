@@ -28,7 +28,8 @@ def run (c : Code) (k : ℕ) : Option ℕ :=
   Nat.Partrec.Code.evaln k c fixedInput
 
 /-- El evaluador de cota cero nunca produce una respuesta. -/
-theorem run_zero (c : Code) : run c 0 = none := rfl
+theorem run_zero (c : Code) : run c 0 = none := by
+  simp [run, Nat.Partrec.Code.evaln]
 
 /-- La simulación finita nunca afirma una salida falsa. -/
 theorem run_sound {c : Code} {k x : ℕ} (hx : x ∈ run c k) :
