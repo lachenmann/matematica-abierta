@@ -10,7 +10,7 @@ No se necesita completitud de los reales: basta un cuerpo linealmente ordenado.
 
 namespace MatematicaAbierta
 
-variable {F : Type*} [LinearOrderedField F]
+variable {F : Type*} [Field F] [LinearOrder F] [IsStrictOrderedRing F]
 
 /-- MA-ART-0003, §2: la desigualdad triangular se deduce de las cuatro cotas
 `-|x| ≤ x ≤ |x|` y `-|y| ≤ y ≤ |y|`, sin invocar `abs_add_le`. -/
@@ -33,7 +33,7 @@ theorem desigualdad_triangular_real (x y : ℝ) :
 /-- MA-ART-0003, §4: desigualdad triangular inversa.
 Se obtiene aplicando dos veces la desigualdad triangular anterior. -/
 theorem desigualdad_triangular_inversa_cuerpo_ordenado (x y : F) :
-    ||x| - |y|| ≤ |x - y| := by
+    abs (|x| - |y|) ≤ |x - y| := by
   apply abs_le.mpr
   constructor
   · have h := desigualdad_triangular_cuerpo_ordenado (y - x) x
