@@ -1,7 +1,5 @@
 # Registro de identificadores
 
-> **Reconciliación pendiente:** los capítulos 5–15 del Tratado de análisis ya usan `MA-BCH-0051`–`MA-BCH-0061` en sus propios metadatos y en `libros/capitulos/index.qmd`, pero aún no figuran en esta tabla. Se reserva `MA-BCH-0062` para el capítulo 26 del Tratado moderno de Álgebra. Antes de nuevas asignaciones, incorporar esas once entradas al registro.
-
 ## Próximos IDs disponibles
 
 | Tipo | Próximo |
@@ -100,6 +98,17 @@
 | MA-BCH-0048 | book-chapter | Tratado moderno de Álgebra — Capítulo 23: Homomorfismos de cuerpos | `libros/capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md` | published |
 | MA-BCH-0049 | book-chapter | Tratado moderno de Álgebra — Capítulo 24: Cuerpo de fracciones de un dominio íntegro | `libros/capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md` | published |
 | MA-BCH-0050 | book-chapter | Tratado moderno de Álgebra — Capítulo 25: Grupos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md` | published |
+| MA-BCH-0051 | book-chapter | Tratado de análisis — Capítulo 5: Cortaduras de Dedekind | `libros/capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md` | published |
+| MA-BCH-0052 | book-chapter | Tratado de análisis — Capítulo 6 — Aritmética de las cortaduras | `libros/capitulos/tratado-de-analisis-capitulo-6-aritmetica-de-las-cortaduras.md` | published |
+| MA-BCH-0053 | book-chapter | Tratado de análisis — Capítulo 7 — Completitud de los reales de Dedekind | `libros/capitulos/tratado-de-analisis-capitulo-7-completitud-de-los-reales-de-dedekind.md` | published |
+| MA-BCH-0054 | book-chapter | Tratado de análisis — Capítulo 8 — Sucesiones racionales y aproximación | `libros/capitulos/tratado-de-analisis-capitulo-8-sucesiones-racionales-y-aproximacion.md` | published |
+| MA-BCH-0055 | book-chapter | Tratado de análisis — Capítulo 9 — El cuerpo de Cauchy | `libros/capitulos/tratado-de-analisis-capitulo-9-el-cuerpo-de-cauchy.md` | published |
+| MA-BCH-0056 | book-chapter | Tratado de análisis — Capítulo 10 — Completitud del cuerpo de Cauchy | `libros/capitulos/tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md` | published |
+| MA-BCH-0057 | book-chapter | Tratado de análisis — Capítulo 11 — Dedekind y Cauchy | `libros/capitulos/tratado-de-analisis-capitulo-11-dedekind-y-cauchy.md` | published |
+| MA-BCH-0058 | book-chapter | Tratado de análisis — Capítulo 12 — Unicidad | `libros/capitulos/tratado-de-analisis-capitulo-12-unicidad.md` | published |
+| MA-BCH-0059 | book-chapter | Tratado de análisis — Capítulo 13 — Sucesiones reales | `libros/capitulos/tratado-de-analisis-capitulo-13-sucesiones-reales.md` | published |
+| MA-BCH-0060 | book-chapter | Tratado de análisis — Capítulo 14 — Series numéricas | `libros/capitulos/tratado-de-analisis-capitulo-14-series-numericas.md` | published |
+| MA-BCH-0061 | book-chapter | Tratado de análisis — Capítulo 15 — Topología de la recta real | `libros/capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md` | published |
 | MA-BCH-0062 | book-chapter | Tratado moderno de Álgebra — Capítulo 26: Anillos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
