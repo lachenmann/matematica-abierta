@@ -801,8 +801,10 @@ theorem programaVisible_estable_succ
     (h : programaVisible χA χB p n = some b) :
     programaVisible χA χB p (n + 1) = some b := by
   change buscarHasta χA χB p n = some b at h
-  change buscarHasta χA χB p (n + 1) = some b
-  simp [buscarHasta, h]
+  change (match buscarHasta χA χB p n with
+    | some c => some c
+    | none => etapaConcreta χA χB p (n + 1)) = some b
+  rw [h]
 
 /-- Estabilidad con cualquier cantidad adicional de combustible. -/
 theorem programaVisible_estable
