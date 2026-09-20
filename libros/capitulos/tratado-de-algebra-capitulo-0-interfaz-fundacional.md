@@ -36,7 +36,7 @@ license: GFDL-1.3-or-later
 
 ## 0.0. Propósito
 
-Álgebra necesita manipular pares ordenados, productos cartesianos y funciones antes de definir una operación binaria. Esa infraestructura ya fue construida y cerrada en el [**Capítulo 0 — Fundamento lógico y conjuntista**](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) del *Tratado moderno de Análisis*. Repetirla aquí produciría duplicación sin contenido algebraico nuevo.
+El álgebra necesita manipular pares ordenados, productos cartesianos y funciones antes de definir una operación binaria. Esa infraestructura ya fue construida y cerrada en el [**Capítulo 0 — Fundamento lógico y conjuntista**](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) del *Tratado moderno de Análisis*. Repetirla aquí produciría duplicación sin contenido algebraico nuevo.
 
 La importación se hace, por ello, de forma **explícita, granular y acíclica**.
 
