@@ -1,0 +1,28 @@
+name: Exportar MA-CON-0020 para reconstrucción editorial (una vez)
+
+on:
+  push:
+    branches:
+      - editorial/consecuencias-cuerpo-certificacion-lean
+    paths:
+      - .github/workflows/export-ma-con-0020-once.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar identidad del texto que se exporta
+        run: |
+          test -f conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md
+          grep -q '^content-id: MA-CON-0020$' conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md
+          git hash-object conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ma-con-0020-markdown-original
+          path: conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md
+          if-no-files-found: error
+          retention-days: 1
