@@ -6,6 +6,7 @@ import MatematicaAbierta.CauchySchwarzFinito
 import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
 import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
 import MatematicaAbierta.Continuo.ProgramaTransparente
+import MatematicaAbierta.Continuo.SimulacionAcotada
 
 /-!
 # Matemática Abierta: biblioteca formal
