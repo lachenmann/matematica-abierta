@@ -1,0 +1,49 @@
+name: Anotar verificación Lean de consecuencias de cuerpo (una vez)
+
+on:
+  push:
+    branches:
+      - editorial/consecuencias-cuerpo-certificacion-lean
+    paths:
+      - .github/workflows/annotate-field-consequences-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  annotate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar anotación editorial acotada desde el anexo Obsidian
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md')
+          source = path.read_text(encoding='utf-8')
+          old_date = 'date-modified: 2026-09-07'
+          anchor = '\n\n## 1. Qué estructura queremos aislar {#ma-con-0020-estructura}'
+          assert source.count(old_date) == 1, 'Fecha de origen inesperada'
+          assert source.count(anchor) == 1, 'Anclaje editorial inesperado'
+          assert 'Verificación formal en Lean 4 — seis consecuencias de los axiomas de cuerpo' not in source, 'Nota ya presente'
+          callout = '''::: {.ma-block .ma-comprobacion}
+          **Verificación formal en Lean 4 — seis consecuencias de los axiomas de cuerpo**
+
+          La biblioteca de Matemática Abierta ha comprobado **para un cuerpo arbitrario** `F` seis resultados de este artículo: unicidad del neutro aditivo (§4.1: `neutro_aditivo_unico`), unicidad del neutro multiplicativo (§4.2: `neutro_multiplicativo_unico`), unicidad del inverso aditivo (§5.1: `inverso_aditivo_unico`), absorción del cero por el producto (§6: `cero_absorbe_producto`), cancelación multiplicativa con factor no nulo (§10: `cancelacion_multiplicativa`) y equivalencia del producto nulo (§11: `producto_nulo_iff`).
+
+          [Consultar el módulo Lean en una revisión fija](https://github.com/lachenmann/matematica-abierta/blob/5c1aa455eac9d74b9a4b95f315086eb6c551341d/lean/MatematicaAbierta/ConsecuenciasCuerpo.lean) · [Ver la PR #99 y sus comprobaciones](https://github.com/lachenmann/matematica-abierta/pull/99).
+
+          **Alcance preciso.** Las demostraciones explicitan pasos algebraicos y emplean las leyes de la estructura `Field F` proporcionadas por Mathlib. No se ha formalizado aquí una construcción independiente de un cuerpo ni cada axioma desde primeros principios. Esta certificación no abarca el resto del artículo: por ejemplo, la unicidad del inverso multiplicativo (§5.2), la imposibilidad de invertir el cero (§7), las reglas de signos (§8), la cancelación aditiva (§9), la división o la resolución de ecuaciones lineales. Tampoco certifica por sí sola cada paso de las pruebas manuscritas.
+          :::'''
+          updated = source.replace(old_date, 'date-modified: 2026-09-20', 1)
+          updated = updated.replace(anchor, '\n\n' + callout + anchor, 1)
+          assert updated != source
+          path.write_text(updated, encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add conceptos/axiomas-de-cuerpo-y-consecuencias-algebraicas-basicas.md
+          git diff --cached --check
+          git commit -m "Anotar seis resultados de cuerpo verificados en Lean"
+          git push origin HEAD:refs/heads/editorial/consecuencias-cuerpo-certificacion-lean
