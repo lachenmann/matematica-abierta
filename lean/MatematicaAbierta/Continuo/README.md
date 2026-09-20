@@ -2,13 +2,13 @@
 
 ## Procedencia y trazabilidad
 
-Módulo: `ProgramaTransparente.lean`, incorporado a `MatematicaAbierta.lean` para que Lake lo compile. Fuente canónica: Google Drive, `03_Formalizacion/FDC_T002_programa_transparente.lean`, SHA-256 original `b5893820588c0f0d51887a7eb596436cd9ea0041a0c6d68920216cae19ded786`, blob Git original `aef0754071eb6fdfde0e698737831f81f09e5e4a`. Se preservan los 40 teoremas heredados de AUD-021. La compilación CI inicial de la PR #105 encontró una recursión excesiva de `simp` en el primer teorema nuevo, línea 816; la corrección sustituye la simplificación indiscriminada por la reducción de **un solo paso** de `buscarHasta` y `rw [h]`. El hash del archivo reparado es diferente al original y su nueva versión requiere otra compilación.
+Módulo: `ProgramaTransparente.lean`, incorporado a `MatematicaAbierta.lean` para que Lake lo compile. Fuente canónica: Google Drive, `03_Formalizacion/FDC_T002_programa_transparente.lean`, SHA-256 original `b5893820588c0f0d51887a7eb596436cd9ea0041a0c6d68920216cae19ded786`, blob Git original `aef0754071eb6fdfde0e698737831f81f09e5e4a`. Se preservan los 40 teoremas heredados de AUD-021. El primer CI de la PR #105 descubrió una recursión excesiva de la simplificación en el teorema de estabilidad de un paso, línea 816. Una primera corrección que reducía un solo paso de `buscarHasta` pero reescribía la hipótesis seguía agotando el límite de recursión, línea 818. La segunda corrección utiliza directamente `congrArg` sobre la ecuación de búsqueda y no invoca tácticas de simplificación ni de reescritura en ese punto. Los hashes de las versiones reparadas difieren de la fuente original; solo la compilación CI de la última versión acredita las demostraciones.
 
 ## Siete teoremas añadidos — pruebas desarrolladas en el proyecto
 
 | Declaración (namespace `Continuo.Semantica`) | Dependencias directas y contenido |
 | --- | --- |
-| `programaVisible_estable_succ` | Definición de `programaVisible` y ecuación recursiva de `buscarHasta`: una respuesta permanece al sumar un paso de combustible. |
+| `programaVisible_estable_succ` | Definición de `programaVisible`, ecuación recursiva de `buscarHasta` y congruencia de la igualdad: una respuesta permanece al sumar un paso de combustible. |
 | `programaVisible_estable` | `programaVisible_estable_succ`, inducción natural y `Nat.add_succ`: estabilidad con cualquier combustible adicional. |
 | `programaVisible_grafo_iff` | Definiciones de `programaVisible` y `Responde`: igualdad definicional de los grafos. |
 | `programaVisible_estabiliza_iff` | `programaVisible_estable`, testigo existencial y especialización `k=0`: respuesta eventual si y solo si estabilidad eventual. |
