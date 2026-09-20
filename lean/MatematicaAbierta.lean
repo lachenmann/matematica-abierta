@@ -3,6 +3,7 @@ import MatematicaAbierta.DesigualdadTriangular
 import MatematicaAbierta.ConsecuenciasCuerpo
 import MatematicaAbierta.CauchySchwarz
 import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
+import MatematicaAbierta.Continuo.ProgramaTransparente
 
 /-!
 # Matemática Abierta: biblioteca formal
