@@ -8,6 +8,6 @@ fi
 
 export PATH="$HOME/.elan/bin:$PATH"
 cd lean
-lake update
+# Lake utiliza lake-manifest.json para instalar las revisiones fijadas.
 lake exe cache get
 lake build
