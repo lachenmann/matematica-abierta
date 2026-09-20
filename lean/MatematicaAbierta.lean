@@ -1,5 +1,6 @@
 import MatematicaAbierta.PrimerosResultados
 import MatematicaAbierta.DesigualdadTriangular
+import MatematicaAbierta.ConsecuenciasCuerpo
 
 /-!
 # Matemática Abierta: biblioteca formal
