@@ -837,7 +837,7 @@ theorem programaVisible_estabiliza_iff
   · rintro ⟨n, hn⟩
     exact ⟨n, fun k => programaVisible_estable χA χB p n k b hn⟩
   · rintro ⟨n, hn⟩
-    exact ⟨n, by simpa using hn 0⟩
+    exact ⟨n, hn 0⟩
 
 /-- Corrección del ejecutable verificado, condicionada por decididores correctos. -/
 theorem programaVisible_correcto
