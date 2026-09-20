@@ -1,0 +1,47 @@
+name: Aplicar anotación editorial triangular (una vez)
+
+on:
+  push:
+    branches:
+      - editorial/triangular-certificacion-lean
+    paths:
+      - .github/workflows/triangular-annotation-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  annotate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Insertar constancia de verificación acotada
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('teoria/resultados/desigualdad-triangular.qmd')
+          source = path.read_text(encoding='utf-8')
+          old_date = 'date-modified: 2026-09-16'
+          anchor = '\n\n## 1. Deducir la desigualdad de la definición del valor absoluto'
+          assert source.count(old_date) == 1, 'Fecha de origen inesperada'
+          assert source.count(anchor) == 1, 'Anclaje de sección inesperado'
+          assert 'Verificación formal en Lean 4: alcance de esta comprobación' not in source
+          callout = '''::: {.callout-note title="Verificación formal en Lean 4: alcance de esta comprobación"}
+          La biblioteca de Matemática Abierta verifica la **desigualdad triangular para dos elementos de cualquier cuerpo ordenado** (§2), su especialización a los reales y la **desigualdad triangular inversa** (§4). Las declaraciones correspondientes son `desigualdad_triangular_cuerpo_ordenado`, `desigualdad_triangular_real` y `desigualdad_triangular_inversa_cuerpo_ordenado`.
+
+          [Consultar el módulo Lean en una revisión fija](https://github.com/lachenmann/matematica-abierta/blob/164d8c669073a6d1811a6b0a7cbcaccb86dfd475/lean/MatematicaAbierta/DesigualdadTriangular.lean) · [Ver la PR #100 y sus comprobaciones](https://github.com/lachenmann/matematica-abierta/pull/100).
+
+          **Alcance preciso.** La primera prueba formal emplea cotas bilaterales y hechos elementales de Mathlib sobre el valor absoluto; no invoca directamente su teorema general de desigualdad triangular. La inversa se deduce de esa prueba. Esta certificación **no abarca el artículo completo**: el lema auxiliar como declaración independiente, la prueba por cuadrados (§2.1), el criterio de igualdad (§3), las sumas finitas (§5), los complejos, las normas, las métricas y las aplicaciones analíticas no quedan verificados por estas tres declaraciones.
+          :::'''
+          updated = source.replace(old_date, 'date-modified: 2026-09-20', 1)
+          updated = updated.replace(anchor, '\n\n' + callout + anchor, 1)
+          assert updated != source
+          path.write_text(updated, encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add teoria/resultados/desigualdad-triangular.qmd
+          git diff --cached --check
+          git commit -m "Documentar alcance exacto de verificación Lean de la desigualdad triangular"
+          git push origin HEAD:refs/heads/editorial/triangular-certificacion-lean
