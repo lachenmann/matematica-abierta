@@ -108,6 +108,19 @@ jobs:
                       classified.add('other_failure')
               for item in sorted(classified):
                   print('QA_FAILURE_CATEGORY:', item)
+              for failure in browser.get('failures', []):
+                  if ' destino ausente: ' not in failure:
+                      continue
+                  target = pathlib.Path(failure.split(' destino ausente: ', 1)[1])
+                  root = pathlib.Path(os.environ['CPM_ROOT']) / '99 - Build/_migration_preview'
+                  try:
+                      relative = target.relative_to(root)
+                  except ValueError:
+                      print('QA_NAV_TARGET_OUTSIDE_PREVIEW')
+                      continue
+                  # Los registros solo muestran la ruta estructural y el estado del archivo.
+                  print('QA_NAV_TARGET:', relative.as_posix(), 'EXISTS:', target.is_file())
+                  print('QA_NAV_EXPECTED_TOMO_II_EXISTS:', (root / '02 - Tomo II/index.html').is_file())
           PY
 
       - name: Store JSON and screenshots in private canonical Drive build folder
