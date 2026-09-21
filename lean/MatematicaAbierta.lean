@@ -16,6 +16,7 @@ import MatematicaAbierta.Continuo.ComputabilidadAproximante
 import MatematicaAbierta.Continuo.NombresRaiz
 import MatematicaAbierta.Continuo.DecididoresCortes
 import MatematicaAbierta.Continuo.TerminacionCortes
+import MatematicaAbierta.Continuo.IndicesCortes
 
 /-!
 # Matemática Abierta: biblioteca formal
