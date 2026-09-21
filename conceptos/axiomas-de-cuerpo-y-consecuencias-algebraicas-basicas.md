@@ -5,7 +5,7 @@ content-id: MA-CON-0020
 content-type: concept
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-20
+date-modified: 2026-09-21
 areas:
   - fundamentos
   - algebra
@@ -82,15 +82,15 @@ $$
 Todavía **no** introduciremos orden, positividad, desigualdades ni completitud. Esas estructuras requieren axiomas adicionales.
 
 ::: {.ma-block .ma-comprobacion}
-**Verificación formal en Lean 4 — ocho consecuencias algebraicas**
+**Verificación formal en Lean 4 — nueve consecuencias algebraicas**
 
-En el módulo `MatematicaAbierta.ConsecuenciasCuerpo` se han verificado **ocho resultados**. Siete se formulan para un cuerpo arbitrario `F`: unicidad del neutro aditivo (§4.1: `neutro_aditivo_unico`), unicidad del neutro multiplicativo (§4.2: `neutro_multiplicativo_unico`), unicidad del inverso aditivo (§5.1: `inverso_aditivo_unico`), unicidad del inverso multiplicativo (§5.2: `inverso_multiplicativo_unico`), absorción del cero (§6: `cero_absorbe_producto`), cancelación multiplicativa con factor no nulo (§10: `cancelacion_multiplicativa`) y equivalencia del producto nulo (§11: `producto_nulo_iff`). El octavo, la cancelación aditiva (§9: `cancelacion_aditiva`), está demostrado bajo la hipótesis más débil de un grupo aditivo `[AddGroup G]`, sin exigir conmutatividad ni multiplicación.
+En el módulo `MatematicaAbierta.ConsecuenciasCuerpo` se han verificado **nueve resultados**. Ocho se formulan para un cuerpo arbitrario `F`: unicidad del neutro aditivo (§4.1: `neutro_aditivo_unico`), unicidad del neutro multiplicativo (§4.2: `neutro_multiplicativo_unico`), unicidad del inverso aditivo (§5.1: `inverso_aditivo_unico`), unicidad del inverso multiplicativo (§5.2: `inverso_multiplicativo_unico`), absorción del cero (§6: `cero_absorbe_producto`), imposibilidad de invertir el cero (§7: `cero_no_tiene_inverso_multiplicativo`), cancelación multiplicativa con factor no nulo (§10: `cancelacion_multiplicativa`) y equivalencia del producto nulo (§11: `producto_nulo_iff`). El noveno, la cancelación aditiva (§9: `cancelacion_aditiva`), está demostrado bajo la hipótesis más débil de un grupo aditivo `[AddGroup G]`, sin exigir conmutatividad ni multiplicación.
 
-La unicidad del inverso multiplicativo se demuestra comparando dos candidatos mediante asociatividad y conmutatividad, sin usar cancelación multiplicativa. La cancelación aditiva desarrolla la suma de un inverso a ambos lados. Las demostraciones son explícitas y reutilizan leyes estructurales de Mathlib; no invocan directamente los teoremas finales como prueba.
+La unicidad del inverso multiplicativo se demuestra comparando dos candidatos mediante asociatividad y conmutatividad, sin usar cancelación multiplicativa. La imposibilidad de invertir el cero se obtiene de `cero_absorbe_producto` y `zero_ne_one`, sin usar división ni cancelación multiplicativa. La cancelación aditiva desarrolla la suma de un inverso a ambos lados. Las demostraciones son explícitas y reutilizan leyes estructurales de Mathlib; no invocan directamente los teoremas finales como prueba.
 
-[Consultar el módulo Lean en la revisión fija verificada](https://github.com/lachenmann/matematica-abierta/blob/0a52b49e8770a8f3a8fae36daf4d73f5dc4c29ed/lean/MatematicaAbierta/ConsecuenciasCuerpo.lean) · [Ver la PR #99 (seis resultados iniciales)](https://github.com/lachenmann/matematica-abierta/pull/99) · [Ver la PR #113 (dos resultados nuevos y CI)](https://github.com/lachenmann/matematica-abierta/pull/113).
+[Consultar el módulo Lean en la revisión fija verificada](https://github.com/lachenmann/matematica-abierta/blob/d773e244057eea39ee5b5308c71cb47f69cacfe0/lean/MatematicaAbierta/ConsecuenciasCuerpo.lean) · [Ver la PR #99 (seis resultados iniciales)](https://github.com/lachenmann/matematica-abierta/pull/99) · [Ver la PR #113 (dos resultados nuevos y CI)](https://github.com/lachenmann/matematica-abierta/pull/113) · [Ver la PR #124 (imposibilidad de invertir cero y CI)](https://github.com/lachenmann/matematica-abierta/pull/124).
 
-**Alcance preciso.** La verificación parte de las estructuras `Field F` y `AddGroup G` suministradas por Mathlib; no construye un cuerpo desde primeros principios ni comprueba paso a paso todas las pruebas manuscritas. La declaración `cancelacion_aditiva` verifica la implicación $a+c=b+c\Rightarrow a=b$; la equivalencia completa expuesta en §9 no figura como declaración propia. Permanecen fuera de esta certificación la imposibilidad de invertir el cero (§7), las reglas de signos (§8), la división (§12), la resolución de ecuaciones lineales (§13) y otras afirmaciones no enumeradas.
+**Alcance preciso.** La verificación parte de las estructuras `Field F` y `AddGroup G` suministradas por Mathlib; no construye un cuerpo desde primeros principios ni comprueba paso a paso todas las pruebas manuscritas. La declaración `cancelacion_aditiva` verifica la implicación $a+c=b+c\Rightarrow a=b$; la equivalencia completa expuesta en §9 no figura como declaración propia. El teorema de §7 establece, para cada `c : F`, que `0 * c ≠ 1`; no afirma que la expresión totalizada `0⁻¹` sea un inverso multiplicativo. Permanecen fuera de esta certificación las reglas de signos (§8), la división (§12), la resolución de ecuaciones lineales (§13) y otras afirmaciones no enumeradas.
 :::
 
 ## 1. Qué estructura queremos aislar {#ma-con-0020-estructura}
