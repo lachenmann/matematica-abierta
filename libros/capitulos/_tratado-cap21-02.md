@@ -1,9 +1,9 @@
 ## 21.2. Cotas locales, oscilación y sumas de Darboux {#sec-ta-21-2}
 
-Una partición establece dónde dividimos el intervalo, pero no dice todavía qué altura asociar a cada parte. Para que las aproximaciones sean números reales finitos, comenzaremos con funciones **acotadas**. Sobre cada subintervalo habrá un ínfimo y un supremo de los valores efectivos de la función, aunque ésta no sea continua y ninguno de los dos extremos de valores tenga que alcanzarse. Las sumas inferiores y superiores utilizarán esas cotas, no puntos escogidos arbitrariamente.
+Una partición establece dónde dividimos el intervalo, pero no dice todavía qué altura asociar a cada parte. Para que las aproximaciones sean números reales finitos, comenzaremos con funciones acotadas. Sobre cada subintervalo habrá un ínfimo y un supremo de los valores efectivos de la función, aunque ésta no sea continua y ninguno de los dos extremos de valores tenga que alcanzarse. Las sumas inferiores y superiores utilizarán esas cotas, no puntos escogidos arbitrariamente.
 
 ### Definición 21.2.1 — Función acotada en el intervalo
-Fijados $a<b$ e $I=[a,b]$, una función $f:I\to\mathbb R$ se llama **acotada** si existen números reales $A,B$ tales que
+Fijados $a<b$ e $I=[a,b]$, una función $f:I\to\mathbb R$ se llama acotada si existen números reales $A,B$ tales que
 
 $$
 \boxed{A\le f(t)\le B\qquad(t\in I).}
@@ -20,7 +20,7 @@ $$
 \tag{21.2.2}
 $$
 
-para **cualesquiera** cotas globales $A,B$ que satisfagan (21.2.1). En particular, para cada partición $P$ y cada $k<n$, el conjunto $f[I_k(P)]$ posee ínfimo y supremo reales.
+para cualesquiera cotas globales $A,B$ que satisfagan (21.2.1). En particular, para cada partición $P$ y cada $k<n$, el conjunto $f[I_k(P)]$ posee ínfimo y supremo reales.
 
 **Demostración.**
 Como $J\ne\varnothing$, hay un $t\in J$ y $f(t)\in f[J]$; la imagen existe por la definición de función e imagen. Por (21.2.1), $f[J]\subseteq[A,B]$, así que es no vacía y acotada superior e inferiormente. La propiedad del supremo de $\mathbb R$ (Teorema §12.8.1 — Existencia y caracterización única de la completación ordenada de $\mathbb Q$ y Definición §4.6.1 — Propiedad del supremo y cuerpo ordenado completo) da $\sup f[J]$; la propiedad del ínfimo ya deducida de ella (Proposición §4.6.2 — La propiedad del supremo implica la propiedad del ínfimo) da $\inf f[J]$. Lo mismo vale para $K$. Todo elemento de $f[J]$ queda entre su ínfimo y supremo, de donde $\inf f[J]\le\sup f[J]$ usando el testigo $f(t)$; las cotas globales implican $A\le\inf f[J]$ y $\sup f[J]\le B$, y análogamente para $K$.
@@ -36,7 +36,7 @@ $$
  \tag{21.2.3}
 $$
 
-La **oscilación** $\omega(f,J)$ es un real no negativo. Para una partición $P=\langle n,p\rangle$ abreviamos, sólo si $k<n$,
+La oscilación $\omega(f,J)$ es un real no negativo. Para una partición $P=\langle n,p\rangle$ abreviamos, sólo si $k<n$,
 
 $$
  m_k(P):=m(f,I_k(P)),\quad M_k(P):=M(f,I_k(P)),\quad
@@ -44,10 +44,10 @@ $$
  \tag{21.2.4}
 $$
 
-Cuando $f$ está fija, también omitiremos $f$ de las abreviaturas. En general, $m(f,J)$ y $M(f,J)$ **no son** valores $f(t)$ para algún $t\in J$. Son extremos del conjunto de valores, cuya existencia está justificada por el lema anterior.
+Cuando $f$ está fija, también omitiremos $f$ de las abreviaturas. En general, $m(f,J)$ y $M(f,J)$ no son valores $f(t)$ para algún $t\in J$. Son extremos del conjunto de valores, cuya existencia está justificada por el lema anterior.
 
 ### Definición 21.2.4 — Sumas inferior y superior de Darboux
-Sea $f:[a,b]\to\mathbb R$ acotada y $P=\langle n,p\rangle\in\operatorname{Part}[a,b]$. Definimos la **suma inferior** y la **suma superior** de $f$ respecto de $P$ por
+Sea $f:[a,b]\to\mathbb R$ acotada y $P=\langle n,p\rangle\in\operatorname{Part}[a,b]$. Definimos la suma inferior y la suma superior de $f$ respecto de $P$ por
 
 $$
 \boxed{L(f,P):=\sum_{k=0}^{n-1}m_k(P)\Delta_k(P),\qquad
@@ -55,7 +55,7 @@ U(f,P):=\sum_{k=0}^{n-1}M_k(P)\Delta_k(P).}
 \tag{21.2.5}
 $$
 
-Estas son sumas de **exactamente $n$ términos reales**: $n\ge1$, los factores $m_k,M_k,\Delta_k$ existen para todo $k<n$ y la suma finita fue construida en el capítulo 14. El uso de $\inf$ y $\sup$ no es una prescripción algorítmica para calcularlos. Aún no se ha definido integral alguna.
+Estas son sumas de exactamente $n$ términos reales: $n\ge1$, los factores $m_k,M_k,\Delta_k$ existen para todo $k<n$ y la suma finita fue construida en el capítulo 14. El uso de $\inf$ y $\sup$ no es una prescripción algorítmica para calcularlos. Aún no se ha definido integral alguna.
 
 ### Proposición 21.2.5 — Encierro global e identidad de la brecha
 Para toda $f:[a,b]\to\mathbb R$ acotada, toda partición $P$ y cualesquiera cotas $A,B$ de (21.2.1),
@@ -72,7 +72,7 @@ $$
 \tag{21.2.7}
 $$
 
-La brecha es nula si y sólo si $\omega_k(P)=0$ para **todo** $k<n$.
+La brecha es nula si y sólo si $\omega_k(P)=0$ para todo $k<n$.
 
 **Demostración.**
 Por (21.2.2), $A\le m_k(P)\le M_k(P)\le B$. Cada anchura $\Delta_k(P)>0$ por Proposición §21.1.2 — Existencia, anchuras positivas y suma de longitudes. La compatibilidad del orden real con la multiplicación por un número positivo proporciona
@@ -116,13 +116,13 @@ $$
  M(f,J_-)d_-+M(f,J_+)d_+\le M(f,J)(d_-+d_+).
 $$
 
-Como $d_-+d_+=x_{r+1}-x_r=\Delta_r(P)$, éstas comparan el sumando antiguo con los **dos** sumandos que lo sustituyen. Todos los demás subintervalos y sus cotas son idénticos, aunque sus índices posteriores se desplacen una posición. La identidad de sumas por bloques Proposición §14.2.2 — Identidades de los bloques de sumación agrupa el prefijo, el bloque sustituido y el sufijo; si el prefijo o el sufijo carece de términos, simplemente se omite ese bloque. Los términos restantes son idénticos y se cancelan exactamente. Quedan ambas desigualdades de (21.2.8). La inserción usa el único índice mínimo construido en §21.1, no una elección. $\square$
+Como $d_-+d_+=x_{r+1}-x_r=\Delta_r(P)$, éstas comparan el sumando antiguo con los dos sumandos que lo sustituyen. Todos los demás subintervalos y sus cotas son idénticos, aunque sus índices posteriores se desplacen una posición. La identidad de sumas por bloques Proposición §14.2.2 — Identidades de los bloques de sumación agrupa el prefijo, el bloque sustituido y el sufijo; si el prefijo o el sufijo carece de términos, simplemente se omite ese bloque. Los términos restantes son idénticos y se cancelan exactamente. Quedan ambas desigualdades de (21.2.8). La inserción usa el único índice mínimo construido en §21.1, no una elección. $\square$
 
 ### Lema 21.2.7 — Una lista estricta queda determinada por sus nodos
 Si $P,Q\in\operatorname{Part}[a,b]$ y $V(P)=V(Q)$, entonces $P=Q$ como pares de un natural y una función tipada. Por tanto, $P\preccurlyeq Q$ y $Q\preccurlyeq P$ implican $P=Q$.
 
 **Demostración.**
-Escribamos $P=(x_0<\cdots<x_n)$ y $Q=(y_0<\cdots<y_m)$, abreviando las funciones del par original. Sus primeros nodos son $a$, y ambos conjuntos de nodos coinciden. Supongamos que los primeros $j$ nodos coinciden, con $j<n$ y $j<m$. El nodo $x_{j+1}$ es el **menor elemento** de $V(P)\setminus\{x_0,\dots,x_j\}$: todos los nodos posteriores son estrictamente mayores y no hay nodos de $P$ entre dos consecutivos. Idénticamente, $y_{j+1}$ es el menor elemento del mismo conjunto, pues $V(Q)=V(P)$ y el prefijo es común. La unicidad del mínimo en un orden total da $x_{j+1}=y_{j+1}$. Por inducción, ambas enumeraciones coinciden hasta el menor de $n,m$. Si $n<m$, en ese índice $x_n=b$, mientras que la estricta lista $Q$ aún tiene $y_{n+1}>y_n=b$, contradicción con $y_{n+1}\in[a,b]$. El caso $m<n$ es simétrico. Luego $n=m$, todos los valores de los grafos son iguales y los dominios y codominios también; la igualdad de funciones Proposición §0.6.3 — Criterio de igualdad de funciones proporciona $P=Q$. La segunda afirmación es doble inclusión de los conjuntos de nodos seguida del resultado recién demostrado. $\square$
+Escribamos $P=(x_0<\cdots<x_n)$ y $Q=(y_0<\cdots<y_m)$, abreviando las funciones del par original. Sus primeros nodos son $a$, y ambos conjuntos de nodos coinciden. Supongamos que los primeros $j$ nodos coinciden, con $j<n$ y $j<m$. El nodo $x_{j+1}$ es el menor elemento de $V(P)\setminus\{x_0,\dots,x_j\}$: todos los nodos posteriores son estrictamente mayores y no hay nodos de $P$ entre dos consecutivos. Idénticamente, $y_{j+1}$ es el menor elemento del mismo conjunto, pues $V(Q)=V(P)$ y el prefijo es común. La unicidad del mínimo en un orden total da $x_{j+1}=y_{j+1}$. Por inducción, ambas enumeraciones coinciden hasta el menor de $n,m$. Si $n<m$, en ese índice $x_n=b$, mientras que la estricta lista $Q$ aún tiene $y_{n+1}>y_n=b$, contradicción con $y_{n+1}\in[a,b]$. El caso $m<n$ es simétrico. Luego $n=m$, todos los valores de los grafos son iguales y los dominios y codominios también; la igualdad de funciones Proposición §0.6.3 — Criterio de igualdad de funciones proporciona $P=Q$. La segunda afirmación es doble inclusión de los conjuntos de nodos seguida del resultado recién demostrado. $\square$
 
 ### Teorema 21.2.8 — Monotonía de las sumas bajo refinamiento
 Para toda función acotada $f:[a,b]\to\mathbb R$ y todas las particiones $P,Q$, si $P\preccurlyeq Q$, entonces
@@ -133,12 +133,12 @@ $$
 $$
 
 **Demostración.**
-Escribamos $Q=(y_0<\cdots<y_m)$. Partimos de $P$ e incorporamos sucesivamente $y_0,\ldots,y_m$: si el nodo ya está, conservamos la partición actual; si falta, insertamos ese **único** nodo mediante Lema §21.1.4 — Inserción de un único punto interior. Es la misma inducción finita empleada para construir el refinamiento común Teorema §21.1.5 — Existencia de un refinamiento común. Como $V(P)\subseteq V(Q)$, la partición final $R$ satisface $V(R)=V(P)\cup V(Q)=V(Q)$. Por Lema §21.2.7 — Una lista estricta queda determinada por sus nodos, $R=Q$.
+Escribamos $Q=(y_0<\cdots<y_m)$. Partimos de $P$ e incorporamos sucesivamente $y_0,\ldots,y_m$: si el nodo ya está, conservamos la partición actual; si falta, insertamos ese único nodo mediante Lema §21.1.4 — Inserción de un único punto interior. Es la misma inducción finita empleada para construir el refinamiento común Teorema §21.1.5 — Existencia de un refinamiento común. Como $V(P)\subseteq V(Q)$, la partición final $R$ satisface $V(R)=V(P)\cup V(Q)=V(Q)$. Por Lema §21.2.7 — Una lista estricta queda determinada por sus nodos, $R=Q$.
 
 En cada paso sin inserción las sumas permanecen idénticas. En cada paso con inserción, Lema §21.2.6 — Una inserción mejora ambas sumas muestra que la suma inferior no disminuye y la superior no aumenta. La transitividad de $\le$ aplicada al número finito de pasos da $L(f,P)\le L(f,R)$ y $U(f,R)\le U(f,P)$; sustituyendo $R=Q$ y usando $L(f,Q)\le U(f,Q)$ de Proposición §21.2.5 — Encierro global e identidad de la brecha, obtenemos (21.2.9). No se forma una sucesión infinita de particiones ni se aplica ningún principio de elección: los $m+1$ pasos están fijados por la lista ya dada. $\square$
 
 ### Corolario 21.2.9 — Toda suma inferior queda por debajo de toda suma superior
-Para **cualesquiera** particiones $P,Q\in\operatorname{Part}[a,b]$ de una función acotada fija,
+Para cualesquiera particiones $P,Q\in\operatorname{Part}[a,b]$ de una función acotada fija,
 
 $$
 \boxed{L(f,P)\le U(f,Q).}
@@ -146,7 +146,7 @@ $$
 $$
 
 **Demostración.**
-El teorema Teorema §21.1.5 — Existencia de un refinamiento común proporciona **una** partición $R$ que refina simultáneamente a $P$ y a $Q$. Aplicando Teorema §21.2.8 — Monotonía de las sumas bajo refinamiento en cada una de las dos comparaciones,
+El teorema Teorema §21.1.5 — Existencia de un refinamiento común proporciona una partición $R$ que refina simultáneamente a $P$ y a $Q$. Aplicando Teorema §21.2.8 — Monotonía de las sumas bajo refinamiento en cada una de las dos comparaciones,
 
 $$
  L(f,P)\le L(f,R)\le U(f,R)\le U(f,Q).
@@ -156,4 +156,4 @@ La transitividad del orden real da (21.2.10). El punto importante es que no comp
 
 **Ejemplo de control.** Si $f(t)=c$ para todo $t\in[a,b]$, su imagen sobre cada subintervalo es el singleton $\{c\}$. En consecuencia, $m_k(P)=M_k(P)=c$ y ambas sumas valen $c\sum_{k<n}\Delta_k(P)=c(b-a)$. Para una función no constante, en cambio, la igualdad entre las dos sumas no se presume: su brecha está determinada por (21.2.7).
 
-**Transición.** La comparación universal (21.2.10) es la pieza indispensable para el siguiente paso. En §21.3 consideraremos los conjuntos de **todas** las sumas inferiores y superiores; sólo tras probar que son no vacíos y acotados introduciremos su supremo e ínfimo como integral inferior e integral superior. La integrabilidad exigirá después demostrar la igualdad de esos dos reales; no se anticipa aquí.
+**Transición.** La comparación universal (21.2.10) es la pieza indispensable para el siguiente paso. En §21.3 consideraremos los conjuntos de todas las sumas inferiores y superiores; sólo tras probar que son no vacíos y acotados introduciremos su supremo e ínfimo como integral inferior e integral superior. La integrabilidad exigirá después demostrar la igualdad de esos dos reales; no se anticipa aquí.

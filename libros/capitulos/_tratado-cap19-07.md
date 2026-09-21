@@ -22,12 +22,12 @@ El conjunto $E=f[D]$ existe mediante la operación de imagen ya construida. El m
 
 Puesto que $D\subseteq\mathbb R$, el grafo de $j$ es también un subconjunto de $E\times\mathbb R$. Con él construimos $g:E\to\mathbb R$, que satisface $g(y)=j(y)\in D$. Por las identidades de inversa de $f_E$ obtenemos las dos igualdades del recuadro. Si $\widetilde g:E\to\mathbb R$ también toma valores en $D$ y satisface $f(\widetilde g(y))=y$, entonces, para cada $y\in E$, la inyectividad de $f$ obliga a $\widetilde g(y)=g(y)$; la igualdad de dominio, codominio y valores da $\widetilde g=g$. Es importante que $j:E\to D$ y $g:E\to\mathbb R$ no son literalmente la misma función tipada cuando $D\ne\mathbb R$, aunque sus grafos y valores coincidan.
 
-Para la acumulación fijemos $\rho>0$. Por continuidad de $f$ en $a$ existe $\delta>0$ tal que, si $x\in D$ y $|x-a|<\delta$, entonces $|f(x)-b|<\rho$. Como $a\in\operatorname{Acc}(D)$, el criterio Lema §16.1.1 — Acumulación y aproximación perforada proporciona **un** $x\in D$ con $0<|x-a|<\delta$. Su imagen $y=f(x)$ pertenece a $E$, satisface $|y-b|<\rho$ y es distinta de $b=f(a)$ por inyectividad. Así $0<|y-b|<\rho$. Dado que $\rho$ era arbitrario, $b\in\operatorname{Acc}(E)$. No se ha seleccionado simultáneamente un testigo para todos los radios. $\square$
+Para la acumulación fijemos $\rho>0$. Por continuidad de $f$ en $a$ existe $\delta>0$ tal que, si $x\in D$ y $|x-a|<\delta$, entonces $|f(x)-b|<\rho$. Como $a\in\operatorname{Acc}(D)$, el criterio Lema §16.1.1 — Acumulación y aproximación perforada proporciona un $x\in D$ con $0<|x-a|<\delta$. Su imagen $y=f(x)$ pertenece a $E$, satisface $|y-b|<\rho$ y es distinta de $b=f(a)$ por inyectividad. Así $0<|y-b|<\rho$. Dado que $\rho$ era arbitrario, $b\in\operatorname{Acc}(E)$. No se ha seleccionado simultáneamente un testigo para todos los radios. $\square$
 
 **Precisión de tipos.** En el resto de la sección, «la inversa real» designa $g:E\to\mathbb R$, mientras que $f_E^{-1}:E\to D$ es la inversa propiamente dicha de la biyección $f_E:D\to E$. Sólo la primera tiene automáticamente el codominio exigido por nuestra definición de derivada real.
 
 ### Teorema 19.7.2 — Derivación de la inversa bajo continuidad y derivada no nula
-Sea $f:D\to\mathbb R$ inyectiva, con $D\subseteq\mathbb R$, y fijemos $a\in D\cap\operatorname{Acc}(D)$. Supongamos que $f$ es derivable en $a$ y que $L:=f'(a)\ne0$. Pongamos $E:=f[D]$, $b:=f(a)$ y sea $g:E\to\mathbb R$ la inversa real de la proposición anterior. **Si $g$ es continua en $b$ relativamente a $E$**, entonces $g$ es derivable en $b$ respecto de $E$ y
+Sea $f:D\to\mathbb R$ inyectiva, con $D\subseteq\mathbb R$, y fijemos $a\in D\cap\operatorname{Acc}(D)$. Supongamos que $f$ es derivable en $a$ y que $L:=f'(a)\ne0$. Pongamos $E:=f[D]$, $b:=f(a)$ y sea $g:E\to\mathbb R$ la inversa real de la proposición anterior. Si $g$ es continua en $b$ relativamente a $E$, entonces $g$ es derivable en $b$ respecto de $E$ y
 
 $$
 \boxed{g'(b)=\frac{1}{f'(a)}.}
@@ -66,7 +66,7 @@ $$
 
 Sea $y\in E$ con $0<|y-b|<\eta$, y pongamos $x:=g(y)$. Por construcción $x\in D$ y $f(x)=y$. Además, $x\ne a$: de lo contrario $y=f(x)=f(a)=b$. Luego $0<|x-a|<t$, de modo que las dos estimaciones anteriores se aplican a $q_{f,a}(x)$.
 
-La identidad de las pendientes, válida porque **ambos incrementos son ahora distintos de cero**, es
+La identidad de las pendientes, válida porque ambos incrementos son ahora distintos de cero, es
 
 $$
  q_{g,b}(y)=\frac{g(y)-g(b)}{y-b}
@@ -85,12 +85,12 @@ $$
 \end{aligned}
 $$
 
-Hemos encontrado **un único** $\eta>0$ para todos los $y\in E$ con $0<|y-b|<\eta$; así $q_{g,b}$ tiene límite $1/L$ y la definición Definición §19.1.3 — Derivabilidad en un punto, junto con la unicidad, concluye $g'(b)=1/L$. La prueba emplea dos radios de derivabilidad y uno de continuidad para una tolerancia fijada; no requiere elección ni teoremas globales del capítulo 20. $\square$
+Hemos encontrado un único $\eta>0$ para todos los $y\in E$ con $0<|y-b|<\eta$; así $q_{g,b}$ tiene límite $1/L$ y la definición Definición §19.1.3 — Derivabilidad en un punto, junto con la unicidad, concluye $g'(b)=1/L$. La prueba emplea dos radios de derivabilidad y uno de continuidad para una tolerancia fijada; no requiere elección ni teoremas globales del capítulo 20. $\square$
 
 **Interpretación.** La pendiente de una secante inversa es el recíproco de la pendiente original sólo cuando ambos incrementos son no nulos. La inyectividad asegura esta condición para argumentos distintos del centro; la continuidad de la inversa aproxima el argumento recuperado $g(y)$ al punto $a$, y $f'(a)\ne0$ permite mantener las pendientes originales alejadas de cero.
 
 ### Proposición 19.7.3 — Una biyección continua desde un compacto tiene inversa continua
-Sea $K\subseteq\mathbb R$ compacto y $f:K\to\mathbb R$ continua en todos los puntos de $K$ e inyectiva. Con $E:=f[K]$, la inversa real $g:E\to\mathbb R$ construida en §19.7.1 **es continua en todos los puntos de $E$**, con independencia de que $K$ sea o no un intervalo.
+Sea $K\subseteq\mathbb R$ compacto y $f:K\to\mathbb R$ continua en todos los puntos de $K$ e inyectiva. Con $E:=f[K]$, la inversa real $g:E\to\mathbb R$ construida en §19.7.1 es continua en todos los puntos de $E$, con independencia de que $K$ sea o no un intervalo.
 
 **Demostración.**
 Si $K=\varnothing$, entonces $E=\varnothing$ y la afirmación universal sobre sus puntos es vacua. Consideremos $b\in E$. Por §19.7.1 existe un único $a:=g(b)\in K$ con $f(a)=b$. Fijemos $\varepsilon>0$ y formemos, por Separación, el conjunto
@@ -121,7 +121,7 @@ $$
 La proposición §19.7.1 construye $g$ y demuestra que $b$ acumula $f[K]$, utilizando la continuidad de $f$, su inyectividad y la acumulación de $K$ en $a$. La proposición anterior asegura que $g$ es continua en $b$. Todas las hipótesis de Teorema §19.7.2 — Derivación de la inversa bajo continuidad y derivada no nula están satisfechas, incluida $f'(a)\ne0$; aplicar ese teorema produce la fórmula. No se supone que $K$ sea un intervalo ni que el teorema del valor medio esté disponible. $\square$
 
 ### Proposición 19.7.5 — Necesidad de las hipótesis: dos contraejemplos
-Las siguientes afirmaciones son falsas si se omiten sus respectivas hipótesis: **(i)** una función inyectiva y derivable con derivada no nula tiene necesariamente inversa continua en el valor correspondiente, cuando su dominio es arbitrario; **(ii)** la inversa continua de una función derivable sobre un compacto es necesariamente derivable si se permite $f'(a)=0$.
+Las siguientes afirmaciones son falsas si se omiten sus respectivas hipótesis: (i) una función inyectiva y derivable con derivada no nula tiene necesariamente inversa continua en el valor correspondiente, cuando su dominio es arbitrario; (ii) la inversa continua de una función derivable sobre un compacto es necesariamente derivable si se permite $f'(a)=0$.
 
 **Demostración.**
 **(i) Derivada no nula sin continuidad de la inversa.** Para $n\in\mathbb N$ escribamos $m_n:=\nu_{\mathbb R}(n+2_{\mathbb N})\ge2$; el símbolo $\nu_{\mathbb R}$ es la aplicación canónica de numerales, no una identificación conjuntista de naturales y reales. Formemos los conjuntos
@@ -148,7 +148,7 @@ $$
  \qquad g(0)=0.
 $$
 
-Para cualquier $\eta>0$ existe $n$ con $|-m_n^{-1}|<\eta$, mientras $|g(-m_n^{-1})-g(0)|\ge2>1$. La condición de continuidad de $g$ en $0$ falla ya para $\varepsilon=1$. En particular, $g$ tampoco es derivable allí por Teorema §19.2.1 — Toda función derivable en un punto es continua en él. La continuidad de la inversa **no** puede deducirse de la derivabilidad local de $f$ en un dominio no compacto y desconectado.
+Para cualquier $\eta>0$ existe $n$ con $|-m_n^{-1}|<\eta$, mientras $|g(-m_n^{-1})-g(0)|\ge2>1$. La condición de continuidad de $g$ en $0$ falla ya para $\varepsilon=1$. En particular, $g$ tampoco es derivable allí por Teorema §19.2.1 — Toda función derivable en un punto es continua en él. La continuidad de la inversa no puede deducirse de la derivabilidad local de $f$ en un dominio no compacto y desconectado.
 
 **(ii) Inversa continua con derivada original nula.** Tomemos $K=[0,1]$ y $f:K\to\mathbb R$, $f(x)=x^2$. El intervalo es compacto por Teorema §18.2.1 — Todo intervalo cerrado y acotado es compacto, y $f$ es continua por Teorema §17.5.3 — Todo polinomio real es continuo en la recta. Si $0\le x<z\le1$, entonces $z^2-x^2=(z-x)(z+x)>0$, por lo que $f$ es inyectiva. Además $0\in\operatorname{Acc}(K)$; por Proposición §19.1.6 — Primeros cálculos: funciones afines y función cuadrática y restricción Proposición §19.5.2 — Restricción de una función derivable, $f'(0)=0$. La inversa real $g:E=f[K]\to\mathbb R$ es continua por §19.7.3 y satisface $g(0)=0$, $g(t^2)=t$ para todo $0\le t\le1$.
 

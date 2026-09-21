@@ -228,6 +228,6 @@ Por tanto existe exactamente un isomorfismo de cuerpos ordenados entre las dos c
 > $$ \boxed{ T:E\to E,\quad T\circ\iota_E=\iota_E \Longrightarrow T=\operatorname{id}_E. } $$
 > Es decir, una completación ordenada no posee automorfismos ordenados no triviales que fijen su copia racional canónica. Esta rigidez expresa una forma especialmente fuerte de canonicidad estructural; no afirma decidibilidad ni computabilidad del transporte.
 
-El resultado completa la parte de **unicidad** prometida por el capítulo. La palabra «los reales» ya no designa una codificación privilegiada: cualquier completación ordenada de $\mathbb Q$ posee exactamente la misma estructura, hasta el único isomorfismo compatible con la copia racional.
+El resultado completa la parte de unicidad prometida por el capítulo. La palabra «los reales» ya no designa una codificación privilegiada: cualquier completación ordenada de $\mathbb Q$ posee exactamente la misma estructura, hasta el único isomorfismo compatible con la copia racional.
 
 Todavía falta formular esta conclusión como un teorema de caracterización autónomo. §12.8 reunirá existencia y unicidad en una forma abstracta que permita reconocer a los números reales sin mencionar ni cortaduras de Dedekind ni sucesiones de Cauchy.

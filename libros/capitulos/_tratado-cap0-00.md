@@ -4,7 +4,7 @@ Este capítulo fija el lenguaje conjuntista que se utilizará en todo el tratado
 
 La regla de lectura será estricta:
 
-> **Todo símbolo matemático interno del tratado aparece por primera vez en una definición, convención o notación identificable; toda afirmación matemática que no pertenezca al fundamento lógico-conjuntista admitido se demuestra antes de utilizarse.**
+> Todo símbolo matemático interno del tratado aparece por primera vez en una definición, convención o notación identificable; toda afirmación matemática que no pertenezca al fundamento lógico-conjuntista admitido se demuestra antes de utilizarse.
 
 La cadena principal de este capítulo es:
 

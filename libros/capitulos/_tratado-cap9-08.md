@@ -4,7 +4,7 @@ La estructura de cuerpo no determina por sí sola qué elementos deben considera
 
 Por ejemplo, aunque dos sucesiones representen la misma clase, no hay razón para que una desigualdad como $a_n\le b_n$ se conserve término a término después de sustituir $a$ o $b$ por representantes equivalentes. La comparación correcta debe tolerar errores racionales arbitrariamente pequeños.
 
-La idea será primero comparar **representantes** mediante una relación asintótica estable bajo perturbaciones nulas y sólo después hacerla descender a $\mathbb R_C$.
+La idea será primero comparar representantes mediante una relación asintótica estable bajo perturbaciones nulas y sólo después hacerla descender a $\mathbb R_C$.
 
 ### Definición 9.8.1 — Comparación asintótica de representantes
 
@@ -59,7 +59,7 @@ $$
 
 El producto cartesiano existe y el subconjunto indicado existe por separación. Por tanto $\preccurlyeq_C$ es una relación bien formada sobre $\mathcal C_{\mathbb Q}$.
 
-La presencia de **toda** tolerancia racional positiva es esencial. La condición no dice que $a_n\le b_n$ para todo índice suficientemente grande; dice que, por pequeña que sea la tolerancia positiva prescrita, la primera sucesión queda finalmente por debajo de la segunda salvo ese error.
+La presencia de toda tolerancia racional positiva es esencial. La condición no dice que $a_n\le b_n$ para todo índice suficientemente grande; dice que, por pequeña que sea la tolerancia positiva prescrita, la primera sucesión queda finalmente por debajo de la segunda salvo ese error.
 
 > **Nota fundacional.** El preorder asintótico es una relación extensional bien definida, pero su
 > verdad no es decidible en general a partir de representantes arbitrarios.
@@ -275,7 +275,7 @@ $$
 a\in\mathcal C_{\mathbb Q}\setminus\mathcal N_{\mathbb Q}.
 $$
 
-Entonces existen $\delta\in\mathbb Q$, $\delta>0$, y $N\in\mathbb N$ tales que se cumple **exactamente una** de las dos alternativas:
+Entonces existen $\delta\in\mathbb Q$, $\delta>0$, y $N\in\mathbb N$ tales que se cumple exactamente una de las dos alternativas:
 
 $$
 \boxed{
@@ -484,7 +484,7 @@ $$
 
 Este conjunto existe por separación.
 
-La invariancia demostrada en Proposición 9.8.2 — Propiedades e invariancia de la comparación asintótica (3) garantiza que la definición no depende de los representantes. En particular, para **cualesquiera** $a,b\in\mathcal C_{\mathbb Q}$,
+La invariancia demostrada en Proposición 9.8.2 — Propiedades e invariancia de la comparación asintótica (3) garantiza que la definición no depende de los representantes. En particular, para cualesquiera $a,b\in\mathcal C_{\mathbb Q}$,
 
 $$
 \boxed{

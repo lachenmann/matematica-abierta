@@ -100,7 +100,7 @@ D_{\mathbb Q}/{\sim_{\mathbb Q}}.
 }
 $$
 
-Un **número racional** es un elemento de $\mathbb Q$.
+Un número racional es un elemento de $\mathbb Q$.
 
 ### Notación 3.2.5 — Clases racionales y notación fraccionaria {#ta-clases-racionales-notacion-fraccionaria}
 
@@ -122,7 +122,7 @@ $$
 }
 $$
 
-La barra fraccionaria designa, por tanto, **una clase**, no el par representante. La expresión $\frac ab$ sólo está definida cuando $b\neq0_{\mathbb Z}$.
+La barra fraccionaria designa, por tanto, una clase, no el par representante. La expresión $\frac ab$ sólo está definida cuando $b\neq0_{\mathbb Z}$.
 
 La forma $[a,b]$ continúa reservada para intervalos y no se utilizará para clases racionales.
 

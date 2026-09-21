@@ -1,6 +1,6 @@
 ## 14.9. Criterios de razón y raíz {#sec-ta-14-9}
 
-La comparación por límite de §14.6 relaciona *dos* series ya dadas. Los criterios de este apartado buscan un patrón geométrico dentro de una sola sucesión: la **razón** compara magnitudes consecutivas; la **raíz enésima** mide el tamaño de un término frente a una potencia de exponente igual a su índice. Las dos pruebas remitirán a la serie geométrica de §14.3 y a la convergencia absoluta de §14.8. No afirmaremos que un límite igual a $1$ decida la convergencia.
+La comparación por límite de §14.6 relaciona *dos* series ya dadas. Los criterios de este apartado buscan un patrón geométrico dentro de una sola sucesión: la razón compara magnitudes consecutivas; la raíz enésima mide el tamaño de un término frente a una potencia de exponente igual a su índice. Las dos pruebas remitirán a la serie geométrica de §14.3 y a la convergencia absoluta de §14.8. No afirmaremos que un límite igual a $1$ decida la convergencia.
 
 El cociente secuencial ya existe (Definición 14.6.2 — Cociente secuencial totalizado y cociente eventual) y permite precisar dónde puede anularse el denominador. No ocurre lo mismo con la raíz enésima: todavía no la hemos definido. Antes de utilizar el segundo criterio demostraremos su existencia, unicidad y dominio, directamente a partir de la completitud real y de las potencias naturales construidas en §14.3.
 
@@ -14,7 +14,7 @@ $$
 \tag{14.9.1}
 $$
 
-Si $0\le u<v$, entonces $u^{k+1}<v^{k+1}$. Por tanto, para cada exponente natural **positivo**, la potenciación es estrictamente creciente en los reales no negativos.
+Si $0\le u<v$, entonces $u^{k+1}<v^{k+1}$. Por tanto, para cada exponente natural positivo, la potenciación es estrictamente creciente en los reales no negativos.
 
 **Demostración.**
 
@@ -46,7 +46,7 @@ El principio de inducción concluye también este segundo aserto. ∎
 
 ### Teorema 14.9.2 — Existencia y unicidad de la raíz no negativa de índice positivo
 
-Para cada $k\in\mathbb N$ y cada real $x\ge0$ existe **un único** $r\ge0$ tal que
+Para cada $k\in\mathbb N$ y cada real $x\ge0$ existe un único $r\ge0$ tal que
 
 $$
 \boxed{r^{k+1}=x.}
@@ -189,13 +189,13 @@ La primera desigualdad se deduce de $(1+\eta)(1-\eta)=1-\eta^2<1$ y $\eta<\varep
 
 ### Teorema 14.9.6 — Criterio de la raíz
 
-Sea $a\in\mathbb R^{\mathbb N}$ y supongamos que la sucesión $R(a)$ converge a un **número real** $L$. Entonces $L\ge0$ y:
+Sea $a\in\mathbb R^{\mathbb N}$ y supongamos que la sucesión $R(a)$ converge a un número real $L$. Entonces $L\ge0$ y:
 
-1. Si $L<1$, la serie $\sum_{n=0}^{\infty}a_n$ **converge absolutamente**.
-2. Si $L>1$, la serie $\sum_{n=0}^{\infty}a_n$ **diverge**: sus términos no tienden a cero.
+1. Si $L<1$, la serie $\sum_{n=0}^{\infty}a_n$ converge absolutamente.
+2. Si $L>1$, la serie $\sum_{n=0}^{\infty}a_n$ diverge: sus términos no tienden a cero.
 3. Si $L=1$, estas hipótesis no bastan para decidir. En §14.9.9 construiremos series de ambos comportamientos con este mismo límite.
 
-La prueba establece también las versiones útiles **sin presuponer un límite**: basta que existan $0<q<1$ y $N\ge1$ con $R(a)_n\le q$ para todo $n\ge N$ para concluir convergencia absoluta; basta que existan $r>1$ y $N\ge1$ con $R(a)_n\ge r$ para todo $n\ge N$ para concluir divergencia.
+La prueba establece también las versiones útiles sin presuponer un límite: basta que existan $0<q<1$ y $N\ge1$ con $R(a)_n\le q$ para todo $n\ge N$ para concluir convergencia absoluta; basta que existan $r>1$ y $N\ge1$ con $R(a)_n\ge r$ para todo $n\ge N$ para concluir divergencia.
 
 **Demostración.**
 
@@ -215,7 +215,7 @@ $$
 
 pues $r^0=1$ y la recurrencia de las potencias conserva la cota $r^n\ge1$. Por definición, $a_n\not\to0$ (basta la tolerancia $1$), así que la condición necesaria Corolario 14.2.5 — Criterio de divergencia por el término general implica divergencia. La versión con $R(a)_n\ge r$ es idéntica, usando $|a_n|\ge1$. El valor $L=1$ no permite obtener de la sola convergencia ninguna de las dos cotas estrictas que acabamos de utilizar; los contraejemplos de §14.9.9 establecen formalmente la indecisión anunciada. ∎
 
-> **Lectura del criterio.** La raíz compara $|a_n|$ con $q^n$ **para el mismo índice $n$**. No exige que cada término sea no nulo: $\sqrt[n]{0}=0$ está definida para $n\ge1$. Si la sucesión de raíces carece de límite, las dos versiones de cota eventual siguen siendo válidas; el teorema no inventa un límite superior extendido $+\infty$.
+> **Lectura del criterio.** La raíz compara $|a_n|$ con $q^n$ para el mismo índice $n$. No exige que cada término sea no nulo: $\sqrt[n]{0}=0$ está definida para $n\ge1$. Si la sucesión de raíces carece de límite, las dos versiones de cota eventual siguen siendo válidas; el teorema no inventa un límite superior extendido $+\infty$.
 
 ### Teorema 14.9.7 — Criterio de la razón con denominadores eventualmente no nulos
 
@@ -226,7 +226,7 @@ q:=\operatorname{quo}_0\bigl(\operatorname{Abs}(a)^{\langle1\rangle},
 \operatorname{Abs}(a)\bigr).
 $$
 
-Desde $N_0$, y **sólo desde allí**, $q_n=|a_{n+1}|/|a_n|$. Si $q_n\to L\in\mathbb R$, entonces $L\ge0$ y:
+Desde $N_0$, y sólo desde allí, $q_n=|a_{n+1}|/|a_n|$. Si $q_n\to L\in\mathbb R$, entonces $L\ge0$ y:
 
 1. Si $L<1$, la serie $\sum a_n$ converge absolutamente.
 2. Si $L>1$, la serie $\sum a_n$ diverge porque $a_n\not\to0$.
@@ -288,7 +288,7 @@ $$
 0<r<L<R
 $$
 
-si $L>0$. Por convergencia existe un índice $N\ge1$ a partir del cual todos los cocientes están entre $r$ y $R$. Las mismas inducciones de §14.9.7, aplicadas a ambas desigualdades, proporcionan constantes **positivas**
+si $L>0$. Por convergencia existe un índice $N\ge1$ a partir del cual todos los cocientes están entre $r$ y $R$. Las mismas inducciones de §14.9.7, aplicadas a ambas desigualdades, proporcionan constantes positivas
 
 $$
 C:=|a_N|(r^N)^{-1},
@@ -314,7 +314,7 @@ Si $L=0$, sea $\varepsilon>0$ y elijamos $0<c<\min\{1,\varepsilon/2\}$. Eventual
 
 ### Proposición 14.9.9 — La frontera de ambos criterios es indecisiva
 
-Existen dos series de términos **estrictamente positivos** que tienen, simultáneamente, límite de razones igual a $1$ y límite de raíces igual a $1$, pero comportamientos opuestos: una diverge y la otra converge.
+Existen dos series de términos estrictamente positivos que tienen, simultáneamente, límite de razones igual a $1$ y límite de raíces igual a $1$, pero comportamientos opuestos: una diverge y la otra converge.
 
 **Demostración.**
 
@@ -354,7 +354,7 @@ $$
 \qquad(N\in\mathbb N).
 $$
 
-Como $h_{N+1}\to0$, las sumas parciales convergen a $1$, y así $\sum_{k=0}^{\infty}b_k=1$. Por otra parte, la cancelación de factores **positivos** da
+Como $h_{N+1}\to0$, las sumas parciales convergen a $1$, y así $\sum_{k=0}^{\infty}b_k=1$. Por otra parte, la cancelación de factores positivos da
 
 $$
 \frac{b_{n+1}}{b_n}
@@ -366,4 +366,4 @@ De nuevo Proposición 14.9.8 — Un límite de razones determina el límite de l
 
 > **Diagnóstico pedagógico.** El cociente mide un cambio *entre términos consecutivos*; la raíz compara la magnitud del término *con una escala geométrica desde el origen*. Que ambos límites den $1$ expresa la ausencia de una separación exponencial estricta respecto de esa escala; no significa que las sumas parciales se comporten igual.
 
-Los criterios de razón y raíz están ahora fundamentados sin notación de raíces anterior a su teorema de existencia, sin divisiones por cero y sin confundir la frontera $1$ con una conclusión de convergencia. El siguiente frente, **§14.10 — Reordenamientos y estabilidad de la suma bajo convergencia absoluta**, deberá distinguir expresamente una permutación de índices de una partición meramente finita: modificar el orden de una suma infinita exige un teorema, no una aplicación informal de la conmutatividad finita.
+Los criterios de razón y raíz están ahora fundamentados sin notación de raíces anterior a su teorema de existencia, sin divisiones por cero y sin confundir la frontera $1$ con una conclusión de convergencia. El siguiente frente, §14.10 — Reordenamientos y estabilidad de la suma bajo convergencia absoluta, deberá distinguir expresamente una permutación de índices de una partición meramente finita: modificar el orden de una suma infinita exige un teorema, no una aplicación informal de la conmutatividad finita.

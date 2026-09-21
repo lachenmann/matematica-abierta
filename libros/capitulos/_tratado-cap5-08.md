@@ -10,7 +10,7 @@ $$
 \mathbb R_D\setminus\iota_D[\mathbb Q]
 $$
 
-no proceden de racionales. Debemos **construir operaciones directamente sobre las cortaduras** y demostrar después que, cuando se restringen a la copia racional, coinciden con las operaciones ya conocidas.
+no proceden de racionales. Debemos construir operaciones directamente sobre las cortaduras y demostrar después que, cuando se restringen a la copia racional, coinciden con las operaciones ya conocidas.
 
 Para la suma, la intuición procede de los racionales
 
@@ -54,7 +54,7 @@ $$
 \iota_D(1_{\mathbb Q})=1_D.
 $$
 
-Sólo entonces podremos promover $\iota_D$ desde una incrustación de órdenes a una **incrustación de cuerpos ordenados**.
+Sólo entonces podremos promover $\iota_D$ desde una incrustación de órdenes a una incrustación de cuerpos ordenados.
 
 La siguiente etapa será, por tanto,
 

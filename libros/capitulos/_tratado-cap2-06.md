@@ -126,13 +126,13 @@ que es la misma clase, incluso con componentes literalmente iguales después de 
 
 Para evitar que la terminología estructural introduzca hipótesis silenciosas, fijamos aquí las convenciones que se usarán en el tratado.
 
-Un **[grupo abeliano](../otros/tratado-de-analisis-glosario.md#gl-grupo-abeliano)** es un conjunto $G$ provisto de una operación binaria $+$ y de un elemento $0_G$ tales que la operación es asociativa y conmutativa, $0_G$ es neutro y todo elemento $x\in G$ posee un opuesto aditivo $-x$.
+Un [grupo abeliano](../otros/tratado-de-analisis-glosario.md#gl-grupo-abeliano) es un conjunto $G$ provisto de una operación binaria $+$ y de un elemento $0_G$ tales que la operación es asociativa y conmutativa, $0_G$ es neutro y todo elemento $x\in G$ posee un opuesto aditivo $-x$.
 
-Un **[anillo](../otros/tratado-de-analisis-glosario.md#gl-anillo)** será un conjunto $R$ provisto de dos operaciones binarias $+$ y $\cdot$, y de elementos $0_R$ y $1_R$, tal que $(R,+,0_R)$ es un grupo abeliano, la multiplicación es asociativa, $1_R$ es unidad multiplicativa y la multiplicación distribuye respecto de la suma por ambos lados. En particular, en este tratado **los anillos tienen unidad**.
+Un [anillo](../otros/tratado-de-analisis-glosario.md#gl-anillo) será un conjunto $R$ provisto de dos operaciones binarias $+$ y $\cdot$, y de elementos $0_R$ y $1_R$, tal que $(R,+,0_R)$ es un grupo abeliano, la multiplicación es asociativa, $1_R$ es unidad multiplicativa y la multiplicación distribuye respecto de la suma por ambos lados. En particular, en este tratado los anillos tienen unidad.
 
-Un **[anillo conmutativo](../otros/tratado-de-analisis-glosario.md#gl-anillo-conmutativo)** es un anillo cuya multiplicación es conmutativa.
+Un [anillo conmutativo](../otros/tratado-de-analisis-glosario.md#gl-anillo-conmutativo) es un anillo cuya multiplicación es conmutativa.
 
-Un **[dominio de integridad](../otros/tratado-de-analisis-glosario.md#gl-dominio-integridad)** es un anillo conmutativo tal que $0_R\neq1_R$ y
+Un [dominio de integridad](../otros/tratado-de-analisis-glosario.md#gl-dominio-integridad) es un anillo conmutativo tal que $0_R\neq1_R$ y
 
 $$
 xy=0_R\Longrightarrow x=0_R\ \text{o}\ y=0_R.
@@ -150,7 +150,7 @@ $$
 }
 $$
 
-es un **[anillo conmutativo](../otros/tratado-de-analisis-glosario.md#gl-anillo-conmutativo) con identidad**.
+es un [anillo conmutativo](../otros/tratado-de-analisis-glosario.md#gl-anillo-conmutativo) con identidad.
 
 **Demostración.**  
 Las leyes del grupo aditivo demostradas en §2.4 establecen que $(\mathbb Z,+,0_{\mathbb Z})$ es un grupo abeliano. La Proposición 2.6.1 demuestra asociatividad y conmutatividad del producto, existencia de la unidad multiplicativa y distributividad respecto de la suma. Éstas son exactamente las leyes exigidas por la convención anterior. ∎

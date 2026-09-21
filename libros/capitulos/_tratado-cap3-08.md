@@ -80,7 +80,7 @@ $$
 ad<bc.
 $$
 
-Definimos el **mediante**
+Definimos el mediante
 
 $$
 z:=\frac{a+c}{b+d}.
@@ -136,7 +136,7 @@ $$
 
 *Glosario: [propiedad arquimediana](../otros/tratado-de-analisis-glosario.md#gl-propiedad-arquimediana)*
 
-Diremos que $\mathbb Q$ satisface la **propiedad arquimediana respecto de su copia canónica de $\mathbb N$** si
+Diremos que $\mathbb Q$ satisface la propiedad arquimediana respecto de su copia canónica de $\mathbb N$ si
 
 $$
 \boxed{

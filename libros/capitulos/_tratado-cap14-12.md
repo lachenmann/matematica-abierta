@@ -1,6 +1,6 @@
 ## 14.12. Criterio de la raíz y límite superior finito {#sec-ta-14-12}
 
-Los criterios precedentes se formularon primero mediante un **límite ordinario** de las raíces o, sin presuponer ese límite, mediante cotas que valen a partir de cierto índice. Hay sucesiones de raíces que oscilan y no tienen límite ordinario; para ellas, la frontera superior asintótica puede contener información decisiva. El Capítulo 13 ya construyó esa frontera mediante los supremos de las colas, **pero únicamente para sucesiones acotadas**. Mantendremos exactamente esa condición de dominio.
+Los criterios precedentes se formularon primero mediante un límite ordinario de las raíces o, sin presuponer ese límite, mediante cotas que valen a partir de cierto índice. Hay sucesiones de raíces que oscilan y no tienen límite ordinario; para ellas, la frontera superior asintótica puede contener información decisiva. El Capítulo 13 ya construyó esa frontera mediante los supremos de las colas, pero únicamente para sucesiones acotadas. Mantendremos exactamente esa condición de dominio.
 
 ### Teorema 14.12.1 — Criterio de la raíz mediante límite superior finito
 
@@ -21,8 +21,8 @@ $$
 
 Entonces $L\ge0$ y se cumplen estas afirmaciones:
 
-1. Si $L<1$, la serie $\sum_{n=0}^{\infty}a_n$ **converge absolutamente**.
-2. Si $L>1$, la serie $\sum_{n=0}^{\infty}a_n$ **diverge**, porque $a_n$ no tiende a cero.
+1. Si $L<1$, la serie $\sum_{n=0}^{\infty}a_n$ converge absolutamente.
+2. Si $L>1$, la serie $\sum_{n=0}^{\infty}a_n$ diverge, porque $a_n$ no tiende a cero.
 3. Si $L=1$, no se sigue ninguna de las dos conclusiones: existen series con raíces acotadas y límite superior igual a uno que, respectivamente, convergen y divergen.
 
 **Demostración.**
@@ -64,12 +64,12 @@ $$
 |a_n|=r_n^{\,n}>c^n\ge1.
 $$
 
-La desigualdad $c^n\ge1$ se prueba por inducción a partir de $c>1$ y $c^0=1$. Si $a_n\to0$, la definición de límite con tolerancia $1$ obligaría a $|a_n|<1$ para todos los índices suficientemente grandes, contradiciendo (14.12.3). Luego $a_n\not\to0$, y el criterio de divergencia por el término general Corolario 14.2.5 — Criterio de divergencia por el término general concluye que la serie diverge. El razonamiento prueba directamente una afirmación con cuantificadores $\forall N\,\exists n$; **no se construye una sucesión de índices elegidos** ni se utiliza Choice.
+La desigualdad $c^n\ge1$ se prueba por inducción a partir de $c>1$ y $c^0=1$. Si $a_n\to0$, la definición de límite con tolerancia $1$ obligaría a $|a_n|<1$ para todos los índices suficientemente grandes, contradiciendo (14.12.3). Luego $a_n\not\to0$, y el criterio de divergencia por el término general Corolario 14.2.5 — Criterio de divergencia por el término general concluye que la serie diverge. El razonamiento prueba directamente una afirmación con cuantificadores $\forall N\,\exists n$; no se construye una sucesión de índices elegidos ni se utiliza Choice.
 
 **Caso $L=1$.** Proposición 14.9.9 — La frontera de ambos criterios es indecisiva construyó dos sucesiones positivas, la armónica $h$ y la telescópica $b$, cuyas respectivas series divergen y convergen, mientras sus sucesiones de raíces tienen ambas límite ordinario igual a $1$. Toda sucesión convergente de números reales es acotada (resultado del Capítulo 13), por lo que las raíces de ambos ejemplos cumplen la presente hipótesis. Para una sucesión convergente a $1$, los supremos de sus colas también convergen a $1$: dado $\varepsilon>0$, todos los términos de una cola están entre $1-\varepsilon$ y $1+\varepsilon$, luego también lo está su supremo. Así su límite superior vale $1$. Los dos ejemplos satisfacen, pues, exactamente la frontera de este teorema y tienen comportamientos opuestos. ∎
 
-> **Lectura de los cuantificadores.** La desigualdad $\limsup r_n<1$ proporciona **una única cota $q<1$ válida eventualmente para todos los índices**. En cambio, $\limsup r_n>1$ obliga a encontrar raíces mayores que una constante $c>1$ **arbitrariamente tarde**, aunque otras raíces puedan ser pequeñas. En ambos casos la información basta; cuando el límite superior es uno, no basta.
+> **Lectura de los cuantificadores.** La desigualdad $\limsup r_n<1$ proporciona una única cota $q<1$ válida eventualmente para todos los índices. En cambio, $\limsup r_n>1$ obliga a encontrar raíces mayores que una constante $c>1$ arbitrariamente tarde, aunque otras raíces puedan ser pequeñas. En ambos casos la información basta; cuando el límite superior es uno, no basta.
 >
 > **Alcance fundacional.** Este resultado no atribuye un valor $+\infty$ a $\limsup r_n$ si $r$ no está acotada. Para sucesiones no acotadas siguen vigentes las versiones de cotas eventuales del criterio de §14.9; no extendemos aquí el dominio de Definición 13.12.2 — Límite inferior y límite superior. Los supremos de las colas son únicos: no se realiza una elección de valores, y tampoco se obtiene un procedimiento efectivo general para decidir la convergencia.
 
-La teoría de series ha mostrado que el comportamiento de una sucesión de sumas depende de las cotas de sus términos, de la estructura de las colas y, en el caso de las series condicionales, también de su orden. El capítulo siguiente trasladará estas herramientas de límite y orden al estudio de los **conjuntos de puntos de la recta real**: comenzaremos por precisar, mediante el valor absoluto, qué significa que un punto esté cerca de otro.
+La teoría de series ha mostrado que el comportamiento de una sucesión de sumas depende de las cotas de sus términos, de la estructura de las colas y, en el caso de las series condicionales, también de su orden. El capítulo siguiente trasladará estas herramientas de límite y orden al estudio de los conjuntos de puntos de la recta real: comenzaremos por precisar, mediante el valor absoluto, qué significa que un punto esté cerca de otro.

@@ -15,7 +15,7 @@ $$
 \tag{24.3.2}
 $$
 
-La serie de potencias converge **absolutamente en $c+R$ si y sólo si converge absolutamente en $c-R$**. En caso afirmativo ambos extremos pertenecen a $C(a,c)$. Si alguno de los extremos presenta convergencia condicional, ninguno puede presentar convergencia absoluta.
+La serie de potencias converge absolutamente en $c+R$ si y sólo si converge absolutamente en $c-R$. En caso afirmativo ambos extremos pertenecen a $C(a,c)$. Si alguno de los extremos presenta convergencia condicional, ninguno puede presentar convergencia absoluta.
 
 **Demostración.**
 Por las evaluaciones tipadas de «Construcción tipada de los términos y las sumas parciales», los términos en el extremo derecho son $a_n((c+R)-c)^n=a_nR^n=b_n$. En el izquierdo son $a_n(-R)^n=(-1)^na_nR^n=(-1)^nb_n$. La segunda identidad se demuestra por inducción sobre $n$ usando $(-R)=(-1)R$, la recursión de potencias y las leyes del cuerpo; para $n=0$ ambos miembros valen $1$. Las equivalencias (24.3.1)–(24.3.2) siguen exactamente de «Conjunto de convergencia» y «Convergencia, divergencia y suma de una serie».
@@ -27,7 +27,7 @@ $$
 \tag{24.3.3}
 $$
 
-Las dos series de magnitudes tienen, pues, **la misma sucesión de términos y las mismas sumas parciales**, y convergen simultáneamente o divergen simultáneamente. La convergencia absoluta implica convergencia ordinaria por «La convergencia absoluta implica convergencia ordinaria». En cambio, una serie numérica que converge sólo condicionalmente posee serie de magnitudes divergente («Serie de valores absolutos; convergencia absoluta y condicional»), y (24.3.3) impide que el otro extremo sea absolutamente convergente. $\square$
+Las dos series de magnitudes tienen, pues, la misma sucesión de términos y las mismas sumas parciales, y convergen simultáneamente o divergen simultáneamente. La convergencia absoluta implica convergencia ordinaria por «La convergencia absoluta implica convergencia ordinaria». En cambio, una serie numérica que converge sólo condicionalmente posee serie de magnitudes divergente («Serie de valores absolutos; convergencia absoluta y condicional»), y (24.3.3) impide que el otro extremo sea absolutamente convergente. $\square$
 
 **Límite de la simetría.** Cambiar $R$ por $-R$ introduce el factor $(-1)^n$, no una permutación de los índices ni una simple multiplicación de toda la suma por $-1$. Las sumas parciales de las dos series ordinarias no tienen por qué comportarse del mismo modo.
 
@@ -42,7 +42,7 @@ $$
 no tiende a cero. Los naturales que aparecen en el denominador se entienden mediante su imagen canónica $\nu_{\mathbb R}$ en los reales, omitiendo la imagen sólo para facilitar la lectura.
 
 **Demostración.**
-Definamos $t:=(q+1)/2$, de modo que $1<t<q$. La propiedad arquimediana «Todo cuerpo ordenado completo es arquimediano» aplicada al real positivo $q-t$ permite fijar **un** natural $N$ tal que
+Definamos $t:=(q+1)/2$, de modo que $1<t<q$. La propiedad arquimediana «Todo cuerpo ordenado completo es arquimediano» aplicada al real positivo $q-t$ permite fijar un natural $N$ tal que
 
 $$
 (q-t)(N+1)\ge 2t.
@@ -58,12 +58,12 @@ $$
 \tag{24.3.6}
 $$
 
-Por inducción en $k$, $u_{N+k}\ge t^ku_N\ge u_N>0$; la última desigualdad utiliza $t>1$ y la recursión de potencias. Todo natural $n\ge N$ se escribe $N+k$, de modo que **todos** los términos de esa cola están acotados inferiormente por el mismo real positivo $u_N$. Con la tolerancia $\varepsilon=u_N/2$, ninguno de ellos puede satisfacer $|u_n-0|<\varepsilon$. Por «Convergencia de una sucesión real», $u_n$ no converge a cero. La construcción toma una base $q$ fija y un solo índice $N$; no postula una elección simultánea para todas las bases. $\square$
+Por inducción en $k$, $u_{N+k}\ge t^ku_N\ge u_N>0$; la última desigualdad utiliza $t>1$ y la recursión de potencias. Todo natural $n\ge N$ se escribe $N+k$, de modo que todos los términos de esa cola están acotados inferiormente por el mismo real positivo $u_N$. Con la tolerancia $\varepsilon=u_N/2$, ninguno de ellos puede satisfacer $|u_n-0|<\varepsilon$. Por «Convergencia de una sucesión real», $u_n$ no converge a cero. La construcción toma una base $q$ fija y un solo índice $N$; no postula una elección simultánea para todas las bases. $\square$
 
 La cota es deliberadamente suficiente para nuestros ejemplos: si los términos de otra sucesión tienen magnitud al menos $u_n$ eventualmente, esa sucesión tampoco puede tender a cero.
 
 ### Proposición 24.3.3 — Realización de los cuatro comportamientos de los extremos
-Para cada centro $c\in\mathbb R$ y cada real prescrito $r>0$ existen series de potencias de radio **exactamente** $r$ cuyos conjuntos de extremos convergentes son, respectivamente,
+Para cada centro $c\in\mathbb R$ y cada real prescrito $r>0$ existen series de potencias de radio exactamente $r$ cuyos conjuntos de extremos convergentes son, respectivamente,
 
 $$
 \boxed{\varnothing,\quad\{c-r\},\quad\{c+r\},\quad\{c-r,c+r\}.}
@@ -91,12 +91,12 @@ $$
 
 Todas son mayores o iguales que $u_n=q^n/((n+1)(n+2))>0$. Según «Una progresión geométrica supera a un denominador cuadrático», existe una cola sobre la cual $u_n\ge\delta$ para un real fijo $\delta>0$. Ninguna de las cuatro sucesiones de términos puede tender a cero. Por la condición necesaria «Condición necesaria de convergencia: el término general tiende a cero», las cuatro series divergen en todo punto con $|x-c|>r$.
 
-Ya sabemos que los cuatro conjuntos de distancias admitidas contienen todo $d<r$, porque los puntos $c+d$ convergen absolutamente, y no contienen distancia alguna $d>r$. Por tanto son conjuntos no vacíos y acotados, y su supremo es $r$: si $b<r$ fuese cota superior, el punto medio de $\max\{b,0\}$ y $r$ sería una distancia admitida superior a $b$. La definición «Radio finito y radio infinito» prueba, para **cada** plantilla, $R(a,c)=r$, independientemente de lo que suceda en $d=r$. Así evitamos deducir circularmente el radio a partir de los ejemplos fronterizos.
+Ya sabemos que los cuatro conjuntos de distancias admitidas contienen todo $d<r$, porque los puntos $c+d$ convergen absolutamente, y no contienen distancia alguna $d>r$. Por tanto son conjuntos no vacíos y acotados, y su supremo es $r$: si $b<r$ fuese cota superior, el punto medio de $\max\{b,0\}$ y $r$ sería una distancia admitida superior a $b$. La definición «Radio finito y radio infinito» prueba, para cada plantilla, $R(a,c)=r$, independientemente de lo que suceda en $d=r$. Así evitamos deducir circularmente el radio a partir de los ejemplos fronterizos.
 
 **3. Evaluación de los extremos.** Por «Reducción de los extremos a series numéricas y simetría de la convergencia absoluta», basta estudiar la serie de los valores $b_n=a_nr^n$ y su versión alternada.
 
 - **Ninguno.** Para $a_n=h^n$ tenemos $b_n=1$ y $(-1)^nb_n=(-1)^n$. Los términos de ambas series no tienden a cero; ambas divergen por «Condición necesaria de convergencia: el término general tiende a cero».
-- **Sólo el izquierdo.** Para $a_n=h^n/(n+1)$ tenemos $b_n=1/(n+1)$ y la serie armónica diverge por «La condición $a_n\to0$ no es suficiente: la serie armónica». En el extremo izquierdo aparece la armónica alternada $\sum(-1)^n/(n+1)$, que converge **condicionalmente** por «La serie armónica alternada converge condicionalmente».
+- **Sólo el izquierdo.** Para $a_n=h^n/(n+1)$ tenemos $b_n=1/(n+1)$ y la serie armónica diverge por «La condición $a_n\to0$ no es suficiente: la serie armónica». En el extremo izquierdo aparece la armónica alternada $\sum(-1)^n/(n+1)$, que converge condicionalmente por «La serie armónica alternada converge condicionalmente».
 - **Sólo el derecho.** Para $a_n=(-1)^nh^n/(n+1)$, en el extremo derecho aparece la armónica alternada y en el izquierdo $(-1)^{2n}/(n+1)=1/(n+1)$, por inducción elemental de paridad de potencias. El primero converge condicionalmente y el segundo diverge por los mismos resultados cerrados.
 - **Ambos.** Para $a_n=h^n/((n+1)(n+2))$ tenemos $b_n=1/((n+1)(n+2))$ y la identidad algebraica
 
@@ -105,7 +105,7 @@ Ya sabemos que los cuatro conjuntos de distancias admitidas contienen todo $d<r$
   \tag{24.3.8}
   $$
 
-  Una inducción finita sobre $N$ demuestra que las sumas parciales son $1-1/(N+2)$. Por «Los recíprocos de los numerales positivos tienden a cero», $1/(N+2)\to0$ (es una cola de los recíprocos de numerales positivos); así la serie no negativa converge a $1$. Su convergencia en $c+r$ es absoluta. La igualdad de las series de magnitudes (24.3.3) prueba inmediatamente la convergencia absoluta también en $c-r$; no se afirma que sus **sumas ordinarias** sean iguales.
+  Una inducción finita sobre $N$ demuestra que las sumas parciales son $1-1/(N+2)$. Por «Los recíprocos de los numerales positivos tienden a cero», $1/(N+2)\to0$ (es una cola de los recíprocos de numerales positivos); así la serie no negativa converge a $1$. Su convergencia en $c+r$ es absoluta. La igualdad de las series de magnitudes (24.3.3) prueba inmediatamente la convergencia absoluta también en $c-r$; no se afirma que sus sumas ordinarias sean iguales.
 
 Quedan construidas las cuatro posibilidades (24.3.7) con radio prescrito $r$, mediante pruebas internas y sin recurrir a elección. $\square$
 
@@ -117,10 +117,10 @@ a_{2k}=\frac{(-1)^kh^{2k}}{k+1},\qquad a_{2k+1}=0
 \tag{24.3.9}
 $$
 
-La descomposición par/impar y estas fórmulas dan una sucesión única por Separación. Para $|x-c|<r$, la magnitud del término de índice $n$ está acotada por $q^n$ con $q=|x-c|/r<1$; la comparación geométrica da convergencia absoluta. Para $q>1$, los términos de índice par tienen magnitud $q^{2k}/(k+1)\ge u_{2k}$, donde $u_n$ es la sucesión del lema anterior; como $u_n$ queda eventualmente por encima de un real positivo, los términos pares no tienden a cero. El radio es $r$ por el mismo argumento de supremo del paso 2. En $x=c\pm r$, los términos impares son cero y los pares valen $(-1)^k/(k+1)$, porque $(-1)^{2k}=1$. Las sumas parciales de índices $2K$ y $2K+1$ coinciden con la suma parcial de índice $K$ de la armónica alternada: ambas convergen por «La serie armónica alternada converge condicionalmente». Sus series de magnitudes tienen, en esos índices, exactamente las sumas parciales armónicas, que divergen por «La condición $a_n\to0$ no es suficiente: la serie armónica». Por tanto los **dos** extremos son condicionalmente convergentes. Esta construcción refina el cuarto patrón sin alterar el conjunto de extremos.
+La descomposición par/impar y estas fórmulas dan una sucesión única por Separación. Para $|x-c|<r$, la magnitud del término de índice $n$ está acotada por $q^n$ con $q=|x-c|/r<1$; la comparación geométrica da convergencia absoluta. Para $q>1$, los términos de índice par tienen magnitud $q^{2k}/(k+1)\ge u_{2k}$, donde $u_n$ es la sucesión del lema anterior; como $u_n$ queda eventualmente por encima de un real positivo, los términos pares no tienden a cero. El radio es $r$ por el mismo argumento de supremo del paso 2. En $x=c\pm r$, los términos impares son cero y los pares valen $(-1)^k/(k+1)$, porque $(-1)^{2k}=1$. Las sumas parciales de índices $2K$ y $2K+1$ coinciden con la suma parcial de índice $K$ de la armónica alternada: ambas convergen por «La serie armónica alternada converge condicionalmente». Sus series de magnitudes tienen, en esos índices, exactamente las sumas parciales armónicas, que divergen por «La condición $a_n\to0$ no es suficiente: la serie armónica». Por tanto los dos extremos son condicionalmente convergentes. Esta construcción refina el cuarto patrón sin alterar el conjunto de extremos.
 
 ### Corolario 24.3.4 — Clasificación exhaustiva de los conjuntos de convergencia de radio finito positivo
-Si una serie de potencias tiene radio real $R>0$, su conjunto de convergencia es **exactamente uno** de los cuatro conjuntos
+Si una serie de potencias tiene radio real $R>0$, su conjunto de convergencia es exactamente uno de los cuatro conjuntos
 
 $$
 \boxed{

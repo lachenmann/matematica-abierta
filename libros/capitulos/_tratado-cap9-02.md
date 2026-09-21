@@ -8,7 +8,7 @@ $$
 q=(q_n)_{n\in\mathbb N}\in\mathbb Q^{\mathbb N}.
 $$
 
-Diremos que $q$ es una **sucesión racional nula** si converge racionalmente a $0_{\mathbb Q}$:
+Diremos que $q$ es una sucesión racional nula si converge racionalmente a $0_{\mathbb Q}$:
 
 $$
 \boxed{
@@ -95,7 +95,7 @@ Para $u,v\in\mathbb Q^{\mathbb N}$:
 
 **Demostración.**
 
-**(1)** Por Proposición 8.3.4 — Las sucesiones constantes convergen a su valor, toda sucesión constante converge racionalmente a su valor. En particular,
+(1) Por Proposición 8.3.4 — Las sucesiones constantes convergen a su valor, toda sucesión constante converge racionalmente a su valor. En particular,
 
 $$
 \underline{0_{\mathbb Q}}{}_n
@@ -109,7 +109,7 @@ $$
 \underline{0_{\mathbb Q}}\in\mathcal N_{\mathbb Q}.
 $$
 
-**(2)** Supongamos
+(2) Supongamos
 
 $$
 u,v\in\mathcal N_{\mathbb Q}.
@@ -203,7 +203,7 @@ $$
 u+v\in\mathcal N_{\mathbb Q}.
 $$
 
-**(3)** Supongamos $u\in\mathcal N_{\mathbb Q}$. Sea $\varepsilon>0$. Existe $N$ tal que para $n\ge N$,
+(3) Supongamos $u\in\mathcal N_{\mathbb Q}$. Sea $\varepsilon>0$. Existe $N$ tal que para $n\ge N$,
 
 $$
 |u_n|<\varepsilon.
@@ -227,7 +227,7 @@ $$
 -u\in\mathcal N_{\mathbb Q}.
 $$
 
-**(4)** Si $u,v\in\mathcal N_{\mathbb Q}$, entonces por $3$,
+(4) Si $u,v\in\mathcal N_{\mathbb Q}$, entonces por $3$,
 
 $$
 -v\in\mathcal N_{\mathbb Q},

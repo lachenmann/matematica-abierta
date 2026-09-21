@@ -118,7 +118,7 @@ $$
 }
 $$
 
-Llamaremos a $\jmath_{\mathbb Z}^{F}$ la **copia canónica de los enteros en $F$**.
+Llamaremos a $\jmath_{\mathbb Z}^{F}$ la copia canónica de los enteros en $F$.
 
 No se ha escogido un representante de cada entero. La función inducida existe porque una función ya definida sobre todos los representantes es constante en cada clase; el descenso al cociente es funcional y canónico.
 
@@ -425,7 +425,7 @@ $$
 
 ∎
 
-El teorema contiene un hecho estructural importante: **todo cuerpo ordenado tiene característica cero** en el sentido relevante para este tratado. Los enteros construidos en el Capítulo 2 aparecen en él de una manera canónica e inyectiva; no pueden colapsar dos enteros distintos.
+El teorema contiene un hecho estructural importante: todo cuerpo ordenado tiene característica cero en el sentido relevante para este tratado. Los enteros construidos en el Capítulo 2 aparecen en él de una manera canónica e inyectiva; no pueden colapsar dos enteros distintos.
 
 ### Corolario 12.1.6 — La copia entera está contenida en el subcuerpo primo
 
@@ -477,4 +477,4 @@ Como $z$ era arbitrario, la imagen entera está contenida en $P_F$. ∎
 
 El corolario no afirma que la imagen de $\mathbb Z$ sea ya todo $P_F$. En general no lo es: el subcuerpo primo debe ser también cerrado bajo el inverso de cada elemento no nulo. La etapa que falta consiste precisamente en añadir a la copia entera todas las fracciones determinadas por esos inversos.
 
-Así, la siguiente sección no construirá un nuevo sistema racional. Utilizará el $\mathbb Q$ ya construido en el Capítulo 3 para demostrar que todo cuerpo ordenado contiene una **única copia canónica de $\mathbb Q$**, y que su imagen es exactamente $P_F$.
+Así, la siguiente sección no construirá un nuevo sistema racional. Utilizará el $\mathbb Q$ ya construido en el Capítulo 3 para demostrar que todo cuerpo ordenado contiene una única copia canónica de $\mathbb Q$, y que su imagen es exactamente $P_F$.

@@ -2,7 +2,7 @@
 
 La distancia racional permite sustituir la expresión informal «los términos se acercan a un racional» por una condición cuantificada. La dificultad conceptual está en el orden de los cuantificadores.
 
-No basta exigir que algún término de la sucesión quede cerca del candidato a límite, ni que ocurra esto para una precisión fija. Debemos poder imponer **cualquier precisión racional positiva** y encontrar, a partir de ella, una etapa después de la cual todos los términos permanezcan dentro de esa precisión.
+No basta exigir que algún término de la sucesión quede cerca del candidato a límite, ni que ocurra esto para una precisión fija. Debemos poder imponer cualquier precisión racional positiva y encontrar, a partir de ella, una etapa después de la cual todos los términos permanezcan dentro de esa precisión.
 
 La forma lógica será
 
@@ -22,7 +22,7 @@ $$
 
 y sea $\ell\in\mathbb Q$.
 
-Diremos que **$q$ converge racionalmente a $\ell$** si
+Diremos que $q$ converge racionalmente a $\ell$ si
 
 $$
 \boxed{
@@ -41,19 +41,19 @@ d_{\mathbb Q}(q_n,\ell)<\varepsilon
 }
 $$
 
-El racional $\ell$ se llama entonces un **límite racional** de la sucesión $q$.
+El racional $\ell$ se llama entonces un límite racional de la sucesión $q$.
 
-Diremos que $q$ es **convergente en $\mathbb Q$** si existe algún $\ell\in\mathbb Q$ al cual converge racionalmente.
+Diremos que $q$ es convergente en $\mathbb Q$ si existe algún $\ell\in\mathbb Q$ al cual converge racionalmente.
 
 Hay tres aspectos de la definición que conviene fijar desde ahora.
 
 Primero, $N$ puede depender de $\varepsilon$. Cuanto menor sea la precisión exigida, más lejos puede ser necesario avanzar en la sucesión.
 
-Segundo, una vez elegido $N$, la condición debe valer para **todo** índice posterior: no basta con encontrar términos aislados cercanos a $\ell$.
+Segundo, una vez elegido $N$, la condición debe valer para todo índice posterior: no basta con encontrar términos aislados cercanos a $\ell$.
 
 Tercero, el cuantificador de precisión recorre sólo los racionales positivos. No estamos utilizando una noción previa de distancia real ni la completitud de $\mathbb R_D$.
 
-Llamaremos **módulo de convergencia** para $q_n\to_{\mathbb Q}\ell$ a una función
+Llamaremos módulo de convergencia para $q_n\to_{\mathbb Q}\ell$ a una función
 $$
 \mu:\mathbb Q_{>0}\to\mathbb N
 $$
@@ -61,7 +61,7 @@ tal que, para todo $\varepsilon>0$,
 $$
 n\geq\mu(\varepsilon)\Longrightarrow d_{\mathbb Q}(q_n,\ell)<\varepsilon.
 $$
-Si $\mu$ es computable respecto de las representaciones racionales y naturales fijadas, hablaremos de **módulo efectivo de convergencia**.
+Si $\mu$ es computable respecto de las representaciones racionales y naturales fijadas, hablaremos de módulo efectivo de convergencia.
 
 Clásicamente, cuando la sucesión converge, para cada precisión existe un menor índice que funciona. Esa mínima elección está unívocamente determinada por el buen orden de $\mathbb N$, pero:
 $$
@@ -367,8 +367,8 @@ $$
 
 significa que cualquier ventana racional positiva alrededor de $\ell$ termina conteniendo todos los términos suficientemente tardíos de la sucesión.
 
-Además, si tal racional $\ell$ existe, es único. Por ello tiene sentido hablar de **el** límite racional de una sucesión convergente.
+Además, si tal racional $\ell$ existe, es único. Por ello tiene sentido hablar de el límite racional de una sucesión convergente.
 
 Pero la definición contiene una limitación decisiva: para afirmar convergencia debemos conocer de antemano un candidato $\ell\in\mathbb Q$. Precisamente las aproximaciones que deberían representar los racionales ausentes —como las que se organizan alrededor de la ecuación $x^2=2$— pueden no disponer de tal límite dentro de $\mathbb Q$.
 
-Necesitamos, por tanto, una condición que mida si los términos de una sucesión se estabilizan **entre sí**, sin mencionar todavía ningún objeto exterior a la sucesión. Ése será el papel de **§8.4 — Sucesiones de Cauchy**.
+Necesitamos, por tanto, una condición que mida si los términos de una sucesión se estabilizan entre sí, sin mencionar todavía ningún objeto exterior a la sucesión. Ése será el papel de §8.4 — Sucesiones de Cauchy.

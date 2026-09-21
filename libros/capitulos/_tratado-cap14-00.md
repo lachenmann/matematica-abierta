@@ -12,7 +12,7 @@ $$
 a_0,\qquad a_0+a_1,\qquad a_0+a_1+a_2,\quad\ldots
 $$
 
-Estas expresiones no constituyen todavía una «suma infinita». Constituyen, para cada índice natural, una operación **finita**, cuya existencia se obtiene de la aritmética real. La cuestión propiamente analítica consiste en estudiar la sucesión formada por esos resultados.
+Estas expresiones no constituyen todavía una «suma infinita». Constituyen, para cada índice natural, una operación finita, cuya existencia se obtiene de la aritmética real. La cuestión propiamente analítica consiste en estudiar la sucesión formada por esos resultados.
 
 La arquitectura conceptual del capítulo comienza con tres niveles diferentes:
 
@@ -26,7 +26,7 @@ $$
 }
 $$
 
-Los términos $a_n$ son los datos; los números $s_n$ son sumas finitas; el número $\ell$ sólo podrá llamarse **suma de la serie** después de demostrar que $s_n\to\ell$. Si no hay convergencia, los dos primeros niveles siguen estando perfectamente definidos, pero no aparece una suma real.
+Los términos $a_n$ son los datos; los números $s_n$ son sumas finitas; el número $\ell$ sólo podrá llamarse suma de la serie después de demostrar que $s_n\to\ell$. Si no hay convergencia, los dos primeros niveles siguen estando perfectamente definidos, pero no aparece una suma real.
 
 > **Pregunta de lectura.** Que todas las sumas parciales existan no significa que exista su límite. ¿En cuál de los tres niveles se formula la convergencia? La respuesta será siempre: en la sucesión de sumas parciales, no en la mera existencia de cada suma finita.
 

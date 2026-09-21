@@ -110,6 +110,6 @@ $$
 
 es no vacío y acotado superiormente, pero no posee supremo en $\mathbb Q$.
 
-Ésta es la primera aparición formal del problema de la **completitud**.
+Ésta es la primera aparición formal del problema de la completitud.
 
 ---

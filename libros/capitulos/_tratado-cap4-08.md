@@ -10,7 +10,7 @@ $$
 \iota:F\to E
 $$
 
-es una **incrustación de cuerpos ordenados** si es inyectiva y, para todos $x,y\in F$,
+es una incrustación de cuerpos ordenados si es inyectiva y, para todos $x,y\in F$,
 
 $$
 \iota(0_F)=0_E,
@@ -36,7 +36,7 @@ $$
 
 ### Definición 4.8.2 — Completación ordenada de $\mathbb Q$ {#ta-completacion-ordenada-q}
 
-Una **completación ordenada de $\mathbb Q$** es un par $(E,\iota)$ tal que:
+Una completación ordenada de $\mathbb Q$ es un par $(E,\iota)$ tal que:
 
 1. $E$ es un [cuerpo ordenado completo](../otros/tratado-de-analisis-glosario.md#gl-cuerpo-ordenado-completo);
 2. $\iota:\mathbb Q\to E$ es una [incrustación de cuerpos ordenados](#ta-incrustacion-cuerpos-ordenados).
@@ -94,13 +94,13 @@ $$
 (\mathbb R_D,\iota_D)
 $$
 
-mediante **cortaduras de Dedekind**, y
+mediante cortaduras de Dedekind, y
 
 $$
 (\mathbb R_C,\iota_C)
 $$
 
-mediante **clases de equivalencia de sucesiones de Cauchy racionales**.
+mediante clases de equivalencia de sucesiones de Cauchy racionales.
 
 Cada construcción deberá demostrar, sin importar resultados de la otra:
 

@@ -24,4 +24,4 @@ $$
 
 Sustituyendo una condición por la otra obtenemos la equivalencia. ∎
 
-En el modelo de Dedekind, por tanto, **ser una cota superior significa contener a cada una de las cortaduras de la familia**.
+En el modelo de Dedekind, por tanto, ser una cota superior significa contener a cada una de las cortaduras de la familia.

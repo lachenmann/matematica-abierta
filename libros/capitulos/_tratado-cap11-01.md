@@ -6,7 +6,7 @@ $$
 a=(a_n)_{n\in\mathbb N}\in\mathcal C_{\mathbb Q}.
 $$
 
-Si $a$ tuviera un límite $L$, la cortadura correspondiente debería contener exactamente los racionales $q$ situados estrictamente por debajo de $L$. Como no podemos mencionar todavía tal $L$, sustituiremos la desigualdad $q<L$ por una condición que pueda leerse directamente sobre la sucesión: $q$ debe quedar, a partir de cierto índice, **separado por un margen racional positivo** de todos los términos de $a$.
+Si $a$ tuviera un límite $L$, la cortadura correspondiente debería contener exactamente los racionales $q$ situados estrictamente por debajo de $L$. Como no podemos mencionar todavía tal $L$, sustituiremos la desigualdad $q<L$ por una condición que pueda leerse directamente sobre la sucesión: $q$ debe quedar, a partir de cierto índice, separado por un margen racional positivo de todos los términos de $a$.
 
 Esta condición reproduce exactamente el criterio de orden estricto ya demostrado para las clases de Cauchy, pero se formula primero en el nivel de representantes.
 
@@ -44,7 +44,7 @@ $$
 
 El conjunto $\mathcal L_C(a)$ existe por Separación sobre $\mathbb Q$. La fórmula sólo utiliza la aritmética y el orden racionales ya construidos, la sucesión $a$ y cuantificación sobre $\mathbb N$.
 
-La presencia del margen $\varepsilon>0$ es esencial. Exigir simplemente que $q<a_n$ eventualmente no sería estable frente a perturbaciones nulas: una sucesión puede oscilar alrededor de una frontera sin mantenerse de un solo lado. El margen positivo expresa que $q$ se encuentra **estrictamente** por debajo de la posición asintótica representada por $a$.
+La presencia del margen $\varepsilon>0$ es esencial. Exigir simplemente que $q<a_n$ eventualmente no sería estable frente a perturbaciones nulas: una sucesión puede oscilar alrededor de una frontera sin mantenerse de un solo lado. El margen positivo expresa que $q$ se encuentra estrictamente por debajo de la posición asintótica representada por $a$.
 
 ### Proposición 11.1.2 — Caracterización mediante el orden de $\mathbb R_C$
 
@@ -338,13 +338,13 @@ $$
 
 El producto cartesiano existe, y el subconjunto indicado se obtiene por Separación. Para cada $a\in\mathcal C_{\mathbb Q}$ existe exactamente una $\alpha\in\mathbb R_D$ que satisface la condición, pues $\mathcal L_C(a)$ es un conjunto unívocamente determinado por Definición 11.1.1 — Lado inferior asociado a una sucesión racional de Cauchy y pertenece a $\mathbb R_D$ por Proposición 11.1.3 — El lado inferior de Cauchy es una cortadura de Dedekind. Por tanto $G_{\Lambda_C}$ es el grafo de una función.
 
-Todavía **no** hemos construido una función
+Todavía no hemos construido una función
 
 $$
 \mathbb R_C\to\mathbb R_D.
 $$
 
-La función $\Lambda_C$ tiene como dominio las **sucesiones representantes**, no sus clases. Antes de descenderla al cociente debemos probar la afirmación decisiva:
+La función $\Lambda_C$ tiene como dominio las sucesiones representantes, no sus clases. Antes de descenderla al cociente debemos probar la afirmación decisiva:
 
 $$
 a\sim_C b

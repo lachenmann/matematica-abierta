@@ -3,13 +3,13 @@
 No debemos llamar «elemental» a una fórmula cuya operación todavía no se haya construido. Disponemos de las potencias de exponente natural (§14.3), de sumas finitas (§14.1) y de raíces no negativas de índice natural positivo (§14.9). Las reglas de §17.4 permitirán obtener funciones polinomiales y racionales sin postular su continuidad. Las funciones exponencial, logarítmica y trigonométricas quedan fuera de esta sección: aquí no se les atribuye una definición ni una propiedad de continuidad no demostrada. Toda operación será interpretada en su dominio efectivo.
 
 ### Definición 17.5.1 — Función polinomial real determinada por una lista finita de coeficientes
-Sea $m\in\mathbb N$, pongamos $I_m:=\{k\in\mathbb N:k\le m\}$ y fijemos una **función dada** de coeficientes $c:I_m\to\mathbb R$. Para cada $x\in\mathbb R$ definimos la sucesión real $a^x:\mathbb N\to\mathbb R$ por
+Sea $m\in\mathbb N$, pongamos $I_m:=\{k\in\mathbb N:k\le m\}$ y fijemos una función dada de coeficientes $c:I_m\to\mathbb R$. Para cada $x\in\mathbb R$ definimos la sucesión real $a^x:\mathbb N\to\mathbb R$ por
 
 $$
 a^x_k:=\begin{cases}c(k)x^k,&k\le m,\\0,&k>m.\end{cases}
 $$
 
-La sucesión existe por Separación en $\mathbb N\times\mathbb R$; su definición no elige coeficientes, porque $c$ ya es un dato. La suma finita de §14.1 determina la función **polinomial asociada** $P_c:\mathbb R\to\mathbb R$ mediante
+La sucesión existe por Separación en $\mathbb N\times\mathbb R$; su definición no elige coeficientes, porque $c$ ya es un dato. La suma finita de §14.1 determina la función polinomial asociada $P_c:\mathbb R\to\mathbb R$ mediante
 
 $$
 \boxed{P_c(x):=\sum_{k=0}^{m}a^x_k
@@ -49,7 +49,7 @@ $$
 D_Q:=\{x\in\mathbb R:Q(x)\ne0\}.
 $$
 
-Entonces la expresión $R(x)=P(x)/Q(x)$ determina una función $R:D_Q\to\mathbb R$, **continua en todos los puntos de $D_Q$**. El conjunto $D_Q$ puede ser vacío.
+Entonces la expresión $R(x)=P(x)/Q(x)$ determina una función $R:D_Q\to\mathbb R$, continua en todos los puntos de $D_Q$. El conjunto $D_Q$ puede ser vacío.
 
 **Demostración.**
 Por Teorema §17.5.3 — Todo polinomio real es continuo en la recta, $P$ y $Q$ son continuos sobre $\mathbb R$. El conjunto $D_Q$ existe por Separación; el cociente funcional sobre él existe conforme a Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales. Fijemos $a\in D_Q$: entonces $Q(a)\ne0$, y Teorema §17.4.4 — Continuidad del recíproco y del cociente en sus dominios efectivos prueba la continuidad de $P/Q$ en $a$ relativamente a $D_Q$. La arbitrariedad de $a$ acredita la continuidad global. Si $D_Q=\varnothing$, la afirmación «continua en cada punto de su dominio» es universalmente verdadera, pero no se declara ningún límite en el vacío. La simplificación algebraica de una expresión no añade por sí sola puntos a este dominio. ∎
@@ -94,7 +94,7 @@ r_n:\mathbb R_{\ge0}\to\mathbb R,
 \qquad r_n(x)=\sqrt[n]{x},
 $$
 
-es continua en **todos** los puntos de su dominio, incluido $0$. La función está provista explícitamente del codominio $\mathbb R$; su recorrido está contenido en $\mathbb R_{\ge0}$.
+es continua en todos los puntos de su dominio, incluido $0$. La función está provista explícitamente del codominio $\mathbb R$; su recorrido está contenido en $\mathbb R_{\ge0}$.
 
 **Demostración.**
 La existencia y unicidad para cada $x\ge0$ y $n\ge1$, y el grafo de la función de raíces, están certificados en Teorema §14.9.2 — Existencia y unicidad de la raíz no negativa de índice positivo y Notación §14.9.3 — Raíz enésima real no negativa. Fijemos $a\ge0$ y $\varepsilon>0$. La potencia $\varepsilon^n$ es estrictamente positiva; tomemos
@@ -119,11 +119,11 @@ $$
 T:=\{x\in D:g(x)\ge0\}.
 $$
 
-Entonces $h:T\to\mathbb R$, $h(x)=\sqrt[n]{g(x)}$, es una función bien definida y continua en **cada punto de $T$**. Si $T=D$, la continuidad vale sobre todo el dominio original; si $T=\varnothing$, no se evalúa el radical en ningún punto.
+Entonces $h:T\to\mathbb R$, $h(x)=\sqrt[n]{g(x)}$, es una función bien definida y continua en cada punto de $T$. Si $T=D$, la continuidad vale sobre todo el dominio original; si $T=\varnothing$, no se evalúa el radical en ningún punto.
 
 **Demostración.**
 Por Separación existe $T$. La restricción de $g$ a $T$ toma valores en $E:=\mathbb R_{\ge0}$ y, tras declarar expresamente su codominio $E$, determina $g_T:T\to E$. Por Teorema §17.5.6 — Continuidad de todas las raíces reales no negativas disponibles la función exterior $r_n:E\to\mathbb R$ es continua en cada punto de $E$. Para cada $a\in T$, la continuidad de $g$ en $a$ relativamente a $D$ y de $r_n$ en $g(a)\in E$ permite aplicar Teorema §17.4.5 — Composición en el dominio efectivo y concluir que $r_n\circ g_T:T\to\mathbb R$ es continua en $a$. La composición coincide en dominio, codominio y valores con $h$. No se extiende el radical a los puntos con $g(x)<0$. ∎
 
 **Ejemplos.** $x\mapsto\sqrt{x}$ es continua en $[0,\infty)$, incluida la frontera $0$. También $x\mapsto\sqrt{1-x^2}$ es continua en $[-1,1]$ por continuidad polinomial y composición efectiva; no se le atribuye un valor real fuera de ese intervalo.
 
-**Transición.** Hemos establecido continuidad para las funciones algebraicas cuyas operaciones y raíces ya tenían una definición legítima. Estas pruebas son puntuales: el radio puede depender del punto considerado. La próxima sección introducirá una condición diferente, con un radio que pueda elegirse **independientemente del centro**: la continuidad uniforme. Su teorema global sobre compactos permanecerá reservado al Capítulo 18.
+**Transición.** Hemos establecido continuidad para las funciones algebraicas cuyas operaciones y raíces ya tenían una definición legítima. Estas pruebas son puntuales: el radio puede depender del punto considerado. La próxima sección introducirá una condición diferente, con un radio que pueda elegirse independientemente del centro: la continuidad uniforme. Su teorema global sobre compactos permanecerá reservado al Capítulo 18.

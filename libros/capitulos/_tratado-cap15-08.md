@@ -1,8 +1,8 @@
 ## 15.8. Descripciones secuenciales y el alcance de la elección {#sec-ta-15-8}
 
-Las sucesiones reales se construyeron en el Capítulo 13, antes de definir la topología de la recta. Podemos conectar ahora ambos lenguajes: si todos los términos de una sucesión pertenecen a un conjunto, ¿dónde puede situarse su límite? La dirección desde una **sucesión ya dada** hasta una propiedad topológica es inmediata. La dirección contraria exige mayor cuidado: de la afirmación «cada bola contiene algún punto de $A$» no se obtiene automáticamente, en ZF, una función que elija un punto de $A$ para cada uno de infinitos radios.
+Las sucesiones reales se construyeron en el Capítulo 13, antes de definir la topología de la recta. Podemos conectar ahora ambos lenguajes: si todos los términos de una sucesión pertenecen a un conjunto, ¿dónde puede situarse su límite? La dirección desde una sucesión ya dada hasta una propiedad topológica es inmediata. La dirección contraria exige mayor cuidado: de la afirmación «cada bola contiene algún punto de $A$» no se obtiene automáticamente, en ZF, una función que elija un punto de $A$ para cada uno de infinitos radios.
 
-Desarrollaremos primero las caracterizaciones que sólo utilizan cuantificadores sobre puntos individuales. Después introduciremos los límites efectivamente representados por sucesiones y demostraremos cuándo una enumeración previa permite construir una sucesión de aproximantes. Los teoremas generales habituales se presentarán, al final, **sólo bajo una hipótesis de elección numerable expresamente declarada**. Esa hipótesis no forma parte del fundamento de este tratado.
+Desarrollaremos primero las caracterizaciones que sólo utilizan cuantificadores sobre puntos individuales. Después introduciremos los límites efectivamente representados por sucesiones y demostraremos cuándo una enumeración previa permite construir una sucesión de aproximantes. Los teoremas generales habituales se presentarán, al final, sólo bajo una hipótesis de elección numerable expresamente declarada. Esa hipótesis no forma parte del fundamento de este tratado.
 
 ### Lema 15.8.1 — Una escala numerable cofinal de radios positivos
 Para cada $n\in\mathbb N$, definamos, como abreviatura local,
@@ -21,7 +21,7 @@ $$
 **Demostración.**
 El sucesor $S(n)$ es un natural positivo. La aplicación de numerales $\nu_{\mathbb R}$ preserva el orden, de modo que su imagen es un real positivo y su inverso existe y es positivo. El lema Lema §13.10.2 — Los recíprocos de los numerales positivos tienden a cero, especializado al cuerpo real estructural, prueba precisamente que la sucesión de estos recíprocos converge a cero. Dado $r>0$, su definición de convergencia proporciona $N\in\mathbb N$ tal que $n\ge N$ implica $|\eta_n-0|<r$. Como $\eta_n>0$, esto equivale a $0<\eta_n<r$. ∎
 
-La sucesión $\eta$ está determinada término a término por una fórmula. No hemos elegido un radio de cada una de una familia de conjuntos: hemos definido **una única escala numérica**, disponible para todas las pruebas de esta sección.
+La sucesión $\eta$ está determinada término a término por una fórmula. No hemos elegido un radio de cada una de una familia de conjuntos: hemos definido una única escala numérica, disponible para todas las pruebas de esta sección.
 
 
 ### Teorema 15.8.2 — Pruebas de proximidad con radios numerables
@@ -65,11 +65,11 @@ $$
 
 **Exterior.** Un punto es exterior si alguna bola positiva centrada en él es disjunta de $A$. Una bola de radio $\eta_n$ suficientemente pequeño está contenida en ella; recíprocamente, una bola de radio $\eta_n$ disjunta ya proporciona un radio legítimo. ∎
 
-> **Distinción lógica.** Las primeras condiciones tienen la forma $\forall n\,\exists a\,P(n,a)$. No dicen $\exists(a_n)\,\forall n\,P(n,a_n)$. La segunda fórmula afirma la existencia de una **función** sobre $\mathbb N$ y es más fuerte en ZF. Ninguna de las cinco equivalencias anteriores necesita convertir la primera fórmula en la segunda.
+> **Distinción lógica.** Las primeras condiciones tienen la forma $\forall n\,\exists a\,P(n,a)$. No dicen $\exists(a_n)\,\forall n\,P(n,a_n)$. La segunda fórmula afirma la existencia de una función sobre $\mathbb N$ y es más fuerte en ZF. Ninguna de las cinco equivalencias anteriores necesita convertir la primera fórmula en la segunda.
 
 
 ### Definición 15.8.3 — Clausura secuencial de un conjunto
-Para $A\subseteq\mathbb R$, definimos su **clausura secuencial** como
+Para $A\subseteq\mathbb R$, definimos su clausura secuencial como
 
 $$
 \boxed{\operatorname{SCl}(A):=
@@ -83,7 +83,7 @@ $$
 \{\langle A,C\rangle\in\mathcal P(\mathbb R)\times\mathcal P(\mathbb R):C=\operatorname{SCl}(A)\}
 $$
 
-existe por Separación y define una función $\mathcal P(\mathbb R)\to\mathcal P(\mathbb R)$. Su definición cuantifica sobre sucesiones que **ya existen**; no fabrica una a partir de testigos separados ni utiliza elección.
+existe por Separación y define una función $\mathcal P(\mathbb R)\to\mathcal P(\mathbb R)$. Su definición cuantifica sobre sucesiones que ya existen; no fabrica una a partir de testigos separados ni utiliza elección.
 
 La notación $\operatorname{SCl}(A)$ distingue esta operación de $\overline A$, cuya definición sigue siendo la de adherencia mediante todas las bolas.
 
@@ -127,7 +127,7 @@ satisface una de dos alternativas clásicas. Si tiene índices arbitrariamente g
 
 Si $I$ no tiene índices arbitrariamente grandes, existe $N$ tal que $n\ge N$ implica $s_n\notin A$. Dado que $s_n\in A\cup B$, todos esos términos pertenecen a $B$. La sucesión $t_k:=s_{N+k}$ es una función real sobre $\mathbb N$, pertenece enteramente a $B$ y converge a $x$: para una tolerancia $r>0$ tomamos un índice de convergencia $M$ de $s$, y entonces $k\ge M$ implica $N+k\ge M$. De ello se sigue $x\in\operatorname{SCl}(B)$. Los dos casos agotan las posibilidades y prueban la igualdad. ∎
 
-La extracción anterior **no** elige puntos de conjuntos reales arbitrarios: parte de una sucesión existente y escoge los menores índices de un subconjunto de $\mathbb N$. Es una utilización legítima del buen orden de los naturales.
+La extracción anterior no elige puntos de conjuntos reales arbitrarios: parte de una sucesión existente y escoge los menores índices de un subconjunto de $\mathbb N$. Es una utilización legítima del buen orden de los naturales.
 
 
 ### Proposición 15.8.5 — Qué prueban las sucesiones convergentes sobre acumulación y frontera
@@ -141,11 +141,11 @@ Para (1), fijemos $r>0$. Por convergencia existe $N\in\mathbb N$ con $|s_N-x|<r$
 
 Para (2), dado $r>0$, la convergencia de $s$ proporciona un índice $N$ con $s_N\in B_r(x)\cap A$; independientemente, la convergencia de $t$ da un índice $M$ con $t_M\in B_r(x)\cap(\mathbb R\setminus A)$. Ambas intersecciones son no vacías, luego $x\in\partial A$. Los índices se obtienen para el único radio fijado y no se construye ninguna sucesión adicional. ∎
 
-Estas implicaciones no tienen una recíproca general demostrable con los axiomas actualmente admitidos. La siguiente proposición muestra cómo recuperarla cuando disponemos de una enumeración efectiva **como función matemática**, aunque no presupongamos que sea computable.
+Estas implicaciones no tienen una recíproca general demostrable con los axiomas actualmente admitidos. La siguiente proposición muestra cómo recuperarla cuando disponemos de una enumeración efectiva como función matemática, aunque no presupongamos que sea computable.
 
 
 ### Teorema 15.8.6 — Caracterizaciones completas para conjuntos enumerados
-Sea $A\subseteq\mathbb R$ y supongamos **dada** una sobreyección $e:\mathbb N\to A$. Entonces, para cada $x\in\mathbb R$,
+Sea $A\subseteq\mathbb R$ y supongamos dada una sobreyección $e:\mathbb N\to A$. Entonces, para cada $x\in\mathbb R$,
 
 $$
 \boxed{x\in\overline A\iff
@@ -159,10 +159,10 @@ $$
 [\,\forall n\ (s_n\in A\setminus\{x\})\ \land\ s_n\to x\,].}
 $$
 
-La sobreyectividad de $e$ implica $A\ne\varnothing$. La hipótesis no se extiende a una enumeración simultánea de **todo el complemento**: ello conduciría a enumerar la recta, como se probará en Lema §15.8.10 — La recta real no admite una enumeración. La caracterización no vacua de la frontera con dos subconjuntos densos provistos de enumeraciones se establece en Teorema §15.8.11 — Caracterización fronteriza mediante dos lados densamente enumerados.
+La sobreyectividad de $e$ implica $A\ne\varnothing$. La hipótesis no se extiende a una enumeración simultánea de todo el complemento: ello conduciría a enumerar la recta, como se probará en Lema §15.8.10 — La recta real no admite una enumeración. La caracterización no vacua de la frontera con dos subconjuntos densos provistos de enumeraciones se establece en Teorema §15.8.11 — Caracterización fronteriza mediante dos lados densamente enumerados.
 
 **Demostración.**
-Las implicaciones de derecha a izquierda resultan de Proposición §15.8.4 — Propiedades elementales de la clausura secuencial y Proposición §15.8.5 — Qué prueban las sucesiones convergentes sobre acumulación y frontera. Para las recíprocas describimos una construcción que depende sólo de las sobreyecciones **ya dadas**.
+Las implicaciones de derecha a izquierda resultan de Proposición §15.8.4 — Propiedades elementales de la clausura secuencial y Proposición §15.8.5 — Qué prueban las sucesiones convergentes sobre acumulación y frontera. Para las recíprocas describimos una construcción que depende sólo de las sobreyecciones ya dadas.
 
 Supongamos $x\in\overline A$. Para cada $n\in\mathbb N$ consideremos el subconjunto de los naturales
 
@@ -188,7 +188,7 @@ Sus mínimos determinan una sucesión cuyos términos pertenecen a $A\setminus\{
 
 La construcción de las dos clases de aproximantes se realiza únicamente dentro del conjunto ya enumerado $A$. Estas son exactamente las dos equivalencias del enunciado, y no necesitan enumerar su complemento. ∎
 
-> **Importancia de la hipótesis.** La enumeración no surge de la frase «$A$ es un subconjunto de la recta». Se entrega como dato estructural. El buen orden selecciona **índices naturales** dentro de una función disponible, no puntos arbitrarios de una familia de subconjuntos de $\mathbb R$.
+> **Importancia de la hipótesis.** La enumeración no surge de la frase «$A$ es un subconjunto de la recta». Se entrega como dato estructural. El buen orden selecciona índices naturales dentro de una función disponible, no puntos arbitrarios de una familia de subconjuntos de $\mathbb R$.
 
 
 ### Proposición 15.8.7 — Un abierto proporciona aproximantes racionales canónicos
@@ -205,13 +205,13 @@ U\cap\jmath_{\mathbb Q}^{\mathbb R}[\mathbb Q].
 $$
 
 **Demostración.**
-La inclusión $\operatorname{SCl}(U)\subseteq\overline U$ ya está probada. Fijemos $x\in\overline U$. Para cada $n$, la bola $B_{\eta_n}(x)$ corta a $U$. Probaremos que contiene también un punto de la copia racional situado en $U$. Sea $y$ un punto de esa intersección, **fijado únicamente para esta demostración local**. La apertura de $U$ proporciona $r>0$ con $B_r(y)\subseteq U$, y Proposición §15.1.3 — Una bola contiene una bola alrededor de cada uno de sus puntos proporciona $d=\eta_n-|y-x|>0$ con $B_d(y)\subseteq B_{\eta_n}(x)$. Tomando $h:=\min\{r,d\}>0$, tenemos
+La inclusión $\operatorname{SCl}(U)\subseteq\overline U$ ya está probada. Fijemos $x\in\overline U$. Para cada $n$, la bola $B_{\eta_n}(x)$ corta a $U$. Probaremos que contiene también un punto de la copia racional situado en $U$. Sea $y$ un punto de esa intersección, fijado únicamente para esta demostración local. La apertura de $U$ proporciona $r>0$ con $B_r(y)\subseteq U$, y Proposición §15.1.3 — Una bola contiene una bola alrededor de cada uno de sus puntos proporciona $d=\eta_n-|y-x|>0$ con $B_d(y)\subseteq B_{\eta_n}(x)$. Tomando $h:=\min\{r,d\}>0$, tenemos
 
 $$
 B_h(y)\subseteq U\cap B_{\eta_n}(x).
 $$
 
-Por densidad de la copia racional (Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo), existe $q\in\mathbb Q$ tal que $\jmath_{\mathbb Q}^{\mathbb R}(q)\in B_h(y)$. Concluye la existencia de un racional situado simultáneamente en $U$ y en la bola original. **No hemos elegido los puntos $y$ ni los radios $r$ para todos los índices**: sólo hemos establecido, para un $n$ arbitrario, que el conjunto siguiente es no vacío:
+Por densidad de la copia racional (Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo), existe $q\in\mathbb Q$ tal que $\jmath_{\mathbb Q}^{\mathbb R}(q)\in B_h(y)$. Concluye la existencia de un racional situado simultáneamente en $U$ y en la bola original. No hemos elegido los puntos $y$ ni los radios $r$ para todos los índices: sólo hemos establecido, para un $n$ arbitrario, que el conjunto siguiente es no vacío:
 
 $$
 K_n:=\{k\in\mathbb N:
@@ -227,7 +227,7 @@ $$
 
 La definición funcional sobre $\mathbb N$ se obtiene por Separación y composición. Para todos los $n$, $s_n\in U$ y $|s_n-x|<\eta_n$. El lema de la escala prueba $s_n\to x$. Por tanto, $x\in\operatorname{SCl}(U)$, que establece la igualdad. ∎
 
-Este argumento ofrece aproximantes concretamente definidos a partir de una enumeración **canónica preexistente de los racionales**. No implica que un conjunto arbitrario $A$ contenga racionales ni permite aplicar el mismo procedimiento a un conjunto sin apertura.
+Este argumento ofrece aproximantes concretamente definidos a partir de una enumeración canónica preexistente de los racionales. No implica que un conjunto arbitrario $A$ contenga racionales ni permite aplicar el mismo procedimiento a un conjunto sin apertura.
 
 
 ### Teorema 15.8.8 — Criterios secuenciales de cerradura y apertura: alcance exacto
@@ -236,7 +236,7 @@ Sea $A\subseteq\mathbb R$. Sin hipótesis adicional de elección se tienen las i
 1. Si $A$ es cerrado, toda sucesión $s\in\mathbb R^{\mathbb N}$ con $s_n\in A$ para todo $n$ y $s_n\to x$ satisface $x\in A$.
 2. Si $A$ es abierto y $s_n\to x\in A$, entonces existe $N\in\mathbb N$ tal que $s_n\in A$ para todo $n\ge N$.
 
-Además, la primera implicación es una equivalencia **si se dispone de una sobreyección** $e:\mathbb N\to A$; la segunda lo es **si se dispone de una sobreyección** $f:\mathbb N\to\mathbb R\setminus A$. Los casos $A=\varnothing$ en (1) y $A=\mathbb R$ en (2) se verifican directamente, sin enumeración.
+Además, la primera implicación es una equivalencia si se dispone de una sobreyección $e:\mathbb N\to A$; la segunda lo es si se dispone de una sobreyección $f:\mathbb N\to\mathbb R\setminus A$. Los casos $A=\varnothing$ en (1) y $A=\mathbb R$ en (2) se verifican directamente, sin enumeración.
 
 **Demostración.**
 **Cerradura, dirección general.** Una sucesión con todos sus términos en $A$ y límite $x$ demuestra $x\in\operatorname{SCl}(A)\subseteq\overline A$ por Proposición §15.8.4 — Propiedades elementales de la clausura secuencial. Si $A$ es cerrado, Corolario §15.4.7 — Un conjunto es cerrado si y sólo si coincide con su clausura proporciona $\overline A=A$, luego $x\in A$.
@@ -251,11 +251,11 @@ Además, la primera implicación es una equivalencia **si se dispone de una sobr
 
 
 ### Teorema 15.8.9 — Formulaciones habituales bajo una hipótesis de elección explícita
-Consideremos **exclusivamente como hipótesis de este teorema** el siguiente principio, denotado aquí por $\mathrm{CC}(\mathbb R)$:
+Consideremos exclusivamente como hipótesis de este teorema el siguiente principio, denotado aquí por $\mathrm{CC}(\mathbb R)$:
 
 > Para toda función $E:\mathbb N\to\mathcal P(\mathbb R)$ cuyos valores son no vacíos, existe una función $c:\mathbb N\to\mathbb R$ tal que $c(n)\in E(n)$ para todo $n$.
 
-**Si se supone $\mathrm{CC}(\mathbb R)$**, entonces, para todo $A\subseteq\mathbb R$ y todo $x\in\mathbb R$, se obtienen las equivalencias generales
+Si se supone $\mathrm{CC}(\mathbb R)$, entonces, para todo $A\subseteq\mathbb R$ y todo $x\in\mathbb R$, se obtienen las equivalencias generales
 
 $$
 \boxed{x\in\overline A\iff
@@ -284,18 +284,18 @@ $$
 E_n:=A\cap B_{\eta_n}(x)
 $$
 
-existe por intersección de conjuntos y es no vacío por Teorema §15.8.2 — Pruebas de proximidad con radios numerables. Los valores determinan una función $E:\mathbb N\to\mathcal P(\mathbb R)$ mediante su fórmula y Separación. **Aquí, y sólo aquí, invocamos la hipótesis $\mathrm{CC}(\mathbb R)$**: obtenemos una función $s$ con $s_n\in E_n$ para todo $n$. Puesto que $|s_n-x|<\eta_n$ y $\eta_n\to0$, se tiene $s_n\to x$. La recíproca de adherencia ya es un teorema sin elección (Proposición §15.8.4 — Propiedades elementales de la clausura secuencial).
+existe por intersección de conjuntos y es no vacío por Teorema §15.8.2 — Pruebas de proximidad con radios numerables. Los valores determinan una función $E:\mathbb N\to\mathcal P(\mathbb R)$ mediante su fórmula y Separación. Aquí, y sólo aquí, invocamos la hipótesis $\mathrm{CC}(\mathbb R)$: obtenemos una función $s$ con $s_n\in E_n$ para todo $n$. Puesto que $|s_n-x|<\eta_n$ y $\eta_n\to0$, se tiene $s_n\to x$. La recíproca de adherencia ya es un teorema sin elección (Proposición §15.8.4 — Propiedades elementales de la clausura secuencial).
 
 Para acumulación repetimos el argumento con $E_n=(A\setminus\{x\})\cap B_{\eta_n}(x)$; para frontera, lo aplicamos por separado a $A$ y a $\mathbb R\setminus A$, formando después un par finito de sucesiones. Los sentidos inversos están demostrados en Proposición §15.8.5 — Qué prueban las sucesiones convergentes sobre acumulación y frontera. La igualdad $\operatorname{SCl}(A)=\overline A$ sigue del primer criterio y de su definición. Para cerradura empleamos $A=\overline A$; para apertura, aplicamos el primer criterio al complemento de $A$ y la caracterización $A^\circ=\mathbb R\setminus\overline{\mathbb R\setminus A}$, reproduciendo el argumento eventual de Teorema §15.8.8 — Criterios secuenciales de cerradura y apertura: alcance exacto. ∎
 
-**Estado fundacional.** Este teorema tiene la forma demostrada en ZF «$\mathrm{CC}(\mathbb R)\Rightarrow$ caracterizaciones secuenciales», y **no introduce $\mathrm{CC}(\mathbb R)$ como axioma**. Herrlich y Strecker demostraron incluso que la caracterización universal de adherencia mediante sucesiones es equivalente a dicho principio sobre conjuntos de reales. Por ello, promover sin hipótesis esa caracterización a teorema de nuestro sistema alteraría indebidamente el contrato fundacional. La referencia se registra como *countercheck* metamatemático, no como demostración importada en los resultados internos.
+**Estado fundacional.** Este teorema tiene la forma demostrada en ZF «$\mathrm{CC}(\mathbb R)\Rightarrow$ caracterizaciones secuenciales», y no introduce $\mathrm{CC}(\mathbb R)$ como axioma. Herrlich y Strecker demostraron incluso que la caracterización universal de adherencia mediante sucesiones es equivalente a dicho principio sobre conjuntos de reales. Por ello, promover sin hipótesis esa caracterización a teorema de nuestro sistema alteraría indebidamente el contrato fundacional. La referencia se registra como *countercheck* metamatemático, no como demostración importada en los resultados internos.
 
 
 ### Lema 15.8.10 — La recta real no admite una enumeración
-No existe ninguna sobreyección $h:\mathbb N\to\mathbb R$. En particular, **no pueden existir simultáneamente**, para un mismo $A\subseteq\mathbb R$, sobreyecciones $e:\mathbb N\to A$ y $f:\mathbb N\to\mathbb R\setminus A$.
+No existe ninguna sobreyección $h:\mathbb N\to\mathbb R$. En particular, no pueden existir simultáneamente, para un mismo $A\subseteq\mathbb R$, sobreyecciones $e:\mathbb N\to A$ y $f:\mathbb N\to\mathbb R\setminus A$.
 
 **Demostración.**
-Supongamos dada una función $h:\mathbb N\to\mathbb R$. Construiremos, **sin escoger intervalos arbitrariamente**, una sucesión de intervalos cerrados no degenerados $J_n=[a_n,b_n]$ tal que
+Supongamos dada una función $h:\mathbb N\to\mathbb R$. Construiremos, sin escoger intervalos arbitrariamente, una sucesión de intervalos cerrados no degenerados $J_n=[a_n,b_n]$ tal que
 
 $$
 J_0=[0,1],\qquad J_{n+1}\subseteq J_n,\qquad h(n)\notin J_{n+1}.
@@ -317,7 +317,7 @@ L_n,&h(n)\notin L_n.
 \end{cases}
 $$
 
-En el primer caso el nuevo intervalo evita $h(n)$ por disjunción; en el segundo lo evita por definición. Su longitud positiva es $d_n$. El teorema de recursión Teorema §1.3.7 — Teorema de recursión sobre $\mathbb N$, seguido de inducción, determina toda la sucesión con las propiedades indicadas. La distinción de pertenencia es clásica, pero la regla define **un único intervalo** en cada etapa; no utiliza elección.
+En el primer caso el nuevo intervalo evita $h(n)$ por disjunción; en el segundo lo evita por definición. Su longitud positiva es $d_n$. El teorema de recursión Teorema §1.3.7 — Teorema de recursión sobre $\mathbb N$, seguido de inducción, determina toda la sucesión con las propiedades indicadas. La distinción de pertenencia es clásica, pero la regla define un único intervalo en cada etapa; no utiliza elección.
 
 El conjunto $S:=\{a_n:n\in\mathbb N\}$ existe como imagen de la sucesión de extremos izquierdos, es no vacío y está acotado superiormente por $b_0$. La propiedad del supremo proporciona $x:=\sup S\in\mathbb R$. Fijado $n$, tenemos $a_n\le x$. Además, cada $a_m\le b_n$: si $m\ge n$, por $J_m\subseteq J_n$; si $m<n$, por $a_m\le a_n\le b_n$. Así, $b_n$ es cota superior de $S$ y $x\le b_n$. Concluimos $x\in J_n$ para todo $n$.
 
@@ -329,7 +329,7 @@ Finalmente, si se dispusiera de ambas sobreyecciones $e$ y $f$ del enunciado, la
 
 
 ### Teorema 15.8.11 — Caracterización fronteriza mediante dos lados densamente enumerados
-Sea $A\subseteq\mathbb R$ y escribamos $C:=\mathbb R\setminus A$. Supongamos que están **dados** subconjuntos $D\subseteq A$ y $E\subseteq C$, junto con sobreyecciones $e:\mathbb N\to D$ y $f:\mathbb N\to E$, tales que
+Sea $A\subseteq\mathbb R$ y escribamos $C:=\mathbb R\setminus A$. Supongamos que están dados subconjuntos $D\subseteq A$ y $E\subseteq C$, junto con sobreyecciones $e:\mathbb N\to D$ y $f:\mathbb N\to E$, tales que
 
 $$
 A\subseteq\overline D,\qquad C\subseteq\overline E.
@@ -351,7 +351,7 @@ Por $D\subseteq A$, la monotonía de clausura proporciona $\overline D\subseteq\
 
 Si $x\in\partial A$, la caracterización Teorema §15.6.3 — Caracterización de la frontera por dos clausuras proporciona $x\in\overline A\cap\overline C=\overline D\cap\overline E$. Aplicamos por separado Teorema §15.8.6 — Caracterizaciones completas para conjuntos enumerados al conjunto $D$ y a la sobreyección $e$, y luego al conjunto $E$ y a la sobreyección $f$. Obtenemos sucesiones $s_n\in D\subseteq A$ y $t_n\in E\subseteq C$ que convergen a $x$. Son dos aplicaciones ya determinadas por mínimos de índices naturales; no se escoge una familia adicional de aproximantes. La implicación inversa es exactamente Proposición §15.8.5 — Qué prueban las sucesiones convergentes sobre acumulación y frontera: las dos sucesiones ya existentes hacen que toda bola centrada en $x$ encuentre ambos lados. ∎
 
-Las hipótesis **sí son realizables**. Por ejemplo, tomemos $A=\{0\}$ y $D=A$, enumerado por la sucesión constante. Para $C=\mathbb R\setminus\{0\}$, abreviemos localmente $j:=\jmath_{\mathbb Q}^{\mathbb R}$ y consideremos $E=j[\mathbb Q\setminus\{0_{\mathbb Q}\}]$. La enumeración racional canónica $e_{\mathbb Q}$ permite enumerar $E$ reemplazando por $1_{\mathbb Q}$ cada aparición de $0_{\mathbb Q}$ y aplicando después $j$. Todo intervalo abierto no vacío contiene una imagen racional distinta de cero: basta tomar dentro de él un subintervalo abierto no vacío que no contenga cero y aplicar Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo. Así $\overline E=\mathbb R$ por la definición de adherencia, y las hipótesis se verifican. A diferencia de la doble enumeración de $A$ y **todo** su complemento, este caso no implica que la recta sea numerable.
+Las hipótesis sí son realizables. Por ejemplo, tomemos $A=\{0\}$ y $D=A$, enumerado por la sucesión constante. Para $C=\mathbb R\setminus\{0\}$, abreviemos localmente $j:=\jmath_{\mathbb Q}^{\mathbb R}$ y consideremos $E=j[\mathbb Q\setminus\{0_{\mathbb Q}\}]$. La enumeración racional canónica $e_{\mathbb Q}$ permite enumerar $E$ reemplazando por $1_{\mathbb Q}$ cada aparición de $0_{\mathbb Q}$ y aplicando después $j$. Todo intervalo abierto no vacío contiene una imagen racional distinta de cero: basta tomar dentro de él un subintervalo abierto no vacío que no contenga cero y aplicar Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo. Así $\overline E=\mathbb R$ por la definición de adherencia, y las hipótesis se verifican. A diferencia de la doble enumeración de $A$ y todo su complemento, este caso no implica que la recta sea numerable.
 
 
-La sección deja así una frontera deductiva precisa. Para un subconjunto arbitrario de $\mathbb R$, las definiciones con bolas y los criterios de radios numerables son **incondicionales en ZF**; los límites de sucesiones que ya existen aportan información topológica; los conjuntos enumerados y los abiertos poseen procedimientos canónicos adicionales; el criterio fronterizo tiene hipótesis realizables de densidad de ambos lados; las equivalencias para **todos** los subconjuntos requieren una hipótesis de elección que no hemos adoptado. Pasaremos a la densidad utilizando las definiciones originales de adherencia y las incrustaciones racionales ya construidas, sin apoyarnos en la recíproca secuencial condicional.
+La sección deja así una frontera deductiva precisa. Para un subconjunto arbitrario de $\mathbb R$, las definiciones con bolas y los criterios de radios numerables son incondicionales en ZF; los límites de sucesiones que ya existen aportan información topológica; los conjuntos enumerados y los abiertos poseen procedimientos canónicos adicionales; el criterio fronterizo tiene hipótesis realizables de densidad de ambos lados; las equivalencias para todos los subconjuntos requieren una hipótesis de elección que no hemos adoptado. Pasaremos a la densidad utilizando las definiciones originales de adherencia y las incrustaciones racionales ya construidas, sin apoyarnos en la recíproca secuencial condicional.

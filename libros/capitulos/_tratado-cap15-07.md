@@ -2,7 +2,7 @@
 
 Las secciones anteriores construyeron tres aplicaciones de $\mathcal P(\mathbb R)$ en sí mismo: $A\mapsto A^\circ$, $A\mapsto\overline A$ y $A\mapsto\partial A$. Hemos probado por separado que el interior es el mayor abierto incluido en $A$ (Teorema §15.2.8 — El interior es el mayor abierto contenido en el conjunto), que la clausura es el menor cerrado que lo contiene (Teorema §15.4.6 — La clausura es el menor cerrado que contiene al conjunto) y que la frontera reúne los puntos adherentes a $A$ y a su complemento (Teorema §15.6.3 — Caracterización de la frontera por dos clausuras). Podemos ahora examinar sus leyes sin volver a definirlas.
 
-Conviene separar dos problemas: **cómo se comporta cada operación al ampliar el conjunto** y **cómo interactúa con las operaciones conjuntistas**. La clausura ya dispone de una teoría completa de uniones e intersecciones en §15.4 (Teorema §15.4.10 — Clausura de uniones e intersecciones y Proposición §15.4.11 — Dos inclusiones que pueden ser estrictas); aquí no duplicaremos esas pruebas. Completaremos primero las leyes del interior y después deduciremos las de la frontera.
+Conviene separar dos problemas: cómo se comporta cada operación al ampliar el conjunto y cómo interactúa con las operaciones conjuntistas. La clausura ya dispone de una teoría completa de uniones e intersecciones en §15.4 (Teorema §15.4.10 — Clausura de uniones e intersecciones y Proposición §15.4.11 — Dos inclusiones que pueden ser estrictas); aquí no duplicaremos esas pruebas. Completaremos primero las leyes del interior y después deduciremos las de la frontera.
 
 ### Proposición 15.7.1 — Monotonía y leyes del interior
 Para $A,B\subseteq\mathbb R$ se tienen
@@ -29,7 +29,7 @@ $$
 \bigcap_{i\in I}A_i^\circ.}
 $$
 
-La intersección vacía está referida al ambiente $\mathbb R$ y la unión vacía es $\varnothing$. La igualdad para intersecciones se afirma aquí sólo para **familias finitas**; la igualdad binaria, junto con inducción, cubre también la intersección finita vacía.
+La intersección vacía está referida al ambiente $\mathbb R$ y la unión vacía es $\varnothing$. La igualdad para intersecciones se afirma aquí sólo para familias finitas; la igualdad binaria, junto con inducción, cubre también la intersección finita vacía.
 
 **Demostración.**
 **Monotonía.** Si $x\in A^\circ$, existe $r>0$ con $B_r(x)\subseteq A$. Bajo la hipótesis $A\subseteq B$, ese mismo radio da $B_r(x)\subseteq B$, de modo que $x\in B^\circ$. No se necesitan radios seleccionados simultáneamente.
@@ -42,7 +42,7 @@ La intersección vacía está referida al ambiente $\mathbb R$ y la unión vací
 
 Por último, la igualdad de intersecciones para cualquier número finito de conjuntos se obtiene por inducción sobre ese número, utilizando el caso binario y el caso vacío ya establecidos. ∎
 
-La asimetría es deliberada: el interior **preserva intersecciones finitas**, pero una unión puede crear puntos interiores que no lo eran en ninguno de los sumandos. En una intersección infinita puede ocurrir lo contrario: los márgenes positivos disponibles para cada factor pueden desaparecer al exigirlos todos a la vez.
+La asimetría es deliberada: el interior preserva intersecciones finitas, pero una unión puede crear puntos interiores que no lo eran en ninguno de los sumandos. En una intersección infinita puede ocurrir lo contrario: los márgenes positivos disponibles para cada factor pueden desaparecer al exigirlos todos a la vez.
 
 
 ### Proposición 15.7.2 — Dos inclusiones del interior pueden ser estrictas
@@ -87,7 +87,7 @@ A^\circ=\mathbb R\setminus\overline{\mathbb R\setminus A},
 \overline A=\mathbb R\setminus(\mathbb R\setminus A)^\circ.
 $$
 
-Estas igualdades expresan una correspondencia entre interior y clausura mediante complementos **relativos a $\mathbb R$**. No las usamos para reemplazar las demostraciones anteriores ni introducimos una topología abstracta.
+Estas igualdades expresan una correspondencia entre interior y clausura mediante complementos relativos a $\mathbb R$. No las usamos para reemplazar las demostraciones anteriores ni introducimos una topología abstracta.
 
 
 ### Teorema 15.7.3 — Frontera de uniones e intersecciones binarias
@@ -134,11 +134,11 @@ $$
 
 En el primer caso, $x\in\overline C$ y también $x\in\overline A$, de donde $x\in\partial A$. En el segundo, $x\in\overline D\cap\overline B=\partial B$. Así queda probada la segunda inclusión. Los casos son finitos y se consideran para un $x$ arbitrario ya fijado: no hay función de elección ni selección simultánea de testigos de bolas. ∎
 
-La frontera de una unión o intersección no puede surgir fuera de las fronteras de los conjuntos iniciales; sin embargo, algunas fronteras **pueden desaparecer** cuando dos conjuntos se unen o se intersectan.
+La frontera de una unión o intersección no puede surgir fuera de las fronteras de los conjuntos iniciales; sin embargo, algunas fronteras pueden desaparecer cuando dos conjuntos se unen o se intersectan.
 
 
 ### Proposición 15.7.4 — Las dos inclusiones fronterizas pueden ser estrictas
-Existen $A,B\subseteq\mathbb R$ para los cuales **ambas** inclusiones de Teorema §15.7.3 — Frontera de uniones e intersecciones binarias son propias.
+Existen $A,B\subseteq\mathbb R$ para los cuales ambas inclusiones de Teorema §15.7.3 — Frontera de uniones e intersecciones binarias son propias.
 
 **Demostración.**
 Tomemos $a<b<c$ y definamos $A=[a,b]$, $B=[b,c]$. Por las definiciones de intervalos,

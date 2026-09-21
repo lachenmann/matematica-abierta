@@ -5,17 +5,17 @@ El teorema de Lagrange transforma la información local de una derivada en una c
 ### Definición 20.5.1 — Monotonía estricta y no estricta sobre un dominio ordenado
 Sean $D\subseteq\mathbb R$ y $f:D\to\mathbb R$. Para todo par de argumentos $u,v\in D$ con $u<v$ definimos las siguientes propiedades:
 
-- $f$ es **no decreciente** en $D$ si $f(u)\le f(v)$ para todos esos pares.
-- $f$ es **no creciente** en $D$ si $f(u)\ge f(v)$ para todos esos pares.
-- $f$ es **estrictamente creciente** en $D$ si $f(u)<f(v)$ para todos esos pares.
-- $f$ es **estrictamente decreciente** en $D$ si $f(u)>f(v)$ para todos esos pares.
+- $f$ es no decreciente en $D$ si $f(u)\le f(v)$ para todos esos pares.
+- $f$ es no creciente en $D$ si $f(u)\ge f(v)$ para todos esos pares.
+- $f$ es estrictamente creciente en $D$ si $f(u)<f(v)$ para todos esos pares.
+- $f$ es estrictamente decreciente en $D$ si $f(u)>f(v)$ para todos esos pares.
 
 Llamaremos *monótona* a una función no decreciente o no creciente, y *estrictamente monótona* a una estrictamente creciente o estrictamente decreciente. En lo sucesivo no emplearemos «creciente» o «decreciente» a secas cuando su sentido estricto o amplio pueda causar ambigüedad.
 
 La definición sólo compara argumentos que pertenecen a $D$: tiene sentido incluso si $D$ no es un intervalo. Una función constante es simultáneamente no decreciente y no creciente; en un dominio con dos puntos distintos no es estrictamente monótona. Ninguna de estas propiedades presupone continuidad ni derivabilidad, y no se introduce una nueva función «derivada global».
 
 ### Teorema 20.5.2 — Criterios suficientes de monotonía por el signo de la derivada
-Sean $a,b\in\mathbb R$ con $a<b$, $I:=[a,b]$ y $f:I\to\mathbb R$. Supongamos que $f$ es continua en todos los puntos de $I$ y derivable en cada punto de $(a,b)$, en ambos casos **relativamente al dominio $I$**. Entonces se verifican las cuatro implicaciones siguientes:
+Sean $a,b\in\mathbb R$ con $a<b$, $I:=[a,b]$ y $f:I\to\mathbb R$. Supongamos que $f$ es continua en todos los puntos de $I$ y derivable en cada punto de $(a,b)$, en ambos casos relativamente al dominio $I$. Entonces se verifican las cuatro implicaciones siguientes:
 
 $$
 \begin{array}{rcl}
@@ -30,21 +30,21 @@ $$
 La cuantificación sobre el signo se refiere al intervalo abierto completo: conocer el signo de la derivada en un solo punto no permite concluir monotonía en $I$. No se supone derivabilidad en $a$ ni en $b$.
 
 **Demostración.**
-Fijemos **arbitrariamente** $u,v\in I$ con $u<v$. Puesto que $I=[a,b]$, se tiene $[u,v]\subseteq I$ y $(u,v)\subseteq(a,b)$. La continuidad de $f$ en cada punto de $[u,v]$ relativa a $I$, y la derivabilidad de $f$ en cada punto de $(u,v)$ también relativa a $I$, son restricciones de las hipótesis generales. Aplicamos, por tanto, el corolario de Lagrange sobre el **dominio original** Corolario §20.3.3 — Valor medio en un subintervalo del dominio original: existe $c\in(u,v)$ tal que
+Fijemos arbitrariamente $u,v\in I$ con $u<v$. Puesto que $I=[a,b]$, se tiene $[u,v]\subseteq I$ y $(u,v)\subseteq(a,b)$. La continuidad de $f$ en cada punto de $[u,v]$ relativa a $I$, y la derivabilidad de $f$ en cada punto de $(u,v)$ también relativa a $I$, son restricciones de las hipótesis generales. Aplicamos, por tanto, el corolario de Lagrange sobre el dominio original Corolario §20.3.3 — Valor medio en un subintervalo del dominio original: existe $c\in(u,v)$ tal que
 
 $$
 f(v)-f(u)=f'(c)(v-u).
 \tag{20.5.2}
 $$
 
-Como $u<v$, el factor $v-u$ es **estrictamente positivo**. Si $f'(x)\ge0$ para todo $x\in(a,b)$, entonces $f'(c)\ge0$ y (20.5.2) implica $f(v)-f(u)\ge0$, es decir, $f(u)\le f(v)$. Si todas las derivadas interiores son no positivas, el mismo producto es no positivo y $f(u)\ge f(v)$. Si son estrictamente positivas, el producto de dos reales positivos es positivo y $f(u)<f(v)$; si son estrictamente negativas, es negativo y $f(u)>f(v)$.
+Como $u<v$, el factor $v-u$ es estrictamente positivo. Si $f'(x)\ge0$ para todo $x\in(a,b)$, entonces $f'(c)\ge0$ y (20.5.2) implica $f(v)-f(u)\ge0$, es decir, $f(u)\le f(v)$. Si todas las derivadas interiores son no positivas, el mismo producto es no positivo y $f(u)\ge f(v)$. Si son estrictamente positivas, el producto de dos reales positivos es positivo y $f(u)<f(v)$; si son estrictamente negativas, es negativo y $f(u)>f(v)$.
 
-El par $u<v$ fue arbitrario, así que cada conclusión rige para **todos** los pares ordenados del intervalo. Para cada par se aplica Lagrange una sola vez: el razonamiento por instanciación existencial no define ni necesita una función que elija simultáneamente un punto $c$ para cada par. No se invocan Darboux ni Taylor. $\square$
+El par $u<v$ fue arbitrario, así que cada conclusión rige para todos los pares ordenados del intervalo. Para cada par se aplica Lagrange una sola vez: el razonamiento por instanciación existencial no define ni necesita una función que elija simultáneamente un punto $c$ para cada par. No se invocan Darboux ni Taylor. $\square$
 
 **Por qué importa el intervalo.** Consideremos $D:=(-1,0)\cup(0,1)$ y $F:D\to\mathbb R$, dada por $F(x)=x$ si $x<0$ y $F(x)=x-1$ si $x>0$. En cada punto de $D$, una bola suficientemente pequeña queda en una sola componente; allí $F$ es afín de pendiente $1$, por lo que $F'(x)=1$. Sin embargo $-\tfrac14<\tfrac14$ y $F(-\tfrac14)=-\tfrac14>-\tfrac34=F(\tfrac14)$: $F$ no es no decreciente en $D$. El segmento que une esos argumentos atraviesa el punto excluido $0$; por eso no podemos aplicar Lagrange al par. Tener derivada positiva en todas las componentes no basta para compararlas sin una hipótesis adicional.
 
 ### Proposición 20.5.3 — Signos necesarios de la derivada para la monotonía
-Sean $a<b$ y $f:[a,b]\to\mathbb R$. Si $f$ es no decreciente en $[a,b]$ y es derivable en un punto $c\in(a,b)$, entonces $f'(c)\ge0$. Si $f$ es no creciente y derivable en ese punto, entonces $f'(c)\le0$. Estas conclusiones también se aplican, respectivamente, a las funciones estrictamente crecientes y estrictamente decrecientes. **No** se concluye $f'(c)>0$ a partir de crecimiento estricto, ni $f'(c)<0$ a partir de decrecimiento estricto.
+Sean $a<b$ y $f:[a,b]\to\mathbb R$. Si $f$ es no decreciente en $[a,b]$ y es derivable en un punto $c\in(a,b)$, entonces $f'(c)\ge0$. Si $f$ es no creciente y derivable en ese punto, entonces $f'(c)\le0$. Estas conclusiones también se aplican, respectivamente, a las funciones estrictamente crecientes y estrictamente decrecientes. No se concluye $f'(c)>0$ a partir de crecimiento estricto, ni $f'(c)<0$ a partir de decrecimiento estricto.
 
 **Demostración.**
 Pongamos $I=[a,b]$ y fijemos el punto interior $c$ donde la derivada existe. Por Corolario §19.8.5 — Extremos e interior de un intervalo cerrado no degenerado, $c\in\operatorname{Acc}(I)$ y el cociente incremental $q_{f,c}:I\setminus\{c\}\to\mathbb R$ de Definición §19.1.1 — Cociente incremental en un punto está bien tipado. Supongamos primero que $f$ es no decreciente. Para cada $x\in I$ con $x\ne c$:
@@ -65,11 +65,11 @@ $$
 q_{f,c}(x)<L+\varepsilon=L/2<0.
 $$
 
-Elijamos el **punto explícito** $x:=c+t$ con $t=\frac12\min\{\delta,b-c\}>0$. Entonces $x\in I$, $0<|x-c|=t<\delta$, y las dos desigualdades para $q_{f,c}(x)$ se contradicen. Así $f'(c)\ge0$.
+Elijamos el punto explícito $x:=c+t$ con $t=\frac12\min\{\delta,b-c\}>0$. Entonces $x\in I$, $0<|x-c|=t<\delta$, y las dos desigualdades para $q_{f,c}(x)$ se contradicen. Así $f'(c)\ge0$.
 
 Si $f$ es no creciente, el mismo análisis de los dos signos de numerador y denominador proporciona $q_{f,c}(x)\le0$ para todo $x\ne c$ en $I$. Si fuera $L=f'(c)>0$, la tolerancia $L/2$ y el mismo testigo explícito obligarían a $q_{f,c}(x)>L/2>0$, contradicción. Resulta $f'(c)\le0$. Las propiedades estrictas implican las no estrictas por el orden real, de modo que sus conclusiones necesarias son exactamente las mismas desigualdades débiles. Ningún argumento ha supuesto continuidad global ni ha aplicado Lagrange. $\square$
 
-**Dirección lógica.** Bajo las hipótesis de continuidad y derivabilidad del teorema anterior, $f'\ge0$ en el interior es **equivalente** a que $f$ sea no decreciente en el intervalo cerrado; análogamente, $f'\le0$ es equivalente a que sea no creciente. Para la monotonía estricta, en cambio, $f'>0$ es una condición suficiente pero no necesaria.
+**Dirección lógica.** Bajo las hipótesis de continuidad y derivabilidad del teorema anterior, $f'\ge0$ en el interior es equivalente a que $f$ sea no decreciente en el intervalo cerrado; análogamente, $f'\le0$ es equivalente a que sea no creciente. Para la monotonía estricta, en cambio, $f'>0$ es una condición suficiente pero no necesaria.
 
 ### Corolario 20.5.4 — Derivada idénticamente nula si y sólo si la función es constante
 Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo $[a,b]$ y derivable en cada punto de $(a,b)$. Entonces
@@ -87,7 +87,7 @@ Si todas las derivadas interiores son cero, satisfacen simultáneamente las desi
 Recíprocamente, una función constante es no decreciente y no creciente por Definición §20.5.1 — Monotonía estricta y no estricta sobre un dominio ordenado. Como la derivabilidad interior está supuesta, Proposición §20.5.3 — Signos necesarios de la derivada para la monotonía proporciona $f'(x)\ge0$ y $f'(x)\le0$ en cada punto interior; por antisimetría, $f'(x)=0$. Equivalentemente, sus cocientes incrementales son exactamente cero. La continuidad de la hipótesis es necesaria para el primer sentido a través de Lagrange, no para este segundo sentido por sí solo. $\square$
 
 ### Corolario 20.5.5 — Caracterización de monotonía estricta sin exigir derivada siempre estricta
-Bajo las hipótesis de continuidad y derivabilidad de Teorema §20.5.2 — Criterios suficientes de monotonía por el signo de la derivada, la función $f:[a,b]\to\mathbb R$ es **estrictamente creciente** si y sólo si se cumplen **ambas** condiciones:
+Bajo las hipótesis de continuidad y derivabilidad de Teorema §20.5.2 — Criterios suficientes de monotonía por el signo de la derivada, la función $f:[a,b]\to\mathbb R$ es estrictamente creciente si y sólo si se cumplen ambas condiciones:
 
 $$
 \forall x\in(a,b),\quad f'(x)\ge0,
@@ -100,7 +100,7 @@ $$
 \tag{20.5.6}
 $$
 
-Análogamente, $f$ es **estrictamente decreciente** si y sólo si $f'(x)\le0$ para todos los $x\in(a,b)$ y, para cada $u<v$ del intervalo, existe algún $c\in(u,v)$ con $f'(c)<0$.
+Análogamente, $f$ es estrictamente decreciente si y sólo si $f'(x)\le0$ para todos los $x\in(a,b)$ y, para cada $u<v$ del intervalo, existe algún $c\in(u,v)$ con $f'(c)<0$.
 
 **Demostración.**
 **Necesidad en el caso creciente.** Si $f$ es estrictamente creciente, también es no decreciente. Proposición §20.5.3 — Signos necesarios de la derivada para la monotonía, aplicado a cada punto interior, demuestra (20.5.5). Fijemos ahora $u<v$ cualesquiera en $[a,b]$. La monotonía estricta da $f(v)-f(u)>0$. El valor medio sobre el dominio original Corolario §20.3.3 — Valor medio en un subintervalo del dominio original proporciona un $c\in(u,v)$ con
@@ -130,4 +130,4 @@ $$
 
 El último numerador es positivo porque $(v-u)^2>0$ y los otros sumandos son no negativos; el denominador $4$ es positivo en el cuerpo real. Se deduce $p(u)<p(v)$ para todo $u<v$, aunque la derivada se anule en $0$. Esto separa una condición suficiente de una caracterización necesaria y suficiente.
 
-**Transición.** Los resultados anteriores transforman signos locales en comparaciones globales, con hipótesis de dominio precisas, y muestran cómo detectar los casos de igualdad. La siguiente unidad, §20.6, deducirá **cotas de incrementos y estimaciones Lipschitz** a partir de una cota uniforme de $|f'|$ y del valor medio de Lagrange. La sección §20.5 queda estabilizada como unidad humana; el capítulo permanece abierto y no se abre un nuevo checkpoint Lean.
+**Transición.** Los resultados anteriores transforman signos locales en comparaciones globales, con hipótesis de dominio precisas, y muestran cómo detectar los casos de igualdad. La siguiente unidad, §20.6, deducirá cotas de incrementos y estimaciones Lipschitz a partir de una cota uniforme de $|f'|$ y del valor medio de Lagrange. La sección §20.5 queda estabilizada como unidad humana; el capítulo permanece abierto y no se abre un nuevo checkpoint Lean.

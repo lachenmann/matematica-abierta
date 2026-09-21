@@ -316,7 +316,7 @@ $$
 q\longmapsto[\underline q]_C,
 $$
 
-es una **incrustación de cuerpos ordenados** en el sentido de Definición 4.8.1 — Incrustación de cuerpos ordenados.
+es una incrustación de cuerpos ordenados en el sentido de Definición 4.8.1 — Incrustación de cuerpos ordenados.
 
 **Demostración.**
 
@@ -373,4 +373,4 @@ Desde este punto, todos los resultados abstractos demostrados en el Capítulo 4 
 
 No hemos usado para ello ningún hecho de completitud de $\mathbb R_D$, ni hemos identificado los racionales con un subconjunto literal de $\mathbb R_C$, ni hemos recurrido a Choice.
 
-Con esto termina la construcción **algebraica y ordenada** del cuerpo de Cauchy. Lo que todavía falta para convertirlo en una completación ordenada de $\mathbb Q$ en el sentido de Definición 4.8.2 — Completación ordenada de $\mathbb Q$ es demostrar su **completitud**. Ése será el objeto del capítulo siguiente.
+Con esto termina la construcción algebraica y ordenada del cuerpo de Cauchy. Lo que todavía falta para convertirlo en una completación ordenada de $\mathbb Q$ en el sentido de Definición 4.8.2 — Completación ordenada de $\mathbb Q$ es demostrar su completitud. Ése será el objeto del capítulo siguiente.

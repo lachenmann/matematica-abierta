@@ -8,7 +8,7 @@ $$
 |a_n-\ell|<\varepsilon.
 $$
 
-La dificultad está en **quién puede depender de quién**. Una precisión $\varepsilon$ se impone primero; sólo después podemos elegir un umbral $N$ adaptado a esa precisión; y, una vez fijado ese umbral, la estimación debe valer para todos los índices posteriores.
+La dificultad está en quién puede depender de quién. Una precisión $\varepsilon$ se impone primero; sólo después podemos elegir un umbral $N$ adaptado a esa precisión; y, una vez fijado ese umbral, la estimación debe valer para todos los índices posteriores.
 
 El patrón lógico fundamental es
 
@@ -32,7 +32,7 @@ $$
 
 y sea $\ell\in\mathbb R$.
 
-Diremos que **$a$ converge a $\ell$** si, para todo $\varepsilon\in\mathbb R$ con $0<\varepsilon$, la propiedad
+Diremos que $a$ converge a $\ell$ si, para todo $\varepsilon\in\mathbb R$ con $0<\varepsilon$, la propiedad
 
 $$
 |a_n-\ell|<\varepsilon
@@ -59,15 +59,15 @@ N\le n
 }
 $$
 
-El número $\ell$ se llama entonces **un límite** de la sucesión $a$.
+El número $\ell$ se llama entonces un límite de la sucesión $a$.
 
-Diremos que $a$ es **convergente** si existe algún $\ell\in\mathbb R$ al cual converge.
+Diremos que $a$ es convergente si existe algún $\ell\in\mathbb R$ al cual converge.
 
 La definición contiene tres dependencias lógicas que no deben alterarse:
 
 1. $\varepsilon$ es arbitrario y positivo;
 2. el umbral $N$ puede depender de $\varepsilon$;
-3. después de fijar $N$, la desigualdad debe valer para **todo** $n\ge N$.
+3. después de fijar $N$, la desigualdad debe valer para todo $n\ge N$.
 
 > **Lectura de cuantificadores.** La forma
 > $$
@@ -81,9 +81,9 @@ La definición contiene tres dependencias lógicas que no deben alterarse:
 > $$
 > Esa condición es mucho más fuerte: en el marco clásico del tratado obligaría a que todos los términos de una cola fueran exactamente iguales a $\ell$.
 
-> **Nota fundacional.** La definición no usa Choice. Para cada precisión positiva se afirma la existencia de un umbral; no se presupone una función global $\varepsilon\mapsto N$. Si más adelante se desea empaquetar umbrales en un módulo de convergencia, eso constituye **datos adicionales**. Para cada $\varepsilon>0$ fijo, el conjunto de umbrales que funcionan existe por Separación, es no vacío y posee un menor elemento por Teorema 1.6.13 — Principio de buen orden. Si se empaquetan esos mínimos para todas las precisiones en una función, Replacement basta porque el valor está unívocamente determinado; no se requiere Choice. De ello no se sigue que el módulo sea computable.
+> **Nota fundacional.** La definición no usa Choice. Para cada precisión positiva se afirma la existencia de un umbral; no se presupone una función global $\varepsilon\mapsto N$. Si más adelante se desea empaquetar umbrales en un módulo de convergencia, eso constituye datos adicionales. Para cada $\varepsilon>0$ fijo, el conjunto de umbrales que funcionan existe por Separación, es no vacío y posee un menor elemento por Teorema 1.6.13 — Principio de buen orden. Si se empaquetan esos mínimos para todas las precisiones en una función, Replacement basta porque el valor está unívocamente determinado; no se requiere Choice. De ello no se sigue que el módulo sea computable.
 
-> **Nota estructural.** La completitud de $\mathbb R$ no interviene en la definición. La misma noción tiene sentido en cualquier cuerpo ordenado. La completitud será necesaria después para demostrar que ciertas sucesiones **poseen** un límite, no para explicar qué significa converger a uno ya dado.
+> **Nota estructural.** La completitud de $\mathbb R$ no interviene en la definición. La misma noción tiene sentido en cualquier cuerpo ordenado. La completitud será necesaria después para demostrar que ciertas sucesiones poseen un límite, no para explicar qué significa converger a uno ya dado.
 
 ### Notación 13.3.2 — Flecha de convergencia real
 
@@ -472,7 +472,7 @@ $$
 
 ∎
 
-La unicidad permite pasar ahora de «un límite» a **el límite** de una sucesión convergente.
+La unicidad permite pasar ahora de «un límite» a el límite de una sucesión convergente.
 
 ### Notación 13.3.6 — Límite de una sucesión convergente
 
@@ -494,7 +494,7 @@ a_n\to\ell.
 }
 $$
 
-La expresión $n\to\infty$ pertenece a la notación de límite; **no** afirma que $\infty$ sea un número real ni introduce un nuevo elemento en $\mathbb R$.
+La expresión $n\to\infty$ pertenece a la notación de límite; no afirma que $\infty$ sea un número real ni introduce un nuevo elemento en $\mathbb R$.
 
 La notación sólo se utilizará cuando la convergencia haya sido establecida o cuando aparezca dentro de una afirmación condicional que la suponga.
 
@@ -590,4 +590,4 @@ $$
 }
 $$
 
-El paso siguiente será introducir la **acotación de sucesiones reales** y demostrar que toda sucesión convergente es acotada. Ese resultado proporcionará la infraestructura necesaria para el producto de sucesiones convergentes y para los argumentos de compacidad secuencial posteriores.
+El paso siguiente será introducir la acotación de sucesiones reales y demostrar que toda sucesión convergente es acotada. Ese resultado proporcionará la infraestructura necesaria para el producto de sucesiones convergentes y para los argumentos de compacidad secuencial posteriores.

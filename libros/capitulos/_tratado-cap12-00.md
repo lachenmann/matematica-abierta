@@ -12,7 +12,7 @@ $$
 \Phi\circ\iota_C=\iota_D.
 $$
 
-Ese resultado resuelve la comparación entre **dos construcciones concretas**. Queda, sin embargo, una cuestión más fuerte. Si
+Ese resultado resuelve la comparación entre dos construcciones concretas. Queda, sin embargo, una cuestión más fuerte. Si
 
 $$
 (E,\iota_E)
@@ -52,10 +52,10 @@ $$
 \text{unicidad}.
 $$
 
-Hay una primera precaución. El **subcuerpo primo** no se redefinirá aquí. Ya fue construido en Definición 4.1.8 — Subcuerpo primo como
+Hay una primera precaución. El subcuerpo primo no se redefinirá aquí. Ya fue construido en Definición 4.1.8 — Subcuerpo primo como
 
 $$
 P_F=\bigcap\{K\subseteq F:K\text{ es subcuerpo de }F\},
 $$
 
-Proposición 4.1.9 — Minimalidad del subcuerpo primo probó su minimalidad y Corolario 4.1.10 — Los numerales naturales pertenecen al subcuerpo primo demostró que contiene todos los numerales $\nu_F(n)$. La tarea de §12.1 es completar la parte que entonces no necesitábamos: identificar dentro de un cuerpo ordenado la copia canónica de los **enteros** generada por esos numerales. Sólo después podremos pasar, mediante inversos, a la copia canónica de $\mathbb Q$.
+Proposición 4.1.9 — Minimalidad del subcuerpo primo probó su minimalidad y Corolario 4.1.10 — Los numerales naturales pertenecen al subcuerpo primo demostró que contiene todos los numerales $\nu_F(n)$. La tarea de §12.1 es completar la parte que entonces no necesitábamos: identificar dentro de un cuerpo ordenado la copia canónica de los enteros generada por esos numerales. Sólo después podremos pasar, mediante inversos, a la copia canónica de $\mathbb Q$.

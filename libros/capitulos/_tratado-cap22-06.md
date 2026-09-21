@@ -5,7 +5,7 @@ La integral definida y las primitivas no son dos nombres para un mismo objeto. L
 Fijaremos de nuevo $a<b$. Todas las funciones de esta sección tienen dominios y codominios explícitos; el símbolo $F_{f,a}$ conserva la definición de §22.1. La afirmación de que una función integrable tiene *una acumulada* no se confundirá con la afirmación, en general falsa, de que toda acumulada sea una primitiva de su integranda.
 
 ### Proposición 22.6.1 — Reconstrucción de la acumulada desde cualquier primitiva
-Sea $f:[a,b]\to\mathbb R$ integrable y supongamos que **se ha dado** una primitiva $H:[a,b]\to\mathbb R$ de $f$. Entonces, para todo $x\in[a,b]$,
+Sea $f:[a,b]\to\mathbb R$ integrable y supongamos que se ha dado una primitiva $H:[a,b]\to\mathbb R$ de $f$. Entonces, para todo $x\in[a,b]$,
 
 $$
 \boxed{F_{f,a}(x)=H(x)-H(a).}
@@ -32,7 +32,7 @@ $$
 h:[a,b]\longrightarrow\mathbb R,\qquad h(t):=\alpha f(t)+\beta g(t)
 $$
 
-es integrable y sus acumuladas satisfacen la **identidad de funciones**
+es integrable y sus acumuladas satisfacen la identidad de funciones
 
 $$
 \boxed{F_{h,a}=\alpha F_{f,a}+\beta F_{g,a}.}
@@ -44,7 +44,7 @@ El miembro derecho designa la función $[a,b]\to\mathbb R$ definida punto a punt
 **Demostración.**
 La construcción puntual de $h$ es legítima por Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales, y su integrabilidad procede de Corolario §21.5.7 — Linealidad para combinaciones finitas de dos funciones. En consecuencia las tres acumuladas están definidas por Definición §22.1.1 — Función integral acumulada y son funciones tipadas $[a,b]\to\mathbb R$. Fijemos $x\in[a,b]$. Si $x=a$, las tres acumuladas valen cero por la convención Definición §21.6.5 — Integración en un intervalo degenerado, así que (22.6.2) se verifica en ese argumento.
 
-Si $a<x\le b$, Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado garantiza previamente que las restricciones de $f$, $g$ y $h$ a $[a,x]$ son integrables. La restricción de $h$ coincide como función tipada con $\alpha(f\upharpoonright[a,x])+\beta(g\upharpoonright[a,x])$, por coincidencia de dominio, codominio y valores (Proposición §1.3.2 — Existencia y unicidad de la restricción). La linealidad de la integral, aplicada ahora **sobre el intervalo no degenerado $[a,x]$**, da
+Si $a<x\le b$, Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado garantiza previamente que las restricciones de $f$, $g$ y $h$ a $[a,x]$ son integrables. La restricción de $h$ coincide como función tipada con $\alpha(f\upharpoonright[a,x])+\beta(g\upharpoonright[a,x])$, por coincidencia de dominio, codominio y valores (Proposición §1.3.2 — Existencia y unicidad de la restricción). La linealidad de la integral, aplicada ahora sobre el intervalo no degenerado $[a,x]$, da
 
 $$
 \begin{aligned}
@@ -89,12 +89,12 @@ $$
 F_{f,a}=F_{g,a},
 $$
 
-entonces $f=g$ en todo $[a,b]$, **incluidos sus extremos**.
+entonces $f=g$ en todo $[a,b]$, incluidos sus extremos.
 
 **Demostración.**
 La continuidad de $f$ y $g$ implica su integrabilidad por Corolario §21.7.4 — Toda función continua en un intervalo cerrado es integrable, de modo que ambas acumuladas están definidas. Sea $x\in(a,b)$. Por Corolario §22.2.3 — Integranda continua sobre todo el intervalo son derivables en $x$ y satisfacen $F_{f,a}'(x)=f(x)$ y $F_{g,a}'(x)=g(x)$. Como las acumuladas son la misma función, sus cocientes incrementales son idénticos y la unicidad de la derivada Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada obliga a $f(x)=g(x)$. Hemos demostrado la igualdad en todo el interior.
 
-Quedan los extremos; **no** los trataremos mediante derivadas bilaterales. Supongamos $f(a)\ne g(a)$ y pongamos $D:=|f(a)-g(a)|>0$, $\varepsilon:=D/3$. La continuidad relativa de cada función en $a$, aplicada a esta tolerancia, proporciona radios positivos $\delta_f,\delta_g$ para los cuales
+Quedan los extremos; no los trataremos mediante derivadas bilaterales. Supongamos $f(a)\ne g(a)$ y pongamos $D:=|f(a)-g(a)|>0$, $\varepsilon:=D/3$. La continuidad relativa de cada función en $a$, aplicada a esta tolerancia, proporciona radios positivos $\delta_f,\delta_g$ para los cuales
 
 $$
 |t-a|<\delta_f\Longrightarrow |f(t)-f(a)|<\varepsilon,

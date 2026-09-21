@@ -8,15 +8,15 @@ $$
  \frac{g(x)-g(a)}{x-a}
 $$
 
-**no es una identidad universal**: el primer factor no está definido si $g(x)=g(a)$, aunque $x\ne a$. El problema puede aparecer en puntos arbitrariamente próximos a $a$, incluso cuando ambas funciones son derivables. Construiremos un factor exterior con valor definido en el centro para demostrar una identidad legítima en todo el dominio perforado.
+no es una identidad universal: el primer factor no está definido si $g(x)=g(a)$, aunque $x\ne a$. El problema puede aparecer en puntos arbitrariamente próximos a $a$, incluso cuando ambas funciones son derivables. Construiremos un factor exterior con valor definido en el centro para demostrar una identidad legítima en todo el dominio perforado.
 
-La composición conserva además un **dominio efectivo**, ya construido en Proposición §16.4.1 — Dominio efectivo y tipado de la composición y reutilizado en Teorema §17.4.5 — Composición en el dominio efectivo. Para $g:D\to\mathbb R$ y $f:E\to\mathbb R$, con $D,E\subseteq\mathbb R$, dicho dominio es
+La composición conserva además un dominio efectivo, ya construido en Proposición §16.4.1 — Dominio efectivo y tipado de la composición y reutilizado en Teorema §17.4.5 — Composición en el dominio efectivo. Para $g:D\to\mathbb R$ y $f:E\to\mathbb R$, con $D,E\subseteq\mathbb R$, dicho dominio es
 
 $$
 T:=g^{-1}[E]=\{x\in D:g(x)\in E\}.
 $$
 
-El cambio explícito de codominio de $g\upharpoonright T$ a $E$ produce $g_T:T\to E$; la composición tipada es $h:=f\circ g_T:T\to\mathbb R$. En general, $a\in\operatorname{Acc}(D)$ y $g(a)\in\operatorname{Acc}(E)$ **no implican** $a\in\operatorname{Acc}(T)$, de modo que esta última condición deberá constar en el teorema.
+El cambio explícito de codominio de $g\upharpoonright T$ a $E$ produce $g_T:T\to E$; la composición tipada es $h:=f\circ g_T:T\to\mathbb R$. En general, $a\in\operatorname{Acc}(D)$ y $g(a)\in\operatorname{Acc}(E)$ no implican $a\in\operatorname{Acc}(T)$, de modo que esta última condición deberá constar en el teorema.
 
 ### Lema 19.6.1 — Extensión continua del cociente incremental exterior
 Sean $E\subseteq\mathbb R$, $f:E\to\mathbb R$ y $b\in E\cap\operatorname{Acc}(E)$. Si $f$ es derivable en $b$, existe una función $A_{f,b}:E\to\mathbb R$, determinada de manera única por
@@ -29,7 +29,7 @@ f'(b),&y=b,
 \end{cases}}
 $$
 
-que es continua en $b$ relativamente a $E$ y satisface, **para todo** $y\in E$,
+que es continua en $b$ relativamente a $E$ y satisface, para todo $y\in E$,
 
 $$
 \boxed{f(y)-f(b)=A_{f,b}(y)(y-b),\qquad A_{f,b}(b)=f'(b).}
@@ -48,7 +48,7 @@ $$
 
 Si $y\in E$ y $|y-b|<\eta$, cuando $y\ne b$ esta desigualdad es precisamente $|A_{f,b}(y)-A_{f,b}(b)|<\varepsilon$; cuando $y=b$, la diferencia vale cero y también es menor que $\varepsilon$. El mismo radio sirve en ambos casos, de modo que $A_{f,b}$ es continua en $b$ relativamente a $E$. Sólo se ha usado una instancia de la condición de derivabilidad para cada tolerancia, sin ningún axioma de elección. $\square$
 
-**Lectura de la construcción.** $A_{f,b}$ no es una nueva derivada ni convierte automáticamente al cociente incremental original en una función definida en $b$. Es **otra función**, cuyo valor central se ha establecido mediante la derivada ya existente. La igualdad de incrementos es válida aun cuando el incremento $y-b$ sea nulo.
+**Lectura de la construcción.** $A_{f,b}$ no es una nueva derivada ni convierte automáticamente al cociente incremental original en una función definida en $b$. Es otra función, cuyo valor central se ha establecido mediante la derivada ya existente. La igualdad de incrementos es válida aun cuando el incremento $y-b$ sea nulo.
 
 ### Teorema 19.6.2 — Regla de la cadena en el dominio efectivo
 Sean $D,E\subseteq\mathbb R$, $g:D\to\mathbb R$ y $f:E\to\mathbb R$. Fijemos
@@ -62,7 +62,7 @@ con el cambio de codominio y la composición exactamente como en Proposición §
 1. $a\in T\cap\operatorname{Acc}(T)$ y $g$ es derivable en $a$ relativamente a $D$;
 2. $b:=g(a)\in E\cap\operatorname{Acc}(E)$ y $f$ es derivable en $b$ relativamente a $E$.
 
-Entonces $h$ es derivable en $a$ **relativamente a $T$** y
+Entonces $h$ es derivable en $a$ relativamente a $T$ y
 
 $$
 \boxed{h'(a)=f'(g(a))\,g'(a).}
@@ -84,7 +84,7 @@ q_{h,a}(x)
 \end{aligned}
 $$
 
-Sólo se divide por $x-a\ne0$. **Si $g(x)=g(a)=b$,** el incremento de $h$ es cero, $A(g(x))=L$ y $q_{g,a}(x)=0$; la identidad sigue siendo verdadera. En ningún momento se introduce el cociente $[f(g(x))-f(b)]/[g(x)-b]$ en tales puntos.
+Sólo se divide por $x-a\ne0$. Si $g(x)=g(a)=b$, el incremento de $h$ es cero, $A(g(x))=L$ y $q_{g,a}(x)=0$; la identidad sigue siendo verdadera. En ningún momento se introduce el cociente $[f(g(x))-f(b)]/[g(x)-b]$ en tales puntos.
 
 **3. Paso al límite con radios explícitos.** La derivabilidad de $g$ implica su continuidad en $a$ (Teorema §19.2.1 — Toda función derivable en un punto es continua en él). Fijemos $\varepsilon>0$ y pongamos $C:=|M|+1>0$. Como $A$ es continua en $b$, existe $\eta>0$ tal que
 
@@ -115,7 +115,7 @@ $$
 \end{aligned}
 $$
 
-La última desigualdad incluye $L=0$. Hemos demostrado que $q_{h,a}$ tiende a $LM$ sobre $T\setminus\{a\}$; la hipótesis de acumulación hace que este límite no sea vacuo, y Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada identifica su único valor con $h'(a)$. Los radios $\eta,\delta_g,\delta_q$ se obtienen mediante una **cadena finita de instancias existenciales**, no mediante una función de elección. No se usan límites secuenciales ni teoremas del valor medio. $\square$
+La última desigualdad incluye $L=0$. Hemos demostrado que $q_{h,a}$ tiende a $LM$ sobre $T\setminus\{a\}$; la hipótesis de acumulación hace que este límite no sea vacuo, y Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada identifica su único valor con $h'(a)$. Los radios $\eta,\delta_g,\delta_q$ se obtienen mediante una cadena finita de instancias existenciales, no mediante una función de elección. No se usan límites secuenciales ni teoremas del valor medio. $\square$
 
 **Alcance exacto.** El resultado no pretende que la función $g_T:T\to E$ sea literalmente la misma función que $g:D\to\mathbb R$: sus dominios o codominios pueden diferir. La derivada de $g$ aparece legítimamente porque restringimos sus valores a un dominio donde la acumulación está garantizada y empleamos esos mismos valores en la identidad anterior.
 
@@ -130,7 +130,7 @@ $$
 Por $g[D]\subseteq E$, todo $x\in D$ pertenece al conjunto efectivo $T=\{x\in D:g(x)\in E\}$ y la inclusión opuesta es inmediata: $T=D$. En particular, $a\in T\cap\operatorname{Acc}(T)$. La función $g_T$ de Proposición §16.4.1 — Dominio efectivo y tipado de la composición tiene ahora dominio $D$, codominio $E$ y los valores de $g$; llamémosla $g_E$. Las demás hipótesis son exactamente las del teorema anterior, cuya aplicación da la afirmación. No se ha identificado $g_E$ con $g$ como objetos tipados. $\square$
 
 ### Proposición 19.6.4 — La acumulación del dominio efectivo no se hereda automáticamente
-Es posible que $g:D\to\mathbb R$ sea derivable en $a$, que $f:E\to\mathbb R$ sea derivable en $g(a)$ y que ambos centros sean puntos de acumulación de sus dominios, pero que la composición efectiva tenga **un punto aislado** en $a$ y, por definición, no sea derivable allí.
+Es posible que $g:D\to\mathbb R$ sea derivable en $a$, que $f:E\to\mathbb R$ sea derivable en $g(a)$ y que ambos centros sean puntos de acumulación de sus dominios, pero que la composición efectiva tenga un punto aislado en $a$ y, por definición, no sea derivable allí.
 
 **Demostración.**
 Tomemos $D=\mathbb R$, $E=\{y\in\mathbb R:y\le0\}$, $a=0$, y las funciones $g:D\to\mathbb R$, $g(x)=x^2$, y $f:E\to\mathbb R$, $f(y)=y$. El punto $0$ acumula $D$, pues $r/2\in D\setminus\{0\}$ pertenece a toda bola de radio $r>0$ suficientemente indicada por esa fórmula. También acumula $E$: el punto $-r/2\in E\setminus\{0\}$ cumple $|-r/2|<r$. Por Proposición §19.1.6 — Primeros cálculos: funciones afines y función cuadrática, $g$ es derivable en $0$, con $g'(0)=0$. La identidad $\mathbb R\to\mathbb R$ es derivable en $0$ con derivada $1$ y, por Proposición §19.5.2 — Restricción de una función derivable, también lo es su restricción $f:E\to\mathbb R$, con $f'(0)=1$.
@@ -142,7 +142,7 @@ T=\{x\in\mathbb R:g(x)\in E\}
  =\{x\in\mathbb R:x^2\le0\}=\{0\}.
 $$
 
-La composición $h:T\to\mathbb R$ existe y satisface $h(0)=0$, pero $0\notin\operatorname{Acc}(T)$: ninguna bola perforada contiene puntos del singleton. Por Definición §19.1.3 — Derivabilidad en un punto, $h'(0)$ **no está definida**, aunque las dos derivadas de entrada existan. La condición de acumulación efectiva del teorema no puede suprimirse sin modificar nuestra definición de derivada. $\square$
+La composición $h:T\to\mathbb R$ existe y satisface $h(0)=0$, pero $0\notin\operatorname{Acc}(T)$: ninguna bola perforada contiene puntos del singleton. Por Definición §19.1.3 — Derivabilidad en un punto, $h'(0)$ no está definida, aunque las dos derivadas de entrada existan. La condición de acumulación efectiva del teorema no puede suprimirse sin modificar nuestra definición de derivada. $\square$
 
 ### Corolario 19.6.5 — Derivada de una composición racional cuadrática
 La función $h:\mathbb R\to\mathbb R$ definida por

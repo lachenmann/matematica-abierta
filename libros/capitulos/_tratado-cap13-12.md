@@ -50,7 +50,7 @@ Ambos extremos son reales porque los recorridos son no vacíos y están acotados
 
 ### Definición 13.12.2 — Límite inferior y límite superior
 
-Sea $a=(a_n)$ una **sucesión real acotada**. Definimos su **límite inferior** y su **límite superior** por
+Sea $a=(a_n)$ una sucesión real acotada. Definimos su límite inferior y su límite superior por
 
 $$
 \boxed{
@@ -68,7 +68,7 @@ $$
 }
 $$
 
-Son dos **números reales**, no valores de un nuevo conjunto numérico. La escritura habitual equivalente es
+Son dos números reales, no valores de un nuevo conjunto numérico. La escritura habitual equivalente es
 
 $$
 \boxed{
@@ -248,7 +248,7 @@ $$
 
 Por tanto $|a_n-\beta|<\varepsilon$ para algún $n\ge N$. Como $\varepsilon,N$ eran arbitrarios, Proposición 13.10.3 — Criterio de visitas arbitrariamente tardías da $\beta\in\operatorname{LimSub}(a)$. ∎
 
-> **Arquitectura de la prueba.** Primero hacemos que el extremo de una cola quede cerca de su límite; después usamos la propiedad característica de ínfimo o supremo para encontrar **un término de esa misma cola** próximo al extremo. El criterio de visitas ya cerrado convierte esas aproximaciones en una subsucesión convergente usando mínimos naturales. No hemos escogido de forma arbitraria una sucesión de testigos.
+> **Arquitectura de la prueba.** Primero hacemos que el extremo de una cola quede cerca de su límite; después usamos la propiedad característica de ínfimo o supremo para encontrar un término de esa misma cola próximo al extremo. El criterio de visitas ya cerrado convierte esas aproximaciones en una subsucesión convergente usando mínimos naturales. No hemos escogido de forma arbitraria una sucesión de testigos.
 
 ### Corolario 13.12.6 — Extremos del conjunto de puntos límite
 
@@ -268,11 +268,11 @@ $$
 
 Sean $\alpha=\liminf a_n$ y $\beta=\limsup a_n$. Teorema 13.12.5 — Los límites inferior y superior son puntos límite secuenciales establece que ambos pertenecen a $\operatorname{LimSub}(a)$; en particular, el conjunto no es vacío. Por Proposición 13.12.4 — Orden de los límites extremos y confinamiento de los puntos límite, todo $x$ en él verifica $\alpha\le x\le\beta$. Así $\alpha$ pertenece al conjunto y es menor o igual que cualquiera de sus elementos, por lo que es su mínimo. Dualmente, $\beta$ es su máximo. ∎
 
-La palabra «extremo» adquiere ahora su sentido exacto: los límites inferior y superior no son sólo cotas abstractas de los límites de subsucesiones; **son límites de subsucesiones y constituyen los extremos de todos ellos**.
+La palabra «extremo» adquiere ahora su sentido exacto: los límites inferior y superior no son sólo cotas abstractas de los límites de subsucesiones; son límites de subsucesiones y constituyen los extremos de todos ellos.
 
 ### Teorema 13.12.7 — Criterio de convergencia mediante los límites extremos
 
-Sea $a=(a_n)$ una sucesión real **acotada**. Son equivalentes:
+Sea $a=(a_n)$ una sucesión real acotada. Son equivalentes:
 
 1. $a$ converge en $\mathbb R$;
 2. $\displaystyle\liminf_{n\to\infty}a_n=\limsup_{n\to\infty}a_n$;
@@ -300,7 +300,7 @@ L_N(a)\to r,
 U_N(a)\to r.
 $$
 
-Por Proposición 13.8.5 — Monotonía y encajamiento de las envolventes de colas, para **cada** $N$ se tiene
+Por Proposición 13.8.5 — Monotonía y encajamiento de las envolventes de colas, para cada $N$ se tiene
 
 $$
 L_N(a)\le a_N\le U_N(a).
@@ -308,7 +308,7 @@ $$
 
 El teorema del sándwich Teorema 13.6.5 — Teorema del sándwich demuestra entonces $a_N\to r$. Así 2 implica 1. La unicidad del límite ordinario (Teorema 13.3.5 — Unicidad del límite real) y el corolario de extremos identifican todos los valores indicados. ∎
 
-> **Dónde es indispensable la hipótesis.** Para una sucesión no acotada no están definidos aquí los límites extremos, y la condición «un único punto límite» **no** bastaría por sí sola para concluir convergencia. El ejemplo de §13.11 que alterna ceros con numerales reales crecientes tiene $0$ como único límite de subsucesiones convergentes, pero no converge como sucesión completa. La acotación impide precisamente que una porción de la sucesión escape sin dejar puntos límite adicionales.
+> **Dónde es indispensable la hipótesis.** Para una sucesión no acotada no están definidos aquí los límites extremos, y la condición «un único punto límite» no bastaría por sí sola para concluir convergencia. El ejemplo de §13.11 que alterna ceros con numerales reales crecientes tiene $0$ como único límite de subsucesiones convergentes, pero no converge como sucesión completa. La acotación impide precisamente que una porción de la sucesión escape sin dejar puntos límite adicionales.
 
 ### Proposición 13.12.8 — Invariancia de los límites extremos bajo coincidencia eventual
 
@@ -359,4 +359,4 @@ $$
 
 La teoría anterior se ha desarrollado exclusivamente para sucesiones reales acotadas. Con ella queda cerrado el primer capítulo propiamente analítico de la Parte II: la completitud de $\mathbb R$ se ha convertido en una teoría operativa de convergencia, Cauchy, subsucesiones, puntos límite y extremos asintóticos.
 
-El paso siguiente cambia el objeto sin cambiar todavía la noción de convergencia: una **serie numérica** será estudiada mediante la sucesión de sus sumas parciales. El Capítulo 14 comenzará, por tanto, reutilizando íntegramente la infraestructura secuencial construida aquí.
+El paso siguiente cambia el objeto sin cambiar todavía la noción de convergencia: una serie numérica será estudiada mediante la sucesión de sus sumas parciales. El Capítulo 14 comenzará, por tanto, reutilizando íntegramente la infraestructura secuencial construida aquí.

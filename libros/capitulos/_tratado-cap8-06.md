@@ -1,6 +1,6 @@
 ## 8.6. Una sucesión de Cauchy es acotada {#sec-ta-8-6}
 
-La condición de Cauchy controla directamente sólo una **cola** de la sucesión. Si fijamos una tolerancia racional positiva, obtenemos un índice a partir del cual todos los términos están próximos entre sí. Esto basta para acotar la cola alrededor de uno de sus términos.
+La condición de Cauchy controla directamente sólo una cola de la sucesión. Si fijamos una tolerancia racional positiva, obtenemos un índice a partir del cual todos los términos están próximos entre sí. Esto basta para acotar la cola alrededor de uno de sus términos.
 
 Queda, sin embargo, un problema que no debe ocultarse bajo la frase “los términos anteriores son finitos”: debemos demostrar dentro de la infraestructura ya construida que todo segmento inicial
 
@@ -14,7 +14,7 @@ Primero fijaremos qué significa que una sucesión racional sea acotada y despu�
 
 ### Definición 8.6.1 — Sucesión racional acotada
 
-Sea $q=(q_n)_{n\in\mathbb N}$ una sucesión racional. Diremos que $q$ es **acotada** si existe $M\in\mathbb Q$ tal que
+Sea $q=(q_n)_{n\in\mathbb N}$ una sucesión racional. Diremos que $q$ es acotada si existe $M\in\mathbb Q$ tal que
 
 $$
 0_{\mathbb Q}\leq M
@@ -301,4 +301,4 @@ $$
 
 La demostración separa dos mecanismos distintos: la condición de Cauchy controla la cola, mientras la inducción controla el segmento inicial.
 
-Esta propiedad será necesaria para analizar la **incompletitud secuencial de $\mathbb Q$**. En §8.7 construiremos un proceso racional de Cauchy que no converge racionalmente, sin apelar a la construcción de Dedekind.
+Esta propiedad será necesaria para analizar la incompletitud secuencial de $\mathbb Q$. En §8.7 construiremos un proceso racional de Cauchy que no converge racionalmente, sin apelar a la construcción de Dedekind.

@@ -10,7 +10,7 @@ $$
 
 **Demostración.**
 
-Sea $a\in\alpha$. La tricotomía **decidible** de los racionales (Proposición 3.7.6 — Tricotomía decidible de los racionales) separa los casos $a<u$, $a=u$ y $u<a$.
+Sea $a\in\alpha$. La tricotomía decidible de los racionales (Proposición 3.7.6 — Tricotomía decidible de los racionales) separa los casos $a<u$, $a=u$ y $u<a$.
 
 La igualdad $a=u$ implicaría $u\in\alpha$. Si $u<a$, la clausura inferior de $\alpha$ aplicada a $a\in\alpha$ daría igualmente $u\in\alpha$. Ambos casos contradicen la hipótesis. Luego necesariamente
 

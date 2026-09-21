@@ -28,7 +28,7 @@ $$
 (a,b)\in\mathbb N\times\mathbb N
 $$
 
-será solamente un **candidato** a representar una diferencia formal.
+será solamente un candidato a representar una diferencia formal.
 
 Hay, sin embargo, un problema inmediato: distintos pares deben representar la misma diferencia. Intuitivamente,
 

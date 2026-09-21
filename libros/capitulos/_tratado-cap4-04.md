@@ -6,7 +6,7 @@ En $\mathbb Q$ demostramos que los naturales canónicos alcanzan por encima de c
 
 *Glosario: [propiedad arquimediana](../otros/tratado-de-analisis-glosario.md#gl-propiedad-arquimediana)*
 
-Un cuerpo ordenado $F$ es **arquimediano** si para todo $x\in F$ existe $n\in\mathbb N$ tal que
+Un cuerpo ordenado $F$ es arquimediano si para todo $x\in F$ existe $n\in\mathbb N$ tal que
 
 $$
 \boxed{

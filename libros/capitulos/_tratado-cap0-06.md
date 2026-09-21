@@ -1,6 +1,6 @@
 ## 0.6. Funciones {#sec-ta-0-6}
 
-Una función puede describirse informalmente como una regla que asigna a cada entrada una única salida. Para el desarrollo posterior necesitamos una versión más precisa: una función debe ser un **objeto matemático identificable**, con dominio y codominio determinados y con un grafo que registre todas sus asignaciones.
+Una función puede describirse informalmente como una regla que asigna a cada entrada una única salida. Para el desarrollo posterior necesitamos una versión más precisa: una función debe ser un objeto matemático identificable, con dominio y codominio determinados y con un grafo que registre todas sus asignaciones.
 
 Esta decisión tendrá consecuencias reales. Dos funciones con los mismos pares entrada–salida pero codominios distintos no serán idénticas en nuestro formalismo. A cambio obtenemos una noción de función cuyo tipo está siempre explícito y que puede manipularse enteramente dentro de ZF.
 
@@ -8,7 +8,7 @@ Esta decisión tendrá consecuencias reales. Dos funciones con los mismos pares 
 
 *Glosario: [función](../otros/tratado-de-analisis-glosario.md#gl-funcion) · [dominio de una función](../otros/tratado-de-analisis-glosario.md#gl-dominio-funcion) · [codominio](../otros/tratado-de-analisis-glosario.md#gl-codominio) · [grafo de una función](../otros/tratado-de-analisis-glosario.md#gl-grafo-funcion)*
 
-Una **función** $f$ de $A$ en $B$ es el dato
+Una función $f$ de $A$ en $B$ es el dato
 
 $$
 f=\langle A,B,G_f\rangle,
@@ -28,7 +28,7 @@ $$
 \langle a,b\rangle\in G_f.
 $$
 
-El conjunto $A$ es el **dominio**, $B$ el **codominio** y $G_f$ el **grafo**.
+El conjunto $A$ es el dominio, $B$ el codominio y $G_f$ el grafo.
 
 ---
 
@@ -48,7 +48,7 @@ $$
 
 La expresión $f(a)$ es abreviatura de una relación de pertenencia al grafo; no es una operación primitiva.
 
-> **Nota fundacional.** La definición anterior fija una función como objeto **extensional**: dominio, codominio y grafo determinan completamente la aplicación. Esto no proporciona, por sí solo, un procedimiento efectivo para obtener $f(a)$ a partir de una codificación de $a$. Mantendremos explícita la distinción
+> **Nota fundacional.** La definición anterior fija una función como objeto extensional: dominio, codominio y grafo determinan completamente la aplicación. Esto no proporciona, por sí solo, un procedimiento efectivo para obtener $f(a)$ a partir de una codificación de $a$. Mantendremos explícita la distinción
 >
 > $$
 > \boxed{\text{función conjuntista}\neq\text{algoritmo de evaluación}.}
@@ -166,9 +166,9 @@ Por unicidad de los valores, sus grafos coinciden; por la Proposición 0.6.3, la
 
 Sea $f:A\to B$.
 
-- $f$ es **inyectiva** si $f(a)=f(a')\Rightarrow a=a'$.
-- $f$ es **sobreyectiva** si para todo $b\in B$ existe $a\in A$ tal que $f(a)=b$.
-- $f$ es **biyectiva** si es inyectiva y sobreyectiva.
+- $f$ es inyectiva si $f(a)=f(a')\Rightarrow a=a'$.
+- $f$ es sobreyectiva si para todo $b\in B$ existe $a\in A$ tal que $f(a)=b$.
+- $f$ es biyectiva si es inyectiva y sobreyectiva.
 
 ---
 
@@ -253,7 +253,7 @@ $$
 
 la única función cuya existencia garantiza el Teorema 0.6.7.
 
-El símbolo $f^{-1}$ **no** se utilizará para una función antes de demostrar que $f$ es biyectiva. Para relaciones, $R^{-1}$ conserva el significado fijado en la sección de relaciones binarias.
+El símbolo $f^{-1}$ no se utilizará para una función antes de demostrar que $f$ es biyectiva. Para relaciones, $R^{-1}$ conserva el significado fijado en la sección de relaciones binarias.
 
 ---
 
@@ -263,7 +263,7 @@ El símbolo $f^{-1}$ **no** se utilizará para una función antes de demostrar q
 
 Sea $f:A\to B$.
 
-Para $X\subseteq A$, definimos la **imagen directa**
+Para $X\subseteq A$, definimos la imagen directa
 
 $$
 f[X]
@@ -271,7 +271,7 @@ f[X]
 \{b\in B:\exists x\in X\;(f(x)=b)\}.
 $$
 
-Para $Y\subseteq B$, definimos la **preimagen**
+Para $Y\subseteq B$, definimos la preimagen
 
 $$
 f^{-1}[Y]
@@ -437,7 +437,7 @@ Por la definición de sobreyectividad, $\pi_{\sim}$ es sobreyectiva. ∎
 
 La proyección es sobreyectiva: toda clase tiene al menos un representante. Esto plantea el problema que aparecerá repetidamente en los próximos capítulos. Supongamos que sabemos calcular una cantidad a partir de un representante $a$. ¿Cuándo ese cálculo define realmente una función de la clase $[a]$ y no depende de la representación elegida?
 
-La respuesta es: exactamente cuando el cálculo toma el mismo valor sobre representantes equivalentes. El teorema siguiente formaliza esa idea y será nuestra herramienta básica de **buena definición** sobre cocientes.
+La respuesta es: exactamente cuando el cálculo toma el mismo valor sobre representantes equivalentes. El teorema siguiente formaliza esa idea y será nuestra herramienta básica de buena definición sobre cocientes.
 
 ### Teorema 0.6.15 — Principio de definición sobre clases {#ta-definicion-sobre-clases}
 
@@ -544,7 +544,7 @@ Por el criterio de igualdad de funciones, $\psi=\overline{\varphi}$. ∎
 
 *Glosario: [familia indexada](../otros/tratado-de-analisis-glosario.md#gl-familia-indexada)*
 
-Una **familia indexada** de elementos de un conjunto $X$, con conjunto de índices $I$, es una función
+Una familia indexada de elementos de un conjunto $X$, con conjunto de índices $I$, es una función
 
 $$
 x:I\to X.

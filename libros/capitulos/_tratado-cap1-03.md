@@ -1,6 +1,6 @@
 ## 1.3. Teorema de recursión {#sec-ta-1-3}
 
-La inducción permite **demostrar** propiedades de todos los naturales a partir de un caso inicial y un paso sucesor. La recursión cumple una función distinta y complementaria: permite **definir** objetos paso a paso a lo largo de $\mathbb N$.
+La inducción permite demostrar propiedades de todos los naturales a partir de un caso inicial y un paso sucesor. La recursión cumple una función distinta y complementaria: permite definir objetos paso a paso a lo largo de $\mathbb N$.
 
 Antes de introducir las ecuaciones recursivas de la suma debemos justificar que una regla de ese tipo determina realmente una función sobre todos los naturales y que la determina de manera única. No basta, por tanto, con anunciar una receta iterativa.
 
@@ -22,7 +22,7 @@ Primero construiremos soluciones sobre segmentos finitos $S(n)$; después veremo
 
 *Glosario: [restricción de una función](../otros/tratado-de-analisis-glosario.md#gl-restriccion-funcion)*
 
-Si $f:A\to B$ y $C\subseteq A$, la **restricción** de $f$ a $C$ es la aplicación
+Si $f:A\to B$ y $C\subseteq A$, la restricción de $f$ a $C$ es la aplicación
 
 $$
 f\upharpoonright C:C\to B
@@ -44,7 +44,7 @@ La restricción nos permite comparar una solución más larga con sus etapas ant
 
 *Glosario: [aproximación finita de una recursión](../otros/tratado-de-analisis-glosario.md#gl-aproximacion-finita-recursion)*
 
-Sean $X$ un conjunto, $x_0\in X$, $g:X\to X$ y $n\in\mathbb N$. Una **$n$-aproximación** para $(X,x_0,g)$ es una función
+Sean $X$ un conjunto, $x_0\in X$, $g:X\to X$ y $n\in\mathbb N$. Una $n$-aproximación para $(X,x_0,g)$ es una función
 
 $$
 h:S(n)\to X

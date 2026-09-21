@@ -10,9 +10,9 @@ Introducimos aquí únicamente el vocabulario abstracto indispensable. Todavía 
 
 Sea $\leq$ una relación sobre un conjunto $A$.
 
-- $\leq$ es un **preorden** si es reflexiva y transitiva.
-- $\leq$ es un **orden parcial** si es reflexiva, antisimétrica y transitiva.
-- $\leq$ es un **orden total** si es un orden parcial y, además, para cualesquiera $a,b\in A$,
+- $\leq$ es un preorden si es reflexiva y transitiva.
+- $\leq$ es un orden parcial si es reflexiva, antisimétrica y transitiva.
+- $\leq$ es un orden total si es un orden parcial y, además, para cualesquiera $a,b\in A$,
 
 $$
 a\leq b
@@ -36,7 +36,7 @@ a<b
 (a\leq b\ \text{y}\ a\neq b).
 $$
 
-La relación $<$ se denomina **orden estricto asociado** a $\leq$.
+La relación $<$ se denomina orden estricto asociado a $\leq$.
 
 ---
 
@@ -68,19 +68,19 @@ Supongamos ahora que $\leq$ es total. Dados $a,b$, por totalidad $a\leq b$ o $b\
 
 Sea $(A,\leq)$ un conjunto parcialmente ordenado y sea $S\subseteq A$.
 
-Un elemento $u\in A$ es una **cota superior** de $S$ si
+Un elemento $u\in A$ es una cota superior de $S$ si
 
 $$
 \forall s\in S,\quad s\leq u.
 $$
 
-Un elemento $\ell\in A$ es una **cota inferior** de $S$ si
+Un elemento $\ell\in A$ es una cota inferior de $S$ si
 
 $$
 \forall s\in S,\quad \ell\leq s.
 $$
 
-Diremos que $S$ está **acotado superiormente** si posee alguna cota superior y **acotado inferiormente** si posee alguna cota inferior.
+Diremos que $S$ está acotado superiormente si posee alguna cota superior y acotado inferiormente si posee alguna cota inferior.
 
 ---
 
@@ -90,13 +90,13 @@ Diremos que $S$ está **acotado superiormente** si posee alguna cota superior y 
 
 Sea $S\subseteq A$.
 
-Un elemento $m\in S$ es el **máximo** de $S$ si
+Un elemento $m\in S$ es el máximo de $S$ si
 
 $$
 \forall s\in S,\quad s\leq m.
 $$
 
-Un elemento $n\in S$ es el **mínimo** de $S$ si
+Un elemento $n\in S$ es el mínimo de $S$ si
 
 $$
 \forall s\in S,\quad n\leq s.
@@ -122,7 +122,7 @@ La prueba para mínimos es dual. ∎
 
 Sea $S\subseteq A$.
 
-Un elemento $u\in A$ es el **supremo** de $S$ si:
+Un elemento $u\in A$ es el supremo de $S$ si:
 
 1. $u$ es cota superior de $S$;
 2. para toda cota superior $v$ de $S$,
@@ -131,7 +131,7 @@ $$
 u\leq v.
 $$
 
-Un elemento $\ell\in A$ es el **ínfimo** de $S$ si:
+Un elemento $\ell\in A$ es el ínfimo de $S$ si:
 
 1. $\ell$ es cota inferior de $S$;
 2. para toda cota inferior $v$ de $S$,
@@ -182,5 +182,5 @@ Las expresiones $\sup S$ e $\inf S$ no se considerarán definidas bajo hipótesi
 ---
 
 ::: {.callout-tip title="Capítulo 0 completo"}
-Con §§0.8–0.10 queda completo el **Capítulo 0 — Fundamento lógico y conjuntista**. La publicación progresiva continuará con el **Capítulo 1 — Los números naturales**.
+Con §§0.8–0.10 queda completo el Capítulo 0 — Fundamento lógico y conjuntista. La publicación progresiva continuará con el Capítulo 1 — Los números naturales.
 :::

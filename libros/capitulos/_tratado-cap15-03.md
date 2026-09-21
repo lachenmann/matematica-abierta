@@ -1,9 +1,9 @@
 ## 15.3. Puntos exteriores y conjuntos cerrados {#sec-ta-15-3}
 
-En §15.2 describimos el interior de un conjunto: un punto es interior cuando podemos movernos ligeramente a su alrededor sin salir del conjunto. Ahora examinaremos la condición simétrica, pero debemos formularla con cuidado: estar **fuera** de $A$ no equivale necesariamente a poder permanecer fuera al efectuar cualquier desplazamiento suficientemente pequeño. La distinción conducirá a los puntos exteriores y, mediante el complemento, a los conjuntos cerrados.
+En §15.2 describimos el interior de un conjunto: un punto es interior cuando podemos movernos ligeramente a su alrededor sin salir del conjunto. Ahora examinaremos la condición simétrica, pero debemos formularla con cuidado: estar fuera de $A$ no equivale necesariamente a poder permanecer fuera al efectuar cualquier desplazamiento suficientemente pequeño. La distinción conducirá a los puntos exteriores y, mediante el complemento, a los conjuntos cerrados.
 
 ### Definición 15.3.1 — Punto exterior de un conjunto
-Sean $A\subseteq\mathbb R$ y $a\in\mathbb R$. Diremos que **$a$ es exterior a $A$** si existe un radio real estrictamente positivo tal que la bola centrada en $a$ no contiene ningún punto de $A$:
+Sean $A\subseteq\mathbb R$ y $a\in\mathbb R$. Diremos que $a$ es exterior a $A$ si existe un radio real estrictamente positivo tal que la bola centrada en $a$ no contiene ningún punto de $A$:
 
 $$
 \boxed{a\text{ es exterior a }A\iff
@@ -14,7 +14,7 @@ Como $a\in B_r(a)$ para cada $r>0$ (Proposición §15.1.2 — Las bolas son inte
 
 
 ### Definición 15.3.2 — Exterior de un conjunto
-Definimos el **exterior** de $A\subseteq\mathbb R$ como el conjunto de sus puntos exteriores:
+Definimos el exterior de $A\subseteq\mathbb R$ como el conjunto de sus puntos exteriores:
 
 $$
 \boxed{\operatorname{Ext}(A):=
@@ -53,17 +53,17 @@ Por definición, $\operatorname{Ext}(A)\subseteq\mathbb R\setminus A$: ningún e
 
 Supongamos $A\subseteq C$ y fijemos $x\in\operatorname{Ext}(C)$. Existe $r>0$ tal que $B_r(x)\cap C=\varnothing$. Si algún $y$ perteneciera a $B_r(x)\cap A$, de $A\subseteq C$ deduciríamos $y\in B_r(x)\cap C$, contradicción. Luego $B_r(x)\cap A=\varnothing$ y $x\in\operatorname{Ext}(A)$. Esto demuestra la segunda inclusión. ∎
 
-La inclusión se invierte: **a mayor conjunto, menor exterior**. No se afirma que cada punto de la recta sea necesariamente interior o exterior; una tercera posibilidad será estudiada después.
+La inclusión se invierte: a mayor conjunto, menor exterior. No se afirma que cada punto de la recta sea necesariamente interior o exterior; una tercera posibilidad será estudiada después.
 
 
 ### Definición 15.3.5 — Conjunto cerrado de la recta
-Un conjunto $F\subseteq\mathbb R$ se denomina **cerrado (en $\mathbb R$)** cuando su complemento en la recta es abierto:
+Un conjunto $F\subseteq\mathbb R$ se denomina cerrado (en $\mathbb R$) cuando su complemento en la recta es abierto:
 
 $$
 \boxed{F\text{ es cerrado}\iff\mathbb R\setminus F\text{ es abierto}.}
 $$
 
-La palabra «cerrado» no significa «no abierto». La definición afirma una propiedad positiva del **complemento**: cada punto exterior a $F$ en el sentido conjuntista deberá disponer de un margen completo fuera de $F$. El ambiente es siempre $\mathbb R$ y no se presupone ninguna noción de cerrado relativo a un subespacio.
+La palabra «cerrado» no significa «no abierto». La definición afirma una propiedad positiva del complemento: cada punto exterior a $F$ en el sentido conjuntista deberá disponer de un margen completo fuera de $F$. El ambiente es siempre $\mathbb R$ y no se presupone ninguna noción de cerrado relativo a un subespacio.
 
 
 ### Proposición 15.3.6 — Criterio de cerradura mediante puntos exteriores
@@ -86,14 +86,14 @@ Se cumplen las siguientes propiedades:
 
 1. $\varnothing$ y $\mathbb R$ son cerrados.
 2. Si $I$ es un conjunto cualquiera y $(F_i)_{i\in I}$ es una familia de cerrados de la recta, su intersección $\bigcap_{i\in I}F_i$ es cerrada, incluido el caso $I=\varnothing$, cuya intersección relativa a $\mathbb R$ es $\mathbb R$.
-3. Si $F,G\subseteq\mathbb R$ son cerrados, $F\cup G$ es cerrado. En consecuencia, toda unión **finita** de cerrados es cerrada, incluida la unión vacía.
+3. Si $F,G\subseteq\mathbb R$ son cerrados, $F\cup G$ es cerrado. En consecuencia, toda unión finita de cerrados es cerrada, incluida la unión vacía.
 
 **Demostración.**
-**(1)** Por Teorema §15.2.7 — Leyes fundamentales de los conjuntos abiertos, tanto $\mathbb R$ como $\varnothing$ son abiertos. Sus complementos en $\mathbb R$ son, respectivamente, $\varnothing$ y $\mathbb R$; por la definición de cerrado, ambos son cerrados.
+(1) Por Teorema §15.2.7 — Leyes fundamentales de los conjuntos abiertos, tanto $\mathbb R$ como $\varnothing$ son abiertos. Sus complementos en $\mathbb R$ son, respectivamente, $\varnothing$ y $\mathbb R$; por la definición de cerrado, ambos son cerrados.
 
-**(2)** La intersección indexada existe con ambiente $\mathbb R$ por Definición §0.6.16 — Familia indexada. Denotémosla localmente por $F$. Si $I=\varnothing$, entonces $F=\mathbb R$ y se aplica (1). Supongamos $I\ne\varnothing$ y tomemos $x\in\mathbb R\setminus F$. La pertenencia a $F$ significa $\forall i\in I,\ x\in F_i$; su negación, por la lógica clásica del contrato fundacional, da un índice $i\in I$ con $x\notin F_i$. Como $F_i$ es cerrado, Proposición §15.3.6 — Criterio de cerradura mediante puntos exteriores proporciona $r>0$ con $B_r(x)\cap F_i=\varnothing$. Dado que $F\subseteq F_i$, también $B_r(x)\cap F=\varnothing$. Cada punto del complemento posee tal radio; el mismo criterio prueba que $F$ es cerrado. El índice y el radio se obtienen **para el punto fijado**, sin construir una función de elección sobre $I$.
+(2) La intersección indexada existe con ambiente $\mathbb R$ por Definición §0.6.16 — Familia indexada. Denotémosla localmente por $F$. Si $I=\varnothing$, entonces $F=\mathbb R$ y se aplica (1). Supongamos $I\ne\varnothing$ y tomemos $x\in\mathbb R\setminus F$. La pertenencia a $F$ significa $\forall i\in I,\ x\in F_i$; su negación, por la lógica clásica del contrato fundacional, da un índice $i\in I$ con $x\notin F_i$. Como $F_i$ es cerrado, Proposición §15.3.6 — Criterio de cerradura mediante puntos exteriores proporciona $r>0$ con $B_r(x)\cap F_i=\varnothing$. Dado que $F\subseteq F_i$, también $B_r(x)\cap F=\varnothing$. Cada punto del complemento posee tal radio; el mismo criterio prueba que $F$ es cerrado. El índice y el radio se obtienen para el punto fijado, sin construir una función de elección sobre $I$.
 
-**(3)** Sea $x\in\mathbb R\setminus(F\cup G)$. Entonces $x\notin F$ y $x\notin G$. Como ambos son cerrados, encontramos radios $r,s>0$ con $B_r(x)\cap F=\varnothing$ y $B_s(x)\cap G=\varnothing$. Tomemos $t=\min\{r,s\}>0$. Por la inclusión entre bolas concéntricas de Proposición §15.1.2 — Las bolas son intervalos abiertos centrados,
+(3) Sea $x\in\mathbb R\setminus(F\cup G)$. Entonces $x\notin F$ y $x\notin G$. Como ambos son cerrados, encontramos radios $r,s>0$ con $B_r(x)\cap F=\varnothing$ y $B_s(x)\cap G=\varnothing$. Tomemos $t=\min\{r,s\}>0$. Por la inclusión entre bolas concéntricas de Proposición §15.1.2 — Las bolas son intervalos abiertos centrados,
 
 $$
 B_t(x)\subseteq B_r(x)\cap B_s(x).
@@ -101,7 +101,7 @@ $$
 
 Así $B_t(x)$ no contiene puntos de $F$ ni de $G$, por lo que $B_t(x)\cap(F\cup G)=\varnothing$. El criterio de Proposición §15.3.6 — Criterio de cerradura mediante puntos exteriores prueba que $F\cup G$ es cerrado. La unión de cero cerrados es $\varnothing$, cerrada por (1); por inducción sobre el número natural de miembros, el caso binario extiende el resultado a toda unión finita. ∎
 
-Las reglas son duales a las de los abiertos, pero no idénticas: los cerrados admiten **intersecciones arbitrarias y uniones finitas**. El calificativo «finita» no puede eliminarse de la segunda operación en general; demostraremos un contraejemplo explícito antes de terminar la sección.
+Las reglas son duales a las de los abiertos, pero no idénticas: los cerrados admiten intersecciones arbitrarias y uniones finitas. El calificativo «finita» no puede eliminarse de la segunda operación en general; demostraremos un contraejemplo explícito antes de terminar la sección.
 
 
 ### Proposición 15.3.8 — Las dos semirrectas estrictas son abiertas
@@ -112,7 +112,7 @@ L_c:=\{x\in\mathbb R:x<c\},\qquad
 R_c:=\{x\in\mathbb R:c<x\}
 $$
 
-son abiertos en $\mathbb R$. Las letras $L_c,R_c$ son abreviaturas **locales** para conjuntos existentes por Separación; no incorporamos símbolos de infinito ni suponemos una definición previa de intervalos no acotados.
+son abiertos en $\mathbb R$. Las letras $L_c,R_c$ son abreviaturas locales para conjuntos existentes por Separación; no incorporamos símbolos de infinito ni suponemos una definición previa de intervalos no acotados.
 
 **Demostración.**
 Sea $x\in L_c$, de manera que $x<c$. Definamos $r=c-x>0$. Para cualquier $y\in B_r(x)$, la identidad bola–intervalo de Proposición §15.1.2 — Las bolas son intervalos abiertos centrados da $y<x+r=c$; por tanto $y\in L_c$ y $B_r(x)\subseteq L_c$. Como $x$ es arbitrario, $L_c$ es abierto.
@@ -144,7 +144,7 @@ $$
 H:=\{x\in\mathbb R:a\le x<b\}.
 $$
 
-Entonces $H$ no es abierto **ni** cerrado en $\mathbb R$.
+Entonces $H$ no es abierto ni cerrado en $\mathbb R$.
 
 **Demostración.**
 Como $a<b$, tenemos $a\in H$. Sea $r>0$ arbitrario. El punto $y=a-r/(1+1)$ satisface $y<a$ y $|y-a|=r/(1+1)<r$: pertenece a $B_r(a)$ pero no a $H$. Ninguna bola de radio positivo centrada en $a$ queda contenida en $H$; por la definición de abierto, $H$ no es abierto.
@@ -156,13 +156,13 @@ t:=\min\left\{\frac{r}{1+1},\frac{b-a}{1+1}\right\}>0,
 \qquad z:=b-t.
 $$
 
-Como $0<t\le(b-a)/(1+1)<b-a$, resulta $a<z<b$, y por tanto $z\in H$. Además, $t\le r/(1+1)<r$ y $|z-b|=t$, de modo que $z\in B_r(b)$. Así, **toda** bola centrada en $b$ intersecta $H$, aunque $b\notin H$. Por Proposición §15.3.6 — Criterio de cerradura mediante puntos exteriores, $H$ no es cerrado. ∎
+Como $0<t\le(b-a)/(1+1)<b-a$, resulta $a<z<b$, y por tanto $z\in H$. Además, $t\le r/(1+1)<r$ y $|z-b|=t$, de modo que $z\in B_r(b)$. Así, toda bola centrada en $b$ intersecta $H$, aunque $b\notin H$. Por Proposición §15.3.6 — Criterio de cerradura mediante puntos exteriores, $H$ no es cerrado. ∎
 
 No hemos recurrido a la noción aún no definida de «punto adherente»: basta negar directamente la condición cuantificada de punto exterior. El ejemplo distingue rigurosamente «no abierto» de «cerrado».
 
 
 ### Proposición 15.3.11 — Las restricciones de finitud son necesarias
-Existen una familia de abiertos cuya intersección no es abierta y una familia de cerrados cuya unión no es cerrada. En ambos casos las familias están **explícitamente determinadas**, sin ninguna selección de representantes o radios.
+Existen una familia de abiertos cuya intersección no es abierta y una familia de cerrados cuya unión no es cerrada. En ambos casos las familias están explícitamente determinadas, sin ninguna selección de representantes o radios.
 
 **Demostración.**
 Fijemos $a\in\mathbb R$ y consideremos el conjunto de radios positivos
@@ -192,8 +192,8 @@ x\in\bigcup_{r\in I}F_r
 \end{aligned}
 $$
 
-Así $\bigcup_{r\in I}F_r=\mathbb R\setminus\{a\}$. Esta unión **no es cerrada**: si lo fuese, su complemento $\{a\}$ sería abierto por Definición §15.3.5 — Conjunto cerrado de la recta, contra Proposición §15.2.9 — Ejemplos: intervalos abiertos y singletons. Quedan probados ambos contraejemplos. ∎
+Así $\bigcup_{r\in I}F_r=\mathbb R\setminus\{a\}$. Esta unión no es cerrada: si lo fuese, su complemento $\{a\}$ sería abierto por Definición §15.3.5 — Conjunto cerrado de la recta, contra Proposición §15.2.9 — Ejemplos: intervalos abiertos y singletons. Quedan probados ambos contraejemplos. ∎
 
 > **Balance conceptual.** La dualidad entre abiertos y cerrados fija exactamente la forma de sus leyes: uniones arbitrarias e intersecciones finitas para abiertos; intersecciones arbitrarias y uniones finitas para cerrados. Ni la palabra «abierto» ni la palabra «cerrado» se deducen de incluir o excluir individualmente un punto.
 
-El siguiente paso consistirá en estudiar los puntos cuya **toda** vecindad encuentra al conjunto. Esa condición —distinta de ser interior o exterior— permitirá introducir la adherencia y construir la clausura sin circularidad en §15.4.
+El siguiente paso consistirá en estudiar los puntos cuya toda vecindad encuentra al conjunto. Esa condición —distinta de ser interior o exterior— permitirá introducir la adherencia y construir la clausura sin circularidad en §15.4.

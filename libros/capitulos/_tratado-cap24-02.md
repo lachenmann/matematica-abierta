@@ -1,6 +1,6 @@
 ## 24.2. Distancias admitidas y radio de convergencia {#sec-ta-24-2}
 
-El teorema anterior afirma que la convergencia en un punto distinto del centro impone convergencia absoluta a distancias estrictamente menores. Para transformar esta propiedad en una frontera numérica necesitamos aislar las **distancias admitidas**; tomar directamente el supremo del conjunto de convergencia sería incorrecto, porque éste contiene puntos a ambos lados de $c$ y puede ser no acotado. Tampoco podemos escribir un supremo real sin verificar antes que el conjunto correspondiente es no vacío y está acotado superiormente.
+El teorema anterior afirma que la convergencia en un punto distinto del centro impone convergencia absoluta a distancias estrictamente menores. Para transformar esta propiedad en una frontera numérica necesitamos aislar las distancias admitidas; tomar directamente el supremo del conjunto de convergencia sería incorrecto, porque éste contiene puntos a ambos lados de $c$ y puede ser no acotado. Tampoco podemos escribir un supremo real sin verificar antes que el conjunto correspondiente es no vacío y está acotado superiormente.
 
 ### Definición 24.2.1 — Conjunto de distancias admitidas
 Para $a:\mathbb N\to\mathbb R$ y $c\in\mathbb R$ dados, definimos
@@ -30,7 +30,7 @@ $$
 
 El teorema «Convergencia absoluta hacia el interior», aplicado por separado a estos dos puntos, demuestra su convergencia absoluta. Por definición pertenecen a $C(a,c)$, y cualquiera de ellos testimonia que $t\in D(a,c)$. No fue necesario elegir una función de testigos indexada por las distancias. $\square$
 
-**Interpretación.** $D(a,c)$ es un segmento inicial de los reales no negativos: una distancia admitida no puede estar precedida por una distancia inadmisible. Esto **no** afirma todavía que la distancia frontera pertenezca a $D(a,c)$.
+**Interpretación.** $D(a,c)$ es un segmento inicial de los reales no negativos: una distancia admitida no puede estar precedida por una distancia inadmisible. Esto no afirma todavía que la distancia frontera pertenezca a $D(a,c)$.
 
 ### Definición 24.2.3 — Radio finito y radio infinito
 Distinguimos dos casos excluyentes para el conjunto no vacío $D(a,c)$:
@@ -40,8 +40,8 @@ Distinguimos dos casos excluyentes para el conjunto no vacío $D(a,c)$:
    \boxed{R(a,c):=\sup D(a,c)\in\mathbb R,\qquad R(a,c)\ge0.}
    \tag{24.2.3}
    $$
-   Lo llamamos **radio finito de convergencia**; incluye el caso $R(a,c)=0$.
-2. **Caso no acotado superiormente.** Decimos que el radio es **infinito** y escribimos, por convenio,
+   Lo llamamos radio finito de convergencia; incluye el caso $R(a,c)=0$.
+2. **Caso no acotado superiormente.** Decimos que el radio es infinito y escribimos, por convenio,
    $$
    \boxed{R(a,c)=+\infty.}
    \tag{24.2.4}
@@ -74,7 +74,7 @@ $$
 **Demostración.**
 **Caso (i).** Si $R=\sup D=0$, todo $d\in D$ cumple $0\le d\le0$, de modo que $D=\{0\}$. Para $x\in C(a,c)$, $|x-c|\in D$; luego $|x-c|=0$ y $x=c$. La inclusión inversa $c\in C(a,c)$ es «El centro siempre pertenece al conjunto de convergencia».
 
-**Caso (ii): interior.** Sea $x\in\mathbb R$ con $d:=|x-c|<R$. Por definición, $R$ es la menor cota superior de $D$. Por tanto $d$ **no** puede ser cota superior: en caso contrario $R\le d$, contra $d<R$. Existe, pues, $e\in D$ con $e>d$. Tomemos el testigo de esa pertenencia, un punto $y\in C(a,c)$ con $|y-c|=e$. Como $e>d\ge0$, se tiene $e>0$ y $y\ne c$. Aplicando «Convergencia absoluta hacia el interior» a $|x-c|=d<e=|y-c|$ obtenemos convergencia absoluta en $x$. La demostración vale también para $x=c$, sin efectuar ninguna división por $x-c$.
+**Caso (ii): interior.** Sea $x\in\mathbb R$ con $d:=|x-c|<R$. Por definición, $R$ es la menor cota superior de $D$. Por tanto $d$ no puede ser cota superior: en caso contrario $R\le d$, contra $d<R$. Existe, pues, $e\in D$ con $e>d$. Tomemos el testigo de esa pertenencia, un punto $y\in C(a,c)$ con $|y-c|=e$. Como $e>d\ge0$, se tiene $e>0$ y $y\ne c$. Aplicando «Convergencia absoluta hacia el interior» a $|x-c|=d<e=|y-c|$ obtenemos convergencia absoluta en $x$. La demostración vale también para $x=c$, sin efectuar ninguna división por $x-c$.
 
 **Caso (ii): exterior.** Si $d:=|x-c|>R$ y la serie convergiese en $x$, entonces $x\in C(a,c)$, por lo que $d\in D(a,c)$. Pero $R=\sup D$ es una cota superior y obligaría a $d\le R$, contradicción. La serie diverge por la definición de convergencia numérica.
 
@@ -103,7 +103,7 @@ Si el radio es cero, $C(a,c)=\{c\}$; si es infinito, $C(a,c)=\mathbb R$.
 **Demostración.**
 Sea $R>0$ finito. El teorema anterior demuestra que todos los puntos con $|x-c|<R$ pertenecen a $C(a,c)$ y que ninguno con $|x-c|>R$ pertenece. La primera condición equivale a $c-R<x<c+R$; la única posibilidad restante para un punto convergente es $|x-c|=R$, equivalente a $x=c-R$ o $x=c+R$. Intersectar el conjunto existente $C(a,c)$ con ese par existente produce $E_{a,c}$ sin seleccionar extremos. Así se prueban ambas inclusiones de (24.2.7). Los otros dos casos son las conclusiones (i) y (iii) de «Clasificación por el radio y convergencia interior». $\square$
 
-El conjunto $E_{a,c}$ puede ser vacío, tener un elemento o contener ambos extremos; aquí **no** se afirma que cada posibilidad esté realizada. Se investigará con ejemplos y criterios separados, sin trasladar automáticamente la convergencia de un extremo al otro.
+El conjunto $E_{a,c}$ puede ser vacío, tener un elemento o contener ambos extremos; aquí no se afirma que cada posibilidad esté realizada. Se investigará con ejemplos y criterios separados, sin trasladar automáticamente la convergencia de un extremo al otro.
 
 ### Proposición 24.2.6 — Realización de los tres tipos de radio
 Para cualquier centro real $c$ hay series de potencias con radio cero y con radio infinito. Además, para cada real dado $r>0$ hay una serie centrada en $c$ cuyo radio es exactamente $r$.

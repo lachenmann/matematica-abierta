@@ -27,7 +27,7 @@ license: GFDL-1.3-or-later
 
 # Capítulo 15 — Topología de la recta real
 
-[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-16-limites-de-funciones.md)
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-14-series-numericas.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-16-limites-de-funciones.md)
 
 *Parte II — Núcleo del análisis real*
 

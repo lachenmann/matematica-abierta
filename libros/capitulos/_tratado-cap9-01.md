@@ -10,7 +10,7 @@ $$
 }
 $$
 
-Por tanto, **no introduciremos un segundo conjunto** bajo la notación $\mathcal C(\mathbb Q)$. La forma $\mathcal C_{\mathbb Q}$ queda conservada como notación canónica.
+Por tanto, no introduciremos un segundo conjunto bajo la notación $\mathcal C(\mathbb Q)$. La forma $\mathcal C_{\mathbb Q}$ queda conservada como notación canónica.
 
 También sabemos ya dos hechos esenciales:
 

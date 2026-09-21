@@ -52,7 +52,7 @@ $$
 
 Por tanto $G_D$ es el grafo de una función con dominio $\mathbb Q$ y codominio $\mathbb R_D$.
 
-Definimos la **aplicación canónica de Dedekind**
+Definimos la aplicación canónica de Dedekind
 
 $$
 \boxed{
@@ -138,7 +138,7 @@ $$
 
 ∎
 
-La recíproca utiliza únicamente la comparación **decidible de los racionales**, no la totalidad clásica de las cortaduras.
+La recíproca utiliza únicamente la comparación decidible de los racionales, no la totalidad clásica de las cortaduras.
 
 ### Corolario 5.5.3 — $\iota_D$ es inyectiva y preserva y refleja el orden estricto
 
@@ -216,7 +216,7 @@ $$
 
 ∎
 
-Sólo ahora podemos llamar rigurosamente a $\iota_D$ una **incrustación de órdenes**. No es todavía una incrustación de cuerpos ordenados, porque aún no hemos construido suma ni producto sobre $\mathbb R_D$.
+Sólo ahora podemos llamar rigurosamente a $\iota_D$ una incrustación de órdenes. No es todavía una incrustación de cuerpos ordenados, porque aún no hemos construido suma ni producto sobre $\mathbb R_D$.
 
 ### Corolario 5.5.4 — La copia racional no agota $\mathbb R_D$
 

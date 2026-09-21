@@ -8,11 +8,11 @@ $$
 
 Construimos dos realizaciones distintas de la completación de $\mathbb Q$, demostramos su equivalencia mediante un isomorfismo explícito y probamos finalmente que toda completación ordenada de $\mathbb Q$ es única hasta único isomorfismo de cuerpos ordenados compatible con la copia racional.
 
-El problema cambia ahora de naturaleza. Ya no necesitamos fabricar nuevos números. Disponemos de un cuerpo ordenado completo y queremos estudiar **procesos que evolucionan dentro de él**.
+El problema cambia ahora de naturaleza. Ya no necesitamos fabricar nuevos números. Disponemos de un cuerpo ordenado completo y queremos estudiar procesos que evolucionan dentro de él.
 
 El primero de esos procesos será una sucesión.
 
-En el Capítulo 8 las sucesiones aparecieron con una finalidad constructiva: una sucesión racional servía como nombre aproximativo a partir del cual podía construirse el modelo de Cauchy. Aquí la dirección se invierte. Los reales ya están construidos; una sucesión real será un objeto del análisis realizado **sobre** ellos.
+En el Capítulo 8 las sucesiones aparecieron con una finalidad constructiva: una sucesión racional servía como nombre aproximativo a partir del cual podía construirse el modelo de Cauchy. Aquí la dirección se invierte. Los reales ya están construidos; una sucesión real será un objeto del análisis realizado sobre ellos.
 
 La transición es, por tanto,
 

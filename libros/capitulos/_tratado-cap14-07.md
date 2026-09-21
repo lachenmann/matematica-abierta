@@ -2,25 +2,25 @@
 
 Comparar términos uno a uno no siempre revela por qué una serie converge. En una sucesión decreciente y no negativa podemos reunir cantidades cada vez mayores de términos sin perder el control de sus valores: dentro de un bloque, todos quedan comprendidos entre sus extremos. Si duplicamos sucesivamente la longitud del bloque, obtenemos una nueva serie que retiene exactamente la información necesaria para decidir la convergencia.
 
-La fórmula usual del criterio presenta términos $2^k a_{2^k}$. Aquí debemos atender a los **tipos**: un subíndice pertenece a $\mathbb N$, mientras que el factor multiplicativo pertenece a $\mathbb R$. La potencia natural de base real ya fue construida en §14.3, pero todavía no hemos definido una operación general de potenciación en $\mathbb N$. Construiremos por recursión los índices diádicos y aplicaremos a ellos la función de numerales reales. Así, el símbolo informal $2^k$ no ocultará una coerción inexistente.
+La fórmula usual del criterio presenta términos $2^k a_{2^k}$. Aquí debemos atender a los tipos: un subíndice pertenece a $\mathbb N$, mientras que el factor multiplicativo pertenece a $\mathbb R$. La potencia natural de base real ya fue construida en §14.3, pero todavía no hemos definido una operación general de potenciación en $\mathbb N$. Construiremos por recursión los índices diádicos y aplicaremos a ellos la función de numerales reales. Así, el símbolo informal $2^k$ no ocultará una coerción inexistente.
 
 ### Definición 14.7.1 — Índices diádicos y sucesión condensada
 
-Definimos la sucesión de **índices diádicos** $d:\mathbb N\to\mathbb N$ como la única función que satisface
+Definimos la sucesión de índices diádicos $d:\mathbb N\to\mathbb N$ como la única función que satisface
 
 $$
 \boxed{d_0=1,\qquad d_{k+1}=d_k+d_k\quad(k\in\mathbb N).}
 $$
 
-Su existencia y unicidad se siguen del teorema de recursión Teorema 1.3.7 — Teorema de recursión sobre $\mathbb N$, aplicado a $X=\mathbb N$, al elemento inicial $1$ y a la función $g(m)=m+m$. Esta última es una función total de $\mathbb N$ en sí mismo; su grafo es un subconjunto definible de $\mathbb N\times\mathbb N$. En particular, $d_0=1$, $d_1=2$, $d_2=4$, $d_3=8$, donde estas cifras son **naturales**, no elementos identificados literalmente con los reales.
+Su existencia y unicidad se siguen del teorema de recursión Teorema 1.3.7 — Teorema de recursión sobre $\mathbb N$, aplicado a $X=\mathbb N$, al elemento inicial $1$ y a la función $g(m)=m+m$. Esta última es una función total de $\mathbb N$ en sí mismo; su grafo es un subconjunto definible de $\mathbb N\times\mathbb N$. En particular, $d_0=1$, $d_1=2$, $d_2=4$, $d_3=8$, donde estas cifras son naturales, no elementos identificados literalmente con los reales.
 
-Para cada sucesión real $a:\mathbb N\to\mathbb R$ definimos su **sucesión condensada** $\operatorname{Cond}(a)=b:\mathbb N\to\mathbb R$ mediante
+Para cada sucesión real $a:\mathbb N\to\mathbb R$ definimos su sucesión condensada $\operatorname{Cond}(a)=b:\mathbb N\to\mathbb R$ mediante
 
 $$
 \boxed{b_k:=\nu_{\mathbb R}(d_k)\,a_{d_k}\qquad(k\in\mathbb N).}
 $$
 
-La aplicación de numerales $\nu_{\mathbb R}:\mathbb N\to\mathbb R$ y la multiplicación real están disponibles. El grafo de $b$ se obtiene por Separación dentro de $\mathbb N\times\mathbb R$, imponiendo para cada $k$ el valor único indicado. Esto construye una sola función completa, sin elecciones de términos. La **serie condensada** es la serie numérica de términos $b$ en el sentido de §14.1; no afirmamos todavía que converja.
+La aplicación de numerales $\nu_{\mathbb R}:\mathbb N\to\mathbb R$ y la multiplicación real están disponibles. El grafo de $b$ se obtiene por Separación dentro de $\mathbb N\times\mathbb R$, imponiendo para cada $k$ el valor único indicado. Esto construye una sola función completa, sin elecciones de términos. La serie condensada es la serie numérica de términos $b$ en el sentido de §14.1; no afirmamos todavía que converja.
 
 > **Control de tipos.** $d_k$ es un índice natural; $\nu_{\mathbb R}(d_k)$ es su numeral real. La expresión usual $2^k a_{2^k}$ abrevia aquí $\nu_{\mathbb R}(d_k)a_{d_k}$, una vez verificada la relación de $d_k$ con las potencias reales de dos. No se declara una inclusión literal $\mathbb N\subseteq\mathbb R$.
 
@@ -33,7 +33,7 @@ $$
 \nu_{\mathbb R}(d_k)=(1+1)^k.}
 $$
 
-En la última igualdad, $1+1$ y su potencia son **reales**. En particular, $d_k$ crece sin quedar confinado a ningún segmento inicial de $\mathbb N$: dado $N\in\mathbb N$, el índice $d_{N+1}$ es mayor que $N$.
+En la última igualdad, $1+1$ y su potencia son reales. En particular, $d_k$ crece sin quedar confinado a ningún segmento inicial de $\mathbb N$: dado $N\in\mathbb N$, el índice $d_{N+1}$ es mayor que $N$.
 
 **Demostración.**
 
@@ -60,7 +60,7 @@ Estas son exactamente las ecuaciones recursivas que definen, por Definición 14.
 
 ### Lema 14.7.3 — Cotas bilaterales de un bloque diádico
 
-Sea $a:\mathbb N\to\mathbb R$ una sucesión **no negativa y decreciente en sentido no estricto**:
+Sea $a:\mathbb N\to\mathbb R$ una sucesión no negativa y decreciente en sentido no estricto:
 
 $$
 \forall n\in\mathbb N\quad a_n\ge0,
@@ -188,7 +188,7 @@ B_{m+2}&=B_{m+1}+b_{m+2}\\
 \end{aligned}
 $$
 
-Finalmente, el lema precedente establece para **cada** $k$ que $\frac12b_{k+1}\le T_k\le b_k$. La comparación de sumas finitas Proposición 14.5.1 — Comparación de sumas finitas y de bloques, junto con la identidad finita de escalamiento Proposición 14.6.1 — Multiplicación de una serie por un escalar no nulo, entrega
+Finalmente, el lema precedente establece para cada $k$ que $\frac12b_{k+1}\le T_k\le b_k$. La comparación de sumas finitas Proposición 14.5.1 — Comparación de sumas finitas y de bloques, junto con la identidad finita de escalamiento Proposición 14.6.1 — Multiplicación de una serie por un escalar no nulo, entrega
 
 $$
 \frac12\sum_{k=0}^{m}b_{k+1}
@@ -232,14 +232,14 @@ $$
 \tag{14.7.1}
 $$
 
-**Primera implicación: convergencia de la condensada $\Rightarrow$ convergencia de la original.** Supongamos que la serie de $b$ converge. Existe un real $K$ tal que $B_m\le K$ para todo $m$, por Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos. De la cota derecha de (14.7.1) resulta
+Primera implicación: convergencia de la condensada $\Rightarrow$ convergencia de la original. Supongamos que la serie de $b$ converge. Existe un real $K$ tal que $B_m\le K$ para todo $m$, por Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos. De la cota derecha de (14.7.1) resulta
 
 $$
 s_{d_{m+1}}\le s_1+K
 \qquad(m\in\mathbb N).
 $$
 
-Debemos acotar **todas** las sumas parciales $s_n$, no sólo las de subíndices diádicos. Fijado cualquier $n\in\mathbb N$, tomemos el índice explícito $m=n$. La proposición 14.7.2 establece $n\le d_{n+1}$. Como $s$ es creciente,
+Debemos acotar todas las sumas parciales $s_n$, no sólo las de subíndices diádicos. Fijado cualquier $n\in\mathbb N$, tomemos el índice explícito $m=n$. La proposición 14.7.2 establece $n\le d_{n+1}$. Como $s$ es creciente,
 
 $$
 \boxed{s_n\le s_{d_{n+1}}\le s_1+K.}
@@ -247,7 +247,7 @@ $$
 
 Por tanto $s$ está acotada superiormente y el criterio de §14.4 demuestra la convergencia de la serie original.
 
-**Segunda implicación: convergencia de la original $\Rightarrow$ convergencia de la condensada.** Supongamos que converge la serie de $a$. Existe un real $M$ con $s_n\le M$ para todos los índices. En particular, $s_1\le M$. De la cota izquierda de (14.7.1),
+Segunda implicación: convergencia de la original $\Rightarrow$ convergencia de la condensada. Supongamos que converge la serie de $a$. Existe un real $M$ con $s_n\le M$ para todos los índices. En particular, $s_1\le M$. De la cota izquierda de (14.7.1),
 
 $$
 \frac12(B_{m+1}-b_0)
@@ -262,7 +262,7 @@ $$
 \qquad(m\in\mathbb N).}
 $$
 
-La misma constante acota $B_0=b_0$, pues $M-s_1\ge0$. Por tanto acota **todas** las sumas parciales de la condensada: todo natural es $0$ o el sucesor de otro. El criterio para series no negativas demuestra su convergencia.
+La misma constante acota $B_0=b_0$, pues $M-s_1\ge0$. Por tanto acota todas las sumas parciales de la condensada: todo natural es $0$ o el sucesor de otro. El criterio para series no negativas demuestra su convergencia.
 
 Las dos implicaciones establecen la equivalencia. Puesto que divergencia significa ausencia de convergencia real, también comparten la divergencia. ∎
 
@@ -336,4 +336,4 @@ Esta serie condensada converge, pues sus sumas parciales son constantemente cero
 
 > **Alcance exacto.** La condensación no es un muestreo válido para cualquier sucesión no negativa. Sin monotonía se pueden ocultar términos grandes entre los índices diádicos: la condensada ve ceros, mientras que la serie original conserva infinitos términos de valor uno. La conclusión del criterio se aplica exclusivamente bajo sus hipótesis.
 
-Los bloques diádicos transforman un problema de suma infinita en dos familias de desigualdades finitas, y la completitud decide después la convergencia. Para avanzar convendrá distinguir otra forma de estabilidad: si los términos de una serie pueden cambiar de signo, la convergencia de sus valores absolutos ofrece un control que la mera convergencia no proporciona. Éste será el tema de §14.8, **convergencia absoluta y condicional**.
+Los bloques diádicos transforman un problema de suma infinita en dos familias de desigualdades finitas, y la completitud decide después la convergencia. Para avanzar convendrá distinguir otra forma de estabilidad: si los términos de una serie pueden cambiar de signo, la convergencia de sus valores absolutos ofrece un control que la mera convergencia no proporciona. Éste será el tema de §14.8, convergencia absoluta y condicional.

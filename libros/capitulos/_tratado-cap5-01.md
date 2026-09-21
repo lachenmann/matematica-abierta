@@ -2,7 +2,7 @@
 
 ### Definición 5.1.1 — Cortadura de Dedekind
 
-Una **cortadura de Dedekind** es un subconjunto $\alpha\subseteq\mathbb Q$ que satisface las cuatro condiciones siguientes:
+Una cortadura de Dedekind es un subconjunto $\alpha\subseteq\mathbb Q$ que satisface las cuatro condiciones siguientes:
 
 1. **no vaciedad:**
    $$
@@ -22,7 +22,7 @@ La primera condición es necesaria porque el conjunto vacío satisfaría vacuame
 
 La tercera condición expresa que una cortadura contiene con cada racional todos los racionales situados por debajo de él. La cuarta garantiza que el lado inferior no posee un último racional.
 
-Conviene distinguir esta última propiedad de la ausencia de cota superior. Una cortadura puede estar acotada superiormente en $\mathbb Q$ y, sin embargo, no poseer máximo. Lo que excluimos es un **último elemento del propio lado inferior**.
+Conviene distinguir esta última propiedad de la ausencia de cota superior. Una cortadura puede estar acotada superiormente en $\mathbb Q$ y, sin embargo, no poseer máximo. Lo que excluimos es un último elemento del propio lado inferior.
 
 Finalmente, la condición
 
@@ -32,7 +32,7 @@ $$
 
 no exige escoger simultáneamente un $s$ para cada $r$. Es una afirmación puramente existencial y no utiliza el axioma de elección.
 
-> **Nota fundacional.** La definición anterior es la definición **clásica** que utilizaremos en el tratado. Sus dos primeras condiciones están formuladas negativamente:
+> **Nota fundacional.** La definición anterior es la definición clásica que utilizaremos en el tratado. Sus dos primeras condiciones están formuladas negativamente:
 > $$
 > \alpha\neq\varnothing,
 > \qquad
@@ -46,7 +46,7 @@ no exige escoger simultáneamente un $s$ para cada $r$. Es una afirmación puram
 > \alpha\neq\mathbb Q\;\not\equiv\;\exists u\notin\alpha.
 > }
 > $$
-> No modificaremos aquí la noción clásica de cortadura. Más adelante, en la capa constructiva/efectiva, se aislarán datos positivos como habitabilidad interior/exterior y **localización** (*locatedness*).
+> No modificaremos aquí la noción clásica de cortadura. Más adelante, en la capa constructiva/efectiva, se aislarán datos positivos como habitabilidad interior/exterior y localización (*locatedness*).
 
 ### Proposición 5.1.2 — Existencia del conjunto de todas las cortaduras
 
@@ -87,7 +87,7 @@ Es importante que la definición se realice dentro del conjunto ambiente $\mathc
 > $$
 > \mathbb R_D=\{\alpha\in\mathcal P(\mathbb Q):\Phi(\alpha)\}.
 > $$
-> Pero conjunto potencia + Separación producen la **totalidad clásica** de todas las cortaduras; no proporcionan una codificación finita, una enumeración efectiva ni un procedimiento uniforme para decidir, dada una cortadura arbitraria $\alpha$ y un racional $q$, si $q\in\alpha$.
+> Pero conjunto potencia + Separación producen la totalidad clásica de todas las cortaduras; no proporcionan una codificación finita, una enumeración efectiva ni un procedimiento uniforme para decidir, dada una cortadura arbitraria $\alpha$ y un racional $q$, si $q\in\alpha$.
 
 ### Definición 5.1.3 — Conjunto subyacente del modelo de Dedekind
 
@@ -107,6 +107,6 @@ $$
 \{\alpha\subseteq\mathbb Q:\alpha\text{ es una cortadura de Dedekind}\}.
 $$
 
-Un elemento de $\mathbb R_D$ será llamado **real de Dedekind** o, cuando queramos recordar su representación concreta, simplemente **cortadura**.
+Un elemento de $\mathbb R_D$ será llamado real de Dedekind o, cuando queramos recordar su representación concreta, simplemente cortadura.
 
 Esta terminología no anticipa todavía estructura algebraica ni completitud. En esta etapa sólo hemos construido el conjunto subyacente del modelo.

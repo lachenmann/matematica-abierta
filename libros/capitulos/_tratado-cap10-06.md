@@ -136,4 +136,4 @@ $$
 
 cada uno de los cuales realiza una completación ordenada de $\mathbb Q$. El problema siguiente ya no es construir números reales, sino comparar las dos realizaciones y demostrar rigurosamente en qué sentido representan una misma estructura.
 
-Ése será el objeto del **Capítulo 11 — Dedekind y Cauchy**.
+Ése será el objeto del Capítulo 11 — Dedekind y Cauchy.

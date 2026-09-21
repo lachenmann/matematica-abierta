@@ -18,7 +18,7 @@ Antes de usarlo en la definición de convergencia, lo aislaremos y estudiaremos 
 
 ### Definición 13.2.1 — Segmento final de los naturales
 
-Sea $N\in\mathbb N$. Definimos el **segmento final de $\mathbb N$ a partir de $N$** por
+Sea $N\in\mathbb N$. Definimos el segmento final de $\mathbb N$ a partir de $N$ por
 
 $$
 \boxed{
@@ -80,7 +80,7 @@ $$
 
 ∎
 
-La dirección de la inclusión merece atención: cuanto **mayor** es el umbral, **menor** es el segmento final. Pedir una propiedad desde $M$ con $N\le M$ permite descartar al menos tantos términos iniciales como pedirla desde $N$.
+La dirección de la inclusión merece atención: cuanto mayor es el umbral, menor es el segmento final. Pedir una propiedad desde $M$ con $N\le M$ permite descartar al menos tantos términos iniciales como pedirla desde $N$.
 
 ### Definición 13.2.3 — Cola reindexada de una sucesión
 
@@ -90,7 +90,7 @@ $$
 a=(a_n)_{n\in\mathbb N}
 $$
 
-una sucesión real y sea $N\in\mathbb N$. Definimos la **cola reindexada de $a$ a partir de $N$** como la sucesión real
+una sucesión real y sea $N\in\mathbb N$. Definimos la cola reindexada de $a$ a partir de $N$ como la sucesión real
 
 $$
 \boxed{
@@ -125,7 +125,7 @@ La reindexación es deliberada. La familia restringida a $\mathbb N_{\ge N}$ ten
 
 ### Definición 13.2.4 — Conjunto eventual y propiedad eventual
 
-Sea $E\subseteq\mathbb N$. Diremos que $E$ es **eventual** si contiene algún segmento final de los naturales; es decir, si
+Sea $E\subseteq\mathbb N$. Diremos que $E$ es eventual si contiene algún segmento final de los naturales; es decir, si
 
 $$
 \boxed{
@@ -137,7 +137,7 @@ $$
 
 Equivalentemente, si $\mathcal P(n)$ es una propiedad de números naturales cuyos parámetros permanecen fijos, diremos que
 
-> **$\mathcal P(n)$ vale eventualmente**
+> $\mathcal P(n)$ vale eventualmente
 
 si el conjunto
 
@@ -157,12 +157,12 @@ N\le n\Longrightarrow\mathcal P(n).
 }
 $$
 
-El número $N$ es un **umbral** para la propiedad. No se exige que sea el menor umbral ni que esté determinado de manera única.
+El número $N$ es un umbral para la propiedad. No se exige que sea el menor umbral ni que esté determinado de manera única.
 
 Esta definición distingue dos ideas que no deben confundirse:
 
 - que una propiedad vuelva a ocurrir para índices cada vez mayores;
-- que, desde algún índice en adelante, **no vuelva a fallar**.
+- que, desde algún índice en adelante, no vuelva a fallar.
 
 Sólo la segunda es eventualidad.
 
@@ -259,7 +259,7 @@ $$
 \mathbb R^{\mathbb N}\times\mathbb R^{\mathbb N}
 $$
 
-por Separación, declarando para $a,b\in\mathbb R^{\mathbb N}$ que $a$ y $b$ **coinciden eventualmente**, y escribiendo
+por Separación, declarando para $a,b\in\mathbb R^{\mathbb N}$ que $a$ y $b$ coinciden eventualmente, y escribiendo
 
 $$
 \boxed{
@@ -284,7 +284,7 @@ N\le n\Longrightarrow a_n=b_n.
 }
 $$
 
-La coincidencia eventual es estrictamente más débil que la igualdad de sucesiones. La igualdad exige coincidencia en **todo** índice; $a\sim_{\mathrm{ev}}b$ permite discrepancias antes de algún umbral.
+La coincidencia eventual es estrictamente más débil que la igualdad de sucesiones. La igualdad exige coincidencia en todo índice; $a\sim_{\mathrm{ev}}b$ permite discrepancias antes de algún umbral.
 
 ### Proposición 13.2.7 — La coincidencia eventual es una relación de equivalencia
 
@@ -442,8 +442,8 @@ $$
 
 ∎
 
-La proposición expresa con exactitud la intuición que necesitábamos: **dos sucesiones coinciden eventualmente si, después de eliminar un tramo inicial adecuado y reindexar, se vuelven literalmente la misma sucesión**.
+La proposición expresa con exactitud la intuición que necesitábamos: dos sucesiones coinciden eventualmente si, después de eliminar un tramo inicial adecuado y reindexar, se vuelven literalmente la misma sucesión.
 
 > **Prueba de estrés conceptual.** «Eventualmente» no significa «para muchos índices», «para infinitos índices» ni «cada vez con mayor frecuencia». Significa que existe un único umbral tras el cual ya no aparecen excepciones. Esta diferencia será decisiva cuando cuantifiquemos sobre tolerancias en la definición de convergencia.
 
-La infraestructura lógica está ahora preparada. En la sección siguiente podremos formular rigurosamente qué significa que los términos de una sucesión real permanezcan eventualmente dentro de **cada** tolerancia positiva alrededor de un número real, conservando visible el orden de los cuantificadores.
+La infraestructura lógica está ahora preparada. En la sección siguiente podremos formular rigurosamente qué significa que los términos de una sucesión real permanezcan eventualmente dentro de cada tolerancia positiva alrededor de un número real, conservando visible el orden de los cuantificadores.

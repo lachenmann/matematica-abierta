@@ -10,11 +10,11 @@ $$
 
 La pregunta decisiva es si la recíproca vale en $\mathbb Q$.
 
-Si toda sucesión racional de Cauchy poseyera un límite racional, el sistema racional sería suficiente para absorber todos sus procesos de aproximación coherentes. Si, por el contrario, podemos construir una sucesión de Cauchy sin límite en $\mathbb Q$, aparecerá una nueva forma de incompletitud: no un hueco descrito directamente por un conjunto ordenado, sino un **proceso racional que exige un punto que $\mathbb Q$ no contiene**.
+Si toda sucesión racional de Cauchy poseyera un límite racional, el sistema racional sería suficiente para absorber todos sus procesos de aproximación coherentes. Si, por el contrario, podemos construir una sucesión de Cauchy sin límite en $\mathbb Q$, aparecerá una nueva forma de incompletitud: no un hueco descrito directamente por un conjunto ordenado, sino un proceso racional que exige un punto que $\mathbb Q$ no contiene.
 
 ### Definición 8.7.1 — Completitud secuencial de $\mathbb Q$
 
-Diremos que $\mathbb Q$ es **secuencialmente completo** si toda sucesión racional de Cauchy converge racionalmente a algún elemento de $\mathbb Q$; es decir, si
+Diremos que $\mathbb Q$ es secuencialmente completo si toda sucesión racional de Cauchy converge racionalmente a algún elemento de $\mathbb Q$; es decir, si
 
 $$
 \boxed{
@@ -59,7 +59,7 @@ $$
 
 Como $2_{\mathbb Q}\neq0_{\mathbb Q}$, esta división está definida.
 
-Definimos el **operador racional de bisección**
+Definimos el operador racional de bisección
 
 $$
 \Phi_2:
@@ -944,4 +944,4 @@ La insuficiencia que en el capítulo 3 apareció como ausencia de un supremo rac
 
 El siguiente paso no será asignar arbitrariamente un nuevo número a cada sucesión de Cauchy. Distintas sucesiones pueden describir la misma posición asintótica. Antes de formar un nuevo sistema numérico debemos determinar cuándo dos procesos de Cauchy deben considerarse equivalentes y demostrar que las operaciones término a término respetan esa identificación.
 
-Ése será el problema del **Capítulo 9 — El cuerpo de Cauchy**.
+Ése será el problema del Capítulo 9 — El cuerpo de Cauchy.

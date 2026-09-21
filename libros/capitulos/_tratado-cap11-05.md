@@ -176,7 +176,7 @@ Queda demostrada la equivalencia.
 
 ∎
 
-La proposición anterior es más fuerte que una mera monotonía: $\Phi$ **refleja** también el orden estricto. Por tanto ninguna desigualdad estricta puede perderse al pasar de un modelo al otro.
+La proposición anterior es más fuerte que una mera monotonía: $\Phi$ refleja también el orden estricto. Por tanto ninguna desigualdad estricta puede perderse al pasar de un modelo al otro.
 
 ### Corolario 11.5.2 — Preservación y reflexión del orden no estricto
 

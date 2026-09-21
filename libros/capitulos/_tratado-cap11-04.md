@@ -48,7 +48,7 @@ $$
 
 ∎
 
-El lema muestra que $\Phi(x)$ es exactamente la **traza racional inferior** de $x$ dentro del cuerpo de Cauchy. Esta descripción no identifica los modelos: el miembro izquierdo es pertenencia a una cortadura de $\mathbb R_D$ y el derecho es una desigualdad en $\mathbb R_C$.
+El lema muestra que $\Phi(x)$ es exactamente la traza racional inferior de $x$ dentro del cuerpo de Cauchy. Esta descripción no identifica los modelos: el miembro izquierdo es pertenencia a una cortadura de $\mathbb R_D$ y el derecho es una desigualdad en $\mathbb R_C$.
 
 ### Proposición 11.4.2 — Preservación de la suma
 

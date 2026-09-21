@@ -14,7 +14,7 @@ es no vacío y está acotado superiormente, pero no posee supremo racional.
 
 La dificultad que obliga a pasar de $\mathbb Q$ a $\mathbb R$ no es, por tanto, una deficiencia de las operaciones ni una falta de densidad del orden. Es un defecto global: ciertas familias ordenadas determinan fronteras que el propio sistema no contiene.
 
-Antes de construir esas fronteras por cortaduras o por sucesiones de Cauchy, abstraeremos la estructura que ya conocemos en $\mathbb Q$. Esto permitirá distinguir con precisión qué propiedades pertenecen a **todo cuerpo ordenado**, cuáles dependen de la **arquimedianidad** y cuál es la propiedad adicional de **completitud** que los racionales no poseen.
+Antes de construir esas fronteras por cortaduras o por sucesiones de Cauchy, abstraeremos la estructura que ya conocemos en $\mathbb Q$. Esto permitirá distinguir con precisión qué propiedades pertenecen a todo cuerpo ordenado, cuáles dependen de la arquimedianidad y cuál es la propiedad adicional de completitud que los racionales no poseen.
 
 La secuencia conceptual del capítulo será
 

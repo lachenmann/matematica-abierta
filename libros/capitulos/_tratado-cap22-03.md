@@ -1,17 +1,17 @@
 ## 22.3. Primitivas y regla de Newton–Leibniz {#sec-ta-22-3}
 
-La primera parte del teorema construyó una primitiva de cada integranda continua, aunque todavía no le habíamos dado ese nombre. El problema inverso admite un enunciado más amplio: si conocemos una función cuya derivada interior coincide con una integranda **ya integrable**, ¿podemos recuperar la integral a partir de sus valores extremos? Debemos separar las condiciones: la mera existencia de una primitiva no proporciona, por sí sola, la integrabilidad de su derivada. Asimismo, la continuidad de la primitiva en los extremos es indispensable para aplicar el teorema del valor medio allí.
+La primera parte del teorema construyó una primitiva de cada integranda continua, aunque todavía no le habíamos dado ese nombre. El problema inverso admite un enunciado más amplio: si conocemos una función cuya derivada interior coincide con una integranda ya integrable, ¿podemos recuperar la integral a partir de sus valores extremos? Debemos separar las condiciones: la mera existencia de una primitiva no proporciona, por sí sola, la integrabilidad de su derivada. Asimismo, la continuidad de la primitiva en los extremos es indispensable para aplicar el teorema del valor medio allí.
 
 ### Definición 22.3.1 — Primitiva sobre un intervalo cerrado
-Sean $a<b$ y $f:[a,b]\to\mathbb R$. Llamaremos **primitiva de $f$ en $[a,b]$** a una función $H:[a,b]\to\mathbb R$ que cumpla conjuntamente:
+Sean $a<b$ y $f:[a,b]\to\mathbb R$. Llamaremos primitiva de $f$ en $[a,b]$ a una función $H:[a,b]\to\mathbb R$ que cumpla conjuntamente:
 
-1. $H$ es continua en **cada** punto de $[a,b]$, con la topología relativa del dominio;
+1. $H$ es continua en cada punto de $[a,b]$, con la topología relativa del dominio;
 2. $H$ es derivable en cada $x\in(a,b)$ y $H'(x)=f(x)$.
 
 La igualdad de derivadas se exige solamente en el interior. Los valores $f(a)$ y $f(b)$ no se recuperan de derivadas bilaterales inexistentes en los extremos. Tampoco incluimos la integrabilidad de $f$ en esta definición: será una hipótesis separada cuando usemos el símbolo $\int_a^b f$.
 
 ### Lema 22.3.2 — El incremento de una primitiva queda encerrado entre las sumas de Darboux
-Sea $f:[a,b]\to\mathbb R$ **acotada**, sin suponer todavía su integrabilidad, y sea $H$ una primitiva suya. Para toda partición $P\in\operatorname{Part}[a,b]$ se cumple
+Sea $f:[a,b]\to\mathbb R$ acotada, sin suponer todavía su integrabilidad, y sea $H$ una primitiva suya. Para toda partición $P\in\operatorname{Part}[a,b]$ se cumple
 
 $$
 \boxed{L(f,P)\le H(b)-H(a)\le U(f,P).}
@@ -26,7 +26,7 @@ $$
 \tag{22.3.2}
 $$
 
-Consideremos un índice **arbitrario y fijo** $k<n$. La continuidad de $H$ en todo el dominio contiene la continuidad relativa en $I_k$; su derivabilidad interior contiene la derivabilidad en $(x_k,x_{k+1})$. Por el valor medio en subintervalos Corolario §20.3.3 — Valor medio en un subintervalo del dominio original, existe $c\in(x_k,x_{k+1})$ con
+Consideremos un índice arbitrario y fijo $k<n$. La continuidad de $H$ en todo el dominio contiene la continuidad relativa en $I_k$; su derivabilidad interior contiene la derivabilidad en $(x_k,x_{k+1})$. Por el valor medio en subintervalos Corolario §20.3.3 — Valor medio en un subintervalo del dominio original, existe $c\in(x_k,x_{k+1})$ con
 
 $$
  H(x_{k+1})-H(x_k)=H'(c)\Delta_k=f(c)\Delta_k.
@@ -39,7 +39,7 @@ $$
 \tag{22.3.3}
 $$
 
-El punto $c$ ya no aparece en (22.3.3). Por tanto, **para cada índice $k<n$ hemos probado directamente una proposición universal**, sin formar una función $k\mapsto c_k$ ni elegir testigos de manera simultánea. La monotonía de las sumas finitas, demostrable por inducción a partir de las propiedades del orden real y de Proposición §14.2.2 — Identidades de los bloques de sumación, permite sumar (22.3.3):
+El punto $c$ ya no aparece en (22.3.3). Por tanto, para cada índice $k<n$ hemos probado directamente una proposición universal, sin formar una función $k\mapsto c_k$ ni elegir testigos de manera simultánea. La monotonía de las sumas finitas, demostrable por inducción a partir de las propiedades del orden real y de Proposición §14.2.2 — Identidades de los bloques de sumación, permite sumar (22.3.3):
 
 $$
  \sum_{k=0}^{n-1}m_k\Delta_k
@@ -52,7 +52,7 @@ La suma central es telescópica: por asociatividad y cancelación de términos a
 **Lectura.** El teorema del valor medio entrega un testigo por intervalo, pero la prueba sólo retiene desigualdades que no dependen del testigo. El encierro tiene sentido incluso antes de conocer si $f$ es integrable.
 
 ### Teorema 22.3.3 — Regla de Newton–Leibniz para integrandas integrables que admiten primitiva
-Sean $a<b$, sea $f:[a,b]\to\mathbb R$ **integrable** y sea $H:[a,b]\to\mathbb R$ una primitiva de $f$ en el sentido de Definición §22.3.1 — Primitiva sobre un intervalo cerrado. Entonces
+Sean $a<b$, sea $f:[a,b]\to\mathbb R$ integrable y sea $H:[a,b]\to\mathbb R$ una primitiva de $f$ en el sentido de Definición §22.3.1 — Primitiva sobre un intervalo cerrado. Entonces
 
 $$
 \boxed{\int_a^b f(t)\,dt=H(b)-H(a).}
@@ -62,7 +62,7 @@ $$
 No se exige que $f$ sea continua: bastan su integrabilidad, la continuidad de $H$ en el cerrado y la identidad $H'=f$ en el interior.
 
 **Demostración.**
-La integrabilidad de $f$ incorpora su acotación y legitima las sumas de Darboux. Escribamos $D:=H(b)-H(a)$. El lema Lema §22.3.2 — El incremento de una primitiva queda encerrado entre las sumas de Darboux asegura que, **para toda** partición $P$,
+La integrabilidad de $f$ incorpora su acotación y legitima las sumas de Darboux. Escribamos $D:=H(b)-H(a)$. El lema Lema §22.3.2 — El incremento de una primitiva queda encerrado entre las sumas de Darboux asegura que, para toda partición $P$,
 
 $$
  L(f,P)\le D\le U(f,P).
@@ -94,12 +94,12 @@ $$
  G'(x)=H'(x)-K'(x)=f(x)-f(x)=0.
 $$
 
-El corolario Corolario §20.5.4 — Derivada idénticamente nula si y sólo si la función es constante afirma entonces que $G$ es constante **también en los extremos**. Definimos el real determinado $C:=G(a)=H(a)-K(a)$; así $G(x)=C$ para cada $x$, lo que equivale a (22.3.6). Si $C'$ verificase la misma fórmula, evaluar en $a$ daría $C'=H(a)-K(a)=C$.
+El corolario Corolario §20.5.4 — Derivada idénticamente nula si y sólo si la función es constante afirma entonces que $G$ es constante también en los extremos. Definimos el real determinado $C:=G(a)=H(a)-K(a)$; así $G(x)=C$ para cada $x$, lo que equivale a (22.3.6). Si $C'$ verificase la misma fórmula, evaluar en $a$ daría $C'=H(a)-K(a)=C$.
 
 Para la recíproca, fijemos un real $C$ y construyamos la función $J(x):=K(x)+C$, mediante operaciones puntuales tipadas. Es continua en $[a,b]$ por Teorema §17.4.3 — Estabilidad de la continuidad bajo operaciones algebraicas y valor absoluto y derivable en el interior con $J'(x)=K'(x)+0=f(x)$ por Corolario §19.4.2 — Multiplicación por escalares, opuestos y diferencias. Cumple, pues, ambas cláusulas de la definición de primitiva. $\square$
 
 ### Corolario 22.3.5 — Existencia de primitivas para integrandas continuas y fórmula clásica
-Si $f:[a,b]\to\mathbb R$ es continua en todo $[a,b]$, entonces admite una primitiva $F_{f,a}$ en el sentido anterior. Además, para **cualquier** primitiva $H$ de $f$,
+Si $f:[a,b]\to\mathbb R$ es continua en todo $[a,b]$, entonces admite una primitiva $F_{f,a}$ en el sentido anterior. Además, para cualquier primitiva $H$ de $f$,
 
 $$
 \boxed{\int_a^b f=F_{f,a}(b)=H(b)-H(a).}

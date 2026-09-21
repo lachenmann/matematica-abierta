@@ -2,7 +2,7 @@
 
 La densidad y la propiedad arquimediana muestran que $\mathbb Q$ es un sistema ordenado extraordinariamente rico, pero no muestran que todo corte producido por el orden corresponda a un racional. Para exhibir una falla concreta de completitud estudiaremos el lugar que debería ocupar una raíz cuadrada positiva de $2$.
 
-No presupondremos la existencia de tal raíz. Primero demostraremos que **ningún racional** puede tener cuadrado igual a $2$; después construiremos un subconjunto racional acotado que no posee supremo racional.
+No presupondremos la existencia de tal raíz. Primero demostraremos que ningún racional puede tener cuadrado igual a $2$; después construiremos un subconjunto racional acotado que no posee supremo racional.
 
 ### Notación 3.9.1 — El número dos en los tres sistemas {#ta-numero-dos-tres-sistemas}
 
@@ -28,13 +28,13 @@ Mientras no se adopten convenciones explícitas de identificación, los subíndi
 
 *Glosario: [paridad natural](../otros/tratado-de-analisis-glosario.md#gl-paridad-natural)*
 
-Un natural $n$ es **par** si existe $k\in\mathbb N$ tal que
+Un natural $n$ es par si existe $k\in\mathbb N$ tal que
 
 $$
 n=2_{\mathbb N}k.
 $$
 
-Es **impar** si existe $k\in\mathbb N$ tal que
+Es impar si existe $k\in\mathbb N$ tal que
 
 $$
 n=2_{\mathbb N}k+1.
@@ -395,6 +395,6 @@ contradiciendo $(s-h)^2>2$. Luego todo $x\in S_2$ satisface $x\leq s-h$. Así $s
 
 Ambos casos son imposibles. Por tanto $S_2$ no tiene supremo en $\mathbb Q$. ∎
 
-Este resultado identifica el problema que obligará a construir los números reales. El fallo de $\mathbb Q$ no consiste en una pobreza local —entre dos racionales siempre hay otro— ni en falta de alcance arquimediano. Consiste en que ciertos subconjuntos no vacíos y acotados superiormente determinan una frontera que **no pertenece al propio sistema**.
+Este resultado identifica el problema que obligará a construir los números reales. El fallo de $\mathbb Q$ no consiste en una pobreza local —entre dos racionales siempre hay otro— ni en falta de alcance arquimediano. Consiste en que ciertos subconjuntos no vacíos y acotados superiormente determinan una frontera que no pertenece al propio sistema.
 
 ---

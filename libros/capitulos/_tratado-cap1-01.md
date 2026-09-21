@@ -2,9 +2,9 @@
 
 La intuición habitual presenta los naturales como una sucesión que comienza en cero y avanza, paso a paso, mediante la operación de tomar el siguiente número. Aquí esa sucesión todavía no existe: debemos producirla usando únicamente conjuntos.
 
-La idea de von Neumann consiste en comenzar con el vacío y hacer que cada nuevo número contenga a todos sus predecesores. Para formalizar el paso de un estadio al siguiente introduciremos enseguida una operación de **sucesor**.
+La idea de von Neumann consiste en comenzar con el vacío y hacer que cada nuevo número contenga a todos sus predecesores. Para formalizar el paso de un estadio al siguiente introduciremos enseguida una operación de sucesor.
 
-El [axioma de infinito](../otros/tratado-de-analisis-glosario.md#gl-axioma-infinito) nos garantizará que existe al menos un conjunto cerrado bajo este proceso. Sin embargo, no queremos declarar natural a cualquier elemento de cualquier conjunto semejante: un conjunto inductivo puede contener objetos adicionales que nada tienen que ver con la sucesión generada desde el cero. Por eso el verdadero problema será aislar la parte **forzada** por dos exigencias: contener el cero y permanecer cerrada al tomar sucesores.
+El [axioma de infinito](../otros/tratado-de-analisis-glosario.md#gl-axioma-infinito) nos garantizará que existe al menos un conjunto cerrado bajo este proceso. Sin embargo, no queremos declarar natural a cualquier elemento de cualquier conjunto semejante: un conjunto inductivo puede contener objetos adicionales que nada tienen que ver con la sucesión generada desde el cero. Por eso el verdadero problema será aislar la parte forzada por dos exigencias: contener el cero y permanecer cerrada al tomar sucesores.
 
 ### Notación 1.1.1 — Cero {#ta-cero}
 
@@ -36,7 +36,7 @@ En particular, $x\in S(x)$.
 
 *Glosario: [conjunto inductivo](../otros/tratado-de-analisis-glosario.md#gl-conjunto-inductivo)*
 
-Un conjunto $I$ es **inductivo** si
+Un conjunto $I$ es inductivo si
 
 1. $0\in I$;
 2. $x\in I\Rightarrow S(x)\in I$.
@@ -103,7 +103,7 @@ $$
 
 Como $\omega_J$ es inductivo, la minimalidad da $\omega_I\subseteq\omega_J$; intercambiando $I$ y $J$, $\omega_J\subseteq\omega_I$. Aplicamos doble inclusión. ∎
 
-La minimalidad muestra que $\omega_I$ está contenido en todo conjunto inductivo; la independencia demuestra algo todavía más importante: el resultado no depende del conjunto $I$ que usamos como ambiente inicial. Hemos obtenido, por tanto, un objeto **canónico**. Ya podemos retirar el subíndice auxiliar y reconocer en este conjunto el sistema de los naturales.
+La minimalidad muestra que $\omega_I$ está contenido en todo conjunto inductivo; la independencia demuestra algo todavía más importante: el resultado no depende del conjunto $I$ que usamos como ambiente inicial. Hemos obtenido, por tanto, un objeto canónico. Ya podemos retirar el subíndice auxiliar y reconocer en este conjunto el sistema de los naturales.
 
 ---
 
