@@ -13,6 +13,8 @@ decide la parada. Las cotas de error se expresan en los reales de Mathlib.
 
 namespace Continuo.Indices
 
+open Denumerable
+
 /-- Precisión entera positiva, con dos bits de margen. -/
 def sqrtPrecision (n : ℕ) : ℕ := 2 ^ (n + 2)
 
@@ -79,7 +81,6 @@ theorem addPair_correct (p q : ℕ × ℕ)
   have hq' : (q.2 : ℚ) ≠ 0 := by exact_mod_cast hq
   simp only [pairValue, addPair, Nat.cast_add, Nat.cast_mul]
   field_simp [hp', hq']
-  ring
 
 /-- La suma aritmética de pares es primitiva recursiva. -/
 theorem primrec_addPair : Primrec₂ addPair := by
@@ -191,7 +192,7 @@ theorem shiftedPacked_correct (c : Code) (n : ℕ) :
 theorem shiftedName_error (c : Code) (n : ℕ) :
     |(shiftedName c n : ℝ) - shiftedReal c| < 1 / (2 : ℝ) ^ n := by
   have hdyadic : (dyadic (n + 2) : ℝ) = 1 / (2 : ℝ) ^ (n + 4) := by
-    simp [dyadic, Nat.cast_pow, show n + 2 + 2 = n + 4 by omega]
+    simp [dyadic, show n + 2 + 2 = n + 4 by omega]
   have hscale2 : (2 : ℝ) ^ (n + 2) = (2 : ℝ) ^ n * 4 := by
     rw [pow_add]
     norm_num
