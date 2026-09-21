@@ -37,7 +37,7 @@ def intervalRadius (n : ℕ) : ℚ := (1 / 2 : ℚ) ^ n
 
 theorem intervalRadius_cast (n : ℕ) :
     (intervalRadius n : ℝ) = 1 / (2 : ℝ) ^ n := by
-  simp [intervalRadius, div_pow]
+  simp [intervalRadius]
 
 /-- Las aproximaciones desplazadas cumplen exactamente el contrato del radio. -/
 theorem shiftedName_radius (c : Code) (n : ℕ) :
@@ -70,7 +70,6 @@ theorem intervalStage_true (a q : ℚ) (n : ℕ) (x : ℝ)
     have hx := (abs_lt.mp hfast).2
     linarith
   · cases hstage
-  · cases hstage
 
 /-- Todo certificado negativo corresponde a una desigualdad real estricta. -/
 theorem intervalStage_false (a q : ℚ) (n : ℕ) (x : ℝ)
@@ -83,7 +82,6 @@ theorem intervalStage_false (a q : ℚ) (n : ℕ) (x : ℝ)
       exact_mod_cast hright
     have hx := (abs_lt.mp hfast).1
     linarith
-  · cases hstage
 
 /-- Etapa concreta para el corte de la raíz desplazada. -/
 def shiftedCutStage (c : Code) (q : ℚ) (n : ℕ) : Option Bool :=
