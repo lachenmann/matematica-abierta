@@ -8,6 +8,7 @@ import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
 import MatematicaAbierta.TeoriaDeFunciones.Correspondencias
 import MatematicaAbierta.TeoriaDeFunciones.SemanticaEquivalencia
 import MatematicaAbierta.TeoriaDeFunciones.NaturalidadSondas
+import MatematicaAbierta.TeoriaDeFunciones.DensidadTerminal
 import MatematicaAbierta.Continuo.ProgramaTransparente
 import MatematicaAbierta.Continuo.SimulacionAcotada
 import MatematicaAbierta.Continuo.PrimerExito
