@@ -1,0 +1,5 @@
+## 21.0. De los intervalos a la acumulación de cantidades {#sec-ta-21-0}
+
+La diferenciación proporciona información local a partir de incrementos de una función. La integración planteará un problema diferente: asociar un número a una función definida en un intervalo mediante aproximaciones finitas compatibles. No comenzaremos dando por conocida el área bajo una curva ni invirtiendo la derivación. La arquitectura adoptada define primero la integral de Darboux–Riemann: particiones, cotas locales, sumas inferiores y superiores, supremo e ínfimo de esas sumas y, finalmente, igualdad de ambos números.
+
+Una partición no es simplemente un dibujo de líneas verticales. Es un objeto finito ordenado, con puntos extremos especificados y subintervalos de anchura estrictamente positiva. El refinamiento será una relación entre tales objetos; sus propiedades deberán demostrarse antes de comparar las sumas que aún no hemos definido. Toda la construcción inicial se efectuará sobre un intervalo real cerrado **no degenerado** $[a,b]$, con $a<b$. Los intervalos degenerados y la orientación inversa requerirán una convención posterior, no una división por una longitud nula.
