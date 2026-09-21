@@ -66,6 +66,59 @@ theorem cero_no_tiene_inverso_multiplicativo (c : F) : (0 : F) * c ≠ 1 := by
   have h01 : (0 : F) = 1 := h0.symm.trans hc
   exact (zero_ne_one : (0 : F) ≠ 1) h01
 
+/-- MA-CON-0020, §8.1: multiplicar por menos uno da el inverso aditivo.
+La prueba utiliza distributividad derecha y la unicidad de §5.1. -/
+theorem menos_uno_por (a : F) : (-1 : F) * a = -a := by
+  have h : a + (-1 : F) * a = 0 := by
+    calc
+      a + (-1 : F) * a = (1 : F) * a + (-1 : F) * a := by rw [one_mul]
+      _ = ((1 : F) + (-1 : F)) * a := (add_mul 1 (-1) a).symm
+      _ = (0 : F) * a := by rw [add_neg_cancel]
+      _ = 0 := cero_absorbe_producto a
+  exact inverso_aditivo_unico a ((-1 : F) * a) (-a) h (add_neg_cancel a)
+
+/-- MA-CON-0020, §8.2: mover el signo menos del primer factor. -/
+theorem menos_primer_factor (a b : F) : (-a) * b = -(a * b) := by
+  have h : a * b + (-a) * b = 0 := by
+    calc
+      a * b + (-a) * b = (a + -a) * b := (add_mul a (-a) b).symm
+      _ = (0 : F) * b := by rw [add_neg_cancel]
+      _ = 0 := cero_absorbe_producto b
+  exact inverso_aditivo_unico (a * b) ((-a) * b) (-(a * b)) h
+    (add_neg_cancel (a * b))
+
+/-- MA-CON-0020, §8.2: mover el signo menos del segundo factor.
+Se deduce del caso anterior por conmutatividad del producto. -/
+theorem menos_segundo_factor (a b : F) : a * (-b) = -(a * b) := by
+  calc
+    a * (-b) = (-b) * a := mul_comm a (-b)
+    _ = -(b * a) := menos_primer_factor b a
+    _ = -(a * b) := by rw [mul_comm b a]
+
+/-- MA-CON-0020, §8.4: doble negación, demostrada antes de §8.3 para hacer
+explícita la dependencia y evitar cualquier circularidad. -/
+theorem doble_negacion (a : F) : -(-a) = a := by
+  have h : (-a) + a = 0 := by
+    calc
+      (-a) + a = a + (-a) := add_comm (-a) a
+      _ = 0 := add_neg_cancel a
+  exact (inverso_aditivo_unico (-a) a (-(-a)) h (add_neg_cancel (-a))).symm
+
+/-- MA-CON-0020, §8.3: producto de dos factores negativos.
+Se usan los dos resultados de §8.2 y la doble negación, sin circularidad. -/
+theorem producto_dos_negativos (a b : F) : (-a) * (-b) = a * b := by
+  calc
+    (-a) * (-b) = -(a * (-b)) := menos_primer_factor a (-b)
+    _ = -(-(a * b)) := by rw [menos_segundo_factor a b]
+    _ = a * b := doble_negacion (a * b)
+
+/-- MA-CON-0020, §8.4: cero es su propio inverso aditivo. -/
+theorem inverso_aditivo_cero : -(0 : F) = 0 := by
+  have h : (0 : F) + 0 = 0 := zero_add 0
+  have hz : (0 : F) = -(0 : F) :=
+    inverso_aditivo_unico (0 : F) 0 (-0) h (add_neg_cancel (0 : F))
+  exact hz.symm
+
 /-- MA-CON-0020, §10: cancelación multiplicativa (el factor debe ser no nulo). -/
 theorem cancelacion_multiplicativa (a b c : F) (hc : c ≠ 0)
     (h : a * c = b * c) : a = b := by
