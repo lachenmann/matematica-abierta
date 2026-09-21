@@ -1,0 +1,2893 @@
+---
+lang: es
+format: html
+---
+
+# 3F · Dualidad
+
+**Estado de publicación:** sección 3F completa y auditada; 33 ejercicios traducidos y 33 soluciones originales, revisión visual de Quarto satisfactoria. **Procedencia:** `[TRAD]` traducción de trabajo no oficial de Sheldon Axler, *Linear Algebra Done Right*, cuarta edición, ejemplar oficial web fechado 16-08-2026, pp. 105–118, consultado en <https://linear.axler.net/LADR4e.pdf>. Licencia CC BY-NC 4.0. Se conservan la notación del autor `V'`, `T'` y las ecuaciones 3.115, 3.117 y 3.126. **Se presentan aquí los ejercicios 1–33 de 3F; la traducción de la exposición y de todos los enunciados de ejercicios está completa.**
+
+> [NOTA EDITORIAL · ATRIBUCIÓN] Traducción y adaptación **no oficiales** de la sección 3F de Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición, [PDF del autor](https://linear.axler.net/LADR4e.pdf), pp. 105–118 (versión fechada el 16 de agosto de 2026). Material original bajo [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/): atribución, indicación de modificaciones y uso no comercial. Modificaciones de este proyecto: traducción española, disposición Markdown, comentarios y glosario propios; las 33 soluciones `[SOL]` son elaboraciones originales separadas. Las ilustraciones o materiales de terceros pueden tener condiciones particulares según los créditos del libro. Esta nota documenta la procedencia; no sustituye una evaluación jurídica del uso previsto.
+
+## Espacio dual y aplicación dual
+
+Las aplicaciones lineales cuyo espacio de llegada es el cuerpo de escalares desempeñan un papel especial en álgebra lineal; por ello reciben un nombre propio.
+
+### 3.108 Definición: funcional lineal
+
+Un **funcional lineal** sobre $V$ es una aplicación lineal de $V$ en $\mathbf F$; equivale a un elemento de $\mathcal L(V,\mathbf F)$.
+
+### 3.109 Ejemplos: funcionales lineales
+
+- Definamos $\varphi:\mathbf R^3\to\mathbf R$ por $\varphi(x,y,z)=4x-5y+2z$. Entonces $\varphi$ es un funcional lineal sobre $\mathbf R^3$.
+- Fijemos $(c_1,\ldots,c_n)\in\mathbf F^n$. Definamos $\varphi:\mathbf F^n\to\mathbf F$ por $\varphi(x_1,\ldots,x_n)=c_1x_1+\cdots+c_nx_n$. Entonces $\varphi$ es un funcional lineal sobre $\mathbf F^n$.
+- Definamos $\varphi:\mathcal P(\mathbf R)\to\mathbf R$ por $\varphi(p)=3p''(5)+7p(4)$. Entonces $\varphi$ es un funcional lineal sobre $\mathcal P(\mathbf R)$.
+- Definamos $\varphi:\mathcal P(\mathbf R)\to\mathbf R$ por $\varphi(p)=\int_0^1 p(x)\,dx$ para cada $p\in\mathcal P(\mathbf R)$. Entonces $\varphi$ es un funcional lineal sobre $\mathcal P(\mathbf R)$.
+
+El espacio vectorial $\mathcal L(V,\mathbf F)$ recibe también un nombre propio y una notación especial.
+
+### 3.110 Definición: espacio dual, $V'$
+
+El **espacio dual** de $V$, denotado por $V'$, es el espacio vectorial de todos los funcionales lineales sobre $V$:
+
+$$\boxed{V'=\mathcal L(V,\mathbf F).}$$
+
+### 3.111 Dimensión del espacio dual
+
+Si $V$ tiene dimensión finita, también la tiene $V'$, y
+
+$$\boxed{\dim V'=\dim V.}$$
+
+**Demostración.** Por 3.72,
+
+$$\dim V'=\dim\mathcal L(V,\mathbf F)=(\dim V)(\dim\mathbf F)=\dim V,$$
+
+pues $\mathbf F$ tiene dimensión uno sobre sí mismo.
+
+En la siguiente definición, el lema de la aplicación lineal (3.4) garantiza que cada $\varphi_j$ está bien definido.
+
+### 3.112 Definición: base dual
+
+Si $v_1,\ldots,v_n$ es una base de $V$, su **base dual** es la lista $\varphi_1,\ldots,\varphi_n$ de elementos de $V'$ definida mediante
+
+$$\varphi_j(v_k)=\begin{cases}1,&k=j,\\0,&k\ne j.\end{cases}$$
+
+### 3.113 Ejemplo: dual de la base estándar
+
+En $\mathbf F^n$, para $n\ge1$, el funcional coordenada $\varphi_j$ viene dado por
+
+$$\varphi_j(x_1,\ldots,x_n)=x_j.$$
+
+Si $e_1,\ldots,e_n$ es la base estándar, entonces $\varphi_j(e_k)=1$ si $j=k$ y vale $0$ en caso contrario. Por ello $\varphi_1,\ldots,\varphi_n$ constituye su base dual.
+
+El resultado siguiente muestra que la base dual de una base de $V$ consta de los funcionales que proporcionan los coeficientes al expresar un vector de $V$ como combinación lineal de los vectores de esa base.
+
+### 3.114 La base dual proporciona los coeficientes de una combinación lineal
+
+Sean $v_1,\ldots,v_n$ una base de $V$ y $\varphi_1,\ldots,\varphi_n$ su base dual. Para cada $v\in V$,
+
+$$\boxed{v=\varphi_1(v)v_1+\cdots+\varphi_n(v)v_n.}$$
+
+**Demostración.** Escribamos, de manera única,
+
+$$\tag{3.115}v=c_1v_1+\cdots+c_nv_n.$$
+
+Al aplicar $\varphi_j$ a ambos miembros se obtiene $\varphi_j(v)=c_j$; reemplazando cada coeficiente en 3.115 resulta la identidad buscada.
+
+El siguiente resultado muestra que la base dual es, efectivamente, una base del espacio dual. Queda así justificada esta denominación.
+
+### 3.116 La base dual es una base del espacio dual
+
+Si $V$ es de dimensión finita, la base dual de cualquier base de $V$ es una base de $V'$.
+
+**Demostración.** Sean $v_1,\ldots,v_n$ una base de $V$ y $\varphi_1,\ldots,\varphi_n$ su base dual. Para demostrar la independencia lineal, supongamos que $a_1,\ldots,a_n\in\mathbf F$ satisfacen
+
+$$\tag{3.117}a_1\varphi_1+\cdots+a_n\varphi_n=0.$$
+
+Evaluando ambos miembros en $v_k$, para cada $k\in\{1,\ldots,n\}$, obtenemos
+
+$$0=(a_1\varphi_1+\cdots+a_n\varphi_n)(v_k)=a_k.$$
+
+Por tanto, $a_1=\cdots=a_n=0$ y la lista dual es linealmente independiente. Su longitud es $n=\dim V'$ por 3.111; el criterio 2.38 implica que constituye una base.
+
+En la siguiente definición, si $T$ es una aplicación lineal de $V$ en $W$, obsérvese que $T'$ va de $W'$ a $V'$.
+
+### 3.118 Definición: aplicación dual, $T'$
+
+Para $T\in\mathcal L(V,W)$, la **aplicación dual** es
+
+$$\boxed{T':W'\longrightarrow V',\qquad T'(\varphi)=\varphi\circ T.}$$
+
+Para $\varphi\in W'$, la composición $\varphi\circ T$ es una aplicación lineal de $V$ en $\mathbf F$, de manera que $T'(\varphi)\in V'$. La inversión de dirección es esencial: un funcional sobre $W$, precompuesto con $T:V\to W$, se convierte en un funcional sobre $V$. Para $\varphi,\psi\in W'$ y $\lambda\in\mathbf F$,
+
+$$T'(\varphi+\psi)=(\varphi+\psi)\circ T=T'(\varphi)+T'(\psi),$$
+
+$$T'(\lambda\varphi)=(\lambda\varphi)\circ T=\lambda T'(\varphi).$$
+
+Esto comprueba que $T'$ es lineal. En el ejemplo siguiente, la notación prima tiene dos significados independientes: $D'$ es la aplicación dual de $D$, mientras que $p'$ es la derivada del polinomio $p$.
+
+### 3.119 Ejemplo: aplicación dual de la aplicación lineal de derivación
+
+Definamos $D:\mathcal P(\mathbf R)\to\mathcal P(\mathbf R)$ por
+
+$$Dp=p'.$$
+
+- Supongamos que $\varphi$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ definido por $\varphi(p)=p(3)$. Entonces $D'(\varphi)$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ dado por
+
+$$
+\begin{aligned}
+(D'(\varphi))(p)
+&=(\varphi\circ D)(p)\\
+&=\varphi(Dp)\\
+&=\varphi(p')\\
+&=p'(3).
+\end{aligned}
+$$
+
+Así, $D'(\varphi)$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ que lleva $p$ a $p'(3)$.
+
+- Supongamos que $\varphi$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ definido por
+
+$$\varphi(p)=\int_0^1 p.$$
+
+Entonces $D'(\varphi)$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ dado por
+
+$$
+\begin{aligned}
+(D'(\varphi))(p)
+&=(\varphi\circ D)(p)\\
+&=\varphi(Dp)\\
+&=\varphi(p')\\
+&=\int_0^1 p'\\
+&=p(1)-p(0).
+\end{aligned}
+$$
+
+Así, $D'(\varphi)$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ que lleva $p$ a $p(1)-p(0)$.
+
+En el resultado siguiente, $a$ y $b$ implican que la función que lleva $T$ a $T'$ es una aplicación lineal de $\mathcal L(V,W)$ en $\mathcal L(W',V')$.
+
+En $c$, obsérvese la inversión del orden: $ST$ en el miembro izquierdo se convierte en $T'S'$ en el miembro derecho.
+
+### 3.120 Propiedades algebraicas de las aplicaciones duales
+
+Supongamos que $T\in\mathcal L(V,W)$. Entonces:
+
+1. $(S+T)'=S'+T'$ para todo $S\in\mathcal L(V,W)$;
+2. $(\lambda T)'=\lambda T'$ para todo $\lambda\in\mathbf F$;
+3. $(ST)'=T'S'$ para todo $S\in\mathcal L(W,U)$.
+
+**Demostración.** Las demostraciones de $a$ y $b$ se dejan al lector.
+
+Para demostrar $c$, sea $\varphi\in U'$. Entonces
+
+$$
+\begin{aligned}
+(ST)'(\varphi)
+&=\varphi\circ(ST)\\
+&=(\varphi\circ S)\circ T\\
+&=T'(\varphi\circ S)\\
+&=T'(S'(\varphi))\\
+&=(T'S')(\varphi).
+\end{aligned}
+$$
+
+La primera, tercera y cuarta igualdades se deben a la definición de aplicación dual; la segunda se debe a la asociatividad de la composición de funciones, y la última se sigue de la definición de composición. La ecuación anterior muestra que
+
+$$(ST)'(\varphi)=(T'S')(\varphi)$$
+
+para todo $\varphi\in U'$. Por tanto,
+
+$$\boxed{(ST)'=T'S'.}$$
+
+> Algunos libros utilizan la notación $V^*$ y $T^*$ para la dualidad en lugar de $V'$ y $T'$. Aquí, sin embargo, reservamos la notación $T^*$ para el **adjunto**, que se introducirá cuando estudiemos aplicaciones lineales sobre espacios con producto interno en el capítulo 7.
+
+## Espacio nulo e imagen de la dual de una aplicación lineal
+
+Nuestro objetivo en esta subsección es describir $\operatorname{null}T'$ y $\operatorname{range}T'$ en términos de $\operatorname{range}T$ y $\operatorname{null}T$. Para ello necesitaremos la siguiente definición.
+
+### 3.121 Definición: anulador, $U^0$
+
+Para $U\subseteq V$, el **anulador** de $U$, denotado por $U^0$, se define por
+
+$$
+\boxed{U^0=\{\varphi\in V':\varphi(u)=0\text{ para todo }u\in U\}.}
+$$
+
+### 3.122 Ejemplo: elemento de un anulador
+
+Supongamos que $U$ es el subespacio de $\mathcal P(\mathbf R)$ formado por los múltiplos polinómicos de $x^2$.
+
+Si $\varphi$ es el funcional lineal sobre $\mathcal P(\mathbf R)$ definido por
+
+$$
+\varphi(p)=p'(0),
+$$
+
+entonces $\varphi\in U^0$.
+
+Para $U\subseteq V$, el anulador $U^0$ es un subconjunto del espacio dual $V'$. Por tanto, $U^0$ depende del espacio vectorial que contiene a $U$, de modo que una notación como $U_V^0$ sería más precisa. Sin embargo, el espacio vectorial ambiente siempre quedará claro por el contexto, por lo que utilizaremos la notación más sencilla $U^0$.
+
+### 3.123 Ejemplo: anulador de un subespacio bidimensional de $\mathbf R^5$
+
+Sean $e_1,e_2,e_3,e_4,e_5$ la base estándar de $\mathbf R^5$, y sean
+
+$$
+\varphi_1,\varphi_2,\varphi_3,\varphi_4,\varphi_5\in(\mathbf R^5)'
+$$
+
+la base dual de $e_1,e_2,e_3,e_4,e_5$. Supongamos que
+
+$$
+U=\operatorname{span}(e_1,e_2)
+=\{(x_1,x_2,0,0,0)\in\mathbf R^5:x_1,x_2\in\mathbf R\}.
+$$
+
+Queremos demostrar que
+
+$$
+\boxed{U^0=\operatorname{span}(\varphi_3,\varphi_4,\varphi_5).}
+$$
+
+Recordemos (véase 3.113) que $\varphi_j$ es el funcional lineal sobre $\mathbf R^5$ que selecciona la $j$-ésima coordenada:
+
+$$
+\varphi_j(x_1,x_2,x_3,x_4,x_5)=x_j.
+$$
+
+Supongamos primero que
+
+$$
+\varphi\in\operatorname{span}(\varphi_3,\varphi_4,\varphi_5).
+$$
+
+Entonces existen $c_3,c_4,c_5\in\mathbf R$ tales que
+
+$$
+\varphi=c_3\varphi_3+c_4\varphi_4+c_5\varphi_5.
+$$
+
+Si $(x_1,x_2,0,0,0)\in U$, entonces
+
+$$
+\varphi(x_1,x_2,0,0,0)
+=(c_3\varphi_3+c_4\varphi_4+c_5\varphi_5)(x_1,x_2,0,0,0)
+=0.
+$$
+
+Por tanto, $\varphi\in U^0$. Hemos demostrado así que
+
+$$
+\operatorname{span}(\varphi_3,\varphi_4,\varphi_5)\subseteq U^0.
+$$
+
+Para demostrar la inclusión contraria, supongamos ahora que $\varphi\in U^0$. Como la base dual es una base de $(\mathbf R^5)'$, existen $c_1,c_2,c_3,c_4,c_5\in\mathbf R$ tales que
+
+$$
+\varphi
+=c_1\varphi_1+c_2\varphi_2+c_3\varphi_3+c_4\varphi_4+c_5\varphi_5.
+$$
+
+Como $e_1\in U$ y $\varphi\in U^0$,
+
+$$
+0=\varphi(e_1)
+=(c_1\varphi_1+c_2\varphi_2+c_3\varphi_3+c_4\varphi_4+c_5\varphi_5)(e_1)
+=c_1.
+$$
+
+De manera análoga, $e_2\in U$, y por tanto $c_2=0$. Así,
+
+$$
+\varphi=c_3\varphi_3+c_4\varphi_4+c_5\varphi_5.
+$$
+
+Por consiguiente,
+
+$$
+\varphi\in\operatorname{span}(\varphi_3,\varphi_4,\varphi_5),
+$$
+
+lo que muestra que
+
+$$
+U^0\subseteq\operatorname{span}(\varphi_3,\varphi_4,\varphi_5).
+$$
+
+En consecuencia,
+
+$$
+\boxed{U^0=\operatorname{span}(\varphi_3,\varphi_4,\varphi_5).}
+$$
+
+
+### 3.124 El anulador es un subespacio
+
+Supongamos que $U\subseteq V$. Entonces $U^0$ es un subespacio de $V'$.
+
+**Demostración.** Obsérvese que $0\in U^0$ (aquí $0$ es el funcional lineal cero sobre $V$), porque el funcional lineal cero aplicado a todo vector de $U$ es igual a $0\in\mathbf F$.
+
+> [ERRATA] El PDF oficial vigente ya incorpora la corrección publicada para la p. 110: el valor del funcional cero es $0\in\mathbf F$, no «el vector $0$ de $V$».
+
+Supongamos que $\varphi,\psi\in U^0$. Entonces $\varphi,\psi\in V'$ y
+
+$$
+\varphi(u)=\psi(u)=0
+$$
+
+para todo $u\in U$. Si $u\in U$, entonces
+
+$$
+(\varphi+\psi)(u)=\varphi(u)+\psi(u)=0+0=0.
+$$
+
+Por tanto, $\varphi+\psi\in U^0$.
+
+De manera análoga, $U^0$ es cerrado bajo multiplicación por escalares. Así, 1.34 implica que $U^0$ es un subespacio de $V'$.
+
+El resultado siguiente muestra que $\dim U^0$ es la diferencia entre $\dim V$ y $\dim U$. Por ejemplo, esto muestra que si $U$ es un subespacio bidimensional de $\mathbf R^5$, entonces $U^0$ es un subespacio tridimensional de $(\mathbf R^5)'$, como en el Ejemplo 3.123.
+
+El resultado siguiente puede demostrarse siguiendo el patrón del Ejemplo 3.123: elíjase una base $u_1,\ldots,u_m$ de $U$; extiéndase a una base
+
+$$
+u_1,\ldots,u_m,\ldots,u_n
+$$
+
+de $V$; sea
+
+$$
+\varphi_1,\ldots,\varphi_m,\ldots,\varphi_n
+$$
+
+la base dual de $V'$; y demuéstrese entonces que
+
+$$
+\varphi_{m+1},\ldots,\varphi_n
+$$
+
+es una base de $U^0$, lo que implica el resultado deseado. Conviene que construyas la demostración que acabamos de esbozar, aunque aquí se presenta una demostración más breve.
+
+### 3.125 Dimensión del anulador
+
+Supongamos que $V$ tiene dimensión finita y que $U$ es un subespacio de $V$. Entonces
+
+$$
+\boxed{\dim U^0=\dim V-\dim U.}
+$$
+
+**Demostración.** Sea $i\in\mathcal L(U,V)$ la aplicación de inclusión definida por
+
+$$
+i(u)=u
+$$
+
+para cada $u\in U$. Entonces $i'$ es una aplicación lineal de $V'$ en $U'$. El teorema fundamental de las aplicaciones lineales $3.21$, aplicado a $i'$, muestra que
+
+$$
+\dim\operatorname{range}i'+\dim\operatorname{null}i'=\dim V'.
+$$
+
+Sin embargo,
+
+$$
+\operatorname{null}i'=U^0
+$$
+
+(como puede verse directamente a partir de las definiciones), y
+
+$$
+\dim V'=\dim V
+$$
+
+por 3.111. Por tanto, podemos reescribir la ecuación anterior como
+
+$$
+\tag{3.126}
+\dim\operatorname{range}i'+\dim U^0=\dim V.
+$$
+
+Si $\varphi\in U'$, entonces $\varphi$ puede extenderse a un funcional lineal $\psi$ sobre $V$ (véase, por ejemplo, el Ejercicio 13 de la Sección 3A). La definición de $i'$ muestra que
+
+$$
+i'(\psi)=\varphi.
+$$
+
+Así, $\varphi\in\operatorname{range}i'$, lo que implica que
+
+$$
+\operatorname{range}i'=U'.
+$$
+
+Por consiguiente,
+
+$$
+\dim\operatorname{range}i'
+=\dim U'
+=\dim U.
+$$
+
+Entonces 3.126 se convierte en
+
+$$
+\dim U+\dim U^0=\dim V,
+$$
+
+como se quería demostrar.
+
+El resultado siguiente puede ser una herramienta útil para demostrar que un subespacio es tan grande como sea posible —véase (a)— o tan pequeño como sea posible —véase (b).
+
+### 3.127 Condición para que el anulador sea igual a $\{0\}$ o a todo el espacio
+
+Supongamos que $V$ tiene dimensión finita y que $U$ es un subespacio de $V$. Entonces:
+
+1. $U^0=\{0\}\iff U=V$;
+2. $U^0=V'\iff U=\{0\}$.
+
+**Demostración.** Para demostrar (a), tenemos
+
+$$
+\begin{aligned}
+U^0=\{0\}
+&\iff \dim U^0=0\\
+&\iff \dim U=\dim V\\
+&\iff U=V,
+\end{aligned}
+$$
+
+donde la segunda equivalencia se sigue de 3.125 y la tercera equivalencia se sigue de 2.39.
+
+De manera análoga, para demostrar (b), tenemos
+
+$$
+\begin{aligned}
+U^0=V'
+&\iff \dim U^0=\dim V'\\
+&\iff \dim U^0=\dim V\\
+&\iff \dim U=0\\
+&\iff U=\{0\},
+\end{aligned}
+$$
+
+donde una dirección de la primera equivalencia se sigue de 2.39, la segunda equivalencia se sigue de 3.111 y la tercera equivalencia se sigue de 3.125.
+
+La demostración de (a) del resultado siguiente no utiliza la hipótesis de que $V$ y $W$ tengan dimensión finita.
+
+### 3.128 El espacio nulo de $T'$
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Entonces:
+
+1. $\operatorname{null}T'=(\operatorname{range}T)^0$;
+2. $\dim\operatorname{null}T'=\dim\operatorname{null}T+\dim W-\dim V$.
+
+**Demostración.**
+
+**(a)** Supongamos primero que $\varphi\in\operatorname{null}T'$. Entonces
+
+$$
+0=T'(\varphi)=\varphi\circ T.
+$$
+
+Por tanto,
+
+$$
+0=(\varphi\circ T)(v)=\varphi(Tv)
+$$
+
+para todo $v\in V$. Así,
+
+$$
+\varphi\in(\operatorname{range}T)^0,
+$$
+
+lo que implica
+
+$$
+\operatorname{null}T'\subseteq(\operatorname{range}T)^0.
+$$
+
+Para demostrar la inclusión contraria, supongamos ahora que
+
+$$
+\varphi\in(\operatorname{range}T)^0.
+$$
+
+Entonces
+
+$$
+\varphi(Tv)=0
+$$
+
+para todo vector $v\in V$. Por consiguiente,
+
+$$
+0=\varphi\circ T=T'(\varphi).
+$$
+
+En otras palabras, $\varphi\in\operatorname{null}T'$, lo que muestra que
+
+$$
+(\operatorname{range}T)^0\subseteq\operatorname{null}T'.
+$$
+
+Esto completa la demostración de (a).
+
+**(b)** Tenemos
+
+$$
+\begin{aligned}
+\dim\operatorname{null}T'
+&=\dim(\operatorname{range}T)^0\\
+&=\dim W-\dim\operatorname{range}T\\
+&=\dim W-(\dim V-\dim\operatorname{null}T)\\
+&=\dim\operatorname{null}T+\dim W-\dim V,
+\end{aligned}
+$$
+
+donde la primera igualdad se sigue de (a), la segunda de 3.125 y la tercera del teorema fundamental de las aplicaciones lineales (3.21).
+
+El resultado siguiente puede ser útil porque a veces es más fácil verificar que $T'$ es inyectiva que demostrar directamente que $T$ es sobreyectiva.
+
+### 3.129 $T$ sobreyectiva equivale a $T'$ inyectiva
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Entonces
+
+$$
+\boxed{T\text{ es sobreyectiva}\iff T'\text{ es inyectiva}.}
+$$
+
+**Demostración.** Tenemos
+
+$$
+\begin{aligned}
+T\in\mathcal L(V,W)\text{ es sobreyectiva}
+&\iff \operatorname{range}T=W\\
+&\iff (\operatorname{range}T)^0=\{0\}\\
+&\iff \operatorname{null}T'=\{0\}\\
+&\iff T'\text{ es inyectiva},
+\end{aligned}
+$$
+
+donde la segunda equivalencia se sigue de 3.127(a) y la tercera equivalencia se sigue de 3.128(a).
+
+### 3.130 La imagen de $T'$
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Entonces:
+
+1. $\dim\operatorname{range}T'=\dim\operatorname{range}T$;
+2. $\operatorname{range}T'=(\operatorname{null}T)^0$.
+
+**Demostración.**
+
+**(a)** Tenemos
+
+$$
+\begin{aligned}
+\dim\operatorname{range}T'
+&=\dim W'-\dim\operatorname{null}T'\\
+&=\dim W-\dim(\operatorname{range}T)^0\\
+&=\dim\operatorname{range}T,
+\end{aligned}
+$$
+
+donde la primera igualdad se sigue de 3.21, la segunda de 3.111 y 3.128(a), y la tercera de 3.125.
+
+**(b)** Supongamos primero que $\varphi\in\operatorname{range}T'$. Entonces existe $\psi\in W'$ tal que
+
+$$
+\varphi=T'(\psi).
+$$
+
+Si $v\in\operatorname{null}T$, entonces
+
+$$
+\varphi(v)
+=(T'(\psi))(v)
+=(\psi\circ T)(v)
+=\psi(Tv)
+=\psi(0)
+=0.
+$$
+
+Por tanto,
+
+$$
+\varphi\in(\operatorname{null}T)^0,
+$$
+
+lo que implica
+
+$$
+\operatorname{range}T'\subseteq(\operatorname{null}T)^0.
+$$
+
+Completaremos la demostración mostrando que $\operatorname{range}T'$ y $(\operatorname{null}T)^0$ tienen la misma dimensión. En efecto,
+
+$$
+\begin{aligned}
+\dim\operatorname{range}T'
+&=\dim\operatorname{range}T\\
+&=\dim V-\dim\operatorname{null}T\\
+&=\dim(\operatorname{null}T)^0,
+\end{aligned}
+$$
+
+donde la primera igualdad se sigue de (a), la segunda de 3.21 y la tercera de 3.125.
+
+El resultado siguiente debe compararse con 3.129.
+
+### 3.131 $T$ inyectiva equivale a $T'$ sobreyectiva
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Entonces
+
+$$
+\boxed{T\text{ es inyectiva}\iff T'\text{ es sobreyectiva}.}
+$$
+
+**Demostración.** Tenemos
+
+$$
+\begin{aligned}
+T\text{ es inyectiva}
+&\iff \operatorname{null}T=\{0\}\\
+&\iff (\operatorname{null}T)^0=V'\\
+&\iff \operatorname{range}T'=V',
+\end{aligned}
+$$
+
+donde la segunda equivalencia se sigue de 3.127(b) y la tercera de 3.130(b).
+
+## Matriz de la aplicación dual
+
+Para el resultado siguiente suponemos que $v_1,\ldots,v_n$ es una base de $V$, con base dual $\varphi_1,\ldots,\varphi_n$ de $V'$. También suponemos que $w_1,\ldots,w_m$ es una base de $W$, con base dual $\psi_1,\ldots,\psi_m$ de $W'$.
+
+Así, $\mathcal M(T)$ se calcula con respecto a las bases recién indicadas de $V$ y $W$, mientras que $\mathcal M(T')$ se calcula con respecto a las bases duales recién indicadas de $W'$ y $V'$. Con estas elecciones de bases se obtiene el siguiente resultado particularmente elegante.
+
+### 3.132 La matriz de $T'$ es la traspuesta de la matriz de $T$
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Entonces
+
+$$
+\boxed{\mathcal M(T')=(\mathcal M(T))^{\mathrm t}.}
+$$
+
+**Demostración.** Sea
+
+$$
+A=\mathcal M(T)
+\qquad\text{y}\qquad
+C=\mathcal M(T').
+$$
+
+Supongamos que $1\le j\le m$ y $1\le k\le n$. Por la definición de $\mathcal M(T')$,
+
+$$
+T'(\psi_j)=\sum_{r=1}^{n} C_{r,j}\varphi_r.
+$$
+
+El miembro izquierdo de la ecuación anterior es $\psi_j\circ T$. Por tanto, al aplicar ambos miembros a $v_k$ obtenemos
+
+$$
+\begin{aligned}
+(\psi_j\circ T)(v_k)
+&=\sum_{r=1}^{n} C_{r,j}\varphi_r(v_k)\\
+&=C_{k,j}.
+\end{aligned}
+$$
+
+Por otro lado,
+
+$$
+\begin{aligned}
+(\psi_j\circ T)(v_k)
+&=\psi_j(Tv_k)\\
+&=\psi_j\left(\sum_{r=1}^{m} A_{r,k}w_r\right)\\
+&=\sum_{r=1}^{m} A_{r,k}\psi_j(w_r)\\
+&=A_{j,k}.
+\end{aligned}
+$$
+
+Comparando las últimas líneas de las dos cadenas de igualdades anteriores, obtenemos
+
+$$
+C_{k,j}=A_{j,k}.
+$$
+
+Por consiguiente,
+
+$$
+C=A^{\mathrm t}.
+$$
+
+En otras palabras,
+
+$$
+\boxed{\mathcal M(T')=(\mathcal M(T))^{\mathrm t},}
+$$
+
+como se quería demostrar.
+
+Ahora utilizaremos la dualidad para dar una demostración alternativa de que el rango columna de una matriz es igual a su rango fila. Este resultado ya fue demostrado anteriormente con herramientas distintas; véase 3.57.
+
+### 3.133 El rango columna es igual al rango fila
+
+Supongamos que $A\in\mathbf F^{m,n}$. Entonces el rango columna de $A$ es igual al rango fila de $A$.
+
+**Demostración.** Definamos
+
+$$
+T:\mathbf F^{n,1}\longrightarrow\mathbf F^{m,1}
+$$
+
+por
+
+$$
+Tx=Ax.
+$$
+
+Así, $\mathcal M(T)=A$, donde $\mathcal M(T)$ se calcula con respecto a las bases estándar de $\mathbf F^{n,1}$ y $\mathbf F^{m,1}$. Entonces
+
+$$
+\begin{aligned}
+\text{rango columna de }A
+&=\text{rango columna de }\mathcal M(T)\\
+&=\dim\operatorname{range}T\\
+&=\dim\operatorname{range}T'\\
+&=\text{rango columna de }\mathcal M(T')\\
+&=\text{rango columna de }A^{\mathrm t}\\
+&=\text{rango fila de }A,
+\end{aligned}
+$$
+
+donde la segunda igualdad se sigue de 3.78, la tercera de 3.130(a), la cuarta de 3.78, la quinta de 3.132 y la última de las definiciones de rango fila y rango columna.
+
+Véase el Ejercicio 8 de la Sección 7A para otra demostración alternativa del resultado anterior.
+
+## Ejercicios 3F
+
+### Ejercicio 1
+
+Explica por qué todo funcional lineal es sobreyectivo o es la aplicación cero.
+
+### Ejercicio 2
+
+Da tres ejemplos distintos de funcionales lineales sobre $\mathbf R^{[0,1]}$.
+
+### Ejercicio 3
+
+Supongamos que $V$ tiene dimensión finita y que $v\in V$ con $v\ne0$. Demuestra que existe $\varphi\in V'$ tal que
+
+$$
+\varphi(v)=1.
+$$
+
+### Ejercicio 4
+
+Supongamos que $V$ tiene dimensión finita y que $U$ es un subespacio de $V$ tal que $U\ne V$. Demuestra que existe $\varphi\in V'$ tal que
+
+$$
+\varphi(u)=0
+$$
+
+para todo $u\in U$, pero $\varphi\ne0$.
+
+### Ejercicio 5
+
+Supongamos que $T\in\mathcal L(V,W)$ y que $w_1,\ldots,w_m$ es una base de $\operatorname{range}T$. Por tanto, para cada $v\in V$ existen números únicos
+
+$$
+\varphi_1(v),\ldots,\varphi_m(v)
+$$
+
+tales que
+
+$$
+Tv=\varphi_1(v)w_1+\cdots+\varphi_m(v)w_m,
+$$
+
+lo que define funciones $\varphi_1,\ldots,\varphi_m$ de $V$ en $\mathbf F$. Demuestra que cada una de las funciones $\varphi_1,\ldots,\varphi_m$ es un funcional lineal sobre $V$.
+
+### Ejercicio 6
+
+Supongamos que $\varphi,\beta\in V'$. Demuestra que
+
+$$
+\operatorname{null}\varphi\subseteq\operatorname{null}\beta
+$$
+
+si y solo si existe $c\in\mathbf F$ tal que
+
+$$
+\beta=c\varphi.
+$$
+
+### Ejercicio 7
+
+Supongamos que $V_1,\ldots,V_m$ son espacios vectoriales. Demuestra que
+
+$$
+(V_1\times\cdots\times V_m)'
+$$
+
+y
+
+$$
+V_1'\times\cdots\times V_m'
+$$
+
+son espacios vectoriales isomorfos.
+
+### Ejercicio 8
+
+Supongamos que $v_1,\ldots,v_n$ es una base de $V$ y que $\varphi_1,\ldots,\varphi_n$ es la base dual de $V'$. Define
+
+$$
+\Gamma:V\to\mathbf F^n
+$$
+
+y
+
+$$
+\Lambda:\mathbf F^n\to V
+$$
+
+por
+
+$$
+\Gamma(v)=(\varphi_1(v),\ldots,\varphi_n(v))
+$$
+
+y
+
+$$
+\Lambda(a_1,\ldots,a_n)=a_1v_1+\cdots+a_nv_n.
+$$
+
+Explica por qué $\Gamma$ y $\Lambda$ son inversas entre sí.
+
+### Ejercicio 9
+
+Supongamos que $m$ es un entero positivo. Demuestra que la base dual de la base
+
+$$
+1,x,\ldots,x^m
+$$
+
+de $\mathcal P_m(\mathbf R)$ es
+
+$$
+\varphi_0,\varphi_1,\ldots,\varphi_m,
+$$
+
+donde
+
+$$
+\varphi_k(p)=\frac{p^{(k)}(0)}{k!}.
+$$
+
+Aquí $p^{(k)}$ denota la $k$-ésima derivada de $p$, entendiendo que la derivada de orden $0$ de $p$ es el propio $p$.
+
+### Ejercicio 10
+
+Supongamos que $m$ es un entero positivo.
+
+1. Demuestra que
+   $$
+   1,x-5,\ldots,(x-5)^m
+   $$
+   es una base de $\mathcal P_m(\mathbf R)$.
+2. ¿Cuál es la base dual de la base de (a)?
+
+### Ejercicio 11
+
+Supongamos que $v_1,\ldots,v_n$ es una base de $V$ y que $\varphi_1,\ldots,\varphi_n$ es la base dual correspondiente de $V'$. Supongamos que $\psi\in V'$. Demuestra que
+
+$$
+\psi=\psi(v_1)\varphi_1+\cdots+\psi(v_n)\varphi_n.
+$$
+
+### Ejercicio 12
+
+Supongamos que $S,T\in\mathcal L(V,W)$.
+
+1. Demuestra que
+   $$
+   (S+T)'=S'+T'.
+   $$
+2. Demuestra que
+   $$
+   (\lambda T)'=\lambda T'
+   $$
+   para todo $\lambda\in\mathbf F$.
+
+Este ejercicio pide verificar (a) y (b) de 3.120.
+
+### Ejercicio 13
+
+Demuestra que la aplicación dual del operador identidad sobre $V$ es el operador identidad sobre $V'$.
+
+### Ejercicio 14
+
+Define
+
+$$
+T:\mathbf R^3\to\mathbf R^2
+$$
+
+por
+
+$$
+T(x,y,z)=(4x+5y+6z,\,7x+8y+9z).
+$$
+
+Supongamos que $\varphi_1,\varphi_2$ es la base dual de la base estándar de $\mathbf R^2$ y que $\psi_1,\psi_2,\psi_3$ es la base dual de la base estándar de $\mathbf R^3$.
+
+1. Describe los funcionales lineales $T'(\varphi_1)$ y $T'(\varphi_2)$.
+2. Escribe $T'(\varphi_1)$ y $T'(\varphi_2)$ como combinaciones lineales de $\psi_1,\psi_2,\psi_3$.
+
+### Ejercicio 15
+
+Define
+
+$$
+T:\mathcal P(\mathbf R)\to\mathcal P(\mathbf R)
+$$
+
+por
+
+$$
+(Tp)(x)=x^2p(x)+p''(x)
+$$
+
+para cada $x\in\mathbf R$.
+
+1. Supongamos que $\varphi\in\mathcal P(\mathbf R)'$ está definido por
+   $$
+   \varphi(p)=p'(4).
+   $$
+   Describe el funcional lineal $T'(\varphi)$ sobre $\mathcal P(\mathbf R)$.
+2. Supongamos que $\varphi\in\mathcal P(\mathbf R)'$ está definido por
+   $$
+   \varphi(p)=\int_0^1 p.
+   $$
+   Evalúa
+   $$
+   (T'(\varphi))(x^3).
+   $$
+
+### Ejercicio 16
+
+Supongamos que $W$ tiene dimensión finita y que $T\in\mathcal L(V,W)$. Demuestra que
+
+$$
+T'=0\iff T=0.
+$$
+
+### Ejercicio 17
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Demuestra que $T$ es invertible si y solo si
+
+$$
+T'\in\mathcal L(W',V')
+$$
+
+es invertible.
+
+### Ejercicio 18
+
+Supongamos que $V$ y $W$ tienen dimensión finita. Demuestra que la aplicación que lleva
+
+$$
+T\in\mathcal L(V,W)
+$$
+
+a
+
+$$
+T'\in\mathcal L(W',V')
+$$
+
+es un isomorfismo de $\mathcal L(V,W)$ sobre $\mathcal L(W',V')$.
+
+### Ejercicio 19
+
+Supongamos que $U\subseteq V$. Explica por qué
+
+$$
+U^0=\{\varphi\in V':U\subseteq\operatorname{null}\varphi\}.
+$$
+
+### Ejercicio 20
+
+Supongamos que $V$ tiene dimensión finita y que $U$ es un subespacio de $V$. Demuestra que
+
+$$
+U=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in U^0\}.
+$$
+
+### Ejercicio 21
+
+Supongamos que $V$ tiene dimensión finita y que $U$ y $W$ son subespacios de $V$.
+
+1. Demuestra que
+   $$
+   W^0\subseteq U^0
+   $$
+   si y solo si
+   $$
+   U\subseteq W.
+   $$
+2. Demuestra que
+   $$
+   W^0=U^0
+   $$
+   si y solo si
+   $$
+   U=W.
+   $$
+
+### Ejercicio 22
+
+Supongamos que $V$ tiene dimensión finita y que $U$ y $W$ son subespacios de $V$.
+
+1. Demuestra que
+   $$
+   (U+W)^0=U^0\cap W^0.
+   $$
+2. Demuestra que
+   $$
+   (U\cap W)^0=U^0+W^0.
+   $$
+
+### Ejercicio 23
+
+Supongamos que $V$ tiene dimensión finita y que $\varphi_1,\ldots,\varphi_m\in V'$. Demuestra que los tres conjuntos siguientes son iguales entre sí.
+
+1. $\operatorname{span}(\varphi_1,\ldots,\varphi_m)$.
+2. $\bigl((\operatorname{null}\varphi_1)\cap\cdots\cap(\operatorname{null}\varphi_m)\bigr)^0$.
+3. $\{\varphi\in V':(\operatorname{null}\varphi_1)\cap\cdots\cap(\operatorname{null}\varphi_m)\subseteq\operatorname{null}\varphi\}$.
+
+### Ejercicio 24
+
+Supongamos que $V$ tiene dimensión finita y que $v_1,\ldots,v_m\in V$. Define una aplicación lineal
+
+$$
+\Gamma:V'\to\mathbf F^m
+$$
+
+por
+
+$$
+\Gamma(\varphi)=(\varphi(v_1),\ldots,\varphi(v_m)).
+$$
+
+1. Demuestra que $v_1,\ldots,v_m$ genera $V$ si y solo si $\Gamma$ es inyectiva.
+2. Demuestra que $v_1,\ldots,v_m$ es linealmente independiente si y solo si $\Gamma$ es sobreyectiva.
+
+### Ejercicio 25
+
+Supongamos que $V$ tiene dimensión finita y que $\varphi_1,\ldots,\varphi_m\in V'$. Define una aplicación lineal
+
+$$
+\Gamma:V\to\mathbf F^m
+$$
+
+por
+
+$$
+\Gamma(v)=(\varphi_1(v),\ldots,\varphi_m(v)).
+$$
+
+1. Demuestra que $\varphi_1,\ldots,\varphi_m$ genera $V'$ si y solo si $\Gamma$ es inyectiva.
+2. Demuestra que $\varphi_1,\ldots,\varphi_m$ es linealmente independiente si y solo si $\Gamma$ es sobreyectiva.
+
+### Ejercicio 26
+
+Supongamos que $V$ tiene dimensión finita y que $\Omega$ es un subespacio de $V'$. Demuestra que
+
+$$
+\Omega=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in\Omega\}^0.
+$$
+
+### Ejercicio 27
+
+Supongamos que $T\in\mathcal L(\mathcal P_5(\mathbf R))$ y que
+
+$$
+\operatorname{null}T'=\operatorname{span}(\varphi),
+$$
+
+donde $\varphi$ es el funcional lineal sobre $\mathcal P_5(\mathbf R)$ definido por $\varphi(p)=p(8)$. Demuestra que
+
+$$
+\operatorname{range}T=\{p\in\mathcal P_5(\mathbf R):p(8)=0\}.
+$$
+
+### Ejercicio 28
+
+Supongamos que $V$ tiene dimensión finita y que $\varphi_1,\ldots,\varphi_m$ es una lista linealmente independiente en $V'$. Demuestra que
+
+$$
+\dim\bigl((\operatorname{null}\varphi_1)\cap\cdots\cap(\operatorname{null}\varphi_m)\bigr)=\dim V-m.
+$$
+
+### Ejercicio 29
+
+Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$.
+
+1. Demuestra que, si $\varphi\in W'$ y
+
+   $$
+   \operatorname{null}T'=\operatorname{span}(\varphi),
+   $$
+
+   entonces
+
+   $$
+   \operatorname{range}T=\operatorname{null}\varphi.
+   $$
+
+2. Demuestra que, si $\psi\in V'$ y
+
+   $$
+   \operatorname{range}T'=\operatorname{span}(\psi),
+   $$
+
+   entonces
+
+   $$
+   \operatorname{null}T=\operatorname{null}\psi.
+   $$
+
+### Ejercicio 30
+
+Supongamos que $V$ tiene dimensión finita y que $\varphi_1,\ldots,\varphi_n$ es una base de $V'$. Demuestra que existe una base de $V$ cuya base dual es $\varphi_1,\ldots,\varphi_n$.
+
+### Ejercicio 31
+
+Supongamos que $U$ es un subespacio de $V$. Sea $i:U\to V$ la aplicación de inclusión definida por $i(u)=u$. Por tanto,
+
+$$
+i'\in\mathcal L(V',U').
+$$
+
+1. Demuestra que
+
+   $$
+   \operatorname{null}i'=U^0.
+   $$
+
+2. Demuestra que, si $V$ tiene dimensión finita, entonces
+
+   $$
+   \operatorname{range}i'=U'.
+   $$
+
+3. Demuestra que, si $V$ tiene dimensión finita, entonces la aplicación inducida $\widetilde{i'}$ es un isomorfismo de
+
+   $$
+   V'/U^0
+   $$
+
+   sobre $U'$.
+
+El isomorfismo de (c) es natural en el sentido de que no depende de la elección de una base en ninguno de los dos espacios vectoriales.
+
+### Ejercicio 32
+
+El **espacio doble dual** de $V$, denotado por $V''$, se define como el espacio dual de $V'$. En otras palabras,
+
+$$
+V''=(V')'.
+$$
+
+Define $\Lambda:V\to V''$ mediante
+
+$$
+(\Lambda v)(\varphi)=\varphi(v)
+$$
+
+para cada $v\in V$ y cada $\varphi\in V'$.
+
+1. Demuestra que $\Lambda$ es una aplicación lineal de $V$ en $V''$.
+2. Demuestra que, si $T\in\mathcal L(V)$, entonces
+
+   $$
+   T''\circ\Lambda=\Lambda\circ T,
+   $$
+
+   donde $T''=(T')'$.
+3. Demuestra que, si $V$ tiene dimensión finita, entonces $\Lambda$ es un isomorfismo de $V$ sobre $V''$.
+
+Supongamos que $V$ tiene dimensión finita. Entonces $V$ y $V'$ son isomorfos, pero encontrar un isomorfismo de $V$ sobre $V'$ requiere generalmente elegir una base de $V$. En cambio, el isomorfismo $\Lambda$ de $V$ sobre $V''$ no requiere elegir una base y, por ello, se considera más natural.
+
+### Ejercicio 33
+
+Supongamos que $U$ es un subespacio de $V$. Sea $\pi:V\to V/U$ la aplicación cociente habitual. Por tanto,
+
+$$
+\pi'\in\mathcal L((V/U)',V').
+$$
+
+1. Demuestra que $\pi'$ es inyectiva.
+2. Demuestra que
+
+   $$
+   \operatorname{range}\pi'=U^0.
+   $$
+
+3. Concluye que $\pi'$ es un isomorfismo de $(V/U)'$ sobre $U^0$.
+
+El isomorfismo de (c) es natural en el sentido de que no depende de la elección de una base en ninguno de los dos espacios vectoriales. De hecho, aquí no se supone que ninguno de estos espacios vectoriales tenga dimensión finita.
+
+## Soluciones originales de los ejercicios de 3F
+
+> [SOL] Las demostraciones y construcciones de esta sección son originales del proyecto Matemática Abierta. Se presentan separadas de los enunciados `[TRAD]` y no proceden de un solucionario de Axler.
+
+### [SOL] Ejercicio 1
+
+**Solución.** Sea $\varphi\in V'=\mathcal L(V,\mathbf F)$. Su imagen $\operatorname{range}\varphi$ es un subespacio de $\mathbf F$, que tiene dimensión uno sobre sí mismo. Por tanto, solo hay dos posibilidades:
+
+- Si $\operatorname{range}\varphi=\{0\}$, entonces $\varphi(v)=0$ para todo $v\in V$ y $\varphi$ es la aplicación cero.
+- Si $\operatorname{range}\varphi\ne\{0\}$, tomemos $v_0\in V$ con $\varphi(v_0)=c\ne0$. Para cada $a\in\mathbf F$,
+
+  $$
+  \varphi\!\left(\frac{a}{c}v_0\right)=\frac{a}{c}\,\varphi(v_0)=a.
+  $$
+
+  Así, todo escalar pertenece a la imagen y $\varphi$ es sobreyectiva.
+
+Estas dos posibilidades agotan todos los casos. $\square$
+
+### [SOL] Ejercicio 2
+
+**Solución.** Recordemos que $\mathbf R^{[0,1]}$ es el espacio vectorial de **todas** las funciones $f:[0,1]\to\mathbf R$; no se exige que sean continuas ni integrables. Consideremos los tres funcionales de evaluación
+
+$$
+\begin{aligned}
+\varphi_1(f)&=f(0),\\
+\varphi_2(f)&=f\!\left(\tfrac12\right),\\
+\varphi_3(f)&=f(1).
+\end{aligned}
+$$
+
+Para cada $a\in\{0,\tfrac12,1\}$, definamos $E_a(f)=f(a)$. Para cualesquiera $f,g\in\mathbf R^{[0,1]}$ y $\lambda\in\mathbf R$, se cumple
+
+$$
+\begin{aligned}
+E_a(f+g)&=(f+g)(a)=f(a)+g(a)=E_a(f)+E_a(g),\\
+E_a(\lambda f)&=(\lambda f)(a)=\lambda f(a)=\lambda E_a(f),
+\end{aligned}
+$$
+
+Como $\varphi_1=E_0$, $\varphi_2=E_{1/2}$ y $\varphi_3=E_1$, los tres son funcionales lineales definidos sobre todo el espacio. Son distintos entre sí: para $f(t)=t$, sus valores son respectivamente $0$, $\tfrac12$ y $1$. $\square$
+
+> [NOTA] La evaluación puntual funciona sin hipótesis adicionales sobre las funciones; en cambio, $f\mapsto\int_0^1 f$ no está definido para todas las funciones de $\mathbf R^{[0,1]}$ y, por tanto, no sirve aquí como funcional sobre el espacio completo.
+
+### [SOL] Ejercicio 3
+
+**Solución.** Como $v\ne0$ y $V$ es finito-dimensional, la lista formada por $v$ es linealmente independiente y podemos extenderla a una base
+
+$$
+v,v_2,\ldots,v_n
+$$
+
+de $V$. Sea $\varphi_1,\ldots,\varphi_n$ la base dual correspondiente, cuya existencia garantiza la definición 3.112 (mediante el lema de la aplicación lineal 3.4). Por la propiedad definitoria de la base dual,
+
+$$
+\varphi_1(v)=1.
+$$
+
+Como $\varphi_1\in V'$, basta tomar $\varphi=\varphi_1$. $\square$
+
+> [NOTA] El funcional construido extrae la primera coordenada respecto de una base cuyo primer vector es $v$. La elección de la base no es única; solo se requiere la existencia de un funcional con el valor prescrito.
+
+### [SOL] Ejercicio 4
+
+**Solución.** Escribamos $m=\dim U$ y $n=\dim V$. Como $U$ es un subespacio propio de $V$ y $V$ tiene dimensión finita, $m<n$. Elijamos una base $u_1,\ldots,u_m$ de $U$ y extendámosla a una base
+
+$$
+u_1,\ldots,u_m,w_{m+1},\ldots,w_n
+$$
+
+de $V$. Esta construcción incluye el caso $U=\{0\}$, en el que la lista inicial es vacía. Sea $\varphi$ el funcional de la base dual correspondiente al vector $w_{m+1}$. Por definición,
+
+$$
+\varphi(u_j)=0\quad(1\le j\le m),
+\qquad
+\varphi(w_{m+1})=1.
+$$
+
+Todo $u\in U$ puede escribirse como $u=a_1u_1+\cdots+a_mu_m$. Por linealidad,
+
+$$
+\varphi(u)=a_1\varphi(u_1)+\cdots+a_m\varphi(u_m)=0.
+$$
+
+Sin embargo, $\varphi(w_{m+1})=1$, de modo que $\varphi\ne0$. Por tanto, $\varphi$ satisface las dos condiciones solicitadas. $\square$
+
+> [NOTA] En el lenguaje de 3.121, hemos construido un elemento no nulo de $U^0$. Esto concuerda con 3.125: $\dim U^0=\dim V-\dim U>0$.
+
+### [SOL] Ejercicio 5
+
+**Solución.** Para cada $v\in V$, la pertenencia $Tv\in\operatorname{range}T$ y el hecho de que $w_1,\ldots,w_m$ sea una base de dicho espacio garantizan la existencia y unicidad de los coeficientes $\varphi_j(v)$ en
+
+$$
+Tv=\sum_{j=1}^{m}\varphi_j(v)w_j.
+$$
+
+Sean $v,u\in V$ y $a,b\in\mathbf F$. Por la linealidad de $T$,
+
+$$
+\begin{aligned}
+T(av+bu)
+&=aTv+bTu\\
+&=a\sum_{j=1}^{m}\varphi_j(v)w_j
+  +b\sum_{j=1}^{m}\varphi_j(u)w_j\\
+&=\sum_{j=1}^{m}\bigl(a\varphi_j(v)+b\varphi_j(u)\bigr)w_j.
+\end{aligned}
+$$
+
+Por otra parte, la definición de los coeficientes aplicada a $av+bu$ da
+
+$$
+T(av+bu)=\sum_{j=1}^{m}\varphi_j(av+bu)w_j.
+$$
+
+La unicidad de las coordenadas respecto de una base implica, para cada $j\in\{1,\ldots,m\}$,
+
+$$
+\varphi_j(av+bu)=a\varphi_j(v)+b\varphi_j(u).
+$$
+
+Por tanto, cada $\varphi_j:V\to\mathbf F$ es lineal, es decir, $\varphi_j\in V'$. Si $\operatorname{range}T=\{0\}$, la base es la lista vacía y no hay funcionales que verificar; la afirmación sigue siendo válida. $\square$
+
+> [NOTA] Conceptualmente, $\varphi_j$ es la composición de $T:V\to\operatorname{range}T$ con el $j$-ésimo funcional coordenada de la base $w_1,\ldots,w_m$. La demostración anterior explicita la linealidad sin dar por supuesta esa composición.
+
+### [SOL] Ejercicio 6
+
+**Solución.** Demostremos ambas implicaciones.
+
+**($\Leftarrow$)** Si $\beta=c\varphi$ para algún $c\in\mathbf F$, todo $v\in\operatorname{null}\varphi$ satisface
+
+$$
+\beta(v)=c\varphi(v)=0.
+$$
+
+Así, $\operatorname{null}\varphi\subseteq\operatorname{null}\beta$.
+
+**($\Rightarrow$)** Supongamos ahora que $\operatorname{null}\varphi\subseteq\operatorname{null}\beta$. Si $\varphi=0$, entonces $\operatorname{null}\varphi=V$. Por la inclusión, $\beta(v)=0$ para todo $v\in V$; así, $\beta=0=0\varphi$.
+
+Supongamos que $\varphi\ne0$. Existe $w\in V$ con $\varphi(w)\ne0$. Poniendo
+
+$$
+v_0=\frac{1}{\varphi(w)}w,
+$$
+
+obtenemos $\varphi(v_0)=1$. Para cualquier $v\in V$, consideremos
+
+$$
+u=v-\varphi(v)v_0.
+$$
+
+Entonces
+
+$$
+\varphi(u)=\varphi(v)-\varphi(v)\varphi(v_0)=0,
+$$
+
+por lo que $u\in\operatorname{null}\varphi\subseteq\operatorname{null}\beta$. Como $v=u+\varphi(v)v_0$,
+
+$$
+\begin{aligned}
+\beta(v)
+&=\beta(u)+\varphi(v)\beta(v_0)\\
+&=\beta(v_0)\varphi(v).
+\end{aligned}
+$$
+
+Definiendo $c=\beta(v_0)\in\mathbf F$, la igualdad anterior vale para todo $v\in V$, de modo que $\beta=c\varphi$. Se obtienen las dos implicaciones. $\square$
+
+> [NOTA] No se ha supuesto que $V$ tenga dimensión finita. El paso esencial es descomponer cualquier vector en un elemento de $\operatorname{null}\varphi$ más un múltiplo de $v_0$.
+
+### [SOL] Ejercicio 7
+
+**Solución.** Para $1\le j\le m$, sea
+
+$$
+\iota_j:V_j\longrightarrow V_1\times\cdots\times V_m
+$$
+
+la aplicación lineal que coloca un vector de $V_j$ en la posición $j$ y ceros en las demás. Definamos
+
+$$
+\begin{aligned}
+\Psi:(V_1\times\cdots\times V_m)'&\longrightarrow V_1'\times\cdots\times V_m',\\
+\Psi(\varphi)&=(\varphi\circ\iota_1,\ldots,\varphi\circ\iota_m).
+\end{aligned}
+$$
+
+Cada componente $\varphi\circ\iota_j$ pertenece a $V_j'$, y la composición con una aplicación fija es lineal respecto del funcional. Por tanto, $\Psi$ está bien definida y es lineal.
+
+Construyamos una aplicación en la dirección contraria:
+
+$$
+\begin{aligned}
+\Theta:V_1'\times\cdots\times V_m'&\longrightarrow(V_1\times\cdots\times V_m)',\\
+\Theta(\varphi_1,\ldots,\varphi_m)(v_1,\ldots,v_m)
+&=\sum_{j=1}^{m}\varphi_j(v_j).
+\end{aligned}
+$$
+
+La suma de los valores de los funcionales es lineal en $(v_1,\ldots,v_m)$, de modo que $\Theta$ tiene valores en el dual del producto. Además, es lineal en la lista $(\varphi_1,\ldots,\varphi_m)$.
+
+Para cada $(\varphi_1,\ldots,\varphi_m)$ y cada $v_j\in V_j$,
+
+$$
+\bigl(\Theta(\varphi_1,\ldots,\varphi_m)\circ\iota_j\bigr)(v_j)
+=\varphi_j(v_j).
+$$
+
+En consecuencia, $\Psi\circ\Theta$ es la identidad de $V_1'\times\cdots\times V_m'$.
+
+Recíprocamente, si $\varphi\in(V_1\times\cdots\times V_m)'$, cualquier vector del producto admite la descomposición
+
+$$
+(v_1,\ldots,v_m)=\sum_{j=1}^{m}\iota_j(v_j).
+$$
+
+Por linealidad,
+
+$$
+\begin{aligned}
+\bigl(\Theta\circ\Psi\bigr)(\varphi)(v_1,\ldots,v_m)
+&=\sum_{j=1}^{m}(\varphi\circ\iota_j)(v_j)\\
+&=\varphi\!\left(\sum_{j=1}^{m}\iota_j(v_j)\right)\\
+&=\varphi(v_1,\ldots,v_m).
+\end{aligned}
+$$
+
+Por tanto, $\Theta\circ\Psi$ también es la identidad. Hemos construido dos aplicaciones lineales inversas y, así,
+
+$$
+\boxed{(V_1\times\cdots\times V_m)'\cong V_1'\times\cdots\times V_m'.}
+$$
+
+La demostración no requiere que los espacios $V_j$ tengan dimensión finita. $\square$
+
+> [NOTA] La finitud de la lista de factores permite reconstruir cada funcional del producto como una **suma finita** de funcionales aplicados a sus respectivas coordenadas.
+
+### [SOL] Ejercicio 8
+
+**Solución.** Verificaremos las dos composiciones, respetando sus espacios de partida y llegada.
+
+Sea $(a_1,\ldots,a_n)\in\mathbf F^n$. Por definición de $\Lambda$ y por la propiedad de la base dual,
+
+$$
+\begin{aligned}
+(\Gamma\circ\Lambda)(a_1,\ldots,a_n)
+&=\Gamma\!\left(\sum_{k=1}^{n}a_kv_k\right)\\
+&=\left(\sum_{k=1}^{n}a_k\varphi_1(v_k),\ldots,
+          \sum_{k=1}^{n}a_k\varphi_n(v_k)\right)\\
+&=(a_1,\ldots,a_n),
+\end{aligned}
+$$
+
+pues $\varphi_j(v_k)=1$ si $j=k$ y $0$ en caso contrario. Así, $\Gamma\circ\Lambda$ es la identidad de $\mathbf F^n$.
+
+Por otra parte, para $v\in V$, la identidad de reconstrucción 3.114 afirma que
+
+$$
+v=\sum_{j=1}^{n}\varphi_j(v)v_j.
+$$
+
+Por consiguiente,
+
+$$
+(\Lambda\circ\Gamma)(v)
+=\Lambda\bigl(\varphi_1(v),\ldots,\varphi_n(v)\bigr)
+=\sum_{j=1}^{n}\varphi_j(v)v_j
+=v.
+$$
+
+Por tanto, $\Lambda\circ\Gamma$ es la identidad de $V$. Las dos composiciones son identidades en sus respectivos espacios y se concluye que
+
+$$
+\boxed{\Gamma^{-1}=\Lambda\qquad\text{y}\qquad\Lambda^{-1}=\Gamma.}
+$$
+
+$\square$
+
+> [NOTA] $\Gamma$ transforma un vector en su lista de coordenadas respecto de la base y $\Lambda$ reconstruye el vector a partir de ellas. La relación inversa expresa que estas operaciones no pierden información.
+
+### [SOL] Ejercicio 9
+
+**Solución.** Consideremos la base $1,x,\ldots,x^m$ de $\mathcal P_m(\mathbf R)$ y, para $0\le k\le m$, definamos
+
+$$
+\varphi_k:\mathcal P_m(\mathbf R)\longrightarrow\mathbf R,
+\qquad
+\varphi_k(p)=\frac{p^{(k)}(0)}{k!}.
+$$
+
+La derivación de orden $k$, incluida la de orden cero, y la evaluación en $0$ son operaciones lineales. Como $k!\ne0$ en $\mathbf R$, cada $\varphi_k$ es un funcional lineal.
+
+Verifiquemos su valor sobre cada vector de la base. Si $0\le j,k\le m$, tenemos
+
+$$
+\left.\frac{d^k}{dx^k}x^j\right|_{x=0}
+=
+\begin{cases}
+0,&j<k,\\
+j!,&j=k,\\
+0,&j>k.
+\end{cases}
+$$
+
+En efecto, si $j<k$, la derivada es el polinomio cero; si $j=k$, la derivada es la constante $j!$; y si $j>k$, queda un múltiplo de $x^{j-k}$, que se anula en $0$. La afirmación también comprende $k=0$, pues $p^{(0)}=p$ y $0!=1$.
+
+Dividiendo entre $k!$, obtenemos
+
+$$
+\boxed{\varphi_k(x^j)=\begin{cases}1,&j=k,\\0,&j\ne k.\end{cases}}
+$$
+
+Esta es precisamente la propiedad que define la base dual (3.112). Por tanto, $\varphi_0,\ldots,\varphi_m$ es la base dual de $1,x,\ldots,x^m$. $\square$
+
+> [NOTA] Si $p(x)=\sum_{j=0}^m a_jx^j$, la fórmula demuestra además que $\varphi_k(p)=a_k$: derivar $k$ veces y evaluar en el origen recupera el coeficiente de $x^k$ después de dividir por $k!$.
+
+### [SOL] Ejercicio 10
+
+**Solución.** Procedamos por apartados.
+
+**(a) Demostración de que la lista es una base.** Definamos la aplicación de traslación
+
+$$
+A:\mathcal P_m(\mathbf R)\longrightarrow\mathcal P_m(\mathbf R),
+\qquad (Ap)(x)=p(x-5).
+$$
+
+Es lineal, porque para $p,q\in\mathcal P_m(\mathbf R)$ y $a,b\in\mathbf R$,
+
+$$
+A(ap+bq)(x)=ap(x-5)+bq(x-5)
+=a(Ap)(x)+b(Aq)(x).
+$$
+
+Tiene inversa lineal $B$, definida mediante $(Bp)(x)=p(x+5)$: para todo polinomio $p$,
+
+$$
+(ABp)(x)=(Bp)(x-5)=p(x),
+\qquad
+(BAp)(x)=(Ap)(x+5)=p(x).
+$$
+
+Por consiguiente, $A$ es un isomorfismo. Como
+
+$$
+A(x^k)=(x-5)^k\qquad(0\le k\le m),
+$$
+
+la imagen por $A$ de la base $1,x,\ldots,x^m$ es la lista
+
+$$
+\boxed{1,x-5,\ldots,(x-5)^m,}
+$$
+
+que, por ser imagen de una base bajo un isomorfismo, también es una base de $\mathcal P_m(\mathbf R)$.
+
+**(b) Determinación de la base dual.** Para $0\le k\le m$, definamos
+
+$$
+\psi_k(p)=\frac{p^{(k)}(5)}{k!}
+\qquad(p\in\mathcal P_m(\mathbf R)).
+$$
+
+Estos funcionales son lineales por las mismas razones que en el ejercicio 9. Si $0\le j,k\le m$, la derivación de $(x-5)^j$ da
+
+$$
+\left.\frac{d^k}{dx^k}(x-5)^j\right|_{x=5}
+=\begin{cases}k!,&j=k,\\0,&j\ne k.\end{cases}
+$$
+
+En consecuencia,
+
+$$
+\psi_k\bigl((x-5)^j\bigr)=\begin{cases}1,&j=k,\\0,&j\ne k.\end{cases}
+$$
+
+Por la definición 3.112, la base dual buscada es
+
+$$
+\boxed{\psi_0,\psi_1,\ldots,\psi_m,
+\qquad\psi_k(p)=\frac{p^{(k)}(5)}{k!}.}
+$$
+
+$\square$
+
+> [NOTA] La evaluación se traslada del origen a $5$ porque la nueva base está formada por potencias de $x-5$. En particular, si $p(x)=\sum_{j=0}^m a_j(x-5)^j$, entonces $a_k=p^{(k)}(5)/k!$.
+
+### [SOL] Ejercicio 11
+
+**Solución.** Definamos el funcional
+
+$$
+\eta=\sum_{j=1}^{n}\psi(v_j)\varphi_j\in V'.
+$$
+
+Para cada vector $v_k$ de la base de $V$, la propiedad de la base dual permite calcular
+
+$$
+\begin{aligned}
+\eta(v_k)
+&=\sum_{j=1}^{n}\psi(v_j)\varphi_j(v_k)\\
+&=\psi(v_k).
+\end{aligned}
+$$
+
+Así, $\eta$ y $\psi$ coinciden sobre todos los vectores de la base. Por linealidad coinciden, entonces, sobre todo $V$: si $v=\sum_{k=1}^n a_kv_k$, se tiene
+
+$$
+\eta(v)=\sum_{k=1}^n a_k\eta(v_k)
+=\sum_{k=1}^n a_k\psi(v_k)=\psi(v).
+$$
+
+Concluimos que $\eta=\psi$, esto es,
+
+$$
+\boxed{\psi=\psi(v_1)\varphi_1+\cdots+\psi(v_n)\varphi_n.}
+$$
+
+En el caso $V=\{0\}$, la base es vacía y ambos lados representan el funcional cero, por lo que la identidad sigue siendo válida. $\square$
+
+> [NOTA] La fórmula es el análogo dual de 3.114. Allí se reconstruye un vector a partir de sus coordenadas; aquí se reconstruye un funcional a partir de los valores que toma sobre los vectores de una base.
+
+### [SOL] Ejercicio 12
+
+**Solución.** Recordemos que, para cualquier aplicación lineal $R:V\to W$, su aplicación dual $R':W'\to V'$ se define por $R'(\varphi)=\varphi\circ R$. Comprobaremos las identidades evaluando los funcionales resultantes en vectores arbitrarios de $V$.
+
+**(a) Aditividad.** Sean $\varphi\in W'$ y $v\in V$. Como $\varphi$ es lineal,
+
+$$
+\begin{aligned}
+\bigl((S+T)'(\varphi)\bigr)(v)
+&=\varphi\bigl((S+T)v\bigr)\\
+&=\varphi(Sv+Tv)\\
+&=\varphi(Sv)+\varphi(Tv)\\
+&=\bigl(S'(\varphi)+T'(\varphi)\bigr)(v).
+\end{aligned}
+$$
+
+La igualdad vale para todo $v\in V$, así que $(S+T)'(\varphi)=S'(\varphi)+T'(\varphi)$. Como vale para todo $\varphi\in W'$, obtenemos
+
+$$
+\boxed{(S+T)'=S'+T'.}
+$$
+
+**(b) Homogeneidad.** Sean $\lambda\in\mathbf F$, $\varphi\in W'$ y $v\in V$. De nuevo por linealidad de $\varphi$,
+
+$$
+\begin{aligned}
+\bigl((\lambda T)'(\varphi)\bigr)(v)
+&=\varphi\bigl((\lambda T)v\bigr)\\
+&=\varphi(\lambda Tv)\\
+&=\lambda\varphi(Tv)\\
+&=\bigl(\lambda T'(\varphi)\bigr)(v).
+\end{aligned}
+$$
+
+Ambos funcionales coinciden para todo $v$, y las aplicaciones duales coinciden para todo $\varphi$. Por tanto,
+
+$$
+\boxed{(\lambda T)'=\lambda T'.}
+$$
+
+Esto demuestra las propiedades (a) y (b) de 3.120. $\square$
+
+> [NOTA] El apóstrofo denota aquí la aplicación **dual algebraica**. Incluso cuando $\mathbf F=\mathbf C$, la segunda identidad no introduce conjugación: $\varphi$ es lineal, no conjugado-lineal, y $T'$ no es el adjunto asociado a un producto interno.
+
+### [SOL] Ejercicio 13
+
+**Solución.** Denotemos por $I_V:V\to V$ el operador identidad, definido por $I_V(v)=v$. Por la definición 3.118, su aplicación dual es
+
+$$
+I_V':V'\longrightarrow V',\qquad I_V'(\varphi)=\varphi\circ I_V.
+$$
+
+Sea $\varphi\in V'$. Para cada $v\in V$,
+
+$$
+\bigl(I_V'(\varphi)\bigr)(v)
+=(\varphi\circ I_V)(v)
+=\varphi(I_V(v))
+=\varphi(v).
+$$
+
+Así, $I_V'(\varphi)=\varphi$ como funcionales sobre $V$. Como esto vale para todo $\varphi\in V'$, concluimos que
+
+$$
+\boxed{(I_V)'=I_{V'}.}
+$$
+
+$\square$
+
+> [NOTA] La igualdad se verifica en dos niveles: primero se comprueba que los funcionales coinciden al aplicarlos a cada $v\in V$; después, que las aplicaciones de $V'$ en $V'$ coinciden al aplicarlas a cada $\varphi\in V'$. No se requiere que $V$ tenga dimensión finita.
+
+### [SOL] Ejercicio 14
+
+**Solución.** La base dual de la base estándar de $\mathbf R^2$ consta de los funcionales coordenados
+
+$$
+\varphi_1(a,b)=a,\qquad\varphi_2(a,b)=b.
+$$
+
+Análogamente, la base dual de la base estándar de $\mathbf R^3$ viene dada por
+
+$$
+\psi_1(x,y,z)=x,\qquad
+\psi_2(x,y,z)=y,\qquad
+\psi_3(x,y,z)=z.
+$$
+
+**(a) Descripción de $T'(\varphi_1)$ y $T'(\varphi_2)$.** Por definición de la aplicación dual, para cada $(x,y,z)\in\mathbf R^3$,
+
+$$
+\begin{aligned}
+\bigl(T'(\varphi_1)\bigr)(x,y,z)
+&=(\varphi_1\circ T)(x,y,z)\\
+&=\varphi_1(4x+5y+6z,\,7x+8y+9z)\\
+&=4x+5y+6z,\\[2pt]
+\bigl(T'(\varphi_2)\bigr)(x,y,z)
+&=(\varphi_2\circ T)(x,y,z)\\
+&=\varphi_2(4x+5y+6z,\,7x+8y+9z)\\
+&=7x+8y+9z.
+\end{aligned}
+$$
+
+Por tanto, $T'(\varphi_1)$ y $T'(\varphi_2)$ son los funcionales que devuelven, respectivamente, la primera y la segunda coordenadas de $T(x,y,z)$.
+
+**(b) Expresión en la base dual de $\mathbf R^3$.** Dado que $\psi_1,\psi_2,\psi_3$ extraen las coordenadas $x,y,z$, las expresiones anteriores equivalen a
+
+$$
+\boxed{T'(\varphi_1)=4\psi_1+5\psi_2+6\psi_3,}
+$$
+
+$$
+\boxed{T'(\varphi_2)=7\psi_1+8\psi_2+9\psi_3.}
+$$
+
+Para verificar que se trata de igualdades de funcionales, basta evaluar ambos miembros en un vector arbitrario $(x,y,z)$. $\square$
+
+> [NOTA] Respecto de las bases estándar y sus bases duales, $\mathcal M(T)=\begin{pmatrix}4&5&6\\7&8&9\end{pmatrix}$, mientras que $\mathcal M(T')=\begin{pmatrix}4&7\\5&8\\6&9\end{pmatrix}$. Las dos columnas de $\mathcal M(T')$ contienen los coeficientes hallados en (b) y ejemplifican 3.132: $\mathcal M(T')=(\mathcal M(T))^{\mathrm t}$.
+
+### [SOL] Ejercicio 15
+
+**Solución.** La aplicación $T$ actúa sobre $p\in\mathcal P(\mathbf R)$ mediante
+
+$$
+(Tp)(x)=x^2p(x)+p''(x).
+$$
+
+**(a) Descripción del funcional dual.** El funcional dado es $\varphi(q)=q'(4)$. Por la definición 3.118, para cualquier polinomio $p$,
+
+$$
+\bigl(T'(\varphi)\bigr)(p)
+=\varphi(Tp)
+=(Tp)'(4).
+$$
+
+Aplicando la regla del producto a $x^2p(x)$ y derivando $p''(x)$ obtenemos
+
+$$
+(Tp)'(x)=2xp(x)+x^2p'(x)+p'''(x).
+$$
+
+Al evaluar en $x=4$, resulta
+
+$$
+\boxed{\bigl(T'(\varphi)\bigr)(p)=8p(4)+16p'(4)+p'''(4).}
+$$
+
+**(b) Evaluación en $x^3$.** Ahora $\varphi(q)=\int_0^1q(x)\,dx$. Para el polinomio $p(x)=x^3$ se cumple $p''(x)=6x$, de modo que
+
+$$
+(Tp)(x)=x^2x^3+6x=x^5+6x.
+$$
+
+Por tanto,
+
+$$
+\begin{aligned}
+\bigl(T'(\varphi)\bigr)(x^3)
+&=\varphi(T(x^3))\\
+&=\int_0^1(x^5+6x)\,dx\\
+&=\left[\frac{x^6}{6}+3x^2\right]_0^1\\
+&=\frac16+3
+=\boxed{\frac{19}{6}}.
+\end{aligned}
+$$
+
+$\square$
+
+> [NOTA] En (a), el apóstrofo de $T'$ denota dualidad, mientras que los apóstrofos de $p'$, $p''$ y $p'''$ denotan derivadas. La definición de $T'$ obliga primero a aplicar $T$ al polinomio y después a aplicar el funcional.
+
+### [SOL] Ejercicio 16
+
+**Solución.** Tenemos $T:V\to W$, donde únicamente se supone que $W$ tiene dimensión finita. Demostraremos las dos implicaciones sin exigir dimensión finita de $V$.
+
+**($\Leftarrow$)** Si $T=0$, entonces $Tv=0$ para todo $v\in V$. Dado cualquier $\varphi\in W'$, se cumple
+
+$$
+\bigl(T'(\varphi)\bigr)(v)
+=(\varphi\circ T)(v)
+=\varphi(0)=0
+\qquad(v\in V).
+$$
+
+Así, $T'(\varphi)$ es el funcional cero para todo $\varphi\in W'$, y por tanto $T'=0$.
+
+**($\Rightarrow$)** Supongamos que $T'=0$. Procedamos por contradicción y supongamos que $T\ne0$. Existe entonces $v_0\in V$ tal que
+
+$$
+w_0=Tv_0\ne0.
+$$
+
+Como $W$ tiene dimensión finita, podemos extender la lista linealmente independiente formada por $w_0$ a una base de $W$ cuyo primer vector sea $w_0$. Sea $\varphi\in W'$ el primer funcional de su base dual. Por la definición 3.112,
+
+$$
+\varphi(w_0)=1.
+$$
+
+Sin embargo, $T'=0$ implica que $T'(\varphi)$ es el funcional cero sobre $V$, mientras que
+
+$$
+\bigl(T'(\varphi)\bigr)(v_0)
+=\varphi(Tv_0)
+=\varphi(w_0)
+=1,
+$$
+
+lo que constituye una contradicción. Por tanto, $T=0$.
+
+Hemos probado ambas implicaciones y concluimos que
+
+$$
+\boxed{T'=0\iff T=0.}
+$$
+
+$\square$
+
+> [NOTA] El argumento expresa que los funcionales de $W'$ **separan los vectores de $W$**: si $w\ne0$, existe $\varphi\in W'$ con $\varphi(w)\ne0$. La construcción de $\varphi$ usa una base de $W$, no de $V$; por ello la demostración respeta la hipótesis del ejercicio, que no impone dimensión finita al dominio.
+
+### [SOL] Ejercicio 17
+
+**Solución.** Supongamos que $V$ y $W$ tienen dimensión finita y que $T\in\mathcal L(V,W)$. Demostremos ambas implicaciones.
+
+**($\Rightarrow$) Si $T$ es invertible, entonces $T'$ es invertible.** Sea $S=T^{-1}:W\to V$. Las identidades
+
+$$
+ST=I_V,\qquad TS=I_W
+$$
+
+se convierten, al aplicar la propiedad de inversión del orden de la dualidad (3.120(c)) y el ejercicio 13, en
+
+$$
+T'S'=(ST)'=(I_V)'=I_{V'},
+$$
+
+$$
+S'T'=(TS)'=(I_W)'=I_{W'}.
+$$
+
+Aquí $T':W'\to V'$ y $S':V'\to W'$, de modo que ambas composiciones están bien definidas. Por consiguiente, $S'$ es la inversa de $T'$:
+
+$$
+\boxed{(T')^{-1}=(T^{-1})'.}
+$$
+
+**($\Leftarrow$) Si $T'$ es invertible, entonces $T$ es invertible.** La invertibilidad de $T'$ implica tanto su inyectividad como su sobreyectividad. Según 3.129, que $T'$ sea inyectiva equivale a que $T$ sea sobreyectiva. Según 3.131, que $T'$ sea sobreyectiva equivale a que $T$ sea inyectiva. Por tanto, $T$ es a la vez inyectiva y sobreyectiva, y en consecuencia es invertible.
+
+Hemos demostrado que
+
+$$
+\boxed{T\text{ es invertible}\iff T'\text{ es invertible}.}
+$$
+
+$\square$
+
+> [NOTA] El argumento hacia la derecha, basado en la dualización de las dos identidades de inversas, no necesita dimensión finita. La hipótesis finito-dimensional interviene en la implicación contraria al utilizar los criterios 3.129 y 3.131 tal como están formulados en el texto.
+
+### [SOL] Ejercicio 18
+
+**Solución.** Consideremos la aplicación
+
+$$
+\begin{aligned}
+\mathcal D:\mathcal L(V,W)&\longrightarrow\mathcal L(W',V'),\\
+\mathcal D(T)&=T'.
+\end{aligned}
+$$
+
+**Linealidad.** Si $S,T\in\mathcal L(V,W)$ y $a,b\in\mathbf F$, las propiedades 3.120(a) y (b) implican
+
+$$
+\mathcal D(aS+bT)=(aS+bT)'=aS'+bT'=a\mathcal D(S)+b\mathcal D(T).
+$$
+
+**Inyectividad.** Si $\mathcal D(T)=0$, entonces $T'=0$. Como $W$ tiene dimensión finita, el ejercicio 16 establece que $T=0$. Así, $\operatorname{null}\mathcal D=\{0\}$ y $\mathcal D$ es inyectiva.
+
+**Sobreyectividad.** Sean $n=\dim V$ y $m=\dim W$. Por 3.111, $\dim V'=n$ y $\dim W'=m$. La fórmula para la dimensión del espacio de aplicaciones lineales (3.72) proporciona
+
+$$
+\dim\mathcal L(V,W)=nm
+$$
+
+y
+
+$$
+\dim\mathcal L(W',V')=mn.
+$$
+
+Por tanto, el dominio y el codominio de $\mathcal D$ tienen la misma dimensión finita. Como $\mathcal D$ es inyectiva, el teorema fundamental de las aplicaciones lineales implica que su imagen tiene dimensión $nm$, que es toda la dimensión del codominio. En consecuencia, $\mathcal D$ es sobreyectiva.
+
+Así, $\mathcal D$ es un isomorfismo y queda demostrado que
+
+$$
+\boxed{\mathcal L(V,W)\cong\mathcal L(W',V'),\qquad T\longmapsto T'.}
+$$
+
+$\square$
+
+> [NOTA] La sobreyectividad también puede verse constructivamente: dadas bases de $V$ y $W$ y sus correspondientes bases duales, para cada $R\in\mathcal L(W',V')$ se define $T:V\to W$ cuya matriz es la traspuesta de $\mathcal M(R)$. La identidad 3.132 da entonces $\mathcal M(T')=\mathcal M(R)$ y, por ende, $T'=R$. Esta construcción es una verificación alternativa; el isomorfismo $T\mapsto T'$ mismo no depende de las bases elegidas.
+
+### [SOL] Ejercicio 19
+
+**Solución.** La definición 3.121 establece, para cualquier subconjunto $U\subseteq V$,
+
+$$
+U^0=\{\varphi\in V':\varphi(u)=0\text{ para todo }u\in U\}.
+$$
+
+Fijemos $\varphi\in V'$. Por definición de espacio nulo,
+
+$$
+\operatorname{null}\varphi=\{v\in V:\varphi(v)=0\}.
+$$
+
+Por consiguiente,
+
+$$
+\begin{aligned}
+\varphi\in U^0
+&\iff \varphi(u)=0\text{ para todo }u\in U\\
+&\iff u\in\operatorname{null}\varphi\text{ para todo }u\in U\\
+&\iff U\subseteq\operatorname{null}\varphi.
+\end{aligned}
+$$
+
+Al recoger los funcionales que cumplen esta condición, obtenemos exactamente
+
+$$
+\boxed{U^0=\{\varphi\in V':U\subseteq\operatorname{null}\varphi\}.}
+$$
+
+$\square$
+
+> [NOTA] La igualdad es una reformulación de la condición «anular cada elemento de $U$» como una inclusión de conjuntos. No se exige que $U$ sea un subespacio ni que $V$ tenga dimensión finita.
+
+### [SOL] Ejercicio 20
+
+**Solución.** Sea $U$ un subespacio de un espacio vectorial $V$ de dimensión finita. Definamos
+
+$$
+A=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in U^0\}.
+$$
+
+Demostraremos las dos inclusiones.
+
+**Primera inclusión: $U\subseteq A$.** Si $u\in U$ y $\varphi\in U^0$, la definición del anulador asegura que $\varphi(u)=0$. Como esto ocurre para todo $\varphi\in U^0$, tenemos $u\in A$. Por tanto,
+
+$$
+U\subseteq A.
+$$
+
+**Segunda inclusión: $A\subseteq U$.** Probemos la contrarrecíproca: si $v\in V\setminus U$, existe $\varphi\in U^0$ tal que $\varphi(v)\ne0$.
+
+Elijamos una base $u_1,\ldots,u_m$ de $U$. Puesto que $v\notin U$, la lista
+
+$$
+u_1,\ldots,u_m,v
+$$
+
+es linealmente independiente: cualquier relación $a_1u_1+\cdots+a_mu_m+bv=0$ con $b\ne0$ implicaría $v\in U$, lo que contradice nuestra elección; por tanto, $b=0$, y la independencia de los $u_j$ anula los coeficientes restantes. Como $V$ tiene dimensión finita, extendamos esta lista a una base de $V$:
+
+$$
+u_1,\ldots,u_m,v,w_{m+2},\ldots,w_n.
+$$
+
+Definamos $\varphi\in V'$ como el funcional coordenado asociado al vector $v$ en la base anterior. Es decir, asignamos valor $0$ a cada $u_j$ y a cada $w_k$, y valor $1$ a $v$; el lema de la aplicación lineal 3.4 garantiza su existencia y unicidad. Puesto que los $u_j$ generan $U$, la linealidad implica $\varphi(u)=0$ para todo $u\in U$. Así, $\varphi\in U^0$, pero
+
+$$
+\varphi(v)=1\ne0.
+$$
+
+En consecuencia, $v\notin A$. Hemos probado que $V\setminus U\subseteq V\setminus A$, o equivalentemente, $A\subseteq U$.
+
+Combinando ambas inclusiones se concluye
+
+$$
+\boxed{U=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in U^0\}.}
+$$
+
+$\square$
+
+> [NOTA] El resultado expresa que los funcionales del anulador **separan de $U$ a cada vector situado fuera de $U$**. No se afirma que un único funcional funcione para todos los vectores exteriores: el funcional construido puede depender de $v$. Si $U=V$, la segunda inclusión es trivial porque no existe ningún $v\notin U$; el razonamiento también cubre $U=\{0\}$.
+
+### [SOL] Ejercicio 21
+
+**Solución.** Sean $U$ y $W$ subespacios de $V$, con $\dim V<\infty$. Utilizaremos la definición 3.121 del anulador y la caracterización del ejercicio 20.
+
+**(a) Inversión de las inclusiones.** Supongamos que $U\subseteq W$. Si $\varphi\in W^0$, entonces $\varphi(w)=0$ para todo $w\in W$; en particular, $\varphi(u)=0$ para todo $u\in U$. Por tanto, $\varphi\in U^0$, y concluimos que
+
+$$
+W^0\subseteq U^0.
+$$
+
+Recíprocamente, supongamos que $W^0\subseteq U^0$. Sea $u\in U$. Para todo $\varphi\in W^0$, la inclusión supuesta implica $\varphi\in U^0$; por ello, $\varphi(u)=0$. El ejercicio 20, aplicado al subespacio $W$, afirma que
+
+$$
+W=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in W^0\}.
+$$
+
+Luego $u\in W$. Como $u$ era arbitrario, $U\subseteq W$. En consecuencia,
+
+$$
+\boxed{W^0\subseteq U^0\iff U\subseteq W.}
+$$
+
+**(b) Igualdad de anuladores.** Si $U=W$, sus anuladores son iguales por definición. Si $W^0=U^0$, se cumplen ambas inclusiones $W^0\subseteq U^0$ y $U^0\subseteq W^0$. Por (a), obtenemos respectivamente $U\subseteq W$ y $W\subseteq U$; así, $U=W$. Por tanto,
+
+$$
+\boxed{W^0=U^0\iff U=W.}
+$$
+
+$\square$
+
+> [NOTA] La implicación $U\subseteq W\Rightarrow W^0\subseteq U^0$ procede directamente de la definición y no requiere dimensión finita. Para recuperar la inclusión original a partir de los anuladores hemos usado el resultado de separación del ejercicio 20, formulado aquí para espacios de dimensión finita.
+
+### [SOL] Ejercicio 22
+
+**Solución.** Supongamos que $V$ tiene dimensión finita y que $U,W$ son subespacios de $V$.
+
+**(a) Anulador de una suma.** Para $\varphi\in V'$,
+
+$$
+\begin{aligned}
+\varphi\in(U+W)^0
+&\iff \varphi(u+w)=0\quad\text{para todos }u\in U,\ w\in W\\
+&\iff \varphi(u)=0\quad\text{para todo }u\in U
+    \text{ y }\varphi(w)=0\quad\text{para todo }w\in W\\
+&\iff \varphi\in U^0\cap W^0.
+\end{aligned}
+$$
+
+En la segunda equivalencia, una dirección se obtiene escribiendo $u=u+0$ y $w=0+w$; la otra se deduce de $\varphi(u+w)=\varphi(u)+\varphi(w)$. Por tanto,
+
+$$
+\boxed{(U+W)^0=U^0\cap W^0.}
+$$
+
+**(b) Anulador de una intersección.** Si $\varphi\in U^0$ y $\psi\in W^0$, entonces para cada $v\in U\cap W$ se tiene
+
+$$
+(\varphi+\psi)(v)=\varphi(v)+\psi(v)=0.
+$$
+
+Por linealidad, esto demuestra que
+
+$$
+U^0+W^0\subseteq(U\cap W)^0.
+$$
+
+Para probar la igualdad, compararemos las dimensiones de los dos subespacios de $V'$. Escribamos $n=\dim V$. Por la fórmula de la dimensión de una suma, el apartado (a) y el resultado 3.125,
+
+$$
+\begin{aligned}
+\dim(U^0+W^0)
+&=\dim U^0+\dim W^0-\dim(U^0\cap W^0)\\
+&=(n-\dim U)+(n-\dim W)-\dim (U+W)^0\\
+&=(n-\dim U)+(n-\dim W)-(n-\dim(U+W))\\
+&=n-\bigl(\dim U+\dim W-\dim(U+W)\bigr)\\
+&=n-\dim(U\cap W)\\
+&=\dim (U\cap W)^0.
+\end{aligned}
+$$
+
+Como se trata de subespacios de dimensión finita, la inclusión ya demostrada y la igualdad de dimensiones implican
+
+$$
+\boxed{(U\cap W)^0=U^0+W^0.}
+$$
+
+$\square$
+
+> [NOTA] El apartado (a) se prueba sin hipótesis de dimensión finita. En (b), la inclusión $U^0+W^0\subseteq(U\cap W)^0$ es inmediata, pero para justificar la inclusión opuesta hay que añadir un argumento; aquí lo proporciona la igualdad de dimensiones.
+
+### [SOL] Ejercicio 23
+
+**Solución.** Denotemos por
+
+$$
+K=(\operatorname{null}\varphi_1)\cap\cdots\cap(\operatorname{null}\varphi_m).
+$$
+
+Construyamos la aplicación lineal
+
+$$
+\begin{aligned}
+\Gamma:V&\longrightarrow\mathbf F^m,\\
+\Gamma(v)&=(\varphi_1(v),\ldots,\varphi_m(v)).
+\end{aligned}
+$$
+
+Cada componente $\varphi_j$ es lineal; por tanto, $\Gamma$ es lineal. Además,
+
+$$
+\operatorname{null}\Gamma=K.
+$$
+
+Sea $\varepsilon_1,\ldots,\varepsilon_m$ la base dual de la base estándar de $\mathbf F^m$, de modo que $\varepsilon_j(a_1,\ldots,a_m)=a_j$. La aplicación dual $\Gamma':(\mathbf F^m)'\to V'$ satisface, para todo $v\in V$,
+
+$$
+(\Gamma'(\varepsilon_j))(v)
+=\varepsilon_j(\Gamma(v))
+=\varphi_j(v).
+$$
+
+Así, $\Gamma'(\varepsilon_j)=\varphi_j$. Como los $\varepsilon_j$ forman una base del dominio de $\Gamma'$, su imagen está generada por sus imágenes:
+
+$$
+\operatorname{range}\Gamma'
+=\operatorname{span}(\varphi_1,\ldots,\varphi_m).
+$$
+
+Por 3.130(b), aplicable porque $V$ y $\mathbf F^m$ tienen dimensión finita,
+
+$$
+\operatorname{range}\Gamma'
+=(\operatorname{null}\Gamma)^0
+=K^0.
+$$
+
+Comparando las dos igualdades, obtenemos la identidad entre los conjuntos (1) y (2):
+
+$$
+\boxed{\operatorname{span}(\varphi_1,\ldots,\varphi_m)=K^0.}
+$$
+
+Finalmente, el ejercicio 19, aplicado al subconjunto $K\subseteq V$, permite reescribir
+
+$$
+K^0=\{\varphi\in V':K\subseteq\operatorname{null}\varphi\},
+$$
+
+que coincide exactamente con el conjunto (3). Los tres conjuntos son, por tanto, iguales. $\square$
+
+> [NOTA] La aplicación $\Gamma$ convierte la condición simultánea $\varphi_j(v)=0$ en una sola ecuación $\Gamma(v)=0$. Su dual reúne los funcionales $\varphi_j$ como imágenes de las coordenadas estándar; de ahí que su imagen sea el espacio que ellos generan.
+
+### [SOL] Ejercicio 24
+
+**Solución.** Sea
+
+$$
+S=\operatorname{span}(v_1,\ldots,v_m)\subseteq V
+$$
+
+y consideremos la aplicación del enunciado,
+
+$$
+\Gamma:V'\longrightarrow\mathbf F^m,
+\qquad
+\Gamma(\varphi)=(\varphi(v_1),\ldots,\varphi(v_m)).
+$$
+
+**(a) Generación e inyectividad.** Por definición de espacio nulo,
+
+$$
+\begin{aligned}
+\operatorname{null}\Gamma
+&=\{\varphi\in V':\varphi(v_j)=0\text{ para }1\le j\le m\}\\
+&=\{\varphi\in V':\varphi(s)=0\text{ para todo }s\in S\}\\
+&=S^0.
+\end{aligned}
+$$
+
+La segunda igualdad se debe a que un funcional lineal se anula sobre una lista si y solo si se anula sobre su espacio generado. Aplicando 3.127(a), puesto que $V$ tiene dimensión finita,
+
+$$
+\begin{aligned}
+\Gamma\text{ es inyectiva}
+&\iff\operatorname{null}\Gamma=\{0\}\\
+&\iff S^0=\{0\}\\
+&\iff S=V.
+\end{aligned}
+$$
+
+Por tanto, $v_1,\ldots,v_m$ genera $V$ si y solo si $\Gamma$ es inyectiva.
+
+**(b) Independencia lineal y sobreyectividad.** Supongamos primero que $v_1,\ldots,v_m$ es linealmente independiente. Extendamos la lista a una base
+
+$$
+v_1,\ldots,v_m,w_{m+1},\ldots,w_n
+$$
+
+de $V$. Fijado cualquier $(a_1,\ldots,a_m)\in\mathbf F^m$, el lema de la aplicación lineal 3.4 proporciona un único funcional $\varphi\in V'$ cuyos valores sobre esa base son
+
+$$
+\varphi(v_j)=a_j\quad(1\le j\le m),
+\qquad
+\varphi(w_k)=0\quad(m+1\le k\le n).
+$$
+
+Se sigue que $\Gamma(\varphi)=(a_1,\ldots,a_m)$. Como la lista de escalares era arbitraria, $\Gamma$ es sobreyectiva.
+
+Recíprocamente, supongamos que $\Gamma$ es sobreyectiva y que
+
+$$
+c_1v_1+\cdots+c_mv_m=0.
+$$
+
+Para cada $k\in\{1,\ldots,m\}$, la sobreyectividad proporciona un funcional $\varphi_k\in V'$ con $\Gamma(\varphi_k)=e_k$, donde $e_k$ es el $k$-ésimo vector de la base estándar de $\mathbf F^m$. Al aplicar $\varphi_k$ a la relación anterior,
+
+$$
+0=\varphi_k\!\left(\sum_{j=1}^m c_jv_j\right)
+=\sum_{j=1}^m c_j\varphi_k(v_j)
+=c_k.
+$$
+
+Todos los coeficientes son cero. En consecuencia, $v_1,\ldots,v_m$ es linealmente independiente, lo que completa la equivalencia.
+
+$\square$
+
+> [NOTA] En (a) se examinan los funcionales que no detectan ningún vector de la lista: son precisamente los elementos del anulador de su espacio generado. En (b), prescribir arbitrariamente las evaluaciones de un funcional equivale a tener libertad para asignar valores a una lista linealmente independiente.
+
+### [SOL] Ejercicio 25
+
+**Solución.** Sea $V$ un espacio vectorial de dimensión finita y sean $\varphi_1,\ldots,\varphi_m\in V'$. Consideremos la aplicación lineal
+
+$$
+\Gamma:V\longrightarrow\mathbf F^m,
+\qquad
+\Gamma(v)=(\varphi_1(v),\ldots,\varphi_m(v)).
+$$
+
+**(a) Generación de $V'$ e inyectividad de $\Gamma$.** Definamos
+
+$$
+K=\bigcap_{j=1}^{m}\operatorname{null}\varphi_j.
+$$
+
+Por la definición de $\Gamma$, tenemos $\operatorname{null}\Gamma=K$. El ejercicio 23 establece que
+
+$$
+\operatorname{span}(\varphi_1,\ldots,\varphi_m)=K^0.
+$$
+
+En consecuencia, usando 3.127(b) para el subespacio $K$,
+
+$$
+\begin{aligned}
+\Gamma\text{ es inyectiva}
+&\iff \operatorname{null}\Gamma=\{0\}\\
+&\iff K=\{0\}\\
+&\iff K^0=V'\\
+&\iff \operatorname{span}(\varphi_1,\ldots,\varphi_m)=V'.
+\end{aligned}
+$$
+
+Esto demuestra (a).
+
+**(b) Independencia lineal y sobreyectividad de $\Gamma$.** Sea $\varepsilon_1,\ldots,\varepsilon_m$ la base dual de la base estándar de $\mathbf F^m$. La aplicación dual
+
+$$
+\Gamma':(\mathbf F^m)'\longrightarrow V'
+$$
+
+satisface, para cualquier $v\in V$ y $1\le j\le m$,
+
+$$
+\bigl(\Gamma'(\varepsilon_j)\bigr)(v)
+=\varepsilon_j(\Gamma(v))
+=\varphi_j(v).
+$$
+
+Por lo tanto, $\Gamma'(\varepsilon_j)=\varphi_j$. Como los $\varepsilon_j$ constituyen una base de $(\mathbf F^m)'$, la aplicación $\Gamma'$ es inyectiva si y solo si sus imágenes $\varphi_1,\ldots,\varphi_m$ son linealmente independientes. El resultado 3.129, aplicado a $\Gamma:V\to\mathbf F^m$, afirma que $\Gamma$ es sobreyectiva si y solo si $\Gamma'$ es inyectiva. Combinando ambas equivalencias,
+
+$$
+\boxed{\Gamma\text{ es sobreyectiva}
+\iff \varphi_1,\ldots,\varphi_m\text{ es linealmente independiente}.}
+$$
+
+Esto completa los dos apartados. $\square$
+
+> [NOTA] El ejercicio 24 evalúa funcionales en una lista de vectores; aquí se evalúa una lista de funcionales en un vector. La dualidad relaciona ambos problemas: las imágenes de los funcionales coordenados por $\Gamma'$ son exactamente los $\varphi_j$. La generación se detecta mediante el núcleo de $\Gamma$, y la independencia mediante la inyectividad de $\Gamma'$.
+
+### [SOL] Ejercicio 26
+
+**Solución.** Sea $\Omega$ un subespacio de $V'$. Como $V$ tiene dimensión finita, $V'$ también la tiene por 3.111. Podemos, por tanto, escoger una base $\varphi_1,\ldots,\varphi_m$ de $\Omega$, con la convención de que la lista es vacía cuando $\Omega=\{0\}$.
+
+Definamos el conjunto de vectores que anulan simultáneamente todos los funcionales de $\Omega$:
+
+$$
+K=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in\Omega\}.
+$$
+
+Como los $\varphi_j$ generan $\Omega$, un vector pertenece a $K$ si y solo si todos los $\varphi_j$ lo anulan. Por consiguiente,
+
+$$
+K=\bigcap_{j=1}^{m}\operatorname{null}\varphi_j.
+$$
+
+El ejercicio 23 permite calcular su anulador:
+
+$$
+\begin{aligned}
+K^0
+&=\left(\bigcap_{j=1}^{m}\operatorname{null}\varphi_j\right)^0\\
+&=\operatorname{span}(\varphi_1,\ldots,\varphi_m)\\
+&=\Omega.
+\end{aligned}
+$$
+
+Sustituyendo la definición de $K$, obtenemos exactamente
+
+$$
+\boxed{\Omega=\{v\in V:\varphi(v)=0\text{ para todo }\varphi\in\Omega\}^0.}
+$$
+
+Si $\Omega=\{0\}$, el conjunto entre llaves es $V$ y su anulador es $V^0=\{0\}$, de modo que el caso de la base vacía también queda incluido. $\square$
+
+> [NOTA] El ejercicio 20 reconstruye un subespacio de $V$ a partir de los funcionales de su anulador. Este ejercicio proporciona la reconstrucción correspondiente para un subespacio de $V'$ a partir de los vectores sobre los cuales todos sus funcionales se anulan. La igualdad se demuestra aquí mediante una base de $\Omega$ y el ejercicio 23, no identificando previamente $V$ con $V''$.
+
+### [SOL] Ejercicio 27
+
+**Solución.** Escribamos $E=\mathcal P_5(\mathbf R)$ y consideremos el funcional $\varphi\in E'$ definido por
+
+$$
+\varphi(p)=p(8).
+$$
+
+La hipótesis del ejercicio es $\operatorname{null}T'=\operatorname{span}(\varphi)$. Como $E$ tiene dimensión finita, podemos aplicar 3.128(a):
+
+$$
+(\operatorname{range}T)^0
+=\operatorname{null}T'
+=\operatorname{span}(\varphi).
+$$
+
+Aplicando ahora el ejercicio 20 al subespacio $\operatorname{range}T\subseteq E$, reconstruimos dicho subespacio a partir de su anulador:
+
+$$
+\begin{aligned}
+\operatorname{range}T
+&=\{p\in E:\psi(p)=0\text{ para todo }\psi\in(\operatorname{range}T)^0\}\\
+&=\{p\in E:\psi(p)=0\text{ para todo }\psi\in\operatorname{span}(\varphi)\}\\
+&=\{p\in E:\varphi(p)=0\}\\
+&=\{p\in\mathcal P_5(\mathbf R):p(8)=0\}.
+\end{aligned}
+$$
+
+La tercera igualdad se debe a que un polinomio es anulado por todos los múltiplos de $\varphi$ si y solo si lo anula $\varphi$ mismo. Esto demuestra la igualdad solicitada. $\square$
+
+> [NOTA] El conjunto obtenido es un hiperplano de $\mathcal P_5(\mathbf R)$: como $\varphi(1)=1$, el funcional no es nulo, y su núcleo tiene dimensión $5$ dentro de un espacio de dimensión $6$. La información sobre $\operatorname{null}T'$ determina así toda la imagen de $T$, no solo una cota para su dimensión.
+
+### [SOL] Ejercicio 28
+
+**Solución.** Definamos, como en el ejercicio 25, la aplicación lineal
+
+$$
+\Gamma:V\longrightarrow\mathbf F^m,
+\qquad
+\Gamma(v)=(\varphi_1(v),\ldots,\varphi_m(v)).
+$$
+
+Su espacio nulo es precisamente la intersección cuya dimensión queremos calcular:
+
+$$
+\operatorname{null}\Gamma
+=\bigcap_{j=1}^{m}\operatorname{null}\varphi_j.
+$$
+
+Por hipótesis, $\varphi_1,\ldots,\varphi_m$ es linealmente independiente. El ejercicio 25(b) establece entonces que $\Gamma$ es sobreyectiva. Por tanto,
+
+$$
+\operatorname{range}\Gamma=\mathbf F^m,
+\qquad
+\dim\operatorname{range}\Gamma=m.
+$$
+
+El teorema fundamental de las aplicaciones lineales (3.21) da
+
+$$
+\dim\operatorname{null}\Gamma
++\dim\operatorname{range}\Gamma
+=\dim V.
+$$
+
+Reemplazando la dimensión de la imagen y la expresión del núcleo obtenemos
+
+$$
+\boxed{\dim\bigl((\operatorname{null}\varphi_1)\cap\cdots\cap
+(\operatorname{null}\varphi_m)\bigr)=\dim V-m.}
+$$
+
+$\square$
+
+> [NOTA] La independencia de los $m$ funcionales significa que sus valores pueden prescribirse arbitrariamente: la aplicación $\Gamma$ alcanza cualquier elemento de $\mathbf F^m$. Por ello, imponer simultáneamente las $m$ ecuaciones $\varphi_j(v)=0$ reduce la dimensión en exactamente $m$, y no solo en una cantidad menor o igual que $m$.
+
+### [SOL] Ejercicio 29
+
+**Solución.** Sean $V$ y $W$ espacios vectoriales de dimensión finita y $T:V\to W$ lineal. Utilizaremos las identidades 3.128(a) y 3.130(b), junto con el criterio de reconstrucción del ejercicio 20.
+
+**(a) Reconstrucción de la imagen a partir del espacio nulo de $T'$.** La hipótesis es
+
+$$
+\operatorname{null}T'=\operatorname{span}(\varphi),
+\qquad \varphi\in W'.
+$$
+
+Por 3.128(a), el espacio nulo de $T'$ es el anulador de la imagen de $T$; así,
+
+$$
+(\operatorname{range}T)^0=\operatorname{span}(\varphi).
+$$
+
+Como $W$ tiene dimensión finita, el ejercicio 20 permite recuperar $\operatorname{range}T$ mediante los funcionales de su anulador:
+
+$$
+\begin{aligned}
+\operatorname{range}T
+&=\{w\in W:\eta(w)=0\text{ para todo }\eta\in(\operatorname{range}T)^0\}\\
+&=\{w\in W:\eta(w)=0\text{ para todo }\eta\in\operatorname{span}(\varphi)\}\\
+&=\{w\in W:\varphi(w)=0\}\\
+&=\operatorname{null}\varphi.
+\end{aligned}
+$$
+
+La tercera igualdad es válida porque $\varphi$ pertenece a su propio espacio generado y todo elemento de este espacio es un múltiplo de $\varphi$. Por tanto,
+
+$$
+\boxed{\operatorname{range}T=\operatorname{null}\varphi.}
+$$
+
+**(b) Reconstrucción del espacio nulo a partir de la imagen de $T'$.** Supongamos ahora que
+
+$$
+\operatorname{range}T'=\operatorname{span}(\psi),
+\qquad \psi\in V'.
+$$
+
+Por 3.130(b),
+
+$$
+(\operatorname{null}T)^0=\operatorname{range}T'=\operatorname{span}(\psi).
+$$
+
+Aplicando el ejercicio 20 al subespacio $\operatorname{null}T\subseteq V$ obtenemos
+
+$$
+\begin{aligned}
+\operatorname{null}T
+&=\{v\in V:\eta(v)=0\text{ para todo }\eta\in(\operatorname{null}T)^0\}\\
+&=\{v\in V:\eta(v)=0\text{ para todo }\eta\in\operatorname{span}(\psi)\}\\
+&=\{v\in V:\psi(v)=0\}\\
+&=\operatorname{null}\psi.
+\end{aligned}
+$$
+
+Por consiguiente,
+
+$$
+\boxed{\operatorname{null}T=\operatorname{null}\psi.}
+$$
+
+Las demostraciones incluyen los casos $\varphi=0$ y $\psi=0$: sus espacios generados son $\{0\}$ y la caracterización por anulación sigue siendo válida. $\square$
+
+> [NOTA] No se infiere que el funcional dado sea no nulo. La información decisiva en ambos apartados es la **igualdad de subespacios de funcionales**; recuperar la imagen o el núcleo exige pasar de un anulador al subespacio original, no solo comparar dimensiones.
+
+### [SOL] Ejercicio 30
+
+**Solución.** Sea $\varphi_1,\ldots,\varphi_n$ una base de $V'$. Definamos la aplicación lineal
+
+$$
+\Gamma:V\longrightarrow\mathbf F^n,
+\qquad
+\Gamma(v)=(\varphi_1(v),\ldots,\varphi_n(v)).
+$$
+
+Como $\varphi_1,\ldots,\varphi_n$ **genera** $V'$, el ejercicio 25(a) implica que $\Gamma$ es inyectiva. Como la misma lista es **linealmente independiente**, el ejercicio 25(b) implica que $\Gamma$ es sobreyectiva. Por tanto, $\Gamma$ es un isomorfismo.
+
+Sea $e_1,\ldots,e_n$ la base estándar de $\mathbf F^n$ y definamos
+
+$$
+v_j=\Gamma^{-1}(e_j)
+\qquad(1\le j\le n).
+$$
+
+La imagen inversa de una base por un isomorfismo es una base. Luego $v_1,\ldots,v_n$ es una base de $V$. Además, por la elección de $v_j$,
+
+$$
+(\varphi_1(v_j),\ldots,\varphi_n(v_j))
+=\Gamma(v_j)=e_j.
+$$
+
+En particular, para todos $i,j\in\{1,\ldots,n\}$,
+
+$$
+\varphi_i(v_j)=
+\begin{cases}1,&i=j,\\0,&i\ne j.\end{cases}
+$$
+
+Esta es la propiedad definitoria de la base dual (3.112); así, la base dual de $v_1,\ldots,v_n$ es precisamente $\varphi_1,\ldots,\varphi_n$. Si $V=\{0\}$, las bases son listas vacías y la afirmación se interpreta de la misma manera. $\square$
+
+> [NOTA] No basta escoger cualquier base de $V$: debe elegirse aquella cuyos vectores producen, bajo $\Gamma$, las coordenadas estándar. Esta construcción recupera la base original a partir de la base prescrita del dual; depende de esa lista ordenada, pero no de una base auxiliar.
+
+### [SOL] Ejercicio 31
+
+**Solución.** Sea $i:U\to V$ la inclusión $i(u)=u$. Su dual
+
+$$
+i':V'\longrightarrow U',
+\qquad i'(\varphi)=\varphi\circ i=\varphi|_U
+$$
+
+es la aplicación que restringe cada funcional de $V$ al subespacio $U$.
+
+**(a) Cálculo del espacio nulo.** Para $\varphi\in V'$, tenemos
+
+$$
+\begin{aligned}
+\varphi\in\operatorname{null}i'
+&\iff i'(\varphi)=0\text{ en }U'\\
+&\iff \varphi(u)=0\text{ para todo }u\in U\\
+&\iff \varphi\in U^0.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+\boxed{\operatorname{null}i'=U^0.}
+$$
+
+Esta identidad no requiere dimensión finita.
+
+**(b) Sobreyectividad de la restricción.** Supongamos que $V$ tiene dimensión finita y sea $\alpha\in U'$. Elijamos una base $u_1,\ldots,u_m$ de $U$ y extendámosla a una base
+
+$$
+u_1,\ldots,u_m,w_{m+1},\ldots,w_n
+$$
+
+de $V$. Por el lema de la aplicación lineal 3.4, existe un único funcional $\varphi\in V'$ que cumple
+
+$$
+\varphi(u_j)=\alpha(u_j)\quad(1\le j\le m),
+\qquad
+\varphi(w_k)=0\quad(m+1\le k\le n).
+$$
+
+Como $\varphi$ y $\alpha$ coinciden sobre una base de $U$, coinciden sobre todo $U$. Por tanto,
+
+$$
+i'(\varphi)=\varphi|_U=\alpha.
+$$
+
+Todo elemento de $U'$ tiene una preimagen y concluimos que
+
+$$
+\boxed{\operatorname{range}i'=U'.}
+$$
+
+**(c) Isomorfismo inducido.** Definamos
+
+$$
+\begin{aligned}
+\widetilde{i'}:V'/U^0&\longrightarrow U',\\
+\widetilde{i'}(\varphi+U^0)&=\varphi|_U.
+\end{aligned}
+$$
+
+Está bien definida: si $\varphi+U^0=\psi+U^0$, entonces $\varphi-\psi\in U^0$ y, por (a), $\varphi|_U=\psi|_U$. Es lineal porque la restricción es lineal. Si $\widetilde{i'}(\varphi+U^0)=0$, entonces $\varphi\in\operatorname{null}i'=U^0$ y la clase $\varphi+U^0$ es cero; luego $\widetilde{i'}$ es inyectiva. Es sobreyectiva por (b). En consecuencia,
+
+$$
+\boxed{V'/U^0\cong U',\qquad
+\varphi+U^0\longmapsto\varphi|_U.}
+$$
+
+$\square$
+
+> [NOTA] La **definición** del isomorfismo de (c) no utiliza ninguna base: identifica dos funcionales sobre $V$ cuando sus restricciones a $U$ son iguales. Se ha elegido una base en (b) solamente para demostrar que cada funcional de $U$ admite una extensión en la situación finito-dimensional del ejercicio.
+
+### [SOL] Ejercicio 32
+
+**Solución.** Para cada $v\in V$, la regla $\varphi\mapsto\varphi(v)$ define una función sobre $V'$. Comprobaremos primero que es lineal, después la identidad con $T''$ y finalmente la invertibilidad de $\Lambda$ cuando $V$ tiene dimensión finita.
+
+**(a) Linealidad de $\Lambda:V\to V''$.** Fijemos $v\in V$. Dados $\varphi,\psi\in V'$ y $a,b\in\mathbf F$,
+
+$$
+\begin{aligned}
+(\Lambda v)(a\varphi+b\psi)
+&=(a\varphi+b\psi)(v)\\
+&=a\varphi(v)+b\psi(v)\\
+&=a(\Lambda v)(\varphi)+b(\Lambda v)(\psi).
+\end{aligned}
+$$
+
+Por tanto, $\Lambda v\in(V')'=V''$; la aplicación $\Lambda$ está bien definida. Para $v,w\in V$ y $a,b\in\mathbf F$, evaluamos en cualquier $\varphi\in V'$:
+
+$$
+\begin{aligned}
+(\Lambda(av+bw))(\varphi)
+&=\varphi(av+bw)\\
+&=a\varphi(v)+b\varphi(w)\\
+&=(a\Lambda v+b\Lambda w)(\varphi).
+\end{aligned}
+$$
+
+Como ambos elementos de $V''$ coinciden en todo $\varphi\in V'$, concluimos que $\Lambda(av+bw)=a\Lambda v+b\Lambda w$. Así, $\Lambda$ es lineal.
+
+**(b) Compatibilidad con $T$.** Sea $T\in\mathcal L(V)$, de modo que $T':V'\to V'$ y $T''=(T')':V''\to V''$. Para $v\in V$ y $\varphi\in V'$,
+
+$$
+\begin{aligned}
+\bigl((T''\circ\Lambda)(v)\bigr)(\varphi)
+&=(T''(\Lambda v))(\varphi)\\
+&=(\Lambda v)(T'(\varphi))\\
+&=(T'(\varphi))(v)\\
+&=(\varphi\circ T)(v)\\
+&=\varphi(Tv)\\
+&=(\Lambda(Tv))(\varphi).
+\end{aligned}
+$$
+
+Dado que la igualdad vale para todo $v$ y todo $\varphi$, las aplicaciones de $V$ en $V''$ coinciden:
+
+$$
+\boxed{T''\circ\Lambda=\Lambda\circ T.}
+$$
+
+**(c) Isomorfismo en dimensión finita.** Supongamos ahora que $\dim V<\infty$. Si $\Lambda v=0$, entonces
+
+$$
+\varphi(v)=(\Lambda v)(\varphi)=0
+\qquad\text{para todo }\varphi\in V'.
+$$
+
+Por el ejercicio 20 aplicado al subespacio $\{0\}$, el único vector anulado por todos los funcionales de $V'$ es $0$ (ya que $\{0\}^0=V'$). Luego $v=0$. Hemos probado que $\Lambda$ es inyectiva.
+
+Por 3.111, aplicado primero a $V$ y después a $V'$, se tiene
+
+$$
+\dim V''=\dim V'=\dim V.
+$$
+
+Una aplicación lineal inyectiva entre espacios de la misma dimensión finita es sobreyectiva. Por consiguiente,
+
+$$
+\boxed{\Lambda:V\longrightarrow V''\text{ es un isomorfismo}.}
+$$
+
+$\square$
+
+> [NOTA] La aplicación $\Lambda$ es **canónica**: evalúa cada funcional en un vector y no exige elegir coordenadas. La identidad de (b) expresa que aplicar $T$ antes de pasar al doble dual equivale a pasar al doble dual y aplicar $T''$. La prueba de (a) y la identidad de (b) no precisan dimensión finita; esta hipótesis se utiliza en (c) para deducir la sobreyectividad mediante dimensiones.
+
+### [SOL] Ejercicio 33
+
+**Solución.** Sea $\pi:V\to V/U$ la aplicación cociente $\pi(v)=v+U$. Es lineal y sobreyectiva. Su aplicación dual está dada por
+
+$$
+\pi':(V/U)'\longrightarrow V',
+\qquad\pi'(\psi)=\psi\circ\pi.
+$$
+
+**(a) Inyectividad de $\pi'$.** Supongamos que $\psi\in\operatorname{null}\pi'$. Entonces $\psi(\pi(v))=0$ para todo $v\in V$. Como $\pi$ es sobreyectiva, todo elemento de $V/U$ tiene la forma $\pi(v)$; por consiguiente, $\psi$ se anula sobre todo $V/U$, es decir, $\psi=0$. Así,
+
+$$
+\boxed{\pi'\text{ es inyectiva}.}
+$$
+
+**(b) Identificación de la imagen.** Demostremos las dos inclusiones.
+
+Si $\varphi\in\operatorname{range}\pi'$, existe $\psi\in(V/U)'$ con $\varphi=\psi\circ\pi$. Para $u\in U$ tenemos $\pi(u)=U$, el vector cero de $V/U$, y por tanto
+
+$$
+\varphi(u)=\psi(\pi(u))=\psi(0)=0.
+$$
+
+Luego $\varphi\in U^0$; esto prueba $\operatorname{range}\pi'\subseteq U^0$.
+
+Recíprocamente, sea $\varphi\in U^0$. Definamos
+
+$$
+\psi:V/U\longrightarrow\mathbf F,
+\qquad
+\psi(v+U)=\varphi(v).
+$$
+
+**Buena definición:** si $v+U=w+U$, entonces $v-w\in U$. Como $\varphi$ se anula en $U$,
+
+$$
+\varphi(v)-\varphi(w)=\varphi(v-w)=0;
+$$
+
+por ello el valor de $\psi$ no depende del representante elegido. Además, para $v,w\in V$ y $a,b\in\mathbf F$,
+
+$$
+\begin{aligned}
+\psi\bigl(a(v+U)+b(w+U)\bigr)
+&=\psi\bigl((av+bw)+U\bigr)\\
+&=\varphi(av+bw)\\
+&=a\psi(v+U)+b\psi(w+U).
+\end{aligned}
+$$
+
+Así, $\psi\in(V/U)'$. Para todo $v\in V$,
+
+$$
+(\pi'(\psi))(v)=\psi(\pi(v))=\psi(v+U)=\varphi(v).
+$$
+
+Por tanto, $\pi'(\psi)=\varphi$ y $U^0\subseteq\operatorname{range}\pi'$. Con ambas inclusiones concluimos
+
+$$
+\boxed{\operatorname{range}\pi'=U^0.}
+$$
+
+**(c) Isomorfismo natural.** Por (a), $\pi'$ es inyectiva, y por (b), su imagen es $U^0$. Considerándola con este codominio restringido, obtenemos un isomorfismo
+
+$$
+\boxed{(V/U)'\overset{\pi'}{\longrightarrow}U^0,
+\qquad\psi\longmapsto\psi\circ\pi.}
+$$
+
+Su inversa lleva cada $\varphi\in U^0$ al funcional $v+U\mapsto\varphi(v)$ construido en (b). No hemos elegido bases ni supuesto que $V$ o $U$ tengan dimensión finita. $\square$
+
+> [NOTA] Los funcionales del cociente corresponden exactamente a los funcionales de $V$ que no distinguen entre vectores de una misma clase lateral: $\varphi(v+u)=\varphi(v)$ para todo $u\in U$. La condición equivalente es $\varphi|_U=0$; por eso el espacio dual del cociente se identifica naturalmente con el anulador de $U$.
+
+## Aparato editorial de trabajo · 3F
+
+> [NOTA EDITORIAL] Este aparato distingue las decisiones terminológicas y las observaciones del proyecto Matemática Abierta de la traducción `[TRAD]` y de las demostraciones originales `[SOL]`. Es un **aparato editorial preliminar**, no un registro de variantes textuales cotejadas con distintas ediciones. Las observaciones sobre el texto fuente solo se consideran verificadas en el alcance expresamente indicado.
+
+### Criterios de lectura y decisiones editoriales
+
+- **AE-3F-01 · 3.108–3.110.** Se fija *funcional lineal* para una aplicación lineal de $V$ en el cuerpo de escalares $\mathbf F$. Se reserva *espacio dual* para $V'=\mathcal L(V,\mathbf F)$; un funcional no es, por sí solo, «el dual» de un vector.
+- **AE-3F-02 · 3.112–3.117.** Se conserva *base dual* y el orden correspondiente a la base original: $\varphi_j(v_k)=\delta_{jk}$. Los índices 3.115 y 3.117 designan **ecuaciones** dentro de la secuencia original y no nuevos teoremas. El caso de una base vacía se interpreta mediante sumas vacías cuando proceda.
+- **AE-3F-03 · 3.116 · resuelta por cotejo.** Se sustituyó la expresión ambigua «aplicar el funcional cero y la suma del lado izquierdo a $v_k$» por «evaluar ambos miembros de 3.117 en $v_k$», incluyendo el cálculo $0=(\sum_j a_j\varphi_j)(v_k)=a_k$, fiel a la demostración original (p. 107).
+- **AE-3F-04 · 3.118–3.120.** Se conserva *aplicación dual* para $T':W'\to V'$ y se explicita la inversión de la dirección y del orden: $(ST)'=T'S'$. Si $\mathbf F=\mathbf C$, la dualidad algebraica es lineal; no se conjugan escalares. $T^*$ queda reservado para el adjunto, que no se define en 3F.
+- **AE-3F-05 · 3.121–3.125.** Se conserva *anulador*, $U^0\subseteq V'$, con $V$ como espacio ambiente. La definición admite un subconjunto $U\subseteq V$; las fórmulas de dimensiones exigen que $U$ sea un subespacio y que $V$ tenga dimensión finita.
+- **AE-3F-06 · 3.124 · cotejada con dos fuentes.** La nota `[ERRATA]` del cuerpo refleja la p. 110 del PDF del autor fechado 16-08-2026 y su [fe de erratas oficial](https://www.linear.axler.net/LADRErrata4e.html): el valor del funcional cero es $0\in\mathbf F$. La errata corresponde a un estado anterior de la impresión y **no** es una incorrección presente en el PDF cotejado.
+- **AE-3F-07 · 3.125–3.131.** Se mantienen separados *espacio nulo* ($\operatorname{null}$), *imagen* ($\operatorname{range}$) y *anulador* (${}^0$). La identidad $\operatorname{null}T'=(\operatorname{range}T)^0$ se obtiene de las definiciones sin finitud; las fórmulas dimensionales se usan bajo las hipótesis declaradas.
+- **AE-3F-08 · 3.132–3.133.** Se fija *matriz traspuesta* para $A^{\mathrm t}$ respecto de las bases duales especificadas. No debe presentarse como una traspuesta conjugada ni confundirse el rango fila/columna de la matriz con un espacio nulo.
+- **AE-3F-09 · ejercicios 2, 9, 10 y 15.** Se distingue el espacio de todas las funciones $\mathbf R^{[0,1]}$ del espacio de polinomios $\mathcal P(\mathbf R)$. Las evaluaciones están definidas en el primero sin regularidad; la integral no define un funcional sobre *todas* las funciones arbitrarias del intervalo. En los polinomios, $p'$ denota derivación, a diferencia de $T'$.
+- **AE-3F-10 · ejercicios 6, 7, 13, 16 y 19.** No se agregan hipótesis de dimensión finita donde el enunciado no las establece. En particular, el ejercicio 16 requiere finitud de $W$ solamente; el 19 admite cualquier subconjunto $U\subseteq V$.
+- **AE-3F-11 · ejercicios 20–29.** Para recuperar un subespacio desde su anulador se utiliza la separación del ejercicio 20, bajo dimensión finita, y no se sustituye una igualdad de subespacios por la mera igualdad de sus dimensiones. El ejercicio 29 incluye legítimamente los casos en que $\varphi$ o $\psi$ es cero.
+- **AE-3F-12 · ejercicios 23–28.** La aplicación de evaluación $\Gamma$ empaqueta las condiciones $\varphi_j(v)=0$. La generación de $V'$ corresponde a inyectividad de $\Gamma$ y la independencia de los $\varphi_j$ a sobreyectividad; la reducción de dimensión en el ejercicio 28 es exactamente $m$ porque la lista es independiente.
+- **AE-3F-13 · ejercicio 30.** La base buscada se construye desde una base **prescrita** de $V'$ por $v_j=\Gamma^{-1}(e_j)$; no se presupone que una base arbitraria de $V$ tenga esa base dual.
+- **AE-3F-14 · ejercicio 31.** El dual de la inclusión es la restricción $i'(\varphi)=\varphi|_U$. El cociente $V'/U^0$ no debe confundirse con $(V/U)'$ del ejercicio 33. El isomorfismo inducido es independiente de las bases; la extensión mediante una base solo justifica sobreyectividad bajo la hipótesis dada.
+- **AE-3F-15 · ejercicio 32.** Se distingue $V'$, $V''=(V')'$ y la aplicación canónica $\Lambda:V\to V''$. La identidad $T''\Lambda=\Lambda T$ no necesita finitud; esta se emplea al deducir que $\Lambda$ es sobreyectiva.
+- **AE-3F-16 · ejercicio 33.** El isomorfismo $(V/U)'\cong U^0$ se induce por la aplicación cociente y es válido sin suponer dimensiones finitas. Se verifica expresamente que $\psi(v+U)=\varphi(v)$ está bien definida.
+
+- **AE-3F-17 · 3.109–3.118 · reposiciones tras el cotejo.** Se restituyeron las conclusiones explícitas de los cuatro ejemplos de 3.109, el enlace introductorio a 3.110, las transiciones originales hacia 3.114 y 3.116, la posición del aviso sobre 3.4 y la precisión de tipos de 3.118. Son restituciones de contenido expositivo previamente abreviado, no resultados matemáticos nuevos.
+- **AE-3F-18 · enunciados 1–33 · confirmación.** Se cotejaron los 33 enunciados con las pp. 115–118: hipótesis, dominios, codominios, índices, cuantificadores, letras de los apartados y fórmulas coinciden en contenido. Se conserva la presentación en listas numeradas y fórmulas Markdown, que modifica la disposición tipográfica del original.
+
+### Registro del cotejo y la procedencia
+
+**Fuente primaria efectivamente cotejada:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición, [PDF oficial del autor](https://linear.axler.net/LADR4e.pdf), fecha visible en portada: **16 de agosto de 2026**, sección 3F, páginas impresas 105–118 (páginas PDF 119–132 al contar desde 1). **Fuente complementaria:** [fe de erratas del autor](https://www.linear.axler.net/LADRErrata4e.html). Se verificaron visualmente las 14 páginas del tramo, el contenido matemático de 3.108–3.133, las ecuaciones numeradas 3.115/3.117/3.126 y los enunciados 1–33. No se realizó una comparación automatizada palabra por palabra ni una colación entre ediciones; el formato Markdown puede desarrollar, condensar o reorganizar explicaciones y no es una reproducción facsimilar.
+
+**Licencia y atribución:** la portada del PDF y el [sitio del autor](https://linear.axler.net/) confirman CC BY-NC 4.0 y el ejemplar fechado; la [licencia](https://creativecommons.org/licenses/by-nc/4.0/) exige atribución y reconocimiento de las modificaciones para el uso no comercial permitido. Se añadió una nota de atribución al comienzo del manuscrito. No se ha comprobado la situación de cada contenido de terceros ni el uso final previsto. Las respuestas `[SOL]`, notas `[NOTA]`, aparato y glosario son contribuciones identificadas del proyecto.
+
+| Página impresa | Alcance inspeccionado | Resultado del cotejo del contenido |
+|---|---|---|
+| 105 | 3.108–3.111 | Ejemplos de 3.109 y transición a 3.110 restituidos; definiciones y dimensión coinciden. |
+| 106 | 3.112–3.115 | Aviso sobre 3.4 colocado antes de la definición; transición a 3.114 restituida; fórmula 3.115 comprobada. |
+| 107 | 3.116–3.118 | Transición repuesta, demostración 3.116 explicitada y tipos $T':W'\to V'$ verificados; 3.117 comprobada. |
+| 108 | 3.119–3.120 | Ejemplo de derivación, integral, aditividad, homogeneidad y composición en orden inverso cotejados. |
+| 109 | 3.121–3.123 | Anulador, espacio ambiente y ejemplo de $\mathbf R^5$ cotejados. |
+| 110 | 3.124–3.126 | Errata corregida comprobada; dimensión del anulador, extensión y etiqueta 3.126 cotejadas. |
+| 111 | 3.127 y 3.128(a) | Ambas equivalencias, hipótesis y relación entre núcleo y anulador cotejadas. |
+| 112 | 3.128(b)–3.130(a) | Fórmulas de dimensiones y sobreyectividad/inyectividad cotejadas. |
+| 113 | 3.130(b)–3.132 | Igualdad de imagen con anulador, equivalencia 3.131 y bases para 3.132 cotejadas. |
+| 114 | 3.132–3.133 | Índices de trasposición y cadena de igualdades de rangos cotejados. |
+| 115 | Ejercicios 1–11 | Enunciados, fórmulas y valores numéricos cotejados. |
+| 116 | Ejercicios 12–21 | Enunciados, hipótesis de dimensión finita y dominios cotejados. |
+| 117 | Ejercicios 22–31 | Enunciados y duales de inclusión cotejados. |
+| 118 | Ejercicios 32–33 | Doble dual, naturalidad y ausencia de finitud en 33 cotejados. |
+
+## Glosario de trabajo · 3F
+
+> [NOTA EDITORIAL] Las definiciones siguientes describen el uso de los términos **en esta sección**. Las referencias apuntan al apartado donde aparecen o al ejercicio que los precisa. El glosario es auxiliar; no altera los enunciados de Axler.
+
+| Término | Definición operativa y referencia |
+|---|---|
+| **Adjunto**, $T^*$ | Operador reservado en esta obra para el contexto de espacios con producto interno; **no es** la aplicación dual algebraica $T'$ de 3F. Véase la advertencia posterior a 3.120. |
+| **Anulador**, $U^0$ | Subespacio de $V'$ formado por los funcionales que valen cero sobre todo elemento de $U\subseteq V$. Depende del espacio ambiente $V$. 3.121–3.125. |
+| **Aplicación dual**, $T'$ | Para $T:V\to W$, aplicación $W'\to V'$ dada por $T'(\varphi)=\varphi\circ T$; invierte la dirección. 3.118–3.120. |
+| **Base dual** | Si $(v_j)$ es una base de $V$, la lista $(\varphi_j)$ que satisface $\varphi_j(v_k)=\delta_{jk}$. Es una base de $V'$ en dimensión finita. 3.112–3.116. |
+| **Cociente**, $V/U$ | Espacio de clases $v+U$ respecto de un subespacio $U$; la aplicación cociente es $\pi(v)=v+U$. Ejercicio 33. |
+| **Composición y dualización** | $(ST)'=T'S'$ cuando las aplicaciones son componibles; el orden se invierte. 3.120(c). |
+| **Coordenada dual** | Valor $\varphi_j(v)$ que recupera el coeficiente de $v_j$ en la expansión de $v$. 3.114; ejercicios 8–11. |
+| **Cuerpo de escalares**, $\mathbf F$ | Cuerpo base de los espacios vectoriales; un funcional lineal tiene codominio $\mathbf F$. 3.108–3.110. |
+| **Dimensión del anulador** | Para $U\le V$ con $\dim V<\infty$, $\dim U^0=\dim V-\dim U$. 3.125. |
+| **Doble dual**, $V''$ | Espacio $(V')'$ de los funcionales lineales sobre $V'$. Ejercicio 32. |
+| **Espacio dual**, $V'$ | Espacio de todos los funcionales lineales sobre $V$: $\mathcal L(V,\mathbf F)$. 3.110–3.111. |
+| **Espacio nulo**, $\operatorname{null}T$ | Subespacio de los vectores del dominio enviados a cero por $T$. 3.128; ejercicios 19, 27–29. |
+| **Evaluación** | Funcional $f\mapsto f(a)$ en un espacio de funciones donde todas las funciones tienen valor en $a$; también operación $\varphi(v)$ al aplicar un funcional a un vector. 3.109; ejercicios 2, 32. |
+| **Extensión de funcionales** | Construcción de $\varphi\in V'$ cuya restricción a $U$ es un funcional dado $\alpha\in U'$. Se realiza extendiendo una base en el ejercicio 31(b). |
+| **Funcional lineal** | Aplicación lineal $\varphi:V\to\mathbf F$. 3.108–3.109. |
+| **Generación** | Una lista genera un espacio cuando su espacio generado coincide con él; para una lista $\varphi_1,\ldots,\varphi_m$, equivale a la inyectividad de la aplicación $\Gamma$ del ejercicio 25(a) cuando genera $V'$. |
+| **Hiperplano** | En dimensión finita, núcleo de un funcional lineal no nulo; tiene codimensión uno. Ejercicio 27, nota de solución. |
+| **Imagen**, $\operatorname{range}T$ | Subespacio de los valores $Tv$ alcanzados por $T$; su anulador coincide con $\operatorname{null}T'$. 3.128–3.130. |
+| **Independencia lineal** | Una lista no admite una combinación lineal nula no trivial; en el ejercicio 25(b), independencia de los funcionales equivale a sobreyectividad de $\Gamma$. |
+| **Isomorfismo natural** | Identificación definida mediante aplicaciones del problema sin depender de bases auxiliares; ejemplos $V'/U^0\cong U'$ y $(V/U)'\cong U^0$. Ejercicios 31 y 33. |
+| **Matriz traspuesta**, $A^{\mathrm t}$ | Matriz que intercambia filas y columnas: $A^{\mathrm t}_{kj}=A_{jk}$. Con las bases duales especificadas, $\mathcal M(T')=\mathcal M(T)^{\mathrm t}$. 3.132. |
+| **Rango fila y rango columna** | Dimensiones de los espacios generados por las filas y por las columnas de una matriz, respectivamente; son iguales. 3.133. |
+| **Restricción**, $\varphi\vert_U$ | Funcional sobre $U$ obtenido evaluando $\varphi\in V'$ únicamente en elementos de $U$. Coincide con $i'(\varphi)$. Ejercicio 31. |
+| **Traslado a un doble dual**, $\Lambda$ | Aplicación $V\to V''$ definida por $(\Lambda v)(\varphi)=\varphi(v)$; canónica y, en dimensión finita, isomorfismo. Ejercicio 32. |
+
+## Registro de auditoría interna · pase 1
+
+| Control | Resultado | Alcance y reservas |
+|---|---|---|
+| Integridad de los ejercicios | **PASS** | Enunciados 1–33 y soluciones originales 1–33 presentes, únicos y en orden. |
+| Estructura de la exposición | **PASS** | Encabezamientos de 3.108–3.133 conservados; 3.115, 3.117 y 3.126 son ecuaciones numeradas, no lagunas de exposición. |
+| Delimitadores y entornos matemáticos | **PASS (estático)** | Número par de delimitadores de fórmula en bloque; recuentos coincidentes de aperturas y cierres de `aligned`, `cases` y `pmatrix`. No sustituye compilar o renderizar. |
+| Lectura matemática de soluciones 1–33 | **PASS provisional** | Revisión de las implicaciones, tipos de aplicación, hipótesis finito-dimensionales, casos cero y correspondencias entre núcleos, imágenes y anuladores. Sin formalización independiente ni segunda lectura externa. |
+| Notación y consistencia | **PASS del cotejo** | Se distingue $T'$ de $T^*$ y de la derivada $p'$; la mejora de 3.116 quedó aplicada y se restauraron transiciones expositivas. |
+| Errata 3.124 | **COTEJADA** | El PDF actual ya contiene $0\in\mathbf F$; la errata histórica permanece señalada como tal, corroborada por la lista oficial. |
+| Cotejo de fuente y licencia | **PASS (visual y semántico)** | Se inspeccionaron páginas impresas 105–118, se cotejaron resultados 3.108–3.133 y enunciados 1–33; fecha y CC BY-NC verificadas en portada y sitio del autor. No constituye revisión jurídica ni comparación palabra a palabra. |
+| Conversión HTML de prueba | **PASS (Pandoc, no Quarto)** | Pandoc 3.1.11.1 produjo un HTML aislado a partir del maestro sin errores de conversión; contiene 1.572 expresiones matemáticas y tres tablas. La salida MathML pura omite las etiquetas visuales `\tag`; esto no es un defecto matemático del Markdown, pero impide aprobar esa salida sin adaptación. |
+| Sintaxis matemática y etiquetas | **PASS técnico (MathJax)** | Se procesaron las 1.572 expresiones TeX con MathJax 3: cero errores de interpretación detectados. Las etiquetas 3.115, 3.117 y 3.126 se renderizaron y comprobaron visualmente con MathJax; en el HTML de prueba MathML se añadieron como rótulos externos exclusivamente en la representación. No equivale a una demostración matemática formal. |
+| Inspección visual del HTML | **PASS de muestra, no integral** | Se revisaron capturas de la exposición 3.114–3.118, del glosario y de las tres ecuaciones etiquetadas. El navegador cargó el HTML completo (1.572 expresiones, tres tablas), sin desbordamiento horizontal en la vista de escritorio ensayada; no se ha examinado individualmente cada pantalla ni la salida Quarto. |
+| Enlaces y atribución | **PASS parcial** | Los enlaces internos del HTML no tienen destinos ausentes; hay cuatro URLs externas únicas. Se abrió el sitio oficial del autor y la licencia CC BY-NC 4.0; la página de erratas está indexada, pero su consulta directa agotó el tiempo. El PDF figura en el sitio del autor, sin nueva descarga ni validación HTTP independiente durante este pase. La nota de atribución aparece en la salida. |
+| Compilación Quarto y aprobación de publicación | **PENDIENTE / bloqueo de entorno** | Quarto no está instalado aquí y no fue posible descargarlo por falta de resolución DNS. No se ejecutó `quarto render`, no hubo inspección de una compilación Quarto ni publicación en GitHub o en la web. |
+
+## Registro de control de salida · pase 2
+
+> [NOTA EDITORIAL · QA] Ensayo efectuado sobre la copia íntegra del maestro de 99.415 bytes, antes de agregar este registro. Se creó un HTML **local, aislado y no publicado** con Pandoc + MathML, más una vista preliminar con CSS y rótulos de ecuación añadidos solo a la representación. La fuente Markdown no fue alterada para acomodar las limitaciones de MathML.
+
+- **Integridad de la prueba:** 33 enunciados y 33 soluciones se conservaron en orden; tres tablas renderizadas, 1.572 expresiones matemáticas procesadas y cero errores detectados al comprobarlas con MathJax. El HTML final de prueba conserva los rótulos visibles 3.115, 3.117 y 3.126.
+- **Prueba de navegación:** cero destinos faltantes en el índice de contenidos; sin desbordamiento horizontal global en la vista de escritorio ensayada (1280 px). Se verificaron visualmente pasajes de la exposición, el glosario y las ecuaciones etiquetadas. Queda pendiente la inspección integral, incluida la disposición responsiva y las restantes soluciones.
+- **Vínculos de procedencia:** cuatro destinos externos diferentes: PDF del autor, sitio del autor, fe de erratas y licencia CC BY-NC 4.0. Los sitios del autor y de la licencia abrieron; la fe de erratas apareció en el índice de búsqueda, pero su apertura directa no respondió a tiempo; el PDF se encuentra enlazado desde el sitio oficial. Esta inspección no equivale a una comprobación directa exhaustiva de los cuatro destinos.
+- **Limitación decisiva:** no hay Quarto instalado en el entorno de prueba y falló la resolución DNS necesaria para obtenerlo. La conversión Pandoc y el control MathJax son pruebas sustitutivas útiles, **no** una compilación Quarto. No se revisó paginación de PDF, no se exportó el maestro a un repositorio ni se publicó.
+
+**Resultado del pase 2:** controles estáticos y previsualización HTML local favorables en el alcance descrito; la sección sigue **sin cierre editorial ni autorización de publicación**.
+
+
+## Registro de control de salida · pase 3 (21-09-2026)
+
+- **Quarto local:** el autor ejecutó `quarto render 3f-dualidad.qmd --to html --no-execute` en su Mac; la terminal informó `Output created: 3f-dualidad.html`. El HTML recibido indica Quarto 1.10.18. Se recibió además el ZIP con el `.qmd`, el HTML y sus recursos locales; la fuente del `.qmd` coincidía con el maestro previo a esta actualización.
+- **Integridad:** se constataron los 33 enunciados, las 33 soluciones, las tres tablas y las instrucciones `\tag{3.115}`, `\tag{3.117}` y `\tag{3.126}` en el HTML. Las pruebas previas de sintaxis matemática usan un renderizador de control, no equivalen a validar toda la semántica ni todos los recursos remotos.
+- **Inspección visual:** el autor revisó el resultado en su navegador y afirmó que se ve bien. La simulación móvil anterior usó un motor matemático diferente y no reproduce de forma exacta su entorno; **se retira el supuesto desbordamiento como defecto confirmado**. No se aplica CSS correctivo ni se cambia la maquetación por esta sola prueba. La compatibilidad móvil real queda sin certificar.
+- **Alcance de esta actualización:** solamente estado y trazabilidad del QA; exposición matemática, enunciados, soluciones, glosario y diseño permanecen sin cambios. El registro histórico del pase 1 conserva el estado que tenía al redactarse; este pase acredita la compilación posterior.
+- **Reserva de cierre:** aún no se declara finalizada la auditoría matemática independiente ni se autoriza publicación.
+
+## Registro de revisión matemática · pase 4 (21-09-2026)
+
+- **Alcance:** segunda lectura matemática de 3.108–3.133 y de las soluciones originales de los ejercicios 1–33, comprobando dominios, codominios, hipótesis, dependencias, implicaciones y casos cero. No es una revisión matemática por un evaluador externo ni una formalización en Lean.
+- **Corrección matemática puntual:** solución del ejercicio 2: se introduce $E_a(f)=f(a)$, de modo que $\varphi_1=E_0$, $\varphi_2=E_{1/2}$ y $\varphi_3=E_1$. Evita la colisión anterior de la notación $\varphi_1$; las evaluaciones y el resultado no cambian.
+- **Remisión:** en la transición a 3.127 se cambia «véase $b$» por «véase (b)»; es una corrección de referencia sin cambio matemático.
+- **Exposición 3.130(b) y 3.131:** la inclusión más la igualdad de dimensiones implica la igualdad de subespacios, y $\operatorname{range}T'=V'$ expresa la sobreyectividad de $T'$. Los pasos son válidos aunque el último cierre se deja implícito; se registran como mejoras pedagógicas opcionales, **sin modificar ni atribuir añadidos a la traducción de Axler**.
+- **Control auxiliar reproducible:** 275 matrices sobre $\mathbf Q$ (incluidos tamaños y operadores cero), 2.271 aserciones sobre rango, núcleo, anulador, dual, cociente, bases duales y cálculos polinomiales; resultado PASS. Se comprobó separadamente que en $\mathbf C$ la dual usa traspuesta ordinaria sin conjugación. Estos ensayos no sustituyen las demostraciones generales.
+- **Balance:** no se identificó un contraejemplo ni un error lógico sustantivo en los argumentos revisados. Las 33 soluciones están completas tras la corrección de notación. Véase el informe separado `informe-qa-axler-3f-matematica-pase4.md` para observaciones por ejercicio.
+- **Límite técnico:** la compilación Quarto 1.10.18 anterior corresponde a la versión previa a este cambio; recompilar la fuente sincronizada antes de cerrar la edición. No se rediseñó la página ni se publicó.
+
+**Decisión editorial:** redacción completa, aparato/glosario v0.2 y cotejo visual del original **terminado con reposiciones**. Se ha compilado con Quarto 1.10.18 en el Mac del autor, y este declara satisfactoria la visualización en su navegador. **La sección no está cerrada editorialmente**: la segunda auditoría matemática ha concluido; faltan la recompilación del cambio puntual, las comprobaciones finales de enlaces y atribución y la autorización expresa de publicación. No exportar todavía a GitHub ni a la web.
+
+**Estado de las soluciones:** ejercicios 1–33 redactados; no quedan ejercicios pendientes de redacción. Primer y segundo pases matemáticos internos y cotejo visual de fuente efectuados. Se corrigió una colisión de notación en el ejercicio 2. Falta el QA de publicación; no se han publicado.
+
+---
+
+**Límite de publicación:** la exposición 3.108–3.133, los 33 enunciados traducidos y las 33 soluciones originales están completos; el aparato/glosario v0.2 y el cotejo del original están incorporados. La compilación Quarto local está acreditada y el autor confirmó que la vista en su navegador es satisfactoria. Quedan pendientes la recompilación tras la corrección puntual del ejercicio 2, la comprobación final de vínculos y atribución, la validación móvil en entorno real si fuese necesaria y la aprobación editorial. No exportar todavía a GitHub ni a la web.
+
+---
+
+> **Procedencia y licencia de esta edición:** traducción/adaptación no oficial de Sheldon Axler, [*Linear Algebra Done Right*, 4.ª edición](https://linear.axler.net/LADR4e.pdf). La traducción y las contribuciones de esta edición se publican bajo [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Las soluciones señaladas como originales son de Matemática Abierta, no del autor. [Índice de esta edición](../../index.qmd).
