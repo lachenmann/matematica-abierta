@@ -6,6 +6,7 @@ import MatematicaAbierta.CauchySchwarzFinito
 import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
 import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
 import MatematicaAbierta.TeoriaDeFunciones.Correspondencias
+import MatematicaAbierta.TeoriaDeFunciones.SemanticaEquivalencia
 import MatematicaAbierta.Continuo.ProgramaTransparente
 import MatematicaAbierta.Continuo.SimulacionAcotada
 
