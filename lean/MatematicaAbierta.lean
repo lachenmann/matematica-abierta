@@ -10,6 +10,7 @@ import MatematicaAbierta.TeoriaDeFunciones.SemanticaEquivalencia
 import MatematicaAbierta.Continuo.ProgramaTransparente
 import MatematicaAbierta.Continuo.SimulacionAcotada
 import MatematicaAbierta.Continuo.PrimerExito
+import MatematicaAbierta.Continuo.ComputabilidadAproximante
 
 /-!
 # Matemática Abierta: biblioteca formal
