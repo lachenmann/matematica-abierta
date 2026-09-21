@@ -15,6 +15,10 @@ namespace MatematicaAbierta.TeoriaDeFunciones
 
 open CategoryTheory CategoryTheory.Limits
 
+-- La instancia local de invertibilidad es una prueba (Prop); `letI` es necesario
+-- para que Lean pueda elaborar `inv` y `asIso`, incluso dentro de una prueba.
+set_option linter.style.haveILetI false
+
 universe v u
 variable {C : Type u} [Category.{v} C]
 variable {A B R : C} [HasBinaryProduct A B]
@@ -41,7 +45,7 @@ private theorem graphStructural_rep_witness (m : R ⟶ A ⨯ B) [Mono m]
     (f : A ⟶ B) (h : Subobject.mk m = Subobject.mk (graphStructural f)) :
     (Subobject.isoOfMkEqMk m (graphStructural f) h).hom ≫ graphStructural f = m := by
   change Subobject.ofMkLEMk m (graphStructural f) h.le ≫ graphStructural f = m
-  exact Subobject.ofMkLEMk_comp m (graphStructural f) h.le
+  exact Subobject.ofMkLEMk_comp h.le
 
 /-- TF-THM-00005: un mono representa la gráfica de una flecha exactamente
 cuando su primera proyección es un isomorfismo. -/
@@ -73,15 +77,16 @@ theorem tf_thm_00005 (m : R ⟶ A ⨯ B) [Mono m] :
         (p ≫ graphStructural f) ≫ prod.snd = p ≫ f := by
           simp [Category.assoc]
         _ = (p ≫ inv p) ≫ (m ≫ prod.snd) := by
-          simp [f, Category.assoc]
+          simp [f]
         _ = m ≫ prod.snd := by simp
 
-/-- La flecha representada se recupera de ambas proyecciones, sin efectuar
-una elección de valores de una relación multivaluada. -/
+/-- La recuperacion usa una instancia explícita de `IsIso` únicamente para
+que `inv` sea una expresión bien tipada. El teorema principal demuestra que
+dicha instancia se obtiene de la condición gráfica, sin hipótesis axiomáticas. -/
 theorem tf_thm_00005_recover (m : R ⟶ A ⨯ B) [Mono m]
+    [IsIso (m ≫ prod.fst)]
     (f : A ⟶ B) (h : Subobject.mk m = Subobject.mk (graphStructural f)) :
     f = inv (m ≫ prod.fst) ≫ (m ≫ prod.snd) := by
-  letI : IsIso (m ≫ prod.fst) := (tf_thm_00005 m).mp ⟨f, h⟩
   let i : R ≅ A := Subobject.isoOfMkEqMk m (graphStructural f) h
   have wi : i.hom ≫ graphStructural f = m :=
     graphStructural_rep_witness m f h
@@ -107,6 +112,7 @@ theorem tf_thm_00005_unique (m : R ⟶ A ⨯ B) [Mono m]
     (f g : A ⟶ B)
     (hf : Subobject.mk m = Subobject.mk (graphStructural f))
     (hg : Subobject.mk m = Subobject.mk (graphStructural g)) : f = g := by
+  letI : IsIso (m ≫ prod.fst) := (tf_thm_00005 m).mp ⟨f, hf⟩
   calc
     f = inv (m ≫ prod.fst) ≫ (m ≫ prod.snd) := tf_thm_00005_recover m f hf
     _ = g := (tf_thm_00005_recover m g hg).symm
