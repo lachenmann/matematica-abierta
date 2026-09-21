@@ -152,12 +152,11 @@ def shiftedPackedNatural (z : ℕ) : ℕ :=
 
 set_option maxHeartbeats 1000000 in
 theorem primrec_shiftedPackedNatural : Primrec shiftedPackedNatural := by
-  have hp : Primrec (fun z : ℕ =>
-      (ofNat Code z.unpair.1, z.unpair.2)) :=
-    ((Primrec.ofNat Code).comp (Primrec.fst.comp Primrec.unpair)).pair
-      (Primrec.snd.comp Primrec.unpair)
-  exact (show Primrec (fun p : Code × ℕ => shiftedPacked p.1 p.2)
-    from primrec_shiftedPacked).comp hp
+  have hc : Primrec (fun z : ℕ => ofNat Code z.unpair.1) :=
+    (Primrec.ofNat Code).comp (Primrec.fst.comp Primrec.unpair)
+  have hn : Primrec (fun z : ℕ => z.unpair.2) :=
+    Primrec.snd.comp Primrec.unpair
+  exact (primrec_shiftedPacked.comp hc hn).of_eq (fun _ => rfl)
 
 /-- Un único índice universal computa todos los nombres racionales desplazados. -/
 theorem exists_shifted_packed_program :
