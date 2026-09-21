@@ -33,7 +33,8 @@ theorem yoneda15_recover {A B : Type u}
     (X : Type u) (g : X → A) :
     α X g = (α A id) ∘ g := by
   have h := hnat A X g (id : A → A)
-  simpa only [id_comp] using h
+  change α X g = (α A id) ∘ g at h
+  exact h
 
 /-- TF-THM-00120 (Set): plenitud y unicidad del mapa recuperado. -/
 theorem yoneda15_full {A B : Type u}
@@ -73,10 +74,10 @@ theorem product15_recover {A B : Type u}
     (hnat : ∀ (X Y : Type u) (u : X → Y) (p : X × A),
       α Y (u p.1, p.2) = (u (α X p).1, (α X p).2))
     (X : Type u) (p : X × A) :
-    α X p = (p.1, (α PUnit.{u} (PUnit.unit, p.2)).2) := by
+    α X p = (p.1, (α PUnit.{u+1} (PUnit.unit, p.2)).2) := by
   rcases p with ⟨x, a⟩
-  let c : PUnit.{u} → X := fun _ => x
-  have h := hnat PUnit.{u} X c (PUnit.unit, a)
+  let c : PUnit.{u+1} → X := fun _ => x
+  have h := hnat PUnit.{u+1} X c (PUnit.unit, a)
   simpa [c] using h
 
 end MatematicaAbierta.TeoriaDeFunciones
