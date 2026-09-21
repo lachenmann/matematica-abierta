@@ -1,21 +1,21 @@
 ## 24.1. Series centradas y conjunto de convergencia {#sec-ta-24-1}
 
 ### Definición 24.1.1 — Serie de potencias real centrada
-Sean un centro $c\in\mathbb R$ y una sucesión de coeficientes **dada** $a:\mathbb N\to\mathbb R$, $n\mapsto a_n$. Para $n\in\mathbb N$ y $x\in\mathbb R$ escribimos
+Sean un centro $c\in\mathbb R$ y una sucesión de coeficientes dada $a:\mathbb N\to\mathbb R$, $n\mapsto a_n$. Para $n\in\mathbb N$ y $x\in\mathbb R$ escribimos
 
 $$
 \boxed{p_n^{a,c}(x):=a_n(x-c)^n.}
 \tag{24.1.1}
 $$
 
-Llamamos **serie de potencias real centrada en $c$ y con coeficientes $a$** a la serie de funciones asociada a la familia $(p_n^{a,c})_{n\in\mathbb N}$ en el sentido del Capítulo 23. Su notación es
+Llamamos serie de potencias real centrada en $c$ y con coeficientes $a$ a la serie de funciones asociada a la familia $(p_n^{a,c})_{n\in\mathbb N}$ en el sentido del Capítulo 23. Su notación es
 
 $$
 \boxed{\sum_{n=0}^{\infty}a_n(x-c)^n.}
 \tag{24.1.2}
 $$
 
-La escritura (24.1.2) designa inicialmente un **proceso de sumación**, no una igualdad con un número real ni una función suma definida sobre toda $\mathbb R$. El índice $n$, el centro y los coeficientes son datos diferenciados: cambiar $c$ o la sucesión $a$ cambia, en general, la serie considerada.
+La escritura (24.1.2) designa inicialmente un proceso de sumación, no una igualdad con un número real ni una función suma definida sobre toda $\mathbb R$. El índice $n$, el centro y los coeficientes son datos diferenciados: cambiar $c$ o la sucesión $a$ cambia, en general, la serie considerada.
 
 ### Proposición 24.1.2 — Construcción tipada de los términos y las sumas parciales
 Para todo $c\in\mathbb R$ y toda $a:\mathbb N\to\mathbb R$ existen una única sucesión de funciones
@@ -64,7 +64,7 @@ Para cada $n$ existe exactamente un $f$ que satisface la condición, a saber, la
 **Precisión.** No hemos demostrado que $\mathbf S^{a,c}$ tenga límite puntual en toda la recta. La existencia de cada función $S_N^{a,c}$, que implica únicamente una suma finita, no contiene esa afirmación.
 
 ### Definición 24.1.3 — Conjunto de convergencia
-Para los datos fijos $a$ y $c$, definimos el **conjunto de convergencia** de la serie de potencias como
+Para los datos fijos $a$ y $c$, definimos el conjunto de convergencia de la serie de potencias como
 
 $$
 \boxed{C(a,c):=\Bigl\{x\in\mathbb R:
@@ -75,7 +75,7 @@ $$
 \tag{24.1.6}
 $$
 
-Es un **conjunto**: se obtiene por Separación sobre $\mathbb R$ a partir del predicado de convergencia de la sucesión real $N\mapsto S_N^{a,c}(x)$, equivalente a la convergencia de la serie numérica de términos $n\mapsto a_n(x-c)^n$ («Convergencia, divergencia y suma de una serie»). No se trata de una comprensión irrestricta. Tampoco hemos escogido simultáneamente un límite para cada $x$: la definición sólo determina los puntos que satisfacen una propiedad.
+Es un conjunto: se obtiene por Separación sobre $\mathbb R$ a partir del predicado de convergencia de la sucesión real $N\mapsto S_N^{a,c}(x)$, equivalente a la convergencia de la serie numérica de términos $n\mapsto a_n(x-c)^n$ («Convergencia, divergencia y suma de una serie»). No se trata de una comprensión irrestricta. Tampoco hemos escogido simultáneamente un límite para cada $x$: la definición sólo determina los puntos que satisfacen una propiedad.
 
 Para $x\notin C(a,c)$ la serie no tiene suma real en ese punto; la expresión (24.1.2) puede seguir nombrando el proceso formal, pero no se evaluará como si fuera una función suma allí. La pertenencia $x\in C(a,c)$ no se declara decidible ni efectivamente comprobable para una sucesión arbitraria de coeficientes.
 
@@ -91,7 +91,7 @@ $$
 La segunda igualdad se entiende como convergencia de la serie numérica en el punto $c$ hacia $a_0$.
 
 **Demostración.**
-Al evaluar en $x=c$, tenemos $x-c=0$. La cláusula inicial de las potencias da $0^0=1$; por tanto, **el término de índice cero es $a_0$**, y no cero ni una expresión indefinida. Para $n\ge1$, la recursión de potencias da $0^n=0$, lo que se verifica por inducción a partir de $0^1=0^0\cdot0=0$. En consecuencia,
+Al evaluar en $x=c$, tenemos $x-c=0$. La cláusula inicial de las potencias da $0^0=1$; por tanto, el término de índice cero es $a_0$, y no cero ni una expresión indefinida. Para $n\ge1$, la recursión de potencias da $0^n=0$, lo que se verifica por inducción a partir de $0^1=0^0\cdot0=0$. En consecuencia,
 
 $$
 p_0^{a,c}(c)=a_0,
@@ -127,7 +127,7 @@ $$
 No se atribuye a $F_{a,c}$ ningún valor fuera de su dominio $C(a,c)$.
 
 **Demostración.**
-Por (24.1.6), fijado $x\in C(a,c)$ existe al menos un real $L$ límite de la sucesión numérica $N\mapsto S_N^{a,c}(x)$. El teorema de unicidad del límite «Unicidad del límite real» prueba que es **uno solo**. El conjunto $C(a,c)\times\mathbb R$ existe; Separación determina
+Por (24.1.6), fijado $x\in C(a,c)$ existe al menos un real $L$ límite de la sucesión numérica $N\mapsto S_N^{a,c}(x)$. El teorema de unicidad del límite «Unicidad del límite real» prueba que es uno solo. El conjunto $C(a,c)\times\mathbb R$ existe; Separación determina
 
 $$
 G_F:=\{\langle x,L\rangle\in C(a,c)\times\mathbb R:
@@ -145,17 +145,17 @@ $$
 $$
 
 **Demostración.**
-La condición necesaria de convergencia de una serie («Condición necesaria de convergencia: el término general tiende a cero») da $b_n\to0$. Por «Toda sucesión real convergente es acotada», toda sucesión real convergente es acotada. Por consiguiente existe $B\in\mathbb R$ con $|b_n|\le B$ para todo natural $n$. Podemos poner $M:=B+1$, que es estrictamente positivo porque $B\ge|b_0|\ge0$; así obtenemos (24.1.10). Esta prueba no escoge un índice o una cota para cada $n$: extrae **una sola cota** de un resultado previo. $\square$
+La condición necesaria de convergencia de una serie («Condición necesaria de convergencia: el término general tiende a cero») da $b_n\to0$. Por «Toda sucesión real convergente es acotada», toda sucesión real convergente es acotada. Por consiguiente existe $B\in\mathbb R$ con $|b_n|\le B$ para todo natural $n$. Podemos poner $M:=B+1$, que es estrictamente positivo porque $B\ge|b_0|\ge0$; así obtenemos (24.1.10). Esta prueba no escoge un índice o una cota para cada $n$: extrae una sola cota de un resultado previo. $\square$
 
 ### Teorema 24.1.7 — Convergencia absoluta hacia el interior
-Sean $c\in\mathbb R$, $a:\mathbb N\to\mathbb R$ y $y\in C(a,c)$ con $y\ne c$. Entonces, para **todo** $x\in\mathbb R$ tal que
+Sean $c\in\mathbb R$, $a:\mathbb N\to\mathbb R$ y $y\in C(a,c)$ con $y\ne c$. Entonces, para todo $x\in\mathbb R$ tal que
 
 $$
 \boxed{|x-c|<|y-c|,}
 \tag{24.1.11}
 $$
 
-la serie de potencias $\sum_{n=0}^{\infty}a_n(x-c)^n$ converge **absolutamente**. En particular, $x\in C(a,c)$.
+la serie de potencias $\sum_{n=0}^{\infty}a_n(x-c)^n$ converge absolutamente. En particular, $x\in C(a,c)$.
 
 **Demostración.**
 Fijemos los datos y un punto $x$ que cumpla (24.1.11). Puesto que $y\in C(a,c)$, por definición converge la serie numérica de términos
@@ -164,7 +164,7 @@ $$
 b_n:=a_n(y-c)^n\qquad(n\in\mathbb N).
 $$
 
-El lema anterior proporciona un **mismo** real $M>0$ tal que
+El lema anterior proporciona un mismo real $M>0$ tal que
 
 $$
 |a_n(y-c)^n|\le M\qquad(n\in\mathbb N).
@@ -224,7 +224,7 @@ $$
 \tag{24.1.15}
 $$
 
-y la convergencia es absoluta en cada punto de ese intervalo. En efecto, $c-d<x<c+d$ equivale a $|x-c|<d$; aplicamos el teorema. **La conclusión es puntual**, todavía no una afirmación de uniformidad en todo ese intervalo abierto ni sobre sus extremos.
+y la convergencia es absoluta en cada punto de ese intervalo. En efecto, $c-d<x<c+d$ equivale a $|x-c|<d$; aplicamos el teorema. La conclusión es puntual, todavía no una afirmación de uniformidad en todo ese intervalo abierto ni sobre sus extremos.
 
-**Frontera y transición.** El conjunto de convergencia está bien definido, contiene siempre el centro y posee la propiedad de inclusión hacia distancias estrictamente menores que cualquier distancia donde ya se conozca convergencia. El paso siguiente será construir el conjunto de distancias admitidas, demostrar las condiciones de existencia de su supremo —separando el caso no acotado— y **sólo entonces** definir el radio de convergencia. La pertenencia de los puntos a distancia exactamente igual al radio requerirá análisis independiente. La continuidad, integración y derivación de $F_{a,c}$ no se afirman aún.
+**Frontera y transición.** El conjunto de convergencia está bien definido, contiene siempre el centro y posee la propiedad de inclusión hacia distancias estrictamente menores que cualquier distancia donde ya se conozca convergencia. El paso siguiente será construir el conjunto de distancias admitidas, demostrar las condiciones de existencia de su supremo —separando el caso no acotado— y sólo entonces definir el radio de convergencia. La pertenencia de los puntos a distancia exactamente igual al radio requerirá análisis independiente. La continuidad, integración y derivación de $F_{a,c}$ no se afirman aún.
 ---

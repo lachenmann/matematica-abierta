@@ -138,7 +138,7 @@ $$
 }
 $$
 
-Llamaremos a $\jmath_{\mathbb Q}^{F}$ la **copia canónica de los racionales en $F$**.
+Llamaremos a $\jmath_{\mathbb Q}^{F}$ la copia canónica de los racionales en $F$.
 
 La fórmula no depende de una selección de representantes: la independencia ya fue demostrada antes de definir la función sobre el cociente. En particular, seguimos sin identificar literalmente $\mathbb Q$ con un subconjunto de $F$.
 
@@ -629,7 +629,7 @@ $$
 \boxed{\iota=\jmath_{\mathbb Q}^{F}.}
 $$
 
-En particular, existe **una única** incrustación de cuerpos ordenados de $\mathbb Q$ en $F$.
+En particular, existe una única incrustación de cuerpos ordenados de $\mathbb Q$ en $F$.
 
 **Demostración.**
 

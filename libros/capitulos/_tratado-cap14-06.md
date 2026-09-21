@@ -1,6 +1,6 @@
 ## 14.6. Criterio de comparación por límite {#sec-ta-14-6}
 
-La comparación directa exige desigualdades entre los términos de dos series. A menudo, sin embargo, las expresiones de sus términos son complicadas y resulta más accesible estudiar su **cociente**. Si éste se aproxima a un número real estrictamente positivo, podremos obtener dos desigualdades eventuales: cada sucesión de términos quedará acotada por un múltiplo positivo de la otra. Este paso, que convierte un límite en cotas útiles para sumas parciales, es el núcleo del criterio.
+La comparación directa exige desigualdades entre los términos de dos series. A menudo, sin embargo, las expresiones de sus términos son complicadas y resulta más accesible estudiar su cociente. Si éste se aproxima a un número real estrictamente positivo, podremos obtener dos desigualdades eventuales: cada sucesión de términos quedará acotada por un múltiplo positivo de la otra. Este paso, que convierte un límite en cotas útiles para sumas parciales, es el núcleo del criterio.
 
 Hay tres precauciones previas. El cociente $a_n/b_n$ sólo existe cuando $b_n\ne0$; su límite, si se utiliza como número real, debe estar justificado; y la comparación de términos no equivale a una igualdad de las sumas. Separaremos estas cuestiones antes de formular el teorema.
 
@@ -12,7 +12,7 @@ $$
 \boxed{\operatorname{PS}(ca)_n=c\,\operatorname{PS}(a)_n.}
 $$
 
-Si $c\ne0$, la serie de términos $ca$ converge **si y sólo si** converge la de términos $a$. En ese caso, ambas sumas están definidas y
+Si $c\ne0$, la serie de términos $ca$ converge si y sólo si converge la de términos $a$. En ese caso, ambas sumas están definidas y
 
 $$
 \boxed{\sum_{n=0}^{\infty}ca_n
@@ -49,7 +49,7 @@ Por la definición de suma de una serie y la unicidad del límite, la serie de t
 
 ### Definición 14.6.2 — Cociente secuencial totalizado y cociente eventual
 
-Para dos sucesiones reales $a,b\in\mathbb R^{\mathbb N}$ definimos su **cociente totalizado** $\operatorname{quo}_0(a,b)\in\mathbb R^{\mathbb N}$, con valores
+Para dos sucesiones reales $a,b\in\mathbb R^{\mathbb N}$ definimos su cociente totalizado $\operatorname{quo}_0(a,b)\in\mathbb R^{\mathbb N}$, con valores
 
 $$
 \boxed{
@@ -60,7 +60,7 @@ a_n b_n^{-1},& b_n\ne0,\\
 \end{cases}}
 $$
 
-La segunda rama es una convención de definición y **no** una división por cero. El grafo se obtiene por Separación dentro de $\mathbb N\times\mathbb R$: para cada índice, la disyunción $b_n=0$ o $b_n\ne0$ determina un único valor real; en el segundo caso el inverso existe por las leyes del cuerpo. No se escoge una sucesión de cocientes mediante Choice: queda definida de forma unívoca. No se afirma que la prueba clásica de igualdad con cero sea un procedimiento efectivo uniforme.
+La segunda rama es una convención de definición y no una división por cero. El grafo se obtiene por Separación dentro de $\mathbb N\times\mathbb R$: para cada índice, la disyunción $b_n=0$ o $b_n\ne0$ determina un único valor real; en el segundo caso el inverso existe por las leyes del cuerpo. No se escoge una sucesión de cocientes mediante Choice: queda definida de forma unívoca. No se afirma que la prueba clásica de igualdad con cero sea un procedimiento efectivo uniforme.
 
 Si existe $N_0\in\mathbb N$ tal que $b_n>0$ para todo $n\ge N_0$, entonces
 
@@ -75,7 +75,7 @@ $$
 \lim_{n\to\infty}\frac{a_n}{b_n}=\ell
 $$
 
-significará exclusivamente que la sucesión real total $\operatorname{quo}_0(a,b)$ converge a $\ell$. La convención $0$ en los índices anteriores a $N_0$ no afecta a la convergencia: cualquier otra sucesión real que coincida con esos cocientes desde $N_0$ es eventualmente igual a $\operatorname{quo}_0(a,b)$, y Proposición 13.3.7 — Invariancia de la convergencia bajo coincidencia eventual conserva exactamente su límite. **No** se interpreta esta notación cuando el denominador pueda anularse arbitrariamente tarde sin una hipótesis adicional que legitime los cocientes.
+significará exclusivamente que la sucesión real total $\operatorname{quo}_0(a,b)$ converge a $\ell$. La convención $0$ en los índices anteriores a $N_0$ no afecta a la convergencia: cualquier otra sucesión real que coincida con esos cocientes desde $N_0$ es eventualmente igual a $\operatorname{quo}_0(a,b)$, y Proposición 13.3.7 — Invariancia de la convergencia bajo coincidencia eventual conserva exactamente su límite. No se interpreta esta notación cuando el denominador pueda anularse arbitrariamente tarde sin una hipótesis adicional que legitime los cocientes.
 
 > **Control de tipos.** $a$, $b$ y $\operatorname{quo}_0(a,b)$ son funciones $\mathbb N\to\mathbb R$; $a_n/b_n$ es un número real únicamente si $b_n\ne0$. La función totalizada facilita formular límites sin dejar indefinido el objeto secuencial, pero no sustituye la condición de denominador eventualmente positivo del criterio que sigue.
 
@@ -116,7 +116,7 @@ $$
 \qquad(n\ge N_1).
 $$
 
-Tomemos $N$ igual al mayor de los dos naturales $N_0,N_1$; su existencia resulta del orden total de $\mathbb N$, sin una elección de infinitos índices. Para $n\ge N$ se cumplen a la vez $b_n>0$ y $q_n=a_nb_n^{-1}$. Multiplicar las desigualdades por $b_n$ **conserva** su sentido, precisamente porque es positivo. Así,
+Tomemos $N$ igual al mayor de los dos naturales $N_0,N_1$; su existencia resulta del orden total de $\mathbb N$, sin una elección de infinitos índices. Para $n\ge N$ se cumplen a la vez $b_n>0$ y $q_n=a_nb_n^{-1}$. Multiplicar las desigualdades por $b_n$ conserva su sentido, precisamente porque es positivo. Así,
 
 $$
 \frac\ell2\,b_n<a_n<\frac{3\ell}{2}\,b_n.
@@ -128,14 +128,14 @@ Las desigualdades no estrictas requeridas se deducen inmediatamente. Como $\ell>
 
 ### Teorema 14.6.4 — Criterio de comparación por límite positivo
 
-Sean $a,b:\mathbb N\to\mathbb R$ sucesiones cuyos términos son **no negativos**. Supongamos que $b_n>0$ para todo $n$ suficientemente grande y que, en el sentido preciso de la definición anterior,
+Sean $a,b:\mathbb N\to\mathbb R$ sucesiones cuyos términos son no negativos. Supongamos que $b_n>0$ para todo $n$ suficientemente grande y que, en el sentido preciso de la definición anterior,
 
 $$
 \boxed{\lim_{n\to\infty}\frac{a_n}{b_n}=\ell,
 \qquad \ell\in\mathbb R,\ \ell>0.}
 $$
 
-La última expresión significa que $\ell$ es un **número real** positivo y finito; no introduce un elemento $\infty$ en el cuerpo real. Entonces
+La última expresión significa que $\ell$ es un número real positivo y finito; no introduce un elemento $\infty$ en el cuerpo real. Entonces
 
 $$
 \boxed{
@@ -144,7 +144,7 @@ $$
 \sum_{n=0}^{\infty}b_n\ \text{converge}.}
 $$
 
-Por negación de ambas condiciones equivalentes, las dos series también **divergen simultáneamente**, en el sentido de divergencia real adoptado en §14.1.
+Por negación de ambas condiciones equivalentes, las dos series también divergen simultáneamente, en el sentido de divergencia real adoptado en §14.1.
 
 **Demostración.**
 
@@ -155,7 +155,7 @@ $$
 \qquad(n\ge N).}
 $$
 
-Las desigualdades son válidas entre términos no negativos; no intentaremos deducir de ellas el orden de las **sumas totales**, pues sólo sabemos que se cumplen desde cierto índice.
+Las desigualdades son válidas entre términos no negativos; no intentaremos deducir de ellas el orden de las sumas totales, pues sólo sabemos que se cumplen desde cierto índice.
 
 **Si converge la serie de términos $b$.** Por Proposición 14.6.1 — Multiplicación de una serie por un escalar no nulo, multiplicarla por el escalar no nulo $C$ conserva su convergencia: $\sum Cb_n$ converge. Como $0\le a_n\le Cb_n$ para $n\ge N$, el corolario de comparación eventual Corolario 14.5.3 — Comparación válida a partir de cierto índice establece que converge $\sum a_n$.
 
@@ -203,4 +203,4 @@ Las dos parejas cumplen las mismas hipótesis del corolario, incluida la diverge
 
 > **Mapa lógico del criterio.** Si el cociente tiende a un real estrictamente positivo, hay cotas *superior e inferior* por múltiplos positivos y se obtiene equivalencia. Si tiende a cero, sólo se deduce la comparación eventual $a_n\le b_n$ y queda una implicación de convergencia. Para términos no negativos y denominador eventualmente positivo, un límite real del cociente no puede ser negativo: los cocientes son eventualmente no negativos y el paso al límite conserva ese orden (Teorema 13.6.2 — Preservación del orden en el paso al límite). El caso de cocientes sin límite, o de crecimiento no acotado sin límite real, no entra en este teorema; no anticipamos límites infinitos.
 
-Esta distinción entre comparación bilateral y unilateral será esencial al elegir series de referencia. Hemos necesitado sólo el límite real de sucesiones, las reglas de orden y la comparación directa de §14.5. En §14.7 abordaremos la **condensación de Cauchy**, que organiza los términos de una serie monótona no negativa en bloques de longitud creciente y requiere justificar cuidadosamente la indexación de esos bloques antes de comparar sus sumas.
+Esta distinción entre comparación bilateral y unilateral será esencial al elegir series de referencia. Hemos necesitado sólo el límite real de sucesiones, las reglas de orden y la comparación directa de §14.5. En §14.7 abordaremos la condensación de Cauchy, que organiza los términos de una serie monótona no negativa en bloques de longitud creciente y requiere justificar cuidadosamente la indexación de esos bloques antes de comparar sus sumas.

@@ -1,8 +1,8 @@
 ## 19.4. Reglas algebraicas de derivación {#sec-ta-19-4}
 
-En §§19.1–19.3 hemos establecido qué significa derivar **en un punto**, sin exigir que la función esté definida en un intervalo abierto. Esta generalidad se conserva en las reglas algebraicas: todas las funciones consideradas tendrán el mismo dominio $D\subseteq\mathbb R$, y su derivabilidad se exigirá en un punto $a\in D\cap\operatorname{Acc}(D)$. Las operaciones puntuales $f+g$, $cf$, $f-g$ y $fg$ ya fueron construidas como funciones tipadas $D\to\mathbb R$ en Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales. No confundiremos la derivada en $a$ con una función derivada definida automáticamente sobre todo $D$.
+En §§19.1–19.3 hemos establecido qué significa derivar en un punto, sin exigir que la función esté definida en un intervalo abierto. Esta generalidad se conserva en las reglas algebraicas: todas las funciones consideradas tendrán el mismo dominio $D\subseteq\mathbb R$, y su derivabilidad se exigirá en un punto $a\in D\cap\operatorname{Acc}(D)$. Las operaciones puntuales $f+g$, $cf$, $f-g$ y $fg$ ya fueron construidas como funciones tipadas $D\to\mathbb R$ en Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales. No confundiremos la derivada en $a$ con una función derivada definida automáticamente sobre todo $D$.
 
-La estrategia es comparar los cocientes incrementales **en el dominio perforado $D_a$**. Para la suma y los escalares, su álgebra es inmediata. En el producto aparece un factor que depende del argumento; su límite existe gracias a la continuidad que ya hemos deducido de la derivabilidad. Así evitaremos utilizar el teorema del valor medio o las propiedades secuenciales cuya recíproca pueda requerir elección.
+La estrategia es comparar los cocientes incrementales en el dominio perforado $D_a$. Para la suma y los escalares, su álgebra es inmediata. En el producto aparece un factor que depende del argumento; su límite existe gracias a la continuidad que ya hemos deducido de la derivabilidad. Así evitaremos utilizar el teorema del valor medio o las propiedades secuenciales cuya recíproca pueda requerir elección.
 
 ### Teorema 19.4.1 — Regla de derivación de la suma
 Sean $f,g:D\to\mathbb R$ derivables en $a\in D\cap\operatorname{Acc}(D)$, con derivadas $L:=f'(a)$ y $M:=g'(a)$. Entonces la función puntual $f+g:D\to\mathbb R$ es derivable en $a$ y
@@ -23,7 +23,7 @@ q_{f+g,a}(x)
 \end{aligned}
 $$
 
-Por derivabilidad, las dos funciones $q_{f,a},q_{g,a}:D_a\to\mathbb R$ tienen límites respectivos $L$ y $M$ en $a$. El teorema de suma de límites Teorema §16.3.3 — Suma, resta y multiplicación por escalares, aplicado **a ese mismo dominio $D_a$**, da $\lim_{x\to a}q_{f+g,a}(x)=L+M$. La definición Definición §19.1.3 — Derivabilidad en un punto demuestra la derivabilidad de $f+g$ y la unicidad establecida en Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada identifica su derivada con $L+M$. La identidad nunca evalúa los cocientes en $a$. $\square$
+Por derivabilidad, las dos funciones $q_{f,a},q_{g,a}:D_a\to\mathbb R$ tienen límites respectivos $L$ y $M$ en $a$. El teorema de suma de límites Teorema §16.3.3 — Suma, resta y multiplicación por escalares, aplicado a ese mismo dominio $D_a$, da $\lim_{x\to a}q_{f+g,a}(x)=L+M$. La definición Definición §19.1.3 — Derivabilidad en un punto demuestra la derivabilidad de $f+g$ y la unicidad establecida en Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada identifica su derivada con $L+M$. La identidad nunca evalúa los cocientes en $a$. $\square$
 
 ### Corolario 19.4.2 — Multiplicación por escalares, opuestos y diferencias
 Sean $f,g:D\to\mathbb R$ derivables en $a\in D\cap\operatorname{Acc}(D)$ y sea $c\in\mathbb R$ un escalar fijo. Entonces $cf$, $-f$ y $f-g$, consideradas como funciones $D\to\mathbb R$, son derivables en $a$, con
@@ -84,9 +84,9 @@ $$
 =f(a)g'(a)+g(a)f'(a).
 $$
 
-En consecuencia, $fg$ es derivable en $a$, y la unicidad de su derivada establece la fórmula anunciada. Los límites invocados son los **límites de funciones del capítulo 16**, no los de sucesiones ni ningún resultado global de diferenciación. $\square$
+En consecuencia, $fg$ es derivable en $a$, y la unicidad de su derivada establece la fórmula anunciada. Los límites invocados son los límites de funciones del capítulo 16, no los de sucesiones ni ningún resultado global de diferenciación. $\square$
 
-**Lectura de la regla.** No es correcto escribir $(fg)'(a)=f'(a)g'(a)$. El incremento de un producto distribuye la variación entre sus dos factores; uno de ellos se conserva con su **valor** en el centro mientras el otro aporta su derivada. La continuidad del factor variable es exactamente lo que permite reemplazar $f(x)$ por $f(a)$ en el límite.
+**Lectura de la regla.** No es correcto escribir $(fg)'(a)=f'(a)g'(a)$. El incremento de un producto distribuye la variación entre sus dos factores; uno de ellos se conserva con su valor en el centro mientras el otro aporta su derivada. La continuidad del factor variable es exactamente lo que permite reemplazar $f(x)$ por $f(a)$ en el límite.
 
 ### Corolario 19.4.4 — Derivada del cuadrado de una función
 Si $f:D\to\mathbb R$ es derivable en $a\in D\cap\operatorname{Acc}(D)$, la función $h:D\to\mathbb R$ definida por $h(x)=f(x)^2$ es derivable en $a$ y
@@ -102,6 +102,6 @@ $$
 h'(a)=f'(a)f(a)+f(a)f'(a)=(1+1)f(a)f'(a)=2f(a)f'(a).
 $$
 
-La constante $2$ es aquí la suma de dos unidades **reales**. No hemos supuesto ni construido una regla para potencias arbitrarias a partir de este caso particular. $\square$
+La constante $2$ es aquí la suma de dos unidades reales. No hemos supuesto ni construido una regla para potencias arbitrarias a partir de este caso particular. $\square$
 
 **Transición.** Las operaciones sin división conservan el dominio $D$ de los factores. Para un cociente, en cambio, habrá que restringirlo explícitamente al conjunto donde el denominador no se anula y comprobar que el punto sigue siendo de acumulación de ese dominio. En §19.5 desarrollaremos el recíproco y la regla del cociente con esa precaución, sin adelantar la regla de la cadena.

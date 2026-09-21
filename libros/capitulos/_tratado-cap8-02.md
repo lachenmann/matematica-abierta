@@ -12,7 +12,7 @@ Lo que necesitamos ahora es convertir ese tamaño de una diferencia en una medid
 
 ### Definición 8.2.1 — Distancia racional
 
-Definimos la **distancia racional** como la función
+Definimos la distancia racional como la función
 
 $$
 \boxed{
@@ -48,27 +48,27 @@ Aunque el codominio declarado sea $\mathbb Q$, veremos inmediatamente que sus va
 
 Para cualesquiera $x,y,z\in\mathbb Q$:
 
-1. **no negatividad**:
+1. no negatividad:
    $$
    0\leq d_{\mathbb Q}(x,y);
    $$
-2. **separación de puntos**:
+2. separación de puntos:
    $$
    d_{\mathbb Q}(x,y)=0
    \iff
    x=y;
    $$
-3. **simetría**:
+3. simetría:
    $$
    d_{\mathbb Q}(x,y)=d_{\mathbb Q}(y,x);
    $$
-4. **desigualdad triangular**:
+4. desigualdad triangular:
    $$
    d_{\mathbb Q}(x,z)
    \leq
    d_{\mathbb Q}(x,y)+d_{\mathbb Q}(y,z);
    $$
-5. **invariancia por traslación**:
+5. invariancia por traslación:
    $$
    d_{\mathbb Q}(x+z,y+z)
    =

@@ -12,9 +12,9 @@ podríamos afirmar que existe una sucesión racional de Cauchy que lo representa
 
 La estrategia será distinta:
 
-1. construir una enumeración **fija y definible** de $\mathbb Q$;
+1. construir una enumeración fija y definible de $\mathbb Q$;
 2. demostrar que todo $x\in\mathbb R_C$ admite racionales arbitrariamente próximos;
-3. entre todos los racionales suficientemente próximos, escoger el **primero** que aparece en la enumeración fijada.
+3. entre todos los racionales suficientemente próximos, escoger el primero que aparece en la enumeración fijada.
 
 El buen orden de $\mathbb N$ convertirá así una existencia local en una función canónica, sin utilizar ningún principio de elección.
 
@@ -281,7 +281,7 @@ $$
 
 La fracción de la derecha es una clase racional legítima porque su denominador entero es no nulo.
 
-Esta función queda fijada desde ahora para todo el tratado. La palabra **enumeración** se usa en el sentido de aplicación sobreyectiva; no se exige ausencia de repeticiones.
+Esta función queda fijada desde ahora para todo el tratado. La palabra enumeración se usa en el sentido de aplicación sobreyectiva; no se exige ausencia de repeticiones.
 
 ### Proposición 10.2.6 — La enumeración racional es sobreyectiva
 
@@ -619,7 +619,7 @@ $$
 
 La segunda rama sólo hace total la función. En todas las aplicaciones analíticas posteriores la tolerancia será positiva.
 
-La importancia fundacional de esta definición es que $A_C(x,\eta)$ no es «un racional escogido» entre muchos: es el racional determinado por el **menor índice natural** que satisface la condición de aproximación.
+La importancia fundacional de esta definición es que $A_C(x,\eta)$ no es «un racional escogido» entre muchos: es el racional determinado por el menor índice natural que satisface la condición de aproximación.
 
 > **Advertencia fundacional.** La unicidad del mínimo elimina cualquier uso de Choice, pero el predicado $n\in I(x,\eta)$ no es decidible para un real de Cauchy extensional arbitrario. Por tanto,
 > $$

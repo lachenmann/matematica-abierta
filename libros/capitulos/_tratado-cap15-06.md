@@ -1,11 +1,11 @@
 ## 15.6. Frontera de un conjunto {#sec-ta-15-6}
 
-El interior de $A$ reúne los puntos alrededor de los cuales cabe permanecer enteramente en $A$; su exterior reúne aquellos alrededor de los cuales cabe permanecer enteramente fuera de $A$. Pero estas dos posibilidades no agotan necesariamente la recta. Puede ocurrir que **cada** bola centrada en un punto encuentre simultáneamente puntos de $A$ y de su complemento. Ése será nuestro criterio para reconocer la frontera.
+El interior de $A$ reúne los puntos alrededor de los cuales cabe permanecer enteramente en $A$; su exterior reúne aquellos alrededor de los cuales cabe permanecer enteramente fuera de $A$. Pero estas dos posibilidades no agotan necesariamente la recta. Puede ocurrir que cada bola centrada en un punto encuentre simultáneamente puntos de $A$ y de su complemento. Ése será nuestro criterio para reconocer la frontera.
 
-La definición no exige que el centro pertenezca a $A$ y tampoco debe confundirse con la acumulación: allí se excluye el centro al buscar *otro punto de $A$*; aquí se exige proximidad con **dos conjuntos diferentes**, sin perforar ninguna bola.
+La definición no exige que el centro pertenezca a $A$ y tampoco debe confundirse con la acumulación: allí se excluye el centro al buscar *otro punto de $A$*; aquí se exige proximidad con dos conjuntos diferentes, sin perforar ninguna bola.
 
 ### Definición 15.6.1 — Punto de frontera
-Sean $A\subseteq\mathbb R$ y $x\in\mathbb R$. Diremos que **$x$ es un punto de frontera de $A$** si, para cada $r\in\mathbb R$ con $r>0$, se cumplen simultáneamente
+Sean $A\subseteq\mathbb R$ y $x\in\mathbb R$. Diremos que $x$ es un punto de frontera de $A$ si, para cada $r\in\mathbb R$ con $r>0$, se cumplen simultáneamente
 
 $$
 \boxed{B_r(x)\cap A\ne\varnothing
@@ -13,11 +13,11 @@ $$
 B_r(x)\cap(\mathbb R\setminus A)\ne\varnothing.}
 $$
 
-Los dos cuantificadores existenciales implícitos en las intersecciones no vacías se refieren a un radio **fijado**. No se pide una función que asigne testigos a todos los radios. Tampoco se exige $x\in A$: el centro puede pertenecer al conjunto o a su complemento. En ambos casos debe haber puntos de los dos lados tan próximos como se quiera.
+Los dos cuantificadores existenciales implícitos en las intersecciones no vacías se refieren a un radio fijado. No se pide una función que asigne testigos a todos los radios. Tampoco se exige $x\in A$: el centro puede pertenecer al conjunto o a su complemento. En ambos casos debe haber puntos de los dos lados tan próximos como se quiera.
 
 
 ### Definición 15.6.2 — Frontera de un conjunto
-Para $A\subseteq\mathbb R$, definimos su **frontera** como el conjunto de todos sus puntos de frontera:
+Para $A\subseteq\mathbb R$, definimos su frontera como el conjunto de todos sus puntos de frontera:
 
 $$
 \boxed{\partial A:=\left\{x\in\mathbb R:
@@ -26,7 +26,7 @@ $$
 B_r(x)\cap(\mathbb R\setminus A)\ne\varnothing]\bigr)\right\}.}
 $$
 
-El complemento $\mathbb R\setminus A$ ya existe; la fórmula está definida para cada $x\in\mathbb R$ y el conjunto $\partial A$ existe por **Separación sobre $\mathbb R$**. La extensionalidad garantiza su unicidad. Puesto que $\mathcal P(\mathbb R)$ es un conjunto y para cada $A\in\mathcal P(\mathbb R)$ se determina un único $\partial A\in\mathcal P(\mathbb R)$, el grafo
+El complemento $\mathbb R\setminus A$ ya existe; la fórmula está definida para cada $x\in\mathbb R$ y el conjunto $\partial A$ existe por Separación sobre $\mathbb R$. La extensionalidad garantiza su unicidad. Puesto que $\mathcal P(\mathbb R)$ es un conjunto y para cada $A\in\mathcal P(\mathbb R)$ se determina un único $\partial A\in\mathcal P(\mathbb R)$, el grafo
 
 $$
 \{\langle A,F\rangle\in\mathcal P(\mathbb R)\times\mathcal P(\mathbb R):F=\partial A\}
@@ -49,7 +49,7 @@ $$
 \partial A\subseteq\overline A\cap\overline{\mathbb R\setminus A}.
 $$
 
-Para la inclusión inversa, sea $x\in\overline A\cap\overline{\mathbb R\setminus A}$. Fijemos un radio arbitrario $r>0$. La primera pertenencia afirma que $B_r(x)\cap A\ne\varnothing$; la segunda afirma que $B_r(x)\cap(\mathbb R\setminus A)\ne\varnothing$. Ambas condiciones se cumplen para el **mismo** radio arbitrario, luego $x$ es fronterizo y pertenece a $\partial A$. La doble inclusión y la extensionalidad completan la prueba. ∎
+Para la inclusión inversa, sea $x\in\overline A\cap\overline{\mathbb R\setminus A}$. Fijemos un radio arbitrario $r>0$. La primera pertenencia afirma que $B_r(x)\cap A\ne\varnothing$; la segunda afirma que $B_r(x)\cap(\mathbb R\setminus A)\ne\varnothing$. Ambas condiciones se cumplen para el mismo radio arbitrario, luego $x$ es fronterizo y pertenece a $\partial A$. La doble inclusión y la extensionalidad completan la prueba. ∎
 
 > **Interpretación.** La frontera no es simplemente el conjunto de puntos que están fuera de $A$ ni su conjunto derivado. Es el lugar donde la adherencia a $A$ y la adherencia a su complemento coinciden.
 
@@ -69,7 +69,7 @@ $$
 \boxed{\mathbb R=A^\circ\cup\partial A\cup\operatorname{Ext}(A).}
 $$
 
-Las tres partes de la última unión son **disjuntas dos a dos**.
+Las tres partes de la última unión son disjuntas dos a dos.
 
 **Demostración.**
 Apliquemos Proposición §15.4.3 — La adherencia es la negación de la exterioridad al complemento $C:=\mathbb R\setminus A$. Allí se demostró que $\overline C=\mathbb R\setminus\operatorname{Ext}(C)$. A su vez, Proposición §15.3.3 — El exterior es el interior del complemento, junto con la doble complementación relativa a $\mathbb R$, da
@@ -96,7 +96,7 @@ Como $A^\circ\subseteq A\subseteq\overline A$ (Proposición §15.2.3 — Interio
 
 Finalmente, Proposición §15.4.3 — La adherencia es la negación de la exterioridad proporciona $\mathbb R\setminus\overline A=\operatorname{Ext}(A)$. Todo punto real está en $\overline A$ o en su complemento; utilizando la identidad precedente obtenemos la unión anunciada. La parte exterior no intersecta $A^\circ$ ni $\partial A$, porque ambas están contenidas en $\overline A$. Así, las tres partes son disjuntas dos a dos y cubren exactamente $\mathbb R$. ∎
 
-Esta descomposición no dice que $A$ coincida con su interior unido a la frontera: lo que coincide con esa unión es **la clausura de $A$**. Según cómo se hayan incluido sus puntos fronterizos, dos conjuntos distintos pueden tener la misma clausura y la misma frontera.
+Esta descomposición no dice que $A$ coincida con su interior unido a la frontera: lo que coincide con esa unión es la clausura de $A$. Según cómo se hayan incluido sus puntos fronterizos, dos conjuntos distintos pueden tener la misma clausura y la misma frontera.
 
 
 ### Proposición 15.6.5 — La frontera es cerrada y no cambia al tomar el complemento
@@ -119,7 +119,7 @@ $$
 =\partial A.
 $$
 
-La doble complementación tiene lugar siempre **dentro de $\mathbb R$**. La conmutatividad de la intersección, demostrable por pertenencia a ambos factores, concluye la prueba. ∎
+La doble complementación tiene lugar siempre dentro de $\mathbb R$. La conmutatividad de la intersección, demostrable por pertenencia a ambos factores, concluye la prueba. ∎
 
 La simetría expresa que una frontera no privilegia ninguno de los dos lados: intercambiar $A$ con su complemento no modifica la región en la que ambos se aproximan.
 
@@ -144,7 +144,7 @@ $$
 
 **Cerradura, implicación recíproca.** Supongamos $\partial A\subseteq A$. Dado $x\in\overline A$, la descomposición $\overline A=A^\circ\cup\partial A$ proporciona dos casos. En el primero, $x\in A^\circ\subseteq A$; en el segundo, $x\in\partial A\subseteq A$. Luego $\overline A\subseteq A$, mientras que $A\subseteq\overline A$ siempre. Por extensionalidad, $A=\overline A$ y el criterio Corolario §15.4.7 — Un conjunto es cerrado si y sólo si coincide con su clausura concluye que $A$ es cerrado. ∎
 
-La apertura exige que **ningún punto del propio conjunto** sea fronterizo; la cerradura exige, por el contrario, que **todos los puntos fronterizos** estén incluidos en él. No se deduce de aquí que todo conjunto sea abierto o cerrado: puede no satisfacer ninguna de las dos exigencias.
+La apertura exige que ningún punto del propio conjunto sea fronterizo; la cerradura exige, por el contrario, que todos los puntos fronterizos estén incluidos en él. No se deduce de aquí que todo conjunto sea abierto o cerrado: puede no satisfacer ninguna de las dos exigencias.
 
 
 ### Corolario 15.6.7 — Frontera vacía y conjuntos abiertos y cerrados
@@ -157,7 +157,7 @@ $$
 **Demostración.**
 Si $\partial A=\varnothing$, tanto $A\cap\partial A=\varnothing$ como $\partial A\subseteq A$ se cumplen; las dos equivalencias de Teorema §15.6.6 — Criterios de apertura y cerradura mediante la frontera hacen a $A$ abierto y cerrado. Recíprocamente, si $A$ es abierto y cerrado, esas equivalencias dan $A\cap\partial A=\varnothing$ y $\partial A\subseteq A$. Cualquier $x\in\partial A$ pertenecería entonces a $A\cap\partial A$, contradicción. Por tanto, $\partial A$ no tiene elementos y es vacío por extensionalidad. ∎
 
-Todavía **no** afirmamos que los únicos subconjuntos simultáneamente abiertos y cerrados de $\mathbb R$ sean $\varnothing$ y $\mathbb R$: tal afirmación necesita su propia demostración y no se obtiene sólo de las definiciones anteriores.
+Todavía no afirmamos que los únicos subconjuntos simultáneamente abiertos y cerrados de $\mathbb R$ sean $\varnothing$ y $\mathbb R$: tal afirmación necesita su propia demostración y no se obtiene sólo de las definiciones anteriores.
 
 
 ### Proposición 15.6.8 — Ejemplos: extremos, singletons y falta de monotonía
@@ -172,7 +172,7 @@ $$
 \boxed{\partial(a,b)=\partial[a,b]=\{a,b\}.}
 $$
 
-La operación frontera **no es monótona** respecto de la inclusión: pueden existir $A\subseteq B$ con $\partial A\not\subseteq\partial B$.
+La operación frontera no es monótona respecto de la inclusión: pueden existir $A\subseteq B$ con $\partial A\not\subseteq\partial B$.
 
 **Demostración.**
 **Vacío y recta.** Por Proposición §15.4.9 — Clausura del vacío, de la recta y de un singleton, $\overline\varnothing=\varnothing$ y $\overline{\mathbb R}=\mathbb R$. Aplicando la caracterización de Teorema §15.6.3 — Caracterización de la frontera por dos clausuras a $\varnothing$ y a $\mathbb R$, con sus complementos relativos intercambiados, ambas fronteras resultan ser $\varnothing\cap\mathbb R=\varnothing$.

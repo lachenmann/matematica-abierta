@@ -1,6 +1,6 @@
 ## 14.4. Series de términos no negativos {#sec-ta-14-4}
 
-Para una serie arbitraria, una suma parcial puede aumentar o disminuir: el signo de $a_{n+1}$ decide la variación entre $s_n$ y $s_{n+1}$. La situación se simplifica si **todos los términos son no negativos**. En ese caso, sumar un término nuevo nunca reduce el total. La existencia de un límite deja entonces de depender de oscilaciones y se convierte en un problema de acotación.
+Para una serie arbitraria, una suma parcial puede aumentar o disminuir: el signo de $a_{n+1}$ decide la variación entre $s_n$ y $s_{n+1}$. La situación se simplifica si todos los términos son no negativos. En ese caso, sumar un término nuevo nunca reduce el total. La existencia de un límite deja entonces de depender de oscilaciones y se convierte en un problema de acotación.
 
 Aquí «serie de términos no negativos» significa exactamente que $a:\mathbb N\to\mathbb R$ satisface $a_n\ge0$ para todo $n\in\mathbb N$. No creamos una nueva clase de objetos ni suponemos que la serie converja.
 
@@ -68,8 +68,8 @@ $$
 
 Por la definición de convergencia de una serie, ésta converge; la unicidad del límite y la convención de suma infinita identifican su valor con $\sup S$. ∎
 
-> **Interpretación.** Una cota superior para *todas* las sumas parciales es suficiente; no hace falta adivinar la suma. Si no existe tal cota, la serie no puede converger a un real, pero **no** introducimos aquí $+\infty$ como supuesto valor de la serie. El ejemplo armónico de §14.2 muestra, además, que $a_n\to0$ puede coexistir con sumas parciales no acotadas.
+> **Interpretación.** Una cota superior para *todas* las sumas parciales es suficiente; no hace falta adivinar la suma. Si no existe tal cota, la serie no puede converger a un real, pero no introducimos aquí $+\infty$ como supuesto valor de la serie. El ejemplo armónico de §14.2 muestra, además, que $a_n\to0$ puede coexistir con sumas parciales no acotadas.
 
 > **Dependencias y fundamento.** La monotonía se deduce de la recursión y del orden, sin completitud. La implicación de convergencia a acotación usa sólo la acotación de sucesiones convergentes. La recíproca y la identificación con el supremo importan exactamente la completitud y la lógica clásica documentadas en Teorema 13.7.3 — Teorema de convergencia monótona. No se seleccionan elementos, cotas o índices mediante Choice ni se afirma computabilidad del supremo.
 
-La convergencia queda así reducida, para términos no negativos, a una pregunta de orden. En §14.5 estudiaremos cómo usar cotas entre términos de **dos series distintas** para trasladar conclusiones de convergencia o divergencia: será el punto de partida de los criterios de comparación.
+La convergencia queda así reducida, para términos no negativos, a una pregunta de orden. En §14.5 estudiaremos cómo usar cotas entre términos de dos series distintas para trasladar conclusiones de convergencia o divergencia: será el punto de partida de los criterios de comparación.

@@ -8,7 +8,7 @@ Es importante mantener separados los dos objetos. El racional $q$ y el conjunto 
 
 ### Definición 5.2.1 — Sección inferior determinada por un racional
 
-Sea $q\in\mathbb Q$. Definimos la **sección inferior determinada por $q$** mediante
+Sea $q\in\mathbb Q$. Definimos la sección inferior determinada por $q$ mediante
 
 $$
 \boxed{

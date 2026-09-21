@@ -1,12 +1,12 @@
 ## 13.11. Teorema de Bolzano--Weierstrass {#sec-ta-13-11}
 
-En §13.10 aprendimos a reconocer un punto límite secuencial y comprobamos que los puntos límite de una sucesión acotada, si existen, respetan sus cotas. Todavía falta demostrar que **existe al menos uno**. El problema no se resuelve eligiendo un término de cada cola: tales términos podrían oscilar sin aproximarse a ningún número. Debemos seleccionar simultáneamente una región cada vez más estrecha y unos índices que continúen avanzando.
+En §13.10 aprendimos a reconocer un punto límite secuencial y comprobamos que los puntos límite de una sucesión acotada, si existen, respetan sus cotas. Todavía falta demostrar que existe al menos uno. El problema no se resuelve eligiendo un término de cada cola: tales términos podrían oscilar sin aproximarse a ningún número. Debemos seleccionar simultáneamente una región cada vez más estrecha y unos índices que continúen avanzando.
 
-La estrategia consiste en partir de un intervalo cerrado que contenga toda la sucesión y bisecarlo sucesivamente. Conservar una mitad no exige que contenga *todos* los términos restantes: basta que siga recibiendo términos después de cualquier umbral. La regla «izquierda si sirve; derecha en caso contrario» fija la elección de la mitad. Una vez construidos los intervalos, el buen orden de $\mathbb N$ permitirá seleccionar el menor índice admisible en cada etapa. Esta separación entre **reducir el espacio de valores** y **hacer crecer los índices** es el mecanismo fundamental de la prueba.
+La estrategia consiste en partir de un intervalo cerrado que contenga toda la sucesión y bisecarlo sucesivamente. Conservar una mitad no exige que contenga *todos* los términos restantes: basta que siga recibiendo términos después de cualquier umbral. La regla «izquierda si sirve; derecha en caso contrario» fija la elección de la mitad. Una vez construidos los intervalos, el buen orden de $\mathbb N$ permitirá seleccionar el menor índice admisible en cada etapa. Esta separación entre reducir el espacio de valores y hacer crecer los índices es el mecanismo fundamental de la prueba.
 
 ### Definición 13.11.1 — Intervalo recurrente para una sucesión
 
-Sea $a=(a_n)$ una sucesión real y sean $p,q\in\mathbb R$ con $p\le q$. Diremos que el intervalo cerrado $[p,q]$ es **recurrente para $a$** si
+Sea $a=(a_n)$ una sucesión real y sean $p,q\in\mathbb R$ con $p\le q$. Diremos que el intervalo cerrado $[p,q]$ es recurrente para $a$ si
 
 $$
 \boxed{
@@ -33,7 +33,7 @@ $$
 \boxed{h:=(1+1)^{-1},\qquad m:=(p+q)h.}
 $$
 
-Entonces $h>0$, $h+h=1$, $p\le m\le q$, y **al menos uno** de los intervalos
+Entonces $h>0$, $h+h=1$, $p\le m\le q$, y al menos uno de los intervalos
 
 $$
 [p,m],\qquad[m,q]
@@ -76,7 +76,7 @@ $$
 
 En efecto, cualquier $x\in[p,q]$ satisface $x\le m$ o $m\le x$ por totalidad del orden, y pertenece respectivamente a la primera o a la segunda mitad. La inclusión contraria es inmediata de $p\le m\le q$.
 
-Si $[p,m]$ es recurrente, ya tenemos la mitad requerida. Supongamos, en cambio, que **no** es recurrente. Negando clásicamente los cuantificadores de Definición 13.11.1 — Intervalo recurrente para una sucesión, existe un umbral $N_0\in\mathbb N$ tal que
+Si $[p,m]$ es recurrente, ya tenemos la mitad requerida. Supongamos, en cambio, que no es recurrente. Negando clásicamente los cuantificadores de Definición 13.11.1 — Intervalo recurrente para una sucesión, existe un umbral $N_0\in\mathbb N$ tal que
 
 $$
 n\ge N_0\Longrightarrow a_n\notin[p,m].
@@ -100,7 +100,7 @@ l=(l_k)_{k\in\mathbb N},
 u=(u_k)_{k\in\mathbb N}
 $$
 
-**unívocamente determinadas por la regla de bisección** del lema anterior, que cumplen:
+unívocamente determinadas por la regla de bisección del lema anterior, que cumplen:
 
 1. $l_0=-M$ y $u_0=M$;
 2. cada intervalo $I_k:=[l_k,u_k]$ es recurrente para $a$;
@@ -155,7 +155,7 @@ $$
 
 Esto es $w_{k+1}=hw_k$ si escribimos $k+1=S(k)$, y $w_k\ge0$ resulta de $l_k\le u_k$. Las condiciones iniciales proceden de $s(0)$; la función $s$ es única por recursión y determina también unívocamente ambas sucesiones de extremos. ∎
 
-> **Estructura de la construcción.** La prueba no postula una sucesión de intervalos preexistente. Construye el conjunto de estados, demuestra que la transición es una función total y **sólo entonces** aplica recursión. En cada etapa se conserva el predicado de recurrencia, no se escoge «una mitad cualquiera».
+> **Estructura de la construcción.** La prueba no postula una sucesión de intervalos preexistente. Construye el conjunto de estados, demuestra que la transición es una función total y sólo entonces aplica recursión. En cada etapa se conserva el predicado de recurrencia, no se escoge «una mitad cualquiera».
 
 ### Lema 13.11.4 — Las anchuras de la bisección tienden a cero
 
@@ -235,7 +235,7 @@ $$
 
 son recurrentes, satisfacen $I_0=[-M,M]$ y $I_{S(k)}\subseteq I_k$. Por inducción, si $i\le j$ entonces $I_j\subseteq I_i$.
 
-Para aplicar el principio de intersección de intervalos de Definición 4.7.3 — Principio de intersección de intervalos cerrados, debemos verificar su hipótesis **cruzada**. Sean $i,j\in\mathbb N$. Por totalidad natural, $i\le j$ o $j\le i$. En el primer caso,
+Para aplicar el principio de intersección de intervalos de Definición 4.7.3 — Principio de intersección de intervalos cerrados, debemos verificar su hipótesis cruzada. Sean $i,j\in\mathbb N$. Por totalidad natural, $i\le j$ o $j\le i$. En el primer caso,
 
 $$
 l_i\le l_j\le u_j;
@@ -255,7 +255,7 @@ $$
 
 En particular $x\in I_0=[-M,M]$.
 
-La intersección contiene, además, **un único** real. En efecto, si $x,y$ pertenecen a todos los $I_k$, entonces para cada $k$,
+La intersección contiene, además, un único real. En efecto, si $x,y$ pertenecen a todos los $I_k$, entonces para cada $k$,
 
 $$
 -w_k\le x-y\le w_k,
@@ -265,7 +265,7 @@ $$
 
 por Proposición 4.2.2 — Propiedades elementales del valor absoluto (6). Si $x\ne y$, la positividad de $|x-y|$ proporciona $\delta:=|x-y|>0$. Pero Lema 13.11.4 — Las anchuras de la bisección tienden a cero da algún $k$ con $0\le w_k<\delta$, contradiciendo $\delta\le w_k$. Así la intersección es exactamente $\{x\}$. La unicidad no afirma que podamos calcular $x$.
 
-**Segunda etapa: una extracción genuina, sin Choice.** Que cada $I_k$ sea recurrente asegura que contiene términos arbitrariamente tardíos. Necesitamos convertir esa afirmación en **una sola función creciente** de índices, no en una colección sin relación de testigos existenciales.
+**Segunda etapa: una extracción genuina, sin Choice.** Que cada $I_k$ sea recurrente asegura que contiene términos arbitrariamente tardíos. Necesitamos convertir esa afirmación en una sola función creciente de índices, no en una colección sin relación de testigos existenciales.
 
 Para $k,t\in\mathbb N$ definamos
 
@@ -350,7 +350,7 @@ $$
 
 Por Teorema 13.11.5 — Bolzano–Weierstrass para sucesiones reales existen un selector $\phi$ y un real $x$ con $a_{\phi(k)}\to x$. La definición Definición 13.10.1 — Punto límite secuencial dice exactamente que $x$ es un punto límite secuencial; por Definición 13.10.4 — Conjunto de puntos límite secuenciales, $x\in\operatorname{LimSub}(a)$. ∎
 
-> **Prueba de estrés.** La conclusión no afirma que la sucesión completa converja: la sucesión alternante de §13.10 es acotada y tiene al menos dos puntos límite. Tampoco admite la conversa «tener un punto límite implica estar acotada»: si $c$ es la alternante de §13.10 y definimos $d_n:=\nu_{\mathbb R}(n)c_n$, entonces $d_{k+k}=0$ y $d_{S(k+k)}=\nu_{\mathbb R}(S(k+k))$. La primera extracción es constante nula, mientras que la segunda no está acotada por arquimedianidad. Así $d$ tiene un punto límite sin estar acotada. Bolzano--Weierstrass asegura **una extracción convergente a partir de acotación global**, nada más.
+> **Prueba de estrés.** La conclusión no afirma que la sucesión completa converja: la sucesión alternante de §13.10 es acotada y tiene al menos dos puntos límite. Tampoco admite la conversa «tener un punto límite implica estar acotada»: si $c$ es la alternante de §13.10 y definimos $d_n:=\nu_{\mathbb R}(n)c_n$, entonces $d_{k+k}=0$ y $d_{S(k+k)}=\nu_{\mathbb R}(S(k+k))$. La primera extracción es constante nula, mientras que la segunda no está acotada por arquimedianidad. Así $d$ tiene un punto límite sin estar acotada. Bolzano--Weierstrass asegura una extracción convergente a partir de acotación global, nada más.
 
 Hemos obtenido la afirmación que permanecía abierta desde §13.10:
 
@@ -362,4 +362,4 @@ $$
 }
 $$
 
-La infraestructura de §13.8 permite ahora afinar esta existencia: sus envolventes $L_N(a)$ y $U_N(a)$ convergen por monotonía y completitud. La sección siguiente estudiará los **límites inferior y superior**, establecerá su relación exacta con $\operatorname{LimSub}(a)$ y fijará la notación $\liminf$ y $\limsup$ sólo después de justificar la existencia de los números que denotan.
+La infraestructura de §13.8 permite ahora afinar esta existencia: sus envolventes $L_N(a)$ y $U_N(a)$ convergen por monotonía y completitud. La sección siguiente estudiará los límites inferior y superior, establecerá su relación exacta con $\operatorname{LimSub}(a)$ y fijará la notación $\liminf$ y $\limsup$ sólo después de justificar la existencia de los números que denotan.

@@ -1,25 +1,25 @@
 ## 14.11. Series alternadas, criterio de Leibniz y estimación del resto {#sec-ta-14-11}
 
-El ejemplo condicional de §14.8 se construyó cancelando exactamente cada pareja de términos; el reordenamiento de §14.10 mostró que esa cancelación no autoriza cambiar libremente el orden. Ahora estudiaremos una situación más regular: los signos se alternan y las magnitudes, aun sin formar una serie convergente, disminuyen hacia cero. La clave no será acotar una cola por la suma de sus valores absolutos, sino **encerrar las sumas parciales entre dos sucesiones monótonas**.
+El ejemplo condicional de §14.8 se construyó cancelando exactamente cada pareja de términos; el reordenamiento de §14.10 mostró que esa cancelación no autoriza cambiar libremente el orden. Ahora estudiaremos una situación más regular: los signos se alternan y las magnitudes, aun sin formar una serie convergente, disminuyen hacia cero. La clave no será acotar una cola por la suma de sus valores absolutos, sino encerrar las sumas parciales entre dos sucesiones monótonas.
 
 Conviene distinguir tres hipótesis. La alternancia prescribe los signos; el decrecimiento controla la comparación entre términos contiguos; la tendencia a cero obliga a que desaparezca la separación entre las dos familias de sumas parciales. Ninguna de esas tres funciones debe confundirse con las demás.
 
 ### Definición 14.11.1 — Serie alternada asociada a una sucesión de magnitudes
 
-Sea $b:\mathbb N\to\mathbb R$ una sucesión con $b_n\ge0$ para todo $n$. Definimos la **sucesión alternada que comienza con signo positivo** por
+Sea $b:\mathbb N\to\mathbb R$ una sucesión con $b_n\ge0$ para todo $n$. Definimos la sucesión alternada que comienza con signo positivo por
 
 $$
 \boxed{a_n:=(-1)^n b_n\qquad(n\in\mathbb N).}
 \tag{14.11.1}
 $$
 
-Aquí $-1$ es un elemento de $\mathbb R$ y la potencia $(-1)^n$ es la potencia de **exponente natural** definida en Definición 14.3.1 — Potencias naturales de un número real; no es una operación sobre índices enteros ni una potencia real de exponente arbitrario. Por la recursión de las potencias y las leyes del cuerpo,
+Aquí $-1$ es un elemento de $\mathbb R$ y la potencia $(-1)^n$ es la potencia de exponente natural definida en Definición 14.3.1 — Potencias naturales de un número real; no es una operación sobre índices enteros ni una potencia real de exponente arbitrario. Por la recursión de las potencias y las leyes del cuerpo,
 
 $$
 (-1)^{2k}=1,\qquad (-1)^{2k+1}=-1.
 $$
 
-Por tanto $a_{2k}=b_{2k}$ y $a_{2k+1}=-b_{2k+1}$. La dicotomía de paridad Lema 3.9.3 — Dicotomía de paridad establece que estas dos fórmulas determinan todos los índices. El grafo de $a$ se obtiene por Separación dentro de $\mathbb N\times\mathbb R$ porque a cada $n$ le corresponde exactamente un producto real. La **serie alternada** es la serie de términos $a$ en el sentido de §14.1; que sea alternada no presupone su convergencia.
+Por tanto $a_{2k}=b_{2k}$ y $a_{2k+1}=-b_{2k+1}$. La dicotomía de paridad Lema 3.9.3 — Dicotomía de paridad establece que estas dos fórmulas determinan todos los índices. El grafo de $a$ se obtiene por Separación dentro de $\mathbb N\times\mathbb R$ porque a cada $n$ le corresponde exactamente un producto real. La serie alternada es la serie de términos $a$ en el sentido de §14.1; que sea alternada no presupone su convergencia.
 
 Si deseamos comenzar con signo negativo, tomaremos el opuesto de esta sucesión; no modificaremos silenciosamente la convención (14.11.1). Admitimos magnitudes nulas y, por consiguiente, no exigimos que cada término tenga signo estrictamente positivo o negativo.
 
@@ -70,7 +70,7 @@ $$
 
 pues $b$ es decreciente. Esto prueba (14.11.2); la primera ecuación de (14.11.4) prueba (14.11.3). La disminución de $E$ y el crecimiento de $O$, junto con $O_0\le E_k$ y $O_k\le E_k\le E_0$, muestran las cotas anunciadas sin recurrir a ninguna suma infinita.
 
-Apliquemos ahora el teorema de convergencia monótona Teorema 13.7.3 — Teorema de convergencia monótona **por separado** a $E$ y $O$. Existen $U,V\in\mathbb R$ con $E_k\to U$ y $O_k\to V$. La monotonía y el orden en el límite (Teorema 13.6.2 — Preservación del orden en el paso al límite) justifican $E_k\ge U$ y $O_k\le V$ para cada índice fijo: por ejemplo, $E_j\le E_k$ para todo $j\ge k$, y al pasar al límite de $j$ obtenemos $U\le E_k$; análogamente para $O$. No se afirma aún que $U=V$; eso necesitará $b_n\to0$. ∎
+Apliquemos ahora el teorema de convergencia monótona Teorema 13.7.3 — Teorema de convergencia monótona por separado a $E$ y $O$. Existen $U,V\in\mathbb R$ con $E_k\to U$ y $O_k\to V$. La monotonía y el orden en el límite (Teorema 13.6.2 — Preservación del orden en el paso al límite) justifican $E_k\ge U$ y $O_k\le V$ para cada índice fijo: por ejemplo, $E_j\le E_k$ para todo $j\ge k$, y al pasar al límite de $j$ obtenemos $U\le E_k$; análogamente para $O$. No se afirma aún que $U=V$; eso necesitará $b_n\to0$. ∎
 
 > **Lectura geométrica.** Las sumas de índice par descienden por escalones; las de índice impar ascienden. En cada etapa el intervalo $[O_k,E_k]$ tiene longitud $b_{2k+1}$. Si esa longitud tiende a cero, los dos límites no pueden seguir siendo distintos.
 
@@ -89,7 +89,7 @@ $$
 \boxed{\sum_{n=0}^{\infty}(-1)^n b_n}
 $$
 
-**converge a un número real** $S$. Si $s$ es su sucesión de sumas parciales, se verifica además
+converge a un número real $S$. Si $s$ es su sucesión de sumas parciales, se verifica además
 
 $$
 \boxed{s_{2k+1}\le S\le s_{2k}\qquad(k\in\mathbb N).}
@@ -110,7 +110,7 @@ $$
 O_k\le S\le E_k.
 $$
 
-Debemos comprobar aún la convergencia de la **sucesión completa** $s$, no sólo la de sus dos familias de índices. Sea $\varepsilon>0$. Como $E_k\to S$ y $O_k\to S$, existen índices $K_E,K_O$ a partir de los cuales sus diferencias con $S$ son menores que $\varepsilon$. Tomemos $K$ igual al mayor de estos dos naturales y $N:=2K$. Si $n\ge N$, la dicotomía de paridad escribe $n=2k$ o $n=2k+1$. En cualquiera de los dos casos $k\ge K$: si $k<K$, el crecimiento estricto de la multiplicación natural por $2$ produciría $2k+1<2K$, incompatible con $n\ge2K$. Por ello
+Debemos comprobar aún la convergencia de la sucesión completa $s$, no sólo la de sus dos familias de índices. Sea $\varepsilon>0$. Como $E_k\to S$ y $O_k\to S$, existen índices $K_E,K_O$ a partir de los cuales sus diferencias con $S$ son menores que $\varepsilon$. Tomemos $K$ igual al mayor de estos dos naturales y $N:=2K$. Si $n\ge N$, la dicotomía de paridad escribe $n=2k$ o $n=2k+1$. En cualquiera de los dos casos $k\ge K$: si $k<K$, el crecimiento estricto de la multiplicación natural por $2$ produciría $2k+1<2K$, incompatible con $n\ge2K$. Por ello
 
 $$
 |s_n-S|=
@@ -120,13 +120,13 @@ $$
 \end{cases}
 $$
 
-Hemos probado $s_n\to S$, que es exactamente la definición de convergencia de la serie. La desigualdad (14.11.6) ya se obtuvo de los límites monótonos. El razonamiento sólo escoge **dos umbrales para una tolerancia fijada**, no una familia de testigos mediante el axioma de elección. ∎
+Hemos probado $s_n\to S$, que es exactamente la definición de convergencia de la serie. La desigualdad (14.11.6) ya se obtuvo de los límites monótonos. El razonamiento sólo escoge dos umbrales para una tolerancia fijada, no una familia de testigos mediante el axioma de elección. ∎
 
 > **Alcance.** «Decreciente» significa aquí *no creciente*: se permiten igualdades y ceros. El teorema no declara que la serie de magnitudes $\sum b_n$ converja. Precisamente por eso será útil para reconocer convergencia condicional.
 
 ### Corolario 14.11.4 — Encierro de la suma y cota del primer término omitido
 
-Bajo las hipótesis del criterio de Leibniz, escribamos $S=\sum_{k=0}^{\infty}(-1)^k b_k$ y $s_n=\sum_{k=0}^{n}(-1)^k b_k$. Para **todo** $n\in\mathbb N$,
+Bajo las hipótesis del criterio de Leibniz, escribamos $S=\sum_{k=0}^{\infty}(-1)^k b_k$ y $s_n=\sum_{k=0}^{n}(-1)^k b_k$. Para todo $n\in\mathbb N$,
 
 $$
 \boxed{\begin{cases}s_{n+1}\le S\le s_n,&n\text{ par},\\s_n\le S\le s_{n+1},&n\text{ impar}.\end{cases}}
@@ -139,7 +139,7 @@ $$
 \tag{14.11.8}
 $$
 
-La expresión $R_n:=S-s_n$ designará **localmente**, sólo para esta serie ya convergente, el resto después de sumar hasta el índice $n$. La desigualdad anterior estima ese número real, no una «suma infinita de cola» presupuesta sin demostración.
+La expresión $R_n:=S-s_n$ designará localmente, sólo para esta serie ya convergente, el resto después de sumar hasta el índice $n$. La desigualdad anterior estima ese número real, no una «suma infinita de cola» presupuesta sin demostración.
 
 **Demostración.**
 
@@ -149,7 +149,7 @@ $$
 0\le s_n-S\le E_k-O_k=b_{2k+1}=b_{n+1}.
 $$
 
-Si $n=2k+1$, entonces $s_n=O_k\le S$. La demostración de Lema 14.11.2 — Las sumas parciales pares decrecen y las impares crecen dio $S\le E_j$ para **cada** $j$; en particular $S\le E_{k+1}=s_{n+1}$. Como $E_{k+1}=O_k+b_{2k+2}$,
+Si $n=2k+1$, entonces $s_n=O_k\le S$. La demostración de Lema 14.11.2 — Las sumas parciales pares decrecen y las impares crecen dio $S\le E_j$ para cada $j$; en particular $S\le E_{k+1}=s_{n+1}$. Como $E_{k+1}=O_k+b_{2k+2}$,
 
 $$
 0\le S-s_n\le E_{k+1}-O_k=b_{2k+2}=b_{n+1}.
@@ -175,7 +175,7 @@ $$
 
 La implicación de derecha a izquierda es Teorema 14.11.3 — Criterio de Leibniz. Para la recíproca, la convergencia de la serie implica $a_n=(-1)^n b_n\to0$ por Teorema 14.2.4 — Condición necesaria de convergencia: el término general tiende a cero. Como $|(-1)^n|=|-1|^n=1$ (potencias y Lema 14.3.3 — El valor absoluto conmuta con las potencias naturales) y $b_n\ge0$, tenemos $|a_n|=b_n$. El valor absoluto preserva límites (Proposición 13.5.5 — El valor absoluto preserva límites), de modo que $b_n=|a_n|\to|0|=0$. ∎
 
-El resultado no debe leerse como un criterio universal para series con signos mezclados: presupone exactamente la forma alternada y la monotonía de $b$. Tampoco da una condición necesaria y suficiente de **convergencia absoluta**; esa última pregunta se refiere, por definición, a $\sum b_n$.
+El resultado no debe leerse como un criterio universal para series con signos mezclados: presupone exactamente la forma alternada y la monotonía de $b$. Tampoco da una condición necesaria y suficiente de convergencia absoluta; esa última pregunta se refiere, por definición, a $\sum b_n$.
 
 ### Proposición 14.11.6 — La serie armónica alternada converge condicionalmente
 
@@ -186,7 +186,7 @@ $$
 \tag{14.11.10}
 $$
 
-converge, pero no converge absolutamente; es, por tanto, **condicionalmente convergente**.
+converge, pero no converge absolutamente; es, por tanto, condicionalmente convergente.
 
 **Demostración.**
 
@@ -198,7 +198,7 @@ En cambio, $|(-1)^n h_n|=h_n$, y la serie armónica $\sum h_n$ diverge por Propo
 
 ### Proposición 14.11.7 — Alternancia y anulación sin decrecimiento no bastan
 
-Existe una sucesión de magnitudes $b:\mathbb N\to\mathbb R$ tal que $b_n\ge0$ y $b_n\to0$, pero $b$ **no** es decreciente y la serie $\sum(-1)^n b_n$ diverge. Por tanto el decrecimiento no puede suprimirse de Teorema 14.11.3 — Criterio de Leibniz dejando intactas las otras dos hipótesis.
+Existe una sucesión de magnitudes $b:\mathbb N\to\mathbb R$ tal que $b_n\ge0$ y $b_n\to0$, pero $b$ no es decreciente y la serie $\sum(-1)^n b_n$ diverge. Por tanto el decrecimiento no puede suprimirse de Teorema 14.11.3 — Criterio de Leibniz dejando intactas las otras dos hipótesis.
 
 **Demostración.**
 
@@ -227,6 +227,6 @@ La serie armónica de términos no negativos diverge (Proposición 14.2.7 — La
 
 > **Dos errores que conviene evitar.** Con $b_n=1$ los signos alternan y las magnitudes decrecen en sentido no estricto, pero los términos no tienden a cero: la serie diverge por Corolario 14.2.5 — Criterio de divergencia por el término general. Con (14.11.11), en cambio, las magnitudes sí tienden a cero, pero un término nulo alterna con uno positivo; se pierde la monotonía y las sumas acumulan toda la serie armónica.
 
-El criterio de Leibniz completa un segundo mecanismo de convergencia junto a la convergencia absoluta: una serie puede converger por cancelación **controlada**, aunque la serie de magnitudes diverja. La cota del resto cuantifica esta cancelación sin presuponer una suma infinita de cola. Las permutaciones estudiadas en §14.10 no deben confundirse con una teoría general de agrupaciones consecutivas, que no hemos introducido.
+El criterio de Leibniz completa un segundo mecanismo de convergencia junto a la convergencia absoluta: una serie puede converger por cancelación controlada, aunque la serie de magnitudes diverja. La cota del resto cuantifica esta cancelación sin presuponer una suma infinita de cola. Las permutaciones estudiadas en §14.10 no deben confundirse con una teoría general de agrupaciones consecutivas, que no hemos introducido.
 
 El último asunto pendiente concierne a los criterios de crecimiento: ¿qué podemos concluir si las raíces de los términos no tienen límite ordinario? El límite superior finito desarrollado para sucesiones acotadas permitirá formular una respuesta exacta.

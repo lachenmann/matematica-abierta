@@ -19,5 +19,5 @@ $$
 ---
 
 ::: {.callout-tip title="Capítulo 1 completo"}
-Con §1.9 queda completo el **Capítulo 1 — Los números naturales**. El siguiente capítulo construirá **$\mathbb Z$** a partir de pares de naturales y clases de equivalencia, sin presuponer una operación de resta que todavía no ha sido construida.
+Con §1.9 queda completo el Capítulo 1 — Los números naturales. El siguiente capítulo construirá $\mathbb Z$ a partir de pares de naturales y clases de equivalencia, sin presuponer una operación de resta que todavía no ha sido construida.
 :::

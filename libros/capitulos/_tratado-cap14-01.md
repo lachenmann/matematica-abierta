@@ -2,7 +2,7 @@
 
 ### Definición 14.1.1 — Sucesión de sumas parciales y serie numérica
 
-Sea $a=(a_n)_{n\in\mathbb N}$ una sucesión real. Definimos su **sucesión de sumas parciales** como la única sucesión real
+Sea $a=(a_n)_{n\in\mathbb N}$ una sucesión real. Definimos su sucesión de sumas parciales como la única sucesión real
 
 $$
 \operatorname{PS}(a)=s^a=(s^a_n)_{n\in\mathbb N}
@@ -20,9 +20,9 @@ s^a_{n+1}&=s^a_n+a_{n+1}
 }
 $$
 
-La **serie numérica de términos $a$** es el proceso de sumación representado por esta sucesión $\operatorname{PS}(a)$. Por tanto, una serie existe como objeto secuencial **antes** de saber si converge. El calificativo «serie» indica aquí cuál es el objeto que se someterá al estudio de límites, no un número real ya obtenido.
+La serie numérica de términos $a$ es el proceso de sumación representado por esta sucesión $\operatorname{PS}(a)$. Por tanto, una serie existe como objeto secuencial antes de saber si converge. El calificativo «serie» indica aquí cuál es el objeto que se someterá al estudio de límites, no un número real ya obtenido.
 
-Verifiquemos la existencia y unicidad de la construcción sin reforzar el teorema de recursión previamente cerrado. Su paso tiene la forma $g:X\to X$ y no puede depender de un índice externo. Por ello incorporaremos el índice al **estado recursivo**. Fijado $a$, tomemos
+Verifiquemos la existencia y unicidad de la construcción sin reforzar el teorema de recursión previamente cerrado. Su paso tiene la forma $g:X\to X$ y no puede depender de un índice externo. Por ello incorporaremos el índice al estado recursivo. Fijado $a$, tomemos
 
 $$
 X:=\mathbb N\times\mathbb R,
@@ -129,7 +129,7 @@ Si $\operatorname{PS}(a)=\operatorname{PS}(b)=s$, las fórmulas anteriores dan $
 
 Sea $a\in\mathbb R^{\mathbb N}$ y sea $s=\operatorname{PS}(a)$.
 
-Diremos que la **serie de términos $a$ converge** si la sucesión real $s$ converge en el sentido de Definición 13.3.1 — Convergencia de una sucesión real; diremos que **diverge** si no es convergente. Es decir,
+Diremos que la serie de términos $a$ converge si la sucesión real $s$ converge en el sentido de Definición 13.3.1 — Convergencia de una sucesión real; diremos que diverge si no es convergente. Es decir,
 
 $$
 \boxed{
@@ -139,7 +139,7 @@ $$
 }
 $$
 
-Cuando la serie converge, el teorema de unicidad del límite Teorema 13.3.5 — Unicidad del límite real garantiza que existe un único $\ell\in\mathbb R$ al que convergen las sumas parciales. Llamamos a ese número la **suma de la serie** y lo denotamos, cuando se necesite como función parcial, por
+Cuando la serie converge, el teorema de unicidad del límite Teorema 13.3.5 — Unicidad del límite real garantiza que existe un único $\ell\in\mathbb R$ al que convergen las sumas parciales. Llamamos a ese número la suma de la serie y lo denotamos, cuando se necesite como función parcial, por
 
 $$
 \operatorname{sum}(a):=\lim_{n\to\infty}\operatorname{PS}(a)_n.
@@ -169,9 +169,9 @@ $$
 }
 $$
 
-Si $a\notin\mathcal C_{\mathrm{ser}}$, la sucesión de sumas parciales sigue existiendo, pero $\operatorname{sum}(a)$ **no está definida**. En particular, no le asignamos por defecto los símbolos $+\infty$ o $-\infty$, que no son elementos del cuerpo real considerado.
+Si $a\notin\mathcal C_{\mathrm{ser}}$, la sucesión de sumas parciales sigue existiendo, pero $\operatorname{sum}(a)$ no está definida. En particular, no le asignamos por defecto los símbolos $+\infty$ o $-\infty$, que no son elementos del cuerpo real considerado.
 
-> **Prueba de estrés.** «La serie converge» no significa «cada término es una suma bien definida», porque esa propiedad se cumple para cualquier sucesión real. Significa que la sucesión completa de sumas parciales tiene un límite **real**. La definición tampoco exige que todos los términos sean no negativos o que la sucesión original sea convergente: esas serán cuestiones separadas, cuya relación precisa demostraremos más adelante.
+> **Prueba de estrés.** «La serie converge» no significa «cada término es una suma bien definida», porque esa propiedad se cumple para cualquier sucesión real. Significa que la sucesión completa de sumas parciales tiene un límite real. La definición tampoco exige que todos los términos sean no negativos o que la sucesión original sea convergente: esas serán cuestiones separadas, cuya relación precisa demostraremos más adelante.
 
 ### Notación 14.1.5 — Símbolo de serie y valor de una suma infinita
 
@@ -181,9 +181,9 @@ $$
 \sum_{k=0}^{\infty}a_k
 $$
 
-identifica **formalmente la serie de términos $a$**, incluso cuando no se haya establecido su convergencia. El signo $\infty$ en el límite superior es parte de una notación convencional: no representa un índice natural ni el último término de una suma finita.
+identifica formalmente la serie de términos $a$, incluso cuando no se haya establecido su convergencia. El signo $\infty$ en el límite superior es parte de una notación convencional: no representa un índice natural ni el último término de una suma finita.
 
-Cuando ya se sabe que la serie converge, la misma expresión puede utilizarse, por convención explícita, para su **valor real**. Así, la igualdad
+Cuando ya se sabe que la serie converge, la misma expresión puede utilizarse, por convención explícita, para su valor real. Así, la igualdad
 
 $$
 \boxed{
@@ -197,7 +197,7 @@ $$
 \lim_{n\to\infty}\left(\sum_{k=0}^{n}a_k\right)=\ell.
 $$
 
-No escribiremos una igualdad numérica con $\sum_{k=0}^{\infty}a_k$ si la convergencia no ha sido demostrada. La expresión puede nombrar una serie divergente, pero en ese caso **no denota un número real**.
+No escribiremos una igualdad numérica con $\sum_{k=0}^{\infty}a_k$ si la convergencia no ha sido demostrada. La expresión puede nombrar una serie divergente, pero en ese caso no denota un número real.
 
 ### Proposición 14.1.6 — Estabilización de sumas parciales cuando los términos tardíos son nulos
 

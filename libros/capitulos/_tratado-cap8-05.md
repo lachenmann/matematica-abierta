@@ -190,8 +190,8 @@ q\in\mathcal C_{\mathbb Q}.
 }
 $$
 
-Por tanto, la condición de Cauchy es una **condición necesaria** para que una sucesión racional posea un límite racional.
+Por tanto, la condición de Cauchy es una condición necesaria para que una sucesión racional posea un límite racional.
 
 La recíproca no ha sido demostrada y no debe suponerse. Precisamente porque la definición de Cauchy no menciona un límite, puede detectar procesos racionales coherentes cuya eventual “posición” todavía no sabemos representar dentro de $\mathbb Q$.
 
-Antes de exhibir esa insuficiencia secuencial debemos establecer una propiedad estructural básica de estos procesos: **toda sucesión racional de Cauchy es acotada**. Ése será el contenido de §8.6.
+Antes de exhibir esa insuficiencia secuencial debemos establecer una propiedad estructural básica de estos procesos: toda sucesión racional de Cauchy es acotada. Ése será el contenido de §8.6.

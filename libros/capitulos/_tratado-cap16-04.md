@@ -9,14 +9,14 @@ $$
 T:=\{x\in D:f(x)\in E\}=f^{-1}[E].
 $$
 
-Conservando el grafo de $f\upharpoonright T$ y declarando el **codominio $E$**, obtenemos una función $f_T:T\to E$. Está entonces bien definida, con dominio exacto $T$ y codominio $\mathbb R$, la composición
+Conservando el grafo de $f\upharpoonright T$ y declarando el codominio $E$, obtenemos una función $f_T:T\to E$. Está entonces bien definida, con dominio exacto $T$ y codominio $\mathbb R$, la composición
 
 $$
 h:=g\circ f_T:T\longrightarrow\mathbb R,
 \qquad h(x)=g(f(x)).
 $$
 
-La condición $a\in\operatorname{Acc}(D)$, incluso junto con $\lim_{\substack{x\to a\\x\in D}}f(x)=b$ y $b\in\operatorname{Acc}(E)$, **no garantiza** $a\in\operatorname{Acc}(T)$. Esta última acumulación deberá verificarse o darse como hipótesis antes de atribuir un límite a $h$.
+La condición $a\in\operatorname{Acc}(D)$, incluso junto con $\lim_{\substack{x\to a\\x\in D}}f(x)=b$ y $b\in\operatorname{Acc}(E)$, no garantiza $a\in\operatorname{Acc}(T)$. Esta última acumulación deberá verificarse o darse como hipótesis antes de atribuir un límite a $h$.
 
 **Demostración.**
 La preimagen $T$ existe por Definición §0.6.9 — Imagen y preimagen o, directamente, por Separación en $D$; por definición $T\subseteq D$ y $f[T]\subseteq E$. La restricción $f\upharpoonright T$ tiene dominio $T$ y codominio $\mathbb R$; al conservar su grafo y sustituir ese codominio por $E$, la totalidad y unicidad de los valores permanecen intactas. Por Definición §0.6.4 — Identidad y composición de funciones, $g\circ f_T$ es una función $T\to\mathbb R$ y satisface la ecuación indicada.
@@ -39,16 +39,16 @@ Estas condiciones no exigen $a\in T$ ni $b\in E$. Cuando se da desde el principi
 ### Lema 16.4.2 — Control del límite exterior con o sin el centro
 Bajo la hipótesis exterior $g:E\to\mathbb R$, $b\in\operatorname{Acc}(E)$ y $\lim_{\substack{y\to b\\y\in E}}g(y)=M$, son equivalentes:
 
-**(i)** $b\notin E$, o bien $b\in E$ y $g(b)=M$.
+(i) $b\notin E$, o bien $b\in E$ y $g(b)=M$.
 
-**(ii)** Para todo $\varepsilon>0$ existe $\eta>0$ tal que
+(ii) Para todo $\varepsilon>0$ existe $\eta>0$ tal que
 
 $$
 \forall y\in E:\quad |y-b|<\eta
 \Longrightarrow |g(y)-M|<\varepsilon.
 $$
 
-La diferencia con la definición de límite es que en **(ii)** se admite $y=b$ si éste pertenece a $E$.
+La diferencia con la definición de límite es que en (ii) se admite $y=b$ si éste pertenece a $E$.
 
 **Demostración.**
 **(i) $\Rightarrow$ (ii).** Fijemos $\varepsilon>0$ y tomemos el radio $\eta>0$ que entrega el límite exterior. Si $y\in E$ y $|y-b|<\eta$, hay dos casos. Si $y\ne b$, entonces $0<|y-b|<\eta$, por lo que $|g(y)-M|<\varepsilon$. Si $y=b$, necesariamente $b\in E$, y la primera condición impone $g(b)=M$; por ello $|g(y)-M|=0<\varepsilon$. El mismo radio sirve para todos los puntos, sin excluir el centro.
@@ -105,7 +105,7 @@ $$
 $$
 
 **Demostración.**
-Sea $\varepsilon>0$. El Lema 16.4.2, aplicado a las hipótesis exteriores y a $g(b)=M$, proporciona $\eta>0$ tal que **todo** $y\in E$ con $|y-b|<\eta$ verifica $|g(y)-M|<\varepsilon$, incluido el eventual valor $y=b$. Por el límite de $f_T$ existe $\delta>0$ tal que, para $x\in T$ con $0<|x-a|<\delta$, se cumple $|f_T(x)-b|<\eta$. Como $f_T(x)\in E$, podemos sustituir $y=f_T(x)$ en la estimación inclusiva: $|h(x)-M|<\varepsilon$. No se ha supuesto ni deducido que $f_T(x)\ne b$. ∎
+Sea $\varepsilon>0$. El Lema 16.4.2, aplicado a las hipótesis exteriores y a $g(b)=M$, proporciona $\eta>0$ tal que todo $y\in E$ con $|y-b|<\eta$ verifica $|g(y)-M|<\varepsilon$, incluido el eventual valor $y=b$. Por el límite de $f_T$ existe $\delta>0$ tal que, para $x\in T$ con $0<|x-a|<\delta$, se cumple $|f_T(x)-b|<\eta$. Como $f_T(x)\in E$, podemos sustituir $y=f_T(x)$ en la estimación inclusiva: $|h(x)-M|<\varepsilon$. No se ha supuesto ni deducido que $f_T(x)\ne b$. ∎
 
 
 ### Teorema 16.4.5 — Necesidad de evitar el centro cuando el valor exterior difiere
@@ -138,11 +138,11 @@ $$
 g(y)=\begin{cases}1,&y=0,\\0,&y\ne0.\end{cases}
 $$
 
-Ambos centros son puntos de acumulación. La función $f$ tiene límite $0$ en $0$, y también $g(y)\to0$ cuando $y\to0$: en la vecindad perforada $g$ es idénticamente cero, como comprobamos en §16.1.5. Sin embargo $g(f(x))=g(0)=1$ para **todo** $x$, por lo que la composición tiene límite $1$ y no $0$, según la unicidad Teorema §16.1.4 — Unicidad del límite finito. El defecto no es de tipado ni de acumulación: únicamente falta controlar $g(b)$ o evitar que la función interior tome el valor $b$.
+Ambos centros son puntos de acumulación. La función $f$ tiene límite $0$ en $0$, y también $g(y)\to0$ cuando $y\to0$: en la vecindad perforada $g$ es idénticamente cero, como comprobamos en §16.1.5. Sin embargo $g(f(x))=g(0)=1$ para todo $x$, por lo que la composición tiene límite $1$ y no $0$, según la unicidad Teorema §16.1.4 — Unicidad del límite finito. El defecto no es de tipado ni de acumulación: únicamente falta controlar $g(b)$ o evitar que la función interior tome el valor $b$.
 
 
 ### Corolario 16.4.6 — Criterio exacto de composición de límites finitos
-Bajo las hipótesis comunes de esta sección, el límite de la composición es $M$ **si y sólo si** ocurre al menos una de estas dos circunstancias:
+Bajo las hipótesis comunes de esta sección, el límite de la composición es $M$ si y sólo si ocurre al menos una de estas dos circunstancias:
 
 $$
 \boxed{\begin{aligned}
@@ -160,4 +160,4 @@ Si se cumple la primera circunstancia, aplica Teorema §16.4.3 — Composición 
 > **Lectura conceptual.** Una función exterior puede tener un límite perfectamente determinado y, aun así, asignar un valor diferente en el punto intermedio. La composición sólo falla por ese valor cuando la función interior lo alcanza arbitrariamente cerca del punto inicial. El criterio precedente identifica exactamente esa obstrucción, además de hacer explícito el dominio efectivo. No presupone continuidad ni usa la recíproca secuencial condicional.
 
 
-El dominio y el punto intermedio están ya controlados para la composición. La siguiente unidad examinará **límites laterales**, para los que la procedencia izquierda o derecha de los argumentos debe incorporarse al dominio sin redefinir el orden real ni atribuir un límite a un conjunto sin puntos de acumulación en el lado elegido.
+El dominio y el punto intermedio están ya controlados para la composición. La siguiente unidad examinará límites laterales, para los que la procedencia izquierda o derecha de los argumentos debe incorporarse al dominio sin redefinir el orden real ni atribuir un límite a un conjunto sin puntos de acumulación en el lado elegido.

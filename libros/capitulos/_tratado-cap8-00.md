@@ -4,7 +4,7 @@ La primera construcción de los números reales partió de una insuficiencia del
 
 La segunda construcción partirá de una insuficiencia distinta.
 
-Un número puede ser buscado mediante aproximaciones racionales cada vez más precisas aun cuando el objeto al que parecen aproximarse no pertenezca a $\mathbb Q$. En ese caso, el dato fundamental ya no es una frontera que separe racionales, sino un **proceso ordenado de aproximación racional**.
+Un número puede ser buscado mediante aproximaciones racionales cada vez más precisas aun cuando el objeto al que parecen aproximarse no pertenezca a $\mathbb Q$. En ese caso, el dato fundamental ya no es una frontera que separe racionales, sino un proceso ordenado de aproximación racional.
 
 La transición conceptual puede resumirse así:
 
@@ -26,7 +26,7 @@ entendida no como una colección informal de valores, sino como una función cuy
 
 Esta precisión importa. Una sucesión no queda determinada por el conjunto de valores que aparecen en ella. Por ejemplo, dos procesos pueden recorrer exactamente los mismos racionales y hacerlo en distinto orden, repetirlos con distinta frecuencia o asignarlos a índices diferentes. El índice pertenece a la estructura del objeto.
 
-La construcción que comienza aquí será **independiente de la construcción de Dedekind**. Aunque ya disponemos del cuerpo completo $\mathbb R_D$, no utilizaremos su completitud, sus cortaduras ni su noción de número real para justificar ningún paso de la construcción por Cauchy.
+La construcción que comienza aquí será independiente de la construcción de Dedekind. Aunque ya disponemos del cuerpo completo $\mathbb R_D$, no utilizaremos su completitud, sus cortaduras ni su noción de número real para justificar ningún paso de la construcción por Cauchy.
 
 El punto de partida de este segundo camino será exclusivamente la infraestructura construida antes de Dedekind:
 

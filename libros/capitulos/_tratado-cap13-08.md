@@ -1,6 +1,6 @@
 ## 13.8. Sucesiones de Cauchy y criterio de Cauchy {#sec-ta-13-8}
 
-La convergencia compara una sucesión con un real fijo que ya conocemos. La condición de Cauchy elimina esa referencia externa: pregunta únicamente si los términos suficientemente tardíos están arbitrariamente próximos **entre sí**.
+La convergencia compara una sucesión con un real fijo que ya conocemos. La condición de Cauchy elimina esa referencia externa: pregunta únicamente si los términos suficientemente tardíos están arbitrariamente próximos entre sí.
 
 Esta idea ya apareció en el Capítulo 8, pero allí cumplía una función distinta. En $\mathbb Q$ demostramos que toda sucesión racional convergente es de Cauchy y construimos después una sucesión racional de Cauchy sin límite racional. La condición detectaba una estabilización interna que el sistema racional no siempre podía realizar como un punto de $\mathbb Q$.
 
@@ -18,7 +18,7 @@ La dirección de izquierda a derecha utilizará sólo la desigualdad triangular.
 
 ### Definición 13.8.1 — Sucesión real de Cauchy
 
-Sea $a=(a_n)$ una sucesión real. Diremos que $a$ es una **sucesión de Cauchy** si para todo $\varepsilon>0$ existe $N\in\mathbb N$ tal que, para cualesquiera $m,n\in\mathbb N$,
+Sea $a=(a_n)$ una sucesión real. Diremos que $a$ es una sucesión de Cauchy si para todo $\varepsilon>0$ existe $N\in\mathbb N$ tal que, para cualesquiera $m,n\in\mathbb N$,
 
 $$
 N\le m
@@ -51,7 +51,7 @@ $$
 }
 $$
 
-La definición no menciona ningún candidato a límite. Toda la información es **interna a la sucesión**.
+La definición no menciona ningún candidato a límite. Toda la información es interna a la sucesión.
 
 > **Lectura lógica.** En la convergencia, el patrón es
 > $$
@@ -63,7 +63,7 @@ La definición no menciona ningún candidato a límite. Toda la información es 
 > $$
 > La pregunta ya no es «¿cerca de qué punto están los términos?», sino «¿se vuelven mutuamente tan próximos como queramos?».
 
-> **Nota fundacional.** La definición afirma la existencia de un umbral $N$ para cada precisión positiva. No proporciona por sí sola una función $\varepsilon\mapsto N$, y mucho menos un procedimiento computable para producirla. Como en el Capítulo 8, un **módulo de Cauchy** sería información adicional y no forma parte de la definición extensional.
+> **Nota fundacional.** La definición afirma la existencia de un umbral $N$ para cada precisión positiva. No proporciona por sí sola una función $\varepsilon\mapsto N$, y mucho menos un procedimiento computable para producirla. Como en el Capítulo 8, un módulo de Cauchy sería información adicional y no forma parte de la definición extensional.
 
 ### Teorema 13.8.2 — Toda sucesión real convergente es de Cauchy
 
@@ -212,7 +212,7 @@ La proposición Proposición 13.4.4 — Una cota eventual se extiende a una cota
 
 ### Definición 13.8.4 — Envolventes inferior y superior de las colas
 
-Sea $a=(a_n)$ una sucesión real acotada y sea $N\in\mathbb N$. Definimos el **conjunto de valores de la cola desde $N$** por
+Sea $a=(a_n)$ una sucesión real acotada y sea $N\in\mathbb N$. Definimos el conjunto de valores de la cola desde $N$ por
 
 $$
 \boxed{
@@ -256,13 +256,13 @@ $$
 L(a):=(L_N(a))_{N\in\mathbb N}
 $$
 
-la **envolvente inferior de las colas** de $a$, y a
+la envolvente inferior de las colas de $a$, y a
 
 $$
 U(a):=(U_N(a))_{N\in\mathbb N}
 $$
 
-la **envolvente superior de las colas**.
+la envolvente superior de las colas.
 
 Debemos justificar que estas asignaciones son realmente sucesiones reales. Consideremos, por ejemplo,
 
@@ -511,7 +511,7 @@ $$
 
 ∎
 
-> **Idea central.** La condición de Cauchy no sólo dice que pares concretos de términos están próximos. Obliga a que **todo el conjunto de valores de una cola** quede encerrado en un intervalo de anchura arbitrariamente pequeña. Los supremos e ínfimos de las colas convierten esa información pareada en una única magnitud:
+> **Idea central.** La condición de Cauchy no sólo dice que pares concretos de términos están próximos. Obliga a que todo el conjunto de valores de una cola quede encerrado en un intervalo de anchura arbitrariamente pequeña. Los supremos e ínfimos de las colas convierten esa información pareada en una única magnitud:
 > $$
 > \boxed{
 > \text{diámetro de la cola}
@@ -664,7 +664,7 @@ $$
 }
 $$
 
-No ha cambiado la definición de Cauchy; ha cambiado el sistema numérico en el que vive la sucesión. La completitud convierte una condición interna de coherencia asintótica en **existencia formal de un límite real**, sin que ello implique computabilidad del límite.
+No ha cambiado la definición de Cauchy; ha cambiado el sistema numérico en el que vive la sucesión. La completitud convierte una condición interna de coherencia asintótica en existencia formal de un límite real, sin que ello implique computabilidad del límite.
 
 Con §13.8 disponemos ya de dos grandes mecanismos de existencia de límites:
 
@@ -681,4 +681,4 @@ $$
 }
 $$
 
-El siguiente paso será estudiar **subsucesiones**. Dejaremos de exigir que toda la cola posea un único comportamiento y aprenderemos a extraer procesos parciales conservando el orden de los índices. Esta infraestructura permitirá después formular puntos límite secuenciales y preparar el teorema de Bolzano--Weierstrass.
+El siguiente paso será estudiar subsucesiones. Dejaremos de exigir que toda la cola posea un único comportamiento y aprenderemos a extraer procesos parciales conservando el orden de los índices. Esta infraestructura permitirá después formular puntos límite secuenciales y preparar el teorema de Bolzano--Weierstrass.

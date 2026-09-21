@@ -6,16 +6,16 @@ La arquimedianidad controla el tamaño relativo de los elementos, pero no obliga
 
 *Glosario: [propiedad del supremo](../otros/tratado-de-analisis-glosario.md#gl-propiedad-supremo) · [cuerpo ordenado completo](../otros/tratado-de-analisis-glosario.md#gl-cuerpo-ordenado-completo)*
 
-Un cuerpo ordenado $F$ tiene la **propiedad del supremo** si todo subconjunto $A\subseteq F$ que sea
+Un cuerpo ordenado $F$ tiene la propiedad del supremo si todo subconjunto $A\subseteq F$ que sea
 
 1. no vacío, y
 2. acotado superiormente,
 
 posee un supremo en $F$.
 
-Un cuerpo ordenado con esta propiedad se llamará **cuerpo ordenado completo**.
+Un cuerpo ordenado con esta propiedad se llamará cuerpo ordenado completo.
 
-La palabra «completo» tendrá en esta parte del tratado este significado de orden. La definición cuantifica sobre **subconjuntos arbitrarios** de $F$; en el marco ZF del tratado, esto es una condición extensional sobre la totalidad $\mathcal P(F)$.
+La palabra «completo» tendrá en esta parte del tratado este significado de orden. La definición cuantifica sobre subconjuntos arbitrarios de $F$; en el marco ZF del tratado, esto es una condición extensional sobre la totalidad $\mathcal P(F)$.
 
 > **Nota fundacional.** La afirmación
 > $$
@@ -67,7 +67,7 @@ $$
 
 Así $-s$ es la mayor cota inferior de $A$. ∎
 
-> **Versión positiva.** Si la hipótesis se formula directamente para un subconjunto **habitado** $A$ y se proporciona un testigo $a_0\in A$, el argumento anterior —incluida la habitabilidad de $-A$— es constructivamente compatible.
+> **Versión positiva.** Si la hipótesis se formula directamente para un subconjunto habitado $A$ y se proporciona un testigo $a_0\in A$, el argumento anterior —incluida la habitabilidad de $-A$— es constructivamente compatible.
 
 ### Teorema 4.6.3 — Todo cuerpo ordenado completo es arquimediano {#ta-completo-implica-arquimediano}
 

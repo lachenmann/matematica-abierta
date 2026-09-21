@@ -6,9 +6,9 @@ El paso no será una apelación abstracta a una equivalencia conocida. En el tra
 
 La estrategia tiene cuatro etapas:
 
-1. demostrar que la copia racional hace a $\mathbb R_C$ **arquimediano**;
+1. demostrar que la copia racional hace a $\mathbb R_C$ arquimediano;
 2. encerrar cualquier conjunto no vacío y acotado entre un extremo que no sea cota superior y otro que sí lo sea;
-3. bisecar ese intervalo de manera **determinista en sentido extensional**, manteniendo ambos invariantes y haciendo tender su anchura a cero;
+3. bisecar ese intervalo de manera determinista en sentido extensional, manteniendo ambos invariantes y haciendo tender su anchura a cero;
 4. usar la completitud secuencial para obtener un límite común y demostrar que ese límite es exactamente el supremo.
 
 La construcción es deliberadamente funcional. En cada etapa de bisección la pregunta «¿es el punto medio una cota superior?» tiene una respuesta lógica determinada; no escogeremos un elemento de $A$ en cada paso ni construiremos una familia de elecciones.
@@ -202,7 +202,7 @@ $$
 
 La lógica clásica garantiza que exactamente una de las dos ramas se aplica y cada rama determina un único par. Por tanto $\beta_A$ es una función total.
 
-> **Nota fundacional.** No se escoge un elemento de $A$ cuando el punto medio deja de ser cota superior. La función es **determinista en sentido extensional**: LEM fija cuál de las dos proposiciones vale y cada rama tiene salida única. Pero el predicado
+> **Nota fundacional.** No se escoge un elemento de $A$ cuando el punto medio deja de ser cota superior. La función es determinista en sentido extensional: LEM fija cuál de las dos proposiciones vale y cada rama tiene salida única. Pero el predicado
 > $$
 > \forall x\in A,\quad x\le_Cm
 > $$
@@ -288,7 +288,7 @@ Las condiciones inicial y recursiva son exactamente las anunciadas. ∎
 
 En la situación de Proposición 10.5.4 — Sucesiones de encajamiento asociadas a $A$, para todo $n\in\mathbb N$ se cumplen:
 
-1. $\ell_n$ **no** es cota superior de $A$;
+1. $\ell_n$ no es cota superior de $A$;
 2. $r_n$ es cota superior de $A$;
 3. $\ell_n<_Cr_n$;
 4. el paso es encajado:

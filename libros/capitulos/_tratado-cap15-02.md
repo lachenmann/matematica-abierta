@@ -1,9 +1,9 @@
 ## 15.2. Puntos interiores y conjuntos abiertos {#sec-ta-15-2}
 
-La propiedad de ser vecindad pertenece, en principio, a un conjunto *respecto de un punto*. La convertiremos ahora en dos nociones distintas. Primero preguntaremos si un punto dispone de espacio suficiente **dentro de un conjunto dado**. Después exigiremos que esa condición se cumpla para todos los puntos del conjunto. No intercambiaremos ambos niveles de cuantificación.
+La propiedad de ser vecindad pertenece, en principio, a un conjunto *respecto de un punto*. La convertiremos ahora en dos nociones distintas. Primero preguntaremos si un punto dispone de espacio suficiente dentro de un conjunto dado. Después exigiremos que esa condición se cumpla para todos los puntos del conjunto. No intercambiaremos ambos niveles de cuantificación.
 
 ### Definición 15.2.1 — Punto interior de un conjunto
-Sean $A\subseteq\mathbb R$ y $a\in\mathbb R$. Diremos que $a$ es un **punto interior de $A$** cuando existe un número real $r>0$ tal que la bola centrada en $a$ está contenida en $A$:
+Sean $A\subseteq\mathbb R$ y $a\in\mathbb R$. Diremos que $a$ es un punto interior de $A$ cuando existe un número real $r>0$ tal que la bola centrada en $a$ está contenida en $A$:
 
 $$
 \boxed{a\text{ es interior a }A\iff\exists r\in\mathbb R\ (r>0\ \text{y}\ B_r(a)\subseteq A).}
@@ -11,17 +11,17 @@ $$
 
 Por Proposición §15.1.2 — Las bolas son intervalos abiertos centrados, el centro pertenece a cualquier bola de radio positivo. En consecuencia, la condición implica $a\in A$: no es necesario imponer esa pertenencia como una hipótesis adicional. El radio puede depender del punto $a$ y del conjunto $A$; no postulamos un radio común para todos los puntos.
 
-> **Lectura de cuantificadores.** «$a$ es interior a $A$» significa que **existe** un margen positivo para **ese punto** y que **todos** los puntos suficientemente próximos permanecen en $A$. No significa que baste con encontrar un punto próximo que pertenezca a $A$.
+> **Lectura de cuantificadores.** «$a$ es interior a $A$» significa que existe un margen positivo para ese punto y que todos los puntos suficientemente próximos permanecen en $A$. No significa que baste con encontrar un punto próximo que pertenezca a $A$.
 
 
 ### Definición 15.2.2 — Interior de un conjunto
-Para $A\subseteq\mathbb R$, llamaremos **interior de $A$** al conjunto de sus puntos interiores y escribiremos
+Para $A\subseteq\mathbb R$, llamaremos interior de $A$ al conjunto de sus puntos interiores y escribiremos
 
 $$
 \boxed{A^\circ:=\{a\in A:\exists r\in\mathbb R\ (r>0\ \text{y}\ B_r(a)\subseteq A)\}.}
 $$
 
-Este conjunto existe por Separación sobre $A$: en su fórmula sólo figuran el orden, el valor absoluto, las bolas y la inclusión, todos previamente definidos. El símbolo $A^\circ$ denota un **conjunto**, no un punto ni un radio. Además, la asignación $A\mapsto A^\circ$ determina una función $\mathcal P(\mathbb R)\to\mathcal P(\mathbb R)$: su grafo se obtiene por Separación dentro del producto de esos dos conjuntos, y para cada $A$ el conjunto definido es único por extensionalidad. No hay elección de radios para definirla.
+Este conjunto existe por Separación sobre $A$: en su fórmula sólo figuran el orden, el valor absoluto, las bolas y la inclusión, todos previamente definidos. El símbolo $A^\circ$ denota un conjunto, no un punto ni un radio. Además, la asignación $A\mapsto A^\circ$ determina una función $\mathcal P(\mathbb R)\to\mathcal P(\mathbb R)$: su grafo se obtiene por Separación dentro del producto de esos dos conjuntos, y para cada $A$ el conjunto definido es único por extensionalidad. No hay elección de radios para definirla.
 
 
 ### Proposición 15.2.3 — Interior y vecindades
@@ -40,7 +40,7 @@ La equivalencia explica por qué se introdujo primero la noción de vecindad: un
 
 
 ### Definición 15.2.4 — Conjunto abierto de la recta
-Un subconjunto $U\subseteq\mathbb R$ se llama **abierto (en $\mathbb R$)** si cada uno de sus puntos es interior a él:
+Un subconjunto $U\subseteq\mathbb R$ se llama abierto (en $\mathbb R$) si cada uno de sus puntos es interior a él:
 
 $$
 \boxed{U\text{ es abierto}\iff
@@ -75,7 +75,7 @@ $$
 **Demostración.**
 Siempre tenemos $A^\circ\subseteq A$ por Proposición §15.2.3 — Interior y vecindades. Si $A$ es abierto, todo $x\in A$ dispone de un radio positivo con $B_r(x)\subseteq A$, por lo que $x\in A^\circ$ y $A\subseteq A^\circ$. La doble inclusión da $A=A^\circ$. Recíprocamente, si $A=A^\circ$, cada $x\in A$ pertenece al interior; la definición de este último proporciona una bola $B_r(x)\subseteq A$. Por tanto, $A$ es abierto. ∎
 
-El interior permite reconocer un abierto sin volver a repetir verbalmente todos los cuantificadores: un conjunto es abierto exactamente cuando **no le faltan puntos interiores entre sus propios puntos**.
+El interior permite reconocer un abierto sin volver a repetir verbalmente todos los cuantificadores: un conjunto es abierto exactamente cuando no le faltan puntos interiores entre sus propios puntos.
 
 
 ### Teorema 15.2.7 — Leyes fundamentales de los conjuntos abiertos
@@ -83,20 +83,20 @@ Se cumplen las propiedades siguientes:
 
 1. $\varnothing$ y $\mathbb R$ son abiertos.
 2. Si $I$ es cualquier conjunto y $(U_i)_{i\in I}$ es una familia de subconjuntos abiertos de $\mathbb R$, entonces $\bigcup_{i\in I}U_i$ es abierto, también para $I=\varnothing$.
-3. Si $U,V\subseteq\mathbb R$ son abiertos, entonces $U\cap V$ es abierto. En consecuencia, toda intersección **finita** de abiertos es abierta, entendiendo la intersección de una familia vacía respecto del ambiente $\mathbb R$ como $\mathbb R$.
+3. Si $U,V\subseteq\mathbb R$ son abiertos, entonces $U\cap V$ es abierto. En consecuencia, toda intersección finita de abiertos es abierta, entendiendo la intersección de una familia vacía respecto del ambiente $\mathbb R$ como $\mathbb R$.
 
 **Demostración.**
-**(1)** Para $\varnothing$, el enunciado «para todo $x\in\varnothing$» es verdadero porque no hay elementos en ese conjunto. Para $\mathbb R$, fijemos $x\in\mathbb R$: el radio real $1>0$ está disponible en el cuerpo fijado, y $B_1(x)\subseteq\mathbb R$ por definición. Ambos conjuntos son abiertos.
+(1) Para $\varnothing$, el enunciado «para todo $x\in\varnothing$» es verdadero porque no hay elementos en ese conjunto. Para $\mathbb R$, fijemos $x\in\mathbb R$: el radio real $1>0$ está disponible en el cuerpo fijado, y $B_1(x)\subseteq\mathbb R$ por definición. Ambos conjuntos son abiertos.
 
-**(2)** La unión indexada existe como conjunto por Definición §0.6.16 — Familia indexada, y sus elementos pertenecen a $\mathbb R$. Sea $x\in\bigcup_{i\in I}U_i$. Por la definición de unión existe **un índice** $i\in I$ tal que $x\in U_i$. Como ese $U_i$ es abierto, existe $r>0$ con $B_r(x)\subseteq U_i$. Por pertenencia a la unión, $U_i\subseteq\bigcup_{j\in I}U_j$; luego
+(2) La unión indexada existe como conjunto por Definición §0.6.16 — Familia indexada, y sus elementos pertenecen a $\mathbb R$. Sea $x\in\bigcup_{i\in I}U_i$. Por la definición de unión existe un índice $i\in I$ tal que $x\in U_i$. Como ese $U_i$ es abierto, existe $r>0$ con $B_r(x)\subseteq U_i$. Por pertenencia a la unión, $U_i\subseteq\bigcup_{j\in I}U_j$; luego
 
 $$
 B_r(x)\subseteq\bigcup_{j\in I}U_j.
 $$
 
-El punto $x$ era arbitrario. Si $I=\varnothing$, la unión es $\varnothing$ y ya está cubierta por (1). En esta prueba se eliminan dos existenciales para un punto **fijo**; no se elige simultáneamente un índice o un radio para todos los puntos.
+El punto $x$ era arbitrario. Si $I=\varnothing$, la unión es $\varnothing$ y ya está cubierta por (1). En esta prueba se eliminan dos existenciales para un punto fijo; no se elige simultáneamente un índice o un radio para todos los puntos.
 
-**(3)** Fijemos $x\in U\cap V$. Hay radios $r,s>0$ con $B_r(x)\subseteq U$ y $B_s(x)\subseteq V$. Por Proposición §15.1.5 — Propiedades elementales de las vecindades, la intersección de estas dos vecindades es una vecindad de $x$, o, explícitamente, tomando $t=\min\{r,s\}>0$, obtenemos
+(3) Fijemos $x\in U\cap V$. Hay radios $r,s>0$ con $B_r(x)\subseteq U$ y $B_s(x)\subseteq V$. Por Proposición §15.1.5 — Propiedades elementales de las vecindades, la intersección de estas dos vecindades es una vecindad de $x$, o, explícitamente, tomando $t=\min\{r,s\}>0$, obtenemos
 
 $$
 B_t(x)\subseteq B_r(x)\cap B_s(x)\subseteq U\cap V.
@@ -104,7 +104,7 @@ $$
 
 Así $U\cap V$ es abierto. Para una familia de abiertos indexada por cualquier número natural $n$ de índices, induzcamos sobre $n$: con cero índices su intersección en $\mathbb R$ es $\mathbb R$, abierta por (1); al añadir un conjunto al paso sucesor, se intersecta el abierto ya obtenido con el nuevo abierto y se aplica el caso binario. Toda intersección finita queda cubierta, incluida la vacía. ∎
 
-> **La asimetría esencial.** En el caso de las uniones basta hallar **un** abierto que contenga al punto. En una intersección, en cambio, necesitamos una bola contenida en **todos** los conjuntos involucrados; la operación de tomar el mínimo de dos radios funciona para un número finito de ellos, pero no demuestra por sí sola que una intersección infinita sea abierta. No anticiparemos tal afirmación.
+> **La asimetría esencial.** En el caso de las uniones basta hallar un abierto que contenga al punto. En una intersección, en cambio, necesitamos una bola contenida en todos los conjuntos involucrados; la operación de tomar el mínimo de dos radios funciona para un número finito de ellos, pero no demuestra por sí sola que una intersección infinita sea abierta. No anticiparemos tal afirmación.
 
 
 ### Teorema 15.2.8 — El interior es el mayor abierto contenido en el conjunto
@@ -114,7 +114,7 @@ $$
 \boxed{U\subseteq A\ \text{y}\ U\text{ abierto}\implies U\subseteq A^\circ.}
 $$
 
-Es decir: $A^\circ$ es el **mayor** —respecto de la inclusión— entre los conjuntos abiertos contenidos en $A$.
+Es decir: $A^\circ$ es el mayor —respecto de la inclusión— entre los conjuntos abiertos contenidos en $A$.
 
 **Demostración.**
 Ya sabemos por Proposición §15.2.3 — Interior y vecindades que $A^\circ\subseteq A$. Para probar que es abierto, sea $x\in A^\circ$. Existe $r>0$ tal que $B_r(x)\subseteq A$. Afirmamos que, más precisamente,
@@ -137,7 +137,7 @@ La propiedad de maximalidad será la justificación estructural de las leyes del
 
 
 ### Proposición 15.2.9 — Ejemplos: intervalos abiertos y singletons
-Para cualesquiera $a,b\in\mathbb R$ con $a<b$, el intervalo $(a,b)$ es abierto. En cambio, para todo $a\in\mathbb R$, el conjunto $\{a\}$ **no** es abierto en $\mathbb R$.
+Para cualesquiera $a,b\in\mathbb R$ con $a<b$, el intervalo $(a,b)$ es abierto. En cambio, para todo $a\in\mathbb R$, el conjunto $\{a\}$ no es abierto en $\mathbb R$.
 
 **Demostración.**
 Sea $x\in(a,b)$, de modo que $a<x<b$. Ambos números $x-a$ y $b-x$ son positivos. Definamos

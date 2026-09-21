@@ -327,6 +327,6 @@ $$
 
 ∎
 
-Con esto, $\Psi_{E,F}$ es ya un **isomorfismo de órdenes** entre las dos completaciones. La construcción depende únicamente de sus trazas racionales y la función inversa no requiere una definición adicional: es el mismo transporte con los cuerpos intercambiados.
+Con esto, $\Psi_{E,F}$ es ya un isomorfismo de órdenes entre las dos completaciones. La construcción depende únicamente de sus trazas racionales y la función inversa no requiere una definición adicional: es el mismo transporte con los cuerpos intercambiados.
 
 Aún no hemos demostrado que este isomorfismo de órdenes sea un isomorfismo de cuerpos. Ése será el trabajo de §12.6: probar que el transporte respeta primero la suma y los elementos distinguidos, y después el producto y los inversos, utilizando la caracterización racional de cada operación.

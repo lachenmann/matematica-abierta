@@ -1,11 +1,11 @@
 ## 15.9. Densidad e intervalos {#sec-ta-15-9}
 
-La palabra *denso* apareció anteriormente al demostrar que entre dos números reales distintos hay una imagen racional (Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo). Ahora le daremos un significado topológico aplicable a **cualquier** subconjunto de la recta. El resultado central identificará la densidad con el encuentro de todos los intervalos abiertos no degenerados. Después distinguiremos densidad e interioridad, mostraremos que los abiertos se reconstruyen con intervalos de extremos racionales y completaremos la descripción de los intervalos semiabiertos.
+La palabra *denso* apareció anteriormente al demostrar que entre dos números reales distintos hay una imagen racional (Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo). Ahora le daremos un significado topológico aplicable a cualquier subconjunto de la recta. El resultado central identificará la densidad con el encuentro de todos los intervalos abiertos no degenerados. Después distinguiremos densidad e interioridad, mostraremos que los abiertos se reconstruyen con intervalos de extremos racionales y completaremos la descripción de los intervalos semiabiertos.
 
-En toda la sección, $\mathbb R$ es el cuerpo ordenado completo estructural de §12.9. Escribiremos $j:=\jmath_{\mathbb Q}^{\mathbb R}:\mathbb Q\to\mathbb R$ para su incrustación racional canónica (Definición §12.2.3 — Copia canónica de los racionales en un cuerpo ordenado, Teorema §12.2.5 — La copia racional es una incrustación de cuerpos ordenados). La abreviatura local $D_{\mathbb Q}:=j[\mathbb Q]$ designa un subconjunto genuino de $\mathbb R$; **no** supone la igualdad conjuntista $\mathbb Q\subseteq\mathbb R$.
+En toda la sección, $\mathbb R$ es el cuerpo ordenado completo estructural de §12.9. Escribiremos $j:=\jmath_{\mathbb Q}^{\mathbb R}:\mathbb Q\to\mathbb R$ para su incrustación racional canónica (Definición §12.2.3 — Copia canónica de los racionales en un cuerpo ordenado, Teorema §12.2.5 — La copia racional es una incrustación de cuerpos ordenados). La abreviatura local $D_{\mathbb Q}:=j[\mathbb Q]$ designa un subconjunto genuino de $\mathbb R$; no supone la igualdad conjuntista $\mathbb Q\subseteq\mathbb R$.
 
 ### Definición 15.9.1 — Subconjunto denso de la recta
-Un conjunto $D\subseteq\mathbb R$ se llama **denso en la recta real** si su clausura coincide con toda la recta:
+Un conjunto $D\subseteq\mathbb R$ se llama denso en la recta real si su clausura coincide con toda la recta:
 
 $$
 \boxed{D\text{ es denso en }\mathbb R\iff\overline D=\mathbb R.}
@@ -68,7 +68,7 @@ $$
 
 Por doble complementación relativa a $\mathbb R$, esta clausura es toda la recta si y sólo si el interior del complemento es vacío. Aplicamos Definición §15.9.1 — Subconjunto denso de la recta para obtener la primera equivalencia. Si $A$ es denso, sustituimos $\overline A=\mathbb R$ en $\partial A=\overline A\setminus A^\circ$, identidad de Teorema §15.6.4 — Descomposición de la recta en interior, frontera y exterior; se obtiene la segunda fórmula. Finalmente, aplicando la primera equivalencia sucesivamente a $A$ y a su complemento, la densidad de ambos da $(\mathbb R\setminus A)^\circ=A^\circ=\varnothing$; la segunda identidad concluye $\partial A=\mathbb R$. ∎
 
-**Advertencia.** Un conjunto denso puede tener interior no vacío: $A=\mathbb R$ es un ejemplo inmediato. La densidad de $A$ sólo fuerza el **vacío del interior de su complemento**. Las dos propiedades no deben confundirse.
+**Advertencia.** Un conjunto denso puede tener interior no vacío: $A=\mathbb R$ es un ejemplo inmediato. La densidad de $A$ sólo fuerza el vacío del interior de su complemento. Las dos propiedades no deben confundirse.
 
 
 ### Proposición 15.9.5 — Intersección de un denso con un abierto
@@ -95,11 +95,11 @@ $$
 
 Tomamos clausuras a ambos lados: la monotonía y la idempotencia (Proposición §15.4.8 — Idempotencia de la clausura) proporcionan $\overline U\subseteq\overline{U\cap D}$. Ambas inclusiones prueban la igualdad. Si $U$ es no vacío, su intersección con $D$ es no vacía por Teorema §15.9.2 — Tres caracterizaciones de la densidad. El argumento cubre también $U=\varnothing$: ambas clausuras son vacías. ∎
 
-La igualdad expresa con precisión que, **dentro de cualquier región abierta**, los puntos de un conjunto denso se aproximan a todos los puntos de esa región y, por clausura, a sus puntos adherentes.
+La igualdad expresa con precisión que, dentro de cualquier región abierta, los puntos de un conjunto denso se aproximan a todos los puntos de esa región y, por clausura, a sus puntos adherentes.
 
 
 ### Definición 15.9.6 — Familia de intervalos con extremos racionales
-Denotemos por $\mathcal B_{\mathbb Q}$ la siguiente **familia de subconjuntos de la recta**:
+Denotemos por $\mathcal B_{\mathbb Q}$ la siguiente familia de subconjuntos de la recta:
 
 $$
 \boxed{\mathcal B_{\mathbb Q}:=
@@ -107,7 +107,7 @@ $$
 [p<q\ \land\ V=(j(p),j(q))]\}.}
 $$
 
-Cada intervalo de esta familia es abierto y no vacío. El conjunto $\mathcal B_{\mathbb Q}$ existe por Separación **dentro de $\mathcal P(\mathbb R)$**; no es una colección irrestricta. Sus extremos son *imágenes de racionales* y por ello pertenecen a $\mathbb R$. No se ha añadido una nueva topología ni se identifica $\mathbb Q$ con su imagen.
+Cada intervalo de esta familia es abierto y no vacío. El conjunto $\mathcal B_{\mathbb Q}$ existe por Separación dentro de $\mathcal P(\mathbb R)$; no es una colección irrestricta. Sus extremos son *imágenes de racionales* y por ello pertenecen a $\mathbb R$. No se ha añadido una nueva topología ni se identifica $\mathbb Q$ con su imagen.
 
 
 ### Teorema 15.9.7 — Todo abierto es unión de intervalos con extremos racionales
@@ -117,7 +117,7 @@ $$
 \boxed{U=\bigcup\{V\in\mathcal B_{\mathbb Q}:V\subseteq U\}.}
 $$
 
-La unión se toma sobre una familia que es un **conjunto**. Si $U=\varnothing$, la familia de intervalos contenidos en él es vacía y la unión es $\varnothing$.
+La unión se toma sobre una familia que es un conjunto. Si $U=\varnothing$, la familia de intervalos contenidos en él es vacía y la unión es $\varnothing$.
 
 **Demostración.**
 Definamos $\mathcal F_U:=\{V\in\mathcal B_{\mathbb Q}:V\subseteq U\}$ mediante Separación sobre la familia existente $\mathcal B_{\mathbb Q}$. Su unión existe como conjunto y está contenida en $U$, ya que cada miembro de $\mathcal F_U$ lo está.
@@ -128,7 +128,7 @@ $$
 B_r(x)=(x-r,x+r)\subseteq U.
 $$
 
-Los dos intervalos $(x-r,x)$ y $(x,x+r)$ tienen extremos estrictamente ordenados. Por la densidad **de orden** Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo, existen racionales $p,q\in\mathbb Q$ con
+Los dos intervalos $(x-r,x)$ y $(x,x+r)$ tienen extremos estrictamente ordenados. Por la densidad de orden Corolario §12.3.2 — Densidad racional en todo cuerpo ordenado completo, existen racionales $p,q\in\mathbb Q$ con
 
 $$
 x-r<j(p)<x<j(q)<x+r.
@@ -142,7 +142,7 @@ $$
 
 Luego $V\in\mathcal F_U$ y $x\in\bigcup\mathcal F_U$. Como $x$ era arbitrario, $U\subseteq\bigcup\mathcal F_U$ y concluimos por doble inclusión. ∎
 
-> **Por qué no interviene Choice.** Sería incorrecto deducir sin más una función global $x\mapsto r_x$ a partir de que cada $x\in U$ posee *algún* radio. En lugar de escoger radios o intervalos, construimos el conjunto de **todos** los intervalos racionales que caben en $U$. Cada punto pertenece localmente a alguno y eso basta para la igualdad.
+> **Por qué no interviene Choice.** Sería incorrecto deducir sin más una función global $x\mapsto r_x$ a partir de que cada $x\in U$ posee *algún* radio. En lugar de escoger radios o intervalos, construimos el conjunto de todos los intervalos racionales que caben en $U$. Cada punto pertenece localmente a alguno y eso basta para la igualdad.
 
 
 ### Proposición 15.9.8 — Interior, clausura y frontera de los intervalos semiabiertos
@@ -185,7 +185,7 @@ $$
 I_{\mathbb R}:=\mathbb R\setminus D_{\mathbb Q}
 $$
 
-son **disjuntos y ambos densos** en $\mathbb R$. En consecuencia,
+son disjuntos y ambos densos en $\mathbb R$. En consecuencia,
 
 $$
 \boxed{D_{\mathbb Q}^\circ=I_{\mathbb R}^\circ=\varnothing,
@@ -216,4 +216,4 @@ El intervalo $(a,b)$ era arbitrario. Por Teorema §15.9.2 — Tres caracterizaci
 
 Las definiciones y leyes topológicas básicas de la recta quedan así conectadas con su orden y con la copia racional construida en la Parte I. La sección se apoya exclusivamente en las condiciones con bolas y en los teoremas racionales ya cerrados: no utiliza la caracterización secuencial condicional de §15.8, no introduce espacios topológicos abstractos y no exige una elección de puntos para una familia de intervalos.
 
-El Capítulo 16 utilizará esta estructura local para estudiar los límites de funciones. Su punto de partida será un punto de acumulación del dominio: allí se examinará el comportamiento de los valores de una función cuando la variable se aproxima al punto **sin exigir que coincida con él**. La distinción entre adherencia y acumulación construida aquí evitará imponer un límite donde sólo existe una pertenencia aislada.
+El Capítulo 16 utilizará esta estructura local para estudiar los límites de funciones. Su punto de partida será un punto de acumulación del dominio: allí se examinará el comportamiento de los valores de una función cuando la variable se aproxima al punto sin exigir que coincida con él. La distinción entre adherencia y acumulación construida aquí evitará imponer un límite donde sólo existe una pertenencia aislada.

@@ -4,7 +4,7 @@ La propiedad del supremo no es la única manera puramente ordenada de expresar q
 
 ### Definición 4.7.1 — Propiedad de separación {#ta-propiedad-separacion}
 
-Diremos que un cuerpo ordenado $F$ tiene la **propiedad de separación** si, siempre que $A,B\subseteq F$ sean no vacíos y satisfagan
+Diremos que un cuerpo ordenado $F$ tiene la propiedad de separación si, siempre que $A,B\subseteq F$ sean no vacíos y satisfagan
 
 $$
 a\leq b
@@ -73,7 +73,7 @@ Así $F$ tiene la propiedad del supremo. ∎
 
 ### Definición 4.7.3 — Principio de intersección de intervalos cerrados {#ta-principio-interseccion-intervalos-cerrados}
 
-Diremos que un cuerpo ordenado $F$ satisface el **principio de intersección de intervalos cerrados** si para todo conjunto no vacío $I$ y toda pareja de familias
+Diremos que un cuerpo ordenado $F$ satisface el principio de intersección de intervalos cerrados si para todo conjunto no vacío $I$ y toda pareja de familias
 
 $$
 (a_i)_{i\in I},

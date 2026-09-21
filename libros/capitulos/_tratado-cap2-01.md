@@ -1,6 +1,6 @@
 ## 2.1. Diferencias formales {#sec-ta-2-1}
 
-Llamaremos **[diferencia formal](../otros/tratado-de-analisis-glosario.md#gl-diferencia-formal)** a un elemento de $\mathbb N\times\mathbb N$. Esta expresión es interpretativa: no introduce aún una operación de resta.
+Llamaremos [diferencia formal](../otros/tratado-de-analisis-glosario.md#gl-diferencia-formal) a un elemento de $\mathbb N\times\mathbb N$. Esta expresión es interpretativa: no introduce aún una operación de resta.
 
 Si $(a,b)$ es una diferencia formal, pensaremos heurísticamente en ella como «$a-b$». Dos pares $(a,b)$ y $(c,d)$ deben representar el mismo valor cuando la igualdad
 
@@ -18,7 +18,7 @@ $$
 
 ### Definición 2.1.1 — Relación de equivalencia entera {#ta-relacion-equivalencia-entera}
 
-Sobre $\mathbb N\times\mathbb N$ definimos la **[relación de equivalencia entera](../otros/tratado-de-analisis-glosario.md#gl-relacion-equivalencia-entera)** $\sim_{\mathbb Z}$ por
+Sobre $\mathbb N\times\mathbb N$ definimos la [relación de equivalencia entera](../otros/tratado-de-analisis-glosario.md#gl-relacion-equivalencia-entera) $\sim_{\mathbb Z}$ por
 
 $$
 \boxed{

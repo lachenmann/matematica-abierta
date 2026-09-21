@@ -17,5 +17,5 @@ $$
 $$
 
 ::: {.callout-tip title="Siguiente capítulo"}
-Con esta sección queda completo el **Capítulo 0 — Fundamento lógico y conjuntista**. La publicación progresiva continuará con el **Capítulo 1 — Los números naturales**, comenzando por el axioma de infinito, los conjuntos inductivos y la construcción de $\omega$.
+Con esta sección queda completo el Capítulo 0 — Fundamento lógico y conjuntista. La publicación progresiva continuará con el Capítulo 1 — Los números naturales, comenzando por el axioma de infinito, los conjuntos inductivos y la construcción de $\omega$.
 :::

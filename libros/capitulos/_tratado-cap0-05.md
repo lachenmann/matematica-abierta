@@ -1,6 +1,6 @@
 ## 0.5. Clases de equivalencia, particiones y cocientes {#sec-ta-0-5}
 
-Una de las ideas constructivas centrales de este tratado aparece aquí por primera vez. Con frecuencia un objeto que deseamos construir admite **muchas representaciones**. En lugar de escoger arbitrariamente una de ellas, declaramos equivalentes las representaciones que expresan el mismo contenido y hacemos del conjunto de todas ellas un único objeto nuevo.
+Una de las ideas constructivas centrales de este tratado aparece aquí por primera vez. Con frecuencia un objeto que deseamos construir admite muchas representaciones. En lugar de escoger arbitrariamente una de ellas, declaramos equivalentes las representaciones que expresan el mismo contenido y hacemos del conjunto de todas ellas un único objeto nuevo.
 
 El esquema es
 
@@ -91,7 +91,7 @@ La contrapositiva afirma que, si $[a]\neq[b]$, entonces $[a]\cap[b]=\varnothing$
 
 *Glosario: [partición](../otros/tratado-de-analisis-glosario.md#gl-particion)*
 
-Una **partición** de un conjunto $A$ es un conjunto $\mathscr P$ de subconjuntos de $A$ tal que:
+Una partición de un conjunto $A$ es un conjunto $\mathscr P$ de subconjuntos de $A$ tal que:
 
 1. $\varnothing\notin\mathscr P$;
 2. si $C,D\in\mathscr P$ y $C\neq D$, entonces $C\cap D=\varnothing$;
@@ -124,13 +124,13 @@ Por Definición 0.5.5, $\mathscr P_{\sim}$ es una partición de $A$. ∎
 
 ---
 
-Las proposiciones anteriores muestran que las clases no se solapan parcialmente: dos de ellas son iguales o disjuntas, y juntas recubren $A$. Estamos, por tanto, en condiciones de dejar de mirar las representaciones individuales y considerar **el conjunto de las clases mismas**. Ese nuevo conjunto es el cociente.
+Las proposiciones anteriores muestran que las clases no se solapan parcialmente: dos de ellas son iguales o disjuntas, y juntas recubren $A$. Estamos, por tanto, en condiciones de dejar de mirar las representaciones individuales y considerar el conjunto de las clases mismas. Ese nuevo conjunto es el cociente.
 
 ### Definición 0.5.7 — Conjunto cociente {#ta-conjunto-cociente}
 
 *Glosario: [conjunto cociente](../otros/tratado-de-analisis-glosario.md#gl-conjunto-cociente)*
 
-Definimos el **conjunto cociente** de $A$ por $\sim$ mediante
+Definimos el conjunto cociente de $A$ por $\sim$ mediante
 
 $$
 A/{\sim}

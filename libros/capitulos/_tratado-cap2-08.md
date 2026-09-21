@@ -131,7 +131,7 @@ $$
 
 ### Teorema 2.8.4 — $\mathbb Z$ es un dominio de integridad {#ta-dominio-integridad-enteros}
 
-El anillo conmutativo $\mathbb Z$ es un **[dominio de integridad](../otros/tratado-de-analisis-glosario.md#gl-dominio-integridad)**.
+El anillo conmutativo $\mathbb Z$ es un [dominio de integridad](../otros/tratado-de-analisis-glosario.md#gl-dominio-integridad).
 
 **Demostración.**  
 En §2.6 demostramos que $\mathbb Z$ es un anillo conmutativo con identidad. La Proposición 2.8.2 demuestra $0_{\mathbb Z}\neq1_{\mathbb Z}$ y la Proposición 2.8.3 demuestra la ausencia de divisores de cero. Éstas son exactamente las condiciones fijadas en la convención de dominio de integridad. ∎

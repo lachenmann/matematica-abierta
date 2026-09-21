@@ -1,8 +1,8 @@
 ## 0.3. Pares ordenados y productos cartesianos {#sec-ta-0-3}
 
-Los conjuntos ordinarios no recuerdan posiciones: $\{a,b\}=\{b,a\}$. Esa simetría es adecuada cuando sólo importa qué elementos están presentes, pero resulta insuficiente en cuanto queremos distinguir una **primera** y una **segunda** coordenada. Una relación entre $a$ y $b$, el valor de una función en un argumento o un punto de un producto cartesiano requieren precisamente esa distinción.
+Los conjuntos ordinarios no recuerdan posiciones: $\{a,b\}=\{b,a\}$. Esa simetría es adecuada cuando sólo importa qué elementos están presentes, pero resulta insuficiente en cuanto queremos distinguir una primera y una segunda coordenada. Una relación entre $a$ y $b$, el valor de una función en un argumento o un punto de un producto cartesiano requieren precisamente esa distinción.
 
-Por ello construiremos ahora, usando únicamente conjuntos ya disponibles, un objeto que codifique el orden de dos componentes. La prueba decisiva no será la definición misma, sino demostrar que **dos pares ordenados son iguales exactamente cuando coinciden sus primeras componentes y coinciden sus segundas componentes**.
+Por ello construiremos ahora, usando únicamente conjuntos ya disponibles, un objeto que codifique el orden de dos componentes. La prueba decisiva no será la definición misma, sino demostrar que dos pares ordenados son iguales exactamente cuando coinciden sus primeras componentes y coinciden sus segundas componentes.
 
 Una vez obtenido ese criterio, podremos utilizar pares ordenados sin volver continuamente a su implementación conjuntista.
 

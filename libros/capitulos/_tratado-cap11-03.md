@@ -1,6 +1,6 @@
 ## 11.3. Homomorfismo {#sec-ta-11-3}
 
-El encabezado conserva la arquitectura fijada para el capítulo, pero conviene separar dos afirmaciones. En esta sección construiremos la **aplicación canónica** de las clases de Cauchy a las cortaduras de Dedekind. Que esa aplicación sea un homomorfismo para la suma y el producto será una propiedad demostrada sólo en §11.4.
+El encabezado conserva la arquitectura fijada para el capítulo, pero conviene separar dos afirmaciones. En esta sección construiremos la aplicación canónica de las clases de Cauchy a las cortaduras de Dedekind. Que esa aplicación sea un homomorfismo para la suma y el producto será una propiedad demostrada sólo en §11.4.
 
 La situación construida hasta ahora es exactamente la requerida por el principio general de definición sobre clases. Disponemos de la relación de equivalencia
 
@@ -74,7 +74,7 @@ $$
 }
 $$
 
-La fórmula anterior debe leerse con cuidado. No afirma que una clase $[a]_C$ **sea** una cortadura, ni que $a$ sea un representante privilegiado. Afirma que la función $\Phi$ envía la clase completa al único lado inferior racional determinado por cualquiera de sus representantes.
+La fórmula anterior debe leerse con cuidado. No afirma que una clase $[a]_C$ sea una cortadura, ni que $a$ sea un representante privilegiado. Afirma que la función $\Phi$ envía la clase completa al único lado inferior racional determinado por cualquiera de sus representantes.
 
 ### Proposición 11.3.2 — Caracterización universal de $\Phi$
 

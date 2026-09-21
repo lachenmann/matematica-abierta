@@ -40,7 +40,7 @@ $$
 }
 $$
 
-Equivalentemente: la clase de las completaciones ordenadas de $\mathbb Q$ es no vacía y cualesquiera dos de sus miembros son isomorfos mediante un **único** isomorfismo de cuerpos ordenados que hace conmutar las correspondientes incrustaciones de $\mathbb Q$.
+Equivalentemente: la clase de las completaciones ordenadas de $\mathbb Q$ es no vacía y cualesquiera dos de sus miembros son isomorfos mediante un único isomorfismo de cuerpos ordenados que hace conmutar las correspondientes incrustaciones de $\mathbb Q$.
 
 **Demostración.**
 
@@ -82,7 +82,7 @@ Como $E$ era arbitrario, toda completación ordenada es estructuralmente idénti
 
 La formulación equivalente para dos completaciones arbitrarias es precisamente Teorema 12.7.2 — Unicidad del isomorfismo entre completaciones ordenadas. ∎
 
-El teorema anterior caracteriza primero una **completación de $\mathbb Q$**. Pero la arquitectura inicial del tratado formulaba la meta de manera ligeramente distinta, hablando de un cuerpo ordenado completo arquimediano. A esta altura podemos eliminar esa redundancia.
+El teorema anterior caracteriza primero una completación de $\mathbb Q$. Pero la arquitectura inicial del tratado formulaba la meta de manera ligeramente distinta, hablando de un cuerpo ordenado completo arquimediano. A esta altura podemos eliminar esa redundancia.
 
 ### Corolario 12.8.2 — Todo cuerpo ordenado completo realiza la completación única
 
@@ -116,7 +116,7 @@ $$
 }
 $$
 
-Además, $E$ es arquimediano. Por tanto, **la arquimedianidad no necesita imponerse como hipótesis independiente** en el teorema de caracterización: se sigue de la completitud.
+Además, $E$ es arquimediano. Por tanto, la arquimedianidad no necesita imponerse como hipótesis independiente en el teorema de caracterización: se sigue de la completitud.
 
 **Demostración.**
 

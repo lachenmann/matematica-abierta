@@ -1,6 +1,6 @@
 ## 0.2. Conjuntos, inclusión y operaciones
 
-El lenguaje primitivo sólo nos da pertenencia e igualdad. Para trabajar matemáticamente necesitamos derivar de él formas estables de comparar y combinar conjuntos. La primera es la inclusión: en vez de preguntar por un elemento aislado, preguntamos si **todo** elemento de un conjunto pertenece a otro. De esa relación surgirán luego las operaciones usuales —unión, intersección, diferencia y conjunto potencia— y, con ellas, los conjuntos ambientes en los que podremos construir productos, relaciones y funciones.
+El lenguaje primitivo sólo nos da pertenencia e igualdad. Para trabajar matemáticamente necesitamos derivar de él formas estables de comparar y combinar conjuntos. La primera es la inclusión: en vez de preguntar por un elemento aislado, preguntamos si todo elemento de un conjunto pertenece a otro. De esa relación surgirán luego las operaciones usuales —unión, intersección, diferencia y conjunto potencia— y, con ellas, los conjuntos ambientes en los que podremos construir productos, relaciones y funciones.
 
 ### Definición 0.2.1 — Subconjunto {#ta-subconjunto}
 
@@ -228,7 +228,7 @@ si y sólo si existe $C\in\{A,B\}$ tal que $x\in C$. Por la definición del par 
 
 *Glosario: [conjuntos disjuntos](../otros/tratado-de-analisis-glosario.md#gl-conjuntos-disjuntos)*
 
-Dos conjuntos $A$ y $B$ son **disjuntos** si
+Dos conjuntos $A$ y $B$ son disjuntos si
 
 $$
 A\cap B=\varnothing.

@@ -1,6 +1,6 @@
 ## 22.2. Primera parte del teorema fundamental del cálculo {#sec-ta-22-2}
 
-Una función integrable puede ser discontinua; aun así, su acumulada es continua (§22.1). La afirmación que ahora buscamos es distinta: **en cada punto interior donde la integranda sí sea continua, la acumulada resulta derivable y su derivada recupera el valor de la integranda en ese punto**. Separaremos una estimación algebraica que vale sin continuidad del argumento de límite que utiliza esa hipótesis.
+Una función integrable puede ser discontinua; aun así, su acumulada es continua (§22.1). La afirmación que ahora buscamos es distinta: en cada punto interior donde la integranda sí sea continua, la acumulada resulta derivable y su derivada recupera el valor de la integranda en ese punto. Separaremos una estimación algebraica que vale sin continuidad del argumento de límite que utiliza esa hipótesis.
 
 ### Lema 22.2.1 — Estimación del cociente incremental por la oscilación alrededor de un valor
 Sea $f:[a,b]\to\mathbb R$ integrable y sea $F:=F_{f,a}$. Fijemos $x,y\in[a,b]$ con $x\ne y$ y $\eta\ge0$. Supongamos que
@@ -33,7 +33,7 @@ f(x)-\eta\le\frac{F(y)-F(x)}{y-x}\le f(x)+\eta.
 \tag{22.2.4}
 $$
 
-Si $y<x$, aplicamos **la misma** estimación, pero al intervalo legítimo $[y,x]$. Al dividir por $x-y>0$ se obtiene
+Si $y<x$, aplicamos la misma estimación, pero al intervalo legítimo $[y,x]$. Al dividir por $x-y>0$ se obtiene
 
 $$
 f(x)-\eta\le\frac{F(x)-F(y)}{x-y}\le f(x)+\eta.
@@ -45,7 +45,7 @@ $$
 \frac{F(x)-F(y)}{x-y}=\frac{F(y)-F(x)}{y-x}
 $$
 
-transforma esta última desigualdad en (22.2.4). En ninguno de los casos escribimos una integral con extremos invertidos; sólo se cambian de signo **numerador y denominador** de un cociente de reales. Finalmente, (22.2.4) equivale a (22.2.2). $\square$
+transforma esta última desigualdad en (22.2.4). En ninguno de los casos escribimos una integral con extremos invertidos; sólo se cambian de signo numerador y denominador de un cociente de reales. Finalmente, (22.2.4) equivale a (22.2.2). $\square$
 
 **Lectura del lema.** No hay aquí un punto escogido donde la función alcance un máximo ni una aplicación del teorema del valor medio integral. Basta una cota puntual uniforme sobre el tramo que une los dos argumentos; la cota del cociente es igualmente válida a derecha e izquierda.
 
@@ -58,7 +58,7 @@ $$
 $$
 
 **Demostración.**
-Escribamos $F:=F_{f,a}$. **Primero verificamos el dominio de la derivada.** Puesto que $a<x<b$, para cada $r>0$ el número
+Escribamos $F:=F_{f,a}$. Primero verificamos el dominio de la derivada. Puesto que $a<x<b$, para cada $r>0$ el número
 
 $$
 s_r:=\frac12\min\{r,x-a,b-x\}>0
@@ -66,7 +66,7 @@ $$
 
 satisface $x-s_r,x+s_r\in[a,b]$ y $0<|x\pm s_r-x|=s_r<r$. Así $x\in\operatorname{Acc}([a,b])$; ambos lados acumulan en $x$. El cociente incremental de Definición §19.1.1 — Cociente incremental en un punto está por tanto definido en $[a,b]\setminus\{x\}$ y tiene un dominio que acumula en $x$, como exige Definición §19.1.3 — Derivabilidad en un punto.
 
-Fijemos ahora una tolerancia arbitraria $\varepsilon>0$. La continuidad de $f$ en $x$ (Definición §17.1.1 — Continuidad relativa al dominio en un punto), aplicada a $\varepsilon/2$, suministra un **único radio testigo para esta tolerancia** $\rho>0$ tal que
+Fijemos ahora una tolerancia arbitraria $\varepsilon>0$. La continuidad de $f$ en $x$ (Definición §17.1.1 — Continuidad relativa al dominio en un punto), aplicada a $\varepsilon/2$, suministra un único radio testigo para esta tolerancia $\rho>0$ tal que
 
 $$
 t\in[a,b],\quad |t-x|<\rho
@@ -82,7 +82,7 @@ $$
 \tag{22.2.7}
 $$
 
-Consideremos **cualquier** $y\in[a,b]$ con $0<|y-x|<\delta$. Si $y>x$, cada $t\in[x,y]$ cumple $|t-x|\le y-x=|y-x|<\delta\le\rho$. Si $y<x$, para cada $t\in[y,x]$ se cumple $|t-x|\le x-y=|y-x|<\delta\le\rho$. En ambos casos (22.2.6) proporciona, sobre todo el intervalo comprendido entre $x$ e $y$,
+Consideremos cualquier $y\in[a,b]$ con $0<|y-x|<\delta$. Si $y>x$, cada $t\in[x,y]$ cumple $|t-x|\le y-x=|y-x|<\delta\le\rho$. Si $y<x$, para cada $t\in[y,x]$ se cumple $|t-x|\le x-y=|y-x|<\delta\le\rho$. En ambos casos (22.2.6) proporciona, sobre todo el intervalo comprendido entre $x$ e $y$,
 
 $$
 |f(t)-f(x)|<\frac\varepsilon2
@@ -98,9 +98,9 @@ $$
 \tag{22.2.8}
 $$
 
-El mismo $\delta$ funciona para **todos** los argumentos admisibles, tanto por la izquierda como por la derecha. Ésta es exactamente la condición cuantificada de derivabilidad Definición §19.1.3 — Derivabilidad en un punto con candidato $L=f(x)$. La unicidad Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada legitima la notación puntual Notación §19.1.5 — Valor de la derivada y demuestra (22.2.5). No se aplicaron Rolle, el valor medio diferencial, un teorema del valor medio integral, sucesiones de puntos escogidos ni ninguna forma de Choice. $\square$
+El mismo $\delta$ funciona para todos los argumentos admisibles, tanto por la izquierda como por la derecha. Ésta es exactamente la condición cuantificada de derivabilidad Definición §19.1.3 — Derivabilidad en un punto con candidato $L=f(x)$. La unicidad Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada legitima la notación puntual Notación §19.1.5 — Valor de la derivada y demuestra (22.2.5). No se aplicaron Rolle, el valor medio diferencial, un teorema del valor medio integral, sucesiones de puntos escogidos ni ninguna forma de Choice. $\square$
 
-**Interpretación.** La integral recoge incrementos globales y la derivada examina el comportamiento infinitesimal de esos incrementos. La continuidad en $x$ obliga a que todos los valores de $f$ en un tramo suficientemente corto estén próximos a $f(x)$; por ello también lo está su promedio integral. La continuidad exigida es **puntual**, no una condición global adicional.
+**Interpretación.** La integral recoge incrementos globales y la derivada examina el comportamiento infinitesimal de esos incrementos. La continuidad en $x$ obliga a que todos los valores de $f$ en un tramo suficientemente corto estén próximos a $f(x)$; por ello también lo está su promedio integral. La continuidad exigida es puntual, no una condición global adicional.
 
 ### Corolario 22.2.3 — Integranda continua sobre todo el intervalo
 Si $f:[a,b]\to\mathbb R$ es continua en todos los puntos de $[a,b]$, entonces es integrable y su función acumulada está definida en todo $[a,b]$. Además,
@@ -125,7 +125,7 @@ x-c,&c\le x\le b.
 \tag{22.2.10}
 $$
 
-Las dos fórmulas coinciden en $x=c$. Esta acumulada es continua en todo $[a,b]$ por §22.1, pero **no es derivable en $c$**.
+Las dos fórmulas coinciden en $x=c$. Esta acumulada es continua en todo $[a,b]$ por §22.1, pero no es derivable en $c$.
 
 **Demostración.**
 Si $a\le x<c$, la restricción de $s_c$ a $[a,x]$ es la función constante cero y Proposición §21.5.1 — Acotación de las operaciones y cálculo de las constantes da $F_{s_c,a}(x)=0$ (si $x=a$, vale además la definición de intervalo degenerado). Para $x=c$, la identidad de incremento Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos y la aditividad sobre el punto $c$ producen

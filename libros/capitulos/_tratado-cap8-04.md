@@ -2,7 +2,7 @@
 
 La convergencia racional de §8.3 compara los términos tardíos de una sucesión con un racional fijo $\ell$. Esa definición es adecuada cuando tal racional existe, pero no puede servir todavía para detectar procesos que se estabilizan sin converger dentro de $\mathbb Q$.
 
-La idea de Cauchy elimina precisamente esa referencia externa. En lugar de preguntar si $q_n$ está cerca de un candidato a límite, preguntaremos si **dos términos suficientemente tardíos cualesquiera están cerca entre sí**.
+La idea de Cauchy elimina precisamente esa referencia externa. En lugar de preguntar si $q_n$ está cerca de un candidato a límite, preguntaremos si dos términos suficientemente tardíos cualesquiera están cerca entre sí.
 
 El cambio lógico es pequeño en apariencia, pero decisivo:
 
@@ -18,7 +18,7 @@ En la condición de la derecha ya no aparece ningún objeto que deba ser el lím
 
 ### Definición 8.4.1 — Sucesión racional de Cauchy
 
-Sea $q=(q_n)_{n\in\mathbb N}$ una sucesión racional. Diremos que $q$ es una **sucesión de Cauchy** si
+Sea $q=(q_n)_{n\in\mathbb N}$ una sucesión racional. Diremos que $q$ es una sucesión de Cauchy si
 
 $$
 \boxed{
@@ -35,11 +35,11 @@ $$
 }
 $$
 
-El orden de los cuantificadores forma parte esencial de la definición. Para cada precisión racional positiva $\varepsilon$ puede elegirse una etapa $N$ dependiente de $\varepsilon$; una vez fijada esa etapa, **todo par** de términos con índices posteriores a $N$ debe encontrarse a distancia menor que $\varepsilon$.
+El orden de los cuantificadores forma parte esencial de la definición. Para cada precisión racional positiva $\varepsilon$ puede elegirse una etapa $N$ dependiente de $\varepsilon$; una vez fijada esa etapa, todo par de términos con índices posteriores a $N$ debe encontrarse a distancia menor que $\varepsilon$.
 
 No se exige que exista un racional $\ell$ al cual se aproximen los términos. Tampoco se menciona $\mathbb R_D$ ni ningún otro sistema de números reales.
 
-Un **módulo de Cauchy** para $q$ es una función
+Un módulo de Cauchy para $q$ es una función
 $$
 \mu_C:\mathbb Q_{>0}\to\mathbb N
 $$
@@ -50,7 +50,7 @@ m,n\geq\mu_C(\varepsilon)
 d_{\mathbb Q}(q_m,q_n)<\varepsilon.
 $$
 Cuando tanto $n\mapsto q_n$ como $\mu_C$ son computables, diremos que $q$ está dada por un
-**nombre efectivo de Cauchy con módulo**.
+nombre efectivo de Cauchy con módulo.
 
 La existencia clásica de algún índice para cada precisión no suministra automáticamente un módulo
 computable. Incluso el módulo mínimo obtenido por buen orden puede ser canónico sin ser efectivo.
@@ -189,4 +189,4 @@ significa que los términos tardíos de $q$ pueden hacerse mutuamente tan próxi
 
 Éste es el cambio conceptual que necesitábamos para la segunda construcción de los reales. Una sucesión puede ser de Cauchy aun cuando todavía no hayamos demostrado que posea un límite racional; de hecho, esa posibilidad será precisamente la que permitirá superar la insuficiencia de $\mathbb Q$.
 
-Antes de usar las sucesiones de Cauchy como representaciones de nuevos números debemos establecer el puente mínimo con la noción anterior de convergencia: **todo proceso que ya converge racionalmente debe satisfacer necesariamente la condición de Cauchy**. Ése será el contenido de §8.5.
+Antes de usar las sucesiones de Cauchy como representaciones de nuevos números debemos establecer el puente mínimo con la noción anterior de convergencia: todo proceso que ya converge racionalmente debe satisfacer necesariamente la condición de Cauchy. Ése será el contenido de §8.5.

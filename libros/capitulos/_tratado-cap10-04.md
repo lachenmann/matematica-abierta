@@ -28,7 +28,7 @@ $$
 x=(x_n)_{n\in\mathbb N}\in\mathbb R_C^{\mathbb N}
 $$
 
-y $L\in\mathbb R_C$. Diremos que $x$ **converge a $L$ en $\mathbb R_C$** si
+y $L\in\mathbb R_C$. Diremos que $x$ converge a $L$ en $\mathbb R_C$ si
 
 $$
 \boxed{
@@ -531,7 +531,7 @@ La unicidad se sigue de Teorema 10.4.4 — Unicidad del límite en $\mathbb R_C$
 
 ### Definición 10.4.7 — Completitud secuencial de $\mathbb R_C$
 
-Diremos que $\mathbb R_C$ es **secuencialmente completo** si toda sucesión de Cauchy
+Diremos que $\mathbb R_C$ es secuencialmente completo si toda sucesión de Cauchy
 
 $$
 x=(x_n)_{n\in\mathbb N}\in\mathbb R_C^{\mathbb N}
@@ -570,4 +570,4 @@ Esto verifica exactamente Definición 10.4.7 — Completitud secuencial de $\mat
 
 > **Conclusión de la sección.** La insuficiencia secuencial detectada en $\mathbb Q$ ha desaparecido en $\mathbb R_C$: todo proceso de Cauchy de elementos del nuevo cuerpo posee un límite en el propio cuerpo. La demostración no eligió una familia de representantes; el límite se obtuvo mediante la diagonal canónica construida en §§10.2–10.3.
 
-> **Nota fundacional.** Ésta es una **completitud secuencial clásica sin $AC_\omega$**. El límite queda canónicamente determinado por la diagonal, pero la diagonal usa el selector clásico Definición 10.2.8 — Selector canónico de aproximantes racionales; por ello la conclusión no debe leerse como un algoritmo general de límite. Bajo nombres uniformemente computables y un módulo computable de Cauchy exterior, la misma estrategia admite una versión efectiva paralela.
+> **Nota fundacional.** Ésta es una completitud secuencial clásica sin $AC_\omega$. El límite queda canónicamente determinado por la diagonal, pero la diagonal usa el selector clásico Definición 10.2.8 — Selector canónico de aproximantes racionales; por ello la conclusión no debe leerse como un algoritmo general de límite. Bajo nombres uniformemente computables y un módulo computable de Cauchy exterior, la misma estrategia admite una versión efectiva paralela.

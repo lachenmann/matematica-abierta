@@ -221,7 +221,7 @@ Como $n\ge N_0$ era arbitrario, queda demostrada la separación eventual. ∎
 > **Frontera clásica.** El paso desde la información negativa
 > $$ a\notin\mathcal N_{\mathbb Q} $$
 > hasta un margen positivo eventual $\delta<|a_n|$ usa negación clásica de cuantificadores. En una
-> futura interfaz constructiva, ese margen debe tratarse como **apartness positiva** dada explícitamente.
+> futura interfaz constructiva, ese margen debe tratarse como apartness positiva dada explícitamente.
 
 ### Definición 9.7.3 — Recíproco seguro de una sucesión racional
 
@@ -246,7 +246,7 @@ a_n^{-1},&a_n\neq0_{\mathbb Q},\\[2mm]
 }
 $$
 
-La denominaremos **función de recíproco seguro**. Su finalidad es evitar que los posibles ceros iniciales de una sucesión impidan definir una sucesión racional completa.
+La denominaremos función de recíproco seguro. Su finalidad es evitar que los posibles ceros iniciales de una sucesión impidan definir una sucesión racional completa.
 
 Conjuntistamente, para cada $a\in\mathbb Q^{\mathbb N}$ el grafo correspondiente se obtiene por separación dentro de $\mathbb N\times\mathbb Q$:
 
@@ -738,7 +738,7 @@ $$
 Éstas son exactamente las condiciones de la convención de cuerpo Convención 3.6.7 — Terminología de cuerpo. ∎
 
 > **Nota fundacional.** El anillo de Cauchy se obtiene con argumentos algebraicos robustos; el salto
-> fundacional aparece al construir inversos de clases meramente **no nulas**, porque la separación
+> fundacional aparece al construir inversos de clases meramente no nulas, porque la separación
 > cuantitativa respecto de cero se obtiene mediante Lema 9.7.2 — Separación eventual respecto de cero. Por ello:
 > $$ \boxed{\text{no nulidad negativa}\neq\text{apartness positiva}.} $$
 
@@ -752,7 +752,7 @@ $$
 }
 $$
 
-La dificultad de los ceros iniciales de un representante quedó resuelta sin alterar la clase asintótica y sin recurrir a una selección global. El punto decisivo fue demostrar que un representante de una clase no nula está **eventualmente separado de cero**; desde ese momento, el recíproco término a término existe en toda la cola relevante.
+La dificultad de los ceros iniciales de un representante quedó resuelta sin alterar la clase asintótica y sin recurrir a una selección global. El punto decisivo fue demostrar que un representante de una clase no nula está eventualmente separado de cero; desde ese momento, el recíproco término a término existe en toda la cola relevante.
 
 La función inversa sobre $\mathbb R_{C,\neq0}$ no se definió escogiendo representantes. Se construyó a partir del grafo de la ecuación
 

@@ -1,6 +1,6 @@
 ## 1.2. Estructura de los naturales y Peano {#sec-ta-1-2}
 
-Hemos construido un conjunto; todavía debemos demostrar que se comporta como los números naturales. Ésta es una diferencia metodológica importante: las propiedades de Peano no se postulan aquí como axiomas de un sistema numérico abstracto, sino que deberán aparecer como **teoremas** de la construcción $\mathbb N=\omega$.
+Hemos construido un conjunto; todavía debemos demostrar que se comporta como los números naturales. Ésta es una diferencia metodológica importante: las propiedades de Peano no se postulan aquí como axiomas de un sistema numérico abstracto, sino que deberán aparecer como teoremas de la construcción $\mathbb N=\omega$.
 
 Antes de reunir esas propiedades necesitamos comprender mejor la forma conjuntista de cada natural. En la representación de von Neumann, un natural contiene precisamente a sus predecesores; la noción de conjunto transitivo captura la estabilidad que hace posible esa interpretación.
 
@@ -8,7 +8,7 @@ Antes de reunir esas propiedades necesitamos comprender mejor la forma conjuntis
 
 *Glosario: [conjunto transitivo](../otros/tratado-de-analisis-glosario.md#gl-conjunto-transitivo)*
 
-Un conjunto $T$ es **transitivo** si
+Un conjunto $T$ es transitivo si
 
 $$
 x\in T\Rightarrow x\subseteq T.

@@ -220,7 +220,7 @@ $$
 
 *Glosario: [cuerpo](../otros/tratado-de-analisis-glosario.md#gl-cuerpo)*
 
-Llamaremos **cuerpo** a un anillo conmutativo $F$ con
+Llamaremos cuerpo a un anillo conmutativo $F$ con
 
 $$
 0_F\neq1_F

@@ -1,6 +1,6 @@
 ## 9.4. Construcción del cociente {#sec-ta-9-4}
 
-La relación de equivalencia ya está construida. Podemos efectuar ahora el paso que convierte los procesos racionales en nuevos objetos: **cada nuevo número será una clase completa de sucesiones de Cauchy mutuamente equivalentes**, no una sucesión privilegiada.
+La relación de equivalencia ya está construida. Podemos efectuar ahora el paso que convierte los procesos racionales en nuevos objetos: cada nuevo número será una clase completa de sucesiones de Cauchy mutuamente equivalentes, no una sucesión privilegiada.
 
 Esta distinción es estructural. Si $a\in\mathcal C_{\mathbb Q}$, entonces $a$ seguirá siendo una función $\mathbb N\to\mathbb Q$. El nuevo objeto asociado a $a$ será su clase de equivalencia. No identificaremos ambos niveles.
 
@@ -32,7 +32,7 @@ No se selecciona un representante de cada clase: el cociente es el conjunto de l
 
 ### Definición 9.4.2 — El conjunto de los reales de Cauchy
 
-Definimos el **conjunto de los reales de Cauchy** por
+Definimos el conjunto de los reales de Cauchy por
 
 $$
 \boxed{
@@ -42,7 +42,7 @@ $$
 }
 $$
 
-En este punto $\mathbb R_C$ es únicamente un conjunto. Todavía no hemos definido en él suma, producto, cero, unidad, opuestos, inversos ni orden, y por tanto **no** hemos demostrado aún que sea un cuerpo ordenado ni que sea completo.
+En este punto $\mathbb R_C$ es únicamente un conjunto. Todavía no hemos definido en él suma, producto, cero, unidad, opuestos, inversos ni orden, y por tanto no hemos demostrado aún que sea un cuerpo ordenado ni que sea completo.
 
 El subíndice $C$ se conservará hasta comparar esta construcción con el modelo de Dedekind $\mathbb R_D$.
 
@@ -168,7 +168,7 @@ $$
 }
 $$
 
-Pero todavía no es legítimo tratarlo como cuerpo. Las operaciones término a término viven en $\mathcal C_{\mathbb Q}$; para trasladarlas a $\mathbb R_C$ debemos demostrar que el resultado **no depende del representante escogido**.
+Pero todavía no es legítimo tratarlo como cuerpo. Las operaciones término a término viven en $\mathcal C_{\mathbb Q}$; para trasladarlas a $\mathbb R_C$ debemos demostrar que el resultado no depende del representante escogido.
 
 El criterio
 

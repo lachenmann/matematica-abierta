@@ -1,6 +1,6 @@
 ## 10.3. Construcción diagonal {#sec-ta-10-3}
 
-La política de selección de §10.2 elimina el problema fundacional de escoger representantes. Falta ahora controlar la **precisión** con la que aproximaremos el término exterior $x_n$.
+La política de selección de §10.2 elimina el problema fundacional de escoger representantes. Falta ahora controlar la precisión con la que aproximaremos el término exterior $x_n$.
 
 No basta elegir una tolerancia positiva fija. Para que una sucesión racional reconstruya el comportamiento asintótico de una sucesión de Cauchy en $\mathbb R_C$, el error permitido debe tender a cero. Fijaremos por ello una escala racional canónica, independiente de la sucesión que queramos aproximar.
 
@@ -224,7 +224,7 @@ x=(x_n)_{n\in\mathbb N}
 \mathbb R_C^{\mathbb N}.
 $$
 
-Definimos su **diagonal racional canónica** por
+Definimos su diagonal racional canónica por
 
 $$
 \boxed{
@@ -254,7 +254,7 @@ $$
 
 La definición existe para toda sucesión en $\mathbb R_C$; sólo cuando la sucesión exterior sea de Cauchy demostraremos que su diagonal pertenece a $\mathcal C_{\mathbb Q}$.
 
-> **Nota fundacional.** «Diagonal canónica» significa aquí **canónica en sentido extensional**: cada término queda determinado por funciones ya construidas. No significa que, dada una sucesión arbitraria de clases, exista un algoritmo que calcule la diagonal:
+> **Nota fundacional.** «Diagonal canónica» significa aquí canónica en sentido extensional: cada término queda determinado por funciones ya construidas. No significa que, dada una sucesión arbitraria de clases, exista un algoritmo que calcule la diagonal:
 > $$
 > \boxed{
 > \text{diagonal canónica extensional}

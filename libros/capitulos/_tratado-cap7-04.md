@@ -44,7 +44,7 @@ $$
 \boxed{\sup_D\mathcal A=\bigcup\mathcal A.}
 $$
 
-Para una **familia dada** que satisface las hipótesis, la fórmula del supremo es literalmente la unión. Esto debe distinguirse de un operador efectivo global. Puede definirse conjuntistamente, sobre el dominio apropiado de subconjuntos no vacíos y acotados de $\mathbb R_D$, una función canónica
+Para una familia dada que satisface las hipótesis, la fórmula del supremo es literalmente la unión. Esto debe distinguirse de un operador efectivo global. Puede definirse conjuntistamente, sobre el dominio apropiado de subconjuntos no vacíos y acotados de $\mathbb R_D$, una función canónica
 $$
 \operatorname{Sup}_D(\mathcal A):=\bigcup\mathcal A,
 $$
@@ -76,7 +76,7 @@ $$
 
 ∎
 
-> **Nota fundacional.** La completitud anterior cuantifica sobre **todos** los subconjuntos de $\mathbb R_D$ que satisfacen las hipótesis. Es una propiedad extensional clásica:
+> **Nota fundacional.** La completitud anterior cuantifica sobre todos los subconjuntos de $\mathbb R_D$ que satisfacen las hipótesis. Es una propiedad extensional clásica:
 > $$
 > \boxed{
 > \text{completitud plena}

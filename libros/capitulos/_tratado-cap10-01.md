@@ -16,7 +16,7 @@ $$
 x=(x_n)_{n\in\mathbb N}\in\mathbb R_C^{\mathbb N}.
 $$
 
-Diremos que $x$ es una **sucesión de Cauchy en $\mathbb R_C$** si
+Diremos que $x$ es una sucesión de Cauchy en $\mathbb R_C$ si
 
 $$
 \boxed{

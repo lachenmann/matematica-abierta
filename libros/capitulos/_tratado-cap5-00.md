@@ -6,9 +6,9 @@ $$
 S_2=\{q\in\mathbb Q:0_{\mathbb Q}\leq q,\ q^2<2_{\mathbb Q}\}.
 $$
 
-El problema no es que falten racionales **entre** racionales. El problema es que ciertas regiones inferiores del orden racional determinan fronteras que no están representadas por ningún racional.
+El problema no es que falten racionales entre racionales. El problema es que ciertas regiones inferiores del orden racional determinan fronteras que no están representadas por ningún racional.
 
-La idea de Dedekind consiste en cambiar el tipo de objeto que representará una posición numérica. En vez de buscar primero un punto nuevo que ocupe una frontera, tomaremos como objeto **todo el lado inferior de la frontera**. Así, una nueva posición quedará codificada por los racionales que se encuentran estrictamente por debajo de ella.
+La idea de Dedekind consiste en cambiar el tipo de objeto que representará una posición numérica. En vez de buscar primero un punto nuevo que ocupe una frontera, tomaremos como objeto todo el lado inferior de la frontera. Así, una nueva posición quedará codificada por los racionales que se encuentran estrictamente por debajo de ella.
 
 Esta estrategia tiene una ventaja fundacional decisiva: no presupone la existencia de números reales para construirlos. Los únicos objetos de partida serán racionales, subconjuntos de $\mathbb Q$ y relaciones ya construidas sobre $\mathbb Q$.
 

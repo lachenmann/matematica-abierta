@@ -1,6 +1,6 @@
 ## 13.4. Acotación de sucesiones reales {#sec-ta-13-4}
 
-La convergencia controla los términos de una sucesión cuando el índice es suficientemente grande. La **acotación**, en cambio, es una propiedad global: exige que todos los términos permanezcan dentro de una misma región limitada de la recta real.
+La convergencia controla los términos de una sucesión cuando el índice es suficientemente grande. La acotación, en cambio, es una propiedad global: exige que todos los términos permanezcan dentro de una misma región limitada de la recta real.
 
 Esta diferencia obliga a separar dos tareas. Primero debemos formular la acotación en términos de la teoría de cotas ya construida para subconjuntos ordenados. Después mostraremos que una cota válida sólo eventualmente puede extenderse a toda la sucesión porque antes del umbral quedan únicamente finitos términos.
 
@@ -18,7 +18,7 @@ $$
 a[\mathbb N]\subseteq\mathbb R.
 $$
 
-Decimos que $a$ está **acotada superiormente** si $a[\mathbb N]$ está acotado superiormente en $\mathbb R$. Equivalentemente,
+Decimos que $a$ está acotada superiormente si $a[\mathbb N]$ está acotado superiormente en $\mathbb R$. Equivalentemente,
 
 $$
 \boxed{
@@ -28,9 +28,9 @@ a_n\le U.
 }
 $$
 
-En ese caso, $U$ es una **cota superior de la sucesión**.
+En ese caso, $U$ es una cota superior de la sucesión.
 
-Decimos que $a$ está **acotada inferiormente** si $a[\mathbb N]$ está acotado inferiormente. Equivalentemente,
+Decimos que $a$ está acotada inferiormente si $a[\mathbb N]$ está acotado inferiormente. Equivalentemente,
 
 $$
 \boxed{
@@ -40,9 +40,9 @@ L\le a_n.
 }
 $$
 
-En ese caso, $L$ es una **cota inferior de la sucesión**.
+En ese caso, $L$ es una cota inferior de la sucesión.
 
-Finalmente, $a$ es **acotada** si está acotada tanto superior como inferiormente.
+Finalmente, $a$ es acotada si está acotada tanto superior como inferiormente.
 
 > **Lectura de la definición.** La acotación no es una propiedad eventual. Las desigualdades deben controlar también los términos iniciales. Una sucesión puede poseer términos iniciales muy grandes y seguir siendo convergente; esos términos no afectan el límite, pero sí influyen en el tamaño de una cota global.
 
@@ -272,7 +272,7 @@ $$
 
 La caracterización Proposición 13.4.2 — Caracterización de la acotación mediante el valor absoluto concluye que $a$ es acotada. ∎
 
-La proposición anterior formaliza una operación que en análisis se realiza constantemente: **absorber un prefijo finito dentro de una cota global**.
+La proposición anterior formaliza una operación que en análisis se realiza constantemente: absorber un prefijo finito dentro de una cota global.
 
 ### Teorema 13.4.5 — Toda sucesión real convergente es acotada
 
@@ -340,7 +340,7 @@ por la no negatividad del valor absoluto y la positividad de $1$.
 
 Proposición 13.4.4 — Una cota eventual se extiende a una cota global transforma esta cota eventual en una cota global. Por tanto $a$ es acotada. ∎
 
-> **Arquitectura de la prueba.** La convergencia controla primero una **cola** de la sucesión. La proposición de prefijos controla después los términos anteriores al umbral. El teorema surge al ensamblar esas dos piezas:
+> **Arquitectura de la prueba.** La convergencia controla primero una cola de la sucesión. La proposición de prefijos controla después los términos anteriores al umbral. El teorema surge al ensamblar esas dos piezas:
 >
 > $$
 > \boxed{
@@ -360,4 +360,4 @@ $$
 |a_nb_n-ab|.
 $$
 
-La siguiente sección desarrollará la **álgebra de los límites**, comenzando por suma y opuesto y utilizando la acotación precisamente cuando el producto la requiera.
+La siguiente sección desarrollará la álgebra de los límites, comenzando por suma y opuesto y utilizando la acotación precisamente cuando el producto la requiera.

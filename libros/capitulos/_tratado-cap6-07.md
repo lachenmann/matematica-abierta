@@ -140,7 +140,7 @@ $$
 \boxed{\mathbb R_D^\times:=\{\alpha\in\mathbb R_D:\alpha\neq0_D\}.}
 $$
 
-> **Nota fundacional.** La condición $\alpha\neq0_D$ es negativa. Para una cortadura arbitraria no proporciona constructivamente el signo de $\alpha$ ni una separación positiva respecto de $0_D$. La definición clásica del inverso general utilizará la tricotomía heredada de Proposición 6.5.2 — Tricotomía respecto del cero; una futura capa efectiva empleará datos positivos de **apartness**.
+> **Nota fundacional.** La condición $\alpha\neq0_D$ es negativa. Para una cortadura arbitraria no proporciona constructivamente el signo de $\alpha$ ni una separación positiva respecto de $0_D$. La definición clásica del inverso general utilizará la tricotomía heredada de Proposición 6.5.2 — Tricotomía respecto del cero; una futura capa efectiva empleará datos positivos de apartness.
 
 ### Definición 6.7.7 — Candidato a inverso general
 

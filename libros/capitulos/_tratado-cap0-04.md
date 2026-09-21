@@ -1,6 +1,6 @@
 ## 0.4. Relaciones {#sec-ta-0-4}
 
-El producto cartesiano reúne todos los pares posibles entre dos conjuntos. Una **relación** selecciona algunos de esos pares. Esta observación convierte una noción aparentemente nueva en una construcción conjuntista ya controlada: relacionar elementos de $A$ con elementos de $B$ será simplemente especificar un subconjunto de $A\times B$.
+El producto cartesiano reúne todos los pares posibles entre dos conjuntos. Una relación selecciona algunos de esos pares. Esta observación convierte una noción aparentemente nueva en una construcción conjuntista ya controlada: relacionar elementos de $A$ con elementos de $B$ será simplemente especificar un subconjunto de $A\times B$.
 
 Esta perspectiva es la que permitirá tratar, con un mismo lenguaje, equivalencias, órdenes y grafos funcionales.
 
@@ -8,7 +8,7 @@ Esta perspectiva es la que permitirá tratar, con un mismo lenguaje, equivalenci
 
 *Glosario: [relación binaria](../otros/tratado-de-analisis-glosario.md#gl-relacion-binaria)*
 
-Una **relación binaria de $A$ en $B$** es un conjunto
+Una relación binaria de $A$ en $B$ es un conjunto
 
 $$
 R\subseteq A\times B.
@@ -80,7 +80,7 @@ R\subseteq A\times B,
 S\subseteq B\times C.
 $$
 
-Definimos la composición **$S$ después de $R$** por
+Definimos la composición $S$ después de $R$ por
 
 $$
 S\circ R
@@ -120,11 +120,11 @@ Ambas inclusiones forman parte de las condiciones definitorias de las Definicion
 
 Sea $R$ una relación sobre $A$.
 
-- $R$ es **reflexiva** si $\forall a\in A,\ aRa$.
-- $R$ es **simétrica** si $aRb\Rightarrow bRa$.
-- $R$ es **antisimétrica** si $(aRb\land bRa)\Rightarrow a=b$.
-- $R$ es **transitiva** si $(aRb\land bRc)\Rightarrow aRc$.
-- $R$ es **total** o **conexa** si para cualesquiera $a,b\in A$, $aRb$ o $bRa$.
+- $R$ es reflexiva si $\forall a\in A,\ aRa$.
+- $R$ es simétrica si $aRb\Rightarrow bRa$.
+- $R$ es antisimétrica si $(aRb\land bRa)\Rightarrow a=b$.
+- $R$ es transitiva si $(aRb\land bRc)\Rightarrow aRc$.
+- $R$ es total o conexa si para cualesquiera $a,b\in A$, $aRb$ o $bRa$.
 
 ---
 
@@ -132,4 +132,4 @@ Sea $R$ una relación sobre $A$.
 
 *Glosario: [relación de equivalencia](../otros/tratado-de-analisis-glosario.md#gl-relacion-equivalencia)*
 
-Una relación $\sim$ sobre $A$ es una **relación de equivalencia** si es reflexiva, simétrica y transitiva.
+Una relación $\sim$ sobre $A$ es una relación de equivalencia si es reflexiva, simétrica y transitiva.

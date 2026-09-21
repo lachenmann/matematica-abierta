@@ -12,9 +12,9 @@ $$
 \tag{23.7.1}
 $$
 
-Cada grafo $\{\langle x,r\rangle\in E\times\mathbb R:r=|f_n(x)|\}$ existe por Separación y tiene un valor único en cada $x$. Como la propiedad «$H(x)=|f_n(x)|$ para todo $x\in E$» caracteriza una única función tipada $H\in\mathbb R^E$, Separación en $\mathbb N\times\mathbb R^E$ determina una única sucesión $\mathbf A=(A_n):\mathbb N\to\mathbb R^E$. La **serie de magnitudes** es la serie de funciones $\sum_{k=0}^{\infty}A_k$, también escrita $\sum_{k=0}^{\infty}|f_k|$ con esta interpretación punto a punto.
+Cada grafo $\{\langle x,r\rangle\in E\times\mathbb R:r=|f_n(x)|\}$ existe por Separación y tiene un valor único en cada $x$. Como la propiedad «$H(x)=|f_n(x)|$ para todo $x\in E$» caracteriza una única función tipada $H\in\mathbb R^E$, Separación en $\mathbb N\times\mathbb R^E$ determina una única sucesión $\mathbf A=(A_n):\mathbb N\to\mathbb R^E$. La serie de magnitudes es la serie de funciones $\sum_{k=0}^{\infty}A_k$, también escrita $\sum_{k=0}^{\infty}|f_k|$ con esta interpretación punto a punto.
 
-Diremos que $\sum f_k$ **converge absolutamente en cada punto de $E$** si $\sum A_k$ converge puntualmente en $E$ en el sentido de Definición §23.6.2 — Convergencia puntual, convergencia uniforme y función suma de una serie. Diremos que $\sum f_k$ **converge absolutamente de manera uniforme en $E$** si $\sum A_k$ converge uniformemente en $E$. Esta segunda propiedad no se reduce a que, en cada punto por separado, converja la serie numérica $\sum|f_k(x)|$: exige un umbral independiente del punto. Aún no se afirma que la serie original converja; ambas implicaciones se probarán más abajo.
+Diremos que $\sum f_k$ converge absolutamente en cada punto de $E$ si $\sum A_k$ converge puntualmente en $E$ en el sentido de Definición §23.6.2 — Convergencia puntual, convergencia uniforme y función suma de una serie. Diremos que $\sum f_k$ converge absolutamente de manera uniforme en $E$ si $\sum A_k$ converge uniformemente en $E$. Esta segunda propiedad no se reduce a que, en cada punto por separado, converja la serie numérica $\sum|f_k(x)|$: exige un umbral independiente del punto. Aún no se afirma que la serie original converja; ambas implicaciones se probarán más abajo.
 
 Para $E=\varnothing$, la sucesión de magnitudes es la familia de funciones vacías y ambas nociones se satisfacen por vacuidad. No usamos el supremo de las magnitudes sobre un dominio arbitrario.
 
@@ -57,19 +57,19 @@ $$
 |T_m(x)-T_n(x)|<\varepsilon.
 $$
 
-Los términos de magnitudes son no negativos y, por (23.7.2), $0\le|S_m(x)-S_n(x)|\le T_m(x)-T_n(x)<\varepsilon$. El **mismo $N$** verifica el criterio Teorema §23.6.4 — Criterio uniforme de Cauchy para series de funciones para la serie original; ésta converge uniformemente. El caso vacío satisface ambas conclusiones por las definiciones de §23.6. $\square$
+Los términos de magnitudes son no negativos y, por (23.7.2), $0\le|S_m(x)-S_n(x)|\le T_m(x)-T_n(x)<\varepsilon$. El mismo $N$ verifica el criterio Teorema §23.6.4 — Criterio uniforme de Cauchy para series de funciones para la serie original; ésta converge uniformemente. El caso vacío satisface ambas conclusiones por las definiciones de §23.6. $\square$
 
 **Advertencia.** Ni el teorema ni la definición identifican «absoluta en cada punto» con «absoluta uniforme». La primera afirmación aplica un resultado numérico para cada $x$; la segunda necesita además un único umbral para todos los puntos.
 
 ### Teorema 23.7.4 — Criterio $M$ de Weierstrass y estimación del resto
-Sea $M=(M_n):\mathbb N\to\mathbb R$ una sucesión real **dada**, con $M_n\ge0$ para todo $n$, y supongamos que la serie numérica $\sum_{n=0}^{\infty}M_n$ converge. Si
+Sea $M=(M_n):\mathbb N\to\mathbb R$ una sucesión real dada, con $M_n\ge0$ para todo $n$, y supongamos que la serie numérica $\sum_{n=0}^{\infty}M_n$ converge. Si
 
 $$
 \boxed{|f_n(x)|\le M_n\qquad(n\in\mathbb N,\ x\in E),}
 \tag{23.7.4}
 $$
 
-entonces la serie $\sum_{n=0}^{\infty}f_n$ converge **absolutamente de manera uniforme** y, por tanto, converge uniformemente a una única función $F:E\to\mathbb R$.
+entonces la serie $\sum_{n=0}^{\infty}f_n$ converge absolutamente de manera uniforme y, por tanto, converge uniformemente a una única función $F:E\to\mathbb R$.
 
 Más precisamente, si $U_n=\sum_{k=0}^{n}M_k$ y $B:=\sum_{k=0}^{\infty}M_k\in\mathbb R$, se tiene para cada $n\in\mathbb N$ y cada $x\in E$ la cota del resto
 
@@ -88,7 +88,7 @@ N\le n<m\quad\Longrightarrow\quad |U_m-U_n|<\varepsilon.
 \tag{23.7.6}
 $$
 
-Los $M_n$ son no negativos, por lo que $U_m-U_n\ge0$ cuando $n<m$. Aplicando (23.7.3), para **todo** $x\in E$ y los mismos $N\le n<m$, obtenemos
+Los $M_n$ son no negativos, por lo que $U_m-U_n\ge0$ cuando $n<m$. Aplicando (23.7.3), para todo $x\in E$ y los mismos $N\le n<m$, obtenemos
 
 $$
 0\le T_m(x)-T_n(x)\le U_m-U_n<\varepsilon.
@@ -104,7 +104,7 @@ $$
 \tag{23.7.8}
 $$
 
-Como $S_m(x)\to F(x)$ y $U_m\to B$, la continuidad del valor absoluto Proposición §13.5.5 — El valor absoluto preserva límites y la preservación de desigualdades al pasar al límite Teorema §13.6.2 — Preservación del orden en el paso al límite dan $|F(x)-S_n(x)|\le B-U_n$. De $U_m\ge U_n$ para todo $m>n$ y la misma preservación del orden resulta $B-U_n\ge0$. La convergencia numérica $U_n\to B$ implica $B-U_n\to0$. Así (23.7.5) es una estimación **uniforme en $x$** mediante una sucesión de errores puramente numérica. Si $E$ es vacío, la desigualdad es vacua y la prueba de convergencia permanece válida. $\square$
+Como $S_m(x)\to F(x)$ y $U_m\to B$, la continuidad del valor absoluto Proposición §13.5.5 — El valor absoluto preserva límites y la preservación de desigualdades al pasar al límite Teorema §13.6.2 — Preservación del orden en el paso al límite dan $|F(x)-S_n(x)|\le B-U_n$. De $U_m\ge U_n$ para todo $m>n$ y la misma preservación del orden resulta $B-U_n\ge0$. La convergencia numérica $U_n\to B$ implica $B-U_n\to0$. Así (23.7.5) es una estimación uniforme en $x$ mediante una sucesión de errores puramente numérica. Si $E$ es vacío, la desigualdad es vacua y la prueba de convergencia permanece válida. $\square$
 
 **Cómo se utiliza.** No necesitamos conocer $F$ para demostrar que existe. Basta construir una serie numérica mayorante convergente y verificar (23.7.4); el resto se controla después por la cola de esa serie mayorante, nunca por una supuesta suma infinita no definida.
 
@@ -125,7 +125,7 @@ $$
 El símbolo del lado derecho denota una suma real sólo después de haber establecido su convergencia.
 
 **Demostración.**
-Por inducción, $S_0=f_0$ es integrable; si $S_n$ lo es, también $S_{n+1}=S_n+f_{n+1}$ por la linealidad finita Corolario §21.5.7 — Linealidad para combinaciones finitas de dos funciones. Así todas las sumas parciales son integrables. El criterio $M$ demuestra que $S_n\to F$ uniformemente. El teorema Teorema §23.4.2 — El límite uniforme de funciones integrables es integrable implica que $F$ es integrable, **antes** de escribir su integral.
+Por inducción, $S_0=f_0$ es integrable; si $S_n$ lo es, también $S_{n+1}=S_n+f_{n+1}$ por la linealidad finita Corolario §21.5.7 — Linealidad para combinaciones finitas de dos funciones. Así todas las sumas parciales son integrables. El criterio $M$ demuestra que $S_n\to F$ uniformemente. El teorema Teorema §23.4.2 — El límite uniforme de funciones integrables es integrable implica que $F$ es integrable, antes de escribir su integral.
 
 Cada integral $\int_a^b f_n$ existe y es única, utilizando la definición ordinaria si $a<b$ (Definición §21.4.3 — Integral de Riemann–Darboux para funciones integrables) o la convención para $a=b$ (Definición §21.6.5 — Integración en un intervalo degenerado). Separación en $\mathbb N\times\mathbb R$ construye la sucesión real $c_n:=\int_a^b f_n$. Por inducción, la linealidad finita y la recursión (23.6.1) prueban
 
@@ -138,7 +138,7 @@ $$
 No se ha usado linealidad de ninguna suma infinita. El intercambio de límite e integral ya demostrado (Teorema §23.4.3 — Intercambio del límite y la integral), aplicado a la sucesión integrable $(S_n)$, da $\lim_n\int_a^bS_n=\int_a^bF$. Por (23.7.10), las sumas parciales numéricas de $(c_n)$ tienen ese límite: de ahí la convergencia de la serie numérica y la identidad (23.7.9). Cuando $a=b$, todas las integrales son cero y la convención del singleton verifica igualmente el argumento. $\square$
 
 ### Proposición 23.7.7 — El criterio $M$ es suficiente, pero no necesario
-Existe una serie que converge **absolutamente de manera uniforme** sobre un dominio real $E$, pero para la cual **no existe** ninguna sucesión $M_n\ge0$ con $|f_n(x)|\le M_n$ para todo $n,x$ y con $\sum M_n$ convergente.
+Existe una serie que converge absolutamente de manera uniforme sobre un dominio real $E$, pero para la cual no existe ninguna sucesión $M_n\ge0$ con $|f_n(x)|\le M_n$ para todo $n,x$ y con $\sum M_n$ convergente.
 
 **Demostración.**
 Sea $\nu_{\mathbb R}:\mathbb N\to\mathbb R$ la aplicación de numerales reales, inyectiva por Proposición §4.1.6 — Aritmética y orden de los numerales naturales, y definamos mediante Separación
@@ -157,7 +157,7 @@ f_k(x):=\begin{cases}
 \tag{23.7.11}
 $$
 
-Los denominadores son estrictamente positivos. Esta fórmula define un único valor para cada $k,x$ y los grafos de $f_k$ y de $k\mapsto f_k$ existen por Separación en $E\times\mathbb R$ y $\mathbb N\times\mathbb R^E$. Cada $f_k$ es no negativa, por lo que su serie de magnitudes coincide con ella. La inyectividad de $\nu_{\mathbb R}$ asegura que, para cualquier $x\in E$, **a lo sumo uno** de los términos $f_k(x)$ es distinto de cero.
+Los denominadores son estrictamente positivos. Esta fórmula define un único valor para cada $k,x$ y los grafos de $f_k$ y de $k\mapsto f_k$ existen por Separación en $E\times\mathbb R$ y $\mathbb N\times\mathbb R^E$. Cada $f_k$ es no negativa, por lo que su serie de magnitudes coincide con ella. La inyectividad de $\nu_{\mathbb R}$ asegura que, para cualquier $x\in E$, a lo sumo uno de los términos $f_k(x)$ es distinto de cero.
 
 Fijemos $n<m$. El bloque de magnitudes $T_m(x)-T_n(x)$ es, por tanto, cero o igual a $1/\nu_{\mathbb R}(k+1)$ para un único $k$ con $n+1\le k\le m$. Por monotonía de los numerales y del recíproco positivo,
 
@@ -170,13 +170,13 @@ $$
 
 La sucesión de recíprocos tiende a cero por Lema §13.10.2 — Los recíprocos de los numerales positivos tienden a cero. Dado $\varepsilon>0$, obtenemos un $N$ para el que $1/\nu_{\mathbb R}(n+2)<\varepsilon$ para todo $n\ge N$. La cota (23.7.12) verifica el criterio uniforme Teorema §23.6.4 — Criterio uniforme de Cauchy para series de funciones para la serie de magnitudes: converge absolutamente de manera uniforme.
 
-Ahora supongamos que una sucesión mayorante $M$ como la del criterio $M$ existiese. Al evaluar en el punto **explícito** $x=\nu_{\mathbb R}(k)$ tendríamos
+Ahora supongamos que una sucesión mayorante $M$ como la del criterio $M$ existiese. Al evaluar en el punto explícito $x=\nu_{\mathbb R}(k)$ tendríamos
 
 $$
 M_k\ge |f_k(\nu_{\mathbb R}(k))|
 =\frac1{\nu_{\mathbb R}(k+1)}.
 $$
 
-El criterio de comparación directa Teorema §14.5.2 — Criterio de comparación directa implicaría que la convergencia de $\sum M_k$ fuerza la convergencia de la serie armónica $\sum1/\nu_{\mathbb R}(k+1)$; esto contradice Proposición §14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica. Por lo tanto, **el criterio $M$ no es una caracterización de la convergencia absoluta uniforme**, aunque siempre la garantiza cuando sus hipótesis se cumplen. $\square$
+El criterio de comparación directa Teorema §14.5.2 — Criterio de comparación directa implicaría que la convergencia de $\sum M_k$ fuerza la convergencia de la serie armónica $\sum1/\nu_{\mathbb R}(k+1)$; esto contradice Proposición §14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica. Por lo tanto, el criterio $M$ no es una caracterización de la convergencia absoluta uniforme, aunque siempre la garantiza cuando sus hipótesis se cumplen. $\square$
 
-**Transición.** La teoría precedente parte de una sucesión arbitraria de funciones y separa rigurosamente la convergencia de sus sumas parciales de la convergencia de los términos. El Capítulo 24 estudiará la familia especial de las **series de potencias**: habrá que determinar dónde convergen, introducir y justificar su radio de convergencia y demostrar, con las hipótesis apropiadas, las operaciones de continuidad, derivación e integración de sus funciones suma. El criterio $M$ y la diferenciación bajo convergencia uniforme de derivadas estarán disponibles como herramientas, pero no convertirán esas conclusiones en axiomas ni autorizarán operaciones fuera de los conjuntos de convergencia probados.
+**Transición.** La teoría precedente parte de una sucesión arbitraria de funciones y separa rigurosamente la convergencia de sus sumas parciales de la convergencia de los términos. El Capítulo 24 estudiará la familia especial de las series de potencias: habrá que determinar dónde convergen, introducir y justificar su radio de convergencia y demostrar, con las hipótesis apropiadas, las operaciones de continuidad, derivación e integración de sus funciones suma. El criterio $M$ y la diferenciación bajo convergencia uniforme de derivadas estarán disponibles como herramientas, pero no convertirán esas conclusiones en axiomas ni autorizarán operaciones fuera de los conjuntos de convergencia probados.

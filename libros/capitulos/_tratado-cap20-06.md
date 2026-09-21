@@ -5,14 +5,14 @@ Hasta ahora hemos empleado el signo de la derivada para comparar *el orden* de l
 En §17.6 se demostró ya que una desigualdad de tipo Lipschitz implica continuidad uniforme (Proposición §17.6.3 — Una cota de tipo Lipschitz proporciona un radio uniforme), sin atribuirla entonces a una derivada. Fijaremos aquí la terminología para esa desigualdad, obtendremos su origen diferencial y delimitaremos con precisión la afirmación recíproca.
 
 ### Definición 20.6.1 — Condición Lipschitz relativa al dominio
-Sean $D\subseteq\mathbb R$, $f:D\to\mathbb R$ y un número real $L\ge0$. Diremos que **$f$ satisface la condición Lipschitz con constante $L$ en $D$** si
+Sean $D\subseteq\mathbb R$, $f:D\to\mathbb R$ y un número real $L\ge0$. Diremos que $f$ satisface la condición Lipschitz con constante $L$ en $D$ si
 
 $$
 \boxed{\forall x,y\in D:\quad |f(x)-f(y)|\le L|x-y|.}
 \tag{20.6.1}
 $$
 
-Diremos que $f$ **es Lipschitz en $D$** si *existe* al menos una constante real $L\ge0$ que satisface (20.6.1). No se asigna una constante privilegiada ni se define por ahora una «mejor constante» mediante un supremo. La condición tiene sentido para cualquier dominio, incluso vacío; con $L=0$ fuerza igualdad de los valores de $f$ para cada par de argumentos y, por ello, constancia sobre $D$ (vacuamente si éste es vacío).
+Diremos que $f$ es Lipschitz en $D$ si *existe* al menos una constante real $L\ge0$ que satisface (20.6.1). No se asigna una constante privilegiada ni se define por ahora una «mejor constante» mediante un supremo. La condición tiene sentido para cualquier dominio, incluso vacío; con $L=0$ fuerza igualdad de los valores de $f$ para cada par de argumentos y, por ello, constancia sobre $D$ (vacuamente si éste es vacío).
 
 La expresión «Lipschitz con constante $L$» sigue designando una propiedad de la función ya tipada, no un operador nuevo ni una función derivada global $f'$.
 
@@ -31,7 +31,7 @@ $$
 $$
 
 **Demostración.**
-Fijemos un par arbitrario $u<v$ del intervalo. Por ser $[a,b]$ un intervalo cerrado, $[u,v]\subseteq[a,b]$ y $(u,v)\subseteq(a,b)$. En consecuencia, las hipótesis de continuidad y derivabilidad del corolario Corolario §20.3.3 — Valor medio en un subintervalo del dominio original se verifican para ese subintervalo **sin cambiar el dominio de la derivada**: existe $c\in(u,v)$ tal que
+Fijemos un par arbitrario $u<v$ del intervalo. Por ser $[a,b]$ un intervalo cerrado, $[u,v]\subseteq[a,b]$ y $(u,v)\subseteq(a,b)$. En consecuencia, las hipótesis de continuidad y derivabilidad del corolario Corolario §20.3.3 — Valor medio en un subintervalo del dominio original se verifican para ese subintervalo sin cambiar el dominio de la derivada: existe $c\in(u,v)$ tal que
 
 $$
 f(v)-f(u)=f'(c)(v-u).
@@ -46,7 +46,7 @@ m\le\frac{f(v)-f(u)}{v-u}\le M.
 \tag{20.6.3}
 $$
 
-Se trata de una conclusión sobre **todas** las parejas de argumentos, aunque el punto intermedio suministrado por Lagrange puede cambiar de una pareja a otra.
+Se trata de una conclusión sobre todas las parejas de argumentos, aunque el punto intermedio suministrado por Lagrange puede cambiar de una pareja a otra.
 
 ### Teorema 20.6.3 — Una derivada uniformemente acotada implica la condición Lipschitz
 Sean $a<b$, $I:=[a,b]$ y $f:I\to\mathbb R$ continua en todo $I$ y derivable en cada punto de $(a,b)$, relativamente a $I$. Si existe un número real $L\ge0$ tal que
@@ -56,14 +56,14 @@ $$
 \tag{20.6.4}
 $$
 
-entonces $f$ es Lipschitz **con esa misma constante $L$** sobre todo $I$:
+entonces $f$ es Lipschitz con esa misma constante $L$ sobre todo $I$:
 
 $$
 \boxed{\forall u,v\in I:\quad |f(v)-f(u)|\le L|v-u|.}
 \tag{20.6.5}
 $$
 
-No se exige que $f'$ exista en los extremos, sea continua o alcance un máximo. «Uniformemente acotada» significa aquí que **un mismo número real finito** $L$ acota los valores absolutos de todas las derivadas interiores.
+No se exige que $f'$ exista en los extremos, sea continua o alcance un máximo. «Uniformemente acotada» significa aquí que un mismo número real finito $L$ acota los valores absolutos de todas las derivadas interiores.
 
 **Demostración.**
 La condición $|f'(c)|\le L$ equivale, por la definición de valor absoluto y las reglas de orden real, a $-L\le f'(c)\le L$. Aplicamos Lema §20.6.2 — Dos cotas de la derivada encierran todos los incrementos con los valores determinados $m:=-L$ y $M:=L$. Para $u<v$ en $I$ resulta
@@ -99,7 +99,7 @@ $$
 \tag{20.6.7}
 $$
 
-Por consiguiente, **bajo las hipótesis de continuidad en $[a,b]$ y derivabilidad en $(a,b)$** del teorema anterior, para cualquier $L\ge0$ se tiene la equivalencia
+Por consiguiente, bajo las hipótesis de continuidad en $[a,b]$ y derivabilidad en $(a,b)$ del teorema anterior, para cualquier $L\ge0$ se tiene la equivalencia
 
 $$
 \boxed{\bigl[f\text{ es Lipschitz con constante }L\text{ en }[a,b]\bigr]
@@ -116,7 +116,7 @@ $$
 |q_{f,c}(x)|=\frac{|f(x)-f(c)|}{|x-c|}\le L,
 $$
 
-pues $|x-c|>0$. Supongamos que $|d|>L$ y fijemos $\varepsilon:=(|d|-L)/2>0$. Del límite existe $\delta>0$ tal que, si $x\in D$ y $0<|x-c|<\delta$, entonces $|q_{f,c}(x)-d|<\varepsilon$. Como $c\in\operatorname{Acc}(D)$, el criterio Lema §16.1.1 — Acumulación y aproximación perforada proporciona **un solo** punto $x$ con esas condiciones. Por desigualdad triangular y por la cota de los cocientes,
+pues $|x-c|>0$. Supongamos que $|d|>L$ y fijemos $\varepsilon:=(|d|-L)/2>0$. Del límite existe $\delta>0$ tal que, si $x\in D$ y $0<|x-c|<\delta$, entonces $|q_{f,c}(x)-d|<\varepsilon$. Como $c\in\operatorname{Acc}(D)$, el criterio Lema §16.1.1 — Acumulación y aproximación perforada proporciona un solo punto $x$ con esas condiciones. Por desigualdad triangular y por la cota de los cocientes,
 
 $$
 |d|\le|d-q_{f,c}(x)|+|q_{f,c}(x)|<\varepsilon+L<|d|,
@@ -128,4 +128,4 @@ Para (20.6.8), la implicación de izquierda a derecha es la recién probada apli
 
 Para comprobar la limitación final, reutilicemos $v:[0,1]\to\mathbb R$ de Proposición §20.2.4 — Las tres hipótesis de Rolle no son prescindibles, dada por $v(x)=|x-\tfrac12|$. Por la desigualdad triangular inversa Corolario §4.2.4 — Desigualdad triangular inversa, para todos $x,y\in[0,1]$ se tiene $|v(x)-v(y)|\le|x-y|$, de modo que $v$ es Lipschitz con constante $1$. Sin embargo, la misma proposición previa demuestra que las pendientes izquierda y derecha en $1/2$ son $-1$ y $1$, respectivamente, y por ello $v'(1/2)$ no existe. En este ejemplo, la condición Lipschitz sí implica continuidad uniforme por Proposición §17.6.3 — Una cota de tipo Lipschitz proporciona un radio uniforme, pero no derivabilidad. $\square$
 
-**Transición.** Una cota sobre una derivada existente controla todos los incrementos entre puntos del intervalo y proporciona continuidad uniforme mediante infraestructura anterior. Lo inverso sólo acota las derivadas **allí donde existen**. En §20.7 estudiaremos una propiedad distinta: aunque la derivada no necesite ser continua, satisface la propiedad de los valores intermedios de Darboux. §20.6 queda estabilizada como unidad humana; el Capítulo 20 permanece abierto y no se inicia un checkpoint Lean nuevo.
+**Transición.** Una cota sobre una derivada existente controla todos los incrementos entre puntos del intervalo y proporciona continuidad uniforme mediante infraestructura anterior. Lo inverso sólo acota las derivadas allí donde existen. En §20.7 estudiaremos una propiedad distinta: aunque la derivada no necesite ser continua, satisface la propiedad de los valores intermedios de Darboux. §20.6 queda estabilizada como unidad humana; el Capítulo 20 permanece abierto y no se inicia un checkpoint Lean nuevo.
