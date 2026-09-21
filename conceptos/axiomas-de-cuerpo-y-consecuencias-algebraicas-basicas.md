@@ -524,6 +524,14 @@ $$
 
 Ésta es la razón estructural por la que no existe división por cero en un cuerpo.
 
+::: {.ma-block .ma-observacion}
+**Auditoría de dependencias y alcance**
+
+Esta contradicción utiliza dos hechos: $0c=0$, demostrado en §6, y el axioma $0\neq1$. No necesita cancelación multiplicativa ni presupone una operación de división.
+
+La afirmación «$0$ no tiene inverso multiplicativo» significa precisamente que **no existe** $c\in F$ tal que $0c=1$. Aunque una formalización asigne convencionalmente un valor a la expresión $0^{-1}$ para definir la operación de inverso en todo el cuerpo, ese valor no satisface $0\cdot0^{-1}=1$ y, por tanto, no es un inverso multiplicativo de cero.
+:::
+
 ## 8. Reglas de signos como consecuencias
 
 ### 8.1. Multiplicar por $-1$
