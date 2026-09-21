@@ -49,7 +49,7 @@ theorem sqrtTwoName_error (n : ℕ) :
     unfold sqrtPrecision
     positivity
   have hlow : (sqrtTwoName n : ℝ) ≤ Real.sqrt 2 := by
-    simpa only [sqrtTwoName] using Nat.ratSqrt_le_realSqrt 2 hp
+    simpa [sqrtTwoName] using Nat.ratSqrt_le_realSqrt 2 hp
   have hhigh : Real.sqrt 2 < (sqrtTwoName n : ℝ) + 1 / (2 : ℝ) ^ (n + 2) := by
     simpa [sqrtTwoName, sqrtPrecision, Nat.cast_pow] using
       Nat.realSqrt_lt_ratSqrt_add_inv_prec 2 hp
@@ -61,7 +61,11 @@ def negSqrtTwoName (n : ℕ) : ℚ := -sqrtTwoName n
 
 theorem negSqrtTwoName_error (n : ℕ) :
     |(negSqrtTwoName n : ℝ) - (-Real.sqrt 2)| < 1 / (2 : ℝ) ^ (n + 2) := by
-  simpa only [negSqrtTwoName, Rat.cast_neg, neg_sub, abs_neg] using
-    sqrtTwoName_error n
+  have heq : (negSqrtTwoName n : ℝ) - (-Real.sqrt 2) =
+      -((sqrtTwoName n : ℝ) - Real.sqrt 2) := by
+    simp only [negSqrtTwoName, Rat.cast_neg]
+    ring
+  rw [heq, abs_neg]
+  exact sqrtTwoName_error n
 
 end Continuo.Indices
