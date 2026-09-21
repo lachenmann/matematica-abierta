@@ -53,7 +53,7 @@ theorem firstHit_stable {c : Code} {N t : ℕ}
   intro d
   induction d with
   | zero => exact h
-  | succ d ih => simpa [Nat.add_succ, firstHit, ih]
+  | succ d ih => simp [Nat.add_succ, firstHit, ih]
 
 /-- Caracterización exacta de la primera etapa observada. -/
 theorem firstHit_iff_minimal (c : Code) (N t : ℕ) :
