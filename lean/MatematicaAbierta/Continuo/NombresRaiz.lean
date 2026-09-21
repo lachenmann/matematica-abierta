@@ -150,6 +150,7 @@ theorem primrec_shiftedPacked : Primrec₂ shiftedPacked := by
 def shiftedPackedNatural (z : ℕ) : ℕ :=
   shiftedPacked (ofNat Code z.unpair.1) z.unpair.2
 
+set_option maxHeartbeats 1000000 in
 theorem primrec_shiftedPackedNatural : Primrec shiftedPackedNatural := by
   have hp : Primrec (fun z : ℕ =>
       (ofNat Code z.unpair.1, z.unpair.2)) :=
