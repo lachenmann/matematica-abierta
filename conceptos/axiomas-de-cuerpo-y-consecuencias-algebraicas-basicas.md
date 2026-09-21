@@ -376,7 +376,7 @@ ab=1
 ac=1.
 $$
 
-Entonces
+La hipótesis $a\neq0$ garantiza la existencia de un inverso por el axioma. Para demostrar su **unicidad** no necesitamos la cancelación multiplicativa: basta comparar dos candidatos. Por asociatividad del producto y conmutatividad ($ba=ab=1$), obtenemos
 
 $$
 \begin{aligned}
@@ -689,6 +689,8 @@ a+c=b+c
 a=b.
 }
 $$
+
+La demostración usa únicamente las leyes de la suma y los inversos aditivos: no requiere multiplicación, distributividad, división ni orden. El paso de $(a+c)+(-c)$ a $a+(c+(-c))$ se justifica por asociatividad; luego se aplican el inverso aditivo y el neutro.
 
 ::: {.ma-block .ma-metodo}
 **Método — cancelar no es borrar símbolos**
