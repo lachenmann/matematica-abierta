@@ -37,21 +37,19 @@ theorem primrec_advance : Primrec₂ advance := by
     intro p
     cases (run p.1 p.2.1).isSome <;> simp
   exact (Primrec.option_casesOn (Primrec.snd.comp Primrec.snd)
-    hb (Primrec.option_some.comp Primrec.snd).to₂).of_eq fun p => by
-      cases p.2.2 <;> simp [advance]
+    hb (Primrec.option_some.comp Primrec.snd).to₂).of_eq fun ⟨c, k, old⟩ => by
+      cases old <;> rfl
 
 /-- El primer éxito es primitivo recursivo, no solo una definición total de Lean. -/
 theorem primrec_firstHit : Primrec₂ firstHit := by
-  have h : Primrec₂ (fun (c : Code) (N : ℕ) =>
-      Nat.rec (none : Option ℕ) (fun k old => advance c (k, old)) N) :=
-    Primrec.nat_rec (Primrec.const none) primrec_advance
-  refine h.of_eq ?_
+  refine (Primrec.nat_rec (f := fun (_ : Code) => (none : Option ℕ))
+    (g := advance) (Primrec.const none) primrec_advance).of_eq ?_
   intro c N
   induction N with
   | zero => rfl
   | succ N ih =>
-    change advance c (N, Nat.rec (none : Option ℕ)
-      (fun k old => advance c (k, old)) N) = firstHit c (N + 1)
+    change advance c (N, Nat.rec (motive := fun _ => Option ℕ)
+      none (fun k old => advance c (k, old)) N) = firstHit c (N + 1)
     rw [ih]
     cases hp : firstHit c N <;> simp [advance, firstHit, hp]
 
@@ -80,7 +78,8 @@ theorem primrec_rationalPair : Primrec₂ rationalPair := by
       ((1, 2 ^ (t + 2)) : ℕ × ℕ)) :=
     ((Primrec.const (1 : ℕ)).pair (hpow.comp Primrec.snd)).to₂
   exact (Primrec.option_casesOn primrec_firstHit (Primrec.const (0, 1))
-    hsome).of_eq fun p => by cases firstHit p.1 p.2 <;> rfl
+    hsome).of_eq fun ⟨c, N⟩ => by
+      cases h : firstHit c N <;> simp [rationalPair, h]
 
 /-- Codificación de salida mediante el emparejamiento aritmético de naturales. -/
 def packedApprox (c : Code) (N : ℕ) : ℕ :=
@@ -102,7 +101,8 @@ theorem primrec_packedNatural : Primrec packedNatural := by
       (ofNat Code z.unpair.1, z.unpair.2)) :=
     ((Primrec.ofNat Code).comp (Primrec.fst.comp Primrec.unpair)).pair
       (Primrec.snd.comp Primrec.unpair)
-  exact primrec_packedApprox.comp hp
+  exact (show Primrec (fun p : Code × ℕ => packedApprox p.1 p.2)
+    from primrec_packedApprox).comp hp
 
 /-- Existe un código universal concreto, cuya evaluación siempre devuelve la salida correcta. -/
 theorem exists_packed_program :
