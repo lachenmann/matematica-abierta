@@ -24,7 +24,6 @@ theorem arithmeticStage_true_sound (u v d plus minus s t : ℕ)
     split_ifs at h with hleft hright
     · exact hleft
     · cases h
-    · cases h
   have hdq : (d : ℚ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hd)
   have hsq : (s : ℚ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hs)
   have htq : (t : ℚ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt ht)
@@ -44,7 +43,11 @@ theorem arithmeticStage_true_sound (u v d plus minus s t : ℕ)
         ((d : ℚ) * (s : ℚ) * (t : ℚ)) < 0 := by
     rw [hscaled]
     exact sub_neg.mpr (by exact_mod_cast hn)
-  have hsub := (mul_lt_mul_iff_of_pos_right hprod).mp (by simpa using hmul)
+  have hsub :
+      ((((u : ℚ) - (v : ℚ)) / (d : ℚ)) -
+         (((plus : ℚ) - (minus : ℚ)) / (s : ℚ) - 1 / (t : ℚ))) < 0 := by
+    rw [← mul_lt_mul_iff_of_pos_right hprod]
+    simpa using hmul
   exact sub_neg.mp hsub
 
 /-- El certificado negativo implica exactamente la desigualdad superior. -/
@@ -59,7 +62,6 @@ theorem arithmeticStage_false_sound (u v d plus minus s t : ℕ)
     split_ifs at h with hleft hright
     · cases h
     · exact hright
-    · cases h
   have hdq : (d : ℚ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hd)
   have hsq : (s : ℚ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt hs)
   have htq : (t : ℚ) ≠ 0 := by exact_mod_cast (Nat.ne_of_gt ht)
@@ -79,7 +81,11 @@ theorem arithmeticStage_false_sound (u v d plus minus s t : ℕ)
         ((d : ℚ) * (s : ℚ) * (t : ℚ)) < 0 := by
     rw [hscaled]
     exact sub_neg.mpr (by exact_mod_cast hn)
-  have hsub := (mul_lt_mul_iff_of_pos_right hprod).mp (by simpa using hmul)
+  have hsub :
+      ((((plus : ℚ) - (minus : ℚ)) / (s : ℚ) + 1 / (t : ℚ)) -
+         (((u : ℚ) - (v : ℚ)) / (d : ℚ))) < 0 := by
+    rw [← mul_lt_mul_iff_of_pos_right hprod]
+    simpa using hmul
   exact sub_neg.mp hsub
 
 end Continuo.Indices
