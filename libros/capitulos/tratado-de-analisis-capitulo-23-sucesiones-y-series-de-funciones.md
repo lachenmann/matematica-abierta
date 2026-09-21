@@ -27,7 +27,7 @@ license: GFDL-1.3-or-later
 
 # Capítulo 23 — Sucesiones y series de funciones
 
-[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md)
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-24-series-de-potencias.md)
 
 *Parte II — Núcleo del análisis real*
 
