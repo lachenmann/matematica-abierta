@@ -165,7 +165,7 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 6. [**Capítulo 5 — Cortaduras de Dedekind**](../capitulos/tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md) (`MA-BCH-0051`) — Construye las cortaduras como subconjuntos de $\mathbb Q$, caracteriza sus propiedades, ordena el nuevo sistema por inclusión e incorpora canónicamente los racionales en el futuro cuerpo de los reales.
 
-7. [**Capítulo 6 — Aritmética de las cortaduras**](../capitulos/tratado-de-analisis-capitulo-6-aritmetica-de-las-cortaduras.md) (`MA-BCH-0052`) — Define la suma, el cero y las operaciones fundamentales sobre cortaduras; verifica su buena definición y compatibilidad con el orden, y avanza desde la estructura ordenada hacia la estructura algebraica real.
+7. [**Capítulo 6 — Aritmética de las cortaduras**](../capitulos/tratado-de-analisis-capitulo-6-aritmetica-de-las-cortaduras.md) (`MA-BCH-0052`) — Define la suma, el cero y las operaciones fundamentales sobre cortaduras; verifica su buena definición y compatibilidad con el orden, avanzando desde la estructura ordenada hacia la estructura algebraica real.
 
 8. [**Capítulo 7 — Completitud de los reales de Dedekind**](../capitulos/tratado-de-analisis-capitulo-7-completitud-de-los-reales-de-dedekind.md) (`MA-BCH-0053`) — Construye el supremo de todo conjunto no vacío y acotado de cortaduras, demuestra la completitud del modelo de Dedekind y cierra la primera construcción rigurosa del cuerpo de los reales.
 
@@ -195,11 +195,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 20. [**Capítulo 19 — Diferenciación**](../capitulos/tratado-de-analisis-capitulo-19-diferenciacion.md) (`MA-BCH-0070`) — Introduce la derivada como límite y desarrolla sus reglas algebraicas, la regla de la cadena, derivadas laterales y aproximación lineal, manteniendo explícitos dominios, puntos de acumulación e hipótesis.
 
-21. [**Capítulo 20 — Teoremas fundamentales del cálculo diferencial**](../capitulos/tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md) (`MA-BCH-0071`) — Estudia extremos locales y demuestra los teoremas de Rolle y del valor medio; deriva consecuencias sobre monotonía, convexidad, constancia y la regla de L’Hôpital.
+21. [**Capítulo 20 — Teoremas fundamentales del cálculo diferencial**](../capitulos/tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md) (`MA-BCH-0071`) — Estudia los extremos locales y demuestra los teoremas de Rolle y del valor medio; deriva consecuencias sobre monotonía, convexidad, constancia y la regla de L’Hôpital.
 
-22. [**Capítulo 21 — Integral de Riemann**](../capitulos/tratado-de-analisis-capitulo-21-integral-de-riemann.md) (`MA-BCH-0072`) — Construye la integral mediante particiones y sumas de Darboux; caracteriza la integrabilidad de Riemann y demuestra linealidad, monotonía, aditividad y estimaciones fundamentales.
+22. [**Capítulo 21 — Integral de Riemann**](../capitulos/tratado-de-analisis-capitulo-21-integral-de-riemann.md) (`MA-BCH-0072`) — Construye la integral mediante particiones, refinamientos y sumas de Darboux; caracteriza la integrabilidad de Riemann y demuestra sus propiedades de linealidad, monotonía, aditividad y estimación.
 
-23. [**Capítulo 22 — Teorema fundamental del cálculo**](../capitulos/tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md) (`MA-BCH-0073`) — Relaciona integración y diferenciación mediante funciones de acumulación; demuestra el teorema fundamental del cálculo, la fórmula de Newton–Leibniz y el cambio de variable.
+23. [**Capítulo 22 — Teorema fundamental del cálculo**](../capitulos/tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md) (`MA-BCH-0073`) — Relaciona integración y diferenciación mediante funciones de acumulación; demuestra las dos formas del teorema fundamental del cálculo, la fórmula de Newton–Leibniz y el cambio de variable.
 
 24. [**Capítulo 23 — Sucesiones y series de funciones**](../capitulos/tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md) (`MA-BCH-0074`) — Distingue convergencia puntual y uniforme; estudia continuidad, integración y diferenciación de límites, y desarrolla series de funciones, el criterio uniforme de Cauchy y el criterio de Weierstrass.
 
