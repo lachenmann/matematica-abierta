@@ -58,6 +58,14 @@ theorem cero_absorbe_producto (a : F) : (0 : F) * a = 0 := by
       _ = 0 * a + 0 := (add_zero _).symm
   exact add_left_cancel h
 
+/-- MA-CON-0020, §7: ningún elemento puede ser inverso multiplicativo de cero.
+Se usa la absorción de §6 y `0 ≠ 1`, sin cancelación ni división. -/
+theorem cero_no_tiene_inverso_multiplicativo (c : F) : (0 : F) * c ≠ 1 := by
+  intro hc
+  have h0 : (0 : F) * c = 0 := cero_absorbe_producto c
+  have h01 : (0 : F) = 1 := h0.symm.trans hc
+  exact (zero_ne_one : (0 : F) ≠ 1) h01
+
 /-- MA-CON-0020, §10: cancelación multiplicativa (el factor debe ser no nulo). -/
 theorem cancelacion_multiplicativa (a b c : F) (hc : c ≠ 0)
     (h : a * c = b * c) : a = b := by
