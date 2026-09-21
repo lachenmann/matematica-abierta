@@ -14,6 +14,7 @@ import MatematicaAbierta.Continuo.SimulacionAcotada
 import MatematicaAbierta.Continuo.PrimerExito
 import MatematicaAbierta.Continuo.ComputabilidadAproximante
 import MatematicaAbierta.Continuo.NombresRaiz
+import MatematicaAbierta.Continuo.DecididoresCortes
 
 /-!
 # Matemática Abierta: biblioteca formal
