@@ -132,4 +132,9 @@ theorem packedApprox_correct (c : Code) (N : ℕ) :
     pairValue (Nat.unpair (packedApprox c N)) = approximant c N := by
   simpa [packedApprox] using rationalPair_correct c N
 
+/-- La positividad del valor semántico equivale al dominio de la evaluación. -/
+theorem delta_pos_iff_dom (c : Code) :
+    0 < delta c ↔ (Nat.Partrec.Code.eval c fixedInput).Dom := by
+  simpa only [Part.dom_iff_mem] using delta_pos_iff_halts c
+
 end Continuo.Indices
