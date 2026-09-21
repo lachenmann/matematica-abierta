@@ -80,7 +80,7 @@ theorem tf_thm_00005 (m : R ⟶ A ⨯ B) [Mono m] :
           simp [f]
         _ = m ≫ prod.snd := by simp
 
-/-- La recuperacion usa una instancia explícita de `IsIso` únicamente para
+/-- La recuperación usa una instancia explícita de `IsIso` únicamente para
 que `inv` sea una expresión bien tipada. El teorema principal demuestra que
 dicha instancia se obtiene de la condición gráfica, sin hipótesis axiomáticas. -/
 theorem tf_thm_00005_recover (m : R ⟶ A ⨯ B) [Mono m]
@@ -100,11 +100,15 @@ theorem tf_thm_00005_recover (m : R ⟶ A ⨯ B) [Mono m]
       i.hom ≫ f = (i.hom ≫ graphStructural f) ≫ prod.snd := by
         simp [Category.assoc]
       _ = m ≫ prod.snd := by rw [wi]
+  have hInv : inv (m ≫ prod.fst) = i.inv := by
+    apply IsIso.inv_eq_of_hom_inv_id
+    rw [← hp]
+    exact i.hom_inv_id
   symm
-  rw [← hp, ← hq]
   calc
-    inv i.hom ≫ (i.hom ≫ f) = (inv i.hom ≫ i.hom) ≫ f :=
-      (Category.assoc _ _ _).symm
+    inv (m ≫ prod.fst) ≫ (m ≫ prod.snd) = i.inv ≫ (i.hom ≫ f) := by
+      rw [hInv, ← hq]
+    _ = (i.inv ≫ i.hom) ≫ f := (Category.assoc _ _ _).symm
     _ = f := by simp
 
 /-- La función representada es única para el producto A ⨯ B fijado. -/
