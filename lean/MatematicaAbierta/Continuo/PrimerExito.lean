@@ -21,11 +21,11 @@ theorem firstHit_none_iff (c : Code) (N : ℕ) :
     · intro h k hk
       have hp : firstHit c N = none := by
         cases hp : firstHit c N with
-        | none => exact hp
+        | none => rfl
         | some t => simp [firstHit, hp] at h
       have hr : run c N = none := by
         cases hr : run c N with
-        | none => exact hr
+        | none => rfl
         | some x => simp [firstHit, hp, hr] at h
       rcases Nat.lt_succ_iff_lt_or_eq.mp hk with hlt | heq
       · exact (ih.mp hp) k hlt
@@ -52,7 +52,7 @@ theorem firstHit_stable {c : Code} {N t : ℕ}
     ∀ d : ℕ, firstHit c (N + d) = some t := by
   intro d
   induction d with
-  | zero => simpa using h
+  | zero => exact h
   | succ d ih => simpa [Nat.add_succ, firstHit, ih]
 
 /-- Caracterización exacta de la primera etapa observada. -/
@@ -68,7 +68,7 @@ theorem firstHit_iff_minimal (c : Code) (N t : ℕ) :
       | some j =>
         have hj : j = t := by simpa [firstHit, hp] using h
         subst t
-        obtain ⟨hlt, hrun, hmin⟩ := ih hp
+        obtain ⟨hlt, hrun, hmin⟩ := ih j hp
         exact ⟨Nat.lt_succ_of_lt hlt, hrun, hmin⟩
       | none =>
         cases hr : run c N with
@@ -110,7 +110,7 @@ theorem halts_iff_exists_hit (c : Code) :
     refine ⟨t, ?_⟩
     cases hr : run c t with
     | none => simp [hr] at hx
-    | some y => simp [hr]
+    | some y => simp
   · rintro ⟨t, ht⟩
     cases hr : run c t with
     | none => exact (ht hr).elim
@@ -164,6 +164,7 @@ theorem approximant_error (c : Code) (N : ℕ) :
 /-- La misma cota transferida a los reales externos de Mathlib. -/
 theorem approximant_error_real (c : Code) (N : ℕ) :
     |(approximant c N : ℝ) - deltaReal c| ≤ (dyadic N : ℝ) := by
+  change |(approximant c N : ℝ) - (delta c : ℝ)| ≤ (dyadic N : ℝ)
   exact_mod_cast approximant_error c N
 
 end Continuo.Indices
