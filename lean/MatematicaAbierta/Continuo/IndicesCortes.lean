@@ -13,8 +13,7 @@ namespace Continuo.Indices
 
 open Denumerable
 
-/-- Codificación sobreyectiva prevista: `((u,v),d)` representa `(u-v)/(d+1)`.
-No se presupone que la enumeración de `ℚ` elegida por una instancia sea PR. -/
+/-- `((u,v),d)` representa `(u-v)/(d+1)`. -/
 def codedQuery (z : ℕ) : ℚ :=
   ((z.unpair.1.unpair.1 : ℚ) - (z.unpair.1.unpair.2 : ℚ)) /
     ((z.unpair.2 + 1 : ℕ) : ℚ)
@@ -39,9 +38,8 @@ theorem primrec_queryNegative : Primrec queryNegative := by
 theorem primrec_queryDenominator : Primrec queryDenominator := by
   exact (Primrec.succ.comp (Primrec.snd.comp Primrec.unpair)).of_eq fun _ => rfl
 
-/-- Comparador universal de fracciones con numeradores firmados por diferencia.
-La aproximación es `(plus-minus)/s` y el radio es `1/t`.
-`d`, `s`, `t` deben ser positivos para interpretar los certificados. -/
+/-- Comparador de fracciones con numeradores representados como diferencias.
+La aproximación es `(plus-minus)/s` y el radio es `1/t`. -/
 def arithmeticStage (u v d plus minus s t : ℕ) : Option Bool :=
   if u * s * t + minus * d * t + s * d < v * s * t + plus * d * t then
     some true
@@ -87,20 +85,19 @@ theorem primrec_arithmeticStage {α : Type*} [Primcodable α]
       (Primrec.const none))).of_eq fun a => by
         simp only [arithmeticStage]
 
-/-- Tipo de entrada de una etapa: `((programa,consulta),precisión)`. -/
+/-- Entrada: `((programa,consulta),precisión)`. -/
 def shiftedNumericStage (w : (Code × ℕ) × ℕ) : Option Bool :=
   arithmeticStage (queryPositive w.1.2) (queryNegative w.1.2)
     (queryDenominator w.1.2) (shiftedPair w.1.1 w.2).1 0
     (shiftedPair w.1.1 w.2).2 (2 ^ w.2)
 
-/-- En el extremo negativo, `-sqrtTwoName` se expresa con numerador
-positivo cero y numerador negativo igual al del nombre de raíz. -/
+/-- En el extremo negativo el numerador positivo es cero. -/
 def negativeNumericStage (w : ℕ × ℕ) : Option Bool :=
   arithmeticStage (queryPositive w.1) (queryNegative w.1)
     (queryDenominator w.1) 0 (sqrtTwoPair w.2).1
     (sqrtTwoPair w.2).2 (2 ^ (w.2 + 2))
 
-set_option maxHeartbeats 1000000 in
+set_option maxHeartbeats 1500000 in
 theorem primrec_shiftedNumericStage : Primrec shiftedNumericStage := by
   have hc : Primrec (fun w : (Code × ℕ) × ℕ => w.1.1) :=
     Primrec.fst.comp Primrec.fst
@@ -111,7 +108,8 @@ theorem primrec_shiftedNumericStage : Primrec shiftedNumericStage := by
     primrec_shiftedPair.comp hc hn
   have hpow : Primrec (fun w : (Code × ℕ) × ℕ => 2 ^ w.2) :=
     (Primrec₂.unpaired'.1 Nat.Primrec.pow).comp (Primrec.const 2) hn
-  exact (primrec_arithmeticStage
+  unfold shiftedNumericStage
+  exact primrec_arithmeticStage
     (fun w => queryPositive w.1.2) (fun w => queryNegative w.1.2)
     (fun w => queryDenominator w.1.2)
     (fun w => (shiftedPair w.1.1 w.2).1) (fun _ => 0)
@@ -119,9 +117,9 @@ theorem primrec_shiftedNumericStage : Primrec shiftedNumericStage := by
     (primrec_queryPositive.comp hq) (primrec_queryNegative.comp hq)
     (primrec_queryDenominator.comp hq)
     (Primrec.fst.comp hname) (Primrec.const 0)
-    (Primrec.snd.comp hname) hpow).of_eq fun _ => rfl
+    (Primrec.snd.comp hname) hpow
 
-set_option maxHeartbeats 1000000 in
+set_option maxHeartbeats 1500000 in
 theorem primrec_negativeNumericStage : Primrec negativeNumericStage := by
   have hq : Primrec (fun w : ℕ × ℕ => w.1) := Primrec.fst
   have hn : Primrec (fun w : ℕ × ℕ => w.2) := Primrec.snd
@@ -131,13 +129,14 @@ theorem primrec_negativeNumericStage : Primrec negativeNumericStage := by
     Primrec.nat_add.comp hn (Primrec.const 2)
   have hpow : Primrec (fun w : ℕ × ℕ => 2 ^ (w.2 + 2)) :=
     (Primrec₂.unpaired'.1 Nat.Primrec.pow).comp (Primrec.const 2) hn2
-  exact (primrec_arithmeticStage
+  unfold negativeNumericStage
+  exact primrec_arithmeticStage
     (fun w => queryPositive w.1) (fun w => queryNegative w.1)
     (fun w => queryDenominator w.1) (fun _ => 0)
     (fun w => (sqrtTwoPair w.2).1)
     (fun w => (sqrtTwoPair w.2).2) (fun w => 2 ^ (w.2 + 2))
     (primrec_queryPositive.comp hq) (primrec_queryNegative.comp hq)
     (primrec_queryDenominator.comp hq) (Primrec.const 0)
-    (Primrec.fst.comp hname) (Primrec.snd.comp hname) hpow).of_eq fun _ => rfl
+    (Primrec.fst.comp hname) (Primrec.snd.comp hname) hpow
 
 end Continuo.Indices
