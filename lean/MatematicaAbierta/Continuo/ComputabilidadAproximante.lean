@@ -12,6 +12,8 @@ La semántica de `evaln` continúa siendo una cota de evaluación, no tiempo lit
 
 namespace Continuo.Indices
 
+open Denumerable
+
 /-- Paso de la búsqueda acotada, con el índice y el resultado anterior. -/
 def advance (c : Code) (p : ℕ × Option ℕ) : Option ℕ :=
   match p.2 with
@@ -33,24 +35,25 @@ theorem primrec_advance : Primrec₂ advance := by
       (Primrec.option_some.comp (Primrec.fst.comp Primrec.snd))
       (Primrec.const none)).of_eq ?_
     intro p
-    cases h : (run p.1 p.2.1).isSome <;> simp [h]
+    cases (run p.1 p.2.1).isSome <;> simp
   exact (Primrec.option_casesOn (Primrec.snd.comp Primrec.snd)
     hb (Primrec.option_some.comp Primrec.snd).to₂).of_eq fun p => by
-      cases p.2.2 <;> rfl
+      cases p.2.2 <;> simp [advance]
 
 /-- El primer éxito es primitivo recursivo, no solo una definición total de Lean. -/
 theorem primrec_firstHit : Primrec₂ firstHit := by
-  have h : Primrec₂ (fun c (N : ℕ) =>
-      N.rec (none : Option ℕ) (fun k old => advance c (k, old))) :=
+  have h : Primrec₂ (fun (c : Code) (N : ℕ) =>
+      Nat.rec (none : Option ℕ) (fun k old => advance c (k, old)) N) :=
     Primrec.nat_rec (Primrec.const none) primrec_advance
   refine h.of_eq ?_
   intro c N
   induction N with
   | zero => rfl
   | succ N ih =>
-    simp only [Nat.rec, firstHit]
+    change advance c (N, Nat.rec (none : Option ℕ)
+      (fun k old => advance c (k, old)) N) = firstHit c (N + 1)
     rw [ih]
-    rfl
+    cases hp : firstHit c N <;> simp [advance, firstHit, hp]
 
 /-- Certificado racional con numerador y denominador naturales explícitos. -/
 def rationalPair (c : Code) (N : ℕ) : ℕ × ℕ :=
@@ -74,7 +77,7 @@ theorem primrec_rationalPair : Primrec₂ rationalPair := by
     (Primrec₂.unpaired'.1 Nat.Primrec.pow).comp
       (Primrec.const 2) (Primrec.nat_add.comp Primrec.id (Primrec.const 2))
   have hsome : Primrec₂ (fun (_ : Code × ℕ) (t : ℕ) =>
-      (1, 2 ^ (t + 2)) : ℕ × ℕ) :=
+      ((1, 2 ^ (t + 2)) : ℕ × ℕ)) :=
     ((Primrec.const (1 : ℕ)).pair (hpow.comp Primrec.snd)).to₂
   exact (Primrec.option_casesOn primrec_firstHit (Primrec.const (0, 1))
     hsome).of_eq fun p => by cases firstHit p.1 p.2 <;> rfl
