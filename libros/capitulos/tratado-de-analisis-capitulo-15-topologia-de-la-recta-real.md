@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0003
 status: published
 date-created: 2026-09-19
-date-modified: 2026-09-19
+date-modified: 2026-09-21
 areas:
   - fundamentos
   - analisis
@@ -27,11 +27,9 @@ license: GFDL-1.3-or-later
 
 # Capítulo 15 — Topología de la recta real
 
-[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-14-series-numericas.md)
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-16-limites-de-funciones.md)
 
 *Parte II — Núcleo del análisis real*
-
----
 
 {{< include _tratado-cap15-00.md >}}
 

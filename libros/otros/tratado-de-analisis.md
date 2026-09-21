@@ -6,7 +6,7 @@ content-id: MA-BOK-0003
 content-type: book
 status: published
 date-created: 2026-09-09
-date-modified: 2026-09-19
+date-modified: 2026-09-21
 areas:
   - fundamentos
   - analisis
@@ -229,9 +229,25 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 16. [**Capítulo 15 — Topología de la recta real**](../capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md) (`MA-BCH-0061`) — **capítulo completo**: De las aproximaciones a la proximidad; Bolas abiertas y vecindades; Puntos interiores y conjuntos abiertos; Densidad e intervalos.
 
-17. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces bidireccionales al punto exacto donde cada noción se introduce; incorpora ya **cuerpo ordenado completo**, **propiedad del supremo**, **propiedad de separación** y el **principio de intersección de intervalos cerrados**, además de la infraestructura previa.
+17. [**Capítulo 16 — Límites de funciones**](../capitulos/tratado-de-analisis-capitulo-16-limites-de-funciones.md) (`MA-BCH-0067`) — **capítulo completo**: Definición y unicidad del límite; criterio secuencial; álgebra, composición y límites laterales.
 
-Los **Capítulos 0–15** están completos en la edición web. El **Capítulo 16 — Límites de funciones** permanece en elaboración y todavía no se publica.
+18. [**Capítulo 17 — Continuidad**](../capitulos/tratado-de-analisis-capitulo-17-continuidad.md) (`MA-BCH-0068`) — **capítulo completo**: Continuidad puntual y global; álgebra de funciones continuas; continuidad secuencial y sobre intervalos.
+
+19. [**Capítulo 18 — Compacidad y conexidad en la recta**](../capitulos/tratado-de-analisis-capitulo-18-compacidad-y-conexidad-en-la-recta.md) (`MA-BCH-0069`) — **capítulo completo**: Compacidad y conexidad en la recta; Heine–Borel; extremos y valor intermedio, con alcance fundacional explícito.
+
+20. [**Capítulo 19 — Diferenciación**](../capitulos/tratado-de-analisis-capitulo-19-diferenciacion.md) (`MA-BCH-0070`) — **capítulo completo**: Derivada, reglas algebraicas, regla de la cadena, derivadas laterales y aproximación lineal.
+
+21. [**Capítulo 20 — Teoremas fundamentales del cálculo diferencial**](../capitulos/tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md) (`MA-BCH-0071`) — **capítulo completo**: Extremos locales; teoremas de Rolle y del valor medio; monotonía, convexidad y regla de L’Hôpital.
+
+22. [**Capítulo 21 — Integral de Riemann**](../capitulos/tratado-de-analisis-capitulo-21-integral-de-riemann.md) (`MA-BCH-0072`) — **capítulo completo**: Particiones, sumas de Darboux, integrabilidad de Riemann y propiedades fundamentales de la integral.
+
+23. [**Capítulo 22 — Teorema fundamental del cálculo**](../capitulos/tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md) (`MA-BCH-0073`) — **capítulo completo**: Funciones de acumulación, teorema fundamental del cálculo, Newton–Leibniz y cambio de variable.
+
+24. [**Capítulo 23 — Sucesiones y series de funciones**](../capitulos/tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md) (`MA-BCH-0074`) — **capítulo completo**: Convergencia puntual y uniforme; intercambio de límites; series de funciones y criterio de Weierstrass.
+
+25. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces a las nociones publicadas.
+
+Los **Capítulos 0–23** están completos en la edición web. El **Capítulo 24 — Series de potencias** permanece pendiente de apertura y todavía no se publica.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
