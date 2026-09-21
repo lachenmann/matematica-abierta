@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>c – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#soluciones-sección-2c" id="toc-soluciones-sección-2c" class="nav-link active" data-scroll-target="#soluciones-sección-2c">Soluciones · Sección 2C</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1" id="toc-ejercicio-1" class="nav-link" data-scroll-target="#ejercicio-1">Ejercicio 1</a></li>
+  <li><a href="#ejercicio-2" id="toc-ejercicio-2" class="nav-link" data-scroll-target="#ejercicio-2">Ejercicio 2</a></li>
+  <li><a href="#ejercicio-3" id="toc-ejercicio-3" class="nav-link" data-scroll-target="#ejercicio-3">Ejercicio 3</a>
+  <ul class="collapse">
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a"><span class="math inline">\(a\)</span></a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b"><span class="math inline">\(b\)</span></a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c"><span class="math inline">\(c\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejercicio-4" id="toc-ejercicio-4" class="nav-link" data-scroll-target="#ejercicio-4">Ejercicio 4</a>
+  <ul class="collapse">
+  <li><a href="#a-1" id="toc-a-1" class="nav-link" data-scroll-target="#a-1"><span class="math inline">\(a\)</span></a></li>
+  <li><a href="#b-1" id="toc-b-1" class="nav-link" data-scroll-target="#b-1"><span class="math inline">\(b\)</span></a></li>
+  <li><a href="#c-1" id="toc-c-1" class="nav-link" data-scroll-target="#c-1"><span class="math inline">\(c\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejercicio-5" id="toc-ejercicio-5" class="nav-link" data-scroll-target="#ejercicio-5">Ejercicio 5</a>
+  <ul class="collapse">
+  <li><a href="#a-2" id="toc-a-2" class="nav-link" data-scroll-target="#a-2"><span class="math inline">\(a\)</span></a></li>
+  <li><a href="#b-2" id="toc-b-2" class="nav-link" data-scroll-target="#b-2"><span class="math inline">\(b\)</span></a></li>
+  <li><a href="#c-2" id="toc-c-2" class="nav-link" data-scroll-target="#c-2"><span class="math inline">\(c\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejercicio-6" id="toc-ejercicio-6" class="nav-link" data-scroll-target="#ejercicio-6">Ejercicio 6</a>
+  <ul class="collapse">
+  <li><a href="#a-3" id="toc-a-3" class="nav-link" data-scroll-target="#a-3"><span class="math inline">\(a\)</span></a></li>
+  <li><a href="#b-3" id="toc-b-3" class="nav-link" data-scroll-target="#b-3"><span class="math inline">\(b\)</span></a></li>
+  <li><a href="#c-3" id="toc-c-3" class="nav-link" data-scroll-target="#c-3"><span class="math inline">\(c\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejercicio-7" id="toc-ejercicio-7" class="nav-link" data-scroll-target="#ejercicio-7">Ejercicio 7</a>
+  <ul class="collapse">
+  <li><a href="#a-4" id="toc-a-4" class="nav-link" data-scroll-target="#a-4"><span class="math inline">\(a\)</span></a></li>
+  <li><a href="#b-4" id="toc-b-4" class="nav-link" data-scroll-target="#b-4"><span class="math inline">\(b\)</span></a></li>
+  <li><a href="#c-4" id="toc-c-4" class="nav-link" data-scroll-target="#c-4"><span class="math inline">\(c\)</span></a></li>
+  </ul></li>
+  <li><a href="#ejercicio-8" id="toc-ejercicio-8" class="nav-link" data-scroll-target="#ejercicio-8">Ejercicio 8</a></li>
+  <li><a href="#ejercicio-9" id="toc-ejercicio-9" class="nav-link" data-scroll-target="#ejercicio-9">Ejercicio 9</a></li>
+  <li><a href="#ejercicio-10" id="toc-ejercicio-10" class="nav-link" data-scroll-target="#ejercicio-10">Ejercicio 10</a></li>
+  <li><a href="#ejercicio-11" id="toc-ejercicio-11" class="nav-link" data-scroll-target="#ejercicio-11">Ejercicio 11</a></li>
+  <li><a href="#ejercicio-12" id="toc-ejercicio-12" class="nav-link" data-scroll-target="#ejercicio-12">Ejercicio 12</a></li>
+  <li><a href="#ejercicio-13" id="toc-ejercicio-13" class="nav-link" data-scroll-target="#ejercicio-13">Ejercicio 13</a></li>
+  <li><a href="#ejercicio-14" id="toc-ejercicio-14" class="nav-link" data-scroll-target="#ejercicio-14">Ejercicio 14</a></li>
+  <li><a href="#ejercicio-15" id="toc-ejercicio-15" class="nav-link" data-scroll-target="#ejercicio-15">Ejercicio 15</a></li>
+  <li><a href="#ejercicio-16" id="toc-ejercicio-16" class="nav-link" data-scroll-target="#ejercicio-16">Ejercicio 16</a></li>
+  <li><a href="#ejercicio-17" id="toc-ejercicio-17" class="nav-link" data-scroll-target="#ejercicio-17">Ejercicio 17</a></li>
+  <li><a href="#ejercicio-18" id="toc-ejercicio-18" class="nav-link" data-scroll-target="#ejercicio-18">Ejercicio 18</a></li>
+  <li><a href="#ejercicio-19" id="toc-ejercicio-19" class="nav-link" data-scroll-target="#ejercicio-19">Ejercicio 19</a></li>
+  <li><a href="#ejercicio-20" id="toc-ejercicio-20" class="nav-link" data-scroll-target="#ejercicio-20">Ejercicio 20</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="soluciones-sección-2c" class="level1">
+<h1>Soluciones · Sección 2C</h1>
+<p><strong>Estado:</strong> <code>VERIFICADO</code><br>
+<strong>Procedencia:</strong> <code>[SOL]</code> material original de Matemática Abierta.<br>
+<strong>Referencia:</strong> ejercicios 1–20 de la Sección 2C de <em>Linear Algebra Done Right</em>, 4.ª ed.<br>
+<strong>Criterio:</strong> se usan únicamente definiciones y resultados disponibles hasta 2C. No se anticipan el teorema fundamental de aplicaciones lineales ni los resultados del capítulo de polinomios.</p>
+<section id="ejercicio-1" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h2>
+<p>Sea <span class="math inline">\(U\)</span> un subespacio de <span class="math inline">\(\mathbf R^2\)</span>. Por 2.37,</p>
+<p><span class="math display">\[
+\dim U\le 2.
+\]</span></p>
+<p>Por tanto sólo hay tres posibilidades.</p>
+<ul>
+<li>Si <span class="math inline">\(\dim U=0\)</span>, entonces <span class="math inline">\(U=\{0\}\)</span>.</li>
+<li>Si <span class="math inline">\(\dim U=1\)</span>, una base de <span class="math inline">\(U\)</span> consta de un vector no nulo <span class="math inline">\(v\)</span> y <span class="math display">\[
+U=\operatorname{span}(v),
+\]</span> que es una recta por el origen.</li>
+<li>Si <span class="math inline">\(\dim U=2=\dim\mathbf R^2\)</span>, entonces 2.39 implica <span class="math display">\[
+U=\mathbf R^2.
+\]</span></li>
+</ul>
+<p>Recíprocamente, <span class="math inline">\(\{0\}\)</span>, toda recta que pasa por el origen y <span class="math inline">\(\mathbf R^2\)</span> son subespacios. Así éstos son exactamente todos los subespacios de <span class="math inline">\(\mathbf R^2\)</span>.</p>
+</section>
+<section id="ejercicio-2" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h2>
+<p>Sea <span class="math inline">\(U\)</span> un subespacio de <span class="math inline">\(\mathbf R^3\)</span>. Por 2.37,</p>
+<p><span class="math display">\[
+0\le\dim U\le3.
+\]</span></p>
+<ul>
+<li>Si <span class="math inline">\(\dim U=0\)</span>, entonces <span class="math inline">\(U=\{0\}\)</span>.</li>
+<li>Si <span class="math inline">\(\dim U=1\)</span>, entonces <span class="math inline">\(U=\operatorname{span}(v)\)</span> para algún <span class="math inline">\(v\ne0\)</span>, es decir, una recta por el origen.</li>
+<li>Si <span class="math inline">\(\dim U=2\)</span>, una base <span class="math inline">\(u,v\)</span> de <span class="math inline">\(U\)</span> determina <span class="math display">\[
+U=\{au+bv:a,b\in\mathbf R\},
+\]</span> que es un plano por el origen.</li>
+<li>Si <span class="math inline">\(\dim U=3=\dim\mathbf R^3\)</span>, por 2.39 se tiene <span class="math inline">\(U=\mathbf R^3\)</span>.</li>
+</ul>
+<p>Todas las figuras mencionadas son subespacios, de modo que la clasificación es completa.</p>
+</section>
+<section id="ejercicio-3" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-3">Ejercicio 3</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+U=\{p\in\mathcal P_4(\mathbf F):p(6)=0\}.
+\]</span></p>
+<p>La lista</p>
+<p><span class="math display">\[
+1,\ (z-6),\ (z-6)^2,\ (z-6)^3,\ (z-6)^4
+\]</span></p>
+<p>es linealmente independiente: en una combinación lineal nula, el término de mayor grado obliga sucesivamente a que todos los coeficientes sean <span class="math inline">\(0\)</span>. Como tiene longitud</p>
+<p><span class="math display">\[
+5=\dim\mathcal P_4(\mathbf F),
+\]</span></p>
+<p>es una base por 2.38.</p>
+<p>Todo <span class="math inline">\(p\in\mathcal P_4(\mathbf F)\)</span> tiene entonces una representación única</p>
+<p><span class="math display">\[
+p=a_0+a_1(z-6)+a_2(z-6)^2+a_3(z-6)^3+a_4(z-6)^4.
+\]</span></p>
+<p>Al evaluar en <span class="math inline">\(z=6\)</span> obtenemos <span class="math inline">\(p(6)=a_0\)</span>. Por tanto <span class="math inline">\(p\in U\)</span> si y sólo si <span class="math inline">\(a_0=0\)</span>.</p>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a"><span class="math inline">\(a\)</span></h3>
+<p>Una base de <span class="math inline">\(U\)</span> es</p>
+<p><span class="math display">\[
+\boxed{(z-6),(z-6)^2,(z-6)^3,(z-6)^4}.
+\]</span></p>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b"><span class="math inline">\(b\)</span></h3>
+<p>Añadiendo el polinomio <span class="math inline">\(1\)</span> obtenemos la base</p>
+<p><span class="math display">\[
+\boxed{(z-6),(z-6)^2,(z-6)^3,(z-6)^4,1}
+\]</span></p>
+<p>de <span class="math inline">\(\mathcal P_4(\mathbf F)\)</span>.</p>
+</section>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c"><span class="math inline">\(c\)</span></h3>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\boxed{W=\operatorname{span}(1)}.
+\]</span></p>
+<p>La representación anterior muestra que todo polinomio se escribe de manera única como un elemento de <span class="math inline">\(U\)</span> más una constante. Así</p>
+<p><span class="math display">\[
+\boxed{\mathcal P_4(\mathbf F)=U\oplus W}.
+\]</span></p>
+</section>
+</section>
+<section id="ejercicio-4" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-4">Ejercicio 4</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+U=\{p\in\mathcal P_4(\mathbf R):p''(6)=0\}.
+\]</span></p>
+<p>Usamos la base</p>
+<p><span class="math display">\[
+1,(x-6),(x-6)^2,(x-6)^3,(x-6)^4
+\]</span></p>
+<p>de <span class="math inline">\(\mathcal P_4(\mathbf R)\)</span>. Si</p>
+<p><span class="math display">\[
+p=a_0+a_1(x-6)+a_2(x-6)^2+a_3(x-6)^3+a_4(x-6)^4,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+p''(6)=2a_2.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(p''(6)=0\)</span> si y sólo si <span class="math inline">\(a_2=0\)</span>.</p>
+<section id="a-1" class="level3">
+<h3 class="anchored" data-anchor-id="a-1"><span class="math inline">\(a\)</span></h3>
+<p>Una base de <span class="math inline">\(U\)</span> es</p>
+<p><span class="math display">\[
+\boxed{1,(x-6),(x-6)^3,(x-6)^4}.
+\]</span></p>
+</section>
+<section id="b-1" class="level3">
+<h3 class="anchored" data-anchor-id="b-1"><span class="math inline">\(b\)</span></h3>
+<p>La extendemos añadiendo <span class="math inline">\((x-6)^2\)</span>:</p>
+<p><span class="math display">\[
+\boxed{1,(x-6),(x-6)^3,(x-6)^4,(x-6)^2}.
+\]</span></p>
+</section>
+<section id="c-1" class="level3">
+<h3 class="anchored" data-anchor-id="c-1"><span class="math inline">\(c\)</span></h3>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\boxed{W=\operatorname{span}((x-6)^2)}.
+\]</span></p>
+<p>La unicidad de las coordenadas respecto de la base desplazada muestra que</p>
+<p><span class="math display">\[
+\boxed{\mathcal P_4(\mathbf R)=U\oplus W}.
+\]</span></p>
+</section>
+</section>
+<section id="ejercicio-5" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-5">Ejercicio 5</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+U=\{p\in\mathcal P_4(\mathbf F):p(2)=p(5)\}.
+\]</span></p>
+<p>Definamos</p>
+<p><span class="math display">\[
+g(z)=(z-2)(z-5).
+\]</span></p>
+<p>Los cuatro polinomios</p>
+<p><span class="math display">\[
+1,\quad g(z),\quad zg(z),\quad z^2g(z)
+\]</span></p>
+<p>pertenecen a <span class="math inline">\(U\)</span>: el primero toma el mismo valor en <span class="math inline">\(2\)</span> y <span class="math inline">\(5\)</span>, y los otros tres se anulan en ambos puntos.</p>
+<p>Tienen grados <span class="math inline">\(0,2,3,4\)</span>, respectivamente, de modo que son linealmente independientes.</p>
+<p>Además <span class="math inline">\(U\)</span> es un subespacio propio de <span class="math inline">\(\mathcal P_4(\mathbf F)\)</span>, porque <span class="math inline">\(z-2\notin U\)</span>. Como</p>
+<p><span class="math display">\[
+\dim\mathcal P_4(\mathbf F)=5,
+\]</span></p>
+<p>2.39 implica que <span class="math inline">\(\dim U\ne5\)</span>, y por 2.37</p>
+<p><span class="math display">\[
+\dim U\le4.
+\]</span></p>
+<p>Los cuatro vectores linealmente independientes anteriores muestran que <span class="math inline">\(\dim U\ge4\)</span>. Por tanto</p>
+<p><span class="math display">\[
+\dim U=4.
+\]</span></p>
+<section id="a-2" class="level3">
+<h3 class="anchored" data-anchor-id="a-2"><span class="math inline">\(a\)</span></h3>
+<p>Una base de <span class="math inline">\(U\)</span> es</p>
+<p><span class="math display">\[
+\boxed{1,(z-2)(z-5),z(z-2)(z-5),z^2(z-2)(z-5)}.
+\]</span></p>
+</section>
+<section id="b-2" class="level3">
+<h3 class="anchored" data-anchor-id="b-2"><span class="math inline">\(b\)</span></h3>
+<p>El polinomio <span class="math inline">\(z-2\)</span> no pertenece a <span class="math inline">\(U\)</span>, así que añadirlo a una base de <span class="math inline">\(U\)</span> produce una lista linealmente independiente de longitud <span class="math inline">\(5\)</span>. Por 2.38 es una base de <span class="math inline">\(\mathcal P_4(\mathbf F)\)</span>.</p>
+</section>
+<section id="c-2" class="level3">
+<h3 class="anchored" data-anchor-id="c-2"><span class="math inline">\(c\)</span></h3>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\boxed{W=\operatorname{span}(z-2)}.
+\]</span></p>
+<p>Como <span class="math inline">\(U\cap W=\{0\}\)</span> y la suma tiene dimensión <span class="math inline">\(4+1=5\)</span>, 2.39 da</p>
+<p><span class="math display">\[
+\boxed{\mathcal P_4(\mathbf F)=U\oplus W}.
+\]</span></p>
+</section>
+</section>
+<section id="ejercicio-6" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-6">Ejercicio 6</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+U=\{p\in\mathcal P_4(\mathbf F):p(2)=p(5)=p(6)\}.
+\]</span></p>
+<p>Definamos</p>
+<p><span class="math display">\[
+g(z)=(z-2)(z-5)(z-6).
+\]</span></p>
+<p>Los polinomios</p>
+<p><span class="math display">\[
+1,\quad g(z),\quad zg(z)
+\]</span></p>
+<p>pertenecen a <span class="math inline">\(U\)</span> y tienen grados <span class="math inline">\(0,3,4\)</span>, así que son linealmente independientes. Por tanto</p>
+<p><span class="math display">\[
+\dim U\ge3.
+\]</span></p>
+<p>Consideremos ahora</p>
+<p><span class="math display">\[
+W=\operatorname{span}(z-2,(z-2)^2).
+\]</span></p>
+<p>La lista <span class="math inline">\(z-2,(z-2)^2\)</span> es linealmente independiente, de modo que <span class="math inline">\(\dim W=2\)</span>.</p>
+<p>Mostremos que <span class="math inline">\(U\cap W=\{0\}\)</span>. Si</p>
+<p><span class="math display">\[
+q=a(z-2)+b(z-2)^2\in U,
+\]</span></p>
+<p>entonces <span class="math inline">\(q(2)=0\)</span> y, como <span class="math inline">\(q\in U\)</span>, también <span class="math inline">\(q(5)=q(6)=0\)</span>. Así</p>
+<p><span class="math display">\[
+3a+9b=0,
+\]</span></p>
+<p><span class="math display">\[
+4a+16b=0.
+\]</span></p>
+<p>Equivalente a</p>
+<p><span class="math display">\[
+a+3b=0,\qquad a+4b=0,
+\]</span></p>
+<p>de donde <span class="math inline">\(b=0\)</span> y <span class="math inline">\(a=0\)</span>. Por tanto <span class="math inline">\(U\cap W=\{0\}\)</span>.</p>
+<p>Por 2.43,</p>
+<p><span class="math display">\[
+\dim(U+W)=\dim U+2\le5,
+\]</span></p>
+<p>de modo que <span class="math inline">\(\dim U\le3\)</span>. Combinado con la desigualdad anterior,</p>
+<p><span class="math display">\[
+\dim U=3.
+\]</span></p>
+<section id="a-3" class="level3">
+<h3 class="anchored" data-anchor-id="a-3"><span class="math inline">\(a\)</span></h3>
+<p>Una base es</p>
+<p><span class="math display">\[
+\boxed{1,(z-2)(z-5)(z-6),z(z-2)(z-5)(z-6)}.
+\]</span></p>
+</section>
+<section id="b-3" class="level3">
+<h3 class="anchored" data-anchor-id="b-3"><span class="math inline">\(b\)</span></h3>
+<p>Añadiendo <span class="math inline">\(z-2\)</span> y <span class="math inline">\((z-2)^2\)</span> obtenemos cinco vectores linealmente independientes en <span class="math inline">\(\mathcal P_4(\mathbf F)\)</span>, y por 2.38 forman una base.</p>
+</section>
+<section id="c-3" class="level3">
+<h3 class="anchored" data-anchor-id="c-3"><span class="math inline">\(c\)</span></h3>
+<p>Con</p>
+<p><span class="math display">\[
+\boxed{W=\operatorname{span}(z-2,(z-2)^2)}
+\]</span></p>
+<p>se tiene <span class="math inline">\(U\cap W=\{0\}\)</span> y</p>
+<p><span class="math display">\[
+\dim(U+W)=3+2=5.
+\]</span></p>
+<p>Por 2.39, <span class="math inline">\(U+W=\mathcal P_4(\mathbf F)\)</span>, y por tanto</p>
+<p><span class="math display">\[
+\boxed{\mathcal P_4(\mathbf F)=U\oplus W}.
+\]</span></p>
+</section>
+</section>
+<section id="ejercicio-7" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-7">Ejercicio 7</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+U=\left\{p\in\mathcal P_4(\mathbf R):\int_{-1}^{1}p(x)\,dx=0\right\}.
+\]</span></p>
+<p>Los polinomios</p>
+<p><span class="math display">\[
+x,\qquad 1-3x^2,\qquad x^3,\qquad 1-5x^4
+\]</span></p>
+<p>pertenecen a <span class="math inline">\(U\)</span>, porque</p>
+<p><span class="math display">\[
+\int_{-1}^{1}x\,dx=\int_{-1}^{1}x^3\,dx=0,
+\]</span></p>
+<p><span class="math display">\[
+\int_{-1}^{1}(1-3x^2)\,dx=2-3\cdot\frac23=0,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\int_{-1}^{1}(1-5x^4)\,dx=2-5\cdot\frac25=0.
+\]</span></p>
+<p>Sus grados son <span class="math inline">\(1,2,3,4\)</span>, así que son linealmente independientes.</p>
+<p>El subespacio <span class="math inline">\(U\)</span> es propio porque <span class="math inline">\(1\notin U\)</span>. Como <span class="math inline">\(\dim\mathcal P_4(\mathbf R)=5\)</span>, se sigue de 2.37 y 2.39 que</p>
+<p><span class="math display">\[
+\dim U\le4.
+\]</span></p>
+<p>Los cuatro polinomios independientes muestran que <span class="math inline">\(\dim U=4\)</span>.</p>
+<section id="a-4" class="level3">
+<h3 class="anchored" data-anchor-id="a-4"><span class="math inline">\(a\)</span></h3>
+<p>Una base de <span class="math inline">\(U\)</span> es</p>
+<p><span class="math display">\[
+\boxed{x,1-3x^2,x^3,1-5x^4}.
+\]</span></p>
+</section>
+<section id="b-4" class="level3">
+<h3 class="anchored" data-anchor-id="b-4"><span class="math inline">\(b\)</span></h3>
+<p>Como <span class="math inline">\(1\notin U\)</span>, la lista</p>
+<p><span class="math display">\[
+x,1-3x^2,x^3,1-5x^4,1
+\]</span></p>
+<p>es linealmente independiente de longitud <span class="math inline">\(5\)</span> y por 2.38 es una base de <span class="math inline">\(\mathcal P_4(\mathbf R)\)</span>.</p>
+</section>
+<section id="c-4" class="level3">
+<h3 class="anchored" data-anchor-id="c-4"><span class="math inline">\(c\)</span></h3>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\boxed{W=\operatorname{span}(1)}.
+\]</span></p>
+<p>Entonces <span class="math inline">\(U\cap W=\{0\}\)</span> y <span class="math inline">\(\dim(U+W)=5\)</span>, así que</p>
+<p><span class="math display">\[
+\boxed{\mathcal P_4(\mathbf R)=U\oplus W}.
+\]</span></p>
+</section>
+</section>
+<section id="ejercicio-8" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-8">Ejercicio 8</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+S=\operatorname{span}(v_1+w,\ldots,v_m+w).
+\]</span></p>
+<p>Si <span class="math inline">\(m=1\)</span>, la conclusión es simplemente <span class="math inline">\(\dim S\ge0\)</span>, que es inmediata. Supongamos <span class="math inline">\(m\ge2\)</span>.</p>
+<p>Para <span class="math inline">\(j=1,\ldots,m-1\)</span>,</p>
+<p><span class="math display">\[
+(v_j+w)-(v_m+w)=v_j-v_m\in S.
+\]</span></p>
+<p>Mostremos que</p>
+<p><span class="math display">\[
+v_1-v_m,\ldots,v_{m-1}-v_m
+\]</span></p>
+<p>es linealmente independiente. Si</p>
+<p><span class="math display">\[
+\sum_{j=1}^{m-1}a_j(v_j-v_m)=0,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+a_1v_1+\cdots+a_{m-1}v_{m-1}-\left(a_1+\cdots+a_{m-1}\right)v_m=0.
+\]</span></p>
+<p>La independencia lineal de <span class="math inline">\(v_1,\ldots,v_m\)</span> obliga a que</p>
+<p><span class="math display">\[
+a_1=\cdots=a_{m-1}=0.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(S\)</span> contiene una lista linealmente independiente de longitud <span class="math inline">\(m-1\)</span>, y así</p>
+<p><span class="math display">\[
+\boxed{\dim S\ge m-1}.
+\]</span></p>
+</section>
+<section id="ejercicio-9" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-9">Ejercicio 9</h2>
+<p>Sean</p>
+<p><span class="math display">\[
+p_0,p_1,\ldots,p_m
+\]</span></p>
+<p>polinomios con</p>
+<p><span class="math display">\[
+\deg p_k=k.
+\]</span></p>
+<p>Supongamos que</p>
+<p><span class="math display">\[
+a_0p_0+a_1p_1+\cdots+a_mp_m=0.
+\]</span></p>
+<p>Si algún coeficiente fuera no nulo, sea <span class="math inline">\(j\)</span> el mayor índice tal que <span class="math inline">\(a_j\ne0\)</span>. Entonces <span class="math inline">\(a_jp_j\)</span> tiene grado <span class="math inline">\(j\)</span>, mientras que todos los términos restantes tienen grado menor que <span class="math inline">\(j\)</span>. Por tanto el término de grado <span class="math inline">\(j\)</span> no puede cancelarse, contradicción.</p>
+<p>Así todos los <span class="math inline">\(a_k\)</span> son <span class="math inline">\(0\)</span>, y la lista es linealmente independiente.</p>
+<p>Como contiene <span class="math inline">\(m+1\)</span> vectores y</p>
+<p><span class="math display">\[
+\dim\mathcal P_m(\mathbf F)=m+1,
+\]</span></p>
+<p>2.38 implica que</p>
+<p><span class="math display">\[
+\boxed{p_0,p_1,\ldots,p_m\text{ es una base de }\mathcal P_m(\mathbf F)}.
+\]</span></p>
+</section>
+<section id="ejercicio-10" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-10">Ejercicio 10</h2>
+<p>Para <span class="math inline">\(0\le k\le m\)</span>, sea</p>
+<p><span class="math display">\[
+p_k(x)=x^k(1-x)^{m-k}.
+\]</span></p>
+<p>Cada <span class="math inline">\(p_k\)</span> pertenece a <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span>.</p>
+<p>Además, al expandir <span class="math inline">\((1-x)^{m-k}\)</span>, su término constante es <span class="math inline">\(1\)</span>. Por tanto</p>
+<p><span class="math display">\[
+p_k(x)=x^k+\text{(términos de grados mayores que }k\text{)}.
+\]</span></p>
+<p>Supongamos</p>
+<p><span class="math display">\[
+a_0p_0+a_1p_1+\cdots+a_mp_m=0.
+\]</span></p>
+<p>El coeficiente del término constante obliga a <span class="math inline">\(a_0=0\)</span>. Una vez sabido esto, el coeficiente de <span class="math inline">\(x\)</span> obliga a <span class="math inline">\(a_1=0\)</span>. Continuando inductivamente, después de obtener</p>
+<p><span class="math display">\[
+a_0=\cdots=a_{k-1}=0,
+\]</span></p>
+<p>el coeficiente de <span class="math inline">\(x^k\)</span> en la combinación es precisamente <span class="math inline">\(a_k\)</span>, y por tanto <span class="math inline">\(a_k=0\)</span>.</p>
+<p>Así todos los coeficientes son <span class="math inline">\(0\)</span>; la lista es linealmente independiente. Como tiene longitud</p>
+<p><span class="math display">\[
+m+1=\dim\mathcal P_m(\mathbf F),
+\]</span></p>
+<p>2.38 da</p>
+<p><span class="math display">\[
+\boxed{p_0,\ldots,p_m\text{ es una base de }\mathcal P_m(\mathbf F)}.
+\]</span></p>
+</section>
+<section id="ejercicio-11" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-11">Ejercicio 11</h2>
+<p>Sean <span class="math inline">\(U,W\subseteq\mathbf C^6\)</span> con</p>
+<p><span class="math display">\[
+\dim U=\dim W=4.
+\]</span></p>
+<p>Por 2.43,</p>
+<p><span class="math display">\[
+\dim(U\cap W)=\dim U+\dim W-\dim(U+W).
+\]</span></p>
+<p>Como <span class="math inline">\(U+W\)</span> es un subespacio de <span class="math inline">\(\mathbf C^6\)</span>,</p>
+<p><span class="math display">\[
+\dim(U+W)\le6.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+\dim(U\cap W)\ge4+4-6=2.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(U\cap W\)</span> contiene una lista linealmente independiente de longitud <span class="math inline">\(2\)</span>. Si llamamos <span class="math inline">\(u_1,u_2\)</span> a esos dos vectores, ninguno puede ser múltiplo escalar del otro. Éstos son los vectores requeridos.</p>
+</section>
+<section id="ejercicio-12" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-12">Ejercicio 12</h2>
+<p>Por 2.43,</p>
+<p><span class="math display">\[
+\dim(U\cap W)
+=\dim U+\dim W-\dim(U+W).
+\]</span></p>
+<p>Usando las hipótesis,</p>
+<p><span class="math display">\[
+\dim(U\cap W)=3+5-8=0.
+\]</span></p>
+<p>Por tanto</p>
+<p><span class="math display">\[
+U\cap W=\{0\}.
+\]</span></p>
+<p>Como además <span class="math inline">\(U+W=\mathbf R^8\)</span>, el criterio 1.46 da</p>
+<p><span class="math display">\[
+\boxed{\mathbf R^8=U\oplus W}.
+\]</span></p>
+</section>
+<section id="ejercicio-13" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-13">Ejercicio 13</h2>
+<p>Por 2.43,</p>
+<p><span class="math display">\[
+\dim(U\cap W)=5+5-\dim(U+W).
+\]</span></p>
+<p>Como <span class="math inline">\(U+W\subseteq\mathbf R^9\)</span>,</p>
+<p><span class="math display">\[
+\dim(U+W)\le9.
+\]</span></p>
+<p>Luego</p>
+<p><span class="math display">\[
+\dim(U\cap W)\ge10-9=1.
+\]</span></p>
+<p>Así <span class="math inline">\(U\cap W\)</span> contiene un vector no nulo, y</p>
+<p><span class="math display">\[
+\boxed{U\cap W\ne\{0\}}.
+\]</span></p>
+</section>
+<section id="ejercicio-14" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-14">Ejercicio 14</h2>
+<p>Primero aplicamos 2.43 a <span class="math inline">\(V_1\)</span> y <span class="math inline">\(V_2\)</span>:</p>
+<p><span class="math display">\[
+\dim(V_1\cap V_2)
+=7+7-\dim(V_1+V_2).
+\]</span></p>
+<p>Como <span class="math inline">\(V_1+V_2\subseteq V\)</span> y <span class="math inline">\(\dim V=10\)</span>,</p>
+<p><span class="math display">\[
+\dim(V_1\cap V_2)\ge14-10=4.
+\]</span></p>
+<p>Ahora aplicamos 2.43 a los subespacios <span class="math inline">\(V_1\cap V_2\)</span> y <span class="math inline">\(V_3\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dim(V_1\cap V_2\cap V_3)
+&amp;=\dim(V_1\cap V_2)+\dim V_3\\
+&amp;\quad-\dim((V_1\cap V_2)+V_3).
+\end{aligned}
+\]</span></p>
+<p>La última suma es un subespacio de <span class="math inline">\(V\)</span>, así que su dimensión es a lo sumo <span class="math inline">\(10\)</span>. Por tanto</p>
+<p><span class="math display">\[
+\dim(V_1\cap V_2\cap V_3)\ge4+7-10=1.
+\]</span></p>
+<p>Así</p>
+<p><span class="math display">\[
+\boxed{V_1\cap V_2\cap V_3\ne\{0\}}.
+\]</span></p>
+</section>
+<section id="ejercicio-15" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-15">Ejercicio 15</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+n=\dim V,\qquad d_j=\dim V_j\quad(j=1,2,3).
+\]</span></p>
+<p>Por 2.43 y porque <span class="math inline">\(V_1+V_2\subseteq V\)</span>,</p>
+<p><span class="math display">\[
+\dim(V_1\cap V_2)
+=d_1+d_2-\dim(V_1+V_2)
+\ge d_1+d_2-n.
+\]</span></p>
+<p>Aplicando 2.43 a <span class="math inline">\(V_1\cap V_2\)</span> y <span class="math inline">\(V_3\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dim(V_1\cap V_2\cap V_3)
+&amp;\ge \dim(V_1\cap V_2)+d_3-n\\
+&amp;\ge d_1+d_2+d_3-2n.
+\end{aligned}
+\]</span></p>
+<p>Por hipótesis,</p>
+<p><span class="math display">\[
+d_1+d_2+d_3&gt;2n,
+\]</span></p>
+<p>así que</p>
+<p><span class="math display">\[
+\dim(V_1\cap V_2\cap V_3)&gt;0.
+\]</span></p>
+<p>Por consiguiente</p>
+<p><span class="math display">\[
+\boxed{V_1\cap V_2\cap V_3\ne\{0\}}.
+\]</span></p>
+</section>
+<section id="ejercicio-16" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-16">Ejercicio 16</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+u_1,\ldots,u_m
+\]</span></p>
+<p>una base de <span class="math inline">\(U\)</span>. Como <span class="math inline">\(U\ne V\)</span>, por 2.39 se tiene <span class="math inline">\(m&lt;n\)</span>. Por 2.32, extendemos la base de <span class="math inline">\(U\)</span> a una base de <span class="math inline">\(V\)</span>:</p>
+<p><span class="math display">\[
+u_1,\ldots,u_m,v_1,\ldots,v_{n-m}.
+\]</span></p>
+<p>Para cada <span class="math inline">\(j\in\{1,\ldots,n-m\}\)</span>, definimos</p>
+<p><span class="math display">\[
+H_j=\operatorname{span}(u_1,\ldots,u_m,v_1,\ldots,v_{j-1},v_{j+1},\ldots,v_{n-m}).
+\]</span></p>
+<p>La lista que genera <span class="math inline">\(H_j\)</span> es una sublista de una base de <span class="math inline">\(V\)</span>, por lo que es linealmente independiente y constituye una base de <span class="math inline">\(H_j\)</span>. Tiene longitud <span class="math inline">\(n-1\)</span>, así que</p>
+<p><span class="math display">\[
+\dim H_j=n-1.
+\]</span></p>
+<p>Claramente <span class="math inline">\(U\subseteq H_j\)</span> para todo <span class="math inline">\(j\)</span>, de modo que</p>
+<p><span class="math display">\[
+U\subseteq\bigcap_{j=1}^{n-m}H_j.
+\]</span></p>
+<p>Recíprocamente, sea</p>
+<p><span class="math display">\[
+x=a_1u_1+\cdots+a_mu_m+b_1v_1+\cdots+b_{n-m}v_{n-m}
+\]</span></p>
+<p>un vector perteneciente a todos los <span class="math inline">\(H_j\)</span>. Pertenecer a <span class="math inline">\(H_j\)</span> obliga, por unicidad de las coordenadas respecto de la base de <span class="math inline">\(V\)</span>, a que <span class="math inline">\(b_j=0\)</span>. Esto vale para todo <span class="math inline">\(j\)</span>, así que</p>
+<p><span class="math display">\[
+x\in U.
+\]</span></p>
+<p>Por tanto</p>
+<p><span class="math display">\[
+\boxed{U=H_1\cap\cdots\cap H_{n-m}},
+\]</span></p>
+<p>donde cada <span class="math inline">\(H_j\)</span> tiene dimensión <span class="math inline">\(n-1\)</span>.</p>
+</section>
+<section id="ejercicio-17" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-17">Ejercicio 17</h2>
+<p>Para cada <span class="math inline">\(j\)</span>, elijamos una base</p>
+<p><span class="math display">\[
+B_j=(v_{j,1},\ldots,v_{j,n_j})
+\]</span></p>
+<p>de <span class="math inline">\(V_j\)</span>, donde</p>
+<p><span class="math display">\[
+n_j=\dim V_j.
+\]</span></p>
+<p>La concatenación</p>
+<p><span class="math display">\[
+B_1,B_2,\ldots,B_m
+\]</span></p>
+<p>es una lista finita que genera <span class="math inline">\(V_1+\cdots+V_m\)</span>. Por tanto esta suma es de dimensión finita.</p>
+<p>Sea <span class="math inline">\(B\)</span> una base de <span class="math inline">\(V_1+\cdots+V_m\)</span>. La lista <span class="math inline">\(B\)</span> es linealmente independiente, mientras que la concatenación anterior genera el mismo espacio. Por 2.22,</p>
+<p><span class="math display">\[
+\operatorname{longitud}(B)
+\le n_1+\cdots+n_m.
+\]</span></p>
+<p>Así</p>
+<p><span class="math display">\[
+\boxed{\dim(V_1+\cdots+V_m)
+\le\dim V_1+\cdots+\dim V_m}.
+\]</span></p>
+</section>
+<section id="ejercicio-18" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-18">Ejercicio 18</h2>
+<p>Sea</p>
+<p><span class="math display">\[
+v_1,\ldots,v_n
+\]</span></p>
+<p>una base de <span class="math inline">\(V\)</span>. Para cada <span class="math inline">\(j\)</span>, definimos</p>
+<p><span class="math display">\[
+V_j=\operatorname{span}(v_j).
+\]</span></p>
+<p>Como <span class="math inline">\(v_j\ne0\)</span>, cada <span class="math inline">\(V_j\)</span> tiene dimensión <span class="math inline">\(1\)</span>.</p>
+<p>Todo vector <span class="math inline">\(v\in V\)</span> tiene una representación única</p>
+<p><span class="math display">\[
+v=a_1v_1+\cdots+a_nv_n.
+\]</span></p>
+<p>Cada sumando <span class="math inline">\(a_jv_j\)</span> pertenece a <span class="math inline">\(V_j\)</span>. Así</p>
+<p><span class="math display">\[
+V=V_1+\cdots+V_n.
+\]</span></p>
+<p>Además, si</p>
+<p><span class="math display">\[
+x_1+\cdots+x_n=0,
+\qquad x_j\in V_j,
+\]</span></p>
+<p>entonces <span class="math inline">\(x_j=a_jv_j\)</span> y</p>
+<p><span class="math display">\[
+a_1v_1+\cdots+a_nv_n=0.
+\]</span></p>
+<p>La independencia lineal de la base obliga a que todos los <span class="math inline">\(a_j\)</span> sean <span class="math inline">\(0\)</span>, y por tanto todos los <span class="math inline">\(x_j\)</span> son <span class="math inline">\(0\)</span>. La representación como suma de vectores de los <span class="math inline">\(V_j\)</span> es única. Así, por la definición de suma directa,</p>
+<p><span class="math display">\[
+\boxed{V=V_1\oplus\cdots\oplus V_n}.
+\]</span></p>
+</section>
+<section id="ejercicio-19" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-19">Ejercicio 19</h2>
+<p>La conjetura surge de la fórmula de inclusión–exclusión para tres conjuntos finitos:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\#(S_1\cup S_2\cup S_3)
+&amp;=\#S_1+\#S_2+\#S_3\\
+&amp;\quad-\#(S_1\cap S_2)-\#(S_1\cap S_3)-\#(S_2\cap S_3)\\
+&amp;\quad+\#(S_1\cap S_2\cap S_3).
+\end{aligned}
+\]</span></p>
+<p>La analogía presentada antes de los ejercicios podría sugerir sustituir cardinalidad por dimensión y unión por suma de subespacios. Sin embargo, la fórmula resultante es <strong>falsa</strong>.</p>
+<p>Tomemos <span class="math inline">\(V=\mathbf R^2\)</span> y</p>
+<p><span class="math display">\[
+V_1=\operatorname{span}(1,0),\qquad
+V_2=\operatorname{span}(0,1),\qquad
+V_3=\operatorname{span}(1,1).
+\]</span></p>
+<p>Cada subespacio tiene dimensión <span class="math inline">\(1\)</span>. Además, como son tres rectas distintas por el origen,</p>
+<p><span class="math display">\[
+V_1\cap V_2=V_1\cap V_3=V_2\cap V_3=\{0\},
+\]</span></p>
+<p>y también la triple intersección es <span class="math inline">\(\{0\}\)</span>.</p>
+<p>El lado derecho de la fórmula conjeturada vale entonces</p>
+<p><span class="math display">\[
+1+1+1=3.
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+V_1+V_2+V_3=\mathbf R^2,
+\]</span></p>
+<p>de modo que el lado izquierdo vale <span class="math inline">\(2\)</span>. Por tanto</p>
+<p><span class="math display">\[
+\boxed{2\ne3},
+\]</span></p>
+<p>y la fórmula es falsa.</p>
+</section>
+<section id="ejercicio-20" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio-20">Ejercicio 20</h2>
+<p>Escribamos</p>
+<p><span class="math display">\[
+D=\dim(V_1+V_2+V_3).
+\]</span></p>
+<p>Aplicamos 2.43 agrupando primero <span class="math inline">\(V_1\)</span> y <span class="math inline">\(V_2\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+D
+&amp;=\dim(V_1+V_2)+\dim V_3
+-\dim((V_1+V_2)\cap V_3)\\
+&amp;=\dim V_1+\dim V_2+\dim V_3
+-\dim(V_1\cap V_2)
+-\dim((V_1+V_2)\cap V_3).
+\end{aligned}
+\]</span></p>
+<p>Intercambiando cíclicamente los papeles de los tres subespacios obtenemos también</p>
+<p><span class="math display">\[
+\begin{aligned}
+D
+&amp;=\dim V_1+\dim V_2+\dim V_3
+-\dim(V_1\cap V_3)
+-\dim((V_1+V_3)\cap V_2),
+\end{aligned}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\begin{aligned}
+D
+&amp;=\dim V_1+\dim V_2+\dim V_3
+-\dim(V_2\cap V_3)
+-\dim((V_2+V_3)\cap V_1).
+\end{aligned}
+\]</span></p>
+<p>Sumando las tres igualdades,</p>
+<p><span class="math display">\[
+\begin{aligned}
+3D
+&amp;=3(\dim V_1+\dim V_2+\dim V_3)\\
+&amp;\quad-[\dim(V_1\cap V_2)+\dim(V_1\cap V_3)+\dim(V_2\cap V_3)]\\
+&amp;\quad-[\dim((V_1+V_2)\cap V_3)
++\dim((V_1+V_3)\cap V_2)
++\dim((V_2+V_3)\cap V_1)].
+\end{aligned}
+\]</span></p>
+<p>Dividiendo por <span class="math inline">\(3\)</span> obtenemos exactamente</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+\dim(V_1+V_2+V_3)
+&amp;=\dim V_1+\dim V_2+\dim V_3\\
+&amp;\quad-\frac{\dim(V_1\cap V_2)+\dim(V_1\cap V_3)+\dim(V_2\cap V_3)}{3}\\
+&amp;\quad-\frac{\dim((V_1+V_2)\cap V_3)+\dim((V_1+V_3)\cap V_2)+\dim((V_2+V_3)\cap V_1)}{3}.
+\end{aligned}}
+\]</span></p>
+<p>La expresión del lado derecho es, por tanto, un entero porque es igual a la dimensión del subespacio <span class="math inline">\(V_1+V_2+V_3\)</span>.</p>
+<hr>
+<blockquote class="blockquote">
+<p><strong>Procedencia y licencia de esta edición:</strong> traducción/adaptación no oficial de Sheldon Axler, <a href="https://linear.axler.net/LADR4e.pdf"><em>Linear Algebra Done Right</em>, 4.ª edición</a>. La traducción y las contribuciones de esta edición se publican bajo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Las soluciones señaladas como originales son de Matemática Abierta, no del autor. <a href="../../../../libros/axler-ladr-es/index.html">Índice de esta edición</a>.</p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

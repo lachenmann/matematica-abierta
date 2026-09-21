@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>c-matrices – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#c-matrices" id="toc-c-matrices" class="nav-link active" data-scroll-target="#c-matrices">3C · Matrices</a>
+  <ul class="collapse">
+  <li><a href="#representación-de-una-aplicación-lineal-mediante-una-matriz" id="toc-representación-de-una-aplicación-lineal-mediante-una-matriz" class="nav-link" data-scroll-target="#representación-de-una-aplicación-lineal-mediante-una-matriz">Representación de una aplicación lineal mediante una matriz</a></li>
+  <li><a href="#definición-matriz-a_jk" id="toc-definición-matriz-a_jk" class="nav-link" data-scroll-target="#definición-matriz-a_jk">3.29 Definición: matriz, <span class="math inline">\(A_{j,k}\)</span></a></li>
+  <li><a href="#ejemplo-a_jk-es-la-entrada-de-la-fila-j-columna-k" id="toc-ejemplo-a_jk-es-la-entrada-de-la-fila-j-columna-k" class="nav-link" data-scroll-target="#ejemplo-a_jk-es-la-entrada-de-la-fila-j-columna-k">3.30 Ejemplo: <span class="math inline">\(A_{j,k}\)</span> es la entrada de la fila <span class="math inline">\(j\)</span>, columna <span class="math inline">\(k\)</span></a></li>
+  <li><a href="#definición-matriz-de-una-aplicación-lineal-mathcal-mt" id="toc-definición-matriz-de-una-aplicación-lineal-mathcal-mt" class="nav-link" data-scroll-target="#definición-matriz-de-una-aplicación-lineal-mathcal-mt">3.31 Definición: matriz de una aplicación lineal, <span class="math inline">\(\mathcal M(T)\)</span></a></li>
+  <li><a href="#ejemplo-matriz-de-una-aplicación-de-mathbf-f2-en-mathbf-f3" id="toc-ejemplo-matriz-de-una-aplicación-de-mathbf-f2-en-mathbf-f3" class="nav-link" data-scroll-target="#ejemplo-matriz-de-una-aplicación-de-mathbf-f2-en-mathbf-f3">3.32 Ejemplo: matriz de una aplicación de <span class="math inline">\(\mathbf F^2\)</span> en <span class="math inline">\(\mathbf F^3\)</span></a></li>
+  <li><a href="#ejemplo-matriz-de-la-derivación-de-mathcal-p_3mathbf-r-en-mathcal-p_2mathbf-r" id="toc-ejemplo-matriz-de-la-derivación-de-mathcal-p_3mathbf-r-en-mathcal-p_2mathbf-r" class="nav-link" data-scroll-target="#ejemplo-matriz-de-la-derivación-de-mathcal-p_3mathbf-r-en-mathcal-p_2mathbf-r">3.33 Ejemplo: matriz de la derivación de <span class="math inline">\(\mathcal P_3(\mathbf R)\)</span> en <span class="math inline">\(\mathcal P_2(\mathbf R)\)</span></a></li>
+  </ul></li>
+  <li><a href="#suma-y-multiplicación-por-escalares-de-matrices" id="toc-suma-y-multiplicación-por-escalares-de-matrices" class="nav-link" data-scroll-target="#suma-y-multiplicación-por-escalares-de-matrices">Suma y multiplicación por escalares de matrices</a>
+  <ul class="collapse">
+  <li><a href="#definición-suma-de-matrices" id="toc-definición-suma-de-matrices" class="nav-link" data-scroll-target="#definición-suma-de-matrices">3.34 Definición: suma de matrices</a></li>
+  <li><a href="#matriz-de-una-suma-de-aplicaciones-lineales" id="toc-matriz-de-una-suma-de-aplicaciones-lineales" class="nav-link" data-scroll-target="#matriz-de-una-suma-de-aplicaciones-lineales">3.35 Matriz de una suma de aplicaciones lineales</a></li>
+  <li><a href="#definición-multiplicación-de-una-matriz-por-un-escalar" id="toc-definición-multiplicación-de-una-matriz-por-un-escalar" class="nav-link" data-scroll-target="#definición-multiplicación-de-una-matriz-por-un-escalar">3.36 Definición: multiplicación de una matriz por un escalar</a></li>
+  <li><a href="#ejemplo-suma-y-multiplicación-por-escalares" id="toc-ejemplo-suma-y-multiplicación-por-escalares" class="nav-link" data-scroll-target="#ejemplo-suma-y-multiplicación-por-escalares">3.37 Ejemplo: suma y multiplicación por escalares</a></li>
+  <li><a href="#matriz-de-un-múltiplo-escalar-de-una-aplicación-lineal" id="toc-matriz-de-un-múltiplo-escalar-de-una-aplicación-lineal" class="nav-link" data-scroll-target="#matriz-de-un-múltiplo-escalar-de-una-aplicación-lineal">3.38 Matriz de un múltiplo escalar de una aplicación lineal</a></li>
+  <li><a href="#notación-mathbf-fmn" id="toc-notación-mathbf-fmn" class="nav-link" data-scroll-target="#notación-mathbf-fmn">3.39 Notación: <span class="math inline">\(\mathbf F^{m,n}\)</span></a></li>
+  <li><a href="#dimmathbf-fmnmn" id="toc-dimmathbf-fmnmn" class="nav-link" data-scroll-target="#dimmathbf-fmnmn">3.40 <span class="math inline">\(\dim\mathbf F^{m,n}=mn\)</span></a></li>
+  </ul></li>
+  <li><a href="#multiplicación-de-matrices" id="toc-multiplicación-de-matrices" class="nav-link" data-scroll-target="#multiplicación-de-matrices">Multiplicación de matrices</a>
+  <ul class="collapse">
+  <li><a href="#definición-multiplicación-de-matrices" id="toc-definición-multiplicación-de-matrices" class="nav-link" data-scroll-target="#definición-multiplicación-de-matrices">3.41 Definición: multiplicación de matrices</a></li>
+  <li><a href="#ejemplo-multiplicación-de-matrices" id="toc-ejemplo-multiplicación-de-matrices" class="nav-link" data-scroll-target="#ejemplo-multiplicación-de-matrices">3.42 Ejemplo: multiplicación de matrices</a></li>
+  <li><a href="#matriz-del-producto-de-aplicaciones-lineales" id="toc-matriz-del-producto-de-aplicaciones-lineales" class="nav-link" data-scroll-target="#matriz-del-producto-de-aplicaciones-lineales">3.43 Matriz del producto de aplicaciones lineales</a></li>
+  <li><a href="#notación-a_jboldsymbolcdot-y-a_boldsymbolcdotk" id="toc-notación-a_jboldsymbolcdot-y-a_boldsymbolcdotk" class="nav-link" data-scroll-target="#notación-a_jboldsymbolcdot-y-a_boldsymbolcdotk">3.44 Notación: <span class="math inline">\(A_{j,\boldsymbol\cdot}\)</span> y <span class="math inline">\(A_{\boldsymbol\cdot,k}\)</span></a></li>
+  <li><a href="#ejemplo-notación-para-filas-y-columnas" id="toc-ejemplo-notación-para-filas-y-columnas" class="nav-link" data-scroll-target="#ejemplo-notación-para-filas-y-columnas">3.45 Ejemplo: notación para filas y columnas</a></li>
+  <li><a href="#la-entrada-de-un-producto-es-fila-por-columna" id="toc-la-entrada-de-un-producto-es-fila-por-columna" class="nav-link" data-scroll-target="#la-entrada-de-un-producto-es-fila-por-columna">3.46 La entrada de un producto es fila por columna</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">3.47</a></li>
+  </ul></li>
+  <li><a href="#una-columna-del-producto-es-la-matriz-por-la-columna" id="toc-una-columna-del-producto-es-la-matriz-por-la-columna" class="nav-link" data-scroll-target="#una-columna-del-producto-es-la-matriz-por-la-columna">3.48 Una columna del producto es la matriz por la columna</a></li>
+  <li><a href="#ejemplo-producto-de-una-matriz-3-por-2-y-una-columna" id="toc-ejemplo-producto-de-una-matriz-3-por-2-y-una-columna" class="nav-link" data-scroll-target="#ejemplo-producto-de-una-matriz-3-por-2-y-una-columna">3.49 Ejemplo: producto de una matriz <span class="math inline">\(3\)</span> por <span class="math inline">\(2\)</span> y una columna</a></li>
+  <li><a href="#combinación-lineal-de-columnas" id="toc-combinación-lineal-de-columnas" class="nav-link" data-scroll-target="#combinación-lineal-de-columnas">3.50 Combinación lineal de columnas</a></li>
+  <li><a href="#multiplicación-matricial-como-combinaciones-lineales-de-columnas-o-filas" id="toc-multiplicación-matricial-como-combinaciones-lineales-de-columnas-o-filas" class="nav-link" data-scroll-target="#multiplicación-matricial-como-combinaciones-lineales-de-columnas-o-filas">3.51 Multiplicación matricial como combinaciones lineales de columnas o filas</a></li>
+  </ul></li>
+  <li><a href="#factorización-columnafila-y-rango-de-una-matriz" id="toc-factorización-columnafila-y-rango-de-una-matriz" class="nav-link" data-scroll-target="#factorización-columnafila-y-rango-de-una-matriz">Factorización columna–fila y rango de una matriz</a>
+  <ul class="collapse">
+  <li><a href="#definición-rango-columna-rango-fila" id="toc-definición-rango-columna-rango-fila" class="nav-link" data-scroll-target="#definición-rango-columna-rango-fila">3.52 Definición: rango columna, rango fila</a></li>
+  <li><a href="#ejemplo-rango-columna-y-rango-fila-de-una-matriz-2-por-4" id="toc-ejemplo-rango-columna-y-rango-fila-de-una-matriz-2-por-4" class="nav-link" data-scroll-target="#ejemplo-rango-columna-y-rango-fila-de-una-matriz-2-por-4">3.53 Ejemplo: rango columna y rango fila de una matriz <span class="math inline">\(2\)</span> por <span class="math inline">\(4\)</span></a></li>
+  <li><a href="#definición-transpuesta-at" id="toc-definición-transpuesta-at" class="nav-link" data-scroll-target="#definición-transpuesta-at">3.54 Definición: transpuesta, <span class="math inline">\(A^t\)</span></a></li>
+  <li><a href="#ejemplo-transpuesta" id="toc-ejemplo-transpuesta" class="nav-link" data-scroll-target="#ejemplo-transpuesta">3.55 Ejemplo: transpuesta</a></li>
+  <li><a href="#factorización-columnafila" id="toc-factorización-columnafila" class="nav-link" data-scroll-target="#factorización-columnafila">3.56 Factorización columna–fila</a></li>
+  <li><a href="#el-rango-columna-es-igual-al-rango-fila" id="toc-el-rango-columna-es-igual-al-rango-fila" class="nav-link" data-scroll-target="#el-rango-columna-es-igual-al-rango-fila">3.57 El rango columna es igual al rango fila</a></li>
+  <li><a href="#definición-rango" id="toc-definición-rango" class="nav-link" data-scroll-target="#definición-rango">3.58 Definición: rango</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-3c" id="toc-ejercicios-3c" class="nav-link" data-scroll-target="#ejercicios-3c">Ejercicios 3C</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="c-matrices" class="level1">
+<h1>3C · Matrices</h1>
+<p><strong>Estado:</strong> <code>COTEJADO</code><br>
+<strong>Fuente canónica:</strong> Sheldon Axler, <em>Linear Algebra Done Right</em>, 4.ª ed., PDF oficial de 16-08-2026, pp.&nbsp;69–81.<br>
+<strong>Licencia:</strong> adaptación/traducción no oficial bajo CC BY-NC 4.0.<br>
+<strong>Control de versiones:</strong> la errata oficial vigente no registra correcciones específicas para las pp.&nbsp;69–81. La versión canónica de 16-08-2026 añade, en la demostración de 3.57, el caso separado <code>c=0</code>, ausente en la copia de referencia del 25-03-2024; esta edición sigue el texto canónico 2026.</p>
+<blockquote class="blockquote">
+<p>[TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas, ejemplos, demostraciones y estructura lógica.</p>
+</blockquote>
+<section id="representación-de-una-aplicación-lineal-mediante-una-matriz" class="level2">
+<h2 class="anchored" data-anchor-id="representación-de-una-aplicación-lineal-mediante-una-matriz">Representación de una aplicación lineal mediante una matriz</h2>
+<p>Sabemos que si <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(T:V\to W\)</span> es lineal, entonces los valores</p>
+<p><span class="math display">\[
+Tv_1,\ldots,Tv_n
+\]</span></p>
+<p>determinan los valores de <span class="math inline">\(T\)</span> sobre todos los vectores de <span class="math inline">\(V\)</span>; véase el lema de la aplicación lineal 3.4. Las matrices proporcionan una manera eficiente de registrar esos valores en términos de una base de <span class="math inline">\(W\)</span>.</p>
+</section>
+<section id="definición-matriz-a_jk" class="level2">
+<h2 class="anchored" data-anchor-id="definición-matriz-a_jk">3.29 Definición: matriz, <span class="math inline">\(A_{j,k}\)</span></h2>
+<p>Sean <span class="math inline">\(m,n\)</span> enteros no negativos. Una <strong>matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span></strong> <span class="math inline">\(A\)</span> es un arreglo rectangular de elementos de <span class="math inline">\(\mathbf F\)</span> con <span class="math inline">\(m\)</span> filas y <span class="math inline">\(n\)</span> columnas:</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+A_{1,1}&amp;\cdots&amp;A_{1,n}\\
+\vdots&amp;&amp;\vdots\\
+A_{m,1}&amp;\cdots&amp;A_{m,n}
+\end{pmatrix}.
+\]</span></p>
+<p>La notación <span class="math inline">\(A_{j,k}\)</span> denota la entrada situada en la fila <span class="math inline">\(j\)</span> y columna <span class="math inline">\(k\)</span> de <span class="math inline">\(A\)</span>.</p>
+</section>
+<section id="ejemplo-a_jk-es-la-entrada-de-la-fila-j-columna-k" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-a_jk-es-la-entrada-de-la-fila-j-columna-k">3.30 Ejemplo: <span class="math inline">\(A_{j,k}\)</span> es la entrada de la fila <span class="math inline">\(j\)</span>, columna <span class="math inline">\(k\)</span></h2>
+<p>Si</p>
+<p><span class="math display">\[
+A=
+\begin{pmatrix}
+8&amp;4&amp;5-3i\\
+1&amp;9&amp;7
+\end{pmatrix},
+\]</span></p>
+<p>entonces <span class="math inline">\(A_{2,3}=7\)</span>. El primer índice indica la fila y el segundo la columna.</p>
+</section>
+<section id="definición-matriz-de-una-aplicación-lineal-mathcal-mt" class="level2">
+<h2 class="anchored" data-anchor-id="definición-matriz-de-una-aplicación-lineal-mathcal-mt">3.31 Definición: matriz de una aplicación lineal, <span class="math inline">\(\mathcal M(T)\)</span></h2>
+<p>Supongamos que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>, que <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y que <span class="math inline">\(w_1,\ldots,w_m\)</span> es una base de <span class="math inline">\(W\)</span>. La <strong>matriz de <span class="math inline">\(T\)</span> respecto de estas bases</strong> es la matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span>, denotada por <span class="math inline">\(\mathcal M(T)\)</span>, cuyas entradas <span class="math inline">\(A_{j,k}\)</span> están determinadas por</p>
+<p><span class="math display">\[
+Tv_k=A_{1,k}w_1+\cdots+A_{m,k}w_m.
+\]</span></p>
+<p>Cuando las bases no están claras por el contexto se usa la notación</p>
+<p><span class="math display">\[
+\mathcal M\bigl(T,(v_1,\ldots,v_n),(w_1,\ldots,w_m)\bigr).
+\]</span></p>
+<p>La matriz depende tanto de <span class="math inline">\(T\)</span> como de las bases elegidas. La columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T)\)</span> contiene precisamente los escalares necesarios para expresar <span class="math inline">\(Tv_k\)</span> en la base <span class="math inline">\(w_1,\ldots,w_m\)</span>:</p>
+<p><span class="math display">\[
+Tv_k=\sum_{j=1}^m A_{j,k}w_j.
+\]</span></p>
+<p>Si <span class="math inline">\(T\)</span> va de un espacio de dimensión <span class="math inline">\(n\)</span> a uno de dimensión <span class="math inline">\(m\)</span>, entonces <span class="math inline">\(\mathcal M(T)\)</span> es una matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span>.</p>
+<p>Cuando <span class="math inline">\(T:\mathbf F^n\to\mathbf F^m\)</span>, salvo indicación contraria se usan las bases estándar. En ese caso, la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T)\)</span> es el vector de coordenadas de la imagen del <span class="math inline">\(k\)</span>-ésimo vector de la base estándar.</p>
+</section>
+<section id="ejemplo-matriz-de-una-aplicación-de-mathbf-f2-en-mathbf-f3" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-matriz-de-una-aplicación-de-mathbf-f2-en-mathbf-f3">3.32 Ejemplo: matriz de una aplicación de <span class="math inline">\(\mathbf F^2\)</span> en <span class="math inline">\(\mathbf F^3\)</span></h2>
+<p>Sea</p>
+<p><span class="math display">\[
+T(x,y)=(x+3y,\,2x+5y,\,7x+9y).
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+T(1,0)=(1,2,7),\qquad T(0,1)=(3,5,9),
+\]</span></p>
+<p>respecto de las bases estándar,</p>
+<p><span class="math display">\[
+\mathcal M(T)=
+\begin{pmatrix}
+1&amp;3\\
+2&amp;5\\
+7&amp;9
+\end{pmatrix}.
+\]</span></p>
+<p>Cuando trabajemos con <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span>, se usará la base estándar</p>
+<p><span class="math display">\[
+1,x,x^2,\ldots,x^m
+\]</span></p>
+<p>salvo que el contexto indique otra cosa.</p>
+</section>
+<section id="ejemplo-matriz-de-la-derivación-de-mathcal-p_3mathbf-r-en-mathcal-p_2mathbf-r" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-matriz-de-la-derivación-de-mathcal-p_3mathbf-r-en-mathcal-p_2mathbf-r">3.33 Ejemplo: matriz de la derivación de <span class="math inline">\(\mathcal P_3(\mathbf R)\)</span> en <span class="math inline">\(\mathcal P_2(\mathbf R)\)</span></h2>
+<p>Sea <span class="math inline">\(D\in\mathcal L(\mathcal P_3(\mathbf R),\mathcal P_2(\mathbf R))\)</span> dada por <span class="math inline">\(Dp=p'\)</span>. Como</p>
+<p><span class="math display">\[
+(x^n)'=nx^{n-1},
+\]</span></p>
+<p>respecto de las bases estándar,</p>
+<p><span class="math display">\[
+\mathcal M(D)=
+\begin{pmatrix}
+0&amp;1&amp;0&amp;0\\
+0&amp;0&amp;2&amp;0\\
+0&amp;0&amp;0&amp;3
+\end{pmatrix}.
+\]</span></p>
+</section>
+</section>
+<section id="suma-y-multiplicación-por-escalares-de-matrices" class="level1">
+<h1>Suma y multiplicación por escalares de matrices</h1>
+<p>Durante el resto de esta sección suponemos que <span class="math inline">\(U,V,W\)</span> son de dimensión finita y que se ha elegido una base para cada uno.</p>
+<section id="definición-suma-de-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="definición-suma-de-matrices">3.34 Definición: suma de matrices</h2>
+<p>La suma de dos matrices del mismo tamaño se obtiene sumando las entradas correspondientes. Si <span class="math inline">\(A,C\in\mathbf F^{m,n}\)</span>, entonces</p>
+<p><span class="math display">\[
+(A+C)_{j,k}=A_{j,k}+C_{j,k}.
+\]</span></p>
+</section>
+<section id="matriz-de-una-suma-de-aplicaciones-lineales" class="level2">
+<h2 class="anchored" data-anchor-id="matriz-de-una-suma-de-aplicaciones-lineales">3.35 Matriz de una suma de aplicaciones lineales</h2>
+<p>Si <span class="math inline">\(S,T\in\mathcal L(V,W)\)</span> y se usan las mismas bases, entonces</p>
+<p><span class="math display">\[
+\boxed{\mathcal M(S+T)=\mathcal M(S)+\mathcal M(T).}
+\]</span></p>
+<p>La verificación se sigue directamente de las definiciones y se deja al lector.</p>
+</section>
+<section id="definición-multiplicación-de-una-matriz-por-un-escalar" class="level2">
+<h2 class="anchored" data-anchor-id="definición-multiplicación-de-una-matriz-por-un-escalar">3.36 Definición: multiplicación de una matriz por un escalar</h2>
+<p>Si <span class="math inline">\(\lambda\in\mathbf F\)</span> y <span class="math inline">\(A\)</span> es una matriz, entonces <span class="math inline">\(\lambda A\)</span> se obtiene multiplicando cada entrada de <span class="math inline">\(A\)</span> por <span class="math inline">\(\lambda\)</span>:</p>
+<p><span class="math display">\[
+(\lambda A)_{j,k}=\lambda A_{j,k}.
+\]</span></p>
+</section>
+<section id="ejemplo-suma-y-multiplicación-por-escalares" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-suma-y-multiplicación-por-escalares">3.37 Ejemplo: suma y multiplicación por escalares</h2>
+<p><span class="math display">\[
+2\begin{pmatrix}3&amp;1\\-1&amp;5\end{pmatrix}
++
+\begin{pmatrix}4&amp;2\\1&amp;6\end{pmatrix}
+=
+\begin{pmatrix}10&amp;4\\-1&amp;16\end{pmatrix}.
+\]</span></p>
+</section>
+<section id="matriz-de-un-múltiplo-escalar-de-una-aplicación-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="matriz-de-un-múltiplo-escalar-de-una-aplicación-lineal">3.38 Matriz de un múltiplo escalar de una aplicación lineal</h2>
+<p>Si <span class="math inline">\(\lambda\in\mathbf F\)</span> y <span class="math inline">\(T\in\mathcal L(V,W)\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{\mathcal M(\lambda T)=\lambda\mathcal M(T).}
+\]</span></p>
+<p>La verificación también se deja al lector.</p>
+</section>
+<section id="notación-mathbf-fmn" class="level2">
+<h2 class="anchored" data-anchor-id="notación-mathbf-fmn">3.39 Notación: <span class="math inline">\(\mathbf F^{m,n}\)</span></h2>
+<p>Para enteros positivos <span class="math inline">\(m,n\)</span>, el conjunto de todas las matrices <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> con entradas en <span class="math inline">\(\mathbf F\)</span> se denota por</p>
+<p><span class="math display">\[
+\mathbf F^{m,n}.
+\]</span></p>
+</section>
+<section id="dimmathbf-fmnmn" class="level2">
+<h2 class="anchored" data-anchor-id="dimmathbf-fmnmn">3.40 <span class="math inline">\(\dim\mathbf F^{m,n}=mn\)</span></h2>
+<p>Con la suma y multiplicación por escalares anteriores, <span class="math inline">\(\mathbf F^{m,n}\)</span> es un espacio vectorial de dimensión</p>
+<p><span class="math display">\[
+\boxed{mn}.
+\]</span></p>
+<p><strong>Demostración.</strong> Los axiomas de espacio vectorial se verifican entrada a entrada. La matriz cero es la identidad aditiva. Las <span class="math inline">\(mn\)</span> matrices que tienen un <span class="math inline">\(1\)</span> en una sola posición y <span class="math inline">\(0\)</span> en todas las demás forman una base; por tanto la dimensión es <span class="math inline">\(mn\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="multiplicación-de-matrices" class="level1">
+<h1>Multiplicación de matrices</h1>
+<p>Sean <span class="math inline">\(v_1,\ldots,v_n\)</span> una base de <span class="math inline">\(V\)</span>, <span class="math inline">\(w_1,\ldots,w_m\)</span> una base de <span class="math inline">\(W\)</span> y <span class="math inline">\(u_1,\ldots,u_p\)</span> una base de <span class="math inline">\(U\)</span>. Para</p>
+<p><span class="math display">\[
+T:U\to V,\qquad S:V\to W,
+\]</span></p>
+<p>queremos una multiplicación de matrices que haga cierta la identidad</p>
+<p><span class="math display">\[
+\mathcal M(ST)=\mathcal M(S)\mathcal M(T).
+\]</span></p>
+<p>Si <span class="math inline">\(\mathcal M(S)=A\)</span> y <span class="math inline">\(\mathcal M(T)=B\)</span>, entonces</p>
+<p><span class="math display">\[
+(ST)u_k
+=
+\sum_{j=1}^m\left(\sum_{r=1}^n A_{j,r}B_{r,k}\right)w_j.
+\]</span></p>
+<p>Esto motiva la definición siguiente.</p>
+<section id="definición-multiplicación-de-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="definición-multiplicación-de-matrices">3.41 Definición: multiplicación de matrices</h2>
+<p>Si <span class="math inline">\(A\)</span> es una matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> y <span class="math inline">\(B\)</span> es una matriz <span class="math inline">\(n\)</span> por <span class="math inline">\(p\)</span>, entonces <span class="math inline">\(AB\)</span> es la matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(p\)</span> definida por</p>
+<p><span class="math display">\[
+\boxed{(AB)_{j,k}=\sum_{r=1}^n A_{j,r}B_{r,k}.}
+\]</span></p>
+<p>Por tanto, la entrada <span class="math inline">\((j,k)\)</span> de <span class="math inline">\(AB\)</span> se obtiene multiplicando las entradas correspondientes de la fila <span class="math inline">\(j\)</span> de <span class="math inline">\(A\)</span> y la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(B\)</span>, y sumando los productos.</p>
+<p>El producto sólo está definido cuando el número de columnas de la primera matriz coincide con el número de filas de la segunda.</p>
+</section>
+<section id="ejemplo-multiplicación-de-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-multiplicación-de-matrices">3.42 Ejemplo: multiplicación de matrices</h2>
+<p><span class="math display">\[
+\begin{pmatrix}
+1&amp;2\\3&amp;4\\5&amp;6
+\end{pmatrix}
+\begin{pmatrix}
+6&amp;5&amp;4&amp;3\\2&amp;1&amp;0&amp;-1
+\end{pmatrix}
+=
+\begin{pmatrix}
+10&amp;7&amp;4&amp;1\\26&amp;19&amp;12&amp;5\\42&amp;31&amp;20&amp;9
+\end{pmatrix}.
+\]</span></p>
+<p>La multiplicación de matrices no es conmutativa en general, aunque ambos productos estén definidos. Sí es distributiva y asociativa; véanse los ejercicios 10–12.</p>
+</section>
+<section id="matriz-del-producto-de-aplicaciones-lineales" class="level2">
+<h2 class="anchored" data-anchor-id="matriz-del-producto-de-aplicaciones-lineales">3.43 Matriz del producto de aplicaciones lineales</h2>
+<p>Con bases compatibles como las fijadas arriba, si</p>
+<p><span class="math display">\[
+T\in\mathcal L(U,V),\qquad S\in\mathcal L(V,W),
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{\mathcal M(ST)=\mathcal M(S)\mathcal M(T).}
+\]</span></p>
+<p>La demostración es precisamente el cálculo que motivó la definición 3.41.</p>
+</section>
+<section id="notación-a_jboldsymbolcdot-y-a_boldsymbolcdotk" class="level2">
+<h2 class="anchored" data-anchor-id="notación-a_jboldsymbolcdot-y-a_boldsymbolcdotk">3.44 Notación: <span class="math inline">\(A_{j,\boldsymbol\cdot}\)</span> y <span class="math inline">\(A_{\boldsymbol\cdot,k}\)</span></h2>
+<p>Si <span class="math inline">\(A\)</span> es una matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span>:</p>
+<ul>
+<li><span class="math inline">\(A_{j,\boldsymbol\cdot}\)</span> denota la matriz <span class="math inline">\(1\)</span> por <span class="math inline">\(n\)</span> formada por la fila <span class="math inline">\(j\)</span> de <span class="math inline">\(A\)</span>;</li>
+<li><span class="math inline">\(A_{\boldsymbol\cdot,k}\)</span> denota la matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(1\)</span> formada por la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(A\)</span>.</li>
+</ul>
+</section>
+<section id="ejemplo-notación-para-filas-y-columnas" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-notación-para-filas-y-columnas">3.45 Ejemplo: notación para filas y columnas</h2>
+<p>Si</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}8&amp;4&amp;5\\1&amp;9&amp;7\end{pmatrix},
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+A_{2,\boldsymbol\cdot}=\begin{pmatrix}1&amp;9&amp;7\end{pmatrix},
+\qquad
+A_{\boldsymbol\cdot,2}=\begin{pmatrix}4\\9\end{pmatrix}.
+\]</span></p>
+<p>Identificaremos habitualmente una matriz <span class="math inline">\(1\)</span> por <span class="math inline">\(1\)</span> con su única entrada. Por ejemplo,</p>
+<p><span class="math display">\[
+\begin{pmatrix}3&amp;4\end{pmatrix}
+\begin{pmatrix}6\\2\end{pmatrix}=26.
+\]</span></p>
+</section>
+<section id="la-entrada-de-un-producto-es-fila-por-columna" class="level2">
+<h2 class="anchored" data-anchor-id="la-entrada-de-un-producto-es-fila-por-columna">3.46 La entrada de un producto es fila por columna</h2>
+<p>Si <span class="math inline">\(A\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(n\)</span> por <span class="math inline">\(p\)</span>, entonces</p>
+<p><span class="math display">\[
+\boxed{(AB)_{j,k}=A_{j,\boldsymbol\cdot}B_{\boldsymbol\cdot,k}.}
+\]</span></p>
+<p><strong>Demostración.</strong> Ambos lados son</p>
+<p><span class="math display">\[
+A_{j,1}B_{1,k}+\cdots+A_{j,n}B_{n,k}.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">3.47</h3>
+<p><span class="math display">\[
+(AB)_{j,k}=A_{j,1}B_{1,k}+\cdots+A_{j,n}B_{n,k}.
+\]</span></p>
+</section>
+</section>
+<section id="una-columna-del-producto-es-la-matriz-por-la-columna" class="level2">
+<h2 class="anchored" data-anchor-id="una-columna-del-producto-es-la-matriz-por-la-columna">3.48 Una columna del producto es la matriz por la columna</h2>
+<p>Si <span class="math inline">\(A\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(n\)</span> por <span class="math inline">\(p\)</span>, entonces para <span class="math inline">\(1\le k\le p\)</span>,</p>
+<p><span class="math display">\[
+\boxed{(AB)_{\boldsymbol\cdot,k}=AB_{\boldsymbol\cdot,k}.}
+\]</span></p>
+<p>Esto se obtiene comparando, fila por fila, las entradas dadas por 3.47.</p>
+</section>
+<section id="ejemplo-producto-de-una-matriz-3-por-2-y-una-columna" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-producto-de-una-matriz-3-por-2-y-una-columna">3.49 Ejemplo: producto de una matriz <span class="math inline">\(3\)</span> por <span class="math inline">\(2\)</span> y una columna</h2>
+<p><span class="math display">\[
+\begin{pmatrix}
+1&amp;2\\3&amp;4\\5&amp;6
+\end{pmatrix}
+\begin{pmatrix}5\\1\end{pmatrix}
+=
+\begin{pmatrix}7\\19\\31\end{pmatrix}
+=5\begin{pmatrix}1\\3\\5\end{pmatrix}
++\begin{pmatrix}2\\4\\6\end{pmatrix}.
+\]</span></p>
+<p>El producto es una combinación lineal de las columnas de la primera matriz, con coeficientes tomados de la columna multiplicadora.</p>
+</section>
+<section id="combinación-lineal-de-columnas" class="level2">
+<h2 class="anchored" data-anchor-id="combinación-lineal-de-columnas">3.50 Combinación lineal de columnas</h2>
+<p>Si <span class="math inline">\(A\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> y</p>
+<p><span class="math display">\[
+b=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix},
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{Ab=b_1A_{\boldsymbol\cdot,1}+\cdots+b_nA_{\boldsymbol\cdot,n}.}
+\]</span></p>
+<p><strong>Demostración.</strong> En cada fila <span class="math inline">\(k\)</span>, ambos lados tienen la entrada</p>
+<p><span class="math display">\[
+A_{k,1}b_1+\cdots+A_{k,n}b_n.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+<p>Los ejercicios 8 y 9 dan los resultados análogos para filas.</p>
+</section>
+<section id="multiplicación-matricial-como-combinaciones-lineales-de-columnas-o-filas" class="level2">
+<h2 class="anchored" data-anchor-id="multiplicación-matricial-como-combinaciones-lineales-de-columnas-o-filas">3.51 Multiplicación matricial como combinaciones lineales de columnas o filas</h2>
+<p>Supongamos que <span class="math inline">\(C\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(c\)</span> y <span class="math inline">\(R\)</span> es <span class="math inline">\(c\)</span> por <span class="math inline">\(n\)</span>.</p>
+<p><strong>(a)</strong> La columna <span class="math inline">\(k\)</span> de <span class="math inline">\(CR\)</span> es una combinación lineal de las columnas de <span class="math inline">\(C\)</span>, con coeficientes dados por la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(R\)</span>.</p>
+<p><strong>(b)</strong> La fila <span class="math inline">\(j\)</span> de <span class="math inline">\(CR\)</span> es una combinación lineal de las filas de <span class="math inline">\(R\)</span>, con coeficientes dados por la fila <span class="math inline">\(j\)</span> de <span class="math inline">\(C\)</span>.</p>
+<p><strong>Demostración.</strong> La parte <span class="math inline">\(a\)</span> se sigue de 3.48 y 3.50. La parte <span class="math inline">\(b\)</span> se obtiene del argumento análogo para filas, usando los ejercicios 8 y 9. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="factorización-columnafila-y-rango-de-una-matriz" class="level1">
+<h1>Factorización columna–fila y rango de una matriz</h1>
+<section id="definición-rango-columna-rango-fila" class="level2">
+<h2 class="anchored" data-anchor-id="definición-rango-columna-rango-fila">3.52 Definición: rango columna, rango fila</h2>
+<p>Sea <span class="math inline">\(A\)</span> una matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> con entradas en <span class="math inline">\(\mathbf F\)</span>.</p>
+<ul>
+<li>El <strong>rango columna</strong> de <span class="math inline">\(A\)</span> es la dimensión del subespacio generado por las columnas de <span class="math inline">\(A\)</span> en <span class="math inline">\(\mathbf F^{m,1}\)</span>.</li>
+<li>El <strong>rango fila</strong> de <span class="math inline">\(A\)</span> es la dimensión del subespacio generado por las filas de <span class="math inline">\(A\)</span> en <span class="math inline">\(\mathbf F^{1,n}\)</span>.</li>
+</ul>
+<p>Ambos son a lo sumo <span class="math inline">\(\min\{m,n\}\)</span>.</p>
+</section>
+<section id="ejemplo-rango-columna-y-rango-fila-de-una-matriz-2-por-4" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-rango-columna-y-rango-fila-de-una-matriz-2-por-4">3.53 Ejemplo: rango columna y rango fila de una matriz <span class="math inline">\(2\)</span> por <span class="math inline">\(4\)</span></h2>
+<p>Sea</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}4&amp;7&amp;1&amp;8\\3&amp;5&amp;2&amp;9\end{pmatrix}.
+\]</span></p>
+<p>Las dos primeras columnas no son múltiplos escalares una de otra, de modo que el subespacio generado por las columnas tiene dimensión <span class="math inline">\(2\)</span>. Como <span class="math inline">\(\mathbf F^{2,1}\)</span> tiene dimensión <span class="math inline">\(2\)</span>, el rango columna es <span class="math inline">\(2\)</span>.</p>
+<p>Las dos filas tampoco son múltiplos escalares una de otra; por tanto generan un subespacio bidimensional de <span class="math inline">\(\mathbf F^{1,4}\)</span> y el rango fila también es <span class="math inline">\(2\)</span>.</p>
+</section>
+<section id="definición-transpuesta-at" class="level2">
+<h2 class="anchored" data-anchor-id="definición-transpuesta-at">3.54 Definición: transpuesta, <span class="math inline">\(A^t\)</span></h2>
+<p>La <strong>transpuesta</strong> de una matriz <span class="math inline">\(A\)</span>, denotada por <span class="math inline">\(A^t\)</span>, se obtiene intercambiando filas y columnas. Si <span class="math inline">\(A\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span>, entonces <span class="math inline">\(A^t\)</span> es <span class="math inline">\(n\)</span> por <span class="math inline">\(m\)</span> y</p>
+<p><span class="math display">\[
+\boxed{(A^t)_{k,j}=A_{j,k}.}
+\]</span></p>
+</section>
+<section id="ejemplo-transpuesta" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-transpuesta">3.55 Ejemplo: transpuesta</h2>
+<p>Si</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}5&amp;-7\\3&amp;8\\-4&amp;2\end{pmatrix},
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+A^t=\begin{pmatrix}5&amp;3&amp;-4\\-7&amp;8&amp;2\end{pmatrix}.
+\]</span></p>
+<p>La transpuesta satisface</p>
+<p><span class="math display">\[
+(A+B)^t=A^t+B^t,
+\qquad
+(\lambda A)^t=\lambda A^t,
+\qquad
+(AC)^t=C^tA^t;
+\]</span></p>
+<p>véanse los ejercicios 14 y 15.</p>
+</section>
+<section id="factorización-columnafila" class="level2">
+<h2 class="anchored" data-anchor-id="factorización-columnafila">3.56 Factorización columna–fila</h2>
+<p>Sea <span class="math inline">\(A\)</span> una matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> con rango columna <span class="math inline">\(c\ge1\)</span>. Entonces existen una matriz <span class="math inline">\(C\)</span> de tamaño <span class="math inline">\(m\)</span> por <span class="math inline">\(c\)</span> y una matriz <span class="math inline">\(R\)</span> de tamaño <span class="math inline">\(c\)</span> por <span class="math inline">\(n\)</span> tales que</p>
+<p><span class="math display">\[
+\boxed{A=CR.}
+\]</span></p>
+<p><strong>Demostración.</strong> Las columnas de <span class="math inline">\(A\)</span> pueden reducirse, por 2.30, a una base del subespacio que generan. Esta base tiene <span class="math inline">\(c\)</span> elementos. Colocamos esas <span class="math inline">\(c\)</span> columnas en una matriz <span class="math inline">\(C\)</span>.</p>
+<p>Cada columna de <span class="math inline">\(A\)</span> es una combinación lineal de las columnas de <span class="math inline">\(C\)</span>. Para cada <span class="math inline">\(k\)</span>, colocamos en la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(R\)</span> los coeficientes de la combinación lineal que produce la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(A\)</span>. Por 3.51(a), el producto <span class="math inline">\(CR\)</span> tiene exactamente las mismas columnas que <span class="math inline">\(A\)</span>. Por tanto <span class="math inline">\(A=CR\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="el-rango-columna-es-igual-al-rango-fila" class="level2">
+<h2 class="anchored" data-anchor-id="el-rango-columna-es-igual-al-rango-fila">3.57 El rango columna es igual al rango fila</h2>
+<p>Si</p>
+<p><span class="math display">\[
+A\in\mathbf F^{m,n},
+\]</span></p>
+<p>entonces el rango columna de <span class="math inline">\(A\)</span> es igual al rango fila de <span class="math inline">\(A\)</span>.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(c\)</span> el rango columna de <span class="math inline">\(A\)</span>.</p>
+<p>Si <span class="math inline">\(c=0\)</span>, entonces todas las columnas son cero, por lo que <span class="math inline">\(A=0\)</span> y su rango fila también es <span class="math inline">\(0\)</span>.</p>
+<p>Supongamos ahora <span class="math inline">\(c\ge1\)</span>. Por 3.56 existe una factorización</p>
+<p><span class="math display">\[
+A=CR,
+\]</span></p>
+<p>con <span class="math inline">\(C\)</span> de tamaño <span class="math inline">\(m\)</span> por <span class="math inline">\(c\)</span> y <span class="math inline">\(R\)</span> de tamaño <span class="math inline">\(c\)</span> por <span class="math inline">\(n\)</span>. Por 3.51(b), cada fila de <span class="math inline">\(A\)</span> es una combinación lineal de las <span class="math inline">\(c\)</span> filas de <span class="math inline">\(R\)</span>. Así,</p>
+<p><span class="math display">\[
+\operatorname{rango\ fila}(A)\le c
+=\operatorname{rango\ columna}(A).
+\]</span></p>
+<p>Aplicando esta desigualdad a <span class="math inline">\(A^t\)</span> obtenemos</p>
+<p><span class="math display">\[
+\operatorname{rango\ columna}(A)
+=\operatorname{rango\ fila}(A^t)
+\le\operatorname{rango\ columna}(A^t)
+=\operatorname{rango\ fila}(A).
+\]</span></p>
+<p>Por tanto ambos rangos son iguales. <span class="math inline">\(\square\)</span></p>
+<blockquote class="blockquote">
+<p>[NOTA editorial] El tratamiento explícito del caso <span class="math inline">\(c=0\)</span> aparece en el PDF canónico de 16-08-2026. La copia de referencia del 25-03-2024 pasa directamente a la factorización 3.56, cuya hipótesis exige <span class="math inline">\(c\ge1\)</span>. No se presenta aquí como errata publicada, sino como una mejora textual incorporada por Axler en la versión canónica posterior.</p>
+</blockquote>
+</section>
+<section id="definición-rango" class="level2">
+<h2 class="anchored" data-anchor-id="definición-rango">3.58 Definición: rango</h2>
+<p>Como el rango columna y el rango fila coinciden, llamamos simplemente <strong>rango</strong> de una matriz <span class="math inline">\(A\in\mathbf F^{m,n}\)</span> a su rango columna.</p>
+</section>
+</section>
+<section id="ejercicios-3c" class="level1">
+<h1>Ejercicios 3C</h1>
+<ol type="1">
+<li><p>Supón que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Demuestra que, para cualquier elección de bases de <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span>, la matriz de <span class="math inline">\(T\)</span> tiene al menos <span class="math inline">\(\dim\operatorname{range}T\)</span> entradas no nulas.</p></li>
+<li><p>Supón que <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> son de dimensión finita y no nulos, y que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Demuestra que <span class="math inline">\(\dim\operatorname{range}T=1\)</span> si y sólo si existen bases de <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> para las cuales todas las entradas de <span class="math inline">\(\mathcal M(T)\)</span> son iguales a <span class="math inline">\(1\)</span>.</p></li>
+<li><p>Sean <span class="math inline">\(v_1,\ldots,v_n\)</span> una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_m\)</span> una base de <span class="math inline">\(W\)</span>.</p>
+<ul>
+<li><span class="math inline">\(a\)</span> Si <span class="math inline">\(S,T\in\mathcal L(V,W)\)</span>, demuestra que <span class="math inline">\(\mathcal M(S+T)=\mathcal M(S)+\mathcal M(T)\)</span>.</li>
+<li><span class="math inline">\(b\)</span> Si <span class="math inline">\(\lambda\in\mathbf F\)</span> y <span class="math inline">\(T\in\mathcal L(V,W)\)</span>, demuestra que <span class="math inline">\(\mathcal M(\lambda T)=\lambda\mathcal M(T)\)</span>.</li>
+</ul></li>
+<li><p>Sea <span class="math inline">\(D\in\mathcal L(\mathcal P_3(\mathbf R),\mathcal P_2(\mathbf R))\)</span> la derivación <span class="math inline">\(Dp=p'\)</span>. Encuentra bases del dominio y del codominio para las cuales <span class="math display">\[
+\mathcal M(D)=
+\begin{pmatrix}
+1&amp;0&amp;0&amp;0\\
+0&amp;1&amp;0&amp;0\\
+0&amp;0&amp;1&amp;0
+\end{pmatrix}.
+\]</span></p></li>
+<li><p>Supón que <span class="math inline">\(V,W\)</span> son de dimensión finita y <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Demuestra que existen bases de <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> para las cuales todas las entradas de <span class="math inline">\(\mathcal M(T)\)</span> son <span class="math inline">\(0\)</span>, salvo las entradas <span class="math inline">\((k,k)\)</span>, que son <span class="math inline">\(1\)</span> para <span class="math inline">\(1\le k\le\dim\operatorname{range}T\)</span>.</p></li>
+<li><p>Supón que <span class="math inline">\(v_1,\ldots,v_m\)</span> es una base fijada de <span class="math inline">\(V\)</span>, que <span class="math inline">\(W\)</span> es de dimensión finita y que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Demuestra que existe una base <span class="math inline">\(w_1,\ldots,w_n\)</span> de <span class="math inline">\(W\)</span> para la cual la primera columna de <span class="math inline">\(\mathcal M(T)\)</span> es cero salvo, posiblemente, un <span class="math inline">\(1\)</span> en la posición <span class="math inline">\((1,1)\)</span>.</p></li>
+<li><p>Supón que <span class="math inline">\(w_1,\ldots,w_n\)</span> es una base fijada de <span class="math inline">\(W\)</span>, que <span class="math inline">\(V\)</span> es de dimensión finita y que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Demuestra que existe una base <span class="math inline">\(v_1,\ldots,v_m\)</span> de <span class="math inline">\(V\)</span> para la cual la primera fila de <span class="math inline">\(\mathcal M(T)\)</span> es cero salvo, posiblemente, un <span class="math inline">\(1\)</span> en la posición <span class="math inline">\((1,1)\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(A\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(n\)</span> por <span class="math inline">\(p\)</span>, demuestra que <span class="math display">\[
+(AB)_{j,\boldsymbol\cdot}=A_{j,\boldsymbol\cdot}B
+\]</span> para <span class="math inline">\(1\le j\le m\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(a=(a_1\ \cdots\ a_n)\)</span> es una matriz <span class="math inline">\(1\)</span> por <span class="math inline">\(n\)</span> y <span class="math inline">\(B\)</span> es <span class="math inline">\(n\)</span> por <span class="math inline">\(p\)</span>, demuestra que <span class="math display">\[
+aB=a_1B_{1,\boldsymbol\cdot}+\cdots+a_nB_{n,\boldsymbol\cdot}.
+\]</span></p></li>
+<li><p>Da un ejemplo de matrices <span class="math inline">\(2\)</span> por <span class="math inline">\(2\)</span> <span class="math inline">\(A,B\)</span> tales que <span class="math inline">\(AB\ne BA\)</span>.</p></li>
+<li><p>Demuestra las propiedades distributivas de la multiplicación de matrices: <span class="math display">\[
+   A(B+C)=AB+AC,
+   \qquad
+   (D+E)F=DF+EF,
+   \]</span> siempre que los tamaños hagan que las expresiones estén definidas.</p></li>
+<li><p>Demuestra que la multiplicación de matrices es asociativa: <span class="math display">\[
+   (AB)C=A(BC).
+   \]</span></p></li>
+<li><p>Sea <span class="math inline">\(A\)</span> una matriz <span class="math inline">\(n\)</span> por <span class="math inline">\(n\)</span>. Demuestra que la entrada <span class="math inline">\((j,k)\)</span> de <span class="math inline">\(A^3\)</span> es <span class="math display">\[
+   \sum_{p=1}^n\sum_{r=1}^n A_{j,p}A_{p,r}A_{r,k}.
+   \]</span></p></li>
+<li><p>Demuestra que la función <span class="math display">\[
+   A\longmapsto A^t
+   \]</span> es una aplicación lineal de <span class="math inline">\(\mathbf F^{m,n}\)</span> en <span class="math inline">\(\mathbf F^{n,m}\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(A\)</span> es <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span> y <span class="math inline">\(C\)</span> es <span class="math inline">\(n\)</span> por <span class="math inline">\(p\)</span>, demuestra que <span class="math display">\[
+   (AC)^t=C^tA^t.
+   \]</span></p></li>
+<li><p>Sea <span class="math inline">\(A\)</span> una matriz <span class="math inline">\(m\)</span> por <span class="math inline">\(n\)</span>, <span class="math inline">\(A\ne0\)</span>. Demuestra que <span class="math inline">\(\operatorname{rank}A=1\)</span> si y sólo si existen <span class="math inline">\((c_1,\ldots,c_m)\in\mathbf F^m\)</span> y <span class="math inline">\((d_1,\ldots,d_n)\in\mathbf F^n\)</span> tales que <span class="math display">\[
+   A_{j,k}=c_jd_k
+   \]</span> para todo <span class="math inline">\(j,k\)</span>.</p></li>
+<li><p>Supón que <span class="math inline">\(T\in\mathcal L(V)\)</span> y que <span class="math inline">\(u_1,\ldots,u_n\)</span> y <span class="math inline">\(v_1,\ldots,v_n\)</span> son bases de <span class="math inline">\(V\)</span>. Demuestra que son equivalentes:</p></li>
+</ol>
+<ul>
+<li><span class="math inline">\(a\)</span> <span class="math inline">\(T\)</span> es inyectiva;</li>
+<li><span class="math inline">\(b\)</span> las columnas de <span class="math inline">\(\mathcal M(T)\)</span> son linealmente independientes en <span class="math inline">\(\mathbf F^{n,1}\)</span>;</li>
+<li><span class="math inline">\(c\)</span> las columnas de <span class="math inline">\(\mathcal M(T)\)</span> generan <span class="math inline">\(\mathbf F^{n,1}\)</span>;</li>
+<li><span class="math inline">\(d\)</span> las filas de <span class="math inline">\(\mathcal M(T)\)</span> generan <span class="math inline">\(\mathbf F^{1,n}\)</span>;</li>
+<li><span class="math inline">\(e\)</span> las filas de <span class="math inline">\(\mathcal M(T)\)</span> son linealmente independientes en <span class="math inline">\(\mathbf F^{1,n}\)</span>.</li>
+</ul>
+<p>Aquí <span class="math display">\[
+   \mathcal M(T)=\mathcal M\bigl(T,(u_1,\ldots,u_n),(v_1,\ldots,v_n)\bigr).
+   \]</span></p>
+<hr>
+<p><strong>Atribución:</strong> Sheldon Axler, <em>Linear Algebra Done Right</em>, 4.ª edición. Traducción/adaptación no oficial realizada para Matemática Abierta bajo CC BY-NC 4.0. Fuente oficial: <a href="https://linear.axler.net/" class="uri">https://linear.axler.net/</a>.</p>
+<hr>
+<blockquote class="blockquote">
+<p><strong>Procedencia y licencia de esta edición:</strong> traducción/adaptación no oficial de Sheldon Axler, <a href="https://linear.axler.net/LADR4e.pdf"><em>Linear Algebra Done Right</em>, 4.ª edición</a>. La traducción y las contribuciones de esta edición se publican bajo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Las soluciones señaladas como originales son de Matemática Abierta, no del autor. <a href="../../../../libros/axler-ladr-es/index.html">Índice de esta edición</a>.</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

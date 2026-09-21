@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>a-span-independencia-lineal – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-ed676238647d388fab8eac88108cd7aa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-9f28c0ceaae0a753dc6b739c1a40d479.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#a-span-e-independencia-lineal" id="toc-a-span-e-independencia-lineal" class="nav-link active" data-scroll-target="#a-span-e-independencia-lineal">2A · Span e independencia lineal</a>
+  <ul class="collapse">
+  <li><a href="#notación-lista-de-vectores" id="toc-notación-lista-de-vectores" class="nav-link" data-scroll-target="#notación-lista-de-vectores">2.1 Notación: lista de vectores</a></li>
+  <li><a href="#combinaciones-lineales-y-span" id="toc-combinaciones-lineales-y-span" class="nav-link" data-scroll-target="#combinaciones-lineales-y-span">Combinaciones lineales y span</a></li>
+  <li><a href="#definición-combinación-lineal" id="toc-definición-combinación-lineal" class="nav-link" data-scroll-target="#definición-combinación-lineal">2.2 Definición: combinación lineal</a></li>
+  <li><a href="#ejemplo-combinaciones-lineales-en-mathbf-r3" id="toc-ejemplo-combinaciones-lineales-en-mathbf-r3" class="nav-link" data-scroll-target="#ejemplo-combinaciones-lineales-en-mathbf-r3">2.3 Ejemplo: combinaciones lineales en <span class="math inline">\(\mathbf R^3\)</span></a></li>
+  <li><a href="#definición-span" id="toc-definición-span" class="nav-link" data-scroll-target="#definición-span">2.4 Definición: span</a></li>
+  <li><a href="#ejemplo-span" id="toc-ejemplo-span" class="nav-link" data-scroll-target="#ejemplo-span">2.5 Ejemplo: span</a></li>
+  <li><a href="#el-span-es-el-menor-subespacio-que-contiene-a-la-lista" id="toc-el-span-es-el-menor-subespacio-que-contiene-a-la-lista" class="nav-link" data-scroll-target="#el-span-es-el-menor-subespacio-que-contiene-a-la-lista">2.6 El span es el menor subespacio que contiene a la lista</a></li>
+  <li><a href="#definición-genera" id="toc-definición-genera" class="nav-link" data-scroll-target="#definición-genera">2.7 Definición: genera</a></li>
+  <li><a href="#ejemplo-una-lista-que-genera-mathbf-fn" id="toc-ejemplo-una-lista-que-genera-mathbf-fn" class="nav-link" data-scroll-target="#ejemplo-una-lista-que-genera-mathbf-fn">2.8 Ejemplo: una lista que genera <span class="math inline">\(\mathbf F^n\)</span></a></li>
+  <li><a href="#definición-espacio-vectorial-de-dimensión-finita" id="toc-definición-espacio-vectorial-de-dimensión-finita" class="nav-link" data-scroll-target="#definición-espacio-vectorial-de-dimensión-finita">2.9 Definición: espacio vectorial de dimensión finita</a></li>
+  <li><a href="#definición-polinomio-mathcal-pmathbf-f" id="toc-definición-polinomio-mathcal-pmathbf-f" class="nav-link" data-scroll-target="#definición-polinomio-mathcal-pmathbf-f">2.10 Definición: polinomio, <span class="math inline">\(\mathcal P(\mathbf F)\)</span></a></li>
+  <li><a href="#definición-grado-de-un-polinomio-deg-p" id="toc-definición-grado-de-un-polinomio-deg-p" class="nav-link" data-scroll-target="#definición-grado-de-un-polinomio-deg-p">2.11 Definición: grado de un polinomio, <span class="math inline">\(\deg p\)</span></a></li>
+  <li><a href="#notación-mathcal-p_mmathbf-f" id="toc-notación-mathcal-p_mmathbf-f" class="nav-link" data-scroll-target="#notación-mathcal-p_mmathbf-f">2.12 Notación: <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span></a></li>
+  <li><a href="#definición-espacio-vectorial-de-dimensión-infinita" id="toc-definición-espacio-vectorial-de-dimensión-infinita" class="nav-link" data-scroll-target="#definición-espacio-vectorial-de-dimensión-infinita">2.13 Definición: espacio vectorial de dimensión infinita</a></li>
+  <li><a href="#ejemplo-mathcal-pmathbf-f-es-de-dimensión-infinita" id="toc-ejemplo-mathcal-pmathbf-f-es-de-dimensión-infinita" class="nav-link" data-scroll-target="#ejemplo-mathcal-pmathbf-f-es-de-dimensión-infinita">2.14 Ejemplo: <span class="math inline">\(\mathcal P(\mathbf F)\)</span> es de dimensión infinita</a></li>
+  <li><a href="#independencia-lineal" id="toc-independencia-lineal" class="nav-link" data-scroll-target="#independencia-lineal">Independencia lineal</a></li>
+  <li><a href="#definición-linealmente-independiente" id="toc-definición-linealmente-independiente" class="nav-link" data-scroll-target="#definición-linealmente-independiente">2.15 Definición: linealmente independiente</a></li>
+  <li><a href="#ejemplos-listas-linealmente-independientes" id="toc-ejemplos-listas-linealmente-independientes" class="nav-link" data-scroll-target="#ejemplos-listas-linealmente-independientes">2.16 Ejemplos: listas linealmente independientes</a></li>
+  <li><a href="#definición-linealmente-dependiente" id="toc-definición-linealmente-dependiente" class="nav-link" data-scroll-target="#definición-linealmente-dependiente">2.17 Definición: linealmente dependiente</a></li>
+  <li><a href="#ejemplos-listas-linealmente-dependientes" id="toc-ejemplos-listas-linealmente-dependientes" class="nav-link" data-scroll-target="#ejemplos-listas-linealmente-dependientes">2.18 Ejemplos: listas linealmente dependientes</a></li>
+  <li><a href="#lema-de-dependencia-lineal" id="toc-lema-de-dependencia-lineal" class="nav-link" data-scroll-target="#lema-de-dependencia-lineal">2.19 Lema de dependencia lineal</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">2.20</a></li>
+  <li><a href="#ejemplo-menor-k-en-el-lema-de-dependencia-lineal" id="toc-ejemplo-menor-k-en-el-lema-de-dependencia-lineal" class="nav-link" data-scroll-target="#ejemplo-menor-k-en-el-lema-de-dependencia-lineal">2.21 Ejemplo: menor <span class="math inline">\(k\)</span> en el lema de dependencia lineal</a></li>
+  <li><a href="#longitud-de-lista-linealmente-independiente-leq-longitud-de-lista-generadora" id="toc-longitud-de-lista-linealmente-independiente-leq-longitud-de-lista-generadora" class="nav-link" data-scroll-target="#longitud-de-lista-linealmente-independiente-leq-longitud-de-lista-generadora">2.22 Longitud de lista linealmente independiente <span class="math inline">\(\leq\)</span> longitud de lista generadora</a></li>
+  <li><a href="#ejemplo-ninguna-lista-de-longitud-cuatro-es-linealmente-independiente-en-mathbf-r3" id="toc-ejemplo-ninguna-lista-de-longitud-cuatro-es-linealmente-independiente-en-mathbf-r3" class="nav-link" data-scroll-target="#ejemplo-ninguna-lista-de-longitud-cuatro-es-linealmente-independiente-en-mathbf-r3">2.23 Ejemplo: ninguna lista de longitud cuatro es linealmente independiente en <span class="math inline">\(\mathbf R^3\)</span></a></li>
+  <li><a href="#ejemplo-ninguna-lista-de-longitud-tres-genera-mathbf-r4" id="toc-ejemplo-ninguna-lista-de-longitud-tres-genera-mathbf-r4" class="nav-link" data-scroll-target="#ejemplo-ninguna-lista-de-longitud-tres-genera-mathbf-r4">2.24 Ejemplo: ninguna lista de longitud tres genera <span class="math inline">\(\mathbf R^4\)</span></a></li>
+  <li><a href="#subespacios-de-dimensión-finita" id="toc-subespacios-de-dimensión-finita" class="nav-link" data-scroll-target="#subespacios-de-dimensión-finita">2.25 Subespacios de dimensión finita</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-2a" id="toc-ejercicios-2a" class="nav-link" data-scroll-target="#ejercicios-2a">Ejercicios 2A</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="a-span-e-independencia-lineal" class="level1">
+<h1>2A · Span e independencia lineal</h1>
+<p><strong>Estado:</strong> <code>COTEJADO</code><br>
+<strong>Fuente:</strong> Sheldon Axler, <em>Linear Algebra Done Right</em>, 4.ª ed., PDF oficial de 16-08-2026, pp.&nbsp;28–38.<br>
+<strong>Licencia:</strong> adaptación/traducción no oficial bajo CC BY-NC 4.0.<br>
+<strong>Control de erratas:</strong> se incorporan las correcciones oficiales de p.&nbsp;28 <span class="math inline">\(`F` → `R`\)</span> y p.&nbsp;35 <span class="math inline">\(`w_m` → `w_n`\)</span> ya presentes en el PDF canónico de 16-08-2026.</p>
+<blockquote class="blockquote">
+<p>[TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas y estructura lógica del original. La notación <code>span</code> se mantiene como operador; en prosa se usa «subespacio generado» cuando resulta natural.</p>
+</blockquote>
+<p>Hasta ahora hemos escrito las listas de números entre paréntesis, y seguiremos haciéndolo para los elementos de <span class="math inline">\(\mathbf F^n\)</span>. A partir de este punto también necesitamos listas cuyos términos son vectores. Para evitar confusiones, normalmente escribiremos estas listas de vectores sin un par de paréntesis que abarque toda la lista.</p>
+<section id="notación-lista-de-vectores" class="level2">
+<h2 class="anchored" data-anchor-id="notación-lista-de-vectores">2.1 Notación: lista de vectores</h2>
+<p>Normalmente escribiremos las listas de vectores sin paréntesis exteriores.</p>
+</section>
+<section id="combinaciones-lineales-y-span" class="level2">
+<h2 class="anchored" data-anchor-id="combinaciones-lineales-y-span">Combinaciones lineales y span</h2>
+<p>Una suma de múltiplos escalares de los vectores de una lista se llama <strong>combinación lineal</strong> de esa lista.</p>
+</section>
+<section id="definición-combinación-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="definición-combinación-lineal">2.2 Definición: combinación lineal</h2>
+<p>Una combinación lineal de una lista <span class="math inline">\(v_1,\ldots,v_m\)</span> de vectores de <span class="math inline">\(V\)</span> es un vector de la forma</p>
+<p><span class="math display">\[
+a_1v_1+\cdots+a_mv_m,
+\]</span></p>
+<p>donde <span class="math inline">\(a_1,\ldots,a_m\in\mathbf F\)</span>.</p>
+</section>
+<section id="ejemplo-combinaciones-lineales-en-mathbf-r3" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-combinaciones-lineales-en-mathbf-r3">2.3 Ejemplo: combinaciones lineales en <span class="math inline">\(\mathbf R^3\)</span></h2>
+<p>El vector <span class="math inline">\((17,-4,2)\)</span> es una combinación lineal de <span class="math inline">\((2,1,-3),(1,-2,4)\)</span> porque</p>
+<p><span class="math display">\[
+(17,-4,2)=6(2,1,-3)+5(1,-2,4).
+\]</span></p>
+<p>En cambio, <span class="math inline">\((17,-4,5)\)</span> no es una combinación lineal de esos dos vectores. Si lo fuera, existirían <span class="math inline">\(a_1,a_2\in\mathbf R\)</span> tales que</p>
+<p><span class="math display">\[
+(17,-4,5)=a_1(2,1,-3)+a_2(1,-2,4),
+\]</span></p>
+<p>lo que exigiría resolver simultáneamente</p>
+<p><span class="math display">\[
+17=2a_1+a_2,\qquad -4=a_1-2a_2,\qquad 5=-3a_1+4a_2,
+\]</span></p>
+<p>sistema que no tiene solución.</p>
+</section>
+<section id="definición-span" class="level2">
+<h2 class="anchored" data-anchor-id="definición-span">2.4 Definición: span</h2>
+<p>El conjunto de todas las combinaciones lineales de una lista <span class="math inline">\(v_1,\ldots,v_m\)</span> de vectores de <span class="math inline">\(V\)</span> se llama <strong>span</strong> o <strong>subespacio generado</strong> por <span class="math inline">\(v_1,\ldots,v_m\)</span> y se denota</p>
+<p><span class="math display">\[
+\operatorname{span}(v_1,\ldots,v_m).
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\operatorname{span}(v_1,\ldots,v_m)
+=
+\{a_1v_1+\cdots+a_mv_m:a_1,\ldots,a_m\in\mathbf F\}.
+\]</span></p>
+<p>Por definición,</p>
+<p><span class="math display">\[
+\operatorname{span}(\,)=\{0\}
+\]</span></p>
+<p>para la lista vacía.</p>
+</section>
+<section id="ejemplo-span" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-span">2.5 Ejemplo: span</h2>
+<p>El Ejemplo 2.3 muestra que</p>
+<p><span class="math display">\[
+(17,-4,2)\in\operatorname{span}((2,1,-3),(1,-2,4)),
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+(17,-4,5)\notin\operatorname{span}((2,1,-3),(1,-2,4)).
+\]</span></p>
+</section>
+<section id="el-span-es-el-menor-subespacio-que-contiene-a-la-lista" class="level2">
+<h2 class="anchored" data-anchor-id="el-span-es-el-menor-subespacio-que-contiene-a-la-lista">2.6 El span es el menor subespacio que contiene a la lista</h2>
+<p>El span de una lista de vectores de <span class="math inline">\(V\)</span> es el menor subespacio de <span class="math inline">\(V\)</span> que contiene a todos los vectores de la lista.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(v_1,\ldots,v_m\)</span> una lista de vectores de <span class="math inline">\(V\)</span>. El vector <span class="math inline">\(0\)</span> pertenece a su span porque</p>
+<p><span class="math display">\[
+0=0v_1+\cdots+0v_m.
+\]</span></p>
+<p>El span es cerrado bajo suma, pues</p>
+<p><span class="math display">\[
+(a_1v_1+\cdots+a_mv_m)+(c_1v_1+\cdots+c_mv_m)
+=(a_1+c_1)v_1+\cdots+(a_m+c_m)v_m,
+\]</span></p>
+<p>y es cerrado bajo multiplicación por escalares, porque</p>
+<p><span class="math display">\[
+\lambda(a_1v_1+\cdots+a_mv_m)
+=(\lambda a_1)v_1+\cdots+(\lambda a_m)v_m.
+\]</span></p>
+<p>Por 1.34, el span es un subespacio de <span class="math inline">\(V\)</span>. Además, cada <span class="math inline">\(v_k\)</span> pertenece al span tomando coeficiente <span class="math inline">\(1\)</span> para <span class="math inline">\(v_k\)</span> y <span class="math inline">\(0\)</span> para los restantes vectores.</p>
+<p>Finalmente, cualquier subespacio de <span class="math inline">\(V\)</span> que contenga a todos los <span class="math inline">\(v_k\)</span> debe contener todas sus combinaciones lineales. Por tanto debe contener <span class="math inline">\(\operatorname{span}(v_1,\ldots,v_m)\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="definición-genera" class="level2">
+<h2 class="anchored" data-anchor-id="definición-genera">2.7 Definición: genera</h2>
+<p>Si</p>
+<p><span class="math display">\[
+\operatorname{span}(v_1,\ldots,v_m)=V,
+\]</span></p>
+<p>decimos que la lista <span class="math inline">\(v_1,\ldots,v_m\)</span> <strong>genera</strong> <span class="math inline">\(V\)</span>.</p>
+</section>
+<section id="ejemplo-una-lista-que-genera-mathbf-fn" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-una-lista-que-genera-mathbf-fn">2.8 Ejemplo: una lista que genera <span class="math inline">\(\mathbf F^n\)</span></h2>
+<p>La lista</p>
+<p><span class="math display">\[
+(1,0,\ldots,0),(0,1,0,\ldots,0),\ldots,(0,\ldots,0,1)
+\]</span></p>
+<p>genera <span class="math inline">\(\mathbf F^n\)</span>. En efecto, para todo <span class="math inline">\((x_1,\ldots,x_n)\in\mathbf F^n\)</span>,</p>
+<p><span class="math display">\[
+(x_1,\ldots,x_n)
+=x_1(1,0,\ldots,0)+\cdots+x_n(0,\ldots,0,1).
+\]</span></p>
+</section>
+<section id="definición-espacio-vectorial-de-dimensión-finita" class="level2">
+<h2 class="anchored" data-anchor-id="definición-espacio-vectorial-de-dimensión-finita">2.9 Definición: espacio vectorial de dimensión finita</h2>
+<p>Un espacio vectorial se llama <strong>de dimensión finita</strong> si alguna lista de vectores del espacio lo genera.</p>
+<p>Toda lista tiene, por definición, longitud finita. En particular, 2.8 muestra que <span class="math inline">\(\mathbf F^n\)</span> es de dimensión finita.</p>
+</section>
+<section id="definición-polinomio-mathcal-pmathbf-f" class="level2">
+<h2 class="anchored" data-anchor-id="definición-polinomio-mathcal-pmathbf-f">2.10 Definición: polinomio, <span class="math inline">\(\mathcal P(\mathbf F)\)</span></h2>
+<p>Una función <span class="math inline">\(p:\mathbf F\to\mathbf F\)</span> se llama <strong>polinomio con coeficientes en <span class="math inline">\(\mathbf F\)</span></strong> si existen <span class="math inline">\(a_0,\ldots,a_m\in\mathbf F\)</span> tales que</p>
+<p><span class="math display">\[
+p(z)=a_0+a_1z+a_2z^2+\cdots+a_mz^m
+\]</span></p>
+<p>para todo <span class="math inline">\(z\in\mathbf F\)</span>.</p>
+<p>Denotamos por <span class="math inline">\(\mathcal P(\mathbf F)\)</span> el conjunto de todos los polinomios con coeficientes en <span class="math inline">\(\mathbf F\)</span>.</p>
+<p>Con las operaciones usuales de suma y multiplicación por escalares, <span class="math inline">\(\mathcal P(\mathbf F)\)</span> es un espacio vectorial sobre <span class="math inline">\(\mathbf F\)</span>. Los coeficientes de un polinomio quedan determinados de manera única por el polinomio; este hecho se demostrará posteriormente en 4.8.</p>
+</section>
+<section id="definición-grado-de-un-polinomio-deg-p" class="level2">
+<h2 class="anchored" data-anchor-id="definición-grado-de-un-polinomio-deg-p">2.11 Definición: grado de un polinomio, <span class="math inline">\(\deg p\)</span></h2>
+<p>Un polinomio <span class="math inline">\(p\in\mathcal P(\mathbf F)\)</span> tiene <strong>grado</strong> <span class="math inline">\(m\)</span> si puede escribirse</p>
+<p><span class="math display">\[
+p(z)=a_0+a_1z+\cdots+a_mz^m
+\]</span></p>
+<p>con <span class="math inline">\(a_m\neq0\)</span>.</p>
+<p>El polinomio idénticamente nulo tiene, por convenio, grado <span class="math inline">\(-\infty\)</span>. El grado de <span class="math inline">\(p\)</span> se denota <span class="math inline">\(\deg p\)</span>.</p>
+</section>
+<section id="notación-mathcal-p_mmathbf-f" class="level2">
+<h2 class="anchored" data-anchor-id="notación-mathcal-p_mmathbf-f">2.12 Notación: <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span></h2>
+<p>Para un entero no negativo <span class="math inline">\(m\)</span>, <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span> denota el conjunto de los polinomios con coeficientes en <span class="math inline">\(\mathbf F\)</span> y grado a lo sumo <span class="math inline">\(m\)</span>.</p>
+<p>Como</p>
+<p><span class="math display">\[
+\mathcal P_m(\mathbf F)=\operatorname{span}(1,z,\ldots,z^m),
+\]</span></p>
+<p><span class="math inline">\(\mathcal P_m(\mathbf F)\)</span> es de dimensión finita.</p>
+</section>
+<section id="definición-espacio-vectorial-de-dimensión-infinita" class="level2">
+<h2 class="anchored" data-anchor-id="definición-espacio-vectorial-de-dimensión-infinita">2.13 Definición: espacio vectorial de dimensión infinita</h2>
+<p>Un espacio vectorial se llama <strong>de dimensión infinita</strong> si no es de dimensión finita.</p>
+</section>
+<section id="ejemplo-mathcal-pmathbf-f-es-de-dimensión-infinita" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-mathcal-pmathbf-f-es-de-dimensión-infinita">2.14 Ejemplo: <span class="math inline">\(\mathcal P(\mathbf F)\)</span> es de dimensión infinita</h2>
+<p>Tómese cualquier lista finita de polinomios y sea <span class="math inline">\(m\)</span> el mayor de sus grados. Toda combinación lineal de esos polinomios tiene grado a lo sumo <span class="math inline">\(m\)</span>, por lo que <span class="math inline">\(z^{m+1}\)</span> no pertenece a su span. Así ninguna lista finita genera <span class="math inline">\(\mathcal P(\mathbf F)\)</span>.</p>
+</section>
+<section id="independencia-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="independencia-lineal">Independencia lineal</h2>
+<p>Supongamos que <span class="math inline">\(v\in\operatorname{span}(v_1,\ldots,v_m)\)</span>. Puede escribirse</p>
+<p><span class="math display">\[
+v=a_1v_1+\cdots+a_mv_m.
+\]</span></p>
+<p>La cuestión decisiva es si los escalares <span class="math inline">\(a_1,\ldots,a_m\)</span> están determinados de manera única. Si también</p>
+<p><span class="math display">\[
+v=c_1v_1+\cdots+c_mv_m,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+0=(a_1-c_1)v_1+\cdots+(a_m-c_m)v_m.
+\]</span></p>
+<p>Esto conduce a la siguiente definición.</p>
+</section>
+<section id="definición-linealmente-independiente" class="level2">
+<h2 class="anchored" data-anchor-id="definición-linealmente-independiente">2.15 Definición: linealmente independiente</h2>
+<p>Una lista <span class="math inline">\(v_1,\ldots,v_m\)</span> de vectores de <span class="math inline">\(V\)</span> se llama <strong>linealmente independiente</strong> si la única elección de escalares <span class="math inline">\(a_1,\ldots,a_m\in\mathbf F\)</span> que satisface</p>
+<p><span class="math display">\[
+a_1v_1+\cdots+a_mv_m=0
+\]</span></p>
+<p>es</p>
+<p><span class="math display">\[
+a_1=\cdots=a_m=0.
+\]</span></p>
+<p>La lista vacía también se declara linealmente independiente.</p>
+<p>Equivalentemente, <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente si cada vector de su span admite una única representación como combinación lineal de esa lista.</p>
+</section>
+<section id="ejemplos-listas-linealmente-independientes" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-listas-linealmente-independientes">2.16 Ejemplos: listas linealmente independientes</h2>
+<p><strong>(a)</strong> La lista</p>
+<p><span class="math display">\[
+(1,0,0,0),(0,1,0,0),(0,0,1,0)
+\]</span></p>
+<p>es linealmente independiente en <span class="math inline">\(\mathbf F^4\)</span>: una combinación lineal igual a <span class="math inline">\(0\)</span> obliga a que sus tres coeficientes sean <span class="math inline">\(0\)</span>.</p>
+<p><strong>(b)</strong> Para todo entero no negativo <span class="math inline">\(m\)</span>, la lista</p>
+<p><span class="math display">\[
+1,z,\ldots,z^m
+\]</span></p>
+<p>es linealmente independiente en <span class="math inline">\(\mathcal P(\mathbf F)\)</span>, porque un polinomio idénticamente nulo tiene todos sus coeficientes iguales a <span class="math inline">\(0\)</span>.</p>
+<p><strong>(c)</strong> Una lista de longitud uno es linealmente independiente si y sólo si su único vector es distinto de <span class="math inline">\(0\)</span>.</p>
+<p><strong>(d)</strong> Una lista de longitud dos es linealmente independiente si y sólo si ninguno de sus dos vectores es múltiplo escalar del otro.</p>
+<p>Eliminar términos de una lista linealmente independiente conserva la independencia lineal.</p>
+</section>
+<section id="definición-linealmente-dependiente" class="level2">
+<h2 class="anchored" data-anchor-id="definición-linealmente-dependiente">2.17 Definición: linealmente dependiente</h2>
+<p>Una lista de vectores de <span class="math inline">\(V\)</span> se llama <strong>linealmente dependiente</strong> si no es linealmente independiente.</p>
+<p>Equivalentemente, <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente dependiente si existen escalares <span class="math inline">\(a_1,\ldots,a_m\in\mathbf F\)</span>, no todos nulos, tales que</p>
+<p><span class="math display">\[
+a_1v_1+\cdots+a_mv_m=0.
+\]</span></p>
+</section>
+<section id="ejemplos-listas-linealmente-dependientes" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-listas-linealmente-dependientes">2.18 Ejemplos: listas linealmente dependientes</h2>
+<p>La lista</p>
+<p><span class="math display">\[
+(2,3,1),(1,-1,2),(7,3,8)
+\]</span></p>
+<p>es linealmente dependiente porque</p>
+<p><span class="math display">\[
+2(2,3,1)+3(1,-1,2)-(7,3,8)=(0,0,0).
+\]</span></p>
+<p>La lista</p>
+<p><span class="math display">\[
+(2,3,1),(1,-1,2),(7,3,c)
+\]</span></p>
+<p>es linealmente dependiente si y sólo si <span class="math inline">\(c=8\)</span>.</p>
+<p>Si algún vector de una lista es combinación lineal de los demás, la lista es linealmente dependiente. En particular, toda lista que contenga el vector <span class="math inline">\(0\)</span> es linealmente dependiente.</p>
+</section>
+<section id="lema-de-dependencia-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="lema-de-dependencia-lineal">2.19 Lema de dependencia lineal</h2>
+<p>Supongamos que <span class="math inline">\(v_1,\ldots,v_m\)</span> es una lista linealmente dependiente en <span class="math inline">\(V\)</span>. Entonces existe</p>
+<p><span class="math display">\[
+k\in\{1,\ldots,m\}
+\]</span></p>
+<p>tal que</p>
+<p><span class="math display">\[
+v_k\in\operatorname{span}(v_1,\ldots,v_{k-1}).
+\]</span></p>
+<p>Además, si se elimina de la lista un término <span class="math inline">\(v_k\)</span> que cumple esa condición, el span de la lista restante es igual a <span class="math inline">\(\operatorname{span}(v_1,\ldots,v_m)\)</span>.</p>
+<p><strong>Demostración.</strong> Como la lista es dependiente, existen <span class="math inline">\(a_1,\ldots,a_m\)</span>, no todos nulos, con</p>
+<p><span class="math display">\[
+a_1v_1+\cdots+a_mv_m=0.
+\]</span></p>
+<p>Sea <span class="math inline">\(k\)</span> el mayor índice para el cual <span class="math inline">\(a_k\neq0\)</span>. Entonces</p>
+<p><span class="math display">\[
+v_k=-\frac{a_1}{a_k}v_1-\cdots-\frac{a_{k-1}}{a_k}v_{k-1},
+\]</span></p>
+<p>y por tanto <span class="math inline">\(v_k\in\operatorname{span}(v_1,\ldots,v_{k-1})\)</span>.</p>
+<p>Ahora supongamos que para cierto <span class="math inline">\(k\)</span> tenemos</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">2.20</h2>
+<p><span class="math display">\[
+v_k=b_1v_1+\cdots+b_{k-1}v_{k-1}.
+\]</span></p>
+<p>Toda combinación lineal de <span class="math inline">\(v_1,\ldots,v_m\)</span> puede reescribirse sustituyendo <span class="math inline">\(v_k\)</span> mediante 2.20. Por ello, eliminar <span class="math inline">\(v_k\)</span> no cambia el span. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(k=1\)</span>, la condición significa simplemente <span class="math inline">\(v_1=0\)</span>, porque <span class="math inline">\(\operatorname{span}(\,)=\{0\}\)</span>.</p>
+</section>
+<section id="ejemplo-menor-k-en-el-lema-de-dependencia-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-menor-k-en-el-lema-de-dependencia-lineal">2.21 Ejemplo: menor <span class="math inline">\(k\)</span> en el lema de dependencia lineal</h2>
+<p>Considérese en <span class="math inline">\(\mathbf R^3\)</span> la lista</p>
+<p><span class="math display">\[
+(1,2,3),(6,5,4),(15,16,17),(8,9,7).
+\]</span></p>
+<p>El primer vector no es <span class="math inline">\(0\)</span>, por lo que <span class="math inline">\(k=1\)</span> no sirve. El segundo no es múltiplo escalar del primero, por lo que <span class="math inline">\(k=2\)</span> tampoco sirve. En cambio,</p>
+<p><span class="math display">\[
+(15,16,17)=3(1,2,3)+2(6,5,4),
+\]</span></p>
+<p>de modo que el menor índice que funciona es <span class="math inline">\(k=3\)</span>.</p>
+</section>
+<section id="longitud-de-lista-linealmente-independiente-leq-longitud-de-lista-generadora" class="level2">
+<h2 class="anchored" data-anchor-id="longitud-de-lista-linealmente-independiente-leq-longitud-de-lista-generadora">2.22 Longitud de lista linealmente independiente <span class="math inline">\(\leq\)</span> longitud de lista generadora</h2>
+<p>En un espacio vectorial de dimensión finita, la longitud de toda lista linealmente independiente es menor o igual que la longitud de toda lista generadora.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(u_1,\ldots,u_m\)</span> una lista linealmente independiente y sea <span class="math inline">\(w_1,\ldots,w_n\)</span> una lista que genera <span class="math inline">\(V\)</span>. Partimos de la lista generadora de los <span class="math inline">\(w\)</span>.</p>
+<p>Añadimos <span class="math inline">\(u_1\)</span>. La nueva lista es dependiente porque <span class="math inline">\(u_1\)</span> está en el span de los <span class="math inline">\(w\)</span>. Por el lema 2.19 podemos eliminar uno de los <span class="math inline">\(w\)</span> sin cambiar el span. Repetimos el procedimiento con <span class="math inline">\(u_2\)</span>, luego con <span class="math inline">\(u_3\)</span>, etc. La independencia de <span class="math inline">\(u_1,\ldots,u_m\)</span> garantiza que en cada etapa el vector eliminable puede elegirse entre los <span class="math inline">\(w\)</span> restantes y no entre los <span class="math inline">\(u\)</span> ya incorporados.</p>
+<p>Por tanto, por cada <span class="math inline">\(u_k\)</span> introducido debe existir un <span class="math inline">\(w\)</span> que pueda retirarse. Hay al menos tantos <span class="math inline">\(w\)</span> como <span class="math inline">\(u\)</span>, de donde</p>
+<p><span class="math display">\[
+m\le n.
+\]</span></p>
+<p><span class="math inline">\(\square\)</span></p>
+</section>
+<section id="ejemplo-ninguna-lista-de-longitud-cuatro-es-linealmente-independiente-en-mathbf-r3" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-ninguna-lista-de-longitud-cuatro-es-linealmente-independiente-en-mathbf-r3">2.23 Ejemplo: ninguna lista de longitud cuatro es linealmente independiente en <span class="math inline">\(\mathbf R^3\)</span></h2>
+<p>La lista estándar de tres vectores genera <span class="math inline">\(\mathbf R^3\)</span>. Por 2.22, una lista linealmente independiente en <span class="math inline">\(\mathbf R^3\)</span> no puede tener longitud mayor que tres.</p>
+</section>
+<section id="ejemplo-ninguna-lista-de-longitud-tres-genera-mathbf-r4" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-ninguna-lista-de-longitud-tres-genera-mathbf-r4">2.24 Ejemplo: ninguna lista de longitud tres genera <span class="math inline">\(\mathbf R^4\)</span></h2>
+<p>La lista estándar de cuatro vectores de <span class="math inline">\(\mathbf R^4\)</span> es linealmente independiente. Por 2.22, toda lista generadora de <span class="math inline">\(\mathbf R^4\)</span> debe tener longitud al menos cuatro.</p>
+</section>
+<section id="subespacios-de-dimensión-finita" class="level2">
+<h2 class="anchored" data-anchor-id="subespacios-de-dimensión-finita">2.25 Subespacios de dimensión finita</h2>
+<p>Todo subespacio de un espacio vectorial de dimensión finita es de dimensión finita.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(U\)</span> un subespacio de un espacio vectorial de dimensión finita <span class="math inline">\(V\)</span>.</p>
+<p>Si <span class="math inline">\(U=\{0\}\)</span>, el resultado es inmediato. Si no, elegimos <span class="math inline">\(u_1\in U\)</span>, <span class="math inline">\(u_1\neq0\)</span>. Mientras <span class="math inline">\(U\neq\operatorname{span}(u_1,\ldots,u_{k-1})\)</span>, elegimos</p>
+<p><span class="math display">\[
+u_k\in U\setminus\operatorname{span}(u_1,\ldots,u_{k-1}).
+\]</span></p>
+<p>En cada etapa la lista construida es linealmente independiente, por el lema 2.19. Pero 2.22 impide que una lista linealmente independiente en <span class="math inline">\(V\)</span> sea más larga que una lista generadora fija de <span class="math inline">\(V\)</span>. Por tanto el proceso debe detenerse. En ese momento <span class="math inline">\(U\)</span> está generado por una lista finita y, por consiguiente, es de dimensión finita. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="ejercicios-2a" class="level1">
+<h1>Ejercicios 2A</h1>
+<ol type="1">
+<li>Encuentra una lista de cuatro vectores distintos de <span class="math inline">\(\mathbf F^3\)</span> cuyo span sea <span class="math display">\[
+\{(x,y,z)\in\mathbf F^3:x+y+z=0\}.
+\]</span></li>
+<li>Demuestra o da un contraejemplo: si <span class="math inline">\(v_1,v_2,v_3,v_4\)</span> genera <span class="math inline">\(V\)</span>, entonces <span class="math display">\[
+v_1-v_2,\ v_2-v_3,\ v_3-v_4,\ v_4
+\]</span> también genera <span class="math inline">\(V\)</span>.</li>
+<li>Sea <span class="math inline">\(v_1,\ldots,v_m\)</span> una lista de vectores de <span class="math inline">\(V\)</span>. Para <span class="math inline">\(k\in\{1,\ldots,m\}\)</span> define <span class="math display">\[
+w_k=v_1+\cdots+v_k.
+\]</span> Demuestra que <span class="math display">\[
+\operatorname{span}(v_1,\ldots,v_m)=\operatorname{span}(w_1,\ldots,w_m).
+\]</span></li>
+<li><span class="math inline">\(a\)</span> Demuestra que una lista de longitud uno es linealmente independiente si y sólo si su único vector no es <span class="math inline">\(0\)</span>.<br>
+<span class="math inline">\(b\)</span> Demuestra que una lista de longitud dos es linealmente independiente si y sólo si ninguno de sus dos vectores es múltiplo escalar del otro.</li>
+<li>Encuentra <span class="math inline">\(t\in\mathbf R\)</span> tal que <span class="math display">\[
+(3,1,4),(2,-3,5),(5,9,t)
+\]</span> no sea linealmente independiente en <span class="math inline">\(\mathbf R^3\)</span>.</li>
+<li>Demuestra que <span class="math display">\[
+(2,3,1),(1,-1,2),(7,3,c)
+\]</span> es linealmente dependiente en <span class="math inline">\(\mathbf F^3\)</span> si y sólo si <span class="math inline">\(c=8\)</span>.</li>
+<li><span class="math inline">\(a\)</span> Considerando <span class="math inline">\(\mathbf C\)</span> como espacio vectorial sobre <span class="math inline">\(\mathbf R\)</span>, demuestra que <span class="math inline">\(1+i,1-i\)</span> es linealmente independiente.<br>
+<span class="math inline">\(b\)</span> Considerando <span class="math inline">\(\mathbf C\)</span> como espacio vectorial sobre <span class="math inline">\(\mathbf C\)</span>, demuestra que esa misma lista es linealmente dependiente.</li>
+<li>Supón que <span class="math inline">\(v_1,v_2,v_3,v_4\)</span> es linealmente independiente. Demuestra que <span class="math display">\[
+v_1-v_2,\ v_2-v_3,\ v_3-v_4,\ v_4
+\]</span> también es linealmente independiente.</li>
+<li>Demuestra o da un contraejemplo: si <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente, entonces <span class="math display">\[
+5v_1-4v_2,\ v_2,\ldots,v_m
+\]</span> es linealmente independiente.</li>
+<li>Demuestra o da un contraejemplo: si <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente y <span class="math inline">\(\lambda\in\mathbf F\)</span>, <span class="math inline">\(\lambda\neq0\)</span>, entonces <span class="math display">\[
+\lambda v_1,\ldots,\lambda v_m
+\]</span> es linealmente independiente.</li>
+<li>Demuestra o da un contraejemplo: si <span class="math inline">\(v_1,\ldots,v_m\)</span> y <span class="math inline">\(w_1,\ldots,w_m\)</span> son listas linealmente independientes, entonces <span class="math display">\[
+v_1+w_1,\ldots,v_m+w_m
+\]</span> es linealmente independiente.</li>
+<li>Supón que <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente y <span class="math inline">\(w\in V\)</span>. Demuestra que si <span class="math display">\[
+v_1+w,\ldots,v_m+w
+\]</span> es linealmente dependiente, entonces <span class="math inline">\(w\in\operatorname{span}(v_1,\ldots,v_m)\)</span>.</li>
+<li>Supón que <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente y <span class="math inline">\(w\in V\)</span>. Demuestra que <span class="math display">\[
+v_1,\ldots,v_m,w\text{ es linealmente independiente}
+\iff
+w\notin\operatorname{span}(v_1,\ldots,v_m).
+\]</span></li>
+<li>Con <span class="math inline">\(w_k=v_1+\cdots+v_k\)</span>, demuestra que <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente si y sólo si <span class="math inline">\(w_1,\ldots,w_m\)</span> lo es.</li>
+<li>Explica por qué no existe una lista de seis polinomios linealmente independiente en <span class="math inline">\(\mathcal P_4(\mathbf F)\)</span>.</li>
+<li>Explica por qué ninguna lista de cuatro polinomios genera <span class="math inline">\(\mathcal P_4(\mathbf F)\)</span>.</li>
+<li>Demuestra que <span class="math inline">\(V\)</span> es de dimensión infinita si y sólo si existe una sucesión <span class="math inline">\(v_1,v_2,\ldots\)</span> de vectores de <span class="math inline">\(V\)</span> tal que <span class="math inline">\(v_1,\ldots,v_m\)</span> es linealmente independiente para todo entero positivo <span class="math inline">\(m\)</span>.</li>
+<li>Demuestra que <span class="math inline">\(\mathbf F^\infty\)</span> es de dimensión infinita.</li>
+<li>Demuestra que el espacio vectorial real de todas las funciones continuas <span class="math inline">\([0,1]\to\mathbf R\)</span> es de dimensión infinita.</li>
+<li>Sean <span class="math inline">\(p_0,p_1,\ldots,p_m\in\mathcal P_m(\mathbf F)\)</span> y supón que <span class="math display">\[
+p_k(2)=0
+\]</span> para cada <span class="math inline">\(k\in\{0,\ldots,m\}\)</span>. Demuestra que <span class="math inline">\(p_0,p_1,\ldots,p_m\)</span> no es linealmente independiente en <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span>.</li>
+</ol>
+<hr>
+<blockquote class="blockquote">
+<p><strong>Procedencia y licencia de esta edición:</strong> traducción/adaptación no oficial de Sheldon Axler, <a href="https://linear.axler.net/LADR4e.pdf"><em>Linear Algebra Done Right</em>, 4.ª edición</a>. La traducción y las contribuciones de esta edición se publican bajo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Las soluciones señaladas como originales son de Matemática Abierta, no del autor. <a href="../../../../libros/axler-ladr-es/index.html">Índice de esta edición</a>.</p>
+</blockquote>
+
+
+</section>
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
