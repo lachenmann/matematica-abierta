@@ -63,6 +63,6 @@ theorem transport14_comp
     transport14 eA eC (g ∘ f) =
       (transport14 eB eC g) ∘ (transport14 eA eB f) := by
   funext a'
-  simp [transport14, Function.comp_def]
+  simp [transport14]
 
 end MatematicaAbierta.TeoriaDeFunciones
