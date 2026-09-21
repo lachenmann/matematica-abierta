@@ -6,7 +6,7 @@ content-type: book
 collection: PM-CAL
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-20
+date-modified: 2026-09-21
 areas:
   - fundamentos
   - calculo
@@ -32,6 +32,7 @@ related:
   - MA-BCH-0063
   - MA-BCH-0064
   - MA-BCH-0065
+  - MA-BCH-0066
 provenance:
   type: synthesis
   sources: []
@@ -83,8 +84,9 @@ Los capítulos completos disponibles son:
 5. **Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**.
 6. **La derivada y la aproximación lineal local**.
 7. **Álgebra de derivadas y regla de la cadena**.
+8. **Derivación de funciones elementales, inversas e implícitas**.
 
-Los capítulos posteriores desarrollarán las derivadas de funciones inversas, aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
+Los capítulos posteriores desarrollarán aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
 
 ## Capítulos publicados
 
@@ -95,6 +97,7 @@ Los capítulos posteriores desarrollarán las derivadas de funciones inversas, a
 5. [**Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**](../capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) (`MA-BCH-0063`).
 6. [**La derivada y la aproximación lineal local**](../capitulos/la-derivada-y-la-aproximacion-lineal-local.md) (`MA-BCH-0064`).
 7. [**Álgebra de derivadas y regla de la cadena**](../capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md) (`MA-BCH-0065`).
+8. [**Derivación de funciones elementales, inversas e implícitas**](../capitulos/derivacion-de-funciones-elementales-inversas-e-implicitas.md) (`MA-BCH-0066`).
 
 Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
 
@@ -113,6 +116,6 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública está abierta y contiene **siete capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
+La edición pública está abierta y contiene **ocho capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
 
 Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
