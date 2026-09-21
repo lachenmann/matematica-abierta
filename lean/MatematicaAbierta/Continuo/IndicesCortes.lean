@@ -1,17 +1,17 @@
 import MatematicaAbierta.Continuo.TerminacionCortes
 
 /-!
-# FDC-AUD-023 — O3: codificación efectiva de consultas y búsqueda
+# FDC-AUD-023 — O3: codificación de consultas y núcleo aritmético
 
-Las consultas se representan por dos numeradores naturales y un denominador
-positivo; las comparaciones usan únicamente sumas, productos, potencias y
-orden de naturales. La construcción de códigos parciales es uniforme en el
-programa. La certificación semántica y de totalidad se verifica por separado.
+Codificamos racionales mediante dos numeradores naturales y un denominador
+positivo. La comparación se reduce a sumas, productos y orden de naturales.
+Este módulo certifica la primitividad recursiva del comparador genérico,
+pero NO certifica todavía la primitividad recursiva de sus especializaciones,
+la equivalencia con `intervalStage` ni la extracción de índices de programas.
+O3 permanece abierta.
 -/
 
 namespace Continuo.Indices
-
-open Denumerable
 
 /-- `((u,v),d)` representa `(u-v)/(d+1)`. -/
 def codedQuery (z : ℕ) : ℚ :=
@@ -39,7 +39,8 @@ theorem primrec_queryDenominator : Primrec queryDenominator := by
   exact (Primrec.succ.comp (Primrec.snd.comp Primrec.unpair)).of_eq fun _ => rfl
 
 /-- Comparador de fracciones con numeradores representados como diferencias.
-La aproximación es `(plus-minus)/s` y el radio es `1/t`. -/
+La aproximación es `(plus-minus)/s` y el radio es `1/t`.
+Las equivalencias con desigualdades racionales requieren `d,s,t > 0`. -/
 def arithmeticStage (u v d plus minus s t : ℕ) : Option Bool :=
   if u * s * t + minus * d * t + s * d < v * s * t + plus * d * t then
     some true
@@ -47,7 +48,7 @@ def arithmeticStage (u v d plus minus s t : ℕ) : Option Bool :=
     some false
   else none
 
-/-- Composición uniforme del comparador con siete funciones PR arbitrarias. -/
+/-- El comparador es primitivo recursivo para siete parámetros PR arbitrarios. -/
 theorem primrec_arithmeticStage {α : Type*} [Primcodable α]
     (u v d plus minus s t : α → ℕ)
     (hu : Primrec u) (hv : Primrec v) (hd : Primrec d)
@@ -85,58 +86,16 @@ theorem primrec_arithmeticStage {α : Type*} [Primcodable α]
       (Primrec.const none))).of_eq fun a => by
         simp only [arithmeticStage]
 
-/-- Entrada: `((programa,consulta),precisión)`. -/
+/-- Especificación computacional de la etapa desplazada; la prueba PR se reserva. -/
 def shiftedNumericStage (w : (Code × ℕ) × ℕ) : Option Bool :=
   arithmeticStage (queryPositive w.1.2) (queryNegative w.1.2)
     (queryDenominator w.1.2) (shiftedPair w.1.1 w.2).1 0
     (shiftedPair w.1.1 w.2).2 (2 ^ w.2)
 
-/-- En el extremo negativo el numerador positivo es cero. -/
+/-- Especificación computacional de la etapa negativa; la prueba PR se reserva. -/
 def negativeNumericStage (w : ℕ × ℕ) : Option Bool :=
   arithmeticStage (queryPositive w.1) (queryNegative w.1)
     (queryDenominator w.1) 0 (sqrtTwoPair w.2).1
     (sqrtTwoPair w.2).2 (2 ^ (w.2 + 2))
-
-set_option maxHeartbeats 1500000 in
-theorem primrec_shiftedNumericStage : Primrec shiftedNumericStage := by
-  have hc : Primrec (fun w : (Code × ℕ) × ℕ => w.1.1) :=
-    Primrec.fst.comp Primrec.fst
-  have hq : Primrec (fun w : (Code × ℕ) × ℕ => w.1.2) :=
-    Primrec.snd.comp Primrec.fst
-  have hn : Primrec (fun w : (Code × ℕ) × ℕ => w.2) := Primrec.snd
-  have hname : Primrec (fun w : (Code × ℕ) × ℕ => shiftedPair w.1.1 w.2) :=
-    primrec_shiftedPair.comp hc hn
-  have hpow : Primrec (fun w : (Code × ℕ) × ℕ => 2 ^ w.2) :=
-    (Primrec₂.unpaired'.1 Nat.Primrec.pow).comp (Primrec.const 2) hn
-  unfold shiftedNumericStage
-  exact primrec_arithmeticStage
-    (fun w => queryPositive w.1.2) (fun w => queryNegative w.1.2)
-    (fun w => queryDenominator w.1.2)
-    (fun w => (shiftedPair w.1.1 w.2).1) (fun _ => 0)
-    (fun w => (shiftedPair w.1.1 w.2).2) (fun w => 2 ^ w.2)
-    (primrec_queryPositive.comp hq) (primrec_queryNegative.comp hq)
-    (primrec_queryDenominator.comp hq)
-    (Primrec.fst.comp hname) (Primrec.const 0)
-    (Primrec.snd.comp hname) hpow
-
-set_option maxHeartbeats 1500000 in
-theorem primrec_negativeNumericStage : Primrec negativeNumericStage := by
-  have hq : Primrec (fun w : ℕ × ℕ => w.1) := Primrec.fst
-  have hn : Primrec (fun w : ℕ × ℕ => w.2) := Primrec.snd
-  have hname : Primrec (fun w : ℕ × ℕ => sqrtTwoPair w.2) :=
-    primrec_sqrtTwoPair.comp hn
-  have hn2 : Primrec (fun w : ℕ × ℕ => w.2 + 2) :=
-    Primrec.nat_add.comp hn (Primrec.const 2)
-  have hpow : Primrec (fun w : ℕ × ℕ => 2 ^ (w.2 + 2)) :=
-    (Primrec₂.unpaired'.1 Nat.Primrec.pow).comp (Primrec.const 2) hn2
-  unfold negativeNumericStage
-  exact primrec_arithmeticStage
-    (fun w => queryPositive w.1) (fun w => queryNegative w.1)
-    (fun w => queryDenominator w.1) (fun _ => 0)
-    (fun w => (sqrtTwoPair w.2).1)
-    (fun w => (sqrtTwoPair w.2).2) (fun w => 2 ^ (w.2 + 2))
-    (primrec_queryPositive.comp hq) (primrec_queryNegative.comp hq)
-    (primrec_queryDenominator.comp hq) (Primrec.const 0)
-    (Primrec.fst.comp hname) (Primrec.snd.comp hname) hpow
 
 end Continuo.Indices
