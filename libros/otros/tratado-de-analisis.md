@@ -38,6 +38,15 @@ related:
   - MA-BCH-0059
   - MA-BCH-0060
   - MA-BCH-0061
+  - MA-BCH-0067
+  - MA-BCH-0068
+  - MA-BCH-0069
+  - MA-BCH-0070
+  - MA-BCH-0071
+  - MA-BCH-0072
+  - MA-BCH-0073
+  - MA-BCH-0074
+  - MA-BCH-0075
 provenance:
   type: original
   sources: []
@@ -142,6 +151,8 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 ## Contenido disponible
 
+### Parte I — Fundamentos y construcción de los reales
+
 1. [**Capítulo 0 — Fundamento lógico y conjuntista**](../capitulos/tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) (`MA-BCH-0005`) — **capítulo completo**: lógica ambiente y axiomas conjuntistas; operaciones de conjuntos; pares ordenados y productos cartesianos; relaciones; clases de equivalencia y cocientes; funciones, composición, biyectividad, imagen y preimagen; proyección canónica y definición sobre clases; familias indexadas; teoría abstracta del orden; resumen de notación, cierre deductivo y transición hacia los números naturales.
 2. [**Capítulo 1 — Los números naturales**](../capitulos/tratado-de-analisis-capitulo-1-los-numeros-naturales.md) (`MA-BCH-0007`) — **capítulo completo**: construcción de $\mathbb N=\omega$, inducción, estructura de Peano, teorema de recursión, suma y producto naturales, construcción del orden natural como orden total compatible con las operaciones, tricotomía decidible, principio de buen orden e inducción fuerte, balance estructural, notas bibliográficas y transición hacia los números enteros.
 
@@ -223,6 +234,8 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 13. [**Capítulo 12 — Unicidad**](../capitulos/tratado-de-analisis-capitulo-12-unicidad.md) (`MA-BCH-0058`) — **capítulo completo**: De dos modelos concretos a la unicidad general; Subcuerpo primo de un cuerpo ordenado; Copia canónica de $\mathbb Q$; Qué significa $\mathbb R$ a partir de ahora.
 
+### Parte II — Núcleo del análisis real
+
 14. [**Capítulo 13 — Sucesiones reales**](../capitulos/tratado-de-analisis-capitulo-13-sucesiones-reales.md) (`MA-BCH-0059`) — **capítulo completo**: De la construcción de los reales al análisis sobre los reales; Sucesiones como funciones; Colas y propiedades eventuales; Límites inferior y superior.
 
 15. [**Capítulo 14 — Series numéricas**](../capitulos/tratado-de-analisis-capitulo-14-series-numericas.md) (`MA-BCH-0060`) — **capítulo completo**: De una sucesión de términos a una sucesión de sumas; Serie, sumas parciales y convergencia; Criterio de Cauchy para series y condición necesaria de convergencia; Criterio de la raíz y límite superior finito.
@@ -245,9 +258,11 @@ Leer este tratado consiste, en buena medida, en aprender a seguir esa pregunta.
 
 24. [**Capítulo 23 — Sucesiones y series de funciones**](../capitulos/tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md) (`MA-BCH-0074`) — **capítulo completo**: Convergencia puntual y uniforme; intercambio de límites; series de funciones y criterio de Weierstrass.
 
-25. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces a las nociones publicadas.
+25. [**Capítulo 24 — Series de potencias**](../capitulos/tratado-de-analisis-capitulo-24-series-de-potencias.md) (`MA-BCH-0075`) — **capítulo completo**: conjunto y radio de convergencia; comportamiento en los extremos; fórmula de Cauchy–Hadamard; convergencia uniforme en compactos interiores; integración y derivación término a término; derivadas de todo orden, series de Taylor y analiticidad.
 
-Los **Capítulos 0–23** están completos en la edición web. El **Capítulo 24 — Series de potencias** permanece pendiente de apertura y todavía no se publica.
+26. [**Glosario matemático**](tratado-de-analisis-glosario.md) (`MA-BCH-0006`) — glosario vivo con enlaces a las nociones publicadas.
+
+Las **Partes I y II** están completas en la edición web: **25 de 25 capítulos cerrados y publicados**. La Parte I comprende los Capítulos 0–12; la Parte II, los Capítulos 13–24. Las Partes III–VI permanecen como reservas estructurales y no se abrirán hasta que se apruebe su arquitectura.
 
 Cada capítulo conservará la continuidad deductiva del tratado, mientras la infraestructura interna de dependencias, auditoría y verificación permanecerá al servicio de la obra sin invadir la superficie de lectura.
 
