@@ -44,6 +44,18 @@ jobs:
       - name: Render site
         run: quarto render
 
+      - name: Verify MA-Práctica is not accidentally published
+        run: |
+          # El prototipo vive en la rama pública, pero no está aprobado para la web.
+          # Quarto no debe renderizar las actas .md ni copiar la app a _site.
+          test -f .quartoignore
+          grep -Fxq '/practica/' .quartoignore
+          if test -e _site/practica; then
+            echo 'ERROR: Quarto expuso practica/ antes de autorizar su publicación.' >&2
+            find _site/practica -type f >&2
+            exit 1
+          fi
+
       - name: Verify laboratory assets and rendered page
         run: |
           test -s _site/teoria/resultados/desigualdad-triangular.html
