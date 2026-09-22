@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { EXERCISES } from '../exercises.mjs';
 import { startSession } from '../engine.mjs';
 import { startFlow, answerFlow, retryFlow, surrenderFlow, continueFlow, partialFlowSession } from '../attempt-flow.mjs';
-import { emptyProgress, finishProgress, completedWithoutSurrender } from '../progress.mjs';
+import { emptyProgress, finishProgress, auditFirstAttempts } from '../progress.mjs';
 import { reviewStep } from '../view-model.mjs';
 
 const fractions = EXERCISES.find(item => item.area === 'aritmetica');
@@ -26,7 +26,7 @@ test('Respuesta correcta avanza sin botón intermedio y conserva explicación de
   assert.equal(first.session.index, 0);
 });
 
-test('Error no avanza, no revela respuesta correcta y permite reintentar sin borrar primera elección', () => {
+test('Error no avanza ni revela la respuesta; reintentar conserva el fallo inicial', () => {
   let flow = startFlow(startSession(fractions, 'challenge'));
   const wrong = wrongAt(fractions.steps[0]);
   flow = answerFlow(flow, fractions, wrong);
@@ -49,7 +49,7 @@ test('Error no avanza, no revela respuesta correcta y permite reintentar sin bor
   assert.equal(flow.session.trace[0].attempts.length, 2);
 });
 
-test('Rendirse enseña la solución antes de continuar y conserva la elección fallida', () => {
+test('Rendirse enseña solución antes de continuar y conserva elección fallida', () => {
   const wrong = wrongAt(fractions.steps[0]);
   let flow = answerFlow(startFlow(startSession(fractions)), fractions, wrong);
   flow = surrenderFlow(flow, fractions);
@@ -64,33 +64,58 @@ test('Rendirse enseña la solución antes de continuar y conserva la elección f
   assert.equal(flow.status, 'ask');
 });
 
-test('Completar todos los pasos mediante reintentos gana y no resta Elo', () => {
+test('REGRESIÓN: fracciones correctas 6, 3/6 + 2/6 y 5/6 jamás restan Elo', () => {
+  const expected = ['6', '3/6 + 2/6', '5/6'];
+  assert.deepEqual(fractions.steps.map(step => step.options[step.correctIndex]), expected);
+  const flow = allCorrect();
+  assert.equal(flow.session.completed, true);
+  assert.deepEqual(auditFirstAttempts(flow.session, fractions), {
+    firstCorrect: 3, total: 3, wrongOrdinals: [], flawless: true
+  });
+  const scored = finishProgress(emptyProgress(), flow.session, fractions, 'fecha');
+  assert.ok(scored.record.delta >= 0);
+  assert.ok(scored.record.ratingAfter >= scored.record.ratingBefore);
+  assert.equal(scored.record.correct, 3);
+  assert.equal(scored.record.solved, true);
+  assert.equal(scored.record.ratingPolicy, 'first-attempt-v03');
+});
+
+test('Un fallo inicial resta Elo aun si se resuelve después por reintento', () => {
   let flow = answerFlow(startFlow(startSession(fractions, 'challenge')), fractions, wrongAt(fractions.steps[0]));
   flow = retryFlow(flow, fractions);
   flow = answerFlow(flow, fractions, fractions.steps[0].correctIndex);
   for (const step of fractions.steps.slice(1)) flow = answerFlow(flow, fractions, step.correctIndex);
   assert.equal(flow.session.completed, true);
-  assert.equal(completedWithoutSurrender(flow.session, fractions), true);
-  const scored = finishProgress(emptyProgress(), flow.session, fractions, '2026-09-22T00:00:00Z');
-  assert.ok(scored.record.delta > 0);
+  assert.deepEqual(auditFirstAttempts(flow.session, fractions).wrongOrdinals, [1]);
+  const scored = finishProgress(emptyProgress(), flow.session, fractions, 'fecha');
+  assert.ok(scored.record.delta < 0);
   assert.equal(scored.record.correct, fractions.steps.length - 1);
   assert.equal(scored.record.resolved, fractions.steps.length);
-  assert.equal(scored.record.ratingPolicy, 'completion-v02');
+  assert.equal(scored.record.solved, false);
   assert.equal(finishProgress(scored.progress, flow.session, fractions, 'fecha-2').record.delta, null);
 });
 
-test('Rendirse en un paso produce desafío incompleto y resta Elo al finalizar', () => {
+test('Rendirse registra un fallo y muestra resultado sin aprobación ficticia', () => {
   let flow = answerFlow(startFlow(startSession(fractions, 'challenge')), fractions, wrongAt(fractions.steps[0]));
   flow = continueFlow(surrenderFlow(flow, fractions), fractions);
   for (const step of fractions.steps.slice(1)) flow = answerFlow(flow, fractions, step.correctIndex);
   assert.equal(flow.session.completed, true);
-  assert.equal(completedWithoutSurrender(flow.session, fractions), false);
   const result = finishProgress(emptyProgress(), flow.session, fractions, 'fecha');
   assert.ok(result.record.delta < 0);
+  assert.deepEqual(result.record.wrongOrdinals, [1]);
   assert.equal(result.record.resolved, fractions.steps.length - 1);
 });
 
-test('Primera respuesta perfecta gana y el Elo previo no se recalcula ni se repuntúa', () => {
+test('Auditoría impide descontar si la opción correcta fue marcada incorrectamente', () => {
+  const perfect = allCorrect();
+  const damaged = { ...perfect.session, trace: perfect.session.trace.map((move, index) => index ? move : { ...move, correct: false }) };
+  assert.throws(() => auditFirstAttempts(damaged, fractions), /Inconsistencia de corrección/);
+  assert.throws(() => finishProgress(emptyProgress(), damaged, fractions, 'fecha'), /no se ha modificado el Elo/);
+  const wrongKey = { ...fractions, steps: fractions.steps.map((step, index) => index ? step : { ...step, correctIndex: 0 }) };
+  assert.throws(() => finishProgress(emptyProgress(), perfect.session, wrongKey, 'fecha'), /Inconsistencia de corrección/);
+});
+
+test('Repetir correctamente no cambia el Elo negativo histórico ni lo muestra como nuevo', () => {
   const perfect = allCorrect();
   const oldProgress = {
     ratings: { aritmetica: 1178 }, ratedIds: [fractions.id],
@@ -100,10 +125,11 @@ test('Primera respuesta perfecta gana y el Elo previo no se recalcula ni se repu
   assert.equal(result.record.delta, null);
   assert.equal(result.progress.ratings.aritmetica, 1178);
   assert.equal(result.progress.history[1].delta, -22);
-  assert.equal(finishProgress(emptyProgress(), perfect.session, fractions, 'hoy').record.delta > 0, true);
+  assert.equal(result.record.correct, 3);
+  assert.ok(finishProgress(emptyProgress(), perfect.session, fractions, 'hoy').record.delta >= 0);
 });
 
-test('Salir tras error conserva el intento como parcial sin rendirse ni asignar Elo', () => {
+test('Salir tras error conserva intento parcial, sin rendición ni Elo', () => {
   const wrong = wrongAt(fractions.steps[0]);
   const flow = answerFlow(startFlow(startSession(fractions, 'challenge')), fractions, wrong);
   const snapshot = partialFlowSession(flow, fractions);
@@ -115,7 +141,7 @@ test('Salir tras error conserva el intento como parcial sin rendirse ni asignar 
   assert.equal(partialFlowSession(startFlow(startSession(fractions)), fractions).trace.length, 0);
 });
 
-test('No se permiten acciones tras completar o sobre una sesión distinta', () => {
+test('No se permiten acciones tras completar o con ejercicio distinto', () => {
   const completed = allCorrect();
   assert.throws(() => answerFlow(completed, fractions, 0));
   assert.throws(() => surrenderFlow(completed, fractions));
