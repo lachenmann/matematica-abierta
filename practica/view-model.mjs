@@ -14,7 +14,10 @@ export function reviewStep(session, item, stepIndex) {
     chosen: entry.chosen,
     expected: entry.expected,
     correct: entry.correct,
-    explanation: entry.explanation
+    explanation: entry.explanation,
+    ...(typeof entry.resolved === 'boolean' ? { resolved: entry.resolved } : {}),
+    ...(typeof entry.surrendered === 'boolean' ? { surrendered: entry.surrendered } : {}),
+    ...(Array.isArray(entry.attempts) ? { attempts: [...entry.attempts] } : {})
   };
 }
 
