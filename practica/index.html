@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="ma-theme.css">
   <link rel="stylesheet" href="math-display.css">
+  <link rel="stylesheet" href="attempt-flow.css">
   <!-- TeX solo de presentación: los textos del motor no se transforman ni se guardan en LaTeX. -->
   <script>window.MathJax = { startup: { typeset: false } };</script>
   <script type="module" src="app.mjs"></script>
@@ -45,7 +46,7 @@
         <select id="area"><option value="todas">Todas las áreas</option><option value="aritmetica">Aritmética</option><option value="algebra">Álgebra</option><option value="calculo">Cálculo</option><option value="demostraciones">Demostraciones</option></select>
         <label for="mode">Modalidad</label>
         <select id="mode"><option value="training">Entrenamiento — sin Elo</option><option value="challenge">Desafío — Elo experimental</option></select>
-        <p class="settings-help">Cambiar el área o la modalidad inicia otro ejercicio y archiva los pasos ya respondidos.</p>
+        <p class="settings-help">Cambiar el área o la modalidad inicia otro ejercicio y archiva los pasos ya respondidos, incluso un intento erróneo pendiente.</p>
         <button id="new" type="button" class="secondary">Elegir otro ejercicio</button>
       </div>
     </details>
@@ -59,31 +60,34 @@
           <p id="prompt" class="math"></p>
           <div class="decision-divider"></div>
           <section id="question" class="question" aria-label="Decisión actual"></section>
-          <div class="actions">
+          <div class="actions" role="group" aria-label="Acciones del ejercicio">
             <button id="submit" type="button" disabled>Registrar decisión</button>
-            <button id="next" type="button" hidden>Continuar →</button>
+            <button id="retry" type="button" class="secondary" hidden>Intentar de nuevo</button>
+            <button id="give-up" type="button" hidden>Rendirse y ver la solución</button>
+            <button id="next" type="button" hidden>Continuar tras ver la solución →</button>
             <button id="another" type="button" hidden>Otro ejercicio →</button>
           </div>
           <div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
-          <p id="rating-note" class="rating-note">La dificultad y el Elo son experimentales; no miden de forma validada tu competencia matemática.</p>
+          <p id="rating-note" class="rating-note">Elo experimental, no calibrado: resolver todos los pasos sin rendirse cuenta como éxito, también si hubo reintentos; usar la solución cuenta como desafío no superado. Se puntúa una vez por ejercicio y navegador. Los registros antiguos no se recalculan.</p>
         </section>
 
         <aside class="card tracebox" aria-labelledby="trace-title">
           <div class="topline trace-header"><h2 id="trace-title">Planilla de resolución</h2><span id="trace-count" class="muted">0 pasos</span></div>
           <details id="trace-disclosure" open>
             <summary class="trace-toggle">Mostrar u ocultar los pasos</summary>
-            <p class="trace-help">Revisa tus decisiones. Consultarlas no modifica tu resultado.</p>
-          <ol id="trace" class="trace"><li class="muted">Tus decisiones aparecerán aquí.</li></ol>
-          <section id="review" class="review-panel" aria-labelledby="review-title" hidden>
-            <p class="review-kicker">Consulta en solo lectura</p>
-            <h3 id="review-title" tabindex="-1"></h3>
-            <p id="review-question"></p>
-            <p class="review-formula math" id="review-notation"></p>
-            <p id="review-choice"></p>
-            <p id="review-correction"></p>
-            <p id="review-explanation"></p>
-            <button id="review-return" type="button" class="secondary">Volver al paso actual</button>
-          </section>
+            <p class="trace-help">Revisa tus primeras elecciones, reintentos y rendiciones. Consultarlas no modifica tu resultado.</p>
+            <ol id="trace" class="trace"><li class="muted">Tus decisiones aparecerán aquí.</li></ol>
+            <section id="review" class="review-panel" aria-labelledby="review-title" hidden>
+              <p class="review-kicker">Consulta en solo lectura</p>
+              <h3 id="review-title" tabindex="-1"></h3>
+              <p id="review-question"></p>
+              <p class="review-formula math" id="review-notation"></p>
+              <p id="review-choice"></p>
+              <p id="review-attempts" hidden></p>
+              <p id="review-correction"></p>
+              <p id="review-explanation"></p>
+              <button id="review-return" type="button" class="secondary">Volver al paso actual</button>
+            </section>
           </details>
         </aside>
       </div>
