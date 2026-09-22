@@ -84,7 +84,7 @@ test('Aritmética: la opción de suma equivalente es única', () => {
   }, 0);
   const options = exercise.steps[1].options;
   assert.equal(options.filter(option => Math.abs(fractionValue(option) - 5 / 6) < 1e-12).length, 1);
-  assert.equal(fractionValue(options[exercise.steps[1].correctIndex]), 5 / 6);
+  assert.ok(Math.abs(fractionValue(options[exercise.steps[1].correctIndex]) - 5 / 6) < 1e-12);
 });
 
 test('Álgebra: la solución seleccionada satisface ambos miembros', () => {
