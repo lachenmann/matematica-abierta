@@ -46,10 +46,9 @@ jobs:
 
       - name: Verify MA-Práctica is not accidentally published
         run: |
-          # El prototipo vive en la rama pública, pero no está aprobado para la web.
-          # Quarto no debe renderizar las actas .md ni copiar la app a _site.
-          test -f .quartoignore
-          grep -Fxq '/practica/' .quartoignore
+          # La exclusión documentada por Quarto está en project.render, no en .quartoignore.
+          # Comprobar la regla y el resultado real para impedir filtraciones futuras.
+          grep -Fxq '    - "!practica/"' _quarto.yml
           if test -e _site/practica; then
             echo 'ERROR: Quarto expuso practica/ antes de autorizar su publicación.' >&2
             find _site/practica -type f >&2
