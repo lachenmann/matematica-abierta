@@ -2,6 +2,7 @@ import { EXERCISES } from './exercises.mjs';
 import { startSession, submitAnswer, advance, sessionResult } from './engine.mjs';
 import { emptyProgress, loadProgress, saveProgress, archivePartial, finishProgress } from './progress.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
+import { renderRating } from './rating-panel.mjs';
 
 const $ = id => document.getElementById(id);
 const el = (tag, text, className = '') => {
@@ -162,6 +163,7 @@ function render() {
   bar.setAttribute('aria-valuemax', String(active.steps.length));
   renderTrace();
   renderHistory();
+  renderRating(saved, active.area);
   storageNotice();
   const target = $('question');
   target.replaceChildren();
@@ -240,8 +242,7 @@ function next() {
     save();
   }
   render();
-  if (session.completed) $('question').querySelector('h3')?.focus();
-  else $('question').querySelector('h3')?.focus();
+  $('question').querySelector('h3')?.focus();
 }
 $('submit').addEventListener('click', submit);
 $('next').addEventListener('click', next);
@@ -255,7 +256,7 @@ $('review-return').addEventListener('click', () => {
   updateReview();
   if (session.completed) $('another').focus();
   else if (session.trace.length > session.index) $('next').focus();
-  else if (! $('submit').disabled) $('submit').focus();
+  else if (!$('submit').disabled) $('submit').focus();
   else $('question').querySelector('h3')?.focus();
 });
 $('clear').addEventListener('click', () => {
@@ -263,6 +264,7 @@ $('clear').addEventListener('click', () => {
   saved = emptyProgress();
   save();
   renderHistory();
+  renderRating(saved, active.area);
   storageNotice();
 });
 newExercise();
