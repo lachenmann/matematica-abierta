@@ -33,6 +33,7 @@ related:
   - MA-BCH-0064
   - MA-BCH-0065
   - MA-BCH-0066
+  - MA-BCH-0076
 provenance:
   type: synthesis
   sources: []
@@ -85,6 +86,7 @@ Los capítulos completos disponibles son:
 6. **La derivada y la aproximación lineal local**.
 7. **Álgebra de derivadas y regla de la cadena**.
 8. **Derivación de funciones elementales, inversas e implícitas**.
+9. **Teoremas de Rolle y del valor medio**.
 
 Los capítulos posteriores desarrollarán aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
 
@@ -98,6 +100,7 @@ Los capítulos posteriores desarrollarán aplicaciones de la derivada, integraci
 6. [**La derivada y la aproximación lineal local**](../capitulos/la-derivada-y-la-aproximacion-lineal-local.md) (`MA-BCH-0064`).
 7. [**Álgebra de derivadas y regla de la cadena**](../capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md) (`MA-BCH-0065`).
 8. [**Derivación de funciones elementales, inversas e implícitas**](../capitulos/derivacion-de-funciones-elementales-inversas-e-implicitas.md) (`MA-BCH-0066`).
+9. [**Teoremas de Rolle y del valor medio**](../capitulos/teoremas-de-rolle-y-del-valor-medio.md) (`MA-BCH-0076`).
 
 Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
 
@@ -116,6 +119,7 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública está abierta y contiene **ocho capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
+La edición pública está abierta y contiene **nueve capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
 
 Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
+
