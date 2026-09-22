@@ -49,6 +49,9 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm -r .axler_payload .github/workflows/axler-c3-stage.yml
           git add libros/axler-ladr-es/index.qmd libros/axler-ladr-es/traduccion/03-capitulo-3/3d-invertibilidad-isomorfismos.qmd libros/axler-ladr-es/traduccion/03-capitulo-3/3e-productos-cocientes.qmd
-          git diff --cached --check
+          git -c core.whitespace=-blank-at-eol diff --cached --check
           git commit -m 'Axler: integrar secciones 3D y 3E con 43 soluciones'
           git push origin HEAD:refs/heads/axler/publicar-3d-3e-20260922
+          for b in axler/c3-staging-test-ignore axler/c3-stage-recovery axler/c3-stage-workflow axler/c3-stage-payload axler/c3-stage-cleanup; do
+            git push origin --delete "$b" || echo "No se pudo borrar rama temporal: $b"
+          done
