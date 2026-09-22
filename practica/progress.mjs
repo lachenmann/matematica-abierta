@@ -29,7 +29,11 @@ export function normalizeProgress(raw) {
         record.trace.every(move => move && Number.isInteger(move.ordinal) &&
           typeof move.notation === 'string' && typeof move.explanation === 'string' &&
           typeof move.correct === 'boolean' && typeof move.chosen === 'string' &&
-          typeof move.expected === 'string');
+          typeof move.expected === 'string' &&
+          (move.resolved === undefined || typeof move.resolved === 'boolean') &&
+          (move.surrendered === undefined || typeof move.surrendered === 'boolean') &&
+          (move.attempts === undefined || (Array.isArray(move.attempts) && move.attempts.length > 0 &&
+            move.attempts.length <= 64 && move.attempts.every(choice => typeof choice === 'string'))));
     }).slice(0, HISTORY_LIMIT);
   }
   return result;
@@ -63,16 +67,28 @@ export function archivePartial(progress, session, item, finishedAt) {
   return { ...progress, history: [record, ...progress.history].slice(0, HISTORY_LIMIT) };
 }
 
+/**
+ * Política v0.2: ganar significa resolver TODOS los pasos, incluso tras reintentos,
+ * sin usar «Rendirse». La antigua respuesta falsa corregida automáticamente carece
+ * de resolved=true, por lo que permanece como fallo bajo el contrato anterior.
+ * Nunca se recalculan puntuaciones históricas ni se permite repuntuar el mismo ID.
+ */
+export function completedWithoutSurrender(session, item) {
+  const result = sessionResult(session, item);
+  return result.flawless || session.trace.every(move => move.resolved === true && move.surrendered !== true);
+}
+
 /** Función pura: el mismo ejercicio solo puede puntuarse una vez por estado local. */
 export function finishProgress(progress, session, item, finishedAt) {
   const outcome = sessionResult(session, item);
+  const solved = completedWithoutSurrender(session, item);
   const next = normalizeProgress(progress);
   let delta = null;
   let ratingBefore = null;
   let ratingAfter = null;
   if (session.mode === 'challenge' && !next.ratedIds.includes(item.id)) {
     ratingBefore = next.ratings[item.area] ?? INITIAL_RATING;
-    const calculation = eloUpdate(ratingBefore, item.provisionalRating, outcome.flawless ? 1 : 0);
+    const calculation = eloUpdate(ratingBefore, item.provisionalRating, solved ? 1 : 0);
     delta = calculation.delta;
     ratingAfter = calculation.next;
     next.ratings[item.area] = ratingAfter;
@@ -80,8 +96,11 @@ export function finishProgress(progress, session, item, finishedAt) {
   }
   const record = {
     id: item.id, title: item.title, area: item.area, mode: session.mode,
-    correct: outcome.correct, total: outcome.total, trace: session.trace,
-    finishedAt, delta, ratingBefore, ratingAfter
+    correct: outcome.correct, total: outcome.total,
+    resolved: session.trace.filter(move => move.correct || move.resolved === true).length,
+    solved, trace: session.trace,
+    finishedAt, delta, ratingBefore, ratingAfter,
+    ratingPolicy: delta === null ? null : 'completion-v02'
   };
   next.history = [record, ...next.history].slice(0, HISTORY_LIMIT);
   return { progress: next, record };
