@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>d-invertibilidad-isomorfismos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<link href="../../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-06b7945d9ea8e356c3a218c45b535e83.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-6ea41ba409b21b8963ef602ec40ff2bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../axler-colores.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#d-invertibilidad-e-isomorfismos" id="toc-d-invertibilidad-e-isomorfismos" class="nav-link active" data-scroll-target="#d-invertibilidad-e-isomorfismos">3D · Invertibilidad e isomorfismos</a>
+  <ul class="collapse">
+  <li><a href="#aplicaciones-lineales-invertibles" id="toc-aplicaciones-lineales-invertibles" class="nav-link" data-scroll-target="#aplicaciones-lineales-invertibles">Aplicaciones lineales invertibles</a>
+  <ul class="collapse">
+  <li><a href="#definición-invertible-inversa" id="toc-definición-invertible-inversa" class="nav-link" data-scroll-target="#definición-invertible-inversa">3.59 Definición: invertible, inversa</a></li>
+  <li><a href="#la-inversa-es-única" id="toc-la-inversa-es-única" class="nav-link" data-scroll-target="#la-inversa-es-única">3.60 La inversa es única</a></li>
+  <li><a href="#notación-t-1" id="toc-notación-t-1" class="nav-link" data-scroll-target="#notación-t-1">3.61 Notación: <span class="math inline">\(T^{-1}\)</span></a></li>
+  <li><a href="#ejemplo-inversa-de-una-aplicación-de-mathbf-r3-en-mathbf-r3" id="toc-ejemplo-inversa-de-una-aplicación-de-mathbf-r3-en-mathbf-r3" class="nav-link" data-scroll-target="#ejemplo-inversa-de-una-aplicación-de-mathbf-r3-en-mathbf-r3">3.62 Ejemplo: inversa de una aplicación de <span class="math inline">\(\mathbf R^3\)</span> en <span class="math inline">\(\mathbf R^3\)</span></a></li>
+  <li><a href="#invertibilidad-si-y-solo-si-inyectividad-y-sobreyectividad" id="toc-invertibilidad-si-y-solo-si-inyectividad-y-sobreyectividad" class="nav-link" data-scroll-target="#invertibilidad-si-y-solo-si-inyectividad-y-sobreyectividad">3.63 Invertibilidad si y solo si inyectividad y sobreyectividad</a></li>
+  <li><a href="#ejemplo-ni-la-inyectividad-ni-la-sobreyectividad-bastan-por-separado" id="toc-ejemplo-ni-la-inyectividad-ni-la-sobreyectividad-bastan-por-separado" class="nav-link" data-scroll-target="#ejemplo-ni-la-inyectividad-ni-la-sobreyectividad-bastan-por-separado">3.64 Ejemplo: ni la inyectividad ni la sobreyectividad bastan por separado</a></li>
+  <li><a href="#inyectividad-equivale-a-sobreyectividad-en-igual-dimensión-finita" id="toc-inyectividad-equivale-a-sobreyectividad-en-igual-dimensión-finita" class="nav-link" data-scroll-target="#inyectividad-equivale-a-sobreyectividad-en-igual-dimensión-finita">3.65 Inyectividad equivale a sobreyectividad en igual dimensión finita</a></li>
+  <li><a href="#ejemplo-existencia-de-soluciones-polinómicas" id="toc-ejemplo-existencia-de-soluciones-polinómicas" class="nav-link" data-scroll-target="#ejemplo-existencia-de-soluciones-polinómicas">3.67 Ejemplo: existencia de soluciones polinómicas</a></li>
+  <li><a href="#stiiff-tsi-para-espacios-de-igual-dimensión" id="toc-stiiff-tsi-para-espacios-de-igual-dimensión" class="nav-link" data-scroll-target="#stiiff-tsi-para-espacios-de-igual-dimensión">3.68 <span class="math inline">\(ST=I\iff TS=I\)</span> para espacios de igual dimensión</a></li>
+  </ul></li>
+  <li><a href="#espacios-vectoriales-isomorfos" id="toc-espacios-vectoriales-isomorfos" class="nav-link" data-scroll-target="#espacios-vectoriales-isomorfos">Espacios vectoriales isomorfos</a>
+  <ul class="collapse">
+  <li><a href="#definición-isomorfismo-isomorfos" id="toc-definición-isomorfismo-isomorfos" class="nav-link" data-scroll-target="#definición-isomorfismo-isomorfos">3.69 Definición: isomorfismo, isomorfos</a></li>
+  <li><a href="#la-dimensión-determina-si-dos-espacios-vectoriales-son-isomorfos" id="toc-la-dimensión-determina-si-dos-espacios-vectoriales-son-isomorfos" class="nav-link" data-scroll-target="#la-dimensión-determina-si-dos-espacios-vectoriales-son-isomorfos">3.70 La dimensión determina si dos espacios vectoriales son isomorfos</a></li>
+  <li><a href="#mathcal-lvw-y-mathbf-fmn-son-isomorfos" id="toc-mathcal-lvw-y-mathbf-fmn-son-isomorfos" class="nav-link" data-scroll-target="#mathcal-lvw-y-mathbf-fmn-son-isomorfos">3.71 <span class="math inline">\(\mathcal L(V,W)\)</span> y <span class="math inline">\(\mathbf F^{m,n}\)</span> son isomorfos</a></li>
+  <li><a href="#dimensión-del-espacio-de-aplicaciones-lineales" id="toc-dimensión-del-espacio-de-aplicaciones-lineales" class="nav-link" data-scroll-target="#dimensión-del-espacio-de-aplicaciones-lineales">3.72 Dimensión del espacio de aplicaciones lineales</a></li>
+  </ul></li>
+  <li><a href="#aplicaciones-lineales-entendidas-como-multiplicación-matricial" id="toc-aplicaciones-lineales-entendidas-como-multiplicación-matricial" class="nav-link" data-scroll-target="#aplicaciones-lineales-entendidas-como-multiplicación-matricial">Aplicaciones lineales entendidas como multiplicación matricial</a>
+  <ul class="collapse">
+  <li><a href="#definición-matriz-de-un-vector-mathcal-mv" id="toc-definición-matriz-de-un-vector-mathcal-mv" class="nav-link" data-scroll-target="#definición-matriz-de-un-vector-mathcal-mv">3.73 Definición: matriz de un vector, <span class="math inline">\(\mathcal M(v)\)</span></a></li>
+  <li><a href="#ejemplo-matriz-de-un-vector" id="toc-ejemplo-matriz-de-un-vector" class="nav-link" data-scroll-target="#ejemplo-matriz-de-un-vector">3.74 Ejemplo: matriz de un vector</a></li>
+  <li><a href="#la-columna-k-de-mathcal-mt-es-mathcal-mtv_k" id="toc-la-columna-k-de-mathcal-mt-es-mathcal-mtv_k" class="nav-link" data-scroll-target="#la-columna-k-de-mathcal-mt-es-mathcal-mtv_k">3.75 La columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T)\)</span> es <span class="math inline">\(\mathcal M(Tv_k)\)</span></a></li>
+  <li><a href="#las-aplicaciones-lineales-actúan-como-la-multiplicación-de-matrices" id="toc-las-aplicaciones-lineales-actúan-como-la-multiplicación-de-matrices" class="nav-link" data-scroll-target="#las-aplicaciones-lineales-actúan-como-la-multiplicación-de-matrices">3.76 Las aplicaciones lineales actúan como la multiplicación de matrices</a></li>
+  <li><a href="#la-dimensión-de-la-imagen-es-el-rango-por-columnas-de-mathcal-mt" id="toc-la-dimensión-de-la-imagen-es-el-rango-por-columnas-de-mathcal-mt" class="nav-link" data-scroll-target="#la-dimensión-de-la-imagen-es-el-rango-por-columnas-de-mathcal-mt">3.78 La dimensión de la imagen es el rango por columnas de <span class="math inline">\(\mathcal M(T)\)</span></a></li>
+  </ul></li>
+  <li><a href="#cambio-de-base" id="toc-cambio-de-base" class="nav-link" data-scroll-target="#cambio-de-base">Cambio de base</a>
+  <ul class="collapse">
+  <li><a href="#definición-matriz-identidad-i" id="toc-definición-matriz-identidad-i" class="nav-link" data-scroll-target="#definición-matriz-identidad-i">3.79 Definición: matriz identidad, <span class="math inline">\(I\)</span></a></li>
+  <li><a href="#definición-matriz-invertible-inversa-a-1" id="toc-definición-matriz-invertible-inversa-a-1" class="nav-link" data-scroll-target="#definición-matriz-invertible-inversa-a-1">3.80 Definición: matriz invertible, inversa, <span class="math inline">\(A^{-1}\)</span></a></li>
+  <li><a href="#matriz-del-producto-de-aplicaciones-lineales" id="toc-matriz-del-producto-de-aplicaciones-lineales" class="nav-link" data-scroll-target="#matriz-del-producto-de-aplicaciones-lineales">3.81 Matriz del producto de aplicaciones lineales</a></li>
+  <li><a href="#matriz-del-operador-identidad-respecto-de-dos-bases" id="toc-matriz-del-operador-identidad-respecto-de-dos-bases" class="nav-link" data-scroll-target="#matriz-del-operador-identidad-respecto-de-dos-bases">3.82 Matriz del operador identidad respecto de dos bases</a></li>
+  <li><a href="#ejemplo-matriz-del-operador-identidad-de-mathbf-f2-respecto-de-dos-bases" id="toc-ejemplo-matriz-del-operador-identidad-de-mathbf-f2-respecto-de-dos-bases" class="nav-link" data-scroll-target="#ejemplo-matriz-del-operador-identidad-de-mathbf-f2-respecto-de-dos-bases">3.83 Ejemplo: matriz del operador identidad de <span class="math inline">\(\mathbf F^2\)</span> respecto de dos bases</a></li>
+  <li><a href="#fórmula-de-cambio-de-base" id="toc-fórmula-de-cambio-de-base" class="nav-link" data-scroll-target="#fórmula-de-cambio-de-base">3.84 Fórmula de cambio de base</a></li>
+  <li><a href="#la-matriz-de-la-inversa-es-la-inversa-de-la-matriz" id="toc-la-matriz-de-la-inversa-es-la-inversa-de-la-matriz" class="nav-link" data-scroll-target="#la-matriz-de-la-inversa-es-la-inversa-de-la-matriz">3.86 La matriz de la inversa es la inversa de la matriz</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-3d" id="toc-ejercicios-3d" class="nav-link" data-scroll-target="#ejercicios-3d">Ejercicios 3D · enunciados traducidos</a></li>
+  <li><a href="#soluciones-3d" id="toc-soluciones-3d" class="nav-link" data-scroll-target="#soluciones-3d">Soluciones originales de los ejercicios de 3D</a>
+  <ul class="collapse">
+  <li><a href="#inversa-de-la-inversa" id="toc-inversa-de-la-inversa" class="nav-link" data-scroll-target="#inversa-de-la-inversa">1. Inversa de la inversa</a></li>
+  <li><a href="#inversa-de-una-composición" id="toc-inversa-de-una-composición" class="nav-link" data-scroll-target="#inversa-de-una-composición">2. Inversa de una composición</a></li>
+  <li><a href="#una-base-se-transforma-en-una-base" id="toc-una-base-se-transforma-en-una-base" class="nav-link" data-scroll-target="#una-base-se-transforma-en-una-base">3. Una base se transforma en una base</a></li>
+  <li><a href="#las-aplicaciones-no-invertibles-no-forman-subespacio" id="toc-las-aplicaciones-no-invertibles-no-forman-subespacio" class="nav-link" data-scroll-target="#las-aplicaciones-no-invertibles-no-forman-subespacio">4. Las aplicaciones no invertibles no forman subespacio</a></li>
+  <li><a href="#extender-una-aplicación-a-un-automorfismo" id="toc-extender-una-aplicación-a-un-automorfismo" class="nav-link" data-scroll-target="#extender-una-aplicación-a-un-automorfismo">5. Extender una aplicación a un automorfismo</a></li>
+  <li><a href="#el-mismo-espacio-nulo-equivale-a-un-automorfismo-del-codominio" id="toc-el-mismo-espacio-nulo-equivale-a-un-automorfismo-del-codominio" class="nav-link" data-scroll-target="#el-mismo-espacio-nulo-equivale-a-un-automorfismo-del-codominio">6. El mismo espacio nulo equivale a un automorfismo del codominio</a></li>
+  <li><a href="#la-misma-imagen-equivale-a-un-automorfismo-del-dominio" id="toc-la-misma-imagen-equivale-a-un-automorfismo-del-dominio" class="nav-link" data-scroll-target="#la-misma-imagen-equivale-a-un-automorfismo-del-dominio">7. La misma imagen equivale a un automorfismo del dominio</a></li>
+  <li><a href="#equivalencia-bilateral-por-dimensión-del-espacio-nulo" id="toc-equivalencia-bilateral-por-dimensión-del-espacio-nulo" class="nav-link" data-scroll-target="#equivalencia-bilateral-por-dimensión-del-espacio-nulo">8. Equivalencia bilateral por dimensión del espacio nulo</a></li>
+  <li><a href="#una-restricción-isomorfa-de-una-sobreyección" id="toc-una-restricción-isomorfa-de-una-sobreyección" class="nav-link" data-scroll-target="#una-restricción-isomorfa-de-una-sobreyección">9. Una restricción isomorfa de una sobreyección</a></li>
+  <li><a href="#aplicaciones-que-anulan-un-subespacio" id="toc-aplicaciones-que-anulan-un-subespacio" class="nav-link" data-scroll-target="#aplicaciones-que-anulan-un-subespacio">10. Aplicaciones que anulan un subespacio</a></li>
+  <li><a href="#producto-invertible-si-y-solo-si-factores-invertibles" id="toc-producto-invertible-si-y-solo-si-factores-invertibles" class="nav-link" data-scroll-target="#producto-invertible-si-y-solo-si-factores-invertibles">11. Producto invertible si y solo si factores invertibles</a></li>
+  <li><a href="#si-stui-entonces-t-1us" id="toc-si-stui-entonces-t-1us" class="nav-link" data-scroll-target="#si-stui-entonces-t-1us">12. Si <span class="math inline">\(STU=I\)</span>, entonces <span class="math inline">\(T^{-1}=US\)</span></a></li>
+  <li><a href="#contraejemplo-en-dimensión-infinita" id="toc-contraejemplo-en-dimensión-infinita" class="nav-link" data-scroll-target="#contraejemplo-en-dimensión-infinita">13. Contraejemplo en dimensión infinita</a></li>
+  <li><a href="#si-rst-es-sobreyectiva-s-es-inyectiva" id="toc-si-rst-es-sobreyectiva-s-es-inyectiva" class="nav-link" data-scroll-target="#si-rst-es-sobreyectiva-s-es-inyectiva">14. Si <span class="math inline">\(RST\)</span> es sobreyectiva, <span class="math inline">\(S\)</span> es inyectiva</a></li>
+  <li><a href="#si-las-imágenes-generan-también-genera-la-lista-original" id="toc-si-las-imágenes-generan-también-genera-la-lista-original" class="nav-link" data-scroll-target="#si-las-imágenes-generan-también-genera-la-lista-original">15. Si las imágenes generan, también genera la lista original</a></li>
+  <li><a href="#toda-aplicación-entre-espacios-de-columnas-es-matricial" id="toc-toda-aplicación-entre-espacios-de-columnas-es-matricial" class="nav-link" data-scroll-target="#toda-aplicación-entre-espacios-de-columnas-es-matricial">16. Toda aplicación entre espacios de columnas es matricial</a></li>
+  <li><a href="#multiplicación-por-la-izquierda-dimensiones" id="toc-multiplicación-por-la-izquierda-dimensiones" class="nav-link" data-scroll-target="#multiplicación-por-la-izquierda-dimensiones">17. Multiplicación por la izquierda: dimensiones</a></li>
+  <li><a href="#v-es-isomorfo-a-mathcal-lmathbf-fv" id="toc-v-es-isomorfo-a-mathcal-lmathbf-fv" class="nav-link" data-scroll-target="#v-es-isomorfo-a-mathcal-lmathbf-fv">18. <span class="math inline">\(V\)</span> es isomorfo a <span class="math inline">\(\mathcal L(\mathbf F,V)\)</span></a></li>
+  <li><a href="#la-misma-matriz-en-todas-las-bases-caracteriza-a-lambda-i" id="toc-la-misma-matriz-en-todas-las-bases-caracteriza-a-lambda-i" class="nav-link" data-scroll-target="#la-misma-matriz-en-todas-las-bases-caracteriza-a-lambda-i">19. La misma matriz en todas las bases caracteriza a <span class="math inline">\(\lambda I\)</span></a></li>
+  <li><a href="#ecuación-diferencial-polinómica" id="toc-ecuación-diferencial-polinómica" class="nav-link" data-scroll-target="#ecuación-diferencial-polinómica">20. Ecuación diferencial polinómica</a></li>
+  <li><a href="#sistemas-cuadrados-unicidad-homogénea-y-existencia-universal" id="toc-sistemas-cuadrados-unicidad-homogénea-y-existencia-universal" class="nav-link" data-scroll-target="#sistemas-cuadrados-unicidad-homogénea-y-existencia-universal">21. Sistemas cuadrados: unicidad homogénea y existencia universal</a></li>
+  <li><a href="#invertibilidad-del-operador-y-de-su-matriz" id="toc-invertibilidad-del-operador-y-de-su-matriz" class="nav-link" data-scroll-target="#invertibilidad-del-operador-y-de-su-matriz">22. Invertibilidad del operador y de su matriz</a></li>
+  <li><a href="#matriz-del-operador-que-lleva-una-base-a-otra" id="toc-matriz-del-operador-que-lleva-una-base-a-otra" class="nav-link" data-scroll-target="#matriz-del-operador-que-lleva-una-base-a-otra">23. Matriz del operador que lleva una base a otra</a></li>
+  <li><a href="#una-inversa-lateral-de-una-matriz-cuadrada-es-bilateral" id="toc-una-inversa-lateral-de-una-matriz-cuadrada-es-bilateral" class="nav-link" data-scroll-target="#una-inversa-lateral-de-una-matriz-cuadrada-es-bilateral">24. Una inversa lateral de una matriz cuadrada es bilateral</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="d-invertibilidad-e-isomorfismos" class="level1 axler-edicion">
+<h1>3D · Invertibilidad e isomorfismos</h1>
+<p><strong>Revisión:</strong> cotejo y auditoría matemática internos realizados; revisión comunitaria abierta.<br>
+<strong>Atribución y modificaciones:</strong> Sheldon Axler, <a href="https://linear.axler.net/LADR4e.pdf"><em>Linear Algebra Done Right</em>, 4.ª ed.</a>, <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Matemática Abierta aporta traducción, adaptación de presentación, notas identificadas como <code>[NOTA]</code> y soluciones originales <code>[SOL]</code>; estas últimas no son de Axler. No se reproducen imágenes de terceros.<br>
+<strong>Fuente:</strong> Sheldon Axler, <em>Linear Algebra Done Right</em>, 4.ª ed., PDF oficial fechado 16-08-2026, pp.&nbsp;82–95.<br>
+<strong>Procedencia:</strong> <code>[TRAD]</code> traducción no oficial de Matemática Abierta, CC BY-NC 4.0.<br>
+<strong>Control textual:</strong> la errata oficial corrige en p.&nbsp;85 el intercambio de <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> en la última línea del enunciado 3.68 (corrección de 29-12-2023). Se sigue el PDF actual; la copia de 2024 es solo testimonio secundario.</p>
+<section id="aplicaciones-lineales-invertibles" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones-lineales-invertibles">Aplicaciones lineales invertibles</h2>
+<p>Comenzamos definiendo las nociones de invertibilidad e inversa en el contexto de las aplicaciones lineales.</p>
+<section id="definición-invertible-inversa" class="level3 axler-recuadro axler-definicion">
+<h3 class="anchored" data-anchor-id="definición-invertible-inversa">3.59 Definición: invertible, inversa</h3>
+<ul>
+<li>Una aplicación lineal <span class="math inline">\(T\in\mathcal L(V,W)\)</span> se llama <strong>invertible</strong> si existe una aplicación lineal <span class="math inline">\(S\in\mathcal L(W,V)\)</span> tal que <span class="math inline">\(ST\)</span> es el operador identidad sobre <span class="math inline">\(V\)</span> y <span class="math inline">\(TS\)</span> es el operador identidad sobre <span class="math inline">\(W\)</span>.</li>
+<li>Una aplicación lineal <span class="math inline">\(S\in\mathcal L(W,V)\)</span> que satisface <span class="math inline">\(ST=I_V\)</span> y <span class="math inline">\(TS=I_W\)</span> se llama <em>una inversa</em> de <span class="math inline">\(T\)</span>. Observa que las dos identidades actúan sobre espacios distintos: la primera es la identidad de <span class="math inline">\(V\)</span> y la segunda, la de <span class="math inline">\(W\)</span>.</li>
+</ul>
+<p>La definición habla de «una inversa». El resultado siguiente permite hablar, sin ambigüedad, de «la inversa».</p>
+</section>
+<section id="la-inversa-es-única" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="la-inversa-es-única">3.60 La inversa es única</h3>
+<p>Una aplicación lineal invertible tiene una única inversa.</p>
+</section>
+<p><strong>Demostración.</strong> Supongamos que <span class="math inline">\(T\in\mathcal L(V,W)\)</span> es invertible y que <span class="math inline">\(S_1,S_2\in\mathcal L(W,V)\)</span> son inversas de <span class="math inline">\(T\)</span>. Entonces</p>
+<p><span class="math display">\[
+S_1=S_1I_W=S_1(TS_2)=(S_1T)S_2=I_VS_2=S_2.
+\]</span></p>
+<p>Por tanto, ambas inversas coinciden.</p>
+<p>Ahora que sabemos que la inversa es única, podemos introducir una notación para ella.</p>
+<section id="notación-t-1" class="level3 axler-recuadro axler-definicion">
+<h3 class="anchored" data-anchor-id="notación-t-1">3.61 Notación: <span class="math inline">\(T^{-1}\)</span></h3>
+<p>Si <span class="math inline">\(T\)</span> es invertible, su inversa se denota por <span class="math inline">\(T^{-1}\)</span>. En otras palabras, para una aplicación invertible <span class="math inline">\(T\in\mathcal L(V,W)\)</span>, <span class="math inline">\(T^{-1}\)</span> es el único elemento de <span class="math inline">\(\mathcal L(W,V)\)</span> tal que</p>
+<p><span class="math display">\[
+T^{-1}T=I_V\qquad\text{y}\qquad TT^{-1}=I_W.
+\]</span></p>
+</section>
+<section id="ejemplo-inversa-de-una-aplicación-de-mathbf-r3-en-mathbf-r3" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-inversa-de-una-aplicación-de-mathbf-r3-en-mathbf-r3">3.62 Ejemplo: inversa de una aplicación de <span class="math inline">\(\mathbf R^3\)</span> en <span class="math inline">\(\mathbf R^3\)</span></h3>
+<p>Supongamos que <span class="math inline">\(T\in\mathcal L(\mathbf R^3)\)</span> está definida por <span class="math inline">\(T(x,y,z)=(-y,x,4z)\)</span>. Esta transformación realiza una rotación antihoraria de <span class="math inline">\(90^\circ\)</span> en el plano <span class="math inline">\(xy\)</span> y una dilatación de factor <span class="math inline">\(4\)</span> en la dirección del eje <span class="math inline">\(z\)</span>.</p>
+<p>Por consiguiente, la aplicación inversa realiza una rotación horaria de <span class="math inline">\(90^\circ\)</span> en el plano <span class="math inline">\(xy\)</span> y una dilatación de factor <span class="math inline">\(\frac14\)</span> en la dirección del eje <span class="math inline">\(z\)</span>:</p>
+<p><span class="math display">\[
+T^{-1}(x,y,z)=\left(y,-x,\frac z4\right).
+\]</span></p>
+<p>El resultado siguiente relaciona la invertibilidad con la inyectividad y la sobreyectividad.</p>
+</section>
+<section id="invertibilidad-si-y-solo-si-inyectividad-y-sobreyectividad" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="invertibilidad-si-y-solo-si-inyectividad-y-sobreyectividad">3.63 Invertibilidad si y solo si inyectividad y sobreyectividad</h3>
+<p>Una aplicación lineal es invertible si y solo si es inyectiva y sobreyectiva.</p>
+</section>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Supongamos primero que <span class="math inline">\(T\)</span> es invertible. Si <span class="math inline">\(u,v\in V\)</span> y <span class="math inline">\(Tu=Tv\)</span>, entonces</p>
+<p><span class="math display">\[
+u=T^{-1}(Tu)=T^{-1}(Tv)=v,
+\]</span></p>
+<p>así que <span class="math inline">\(T\)</span> es inyectiva. Además, dado cualquier <span class="math inline">\(w\in W\)</span>, tenemos <span class="math inline">\(w=T(T^{-1}w)\)</span>; por tanto, <span class="math inline">\(w\)</span> pertenece a la imagen de <span class="math inline">\(T\)</span> y <span class="math inline">\(T\)</span> es sobreyectiva.</p>
+<p>Recíprocamente, supongamos que <span class="math inline">\(T\)</span> es inyectiva y sobreyectiva. Para cada <span class="math inline">\(w\in W\)</span>, existe un único <span class="math inline">\(v\in V\)</span> tal que <span class="math inline">\(Tv=w\)</span>: la existencia se debe a la sobreyectividad y la unicidad, a la inyectividad. Definamos <span class="math inline">\(S(w)=v\)</span>. Por construcción, <span class="math inline">\(T(S(w))=w\)</span> para todo <span class="math inline">\(w\in W\)</span>, luego <span class="math inline">\(TS=I_W\)</span>. Si <span class="math inline">\(v\in V\)</span>, entonces <span class="math inline">\(T(S(Tv))=Tv\)</span>; como <span class="math inline">\(T\)</span> es inyectiva, <span class="math inline">\(S(Tv)=v\)</span>. En consecuencia, <span class="math inline">\(ST=I_V\)</span>.</p>
+<p>Falta comprobar que <span class="math inline">\(S\)</span> es lineal. Sean <span class="math inline">\(w_1,w_2\in W\)</span>. Por linealidad de <span class="math inline">\(T\)</span>,</p>
+<p><span class="math display">\[
+T(S(w_1)+S(w_2))=T(S(w_1))+T(S(w_2))=w_1+w_2.
+\]</span></p>
+<p>La unicidad de la preimagen de <span class="math inline">\(w_1+w_2\)</span> implica que <span class="math inline">\(S(w_1+w_2)=S(w_1)+S(w_2)\)</span>. De forma análoga, si <span class="math inline">\(w\in W\)</span> y <span class="math inline">\(\lambda\in\mathbf F\)</span>,</p>
+<p><span class="math display">\[
+T(\lambda S(w))=\lambda T(S(w))=\lambda w,
+\]</span></p>
+<p>por lo que <span class="math inline">\(S(\lambda w)=\lambda S(w)\)</span>. Así, <span class="math inline">\(S\in\mathcal L(W,V)\)</span> y es una inversa de <span class="math inline">\(T\)</span>.</p>
+<p>Para un operador de un espacio vectorial en sí mismo, cabe preguntarse si basta la inyectividad o la sobreyectividad por separado. En dimensión infinita, ninguna de las dos condiciones es suficiente, como muestran los ejemplos siguientes, ya introducidos en 3.3.</p>
+<section id="ejemplo-ni-la-inyectividad-ni-la-sobreyectividad-bastan-por-separado" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-ni-la-inyectividad-ni-la-sobreyectividad-bastan-por-separado">3.64 Ejemplo: ni la inyectividad ni la sobreyectividad bastan por separado</h3>
+<ul>
+<li>La aplicación lineal <span class="math inline">\(p\mapsto x^2p\)</span> de <span class="math inline">\(\mathcal P(\mathbf R)\)</span> en sí mismo es inyectiva; sin embargo, no es sobreyectiva porque el polinomio constante <span class="math inline">\(1\)</span> no pertenece a su imagen. Por 3.63, no es invertible.</li>
+<li>El desplazamiento hacia atrás en <span class="math inline">\(\mathbf F^\infty\)</span> es sobreyectivo, pero no inyectivo porque <span class="math inline">\((1,0,0,\ldots)\)</span> pertenece a su espacio nulo. Por 3.63, tampoco es invertible.</li>
+</ul>
+<p>El resultado siguiente contrasta con estos ejemplos: cuando el dominio y el codominio tienen la misma dimensión finita, cada una de las dos condiciones implica la otra. La hipótesis de igualdad de dimensiones se satisface automáticamente si <span class="math inline">\(W=V\)</span> y <span class="math inline">\(V\)</span> tiene dimensión finita.</p>
+</section>
+<section id="inyectividad-equivale-a-sobreyectividad-en-igual-dimensión-finita" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="inyectividad-equivale-a-sobreyectividad-en-igual-dimensión-finita">3.65 Inyectividad equivale a sobreyectividad en igual dimensión finita</h3>
+<p>Supongamos que <span class="math inline">\(V,W\)</span> son espacios vectoriales de dimensión finita, <span class="math inline">\(\dim V=\dim W\)</span> y <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{T\text{ invertible}\iff T\text{ inyectiva}\iff T\text{ sobreyectiva}.}
+\]</span></p>
+</section>
+<p><strong>Demostración.</strong> El teorema fundamental de las aplicaciones lineales (3.21) establece que</p>
+<p><span class="math display">\[
+\tag{3.66}\dim V=\dim\operatorname{null}T+\dim\operatorname{range}T.
+\]</span></p>
+<p>Si <span class="math inline">\(T\)</span> es inyectiva, entonces <span class="math inline">\(\dim\operatorname{null}T=0\)</span> por 3.15 y, en consecuencia,</p>
+<p><span class="math display">\[
+\dim\operatorname{range}T=\dim V-0=\dim W.
+\]</span></p>
+<p>Como la imagen es un subespacio de <span class="math inline">\(W\)</span> con su misma dimensión, coincide con <span class="math inline">\(W\)</span> por 2.39. Por tanto, <span class="math inline">\(T\)</span> es sobreyectiva.</p>
+<p>A la inversa, si <span class="math inline">\(T\)</span> es sobreyectiva, <span class="math inline">\(\operatorname{range}T=W\)</span>, de modo que 3.66 da</p>
+<p><span class="math display">\[
+\dim\operatorname{null}T=\dim V-\dim W=0.
+\]</span></p>
+<p>Por 3.15, <span class="math inline">\(T\)</span> es inyectiva. Así hemos demostrado que inyectividad y sobreyectividad son equivalentes bajo estas hipótesis. Si se cumple una de ellas, se cumplen ambas; por 3.63, equivalen también a la invertibilidad.</p>
+<p>El ejemplo siguiente ilustra la utilidad de 3.65. Es posible establecer su conclusión sin recurrir al álgebra lineal, pero el argumento mediante aplicaciones lineales resulta más sencillo.</p>
+<section id="ejemplo-existencia-de-soluciones-polinómicas" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-existencia-de-soluciones-polinómicas">3.67 Ejemplo: existencia de soluciones polinómicas</h3>
+<p>Dado cualquier <span class="math inline">\(q\in\mathcal P(\mathbf R)\)</span>, existe <span class="math inline">\(p\in\mathcal P(\mathbf R)\)</span> tal que</p>
+<p><span class="math display">\[
+\big((x^2+5x+7)p\big)''=q.
+\]</span></p>
+<p>Consideremos primero la aplicación <span class="math inline">\(p\mapsto\big((x^2+5x+7)p\big)''\)</span> de <span class="math inline">\(\mathcal P(\mathbf R)\)</span> en sí mismo. Es inyectiva, como se verá en la demostración. Podríamos intentar aplicar 3.65 para deducir su sobreyectividad, pero ese resultado requiere dimensión finita, mientras que <span class="math inline">\(\mathcal P(\mathbf R)\)</span> es de dimensión infinita. Para salvar esta dificultad, restringiremos la aplicación a un espacio de polinomios de grado acotado.</p>
+<p>Fijemos <span class="math inline">\(q\in\mathcal P(\mathbf R)\)</span> y elijamos un entero <span class="math inline">\(m\ge0\)</span> tal que <span class="math inline">\(q\in\mathcal P_m(\mathbf R)\)</span>. Definamos</p>
+<p><span class="math display">\[
+T:\mathcal P_m(\mathbf R)\longrightarrow\mathcal P_m(\mathbf R),\qquad Tp=\big((x^2+5x+7)p\big)''.
+\]</span></p>
+<p>La aplicación <span class="math inline">\(T\)</span> es lineal. Para un polinomio no nulo <span class="math inline">\(p\)</span>, multiplicarlo por <span class="math inline">\(x^2+5x+7\)</span> aumenta su grado en dos unidades y derivar dos veces lo reduce en dos; así <span class="math inline">\(Tp\)</span> tiene grado a lo sumo <span class="math inline">\(m\)</span>. Además, si <span class="math inline">\(Tp=0\)</span>, el polinomio <span class="math inline">\((x^2+5x+7)p\)</span> tiene segunda derivada nula y, por tanto, grado a lo sumo uno. Esto obliga a <span class="math inline">\(p=0\)</span>; de modo que <span class="math inline">\(\operatorname{null}T=\{0\}\)</span> y <span class="math inline">\(T\)</span> es inyectiva.</p>
+<p>Como el dominio y el codominio de <span class="math inline">\(T\)</span> son el mismo espacio de dimensión finita, 3.65 implica que <span class="math inline">\(T\)</span> es sobreyectiva. En particular, existe <span class="math inline">\(p\in\mathcal P_m(\mathbf R)\)</span> tal que <span class="math inline">\(Tp=q\)</span>, como queríamos demostrar.</p>
+<p>El ejercicio 35 de la sección 6A ofrece otro ejemplo de la aplicación de 3.65.</p>
+<p>El teorema siguiente también se aplica, en particular, a dos operadores de un mismo espacio de dimensión finita. En tal caso, <span class="math inline">\(ST=I\)</span> fuerza <span class="math inline">\(ST=TS\)</span>, aunque la composición de operadores no sea conmutativa en general.</p>
+</section>
+<section id="stiiff-tsi-para-espacios-de-igual-dimensión" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="stiiff-tsi-para-espacios-de-igual-dimensión">3.68 <span class="math inline">\(ST=I\iff TS=I\)</span> para espacios de igual dimensión</h3>
+<p>Sean <span class="math inline">\(V,W\)</span> espacios vectoriales de dimensión finita con <span class="math inline">\(\dim V=\dim W\)</span>, <span class="math inline">\(S\in\mathcal L(W,V)\)</span> y <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Entonces</p>
+<p><span class="math display">\[
+ST=I_V\iff TS=I_W.
+\]</span></p>
+</section>
+<p><strong>Demostración.</strong> Supongamos que <span class="math inline">\(ST=I_V\)</span>. Si <span class="math inline">\(v\in V\)</span> y <span class="math inline">\(Tv=0\)</span>, entonces</p>
+<p><span class="math display">\[
+v=I_Vv=(ST)v=S(Tv)=S(0)=0.
+\]</span></p>
+<p>Así, <span class="math inline">\(T\)</span> es inyectiva por 3.15. Puesto que <span class="math inline">\(\dim V=\dim W&lt;\infty\)</span>, se sigue de 3.65 que <span class="math inline">\(T\)</span> es invertible. Multiplicando <span class="math inline">\(ST=I_V\)</span> por <span class="math inline">\(T^{-1}\)</span> a la derecha, obtenemos <span class="math inline">\(S=T^{-1}\)</span> y, por consiguiente, <span class="math inline">\(TS=I_W\)</span>.</p>
+<p>Para la implicación recíproca, basta intercambiar los papeles de <span class="math inline">\(S\)</span> y <span class="math inline">\(T\)</span>, así como los de <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span>, en el argumento anterior.</p>
+<blockquote class="blockquote">
+<p><code>[ERRATA · fuente]</code> El enunciado de la edición impresa intercambiaba los nombres <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> en su última línea. Se sigue aquí la versión corregida en el PDF oficial; esta nota es editorial y no pertenece al texto de Axler.</p>
+</blockquote>
+</section>
+<section id="espacios-vectoriales-isomorfos" class="level2">
+<h2 class="anchored" data-anchor-id="espacios-vectoriales-isomorfos">Espacios vectoriales isomorfos</h2>
+<p>La definición siguiente recoge la idea de que dos espacios vectoriales son, en esencia, el mismo espacio, salvo por los nombres de sus elementos.</p>
+<section id="definición-isomorfismo-isomorfos" class="level3 axler-recuadro axler-definicion">
+<h3 class="anchored" data-anchor-id="definición-isomorfismo-isomorfos">3.69 Definición: isomorfismo, isomorfos</h3>
+<ul>
+<li>Un <strong>isomorfismo</strong> es una aplicación lineal invertible.</li>
+<li>Dos espacios vectoriales se llaman <strong>isomorfos</strong> si existe un isomorfismo de uno sobre el otro.</li>
+</ul>
+<p>Piensa en un isomorfismo <span class="math inline">\(T:V\to W\)</span> como una manera de cambiar la etiqueta de cada <span class="math inline">\(v\in V\)</span> por <span class="math inline">\(Tv\in W\)</span>. Este punto de vista explica por qué dos espacios vectoriales isomorfos tienen las mismas propiedades de espacio vectorial. Los términos «isomorfismo» y «aplicación lineal invertible» significan lo mismo; utiliza «isomorfismo» cuando quieras destacar que los dos espacios son esencialmente iguales.</p>
+<p>Puede resultar difícil determinar si dos estructuras matemáticas —por ejemplo, grupos o espacios topológicos— son esencialmente iguales y solo difieren en los nombres de los elementos de sus conjuntos subyacentes. Sin embargo, el resultado siguiente muestra que, para decidir si dos espacios vectoriales de dimensión finita son isomorfos, basta examinar un solo número: su dimensión.</p>
+</section>
+<section id="la-dimensión-determina-si-dos-espacios-vectoriales-son-isomorfos" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="la-dimensión-determina-si-dos-espacios-vectoriales-son-isomorfos">3.70 La dimensión determina si dos espacios vectoriales son isomorfos</h3>
+<p>Dos espacios vectoriales de dimensión finita sobre <span class="math inline">\(\mathbf F\)</span> son isomorfos si y solo si tienen la misma dimensión.</p>
+</section>
+<p><strong>Demostración.</strong> Supongamos primero que <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> son espacios vectoriales de dimensión finita isomorfos. Existe entonces un isomorfismo <span class="math inline">\(T:V\to W\)</span>. Puesto que <span class="math inline">\(T\)</span> es invertible, <span class="math inline">\(\operatorname{null}T=\{0\}\)</span> y <span class="math inline">\(\operatorname{range}T=W\)</span>. Por consiguiente,</p>
+<p><span class="math display">\[
+\dim\operatorname{null}T=0
+\qquad\text{y}\qquad
+\dim\operatorname{range}T=\dim W.
+\]</span></p>
+<p>El teorema fundamental de las aplicaciones lineales (3.21) afirma que</p>
+<p><span class="math display">\[
+\dim V=\dim\operatorname{null}T+\dim\operatorname{range}T;
+\]</span></p>
+<p>al sustituir estas igualdades obtenemos <span class="math inline">\(\dim V=\dim W\)</span>, con lo cual queda demostrada una implicación.</p>
+<p>Recíprocamente, supongamos que <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> tienen dimensión finita e igual, y elijamos bases <span class="math inline">\(v_1,\ldots,v_n\)</span> de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_n\)</span> de <span class="math inline">\(W\)</span>. Definamos <span class="math inline">\(T\in\mathcal L(V,W)\)</span> mediante</p>
+<p><span class="math display">\[
+T(c_1v_1+\cdots+c_nv_n)=c_1w_1+\cdots+c_nw_n.
+\]</span></p>
+<p>La aplicación está bien definida y es lineal, porque <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span>. Es sobreyectiva porque <span class="math inline">\(w_1,\ldots,w_n\)</span> genera <span class="math inline">\(W\)</span>. Además, la independencia lineal de esta última base implica <span class="math inline">\(\operatorname{null}T=\{0\}\)</span> y, por tanto, <span class="math inline">\(T\)</span> es inyectiva. Por 3.63, <span class="math inline">\(T\)</span> es un isomorfismo; concluimos que <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> son isomorfos.</p>
+<p>El resultado anterior implica que cada espacio vectorial de dimensión finita <span class="math inline">\(V\)</span> es isomorfo a <span class="math inline">\(\mathbf F^n\)</span>, donde <span class="math inline">\(n=\dim V\)</span>. Por ejemplo, si <span class="math inline">\(m\)</span> es un entero no negativo, <span class="math inline">\(\mathcal P_m(\mathbf F)\)</span> es isomorfo a <span class="math inline">\(\mathbf F^{m+1}\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>Recuadro del autor (3.70).</strong> Todo espacio vectorial de dimensión finita es isomorfo a algún <span class="math inline">\(\mathbf F^n\)</span>. Entonces, ¿por qué no estudiar solamente <span class="math inline">\(\mathbf F^n\)</span> en vez de espacios vectoriales más generales? Porque estudiar <span class="math inline">\(\mathbf F^n\)</span> nos conduciría pronto a otros espacios vectoriales: por ejemplo, los espacios nulos y las imágenes de las aplicaciones lineales. Aunque cada uno de ellos sea isomorfo a algún <span class="math inline">\(\mathbf F^m\)</span>, pensarlos de ese modo suele añadir complejidad sin aportar una comprensión nueva.</p>
+</blockquote>
+<p>Recordemos que <span class="math inline">\(\mathbf F^{m,n}\)</span> denota el espacio vectorial de matrices de <span class="math inline">\(m\times n\)</span> con entradas en <span class="math inline">\(\mathbf F\)</span>. Si <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_m\)</span> es una base de <span class="math inline">\(W\)</span>, entonces a cada <span class="math inline">\(T\in\mathcal L(V,W)\)</span> le corresponde una matriz <span class="math inline">\(\mathcal M(T)\in\mathbf F^{m,n}\)</span>. Una vez fijadas ambas bases, <span class="math inline">\(\mathcal M\)</span> se convierte en una función de <span class="math inline">\(\mathcal L(V,W)\)</span> en <span class="math inline">\(\mathbf F^{m,n}\)</span>. Observa que 3.35 y 3.38 muestran que esta función es lineal. Ahora demostraremos que, de hecho, es un isomorfismo.</p>
+<section id="mathcal-lvw-y-mathbf-fmn-son-isomorfos" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="mathcal-lvw-y-mathbf-fmn-son-isomorfos">3.71 <span class="math inline">\(\mathcal L(V,W)\)</span> y <span class="math inline">\(\mathbf F^{m,n}\)</span> son isomorfos</h3>
+<p>Supongamos que <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_m\)</span> es una base de <span class="math inline">\(W\)</span>. Entonces <span class="math inline">\(\mathcal M\)</span> es un isomorfismo entre <span class="math inline">\(\mathcal L(V,W)\)</span> y <span class="math inline">\(\mathbf F^{m,n}\)</span>.</p>
+</section>
+<p><strong>Demostración.</strong> Ya hemos observado que <span class="math inline">\(\mathcal M\)</span> es lineal. Falta probar que es inyectiva y sobreyectiva.</p>
+<p>Comencemos por la inyectividad. Si <span class="math inline">\(T\in\mathcal L(V,W)\)</span> y <span class="math inline">\(\mathcal M(T)=0\)</span>, entonces <span class="math inline">\(Tv_k=0\)</span> para cada <span class="math inline">\(k=1,\ldots,n\)</span>. Como <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span>, se sigue que <span class="math inline">\(T=0\)</span>. Por 3.15, <span class="math inline">\(\mathcal M\)</span> es inyectiva.</p>
+<p>Para demostrar la sobreyectividad, sea <span class="math inline">\(A\in\mathbf F^{m,n}\)</span>. Por el lema de las aplicaciones lineales (3.4), existe <span class="math inline">\(T\in\mathcal L(V,W)\)</span> tal que</p>
+<p><span class="math display">\[
+Tv_k=\sum_{j=1}^{m}A_{j,k}w_j
+\qquad(k=1,\ldots,n).
+\]</span></p>
+<p>Como <span class="math inline">\(\mathcal M(T)=A\)</span>, la imagen de <span class="math inline">\(\mathcal M\)</span> es todo <span class="math inline">\(\mathbf F^{m,n}\)</span>, como se quería.</p>
+<p>Ahora podemos determinar la dimensión del espacio vectorial de las aplicaciones lineales entre dos espacios de dimensión finita.</p>
+<section id="dimensión-del-espacio-de-aplicaciones-lineales" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="dimensión-del-espacio-de-aplicaciones-lineales">3.72 Dimensión del espacio de aplicaciones lineales</h3>
+<p>Si <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> son de dimensión finita, entonces <span class="math inline">\(\mathcal L(V,W)\)</span> también tiene dimensión finita y</p>
+<p><span class="math display">\[
+\boxed{\dim\mathcal L(V,W)=(\dim V)(\dim W).}
+\]</span></p>
+</section>
+<p><strong>Demostración.</strong> El resultado se deduce de 3.71, 3.70 y 3.40.</p>
+</section>
+<section id="aplicaciones-lineales-entendidas-como-multiplicación-matricial" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones-lineales-entendidas-como-multiplicación-matricial">Aplicaciones lineales entendidas como multiplicación matricial</h2>
+<p>Anteriormente definimos la matriz de una aplicación lineal. Ahora definimos la matriz de un vector.</p>
+<section id="definición-matriz-de-un-vector-mathcal-mv" class="level3 axler-recuadro axler-definicion">
+<h3 class="anchored" data-anchor-id="definición-matriz-de-un-vector-mathcal-mv">3.73 Definición: matriz de un vector, <span class="math inline">\(\mathcal M(v)\)</span></h3>
+<p>Supongamos que <span class="math inline">\(v\in V\)</span> y que <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span>. La <strong>matriz de <span class="math inline">\(v\)</span> respecto de esta base</strong> es la matriz de <span class="math inline">\(n\times1\)</span></p>
+<p><span class="math display">\[
+\mathcal M(v)=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix},
+\]</span></p>
+<p>donde <span class="math inline">\(b_1,\ldots,b_n\)</span> son los escalares determinados por la expresión</p>
+<p><span class="math display">\[
+v=b_1v_1+\cdots+b_nv_n.
+\]</span></p>
+<p>La matriz <span class="math inline">\(\mathcal M(v)\)</span> depende tanto de <span class="math inline">\(v\)</span> como de la base elegida. Sin embargo, normalmente la base estará clara por el contexto y por eso no se incluye en la notación.</p>
+</section>
+<section id="ejemplo-matriz-de-un-vector" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-matriz-de-un-vector">3.74 Ejemplo: matriz de un vector</h3>
+<ul>
+<li><p>La matriz del polinomio <span class="math inline">\(2-7x+5x^3+x^4\)</span> respecto de la base estándar de <span class="math inline">\(\mathcal P_4(\mathbf R)\)</span> es</p>
+<p><span class="math display">\[
+\mathcal M(2-7x+5x^3+x^4)=\begin{pmatrix}2\\-7\\0\\5\\1\end{pmatrix}.
+\]</span></p></li>
+<li><p>La matriz de un vector <span class="math inline">\(x\in\mathbf F^n\)</span> respecto de la base estándar se obtiene escribiendo sus coordenadas como entradas de una matriz de <span class="math inline">\(n\times1\)</span>. En otras palabras, si <span class="math inline">\(x=(x_1,\ldots,x_n)\in\mathbf F^n\)</span>, entonces</p>
+<p><span class="math display">\[
+\mathcal M(x)=\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}.
+\]</span></p></li>
+</ul>
+<p>En ocasiones queremos considerar los elementos de <span class="math inline">\(V\)</span> como si estuvieran reetiquetados en forma de matrices de <span class="math inline">\(n\times1\)</span>. Una vez elegida una base <span class="math inline">\(v_1,\ldots,v_n\)</span>, la función <span class="math inline">\(\mathcal M\)</span> que envía <span class="math inline">\(v\in V\)</span> a <span class="math inline">\(\mathcal M(v)\)</span> es un isomorfismo de <span class="math inline">\(V\)</span> sobre <span class="math inline">\(\mathbf F^{n,1}\)</span> que realiza este cambio de etiquetas.</p>
+<p>Recordemos que, si <span class="math inline">\(A\)</span> es una matriz de <span class="math inline">\(m\times n\)</span>, entonces <span class="math inline">\(A_{\cdot,k}\)</span> denota su columna <span class="math inline">\(k\)</span>, considerada como matriz de <span class="math inline">\(m\times1\)</span>. En el resultado siguiente, <span class="math inline">\(\mathcal M(Tv_k)\)</span> se calcula respecto de la base <span class="math inline">\(w_1,\ldots,w_m\)</span> de <span class="math inline">\(W\)</span>.</p>
+</section>
+<section id="la-columna-k-de-mathcal-mt-es-mathcal-mtv_k" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="la-columna-k-de-mathcal-mt-es-mathcal-mtv_k">3.75 La columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T)\)</span> es <span class="math inline">\(\mathcal M(Tv_k)\)</span></h3>
+<p>Supongamos que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>, que <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y que <span class="math inline">\(w_1,\ldots,w_m\)</span> es una base de <span class="math inline">\(W\)</span>. Si <span class="math inline">\(1\le k\le n\)</span>, entonces la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T)\)</span>, denotada por <span class="math inline">\(\mathcal M(T)_{\cdot,k}\)</span>, es igual a <span class="math inline">\(\mathcal M(Tv_k)\)</span>:</p>
+<p><span class="math display">\[
+\mathcal M(T)_{\cdot,k}=\mathcal M(Tv_k).
+\]</span></p>
+</section>
+<p><strong>Demostración.</strong> La igualdad se sigue inmediatamente de las definiciones de <span class="math inline">\(\mathcal M(T)\)</span> y <span class="math inline">\(\mathcal M(Tv_k)\)</span>.</p>
+<p>El resultado siguiente muestra cómo encajan la matriz de una aplicación lineal, la matriz de un vector y la multiplicación de matrices.</p>
+<section id="las-aplicaciones-lineales-actúan-como-la-multiplicación-de-matrices" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="las-aplicaciones-lineales-actúan-como-la-multiplicación-de-matrices">3.76 Las aplicaciones lineales actúan como la multiplicación de matrices</h3>
+<p>Supongamos que <span class="math inline">\(T\in\mathcal L(V,W)\)</span>, <span class="math inline">\(v\in V\)</span>, <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_m\)</span> es una base de <span class="math inline">\(W\)</span>. Entonces</p>
+<p><span class="math display">\[
+\boxed{\mathcal M(Tv)=\mathcal M(T)\mathcal M(v).}
+\]</span></p>
+</section>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(v=b_1v_1+\cdots+b_nv_n\)</span>, con <span class="math inline">\(b_1,\ldots,b_n\in\mathbf F\)</span>. Por la linealidad de <span class="math inline">\(T\)</span>,</p>
+<p><span class="math display">\[
+\tag{3.77}Tv=b_1Tv_1+\cdots+b_nTv_n.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathcal M(Tv)
+&amp;=b_1\mathcal M(Tv_1)+\cdots+b_n\mathcal M(Tv_n)\\
+&amp;=b_1\mathcal M(T)_{\cdot,1}+\cdots+b_n\mathcal M(T)_{\cdot,n}\\
+&amp;=\mathcal M(T)\mathcal M(v).
+\end{aligned}
+\]</span></p>
+<p>La primera igualdad procede de 3.77 y de la linealidad de <span class="math inline">\(\mathcal M\)</span>; la segunda, de 3.75; y la última, de 3.50.</p>
+<p>Cada matriz <span class="math inline">\(A\)</span> de <span class="math inline">\(m\times n\)</span> induce una aplicación lineal de <span class="math inline">\(\mathbf F^{n,1}\)</span> en <span class="math inline">\(\mathbf F^{m,1}\)</span>: la función de multiplicación matricial que envía <span class="math inline">\(x\in\mathbf F^{n,1}\)</span> a <span class="math inline">\(Ax\in\mathbf F^{m,1}\)</span>. El resultado anterior permite interpretar cualquier aplicación lineal entre espacios de dimensión finita como una multiplicación matricial, una vez reetiquetados adecuadamente los vectores mediante los isomorfismos <span class="math inline">\(\mathcal M\)</span>. En concreto, si identificamos <span class="math inline">\(v\in V\)</span> con <span class="math inline">\(\mathcal M(v)\in\mathbf F^{n,1}\)</span>, podemos identificar <span class="math inline">\(Tv\)</span> con <span class="math inline">\(\mathcal M(T)\mathcal M(v)\)</span>.</p>
+<p>Dado que esta identificación expresa cada aplicación lineal como una multiplicación en <span class="math inline">\(\mathbf F^{n,1}\)</span> por alguna matriz <span class="math inline">\(A\)</span>, recuerda que la matriz particular no depende solamente de la aplicación: depende también de las bases elegidas. Un tema central de muchos resultados importantes de capítulos posteriores será elegir una base que haga que <span class="math inline">\(A\)</span> sea lo más sencilla posible.</p>
+<p>En este libro nos concentramos en las aplicaciones lineales, más que en las matrices. No obstante, pensar ocasionalmente en las aplicaciones como matrices —o en las matrices como aplicaciones— proporciona ideas importantes que nos resultarán útiles.</p>
+<p>Observa que en el enunciado del resultado siguiente no aparece ninguna base. Aunque <span class="math inline">\(\mathcal M(T)\)</span> dependa de las bases elegidas en <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span>, el resultado demuestra que su rango por columnas es el mismo para todas esas elecciones, pues la imagen de <span class="math inline">\(T\)</span> no depende de ninguna base.</p>
+<section id="la-dimensión-de-la-imagen-es-el-rango-por-columnas-de-mathcal-mt" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="la-dimensión-de-la-imagen-es-el-rango-por-columnas-de-mathcal-mt">3.78 La dimensión de la imagen es el rango por columnas de <span class="math inline">\(\mathcal M(T)\)</span></h3>
+<p>Supongamos que <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> tienen dimensión finita y <span class="math inline">\(T\in\mathcal L(V,W)\)</span>. Entonces <span class="math inline">\(\dim\operatorname{range}T\)</span> es igual al rango por columnas de <span class="math inline">\(\mathcal M(T)\)</span>.</p>
+</section>
+<p><strong>Demostración.</strong> Sean <span class="math inline">\(v_1,\ldots,v_n\)</span> una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_m\)</span> una base de <span class="math inline">\(W\)</span>. La aplicación lineal que envía <span class="math inline">\(w\in W\)</span> a <span class="math inline">\(\mathcal M(w)\)</span> es un isomorfismo de <span class="math inline">\(W\)</span> sobre el espacio <span class="math inline">\(\mathbf F^{m,1}\)</span> de matrices columna de <span class="math inline">\(m\times1\)</span>. La restricción de ese isomorfismo a <span class="math inline">\(\operatorname{range}T\)</span>, que por el ejercicio 10 de la sección 3B es</p>
+<p><span class="math display">\[
+\operatorname{range}T=\operatorname{span}(Tv_1,\ldots,Tv_n),
+\]</span></p>
+<p>es un isomorfismo de <span class="math inline">\(\operatorname{range}T\)</span> sobre</p>
+<p><span class="math display">\[
+\operatorname{span}(\mathcal M(Tv_1),\ldots,\mathcal M(Tv_n)).
+\]</span></p>
+<p>Por 3.75, para cada <span class="math inline">\(k=1,\ldots,n\)</span>, la matriz columna <span class="math inline">\(\mathcal M(Tv_k)\)</span> es precisamente la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T)\)</span>. En consecuencia, <span class="math inline">\(\dim\operatorname{range}T\)</span> es el rango por columnas de <span class="math inline">\(\mathcal M(T)\)</span>, como se quería.</p>
+</section>
+<section id="cambio-de-base" class="level2">
+<h2 class="anchored" data-anchor-id="cambio-de-base">Cambio de base</h2>
+<p>En la sección 3C definimos la matriz <span class="math inline">\(\mathcal M(T,(v_1,\ldots,v_n),(w_1,\ldots,w_m))\)</span> de una aplicación lineal de <span class="math inline">\(V\)</span> en un espacio vectorial <span class="math inline">\(W\)</span> que puede ser distinto de <span class="math inline">\(V\)</span>: la primera base corresponde al dominio y la segunda, al codominio. Cuando la aplicación va de un espacio en sí mismo, normalmente empleamos la misma base para ambos. En ese caso escribimos la base una sola vez; es decir, si <span class="math inline">\(T\in\mathcal L(V)\)</span> y <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span>, definimos</p>
+<p><span class="math display">\[
+\mathcal M(T,(v_1,\ldots,v_n))
+=\mathcal M(T,(v_1,\ldots,v_n),(v_1,\ldots,v_n)).
+\]</span></p>
+<p>Si la base está clara por el contexto, escribimos simplemente <span class="math inline">\(\mathcal M(T)\)</span>.</p>
+<section id="definición-matriz-identidad-i" class="level3 axler-recuadro axler-definicion">
+<h3 class="anchored" data-anchor-id="definición-matriz-identidad-i">3.79 Definición: matriz identidad, <span class="math inline">\(I\)</span></h3>
+<p>Sea <span class="math inline">\(n\)</span> un entero positivo. La matriz de <span class="math inline">\(n\times n\)</span> que tiene unos en la diagonal —las entradas cuyo número de fila coincide con el de columna— y ceros en las demás posiciones se llama <strong>matriz identidad</strong> y se denota por <span class="math inline">\(I\)</span>:</p>
+<p><span class="math display">\[
+I_{j,k}=\begin{cases}1&amp;\text{si }j=k,\\0&amp;\text{si }j\ne k.\end{cases}
+\]</span></p>
+<p>En la representación usual de esta matriz, los ceros de las esquinas superior derecha e inferior izquierda indican, respectivamente, que todas las entradas por encima y por debajo de la diagonal son cero.</p>
+<p>Respecto de cualquier base de <span class="math inline">\(V\)</span>, la matriz del operador identidad <span class="math inline">\(I\in\mathcal L(V)\)</span> es la matriz identidad <span class="math inline">\(I\)</span>. El mismo símbolo denota, por tanto, tanto un operador como una matriz; el contexto determina su sentido. Por ejemplo, en la igualdad <span class="math inline">\(\mathcal M(I)=I\)</span>, el <span class="math inline">\(I\)</span> de la izquierda es un operador y el de la derecha es una matriz.</p>
+<p>Si <span class="math inline">\(A\)</span> es una matriz cuadrada con entradas en <span class="math inline">\(\mathbf F\)</span> y del mismo tamaño que <span class="math inline">\(I\)</span>, entonces <span class="math inline">\(AI=IA=A\)</span>, como debes comprobar.</p>
+</section>
+<section id="definición-matriz-invertible-inversa-a-1" class="level3 axler-recuadro axler-definicion">
+<h3 class="anchored" data-anchor-id="definición-matriz-invertible-inversa-a-1">3.80 Definición: matriz invertible, inversa, <span class="math inline">\(A^{-1}\)</span></h3>
+<p>Una matriz cuadrada <span class="math inline">\(A\)</span> se llama <strong>invertible</strong> si existe una matriz cuadrada <span class="math inline">\(B\)</span> del mismo tamaño tal que <span class="math inline">\(AB=BA=I\)</span>. La matriz <span class="math inline">\(B\)</span> se llama <strong>inversa de <span class="math inline">\(A\)</span></strong> y se denota por <span class="math inline">\(A^{-1}\)</span>.</p>
+<p>La misma demostración empleada en 3.60 muestra que, cuando una matriz cuadrada es invertible, existe una única matriz <span class="math inline">\(B\)</span> que satisface <span class="math inline">\(AB=BA=I\)</span>; por eso está justificada la notación <span class="math inline">\(B=A^{-1}\)</span>. Algunos matemáticos utilizan los términos <strong>no singular</strong> y <strong>singular</strong> como sinónimos de «invertible» y «no invertible», respectivamente.</p>
+<p>Si <span class="math inline">\(A\)</span> es invertible, entonces <span class="math inline">\((A^{-1})^{-1}=A\)</span>, porque <span class="math inline">\(A^{-1}A=AA^{-1}=I\)</span>.</p>
+<p>Además, si <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> son matrices cuadradas invertibles del mismo tamaño, el producto <span class="math inline">\(AC\)</span> también es invertible y</p>
+<p><span class="math display">\[
+(AC)^{-1}=C^{-1}A^{-1},
+\]</span></p>
+<p>pues</p>
+<p><span class="math display">\[
+\begin{aligned}
+(AC)(C^{-1}A^{-1})
+&amp;=A(CC^{-1})A^{-1}\\
+&amp;=AIA^{-1}\\
+&amp;=AA^{-1}\\
+&amp;=I,
+\end{aligned}
+\]</span></p>
+<p>y de manera análoga <span class="math inline">\((C^{-1}A^{-1})(AC)=I\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>[NOTA EDITORIAL · dimensión cero].</strong> La definición 3.79 introduce la matriz identidad solo para tamaños positivos, aunque 3.29 permite matrices de tamaño cero. Por ello, bajo las definiciones literales del autor, las afirmaciones sobre inversas matriciales en 3.82, 3.84 y 3.86 se leen para bases de longitud positiva. Si se desea incluir <span class="math inline">\(V=\{0\}\)</span>, puede ampliarse expresamente la convención: la única matriz <span class="math inline">\(0\times0\)</span> se denota <span class="math inline">\(I_0\)</span> y satisface <span class="math inline">\(I_0I_0=I_0\)</span>. Con esta ampliación editorial, las identidades también valen para bases vacías. La ampliación no se atribuye a Axler.</p>
+</blockquote>
+<p>El resultado siguiente es válido porque definimos la multiplicación de matrices precisamente para que lo fuera (véanse 3.43 y el material que lo precede). Ahora especificaremos las bases que intervienen.</p>
+</section>
+<section id="matriz-del-producto-de-aplicaciones-lineales" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="matriz-del-producto-de-aplicaciones-lineales">3.81 Matriz del producto de aplicaciones lineales</h3>
+<p>Supongamos que <span class="math inline">\(T\in\mathcal L(U,V)\)</span> y <span class="math inline">\(S\in\mathcal L(V,W)\)</span>. Si <span class="math inline">\(u_1,\ldots,u_m\)</span> es una base de <span class="math inline">\(U\)</span>, <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(w_1,\ldots,w_p\)</span> es una base de <span class="math inline">\(W\)</span>, entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\mathcal M(ST,(u_1,\ldots,u_m),(w_1,\ldots,w_p))\\
+&amp;\quad=\mathcal M(S,(v_1,\ldots,v_n),(w_1,\ldots,w_p))
+\mathcal M(T,(u_1,\ldots,u_m),(v_1,\ldots,v_n)).
+\end{aligned}
+\]</span></p>
+<p>El resultado siguiente se refiere a la matriz del operador identidad <span class="math inline">\(I\)</span> respecto de dos bases distintas. Observa que la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))\)</span> contiene los escalares necesarios para expresar <span class="math inline">\(u_k\)</span> como combinación lineal de la base <span class="math inline">\(v_1,\ldots,v_n\)</span>.</p>
+<p>En el enunciado siguiente, <span class="math inline">\(I\)</span> denota el operador identidad de <span class="math inline">\(V\)</span> en <span class="math inline">\(V\)</span>. En su demostración, <span class="math inline">\(I\)</span> también denota la matriz identidad de <span class="math inline">\(n\times n\)</span>.</p>
+</section>
+<section id="matriz-del-operador-identidad-respecto-de-dos-bases" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="matriz-del-operador-identidad-respecto-de-dos-bases">3.82 Matriz del operador identidad respecto de dos bases</h3>
+<p>Sean <span class="math inline">\(\mathcal U=(u_1,\ldots,u_n)\)</span> y <span class="math inline">\(\mathcal V=(v_1,\ldots,v_n)\)</span> dos bases de <span class="math inline">\(V\)</span>. Las matrices <span class="math inline">\(\mathcal M(I,\mathcal U,\mathcal V)\)</span> y <span class="math inline">\(\mathcal M(I,\mathcal V,\mathcal U)\)</span> son invertibles y cada una es la inversa de la otra.</p>
+</section>
+<p><strong>Demostración.</strong> En 3.81, sustituyamos la base del codominio por <span class="math inline">\(\mathcal U\)</span> y las dos aplicaciones <span class="math inline">\(S\)</span> y <span class="math inline">\(T\)</span> por <span class="math inline">\(I\)</span>. Obtenemos</p>
+<p><span class="math display">\[
+I=\mathcal M(I,\mathcal V,\mathcal U)\mathcal M(I,\mathcal U,\mathcal V).
+\]</span></p>
+<p>Ahora intercambiemos los papeles de <span class="math inline">\(\mathcal U\)</span> y <span class="math inline">\(\mathcal V\)</span>:</p>
+<p><span class="math display">\[
+I=\mathcal M(I,\mathcal U,\mathcal V)\mathcal M(I,\mathcal V,\mathcal U).
+\]</span></p>
+<p>Las dos identidades demuestran el resultado.</p>
+<section id="ejemplo-matriz-del-operador-identidad-de-mathbf-f2-respecto-de-dos-bases" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-matriz-del-operador-identidad-de-mathbf-f2-respecto-de-dos-bases">3.83 Ejemplo: matriz del operador identidad de <span class="math inline">\(\mathbf F^2\)</span> respecto de dos bases</h3>
+<p>Consideremos las bases <span class="math inline">\(\mathcal U=((4,2),(5,3))\)</span> y <span class="math inline">\(\mathcal E=((1,0),(0,1))\)</span> de <span class="math inline">\(\mathbf F^2\)</span>. Como</p>
+<p><span class="math display">\[
+I(4,2)=4(1,0)+2(0,1),\qquad I(5,3)=5(1,0)+3(0,1),
+\]</span></p>
+<p>obtenemos</p>
+<p><span class="math display">\[
+C=\mathcal M(I,\mathcal U,\mathcal E)
+=\begin{pmatrix}4&amp;5\\2&amp;3\end{pmatrix}.
+\]</span></p>
+<p>La inversa de esta matriz es</p>
+<p><span class="math display">\[
+C^{-1}=\begin{pmatrix}\frac32&amp;-\frac52\\-1&amp;2\end{pmatrix},
+\]</span></p>
+<p>como debes comprobar. Por 3.82,</p>
+<p><span class="math display">\[
+\mathcal M(I,\mathcal E,\mathcal U)
+=\begin{pmatrix}\frac32&amp;-\frac52\\-1&amp;2\end{pmatrix}.
+\]</span></p>
+<p>El resultado siguiente muestra cómo cambia la matriz de <span class="math inline">\(T\)</span> cuando cambiamos de base. En él tenemos dos bases distintas de <span class="math inline">\(V\)</span>, cada una utilizada tanto en el dominio como en el codominio. Recordemos la abreviatura</p>
+<p><span class="math display">\[
+\mathcal M(T,(u_1,\ldots,u_n))
+=\mathcal M(T,(u_1,\ldots,u_n),(u_1,\ldots,u_n)).
+\]</span></p>
+</section>
+<section id="fórmula-de-cambio-de-base" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="fórmula-de-cambio-de-base">3.84 Fórmula de cambio de base</h3>
+<p>Supongamos que <span class="math inline">\(T\in\mathcal L(V)\)</span> y que <span class="math inline">\(\mathcal U=(u_1,\ldots,u_n)\)</span> y <span class="math inline">\(\mathcal V=(v_1,\ldots,v_n)\)</span> son bases de <span class="math inline">\(V\)</span>. Sean</p>
+<p><span class="math display">\[
+A=\mathcal M(T,\mathcal U),\qquad
+B=\mathcal M(T,\mathcal V),\qquad
+C=\mathcal M(I,\mathcal U,\mathcal V).
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\boxed{A=C^{-1}BC.}
+\]</span></p>
+</section>
+<p><strong>Demostración.</strong> En 3.81, sustituyamos la base del codominio por <span class="math inline">\(\mathcal U\)</span> y la aplicación <span class="math inline">\(S\)</span> por <span class="math inline">\(I\)</span>. Aplicando 3.82, obtenemos</p>
+<p><span class="math display">\[
+\tag{3.85}
+A=C^{-1}\mathcal M(T,\mathcal U,\mathcal V).
+\]</span></p>
+<p>Utilicemos otra vez 3.81, ahora con la base <span class="math inline">\(\mathcal V\)</span> como base del codominio, sustituyendo <span class="math inline">\(T\)</span> por <span class="math inline">\(I\)</span> y <span class="math inline">\(S\)</span> por la aplicación <span class="math inline">\(T\)</span> del enunciado. Resulta</p>
+<p><span class="math display">\[
+\mathcal M(T,\mathcal U,\mathcal V)=BC.
+\]</span></p>
+<p>Al sustituir esta igualdad en 3.85, obtenemos <span class="math inline">\(A=C^{-1}BC\)</span>.</p>
+<p>La demostración del resultado siguiente se deja como ejercicio.</p>
+<section id="la-matriz-de-la-inversa-es-la-inversa-de-la-matriz" class="level3 axler-recuadro axler-teorema">
+<h3 class="anchored" data-anchor-id="la-matriz-de-la-inversa-es-la-inversa-de-la-matriz">3.86 La matriz de la inversa es la inversa de la matriz</h3>
+<p>Supongamos que <span class="math inline">\(v_1,\ldots,v_n\)</span> es una base de <span class="math inline">\(V\)</span> y que <span class="math inline">\(T\in\mathcal L(V)\)</span> es invertible. Entonces</p>
+<p><span class="math display">\[
+\boxed{\mathcal M(T^{-1})=(\mathcal M(T))^{-1},}
+\]</span></p>
+<p>donde ambas matrices se calculan respecto de la base <span class="math inline">\(v_1,\ldots,v_n\)</span>.</p>
+</section>
+<hr>
+</section>
+<section id="ejercicios-3d" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-3d">Ejercicios 3D · enunciados traducidos</h2>
+<p><strong>1.</strong> Supongamos que <span class="math inline">\(T\in\mathcal L(V,W)\)</span> es invertible. Demuestra que <span class="math inline">\(T^{-1}\)</span> es invertible y que <span class="math inline">\((T^{-1})^{-1}=T\)</span>.</p>
+<p><strong>2.</strong> Supongamos que <span class="math inline">\(T\in\mathcal L(U,V)\)</span> y <span class="math inline">\(S\in\mathcal L(V,W)\)</span> son invertibles. Demuestra que <span class="math inline">\(ST\in\mathcal L(U,W)\)</span> es invertible y que <span class="math inline">\((ST)^{-1}=T^{-1}S^{-1}\)</span>.</p>
+<p><strong>3.</strong> Supongamos que <span class="math inline">\(V\)</span> tiene dimensión finita y <span class="math inline">\(T\in\mathcal L(V)\)</span>. Demuestra la equivalencia de: <span class="math inline">\(a\)</span> <span class="math inline">\(T\)</span> es invertible; <span class="math inline">\(b\)</span> <span class="math inline">\(Tv_1,\ldots,Tv_n\)</span> es una base de <span class="math inline">\(V\)</span> para <strong>toda</strong> base <span class="math inline">\(v_1,\ldots,v_n\)</span> de <span class="math inline">\(V\)</span>; <span class="math inline">\(c\)</span> <span class="math inline">\(Tv_1,\ldots,Tv_n\)</span> es una base de <span class="math inline">\(V\)</span> para <strong>alguna</strong> base <span class="math inline">\(v_1,\ldots,v_n\)</span> de <span class="math inline">\(V\)</span>.</p>
+<p><strong>4.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita y <span class="math inline">\(\dim V&gt;1\)</span>. Demuestra que el conjunto de aplicaciones lineales no invertibles de <span class="math inline">\(V\)</span> en sí mismo no es un subespacio de <span class="math inline">\(\mathcal L(V)\)</span>.</p>
+<p><strong>5.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita, <span class="math inline">\(U\)</span> un subespacio de <span class="math inline">\(V\)</span> y <span class="math inline">\(S\in\mathcal L(U,V)\)</span>. Demuestra que existe una aplicación lineal invertible <span class="math inline">\(T:V\to V\)</span> con <span class="math inline">\(Tu=Su\)</span> para cada <span class="math inline">\(u\in U\)</span> si y solo si <span class="math inline">\(S\)</span> es inyectiva.</p>
+<p><strong>6.</strong> Sean <span class="math inline">\(W\)</span> de dimensión finita y <span class="math inline">\(S,T\in\mathcal L(V,W)\)</span>. Demuestra que <span class="math inline">\(\operatorname{null}S=\operatorname{null}T\)</span> si y solo si existe un operador invertible <span class="math inline">\(E\in\mathcal L(W)\)</span> tal que <span class="math inline">\(S=ET\)</span>.</p>
+<p><strong>7.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita y <span class="math inline">\(S,T\in\mathcal L(V,W)\)</span>. Demuestra que <span class="math inline">\(\operatorname{range}S=\operatorname{range}T\)</span> si y solo si existe un operador invertible <span class="math inline">\(E\in\mathcal L(V)\)</span> tal que <span class="math inline">\(S=TE\)</span>.</p>
+<p><strong>8.</strong> Sean <span class="math inline">\(V,W\)</span> de dimensión finita y <span class="math inline">\(S,T\in\mathcal L(V,W)\)</span>. Demuestra que existen operadores invertibles <span class="math inline">\(E_1\in\mathcal L(V)\)</span> y <span class="math inline">\(E_2\in\mathcal L(W)\)</span> tales que <span class="math inline">\(S=E_2TE_1\)</span> si y solo si <span class="math inline">\(\dim\operatorname{null}S=\dim\operatorname{null}T\)</span>.</p>
+<p><strong>9.</strong> Supongamos que <span class="math inline">\(V\)</span> tiene dimensión finita y que <span class="math inline">\(T:V\to W\)</span> es lineal y sobreyectiva. Demuestra que existe un subespacio <span class="math inline">\(U\)</span> de <span class="math inline">\(V\)</span> tal que la restricción <span class="math inline">\(T|_U:U\to W\)</span> es un isomorfismo. Aquí <span class="math inline">\(T|_U\)</span> denota la función <span class="math inline">\(T\)</span> restringida a <span class="math inline">\(U\)</span>. Por tanto, <span class="math inline">\(T|_U\)</span> tiene como dominio <span class="math inline">\(U\)</span> y está definida por <span class="math inline">\(T|_U(u)=Tu\)</span> para cada <span class="math inline">\(u\in U\)</span>.</p>
+<p><strong>10.</strong> Sean <span class="math inline">\(V,W\)</span> de dimensión finita y <span class="math inline">\(U\subseteq V\)</span> un subespacio. Sea</p>
+<p><span class="math display">\[\mathcal E=\{T\in\mathcal L(V,W):U\subseteq\operatorname{null}T\}.\]</span></p>
+<p><span class="math inline">\(a\)</span> Demuestra que <span class="math inline">\(\mathcal E\)</span> es un subespacio de <span class="math inline">\(\mathcal L(V,W)\)</span>. <span class="math inline">\(b\)</span> Obtén una fórmula para <span class="math inline">\(\dim\mathcal E\)</span> en función de <span class="math inline">\(\dim V\)</span>, <span class="math inline">\(\dim W\)</span> y <span class="math inline">\(\dim U\)</span>. <strong>Pista del autor:</strong> define <span class="math inline">\(\Phi:\mathcal L(V,W)\to\mathcal L(U,W)\)</span> por <span class="math inline">\(\Phi(T)=T|_U\)</span>; determina su espacio nulo y su imagen.</p>
+<p><strong>11.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita y <span class="math inline">\(S,T\in\mathcal L(V)\)</span>. Demuestra que <span class="math inline">\(ST\)</span> es invertible si y solo si tanto <span class="math inline">\(S\)</span> como <span class="math inline">\(T\)</span> son invertibles.</p>
+<p><strong>12.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita, <span class="math inline">\(S,T,U\in\mathcal L(V)\)</span> y <span class="math inline">\(STU=I\)</span>. Demuestra que <span class="math inline">\(T\)</span> es invertible y que <span class="math inline">\(T^{-1}=US\)</span>.</p>
+<p><strong>13.</strong> Demuestra que el resultado del ejercicio 12 puede fallar si se suprime la hipótesis de dimensión finita de <span class="math inline">\(V\)</span>.</p>
+<p><strong>14.</strong> Demuestra o proporciona un contraejemplo: si <span class="math inline">\(V\)</span> es de dimensión finita y <span class="math inline">\(R,S,T\in\mathcal L(V)\)</span> satisfacen que <span class="math inline">\(RST\)</span> es sobreyectiva, entonces <span class="math inline">\(S\)</span> es inyectiva.</p>
+<p><strong>15.</strong> Sean <span class="math inline">\(T\in\mathcal L(V)\)</span> y <span class="math inline">\(v_1,\ldots,v_m\)</span> una lista de <span class="math inline">\(V\)</span> tal que <span class="math inline">\(Tv_1,\ldots,Tv_m\)</span> genera <span class="math inline">\(V\)</span>. Demuestra que <span class="math inline">\(v_1,\ldots,v_m\)</span> genera <span class="math inline">\(V\)</span>.</p>
+<p><strong>16.</strong> Demuestra que toda aplicación lineal <span class="math inline">\(T:\mathbf F^{n,1}\to\mathbf F^{m,1}\)</span> se obtiene mediante multiplicación por una matriz: existe <span class="math inline">\(A\in\mathbf F^{m,n}\)</span> tal que <span class="math inline">\(Tx=Ax\)</span> para todo <span class="math inline">\(x\in\mathbf F^{n,1}\)</span>.</p>
+<p><strong>17.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita, <span class="math inline">\(S\in\mathcal L(V)\)</span> y <span class="math inline">\(\mathcal A\in\mathcal L(\mathcal L(V))\)</span> definida por <span class="math inline">\(\mathcal A(T)=ST\)</span>. Demuestra: <span class="math inline">\(a\)</span> <span class="math inline">\(\dim\operatorname{null}\mathcal A=(\dim V)(\dim\operatorname{null}S)\)</span>; <span class="math inline">\(b\)</span> <span class="math inline">\(\dim\operatorname{range}\mathcal A=(\dim V)(\dim\operatorname{range}S)\)</span>.</p>
+<p><strong>18.</strong> Demuestra que <span class="math inline">\(V\)</span> y <span class="math inline">\(\mathcal L(\mathbf F,V)\)</span> son espacios vectoriales isomorfos.</p>
+<p><strong>19.</strong> Sean <span class="math inline">\(V\)</span> de dimensión finita y <span class="math inline">\(T\in\mathcal L(V)\)</span>. Demuestra que <span class="math inline">\(T\)</span> tiene la misma matriz respecto de toda base de <span class="math inline">\(V\)</span> si y solo si es un múltiplo escalar del operador identidad.</p>
+<p><strong>20.</strong> Sea <span class="math inline">\(q\in\mathcal P(\mathbf R)\)</span>. Demuestra que existe <span class="math inline">\(p\in\mathcal P(\mathbf R)\)</span> tal que, para todo <span class="math inline">\(x\in\mathbf R\)</span>,</p>
+<p><span class="math display">\[q(x)=(x^2+x)p''(x)+2xp'(x)+p(3).\]</span></p>
+<p><strong>21.</strong> Sea <span class="math inline">\(n\)</span> un entero positivo y sean <span class="math inline">\(A_{j,k}\in\mathbf F\)</span> para <span class="math inline">\(j,k=1,\ldots,n\)</span>. Demuestra la equivalencia de: <span class="math inline">\(a\)</span> el sistema homogéneo <span class="math inline">\(\sum_{k=1}^n A_{j,k}x_k=0\)</span> para <span class="math inline">\(j=1,\ldots,n\)</span> tiene únicamente la solución trivial <span class="math inline">\(x_1=\cdots=x_n=0\)</span>; <span class="math inline">\(b\)</span> para cada elección de <span class="math inline">\(c_1,\ldots,c_n\in\mathbf F\)</span>, el sistema <span class="math inline">\(\sum_{k=1}^n A_{j,k}x_k=c_j\)</span> para <span class="math inline">\(j=1,\ldots,n\)</span> posee una solución. En ambos casos, el número de ecuaciones coincide con el de incógnitas.</p>
+<p><strong>22.</strong> Sean <span class="math inline">\(T\in\mathcal L(V)\)</span> y <span class="math inline">\(v_1,\ldots,v_n\)</span> una base de <span class="math inline">\(V\)</span>. Demuestra que <span class="math inline">\(\mathcal M(T,(v_1,\ldots,v_n))\)</span> es invertible si y solo si <span class="math inline">\(T\)</span> es invertible.</p>
+<p><strong>23.</strong> Sean <span class="math inline">\(u_1,\ldots,u_n\)</span> y <span class="math inline">\(v_1,\ldots,v_n\)</span> bases de <span class="math inline">\(V\)</span>, y <span class="math inline">\(T\in\mathcal L(V)\)</span> tal que <span class="math inline">\(Tv_k=u_k\)</span> para <span class="math inline">\(k=1,\ldots,n\)</span>. Demuestra que</p>
+<p><span class="math display">\[\mathcal M(T,(v_1,\ldots,v_n))=\mathcal M(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n)).\]</span></p>
+<p><strong>24.</strong> Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> matrices cuadradas del mismo tamaño con <span class="math inline">\(AB=I\)</span>. Demuestra que <span class="math inline">\(BA=I\)</span>.</p>
+<hr>
+</section>
+<section id="soluciones-3d" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-3d">Soluciones originales de los ejercicios de 3D</h2>
+<blockquote class="blockquote">
+<p>[SOL] Soluciones elaboradas por Matemática Abierta; no proceden de Sheldon Axler.</p>
+</blockquote>
+<section id="inversa-de-la-inversa" class="level3">
+<h3 class="anchored" data-anchor-id="inversa-de-la-inversa">1. Inversa de la inversa</h3>
+<p>Por definición, <span class="math inline">\(T^{-1}T=I_V\)</span> y <span class="math inline">\(TT^{-1}=I_W\)</span>. Intercambiando los papeles de <span class="math inline">\(T\)</span> y <span class="math inline">\(T^{-1}\)</span>, estas identidades dicen que <span class="math inline">\(T\)</span> es una inversa de <span class="math inline">\(T^{-1}\)</span>. La unicidad 3.60 da</p>
+<p><span class="math display">\[(T^{-1})^{-1}=T.\]</span></p>
+</section>
+<section id="inversa-de-una-composición" class="level3">
+<h3 class="anchored" data-anchor-id="inversa-de-una-composición">2. Inversa de una composición</h3>
+<p>Si <span class="math inline">\(T:U\to V\)</span> y <span class="math inline">\(S:V\to W\)</span> son invertibles, por asociatividad</p>
+<p><span class="math display">\[(T^{-1}S^{-1})(ST)=T^{-1}(S^{-1}S)T=I_U,\]</span></p>
+<p><span class="math display">\[(ST)(T^{-1}S^{-1})=S(TT^{-1})S^{-1}=I_W.\]</span></p>
+<p>Por tanto <span class="math inline">\(ST\)</span> es invertible y <span class="math inline">\((ST)^{-1}=T^{-1}S^{-1}\)</span>; el orden se invierte necesariamente.</p>
+</section>
+<section id="una-base-se-transforma-en-una-base" class="level3">
+<h3 class="anchored" data-anchor-id="una-base-se-transforma-en-una-base">3. Una base se transforma en una base</h3>
+<p>(a)<span class="math inline">\(\Rightarrow\)</span>(b): Si <span class="math inline">\(T\)</span> es invertible, es inyectiva y sobreyectiva. Sea <span class="math inline">\(v_1,\ldots,v_n\)</span> una base de <span class="math inline">\(V\)</span>. Si <span class="math inline">\(\sum_j a_jTv_j=0\)</span>, entonces <span class="math inline">\(T(\sum_j a_jv_j)=0\)</span>; la inyectividad da <span class="math inline">\(\sum_j a_jv_j=0\)</span> y, por independencia de la base, todos los <span class="math inline">\(a_j\)</span> son cero. Por otro lado, dado <span class="math inline">\(w\in V\)</span>, la sobreyectividad proporciona <span class="math inline">\(v\in V\)</span> con <span class="math inline">\(Tv=w\)</span>; al escribir <span class="math inline">\(v=\sum_j b_jv_j\)</span> obtenemos <span class="math inline">\(w=\sum_j b_jTv_j\)</span>. La lista de imágenes es, pues, una base. El mismo argumento cubre la base vacía cuando <span class="math inline">\(V=\{0\}\)</span>.</p>
+<p>(b)<span class="math inline">\(\Rightarrow\)</span>(c) es inmediato porque un espacio de dimensión finita tiene alguna base (también la base vacía si <span class="math inline">\(V=\{0\}\)</span>).</p>
+<p>(c)<span class="math inline">\(\Rightarrow\)</span>(a): Si <span class="math inline">\((Tv_j)\)</span> es una base, genera <span class="math inline">\(V\)</span>, luego <span class="math inline">\(T\)</span> es sobreyectiva; también es independiente, luego <span class="math inline">\(Tv=0\)</span> implica que todos los coeficientes de <span class="math inline">\(v\)</span> en <span class="math inline">\((v_j)\)</span> son cero. Así <span class="math inline">\(T\)</span> es inyectiva y, por 3.63, invertible.</p>
+</section>
+<section id="las-aplicaciones-no-invertibles-no-forman-subespacio" class="level3">
+<h3 class="anchored" data-anchor-id="las-aplicaciones-no-invertibles-no-forman-subespacio">4. Las aplicaciones no invertibles no forman subespacio</h3>
+<p>Sea <span class="math inline">\(n=\dim V&gt;1\)</span> y <span class="math inline">\((v_1,\ldots,v_n)\)</span> una base. Definamos <span class="math inline">\(S\)</span> por <span class="math inline">\(Sv_1=0\)</span> y <span class="math inline">\(Sv_j=v_j\)</span> para <span class="math inline">\(j\ge2\)</span>; definamos <span class="math inline">\(T\)</span> por <span class="math inline">\(Tv_1=v_1\)</span> y <span class="math inline">\(Tv_j=0\)</span> para <span class="math inline">\(j\ge2\)</span>. Ambas son no invertibles pues tienen espacio nulo no trivial. Sin embargo <span class="math inline">\((S+T)v_j=v_j\)</span> para todo <span class="math inline">\(j\)</span>, de donde <span class="math inline">\(S+T=I\)</span>, invertible. El conjunto no es cerrado bajo suma.</p>
+</section>
+<section id="extender-una-aplicación-a-un-automorfismo" class="level3">
+<h3 class="anchored" data-anchor-id="extender-una-aplicación-a-un-automorfismo">5. Extender una aplicación a un automorfismo</h3>
+<p>Si <span class="math inline">\(Q\in\mathcal L(V)\)</span> es invertible y <span class="math inline">\(Q|_U=S\)</span>, entonces <span class="math inline">\(S\)</span> es inyectiva al ser restricción de una aplicación inyectiva.</p>
+<p>Recíprocamente, supongamos <span class="math inline">\(S\)</span> inyectiva. Elijamos base <span class="math inline">\(u_1,\ldots,u_r\)</span> de <span class="math inline">\(U\)</span>. La lista <span class="math inline">\(Su_1,\ldots,Su_r\)</span> es independiente. Extendamos ambas listas a bases de <span class="math inline">\(V\)</span>:</p>
+<p><span class="math display">\[u_1,\ldots,u_r,v_{r+1},\ldots,v_n,\quad Su_1,\ldots,Su_r,w_{r+1},\ldots,w_n.\]</span></p>
+<p>El lema 3.4 define <span class="math inline">\(Q\)</span> llevando los vectores de la primera base a los correspondientes de la segunda. Por 3.63 es invertible y <span class="math inline">\(Q|_U=S\)</span>.</p>
+</section>
+<section id="el-mismo-espacio-nulo-equivale-a-un-automorfismo-del-codominio" class="level3">
+<h3 class="anchored" data-anchor-id="el-mismo-espacio-nulo-equivale-a-un-automorfismo-del-codominio">6. El mismo espacio nulo equivale a un automorfismo del codominio</h3>
+<p>Si <span class="math inline">\(S=ET\)</span> con <span class="math inline">\(E\in\mathcal L(W)\)</span> invertible, <span class="math inline">\(Sv=0\iff Tv=0\)</span>, así que <span class="math inline">\(\operatorname{null}S=\operatorname{null}T\)</span>.</p>
+<p>Para la recíproca, supongamos iguales los núcleos. Definimos</p>
+<p><span class="math display">\[F:\operatorname{range}T\to\operatorname{range}S,\qquad F(Tv)=Sv.\]</span></p>
+<p>Está bien definida: <span class="math inline">\(Tv=Tv'\)</span> implica <span class="math inline">\(v-v'\in\operatorname{null}T=\operatorname{null}S\)</span>, y por tanto <span class="math inline">\(Sv=Sv'\)</span>. La misma equivalencia prueba que <span class="math inline">\(F\)</span> es inyectiva; es sobreyectiva por definición. Es lineal. Como <span class="math inline">\(W\)</span> es de dimensión finita, extendamos una base <span class="math inline">\(t_1,\ldots,t_r\)</span> de <span class="math inline">\(\operatorname{range}T\)</span> y su imagen <span class="math inline">\(F(t_1),\ldots,F(t_r)\)</span> a sendas bases de <span class="math inline">\(W\)</span>. La aplicación <span class="math inline">\(E\)</span> que envía una base a la otra es un automorfismo y prolonga <span class="math inline">\(F\)</span>. Se cumple <span class="math inline">\(ETv=F(Tv)=Sv\)</span> para todo <span class="math inline">\(v\)</span>, luego <span class="math inline">\(S=ET\)</span>.</p>
+</section>
+<section id="la-misma-imagen-equivale-a-un-automorfismo-del-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="la-misma-imagen-equivale-a-un-automorfismo-del-dominio">7. La misma imagen equivale a un automorfismo del dominio</h3>
+<p>Si <span class="math inline">\(S=TE\)</span> y <span class="math inline">\(E\)</span> es invertible en <span class="math inline">\(V\)</span>, <span class="math inline">\(E(V)=V\)</span>, luego <span class="math inline">\(\operatorname{range}S=T(EV)=\operatorname{range}T\)</span>.</p>
+<p>A la inversa, sea <span class="math inline">\(R=\operatorname{range}S=\operatorname{range}T\)</span>, de dimensión <span class="math inline">\(r\)</span>. Elijamos una base <span class="math inline">\(y_1,\ldots,y_r\)</span> de <span class="math inline">\(R\)</span>, preimágenes <span class="math inline">\(s_j,t_j\)</span> con <span class="math inline">\(Ss_j=y_j=Tt_j\)</span>, bases <span class="math inline">\(a_1,\ldots,a_k\)</span> de <span class="math inline">\(\operatorname{null}S\)</span> y <span class="math inline">\(b_1,\ldots,b_k\)</span> de <span class="math inline">\(\operatorname{null}T\)</span>. Los valores de <span class="math inline">\(k\)</span> coinciden por 3.21 y <span class="math inline">\(\dim V&lt;\infty\)</span>. Las listas <span class="math inline">\((s_1,\ldots,s_r,a_1,\ldots,a_k)\)</span> y <span class="math inline">\((t_1,\ldots,t_r,b_1,\ldots,b_k)\)</span> son bases de <span class="math inline">\(V\)</span>: se demuestra tomando imágenes para independencia y restando las preimágenes de las coordenadas para generación. Definimos el automorfismo <span class="math inline">\(E\)</span> enviando la primera lista a la segunda. En la primera base, <span class="math inline">\(TEs_j=y_j=Ss_j\)</span> y <span class="math inline">\(TEa_i=0=Sa_i\)</span>. Por 3.4, <span class="math inline">\(TE=S\)</span>.</p>
+</section>
+<section id="equivalencia-bilateral-por-dimensión-del-espacio-nulo" class="level3">
+<h3 class="anchored" data-anchor-id="equivalencia-bilateral-por-dimensión-del-espacio-nulo">8. Equivalencia bilateral por dimensión del espacio nulo</h3>
+<p>Si <span class="math inline">\(S=E_2TE_1\)</span> con <span class="math inline">\(E_1,E_2\)</span> invertibles, <span class="math inline">\(\operatorname{null}S=E_1^{-1}(\operatorname{null}T)\)</span>, de donde sus dimensiones son iguales.</p>
+<p>Recíprocamente, supongamos que las dimensiones de los núcleos son iguales, <span class="math inline">\(k\)</span>. Por 3.21 las imágenes tienen la misma dimensión <span class="math inline">\(r=\dim V-k\)</span>. Elegimos bases adaptadas <span class="math inline">\((s_1,\ldots,s_r,a_1,\ldots,a_k)\)</span> y <span class="math inline">\((t_1,\ldots,t_r,b_1,\ldots,b_k)\)</span> como en el ejercicio 7, pero ahora las bases <span class="math inline">\((Ss_j)\)</span> y <span class="math inline">\((Tt_j)\)</span> de las dos imágenes pueden ser distintas. Sea <span class="math inline">\(E_1\)</span> el automorfismo que lleva <span class="math inline">\(s_j\mapsto t_j\)</span> y <span class="math inline">\(a_i\mapsto b_i\)</span>. Sea <span class="math inline">\(E_2\)</span> un automorfismo de <span class="math inline">\(W\)</span> que lleva <span class="math inline">\(Tt_j\mapsto Ss_j\)</span> y extiende este isomorfismo entre las imágenes: existe al prolongar cada lista a una base de <span class="math inline">\(W\)</span>. Así <span class="math inline">\(E_2TE_1\)</span> coincide con <span class="math inline">\(S\)</span> en la base adaptada, luego <span class="math inline">\(S=E_2TE_1\)</span>.</p>
+</section>
+<section id="una-restricción-isomorfa-de-una-sobreyección" class="level3">
+<h3 class="anchored" data-anchor-id="una-restricción-isomorfa-de-una-sobreyección">9. Una restricción isomorfa de una sobreyección</h3>
+<p>Sea <span class="math inline">\(T:V\to W\)</span> sobreyectiva, con <span class="math inline">\(\dim V&lt;\infty\)</span>. Por 2.33 existe un complemento <span class="math inline">\(U\)</span> de <span class="math inline">\(\operatorname{null}T\)</span> tal que <span class="math inline">\(V=\operatorname{null}T\oplus U\)</span>. La restricción <span class="math inline">\(T|_U\)</span> tiene espacio nulo <span class="math inline">\(U\cap\operatorname{null}T=\{0\}\)</span>. Para cada <span class="math inline">\(w=Tv\)</span>, descomponiendo <span class="math inline">\(v=z+u\)</span> con <span class="math inline">\(z\in\operatorname{null}T\)</span>, tenemos <span class="math inline">\(w=Tu\)</span>. Es sobreyectiva; por 3.63 es un isomorfismo <span class="math inline">\(U\to W\)</span>.</p>
+</section>
+<section id="aplicaciones-que-anulan-un-subespacio" class="level3">
+<h3 class="anchored" data-anchor-id="aplicaciones-que-anulan-un-subespacio">10. Aplicaciones que anulan un subespacio</h3>
+<p><span class="math inline">\(a\)</span> El conjunto <span class="math inline">\(\mathcal E=\{T:U\subseteq\operatorname{null}T\}\)</span> contiene la aplicación cero y está cerrado bajo suma y multiplicación por escalares, pues <span class="math inline">\((S+T)u=0\)</span> y <span class="math inline">\((\lambda T)u=0\)</span> para <span class="math inline">\(u\in U\)</span>.</p>
+<p><span class="math inline">\(b\)</span> Sea <span class="math inline">\(\Phi:\mathcal L(V,W)\to\mathcal L(U,W)\)</span> la restricción, <span class="math inline">\(\Phi(T)=T|_U\)</span>. Es lineal y <span class="math inline">\(\operatorname{null}\Phi=\mathcal E\)</span>. Es sobreyectiva: para cualquier <span class="math inline">\(R:U\to W\)</span>, extiéndase una base de <span class="math inline">\(U\)</span> a una de <span class="math inline">\(V\)</span> y prescríbase cero para los vectores añadidos <span class="math inline">\(3.4\)</span>. Usando 3.21 y 3.72,</p>
+<p><span class="math display">\[\boxed{\dim\mathcal E=(\dim V)(\dim W)-(\dim U)(\dim W)
+=(\dim V-\dim U)\dim W.}\]</span></p>
+</section>
+<section id="producto-invertible-si-y-solo-si-factores-invertibles" class="level3">
+<h3 class="anchored" data-anchor-id="producto-invertible-si-y-solo-si-factores-invertibles">11. Producto invertible si y solo si factores invertibles</h3>
+<p>Si <span class="math inline">\(S,T\)</span> son invertibles, el ejercicio 2 da que <span class="math inline">\(ST\)</span> es invertible. Si <span class="math inline">\(ST\)</span> es invertible, entonces <span class="math inline">\(ST\)</span> es inyectiva y sobreyectiva. La primera propiedad implica que <span class="math inline">\(T\)</span> es inyectiva; la segunda implica que <span class="math inline">\(S\)</span> es sobreyectiva. Como ambos son operadores de un mismo espacio de dimensión finita, 3.65 hace invertibles a <span class="math inline">\(T\)</span> y <span class="math inline">\(S\)</span>.</p>
+</section>
+<section id="si-stui-entonces-t-1us" class="level3">
+<h3 class="anchored" data-anchor-id="si-stui-entonces-t-1us">12. Si <span class="math inline">\(STU=I\)</span>, entonces <span class="math inline">\(T^{-1}=US\)</span></h3>
+<p>Por el ejercicio 11, la invertibilidad de <span class="math inline">\(STU\)</span> implica que los tres operadores <span class="math inline">\(S,T,U\)</span> son invertibles. Multiplicando <span class="math inline">\(STU=I\)</span> por <span class="math inline">\(S^{-1}\)</span> a la izquierda y por <span class="math inline">\(U^{-1}\)</span> a la derecha,</p>
+<p><span class="math display">\[T=S^{-1}U^{-1}.\]</span></p>
+<p>Tomando inversas (ejercicio 2), <span class="math inline">\(T^{-1}=US\)</span>. También se puede comprobar directamente <span class="math inline">\(T(US)=(TU)S=I\)</span> a partir de esa identidad.</p>
+</section>
+<section id="contraejemplo-en-dimensión-infinita" class="level3">
+<h3 class="anchored" data-anchor-id="contraejemplo-en-dimensión-infinita">13. Contraejemplo en dimensión infinita</h3>
+<p>En <span class="math inline">\(V=\mathbf F^\infty\)</span>, sean <span class="math inline">\(L(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)\)</span> y <span class="math inline">\(R(x_1,x_2,\ldots)=(x_2,x_3,\ldots)\)</span>. Son lineales y <span class="math inline">\(RL=I\)</span>, mientras que <span class="math inline">\(LR\ne I\)</span> (anula la primera coordenada). Tomemos</p>
+<p><span class="math display">\[S=R,\qquad T=LR,\qquad U=L.\]</span></p>
+<p>Entonces <span class="math inline">\(STU=R(LR)L=(RL)(RL)=I\)</span>, pero <span class="math inline">\(T=LR\)</span> no es invertible, pues <span class="math inline">\(T(1,0,\ldots)=0\)</span>. La hipótesis de dimensión finita del ejercicio 12 no se puede suprimir.</p>
+</section>
+<section id="si-rst-es-sobreyectiva-s-es-inyectiva" class="level3">
+<h3 class="anchored" data-anchor-id="si-rst-es-sobreyectiva-s-es-inyectiva">14. Si <span class="math inline">\(RST\)</span> es sobreyectiva, <span class="math inline">\(S\)</span> es inyectiva</h3>
+<p>Como <span class="math inline">\(V\)</span> es de dimensión finita, <span class="math inline">\(RST\)</span> es invertible por 3.65. Aplicamos el ejercicio 11 a <span class="math inline">\(R(ST)\)</span> y luego a <span class="math inline">\(ST\)</span>: <span class="math inline">\(R,S,T\)</span> son invertibles. En particular, <span class="math inline">\(S\)</span> es inyectiva. La afirmación es verdadera.</p>
+</section>
+<section id="si-las-imágenes-generan-también-genera-la-lista-original" class="level3">
+<h3 class="anchored" data-anchor-id="si-las-imágenes-generan-también-genera-la-lista-original">15. Si las imágenes generan, también genera la lista original</h3>
+<p>Si <span class="math inline">\(Tv_1,\ldots,Tv_m\)</span> genera <span class="math inline">\(V\)</span>, entonces <span class="math inline">\(T\)</span> es sobreyectiva, y <span class="math inline">\(V\)</span> es de dimensión finita porque posee una lista generadora finita. Por 3.65, <span class="math inline">\(T\)</span> es inyectiva. Dado <span class="math inline">\(v\in V\)</span>, <span class="math inline">\(Tv=\sum a_jTv_j=T(\sum a_jv_j)\)</span>. La inyectividad da <span class="math inline">\(v=\sum a_jv_j\)</span>. Así la lista inicial genera <span class="math inline">\(V\)</span>. No se presupuso inicialmente la dimensión finita: se dedujo de la hipótesis.</p>
+</section>
+<section id="toda-aplicación-entre-espacios-de-columnas-es-matricial" class="level3">
+<h3 class="anchored" data-anchor-id="toda-aplicación-entre-espacios-de-columnas-es-matricial">16. Toda aplicación entre espacios de columnas es matricial</h3>
+<p>Sean <span class="math inline">\(e_1,\ldots,e_n\)</span> las columnas estándar de <span class="math inline">\(\mathbf F^{n,1}\)</span>. Para <span class="math inline">\(T\in\mathcal L(\mathbf F^{n,1},\mathbf F^{m,1})\)</span>, formemos la matriz <span class="math inline">\(A\)</span> de tamaño <span class="math inline">\(m\times n\)</span> cuya columna <span class="math inline">\(j\)</span> es <span class="math inline">\(Te_j\)</span>. Cualquier columna <span class="math inline">\(x=\sum_{j=1}^n x_je_j\)</span> satisface</p>
+<p><span class="math display">\[Tx=\sum x_jTe_j=\sum x_jA_{\cdot,j}=Ax\]</span></p>
+<p>por 3.50. La elección de columnas determina además <span class="math inline">\(A\)</span> de manera única.</p>
+</section>
+<section id="multiplicación-por-la-izquierda-dimensiones" class="level3">
+<h3 class="anchored" data-anchor-id="multiplicación-por-la-izquierda-dimensiones">17. Multiplicación por la izquierda: dimensiones</h3>
+<p>Sea <span class="math inline">\(n=\dim V\)</span>, <span class="math inline">\(k=\dim\operatorname{null}S\)</span> y <span class="math inline">\(r=\dim\operatorname{range}S=n-k\)</span>. La aplicación <span class="math inline">\(\mathcal A(T)=ST\)</span> es lineal por distributividad de la composición <span class="math inline">\(3.8\)</span>.</p>
+<p><span class="math inline">\(a\)</span> <span class="math inline">\(ST=0\)</span> si y solo si <span class="math inline">\(\operatorname{range}T\subseteq\operatorname{null}S\)</span>. Por tanto <span class="math inline">\(\operatorname{null}\mathcal A\)</span> es naturalmente el espacio <span class="math inline">\(\mathcal L(V,\operatorname{null}S)\)</span>, considerado como subespacio de <span class="math inline">\(\mathcal L(V)\)</span>, y 3.72 da</p>
+<p><span class="math display">\[\boxed{\dim\operatorname{null}\mathcal A=nk.}\]</span></p>
+<p><span class="math inline">\(b\)</span> Por 3.21 y 3.72, <span class="math inline">\(\dim\mathcal L(V)=n^2\)</span>, luego</p>
+<p><span class="math display">\[\boxed{\dim\operatorname{range}\mathcal A=n^2-nk=nr=n\dim\operatorname{range}S.}\]</span></p>
+<p>Las expresiones incluyen el caso <span class="math inline">\(n=0\)</span>.</p>
+</section>
+<section id="v-es-isomorfo-a-mathcal-lmathbf-fv" class="level3">
+<h3 class="anchored" data-anchor-id="v-es-isomorfo-a-mathcal-lmathbf-fv">18. <span class="math inline">\(V\)</span> es isomorfo a <span class="math inline">\(\mathcal L(\mathbf F,V)\)</span></h3>
+<p>Definamos <span class="math inline">\(\Psi:V\to\mathcal L(\mathbf F,V)\)</span> por <span class="math inline">\((\Psi(v))(a)=av\)</span>. Es lineal porque <span class="math inline">\(\Psi(v+w)(a)=a(v+w)\)</span> y <span class="math inline">\(\Psi(\lambda v)(a)=\lambda av\)</span>. Si <span class="math inline">\(\Psi(v)=0\)</span>, evaluamos en <span class="math inline">\(1\)</span> y obtenemos <span class="math inline">\(v=0\)</span>, por lo que es inyectiva. Cualquier <span class="math inline">\(T:\mathbf F\to V\)</span> cumple <span class="math inline">\(T(a)=aT(1)\)</span> por linealidad; luego <span class="math inline">\(T=\Psi(T(1))\)</span>. Es sobreyectiva y, por 3.63, un isomorfismo. La inversa es la evaluación <span class="math inline">\(T\mapsto T(1)\)</span>.</p>
+</section>
+<section id="la-misma-matriz-en-todas-las-bases-caracteriza-a-lambda-i" class="level3">
+<h3 class="anchored" data-anchor-id="la-misma-matriz-en-todas-las-bases-caracteriza-a-lambda-i">19. La misma matriz en todas las bases caracteriza a <span class="math inline">\(\lambda I\)</span></h3>
+<p>Si <span class="math inline">\(T=\lambda I\)</span>, su matriz es <span class="math inline">\(\lambda I\)</span> en cualquier base.</p>
+<p>Para la recíproca, sea <span class="math inline">\(\dim V=n\)</span>. Si <span class="math inline">\(n=0\)</span>, el único operador es cero, múltiplo de <span class="math inline">\(I\)</span>. Sea <span class="math inline">\(n\ge1\)</span> y fijemos una base <span class="math inline">\(\mathcal B=(v_1,\ldots,v_n)\)</span>, con matriz <span class="math inline">\(A=(a_{j,k})\)</span>. Por hipótesis, al sustituir <span class="math inline">\(v_i\)</span> por <span class="math inline">\(2v_i\)</span> sin cambiar los demás vectores, la matriz sigue siendo <span class="math inline">\(A\)</span>. Si <span class="math inline">\(D_i\)</span> es la matriz diagonal con <span class="math inline">\(2\)</span> en la posición <span class="math inline">\(i\)</span> y unos en las restantes, la fórmula 3.84 da <span class="math inline">\(A=D_i^{-1}AD_i\)</span>. Para <span class="math inline">\(j\ne i\)</span>, sus entradas <span class="math inline">\((i,j)\)</span> y <span class="math inline">\((j,i)\)</span> quedan multiplicadas por <span class="math inline">\(1/2\)</span> y <span class="math inline">\(2\)</span>, respectivamente. Como <span class="math inline">\(A\)</span> no cambia, <span class="math inline">\(a_{i,j}=a_{j,i}=0\)</span>. Al hacer esto para cada <span class="math inline">\(i\)</span>, <span class="math inline">\(A\)</span> es diagonal. Intercambiando los vectores <span class="math inline">\(v_i,v_j\)</span> se permutan las correspondientes entradas diagonales de la matriz; al permanecer inalterada, todas esas entradas son iguales, digamos <span class="math inline">\(\lambda\)</span>. Así <span class="math inline">\(A=\lambda I\)</span> y, por la base, <span class="math inline">\(T=\lambda I\)</span>. Para <span class="math inline">\(n=1\)</span> la última conclusión es automática. No se usan determinantes ni valores propios.</p>
+</section>
+<section id="ecuación-diferencial-polinómica" class="level3">
+<h3 class="anchored" data-anchor-id="ecuación-diferencial-polinómica">20. Ecuación diferencial polinómica</h3>
+<p>Queremos resolver, dado <span class="math inline">\(q\in\mathcal P(\mathbf R)\)</span>,</p>
+<p><span class="math display">\[q(x)=(x^2+x)p''(x)+2xp'(x)+p(3).\]</span></p>
+<p>Elijamos <span class="math inline">\(m\)</span> tal que <span class="math inline">\(q\in\mathcal P_m(\mathbf R)\)</span> y definamos <span class="math inline">\(T:\mathcal P_m(\mathbf R)\to\mathcal P_m(\mathbf R)\)</span> por el miembro derecho. Está bien definida y es lineal: <span class="math inline">\(p\mapsto p(3)\)</span> es una aplicación lineal a polinomios constantes. Si <span class="math inline">\(p\)</span> no es constante y tiene grado <span class="math inline">\(d\ge1\)</span> con coeficiente principal <span class="math inline">\(a_d\ne0\)</span>, el coeficiente de <span class="math inline">\(x^d\)</span> en <span class="math inline">\((x^2+x)p''+2xp'\)</span> es</p>
+<p><span class="math display">\[a_d[d(d-1)+2d]=a_dd(d+1)\ne0;\]</span></p>
+<p>$ p(3)$ no modifica ese coeficiente. Así <span class="math inline">\(Tp\ne0\)</span>. Si <span class="math inline">\(p\)</span> es constante <span class="math inline">\(a\)</span>, entonces <span class="math inline">\(Tp=a\)</span>, que es cero solo para <span class="math inline">\(a=0\)</span>. Concluimos <span class="math inline">\(\operatorname{null}T=\{0\}\)</span>. Por 3.65, <span class="math inline">\(T\)</span> es sobreyectiva y existe <span class="math inline">\(p\in\mathcal P_m\)</span> con <span class="math inline">\(Tp=q\)</span>. Nótese que <span class="math inline">\(p(3)\)</span> significa evaluación en <span class="math inline">\(3\)</span>, <strong>no</strong> tercera derivada.</p>
+</section>
+<section id="sistemas-cuadrados-unicidad-homogénea-y-existencia-universal" class="level3">
+<h3 class="anchored" data-anchor-id="sistemas-cuadrados-unicidad-homogénea-y-existencia-universal">21. Sistemas cuadrados: unicidad homogénea y existencia universal</h3>
+<p>Sea <span class="math inline">\(A=(A_{j,k})\in\mathbf F^{n,n}\)</span> y <span class="math inline">\(T:\mathbf F^{n,1}\to\mathbf F^{n,1}\)</span>, <span class="math inline">\(Tx=Ax\)</span>. El sistema homogéneo <span class="math inline">\(Ax=0\)</span> tiene solo la solución trivial exactamente cuando <span class="math inline">\(\operatorname{null}T=\{0\}\)</span>, esto es, cuando <span class="math inline">\(T\)</span> es inyectiva. El sistema <span class="math inline">\(Ax=c\)</span> tiene solución para todo término independiente <span class="math inline">\(c\)</span> exactamente cuando <span class="math inline">\(T\)</span> es sobreyectiva. Dominio y llegada tienen dimensión <span class="math inline">\(n\)</span>, de modo que 3.65 establece la equivalencia solicitada.</p>
+</section>
+<section id="invertibilidad-del-operador-y-de-su-matriz" class="level3">
+<h3 class="anchored" data-anchor-id="invertibilidad-del-operador-y-de-su-matriz">22. Invertibilidad del operador y de su matriz</h3>
+<p>Sea <span class="math inline">\(\mathcal B=(v_1,\ldots,v_n)\)</span> una base de <span class="math inline">\(V\)</span>, <span class="math inline">\(A=\mathcal M(T,\mathcal B)\)</span> y <span class="math inline">\(J(v)=\mathcal M(v)\)</span> el isomorfismo de coordenadas. Por 3.76, <span class="math inline">\(J\circ T=M_A\circ J\)</span>, donde <span class="math inline">\(M_A(x)=Ax\)</span>. Por consiguiente, <span class="math inline">\(T\)</span> es invertible si y solo si <span class="math inline">\(M_A\)</span> es invertible como aplicación lineal.</p>
+<p><strong>Caso <span class="math inline">\(n\ge1\)</span> (definiciones 3.79–3.80 del autor).</strong> Si <span class="math inline">\(T\)</span> es invertible, 3.43 aplicada a <span class="math inline">\(T^{-1}T=TT^{-1}=I_V\)</span> da <span class="math inline">\(\mathcal M(T^{-1})A=A\mathcal M(T^{-1})=I_n\)</span>, por lo que <span class="math inline">\(A\)</span> es invertible. Recíprocamente, si existe <span class="math inline">\(A^{-1}\)</span> con <span class="math inline">\(AA^{-1}=A^{-1}A=I_n\)</span>, la aplicación <span class="math inline">\(M_{A^{-1}}\)</span> es inversa de <span class="math inline">\(M_A\)</span>; así <span class="math inline">\(J^{-1}\circ M_{A^{-1}}\circ J\)</span> es inversa lineal de <span class="math inline">\(T\)</span>.</p>
+<p><strong>Caso <span class="math inline">\(n=0\)</span> (nota editorial, no definición de Axler).</strong> Aquí <span class="math inline">\(V=\{0\}\)</span> y su único operador es invertible. La matriz asociada tiene tamaño <span class="math inline">\(0\times0\)</span>, admitido por la definición 3.29, pero 3.79 solo define la identidad matricial para tamaños positivos y 3.80 remite a ella. Por tanto, la frase «la matriz es invertible» <em>no está definida literalmente</em> por 3.79–3.80 cuando <span class="math inline">\(n=0\)</span>. Si se amplían expresamente las convenciones fijando la única matriz vacía como <span class="math inline">\(I_0\)</span> y declarando que <span class="math inline">\(I_0I_0=I_0\)</span>, la matriz vacía resulta invertible y la equivalencia también abarca este caso. Esta ampliación es propia de la presente edición.</p>
+</section>
+<section id="matriz-del-operador-que-lleva-una-base-a-otra" class="level3">
+<h3 class="anchored" data-anchor-id="matriz-del-operador-que-lleva-una-base-a-otra">23. Matriz del operador que lleva una base a otra</h3>
+<p>Sean <span class="math inline">\(\mathcal V=(v_1,\ldots,v_n)\)</span> y <span class="math inline">\(\mathcal U=(u_1,\ldots,u_n)\)</span>, con <span class="math inline">\(Tv_k=u_k\)</span>. La columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(T,\mathcal V)\)</span> recoge las coordenadas de <span class="math inline">\(u_k\)</span> respecto de <span class="math inline">\(\mathcal V\)</span>. Por definición, la columna <span class="math inline">\(k\)</span> de <span class="math inline">\(\mathcal M(I,\mathcal U,\mathcal V)\)</span> recoge exactamente las mismas coordenadas de <span class="math inline">\(Iu_k=u_k\)</span> en <span class="math inline">\(\mathcal V\)</span>. Las matrices tienen las mismas columnas:</p>
+<p><span class="math display">\[\boxed{\mathcal M(T,\mathcal V)=\mathcal M(I,\mathcal U,\mathcal V).}\]</span></p>
+</section>
+<section id="una-inversa-lateral-de-una-matriz-cuadrada-es-bilateral" class="level3">
+<h3 class="anchored" data-anchor-id="una-inversa-lateral-de-una-matriz-cuadrada-es-bilateral">24. Una inversa lateral de una matriz cuadrada es bilateral</h3>
+<p>Si <span class="math inline">\(A,B\in\mathbf F^{n,n}\)</span> y <span class="math inline">\(AB=I\)</span>, las aplicaciones <span class="math inline">\(M_A,M_B\)</span> sobre <span class="math inline">\(\mathbf F^{n,1}\)</span> cumplen <span class="math inline">\(M_A M_B=I\)</span>. Por ello <span class="math inline">\(M_A\)</span> es sobreyectiva y <span class="math inline">\(M_B\)</span> inyectiva. En dimensión finita <span class="math inline">\(n\)</span>, 3.65 las hace invertibles. Se deduce <span class="math inline">\(M_B=M_A^{-1}\)</span> y <span class="math inline">\(M_B M_A=I\)</span>, esto es, <span class="math inline">\(BA=I\)</span> (aplicando ambas matrices a cada columna estándar). Equivale a aplicar 3.68 a las aplicaciones de multiplicación por <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>.</p>
+<p><strong>Nota editorial sobre el tamaño cero.</strong> La demostración anterior utiliza la matriz identidad <span class="math inline">\(I_n\)</span> de 3.79 y, por tanto, se aplica literalmente a <span class="math inline">\(n\ge1\)</span>. Para <span class="math inline">\(n=0\)</span>, la definición 3.29 admite matrices vacías, pero Axler no define <span class="math inline">\(I_0\)</span> en 3.79. Si nuestra edición extiende explícitamente la convención mediante la única matriz de tamaño <span class="math inline">\(0\times0\)</span>, llamada <span class="math inline">\(I_0\)</span>, entonces necesariamente <span class="math inline">\(A=B=I_0\)</span> y <span class="math inline">\(BA=I_0\)</span>. Esta ampliación es editorial, no una definición atribuible al autor.</p>
+</section>
+</section>
+</section>
+
+
+
+</main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
