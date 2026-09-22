@@ -1,5 +1,6 @@
 import { EXERCISES } from './exercises.mjs';
-import { startSession, submitAnswer, advance, sessionResult } from './engine.mjs';
+import { startSession, sessionResult } from './engine.mjs';
+import { startFlow, answerFlow, retryFlow, surrenderFlow, continueFlow, partialFlowSession } from './attempt-flow.mjs';
 import { emptyProgress, loadProgress, saveProgress, archivePartial, finishProgress } from './progress.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
 import { renderRating } from './rating-panel.mjs';
@@ -17,6 +18,7 @@ let storage = null;
 try { storage = window.localStorage; } catch { /* El navegador puede bloquear el acceso. */ }
 let { progress: saved, persistent } = loadProgress(storage);
 let active;
+let flow;
 let session;
 let selected = null;
 let cursor = -1;
@@ -36,8 +38,14 @@ function pool() {
   const area = $('area').value;
   return EXERCISES.filter(exercise => area === 'todas' || exercise.area === area);
 }
+function setFlow(nextFlow) {
+  flow = nextFlow;
+  session = nextFlow.session;
+}
 function archiveCurrent() {
-  const next = archivePartial(saved, session, active, new Date().toISOString());
+  if (!flow || !active) return;
+  const snapshot = partialFlowSession(flow, active);
+  const next = archivePartial(saved, snapshot, active, new Date().toISOString());
   if (next !== saved) { saved = next; save(); }
 }
 function newExercise() {
@@ -46,13 +54,18 @@ function newExercise() {
   if (!options.length) return;
   cursor = (cursor + 1) % options.length;
   active = options[cursor];
-  session = startSession(active, $('mode').value);
+  setFlow(startFlow(startSession(active, $('mode').value)));
   selected = null;
   viewStep = null;
   $('settings-panel').open = false;
   showHistory(false, false);
   render();
   $('title').focus();
+}
+function stepStatus(entry) {
+  if (entry.surrendered === true) return 'Solución mostrada';
+  if (entry.resolved === true && !entry.correct) return 'Correcto tras reintentar';
+  return entry.correct ? 'Correcto al primer intento' : 'Corregido';
 }
 function renderTrace() {
   const list = $('trace');
@@ -69,10 +82,10 @@ function renderTrace() {
     button.type = 'button';
     button.className = 'trace-step';
     button.dataset.step = String(index);
-    button.setAttribute('aria-label', `Revisar paso ${entry.ordinal}, ${entry.correct ? 'correcto' : 'corregido'}`);
+    button.setAttribute('aria-label', `Revisar paso ${entry.ordinal}, ${stepStatus(entry)}`);
     button.append(el('span', String(entry.ordinal), 'trace-num'));
     button.append(mathElement('span', entry.notation, 'trace-summary'));
-    button.append(el('span', entry.correct ? '✓ Correcto' : '↺ Corregido', 'trace-state'));
+    button.append(el('span', entry.surrendered ? '↳ Solución' : entry.correct ? '✓ Correcto' : entry.resolved ? '↺ Reintentado' : '↺ Corregido', 'trace-state'));
     button.addEventListener('click', () => { viewStep = index; updateReview(); });
     li.append(button);
     list.append(li);
@@ -84,31 +97,32 @@ function updateReview() {
   if (inspecting) clearMath(review);
   review.hidden = !inspecting;
   for (const button of $('trace').querySelectorAll('button[data-step]')) {
-    if (inspecting && Number(button.dataset.step) === viewStep) {
-      button.setAttribute('aria-current', 'step');
-    } else {
-      button.removeAttribute('aria-current');
-    }
+    if (inspecting && Number(button.dataset.step) === viewStep) button.setAttribute('aria-current', 'step');
+    else button.removeAttribute('aria-current');
   }
   if (inspecting) {
     const step = reviewStep(session, active, viewStep);
-    $('review-title').textContent = `Paso ${step.ordinal} · ${step.correct ? 'Correcto' : 'Corregido'}`;
+    $('review-title').textContent = `Paso ${step.ordinal} · ${stepStatus(step)}`;
     setMath($('review-question'), step.question);
     setMath($('review-notation'), step.notation);
-    setMath($('review-choice'), `Tu elección: ${step.chosen}`);
+    setMath($('review-choice'), `Primera elección: ${step.chosen}`);
     $('review-choice').className = step.correct ? '' : 'corrected';
+    const attempts = $('review-attempts');
+    attempts.hidden = !step.attempts || step.attempts.length < 2;
+    setMath(attempts, step.attempts?.length > 1 ? `Intentos: ${step.attempts.join(' → ')}` : '');
     $('review-correction').hidden = step.correct;
-    setMath($('review-correction'), step.correct ? '' : `Corrección: ${step.expected}`);
+    setMath($('review-correction'), step.correct ? '' : `${step.surrendered ? 'Solución mostrada' : 'Respuesta correcta'}: ${step.expected}`);
     setMath($('review-explanation'), step.explanation);
     $('review-title').focus();
     typesetMath(review);
   }
   const actionable = canAct(session, viewStep);
-  const answered = session.trace.length > session.index;
-  $('submit').disabled = !actionable || answered || selected === null;
-  $('next').disabled = !actionable || !answered;
+  $('submit').disabled = !actionable || flow.status !== 'ask' || selected === null;
+  $('retry').disabled = !actionable || flow.status !== 'wrong';
+  $('give-up').disabled = !actionable || flow.status !== 'wrong';
+  $('next').disabled = !actionable || flow.status !== 'solution';
   for (const input of $('question').querySelectorAll('input[name="answer"]')) {
-    input.disabled = !actionable || answered;
+    input.disabled = !actionable || flow.status !== 'ask' || flow.attempts.includes(Number(input.value));
   }
 }
 function renderHistory() {
@@ -125,14 +139,19 @@ function renderHistory() {
     const mode = record.mode === 'challenge' ? 'Desafío' : 'Entrenamiento';
     const result = record.partial ? 'Incompleto' : 'Finalizado';
     const delta = record.delta == null ? '' : ` · Elo ${record.delta >= 0 ? '+' : ''}${record.delta} (experimental)`;
-    details.append(el('summary', `${record.title} · ${record.correct}/${record.total} · ${mode} · ${result}${delta}`));
+    const resolved = Number.isInteger(record.resolved) ? ` · ${record.resolved}/${record.total} pasos resueltos` : '';
+    details.append(el('summary', `${record.title} · ${record.correct}/${record.total} aciertos iniciales${resolved} · ${mode} · ${result}${delta}`));
+    if (record.ratingPolicy === 'completion-v02') details.append(el('p', 'Regla actual: completar sin rendirse cuenta como éxito; usar la solución, como desafío no superado.', 'muted'));
+    else if (record.delta != null) details.append(el('p', 'Puntuación histórica: regla anterior, no recalculada.', 'muted'));
     if (typeof record.finishedAt === 'string') {
       const date = new Date(record.finishedAt);
       if (!Number.isNaN(date.getTime())) details.append(el('p', date.toLocaleString('es-CL'), 'muted'));
     }
     for (const move of record.trace) {
-      const correction = move.correct ? 'Correcto' : `Tu elección: ${move.chosen}. Corrección: ${move.expected}`;
-      details.append(mathElement('p', `${move.ordinal}. ${move.notation} — ${correction}. ${move.explanation}`));
+      const attempts = move.attempts?.length > 1 ? ` Intentos: ${move.attempts.join(' → ')}.` : '';
+      const correction = move.correct ? 'Correcto al primer intento' : move.surrendered ? `Se mostró la solución: ${move.expected}` :
+        move.resolved ? `Correcto tras reintentar: ${move.expected}` : `Primera elección: ${move.chosen}. Respuesta correcta: ${move.expected}`;
+      details.append(mathElement('p', `${move.ordinal}. ${move.notation} — ${correction}.${attempts} ${move.explanation}`));
     }
     li.append(details);
     list.append(li);
@@ -150,6 +169,20 @@ function showHistory(open, focus = true) {
     if (open) $('history-title').focus();
     else $('title').focus();
   }
+}
+function renderFeedback() {
+  const notice = flow.notice;
+  if (!notice) return;
+  const feedback = document.createElement('div');
+  feedback.className = 'feedback ' + (notice.kind === 'wrong' ? 'flow-error' : notice.kind === 'solution' ? 'flow-solution' : 'flow-correct');
+  const labels = { correct: '✓', wrong: 'Respuesta incorrecta.', retry: 'Nuevo intento.', solution: 'Solución', assisted: 'Resolución asistida.' };
+  feedback.append(el('strong', `${labels[notice.kind]} ${notice.text}`.trim()));
+  if (notice.explanation) feedback.append(mathElement('p', notice.explanation));
+  if (notice.kind === 'solution') {
+    feedback.append(mathElement('p', `Respuesta correcta: ${notice.expected}`, 'solution-line'));
+    feedback.append(mathElement('p', notice.notation, 'solution-line'));
+  }
+  $('feedback').append(feedback);
 }
 function render() {
   $('area-label').textContent = LABELS[active.area];
@@ -175,85 +208,106 @@ function render() {
   clearMath($('feedback'));
   target.replaceChildren();
   $('feedback').replaceChildren();
-  $('submit').hidden = session.completed;
-  $('next').hidden = true;
+  $('submit').hidden = session.completed || flow.status !== 'ask';
+  $('retry').hidden = session.completed || flow.status !== 'wrong';
+  $('give-up').hidden = session.completed || flow.status !== 'wrong';
+  $('next').hidden = session.completed || flow.status !== 'solution';
   $('another').hidden = !session.completed;
   if (session.completed) {
     const result = sessionResult(session, active);
-    const heading = el('h3', `Ejercicio terminado: ${result.correct}/${result.total} decisiones correctas`);
+    const resolved = session.trace.filter(move => move.correct || move.resolved === true).length;
+    const heading = el('h3', 'Ejercicio terminado');
     heading.tabIndex = -1;
     target.append(heading);
-    target.append(el('p', 'Revisa tu planilla: contiene tus elecciones, los errores y sus correcciones.'));
+    target.append(el('p', `${resolved}/${result.total} pasos resueltos; ${result.correct}/${result.total} aciertos al primer intento.`));
+    target.append(el('p', 'La planilla conserva tus elecciones, reintentos y soluciones mostradas.'));
     const record = saved.history[0];
     if (record?.id === active.id && record?.finishedAt === session.finishedAt && record?.delta != null) {
-      target.append(el('p', `Elo experimental de ${LABELS[active.area]}: ${record.ratingBefore} → ${record.ratingAfter} (${record.delta >= 0 ? '+' : ''}${record.delta}).`));
+      target.append(el('p', `${record.solved ? 'Desafío superado sin rendirse' : 'Desafío no superado: se mostró una solución'}. Elo experimental de ${LABELS[active.area]}: ${record.ratingBefore} → ${record.ratingAfter} (${record.delta >= 0 ? '+' : ''}${record.delta}).`));
     } else if (session.mode === 'training') {
       target.append(el('p', 'Entrenamiento: el Elo no cambia.'));
     } else {
-      target.append(el('p', 'No se registró nueva puntuación: el desafío ya había sido puntuado en este navegador o se borraron los datos locales.'));
+      target.append(el('p', 'No se registró nueva puntuación: este ejercicio ya había sido puntuado en este navegador.'));
     }
     updateReview();
     typesetMath($('workspace'));
     return;
   }
   const step = active.steps[session.index];
-  const answered = session.trace.length > session.index;
   const heading = mathElement('h3', step.question);
   heading.tabIndex = -1;
   target.append(heading);
-  const group = document.createElement('div');
-  group.setAttribute('role', 'radiogroup');
-  group.setAttribute('aria-label', step.question);
-  step.options.forEach((option, index) => {
-    const label = document.createElement('label');
-    label.className = 'option';
-    const input = document.createElement('input');
-    input.type = 'radio'; input.name = 'answer'; input.value = String(index);
-    input.checked = selected === index;
-    input.disabled = answered;
-    input.addEventListener('change', () => {
-      if (!canAct(session, viewStep)) return;
-      selected = index;
-      $('submit').disabled = false;
+  if (flow.status !== 'solution') {
+    const group = document.createElement('div');
+    group.setAttribute('role', 'radiogroup');
+    group.setAttribute('aria-label', step.question);
+    step.options.forEach((option, index) => {
+      const label = document.createElement('label');
+      label.className = 'option' + (flow.attempts.includes(index) ? ' previous-attempt' : '');
+      const input = document.createElement('input');
+      input.type = 'radio'; input.name = 'answer'; input.value = String(index);
+      input.checked = selected === index || (flow.status === 'wrong' && flow.attempts.at(-1) === index);
+      input.disabled = flow.status !== 'ask' || flow.attempts.includes(index);
+      input.addEventListener('change', () => {
+        if (!canAct(session, viewStep) || flow.status !== 'ask') return;
+        selected = index;
+        $('submit').disabled = false;
+      });
+      label.append(input, mathElement('span', option));
+      group.append(label);
     });
-    label.append(input, mathElement('span', option));
-    group.append(label);
-  });
-  target.append(group);
-  $('submit').hidden = answered;
-  $('next').hidden = !answered;
-  if (answered) {
-    const last = session.trace.at(-1);
-    const feedback = document.createElement('div');
-    feedback.className = 'feedback' + (last.correct ? '' : ' bad');
-    feedback.append(el('strong', last.correct ? '✓ Correcto.' : '↺ Respuesta corregida.'));
-    feedback.append(mathElement('span', last.explanation));
-    $('feedback').append(feedback);
-    $('next').textContent = session.index === active.steps.length - 1 ? 'Finalizar ejercicio' : 'Continuar →';
+    target.append(group);
+  } else {
+    target.append(mathElement('p', `Primera elección: ${session.trace.at(-1).chosen}`));
+    $('next').textContent = session.index === active.steps.length - 1 ? 'Finalizar tras ver la solución →' : 'Continuar tras ver la solución →';
   }
+  renderFeedback();
   updateReview();
   typesetMath($('workspace'));
 }
+function finishIfNeeded() {
+  if (!session.completed) return;
+  session.finishedAt = new Date().toISOString();
+  setFlow({ ...flow, session });
+  saved = finishProgress(saved, session, active, session.finishedAt).progress;
+  save();
+}
 function submit() {
-  if (!canAct(session, viewStep) || selected === null || session.trace.length !== session.index) return;
-  session = submitAnswer(session, active, selected);
+  if (!canAct(session, viewStep) || flow.status !== 'ask' || selected === null) return;
+  setFlow(answerFlow(flow, active, selected));
+  selected = null;
+  finishIfNeeded();
   render();
-  $('next').focus();
+  if (flow.status === 'wrong') $('retry').focus();
+  else $('question').querySelector('h3')?.focus();
+}
+function retry() {
+  if (!canAct(session, viewStep) || flow.status !== 'wrong') return;
+  setFlow(retryFlow(flow, active));
+  selected = null;
+  render();
+  $('question').querySelector('input[name="answer"]:not(:disabled)')?.focus();
+}
+function giveUp() {
+  if (!canAct(session, viewStep) || flow.status !== 'wrong') return;
+  setFlow(surrenderFlow(flow, active));
+  selected = null;
+  render();
+  $('feedback').tabIndex = -1;
+  $('feedback').focus();
 }
 function next() {
-  if (!canAct(session, viewStep) || session.trace.length !== session.index + 1) return;
-  session = advance(session, active);
+  if (!canAct(session, viewStep) || flow.status !== 'solution') return;
+  setFlow(continueFlow(flow, active));
   selected = null;
   viewStep = null;
-  if (session.completed) {
-    session.finishedAt = new Date().toISOString();
-    saved = finishProgress(saved, session, active, session.finishedAt).progress;
-    save();
-  }
+  finishIfNeeded();
   render();
   $('question').querySelector('h3')?.focus();
 }
 $('submit').addEventListener('click', submit);
+$('retry').addEventListener('click', retry);
+$('give-up').addEventListener('click', giveUp);
 $('next').addEventListener('click', next);
 $('another').addEventListener('click', newExercise);
 $('new').addEventListener('click', newExercise);
@@ -264,7 +318,8 @@ $('review-return').addEventListener('click', () => {
   viewStep = null;
   updateReview();
   if (session.completed) $('another').focus();
-  else if (session.trace.length > session.index) $('next').focus();
+  else if (flow.status === 'solution') $('next').focus();
+  else if (flow.status === 'wrong') $('retry').focus();
   else if (!$('submit').disabled) $('submit').focus();
   else $('question').querySelector('h3')?.focus();
 });
