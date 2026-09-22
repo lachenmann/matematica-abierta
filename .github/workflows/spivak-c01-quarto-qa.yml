@@ -1,0 +1,43 @@
+name: Spivak C01 - synthetic Quarto compatibility QA
+
+on:
+  pull_request:
+    paths:
+      - 'tests/spivak_c01_fixture.py'
+      - '.github/workflows/spivak-c01-quarto-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out QA branch (no Spivak manuscript)
+        uses: actions/checkout@v4
+
+      - name: Set up same Quarto version as website
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: Generate copyright-safe structural surrogate
+        run: |
+          python3 tests/spivak_c01_fixture.py generate tests/_qa_generated/spivak-c01-synthetic.qmd
+          test ! -e tests/_qa_generated/C01_Propiedades_basicas_de_los_numeros.md
+
+      - name: Render surrogate under the actual website project settings
+        run: quarto render tests/_qa_generated/spivak-c01-synthetic.qmd --to html
+
+      - name: Audit generated HTML and identify limits of this check
+        run: |
+          test -s _site/tests/_qa_generated/spivak-c01-synthetic.html
+          python3 tests/spivak_c01_fixture.py verify _site/tests/_qa_generated/spivak-c01-synthetic.html
+
+      - name: Preserve synthetic QA output only
+        uses: actions/upload-artifact@v4
+        with:
+          name: spivak-c01-SYNTHETIC-quarto-html
+          path: _site/tests/_qa_generated/spivak-c01-synthetic.html
+          if-no-files-found: error
+          retention-days: 1
