@@ -1,0 +1,821 @@
+---
+lang: es
+format:
+  html:
+    css: ../../axler-colores.css
+---
+
+::: {.axler-edicion}
+
+# 3D · Invertibilidad e isomorfismos
+
+**Revisión:** cotejo y auditoría matemática internos realizados; revisión comunitaria abierta.  
+**Atribución y modificaciones:** Sheldon Axler, [*Linear Algebra Done Right*, 4.ª ed.](https://linear.axler.net/LADR4e.pdf), [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Matemática Abierta aporta traducción, adaptación de presentación, notas identificadas como `[NOTA]` y soluciones originales `[SOL]`; estas últimas no son de Axler. No se reproducen imágenes de terceros.  
+**Fuente:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª ed., PDF oficial fechado 16-08-2026, pp. 82–95.  
+**Procedencia:** `[TRAD]` traducción no oficial de Matemática Abierta, CC BY-NC 4.0.  
+**Control textual:** la errata oficial corrige en p. 85 el intercambio de $V$ y $W$ en la última línea del enunciado 3.68 (corrección de 29-12-2023). Se sigue el PDF actual; la copia de 2024 es solo testimonio secundario.
+
+## Aplicaciones lineales invertibles
+
+Comenzamos definiendo las nociones de invertibilidad e inversa en el contexto de las aplicaciones lineales.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.59 Definición: invertible, inversa
+
+- Una aplicación lineal $T\in\mathcal L(V,W)$ se llama **invertible** si existe una aplicación lineal $S\in\mathcal L(W,V)$ tal que $ST$ es el operador identidad sobre $V$ y $TS$ es el operador identidad sobre $W$.
+- Una aplicación lineal $S\in\mathcal L(W,V)$ que satisface $ST=I_V$ y $TS=I_W$ se llama *una inversa* de $T$. Observa que las dos identidades actúan sobre espacios distintos: la primera es la identidad de $V$ y la segunda, la de $W$.
+
+La definición habla de «una inversa». El resultado siguiente permite hablar, sin ambigüedad, de «la inversa».
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.60 La inversa es única
+
+Una aplicación lineal invertible tiene una única inversa.
+
+:::
+
+**Demostración.** Supongamos que $T\in\mathcal L(V,W)$ es invertible y que $S_1,S_2\in\mathcal L(W,V)$ son inversas de $T$. Entonces
+
+$$
+S_1=S_1I_W=S_1(TS_2)=(S_1T)S_2=I_VS_2=S_2.
+$$
+
+Por tanto, ambas inversas coinciden.
+
+Ahora que sabemos que la inversa es única, podemos introducir una notación para ella.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.61 Notación: $T^{-1}$
+
+Si $T$ es invertible, su inversa se denota por $T^{-1}$. En otras palabras, para una aplicación invertible $T\in\mathcal L(V,W)$, $T^{-1}$ es el único elemento de $\mathcal L(W,V)$ tal que
+
+$$
+T^{-1}T=I_V\qquad\text{y}\qquad TT^{-1}=I_W.
+$$
+
+:::
+
+### 3.62 Ejemplo: inversa de una aplicación de $\mathbf R^3$ en $\mathbf R^3$
+
+Supongamos que $T\in\mathcal L(\mathbf R^3)$ está definida por $T(x,y,z)=(-y,x,4z)$. Esta transformación realiza una rotación antihoraria de $90^\circ$ en el plano $xy$ y una dilatación de factor $4$ en la dirección del eje $z$.
+
+Por consiguiente, la aplicación inversa realiza una rotación horaria de $90^\circ$ en el plano $xy$ y una dilatación de factor $\frac14$ en la dirección del eje $z$:
+
+$$
+T^{-1}(x,y,z)=\left(y,-x,\frac z4\right).
+$$
+
+El resultado siguiente relaciona la invertibilidad con la inyectividad y la sobreyectividad.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.63 Invertibilidad si y solo si inyectividad y sobreyectividad
+
+Una aplicación lineal es invertible si y solo si es inyectiva y sobreyectiva.
+
+:::
+
+**Demostración.** Sea $T\in\mathcal L(V,W)$. Supongamos primero que $T$ es invertible. Si $u,v\in V$ y $Tu=Tv$, entonces
+
+$$
+u=T^{-1}(Tu)=T^{-1}(Tv)=v,
+$$
+
+así que $T$ es inyectiva. Además, dado cualquier $w\in W$, tenemos $w=T(T^{-1}w)$; por tanto, $w$ pertenece a la imagen de $T$ y $T$ es sobreyectiva.
+
+Recíprocamente, supongamos que $T$ es inyectiva y sobreyectiva. Para cada $w\in W$, existe un único $v\in V$ tal que $Tv=w$: la existencia se debe a la sobreyectividad y la unicidad, a la inyectividad. Definamos $S(w)=v$. Por construcción, $T(S(w))=w$ para todo $w\in W$, luego $TS=I_W$. Si $v\in V$, entonces $T(S(Tv))=Tv$; como $T$ es inyectiva, $S(Tv)=v$. En consecuencia, $ST=I_V$.
+
+Falta comprobar que $S$ es lineal. Sean $w_1,w_2\in W$. Por linealidad de $T$,
+
+$$
+T(S(w_1)+S(w_2))=T(S(w_1))+T(S(w_2))=w_1+w_2.
+$$
+
+La unicidad de la preimagen de $w_1+w_2$ implica que $S(w_1+w_2)=S(w_1)+S(w_2)$. De forma análoga, si $w\in W$ y $\lambda\in\mathbf F$,
+
+$$
+T(\lambda S(w))=\lambda T(S(w))=\lambda w,
+$$
+
+por lo que $S(\lambda w)=\lambda S(w)$. Así, $S\in\mathcal L(W,V)$ y es una inversa de $T$.
+
+Para un operador de un espacio vectorial en sí mismo, cabe preguntarse si basta la inyectividad o la sobreyectividad por separado. En dimensión infinita, ninguna de las dos condiciones es suficiente, como muestran los ejemplos siguientes, ya introducidos en 3.3.
+
+### 3.64 Ejemplo: ni la inyectividad ni la sobreyectividad bastan por separado
+
+- La aplicación lineal $p\mapsto x^2p$ de $\mathcal P(\mathbf R)$ en sí mismo es inyectiva; sin embargo, no es sobreyectiva porque el polinomio constante $1$ no pertenece a su imagen. Por 3.63, no es invertible.
+- El desplazamiento hacia atrás en $\mathbf F^\infty$ es sobreyectivo, pero no inyectivo porque $(1,0,0,\ldots)$ pertenece a su espacio nulo. Por 3.63, tampoco es invertible.
+
+El resultado siguiente contrasta con estos ejemplos: cuando el dominio y el codominio tienen la misma dimensión finita, cada una de las dos condiciones implica la otra. La hipótesis de igualdad de dimensiones se satisface automáticamente si $W=V$ y $V$ tiene dimensión finita.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.65 Inyectividad equivale a sobreyectividad en igual dimensión finita
+
+Supongamos que $V,W$ son espacios vectoriales de dimensión finita, $\dim V=\dim W$ y $T\in\mathcal L(V,W)$. Entonces
+
+$$
+\boxed{T\text{ invertible}\iff T\text{ inyectiva}\iff T\text{ sobreyectiva}.}
+$$
+
+:::
+
+**Demostración.** El teorema fundamental de las aplicaciones lineales (3.21) establece que
+
+$$
+\tag{3.66}\dim V=\dim\operatorname{null}T+\dim\operatorname{range}T.
+$$
+
+Si $T$ es inyectiva, entonces $\dim\operatorname{null}T=0$ por 3.15 y, en consecuencia,
+
+$$
+\dim\operatorname{range}T=\dim V-0=\dim W.
+$$
+
+Como la imagen es un subespacio de $W$ con su misma dimensión, coincide con $W$ por 2.39. Por tanto, $T$ es sobreyectiva.
+
+A la inversa, si $T$ es sobreyectiva, $\operatorname{range}T=W$, de modo que 3.66 da
+
+$$
+\dim\operatorname{null}T=\dim V-\dim W=0.
+$$
+
+Por 3.15, $T$ es inyectiva. Así hemos demostrado que inyectividad y sobreyectividad son equivalentes bajo estas hipótesis. Si se cumple una de ellas, se cumplen ambas; por 3.63, equivalen también a la invertibilidad.
+
+El ejemplo siguiente ilustra la utilidad de 3.65. Es posible establecer su conclusión sin recurrir al álgebra lineal, pero el argumento mediante aplicaciones lineales resulta más sencillo.
+
+### 3.67 Ejemplo: existencia de soluciones polinómicas
+
+Dado cualquier $q\in\mathcal P(\mathbf R)$, existe $p\in\mathcal P(\mathbf R)$ tal que
+
+$$
+\big((x^2+5x+7)p\big)''=q.
+$$
+
+Consideremos primero la aplicación $p\mapsto\big((x^2+5x+7)p\big)''$ de $\mathcal P(\mathbf R)$ en sí mismo. Es inyectiva, como se verá en la demostración. Podríamos intentar aplicar 3.65 para deducir su sobreyectividad, pero ese resultado requiere dimensión finita, mientras que $\mathcal P(\mathbf R)$ es de dimensión infinita. Para salvar esta dificultad, restringiremos la aplicación a un espacio de polinomios de grado acotado.
+
+Fijemos $q\in\mathcal P(\mathbf R)$ y elijamos un entero $m\ge0$ tal que $q\in\mathcal P_m(\mathbf R)$. Definamos
+
+$$
+T:\mathcal P_m(\mathbf R)\longrightarrow\mathcal P_m(\mathbf R),\qquad Tp=\big((x^2+5x+7)p\big)''.
+$$
+
+La aplicación $T$ es lineal. Para un polinomio no nulo $p$, multiplicarlo por $x^2+5x+7$ aumenta su grado en dos unidades y derivar dos veces lo reduce en dos; así $Tp$ tiene grado a lo sumo $m$. Además, si $Tp=0$, el polinomio $(x^2+5x+7)p$ tiene segunda derivada nula y, por tanto, grado a lo sumo uno. Esto obliga a $p=0$; de modo que $\operatorname{null}T=\{0\}$ y $T$ es inyectiva.
+
+Como el dominio y el codominio de $T$ son el mismo espacio de dimensión finita, 3.65 implica que $T$ es sobreyectiva. En particular, existe $p\in\mathcal P_m(\mathbf R)$ tal que $Tp=q$, como queríamos demostrar.
+
+El ejercicio 35 de la sección 6A ofrece otro ejemplo de la aplicación de 3.65.
+
+El teorema siguiente también se aplica, en particular, a dos operadores de un mismo espacio de dimensión finita. En tal caso, $ST=I$ fuerza $ST=TS$, aunque la composición de operadores no sea conmutativa en general.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.68 $ST=I\iff TS=I$ para espacios de igual dimensión
+
+Sean $V,W$ espacios vectoriales de dimensión finita con $\dim V=\dim W$, $S\in\mathcal L(W,V)$ y $T\in\mathcal L(V,W)$. Entonces
+
+$$
+ST=I_V\iff TS=I_W.
+$$
+
+:::
+
+**Demostración.** Supongamos que $ST=I_V$. Si $v\in V$ y $Tv=0$, entonces
+
+$$
+v=I_Vv=(ST)v=S(Tv)=S(0)=0.
+$$
+
+Así, $T$ es inyectiva por 3.15. Puesto que $\dim V=\dim W<\infty$, se sigue de 3.65 que $T$ es invertible. Multiplicando $ST=I_V$ por $T^{-1}$ a la derecha, obtenemos $S=T^{-1}$ y, por consiguiente, $TS=I_W$.
+
+Para la implicación recíproca, basta intercambiar los papeles de $S$ y $T$, así como los de $V$ y $W$, en el argumento anterior.
+
+> `[ERRATA · fuente]` El enunciado de la edición impresa intercambiaba los nombres $V$ y $W$ en su última línea. Se sigue aquí la versión corregida en el PDF oficial; esta nota es editorial y no pertenece al texto de Axler.
+
+## Espacios vectoriales isomorfos
+
+La definición siguiente recoge la idea de que dos espacios vectoriales son, en esencia, el mismo espacio, salvo por los nombres de sus elementos.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.69 Definición: isomorfismo, isomorfos
+
+- Un **isomorfismo** es una aplicación lineal invertible.
+- Dos espacios vectoriales se llaman **isomorfos** si existe un isomorfismo de uno sobre el otro.
+
+Piensa en un isomorfismo $T:V\to W$ como una manera de cambiar la etiqueta de cada $v\in V$ por $Tv\in W$. Este punto de vista explica por qué dos espacios vectoriales isomorfos tienen las mismas propiedades de espacio vectorial. Los términos «isomorfismo» y «aplicación lineal invertible» significan lo mismo; utiliza «isomorfismo» cuando quieras destacar que los dos espacios son esencialmente iguales.
+
+Puede resultar difícil determinar si dos estructuras matemáticas —por ejemplo, grupos o espacios topológicos— son esencialmente iguales y solo difieren en los nombres de los elementos de sus conjuntos subyacentes. Sin embargo, el resultado siguiente muestra que, para decidir si dos espacios vectoriales de dimensión finita son isomorfos, basta examinar un solo número: su dimensión.
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.70 La dimensión determina si dos espacios vectoriales son isomorfos
+
+Dos espacios vectoriales de dimensión finita sobre $\mathbf F$ son isomorfos si y solo si tienen la misma dimensión.
+
+:::
+
+**Demostración.** Supongamos primero que $V$ y $W$ son espacios vectoriales de dimensión finita isomorfos. Existe entonces un isomorfismo $T:V\to W$. Puesto que $T$ es invertible, $\operatorname{null}T=\{0\}$ y $\operatorname{range}T=W$. Por consiguiente,
+
+$$
+\dim\operatorname{null}T=0
+\qquad\text{y}\qquad
+\dim\operatorname{range}T=\dim W.
+$$
+
+El teorema fundamental de las aplicaciones lineales (3.21) afirma que
+
+$$
+\dim V=\dim\operatorname{null}T+\dim\operatorname{range}T;
+$$
+
+al sustituir estas igualdades obtenemos $\dim V=\dim W$, con lo cual queda demostrada una implicación.
+
+Recíprocamente, supongamos que $V$ y $W$ tienen dimensión finita e igual, y elijamos bases $v_1,\ldots,v_n$ de $V$ y $w_1,\ldots,w_n$ de $W$. Definamos $T\in\mathcal L(V,W)$ mediante
+
+$$
+T(c_1v_1+\cdots+c_nv_n)=c_1w_1+\cdots+c_nw_n.
+$$
+
+La aplicación está bien definida y es lineal, porque $v_1,\ldots,v_n$ es una base de $V$. Es sobreyectiva porque $w_1,\ldots,w_n$ genera $W$. Además, la independencia lineal de esta última base implica $\operatorname{null}T=\{0\}$ y, por tanto, $T$ es inyectiva. Por 3.63, $T$ es un isomorfismo; concluimos que $V$ y $W$ son isomorfos.
+
+El resultado anterior implica que cada espacio vectorial de dimensión finita $V$ es isomorfo a $\mathbf F^n$, donde $n=\dim V$. Por ejemplo, si $m$ es un entero no negativo, $\mathcal P_m(\mathbf F)$ es isomorfo a $\mathbf F^{m+1}$.
+
+> **Recuadro del autor (3.70).** Todo espacio vectorial de dimensión finita es isomorfo a algún $\mathbf F^n$. Entonces, ¿por qué no estudiar solamente $\mathbf F^n$ en vez de espacios vectoriales más generales? Porque estudiar $\mathbf F^n$ nos conduciría pronto a otros espacios vectoriales: por ejemplo, los espacios nulos y las imágenes de las aplicaciones lineales. Aunque cada uno de ellos sea isomorfo a algún $\mathbf F^m$, pensarlos de ese modo suele añadir complejidad sin aportar una comprensión nueva.
+
+Recordemos que $\mathbf F^{m,n}$ denota el espacio vectorial de matrices de $m\times n$ con entradas en $\mathbf F$. Si $v_1,\ldots,v_n$ es una base de $V$ y $w_1,\ldots,w_m$ es una base de $W$, entonces a cada $T\in\mathcal L(V,W)$ le corresponde una matriz $\mathcal M(T)\in\mathbf F^{m,n}$. Una vez fijadas ambas bases, $\mathcal M$ se convierte en una función de $\mathcal L(V,W)$ en $\mathbf F^{m,n}$. Observa que 3.35 y 3.38 muestran que esta función es lineal. Ahora demostraremos que, de hecho, es un isomorfismo.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.71 $\mathcal L(V,W)$ y $\mathbf F^{m,n}$ son isomorfos
+
+Supongamos que $v_1,\ldots,v_n$ es una base de $V$ y $w_1,\ldots,w_m$ es una base de $W$. Entonces $\mathcal M$ es un isomorfismo entre $\mathcal L(V,W)$ y $\mathbf F^{m,n}$.
+
+:::
+
+**Demostración.** Ya hemos observado que $\mathcal M$ es lineal. Falta probar que es inyectiva y sobreyectiva.
+
+Comencemos por la inyectividad. Si $T\in\mathcal L(V,W)$ y $\mathcal M(T)=0$, entonces $Tv_k=0$ para cada $k=1,\ldots,n$. Como $v_1,\ldots,v_n$ es una base de $V$, se sigue que $T=0$. Por 3.15, $\mathcal M$ es inyectiva.
+
+Para demostrar la sobreyectividad, sea $A\in\mathbf F^{m,n}$. Por el lema de las aplicaciones lineales (3.4), existe $T\in\mathcal L(V,W)$ tal que
+
+$$
+Tv_k=\sum_{j=1}^{m}A_{j,k}w_j
+\qquad(k=1,\ldots,n).
+$$
+
+Como $\mathcal M(T)=A$, la imagen de $\mathcal M$ es todo $\mathbf F^{m,n}$, como se quería.
+
+Ahora podemos determinar la dimensión del espacio vectorial de las aplicaciones lineales entre dos espacios de dimensión finita.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.72 Dimensión del espacio de aplicaciones lineales
+
+Si $V$ y $W$ son de dimensión finita, entonces $\mathcal L(V,W)$ también tiene dimensión finita y
+
+$$
+\boxed{\dim\mathcal L(V,W)=(\dim V)(\dim W).}
+$$
+
+:::
+
+**Demostración.** El resultado se deduce de 3.71, 3.70 y 3.40.
+
+## Aplicaciones lineales entendidas como multiplicación matricial
+
+Anteriormente definimos la matriz de una aplicación lineal. Ahora definimos la matriz de un vector.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.73 Definición: matriz de un vector, $\mathcal M(v)$
+
+Supongamos que $v\in V$ y que $v_1,\ldots,v_n$ es una base de $V$. La **matriz de $v$ respecto de esta base** es la matriz de $n\times1$
+
+$$
+\mathcal M(v)=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix},
+$$
+
+donde $b_1,\ldots,b_n$ son los escalares determinados por la expresión
+
+$$
+v=b_1v_1+\cdots+b_nv_n.
+$$
+
+La matriz $\mathcal M(v)$ depende tanto de $v$ como de la base elegida. Sin embargo, normalmente la base estará clara por el contexto y por eso no se incluye en la notación.
+
+:::
+
+### 3.74 Ejemplo: matriz de un vector
+
+- La matriz del polinomio $2-7x+5x^3+x^4$ respecto de la base estándar de $\mathcal P_4(\mathbf R)$ es
+
+  $$
+  \mathcal M(2-7x+5x^3+x^4)=\begin{pmatrix}2\\-7\\0\\5\\1\end{pmatrix}.
+  $$
+
+- La matriz de un vector $x\in\mathbf F^n$ respecto de la base estándar se obtiene escribiendo sus coordenadas como entradas de una matriz de $n\times1$. En otras palabras, si $x=(x_1,\ldots,x_n)\in\mathbf F^n$, entonces
+
+  $$
+  \mathcal M(x)=\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}.
+  $$
+
+En ocasiones queremos considerar los elementos de $V$ como si estuvieran reetiquetados en forma de matrices de $n\times1$. Una vez elegida una base $v_1,\ldots,v_n$, la función $\mathcal M$ que envía $v\in V$ a $\mathcal M(v)$ es un isomorfismo de $V$ sobre $\mathbf F^{n,1}$ que realiza este cambio de etiquetas.
+
+Recordemos que, si $A$ es una matriz de $m\times n$, entonces $A_{\cdot,k}$ denota su columna $k$, considerada como matriz de $m\times1$. En el resultado siguiente, $\mathcal M(Tv_k)$ se calcula respecto de la base $w_1,\ldots,w_m$ de $W$.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.75 La columna $k$ de $\mathcal M(T)$ es $\mathcal M(Tv_k)$
+
+Supongamos que $T\in\mathcal L(V,W)$, que $v_1,\ldots,v_n$ es una base de $V$ y que $w_1,\ldots,w_m$ es una base de $W$. Si $1\le k\le n$, entonces la columna $k$ de $\mathcal M(T)$, denotada por $\mathcal M(T)_{\cdot,k}$, es igual a $\mathcal M(Tv_k)$:
+
+$$
+\mathcal M(T)_{\cdot,k}=\mathcal M(Tv_k).
+$$
+
+:::
+
+**Demostración.** La igualdad se sigue inmediatamente de las definiciones de $\mathcal M(T)$ y $\mathcal M(Tv_k)$.
+
+El resultado siguiente muestra cómo encajan la matriz de una aplicación lineal, la matriz de un vector y la multiplicación de matrices.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.76 Las aplicaciones lineales actúan como la multiplicación de matrices
+
+Supongamos que $T\in\mathcal L(V,W)$, $v\in V$, $v_1,\ldots,v_n$ es una base de $V$ y $w_1,\ldots,w_m$ es una base de $W$. Entonces
+
+$$
+\boxed{\mathcal M(Tv)=\mathcal M(T)\mathcal M(v).}
+$$
+
+:::
+
+**Demostración.** Escribamos $v=b_1v_1+\cdots+b_nv_n$, con $b_1,\ldots,b_n\in\mathbf F$. Por la linealidad de $T$,
+
+$$
+\tag{3.77}Tv=b_1Tv_1+\cdots+b_nTv_n.
+$$
+
+Por tanto,
+
+$$
+\begin{aligned}
+\mathcal M(Tv)
+&=b_1\mathcal M(Tv_1)+\cdots+b_n\mathcal M(Tv_n)\\
+&=b_1\mathcal M(T)_{\cdot,1}+\cdots+b_n\mathcal M(T)_{\cdot,n}\\
+&=\mathcal M(T)\mathcal M(v).
+\end{aligned}
+$$
+
+La primera igualdad procede de 3.77 y de la linealidad de $\mathcal M$; la segunda, de 3.75; y la última, de 3.50.
+
+Cada matriz $A$ de $m\times n$ induce una aplicación lineal de $\mathbf F^{n,1}$ en $\mathbf F^{m,1}$: la función de multiplicación matricial que envía $x\in\mathbf F^{n,1}$ a $Ax\in\mathbf F^{m,1}$. El resultado anterior permite interpretar cualquier aplicación lineal entre espacios de dimensión finita como una multiplicación matricial, una vez reetiquetados adecuadamente los vectores mediante los isomorfismos $\mathcal M$. En concreto, si identificamos $v\in V$ con $\mathcal M(v)\in\mathbf F^{n,1}$, podemos identificar $Tv$ con $\mathcal M(T)\mathcal M(v)$.
+
+Dado que esta identificación expresa cada aplicación lineal como una multiplicación en $\mathbf F^{n,1}$ por alguna matriz $A$, recuerda que la matriz particular no depende solamente de la aplicación: depende también de las bases elegidas. Un tema central de muchos resultados importantes de capítulos posteriores será elegir una base que haga que $A$ sea lo más sencilla posible.
+
+En este libro nos concentramos en las aplicaciones lineales, más que en las matrices. No obstante, pensar ocasionalmente en las aplicaciones como matrices —o en las matrices como aplicaciones— proporciona ideas importantes que nos resultarán útiles.
+
+Observa que en el enunciado del resultado siguiente no aparece ninguna base. Aunque $\mathcal M(T)$ dependa de las bases elegidas en $V$ y $W$, el resultado demuestra que su rango por columnas es el mismo para todas esas elecciones, pues la imagen de $T$ no depende de ninguna base.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.78 La dimensión de la imagen es el rango por columnas de $\mathcal M(T)$
+
+Supongamos que $V$ y $W$ tienen dimensión finita y $T\in\mathcal L(V,W)$. Entonces $\dim\operatorname{range}T$ es igual al rango por columnas de $\mathcal M(T)$.
+
+:::
+
+**Demostración.** Sean $v_1,\ldots,v_n$ una base de $V$ y $w_1,\ldots,w_m$ una base de $W$. La aplicación lineal que envía $w\in W$ a $\mathcal M(w)$ es un isomorfismo de $W$ sobre el espacio $\mathbf F^{m,1}$ de matrices columna de $m\times1$. La restricción de ese isomorfismo a $\operatorname{range}T$, que por el ejercicio 10 de la sección 3B es
+
+$$
+\operatorname{range}T=\operatorname{span}(Tv_1,\ldots,Tv_n),
+$$
+
+es un isomorfismo de $\operatorname{range}T$ sobre
+
+$$
+\operatorname{span}(\mathcal M(Tv_1),\ldots,\mathcal M(Tv_n)).
+$$
+
+Por 3.75, para cada $k=1,\ldots,n$, la matriz columna $\mathcal M(Tv_k)$ es precisamente la columna $k$ de $\mathcal M(T)$. En consecuencia, $\dim\operatorname{range}T$ es el rango por columnas de $\mathcal M(T)$, como se quería.
+
+## Cambio de base
+
+En la sección 3C definimos la matriz $\mathcal M(T,(v_1,\ldots,v_n),(w_1,\ldots,w_m))$ de una aplicación lineal de $V$ en un espacio vectorial $W$ que puede ser distinto de $V$: la primera base corresponde al dominio y la segunda, al codominio. Cuando la aplicación va de un espacio en sí mismo, normalmente empleamos la misma base para ambos. En ese caso escribimos la base una sola vez; es decir, si $T\in\mathcal L(V)$ y $v_1,\ldots,v_n$ es una base de $V$, definimos
+
+$$
+\mathcal M(T,(v_1,\ldots,v_n))
+=\mathcal M(T,(v_1,\ldots,v_n),(v_1,\ldots,v_n)).
+$$
+
+Si la base está clara por el contexto, escribimos simplemente $\mathcal M(T)$.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.79 Definición: matriz identidad, $I$
+
+Sea $n$ un entero positivo. La matriz de $n\times n$ que tiene unos en la diagonal —las entradas cuyo número de fila coincide con el de columna— y ceros en las demás posiciones se llama **matriz identidad** y se denota por $I$:
+
+$$
+I_{j,k}=\begin{cases}1&\text{si }j=k,\\0&\text{si }j\ne k.\end{cases}
+$$
+
+En la representación usual de esta matriz, los ceros de las esquinas superior derecha e inferior izquierda indican, respectivamente, que todas las entradas por encima y por debajo de la diagonal son cero.
+
+Respecto de cualquier base de $V$, la matriz del operador identidad $I\in\mathcal L(V)$ es la matriz identidad $I$. El mismo símbolo denota, por tanto, tanto un operador como una matriz; el contexto determina su sentido. Por ejemplo, en la igualdad $\mathcal M(I)=I$, el $I$ de la izquierda es un operador y el de la derecha es una matriz.
+
+Si $A$ es una matriz cuadrada con entradas en $\mathbf F$ y del mismo tamaño que $I$, entonces $AI=IA=A$, como debes comprobar.
+
+:::
+
+::: {.axler-recuadro .axler-definicion}
+### 3.80 Definición: matriz invertible, inversa, $A^{-1}$
+
+Una matriz cuadrada $A$ se llama **invertible** si existe una matriz cuadrada $B$ del mismo tamaño tal que $AB=BA=I$. La matriz $B$ se llama **inversa de $A$** y se denota por $A^{-1}$.
+
+La misma demostración empleada en 3.60 muestra que, cuando una matriz cuadrada es invertible, existe una única matriz $B$ que satisface $AB=BA=I$; por eso está justificada la notación $B=A^{-1}$. Algunos matemáticos utilizan los términos **no singular** y **singular** como sinónimos de «invertible» y «no invertible», respectivamente.
+
+Si $A$ es invertible, entonces $(A^{-1})^{-1}=A$, porque $A^{-1}A=AA^{-1}=I$.
+
+Además, si $A$ y $C$ son matrices cuadradas invertibles del mismo tamaño, el producto $AC$ también es invertible y
+
+$$
+(AC)^{-1}=C^{-1}A^{-1},
+$$
+
+pues
+
+$$
+\begin{aligned}
+(AC)(C^{-1}A^{-1})
+&=A(CC^{-1})A^{-1}\\
+&=AIA^{-1}\\
+&=AA^{-1}\\
+&=I,
+\end{aligned}
+$$
+
+y de manera análoga $(C^{-1}A^{-1})(AC)=I$.
+
+> **[NOTA EDITORIAL · dimensión cero].** La definición 3.79 introduce la matriz identidad solo para tamaños positivos, aunque 3.29 permite matrices de tamaño cero. Por ello, bajo las definiciones literales del autor, las afirmaciones sobre inversas matriciales en 3.82, 3.84 y 3.86 se leen para bases de longitud positiva. Si se desea incluir $V=\{0\}$, puede ampliarse expresamente la convención: la única matriz $0\times0$ se denota $I_0$ y satisface $I_0I_0=I_0$. Con esta ampliación editorial, las identidades también valen para bases vacías. La ampliación no se atribuye a Axler.
+
+El resultado siguiente es válido porque definimos la multiplicación de matrices precisamente para que lo fuera (véanse 3.43 y el material que lo precede). Ahora especificaremos las bases que intervienen.
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.81 Matriz del producto de aplicaciones lineales
+
+Supongamos que $T\in\mathcal L(U,V)$ y $S\in\mathcal L(V,W)$. Si $u_1,\ldots,u_m$ es una base de $U$, $v_1,\ldots,v_n$ es una base de $V$ y $w_1,\ldots,w_p$ es una base de $W$, entonces
+
+$$
+\begin{aligned}
+&\mathcal M(ST,(u_1,\ldots,u_m),(w_1,\ldots,w_p))\\
+&\quad=\mathcal M(S,(v_1,\ldots,v_n),(w_1,\ldots,w_p))
+\mathcal M(T,(u_1,\ldots,u_m),(v_1,\ldots,v_n)).
+\end{aligned}
+$$
+
+El resultado siguiente se refiere a la matriz del operador identidad $I$ respecto de dos bases distintas. Observa que la columna $k$ de $\mathcal M(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n))$ contiene los escalares necesarios para expresar $u_k$ como combinación lineal de la base $v_1,\ldots,v_n$.
+
+En el enunciado siguiente, $I$ denota el operador identidad de $V$ en $V$. En su demostración, $I$ también denota la matriz identidad de $n\times n$.
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.82 Matriz del operador identidad respecto de dos bases
+
+Sean $\mathcal U=(u_1,\ldots,u_n)$ y $\mathcal V=(v_1,\ldots,v_n)$ dos bases de $V$. Las matrices $\mathcal M(I,\mathcal U,\mathcal V)$ y $\mathcal M(I,\mathcal V,\mathcal U)$ son invertibles y cada una es la inversa de la otra.
+
+:::
+
+**Demostración.** En 3.81, sustituyamos la base del codominio por $\mathcal U$ y las dos aplicaciones $S$ y $T$ por $I$. Obtenemos
+
+$$
+I=\mathcal M(I,\mathcal V,\mathcal U)\mathcal M(I,\mathcal U,\mathcal V).
+$$
+
+Ahora intercambiemos los papeles de $\mathcal U$ y $\mathcal V$:
+
+$$
+I=\mathcal M(I,\mathcal U,\mathcal V)\mathcal M(I,\mathcal V,\mathcal U).
+$$
+
+Las dos identidades demuestran el resultado.
+
+### 3.83 Ejemplo: matriz del operador identidad de $\mathbf F^2$ respecto de dos bases
+
+Consideremos las bases $\mathcal U=((4,2),(5,3))$ y $\mathcal E=((1,0),(0,1))$ de $\mathbf F^2$. Como
+
+$$
+I(4,2)=4(1,0)+2(0,1),\qquad I(5,3)=5(1,0)+3(0,1),
+$$
+
+obtenemos
+
+$$
+C=\mathcal M(I,\mathcal U,\mathcal E)
+=\begin{pmatrix}4&5\\2&3\end{pmatrix}.
+$$
+
+La inversa de esta matriz es
+
+$$
+C^{-1}=\begin{pmatrix}\frac32&-\frac52\\-1&2\end{pmatrix},
+$$
+
+como debes comprobar. Por 3.82,
+
+$$
+\mathcal M(I,\mathcal E,\mathcal U)
+=\begin{pmatrix}\frac32&-\frac52\\-1&2\end{pmatrix}.
+$$
+
+El resultado siguiente muestra cómo cambia la matriz de $T$ cuando cambiamos de base. En él tenemos dos bases distintas de $V$, cada una utilizada tanto en el dominio como en el codominio. Recordemos la abreviatura
+
+$$
+\mathcal M(T,(u_1,\ldots,u_n))
+=\mathcal M(T,(u_1,\ldots,u_n),(u_1,\ldots,u_n)).
+$$
+
+::: {.axler-recuadro .axler-teorema}
+### 3.84 Fórmula de cambio de base
+
+Supongamos que $T\in\mathcal L(V)$ y que $\mathcal U=(u_1,\ldots,u_n)$ y $\mathcal V=(v_1,\ldots,v_n)$ son bases de $V$. Sean
+
+$$
+A=\mathcal M(T,\mathcal U),\qquad
+B=\mathcal M(T,\mathcal V),\qquad
+C=\mathcal M(I,\mathcal U,\mathcal V).
+$$
+
+Entonces
+
+$$
+\boxed{A=C^{-1}BC.}
+$$
+
+:::
+
+**Demostración.** En 3.81, sustituyamos la base del codominio por $\mathcal U$ y la aplicación $S$ por $I$. Aplicando 3.82, obtenemos
+
+$$
+\tag{3.85}
+A=C^{-1}\mathcal M(T,\mathcal U,\mathcal V).
+$$
+
+Utilicemos otra vez 3.81, ahora con la base $\mathcal V$ como base del codominio, sustituyendo $T$ por $I$ y $S$ por la aplicación $T$ del enunciado. Resulta
+
+$$
+\mathcal M(T,\mathcal U,\mathcal V)=BC.
+$$
+
+Al sustituir esta igualdad en 3.85, obtenemos $A=C^{-1}BC$.
+
+La demostración del resultado siguiente se deja como ejercicio.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.86 La matriz de la inversa es la inversa de la matriz
+
+Supongamos que $v_1,\ldots,v_n$ es una base de $V$ y que $T\in\mathcal L(V)$ es invertible. Entonces
+
+$$
+\boxed{\mathcal M(T^{-1})=(\mathcal M(T))^{-1},}
+$$
+
+donde ambas matrices se calculan respecto de la base $v_1,\ldots,v_n$.
+
+:::
+
+
+
+---
+
+## Ejercicios 3D · enunciados traducidos {#ejercicios-3d}
+
+**1.** Supongamos que $T\in\mathcal L(V,W)$ es invertible. Demuestra que $T^{-1}$ es invertible y que $(T^{-1})^{-1}=T$.
+
+**2.** Supongamos que $T\in\mathcal L(U,V)$ y $S\in\mathcal L(V,W)$ son invertibles. Demuestra que $ST\in\mathcal L(U,W)$ es invertible y que $(ST)^{-1}=T^{-1}S^{-1}$.
+
+**3.** Supongamos que $V$ tiene dimensión finita y $T\in\mathcal L(V)$. Demuestra la equivalencia de: $a$ $T$ es invertible; $b$ $Tv_1,\ldots,Tv_n$ es una base de $V$ para **toda** base $v_1,\ldots,v_n$ de $V$; $c$ $Tv_1,\ldots,Tv_n$ es una base de $V$ para **alguna** base $v_1,\ldots,v_n$ de $V$.
+
+**4.** Sean $V$ de dimensión finita y $\dim V>1$. Demuestra que el conjunto de aplicaciones lineales no invertibles de $V$ en sí mismo no es un subespacio de $\mathcal L(V)$.
+
+**5.** Sean $V$ de dimensión finita, $U$ un subespacio de $V$ y $S\in\mathcal L(U,V)$. Demuestra que existe una aplicación lineal invertible $T:V\to V$ con $Tu=Su$ para cada $u\in U$ si y solo si $S$ es inyectiva.
+
+**6.** Sean $W$ de dimensión finita y $S,T\in\mathcal L(V,W)$. Demuestra que $\operatorname{null}S=\operatorname{null}T$ si y solo si existe un operador invertible $E\in\mathcal L(W)$ tal que $S=ET$.
+
+**7.** Sean $V$ de dimensión finita y $S,T\in\mathcal L(V,W)$. Demuestra que $\operatorname{range}S=\operatorname{range}T$ si y solo si existe un operador invertible $E\in\mathcal L(V)$ tal que $S=TE$.
+
+**8.** Sean $V,W$ de dimensión finita y $S,T\in\mathcal L(V,W)$. Demuestra que existen operadores invertibles $E_1\in\mathcal L(V)$ y $E_2\in\mathcal L(W)$ tales que $S=E_2TE_1$ si y solo si $\dim\operatorname{null}S=\dim\operatorname{null}T$.
+
+**9.** Supongamos que $V$ tiene dimensión finita y que $T:V\to W$ es lineal y sobreyectiva. Demuestra que existe un subespacio $U$ de $V$ tal que la restricción $T|_U:U\to W$ es un isomorfismo. Aquí $T|_U$ denota la función $T$ restringida a $U$. Por tanto, $T|_U$ tiene como dominio $U$ y está definida por $T|_U(u)=Tu$ para cada $u\in U$.
+
+**10.** Sean $V,W$ de dimensión finita y $U\subseteq V$ un subespacio. Sea
+
+$$\mathcal E=\{T\in\mathcal L(V,W):U\subseteq\operatorname{null}T\}.$$
+
+$a$ Demuestra que $\mathcal E$ es un subespacio de $\mathcal L(V,W)$. $b$ Obtén una fórmula para $\dim\mathcal E$ en función de $\dim V$, $\dim W$ y $\dim U$. **Pista del autor:** define $\Phi:\mathcal L(V,W)\to\mathcal L(U,W)$ por $\Phi(T)=T|_U$; determina su espacio nulo y su imagen.
+
+**11.** Sean $V$ de dimensión finita y $S,T\in\mathcal L(V)$. Demuestra que $ST$ es invertible si y solo si tanto $S$ como $T$ son invertibles.
+
+**12.** Sean $V$ de dimensión finita, $S,T,U\in\mathcal L(V)$ y $STU=I$. Demuestra que $T$ es invertible y que $T^{-1}=US$.
+
+**13.** Demuestra que el resultado del ejercicio 12 puede fallar si se suprime la hipótesis de dimensión finita de $V$.
+
+**14.** Demuestra o proporciona un contraejemplo: si $V$ es de dimensión finita y $R,S,T\in\mathcal L(V)$ satisfacen que $RST$ es sobreyectiva, entonces $S$ es inyectiva.
+
+**15.** Sean $T\in\mathcal L(V)$ y $v_1,\ldots,v_m$ una lista de $V$ tal que $Tv_1,\ldots,Tv_m$ genera $V$. Demuestra que $v_1,\ldots,v_m$ genera $V$.
+
+**16.** Demuestra que toda aplicación lineal $T:\mathbf F^{n,1}\to\mathbf F^{m,1}$ se obtiene mediante multiplicación por una matriz: existe $A\in\mathbf F^{m,n}$ tal que $Tx=Ax$ para todo $x\in\mathbf F^{n,1}$.
+
+**17.** Sean $V$ de dimensión finita, $S\in\mathcal L(V)$ y $\mathcal A\in\mathcal L(\mathcal L(V))$ definida por $\mathcal A(T)=ST$. Demuestra: $a$ $\dim\operatorname{null}\mathcal A=(\dim V)(\dim\operatorname{null}S)$; $b$ $\dim\operatorname{range}\mathcal A=(\dim V)(\dim\operatorname{range}S)$.
+
+**18.** Demuestra que $V$ y $\mathcal L(\mathbf F,V)$ son espacios vectoriales isomorfos.
+
+**19.** Sean $V$ de dimensión finita y $T\in\mathcal L(V)$. Demuestra que $T$ tiene la misma matriz respecto de toda base de $V$ si y solo si es un múltiplo escalar del operador identidad.
+
+**20.** Sea $q\in\mathcal P(\mathbf R)$. Demuestra que existe $p\in\mathcal P(\mathbf R)$ tal que, para todo $x\in\mathbf R$,
+
+$$q(x)=(x^2+x)p''(x)+2xp'(x)+p(3).$$
+
+**21.** Sea $n$ un entero positivo y sean $A_{j,k}\in\mathbf F$ para $j,k=1,\ldots,n$. Demuestra la equivalencia de: $a$ el sistema homogéneo $\sum_{k=1}^n A_{j,k}x_k=0$ para $j=1,\ldots,n$ tiene únicamente la solución trivial $x_1=\cdots=x_n=0$; $b$ para cada elección de $c_1,\ldots,c_n\in\mathbf F$, el sistema $\sum_{k=1}^n A_{j,k}x_k=c_j$ para $j=1,\ldots,n$ posee una solución. En ambos casos, el número de ecuaciones coincide con el de incógnitas.
+
+**22.** Sean $T\in\mathcal L(V)$ y $v_1,\ldots,v_n$ una base de $V$. Demuestra que $\mathcal M(T,(v_1,\ldots,v_n))$ es invertible si y solo si $T$ es invertible.
+
+**23.** Sean $u_1,\ldots,u_n$ y $v_1,\ldots,v_n$ bases de $V$, y $T\in\mathcal L(V)$ tal que $Tv_k=u_k$ para $k=1,\ldots,n$. Demuestra que
+
+$$\mathcal M(T,(v_1,\ldots,v_n))=\mathcal M(I,(u_1,\ldots,u_n),(v_1,\ldots,v_n)).$$
+
+**24.** Sean $A$ y $B$ matrices cuadradas del mismo tamaño con $AB=I$. Demuestra que $BA=I$.
+
+---
+
+## Soluciones originales de los ejercicios de 3D {#soluciones-3d}
+
+> [SOL] Soluciones elaboradas por Matemática Abierta; no proceden de Sheldon Axler.
+
+### 1. Inversa de la inversa
+
+Por definición, $T^{-1}T=I_V$ y $TT^{-1}=I_W$. Intercambiando los papeles de $T$ y $T^{-1}$, estas identidades dicen que $T$ es una inversa de $T^{-1}$. La unicidad 3.60 da
+
+$$(T^{-1})^{-1}=T.$$
+
+### 2. Inversa de una composición
+
+Si $T:U\to V$ y $S:V\to W$ son invertibles, por asociatividad
+
+$$(T^{-1}S^{-1})(ST)=T^{-1}(S^{-1}S)T=I_U,$$
+
+$$(ST)(T^{-1}S^{-1})=S(TT^{-1})S^{-1}=I_W.$$
+
+Por tanto $ST$ es invertible y $(ST)^{-1}=T^{-1}S^{-1}$; el orden se invierte necesariamente.
+
+### 3. Una base se transforma en una base
+
+(a)$\Rightarrow$(b): Si $T$ es invertible, es inyectiva y sobreyectiva. Sea $v_1,\ldots,v_n$ una base de $V$. Si $\sum_j a_jTv_j=0$, entonces $T(\sum_j a_jv_j)=0$; la inyectividad da $\sum_j a_jv_j=0$ y, por independencia de la base, todos los $a_j$ son cero. Por otro lado, dado $w\in V$, la sobreyectividad proporciona $v\in V$ con $Tv=w$; al escribir $v=\sum_j b_jv_j$ obtenemos $w=\sum_j b_jTv_j$. La lista de imágenes es, pues, una base. El mismo argumento cubre la base vacía cuando $V=\{0\}$.
+
+(b)$\Rightarrow$(c) es inmediato porque un espacio de dimensión finita tiene alguna base (también la base vacía si $V=\{0\}$).
+
+(c)$\Rightarrow$(a): Si $(Tv_j)$ es una base, genera $V$, luego $T$ es sobreyectiva; también es independiente, luego $Tv=0$ implica que todos los coeficientes de $v$ en $(v_j)$ son cero. Así $T$ es inyectiva y, por 3.63, invertible.
+
+### 4. Las aplicaciones no invertibles no forman subespacio
+
+Sea $n=\dim V>1$ y $(v_1,\ldots,v_n)$ una base. Definamos $S$ por $Sv_1=0$ y $Sv_j=v_j$ para $j\ge2$; definamos $T$ por $Tv_1=v_1$ y $Tv_j=0$ para $j\ge2$. Ambas son no invertibles pues tienen espacio nulo no trivial. Sin embargo $(S+T)v_j=v_j$ para todo $j$, de donde $S+T=I$, invertible. El conjunto no es cerrado bajo suma.
+
+### 5. Extender una aplicación a un automorfismo
+
+Si $Q\in\mathcal L(V)$ es invertible y $Q|_U=S$, entonces $S$ es inyectiva al ser restricción de una aplicación inyectiva.
+
+Recíprocamente, supongamos $S$ inyectiva. Elijamos base $u_1,\ldots,u_r$ de $U$. La lista $Su_1,\ldots,Su_r$ es independiente. Extendamos ambas listas a bases de $V$:
+
+$$u_1,\ldots,u_r,v_{r+1},\ldots,v_n,\quad Su_1,\ldots,Su_r,w_{r+1},\ldots,w_n.$$
+
+El lema 3.4 define $Q$ llevando los vectores de la primera base a los correspondientes de la segunda. Por 3.63 es invertible y $Q|_U=S$.
+
+### 6. El mismo espacio nulo equivale a un automorfismo del codominio
+
+Si $S=ET$ con $E\in\mathcal L(W)$ invertible, $Sv=0\iff Tv=0$, así que $\operatorname{null}S=\operatorname{null}T$.
+
+Para la recíproca, supongamos iguales los núcleos. Definimos
+
+$$F:\operatorname{range}T\to\operatorname{range}S,\qquad F(Tv)=Sv.$$
+
+Está bien definida: $Tv=Tv'$ implica $v-v'\in\operatorname{null}T=\operatorname{null}S$, y por tanto $Sv=Sv'$. La misma equivalencia prueba que $F$ es inyectiva; es sobreyectiva por definición. Es lineal. Como $W$ es de dimensión finita, extendamos una base $t_1,\ldots,t_r$ de $\operatorname{range}T$ y su imagen $F(t_1),\ldots,F(t_r)$ a sendas bases de $W$. La aplicación $E$ que envía una base a la otra es un automorfismo y prolonga $F$. Se cumple $ETv=F(Tv)=Sv$ para todo $v$, luego $S=ET$.
+
+### 7. La misma imagen equivale a un automorfismo del dominio
+
+Si $S=TE$ y $E$ es invertible en $V$, $E(V)=V$, luego $\operatorname{range}S=T(EV)=\operatorname{range}T$.
+
+A la inversa, sea $R=\operatorname{range}S=\operatorname{range}T$, de dimensión $r$. Elijamos una base $y_1,\ldots,y_r$ de $R$, preimágenes $s_j,t_j$ con $Ss_j=y_j=Tt_j$, bases $a_1,\ldots,a_k$ de $\operatorname{null}S$ y $b_1,\ldots,b_k$ de $\operatorname{null}T$. Los valores de $k$ coinciden por 3.21 y $\dim V<\infty$. Las listas $(s_1,\ldots,s_r,a_1,\ldots,a_k)$ y $(t_1,\ldots,t_r,b_1,\ldots,b_k)$ son bases de $V$: se demuestra tomando imágenes para independencia y restando las preimágenes de las coordenadas para generación. Definimos el automorfismo $E$ enviando la primera lista a la segunda. En la primera base, $TEs_j=y_j=Ss_j$ y $TEa_i=0=Sa_i$. Por 3.4, $TE=S$.
+
+### 8. Equivalencia bilateral por dimensión del espacio nulo
+
+Si $S=E_2TE_1$ con $E_1,E_2$ invertibles, $\operatorname{null}S=E_1^{-1}(\operatorname{null}T)$, de donde sus dimensiones son iguales.
+
+Recíprocamente, supongamos que las dimensiones de los núcleos son iguales, $k$. Por 3.21 las imágenes tienen la misma dimensión $r=\dim V-k$. Elegimos bases adaptadas $(s_1,\ldots,s_r,a_1,\ldots,a_k)$ y $(t_1,\ldots,t_r,b_1,\ldots,b_k)$ como en el ejercicio 7, pero ahora las bases $(Ss_j)$ y $(Tt_j)$ de las dos imágenes pueden ser distintas. Sea $E_1$ el automorfismo que lleva $s_j\mapsto t_j$ y $a_i\mapsto b_i$. Sea $E_2$ un automorfismo de $W$ que lleva $Tt_j\mapsto Ss_j$ y extiende este isomorfismo entre las imágenes: existe al prolongar cada lista a una base de $W$. Así $E_2TE_1$ coincide con $S$ en la base adaptada, luego $S=E_2TE_1$.
+
+### 9. Una restricción isomorfa de una sobreyección
+
+Sea $T:V\to W$ sobreyectiva, con $\dim V<\infty$. Por 2.33 existe un complemento $U$ de $\operatorname{null}T$ tal que $V=\operatorname{null}T\oplus U$. La restricción $T|_U$ tiene espacio nulo $U\cap\operatorname{null}T=\{0\}$. Para cada $w=Tv$, descomponiendo $v=z+u$ con $z\in\operatorname{null}T$, tenemos $w=Tu$. Es sobreyectiva; por 3.63 es un isomorfismo $U\to W$.
+
+### 10. Aplicaciones que anulan un subespacio
+
+$a$ El conjunto $\mathcal E=\{T:U\subseteq\operatorname{null}T\}$ contiene la aplicación cero y está cerrado bajo suma y multiplicación por escalares, pues $(S+T)u=0$ y $(\lambda T)u=0$ para $u\in U$.
+
+$b$ Sea $\Phi:\mathcal L(V,W)\to\mathcal L(U,W)$ la restricción, $\Phi(T)=T|_U$. Es lineal y $\operatorname{null}\Phi=\mathcal E$. Es sobreyectiva: para cualquier $R:U\to W$, extiéndase una base de $U$ a una de $V$ y prescríbase cero para los vectores añadidos $3.4$. Usando 3.21 y 3.72,
+
+$$\boxed{\dim\mathcal E=(\dim V)(\dim W)-(\dim U)(\dim W)
+=(\dim V-\dim U)\dim W.}$$
+
+### 11. Producto invertible si y solo si factores invertibles
+
+Si $S,T$ son invertibles, el ejercicio 2 da que $ST$ es invertible. Si $ST$ es invertible, entonces $ST$ es inyectiva y sobreyectiva. La primera propiedad implica que $T$ es inyectiva; la segunda implica que $S$ es sobreyectiva. Como ambos son operadores de un mismo espacio de dimensión finita, 3.65 hace invertibles a $T$ y $S$.
+
+### 12. Si $STU=I$, entonces $T^{-1}=US$
+
+Por el ejercicio 11, la invertibilidad de $STU$ implica que los tres operadores $S,T,U$ son invertibles. Multiplicando $STU=I$ por $S^{-1}$ a la izquierda y por $U^{-1}$ a la derecha,
+
+$$T=S^{-1}U^{-1}.$$
+
+Tomando inversas (ejercicio 2), $T^{-1}=US$. También se puede comprobar directamente $T(US)=(TU)S=I$ a partir de esa identidad.
+
+### 13. Contraejemplo en dimensión infinita
+
+En $V=\mathbf F^\infty$, sean $L(x_1,x_2,\ldots)=(0,x_1,x_2,\ldots)$ y $R(x_1,x_2,\ldots)=(x_2,x_3,\ldots)$. Son lineales y $RL=I$, mientras que $LR\ne I$ (anula la primera coordenada). Tomemos
+
+$$S=R,\qquad T=LR,\qquad U=L.$$
+
+Entonces $STU=R(LR)L=(RL)(RL)=I$, pero $T=LR$ no es invertible, pues $T(1,0,\ldots)=0$. La hipótesis de dimensión finita del ejercicio 12 no se puede suprimir.
+
+### 14. Si $RST$ es sobreyectiva, $S$ es inyectiva
+
+Como $V$ es de dimensión finita, $RST$ es invertible por 3.65. Aplicamos el ejercicio 11 a $R(ST)$ y luego a $ST$: $R,S,T$ son invertibles. En particular, $S$ es inyectiva. La afirmación es verdadera.
+
+### 15. Si las imágenes generan, también genera la lista original
+
+Si $Tv_1,\ldots,Tv_m$ genera $V$, entonces $T$ es sobreyectiva, y $V$ es de dimensión finita porque posee una lista generadora finita. Por 3.65, $T$ es inyectiva. Dado $v\in V$, $Tv=\sum a_jTv_j=T(\sum a_jv_j)$. La inyectividad da $v=\sum a_jv_j$. Así la lista inicial genera $V$. No se presupuso inicialmente la dimensión finita: se dedujo de la hipótesis.
+
+### 16. Toda aplicación entre espacios de columnas es matricial
+
+Sean $e_1,\ldots,e_n$ las columnas estándar de $\mathbf F^{n,1}$. Para $T\in\mathcal L(\mathbf F^{n,1},\mathbf F^{m,1})$, formemos la matriz $A$ de tamaño $m\times n$ cuya columna $j$ es $Te_j$. Cualquier columna $x=\sum_{j=1}^n x_je_j$ satisface
+
+$$Tx=\sum x_jTe_j=\sum x_jA_{\cdot,j}=Ax$$
+
+por 3.50. La elección de columnas determina además $A$ de manera única.
+
+### 17. Multiplicación por la izquierda: dimensiones
+
+Sea $n=\dim V$, $k=\dim\operatorname{null}S$ y $r=\dim\operatorname{range}S=n-k$. La aplicación $\mathcal A(T)=ST$ es lineal por distributividad de la composición $3.8$.
+
+$a$ $ST=0$ si y solo si $\operatorname{range}T\subseteq\operatorname{null}S$. Por tanto $\operatorname{null}\mathcal A$ es naturalmente el espacio $\mathcal L(V,\operatorname{null}S)$, considerado como subespacio de $\mathcal L(V)$, y 3.72 da
+
+$$\boxed{\dim\operatorname{null}\mathcal A=nk.}$$
+
+$b$ Por 3.21 y 3.72, $\dim\mathcal L(V)=n^2$, luego
+
+$$\boxed{\dim\operatorname{range}\mathcal A=n^2-nk=nr=n\dim\operatorname{range}S.}$$
+
+Las expresiones incluyen el caso $n=0$.
+
+### 18. $V$ es isomorfo a $\mathcal L(\mathbf F,V)$
+
+Definamos $\Psi:V\to\mathcal L(\mathbf F,V)$ por $(\Psi(v))(a)=av$. Es lineal porque $\Psi(v+w)(a)=a(v+w)$ y $\Psi(\lambda v)(a)=\lambda av$. Si $\Psi(v)=0$, evaluamos en $1$ y obtenemos $v=0$, por lo que es inyectiva. Cualquier $T:\mathbf F\to V$ cumple $T(a)=aT(1)$ por linealidad; luego $T=\Psi(T(1))$. Es sobreyectiva y, por 3.63, un isomorfismo. La inversa es la evaluación $T\mapsto T(1)$.
+
+### 19. La misma matriz en todas las bases caracteriza a $\lambda I$
+
+Si $T=\lambda I$, su matriz es $\lambda I$ en cualquier base.
+
+Para la recíproca, sea $\dim V=n$. Si $n=0$, el único operador es cero, múltiplo de $I$. Sea $n\ge1$ y fijemos una base $\mathcal B=(v_1,\ldots,v_n)$, con matriz $A=(a_{j,k})$. Por hipótesis, al sustituir $v_i$ por $2v_i$ sin cambiar los demás vectores, la matriz sigue siendo $A$. Si $D_i$ es la matriz diagonal con $2$ en la posición $i$ y unos en las restantes, la fórmula 3.84 da $A=D_i^{-1}AD_i$. Para $j\ne i$, sus entradas $(i,j)$ y $(j,i)$ quedan multiplicadas por $1/2$ y $2$, respectivamente. Como $A$ no cambia, $a_{i,j}=a_{j,i}=0$. Al hacer esto para cada $i$, $A$ es diagonal. Intercambiando los vectores $v_i,v_j$ se permutan las correspondientes entradas diagonales de la matriz; al permanecer inalterada, todas esas entradas son iguales, digamos $\lambda$. Así $A=\lambda I$ y, por la base, $T=\lambda I$. Para $n=1$ la última conclusión es automática. No se usan determinantes ni valores propios.
+
+### 20. Ecuación diferencial polinómica
+
+Queremos resolver, dado $q\in\mathcal P(\mathbf R)$,
+
+$$q(x)=(x^2+x)p''(x)+2xp'(x)+p(3).$$
+
+Elijamos $m$ tal que $q\in\mathcal P_m(\mathbf R)$ y definamos $T:\mathcal P_m(\mathbf R)\to\mathcal P_m(\mathbf R)$ por el miembro derecho. Está bien definida y es lineal: $p\mapsto p(3)$ es una aplicación lineal a polinomios constantes. Si $p$ no es constante y tiene grado $d\ge1$ con coeficiente principal $a_d\ne0$, el coeficiente de $x^d$ en $(x^2+x)p''+2xp'$ es
+
+$$a_d[d(d-1)+2d]=a_dd(d+1)\ne0;$$
+
+$ p(3)$ no modifica ese coeficiente. Así $Tp\ne0$. Si $p$ es constante $a$, entonces $Tp=a$, que es cero solo para $a=0$. Concluimos $\operatorname{null}T=\{0\}$. Por 3.65, $T$ es sobreyectiva y existe $p\in\mathcal P_m$ con $Tp=q$. Nótese que $p(3)$ significa evaluación en $3$, **no** tercera derivada.
+
+### 21. Sistemas cuadrados: unicidad homogénea y existencia universal
+
+Sea $A=(A_{j,k})\in\mathbf F^{n,n}$ y $T:\mathbf F^{n,1}\to\mathbf F^{n,1}$, $Tx=Ax$. El sistema homogéneo $Ax=0$ tiene solo la solución trivial exactamente cuando $\operatorname{null}T=\{0\}$, esto es, cuando $T$ es inyectiva. El sistema $Ax=c$ tiene solución para todo término independiente $c$ exactamente cuando $T$ es sobreyectiva. Dominio y llegada tienen dimensión $n$, de modo que 3.65 establece la equivalencia solicitada.
+
+### 22. Invertibilidad del operador y de su matriz
+
+Sea $\mathcal B=(v_1,\ldots,v_n)$ una base de $V$, $A=\mathcal M(T,\mathcal B)$ y $J(v)=\mathcal M(v)$ el isomorfismo de coordenadas. Por 3.76, $J\circ T=M_A\circ J$, donde $M_A(x)=Ax$. Por consiguiente, $T$ es invertible si y solo si $M_A$ es invertible como aplicación lineal.
+
+**Caso $n\ge1$ (definiciones 3.79–3.80 del autor).** Si $T$ es invertible, 3.43 aplicada a $T^{-1}T=TT^{-1}=I_V$ da $\mathcal M(T^{-1})A=A\mathcal M(T^{-1})=I_n$, por lo que $A$ es invertible. Recíprocamente, si existe $A^{-1}$ con $AA^{-1}=A^{-1}A=I_n$, la aplicación $M_{A^{-1}}$ es inversa de $M_A$; así $J^{-1}\circ M_{A^{-1}}\circ J$ es inversa lineal de $T$.
+
+**Caso $n=0$ (nota editorial, no definición de Axler).** Aquí $V=\{0\}$ y su único operador es invertible. La matriz asociada tiene tamaño $0\times0$, admitido por la definición 3.29, pero 3.79 solo define la identidad matricial para tamaños positivos y 3.80 remite a ella. Por tanto, la frase «la matriz es invertible» *no está definida literalmente* por 3.79–3.80 cuando $n=0$. Si se amplían expresamente las convenciones fijando la única matriz vacía como $I_0$ y declarando que $I_0I_0=I_0$, la matriz vacía resulta invertible y la equivalencia también abarca este caso. Esta ampliación es propia de la presente edición.
+
+### 23. Matriz del operador que lleva una base a otra
+
+Sean $\mathcal V=(v_1,\ldots,v_n)$ y $\mathcal U=(u_1,\ldots,u_n)$, con $Tv_k=u_k$. La columna $k$ de $\mathcal M(T,\mathcal V)$ recoge las coordenadas de $u_k$ respecto de $\mathcal V$. Por definición, la columna $k$ de $\mathcal M(I,\mathcal U,\mathcal V)$ recoge exactamente las mismas coordenadas de $Iu_k=u_k$ en $\mathcal V$. Las matrices tienen las mismas columnas:
+
+$$\boxed{\mathcal M(T,\mathcal V)=\mathcal M(I,\mathcal U,\mathcal V).}$$
+
+### 24. Una inversa lateral de una matriz cuadrada es bilateral
+
+Si $A,B\in\mathbf F^{n,n}$ y $AB=I$, las aplicaciones $M_A,M_B$ sobre $\mathbf F^{n,1}$ cumplen $M_A M_B=I$. Por ello $M_A$ es sobreyectiva y $M_B$ inyectiva. En dimensión finita $n$, 3.65 las hace invertibles. Se deduce $M_B=M_A^{-1}$ y $M_B M_A=I$, esto es, $BA=I$ (aplicando ambas matrices a cada columna estándar). Equivale a aplicar 3.68 a las aplicaciones de multiplicación por $A$ y $B$.
+
+**Nota editorial sobre el tamaño cero.** La demostración anterior utiliza la matriz identidad $I_n$ de 3.79 y, por tanto, se aplica literalmente a $n\ge1$. Para $n=0$, la definición 3.29 admite matrices vacías, pero Axler no define $I_0$ en 3.79. Si nuestra edición extiende explícitamente la convención mediante la única matriz de tamaño $0\times0$, llamada $I_0$, entonces necesariamente $A=B=I_0$ y $BA=I_0$. Esta ampliación es editorial, no una definición atribuible al autor.
+
+:::
