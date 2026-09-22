@@ -5,6 +5,7 @@ import { emptyProgress, loadProgress, saveProgress, archivePartial, finishProgre
 import { canAct, reviewStep } from './view-model.mjs';
 import { renderRating } from './rating-panel.mjs';
 import { setMath, mathElement, clearMath, typesetMath } from './math-dom.mjs';
+import { createSettingsSelection } from './settings-selection.mjs';
 
 const $ = id => document.getElementById(id);
 const el = (tag, text, className = '') => {
@@ -24,6 +25,8 @@ let selected = null;
 let cursor = -1;
 let viewStep = null; // Solo presentación: nunca forma parte de la sesión ni del Elo.
 let historyOpen = false;
+const settingsSelection = createSettingsSelection();
+let committedArea = $('area').value;
 
 function storageNotice() {
   $('storage-note').textContent = persistent
@@ -49,18 +52,32 @@ function archiveCurrent() {
   if (next !== saved) { saved = next; save(); }
 }
 function newExercise() {
-  archiveCurrent();
   const options = pool();
   if (!options.length) return;
+  archiveCurrent();
+  if ($('area').value !== committedArea) cursor = -1;
   cursor = (cursor + 1) % options.length;
   active = options[cursor];
+  committedArea = $('area').value;
   setFlow(startFlow(startSession(active, $('mode').value)));
   selected = null;
   viewStep = null;
+  settingsSelection.reset();
+  $('apply-settings').disabled = true;
+  $('settings-status').textContent = 'Selecciona área y modalidad. También puedes aplicar el cambio de una sola opción.';
   $('settings-panel').open = false;
   showHistory(false, false);
   render();
   $('title').focus();
+}
+function changeSetting(field) {
+  const state = settingsSelection.change(field);
+  $('apply-settings').disabled = !state.pending;
+  if (state.ready) {
+    newExercise();
+  } else {
+    $('settings-status').textContent = 'Primera opción elegida. Selecciona la otra o pulsa «Aplicar ajustes» para cambiar solo esta.';
+  }
 }
 function stepStatus(entry) {
   if (entry.surrendered === true) return 'Solución mostrada';
@@ -322,8 +339,9 @@ $('give-up').addEventListener('click', giveUp);
 $('next').addEventListener('click', next);
 $('another').addEventListener('click', newExercise);
 $('new').addEventListener('click', newExercise);
-$('area').addEventListener('change', () => { cursor = -1; newExercise(); });
-$('mode').addEventListener('change', newExercise);
+$('area').addEventListener('change', () => changeSetting('area'));
+$('mode').addEventListener('change', () => changeSetting('mode'));
+$('apply-settings').addEventListener('click', () => { if (settingsSelection.pending) newExercise(); });
 $('history-toggle').addEventListener('click', () => showHistory(!historyOpen));
 $('review-return').addEventListener('click', () => {
   viewStep = null;
