@@ -1,5 +1,6 @@
-/** Ejercicios originales demostrativos. No reutilizan identificadores MA-PRB ni establecen ratings calibrados. */
+/** Banco demostrativo + piloto de Álgebra. Identificadores y registros históricos inmutables. */
 import { validateBank } from './engine.mjs';
+import { ALGEBRA_PILOT } from './algebra-pilot.mjs';
 
 export const EXERCISES = [
   { id:'MAP-DEMO-001', area:'aritmetica', difficulty:1, provisionalRating:800, title:'Sumar fracciones', prompt:'Calcula 1/2 + 1/3.', steps:[
@@ -23,6 +24,7 @@ export const EXERCISES = [
     {question:'¿Qué representación expresa que n es par?',options:['n = 2k + 1 para algún k entero','n = 2k para algún k entero','n = k/2 para algún k impar'],correctIndex:1,notation:'n = 2k, con k ∈ ℤ.',explanation:'Esta es la definición de entero par.'},
     {question:'¿Cómo se expresa n² a partir de n = 2k?',options:['n² = 2k²','n² = 4k² = 2(2k²)','n² = 4k + 2'],correctIndex:1,notation:'n² = 4k² = 2(2k²).',explanation:'Como 2k² es entero, n² es par.'},
     {question:'¿Qué conclusión es válida?',options:['La recíproca quedó demostrada','Probamos la contrapositiva y, por equivalencia, la proposición original','La prueba requiere suponer que n es positivo'],correctIndex:1,notation:'n² impar ⇒ n impar. ∎',explanation:'Hemos probado la contrapositiva sobre todos los enteros, sin requerir positividad.'}
-  ]}
+  ]},
+  ...ALGEBRA_PILOT
 ];
 validateBank(EXERCISES);
