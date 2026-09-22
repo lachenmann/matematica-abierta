@@ -4,19 +4,79 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#143d39">
-  <meta name="description" content="MA-Práctica: ejercicios matemáticos paso a paso para el móvil.">
+  <meta name="description" content="MA-Práctica: decisiones matemáticas, explicaciones y una planilla de resolución revisable.">
   <title>MA-Práctica | Matemática Abierta</title>
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="app.mjs"></script>
 </head>
 <body>
   <main class="shell">
-    <header class="brand"><a href="../index.html" aria-label="Volver a Matemática Abierta">← Matemática Abierta</a><span>MA-Práctica · v0.1</span></header>
-    <section class="intro"><p class="eyebrow">Matemáticas de bolsillo</p><h1>Una decisión matemática a la vez.</h1><p>Resuelve, anota y revisa cada paso. Este es un prototipo experimental, no una clasificación oficial.</p></section>
-    <section class="card controls" aria-label="Configuración"><label for="area">Área</label><select id="area"><option value="todas">Todas las áreas</option><option value="aritmetica">Aritmética</option><option value="algebra">Álgebra</option><option value="calculo">Cálculo</option><option value="demostraciones">Demostraciones</option></select><label for="mode">Modalidad</label><select id="mode"><option value="training">Entrenamiento — sin Elo</option><option value="challenge">Desafío — Elo experimental</option></select><button id="new" type="button" class="secondary">Nuevo ejercicio</button></section>
-    <section class="card" aria-label="Ejercicio"><div class="topline"><span id="area-label" class="pill"></span><span id="progress" class="muted"></span></div><h2 id="title"></h2><p id="prompt" class="math"></p><div id="stepsbar" class="stepsbar" aria-label="Progreso"></div><section class="tracebox" aria-labelledby="trace-title"><div class="topline"><h3 id="trace-title">Planilla de resolución</h3><span id="trace-count" class="muted">0 pasos</span></div><ol id="trace" class="trace"><li class="muted">Tus decisiones aparecerán aquí.</li></ol></section><section id="question" class="question" aria-live="polite"></section><div id="feedback" role="status" aria-live="polite"></div><div class="actions"><button id="submit" type="button" disabled>Registrar decisión</button><button id="next" type="button" hidden>Continuar →</button></div></section>
-    <section class="card history" aria-labelledby="history-title"><div class="topline"><h2 id="history-title">Sesiones anteriores</h2><button id="clear" class="textbutton" type="button">Borrar datos locales</button></div><p id="storage-note" class="muted small" role="status" aria-live="polite">Solo en este navegador. No se envían datos a un servidor.</p><ol id="past"></ol></section>
-    <footer>Ejercicios demostrativos de autoría original · La dificultad y el Elo aún no están calibrados.</footer>
+    <header class="brand">
+      <a class="home-link" href="../index.html" aria-label="Volver al inicio de Matemática Abierta">← Matemática Abierta</a>
+      <div class="brand-actions"><span class="version">Práctica · v0.1</span><button id="history-toggle" type="button" class="nav-button" aria-expanded="false" aria-controls="history-panel">Historial</button></div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Matemáticas de bolsillo</p>
+      <h1 id="page-title">Una decisión matemática a la vez.</h1>
+      <p>Piensa, registra tu elección y comprende cada paso.</p>
+    </section>
+
+    <details id="settings-panel" class="settings card">
+      <summary>Ajustes de práctica <span class="settings-hint">Área y modalidad</span></summary>
+      <div class="settings-grid">
+        <label for="area">Área</label>
+        <select id="area"><option value="todas">Todas las áreas</option><option value="aritmetica">Aritmética</option><option value="algebra">Álgebra</option><option value="calculo">Cálculo</option><option value="demostraciones">Demostraciones</option></select>
+        <label for="mode">Modalidad</label>
+        <select id="mode"><option value="training">Entrenamiento — sin Elo</option><option value="challenge">Desafío — Elo experimental</option></select>
+        <p class="settings-help">Cambiar el área o la modalidad inicia otro ejercicio y archiva los pasos ya respondidos.</p>
+        <button id="new" type="button" class="secondary">Elegir otro ejercicio</button>
+      </div>
+    </details>
+
+    <section id="workspace" aria-label="Resolución del ejercicio">
+      <div class="workspace-grid">
+        <section class="card exercise" aria-label="Problema y respuesta">
+          <div class="topline status-line"><span id="area-label" class="pill"></span><span id="mode-label" class="mode-pill"></span><span id="progress" class="muted"></span></div>
+          <div id="stepsbar" class="stepsbar" role="progressbar" aria-label="Progreso de las decisiones" aria-valuemin="0" aria-valuenow="0" aria-valuemax="1"></div>
+          <h2 id="title" tabindex="-1"></h2>
+          <p id="prompt" class="math"></p>
+          <div class="decision-divider"></div>
+          <section id="question" class="question" aria-label="Decisión actual"></section>
+          <div class="actions">
+            <button id="submit" type="button" disabled>Registrar decisión</button>
+            <button id="next" type="button" hidden>Continuar →</button>
+            <button id="another" type="button" hidden>Otro ejercicio →</button>
+          </div>
+          <div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+          <p id="rating-note" class="rating-note">La dificultad y el Elo son experimentales; no miden de forma validada tu competencia matemática.</p>
+        </section>
+
+        <aside class="card tracebox" aria-labelledby="trace-title">
+          <div class="topline trace-header"><h2 id="trace-title">Planilla de resolución</h2><span id="trace-count" class="muted">0 pasos</span></div>
+          <p class="trace-help">Revisa tus decisiones. Consultarlas no modifica tu resultado.</p>
+          <ol id="trace" class="trace"><li class="muted">Tus decisiones aparecerán aquí.</li></ol>
+          <section id="review" class="review-panel" aria-labelledby="review-title" hidden>
+            <p class="review-kicker">Consulta en solo lectura</p>
+            <h3 id="review-title" tabindex="-1"></h3>
+            <p id="review-question"></p>
+            <p class="review-formula math" id="review-notation"></p>
+            <p id="review-choice"></p>
+            <p id="review-correction"></p>
+            <p id="review-explanation"></p>
+            <button id="review-return" type="button" class="secondary">Volver al paso actual</button>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section id="history-panel" class="card history" aria-labelledby="history-title" hidden>
+      <div class="topline"><h2 id="history-title" tabindex="-1">Sesiones anteriores</h2><button id="clear" type="button" class="textbutton">Borrar datos locales</button></div>
+      <p id="storage-note" class="muted small" role="status" aria-live="polite">Solo en este navegador. No se envían datos a un servidor.</p>
+      <p class="muted small">Se conservan como máximo 20 sesiones, incluidas las incompletas. Este historial es de lectura.</p>
+      <ol id="past" class="past-list"></ol>
+    </section>
+    <footer>MA-Práctica · Prototipo original de Matemática Abierta. Sin rankings ni cuentas.</footer>
   </main>
 </body>
 </html>
