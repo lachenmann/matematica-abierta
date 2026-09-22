@@ -59,17 +59,17 @@ license: GFDL-1.3-or-later
 
 Este tratado desarrolla el análisis matemático desde fundamentos explícitos y construye progresivamente los sistemas numéricos que el análisis utiliza. La edición web se publica por etapas: cada parte se incorpora cuando ha superado su revisión matemática y editorial.
 
-::: {.row .g-4 .align-items-center}
+::: {.d-flex .flex-column .flex-md-row .gap-4 .align-items-center}
 
-::: {.col-12 .col-md-5}
+::: {.w-100}
 
 ![](tratado-de-analisis-volumen-i-ficticio.png){fig-alt="Ficticio del volumen I del Tratado moderno de Análisis: libro blanco de tapa dura, lomo ancho y sello Läufer." width="100%"}
 
-<small class="text-muted">Ficticio editorial. Representación de una posible edición impresa.</small>
+<small class="opacity-75">Ficticio editorial. Representación de una posible edición impresa.</small>
 
 :::
 
-::: {.col-12 .col-md-7}
+::: {.w-100}
 
 El tratado está concebido principalmente como una obra para la web, con navegación entre capítulos, referencias internas y una publicación abierta y progresiva. La edición en PDF se ofrece como formato complementario para quienes prefieran leer el texto de manera continua o deseen imprimirlo.
 
