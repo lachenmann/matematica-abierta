@@ -68,39 +68,59 @@ export function archivePartial(progress, session, item, finishedAt) {
 }
 
 /**
- * Política v0.2: ganar significa resolver TODOS los pasos, incluso tras reintentos,
- * sin usar «Rendirse». La antigua respuesta falsa corregida automáticamente carece
- * de resolved=true, por lo que permanece como fallo bajo el contrato anterior.
- * Nunca se recalculan puntuaciones históricas ni se permite repuntuar el mismo ID.
+ * Auditoría previa a cualquier cambio Elo. Verifica contra la clave del ejercicio
+ * que el primer intento, su indicador de acierto y la corrección concuerdan.
+ * Ante contradicción, lanza un error en lugar de descontar silenciosamente.
  */
-export function completedWithoutSurrender(session, item) {
+export function auditFirstAttempts(session, item) {
   const result = sessionResult(session, item);
-  return result.flawless || session.trace.every(move => move.resolved === true && move.surrendered !== true);
+  const wrongOrdinals = [];
+  for (const [index, move] of session.trace.entries()) {
+    const step = item.steps[index];
+    const expected = step.options[step.correctIndex];
+    if (move.ordinal !== index + 1 || move.question !== step.question ||
+        move.expected !== expected || !step.options.includes(move.chosen) ||
+        move.correct !== (move.chosen === expected)) {
+      throw new Error(`Inconsistencia de corrección en el paso ${index + 1}: no se ha modificado el Elo`);
+    }
+    if (Array.isArray(move.attempts)) {
+      if (!move.attempts.length || move.attempts[0] !== move.chosen ||
+          new Set(move.attempts).size !== move.attempts.length ||
+          move.attempts.some(option => !step.options.includes(option)) ||
+          (move.resolved === true && move.attempts.at(-1) !== expected) ||
+          (move.surrendered === true && (move.resolved === true || move.attempts.includes(expected)))) {
+        throw new Error(`Inconsistencia de intentos en el paso ${index + 1}: no se ha modificado el Elo`);
+      }
+    }
+    if (!move.correct) wrongOrdinals.push(index + 1);
+  }
+  if (result.correct !== result.total - wrongOrdinals.length) throw new Error('Recuento inconsistente: no se ha modificado el Elo');
+  return { firstCorrect: result.correct, total: result.total, wrongOrdinals, flawless: wrongOrdinals.length === 0 };
 }
 
-/** Función pura: el mismo ejercicio solo puede puntuarse una vez por estado local. */
+/** Política: cualquier respuesta inicial incorrecta cuenta como fallo; reintentar no borra ese dato. */
 export function finishProgress(progress, session, item, finishedAt) {
-  const outcome = sessionResult(session, item);
-  const solved = completedWithoutSurrender(session, item);
+  const audit = auditFirstAttempts(session, item);
   const next = normalizeProgress(progress);
   let delta = null;
   let ratingBefore = null;
   let ratingAfter = null;
   if (session.mode === 'challenge' && !next.ratedIds.includes(item.id)) {
     ratingBefore = next.ratings[item.area] ?? INITIAL_RATING;
-    const calculation = eloUpdate(ratingBefore, item.provisionalRating, solved ? 1 : 0);
+    const calculation = eloUpdate(ratingBefore, item.provisionalRating, audit.flawless ? 1 : 0);
     delta = calculation.delta;
     ratingAfter = calculation.next;
+    if (audit.flawless && delta < 0) throw new Error('Inconsistencia Elo: éxito con puntuación negativa; no se guardó el resultado');
     next.ratings[item.area] = ratingAfter;
     next.ratedIds = [...next.ratedIds, item.id];
   }
   const record = {
     id: item.id, title: item.title, area: item.area, mode: session.mode,
-    correct: outcome.correct, total: outcome.total,
+    correct: audit.firstCorrect, total: audit.total, wrongOrdinals: audit.wrongOrdinals,
     resolved: session.trace.filter(move => move.correct || move.resolved === true).length,
-    solved, trace: session.trace,
+    solved: audit.flawless, trace: session.trace,
     finishedAt, delta, ratingBefore, ratingAfter,
-    ratingPolicy: delta === null ? null : 'completion-v02'
+    ratingPolicy: delta === null ? null : 'first-attempt-v03'
   };
   next.history = [record, ...next.history].slice(0, HISTORY_LIMIT);
   return { progress: next, record };
