@@ -1,0 +1,36 @@
+name: MA-Práctica — motor y sintaxis
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'practica/**'
+      - '.github/workflows/ma-practica-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ma-practica-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Comprobar sintaxis JavaScript
+        run: |
+          node --check practica/engine.mjs
+          node --check practica/exercises.mjs
+          node --check practica/app.mjs
+          node --check practica/tests/engine.test.mjs
+      - name: Ejecutar pruebas del motor
+        run: node --test practica/tests/*.test.mjs
