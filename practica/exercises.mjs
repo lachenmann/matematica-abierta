@@ -4,7 +4,7 @@ import { validateBank } from './engine.mjs';
 export const EXERCISES = [
   { id:'MAP-DEMO-001', area:'aritmetica', difficulty:1, provisionalRating:800, title:'Sumar fracciones', prompt:'Calcula 1/2 + 1/3.', steps:[
     {question:'¿Cuál es un denominador común conveniente?',options:['5','6','3'],correctIndex:1,notation:'m.c.m.(2, 3) = 6',explanation:'6 es múltiplo tanto de 2 como de 3.'},
-    {question:'¿Cómo expresamos ambas fracciones con denominador 6?',options:['3/6 + 2/6','2/6 + 3/6','1/6 + 1/6'],correctIndex:0,notation:'1/2 = 3/6; 1/3 = 2/6',explanation:'Multiplicamos numerador y denominador por 3 y 2, respectivamente.'},
+    {question:'¿Cómo expresamos ambas fracciones con denominador 6?',options:['3/6 + 2/6','2/6 + 2/6','1/6 + 1/6'],correctIndex:0,notation:'1/2 = 3/6; 1/3 = 2/6',explanation:'Multiplicamos numerador y denominador por 3 y 2, respectivamente.'},
     {question:'¿Cuál es la suma?',options:['5/12','2/5','5/6'],correctIndex:2,notation:'3/6 + 2/6 = 5/6',explanation:'Sumamos numeradores y conservamos el denominador común.'}
   ]},
   { id:'MAP-DEMO-002', area:'algebra', difficulty:2, provisionalRating:1050, title:'Resolver una ecuación', prompt:'Resuelve 2(x − 3) = x + 5.', steps:[
