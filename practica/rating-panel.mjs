@@ -8,6 +8,12 @@ const element = (tag, text, className = '') => {
   return node;
 };
 
+/** El signo sigue visible sin color: el color es una pista adicional, no la única. */
+function deltaElement(delta) {
+  const className = delta > 0 ? 'rating-up' : delta < 0 ? 'rating-down' : 'rating-neutral';
+  return element('strong', signedDelta(delta), `rating-delta ${className}`);
+}
+
 function trend(events) {
   const values = [events[0].before, ...events.map(event => event.after)];
   const min = Math.min(...values);
@@ -46,7 +52,11 @@ function trend(events) {
 export function renderRating(progress, activeArea) {
   const rows = ratingSnapshot(progress);
   const active = rows.find(row => row.area === activeArea) ?? rows[0];
-  $('rating-current').textContent = `${active.name}: ${active.current} · ${active.latestDelta === null ? 'Sin variación registrada' : `Última variación ${signedDelta(active.latestDelta)}`}`;
+  const current = $('rating-current');
+  current.replaceChildren(element('span', `${active.name}: ${active.current} · `));
+  if (active.latestDelta === null) current.append(element('span', 'Sin variación registrada'));
+  else current.append(element('span', 'Última variación '), deltaElement(active.latestDelta));
+
   const target = $('rating-list');
   const openAreas = new Set([...target.querySelectorAll('details[open]')].map(node => node.dataset.area));
   target.replaceChildren();
@@ -57,8 +67,10 @@ export function renderRating(progress, activeArea) {
     card.open = openAreas.has(row.area);
     const summary = document.createElement('summary');
     summary.append(element('span', row.name), element('strong', String(row.current), 'rating-number'));
-    const change = element('span', row.latestDelta === null ? 'Sin cambios registrados' : `Último cambio: ${signedDelta(row.latestDelta)}`, 'rating-change');
-    if (row.latestDelta !== null) change.classList.add(row.latestDelta >= 0 ? 'rating-up' : 'rating-down');
+    const change = document.createElement('span');
+    change.className = 'rating-change';
+    if (row.latestDelta === null) change.textContent = 'Sin cambios registrados';
+    else change.append('Último cambio: ', deltaElement(row.latestDelta));
     summary.append(change);
     card.append(summary);
     if (!row.events.length) {
@@ -71,7 +83,7 @@ export function renderRating(progress, activeArea) {
         const li = document.createElement('li');
         const date = event.date ? new Date(event.date) : null;
         const when = date && !Number.isNaN(date.getTime()) ? ` · ${date.toLocaleDateString('es-CL')}` : '';
-        li.textContent = `${event.title}${when}: ${event.before} → ${event.after} (${signedDelta(event.delta)})`;
+        li.append(`${event.title}${when}: ${event.before} → ${event.after} (`, deltaElement(event.delta), ')');
         list.append(li);
       }
       card.append(list);
