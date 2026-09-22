@@ -76,18 +76,6 @@ En particular, el libro procura:
 
 El primer tomo avanza desde la estructura de los números reales hasta el cálculo diferencial e integral de una variable y las ecuaciones diferenciales elementales.
 
-Los capítulos completos disponibles son:
-
-1. **Los números reales: axiomas de cuerpo, orden y completitud**.
-2. **Funciones reales: estructura, composición, inversas y gráficas**.
-3. **Sucesiones y la primera noción rigurosa de límite**.
-4. **Límites de funciones**.
-5. **Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**.
-6. **La derivada y la aproximación lineal local**.
-7. **Álgebra de derivadas y regla de la cadena**.
-8. **Derivación de funciones elementales, inversas e implícitas**.
-9. **Teoremas de Rolle y del valor medio**.
-
 Los capítulos posteriores desarrollarán aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
 
 ## Capítulos publicados
