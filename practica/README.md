@@ -1,6 +1,6 @@
 # MA-Práctica v0.1 — prototipo de matemáticas de bolsillo
 
-Código del prototipo vinculado a `MA-APP-0004`. El documento editorial maestro permanece en Obsidian/Drive (`Matemática Abierta/Aplicaciones interactivas/MA-APP-0004 - MA-Práctica.md`). El directorio local de desarrollo acordado es `D:\MA-Practica`, fuera de la bóveda Obsidian. No sustituir el manuscrito maestro con estos derivados.
+Prototipo derivado de `MA-APP-0004`: su fuente editorial canónica permanece en Obsidian/Drive (`Matemática Abierta/Aplicaciones interactivas/MA-APP-0004 - MA-Práctica.md`). Desarrollo local en `D:\MA-Practica`, fuera de la bóveda. No sustituir el manuscrito maestro con estos archivos.
 
 ## Ejecutar en Windows
 
@@ -11,33 +11,30 @@ node --test practica/tests/*.test.mjs
 py -3 -m http.server 8000
 ```
 
-Abrir `http://localhost:8000/practica/` (o `/practica/index.html` sin asteriscos ni cambiar la extensión). Los módulos ES requieren HTTP local: abrir `index.html` mediante `file://` no es una prueba compatible. En otros sistemas, desde la raíz del repositorio puede utilizarse `python3 -m http.server 8000`.
+Abrir `http://localhost:8000/practica/`. Ejecutar mediante HTTP: `file://` no es una prueba válida para módulos ES. Si el servidor ya funciona, basta con actualizar la página con Ctrl+F5.
 
-## Uso: flujo de intentos
+## Resolver y revisar
 
-1. Elegir una respuesta y pulsar «Registrar decisión». Si es correcta, el sistema **avanza automáticamente** al paso siguiente (o termina al resolver el último); la explicación del acierto queda en pantalla y en la planilla.
-2. Si es incorrecta, el paso no avanza y **no revela aún la respuesta**. Elegir «Intentar de nuevo» permite seleccionar otra opción: las anteriores quedan deshabilitadas, pero se conservan. «Rendirse y ver la solución» muestra respuesta, fórmula y explicación; el usuario decide cuándo pulsar «Continuar tras ver la solución».
-3. La planilla distingue primer intento correcto, éxito tras reintentos y solución mostrada. Al revisar un paso, la consulta es **de solo lectura** y bloquea las acciones hasta volver al paso actual. Salir a otro ejercicio con un error todavía pendiente archiva el intento como parcial, sin contarlo como rendición ni puntuar.
-4. «Ajustes de práctica» cambia área o modalidad e inicia otro ejercicio. «Historial» muestra hasta 20 registros locales y no altera la sesión activa. Borrar datos requiere confirmación.
-5. «Mi marcador de Elo» muestra la puntuación del área activa y la última variación disponible. «Ver puntuaciones y variaciones por área» expone las cuatro áreas por separado, con tendencia visual y registro textual de movimientos. Las variaciones históricas solo se muestran cuando hay registro verificable en las últimas 20 sesiones; no se reconstruyen entradas eliminadas.
+1. «Registrar decisión» con respuesta correcta avanza **inmediatamente** al paso siguiente, y deja visible la explicación. Tras el último acierto aparece el resumen.
+2. Ante un error, el paso permanece: «Intentar de nuevo» habilita otra opción sin borrar el primer intento ni mostrar anticipadamente la solución; «Rendirse y ver la solución» enseña resultado, notación y explicación hasta pulsar «Continuar».
+3. La planilla distingue acierto inicial, corrección posterior y solución mostrada. Consultar pasos es de solo lectura y bloquea las acciones hasta regresar al actual. Salir con un error pendiente archiva el primer intento como parcial, sin Elo.
+4. El historial conserva como máximo 20 sesiones locales. El marcador presenta cuatro áreas independientes y únicamente movimientos históricos conservados. No hay cuentas, sincronización ni rankings.
 
-## Política del Elo experimental (revisión de intentos)
+## Elo experimental: auditoría de fracciones y fallos
 
-El Elo ilustrativo comienza en 1200 por área. **Entrenamiento no puntúa.** En desafíos, resolver **todos** los pasos sin rendirse equivale a una victoria, incluidos los resueltos por reintento; solicitar la solución en cualquier paso equivale a un desafío no superado. Se mantiene la fórmula experimental `eloUpdate` con resultado binario (1 = éxito, 0 = no superado), sin recalibrar las dificultades. Se registra independientemente el número de aciertos **al primer intento**, para no confundirlo con pasos finalmente resueltos.
+El usuario detectó una aparente resta tras acertar todas las fracciones. Se comprobó la clave editorial exacta de `MAP-DEMO-001`: **6; 3/6 + 2/6; 5/6**. La fórmula `eloUpdate` no puede producir una resta con resultado de éxito. Sin acceso al historial local de ese navegador no se puede determinar si hubo algún intento registrado como incorrecto o si el marcador mostró una pérdida *anterior* después de repetir el ejercicio.
 
-Cada identificador puede puntuar **como máximo una vez por navegador**, aunque se repita, recargue o corrija después. Los ratings ya guardados y los movimientos anteriores a esta política **no se recalculan, reparan ni sustituyen silenciosamente**; el historial identifica como antiguos los registros con puntuación previa. Para probar de nuevo desde cero existe «Borrar datos locales», que también borra irreversiblemente historial y marcador: no es una corrección selectiva ni modifica otros dispositivos. La regla actual se identifica internamente como `completion-v02`. La puntuación es local, manipulable, no calibrada y no mide competencia matemática; no hay rankings.
+La regla vigente respeta la distinción solicitada: **todos los primeros intentos correctos = éxito; cualquier primer intento erróneo = fallo**, incluso si después se resuelve reintentando o viendo la solución. El reintento sirve para aprender, pero no borra el error inicial. Un entrenamiento no puntúa. Solo se puntúa la primera finalización en desafío por ID y navegador. La fórmula matemática y el rating provisional de cada ejercicio no se han recalibrado y no miden capacidad matemática de forma validada.
 
-**Limitación del banco:** cuatro ejercicios originales, solo uno por área. Una vez puntuado cada ejercicio, no habrá nuevas variaciones hasta ampliar y auditar el banco. Los reintentos pueden ayudar a resolver, pero no convierten una puntuación en una evaluación psicométrica; revisar políticas contra adivinación y calibrar son tareas futuras.
+Antes de puntuar, `auditFirstAttempts` comprueba cada elección y corrección contra la clave del banco; si encuentra una contradicción, lanza error y **no modifica el Elo**. El historial nuevo registra el número de aciertos iniciales y los ordinales de los pasos con error. Si se completa una repetición correcta, la pantalla indica **«Esta sesión: sin cambio»**; el movimiento negativo que pueda aparecer en el gráfico queda identificado como histórico, nunca como pérdida nueva. La regla se identifica `first-attempt-v03`.
 
-## Fórmulas en LaTeX (MathJax)
+**No se recalculan ni se sustituyen las puntuaciones ya almacenadas.** Un registro antiguo puede reflejar la conducta de una versión anterior; se preserva como histórico. «Borrar datos locales» reinicia *todo* el historial y rating de este navegador, por lo que no debe usarse como reparación automática de un movimiento individual. El banco cuenta actualmente con solo cuatro ejercicios, uno por área: sin contenido nuevo solo puede haber un movimiento por área.
 
-La capa `math-tex.mjs` identifica fragmentos matemáticos **explícitos del banco demostrativo**, conservando los textos originales en `exercises.mjs`, `engine.mjs` y `progress.mjs`. `math-dom.mjs` compone enunciados, opciones, feedback, planilla, consulta e historial mediante `typesetPromise` y `typesetClear`. Nunca inyecta HTML proveniente de los ejercicios: utiliza `textContent`.
+## Fórmulas LaTeX y privacidad
 
-`index.html` incorpora **MathJax 4.0.0**, componente `tex-chtml.js`, desde `https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-chtml.js`. Depende de conexión al CDN para mostrar fórmulas compuestas; sin conexión, permanecen visibles expresiones originales en texto plano. MathJax es Apache-2.0; el navegador se conecta con un tercero para descargarlo, pero **respuestas, historial y Elo no se envían al CDN ni a un backend**. Un modo sin conexión requerirá distribuir esta dependencia localmente y revisar su licencia.
+`math-tex.mjs` convierte fragmentos conocidos del banco de forma exclusivamente visual; `math-dom.mjs` compone enunciados, respuestas, feedback, planilla e historial con MathJax 4.0.0 (`tex-chtml.js`), descargado de `https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-chtml.js`. Si falla el CDN, el texto matemático original permanece legible. Se utiliza `textContent`, no HTML arbitrario. MathJax (Apache-2.0) requiere una conexión del navegador con un tercero; respuestas, historial y rating no se envían a servidores. Para uso offline se debe distribuir la dependencia localmente y revisar avisos de licencia.
 
-La conversión actual se limita a expresiones conocidas de los cuatro ejercicios; los futuros requerirán TeX editorial revisado o ampliación probada del catálogo. Verificar fracciones apiladas, derivadas, pertenencia a los enteros y fórmulas largas, también en explicaciones tras aciertos y soluciones tras rendición.
-
-## Pruebas y arquitectura
+## Pruebas y archivos
 
 ```powershell
 node --check practica/app.mjs
@@ -46,18 +43,10 @@ node --check practica/progress.mjs
 node --test practica/tests/*.test.mjs
 ```
 
-Motor matemático determinista: `engine.mjs`; estado interactivo de reintentos y rendición: `attempt-flow.mjs`; persistencia y regla de puntuación: `progress.mjs`; consulta: `view-model.mjs`; marcador: `rating-view.mjs` y `rating-panel.mjs`; LaTeX: `math-tex.mjs` y `math-dom.mjs`; interfaz: `app.mjs`, `index.html`, `styles.css`, `ma-theme.css`, `math-display.css` y `attempt-flow.css`.
+Motor: `engine.mjs`. Estado de interacción: `attempt-flow.mjs`. Puntuación/persistencia/auditoría: `progress.mjs`. Consulta: `view-model.mjs`. Marcador: `rating-view.mjs`, `rating-panel.mjs`. TeX: `math-tex.mjs`, `math-dom.mjs`. Interfaz: `app.mjs`, `index.html`, `styles.css`, `ma-theme.css`, `math-display.css`, `attempt-flow.css`. Paleta MA marino `#0b2f66`, celeste `#139cf0`, papel `#f7f2e8` y negro OLED. Rojo/verde reservados a estados semánticos. Nada de Lichess se ha copiado.
 
-La paleta utiliza azul marino `#0b2f66` y celeste `#139cf0` del logotipo, papel ahuesado `#f7f2e8` del tema claro y negro `#000000` del modo OLED. Los colores verde/rojo permanecen para estados de acierto/error. No se ha reutilizado código ni activos de Lichess.
+Acta: `PROJECT.md`, issue #169. Diseño: `design/ESTUDIO-UX-LICHESS-v01.md`, `design/IMPLEMENTACION-UX-v01.md`, issue #170. PR #168 permanece en borrador.
 
-Acta del proyecto: `PROJECT.md` e issue #169. Estudio de UX: `design/ESTUDIO-UX-LICHESS-v01.md`, `design/IMPLEMENTACION-UX-v01.md` e issue #170. La implementación permanece en el PR #168, en borrador.
+## Alcance y publicación
 
-## Estado y límites
-
-Sin backend, cuentas, PWA, manifest, service worker, corrector simbólico, verificación formal, rankings ni integración en el menú Quarto. Datos locales no sincronizados y susceptibles de borrado, manipulación o condiciones de carrera entre pestañas. El historial está limitado a 20 sesiones: el valor actual puede sobrevivir a la eliminación de registros antiguos, sin reconstruir artificialmente su evolución.
-
-**Licencias:** código original GPL-3.0-or-later; contenido didáctico original GFDL-1.3-or-later, conforme a la política del repositorio; MathJax Apache-2.0. No se han copiado recursos de Lichess.
-
-## Integración ulterior
-
-Antes de activar la ruta `practica/` en Quarto: sincronizar con `main`, revisar `_quarto.yml`, integrar HTML/JS/CSS, ejecutar `quarto render`, auditar licencias/privacidad, realizar QA de teclado y lector de pantalla y probar el flujo nuevo en móvil/escritorio. No editar `gh-pages` ni publicar solo por CI verde.
+Prototipo de opción múltiple; ni corrector simbólico ni verificador formal. Datos locales manipulables, sujetos a borrado o carreras entre pestañas; sin backend, PWA, ranking o sincronización. Antes de fusionar/publicar: revisión matemática final, QA de teclado/lector de pantalla, móvil/escritorio (incluidas las variaciones históricas), privacidad/licencias, integración estática y `quarto render` en PR separado. No editar `main`, `gh-pages` o `_quarto.yml` por estos ajustes aislados.
