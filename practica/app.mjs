@@ -3,6 +3,7 @@ import { startSession, submitAnswer, advance, sessionResult } from './engine.mjs
 import { emptyProgress, loadProgress, saveProgress, archivePartial, finishProgress } from './progress.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
 import { renderRating } from './rating-panel.mjs';
+import { setMath, mathElement, clearMath, typesetMath } from './math-dom.mjs';
 
 const $ = id => document.getElementById(id);
 const el = (tag, text, className = '') => {
@@ -55,6 +56,7 @@ function newExercise() {
 }
 function renderTrace() {
   const list = $('trace');
+  clearMath(list);
   list.replaceChildren();
   $('trace-count').textContent = `${session.trace.length} / ${active.steps.length} pasos`;
   if (!session.trace.length) {
@@ -69,7 +71,7 @@ function renderTrace() {
     button.dataset.step = String(index);
     button.setAttribute('aria-label', `Revisar paso ${entry.ordinal}, ${entry.correct ? 'correcto' : 'corregido'}`);
     button.append(el('span', String(entry.ordinal), 'trace-num'));
-    button.append(el('span', entry.notation, 'trace-summary'));
+    button.append(mathElement('span', entry.notation, 'trace-summary'));
     button.append(el('span', entry.correct ? '✓ Correcto' : '↺ Corregido', 'trace-state'));
     button.addEventListener('click', () => { viewStep = index; updateReview(); });
     li.append(button);
@@ -79,6 +81,7 @@ function renderTrace() {
 function updateReview() {
   const inspecting = viewStep !== null;
   const review = $('review');
+  if (inspecting) clearMath(review);
   review.hidden = !inspecting;
   for (const button of $('trace').querySelectorAll('button[data-step]')) {
     if (inspecting && Number(button.dataset.step) === viewStep) {
@@ -90,14 +93,15 @@ function updateReview() {
   if (inspecting) {
     const step = reviewStep(session, active, viewStep);
     $('review-title').textContent = `Paso ${step.ordinal} · ${step.correct ? 'Correcto' : 'Corregido'}`;
-    $('review-question').textContent = step.question;
-    $('review-notation').textContent = step.notation;
-    $('review-choice').textContent = `Tu elección: ${step.chosen}`;
+    setMath($('review-question'), step.question);
+    setMath($('review-notation'), step.notation);
+    setMath($('review-choice'), `Tu elección: ${step.chosen}`);
     $('review-choice').className = step.correct ? '' : 'corrected';
     $('review-correction').hidden = step.correct;
-    $('review-correction').textContent = step.correct ? '' : `Corrección: ${step.expected}`;
-    $('review-explanation').textContent = step.explanation;
+    setMath($('review-correction'), step.correct ? '' : `Corrección: ${step.expected}`);
+    setMath($('review-explanation'), step.explanation);
     $('review-title').focus();
+    typesetMath(review);
   }
   const actionable = canAct(session, viewStep);
   const answered = session.trace.length > session.index;
@@ -109,6 +113,7 @@ function updateReview() {
 }
 function renderHistory() {
   const list = $('past');
+  clearMath(list);
   list.replaceChildren();
   if (!saved.history.length) {
     list.append(el('li', 'Todavía no hay sesiones anteriores.', 'muted'));
@@ -127,7 +132,7 @@ function renderHistory() {
     }
     for (const move of record.trace) {
       const correction = move.correct ? 'Correcto' : `Tu elección: ${move.chosen}. Corrección: ${move.expected}`;
-      details.append(el('p', `${move.ordinal}. ${move.notation} — ${correction}. ${move.explanation}`));
+      details.append(mathElement('p', `${move.ordinal}. ${move.notation} — ${correction}. ${move.explanation}`));
     }
     li.append(details);
     list.append(li);
@@ -140,7 +145,7 @@ function showHistory(open, focus = true) {
   $('history-panel').hidden = !open;
   $('history-toggle').setAttribute('aria-expanded', String(open));
   $('history-toggle').textContent = open ? 'Volver al ejercicio' : 'Historial';
-  if (open) { renderHistory(); storageNotice(); }
+  if (open) { renderHistory(); storageNotice(); typesetMath($('history-panel')); }
   if (focus) {
     if (open) $('history-title').focus();
     else $('title').focus();
@@ -151,7 +156,7 @@ function render() {
   $('mode-label').textContent = session.mode === 'training' ? 'Entrenamiento' : 'Desafío · Elo experimental';
   $('progress').textContent = session.completed ? 'Terminado' : `Paso ${session.index + 1} de ${active.steps.length}`;
   $('title').textContent = active.title;
-  $('prompt').textContent = active.prompt;
+  setMath($('prompt'), active.prompt);
   const bar = $('stepsbar');
   bar.replaceChildren();
   active.steps.forEach((_, index) => {
@@ -166,6 +171,8 @@ function render() {
   renderRating(saved, active.area);
   storageNotice();
   const target = $('question');
+  clearMath(target);
+  clearMath($('feedback'));
   target.replaceChildren();
   $('feedback').replaceChildren();
   $('submit').hidden = session.completed;
@@ -186,11 +193,12 @@ function render() {
       target.append(el('p', 'No se registró nueva puntuación: el desafío ya había sido puntuado en este navegador o se borraron los datos locales.'));
     }
     updateReview();
+    typesetMath($('workspace'));
     return;
   }
   const step = active.steps[session.index];
   const answered = session.trace.length > session.index;
-  const heading = el('h3', step.question);
+  const heading = mathElement('h3', step.question);
   heading.tabIndex = -1;
   target.append(heading);
   const group = document.createElement('div');
@@ -208,7 +216,7 @@ function render() {
       selected = index;
       $('submit').disabled = false;
     });
-    label.append(input, el('span', option));
+    label.append(input, mathElement('span', option));
     group.append(label);
   });
   target.append(group);
@@ -219,11 +227,12 @@ function render() {
     const feedback = document.createElement('div');
     feedback.className = 'feedback' + (last.correct ? '' : ' bad');
     feedback.append(el('strong', last.correct ? '✓ Correcto.' : '↺ Respuesta corregida.'));
-    feedback.append(el('span', last.explanation));
+    feedback.append(mathElement('span', last.explanation));
     $('feedback').append(feedback);
     $('next').textContent = session.index === active.steps.length - 1 ? 'Finalizar ejercicio' : 'Continuar →';
   }
   updateReview();
+  typesetMath($('workspace'));
 }
 function submit() {
   if (!canAct(session, viewStep) || selected === null || session.trace.length !== session.index) return;
@@ -267,4 +276,5 @@ $('clear').addEventListener('click', () => {
   renderRating(saved, active.area);
   storageNotice();
 });
+window.addEventListener('load', () => typesetMath(historyOpen ? $('history-panel') : $('workspace')));
 newExercise();
