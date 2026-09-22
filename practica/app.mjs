@@ -1,5 +1,5 @@
 import { EXERCISES } from './exercises.mjs';
-import { startSession, sessionResult } from './engine.mjs';
+import { startSession, sessionResult, INITIAL_RATING } from './engine.mjs';
 import { startFlow, answerFlow, retryFlow, surrenderFlow, continueFlow, partialFlowSession } from './attempt-flow.mjs';
 import { emptyProgress, loadProgress, saveProgress, archivePartial, finishProgress } from './progress.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
@@ -64,7 +64,7 @@ function newExercise() {
 }
 function stepStatus(entry) {
   if (entry.surrendered === true) return 'Solución mostrada';
-  if (entry.resolved === true && !entry.correct) return 'Correcto tras reintentar';
+  if (entry.resolved === true && !entry.correct) return 'Correcto tras reintentar (primer intento fallido)';
   return entry.correct ? 'Correcto al primer intento' : 'Corregido';
 }
 function renderTrace() {
@@ -138,11 +138,13 @@ function renderHistory() {
     const details = document.createElement('details');
     const mode = record.mode === 'challenge' ? 'Desafío' : 'Entrenamiento';
     const result = record.partial ? 'Incompleto' : 'Finalizado';
-    const delta = record.delta == null ? '' : ` · Elo ${record.delta >= 0 ? '+' : ''}${record.delta} (experimental)`;
+    const delta = record.delta == null ? ' · Sin nueva variación de Elo' : ` · Elo ${record.delta >= 0 ? '+' : ''}${record.delta} (experimental)`;
     const resolved = Number.isInteger(record.resolved) ? ` · ${record.resolved}/${record.total} pasos resueltos` : '';
     details.append(el('summary', `${record.title} · ${record.correct}/${record.total} aciertos iniciales${resolved} · ${mode} · ${result}${delta}`));
-    if (record.ratingPolicy === 'completion-v02') details.append(el('p', 'Regla actual: completar sin rendirse cuenta como éxito; usar la solución, como desafío no superado.', 'muted'));
-    else if (record.delta != null) details.append(el('p', 'Puntuación histórica: regla anterior, no recalculada.', 'muted'));
+    if (record.ratingPolicy === 'first-attempt-v03') {
+      details.append(el('p', 'Regla de este registro: un error inicial cuenta como fallo, incluso si luego se corrige.', 'muted'));
+      if (record.wrongOrdinals?.length) details.append(el('p', `Errores registrados en los pasos: ${record.wrongOrdinals.join(', ')}.`, 'muted'));
+    } else if (record.delta != null) details.append(el('p', 'Variación histórica de una versión anterior; no se ha recalculado.', 'muted'));
     if (typeof record.finishedAt === 'string') {
       const date = new Date(record.finishedAt);
       if (!Number.isNaN(date.getTime())) details.append(el('p', date.toLocaleString('es-CL'), 'muted'));
@@ -202,6 +204,11 @@ function render() {
   renderTrace();
   renderHistory();
   renderRating(saved, active.area);
+  // No confundir el último movimiento HISTÓRICO del panel con la sesión recién terminada.
+  if (session.completed && saved.history[0]?.id === active.id && saved.history[0]?.finishedAt === session.finishedAt && saved.history[0]?.delta == null) {
+    const current = saved.ratings[active.area] ?? INITIAL_RATING;
+    $('rating-current').textContent = `${LABELS[active.area]}: ${current} · Esta sesión: sin cambio. Las variaciones del gráfico son históricas.`;
+  }
   storageNotice();
   const target = $('question');
   clearMath(target);
@@ -220,14 +227,15 @@ function render() {
     heading.tabIndex = -1;
     target.append(heading);
     target.append(el('p', `${resolved}/${result.total} pasos resueltos; ${result.correct}/${result.total} aciertos al primer intento.`));
-    target.append(el('p', 'La planilla conserva tus elecciones, reintentos y soluciones mostradas.'));
+    const wrong = session.trace.filter(move => !move.correct).map(move => move.ordinal);
+    target.append(el('p', wrong.length ? `Se registraron errores iniciales en los pasos ${wrong.join(', ')}. Revisa sus primeras elecciones en la planilla.` : 'No se registraron errores al primer intento.'));
     const record = saved.history[0];
     if (record?.id === active.id && record?.finishedAt === session.finishedAt && record?.delta != null) {
-      target.append(el('p', `${record.solved ? 'Desafío superado sin rendirse' : 'Desafío no superado: se mostró una solución'}. Elo experimental de ${LABELS[active.area]}: ${record.ratingBefore} → ${record.ratingAfter} (${record.delta >= 0 ? '+' : ''}${record.delta}).`));
+      target.append(el('p', `${record.solved ? 'Desafío sin errores iniciales' : 'Desafío con al menos un error inicial'}. Elo experimental de ${LABELS[active.area]}: ${record.ratingBefore} → ${record.ratingAfter} (${record.delta >= 0 ? '+' : ''}${record.delta}).`));
     } else if (session.mode === 'training') {
-      target.append(el('p', 'Entrenamiento: el Elo no cambia.'));
+      target.append(el('p', 'Entrenamiento: esta sesión no ha cambiado el Elo. La variación del marcador, si aparece, es histórica.'));
     } else {
-      target.append(el('p', 'No se registró nueva puntuación: este ejercicio ya había sido puntuado en este navegador.'));
+      target.append(el('p', 'Esta repetición no modificó el Elo: el ejercicio ya había sido puntuado. La última variación del marcador pertenece a una sesión anterior.'));
     }
     updateReview();
     typesetMath($('workspace'));
@@ -267,9 +275,12 @@ function render() {
 }
 function finishIfNeeded() {
   if (!session.completed) return;
-  session.finishedAt = new Date().toISOString();
-  setFlow({ ...flow, session });
-  saved = finishProgress(saved, session, active, session.finishedAt).progress;
+  const finishedAt = new Date().toISOString();
+  // Validar y puntuar ANTES de modificar el estado local; si hay discrepancia, no guardar una resta.
+  const completed = { ...session, finishedAt };
+  const result = finishProgress(saved, completed, active, finishedAt);
+  setFlow({ ...flow, session: completed });
+  saved = result.progress;
   save();
 }
 function submit() {
