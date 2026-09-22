@@ -20,7 +20,7 @@ export const EXERCISES = [
   ]},
   { id:'MAP-DEMO-004', area:'demostraciones', difficulty:3, provisionalRating:1300, title:'Una prueba por contraposición', prompt:'Demuestra: si n² es impar, entonces n es impar (n entero).', steps:[
     {question:'¿Qué proposición contrapositiva debemos probar?',options:['Si n es par, n² es par','Si n es impar, n² es impar','Si n² es par, n es par'],correctIndex:0,notation:'Contrapositiva: n par ⇒ n² par.',explanation:'La proposición P⇒Q es equivalente a ¬Q⇒¬P.'},
-    {question:'Si n es par, ¿cómo lo representamos?',options:['n = 2k + 1 para algún k entero','n = 2k para algún k entero','n = k/2 para algún k entero'],correctIndex:1,notation:'n = 2k, con k ∈ ℤ.',explanation:'Esta es la definición de entero par.'},
+    {question:'¿Qué representación expresa que n es par?',options:['n = 2k + 1 para algún k entero','n = 2k para algún k entero','n = k/2 para algún k impar'],correctIndex:1,notation:'n = 2k, con k ∈ ℤ.',explanation:'Esta es la definición de entero par.'},
     {question:'¿Cómo se expresa n² a partir de n = 2k?',options:['n² = 2k²','n² = 4k² = 2(2k²)','n² = 4k + 2'],correctIndex:1,notation:'n² = 4k² = 2(2k²).',explanation:'Como 2k² es entero, n² es par.'},
     {question:'¿Qué conclusión es válida?',options:['La recíproca quedó demostrada','Probamos la contrapositiva y, por equivalencia, la proposición original','La prueba requiere suponer que n es positivo'],correctIndex:1,notation:'n² impar ⇒ n impar. ∎',explanation:'Hemos probado la contrapositiva sobre todos los enteros, sin requerir positividad.'}
   ]}
