@@ -59,6 +59,8 @@ license: GFDL-1.3-or-later
 
 Este tratado desarrolla el análisis matemático desde fundamentos explícitos y construye progresivamente los sistemas numéricos que el análisis utiliza. La edición web se publica por etapas: cada parte se incorpora cuando ha superado su revisión matemática y editorial.
 
+[**Descargar el volumen I en PDF (edición A5)**](tratado-de-analisis-volumen-i.pdf){download="tratado-de-analisis-volumen-i.pdf"}
+
 ## Prefacio
 
 Este tratado nace de una intención sencilla de formular, aunque exigente de llevar a cabo: **desarrollar el análisis matemático desde fundamentos explícitos, con todo el rigor necesario, sin renunciar por ello a la claridad, la continuidad del pensamiento y el placer de comprender**.
