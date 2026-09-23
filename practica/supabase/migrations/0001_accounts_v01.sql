@@ -12,19 +12,43 @@ create table if not exists public.user_ratings (
   primary key (user_id, area)
 );
 
+-- Esta tabla es, ante todo, el conjunto canónico de IDs que ya puntuaron.
+-- Las columnas del movimiento Elo son obligatorias para eventos en vivo y
+-- permanecen nulas para IDs importados desde el MVP local sin recalcularlos.
 create table if not exists public.rated_exercises (
   user_id uuid not null references auth.users(id) on delete cascade,
   exercise_id text not null check (char_length(exercise_id) between 1 and 128),
-  area text not null check (char_length(area) between 1 and 64),
-  exercise_rating integer not null check (exercise_rating between 500 and 2500),
-  outcome smallint not null check (outcome in (0, 1)),
-  rating_before integer not null check (rating_before between 0 and 4000),
-  rating_after integer not null check (rating_after between 0 and 4000),
-  delta integer not null,
-  rating_policy text not null,
+  area text check (area is null or char_length(area) between 1 and 64),
+  exercise_rating integer check (exercise_rating is null or exercise_rating between 500 and 2500),
+  outcome smallint check (outcome is null or outcome in (0, 1)),
+  rating_before integer check (rating_before is null or rating_before between 0 and 4000),
+  rating_after integer check (rating_after is null or rating_after between 0 and 4000),
+  delta integer,
+  rating_policy text not null check (char_length(rating_policy) between 1 and 64),
+  source text not null default 'live' check (source in ('live', 'local-import-v01')),
   created_at timestamptz not null default now(),
   primary key (user_id, exercise_id),
-  check (rating_after - rating_before = delta)
+  check (
+    (
+      source = 'live'
+      and area is not null
+      and exercise_rating is not null
+      and outcome is not null
+      and rating_before is not null
+      and rating_after is not null
+      and delta is not null
+      and rating_after - rating_before = delta
+    )
+    or
+    (
+      source = 'local-import-v01'
+      and exercise_rating is null
+      and outcome is null
+      and rating_before is null
+      and rating_after is null
+      and delta is null
+    )
+  )
 );
 
 create table if not exists public.practice_sessions (
@@ -49,41 +73,39 @@ drop policy if exists user_ratings_select_own on public.user_ratings;
 create policy user_ratings_select_own
   on public.user_ratings for select
   to authenticated
-  using (user_id = auth.uid());
+  using ((select auth.uid()) = user_id);
 
 drop policy if exists rated_exercises_select_own on public.rated_exercises;
 create policy rated_exercises_select_own
   on public.rated_exercises for select
   to authenticated
-  using (user_id = auth.uid());
+  using ((select auth.uid()) = user_id);
 
 drop policy if exists practice_sessions_select_own on public.practice_sessions;
 create policy practice_sessions_select_own
   on public.practice_sessions for select
   to authenticated
-  using (user_id = auth.uid());
+  using ((select auth.uid()) = user_id);
 
 drop policy if exists practice_sessions_insert_own on public.practice_sessions;
 create policy practice_sessions_insert_own
   on public.practice_sessions for insert
   to authenticated
-  with check (user_id = auth.uid());
+  with check ((select auth.uid()) = user_id);
 
 drop policy if exists practice_sessions_delete_own on public.practice_sessions;
 create policy practice_sessions_delete_own
   on public.practice_sessions for delete
   to authenticated
-  using (user_id = auth.uid());
+  using ((select auth.uid()) = user_id);
 
-revoke all on public.user_ratings from anon;
-revoke all on public.rated_exercises from anon;
-revoke all on public.practice_sessions from anon;
+revoke all on table public.user_ratings from anon, authenticated;
+revoke all on table public.rated_exercises from anon, authenticated;
+revoke all on table public.practice_sessions from anon, authenticated;
 
-revoke insert, update, delete on public.user_ratings from authenticated;
-revoke insert, update, delete on public.rated_exercises from authenticated;
-grant select on public.user_ratings to authenticated;
-grant select on public.rated_exercises to authenticated;
-grant select, insert, delete on public.practice_sessions to authenticated;
+grant select on table public.user_ratings to authenticated;
+grant select on table public.rated_exercises to authenticated;
+grant select, insert, delete on table public.practice_sessions to authenticated;
 
 create or replace function public.ma_record_rated_exercise(
   p_exercise_id text,
@@ -160,10 +182,10 @@ begin
 
   insert into public.rated_exercises (
     user_id, exercise_id, area, exercise_rating, outcome,
-    rating_before, rating_after, delta, rating_policy
+    rating_before, rating_after, delta, rating_policy, source
   ) values (
     v_user, p_exercise_id, p_area, p_exercise_rating, p_outcome,
-    v_before, v_after, v_delta, p_rating_policy
+    v_before, v_after, v_delta, p_rating_policy, 'live'
   );
 
   update public.user_ratings
@@ -179,3 +201,111 @@ grant execute on function public.ma_record_rated_exercise(text, text, integer, s
 
 comment on function public.ma_record_rated_exercise(text, text, integer, smallint, text)
   is 'MA-Práctica v0.1: one atomic Elo event per authenticated user and exercise.';
+
+-- Importación única del progreso local. Solo admite una identidad remota vacía.
+-- Conserva ratings e IDs puntuados; nunca recrea movimientos Elo históricos.
+create or replace function public.ma_import_local_progress(p_snapshot jsonb)
+returns table (
+  imported_ratings integer,
+  imported_rated_ids integer,
+  imported_sessions integer
+)
+language plpgsql
+security definer
+set search_path = pg_catalog, public
+as $$
+declare
+  v_user uuid := auth.uid();
+  v_key text;
+  v_value jsonb;
+  v_id jsonb;
+  v_record jsonb;
+  v_ratings_count integer := 0;
+  v_ids_count integer := 0;
+  v_sessions_count integer := 0;
+  v_finished_at timestamptz;
+begin
+  if v_user is null then
+    raise exception 'authentication required';
+  end if;
+  if p_snapshot is null or jsonb_typeof(p_snapshot) <> 'object' then
+    raise exception 'invalid snapshot';
+  end if;
+  if coalesce((p_snapshot ->> 'version')::integer, -1) <> 1 then
+    raise exception 'unsupported snapshot version';
+  end if;
+  if exists (select 1 from public.user_ratings where user_id = v_user)
+     or exists (select 1 from public.rated_exercises where user_id = v_user)
+     or exists (select 1 from public.practice_sessions where user_id = v_user) then
+    raise exception 'remote progress is not empty';
+  end if;
+
+  if jsonb_typeof(p_snapshot -> 'ratings') = 'object' then
+    for v_key, v_value in select key, value from jsonb_each(p_snapshot -> 'ratings')
+    loop
+      if v_key not in ('aritmetica', 'algebra', 'calculo', 'demostraciones')
+         or jsonb_typeof(v_value) <> 'number'
+         or (v_value #>> '{}')::numeric <> trunc((v_value #>> '{}')::numeric)
+         or (v_value #>> '{}')::integer not between 0 and 4000 then
+        raise exception 'invalid imported rating';
+      end if;
+      insert into public.user_ratings (user_id, area, rating)
+      values (v_user, v_key, (v_value #>> '{}')::integer);
+      v_ratings_count := v_ratings_count + 1;
+    end loop;
+  end if;
+
+  if jsonb_typeof(p_snapshot -> 'ratedIds') = 'array' then
+    for v_id in select value from jsonb_array_elements(p_snapshot -> 'ratedIds')
+    loop
+      if jsonb_typeof(v_id) <> 'string'
+         or length(v_id #>> '{}') not between 1 and 128 then
+        raise exception 'invalid imported exercise id';
+      end if;
+      insert into public.rated_exercises (
+        user_id, exercise_id, area, rating_policy, source
+      ) values (
+        v_user, v_id #>> '{}', null, 'imported-local-v01', 'local-import-v01'
+      );
+      v_ids_count := v_ids_count + 1;
+    end loop;
+  end if;
+
+  if jsonb_typeof(p_snapshot -> 'history') = 'array' then
+    for v_record in select value from jsonb_array_elements(p_snapshot -> 'history')
+    loop
+      if jsonb_typeof(v_record) <> 'object'
+         or coalesce(v_record ->> 'id', '') = ''
+         or (v_record ->> 'mode') not in ('training', 'challenge')
+         or coalesce(v_record ->> 'area', '') = '' then
+        raise exception 'invalid imported history record';
+      end if;
+      begin
+        v_finished_at := nullif(v_record ->> 'finishedAt', '')::timestamptz;
+      exception when others then
+        v_finished_at := null;
+      end;
+
+      insert into public.practice_sessions (
+        user_id, exercise_id, area, mode, payload, finished_at
+      ) values (
+        v_user,
+        v_record ->> 'id',
+        v_record ->> 'area',
+        v_record ->> 'mode',
+        v_record,
+        v_finished_at
+      );
+      v_sessions_count := v_sessions_count + 1;
+    end loop;
+  end if;
+
+  return query select v_ratings_count, v_ids_count, v_sessions_count;
+end;
+$$;
+
+revoke all on function public.ma_import_local_progress(jsonb) from public;
+grant execute on function public.ma_import_local_progress(jsonb) to authenticated;
+
+comment on function public.ma_import_local_progress(jsonb)
+  is 'MA-Práctica v0.1: one-time import into an empty remote account; does not recalculate historical Elo.';
