@@ -12,8 +12,8 @@ Fecha: 2026-09-23. Rama: `feature/ma-practica-v0.1`. PR: [#168](https://github.c
 
 ## 2. Dependencias, integridad y licencias
 
-- `practica/package.json` fija `mathjax: 4.0.0` y restringe `@mathjax/mathjax-newcm-font` a 4.0.0 mediante `overrides`. La CI instala con `--ignore-scripts --no-package-lock`; el script de preparación comprueba que el paquete sea exactamente `mathjax@4.0.0` y declare licencia `Apache-2.0`.
-- Se copia la distribución completa de MathJax a `practica/vendor/mathjax/`, incluida su `LICENSE`, de modo que las cargas dinámicas de componentes usen rutas del mismo origen. `vendor/README.md` documenta procedencia, comando reproducible y naturaleza generada del directorio.
+- `practica/package.json` fija `mathjax: 4.0.0` y `@mathjax/mathjax-newcm-font: 4.0.0`, reforzando esta última versión mediante `overrides`. La CI instala con `--ignore-scripts --no-package-lock`; el script de preparación comprueba que el paquete sea exactamente `mathjax@4.0.0` y declare licencia `Apache-2.0`.
+- Se copian MathJax y `@mathjax/mathjax-newcm-font` a `practica/vendor/`. MathJax aporta su `LICENSE`; el paquete npm NewCM 4.0.0 declara Apache-2.0 pero no incluye ese archivo, por lo que el paso reproducible añade al artefacto una copia íntegra del texto Apache-2.0 incluido en MathJax 4.0.0. `vendor/README.md` documenta procedencia, comandos y naturaleza generada.
 - **Defecto de reserva ya corregido:** si MathJax no está disponible o falla al componer, `math-dom.mjs` muestra `mcd` y `⇔` en lugar de las macros TeX `\gcd` y `\iff`. Las pruebas cubren las diez fichas de Álgebra.
 - El código original de MA-Práctica se distribuye como **GPL-3.0-or-later**. `LICENSE` y `practica/LICENSE.md` lo declaran, y `COPYING.GPL` contiene el texto íntegro de GNU GPLv3. Los textos educativos originales mantienen GFDL-1.3-or-later. MathJax mantiene Apache-2.0 y no se relicencia por la GPL del código propio.
 - La procedencia documentada del banco v0.2 aprobado es diseño original, sin importaciones de libros privados. Esto no constituye una comparación exhaustiva con toda obra existente.
