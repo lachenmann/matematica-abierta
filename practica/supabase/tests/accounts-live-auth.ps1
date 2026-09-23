@@ -31,6 +31,14 @@ function Invoke-MARequest {
     Invoke-RestMethod @args
 }
 
+function ConvertTo-MAItems {
+    param($Value)
+    if ($null -eq $Value) { return }
+    # Windows PowerShell 5.1 puede emitir un array JSON de Invoke-RestMethod
+    # como un único Object[]. Write-Output fuerza la enumeración real.
+    $Value | Write-Output
+}
+
 function New-AnonymousUser {
     param([string]$Label)
     $auth = Invoke-MARequest -Method POST -Path '/auth/v1/signup' -Body @{
@@ -45,21 +53,31 @@ function New-AnonymousUser {
 $u1 = New-AnonymousUser 'u1'
 $u2 = New-AnonymousUser 'u2'
 
-$first = @(Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_record_rated_exercise' -Token $u1.access_token -Body @{
-    p_exercise_id = 'MAP-DEMO-005'
-    p_area = 'algebra'
-    p_exercise_rating = 1200
-    p_outcome = 1
-    p_rating_policy = 'first-attempt-v03'
-})[0]
+$u1Identity = Invoke-MARequest -Method GET -Path '/auth/v1/user' -Token $u1.access_token
+$u2Identity = Invoke-MARequest -Method GET -Path '/auth/v1/user' -Token $u2.access_token
 
-$duplicate = @(Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_record_rated_exercise' -Token $u1.access_token -Body @{
+if ($u1Identity.id -ne $u1.user.id -or $u2Identity.id -ne $u2.user.id) {
+    throw 'Auth token identity does not match the user returned at anonymous sign-in.'
+}
+if ($u1Identity.id -eq $u2Identity.id) {
+    throw 'Anonymous sign-in returned the same user twice.'
+}
+
+$first = @(ConvertTo-MAItems (Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_record_rated_exercise' -Token $u1.access_token -Body @{
     p_exercise_id = 'MAP-DEMO-005'
     p_area = 'algebra'
     p_exercise_rating = 1200
     p_outcome = 1
     p_rating_policy = 'first-attempt-v03'
-})[0]
+}))[0]
+
+$duplicate = @(ConvertTo-MAItems (Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_record_rated_exercise' -Token $u1.access_token -Body @{
+    p_exercise_id = 'MAP-DEMO-005'
+    p_area = 'algebra'
+    p_exercise_rating = 1200
+    p_outcome = 1
+    p_rating_policy = 'first-attempt-v03'
+}))[0]
 
 if ($first.applied -ne $true -or $first.rating_after -ne 1212) {
     throw 'First Elo event did not produce the expected server result.'
@@ -87,15 +105,15 @@ Invoke-MARequest -Method POST -Path '/rest/v1/practice_sessions' -Token $u1.acce
     finished_at = $finished
 } | Out-Null
 
-$u2BeforeRatings = @(Invoke-MARequest -Method GET -Path '/rest/v1/user_ratings?select=area,rating' -Token $u2.access_token)
-$u2BeforeRated = @(Invoke-MARequest -Method GET -Path '/rest/v1/rated_exercises?select=exercise_id' -Token $u2.access_token)
-$u2BeforeSessions = @(Invoke-MARequest -Method GET -Path '/rest/v1/practice_sessions?select=id' -Token $u2.access_token)
+$u2BeforeRatings = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/user_ratings?select=area,rating' -Token $u2.access_token))
+$u2BeforeRated = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/rated_exercises?select=exercise_id' -Token $u2.access_token))
+$u2BeforeSessions = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/practice_sessions?select=id' -Token $u2.access_token))
 
 if ($u2BeforeRatings.Count -ne 0 -or $u2BeforeRated.Count -ne 0 -or $u2BeforeSessions.Count -ne 0) {
-    throw 'RLS leak: U2 can see U1 data.'
+    throw "RLS leak: U2 sees ratings=$($u2BeforeRatings.Count), rated=$($u2BeforeRated.Count), sessions=$($u2BeforeSessions.Count)."
 }
 
-$import = @(Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_import_local_progress' -Token $u2.access_token -Body @{
+$import = @(ConvertTo-MAItems (Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_import_local_progress' -Token $u2.access_token -Body @{
     p_snapshot = @{
         version = 1
         createdAt = (Get-Date).ToUniversalTime().ToString('o')
@@ -103,15 +121,15 @@ $import = @(Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_import_local_pr
         ratedIds = @('MAP-DEMO-006')
         history = @()
     }
-})[0]
+}))[0]
 
-$u2Elo = @(Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_record_rated_exercise' -Token $u2.access_token -Body @{
+$u2Elo = @(ConvertTo-MAItems (Invoke-MARequest -Method POST -Path '/rest/v1/rpc/ma_record_rated_exercise' -Token $u2.access_token -Body @{
     p_exercise_id = 'MAP-DEMO-005'
     p_area = 'algebra'
     p_exercise_rating = 1200
     p_outcome = 0
     p_rating_policy = 'first-attempt-v03'
-})[0]
+}))[0]
 
 $crossWriteRejected = $false
 try {
@@ -127,10 +145,10 @@ try {
 }
 if (-not $crossWriteRejected) { throw 'RLS allowed a cross-user write.' }
 
-$u1Ratings = @(Invoke-MARequest -Method GET -Path '/rest/v1/user_ratings?select=area,rating' -Token $u1.access_token)
-$u1Rated = @(Invoke-MARequest -Method GET -Path '/rest/v1/rated_exercises?select=exercise_id' -Token $u1.access_token)
-$u2Ratings = @(Invoke-MARequest -Method GET -Path '/rest/v1/user_ratings?select=area,rating' -Token $u2.access_token)
-$u2Rated = @(Invoke-MARequest -Method GET -Path '/rest/v1/rated_exercises?select=exercise_id&order=exercise_id' -Token $u2.access_token)
+$u1Ratings = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/user_ratings?select=area,rating' -Token $u1.access_token))
+$u1Rated = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/rated_exercises?select=exercise_id' -Token $u1.access_token))
+$u2Ratings = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/user_ratings?select=area,rating' -Token $u2.access_token))
+$u2Rated = @(ConvertTo-MAItems (Invoke-MARequest -Method GET -Path '/rest/v1/rated_exercises?select=exercise_id&order=exercise_id' -Token $u2.access_token))
 
 if ($u1Ratings.Count -ne 1 -or $u1Ratings[0].rating -ne 1212 -or $u1Rated.Count -ne 1) {
     throw 'U1 final state is inconsistent.'
