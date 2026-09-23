@@ -138,9 +138,26 @@ MA-Accounts v0.1 se considera implementado cuando:
 
 **Inicio:** 23-09-2026.
 
-La abstracción local, `AccountProgressStore`, autenticación anónima/vinculación de correo, snapshot de importación y migración SQL/RLS están preparados en la rama de MA-Práctica. La migración incluye importación única sobre una cuenta remota vacía y serialización por usuario para evitar carreras entre dispositivos. La siguiente tarea es conectar un proyecto Supabase real, revisar/aplicar la migración y ejecutar QA de integración, trabajando desde `D:\\MA-Practica`.
+La abstracción local, `AccountProgressStore`, autenticación anónima/vinculación de correo, snapshot de importación y migraciones SQL/RLS están implementados. El proyecto remoto `ma-practica-dev` ya recibió `accounts_v01` y `accounts_rpc_hardening`. La prueba de base de datos con dos identidades autenticadas simuladas pasó: aislamiento RLS, bloqueo de doble puntuación, importación única y rechazo de escritura cruzada. Queda pendiente la prueba de Auth real con dos `signInAnonymously()` desde cliente y, después, la integración controlada del botón «Guardar mi progreso».
 
 
 ## 11. Ubicación canónica
 
 MA-Accounts se implementa íntegramente dentro de `D:\\MA-Practica\practica`. Esta especificación vive en `practica/design/`; SQL, adaptadores y pruebas viven junto al código. Obsidian/Drive no es fuente de implementación para esta fase.
+
+
+## 12. QA remoto de desarrollo
+
+El 23-09-2026 se verificó en `ma-practica-dev` que:
+
+- las tres tablas tienen RLS activo;
+- `anon` y `PUBLIC` no pueden ejecutar las RPC de Elo/importación;
+- `authenticated` sí puede ejecutarlas;
+- un ejercicio puntúa una sola vez por usuario;
+- dos usuarios distintos pueden puntuar el mismo ejercicio de forma independiente;
+- un usuario no ve filas del otro bajo RLS;
+- una escritura cruzada de `practice_sessions` es rechazada;
+- la importación local solo se admite sobre un remoto vacío;
+- los datos de prueba fueron eliminados al finalizar.
+
+La regresión reproducible vive en `practica/supabase/tests/0001_accounts_rls.sql`. La prueba de Auth real vive en `practica/supabase/tests/accounts-live-auth.ps1` y requiere URL de proyecto + clave publicable como parámetros locales; ninguna clave se versiona en Git.
