@@ -135,6 +135,7 @@ begin
   if v_user is null then
     raise exception 'authentication required';
   end if;
+  perform pg_advisory_xact_lock(hashtextextended(v_user::text, 0));
   if p_exercise_id is null or char_length(p_exercise_id) not between 1 and 128 then
     raise exception 'invalid exercise id';
   end if;
@@ -228,6 +229,7 @@ begin
   if v_user is null then
     raise exception 'authentication required';
   end if;
+  perform pg_advisory_xact_lock(hashtextextended(v_user::text, 0));
   if p_snapshot is null or jsonb_typeof(p_snapshot) <> 'object' then
     raise exception 'invalid snapshot';
   end if;
