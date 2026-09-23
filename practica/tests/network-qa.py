@@ -1,50 +1,46 @@
-"""Auditoría observable del tráfico del prototipo; no sustituye revisión de privacidad del proveedor.
-Ejecutar con servidor local en 127.0.0.1:8765 y Playwright + Chromium.
-"""
+"""Auditoría observable del tráfico del prototipo con MathJax servido por el mismo origen."""
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright
 
 BASE = 'http://127.0.0.1:8765/practica/index.html'
-EXPECTED = {'127.0.0.1', 'cdn.jsdelivr.net'}
-MATHJAX = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-chtml.js'
+MATHJAX = 'http://127.0.0.1:8765/practica/vendor/mathjax/tex-chtml.js'
 
 
 def audit(browser):
     context = browser.new_context(viewport={'width': 320, 'height': 850}, locale='es-CL')
     page = context.new_page()
-    outbound = []
     requests = []
     try:
         def record(request):
             parsed = urlparse(request.url)
-            if parsed.scheme not in ('http', 'https'):
-                return
-            requests.append(request)
-            if parsed.hostname not in EXPECTED:
-                outbound.append(request.url)
+            if parsed.scheme in ('http', 'https'):
+                requests.append(request)
+
         page.on('request', record)
         page.goto(BASE, wait_until='load', timeout=60000)
         page.locator('#prompt mjx-container').first.wait_for(timeout=45000)
-        assert page.locator('.privacy-disclosure').is_visible(), 'Falta aviso de privacidad visible'
-        assert 'datos técnicos de conexión' in page.locator('.privacy-disclosure').inner_text()
-        link = page.locator('.privacy-disclosure a')
-        assert link.get_attribute('href') == 'https://www.jsdelivr.com/terms/privacy-policy'
-        assert link.get_attribute('target') == '_blank'
-        assert {'noopener', 'noreferrer'} <= set(link.get_attribute('rel').split())
+
+        disclosure = page.locator('.privacy-disclosure')
+        assert disclosure.is_visible(), 'Falta aviso de privacidad visible'
+        text = disclosure.inner_text()
+        assert 'no los transmite' in text
+        assert 'misma copia de la aplicación' in text
+        assert 'CDN' in text
+
         page.locator('#question input[name="answer"]').first.check()
         page.locator('#submit').click()
         page.locator('#history-toggle').click()
         assert page.locator('#history-panel').is_visible()
-        assert not outbound, f'Solicitudes a dominios no inventariados: {outbound}'
-        external = [request for request in requests if urlparse(request.url).hostname != '127.0.0.1']
-        assert external and any(request.url == MATHJAX for request in external), 'No se observó el recurso CDN declarado'
-        assert all(request.method == 'GET' for request in external), 'Hubo envíos no GET a proveedor externo'
+
+        assert any(request.url == MATHJAX for request in requests), 'No se observó el MathJax local preparado'
+        external = [request.url for request in requests
+                    if urlparse(request.url).hostname != '127.0.0.1']
+        assert not external, f'La aplicación realizó solicitudes HTTP(S) externas: {external}'
         assert all('MAP-DEMO-' not in request.url and 'ma-practica-demo-v01' not in request.url
-                   for request in external), 'Un recurso externo contiene datos del ejercicio o almacenamiento en URL'
-        initial = next(request for request in external if request.url == MATHJAX)
-        assert not initial.all_headers().get('referer'), 'El script inicial filtra la URL referente'
+                   for request in requests), 'Una URL contiene datos del ejercicio o del almacenamiento'
+
         hosts = sorted({urlparse(request.url).hostname for request in requests})
-        print(f'PASS tráfico Chromium: {len(requests)} solicitudes HTTP(S), hosts={hosts}; jsDelivr GET y sin referente inicial')
+        print(f'PASS tráfico Chromium: {len(requests)} solicitudes HTTP(S), hosts={hosts}; sin tráfico externo')
     finally:
         context.close()
 
