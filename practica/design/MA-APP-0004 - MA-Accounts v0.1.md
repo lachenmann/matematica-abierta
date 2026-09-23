@@ -162,3 +162,24 @@ El 23-09-2026 se verificó en `ma-practica-dev` que:
 - el probe live de Auth real pasó con `Status: PASS`, `U1FirstApplied=True`, `U1DuplicateApplied=False`, `U1Rating=1212`, `U2Rating=1317` y `CrossUserWriteRejected=True`.
 
 La regresión reproducible vive en `practica/supabase/tests/0001_accounts_rls.sql`. La prueba de Auth real vive en `practica/supabase/tests/accounts-live-auth.ps1` y requiere URL de proyecto + clave publicable como parámetros locales; ninguna clave se versiona en Git.
+
+
+## 13. Integración de interfaz opt-in
+
+El control «Guardar mi progreso» ya está integrado en la rama de desarrollo. La implementación:
+
+- conserva el modo local como estado inicial;
+- no carga configuración remota ni inicia tráfico Supabase mientras no exista una sesión sincronizada previa o el usuario pulse el control;
+- crea una identidad anónima al activar la sincronización;
+- importa explícitamente el progreso local mediante la RPC canónica;
+- reanuda una sesión remota existente desde el mismo navegador;
+- usa el backend como autoridad del Elo para nuevas sesiones sincronizadas;
+- mantiene una copia local de apoyo;
+- cambia el aviso de privacidad para distinguir modo local y modo sincronizado;
+- mantiene la configuración de desarrollo en `supabase-config.local.mjs`, ignorado por Git.
+
+La integración usa un cliente web mínimo, sin dependencias CDN, que implementa el subconjunto requerido de Auth, Data API y RPC y renueva el access token mediante refresh token.
+
+### Puerta pendiente de robustez
+
+La finalización sincronizada todavía encadena dos operaciones: RPC Elo y escritura de `practice_sessions`. Si la red cae entre ambas, la interfaz no inventa Elo local y conserva una copia de la sesión, pero la reconciliación automática/idempotente de ese caso aún no está cerrada. Antes de publicación debe convertirse la finalización en una operación atómica o idempotente de extremo a extremo y repetir QA offline.
