@@ -56,25 +56,37 @@ const item = {
   title: 'Prueba',
   area: 'algebra',
   provisionalRating: 1200,
-  steps: [{
-    question: 'q',
-    options: ['a', 'b'],
-    correctIndex: 0
-  }]
+  steps: [
+    { question: 'q1', options: ['a', 'b'], correctIndex: 0 },
+    { question: 'q2', options: ['c', 'd'], correctIndex: 1 }
+  ]
 };
 
 const session = {
+  id: 'MAP-DEMO-005',
   mode: 'challenge',
+  index: 2,
   completed: true,
-  trace: [{
-    ordinal: 1,
-    question: 'q',
-    notation: 'x',
-    explanation: 'e',
-    correct: true,
-    chosen: 'a',
-    expected: 'a'
-  }]
+  trace: [
+    {
+      ordinal: 1,
+      question: 'q1',
+      notation: 'x',
+      explanation: 'e1',
+      correct: true,
+      chosen: 'a',
+      expected: 'a'
+    },
+    {
+      ordinal: 2,
+      question: 'q2',
+      notation: 'y',
+      explanation: 'e2',
+      correct: true,
+      chosen: 'd',
+      expected: 'd'
+    }
+  ]
 };
 
 test('activar sincronización crea identidad anónima e importa explícitamente el local', async () => {
