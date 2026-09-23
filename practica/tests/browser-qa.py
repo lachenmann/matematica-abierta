@@ -22,6 +22,50 @@ TITLES = (
 )
 
 
+def contrast_ratio(page, foreground, background):
+    return page.evaluate("""([foreground, background]) => {
+      const channels = color => {
+        const hex = color.trim().match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+        const values = hex
+          ? (hex[1].length === 3 ? [...hex[1]].map(value => value + value) : hex[1].match(/../g))
+              .map(value => parseInt(value, 16))
+          : color.match(/[\\d.]+/g).slice(0, 3).map(Number);
+        return values
+        .map(value => value / 255)
+        .map(value => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4);
+      };
+      const luminance = color => {
+        const [r, g, b] = channels(color);
+        return .2126 * r + .7152 * g + .0722 * b;
+      };
+      const a = luminance(foreground), b = luminance(background);
+      return (Math.max(a, b) + .05) / (Math.min(a, b) + .05);
+    }""", [foreground, background])
+
+
+def is_focused(locator):
+    return locator.evaluate("element => element === document.activeElement")
+
+
+def audit_contrast(page, scheme):
+    page.emulate_media(color_scheme=scheme)
+    colors = page.evaluate("""() => {
+      const style = getComputedStyle(document.documentElement);
+      return Object.fromEntries(['--paper', '--ink', '--muted', '--brand', '--brand-ink',
+        '--good', '--bad', '--control-border', '--focus'].map(name => [name, style.getPropertyValue(name).trim()]));
+    }""")
+    for token in ('--ink', '--muted', '--brand', '--good', '--bad'):
+        ratio = contrast_ratio(page, colors[token], colors['--paper'])
+        assert ratio >= 4.5, f"{scheme} {token}: contraste de texto {ratio:.2f}:1"
+    primary = page.locator("#submit").evaluate("""element => {
+      const style = getComputedStyle(element);
+      return [style.color, style.backgroundColor];
+    }""")
+    assert contrast_ratio(page, primary[0], primary[1]) >= 4.5
+    assert contrast_ratio(page, colors['--control-border'], colors['--paper']) >= 3
+    assert contrast_ratio(page, colors['--focus'], colors['--paper']) >= 3
+
+
 def no_overflow(page, label):
     sizes = page.evaluate("""() => [innerWidth,
        document.documentElement.scrollWidth, document.body.scrollWidth]""")
@@ -130,6 +174,132 @@ def wrong_attempt(browser):
         ctx.close()
 
 
+def keyboard_and_semantics(browser):
+    ctx = browser.new_context(viewport={"width": 375, "height": 850}, locale="es-CL")
+    page = ctx.new_page()
+    try:
+        page.goto(BASE, wait_until="load", timeout=60000)
+        assert page.evaluate("document.activeElement.id") == "title"
+        page.keyboard.press("Shift+Tab")
+        assert is_focused(page.locator("#settings-panel > summary"))
+        page.keyboard.press("Enter")
+        page.keyboard.press("Tab")
+        assert page.evaluate("document.activeElement.id") == "area"
+        page.keyboard.press("ArrowDown")
+        page.keyboard.press("ArrowDown")
+        page.keyboard.press("Tab")
+        assert page.evaluate("document.activeElement.id") == "mode"
+        page.keyboard.press("ArrowDown")
+        assert page.locator("#title").inner_text() == "Resolver una ecuación"
+        assert page.evaluate("document.activeElement.id") == "title"
+        assert page.locator("#stepsbar").get_attribute("aria-valuetext") == "0 de 3 pasos completados"
+        assert page.locator("#question [role=radiogroup]").get_attribute("aria-labelledby") == "question-title"
+
+        page.keyboard.press("Tab")
+        assert is_focused(page.locator("#question input[name=answer]").first)
+        page.keyboard.press("Space")
+        page.keyboard.press("ArrowDown")
+        page.keyboard.press("ArrowUp")
+        page.keyboard.press("Tab")
+        assert is_focused(page.locator("#submit"))
+        page.keyboard.press("Enter")
+        assert page.evaluate("document.activeElement.id") == "question-title"
+        assert page.locator("#stepsbar").get_attribute("aria-valuetext") == "1 de 3 pasos completados"
+
+        page.locator("#trace button[data-step]").first.focus()
+        page.keyboard.press("Enter")
+        assert page.evaluate("document.activeElement.id") == "review-title"
+        page.locator("#review-return").focus()
+        page.keyboard.press("Space")
+        assert is_focused(page.locator("#trace button[data-step]").first)
+
+        # Error, reintento y corrección del segundo paso, solo con teclado.
+        page.locator("#question input[name=answer]").first.focus()
+        page.keyboard.press("ArrowDown")
+        page.keyboard.press("Tab")
+        page.keyboard.press("Enter")
+        assert page.locator("#retry").is_visible()
+        active_id = page.evaluate("document.activeElement.id")
+        assert active_id == "retry", f"foco tras error: {active_id}"
+        page.keyboard.press("Space")
+        assert is_focused(page.locator("#question input[name=answer]").first)
+        page.keyboard.press("Space")
+        page.keyboard.press("Tab")
+        page.keyboard.press("Enter")
+        assert page.evaluate("document.activeElement.id") == "question-title"
+
+        # Rendición del tercer paso y continuación desde el mensaje anunciado.
+        page.keyboard.press("Tab")
+        page.keyboard.press("Space")
+        page.keyboard.press("Tab")
+        page.keyboard.press("Enter")
+        active_id = page.evaluate("document.activeElement.id")
+        assert active_id == "retry", f"foco antes de rendirse: {active_id}"
+        page.keyboard.press("Tab")
+        assert page.evaluate("document.activeElement.id") == "give-up"
+        page.keyboard.press("Enter")
+        assert page.evaluate("document.activeElement.id") == "feedback"
+        assert page.locator("#feedback").get_attribute("role") == "status"
+        page.keyboard.press("Shift+Tab")
+        assert page.evaluate("document.activeElement.id") == "next"
+        page.keyboard.press("Enter")
+        assert page.locator("#another").is_visible()
+        assert page.evaluate("document.activeElement.id") == "question-title"
+
+        page.locator("#history-toggle").focus()
+        page.keyboard.press("Enter")
+        assert page.evaluate("document.activeElement.id") == "history-title"
+        page.locator("#history-toggle").focus()
+        page.keyboard.press("Space")
+        assert page.evaluate("document.activeElement.id") == "title"
+        audit_contrast(page, "light")
+        audit_contrast(page, "dark")
+        print("PASS teclado y semántica: Tab, Shift+Tab, Enter, espacio, flechas, foco y contraste")
+    finally:
+        ctx.close()
+
+
+def mathjax_failure_modes(browser):
+    # CDN bloqueado: la carga termina y el flujo esencial sigue operativo con texto de reserva.
+    blocked = browser.new_context(viewport={"width": 375, "height": 850}, locale="es-CL")
+    page = blocked.new_page()
+    page.route("**/mathjax@*/**", lambda route: route.abort())
+    try:
+        page.goto(BASE, wait_until="load", timeout=10000)
+        select_algebra(page)
+        assert page.locator("#prompt mjx-container").count() == 0
+        assert page.locator("#prompt").inner_text() == "Resuelve (x-1)/3+(x+2)/2=4."
+        page.locator("#question input[name=answer]").first.check()
+        page.locator("#submit").click()
+        assert page.locator("#trace button[data-step]").count() == 1
+        page.locator("#history-toggle").click()
+        assert page.locator("#history-panel").is_visible()
+    finally:
+        blocked.close()
+
+    # La biblioteca llega a iniciar, pero su composición rechaza la promesa.
+    failed = browser.new_context(viewport={"width": 375, "height": 850}, locale="es-CL")
+    page = failed.new_page()
+    stub = """Object.assign(window.MathJax, {
+      startup: { promise: Promise.resolve() }, typesetClear() {},
+      typesetPromise() { return Promise.reject(new Error('fallo simulado de MathJax')); }
+    });"""
+    page.route("**/mathjax@*/**", lambda route: route.fulfill(status=200,
+        content_type="application/javascript", body=stub))
+    try:
+        page.goto(BASE, wait_until="load", timeout=10000)
+        select_algebra(page)
+        page.wait_for_timeout(100)
+        assert page.locator("#prompt").inner_text() == "Resuelve (x-1)/3+(x+2)/2=4."
+        assert page.locator("#prompt").get_attribute("data-math-pending") == "true"
+        page.locator("#question input[name=answer]").first.check()
+        page.locator("#submit").click()
+        assert page.locator("#trace button[data-step]").count() == 1
+    finally:
+        failed.close()
+    print("PASS MathJax: CDN bloqueado y fallo posterior conservan texto y flujo esencial")
+
+
 if __name__ == "__main__":
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
@@ -137,6 +307,8 @@ if __name__ == "__main__":
             for width in (320, 375, 430, 1280):
                 viewport(browser, width)
             wrong_attempt(browser)
+            keyboard_and_semantics(browser)
+            mathjax_failure_modes(browser)
         finally:
             browser.close()
-    print("PASS: 40 recorridos íntegros y 128 decisiones en navegador real")
+    print("PASS: 40 recorridos y 128 decisiones; teclado completo; MathJax normal, bloqueado y fallido")

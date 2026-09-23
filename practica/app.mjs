@@ -218,6 +218,7 @@ function render() {
   });
   bar.setAttribute('aria-valuenow', String(session.trace.length));
   bar.setAttribute('aria-valuemax', String(active.steps.length));
+  bar.setAttribute('aria-valuetext', `${session.trace.length} de ${active.steps.length} pasos completados`);
   renderTrace();
   renderHistory();
   renderRating(saved, active.area);
@@ -241,6 +242,7 @@ function render() {
     const result = sessionResult(session, active);
     const resolved = session.trace.filter(move => move.correct || move.resolved === true).length;
     const heading = el('h3', 'Ejercicio terminado');
+    heading.id = 'question-title';
     heading.tabIndex = -1;
     target.append(heading);
     target.append(el('p', `${resolved}/${result.total} pasos resueltos; ${result.correct}/${result.total} aciertos al primer intento.`));
@@ -260,12 +262,13 @@ function render() {
   }
   const step = active.steps[session.index];
   const heading = mathElement('h3', step.question);
+  heading.id = 'question-title';
   heading.tabIndex = -1;
   target.append(heading);
   if (flow.status !== 'solution') {
     const group = document.createElement('div');
     group.setAttribute('role', 'radiogroup');
-    group.setAttribute('aria-label', step.question);
+    group.setAttribute('aria-labelledby', heading.id);
     step.options.forEach((option, index) => {
       const label = document.createElement('label');
       label.className = 'option' + (flow.attempts.includes(index) ? ' previous-attempt' : '');
@@ -344,9 +347,12 @@ $('mode').addEventListener('change', () => changeSetting('mode'));
 $('apply-settings').addEventListener('click', () => { if (settingsSelection.pending) newExercise(); });
 $('history-toggle').addEventListener('click', () => showHistory(!historyOpen));
 $('review-return').addEventListener('click', () => {
+  const returnStep = viewStep;
   viewStep = null;
   updateReview();
-  if (session.completed) $('another').focus();
+  const returnButton = returnStep === null ? null : $('trace').querySelector(`button[data-step="${returnStep}"]`);
+  if (returnButton) returnButton.focus();
+  else if (session.completed) $('another').focus();
   else if (flow.status === 'solution') $('next').focus();
   else if (flow.status === 'wrong') $('retry').focus();
   else if (!$('submit').disabled) $('submit').focus();

@@ -91,7 +91,7 @@ test('MathJax compone TeX editorial sin anidarlo dentro de otra fórmula',async(
     const sample={textContent:'',dataset:{},isConnected:true};
     const root={dataset:{},isConnected:true,querySelectorAll:()=>[sample]};
     setMath(sample,source);
-    assert.ok(sample.textContent.includes('frac'));
+    assert.equal(sample.textContent,'Resuelve (x-1)/3+(x+2)/2=4.');
     await typesetMath(root);
     assert.equal(sample.textContent,source);
     assert.equal(calls,1);

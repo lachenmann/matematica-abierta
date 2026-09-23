@@ -21,6 +21,47 @@ test('Sin MathJax externo el enunciado legible se conserva intacto', async () =>
   } finally { globalThis.window = previous; }
 });
 
+test('El texto de reserva traduce TeX editorial a una expresión comprensible', async () => {
+  const previous = globalThis.window;
+  globalThis.window = {};
+  try {
+    const sample = node();
+    setMath(sample, String.raw`Resuelve \(\frac{x+1}{x-3}=2\), con \(x\ne3\).`);
+    await typesetMath(root(sample));
+    assert.equal(sample.textContent, 'Resuelve (x+1)/(x-3)=2, con x≠3.');
+  } finally { globalThis.window = previous; }
+});
+
+test('Una caída de MathJax restaura el texto de reserva y permite reintentar', async () => {
+  const previous = globalThis.window;
+  let calls = 0;
+  globalThis.window = { MathJax: { startup: { promise: Promise.resolve() },
+    typesetClear: () => {}, typesetPromise: async () => { calls++; throw new Error('fallo simulado'); } } };
+  try {
+    const sample = node();
+    setMath(sample, String.raw`\(\frac{x-1}{3}=2\)`);
+    const container = root(sample);
+    await typesetMath(container);
+    assert.equal(sample.textContent, '(x-1)/3=2');
+    assert.equal(sample.dataset.mathPending, 'true');
+    await typesetMath(container);
+    assert.equal(calls, 2);
+  } finally { globalThis.window = previous; }
+});
+
+test('Una inicialización de MathJax suspendida vence y no bloquea renders posteriores', async () => {
+  const previous = globalThis.window;
+  globalThis.window = { MathJax: { startup: { promise: new Promise(() => {}) },
+    typesetClear: () => {}, typesetPromise: async () => {} } };
+  try {
+    const sample = node();
+    setMath(sample, String.raw`\(x\ne3\)`);
+    await typesetMath(root(sample), { timeoutMs: 10 });
+    assert.equal(sample.textContent, 'x≠3');
+    assert.equal(sample.dataset.mathPending, 'true');
+  } finally { globalThis.window = previous; }
+});
+
 test('Al cargar MathJax, compone la fórmula de una actualización dinámica una sola vez', async () => {
   const previous = globalThis.window;
   let calls = 0;
