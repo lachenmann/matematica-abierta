@@ -17,7 +17,7 @@ Abrir `http://localhost:8000/practica/` y actualizar con Ctrl+F5 si el servidor 
 
 - Acierto: avance inmediato con explicación del paso anterior. Fallo: elegir «Intentar de nuevo» (no revela solución) o «Rendirse y ver la solución» (espera pulsación para continuar). Siempre se conserva el primer intento.
 - Planilla revisable de solo lectura: muestra pasos, errores, reintentos y soluciones; la consulta bloquea temporalmente nuevas acciones hasta regresar al presente.
-- Historial local: hasta 20 sesiones, borrado manual, sin cuentas, sincronización ni ranking. Marcador personal por área con movimientos históricos separados de la variación de esta sesión.
+- Historial local: hasta 20 sesiones, borrado manual y marcador personal por área. **MA-Accounts v0.1 está en desarrollo**, pero todavía no existe autenticación ni sincronización activa en la interfaz publicada del prototipo.
 - Ajustes de área/modalidad: aplicar una opción explícitamente o elegir ambas. El ejercicio actual no se interrumpe hasta la confirmación.
 
 ## Banco actual y procedencia
@@ -30,12 +30,16 @@ Política `first-attempt-v03`: todos los primeros intentos correctos = éxito; u
 
 La incidencia original del usuario consistía en ver una resta después de acertar. Se comprobó que las claves de fracciones son `6`, `3/6 + 2/6`, `5/6` y que `eloUpdate` no descuenta con resultado correcto. Una posible confusión era ver el último movimiento histórico después de repetir un ejercicio; sin el registro inicial del navegador no se ha demostrado la causa de aquella resta. La interfaz distingue sesión actual e historial; `auditFirstAttempts` bloquea un cambio de Elo inconsistente. No se borran ni reparan automáticamente ratings anteriores.
 
-## MathJax, privacidad y licencias
+## MathJax, privacidad, cuentas y licencias
 
-`math-tex.mjs` convierte fragmentos conocidos del banco inicial; `math-dom.mjs` reconoce el TeX explícito de los problemas nuevos sin conversiones anidadas. MathJax 4.0.0 se descarga desde jsDelivr. Si falla, quedan representaciones textuales sin inyección HTML. Las elecciones, historial y Elo permanecen en `localStorage` del navegador; el CDN sí puede recibir datos técnicos de conexión, como explica el aviso visible de la página. Se ha fijado `referrerpolicy="no-referrer"` en el script inicial; esto no oculta la IP. La [política del proveedor](https://www.jsdelivr.com/terms/privacy-policy), su aptitud para menores y la opción de autoalojar MathJax requieren revisión antes de publicar. MathJax 4.0.0 declara licencia Apache-2.0. La licencia concreta del **código propio** debe fijarse explícitamente: `LICENSE` de la raíz solo dice que los scripts «podrán» distribuirse bajo GPLv3+; no convertir esa posibilidad en una concesión ya realizada.
+`math-tex.mjs` convierte fragmentos conocidos del banco inicial; `math-dom.mjs` reconoce el TeX explícito de los problemas nuevos sin conversiones anidadas. MathJax 4.0.0 y NewCM 4.0.0 se preparan localmente mediante `scripts/vendor-mathjax.mjs`; el QA de Chromium exige cero tráfico externo durante el uso del prototipo. Si MathJax falla, quedan representaciones textuales sin inyección HTML.
+
+El MVP operativo sigue guardando elecciones, historial y Elo en `localStorage`. La nueva capa `persistence-store.mjs` desacopla ese almacenamiento del resto de la aplicación y `account-sync.mjs` define snapshots de importación sin recalcular Elo histórico. `supabase/migrations/0001_accounts_v01.sql` prepara RLS y una RPC atómica para una futura identidad anónima/cuenta, pero **esa migración aún no se ha aplicado a ningún backend desde este repositorio** y la interfaz todavía no transmite progreso.
+
+Código original de MA-Práctica: GPL-3.0-or-later. Textos educativos originales: GFDL-1.3-or-later. MathJax/NewCM: Apache-2.0.
 
 ## QA y publicación
 
 Pruebas: `node --test practica/tests/*.test.mjs`. QA real: `python -u practica/tests/browser-qa.py` con servidor HTTP en `127.0.0.1:8765` y dependencias del workflow. Auditorías: [matemática/editorial](design/BANCO_ALGEBRA_LOTE01_AUDITORIA.md), [accesibilidad y robustez automatizadas](design/AUDITORIA-ACCESIBILIDAD-ROBUSTEZ-v01.md), [prepublicación](design/AUDITORIA_PREPUBLICACION_v01.md).
 
-El [PR #168](https://github.com/lachenmann/matematica-abierta/pull/168) sigue en borrador. No equivale a validación humana con lectores de pantalla o dispositivos físicos. Falta decidir dependencia/CDN y licencia del código, comprobar tráfico real, navegación en sitio renderizado, privacidad y accesibilidad humana y obtener autorización expresa para integrar públicamente. No fusionar ni publicar; no modificar `main`, `gh-pages` ni `_quarto.yml` desde este encargo.
+El [PR #168](https://github.com/lachenmann/matematica-abierta/pull/168) sigue en borrador. MathJax local, licencia GNU y tráfico sin dependencias externas ya cuentan con QA automatizado. Continúan pendientes la validación humana con lectores de pantalla/dispositivos físicos y, para MA-Accounts, conectar un proyecto Supabase, revisar/aplicar la migración RLS y hacer QA de sincronización antes de cualquier integración pública. No fusionar ni publicar; no modificar `main`, `gh-pages` ni `_quarto.yml` sin autorización expresa.
