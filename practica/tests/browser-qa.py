@@ -32,8 +32,9 @@ def math_ready(page, label):
     page.wait_for_function("""() => window.MathJax &&
       typeof MathJax.typesetPromise === 'function' &&
       !document.querySelector('#workspace [data-math-pending="true"]')""", timeout=45000)
-    page.locator("#prompt mjx-container").wait_for(timeout=25000)
-    assert page.locator("#prompt mjx-math").count(), f"{label}: MathJax no compuso el enunciado"
+    # Un enunciado puede contener varias ecuaciones (p. ej. un sistema 2x2).
+    page.locator("#prompt mjx-container").first.wait_for(timeout=25000)
+    assert page.locator("#prompt mjx-math").count() >= 1, f"{label}: MathJax no compuso el enunciado"
 
 
 def select_algebra(page, challenge=False):
@@ -63,6 +64,7 @@ def solve(page, exercise_id, keys, width):
         no_overflow(page, f"{width} {exercise_id} paso {i+1}")
     assert page.locator("#another").is_visible()
     assert "aciertos al primer intento" in page.locator("#question").inner_text()
+    # Clic físico en el centro de la fila, frecuentemente ocupado por una fórmula MathJax.
     page.locator("#trace button[data-step]").first.click()
     assert page.locator("#review").is_visible()
     assert "Primera elección" in page.locator("#review-choice").inner_text()
