@@ -64,7 +64,10 @@ La CI instala Playwright 1.55.0 y Chromium mediante el workflow específico `.gi
 
 ## Commits y CI
 
-Los enlaces al commit final y a las ejecuciones de GitHub Actions se incorporan al cerrar la verificación remota de este mismo informe.
+- Implementación auditada: [`671cace`](https://github.com/lachenmann/matematica-abierta/commit/671cacee5bee3af959a3f467ff4c97d24be19e08).
+- [Motor, matemática y sintaxis #100](https://github.com/lachenmann/matematica-abierta/actions/runs/35804259305): **aprobado**.
+- [QA real de navegador #10](https://github.com/lachenmann/matematica-abierta/actions/runs/35804259311): **aprobado**.
+- [Quarto Check #458](https://github.com/lachenmann/matematica-abierta/actions/runs/35804259304): **aprobado**, incluido el control que impide publicar accidentalmente `practica/`.
 
 ## Pendientes y limitaciones
 
