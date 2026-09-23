@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { resolve, dirname } from 'node:path';
+import { resolve } from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const html = readFileSync(resolve(root, 'index.html'), 'utf8');
@@ -16,12 +16,15 @@ test('Aviso visible distingue progreso local de conexiones técnicas al CDN', ()
   assert.match(html, /mathjax@4\.0\.0\/tex-chtml\.js" referrerpolicy="no-referrer"/);
 });
 
-test('Rutas estáticas del prototipo resuelven a archivos del repositorio', () => {
+test('Rutas estáticas resuelven y la portada es un derivado de Quarto', () => {
   for (const [, localPath] of html.matchAll(/(?:href|src)="([^."#:][^"#]*|\.{1,2}\/[^"#]*)"/g)) {
     if (/^(?:https?:|data:|mailto:)/.test(localPath)) continue;
+    if (localPath === '../index.html') {
+      assert.ok(existsSync(resolve(root, '../index.qmd')), 'Falta la fuente de la portada que Quarto renderiza como index.html');
+      continue;
+    }
     assert.ok(existsSync(resolve(root, localPath)), `Recurso local ausente: ${localPath}`);
   }
-  assert.ok(existsSync(resolve(root, '../index.qmd')), 'La portada canónica del sitio debe existir');
 });
 
 test('Los módulos de la aplicación no contienen llamadas explícitas de red', () => {
