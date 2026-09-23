@@ -1,14 +1,14 @@
 import { EXERCISES } from './exercises.mjs';
 import { startSession, sessionResult, INITIAL_RATING } from './engine.mjs';
 import { startFlow, answerFlow, retryFlow, surrenderFlow, continueFlow, partialFlowSession } from './attempt-flow.mjs';
-import { emptyProgress, archivePartial, finishProgress, buildSessionRecord, HISTORY_LIMIT } from './progress.mjs';
+import { emptyProgress, archivePartial, finishProgress, buildSessionRecord } from './progress.mjs';
 import { createLocalProgressStore } from './persistence-store.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
 import { renderRating } from './rating-panel.mjs';
 import { setMath, mathElement, clearMath, typesetMath } from './math-dom.mjs';
 import { createSettingsSelection } from './settings-selection.mjs';
-import { createBrowserSupabaseClient, hasStoredAccountSession } from './supabase-browser-client.mjs';
-import { activateAccountSync, resumeAccountSync, finishAccountSession } from './account-runtime.mjs';
+import { createBrowserSupabaseClient } from './supabase-browser-client.mjs';
+import { AccountCoordinator } from './account-coordinator.mjs';
 
 const $ = id => document.getElementById(id);
 const el = (tag, text, className = '') => {
@@ -23,111 +23,72 @@ try { storage = window.localStorage; } catch { /* El navegador puede bloquear el
 const progressStore = createLocalProgressStore(storage);
 let { progress: saved, persistent } = progressStore.load();
 let accountClient = null;
-let accountStore = null;
-let accountIdentity = null;
-let accountBusy = false;
-let accountError = null;
 let active;
 let flow;
 let session;
+let clientSessionId = null;
 let selected = null;
 let cursor = -1;
-let viewStep = null; // Solo presentación: nunca forma parte de la sesión ni del Elo.
+let viewStep = null;
 let historyOpen = false;
 const settingsSelection = createSettingsSelection();
 let committedArea = $('area').value;
+const account = new AccountCoordinator({
+  storage, loadClient: loadAccountClient, getProgress: () => saved,
+  acceptProgress: progress => { saved = progress; save(); },
+  onChange: () => {
+    renderAccountState();
+    storageNotice();
+    if (!active) return;
+    renderRating(saved, active.area);
+    renderHistory();
+    // Una respuesta de red no reconstruye ni roba el foco del paso en curso.
+    if (session?.completed) {
+      const focusId = document.activeElement?.id;
+      render();
+      if (focusId) $(focusId)?.focus({ preventScroll: true });
+    }
+  }
+});
 
 function renderAccountState() {
+  const state = account.state();
   const card = $('account-card');
   const button = $('account-save');
-  if (accountStore && accountIdentity) {
-    card.dataset.state = accountError ? 'error' : 'synced';
-    $('account-badge').textContent = accountIdentity.state === 'recoverable' ? 'Cuenta vinculada' : 'Sincronización activa';
-    $('account-copy').textContent = accountIdentity.state === 'recoverable'
-      ? 'Tu progreso se carga desde tu cuenta y el servidor es la autoridad para el Elo sincronizado.'
-      : 'Tu progreso está asociado a una identidad anónima de Supabase en este navegador. No cierres esa identidad hasta vincular un método recuperable.';
-    $('account-status').textContent = accountError
-      ? accountError
-      : 'Progreso remoto activo. Las nuevas sesiones se guardan en Supabase.';
-    button.hidden = true;
-  } else {
-    card.dataset.state = accountError ? 'error' : 'local';
-    $('account-badge').textContent = 'Solo en este navegador';
-    $('account-copy').textContent = 'Puedes practicar sin cuenta. Si decides guardar tu progreso, se creará una identidad anónima y se importará explícitamente la copia de este navegador.';
-    $('account-status').textContent = accountError ?? 'No se ha iniciado sincronización.';
-    button.hidden = false;
-    button.disabled = accountBusy;
-    button.textContent = accountBusy ? 'Guardando…' : 'Guardar mi progreso';
-  }
-  $('clear').textContent = accountStore ? 'Borrar historial sincronizado' : 'Borrar datos locales';
+  const waiting = state.pending > 0;
+  card.dataset.state = state.error || state.blocked ? 'error' : state.confirmed && !waiting ? 'synced' : 'local';
+  $('account-badge').textContent = !state.wanted ? 'Solo en este navegador' :
+    waiting ? `${state.pending} envío(s) pendiente(s)` :
+    state.confirmed ? 'Sincronización activa' : state.busy ? 'Reconectando…' : 'Sin conexión confirmada';
+  $('account-copy').textContent = state.wanted
+    ? 'La sesión anónima se conserva en este navegador. El Elo mostrado es el último confirmado por el servidor.'
+    : 'Puedes practicar sin cuenta. Si decides guardar tu progreso, se creará una identidad anónima y se importará explícitamente la copia de este navegador.';
+  let notice = state.busy ? 'Confirmando el progreso…' :
+    state.error ? 'No se pudo confirmar la sincronización: ' + state.error :
+    waiting ? 'Sesiones guardadas como pendientes; se reintentará al recuperar la conexión.' :
+    state.confirmed ? 'Progreso remoto activo. Las nuevas sesiones se guardan en Supabase.' : 'No se ha iniciado sincronización.';
+  if (!state.persistent) notice += ' El almacenamiento local no está disponible: los pendientes solo están en memoria. No recargues esta pestaña hasta confirmarlos.';
+  $('account-status').textContent = notice;
+  button.hidden = state.wanted && state.confirmed && !waiting && !state.error;
+  button.disabled = state.busy;
+  button.textContent = state.busy ? 'Confirmando…' : state.wanted ? 'Reintentar sincronización' : 'Guardar mi progreso';
+  $('clear').textContent = state.wanted ? 'Borrar historial sincronizado' : 'Borrar datos locales';
+  $('clear').disabled = state.wanted && (state.busy || waiting || state.blocked || !state.confirmed);
 }
-
 function storageNotice() {
-  if (accountStore) {
-    $('storage-note').textContent = accountError
-      ? 'La copia local sigue disponible; la sincronización presenta un problema temporal.'
-      : 'Sincronización activa. El servidor conserva el progreso; este navegador mantiene una copia local de apoyo.';
-    return;
-  }
-  $('storage-note').textContent = persistent
-    ? 'Solo en este navegador. No se envían datos a un servidor.'
-    : 'Aviso: el almacenamiento local no está disponible. El progreso podría perderse al recargar.';
+  const state = account.state();
+  $('storage-note').textContent = state.wanted
+    ? state.pending || !state.confirmed
+      ? 'Hay progreso pendiente de confirmación. El Elo no se anticipa y los envíos se conservan para reintentar.'
+      : 'Sincronización activa. Elo e historial se confirman juntos; este navegador mantiene una copia local.'
+    : persistent ? 'Solo en este navegador. No se envían datos a un servidor.'
+      : 'Aviso: el almacenamiento local no está disponible. El progreso podría perderse al recargar.';
 }
-
 async function loadAccountClient() {
   if (accountClient) return accountClient;
   const config = await import('./supabase-config.local.mjs');
-  accountClient = createBrowserSupabaseClient({
-    projectUrl: config.projectUrl,
-    publishableKey: config.publishableKey
-  }, storage);
+  accountClient = createBrowserSupabaseClient({ projectUrl: config.projectUrl, publishableKey: config.publishableKey }, storage);
   return accountClient;
-}
-
-async function enableAccountSync() {
-  if (accountBusy || accountStore) return;
-  accountBusy = true;
-  accountError = null;
-  renderAccountState();
-  try {
-    const client = await loadAccountClient();
-    const result = await activateAccountSync(client, saved);
-    accountStore = result.store;
-    accountIdentity = result.identity;
-    saved = result.progress;
-    save();
-    accountError = null;
-    render();
-  } catch (error) {
-    const message = error?.message || 'error desconocido';
-    accountError = message.includes('supabase-config.local.mjs') || message.includes('dynamically imported')
-      ? 'Esta copia de desarrollo aún no tiene configuración local de Supabase.'
-      : 'No se pudo activar la sincronización: ' + message;
-    renderAccountState();
-    storageNotice();
-  } finally {
-    accountBusy = false;
-    renderAccountState();
-  }
-}
-
-async function resumeAccountIfStored() {
-  if (!hasStoredAccountSession(storage)) return;
-  try {
-    const client = await loadAccountClient();
-    const result = await resumeAccountSync(client);
-    if (!result.store) return;
-    accountStore = result.store;
-    accountIdentity = result.identity;
-    saved = result.progress;
-    save();
-    accountError = null;
-    render();
-  } catch (error) {
-    accountError = 'No se pudo reanudar la sincronización; se usa la copia local. ' + (error?.message || '');
-    renderAccountState();
-    storageNotice();
-  }
 }
 function save() {
   if (!progressStore.save(saved)) persistent = false;
@@ -137,31 +98,14 @@ function pool() {
   const area = $('area').value;
   return EXERCISES.filter(exercise => area === 'todas' || exercise.area === area);
 }
-function setFlow(nextFlow) {
-  flow = nextFlow;
-  session = nextFlow.session;
-}
+function setFlow(nextFlow) { flow = nextFlow; session = nextFlow.session; }
 function archiveCurrent() {
   if (!flow || !active) return;
   const snapshot = partialFlowSession(flow, active);
   const next = archivePartial(saved, snapshot, active, new Date().toISOString());
-  if (next !== saved) {
-    const record = next.history[0];
-    saved = next;
-    save();
-    if (accountStore && record) {
-      accountStore.saveSession(record)
-        .then(() => {
-          accountError = null;
-          renderAccountState();
-        })
-        .catch(error => {
-          accountError = 'La sesión incompleta quedó en la copia local: ' + (error?.message || 'falló la sincronización');
-          renderAccountState();
-          storageNotice();
-        });
-    }
-  }
+  if (next === saved) return;
+  if (account.wanted) account.enqueue(next.history[0], active.provisionalRating, clientSessionId);
+  else { saved = next; save(); }
 }
 function newExercise() {
   const options = pool();
@@ -171,6 +115,7 @@ function newExercise() {
   cursor = (cursor + 1) % options.length;
   active = options[cursor];
   committedArea = $('area').value;
+  clientSessionId = globalThis.crypto.randomUUID();
   setFlow(startFlow(startSession(active, $('mode').value)));
   selected = null;
   viewStep = null;
@@ -185,11 +130,8 @@ function newExercise() {
 function changeSetting(field) {
   const state = settingsSelection.change(field);
   $('apply-settings').disabled = !state.pending;
-  if (state.ready) {
-    newExercise();
-  } else {
-    $('settings-status').textContent = 'Primera opción elegida. Selecciona la otra o pulsa «Aplicar ajustes» para cambiar solo esta.';
-  }
+  if (state.ready) newExercise();
+  else $('settings-status').textContent = 'Primera opción elegida. Selecciona la otra o pulsa «Aplicar ajustes» para cambiar solo esta.';
 }
 function stepStatus(entry) {
   if (entry.surrendered === true) return 'Solución mostrada';
@@ -201,10 +143,7 @@ function renderTrace() {
   clearMath(list);
   list.replaceChildren();
   $('trace-count').textContent = `${session.trace.length} / ${active.steps.length} pasos`;
-  if (!session.trace.length) {
-    list.append(el('li', 'Tus decisiones aparecerán aquí.', 'muted'));
-    return;
-  }
+  if (!session.trace.length) { list.append(el('li', 'Tus decisiones aparecerán aquí.', 'muted')); return; }
   for (const [index, entry] of session.trace.entries()) {
     const li = document.createElement('li');
     const button = document.createElement('button');
@@ -216,8 +155,7 @@ function renderTrace() {
     button.append(mathElement('span', entry.notation, 'trace-summary'));
     button.append(el('span', entry.surrendered ? '↳ Solución' : entry.correct ? '✓ Correcto' : entry.resolved ? '↺ Reintentado' : '↺ Corregido', 'trace-state'));
     button.addEventListener('click', () => { viewStep = index; updateReview(); });
-    li.append(button);
-    list.append(li);
+    li.append(button); list.append(li);
   }
 }
 function updateReview() {
@@ -242,8 +180,7 @@ function updateReview() {
     $('review-correction').hidden = step.correct;
     setMath($('review-correction'), step.correct ? '' : `${step.surrendered ? 'Solución mostrada' : 'Respuesta correcta'}: ${step.expected}`);
     setMath($('review-explanation'), step.explanation);
-    $('review-title').focus();
-    typesetMath(review);
+    $('review-title').focus(); typesetMath(review);
   }
   const actionable = canAct(session, viewStep);
   $('submit').disabled = !actionable || flow.status !== 'ask' || selected === null;
@@ -256,18 +193,15 @@ function updateReview() {
 }
 function renderHistory() {
   const list = $('past');
-  clearMath(list);
-  list.replaceChildren();
-  if (!saved.history.length) {
-    list.append(el('li', 'Todavía no hay sesiones anteriores.', 'muted'));
-    return;
-  }
+  clearMath(list); list.replaceChildren();
+  if (!saved.history.length) { list.append(el('li', 'Todavía no hay sesiones anteriores.', 'muted')); return; }
   for (const record of saved.history) {
     const li = document.createElement('li');
     const details = document.createElement('details');
     const mode = record.mode === 'challenge' ? 'Desafío' : 'Entrenamiento';
     const result = record.partial ? 'Incompleto' : 'Finalizado';
-    const delta = record.delta == null ? ' · Sin nueva variación de Elo' : ` · Elo ${record.delta >= 0 ? '+' : ''}${record.delta} (experimental)`;
+    const delta = record.pendingSync ? ' · Pendiente de sincronización; Elo sin confirmar' :
+      record.delta == null ? ' · Sin nueva variación de Elo' : ` · Elo ${record.delta >= 0 ? '+' : ''}${record.delta} (experimental)`;
     const resolved = Number.isInteger(record.resolved) ? ` · ${record.resolved}/${record.total} pasos resueltos` : '';
     details.append(el('summary', `${record.title} · ${record.correct}/${record.total} aciertos iniciales${resolved} · ${mode} · ${result}${delta}`));
     if (record.ratingPolicy === 'first-attempt-v03') {
@@ -284,22 +218,16 @@ function renderHistory() {
         move.resolved ? `Correcto tras reintentar: ${move.expected}` : `Primera elección: ${move.chosen}. Respuesta correcta: ${move.expected}`;
       details.append(mathElement('p', `${move.ordinal}. ${move.notation} — ${correction}.${attempts} ${move.explanation}`));
     }
-    li.append(details);
-    list.append(li);
+    li.append(details); list.append(li);
   }
 }
 function showHistory(open, focus = true) {
   historyOpen = open;
-  $('workspace').hidden = open;
-  $('settings-panel').hidden = open;
-  $('history-panel').hidden = !open;
+  $('workspace').hidden = open; $('settings-panel').hidden = open; $('history-panel').hidden = !open;
   $('history-toggle').setAttribute('aria-expanded', String(open));
   $('history-toggle').textContent = open ? 'Volver al ejercicio' : 'Historial';
   if (open) { renderHistory(); storageNotice(); typesetMath($('history-panel')); }
-  if (focus) {
-    if (open) $('history-title').focus();
-    else $('title').focus();
-  }
+  if (focus) { if (open) $('history-title').focus(); else $('title').focus(); }
 }
 function renderFeedback() {
   const notice = flow.notice;
@@ -315,14 +243,17 @@ function renderFeedback() {
   }
   $('feedback').append(feedback);
 }
+function currentRecord() {
+  return saved.history.find(record => record.clientSessionId === clientSessionId ||
+    (record.id === active.id && record.finishedAt === session.finishedAt));
+}
 function render() {
   $('area-label').textContent = LABELS[active.area];
   $('mode-label').textContent = session.mode === 'training' ? 'Entrenamiento' : 'Desafío · Elo experimental';
   $('progress').textContent = session.completed ? 'Terminado' : `Paso ${session.index + 1} de ${active.steps.length}`;
   $('title').textContent = active.title;
   setMath($('prompt'), active.prompt);
-  const bar = $('stepsbar');
-  bar.replaceChildren();
+  const bar = $('stepsbar'); bar.replaceChildren();
   active.steps.forEach((_, index) => {
     const mark = document.createElement('span');
     if (index < session.trace.length) mark.className = 'done';
@@ -331,21 +262,18 @@ function render() {
   bar.setAttribute('aria-valuenow', String(session.trace.length));
   bar.setAttribute('aria-valuemax', String(active.steps.length));
   bar.setAttribute('aria-valuetext', `${session.trace.length} de ${active.steps.length} pasos completados`);
-  renderTrace();
-  renderHistory();
-  renderRating(saved, active.area);
-  // No confundir el último movimiento HISTÓRICO del panel con la sesión recién terminada.
-  if (session.completed && saved.history[0]?.id === active.id && saved.history[0]?.finishedAt === session.finishedAt && saved.history[0]?.delta == null) {
+  renderTrace(); renderHistory(); renderRating(saved, active.area);
+  const record = session.completed ? currentRecord() : null;
+  if (session.completed && record?.delta == null) {
     const current = saved.ratings[active.area] ?? INITIAL_RATING;
-    $('rating-current').textContent = `${LABELS[active.area]}: ${current} · Esta sesión: sin cambio. Las variaciones del gráfico son históricas.`;
+    $('rating-current').textContent = record?.pendingSync
+      ? `${LABELS[active.area]}: ${current} · Esta sesión: pendiente de confirmación.`
+      : `${LABELS[active.area]}: ${current} · Esta sesión: sin cambio. Las variaciones del gráfico son históricas.`;
   }
-  renderAccountState();
-  storageNotice();
+  renderAccountState(); storageNotice();
   const target = $('question');
-  clearMath(target);
-  clearMath($('feedback'));
-  target.replaceChildren();
-  $('feedback').replaceChildren();
+  clearMath(target); clearMath($('feedback'));
+  target.replaceChildren(); $('feedback').replaceChildren();
   $('submit').hidden = session.completed || flow.status !== 'ask';
   $('retry').hidden = session.completed || flow.status !== 'wrong';
   $('give-up').hidden = session.completed || flow.status !== 'wrong';
@@ -354,34 +282,29 @@ function render() {
   if (session.completed) {
     const result = sessionResult(session, active);
     const resolved = session.trace.filter(move => move.correct || move.resolved === true).length;
-    const heading = el('h3', 'Ejercicio terminado');
-    heading.id = 'question-title';
-    heading.tabIndex = -1;
+    const heading = el('h3', 'Ejercicio terminado'); heading.id = 'question-title'; heading.tabIndex = -1;
     target.append(heading);
     target.append(el('p', `${resolved}/${result.total} pasos resueltos; ${result.correct}/${result.total} aciertos al primer intento.`));
     const wrong = session.trace.filter(move => !move.correct).map(move => move.ordinal);
     target.append(el('p', wrong.length ? `Se registraron errores iniciales en los pasos ${wrong.join(', ')}. Revisa sus primeras elecciones en la planilla.` : 'No se registraron errores al primer intento.'));
-    const record = saved.history[0];
-    if (record?.id === active.id && record?.finishedAt === session.finishedAt && record?.delta != null) {
+    if (record?.pendingSync) {
+      target.append(el('p', 'Sesión pendiente de sincronización. El Elo mostrado aún no confirma este resultado. Puedes continuar practicando.'));
+    } else if (record?.delta != null) {
       target.append(el('p', `${record.solved ? 'Desafío sin errores iniciales' : 'Desafío con al menos un error inicial'}. Elo experimental de ${LABELS[active.area]}: ${record.ratingBefore} → ${record.ratingAfter} (${record.delta >= 0 ? '+' : ''}${record.delta}).`));
     } else if (session.mode === 'training') {
       target.append(el('p', 'Entrenamiento: esta sesión no ha cambiado el Elo. La variación del marcador, si aparece, es histórica.'));
+    } else if (!record && account.wanted) {
+      target.append(el('p', 'Consulta el historial sincronizado. No se atribuye a esta sesión ninguna variación sin un registro confirmado.'));
     } else {
       target.append(el('p', 'Esta repetición no modificó el Elo: el ejercicio ya había sido puntuado. La última variación del marcador pertenece a una sesión anterior.'));
     }
-    updateReview();
-    typesetMath($('workspace'));
-    return;
+    updateReview(); typesetMath($('workspace')); return;
   }
   const step = active.steps[session.index];
-  const heading = mathElement('h3', step.question);
-  heading.id = 'question-title';
-  heading.tabIndex = -1;
+  const heading = mathElement('h3', step.question); heading.id = 'question-title'; heading.tabIndex = -1;
   target.append(heading);
   if (flow.status !== 'solution') {
-    const group = document.createElement('div');
-    group.setAttribute('role', 'radiogroup');
-    group.setAttribute('aria-labelledby', heading.id);
+    const group = document.createElement('div'); group.setAttribute('role', 'radiogroup'); group.setAttribute('aria-labelledby', heading.id);
     step.options.forEach((option, index) => {
       const label = document.createElement('label');
       label.className = 'option' + (flow.attempts.includes(index) ? ' previous-attempt' : '');
@@ -391,94 +314,55 @@ function render() {
       input.disabled = flow.status !== 'ask' || flow.attempts.includes(index);
       input.addEventListener('change', () => {
         if (!canAct(session, viewStep) || flow.status !== 'ask') return;
-        selected = index;
-        $('submit').disabled = false;
+        selected = index; $('submit').disabled = false;
       });
-      label.append(input, mathElement('span', option));
-      group.append(label);
+      label.append(input, mathElement('span', option)); group.append(label);
     });
     target.append(group);
   } else {
     target.append(mathElement('p', `Primera elección: ${session.trace.at(-1).chosen}`));
     $('next').textContent = session.index === active.steps.length - 1 ? 'Finalizar tras ver la solución →' : 'Continuar tras ver la solución →';
   }
-  renderFeedback();
-  updateReview();
-  typesetMath($('workspace'));
+  renderFeedback(); updateReview(); typesetMath($('workspace'));
 }
-async function finishIfNeeded() {
-  if (!session.completed) return;
+function finishIfNeeded() {
+  if (!session.completed || session.finishedAt) return;
   const finishedAt = new Date().toISOString();
-  // Validar ANTES de modificar el estado. En modo sincronizado, el servidor decide el Elo.
   const completed = { ...session, finishedAt };
-  setFlow({ ...flow, session: completed });
-
-  if (accountStore) {
-    accountBusy = true;
-    $('account-status').textContent = 'Sincronizando la sesión…';
-    try {
-      const result = await finishAccountSession(accountStore, completed, active, finishedAt);
-      saved = result.progress;
-      accountIdentity = result.identity;
-      accountError = null;
-      save();
-    } catch (error) {
-      // Degradación segura: conservar la sesión, pero no inventar un movimiento Elo local
-      // cuando el estado del servidor es incierto.
-      const record = buildSessionRecord(completed, active, finishedAt);
-      saved = { ...saved, history: [record, ...saved.history].slice(0, HISTORY_LIMIT) };
-      save();
-      accountError = 'La sesión quedó guardada localmente, pero no se confirmó el Elo remoto: ' + (error?.message || 'falló la sincronización');
-    } finally {
-      accountBusy = false;
-      renderAccountState();
-      storageNotice();
-    }
-    return;
+  const record = buildSessionRecord(completed, active, finishedAt);
+  if (account.wanted) {
+    // Cola primero, red después. El identificador y el cuerpo quedan sellados.
+    account.enqueue(record, active.provisionalRating, clientSessionId);
+  } else {
+    saved = finishProgress(saved, completed, active, finishedAt).progress;
+    save();
   }
-
-  // Modo local: conserva exactamente la política histórica del MVP.
-  const result = finishProgress(saved, completed, active, finishedAt);
-  saved = result.progress;
-  save();
+  setFlow({ ...flow, session: completed });
 }
-
-async function submit() {
+function submit() {
   if (!canAct(session, viewStep) || flow.status !== 'ask' || selected === null) return;
   $('submit').disabled = true;
-  setFlow(answerFlow(flow, active, selected));
-  selected = null;
-  await finishIfNeeded();
-  render();
-  if (flow.status === 'wrong') $('retry').focus();
-  else $('question').querySelector('h3')?.focus();
+  setFlow(answerFlow(flow, active, selected)); selected = null;
+  finishIfNeeded(); render();
+  if (flow.status === 'wrong') $('retry').focus(); else $('question').querySelector('h3')?.focus();
 }
 function retry() {
   if (!canAct(session, viewStep) || flow.status !== 'wrong') return;
-  setFlow(retryFlow(flow, active));
-  selected = null;
-  render();
+  setFlow(retryFlow(flow, active)); selected = null; render();
   $('question').querySelector('input[name="answer"]:not(:disabled)')?.focus();
 }
 function giveUp() {
   if (!canAct(session, viewStep) || flow.status !== 'wrong') return;
-  setFlow(surrenderFlow(flow, active));
-  selected = null;
-  render();
-  $('feedback').tabIndex = -1;
-  $('feedback').focus();
+  setFlow(surrenderFlow(flow, active)); selected = null; render();
+  $('feedback').tabIndex = -1; $('feedback').focus();
 }
-async function next() {
+function next() {
   if (!canAct(session, viewStep) || flow.status !== 'solution') return;
   $('next').disabled = true;
-  setFlow(continueFlow(flow, active));
-  selected = null;
-  viewStep = null;
-  await finishIfNeeded();
-  render();
-  $('question').querySelector('h3')?.focus();
+  setFlow(continueFlow(flow, active)); selected = null; viewStep = null;
+  finishIfNeeded(); render(); $('question').querySelector('h3')?.focus();
 }
-$('account-save').addEventListener('click', enableAccountSync);
+$('account-save').addEventListener('click', () => { void account.sync({ activate: true }); });
 $('submit').addEventListener('click', submit);
 $('retry').addEventListener('click', retry);
 $('give-up').addEventListener('click', giveUp);
@@ -490,9 +374,7 @@ $('mode').addEventListener('change', () => changeSetting('mode'));
 $('apply-settings').addEventListener('click', () => { if (settingsSelection.pending) newExercise(); });
 $('history-toggle').addEventListener('click', () => showHistory(!historyOpen));
 $('review-return').addEventListener('click', () => {
-  const returnStep = viewStep;
-  viewStep = null;
-  updateReview();
+  const returnStep = viewStep; viewStep = null; updateReview();
   const returnButton = returnStep === null ? null : $('trace').querySelector(`button[data-step="${returnStep}"]`);
   if (returnButton) returnButton.focus();
   else if (session.completed) $('another').focus();
@@ -502,32 +384,19 @@ $('review-return').addEventListener('click', () => {
   else $('question').querySelector('h3')?.focus();
 });
 $('clear').addEventListener('click', async () => {
-  if (accountStore) {
-    if (!window.confirm('¿Borrar el historial sincronizado? El Elo y la marca de ejercicios ya puntuados se conservarán.')) return;
-    try {
-      await accountStore.clearHistory();
-      const loaded = await accountStore.load();
-      saved = loaded.progress;
-      accountIdentity = loaded.identity;
-      accountError = null;
-      save();
-    } catch (error) {
-      accountError = 'No se pudo borrar el historial sincronizado: ' + (error?.message || 'error desconocido');
-    }
-    renderHistory();
-    renderRating(saved, active.area);
-    renderAccountState();
-    storageNotice();
-    return;
+  if (account.wanted) {
+    if ($('clear').disabled) return;
+    if (!window.confirm('¿Borrar el historial sincronizado? El Elo y los recibos mínimos que evitan duplicados se conservarán.')) return;
+    try { await account.clearHistory(); }
+    catch (error) { account.error = error.message; account.notify(); }
+  } else {
+    if (!window.confirm('¿Borrar el historial y los Elo experimentales guardados en este navegador?')) return;
+    saved = emptyProgress(); save();
   }
-
-  if (!window.confirm('¿Borrar el historial y los Elo experimentales guardados en este navegador?')) return;
-  saved = emptyProgress();
-  save();
-  renderHistory();
-  renderRating(saved, active.area);
-  storageNotice();
+  renderHistory(); renderRating(saved, active.area); renderAccountState(); storageNotice();
 });
 window.addEventListener('load', () => typesetMath(historyOpen ? $('history-panel') : $('workspace')));
+window.addEventListener('online', () => { void account.sync(); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) void account.sync(); });
 newExercise();
-void resumeAccountIfStored();
+void account.sync();
