@@ -36,6 +36,7 @@ test('Rutas estáticas resuelven y la dependencia generada está declarada', () 
 test('MathJax queda fijado en 4.0.0 y no ejecuta scripts de instalación propios', () => {
   const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'));
   assert.equal(pkg.dependencies.mathjax, '4.0.0');
+  assert.equal(pkg.dependencies['@mathjax/mathjax-newcm-font'], '4.0.0');
   assert.equal(pkg.overrides['@mathjax/mathjax-newcm-font'], '4.0.0');
   const vendor = readFileSync(resolve(root, 'scripts/vendor-mathjax.mjs'), 'utf8');
   assert.match(vendor, /metadata\.version !== '4\.0\.0'/);
