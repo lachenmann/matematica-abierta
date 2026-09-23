@@ -10,6 +10,8 @@ const plainFallback = text => text
   .replace(/\\infty/g, '∞')
   .replace(/\\ne/g, '≠')
   .replace(/\\pm/g, '±')
+  .replace(/\\gcd/g, 'mcd')
+  .replace(/\\iff/g, '⇔')
   .replace(/\\(?:left|right)/g, '')
   .replace(/\\\{/g, '{')
   .replace(/\\\}/g, '}')
