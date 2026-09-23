@@ -138,7 +138,7 @@ MA-Accounts v0.1 se considera implementado cuando:
 
 **Inicio:** 23-09-2026.
 
-La abstracción local, `AccountProgressStore`, autenticación anónima/vinculación de correo, snapshot de importación y migraciones SQL/RLS están implementados. El proyecto remoto `ma-practica-dev` ya recibió `accounts_v01` y `accounts_rpc_hardening`. La prueba de base de datos con dos identidades autenticadas simuladas pasó: aislamiento RLS, bloqueo de doble puntuación, importación única y rechazo de escritura cruzada. Queda pendiente la prueba de Auth real con dos `signInAnonymously()` desde cliente y, después, la integración controlada del botón «Guardar mi progreso».
+La abstracción local, `AccountProgressStore`, autenticación anónima/vinculación de correo, snapshot de importación y migraciones SQL/RLS están implementados. El proyecto remoto `ma-practica-dev` ya recibió `accounts_v01` y `accounts_rpc_hardening`. La prueba de base de datos con dos identidades autenticadas simuladas pasó: aislamiento RLS, bloqueo de doble puntuación, importación única y rechazo de escritura cruzada. La prueba de Auth real con dos `signInAnonymously()` desde cliente también pasó en Windows PowerShell 5.1: dos identidades distintas, aislamiento RLS, bloqueo de doble puntuación, importación local, Elo independiente y rechazo de escritura cruzada. Los usuarios y datos creados por el probe fueron eliminados al finalizar. El siguiente paso es la integración controlada del botón «Guardar mi progreso».
 
 
 ## 11. Ubicación canónica
@@ -158,6 +158,7 @@ El 23-09-2026 se verificó en `ma-practica-dev` que:
 - un usuario no ve filas del otro bajo RLS;
 - una escritura cruzada de `practice_sessions` es rechazada;
 - la importación local solo se admite sobre un remoto vacío;
-- los datos de prueba fueron eliminados al finalizar.
+- los datos de prueba fueron eliminados al finalizar;
+- el probe live de Auth real pasó con `Status: PASS`, `U1FirstApplied=True`, `U1DuplicateApplied=False`, `U1Rating=1212`, `U2Rating=1317` y `CrossUserWriteRejected=True`.
 
 La regresión reproducible vive en `practica/supabase/tests/0001_accounts_rls.sql`. La prueba de Auth real vive en `practica/supabase/tests/accounts-live-auth.ps1` y requiere URL de proyecto + clave publicable como parámetros locales; ninguna clave se versiona en Git.
