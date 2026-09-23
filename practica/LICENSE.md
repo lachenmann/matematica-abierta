@@ -8,7 +8,7 @@ Esta declaración se aplica al **código original de MA-Práctica** en `practica
 
 Este programa se distribuye con la esperanza de que sea útil, pero **SIN NINGUNA GARANTÍA**, ni siquiera la garantía implícita de COMERCIABILIDAD o IDONEIDAD PARA UN FIN PARTICULAR. Consulta la GNU General Public License para los detalles.
 
-**Texto íntegro de la licencia:** https://www.gnu.org/licenses/gpl-3.0.txt . Antes de distribuir el programa, incluir una copia íntegra y sin alterar de ese texto en `COPYING.GPL` (o archivo equivalente) junto al código; un enlace por sí solo no reemplaza esa copia en el paquete distribuido.
+**Texto íntegro de la licencia:** [`../COPYING.GPL`](../COPYING.GPL), copia íntegra de la GNU General Public License versión 3 incluida junto al código. La cláusula «o cualquier versión posterior» se establece en esta declaración de licencia (`GPL-3.0-or-later`).
 
 Los textos didácticos originales, incluidos enunciados y explicaciones, se rigen por la GNU Free Documentation License 1.3 o posterior indicada en la licencia general del repositorio (`LICENSE` y `COPYING.FDL`); esta declaración no los relicencia automáticamente. MathJax se distribuye por su titular con licencia Apache-2.0 y mantiene sus condiciones y avisos: la licencia GPL de nuestro código no cambia las licencias de componentes ajenos. Otros materiales de terceros mantienen sus respectivos derechos.
 
