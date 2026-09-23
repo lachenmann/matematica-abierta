@@ -260,10 +260,10 @@ def keyboard_and_semantics(browser):
 
 
 def mathjax_failure_modes(browser):
-    # CDN bloqueado: la carga termina y el flujo esencial sigue operativo con texto de reserva.
+    # MathJax local bloqueado: la carga termina y el flujo esencial sigue operativo con texto de reserva.
     blocked = browser.new_context(viewport={"width": 375, "height": 850}, locale="es-CL")
     page = blocked.new_page()
-    page.route("**/mathjax@*/**", lambda route: route.abort())
+    page.route("**/vendor/mathjax/**", lambda route: route.abort())
     try:
         page.goto(BASE, wait_until="load", timeout=10000)
         select_algebra(page)
@@ -284,7 +284,7 @@ def mathjax_failure_modes(browser):
       startup: { promise: Promise.resolve() }, typesetClear() {},
       typesetPromise() { return Promise.reject(new Error('fallo simulado de MathJax')); }
     });"""
-    page.route("**/mathjax@*/**", lambda route: route.fulfill(status=200,
+    page.route("**/vendor/mathjax/**", lambda route: route.fulfill(status=200,
         content_type="application/javascript", body=stub))
     try:
         page.goto(BASE, wait_until="load", timeout=10000)
@@ -297,7 +297,7 @@ def mathjax_failure_modes(browser):
         assert page.locator("#trace button[data-step]").count() == 1
     finally:
         failed.close()
-    print("PASS MathJax: CDN bloqueado y fallo posterior conservan texto y flujo esencial")
+    print("PASS MathJax local: recurso bloqueado y fallo posterior conservan texto y flujo esencial")
 
 
 if __name__ == "__main__":
@@ -311,4 +311,4 @@ if __name__ == "__main__":
             mathjax_failure_modes(browser)
         finally:
             browser.close()
-    print("PASS: 40 recorridos y 128 decisiones; teclado completo; MathJax normal, bloqueado y fallido")
+    print("PASS: 40 recorridos y 128 decisiones; teclado completo; MathJax local normal, bloqueado y fallido")
