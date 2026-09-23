@@ -43,12 +43,18 @@ test('MathJax queda fijado en 4.0.0 y no ejecuta scripts de instalación propios
   assert.match(vendor, /metadata\.license !== 'Apache-2\.0'/);
 });
 
-test('Los módulos de la aplicación no contienen llamadas explícitas de red', () => {
-  for (const file of readdirSync(root).filter(name => name.endsWith('.mjs'))) {
+test('El modo local no añade red salvo el cliente Supabase dedicado y opt-in', () => {
+  for (const file of readdirSync(root).filter(name => name.endsWith('.mjs') && name !== 'supabase-browser-client.mjs')) {
     const code = readFileSync(resolve(root, file), 'utf8');
     assert.doesNotMatch(code, /\b(?:fetch\s*\(|XMLHttpRequest\b|WebSocket\b|EventSource\b|sendBeacon\s*\()/,
-      `Revisar aviso de privacidad antes de agregar comunicaciones: ${file}`);
+      `Comunicación de red fuera del adaptador dedicado: ${file}`);
   }
+  const client = readFileSync(resolve(root, 'supabase-browser-client.mjs'), 'utf8');
+  assert.match(client, /this\.fetchImpl/);
+  assert.match(client, /\/auth\/v1\/signup/);
+  assert.match(client, /\/rest\/v1\//);
+  assert.doesNotMatch(html, /https:\/\/[a-z0-9-]+\.supabase\.co/i,
+    'La configuración remota no debe quedar incrustada en el HTML');
 });
 
 test('La distribución incluye las licencias GNU declaradas', () => {
