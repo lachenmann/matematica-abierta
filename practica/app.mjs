@@ -1,7 +1,8 @@
 import { EXERCISES } from './exercises.mjs';
 import { startSession, sessionResult, INITIAL_RATING } from './engine.mjs';
 import { startFlow, answerFlow, retryFlow, surrenderFlow, continueFlow, partialFlowSession } from './attempt-flow.mjs';
-import { emptyProgress, loadProgress, saveProgress, archivePartial, finishProgress } from './progress.mjs';
+import { emptyProgress, archivePartial, finishProgress } from './progress.mjs';
+import { createLocalProgressStore } from './persistence-store.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
 import { renderRating } from './rating-panel.mjs';
 import { setMath, mathElement, clearMath, typesetMath } from './math-dom.mjs';
@@ -17,7 +18,8 @@ const el = (tag, text, className = '') => {
 const LABELS = { aritmetica: 'Aritmética', algebra: 'Álgebra', calculo: 'Cálculo', demostraciones: 'Demostraciones' };
 let storage = null;
 try { storage = window.localStorage; } catch { /* El navegador puede bloquear el acceso. */ }
-let { progress: saved, persistent } = loadProgress(storage);
+const progressStore = createLocalProgressStore(storage);
+let { progress: saved, persistent } = progressStore.load();
 let active;
 let flow;
 let session;
@@ -34,7 +36,7 @@ function storageNotice() {
     : 'Aviso: el almacenamiento local no está disponible. El progreso podría perderse al recargar.';
 }
 function save() {
-  if (!saveProgress(storage, saved)) persistent = false;
+  if (!progressStore.save(saved)) persistent = false;
   storageNotice();
 }
 function pool() {
