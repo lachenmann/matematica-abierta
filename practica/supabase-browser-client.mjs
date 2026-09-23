@@ -1,215 +1,178 @@
-/** Cliente mínimo para Supabase en MA-Práctica.
- * Sin dependencias externas: Auth + Data API + RPC sobre fetch.
- * Código original GPL-3.0-or-later.
- */
-
+/** Auth + Data API + RPC para MA-Práctica, sin CDN. GPL-3.0-or-later. */
 export const ACCOUNT_SESSION_KEY = 'ma-practica-supabase-session-v01';
 
 function normalizeUrl(value) {
   const url = typeof value === 'string' ? value.trim().replace(/\/+$/, '') : '';
-  if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(url)) {
-    throw new Error('URL de Supabase inválida');
-  }
+  if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(url)) throw new Error('URL de Supabase inválida');
   return url;
 }
-
 function normalizeKey(value) {
   const key = typeof value === 'string' ? value.trim() : '';
   if (!key) throw new Error('Falta la clave publicable de Supabase');
   return key;
 }
-
 function readJson(text) {
   if (!text) return null;
   try { return JSON.parse(text); } catch { return text; }
 }
-
 function messageFrom(body, fallback) {
   return body?.message || body?.msg || body?.error_description || body?.error || fallback;
 }
-
 export function hasStoredAccountSession(storage) {
   try {
-    const raw = storage?.getItem(ACCOUNT_SESSION_KEY);
-    if (!raw) return false;
-    const session = JSON.parse(raw);
+    const session = JSON.parse(storage?.getItem(ACCOUNT_SESSION_KEY) || 'null');
     return typeof session?.access_token === 'string' && typeof session?.refresh_token === 'string';
-  } catch {
-    return false;
-  }
+  } catch { return false; }
+}
+/** Solo selecciona la cola local; NO autentica ni autoriza operaciones remotas. */
+export function storedAccountIdentity(storage) {
+  try {
+    if (!hasStoredAccountSession(storage)) return null;
+    const user = JSON.parse(storage.getItem(ACCOUNT_SESSION_KEY)).user;
+    if (!user?.id) return null;
+    return { userId: user.id, state: user.is_anonymous ? 'anonymous' : 'recoverable', email: user.email ?? null };
+  } catch { return null; }
 }
 
 class RestQuery {
   constructor(client, table) {
-    this.client = client;
-    this.table = table;
-    this.method = 'GET';
-    this.params = new URLSearchParams();
-    this.body = undefined;
-    this.prefer = undefined;
+    this.client = client; this.table = table; this.method = 'GET';
+    this.params = new URLSearchParams(); this.body = undefined; this.prefer = undefined;
   }
-
-  select(columns = '*') {
-    this.params.set('select', columns);
-    return this;
-  }
-
+  select(columns = '*') { this.params.set('select', columns); return this; }
   order(column, { ascending = true } = {}) {
-    this.params.set('order', column + '.' + (ascending ? 'asc' : 'desc'));
-    return this;
+    this.params.set('order', column + '.' + (ascending ? 'asc' : 'desc')); return this;
   }
-
-  limit(value) {
-    this.params.set('limit', String(value));
-    return this;
-  }
-
-  insert(row) {
-    this.method = 'POST';
-    this.body = row;
-    this.prefer = 'return=minimal';
-    return this;
-  }
-
-  delete() {
-    this.method = 'DELETE';
-    this.prefer = 'return=minimal';
-    return this;
-  }
-
-  eq(column, value) {
-    this.params.set(column, 'eq.' + String(value));
-    return this;
-  }
-
+  limit(value) { this.params.set('limit', String(value)); return this; }
+  insert(row) { this.method = 'POST'; this.body = row; this.prefer = 'return=minimal'; return this; }
+  delete() { this.method = 'DELETE'; this.prefer = 'return=minimal'; return this; }
+  eq(column, value) { this.params.set(column, 'eq.' + String(value)); return this; }
   execute() {
     const query = this.params.toString();
-    const path = '/rest/v1/' + encodeURIComponent(this.table) + (query ? '?' + query : '');
-    return this.client._dataRequest(path, {
-      method: this.method,
-      body: this.body,
-      prefer: this.prefer
+    return this.client._dataRequest('/rest/v1/' + encodeURIComponent(this.table) + (query ? '?' + query : ''), {
+      method: this.method, body: this.body, prefer: this.prefer
     });
   }
-
-  then(resolve, reject) {
-    return this.execute().then(resolve, reject);
-  }
+  then(resolve, reject) { return this.execute().then(resolve, reject); }
 }
 
 export class BrowserSupabaseClient {
-  constructor({ projectUrl, publishableKey, storage = globalThis.localStorage, fetchImpl = globalThis.fetch } = {}) {
+  constructor({ projectUrl, publishableKey, storage = globalThis.localStorage,
+    fetchImpl = globalThis.fetch, timeoutMs = 12000 } = {}) {
     this.projectUrl = normalizeUrl(projectUrl);
     this.publishableKey = normalizeKey(publishableKey);
     this.storage = storage;
     if (typeof fetchImpl !== 'function') throw new Error('fetch no está disponible');
-    // El fetch nativo de Window necesita su receptor global, no esta instancia.
-    // Los dobles de prueba siguen siendo inyectables; las funciones ya enlazadas
-    // conservan su receptor original.
     this.fetchImpl = fetchImpl.bind(globalThis);
-
+    if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) throw new Error('Tiempo de espera inválido');
+    this.timeoutMs = timeoutMs;
+    this.memorySession = null;
+    this.refreshFlight = null;
     this.auth = {
-      getUser: () => this._getUser(),
-      signInAnonymously: options => this._signInAnonymously(options),
-      updateUser: attributes => this._updateUser(attributes),
-      signOut: () => this._signOut()
+      getUser: () => this._getUser(), signInAnonymously: options => this._signInAnonymously(options),
+      updateUser: attributes => this._updateUser(attributes), signOut: () => this._signOut()
     };
   }
-
   _readSession() {
     try {
-      const raw = this.storage?.getItem(ACCOUNT_SESSION_KEY);
+      if (!this.storage) return this.memorySession;
+      const raw = this.storage.getItem(ACCOUNT_SESSION_KEY);
       return raw ? JSON.parse(raw) : null;
-    } catch {
-      return null;
-    }
+    } catch { return this.memorySession; }
   }
-
   _saveSession(payload) {
     const session = {
-      access_token: payload.access_token,
-      refresh_token: payload.refresh_token,
+      access_token: payload.access_token, refresh_token: payload.refresh_token,
       expires_at: Number(payload.expires_at) || Math.floor(Date.now() / 1000) + Number(payload.expires_in || 3600),
       user: payload.user ?? null
     };
     if (!session.access_token || !session.refresh_token) throw new Error('Sesión Supabase incompleta');
-    try { this.storage?.setItem(ACCOUNT_SESSION_KEY, JSON.stringify(session)); } catch { /* sesión de memoria solamente */ }
+    this.memorySession = session;
+    try { this.storage?.setItem(ACCOUNT_SESSION_KEY, JSON.stringify(session)); } catch { /* memoria, no durabilidad */ }
     return session;
   }
-
   _clearSession() {
+    this.memorySession = null;
     try { this.storage?.removeItem(ACCOUNT_SESSION_KEY); } catch { /* sin almacenamiento */ }
   }
-
   async _raw(path, { method = 'GET', body, token, prefer } = {}) {
-    const headers = {
-      apikey: this.publishableKey,
-      Accept: 'application/json'
-    };
+    const headers = { apikey: this.publishableKey, Accept: 'application/json' };
     if (token) headers.Authorization = 'Bearer ' + token;
     if (body !== undefined) headers['Content-Type'] = 'application/json';
     if (prefer) headers.Prefer = prefer;
-
-    let response;
+    const abort = new AbortController();
+    const timer = setTimeout(() => abort.abort(), this.timeoutMs);
     try {
-      response = await this.fetchImpl(this.projectUrl + path, {
-        method,
-        headers,
+      const response = await this.fetchImpl(this.projectUrl + path, {
+        method, headers, signal: abort.signal, credentials: 'omit',
         body: body === undefined ? undefined : JSON.stringify(body)
       });
+      const parsed = readJson(await response.text());
+      if (!response.ok) return { ok: false, status: response.status, body: parsed, error: {
+        message: messageFrom(parsed, 'Solicitud Supabase fallida'), status: response.status,
+        code: parsed?.code ?? parsed?.error_code
+      } };
+      return { ok: true, status: response.status, body: parsed, error: null };
     } catch (error) {
-      return { ok: false, status: 0, body: null, error: { message: error?.message || 'Error de red' } };
-    }
-
-    const text = await response.text();
-    const parsed = readJson(text);
-    if (!response.ok) {
-      return {
-        ok: false,
-        status: response.status,
-        body: parsed,
-        error: { message: messageFrom(parsed, 'Solicitud Supabase fallida') }
-      };
-    }
-    return { ok: true, status: response.status, body: parsed, error: null };
+      return { ok: false, status: 0, body: null, error: {
+        message: abort.signal.aborted ? 'La conexión agotó el tiempo de espera' : error?.message || 'Error de red',
+        status: 0, code: abort.signal.aborted ? 'TIMEOUT' : 'NETWORK_ERROR'
+      } };
+    } finally { clearTimeout(timer); }
   }
-
-  async _refreshSession(session) {
-    if (!session?.refresh_token) return null;
-    const result = await this._raw('/auth/v1/token?grant_type=refresh_token', {
-      method: 'POST',
-      body: { refresh_token: session.refresh_token }
-    });
-    if (!result.ok || !result.body?.access_token) {
-      this._clearSession();
-      return null;
-    }
-    return this._saveSession(result.body);
+  _refreshSession(session) {
+    if (this.refreshFlight) return this.refreshFlight;
+    const refresh = async () => {
+      const current = this._readSession();
+      if (!current || current.user?.id !== session.user?.id) throw new Error('La identidad cambió durante la renovación');
+      // Otra pestaña o petición ya renovó la sesión mientras esperábamos el lock.
+      if (current.access_token !== session.access_token) return current;
+      const result = await this._raw('/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST', body: { refresh_token: current.refresh_token }
+      });
+      if (!result.ok || !result.body?.access_token) {
+        // Un error de red NO equivale a cerrar la cuenta anónima.
+        throw Object.assign(new Error(result.error?.message || 'No se pudo renovar la sesión'), result.error);
+      }
+      if (this._readSession()?.user?.id !== current.user?.id || result.body.user?.id !== current.user?.id) {
+        throw new Error('La renovación no corresponde a la identidad activa');
+      }
+      return this._saveSession(result.body);
+    };
+    const locks = globalThis.navigator?.locks;
+    const operation = locks?.request
+      ? locks.request('ma-practica-auth-refresh:' + this.projectUrl, refresh)
+      : refresh();
+    this.refreshFlight = Promise.resolve(operation).finally(() => { this.refreshFlight = null; });
+    return this.refreshFlight;
   }
-
   async _session({ refreshEarly = true } = {}) {
-    let session = this._readSession();
+    const session = this._readSession();
     if (!session) return null;
-    const now = Math.floor(Date.now() / 1000);
-    if (refreshEarly && Number(session.expires_at || 0) <= now + 60) {
-      session = await this._refreshSession(session);
+    if (refreshEarly && Number(session.expires_at || 0) <= Math.floor(Date.now() / 1000) + 60) {
+      return this._refreshSession(session);
     }
     return session;
   }
-
   async _authorized(path, options = {}) {
-    let session = await this._session();
-    if (!session) return { data: null, error: { message: 'No hay sesión remota activa' } };
-
-    let result = await this._raw(path, { ...options, token: session.access_token });
-    if (!result.ok && result.status === 401) {
-      session = await this._refreshSession(session);
-      if (session) result = await this._raw(path, { ...options, token: session.access_token });
-    }
-    if (!result.ok) return { data: null, error: result.error };
-    return { data: result.body, error: null };
+    try {
+      let session = await this._session();
+      if (!session) throw new Error('No hay sesión remota activa');
+      const checkOwner = () => {
+        if (options.expectedUserId && session.user?.id !== options.expectedUserId) {
+          throw new Error('El envío pendiente pertenece a otra identidad');
+        }
+      };
+      checkOwner();
+      let result = await this._raw(path, { ...options, token: session.access_token });
+      if (!result.ok && result.status === 401) {
+        session = await this._refreshSession(session);
+        checkOwner();
+        result = await this._raw(path, { ...options, token: session.access_token });
+      }
+      return result.ok ? { data: result.body, error: null } : { data: null, error: result.error };
+    } catch (error) { return { data: null, error: { message: error.message, status: error.status, code: error.code } }; }
   }
-
   async _signInAnonymously(options = undefined) {
     const data = options?.options?.data ?? options?.data ?? {};
     const result = await this._raw('/auth/v1/signup', { method: 'POST', body: { data } });
@@ -217,28 +180,20 @@ export class BrowserSupabaseClient {
     const session = this._saveSession(result.body);
     return { data: { user: result.body.user ?? session.user, session }, error: null };
   }
-
   async _getUser() {
-    const session = await this._session();
-    if (!session) return { data: { user: null }, error: null };
-    const result = await this._authorized('/auth/v1/user');
-    if (result.error) return result;
-    if (result.data?.id) {
+    try {
+      if (!await this._session()) return { data: { user: null }, error: null };
+      const result = await this._authorized('/auth/v1/user');
+      if (result.error) return result;
       const current = this._readSession();
-      if (current) {
-        current.user = result.data;
-        try { this.storage?.setItem(ACCOUNT_SESSION_KEY, JSON.stringify(current)); } catch { /* opcional */ }
-      }
-    }
-    return { data: { user: result.data ?? null }, error: null };
+      if (current && result.data?.id === current.user?.id) this._saveSession({ ...current, user: result.data });
+      return { data: { user: result.data ?? null }, error: null };
+    } catch (error) { return { data: null, error: { message: error.message, code: error.code, status: error.status } }; }
   }
-
   async _updateUser(attributes) {
     const result = await this._authorized('/auth/v1/user', { method: 'PUT', body: attributes });
-    if (result.error) return result;
-    return { data: { user: result.data ?? null }, error: null };
+    return result.error ? result : { data: { user: result.data ?? null }, error: null };
   }
-
   async _signOut() {
     const session = await this._session({ refreshEarly: false });
     if (!session) return { error: null };
@@ -246,32 +201,19 @@ export class BrowserSupabaseClient {
     this._clearSession();
     return { error: result.ok ? null : result.error };
   }
-
   from(table) {
     if (!/^[a-z_][a-z0-9_]*$/i.test(table)) throw new Error('Tabla inválida');
     return new RestQuery(this, table);
   }
-
-  rpc(name, args = {}) {
-    if (!/^[a-z_][a-z0-9_]*$/i.test(name)) {
-      return Promise.resolve({ data: null, error: { message: 'RPC inválida' } });
-    }
+  rpc(name, args = {}, options = {}) {
+    if (!/^[a-z_][a-z0-9_]*$/i.test(name)) return Promise.resolve({ data: null, error: { message: 'RPC inválida' } });
     return this._authorized('/rest/v1/rpc/' + encodeURIComponent(name), {
-      method: 'POST',
-      body: args
+      method: 'POST', body: args, expectedUserId: options.expectedUserId
     });
   }
-
-  _dataRequest(path, options) {
-    return this._authorized(path, options);
-  }
+  _dataRequest(path, options) { return this._authorized(path, options); }
 }
-
 export function createBrowserSupabaseClient(config = {}, storage = globalThis.localStorage, fetchImpl = globalThis.fetch) {
-  return new BrowserSupabaseClient({
-    projectUrl: config.projectUrl,
-    publishableKey: config.publishableKey,
-    storage,
-    fetchImpl
-  });
+  return new BrowserSupabaseClient({ projectUrl: config.projectUrl, publishableKey: config.publishableKey,
+    storage, fetchImpl, timeoutMs: config.timeoutMs ?? 12000 });
 }
