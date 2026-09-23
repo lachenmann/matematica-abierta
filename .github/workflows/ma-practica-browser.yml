@@ -21,6 +21,16 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare same-origin MathJax 4.0.0
+        run: |
+          npm install --prefix practica --ignore-scripts --no-audit --no-fund --no-package-lock
+          npm run --prefix practica vendor:mathjax
+          test -f practica/vendor/mathjax/tex-chtml.js
+          test -f practica/vendor/mathjax/LICENSE
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -29,7 +39,7 @@ jobs:
         run: |
           python -m pip install 'playwright==1.55.0'
           python -m playwright install --with-deps chromium
-      - name: Browser QA for all algebra pilot exercises and network privacy
+      - name: Browser QA for algebra, accessibility and zero external runtime traffic
         run: |
           python -m http.server 8765 --bind 127.0.0.1 > /tmp/ma-practica-http.log 2>&1 &
           python -u practica/tests/browser-qa.py
