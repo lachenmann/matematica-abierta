@@ -98,30 +98,46 @@ export function auditFirstAttempts(session, item) {
   return { firstCorrect: result.correct, total: result.total, wrongOrdinals, flawless: wrongOrdinals.length === 0 };
 }
 
-/** Política: cualquier respuesta inicial incorrecta cuenta como fallo; reintentar no borra ese dato. */
-export function finishProgress(progress, session, item, finishedAt) {
+export function buildSessionRecord(session, item, finishedAt, ratingEvent = null) {
   const audit = auditFirstAttempts(session, item);
-  const next = normalizeProgress(progress);
-  let delta = null;
-  let ratingBefore = null;
-  let ratingAfter = null;
-  if (session.mode === 'challenge' && !next.ratedIds.includes(item.id)) {
-    ratingBefore = next.ratings[item.area] ?? INITIAL_RATING;
-    const calculation = eloUpdate(ratingBefore, item.provisionalRating, audit.flawless ? 1 : 0);
-    delta = calculation.delta;
-    ratingAfter = calculation.next;
-    if (audit.flawless && delta < 0) throw new Error('Inconsistencia Elo: éxito con puntuación negativa; no se guardó el resultado');
-    next.ratings[item.area] = ratingAfter;
-    next.ratedIds = [...next.ratedIds, item.id];
-  }
-  const record = {
+  const rated = ratingEvent?.applied === true;
+  return {
     id: item.id, title: item.title, area: item.area, mode: session.mode,
     correct: audit.firstCorrect, total: audit.total, wrongOrdinals: audit.wrongOrdinals,
     resolved: session.trace.filter(move => move.correct || move.resolved === true).length,
     solved: audit.flawless, trace: session.trace,
-    finishedAt, delta, ratingBefore, ratingAfter,
-    ratingPolicy: delta === null ? null : 'first-attempt-v03'
+    finishedAt,
+    delta: rated ? ratingEvent.delta : null,
+    ratingBefore: rated ? ratingEvent.ratingBefore : null,
+    ratingAfter: rated ? ratingEvent.ratingAfter : null,
+    ratingPolicy: rated ? 'first-attempt-v03' : null
   };
+}
+
+/** Política: cualquier respuesta inicial incorrecta cuenta como fallo; reintentar no borra ese dato. */
+export function finishProgress(progress, session, item, finishedAt) {
+  const audit = auditFirstAttempts(session, item);
+  const next = normalizeProgress(progress);
+  let ratingEvent = {
+    applied: false,
+    ratingBefore: null,
+    ratingAfter: null,
+    delta: null
+  };
+  if (session.mode === 'challenge' && !next.ratedIds.includes(item.id)) {
+    const ratingBefore = next.ratings[item.area] ?? INITIAL_RATING;
+    const calculation = eloUpdate(ratingBefore, item.provisionalRating, audit.flawless ? 1 : 0);
+    if (audit.flawless && calculation.delta < 0) throw new Error('Inconsistencia Elo: éxito con puntuación negativa; no se guardó el resultado');
+    ratingEvent = {
+      applied: true,
+      ratingBefore,
+      ratingAfter: calculation.next,
+      delta: calculation.delta
+    };
+    next.ratings[item.area] = calculation.next;
+    next.ratedIds = [...next.ratedIds, item.id];
+  }
+  const record = buildSessionRecord(session, item, finishedAt, ratingEvent);
   next.history = [record, ...next.history].slice(0, HISTORY_LIMIT);
   return { progress: next, record };
 }
