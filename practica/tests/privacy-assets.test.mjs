@@ -34,3 +34,16 @@ test('Los módulos de la aplicación no contienen llamadas explícitas de red', 
       `Revisar aviso de privacidad antes de agregar comunicaciones: ${file}`);
   }
 });
+
+
+test('La distribución incluye las licencias GNU declaradas', () => {
+  const rootDir = resolve(root, '..');
+  const gpl = readFileSync(resolve(rootDir, 'COPYING.GPL'), 'utf8');
+  const general = readFileSync(resolve(rootDir, 'LICENSE'), 'utf8');
+  const local = readFileSync(resolve(root, 'LICENSE.md'), 'utf8');
+  assert.match(gpl, /^GNU GENERAL PUBLIC LICENSE\nVersion 3, 29 June 2007/);
+  assert.match(gpl, /END OF TERMS AND CONDITIONS/);
+  assert.match(general, /GPL-3\.0-or-later/);
+  assert.match(local, /GPL-3\.0-or-later/);
+  assert.match(local, /COPYING\.GPL/);
+});
