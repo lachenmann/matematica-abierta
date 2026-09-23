@@ -103,7 +103,10 @@ export class BrowserSupabaseClient {
     this.publishableKey = normalizeKey(publishableKey);
     this.storage = storage;
     if (typeof fetchImpl !== 'function') throw new Error('fetch no está disponible');
-    this.fetchImpl = fetchImpl;
+    // El fetch nativo de Window necesita su receptor global, no esta instancia.
+    // Los dobles de prueba siguen siendo inyectables; las funciones ya enlazadas
+    // conservan su receptor original.
+    this.fetchImpl = fetchImpl.bind(globalThis);
 
     this.auth = {
       getUser: () => this._getUser(),
