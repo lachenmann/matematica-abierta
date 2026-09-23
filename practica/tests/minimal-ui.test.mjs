@@ -16,8 +16,8 @@ test('La interfaz carga los estilos y conserva enunciado, respuesta, MathJax e h
   assert.ok(html.indexOf('href="minimal-ui.css"') > html.indexOf('href="attempt-flow.css"'));
   assert.ok(html.indexOf('href="development.css"') > html.indexOf('href="minimal-ui.css"'));
   for (const id of ['prompt', 'question', 'submit', 'retry', 'give-up', 'next', 'history-toggle', 'history-panel', 'feedback']) tagWithId(id);
-  assert.match(html, /src="vendor\\/mathjax\\/tex-chtml\\.js"/);
-  assert.doesNotMatch(html, /cdn\\.jsdelivr\\.net/);
+  assert.match(html, /src="vendor\/mathjax\/tex-chtml\.js"/);
+  assert.doesNotMatch(html, /cdn\.jsdelivr\.net/);
 });
 
 test('Elo y política permanecen plegados; el desarrollo matemático se muestra por defecto', () => {
