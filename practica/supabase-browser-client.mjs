@@ -231,7 +231,9 @@ export class BrowserSupabaseClient {
   }
 
   async _updateUser(attributes) {
-    return this._authorized('/auth/v1/user', { method: 'PUT', body: attributes });
+    const result = await this._authorized('/auth/v1/user', { method: 'PUT', body: attributes });
+    if (result.error) return result;
+    return { data: { user: result.data ?? null }, error: null };
   }
 
   async _signOut() {
