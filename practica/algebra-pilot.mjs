@@ -19,7 +19,7 @@ export const ALGEBRA_PILOT = [
 {question:'¿Cuál es la conclusión?',options:['Todos los reales son solución','No existe solución','La solución es \\(x=3\\)'],correctIndex:1,notation:'\\(S=\\varnothing\\)',explanation:'Ningún valor de x puede hacer que se cumpla la igualdad 2=5.'}
 ]},
 {id:'MAP-DEMO-008',area:'algebra',difficulty:2,provisionalRating:1050,title:'Extraer factor común',prompt:'Factoriza \\(6x^2-9x\\).',steps:[
-{question:'¿Cuál es el máximo factor monomial común?',options:['\\(3\\)','\\(3x\\)','\\(x^2\\)'],correctIndex:1,notation:'\\(3x\\)',explanation:'El máximo divisor común de los coeficientes es 3 y la menor potencia de x es x.'},
+{question:'¿Cuál es el máximo factor monomial común tomando coeficientes enteros positivos?',options:['\\(3\\)','\\(3x\\)','\\(x^2\\)'],correctIndex:1,notation:'\\(3x\\)',explanation:'Con esta convención, \\(\\gcd(6,9)=3\\) y la menor potencia de \\(x\\) presente en ambos términos es \\(x^1\\): el factor común elegido es \\(3x\\). Si se admiten coeficientes reales arbitrarios sin normalización, «máximo factor» no define una elección única.'},
 {question:'¿Qué expresión queda dentro del paréntesis?',options:['\\(2x-9\\)','\\(2x-6\\)','\\(2x-3\\)'],correctIndex:2,notation:'\\(6x^2=(3x)(2x)\\); \\(-9x=(3x)(-3)\\).',explanation:'Descomponemos cada término por multiplicación, sin dividir por x, de modo que también vale si x=0.'},
 {question:'¿Cuál es la factorización correcta?',options:['\\(3x(2x-3)\\)','\\(3x(2x+3)\\)','\\(3(2x-3)\\)'],correctIndex:0,notation:'\\(6x^2-9x=3x(2x-3)\\)',explanation:'La propiedad distributiva recupera los términos 6x² y −9x.'}
 ]},
@@ -52,6 +52,6 @@ export const ALGEBRA_PILOT = [
 {id:'MAP-DEMO-014',area:'algebra',difficulty:2,provisionalRating:1050,title:'Las dos raíces',prompt:'Resuelve \\(x^2=9\\) en los reales.',steps:[
 {question:'¿Qué candidatos obtenemos al considerar ambos signos?',options:['Solo \\(x=3\\)','\\(x=9\\) o \\(x=-9\\)','\\(x=3\\) o \\(x=-3\\)'],correctIndex:2,notation:'\\(x=\\pm3\\)',explanation:'Tanto 3 como −3 tienen cuadrado 9, de modo que deben considerarse ambos.'},
 {question:'¿Qué ocurre al comprobar el candidato negativo?',options:['\\((-3)^2=9\\)','\\((-3)^2=-9\\)','\\((-3)^2=6\\)'],correctIndex:0,notation:'\\((-3)^2=9\\)',explanation:'Multiplicar dos números negativos da un producto positivo.'},
-{question:'¿Cuál es el conjunto solución?',options:['\\(S=\\{3\\}\\)','\\(S=\\{-3,3\\}\\)','\\(S=\\{-9,9\\}\\)'],correctIndex:1,notation:'\\(S=\\{-3,3\\}\\)',explanation:'Ambos candidatos satisfacen la igualdad y no existen otros reales con cuadrado 9.'}
+{question:'¿Cuál es el conjunto solución?',options:['\\(S=\\{3\\}\\)','\\(S=\\{-3,3\\}\\)','\\(S=\\{-9,9\\)'],correctIndex:1,notation:'\\(S=\\{-3,3\\}\\)',explanation:'La equivalencia \\(x^2=9 \\iff x^2-9=0 \\iff (x-3)(x+3)=0\\) y la propiedad del producto nulo en \\(\\mathbb{R}\\) implican que toda solución es \\(3\\) o \\(-3\\). Recíprocamente, ambos números tienen cuadrado \\(9\\); por tanto, \\(S=\\{-3,3\\}\\) y no hay otras soluciones reales.'}
 ]}
 ];
