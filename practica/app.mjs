@@ -1,12 +1,14 @@
 import { EXERCISES } from './exercises.mjs';
 import { startSession, sessionResult, INITIAL_RATING } from './engine.mjs';
 import { startFlow, answerFlow, retryFlow, surrenderFlow, continueFlow, partialFlowSession } from './attempt-flow.mjs';
-import { emptyProgress, archivePartial, finishProgress } from './progress.mjs';
+import { emptyProgress, archivePartial, finishProgress, buildSessionRecord, HISTORY_LIMIT } from './progress.mjs';
 import { createLocalProgressStore } from './persistence-store.mjs';
 import { canAct, reviewStep } from './view-model.mjs';
 import { renderRating } from './rating-panel.mjs';
 import { setMath, mathElement, clearMath, typesetMath } from './math-dom.mjs';
 import { createSettingsSelection } from './settings-selection.mjs';
+import { createBrowserSupabaseClient, hasStoredAccountSession } from './supabase-browser-client.mjs';
+import { activateAccountSync, resumeAccountSync, finishAccountSession } from './account-runtime.mjs';
 
 const $ = id => document.getElementById(id);
 const el = (tag, text, className = '') => {
@@ -20,6 +22,11 @@ let storage = null;
 try { storage = window.localStorage; } catch { /* El navegador puede bloquear el acceso. */ }
 const progressStore = createLocalProgressStore(storage);
 let { progress: saved, persistent } = progressStore.load();
+let accountClient = null;
+let accountStore = null;
+let accountIdentity = null;
+let accountBusy = false;
+let accountError = null;
 let active;
 let flow;
 let session;
@@ -30,10 +37,97 @@ let historyOpen = false;
 const settingsSelection = createSettingsSelection();
 let committedArea = $('area').value;
 
+function renderAccountState() {
+  const card = $('account-card');
+  const button = $('account-save');
+  if (accountStore && accountIdentity) {
+    card.dataset.state = accountError ? 'error' : 'synced';
+    $('account-badge').textContent = accountIdentity.state === 'recoverable' ? 'Cuenta vinculada' : 'Sincronización activa';
+    $('account-copy').textContent = accountIdentity.state === 'recoverable'
+      ? 'Tu progreso se carga desde tu cuenta y el servidor es la autoridad para el Elo sincronizado.'
+      : 'Tu progreso está asociado a una identidad anónima de Supabase en este navegador. No cierres esa identidad hasta vincular un método recuperable.';
+    $('account-status').textContent = accountError
+      ? accountError
+      : 'Progreso remoto activo. Las nuevas sesiones se guardan en Supabase.';
+    button.hidden = true;
+  } else {
+    card.dataset.state = accountError ? 'error' : 'local';
+    $('account-badge').textContent = 'Solo en este navegador';
+    $('account-copy').textContent = 'Puedes practicar sin cuenta. Si decides guardar tu progreso, se creará una identidad anónima y se importará explícitamente la copia de este navegador.';
+    $('account-status').textContent = accountError ?? 'No se ha iniciado sincronización.';
+    button.hidden = false;
+    button.disabled = accountBusy;
+    button.textContent = accountBusy ? 'Guardando…' : 'Guardar mi progreso';
+  }
+  $('clear').textContent = accountStore ? 'Borrar historial sincronizado' : 'Borrar datos locales';
+}
+
 function storageNotice() {
+  if (accountStore) {
+    $('storage-note').textContent = accountError
+      ? 'La copia local sigue disponible; la sincronización presenta un problema temporal.'
+      : 'Sincronización activa. El servidor conserva el progreso; este navegador mantiene una copia local de apoyo.';
+    return;
+  }
   $('storage-note').textContent = persistent
     ? 'Solo en este navegador. No se envían datos a un servidor.'
     : 'Aviso: el almacenamiento local no está disponible. El progreso podría perderse al recargar.';
+}
+
+async function loadAccountClient() {
+  if (accountClient) return accountClient;
+  const config = await import('./supabase-config.local.mjs');
+  accountClient = createBrowserSupabaseClient({
+    projectUrl: config.projectUrl,
+    publishableKey: config.publishableKey
+  }, storage);
+  return accountClient;
+}
+
+async function enableAccountSync() {
+  if (accountBusy || accountStore) return;
+  accountBusy = true;
+  accountError = null;
+  renderAccountState();
+  try {
+    const client = await loadAccountClient();
+    const result = await activateAccountSync(client, saved);
+    accountStore = result.store;
+    accountIdentity = result.identity;
+    saved = result.progress;
+    save();
+    accountError = null;
+    render();
+  } catch (error) {
+    const message = error?.message || 'error desconocido';
+    accountError = message.includes('supabase-config.local.mjs') || message.includes('dynamically imported')
+      ? 'Esta copia de desarrollo aún no tiene configuración local de Supabase.'
+      : 'No se pudo activar la sincronización: ' + message;
+    renderAccountState();
+    storageNotice();
+  } finally {
+    accountBusy = false;
+    renderAccountState();
+  }
+}
+
+async function resumeAccountIfStored() {
+  if (!hasStoredAccountSession(storage)) return;
+  try {
+    const client = await loadAccountClient();
+    const result = await resumeAccountSync(client);
+    if (!result.store) return;
+    accountStore = result.store;
+    accountIdentity = result.identity;
+    saved = result.progress;
+    save();
+    accountError = null;
+    render();
+  } catch (error) {
+    accountError = 'No se pudo reanudar la sincronización; se usa la copia local. ' + (error?.message || '');
+    renderAccountState();
+    storageNotice();
+  }
 }
 function save() {
   if (!progressStore.save(saved)) persistent = false;
@@ -51,7 +145,23 @@ function archiveCurrent() {
   if (!flow || !active) return;
   const snapshot = partialFlowSession(flow, active);
   const next = archivePartial(saved, snapshot, active, new Date().toISOString());
-  if (next !== saved) { saved = next; save(); }
+  if (next !== saved) {
+    const record = next.history[0];
+    saved = next;
+    save();
+    if (accountStore && record) {
+      accountStore.saveSession(record)
+        .then(() => {
+          accountError = null;
+          renderAccountState();
+        })
+        .catch(error => {
+          accountError = 'La sesión incompleta quedó en la copia local: ' + (error?.message || 'falló la sincronización');
+          renderAccountState();
+          storageNotice();
+        });
+    }
+  }
 }
 function newExercise() {
   const options = pool();
@@ -229,6 +339,7 @@ function render() {
     const current = saved.ratings[active.area] ?? INITIAL_RATING;
     $('rating-current').textContent = `${LABELS[active.area]}: ${current} · Esta sesión: sin cambio. Las variaciones del gráfico son históricas.`;
   }
+  renderAccountState();
   storageNotice();
   const target = $('question');
   clearMath(target);
@@ -295,21 +406,49 @@ function render() {
   updateReview();
   typesetMath($('workspace'));
 }
-function finishIfNeeded() {
+async function finishIfNeeded() {
   if (!session.completed) return;
   const finishedAt = new Date().toISOString();
-  // Validar y puntuar ANTES de modificar el estado local; si hay discrepancia, no guardar una resta.
+  // Validar ANTES de modificar el estado. En modo sincronizado, el servidor decide el Elo.
   const completed = { ...session, finishedAt };
-  const result = finishProgress(saved, completed, active, finishedAt);
   setFlow({ ...flow, session: completed });
+
+  if (accountStore) {
+    accountBusy = true;
+    $('account-status').textContent = 'Sincronizando la sesión…';
+    try {
+      const result = await finishAccountSession(accountStore, completed, active, finishedAt);
+      saved = result.progress;
+      accountIdentity = result.identity;
+      accountError = null;
+      save();
+    } catch (error) {
+      // Degradación segura: conservar la sesión, pero no inventar un movimiento Elo local
+      // cuando el estado del servidor es incierto.
+      const record = buildSessionRecord(completed, active, finishedAt);
+      saved = { ...saved, history: [record, ...saved.history].slice(0, HISTORY_LIMIT) };
+      save();
+      accountError = 'La sesión quedó guardada localmente, pero no se confirmó el Elo remoto: ' + (error?.message || 'falló la sincronización');
+    } finally {
+      accountBusy = false;
+      renderAccountState();
+      storageNotice();
+    }
+    return;
+  }
+
+  // Modo local: conserva exactamente la política histórica del MVP.
+  const result = finishProgress(saved, completed, active, finishedAt);
   saved = result.progress;
   save();
 }
-function submit() {
+
+async function submit() {
   if (!canAct(session, viewStep) || flow.status !== 'ask' || selected === null) return;
+  $('submit').disabled = true;
   setFlow(answerFlow(flow, active, selected));
   selected = null;
-  finishIfNeeded();
+  await finishIfNeeded();
   render();
   if (flow.status === 'wrong') $('retry').focus();
   else $('question').querySelector('h3')?.focus();
@@ -329,15 +468,17 @@ function giveUp() {
   $('feedback').tabIndex = -1;
   $('feedback').focus();
 }
-function next() {
+async function next() {
   if (!canAct(session, viewStep) || flow.status !== 'solution') return;
+  $('next').disabled = true;
   setFlow(continueFlow(flow, active));
   selected = null;
   viewStep = null;
-  finishIfNeeded();
+  await finishIfNeeded();
   render();
   $('question').querySelector('h3')?.focus();
 }
+$('account-save').addEventListener('click', enableAccountSync);
 $('submit').addEventListener('click', submit);
 $('retry').addEventListener('click', retry);
 $('give-up').addEventListener('click', giveUp);
@@ -360,7 +501,26 @@ $('review-return').addEventListener('click', () => {
   else if (!$('submit').disabled) $('submit').focus();
   else $('question').querySelector('h3')?.focus();
 });
-$('clear').addEventListener('click', () => {
+$('clear').addEventListener('click', async () => {
+  if (accountStore) {
+    if (!window.confirm('¿Borrar el historial sincronizado? El Elo y la marca de ejercicios ya puntuados se conservarán.')) return;
+    try {
+      await accountStore.clearHistory();
+      const loaded = await accountStore.load();
+      saved = loaded.progress;
+      accountIdentity = loaded.identity;
+      accountError = null;
+      save();
+    } catch (error) {
+      accountError = 'No se pudo borrar el historial sincronizado: ' + (error?.message || 'error desconocido');
+    }
+    renderHistory();
+    renderRating(saved, active.area);
+    renderAccountState();
+    storageNotice();
+    return;
+  }
+
   if (!window.confirm('¿Borrar el historial y los Elo experimentales guardados en este navegador?')) return;
   saved = emptyProgress();
   save();
@@ -370,3 +530,4 @@ $('clear').addEventListener('click', () => {
 });
 window.addEventListener('load', () => typesetMath(historyOpen ? $('history-panel') : $('workspace')));
 newExercise();
+void resumeAccountIfStored();
