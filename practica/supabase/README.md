@@ -1,37 +1,33 @@
 # MA-Accounts v0.1 — Supabase
 
-Esta carpeta contiene la infraestructura remota de desarrollo para la persistencia opcional de MA-Práctica.
+Infraestructura remota de desarrollo para persistencia opcional de MA-Práctica. Canon operativo: `D:\MA-Practica`, versionado en Git. El PR #168 sigue en borrador; esta integración no está publicada.
 
 ## Estado
 
-Aplicado y verificado en el proyecto de desarrollo `ma-practica-dev`:
+Migraciones aplicadas en `ma-practica-dev`:
 
-- esquema PostgreSQL/RLS en `migrations/0001_accounts_v01.sql`;
-- endurecimiento explícito de permisos RPC en `migrations/0002_accounts_rpc_hardening.sql`;
-- RPC atómica de Elo `ma_record_rated_exercise`;
-- RPC de importación única `ma_import_local_progress`;
-- `AccountProgressStore` y autenticación anónima/vinculación de correo;
-- cliente web mínimo y sin dependencias externas en `../supabase-browser-client.mjs`;
-- control opt-in `Guardar mi progreso` integrado en `app.mjs`;
-- pruebas SQL/RLS y prueba live de Auth real con dos identidades anónimas.
+1. `migrations/0001_accounts_v01.sql`: tablas de progreso, RLS, Elo e importación local.
+2. `migrations/0002_accounts_rpc_hardening.sql`: permisos explícitos de ejecución.
+3. `migrations/0003_accounts_atomic_finish.sql`: historial y Elo conjuntos, identificador de sesión y recibos de reintento.
 
-El proyecto remoto quedó limpio después del QA: los usuarios de prueba y sus filas asociadas fueron eliminados.
+La finalización nueva usa `ma_finish_practice_session` como una única operación transaccional. La interfaz la invoca mediante `AccountProgressStore.finalizeSession`, `AccountOutbox` y `AccountCoordinator`. Las APIs anteriores permanecen por compatibilidad, pero ya no se usan para finalizar sesiones desde la interfaz actualizada.
+
+La prueba SQL real y las pruebas de navegador con API simulada pasaron. Los datos personales preexistentes conservaron sus huellas; las identidades de QA y sus escrituras se revirtieron. Véase el [informe de entrega atómica](../design/MA-Accounts-Entrega-Atomica-v01.md) para procedencia, resultados y límites.
 
 ## Principios de seguridad
 
-- El modo local sigue siendo funcional sin Supabase y no inicia tráfico remoto.
-- La sincronización solo se activa tras una acción explícita del usuario o al reanudar una sesión remota previamente iniciada en ese navegador.
-- Un usuario anónimo creado por Supabase Auth posee identidad y sesión y accede a la base bajo el rol PostgreSQL `authenticated`; RLS protege sus filas igual que las de una cuenta recuperable.
-- `user_ratings` y `rated_exercises` son de solo lectura directa para el navegador. El Elo se modifica únicamente mediante `ma_record_rated_exercise`.
-- La importación del MVP se realiza únicamente mediante `ma_import_local_progress`, solo si el remoto está vacío y sin recalcular movimientos históricos.
-- Las RPC toman `auth.uid()` de la sesión; nunca reciben un `user_id` confiado desde el navegador.
-- La clave `service_role` nunca pertenece al código cliente.
-- Las operaciones Elo e importación se serializan por usuario para evitar carreras entre dispositivos.
-- `practice_sessions` permite al usuario autenticado leer, insertar y borrar únicamente sus propias filas mediante RLS.
+- El modo local sigue funcionando sin Supabase y no inicia tráfico remoto.
+- La sincronización requiere activación explícita o una identidad previamente guardada.
+- Un usuario anónimo de Supabase Auth accede con rol `authenticated`; las políticas RLS restringen sus datos por `auth.uid()`.
+- El navegador no escribe directamente ratings, ejercicios puntuados ni recibos. La RPC deriva el propietario de la sesión autenticada.
+- El servidor serializa la operación por usuario. Un reintento idéntico devuelve el recibo original; otro cuerpo con el mismo identificador se rechaza.
+- Entrenamientos y sesiones parciales no producen Elo. Una nueva sesión de un ejercicio ya puntuado no hereda su delta anterior.
+- Ninguna clave administrativa, `service_role`, contraseña ni token debe incorporarse a Git o al JavaScript distribuido.
+- El Elo sigue siendo personal y experimental. La validación de integridad no equivale a verificar respuestas contra un banco matemático del servidor ni a un sistema antifraude.
 
-## Configuración local de desarrollo
+## Configuración local
 
-La URL del proyecto y la clave publicable no se versionan en el archivo operativo local. Para crear `practica/supabase-config.local.mjs`:
+La configuración operativa vive en `practica/supabase-config.local.mjs`, ignorado por Git. Para crearla por primera vez:
 
 ```powershell
 .\practica\supabase\write-local-config.ps1 `
@@ -39,30 +35,37 @@ La URL del proyecto y la clave publicable no se versionan en el archivo operativ
   -PublishableKey 'sb_publishable_...'
 ```
 
-Ese archivo está incluido en `.gitignore`. El repositorio contiene solamente `supabase-config.example.mjs`.
+No hay que regenerarla después de esta actualización. El archivo versionado de ejemplo es `supabase-config.example.mjs`; ninguna clave reemplaza las políticas RLS.
 
-La clave publicable identifica al proyecto y está diseñada para código cliente; no sustituye RLS. No usar nunca `service_role`, claves secretas ni credenciales administrativas en el navegador.
+Para una copia ya configurada, actualizar con `git pull --ff-only origin feature/ma-practica-v0.1` y recargar el navegador con Ctrl+F5. No borrar localStorage, no recrear la identidad y no volver a aplicar manualmente la migración ya registrada en el proyecto de desarrollo.
 
-## Flujo de identidad
+## Flujo de identidad y pendientes
 
-1. La app funciona inicialmente en modo local.
-2. `Guardar mi progreso` crea una identidad con `signInAnonymously()`.
-3. El progreso local se importa explícitamente si el remoto está vacío.
-4. En recargas posteriores, la sesión remota guardada en ese navegador se reanuda y el servidor pasa a ser autoridad para el Elo sincronizado.
-5. Para volver recuperable esa misma identidad, se vinculará un correo con `updateUser({ email })`.
-6. Cerrar sesión de una identidad anónima no vinculada puede volverla irrecuperable.
+`Guardar mi progreso` crea una identidad anónima e importa explícitamente la copia local sobre un remoto vacío. La importación pendiente tiene un respaldo que permite reconocer una respuesta perdida sin fusionar ratings de estados distintos.
+
+Una sesión completada o archivada se guarda primero en una clave local por propietario e identificador: `ma-practica-outbox-v01:<userId>:<sessionId>`. La cola no se limita a los veinte registros visibles del historial. Conserva el mismo cuerpo durante todos los reintentos y solo retira el envío después de confirmar y cargar su estado remoto.
+
+Mientras no se confirma, la interfaz muestra «Pendiente de sincronización» y el último Elo confirmado. La práctica continúa sin esperar a la red. Se reintenta al iniciar, al recuperar conexión, al volver a la pestaña o mediante el botón de reintento. No hay procesamiento en segundo plano con la app cerrada.
+
+Un fallo al renovar credenciales no borra la identidad ni crea automáticamente otra. Las peticiones tienen un límite de doce segundos. Si la autenticación deja de ser válida de forma permanente, se informa y se conservan los pendientes hasta resolver la cuenta.
+
+La vinculación y recuperación por correo siguen pendientes de integración y validación completas. Cerrar o perder una identidad anónima no vinculada puede dejar el progreso remoto sin un medio de recuperación.
+
+## Borrado e idempotencia
+
+El borrado de historial sincronizado conserva Elo, IDs ya puntuados y `practice_submission_receipts`. Estos recibos guardan identificadores, huella del envío y metadatos de resultado, no las respuestas ni la traza. Evitan que un reintento tardío recree el historial eliminado. Se borran por cascada al eliminar la identidad.
+
+El botón de borrado queda bloqueado mientras existan envíos pendientes o no se haya confirmado la conexión. Borrar datos del sitio desde el navegador es una acción externa a este control y puede eliminar los pendientes y las credenciales.
 
 ## QA reproducible
 
-- `tests/0001_accounts_rls.sql`: RLS, doble puntuación, importación y aislamiento entre usuarios.
-- `tests/accounts-live-auth.ps1`: Auth anónimo real + Data API + RLS desde cliente.
-- `../tests/supabase-browser-client.test.mjs`: sesión, renovación de token, REST y RPC del cliente web.
-- `../tests/account-runtime.test.mjs`: importación explícita, reanudación y finalización remota.
+- `tests/0001_accounts_rls.sql`: regresión de las APIs iniciales.
+- `tests/0003_atomic_finish.sql`: transacción, repetición, conflicto, rollback después de Elo, historial borrado y RLS; termina con `ROLLBACK`.
+- `tests/accounts-live-auth.ps1`: prueba histórica de Auth real y APIs iniciales; no certifica por sí sola la nueva RPC atómica.
+- `../tests/account-outbox.test.mjs`: persistencia de envíos, respuesta perdida, aislamiento y reintento.
+- `../tests/account-offline-auth.test.mjs`: credenciales conservadas, timeout y renovación.
+- `../tests/account-runtime.test.mjs`: finalización mediante una sola RPC y UUID estable.
+- `../tests/account-atomic-browser-qa.py`: Chromium nativo con API simulada, fallos antes/después del commit, recargas y recuperación en cuatro anchos.
+- `../tests/network-qa.py`: modo local sin tráfico externo.
 
-El modo local conserva la auditoría de navegador de cero tráfico externo. En modo sincronizado, el tráfico esperado debe limitarse al origen Supabase configurado.
-
-## Límite todavía abierto
-
-En esta iteración, el movimiento Elo remoto y la inserción de `practice_sessions` son dos operaciones consecutivas. La interfaz conserva localmente una sesión si falla la red y evita inventar un movimiento Elo local, pero todavía falta hacer **idempotente/atómica la finalización completa de una sesión** para cubrir de forma rigurosa una interrupción ocurrida exactamente entre ambas operaciones.
-
-Por tanto, la UI opt-in está lista para QA de desarrollo, pero la degradación offline y recuperación automática siguen siendo una puerta pendiente antes de publicación.
+Los límites detallados y las puertas restantes —almacenamiento no disponible, dispositivos reales, concurrencia real, email y publicación— están en el informe de entrega atómica. No se declara completado todo MA-Accounts por superar este bloque.
