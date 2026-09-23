@@ -1,34 +1,32 @@
 # MA-Práctica — Lote original de Álgebra 01 · Auditoría de integración
 
-Estado: **PILOTO EN PR BORRADOR; NO PUBLICAR NI TRATAR COMO CONTENIDO CANÓNICO APROBADO**.
+Estado: **PILOTO EN PR BORRADOR; PROPUESTA v0.2 CORREGIDA, NO APROBADA; NO PUBLICAR**.
 
-Documento editorial Markdown de trabajo en Drive: [ALGEBRA_LOTE_01_PROPUESTA_OBSIDIAN.md](https://drive.google.com/file/d/1Rdtc6o65pSrDXtyUyRbi45DrT0myMf74/view). Debe revisarse y aceptarse en Obsidian/Drive antes de dar por cerrado el canon. No modifica `MA-APP-0004` ni los libros.
+[Fuente editorial de trabajo en Drive, mismo ID y ruta, versión v0.2](https://drive.google.com/file/d/1Rdtc6o65pSrDXtyUyRbi45DrT0myMf74/view). El documento sigue con estado `PROPUESTA_REVISADA_PENDIENTE_APROBACION`, no reemplaza `MA-APP-0004` ni los libros y no debe tratarse como manuscrito canónico aprobado. La app es derivada: nunca prevalece sobre Obsidian/Drive.
 
 ## Procedencia y cobertura
 
-Diez problemas originales, IDs `MAP-DEMO-005`–`MAP-DEMO-014`. No se importaron problemas de libros privados ni de bancos externos. Técnicas: ecuaciones con fracciones, identidad, incompatibilidad, factor común, diferencia de cuadrados, producto nulo, inecuaciones, dominio racional, sistemas y raíces con dos signos. `algebra-pilot.mjs` contiene enunciados, opciones, claves, expresiones TeX y explicaciones. El documento de Drive contiene las fichas editoriales de trabajo.
+Diez problemas originales, `MAP-DEMO-005`–`014`, 32 decisiones; banco total de 14 ejercicios incluyendo los cuatro anteriores. No se importaron textos de libros privados ni bancos externos. Áreas: ecuaciones con fracciones, identidad, incompatibilidad, factor común, diferencia de cuadrados, producto nulo, inecuaciones, dominio racional, sistemas y raíces. `practica/algebra-pilot.mjs` contiene la implementación del piloto; la propuesta de Drive contiene las fichas editoriales.
 
-## Auditoría matemática y lógica
+## Auditoría matemática y editorial
 
-- Diez ejercicios, **32 decisiones** (dos ejercicios de cuatro pasos y ocho de tres). El banco total tiene catorce ejercicios; los cuatro IDs anteriores permanecen intactos.
-- Claves comparadas con la tabla independiente de `tests/algebra-pilot.test.mjs`; opciones diferenciadas, explicaciones, TeX delimitado y recorridos completos.
-- Controles matemáticos: sustitución, identidad y contradicción, muestras para inecuaciones, restricción de denominadores, producto nulo, sistemas y raíces.
-- `MAP-DEMO-008`: la distributividad justifica la factorización sin dividir por x; **pendiente precisar** que el máximo factor monomial común se toma con coeficiente entero positivo, pues sobre coeficientes reales sin convención no hay máximo escalar. Comentario específico registrado en la propuesta de Drive.
-- `MAP-DEMO-014`: las soluciones ±3 son correctas, pero **pendiente completar** la justificación de que son todas las soluciones reales mediante `(x−3)(x+3)=0` y el principio del producto nulo. Comentario específico registrado en Drive.
-- Prerrequisitos y distractores: matriz de contenidos propuesta en comentario de Drive; falta revisión didáctica y aceptación por el autor. Las dificultades/Elo son ilustrativas, no mediciones psicométricas.
-- La regla Elo `first-attempt-v03` y puntuaciones históricas no se modificaron. Cada ID nuevo puntúa una sola vez por navegador; repetición y entrenamiento no puntúan.
+- Las 32 claves y recorridos del prototipo se cotejaron en `tests/algebra-pilot.test.mjs`, con controles de opciones, TeX, sustitución, dominio, producto nulo, signos y sistemas. Son pruebas de funcionamiento/matemática elemental, no formalización Lean ni evaluación didáctica con usuarios.
+- **MAP-DEMO-008/P1, propuesta v0.2:** se especificó que «máximo factor monomial común» usa coeficientes enteros positivos. Entonces el MCD positivo de 6 y 9 es 3, la mínima potencia común es x, y el factor elegido es 3x. Se conserva la justificación distributiva sin dividir por x, válida en x=0. La redacción de la pregunta y explicación del JS actual aún es la anterior.
+- **MAP-DEMO-014/P3, propuesta v0.2:** se agregó el argumento de necesidad y suficiencia: x²=9 ⇔ (x−3)(x+3)=0; producto nulo implica x=±3 y ambos satisfacen la igualdad. La explicación JS actual aún es la anterior.
+- **Matriz pedagógica v0.2:** diez fichas con prerrequisitos, objetivo y distractores paso a paso; distingue hipótesis sobre posibles errores de diagnósticos validados. La evaluación didáctica con lectores sigue pendiente.
+- El archivo de Drive se actualizó **in situ con el mismo ID** y se comprobó su lectura posterior (14 841 bytes). Las tres observaciones de Drive tienen respuestas de implementación, pero siguen abiertas hasta la aprobación del autor.
+- **Invariante editorial:** se mantuvieron los diez IDs, los 32 pasos, claves, alternativas y soluciones. Solo existen dos diferencias de redacción nuevas y deliberadas entre la propuesta v0.2 y el JS (008/P1 y 014/P3); no actualizar el JS, motores, Elo ni tests correspondientes antes de aceptar el texto de Drive.
+- Los campos `difficulty` y `provisionalRating` son ilustrativos y no calibrados; no constituyen mediciones de capacidad ni autorizan cambios del Elo.
 
-## QA real en navegador (22-09-2026)
+## QA técnico y accesibilidad
 
-- [Chromium + Playwright, ejecución #6](https://github.com/lachenmann/matematica-abierta/actions/runs/35801941611): **aprobada**. `tests/browser-qa.py` completa cada uno de los diez problemas en 320, 375, 430 y 1280 px: **40 recorridos completos, 128 decisiones**. Comprueba composición MathJax real, pasos visibles y revisión de la planilla, historial, ausencia de overflow horizontal de página y errores JavaScript.
-- Prueba adicional de desafío: fallo intencional en el primer paso, reintento, persistencia del primer error en la ficha, 3/4 primeros aciertos, variación de Elo experimental y error histórico. El simulador matemático y la suite de Node siguen siendo controles independientes.
-- Se detectó un defecto real: MathJax Explorer interceptaba el clic sobre la fórmula en un botón de la planilla; se corrigió exclusivamente su superficie de clic con CSS `pointer-events: none` en los `mjx-container` de `trace-step`. Las expresiones del panel explicativo mantienen interacción normal. La nueva prueba reprodujo y verificó el arreglo.
-- [12 capturas de evidencia de esa ejecución](https://github.com/lachenmann/matematica-abierta/actions/runs/35801941611/artifacts/10726446210): tres fichas por viewport; inspeccionadas capturas a 320 px y 1280 px. La inspección de capturas no equivale a una auditoría de lector de pantalla ni a pruebas en dispositivos físicos.
-- `math-dom.mjs` conserva texto de reserva cuando falla el CDN. **Pendiente prueba específica de fallo de red/CDN**, navegación integral por teclado y lectura por tecnología asistiva; también contraste automatizado o especializado y prueba en móviles físicos.
+- [QA real Chromium #9](https://github.com/lachenmann/matematica-abierta/actions/runs/35802301443): 10 problemas × 4 viewports 320/375/430/1280 px, 40 recorridos y 128 decisiones; MathJax, revisión de pasos, historial, overflow global y reintentos comprobados. Se corrigió la interceptación de clic en fórmulas de la planilla.
+- [Auditoría de accesibilidad/robustez v0.1](AUDITORIA-ACCESIBILIDAD-ROBUSTEZ-v01.md): el cierre técnico posterior reporta 80/80 pruebas Node; [motor #101](https://github.com/lachenmann/matematica-abierta/actions/runs/35804655469), [Chromium #11](https://github.com/lachenmann/matematica-abierta/actions/runs/35804655416) y [Quarto #459](https://github.com/lachenmann/matematica-abierta/actions/runs/35804655419) aprobados. Teclado, foco, contraste automatizado AA y fallos normales/parciales/totales de MathJax cubiertos.
+- Ninguna prueba automatizada sustituye la evaluación humana de lector de pantalla, pronunciación de expresiones matemáticas y dispositivos físicos, todavía pendientes. La exclusión de `practica/` en Quarto impide la publicación accidental en el sitio generado; el repositorio sigue públicamente visible.
 
-## Pendientes antes de integración pública
+## Puertas antes de publicación
 
-1. Incorporar en la propuesta de Drive las precisiones de `008` y `014`, matriz de prerrequisitos y evaluación de distractores; obtener aceptación editorial y confirmar correspondencia del canónico con el JS derivado.
-2. QA de accesibilidad restante: teclado completo, lector de pantalla, foco en las fórmulas de la planilla, contraste y fallback sin MathJax.
-3. Revisar Quarto, licencias/CDN, privacidad, enlaces y navegación en PR de integración expresamente autorizado.
-4. Mantener el PR #168 como borrador, sin fusionar ni desplegar. No presentar el Elo como medición calibrada con este banco.
+1. **Aprobación editorial explícita:** revisar y aceptar la propuesta v0.2 en Obsidian/Drive, sin declararla aprobada por la mera escritura de las correcciones. Mantener hipótesis de distractores como provisionales hasta estudio pedagógico con lectores.
+2. **Sincronización posterior a la aprobación:** reproducir exclusivamente las dos modificaciones de redacción aceptadas en `practica/algebra-pilot.mjs`; añadir tests que comprueben correspondencia de texto/clave/IDs entre fuente y derivado. Ejecutar pruebas Node y QA navegador; no alterar ratings ni sesiones históricas.
+3. Validación humana con lector de pantalla/pronunciación matemática y dispositivos físicos; control final de privacidad, CDN/licencias, enlaces y navegación.
+4. Mantener [PR #168](https://github.com/lachenmann/matematica-abierta/pull/168) en borrador, sin fusionar, desplegar ni modificar las ramas de publicación hasta autorización expresa.
