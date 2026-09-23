@@ -1,32 +1,31 @@
 # MA-Práctica — Lote original de Álgebra 01 · Auditoría de integración
 
-Estado: **PILOTO EN PR BORRADOR; PROPUESTA v0.2 CORREGIDA, NO APROBADA; NO PUBLICAR**.
+Estado: **LOTE EDITORIAL v0.2 APROBADO Y SINCRONIZADO EN EL PROTOTIPO; PR EN BORRADOR; NO PUBLICAR**.
 
-[Fuente editorial de trabajo en Drive, mismo ID y ruta, versión v0.2](https://drive.google.com/file/d/1Rdtc6o65pSrDXtyUyRbi45DrT0myMf74/view). El documento sigue con estado `PROPUESTA_REVISADA_PENDIENTE_APROBACION`, no reemplaza `MA-APP-0004` ni los libros y no debe tratarse como manuscrito canónico aprobado. La app es derivada: nunca prevalece sobre Obsidian/Drive.
+**Fuente canónica de este lote:** [MAP-BANK-ALG-LOTE01 v0.2, Markdown en Obsidian/Drive](https://drive.google.com/file/d/1Rdtc6o65pSrDXtyUyRbi45DrT0myMf74/view). El autor aprobó expresamente la v0.2; el archivo se actualizó conservando su Drive ID y su ubicación en el mismo árbol de bóveda que la especificación `MA-APP-0004`. El documento del banco complementa la especificación de la aplicación; no sustituye `MA-APP-0004` ni los libros. El JavaScript es derivado del Markdown.
 
 ## Procedencia y cobertura
 
-Diez problemas originales, `MAP-DEMO-005`–`014`, 32 decisiones; banco total de 14 ejercicios incluyendo los cuatro anteriores. No se importaron textos de libros privados ni bancos externos. Áreas: ecuaciones con fracciones, identidad, incompatibilidad, factor común, diferencia de cuadrados, producto nulo, inecuaciones, dominio racional, sistemas y raíces. `practica/algebra-pilot.mjs` contiene la implementación del piloto; la propuesta de Drive contiene las fichas editoriales.
+Diez problemas originales `MAP-DEMO-005`–`MAP-DEMO-014`, 32 decisiones; 14 ejercicios totales incluidos los cuatro anteriores. No se importaron textos de libros privados ni de bancos externos. Cubre fracciones algebraicas, identidad, incompatibilidad, factor común, diferencia de cuadrados, producto nulo, inecuaciones, dominio racional, sistemas y raíces. Estos IDs de demostración no son `MA-PRB-####` editoriales de libros.
 
-## Auditoría matemática y editorial
+## Cierre matemático y correspondencia fuente → aplicación
 
-- Las 32 claves y recorridos del prototipo se cotejaron en `tests/algebra-pilot.test.mjs`, con controles de opciones, TeX, sustitución, dominio, producto nulo, signos y sistemas. Son pruebas de funcionamiento/matemática elemental, no formalización Lean ni evaluación didáctica con usuarios.
-- **MAP-DEMO-008/P1, propuesta v0.2:** se especificó que «máximo factor monomial común» usa coeficientes enteros positivos. Entonces el MCD positivo de 6 y 9 es 3, la mínima potencia común es x, y el factor elegido es 3x. Se conserva la justificación distributiva sin dividir por x, válida en x=0. La redacción de la pregunta y explicación del JS actual aún es la anterior.
-- **MAP-DEMO-014/P3, propuesta v0.2:** se agregó el argumento de necesidad y suficiencia: x²=9 ⇔ (x−3)(x+3)=0; producto nulo implica x=±3 y ambos satisfacen la igualdad. La explicación JS actual aún es la anterior.
-- **Matriz pedagógica v0.2:** diez fichas con prerrequisitos, objetivo y distractores paso a paso; distingue hipótesis sobre posibles errores de diagnósticos validados. La evaluación didáctica con lectores sigue pendiente.
-- El archivo de Drive se actualizó **in situ con el mismo ID** y se comprobó su lectura posterior (14 841 bytes). Las tres observaciones de Drive tienen respuestas de implementación, pero siguen abiertas hasta la aprobación del autor.
-- **Invariante editorial:** se mantuvieron los diez IDs, los 32 pasos, claves, alternativas y soluciones. Solo existen dos diferencias de redacción nuevas y deliberadas entre la propuesta v0.2 y el JS (008/P1 y 014/P3); no actualizar el JS, motores, Elo ni tests correspondientes antes de aceptar el texto de Drive.
-- Los campos `difficulty` y `provisionalRating` son ilustrativos y no calibrados; no constituyen mediciones de capacidad ni autorizan cambios del Elo.
+- **MAP-DEMO-008/P1:** aprobado y sincronizado en `practica/algebra-pilot.mjs` el alcance del «máximo factor monomial común» con coeficientes enteros positivos. El MCD de 6 y 9 es 3, y la potencia mínima común es x: se obtiene 3x. La factorización se justifica por distributividad y también es válida en x=0, sin dividir por x.
+- **MAP-DEMO-014/P3:** aprobado y sincronizado el argumento de necesidad y suficiencia: x²=9 ⇔ x²−9=0 ⇔ (x−3)(x+3)=0; por producto nulo, x=±3, y ambos valores verifican la ecuación. Son todas las soluciones reales.
+- **Matriz pedagógica:** diez fichas con prerrequisitos, propósito y análisis de opciones incorrectas, aprobadas como material editorial. Sus asociaciones con posibles errores siguen siendo *hipótesis*, no diagnósticos validados: requieren evaluación didáctica con lectores antes de usarse para inferencias sobre estudiantes o calibración.
+- Diferencia de contenido implementada respecto del JS original: **solo la pregunta y explicación 008/P1 y la explicación 014/P3**. Se conservaron enunciados, alternativas, claves, sus 32 posiciones, identificadores, ratings, niveles, soluciones y los cuatro problemas anteriores. Durante la revisión del diff se detectó una omisión accidental de un delimitador TeX en el tercer distractor 014/P3, restituida antes de dar por terminada la sincronización.
+- [Commit de sincronización](https://github.com/lachenmann/matematica-abierta/commit/3534911e4071afa5f63cdb2508c27e2457ee9d9a), [restauración de TeX](https://github.com/lachenmann/matematica-abierta/commit/edd7287b16fb221bafb54da0f35ff2abef60e30a) y [cuatro pruebas nuevas de correspondencia editorial/TeX](https://github.com/lachenmann/matematica-abierta/commit/8e380f910f3aa78073363a26a6092dba59f2de69). `practica/tests/algebra-editorial-v02.test.mjs` fija expresamente pregunta, opciones, justificaciones y conservación de claves/ratings, y comprueba delimitadores y agrupación TeX en las diez fichas.
+- [Motor y sintaxis #105](https://github.com/lachenmann/matematica-abierta/actions/runs/35806650914): **84/84 pruebas Node aprobadas, 0 fallos**, incluyendo los cuatro controles editoriales nuevos. Los tests no son formalización Lean ni calibración empírica.
 
-## QA técnico y accesibilidad
+## QA técnico, accesibilidad y publicación
 
-- [QA real Chromium #9](https://github.com/lachenmann/matematica-abierta/actions/runs/35802301443): 10 problemas × 4 viewports 320/375/430/1280 px, 40 recorridos y 128 decisiones; MathJax, revisión de pasos, historial, overflow global y reintentos comprobados. Se corrigió la interceptación de clic en fórmulas de la planilla.
-- [Auditoría de accesibilidad/robustez v0.1](AUDITORIA-ACCESIBILIDAD-ROBUSTEZ-v01.md): el cierre técnico posterior reporta 80/80 pruebas Node; [motor #101](https://github.com/lachenmann/matematica-abierta/actions/runs/35804655469), [Chromium #11](https://github.com/lachenmann/matematica-abierta/actions/runs/35804655416) y [Quarto #459](https://github.com/lachenmann/matematica-abierta/actions/runs/35804655419) aprobados. Teclado, foco, contraste automatizado AA y fallos normales/parciales/totales de MathJax cubiertos.
-- Ninguna prueba automatizada sustituye la evaluación humana de lector de pantalla, pronunciación de expresiones matemáticas y dispositivos físicos, todavía pendientes. La exclusión de `practica/` en Quarto impide la publicación accidental en el sitio generado; el repositorio sigue públicamente visible.
+- [QA Chromium #15](https://github.com/lachenmann/matematica-abierta/actions/runs/35806650941): aprobado para el commit con sincronización y nuevos tests. Abarca 40 recorridos de los diez problemas en 320/375/430/1280 px, 128 decisiones, MathJax, planilla e historial, además de pruebas de errores/reintentos.
+- [Auditoría de accesibilidad y robustez](AUDITORIA-ACCESIBILIDAD-ROBUSTEZ-v01.md) anterior: teclado, gestión del foco, contraste automatizado AA (temas claro/oscuro) y tres estados de MathJax (normal, CDN bloqueado, fallo posterior) comprobados. No equivale a una sesión humana con tecnología asistiva.
+- [Quarto Check #464](https://github.com/lachenmann/matematica-abierta/actions/runs/35806650930): comprobar su conclusión final para este checkpoint. La configuración `project.render` excluye MA-Práctica del sitio; un control de CI detecta publicación accidental de `practica/`. Los archivos de la rama pueden seguir viéndose en GitHub.
+- Elo `first-attempt-v03`, datos históricos, ratings experimentales, almacenamiento y lógica del motor **no se modificaron**. Los ratings siguen sin calibrar y no deben emplearse como clasificaciones oficiales.
 
-## Puertas antes de publicación
+## Puertas aún pendientes antes de publicar
 
-1. **Aprobación editorial explícita:** revisar y aceptar la propuesta v0.2 en Obsidian/Drive, sin declararla aprobada por la mera escritura de las correcciones. Mantener hipótesis de distractores como provisionales hasta estudio pedagógico con lectores.
-2. **Sincronización posterior a la aprobación:** reproducir exclusivamente las dos modificaciones de redacción aceptadas en `practica/algebra-pilot.mjs`; añadir tests que comprueben correspondencia de texto/clave/IDs entre fuente y derivado. Ejecutar pruebas Node y QA navegador; no alterar ratings ni sesiones históricas.
-3. Validación humana con lector de pantalla/pronunciación matemática y dispositivos físicos; control final de privacidad, CDN/licencias, enlaces y navegación.
-4. Mantener [PR #168](https://github.com/lachenmann/matematica-abierta/pull/168) en borrador, sin fusionar, desplegar ni modificar las ramas de publicación hasta autorización expresa.
+1. Prueba humana con lector de pantalla, pronunciación matemática y dispositivos físicos.
+2. Revisión final de privacidad, dependencia/CDN y licencias, enlaces y navegación; evaluación de distractores con lectores antes de usar su interpretación para adaptar el nivel o inferir capacidades.
+3. Autorización de integración pública por separado. Mantener el [PR #168](https://github.com/lachenmann/matematica-abierta/pull/168) abierto, **en borrador y sin fusionar ni desplegar**; no modificar `main` ni `gh-pages`.
