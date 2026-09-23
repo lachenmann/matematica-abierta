@@ -7,24 +7,39 @@ import { resolve } from 'node:path';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const html = readFileSync(resolve(root, 'index.html'), 'utf8');
 
-test('Aviso visible distingue progreso local de conexiones técnicas al CDN', () => {
+test('Aviso visible confirma datos locales y MathJax servido por el mismo origen', () => {
   assert.match(html, /class="privacy-disclosure"/);
   assert.match(html, /Las respuestas, el historial y el Elo se guardan en este navegador/);
-  assert.match(html, /jsDelivr, que puede recibir datos técnicos de conexión/);
-  assert.match(html, /https:\/\/www\.jsdelivr\.com\/terms\/privacy-policy/);
-  assert.match(html, /target="_blank" rel="noopener noreferrer"/);
-  assert.match(html, /mathjax@4\.0\.0\/tex-chtml\.js" referrerpolicy="no-referrer"/);
+  assert.match(html, /no los transmite/);
+  assert.match(html, /MathJax se sirve desde la misma copia de la aplicación/);
+  assert.match(html, /src="vendor\/mathjax\/tex-chtml\.js"/);
+  assert.doesNotMatch(html, /cdn\.jsdelivr\.net|www\.jsdelivr\.com/);
 });
 
-test('Rutas estáticas resuelven y la portada es un derivado de Quarto', () => {
+test('Rutas estáticas resuelven y la dependencia generada está declarada', () => {
   for (const [, localPath] of html.matchAll(/(?:href|src)="([^."#:][^"#]*|\.{1,2}\/[^"#]*)"/g)) {
     if (/^(?:https?:|data:|mailto:)/.test(localPath)) continue;
     if (localPath === '../index.html') {
       assert.ok(existsSync(resolve(root, '../index.qmd')), 'Falta la fuente de la portada que Quarto renderiza como index.html');
       continue;
     }
+    if (localPath === 'vendor/mathjax/tex-chtml.js') {
+      assert.ok(existsSync(resolve(root, 'package.json')), 'Falta package.json para preparar MathJax');
+      assert.ok(existsSync(resolve(root, 'scripts/vendor-mathjax.mjs')), 'Falta el paso reproducible de MathJax');
+      assert.ok(existsSync(resolve(root, 'vendor/README.md')), 'Falta documentación del artefacto local de MathJax');
+      continue;
+    }
     assert.ok(existsSync(resolve(root, localPath)), `Recurso local ausente: ${localPath}`);
   }
+});
+
+test('MathJax queda fijado en 4.0.0 y no ejecuta scripts de instalación propios', () => {
+  const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8'));
+  assert.equal(pkg.dependencies.mathjax, '4.0.0');
+  assert.equal(pkg.overrides['@mathjax/mathjax-newcm-font'], '4.0.0');
+  const vendor = readFileSync(resolve(root, 'scripts/vendor-mathjax.mjs'), 'utf8');
+  assert.match(vendor, /metadata\.version !== '4\.0\.0'/);
+  assert.match(vendor, /metadata\.license !== 'Apache-2\.0'/);
 });
 
 test('Los módulos de la aplicación no contienen llamadas explícitas de red', () => {
@@ -34,7 +49,6 @@ test('Los módulos de la aplicación no contienen llamadas explícitas de red', 
       `Revisar aviso de privacidad antes de agregar comunicaciones: ${file}`);
   }
 });
-
 
 test('La distribución incluye las licencias GNU declaradas', () => {
   const rootDir = resolve(root, '..');
