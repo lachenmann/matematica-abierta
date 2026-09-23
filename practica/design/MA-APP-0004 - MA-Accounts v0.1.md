@@ -39,19 +39,21 @@ No se requieren nombre real, alias público, fecha de nacimiento, avatar ni perf
 
 La aplicación debe consumir una interfaz abstracta de almacenamiento en lugar de acoplarse directamente a `localStorage`.
 
-Operaciones mínimas:
+Contrato local mínimo:
 
 - `load()` → estado normalizado;
-- `save(progress)` → persistencia del estado;
-- `clear()` → borrado del estado administrado por ese adaptador;
-- `kind` → `local` o `account`;
+- `save(progress)` → persistencia local;
+- `clear()` → borrado local;
+- `kind` → `local`;
 - `isAvailable()` → disponibilidad del adaptador.
 
-Adaptadores previstos:
+El adaptador remoto **no acepta sobrescrituras arbitrarias del Elo**. `AccountProgressStore` expone operaciones orientadas a eventos: `load()`, `recordRatedExercise(...)`, `saveSession(record)`, `importLocal(snapshot)` y `clearHistory()`. El movimiento Elo remoto se efectúa únicamente mediante RPC atómica; el cliente no puede escribir directamente `user_ratings` ni `rated_exercises`.
+
+Adaptadores implementados/preparados:
 
 - `LocalProgressStore`: encapsula el comportamiento actual de `localStorage`;
-- `AccountProgressStore`: sincroniza con Supabase y conserva caché local;
-- durante la transición, el motor matemático no conoce cuál adaptador está activo.
+- `AccountProgressStore`: reconstruye progreso remoto, registra eventos Elo por RPC, guarda sesiones e importa progreso local una única vez;
+- durante la transición, `app.mjs` continúa usando solo el adaptador local para no activar tráfico remoto antes de configurar y validar Supabase.
 
 ## 4. Esquema remoto v0.1
 
@@ -108,7 +110,7 @@ Crear migración SQL con tablas, índices, RLS y función atómica de Elo. No ej
 
 ### C. Adaptador de cuenta
 
-Implementar `AccountProgressStore`, autenticación anónima y vinculación opcional por correo. El adaptador debe tolerar pérdida temporal de red y no modificar el motor de ejercicios.
+`AccountProgressStore` y las funciones de autenticación ya están implementados contra una interfaz Supabase inyectada y cubiertos con dobles de prueba. La autenticación prevista usa `signInAnonymously()`; la vinculación de correo conserva la identidad mediante `updateUser({ email })`, sujeta a la verificación/configuración de Supabase. Falta conectar un proyecto real y ejecutar pruebas de integración.
 
 ### D. Interfaz
 
@@ -136,7 +138,7 @@ MA-Accounts v0.1 se considera implementado cuando:
 
 **Inicio:** 23-09-2026.
 
-La abstracción de persistencia, el snapshot de importación y la migración SQL/RLS ya están preparados en la rama de MA-Práctica. La siguiente tarea es conectar un proyecto Supabase, revisar/aplicar la migración y construir `AccountProgressStore`, trabajando desde `D:\\MA-Practica`.
+La abstracción local, `AccountProgressStore`, autenticación anónima/vinculación de correo, snapshot de importación y migración SQL/RLS están preparados en la rama de MA-Práctica. La migración incluye importación única sobre una cuenta remota vacía y serialización por usuario para evitar carreras entre dispositivos. La siguiente tarea es conectar un proyecto Supabase real, revisar/aplicar la migración y ejecutar QA de integración, trabajando desde `D:\\MA-Practica`.
 
 
 ## 11. Ubicación canónica
