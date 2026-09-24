@@ -26,6 +26,9 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [6]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Álgebra de derivadas y regla de la cadena {#sec-t1-c08}

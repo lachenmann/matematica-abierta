@@ -38,6 +38,9 @@ license: GFDL-1.3-or-later
 number-sections: true
 number-depth: 2
 number-offset: [2]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Sucesiones y la primera noción rigurosa de límite {#sec-t1-c04}

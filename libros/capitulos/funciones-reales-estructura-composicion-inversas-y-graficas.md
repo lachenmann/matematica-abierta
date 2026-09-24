@@ -45,6 +45,9 @@ license: GFDL-1.3-or-later
 number-sections: true
 number-depth: 2
 number-offset: [1]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Funciones reales: estructura, composición, inversas y gráficas {#sec-t1-c03}

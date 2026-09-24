@@ -27,6 +27,9 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [7]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Derivación de funciones elementales, inversas e implícitas {#sec-t1-c09}

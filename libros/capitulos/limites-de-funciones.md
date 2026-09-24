@@ -23,6 +23,9 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [3]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Límites de funciones {#sec-t1-c05}

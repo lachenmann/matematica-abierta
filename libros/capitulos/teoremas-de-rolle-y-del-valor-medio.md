@@ -28,6 +28,9 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [8]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Teoremas de Rolle y del valor medio {#sec-t1-c10}
