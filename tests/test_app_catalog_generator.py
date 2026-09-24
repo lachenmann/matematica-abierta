@@ -1,4 +1,3 @@
-import json
 import sys
 import tempfile
 import unittest
@@ -81,16 +80,40 @@ title: "Índice"
                 encoding="utf-8",
             )
 
-            catalog = build_catalog(root)
+            catalog = build_catalog(
+                root,
+                generated_at="2026-09-24T12:00:00Z",
+            )
 
             self.assertEqual(catalog["schemaVersion"], 1)
-            self.assertEqual(catalog["generatedAt"], "2026-09-24T00:00:00Z")
+            self.assertEqual(catalog["generatedAt"], "2026-09-24T12:00:00Z")
             self.assertEqual(len(catalog["items"]), 1)
             self.assertEqual(catalog["items"][0]["id"], "MA-CON-0001")
             self.assertEqual(
                 catalog["items"][0]["path"],
                 "/conceptos/publicado.html",
             )
+
+    def test_book_id_maps_to_parent_id(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "capitulo.md").write_text(
+                """---
+title: "Capítulo"
+content-id: MA-BCH-9999
+content-type: book-chapter
+book-id: MA-BOK-9999
+status: published
+---
+""",
+                encoding="utf-8",
+            )
+
+            catalog = build_catalog(
+                root,
+                generated_at="2026-09-24T12:00:00Z",
+            )
+            self.assertEqual(catalog["items"][0]["parentId"], "MA-BOK-9999")
 
     def test_duplicate_ids_fail_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -108,6 +131,40 @@ status: published
                 )
 
             with self.assertRaisesRegex(ValueError, "duplicate content-id"):
+                build_catalog(root)
+
+    def test_noncanonical_type_fails_closed(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "x.md").write_text(
+                """---
+title: "X"
+content-id: MA-APP-0001
+content-type: interactive-application
+status: published
+---
+""",
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "non-canonical content-type"):
+                build_catalog(root)
+
+    def test_id_prefix_must_match_type(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "x.md").write_text(
+                """---
+title: "X"
+content-id: MA-PRB-0001
+content-type: concept
+status: published
+---
+""",
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "expected prefix MA-CON-"):
                 build_catalog(root)
 
 
