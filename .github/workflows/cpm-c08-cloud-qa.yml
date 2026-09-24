@@ -1,0 +1,145 @@
+name: CPM C08 Cloud Visual QA
+
+# Nunca se incorpora un manuscrito abierto al repositorio público.
+# Este workflow usa copias efímeras descargadas de Drive con una identidad autorizada.
+on:
+  push:
+    branches:
+      - cpm/cloud-qa-c08
+    paths:
+      - scripts/cpm_drive_cloud_qa.py
+      - .github/workflows/cpm-c08-cloud-qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cpm-c08-visual-qa
+  cancel-in-progress: false
+
+jobs:
+  visual-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      CPM_ROOT: /tmp/cpm-c08-workspace
+      CPM_DRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.CPM_DRIVE_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - name: Check out infrastructure code only
+        uses: actions/checkout@v4
+
+      - name: Require explicit Drive authorization
+        shell: bash
+        run: |
+          if [ -z "$CPM_DRIVE_SERVICE_ACCOUNT_JSON" ]; then
+            echo 'AUTHORIZATION_REQUIRED: configure CPM_DRIVE_SERVICE_ACCOUNT_JSON and grant the service account Drive access.' >&2
+            exit 2
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Drive client and Playwright
+        run: |
+          python -m pip install --disable-pip-version-check google-api-python-client google-auth playwright==1.55.0
+          python -m playwright install --with-deps chromium
+
+      - name: Download exact private Drive snapshot into temporary runner
+        run: python scripts/cpm_drive_cloud_qa.py download --root "$CPM_ROOT"
+
+      - name: Run strict static preflight on unmodified Quarto output
+        run: |
+          python "$CPM_ROOT/00 - Administración/CPM_C08_QA_MATHJAX4_NAVEGACION_v01.py" "$CPM_ROOT" --preflight
+
+      - name: Run real MathJax 4, CHTML, navigation, viewport and screenshot checks
+        id: browser
+        continue-on-error: true
+        shell: bash
+        run: |
+          CHROME="$(python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as playwright:
+              print(playwright.chromium.executable_path)
+          PY
+          )"
+          CPM_CHROME_BIN="$CHROME" python "$CPM_ROOT/00 - Administración/CPM_C08_QA_MATHJAX4_NAVEGACION_v01.py" "$CPM_ROOT"
+
+      # Los registros de un repositorio público no deben mostrar páginas privadas ni URLs
+      # del manuscrito. Solo se emiten nombres de comprobaciones y estadísticas agregadas.
+      - name: Report privacy-safe visual failure categories
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, re
+          path = pathlib.Path(os.environ['CPM_ROOT']) / '99 - Build/QA_C08_MATHJAX4_NAV/CPM_C08_QA_MATHJAX4_NAV_RESULTADO.json'
+          if not path.is_file():
+              print('DIAGNOSTICS_UNAVAILABLE: no browser JSON was generated')
+          else:
+              report = json.loads(path.read_text(encoding='utf-8'))
+              browser = report.get('browser', {})
+              print('QA_STATUS:', report.get('status', 'UNKNOWN'))
+              print('QA_FAILURE_COUNT:', len(browser.get('failures', [])))
+              for viewport in browser.get('viewports', []):
+                  width = viewport.get('width_requested', 'unknown')
+                  if 'error' in viewport:
+                      print('QA_VIEWPORT_EXCEPTION:', width)
+                  for name, passed in viewport.get('checks', {}).items():
+                      if not passed:
+                          print('QA_CHECK_FAILED:', width, name)
+              print('QA_JS_ERROR_COUNT:', len(browser.get('javascript_errors', [])))
+              print('QA_FAILED_REQUEST_COUNT:', len(browser.get('failed_requests', [])))
+              print('QA_HTTP_ERROR_COUNT:', len(browser.get('http_errors', [])))
+              classified = set()
+              for failure in browser.get('failures', []):
+                  match = re.match(r'^(\d+px) ([a-z_]+)(?::|\s)', failure)
+                  if match:
+                      classified.add(match.group(1) + ' ' + match.group(2))
+                  elif 'errores JavaScript' in failure:
+                      classified.add('javascript_errors')
+                  elif 'recursos no descargados' in failure:
+                      classified.add('failed_requests')
+                  elif 'errores HTTP' in failure:
+                      classified.add('http_errors')
+                  else:
+                      classified.add('other_failure')
+              for item in sorted(classified):
+                  print('QA_FAILURE_CATEGORY:', item)
+              for failure in browser.get('failures', []):
+                  if ' destino ausente: ' not in failure:
+                      continue
+                  target = pathlib.Path(failure.split(' destino ausente: ', 1)[1])
+                  root = pathlib.Path(os.environ['CPM_ROOT']) / '99 - Build/_migration_preview'
+                  try:
+                      relative = target.relative_to(root)
+                  except ValueError:
+                      print('QA_NAV_TARGET_OUTSIDE_PREVIEW')
+                      continue
+                  # Los registros solo muestran la ruta estructural y el estado del archivo.
+                  print('QA_NAV_TARGET:', relative.as_posix(), 'EXISTS:', target.is_file())
+                  print('QA_NAV_EXPECTED_TOMO_II_EXISTS:', (root / '02 - Tomo II/index.html').is_file())
+          PY
+
+      - name: Store JSON and screenshots in private canonical Drive build folder
+        if: always()
+        shell: bash
+        run: |
+          if [ -f "$CPM_ROOT/99 - Build/QA_C08_MATHJAX4_NAV/CPM_C08_QA_MATHJAX4_NAV_RESULTADO.json" ]; then
+            python scripts/cpm_drive_cloud_qa.py upload --root "$CPM_ROOT" --run-id "$GITHUB_RUN_ID"
+          else
+            echo 'NO_EVIDENCE: stage/preflight failed before an executable browser report could be produced.' >&2
+          fi
+
+      - name: Block approval whenever the browser gate fails
+        if: always()
+        env:
+          BROWSER_RESULT: ${{ steps.browser.outcome }}
+        run: |
+          if [ "$BROWSER_RESULT" != success ]; then
+            echo 'EXACT_VISUAL_QA_NOT_PASSED: C08 remains OPEN and must not be published.' >&2
+            exit 1
+          fi
+          echo 'AUTOMATED_CHECKS_PASSED: human visual approval and publication are still pending.'
