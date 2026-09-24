@@ -25,6 +25,9 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [5]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # La derivada y la aproximación lineal local {#sec-t1-c07}
