@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Generate the public Matemática Abierta mobile catalog.
 
-This script intentionally uses only the Python standard library. It parses the
-small, controlled subset of YAML front matter used by the catalog contract and
-ignores nested metadata it does not need.
+The generator uses only the Python standard library and reads the controlled
+subset of YAML front matter defined by Matemática Abierta's editorial schema.
 
-Only documents that explicitly declare all of the following are exported:
-- content-id
-- content-type
-- status: published
+Export policy is fail-closed:
+- only documents with content-id, content-type and status: published are exported;
+- draft: true is always excluded;
+- non-canonical content types are rejected;
+- duplicate IDs and duplicate rendered paths are rejected;
+- ID prefixes must agree with content-type.
 
-Draft/private material is therefore excluded by default.
+No private repository or private route is consulted by this script.
 """
 
 from __future__ import annotations
@@ -18,23 +19,47 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 SITE_BASE_URL = "https://matematicaabierta.cl"
 SCHEMA_VERSION = 1
 
+CANONICAL_TYPES = {
+    "concept",
+    "problem",
+    "article",
+    "lesson",
+    "book-chapter",
+    "course",
+    "book",
+}
+
+TYPE_ID_PREFIX = {
+    "concept": "MA-CON-",
+    "problem": "MA-PRB-",
+    "article": "MA-ART-",
+    "lesson": "MA-LES-",
+    "book-chapter": "MA-BCH-",
+    "course": "MA-CRS-",
+    "book": "MA-BOK-",
+}
+
 SCALAR_FIELDS = {
     "content-id": "id",
     "content-type": "type",
     "title": "title",
     "description": "description",
+    "author": "author",
+    "collection": "collection",
     "status": "status",
     "date-modified": "dateModified",
     "level": "level",
     "difficulty": "difficulty",
     "license": "license",
     "parent-id": "parentId",
+    "book-id": "parentId",
 }
 
 LIST_FIELDS = {
@@ -75,7 +100,7 @@ def _parse_scalar(raw: str) -> Any:
 
 
 def parse_front_matter(text: str) -> dict[str, Any]:
-    """Parse the catalog-relevant subset of front matter."""
+    """Parse only the catalog-relevant subset of front matter."""
     match = FRONT_MATTER_RE.search(text)
     if not match:
         return {}
@@ -149,10 +174,15 @@ def iter_source_documents(root: Path):
         yield path, relative
 
 
-def build_catalog(root: Path) -> dict[str, Any]:
+def _utc_now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def build_catalog(root: Path, *, generated_at: str | None = None) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
     seen_ids: dict[str, str] = {}
     seen_paths: dict[str, str] = {}
+    errors: list[str] = []
 
     for path, relative in iter_source_documents(root):
         metadata = parse_front_matter(path.read_text(encoding="utf-8-sig"))
@@ -165,22 +195,43 @@ def build_catalog(root: Path) -> dict[str, Any]:
             continue
         if metadata.get("draft") is True:
             continue
+
+        relative_str = relative.as_posix()
+
         if not metadata.get("title"):
-            raise ValueError(f"{relative}: published content has no title")
+            errors.append(f"{relative_str}: published content has no title")
+            continue
+
+        if content_type not in CANONICAL_TYPES:
+            errors.append(
+                f"{relative_str}: non-canonical content-type {content_type!r}"
+            )
+            continue
+
+        expected_prefix = TYPE_ID_PREFIX[str(content_type)]
+        if not str(content_id).startswith(expected_prefix):
+            errors.append(
+                f"{relative_str}: content-id {content_id!r} does not match "
+                f"content-type {content_type!r} (expected prefix {expected_prefix})"
+            )
 
         public_path = source_to_public_path(relative)
 
         if content_id in seen_ids:
-            raise ValueError(
-                f"duplicate content-id {content_id}: {seen_ids[content_id]} and {relative}"
+            errors.append(
+                f"duplicate content-id {content_id}: "
+                f"{seen_ids[str(content_id)]} and {relative_str}"
             )
-        if public_path in seen_paths:
-            raise ValueError(
-                f"duplicate public path {public_path}: {seen_paths[public_path]} and {relative}"
-            )
+        else:
+            seen_ids[str(content_id)] = relative_str
 
-        seen_ids[content_id] = relative.as_posix()
-        seen_paths[public_path] = relative.as_posix()
+        if public_path in seen_paths:
+            errors.append(
+                f"duplicate public path {public_path}: "
+                f"{seen_paths[public_path]} and {relative_str}"
+            )
+        else:
+            seen_paths[public_path] = relative_str
 
         item: dict[str, Any] = {
             "id": str(content_id),
@@ -204,18 +255,15 @@ def build_catalog(root: Path) -> dict[str, Any]:
 
         items.append(item)
 
-    items.sort(key=lambda item: item["id"])
+    if errors:
+        formatted = "\n".join(f"- {error}" for error in errors)
+        raise ValueError(f"catalog validation failed:\n{formatted}")
 
-    modified_dates = [
-        str(item["dateModified"])
-        for item in items
-        if item.get("dateModified")
-    ]
-    snapshot_date = max(modified_dates) if modified_dates else "1970-01-01"
+    items.sort(key=lambda item: item["id"])
 
     return {
         "schemaVersion": SCHEMA_VERSION,
-        "generatedAt": f"{snapshot_date}T00:00:00Z",
+        "generatedAt": generated_at or _utc_now_iso(),
         "siteBaseUrl": SITE_BASE_URL,
         "items": items,
     }
