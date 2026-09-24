@@ -1,7 +1,7 @@
 ---
 title: "Derivación de funciones elementales, inversas e implícitas"
 description: "Capítulo 8 de Cálculo para matemáticos: inversas, raíces, potencias racionales y derivación implícita justificada; 40 ejercicios resueltos."
-content-id: MA-BCH-0067
+content-id: MA-BCH-0066
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
@@ -20,10 +20,10 @@ prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
+  - MA-BCH-0077
   - MA-BCH-0063
   - MA-BCH-0064
   - MA-BCH-0065
-  - MA-BCH-0066
 number-sections: true
 number-depth: 2
 number-offset: [7]

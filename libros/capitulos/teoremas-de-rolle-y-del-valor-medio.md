@@ -20,11 +20,11 @@ prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
+  - MA-BCH-0077
   - MA-BCH-0063
   - MA-BCH-0064
   - MA-BCH-0065
   - MA-BCH-0066
-  - MA-BCH-0067
 number-sections: true
 number-depth: 2
 number-offset: [8]
