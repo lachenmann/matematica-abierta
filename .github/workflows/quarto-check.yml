@@ -17,6 +17,24 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v7
 
+      - name: Test and generate public mobile catalog
+        run: |
+          python3 -m unittest tests/test_app_catalog_generator.py
+          python3 tools/generate_app_catalog.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("app/catalog-v1.json")
+          assert p.is_file() and p.stat().st_size > 0
+          data = json.loads(p.read_text(encoding="utf-8"))
+          assert data["schemaVersion"] == 1
+          assert data["siteBaseUrl"] == "https://matematicaabierta.cl"
+          assert data["items"], "catalog must contain published items"
+          ids = [item["id"] for item in data["items"]]
+          assert len(ids) == len(set(ids)), "catalog ids must be unique"
+          print(f"catalog-v1 QA: {len(ids)} items")
+          PY
+
       - name: Check laboratory JavaScript and interactions
         run: |
           node --check teoria/resultados/interactive/desigualdad-triangular.js
@@ -67,6 +85,17 @@ jobs:
           grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
           grep -q 'MA-APP-0002' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
           grep -q 'desigualdad-cauchy-schwarz.html' _site/teoria/resultados/index.html
+
+      - name: Verify rendered mobile catalog
+        run: |
+          test -s _site/app/catalog-v1.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("_site/app/catalog-v1.json").read_text(encoding="utf-8"))
+          assert data["schemaVersion"] == 1
+          assert data["items"]
+          PY
 
       - name: Preserve rendered site for visual and link QA
         uses: actions/upload-artifact@v4
