@@ -1,7 +1,7 @@
 ---
 title: "La derivada y la aproximación lineal local"
 description: "Capítulo 6 de Cálculo para matemáticos. Edición canónica v11."
-content-id: MA-BCH-0064
+content-id: MA-BCH-0065
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
@@ -20,8 +20,8 @@ prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
-  - MA-BCH-0062
   - MA-BCH-0063
+  - MA-BCH-0064
 number-sections: true
 number-depth: 2
 number-offset: [5]
