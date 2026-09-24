@@ -1,7 +1,7 @@
 ---
 title: "Límites de funciones"
 description: "Capítulo 4 de Cálculo para matemáticos. Edición canónica v11."
-content-id: MA-BCH-0062
+content-id: MA-BCH-0063
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
