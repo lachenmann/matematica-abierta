@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0004 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0066 |
+| Capítulo | MA-BCH-0068 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -113,6 +113,9 @@
 | MA-BCH-0063 | book-chapter | Límites de funciones | `libros/capitulos/limites-de-funciones.md` | published |
 | MA-BCH-0064 | book-chapter | Continuidad en la recta: intervalos, compacidad y teoremas fundamentales | `libros/capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md` | published |
 | MA-BCH-0065 | book-chapter | La derivada y la aproximación lineal local | `libros/capitulos/la-derivada-y-la-aproximacion-lineal-local.md` | published |
+| MA-BCH-0066 | book-chapter | Álgebra de derivadas y regla de la cadena | `libros/capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md` | published |
+| MA-BCH-0067 | book-chapter | Derivación de funciones elementales, inversas e implícitas | `libros/capitulos/derivacion-de-funciones-elementales-inversas-e-implicitas.md` | published |
+| MA-BCH-0076 | book-chapter | Teoremas de Rolle y del valor medio | `libros/capitulos/teoremas-de-rolle-y-del-valor-medio.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
