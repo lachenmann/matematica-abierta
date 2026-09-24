@@ -20,6 +20,7 @@ import MatematicaAbierta.Continuo.TerminacionCortes
 import MatematicaAbierta.Continuo.IndicesCortes
 import MatematicaAbierta.Continuo.SemanticaComparadorCortes
 import MatematicaAbierta.Continuo.DecididoresCortesEfectivos
+import MatematicaAbierta.Continuo.SumaCortesReduccion
 
 /-!
 # Matemática Abierta: biblioteca formal
