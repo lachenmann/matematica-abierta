@@ -24,15 +24,15 @@ topics:
   - integracion
   - ecuaciones-diferenciales
 prerequisites: []
-related: 
+related:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
+  - MA-BCH-0077
   - MA-BCH-0063
   - MA-BCH-0064
   - MA-BCH-0065
   - MA-BCH-0066
-  - MA-BCH-0067
   - MA-BCH-0076
 provenance:
   type: synthesis
@@ -83,7 +83,7 @@ Los capítulos posteriores desarrollarán aplicaciones de la derivada, integraci
 1. [**Los números reales: axiomas de cuerpo, orden y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
 2. [**Funciones reales: estructura, composición, inversas y gráficas**](../capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md) (`MA-BCH-0004`).
 3. [**Sucesiones y la primera noción rigurosa de límite**](../capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) (`MA-BCH-0010`).
-4. [**Límites de funciones**](../capitulos/limites-de-funciones.md) (`MA-BCH-0067`).
+4. [**Límites de funciones**](../capitulos/limites-de-funciones.md) (`MA-BCH-0077`).
 5. [**Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**](../capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) (`MA-BCH-0063`).
 6. [**La derivada y la aproximación lineal local**](../capitulos/la-derivada-y-la-aproximacion-lineal-local.md) (`MA-BCH-0064`).
 7. [**Álgebra de derivadas y regla de la cadena**](../capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md) (`MA-BCH-0065`).
