@@ -1,7 +1,7 @@
 ---
 title: "Álgebra de derivadas y regla de la cadena"
 description: "Capítulo 7 de Cálculo para matemáticos: linealidad, producto, cociente, potencias y regla de la cadena; 40 ejercicios resueltos."
-content-id: MA-BCH-0065
+content-id: MA-BCH-0066
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
@@ -20,9 +20,9 @@ prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
-  - MA-BCH-0062
   - MA-BCH-0063
   - MA-BCH-0064
+  - MA-BCH-0065
 number-sections: true
 number-depth: 2
 number-offset: [6]
