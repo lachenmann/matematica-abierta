@@ -24,6 +24,9 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [4]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Continuidad en la recta: intervalos, compacidad y teoremas fundamentales {#sec-t1-c06}
