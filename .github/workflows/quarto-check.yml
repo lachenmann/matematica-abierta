@@ -44,6 +44,17 @@ jobs:
       - name: Render site
         run: quarto render
 
+      - name: Verify MA-Práctica is not accidentally published
+        run: |
+          # La exclusión documentada por Quarto está en project.render, no en .quartoignore.
+          # Comprobar la regla y el resultado real para impedir filtraciones futuras.
+          grep -Fxq '    - "!practica/"' _quarto.yml
+          if test -e _site/practica; then
+            echo 'ERROR: Quarto expuso practica/ antes de autorizar su publicación.' >&2
+            find _site/practica -type f >&2
+            exit 1
+          fi
+
       - name: Verify laboratory assets and rendered page
         run: |
           test -s _site/teoria/resultados/desigualdad-triangular.html
