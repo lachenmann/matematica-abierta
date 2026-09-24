@@ -1,0 +1,574 @@
+# 3C · Matrices
+
+**Estado:** `COTEJADO`  
+**Fuente canónica:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª ed., PDF oficial de 16-08-2026, pp. 69–81.  
+**Licencia:** adaptación/traducción no oficial bajo CC BY-NC 4.0.  
+**Control de versiones:** la errata oficial vigente no registra correcciones específicas para las pp. 69–81. La versión canónica de 16-08-2026 añade, en la demostración de 3.57, el caso separado `c=0`, ausente en la copia de referencia del 25-03-2024; esta edición sigue el texto canónico 2026.
+
+> [TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas, ejemplos, demostraciones y estructura lógica.
+
+## Representación de una aplicación lineal mediante una matriz
+
+Sabemos que si $v_1,\ldots,v_n$ es una base de $V$ y $T:V\to W$ es lineal, entonces los valores
+
+$$
+Tv_1,\ldots,Tv_n
+$$
+
+determinan los valores de $T$ sobre todos los vectores de $V$; véase el lema de la aplicación lineal 3.4. Las matrices proporcionan una manera eficiente de registrar esos valores en términos de una base de $W$.
+
+## 3.29 Definición: matriz, $A_{j,k}$
+
+Sean $m,n$ enteros no negativos. Una **matriz $m$ por $n$** $A$ es un arreglo rectangular de elementos de $\mathbf F$ con $m$ filas y $n$ columnas:
+
+$$
+A=
+\begin{pmatrix}
+A_{1,1}&\cdots&A_{1,n}\\
+\vdots&&\vdots\\
+A_{m,1}&\cdots&A_{m,n}
+\end{pmatrix}.
+$$
+
+La notación $A_{j,k}$ denota la entrada situada en la fila $j$ y columna $k$ de $A$.
+
+## 3.30 Ejemplo: $A_{j,k}$ es la entrada de la fila $j$, columna $k$
+
+Si
+
+$$
+A=
+\begin{pmatrix}
+8&4&5-3i\\
+1&9&7
+\end{pmatrix},
+$$
+
+entonces $A_{2,3}=7$. El primer índice indica la fila y el segundo la columna.
+
+## 3.31 Definición: matriz de una aplicación lineal, $\mathcal M(T)$
+
+Supongamos que $T\in\mathcal L(V,W)$, que $v_1,\ldots,v_n$ es una base de $V$ y que $w_1,\ldots,w_m$ es una base de $W$. La **matriz de $T$ respecto de estas bases** es la matriz $m$ por $n$, denotada por $\mathcal M(T)$, cuyas entradas $A_{j,k}$ están determinadas por
+
+$$
+Tv_k=A_{1,k}w_1+\cdots+A_{m,k}w_m.
+$$
+
+Cuando las bases no están claras por el contexto se usa la notación
+
+$$
+\mathcal M\bigl(T,(v_1,\ldots,v_n),(w_1,\ldots,w_m)\bigr).
+$$
+
+La matriz depende tanto de $T$ como de las bases elegidas. La columna $k$ de $\mathcal M(T)$ contiene precisamente los escalares necesarios para expresar $Tv_k$ en la base $w_1,\ldots,w_m$:
+
+$$
+Tv_k=\sum_{j=1}^m A_{j,k}w_j.
+$$
+
+Si $T$ va de un espacio de dimensión $n$ a uno de dimensión $m$, entonces $\mathcal M(T)$ es una matriz $m$ por $n$.
+
+Cuando $T:\mathbf F^n\to\mathbf F^m$, salvo indicación contraria se usan las bases estándar. En ese caso, la columna $k$ de $\mathcal M(T)$ es el vector de coordenadas de la imagen del $k$-ésimo vector de la base estándar.
+
+## 3.32 Ejemplo: matriz de una aplicación de $\mathbf F^2$ en $\mathbf F^3$
+
+Sea
+
+$$
+T(x,y)=(x+3y,\,2x+5y,\,7x+9y).
+$$
+
+Como
+
+$$
+T(1,0)=(1,2,7),\qquad T(0,1)=(3,5,9),
+$$
+
+respecto de las bases estándar,
+
+$$
+\mathcal M(T)=
+\begin{pmatrix}
+1&3\\
+2&5\\
+7&9
+\end{pmatrix}.
+$$
+
+Cuando trabajemos con $\mathcal P_m(\mathbf F)$, se usará la base estándar
+
+$$
+1,x,x^2,\ldots,x^m
+$$
+
+salvo que el contexto indique otra cosa.
+
+## 3.33 Ejemplo: matriz de la derivación de $\mathcal P_3(\mathbf R)$ en $\mathcal P_2(\mathbf R)$
+
+Sea $D\in\mathcal L(\mathcal P_3(\mathbf R),\mathcal P_2(\mathbf R))$ dada por $Dp=p'$. Como
+
+$$
+(x^n)'=nx^{n-1},
+$$
+
+respecto de las bases estándar,
+
+$$
+\mathcal M(D)=
+\begin{pmatrix}
+0&1&0&0\\
+0&0&2&0\\
+0&0&0&3
+\end{pmatrix}.
+$$
+
+# Suma y multiplicación por escalares de matrices
+
+Durante el resto de esta sección suponemos que $U,V,W$ son de dimensión finita y que se ha elegido una base para cada uno.
+
+## 3.34 Definición: suma de matrices
+
+La suma de dos matrices del mismo tamaño se obtiene sumando las entradas correspondientes. Si $A,C\in\mathbf F^{m,n}$, entonces
+
+$$
+(A+C)_{j,k}=A_{j,k}+C_{j,k}.
+$$
+
+## 3.35 Matriz de una suma de aplicaciones lineales
+
+Si $S,T\in\mathcal L(V,W)$ y se usan las mismas bases, entonces
+
+$$
+\boxed{\mathcal M(S+T)=\mathcal M(S)+\mathcal M(T).}
+$$
+
+La verificación se sigue directamente de las definiciones y se deja al lector.
+
+## 3.36 Definición: multiplicación de una matriz por un escalar
+
+Si $\lambda\in\mathbf F$ y $A$ es una matriz, entonces $\lambda A$ se obtiene multiplicando cada entrada de $A$ por $\lambda$:
+
+$$
+(\lambda A)_{j,k}=\lambda A_{j,k}.
+$$
+
+## 3.37 Ejemplo: suma y multiplicación por escalares
+
+$$
+2\begin{pmatrix}3&1\\-1&5\end{pmatrix}
++
+\begin{pmatrix}4&2\\1&6\end{pmatrix}
+=
+\begin{pmatrix}10&4\\-1&16\end{pmatrix}.
+$$
+
+## 3.38 Matriz de un múltiplo escalar de una aplicación lineal
+
+Si $\lambda\in\mathbf F$ y $T\in\mathcal L(V,W)$, entonces
+
+$$
+\boxed{\mathcal M(\lambda T)=\lambda\mathcal M(T).}
+$$
+
+La verificación también se deja al lector.
+
+## 3.39 Notación: $\mathbf F^{m,n}$
+
+Para enteros positivos $m,n$, el conjunto de todas las matrices $m$ por $n$ con entradas en $\mathbf F$ se denota por
+
+$$
+\mathbf F^{m,n}.
+$$
+
+## 3.40 $\dim\mathbf F^{m,n}=mn$
+
+Con la suma y multiplicación por escalares anteriores, $\mathbf F^{m,n}$ es un espacio vectorial de dimensión
+
+$$
+\boxed{mn}.
+$$
+
+**Demostración.** Los axiomas de espacio vectorial se verifican entrada a entrada. La matriz cero es la identidad aditiva. Las $mn$ matrices que tienen un $1$ en una sola posición y $0$ en todas las demás forman una base; por tanto la dimensión es $mn$. $\square$
+
+# Multiplicación de matrices
+
+Sean $v_1,\ldots,v_n$ una base de $V$, $w_1,\ldots,w_m$ una base de $W$ y $u_1,\ldots,u_p$ una base de $U$. Para
+
+$$
+T:U\to V,\qquad S:V\to W,
+$$
+
+queremos una multiplicación de matrices que haga cierta la identidad
+
+$$
+\mathcal M(ST)=\mathcal M(S)\mathcal M(T).
+$$
+
+Si $\mathcal M(S)=A$ y $\mathcal M(T)=B$, entonces
+
+$$
+(ST)u_k
+=
+\sum_{j=1}^m\left(\sum_{r=1}^n A_{j,r}B_{r,k}\right)w_j.
+$$
+
+Esto motiva la definición siguiente.
+
+## 3.41 Definición: multiplicación de matrices
+
+Si $A$ es una matriz $m$ por $n$ y $B$ es una matriz $n$ por $p$, entonces $AB$ es la matriz $m$ por $p$ definida por
+
+$$
+\boxed{(AB)_{j,k}=\sum_{r=1}^n A_{j,r}B_{r,k}.}
+$$
+
+Por tanto, la entrada $(j,k)$ de $AB$ se obtiene multiplicando las entradas correspondientes de la fila $j$ de $A$ y la columna $k$ de $B$, y sumando los productos.
+
+El producto sólo está definido cuando el número de columnas de la primera matriz coincide con el número de filas de la segunda.
+
+## 3.42 Ejemplo: multiplicación de matrices
+
+$$
+\begin{pmatrix}
+1&2\\3&4\\5&6
+\end{pmatrix}
+\begin{pmatrix}
+6&5&4&3\\2&1&0&-1
+\end{pmatrix}
+=
+\begin{pmatrix}
+10&7&4&1\\26&19&12&5\\42&31&20&9
+\end{pmatrix}.
+$$
+
+La multiplicación de matrices no es conmutativa en general, aunque ambos productos estén definidos. Sí es distributiva y asociativa; véanse los ejercicios 10–12.
+
+## 3.43 Matriz del producto de aplicaciones lineales
+
+Con bases compatibles como las fijadas arriba, si
+
+$$
+T\in\mathcal L(U,V),\qquad S\in\mathcal L(V,W),
+$$
+
+entonces
+
+$$
+\boxed{\mathcal M(ST)=\mathcal M(S)\mathcal M(T).}
+$$
+
+La demostración es precisamente el cálculo que motivó la definición 3.41.
+
+## 3.44 Notación: $A_{j,\boldsymbol\cdot}$ y $A_{\boldsymbol\cdot,k}$
+
+Si $A$ es una matriz $m$ por $n$:
+
+- $A_{j,\boldsymbol\cdot}$ denota la matriz $1$ por $n$ formada por la fila $j$ de $A$;
+- $A_{\boldsymbol\cdot,k}$ denota la matriz $m$ por $1$ formada por la columna $k$ de $A$.
+
+## 3.45 Ejemplo: notación para filas y columnas
+
+Si
+
+$$
+A=\begin{pmatrix}8&4&5\\1&9&7\end{pmatrix},
+$$
+
+entonces
+
+$$
+A_{2,\boldsymbol\cdot}=\begin{pmatrix}1&9&7\end{pmatrix},
+\qquad
+A_{\boldsymbol\cdot,2}=\begin{pmatrix}4\\9\end{pmatrix}.
+$$
+
+Identificaremos habitualmente una matriz $1$ por $1$ con su única entrada. Por ejemplo,
+
+$$
+\begin{pmatrix}3&4\end{pmatrix}
+\begin{pmatrix}6\\2\end{pmatrix}=26.
+$$
+
+## 3.46 La entrada de un producto es fila por columna
+
+Si $A$ es $m$ por $n$ y $B$ es $n$ por $p$, entonces
+
+$$
+\boxed{(AB)_{j,k}=A_{j,\boldsymbol\cdot}B_{\boldsymbol\cdot,k}.}
+$$
+
+**Demostración.** Ambos lados son
+
+$$
+A_{j,1}B_{1,k}+\cdots+A_{j,n}B_{n,k}.
+$$
+
+$\square$
+
+### 3.47
+
+$$
+(AB)_{j,k}=A_{j,1}B_{1,k}+\cdots+A_{j,n}B_{n,k}.
+$$
+
+## 3.48 Una columna del producto es la matriz por la columna
+
+Si $A$ es $m$ por $n$ y $B$ es $n$ por $p$, entonces para $1\le k\le p$,
+
+$$
+\boxed{(AB)_{\boldsymbol\cdot,k}=AB_{\boldsymbol\cdot,k}.}
+$$
+
+Esto se obtiene comparando, fila por fila, las entradas dadas por 3.47.
+
+## 3.49 Ejemplo: producto de una matriz $3$ por $2$ y una columna
+
+$$
+\begin{pmatrix}
+1&2\\3&4\\5&6
+\end{pmatrix}
+\begin{pmatrix}5\\1\end{pmatrix}
+=
+\begin{pmatrix}7\\19\\31\end{pmatrix}
+=5\begin{pmatrix}1\\3\\5\end{pmatrix}
++\begin{pmatrix}2\\4\\6\end{pmatrix}.
+$$
+
+El producto es una combinación lineal de las columnas de la primera matriz, con coeficientes tomados de la columna multiplicadora.
+
+## 3.50 Combinación lineal de columnas
+
+Si $A$ es $m$ por $n$ y
+
+$$
+b=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix},
+$$
+
+entonces
+
+$$
+\boxed{Ab=b_1A_{\boldsymbol\cdot,1}+\cdots+b_nA_{\boldsymbol\cdot,n}.}
+$$
+
+**Demostración.** En cada fila $k$, ambos lados tienen la entrada
+
+$$
+A_{k,1}b_1+\cdots+A_{k,n}b_n.
+$$
+
+$\square$
+
+Los ejercicios 8 y 9 dan los resultados análogos para filas.
+
+## 3.51 Multiplicación matricial como combinaciones lineales de columnas o filas
+
+Supongamos que $C$ es $m$ por $c$ y $R$ es $c$ por $n$.
+
+**(a)** La columna $k$ de $CR$ es una combinación lineal de las columnas de $C$, con coeficientes dados por la columna $k$ de $R$.
+
+**(b)** La fila $j$ de $CR$ es una combinación lineal de las filas de $R$, con coeficientes dados por la fila $j$ de $C$.
+
+**Demostración.** La parte (a) se sigue de 3.48 y 3.50. La parte (b) se obtiene del argumento análogo para filas, usando los ejercicios 8 y 9. $\square$
+
+# Factorización columna–fila y rango de una matriz
+
+## 3.52 Definición: rango columna, rango fila
+
+Sea $A$ una matriz $m$ por $n$ con entradas en $\mathbf F$.
+
+- El **rango columna** de $A$ es la dimensión del subespacio generado por las columnas de $A$ en $\mathbf F^{m,1}$.
+- El **rango fila** de $A$ es la dimensión del subespacio generado por las filas de $A$ en $\mathbf F^{1,n}$.
+
+Ambos son a lo sumo $\min\{m,n\}$.
+
+## 3.53 Ejemplo: rango columna y rango fila de una matriz $2$ por $4$
+
+Sea
+
+$$
+A=\begin{pmatrix}4&7&1&8\\3&5&2&9\end{pmatrix}.
+$$
+
+Las dos primeras columnas no son múltiplos escalares una de otra, de modo que el subespacio generado por las columnas tiene dimensión $2$. Como $\mathbf F^{2,1}$ tiene dimensión $2$, el rango columna es $2$.
+
+Las dos filas tampoco son múltiplos escalares una de otra; por tanto generan un subespacio bidimensional de $\mathbf F^{1,4}$ y el rango fila también es $2$.
+
+## 3.54 Definición: transpuesta, $A^t$
+
+La **transpuesta** de una matriz $A$, denotada por $A^t$, se obtiene intercambiando filas y columnas. Si $A$ es $m$ por $n$, entonces $A^t$ es $n$ por $m$ y
+
+$$
+\boxed{(A^t)_{k,j}=A_{j,k}.}
+$$
+
+## 3.55 Ejemplo: transpuesta
+
+Si
+
+$$
+A=\begin{pmatrix}5&-7\\3&8\\-4&2\end{pmatrix},
+$$
+
+entonces
+
+$$
+A^t=\begin{pmatrix}5&3&-4\\-7&8&2\end{pmatrix}.
+$$
+
+La transpuesta satisface
+
+$$
+(A+B)^t=A^t+B^t,
+\qquad
+(\lambda A)^t=\lambda A^t,
+\qquad
+(AC)^t=C^tA^t;
+$$
+
+véanse los ejercicios 14 y 15.
+
+## 3.56 Factorización columna–fila
+
+Sea $A$ una matriz $m$ por $n$ con rango columna $c\ge1$. Entonces existen una matriz $C$ de tamaño $m$ por $c$ y una matriz $R$ de tamaño $c$ por $n$ tales que
+
+$$
+\boxed{A=CR.}
+$$
+
+**Demostración.** Las columnas de $A$ pueden reducirse, por 2.30, a una base del subespacio que generan. Esta base tiene $c$ elementos. Colocamos esas $c$ columnas en una matriz $C$.
+
+Cada columna de $A$ es una combinación lineal de las columnas de $C$. Para cada $k$, colocamos en la columna $k$ de $R$ los coeficientes de la combinación lineal que produce la columna $k$ de $A$. Por 3.51(a), el producto $CR$ tiene exactamente las mismas columnas que $A$. Por tanto $A=CR$. $\square$
+
+## 3.57 El rango columna es igual al rango fila
+
+Si
+
+$$
+A\in\mathbf F^{m,n},
+$$
+
+entonces el rango columna de $A$ es igual al rango fila de $A$.
+
+**Demostración.** Sea $c$ el rango columna de $A$.
+
+Si $c=0$, entonces todas las columnas son cero, por lo que $A=0$ y su rango fila también es $0$.
+
+Supongamos ahora $c\ge1$. Por 3.56 existe una factorización
+
+$$
+A=CR,
+$$
+
+con $C$ de tamaño $m$ por $c$ y $R$ de tamaño $c$ por $n$. Por 3.51(b), cada fila de $A$ es una combinación lineal de las $c$ filas de $R$. Así,
+
+$$
+\operatorname{rango\ fila}(A)\le c
+=\operatorname{rango\ columna}(A).
+$$
+
+Aplicando esta desigualdad a $A^t$ obtenemos
+
+$$
+\operatorname{rango\ columna}(A)
+=\operatorname{rango\ fila}(A^t)
+\le\operatorname{rango\ columna}(A^t)
+=\operatorname{rango\ fila}(A).
+$$
+
+Por tanto ambos rangos son iguales. $\square$
+
+> [NOTA editorial] El tratamiento explícito del caso $c=0$ aparece en el PDF canónico de 16-08-2026. La copia de referencia del 25-03-2024 pasa directamente a la factorización 3.56, cuya hipótesis exige $c\ge1$. No se presenta aquí como errata publicada, sino como una mejora textual incorporada por Axler en la versión canónica posterior.
+
+## 3.58 Definición: rango
+
+Como el rango columna y el rango fila coinciden, llamamos simplemente **rango** de una matriz $A\in\mathbf F^{m,n}$ a su rango columna.
+
+# Ejercicios 3C
+
+1. Supón que $T\in\mathcal L(V,W)$. Demuestra que, para cualquier elección de bases de $V$ y $W$, la matriz de $T$ tiene al menos $\dim\operatorname{range}T$ entradas no nulas.
+
+2. Supón que $V$ y $W$ son de dimensión finita y no nulos, y que $T\in\mathcal L(V,W)$. Demuestra que $\dim\operatorname{range}T=1$ si y sólo si existen bases de $V$ y $W$ para las cuales todas las entradas de $\mathcal M(T)$ son iguales a $1$.
+
+3. Sean $v_1,\ldots,v_n$ una base de $V$ y $w_1,\ldots,w_m$ una base de $W$.
+   - (a) Si $S,T\in\mathcal L(V,W)$, demuestra que $\mathcal M(S+T)=\mathcal M(S)+\mathcal M(T)$.
+   - (b) Si $\lambda\in\mathbf F$ y $T\in\mathcal L(V,W)$, demuestra que $\mathcal M(\lambda T)=\lambda\mathcal M(T)$.
+
+4. Sea $D\in\mathcal L(\mathcal P_3(\mathbf R),\mathcal P_2(\mathbf R))$ la derivación $Dp=p'$. Encuentra bases del dominio y del codominio para las cuales
+   $$
+   \mathcal M(D)=
+   \begin{pmatrix}
+   1&0&0&0\\
+   0&1&0&0\\
+   0&0&1&0
+   \end{pmatrix}.
+   $$
+
+5. Supón que $V,W$ son de dimensión finita y $T\in\mathcal L(V,W)$. Demuestra que existen bases de $V$ y $W$ para las cuales todas las entradas de $\mathcal M(T)$ son $0$, salvo las entradas $(k,k)$, que son $1$ para $1\le k\le\dim\operatorname{range}T$.
+
+6. Supón que $v_1,\ldots,v_m$ es una base fijada de $V$, que $W$ es de dimensión finita y que $T\in\mathcal L(V,W)$. Demuestra que existe una base $w_1,\ldots,w_n$ de $W$ para la cual la primera columna de $\mathcal M(T)$ es cero salvo, posiblemente, un $1$ en la posición $(1,1)$.
+
+7. Supón que $w_1,\ldots,w_n$ es una base fijada de $W$, que $V$ es de dimensión finita y que $T\in\mathcal L(V,W)$. Demuestra que existe una base $v_1,\ldots,v_m$ de $V$ para la cual la primera fila de $\mathcal M(T)$ es cero salvo, posiblemente, un $1$ en la posición $(1,1)$.
+
+8. Si $A$ es $m$ por $n$ y $B$ es $n$ por $p$, demuestra que
+   $$
+   (AB)_{j,\boldsymbol\cdot}=A_{j,\boldsymbol\cdot}B
+   $$
+   para $1\le j\le m$.
+
+9. Si $a=(a_1\ \cdots\ a_n)$ es una matriz $1$ por $n$ y $B$ es $n$ por $p$, demuestra que
+   $$
+   aB=a_1B_{1,\boldsymbol\cdot}+\cdots+a_nB_{n,\boldsymbol\cdot}.
+   $$
+
+10. Da un ejemplo de matrices $2$ por $2$ $A,B$ tales que $AB\ne BA$.
+
+11. Demuestra las propiedades distributivas de la multiplicación de matrices:
+   $$
+   A(B+C)=AB+AC,
+   \qquad
+   (D+E)F=DF+EF,
+   $$
+   siempre que los tamaños hagan que las expresiones estén definidas.
+
+12. Demuestra que la multiplicación de matrices es asociativa:
+   $$
+   (AB)C=A(BC).
+   $$
+
+13. Sea $A$ una matriz $n$ por $n$. Demuestra que la entrada $(j,k)$ de $A^3$ es
+   $$
+   \sum_{p=1}^n\sum_{r=1}^n A_{j,p}A_{p,r}A_{r,k}.
+   $$
+
+14. Demuestra que la función
+   $$
+   A\longmapsto A^t
+   $$
+   es una aplicación lineal de $\mathbf F^{m,n}$ en $\mathbf F^{n,m}$.
+
+15. Si $A$ es $m$ por $n$ y $C$ es $n$ por $p$, demuestra que
+   $$
+   (AC)^t=C^tA^t.
+   $$
+
+16. Sea $A$ una matriz $m$ por $n$, $A\ne0$. Demuestra que $\operatorname{rank}A=1$ si y sólo si existen $(c_1,\ldots,c_m)\in\mathbf F^m$ y $(d_1,\ldots,d_n)\in\mathbf F^n$ tales que
+   $$
+   A_{j,k}=c_jd_k
+   $$
+   para todo $j,k$.
+
+17. Supón que $T\in\mathcal L(V)$ y que $u_1,\ldots,u_n$ y $v_1,\ldots,v_n$ son bases de $V$. Demuestra que son equivalentes:
+   - (a) $T$ es inyectiva;
+   - (b) las columnas de $\mathcal M(T)$ son linealmente independientes en $\mathbf F^{n,1}$;
+   - (c) las columnas de $\mathcal M(T)$ generan $\mathbf F^{n,1}$;
+   - (d) las filas de $\mathcal M(T)$ generan $\mathbf F^{1,n}$;
+   - (e) las filas de $\mathcal M(T)$ son linealmente independientes en $\mathbf F^{1,n}$.
+
+   Aquí
+   $$
+   \mathcal M(T)=\mathcal M\bigl(T,(u_1,\ldots,u_n),(v_1,\ldots,v_n)\bigr).
+   $$
+
+---
+
+**Atribución:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición. Traducción/adaptación no oficial realizada para Matemática Abierta bajo CC BY-NC 4.0. Fuente oficial: <https://linear.axler.net/>.
