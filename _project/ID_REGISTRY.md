@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0004 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0064 |
+| Capítulo | MA-BCH-0065 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -110,6 +110,7 @@
 | MA-BCH-0060 | book-chapter | Tratado de análisis — Capítulo 14 — Series numéricas | `libros/capitulos/tratado-de-analisis-capitulo-14-series-numericas.md` | published |
 | MA-BCH-0061 | book-chapter | Tratado de análisis — Capítulo 15 — Topología de la recta real | `libros/capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md` | published |
 | MA-BCH-0062 | book-chapter | Tratado moderno de Álgebra — Capítulo 26: Anillos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md` | published |\n| MA-BCH-0063 | book-chapter | Límites de funciones | `libros/capitulos/limites-de-funciones.md` | published |
+| MA-BCH-0064 | book-chapter | Continuidad en la recta: intervalos, compacidad y teoremas fundamentales | `libros/capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |
