@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-15'
-date-modified: '2026-09-16'
+date-modified: 2026-09-26
 areas:
 - algebra
 - fundamentos
@@ -235,7 +235,6 @@ $$
 
 La conmutatividad es una ley adicional de la operación y debe definirse antes de introducir los grupos abelianos. Por ello el siguiente nodo definicional no será todavía «grupo abeliano», sino la **conmutatividad de una operación binaria**.
 
-Esta observación corrige la reserva provisional inicial de IDs: como los IDs aún no cerrados no estaban congelados, [Definición 5.1.1](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md#talg-def-00009) se reasignará a **operación conmutativa**, y [Definición 5.2.1](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md#talg-def-00010) quedará reservado para **grupo abeliano**.
 
 
 ---

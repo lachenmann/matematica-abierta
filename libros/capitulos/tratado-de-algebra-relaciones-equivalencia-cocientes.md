@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-14
+date-modified: 2026-09-26
 areas:
   - algebra
   - fundamentos
@@ -225,7 +225,7 @@ A partir de esta interfaz quedan fijadas las siguientes reglas.
 5. Toda operación o función definida mediante representantes deberá superar una prueba explícita de buena definición.
 6. Ningún representante será considerado canónico salvo que una construcción posterior lo justifique expresamente.
 
-## 9. Auditoría intertratados
+## 9. Auditoría intertratados {#talg-imp-00003}
 
 La interfaz importa únicamente los siguientes nodos cerrados del fundamento lógico-conjuntista:
 
