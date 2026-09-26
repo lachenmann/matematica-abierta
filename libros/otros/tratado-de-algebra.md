@@ -6,7 +6,7 @@ content-id: MA-BOK-0007
 content-type: book
 status: published
 date-created: 2026-09-14
-date-modified: 2026-09-19
+date-modified: 2026-09-26
 areas:
   - algebra
   - fundamentos
@@ -225,9 +225,26 @@ Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas
 
 ## Estado de la publicación
 
-La fuente canónica tiene cerrados los capítulos 1–25 y la edición web incorpora ya ese bloque completo, desde operaciones binarias hasta grupos ordenados. Las referencias visibles para el lector siguen localizadores editoriales, mientras que los identificadores estables permanecen como infraestructura de navegación y auditoría.
+**Edición comprobada el 26 de septiembre de 2026:** están publicados los **capítulos 1–26 y las tres interfaces fundacionales**, incluida la interfaz inicial presentada como capítulo 0. Son **29 unidades matemáticas cerradas**, además del prefacio.
 
-El capítulo 26 — **Anillos ordenados** — permanece abierto en la fuente de trabajo y no forma parte de esta publicación.
+| Bloque | Estado editorial | Edición web |
+|---|---|---|
+| Parte 0 — Tres interfaces fundacionales | Cerrado | Publicada |
+| Parte I — Operaciones y estructuras, capítulo 1 | Cerrado | Publicada |
+| Parte II — Monoides y grupos, capítulos 2–13 | Cerrado | Publicada |
+| Parte III — Anillos y dominios, capítulos 14–21 | Cerrado | Publicada |
+| Parte IV — Cuerpos, capítulos 22–24 | Cerrado | Publicada |
+| Parte V — Grupos y anillos ordenados, capítulos 25–26 | Capítulos cerrados; parte en desarrollo | Publicados |
+| Capítulo 27 — Cuerpos ordenados | En elaboración | Pendiente del cierre global |
+| Propiedades arquimedianas y Partes VI–VIII | Previstas | Pendientes |
+
+El capítulo 26 — **Anillos ordenados** — está cerrado e incorporado íntegramente a la edición de lectura. El capítulo 27 — **Cuerpos ordenados** — permanece en elaboración y pendiente de publicación.
+
+### Criterio de publicación
+
+Cada capítulo se incorpora cuando tiene cierre matemático y editorial global, dependencias verificadas y una edición web comprobada. El cierre de un resultado individual no equivale al cierre del capítulo. Los estados **cerrado en la fuente** y **publicado en la web** se registran por separado.
+
+Las referencias de lectura usan números editoriales; los identificadores estables se conservan como anclas para recorrer las dependencias. La edición pública preserva definiciones, hipótesis y demostraciones, mientras que los registros de trabajo y las reservas de resultados futuros permanecen en la fuente editorial. No se afirma verificación en Lean de los capítulos por el solo hecho de estar publicados.
 
 ## Contenido disponible
 
