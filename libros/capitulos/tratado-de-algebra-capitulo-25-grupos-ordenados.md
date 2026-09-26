@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-26'
 areas:
 - algebra
 - fundamentos
@@ -460,6 +460,18 @@ es un grupo ordenado. Además, su cono no negativo es exactamente $P$.
 
 #### Demostración {#talg-prf-00107}
 
+**Identidades de inversos utilizadas.** Para cualesquiera $u,v\in G$, la asociatividad y las leyes de inverso dan
+
+$$
+(u\star v)\star(v^{-1}\star u^{-1})=u\star(v\star v^{-1})\star u^{-1}=e,
+$$
+
+$$
+(v^{-1}\star u^{-1})\star(u\star v)=v^{-1}\star(u^{-1}\star u)\star v=e.
+$$
+
+Por unicidad del inverso ([Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002)), $(u\star v)^{-1}=v^{-1}\star u^{-1}$. La misma unicidad da $(u^{-1})^{-1}=u$ y $e^{-1}=e$, pues $u$ es inverso bilateral de $u^{-1}$ y $e$ lo es de sí mismo. Estas identidades valen en cualquier grupo, independientemente de las condiciones sobre $P$.
+
 La relación existe por Separación como subconjunto de $G\times G$.
 
 **Reflexividad.** Para $a\in G$,
@@ -574,7 +586,7 @@ $$
 g=a^{-1}\star b.
 $$
 
-Si $g\in P$, la [Proposición 25.7.4](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00066) da $a\le b$. Si $g^{-1}\in P$, entonces
+Si $g\in P$, la [Proposición 25.7.4](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00066) da $a\le b$. Si $g^{-1}\in P$, las identidades de inversos verificadas en la demostración del [Teorema 25.8.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-thm-00018) dan
 
 $$
 g^{-1}=b^{-1}\star a\in P,
