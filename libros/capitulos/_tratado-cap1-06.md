@@ -2,7 +2,7 @@
 
 Una vez disponible la suma podemos expresar aritméticamente la idea de que un natural no supera a otro: $m$ está antes que $n$ si a $m$ puede añadírsele algún natural para llegar a $n$. Esta caracterización tiene la ventaja de no presuponer ningún orden previo sobre $\mathbb N$.
 
-Definiremos, pues, el orden mediante **alcanzabilidad aditiva**. Después habrá que demostrar que la relación obtenida es realmente un orden total y, sólo entonces, compararla con la estructura conjuntista de los ordinales de von Neumann.
+Definiremos, pues, el orden mediante alcanzabilidad aditiva. Después habrá que demostrar que la relación obtenida es realmente un orden total y, sólo entonces, compararla con la estructura conjuntista de los ordinales de von Neumann.
 
 ### Definición 1.6.1 — Orden aritmético {#ta-orden-natural}
 
@@ -218,7 +218,7 @@ $$
 
 ∎
 
-La inclusión propia traduce ya el orden estricto. En los naturales de von Neumann podemos afinar todavía más: como cada natural es el conjunto de sus predecesores, «ser estrictamente menor» deberá equivaler a **pertenecer** al otro natural.
+La inclusión propia traduce ya el orden estricto. En los naturales de von Neumann podemos afinar todavía más: como cada natural es el conjunto de sus predecesores, «ser estrictamente menor» deberá equivaler a pertenecer al otro natural.
 
 ### Teorema 1.6.12 — Orden estricto y pertenencia {#ta-orden-estricto-pertenencia}
 
@@ -270,7 +270,7 @@ Sea ahora $A\subseteq\mathbb N$ no vacío. Bajo la lógica clásica del tratado,
 
 Sea $A\subseteq\mathbb N$. Supongamos que:
 
-1. $A$ está **habitado**, es decir, se dispone de un testigo $a\in A$;
+1. $A$ está habitado, es decir, se dispone de un testigo $a\in A$;
 2. la membresía es decidible:
    $$
    \forall n\in\mathbb N,

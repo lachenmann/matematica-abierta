@@ -20,13 +20,16 @@ prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
-  - MA-BCH-0062
+  - MA-BCH-0077
   - MA-BCH-0063
   - MA-BCH-0064
   - MA-BCH-0065
 number-sections: true
 number-depth: 2
 number-offset: [7]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Derivación de funciones elementales, inversas e implícitas {#sec-t1-c09}

@@ -4,7 +4,7 @@ Las operaciones algebraicas de la sección anterior permiten combinar límites. 
 
 Conviene separar dos direcciones lógicas que a primera vista parecen equivalentes, pero no lo son con la misma fuerza fundacional.
 
-La dirección **estricta** es positiva: si dos límites satisfacen $\alpha<\beta$, entonces las sucesiones quedan finalmente separadas en ese mismo orden. La dirección **no estricta** parte, en cambio, de una desigualdad eventual $x_n\le y_n$ y concluye $\alpha\le\beta$; en nuestra interfaz abstracta de orden real, el núcleo negativo de esa prueba es constructivo, pero su conversión final a una desigualdad no estricta utiliza la lógica clásica ambiente.
+La dirección estricta es positiva: si dos límites satisfacen $\alpha<\beta$, entonces las sucesiones quedan finalmente separadas en ese mismo orden. La dirección no estricta parte, en cambio, de una desigualdad eventual $x_n\le y_n$ y concluye $\alpha\le\beta$; en nuestra interfaz abstracta de orden real, el núcleo negativo de esa prueba es constructivo, pero su conversión final a una desigualdad no estricta utiliza la lógica clásica ambiente.
 
 Esta distinción será visible en las demostraciones.
 
@@ -582,6 +582,6 @@ y_n\to\ell.
 }
 $$
 
-Ninguno de estos resultados utiliza todavía la completitud de $\mathbb R$. Hasta aquí hemos estudiado qué propiedades **debe** tener un límite, suponiendo que ya existe.
+Ninguno de estos resultados utiliza todavía la completitud de $\mathbb R$. Hasta aquí hemos estudiado qué propiedades debe tener un límite, suponiendo que ya existe.
 
-La situación cambia en la sección siguiente. Introduciremos sucesiones monótonas y preguntaremos cuándo el orden y la acotación bastan para **producir** un límite. Allí aparecerá por primera vez de manera esencial la completitud de $\mathbb R$ mediante supremos e ínfimos.
+La situación cambia en la sección siguiente. Introduciremos sucesiones monótonas y preguntaremos cuándo el orden y la acotación bastan para producir un límite. Allí aparecerá por primera vez de manera esencial la completitud de $\mathbb R$ mediante supremos e ínfimos.

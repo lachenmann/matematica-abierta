@@ -8,7 +8,7 @@ $$
 \mathbb R_C,
 $$
 
-y el Capítulo 11 construyó entre ellos un isomorfismo explícito. El presente capítulo ha demostrado algo más fuerte: **cualquier** completación ordenada de $\mathbb Q$ está unida a cualquier otra por un único isomorfismo de cuerpos ordenados compatible con la copia racional.
+y el Capítulo 11 construyó entre ellos un isomorfismo explícito. El presente capítulo ha demostrado algo más fuerte: cualquier completación ordenada de $\mathbb Q$ está unida a cualquier otra por un único isomorfismo de cuerpos ordenados compatible con la copia racional.
 
 Por tanto no escribiremos
 
@@ -43,7 +43,7 @@ $$
 \boxed{\mathbb R}
 $$
 
-podrá utilizarse para hablar de **la estructura de cuerpo ordenado completo que completa a $\mathbb Q$**, sin comprometer el argumento con una codificación particular. Cuando una construcción o una afirmación dependa del conjunto subyacente, de representantes concretos o de la forma de codificación, mantendremos las notaciones
+podrá utilizarse para hablar de la estructura de cuerpo ordenado completo que completa a $\mathbb Q$, sin comprometer el argumento con una codificación particular. Cuando una construcción o una afirmación dependa del conjunto subyacente, de representantes concretos o de la forma de codificación, mantendremos las notaciones
 
 $$
 \mathbb R_D,
@@ -106,7 +106,7 @@ $$
 }
 $$
 
-La construcción conjuntista ha terminado. A partir de aquí, el tratado puede estudiar análisis real sobre $\mathbb R$ distinguiendo, cuando sea necesario, la **estructura matemática** del **modo concreto de representar sus elementos**.
+La construcción conjuntista ha terminado. A partir de aquí, el tratado puede estudiar análisis real sobre $\mathbb R$ distinguiendo, cuando sea necesario, la estructura matemática del modo concreto de representar sus elementos.
 
 $$
 \boxed{

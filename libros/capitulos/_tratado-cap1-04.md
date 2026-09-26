@@ -2,7 +2,7 @@
 
 Estamos finalmente en condiciones de definir una operación aritmética. Para un natural fijo $m$, queremos comenzar en $m$ y aplicar el sucesor tantas veces como indique el segundo argumento. La recursión produce exactamente esa función.
 
-La definición será deliberadamente **asimétrica**: recursaremos sobre el segundo argumento. Nada nos autoriza todavía a intercambiar los dos argumentos. La futura conmutatividad será un teorema y no una propiedad introducida de contrabando en la definición.
+La definición será deliberadamente asimétrica: recursaremos sobre el segundo argumento. Nada nos autoriza todavía a intercambiar los dos argumentos. La futura conmutatividad será un teorema y no una propiedad introducida de contrabando en la definición.
 
 ### Definición 1.4.1 — Adición {#ta-adicion-naturales}
 

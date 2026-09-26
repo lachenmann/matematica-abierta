@@ -1,6 +1,6 @@
 ## 23.4. Intercambio del límite y la integral de Riemann {#sec-ta-23-4}
 
-Una función acotada no tiene por qué ser integrable, como mostró Proposición §21.4.6 — Una función acotada que no es integrable. Por eso, incluso si todos los términos de una sucesión son integrables, **no es lícito escribir la integral del límite antes de probar su existencia**. La demostración utilizará primero la estabilidad cuantitativa de las sumas de Darboux ante una perturbación uniformemente pequeña. Solamente después de establecer la integrabilidad de la función límite podremos comparar las integrales. En esta sección $a,b$ son reales con $a\le b$; cada integral sobre un intervalo no degenerado conserva la definición del Capítulo 21 y el caso $a=b$ se rige exclusivamente por Definición §21.6.5 — Integración en un intervalo degenerado.
+Una función acotada no tiene por qué ser integrable, como mostró Proposición §21.4.6 — Una función acotada que no es integrable. Por eso, incluso si todos los términos de una sucesión son integrables, no es lícito escribir la integral del límite antes de probar su existencia. La demostración utilizará primero la estabilidad cuantitativa de las sumas de Darboux ante una perturbación uniformemente pequeña. Solamente después de establecer la integrabilidad de la función límite podremos comparar las integrales. En esta sección $a,b$ son reales con $a\le b$; cada integral sobre un intervalo no degenerado conserva la definición del Capítulo 21 y el caso $a=b$ se rige exclusivamente por Definición §21.6.5 — Integración en un intervalo degenerado.
 
 ### Lema 23.4.1 — Control de las sumas de Darboux bajo perturbación uniforme
 Sean $a<b$, $g:[a,b]\to\mathbb R$ una función acotada y $h:[a,b]\to\mathbb R$ otra función. Si $\eta\ge0$ verifica
@@ -56,15 +56,15 @@ $$
 
 con las dos desigualdades análogas para $U$. Se sigue (23.4.2). Restando la cota inferior de $L(h,P)$ de la cota superior de $U(h,P)$ obtenemos (23.4.3); su primer miembro es no negativo por Proposición §21.2.5 — Encierro global e identidad de la brecha. No se escoge un punto que realice ninguno de los extremos: sólo se utilizan sus propiedades de orden. $\square$
 
-**Lectura.** Una perturbación de tamaño a lo sumo $\eta$ puede desplazar cada suma inferior y superior a lo sumo $\eta(b-a)$. El factor $2$ aparece al comparar simultáneamente ambos extremos; todavía **no** representa una cota para diferencias de integrales, porque $h$ podría no ser integrable.
+**Lectura.** Una perturbación de tamaño a lo sumo $\eta$ puede desplazar cada suma inferior y superior a lo sumo $\eta(b-a)$. El factor $2$ aparece al comparar simultáneamente ambos extremos; todavía no representa una cota para diferencias de integrales, porque $h$ podría no ser integrable.
 
 ### Teorema 23.4.2 — El límite uniforme de funciones integrables es integrable
-Sea $a\le b$, y sea $(f_n)_{n\in\mathbb N}$ una sucesión de funciones tipadas $f_n:[a,b]\to\mathbb R$. Si **cada** $f_n$ es integrable y $f_n$ converge uniformemente a $f:[a,b]\to\mathbb R$, entonces $f$ es integrable en $[a,b]$.
+Sea $a\le b$, y sea $(f_n)_{n\in\mathbb N}$ una sucesión de funciones tipadas $f_n:[a,b]\to\mathbb R$. Si cada $f_n$ es integrable y $f_n$ converge uniformemente a $f:[a,b]\to\mathbb R$, entonces $f$ es integrable en $[a,b]$.
 
 **Demostración.**
 Si $a=b$, toda función $[a,a]\to\mathbb R$ es integrable por Definición §21.6.5 — Integración en un intervalo degenerado; esto incluye a $f$ sin construir una partición imposible del singleton.
 
-Supongamos $a<b$ y pongamos $\ell:=b-a>0$. Fijemos una tolerancia arbitraria $\varepsilon>0$ y definamos expresamente $\eta:=\varepsilon/(4\ell)>0$. La convergencia uniforme proporciona **un** $N\in\mathbb N$ tal que
+Supongamos $a<b$ y pongamos $\ell:=b-a>0$. Fijemos una tolerancia arbitraria $\varepsilon>0$ y definamos expresamente $\eta:=\varepsilon/(4\ell)>0$. La convergencia uniforme proporciona un $N\in\mathbb N$ tal que
 
 $$
 |f(t)-f_N(t)|<\eta\qquad(t\in[a,b]).
@@ -79,7 +79,7 @@ U(f,P)-L(f,P)
 \tag{23.4.6}
 $$
 
-Apliquemos el criterio de Darboux Teorema §21.4.2 — Criterio de Darboux y estabilidad por refinamiento a **ese término fijo** $f_N$, con tolerancia $\varepsilon/2$. Existe una partición $P$ tal que
+Apliquemos el criterio de Darboux Teorema §21.4.2 — Criterio de Darboux y estabilidad por refinamiento a ese término fijo $f_N$, con tolerancia $\varepsilon/2$. Existe una partición $P$ tal que
 
 $$
 U(f_N,P)-L(f_N,P)<\frac\varepsilon2.
@@ -112,7 +112,7 @@ $$
 $$
 
 **Demostración.**
-Teorema §23.4.2 — El límite uniforme de funciones integrables es integrable asegura que $f$ es integrable. Como cada $f_n$ también lo es, **sólo ahora** tienen sentido todas las integrales de (23.4.7). Cada integral es un real unívocamente determinado por Definición §21.4.3 — Integral de Riemann–Darboux para funciones integrables si $a<b$, o por Definición §21.6.5 — Integración en un intervalo degenerado si $a=b$. El grafo
+Teorema §23.4.2 — El límite uniforme de funciones integrables es integrable asegura que $f$ es integrable. Como cada $f_n$ también lo es, sólo ahora tienen sentido todas las integrales de (23.4.7). Cada integral es un real unívocamente determinado por Definición §21.4.3 — Integral de Riemann–Darboux para funciones integrables si $a<b$, o por Definición §21.6.5 — Integración en un intervalo degenerado si $a=b$. El grafo
 
 $$
 \bigl\{\langle n,r\rangle\in\mathbb N\times\mathbb R:
@@ -142,13 +142,13 @@ $$
 \tag{23.4.8}
 $$
 
-El umbral $N$ vale para **todos** los índices de la cola y demuestra precisamente la convergencia numérica de $I$ a $\int_a^b f$ (Definición §13.3.1 — Convergencia de una sucesión real). No hemos supuesto que una integral conmute con un límite: lo acabamos de deducir de una cota previamente legitimada. $\square$
+El umbral $N$ vale para todos los índices de la cola y demuestra precisamente la convergencia numérica de $I$ a $\int_a^b f$ (Definición §13.3.1 — Convergencia de una sucesión real). No hemos supuesto que una integral conmute con un límite: lo acabamos de deducir de una cota previamente legitimada. $\square$
 
 ### Corolario 23.4.4 — Convergencia uniforme de las integrales acumuladas
-Sean $a<b$ y $(f_n)$ como en el teorema anterior. Para cada $n$, denotemos por $F_n:=F_{f_n,a}:[a,b]\to\mathbb R$ la acumulada de Definición §22.1.1 — Función integral acumulada, y por $F:=F_{f,a}$ la acumulada del límite. Entonces $(F_n)_{n\in\mathbb N}$ es una sucesión de funciones bien definida y converge **uniformemente** a $F$ sobre $[a,b]$.
+Sean $a<b$ y $(f_n)$ como en el teorema anterior. Para cada $n$, denotemos por $F_n:=F_{f_n,a}:[a,b]\to\mathbb R$ la acumulada de Definición §22.1.1 — Función integral acumulada, y por $F:=F_{f,a}$ la acumulada del límite. Entonces $(F_n)_{n\in\mathbb N}$ es una sucesión de funciones bien definida y converge uniformemente a $F$ sobre $[a,b]$.
 
 **Demostración.**
-Todas las integrandas $f_n$, así como $f$ por Teorema §23.4.2 — El límite uniforme de funciones integrables es integrable, son integrables. Definición §22.1.1 — Función integral acumulada produce para cada una su única acumulada, con **dominio exacto** $[a,b]$ y codominio $\mathbb R$. El predicado «$H=F_{f_n,a}$» tiene valor único en el conjunto existente $\mathbb R^{[a,b]}$; mediante Separación en $\mathbb N\times\mathbb R^{[a,b]}$ construimos el grafo de $n\mapsto F_n$, sin escoger funciones.
+Todas las integrandas $f_n$, así como $f$ por Teorema §23.4.2 — El límite uniforme de funciones integrables es integrable, son integrables. Definición §22.1.1 — Función integral acumulada produce para cada una su única acumulada, con dominio exacto $[a,b]$ y codominio $\mathbb R$. El predicado «$H=F_{f_n,a}$» tiene valor único en el conjunto existente $\mathbb R^{[a,b]}$; mediante Separación en $\mathbb N\times\mathbb R^{[a,b]}$ construimos el grafo de $n\mapsto F_n$, sin escoger funciones.
 
 Fijemos $\varepsilon>0$ y pongamos $\ell=b-a>0$, $\eta=\varepsilon/(2\ell)$. La convergencia uniforme de $f_n$ a $f$ proporciona $N$ tal que $|f_n(t)-f(t)|<\eta$ para todos $n\ge N$ y $t\in[a,b]$. Sea $x\in[a,b]$ arbitrario. Si $x=a$, ambas acumuladas valen cero por la convención singleton. Si $a<x\le b$, Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado garantiza la integrabilidad de las restricciones de $f_n$ y $f$ a $[a,x]$; su diferencia también es integrable por Corolario §21.5.7 — Linealidad para combinaciones finitas de dos funciones. La linealidad y la estimación de Corolario §21.5.8 — Positividad y estimaciones por cotas constantes en este subintervalo dan
 
@@ -161,15 +161,15 @@ $$
 \tag{23.4.9}
 $$
 
-La restricción de la diferencia coincide punto a punto y por tipo con la diferencia de las restricciones. Puesto que el mismo $N$ precede a la elección de $x$, (23.4.9) demuestra la uniformidad de la convergencia sobre **todo** $[a,b]$. El corolario no pretende extender la definición de acumulada a un intervalo degenerado. $\square$
+La restricción de la diferencia coincide punto a punto y por tipo con la diferencia de las restricciones. Puesto que el mismo $N$ precede a la elección de $x$, (23.4.9) demuestra la uniformidad de la convergencia sobre todo $[a,b]$. El corolario no pretende extender la definición de acumulada a un intervalo degenerado. $\square$
 
-**Interpretación.** El teorema 23.4.3 compara dos números correspondientes a un extremo final fijo. El corolario controla simultáneamente **todos los extremos variables** y prepara el anclaje necesario para estudiar límites de derivadas en §23.5.
+**Interpretación.** El teorema 23.4.3 compara dos números correspondientes a un extremo final fijo. El corolario controla simultáneamente todos los extremos variables y prepara el anclaje necesario para estudiar límites de derivadas en §23.5.
 
 ### Proposición 23.4.5 — La convergencia puntual no basta para intercambiar límite e integral
-Existe una sucesión de funciones continuas $u_n:[0,1]\to\mathbb R$ que converge puntualmente a la función nula, mientras que **todas** sus integrales son iguales a $1$. Por tanto, aun cuando todos los términos y el límite sean integrables, la convergencia puntual no garantiza (23.4.7).
+Existe una sucesión de funciones continuas $u_n:[0,1]\to\mathbb R$ que converge puntualmente a la función nula, mientras que todas sus integrales son iguales a $1$. Por tanto, aun cuando todos los términos y el límite sean integrables, la convergencia puntual no garantiza (23.4.7).
 
 **Demostración.**
-Sea $m_n:=\nu_{\mathbb R}(n+2)\ge2$ el numeral **real** correspondiente al natural $n+2$. Para $x\in[0,1]$ definimos
+Sea $m_n:=\nu_{\mathbb R}(n+2)\ge2$ el numeral real correspondiente al natural $n+2$. Para $x\in[0,1]$ definimos
 
 $$
 u_n(x):=
@@ -190,7 +190,7 @@ u_n(x)\longrightarrow0\qquad\text{para cada }x\in[0,1].
 \tag{23.4.11}
 $$
 
-Calculemos ahora las integrales. Las primitivas polinómicas $p_n(t)=m_n^2t^2/2$ y $q_n(t)=2m_nt-m_n^2t^2/2$ tienen por derivadas, respectivamente, las dos primeras expresiones de (23.4.10). El teorema fundamental del cálculo, aplicado a esas funciones continuas **en sus intervalos tipados**, proporciona
+Calculemos ahora las integrales. Las primitivas polinómicas $p_n(t)=m_n^2t^2/2$ y $q_n(t)=2m_nt-m_n^2t^2/2$ tienen por derivadas, respectivamente, las dos primeras expresiones de (23.4.10). El teorema fundamental del cálculo, aplicado a esas funciones continuas en sus intervalos tipados, proporciona
 
 $$
 \int_0^{1/m_n}u_n
@@ -203,7 +203,7 @@ $$
 \tag{23.4.12}
 $$
 
-En estas expresiones, las integrales sobre los subintervalos designan las de las correspondientes **restricciones tipadas**. El tramo $[2/m_n,1]$, si tiene longitud positiva, es idénticamente nulo y posee integral cero; si sus extremos coinciden, su integral también es cero por Definición §21.6.5 — Integración en un intervalo degenerado. La aditividad Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado, aplicada sucesivamente en $1/m_n$ y $2/m_n$, concluye
+En estas expresiones, las integrales sobre los subintervalos designan las de las correspondientes restricciones tipadas. El tramo $[2/m_n,1]$, si tiene longitud positiva, es idénticamente nulo y posee integral cero; si sus extremos coinciden, su integral también es cero por Definición §21.6.5 — Integración en un intervalo degenerado. La aditividad Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado, aplicada sucesivamente en $1/m_n$ y $2/m_n$, concluye
 
 $$
 \boxed{\int_0^1u_n=\frac12+\frac12+0=1\quad(n\in\mathbb N).}

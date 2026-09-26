@@ -6,11 +6,11 @@ $$
 s=\operatorname{PS}(a),\qquad t=\operatorname{PS}(b).
 $$
 
-Una desigualdad entre términos individuales no es todavía una comparación de series: debemos probar que se conserva al efectuar **cada suma finita**. Sólo después podremos emplear el criterio de §14.4. Además, distinguiremos una desigualdad válida desde el primer término de otra que comienza tras un número finito de términos.
+Una desigualdad entre términos individuales no es todavía una comparación de series: debemos probar que se conserva al efectuar cada suma finita. Sólo después podremos emplear el criterio de §14.4. Además, distinguiremos una desigualdad válida desde el primer término de otra que comienza tras un número finito de términos.
 
 ### Proposición 14.5.1 — Comparación de sumas finitas y de bloques
 
-Sean $a,b:\mathbb N\to\mathbb R$ sucesiones reales, y escribamos $s=\operatorname{PS}(a)$ y $t=\operatorname{PS}(b)$. Valen las afirmaciones siguientes, **sin imponer todavía que los términos sean no negativos**.
+Sean $a,b:\mathbb N\to\mathbb R$ sucesiones reales, y escribamos $s=\operatorname{PS}(a)$ y $t=\operatorname{PS}(b)$. Valen las afirmaciones siguientes, sin imponer todavía que los términos sean no negativos.
 
 1. Si $a_k\le b_k$ para todo $k\in\mathbb N$, entonces, para cada $n\in\mathbb N$,
 
@@ -95,7 +95,7 @@ $$
 0\le s_n\le t_n\le B\qquad(n\in\mathbb N).
 $$
 
-Así, $B$ es una cota superior del conjunto no vacío $s[\mathbb N]$. Aplicamos nuevamente Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos, esta vez a los términos $a$, y concluimos que su serie converge. Sólo **ahora**, estando definida su suma real, escribimos
+Así, $B$ es una cota superior del conjunto no vacío $s[\mathbb N]$. Aplicamos nuevamente Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos, esta vez a los términos $a$, y concluimos que su serie converge. Sólo ahora, estando definida su suma real, escribimos
 
 $$
 A:=\sum_{n=0}^{\infty}a_n=\sup s[\mathbb N].
@@ -109,7 +109,7 @@ Como $0\le s_n\le B$ para cada $n$, tanto $0$ como cota inferior de los valores 
 
 ### Corolario 14.5.3 — Comparación válida a partir de cierto índice
 
-Sean $a,b:\mathbb N\to\mathbb R$ sucesiones de términos **no negativos**, y supongamos que existe $N\in\mathbb N$ para el cual
+Sean $a,b:\mathbb N\to\mathbb R$ sucesiones de términos no negativos, y supongamos que existe $N\in\mathbb N$ para el cual
 
 $$
 a_n\le b_n\qquad\text{para todo }n\ge N.
@@ -133,7 +133,7 @@ $$
 }
 $$
 
-La comparación eventual **no** implica, sin una condición adicional sobre los términos iniciales, que la suma real de $a$ sea menor o igual que la de $b$.
+La comparación eventual no implica, sin una condición adicional sobre los términos iniciales, que la suma real de $a$ sea menor o igual que la de $b$.
 
 **Demostración.**
 
@@ -151,7 +151,7 @@ $$
 s_m\le s_N+B-t_N=:K.
 $$
 
-Como $t_N\le B$, tenemos $s_N\le K$. Para los índices $m\le N$, la monotonía Proposición 14.4.1 — Monotonía de las sumas parciales de una serie no negativa de $s$ proporciona $s_m\le s_N\le K$. Si $m\ge N$, ya establecimos $s_m\le K$. La totalidad del orden natural cubre todos los casos: por tanto $K\in\mathbb R$ es una cota superior **global** de $s[\mathbb N]$. El criterio Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos demuestra que la serie de términos $a$ converge.
+Como $t_N\le B$, tenemos $s_N\le K$. Para los índices $m\le N$, la monotonía Proposición 14.4.1 — Monotonía de las sumas parciales de una serie no negativa de $s$ proporciona $s_m\le s_N\le K$. Si $m\ge N$, ya establecimos $s_m\le K$. La totalidad del orden natural cubre todos los casos: por tanto $K\in\mathbb R$ es una cota superior global de $s[\mathbb N]$. El criterio Teorema 14.4.2 — Criterio de convergencia para series de términos no negativos demuestra que la serie de términos $a$ converge.
 
 Si la serie de términos $a$ diverge, la convergencia de la de términos $b$ contradiría la implicación recién probada. Se obtiene la segunda afirmación por contraposición. ∎
 

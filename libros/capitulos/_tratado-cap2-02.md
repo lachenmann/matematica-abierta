@@ -24,7 +24,7 @@ $$
 }
 $$
 
-Un **[número entero](../otros/tratado-de-analisis-glosario.md#gl-numero-entero)** es, por definición, un elemento de $\mathbb Z$.
+Un [número entero](../otros/tratado-de-analisis-glosario.md#gl-numero-entero) es, por definición, un elemento de $\mathbb Z$.
 
 ### Notación 2.2.3 — Clases enteras {#ta-clases-enteras}
 
@@ -34,7 +34,7 @@ $$
 [(a,b)]_{\mathbb Z}
 $$
 
-para su **[clase entera](../otros/tratado-de-analisis-glosario.md#gl-clase-entera)**, es decir, su clase de equivalencia módulo $\sim_{\mathbb Z}$. Cuando no haya riesgo de confusión, abreviaremos a
+para su [clase entera](../otros/tratado-de-analisis-glosario.md#gl-clase-entera), es decir, su clase de equivalencia módulo $\sim_{\mathbb Z}$. Cuando no haya riesgo de confusión, abreviaremos a
 
 $$
 [(a,b)].

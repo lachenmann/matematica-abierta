@@ -1,13 +1,13 @@
 ## 22.1. La función integral acumulada {#sec-ta-22-1}
 
 ### Definición 22.1.1 — Función integral acumulada
-Sea $f:[a,b]\to\mathbb R$ **integrable**. Por el corolario Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado, para cada $x\in[a,b]$ su restricción tipada
+Sea $f:[a,b]\to\mathbb R$ integrable. Por el corolario Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado, para cada $x\in[a,b]$ su restricción tipada
 
 $$
 f_x:=f\upharpoonright[a,x]:[a,x]\longrightarrow\mathbb R
 $$
 
-es integrable. Si $x=a$, la integral de $f_a$ existe por la convención de intervalo degenerado Definición §21.6.5 — Integración en un intervalo degenerado y vale cero. Si $a<x\le b$, su integral existe en el sentido de Definición §21.4.3 — Integral de Riemann–Darboux para funciones integrables. Definimos la **función integral acumulada de $f$ con origen $a$** como
+es integrable. Si $x=a$, la integral de $f_a$ existe por la convención de intervalo degenerado Definición §21.6.5 — Integración en un intervalo degenerado y vale cero. Si $a<x\le b$, su integral existe en el sentido de Definición §21.4.3 — Integral de Riemann–Darboux para funciones integrables. Definimos la función integral acumulada de $f$ con origen $a$ como
 
 $$
 \boxed{F_{f,a}:[a,b]\longrightarrow\mathbb R,\qquad
@@ -53,7 +53,7 @@ $$
  +\int_x^y(f_y\upharpoonright[x,y]).
 $$
 
-Las restricciones sucesivas son, como **funciones tipadas**, respectivamente $f\upharpoonright[a,x]$ y $f\upharpoonright[x,y]$: tienen iguales dominios, codominio real y grafos. Las dos primeras integrales son entonces $F_{f,a}(y)$ y $F_{f,a}(x)$. Restarlas en el cuerpo real da (22.1.4). Si $x=y$, el último término es cero por §21.6; no se divide por $y-x$ ni se utiliza una partición estricta de un singleton. $\square$
+Las restricciones sucesivas son, como funciones tipadas, respectivamente $f\upharpoonright[a,x]$ y $f\upharpoonright[x,y]$: tienen iguales dominios, codominio real y grafos. Las dos primeras integrales son entonces $F_{f,a}(y)$ y $F_{f,a}(x)$. Restarlas en el cuerpo real da (22.1.4). Si $x=y$, el último término es cero por §21.6; no se divide por $y-x$ ni se utiliza una partición estricta de un singleton. $\square$
 
 **Lectura.** El cambio de la acumulación entre dos extremos ordenados es la integral sobre el tramo que los separa. La igualdad es anterior a cualquier afirmación acerca de la derivada y no necesita continuidad de $f$.
 
@@ -84,7 +84,7 @@ $$
 Aquí $fx,y$ denota la imagen directa del subintervalo $[x,y]$ por la función $f$, conforme a la convención $f[X]$; los corchetes dobles no representan intervalos anidados. El cociente sólo se escribe cuando $x<y$.
 
 **Demostración.**
-Por Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos, la función $g:=f\upharpoonright[x,y]$ es integrable y su integral coincide con $F_{f,a}(y)-F_{f,a}(x)$. Tiene las cotas globales $m,M$ **sobre su propio dominio**, de modo que Corolario §21.5.8 — Positividad y estimaciones por cotas constantes aplicado a $g$ proporciona
+Por Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos, la función $g:=f\upharpoonright[x,y]$ es integrable y su integral coincide con $F_{f,a}(y)-F_{f,a}(x)$. Tiene las cotas globales $m,M$ sobre su propio dominio, de modo que Corolario §21.5.8 — Positividad y estimaciones por cotas constantes aplicado a $g$ proporciona
 
 $$
 m(y-x)\le\int_x^y g\le M(y-x).
@@ -103,10 +103,10 @@ $$
 \tag{22.1.7}
 $$
 
-Por tanto $F_{f,a}$ es **uniformemente continua** —y, en particular, continua en cada punto de su dominio— aun si $f$ no es continua.
+Por tanto $F_{f,a}$ es uniformemente continua —y, en particular, continua en cada punto de su dominio— aun si $f$ no es continua.
 
 **Demostración.**
-La integrabilidad implica acotación (Definición §21.4.1 — Integrabilidad de Darboux por igualdad de integrales extremas, Definición §21.2.1 — Función acotada en el intervalo), por lo que existen dos reales $A,B$ con $A\le f(t)\le B$ en $[a,b]$. Fijemos **una sola vez** tales testigos. Por el orden total de $\mathbb R$ uno de $|A|$ y $|B|$ es el mayor; designémoslo $K$. Así $K\ge0$ y
+La integrabilidad implica acotación (Definición §21.4.1 — Integrabilidad de Darboux por igualdad de integrales extremas, Definición §21.2.1 — Función acotada en el intervalo), por lo que existen dos reales $A,B$ con $A\le f(t)\le B$ en $[a,b]$. Fijemos una sola vez tales testigos. Por el orden total de $\mathbb R$ uno de $|A|$ y $|B|$ es el mayor; designémoslo $K$. Así $K\ge0$ y
 
 $$
 -K\le f(t)\le K\qquad(t\in[a,b]).
@@ -133,7 +133,7 @@ $$
 <K\delta\le\varepsilon
 $$
 
-cuando $K>0$; si $K=0$, la primera desigualdad ya da $|F_{f,a}(y)-F_{f,a}(x)|=0<\varepsilon$. En ambos casos queda satisfecho el orden de cuantificadores de la continuidad uniforme Definición §17.6.1 — Continuidad uniforme relativa a un dominio: el **mismo** $\delta$ sirve para todos los pares de puntos. La continuidad relativa en cada punto se deduce de Proposición §17.6.2 — La uniformidad implica continuidad puntual y pasa a las restricciones. No se invocó la derivabilidad de $F_{f,a}$, ni un teorema del valor medio para integrales. $\square$
+cuando $K>0$; si $K=0$, la primera desigualdad ya da $|F_{f,a}(y)-F_{f,a}(x)|=0<\varepsilon$. En ambos casos queda satisfecho el orden de cuantificadores de la continuidad uniforme Definición §17.6.1 — Continuidad uniforme relativa a un dominio: el mismo $\delta$ sirve para todos los pares de puntos. La continuidad relativa en cada punto se deduce de Proposición §17.6.2 — La uniformidad implica continuidad puntual y pasa a las restricciones. No se invocó la derivabilidad de $F_{f,a}$, ni un teorema del valor medio para integrales. $\square$
 
 **Una distinción crucial.** La continuidad de la función acumulada no implica la continuidad de la integranda. La función escalón de §21.8, integrable a pesar de su salto, proporciona un ejemplo que se puede reutilizar aquí: su función acumulada es continua por (22.1.7). La pregunta más fuerte de si $F_{f,a}'(x)=f(x)$ requiere hipótesis locales adicionales y será el objeto de §22.2. La demostración no interpretará una derivada en un extremo como si fuera una derivada bilateral.
 

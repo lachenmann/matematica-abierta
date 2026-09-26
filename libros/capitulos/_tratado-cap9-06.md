@@ -2,7 +2,7 @@
 
 Las operaciones binarias ya han descendido al cociente. El siguiente paso consiste en comprobar que la aritmética racional término a término transmite a las clases la estructura algebraica esperada.
 
-Hay, sin embargo, una precaución que conviene mantener visible. Los símbolos $0_{\mathbb Q}$ y $1_{\mathbb Q}$ designan racionales; sus sucesiones constantes $\underline{0_{\mathbb Q}}$ y $\underline{1_{\mathbb Q}}$ son elementos de $\mathcal C_{\mathbb Q}$; y sólo sus **clases** serán los elementos distinguidos de $\mathbb R_C$. No identificaremos ninguno de estos tres niveles.
+Hay, sin embargo, una precaución que conviene mantener visible. Los símbolos $0_{\mathbb Q}$ y $1_{\mathbb Q}$ designan racionales; sus sucesiones constantes $\underline{0_{\mathbb Q}}$ y $\underline{1_{\mathbb Q}}$ son elementos de $\mathcal C_{\mathbb Q}$; y sólo sus clases serán los elementos distinguidos de $\mathbb R_C$. No identificaremos ninguno de estos tres niveles.
 
 ### Definición 9.6.1 — Cero y unidad de Cauchy
 
@@ -193,7 +193,7 @@ Se cumplen las dos afirmaciones siguientes:
 
 **Demostración.**
 
-**(1)** Sea $a\in\mathcal C_{\mathbb Q}$ y sea $\varepsilon\in\mathbb Q$ con $0<\varepsilon$. Como $a$ es de Cauchy, existe $N\in\mathbb N$ tal que, para cualesquiera $m,n\ge N$,
+(1) Sea $a\in\mathcal C_{\mathbb Q}$ y sea $\varepsilon\in\mathbb Q$ con $0<\varepsilon$. Como $a$ es de Cauchy, existe $N\in\mathbb N$ tal que, para cualesquiera $m,n\ge N$,
 
 $$
 |a_m-a_n|<\varepsilon.
@@ -218,7 +218,7 @@ $$
 -a\in\mathcal C_{\mathbb Q}.
 $$
 
-**(2)** Supongamos ahora
+(2) Supongamos ahora
 
 $$
 a\sim_C b.
@@ -353,7 +353,7 @@ La unicidad de la función sigue de Proposición 0.6.3 — Criterio de igualdad 
 
 ### Definición 9.6.5 — Opuesto y sustracción en $\mathbb R_C$
 
-Para $x\in\mathbb R_C$ definimos su **opuesto aditivo** por
+Para $x\in\mathbb R_C$ definimos su opuesto aditivo por
 
 $$
 \boxed{
@@ -397,7 +397,7 @@ $$
 }
 $$
 
-es un **anillo conmutativo con identidad**.
+es un anillo conmutativo con identidad.
 
 **Demostración.**
 
@@ -670,6 +670,6 @@ $$
 [a]_C-[b]_C=[a-b]_C.
 $$
 
-El único axioma algebraico de cuerpo que todavía falta es la existencia de inverso multiplicativo para todo elemento no nulo. Éste es el primer punto de la construcción de Cauchy en que no basta una operación término a término ingenua: un representante de una clase no nula puede contener ceros en posiciones finitas, y antes de tomar recíprocos debemos demostrar que toda clase no nula admite un control **eventual** que la separa de cero.
+El único axioma algebraico de cuerpo que todavía falta es la existencia de inverso multiplicativo para todo elemento no nulo. Éste es el primer punto de la construcción de Cauchy en que no basta una operación término a término ingenua: un representante de una clase no nula puede contener ceros en posiciones finitas, y antes de tomar recíprocos debemos demostrar que toda clase no nula admite un control eventual que la separa de cero.
 
 Ese será el siguiente frente. Todavía no definiremos el inverso hasta haber demostrado esa separación eventual y construido, sin Choice, un representante recíproco legítimo.

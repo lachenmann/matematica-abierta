@@ -3,10 +3,10 @@
 El teorema de Fermat convierte un extremo local interior en una derivada nula, pero no garantiza que exista ese extremo. El teorema de Weierstrass garantiza extremos globales sobre un compacto no vacío, aunque podría situarlos en los extremos del intervalo, donde Fermat no es aplicable. La igualdad de los valores en los extremos resolverá esta dificultad: o bien la función es constante, o bien alguno de sus extremos globales debe alcanzarse en el interior.
 
 ### Lema 20.2.1 — Valores extremos iguales y función no constante: existe un extremo global interior
-Sean $a,b\in\mathbb R$ con $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo su dominio. Supongamos que $f(a)=f(b)=k$ y que existe $y\in[a,b]$ con $f(y)\ne k$. Entonces existe $c\in(a,b)$ en el cual $f$ alcanza **un máximo global o un mínimo global** sobre $[a,b]$.
+Sean $a,b\in\mathbb R$ con $a<b$ y $f:[a,b]\to\mathbb R$ continua en todo su dominio. Supongamos que $f(a)=f(b)=k$ y que existe $y\in[a,b]$ con $f(y)\ne k$. Entonces existe $c\in(a,b)$ en el cual $f$ alcanza un máximo global o un mínimo global sobre $[a,b]$.
 
 **Demostración.**
-Por $a<b$, el conjunto $I:=[a,b]$ contiene a $a$ y es compacto por Teorema §18.2.1 — Todo intervalo cerrado y acotado es compacto. Aplicamos Teorema §18.5.4 — Teorema del valor extremo: Weierstrass a la función **con dominio exactamente $I$**. Existen puntos $x_-,x_+\in I$ tales que, para todo $x\in I$,
+Por $a<b$, el conjunto $I:=[a,b]$ contiene a $a$ y es compacto por Teorema §18.2.1 — Todo intervalo cerrado y acotado es compacto. Aplicamos Teorema §18.5.4 — Teorema del valor extremo: Weierstrass a la función con dominio exactamente $I$. Existen puntos $x_-,x_+\in I$ tales que, para todo $x\in I$,
 
 $$
 f(x_-)\le f(x)\le f(x_+).
@@ -25,8 +25,8 @@ La demostración sólo obtiene los dos puntos cuya existencia afirma Weierstrass
 ### Teorema 20.2.2 — Teorema de Rolle
 Sean $a,b\in\mathbb R$ con $a<b$ y $f:[a,b]\to\mathbb R$. Supongamos que:
 
-1. $f$ es **continua en todo** $[a,b]$, con continuidad relativa en los extremos;
-2. $f$ es **derivable en cada** $x\in(a,b)$, relativamente al dominio $[a,b]$;
+1. $f$ es continua en todo $[a,b]$, con continuidad relativa en los extremos;
+2. $f$ es derivable en cada $x\in(a,b)$, relativamente al dominio $[a,b]$;
 3. $f(a)=f(b)$.
 
 Entonces existe al menos un punto $c\in(a,b)$ tal que
@@ -55,7 +55,7 @@ Sean $a<b$ y $f:[a,b]\to\mathbb R$ continua en $[a,b]$ y derivable en cada punto
 La igualdad $f(a)=f(b)=0$ implica la tercera hipótesis de Teorema §20.2.2 — Teorema de Rolle; las otras dos están expresamente supuestas y el dominio es exactamente $[a,b]$. Aplicar Rolle proporciona el punto interior requerido. No se afirma que ese punto sea un cero de la función. $\square$
 
 ### Proposición 20.2.4 — Las tres hipótesis de Rolle no son prescindibles
-En cada ejemplo el dominio y codominio son $[0,1]$ y $\mathbb R$, respectivamente. Si se suprime **una sola** de las tres hipótesis del teorema, las otras dos pueden cumplirse sin que exista un punto interior de derivada nula.
+En cada ejemplo el dominio y codominio son $[0,1]$ y $\mathbb R$, respectivamente. Si se suprime una sola de las tres hipótesis del teorema, las otras dos pueden cumplirse sin que exista un punto interior de derivada nula.
 
 **Demostración.**
 **1. Sin continuidad en el intervalo cerrado.** Definamos, mediante el grafo funcional obtenido por Separación en $[0,1]\times\mathbb R$,
@@ -80,6 +80,6 @@ En el punto $m:=1/2$, los cocientes de $v$ respecto del dominio $[0,1]$ son exac
 
 **3. Sin igualdad de los valores extremos.** La identidad restringida $w:[0,1]\to\mathbb R$, $w(x)=x$, es continua, derivable en todos los puntos interiores e incluso en los extremos relativamente a su dominio, con $w'(c)=1$ en todo punto de acumulación por Proposición §20.1.6 — Dos límites de alcance: frontera y recíproca falsa. Pero $w(0)=0\ne1=w(1)$; no existe derivada nula interior.
 
-En los tres casos los grafos están determinados unívocamente por las fórmulas indicadas; las pruebas usan radios explícitos y ninguna selección infinita. La independencia de las hipótesis significa que ninguna de las tres puede eliminarse **sin sustitución alguna** del enunciado general; no excluye que puedan encontrarse otras condiciones suficientes. $\square$
+En los tres casos los grafos están determinados unívocamente por las fórmulas indicadas; las pruebas usan radios explícitos y ninguna selección infinita. La independencia de las hipótesis significa que ninguna de las tres puede eliminarse sin sustitución alguna del enunciado general; no excluye que puedan encontrarse otras condiciones suficientes. $\square$
 
 **Transición.** Rolle obtiene una pendiente nula cuando los valores de dos extremos coinciden. Para comparar valores extremos *distintos* se introducirá en §20.3 una función auxiliar que sustraiga la recta secante. Aplicaremos Rolle a esa función y deduciremos el teorema del valor medio de Lagrange sin emplearlo retroactivamente en ninguna prueba de este tramo. La sección §20.2 queda estabilizada como unidad humana; el capítulo continúa en borrador y no se abre un checkpoint Lean.

@@ -26,7 +26,7 @@ $$
 \tau(a,b):=(b,a).
 $$
 
-La operación de **opuesto** en $\mathbb Z$ será la función inducida por $\tau$ después de proyectar al cociente.
+La operación de opuesto en $\mathbb Z$ será la función inducida por $\tau$ después de proyectar al cociente.
 
 ### Proposición 2.4.3 — Buena definición del opuesto {#ta-buena-definicion-opuesto}
 
@@ -136,7 +136,7 @@ Para todos $x,y,z\in\mathbb Z$:
 3. $x+0_{\mathbb Z}=x=0_{\mathbb Z}+x$;
 4. $x+(-x)=0_{\mathbb Z}=(-x)+x$.
 
-En consecuencia, la suma convierte a $\mathbb Z$ en un **grupo abeliano**.
+En consecuencia, la suma convierte a $\mathbb Z$ en un grupo abeliano.
 
 **Demostración.**  
 Sean

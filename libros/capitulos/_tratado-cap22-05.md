@@ -1,6 +1,6 @@
 ## 22.5. Cambio de variable {#sec-ta-22-5}
 
-En una integral definida, la sustitución de una variable no consiste únicamente en reemplazar letras. La composición $f\circ\varphi$ debe tener dominio efectivo comprobado, el producto con la derivada debe ser integrable y los extremos transformados deben ordenarse antes de escribir otra integral. Además, una función diferenciable puede recorrer varias veces un mismo tramo: **la monotonía no será una hipótesis de nuestra regla básica**.
+En una integral definida, la sustitución de una variable no consiste únicamente en reemplazar letras. La composición $f\circ\varphi$ debe tener dominio efectivo comprobado, el producto con la derivada debe ser integrable y los extremos transformados deben ordenarse antes de escribir otra integral. Además, una función diferenciable puede recorrer varias veces un mismo tramo: la monotonía no será una hipótesis de nuestra regla básica.
 
 Fijaremos $a<b$, $c<d$, una función continua $f:[c,d]\to\mathbb R$ y una función $\varphi:[a,b]\to[c,d]$ continua en el cerrado y derivable en $(a,b)$. Construiremos primero la composición de $\varphi$ con la acumulada de $f$. Esa acumulada puede no tener derivada bilateral en $c$ o $d$; resolveremos expresamente el caso en que $\varphi$ alcanza uno de esos extremos en un punto interior. Después separaremos la hipótesis necesaria de integrabilidad del producto transformado de una condición suficiente de continuidad.
 
@@ -22,7 +22,7 @@ $$
 La igualdad vale también si $\varphi(x)=c$ o $\varphi(x)=d$; no atribuye a $F$ una derivada bilateral en esos extremos.
 
 **Demostración.**
-La continuidad de $f$ implica integrabilidad por Corolario §21.7.4 — Toda función continua en un intervalo cerrado es integrable; por tanto Definición §22.1.1 — Función integral acumulada define $F$ sobre **todo** $[c,d]$. La estimación Teorema §22.1.4 — Acotación global, condición de Lipschitz y continuidad uniforme proporciona un real fijo $K\ge0$ tal que
+La continuidad de $f$ implica integrabilidad por Corolario §21.7.4 — Toda función continua en un intervalo cerrado es integrable; por tanto Definición §22.1.1 — Función integral acumulada define $F$ sobre todo $[c,d]$. La estimación Teorema §22.1.4 — Acotación global, condición de Lipschitz y continuidad uniforme proporciona un real fijo $K\ge0$ tal que
 
 $$
 |F(v)-F(u)|\le K|v-u|\qquad(u,v\in[c,d]).
@@ -33,7 +33,7 @@ La composición está definida en todo $[a,b]$ porque $\varphia,b\subseteq[c,d]$
 
 Fijemos $x\in(a,b)$. Si $c<\varphi(x)<d$, la continuidad de $f$ en $\varphi(x)$ y la primera parte del teorema fundamental Teorema §22.2.2 — Primera parte del teorema fundamental del cálculo: continuidad puntual dan $F'(\varphi(x))=f(\varphi(x))$. Aplicando la regla de la cadena Teorema §19.6.2 — Regla de la cadena en el dominio efectivo en el dominio efectivo resulta (22.5.2).
 
-Supongamos ahora $\varphi(x)=c$. Como $\varphi(t)\ge c=\varphi(x)$ para todo $t\in[a,b]$, $\varphi$ presenta un mínimo local en el punto **interior** $x$; por Fermat Corolario §20.1.5 — Fermat en puntos interiores de un intervalo cerrado se sigue $\varphi'(x)=0$. Si $\varphi(x)=d$, el mismo argumento, mediante un máximo local, vuelve a dar $\varphi'(x)=0$. En cualquiera de los dos casos, sea $\varepsilon>0$. La definición de la derivada de $\varphi$ con valor cero proporciona $\delta>0$ tal que, para todo $y\in[a,b]$ con $0<|y-x|<\delta$,
+Supongamos ahora $\varphi(x)=c$. Como $\varphi(t)\ge c=\varphi(x)$ para todo $t\in[a,b]$, $\varphi$ presenta un mínimo local en el punto interior $x$; por Fermat Corolario §20.1.5 — Fermat en puntos interiores de un intervalo cerrado se sigue $\varphi'(x)=0$. Si $\varphi(x)=d$, el mismo argumento, mediante un máximo local, vuelve a dar $\varphi'(x)=0$. En cualquiera de los dos casos, sea $\varepsilon>0$. La definición de la derivada de $\varphi$ con valor cero proporciona $\delta>0$ tal que, para todo $y\in[a,b]$ con $0<|y-x|<\delta$,
 
 $$
 \left|\frac{\varphi(y)-\varphi(x)}{y-x}\right|<\frac{\varepsilon}{K+1_{\mathbb R}}.
@@ -75,7 +75,7 @@ $$
 \tag{22.5.7}
 $$
 
-En particular, ésta es una identidad de integrales con límites **siempre ordenados** en cada uno de los tres casos:
+En particular, ésta es una identidad de integrales con límites siempre ordenados en cada uno de los tres casos:
 
 $$
 \boxed{
@@ -96,18 +96,18 @@ $$
 H'(x)=f(\varphi(x))\varphi'(x)=f(\varphi(x))p(x)=g(x).
 $$
 
-Así, $H$ es primitiva de $g$ en el sentido de Definición §22.3.1 — Primitiva sobre un intervalo cerrado. **Sólo ahora**, porque la integrabilidad de $g$ es una hipótesis expresa, podemos aplicar Newton–Leibniz Teorema §22.3.3 — Regla de Newton–Leibniz para integrandas integrables que admiten primitiva:
+Así, $H$ es primitiva de $g$ en el sentido de Definición §22.3.1 — Primitiva sobre un intervalo cerrado. Sólo ahora, porque la integrabilidad de $g$ es una hipótesis expresa, podemos aplicar Newton–Leibniz Teorema §22.3.3 — Regla de Newton–Leibniz para integrandas integrables que admiten primitiva:
 
 $$
 \int_a^b g=H(b)-H(a)=F_{f,c}(v)-F_{f,c}(u).
 $$
 
-Esto prueba (22.5.7). Para obtener (22.5.8), si $u<v$, Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos identifica la diferencia de la acumulada con la integral de la restricción a $[u,v]$, cuya integrabilidad está garantizada por Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado. Si $u=v$, la diferencia es cero; la integral sobre $[u,u]$, cuando se escribe, vale igualmente cero por Definición §21.6.5 — Integración en un intervalo degenerado. Si $u>v$, aplicamos Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos a los extremos **ordenados** $v<u$, obteniendo $F_{f,c}(u)-F_{f,c}(v)=\int_v^u(f\upharpoonright[v,u])$; tomamos el opuesto de ambos miembros en el cuerpo real. En ningún punto se define $\int_u^v$ cuando $u>v$. $\square$
+Esto prueba (22.5.7). Para obtener (22.5.8), si $u<v$, Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos identifica la diferencia de la acumulada con la integral de la restricción a $[u,v]$, cuya integrabilidad está garantizada por Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado. Si $u=v$, la diferencia es cero; la integral sobre $[u,u]$, cuando se escribe, vale igualmente cero por Definición §21.6.5 — Integración en un intervalo degenerado. Si $u>v$, aplicamos Proposición §22.1.2 — Valores extremos e identidad exacta de los incrementos a los extremos ordenados $v<u$, obteniendo $F_{f,c}(u)-F_{f,c}(v)=\int_v^u(f\upharpoonright[v,u])$; tomamos el opuesto de ambos miembros en el cuerpo real. En ningún punto se define $\int_u^v$ cuando $u>v$. $\square$
 
 **Interpretación.** La derivada del cambio registra las variaciones con signo. Una trayectoria que regresa al mismo valor extremo produce una diferencia nula de la acumulada, aunque recorra puntos intermedios y la integranda transformada no sea idénticamente cero.
 
 ### Corolario 22.5.3 — Versión de uso corriente con derivada prolongable continuamente
-Sean $f:[c,d]\to\mathbb R$ y $\varphi:[a,b]\to[c,d]$ como en el lema. Si además existe una función **continua** $p:[a,b]\to\mathbb R$ que satisface $p=\varphi'$ en $(a,b)$, entonces la función $g(t)=f(\varphi(t))p(t)$ es integrable y valen (22.5.7) y los tres casos (22.5.8). En particular, si $\varphi(a)\le\varphi(b)$, la sustitución toma la forma usual con una integral a la derecha cuyo intervalo está ordenado.
+Sean $f:[c,d]\to\mathbb R$ y $\varphi:[a,b]\to[c,d]$ como en el lema. Si además existe una función continua $p:[a,b]\to\mathbb R$ que satisface $p=\varphi'$ en $(a,b)$, entonces la función $g(t)=f(\varphi(t))p(t)$ es integrable y valen (22.5.7) y los tres casos (22.5.8). En particular, si $\varphi(a)\le\varphi(b)$, la sustitución toma la forma usual con una integral a la derecha cuyo intervalo está ordenado.
 
 **Demostración.**
 El dominio efectivo de $f\circ\varphi$ es $[a,b]$ porque $\varphi$ toma sus valores en $[c,d]$ (Proposición §16.4.1 — Dominio efectivo y tipado de la composición); dicha composición es continua en todo el cerrado por Teorema §17.4.5 — Composición en el dominio efectivo. El producto puntual con la función continua $p$ es continuo por Teorema §17.4.3 — Estabilidad de la continuidad bajo operaciones algebraicas y valor absoluto y existe como función tipada por Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales. Resulta integrable por Corolario §21.7.4 — Toda función continua en un intervalo cerrado es integrable. Verificadas las hipótesis, se aplica Teorema §22.5.2 — Cambio de variable con integrabilidad explícita y extremos ordenados, sin imponer monotonía ni invertir el orden de integración. $\square$
@@ -121,7 +121,7 @@ $$
 \tag{22.5.9}
 $$
 
-La diferencia de la derecha se convierte en la integral de $f$ restringida al intervalo cuyos extremos son $\varphi(r)$ y $\varphi(s)$ si están ordenados de menor a mayor, y en el **opuesto** de esa integral si aparecen en orden contrario. Si coinciden, el resultado es cero.
+La diferencia de la derecha se convierte en la integral de $f$ restringida al intervalo cuyos extremos son $\varphi(r)$ y $\varphi(s)$ si están ordenados de menor a mayor, y en el opuesto de esa integral si aparecen en orden contrario. Si coinciden, el resultado es cero.
 
 **Demostración.**
 Si $r=s$, la integral del singleton es cero por Definición §21.6.5 — Integración en un intervalo degenerado y la diferencia de valores de la acumulada también es cero. Si $r<s$, la restricción tipada $\varphi\upharpoonright[r,s]$ es continua por Corolario §17.4.6 — Clausura global, restricciones y cocientes y derivable en $(r,s)$ con derivada $p$ allí por Proposición §19.5.2 — Restricción de una función derivable. La integrabilidad de $g\upharpoonright[r,s]$ proviene de Corolario §21.6.6 — Aditividad para todo punto del intervalo cerrado. Los productos y las composiciones de las restricciones coinciden punto a punto con la restricción de $g$ y tienen los mismos dominio $[r,s]$ y codominio $\mathbb R$ (Proposición §1.3.2 — Existencia y unicidad de la restricción). Aplicamos Teorema §22.5.2 — Cambio de variable con integrabilidad explícita y extremos ordenados a este intervalo y obtenemos (22.5.9). Las tres alternativas para los nuevos extremos se deducen de (22.5.8). $\square$

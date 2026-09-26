@@ -1,22 +1,22 @@
 ## 15.5. Puntos de acumulación y puntos aislados {#sec-ta-15-5}
 
-Un punto adherente puede encontrarse en todas las bolas centradas en él por una razón trivial: **él mismo** pertenece al conjunto. Para captar una proximidad que no dependa de esa coincidencia, excluiremos expresamente el centro. La acumulación es, por tanto, una condición más fuerte que la adherencia, aun cuando el centro no pertenezca al conjunto.
+Un punto adherente puede encontrarse en todas las bolas centradas en él por una razón trivial: él mismo pertenece al conjunto. Para captar una proximidad que no dependa de esa coincidencia, excluiremos expresamente el centro. La acumulación es, por tanto, una condición más fuerte que la adherencia, aun cuando el centro no pertenezca al conjunto.
 
 ### Definición 15.5.1 — Punto de acumulación
-Sean $A\subseteq\mathbb R$ y $x\in\mathbb R$. Decimos que **$x$ es punto de acumulación de $A$** si toda bola abierta de radio positivo centrada en $x$ contiene un punto de $A$ *distinto de $x$*:
+Sean $A\subseteq\mathbb R$ y $x\in\mathbb R$. Decimos que $x$ es punto de acumulación de $A$ si toda bola abierta de radio positivo centrada en $x$ contiene un punto de $A$ *distinto de $x$*:
 
 $$
 \boxed{\forall r\in\mathbb R\ \bigl(r>0\implies
 (B_r(x)\setminus\{x\})\cap A\ne\varnothing\bigr).}
 $$
 
-Equivalentemente, para todo $r>0$ existe $y\in A$ tal que $0<|y-x|<r$: la primera desigualdad equivale a $y\ne x$ y la segunda equivale a $y\in B_r(x)$. Los conjuntos involucrados ya existen por las operaciones de diferencia e intersección. El punto $x$ **no tiene por qué pertenecer a $A$**. Cada radio puede aportar un testigo diferente; no se pide escoger una función de testigos indexada por los radios.
+Equivalentemente, para todo $r>0$ existe $y\in A$ tal que $0<|y-x|<r$: la primera desigualdad equivale a $y\ne x$ y la segunda equivale a $y\in B_r(x)$. Los conjuntos involucrados ya existen por las operaciones de diferencia e intersección. El punto $x$ no tiene por qué pertenecer a $A$. Cada radio puede aportar un testigo diferente; no se pide escoger una función de testigos indexada por los radios.
 
 > **Distinción lógica.** Adherencia exige $B_r(x)\cap A\ne\varnothing$ para todo $r>0$; acumulación exige además un testigo diferente del centro. La diferencia entre ambas nociones es significativa precisamente cuando $x\in A$.
 
 
 ### Definición 15.5.2 — Conjunto derivado o conjunto de puntos de acumulación
-Para cada $A\subseteq\mathbb R$ definimos su **conjunto derivado** mediante
+Para cada $A\subseteq\mathbb R$ definimos su conjunto derivado mediante
 
 $$
 \boxed{\operatorname{Acc}(A):=\{x\in\mathbb R:
@@ -69,7 +69,7 @@ Si $A$ es cerrado, Corolario §15.4.7 — Un conjunto es cerrado si y sólo si c
 
 
 ### Definición 15.5.5 — Punto aislado
-Un punto $x$ es **aislado en $A\subseteq\mathbb R$** si $x\in A$ y existe un radio $r>0$ tal que
+Un punto $x$ es aislado en $A\subseteq\mathbb R$ si $x\in A$ y existe un radio $r>0$ tal que
 
 $$
 \boxed{B_r(x)\cap A=\{x\}.}
@@ -93,7 +93,7 @@ Supongamos que $x$ es aislado. Entonces $x\in A$ y existe $r>0$ con $B_r(x)\cap 
 
 Recíprocamente, supongamos $x\in A$ y $x\notin\operatorname{Acc}(A)$. La negación clásica de la condición universal de Definición §15.5.1 — Punto de acumulación proporciona un $r>0$ tal que $(B_r(x)\setminus\{x\})\cap A=\varnothing$. Como $x\in A$ y, por Proposición §15.1.2 — Las bolas son intervalos abiertos centrados, $x\in B_r(x)$, tenemos $x\in B_r(x)\cap A$. Si $y$ es cualquier otro elemento de esta intersección, $y\ne x$ lo situaría en la intersección perforada vacía, contradicción. Por tanto $B_r(x)\cap A=\{x\}$ y $x$ es aislado. La descripción del conjunto de puntos aislados se obtiene por Separación en $A$. ∎
 
-La oposición entre «aislado» y «de acumulación» concierne a los puntos **que pertenecen a $A$**: un punto exterior también puede no ser de acumulación, pero nunca se le llamará aislado en $A$.
+La oposición entre «aislado» y «de acumulación» concierne a los puntos que pertenecen a $A$: un punto exterior también puede no ser de acumulación, pero nunca se le llamará aislado en $A$.
 
 
 ### Teorema 15.5.7 — El conjunto de puntos de acumulación es cerrado
@@ -128,7 +128,7 @@ Por tanto $z\in B_r(x)\setminus\{x\}$, y así $B_\delta(y)\subseteq B_r(x)\setmi
 
 Hemos hallado para cada $x\notin\operatorname{Acc}(A)$ un radio positivo $r$ con $B_r(x)\cap\operatorname{Acc}(A)=\varnothing$. El criterio de cerradura Proposición §15.3.6 — Criterio de cerradura mediante puntos exteriores completa la demostración. ∎
 
-La prueba es local: una única bola que evita a $A$ salvo, eventualmente, por su centro también evita a **todos** los puntos de acumulación de $A$. No se extrajeron sucesiones de puntos, por lo que tampoco se requirió elección numerable.
+La prueba es local: una única bola que evita a $A$ salvo, eventualmente, por su centro también evita a todos los puntos de acumulación de $A$. No se extrajeron sucesiones de puntos, por lo que tampoco se requirió elección numerable.
 
 
 ### Teorema 15.5.8 — El conjunto derivado conserva las uniones binarias
@@ -165,7 +165,7 @@ $$
 
 Esto contradice $x\in\operatorname{Acc}(A\cup B)$. Por lógica clásica, $x$ pertenece a $\operatorname{Acc}(A)$ o a $\operatorname{Acc}(B)$ y queda demostrada la igualdad. Para la familia, cada $A_i$ está contenido en su unión; la monotonía aporta $\operatorname{Acc}(A_i)\subseteq\operatorname{Acc}(\bigcup_j A_j)$ para cada $i$, y la definición de unión entrega la inclusión solicitada. El caso $I=\varnothing$ es inmediato. No se han escogido puntos para todos los radios ni índices simultáneamente. ∎
 
-Una unión **finita** de conjuntos derivados se trata por inducción a partir de la igualdad binaria y del caso vacío que verificaremos enseguida. Para uniones arbitrarias, la inclusión inversa puede fallar.
+Una unión finita de conjuntos derivados se trata por inducción a partir de la igualdad binaria y del caso vacío que verificaremos enseguida. Para uniones arbitrarias, la inclusión inversa puede fallar.
 
 
 ### Proposición 15.5.9 — Ejemplos y límite de la ley de unión
@@ -177,7 +177,7 @@ $$
 \quad\operatorname{Acc}((a,b))=[a,b].}
 $$
 
-Existe, además, una familia de conjuntos cuyo conjunto derivado **no** conserva la unión arbitraria como igualdad.
+Existe, además, una familia de conjuntos cuyo conjunto derivado no conserva la unión arbitraria como igualdad.
 
 **Demostración.**
 **Vacío y singleton.** Ninguna bola perforada puede intersectar $\varnothing$. Si $x=a$, la intersección $(B_r(a)\setminus\{a\})\cap\{a\}$ es vacía para *todo* $r>0$. Si $x\ne a$, tomemos $r=|x-a|/(1+1)>0$. Para el único candidato $a$ se tiene $|a-x|>r$, por lo que $a\notin B_r(x)$ y la intersección perforada también es vacía. Ningún punto acumula al singleton, y las dos primeras identidades siguen por extensionalidad.
@@ -200,4 +200,4 @@ $$
 
 Pero $\bigcup_{t\in I}F_t=(0,1)$, cuyo conjunto derivado es $[0,1]$ por la tercera identidad (entendiendo ahora $0,1$ como elementos del cuerpo real). En particular, $0$ pertenece al derivado de la unión y no a la unión de los derivados. La inclusión indexada de Teorema §15.5.8 — El conjunto derivado conserva las uniones binarias puede ser estricta. ∎
 
-Los ejemplos fijan el alcance de la noción: **una pertenencia solitaria no produce acumulación**, mientras que los extremos de un intervalo pueden acumular puntos aun sin pertenecer al intervalo. El próximo paso será estudiar los puntos de frontera mediante la relación simultánea con un conjunto y su complemento, sin confundir frontera con conjunto derivado.
+Los ejemplos fijan el alcance de la noción: una pertenencia solitaria no produce acumulación, mientras que los extremos de un intervalo pueden acumular puntos aun sin pertenecer al intervalo. El próximo paso será estudiar los puntos de frontera mediante la relación simultánea con un conjunto y su complemento, sin confundir frontera con conjunto derivado.

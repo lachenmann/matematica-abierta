@@ -1,6 +1,6 @@
 ## 13.9. Subsucesiones {#sec-ta-13-9}
 
-Hasta ahora hemos estudiado el comportamiento de una sucesión mirando su cola completa. Una subsucesión cambia la perspectiva: conserva algunos términos y descarta otros, pero **sin alterar el orden en que aparecían**.
+Hasta ahora hemos estudiado el comportamiento de una sucesión mirando su cola completa. Una subsucesión cambia la perspectiva: conserva algunos términos y descarta otros, pero sin alterar el orden en que aparecían.
 
 Esta última condición es esencial. Si escribimos informalmente
 
@@ -20,7 +20,7 @@ La construcción posee además una propiedad menos visible pero fundamental: un 
 
 ### Definición 13.9.1 — Selector de índices de subsucesión
 
-Llamaremos **selector de índices de subsucesión** a una función
+Llamaremos selector de índices de subsucesión a una función
 
 $$
 \boxed{
@@ -63,7 +63,7 @@ Sea $\phi:\mathbb N\to\mathbb N$ un selector de índices. Entonces:
    }
    $$
 
-En particular, los valores de $\phi$ son **cofinales en $\mathbb N$**: ningún segmento inicial de los naturales contiene todos los índices seleccionados.
+En particular, los valores de $\phi$ son cofinales en $\mathbb N$: ningún segmento inicial de los naturales contiene todos los índices seleccionados.
 
 **Demostración.**
 
@@ -224,7 +224,7 @@ a=(a_n)_{n\in\mathbb N},
 b=(b_k)_{k\in\mathbb N}
 $$
 
-sucesiones reales. Diremos que $b$ es una **subsucesión** de $a$ si existe un selector de índices
+sucesiones reales. Diremos que $b$ es una subsucesión de $a$ si existe un selector de índices
 
 $$
 \phi:\mathbb N\to\mathbb N
@@ -246,11 +246,11 @@ $$
 
 La equivalencia entre ambas escrituras es sólo la definición de composición y evaluación; Proposición 13.1.2 — Criterio término a término para la igualdad de sucesiones reales permite recuperar la igualdad de sucesiones a partir de la igualdad término a término.
 
-> **Distinción de tipos.** El selector $\phi$ actúa sobre **índices**,
+> **Distinción de tipos.** El selector $\phi$ actúa sobre índices,
 > $$
 > \phi:\mathbb N\to\mathbb N,
 > $$
-> mientras que $a$ actúa sobre esos índices y devuelve **valores reales**,
+> mientras que $a$ actúa sobre esos índices y devuelve valores reales,
 > $$
 > a:\mathbb N\to\mathbb R.
 > $$
@@ -523,4 +523,4 @@ $$
 
 Una consecuencia inmediata, combinando Teorema 13.9.5 — Toda subsucesión de una sucesión convergente converge al mismo límite con la unicidad del límite Teorema 13.3.5 — Unicidad del límite real, es la siguiente rigidez: si $a_n\to\ell$, ninguna subsucesión de $a$ puede converger a un real distinto de $\ell$.
 
-Esta observación señala exactamente el concepto siguiente. Una sucesión que no converge puede contener, sin embargo, subsucesiones convergentes; diferentes extracciones pueden incluso revelar comportamientos asintóticos distintos. El próximo paso será convertir esos límites obtenidos por extracción en objetos de estudio propios: los **puntos límite secuenciales** de una sucesión.
+Esta observación señala exactamente el concepto siguiente. Una sucesión que no converge puede contener, sin embargo, subsucesiones convergentes; diferentes extracciones pueden incluso revelar comportamientos asintóticos distintos. El próximo paso será convertir esos límites obtenidos por extracción en objetos de estudio propios: los puntos límite secuenciales de una sucesión.

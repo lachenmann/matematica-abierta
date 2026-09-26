@@ -6,7 +6,7 @@ $$
 |x-a|<r,
 $$
 
-con $x,a\in\mathbb R$ y $r>0$. Hasta ahora tales desigualdades servían para controlar **procesos indexados**. Podemos considerarlas también como una descripción de **todos los puntos de la recta que están suficientemente cerca de un punto dado**.
+con $x,a\in\mathbb R$ y $r>0$. Hasta ahora tales desigualdades servían para controlar procesos indexados. Podemos considerarlas también como una descripción de todos los puntos de la recta que están suficientemente cerca de un punto dado.
 
 Esta transición nos lleva a una nueva pregunta: ¿qué propiedades de un subconjunto de $\mathbb R$ se pueden describir mediante la posibilidad de permanecer dentro de él al desplazarnos una distancia suficientemente pequeña?
 

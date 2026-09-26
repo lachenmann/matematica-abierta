@@ -1,6 +1,6 @@
 ## 0.1. Lenguaje lógico y axiomas conjuntistas disponibles
 
-Antes de construir objetos matemáticos conviene precisar qué parte de la maquinaria se **admite** y qué parte deberá **demostrarse**. La distinción es esencial en un tratado que pretende construir los sistemas numéricos desde fundamentos explícitos: si una propiedad se apoya en un axioma de ZF, queremos poder decir cuál; si se obtiene de definiciones anteriores, queremos verla aparecer como resultado interno.
+Antes de construir objetos matemáticos conviene precisar qué parte de la maquinaria se admite y qué parte deberá demostrarse. La distinción es esencial en un tratado que pretende construir los sistemas numéricos desde fundamentos explícitos: si una propiedad se apoya en un axioma de ZF, queremos poder decir cuál; si se obtiene de definiciones anteriores, queremos verla aparecer como resultado interno.
 
 Esta sección no pretende convertir el tratado en un curso de lógica o teoría de conjuntos. Su función es más austera: fijar el suelo sobre el que caminaremos. A partir de ese suelo, las construcciones posteriores deberán justificarse dentro del propio desarrollo.
 
@@ -10,8 +10,8 @@ Esta sección no pretende convertir el tratado en un curso de lógica o teoría 
 
 Distinguiremos permanentemente:
 
-1. el **metanivel**, en el que hablamos de fórmulas, demostraciones, variables, definiciones y dependencias;
-2. el **nivel objeto**, en el que las variables recorren conjuntos.
+1. el metanivel, en el que hablamos de fórmulas, demostraciones, variables, definiciones y dependencias;
+2. el nivel objeto, en el que las variables recorren conjuntos.
 
 Los numerales usados para numerar capítulos, secciones o resultados pertenecen al metanivel editorial hasta que los números naturales hayan sido construidos.
 
@@ -33,7 +33,7 @@ No registraremos como resultados del tratado las tautologías puramente lógicas
 
 *Glosario: [ZF](../otros/tratado-de-analisis-glosario.md#gl-zf)*
 
-Los axiomas siguientes son **fundamento admitido**, no teoremas del tratado. Se los reproduce aquí para que las dependencias de las construcciones posteriores sean visibles.
+Los axiomas siguientes son fundamento admitido, no teoremas del tratado. Se los reproduce aquí para que las dependencias de las construcciones posteriores sean visibles.
 
 #### Extensionalidad {#ta-axioma-extensionalidad}
 
@@ -109,7 +109,7 @@ y\in I\land
 \Bigr].
 $$
 
-En este capítulo utilizaremos de este axioma únicamente su consecuencia inmediata de que **existe al menos un conjunto**.
+En este capítulo utilizaremos de este axioma únicamente su consecuencia inmediata de que existe al menos un conjunto.
 
 #### Fundación
 
@@ -129,7 +129,7 @@ $$
 
 para el subconjunto de $A$ cuya existencia garantiza separación.
 
-Esta notación **no** autoriza expresiones irrestrictas de la forma $\{x:P(x)\}$ sin un conjunto ambiente previamente disponible.
+Esta notación no autoriza expresiones irrestrictas de la forma $\{x:P(x)\}$ sin un conjunto ambiente previamente disponible.
 
 ---
 

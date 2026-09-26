@@ -1,6 +1,6 @@
 ## 18.2. Compacidad de los intervalos cerrados y acotados {#sec-ta-18-2}
 
-La definición anterior exige una reducción finita de **cualquier** cubierta abierta. No basta exhibir una cubierta particularmente sencilla. Demostraremos la propiedad para $[a,b]$ sin emplear todavía Heine–Borel ni equivalencias secuenciales: el argumento sólo necesita la propiedad del supremo, la apertura de los miembros de una cubierta dada y las operaciones finitas ya legitimadas en §18.1.
+La definición anterior exige una reducción finita de cualquier cubierta abierta. No basta exhibir una cubierta particularmente sencilla. Demostraremos la propiedad para $[a,b]$ sin emplear todavía Heine–Borel ni equivalencias secuenciales: el argumento sólo necesita la propiedad del supremo, la apertura de los miembros de una cubierta dada y las operaciones finitas ya legitimadas en §18.1.
 
 ### Teorema 18.2.1 — Todo intervalo cerrado y acotado es compacto
 Para cualesquiera $a,b\in\mathbb R$ tales que $a\le b$, el intervalo $[a,b]$ es compacto: toda cubierta abierta indexada del intervalo posee una subcubierta finita.
@@ -20,7 +20,7 @@ $$
 
 La condición es una fórmula conjuntista: $J$ varía dentro de $\mathcal P(I)$, la finitud tiene la definición Definición §18.1.1 — Conjunto finito y las uniones están determinadas por la familia ya dada. No estamos formando una colección irrestricta ni escogiendo un $J_x$ para todos los $x\in S$.
 
-El conjunto $S$ es no vacío. En efecto, $a\in[a,b]$, así que la cubierta proporciona **un** índice $i_a\in I$ con $a\in U_{i_a}$. Como $[a,a]=\{a\}$, el singleton de índices $\{i_a\}$ cubre $[a,a]$, y es finito. Por consiguiente $a\in S$. Además $S\subseteq[a,b]$, de modo que $b$ es una cota superior suya.
+El conjunto $S$ es no vacío. En efecto, $a\in[a,b]$, así que la cubierta proporciona un índice $i_a\in I$ con $a\in U_{i_a}$. Como $[a,a]=\{a\}$, el singleton de índices $\{i_a\}$ cubre $[a,a]$, y es finito. Por consiguiente $a\in S$. Además $S\subseteq[a,b]$, de modo que $b$ es una cota superior suya.
 
 **2. Un supremo que no puede detener el avance.** La completitud de $\mathbb R$ garantiza
 
@@ -28,13 +28,13 @@ $$
 c:=\sup S,\qquad a\le c\le b.
 $$
 
-Como $c\in[a,b]$, existe **un** índice $i_c\in I$ con $c\in U_{i_c}$. La apertura de $U_{i_c}$ proporciona $r>0$ tal que
+Como $c\in[a,b]$, existe un índice $i_c\in I$ con $c\in U_{i_c}$. La apertura de $U_{i_c}$ proporciona $r>0$ tal que
 
 $$
 B_r(c)=(c-r,c+r)\subseteq U_{i_c}.
 $$
 
-Afirmamos que existe $t\in S$ con $c-r/2<t\le c$. Si no existiera, $c-r/2$ sería una cota superior de $S$, estrictamente menor que $c$, contradiciendo la definición de supremo. Fijemos **un** tal $t$. Por pertenecer a $S$, existe un conjunto finito de índices $J_t\subseteq I$ que cubre $[a,t]$. Sólo se han fijado dos testigos asociados a esta cubierta: el índice $i_c$ y una subcubierta para este $t$ particular.
+Afirmamos que existe $t\in S$ con $c-r/2<t\le c$. Si no existiera, $c-r/2$ sería una cota superior de $S$, estrictamente menor que $c$, contradiciendo la definición de supremo. Fijemos un tal $t$. Por pertenecer a $S$, existe un conjunto finito de índices $J_t\subseteq I$ que cubre $[a,t]$. Sólo se han fijado dos testigos asociados a esta cubierta: el índice $i_c$ y una subcubierta para este $t$ particular.
 
 Sea
 
@@ -42,7 +42,7 @@ $$
 d:=\min\{b,c+r/2\},
 $$
 
-entendiendo el mínimo de estos **dos** reales por comparación en el orden total. Como $c\le b$ y $r>0$, tenemos $c\le d\le b$; si $c<b$, entonces $c<d$. Para todo $y\in[t,d]$ se verifica
+entendiendo el mínimo de estos dos reales por comparación en el orden total. Como $c\le b$ y $r>0$, tenemos $c\le d\le b$; si $c<b$, entonces $c<d$. Para todo $y\in[t,d]$ se verifica
 
 $$
 c-r<c-r/2<t\le y\le d\le c+r/2<c+r.
@@ -63,10 +63,10 @@ Al ser $c$ cota superior de $S$, obtenemos $d\le c$. Junto con $c\le d$, resulta
 **Lectura de la prueba.** La completitud convierte una colección de segmentos que ya podemos cubrir finitamente en un punto extremo $c$. La apertura de un único miembro que contiene a $c$ impide que la cobertura finita se interrumpa allí. El argumento también comprende $a=b$: en ese caso el supremo es el único punto del intervalo y la construcción produce directamente su subcubierta finita.
 
 ### Proposición 18.2.2 — Un cerrado relativo de un compacto es compacto
-Sea $K\subseteq\mathbb R$ compacto y sea $A\subseteq K$ cerrado **relativo a $K$**. Entonces $A$ es compacto. En particular, la intersección de un compacto de la recta con un cerrado de la recta es compacta.
+Sea $K\subseteq\mathbb R$ compacto y sea $A\subseteq K$ cerrado relativo a $K$. Entonces $A$ es compacto. En particular, la intersección de un compacto de la recta con un cerrado de la recta es compacta.
 
 **Demostración.**
-Por la representación de cerrados relativos Proposición §17.3.2 — Criterio por bolas y representación de los cerrados relativos, existe un cerrado $F\subseteq\mathbb R$ con $A=K\cap F$. Fijemos una cubierta abierta arbitraria $U:I\to\mathcal P(\mathbb R)$ de $A$. Su cobertura no tiene por qué alcanzar a los puntos de $K\setminus A$; añadiremos **un único abierto**, el complemento $V:=\mathbb R\setminus F$, abierto por Definición §15.3.5 — Conjunto cerrado de la recta.
+Por la representación de cerrados relativos Proposición §17.3.2 — Criterio por bolas y representación de los cerrados relativos, existe un cerrado $F\subseteq\mathbb R$ con $A=K\cap F$. Fijemos una cubierta abierta arbitraria $U:I\to\mathcal P(\mathbb R)$ de $A$. Su cobertura no tiene por qué alcanzar a los puntos de $K\setminus A$; añadiremos un único abierto, el complemento $V:=\mathbb R\setminus F$, abierto por Definición §15.3.5 — Conjunto cerrado de la recta.
 
 Para conservar el tipado incluso si algún miembro original coincide con $V$, definamos el conjunto de índices etiquetados
 
@@ -101,4 +101,4 @@ Para cualquier par $a,b\in\mathbb R$, el conjunto definido por la notación de i
 **Demostración.**
 Si $a\le b$, aplicamos Teorema §18.2.1 — Todo intervalo cerrado y acotado es compacto. Si $a>b$, la definición de intervalo da $[a,b]=\varnothing$, compacto por Proposición §18.1.5 — El vacío y los singletons son compactos. No existe un tercer caso por el orden total real. Sea ahora una familia de intervalos cerrados y acotados $C:I\to\mathcal P(\mathbb R)$ cuyo conjunto de índices $I$ sea finito. Cada $C_i$ es compacto por la primera afirmación. La unión es compacta por la afirmación de unión finita de Corolario §18.1.7 — Todo conjunto finito de reales es compacto, reindexando si es necesario mediante una biyección testigo de la finitud de $I$. El caso $I=\varnothing$ vuelve a dar el conjunto vacío. $\square$
 
-**Transición.** Hemos obtenido la dirección de suficiencia más importante para Heine–Borel: todos los intervalos $[a,b]$ son compactos, y todo cerrado que se encuentre dentro de uno de ellos hereda la compacidad. Aún no hemos demostrado que **todo** compacto real deba ser cerrado y acotado. Ése será el siguiente problema y permitirá reconocer la equivalencia exacta, sin convertirla retrospectivamente en una definición.
+**Transición.** Hemos obtenido la dirección de suficiencia más importante para Heine–Borel: todos los intervalos $[a,b]$ son compactos, y todo cerrado que se encuentre dentro de uno de ellos hereda la compacidad. Aún no hemos demostrado que todo compacto real deba ser cerrado y acotado. Ése será el siguiente problema y permitirá reconocer la equivalencia exacta, sin convertirla retrospectivamente en una definición.

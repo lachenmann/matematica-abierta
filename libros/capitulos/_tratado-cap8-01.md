@@ -2,7 +2,7 @@
 
 ### Definición 8.1.1 — Sucesión racional
 
-Una **sucesión racional** es una función
+Una sucesión racional es una función
 
 $$
 q:\mathbb N\longrightarrow\mathbb Q.
@@ -42,7 +42,7 @@ El primero es una función; el segundo es un racional; el tercero es el conjunto
 > $$ \mathbb N\to\mathbb Q. $$
 > Esta definición no afirma que exista un algoritmo que, dado $n$, calcule $q_n$:
 > $$ \boxed{\text{sucesión}\neq\text{algoritmo}.} $$
-> La noción de **nombre efectivo** se introducirá sólo cuando la función venga acompañada de un procedimiento computable para sus términos.
+> La noción de nombre efectivo se introducirá sólo cuando la función venga acompañada de un procedimiento computable para sus términos.
 
 ### Proposición 8.1.2 — Criterio término a término para la igualdad de sucesiones
 
@@ -309,7 +309,7 @@ $$
 
 ### Definición 8.1.4 — Sucesiones constantes
 
-Sea $c\in\mathbb Q$. Definimos la **sucesión constante de valor $c$** por
+Sea $c\in\mathbb Q$. Definimos la sucesión constante de valor $c$ por
 
 $$
 \boxed{
@@ -505,4 +505,4 @@ Todavía no hemos definido ninguna noción de proximidad entre dos términos rac
 
 Ésa es precisamente la siguiente dificultad.
 
-Para expresar que dos términos de una sucesión están “cerca” necesitamos convertir su diferencia en una cantidad racional no negativa que mida separación sin depender del orden de los términos. El siguiente paso será, por tanto, construir la **distancia racional** que servirá de lenguaje cuantitativo para las aproximaciones.
+Para expresar que dos términos de una sucesión están “cerca” necesitamos convertir su diferencia en una cantidad racional no negativa que mida separación sin depender del orden de los términos. El siguiente paso será, por tanto, construir la distancia racional que servirá de lenguaje cuantitativo para las aproximaciones.

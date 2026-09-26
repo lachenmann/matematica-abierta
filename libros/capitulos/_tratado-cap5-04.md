@@ -18,7 +18,7 @@ $$
 }
 $$
 
-La relación $\leq_D$ se denominará **orden de Dedekind**.
+La relación $\leq_D$ se denominará orden de Dedekind.
 
 La inclusión ordena parcialmente cualquier familia de conjuntos, pero en general no la ordena totalmente. Dos subconjuntos arbitrarios pueden ser incomparables. Lo especial de las cortaduras es que su clausura hacia abajo, combinada con la totalidad del orden racional, impide que se crucen.
 
@@ -116,7 +116,7 @@ $$
 
 Obsérvese también que la comparabilidad utiliza únicamente la clausura inferior de las cortaduras y la totalidad del orden racional. La condición de ausencia de máximo no interviene en esta parte.
 
-> **Nota fundacional.** El resultado establece comparabilidad **clásica** de cualesquiera dos cortaduras. La prueba usa LEM sobre $\alpha\subseteq\beta$ y, desde $\alpha\not\subseteq\beta$, extrae clásicamente un testigo $a\in\alpha\setminus\beta$. Por tanto
+> **Nota fundacional.** El resultado establece comparabilidad clásica de cualesquiera dos cortaduras. La prueba usa LEM sobre $\alpha\subseteq\beta$ y, desde $\alpha\not\subseteq\beta$, extrae clásicamente un testigo $a\in\alpha\setminus\beta$. Por tanto
 > $$
 > \boxed{
 > \text{comparabilidad clásica}

@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0004 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0063 |
+| Capítulo | MA-BCH-0078 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0008 |
 
@@ -110,6 +110,21 @@
 | MA-BCH-0060 | book-chapter | Tratado de análisis — Capítulo 14 — Series numéricas | `libros/capitulos/tratado-de-analisis-capitulo-14-series-numericas.md` | published |
 | MA-BCH-0061 | book-chapter | Tratado de análisis — Capítulo 15 — Topología de la recta real | `libros/capitulos/tratado-de-analisis-capitulo-15-topologia-de-la-recta-real.md` | published |
 | MA-BCH-0062 | book-chapter | Tratado moderno de Álgebra — Capítulo 26: Anillos ordenados | `libros/capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md` | published |
+| MA-BCH-0063 | book-chapter | Continuidad en la recta: intervalos, compacidad y teoremas fundamentales | `libros/capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md` | published |
+| MA-BCH-0064 | book-chapter | La derivada y la aproximación lineal local | `libros/capitulos/la-derivada-y-la-aproximacion-lineal-local.md` | published |
+| MA-BCH-0065 | book-chapter | Álgebra de derivadas y regla de la cadena | `libros/capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md` | published |
+| MA-BCH-0066 | book-chapter | Derivación de funciones elementales, inversas e implícitas | `libros/capitulos/derivacion-de-funciones-elementales-inversas-e-implicitas.md` | published |
+| MA-BCH-0067 | book-chapter | Tratado de análisis — Capítulo 16 — Límites de funciones | `libros/capitulos/tratado-de-analisis-capitulo-16-limites-de-funciones.md` | published |
+| MA-BCH-0068 | book-chapter | Tratado de análisis — Capítulo 17 — Continuidad | `libros/capitulos/tratado-de-analisis-capitulo-17-continuidad.md` | published |
+| MA-BCH-0069 | book-chapter | Tratado de análisis — Capítulo 18 — Compacidad y conexidad en la recta | `libros/capitulos/tratado-de-analisis-capitulo-18-compacidad-y-conexidad-en-la-recta.md` | published |
+| MA-BCH-0070 | book-chapter | Tratado de análisis — Capítulo 19 — Diferenciación | `libros/capitulos/tratado-de-analisis-capitulo-19-diferenciacion.md` | published |
+| MA-BCH-0071 | book-chapter | Tratado de análisis — Capítulo 20 — Teoremas fundamentales del cálculo diferencial | `libros/capitulos/tratado-de-analisis-capitulo-20-teoremas-fundamentales-del-calculo-diferencial.md` | published |
+| MA-BCH-0072 | book-chapter | Tratado de análisis — Capítulo 21 — Integral de Riemann | `libros/capitulos/tratado-de-analisis-capitulo-21-integral-de-riemann.md` | published |
+| MA-BCH-0073 | book-chapter | Tratado de análisis — Capítulo 22 — Teorema fundamental del cálculo | `libros/capitulos/tratado-de-analisis-capitulo-22-teorema-fundamental-del-calculo.md` | published |
+| MA-BCH-0074 | book-chapter | Tratado de análisis — Capítulo 23 — Sucesiones y series de funciones | `libros/capitulos/tratado-de-analisis-capitulo-23-sucesiones-y-series-de-funciones.md` | published |
+| MA-BCH-0075 | book-chapter | Tratado de análisis — Capítulo 24 — Series de potencias | `libros/capitulos/tratado-de-analisis-capitulo-24-series-de-potencias.md` | published |
+| MA-BCH-0076 | book-chapter | Teoremas de Rolle y del valor medio | `libros/capitulos/teoremas-de-rolle-y-del-valor-medio.md` | published |
+| MA-BCH-0077 | book-chapter | Límites de funciones | `libros/capitulos/limites-de-funciones.md` | published |
 | MA-BOK-0001 | book | Cálculo para matemáticos | `libros/para-matematicos/calculo-para-matematicos.md` | published |
 | MA-BOK-0002 | book | Topos desde cero | `libros/otros/topos-desde-cero.md` | published |
 | MA-BOK-0003 | book | Tratado de análisis | `libros/otros/tratado-de-analisis.md` | published |

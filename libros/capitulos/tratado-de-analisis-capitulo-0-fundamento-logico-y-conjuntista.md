@@ -33,7 +33,7 @@ license: GFDL-1.3-or-later
 
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-1-los-numeros-naturales.md)
 
-*Parte I — Fundamentos y construcción de los números reales*
+*Parte I — Fundamentos y construcción de los reales*
 
 ---
 

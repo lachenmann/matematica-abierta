@@ -1,9 +1,9 @@
 ## 23.3. Continuidad de los límites uniformes {#sec-ta-23-3}
 
-El ejemplo de las potencias de §23.1 mostró que el límite puntual de funciones continuas puede ser discontinuo. La convergencia uniforme introduce justamente el control que faltaba: un término suficientemente avanzado aproxima a la función límite en todos los puntos **antes de que fijemos un entorno del punto de continuidad**. Primero probaremos la transmisión de continuidad en un punto; después distinguiremos continuidad global, control uniforme sólo en un entorno y continuidad uniforme sobre todo el dominio. Ninguno de estos resultados presupone que el dominio sea abierto, compacto o siquiera no vacío.
+El ejemplo de las potencias de §23.1 mostró que el límite puntual de funciones continuas puede ser discontinuo. La convergencia uniforme introduce justamente el control que faltaba: un término suficientemente avanzado aproxima a la función límite en todos los puntos antes de que fijemos un entorno del punto de continuidad. Primero probaremos la transmisión de continuidad en un punto; después distinguiremos continuidad global, control uniforme sólo en un entorno y continuidad uniforme sobre todo el dominio. Ninguno de estos resultados presupone que el dominio sea abierto, compacto o siquiera no vacío.
 
 ### Teorema 23.3.1 — Continuidad de un límite uniforme en un punto
-Sean $E\subseteq\mathbb R$, $\mathbf f=(f_n)_{n\in\mathbb N}:\mathbb N\to\mathbb R^E$ y $f:E\to\mathbb R$. Supongamos que $f_n$ converge uniformemente a $f$ en $E$. Si $a\in E$ y **cada** $f_n$ es continua en $a$ relativamente a $E$, entonces $f$ es continua en $a$ relativamente a $E$.
+Sean $E\subseteq\mathbb R$, $\mathbf f=(f_n)_{n\in\mathbb N}:\mathbb N\to\mathbb R^E$ y $f:E\to\mathbb R$. Supongamos que $f_n$ converge uniformemente a $f$ en $E$. Si $a\in E$ y cada $f_n$ es continua en $a$ relativamente a $E$, entonces $f$ es continua en $a$ relativamente a $E$.
 
 **Demostración.**
 Fijemos $a\in E$ y $\varepsilon>0$. La convergencia uniforme aplicada a $\varepsilon/3$ proporciona $N\in\mathbb N$ tal que
@@ -14,7 +14,7 @@ $$
 \tag{23.3.1}
 $$
 
-En particular, **seleccionamos el término ya determinado $f_N$**, que es continuo en $a$ por hipótesis. Con tolerancia $\varepsilon/3$, su continuidad relativa suministra $\delta>0$ tal que
+En particular, seleccionamos el término ya determinado $f_N$, que es continuo en $a$ por hipótesis. Con tolerancia $\varepsilon/3$, su continuidad relativa suministra $\delta>0$ tal que
 
 $$
 x\in E,\quad |x-a|<\delta
@@ -36,7 +36,7 @@ $$
 \tag{23.3.3}
 $$
 
-El radio $\delta$ funciona para todos los puntos de $E$ suficientemente cercanos a $a$, como requiere Definición §17.1.1 — Continuidad relativa al dominio en un punto. El orden de las operaciones es esencial: $N$ se obtiene uniformemente, sin depender de $x$; sólo después recurrimos a la continuidad de **esa función concreta**. No hemos elegido una sucesión de radios ni intercambiado dos límites. $\square$
+El radio $\delta$ funciona para todos los puntos de $E$ suficientemente cercanos a $a$, como requiere Definición §17.1.1 — Continuidad relativa al dominio en un punto. El orden de las operaciones es esencial: $N$ se obtiene uniformemente, sin depender de $x$; sólo después recurrimos a la continuidad de esa función concreta. No hemos elegido una sucesión de radios ni intercambiado dos límites. $\square$
 
 **Lectura de la prueba.** Los errores de los extremos de (23.3.3) se controlan con la convergencia uniforme; el error central se controla con la continuidad de un solo término. La partición $\varepsilon/3$ es una elección explícita de tolerancias y no una propiedad adicional de las funciones.
 
@@ -56,7 +56,7 @@ V:=E\cap(a-r,a+r),
 \tag{23.3.4}
 $$
 
-la sucesión de restricciones $f_n\upharpoonright V:V\to\mathbb R$ converge uniformemente a $f\upharpoonright V:V\to\mathbb R$. Entonces $f$ es continua en $a$ relativamente al **dominio original $E$**. No se exige convergencia uniforme fuera de $V$.
+la sucesión de restricciones $f_n\upharpoonright V:V\to\mathbb R$ converge uniformemente a $f\upharpoonright V:V\to\mathbb R$. Entonces $f$ es continua en $a$ relativamente al dominio original $E$. No se exige convergencia uniforme fuera de $V$.
 
 **Demostración.**
 El conjunto $V$ existe por Separación, $V\subseteq E$ y $a\in V$, pues $|a-a|=0<r$. Por Definición §1.3.1 — Restricción de una función y Proposición §1.3.2 — Existencia y unicidad de la restricción, las restricciones indicadas están determinadas de manera única y tienen dominio exacto $V$, codominio $\mathbb R$. La sucesión de restricciones también está determinada término a término por su grafo en $\mathbb N\times\mathbb R^V$; no se elige ninguna función.
@@ -79,7 +79,7 @@ $$
 
 Se ha producido un radio para la continuidad de $f$ relativa a $E$, sin imponer ninguna condición sobre el comportamiento de la sucesión lejos de $a$. $\square$
 
-**Alcance.** La continuidad en un punto es una propiedad local, mientras que «converger uniformemente» siempre debe referirse a un **dominio explícito**. La proposición evita confundir ambos alcances.
+**Alcance.** La continuidad en un punto es una propiedad local, mientras que «converger uniformemente» siempre debe referirse a un dominio explícito. La proposición evita confundir ambos alcances.
 
 ### Teorema 23.3.4 — La continuidad uniforme se conserva por límites uniformes
 Sean $E\subseteq\mathbb R$, $f_n:E\to\mathbb R$ y $f:E\to\mathbb R$. Si cada $f_n$ es uniformemente continua en $E$ y $f_n$ converge uniformemente a $f$ en $E$, entonces $f$ es uniformemente continua en $E$. No se requiere que $E$ sea compacto o acotado.
@@ -102,7 +102,7 @@ x,y\in E,\quad |x-y|<\delta
 \tag{23.3.6}
 $$
 
-Dados ahora **cualesquiera** $x,y\in E$ con $|x-y|<\delta$, aplicamos dos veces la desigualdad triangular:
+Dados ahora cualesquiera $x,y\in E$ con $|x-y|<\delta$, aplicamos dos veces la desigualdad triangular:
 
 $$
 \begin{aligned}

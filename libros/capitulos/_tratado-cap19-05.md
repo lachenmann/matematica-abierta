@@ -1,6 +1,6 @@
 ## 19.5. Derivación del recíproco y del cociente {#sec-ta-19-5}
 
-La división introduce una diferencia respecto de §19.4: aunque $f,g:D\to\mathbb R$ tengan el mismo dominio, la función $f/g$ sólo está definida en $D_g:=\{x\in D:g(x)\ne0\}$. Antes de escribir una derivada debemos comprobar tanto que $a\in D_g$ como que $a$ es punto de acumulación **de ese dominio**, no únicamente de $D$. La continuidad de $g$ y la condición $g(a)\ne0$ resolverán simultáneamente ambas cuestiones.
+La división introduce una diferencia respecto de §19.4: aunque $f,g:D\to\mathbb R$ tengan el mismo dominio, la función $f/g$ sólo está definida en $D_g:=\{x\in D:g(x)\ne0\}$. Antes de escribir una derivada debemos comprobar tanto que $a\in D_g$ como que $a$ es punto de acumulación de ese dominio, no únicamente de $D$. La continuidad de $g$ y la condición $g(a)\ne0$ resolverán simultáneamente ambas cuestiones.
 
 Partiremos de un principio sobre restricciones que también será útil para la regla de la cadena: una derivada relativa a un dominio mayor se conserva al restringirlo, siempre que el punto siga siendo de acumulación. Para el recíproco calcularemos directamente el cociente incremental; la regla del cociente se deducirá entonces de la del producto. Todos los límites y derivadas se entenderán relativamente a los dominios expresamente indicados.
 
@@ -18,7 +18,7 @@ $$
 $$
 
 **Demostración.**
-La inclusión $E\subseteq D$ y la hipótesis local prueban por doble inclusión la igualdad del recuadro. Para demostrar la acumulación, fijemos cualquier $\rho>0$. El número $\eta:=\min\{r,\rho\}>0$ está determinado por dos valores positivos. Como $a\in\operatorname{Acc}(D)$, el criterio de bolas perforadas Lema §16.1.1 — Acumulación y aproximación perforada proporciona **un** $x\in D$ con $0<|x-a|<\eta$. En particular, $x\in B_r(a)$, de donde $x\in E$, y $0<|x-a|<\rho$. Por el mismo criterio, $a\in\operatorname{Acc}(E)$. La prueba toma un testigo sólo después de fijar $\rho$; no construye ninguna elección simultánea. $\square$
+La inclusión $E\subseteq D$ y la hipótesis local prueban por doble inclusión la igualdad del recuadro. Para demostrar la acumulación, fijemos cualquier $\rho>0$. El número $\eta:=\min\{r,\rho\}>0$ está determinado por dos valores positivos. Como $a\in\operatorname{Acc}(D)$, el criterio de bolas perforadas Lema §16.1.1 — Acumulación y aproximación perforada proporciona un $x\in D$ con $0<|x-a|<\eta$. En particular, $x\in B_r(a)$, de donde $x\in E$, y $0<|x-a|<\rho$. Por el mismo criterio, $a\in\operatorname{Acc}(E)$. La prueba toma un testigo sólo después de fijar $\rho$; no construye ninguna elección simultánea. $\square$
 
 ### Proposición 19.5.2 — Restricción de una función derivable
 Sean $f:D\to\mathbb R$ derivable en $a\in D\cap\operatorname{Acc}(D)$ y $E\subseteq D$ tal que $a\in E\cap\operatorname{Acc}(E)$. La restricción tipada $f\upharpoonright E:E\to\mathbb R$ es derivable en $a$ y
@@ -36,7 +36,7 @@ $$
 \left|\frac{f(x)-f(a)}{x-a}-L\right|<\varepsilon.
 $$
 
-La **misma** desigualdad y el **mismo** radio valen para cada $x\in E\setminus\{a\}$, porque $E\subseteq D$ y los valores de la restricción coinciden. Como $a\in\operatorname{Acc}(E)$, su dominio perforado acumula en $a$ por Lema §19.1.2 — Perforar el dominio preserva la acumulación en el centro; por la definición de derivada, $f\upharpoonright E$ es derivable allí. La unicidad Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada identifica su derivada con $L$. No se extiende una derivada definida solamente en un subconjunto a uno mayor: la afirmación tiene exclusivamente la dirección indicada. $\square$
+La misma desigualdad y el mismo radio valen para cada $x\in E\setminus\{a\}$, porque $E\subseteq D$ y los valores de la restricción coinciden. Como $a\in\operatorname{Acc}(E)$, su dominio perforado acumula en $a$ por Lema §19.1.2 — Perforar el dominio preserva la acumulación en el centro; por la definición de derivada, $f\upharpoonright E$ es derivable allí. La unicidad Proposición §19.1.4 — Unicidad y criterio cuantificado de la derivada identifica su derivada con $L$. No se extiende una derivada definida solamente en un subconjunto a uno mayor: la afirmación tiene exclusivamente la dirección indicada. $\square$
 
 ### Teorema 19.5.3 — Regla de derivación del recíproco
 Sea $g:D\to\mathbb R$ derivable en $a\in D\cap\operatorname{Acc}(D)$ y supongamos $g(a)\ne0$. Formemos, por Separación, el dominio efectivo
@@ -60,7 +60,7 @@ $$
 
 Así, $D\cap B_r(a)\subseteq D_g$ y $a\in D_g$. El lema anterior Lema §19.5.1 — La coincidencia local conserva la acumulación, aplicado a $E=D_g$, asegura $a\in\operatorname{Acc}(D_g)$. Por ello el cociente incremental de $u:D_g\to\mathbb R$ tiene un dominio perforado que acumula en $a$; todas las derivadas que aparecerán están correctamente tipadas.
 
-Para $x\in D_g\setminus\{a\}$, las operaciones del cuerpo, con $g(x)M(x-a)\ne0$, dan la identidad **exacta**
+Para $x\in D_g\setminus\{a\}$, las operaciones del cuerpo, con $g(x)M(x-a)\ne0$, dan la identidad exacta
 
 $$
 \begin{aligned}
@@ -93,12 +93,12 @@ $$
 <\frac{\varepsilon |L|}{2(|L|+1)}+\frac\varepsilon2<\varepsilon.
 $$
 
-Si $L=0$, el primer sumando es nulo y la última desigualdad sigue siendo estricta gracias al segundo; si $L\ne0$, ambas cotas son estrictas. En todos los casos el argumento prueba el límite del cociente incremental, y su unicidad establece $u'(a)=-L/M^2$. Sólo se han elegido tres radios **para la tolerancia fijada**, sin selección de una familia infinita. $\square$
+Si $L=0$, el primer sumando es nulo y la última desigualdad sigue siendo estricta gracias al segundo; si $L\ne0$, ambas cotas son estrictas. En todos los casos el argumento prueba el límite del cociente incremental, y su unicidad establece $u'(a)=-L/M^2$. Sólo se han elegido tres radios para la tolerancia fijada, sin selección de una familia infinita. $\square$
 
 **Interpretación.** El signo negativo procede de intercambiar $g(x)-g(a)$ por $g(a)-g(x)$ en la diferencia de los recíprocos. La hipótesis $g(a)\ne0$ es indispensable: garantiza el valor central, la separación local y el denominador $g(a)^2$ de la fórmula. Ni la continuidad ni la derivabilidad autorizan evaluar un recíproco en un cero.
 
 ### Teorema 19.5.4 — Regla de derivación del cociente
-Sean $f,g:D\to\mathbb R$ derivables en $a\in D\cap\operatorname{Acc}(D)$ y supongamos $g(a)\ne0$. Con $D_g:=\{x\in D:g(x)\ne0\}$, la función $h:=f/g:D_g\to\mathbb R$ es derivable en $a$ **relativamente a $D_g$** y
+Sean $f,g:D\to\mathbb R$ derivables en $a\in D\cap\operatorname{Acc}(D)$ y supongamos $g(a)\ne0$. Con $D_g:=\{x\in D:g(x)\ne0\}$, la función $h:=f/g:D_g\to\mathbb R$ es derivable en $a$ relativamente a $D_g$ y
 
 $$
 \boxed{\left(\frac fg\right)'(a)
@@ -113,7 +113,7 @@ F:=f\upharpoonright D_g:D_g\to\mathbb R,
 \qquad F(a)=f(a),\quad F'(a)=f'(a).
 $$
 
-Por el teorema anterior, $u:=1/g:D_g\to\mathbb R$ es derivable en $a$, con $u(a)=1/g(a)$ y $u'(a)=-g'(a)/g(a)^2$. Como las dos funciones $F,u$ comparten exactamente el dominio $D_g$ y el codominio $\mathbb R$, la regla del producto Teorema §19.4.3 — Regla de derivación del producto es aplicable. Además, $h=Fu$ como **funciones tipadas**: tienen el mismo dominio, codominio y valores. Por ello
+Por el teorema anterior, $u:=1/g:D_g\to\mathbb R$ es derivable en $a$, con $u(a)=1/g(a)$ y $u'(a)=-g'(a)/g(a)^2$. Como las dos funciones $F,u$ comparten exactamente el dominio $D_g$ y el codominio $\mathbb R$, la regla del producto Teorema §19.4.3 — Regla de derivación del producto es aplicable. Además, $h=Fu$ como funciones tipadas: tienen el mismo dominio, codominio y valores. Por ello
 
 $$
 \begin{aligned}
@@ -126,13 +126,13 @@ $$
 Cada división está legitimada por $g(a)\ne0$, que también implica $g(a)^2\ne0$. No se han identificado $f$ y $F$, cuyos dominios son distintos cuando $D_g\ne D$; se utilizan únicamente sus valores y derivadas coincidentes en $a$. No hemos empleado la regla de la cadena ni el teorema del valor medio. $\square$
 
 ### Corolario 19.5.5 — Funciones fraccionarias afines y ceros excluidos
-Sean $m,b,c,d\in\mathbb R$ y definamos $f,g:\mathbb R\to\mathbb R$ por $f(x)=mx+b$ y $g(x)=cx+d$. En el dominio efectivo $D_g:=\{x\in\mathbb R:cx+d\ne0\}$, la función $h=f/g:D_g\to\mathbb R$ es derivable en **cada punto** $a\in D_g$ y
+Sean $m,b,c,d\in\mathbb R$ y definamos $f,g:\mathbb R\to\mathbb R$ por $f(x)=mx+b$ y $g(x)=cx+d$. En el dominio efectivo $D_g:=\{x\in\mathbb R:cx+d\ne0\}$, la función $h=f/g:D_g\to\mathbb R$ es derivable en cada punto $a\in D_g$ y
 
 $$
 \boxed{h'(a)=\frac{md-bc}{(ca+d)^2}.}
 $$
 
-En particular, $x\mapsto 1/x$ es una función $\mathbb R\setminus\{0\}\to\mathbb R$ derivable en cada $a\ne0$, con derivada $-1/a^2$. Una cancelación algebraica en una expresión, como $x/x=1$ para $x\ne0$, **no** añade automáticamente el punto $0$ al dominio de la función original ni le atribuye derivada allí.
+En particular, $x\mapsto 1/x$ es una función $\mathbb R\setminus\{0\}\to\mathbb R$ derivable en cada $a\ne0$, con derivada $-1/a^2$. Una cancelación algebraica en una expresión, como $x/x=1$ para $x\ne0$, no añade automáticamente el punto $0$ al dominio de la función original ni le atribuye derivada allí.
 
 **Demostración.**
 Por Proposición §19.1.6 — Primeros cálculos: funciones afines y función cuadrática, las funciones afines $f$ y $g$ son derivables sobre $\mathbb R$ con $f'(a)=m$ y $g'(a)=c$. Fijemos $a\in D_g$; entonces $ca+d\ne0$ y $a\in\operatorname{Acc}(\mathbb R)$. La regla del cociente prueba la derivabilidad de $h$ en $a$ relativamente a $D_g$ y da
@@ -142,6 +142,6 @@ h'(a)=\frac{m(ca+d)-(ma+b)c}{(ca+d)^2}
 =\frac{md-bc}{(ca+d)^2}.
 $$
 
-La arbitrariedad de $a$ establece la afirmación en todo el dominio, incluido el caso $D_g=\varnothing$, para el cual no se asevera derivada en ningún punto. Tomar $m=0,b=1,c=1,d=0$ da la fórmula de $1/x$ sobre $\mathbb R\setminus\{0\}$; tomar $m=c=1,b=d=0$ muestra que $x/x$ coincide punto a punto con la función constante $1$ **restringida** al mismo dominio perforado, pero difiere de la constante $1:\mathbb R\to\mathbb R$ como función tipada. En particular, $0\notin D_g$ y $h'(0)$ carece de significado. $\square$
+La arbitrariedad de $a$ establece la afirmación en todo el dominio, incluido el caso $D_g=\varnothing$, para el cual no se asevera derivada en ningún punto. Tomar $m=0,b=1,c=1,d=0$ da la fórmula de $1/x$ sobre $\mathbb R\setminus\{0\}$; tomar $m=c=1,b=d=0$ muestra que $x/x$ coincide punto a punto con la función constante $1$ restringida al mismo dominio perforado, pero difiere de la constante $1:\mathbb R\to\mathbb R$ como función tipada. En particular, $0\notin D_g$ y $h'(0)$ carece de significado. $\square$
 
 **Transición.** Las reglas anteriores combinan funciones reales con valores y derivadas calculados en un punto, siempre dentro de un dominio efectivo comprobado. En §19.6 estudiaremos la composición: su dominio será también un subconjunto explícito, y la regla de la cadena se demostrará sin suponer que las pendientes secantes puedan evaluarse en puntos donde el incremento interior se anula.

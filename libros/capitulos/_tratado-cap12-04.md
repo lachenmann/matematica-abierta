@@ -22,7 +22,7 @@ La idea es asociar a cada elemento de un cuerpo ordenado la totalidad de los rac
 
 ### Definición 12.4.1 — Traza racional inferior de un elemento
 
-Sea $E$ un cuerpo ordenado. Para cada $x\in E$ definimos su **traza racional inferior** por
+Sea $E$ un cuerpo ordenado. Para cada $x\in E$ definimos su traza racional inferior por
 
 $$
 \boxed{
@@ -221,7 +221,7 @@ $$
 \jmath_{\mathbb Q}^{F}[L_E(x)],
 $$
 
-y la imagen está **habitada**; en particular, es no vacía.
+y la imagen está habitada; en particular, es no vacía.
 
 Para construir una cota superior, aplicamos de nuevo la densidad, ahora al intervalo $(x,x+1_E)$. Existe $u\in\mathbb Q$ con
 
@@ -306,7 +306,7 @@ La notación $\sup$ es legítima por Corolario 0.7.9 — Notación legítima par
 
 La definición no escoge un elemento de $F$ entre varios candidatos. El valor está determinado de manera única como un supremo.
 
-> **Nota fundacional.** Aquí «canónico» significa **únicamente determinado por la estructura**. La propiedad del supremo garantiza existencia y unicidad extensional, pero no proporciona un procedimiento uniforme para calcular el supremo a partir de una presentación arbitraria de la traza. Por tanto,
+> **Nota fundacional.** Aquí «canónico» significa únicamente determinado por la estructura. La propiedad del supremo garantiza existencia y unicidad extensional, pero no proporciona un procedimiento uniforme para calcular el supremo a partir de una presentación arbitraria de la traza. Por tanto,
 > $$ \boxed{ \text{canónico por unicidad} \neq \text{computable}. } $$
 
 ### Teorema 12.4.5 — El transporte reconstruye exactamente la misma traza racional
@@ -453,6 +453,6 @@ $$
 > $$ \jmath_{\mathbb Q}^{F}(q)<\sup A $$
 > necesitaría producir algún $a\in A$ con $\jmath_{\mathbb Q}^{F}(q)<a$. La completitud clásica garantiza el supremo, pero no incorpora ese testigo de aproximación desde abajo. La prueba actual evita esa extracción trabajando por contrapositiva; obtener el testigo directamente requeriría información positiva adicional sobre la completitud o una negación clásica de cuantificadores.
 
-El teorema expresa el núcleo de la construcción. El elemento $\Psi_{E,F}(x)$ no se ha obtenido intentando copiar la codificación conjuntista de $x$; se ha reconstruido exclusivamente a partir de su **posición racional**. La completitud del cuerpo de llegada interviene exactamente una vez: garantiza que esa posición racional tiene una frontera interna.
+El teorema expresa el núcleo de la construcción. El elemento $\Psi_{E,F}(x)$ no se ha obtenido intentando copiar la codificación conjuntista de $x$; se ha reconstruido exclusivamente a partir de su posición racional. La completitud del cuerpo de llegada interviene exactamente una vez: garantiza que esa posición racional tiene una frontera interna.
 
 Todavía no hemos demostrado que $\Psi_{E,F}$ preserve el orden, sea biyectiva o respete las operaciones. El paso siguiente será mostrar que en un cuerpo completo la traza racional inferior determina completamente el orden de sus elementos. La identidad de trazas recién probada convertirá entonces a $\Psi_{E,F}$ en un isomorfismo de órdenes. Ése será el contenido de §12.5.

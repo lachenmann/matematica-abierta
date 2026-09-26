@@ -2,7 +2,7 @@
 
 ### Definición 13.1.1 — Sucesión real
 
-Una **sucesión real** es una función
+Una sucesión real es una función
 
 $$
 \boxed{
@@ -138,7 +138,7 @@ $$
 
 Queda demostrada la equivalencia. ∎
 
-La proposición anterior será utilizada constantemente. En adelante, para demostrar una igualdad entre sucesiones podremos trabajar término a término, siempre que la igualdad obtenida valga para **todo** índice natural.
+La proposición anterior será utilizada constantemente. En adelante, para demostrar una igualdad entre sucesiones podremos trabajar término a término, siempre que la igualdad obtenida valga para todo índice natural.
 
 ### Definición 13.1.3 — Operaciones puntuales sobre sucesiones reales
 
@@ -152,7 +152,7 @@ $$
 
 sucesiones reales.
 
-Definimos su **suma puntual**, su **opuesto puntual** y su **producto puntual** mediante
+Definimos su suma puntual, su opuesto puntual y su producto puntual mediante
 
 $$
 \boxed{
@@ -256,11 +256,11 @@ $$
 
 Cuando el tipo sea inequívoco omitiremos el subíndice `seq`.
 
-> **Principio de lectura.** Las operaciones sobre sucesiones se realizan **índice por índice**. Esto permite heredar identidades algebraicas del cuerpo real, pero no autoriza todavía a intercambiar operaciones con límites: esa será una afirmación matemática posterior que deberá demostrarse.
+> **Principio de lectura.** Las operaciones sobre sucesiones se realizan índice por índice. Esto permite heredar identidades algebraicas del cuerpo real, pero no autoriza todavía a intercambiar operaciones con límites: esa será una afirmación matemática posterior que deberá demostrarse.
 
 ### Definición 13.1.4 — Sucesiones reales constantes
 
-Sea $c\in\mathbb R$. Definimos la **sucesión real constante de valor $c$** por
+Sea $c\in\mathbb R$. Definimos la sucesión real constante de valor $c$ por
 
 $$
 \boxed{

@@ -1,0 +1,606 @@
+---
+lang: es
+format:
+  html:
+    css: ../../axler-colores.css
+---
+
+::: {.axler-edicion}
+
+# 3E · Productos y cocientes de espacios vectoriales
+
+**Atribución y modificaciones:** Traducción no oficial al español de [*Linear Algebra Done Right*, 4.ª ed.](https://linear.axler.net/LADR4e.pdf), de Sheldon Axler (PDF del 16-08-2026, pp. 96–104). El original y esta adaptación se presentan bajo [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Matemática Abierta aporta la traducción, notas identificadas como `[NOTA]` y soluciones originales `[SOL]`; estas últimas no son de Axler. La figura 3.96 se ofrece mediante una descripción textual propia.
+
+## Productos de espacios vectoriales
+
+Como es habitual al trabajar con más de un espacio vectorial, supondremos que todos los espacios considerados están definidos sobre el mismo cuerpo.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.87 Definición: producto de espacios vectoriales
+
+Supongamos que $V_1,\ldots,V_m$ son espacios vectoriales sobre $\mathbf F$.
+
+- El **producto** $V_1\times\cdots\times V_m$ se define por
+
+  $$
+  V_1\times\cdots\times V_m
+  =\{(v_1,\ldots,v_m):v_1\in V_1,\ldots,v_m\in V_m\}.
+  $$
+
+- La **suma** en $V_1\times\cdots\times V_m$ se define por
+
+  $$
+  (u_1,\ldots,u_m)+(v_1,\ldots,v_m)
+  =(u_1+v_1,\ldots,u_m+v_m).
+  $$
+
+- La **multiplicación por escalares** en $V_1\times\cdots\times V_m$ se define por
+
+  $$
+  \lambda(v_1,\ldots,v_m)=(\lambda v_1,\ldots,\lambda v_m).
+  $$
+
+:::
+
+### 3.88 Ejemplo: producto de $\mathcal P_5(\mathbf R)$ y $\mathbf R^3$
+
+Los elementos de $\mathcal P_5(\mathbf R)\times\mathbf R^3$ son listas de longitud dos. Su primera componente es un elemento de $\mathcal P_5(\mathbf R)$ y la segunda, un elemento de $\mathbf R^3$.
+
+Por ejemplo, $(5-6x+4x^2,(3,8,7))$ y $(x+9x^5,(2,2,2))$ pertenecen a este producto. Su suma es
+
+$$
+\begin{aligned}
+&(5-6x+4x^2,(3,8,7))+(x+9x^5,(2,2,2))\\
+&\qquad=(5-5x+4x^2+9x^5,(5,10,9)).
+\end{aligned}
+$$
+
+Asimismo,
+
+$$
+2(5-6x+4x^2,(3,8,7))=(10-12x+8x^2,(6,16,14)).
+$$
+
+El resultado siguiente afirma que estas operaciones dotan al producto de una estructura de espacio vectorial.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.89 El producto de espacios vectoriales es un espacio vectorial
+
+Sean $V_1,\ldots,V_m$ espacios vectoriales sobre $\mathbf F$. Entonces $V_1\times\cdots\times V_m$ es un espacio vectorial sobre $\mathbf F$, con las operaciones definidas en 3.87.
+
+La demostración se deja al lector en el original. Observa que el elemento neutro aditivo del producto es $(0,\ldots,0)$, donde el cero de cada posición corresponde al espacio $V_k$ respectivo. El inverso aditivo de $(v_1,\ldots,v_m)$ es $(-v_1,\ldots,-v_m)$.
+
+:::
+
+### 3.90 Ejemplo: $\mathbf R^2\times\mathbf R^3\ne\mathbf R^5$, pero son isomorfos
+
+Los elementos del espacio vectorial $\mathbf R^2\times\mathbf R^3$ son listas de la forma
+
+$$
+((x_1,x_2),(x_3,x_4,x_5)),
+$$
+
+donde $x_1,\ldots,x_5\in\mathbf R$. En cambio, los elementos de $\mathbf R^5$ son listas de la forma
+
+$$
+(x_1,x_2,x_3,x_4,x_5),
+$$
+
+también con $x_1,\ldots,x_5\in\mathbf R$.
+
+Aunque se parecen, no son la misma clase de objeto: los elementos del producto son listas de longitud dos, cuyas componentes son a su vez listas de longitudes dos y tres; los de $\mathbf R^5$ son listas de longitud cinco. Por tanto, $\mathbf R^2\times\mathbf R^3$ no es literalmente igual a $\mathbf R^5$.
+
+Sin embargo, la aplicación lineal
+
+$$
+((x_1,x_2),(x_3,x_4,x_5))\longmapsto(x_1,x_2,x_3,x_4,x_5)
+$$
+
+es un isomorfismo del producto sobre $\mathbf R^5$. Así, los dos espacios son isomorfos, aunque no iguales.
+
+> **Recuadro del autor.** Este isomorfismo es tan natural que conviene considerarlo un cambio de etiquetas. En ocasiones se dice informalmente que $\mathbf R^2\times\mathbf R^3$ «es igual» a $\mathbf R^5$. Aunque la afirmación no es técnicamente correcta, capta el sentido de identificar estructuras mediante un cambio de etiquetas.
+
+El ejemplo siguiente ilustra la construcción que emplearemos en la demostración de 3.92.
+
+### 3.91 Ejemplo: una base de $\mathcal P_2(\mathbf R)\times\mathbf R^2$
+
+Consideremos la lista de cinco elementos de $\mathcal P_2(\mathbf R)\times\mathbf R^2$:
+
+$$
+(1,(0,0)),\quad(x,(0,0)),\quad(x^2,(0,0)),\quad(0,(1,0)),\quad(0,(0,1)).
+$$
+
+Esta lista es linealmente independiente y genera $\mathcal P_2(\mathbf R)\times\mathbf R^2$. En consecuencia, es una base del producto.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.92 La dimensión de un producto es la suma de las dimensiones
+
+Supongamos que $V_1,\ldots,V_m$ son espacios vectoriales de dimensión finita. Entonces el producto $V_1\times\cdots\times V_m$ tiene dimensión finita y
+
+$$
+\boxed{\dim(V_1\times\cdots\times V_m)=\dim V_1+\cdots+\dim V_m.}
+$$
+
+:::
+
+**Demostración.** Elijamos una base de cada $V_k$. Para cada vector de una de esas bases, consideremos el elemento de $V_1\times\cdots\times V_m$ cuya componente $k$ es dicho vector de la base y cuyas restantes componentes son cero.
+
+La lista formada por todos estos elementos es linealmente independiente y genera el producto. Por tanto, constituye una base del producto.
+
+El número de vectores de esta base es $\dim V_1+\cdots+\dim V_m$, como se quería demostrar.
+
+> **[NOTA · desarrollo pedagógico de Matemática Abierta].** Para justificar expresamente la independencia, una combinación nula obliga a que cada componente sea una combinación nula en la base de su factor. Para comprobar que la lista genera, cualquier tupla del producto se obtiene sumando los elementos correspondientes a las expansiones de sus componentes. Esta ampliación no forma parte de la demostración textual de Axler.
+
+En el próximo resultado, la aplicación $\Gamma$ es sobreyectiva por la propia definición de $V_1+\cdots+V_m$. Por ello, en su enunciado podríamos sustituir «inyectiva» por «invertible».
+
+::: {.axler-recuadro .axler-teorema}
+### 3.93 Productos y sumas directas
+
+Supongamos que $V_1,\ldots,V_m$ son subespacios de $V$. Definamos la aplicación lineal
+
+$$
+\Gamma:V_1\times\cdots\times V_m\longrightarrow V_1+\cdots+V_m
+$$
+
+mediante
+
+$$
+\Gamma(v_1,\ldots,v_m)=v_1+\cdots+v_m.
+$$
+
+Entonces $V_1+\cdots+V_m$ es una suma directa si y solo si $\Gamma$ es inyectiva.
+
+:::
+
+**Demostración.** Por 3.15, $\Gamma$ es inyectiva si y solo si la única forma de escribir $0$ como suma $v_1+\cdots+v_m$, con $v_k\in V_k$, consiste en tomar todos los $v_k=0$. Por 1.45, esta condición equivale a que $V_1+\cdots+V_m$ sea una suma directa.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.94 Una suma es directa si y solo si se suman las dimensiones
+
+Supongamos que $V$ tiene dimensión finita y que $V_1,\ldots,V_m$ son subespacios de $V$. Entonces $V_1+\cdots+V_m$ es una suma directa si y solo si
+
+$$
+\boxed{\dim(V_1+\cdots+V_m)=\dim V_1+\cdots+\dim V_m.}
+$$
+
+:::
+
+**Demostración.** La aplicación $\Gamma$ de 3.93 es sobreyectiva. Por el teorema fundamental de las aplicaciones lineales (3.21), $\Gamma$ es inyectiva si y solo si
+
+$$
+\dim(V_1+\cdots+V_m)=\dim(V_1\times\cdots\times V_m).
+$$
+
+Combinando 3.93 y 3.92, vemos que $V_1+\cdots+V_m$ es una suma directa exactamente cuando
+
+$$
+\dim(V_1+\cdots+V_m)=\dim V_1+\cdots+\dim V_m,
+$$
+
+como queríamos demostrar.
+
+Para $m=2$ existe otra demostración: basta combinar 1.46 y 2.43.
+
+## Espacios cociente
+
+Comenzaremos el estudio de los espacios cociente definiendo primero la suma de un vector y un subconjunto de un espacio vectorial.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.95 Notación: $v+U$
+
+Supongamos que $v\in V$ y $U\subseteq V$. Entonces $v+U$ es el subconjunto de $V$ definido por
+
+$$
+v+U=\{v+u:u\in U\}.
+$$
+
+:::
+
+### 3.96 Ejemplo: suma de un vector y un subespacio unidimensional de $\mathbf R^2$
+
+Supongamos que
+
+$$
+U=\{(x,2x)\in\mathbf R^2:x\in\mathbf R\}.
+$$
+
+Así, $U$ es la recta de $\mathbf R^2$ que pasa por el origen y tiene pendiente $2$. Por consiguiente,
+
+$$
+(17,20)+U
+$$
+
+es la recta de $\mathbf R^2$ que pasa por $(17,20)$ y tiene pendiente $2$. Como
+
+$$
+(10,20)\in U\qquad\text{y}\qquad(17,20)\in(17,20)+U,
+$$
+
+vemos que $(17,20)+U$ se obtiene trasladando $U$ siete unidades hacia la derecha.
+
+> **[NOTA · accesibilidad; descripción que sustituye a la figura 3.96].** En el plano aparecen dos rectas paralelas de pendiente $2$. La primera, $U$, pasa por $(0,0)$ y $(10,20)$; la segunda, $(17,20)+U$, pasa por $(7,0)$ y $(17,20)$. A la altura $y=20$, sus puntos marcados tienen abscisas $10$ y $17$: la separación horizontal es de siete unidades. Esta descripción editorial reemplaza aquí la imagen, que no se presenta como si hubiera sido reproducida.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.97 Definición: trasladado
+
+Para $v\in V$ y $U$ un subconjunto de $V$, se dice que el conjunto $v+U$ es un **trasladado** de $U$.
+
+:::
+
+### 3.98 Ejemplo: trasladados
+
+- Si $U=\{(x,2x)\in\mathbf R^2:x\in\mathbf R\}$, entonces todas las rectas de $\mathbf R^2$ con pendiente $2$ son trasladados de $U$. El ejemplo 3.96 describe $U$ y uno de sus trasladados.
+- Más generalmente, si $U$ es una recta de $\mathbf R^2$, el conjunto de todos sus trasladados es el conjunto de todas las rectas de $\mathbf R^2$ paralelas a $U$.
+- Si $U=\{(x,y,0)\in\mathbf R^3:x,y\in\mathbf R\}$, entonces los trasladados de $U$ son todos los planos de $\mathbf R^3$ paralelos al plano $xy$, que es $U$.
+- Más generalmente, si $U$ es un plano de $\mathbf R^3$, sus trasladados son todos los planos de $\mathbf R^3$ paralelos a $U$ (véase, por ejemplo, el ejercicio 7).
+
+::: {.axler-recuadro .axler-definicion}
+### 3.99 Definición: espacio cociente, $V/U$
+
+Supongamos que $U$ es un subespacio de $V$. El **espacio cociente** $V/U$ es el conjunto de todos los trasladados de $U$. Así,
+
+$$
+\boxed{V/U=\{v+U:v\in V\}.}
+$$
+
+:::
+
+### 3.100 Ejemplo: espacios cociente
+
+- Si $U=\{(x,2x)\in\mathbf R^2:x\in\mathbf R\}$, entonces $\mathbf R^2/U$ es el conjunto de todas las rectas de $\mathbf R^2$ que tienen pendiente $2$.
+- Si $U$ es una recta de $\mathbf R^3$ que contiene al origen, entonces $\mathbf R^3/U$ es el conjunto de todas las rectas de $\mathbf R^3$ paralelas a $U$.
+- Si $U$ es un plano de $\mathbf R^3$ que contiene al origen, entonces $\mathbf R^3/U$ es el conjunto de todos los planos de $\mathbf R^3$ paralelos a $U$.
+
+Nuestro siguiente objetivo es dotar a $V/U$ de una estructura de espacio vectorial. Para ello necesitaremos el resultado siguiente.
+
+::: {.axler-recuadro .axler-teorema}
+### 3.101 Dos trasladados de un subespacio son iguales o disjuntos
+
+Supongamos que $U$ es un subespacio de $V$ y que $v,w\in V$. Entonces
+
+$$
+\boxed{v-w\in U\iff v+U=w+U\iff (v+U)\cap(w+U)\ne\varnothing.}
+$$
+
+:::
+
+**Demostración.** Supongamos primero que $v-w\in U$. Si $u\in U$, entonces
+
+$$
+v+u=w+((v-w)+u)\in w+U.
+$$
+
+Así, $v+U\subseteq w+U$. De manera análoga, $w+U\subseteq v+U$; por tanto, $v+U=w+U$.
+
+La igualdad $v+U=w+U$ implica de inmediato que $(v+U)\cap(w+U)\ne\varnothing$, porque $U$ es un subespacio y, por tanto, ambos trasladados son no vacíos.
+
+Por último, supongamos que $(v+U)\cap(w+U)\ne\varnothing$. Existen entonces $u_1,u_2\in U$ tales que
+
+$$
+v+u_1=w+u_2.
+$$
+
+De aquí, $v-w=u_2-u_1\in U$, lo que completa las implicaciones y la demostración.
+
+Ahora podemos definir la suma y la multiplicación por escalares en $V/U$.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.102 Definición: suma y multiplicación por escalares en $V/U$
+
+Supongamos que $U$ es un subespacio de $V$. Para cualesquiera $v,w\in V$ y $\lambda\in\mathbf F$, definimos en $V/U$:
+
+$$
+(v+U)+(w+U)=(v+w)+U,
+$$
+
+$$
+\lambda(v+U)=(\lambda v)+U.
+$$
+
+Como parte de la demostración siguiente, comprobaremos que estas definiciones tienen sentido: que el resultado no depende del representante elegido para cada trasladado.
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.103 El espacio cociente es un espacio vectorial
+
+Supongamos que $U$ es un subespacio de $V$. Entonces $V/U$, con las operaciones de suma y multiplicación por escalares definidas en 3.102, es un espacio vectorial.
+
+:::
+
+**Demostración.** El posible problema de las definiciones anteriores es que la representación de un trasladado de $U$ no es única. En concreto, supongamos que $v_1,v_2,w_1,w_2\in V$ satisfacen
+
+$$
+v_1+U=v_2+U\qquad\text{y}\qquad w_1+U=w_2+U.
+$$
+
+Para que la suma esté bien definida, debemos demostrar que
+
+$$
+(v_1+w_1)+U=(v_2+w_2)+U.
+$$
+
+Por 3.101, $v_1-v_2\in U$ y $w_1-w_2\in U$. Como $U$ es cerrado bajo suma,
+
+$$
+(v_1+w_1)-(v_2+w_2)=(v_1-v_2)+(w_1-w_2)\in U.
+$$
+
+Una nueva aplicación de 3.101 da la igualdad buscada. Así, la suma no depende de los representantes.
+
+Análogamente, sea $\lambda\in\mathbf F$ y supongamos todavía que $v_1+U=v_2+U$. Como $v_1-v_2\in U$ y $U$ es cerrado bajo la multiplicación por escalares,
+
+$$
+\lambda v_1-\lambda v_2=\lambda(v_1-v_2)\in U.
+$$
+
+Por 3.101, $(\lambda v_1)+U=(\lambda v_2)+U$; también la multiplicación por escalares está bien definida.
+
+Una vez establecidas ambas operaciones, comprobar que satisfacen los axiomas de espacio vectorial es sencillo y se deja al lector en el original. Observa que el vector cero de $V/U$ es $0+U=U$ y que el inverso aditivo de $v+U$ es $(-v)+U$.
+
+La siguiente definición permitirá calcular la dimensión de $V/U$.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.104 Definición: aplicación cociente, $\pi$
+
+Supongamos que $U$ es un subespacio de $V$. La **aplicación cociente** $\pi:V\to V/U$ es la aplicación lineal definida por
+
+$$
+\pi(v)=v+U
+$$
+
+para cada $v\in V$.
+
+Comprueba que $\pi$ es lineal, como propone Axler: basta aplicar las operaciones de 3.102. Aunque $\pi$ depende de $U$ y de $V$, se omiten esos espacios de la notación porque deberían quedar claros por el contexto.
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.105 Dimensión de un espacio cociente
+
+Supongamos que $V$ tiene dimensión finita y que $U$ es un subespacio de $V$. Entonces
+
+$$
+\boxed{\dim(V/U)=\dim V-\dim U.}
+$$
+
+:::
+
+**Demostración.** Sea $\pi:V\to V/U$ la aplicación cociente. Para $v\in V$, tenemos $v+U=0+U$ si y solo si $v\in U$, por 3.101. Por tanto,
+
+$$
+\operatorname{null}\pi=U.
+$$
+
+Por la definición de la aplicación cociente, $\operatorname{range}\pi=V/U$. El teorema fundamental de las aplicaciones lineales (3.21) implica ahora que
+
+$$
+\dim V=\dim U+\dim(V/U),
+$$
+
+lo que proporciona el resultado al despejar.
+
+Cada aplicación lineal $T$ induce una aplicación lineal $\widetilde T$ sobre $V/(\operatorname{null}T)$, que definiremos a continuación.
+
+::: {.axler-recuadro .axler-definicion}
+### 3.106 Notación: $\widetilde T$
+
+Supongamos que $T\in\mathcal L(V,W)$. Definamos $\widetilde T:V/(\operatorname{null}T)\to W$ mediante
+
+$$
+\widetilde T(v+\operatorname{null}T)=Tv.
+$$
+
+Para comprobar que la definición tiene sentido, supongamos que $u,v\in V$ satisfacen
+
+$$
+u+\operatorname{null}T=v+\operatorname{null}T.
+$$
+
+Por 3.101, $u-v\in\operatorname{null}T$, así que $T(u-v)=0$ y, por tanto, $Tu=Tv$. La aplicación $\widetilde T$ queda bien definida. Axler deja al lector la comprobación rutinaria de que es lineal; se obtiene aplicando 3.102 y la linealidad de $T$.
+
+El resultado siguiente muestra que podemos entender $\widetilde T$ como una versión modificada de $T$, con un dominio que hace que la aplicación resulte inyectiva.
+
+:::
+
+::: {.axler-recuadro .axler-teorema}
+### 3.107 Espacio nulo e imagen de $\widetilde T$
+
+Supongamos que $T\in\mathcal L(V,W)$. Entonces:
+
+- **(a)** $\widetilde T\circ\pi=T$, donde $\pi$ es la aplicación cociente de $V$ sobre $V/(\operatorname{null}T)$;
+- **(b)** $\widetilde T$ es inyectiva;
+- **(c)** $\operatorname{range}\widetilde T=\operatorname{range}T$;
+- **(d)** $V/(\operatorname{null}T)$ y $\operatorname{range}T$ son espacios vectoriales isomorfos.
+
+:::
+
+**Demostración.**
+
+**(a)** Si $v\in V$, entonces
+
+$$
+(\widetilde T\circ\pi)(v)=\widetilde T(\pi(v))=\widetilde T(v+\operatorname{null}T)=Tv.
+$$
+
+**(b)** Supongamos que $\widetilde T(v+\operatorname{null}T)=0$. Entonces $Tv=0$, de modo que $v\in\operatorname{null}T$. Por 3.101, $v+\operatorname{null}T=0+\operatorname{null}T$; se sigue que
+
+$$
+\operatorname{null}\widetilde T=\{0+\operatorname{null}T\}.
+$$
+
+Como este conjunto consta únicamente del vector cero del cociente, $\widetilde T$ es inyectiva.
+
+**(c)** La definición de $\widetilde T$ muestra que sus valores son precisamente los vectores $Tv$ para $v\in V$; por tanto, $\operatorname{range}\widetilde T=\operatorname{range}T$.
+
+**(d)** Según (b) y (c), si consideramos $\widetilde T$ con codominio restringido a $\operatorname{range}T$, obtenemos una aplicación lineal biyectiva. En consecuencia, es un isomorfismo de $V/(\operatorname{null}T)$ sobre $\operatorname{range}T$.
+
+---
+
+## Ejercicios 3E · enunciados traducidos {#ejercicios-3e}
+
+**1.** Supongamos que $T$ es una función de $V$ en $W$. La **gráfica de $T$** es el subconjunto de $V\times W$ definido por
+
+$$
+\operatorname{graph}T=\{(v,Tv)\in V\times W:v\in V\}.
+$$
+
+Demuestra que $T$ es una aplicación lineal si y solo si su gráfica es un subespacio de $V\times W$.
+
+Formalmente, una función $T$ de $V$ en $W$ es un subconjunto $T$ de $V\times W$ tal que, para cada $v\in V$, existe exactamente un elemento $(v,w)\in T$. En otras palabras, formalmente una función es lo que antes se denominó su gráfica. No solemos concebir las funciones de esta manera formal. Sin embargo, si adoptáramos este punto de vista, podríamos reformular el ejercicio así: demuestra que una función $T$ de $V$ en $W$ es una aplicación lineal si y solo si $T$ es un subespacio de $V\times W$.
+
+**2.** Supongamos que $V_1,\ldots,V_m$ son espacios vectoriales tales que $V_1\times\cdots\times V_m$ tiene dimensión finita. Demuestra que cada $V_k$ tiene dimensión finita para $k=1,\ldots,m$.
+
+**3.** Supongamos que $V_1,\ldots,V_m$ son espacios vectoriales. Demuestra que $\mathcal L(V_1\times\cdots\times V_m,W)$ es isomorfo a $\mathcal L(V_1,W)\times\cdots\times\mathcal L(V_m,W)$. **No se supone dimensión finita** (tampoco en los ejercicios 4 y 5).
+
+**4.** Supongamos que $W_1,\ldots,W_m$ son espacios vectoriales. Demuestra que $\mathcal L(V,W_1\times\cdots\times W_m)$ es isomorfo a $\mathcal L(V,W_1)\times\cdots\times\mathcal L(V,W_m)$.
+
+**5.** Para $m\ge1$ define $V^m=V\times\cdots\times V$ ($m$ factores). Demuestra que $V^m$ y $\mathcal L(\mathbf F^m,V)$ son isomorfos.
+
+**6.** Sean $v,x\in V$ y $U,W$ subespacios de $V$. Si $v+U=x+W$, demuestra que $U=W$.
+
+**7.** Sea $U=\{(x,y,z)\in\mathbf R^3:2x+3y+5z=0\}$ y $A\subseteq\mathbf R^3$. Demuestra que $A$ es un trasladado de $U$ si y solo si, para algún $c\in\mathbf R$, $A=\{(x,y,z)\in\mathbf R^3:2x+3y+5z=c\}$.
+
+**8.** $a$ Para $T\in\mathcal L(V,W)$ y $c\in W$, prueba que $\{x\in V:Tx=c\}$ es vacío o es un trasladado de $\operatorname{null}T$. $b$ Explica por qué las soluciones de un sistema de ecuaciones lineales como 3.27 son vacías o forman un trasladado de un subespacio de $\mathbf F^n$.
+
+**9.** Demuestra que $A\subseteq V$ no vacío es un trasladado de algún subespacio de $V$ si y solo si $\lambda v+(1-\lambda)w\in A$ para cualesquiera $v,w\in A$ y $\lambda\in\mathbf F$.
+
+**10.** Si $A_1=v+U_1$ y $A_2=w+U_2$, con $U_1,U_2\le V$ y $v,w\in V$, demuestra que $A_1\cap A_2$ es vacío o es un trasladado de algún subespacio de $V$.
+
+**11.** Sea $U=\{(x_1,x_2,\ldots)\in\mathbf F^\infty:x_k\ne0\text{ solo para un número finito de }k\}$. $a$ Demuestra que $U$ es un subespacio de $\mathbf F^\infty$. $b$ Demuestra que $\mathbf F^\infty/U$ tiene dimensión infinita.
+
+**12.** Sean $v_1,\ldots,v_m\in V$ y $A=\{\lambda_1v_1+\cdots+\lambda_mv_m:\lambda_k\in\mathbf F,\;\lambda_1+\cdots+\lambda_m=1\}$. $a$ Demuestra que $A$ es un trasladado de un subespacio. $b$ Si $B$ es un trasladado de un subespacio y contiene $\{v_1,\ldots,v_m\}$, demuestra que $A\subseteq B$. $c$ Demuestra que $A$ es un trasladado de un subespacio de dimensión menor que $m$.
+
+**13.** Si $U\le V$ y $V/U$ tiene dimensión finita, demuestra que $V$ es isomorfo a $U\times(V/U)$.
+
+**14.** Supongamos que $U$ y $W$ son subespacios de $V$ y que $V=U\oplus W$. Supongamos que $w_1,\ldots,w_m$ es una base de $W$. Demuestra que $w_1+U,\ldots,w_m+U$ es una base de $V/U$.
+
+**15.** Supongamos que $U$ es un subespacio de $V$, que $v_1+U,\ldots,v_m+U$ es una base de $V/U$ y que $u_1,\ldots,u_n$ es una base de $U$. Demuestra que $v_1,\ldots,v_m,u_1,\ldots,u_n$ es una base de $V$.
+
+**16.** Si $\varphi\in\mathcal L(V,\mathbf F)$ y $\varphi\ne0$, demuestra que $\dim(V/\operatorname{null}\varphi)=1$.
+
+**17.** Supongamos que $U$ es un subespacio de $V$ tal que $\dim(V/U)=1$. Demuestra que existe $\varphi\in\mathcal L(V,\mathbf F)$ tal que $\operatorname{null}\varphi=U$.
+
+**18.** Supón que $U\le V$ y $V/U$ tiene dimensión finita. $a$ Si $W\le V$ es de dimensión finita y $V=U+W$, demuestra que $\dim W\ge\dim(V/U)$. $b$ Demuestra que existe $W\le V$ de dimensión finita con $\dim W=\dim(V/U)$ y $V=U\oplus W$.
+
+**19.** Sea $T\in\mathcal L(V,W)$, $U\le V$ y $\pi:V\to V/U$ la aplicación cociente. Demuestra que existe $S\in\mathcal L(V/U,W)$ con $T=S\circ\pi$ si y solo si $U\subseteq\operatorname{null}T$.
+
+---
+
+## Soluciones originales de los ejercicios de 3E {#soluciones-3e}
+
+> [SOL] Soluciones elaboradas por Matemática Abierta; no proceden de Sheldon Axler.
+
+### 1. La gráfica caracteriza la linealidad
+
+Sea $G=\{(v,Tv):v\in V\}$. Si $T$ es lineal, $(0,0)\in G$ y para cualesquiera $u,v\in V$ y $\lambda\in\mathbf F$ se cumple $(u,Tu)+(v,Tv)=(u+v,T(u+v))\in G$ y $\lambda(v,Tv)=(\lambda v,T(\lambda v))\in G$; luego $G$ es subespacio. Recíprocamente, si $G$ es subespacio, contiene $(0,0)$ y, por unicidad de la segunda componente correspondiente a cada primera componente, $T0=0$. Su cierre bajo suma exige $T(u+v)=Tu+Tv$, y su cierre bajo escalares exige $T(\lambda v)=\lambda Tv$. Se han probado ambas propiedades definitorias. La caracterización formal de funciones como gráficas no cambia la prueba.
+
+### 2. Dimensión finita de cada factor
+
+Para cada $k$ definamos $\iota_k:V_k\to\prod_j V_j$ insertando $v$ en la posición $k$ y ceros en las demás. Es lineal e inyectiva. Su imagen es subespacio del producto, por lo que, si este tiene dimensión finita, la imagen también la tiene $2.37$. Como $V_k$ es isomorfo a la imagen mediante $\iota_k$, se concluye que cada $V_k$ tiene dimensión finita. **No se invoca la fórmula 3.92 en su recíproca sin comprobar hipótesis.**
+
+### 3. Aplicaciones desde un producto
+
+Definamos $\Phi:\mathcal L(\prod_{k=1}^m V_k,W)\to\prod_{k=1}^m\mathcal L(V_k,W)$ por
+
+$$\Phi(T)=(T\circ\iota_1,\ldots,T\circ\iota_m),$$
+
+siendo $\iota_k$ la inserción de la solución 2. Es lineal. Dada una tupla $(S_1,\ldots,S_m)$ de aplicaciones lineales, su preimagen es la aplicación
+
+$$\Psi(S_1,\ldots,S_m)(v_1,\ldots,v_m)=\sum_{k=1}^m S_k(v_k).$$
+
+Esta es lineal; $\Phi\Psi$ es la identidad porque al insertar una sola componente sobreviven únicamente los términos de ese índice, y $\Psi\Phi(T)(v_1,\ldots,v_m)=\sum_k T(\iota_k v_k)=T(v_1,\ldots,v_m)$ porque la tupla es la suma de sus inserciones. Por tanto $\Phi$ es un isomorfismo. No se emplean bases ni dimensión finita.
+
+### 4. Aplicaciones con llegada en un producto
+
+Sean $p_k:\prod_jW_j\to W_k$ las proyecciones coordenadas. La aplicación $\Phi(T)=(p_1T,\ldots,p_mT)$ lleva $\mathcal L(V,\prod W_j)$ al producto $\prod\mathcal L(V,W_j)$ y es lineal. La inversa envía $(S_1,\ldots,S_m)$ a $v\mapsto(S_1v,\ldots,S_mv)$. Las composiciones son identidades por igualdad componente a componente. Vale también en dimensión infinita.
+
+### 5. $V^m\cong\mathcal L(\mathbf F^m,V)$
+
+Sea $e_1,\ldots,e_m$ la base estándar de $\mathbf F^m$. Evaluar una aplicación en esos vectores define $\Phi(T)=(Te_1,\ldots,Te_m)$. Dada $(v_1,\ldots,v_m)\in V^m$, la aplicación $T(a_1,\ldots,a_m)=\sum_{j=1}^m a_jv_j$ es lineal, satisface $Te_j=v_j$ y es la única con tales imágenes por 3.4. Evaluación y construcción son inversas lineales.
+
+### 6. Dos trasladados iguales tienen el mismo subespacio director
+
+Si $v+U=x+W$, entonces $v\in x+W$, luego $v-x\in W$. Trasladando ambos conjuntos por $-v$ obtenemos $U=(x-v)+W$. Como $x-v\in W$, el último conjunto es $W$, de donde $U=W$. No basta comprobar que los conjuntos son paralelos intuitivamente; el argumento usa igualdad de conjuntos y cierre de $W$.
+
+### 7. Planos paralelos a un espacio nulo
+
+Definamos $f:\mathbf R^3\to\mathbf R$ por $f(x,y,z)=2x+3y+5z$. Entonces $f$ es lineal y $U=\operatorname{null}f$. Para cualquier $a\in\mathbf R^3$, $f(a+u)=f(a)$ para $u\in U$, de modo que $a+U\subseteq\{b\in\mathbf R^3:f(b)=f(a)\}$. Si $b\in\mathbf R^3$ satisface $f(b)=f(a)$, entonces $f(b-a)=0$ y $b\in a+U$, dando igualdad. Recíprocamente, para $c\in\mathbf R$ el vector $a=(c/2,0,0)$ satisface $f(a)=c$ y la fibra es $a+U$.
+
+### 8. Soluciones de una ecuación lineal
+
+$a$ Si la fibra $T^{-1}(\{c\})$ es no vacía, elíjase $x_0$ con $Tx_0=c$. Entonces $Tx=c\iff T(x-x_0)=0\iff x\in x_0+\operatorname{null}T$. Si no existe $x_0$, la fibra es vacía. $b$ El sistema 3.27 es $Tx=c$ para la aplicación lineal cuyos componentes son los miembros izquierdos de las ecuaciones. Aplicar $a$ produce el conjunto vacío o el trasladado de un subespacio de $\mathbf F^n$.
+
+### 9. Criterio de combinaciones afines
+
+Si $A=a+U$ y $v=a+u$, $w=a+z$, entonces $\lambda v+(1-\lambda)w=a+\lambda u+(1-\lambda)z\in A$. Recíprocamente, supóngase $A\ne\varnothing$ y estable bajo todas las combinaciones indicadas. Escójase $a\in A$ y póngase $U=A-a=\{v-a:v\in A\}$. Se tiene $0\in U$ y la condición se traslada a $\lambda u+(1-\lambda)z\in U$. Tomando $z=0$ se obtiene $\lambda u\in U$ para todo escalar. Tomando $\lambda=\tfrac12$ se obtiene $(u+z)/2\in U$; la estabilidad por escalares, aplicada a $2$, da $u+z\in U$. Por tanto $U$ es subespacio y $A=a+U$. Se usa que el cuerpo de Axler es $\mathbf R$ o $\mathbf C$ (en ambos existe $1/2$); la conclusión no se extrapola indiscriminadamente a cuerpos de característica dos.
+
+### 10. Intersección de dos trasladados
+
+Si $A_1\cap A_2$ es vacío, nada queda por probar. Si $a\in A_1\cap A_2$, entonces cada trasladado $A_i$ puede reescribirse como $a+U_i$, porque $a$ pertenece a él y 3.101 permite cambiar el representante. Luego
+
+$$A_1\cap A_2=(a+U_1)\cap(a+U_2)=a+(U_1\cap U_2).$$
+
+Como $U_1\cap U_2$ es subespacio, esta intersección es un trasladado.
+
+### 11. Sucesiones de soporte finito y cociente infinito
+
+$a$ La sucesión cero tiene soporte finito. La suma de dos sucesiones de soporte finito solo puede tener entradas no nulas en la unión finita de esos soportes; multiplicar por un escalar tampoco crea entradas no nulas. Así $U\le\mathbf F^\infty$.
+
+$b$ Para cada $j\ge1$ definamos el subconjunto infinito y disjunto
+
+$$A_j=\{2^{j-1}(2k-1):k\ge1\}\subseteq\mathbf N.$$
+
+Los $A_j$ son disjuntos porque cada entero positivo tiene una única potencia exacta de $2$ como factor. Sea $s_j\in\mathbf F^\infty$ la sucesión indicadora de $A_j$. Si una combinación finita $\sum_{j=1}^r a_j(s_j+U)$ es cero en el cociente, entonces $\sum a_js_j\in U$, es decir, tiene soporte finito. Si algún $a_j\ne0$, esa combinación vale $a_j$ en todos los infinitos índices de $A_j$, contradicción. Por ello las clases $s_j+U$ forman una lista independiente de cualquier longitud $r$ y el cociente es infinito-dimensional.
+
+### 12. Menor subespacio afín que contiene una lista
+
+$a$ Como $\sum\lambda_i=1$, cada combinación se escribe
+
+$$\sum_{i=1}^m\lambda_iv_i=v_1+\sum_{i=2}^m\lambda_i(v_i-v_1).$$
+
+Recíprocamente, cualquier elección de $\lambda_2,\ldots,\lambda_m$ determina $\lambda_1=1-\sum_{i=2}^m\lambda_i$. Luego $A=v_1+U$, donde $U=\operatorname{span}(v_2-v_1,\ldots,v_m-v_1)$; para $m=1$, $U=\{0\}$.
+
+$b$ Si $B=b+W$ y $v_i=b+w_i$ con $w_i\in W$, cualquier combinación de coeficientes que suman uno equivale a $b+\sum\lambda_iw_i\in B$. De ahí $A\subseteq B$.
+
+$c$ El subespacio $U$ anterior está generado por $m-1$ vectores, por lo que $\dim U\le m-1<m$; esto incluye $m=1$.
+
+### 13. Descomposición con cociente finito-dimensional
+
+Sea $q_1,\ldots,q_r$ una base de $V/U$ y elíjanse representantes $v_j\in V$ con $q_j=v_j+U$. Definamos $W_0=\operatorname{span}(v_1,\ldots,v_r)$. La restricción $\pi|_{W_0}:W_0\to V/U$ es sobreyectiva por generación; es inyectiva porque una combinación $\sum a_jv_j\in U$ produciría $\sum a_jq_j=0$, y la independencia de los $q_j$ anula todos los coeficientes. Por tanto $V=U\oplus W_0$. Si $s=(\pi|_{W_0})^{-1}:V/U\to W_0$, la aplicación
+
+$$U\times(V/U)\longrightarrow V,\qquad(u,q)\longmapsto u+s(q)$$
+
+es lineal y biyectiva por la descomposición directa. **No se exige que $U$ o $V$ tengan dimensión finita.**
+
+### 14. Base del cociente procedente de un complemento
+
+Si $V=U\oplus W$, la restricción $\pi|_W:W\to V/U$ es sobreyectiva, porque todo $v$ se escribe $u+w$ y $v+U=w+U$. Su espacio nulo es $W\cap U=\{0\}$, de modo que es un isomorfismo. La imagen de la base $w_1,\ldots,w_m$ es entonces la base $w_1+U,\ldots,w_m+U$ buscada.
+
+### 15. Levantar una base del cociente y añadir una base de $U$
+
+Sea $v\in V$. Como las clases de $v_i$ generan $V/U$, existen $a_i$ con $v+U=\sum_i a_i(v_i+U)$. Entonces $v-\sum_i a_iv_i\in U$ y es combinación de los $u_j$, de modo que la lista propuesta genera $V$. Para la independencia, si $\sum_i a_iv_i+\sum_j b_ju_j=0$, aplicar $\pi$ da $\sum_i a_i(v_i+U)=0$; la independencia de las clases obliga a todos los $a_i$ a ser cero. Después $\sum_j b_ju_j=0$ obliga a $b_j=0$ para todos los $j$. Luego la lista es una base.
+
+### 16. Cociente por el espacio nulo de una funcional no nula
+
+Como $\varphi\ne0$, existe $v$ con $\varphi(v)=a\ne0$; para cada $c\in\mathbf F$, $\varphi((c/a)v)=c$. Por tanto $\operatorname{range}\varphi=\mathbf F$. La isomorfía 3.107(d) da $V/(\operatorname{null}\varphi)\cong\mathbf F$, luego la dimensión del cociente es $1$. Se evita usar 3.105, pues **no se supone que $V$ sea finito-dimensional**.
+
+### 17. Un subespacio de codimensión uno es un espacio nulo
+
+Sea $q\ne0$ una base del espacio de dimensión uno $V/U$. Definamos $\theta:V/U\to\mathbf F$ por $\theta(aq)=a$; es un isomorfismo. La aplicación $\varphi=\theta\circ\pi:V\to\mathbf F$ es lineal y $\operatorname{null}\varphi=\operatorname{null}\pi=U$, porque $\theta$ es inyectiva. No se presupone dimensión finita de $V$.
+
+### 18. Dimensión mínima de un complemento
+
+$a$ Si $V=U+W$, entonces $\pi|_W:W\to V/U$ es sobreyectiva. Como $W$ tiene dimensión finita, el teorema 3.21 aplicado a esta restricción da $\dim W\ge\dim(V/U)$.
+
+$b$ Elijamos una base $q_1,\ldots,q_r$ de $V/U$ y representantes $v_j$ como en el ejercicio 13. Para $W=\operatorname{span}(v_1,\ldots,v_r)$, la independencia de las clases hace independientes los representantes, de modo que $\dim W=r$. El argumento de 13 prueba $V=U\oplus W$. Para $r=0$, la base es vacía, $W=\{0\}$ y $U=V$, por lo que la afirmación también es válida.
+
+### 19. Factorización a través del cociente
+
+Si $T=S\circ\pi$, entonces para todo $u\in U$ tenemos $Tu=S(\pi u)=S(0)=0$, luego $U\subseteq\operatorname{null}T$. Recíprocamente, si $U\subseteq\operatorname{null}T$, definamos
+
+$$S:V/U\to W,\qquad S(v+U)=Tv.$$
+
+Para verificar que está bien definida, si $v+U=w+U$ entonces $v-w\in U\subseteq\operatorname{null}T$, por lo que $Tv=Tw$. Es lineal por las operaciones de 3.102 y la linealidad de $T$, y satisface $(S\circ\pi)(v)=Tv$. Además es **única**, pues $\pi$ es sobreyectiva. La unicidad es una comprobación adicional `[SOL]`, no una hipótesis del enunciado.
+
+:::

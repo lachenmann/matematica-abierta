@@ -4,7 +4,7 @@
 
 *Glosario: [cuerpo ordenado](../otros/tratado-de-analisis-glosario.md#gl-cuerpo-ordenado)*
 
-Un **cuerpo ordenado** es un cuerpo
+Un cuerpo ordenado es un cuerpo
 
 $$
 (F,+,\cdot,0_F,1_F)
@@ -224,7 +224,7 @@ $$
 }
 $$
 
-La llamaremos **aplicación canónica de numerales naturales** de $F$.
+La llamaremos aplicación canónica de numerales naturales de $F$.
 
 No se está identificando $n\in\mathbb N$ con un elemento de $F$. La función $\nu_F$ es precisamente el puente que permite comparar ambos sistemas.
 
@@ -319,7 +319,7 @@ La preservación de $\leq$ se obtiene de $n=m+k$ y (2), usando $0\leq\nu_F(k)$. 
 
 *Glosario: [subcuerpo](../otros/tratado-de-analisis-glosario.md#gl-subcuerpo)*
 
-Sea $F$ un cuerpo. Un subconjunto $K\subseteq F$ es un **subcuerpo de $F$** si:
+Sea $F$ un cuerpo. Un subconjunto $K\subseteq F$ es un subcuerpo de $F$ si:
 
 1. $0_F,1_F\in K$;
 2. si $x,y\in K$, entonces $x+y\in K$ y $xy\in K$;
@@ -348,7 +348,7 @@ P_F:=\bigcap_{K\in\mathcal S_F}K.
 }
 $$
 
-Llamaremos $P_F$ **subcuerpo primo** de $F$.
+Llamaremos $P_F$ subcuerpo primo de $F$.
 
 ### Proposición 4.1.9 — Minimalidad del subcuerpo primo {#ta-minimalidad-subcuerpo-primo}
 
@@ -414,4 +414,4 @@ $$
 
 y por tanto $m<y$. ∎
 
-Este teorema separa desde ahora dos ideas que a menudo se confunden: **densidad del orden** y **completitud**. Todo cuerpo ordenado es denso en sí mismo; $\mathbb Q$ falla por una razón diferente.
+Este teorema separa desde ahora dos ideas que a menudo se confunden: densidad del orden y completitud. Todo cuerpo ordenado es denso en sí mismo; $\mathbb Q$ falla por una razón diferente.

@@ -29,7 +29,7 @@ license: GFDL-1.3-or-later
 
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-8-sucesiones-racionales-y-aproximacion.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-10-completitud-del-cuerpo-de-cauchy.md)
 
-*Parte I — Fundamentos y construcción de los números reales*
+*Parte I — Fundamentos y construcción de los reales*
 
 ---
 

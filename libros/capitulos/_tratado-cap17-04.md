@@ -1,6 +1,6 @@
 ## 17.4. Álgebra y composición de funciones continuas {#sec-ta-17-4}
 
-La continuidad de una función expresa que un cambio suficientemente pequeño del argumento, **dentro de su dominio**, produce un cambio pequeño de su valor. Ya construimos las operaciones puntuales en §16.3.2, con sus dominios efectivos; ahora demostraremos que conservan la continuidad. Es importante no derivar estos resultados de una recíproca secuencial que, para dominios arbitrarios, sólo está disponible bajo una hipótesis adicional: todas las pruebas siguientes son directamente $\varepsilon$–$\delta$ y no utilizan elección.
+La continuidad de una función expresa que un cambio suficientemente pequeño del argumento, dentro de su dominio, produce un cambio pequeño de su valor. Ya construimos las operaciones puntuales en §16.3.2, con sus dominios efectivos; ahora demostraremos que conservan la continuidad. Es importante no derivar estos resultados de una recíproca secuencial que, para dominios arbitrarios, sólo está disponible bajo una hipótesis adicional: todas las pruebas siguientes son directamente $\varepsilon$–$\delta$ y no utilizan elección.
 
 ### Proposición 17.4.1 — Funciones constantes e inclusión continua
 Sea $D\subseteq\mathbb R$ arbitrario. Para cada $c\in\mathbb R$, la función constante $k_c:D\to\mathbb R$, $k_c(x)=c$, y la función inclusión $j_D:D\to\mathbb R$, $j_D(x)=x$, existen, son únicas con esos datos y son continuas en todos los puntos de $D$.
@@ -25,7 +25,7 @@ $$
 |g(x)|>\frac{|M|}{2}>0.
 $$
 
-En particular, $D_g:=\{x\in D:g(x)\ne0\}$ contiene $D\cap B_{r_0}(a)$, **incluido $a$**, y por tanto $a\in D_g$.
+En particular, $D_g:=\{x\in D:g(x)\ne0\}$ contiene $D\cap B_{r_0}(a)$, incluido $a$, y por tanto $a\in D_g$.
 
 **Demostración.**
 Apliquemos continuidad con tolerancia $1>0$ y obtengamos $r>0$ para el cual $|g(x)-M|<1$ siempre que $x\in D$ y $|x-a|<r$. La desigualdad triangular implica
@@ -44,7 +44,7 @@ Por Separación existe $D_g$ y todos los puntos de la bola relativa indicada per
 
 
 ### Teorema 17.4.3 — Estabilidad de la continuidad bajo operaciones algebraicas y valor absoluto
-Sean $f,g:D\to\mathbb R$ continuas en el mismo punto $a\in D$, y sea $c\in\mathbb R$. Entonces son continuas en $a$ las funciones $f+g$, $f-g$, $cf$, $fg$ y $|f|$, **todas con dominio $D$ y codominio $\mathbb R$** conforme a §16.3.2.
+Sean $f,g:D\to\mathbb R$ continuas en el mismo punto $a\in D$, y sea $c\in\mathbb R$. Entonces son continuas en $a$ las funciones $f+g$, $f-g$, $cf$, $fg$ y $|f|$, todas con dominio $D$ y codominio $\mathbb R$ conforme a §16.3.2.
 
 **Demostración.**
 Escribamos $L=f(a)$ y $M=g(a)$. Fijemos $\varepsilon>0$.
@@ -102,7 +102,7 @@ $$
 \qquad \frac fg:D_g\to\mathbb R
 $$
 
-son continuas en $a$ **relativamente a $D_g$**. De hecho, $D_g$ coincide con $D$ en alguna bola centrada en $a$, intersectada con $D$.
+son continuas en $a$ relativamente a $D_g$. De hecho, $D_g$ coincide con $D$ en alguna bola centrada en $a$, intersectada con $D$.
 
 **Demostración.**
 Pongamos $M=g(a)\ne0$. El Lema 17.4.2 proporciona $r_0>0$ con $D\cap B_{r_0}(a)\subseteq D_g$; la inclusión contraria $D_g\subseteq D$ es definitoria. Por tanto $D_g\cap B_{r_0}(a)=D\cap B_{r_0}(a)$ y $a\in D_g$.
@@ -128,7 +128,7 @@ Esto prueba la continuidad de $1/g$ en $a$ con el dominio exacto $D_g$. La restr
 
 
 ### Teorema 17.4.5 — Composición en el dominio efectivo
-Sean $D,E\subseteq\mathbb R$, $f:D\to\mathbb R$ y $g:E\to\mathbb R$. Definamos el **dominio efectivo de composición**
+Sean $D,E\subseteq\mathbb R$, $f:D\to\mathbb R$ y $g:E\to\mathbb R$. Definamos el dominio efectivo de composición
 
 $$
 T:=\{x\in D:f(x)\in E\}.

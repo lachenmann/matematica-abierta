@@ -95,7 +95,7 @@ $$
 
 En consecuencia, $\mathbb Z$ es un dominio de integridad totalmente ordenado y la incrustación $\iota$ preserva la estructura aritmética construida en $\mathbb N$.
 
-Conviene subrayar lo que **no** hemos hecho. No hemos declarado que
+Conviene subrayar lo que no hemos hecho. No hemos declarado que
 
 $$
 \mathbb N\subseteq\mathbb Z.

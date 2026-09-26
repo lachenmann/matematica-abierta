@@ -1,15 +1,15 @@
 ## 15.1. Bolas abiertas y vecindades {#sec-ta-15-1}
 
 ### Definición 15.1.1 — Bola abierta en la recta
-Fijados un **centro** $a\in\mathbb R$ y un **radio** $r\in\mathbb R$ estrictamente positivo, definimos la *bola abierta de centro $a$ y radio $r$* como el subconjunto de la recta
+Fijados un centro $a\in\mathbb R$ y un radio $r\in\mathbb R$ estrictamente positivo, definimos la *bola abierta de centro $a$ y radio $r$* como el subconjunto de la recta
 
 $$
 \boxed{B_r(a):=\{x\in\mathbb R:|x-a|<r\}.}
 $$
 
-La existencia de este conjunto se obtiene por Separación sobre $\mathbb R$: el valor absoluto y la relación de orden ya están definidos. La condición $r>0$ es parte de la definición y no se omitirá. En particular, $B_0(a)$ **no** queda definido por esta notación; si alguna vez necesitamos un radio nulo, habrá que extenderla explícitamente.
+La existencia de este conjunto se obtiene por Separación sobre $\mathbb R$: el valor absoluto y la relación de orden ya están definidos. La condición $r>0$ es parte de la definición y no se omitirá. En particular, $B_0(a)$ no queda definido por esta notación; si alguna vez necesitamos un radio nulo, habrá que extenderla explícitamente.
 
-La palabra «abierta» es aquí el nombre tradicional de la bola. **Todavía no se ha definido qué significa que un subconjunto arbitrario de $\mathbb R$ sea abierto**; más adelante demostraremos que las bolas satisfacen esa definición. Tampoco confundimos $B_r(a)$, que es un conjunto, con el número real $|x-a|$, que determina la pertenencia de cada punto.
+La palabra «abierta» es aquí el nombre tradicional de la bola. Todavía no se ha definido qué significa que un subconjunto arbitrario de $\mathbb R$ sea abierto; más adelante demostraremos que las bolas satisfacen esa definición. Tampoco confundimos $B_r(a)$, que es un conjunto, con el número real $|x-a|$, que determina la pertenencia de cada punto.
 
 > **Pregunta de lectura.** ¿Pertenecen a $B_r(a)$ los dos puntos cuya distancia al centro es exactamente $r$? No: la desigualdad definitoria es estricta. El siguiente resultado convierte esta observación en una identidad de conjuntos.
 
@@ -44,7 +44,7 @@ $$
 \end{aligned}
 $$
 
-La última equivalencia usa exactamente la definición previa de intervalo abierto Definición §4.3.1 — Intervalos acotados. Como los dos conjuntos tienen los mismos elementos, el criterio extensional Teorema §0.2.4 — Criterio extensional por doble inclusión —o la extensionalidad de los conjuntos fijada en el fundamento— da $B_r(a)=(a-r,a+r)$. El resultado Proposición §4.3.3 — Intervalos centrados y valor absoluto ya estableció la versión con extremos **incluidos** y desigualdad no estricta; aquí no intercambiamos ambas versiones.
+La última equivalencia usa exactamente la definición previa de intervalo abierto Definición §4.3.1 — Intervalos acotados. Como los dos conjuntos tienen los mismos elementos, el criterio extensional Teorema §0.2.4 — Criterio extensional por doble inclusión —o la extensionalidad de los conjuntos fijada en el fundamento— da $B_r(a)=(a-r,a+r)$. El resultado Proposición §4.3.3 — Intervalos centrados y valor absoluto ya estableció la versión con extremos incluidos y desigualdad no estricta; aquí no intercambiamos ambas versiones.
 
 Además, $|a-a|=0<r$, de modo que $a\in B_r(a)$. Finalmente, si $0<s\le r$ y $x\in B_s(a)$, entonces $|x-a|<s\le r$, lo que prueba $x\in B_r(a)$. Concluyen las tres afirmaciones. ∎
 
@@ -84,7 +84,7 @@ La elección del radio no ha sido arbitraria ni simultánea para una familia de 
 
 
 ### Definición 15.1.4 — Vecindad de un punto
-Sea $a\in\mathbb R$. Un conjunto $V\subseteq\mathbb R$ se denomina **vecindad de $a$** si contiene alguna bola abierta centrada en $a$; es decir,
+Sea $a\in\mathbb R$. Un conjunto $V\subseteq\mathbb R$ se denomina vecindad de $a$ si contiene alguna bola abierta centrada en $a$; es decir,
 
 $$
 \boxed{V\text{ es vecindad de }a
@@ -109,7 +109,7 @@ Para (1), la propia bola $B_r(a)$ proporciona el testigo de radio $r$: por refle
 
 En (3) conservamos el mismo testigo $r$ de la vecindad $V$. La transitividad de la inclusión produce $B_r(a)\subseteq V\subseteq W$ y, por definición, $W$ es vecindad.
 
-Para (4), de que $V$ y $W$ son vecindades obtenemos **dos** testigos $r,s>0$, tales que $B_r(a)\subseteq V$ y $B_s(a)\subseteq W$. Definamos $t:=\min\{r,s\}$, cuyo significado y unicidad provienen del orden total y de la teoría de mínimos ya establecida. Como $r>0$ y $s>0$, también $t>0$; además, $t\le r$ y $t\le s$. La inclusión entre bolas concéntricas de Proposición §15.1.2 — Las bolas son intervalos abiertos centrados da
+Para (4), de que $V$ y $W$ son vecindades obtenemos dos testigos $r,s>0$, tales que $B_r(a)\subseteq V$ y $B_s(a)\subseteq W$. Definamos $t:=\min\{r,s\}$, cuyo significado y unicidad provienen del orden total y de la teoría de mínimos ya establecida. Como $r>0$ y $s>0$, también $t>0$; además, $t\le r$ y $t\le s$. La inclusión entre bolas concéntricas de Proposición §15.1.2 — Las bolas son intervalos abiertos centrados da
 
 $$
 B_t(a)\subseteq B_r(a)\cap B_s(a)\subseteq V\cap W.
@@ -119,4 +119,4 @@ Por tanto $V\cap W$ contiene una bola de radio positivo centrada en $a$ y es una
 
 > **No-ejemplo.** El conjunto $\{a\}$ contiene su único punto, pero no es vecindad de $a$: para cualquier $r>0$, el punto $a+r/(1+1)$ es distinto de $a$ y pertenece a $B_r(a)$, por lo que ninguna bola centrada en $a$ está contenida en el singleton. Aquí $1+1$ y su inverso son operaciones del cuerpo real; no se identifica ningún natural con un real por inclusión literal.
 
-Las vecindades formalizan así una exigencia más fuerte que la mera pertenencia: deben proporcionar un margen completo de puntos alrededor del centro. La siguiente unidad utilizará esta distinción para definir **puntos interiores y conjuntos abiertos** sin circularidad.
+Las vecindades formalizan así una exigencia más fuerte que la mera pertenencia: deben proporcionar un margen completo de puntos alrededor del centro. La siguiente unidad utilizará esta distinción para definir puntos interiores y conjuntos abiertos sin circularidad.

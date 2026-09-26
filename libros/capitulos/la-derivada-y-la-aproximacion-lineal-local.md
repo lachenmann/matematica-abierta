@@ -16,15 +16,18 @@ provenance:
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
 date-modified: 2026-09-19
-prerequisites: 
+prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
-  - MA-BCH-0062
+  - MA-BCH-0077
   - MA-BCH-0063
 number-sections: true
 number-depth: 2
 number-offset: [5]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # La derivada y la aproximación lineal local {#sec-t1-c07}

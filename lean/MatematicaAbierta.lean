@@ -6,6 +6,7 @@ import MatematicaAbierta.CauchySchwarzFinito
 import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
 import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
 import MatematicaAbierta.TeoriaDeFunciones.Correspondencias
+import MatematicaAbierta.TeoriaDeFunciones.GraficasEstructurales
 import MatematicaAbierta.TeoriaDeFunciones.SemanticaEquivalencia
 import MatematicaAbierta.TeoriaDeFunciones.NaturalidadSondas
 import MatematicaAbierta.TeoriaDeFunciones.DensidadTerminal
@@ -18,6 +19,9 @@ import MatematicaAbierta.Continuo.DecididoresCortes
 import MatematicaAbierta.Continuo.TerminacionCortes
 import MatematicaAbierta.Continuo.IndicesCortes
 import MatematicaAbierta.Continuo.SemanticaComparadorCortes
+import MatematicaAbierta.Continuo.DecididoresCortesEfectivos
+import MatematicaAbierta.Continuo.SumaCortesReduccion
+import MatematicaAbierta.Continuo.ContradiccionUniforme
 
 /-!
 # Matemática Abierta: biblioteca formal

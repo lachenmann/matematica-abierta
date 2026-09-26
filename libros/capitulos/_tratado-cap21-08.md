@@ -1,8 +1,8 @@
 ## 21.8. Integrabilidad de las funciones monótonas {#sec-ta-21-8}
 
-La continuidad uniforme permite hacer pequeñas **todas** las oscilaciones locales. La monotonía ofrece un mecanismo diferente: la oscilación sobre cada subintervalo es exactamente la diferencia entre los valores en sus extremos, y la suma de esas diferencias se telescopa. Las oscilaciones individuales no necesitan ser pequeñas; basta multiplicar su suma total por anchuras suficientemente reducidas. Reutilizaremos la definición de monotonía de §20.5 (Definición §20.5.1 — Monotonía estricta y no estricta sobre un dominio ordenado), sin presuponer una derivada ni continuidad.
+La continuidad uniforme permite hacer pequeñas todas las oscilaciones locales. La monotonía ofrece un mecanismo diferente: la oscilación sobre cada subintervalo es exactamente la diferencia entre los valores en sus extremos, y la suma de esas diferencias se telescopa. Las oscilaciones individuales no necesitan ser pequeñas; basta multiplicar su suma total por anchuras suficientemente reducidas. Reutilizaremos la definición de monotonía de §20.5 (Definición §20.5.1 — Monotonía estricta y no estricta sobre un dominio ordenado), sin presuponer una derivada ni continuidad.
 
-Fijemos primero $a<b$, $I=[a,b]$, una función tipada $f:I\to\mathbb R$ y una partición $P=\langle n,p\rangle$, con nodos $a=x_0<\cdots<x_n=b$. Todas las diferencias y anchuras siguientes son **reales**; los índices siguen siendo naturales.
+Fijemos primero $a<b$, $I=[a,b]$, una función tipada $f:I\to\mathbb R$ y una partición $P=\langle n,p\rangle$, con nodos $a=x_0<\cdots<x_n=b$. Todas las diferencias y anchuras siguientes son reales; los índices siguen siendo naturales.
 
 ### Lema 21.8.1 — Cotas y extremos locales de una función monótona
 Si $f$ es no decreciente, entonces
@@ -29,7 +29,7 @@ $$
 $$
 
 **Demostración.**
-Para $a\le t\le b$, la definición de función no decreciente, aplicada a los pares $a<t$ y $t<b$ cuando sean estrictos, da $f(a)\le f(t)\le f(b)$; en caso de igualdad de argumentos, la correspondiente desigualdad es reflexiva. Así, $A=f(a)$ y $B=f(b)$ son dos cotas globales concretas. Sobre $I_k(P)=[x_k,x_{S(k)}]$ vale $f(x_k)\le f(t)\le f(x_{S(k)})$ para cada $t$. Como ambos extremos del subintervalo pertenecen a él, las dos cotas de valores **se alcanzan** y son respectivamente el ínfimo y el supremo; la existencia y unicidad de estos números están garantizadas por Lema §21.2.2 — Existencia de las cotas extremas locales y comparación por inclusión. Esto demuestra (21.8.1).
+Para $a\le t\le b$, la definición de función no decreciente, aplicada a los pares $a<t$ y $t<b$ cuando sean estrictos, da $f(a)\le f(t)\le f(b)$; en caso de igualdad de argumentos, la correspondiente desigualdad es reflexiva. Así, $A=f(a)$ y $B=f(b)$ son dos cotas globales concretas. Sobre $I_k(P)=[x_k,x_{S(k)}]$ vale $f(x_k)\le f(t)\le f(x_{S(k)})$ para cada $t$. Como ambos extremos del subintervalo pertenecen a él, las dos cotas de valores se alcanzan y son respectivamente el ínfimo y el supremo; la existencia y unicidad de estos números están garantizadas por Lema §21.2.2 — Existencia de las cotas extremas locales y comparación por inclusión. Esto demuestra (21.8.1).
 
 Para $f$ no creciente, las desigualdades se invierten, sus cotas globales pasan a ser $A=f(b)$ y $B=f(a)$, y los extremos locales intercambian papeles. La resta $M_k(P)-m_k(P)$ es en cada caso la diferencia positiva correspondiente, equivalente al valor absoluto de la diferencia de los valores extremos por Definición §4.2.1 — Valor absoluto. No se requiere continuidad en ningún nodo. $\square$
 
@@ -73,13 +73,13 @@ $$
 
 La comparación de sumas finitas es Proposición §14.5.1 — Comparación de sumas finitas y de bloques. Si todas las anchuras son la misma cantidad $h$, se obtiene igualdad en la extracción del factor. En esta prueba no se afirma que exista una anchura máxima seleccionada ni se introduce notación de malla. $\square$
 
-**Lectura de la estimación.** No es necesario que $\omega_k(P)$ tienda a cero en la celda que contiene un salto. Lo que permanece acotado es la **suma no ponderada de las oscilaciones**: es exactamente la variación neta entre los dos extremos, por monotonía.
+**Lectura de la estimación.** No es necesario que $\omega_k(P)$ tienda a cero en la celda que contiene un salto. Lo que permanece acotado es la suma no ponderada de las oscilaciones: es exactamente la variación neta entre los dos extremos, por monotonía.
 
 ### Teorema 21.8.3 — Toda función monótona sobre un intervalo cerrado es integrable
-Sean $a,b\in\mathbb R$ con $a\le b$ y $f:[a,b]\to\mathbb R$ monótona en el sentido de Definición §20.5.1 — Monotonía estricta y no estricta sobre un dominio ordenado. Entonces $f$ es integrable en $[a,b]$, **aunque no sea continua**. Cuando $a<b$, para cada $\varepsilon>0$ existe un $\delta>0$ tal que toda partición con $\Delta_k(P)<\delta$ verifica $G(f,P)<\varepsilon$.
+Sean $a,b\in\mathbb R$ con $a\le b$ y $f:[a,b]\to\mathbb R$ monótona en el sentido de Definición §20.5.1 — Monotonía estricta y no estricta sobre un dominio ordenado. Entonces $f$ es integrable en $[a,b]$, aunque no sea continua. Cuando $a<b$, para cada $\varepsilon>0$ existe un $\delta>0$ tal que toda partición con $\Delta_k(P)<\delta$ verifica $G(f,P)<\varepsilon$.
 
 **Demostración.**
-Si $a=b$, el dominio es el singleton $[a,a]$ y la integrabilidad, con integral cero, está definida en Definición §21.6.5 — Integración en un intervalo degenerado; no se invoca una partición estricta. Supongamos $a<b$. El lema Lema §21.8.1 — Cotas y extremos locales de una función monótona demuestra primero que $f$ está acotada, por lo que las sumas de Darboux y su brecha están definidas. Fijemos $\varepsilon>0$ y escribamos el real no negativo $D:=|f(b)-f(a)|$. Elijamos **para esta tolerancia**
+Si $a=b$, el dominio es el singleton $[a,a]$ y la integrabilidad, con integral cero, está definida en Definición §21.6.5 — Integración en un intervalo degenerado; no se invoca una partición estricta. Supongamos $a<b$. El lema Lema §21.8.1 — Cotas y extremos locales de una función monótona demuestra primero que $f$ está acotada, por lo que las sumas de Darboux y su brecha están definidas. Fijemos $\varepsilon>0$ y escribamos el real no negativo $D:=|f(b)-f(a)|$. Elijamos para esta tolerancia
 
 $$
  \delta:=\frac{\varepsilon}{D+1_{\mathbb R}}>0.
@@ -93,10 +93,10 @@ $$
  \tag{21.8.7}
 $$
 
-El lema Lema §21.7.1 — Particiones equidistantes de anchura arbitrariamente pequeña construye una partición estricta con esas anchuras: para el $\delta$ ya fijado proporciona **un único testigo finito requerido**, sin elegir una sucesión de particiones. La brecha correspondiente satisface el criterio de Darboux Teorema §21.4.2 — Criterio de Darboux y estabilidad por refinamiento, que concluye la integrabilidad. No se utilizó el corolario sobre funciones continuas, ninguna derivada ni el teorema fundamental del cálculo. $\square$
+El lema Lema §21.7.1 — Particiones equidistantes de anchura arbitrariamente pequeña construye una partición estricta con esas anchuras: para el $\delta$ ya fijado proporciona un único testigo finito requerido, sin elegir una sucesión de particiones. La brecha correspondiente satisface el criterio de Darboux Teorema §21.4.2 — Criterio de Darboux y estabilidad por refinamiento, que concluye la integrabilidad. No se utilizó el corolario sobre funciones continuas, ninguna derivada ni el teorema fundamental del cálculo. $\square$
 
 ### Proposición 21.8.4 — Ejemplo explícito: una función monótona integrable con un salto
-Sean $a<c<b$. Definamos la función de dominio **exactamente** $I=[a,b]$ y codominio $\mathbb R$ por
+Sean $a<c<b$. Definamos la función de dominio exactamente $I=[a,b]$ y codominio $\mathbb R$ por
 
 $$
  s_c(t):=\begin{cases}
@@ -106,12 +106,12 @@ $$
  \tag{21.8.8}
 $$
 
-Entonces $s_c$ es no decreciente, acotada e integrable en $[a,b]$, pero **no es continua en $c$** con respecto al dominio $I$.
+Entonces $s_c$ es no decreciente, acotada e integrable en $[a,b]$, pero no es continua en $c$ con respecto al dominio $I$.
 
 **Demostración.**
 Las ramas $a\le t<c$ y $c\le t\le b$ son disjuntas y cubren $I$. Separar del producto $I\times\mathbb R$ los pares determinados por (21.8.8) construye el grafo de una función tipada; cada argumento recibe un solo real. Si $u<v$ están ambos a la izquierda de $c$ o ambos a su derecha, $s_c(u)=s_c(v)$. Si $u<c\le v$, entonces $s_c(u)=0_{\mathbb R}<1_{\mathbb R}=s_c(v)$. Se cumple por tanto la definición de no decreciente. Las cotas $0_{\mathbb R}\le s_c(t)\le1_{\mathbb R}$ son explícitas y la integrabilidad resulta de Teorema §21.8.3 — Toda función monótona sobre un intervalo cerrado es integrable.
 
-Para comprobar que la continuidad falla en $c$, fijemos $\varepsilon_0:=1_{\mathbb R}/2_{\mathbb R}>0$. Dado **cualquier** $\delta>0$, definamos $r:=\min\{\delta,c-a\}>0$ por totalidad del orden real y $x:=c-r/2_{\mathbb R}$. Se verifica $a<x<c$, $0<|x-c|=r/2_{\mathbb R}<\delta$, pero
+Para comprobar que la continuidad falla en $c$, fijemos $\varepsilon_0:=1_{\mathbb R}/2_{\mathbb R}>0$. Dado cualquier $\delta>0$, definamos $r:=\min\{\delta,c-a\}>0$ por totalidad del orden real y $x:=c-r/2_{\mathbb R}$. Se verifica $a<x<c$, $0<|x-c|=r/2_{\mathbb R}<\delta$, pero
 
 $$
  |s_c(x)-s_c(c)|=|0_{\mathbb R}-1_{\mathbb R}|
@@ -136,7 +136,7 @@ $$
  \tag{21.8.10}
 $$
 
-La escritura abreviada de la lista de nodos representa aquí la **partición tipada única** que dicha lista determina (Lema §21.2.7 — Una lista estricta queda determinada por sus nodos). Por el encierro Proposición §21.4.4 — Encierro del valor integral y control por la brecha, tenemos $b-c\le J$.
+La escritura abreviada de la lista de nodos representa aquí la partición tipada única que dicha lista determina (Lema §21.2.7 — Una lista estricta queda determinada por sus nodos). Por el encierro Proposición §21.4.4 — Encierro del valor integral y control por la brecha, tenemos $b-c\le J$.
 
 Ahora, para cualquier $h$ con $0<h<c-a$, formemos la partición de nodos $a<c-h<c<b$. Sus tres subintervalos son $[a,c-h]$, $[c-h,c]$ y $[c,b]$. Sobre el primero $s_c$ es nula, sobre el tercero es uno y sólo el segundo contiene los dos valores $0$ y $1$. Se obtiene exactamente
 
@@ -145,6 +145,6 @@ $$
  \tag{21.8.11}
 $$
 
-El encierro de la integral da $J\le b-c+h$. Si $J>b-c$, elijamos el **único real explícito** $h:=\frac12\min\{c-a,J-(b-c)\}>0$; entonces $h<c-a$ y $h<J-(b-c)$, de modo que $J\le b-c+h<J$, contradicción. Por totalidad del orden, $J\le b-c$. Combinando con la cota inferior concluimos (21.8.9), sin recurrir a primitivas, a sumas etiquetadas ni a un teorema de paso al límite. $\square$
+El encierro de la integral da $J\le b-c+h$. Si $J>b-c$, elijamos el único real explícito $h:=\frac12\min\{c-a,J-(b-c)\}>0$; entonces $h<c-a$ y $h<J-(b-c)$, de modo que $J\le b-c+h<J$, contradicción. Por totalidad del orden, $J\le b-c$. Combinando con la cota inferior concluimos (21.8.9), sin recurrir a primitivas, a sumas etiquetadas ni a un teorema de paso al límite. $\square$
 
-**Cierre de la unidad.** Hemos construido una clase de funciones integrables que contiene funciones discontinuas y hemos calculado un ejemplo directamente desde las sumas de Darboux. Continuidad y monotonía son condiciones **suficientes alternativas**, no condiciones necesarias en la definición. La próxima sección desarrollará las sumas etiquetadas y su relación con la integral de Darboux; hasta entonces no se asumirá su equivalencia.
+**Cierre de la unidad.** Hemos construido una clase de funciones integrables que contiene funciones discontinuas y hemos calculado un ejemplo directamente desde las sumas de Darboux. Continuidad y monotonía son condiciones suficientes alternativas, no condiciones necesarias en la definición. La próxima sección desarrollará las sumas etiquetadas y su relación con la integral de Darboux; hasta entonces no se asumirá su equivalencia.

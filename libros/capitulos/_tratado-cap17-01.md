@@ -1,7 +1,7 @@
 ## 17.1. Definición puntual y relación exacta con el límite {#sec-ta-17-1}
 
 ### Definición 17.1.1 — Continuidad relativa al dominio en un punto
-Sean $D\subseteq\mathbb R$, $f:D\to\mathbb R$ y $a\in D$. Diremos que **$f$ es continua en $a$ (relativamente a $D$)** si
+Sean $D\subseteq\mathbb R$, $f:D\to\mathbb R$ y $a\in D$. Diremos que $f$ es continua en $a$ (relativamente a $D$) si
 
 $$
 \boxed{\forall\varepsilon\in\mathbb R\ \bigl(\varepsilon>0\Rightarrow
@@ -10,9 +10,9 @@ $$
 |f(x)-f(a)|<\varepsilon)]\bigr).}
 $$
 
-Cuando se conoce el dominio escribiremos simplemente «$f$ es continua en $a$». En esta definición **no** se exige $a\in\operatorname{Acc}(D)$: sí se exige $a\in D$ para que $f(a)$ tenga sentido. Además, no aparece $0<|x-a|$: el punto central forma parte del cuantificador universal. Para $x=a$, la desigualdad requerida es $|f(a)-f(a)|=0<\varepsilon$, que se cumple automáticamente; los restantes puntos del dominio son los que permiten detectar una eventual falta de continuidad.
+Cuando se conoce el dominio escribiremos simplemente «$f$ es continua en $a$». En esta definición no se exige $a\in\operatorname{Acc}(D)$: sí se exige $a\in D$ para que $f(a)$ tenga sentido. Además, no aparece $0<|x-a|$: el punto central forma parte del cuantificador universal. Para $x=a$, la desigualdad requerida es $|f(a)-f(a)|=0<\varepsilon$, que se cumple automáticamente; los restantes puntos del dominio son los que permiten detectar una eventual falta de continuidad.
 
-No basta hallar un $\delta$ adecuado para un solo argumento. El orden de los cuantificadores exige que, dada cada tolerancia $\varepsilon>0$, un mismo $\delta>0$ funcione para **todos** los $x\in D$ suficientemente próximos a $a$. No se ha impuesto que $D$ sea abierto ni que $a$ sea interior: un extremo de un intervalo puede ser un punto de continuidad relativo a ese intervalo.
+No basta hallar un $\delta$ adecuado para un solo argumento. El orden de los cuantificadores exige que, dada cada tolerancia $\varepsilon>0$, un mismo $\delta>0$ funcione para todos los $x\in D$ suficientemente próximos a $a$. No se ha impuesto que $D$ sea abierto ni que $a$ sea interior: un extremo de un intervalo puede ser un punto de continuidad relativo a ese intervalo.
 
 
 ### Proposición 17.1.2 — Caracterización mediante imágenes de bolas
@@ -28,11 +28,11 @@ Supongamos continua la función en $a$ y fijemos $\varepsilon>0$. Sea $\delta>0$
 
 Recíprocamente, fijemos $\varepsilon>0$ y tomemos el $\delta>0$ suministrado por la inclusión. Para cualquier $x\in D$ con $|x-a|<\delta$, tenemos $x\in D\cap B_\delta(a)$ y por tanto $f(x)\in B_\varepsilon(f(a))$, es decir, $|f(x)-f(a)|<\varepsilon$. Es exactamente la continuidad definida en §17.1.1. Las dos implicaciones utilizan puntos arbitrarios y un solo radio por tolerancia; no construyen una sucesión de elecciones. ∎
 
-> **Comparación con §16.1.3.** Para el límite se utiliza la bola **perforada** $B_\delta(a)\setminus\{a\}$ y un valor candidato $L$. Para la continuidad se utiliza la bola completa intersectada con $D$, y la bola de llegada está centrada en el valor efectivo $f(a)$.
+> **Comparación con §16.1.3.** Para el límite se utiliza la bola perforada $B_\delta(a)\setminus\{a\}$ y un valor candidato $L$. Para la continuidad se utiliza la bola completa intersectada con $D$, y la bola de llegada está centrada en el valor efectivo $f(a)$.
 
 
 ### Proposición 17.1.3 — Continuidad automática en un punto aislado
-Sean $f:D\to\mathbb R$ y $a\in D$. Si $a\notin\operatorname{Acc}(D)$, entonces $f$ es continua en $a$, **cualquiera que sea el valor $f(a)$**.
+Sean $f:D\to\mathbb R$ y $a\in D$. Si $a\notin\operatorname{Acc}(D)$, entonces $f$ es continua en $a$, cualquiera que sea el valor $f(a)$.
 
 **Demostración.**
 La negación clásica del criterio de acumulación Lema §16.1.1 — Acumulación y aproximación perforada afirma que existe $r>0$ para el cual no hay $x\in D$ con $0<|x-a|<r$. Fijemos un $\varepsilon>0$ cualquiera y pongamos $\delta:=r$. Si $x\in D$ y $|x-a|<\delta$, entonces necesariamente $x=a$: si fuese distinto, la definitud del valor absoluto produciría $0<|x-a|<r$, contradicción. En consecuencia,
@@ -79,4 +79,4 @@ Para una función $f:D\to\mathbb R$ y un punto $a\in D$, la continuidad en $a$ s
 **Demostración.**
 Por la lógica clásica del contrato fundacional, $a$ pertenece a $\operatorname{Acc}(D)$ o no pertenece. En el primer caso aplicamos las dos implicaciones del Teorema 17.1.4; en el segundo, la Proposición 17.1.3. No se escribe ningún límite fuera de la rama en que la acumulación lo hace legítimo. ∎
 
-**Síntesis.** Continuidad no significa simplemente «existencia de límite» para cualquier dominio. Exige siempre que el valor $f(a)$ esté definido; en un punto de acumulación, exige además que coincida con el límite perforado. En un punto aislado, en cambio, la propia definición $\varepsilon$–$\delta$ resulta satisfecha sin imponer un supuesto valor límite. La próxima sección estudiará cómo se comporta esta propiedad sobre sucesiones que **sí pueden alcanzar $a$**, distinguiendo la dirección incondicional del criterio y la necesidad eventual de hipótesis fundacionales para la recíproca en dominios arbitrarios.
+**Síntesis.** Continuidad no significa simplemente «existencia de límite» para cualquier dominio. Exige siempre que el valor $f(a)$ esté definido; en un punto de acumulación, exige además que coincida con el límite perforado. En un punto aislado, en cambio, la propia definición $\varepsilon$–$\delta$ resulta satisfecha sin imponer un supuesto valor límite. La próxima sección estudiará cómo se comporta esta propiedad sobre sucesiones que sí pueden alcanzar $a$, distinguiendo la dirección incondicional del criterio y la necesidad eventual de hipótesis fundacionales para la recíproca en dominios arbitrarios.

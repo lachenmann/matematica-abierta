@@ -1,22 +1,22 @@
 ## 14.8. Convergencia absoluta y condicional {#sec-ta-14-8}
 
-Hasta ahora, la comparación y la condensación han trabajado fundamentalmente con términos no negativos. Una serie con signos variables plantea un problema adicional: la cancelación puede hacer pequeñas las sumas de bloques aun cuando las sumas de las magnitudes de esos mismos términos sean grandes. Debemos distinguir, por consiguiente, entre controlar la **suma con sus signos** y controlar la **suma de los valores absolutos**. La desigualdad triangular conecta ambos controles, pero sólo en una dirección.
+Hasta ahora, la comparación y la condensación han trabajado fundamentalmente con términos no negativos. Una serie con signos variables plantea un problema adicional: la cancelación puede hacer pequeñas las sumas de bloques aun cuando las sumas de las magnitudes de esos mismos términos sean grandes. Debemos distinguir, por consiguiente, entre controlar la suma con sus signos y controlar la suma de los valores absolutos. La desigualdad triangular conecta ambos controles, pero sólo en una dirección.
 
 ### Definición 14.8.1 — Serie de valores absolutos; convergencia absoluta y condicional
 
-Para una sucesión real $a=(a_n)_{n\in\mathbb N}$, definimos su **sucesión de magnitudes** por
+Para una sucesión real $a=(a_n)_{n\in\mathbb N}$, definimos su sucesión de magnitudes por
 
 $$
 \boxed{\operatorname{Abs}(a)_n:=|a_n|\qquad(n\in\mathbb N).}
 $$
 
-Es una sucesión real total: su grafo se obtiene por Separación dentro de $\mathbb N\times\mathbb R$ imponiendo el valor único $|a_n|$ en cada índice. Así queda determinada también una función $\operatorname{Abs}:\mathbb R^{\mathbb N}\to\mathbb R^{\mathbb N}$; no hay elección de valores. Todos sus términos son no negativos. La **serie de valores absolutos** de $a$ es la serie cuyos términos son $\operatorname{Abs}(a)$:
+Es una sucesión real total: su grafo se obtiene por Separación dentro de $\mathbb N\times\mathbb R$ imponiendo el valor único $|a_n|$ en cada índice. Así queda determinada también una función $\operatorname{Abs}:\mathbb R^{\mathbb N}\to\mathbb R^{\mathbb N}$; no hay elección de valores. Todos sus términos son no negativos. La serie de valores absolutos de $a$ es la serie cuyos términos son $\operatorname{Abs}(a)$:
 
 $$
 \sum_{n=0}^{\infty}|a_n|.
 $$
 
-Decimos que la serie de $a$ **converge absolutamente** si converge esta serie de magnitudes. Decimos que **converge condicionalmente** si converge la serie original y diverge la serie de magnitudes. En términos de conjuntos de sucesiones de términos, establecemos
+Decimos que la serie de $a$ converge absolutamente si converge esta serie de magnitudes. Decimos que converge condicionalmente si converge la serie original y diverge la serie de magnitudes. En términos de conjuntos de sucesiones de términos, establecemos
 
 $$
 \boxed{
@@ -28,7 +28,7 @@ $$
 \end{aligned}}
 $$
 
-Ambos conjuntos existen por Separación en los conjuntos indicados. Por definición, $\mathcal K_{\mathrm{ser}}$ está contenido en $\mathcal C_{\mathrm{ser}}$; que también $\mathcal A_{\mathrm{ser}}$ esté contenido en $\mathcal C_{\mathrm{ser}}$ será un **teorema**, no una parte de la definición. La expresión «converge condicionalmente» no se aplica a una serie divergente, y no designa un valor numérico distinto de su suma ordinaria.
+Ambos conjuntos existen por Separación en los conjuntos indicados. Por definición, $\mathcal K_{\mathrm{ser}}$ está contenido en $\mathcal C_{\mathrm{ser}}$; que también $\mathcal A_{\mathrm{ser}}$ esté contenido en $\mathcal C_{\mathrm{ser}}$ será un teorema, no una parte de la definición. La expresión «converge condicionalmente» no se aplica a una serie divergente, y no designa un valor numérico distinto de su suma ordinaria.
 
 > **Tres preguntas distintas.** ¿Converge $\sum a_n$? ¿Converge $\sum|a_n|$? Si convergen ambas, ¿se relacionan sus sumas mediante una desigualdad? La primera y la segunda se deciden aplicando a dos sucesiones diferentes la definición de §14.1; la tercera requiere un argumento adicional.
 
@@ -123,16 +123,16 @@ $$
 
 Ésta es exactamente la condición del criterio Teorema 14.2.3 — Criterio de Cauchy para una serie numérica para la serie original. Por tanto $s$ converge a algún $S\in\mathbb R$. La hipótesis proporciona también $u_n\to A\in\mathbb R$.
 
-Para obtener la desigualdad entre las sumas, el primer apartado del lema establece $|s_n|\le u_n$ para **cada** $n$. La continuidad secuencial del valor absoluto Proposición 13.5.5 — El valor absoluto preserva límites da $|s_n|\to|S|$, y la preservación del orden al pasar al límite Teorema 13.6.2 — Preservación del orden en el paso al límite permite concluir $|S|\le A$. Las notaciones de suma infinita se han usado como valores numéricos sólo después de haber demostrado ambas convergencias. Por la definición de $\mathcal A_{\mathrm{ser}}$ y $\mathcal C_{\mathrm{ser}}$, también resulta la inclusión anunciada. ∎
+Para obtener la desigualdad entre las sumas, el primer apartado del lema establece $|s_n|\le u_n$ para cada $n$. La continuidad secuencial del valor absoluto Proposición 13.5.5 — El valor absoluto preserva límites da $|s_n|\to|S|$, y la preservación del orden al pasar al límite Teorema 13.6.2 — Preservación del orden en el paso al límite permite concluir $|S|\le A$. Las notaciones de suma infinita se han usado como valores numéricos sólo después de haber demostrado ambas convergencias. Por la definición de $\mathcal A_{\mathrm{ser}}$ y $\mathcal C_{\mathrm{ser}}$, también resulta la inclusión anunciada. ∎
 
-> **Alcance exacto.** La desigualdad $|S|\le A$ no afirma que $S=A$, ni que los términos deban ser no negativos. La prueba controla **todos** los bloques tardíos con un solo umbral; no basta observar que $|a_n|\to0$. La recíproca de la implicación se pondrá a prueba al final de la sección.
+> **Alcance exacto.** La desigualdad $|S|\le A$ no afirma que $S=A$, ni que los términos deban ser no negativos. La prueba controla todos los bloques tardíos con un solo umbral; no basta observar que $|a_n|\to0$. La recíproca de la implicación se pondrá a prueba al final de la sección.
 
 ### Corolario 14.8.4 — Dominación absoluta eventual
 
 Sean $a,b$ sucesiones reales y supongamos que $b_n\ge0$ para todo $n$.
 
-1. Si existe $N\in\mathbb N$ tal que $|a_n|\le b_n$ para todo $n\ge N$, y la serie $\sum b_n$ converge, entonces $\sum a_n$ **converge absolutamente** y, en particular, converge.
-2. Si existe $N\in\mathbb N$ tal que $b_n\le |a_n|$ para todo $n\ge N$, y la serie $\sum b_n$ diverge, entonces $\sum a_n$ **no** converge absolutamente. Esta segunda afirmación no determina por sí sola si la serie original converge o diverge.
+1. Si existe $N\in\mathbb N$ tal que $|a_n|\le b_n$ para todo $n\ge N$, y la serie $\sum b_n$ converge, entonces $\sum a_n$ converge absolutamente y, en particular, converge.
+2. Si existe $N\in\mathbb N$ tal que $b_n\le |a_n|$ para todo $n\ge N$, y la serie $\sum b_n$ diverge, entonces $\sum a_n$ no converge absolutamente. Esta segunda afirmación no determina por sí sola si la serie original converge o diverge.
 
 **Demostración.**
 
@@ -192,7 +192,7 @@ $$
 h_k:=\nu_{\mathbb R}(k+1)^{-1}\quad(k\in\mathbb N).
 $$
 
-Los resultados Lema 13.10.2 — Los recíprocos de los numerales positivos tienden a cero y Proposición 14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica aseguran, respectivamente, que $h_k>0$ y $h_k\to0$, pero que su serie diverge. Construyamos la sucesión $a$ **por parejas de términos**:
+Los resultados Lema 13.10.2 — Los recíprocos de los numerales positivos tienden a cero y Proposición 14.2.7 — La condición $a_n\to0$ no es suficiente: la serie armónica aseguran, respectivamente, que $h_k>0$ y $h_k\to0$, pero que su serie diverge. Construyamos la sucesión $a$ por parejas de términos:
 
 $$
 \boxed{a_{2k}:=h_k,\qquad a_{2k+1}:=-h_k
@@ -200,7 +200,7 @@ $$
 \tag{14.8.1}
 $$
 
-Aquí $2k$ y $2k+1$ son índices **naturales**; el $2$ es el natural de Notación 3.9.1 — El número dos en los tres sistemas, y $h_k$ pertenece a $\mathbb R$. La dicotomía de paridad Lema 3.9.3 — Dicotomía de paridad asegura que todo índice natural es par o impar y que esos casos son disjuntos. En cada caso el índice $k$ es único: si $2k=2j$ o $2k+1=2j+1$, cancelamos la suma final cuando procede y utilizamos que la multiplicación por el natural positivo $2$ es estrictamente creciente (Proposición 1.6.8 — Compatibilidad con el producto); si $k\ne j$, la totalidad del orden natural produciría una desigualdad estricta entre $2k$ y $2j$, contradiciendo su igualdad. Por tanto (14.8.1) asigna exactamente un real a cada índice. Su grafo existe por Separación en $\mathbb N\times\mathbb R$; no se eligen representantes ni se invoca Choice.
+Aquí $2k$ y $2k+1$ son índices naturales; el $2$ es el natural de Notación 3.9.1 — El número dos en los tres sistemas, y $h_k$ pertenece a $\mathbb R$. La dicotomía de paridad Lema 3.9.3 — Dicotomía de paridad asegura que todo índice natural es par o impar y que esos casos son disjuntos. En cada caso el índice $k$ es único: si $2k=2j$ o $2k+1=2j+1$, cancelamos la suma final cuando procede y utilizamos que la multiplicación por el natural positivo $2$ es estrictamente creciente (Proposición 1.6.8 — Compatibilidad con el producto); si $k\ne j$, la totalidad del orden natural produciría una desigualdad estricta entre $2k$ y $2j$, contradiciendo su igualdad. Por tanto (14.8.1) asigna exactamente un real a cada índice. Su grafo existe por Separación en $\mathbb N\times\mathbb R$; no se eligen representantes ni se invoca Choice.
 
 **Primero: convergencia de la serie original.** Escribamos $s=\operatorname{PS}(a)$. Una inducción sobre $k$ muestra que
 
@@ -219,7 +219,7 @@ s_{2(k+1)+1}&=s_{2(k+1)}+a_{2k+3}=h_{k+1}-h_{k+1}=0.
 \end{aligned}
 $$
 
-Demostremos la convergencia de **toda** $s$, y no sólo de la subsucesión de índices impares. Dado $\varepsilon>0$, de $h_k\to0$ obtenemos un $K\in\mathbb N$ tal que $k\ge K$ implica $0<h_k<\varepsilon$. Tomemos el único umbral natural $N:=2K+1$. Si $n\ge N$, la dicotomía de paridad escribe $n=2k$ o $n=2k+1$. En el primer caso, $2k\ge2K+1$ excluye $k\le K$ por el crecimiento del producto y, por tanto, $k\ge K$; entonces $|s_n|=h_k<\varepsilon$. En el segundo caso, $2k+1\ge2K+1$ implica $k\ge K$ por cancelación y crecimiento, y $|s_n|=0<\varepsilon$. En ambos casos, $|s_n-0|<\varepsilon$ para todo $n\ge N$; así $s_n\to0$ y
+Demostremos la convergencia de toda $s$, y no sólo de la subsucesión de índices impares. Dado $\varepsilon>0$, de $h_k\to0$ obtenemos un $K\in\mathbb N$ tal que $k\ge K$ implica $0<h_k<\varepsilon$. Tomemos el único umbral natural $N:=2K+1$. Si $n\ge N$, la dicotomía de paridad escribe $n=2k$ o $n=2k+1$. En el primer caso, $2k\ge2K+1$ excluye $k\le K$ por el crecimiento del producto y, por tanto, $k\ge K$; entonces $|s_n|=h_k<\varepsilon$. En el segundo caso, $2k+1\ge2K+1$ implica $k\ge K$ por cancelación y crecimiento, y $|s_n|=0<\varepsilon$. En ambos casos, $|s_n-0|<\varepsilon$ para todo $n\ge N$; así $s_n\to0$ y
 
 $$
 \boxed{\sum_{n=0}^{\infty}a_n=0.}
@@ -259,4 +259,4 @@ contradicción: el factor $(1+1)^{-1}$ es positivo. Por tanto la serie de magnit
 
 > **Por qué funciona el ejemplo.** Cada pareja suma exactamente cero, mientras que las magnitudes de sus dos términos suman $h_k+h_k$. Los valores absolutos destruyen la cancelación que estabiliza la suma original. El ejemplo se ha construido directamente con la armónica cerrada: no depende del criterio para series alternadas ni de un teorema de reordenamiento, ambos reservados para más adelante.
 
-**Un contraste adicional.** La presencia de signos alternados tampoco basta para concluir que una serie es sólo condicionalmente convergente. Para $r=-(1+1)^{-1}$ tenemos $|r|=(1+1)^{-1}<1$. El teorema geométrico Teorema 14.3.5 — Convergencia y suma de la serie geométrica para $|r|<1$ prueba la convergencia de $\sum r^n$, mientras que Lema 14.3.3 — El valor absoluto conmuta con las potencias naturales da $|r^n|=|r|^n$ y el mismo teorema prueba que la serie de magnitudes converge. Por tanto esta serie con signos alternados converge **absolutamente**. No se utiliza ninguna regla nueva de intercambio de sumas infinitas.
+**Un contraste adicional.** La presencia de signos alternados tampoco basta para concluir que una serie es sólo condicionalmente convergente. Para $r=-(1+1)^{-1}$ tenemos $|r|=(1+1)^{-1}<1$. El teorema geométrico Teorema 14.3.5 — Convergencia y suma de la serie geométrica para $|r|<1$ prueba la convergencia de $\sum r^n$, mientras que Lema 14.3.3 — El valor absoluto conmuta con las potencias naturales da $|r^n|=|r|^n$ y el mismo teorema prueba que la serie de magnitudes converge. Por tanto esta serie con signos alternados converge absolutamente. No se utiliza ninguna regla nueva de intercambio de sumas infinitas.

@@ -2,7 +2,7 @@
 
 Hasta ahora hemos caracterizado el límite de una función mediante la proximidad de sus valores y hemos precisado el alcance del criterio secuencial. Queremos saber qué ocurre si combinamos dos funciones que tienen límite en el mismo punto. La respuesta se basará directamente en la definición $\varepsilon$–$\delta$: no necesitamos deducir límites funcionales de condiciones secuenciales y, por tanto, no necesitamos ningún principio de elección.
 
-En esta sección fijaremos $D\subseteq\mathbb R$, un punto $a\in\operatorname{Acc}(D)$ y funciones $f,g:D\to\mathbb R$ con límites finitos respectivos $L,M\in\mathbb R$ en $a$, salvo que un enunciado especifique otras hipótesis. Todos los límites son **relativos a su dominio declarado**. El punto $a$ puede no pertenecer a $D$.
+En esta sección fijaremos $D\subseteq\mathbb R$, un punto $a\in\operatorname{Acc}(D)$ y funciones $f,g:D\to\mathbb R$ con límites finitos respectivos $L,M\in\mathbb R$ en $a$, salvo que un enunciado especifique otras hipótesis. Todos los límites son relativos a su dominio declarado. El punto $a$ puede no pertenecer a $D$.
 
 ### Lema 16.3.1 — Acotación local perforada de una función con límite
 Si $\lim_{\substack{x\to a\\x\in D}}f(x)=L$, existen $r>0$ y $K>0$ tales que
@@ -43,7 +43,7 @@ $$
 \frac fg:D_g\to\mathbb R,
 $$
 
-por los valores $g(x)^{-1}$ y $f(x)g(x)^{-1}$, respectivamente. El cociente **no** se declara función sobre todo $D$ cuando $g$ puede anularse.
+por los valores $g(x)^{-1}$ y $f(x)g(x)^{-1}$, respectivamente. El cociente no se declara función sobre todo $D$ cuando $g$ puede anularse.
 
 **Demostración.**
 Para cualquiera de las primeras cinco expresiones, definamos su grafo por Separación dentro de $D\times\mathbb R$: un par $\langle x,y\rangle$ pertenece al grafo precisamente si $y$ es la correspondiente expresión algebraica en $f(x)$ y $g(x)$, o en $f(x)$ únicamente. Como las operaciones y el valor absoluto están definidos en el cuerpo real y dan un único real para cada $x\in D$, el grafo es funcional y total en $D$. Declarar dominio $D$ y codominio $\mathbb R$ completa cada función en el sentido de Definición §0.6.1 — Función como dominio, codominio y grafo.
@@ -160,7 +160,7 @@ $$
 El límite de $f$ relativo a $D$ también es límite de su restricción a $D_g$, pues una implicación válida para todos los puntos próximos de $D$ sigue siendo válida en el subconjunto $D_g$.
 
 **Demostración.**
-El lema anterior proporciona $r>0$ con $D\cap(B_r(a)\setminus\{a\})\subseteq D_g$. Dado $\rho>0$, por $a\in\operatorname{Acc}(D)$ y Lema §16.1.1 — Acumulación y aproximación perforada existe **un solo** punto $x\in D$ tal que $0<|x-a|<\min\{r,\rho\}$. Este $x$ también pertenece a $D_g$; aplicar de nuevo el criterio de acumulación demuestra $a\in\operatorname{Acc}(D_g)$. No se ha seleccionado una familia de puntos.
+El lema anterior proporciona $r>0$ con $D\cap(B_r(a)\setminus\{a\})\subseteq D_g$. Dado $\rho>0$, por $a\in\operatorname{Acc}(D)$ y Lema §16.1.1 — Acumulación y aproximación perforada existe un solo punto $x\in D$ tal que $0<|x-a|<\min\{r,\rho\}$. Este $x$ también pertenece a $D_g$; aplicar de nuevo el criterio de acumulación demuestra $a\in\operatorname{Acc}(D_g)$. No se ha seleccionado una familia de puntos.
 
 Fijemos ahora $\varepsilon>0$. Por $g\to M$, existe $\delta_g>0$ que fuerza
 
@@ -177,7 +177,7 @@ $$
 <\varepsilon.
 $$
 
-Hemos demostrado el límite del recíproco con su dominio exacto. La función restringida $f\upharpoonright D_g:D_g\to\mathbb R$ conserva el límite $L$ porque $D_g\subseteq D$ y acabamos de verificar la acumulación necesaria. En $D_g$ el producto de esa restricción por $1/g$ coincide, como función con dominio y codominio, con $f/g$. Aplicar Teorema §16.3.4 — Producto y valor absoluto **sobre $D_g$** produce el límite $L\,(1/M)=L/M$. ∎
+Hemos demostrado el límite del recíproco con su dominio exacto. La función restringida $f\upharpoonright D_g:D_g\to\mathbb R$ conserva el límite $L$ porque $D_g\subseteq D$ y acabamos de verificar la acumulación necesaria. En $D_g$ el producto de esa restricción por $1/g$ coincide, como función con dominio y codominio, con $f/g$. Aplicar Teorema §16.3.4 — Producto y valor absoluto sobre $D_g$ produce el límite $L\,(1/M)=L/M$. ∎
 
 > **No se divide por un límite cero.** Si $M=0$, ninguna estimación anterior proporciona una cota inferior positiva para $|g(x)|$; además, $1/M$ no está definido en el cuerpo real. La existencia del cociente como función sobre $D_g$ por sí sola no asegura la existencia de un límite finito.
 
@@ -185,21 +185,21 @@ Hemos demostrado el límite del recíproco con su dominio exacto. La función re
 ### Teorema 16.3.7 — Orden y separación estricta
 Sean $f,g:D\to\mathbb R$ con límites $L,M$ en $a$. Se cumplen las siguientes afirmaciones:
 
-**(i)** Si existen $r>0$ y la desigualdad $f(x)\le g(x)$ para todo $x\in D$ con $0<|x-a|<r$, entonces $L\le M$.
+(i) Si existen $r>0$ y la desigualdad $f(x)\le g(x)$ para todo $x\in D$ con $0<|x-a|<r$, entonces $L\le M$.
 
-**(ii)** Si $L<M$, existe $r>0$ tal que $f(x)<g(x)$ para todo $x\in D$ con $0<|x-a|<r$.
+(ii) Si $L<M$, existe $r>0$ tal que $f(x)<g(x)$ para todo $x\in D$ con $0<|x-a|<r$.
 
-En general, de $f(x)<g(x)$ para todos los puntos suficientemente próximos **no se sigue** $L<M$.
+En general, de $f(x)<g(x)$ para todos los puntos suficientemente próximos no se sigue $L<M$.
 
 **Demostración.**
-**(i)** Supongamos por contradicción $L>M$. Sea $\varepsilon:=(L-M)/3>0$. Existen radios $\delta_f,\delta_g>0$ tales que, en sus respectivas vecindades perforadas,
+(i) Supongamos por contradicción $L>M$. Sea $\varepsilon:=(L-M)/3>0$. Existen radios $\delta_f,\delta_g>0$ tales que, en sus respectivas vecindades perforadas,
 
 $$
  f(x)>L-\varepsilon,
 \qquad g(x)<M+\varepsilon.
 $$
 
-Tomemos $\rho=\min\{r,\delta_f,\delta_g\}>0$. Por acumulación, Lema §16.1.1 — Acumulación y aproximación perforada proporciona **un** $x\in D$ con $0<|x-a|<\rho$. Entonces
+Tomemos $\rho=\min\{r,\delta_f,\delta_g\}>0$. Por acumulación, Lema §16.1.1 — Acumulación y aproximación perforada proporciona un $x\in D$ con $0<|x-a|<\rho$. Entonces
 
 $$
 f(x)>L-\varepsilon>M+\varepsilon>g(x),
@@ -207,7 +207,7 @@ $$
 
 porque $L-M=3\varepsilon>2\varepsilon$. Esto contradice $f(x)\le g(x)$ y prueba $L\le M$.
 
-**(ii)** Sea $\varepsilon:=(M-L)/3>0$. Tomemos los radios de los límites de $f$ y $g$ correspondientes a $\varepsilon$ y su mínimo $r>0$. En todo punto perforado de $D$ bajo ese radio,
+(ii) Sea $\varepsilon:=(M-L)/3>0$. Tomemos los radios de los límites de $f$ y $g$ correspondientes a $\varepsilon$ y su mínimo $r>0$. En todo punto perforado de $D$ bajo ese radio,
 
 $$
 f(x)<L+\varepsilon<M-\varepsilon<g(x),
@@ -225,7 +225,7 @@ $$
 \forall x\in D:\quad 0<|x-a|<r\Longrightarrow f(x)\le h(x)\le g(x).
 $$
 
-Si $f$ y $g$ tienen el **mismo** límite finito $L$ en $a$, entonces también
+Si $f$ y $g$ tienen el mismo límite finito $L$ en $a$, entonces también
 
 $$
 \boxed{\lim_{\substack{x\to a\\x\in D}}h(x)=L.}

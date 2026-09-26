@@ -541,7 +541,7 @@ $$
 \mathbb R_C\times\mathbb R_C\to\mathbb R_C,
 $$
 
-obtenidas directamente de la suma y el producto término a término de sucesiones racionales. La propiedad decisiva es que ambas operaciones son **independientes del representante**.
+obtenidas directamente de la suma y el producto término a término de sucesiones racionales. La propiedad decisiva es que ambas operaciones son independientes del representante.
 
 Todavía no hemos probado que estas operaciones satisfagan los axiomas de anillo o de cuerpo. En particular, aún debemos identificar sus elementos neutros, construir el opuesto aditivo, verificar las leyes algebraicas heredadas y, más adelante, resolver el problema sustancial de construir el inverso multiplicativo de una clase no nula.
 

@@ -43,7 +43,7 @@ license: GFDL-1.3-or-later
 
 [**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-3-los-numeros-racionales.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-5-cortaduras-de-dedekind.md)
 
-*Parte I — Fundamentos y construcción de los números reales*
+*Parte I — Fundamentos y construcción de los reales*
 
 ---
 

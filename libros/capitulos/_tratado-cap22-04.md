@@ -1,6 +1,6 @@
 ## 22.4. Integración por partes {#sec-ta-22-4}
 
-La regla de derivación de un producto, ya demostrada en §19.4, afirma que la derivada interior de $uv$ se descompone en $u'v+uv'$. Para convertir esa igualdad en una identidad de integrales necesitamos algo más: las expresiones que vamos a integrar han de ser funciones **definidas sobre todo el intervalo cerrado e integrables**. No confundiremos la existencia de las derivadas en $(a,b)$ con su prolongación automática a los extremos, ni deduciremos de la mera derivabilidad que una derivada es Riemann-integrable.
+La regla de derivación de un producto, ya demostrada en §19.4, afirma que la derivada interior de $uv$ se descompone en $u'v+uv'$. Para convertir esa igualdad en una identidad de integrales necesitamos algo más: las expresiones que vamos a integrar han de ser funciones definidas sobre todo el intervalo cerrado e integrables. No confundiremos la existencia de las derivadas en $(a,b)$ con su prolongación automática a los extremos, ni deduciremos de la mera derivabilidad que una derivada es Riemann-integrable.
 
 Formularemos primero la regla con dos funciones auxiliares $p,q:[a,b]\to\mathbb R$ cuyos valores interiores son las derivadas respectivas; sus valores extremos quedan especificados como parte de las funciones dadas. Después obtendremos la versión usual cuando tales prolongaciones son continuas y, finalmente, una fórmula para subintervalos y un cálculo elemental.
 
@@ -28,10 +28,10 @@ $$
 \tag{22.4.2}
 $$
 
-La expresión $[uv]_a^b$ es una abreviatura **local** para la diferencia explícita de los valores extremos de una función; no es una definición de integral ni autoriza invertir extremos. Se permite que $p$ y $q$ no sean continuas. La integrabilidad se exige a los *productos* $uq$ y $pv$, no necesariamente a cada factor por separado.
+La expresión $[uv]_a^b$ es una abreviatura local para la diferencia explícita de los valores extremos de una función; no es una definición de integral ni autoriza invertir extremos. Se permite que $p$ y $q$ no sean continuas. La integrabilidad se exige a los *productos* $uq$ y $pv$, no necesariamente a cada factor por separado.
 
 **Demostración.**
-Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales garantiza que los productos puntuales $H=uv$, $A=uq$ y $B=pv$, así como la suma $G:=A+B$, son funciones reales con **el mismo dominio** $[a,b]$. Por estabilidad algebraica de la continuidad Teorema §17.4.3 — Estabilidad de la continuidad bajo operaciones algebraicas y valor absoluto, $H$ es continua en cada punto del cerrado, incluidos los extremos. Si $x\in(a,b)$, la regla del producto Teorema §19.4.3 — Regla de derivación del producto da
+Proposición §16.3.2 — Existencia y tipado de las operaciones puntuales garantiza que los productos puntuales $H=uv$, $A=uq$ y $B=pv$, así como la suma $G:=A+B$, son funciones reales con el mismo dominio $[a,b]$. Por estabilidad algebraica de la continuidad Teorema §17.4.3 — Estabilidad de la continuidad bajo operaciones algebraicas y valor absoluto, $H$ es continua en cada punto del cerrado, incluidos los extremos. Si $x\in(a,b)$, la regla del producto Teorema §19.4.3 — Regla de derivación del producto da
 
 $$
 H'(x)=u'(x)v(x)+u(x)v'(x)
@@ -39,7 +39,7 @@ H'(x)=u'(x)v(x)+u(x)v'(x)
 \tag{22.4.3}
 $$
 
-La hipótesis tercera afirma la integrabilidad de $A$ y $B$. La clausura aditiva Teorema §21.5.4 — La suma de funciones integrables es integrable y su integral es aditiva prueba, **antes de escribir su integral**, que $G=A+B$ también es integrable y que
+La hipótesis tercera afirma la integrabilidad de $A$ y $B$. La clausura aditiva Teorema §21.5.4 — La suma de funciones integrables es integrable y su integral es aditiva prueba, antes de escribir su integral, que $G=A+B$ también es integrable y que
 
 $$
 \int_a^b G=\int_a^b A+\int_a^b B.
@@ -58,7 +58,7 @@ Igualando (22.4.4) y (22.4.5), y restando en el cuerpo real el término $\int_a^
 **Lectura deductiva.** La prueba tiene tres eslabones distintos: *regla del producto* $\Rightarrow$ *primitiva del sumando* $\Rightarrow$ *Newton–Leibniz y linealidad*. Si se suprime la integrabilidad de las expresiones $uq$ y $pv$, el segundo eslabón puede escribirse formalmente como una derivada, pero el tercero carece de justificación.
 
 ### Corolario 22.4.2 — Versión para derivadas con prolongaciones continuas
-Sean $u,v:[a,b]\to\mathbb R$ continuas en el cerrado y derivables en $(a,b)$. Supongamos que existen funciones **continuas en el cerrado** $p,q:[a,b]\to\mathbb R$ tales que
+Sean $u,v:[a,b]\to\mathbb R$ continuas en el cerrado y derivables en $(a,b)$. Supongamos que existen funciones continuas en el cerrado $p,q:[a,b]\to\mathbb R$ tales que
 
 $$
 p(x)=u'(x),\qquad q(x)=v'(x)
@@ -93,7 +93,7 @@ $$
 $$
 
 **Demostración.**
-Por Teorema §17.5.3 — Todo polinomio real es continuo en la recta, la identidad y las constantes son continuas en la recta; sus restricciones tipadas a $[a,b]$ son continuas por Corolario §17.4.6 — Clausura global, restricciones y cocientes. Proposición §19.1.6 — Primeros cálculos: funciones afines y función cuadrática prueba que la derivada de la identidad en cada punto interior vale $1_{\mathbb R}$; la función constante uno en el cerrado sirve de prolongación continua. En el corolario Corolario §22.4.2 — Versión para derivadas con prolongaciones continuas tomemos $u=v=\iota$ y $p=q=1$, donde $1$ significa aquí la **función constante** de valor $1_{\mathbb R}$. Los productos $A=u q$ y $B=pv$ coinciden, como funciones tipadas, con $\iota$. El corolario prueba su integrabilidad, también obtenible por Corolario §21.7.4 — Toda función continua en un intervalo cerrado es integrable, y (22.4.1) queda
+Por Teorema §17.5.3 — Todo polinomio real es continuo en la recta, la identidad y las constantes son continuas en la recta; sus restricciones tipadas a $[a,b]$ son continuas por Corolario §17.4.6 — Clausura global, restricciones y cocientes. Proposición §19.1.6 — Primeros cálculos: funciones afines y función cuadrática prueba que la derivada de la identidad en cada punto interior vale $1_{\mathbb R}$; la función constante uno en el cerrado sirve de prolongación continua. En el corolario Corolario §22.4.2 — Versión para derivadas con prolongaciones continuas tomemos $u=v=\iota$ y $p=q=1$, donde $1$ significa aquí la función constante de valor $1_{\mathbb R}$. Los productos $A=u q$ y $B=pv$ coinciden, como funciones tipadas, con $\iota$. El corolario prueba su integrabilidad, también obtenible por Corolario §21.7.4 — Toda función continua en un intervalo cerrado es integrable, y (22.4.1) queda
 
 $$
 I=b^2-a^2-I,\qquad I:=\int_a^b\iota.

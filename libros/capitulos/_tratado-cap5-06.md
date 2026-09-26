@@ -82,7 +82,7 @@ $$
 }
 $$
 
-Hasta este punto hemos obtenido una extensión **ordenada** de $\mathbb Q$:
+Hasta este punto hemos obtenido una extensión ordenada de $\mathbb Q$:
 
 $$
 \boxed{

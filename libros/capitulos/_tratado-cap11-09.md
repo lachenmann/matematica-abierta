@@ -10,7 +10,7 @@ $$
 T:F\longrightarrow E
 $$
 
-es un **isomorfismo de cuerpos ordenados** si:
+es un isomorfismo de cuerpos ordenados si:
 
 1. $T$ es una incrustación de cuerpos ordenados en el sentido de Definición 4.8.1 — Incrustación de cuerpos ordenados;
 2. $T$ es biyectiva.
@@ -203,8 +203,8 @@ Por tanto el isomorfismo no sólo compara las estructuras completas: identifica 
 
 Las dos vías de construcción iniciadas después de la incompletitud de $\mathbb Q$ han convergido finalmente en una misma estructura, pero no en un mismo conjunto.
 
-El modelo de Dedekind representa un real por su **lado inferior racional**. El modelo de Cauchy lo representa por una **clase de procesos racionales de aproximación**. El teorema anterior demuestra que ambas codificaciones transportan exactamente la misma aritmética y el mismo orden, y que la correspondencia entre ellas respeta la copia racional desde la cual fueron construidas.
+El modelo de Dedekind representa un real por su lado inferior racional. El modelo de Cauchy lo representa por una clase de procesos racionales de aproximación. El teorema anterior demuestra que ambas codificaciones transportan exactamente la misma aritmética y el mismo orden, y que la correspondencia entre ellas respeta la copia racional desde la cual fueron construidas.
 
-Por ello, a partir de este punto podemos hablar de **los números reales** estructuralmente sin borrar la historia de sus construcciones. Cuando una afirmación dependa de una realización concreta conservaremos los subíndices $D$ o $C$; cuando dependa sólo de la estructura de cuerpo ordenado completo, el capítulo siguiente explicará por qué esa independencia de modelo puede formularse y demostrarse de manera general.
+Por ello, a partir de este punto podemos hablar de los números reales estructuralmente sin borrar la historia de sus construcciones. Cuando una afirmación dependa de una realización concreta conservaremos los subíndices $D$ o $C$; cuando dependa sólo de la estructura de cuerpo ordenado completo, el capítulo siguiente explicará por qué esa independencia de modelo puede formularse y demostrarse de manera general.
 
-El problema que queda abierto ya no es comparar estas dos construcciones particulares. Es demostrar que **cualquier** cuerpo ordenado completo que contenga una copia adecuada de $\mathbb Q$ posee, esencialmente, la misma estructura. Éste será el contenido del Capítulo 12: la caracterización y unicidad estructural de los números reales.
+El problema que queda abierto ya no es comparar estas dos construcciones particulares. Es demostrar que cualquier cuerpo ordenado completo que contenga una copia adecuada de $\mathbb Q$ posee, esencialmente, la misma estructura. Éste será el contenido del Capítulo 12: la caracterización y unicidad estructural de los números reales.

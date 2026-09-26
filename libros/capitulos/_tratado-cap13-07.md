@@ -1,6 +1,6 @@
 ## 13.7. Sucesiones monótonas y convergencia monótona {#sec-ta-13-7}
 
-Hasta ahora la convergencia ha aparecido siempre como una hipótesis: suponíamos que una sucesión tenía límite y estudiábamos qué consecuencias se seguían de ello. La completitud de $\mathbb R$ permite invertir por primera vez esa dirección. Bajo condiciones adecuadas de orden y acotación, podremos **producir** la existencia del límite.
+Hasta ahora la convergencia ha aparecido siempre como una hipótesis: suponíamos que una sucesión tenía límite y estudiábamos qué consecuencias se seguían de ello. La completitud de $\mathbb R$ permite invertir por primera vez esa dirección. Bajo condiciones adecuadas de orden y acotación, podremos producir la existencia del límite.
 
 La idea central será sencilla pero profunda. Si una sucesión avanza siempre en una misma dirección y no puede escapar más allá de una cota, el extremo de su recorrido —su supremo o su ínfimo— será el único candidato posible a límite. La completitud garantiza que ese extremo existe; la monotonía obliga después a toda la cola a acercarse a él.
 
@@ -8,7 +8,7 @@ La idea central será sencilla pero profunda. Si una sucesión avanza siempre en
 
 Sea $a=(a_n)$ una sucesión real.
 
-Diremos que $a$ es **creciente** si
+Diremos que $a$ es creciente si
 
 $$
 \boxed{
@@ -18,7 +18,7 @@ n\le m\Longrightarrow a_n\le a_m.
 }
 $$
 
-Diremos que $a$ es **decreciente** si
+Diremos que $a$ es decreciente si
 
 $$
 \boxed{
@@ -28,9 +28,9 @@ n\le m\Longrightarrow a_m\le a_n.
 }
 $$
 
-Diremos que $a$ es **monótona** si es creciente o decreciente.
+Diremos que $a$ es monótona si es creciente o decreciente.
 
-> **Convención terminológica.** En este tratado, «creciente» y «decreciente» significan monotonía **no estricta**. Si más adelante necesitamos las nociones estrictas, escribiremos explícitamente «estrictamente creciente» o «estrictamente decreciente».
+> **Convención terminológica.** En este tratado, «creciente» y «decreciente» significan monotonía no estricta. Si más adelante necesitamos las nociones estrictas, escribiremos explícitamente «estrictamente creciente» o «estrictamente decreciente».
 
 Una sucesión constante es simultáneamente creciente y decreciente. La definición, por tanto, describe una dirección de orden, no un cambio obligatorio de valor entre términos consecutivos.
 
@@ -358,4 +358,4 @@ $$
 }
 $$
 
-El siguiente paso será abandonar la monotonía y buscar una condición interna sobre la propia sucesión que detecte convergencia sin conocer previamente el límite. Esa condición será la **condición de Cauchy**. En §13.8 definiremos sucesiones de Cauchy en $\mathbb R$ y demostraremos el criterio de Cauchy usando la completitud ya disponible.
+El siguiente paso será abandonar la monotonía y buscar una condición interna sobre la propia sucesión que detecte convergencia sin conocer previamente el límite. Esa condición será la condición de Cauchy. En §13.8 definiremos sucesiones de Cauchy en $\mathbb R$ y demostraremos el criterio de Cauchy usando la completitud ya disponible.

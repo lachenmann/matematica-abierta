@@ -10,7 +10,7 @@ debemos construir un elemento de $\mathbb R_C$ cuya imagen por $\Phi$ sea exacta
 
 Aquí aparece un riesgo fundacional real. El lema de aproximación racional de la frontera (Lema 6.3.1 — Aproximación racional de la frontera) afirma que, para cada precisión racional positiva $h$, existe algún $a\in\alpha$ tal que $a+h\notin\alpha$. Elegir uno de esos $a$ para cada precisión de una sucesión produciría una familia numerable de elecciones. Aunque cada elección aislada es inocua, efectuar todas simultáneamente sin una regla definible introduciría precisamente la clase de Choice silencioso que el tratado ha evitado.
 
-La solución ya está disponible en nuestra infraestructura: $e_{\mathbb Q}:\mathbb N\to\mathbb Q$ es una enumeración racional canónica y sobreyectiva. En vez de escoger un aproximante arbitrario, tomaremos **el primero según esa enumeración** que satisfaga la condición de frontera. El buen orden de $\mathbb N$ convierte así una existencia en una selección funcional determinada.
+La solución ya está disponible en nuestra infraestructura: $e_{\mathbb Q}:\mathbb N\to\mathbb Q$ es una enumeración racional canónica y sobreyectiva. En vez de escoger un aproximante arbitrario, tomaremos el primero según esa enumeración que satisfaga la condición de frontera. El buen orden de $\mathbb N$ convierte así una existencia en una selección funcional determinada.
 
 ### Definición 11.7.1 — Selector canónico de frontera de Dedekind
 
@@ -66,7 +66,7 @@ $$
 
 Conjuntistamente, los conjuntos $K_D(\alpha,h)$ se obtienen por Separación dentro de $\mathbb N$, y el grafo de $\operatorname{sel}_D$ se obtiene por Separación dentro de $(\mathbb R_D\times\mathbb Q)\times\mathbb Q$. La totalidad del orden racional separa de manera exhaustiva los casos $0<h$ y $h\le0$.
 
-La definición no escoge un elemento de cada conjunto $K_D(\alpha,h)$: el buen orden de $\mathbb N$ **determina** un único índice mínimo. Ésta es la diferencia entre una familia de elecciones y un selector definible.
+La definición no escoge un elemento de cada conjunto $K_D(\alpha,h)$: el buen orden de $\mathbb N$ determina un único índice mínimo. Ésta es la diferencia entre una familia de elecciones y un selector definible.
 
 > **Nota fundacional.** La canonicidad anterior es extensional. Para una cortadura arbitraria no está disponible en general una decisión de
 > $$ e_{\mathbb Q}(k)\in\alpha \quad\text{y}\quad e_{\mathbb Q}(k)+h\notin\alpha. $$

@@ -16,14 +16,17 @@ provenance:
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
 date-modified: 2026-09-19
-prerequisites: 
+prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
-  - MA-BCH-0062
+  - MA-BCH-0077
 number-sections: true
 number-depth: 2
 number-offset: [4]
+format:
+  html:
+    css: calculo-para-matematicos.css
 ---
 
 # Continuidad en la recta: intervalos, compacidad y teoremas fundamentales {#sec-t1-c06}

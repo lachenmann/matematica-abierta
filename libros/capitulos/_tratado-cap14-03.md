@@ -1,10 +1,10 @@
 ## 14.3. Series geométricas {#sec-ta-14-3}
 
-La serie geométrica es el primer ejemplo en el que una fórmula cerrada para las sumas parciales permite transformar el problema de convergencia en el estudio de una sola sucesión auxiliar. Antes de hablar de una suma infinita debemos construir, sin embargo, las potencias naturales y demostrar una identidad **finita**. Este primer tramo no afirma todavía que ninguna serie geométrica converja.
+La serie geométrica es el primer ejemplo en el que una fórmula cerrada para las sumas parciales permite transformar el problema de convergencia en el estudio de una sola sucesión auxiliar. Antes de hablar de una suma infinita debemos construir, sin embargo, las potencias naturales y demostrar una identidad finita. Este primer tramo no afirma todavía que ninguna serie geométrica converja.
 
 ### Definición 14.3.1 — Potencias naturales de un número real
 
-Sea $r\in\mathbb R$. Definimos la **potencia natural de base $r$** como la única sucesión
+Sea $r\in\mathbb R$. Definimos la potencia natural de base $r$ como la única sucesión
 
 $$
 p^{(r)}:\mathbb N\longrightarrow\mathbb R
@@ -61,7 +61,7 @@ $$
 
 como consecuencia de la cláusula recursiva inicial. Esta convención no expresa una operación de división ni un paso al límite; sólo fija el valor de la potencia de exponente cero.
 
-> **Control de lectura.** La expresión $r^n$ acaba de adquirir significado para **todo** $r\in\mathbb R$ y $n\in\mathbb N$. No estamos usando una potencia previamente disponible de manera informal: la hemos construido por recursión.
+> **Control de lectura.** La expresión $r^n$ acaba de adquirir significado para todo $r\in\mathbb R$ y $n\in\mathbb N$. No estamos usando una potencia previamente disponible de manera informal: la hemos construido por recursión.
 
 ### Proposición 14.3.2 — Identidad finita de la suma geométrica
 
@@ -322,7 +322,7 @@ $$
 \boxed{\forall n\in\mathbb N,\quad |r^n|\ge1,}
 $$
 
-y, en particular, la sucesión $(r^n)$ **no converge a cero**.
+y, en particular, la sucesión $(r^n)$ no converge a cero.
 
 **Demostración.**
 
@@ -368,16 +368,16 @@ $$
 \boxed{\displaystyle\sum_{k=0}^{\infty}r^k=\frac1{1-r}.}
 $$
 
-Si $|r|\ge1$, la serie diverge y la expresión $\sum_{k=0}^{\infty}r^k$ **no tiene valor real** como suma.
+Si $|r|\ge1$, la serie diverge y la expresión $\sum_{k=0}^{\infty}r^k$ no tiene valor real como suma.
 
 **Demostración.**
 
 Si $|r|<1$, Teorema 14.3.5 — Convergencia y suma de la serie geométrica para $|r|<1$ demuestra que la serie converge y que su suma es $(1-r)^{-1}=1/(1-r)$.
 
-Si $|r|\ge1$, Proposición 14.3.6 — Si $|r|\ge1$, las potencias no tienden a cero establece que sus términos $a_n:=r^n$ **no** tienden a cero. El criterio de divergencia por el término general Corolario 14.2.5 — Criterio de divergencia por el término general implica que la serie diverge.
+Si $|r|\ge1$, Proposición 14.3.6 — Si $|r|\ge1$, las potencias no tienden a cero establece que sus términos $a_n:=r^n$ no tienden a cero. El criterio de divergencia por el término general Corolario 14.2.5 — Criterio de divergencia por el término general implica que la serie diverge.
 
 Recíprocamente, supongamos que la serie converge. No puede cumplirse $|r|\ge1$, pues acabamos de demostrar que esa hipótesis entraña divergencia. Por la totalidad del orden del cuerpo real, $|r|<1$. Queda demostrada la equivalencia y la fórmula de la suma en todos los casos en que ésta existe. ∎
 
 > **Interpretación.** La fórmula $1/(1-r)$ sólo representa la suma de la serie cuando $|r|<1$. Para $r=-1$, el denominador es no nulo y el cociente algebraico existe, pero la serie $1-1+1-1+\cdots$ diverge: no está permitido atribuirle ese cociente como suma ordinaria. Para $r=1$, además de divergir, el cociente ni siquiera está definido.
 
-La serie geométrica nos ha permitido distinguir una **fórmula finita**, una **condición de convergencia** y el **valor de la suma**. En §14.4 pasaremos a las series de términos no negativos, donde la monotonía de las sumas parciales conducirá al primer criterio estructural de convergencia para una clase amplia de series.
+La serie geométrica nos ha permitido distinguir una fórmula finita, una condición de convergencia y el valor de la suma. En §14.4 pasaremos a las series de términos no negativos, donde la monotonía de las sumas parciales conducirá al primer criterio estructural de convergencia para una clase amplia de series.

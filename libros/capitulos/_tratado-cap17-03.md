@@ -3,13 +3,13 @@
 La continuidad fue definida en §17.1 mediante una condición local, centrada en cada punto del dominio. El Capítulo 15, en cambio, llamó *abierto de la recta* a un conjunto que contiene una bola alrededor de cada uno de sus puntos. Para relacionar ambos lenguajes debemos recordar que una función puede estar definida sólo sobre $D\subseteq\mathbb R$. En tal caso, el entorno pertinente es la intersección de una bola con $D$; no exigiremos que el propio dominio sea abierto en la recta.
 
 ### Definición 17.3.1 — Abiertos y cerrados relativos a un subconjunto de la recta
-Fijemos $D\subseteq\mathbb R$ y $A\subseteq D$. Diremos que **$A$ es abierto relativo a $D$** si existe un abierto $U\subseteq\mathbb R$ tal que
+Fijemos $D\subseteq\mathbb R$ y $A\subseteq D$. Diremos que $A$ es abierto relativo a $D$ si existe un abierto $U\subseteq\mathbb R$ tal que
 
 $$
 \boxed{A=D\cap U.}
 $$
 
-Diremos que **$A$ es cerrado relativo a $D$** si $D\setminus A$ es abierto relativo a $D$. Ambas expresiones son predicados sobre subconjuntos $A\subseteq D$; el conjunto ambiente forma parte de su significado. En particular, que $A$ sea abierto relativo a $D$ no afirma que sea abierto en $\mathbb R$. Estas definiciones introducen únicamente la noción elemental de subespacio de la recta, sin presuponer la teoría general de espacios topológicos.
+Diremos que $A$ es cerrado relativo a $D$ si $D\setminus A$ es abierto relativo a $D$. Ambas expresiones son predicados sobre subconjuntos $A\subseteq D$; el conjunto ambiente forma parte de su significado. En particular, que $A$ sea abierto relativo a $D$ no afirma que sea abierto en $\mathbb R$. Estas definiciones introducen únicamente la noción elemental de subespacio de la recta, sin presuponer la teoría general de espacios topológicos.
 
 ### Proposición 17.3.2 — Criterio por bolas y representación de los cerrados relativos
 Para $A\subseteq D\subseteq\mathbb R$ se cumplen dos equivalencias:
@@ -32,7 +32,7 @@ $$
 U:=\bigcup\{B_r(a):a\in A,\ r\in\mathbb R,\ r>0,\ D\cap B_r(a)\subseteq A\}.
 $$
 
-La familia indicada es un conjunto: el conjunto de pares admisibles se obtiene por Separación en $A\times\mathbb R$; el grafo de $(a,r)\mapsto B_r(a)$ se obtiene por Separación en $(A\times\mathbb R)\times\mathcal P(\mathbb R)$, y su recorrido es un conjunto. La unión existe por el axioma de Unión. No se requiere Reemplazo ni Elección. Cada bola es abierta por Teorema §15.2.5 — Toda bola abierta es un conjunto abierto; su unión es abierta por Teorema §15.2.7 — Leyes fundamentales de los conjuntos abiertos. Si $a\in A$, el criterio proporciona un radio que sitúa $a\in B_r(a)\subseteq U$, y por tanto $A\subseteq D\cap U$. Si $x\in D\cap U$, alguna bola de la familia contiene $x$; la condición que define esa familia implica $x\in A$. En consecuencia, $A=D\cap U$. No se escoge un radio *para cada punto*: se reúnen **todas** las bolas que cumplen la condición.
+La familia indicada es un conjunto: el conjunto de pares admisibles se obtiene por Separación en $A\times\mathbb R$; el grafo de $(a,r)\mapsto B_r(a)$ se obtiene por Separación en $(A\times\mathbb R)\times\mathcal P(\mathbb R)$, y su recorrido es un conjunto. La unión existe por el axioma de Unión. No se requiere Reemplazo ni Elección. Cada bola es abierta por Teorema §15.2.5 — Toda bola abierta es un conjunto abierto; su unión es abierta por Teorema §15.2.7 — Leyes fundamentales de los conjuntos abiertos. Si $a\in A$, el criterio proporciona un radio que sitúa $a\in B_r(a)\subseteq U$, y por tanto $A\subseteq D\cap U$. Si $x\in D\cap U$, alguna bola de la familia contiene $x$; la condición que define esa familia implica $x\in A$. En consecuencia, $A=D\cap U$. No se escoge un radio *para cada punto*: se reúnen todas las bolas que cumplen la condición.
 
 Para la segunda equivalencia, si $A$ es cerrado relativo, existe un abierto $U$ de $\mathbb R$ con $D\setminus A=D\cap U$. Poniendo $F=\mathbb R\setminus U$, el conjunto $F$ es cerrado y las identidades de complemento relativo dan
 
@@ -77,7 +77,7 @@ $$
 En la caja se enuncian dos propiedades equivalentes, no una conjunción que defina «continuidad» de nuevo. Para $D=\varnothing$ ambas propiedades se satisfacen, pues la primera es universal sobre el vacío y toda preimagen es $\varnothing$, abierto relativo a $D$.
 
 **Demostración.**
-Supongamos que $f$ es continua en cada $a\in D$. Sea $V$ un abierto de la recta y escribamos $A=f^{-1}[V]\subseteq D$. Para acreditar que $A$ es abierto relativo basta, por Proposición §17.3.2 — Criterio por bolas y representación de los cerrados relativos, comprobar el criterio de bolas para cada $a\in A$. Tomemos uno arbitrario. De $a\in f^{-1}[V]$ resulta $f(a)\in V$; la apertura de $V$ y la continuidad en $a$, o directamente Proposición §17.3.3 — Criterio local de continuidad mediante abiertos de llegada, proporcionan un abierto relativo $W_a$ con $a\in W_a\subseteq A$. Aplicando el criterio por bolas a **ese** $W_a$ obtenemos un radio $r>0$ tal que $D\cap B_r(a)\subseteq W_a\subseteq A$. Como $a$ era arbitrario, $A$ es abierto relativo. El argumento no construye una familia $a\mapsto W_a$: elimina los testigos sólo para un punto fijado.
+Supongamos que $f$ es continua en cada $a\in D$. Sea $V$ un abierto de la recta y escribamos $A=f^{-1}[V]\subseteq D$. Para acreditar que $A$ es abierto relativo basta, por Proposición §17.3.2 — Criterio por bolas y representación de los cerrados relativos, comprobar el criterio de bolas para cada $a\in A$. Tomemos uno arbitrario. De $a\in f^{-1}[V]$ resulta $f(a)\in V$; la apertura de $V$ y la continuidad en $a$, o directamente Proposición §17.3.3 — Criterio local de continuidad mediante abiertos de llegada, proporcionan un abierto relativo $W_a$ con $a\in W_a\subseteq A$. Aplicando el criterio por bolas a ese $W_a$ obtenemos un radio $r>0$ tal que $D\cap B_r(a)\subseteq W_a\subseteq A$. Como $a$ era arbitrario, $A$ es abierto relativo. El argumento no construye una familia $a\mapsto W_a$: elimina los testigos sólo para un punto fijado.
 
 Recíprocamente, supongamos que toda preimagen de un abierto es abierta relativa. Fijemos $a\in D$ y un abierto $V$ que contenga $f(a)$. Entonces $A=f^{-1}[V]$ es abierto relativo y $a\in A$. Tomando $W=A$ se verifica la segunda condición de Proposición §17.3.3 — Criterio local de continuidad mediante abiertos de llegada; por dicha proposición, $f$ es continua en $a$. La arbitrariedad de $a$ concluye la continuidad en todo $D$. No se ha utilizado Teorema §17.2.4 — Criterio secuencial universal bajo elección numerable explícita ni ninguna hipótesis de elección numerable. ∎
 
@@ -91,7 +91,7 @@ La forma correcta del teorema no puede sustituir «abierto relativo a $D$» por 
 
 
 ### Corolario 17.3.5 — Caracterización equivalente por preimágenes de cerrados
-Una función $f:D\to\mathbb R$ es continua en todo $D$ si y sólo si, para todo cerrado $F\subseteq\mathbb R$, la preimagen $f^{-1}[F]$ es **cerrada relativa a $D$**.
+Una función $f:D\to\mathbb R$ es continua en todo $D$ si y sólo si, para todo cerrado $F\subseteq\mathbb R$, la preimagen $f^{-1}[F]$ es cerrada relativa a $D$.
 
 **Demostración.**
 Para cualquier $F\subseteq\mathbb R$, la definición de preimagen y el hecho de que $f$ tenga dominio exactamente $D$ proporcionan la identidad

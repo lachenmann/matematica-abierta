@@ -24,15 +24,16 @@ topics:
   - integracion
   - ecuaciones-diferenciales
 prerequisites: []
-related: 
+related:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
-  - MA-BCH-0062
+  - MA-BCH-0077
   - MA-BCH-0063
   - MA-BCH-0064
   - MA-BCH-0065
   - MA-BCH-0066
+  - MA-BCH-0076
 provenance:
   type: synthesis
   sources: []
@@ -75,17 +76,6 @@ En particular, el libro procura:
 
 El primer tomo avanza desde la estructura de los números reales hasta el cálculo diferencial e integral de una variable y las ecuaciones diferenciales elementales.
 
-Los capítulos completos disponibles son:
-
-1. **Los números reales: axiomas de cuerpo, orden y completitud**.
-2. **Funciones reales: estructura, composición, inversas y gráficas**.
-3. **Sucesiones y la primera noción rigurosa de límite**.
-4. **Límites de funciones**.
-5. **Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**.
-6. **La derivada y la aproximación lineal local**.
-7. **Álgebra de derivadas y regla de la cadena**.
-8. **Derivación de funciones elementales, inversas e implícitas**.
-
 Los capítulos posteriores desarrollarán aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
 
 ## Capítulos publicados
@@ -93,11 +83,12 @@ Los capítulos posteriores desarrollarán aplicaciones de la derivada, integraci
 1. [**Los números reales: axiomas de cuerpo, orden y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
 2. [**Funciones reales: estructura, composición, inversas y gráficas**](../capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md) (`MA-BCH-0004`).
 3. [**Sucesiones y la primera noción rigurosa de límite**](../capitulos/sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) (`MA-BCH-0010`).
-4. [**Límites de funciones**](../capitulos/limites-de-funciones.md) (`MA-BCH-0062`).
+4. [**Límites de funciones**](../capitulos/limites-de-funciones.md) (`MA-BCH-0077`).
 5. [**Continuidad en la recta: intervalos, compacidad y teoremas fundamentales**](../capitulos/continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) (`MA-BCH-0063`).
 6. [**La derivada y la aproximación lineal local**](../capitulos/la-derivada-y-la-aproximacion-lineal-local.md) (`MA-BCH-0064`).
 7. [**Álgebra de derivadas y regla de la cadena**](../capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md) (`MA-BCH-0065`).
 8. [**Derivación de funciones elementales, inversas e implícitas**](../capitulos/derivacion-de-funciones-elementales-inversas-e-implicitas.md) (`MA-BCH-0066`).
+9. [**Teoremas de Rolle y del valor medio**](../capitulos/teoremas-de-rolle-y-del-valor-medio.md) (`MA-BCH-0076`).
 
 Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
 
@@ -116,6 +107,7 @@ El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales o
 
 ## Estado de publicación
 
-La edición pública está abierta y contiene **ocho capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
+La edición pública está abierta y contiene **nueve capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
 
 Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
+

@@ -54,6 +54,6 @@ $$
 +,-,\cdot,(\ )^{-1},\leq_{\mathbb Q}.
 $$
 
-La notación fraccionaria $\frac ab$ sólo se legitimará **después** de formar el cociente; inmediatamente después se demostrará el criterio de igualdad de clases que permite reconocer cuándo dos de esas escrituras designan el mismo racional. No se utilizará el axioma de elección.
+La notación fraccionaria $\frac ab$ sólo se legitimará después de formar el cociente; inmediatamente después se demostrará el criterio de igualdad de clases que permite reconocer cuándo dos de esas escrituras designan el mismo racional. No se utilizará el axioma de elección.
 
 ---

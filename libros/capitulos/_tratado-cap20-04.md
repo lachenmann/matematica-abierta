@@ -1,11 +1,11 @@
 ## 20.4. Teorema del valor medio de Cauchy {#sec-ta-20-4}
 
-Lagrange relaciona el incremento de una función con el incremento del argumento. Ahora compararemos **dos funciones** que comparten intervalo de definición. El resultado no debe introducir un cociente de derivadas antes de saber que su denominador es distinto de cero. Por eso comenzaremos con una igualdad de productos cruzados, válida incluso cuando alguna función es constante.
+Lagrange relaciona el incremento de una función con el incremento del argumento. Ahora compararemos dos funciones que comparten intervalo de definición. El resultado no debe introducir un cociente de derivadas antes de saber que su denominador es distinto de cero. Por eso comenzaremos con una igualdad de productos cruzados, válida incluso cuando alguna función es constante.
 
 La estrategia es formar una combinación lineal de las dos funciones cuyos valores en los extremos coincidan. Los coeficientes serán sus incrementos sobre el intervalo; éstos son números reales determinados por los datos y no requieren ninguna división. Rolle proporcionará entonces la identidad buscada.
 
 ### Lema 20.4.1 — Combinación auxiliar con incrementos cruzados
-Sean $a,b\in\mathbb R$, $a<b$, $I:=[a,b]$ y $f,g:I\to\mathbb R$ dos funciones. Denotemos, **sólo dentro de esta construcción**,
+Sean $a,b\in\mathbb R$, $a<b$, $I:=[a,b]$ y $f,g:I\to\mathbb R$ dos funciones. Denotemos, sólo dentro de esta construcción,
 
 $$
 \Delta_f:=f(b)-f(a),\qquad \Delta_g:=g(b)-g(a),
@@ -40,7 +40,7 @@ H(b)-H(a)
 \end{aligned}
 $$
 
-Por cancelación aditiva, $H(a)=H(b)$. **No** hemos afirmado que cada uno de esos dos valores sea cero: sólo necesitamos su igualdad para Rolle.
+Por cancelación aditiva, $H(a)=H(b)$. No hemos afirmado que cada uno de esos dos valores sea cero: sólo necesitamos su igualdad para Rolle.
 
 Si $f$ y $g$ son continuas en todos los puntos de $I$, Corolario §17.4.6 — Clausura global, restricciones y cocientes conserva la continuidad bajo multiplicación por escalares reales fijos y bajo diferencia de funciones con igual dominio y codominio. Aplicándolo dos veces a los coeficientes $\Delta_g$ y $\Delta_f$, obtenemos continuidad de $H$ en todo $I$, incluidos ambos extremos.
 
@@ -56,7 +56,7 @@ Los coeficientes se fijaron antes de derivar: dependen de los valores de borde, 
 **Lectura de la construcción.** Los dos incrementos cumplen el papel de coeficientes cruzados: al evaluar la diferencia de los valores de $H$ en los extremos, los productos se cancelan exactamente. Esta es la reducción a Rolle que se necesita, sin dividir por un incremento ni por una derivada.
 
 ### Teorema 20.4.2 — Teorema del valor medio de Cauchy, forma sin cocientes
-Sean $a,b\in\mathbb R$ con $a<b$ y dos funciones $f,g:[a,b]\to\mathbb R$. Supongamos que **ambas** son continuas en cada punto de $[a,b]$ y derivables en cada punto de $(a,b)$, siempre relativamente a su dominio $[a,b]$. Entonces existe al menos un $c\in(a,b)$ tal que
+Sean $a,b\in\mathbb R$ con $a<b$ y dos funciones $f,g:[a,b]\to\mathbb R$. Supongamos que ambas son continuas en cada punto de $[a,b]$ y derivables en cada punto de $(a,b)$, siempre relativamente a su dominio $[a,b]$. Entonces existe al menos un $c\in(a,b)$ tal que
 
 $$
 \boxed{[f(b)-f(a)]\,g'(c)=[g(b)-g(a)]\,f'(c).}
@@ -66,9 +66,9 @@ $$
 No se exige $g(b)\ne g(a)$ ni $g'(x)\ne0$. Si esos números se anulan, la expresión (20.4.1) sigue estando definida y el enunciado continúa siendo verdadero.
 
 **Demostración.**
-Pongamos $I=[a,b]$ y tomemos los dos incrementos $\Delta_f,\Delta_g$ y la función tipada $H:I\to\mathbb R$ del lema Lema §20.4.1 — Combinación auxiliar con incrementos cruzados. La primera conclusión de ese lema da $H(a)=H(b)$. Por continuidad de $f$ y $g$ en **todo** $I$, la segunda prueba que $H$ también es continua allí. Para cada $x\in(a,b)$, la derivabilidad de ambas funciones y la tercera conclusión del lema garantizan que $H$ es derivable en $x$ relativamente a $I$.
+Pongamos $I=[a,b]$ y tomemos los dos incrementos $\Delta_f,\Delta_g$ y la función tipada $H:I\to\mathbb R$ del lema Lema §20.4.1 — Combinación auxiliar con incrementos cruzados. La primera conclusión de ese lema da $H(a)=H(b)$. Por continuidad de $f$ y $g$ en todo $I$, la segunda prueba que $H$ también es continua allí. Para cada $x\in(a,b)$, la derivabilidad de ambas funciones y la tercera conclusión del lema garantizan que $H$ es derivable en $x$ relativamente a $I$.
 
-Quedan verificadas las tres hipótesis de Rolle Teorema §20.2.2 — Teorema de Rolle para la función **$H:I\to\mathbb R$**, no para $f$ ni para $g$ por separado. Existe entonces un $c\in(a,b)$ con $H'(c)=0$. La fórmula de derivación ya demostrada proporciona
+Quedan verificadas las tres hipótesis de Rolle Teorema §20.2.2 — Teorema de Rolle para la función $H:I\to\mathbb R$, no para $f$ ni para $g$ por separado. Existe entonces un $c\in(a,b)$ con $H'(c)=0$. La fórmula de derivación ya demostrada proporciona
 
 $$
 0=H'(c)=\Delta_g f'(c)-\Delta_f g'(c).
@@ -112,7 +112,7 @@ $$
 \Delta_f g'(c)=\Delta_g f'(c).
 $$
 
-La hipótesis (20.4.2) implica $g'(c)\ne0$. Así, **ambos** denominadores de (20.4.3) son no nulos. Podemos dividir la igualdad anterior por el producto real no nulo $\Delta_g g'(c)$ y obtenemos exactamente
+La hipótesis (20.4.2) implica $g'(c)\ne0$. Así, ambos denominadores de (20.4.3) son no nulos. Podemos dividir la igualdad anterior por el producto real no nulo $\Delta_g g'(c)$ y obtenemos exactamente
 
 $$
 \frac{\Delta_f}{\Delta_g}=\frac{f'(c)}{g'(c)}.
@@ -120,6 +120,6 @@ $$
 
 La prueba emplea una instancia de Rolle para excluir un incremento nulo y una instancia de Cauchy para obtener el punto requerido. Son dos testigos existenciales para un par de funciones ya fijado; no aparece Choice ni se atribuye al teorema principal una condición adicional que no necesita. $\square$
 
-**Por qué no debe confundirse el corolario con el teorema.** Si $g$ es constante, entonces $g(b)-g(a)=0$ y $g'(x)=0$ en los puntos interiores. La igualdad (20.4.1) conserva sentido y se cumple, pero ambos cocientes de (20.4.3) quedan sin definir. El requisito de no anulación de $g'$ pertenece únicamente a esta **forma dividida**.
+**Por qué no debe confundirse el corolario con el teorema.** Si $g$ es constante, entonces $g(b)-g(a)=0$ y $g'(x)=0$ en los puntos interiores. La igualdad (20.4.1) conserva sentido y se cumple, pero ambos cocientes de (20.4.3) quedan sin definir. El requisito de no anulación de $g'$ pertenece únicamente a esta forma dividida.
 
 **Transición.** El teorema de Cauchy ha quedado demostrado en su forma general y en su forma de cocientes bajo hipótesis explícitas. En §20.5 comenzarán las consecuencias de signo: aplicaremos el valor medio de Lagrange a subintervalos para relacionar el signo de la derivada con la monotonía. Ni esos criterios ni las futuras estimaciones Lipschitz se han utilizado para justificar las demostraciones anteriores. La sección §20.4 queda estabilizada como unidad humana; el capítulo continúa abierto y no se abre un nuevo checkpoint Lean.

@@ -137,7 +137,7 @@ $$
 
 La equivalencia queda demostrada, y su implicación directa es precisamente la inyectividad de $\iota_C$. ∎
 
-> **Consecuencia tipológica.** Desde ahora podemos hablar de la **copia canónica** $\iota_C[\mathbb Q]$ dentro de $\mathbb R_C$, pero todavía no escribiremos $\mathbb Q\subseteq\mathbb R_C$: los racionales y sus imágenes siguen siendo objetos conjuntistas distintos.
+> **Consecuencia tipológica.** Desde ahora podemos hablar de la copia canónica $\iota_C[\mathbb Q]$ dentro de $\mathbb R_C$, pero todavía no escribiremos $\mathbb Q\subseteq\mathbb R_C$: los racionales y sus imágenes siguen siendo objetos conjuntistas distintos.
 
 ### Proposición 9.9.3 — Preservación de la aritmética racional
 
@@ -476,7 +476,7 @@ $$
 }
 $$
 
-La función es inyectiva, preserva $0$, $1$, suma, producto, opuestos y recíprocos cuando éstos existen, y preserva **y refleja** ambos órdenes:
+La función es inyectiva, preserva $0$, $1$, suma, producto, opuestos y recíprocos cuando éstos existen, y preserva y refleja ambos órdenes:
 
 $$
 q\le r
@@ -492,6 +492,6 @@ $$
 
 Por ello, $\iota_C[\mathbb Q]$ es ya una copia algebraica y ordenada exacta de los racionales dentro del conjunto $\mathbb R_C$.
 
-Hay, sin embargo, una última cautela deductiva. La definición general de **incrustación de cuerpos ordenados** (Definición 4.8.1 — Incrustación de cuerpos ordenados) exige que tanto el dominio como el codominio sean cuerpos ordenados. Ya sabemos que $\mathbb Q$ lo es y que $\mathbb R_C$ es un cuerpo provisto de un orden total, pero todavía no hemos demostrado que las operaciones de $\mathbb R_C$ sean compatibles con $\le_C$. Por esa razón no aplicaremos todavía formalmente esa denominación a $\iota_C$.
+Hay, sin embargo, una última cautela deductiva. La definición general de incrustación de cuerpos ordenados (Definición 4.8.1 — Incrustación de cuerpos ordenados) exige que tanto el dominio como el codominio sean cuerpos ordenados. Ya sabemos que $\mathbb Q$ lo es y que $\mathbb R_C$ es un cuerpo provisto de un orden total, pero todavía no hemos demostrado que las operaciones de $\mathbb R_C$ sean compatibles con $\le_C$. Por esa razón no aplicaremos todavía formalmente esa denominación a $\iota_C$.
 
 La tarea de §9.10 queda así aislada con precisión: demostrar la compatibilidad de $\le_C$ con la suma y con el producto de elementos no negativos. Una vez hecho esto, $\mathbb R_C$ será un cuerpo ordenado y los resultados de esta sección convertirán inmediatamente a $\iota_C$ en una incrustación de cuerpos ordenados.

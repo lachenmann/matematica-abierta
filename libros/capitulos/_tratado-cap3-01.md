@@ -158,7 +158,7 @@ D_{\mathbb Q}
 }
 $$
 
-Un elemento $(a,b)\in D_{\mathbb Q}$ se llamará **representante fraccionario**. El segundo componente es, por definición, no nulo.
+Un elemento $(a,b)\in D_{\mathbb Q}$ se llamará representante fraccionario. El segundo componente es, por definición, no nulo.
 
 ### Notación 3.1.7 — Cuadrado {#ta-notacion-cuadrado}
 
@@ -168,6 +168,6 @@ $$
 \boxed{x^2:=x\cdot x.}
 $$
 
-Esta convención introduce **únicamente el cuadrado**. Las potencias naturales generales se definirán más adelante, cuando su construcción sea necesaria; no se las presupone aquí.
+Esta convención introduce únicamente el cuadrado. Las potencias naturales generales se definirán más adelante, cuando su construcción sea necesaria; no se las presupone aquí.
 
 ---
