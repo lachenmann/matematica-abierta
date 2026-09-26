@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0004 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0078 |
+| Capítulo | MA-BCH-0082 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0008 |
+| Libro | MA-BOK-0009 |
 
 ## IDs asignados
 
@@ -159,3 +159,13 @@ Los identificadores no se reutilizan, incluso si una pieza se retira.
 Los códigos PM identifican colecciones editoriales.
 
 Las piezas individuales mantienen siempre su identificador MA global.
+
+## Primera entrega de Fundamentos para matemáticos — 2026-09-26
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BOK-0008 | book | Fundamentos para matemáticos | `libros/para-matematicos/fundamentos-para-matematicos.qmd` | published |
+| MA-BCH-0078 | book-chapter | FND C1 — ¿Qué significa afirmar algo en matemática? | `libros/capitulos/fundamentos-para-matematicos-capitulo-1-afirmaciones-matematicas.qmd` | published |
+| MA-BCH-0079 | book-chapter | FND C2 — ¿Cuándo una conclusión se sigue realmente de las hipótesis? | `libros/capitulos/fundamentos-para-matematicos-capitulo-2-consecuencia-e-hipotesis.qmd` | published |
+| MA-BCH-0080 | book-chapter | FND C3 — ¿Qué cambia cuando aparecen variables y cuantificadores? | `libros/capitulos/fundamentos-para-matematicos-capitulo-3-variables-y-cuantificadores.qmd` | published |
+| MA-BCH-0081 | book-chapter | FND C4 — Conjuntos, relaciones y funciones como lenguaje | `libros/capitulos/fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd` | published |
