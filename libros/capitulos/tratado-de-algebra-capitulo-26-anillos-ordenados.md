@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-19'
-date-modified: '2026-09-19'
+date-modified: '2026-09-26'
 areas:
 - algebra
 - fundamentos
@@ -863,7 +863,32 @@ Esto establece el primer enunciado. Para el segundo, fijemos dos factores estric
 
 > **Precisión terminológica.** En un anillo no trivial, excluir productos nulos de dos factores no nulos equivale a la ausencia de divisores de cero por la izquierda y, asimismo, por la derecha en el sentido de la Definición 16.2.1. La formulación universal evita ocultar una convención lateral. No se está afirmando que el anillo sea conmutativo ni se invoca la definición especializada de divisor de cero para anillos conmutativos.
 
-> **Prueba de estrés: la totalidad no sustituye la hipótesis multiplicativa.** Como modelo ilustrativo externo, considérese el anillo de números duales enteros $\mathbb Z[\varepsilon]/(\varepsilon^2)$, representado por pares $(m,n)$ con producto $(m,n)(p,q)=(mp,mq+np)$ y orden lexicográfico. La suma respeta ese orden, y el producto de dos pares lexicográficamente no negativos vuelve a ser no negativo: si ambos primeros componentes son positivos, su producto es positivo; si alguno es cero, el segundo componente del producto es no negativo. El orden es total, pero $\varepsilon=(0,1)>0$ y $\varepsilon^2=0$. Por tanto, **un anillo totalmente ordenado puede tener un producto nulo de factores estrictamente positivos bajo nuestra definición**. Este ejemplo sirve de contraste pedagógico; no interviene como dependencia en la demostración.
+> **Prueba de estrés: la totalidad no sustituye la hipótesis multiplicativa.** Construimos el ejemplo directamente sobre $E=\mathbb Z\times\mathbb Z$, usando los enteros importados en la [Interfaz 24.0.1](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-imp-00005). Para $x=(m,n)$, $y=(p,q)$, definimos
+>
+> $$
+> x+y=(m+p,n+q),\qquad xy=(mp,mq+np).
+> $$
+>
+> La suma es un grupo abeliano por coordenadas, con cero $(0,0)$ y opuesto $(-m,-n)$. El producto es conmutativo y tiene unidad $(1,0)$. Para $z=(r,s)$, ambos productos $(xy)z$ y $x(yz)$ son
+>
+> $$
+> (mpr,mps+mqr+npr).
+> $$
+>
+> Además, al expandir $x(y+z)$ se obtiene $(mp+mr,mq+ms+np+nr)=xy+xz$; la conmutatividad da la otra distributividad. Por tanto las operaciones definen un anillo conmutativo con identidad.
+>
+> Definimos el orden lexicográfico por
+>
+> $$
+> (m,n)\le_{\rm lex}(p,q)
+> \quad\Longleftrightarrow\quad m<p\ \lor\ (m=p\ \land\ n\le q).
+> $$
+>
+> La tricotomía entera da totalidad. La reflexividad proviene de la igualdad de primeras coordenadas y de $n\le n$; dos comparaciones opuestas fuerzan igualdad en ambas coordenadas, de donde la antisimetría. En una cadena de dos comparaciones, si alguna primera coordenada aumenta estrictamente, también lo hace entre los extremos; si ambas permanecen iguales, la transitividad se reduce a las segundas coordenadas. Así se obtiene transitividad. Sumar un mismo par preserva las comparaciones estrictas y las igualdades de primeras coordenadas, y preserva el orden de las segundas: el orden es compatible con la suma.
+>
+> Falta comprobar la condición multiplicativa. Si $x,y\ge_{\rm lex}0$, sus primeras coordenadas son no negativas. Si $m,p>0$, entonces $mp>0$, y por ello $xy>_{\rm lex}0$. Si $m=0$, tenemos $n\ge0$ y $xy=(0,np)\ge_{\rm lex}0$. El caso $p=0$ es simétrico, con $q\ge0$ y $xy=(0,mq)\ge_{\rm lex}0$. Se han cubierto todos los casos. Esto verifica la Definición 26.1.1 y la totalidad del orden.
+>
+> Llamamos a este anillo el de **números duales enteros** y escribimos $\varepsilon=(0,1)$. Entonces $\varepsilon>0$, pero $\varepsilon^2=(0,0)$. Por tanto un anillo totalmente ordenado puede tener un producto nulo de factores estrictamente positivos bajo nuestra definición. La construcción por pares basta para este contraejemplo; no presupone una teoría de polinomios. No se utiliza como premisa de la proposición anterior.
 
 > **No se ha probado una regla más fuerte de monotonía estricta.** El paso de $a<b$ a $ac<bc$ exige analizar el producto $(b+(-a))c$ y sus hipótesis de no nulidad. Queda reservado para un resultado posterior.
 
@@ -1480,6 +1505,8 @@ $$
 Por la Proposición 26.6.1, $a<b$ y $0<c$ proporcionan $ac\le bc$ y $ca\le cb$. Al añadir respectivamente las dos desigualdades entre productos, la definición de $<$ transforma estas comparaciones no estrictas en las equivalencias locales enunciadas. De modo equivalente, la suficiencia de cada no nulidad está demostrada ya en la Proposición 26.20.1.
 
 **4. Condición global.** Si ningún producto de dos factores no nulos se anula, $0<d$ y $0<c$ aseguran $dc\ne0$ aplicando la condición al par $(d,c)$ y $cd\ne0$ aplicándola al par $(c,d)$. Las equivalencias locales del paso 3 dan las dos implicaciones directas. Las implicaciones inversas fueron demostradas en los pasos 1 y 2, sin necesidad de esa condición global. Obtenemos ambas equivalencias para todos $a,b$ y todo $c>0$. $\square$
+
+> **Construcción del modelo por coordenadas.** Sobre $R=\mathbb Z\times\mathbb Z$ usamos ahora $(m,n)(p,q)=(mp,nq)$, con suma por coordenadas, cero $(0,0)$, unidad $(1,1)$ y opuesto $(-m,-n)$. Cada ley de anillo se verifica en cada coordenada mediante la correspondiente ley entera importada en la [Interfaz 24.0.1](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-imp-00005). Definimos $(m,n)\le(p,q)$ si $m\le p$ y $n\le q$. Reflexividad, antisimetría, transitividad y compatibilidad aditiva se verifican por coordenadas. El producto de dos pares no negativos tiene ambas coordenadas no negativas por la compatibilidad del orden entero con el producto. Se obtiene así un anillo ordenado, cuyo orden no es total: $(0,1)$ y $(1,0)$ son incomparables. Este producto y este orden son distintos de los usados en el modelo de números duales de §26.18.
 
 > **Prueba de estrés de la totalidad.** En $R=\mathbb Z\times\mathbb Z$ con suma y producto por coordenadas y orden parcial por coordenadas, consideremos $a=(0,1)$, $b=(1,0)$ y $c=(1,0)>0$. Se tiene $ac=(0,0)<(1,0)=bc$; sin embargo, $a$ y $b$ son incomparables. El cono no negativo es cerrado bajo la multiplicación, de modo que este sí es un anillo ordenado. La totalidad no se puede suprimir sin reemplazarla por alguna propiedad específica de reflexión del factor. El ejemplo es ilustrativo y no interviene en la prueba.
 
