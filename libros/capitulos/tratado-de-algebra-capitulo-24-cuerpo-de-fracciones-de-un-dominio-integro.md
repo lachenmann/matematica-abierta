@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-26'
 areas:
 - algebra
 - fundamentos
@@ -54,6 +54,28 @@ clases sobre las que suma y producto están bien definidos
 La dificultad no está en adivinar las fórmulas habituales de las fracciones. La dificultad es demostrar que esas fórmulas dependen sólo de la **fracción representada** y no del par elegido para representarla.
 
 > **Profundidad pedagógica — P3.** Este bloque combina representación, cociente, buena definición y una frontera lógica real. La lectura debe distinguir en todo momento el par $(a,b)$, la clase que representa, la igualdad entre clases y la eventual computabilidad de esa igualdad.
+
+### Interfaz 24.0.1 — Aritmética entera y racional para los ejemplos {#talg-imp-00005}
+
+Los ejemplos numéricos de este capítulo y de los capítulos 26–27 utilizan las estructuras construidas en los [capítulos 2 — Enteros](tratado-de-analisis-capitulo-2-los-numeros-enteros.md) y [3 — Racionales](tratado-de-analisis-capitulo-3-los-numeros-racionales.md) del *Tratado de análisis*. Importamos explícitamente los siguientes resultados cerrados:
+
+| Estructura o dato | Resultados de Análisis importados |
+|---|---|
+| Enteros: forma normal con signo y dominio íntegro | Teoremas 2.8.1 y 2.8.4 |
+| Orden total entero y compatibilidad con suma y producto | Teorema 2.9.3, Proposición 2.9.4 y Corolario 2.9.6 (tricotomía) |
+| Numerales naturales dentro de los enteros | Proposiciones 2.7.2 y 2.9.5 |
+| Producto de enteros estrictamente positivos | Lema 3.1.4 |
+| Racionales como cuerpo | Teorema 3.6.8 |
+| Orden total racional y compatibilidad con las operaciones | Teorema 3.7.5 y Proposición 3.7.8 |
+| Incrustación de los enteros en los racionales | Proposiciones 3.5.2 y 3.7.9 |
+| División racional y criterio de igualdad de fracciones | Definición 3.6.6 y Proposición 3.2.6 |
+
+Los enteros y racionales son aquí conjuntos con operaciones ya construidas; los numerales se transportan mediante las incrustaciones indicadas. La barra racional tiene el significado fijado en Análisis. En particular, para enteros $a,b$ con $b\ne0$, la clase racional $a/b$ coincide con el cociente de sus imágenes en el cuerpo racional: al multiplicar esa clase por la imagen de $b$ se recupera la imagen de $a$, y la invertibilidad de $b$ determina el cociente de manera única.
+
+Las leyes importadas satisfacen las definiciones algebraicas de los capítulos 14, 21 y 22; sus leyes de orden proporcionan los modelos numéricos usados posteriormente en la Parte V. El cuerpo abstracto que construiremos desde un dominio arbitrario sigue dependiendo sólo de las hipótesis declaradas sobre ese dominio. No identificamos literalmente su conjunto de clases con el conjunto de racionales de otra construcción.
+
+**Alcance fundacional.** Esta importación se apoya en una cadena cerrada de fundamentos, naturales, enteros y racionales del *Tratado de análisis*. Incorpora el uso de Infinito de la construcción de los naturales y se acepta bajo ZF y la lógica declarada en las fuentes, sin Choice. No importa densidad, propiedad arquimediana, reales ni completitud. Sus dependencias no vuelven al Tratado de álgebra. El carácter ilustrativo de un ejemplo no exime de declarar esta procedencia.
+
 
 > **Modelo aritmético familiar — sólo motivación.** En la aritmética ordinaria, $(1,2)$ y $(2,4)$ no son pares iguales, pero representan la misma fracción porque $1\cdot4=2\cdot2$. La construcción abstracta conserva exactamente esa idea y elimina todo lo que depende de propiedades particulares de los enteros.
 
