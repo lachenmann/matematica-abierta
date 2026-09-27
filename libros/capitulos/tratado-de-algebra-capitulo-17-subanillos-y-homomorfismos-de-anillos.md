@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -350,27 +350,71 @@ $\square$
 
 #### Demostración {#talg-prf-00051}
 
-La identidad preserva inmediatamente suma, producto y unidad:
+Sea $a,b\in R$. Por definición de la función identidad,
 
 $$
-\operatorname{id}_R(a+b)=a+b
-=
-\operatorname{id}_R(a)+\operatorname{id}_R(b),
+\operatorname{id}_R(a+b)=a+b.
 $$
+
+Además,
+
+$$
+\operatorname{id}_R(a)=a
+\qquad\text{y}\qquad
+\operatorname{id}_R(b)=b,
+$$
+
+de modo que
+
+$$
+\operatorname{id}_R(a)+\operatorname{id}_R(b)=a+b.
+$$
+
+Por transitividad de la igualdad,
+
+$$
+\operatorname{id}_R(a+b)
+=
+\operatorname{id}_R(a)+\operatorname{id}_R(b).
+$$
+
+De la misma definición de identidad obtenemos también
 
 $$
 \operatorname{id}_R(ab)=ab
-=
-\operatorname{id}_R(a)\operatorname{id}_R(b),
 $$
 
 y
 
 $$
+\operatorname{id}_R(a)\operatorname{id}_R(b)=ab,
+$$
+
+por lo que
+
+$$
+\operatorname{id}_R(ab)
+=
+\operatorname{id}_R(a)\operatorname{id}_R(b).
+$$
+
+Finalmente,
+
+$$
 \operatorname{id}_R(1_R)=1_R.
 $$
 
-Sean ahora $f$ y $g$ homomorfismos de anillos. Para $a,b\in R$,
+Así, la función identidad satisface las tres condiciones de la [Definición 17.2.1](tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md#talg-def-00039) y es un homomorfismo de anillos.
+
+Sean ahora
+
+$$
+f:R\to S
+\qquad\text{y}\qquad
+g:S\to T
+$$
+
+homomorfismos de anillos. Para $a,b\in R$, usando primero que $f$ preserva la suma y después que $g$ la preserva,
 
 $$
 \begin{aligned}
@@ -378,35 +422,34 @@ $$
 &=g(f(a+b))\\
 &=g(f(a)+f(b))\\
 &=g(f(a))+g(f(b))\\
-&=(g\circ f)(a)+(g\circ f)(b),
+&=(g\circ f)(a)+(g\circ f)(b).
 \end{aligned}
 $$
 
-y del mismo modo
+Para el producto, usando sucesivamente la preservación multiplicativa de $f$ y de $g$,
 
 $$
+\begin{aligned}
 (g\circ f)(ab)
-=
-g(f(a)f(b))
-=
-g(f(a))g(f(b))
-=
-(g\circ f)(a)(g\circ f)(b).
+&=g(f(ab))\\
+&=g(f(a)f(b))\\
+&=g(f(a))g(f(b))\\
+&=(g\circ f)(a)(g\circ f)(b).
+\end{aligned}
 $$
 
-Finalmente,
+Finalmente, como $f(1_R)=1_S$ y $g(1_S)=1_T$,
 
 $$
+\begin{aligned}
 (g\circ f)(1_R)
-=
-g(f(1_R))
-=
-g(1_S)
-=
-1_T.
+&=g(f(1_R))\\
+&=g(1_S)\\
+&=1_T.
+\end{aligned}
 $$
 
-Luego $g\circ f$ es un homomorfismo de anillos.
+La composición preserva, por tanto, suma, producto y unidad. Por la [Definición 17.2.1](tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md#talg-def-00039), $g\circ f$ es un homomorfismo de anillos.
 
 $\square$
 
