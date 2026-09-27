@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -669,37 +669,78 @@ $$
 \widehat f:R/\ker f\to S.
 $$
 
-La biyectividad se conserva inmediatamente. Además, para $a,b\in R$,
+La inyectividad de $\overline f$ significa que, para cualesquiera $C,D\in R/\ker f$,
+
+$$
+\overline f(C)=\overline f(D)
+\Longrightarrow
+C=D.
+$$
+
+Como $\widehat f$ tiene el mismo dominio y la misma regla de evaluación que $\overline f$, esta misma implicación vale para $\widehat f$; por tanto, $\widehat f$ es inyectiva.
+
+Para la sobreyectividad, sea $s\in S$. Como
+
+$$
+S=\operatorname{im}f,
+$$
+
+tenemos $s\in\operatorname{im}f$. La sobreyectividad de
+
+$$
+\overline f:R/\ker f\to\operatorname{im}f
+$$
+
+proporciona una clase $C\in R/\ker f$ tal que
+
+$$
+\overline f(C)=s.
+$$
+
+Como $\widehat f$ y $\overline f$ tienen la misma regla de evaluación,
+
+$$
+\widehat f(C)=s.
+$$
+
+Así, $\widehat f$ es sobreyectiva sobre $S$. Hemos demostrado explícitamente que $\widehat f$ es biyectiva.
+
+Sean ahora $a,b\in R$. Por la definición de la suma cociente y la caracterización de $\widehat f$,
 
 $$
 \begin{aligned}
 \widehat f([a]_{\ker f}+_{\ker f}[b]_{\ker f})
+&=\widehat f([a+b]_{\ker f})\\
 &=f(a+b)\\
-&=f(a)+_S f(b),
+&=f(a)+_S f(b)\\
+&=\widehat f([a]_{\ker f})+_S\widehat f([b]_{\ker f}).
 \end{aligned}
 $$
+
+Para el producto, la cadena correspondiente es
 
 $$
 \begin{aligned}
 \widehat f([a]_{\ker f}\cdot_{\ker f}[b]_{\ker f})
+&=\widehat f([ab]_{\ker f})\\
 &=f(ab)\\
-&=f(a)\cdot_S f(b),
+&=f(a)\cdot_S f(b)\\
+&=\widehat f([a]_{\ker f})\cdot_S\widehat f([b]_{\ker f}).
 \end{aligned}
 $$
 
-y
+Finalmente, por el [Teorema 19.3.2](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-thm-00011) y la caracterización de $\widehat f$,
 
 $$
+\begin{aligned}
 \widehat f(1_{\mathcal R/\ker f})
-=
-\widehat f([1_R]_{\ker f})
-=
-f(1_R)
-=
-1_S.
+&=\widehat f([1_R]_{\ker f})\\
+&=f(1_R)\\
+&=1_S.
+\end{aligned}
 $$
 
-Así, $\widehat f$ es un homomorfismo de anillos. Al ser biyectiva, la [Definición 20.1.1](tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md#talg-def-00046) implica que es un isomorfismo. $\square$
+Así, $\widehat f$ preserva suma, producto y unidad; por la [Definición 17.2.1](tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md#talg-def-00039), es un homomorfismo de anillos. Como además es biyectiva, la [Definición 20.1.1](tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md#talg-def-00046) implica que es un isomorfismo. $\square$
 
 ---
 
