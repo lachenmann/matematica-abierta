@@ -597,33 +597,35 @@ La prueba es enteramente una prueba de orden y completitud.
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Por qué no bastaba con definir
+**1.** Demuestra que, para todo $x\in\mathbb R$,
 
 $$
-\alpha=\sup S_a
+\boxed{\sqrt{x^2}=|x|}.
 $$
 
-y afirmar inmediatamente que $\alpha^2=a$?
+**Respuesta.** El número $|x|$ es no negativo y
 
-**Respuesta.** Porque la definición de supremo solo caracteriza a $\alpha$ como una frontera de $S_a$. La igualdad $\alpha^2=a$ es una propiedad adicional que debe demostrarse. Precisamente para eso se descartan los casos $\alpha^2<a$ y $\alpha^2>a$.
+$$
+|x|^2=x^2.
+$$
+
+Por la unicidad de la raíz cuadrada no negativa de $x^2$, necesariamente $\sqrt{x^2}=|x|$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** En el caso $\alpha^2<a$, ¿qué parte de la definición de supremo se contradice?
+**2.** Si $0\le a<b$, demuestra que
 
-**Respuesta.** Que $\alpha$ sea una **cota superior**. Construimos $\alpha+h\in S_a$ con $\alpha+h>\alpha$.
-:::
+$$
+\sqrt a<\sqrt b.
+$$
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** En el caso $\alpha^2>a$, ¿qué parte se contradice?
+**Respuesta.** Si $\sqrt a\ge\sqrt b$, como ambos números son no negativos, la monotonía del cuadrado daría
 
-**Respuesta.** Que $\alpha$ sea la **menor** cota superior. Construimos una cota superior $c$ que satisface $c<\alpha$.
-:::
+$$
+a=(\sqrt a)^2\ge(\sqrt b)^2=b,
+$$
 
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué el teorema no dice que $x^2=a$ tiene una única solución cuando $a>0$?
-
-**Respuesta.** Porque entonces hay dos soluciones reales, $\sqrt a$ y $-\sqrt a$. Lo que es único es el número **no negativo** cuyo cuadrado es $a$.
+contradicción. Por tanto $\sqrt a<\sqrt b$.
 :::
 
 ### Del primer hueco a una herramienta permanente
