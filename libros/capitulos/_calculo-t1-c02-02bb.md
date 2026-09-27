@@ -264,31 +264,89 @@ $$
 \frac ab=\frac cd,
 $$
 
-entonces
+entonces, por definición de cociente,
 
 $$
 ab^{-1}=cd^{-1}.
 $$
 
-Multiplicamos ambos miembros por $bd$ y reagrupamos mediante asociatividad y conmutatividad:
+Por sustitución de iguales por iguales podemos multiplicar ambos miembros por el mismo elemento $bd$:
+
+$$
+(ab^{-1})(bd)=(cd^{-1})(bd).
+$$
+
+Ahora reducimos cada miembro por separado. En el izquierdo,
+
+$$
+\begin{aligned}
+(ab^{-1})(bd)
+&=ab^{-1}bd\\
+&=a(b^{-1}b)d\\
+&=a1d\\
+&=ad.
+\end{aligned}
+$$
+
+En el derecho,
+
+$$
+\begin{aligned}
+(cd^{-1})(bd)
+&=cd^{-1}bd\\
+&=cb(d^{-1}d)\\
+&=cb\\
+&=bc.
+\end{aligned}
+$$
+
+Aquí hemos usado asociatividad y conmutatividad del producto, las identidades $b^{-1}b=1$ y $d^{-1}d=1$, y el neutro multiplicativo. Por tanto,
 
 $$
 ad=bc.
 $$
 
-Recíprocamente, si
+Recíprocamente, supongamos
 
 $$
-ad=bc,
+ad=bc.
 $$
 
-multiplicamos ambos miembros por $b^{-1}d^{-1}$. Usando asociatividad, conmutatividad e inversos,
+Como $b,d\ne0$, existen $b^{-1}$ y $d^{-1}$. De nuevo por sustitución de iguales por iguales, multiplicamos ambos miembros por $b^{-1}d^{-1}$:
+
+$$
+(ad)(b^{-1}d^{-1})=(bc)(b^{-1}d^{-1}).
+$$
+
+En el miembro izquierdo,
+
+$$
+\begin{aligned}
+(ad)(b^{-1}d^{-1})
+&=adb^{-1}d^{-1}\\
+&=ab^{-1}(dd^{-1})\\
+&=ab^{-1}.
+\end{aligned}
+$$
+
+En el derecho,
+
+$$
+\begin{aligned}
+(bc)(b^{-1}d^{-1})
+&=bcb^{-1}d^{-1}\\
+&=c(bb^{-1})d^{-1}\\
+&=cd^{-1}.
+\end{aligned}
+$$
+
+Así,
 
 $$
 ab^{-1}=cd^{-1},
 $$
 
-es decir,
+y, por definición de cociente,
 
 $$
 \frac ab=\frac cd.
