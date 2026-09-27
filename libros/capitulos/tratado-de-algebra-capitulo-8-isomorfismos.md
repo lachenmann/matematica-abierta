@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-15'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -97,7 +97,7 @@ es un isomorfismo de $\mathcal N$ en $\mathcal M$.
 
 #### Demostración {#talg-prf-00012}
 
-Como $f$ es biyectiva, [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002) autoriza la función inversa $f^{-1}:B\to A$ y proporciona
+Como $f$ es biyectiva, `TALG-IMP-00002` autoriza la función inversa $f^{-1}:B\to A$ y proporciona
 $$
 f^{-1}\circ f=\operatorname{id}_A,
 \qquad
@@ -114,7 +114,28 @@ Entonces $f(x)=u$ y $f(y)=v$. Como $f$ es homomorfismo,
 $$
 f(x\star y)=f(x)\diamond f(y)=u\diamond v.
 $$
-Aplicando $f^{-1}$,
+
+Aplicamos la función $f^{-1}:B\to A$ a ambos miembros de la igualdad
+$$
+f(x\star y)=u\diamond v.
+$$
+Por compatibilidad de la igualdad con la aplicación de una función,
+$$
+f^{-1}(f(x\star y))
+=
+f^{-1}(u\diamond v).
+$$
+Como
+$$
+f^{-1}\circ f=\operatorname{id}_A,
+$$
+el miembro izquierdo se reduce a
+$$
+f^{-1}(f(x\star y))
+=
+x\star y.
+$$
+Por tanto,
 $$
 x\star y=f^{-1}(u\diamond v).
 $$
@@ -126,7 +147,7 @@ f^{-1}(u)\star f^{-1}(v).
 $$
 Por tanto $f^{-1}$ es un homomorfismo de magmas.
 
-Además, $f$ es una inversa bilateral de $f^{-1}$, de modo que [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002) implica que $f^{-1}$ es biyectiva. Luego $f^{-1}$ es un isomorfismo. $\square$
+Además, $f$ es una inversa bilateral de $f^{-1}$, de modo que `TALG-IMP-00002` implica que $f^{-1}$ es biyectiva. Luego $f^{-1}$ es un isomorfismo. $\square$
 
 ---
 
@@ -273,25 +294,48 @@ Dentro de cada una de las clases de semigrupos, monoides y grupos:
 
 #### Demostración {#talg-prf-00015}
 
-Para semigrupos y grupos, la [Proposición 8.1.3](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-pro-00010) ya garantiza identidad y composición como isomorfismos de los magmas subyacentes; las definiciones correspondientes no añaden condiciones funcionales nuevas.
+Para semigrupos y grupos, la [Proposición 8.1.3](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-pro-00010) ya garantiza que la identidad y la composición son isomorfismos de los magmas subyacentes. Por las Definiciones 8.2.1 y 8.2.3, respectivamente, no se exige ninguna condición adicional distinta de las ya verificadas para obtener isomorfismos de semigrupos o de grupos.
 
-Para monoides, la identidad preserva evidentemente el neutro. Si
+Consideremos ahora los monoides. La [Proposición 8.1.3](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-pro-00010) asegura que
+
+$$
+\operatorname{id}_M:M\to M
+$$
+
+preserva la operación y es biyectiva. Además, por definición de la función identidad,
+
+$$
+\operatorname{id}_M(e_{\mathcal M})=e_{\mathcal M}.
+$$
+
+Por la [Definición 8.2.2](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-def-00022), $\operatorname{id}_M$ es, por tanto, un isomorfismo de monoides.
+
+Sean ahora
 $$
 f:M\to N,
 \qquad
 g:N\to P
 $$
-son isomorfismos de monoides, entonces
+isomorfismos de monoides. Por la [Definición 8.2.2](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-def-00022), ambos preservan sus respectivos neutros:
+
 $$
+f(e_{\mathcal M})=e_{\mathcal N}
+\qquad\text{y}\qquad
+g(e_{\mathcal N})=e_{\mathcal P}.
+$$
+
+Usando la definición de composición y estas dos igualdades,
+
+$$
+\begin{aligned}
 (g\circ f)(e_{\mathcal M})
-=
-g(f(e_{\mathcal M}))
-=
-g(e_{\mathcal N})
-=
-e_{\mathcal P}.
+&=g(f(e_{\mathcal M}))\\
+&=g(e_{\mathcal N})\\
+&=e_{\mathcal P}.
+\end{aligned}
 $$
-La [Proposición 8.1.3](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-pro-00010) proporciona además preservación de la operación y biyectividad de la composición. Por la [Definición 8.2.2](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-def-00022), $g\circ f$ es un isomorfismo de monoides. $\square$
+
+La [Proposición 8.1.3](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-pro-00010) proporciona además que $g\circ f$ preserva la operación y es biyectiva. Se cumplen así las dos condiciones de la [Definición 8.2.2](tratado-de-algebra-capitulo-8-isomorfismos.md#talg-def-00022), por lo que $g\circ f$ es un isomorfismo de monoides. $\square$
 
 ---
 
