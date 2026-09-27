@@ -470,27 +470,35 @@ Conviene notar lo que **no** hemos usado para llegar aquí: ni cardinalidades, n
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Por qué elegimos $n$ de manera que $1/n<b-a$ en la prueba de densidad racional?
+**1.** Sea $D\subseteq\mathbb R$ denso y sean $\lambda\ne0$, $c\in\mathbb R$. Demuestra que
 
-**Respuesta.** Porque eso garantiza que el intervalo escalado $(na,nb)$ tenga longitud mayor que $1$. Así, al encajonar $na$ entre enteros consecutivos, el entero siguiente todavía queda estrictamente antes de $nb$.
+$$
+\lambda D+c=\{\lambda d+c:d\in D\}
+$$
+
+también es denso en $\mathbb R$.
+
+**Respuesta.** Dados $a<b$, si $\lambda>0$ aplicamos densidad de $D$ al intervalo
+
+$$
+\left(\frac{a-c}{\lambda},\frac{b-c}{\lambda}\right).
+$$
+
+Si $\lambda<0$, invertimos los extremos. En ambos casos obtenemos $d\in D$ con $a<\lambda d+c<b$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** ¿Dónde entra la completitud en la demostración de densidad racional?
+**2.** Demuestra que
 
-**Respuesta.** No se invoca directamente en §2.8. En nuestra arquitectura entra a través de §2.7: completitud implicó la propiedad arquimediana, que permite escoger la escala $1/n$.
-:::
+$$
+\sqrt2+\mathbb Q
+=
+\{\sqrt2+q:q\in\mathbb Q\}
+$$
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Por qué $r+\sqrt2$ es irracional cuando $r\in\mathbb Q$?
+es un conjunto denso formado exclusivamente por irracionales.
 
-**Respuesta.** Si $r+\sqrt2$ fuera racional, al restarle el racional $r$ obtendríamos que $\sqrt2$ es racional, contradicción.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Que $\mathbb Q$ sea denso significa que todo real es racional?
-
-**Respuesta.** No. Significa que todo intervalo abierto no vacío contiene racionales. El propio $\sqrt2$ es irracional y, sin embargo, hay racionales arbitrariamente cerca de él.
+**Respuesta.** Es denso por la pregunta anterior, tomando $D=\mathbb Q$, $\lambda=1$ y $c=\sqrt2$. Si $\sqrt2+q$ fuese racional para algún $q\in\mathbb Q$, al restar $q$ concluiríamos que $\sqrt2$ es racional, contradicción.
 :::
 
 ### Lo que exporta esta sección
