@@ -145,12 +145,12 @@ $$
 
 $$
 a(b+c)=ab+ac\qquad\text{para todos }a,b,c\in F
-$$
+$
 
-podemos tomar $c=-a$ y obtener
+podemos tomar $c=-b$ y obtener
 
-$$
-b\bigl(a+(-a)\bigr)=ba+b(-a).
+$
+a\bigl(b+(-b)\bigr)=ab+a(-b).
 $$
 
 Aquí no hemos reemplazado dos objetos porque sean iguales: hemos escogido un caso particular de una afirmación universal.
