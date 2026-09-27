@@ -1377,35 +1377,265 @@ $$
 
 La inversión del orden no procede de una nueva regla especial para recíprocos: aparece porque hemos multiplicado $a<b$ por el número positivo $(ab)^{-1}$ y después hemos reducido algebraicamente los dos productos resultantes.
 
-Probemos la parte 8. Supongamos primero $ab>0$. Entonces $a\ne0$ y $b\ne0$ por @prp-t1-0027. Por tricotomía, $a>0$ o $a<0$.
-
-Si $a>0$, dividir
+Probemos la parte 8. Comencemos por la equivalencia para un producto positivo. Supongamos
 
 $$
-ab>0
+ab>0.
 $$
 
-por el número positivo $a$ conserva el sentido y da
+En particular, $ab\ne0$. Si $a=0$ o $b=0$, @prp-t1-0027 daría $ab=0$, en contradicción con $ab>0$. Por tanto,
+
+$$
+a\ne0
+\qquad\text{y}\qquad
+b\ne0.
+$$
+
+La tricotomía aplicada a $a$ deja entonces exactamente dos posibilidades:
+
+$$
+a>0
+\qquad\text{o}\qquad
+a<0.
+$$
+
+Como $a\ne0$, podemos dividir por $a$. Conviene registrar primero las simplificaciones que utilizaremos. Por definición de cociente,
+
+$$
+\begin{aligned}
+\frac{ab}{a}
+&=(ab)a^{-1}\\
+&=b(aa^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=b1 && \text{(inverso multiplicativo)}\\
+&=b && \text{(neutro multiplicativo)},
+\end{aligned}
+$$
+
+mientras que
+
+$$
+\frac0a=0a^{-1}=0
+$$
+
+por definición de cociente y @exm-t1-0040.
+
+Si $a>0$, de $0<ab$ y la parte 6 obtenemos
+
+$$
+\frac0a<\frac{ab}{a}.
+$$
+
+Las reducciones anteriores dan
+
+$$
+0<b,
+$$
+
+es decir,
 
 $$
 b>0.
 $$
 
-Si $a<0$, dividir por $a$ invierte el sentido y produce
+Si $a<0$, dividir $0<ab$ por el número negativo $a$ invierte el sentido:
+
+$$
+\frac0a>\frac{ab}{a}.
+$$
+
+Por las mismas reducciones,
+
+$$
+0>b,
+$$
+
+es decir,
 
 $$
 b<0.
 $$
 
-Así, un producto positivo obliga a que los factores tengan el mismo signo. La recíproca se obtiene directamente de (O2) cuando ambos son positivos y, cuando ambos son negativos, escribiendo
+Hemos demostrado
 
 $$
-ab=(-a)(-b)
+ab>0
+\Longrightarrow
+(a>0\ \text{y}\ b>0)
+\ \text{o}\
+(a<0\ \text{y}\ b<0).
 $$
 
-con $-a>0$ y $-b>0$.
+Probemos la recíproca. Si $a>0$ y $b>0$, (O2) da directamente
 
-Supongamos ahora $ab<0$. Nuevamente $a,b\ne0$. Si $a>0$, dividir por $a$ conserva el sentido y da $b<0$; si $a<0$, dividir por $a$ invierte el sentido y da $b>0$. Recíprocamente, si los signos son opuestos, las reglas de signos convierten $ab$ en el negativo de un producto positivo. Esto prueba las dos equivalencias de la parte 8.
+$$
+ab>0.
+$$
+
+Si $a<0$ y $b<0$, entonces
+
+$$
+-a>0
+\qquad\text{y}\qquad
+-b>0.
+$$
+
+Por (O2),
+
+$$
+(-a)(-b)>0.
+$$
+
+Las reglas de signos ya demostradas dan
+
+$$
+(-a)(-b)=ab.
+$$
+
+Por sustitución de iguales por iguales,
+
+$$
+ab>0.
+$$
+
+En consecuencia,
+
+$$
+\boxed{
+ab>0
+\iff
+(a>0\ \text{y}\ b>0)
+\ \text{o}\
+(a<0\ \text{y}\ b<0).
+}
+$$
+
+Consideremos ahora un producto negativo. Supongamos
+
+$$
+ab<0.
+$$
+
+Nuevamente $ab\ne0$. Si $a=0$ o $b=0$, @prp-t1-0027 implicaría $ab=0$, contradicción. Luego
+
+$$
+a\ne0
+\qquad\text{y}\qquad
+b\ne0.
+$$
+
+La tricotomía aplicada a $a$ deja otra vez los dos casos $a>0$ y $a<0$.
+
+Si $a>0$, la parte 6 aplicada a $ab<0$ permite dividir por $a$ sin cambiar el sentido:
+
+$$
+\frac{ab}{a}<\frac0a.
+$$
+
+Usando las reducciones ya establecidas,
+
+$$
+b<0.
+$$
+
+Si $a<0$, dividir por $a$ invierte el sentido:
+
+$$
+\frac{ab}{a}>\frac0a,
+$$
+
+de donde
+
+$$
+b>0.
+$$
+
+Por tanto,
+
+$$
+ab<0
+\Longrightarrow
+(a>0\ \text{y}\ b<0)
+\ \text{o}\
+(a<0\ \text{y}\ b>0).
+$$
+
+Falta la recíproca. Supongamos primero
+
+$$
+a>0
+\qquad\text{y}\qquad
+b<0.
+$$
+
+Entonces $-b>0$ y, por (O2),
+
+$$
+a(-b)>0.
+$$
+
+Como la regla de signos da
+
+$$
+a(-b)=-(ab),
+$$
+
+por sustitución obtenemos
+
+$$
+-(ab)>0.
+$$
+
+Por definición de número negativo, esto equivale a
+
+$$
+ab<0.
+$$
+
+Si, en cambio,
+
+$$
+a<0
+\qquad\text{y}\qquad
+b>0,
+$$
+
+entonces $-a>0$ y (O2) da
+
+$$
+(-a)b>0.
+$$
+
+La regla de signos
+
+$$
+(-a)b=-(ab)
+$$
+
+produce de nuevo
+
+$$
+-(ab)>0,
+$$
+
+y por tanto
+
+$$
+ab<0.
+$$
+
+Concluimos
+
+$$
+\boxed{
+ab<0
+\iff
+(a>0\ \text{y}\ b<0)
+\ \text{o}\
+(a<0\ \text{y}\ b>0).
+}
+$$
+
+El signo de un producto queda así determinado por una dicotomía estructural: factores con el mismo signo producen un producto positivo y factores con signos opuestos producen un producto negativo. No hemos añadido una nueva regla de signos; la hemos deducido de la tricotomía, de las leyes del orden y de las identidades algebraicas ya demostradas.
 
 Para la parte 9 consideremos los tres casos que proporciona la tricotomía.
 
