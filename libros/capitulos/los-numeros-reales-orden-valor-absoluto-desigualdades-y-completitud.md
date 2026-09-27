@@ -3331,35 +3331,77 @@ La proposición muestra que hay tres preguntas diferentes antes de «cancelar» 
 
 En una **igualdad**, para cancelar multiplicativamente basta la no nulidad.
 
-En una **desigualdad**, la no nulidad no basta: el signo decide si el orden se conserva o se invierte.
+En una **desigualdad**, la no nulidad no basta: el signo decide si el orden se conserva o se invierte. Si además queremos dividir, la hipótesis de signo cumple simultáneamente dos funciones: garantiza que el divisor no sea $0$ y determina qué ocurre con el sentido del orden.
 :::
 
 ### Una pequeña tabla de control
 
-Las reglas anteriores pueden condensarse, una vez demostradas, en la tabla siguiente.
+Las reglas anteriores pueden condensarse, una vez demostradas, en la tabla siguiente. Añadimos la columna «Fundamento» para recordar que ninguna fila introduce un axioma nuevo.
 
-| Operación aplicada a ambos miembros | Hipótesis | Efecto sobre $<$ |
-|---|---|---|
-| sumar $c$ | ninguna | conserva el sentido |
-| restar $c$ | ninguna | conserva el sentido |
-| multiplicar por $c$ | $c>0$ | conserva el sentido |
-| multiplicar por $c$ | $c<0$ | invierte el sentido |
-| dividir por $c$ | $c>0$ | conserva el sentido |
-| dividir por $c$ | $c<0$ | invierte el sentido |
+| Operación aplicada a ambos miembros | Hipótesis | Efecto sobre $<$ | Fundamento |
+|---|---|---|---|
+| sumar $c$ | ninguna | conserva el sentido | parte 1 |
+| restar $c$ | ninguna | conserva el sentido | parte 1 aplicada a $-c$ |
+| multiplicar por $c$ | $c>0$ | conserva el sentido | parte 3 |
+| multiplicar por $c$ | $c<0$ | invierte el sentido | parte 4 |
+| dividir por $c$ | $c>0$ | conserva el sentido | partes 5 y 6 |
+| dividir por $c$ | $c<0$ | invierte el sentido | partes 5 y 6 |
 
-Si $c=0$, una desigualdad estricta desaparece al multiplicar ambos miembros por $c$: ambos productos se vuelven $0$.
+La fila de la resta no requiere una regla independiente: restar $c$ significa sumar $-c$, y la parte 1 vale para cualquier elemento del cuerpo, sin hipótesis de signo.
 
-La tabla es una herramienta de cálculo. La proposición anterior es su fundamento.
+También conviene aislar el caso excluido de las filas multiplicativas estrictas. Si $a<b$ y $c=0$, entonces @exm-t1-0040 da
+
+$$
+ac=a0=0
+\qquad\text{y}\qquad
+bc=b0=0.
+$$
+
+Por tanto,
+
+$$
+ac=bc,
+$$
+
+no $ac<bc$ ni $ac>bc$. Una desigualdad estricta colapsa a igualdad al multiplicar ambos miembros por $0$.
+
+La tabla es, pues, una herramienta de cálculo **derivada**. Su contenido ya está demostrado en @prp-t1-0007.
 
 ### Una regla que necesitaremos al estudiar el hueco racional
 
-Si $a$ y $b$ son no negativos y $b\le a$, la parte 10 de @prp-t1-0007 permite escribir
+Supongamos que $a$ y $b$ son no negativos y que
 
 $$
-b^2\le a^2.
+b\le a.
 $$
 
-Esta regla ya está demostrada, no supuesta. Será esencial en §1.4 para comparar los racionales de ambos lados de la ecuación $x^2=2$.
+Las hipótesis pueden reunirse como
+
+$$
+0\le b\le a.
+$$
+
+La parte 10 de @prp-t1-0007 afirma que, si $0\le u\le v$, entonces
+
+$$
+u^2\le v^2.
+$$
+
+Particularizamos ahora esa afirmación tomando
+
+$$
+u=b,
+\qquad
+v=a.
+$$
+
+Como sus hipótesis son precisamente $0\le b\le a$, obtenemos
+
+$$
+\boxed{b^2\le a^2}.
+$$
+
+Así, la regla que utilizaremos después no es una intuición acerca de que «los cuadrados crecen», sino una aplicación directa de la monotonía del cuadrado ya demostrada en los no negativos. Será esencial en §1.4 para comparar los racionales situados a ambos lados de la ecuación $x^2=2$.
 
 Esta relectura muestra una ventaja del método axiomático. Podemos auditar una demostración preguntando:
 
