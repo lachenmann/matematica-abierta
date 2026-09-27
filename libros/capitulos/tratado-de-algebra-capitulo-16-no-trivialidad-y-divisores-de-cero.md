@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -277,19 +277,57 @@ $$
 
 #### Demostración {#talg-prf-00045}
 
-Si $a$ es divisor de cero por la izquierda, existe $b\neq0$ con
+Supongamos primero que $a$ es divisor de cero por la izquierda. Por la [Definición 16.2.1](tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md#talg-def-00036), existe $b\in R$ tal que
 
 $$
+b\neq0
+\qquad\text{y}\qquad
 ab=0.
 $$
 
-Como la multiplicación es conmutativa,
+Como $\mathcal R$ es conmutativo, la Definición 14.5.1 da
 
 $$
-ba=ab=0,
+ba=ab.
 $$
 
-por lo que $a$ es divisor de cero por la derecha. La implicación recíproca es idéntica.
+Sustituyendo la igualdad $ab=0$, obtenemos
+
+$$
+ba=0.
+$$
+
+El mismo elemento $b$ continúa siendo no nulo. Por la [Definición 16.2.1](tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md#talg-def-00036), existe entonces un testigo no nulo $b$ con $ba=0$, y por tanto $a$ es divisor de cero por la derecha.
+
+Recíprocamente, supongamos que $a$ es divisor de cero por la derecha. Por la [Definición 16.2.1](tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md#talg-def-00036), existe $c\in R$ tal que
+
+$$
+c\neq0
+\qquad\text{y}\qquad
+ca=0.
+$$
+
+La conmutatividad multiplicativa de la Definición 14.5.1 da
+
+$$
+ac=ca.
+$$
+
+Sustituyendo $ca=0$,
+
+$$
+ac=0.
+$$
+
+Como $c\neq0$, el elemento $c$ es un testigo no nulo de la condición izquierda de la [Definición 16.2.1](tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md#talg-def-00036). Por tanto, $a$ es divisor de cero por la izquierda.
+
+Quedan demostradas ambas implicaciones y, en consecuencia,
+
+$$
+a\text{ es divisor de cero por la izquierda}
+\quad\Longleftrightarrow\quad
+a\text{ es divisor de cero por la derecha}.
+$$
 
 $\square$
 
