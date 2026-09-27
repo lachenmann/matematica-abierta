@@ -1281,48 +1281,107 @@ $$
 (x-a)b^{-1}.
 $$
 
-La hipótesis $b\ne0$ ya es necesaria para que el cociente original esté definido y garantiza además la existencia de $b^{-1}$. Multiplicar una igualdad por $b$ es legal incluso sin esa hipótesis; la no nulidad será necesaria en el paso siguiente, cuando usemos
-$$
-b^{-1}b=1.
-$$
+La hipótesis $b\ne0$ ya es necesaria para que el cociente original esté definido y garantiza además la existencia de $b^{-1}$. Multiplicar una igualdad por $b$ es legal incluso sin esa hipótesis; la no nulidad será necesaria cuando reduzcamos $b^{-1}b$ a $1$.
 
 Multiplicando ambos miembros por $b$,
 
 $$
-(x-a)b^{-1}b=cb.
+\bigl((x-a)b^{-1}\bigr)b=cb.
 $$
 
-Asociatividad e inverso multiplicativo dan
+Reducimos primero el miembro izquierdo:
 
 $$
-x-a=bc.
+\begin{aligned}
+\bigl((x-a)b^{-1}\bigr)b
+&=(x-a)(b^{-1}b) && \text{(asociatividad)}\\
+&=(x-a)1 && \text{(inverso multiplicativo)}\\
+&=x-a && \text{(neutro multiplicativo)}.
+\end{aligned}
 $$
 
-**Segundo paso.** Por definición de resta,
+En el miembro derecho, por conmutatividad,
 
 $$
-x-a=x+(-a).
-$$
-
-Por @thm-t1-0011, la ecuación
-
-$$
-x+(-a)=bc
-$$
-
-tiene una única solución. Como el inverso aditivo de $-a$ es $a$,
-
-$$
-x=bc+a=a+bc.
+cb=bc.
 $$
 
 Por tanto,
 
 $$
-\boxed{x=a+bc}
+x-a=bc.
 $$
 
-es la única solución.
+Además, esta flecha es reversible. Si partimos de $x-a=bc$ y multiplicamos ambos miembros por $b^{-1}$, obtenemos
+
+$$
+(x-a)b^{-1}=(bc)b^{-1}.
+$$
+
+Por asociatividad y por $bb^{-1}=1$,
+
+$$
+(bc)b^{-1}
+=
+c(bb^{-1})
+=
+c,
+$$
+
+de modo que recuperamos
+
+$$
+\frac{x-a}{b}=c.
+$$
+
+**Segundo paso.** Por definición de resta,
+
+$$
+x-a=x+(-a),
+$$
+
+así que la ecuación anterior es
+
+$$
+x+(-a)=bc.
+$$
+
+Sumamos $a$ a ambos miembros:
+
+$$
+\bigl(x+(-a)\bigr)+a=bc+a.
+$$
+
+El miembro izquierdo se reduce paso a paso:
+
+$$
+\begin{aligned}
+\bigl(x+(-a)\bigr)+a
+&=x+\bigl((-a)+a\bigr) && \text{(asociatividad)}\\
+&=x+0 && \text{(inverso aditivo)}\\
+&=x && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Por consiguiente,
+
+$$
+x=bc+a.
+$$
+
+Finalmente, por conmutatividad de la suma,
+
+$$
+bc+a=a+bc,
+$$
+
+y obtenemos
+
+$$
+\boxed{x=a+bc}.
+$$
+
+También esta flecha es reversible: sumando $-a$ a ambos miembros de $x=a+bc$ recuperamos $x-a=bc$. Por tanto, no solo hemos encontrado un candidato; hemos mostrado una cadena de equivalencias. En particular, @thm-t1-0011 garantiza que la solución es única.
 
 Podemos resumir la auditoría así:
 
@@ -1330,8 +1389,8 @@ Podemos resumir la auditoría así:
 |---|---|
 | «multiplicar ambos miembros por $b$» | sustitución en una igualdad; por sí sola no exige $b\ne0$ |
 | «se cancela $b$» | $b\ne0$, existencia de $b^{-1}$, $b^{-1}b=1$ y neutro multiplicativo |
-| «pasar $a$ sumando» | resta $=$ suma con inverso y @thm-t1-0011 |
-| «la solución es la única» | cancelación / unicidad, no solo sustitución |
+| «pasar $a$ sumando» | resta $=$ suma con inverso; asociatividad, inverso y neutro aditivos |
+| «la solución es la única» | reversibilidad de las equivalencias y @thm-t1-0011 |
 
 La última fila es importante. Encontrar un valor que satisface una ecuación prueba **existencia**; demostrar que ningún otro valor puede satisfacerla prueba **unicidad**.
 
