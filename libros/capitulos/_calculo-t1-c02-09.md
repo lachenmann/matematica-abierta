@@ -617,27 +617,37 @@ Esta separación será importante más adelante. En análisis numérico es fáci
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Por qué $b_n$ es una cota superior de todos los extremos izquierdos, y no solo de $a_n$?
+**1.** Determina exactamente la intersección de
 
-**Respuesta.** Porque los intervalos están encajados. Si $m\ge n$, entonces $I_m\subseteq I_n$ y $a_m\in I_n$, de modo que $a_m\le b_n$. Si $m<n$, entonces $a_m\le a_n\le b_n$.
+$$
+I_n=
+\left[-\frac1{n+1},\frac2{n+1}\right],
+\qquad n\in\mathbb N.
+$$
+
+**Respuesta.** El número $0$ pertenece a todos los intervalos. Si $x>0$, la propiedad arquimediana permite elegir $n$ con $2/(n+1)<x$, por lo que $x\notin I_n$. Si $x<0$, elegimos $n$ con $1/(n+1)<-x$, y entonces $x<-1/(n+1)$, de modo que tampoco pertenece a todos los intervalos. Por tanto,
+
+$$
+\boxed{\bigcap_{n\in\mathbb N}I_n=\{0\}}.
+$$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** ¿El principio de intervalos encajados garantiza un único punto común?
+**2.** Da una familia de intervalos cerrados y encajados cuya intersección no sea un único punto y explica qué hipótesis adicional de unicidad falla.
 
-**Respuesta.** No. Garantiza solamente que la intersección no sea vacía. La familia constante $I_n=[0,1]$ tiene todos los puntos de $[0,1]$ en la intersección.
-:::
+**Respuesta.** La familia constante
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Por qué los intervalos abiertos $J_n=(0,1/(n+1))$ no contradicen el teorema?
+$$
+I_n=[0,1]
+$$
 
-**Respuesta.** Porque el teorema exige intervalos cerrados. Precisamente el único candidato geométrico a sobrevivir, $0$, ha sido eliminado de cada $J_n$.
-:::
+es cerrada y encajada, pero
 
-::: {.callout-tip title="Antes de seguir"}
-**4.** En una cadena de bisecciones, ¿dónde utilizamos la propiedad arquimediana?
+$$
+\bigcap_n I_n=[0,1].
+$$
 
-**Respuesta.** En la prueba de unicidad: permite elegir una etapa cuya longitud sea menor que la distancia positiva entre dos supuestos puntos comunes distintos.
+Falla la condición de que las longitudes puedan hacerse menores que cualquier $\varepsilon>0$.
 :::
 
 ### Lo que exporta esta sección
