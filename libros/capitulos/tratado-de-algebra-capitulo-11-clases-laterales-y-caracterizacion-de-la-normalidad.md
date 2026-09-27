@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -105,7 +105,9 @@ El orden de los símbolos es significativo: $gH$ denota una clase lateral izquie
 
 ### Proposición 11.1.3 — El representante pertenece a sus clases laterales {#talg-pro-00019}
 
+
 Sea $H$ un subgrupo de $\mathcal G=\langle G,\star\rangle$ y sea $g\in G$. Entonces
+
 
 $$
 g\in gH
@@ -113,23 +115,58 @@ g\in gH
 g\in Hg.
 $$
 
+
 En particular, toda clase lateral izquierda o derecha es no vacía.
+
 
 #### Demostración {#talg-prf-00024}
 
-Como $H$ determina un subgrupo, el neutro ambiente $e_{\mathcal G}$ pertenece a $H$. Por las leyes de neutro,
+
+Como $H$ determina un subgrupo, el neutro ambiente $e_{\mathcal G}$ pertenece a $H$.
+
+Por la ley de neutro derecho,
+
+$$
+g=g\star e_{\mathcal G}.
+$$
+
+La [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) establece
+
+$$
+gH=\{g\star h:h\in H\}.
+$$
+
+Como $e_{\mathcal G}\in H$, el elemento $e_{\mathcal G}$ sirve como testigo en esa descripción de la clase lateral izquierda, y la igualdad
 
 $$
 g=g\star e_{\mathcal G}
 $$
 
-y
+implica
+
+$$
+g\in gH.
+$$
+
+Por otra parte, la ley de neutro izquierdo da
 
 $$
 g=e_{\mathcal G}\star g.
 $$
 
-La primera igualdad muestra que $g\in gH$ y la segunda que $g\in Hg$. $\square$
+De nuevo por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027),
+
+$$
+Hg=\{h\star g:h\in H\}.
+$$
+
+Como $e_{\mathcal G}\in H$, el mismo elemento sirve ahora como testigo en la descripción de la clase lateral derecha. Por tanto,
+
+$$
+g\in Hg.
+$$
+
+Así, $g$ pertenece a ambas clases laterales que determina. $\square$
 
 ---
 
@@ -137,7 +174,9 @@ La primera igualdad muestra que $g\in gH$ y la segunda que $g\in Hg$. $\square$
 
 ### Teorema 11.2.1 — Criterios de igualdad de clases laterales {#talg-thm-00003}
 
+
 Sea $H$ un subgrupo de $\mathcal G=\langle G,\star\rangle$ y sean $g,k\in G$. Entonces:
+
 
 1. para clases laterales izquierdas,
    $$
@@ -152,21 +191,28 @@ Sea $H$ un subgrupo de $\mathcal G=\langle G,\star\rangle$ y sean $g,k\in G$. En
    g\star k^{-1}\in H.
    $$
 
+
 #### Demostración {#talg-prf-00025}
 
+
 **Clases izquierdas.** Supongamos primero
+
 
 $$
 gH=kH.
 $$
 
-Por la [Proposición 11.1.3](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-pro-00019), $g\in gH$, y por la igualdad supuesta $g\in kH$. Por definición de clase lateral existe $h\in H$ tal que
+
+Por la [Proposición 11.1.3](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-pro-00019), $g\in gH$, y por la igualdad supuesta $g\in kH$. Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), existe $h\in H$ tal que
+
 
 $$
 g=k\star h.
 $$
 
+
 Multiplicando a la izquierda por $k^{-1}$ y usando asociatividad, inverso y neutro,
+
 
 $$
 k^{-1}\star g
@@ -178,13 +224,17 @@ k^{-1}\star(k\star h)
 h\in H.
 $$
 
+
 Recíprocamente, supongamos
+
 
 $$
 a:=k^{-1}\star g\in H.
 $$
 
+
 Entonces
+
 
 $$
 k\star a
@@ -196,7 +246,9 @@ k\star(k^{-1}\star g)
 g.
 $$
 
-Sea $x\in gH$. Existe $h\in H$ con $x=g\star h$. Por la igualdad anterior,
+
+Sea $x\in gH$. Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), existe $h\in H$ con $x=g\star h$. Por la igualdad anterior,
+
 
 $$
 x
@@ -206,43 +258,91 @@ x
 k\star(a\star h).
 $$
 
+
 Como $a,h\in H$ y $H$ es cerrado bajo la operación, $a\star h\in H$. Por tanto $x\in kH$, y así
+
 
 $$
 gH\subseteq kH.
 $$
 
-Como $H$ es subgrupo, $a^{-1}\in H$. Además,
+
+Como $H$ determina un subgrupo y $a\in H$, el cierre bajo inversos da
+
 
 $$
+a^{-1}\in H.
+$$
+
+
+Además,
+
+
+$$
+\begin{aligned}
 g\star a^{-1}
-=
-(k\star a)\star a^{-1}
-=
-k\star(a\star a^{-1})
-=
-k.
+&=(k\star a)\star a^{-1}\\
+&=k\star(a\star a^{-1})\\
+&=k\star e_{\mathcal G}\\
+&=k.
+\end{aligned}
 $$
 
-El mismo argumento, ahora usando $a^{-1}\in H$, da
+
+Para demostrar explícitamente la inclusión inversa, sea $y\in kH$. Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), existe $h'\in H$ tal que
+
+
+$$
+y=k\star h'.
+$$
+
+
+Sustituyendo $k=g\star a^{-1}$ y usando asociatividad,
+
+
+$$
+\begin{aligned}
+y
+&=(g\star a^{-1})\star h'\\
+&=g\star(a^{-1}\star h').
+\end{aligned}
+$$
+
+
+Como $a^{-1},h'\in H$ y $H$ es cerrado bajo la operación,
+
+
+$$
+a^{-1}\star h'\in H.
+$$
+
+
+Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), esto significa $y\in gH$. Como $y\in kH$ era arbitrario,
+
 
 $$
 kH\subseteq gH.
 $$
 
+
 Por Extensionalidad,
+
 
 $$
 gH=kH.
 $$
 
-**Clases derechas.** La demostración es simétrica. Si $Hg=Hk$, entonces $g\in Hk$, de modo que existe $h\in H$ con
+
+**Clases derechas.** Demostraremos primero la implicación directa. Supongamos $Hg=Hk$. Por la [Proposición 11.1.3](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-pro-00019), $g\in Hg$, y por la igualdad supuesta $g\in Hk$. Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), existe $h\in H$ con
+
 
 $$
 g=h\star k.
 $$
 
+
 Multiplicando a la derecha por $k^{-1}$,
+
 
 $$
 g\star k^{-1}
@@ -254,13 +354,17 @@ h\star(k\star k^{-1})
 h\in H.
 $$
 
+
 Recíprocamente, supongamos
+
 
 $$
 b:=g\star k^{-1}\in H.
 $$
 
+
 Entonces
+
 
 $$
 b\star k
@@ -272,7 +376,9 @@ g\star(k^{-1}\star k)
 g.
 $$
 
-Si $x\in Hg$, existe $h\in H$ con $x=h\star g$. Luego
+
+Sea $x\in Hg$. Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), existe $h\in H$ con $x=h\star g$. Luego
+
 
 $$
 x
@@ -282,17 +388,72 @@ h\star(b\star k)
 (h\star b)\star k.
 $$
 
-Como $h\star b\in H$, resulta $x\in Hk$, y por tanto $Hg\subseteq Hk$. Como $b^{-1}\in H$ y
+
+Como $h\star b\in H$, resulta $x\in Hk$, y por tanto $Hg\subseteq Hk$. Como $H$ determina un subgrupo y $b\in H$, también
+
 
 $$
-b^{-1}\star g=k,
+b^{-1}\in H.
 $$
 
-el mismo argumento da $Hk\subseteq Hg$. Por Extensionalidad,
+
+De $g=b\star k$ obtenemos, usando asociatividad, inverso y neutro,
+
+
+$$
+\begin{aligned}
+b^{-1}\star g
+&=b^{-1}\star(b\star k)\\
+&=(b^{-1}\star b)\star k\\
+&=e_{\mathcal G}\star k\\
+&=k.
+\end{aligned}
+$$
+
+
+Para la inclusión inversa, sea $y\in Hk$. Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), existe $h'\in H$ tal que
+
+
+$$
+y=h'\star k.
+$$
+
+
+Sustituyendo $k=b^{-1}\star g$ y usando asociatividad,
+
+
+$$
+\begin{aligned}
+y
+&=h'\star(b^{-1}\star g)\\
+&=(h'\star b^{-1})\star g.
+\end{aligned}
+$$
+
+
+Como $h',b^{-1}\in H$ y $H$ es cerrado bajo la operación,
+
+
+$$
+h'\star b^{-1}\in H.
+$$
+
+
+Por la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027), $y\in Hg$. Por tanto,
+
+
+$$
+Hk\subseteq Hg.
+$$
+
+
+Por Extensionalidad,
+
 
 $$
 Hg=Hk.
 $$
+
 
 Quedan demostradas ambas equivalencias. $\square$
 
@@ -300,56 +461,210 @@ Quedan demostradas ambas equivalencias. $\square$
 
 ### Corolario 11.2.2 — Dos clases laterales del mismo lado son iguales o disjuntas {#talg-cor-00003}
 
+
 Sea $H$ un subgrupo de $\mathcal G=\langle G,\star\rangle$ y sean $g,k\in G$. Entonces:
+
 
 1. o bien $gH=kH$, o bien $gH\cap kH=\varnothing$;
 2. o bien $Hg=Hk$, o bien $Hg\cap Hk=\varnothing$.
 
+
 #### Demostración {#talg-prf-00026}
 
+
 Para las clases laterales izquierdas aplicamos LEM a la proposición
+
 
 $$
 \exists x\in gH\cap kH.
 $$
 
-Si existe tal $x$, entonces $x\in gH$ y $x\in kH$. De $x\in gH$ existe $h_1\in H$ con $x=g\star h_1$, y por tanto
+
+Si existe tal $x$, tomamos localmente un testigo $x\in gH\cap kH$. Como $x\in gH$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_1\in H$ tal que
+
 
 $$
-g^{-1}\star x=h_1\in H.
+x=g\star h_1.
 $$
 
-Por el [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), aplicado a $xH$ y $gH$, se obtiene $xH=gH$. Análogamente, de $x\in kH$ obtenemos $xH=kH$. Luego
+
+Multiplicando a la izquierda por $g^{-1}$ y usando asociatividad, inverso y neutro,
+
+
+$$
+\begin{aligned}
+g^{-1}\star x
+&=g^{-1}\star(g\star h_1)\\
+&=(g^{-1}\star g)\star h_1\\
+&=e_{\mathcal G}\star h_1\\
+&=h_1\in H.
+\end{aligned}
+$$
+
+
+Por la primera equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), aplicada a las clases $xH$ y $gH$,
+
+
+$$
+xH=gH.
+$$
+
+
+Como $x\in kH$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_2\in H$ tal que
+
+
+$$
+x=k\star h_2.
+$$
+
+
+De nuevo por asociatividad, inverso y neutro,
+
+
+$$
+\begin{aligned}
+k^{-1}\star x
+&=k^{-1}\star(k\star h_2)\\
+&=(k^{-1}\star k)\star h_2\\
+&=e_{\mathcal G}\star h_2\\
+&=h_2\in H.
+\end{aligned}
+$$
+
+
+La primera equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), aplicada ahora a $xH$ y $kH$, da
+
+
+$$
+xH=kH.
+$$
+
+
+Por transitividad de la igualdad,
+
 
 $$
 gH=kH.
 $$
 
+
 Si, por el contrario,
+
 
 $$
 \neg\exists x\in gH\cap kH,
 $$
 
+
 entonces ningún elemento pertenece a $gH\cap kH$; por Extensionalidad,
+
 
 $$
 gH\cap kH=\varnothing.
 $$
 
+
 Así,
+
 
 $$
 gH=kH\quad\lor\quad gH\cap kH=\varnothing.
 $$
 
-El argumento para clases laterales derechas es idéntico, aplicando LEM a $\exists x\in Hg\cap Hk$ y usando la segunda equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003). Concluimos
+
+Para las clases laterales derechas aplicamos LEM a la proposición
+
+
+$$
+\exists x\in Hg\cap Hk.
+$$
+
+
+Si existe tal $x$, tomamos localmente un testigo $x\in Hg\cap Hk$. Como $x\in Hg$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_1\in H$ tal que
+
+
+$$
+x=h_1\star g.
+$$
+
+
+Multiplicando a la derecha por $g^{-1}$ y usando asociatividad, inverso y neutro,
+
+
+$$
+\begin{aligned}
+x\star g^{-1}
+&=(h_1\star g)\star g^{-1}\\
+&=h_1\star(g\star g^{-1})\\
+&=h_1\star e_{\mathcal G}\\
+&=h_1\in H.
+\end{aligned}
+$$
+
+
+Por la segunda equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003),
+
+
+$$
+Hx=Hg.
+$$
+
+
+Como $x\in Hk$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_2\in H$ tal que $x=h_2\star k$. Entonces
+
+
+$$
+\begin{aligned}
+x\star k^{-1}
+&=(h_2\star k)\star k^{-1}\\
+&=h_2\star(k\star k^{-1})\\
+&=h_2\in H.
+\end{aligned}
+$$
+
+
+Otra aplicación de la segunda equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003) da
+
+
+$$
+Hx=Hk.
+$$
+
+
+Por transitividad de la igualdad,
+
+
+$$
+Hg=Hk.
+$$
+
+
+Si, por el contrario,
+
+
+$$
+\neg\exists x\in Hg\cap Hk,
+$$
+
+
+entonces ningún elemento pertenece a $Hg\cap Hk$; por Extensionalidad,
+
+
+$$
+Hg\cap Hk=\varnothing.
+$$
+
+
+Concluimos
+
 
 $$
 Hg=Hk\quad\lor\quad Hg\cap Hk=\varnothing.
 $$
 
+
 No se ha utilizado elección. El único principio clásico sustantivo es LEM aplicado a la existencia de un elemento en cada intersección. $\square$
+
 
 > **Lectura conjuntista.** Cada elemento de $G$ pertenece a su propia clase lateral por la [Proposición 11.1.3](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-pro-00019), y dos clases del mismo lado nunca se solapan parcialmente: si comparten un elemento, coinciden por completo. Esto prepara la futura construcción de un cociente sin haber introducido todavía el conjunto cociente.
 
@@ -357,40 +672,150 @@ No se ha utilizado elección. El único principio clásico sustantivo es LEM apl
 
 ### Lema 11.2.3 — Intersección habitada de clases laterales implica igualdad {#talg-lem-00005}
 
+
 Sea $H$ un subgrupo de $\mathcal G=\langle G,\star\rangle$ y sean $g,k\in G$. Entonces:
+
 
 1. si $\exists x\in gH\cap kH$, entonces $gH=kH$;
 2. si $\exists x\in Hg\cap Hk$, entonces $Hg=Hk$.
 
+
 #### Demostración {#talg-prf-00089}
 
+
 Para la primera afirmación, supongamos
+
 
 $$
 \exists x\in gH\cap kH.
 $$
 
-Por eliminación existencial ordinaria tomamos localmente un testigo $x\in gH\cap kH$. Entonces $x\in gH$ y $x\in kH$. Como $x\in gH$, existe $h_1\in H$ con $x=g\star h_1$, de donde
+
+Por eliminación existencial ordinaria tomamos localmente un testigo $x\in gH\cap kH$. Entonces $x\in gH$ y $x\in kH$. Como $x\in gH$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_1\in H$ con $x=g\star h_1$, de donde
+
 
 $$
 g^{-1}\star x=h_1\in H.
 $$
 
-Por el [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), $xH=gH$. Del mismo modo, $xH=kH$. Por transitividad de la igualdad,
+
+Por la primera equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003),
+
+
+$$
+xH=gH.
+$$
+
+
+Como $x\in kH$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_2\in H$ tal que
+
+
+$$
+x=k\star h_2.
+$$
+
+
+Por asociatividad, inverso y neutro,
+
+
+$$
+\begin{aligned}
+k^{-1}\star x
+&=k^{-1}\star(k\star h_2)\\
+&=(k^{-1}\star k)\star h_2\\
+&=e_{\mathcal G}\star h_2\\
+&=h_2\in H.
+\end{aligned}
+$$
+
+
+Otra aplicación de la primera equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003) da
+
+
+$$
+xH=kH.
+$$
+
+
+Por transitividad de la igualdad,
+
 
 $$
 gH=kH.
 $$
 
-Para la segunda afirmación, si $x\in Hg\cap Hk$, entonces $x\star g^{-1}\in H$ y $x\star k^{-1}\in H$. La segunda equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003) da
+
+Para la segunda afirmación, supongamos
+
 
 $$
-Hx=Hg,\qquad Hx=Hk,
+\exists x\in Hg\cap Hk.
 $$
 
-y por tanto $Hg=Hk$.
+
+Por eliminación existencial ordinaria tomamos localmente un testigo $x\in Hg\cap Hk$. Entonces $x\in Hg$ y $x\in Hk$.
+
+
+Como $x\in Hg$, la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) proporciona $h_1\in H$ tal que
+
+
+$$
+x=h_1\star g.
+$$
+
+
+Por asociatividad, inverso y neutro,
+
+
+$$
+\begin{aligned}
+x\star g^{-1}
+&=(h_1\star g)\star g^{-1}\\
+&=h_1\star(g\star g^{-1})\\
+&=h_1\in H.
+\end{aligned}
+$$
+
+
+La segunda equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003) da
+
+
+$$
+Hx=Hg.
+$$
+
+
+Asimismo, de $x\in Hk$ y la [Definición 11.1.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-def-00027) existe $h_2\in H$ tal que $x=h_2\star k$. Entonces
+
+
+$$
+\begin{aligned}
+x\star k^{-1}
+&=(h_2\star k)\star k^{-1}\\
+&=h_2\star(k\star k^{-1})\\
+&=h_2\in H.
+\end{aligned}
+$$
+
+
+De nuevo por la segunda equivalencia del [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003),
+
+
+$$
+Hx=Hk.
+$$
+
+
+Por transitividad de la igualdad,
+
+
+$$
+Hg=Hk.
+$$
+
 
 No se ha utilizado lógica clásica sustantiva ni elección. $\square$
+
 
 > **Uso deductivo.** Éste es el resultado que debe emplearse cuando una construcción posterior ya exhibe un elemento común de dos clases. La disyunción clásica el [Corolario 11.2.2](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-cor-00003) queda reservada para contextos donde realmente se necesite «iguales o disjuntas».
 
