@@ -247,13 +247,13 @@ $$
 (2k)^2=2n^2.
 $$
 
-**2. Particularizar una afirmación universal.** Si una propiedad ha sido establecida para **todo** elemento de un dominio, podemos aplicarla a cualquier elemento admisible de ese dominio. Por ejemplo, de
+**2. Particularizar una afirmación universal.** Si una propiedad ha sido establecida para **todo** elemento de un dominio, podemos aplicarla a cualquier elemento admisible de ese dominio. Por ejemplo, la distributividad afirma que, para cualesquiera $a,b,c\in F$,
 
 $$
-a(b+c)=ab+ac\qquad\text{para todos }a,b,c\in F
+a(b+c)=ab+ac.
 $$
 
-podemos tomar $c=-b$ y obtener
+Podemos particularizar esta identidad tomando $c=-b$:
 
 $$
 a\bigl(b+(-b)\bigr)=ab+a(-b).
@@ -263,11 +263,7 @@ Aquí no hemos reemplazado dos objetos porque sean iguales: hemos escogido un ca
 
 Estas dos reglas explican buena parte de las «sustituciones» que aparecerán en las pruebas. Pero no autorizan reemplazos arbitrarios: debe existir una igualdad previa o una afirmación universal que justifique el paso, y deben respetarse todas las hipótesis bajo las cuales la expresión está definida. Por ejemplo, una identidad demostrada solo para $a\ne0$ no puede particularizarse tomando $a=0$.
 
-En una prueba especialmente delicada conviene preguntarse:
-
-$$
-\boxed{\text{¿estoy sustituyendo iguales por iguales o particularizando una afirmación universal?}}
-$$
+En una prueba especialmente delicada conviene hacerse esta **pregunta de control**: ¿estoy sustituyendo iguales por iguales o particularizando una afirmación universal?
 
 Lo mismo vale para encadenar igualdades por transitividad: también es una regla lógica previa a los axiomas particulares del cuerpo.
 :::
@@ -1101,31 +1097,89 @@ $$
 \frac ab=\frac cd,
 $$
 
-entonces
+entonces, por definición de cociente,
 
 $$
 ab^{-1}=cd^{-1}.
 $$
 
-Multiplicamos ambos miembros por $bd$ y reagrupamos mediante asociatividad y conmutatividad:
+Por sustitución de iguales por iguales podemos multiplicar ambos miembros por el mismo elemento $bd$:
+
+$$
+(ab^{-1})(bd)=(cd^{-1})(bd).
+$$
+
+Ahora reducimos cada miembro por separado. En el izquierdo,
+
+$$
+\begin{aligned}
+(ab^{-1})(bd)
+&=ab^{-1}bd\\
+&=a(b^{-1}b)d\\
+&=a1d\\
+&=ad.
+\end{aligned}
+$$
+
+En el derecho,
+
+$$
+\begin{aligned}
+(cd^{-1})(bd)
+&=cd^{-1}bd\\
+&=cb(d^{-1}d)\\
+&=cb\\
+&=bc.
+\end{aligned}
+$$
+
+Aquí hemos usado asociatividad y conmutatividad del producto, las identidades $b^{-1}b=1$ y $d^{-1}d=1$, y el neutro multiplicativo. Por tanto,
 
 $$
 ad=bc.
 $$
 
-Recíprocamente, si
+Recíprocamente, supongamos
 
 $$
-ad=bc,
+ad=bc.
 $$
 
-multiplicamos ambos miembros por $b^{-1}d^{-1}$. Usando asociatividad, conmutatividad e inversos,
+Como $b,d\ne0$, existen $b^{-1}$ y $d^{-1}$. De nuevo por sustitución de iguales por iguales, multiplicamos ambos miembros por $b^{-1}d^{-1}$:
+
+$$
+(ad)(b^{-1}d^{-1})=(bc)(b^{-1}d^{-1}).
+$$
+
+En el miembro izquierdo,
+
+$$
+\begin{aligned}
+(ad)(b^{-1}d^{-1})
+&=adb^{-1}d^{-1}\\
+&=ab^{-1}(dd^{-1})\\
+&=ab^{-1}.
+\end{aligned}
+$$
+
+En el derecho,
+
+$$
+\begin{aligned}
+(bc)(b^{-1}d^{-1})
+&=bcb^{-1}d^{-1}\\
+&=c(bb^{-1})d^{-1}\\
+&=cd^{-1}.
+\end{aligned}
+$$
+
+Así,
 
 $$
 ab^{-1}=cd^{-1},
 $$
 
-es decir,
+y, por definición de cociente,
 
 $$
 \frac ab=\frac cd.
