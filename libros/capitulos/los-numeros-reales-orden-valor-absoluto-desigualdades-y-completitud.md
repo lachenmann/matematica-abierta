@@ -1535,15 +1535,87 @@ b-a>0,
 -(b-a)>0.
 $$
 
-La primera equivale a $a=b$. La segunda, por definición, equivale a $a<b$. Y como
+Hagamos explícita la primera equivalencia. Por definición de resta,
 
 $$
--(b-a)=a-b,
+b-a=0
+\iff
+b+(-a)=0.
 $$
 
-la tercera equivale a $b<a$.
+Si sumamos $a$ a ambos miembros, obtenemos
 
-Por tanto, para cualesquiera $a,b\in F$, exactamente una de las afirmaciones
+$$
+\bigl(b+(-a)\bigr)+a=0+a.
+$$
+
+Ahora,
+
+$$
+\begin{aligned}
+\bigl(b+(-a)\bigr)+a
+&=b+\bigl((-a)+a\bigr) && \text{(asociatividad)}\\
+&=b+0 && \text{(inverso aditivo)}\\
+&=b && \text{(neutro aditivo)},
+\end{aligned}
+$$
+
+mientras que, por conmutatividad y neutro aditivo,
+
+$$
+0+a=a+0=a.
+$$
+
+Por tanto, $b-a=0$ implica $b=a$, es decir, $a=b$. Recíprocamente, si $a=b$, entonces por sustitución
+
+$$
+b-a=a-a=a+(-a)=0.
+$$
+
+Así,
+
+$$
+b-a=0
+\iff
+a=b.
+$$
+
+La segunda posibilidad,
+
+$$
+b-a>0,
+$$
+
+equivale por definición a
+
+$$
+a<b.
+$$
+
+Para la tercera conviene justificar también la identidad que cambia el orden de la diferencia. Usando la regla ya demostrada para el inverso de una suma,
+
+$$
+\begin{aligned}
+-(b-a)
+&=-\bigl(b+(-a)\bigr)\\
+&=(-b)+\bigl(-(-a)\bigr)\\
+&=(-b)+a\\
+&=a+(-b)\\
+&=a-b.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+-(b-a)>0
+\iff
+a-b>0
+\iff
+b<a.
+$$
+
+En consecuencia, para cualesquiera $a,b\in F$, exactamente una de las afirmaciones
 
 $$
 \boxed{
@@ -1567,13 +1639,19 @@ a<b
 b<a.
 $$
 
-Tampoco puede cumplirse $a<a$, porque eso exigiría
+Tampoco puede cumplirse $a<a$, porque por definición exigiría
 
 $$
-a-a=0>0,
+a-a>0.
 $$
 
-mientras que (O3) excluye que $0$ sea positivo.
+Pero
+
+$$
+a-a=a+(-a)=0,
+$$
+
+y (O3), al afirmar que exactamente una de sus tres alternativas ocurre, excluye que $0$ sea positivo.
 
 ### La transitividad también se demuestra
 
@@ -1599,25 +1677,40 @@ $$
 (b-a)+(c-b)>0.
 $$
 
-Pero el miembro izquierdo se simplifica a
+Ahora hacemos explícita la reducción algebraica del miembro izquierdo:
 
 $$
-c-a.
+\begin{aligned}
+(b-a)+(c-b)
+&=\bigl(b+(-a)\bigr)+\bigl(c+(-b)\bigr)\\
+&=\bigl((-a)+c\bigr)+\bigl(b+(-b)\bigr)
+&& \text{(asociatividad y conmutatividad)}\\
+&=\bigl((-a)+c\bigr)+0 && \text{(inverso aditivo)}\\
+&=(-a)+c && \text{(neutro aditivo)}\\
+&=c+(-a) && \text{(conmutatividad)}\\
+&=c-a && \text{(definición de resta)}.
+\end{aligned}
 $$
 
-Luego
+Por sustitución de iguales por iguales, de
 
 $$
-c-a>0,
+(b-a)+(c-b)>0
 $$
 
-y por definición
+obtenemos entonces
+
+$$
+c-a>0.
+$$
+
+Y, por definición del orden,
 
 $$
 \boxed{a<c.}
 $$
 
-Así, la transitividad de $<$ no ha sido añadida como un cuarto axioma independiente: sale de (O1) y de la manera en que definimos la comparación mediante diferencias.
+Así, la transitividad de $<$ no ha sido añadida como un cuarto axioma independiente: sale de (O1), de las reglas algebraicas ya demostradas y de la manera en que definimos la comparación mediante diferencias.
 
 ::: {.callout-important title="Una idea estructural que conviene retener"}
 Para comparar $a$ y $b$ estudiamos el signo de
