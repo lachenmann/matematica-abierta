@@ -1971,35 +1971,150 @@ $$
 3x-7<8.
 $$
 
-Sumar $7$ a ambos miembros y después dividir por el número positivo $3$ produce
+Antes de transformarla, fijemos una hipótesis que suele quedar implícita. Ya demostramos que $1>0$. Por (O1),
 
 $$
-3x<15
+2=1+1>0
 $$
 
-y luego
+y nuevamente
 
 $$
-x<5.
+3=2+1>0.
 $$
 
-Esto demuestra que toda solución de la desigualdad original satisface $x<5$.
+Por tanto, multiplicar o dividir una desigualdad por $3$ conserva su sentido.
 
-Pero si queremos afirmar que **el conjunto de soluciones es exactamente** $(-\infty,5)$, debemos justificar también la dirección inversa. Si $x<5$, multiplicar por $3>0$ y restar $7$ produce
+**Primera dirección.** Supongamos
 
 $$
-3x<15
-\quad\Longrightarrow\quad
 3x-7<8.
 $$
 
-Como todos los pasos utilizados son equivalencias, obtenemos
+Por la parte 1 de @prp-t1-0007 podemos sumar $7$ a ambos miembros:
+
+$$
+(3x-7)+7<8+7.
+$$
+
+Reducimos el miembro izquierdo haciendo explícita la resta como suma con inverso:
+
+$$
+\begin{aligned}
+(3x-7)+7
+&=\bigl(3x+(-7)\bigr)+7\\
+&=3x+\bigl((-7)+7\bigr) && \text{(asociatividad)}\\
+&=3x+0 && \text{(inverso aditivo)}\\
+&=3x && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Como $8+7=15$, obtenemos
+
+$$
+3x<15.
+$$
+
+Ahora usamos la parte 6 de @prp-t1-0007. Puesto que $3>0$, dividir por $3$ conserva el orden:
+
+$$
+\frac{3x}{3}<\frac{15}{3}.
+$$
+
+Las dos fracciones se reducen mediante la definición de cociente. En el miembro izquierdo,
+
+$$
+\begin{aligned}
+\frac{3x}{3}
+&=(3x)3^{-1}\\
+&=x(33^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=x1 && \text{(inverso multiplicativo)}\\
+&=x && \text{(neutro multiplicativo)}.
+\end{aligned}
+$$
+
+Y, como $15=3\cdot5$,
+
+$$
+\begin{aligned}
+\frac{15}{3}
+&=(3\cdot5)3^{-1}\\
+&=5(33^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=5.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales concluimos
+
+$$
+\boxed{x<5}.
+$$
+
+Hemos probado hasta aquí solamente
 
 $$
 3x-7<8
-\iff
+\Longrightarrow
 x<5.
 $$
+
+**Dirección recíproca.** Supongamos ahora
+
+$$
+x<5.
+$$
+
+Como $3>0$, la parte 3 de @prp-t1-0007 permite multiplicar ambos miembros por $3$ sin invertir el orden:
+
+$$
+3x<3\cdot5=15.
+$$
+
+A continuación aplicamos la parte 1 sumando $-7$ a ambos miembros:
+
+$$
+3x+(-7)<15+(-7).
+$$
+
+Por definición de resta y por la aritmética de los enteros,
+
+$$
+3x+(-7)=3x-7
+\qquad\text{y}\qquad
+15+(-7)=8.
+$$
+
+Por tanto,
+
+$$
+3x-7<8.
+$$
+
+Hemos demostrado también
+
+$$
+x<5
+\Longrightarrow
+3x-7<8.
+$$
+
+Juntando ambas implicaciones,
+
+$$
+\boxed{
+3x-7<8
+\iff
+x<5.
+}
+$$
+
+Ahora sí podemos afirmar que el conjunto de soluciones de la desigualdad original es exactamente
+
+$$
+(-\infty,5).
+$$
+
+La diferencia entre una implicación y una equivalencia es esencial: una cadena que solo avanza en un sentido puede producir una **condición necesaria** sin haber caracterizado todavía todas las soluciones.
 
 Esta pequeña auditoría anticipa una regla importante para resolver inecuaciones:
 
