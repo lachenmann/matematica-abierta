@@ -871,87 +871,223 @@ $$
 \boxed{1>0.}
 $$
 
-Como $1\ne0$, (O3) dice que exactamente una de las cantidades $1$ y $-1$ es positiva. Si $-1>0$, entonces (O2) implicaría
+Como $1\ne0$, la tricotomía (O3), aplicada al elemento $1$, excluye la alternativa $1=0$. Por tanto, exactamente una de las dos afirmaciones
+
+$$
+1>0
+\qquad\text{o}\qquad
+-1>0
+$$
+
+puede ser verdadera. Supongamos, para obtener una contradicción, que
+
+$$
+-1>0.
+$$
+
+Como el producto de dos positivos es positivo, (O2) da
 
 $$
 (-1)(-1)>0.
 $$
 
-Pero por las reglas de signos,
+Por las reglas de signos ya demostradas,
 
 $$
-(-1)(-1)=1,
+(-1)(-1)=1.
 $$
 
-de modo que $1>0$ y $-1>0$ simultáneamente, contradiciendo (O3). Por tanto,
+Sustituyendo iguales por iguales en la desigualdad anterior obtenemos
 
 $$
 1>0.
 $$
 
-Probemos la parte 5. Supongamos primero $a>0$. Sabemos por @prp-t1-0026 que $a^{-1}\ne0$. Por tricotomía, $a^{-1}$ es positivo o negativo.
-
-Si fuera negativo, entonces
+Tendríamos entonces simultáneamente
 
 $$
+1>0
+\qquad\text{y}\qquad
+-1>0,
+$$
+
+lo que contradice la exclusividad de (O3) aplicada a $1$. La suposición $-1>0$ es, por tanto, imposible. Como una de las dos alternativas debe cumplirse, concluimos
+
+$$
+\boxed{1>0.}
+$$
+
+Probemos ahora la parte 5. Comencemos con la implicación
+
+$$
+a>0
+\Longrightarrow
+a^{-1}>0.
+$$
+
+Supongamos $a>0$. En particular, $a\ne0$, por lo que existe $a^{-1}$; además, @prp-t1-0026 garantiza
+
+$$
+a^{-1}\ne0.
+$$
+
+Aplicando (O3) a $a^{-1}$ y excluyendo el caso $a^{-1}=0$, queda exactamente una de las posibilidades
+
+$$
+a^{-1}>0
+\qquad\text{o}\qquad
 -a^{-1}>0.
 $$
 
-Como $a>0$, (O2) daría
+Supongamos que ocurriera la segunda. Como $a>0$ y $-a^{-1}>0$, (O2) implicaría
 
 $$
 a(-a^{-1})>0.
 $$
 
-Pero
+Ahora reducimos algebraicamente ese producto:
 
 $$
-a(-a^{-1})=-(aa^{-1})=-1,
+\begin{aligned}
+a(-a^{-1})
+&=-(aa^{-1}) && \text{(regla de signos)}\\
+&=-1 && \text{(inverso multiplicativo)}.
+\end{aligned}
 $$
 
-lo que contradice que $1>0$. Luego
+Por sustitución de iguales por iguales obtendríamos
+
+$$
+-1>0.
+$$
+
+Pero ya demostramos $1>0$, y (O3) aplicada a $1$ prohíbe que $1$ y $-1$ sean positivos simultáneamente. Luego la alternativa $-a^{-1}>0$ es imposible y necesariamente
 
 $$
 a^{-1}>0.
 $$
 
-La implicación recíproca se obtiene aplicando el resultado anterior a $a^{-1}$ y usando
+Esto prueba
 
 $$
-(a^{-1})^{-1}=a.
+a>0
+\Longrightarrow
+a^{-1}>0.
 $$
 
-Supongamos ahora $a<0$. Entonces $-a>0$, y por lo recién demostrado
+La dirección recíproca también debe quedar explícita. Supongamos
+
+$$
+a^{-1}>0.
+$$
+
+Aplicamos la implicación recién demostrada al elemento $a^{-1}$. Obtenemos
+
+$$
+(a^{-1})^{-1}>0.
+$$
+
+Por @prp-t1-0026,
+
+$$
+(a^{-1})^{-1}=a,
+$$
+
+y por sustitución concluimos
+
+$$
+a>0.
+$$
+
+Por tanto,
+
+$$
+\boxed{a>0\iff a^{-1}>0.}
+$$
+
+Pasemos al signo negativo. Supongamos primero
+
+$$
+a<0.
+$$
+
+Entonces $a\ne0$ y, por definición de número negativo,
+
+$$
+-a>0.
+$$
+
+La equivalencia positiva que acabamos de demostrar, aplicada a $-a$, da
 
 $$
 (-a)^{-1}>0.
 $$
 
-Además,
+Para identificar este inverso, observemos primero que
 
 $$
-(-a)(-a^{-1})=aa^{-1}=1.
+\begin{aligned}
+(-a)(-a^{-1})
+&=aa^{-1} && \text{(regla de signos)}\\
+&=1 && \text{(inverso multiplicativo)}.
+\end{aligned}
 $$
 
-Por unicidad del inverso multiplicativo,
+Así, $-a^{-1}$ es un inverso multiplicativo de $-a$. Como el inverso multiplicativo es único,
 
 $$
 (-a)^{-1}=-a^{-1}.
 $$
 
-Así,
+Sustituyendo esta igualdad en $(-a)^{-1}>0$, obtenemos
 
 $$
--a^{-1}>0,
+-a^{-1}>0.
 $$
 
-que equivale a
+Por definición de número negativo, esto equivale a
 
 $$
 a^{-1}<0.
 $$
 
-La recíproca vuelve a seguir de $(a^{-1})^{-1}=a$.
+Hemos probado entonces
+
+$$
+a<0
+\Longrightarrow
+a^{-1}<0.
+$$
+
+Para la recíproca, supongamos
+
+$$
+a^{-1}<0.
+$$
+
+Aplicamos la implicación negativa recién demostrada al elemento $a^{-1}$. Entonces
+
+$$
+(a^{-1})^{-1}<0.
+$$
+
+Usando nuevamente
+
+$$
+(a^{-1})^{-1}=a,
+$$
+
+concluimos
+
+$$
+a<0.
+$$
+
+Por tanto,
+
+$$
+\boxed{a<0\iff a^{-1}<0.}
+$$
 
 La parte 6 es ahora una consecuencia inmediata. Si $c>0$, entonces
 
