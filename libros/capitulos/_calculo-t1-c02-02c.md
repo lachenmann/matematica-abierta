@@ -730,37 +730,140 @@ $$
 \boxed{ac\le bc.}
 $$
 
-Para la parte 4, supongamos primero $a<b$ y $c<0$. Entonces
+Para la parte 4, supongamos primero
+
+$$
+a<b
+\qquad\text{y}\qquad
+c<0.
+$$
+
+Por la definición de número negativo,
 
 $$
 -c>0.
 $$
 
-La parte 3 aplicada a $-c$ produce
+Podemos entonces aplicar la parte 3 al factor positivo $-c$:
 
 $$
 a(-c)<b(-c).
 $$
 
-Usando las reglas de signos ya demostradas,
+Las reglas de signos ya demostradas dan
+
+$$
+a(-c)=-(ac)
+\qquad\text{y}\qquad
+b(-c)=-(bc),
+$$
+
+de modo que, por sustitución de iguales por iguales,
 
 $$
 -ac<-bc.
 $$
 
-Sumando $ac+bc$ a ambos miembros obtenemos
+Ahora trasladamos esta desigualdad sumando $ac+bc$ a ambos miembros. Por la parte 1,
 
 $$
-bc<ac,
+(-ac)+(ac+bc)<(-bc)+(ac+bc).
 $$
 
-es decir,
+Reducimos cada miembro por separado. En el izquierdo,
+
+$$
+\begin{aligned}
+(-ac)+(ac+bc)
+&=\bigl((-ac)+ac\bigr)+bc && \text{(asociatividad)}\\
+&=0+bc && \text{(inverso aditivo)}\\
+&=bc && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+En el derecho,
+
+$$
+\begin{aligned}
+(-bc)+(ac+bc)
+&=ac+\bigl((-bc)+bc\bigr)
+&& \text{(asociatividad y conmutatividad)}\\
+&=ac+0 && \text{(inverso aditivo)}\\
+&=ac && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+\boxed{bc<ac},
+$$
+
+o, equivalentemente,
+
+$$
+\boxed{ac>bc}.
+$$
+
+Pasemos a la versión débil. Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+c\le0.
+$$
+
+Por definición,
+
+$$
+a\le b
+\iff
+a<b\ \text{o}\ a=b,
+$$
+
+y
+
+$$
+c\le0
+\iff
+c<0\ \text{o}\ c=0.
+$$
+
+Si $a=b$, la sustitución da
+
+$$
+ac=bc.
+$$
+
+Si $c=0$, entonces @exm-t1-0040 da
+
+$$
+ac=a0=0
+\qquad\text{y}\qquad
+bc=b0=0,
+$$
+
+y nuevamente $ac=bc$.
+
+En el único caso restante,
+
+$$
+a<b
+\qquad\text{y}\qquad
+c<0,
+$$
+
+acabamos de demostrar que
 
 $$
 ac>bc.
 $$
 
-La versión débil para $a\le b$ y $c\le0$ se obtiene del mismo modo, separando los casos de igualdad.
+Por tanto, en todos los casos,
+
+$$
+\boxed{ac\ge bc.}
+$$
 
 Antes de estudiar inversos conviene establecer un hecho pequeño pero decisivo:
 
