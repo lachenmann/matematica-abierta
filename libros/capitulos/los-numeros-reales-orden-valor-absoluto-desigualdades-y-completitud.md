@@ -3744,44 +3744,46 @@ Si $a>b$, no existe ningún real que satisfaga simultáneamente $a<x<b$, y el co
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** Si $-4<x\le7$, ¿a qué intervalo pertenece $x$?
-
-**Respuesta:**
+**1.** Sean $a<b$ y $c<d$. Demuestra, utilizando solo las leyes de orden ya establecidas, que
 
 $$
-x\in(-4,7].
+a-d<b-c.
 $$
+
+**Respuesta.** De $c<d$, al multiplicar por $-1<0$, obtenemos $-d<-c$. Sumando esta desigualdad con $a<b$ mediante la parte 2 de @prp-t1-0007,
+
+$$
+a+(-d)<b+(-c),
+$$
+
+de donde $a-d<b-c$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** Si $a<b$ y $c=-3$, ¿qué relación existe entre $ac$ y $bc$?
-
-Como $c<0$, la desigualdad se invierte:
+**2.** Supón que
 
 $$
-ac>bc.
-$$
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** Si $0<a<b$, ¿cuál de los recíprocos es mayor?
-
-Por la parte 7 de @prp-t1-0007,
-
-$$
-\frac1b<\frac1a.
+a<b\le0.
 $$
 
-El orden se invierte al tomar recíprocos positivos.
-:::
+¿Qué relación existe entre $a^2$ y $b^2$?
 
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué no escribimos $[2,\infty]$ para los reales mayores o iguales que $2$?
-
-Porque $\infty$ no es un número real ni un elemento del conjunto. La notación correcta es
+**Respuesta.** Al multiplicar $a<b$ por $-1$ se invierte el orden:
 
 $$
-[2,\infty).
+0\le-b<-a.
+$$
+
+La monotonía del cuadrado en los no negativos da
+
+$$
+(-b)^2\le(-a)^2,
+$$
+
+y por las reglas de signos,
+
+$$
+\boxed{b^2\le a^2}.
 $$
 :::
 
@@ -3845,6 +3847,16 @@ $$
 $$
 
 La secuencia no es accidental. Antes de afirmar que una frontera existe, necesitamos saber con precisión qué significa ser una frontera.
+
+::: {.callout-note title="Cambio de régimen: el rigor permanece, la explicación se comprime"}
+En esta primera sección trabajamos deliberadamente **a cámara lenta**. Expandimos asociatividad, conmutatividad, neutros, inversos, sustituciones y reversibilidad para que el lector aprendiera a auditar una prueba y no tratara las reglas escolares como movimientos sin fundamento.
+
+A partir de aquí cambia la granularidad. Una vez demostrada una regla, podremos citarla y utilizarla sin reconstruir cada vez toda su genealogía. No volveremos a desarrollar de rutina pasos como $x+0=x$, $aa^{-1}=1$, una reagrupación asociativa o una sustitución de iguales por iguales.
+
+Sí volveremos a abrir una cadena cuando el paso contenga información matemática nueva o una hipótesis fácil de perder: **dominio y no nulidad, signo de un factor, reversibilidad de una equivalencia, separación de casos, orden de cuantificadores, existencia o unicidad, aplicación de completitud, o diseño de una construcción no evidente**.
+
+El rigor no disminuye. Lo que disminuye es el andamiaje visible: el objetivo es que el lector empiece a cargar por sí mismo con las justificaciones que ya aprendió a reconocer.
+:::
 
 ## Valor absoluto, distancia y desigualdades {#sec-t1-c02-03}
 
@@ -4374,54 +4386,46 @@ su significado geométrico ya no deberá aprenderse de nuevo: serán afirmacione
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** Describe mediante un intervalo el conjunto de todos los $x$ que satisfacen
+**1.** Si
 
 $$
-|x-4|<3.
+|x-a|<r,
+\qquad
+|y-b|<s,
 $$
 
-**Respuesta.** La distancia de $x$ a $4$ es menor que $3$, de modo que
+con $r,s>0$, demuestra que
 
 $$
-1<x<7.
+|(x+y)-(a+b)|<r+s.
 $$
 
-Por tanto,
+**Respuesta.** Como
 
 $$
-x\in(1,7).
-$$
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** ¿Qué región describe
-
-$$
-|x+2|\ge5?
+(x+y)-(a+b)=(x-a)+(y-b),
 $$
 
-**Respuesta.** Como $|x+2|=|x-(-2)|$, el centro es $-2$. Estar a distancia al menos $5$ significa encontrarse fuera del intervalo abierto $(-7,3)$, incluidos sus extremos:
+la desigualdad triangular da
 
 $$
-x\le-7
-\quad\text{o}\quad
-x\ge3.
+|(x+y)-(a+b)|
+\le |x-a|+|y-b|
+<r+s.
 $$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**3.** Si $|x-10|<\tfrac12$, da una cota sencilla para $|x|$.
-
-**Respuesta.** Por la desigualdad triangular,
+**2.** Resuelve
 
 $$
-|x|
-\le
-|x-10|+10
-<
-\frac12+10
-=
-\frac{21}{2}.
+|x-1|+|x+1|\le4.
+$$
+
+**Respuesta.** Si $-1\le x\le1$, la suma vale $2$. Si $x\ge1$, vale $2x$ y exige $x\le2$. Si $x\le-1$, vale $-2x$ y exige $x\ge-2$. Por tanto,
+
+$$
+\boxed{x\in[-2,2]}.
 $$
 :::
 
@@ -5101,54 +5105,38 @@ Todavía no afirmaremos que esas dos condiciones basten para garantizar la exist
 **1.** Sea
 
 $$
-A=[-3,2).
+A=[-2,0)\cup(1,3).
 $$
 
-Determina si existen $\max A$, $\min A$, $\sup A$ e $\inf A$.
+Determina $\sup A$, $\inf A$ y decide si existen máximo y mínimo.
 
-**Respuesta.** Como $-3\in A$ y todo elemento de $A$ es mayor o igual que $-3$,
-
-$$
-\min A=-3,
-\qquad
-\inf A=-3.
-$$
-
-En el extremo superior, $2$ es la menor cota superior, pero $2\notin A$. Por tanto,
+**Respuesta.** El extremo superior es $3$, que no pertenece al conjunto, de modo que
 
 $$
-\sup A=2,
+\sup A=3
 $$
 
-y $A$ no tiene máximo.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** Si $s=\sup A$ y $\varepsilon=10^{-3}$, ¿qué garantiza la caracterización aproximativa?
-
-**Respuesta.** Garantiza que existe algún $a\in A$ tal que
+y no hay máximo. El extremo inferior es $-2$ y sí pertenece a $A$, por lo que
 
 $$
-s-10^{-3}<a\le s.
-$$
-
-No afirma que haya un único elemento ni que podamos escoger el mismo $a$ para todos los valores de $\varepsilon$.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Puede un número ser simultáneamente supremo y máximo de un conjunto?
-
-**Respuesta.** Sí. Ocurre exactamente cuando el supremo pertenece al conjunto. Por ejemplo,
-
-$$
-\sup[0,1]=\max[0,1]=1.
+\inf A=\min A=-2.
 $$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué demostrar que $5$ es una cota superior de $A$ no basta para concluir que $\sup A=5$?
+**2.** Sea $A\ne\varnothing$ y $s=\sup A$. Demuestra que, para todo $t<s$, existe $a\in A$ tal que
 
-**Respuesta.** Porque quizá exista otra cota superior menor que $5$. Para probar que $5$ es el supremo debemos demostrar además que **ninguna** cota superior está por debajo de $5$.
+$$
+t<a\le s.
+$$
+
+**Respuesta.** Toma $\varepsilon=s-t>0$. La caracterización aproximativa del supremo produce $a\in A$ con
+
+$$
+s-\varepsilon<a\le s.
+$$
+
+Como $s-\varepsilon=t$, obtenemos la afirmación deseada.
 :::
 
 ### El punto al que hemos llegado
@@ -5669,13 +5657,36 @@ porque controlan simultáneamente todos los racionales positivos $p$.
 Tampoco diremos todavía que estas cadenas «convergen». El lenguaje de convergencia será construido más adelante. Por ahora solo necesitamos las desigualdades que acabamos de demostrar.
 
 ::: {.callout-tip title="Antes de seguir"}
-Partiendo de $p=1$, la fórmula de Rudin da $q=4/3$.
+Sea
 
-1. ¿Es $q>p$?
-2. ¿Sigue cumpliéndose $q^2<2$?
-3. ¿Qué parte de la demostración general garantiza cada respuesta sin necesidad de calcular específicamente $16/9$?
+$$
+T(p)=p-\frac{p^2-2}{p+2},
+\qquad p\ge1.
+$$
 
-**Respuesta.** Sí a las dos primeras preguntas. Como $p^2<2$, la identidad para $q-p$ garantiza $q>p$, y la identidad para $q^2-2$ garantiza que $q^2-2$ conserva signo negativo. El cálculo particular $16/9<2$ sirve como comprobación, no como fundamento de la prueba.
+Usando la identidad ya demostrada para $T(p)^2-2$, prueba que
+
+$$
+|T(p)^2-2|
+\le
+\frac29|p^2-2|.
+$$
+
+**Respuesta.** Tenemos
+
+$$
+|T(p)^2-2|
+=
+\frac{2}{(p+2)^2}|p^2-2|.
+$$
+
+Como $p\ge1$, se cumple $(p+2)^2\ge9$, y por tanto
+
+$$
+\frac{2}{(p+2)^2}\le\frac29.
+$$
+
+La desigualdad muestra que una aplicación de $T$ reduce fuertemente el defecto respecto de $x^2=2$. Todavía no la interpretamos como una afirmación de convergencia: esa teoría aparecerá más adelante.
 :::
 
 ### Entonces, ¿dónde está exactamente el hueco?
@@ -6285,39 +6296,27 @@ En nuestro desarrollo habitual, una vez fijado $A\subseteq\mathbb R$, la notaci�
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Podemos aplicar el axioma de completitud al conjunto $A=(0,\infty)$?
+**1.** Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea $c\in\mathbb R$. Define
 
-**Respuesta.** No. Aunque $A$ es no vacío, no está acotado superiormente. El axioma exige ambas hipótesis.
+$$
+A+c=\{a+c:a\in A\}.
+$$
+
+¿Por qué el axioma de completitud puede aplicarse a $A+c$?
+
+**Respuesta.** Si $M$ es una cota superior de $A$, entonces $M+c$ es una cota superior de $A+c$. Además, si $a_0\in A$, entonces $a_0+c\in A+c$. Por tanto, $A+c$ es no vacío y está acotado superiormente.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** Si la completitud garantiza que $s=\sup A$ existe, ¿garantiza también que $s\in A$?
-
-**Respuesta.** No. Por ejemplo,
+**2.** Sea $A\ne\varnothing$ y acotado inferiormente. Explica cómo la completitud aplicada a
 
 $$
-\sup(0,1)=1
+-A=\{-a:a\in A\}
 $$
 
-pero $1\notin(0,1)$.
-:::
+produce un candidato para $\inf A$.
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Por qué la existencia de muchas cotas superiores racionales para $S_{\mathbb Q}$ no contradice nuestro resultado?
-
-**Respuesta.** Porque el problema no es la falta de cotas superiores. El conjunto tiene, por ejemplo, las cotas racionales $2$, $3$ y muchas otras. Lo que no existe en $\mathbb Q$ es una **menor** cota superior.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué no podemos escribir todavía $\alpha=\sqrt2$ para $\alpha=\sup S_{\mathbb R}$?
-
-**Respuesta.** Porque la completitud solo ha demostrado que $\alpha$ existe como supremo. Todavía debemos probar que
-
-$$
-\alpha^2=2.
-$$
-
-Esa identificación será precisamente la aplicación central de §1.6.
+**Respuesta.** Si $m$ es cota inferior de $A$, entonces $-m$ es cota superior de $-A$; así, $-A$ es no vacío y acotado superiormente. La completitud produce $s=\sup(-A)$, y el número $-s$ es el candidato natural a $\inf A$.
 :::
 
 ### La diferencia decisiva
@@ -6972,33 +6971,35 @@ La prueba es enteramente una prueba de orden y completitud.
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Por qué no bastaba con definir
+**1.** Demuestra que, para todo $x\in\mathbb R$,
 
 $$
-\alpha=\sup S_a
+\boxed{\sqrt{x^2}=|x|}.
 $$
 
-y afirmar inmediatamente que $\alpha^2=a$?
+**Respuesta.** El número $|x|$ es no negativo y
 
-**Respuesta.** Porque la definición de supremo solo caracteriza a $\alpha$ como una frontera de $S_a$. La igualdad $\alpha^2=a$ es una propiedad adicional que debe demostrarse. Precisamente para eso se descartan los casos $\alpha^2<a$ y $\alpha^2>a$.
+$$
+|x|^2=x^2.
+$$
+
+Por la unicidad de la raíz cuadrada no negativa de $x^2$, necesariamente $\sqrt{x^2}=|x|$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** En el caso $\alpha^2<a$, ¿qué parte de la definición de supremo se contradice?
+**2.** Si $0\le a<b$, demuestra que
 
-**Respuesta.** Que $\alpha$ sea una **cota superior**. Construimos $\alpha+h\in S_a$ con $\alpha+h>\alpha$.
-:::
+$$
+\sqrt a<\sqrt b.
+$$
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** En el caso $\alpha^2>a$, ¿qué parte se contradice?
+**Respuesta.** Si $\sqrt a\ge\sqrt b$, como ambos números son no negativos, la monotonía del cuadrado daría
 
-**Respuesta.** Que $\alpha$ sea la **menor** cota superior. Construimos una cota superior $c$ que satisface $c<\alpha$.
-:::
+$$
+a=(\sqrt a)^2\ge(\sqrt b)^2=b,
+$$
 
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué el teorema no dice que $x^2=a$ tiene una única solución cuando $a>0$?
-
-**Respuesta.** Porque entonces hay dos soluciones reales, $\sqrt a$ y $-\sqrt a$. Lo que es único es el número **no negativo** cuyo cuadrado es $a$.
+contradicción. Por tanto $\sqrt a<\sqrt b$.
 :::
 
 ### Del primer hueco a una herramienta permanente
@@ -7442,31 +7443,27 @@ $$
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Dónde se utiliza exactamente la completitud en la demostración de la propiedad arquimediana?
-
-**Respuesta.** Bajo la suposición de que $\mathbb N$ estuviera acotado superiormente, la completitud garantiza la existencia de $\alpha=\sup\mathbb N$. El resto del argumento contradice que ese supremo pueda existir.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** ¿Por qué $\alpha-1$ no puede ser una cota superior de $\mathbb N$?
-
-**Respuesta.** Porque sería una cota superior estrictamente menor que $\alpha$, contradiciendo que $\alpha$ es la **menor** cota superior.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Qué significa realmente
+**1.** Sean $k>0$ y $\varepsilon>0$. Demuestra que existe $n\in\mathbb N_{>0}$ tal que
 
 $$
-\forall\varepsilon>0\;\exists n\in\mathbb N_{>0}\quad \frac1n<\varepsilon?
+\frac{k}{n}<\varepsilon.
 $$
 
-**Respuesta.** Que ninguna tolerancia positiva es demasiado pequeña para la familia $1/n$: una vez dada $\varepsilon$, podemos escoger un natural —dependiente de esa tolerancia— cuyo recíproco sea menor.
+**Respuesta.** Por la propiedad arquimediana podemos escoger $n>k/\varepsilon$. Como todas las cantidades son positivas, esto equivale a $k/n<\varepsilon$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**4.** ¿La propiedad arquimediana implica completitud?
+**2.** Supón que $x\ge0$ y que existe $k>0$ tal que
 
-**Respuesta.** No. $\mathbb Q$ es arquimediano pero no completo, como mostró el conjunto racional asociado a $x^2=2$.
+$$
+x\le\frac{k}{n}
+\qquad
+\text{para todo }n\in\mathbb N_{>0}.
+$$
+
+Demuestra que $x=0$.
+
+**Respuesta.** Si $x>0$, la propiedad arquimediana permite escoger $n>k/x$, y entonces $k/n<x$, contradiciendo la hipótesis. Luego $x$ no puede ser positivo; como $x\ge0$, se sigue $x=0$.
 :::
 
 ### Lo que exporta esta sección
@@ -7961,27 +7958,35 @@ Conviene notar lo que **no** hemos usado para llegar aquí: ni cardinalidades, n
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Por qué elegimos $n$ de manera que $1/n<b-a$ en la prueba de densidad racional?
+**1.** Sea $D\subseteq\mathbb R$ denso y sean $\lambda\ne0$, $c\in\mathbb R$. Demuestra que
 
-**Respuesta.** Porque eso garantiza que el intervalo escalado $(na,nb)$ tenga longitud mayor que $1$. Así, al encajonar $na$ entre enteros consecutivos, el entero siguiente todavía queda estrictamente antes de $nb$.
+$$
+\lambda D+c=\{\lambda d+c:d\in D\}
+$$
+
+también es denso en $\mathbb R$.
+
+**Respuesta.** Dados $a<b$, si $\lambda>0$ aplicamos densidad de $D$ al intervalo
+
+$$
+\left(\frac{a-c}{\lambda},\frac{b-c}{\lambda}\right).
+$$
+
+Si $\lambda<0$, invertimos los extremos. En ambos casos obtenemos $d\in D$ con $a<\lambda d+c<b$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** ¿Dónde entra la completitud en la demostración de densidad racional?
+**2.** Demuestra que
 
-**Respuesta.** No se invoca directamente en §1.8. En nuestra arquitectura entra a través de §1.7: completitud implicó la propiedad arquimediana, que permite escoger la escala $1/n$.
-:::
+$$
+\sqrt2+\mathbb Q
+=
+\{\sqrt2+q:q\in\mathbb Q\}
+$$
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Por qué $r+\sqrt2$ es irracional cuando $r\in\mathbb Q$?
+es un conjunto denso formado exclusivamente por irracionales.
 
-**Respuesta.** Si $r+\sqrt2$ fuera racional, al restarle el racional $r$ obtendríamos que $\sqrt2$ es racional, contradicción.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Que $\mathbb Q$ sea denso significa que todo real es racional?
-
-**Respuesta.** No. Significa que todo intervalo abierto no vacío contiene racionales. El propio $\sqrt2$ es irracional y, sin embargo, hay racionales arbitrariamente cerca de él.
+**Respuesta.** Es denso por la pregunta anterior, tomando $D=\mathbb Q$, $\lambda=1$ y $c=\sqrt2$. Si $\sqrt2+q$ fuese racional para algún $q\in\mathbb Q$, al restar $q$ concluiríamos que $\sqrt2$ es racional, contradicción.
 :::
 
 ### Lo que exporta esta sección
@@ -8646,27 +8651,37 @@ Esta separación será importante más adelante. En análisis numérico es fáci
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Por qué $b_n$ es una cota superior de todos los extremos izquierdos, y no solo de $a_n$?
+**1.** Determina exactamente la intersección de
 
-**Respuesta.** Porque los intervalos están encajados. Si $m\ge n$, entonces $I_m\subseteq I_n$ y $a_m\in I_n$, de modo que $a_m\le b_n$. Si $m<n$, entonces $a_m\le a_n\le b_n$.
+$$
+I_n=
+\left[-\frac1{n+1},\frac2{n+1}\right],
+\qquad n\in\mathbb N.
+$$
+
+**Respuesta.** El número $0$ pertenece a todos los intervalos. Si $x>0$, la propiedad arquimediana permite elegir $n$ con $2/(n+1)<x$, por lo que $x\notin I_n$. Si $x<0$, elegimos $n$ con $1/(n+1)<-x$, y entonces $x<-1/(n+1)$, de modo que tampoco pertenece a todos los intervalos. Por tanto,
+
+$$
+\boxed{\bigcap_{n\in\mathbb N}I_n=\{0\}}.
+$$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** ¿El principio de intervalos encajados garantiza un único punto común?
+**2.** Da una familia de intervalos cerrados y encajados cuya intersección no sea un único punto y explica qué hipótesis adicional de unicidad falla.
 
-**Respuesta.** No. Garantiza solamente que la intersección no sea vacía. La familia constante $I_n=[0,1]$ tiene todos los puntos de $[0,1]$ en la intersección.
-:::
+**Respuesta.** La familia constante
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Por qué los intervalos abiertos $J_n=(0,1/(n+1))$ no contradicen el teorema?
+$$
+I_n=[0,1]
+$$
 
-**Respuesta.** Porque el teorema exige intervalos cerrados. Precisamente el único candidato geométrico a sobrevivir, $0$, ha sido eliminado de cada $J_n$.
-:::
+es cerrada y encajada, pero
 
-::: {.callout-tip title="Antes de seguir"}
-**4.** En una cadena de bisecciones, ¿dónde utilizamos la propiedad arquimediana?
+$$
+\bigcap_n I_n=[0,1].
+$$
 
-**Respuesta.** En la prueba de unicidad: permite elegir una etapa cuya longitud sea menor que la distancia positiva entre dos supuestos puntos comunes distintos.
+Falla la condición de que las longitudes puedan hacerse menores que cualquier $\varepsilon>0$.
 :::
 
 ### Lo que exporta esta sección
@@ -9346,32 +9361,6 @@ Cuando aparezca un problema de este capítulo, estas preguntas ayudan a elegir e
 
 No se trata de convertir estas preguntas en una tabla mecánica. Su función es ayudar a reconocer la **forma matemática** de un problema.
 
-### Antes de seguir
-
-::: {.callout-tip title="Antes de seguir"}
-**1.** En el Laboratorio 1, ¿dónde interviene la completitud si la prueba final solo menciona $\sqrt5$?
-
-**Respuesta.** Interviene en la dependencia del objeto: la existencia de $\sqrt5$ fue demostrada en §1.6 mediante completitud. Una prueba puede depender de un axioma aunque no lo invoque nuevamente de forma explícita.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** En el Laboratorio 4, ¿por qué no basta escoger $\delta=\eta$?
-
-**Respuesta.** Porque $\eta$ controla cercanía a $x$, pero no garantiza que la perturbación permanezca dentro de $|y-a|<r$. También debemos respetar el margen $r-|x-a|$ hasta la frontera.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** En la bisección, ¿qué produce existencia y qué produce unicidad?
-
-**Respuesta.** La existencia del punto común proviene del principio de intervalos encajados, y por tanto de completitud. La unicidad aparece cuando las longitudes pueden hacerse menores que cualquier distancia positiva entre dos supuestos puntos distintos.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿La densidad de $\mathbb Q$ es equivalente a la completitud de $\mathbb R$?
-
-**Respuesta.** No. La densidad es una consecuencia mucho más débil. De hecho, $\mathbb Q$ es denso y, sin embargo, no es completo.
-:::
-
 ### Lo que queda antes de cerrar el capítulo
 
 Ya no falta teoría conceptual nueva en este capítulo. La última sección será el banco completo de ejercicios y soluciones.
@@ -9419,9 +9408,11 @@ El banco contiene exactamente cuarenta ejercicios, organizados en siete niveles.
 | G | síntesis y desafío | 3 |
 | **Total** |  | **40** |
 
-El banco reabierto incorpora explícitamente la nueva capa axiomática de §1.1. A lo largo de los niveles A--F aparecerán tareas de clasificación **axioma / definición / resultado demostrado**, unicidad, reglas de signos, cancelación y producto nulo, existencia y unicidad de ecuaciones, diagnóstico de división por cero y reconstrucción de una prueba directamente desde `C1--C9`. Esta incorporación se hace sin retirar la cobertura de completitud, densidad, bisección ni las tres inecuaciones racionales avanzadas.
+El banco ha sido depurado con una regla adicional: **no pedir como ejercicio la reproducción literal de una demostración que el desarrollo ya resolvió línea por línea**. Cuando reaparece una idea conocida, la tarea exige transferencia: combinarla con otra herramienta, generalizarla, diagnosticar una hipótesis, construir un contraejemplo o resolver una variante cuya estrategia no esté escrita de antemano.
 
 Todos los ejercicios pueden resolverse usando los resultados demostrados en este capítulo, el principio de inducción aquí enunciado y el álgebra escolar. No es necesario —ni está permitido en las soluciones canónicas— invocar convergencia de sucesiones, límites, continuidad, teorema del valor intermedio, Bolzano–Weierstrass o resultados posteriores.
+
+Las soluciones siguen también el cambio de régimen pedagógico del capítulo: citan por nombre los resultados ya establecidos y no expanden de nuevo asociatividad, neutros o sustituciones rutinarias, salvo cuando el propio ejercicio sea una auditoría axiomática.
 
 ::: {.callout-tip title="Cómo trabajar esta sección"}
 Antes de consultar una solución, deja por escrito cuatro cosas:
@@ -9437,35 +9428,42 @@ En una inecuación racional añade una quinta pregunta: **¿qué puntos están e
 ### Nivel A — Reconocimiento estructural, definiciones e intervalos
 
 ::: {#exr-t1-0036}
-<!-- CPM-T1-EXR-0036 | A | CONCEPTUAL | GEOMETRY | ORIGINAL -->
-**Ejercicio A1. Cuatro lenguajes para la misma región.** Escribe el conjunto
+<!-- CPM-T1-EXR-0036 | A | CONCEPTUAL | GEOMETRY | TRANSFER -->
+**Ejercicio A1. Intersección de dos bandas de distancia.** Describe el conjunto
 
 $$
-\{x\in\mathbb R:|x-3|<2\}
+S=\{x\in\mathbb R:|x-2|<3\text{ y }|x+1|\le2\}
 $$
 
-de tres maneras adicionales: como desigualdad doble, como intervalo y como afirmación verbal de distancia.
+como una desigualdad compuesta y como un intervalo. Indica con cuidado qué extremos pertenecen al conjunto.
 :::
 
 ::: {#exr-t1-0037}
-<!-- CPM-T1-EXR-0037 | A | CONCEPTUAL | ORIGINAL -->
-**Ejercicio A2. Multiplicar desigualdades.** Decide qué puede concluirse de $a<b$ en cada caso y justifica la dirección de la desigualdad:
+<!-- CPM-T1-EXR-0037 | A | CONCEPTUAL | ORDER | TRANSFER -->
+**Ejercicio A2. Tres transformaciones del mismo orden.** Supón
 
-1. $c>0$;
-2. $c<0$;
-3. $c=0$.
+$$
+0<a<b,
+\qquad
+c<0.
+$$
 
-Compara $ac$ y $bc$.
+Ordena correctamente, justificando cada caso:
+
+1. $ac$, $bc$ y $0$;
+2. $a/c$, $b/c$ y $0$;
+3. $1/a$, $1/b$ y $0$.
 :::
 
 ::: {#exr-t1-0038}
-<!-- CPM-T1-EXR-0038 | A | CONCEPTUAL | ORIGINAL -->
-**Ejercicio A3. Cota, máximo y supremo.** Sea $A=(0,4)$. Decide si cada afirmación es verdadera o falsa y justifica brevemente:
+<!-- CPM-T1-EXR-0038 | A | CONCEPTUAL | SUPREMUM | TRANSFER -->
+**Ejercicio A3. Dos componentes y cuatro extremos.** Sea
 
-1. $5$ es cota superior de $A$;
-2. $4$ es cota superior de $A$;
-3. $4$ es máximo de $A$;
-4. $\sup A=4$.
+$$
+A=(-2,1]\cup[3,5).
+$$
+
+Determina $\sup A$, $\inf A$ y decide si $A$ tiene máximo y mínimo. Justifica la diferencia entre frontera y pertenencia.
 :::
 
 ::: {#exr-t1-0039}
@@ -9481,15 +9479,16 @@ Compara $ac$ y $bc$.
 Explica por qué confundir estas categorías puede ocultar una dependencia lógica en una demostración.
 :::
 ::: {#exr-t1-0040}
-<!-- CPM-T1-EXR-0040 | A | CONCEPTUAL | ORIGINAL -->
-**Ejercicio A5. ¿Cuándo puede aplicarse completitud?** Para cada conjunto indica si el axioma del supremo garantiza directamente la existencia de un supremo real:
+<!-- CPM-T1-EXR-0040 | A | CONCEPTUAL | COMPLETENESS | TRANSFER -->
+**Ejercicio A5. Auditar completitud sin calcular el supremo.** Para cada conjunto decide si el axioma de completitud garantiza **directamente** la existencia de un supremo real. En cada caso identifica la hipótesis que se verifica o falla.
 
-1. $(0,1)$;
-2. $\mathbb N$;
+1. $\{x\in\mathbb R:|x-2|<1\}$;
+2. $[0,\infty)$;
 3. $\varnothing$;
-4. $\{-3,7,10\}$.
+4. $\{1/n:n\in\mathbb N_{>0}\}$;
+5. $(-\infty,0]$.
 
-No se pide calcular el supremo cuando exista; se pide auditar las hipótesis del axioma.
+No calcules el supremo salvo que sea necesario para justificar una cota.
 :::
 
 ::: {#exr-t1-0041}
@@ -9518,12 +9517,14 @@ $$
 ### Nivel B — Aplicación directa: álgebra, desigualdades y estimaciones
 
 ::: {#exr-t1-0043}
-<!-- CPM-T1-EXR-0043 | B | COMPUTATION | ORIGINAL -->
-**Ejercicio B1. Valor absoluto como intervalo.** Resuelve
+<!-- CPM-T1-EXR-0043 | B | COMPUTATION | ABSOLUTE_VALUE | TRANSFER -->
+**Ejercicio B1. Valor absoluto anidado.** Resuelve completamente
 
 $$
-|2x-5|<3.
+\bigl||x-1|-2\bigr|\le1.
 $$
+
+Entrega el conjunto solución como unión de intervalos cerrados.
 :::
 
 ::: {#exr-t1-0044}
@@ -9542,18 +9543,20 @@ $$
 :::
 
 ::: {#exr-t1-0045}
-<!-- CPM-T1-EXR-0045 | B | PROOF | AXIOMATIC | RETROFIT_AXIOMATIC -->
-**Ejercicio B3. La unicidad no viene incluida en el axioma.** Sea $F$ un cuerpo y sea $a\in F$. Supón que $b,c\in F$ satisfacen
+<!-- CPM-T1-EXR-0045 | B | PROOF | ORDER | QUOTIENTS | TRANSFER -->
+**Ejercicio B3. La diferencia entre dos recíprocos.** Sean $a,b\ne0$.
 
-$$
-a+b=0,
-\qquad
-a+c=0.
-$$
-
-Demuestra directamente que $b=c$. En tu cadena de igualdades indica dónde utilizas asociatividad, conmutatividad y la propiedad del neutro aditivo.
-
-No cites simplemente la unicidad de los inversos: reconstruye la prueba desde los axiomas de cuerpo.
+1. Demuestra que
+   $$
+   a^{-1}-b^{-1}=\frac{b-a}{ab}.
+   $$
+2. Usa esta identidad, junto con las leyes de signo ya demostradas, para recuperar el hecho de que
+   $$
+   0<a<b
+   \quad\Longrightarrow\quad
+   \frac1b<\frac1a,
+   $$
+   sin citar directamente la parte 7 de @prp-t1-0007.
 :::
 ::: {#exr-t1-0046}
 <!-- CPM-T1-EXR-0046 | B | COMPUTATION | CONCEPTUAL | ORIGINAL -->
@@ -9580,14 +9583,24 @@ Justifica cada decisión comparando cuadrados.
 :::
 
 ::: {#exr-t1-0048}
-<!-- CPM-T1-EXR-0048 | B | PROOF | AXIOMATIC | RETROFIT_AXIOMATIC -->
-**Ejercicio B6. Fabricar una regla de signos.** Sean $a,b\in F$, donde $F$ es un cuerpo. Demuestra que
+<!-- CPM-T1-EXR-0048 | B | PROOF | SIGNS | QUOTIENTS | TRANSFER -->
+**Ejercicio B6. Regla de signos para un cociente.** Sean $a,b\ne0$. Demuestra, sin hacer una tabla memorizada, que
 
 $$
-(-a)b=-(ab).
+\frac ab>0
+\iff
+(a>0\text{ y }b>0)\ \text{o}\ (a<0\text{ y }b<0),
 $$
 
-La estrategia debe ser estructural: prueba primero que $(-a)b$ es un inverso aditivo de $ab$ y concluye por unicidad. Señala dónde intervienen distributividad, conmutatividad y el hecho ya demostrado de que $b0=0$.
+y que
+
+$$
+\frac ab<0
+\iff
+(a>0\text{ y }b<0)\ \text{o}\ (a<0\text{ y }b>0).
+$$
+
+Debes reducir el problema al signo de $b^{-1}$ y al teorema del signo de un producto.
 :::
 ::: {#exr-t1-0049}
 <!-- CPM-T1-EXR-0049 | B | COMPUTATION | SYNTHESIS | ORIGINAL -->
@@ -9635,27 +9648,29 @@ $$
 :::
 
 ::: {#exr-t1-0052}
-<!-- CPM-T1-EXR-0052 | C | PROOF | SYNTHESIS | ORIGINAL -->
-**Ejercicio C3. Dos tipos de números dentro de cualquier intervalo.** Sean $a<b$. Demuestra que existe un racional $q$ y un irracional $\xi$ tales que
+<!-- CPM-T1-EXR-0052 | C | PROOF | DENSITY | SYNTHESIS | TRANSFER -->
+**Ejercicio C3. Alternar racionales e irracionales.** Sean $a<b$ y $N\in\mathbb N_{>0}$. Demuestra que existen racionales $q_1,\dots,q_N$ e irracionales $\xi_1,\dots,\xi_N$ tales que
 
 $$
-a<q<\xi<b.
+a<q_1<\xi_1<q_2<\xi_2<\cdots<q_N<\xi_N<b.
 $$
+
+No basta afirmar que ambos conjuntos son densos: organiza una construcción que garantice simultáneamente todo el orden indicado.
 :::
 
 ::: {#exr-t1-0053}
-<!-- CPM-T1-EXR-0053 | C | PROOF | EXISTENCE_UNIQUENESS | RETROFIT_AXIOMATIC -->
-**Ejercicio C4. Despejar significa demostrar existencia y unicidad.** Sean $a,b\in F$, con $F$ un cuerpo. Considera la ecuación
+<!-- CPM-T1-EXR-0053 | C | PROOF | EXISTENCE_UNIQUENESS | TRANSFER -->
+**Ejercicio C4. Una ecuación afín completa.** Sean $a,b,c\in F$, donde $F$ es un cuerpo y $a\ne0$. Considera
 
 $$
-a+x=b.
+ax+b=c.
 $$
 
-1. Construye explícitamente un candidato $x_0$ usando el inverso aditivo de $a$ y demuestra que satisface la ecuación.
-2. Si $y$ es cualquier otra solución, demuestra que $y=x_0$.
-3. Explica qué parte es una prueba de **existencia** y qué parte es una prueba de **unicidad**.
+1. Construye un candidato explícito para $x$.
+2. Verifica que satisface la ecuación.
+3. Demuestra que ninguna otra solución es posible.
 
-No basta escribir «restamos $a$ en ambos miembros»: debes traducir esa operación a suma e inverso aditivo.
+La solución debe combinar las dos ecuaciones elementales del capítulo; no basta escribir una cadena escolar de «pasar términos».
 :::
 ::: {#exr-t1-0054}
 <!-- CPM-T1-EXR-0054 | C | PROOF | ORIGINAL -->
@@ -9678,60 +9693,70 @@ Debes identificar el dominio, todos los puntos críticos relevantes y justificar
 :::
 
 ::: {#exr-t1-0056}
-<!-- CPM-T1-EXR-0056 | C | PROOF | ORIGINAL -->
-**Ejercicio C7. Un criterio de unicidad para intervalos encajados.** Sean
+<!-- CPM-T1-EXR-0056 | C | PROOF | NESTED_INTERVALS | SYNTHESIS | TRANSFER -->
+**Ejercicio C7. Dos cadenas encajadas que no pueden terminar en puntos distintos.** Sean $(I_n)$ y $(J_n)$ dos familias de intervalos cerrados, no vacíos y encajados. Supón que las longitudes de ambas familias pueden hacerse menores que cualquier $\varepsilon>0$ y que
 
 $$
-I_n=[a_n,b_n]
-$$
-intervalos cerrados, no vacíos y encajados. Supón además que para todo $\varepsilon>0$ existe $N$ tal que
-
-$$
-b_N-a_N<\varepsilon.
+I_n\cap J_n\ne\varnothing
+\qquad
+\text{para todo }n.
 $$
 
-Demuestra que $\bigcap_n I_n$ contiene exactamente un punto.
+Demuestra que las dos familias tienen el **mismo** único punto común.
 :::
 
 ### Nivel D — Hipótesis esenciales, reversibilidad y diagnóstico
 
 ::: {#exr-t1-0057}
-<!-- CPM-T1-EXR-0057 | D | CONCEPTUAL | COUNTEREXAMPLE | ORIGINAL -->
-**Ejercicio D1. El supremo no tiene que estar dentro.** Un estudiante afirma:
+<!-- CPM-T1-EXR-0057 | D | CONCEPTUAL | COUNTEREXAMPLE | SUPREMUM | TRANSFER -->
+**Ejercicio D1. Supremo de una unión: diagnosticar una fórmula falsa.** Sean $A,B\subseteq\mathbb R$ no vacíos y acotados superiormente. Un estudiante afirma
 
-> «Si $s=\sup A$, entonces $s\in A$».
+$$
+\sup(A\cup B)=\sup A+\sup B.
+$$
 
-Explica el error, da un contraejemplo y formula una condición adicional sencilla que sí garantice $s=\max A$.
+1. Da un contraejemplo.
+2. Formula la identidad correcta.
+3. Demuéstrala a partir de la definición de supremo.
 :::
 
 ::: {#exr-t1-0058}
-<!-- CPM-T1-EXR-0058 | D | CONCEPTUAL | COUNTEREXAMPLE | PROOF | RETROFIT_AXIOMATIC -->
-**Ejercicio D2. Cancelar exige una hipótesis.** Un estudiante afirma:
+<!-- CPM-T1-EXR-0058 | D | CONCEPTUAL | CANCELLATION | DIAGNOSIS | TRANSFER -->
+**Ejercicio D2. Cancelar puede borrar una solución.** Resuelve en un cuerpo ordenado
 
-> «De $ab=ac$ siempre se sigue $b=c$; basta cancelar $a$».
+$$
+(x-1)(x+2)=(x-1)(3x-4).
+$$
 
-1. Construye un contraejemplo con $a=0$ que refute la afirmación.
-2. Formula la ley correcta de cancelación multiplicativa e identifica la hipótesis que faltaba.
-3. Usando **solo** esa ley de cancelación, el hecho $a0=0$ y una separación de casos $a=0$ / $a\ne0$, reconstruye la implicación
-   $$
-   ab=0\Longrightarrow a=0\ \text{o}\ b=0.
-   $$
-4. Demuestra también la implicación recíproca y concluye la regla del producto nulo.
-
-No cites la regla del producto nulo para probarse a sí misma.
+Un estudiante cancela inmediatamente el factor $x-1$ y obtiene una sola solución. Explica por qué ese procedimiento es incompleto y determina **todas** las soluciones.
 :::
 ::: {#exr-t1-0059}
-<!-- CPM-T1-EXR-0059 | D | CONCEPTUAL | ORIGINAL -->
-**Ejercicio D3. Las dos hipótesis que no pueden borrarse.** Explica por qué el axioma de completitud no puede formularse correctamente como
+<!-- CPM-T1-EXR-0059 | D | PROOF | SUPREMUM | FINITE_DELETION | TRANSFER -->
+**Ejercicio D3. ¿Eliminar finitos puntos cambia el supremo?** Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, sea $F\subseteq A$ finito y supón $A\setminus F\ne\varnothing$. Un estudiante afirma:
 
-> «Todo subconjunto de $\mathbb R$ tiene supremo real».
+> «Eliminar finitos puntos nunca cambia el supremo».
 
-Da un ejemplo que muestre la necesidad de **no vacío** y otro que muestre la necesidad de **acotado superiormente**.
+1. Da un contraejemplo.
+2. Demuestra que la afirmación sí es correcta bajo la hipótesis adicional
+   $$
+   \sup A\notin F.
+   $$
 :::
 
 ::: {#exr-t1-0060}
-<!-- CPM-T1-EXR-0060 | D | CONCEPTUAL | SYNTHESIS | ORIGINAL -->
-**Ejercicio D4. Denso no significa completo.** Explica por qué el hecho de que $\mathbb Q$ sea denso en $\mathbb R$ no contradice que $\mathbb Q$ sea incompleto. Debes mencionar un conjunto racional concreto que exhiba el fracaso de completitud.
+<!-- CPM-T1-EXR-0060 | D | CONCEPTUAL | NESTED_INTERVALS | INCOMPLETENESS | TRANSFER -->
+**Ejercicio D4. Intervalos racionales encajados alrededor de un punto que no es racional.** Parte de $I_0=[1,2]$ y aplica bisección conservando siempre la mitad cerrada que contiene a $\sqrt2$.
+
+1. Explica por qué todos los extremos de $I_n$ son racionales.
+2. Demuestra que las longitudes son $2^{-n}$.
+3. Explica por qué
+   $$
+   \bigcap_n I_n=\{\sqrt2\}
+   $$
+   como subconjuntos de $\mathbb R$.
+4. Concluye que, vistos como intervalos de $\mathbb Q$, tienen intersección vacía.
+
+Explica por qué este fenómeno muestra que densidad y completitud son propiedades diferentes.
 :::
 
 ::: {#exr-t1-0061}
@@ -9757,13 +9782,26 @@ Explica por qué este argumento no es admisible dentro de este capítulo, aunque
 ### Nivel E — Contraejemplos y fronteras de los teoremas
 
 ::: {#exr-t1-0063}
-<!-- CPM-T1-EXR-0063 | E | COUNTEREXAMPLE | ORIGINAL -->
-**Ejercicio E1. Acotado pero sin máximo.** Construye un subconjunto no vacío de $\mathbb R$ que esté acotado superiormente, tenga supremo y no tenga máximo. Justifica las tres afirmaciones.
+<!-- CPM-T1-EXR-0063 | E | COUNTEREXAMPLE | ENDPOINTS | TRANSFER -->
+**Ejercicio E1. Cuatro comportamientos con la misma frontera superior.** Construye cuatro subconjuntos no vacíos y acotados de $\mathbb R$, todos con supremo $1$, que presenten respectivamente estos comportamientos:
+
+1. tienen máximo y mínimo;
+2. no tienen máximo, pero sí mínimo;
+3. tienen máximo, pero no mínimo;
+4. no tienen ni máximo ni mínimo.
+
+Justifica cada elección.
 :::
 
 ::: {#exr-t1-0064}
-<!-- CPM-T1-EXR-0064 | E | COUNTEREXAMPLE | ORIGINAL -->
-**Ejercicio E2. No acotado, sin supremo real.** Da un conjunto no vacío de reales que no tenga cota superior y demuestra que no puede tener supremo real.
+<!-- CPM-T1-EXR-0064 | E | COUNTEREXAMPLE | ONE_SIDED_BOUNDS | TRANSFER -->
+**Ejercicio E2. El mismo supremo con comportamientos inferiores opuestos.** Encuentra dos conjuntos $A,B\subseteq\mathbb R$ tales que
+
+$$
+\sup A=\sup B=0,
+$$
+
+pero $A$ esté acotado inferiormente y $B$ no. Determina además si existe $\inf A$ y explica por qué $B$ no posee ínfimo real.
 :::
 
 ::: {#exr-t1-0065}
@@ -9788,74 +9826,129 @@ Refuta el argumento de dos maneras complementarias:
 Identifica exactamente el primer paso ilegítimo de la cadena.
 :::
 ::: {#exr-t1-0066}
-<!-- CPM-T1-EXR-0066 | E | COUNTEREXAMPLE | ORIGINAL -->
-**Ejercicio E4. Encajados y pequeños, pero abiertos.** Construye una familia de intervalos abiertos $J_n$ tal que
+<!-- CPM-T1-EXR-0066 | E | COUNTEREXAMPLE | NESTED_INTERVALS | TRANSFER -->
+**Ejercicio E4. Cerrados y cada vez más pequeños, pero no encajados.** Construye una familia de intervalos cerrados y no vacíos $I_n$ tal que
 
-1. $J_{n+1}\subseteq J_n$;
-2. sus longitudes puedan hacerse menores que cualquier $\varepsilon>0$;
-3. $\bigcap_nJ_n=\varnothing$.
+1. sus longitudes puedan hacerse menores que cualquier $\varepsilon>0$;
+2. $\bigcap_n I_n=\varnothing$;
+3. la razón del fracaso sea exactamente que la familia **no** es encajada.
 
-Explica qué hipótesis del principio de intervalos encajados falta.
+Explica por qué esto no contradice el principio de intervalos encajados.
 :::
 
 ::: {#exr-t1-0067}
-<!-- CPM-T1-EXR-0067 | E | COUNTEREXAMPLE | SYNTHESIS | ORIGINAL -->
-**Ejercicio E5. El axioma del supremo falla en $\mathbb Q$.** Exhibe un subconjunto no vacío de $\mathbb Q$ acotado superiormente en $\mathbb Q$ que no tenga supremo racional. Puedes reutilizar la arquitectura del ejemplo central del capítulo, pero debes explicar por qué ningún candidato racional puede funcionar.
+<!-- CPM-T1-EXR-0067 | E | COUNTEREXAMPLE | INCOMPLETENESS | AFFINE_TRANSFER -->
+**Ejercicio E5. Transportar el hueco racional.** Sea
+
+$$
+S_{\mathbb Q}=\{q\in\mathbb Q:q\ge0,\ q^2<2\}
+$$
+
+y define
+
+$$
+T=\{2q+1:q\in S_{\mathbb Q}\}\subseteq\mathbb Q.
+$$
+
+1. Demuestra que $T$ es no vacío y está acotado superiormente en $\mathbb Q$.
+2. Demuestra que $T$ no tiene supremo racional.
+
+La segunda parte debe reducir un supuesto $\sup_{\mathbb Q}T$ a un supuesto supremo racional de $S_{\mathbb Q}$.
 :::
 
 ### Nivel F — Descubrimiento guiado
 
 ::: {#exr-t1-0068}
-<!-- CPM-T1-EXR-0068 | F | DISCOVERY | PROOF | ORIGINAL -->
-**Ejercicio F1. Redescubrir la caracterización del supremo.** Sea $A\neq\varnothing$ y sea $s$ una cota superior de $A$.
+<!-- CPM-T1-EXR-0068 | F | DISCOVERY | SUPREMUM | TRANSLATION | TRANSFER -->
+**Ejercicio F1. Redescubrir el supremo de una traslación.** Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, sea
 
-1. Supón que existe $\varepsilon_0>0$ tal que ningún $a\in A$ satisface $s-\varepsilon_0<a$. ¿Qué puedes decir de $s-\varepsilon_0$?
-2. ¿Por qué eso es incompatible con que $s$ sea la menor cota superior?
-3. Formula y demuestra el criterio resultante para reconocer que $s=\sup A$.
+$$
+s=\sup A,
+$$
+
+y fija $c\in\mathbb R$. Define
+
+$$
+A+c=\{a+c:a\in A\}.
+$$
+
+Utiliza la **caracterización aproximativa** del supremo —no una fórmula previamente memorizada— para demostrar
+
+$$
+\boxed{\sup(A+c)=s+c}.
+$$
 :::
 
 ::: {#exr-t1-0069}
-<!-- CPM-T1-EXR-0069 | F | DISCOVERY | PROOF | ORIGINAL -->
-**Ejercicio F2. Una sola elección para ser grande y tener recíproco pequeño.** Dados $M\in\mathbb R$ y $\varepsilon>0$:
+<!-- CPM-T1-EXR-0069 | F | DISCOVERY | ARCHIMEDEAN | FINITE_CONSTRAINTS | TRANSFER -->
+**Ejercicio F2. Una sola elección para muchas exigencias.** Sean
 
-1. encuentra una condición única sobre $n\in\mathbb N$ que garantice simultáneamente $n>M$ y $1/n<\varepsilon$;
-2. usa la propiedad arquimediana para demostrar que tal $n$ existe.
+$$
+M_1,\dots,M_r\in\mathbb R
+$$
+
+y
+
+$$
+\varepsilon_1,\dots,\varepsilon_s>0,
+$$
+
+con $r,s\ge1$. Demuestra que existe un único natural elegido **una sola vez**, $n\in\mathbb N_{>0}$, que satisface simultáneamente
+
+$$
+n>M_i\quad(i=1,\dots,r)
+$$
+
+y
+
+$$
+\frac1n<\varepsilon_j\quad(j=1,\dots,s).
+$$
 :::
 
 ::: {#exr-t1-0070}
-<!-- CPM-T1-EXR-0070 | F | DISCOVERY | PROOF | ORIGINAL -->
-**Ejercicio F3. Reconstruir la densidad racional.** Sean $a<b$.
+<!-- CPM-T1-EXR-0070 | F | DISCOVERY | DENSITY | DENOMINATOR_CONTROL | TRANSFER -->
+**Ejercicio F3. Densidad racional con control del denominador.** Sean $a<b$ y $N\in\mathbb N_{>0}$. Demuestra que existen $m\in\mathbb Z$ y $n\in\mathbb N_{>0}$ tales que
 
-1. Elige $n\in\mathbb N_{>0}$ de modo que $1/n<b-a$.
-2. Explica por qué entonces $nb-na>1$.
-3. Usa el lema de encajonamiento entero para encontrar $m\in\mathbb Z$ con $na<m<nb$.
-4. Concluye que $m/n\in(a,b)\cap\mathbb Q$.
+$$
+n>N
+$$
+
+y
+
+$$
+a<\frac mn<b.
+$$
+
+No basta citar densidad de $\mathbb Q$: debes adaptar su construcción para imponer además la cota inferior sobre el denominador.
 :::
 
 ::: {#exr-t1-0071}
-<!-- CPM-T1-EXR-0071 | F | DISCOVERY | GEOMETRY | SYNTHESIS | ORIGINAL -->
-**Ejercicio F4. Diseñar una bisección para $\sqrt7$.** Parte del intervalo $[2,3]$.
+<!-- CPM-T1-EXR-0071 | F | DISCOVERY | BISECTION | ERROR_BUDGET | TRANSFER -->
+**Ejercicio F4. Presupuesto de bisección sin calcular todos los puntos medios.** Parte de un intervalo de longitud $1$ que contiene a $\sqrt7$ y aplica bisección conservando siempre una mitad que contenga la raíz.
 
-1. Realiza cuatro bisecciones conservando la mitad que contiene $\sqrt7$.
-2. Escribe los cinco intervalos, incluido el inicial.
-3. Demuestra que el intervalo final tiene longitud $1/16$.
-4. Explica qué teorema garantiza que una bisección indefinida determina un único punto común.
+1. Demuestra por inducción que después de $n$ bisecciones la longitud es $2^{-n}$.
+2. Determina el menor $n$ que garantiza una longitud estrictamente menor que $1/100$.
+3. Explica qué certificado de localización de $\sqrt7$ proporciona esa etapa, aunque no calcules sus extremos concretos.
 :::
 
 ::: {#exr-t1-0072}
-<!-- CPM-T1-EXR-0072 | F | DISCOVERY | PROOF | AXIOMATIC | RETROFIT_AXIOMATIC -->
-**Ejercicio F5. Reconstruir $a0=0$ desde `C1--C9`.** Sea $F$ un cuerpo y fija $a\in F$. No uses cancelación, producto nulo ni la regla $a0=0$ como resultado previo.
+<!-- CPM-T1-EXR-0072 | F | DISCOVERY | AXIOMATIC | TRANSFER -->
+**Ejercicio F5. Reconstruir $(-1)a=-a$ sin usar las reglas de signos.** Sea $F$ un cuerpo y $a\in F$.
 
-1. Usa el neutro aditivo para obtener una igualdad que relacione $0+0$ con $0$.
-2. Multiplica ambos miembros por $a$ mediante sustitución de iguales en iguales.
-3. Aplica distributividad para obtener una igualdad de la forma
-   $$
-   a0+a0=a0.
-   $$
-4. Suma el inverso aditivo de $a0$ a ambos miembros y usa asociatividad.
-5. Concluye que $a0=0$ e identifica, paso por paso, qué axiomas de `C1--C9` fueron realmente necesarios.
+Puedes utilizar la unicidad del inverso aditivo y el resultado ya demostrado $a0=0$, pero **no** las identidades $(-a)b=-(ab)$ ni $a(-b)=-(ab)$.
 
-El objetivo no es recordar la prueba de §1.1, sino reconstruir su arquitectura.
+1. Demuestra que $(-1)a$ es un inverso aditivo de $a$.
+2. Concluye que
+   $$
+   (-1)a=-a.
+   $$
+3. Particulariza el resultado para deducir
+   $$
+   (-1)(-1)=1.
+   $$
+
+Identifica dónde intervienen distributividad, conmutatividad y unicidad.
 :::
 
 ### Nivel G — Síntesis y desafío
@@ -9928,61 +10021,77 @@ Las soluciones siguen el mismo orden. En los ejercicios técnicos se incluyen lo
 <!-- CPM-T1-SOL-0036 -->
 **Solución A1.**
 
-Por la equivalencia entre valor absoluto y distancia,
+Las dos condiciones equivalen a
 
 $$
-|x-3|<2
-\iff
--2<x-3<2.
+-1<x<5
 $$
 
-Sumando $3$,
+y
 
 $$
-1<x<5.
+-3\le x\le1.
 $$
 
-Por tanto, las cuatro lecturas son:
+Debemos tomar la intersección. Por tanto,
 
 $$
-|x-3|<2,
-\qquad
-1<x<5,
-\qquad
-x\in(1,5),
+-1<x\le1,
 $$
 
-y, verbalmente: **$x$ está a distancia menor que $2$ del punto $3$**.
+y
+
+$$
+\boxed{S=(-1,1]}.
+$$
+
+El extremo $-1$ queda excluido por la primera desigualdad estricta; el extremo $1$ satisface ambas condiciones.
 :::
 
 ::: {#sol-t1-0037}
 <!-- CPM-T1-SOL-0037 -->
 **Solución A2.**
 
-Si $a<b$:
+Como $c<0$, multiplicar $a<b$ por $c$ invierte el orden; además, los dos productos son negativos:
 
-1. para $c>0$, se conserva el sentido:
-   $$ac<bc;$$
-2. para $c<0$, se invierte:
-   $$ac>bc;$$
-3. para $c=0$,
-   $$ac=bc=0.$$
+$$
+\boxed{bc<ac<0}.
+$$
 
-La razón no es una regla tipográfica, sino la compatibilidad del orden con el producto por positivos, combinada con $c=-(-c)$ cuando $c<0$.
+Dividir por $c<0$ también invierte el orden, y ambos cocientes son negativos:
+
+$$
+\boxed{\frac bc<\frac ac<0}.
+$$
+
+Finalmente, para recíprocos positivos se invierte el orden:
+
+$$
+\boxed{0<\frac1b<\frac1a}.
+$$
+
+Las tres cadenas usan el mismo dato $a<b$, pero cada transformación exige controlar el signo del factor o divisor.
 :::
 
 ::: {#sol-t1-0038}
 <!-- CPM-T1-SOL-0038 -->
 **Solución A3.**
 
-Para $A=(0,4)$:
+Todo elemento de $A$ es menor que $5$, y en el componente $[3,5)$ hay elementos arbitrariamente próximos a $5$ por la izquierda. Por tanto,
 
-1. $5$ es cota superior: todo $a\in A$ satisface $a<4<5$.
-2. $4$ es cota superior: todo $a\in A$ satisface $a<4$.
-3. $4$ no es máximo, porque $4\notin A$.
-4. $\sup A=4$: ya sabemos que es cota superior y, dado $\varepsilon>0$, podemos elegir un punto de $A$ situado entre $4-\varepsilon$ y $4$; por ejemplo, $a=4-\min\{\varepsilon/2,2\}$ pertenece a $A$ y satisface $4-\varepsilon<a<4$ para todo $\varepsilon>0$.
+$$
+\sup A=5,
+$$
 
-La diferencia decisiva es que una cota o un supremo no necesitan pertenecer al conjunto; un máximo sí.
+pero $5\notin A$, así que no hay máximo.
+
+Del mismo modo, $-2$ es cota inferior y el componente $(-2,1]$ contiene puntos arbitrariamente próximos a $-2$ por la derecha. Luego
+
+$$
+\inf A=-2,
+$$
+
+y como $-2\notin A$, tampoco hay mínimo.
 :::
 
 ::: {#sol-t1-0039}
@@ -10029,12 +10138,13 @@ La distinción importa porque un axioma puede usarse como punto de partida, una 
 <!-- CPM-T1-SOL-0040 -->
 **Solución A5.**
 
-El axioma del supremo exige dos hipótesis: conjunto **no vacío** y **acotado superiormente**.
+1. Sí. El conjunto es no vacío —por ejemplo, contiene a $2$— y está acotado superiormente, por ejemplo por $3$.
+2. No. Es no vacío, pero no está acotado superiormente.
+3. No. Falla la hipótesis de no vacuidad.
+4. Sí. Contiene a $1$ y está acotado superiormente por $1$.
+5. Sí. Es no vacío y $0$ es una cota superior.
 
-1. $(0,1)$ cumple ambas: completitud garantiza un supremo.
-2. $\mathbb N$ es no vacío, pero no está acotado superiormente en $\mathbb R$; el axioma no se aplica.
-3. $\varnothing$ falla la hipótesis de no vacuidad.
-4. $\{-3,7,10\}$ es no vacío y acotado superiormente; completitud garantiza supremo, aunque en este caso su existencia puede verse incluso sin recurrir al axioma general.
+La quinta parte subraya que el axioma solo exige acotación **superior**; el conjunto puede ser ilimitado hacia abajo.
 :::
 
 ::: {#sol-t1-0041}
@@ -10100,28 +10210,30 @@ Ese teorema por sí solo garantiza existencia, no unicidad. La unicidad requerir
 <!-- CPM-T1-SOL-0043 -->
 **Solución B1.**
 
-$$
-|2x-5|<3
-\iff
--3<2x-5<3.
-$$
-
-Sumando $5$,
+La desigualdad equivale a
 
 $$
-2<2x<8.
+1\le|x-1|\le3.
 $$
 
-Dividiendo por $2>0$,
+La cota superior da
 
 $$
-1<x<4.
+-2\le x\le4,
 $$
 
-Por tanto,
+mientras que $|x-1|\ge1$ equivale a
 
 $$
-\boxed{x\in(1,4).}
+x\le0
+\quad\text{o}\quad
+x\ge2.
+$$
+
+Intersectando ambas condiciones,
+
+$$
+\boxed{x\in[-2,0]\cup[2,4]}.
 $$
 :::
 
@@ -10164,44 +10276,27 @@ La idea es típica de las estimaciones futuras: el dato controla $|x-2|$ y fabri
 <!-- CPM-T1-SOL-0045 -->
 **Solución B3.**
 
-Tenemos
+Por las reglas de cocientes,
 
 $$
-a+b=0,
-\qquad
-a+c=0.
+a^{-1}-b^{-1}
+=
+\frac1a-\frac1b
+=
+\frac{b-a}{ab}.
 $$
 
-Partimos de $b$ y usamos únicamente las propiedades exigidas:
+Si $0<a<b$, entonces $b-a>0$ y $ab>0$. Dividir un positivo por un positivo produce un número positivo, de modo que
 
 $$
-\begin{aligned}
-b
-&=b+0\\
-&=b+(a+c)\\
-&=(b+a)+c\\
-&=(a+b)+c\\
-&=0+c\\
-&=c.
-\end{aligned}
+\frac1a-\frac1b>0.
 $$
 
-Justifiquemos cada paso.
-
-- $b=b+0$: neutro aditivo `C2`.
-- $0=a+c$: una de las hipótesis, usada por sustitución.
-- $b+(a+c)=(b+a)+c$: asociatividad `C1`.
-- $b+a=a+b$: conmutatividad `C4`.
-- $a+b=0$: la otra hipótesis.
-- $0+c=c$: por conmutatividad, $0+c=c+0$, y luego `C2`.
-
-Así,
+Por definición del orden,
 
 $$
-\boxed{b=c}.
+\boxed{\frac1b<\frac1a}.
 $$
-
-Los axiomas de inverso garantizan existencia de candidatos, pero la cadena anterior demuestra que dos candidatos cualesquiera necesariamente coinciden. Esa es exactamente la parte de **unicidad**.
 :::
 ::: {#sol-t1-0046}
 <!-- CPM-T1-SOL-0046 -->
@@ -10287,33 +10382,27 @@ $$
 <!-- CPM-T1-SOL-0048 -->
 **Solución B6.**
 
-Queremos demostrar que $(-a)b$ es el inverso aditivo de $ab$. Calculamos:
+Por definición,
 
 $$
-\begin{aligned}
-ab+(-a)b
-&=ba+b(-a)\\
-&=b\bigl(a+(-a)\bigr)\\
-&=b0\\
-&=0.
-\end{aligned}
+\frac ab=ab^{-1}.
 $$
 
-En la primera línea usamos conmutatividad del producto para escribir ambos términos con el factor común $b$. En la segunda usamos distributividad en sentido inverso. Después,
+La parte 5 de @prp-t1-0007 dice que $b^{-1}$ tiene el mismo signo que $b$. La parte 8 caracteriza el signo de un producto: es positivo cuando los factores tienen el mismo signo y negativo cuando tienen signos opuestos. Sustituyendo el signo de $b^{-1}$ por el de $b$ obtenemos exactamente
 
 $$
-a+(-a)=0
+\boxed{\frac ab>0
+\iff
+(a>0,b>0)\text{ o }(a<0,b<0)}
 $$
 
-por el axioma de inverso aditivo, y finalmente $b0=0$ por el resultado ya demostrado @exm-t1-0040.
-
-Por tanto $(-a)b$ satisface la propiedad que caracteriza al inverso aditivo de $ab$. Como ese inverso es único por @prp-t1-0025,
+y
 
 $$
-\boxed{(-a)b=-(ab)}.
+\boxed{\frac ab<0
+\iff
+(a>0,b<0)\text{ o }(a<0,b>0)}.
 $$
-
-La regla escolar de signos aparece así como una consecuencia de distributividad, inversos y unicidad; no como un axioma independiente.
 :::
 ::: {#sol-t1-0049}
 <!-- CPM-T1-SOL-0049 -->
@@ -10497,84 +10586,72 @@ $$
 <!-- CPM-T1-SOL-0052 -->
 **Solución C3.**
 
-Como $a<b$, la densidad de los racionales permite escoger primero
+Sea
 
 $$
-q\in\mathbb Q
-\quad\text{con}\quad
-a<q<b.
+h=\frac{b-a}{2N+1}>0.
 $$
 
-Ahora $q<b$. Aplicamos la densidad de los irracionales al intervalo $(q,b)$ y obtenemos
+Para cada $j=1,\dots,N$, por densidad de $\mathbb Q$ elegimos
 
 $$
-\xi\in\mathbb R\setminus\mathbb Q
-\quad\text{con}\quad
-q<\xi<b.
+q_j\in\mathbb Q\cap
+\bigl(a+(2j-2)h,\,a+(2j-1)h\bigr),
 $$
 
-Juntando las desigualdades,
+y por densidad de los irracionales elegimos
 
 $$
-\boxed{a<q<\xi<b.}
+\xi_j\in(\mathbb R\setminus\mathbb Q)\cap
+\bigl(a+(2j-1)h,\,a+2jh\bigr).
 $$
 
-La elección en dos etapas es importante: no basta producir independientemente un racional y un irracional dentro de $(a,b)$ si además queremos controlar su orden relativo.
+Los subintervalos fueron escogidos en orden y son disjuntos. Por tanto,
+
+$$
+a<q_1<\xi_1<q_2<\xi_2<\cdots<q_N<\xi_N<a+2Nh<b.
+$$
+
+Esto demuestra la afirmación.
 :::
 
 ::: {#sol-t1-0053}
 <!-- CPM-T1-SOL-0053 -->
 **Solución C4.**
 
-Debemos separar existencia de unicidad.
-
-**1. Existencia.** Definimos
+La ecuación equivale primero a
 
 $$
-x_0=b+(-a).
+ax=c-b.
 $$
 
-Entonces
+Como $a\ne0$, el candidato natural es
 
 $$
-\begin{aligned}
-a+x_0
-&=a+\bigl(b+(-a)\bigr)\\
-&=\bigl(a+(-a)\bigr)+b\\
-&=0+b\\
-&=b.
-\end{aligned}
+x_0=a^{-1}(c-b).
 $$
 
-El paso intermedio reúne asociatividad y conmutatividad para colocar $a$ junto a su inverso. Así $x_0$ **existe** y satisface la ecuación.
-
-**2. Unicidad.** Supongamos que $y$ es otra solución:
+En efecto,
 
 $$
-a+y=b.
+ax_0+b
+=(aa^{-1})(c-b)+b
+=c.
 $$
 
-Como también $a+x_0=b$, tenemos
+Si $y$ es otra solución, entonces
 
 $$
-a+y=a+x_0.
+ay+b=c=ax_0+b.
 $$
 
-La cancelación aditiva, que no requiere hipótesis de no nulidad, da
+La cancelación aditiva da $ay=ax_0$, y la cancelación multiplicativa —válida porque $a\ne0$— da $y=x_0$. Por tanto,
 
 $$
-y=x_0.
+\boxed{x=a^{-1}(c-b)}
 $$
 
-Por tanto no puede existir una segunda solución distinta.
-
-Hemos probado
-
-$$
-\boxed{x=b+(-a)}
-$$
-
-como solución única. La frase escolar «restar $a$» comprime precisamente esta construcción mediante suma e inverso aditivo.
+es la solución única.
 :::
 ::: {#sol-t1-0054}
 <!-- CPM-T1-SOL-0054 -->
@@ -10695,45 +10772,38 @@ Los puntos $0$ y $2$ eran críticos para la forma original de los valores absolu
 <!-- CPM-T1-SOL-0056 -->
 **Solución C7.**
 
-Por el principio de intervalos encajados,
+Por el principio de intervalos encajados y el criterio de longitudes arbitrariamente pequeñas, cada familia tiene un único punto común. Llamémoslos $x$ para $(I_n)$ e $y$ para $(J_n)$.
+
+Supongamos $x\ne y$ y sea
 
 $$
-\bigcap_n I_n\ne\varnothing.
+\varepsilon=\frac{|x-y|}{3}>0.
 $$
 
-Falta demostrar unicidad.
-
-Supongamos que $x<y$ pertenecen ambos a todos los $I_n$. Entonces
+Elige una etapa $N$ en la que las longitudes de $I_N$ y $J_N$ sean menores que $\varepsilon$; podemos tomar el máximo de dos etapas si fuera necesario. Por hipótesis existe
 
 $$
-y-x>0.
+z\in I_N\cap J_N.
 $$
 
-Aplicamos la hipótesis con
+Como $x,z\in I_N$ y $y,z\in J_N$,
 
 $$
-\varepsilon=y-x.
+|x-z|<\varepsilon,
+\qquad
+|y-z|<\varepsilon.
 $$
 
-Existe $N$ tal que
+La desigualdad triangular produce
 
 $$
-b_N-a_N<y-x.
+|x-y|
+\le |x-z|+|z-y|
+<2\varepsilon
+=\frac23|x-y|,
 $$
 
-Pero $x,y\in[a_N,b_N]$, así que
-
-$$
-y-x\le b_N-a_N,
-$$
-
-contradicción.
-
-Por tanto no pueden existir dos puntos distintos en la intersección. Como ya sabemos que contiene al menos uno,
-
-$$
-\boxed{\bigcap_n I_n\text{ contiene exactamente un punto}.}
-$$
+contradicción. Luego $x=y$.
 :::
 
 #### Soluciones del nivel D
@@ -10742,172 +10812,137 @@ $$
 <!-- CPM-T1-SOL-0057 -->
 **Solución D1.**
 
-El error consiste en confundir «menor cota superior» con «elemento mayor del conjunto».
-
-Toma
+Tomemos $A=B=(0,1)$. Entonces
 
 $$
-A=(0,1).
+\sup(A\cup B)=1,
+\qquad
+\sup A+\sup B=2,
 $$
 
-Entonces
+así que la fórmula propuesta es falsa.
+
+La identidad correcta es
 
 $$
-\sup A=1,
+\boxed{\sup(A\cup B)=\max\{\sup A,\sup B\}}.
 $$
 
-pero
+Sea $s$ el máximo del miembro derecho. Todo elemento de $A\cup B$ pertenece a uno de los dos conjuntos y, por tanto, es menor o igual que $s$; luego $s$ es cota superior de la unión.
+
+Si $u$ es cualquier cota superior de $A\cup B$, entonces también es cota superior de $A$ y de $B$. Por ello
 
 $$
-1\notin A.
+\sup A\le u,
+\qquad
+\sup B\le u,
 $$
 
-Por tanto el enunciado es falso.
-
-Una condición adicional sencilla es precisamente
-
-$$
-\sup A\in A.
-$$
-
-Si $s=\sup A$ y $s\in A$, entonces $s$ es un elemento de $A$ mayor o igual que todos los demás; por definición,
-
-$$
-\boxed{s=\max A.}
-$$
+y en consecuencia $s\le u$. Así $s$ es la menor cota superior.
 :::
 
 ::: {#sol-t1-0058}
 <!-- CPM-T1-SOL-0058 -->
 **Solución D2.**
 
-**1. La afirmación sin hipótesis es falsa.** Toma
+La cancelación de $x-1$ solo es válida bajo la hipótesis
 
 $$
-a=0,
-\qquad
-b=1,
-\qquad
-c=2.
+x-1\ne0.
 $$
 
-Entonces
+Si $x=1$, ambos miembros de la ecuación original son $0$, de modo que $x=1$ es una solución y se perdería al cancelar.
+
+En el caso $x\ne1$ sí podemos cancelar y obtenemos
 
 $$
-ab=0=ac,
+x+2=3x-4,
 $$
 
-pero
-
-$$
-b\ne c.
-$$
-
-Por tanto de $ab=ac$ no puede deducirse $b=c$ para un factor arbitrario $a$.
-
-**2. La formulación correcta.** Si
-
-$$
-a\ne0
-$$
-
-y
-
-$$
-ab=ac,
-$$
-
-entonces sí se puede cancelar el factor $a$ y concluir
-
-$$
-b=c.
-$$
-
-La hipótesis $a\ne0$ es la que garantiza la existencia de $a^{-1}$.
-
-**3. Del producto nulo a uno de los factores nulos.** Supongamos
-
-$$
-ab=0.
-$$
-
-Separamos dos casos.
-
-- Si $a=0$, ya tenemos una de las alternativas.
-- Si $a\ne0$, como $a0=0$,
-  $$
-  ab=0=a0.
-  $$
-  Por cancelación multiplicativa de $a\ne0$,
-  $$
-  b=0.
-  $$
-
-Así,
-
-$$
-ab=0
-\Longrightarrow
- a=0\ \text{o}\ b=0.
-$$
-
-**4. Recíproca.** Si $a=0$, entonces $ab=0$; si $b=0$, entonces $ab=0$. Esto utiliza únicamente el producto por cero, junto con conmutatividad cuando sea necesario.
+de donde $x=3$.
 
 Por tanto,
 
 $$
-\boxed{
-ab=0
-\iff
- a=0\ \text{o}\ b=0.
-}
+\boxed{x\in\{1,3\}}.
 $$
 
-La prueba muestra exactamente por qué el producto nulo depende de la cancelación válida para factores no nulos y no puede utilizarse circularmente para justificarla.
+Equivalentemente, restando los miembros y factorizando se llega a
+
+$$
+(x-1)(6-2x)=0,
+$$
+
+y la ley del producto nulo produce los mismos dos casos.
 :::
 ::: {#sol-t1-0059}
 <!-- CPM-T1-SOL-0059 -->
 **Solución D3.**
 
-La formulación correcta requiere no vacuidad y acotación superior.
+La afirmación sin hipótesis adicional es falsa. Si
 
-- Si tomamos $A=\varnothing$, no hay elementos a partir de los cuales tenga sentido obtener una menor cota superior mediante el axioma tal como se ha formulado. La hipótesis $A\ne\varnothing$ excluye este caso degenerado.
-- Si tomamos $A=\mathbb N$, la propiedad arquimediana demuestra que no existe ninguna cota superior real. Por tanto no puede existir un real que sea **la menor** cota superior.
+$$
+A=\{0,1\},
+\qquad
+F=\{1\},
+$$
 
-Así, la frase «todo subconjunto de $\mathbb R$ tiene supremo real» es falsa. La forma correcta es:
+entonces $\sup A=1$, pero $\sup(A\setminus F)=0$.
 
-> Todo subconjunto **no vacío y acotado superiormente** de $\mathbb R$ posee supremo en $\mathbb R$.
+Ahora sea $s=\sup A$ y supongamos $s\notin F$. Como $A\setminus F\subseteq A$, el número $s$ es cota superior de $A\setminus F$.
+
+Si $F=\varnothing$, no hay nada que probar. Supongamos $F\ne\varnothing$ y sea $m=\max F$. Como todos los elementos de $F$ son menores o iguales que $s$ y $s\notin F$, tenemos $m<s$.
+
+Dado $\varepsilon>0$, toma
+
+$$
+\delta=\frac12\min\{\varepsilon,s-m\}>0.
+$$
+
+Por la caracterización aproximativa del supremo existe $a\in A$ tal que
+
+$$
+s-\delta<a\le s.
+$$
+
+Además $s-\delta>m$, por lo que $a\notin F$. Así $a\in A\setminus F$ y
+
+$$
+s-\varepsilon<a\le s.
+$$
+
+La caracterización aproximativa concluye
+
+$$
+\boxed{\sup(A\setminus F)=s=\sup A}.
+$$
 :::
 
 ::: {#sol-t1-0060}
 <!-- CPM-T1-SOL-0060 -->
 **Solución D4.**
 
-Densidad significa que entre dos reales distintos podemos encontrar racionales. No significa que toda frontera determinada por un conjunto racional tenga que ser racional.
+El intervalo inicial tiene extremos racionales. El punto medio de dos racionales es racional, de modo que cada bisección vuelve a producir extremos racionales.
 
-El ejemplo central es
-
-$$
-S_{\mathbb Q}
-=
-\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
-$$
-
-Este conjunto es no vacío y está acotado superiormente dentro de $\mathbb Q$, pero no tiene supremo racional. Su frontera en $\mathbb R$ es $\sqrt2$, que es irracional.
-
-Por tanto pueden coexistir perfectamente:
+Cada paso divide la longitud por $2$; como $|I_0|=1$,
 
 $$
-\boxed{\mathbb Q\text{ denso en }\mathbb R}
+|I_n|=2^{-n}.
 $$
 
-y
+Los intervalos son cerrados, no vacíos y encajados, así que tienen un punto común en $\mathbb R$. Como sus longitudes pueden hacerse menores que cualquier número positivo, ese punto es único. La regla de elección mantiene a $\sqrt2$ dentro de todos ellos, luego
 
 $$
-\boxed{\mathbb Q\text{ incompleto}.}
+\bigcap_n I_n=\{\sqrt2\}.
 $$
 
-La densidad habla de puntos **entre** puntos; la completitud habla de la existencia de ciertos **puntos frontera**.
+Pero $\sqrt2\notin\mathbb Q$. Por tanto,
+
+$$
+\bigcap_n(I_n\cap\mathbb Q)=\varnothing.
+$$
+
+Los racionales siguen siendo densos —cada intervalo contiene racionales—, pero el punto común exigido por completitud puede faltar dentro de $\mathbb Q$.
 :::
 
 ::: {#sol-t1-0061}
@@ -11068,50 +11103,55 @@ No afirmamos que la prueba con IVT sea matemáticamente falsa; afirmamos que es 
 <!-- CPM-T1-SOL-0063 -->
 **Solución E1.**
 
-Tomemos
+Una elección elemental es
 
 $$
-A=(0,1).
+A_1=[0,1],
+\qquad
+A_2=[0,1),
+\qquad
+A_3=(0,1],
+\qquad
+A_4=(0,1).
 $$
 
-Es no vacío. Está acotado superiormente, por ejemplo por $1$. Además,
+Todos tienen supremo $1$. Además:
 
-$$
-\sup A=1.
-$$
+- $A_1$ tiene máximo $1$ y mínimo $0$;
+- $A_2$ no tiene máximo y tiene mínimo $0$;
+- $A_3$ tiene máximo $1$ y no tiene mínimo;
+- $A_4$ no tiene máximo ni mínimo.
 
-Pero no tiene máximo porque $1\notin A$ y, dado cualquier $a\in(0,1)$, el número
-
-$$
-\frac{a+1}{2}
-$$
-
-satisface
-
-$$
-a<\frac{a+1}{2}<1.
-$$
-
-Así ningún elemento puede ser el mayor.
+La pertenencia de los puntos frontera, no el valor del supremo o del ínfimo, decide la existencia de extremos alcanzados.
 :::
 
 ::: {#sol-t1-0064}
 <!-- CPM-T1-SOL-0064 -->
 **Solución E2.**
 
-Tomemos
+Podemos tomar
 
 $$
-A=\mathbb N.
+A=(-1,0),
+\qquad
+B=(-\infty,0).
 $$
 
-Es no vacío. Por la propiedad arquimediana, para todo $M\in\mathbb R$ existe $n\in\mathbb N$ con
+En ambos casos $0$ es la menor cota superior, así que
 
 $$
-n>M.
+\sup A=\sup B=0.
 $$
 
-Por tanto ningún real $M$ es cota superior de $\mathbb N$. Si existiera $\sup\mathbb N$, tendría que ser en particular una cota superior. Como no existe ninguna, tampoco existe un supremo real.
+El conjunto $A$ está acotado inferiormente y
+
+$$
+\inf A=-1.
+$$
+
+En cambio, $B$ no está acotado inferiormente: dado cualquier $m\in\mathbb R$, existe un elemento de $B$ menor que $m$. Por ello no puede existir un ínfimo real de $B$.
+
+El ejemplo muestra que la existencia de un supremo es una propiedad unilateral: no implica acotación por abajo.
 :::
 
 ::: {#sol-t1-0065}
@@ -11182,65 +11222,62 @@ porque intenta dividir ambos miembros por un elemento que no posee inverso multi
 <!-- CPM-T1-SOL-0066 -->
 **Solución E4.**
 
-Tomemos
+Para $k\in\mathbb N_{>0}$ definamos
 
 $$
-J_n=\left(0,\frac1{n+1}\right).
+I_{2k}=
+\left[0,\frac1k\right],
+\qquad
+I_{2k-1}=
+\left[1,1+\frac1k\right].
 $$
 
-Como
+Todos son intervalos cerrados y no vacíos, y sus longitudes son $1/k$, que pueden hacerse menores que cualquier $\varepsilon>0$.
+
+Sin embargo, un punto que perteneciera a todos los intervalos debería pertenecer simultáneamente a $I_2=[0,1]$ y a todos los intervalos impares que se concentran junto a $1$, y también a $I_4=[0,1/2]$; de hecho, para $k\ge2$, los intervalos pares están contenidos en $[0,1/2]$ mientras los impares están contenidos en $[1,2]$. Por tanto,
 
 $$
-\frac1{n+2}<\frac1{n+1},
+\bigcap_n I_n=\varnothing.
 $$
 
-tenemos
-
-$$
-J_{n+1}\subseteq J_n.
-$$
-
-La longitud es $1/(n+1)$. Dado $\varepsilon>0$, la propiedad arquimediana permite elegir $n$ con
-
-$$
-\frac1{n+1}<\varepsilon.
-$$
-
-Sin embargo,
-
-$$
-\bigcap_nJ_n=\varnothing.
-$$
-
-En efecto, $0$ está excluido de todos los intervalos y cualquier $x>0$ deja de pertenecer cuando elegimos $n$ con $1/(n+1)<x$.
-
-La hipótesis faltante es que los intervalos sean **cerrados**.
+La familia no es encajada: por ejemplo, $I_1=[1,2]$ e $I_2=[0,1]$ no satisfacen $I_2\subseteq I_1$. No se viola ninguna hipótesis del teorema porque precisamente falta el encajamiento.
 :::
 
 ::: {#sol-t1-0067}
 <!-- CPM-T1-SOL-0067 -->
 **Solución E5.**
 
-Usamos
+Como $1\in S_{\mathbb Q}$, tenemos $3\in T$, así que $T$ es no vacío. Además $2$ es cota superior de $S_{\mathbb Q}$, por lo que
 
 $$
-S_{\mathbb Q}
-=
-\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
+2q+1\le5
 $$
 
-Es no vacío porque $0\in S_{\mathbb Q}$ y está acotado superiormente, por ejemplo por $2$.
+para todo $q\in S_{\mathbb Q}$; así, $5$ es una cota superior racional de $T$.
 
-Supongamos que tiene supremo racional $s$. Como no existe racional con cuadrado $2$, solo hay dos casos.
+Supongamos ahora que $t\in\mathbb Q$ fuese
 
-- Si $s^2<2$, la transformación de Rudin
-  $$
-  T(s)=s-\frac{s^2-2}{s+2}
-  $$
-  produce un racional $T(s)>s$ con $T(s)^2<2$. Entonces $T(s)\in S_{\mathbb Q}$, contradiciendo que $s$ sea cota superior.
-- Si $s^2>2$, la misma transformación produce un racional $0<T(s)<s$ con $T(s)^2>2$. Todo elemento de $S_{\mathbb Q}$ queda por debajo de $T(s)$, así que $T(s)$ es una cota superior menor que $s$, contradiciendo la minimalidad del supuesto supremo.
+$$
+t=\sup_{\mathbb Q}T.
+$$
 
-Por tanto $S_{\mathbb Q}$ no tiene supremo en $\mathbb Q$.
+Definamos
+
+$$
+s=\frac{t-1}{2}\in\mathbb Q.
+$$
+
+Para todo $q\in S_{\mathbb Q}$, de $2q+1\le t$ se sigue $q\le s$, así que $s$ es cota superior racional de $S_{\mathbb Q}$.
+
+Si $u$ es cualquier cota superior racional de $S_{\mathbb Q}$, entonces $2u+1$ es cota superior racional de $T$. Como $t$ es la menor de estas cotas,
+
+$$
+t\le2u+1,
+$$
+
+y por tanto $s\le u$. Así $s$ sería el supremo racional de $S_{\mathbb Q}$, contradiciendo el resultado del capítulo.
+
+Luego $T$ no tiene supremo en $\mathbb Q$.
 :::
 
 #### Soluciones del nivel F
@@ -11249,56 +11286,30 @@ Por tanto $S_{\mathbb Q}$ no tiene supremo en $\mathbb Q$.
 <!-- CPM-T1-SOL-0068 -->
 **Solución F1.**
 
-Supongamos primero que $s=\sup A$. Si existiera $\varepsilon_0>0$ tal que ningún $a\in A$ satisficiera
+Como $a\le s$ para todo $a\in A$,
 
 $$
-s-\varepsilon_0<a,
+a+c\le s+c,
 $$
 
-entonces para todo $a\in A$ tendríamos
+de modo que $s+c$ es cota superior de $A+c$.
+
+Sea ahora $\varepsilon>0$. Como $s=\sup A$, existe $a\in A$ tal que
 
 $$
-a\le s-\varepsilon_0.
+s-\varepsilon<a\le s.
 $$
 
-Así, $s-\varepsilon_0$ sería una cota superior de $A$ estrictamente menor que $s$, contradicción.
-
-Esto sugiere el criterio:
+Sumando $c$,
 
 $$
-\boxed{
- s=\sup A
-\iff
-\begin{cases}
- a\le s & \text{para todo }a\in A,\\
- \forall\varepsilon>0\ \exists a\in A:\ s-\varepsilon<a.
-\end{cases}}
+(s+c)-\varepsilon<a+c\le s+c.
 $$
 
-La implicación hacia la derecha acaba de demostrarse.
-
-Recíprocamente, supongamos ambas condiciones. Si $u<s$, tomamos
+El punto $a+c$ pertenece a $A+c$, así que la caracterización aproximativa del supremo da
 
 $$
-\varepsilon=s-u>0.
-$$
-
-Existe $a\in A$ con
-
-$$
-s-\varepsilon<a,
-$$
-
-es decir,
-
-$$
-u<a.
-$$
-
-Por tanto $u$ no es cota superior. Ningún número menor que $s$ es cota superior, y como $s$ sí lo es,
-
-$$
-s=\sup A.
+\boxed{\sup(A+c)=s+c}.
 $$
 :::
 
@@ -11306,230 +11317,136 @@ $$
 <!-- CPM-T1-SOL-0069 -->
 **Solución F2.**
 
-Queremos simultáneamente
+Define
 
 $$
-n>M
+R=
+\max\left\{
+M_1,\dots,M_r,
+\frac1{\varepsilon_1},\dots,\frac1{\varepsilon_s}
+\right\}.
 $$
 
-y
+Por la propiedad arquimediana existe $n\in\mathbb N_{>0}$ con $n>R$. Entonces $n>M_i$ para todo $i$ y
 
 $$
-\frac1n<\varepsilon.
+n>\frac1{\varepsilon_j}
 $$
 
-La segunda condición queda garantizada si
-
-$$
-n>\frac1\varepsilon.
-$$
-
-Por tanto basta exigir una sola desigualdad:
-
-$$
-\boxed{
-n>\max\left\{M,\frac1\varepsilon\right\}.
-}
-$$
-
-La propiedad arquimediana asegura que existe un natural mayor que cualquier real prescrito; en particular existe uno mayor que ese máximo. Ese mismo $n$ satisface las dos condiciones.
+para todo $j$. Como $n,\varepsilon_j>0$, esto último equivale a $1/n<\varepsilon_j$. Una sola elección satisface todas las restricciones.
 :::
 
 ::: {#sol-t1-0070}
 <!-- CPM-T1-SOL-0070 -->
 **Solución F3.**
 
-Como $b-a>0$, el corolario arquimediano permite elegir $n\in\mathbb N_{>0}$ tal que
+Como $b-a>0$, por la propiedad arquimediana podemos elegir $n\in\mathbb N_{>0}$ tal que
 
 $$
-\frac1n<b-a.
+n>\max\left\{N,\frac1{b-a}\right\}.
 $$
 
-Multiplicando por $n>0$,
+Entonces $n>N$ y
 
 $$
-1<nb-na.
+na+1<nb.
 $$
 
-Aplicamos el lema de encajonamiento a $na$: existe $k\in\mathbb Z$ con
+Por el lema de encajonamiento entero existe $k\in\mathbb Z$ con
 
 $$
 k\le na<k+1.
 $$
 
-Tomemos
+Tomando $m=k+1$ obtenemos
 
 $$
-m=k+1.
-$$
-
-Entonces
-
-$$
-na<m.
-$$
-
-Además,
-
-$$
-m=k+1\le na+1<nb.
-$$
-
-Por tanto,
-
-$$
-na<m<nb.
+na<m\le na+1<nb.
 $$
 
 Dividiendo por $n>0$,
 
 $$
-\boxed{a<\frac mn<b}.
+\boxed{a<\frac mn<b},
 $$
 
-Como $m\in\mathbb Z$ y $n\in\mathbb N_{>0}$, $m/n\in\mathbb Q$. Así se reconstruye la densidad racional desde arquimedianidad y encajonamiento entero.
+con el denominador además sujeto a $n>N$.
 :::
 
 ::: {#sol-t1-0071}
 <!-- CPM-T1-SOL-0071 -->
 **Solución F4.**
 
-Partimos de
+Cada bisección divide la longitud por $2$. Si $L_0=1$, entonces
 
 $$
-I_0=[2,3]
+L_n=2^{-n};
 $$
 
-porque $4<7<9$.
+esto puede formalizarse por inducción.
 
-Primer punto medio:
-
-$$
-\frac52,
-\qquad
-\left(\frac52\right)^2=\frac{25}{4}<7
-$$
-
-porque $25<28$. Luego
+Queremos
 
 $$
-I_1=\left[\frac52,3\right].
+2^{-n}<\frac1{100},
 $$
 
-Segundo punto medio:
+equivalentemente $2^n>100$. Como
 
 $$
-\frac{11}{4},
-\qquad
-\left(\frac{11}{4}\right)^2=\frac{121}{16}>7
+2^6=64\le100<128=2^7,
 $$
 
-porque $121>112$. Por tanto,
+el menor valor es
 
 $$
-I_2=\left[\frac52,\frac{11}{4}\right].
+\boxed{n=7}.
 $$
 
-Tercer punto medio:
+En esa etapa obtenemos un intervalo racional cerrado $[a_7,b_7]$ tal que
 
 $$
-\frac{21}{8},
-\qquad
-\left(\frac{21}{8}\right)^2=\frac{441}{64}<7
+\sqrt7\in[a_7,b_7]
 $$
 
-porque $441<448$. Así,
+y
 
 $$
-I_3=\left[\frac{21}{8},\frac{11}{4}\right].
+b_7-a_7=\frac1{128}<\frac1{100}.
 $$
 
-Cuarto punto medio:
-
-$$
-\frac{43}{16},
-\qquad
-\left(\frac{43}{16}\right)^2=\frac{1849}{256}>7
-$$
-
-porque $1849>1792$. Luego
-
-$$
-I_4=\left[\frac{21}{8},\frac{43}{16}\right].
-$$
-
-La longitud final es
-
-$$
-\frac{43}{16}-\frac{21}{8}
-=
-\frac{43-42}{16}
-=
-\boxed{\frac1{16}}.
-$$
-
-Una bisección indefinida produce intervalos cerrados encajados; el principio de intervalos encajados da existencia de un punto común y el corolario de unicidad para longitudes arbitrariamente pequeñas demuestra que ese punto es único.
+Ese es un certificado exacto de incertidumbre, independientemente de que hayamos escrito los extremos.
 :::
 
 ::: {#sol-t1-0072}
 <!-- CPM-T1-SOL-0072 -->
 **Solución F5.**
 
-Reconstruimos la prueba sin usar cancelación ni producto nulo.
-
-**1. Neutro aditivo.** Por `C2`, aplicado a $0$,
+Por conmutatividad del producto, $1a=a$. Entonces
 
 $$
-0+0=0.
+\begin{aligned}
+a+(-1)a
+&=1a+(-1)a\\
+&=(1+(-1))a && \text{(distributividad)}\\
+&=0a && \text{(inverso aditivo de }1\text{)}\\
+&=0.
+\end{aligned}
 $$
 
-**2. Sustitución en una igualdad.** Multiplicamos ambos miembros por $a$:
+Así, $(-1)a$ es un inverso aditivo de $a$. Por unicidad,
 
 $$
-a(0+0)=a0.
+\boxed{(-1)a=-a}.
 $$
 
-Este paso usa la sustitución de iguales por iguales, no un axioma adicional de cuerpo.
-
-**3. Distributividad.** Por `C9`,
+Tomando $a=-1$ obtenemos
 
 $$
-a0+a0=a0.
+(-1)(-1)=-(-1)=1,
 $$
 
-**4. Inverso aditivo.** Sumamos $-(a0)$ a ambos miembros:
-
-$$
-(a0+a0)+(-(a0))=a0+(-(a0)).
-$$
-
-Por asociatividad `C1`,
-
-$$
-a0+\bigl(a0+(-(a0))\bigr)=0.
-$$
-
-Por `C3`,
-
-$$
-a0+0=0.
-$$
-
-**5. Neutro aditivo.** Aplicando nuevamente `C2`,
-
-$$
-\boxed{a0=0}.
-$$
-
-Los axiomas realmente utilizados fueron
-
-$$
-\boxed{C1,\ C2,\ C3,\ C9},
-$$
-
-junto con sustitución en la igualdad. No hicieron falta conmutatividad de la suma, axiomas multiplicativos de neutro o inverso, ni ninguna propiedad de orden.
-
-Este inventario es parte de la prueba: muestra que una regla escolar muy familiar descansa en una porción precisa —y pequeña— de la estructura de cuerpo.
+donde la última igualdad usa que el inverso aditivo del inverso de $1$ vuelve a ser $1$.
 :::
 
 #### Soluciones del nivel G
@@ -11839,9 +11756,11 @@ Antes de cerrar el capítulo, conviene verificar el contrato de esta sección.
 - Distribución A–G: $7+7+7+6+5+5+3=40$.
 - Tipologías `CONCEPTUAL`, `PROOF`, `COUNTEREXAMPLE`, `DISCOVERY`, `SYNTHESIS` y `GEOMETRY`: presentes.
 - Inecuaciones racionales con valor absoluto de alta complejidad: **3**, en B7, C6 y D5.
-- Cobertura del retrofit axiomático: **8/8 objetivos** — clasificación axioma/definición/resultado (A4), unicidad (B3), regla de signos (B6), existencia/unicidad de ecuaciones (C4), cancelación y producto nulo (D2), división por cero (E3), reconstrucción desde `C1--C9` (F5) y manipulación de desigualdades según signo $A2 + B7/C6/D5$.
-- Problemas F obligatorios: caracterización del supremo, elección arquimediana, densidad, bisección y reconstrucción axiomática de $a0=0$: **5/5**. La necesidad del cierre permanece cubierta explícitamente en E4.
+- Reproducciones literales de demostraciones ya resueltas en el desarrollo: **eliminadas del banco**. Cuando una idea reaparece, exige transferencia, generalización, diagnóstico o combinación de herramientas.
+- Capa axiomática: clasificación axioma/definición/resultado (A4), identidad y orden de recíprocos (B3), signo de cocientes (B6), ecuación afín con existencia y unicidad (C4), cancelación con solución perdida (D2), división por cero (E3) y reconstrucción estructural de $(-1)a=-a$ (F5).
+- Transferencias de completitud: supremos bajo unión y traslación, eliminación finita de puntos, transporte del hueco racional, intervalos racionales encajados y propiedad de corte.
+- Problemas F: traslación del supremo, elección arquimediana simultánea, densidad con control de denominador, presupuesto de bisección y reconstrucción axiomática: **5/5**.
 - Problemas G de síntesis: suma de conjuntos, propiedad de corte y construcción de una raíz cúbica mediante supremo: **3/3**.
 - Dependencias de `T1-C03` o posteriores: **ninguna**.
 
-La auditoría `T1_C02_FINAL_AUDIT_v02` corresponde al manuscrito histórico. La presente reorganización conserva los cuarenta pares y dispone de una revisión específica del banco en `CPM_AUDITORIA_BANCO_v05.md`. La validación de Quarto y el reemplazo coordinado de la fuente canónica permanecen pendientes.
+La política pedagógica del banco queda así alineada con la progresión del capítulo: **primero modelar la justificación, después retirar el andamiaje y exigir transferencia**.
