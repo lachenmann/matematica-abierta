@@ -631,54 +631,38 @@ Todavía no afirmaremos que esas dos condiciones basten para garantizar la exist
 **1.** Sea
 
 $$
-A=[-3,2).
+A=[-2,0)\cup(1,3).
 $$
 
-Determina si existen $\max A$, $\min A$, $\sup A$ e $\inf A$.
+Determina $\sup A$, $\inf A$ y decide si existen máximo y mínimo.
 
-**Respuesta.** Como $-3\in A$ y todo elemento de $A$ es mayor o igual que $-3$,
-
-$$
-\min A=-3,
-\qquad
-\inf A=-3.
-$$
-
-En el extremo superior, $2$ es la menor cota superior, pero $2\notin A$. Por tanto,
+**Respuesta.** El extremo superior es $3$, que no pertenece al conjunto, de modo que
 
 $$
-\sup A=2,
+\sup A=3
 $$
 
-y $A$ no tiene máximo.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** Si $s=\sup A$ y $\varepsilon=10^{-3}$, ¿qué garantiza la caracterización aproximativa?
-
-**Respuesta.** Garantiza que existe algún $a\in A$ tal que
+y no hay máximo. El extremo inferior es $-2$ y sí pertenece a $A$, por lo que
 
 $$
-s-10^{-3}<a\le s.
-$$
-
-No afirma que haya un único elemento ni que podamos escoger el mismo $a$ para todos los valores de $\varepsilon$.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Puede un número ser simultáneamente supremo y máximo de un conjunto?
-
-**Respuesta.** Sí. Ocurre exactamente cuando el supremo pertenece al conjunto. Por ejemplo,
-
-$$
-\sup[0,1]=\max[0,1]=1.
+\inf A=\min A=-2.
 $$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué demostrar que $5$ es una cota superior de $A$ no basta para concluir que $\sup A=5$?
+**2.** Sea $A\ne\varnothing$ y $s=\sup A$. Demuestra que, para todo $t<s$, existe $a\in A$ tal que
 
-**Respuesta.** Porque quizá exista otra cota superior menor que $5$. Para probar que $5$ es el supremo debemos demostrar además que **ninguna** cota superior está por debajo de $5$.
+$$
+t<a\le s.
+$$
+
+**Respuesta.** Toma $\varepsilon=s-t>0$. La caracterización aproximativa del supremo produce $a\in A$ con
+
+$$
+s-\varepsilon<a\le s.
+$$
+
+Como $s-\varepsilon=t$, obtenemos la afirmación deseada.
 :::
 
 ### El punto al que hemos llegado
