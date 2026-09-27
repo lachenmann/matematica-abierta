@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0004 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0082 |
+| Capítulo | MA-BCH-0083 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0009 |
 
@@ -169,3 +169,4 @@ Las piezas individuales mantienen siempre su identificador MA global.
 | MA-BCH-0079 | book-chapter | FND C2 — ¿Cuándo una conclusión se sigue realmente de las hipótesis? | `libros/capitulos/fundamentos-para-matematicos-capitulo-2-consecuencia-e-hipotesis.qmd` | published |
 | MA-BCH-0080 | book-chapter | FND C3 — ¿Qué cambia cuando aparecen variables y cuantificadores? | `libros/capitulos/fundamentos-para-matematicos-capitulo-3-variables-y-cuantificadores.qmd` | published |
 | MA-BCH-0081 | book-chapter | FND C4 — Conjuntos, relaciones y funciones como lenguaje | `libros/capitulos/fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd` | published |
+| MA-BCH-0082 | book-chapter | FND C5 — ¿Cómo se convierten las definiciones en herramientas de prueba? | `libros/capitulos/fundamentos-para-matematicos-capitulo-5-definiciones-y-pruebas.qmd` | published |
