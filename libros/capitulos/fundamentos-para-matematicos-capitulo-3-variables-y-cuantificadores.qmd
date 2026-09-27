@@ -1,0 +1,1291 @@
+---
+title: "Capítulo 3 — ¿Qué cambia cuando aparecen variables y cuantificadores?"
+description: "Fundamentos para matemáticos: capítulo 3, con ejercicios y soluciones desarrolladas."
+content-id: MA-BCH-0080
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C03
+editorial-id: MA-BCH-FND-01-003
+source-version: v08
+status: published
+date-created: 2026-09-26
+date-modified: 2026-09-26
+areas: [fundamentos]
+level: fundamental
+topics: [razonamiento-matematico, lenguaje-matematico]
+prerequisites: [MA-BCH-0079]
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito FND-T1-C03, v08; notas bibliográficas en la página del libro."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+El capítulo anterior nos enseñó a distinguir una inferencia válida de una conclusión que resulta verdadera por casualidad. Sin embargo, al justificar que todo múltiplo de $4$ es par, no razonamos sobre una sola proposición aislada: elegimos un entero $n$ sin fijar su valor, supusimos que $4\mid n$ y concluimos que $2\mid n$. Después afirmamos que el razonamiento servía para **todos** los enteros. ¿Qué autorizaba ese último paso?
+
+Consideremos ahora otra afirmación:
+
+> Existe un entero par que no es múltiplo de $4$.
+
+El número $6$ basta para justificarla. No haríamos lo mismo para establecer que *todos* los enteros pares tienen esa propiedad: esa nueva afirmación es falsa. Las palabras «todos» y «existe» no son adornos de la frase, sino que determinan qué objetos debemos examinar y qué cuenta como una demostración o un contraejemplo.
+
+La pregunta rectora de este capítulo es
+
+$$
+\boxed{\text{¿qué afirmamos al cuantificar una propiedad y qué variables quedan bajo esa afirmación?}}
+$$
+
+Avanzaremos desde las fórmulas abiertas hasta su cuantificación y, después, estudiaremos el alcance, el orden, la negación y la unicidad. El propósito no es sustituir la lectura por una colección de reglas gráficas: queremos poder reconstruir qué dice realmente una fórmula antes de intentar demostrarla.
+
+## 3.1. De una fórmula abierta a una afirmación
+
+En el capítulo 1 distinguimos una proposición de una fórmula que contiene variables libres. Recuperemos esa distinción en un contexto concreto. Trabajemos en el dominio de los enteros $\mathbb Z$ y escribamos
+
+$$
+P(n):\quad 4\mid n.
+$$
+
+La expresión $P(n)$ designa la propiedad «$n$ es múltiplo de $4$». Mientras no asignemos un valor a $n$, ni indiquemos qué hemos afirmado acerca de todos o algunos de sus posibles valores, no disponemos todavía de una proposición cerrada cuya verdad podamos examinar sin información adicional. No obstante, sí sabemos **qué condición** expresa la fórmula y cuál es su dominio.
+
+Si sustituimos $n$ por un entero concreto, obtenemos una proposición. Por ejemplo,
+
+$$
+P(8):\ 4\mid8,\qquad P(6):\ 4\mid6.
+$$
+
+La primera es verdadera; la segunda es falsa. Una fórmula abierta admite distintas evaluaciones según el valor que reciba su variable. Esto no significa que la fórmula esté mal escrita: precisamente nos permite hablar de una misma propiedad para muchos objetos sin reescribir su descripción cada vez.
+
+::: {.callout-important title="Contexto y fórmula abierta"}
+Una **fórmula abierta** es una fórmula con al menos una ocurrencia de variable libre. Para evaluarla se necesita una interpretación de sus símbolos y una asignación a las variables libres. Su valor de verdad puede depender de esa asignación.
+
+Una **fórmula cerrada** no contiene ocurrencias libres de variables: las que aparecen en ella están ligadas por cuantificadores. Una fórmula abierta puede convertirse en una proposición evaluable cuando el contexto asigna valores a todas sus variables libres; eso no la convierte, por ese solo hecho, en una fórmula sintácticamente cerrada.
+:::
+
+Aquí usamos la palabra «predicado» en el sentido introductorio fijado en el capítulo 1: una propiedad expresada mediante una fórmula abierta, como $P(n)$. No la identificamos todavía con un objeto funcional ni desarrollamos una teoría general de predicados. Conviene separar lo que representa la notación de la afirmación que construiremos con ella.
+
+### Dos maneras distintas de cerrar una pregunta
+
+La pregunta «¿es $n$ múltiplo de $4$?» puede dar lugar a afirmaciones muy diferentes:
+
+$$
+\text{«Todos los enteros son múltiplos de }4\text{»},
+$$
+
+$$
+\text{«Existe un entero múltiplo de }4\text{»}.
+$$
+
+La primera es falsa —basta tomar $n=1$—, mientras que la segunda es verdadera —podemos tomar $n=8$—. La propiedad de partida no cambió: cambió **lo que afirmamos sobre sus posibles argumentos**. Ésta es la función de los cuantificadores.
+
+**Lectura guiada.** Antes de añadir «todos» o «existe» a una fórmula, identifica tres datos: el dominio de los objetos, la propiedad que han de cumplir y la fuerza de la afirmación que se quiere hacer. En las dos frases anteriores, el dominio es $\mathbb Z$ y la propiedad es $4\mid n$; solamente difiere la fuerza de la afirmación.
+
+## 3.2. El cuantificador universal: no dejar ningún caso fuera
+
+La notación
+
+$$
+\forall n\in\mathbb Z\;P(n)
+$$
+
+se lee «para todo entero $n$, se cumple $P(n)$». El símbolo $\forall$ se llama **cuantificador universal**. La expresión completa afirma que *cada* elemento del dominio satisface la propiedad. Si trabajamos en un universo más amplio $U$ que contiene a $\mathbb Z$, la notación restringida $\forall n\in\mathbb Z\;P(n)$ abrevia $\forall n\;(n\in\mathbb Z\to P(n))$; si el dominio ya está fijado como $\mathbb Z$, la escritura anuncia directamente ese dominio. La restricción universal tiene forma condicional: no exige que todos los elementos de $U$ sean enteros. En el ejemplo anterior,
+
+$$
+\forall n\in\mathbb Z\;(4\mid n)
+$$
+
+es falsa, porque $4\nmid1$. No necesitamos conocer la divisibilidad de todos los demás enteros para rechazar la afirmación: un solo caso contrario basta.
+
+En cambio, consideremos
+
+$$
+\forall n\in\mathbb Z\;(4\mid n\to 2\mid n).
+$$
+
+Ésta es la forma explícita de la afirmación que demostramos en el capítulo 2. Su contenido es condicional: para cada entero, **si** es múltiplo de $4$, **entonces** es par. No dice que todos los enteros sean múltiplos de $4$; exige que ningún entero que satisfaga el antecedente deje de satisfacer el consecuente.
+
+**Proposición.** Para todo $n\in\mathbb Z$, si $4\mid n$, entonces $2\mid n$.
+
+**Demostración.** Sea $n$ un entero arbitrario. Supongamos que $4\mid n$. Por definición de divisibilidad, existe $k\in\mathbb Z$ tal que $n=4k$. Por tanto,
+
+$$
+n=4k=2(2k).
+$$
+
+Puesto que $2k\in\mathbb Z$, concluimos que $2\mid n$. La elección de $n$ no impuso una restricción adicional: el razonamiento se aplica a cualquier entero que cumpla la hipótesis. Por eso queda establecida la afirmación universal. $\square$
+
+### Qué permite generalizar
+
+En esta prueba «sea $n$ un entero arbitrario» introduce un objeto del dominio **sin elegir un valor particular** ni suponer una propiedad especial de él. La suposición posterior $4\mid n$ pertenece al interior de la demostración condicional. Cerrada esa suposición, obtenemos $4\mid n\to2\mid n$ para el entero arbitrario; cerrada también la elección de $n$, obtenemos el enunciado universal.
+
+Si hubiéramos comenzado por «tomemos $n=8$», sólo habríamos establecido la implicación en ese caso. Si hubiéramos comenzado por «sea $n$ un entero par», habríamos restringido el objeto desde el principio y necesitaríamos revisar qué enunciado permite justificar el argumento. **Generalizar no consiste en borrar las hipótesis particulares al final de la prueba.**
+
+::: {.callout-note title="La condición pertenece dentro del cuantificador"}
+Cuando decimos «todo entero múltiplo de $4$ es par», la lectura correcta es
+
+$$
+\forall n\in\mathbb Z\;(4\mid n\to2\mid n).
+$$
+
+No estamos afirmando conjuntamente que todos los enteros sean múltiplos de $4$ y que todos sean pares. El condicional discrimina cuáles objetos activan la hipótesis. Más adelante expresaremos las restricciones de dominio con el mismo cuidado.
+:::
+
+La relación entre una fórmula universal y sus casos concretos también funciona en sentido descendente: si hemos demostrado que $\forall n\in\mathbb Z\;P(n)$ y sabemos que $a\in\mathbb Z$, podemos concluir $P(a)$. Esto se llama **instanciación universal**. El paso requiere que el objeto elegido pertenezca al dominio y que la sustitución sea legítima; la atención al alcance de las variables, que estudiaremos en §3.4, precisará esta última condición.
+
+## 3.3. El cuantificador existencial: encontrar un testigo
+
+La notación
+
+$$
+\exists n\in\mathbb Z\;P(n)
+$$
+
+se lee «existe al menos un entero $n$ tal que se cumple $P(n)$». El símbolo $\exists$ se llama **cuantificador existencial**. No exige que todos los enteros tengan la propiedad; exige que alguno la tenga. Si el universo de referencia es más amplio que $\mathbb Z$, la notación $\exists n\in\mathbb Z\;P(n)$ abrevia $\exists n\;(n\in\mathbb Z\land P(n))$: el testigo debe ser entero **y** cumplir la propiedad. Compárese esta conjunción con el condicional usado para restringir el universal.
+
+Para probar
+
+$$
+\exists n\in\mathbb Z\;(4\mid n)
+$$
+
+podemos presentar $n=8$ y comprobar que $8\in\mathbb Z$ y $8=4\cdot2$. El número $8$ es un **testigo** de la existencia afirmada. Un testigo no es simplemente un número mencionado: debe pertenecer al dominio y satisfacer exactamente la propiedad propuesta.
+
+Consideremos una afirmación algo más interesante:
+
+::: {.callout-important title="Proposición existencial"}
+Existe un entero que es par y no es múltiplo de $4$:
+
+$$
+\exists n\in\mathbb Z\;(2\mid n\land 4\nmid n).
+$$
+:::
+
+**Demostración.** Tomemos $n=6$. Es un entero y $6=2\cdot3$, de modo que $2\mid6$. En cambio, no existe $k\in\mathbb Z$ tal que $6=4k$, pues ello exigiría $k=3/2\notin\mathbb Z$. Por tanto, $4\nmid6$. Hemos exhibido un entero que cumple las dos condiciones y queda probada la existencia. $\square$
+
+**Idea de la prueba.** El cuantificador existencial nos permitía elegir un objeto conveniente; el conectivo $\land$ nos obligaba, sin embargo, a verificar **ambas** condiciones para ese mismo objeto. No habría bastado exhibir un número par y otro distinto que no fuera múltiplo de $4$.
+
+### Un testigo no demuestra una afirmación universal
+
+Con $n=6$ demostramos que existe un entero par no divisible por $4$. Pero el mismo dato no demuestra
+
+$$
+\forall n\in\mathbb Z\;(2\mid n\to4\nmid n).
+$$
+
+De hecho, esta última afirmación es falsa: el entero $8$ es par y múltiplo de $4$. El cambio de cuantificador transforma lo que debemos demostrar. Para una existencia, un testigo verificado basta; para una universal, cada caso debe quedar cubierto por un argumento general.
+
+Además, hay que distinguir las dos escrituras
+
+$$
+\exists n\in\mathbb Z\;(4\mid n\land2\mid n)
+\qquad\text{y}\qquad
+\exists n\in\mathbb Z\;(4\mid n\to2\mid n).
+$$
+
+La primera exige un entero que cumpla las dos propiedades; $n=8$ sirve. La segunda sólo exige que cierto condicional sea verdadero. Por ejemplo, $n=1$ lo satisface porque su antecedente $4\mid1$ es falso. Por tanto, **la existencia de una implicación verdadera no garantiza la existencia de un caso que satisfaga su antecedente**. Esta diferencia recupera la lectura del condicional estudiada en §2.3.
+
+### Dos tareas de prueba, dos cargas distintas
+
+En términos operativos, el lector puede plantearse una pregunta antes de escribir una solución: «¿debo cubrir todos los objetos del dominio o encontrar al menos uno?». Las palabras «arbitrario» y «testigo» reflejan esas tareas, pero no son fórmulas mágicas. La primera exige controlar qué hipótesis utilizamos; la segunda exige comprobar que el objeto elegido satisface la propiedad completa.
+
+La afirmación existencial no especifica, por sí sola, **un único** objeto ni uno que sepamos calcular mediante un procedimiento. Cuando más adelante estudiemos existencia y unicidad, separaremos ambas exigencias. La distinción entre pruebas constructivas y no constructivas se desarrollará en el capítulo sobre métodos de demostración.
+
+## 3.4. Variables libres, variables ligadas y alcance
+
+Hemos escrito $\forall n\in\mathbb Z\;P(n)$ y $\exists n\in\mathbb Z\;P(n)$ como afirmaciones sobre el conjunto completo de enteros. En ambos casos, el cuantificador actúa sobre las apariciones de $n$ que están dentro de la fórmula a la que se aplica. Decimos que esas apariciones quedan **ligadas** por el cuantificador. Para leer expresiones más complejas debemos precisar hasta dónde llega esa acción: su **alcance**.
+
+::: {.callout-important title="Variable ligada y alcance"}
+Una ocurrencia de una variable está **ligada** cuando se encuentra dentro del alcance de un cuantificador que declara esa misma variable. Una ocurrencia no ligada por ningún cuantificador es **libre**. El **alcance** es la parte de la fórmula sobre la que actúa el cuantificador; los paréntesis permiten hacerlo explícito.
+
+La condición de libre o ligada se determina para cada **ocurrencia** de la variable, no para la letra considerada aisladamente.
+:::
+
+Trabajemos con enteros y examinemos
+
+$$
+\forall x\in\mathbb Z\;(x+y=y+x).
+$$
+
+El cuantificador universal liga las apariciones de $x$ de la igualdad. En cambio, $y$ permanece libre: el cuantificador $\forall x$ no le asigna un valor ni dice nada directamente sobre todos sus valores. El dominio de $y$ debe fijarse en el contexto si deseamos evaluar la fórmula; por ejemplo, podemos declarar «sea $y\in\mathbb Z$». Para obtener una proposición cerrada sin esa asignación previa podemos escribir
+
+$$
+\forall y\in\mathbb Z\;\forall x\in\mathbb Z\;(x+y=y+x).
+$$
+
+Esta última fórmula ya no deja ninguna de esas variables libre. Aquí la igualdad es verdadera en la aritmética usual de los enteros, pero **la verdad del resultado no sustituye el examen sintáctico de las variables**: debemos saber qué estamos afirmando antes de invocar propiedades de la suma.
+
+### Los paréntesis fijan una frontera
+
+Comparemos la fórmula cerrada
+
+$$
+\forall x\in\mathbb Z\;(x^2\ge0)
+$$
+
+con la fórmula
+
+$$
+\bigl(\forall x\in\mathbb Z\;(x^2\ge0)\bigr)\land(x<3).
+$$
+
+En la segunda, el primer $x$ de $x^2\ge0$ está ligado por el cuantificador; el $x$ de $x<3$ queda **fuera** de su alcance y es libre. El primer componente de la conjunción es una proposición cerrada; el segundo requiere una asignación o un nuevo cuantificador. No podemos declarar que el $x$ final está ligado sólo porque en alguna parte anterior de la línea aparezca $\forall x$.
+
+Escribir bien una fórmula exige que sus fronteras sean legibles. Si queremos afirmar que todo entero tiene cuadrado no negativo *y* es menor que $3$, debemos escribir
+
+$$
+\forall x\in\mathbb Z\;(x^2\ge0\land x<3).
+$$
+
+Ahora sí, ambas apariciones de $x$ están ligadas, pero la afirmación es falsa: $x=3$ viola $x<3$. Cambiar el alcance cambió simultáneamente la condición de la variable y el contenido de la afirmación.
+
+### Cambiar una letra sin cambiar la afirmación
+
+Las letras de las variables ligadas son nombres auxiliares. En condiciones de sustitución correcta,
+
+$$
+\forall x\in\mathbb Z\;(x^2\ge0)
+\qquad\text{y}\qquad
+\forall t\in\mathbb Z\;(t^2\ge0)
+$$
+
+expresan la misma afirmación. Renombrar una variable ligada exige cambiar **todas y sólo** las ocurrencias ligadas por ese cuantificador, sin capturar variables que antes eran libres.
+
+Por ejemplo, en
+
+$$
+\forall x\in\mathbb Z\;(x<y)
+$$
+
+la letra $y$ está libre. Reemplazar sin cuidado $x$ por $y$ produciría $\forall y\in\mathbb Z\;(y<y)$, que liga el antiguo $y$ libre y cambia el significado. Una sustitución segura sería $\forall t\in\mathbb Z\;(t<y)$, manteniendo $y$ libre y reservando una letra nueva para la variable ligada. Esta precaución recibirá importancia cuando trabajemos con varios cuantificadores.
+
+### Laboratorio de lectura: no confundir la fórmula con su cierre
+
+Sea
+
+$$
+R(x,y):\quad x+y=0
+$$
+
+una fórmula abierta en el dominio $\mathbb Z$ para ambas variables. La escritura
+
+$$
+\exists x\in\mathbb Z\;(x+y=0)
+$$
+
+liga $x$, pero deja $y$ libre. Si fijamos $y=5$, la afirmación resultante es verdadera con testigo $x=-5$; si fijamos $y=-2$, sirve $x=2$. Para decir que **cada** entero $y$ tiene un entero $x$ que satisface la igualdad, escribimos la proposición cerrada
+
+$$
+\forall y\in\mathbb Z\;\exists x\in\mathbb Z\;(x+y=0).
+$$
+
+En este caso podemos justificarla: sea $y\in\mathbb Z$ arbitrario y elijamos $x=-y$, que también es entero; entonces $x+y=-y+y=0$. La escritura de los cuantificadores explicita una estructura que la demostración ya deja ver: primero se toma un $y$ cualquiera y después se elige un $x$ que puede depender de él.
+
+**Después de la prueba.** Ésta es una primera advertencia sobre el orden de los cuantificadores, no una licencia para intercambiarlos: afirmar que cada entero tiene su opuesto no equivale a afirmar que exista **un solo entero fijo** que sea el opuesto de todos. Examinaremos rigurosamente esa diferencia en §3.5.
+
+## 3.5. El orden de los cuantificadores y la dependencia de los testigos
+
+En §3.4 demostramos que cada entero tiene un opuesto: dado $y\in\mathbb Z$, elegimos $x=-y$ y obtuvimos $x+y=0$. El testigo de la existencia se eligió **después** de conocer el entero al que debía corresponder. ¿Podemos cambiar ese orden y elegir primero un único $x$ que sirva para todos los valores de $y$? La respuesta obliga a leer los cuantificadores de izquierda a derecha y a conservar sus dominios.
+
+### Cada objeto puede tener su propio testigo
+
+Comparemos dos proposiciones cerradas sobre los enteros:
+
+$$
+\begin{aligned}
+A&:\quad\forall x\in\mathbb Z\;\exists y\in\mathbb Z\;(x+y=0),\\
+B&:\quad\exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(x+y=0).
+\end{aligned}
+$$
+
+En $A$ se afirma: «para **cada** entero $x$, existe **algún** entero $y$ que sumado a él da cero». Podemos comenzar la demostración tomando un $x$ arbitrario y, sólo entonces, elegir $y=-x$. Como $-x\in\mathbb Z$, el testigo pertenece al dominio y satisface $x+y=x-x=0$. Al no haber elegido un valor especial de $x$, esta construcción demuestra $A$. Es la misma propiedad de los opuestos estudiada al final de §3.4, con nombres de variables reorganizados.
+
+En $B$ se afirma otra cosa: «existe un entero $y$ que, sumado a **cualquier** entero $x$, da cero». Ahora el testigo debe ser **uno solo**, elegido antes de recorrer los posibles valores de $x$. Esta afirmación es falsa.
+
+**Demostración de que $B$ es falsa.** Supongamos que existe un entero $y$ tal que $x+y=0$ para todo $x\in\mathbb Z$. Al tomar $x=0$ obtenemos $y=0$. Al tomar $x=1$ obtenemos $1+y=0$, es decir, $y=-1$. El mismo entero no puede satisfacer $y=0$ y $y=-1$. Por tanto, no existe el testigo exigido por $B$. $\square$
+
+::: {.callout-important title="La dependencia del testigo"}
+La forma
+
+$$
+\forall x\in D\;\exists y\in E\;R(x,y)
+$$
+
+afirma que **cada** $x$ tiene por lo menos un $y$ relacionado con él; el $y$ elegido *puede depender* de $x$. No exige que ese $y$ sea único ni que debamos disponer de una fórmula para calcularlo.
+
+La forma
+
+$$
+\exists y\in E\;\forall x\in D\;R(x,y)
+$$
+
+afirma que **un mismo** $y$ sirve para todos los $x$. El testigo es uniforme: no se puede cambiar al pasar de un $x$ a otro.
+:::
+
+La expresión «puede depender» es deliberada: el primer enunciado no exige que testigos distintos correspondan a valores distintos de $x$. Si por otras razones existe un testigo uniforme, también podemos utilizarlo para cada $x$. Lo que no podemos hacer es **suponer** que existe tal testigo cuando sólo hemos demostrado una existencia por cada objeto.
+
+### La diferencia persiste aunque la relación sea muy sencilla
+
+Consideremos las proposiciones
+
+$$
+\begin{aligned}
+C&:\quad\forall x\in\mathbb Z\;\exists y\in\mathbb Z\;(y>x),\\
+D&:\quad\exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(y>x).
+\end{aligned}
+$$
+
+**Proposición.** $C$ es verdadera y $D$ es falsa.
+
+**Demostración.** Para $C$, sea $x\in\mathbb Z$ arbitrario. Elijamos $y=x+1$. Entonces $y\in\mathbb Z$ y $y>x$. Como esta elección funciona para cualquier entero de partida, queda demostrada $C$.
+
+Para refutar $D$, supongamos que existe un entero fijo $y$ mayor que todos los enteros. Podemos tomar $x=y+1$, que también es entero. La propiedad supuesta exigiría $y>y+1$, lo cual es imposible. Luego $D$ es falsa. $\square$
+
+**Idea de la prueba.** El procedimiento $y=x+1$ es una elección legítima para $C$, pues sólo buscamos un $y$ después de fijar $x$. Para $D$, en cambio, la elección de $y$ se realizaría antes: después podríamos poner a prueba ese candidato escogiendo $x=y+1$. El error de lectura consistiría en utilizar para $D$ la misma respuesta variable que funciona en $C$.
+
+El dominio importa. Si en $D$ sustituimos el dominio de $x$ por $\{0,1\}$ y conservamos $y\in\mathbb Z$, la proposición resultante **sí** es verdadera: $y=2$ es mayor que los dos posibles valores de $x$. No cambió el significado de $\exists$ ni de $\forall$; cambió el conjunto de casos que un testigo uniforme debía cubrir.
+
+### Una implicación entre las dos formas, pero no una equivalencia
+
+La diferencia anterior puede precisarse en una proposición general. Sean $D$ y $E$ dominios fijados y $R(x,y)$ una propiedad de pares con $x\in D$ e $y\in E$.
+
+**Proposición.** Si existe $y\in E$ tal que $R(x,y)$ para todo $x\in D$, entonces, para cada $x\in D$, existe algún $y\in E$ que satisface $R(x,y)$. En símbolos,
+
+$$
+\bigl(\exists y\in E\;\forall x\in D\;R(x,y)\bigr)
+\;\longrightarrow\;
+\bigl(\forall x\in D\;\exists y\in E\;R(x,y)\bigr).
+$$
+
+**Demostración.** Supongamos verdadera la premisa y fijemos un testigo $y_0\in E$ que satisfaga $R(x,y_0)$ para todo $x\in D$. Sea ahora $x\in D$ arbitrario. Para ese $x$ podemos utilizar el mismo $y_0$ como testigo de $\exists y\in E\;R(x,y)$. Como el argumento no depende de una elección especial de $x$, obtenemos la conclusión universal. $\square$
+
+La recíproca **no** es válida en general: la relación $x+y=0$ sobre $\mathbb Z$ proporciona un contraejemplo, pues $A$ es verdadera y $B$ falsa. Por tanto, el paso de un testigo común a testigos para cada caso está justificado; el paso inverso necesita información adicional.
+
+Conviene observar que la demostración anterior no invoca que los dominios sean finitos ni que los testigos sean únicos. Si el antecedente afirma que existe un testigo común, ya suministra el objeto que necesitamos. Si $D$ está vacío, la conclusión universal también es verdadera; este caso no altera la implicación demostrada. Más adelante podremos estudiar con detalle cómo interviene el dominio vacío en afirmaciones existenciales y universales.
+
+### Cuantificadores iguales y cuantificadores distintos
+
+No todo cambio de orden modifica la afirmación. Si las variables recorren dominios fijados y la fórmula interior se conserva, dos cuantificadores universales consecutivos pueden permutarse:
+
+$$
+\forall x\in D\;\forall y\in E\;R(x,y)
+\quad\Longleftrightarrow\quad
+\forall y\in E\;\forall x\in D\;R(x,y).
+$$
+
+Ambos enunciados requieren que $R(x,y)$ se cumpla para **todos los pares** permitidos. Del mismo modo,
+
+$$
+\exists x\in D\;\exists y\in E\;R(x,y)
+\quad\Longleftrightarrow\quad
+\exists y\in E\;\exists x\in D\;R(x,y),
+$$
+
+porque ambos exigen la existencia de **algún par** que satisfaga la propiedad. En el segundo caso no intercambiamos las posiciones de $x$ y $y$ *dentro* de $R$: sólo modificamos el orden en que anunciamos su existencia.
+
+Con cuantificadores de distinto tipo, en cambio, el orden puede modificar la dependencia y, con ella, el valor de verdad. Los ejemplos $A/B$ y $C/D$ muestran precisamente ese cambio. No basta recordar una regla superficial sobre el intercambio de símbolos: hay que reconstruir quién se elige primero, quién puede depender de quién y qué exige la propiedad.
+
+### Auditoría de lectura: reconstruir la afirmación antes de probarla
+
+Examinemos la frase: «Todo entero tiene un entero mayor que él». Una lectura correcta comienza por fijar el primer objeto: **para cada entero $x$**; después declara la existencia de otro: **hay un entero $y$**; finalmente especifica la relación: **$y>x$**. Así obtenemos $C$, no $D$. La frase «Existe un entero mayor que todos los enteros» tiene el orden opuesto y expresa $D$.
+
+En una demostración, los mismos cuantificadores determinan qué elecciones son legítimas. Si el objetivo comienza por $\forall x\,\exists y$, podemos tomar un $x$ arbitrario y buscar después un testigo. Si comienza por $\exists y\,\forall x$, debemos encontrar primero un candidato fijo y demostrar que funciona para todo $x$. Una solución que cambie de candidato cada vez que cambia $x$ no prueba este segundo objetivo.
+
+**Después de la prueba.** Ya podemos leer una cadena de cuantificadores como una secuencia de compromisos, no como una decoración de la fórmula. El siguiente problema será negar correctamente esos compromisos: ¿qué debemos afirmar para refutar «todos cumplen» o «existe alguno», especialmente cuando intervienen varios cuantificadores y paréntesis? Ése será el objeto de §3.6.
+
+## 3.6. Negación de enunciados cuantificados y control del alcance
+
+En §3.5 vimos que una afirmación sobre *cada* objeto no permite elegir automáticamente un testigo común. Ahora preguntaremos algo distinto: ¿qué afirmación necesitamos demostrar para establecer que una proposición cuantificada es falsa? No basta añadir «no» en cualquier lugar de una frase. La negación debe afectar a la **afirmación completa**, incluidos los cuantificadores y los paréntesis que fijan su alcance.
+
+### Negar «todos»: encontrar al menos una excepción
+
+Sea $D$ un dominio fijado y $P(x)$ una propiedad de sus elementos. Trabajamos, como hasta aquí, con la lógica clásica y una interpretación dada de los símbolos. Entonces
+
+$$
+\boxed{\neg\bigl(\forall x\in D\;P(x)\bigr)
+\quad\Longleftrightarrow\quad
+\exists x\in D\;\neg P(x).}
+$$
+
+La lectura es precisa: «no todos los elementos de $D$ cumplen $P$» equivale a «hay por lo menos un elemento de $D$ que no cumple $P$». Para refutar una afirmación universal debemos ofrecer, o justificar que existe, un **contraejemplo** perteneciente al dominio. No afirmamos que todos los elementos fallen.
+
+**Ejemplo.** Neguemos «todos los enteros pares son múltiplos de $4$». Su forma explícita es
+
+$$
+\forall n\in\mathbb Z\;(2\mid n\to4\mid n).
+$$
+
+Su negación comienza como $\exists n\in\mathbb Z\;\neg(2\mid n\to4\mid n)$. Recordando del capítulo 2 que $\neg(A\to B)$ equivale a $A\land\neg B$, obtenemos
+
+$$
+\exists n\in\mathbb Z\;(2\mid n\land4\nmid n).
+$$
+
+El entero $6$ verifica las dos condiciones: es par y no es múltiplo de $4$. Por eso refuta la universal. Elegir $n=3$ no serviría: aunque $4\nmid3$, tampoco se cumple el antecedente «es par», y el condicional no queda falsado.
+
+**Lectura de la prueba.** Un contraejemplo a $\forall x\,(A(x)\to B(x))$ debe satisfacer *simultáneamente* $A(x)$ y $\neg B(x)$. Negar sólo el consecuente no basta: hay que conservar la hipótesis que hace fallar la implicación.
+
+### Negar «existe»: excluir todos los posibles testigos
+
+La segunda equivalencia intercambia los papeles:
+
+$$
+\boxed{\neg\bigl(\exists x\in D\;P(x)\bigr)
+\quad\Longleftrightarrow\quad
+\forall x\in D\;\neg P(x).}
+$$
+
+Decir «no existe ningún elemento de $D$ que cumpla $P$» equivale a afirmar que *cada* elemento del dominio falla esa propiedad. La negación de una existencia es, por tanto, una afirmación universal, no otra afirmación existencial.
+
+**Ejemplo.** La negación de
+
+$$
+\exists n\in\mathbb Z\;(n^2=-1)
+$$
+
+es
+
+$$
+\forall n\in\mathbb Z\;(n^2\ne-1).
+$$
+
+Para justificarla no basta ensayar $n=0,1,-1$ y no encontrar soluciones. Debemos cubrir todo el dominio. Si $n\in\mathbb Z$, su cuadrado es no negativo, por lo que no puede ser $-1$. Así queda excluido cualquier posible testigo. $\square$
+
+::: {.callout-important title="Las dos leyes de negación cuantificada"}
+Para una propiedad $P(x)$ y un dominio fijado $D$:
+
+$$
+\begin{aligned}
+\neg\forall x\in D\;P(x)&\quad\Longleftrightarrow\quad\exists x\in D\;\neg P(x),\\
+\neg\exists x\in D\;P(x)&\quad\Longleftrightarrow\quad\forall x\in D\;\neg P(x).
+\end{aligned}
+$$
+
+Los paréntesis de las expresiones originales se sobreentienden sólo cuando el alcance resulta inequívoco. Estas equivalencias valen también para el dominio vacío en semántica clásica: allí la universal es verdadera y la existencial falsa.
+:::
+
+### Por qué las equivalencias expresan exactamente la negación
+
+Consideremos primero $\forall x\in D\;P(x)$. Esta afirmación es verdadera precisamente cuando **ningún** elemento de $D$ constituye una excepción. Por consiguiente, es falsa exactamente cuando existe una excepción: algún $a\in D$ satisface $\neg P(a)$. Hemos recuperado la primera equivalencia sin manipular mecánicamente símbolos.
+
+Para $\exists x\in D\;P(x)$ ocurre lo contrario: su verdad exige al menos un testigo. Negarla significa que ningún candidato puede desempeñar ese papel, es decir, que todo $a\in D$ satisface $\neg P(a)$. En cada paso conservamos el dominio original: una excepción buscada entre enteros no puede reemplazarse por un número de otro conjunto.
+
+Estas leyes se formulan aquí para negación clásica. No estamos equiparando automáticamente una prueba de inexistencia con un algoritmo que inspeccione uno a uno todos los elementos de un dominio infinito: una demostración general puede excluirlos mediante una propiedad común, como $n^2\ge0$ en el ejemplo anterior.
+
+### Dos cuantificadores: negar desde el exterior hacia el interior
+
+Si una fórmula contiene varios cuantificadores, negamos primero la afirmación exterior y continuamos hasta llegar a la propiedad interna. Para dominios fijos $D,E$ y una relación $R(x,y)$, las leyes anteriores proporcionan
+
+$$
+\begin{aligned}
+\neg\bigl(\forall x\in D\;\exists y\in E\;R(x,y)\bigr)
+&\Longleftrightarrow\exists x\in D\;\neg\bigl(\exists y\in E\;R(x,y)\bigr)\\
+&\Longleftrightarrow\exists x\in D\;\forall y\in E\;\neg R(x,y).
+\end{aligned}
+$$
+
+La negación de «cada $x$ tiene *algún* $y$ relacionado con él» dice «hay *un* $x$ para el cual **ningún** $y$ sirve». El $x$ elegido debe resistir todas las alternativas de $y$. No significa que «para cada $x$ hay un $y$ que falla», enunciado mucho más débil y generalmente distinto.
+
+De manera análoga,
+
+$$
+\begin{aligned}
+\neg\bigl(\exists y\in E\;\forall x\in D\;R(x,y)\bigr)
+&\Longleftrightarrow\forall y\in E\;\neg\bigl(\forall x\in D\;R(x,y)\bigr)\\
+&\Longleftrightarrow\forall y\in E\;\exists x\in D\;\neg R(x,y).
+\end{aligned}
+$$
+
+Ahora la negación afirma que **cada candidato uniforme** $y$ tiene al menos una excepción $x$; esta excepción puede depender de $y$. Vuelve así la dependencia de testigos que distinguimos en §3.5.
+
+**Comprobación matemática.** Allí demostramos que $C:\ \forall x\in\mathbb Z\;\exists y\in\mathbb Z\;(y>x)$ es verdadera. Su negación es
+
+$$
+\exists x\in\mathbb Z\;\forall y\in\mathbb Z\;(y\le x),
+$$
+
+que afirma que existe un entero mayor o igual que todos los enteros. Es falsa: dado cualquier candidato $x$, $y=x+1$ lo supera. También demostramos que $D:\ \exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(y>x)$ es falsa. Su negación es
+
+$$
+\forall y\in\mathbb Z\;\exists x\in\mathbb Z\;(y\le x),
+$$
+
+que es verdadera: para cualquier $y$ sirve $x=y$. Las dos verificaciones concuerdan con los valores de verdad de $C$ y $D$. No hemos cambiado sólo los signos: hemos identificado qué clase de testigo exige cada enunciado negado.
+
+### Las restricciones de dominio y el alcance de la negación
+
+En §3.2 interpretamos la cuantificación universal restringida como un condicional, mientras que en §3.3 interpretamos la existencial restringida como una conjunción. Esa diferencia importa al negar. Si $D$ está contenido en un universo de referencia $U$, tenemos
+
+$$
+\begin{aligned}
+\neg\bigl(\forall x\in D\;P(x)\bigr)
+&\Longleftrightarrow\neg\forall x\in U\;(x\in D\to P(x))\\
+&\Longleftrightarrow\exists x\in U\;(x\in D\land\neg P(x)),
+\end{aligned}
+$$
+
+mientras que
+
+$$
+\begin{aligned}
+\neg\bigl(\exists x\in D\;P(x)\bigr)
+&\Longleftrightarrow\neg\exists x\in U\;(x\in D\land P(x))\\
+&\Longleftrightarrow\forall x\in U\;(x\in D\to\neg P(x)).
+\end{aligned}
+$$
+
+En ambos casos la propiedad negada sigue refiriéndose a los elementos de $D$. No convertimos «ningún entero satisface $P$» en «todos los objetos del universo, sean enteros o no, dejan de satisfacer $P$».
+
+También debemos conservar los paréntesis de los conectivos. Sean $A(x)$ y $B(x)$ propiedades sobre un mismo dominio. La negación de «todo objeto satisface ambas propiedades» es
+
+$$
+\neg\forall x\in D\;(A(x)\land B(x))
+\quad\Longleftrightarrow\quad
+\exists x\in D\;(\neg A(x)\lor\neg B(x)).
+$$
+
+El testigo sólo necesita fallar **alguna** de las dos propiedades, no necesariamente ambas. En cambio,
+
+$$
+\neg\exists x\in D\;(A(x)\lor B(x))
+\quad\Longleftrightarrow\quad
+\forall x\in D\;(\neg A(x)\land\neg B(x)).
+$$
+
+En este último caso todos los objetos deben fallar **las dos** propiedades. La transformación del conectivo interno obedece a las leyes de De Morgan: después de cambiar el cuantificador, hay que seguir negando la fórmula que queda bajo su alcance.
+
+### Una variable libre no queda ligada por negar una fórmula
+
+Volvamos al tipo de expresión de §3.4:
+
+$$
+F(y):\quad\bigl(\forall x\in\mathbb Z\;(x^2\ge0)\bigr)\land(y<3).
+$$
+
+Aquí $y$ está libre. Su negación, relativa a una asignación o contexto que dé valor a $y$, es
+
+$$
+\neg F(y)
+\quad\Longleftrightarrow\quad
+\bigl(\exists x\in\mathbb Z\;(x^2<0)\bigr)\lor(y\ge3).
+$$
+
+El cuantificador sobre $x$ actúa exclusivamente en el primer componente; la variable $y$ sigue libre en el segundo. Como no hay enteros con cuadrado negativo, la negación tiene, para cada valor fijado de $y$, el mismo valor de verdad que $y\ge3$. **Negar no cierra una fórmula abierta ni amplía por arte de magia el alcance de un cuantificador.**
+
+### Auditoría de una negación
+
+Ante una expresión compleja, primero delimita la fórmula entera que se desea negar y distingue sus variables libres de las ligadas. Después conserva los dominios, transforma cada cuantificador que esté dentro de la negación y lleva ésta hasta las propiedades elementales mediante las equivalencias proposicionales. Por último, traduce el resultado al lenguaje ordinario: debe expresar exactamente una situación incompatible con el enunciado original, no simplemente una frase que suene negativa.
+
+**Después de la prueba.** Sabemos ya refutar universales mediante excepciones, negar existencias mediante una exclusión general y enfrentar cadenas de cuantificadores sin perder la dependencia de los testigos. En §3.7 estudiaremos una exigencia diferente: no sólo que un objeto exista, sino que sea el **único** que satisface una determinada propiedad.
+
+## 3.7. Existencia y unicidad: dos exigencias distintas
+
+En §3.3 aprendimos a demostrar una existencia mediante un testigo; en §3.5 advertimos que ese testigo puede depender de una variable elegida antes. Nada de ello garantiza que no haya otros objetos que satisfagan la misma propiedad. Decir «hay alguno» y decir «hay exactamente uno» son compromisos distintos. Para escribir y demostrar el segundo necesitamos reunir una afirmación existencial y otra universal.
+
+### De «alguno» a «exactamente uno»
+
+Sea $D$ un dominio fijado y $P(x)$ una propiedad de sus elementos. Escribiremos
+
+$$
+\exists!x\in D\;P(x)
+$$
+
+para afirmar «existe **un único** $x$ en $D$ que satisface $P$». El signo $\exists!$ es una abreviatura, no una nueva clase de testigo: su significado se expresa utilizando los cuantificadores y la igualdad que ya conocemos.
+
+::: {.callout-important title="Definición: existe un único"}
+La expresión $\exists!x\in D\;P(x)$ significa
+
+$$
+\boxed{\exists x\in D\;\bigl(P(x)\land
+\forall y\in D\;(P(y)\to y=x)\bigr).}
+$$
+
+Exige conjuntamente **existencia** —un $x$ del dominio cumple $P$— y **unicidad** —todo $y$ del mismo dominio que cumpla $P$ coincide con ese $x$. El nombre de la variable ligada $y$ es auxiliar; debe elegirse sin capturar otras variables libres.
+:::
+
+Observemos la posición de los conectivos. El candidato $x$ ha de satisfacer $P(x)$ **y**, para ese mismo candidato, debemos probar la afirmación universal sobre los demás objetos. No bastaría escribir $\exists x\in D\;P(x)$ y añadir informalmente que «es el elegido»: nuestra elección no excluye otras posibilidades.
+
+Existe otra formulación especialmente útil al construir demostraciones. Definamos la condición «a lo sumo uno satisface $P$» mediante
+
+$$
+\forall u\in D\;\forall v\in D\;
+\bigl((P(u)\land P(v))\to u=v\bigr).
+$$
+
+Esta condición permite **cero o un** objeto: no asegura que haya alguno. Con ella podemos desplegar la unicidad existencial como
+
+$$
+\begin{aligned}
+\exists!x\in D\;P(x)
+\quad\Longleftrightarrow\quad&
+\bigl(\exists x\in D\;P(x)\bigr)\\
+&\land\bigl(\forall u\in D\;\forall v\in D\;
+((P(u)\land P(v))\to u=v)\bigr).
+\end{aligned}
+$$
+
+**Justificación de la equivalencia.** Si existe un $x$ con la propiedad y todo objeto que la tiene es igual a él, entonces dos candidatos cualesquiera $u,v$ son ambos iguales a $x$ y, por tanto, iguales entre sí. Recíprocamente, si existe un candidato $x$ y dos candidatos cualesquiera han de ser iguales, al tomar uno de ellos igual a $x$ concluimos que todo $y$ con $P(y)$ satisface $y=x$. Así se recupera la definición anterior. $\square$
+
+### Tres situaciones que no debemos confundir
+
+Sobre el dominio $\mathbb Z$ podemos observar tres problemas diferentes:
+
+| Propiedad $P(n)$ | Qué ocurre | Consecuencia |
+|---|---|---|
+| $n^2=-1$ | Ningún entero satisface la igualdad, pues $n^2\ge0$. | No hay existencia; por tanto, tampoco existe un único testigo. |
+| $n^2=1$ | Tanto $1$ como $-1$ son enteros distintos que la satisfacen. | Hay existencia, pero falla la unicidad. |
+| $n+5=0$ | El entero $-5$ satisface la igualdad y cualquier solución debe ser igual a $-5$. | Hay existencia y unicidad. |
+
+La tercera fila requiere justificar su última afirmación, no sólo reconocer el candidato por inspección. Si $n+5=0$, sumando $-5$ a ambos lados obtenemos $n=-5$. Por consiguiente, cualquier entero que satisfaga la propiedad coincide con el testigo presentado.
+
+**Lectura guiada.** Ante «existe un único», formula dos preguntas separadas: «¿qué objeto satisface la propiedad?» y «¿por qué dos objetos que la satisfacen no pueden ser distintos?». A veces la misma manipulación algebraica ayuda a responder ambas; aun así, las exigencias lógicas siguen siendo dos.
+
+### Una demostración completa: el opuesto de cada entero
+
+El ejemplo de los opuestos nos permite combinar esta sección con el orden de cuantificadores de §3.5.
+
+**Proposición.** Para cada entero $a$ existe un único entero $b$ tal que $a+b=0$. En símbolos,
+
+$$
+\forall a\in\mathbb Z\;\exists!b\in\mathbb Z\;(a+b=0).
+$$
+
+**Demostración.** Sea $a\in\mathbb Z$ arbitrario.
+
+**Existencia.** Tomemos $b=-a$. Como $-a\in\mathbb Z$ y $a+(-a)=0$, tenemos un testigo de la existencia.
+
+**Unicidad.** Supongamos que $b,c\in\mathbb Z$ satisfacen $a+b=0$ y $a+c=0$. De estas igualdades se sigue que $a+b=a+c$. Sumando $-a$ a ambos miembros y utilizando las propiedades habituales de la suma de enteros, obtenemos $b=c$. Por tanto, cualesquiera dos candidatos coinciden.
+
+Hemos probado ambas exigencias para un entero $a$ arbitrario; en consecuencia, la afirmación universal queda demostrada. $\square$
+
+**Después de la prueba.** La estrategia no fue repetir dos veces que $b=-a$. Primero exhibimos un candidato; después supusimos que existían *dos candidatos cualesquiera* y demostramos su igualdad. La segunda operación certifica que no se ha omitido ninguna alternativa. Esta es la estructura reutilizable de una demostración de existencia y unicidad; los métodos técnicos que permiten hallar el candidato pueden variar según el problema.
+
+### Unicidad para cada parámetro no significa un testigo común
+
+El cuantificador universal exterior de la proposición anterior importa. La afirmación
+
+$$
+\forall a\in\mathbb Z\;\exists!b\in\mathbb Z\;(a+b=0)
+$$
+
+permite que el entero único $b$ **dependa de $a$**: para $a=2$ es $b=-2$, mientras que para $a=3$ es $b=-3$. No podemos sustituirla por
+
+$$
+\exists!b\in\mathbb Z\;\forall a\in\mathbb Z\;(a+b=0),
+$$
+
+que requeriría un solo $b$ capaz de funcionar para todos los valores de $a$. Esta última es falsa: si existiera tal entero, $a=0$ exigiría $b=0$ y $a=1$ exigiría $b=-1$. El error no está en la unicidad de cada opuesto, sino en intercambiar el orden de las elecciones.
+
+La fórmula $\exists!b\in\mathbb Z\;(a+b=0)$ considerada por sí sola contiene a $a$ libre. Sólo cuando fijamos un valor de $a$ en el contexto o añadimos un cuantificador exterior obtenemos la afirmación correspondiente. La notación de unicidad no elimina la necesidad de controlar las demás variables.
+
+### ¿Cómo negar «existe exactamente uno»?
+
+Las leyes de §3.6 nos permiten distinguir las dos maneras de fallar. En lógica clásica,
+
+$$
+\begin{aligned}
+\neg\bigl(\exists!x\in D\;P(x)\bigr)
+\quad\Longleftrightarrow\quad&
+\bigl(\forall x\in D\;\neg P(x)\bigr)\\
+&\lor\bigl(\exists u\in D\;\exists v\in D\;
+(P(u)\land P(v)\land u\ne v)\bigr).
+\end{aligned}
+$$
+
+O bien **no hay ningún** objeto con la propiedad, o bien **hay al menos dos distintos**. Esta disyunción es exhaustiva: si algún objeto cumple $P$ pero no existe uno único, tiene que haber otro candidato distinto. No debemos confundirla con la mera negación de la existencia, que contempla únicamente el primer escenario.
+
+::: {.callout-note title="El dominio vacío y la unicidad"}
+Si $D=\varnothing$, la condición «a lo sumo uno» es verdadera: no hay dos elementos del dominio que puedan contradecirla. Sin embargo, $\exists!x\in D\;P(x)$ es falsa, porque su componente existencial carece de testigo. Este caso confirma que «a lo sumo uno» y «exactamente uno» no son sinónimos.
+:::
+
+### Auditoría de un argumento incompleto
+
+Leamos el razonamiento: «$6$ es par y no es múltiplo de $4$; por tanto, existe un único entero par que no es múltiplo de $4$». La premisa sí justifica una existencia, como vimos en §3.3, pero no contiene ninguna prueba de unicidad. De hecho, $2$ es otro entero par no divisible por $4$, distinto de $6$. La conclusión es falsa. La reparación correcta consiste en conservar únicamente lo demostrado —«existe al menos uno»—, no en añadir una frase solemne sobre la elección del testigo.
+
+**Después de la prueba.** Ya disponemos de una pauta precisa para leer el signo $\exists!$: desplegarlo, comprobar por separado el testigo y la igualdad de candidatos, conservar el dominio y vigilar los parámetros exteriores. El siguiente tramo del capítulo llevará estas herramientas a un trabajo de traducción: pasar de la prosa matemática a los símbolos y volver de ellos a una frase cuyo significado podamos defender.
+
+## 3.8. Traducción entre prosa matemática y lenguaje cuantificado
+
+Hasta ahora hemos aprendido a reconocer qué hace cada cuantificador, a vigilar su alcance y a separar existencia de unicidad. Falta una tarea que reúne todas las anteriores: **escribir una afirmación matemática en símbolos sin alterar lo que dice y recuperar, desde esos símbolos, una frase inequívoca**. Una fórmula sintácticamente correcta puede ser una mala traducción. La verificación no consiste en comprobar si «se parece» a la frase, sino en reconstruir, en ambas direcciones, las condiciones bajo las cuales sería verdadera o falsa.
+
+### Antes de simbolizar: fijar el contrato de lectura
+
+Trabajaremos principalmente sobre los enteros $\mathbb Z$. Cuando aparezcan $P(x)$, $Q(x)$ o $R(x,y)$, serán propiedades o relaciones cuyo significado se declarará antes de utilizarlas. Una frase matemática bien traducida debe permitir identificar cinco elementos:
+
+1. **Dominio.** ¿De qué objetos se habla? ¿De todos los enteros o sólo de los pares? ¿Qué conjuntos recorren las otras variables?
+2. **Fuerza.** ¿Se afirma algo de cada objeto, se pide al menos uno, se excluye todo testigo o se exige exactamente uno?
+3. **Dependencia.** Si hay varios cuantificadores, ¿puede elegirse un testigo después de conocer otro objeto o debe servir uno mismo para todos?
+4. **Conectivos.** ¿La frase afirma una condición, una conjunción, una alternativa o una equivalencia? ¿Cuál es el antecedente de cada «si»?
+5. **Alcance.** ¿Hasta dónde llega cada cuantificador y cada negación? ¿Quedó alguna variable libre que el contexto deba fijar?
+
+Esta lista funciona como auditoría, no como sustituto del razonamiento. La pregunta final es siempre la misma: **¿podría una situación hacer verdadera la frase y falsa la fórmula, o viceversa?** Si la respuesta es sí, no hemos conservado el significado.
+
+### «Todos los que...» y «alguno que...»: el conectivo cambia
+
+Comencemos por una afirmación ya conocida: «todo entero divisible por $6$ es divisible por $3$». El objeto variable es un entero $n$; no afirmamos que todos sean divisibles por $6$, sino que esa condición garantiza la divisibilidad por $3$. Por tanto,
+
+$$
+\boxed{\forall n\in\mathbb Z\;(6\mid n\to3\mid n).}
+$$
+
+**Comprobación de la traducción.** El cuantificador recorre todos los enteros, pero la hipótesis $6\mid n$ aparece dentro del condicional. Cuando $n=1$, el condicional es verdadero porque su antecedente es falso; la frase tampoco exige que $1$ sea múltiplo de $6$. Si hubiéramos escrito $\forall n\in\mathbb Z\;(6\mid n\land3\mid n)$, habríamos afirmado falsamente que *todos* los enteros cumplen ambas condiciones. Para demostrar la afirmación correcta, dado $6\mid n$ escribimos $n=6k=3(2k)$ con $k\in\mathbb Z$.
+
+En cambio, «existe un entero par que no es divisible por $4$» pide que **un mismo testigo** satisfaga dos condiciones:
+
+$$
+\boxed{\exists n\in\mathbb Z\;(2\mid n\land4\nmid n).}
+$$
+
+El entero $6$ es un testigo. Reemplazar $\land$ por $\to$ daría otra afirmación: un entero impar, por ejemplo $1$, satisface $2\mid n\to4\nmid n$ sin ser el entero par requerido. Las formas de cuantificación restringida vistas en §§3.2–3.3 explican la diferencia: una restricción universal se expresa mediante un condicional y una existencial mediante una conjunción.
+
+### «Si», «sólo si» y «si y sólo si»: identificar la dirección
+
+Introduzcamos dos propiedades de un entero: $P(n)$ significa $12\mid n$ y $Q(n)$ significa $6\mid n$. La oración «un entero es divisible por $12$ **sólo si** es divisible por $6$» declara que ser divisible por $6$ es una **condición necesaria** para ser divisible por $12$:
+
+$$
+\forall n\in\mathbb Z\;(P(n)\to Q(n)).
+$$
+
+La oración «un entero es divisible por $12$ **si** es divisible por $6$» invierte las funciones gramaticales: ahora la condición anunciada después de «si» sería suficiente para $P$:
+
+$$
+\forall n\in\mathbb Z\;(Q(n)\to P(n)).
+$$
+
+Esta segunda afirmación es falsa: $n=6$ verifica $Q(6)$ y no $P(6)$. La primera es verdadera, pues $n=12k=6(2k)$ siempre que $12\mid n$. Un pequeño contraejemplo distingue dos fórmulas que, a primera vista, contienen las mismas letras.
+
+La locución «si y sólo si» exige las dos direcciones. Por ejemplo, la proposición «un entero es par si y sólo si su cuadrado es par» se expresa como
+
+$$
+\forall n\in\mathbb Z\;\bigl(2\mid n\leftrightarrow2\mid n^2\bigr).
+$$
+
+Esta traducción fija el *enunciado*; demostrar su verdad requiere justificar ambas implicaciones, como hicimos con los bicondicionales en el capítulo 2. **Traducir correctamente no es todavía demostrar.**
+
+::: {.callout-important title="Tres lecturas de una condición"}
+Con el mismo dominio y las mismas propiedades $P,Q$:
+
+$$
+\begin{aligned}
+\text{«}P\text{ si }Q\text{»}&:\quad Q\to P,\\
+\text{«}P\text{ sólo si }Q\text{»}&:\quad P\to Q,\\
+\text{«}P\text{ si y sólo si }Q\text{»}&:\quad P\leftrightarrow Q.
+\end{aligned}
+$$
+
+Cuando $P,Q$ contienen una variable libre, estas expresiones siguen siendo fórmulas abiertas hasta que se fije su valor o se cuantifique esa variable. Por ejemplo, para afirmar cualquiera de ellas *sobre todos los enteros* debemos anteponer $\forall n\in\mathbb Z$ con el alcance adecuado.
+:::
+
+### El orden no se recupera contando símbolos
+
+«Cada entero tiene un entero mayor que él» se lee en dos elecciones consecutivas: tomamos primero un entero cualquiera $x$ y después buscamos un entero $y$ mayor que ese $x$:
+
+$$
+\forall x\in\mathbb Z\;\exists y\in\mathbb Z\;(y>x).
+$$
+
+La frase «hay un entero que es mayor que todos los enteros» cambia la elección: primero exige un entero fijo $y$ y luego afirma que supera a cualquier $x$:
+
+$$
+\exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(y>x).
+$$
+
+En §3.5 probamos que la primera es verdadera y la segunda falsa. Este contraste muestra por qué el mero recuento de un $\forall$ y un $\exists$ no basta: **su orden codifica la dependencia del testigo**.
+
+La misma cautela vale cuando interviene la unicidad. «Cada entero tiene un único opuesto aditivo entero» significa
+
+$$
+\forall a\in\mathbb Z\;\exists!b\in\mathbb Z\;(a+b=0).
+$$
+
+El entero $b$ es único *para el valor de $a$ que se ha fijado*, no un candidato que deba servir a todos los enteros. La fórmula $\exists!b\in\mathbb Z\;\forall a\in\mathbb Z\;(a+b=0)$ dice otra cosa y es falsa, como vimos en §3.7. Si escribiéramos solamente $\exists!b\in\mathbb Z\;(a+b=0)$ sin declarar $a$, dejaríamos una variable libre y, por tanto, una tarea de interpretación pendiente.
+
+### «No todos», «ninguno» y «no existe uno único»
+
+En el lenguaje corriente, la negación puede quedar lejos de aquello que niega. Conviene identificar primero **la afirmación completa** y sólo entonces simbolizarla. «No todos los enteros pares son divisibles por $4$» se expresa como
+
+$$
+\neg\forall n\in\mathbb Z\;(2\mid n\to4\mid n),
+$$
+
+y, por §3.6, equivale a
+
+$$
+\exists n\in\mathbb Z\;(2\mid n\land4\nmid n).
+$$
+
+La frase afirma que existe una excepción, no que *ningún* par sea divisible por $4$. El entero $6$ verifica la negación; el entero $8$ muestra por qué sería incorrecto afirmar que todos los pares incumplen la propiedad.
+
+«No existe ningún entero mayor que todos los enteros» comienza por negar **toda** una existencia uniforme:
+
+$$
+\neg\exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(y>x)
+\quad\Longleftrightarrow\quad
+\forall y\in\mathbb Z\;\exists x\in\mathbb Z\;(y\le x).
+$$
+
+Leída de regreso, la fórmula de la derecha dice: «para cada posible candidato $y$, hay al menos un entero $x$ que no es menor que él». Sirve $x=y$, aunque también podría elegirse $x=y+1$. La transformación conserva el orden **después** de aplicar las leyes de negación; no introduce un candidato uniforme nuevo.
+
+Por último, «no existe un único entero cuyo cuadrado sea $1$» significa
+
+$$
+\neg\exists!n\in\mathbb Z\;(n^2=1).
+$$
+
+La frase es verdadera porque $1$ y $-1$ son dos soluciones distintas. No podemos traducirla por $\forall n\in\mathbb Z\;(n^2\ne1)$, que afirmaría que no hay soluciones y es falsa. §3.7 explica las dos formas de fracasar una existencia única: ausencia de todo testigo o presencia de dos distintos.
+
+### «Al menos dos» y «a lo sumo uno» sin nuevos cuantificadores
+
+La prosa a veces expresa cantidades sin utilizar las palabras «todos» o «alguno». Sean $P(x)$ una propiedad y $D$ su dominio. «Hay al menos dos elementos distintos de $D$ que cumplen $P$» significa
+
+$$
+\exists u\in D\;\exists v\in D\;
+\bigl(P(u)\land P(v)\land u\ne v\bigr).
+$$
+
+La desigualdad $u\ne v$ es indispensable: sin ella podríamos repetir el mismo testigo dos veces y demostrar solamente una existencia. En cambio, «a lo sumo uno cumple $P$» se traduce como
+
+$$
+\forall u\in D\;\forall v\in D\;
+\bigl((P(u)\land P(v))\to u=v\bigr).
+$$
+
+Esta última fórmula puede ser verdadera aunque no exista ningún objeto con la propiedad. Para afirmar «exactamente uno», añadimos una existencia como hicimos en §3.7. La elección entre «al menos», «a lo sumo» y «exactamente» forma parte del significado, no de una corrección estilística de la frase.
+
+### Lectura inversa: recuperar una oración completa
+
+Tomemos, con $n,m\in\mathbb Z$, la fórmula
+
+$$
+\forall n\in\mathbb Z\;\bigl(2\mid n\to
+\exists m\in\mathbb Z\;(2\nmid m\land m>n)\bigr).
+$$
+
+No conviene leerla acumulando símbolos sueltos. El cuantificador exterior ordena considerar **cada entero $n$**. El condicional acota la exigencia a los casos en los que $n$ es par. La existencia interior pide entonces **un entero $m$** que cumpla conjuntamente dos condiciones: ser impar y superar a ese $n$. Una frase fiel es: «Todo entero par tiene algún entero impar mayor que él». La afirmación es verdadera: dado $n$ par, $m=n+1$ es impar y mayor que $n$.
+
+A continuación, consideremos
+
+$$
+\exists n\in\mathbb Z\;\forall m\in\mathbb Z\;
+\bigl(2\mid n\land m>n\bigr).
+$$
+
+Una lectura literal dice: «existe un entero par $n$ tal que **todo** entero $m$ es mayor que $n$». Ésta es falsa, porque para cualquier candidato $n$ podemos elegir $m=n$. Aunque aparecen las palabras «par», «existe» y «mayor», la fórmula no traduce la oración anterior: ha cambiado la posición de la conjunción, ha desaparecido la condición «impar» y se ha invertido el orden de dependencia. El contraste impide confundir semejanza superficial con equivalencia semántica.
+
+### Laboratorio de reparación: tres versiones de una frase
+
+Queremos formalizar «todo entero divisible por $4$ es par». Un borrador podría proponer:
+
+$$
+\begin{aligned}
+F_1&:\quad\forall n\in\mathbb Z\;(4\mid n\land2\mid n),\\
+F_2&:\quad\exists n\in\mathbb Z\;(4\mid n\to2\mid n),\\
+F_3&:\quad\forall n\in\mathbb Z\;(4\mid n\to2\mid n).
+\end{aligned}
+$$
+
+$F_1$ impone ambas propiedades a todos los enteros y falla, por ejemplo, en $n=1$. $F_2$ sólo pide que un caso haga verdadero el condicional y también lo satisface $n=1$; no cubre todos los múltiplos de $4$. Únicamente $F_3$ conserva a la vez el dominio, la universalidad y el antecedente condicionado. No seleccionamos $F_3$ porque sepamos de antemano que es verdadera: la seleccionamos porque **afirma exactamente lo que dice la oración**. La comprobación de verdad y la demostración vienen después.
+
+::: {.callout-note title="Auditoría bidireccional de una traducción"}
+**Prosa $\to$ símbolos:** subraya dominio, cuantificadores, dependencias, conectivos y negaciones; construye la fórmula con paréntesis explícitos.
+
+**Símbolos $\to$ prosa:** lee los cuantificadores en orden, declara en qué casos se activa cada condicional y nombra todas las condiciones que debe satisfacer un testigo.
+
+**Control final:** ensaya un caso límite o un contraejemplo que distinga la fórmula elegida de una traducción vecina. No sustituyas la equivalencia semántica por el hecho de que ambas afirmaciones tengan casualmente el mismo valor de verdad en un ejemplo.
+:::
+
+**Después de la traducción.** Hemos pasado de identificar cuantificadores individuales a reconstruir afirmaciones completas. Ya podemos comparar una frase con su fórmula, reconocer una traducción demasiado fuerte o demasiado débil y diagnosticar qué hipótesis, variables o elecciones se perdieron. Los ejercicios que siguen reúnen las ocho primeras secciones del capítulo: lectura, traducción, negación, prueba, unicidad y reparación de argumentos. Sus soluciones desarrolladas se encuentran en §3.10.
+
+## 3.9. Ejercicios graduados: leer, traducir, negar y reparar
+
+Los ejercicios reúnen lo aprendido en §§3.1–3.8. No basta reconocer símbolos: en cada respuesta debe quedar claro **qué afirma la fórmula**, cuáles son sus dominios y qué justifica la respuesta. Cuando se pida una refutación, proporciona un contraejemplo del dominio y verifica las condiciones pertinentes; cuando se pida existencia, comprueba el testigo; cuando se pida unicidad, excluye explícitamente otros candidatos. Las soluciones desarrolladas se presentan en §3.10.
+
+Salvo indicación contraria, los números y las variables aritméticas pertenecen a $\mathbb Z$; $a\mid b$ significa que existe $k\in\mathbb Z$ tal que $b=ak$. Las letras $P,Q,R$ designarán las propiedades especificadas en cada ejercicio, no proposiciones cerradas por defecto.
+
+### Nivel I. Reconocer lo que efectivamente se afirma
+
+### Ejercicio 1. Ocurrencias libres y ligadas
+
+Examina la fórmula
+
+$$
+\bigl(\forall x\in\mathbb Z\;(x+y=y+x)\bigr)\land(x<3).
+$$
+
+1. Identifica **cada ocurrencia** de $x$ e $y$ como libre o ligada; indica el alcance del cuantificador.
+2. ¿Es la fórmula completa sintácticamente cerrada? ¿Qué datos adicionales permitirían evaluarla?
+3. Escribe una fórmula cerrada que afirme «para todos los enteros $x$ e $y$, $x+y=y+x$». Explica por qué tu modificación no consiste simplemente en declarar que el $x$ final ya estaba ligado.
+
+### Ejercicio 2. Universal, existencia y clase de justificación
+
+Considera
+
+$$
+A:\ \forall n\in\mathbb Z\;(6\mid n\to3\mid n),
+\qquad
+B:\ \exists n\in\mathbb Z\;(3\mid n\land6\nmid n).
+$$
+
+1. Traduce $A$ y $B$ a oraciones completas, conservando conectivos y cuantificadores.
+2. Determina el valor de verdad de cada una. Para $A$, presenta un argumento general a partir de la divisibilidad; para $B$, presenta y verifica un testigo.
+3. Explica por qué tu testigo para $B$ no serviría, por sí solo, para demostrar $A$.
+
+### Ejercicio 3. El dominio vacío como prueba de lectura
+
+Sea $D=\varnothing$ y sea $P(x)$ una propiedad definida para los elementos de $D$. Determina el valor de verdad de cada afirmación bajo la semántica clásica y justifica tu respuesta sin inventar un elemento del dominio:
+
+1. $\forall x\in D\;P(x)$.
+2. $\exists x\in D\;P(x)$.
+3. $\forall u\in D\;\forall v\in D\;((P(u)\land P(v))\to u=v)$.
+4. $\exists!x\in D\;P(x)$.
+
+Indica cuáles expresan «a lo sumo uno» y «exactamente uno», y por qué no son intercambiables.
+
+### Ejercicio 4. «Si» y «sólo si»: una dirección puede cambiarlo todo
+
+Para cada $n\in\mathbb Z$, sean $P(n)$: «$4\mid n$» y $Q(n)$: «$2\mid n$». Formaliza mediante una fórmula **cuantificada** cada oración; determina su valor de verdad y justifícalo:
+
+1. «$P(n)$ sólo si $Q(n)$, para todo entero $n$».
+2. «$P(n)$ si $Q(n)$, para todo entero $n$».
+3. «$P(n)$ si y sólo si $Q(n)$, para todo entero $n$».
+
+Una respuesta correcta debe explicar cuál propiedad es antecedente en cada caso. No decidas la dirección de la flecha por el valor de verdad que esperas obtener.
+
+### Nivel II. Conservar el alcance y las dependencias
+
+### Ejercicio 5. Un opuesto para cada entero no es un opuesto común
+
+Sean
+
+$$
+A:\ \forall a\in\mathbb Z\;\exists b\in\mathbb Z\;(a+b=0),
+\qquad
+B:\ \exists b\in\mathbb Z\;\forall a\in\mathbb Z\;(a+b=0).
+$$
+
+1. Traduce ambos enunciados a la prosa y señala cuándo se elige $b$ en cada uno.
+2. Demuestra $A$ exhibiendo un testigo que pueda depender de $a$.
+3. Refuta $B$ sin limitarte a afirmar que «los cuantificadores no conmutan»: obtén dos condiciones incompatibles para un supuesto testigo fijo.
+
+### Ejercicio 6. Negaciones que alcanzan hasta la propiedad interior
+
+Niega las dos proposiciones siguientes. Escribe primero la negación de **toda** la fórmula, después una fórmula equivalente sin negaciones antepuestas a cuantificadores ni a conectivos, y finalmente una oración inequívoca en español.
+
+$$
+A:\ \forall n\in\mathbb Z\;(3\mid n\to9\mid n),
+$$
+
+$$
+B:\ \exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(y>x).
+$$
+
+Determina si $A$ y $B$ son verdaderas o falsas y justifica el valor de sus negaciones. En $A$, un contraejemplo debe cumplir el antecedente y fallar en el consecuente.
+
+### Ejercicio 7. Traducir una restricción y reparar otra traducción
+
+Formaliza: «Todo entero mayor que $3$ tiene algún entero estrictamente mayor que él». Conserva el dominio de ambas variables y el alcance de la existencia. Después examina el borrador
+
+$$
+\forall n\in\mathbb Z\;\bigl(n>3\land\exists m\in\mathbb Z\;(m>n)\bigr).
+$$
+
+1. Lee literalmente el borrador y explica por qué no expresa la oración inicial.
+2. Reemplaza únicamente lo necesario para producir una traducción fiel.
+3. Justifica la verdad de la oración inicial y aporta un entero que refute el borrador. Distingue el defecto semántico de la evaluación aritmética.
+
+### Ejercicio 8. Separar las dos obligaciones de $\exists!$
+
+Estudia las afirmaciones
+
+$$
+A:\ \exists!n\in\mathbb Z\;(n+5=0),
+\qquad
+B:\ \exists!n\in\mathbb Z\;(n^2=1).
+$$
+
+1. Despliega $A$ mediante cuantificadores ordinarios e igualdad. Demuestra por separado existencia y unicidad.
+2. Determina el valor de verdad de $B$. Explica si falla la existencia o la unicidad y presenta los datos que lo prueban.
+3. Escribe en símbolos «a lo sumo un entero tiene cuadrado $1$» y evalúa esa afirmación. Explica por qué no equivale a $B$.
+
+### Nivel III. Auditar fórmulas y argumentos
+
+### Ejercicio 9. Renombrar sin capturar una variable libre
+
+Fija $D=\{0,1\}$, considera $x\in D$ y deja $y\in\mathbb Z$ libre en
+
+$$
+F(y):\quad\forall x\in D\;(x<y).
+$$
+
+Una persona intenta renombrar la variable ligada y propone $G:\ \forall y\in D\;(y<y)$.
+
+1. Identifica exactamente qué ocurrencias cambiaron de condición libre o ligada. Propón un renombrado correcto usando $t$.
+2. Asigna $y=2$ a la fórmula original y compara sus valores de verdad con el de $G$.
+3. Explica por qué el error es una **captura de variable** y no una elección inocente de letras. ¿Qué diferencia sintáctica permanece incluso si dos fórmulas coinciden en valor de verdad bajo alguna asignación?
+
+### Ejercicio 10. La generalización ilegítima
+
+Se ofrece la siguiente «demostración»: «Tomemos $n=20$. Como $10\mid20$ y $5\mid20$, hemos probado que para todo entero $n$, si $10\mid n$, entonces $5\mid n$».
+
+1. Formula la conclusión pretendida con cuantificador, dominio y paréntesis.
+2. Señala el paso que no está justificado; distingue la comprobación de un caso del uso de un entero arbitrario.
+3. Reescribe la demostración completa a partir de la definición de divisibilidad. Señala qué hipótesis introduces y cuándo puedes cerrar la generalización.
+
+### Ejercicio 11. ¿Qué dirección permite el testigo uniforme?
+
+Sean $D,E$ dominios fijados, posiblemente vacíos, y $R(x,y)$ una propiedad de pares. Considera
+
+$$
+U:\ \exists y\in E\;\forall x\in D\;R(x,y),
+\qquad
+V:\ \forall x\in D\;\exists y\in E\;R(x,y).
+$$
+
+1. Demuestra $U\to V$ sin suponer que los dominios sean finitos ni no vacíos.
+2. Para mostrar que la recíproca no es válida en general, toma $D=E=\{0,1\}$ y $R(x,y)$: «$x=y$». Comprueba por separado el valor de $U$ y el de $V$.
+3. Compara además las parejas $\forall x\in D\;\forall y\in E\;R(x,y)$ y $\forall y\in E\;\forall x\in D\;R(x,y)$, así como $\exists x\in D\;\exists y\in E\;R(x,y)$ y $\exists y\in E\;\exists x\in D\;R(x,y)$. Explica qué permite intercambiar esos cuantificadores iguales **con dominios fijos y sin alterar $R$**, y contrástalo con la permutación de $\forall$ y $\exists$ del ejercicio.
+
+### Ejercicio 12. Negación completa de una unicidad parametrizada
+
+Sea
+
+$$
+S:\quad\forall a\in\mathbb Z\;\exists!b\in\mathbb Z\;(a+b=0).
+$$
+
+1. Expande $\exists!$ en una fórmula con $\exists$, $\forall$, igualdad y conectivos ordinarios, prestando atención a qué variable sigue dependiendo de $a$.
+2. Obtén una fórmula equivalente a $\neg S$ **sin usar $\exists!$**. Debe mostrar los dos modos de fracaso posibles para algún entero $a$: que no haya solución o que existan dos soluciones distintas. Especifica los dominios de todos los cuantificadores.
+3. Traduce la negación a prosa y determina su valor de verdad mediante un argumento válido para un $a$ arbitrario. Explica por qué comprobar sólo $a=0$ y $a=1$ no bastaría para justificar el valor de verdad de $S$.
+
+**Comprobación final de aprendizaje.** Antes de consultar las soluciones, revisa para cada ejercicio si has conservado todos los dominios, distinguido variables libres y ligadas, ubicado correctamente los condicionales y justificado las afirmaciones universales o existenciales con el tipo de prueba que requieren. Una fórmula bien formada no es, por ese solo hecho, una traducción fiel; una afirmación verdadera no queda demostrada por cualquier argumento.
+
+## 3.10. Soluciones desarrolladas y cierre del capítulo
+
+Estas soluciones explicitan tanto la respuesta como la **obligación lógica** que la justifica. Conviene compararlas con un intento propio: acertar el valor de verdad no compensa una traducción equivocada, y disponer de un ejemplo no sustituye una demostración universal.
+
+### Solución 1. Ocurrencias libres y ligadas
+
+**1. Alcance y ocurrencias.** En
+
+$$
+\bigl(\forall x\in\mathbb Z\;(x+y=y+x)\bigr)\land(x<3)
+$$
+
+el alcance de $\forall x\in\mathbb Z$ es sólo la igualdad $x+y=y+x$ situada entre los primeros paréntesis. Las **dos ocurrencias de $x$ en esa igualdad** están ligadas; las **dos ocurrencias de $y$** están libres. El $x$ que aparece en $x<3$ también está libre: se encuentra fuera del alcance del cuantificador, aunque tenga el mismo nombre.
+
+**2. Cierre y evaluación.** La fórmula completa es abierta, porque contiene las ocurrencias libres de $x$ y $y$. Para evaluarla en la aritmética usual basta asignarles valores enteros, por ejemplo $x=a$ e $y=b$ con $a,b\in\mathbb Z$. El primer miembro de la conjunción será verdadero por conmutatividad de la suma; el valor de la fórmula entera dependerá de si $a<3$. Esa asignación permite evaluar la fórmula, pero **no la cierra sintácticamente**.
+
+**3. La afirmación solicitada.** Una escritura cerrada es
+
+$$
+\forall x\in\mathbb Z\;\forall y\in\mathbb Z\;(x+y=y+x).
+$$
+
+También podemos intercambiar estos dos universales, conservando la igualdad. No hemos «extendido» retrospectivamente el primer cuantificador hasta el último $x$ de la fórmula de partida: hemos escrito **una afirmación nueva**, cuyo único contenido es la conmutatividad para todos los pares. La conjunción $x<3$ no pertenece a la oración que se pidió formalizar.
+
+### Solución 2. Universal, existencia y clase de justificación
+
+**1. Lectura.** $A$ dice: «Para todo entero $n$, si $n$ es divisible por $6$, entonces es divisible por $3$». $B$ dice: «Existe un entero $n$ divisible por $3$ y no divisible por $6$». El condicional de $A$ no debe convertirse en una conjunción, ni la conjunción de $B$ en un condicional.
+
+**2. Valores de verdad y pruebas.** Ambas afirmaciones son verdaderas. Para $A$, sea $n\in\mathbb Z$ arbitrario y supongamos $6\mid n$. Existe $k\in\mathbb Z$ tal que $n=6k=3(2k)$; como $2k\in\mathbb Z$, se sigue $3\mid n$. Cerrada la hipótesis condicional y al ser arbitrario $n$, queda demostrado $A$.
+
+Para $B$ sirve el testigo $n=3$: es entero y $3=3\cdot1$, así que $3\mid3$; no existe $k\in\mathbb Z$ con $3=6k$, pues exigiría $k=1/2$. Por ello $6\nmid3$ y las dos condiciones se verifican para el **mismo** testigo.
+
+**3. Diferencia de prueba.** El ejemplo $n=3$ demuestra $B$, pero no demuestra $A$: la universal necesita un argumento aplicable a cada entero que satisfaga su antecedente. De hecho, $n=3$ ni siquiera cumple $6\mid n$, por lo que no puede mostrar por sí solo cómo se deriva $3\mid n$ de esa hipótesis.
+
+### Solución 3. El dominio vacío como prueba de lectura
+
+Con $D=\varnothing$ obtenemos, por la semántica clásica:
+
+| Fórmula | Valor | Razón |
+|---|---|---|
+| $\forall x\in D\;P(x)$ | Verdadera | No existe un elemento de $D$ que constituya una excepción. |
+| $\exists x\in D\;P(x)$ | Falsa | No hay ningún elemento disponible como testigo. |
+| $\forall u\in D\;\forall v\in D\;((P(u)\land P(v))\to u=v)$ | Verdadera | No existen pares $u,v\in D$ que puedan contradecir la condición. |
+| $\exists!x\in D\;P(x)$ | Falsa | Exige existencia, imposible en un dominio vacío. |
+
+La tercera fórmula expresa **a lo sumo uno**: impide dos testigos diferentes y resulta compatible con que no haya ninguno. La cuarta expresa **exactamente uno**: exige, además, un testigo. Su distinción no depende de inventar objetos para evaluar el dominio vacío.
+
+### Solución 4. «Si» y «sólo si»: una dirección puede cambiarlo todo
+
+Recordemos que $P(n)$ significa $4\mid n$ y $Q(n)$ significa $2\mid n$.
+
+**1. «$P$ sólo si $Q$».** La fórmula correcta es
+
+$$
+\forall n\in\mathbb Z\;(P(n)\to Q(n)),
+$$
+
+es decir, $\forall n\in\mathbb Z\;(4\mid n\to2\mid n)$. Es verdadera: si $n=4k$, entonces $n=2(2k)$. En esta oración **$P$ es el antecedente** y $Q$ la condición necesaria.
+
+**2. «$P$ si $Q$».** Se formaliza
+
+$$
+\forall n\in\mathbb Z\;(Q(n)\to P(n)).
+$$
+
+Ahora **$Q$ es el antecedente**. La universal es falsa: $n=2$ satisface $2\mid2$, pero no $4\mid2$.
+
+**3. «$P$ si y sólo si $Q$».** Corresponde a
+
+$$
+\forall n\in\mathbb Z\;(P(n)\leftrightarrow Q(n)),
+$$
+
+que equivale a exigir conjuntamente ambas direcciones. Es falsa por $n=2$: una de las implicaciones falla. La dirección de cada flecha se determina por la **gramática de la frase**, no por el deseo de que la proposición resulte verdadera.
+
+### Solución 5. Un opuesto para cada entero no es un opuesto común
+
+**1. Lectura y orden.** $A$ afirma: «Cada entero $a$ tiene algún entero $b$ que sumado a él da cero». Primero se fija $a$ y después puede escogerse $b$ en función de ese valor. $B$ afirma: «Existe un entero $b$ que sumado a todos los enteros $a$ da cero». Aquí se elige $b$ **una sola vez**, antes de considerar cada $a$.
+
+**2. Demostración de $A$.** Sea $a\in\mathbb Z$ arbitrario. Tomemos $b=-a\in\mathbb Z$. Entonces $a+b=a-a=0$. La construcción proporciona un testigo para cualquier $a$ sin imponerle una condición especial; por eso $A$ es verdadera.
+
+**3. Refutación de $B$.** Supongamos que un entero fijo $b$ satisface $a+b=0$ para todo $a\in\mathbb Z$. La instancia $a=0$ obliga a $b=0$; la instancia $a=1$ obliga a $b=-1$. Como $0\ne-1$, la suposición es imposible. Por tanto, $B$ es falsa. Lo decisivo no es mencionar una regla de intercambio de cuantificadores, sino demostrar que ningún testigo uniforme puede cumplir el enunciado.
+
+### Solución 6. Negaciones que alcanzan hasta la propiedad interior
+
+**1. Primera proposición.** Partimos de la negación completa:
+
+$$
+\neg\bigl[\forall n\in\mathbb Z\;(3\mid n\to9\mid n)\bigr].
+$$
+
+La dualidad de cuantificadores y $\neg(H\to C)\leftrightarrow(H\land\neg C)$ dan
+
+$$
+\exists n\in\mathbb Z\;(3\mid n\land9\nmid n).
+$$
+
+En prosa: «Existe un entero divisible por $3$ que no es divisible por $9$». Es verdadera con $n=3$: $3=3\cdot1$ y $9\nmid3$. En consecuencia, la proposición original $A$ es falsa y su negación verdadera. No serviría elegir un entero que sólo incumpla el consecuente sin cumplir el antecedente.
+
+**2. Segunda proposición.** Su negación inicial es
+
+$$
+\neg\bigl[\exists y\in\mathbb Z\;\forall x\in\mathbb Z\;(y>x)\bigr].
+$$
+
+Al transformar sucesivamente ambos cuantificadores y negar $y>x$, obtenemos
+
+$$
+\forall y\in\mathbb Z\;\exists x\in\mathbb Z\;(y\le x).
+$$
+
+En prosa: «Para cada entero $y$ existe un entero $x$ mayor o igual que él». Dado $y$, podemos elegir $x=y$, por lo que la negación es verdadera y la afirmación original $B$ es falsa. El testigo $x$ se selecciona *después* de fijar $y$: no se está afirmando la existencia de un $x$ común para todos.
+
+### Solución 7. Traducir una restricción y reparar otra traducción
+
+La oración original se escribe
+
+$$
+\forall n\in\mathbb Z\;\bigl(n>3\to\exists m\in\mathbb Z\;(m>n)\bigr).
+$$
+
+**1. Lectura del borrador.** La conjunción propuesta dice literalmente: «Todo entero $n$ es mayor que $3$ **y**, además, posee algún entero mayor que él». Exige $n>3$ incluso para los enteros que no cumplen la restricción de la oración inicial. El error es semántico: se colocó la condición del caso dentro de una conjunción en vez de usarla como antecedente.
+
+**2. Reparación mínima.** Sustituimos $\land$ por $\to$, dejando intactos los dominios, la propiedad $m>n$ y el alcance de $\exists m$. Esto expresa la obligación **sólo para los $n$ mayores que $3$**.
+
+**3. Verdad y contraejemplo.** Sea $n\in\mathbb Z$ arbitrario. Si $n>3$, el entero $m=n+1$ verifica $m>n$, así que la proposición corregida es verdadera. El borrador es falso: al tomar $n=3$, la primera parte $3>3$ es falsa y toda la conjunción falla, aunque existan enteros mayores que $3$. Distinguir el cambio de significado de la comprobación numérica evita reparar una fórmula sólo para obtener un valor de verdad deseado.
+
+### Solución 8. Separar las dos obligaciones de $\exists!$
+
+**1. Despliegue y prueba de $A$.** Según la definición de existencia única,
+
+$$
+\exists n\in\mathbb Z\;\bigl[(n+5=0)\land
+\forall m\in\mathbb Z\;((m+5=0)\to m=n)\bigr].
+$$
+
+*Existencia:* $n=-5$ es entero y $-5+5=0$. *Unicidad:* si otro entero $m$ satisface $m+5=0$, al sumar $-5$ a ambos lados obtenemos $m=-5=n$. Luego $A$ es verdadera; hemos probado algo más que hallar por inspección un candidato.
+
+**2. Evaluación de $B$.** $B$ es falsa **por falta de unicidad**, no por falta de existencia: $1\in\mathbb Z$ y $-1\in\mathbb Z$ satisfacen $n^2=1$, pero $1\ne-1$.
+
+**3. «A lo sumo uno».** Su fórmula es
+
+$$
+\forall u\in\mathbb Z\;\forall v\in\mathbb Z\;
+\bigl((u^2=1\land v^2=1)\to u=v\bigr).
+$$
+
+Es falsa: $u=1$ y $v=-1$ hacen verdadero el antecedente y falso el consecuente. Esta fórmula expresa **sólo** la exigencia de no tener dos soluciones diferentes; $B$ exige además la existencia de una solución. No son fórmulas equivalentes en general, aunque en este ejemplo ambas sean falsas. Por ejemplo, con la propiedad $n^2=-1$ la afirmación «a lo sumo uno» es verdadera, pero «exactamente uno» es falsa.
+
+### Solución 9. Renombrar sin capturar una variable libre
+
+**1. Diagnóstico y corrección.** En $F(y)=\forall x\in D\;(x<y)$, la ocurrencia de $x$ en la desigualdad está ligada por $\forall x$; la ocurrencia de $y$ está libre y se interpreta con un valor entero asignado desde fuera. En $G=\forall y\in D\;(y<y)$, ambas ocurrencias de $y$ están ligadas por el nuevo cuantificador: la que antes era libre ha sido **capturada**. El renombrado correcto es
+
+$$
+\forall t\in D\;(t<y),
+$$
+
+que conserva libre a $y$ y cambia únicamente las ocurrencias ligadas de $x$.
+
+**2. Comprobación de verdad.** Con $D=\{0,1\}$ y $y=2$, $F(2)$ exige $0<2$ y $1<2$; es verdadera. $G$ exige en particular $0<0$, que es falso, de modo que $G$ es falsa. La transformación errónea ni siquiera preservó la evaluación elegida.
+
+**3. Error sintáctico independiente del valor.** Una variable libre no puede pasar inadvertidamente a estar ligada cuando cambiamos el nombre de otra variable. $F(y)$ es una fórmula abierta; $G$ es una fórmula cerrada. Incluso si asignamos $y=0$ y ambas evaluaciones resultan falsas, esa coincidencia accidental no repara la captura ni convierte las dos fórmulas en equivalentes.
+
+### Solución 10. La generalización ilegítima
+
+**1. Enunciado pretendido.** La conclusión que se desea establecer es
+
+$$
+\forall n\in\mathbb Z\;(10\mid n\to5\mid n).
+$$
+
+**2. Paso injustificado.** La comprobación $10\mid20$ y $5\mid20$ sólo informa sobre $n=20$. No justifica que la implicación se cumpla para **todo** entero: el argumento había fijado un valor particular, no un $n$ arbitrario. La conclusión puede ser verdadera aunque el razonamiento presentado no la haya probado.
+
+**3. Prueba reparada.** Sea $n\in\mathbb Z$ arbitrario. Supongamos que $10\mid n$. Por definición, existe $k\in\mathbb Z$ tal que $n=10k$. Entonces
+
+$$
+n=10k=5(2k).
+$$
+
+Como $2k\in\mathbb Z$, la definición de divisibilidad implica $5\mid n$. Hemos demostrado la conclusión bajo la hipótesis $10\mid n$ y podemos cerrar esa suposición para obtener $10\mid n\to5\mid n$. Finalmente, como $n$ se introdujo sin fijar su valor ni añadir condiciones especiales, la generalización universal es legítima. $\square$
+
+### Solución 11. ¿Qué dirección permite el testigo uniforme?
+
+**1. Demostración de $U\to V$.** Supongamos $U$: existe $y_0\in E$ tal que $R(x,y_0)$ para **todo** $x\in D$. Sea $x\in D$ arbitrario. El propio $y_0\in E$ sirve como testigo de $\exists y\in E\;R(x,y)$. Por tanto $V$ es verdadera. Si $D$ es vacío, $V$ es verdadera sin instanciaciones; si $E$ es vacío, $U$ no puede ser verdadera y la implicación también lo es. En ningún caso hemos necesitado finitud ni no vaciedad de los dominios.
+
+**2. Contramodelo de la recíproca.** Sean $D=E=\{0,1\}$ y $R(x,y)$ la igualdad $x=y$. $V$ es verdadera: para cada $x\in D$ elegimos $y=x\in E$. En cambio, $U$ es falsa: si $y=0$, falla la igualdad para $x=1$; si $y=1$, falla para $x=0$. Como ésos son todos los candidatos, no hay testigo uniforme. Así, $V\to U$ no es válida en general.
+
+**3. Permutaciones que sí están justificadas.** Las fórmulas $\forall x\in D\;\forall y\in E\;R(x,y)$ y $\forall y\in E\;\forall x\in D\;R(x,y)$ afirman que se cumple $R$ para **cada par permitido**: son equivalentes. Las fórmulas $\exists x\in D\;\exists y\in E\;R(x,y)$ y $\exists y\in E\;\exists x\in D\;R(x,y)$ exigen la existencia de **algún par permitido**: también son equivalentes. Estas equivalencias conservan dominios fijos y el orden de los argumentos de $R$; subsisten incluso si alguno de los dominios es vacío. Intercambiar $\forall$ y $\exists$ altera, en cambio, cuándo puede elegirse el testigo, como muestra el contramodelo anterior.
+
+### Solución 12. Negación completa de una unicidad parametrizada
+
+**1. Expansión.** La afirmación $S$ puede desplegarse como
+
+$$
+\forall a\in\mathbb Z\;\exists b\in\mathbb Z\;
+\bigl[(a+b=0)\land
+\forall c\in\mathbb Z\;((a+c=0)\to c=b)\bigr].
+$$
+
+La variable $a$ se fija antes de buscar $b$; el posible testigo $b$ puede depender de $a$. La variable auxiliar $c$ compara con ese mismo candidato todas las demás soluciones, sin capturar a $a$ ni a $b$.
+
+**2. Negación sin $\exists!$.** Para refutar $S$ debe existir **algún** entero $a$ para el cual no haya exactamente una solución. En lógica clásica esto ocurre de dos maneras excluyentes: no hay ninguna solución, o existen dos soluciones distintas. Una fórmula que muestra ambos casos es
+
+$$
+\boxed{\begin{aligned}
+\neg S\quad\Longleftrightarrow\quad\exists a\in\mathbb Z\;\bigl[&
+\bigl(\forall b\in\mathbb Z\;(a+b\ne0)\bigr)\\
+&\lor\bigl(\exists b\in\mathbb Z\;\exists c\in\mathbb Z\;
+(a+b=0\land a+c=0\land b\ne c)\bigr)\bigr].
+\end{aligned}}
+$$
+
+Justificación: la expansión de $\exists!$ exige existencia y que cualquier segundo candidato coincida con el primero. Si falla la existencia obtenemos el primer disyunto; si hay soluciones, pero falla la unicidad, hay dos testigos $b,c$ con la propiedad y $b\ne c$, que satisfacen el segundo. Recíprocamente, cualquiera de esos dos casos contradice la existencia única. En toda la fórmula se conservan los dominios $\mathbb Z$.
+
+**3. Traducción y valor de verdad.** La negación dice: «Hay un entero $a$ que no tiene ningún opuesto aditivo entero, o tiene por lo menos dos opuestos aditivos enteros distintos». Esta afirmación es falsa, porque $S$ es verdadera para **todo** entero $a$. En efecto, sea $a\in\mathbb Z$ arbitrario. El entero $b=-a$ satisface $a+b=0$. Si otro entero $c$ cumple $a+c=0$, al sumar $-a$ a ambos lados concluimos $c=-a=b$. Hay existencia y unicidad para ese $a$ arbitrario, y por tanto para todos. Verificar solamente $a=0$ y $a=1$ no demuestra una proposición universal: no examina los restantes enteros ni proporciona una razón que cubra todos los casos.
+
+### Cierre: del lenguaje cuantificado al lenguaje de conjuntos, relaciones y funciones
+
+A lo largo de este capítulo hemos pasado de una propiedad abierta a una afirmación cerrada, identificado el dominio y el alcance de cada cuantificador, distinguido testigos individuales de testigos uniformes y separado existencia de unicidad. Los ejercicios nos obligaron a recorrer el camino en ambos sentidos: interpretar fórmulas y construirlas, justificar proposiciones y detectar argumentos que parecían suficientes sin serlo.
+
+El paso siguiente consiste en dar nombres y estructura a algunos objetos que ya hemos utilizado informalmente. Al escribir $R(x,y)$ hablamos de una relación entre elementos de dominios fijados; al afirmar $\forall x\in D\;\exists!y\in E\;R(x,y)$ expresamos que a cada $x$ le corresponde exactamente un $y$. En el **capítulo 4, «Conjuntos, relaciones y funciones como lenguaje»**, precisaremos las nociones de conjunto, relación, dominio, codominio y función necesarias para interpretar y emplear estas escrituras. No estamos dando aquí por construida una función ni anticipando la teoría axiomática de conjuntos: llevamos al nuevo capítulo una arquitectura lógica que ahora sabemos leer.
+
+La transición al capítulo siguiente no requiere memorizar recetas de transformación: exige conservar el dominio y el alcance de las afirmaciones, reconocer qué testigos se necesitan y justificar cada paso de una prueba. Ésta es la disciplina de lectura que aplicaremos al estudiar conjuntos, relaciones y funciones.
+
+---
+
+[← Capítulo 2](fundamentos-para-matematicos-capitulo-2-consecuencia-e-hipotesis.qmd) · [Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd) · [Capítulo 4 →](fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd)
