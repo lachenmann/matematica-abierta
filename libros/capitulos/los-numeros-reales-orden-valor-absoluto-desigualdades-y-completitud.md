@@ -3649,7 +3649,7 @@ Si el signo no está fijado por las hipótesis, separe el dominio en regiones do
 Las desigualdades describen regiones de la recta real. Para evitar repetir expresiones largas, utilizaremos la notación de intervalos.
 
 ::: {#def-t1-0013}
-**Intervalos reales.** Sean $a,b\in\mathbb R$. Definimos las notaciones siguientes directamente mediante desigualdades. Cuando $a<b$, describen los intervalos usuales con extremos distintos; los casos $a=b$ y $a>b$ se interpretan literalmente por las mismas fórmulas y se analizan enseguida.
+**Intervalos reales.** Sean $a,b\in\mathbb R$. Definimos las notaciones siguientes mediante condiciones de pertenencia. No supondremos de entrada que $a\le b$: cuando los extremos aparezcan en otro orden, las mismas fórmulas determinarán qué conjunto resulta.
 
 El **intervalo abierto** entre $a$ y $b$ es
 
@@ -3708,7 +3708,7 @@ $$
 5\notin[2,5).
 $$
 
-La notación es simplemente una traducción compacta entre conjuntos y desigualdades:
+La notación no introduce un nuevo tipo de objeto: es una abreviatura para conjuntos definidos por desigualdades. Por ejemplo,
 
 $$
 x\in(-3,4]
@@ -3734,21 +3734,48 @@ Los símbolos $\infty$ y $-\infty$ funcionan aquí como parte de una notación p
 
 ### Intervalos degenerados y conjuntos vacíos
 
-Como la notación se ha definido mediante desigualdades para cualesquiera $a,b\in\mathbb R$, los casos frontera no requieren una convención adicional.
+Como los intervalos se han definido mediante desigualdades, los casos degenerados se deducen de las propias condiciones de pertenencia.
 
-Por definición de pertenencia,
+Si los extremos coinciden, entonces
 
 $$
 [a,a]=\{a\},
 $$
 
-mientras que
+porque $a\le x\le a$ obliga a $x=a$. En cambio,
 
 $$
-(a,a)=\varnothing.
+(a,a)=[a,a)=(a,a]=\varnothing,
 $$
 
-Si $a>b$, no existe ningún real que satisfaga simultáneamente $a<x<b$, y el conjunto descrito sería vacío. En la práctica reservaremos la expresión «intervalo de extremos $a$ y $b$» para el orden natural $a\le b$, pero las definiciones por desigualdades permiten diagnosticar cualquier caso sin recurrir a una regla adicional.
+pues cada una de esas condiciones exigiría simultáneamente que $x$ estuviera en un lado estricto de $a$ y no más allá del mismo $a$.
+
+Si $a>b$, ninguna de las cuatro condiciones acotadas puede satisfacerse. Por tanto,
+
+$$
+(a,b)=[a,b]=[a,b)=(a,b]=\varnothing.
+$$
+
+Esto permite resumir exactamente cuándo estos conjuntos son no vacíos:
+
+$$
+\begin{aligned}
+(a,b)\ne\varnothing &\iff a<b,\\
+[a,b]\ne\varnothing &\iff a\le b,\\
+[a,b)\ne\varnothing &\iff a<b,\\
+(a,b]\ne\varnothing &\iff a<b.
+\end{aligned}
+$$
+
+En la primera equivalencia, si $a<b$, basta observar que el punto medio
+
+$$
+\frac{a+b}{2}
+$$
+
+satisface $a<(a+b)/2<b$. En los casos semiabiertos, cuando $a<b$, los propios extremos $a$ o $b$ proporcionan inmediatamente un elemento.
+
+Así, los corchetes no «crean» por sí solos un intervalo: las desigualdades que definen la pertenencia deciden si el conjunto contiene un punto, muchos puntos o ninguno.
 
 ### Antes de seguir
 
