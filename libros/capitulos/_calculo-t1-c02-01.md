@@ -470,13 +470,36 @@ porque controlan simultáneamente todos los racionales positivos $p$.
 Tampoco diremos todavía que estas cadenas «convergen». El lenguaje de convergencia será construido más adelante. Por ahora solo necesitamos las desigualdades que acabamos de demostrar.
 
 ::: {.callout-tip title="Antes de seguir"}
-Partiendo de $p=1$, la fórmula de Rudin da $q=4/3$.
+Sea
 
-1. ¿Es $q>p$?
-2. ¿Sigue cumpliéndose $q^2<2$?
-3. ¿Qué parte de la demostración general garantiza cada respuesta sin necesidad de calcular específicamente $16/9$?
+$$
+T(p)=p-\frac{p^2-2}{p+2},
+\qquad p\ge1.
+$$
 
-**Respuesta.** Sí a las dos primeras preguntas. Como $p^2<2$, la identidad para $q-p$ garantiza $q>p$, y la identidad para $q^2-2$ garantiza que $q^2-2$ conserva signo negativo. El cálculo particular $16/9<2$ sirve como comprobación, no como fundamento de la prueba.
+Usando la identidad ya demostrada para $T(p)^2-2$, prueba que
+
+$$
+|T(p)^2-2|
+\le
+\frac29|p^2-2|.
+$$
+
+**Respuesta.** Tenemos
+
+$$
+|T(p)^2-2|
+=
+\frac{2}{(p+2)^2}|p^2-2|.
+$$
+
+Como $p\ge1$, se cumple $(p+2)^2\ge9$, y por tanto
+
+$$
+\frac{2}{(p+2)^2}\le\frac29.
+$$
+
+La desigualdad muestra que una aplicación de $T$ reduce fuertemente el defecto respecto de $x^2=2$. Todavía no la interpretamos como una afirmación de convergencia: esa teoría aparecerá más adelante.
 :::
 
 ### Entonces, ¿dónde está exactamente el hueco?
