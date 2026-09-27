@@ -172,44 +172,46 @@ Si $a>b$, no existe ningún real que satisfaga simultáneamente $a<x<b$, y el co
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** Si $-4<x\le7$, ¿a qué intervalo pertenece $x$?
-
-**Respuesta:**
+**1.** Sean $a<b$ y $c<d$. Demuestra, utilizando solo las leyes de orden ya establecidas, que
 
 $$
-x\in(-4,7].
+a-d<b-c.
 $$
+
+**Respuesta.** De $c<d$, al multiplicar por $-1<0$, obtenemos $-d<-c$. Sumando esta desigualdad con $a<b$ mediante la parte 2 de @prp-t1-0007,
+
+$$
+a+(-d)<b+(-c),
+$$
+
+de donde $a-d<b-c$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** Si $a<b$ y $c=-3$, ¿qué relación existe entre $ac$ y $bc$?
-
-Como $c<0$, la desigualdad se invierte:
+**2.** Supón que
 
 $$
-ac>bc.
-$$
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** Si $0<a<b$, ¿cuál de los recíprocos es mayor?
-
-Por la parte 7 de @prp-t1-0007,
-
-$$
-\frac1b<\frac1a.
+a<b\le0.
 $$
 
-El orden se invierte al tomar recíprocos positivos.
-:::
+¿Qué relación existe entre $a^2$ y $b^2$?
 
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué no escribimos $[2,\infty]$ para los reales mayores o iguales que $2$?
-
-Porque $\infty$ no es un número real ni un elemento del conjunto. La notación correcta es
+**Respuesta.** Al multiplicar $a<b$ por $-1$ se invierte el orden:
 
 $$
-[2,\infty).
+0\le-b<-a.
+$$
+
+La monotonía del cuadrado en los no negativos da
+
+$$
+(-b)^2\le(-a)^2,
+$$
+
+y por las reglas de signos,
+
+$$
+\boxed{b^2\le a^2}.
 $$
 :::
 
@@ -273,3 +275,14 @@ $$
 $$
 
 La secuencia no es accidental. Antes de afirmar que una frontera existe, necesitamos saber con precisión qué significa ser una frontera.
+
+::: {.callout-note title="Cambio de régimen: el rigor permanece, la explicación se comprime"}
+En esta primera sección trabajamos deliberadamente **a cámara lenta**. Expandimos asociatividad, conmutatividad, neutros, inversos, sustituciones y reversibilidad para que el lector aprendiera a auditar una prueba y no tratara las reglas escolares como movimientos sin fundamento.
+
+A partir de aquí cambia la granularidad. Una vez demostrada una regla, podremos citarla y utilizarla sin reconstruir cada vez toda su genealogía. No volveremos a desarrollar de rutina pasos como $x+0=x$, $aa^{-1}=1$, una reagrupación asociativa o una sustitución de iguales por iguales.
+
+Sí volveremos a abrir una cadena cuando el paso contenga información matemática nueva o una hipótesis fácil de perder: **dominio y no nulidad, signo de un factor, reversibilidad de una equivalencia, separación de casos, orden de cuantificadores, existencia o unicidad, aplicación de completitud, o diseño de una construcción no evidente**.
+
+El rigor no disminuye. Lo que disminuye es el andamiaje visible: el objetivo es que el lector empiece a cargar por sí mismo con las justificaciones que ya aprendió a reconocer.
+:::
+
