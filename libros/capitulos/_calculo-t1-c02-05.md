@@ -506,39 +506,27 @@ En nuestro desarrollo habitual, una vez fijado $A\subseteq\mathbb R$, la notaci�
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Podemos aplicar el axioma de completitud al conjunto $A=(0,\infty)$?
+**1.** Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea $c\in\mathbb R$. Define
 
-**Respuesta.** No. Aunque $A$ es no vacío, no está acotado superiormente. El axioma exige ambas hipótesis.
+$$
+A+c=\{a+c:a\in A\}.
+$$
+
+¿Por qué el axioma de completitud puede aplicarse a $A+c$?
+
+**Respuesta.** Si $M$ es una cota superior de $A$, entonces $M+c$ es una cota superior de $A+c$. Además, si $a_0\in A$, entonces $a_0+c\in A+c$. Por tanto, $A+c$ es no vacío y está acotado superiormente.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** Si la completitud garantiza que $s=\sup A$ existe, ¿garantiza también que $s\in A$?
-
-**Respuesta.** No. Por ejemplo,
+**2.** Sea $A\ne\varnothing$ y acotado inferiormente. Explica cómo la completitud aplicada a
 
 $$
-\sup(0,1)=1
+-A=\{-a:a\in A\}
 $$
 
-pero $1\notin(0,1)$.
-:::
+produce un candidato para $\inf A$.
 
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Por qué la existencia de muchas cotas superiores racionales para $S_{\mathbb Q}$ no contradice nuestro resultado?
-
-**Respuesta.** Porque el problema no es la falta de cotas superiores. El conjunto tiene, por ejemplo, las cotas racionales $2$, $3$ y muchas otras. Lo que no existe en $\mathbb Q$ es una **menor** cota superior.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿Por qué no podemos escribir todavía $\alpha=\sqrt2$ para $\alpha=\sup S_{\mathbb R}$?
-
-**Respuesta.** Porque la completitud solo ha demostrado que $\alpha$ existe como supremo. Todavía debemos probar que
-
-$$
-\alpha^2=2.
-$$
-
-Esa identificación será precisamente la aplicación central de §2.6.
+**Respuesta.** Si $m$ es cota inferior de $A$, entonces $-m$ es cota superior de $-A$; así, $-A$ es no vacío y acotado superiormente. La completitud produce $s=\sup(-A)$, y el número $-s$ es el candidato natural a $\inf A$.
 :::
 
 ### La diferencia decisiva
