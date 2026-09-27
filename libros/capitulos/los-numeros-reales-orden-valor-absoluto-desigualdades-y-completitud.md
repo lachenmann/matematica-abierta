@@ -1758,9 +1758,69 @@ a\ge0,
 a\le0.
 $$
 
-La relación $\le$ es reflexiva, antisimétrica y transitiva. La reflexividad proviene de $a=a$; la antisimetría, de la tricotomía; y la transitividad se obtiene combinando la transitividad de $<$ con los casos de igualdad.
+La relación $\le$ hereda ahora las propiedades de un orden. Conviene verificarlas una vez.
 
-Estas propiedades serán especialmente importantes en §1.3, cuando hablemos de cotas superiores e inferiores.
+**Reflexividad.** Para todo $a$, sabemos que $a=a$. Por la definición
+
+$$
+a\le a
+\iff
+a<a\quad\text{o}\quad a=a,
+$$
+
+la segunda alternativa es verdadera. Por tanto,
+
+$$
+a\le a.
+$$
+
+**Antisimetría.** Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+b\le a.
+$$
+
+Si $a=b$, no hay nada que demostrar. Supongamos entonces $a\ne b$. La definición de $\le$ obliga en ese caso a que
+
+$$
+a<b
+\qquad\text{y}\qquad
+b<a,
+$$
+
+pero la tricotomía demuestra que esas dos desigualdades no pueden ser simultáneamente verdaderas. Por tanto, la suposición $a\ne b$ es imposible y necesariamente
+
+$$
+a=b.
+$$
+
+**Transitividad.** Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+b\le c.
+$$
+
+Si $a=b$, la segunda desigualdad da directamente $a\le c$ por sustitución. Si $b=c$, la primera da $a\le c$. En el caso restante tenemos
+
+$$
+a<b
+\qquad\text{y}\qquad
+b<c,
+$$
+
+y la transitividad del orden estricto ya demostrada produce
+
+$$
+a<c,
+$$
+
+de donde, por definición, $a\le c$.
+
+Así, $\le$ es reflexiva, antisimétrica y transitiva. Estas propiedades serán especialmente importantes en §1.3, cuando hablemos de cotas superiores e inferiores.
 
 ### Las reglas de desigualdad son teoremas
 
@@ -1877,21 +1937,33 @@ El caso de los inversos añade una observación crucial: para dividir una desigu
 
 **Demostración.**
 
-Para la parte 1, observemos que
+Para la parte 1, comencemos haciendo explícita la identidad algebraica que sostiene la traslación del orden. Por definición de resta y por la regla ya demostrada para el inverso de una suma,
 
 $$
-(b+c)-(a+c)=b-a.
+\begin{aligned}
+(b+c)-(a+c)
+&=(b+c)+\bigl(-(a+c)\bigr)\\
+&=(b+c)+\bigl((-a)+(-c)\bigr)\\
+&=b+\bigl((-a)+(c+(-c))\bigr)
+&& \text{(asociatividad y conmutatividad)}\\
+&=b+\bigl((-a)+0\bigr)
+&& \text{(inverso aditivo)}\\
+&=b+(-a)
+&& \text{(neutro aditivo)}\\
+&=b-a
+&& \text{(definición de resta)}.
+\end{aligned}
 $$
 
-Por tanto,
+Por sustitución de iguales por iguales,
 
 $$
 b-a>0
 \iff
-(b+c)-(a+c)>0,
+(b+c)-(a+c)>0.
 $$
 
-que, por definición, equivale a
+Traduciendo ambos extremos mediante la definición del orden, obtenemos
 
 $$
 a<b
@@ -1899,7 +1971,33 @@ a<b
 a+c<b+c.
 $$
 
-La versión con $\le$ se obtiene añadiendo el caso $a=b$.
+La versión débil también merece hacerse explícita. Supongamos primero $a\le b$. Si $a=b$, entonces
+
+$$
+a+c=b+c
+$$
+
+por sustitución, y por tanto $a+c\le b+c$. Si $a<b$, la equivalencia estricta recién demostrada da igualmente $a+c<b+c$, luego $a+c\le b+c$. Así,
+
+$$
+a\le b
+\Longrightarrow
+a+c\le b+c.
+$$
+
+Recíprocamente, supongamos $a+c\le b+c$. Si $a+c=b+c$, la cancelación aditiva ya demostrada da $a=b$. Si $a+c<b+c$, la equivalencia estricta anterior, usada de derecha a izquierda, da $a<b$. En ambos casos,
+
+$$
+a\le b.
+$$
+
+Por consiguiente,
+
+$$
+a\le b
+\iff
+a+c\le b+c.
+$$
 
 Para la parte 2, de $a<b$ y la parte 1 obtenemos
 
