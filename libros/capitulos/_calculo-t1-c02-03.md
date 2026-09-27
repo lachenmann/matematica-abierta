@@ -526,54 +526,46 @@ su significado geométrico ya no deberá aprenderse de nuevo: serán afirmacione
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** Describe mediante un intervalo el conjunto de todos los $x$ que satisfacen
+**1.** Si
 
 $$
-|x-4|<3.
+|x-a|<r,
+\qquad
+|y-b|<s,
 $$
 
-**Respuesta.** La distancia de $x$ a $4$ es menor que $3$, de modo que
+con $r,s>0$, demuestra que
 
 $$
-1<x<7.
+|(x+y)-(a+b)|<r+s.
 $$
 
-Por tanto,
+**Respuesta.** Como
 
 $$
-x\in(1,7).
-$$
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** ¿Qué región describe
-
-$$
-|x+2|\ge5?
+(x+y)-(a+b)=(x-a)+(y-b),
 $$
 
-**Respuesta.** Como $|x+2|=|x-(-2)|$, el centro es $-2$. Estar a distancia al menos $5$ significa encontrarse fuera del intervalo abierto $(-7,3)$, incluidos sus extremos:
+la desigualdad triangular da
 
 $$
-x\le-7
-\quad\text{o}\quad
-x\ge3.
+|(x+y)-(a+b)|
+\le |x-a|+|y-b|
+<r+s.
 $$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**3.** Si $|x-10|<\tfrac12$, da una cota sencilla para $|x|$.
-
-**Respuesta.** Por la desigualdad triangular,
+**2.** Resuelve
 
 $$
-|x|
-\le
-|x-10|+10
-<
-\frac12+10
-=
-\frac{21}{2}.
+|x-1|+|x+1|\le4.
+$$
+
+**Respuesta.** Si $-1\le x\le1$, la suma vale $2$. Si $x\ge1$, vale $2x$ y exige $x\le2$. Si $x\le-1$, vale $-2x$ y exige $x\ge-2$. Por tanto,
+
+$$
+\boxed{x\in[-2,2]}.
 $$
 :::
 
