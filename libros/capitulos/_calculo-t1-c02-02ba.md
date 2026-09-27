@@ -108,28 +108,62 @@ ni las reglas para cancelar términos, ni la regla del producto nulo, ni la mult
 
 Todas esas afirmaciones tendrán que salir de un conjunto mucho más pequeño de supuestos.
 
-::: {.callout-note title="Operar en ambos miembros no es un nuevo axioma de cuerpo"}
-Cuando partimos de una igualdad
+::: {.callout-note title="¿Por qué podemos sustituir en una demostración?"}
+A lo largo de una demostración diremos a menudo cosas como «sustituyendo $m=2k$», «tomando $c=-a$» o «reemplazando $0$ por $a+c$». Conviene distinguir dos operaciones lógicas diferentes que el lenguaje corriente suele llamar simplemente *sustituir*.
+
+**1. Sustituir iguales por iguales.** Si sabemos que
 
 $$
-x=y
+x=y,
 $$
 
-y escribimos
+entonces $x$ e $y$ designan el mismo objeto. Por ello podemos reemplazar uno por el otro dentro de cualquier expresión bien definida. Así, por ejemplo,
 
 $$
-x+c=y+c
+x=y\quad\Longrightarrow\quad x+c=y+c
 $$
 
-o
+y
 
 $$
-xc=yc,
+x=y\quad\Longrightarrow\quad x^2=y^2.
 $$
 
-estamos utilizando la posibilidad de sustituir iguales por iguales en una expresión. Esa es una propiedad de la igualdad que ya forma parte del lenguaje lógico en el que trabajamos; no es un décimo axioma algebraico que debamos añadir a la definición de cuerpo.
+Más generalmente, si $E(t)$ es una expresión bien definida,
 
-Lo mismo vale para encadenar igualdades por transitividad.
+$$
+x=y\quad\Longrightarrow\quad E(x)=E(y).
+$$
+
+Y si $P(t)$ es una afirmación acerca de $t$, sustituir $x$ por $y$ no cambia su valor de verdad. Esta es la **sustituibilidad de la igualdad**: no constituye un nuevo axioma de cuerpo, sino una regla del lenguaje lógico con igualdad en el que formulamos los axiomas. Como la igualdad es simétrica, podemos usarla en cualquiera de los dos sentidos. Por eso, si $m=2k$ y sabemos que $m^2=2n^2$, podemos escribir
+
+$$
+(2k)^2=2n^2.
+$$
+
+**2. Particularizar una afirmación universal.** Si una propiedad ha sido establecida para **todo** elemento de un dominio, podemos aplicarla a cualquier elemento admisible de ese dominio. Por ejemplo, de
+
+$$
+a(b+c)=ab+ac\qquad\text{para todos }a,b,c\in F
+$$
+
+podemos tomar $c=-a$ y obtener
+
+$$
+b\bigl(a+(-a)\bigr)=ba+b(-a).
+$$
+
+Aquí no hemos reemplazado dos objetos porque sean iguales: hemos escogido un caso particular de una afirmación universal.
+
+Estas dos reglas explican buena parte de las «sustituciones» que aparecerán en las pruebas. Pero no autorizan reemplazos arbitrarios: debe existir una igualdad previa o una afirmación universal que justifique el paso, y deben respetarse todas las hipótesis bajo las cuales la expresión está definida. Por ejemplo, una identidad demostrada solo para $a\ne0$ no puede particularizarse tomando $a=0$.
+
+En una prueba especialmente delicada conviene preguntarse:
+
+$$
+\boxed{\text{¿estoy sustituyendo iguales por iguales o particularizando una afirmación universal?}}
+$$
+
+Lo mismo vale para encadenar igualdades por transitividad: también es una regla lógica previa a los axiomas particulares del cuerpo.
 :::
 
 #### Existencia no significa todavía unicidad
