@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -87,7 +87,35 @@ $$
 
 #### Demostración {#talg-prf-00038}
 
-La multiplicación de un anillo forma un monoide por la [Definición 14.1.1](tratado-de-algebra-capitulo-14-anillos.md#talg-def-00032). Los elementos $v$ y $w$ son inversos bilaterales de $u$ en ese monoide. La unicidad del inverso bilateral demostrada en la [Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) implica inmediatamente
+Por la [Definición 14.1.1](tratado-de-algebra-capitulo-14-anillos.md#talg-def-00032), la multiplicación del anillo determina el monoide
+
+$$
+\langle R,\cdot\rangle,
+$$
+
+cuyo elemento neutro es $1$.
+
+Las hipótesis sobre $v$ establecen simultáneamente
+
+$$
+u\cdot v=1
+\qquad\text{y}\qquad
+v\cdot u=1.
+$$
+
+Por tanto, $v$ es un inverso bilateral de $u$ en el monoide multiplicativo $\langle R,\cdot\rangle$.
+
+Las hipótesis sobre $w$ establecen
+
+$$
+u\cdot w=1
+\qquad\text{y}\qquad
+w\cdot u=1.
+$$
+
+Por tanto, $w$ es también un inverso bilateral de $u$ en ese mismo monoide.
+
+La [Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002) afirma que un elemento de un monoide posee a lo sumo un inverso bilateral. Aplicándola al elemento $u$ y a los dos inversos bilaterales $v$ y $w$, concluimos
 
 $$
 v=w.
