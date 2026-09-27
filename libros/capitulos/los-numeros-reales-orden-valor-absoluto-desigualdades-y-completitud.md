@@ -2535,25 +2535,189 @@ $$
 \boxed{a<0\iff a^{-1}<0.}
 $$
 
-La parte 6 es ahora una consecuencia inmediata. Si $c>0$, entonces
+Probemos ahora la parte 6. Aquí la división no introduce una regla nueva: por definición, dividir por $c$ significa multiplicar por $c^{-1}$, y la parte 5 nos permite determinar el signo de ese inverso.
+
+Supongamos primero
+
+$$
+c>0.
+$$
+
+Entonces $c\ne0$, de modo que los cocientes están definidos, y la parte 5 da
 
 $$
 c^{-1}>0.
 $$
 
-Multiplicar $a<b$ por $c^{-1}$ conserva el sentido:
+Si
 
 $$
-ac^{-1}<bc^{-1},
+a<b,
 $$
 
-es decir,
+podemos multiplicar ambos miembros por el número positivo $c^{-1}$. Por la parte 3,
+
+$$
+ac^{-1}<bc^{-1}.
+$$
+
+Por definición de cociente,
+
+$$
+ac^{-1}=\frac ac
+\qquad\text{y}\qquad
+bc^{-1}=\frac bc,
+$$
+
+de modo que
 
 $$
 \frac ac<\frac bc.
 $$
 
-Como el mismo argumento es reversible, obtenemos la equivalencia. Si $c<0$, entonces $c^{-1}<0$ y la multiplicación invierte el sentido, lo que da la segunda equivalencia.
+Así hemos probado una dirección:
+
+$$
+a<b
+\Longrightarrow
+\frac ac<\frac bc.
+$$
+
+Para la recíproca, supongamos
+
+$$
+\frac ac<\frac bc.
+$$
+
+Por definición de cociente,
+
+$$
+ac^{-1}<bc^{-1}.
+$$
+
+Como $c>0$, multiplicar ambos miembros por $c$ conserva el sentido de la desigualdad:
+
+$$
+(ac^{-1})c<(bc^{-1})c.
+$$
+
+Reducimos ambos miembros usando asociatividad, inverso multiplicativo y neutro:
+
+$$
+\begin{aligned}
+(ac^{-1})c
+&=a(c^{-1}c) && \text{(asociatividad)}\\
+&=a1 && \text{(inverso multiplicativo)}\\
+&=a && \text{(neutro multiplicativo)},
+\end{aligned}
+$$
+
+y, del mismo modo,
+
+$$
+\begin{aligned}
+(bc^{-1})c
+&=b(c^{-1}c)\\
+&=b1\\
+&=b.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales obtenemos
+
+$$
+a<b.
+$$
+
+Por tanto, cuando $c>0$,
+
+$$
+\boxed{
+a<b
+\iff
+\frac ac<\frac bc.
+}
+$$
+
+Consideremos ahora
+
+$$
+c<0.
+$$
+
+De nuevo $c\ne0$, y la parte 5 da
+
+$$
+c^{-1}<0.
+$$
+
+Si $a<b$, la parte 4 aplicada al factor negativo $c^{-1}$ invierte el orden:
+
+$$
+ac^{-1}>bc^{-1}.
+$$
+
+Por definición de cociente,
+
+$$
+\frac ac>\frac bc.
+$$
+
+Así,
+
+$$
+a<b
+\Longrightarrow
+\frac ac>\frac bc.
+$$
+
+Para demostrar la recíproca, supongamos
+
+$$
+\frac ac>\frac bc.
+$$
+
+Por definición de cociente, esto significa
+
+$$
+ac^{-1}>bc^{-1},
+$$
+
+o, escrito con el símbolo $<$,
+
+$$
+bc^{-1}<ac^{-1}.
+$$
+
+Como $c<0$, la parte 4 permite multiplicar esta última desigualdad por $c$ e invertir el orden:
+
+$$
+(bc^{-1})c>(ac^{-1})c.
+$$
+
+Las mismas reducciones algebraicas anteriores dan
+
+$$
+b>a,
+$$
+
+que equivale a
+
+$$
+a<b.
+$$
+
+Por consiguiente, cuando $c<0$,
+
+$$
+\boxed{
+a<b
+\iff
+\frac ac>\frac bc.
+}
+$$
+
+La hipótesis sobre el signo de $c$ cumple, por tanto, dos funciones distintas: garantiza que $c\ne0$, de modo que la división esté definida, y determina si al multiplicar por $c^{-1}$ el orden se conserva o se invierte.
 
 Para la parte 7, supongamos
 
