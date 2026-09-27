@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -275,18 +275,47 @@ Como las operaciones de $\mathcal S$ son las restricciones de las operaciones de
 
 $$
 a\cdot_S a^{-1}
-=aa^{-1}
-=1_{\mathcal F}
-=1_{\mathcal S},
+=
+a\cdot_{\mathcal F} a^{-1}
+=
+1_{\mathcal F}
+=
+1_{\mathcal S}.
 $$
 
-y análogamente
+Debemos verificar también la identidad en el orden inverso. Como $a^{-1}$ es el inverso multiplicativo de $a$ en el cuerpo $\mathcal F$,
 
 $$
-a^{-1}\cdot_S a=1_{\mathcal S}.
+a^{-1}\cdot_{\mathcal F} a
+=
+1_{\mathcal F}.
 $$
 
-Por la [Definición 15.1.1](tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md#talg-def-00034), $a$ es una unidad de $\mathcal S$. Esto vale para todo elemento no nulo de $S$. Por la [Definición 22.1.1](tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md#talg-def-00048), $\mathcal S$ es un cuerpo. $\square$
+La multiplicación de $\mathcal S$ es la restricción de la multiplicación de $\mathcal F$, de modo que
+
+$$
+a^{-1}\cdot_S a
+=
+a^{-1}\cdot_{\mathcal F} a
+=
+1_{\mathcal F}.
+$$
+
+Además, la [Proposición 17.1.2](tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md#talg-pro-00030) ya identificó las unidades multiplicativas de ambas estructuras:
+
+$$
+1_{\mathcal F}=1_{\mathcal S}.
+$$
+
+Sustituyendo en la igualdad anterior,
+
+$$
+a^{-1}\cdot_S a
+=
+1_{\mathcal S}.
+$$
+
+Hemos verificado así las dos identidades requeridas para que $a^{-1}\in S$ sea un inverso bilateral de $a$ en $\mathcal S$. Por la [Definición 15.1.1](tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md#talg-def-00034), $a$ es una unidad de $\mathcal S$. Esto vale para todo elemento no nulo de $S$. Por la [Definición 22.1.1](tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md#talg-def-00048), $\mathcal S$ es un cuerpo. $\square$
 
 ---
 
