@@ -1,32 +1,166 @@
-El paso intermedio reúne asociatividad y conmutatividad para colocar $a$ junto a su inverso. Así $x_0$ **existe** y satisface la ecuación.
+#### Soluciones del nivel C
 
-**2. Unicidad.** Supongamos que $y$ es otra solución:
+::: {#sol-t1-0050}
+<!-- CPM-T1-SOL-0050 -->
+**Solución C1.**
 
-$$
-a+y=b.
-$$
-
-Como también $a+x_0=b$, tenemos
+Sea
 
 $$
-a+y=a+x_0.
+s=\sup A.
 $$
 
-La cancelación aditiva, que no requiere hipótesis de no nulidad, da
+Como $a\le s$ para todo $a\in A$ y $c>0$,
 
 $$
-y=x_0.
+ca\le cs.
 $$
 
-Por tanto no puede existir una segunda solución distinta.
+Así, $cs$ es cota superior de $cA$.
 
-Hemos probado
+Para demostrar que es la menor, sea $\varepsilon>0$. Como $s=\sup A$, existe $a\in A$ tal que
 
 $$
-\boxed{x=b+(-a)}
+s-\frac{\varepsilon}{c}<a\le s.
 $$
 
-como solución única. La frase escolar «restar $a$» comprime precisamente esta construcción mediante suma e inverso aditivo.
+Multiplicando por $c>0$,
+
+$$
+cs-\varepsilon<ca\le cs.
+$$
+
+Por la caracterización aproximativa del supremo,
+
+$$
+\boxed{\sup(cA)=c\sup A.}
+$$
+:::
+
+::: {#sol-t1-0051}
+<!-- CPM-T1-SOL-0051 -->
+**Solución C2.**
+
+Sea
+
+$$
+t=\sup(-A).
+$$
+
+Para todo $a\in A$, el número $-a$ pertenece a $-A$, luego
+
+$$
+-a\le t.
+$$
+
+Multiplicando por $-1$,
+
+$$
+a\ge -t.
+$$
+
+Así, $-t$ es cota inferior de $A$.
+
+Si $\ell$ es cualquier cota inferior de $A$, entonces
+
+$$
+\ell\le a
+$$
+
+para todo $a\in A$, por lo que
+
+$$
+-a\le-\ell
+$$
+
+para todo $-a\in-A$. Así, $-\ell$ es cota superior de $-A$. Como $t$ es la menor de ellas,
+
+$$
+t\le-\ell,
+$$
+
+y, al multiplicar por $-1$,
+
+$$
+-t\ge\ell.
+$$
+
+Por tanto, $-t$ es la mayor cota inferior de $A$:
+
+$$
+\boxed{\inf A=-\sup(-A).}
+$$
+:::
+
+::: {#sol-t1-0052}
+<!-- CPM-T1-SOL-0052 -->
+**Solución C3.**
+
+Sea
+
+$$
+h=\frac{b-a}{2N+1}>0.
+$$
+
+Para cada $j=1,\dots,N$, por densidad de $\mathbb Q$ elegimos
+
+$$
+q_j\in\mathbb Q\cap
+\bigl(a+(2j-2)h,\,a+(2j-1)h\bigr),
+$$
+
+y por densidad de los irracionales elegimos
+
+$$
+\xi_j\in(\mathbb R\setminus\mathbb Q)\cap
+\bigl(a+(2j-1)h,\,a+2jh\bigr).
+$$
+
+Los subintervalos fueron escogidos en orden y son disjuntos. Por tanto,
+
+$$
+a<q_1<\xi_1<q_2<\xi_2<\cdots<q_N<\xi_N<a+2Nh<b.
+$$
+
+Esto demuestra la afirmación.
+:::
+::: {#sol-t1-0053}
+<!-- CPM-T1-SOL-0053 -->
+**Solución C4.**
+
+La ecuación equivale primero a
+
+$$
+ax=c-b.
+$$
+
+Como $a\ne0$, el candidato natural es
+
+$$
+x_0=a^{-1}(c-b).
+$$
+
+En efecto,
+
+$$
+ax_0+b
+=(aa^{-1})(c-b)+b
+=c.
+$$
+
+Si $y$ es otra solución, entonces
+
+$$
+ay+b=c=ax_0+b.
+$$
+
+La cancelación aditiva da $ay=ax_0$, y la cancelación multiplicativa —válida porque $a\ne0$— da $y=x_0$. Por tanto,
+
+$$
+\boxed{x=a^{-1}(c-b)}
+$$
+
+es la solución única.
 :::
 ::: {#sol-t1-0054}
 <!-- CPM-T1-SOL-0054 -->
@@ -147,218 +281,36 @@ Los puntos $0$ y $2$ eran críticos para la forma original de los valores absolu
 <!-- CPM-T1-SOL-0056 -->
 **Solución C7.**
 
-Por el principio de intervalos encajados,
+Por el principio de intervalos encajados y el criterio de longitudes arbitrariamente pequeñas, cada familia tiene un único punto común. Llamémoslos $x$ para $(I_n)$ e $y$ para $(J_n)$.
+
+Supongamos $x\ne y$ y sea
 
 $$
-\bigcap_n I_n\ne\varnothing.
+\varepsilon=\frac{|x-y|}{3}>0.
 $$
 
-Falta demostrar unicidad.
-
-Supongamos que $x<y$ pertenecen ambos a todos los $I_n$. Entonces
+Elige una etapa $N$ en la que las longitudes de $I_N$ y $J_N$ sean menores que $\varepsilon$; podemos tomar el máximo de dos etapas si fuera necesario. Por hipótesis existe
 
 $$
-y-x>0.
+z\in I_N\cap J_N.
 $$
 
-Aplicamos la hipótesis con
+Como $x,z\in I_N$ y $y,z\in J_N$,
 
 $$
-\varepsilon=y-x.
-$$
-
-Existe $N$ tal que
-
-$$
-b_N-a_N<y-x.
-$$
-
-Pero $x,y\in[a_N,b_N]$, así que
-
-$$
-y-x\le b_N-a_N,
-$$
-
-contradicción.
-
-Por tanto no pueden existir dos puntos distintos en la intersección. Como ya sabemos que contiene al menos uno,
-
-$$
-\boxed{\bigcap_n I_n\text{ contiene exactamente un punto}.}
-$$
-:::
-
-#### Soluciones del nivel D
-
-::: {#sol-t1-0057}
-<!-- CPM-T1-SOL-0057 -->
-**Solución D1.**
-
-El error consiste en confundir «menor cota superior» con «elemento mayor del conjunto».
-
-Toma
-
-$$
-A=(0,1).
-$$
-
-Entonces
-
-$$
-\sup A=1,
-$$
-
-pero
-
-$$
-1\notin A.
-$$
-
-Por tanto el enunciado es falso.
-
-Una condición adicional sencilla es precisamente
-
-$$
-\sup A\in A.
-$$
-
-Si $s=\sup A$ y $s\in A$, entonces $s$ es un elemento de $A$ mayor o igual que todos los demás; por definición,
-
-$$
-\boxed{s=\max A.}
-$$
-:::
-
-::: {#sol-t1-0058}
-<!-- CPM-T1-SOL-0058 -->
-**Solución D2.**
-
-**1. La afirmación sin hipótesis es falsa.** Toma
-
-$$
-a=0,
+|x-z|<\varepsilon,
 \qquad
-b=1,
-\qquad
-c=2.
+|y-z|<\varepsilon.
 $$
 
-Entonces
+La desigualdad triangular produce
 
 $$
-ab=0=ac,
+|x-y|
+\le |x-z|+|z-y|
+<2\varepsilon
+=\frac23|x-y|,
 $$
 
-pero
-
-$$
-b\ne c.
-$$
-
-Por tanto de $ab=ac$ no puede deducirse $b=c$ para un factor arbitrario $a$.
-
-**2. La formulación correcta.** Si
-
-$$
-a\ne0
-$$
-
-y
-
-$$
-ab=ac,
-$$
-
-entonces sí se puede cancelar el factor $a$ y concluir
-
-$$
-b=c.
-$$
-
-La hipótesis $a\ne0$ es la que garantiza la existencia de $a^{-1}$.
-
-**3. Del producto nulo a uno de los factores nulos.** Supongamos
-
-$$
-ab=0.
-$$
-
-Separamos dos casos.
-
-- Si $a=0$, ya tenemos una de las alternativas.
-- Si $a\ne0$, como $a0=0$,
-  $$
-  ab=0=a0.
-  $$
-  Por cancelación multiplicativa de $a\ne0$,
-  $$
-  b=0.
-  $$
-
-Así,
-
-$$
-ab=0
-\Longrightarrow
- a=0\ \text{o}\ b=0.
-$$
-
-**4. Recíproca.** Si $a=0$, entonces $ab=0$; si $b=0$, entonces $ab=0$. Esto utiliza únicamente el producto por cero, junto con conmutatividad cuando sea necesario.
-
-Por tanto,
-
-$$
-\boxed{
-ab=0
-\iff
- a=0\ \text{o}\ b=0.
-}
-$$
-
-La prueba muestra exactamente por qué el producto nulo depende de la cancelación válida para factores no nulos y no puede utilizarse circularmente para justificarla.
+contradicción. Luego $x=y$.
 :::
-::: {#sol-t1-0059}
-<!-- CPM-T1-SOL-0059 -->
-**Solución D3.**
-
-La formulación correcta requiere no vacuidad y acotación superior.
-
-- Si tomamos $A=\varnothing$, no hay elementos a partir de los cuales tenga sentido obtener una menor cota superior mediante el axioma tal como se ha formulado. La hipótesis $A\ne\varnothing$ excluye este caso degenerado.
-- Si tomamos $A=\mathbb N$, la propiedad arquimediana demuestra que no existe ninguna cota superior real. Por tanto no puede existir un real que sea **la menor** cota superior.
-
-Así, la frase «todo subconjunto de $\mathbb R$ tiene supremo real» es falsa. La forma correcta es:
-
-> Todo subconjunto **no vacío y acotado superiormente** de $\mathbb R$ posee supremo en $\mathbb R$.
-:::
-
-::: {#sol-t1-0060}
-<!-- CPM-T1-SOL-0060 -->
-**Solución D4.**
-
-Densidad significa que entre dos reales distintos podemos encontrar racionales. No significa que toda frontera determinada por un conjunto racional tenga que ser racional.
-
-El ejemplo central es
-
-$$
-S_{\mathbb Q}
-=
-\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
-$$
-
-Este conjunto es no vacío y está acotado superiormente dentro de $\mathbb Q$, pero no tiene supremo racional. Su frontera en $\mathbb R$ es $\sqrt2$, que es irracional.
-
-Por tanto pueden coexistir perfectamente:
-
-$$
-\boxed{\mathbb Q\text{ denso en }\mathbb R}
-$$
-
-y
-
-$$
-\boxed{\mathbb Q\text{ incompleto}.}
-$$
-
-La densidad habla de puntos **entre** puntos; la completitud habla de la existencia de ciertos **puntos frontera**.
-:::
-
