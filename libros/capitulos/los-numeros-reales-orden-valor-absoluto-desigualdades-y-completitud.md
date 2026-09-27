@@ -3085,37 +3085,114 @@ El signo de un producto queda así determinado por una dicotomía estructural: f
 
 Para la parte 9 consideremos los tres casos que proporciona la tricotomía.
 
-Si $a=0$, entonces
+Si
 
 $$
-a^2=0.
+a=0,
 $$
 
-Si $a>0$, (O2) da inmediatamente
+entonces, por @exm-t1-0040,
+
+$$
+a^2=aa=00=0.
+$$
+
+Supongamos ahora
+
+$$
+a>0.
+$$
+
+Entonces ambos factores de
+
+$$
+a^2=aa
+$$
+
+son positivos, y (O2) da
 
 $$
 a^2>0.
 $$
 
-Si $a<0$, entonces $-a>0$ y, por (O2),
+Finalmente, supongamos
 
 $$
-(-a)^2>0.
+a<0.
 $$
 
-Como
+Por definición de número negativo,
 
 $$
-(-a)^2=a^2,
+-a>0.
 $$
 
-volvemos a obtener $a^2>0$. En consecuencia,
+Aplicando (O2) a los dos factores positivos $-a$,
 
 $$
-a^2\ge0
+(-a)(-a)>0.
 $$
 
-para todo $a$, y la igualdad solo puede ocurrir cuando $a=0$.
+Hagamos explícita la identidad algebraica que permite volver al cuadrado de $a$. Por definición de cuadrado y por la regla de signos ya demostrada,
+
+$$
+\begin{aligned}
+(-a)^2
+&=(-a)(-a)\\
+&=aa && \text{(producto de dos opuestos)}\\
+&=a^2 && \text{(definición de cuadrado)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales en $(-a)^2>0$, obtenemos
+
+$$
+a^2>0.
+$$
+
+Hemos cubierto las tres posibilidades de la tricotomía. Si $a=0$, el cuadrado es $0$; si $a>0$ o $a<0$, el cuadrado es estrictamente positivo. Por tanto, para todo $a\in\mathbb R$,
+
+$$
+\boxed{a^2\ge0}.
+$$
+
+Falta hacer explícito cuándo puede ocurrir la igualdad. Ya vimos que
+
+$$
+a=0
+\Longrightarrow
+a^2=0.
+$$
+
+Recíprocamente, supongamos
+
+$$
+a^2=0.
+$$
+
+Por definición de cuadrado,
+
+$$
+aa=0.
+$$
+
+La ley del producto nulo, @prp-t1-0027, afirma que al menos uno de los dos factores debe ser $0$. Como ambos factores son el mismo número $a$, necesariamente
+
+$$
+a=0.
+$$
+
+Así,
+
+$$
+\boxed{a^2=0\iff a=0}.
+$$
+
+En particular, si $a\ne0$, la tricotomía excluye el primer caso y deja $a>0$ o $a<0$; en ambos ya demostramos que
+
+$$
+\boxed{a^2>0}.
+$$
 
 Finalmente, probemos la parte 10. Supongamos
 
