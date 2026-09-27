@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-26'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -363,7 +363,29 @@ $$
 
 #### Demostración {#talg-prf-00093}
 
-En un cociente por una relación de equivalencia, dos clases son iguales exactamente cuando sus representantes están relacionados por la equivalencia correspondiente. Aplicando esta caracterización a $\sim_D$,
+Por la interfaz de relaciones de equivalencia y cocientes importada en `TALG-IMP-00003`, si dos elementos $x,y$ pertenecen al conjunto sobre el que está definida una relación de equivalencia $\sim$, entonces sus clases satisfacen
+
+$$
+[x]_{\sim}=[y]_{\sim}
+\quad\Longleftrightarrow\quad
+x\sim y.
+$$
+
+En nuestro caso, por hipótesis,
+
+$$
+\langle a,b\rangle,\langle c,d\rangle\in P_D,
+$$
+
+y la [Definición 24.3.1](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-def-00053) construye el cociente mediante la relación $\sim_D$. Por la [Notación 24.3.2](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-not-00016),
+
+$$
+\frac ab=[\langle a,b\rangle]_{\sim_D},
+\qquad
+\frac cd=[\langle c,d\rangle]_{\sim_D}.
+$$
+
+Aplicando la caracterización importada a estos dos representantes,
 
 $$
 \frac ab=\frac cd
@@ -371,13 +393,23 @@ $$
 \langle a,b\rangle\sim_D\langle c,d\rangle.
 $$
 
-Por la [Definición 24.2.1](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-def-00052), la condición de la derecha equivale a
+Finalmente, la [Definición 24.2.1](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-def-00052) establece exactamente
 
 $$
+\langle a,b\rangle\sim_D\langle c,d\rangle
+\quad\Longleftrightarrow\quad
 ad=bc.
 $$
 
-Esto demuestra la equivalencia. $\square$
+Encadenando ambas equivalencias,
+
+$$
+\frac ab=\frac cd
+\quad\Longleftrightarrow\quad
+ad=bc.
+$$
+
+$\square$
 
 > **Caracterización no es decisión.** El criterio reduce una igualdad de clases a una igualdad en $D$. No proporciona, por sí mismo, un algoritmo que decida si $ad=bc$. La igualdad en $\operatorname{Frac}(D)$ queda caracterizada, pero su decidibilidad no se ha establecido.
 
@@ -1060,7 +1092,82 @@ D\to\operatorname{im}\iota_D,
 \widehat\iota_D(a)=\iota_D(a).
 $$
 
-Es sobreyectiva por definición de imagen e inyectiva porque $\iota_D$ lo es. Conserva las operaciones y la unidad por la misma prueba de la [Proposición 24.7.2](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-pro-00061). Por la [Definición 20.1.1](tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md#talg-def-00046), $\widehat\iota_D$ es un isomorfismo de anillos.
+La función $\widehat\iota_D$ es sobreyectiva por definición de su codominio: si
+
+$$
+y\in\operatorname{im}\iota_D,
+$$
+
+entonces, por definición de imagen, existe $a\in D$ tal que
+
+$$
+y=\iota_D(a)=\widehat\iota_D(a).
+$$
+
+Es inyectiva porque conserva exactamente la misma regla funcional que $\iota_D$. En efecto, si
+
+$$
+\widehat\iota_D(a)=\widehat\iota_D(c),
+$$
+
+entonces
+
+$$
+\iota_D(a)=\iota_D(c),
+$$
+
+y la inyectividad de $\iota_D$, demostrada en la [Proposición 24.7.2](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-pro-00061), implica
+
+$$
+a=c.
+$$
+
+Resta verificar explícitamente que la restricción del codominio no altera la preservación de las operaciones ni de la unidad. Sean $a,c\in D$. Como
+
+$$
+\widehat\iota_D(x)=\iota_D(x)
+$$
+
+para todo $x\in D$, la preservación de la suma establecida en la [Proposición 24.7.2](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-pro-00061) da
+
+$$
+\begin{aligned}
+\widehat\iota_D(a+c)
+&=\iota_D(a+c)\\
+&=\iota_D(a)+\iota_D(c)\\
+&=\widehat\iota_D(a)+\widehat\iota_D(c).
+\end{aligned}
+$$
+
+Para el producto, escribimos igualmente la cadena completa proporcionada por la preservación multiplicativa:
+
+$$
+\begin{aligned}
+\widehat\iota_D(ac)
+&=\iota_D(ac)\\
+&=\iota_D(a)\iota_D(c)\\
+&=\widehat\iota_D(a)\widehat\iota_D(c).
+\end{aligned}
+$$
+
+Finalmente, la preservación de la unidad en la [Proposición 24.7.2](tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md#talg-pro-00061) da
+
+$$
+\widehat\iota_D(1_D)
+=
+\iota_D(1_D)
+=
+1_{\mathcal F_D}.
+$$
+
+Como la [Proposición 17.3.1](tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md#talg-pro-00035) identifica sobre $\operatorname{im}\iota_D$ la estructura de subanillo inducida desde $\mathcal F_D$, estas tres identidades son exactamente las condiciones de homomorfismo de anillos para
+
+$$
+\widehat\iota_D:
+D\to\operatorname{im}\iota_D.
+$$
+
+Por tanto, $\widehat\iota_D$ es un homomorfismo de anillos biyectivo. Por la [Definición 20.1.1](tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md#talg-def-00046), es un isomorfismo de anillos.
 
 Por tanto $\mathcal D$ es isomorfo a un subanillo de un cuerpo. $\square$
 
