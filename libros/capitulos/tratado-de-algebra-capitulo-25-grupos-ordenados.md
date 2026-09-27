@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-26'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -181,7 +181,49 @@ $$
 a\le b.
 $$
 
-El argumento derecho es análogo: de $a\star x\le b\star x$ trasladamos por $x^{-1}$ a la derecha y obtenemos $a\le b$. $\square$
+Para la segunda equivalencia debemos demostrar también la reflexión del orden por traslación derecha. Supongamos
+
+$$
+a\star x\le b\star x.
+$$
+
+Como $x^{-1}\in G$, la compatibilidad derecha de la [Definición 25.2.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-def-00056) permite trasladar ambos miembros por $x^{-1}$ a la derecha:
+
+$$
+(a\star x)\star x^{-1}
+\le
+(b\star x)\star x^{-1}.
+$$
+
+Por asociatividad,
+
+$$
+a\star(x\star x^{-1})
+\le
+b\star(x\star x^{-1}).
+$$
+
+La ley de inverso en el grupo da
+
+$$
+x\star x^{-1}=e_{\mathcal G},
+$$
+
+de modo que
+
+$$
+a\star e_{\mathcal G}
+\le
+b\star e_{\mathcal G}.
+$$
+
+Finalmente, por la ley de neutro derecho,
+
+$$
+a\le b.
+$$
+
+Así, trasladar por $x$ a la derecha no sólo preserva el orden: también lo refleja. Quedan demostradas las dos equivalencias. $\square$
 
 > **Autoexplicación.** El axioma dice que trasladar **preserva** el orden. La existencia de traslaciones inversas —propia del grupo— mejora el resultado: trasladar también **refleja** el orden.
 
@@ -239,7 +281,55 @@ $$
 b^{-1}\le a^{-1}.
 $$
 
-Recíprocamente, si $b^{-1}\le a^{-1}$, aplicamos el mismo argumento a $b^{-1}$ y $a^{-1}$. Sus inversos son $b$ y $a$, respectivamente, y obtenemos $a\le b$. $\square$
+Recíprocamente, supongamos
+
+$$
+b^{-1}\le a^{-1}.
+$$
+
+La primera dirección ya demostrada puede aplicarse ahora al par de elementos
+
+$$
+b^{-1},
+\qquad
+a^{-1}.
+$$
+
+De
+
+$$
+b^{-1}\le a^{-1}
+$$
+
+se sigue, por esa misma dirección,
+
+$$
+(a^{-1})^{-1}\le (b^{-1})^{-1}.
+$$
+
+En el grupo $\mathcal G$, el elemento $a$ es un inverso bilateral de $a^{-1}$ y $b$ es un inverso bilateral de $b^{-1}$. Por la unicidad del inverso de la [Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002),
+
+$$
+(a^{-1})^{-1}=a
+\qquad\text{y}\qquad
+(b^{-1})^{-1}=b.
+$$
+
+Sustituyendo estas identidades en la desigualdad anterior, obtenemos
+
+$$
+a\le b.
+$$
+
+Queda demostrada la implicación recíproca y, por tanto,
+
+$$
+a\le b
+\iff
+b^{-1}\le a^{-1}.
+$$
+
+$\square$
 
 En particular,
 
@@ -285,7 +375,89 @@ a<b
 a\le b\ \land\ a\ne b.
 $$
 
-La [Proposición 25.3.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00062) preserva la parte no estricta. Además $x\star a=x\star b$ implicaría $a=b$ al trasladar por $x^{-1}$, contradicción. Por tanto $x\star a<x\star b$. El caso derecho es idéntico.
+La [Proposición 25.3.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00062) preserva la parte no estricta y da
+
+$$
+x\star a\le x\star b.
+$$
+
+Debemos verificar además que los dos elementos trasladados siguen siendo distintos. Supongamos, para obtener contradicción, que
+
+$$
+x\star a=x\star b.
+$$
+
+Aplicando la operación de grupo por la izquierda con $x^{-1}$ a ambos miembros,
+
+$$
+x^{-1}\star(x\star a)
+=
+x^{-1}\star(x\star b).
+$$
+
+Por asociatividad, inverso y neutro,
+
+$$
+a=b,
+$$
+
+en contradicción con $a\ne b$. Por tanto,
+
+$$
+x\star a\ne x\star b.
+$$
+
+La definición de orden estricto de la [Interfaz 25.1.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-imp-00004), aplicada a las dos condiciones obtenidas, concluye
+
+$$
+x\star a<x\star b.
+$$
+
+Para la traslación por la derecha, la [Proposición 25.3.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00062) da
+
+$$
+a\star x\le b\star x.
+$$
+
+Falta nuevamente excluir la igualdad. Supongamos
+
+$$
+a\star x=b\star x.
+$$
+
+Aplicando la operación de grupo por la derecha con $x^{-1}$ a ambos miembros,
+
+$$
+(a\star x)\star x^{-1}
+=
+(b\star x)\star x^{-1}.
+$$
+
+Por asociatividad,
+
+$$
+a\star(x\star x^{-1})
+=
+b\star(x\star x^{-1}),
+$$
+
+y por inverso y neutro,
+
+$$
+a=b,
+$$
+
+otra contradicción. Luego
+
+$$
+a\star x\ne b\star x.
+$$
+
+Junto con $a\star x\le b\star x$, la definición de orden estricto de la [Interfaz 25.1.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-imp-00004) produce
+
+$$
+a\star x<b\star x.
+$$
 
 Por la [Proposición 25.4.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00063), $a\le b$ implica $b^{-1}\le a^{-1}$. Si $b^{-1}=a^{-1}$, al invertir ambos elementos se obtiene $b=a$, contradicción. Luego $b^{-1}<a^{-1}$. $\square$
 
@@ -413,17 +585,45 @@ $$
 a^{-1}\star b\in P_{\mathcal G}.
 $$
 
-Trasladando por $a^{-1}$ a la derecha se obtiene análogamente
+Para obtener la segunda caracterización usamos ahora la invariancia exacta por traslación derecha de la [Proposición 25.3.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-pro-00062). Trasladar ambos miembros de $a\le b$ por $a^{-1}$ a la derecha preserva y refleja el orden:
 
 $$
 a\le b
 \iff
+a\star a^{-1}\le b\star a^{-1}.
+$$
+
+La ley de inverso del grupo da
+
+$$
+a\star a^{-1}=e,
+$$
+
+por lo que
+
+$$
+a\le b
+\iff
+e\le b\star a^{-1}.
+$$
+
+Por la [Definición 25.7.1](tratado-de-algebra-capitulo-25-grupos-ordenados.md#talg-def-00058) del cono no negativo,
+
+$$
 e\le b\star a^{-1}
 \iff
 b\star a^{-1}\in P_{\mathcal G}.
 $$
 
-$\square$
+Encadenando las dos equivalencias,
+
+$$
+a\le b
+\iff
+b\star a^{-1}\in P_{\mathcal G}.
+$$
+
+Quedan así demostradas explícitamente las dos caracterizaciones del orden mediante el cono. $\square$
 
 ---
 
