@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Fundamentos para matemáticos: capítulo 5, con ejercicios y soluciones desarrolladas.">
+
+<title>Capítulo 5 — ¿Cómo se convierten las definiciones en herramientas de prueba? – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-734c323c350767e86e203611e668e472.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-a628dcfeb5b33860baba5bec0d8f10cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-definición-tiene-dos-direcciones-de-uso" id="toc-una-definición-tiene-dos-direcciones-de-uso" class="nav-link active" data-scroll-target="#una-definición-tiene-dos-direcciones-de-uso">5.1. Una definición tiene dos direcciones de uso</a></li>
+  <li><a href="#ejemplos-no-ejemplos-y-objetos-que-quizá-no-existan" id="toc-ejemplos-no-ejemplos-y-objetos-que-quizá-no-existan" class="nav-link" data-scroll-target="#ejemplos-no-ejemplos-y-objetos-que-quizá-no-existan">5.2. Ejemplos, no-ejemplos y objetos que quizá no existan</a></li>
+  <li><a href="#definiciones-resultados-e-hipótesis-de-trabajo" id="toc-definiciones-resultados-e-hipótesis-de-trabajo" class="nav-link" data-scroll-target="#definiciones-resultados-e-hipótesis-de-trabajo">5.3. Definiciones, resultados e hipótesis de trabajo</a></li>
+  <li><a href="#reformular-una-definición-exige-conservar-su-alcance" id="toc-reformular-una-definición-exige-conservar-su-alcance" class="nav-link" data-scroll-target="#reformular-una-definición-exige-conservar-su-alcance">5.4. Reformular una definición exige conservar su alcance</a></li>
+  <li><a href="#los-axiomas-de-cuerpo-definir-una-estructura-mediante-leyes" id="toc-los-axiomas-de-cuerpo-definir-una-estructura-mediante-leyes" class="nav-link" data-scroll-target="#los-axiomas-de-cuerpo-definir-una-estructura-mediante-leyes">5.5. Los axiomas de cuerpo: definir una estructura mediante leyes</a></li>
+  <li><a href="#unicidad-y-cancelación-ordenar-las-dependencias" id="toc-unicidad-y-cancelación-ordenar-las-dependencias" class="nav-link" data-scroll-target="#unicidad-y-cancelación-ordenar-las-dependencias">5.6. Unicidad y cancelación: ordenar las dependencias</a>
+  <ul class="collapse">
+  <li><a href="#los-neutros-son-únicos" id="toc-los-neutros-son-únicos" class="nav-link" data-scroll-target="#los-neutros-son-únicos">Los neutros son únicos</a></li>
+  <li><a href="#los-inversos-aditivos-son-únicos" id="toc-los-inversos-aditivos-son-únicos" class="nav-link" data-scroll-target="#los-inversos-aditivos-son-únicos">Los inversos aditivos son únicos</a></li>
+  <li><a href="#los-inversos-multiplicativos-son-únicos" id="toc-los-inversos-multiplicativos-son-únicos" class="nav-link" data-scroll-target="#los-inversos-multiplicativos-son-únicos">Los inversos multiplicativos son únicos</a></li>
+  </ul></li>
+  <li><a href="#el-cero-y-los-signos-se-deducen" id="toc-el-cero-y-los-signos-se-deducen" class="nav-link" data-scroll-target="#el-cero-y-los-signos-se-deducen">5.7. El cero y los signos se deducen</a>
+  <ul class="collapse">
+  <li><a href="#absorción-del-cero-y-prohibición-de-invertirlo" id="toc-absorción-del-cero-y-prohibición-de-invertirlo" class="nav-link" data-scroll-target="#absorción-del-cero-y-prohibición-de-invertirlo">Absorción del cero y prohibición de invertirlo</a></li>
+  <li><a href="#opuesto-del-opuesto-y-producto-con-un-signo" id="toc-opuesto-del-opuesto-y-producto-con-un-signo" class="nav-link" data-scroll-target="#opuesto-del-opuesto-y-producto-con-un-signo">Opuesto del opuesto y producto con un signo</a></li>
+  <li><a href="#dos-signos-y-una-conclusión-general" id="toc-dos-signos-y-una-conclusión-general" class="nav-link" data-scroll-target="#dos-signos-y-una-conclusión-general">Dos signos y una conclusión general</a></li>
+  </ul></li>
+  <li><a href="#un-cuerpo-no-incluye-automáticamente-un-orden" id="toc-un-cuerpo-no-incluye-automáticamente-un-orden" class="nav-link" data-scroll-target="#un-cuerpo-no-incluye-automáticamente-un-orden">5.8. Un cuerpo no incluye automáticamente un orden</a>
+  <ul class="collapse">
+  <li><a href="#modelos-conocidos-y-un-no-ejemplo" id="toc-modelos-conocidos-y-un-no-ejemplo" class="nav-link" data-scroll-target="#modelos-conocidos-y-un-no-ejemplo">Modelos conocidos y un no-ejemplo</a></li>
+  <li><a href="#los-complejos-presentados-mediante-pares" id="toc-los-complejos-presentados-mediante-pares" class="nav-link" data-scroll-target="#los-complejos-presentados-mediante-pares">Los complejos, presentados mediante pares</a></li>
+  <li><a href="#qué-habría-que-añadir-para-hablar-de-cuerpo-ordenado" id="toc-qué-habría-que-añadir-para-hablar-de-cuerpo-ordenado" class="nav-link" data-scroll-target="#qué-habría-que-añadir-para-hablar-de-cuerpo-ordenado">Qué habría que añadir para hablar de cuerpo ordenado</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-leer-una-condición-y-decidir-qué-hacer-con-ella" id="toc-ejercicios-leer-una-condición-y-decidir-qué-hacer-con-ella" class="nav-link" data-scroll-target="#ejercicios-leer-una-condición-y-decidir-qué-hacer-con-ella">5.9. Ejercicios: leer una condición y decidir qué hacer con ella</a>
+  <ul class="collapse">
+  <li><a href="#familia-i.-traducción-y-control-de-definiciones" id="toc-familia-i.-traducción-y-control-de-definiciones" class="nav-link" data-scroll-target="#familia-i.-traducción-y-control-de-definiciones">Familia I. Traducción y control de definiciones</a></li>
+  <li><a href="#familia-ii.-reparación-de-argumentos" id="toc-familia-ii.-reparación-de-argumentos" class="nav-link" data-scroll-target="#familia-ii.-reparación-de-argumentos">Familia II. Reparación de argumentos</a></li>
+  <li><a href="#familia-iii.-ejemplos-no-ejemplos-y-existencia" id="toc-familia-iii.-ejemplos-no-ejemplos-y-existencia" class="nav-link" data-scroll-target="#familia-iii.-ejemplos-no-ejemplos-y-existencia">Familia III. Ejemplos, no-ejemplos y existencia</a></li>
+  <li><a href="#familia-iv.-demostraciones-guiadas" id="toc-familia-iv.-demostraciones-guiadas" class="nav-link" data-scroll-target="#familia-iv.-demostraciones-guiadas">Familia IV. Demostraciones guiadas</a></li>
+  <li><a href="#familia-v.-elección-autónoma-de-método" id="toc-familia-v.-elección-autónoma-de-método" class="nav-link" data-scroll-target="#familia-v.-elección-autónoma-de-método">Familia V. Elección autónoma de método</a></li>
+  </ul></li>
+  <li><a href="#soluciones-desarrolladas" id="toc-soluciones-desarrolladas" class="nav-link" data-scroll-target="#soluciones-desarrolladas">5.10. Soluciones desarrolladas</a>
+  <ul class="collapse">
+  <li><a href="#solución-1.-negar-sin-exigir-demasiado" id="toc-solución-1.-negar-sin-exigir-demasiado" class="nav-link" data-scroll-target="#solución-1.-negar-sin-exigir-demasiado">Solución 1. Negar sin exigir demasiado</a></li>
+  <li><a href="#solución-2.-dos-órdenes-de-cuantificadores" id="toc-solución-2.-dos-órdenes-de-cuantificadores" class="nav-link" data-scroll-target="#solución-2.-dos-órdenes-de-cuantificadores">Solución 2. Dos órdenes de cuantificadores</a></li>
+  <li><a href="#solución-3.-dato-o-resultado" id="toc-solución-3.-dato-o-resultado" class="nav-link" data-scroll-target="#solución-3.-dato-o-resultado">Solución 3. ¿Dato o resultado?</a></li>
+  <li><a href="#solución-4.-una-cancelación-indiscriminada" id="toc-solución-4.-una-cancelación-indiscriminada" class="nav-link" data-scroll-target="#solución-4.-una-cancelación-indiscriminada">Solución 4. Una cancelación indiscriminada</a></li>
+  <li><a href="#solución-5.-unicidad-supuesta" id="toc-solución-5.-unicidad-supuesta" class="nav-link" data-scroll-target="#solución-5.-unicidad-supuesta">Solución 5. Unicidad supuesta</a></li>
+  <li><a href="#solución-6.-una-desigualdad-sin-estructura" id="toc-solución-6.-una-desigualdad-sin-estructura" class="nav-link" data-scroll-target="#solución-6.-una-desigualdad-sin-estructura">Solución 6. Una desigualdad sin estructura</a></li>
+  <li><a href="#solución-7.-tres-comportamientos-de-una-definición" id="toc-solución-7.-tres-comportamientos-de-una-definición" class="nav-link" data-scroll-target="#solución-7.-tres-comportamientos-de-una-definición">Solución 7. Tres comportamientos de una definición</a></li>
+  <li><a href="#solución-8.-nombrar-no-proporciona-un-testigo" id="toc-solución-8.-nombrar-no-proporciona-un-testigo" class="nav-link" data-scroll-target="#solución-8.-nombrar-no-proporciona-un-testigo">Solución 8. Nombrar no proporciona un testigo</a></li>
+  <li><a href="#solución-9.-por-qué-pedir-0ne1" id="toc-solución-9.-por-qué-pedir-0ne1" class="nav-link" data-scroll-target="#solución-9.-por-qué-pedir-0ne1">Solución 9. ¿Por qué pedir <span class="math inline">\(0\ne1\)</span>?</a></li>
+  <li><a href="#solución-10.-unir-conjuntos-estables" id="toc-solución-10.-unir-conjuntos-estables" class="nav-link" data-scroll-target="#solución-10.-unir-conjuntos-estables">Solución 10. Unir conjuntos estables</a></li>
+  <li><a href="#solución-11.-resolver-y-verificar" id="toc-solución-11.-resolver-y-verificar" class="nav-link" data-scroll-target="#solución-11.-resolver-y-verificar">Solución 11. Resolver y verificar</a></li>
+  <li><a href="#solución-12.-invertir-de-nuevo" id="toc-solución-12.-invertir-de-nuevo" class="nav-link" data-scroll-target="#solución-12.-invertir-de-nuevo">Solución 12. Invertir de nuevo</a></li>
+  <li><a href="#solución-13.-una-función-sobre-un-cuerpo" id="toc-solución-13.-una-función-sobre-un-cuerpo" class="nav-link" data-scroll-target="#solución-13.-una-función-sobre-un-cuerpo">Solución 13. Una función sobre un cuerpo</a></li>
+  <li><a href="#solución-14.-el-símbolo-cambia-la-obligación-permanece" id="toc-solución-14.-el-símbolo-cambia-la-obligación-permanece" class="nav-link" data-scroll-target="#solución-14.-el-símbolo-cambia-la-obligación-permanece">Solución 14. El símbolo cambia, la obligación permanece</a></li>
+  <li><a href="#solución-15.-cuando-toda-parte-es-estable" id="toc-solución-15.-cuando-toda-parte-es-estable" class="nav-link" data-scroll-target="#solución-15.-cuando-toda-parte-es-estable">Solución 15. Cuando toda parte es estable</a></li>
+  <li><a href="#de-las-definiciones-a-la-arquitectura-de-las-demostraciones" id="toc-de-las-definiciones-a-la-arquitectura-de-las-demostraciones" class="nav-link" data-scroll-target="#de-las-definiciones-a-la-arquitectura-de-las-demostraciones">De las definiciones a la arquitectura de las demostraciones</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 5 — ¿Cómo se convierten las definiciones en herramientas de prueba?</h1>
+</div>
+
+<div>
+  <div class="description">
+    Fundamentos para matemáticos: capítulo 5, con ejercicios y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">26 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/para-matematicos/fundamentos-para-matematicos.html">Índice del libro</a></p>
+<p>En el capítulo anterior, afirmar que una relación era una función nos obligaba a comprobar existencia y unicidad de una salida para cada entrada. No bastaba reconocer un dibujo familiar. La definición decía exactamente qué información debíamos tener y qué podía faltar.</p>
+<p>Ahora estudiaremos ese mecanismo como una herramienta general. Ante una palabra nueva —«estable», «invertible», «cuerpo»— necesitamos aprender dos movimientos: extraer consecuencias de que un objeto satisfaga una definición y averiguar qué habría que demostrar para que la satisfaga. Una misma definición interviene de modos distintos según esté entre los datos o en la conclusión.</p>
+<p>La pregunta de este capítulo será <strong>¿cómo pasar de un nombre matemático a condiciones con las que podamos razonar?</strong> Comenzaremos con conjuntos y funciones ya conocidos. Después leeremos una definición axiomática completa: la de cuerpo. Ese laboratorio mostrará por qué algunas reglas algebraicas se aceptan como punto de partida y otras necesitan prueba, aunque todas resulten familiares.</p>
+<p>Usaremos como conocimientos de entrada la aritmética escolar de los enteros y racionales y las leyes usuales de los números reales. Cuando trabajemos con un cuerpo arbitrario, cada paso se justificará mediante sus axiomas o resultados previamente demostrados. No construiremos aquí los sistemas numéricos desde primeros principios.</p>
+<section id="una-definición-tiene-dos-direcciones-de-uso" class="level2">
+<h2 class="anchored" data-anchor-id="una-definición-tiene-dos-direcciones-de-uso">5.1. Una definición tiene dos direcciones de uso</h2>
+<p>Sea <span class="math inline">\(A\)</span> un conjunto y sea <span class="math inline">\(f:A\to A\)</span> una función. Diremos que un subconjunto <span class="math inline">\(S\subseteq A\)</span> es <strong>estable bajo <span class="math inline">\(f\)</span></strong> cuando</p>
+<p><span class="math display">\[
+\forall x\in S\;(f(x)\in S).
+\]</span></p>
+<p>Intuitivamente, aplicar <span class="math inline">\(f\)</span> a una entrada de <span class="math inline">\(S\)</span> no nos saca de <span class="math inline">\(S\)</span>. Hemos fijado un término para una condición precisa. No hemos dicho todavía qué subconjuntos la cumplen.</p>
+<p><strong>Usar la definición como hipótesis.</strong> Si sabemos que <span class="math inline">\(S\)</span> es estable y disponemos de <span class="math inline">\(a\in S\)</span>, podemos concluir <span class="math inline">\(f(a)\in S\)</span>. El dato general proporciona información sobre una entrada particular. Pero no permite concluir <span class="math inline">\(f(a)=a\)</span>: permanecer en un conjunto no significa permanecer en el mismo punto.</p>
+<p><strong>Usarla como objetivo.</strong> Si queremos demostrar que <span class="math inline">\(S\)</span> es estable, debemos comenzar con un <span class="math inline">\(x\in S\)</span> arbitrario y justificar <span class="math inline">\(f(x)\in S\)</span>. Comprobarlo únicamente para un elemento especial de <span class="math inline">\(S\)</span> no prueba la condición universal.</p>
+<p>Por ejemplo, con <span class="math inline">\(A=\mathbb Z\)</span>, <span class="math inline">\(f(n)=n+2\)</span> y</p>
+<p><span class="math display">\[
+S=\{n\in\mathbb Z:n\ge3\},
+\]</span></p>
+<p>tomamos <span class="math inline">\(n\in S\)</span>. Entonces <span class="math inline">\(n\ge3\)</span>, de modo que <span class="math inline">\(f(n)=n+2\ge5\ge3\)</span>; además, <span class="math inline">\(n+2\)</span> es entero. Por definición de <span class="math inline">\(S\)</span>, <span class="math inline">\(f(n)\in S\)</span>. Como no fijamos ningún valor especial de <span class="math inline">\(n\)</span>, queda probada la estabilidad.</p>
+<p>La estructura del argumento fue:</p>
+<p><span class="math display">\[
+\begin{aligned}
+n\in S&amp;\Longrightarrow n\ge3\\
+&amp;\Longrightarrow f(n)\ge3\\
+&amp;\Longrightarrow f(n)\in S.
+\end{aligned}
+\]</span></p>
+<p>Desplegamos la definición de <span class="math inline">\(S\)</span> al entrar y la recuperamos al salir. La definición de estabilidad organiza el argumento completo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Hipótesis y objetivo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Hipótesis y objetivo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una definición del tipo «un objeto admisible <span class="math inline">\(x\)</span> tiene la propiedad <span class="math inline">\(P\)</span> cuando cumple <span class="math inline">\(Q(x)\)</span>» fija una equivalencia entre <span class="math inline">\(P(x)\)</span> y <span class="math inline">\(Q(x)\)</span> en ese dominio. Desde la hipótesis <span class="math inline">\(P(x)\)</span> podemos obtener <span class="math inline">\(Q(x)\)</span>; para alcanzar el objetivo <span class="math inline">\(P(x)\)</span> basta probar <span class="math inline">\(Q(x)\)</span>.</p>
+<p>Esta lectura de una <strong>definición</strong> no convierte en bicondicional cualquier «si» de un teorema. En un resultado, cada dirección requiere la prueba correspondiente.</p>
+</div>
+</div>
+<p><strong>Comprobación.</strong> Si <span class="math inline">\(S\)</span> es estable bajo <span class="math inline">\(f\)</span> y <span class="math inline">\(a\in S\)</span>, ¿podemos afirmar que <span class="math inline">\(f(f(a))\in S\)</span>? ¿Debemos suponer que <span class="math inline">\(f(a)=a\)</span>?</p>
+<p><strong>Respuesta razonada.</strong> La primera aplicación de la definición da <span class="math inline">\(f(a)\in S\)</span>. Aplicándola otra vez a esa entrada, obtenemos <span class="math inline">\(f(f(a))\in S\)</span>. No hemos identificado las entradas: sólo hemos utilizado dos veces una propiedad universal. La expresión compuesta tiene sentido porque <span class="math inline">\(f:A\to A\)</span>.</p>
+</section>
+<section id="ejemplos-no-ejemplos-y-objetos-que-quizá-no-existan" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-no-ejemplos-y-objetos-que-quizá-no-existan">5.2. Ejemplos, no-ejemplos y objetos que quizá no existan</h2>
+<p>Una definición que reúne varias condiciones exige cumplirlas <strong>todas</strong>. Para producir un no-ejemplo basta incumplir una, pero debemos señalar cuál. Ante una condición cuantificada, conviene recuperar el dominio y la forma de negarla.</p>
+<p>Para la estabilidad bajo <span class="math inline">\(f:A\to A\)</span>, los conjuntos <span class="math inline">\(\varnothing\)</span> y <span class="math inline">\(A\)</span> siempre cumplen la definición. En el primer caso no hay entradas que puedan violarla; en el segundo, que <span class="math inline">\(f(x)\in A\)</span> forma parte de declarar <span class="math inline">\(f:A\to A\)</span>. Son ejemplos útiles porque impiden añadir silenciosamente la exigencia de que <span class="math inline">\(S\)</span> sea no vacío o propio.</p>
+<p>Con <span class="math inline">\(f(n)=n+2\)</span> sobre <span class="math inline">\(\mathbb Z\)</span>, el subconjunto <span class="math inline">\(T=\{3,4\}\)</span> no es estable: <span class="math inline">\(3\in T\)</span>, pero <span class="math inline">\(f(3)=5\notin T\)</span>. Este solo testigo refuta la universal. Por eso, para un <span class="math inline">\(S\subseteq A\)</span> ya fijado,</p>
+<p><span class="math display">\[
+\begin{gathered}
+S\text{ no es estable bajo }f\\
+\Longleftrightarrow\\
+\exists x\in S\;(f(x)\notin S).
+\end{gathered}
+\]</span></p>
+<p>No sería una negación correcta exigir que <strong>todas</strong> las entradas salieran de <span class="math inline">\(S\)</span>. Una universal falla en cuanto aparece una excepción.</p>
+<p>Hay otra precaución: <strong>dar un nombre no demuestra existencia</strong>. Podemos llamar «entero dominante» a un entero <span class="math inline">\(d\)</span> que cumpla <span class="math inline">\(n\le d\)</span> para todo <span class="math inline">\(n\in\mathbb Z\)</span>. La condición es precisa, pero ningún entero la satisface: si <span class="math inline">\(d\)</span> fuera candidato, el entero <span class="math inline">\(d+1\)</span> sería mayor que él. Definir una clase de objetos puede dar una clase vacía.</p>
+<p>El problema es aún más delicado si intentamos introducir <strong>un objeto determinado</strong> mediante una descripción. La frase «sea <span class="math inline">\(r\)</span> la raíz real de <span class="math inline">\(r^2=1\)</span>» no selecciona un único real: tanto <span class="math inline">\(1\)</span> como <span class="math inline">\(-1\)</span> cumplen la condición. La frase «sea <span class="math inline">\(r\)</span> la raíz real positiva de <span class="math inline">\(r^2=1\)</span>» sí lo hace. La existencia la proporciona <span class="math inline">\(1\)</span>; si <span class="math inline">\(r&gt;0\)</span> y <span class="math inline">\(r^2=1\)</span>, la factorización <span class="math inline">\((r-1)(r+1)=0\)</span> en los reales, con <span class="math inline">\(r+1&gt;0\)</span>, obliga a <span class="math inline">\(r=1\)</span>. Aquí utilizamos aritmética real conocida; más adelante derivaremos el principio del producto nulo desde axiomas abstractos.</p>
+<p><strong>Comprobación.</strong> Para <span class="math inline">\(f:A\to A\)</span> y <span class="math inline">\(a\in A\)</span>, ¿cuándo es estable el singleton <span class="math inline">\(\{a\}\)</span>?</p>
+<p><strong>Respuesta razonada.</strong> Su única entrada es <span class="math inline">\(a\)</span>. La definición exige <span class="math inline">\(f(a)\in\{a\}\)</span>, que equivale a <span class="math inline">\(f(a)=a\)</span>. Así, un singleton es estable exactamente cuando su elemento es un punto fijo, es decir, una entrada que la función deja sin cambio. Esto no significa que todos los elementos de un conjunto estable deban ser puntos fijos.</p>
+</section>
+<section id="definiciones-resultados-e-hipótesis-de-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="definiciones-resultados-e-hipótesis-de-trabajo">5.3. Definiciones, resultados e hipótesis de trabajo</h2>
+<p>Una <strong>definición</strong> fija significado. Un <strong>teorema</strong> afirma un resultado y exige justificación desde los puntos de partida disponibles. Un <strong>lema</strong> es un resultado utilizado como apoyo para otro; un <strong>corolario</strong>, una consecuencia obtenida a partir de un resultado anterior. Esas etiquetas describen el papel de una afirmación en la exposición, no grados diferentes de verdad o de rigor.</p>
+<p>La palabra <strong>proposición</strong> tiene además dos usos que conviene distinguir. En los capítulos iniciales nombraba un enunciado interpretado con valor de verdad. Como encabezado de una exposición —«Proposición»— suele anunciar un resultado demostrado, igual que «Teorema», con una diferencia editorial de énfasis. El contexto permite saber cuál de los dos usos está en juego.</p>
+<p>Veamos cómo una definición se convierte en una pequeña cadena de resultados.</p>
+<p><strong>Lema.</strong> Si <span class="math inline">\(S,T\subseteq A\)</span> son estables bajo <span class="math inline">\(f:A\to A\)</span>, entonces <span class="math inline">\(S\cap T\)</span> es estable bajo <span class="math inline">\(f\)</span>.</p>
+<p><strong>Estrategia.</strong> El objetivo es universal: partiremos de una entrada arbitraria de la intersección. Su pertenencia nos permitirá utilizar las dos hipótesis de estabilidad.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(x\in S\cap T\)</span>. Entonces <span class="math inline">\(x\in S\)</span> y <span class="math inline">\(x\in T\)</span>. Como cada conjunto es estable, <span class="math inline">\(f(x)\in S\)</span> y <span class="math inline">\(f(x)\in T\)</span>. Por definición de intersección, <span class="math inline">\(f(x)\in S\cap T\)</span>. Esto vale para cualquier entrada de la intersección, por lo que ésta es estable. Si la intersección es vacía, la condición universal también se cumple. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corolario.</strong> Si <span class="math inline">\(S\)</span>, <span class="math inline">\(T\)</span> y <span class="math inline">\(U\)</span> son estables bajo la misma función, entonces <span class="math inline">\((S\cap T)\cap U\)</span> es estable.</p>
+<p><strong>Demostración.</strong> El lema da primero la estabilidad de <span class="math inline">\(S\cap T\)</span>. Podemos aplicarlo otra vez a ese conjunto y a <span class="math inline">\(U\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La segunda prueba no necesita volver a abrir toda la definición: usa un resultado cuya demostración ya está disponible. Una prueba puede apoyarse en definiciones, hipótesis y teoremas, pero debe conservar el origen de cada paso.</p>
+<p>Las hipótesis «misma función» y «subconjuntos de <span class="math inline">\(A\)</span>» no son decoración. Si cambiamos de función durante el argumento, la segunda condición de estabilidad podría no informar sobre el valor <span class="math inline">\(f(x)\)</span> que necesitamos. Y si una expresión no está definida para la entrada elegida, ni siquiera hemos construido una afirmación interpretable.</p>
+<p><strong>Comprobación.</strong> En la prueba del lema, ¿por qué no bastaría saber únicamente que <span class="math inline">\(S\)</span> es estable?</p>
+<p><strong>Respuesta razonada.</strong> De <span class="math inline">\(x\in S\cap T\)</span> y la estabilidad de <span class="math inline">\(S\)</span> sólo obtenemos <span class="math inline">\(f(x)\in S\)</span>. Todavía falta <span class="math inline">\(f(x)\in T\)</span>. Por ejemplo, con <span class="math inline">\(A=S=\mathbb Z\)</span>, <span class="math inline">\(f(n)=n+1\)</span> y <span class="math inline">\(T=\{0\}\)</span>, la intersección es <span class="math inline">\(\{0\}\)</span> y no es estable. Se satisface la única hipótesis de estabilidad que conservamos, pero falla la conclusión.</p>
+</section>
+<section id="reformular-una-definición-exige-conservar-su-alcance" class="level2">
+<h2 class="anchored" data-anchor-id="reformular-una-definición-exige-conservar-su-alcance">5.4. Reformular una definición exige conservar su alcance</h2>
+<p>La condición de estabilidad puede escribirse de otra manera:</p>
+<p><span class="math display">\[
+S\text{ es estable bajo }f\quad\Longleftrightarrow\quad f(S)\subseteq S.
+\]</span></p>
+<p><strong>Demostración.</strong> Supongamos primero que <span class="math inline">\(S\)</span> es estable. Si <span class="math inline">\(y\in f(S)\)</span>, por definición de imagen existe <span class="math inline">\(x\in S\)</span> con <span class="math inline">\(y=f(x)\)</span>. La estabilidad da <span class="math inline">\(y\in S\)</span>; por tanto, <span class="math inline">\(f(S)\subseteq S\)</span>. Recíprocamente, supongamos esa inclusión y tomemos <span class="math inline">\(x\in S\)</span>. Su valor pertenece a <span class="math inline">\(f(S)\)</span> y, por la inclusión, a <span class="math inline">\(S\)</span>. Ésta es la condición de estabilidad. <span class="math inline">\(\square\)</span></p>
+<p>La equivalencia conecta dos escrituras ya definidas. Podemos elegir la que haga más transparente una prueba, porque conocemos cómo pasar en ambas direcciones.</p>
+<p>En cambio, reemplazar la inclusión por <span class="math inline">\(f(S)=S\)</span> cambia la condición. La igualdad exige además que cada elemento de <span class="math inline">\(S\)</span> sea alcanzado desde una entrada de <span class="math inline">\(S\)</span>. Con <span class="math inline">\(f(n)=n+1\)</span> sobre los enteros y</p>
+<p><span class="math display">\[
+S=\{n\in\mathbb Z:n\ge0\},
+\]</span></p>
+<p>tenemos <span class="math inline">\(f(S)=\{n\in\mathbb Z:n\ge1\}\subsetneq S\)</span>. El conjunto es estable, pero <span class="math inline">\(0\in S\)</span> no se alcanza desde una entrada no negativa. La nueva condición sería más fuerte.</p>
+<p>Para comprobar una reformulación debemos mirar tanto los símbolos como los cuantificadores. La condición <span class="math inline">\(\forall x\in S\;f(x)\in S\)</span> permite que distintos elementos tengan imágenes distintas; no equivale a <span class="math inline">\(\exists y\in S\;\forall x\in S\;f(x)=y\)</span>, que pide un valor común y además exige que <span class="math inline">\(S\)</span> sea no vacío. El conjunto vacío separa inmediatamente ambas frases.</p>
+<p><strong>Comprobación.</strong> Si <span class="math inline">\(f(S)=S\)</span>, ¿es estable <span class="math inline">\(S\)</span>? ¿Queda justificada la recíproca?</p>
+<p><strong>Respuesta razonada.</strong> La igualdad implica <span class="math inline">\(f(S)\subseteq S\)</span>, así que sí hay estabilidad. La recíproca es falsa por el ejemplo anterior. Una dirección válida no basta para intercambiar definiciones; se necesitan ambas.</p>
+</section>
+<section id="los-axiomas-de-cuerpo-definir-una-estructura-mediante-leyes" class="level2">
+<h2 class="anchored" data-anchor-id="los-axiomas-de-cuerpo-definir-una-estructura-mediante-leyes">5.5. Los axiomas de cuerpo: definir una estructura mediante leyes</h2>
+<p>Una operación binaria sobre <span class="math inline">\(F\)</span> es una función <span class="math inline">\(F\times F\to F\)</span>. Declarar su dominio y codominio significa que a cada par de elementos de <span class="math inline">\(F\)</span> le corresponde un único elemento de <span class="math inline">\(F\)</span>. Como vimos en C04, eso es más información que escribir un símbolo entre dos letras.</p>
+<p>Un <strong>cuerpo</strong> será un conjunto <span class="math inline">\(F\)</span> con operaciones <span class="math inline">\(+\)</span> y <span class="math inline">\(\cdot\)</span> de <span class="math inline">\(F\times F\)</span> en <span class="math inline">\(F\)</span> y elementos distinguidos <span class="math inline">\(0,1\in F\)</span>, que satisfacen las leyes siguientes. Escribiremos <span class="math inline">\(ab\)</span> para <span class="math inline">\(a\cdot b\)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Definición de cuerpo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definición de cuerpo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para todos <span class="math inline">\(a,b,c\in F\)</span>:</p>
+<p><strong>Leyes aditivas</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+(a+b)+c&amp;=a+(b+c), &amp; a+b&amp;=b+a,\\
+a+0&amp;=a.
+\end{aligned}
+\]</span></p>
+<p>Para cada <span class="math inline">\(a\in F\)</span> existe algún <span class="math inline">\(u\in F\)</span> tal que <span class="math inline">\(a+u=0\)</span>.</p>
+<p><strong>Leyes multiplicativas</strong></p>
+<p><span class="math display">\[
+\begin{aligned}
+(ab)c&amp;=a(bc), &amp; ab&amp;=ba,\\
+a1&amp;=a.
+\end{aligned}
+\]</span></p>
+<p>Para cada <span class="math inline">\(a\in F\)</span> <strong>distinto de <span class="math inline">\(0\)</span></strong> existe algún <span class="math inline">\(v\in F\)</span> tal que <span class="math inline">\(av=1\)</span>.</p>
+<p><strong>Compatibilidad y no trivialidad</strong></p>
+<p><span class="math display">\[
+a(b+c)=ab+ac,\qquad 0\ne1.
+\]</span></p>
+</div>
+</div>
+<p>La conmutatividad proporciona también <span class="math inline">\(0+a=a\)</span> y <span class="math inline">\(1a=a\)</span>. Permite obtener la distributividad por el otro lado:</p>
+<p><span class="math display">\[
+(b+c)a=a(b+c)=ab+ac=ba+ca.
+\]</span></p>
+<p>En esta presentación esa segunda distributividad es una consecuencia breve; podríamos haber elegido una lista equivalente que la incluyera explícitamente. Lo esencial es declarar qué lista utilizamos y justificar las equivalencias cuando importan.</p>
+<p>Los inversos se postulan mediante <strong>existencia</strong>, no mediante existencia única. Todavía no escribiremos <span class="math inline">\(-a\)</span> ni <span class="math inline">\(a^{-1}\)</span> como si la unicidad estuviera probada: compararemos candidatos en la sección siguiente. La hipótesis <span class="math inline">\(a\ne0\)</span> pertenece sólo al axioma de inverso multiplicativo; todo elemento, incluido <span class="math inline">\(0\)</span>, tiene inverso aditivo.</p>
+<p>Llamamos <strong>axiomas de cuerpo</strong> a estas condiciones porque son puntos de partida cuando trabajamos con un cuerpo arbitrario. Pero, si nos dan operaciones concretas y queremos demostrar que forman un cuerpo, esos mismos axiomas se convierten en obligaciones que hay que verificar. El papel lógico depende de la tarea: podemos suponer que estamos en una estructura de cierta clase o demostrar que un candidato pertenece a ella.</p>
+<p>No aparecen en la lista ni un orden <span class="math inline">\(&lt;\)</span> ni una propiedad de completitud. Tampoco se han postulado <span class="math inline">\(a0=0\)</span>, cancelación, reglas de signos o ausencia de productos nulos con factores no nulos. Aunque esas expresiones recuerden hechos escolares, dentro de este laboratorio deben derivarse.</p>
+<p><strong>Comprobación.</strong> Escribe el axioma de inverso multiplicativo con cuantificadores e identifica quién puede depender de quién.</p>
+<p><strong>Respuesta razonada.</strong> Su forma es</p>
+<p><span class="math display">\[
+\forall a\in F\;\bigl(a\ne0\Longrightarrow
+\exists v\in F\;(av=1)\bigr).
+\]</span></p>
+<p>Primero se fija <span class="math inline">\(a\)</span>; cuando es no nulo, el testigo <span class="math inline">\(v\)</span> puede depender de él. No se exige un único <span class="math inline">\(v\)</span> común para todos los <span class="math inline">\(a\)</span>, ni se permite aplicar la existencia al caso <span class="math inline">\(a=0\)</span>.</p>
+</section>
+<section id="unicidad-y-cancelación-ordenar-las-dependencias" class="level2">
+<h2 class="anchored" data-anchor-id="unicidad-y-cancelación-ordenar-las-dependencias">5.6. Unicidad y cancelación: ordenar las dependencias</h2>
+<p>Antes de calcular con inversos como objetos determinados, tenemos que justificar que dos candidatos coinciden. La estrategia general será comparar los candidatos usando las propiedades que ambos cumplen. No usaremos una cancelación multiplicativa cuya prueba aún no hemos dado.</p>
+<section id="los-neutros-son-únicos" class="level3">
+<h3 class="anchored" data-anchor-id="los-neutros-son-únicos">Los neutros son únicos</h3>
+<p>Supongamos que <span class="math inline">\(e\in F\)</span> también es neutro aditivo, es decir, que <span class="math inline">\(a+e=a\)</span> para todo <span class="math inline">\(a\in F\)</span>. Al elegir <span class="math inline">\(a=0\)</span> obtenemos <span class="math inline">\(0+e=0\)</span>. Por otro lado, el neutro <span class="math inline">\(0\)</span> y la conmutatividad dan <span class="math inline">\(0+e=e\)</span>. Luego <span class="math inline">\(e=0\)</span>.</p>
+<p>Si <span class="math inline">\(j\in F\)</span> también cumple <span class="math inline">\(aj=a\)</span> para todo <span class="math inline">\(a\)</span>, al elegir <span class="math inline">\(a=1\)</span> obtenemos <span class="math inline">\(1j=1\)</span>. Como <span class="math inline">\(1\)</span> es el neutro multiplicativo y el producto es conmutativo, <span class="math inline">\(1j=j\)</span>. Por tanto, <span class="math inline">\(j=1\)</span>.</p>
+<p>La comparación sólo necesitó las propiedades de los candidatos y la posibilidad de usarlos como entradas. No necesitó dividir ni restar.</p>
+</section>
+<section id="los-inversos-aditivos-son-únicos" class="level3">
+<h3 class="anchored" data-anchor-id="los-inversos-aditivos-son-únicos">Los inversos aditivos son únicos</h3>
+<p>Fijemos <span class="math inline">\(a\in F\)</span> y supongamos <span class="math inline">\(a+u=0\)</span> y <span class="math inline">\(a+v=0\)</span>. Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+u&amp;=u+0\\
+&amp;=u+(a+v)\\
+&amp;=(u+a)+v\\
+&amp;=0+v=v.
+\end{aligned}
+\]</span></p>
+<p>Usamos neutro, la ecuación de <span class="math inline">\(v\)</span>, asociatividad y la ecuación de <span class="math inline">\(u\)</span> junto con conmutatividad. Existencia y unicidad justifican escribir <strong><span class="math inline">\(-a\)</span></strong> para ese elemento. Definimos también <span class="math inline">\(b-a:=b+(-a)\)</span>.</p>
+<p>Ahora podemos demostrar <strong>cancelación aditiva</strong>. Si <span class="math inline">\(a+b=a+c\)</span>, sumamos <span class="math inline">\(-a\)</span> a ambos lados y reagrupamos:</p>
+<p><span class="math display">\[
+\begin{aligned}
+(-a)+(a+b)&amp;=((-a)+a)+b\\
+&amp;=0+b=b,
+\end{aligned}
+\]</span></p>
+<p>y del otro lado obtenemos <span class="math inline">\(c\)</span>. Así, <span class="math inline">\(b=c\)</span>. La igualdad se preserva al aplicar la misma operación a ambos miembros; la asociatividad explica por qué podemos eliminar el término común. La recíproca, <span class="math inline">\(b=c\Rightarrow a+b=a+c\)</span>, se sigue de sustituir iguales.</p>
+</section>
+<section id="los-inversos-multiplicativos-son-únicos" class="level3">
+<h3 class="anchored" data-anchor-id="los-inversos-multiplicativos-son-únicos">Los inversos multiplicativos son únicos</h3>
+<p>Sea <span class="math inline">\(a\ne0\)</span>. Si <span class="math inline">\(au=1\)</span> y <span class="math inline">\(av=1\)</span>, tenemos</p>
+<p><span class="math display">\[
+u=u1=u(av)=(ua)v=1v=v.
+\]</span></p>
+<p>La demostración usa asociatividad, conmutatividad, neutro y las ecuaciones de los candidatos. Como el axioma garantiza su existencia para <span class="math inline">\(a\ne0\)</span>, podemos denotar el único inverso por <strong><span class="math inline">\(a^{-1}\)</span></strong>. En este libro no asignamos por esta notación un inverso multiplicativo a <span class="math inline">\(0\)</span>.</p>
+<p>Podemos probar ahora <strong>cancelación multiplicativa con factor no nulo</strong>. Si <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(ab=ac\)</span>, multiplicamos ambos lados por <span class="math inline">\(a^{-1}\)</span>:</p>
+<p><span class="math display">\[
+a^{-1}(ab)=(a^{-1}a)b=1b=b,
+\]</span></p>
+<p>y análogamente obtenemos <span class="math inline">\(c\)</span> en el otro miembro. Luego <span class="math inline">\(b=c\)</span>. La hipótesis <span class="math inline">\(a\ne0\)</span> se utilizó al disponer de <span class="math inline">\(a^{-1}\)</span>; no puede borrarse al final.</p>
+<p><strong>Lectura de la prueba.</strong> No hemos justificado la unicidad de los inversos mediante cancelación multiplicativa: hicimos primero la comparación directa de candidatos y después dedujimos la cancelación. Éste es el orden de dependencias que evita un argumento circular.</p>
+<p><strong>Comprobación.</strong> ¿Por qué sería insuficiente demostrar <span class="math inline">\(au=av=1\)</span> y escribir a continuación «cancelamos <span class="math inline">\(a\)</span>, luego <span class="math inline">\(u=v\)</span>» si estuviéramos usando esa unicidad para introducir y justificar la propia regla de cancelación?</p>
+<p><strong>Respuesta razonada.</strong> Estaríamos utilizando como herramienta el resultado cuya justificación depende de lo que intentamos probar. La cadena <span class="math inline">\(u=u(av)=(ua)v=v\)</span> evita ese círculo y sólo usa axiomas ya disponibles. Si la cancelación se hubiera demostrado antes por otra vía independiente, sí podría usarse; hay que conocer sus dependencias, no prohibirla por su nombre.</p>
+</section>
+</section>
+<section id="el-cero-y-los-signos-se-deducen" class="level2">
+<h2 class="anchored" data-anchor-id="el-cero-y-los-signos-se-deducen">5.7. El cero y los signos se deducen</h2>
+<section id="absorción-del-cero-y-prohibición-de-invertirlo" class="level3">
+<h3 class="anchored" data-anchor-id="absorción-del-cero-y-prohibición-de-invertirlo">Absorción del cero y prohibición de invertirlo</h3>
+<p>Fijemos <span class="math inline">\(a\in F\)</span> y escribamos <span class="math inline">\(t=a0\)</span>. Como <span class="math inline">\(0+0=0\)</span>, la distributividad da</p>
+<p><span class="math display">\[
+t=a0=a(0+0)=a0+a0=t+t.
+\]</span></p>
+<p>Podemos escribir el miembro izquierdo como <span class="math inline">\(t+0\)</span>. La cancelación <strong>aditiva</strong>, ya demostrada, aplicada a <span class="math inline">\(t+0=t+t\)</span>, da <span class="math inline">\(0=t\)</span>. Por tanto, <span class="math inline">\(a0=0\)</span>; por conmutatividad, también <span class="math inline">\(0a=0\)</span>.</p>
+<p>Esto prueba que <span class="math inline">\(0\)</span> no posee inverso multiplicativo. Si algún <span class="math inline">\(v\)</span> satisficiera <span class="math inline">\(0v=1\)</span>, la absorción del cero daría simultáneamente <span class="math inline">\(0v=0\)</span>, de donde <span class="math inline">\(0=1\)</span>, contra la no trivialidad. No hemos dividido por cero para concluir que no se puede hacerlo.</p>
+</section>
+<section id="opuesto-del-opuesto-y-producto-con-un-signo" class="level3">
+<h3 class="anchored" data-anchor-id="opuesto-del-opuesto-y-producto-con-un-signo">Opuesto del opuesto y producto con un signo</h3>
+<p>La igualdad <span class="math inline">\(a+(-a)=0\)</span> y la conmutatividad muestran que <span class="math inline">\(a\)</span> es un inverso aditivo de <span class="math inline">\(-a\)</span>. Por unicidad,</p>
+<p><span class="math display">\[
+-(-a)=a.
+\]</span></p>
+<p>De igual manera, <span class="math inline">\(-0=0\)</span>, porque <span class="math inline">\(0+0=0\)</span>.</p>
+<p>Para identificar <span class="math inline">\((-a)b\)</span>, buscaremos una propiedad que lo caracterice. La distributividad y la absorción del cero dan</p>
+<p><span class="math display">\[
+ab+(-a)b=(a+(-a))b=0b=0.
+\]</span></p>
+<p>Así, <span class="math inline">\((-a)b\)</span> es un inverso aditivo de <span class="math inline">\(ab\)</span>. Por la unicidad establecida,</p>
+<p><span class="math display">\[
+(-a)b=-(ab).
+\]</span></p>
+<p>La conmutatividad permite obtener también <span class="math inline">\(a(-b)=-(ab)\)</span>. En particular, con <span class="math inline">\(a=1\)</span> en la primera identidad,</p>
+<p><span class="math display">\[
+(-1)b=-(1b)=-b.
+\]</span></p>
+<p>No dijimos que <span class="math inline">\((-1)b=-b\)</span> fuera cierto «por la regla de los signos»: acabamos de justificar esa regla desde leyes anteriores.</p>
+</section>
+<section id="dos-signos-y-una-conclusión-general" class="level3">
+<h3 class="anchored" data-anchor-id="dos-signos-y-una-conclusión-general">Dos signos y una conclusión general</h3>
+<p>Aplicando las identidades ya probadas en el orden indicado,</p>
+<p><span class="math display">\[
+(-a)(-b)=-(a(-b))=-(-(ab))=ab.
+\]</span></p>
+<p>La primera igualdad usa la regla para un signo en el primer factor; la segunda, la regla para el segundo; la tercera, el opuesto del opuesto. Como ahora podemos localizar cada herramienta, la cadena no oculta una dependencia circular.</p>
+<p>También obtenemos el <strong>principio del producto nulo</strong>:</p>
+<p><span class="math display">\[
+ab=0\quad\Longleftrightarrow\quad a=0\ \text{o}\ b=0.
+\]</span></p>
+<p>Si <span class="math inline">\(ab=0\)</span>, distinguimos dos casos. Si <span class="math inline">\(a=0\)</span>, ya tenemos una alternativa. Si <span class="math inline">\(a\ne0\)</span>, la igualdad <span class="math inline">\(ab=0=a0\)</span> permite cancelar <span class="math inline">\(a\)</span> y concluir <span class="math inline">\(b=0\)</span>. Recíprocamente, cualquiera de las dos igualdades <span class="math inline">\(a=0\)</span> o <span class="math inline">\(b=0\)</span> hace nulo el producto por absorción. La distinción de casos permite usar un resultado condicionado sin suponer gratuitamente su hipótesis.</p>
+<p><strong>Comprobación.</strong> ¿Se puede cancelar el factor común <span class="math inline">\(0\)</span> en <span class="math inline">\(0\cdot0=0\cdot1\)</span>?</p>
+<p><strong>Respuesta razonada.</strong> Ambos miembros son <span class="math inline">\(0\)</span>, pero cancelar produciría <span class="math inline">\(0=1\)</span>, que contradice un axioma. La regla sólo vale con factor común no nulo. Este ejemplo satisface la igualdad inicial y muestra por qué conservar la condición es indispensable.</p>
+</section>
+</section>
+<section id="un-cuerpo-no-incluye-automáticamente-un-orden" class="level2">
+<h2 class="anchored" data-anchor-id="un-cuerpo-no-incluye-automáticamente-un-orden">5.8. Un cuerpo no incluye automáticamente un orden</h2>
+<section id="modelos-conocidos-y-un-no-ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-conocidos-y-un-no-ejemplo">Modelos conocidos y un no-ejemplo</h3>
+<p>Con las operaciones usuales, <span class="math inline">\(\mathbb Q\)</span> y <span class="math inline">\(\mathbb R\)</span> son cuerpos. En esta etapa tomamos sus leyes aritméticas elementales como conocimiento de entrada, no como resultados construidos desde teoría de conjuntos. Para los racionales, el inverso de un elemento no nulo <span class="math inline">\(p/q\)</span>, con <span class="math inline">\(p,q\in\mathbb Z\)</span>, <span class="math inline">\(q\ne0\)</span> y <span class="math inline">\(p\ne0\)</span>, es <span class="math inline">\(q/p\)</span>; pertenece de nuevo a <span class="math inline">\(\mathbb Q\)</span> y su producto con <span class="math inline">\(p/q\)</span> es <span class="math inline">\(1\)</span>. Para los reales se dispone análogamente del recíproco de todo elemento no nulo.</p>
+<p>Los enteros, con sus operaciones usuales, no forman un cuerpo. El elemento <span class="math inline">\(2\ne0\)</span> no tiene inverso multiplicativo entero. Si <span class="math inline">\(n\le0\)</span>, entonces <span class="math inline">\(2n\le0\)</span>; si <span class="math inline">\(n\ge1\)</span>, entonces <span class="math inline">\(2n\ge2\)</span>. En ninguno de los dos casos se obtiene <span class="math inline">\(2n=1\)</span>. Un solo incumplimiento de un axioma basta para descartar el candidato; no hace falta que todos fallen.</p>
+</section>
+<section id="los-complejos-presentados-mediante-pares" class="level3">
+<h3 class="anchored" data-anchor-id="los-complejos-presentados-mediante-pares">Los complejos, presentados mediante pares</h3>
+<p>Podemos reconocer otro modelo sin suponer un orden para sus elementos. Consideremos <span class="math inline">\(\mathbb R^2\)</span> con</p>
+<p><span class="math display">\[
+(a,b)+(c,d):=(a+c,b+d),
+\]</span></p>
+<p><span class="math display">\[
+(a,b)(c,d):=(ac-bd,ad+bc),
+\]</span></p>
+<p>y constantes <span class="math inline">\(0=(0,0)\)</span> y <span class="math inline">\(1=(1,0)\)</span>. A este sistema lo llamamos <span class="math inline">\(\mathbb C\)</span>.</p>
+<p>Las operaciones producen pares de reales. La suma es asociativa y conmutativa componente a componente, su neutro es <span class="math inline">\((0,0)\)</span> y el opuesto de <span class="math inline">\((a,b)\)</span> es <span class="math inline">\((-a,-b)\)</span>. El producto es conmutativo porque las expresiones <span class="math inline">\(ac-bd\)</span> y <span class="math inline">\(ad+bc\)</span> no cambian al intercambiar los pares, usando conmutatividad real; su neutro es <span class="math inline">\((1,0)\)</span>.</p>
+<p>Para la asociatividad multiplicativa, si <span class="math inline">\(z=(a,b)\)</span>, <span class="math inline">\(w=(c,d)\)</span> y <span class="math inline">\(u=(e,h)\)</span>, expandir ambos productos <span class="math inline">\((zw)u\)</span> y <span class="math inline">\(z(wu)\)</span> da el mismo par <span class="math inline">\((P,Q)\)</span>, donde</p>
+<p><span class="math display">\[
+\begin{aligned}
+P&amp;=ace-bde-adh-bch,\\
+Q&amp;=ach-bdh+ade+bce.
+\end{aligned}
+\]</span></p>
+<p>La distributividad se comprueba igualando componentes: tanto <span class="math inline">\(z(w+u)\)</span> como <span class="math inline">\(zw+zu\)</span> tienen primera componente <span class="math inline">\(ac+ae-bd-bh\)</span> y segunda <span class="math inline">\(ad+ah+bc+be\)</span>. Finalmente, <span class="math inline">\((0,0)\ne(1,0)\)</span> porque <span class="math inline">\(0\ne1\)</span> en los reales.</p>
+<p>Si <span class="math inline">\((a,b)\ne(0,0)\)</span>, el real <span class="math inline">\(a^2+b^2\)</span> es positivo: los cuadrados reales son no negativos y al menos uno es positivo. En particular, es no nulo y tiene recíproco real. El par</p>
+<p><span class="math display">\[
+\left(\frac{a}{a^2+b^2},\frac{-b}{a^2+b^2}\right)
+\]</span></p>
+<p>es un inverso multiplicativo: la primera componente del producto es <span class="math inline">\((a^2+b^2)/(a^2+b^2)=1\)</span> y la segunda es <span class="math inline">\((-ab+ba)/(a^2+b^2)=0\)</span>. Hemos verificado la última condición que faltaba. Por tanto, estas operaciones forman un cuerpo.</p>
+<p>Aquí el orden de los <strong>reales</strong> ayudó a verificar que un denominador real era no nulo. No hemos introducido por eso un orden sobre el cuerpo de pares.</p>
+</section>
+<section id="qué-habría-que-añadir-para-hablar-de-cuerpo-ordenado" class="level3">
+<h3 class="anchored" data-anchor-id="qué-habría-que-añadir-para-hablar-de-cuerpo-ordenado">Qué habría que añadir para hablar de cuerpo ordenado</h3>
+<p>Un <strong>cuerpo ordenado</strong> es un cuerpo <span class="math inline">\(F\)</span> provisto además de una relación <span class="math inline">\(&lt;\)</span> que sea un orden estricto total y compatible con las operaciones. Por orden estricto total entendemos transitividad y que, para cualesquiera <span class="math inline">\(a,b\)</span>, se cumpla exactamente una de las alternativas <span class="math inline">\(a&lt;b\)</span>, <span class="math inline">\(a=b\)</span> o <span class="math inline">\(b&lt;a\)</span>. La compatibilidad exige:</p>
+<p><span class="math display">\[
+a&lt;b\Longrightarrow a+c&lt;b+c,
+\]</span></p>
+<p>para todos <span class="math inline">\(a,b,c\)</span>, y</p>
+<p><span class="math display">\[
+0&lt;a\ \text{y}\ 0&lt;b\Longrightarrow 0&lt;ab.
+\]</span></p>
+<p>Estas condiciones son información adicional. En un cuerpo ordenado, el cuadrado de un elemento no nulo es positivo. Si <span class="math inline">\(a&gt;0\)</span>, lo da la compatibilidad multiplicativa. Si <span class="math inline">\(a&lt;0\)</span>, sumando <span class="math inline">\(-a\)</span> obtenemos <span class="math inline">\(0&lt;-a\)</span>, por lo que <span class="math inline">\(0&lt;(-a)^2=a^2\)</span>. La tricotomía cubre ambos casos cuando <span class="math inline">\(a\ne0\)</span>. En particular, <span class="math inline">\(0&lt;1^2=1\)</span> y, sumando <span class="math inline">\(-1\)</span>, resulta <span class="math inline">\(-1&lt;0\)</span>.</p>
+<p>En <span class="math inline">\(\mathbb C\)</span>, el elemento <span class="math inline">\(i=(0,1)\)</span> cumple <span class="math inline">\(i^2=(-1,0)=-1\)</span> y es no nulo. Si existiera un orden compatible con la estructura de cuerpo, su cuadrado sería positivo. Pero acabamos de demostrar que <span class="math inline">\(-1\)</span> sería negativo. La tricotomía impide ambas cosas. Por tanto, <strong><span class="math inline">\(\mathbb C\)</span> es un cuerpo que no admite un orden de cuerpo</strong>. Esto no prohíbe ordenar sus pares de alguna manera; prohíbe que ese orden satisfaga simultáneamente las compatibilidades indicadas.</p>
+<p><strong>Comprobación.</strong> ¿De la hipótesis «<span class="math inline">\(F\)</span> es un cuerpo» podemos concluir <span class="math inline">\(a^2&gt;0\)</span> para todo <span class="math inline">\(a\ne0\)</span>?</p>
+<p><strong>Respuesta razonada.</strong> No: esa hipótesis ni siquiera declara una relación <span class="math inline">\(&gt;\)</span> sobre <span class="math inline">\(F\)</span>. La conclusión es válida en un cuerpo <strong>ordenado</strong>, con el orden y las compatibilidades anteriores. Los complejos muestran además que no basta intentar añadir cualquier orden a todo cuerpo. Debemos verificar qué estructura está disponible antes de formular una desigualdad.</p>
+</section>
+</section>
+<section id="ejercicios-leer-una-condición-y-decidir-qué-hacer-con-ella" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-leer-una-condición-y-decidir-qué-hacer-con-ella">5.9. Ejercicios: leer una condición y decidir qué hacer con ella</h2>
+<p>Antes de comenzar, escribe qué datos están fijados y qué definición permite interpretar la conclusión. En las pruebas sobre un cuerpo arbitrario puedes usar los resultados de §§5.6–5.7, indicando dónde intervienen.</p>
+<section id="familia-i.-traducción-y-control-de-definiciones" class="level3">
+<h3 class="anchored" data-anchor-id="familia-i.-traducción-y-control-de-definiciones">Familia I. Traducción y control de definiciones</h3>
+<p><strong>Ejercicio 1. Negar sin exigir demasiado.</strong> Sean <span class="math inline">\(f:A\to A\)</span> y <span class="math inline">\(S\subseteq A\)</span>. Escribe con cuantificadores la estabilidad de <span class="math inline">\(S\)</span> y su negación. Describe qué debe proporcionarse para probar cada una. Explica qué sucede cuando <span class="math inline">\(S=\varnothing\)</span>.</p>
+<p><strong>Ejercicio 2. Dos órdenes de cuantificadores.</strong> Compara las afirmaciones</p>
+<p><span class="math display">\[
+\forall a\in F\;\bigl(a\ne0\Longrightarrow\exists v\in F\;(av=1)\bigr)
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\exists v\in F\;\forall a\in F\;(a\ne0\Longrightarrow av=1).
+\]</span></p>
+<p>Explica cuál aparece en la definición de cuerpo. Decide si la segunda vale en <span class="math inline">\(\mathbb Q\)</span>, comprobando las entradas <span class="math inline">\(a=1\)</span> y <span class="math inline">\(a=2\)</span>.</p>
+<p><strong>Ejercicio 3. ¿Dato o resultado?</strong> Con la lista exacta de §5.5, clasifica las siguientes afirmaciones: (a) <span class="math inline">\(a(b+c)=ab+ac\)</span>; (b) todo <span class="math inline">\(a\)</span> tiene un único inverso aditivo; (c) <span class="math inline">\(a0=0\)</span>; (d) <span class="math inline">\(0\ne1\)</span>; (e) <span class="math inline">\(ab=ac\Rightarrow b=c\)</span>. Para las que no sean axiomas, señala un resultado previo que las justifique o una hipótesis que falte.</p>
+</section>
+<section id="familia-ii.-reparación-de-argumentos" class="level3">
+<h3 class="anchored" data-anchor-id="familia-ii.-reparación-de-argumentos">Familia II. Reparación de argumentos</h3>
+<p><strong>Ejercicio 4. Una cancelación indiscriminada.</strong> Se escribe: «En un cuerpo, si <span class="math inline">\(ax=ay\)</span>, multiplicamos por <span class="math inline">\(a^{-1}\)</span> y obtenemos <span class="math inline">\(x=y\)</span>». Localiza la omisión, produce un contraejemplo a la afirmación sin condiciones y escribe una versión correcta con su prueba.</p>
+<p><strong>Ejercicio 5. Unicidad supuesta.</strong> Para probar que el inverso aditivo es único, alguien escribe: «Si <span class="math inline">\(a+u=0\)</span> y <span class="math inline">\(a+v=0\)</span>, entonces <span class="math inline">\(u=-a=v\)</span>, porque <span class="math inline">\(-a\)</span> es el inverso de <span class="math inline">\(a\)</span>». Explica por qué esta justificación no sirve para establecer por primera vez la unicidad. Reemplázala por una prueba que compare <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> sin usar la notación <span class="math inline">\(-a\)</span>.</p>
+<p><strong>Ejercicio 6. Una desigualdad sin estructura.</strong> Se propone: «En cualquier cuerpo, el cuadrado de un elemento no nulo es mayor que cero; por eso <span class="math inline">\(x^2=-1\)</span> nunca tiene solución». Identifica la hipótesis omitida y repara el enunciado. Explica qué demuestra el ejemplo de <span class="math inline">\(i\in\mathbb C\)</span> y qué no demuestra acerca de posibles órdenes sobre un conjunto de pares.</p>
+</section>
+<section id="familia-iii.-ejemplos-no-ejemplos-y-existencia" class="level3">
+<h3 class="anchored" data-anchor-id="familia-iii.-ejemplos-no-ejemplos-y-existencia">Familia III. Ejemplos, no-ejemplos y existencia</h3>
+<p><strong>Ejercicio 7. Tres comportamientos de una definición.</strong> Para <span class="math inline">\(A=\mathbb Z\)</span> y <span class="math inline">\(f(n)=0\)</span>, encuentra: (a) un subconjunto no vacío <span class="math inline">\(S\)</span> con <span class="math inline">\(f(S)=S\)</span>; (b) un subconjunto estable <span class="math inline">\(T\)</span> con <span class="math inline">\(f(T)\subsetneq T\)</span>; (c) un subconjunto no estable <span class="math inline">\(U\)</span>. Justifica las tres decisiones. ¿El conjunto vacío es estable? ¿Cumple <span class="math inline">\(f(\varnothing)=\varnothing\)</span>?</p>
+<p><strong>Ejercicio 8. Nombrar no proporciona un testigo.</strong> Se llama «real excepcional» a un real <span class="math inline">\(r\)</span> que cumpla <span class="math inline">\(r^2+1=0\)</span>. ¿Existe alguno? Justifica la respuesta y distingue entre definir una propiedad y afirmar que hay un objeto que la satisface. ¿Qué cambia si se usa la misma ecuación sobre <span class="math inline">\(\mathbb C\)</span>?</p>
+<p><strong>Ejercicio 9. ¿Por qué pedir <span class="math inline">\(0\ne1\)</span>?</strong> En el conjunto <span class="math inline">\(E=\{e\}\)</span> define <span class="math inline">\(e+e=e\)</span> y <span class="math inline">\(ee=e\)</span>, y toma como constantes <span class="math inline">\(0_E=1_E=e\)</span>. Comprueba todas las condiciones de §5.5 salvo <span class="math inline">\(0\ne1\)</span>. Examina expresamente el axioma de inverso multiplicativo, en vez de decir que «es obvio». ¿Es un cuerpo bajo nuestra definición?</p>
+</section>
+<section id="familia-iv.-demostraciones-guiadas" class="level3">
+<h3 class="anchored" data-anchor-id="familia-iv.-demostraciones-guiadas">Familia IV. Demostraciones guiadas</h3>
+<p><strong>Ejercicio 10. Unir conjuntos estables.</strong> Demuestra que si <span class="math inline">\(S,T\subseteq A\)</span> son estables bajo <span class="math inline">\(f:A\to A\)</span>, entonces <span class="math inline">\(S\cup T\)</span> es estable. Guía: toma una entrada arbitraria de la unión, considera las alternativas de su pertenencia y aplica en cada caso la hipótesis adecuada. ¿Necesitas que los conjuntos sean disjuntos?</p>
+<p><strong>Ejercicio 11. Resolver y verificar.</strong> Sean <span class="math inline">\(F\)</span> un cuerpo, <span class="math inline">\(a,b\in F\)</span> y <span class="math inline">\(a\ne0\)</span>. Demuestra que la ecuación <span class="math inline">\(ax=b\)</span> tiene una única solución en <span class="math inline">\(F\)</span>. Guía: construye un candidato mediante el inverso, comprueba la ecuación y compara dos soluciones. Después clasifica las soluciones cuando <span class="math inline">\(a=0\)</span>, distinguiendo <span class="math inline">\(b=0\)</span> y <span class="math inline">\(b\ne0\)</span>.</p>
+<p><strong>Ejercicio 12. Invertir de nuevo.</strong> Sea <span class="math inline">\(a\ne0\)</span> en un cuerpo. Prueba primero que <span class="math inline">\(a^{-1}\ne0\)</span>, usando absorción del cero y <span class="math inline">\(0\ne1\)</span>. Después demuestra <span class="math inline">\((a^{-1})^{-1}=a\)</span> mediante la unicidad del inverso. Señala por qué la primera parte es necesaria para escribir la segunda expresión.</p>
+</section>
+<section id="familia-v.-elección-autónoma-de-método" class="level3">
+<h3 class="anchored" data-anchor-id="familia-v.-elección-autónoma-de-método">Familia V. Elección autónoma de método</h3>
+<p><strong>Ejercicio 13. Una función sobre un cuerpo.</strong> Sean <span class="math inline">\(a,b\in F\)</span> y <span class="math inline">\(a\ne0\)</span>. Define <span class="math inline">\(g:F\to F\)</span> mediante <span class="math inline">\(g(x)=ax+b\)</span>. Decide si <span class="math inline">\(g\)</span> es biyectiva. Si lo es, construye una función inversa y verifica que recupera las entradas en ambas direcciones. No presupongas que <span class="math inline">\(F\)</span> sea ordenado ni que sus elementos sean reales.</p>
+<p><strong>Ejercicio 14. El símbolo cambia, la obligación permanece.</strong> Sobre <span class="math inline">\(\mathbb Q\)</span> define una operación <span class="math inline">\(x\star y=x+y+1\)</span>, donde el lado derecho usa la suma racional usual. Determina un neutro bilateral para <span class="math inline">\(\star\)</span> y, para cada <span class="math inline">\(x\)</span>, un elemento <span class="math inline">\(u\)</span> con <span class="math inline">\(x\star u=u\star x=e\)</span>, donde <span class="math inline">\(e\)</span> es ese neutro. Comprueba también asociatividad. Explica por qué imponer <span class="math inline">\(x\star u=0\)</span> sería una pregunta distinta.</p>
+<p><strong>Ejercicio 15. Cuando toda parte es estable.</strong> Sea <span class="math inline">\(f:A\to A\)</span>. Demuestra la equivalencia entre: (a) todo subconjunto <span class="math inline">\(S\subseteq A\)</span> es estable bajo <span class="math inline">\(f\)</span>; (b) <span class="math inline">\(f(x)=x\)</span> para todo <span class="math inline">\(x\in A\)</span>; (c) <span class="math inline">\(f(S)=S\)</span> para todo <span class="math inline">\(S\subseteq A\)</span>. Trata el caso <span class="math inline">\(A=\varnothing\)</span> y explica por qué, aunque la estabilidad de un solo conjunto no exige igualdad con su imagen, la condición universal de (a) sí fuerza (c).</p>
+</section>
+</section>
+<section id="soluciones-desarrolladas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-desarrolladas">5.10. Soluciones desarrolladas</h2>
+<section id="solución-1.-negar-sin-exigir-demasiado" class="level3">
+<h3 class="anchored" data-anchor-id="solución-1.-negar-sin-exigir-demasiado">Solución 1. Negar sin exigir demasiado</h3>
+<p>La estabilidad se escribe <span class="math inline">\(\forall x\in S\;(f(x)\in S)\)</span>; su negación es <span class="math inline">\(\exists x\in S\;(f(x)\notin S)\)</span>. Para la primera hay que justificar la pertenencia de la imagen de una entrada <strong>arbitraria</strong>; para la segunda basta exhibir una entrada de <span class="math inline">\(S\)</span> cuya imagen quede fuera y comprobar ambas pertenencias.</p>
+<p>Si <span class="math inline">\(S=\varnothing\)</span>, la universal es verdadera y la existencial falsa: no existe una entrada que pueda actuar como contraejemplo. No necesitamos construir <span class="math inline">\(f(x)\)</span> para un supuesto elemento del vacío. El método lo determina la forma lógica de la condición.</p>
+</section>
+<section id="solución-2.-dos-órdenes-de-cuantificadores" class="level3">
+<h3 class="anchored" data-anchor-id="solución-2.-dos-órdenes-de-cuantificadores">Solución 2. Dos órdenes de cuantificadores</h3>
+<p>La primera afirmación es el axioma: permite elegir el inverso después de conocer <span class="math inline">\(a\)</span>. La segunda exige un mismo <span class="math inline">\(v\)</span> que sirva para todos los elementos no nulos. Si valiera en <span class="math inline">\(\mathbb Q\)</span>, al sustituir <span class="math inline">\(a=1\)</span> tendríamos <span class="math inline">\(v=1\)</span>; al sustituir <span class="math inline">\(a=2\)</span>, tendríamos <span class="math inline">\(2v=1\)</span>, incompatible con <span class="math inline">\(v=1\)</span> porque <span class="math inline">\(2\ne1\)</span> en <span class="math inline">\(\mathbb Q\)</span>. Por tanto, allí es falsa.</p>
+<p>La estrategia fue confrontar dos instancias del supuesto testigo uniforme. No afirmamos que la segunda fórmula sea falsa en absolutamente toda estructura; el ejemplo racional basta para mostrar que no es una exigencia de la definición general de cuerpo.</p>
+</section>
+<section id="solución-3.-dato-o-resultado" class="level3">
+<h3 class="anchored" data-anchor-id="solución-3.-dato-o-resultado">Solución 3. ¿Dato o resultado?</h3>
+<ol type="a">
+<li>es el axioma de distributividad y (d) el de no trivialidad. (b) es un resultado: la existencia está en la lista, pero la unicidad se demostró comparando candidatos en §5.6. (c) se dedujo en §5.7 mediante distributividad y cancelación aditiva.</li>
+</ol>
+<p>(e), tal como está, no es válida para todos los factores: falta <span class="math inline">\(a\ne0\)</span>. La versión con esa hipótesis es la cancelación multiplicativa de §5.6. Con <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=0\)</span> y <span class="math inline">\(c=1\)</span>, la igualdad inicial es verdadera y la conclusión falsa. Clasificar una frase exige atender a su formulación exacta, no sólo reconocer su nombre.</p>
+</section>
+<section id="solución-4.-una-cancelación-indiscriminada" class="level3">
+<h3 class="anchored" data-anchor-id="solución-4.-una-cancelación-indiscriminada">Solución 4. Una cancelación indiscriminada</h3>
+<p>La existencia de <span class="math inline">\(a^{-1}\)</span> exige <span class="math inline">\(a\ne0\)</span>. Si <span class="math inline">\(a=0\)</span>, <span class="math inline">\(x=0\)</span> y <span class="math inline">\(y=1\)</span>, entonces <span class="math inline">\(ax=ay=0\)</span>, pero <span class="math inline">\(x\ne y\)</span>.</p>
+<p>La reparación es: «Si <span class="math inline">\(a\ne0\)</span> y <span class="math inline">\(ax=ay\)</span>, entonces <span class="math inline">\(x=y\)</span>». Bajo esa hipótesis, el axioma proporciona el inverso, y</p>
+<p><span class="math display">\[
+\begin{aligned}
+x&amp;=1x=(a^{-1}a)x=a^{-1}(ax)\\
+&amp;=a^{-1}(ay)=(a^{-1}a)y\\
+&amp;=1y=y.
+\end{aligned}
+\]</span></p>
+<p>Cada reagrupación usa asociatividad. El contraejemplo y la prueba cumplen funciones distintas: el primero detecta que la condición no puede omitirse; la segunda demuestra que la condición añadida basta.</p>
+</section>
+<section id="solución-5.-unicidad-supuesta" class="level3">
+<h3 class="anchored" data-anchor-id="solución-5.-unicidad-supuesta">Solución 5. Unicidad supuesta</h3>
+<p>El argumento identifica sin justificación cada candidato con un objeto ya seleccionado como «el» inverso. Eso presupone precisamente que todos los candidatos coinciden. Para establecer la unicidad por primera vez, partimos sólo de <span class="math inline">\(a+u=0\)</span> y <span class="math inline">\(a+v=0\)</span> y escribimos</p>
+<p><span class="math display">\[
+\begin{aligned}
+u&amp;=u+0=u+(a+v)\\
+&amp;=(u+a)+v=0+v=v.
+\end{aligned}
+\]</span></p>
+<p>La conmutatividad permite usar <span class="math inline">\(u+a=0\)</span>; la asociatividad permite reagrupar. Ningún paso emplea notación que requiera la unicidad pendiente. Después de esta comparación y de la existencia axiomática sí podemos introducir <span class="math inline">\(-a\)</span>.</p>
+</section>
+<section id="solución-6.-una-desigualdad-sin-estructura" class="level3">
+<h3 class="anchored" data-anchor-id="solución-6.-una-desigualdad-sin-estructura">Solución 6. Una desigualdad sin estructura</h3>
+<p>Se omitió que el cuerpo esté provisto de un orden compatible. La reparación es: «En un cuerpo ordenado, todo cuadrado no nulo es positivo; en consecuencia, <span class="math inline">\(x^2=-1\)</span> no tiene solución».</p>
+<p>En efecto, <span class="math inline">\(0&lt;1\)</span> y por traslación <span class="math inline">\(-1&lt;0\)</span>. Si <span class="math inline">\(x=0\)</span>, su cuadrado es <span class="math inline">\(0\ne-1\)</span>. Si <span class="math inline">\(x\ne0\)</span>, su cuadrado es positivo por la prueba de §5.8 y no puede ser <span class="math inline">\(-1\)</span>. Los casos cubren todos los elementos.</p>
+<p>El complejo <span class="math inline">\(i\)</span> satisface <span class="math inline">\(i^2=-1\)</span>, por lo que refuta la pretendida prohibición en todo cuerpo. También impide un orden <strong>compatible con sus operaciones</strong>. No demuestra que el conjunto de pares no pueda recibir otra relación de orden; lo que falla es la exigencia conjunta de orden y compatibilidad algebraica.</p>
+</section>
+<section id="solución-7.-tres-comportamientos-de-una-definición" class="level3">
+<h3 class="anchored" data-anchor-id="solución-7.-tres-comportamientos-de-una-definición">Solución 7. Tres comportamientos de una definición</h3>
+<p>Podemos elegir <span class="math inline">\(S=\{0\}\)</span>, <span class="math inline">\(T=\{0,2\}\)</span> y <span class="math inline">\(U=\{2\}\)</span>. Como la función es constante cero, <span class="math inline">\(f(S)=\{0\}=S\)</span> y <span class="math inline">\(f(T)=\{0\}\subsetneq T\)</span>. Esto hace estable a <span class="math inline">\(T\)</span>, aunque no recupere todos sus elementos como valores. En cambio, <span class="math inline">\(2\in U\)</span> y <span class="math inline">\(f(2)=0\notin U\)</span>, de modo que <span class="math inline">\(U\)</span> no es estable.</p>
+<p>El vacío sí es estable y su imagen es vacía. La imagen reúne valores procedentes de entradas del conjunto; sin entradas no reúne ningún valor, aunque la fórmula global de la función sea constante. Es importante no escribir erróneamente <span class="math inline">\(f(\varnothing)=\{0\}\)</span>.</p>
+</section>
+<section id="solución-8.-nombrar-no-proporciona-un-testigo" class="level3">
+<h3 class="anchored" data-anchor-id="solución-8.-nombrar-no-proporciona-un-testigo">Solución 8. Nombrar no proporciona un testigo</h3>
+<p>No existe tal real. Para cualquier <span class="math inline">\(r\in\mathbb R\)</span>, tenemos <span class="math inline">\(r^2\ge0\)</span>, luego <span class="math inline">\(r^2+1\ge1&gt;0\)</span>. La definición describe una propiedad que ningún real cumple; no produce un testigo por haber introducido un nombre.</p>
+<p>En <span class="math inline">\(\mathbb C\)</span> sí existen ejemplos: <span class="math inline">\(i^2+1=0\)</span> y también <span class="math inline">\((-i)^2+1=i^2+1=0\)</span>, usando la regla de dos signos. No necesitamos afirmar aquí que sean los únicos para responder a la pregunta de existencia. El cambio de dominio altera qué objetos pueden satisfacer la ecuación.</p>
+</section>
+<section id="solución-9.-por-qué-pedir-0ne1" class="level3">
+<h3 class="anchored" data-anchor-id="solución-9.-por-qué-pedir-0ne1">Solución 9. ¿Por qué pedir <span class="math inline">\(0\ne1\)</span>?</h3>
+<p>Toda operación escrita con elementos de <span class="math inline">\(E\)</span> produce <span class="math inline">\(e\)</span>, así que las operaciones están bien definidas y son internas. Las dos asociaciones de una suma o producto, y ambos órdenes de sus factores, dan <span class="math inline">\(e\)</span>. También las dos expresiones de la distributividad dan <span class="math inline">\(e\)</span>.</p>
+<p>Las constantes elegidas actúan como neutros porque <span class="math inline">\(e+e=e\)</span> y <span class="math inline">\(ee=e\)</span>. El propio <span class="math inline">\(e\)</span> es un inverso aditivo de la única entrada, pues <span class="math inline">\(e+e=e=0_E\)</span>. El axioma de inverso multiplicativo tiene forma condicional para las entradas distintas de <span class="math inline">\(0_E\)</span>: no hay ninguna, de modo que la condición universal se cumple vacíamente.</p>
+<p>Falla exactamente la no trivialidad: <span class="math inline">\(0_E=1_E\)</span>. Por ello no es un cuerpo según nuestra definición. La conclusión se obtiene comprobando condiciones, no descartando el ejemplo por parecer demasiado pequeño.</p>
+</section>
+<section id="solución-10.-unir-conjuntos-estables" class="level3">
+<h3 class="anchored" data-anchor-id="solución-10.-unir-conjuntos-estables">Solución 10. Unir conjuntos estables</h3>
+<p>Sea <span class="math inline">\(x\in S\cup T\)</span>. Si <span class="math inline">\(x\in S\)</span>, su imagen pertenece a <span class="math inline">\(S\)</span> por estabilidad y, por tanto, a <span class="math inline">\(S\cup T\)</span>. Si <span class="math inline">\(x\notin S\)</span>, la pertenencia a la unión obliga a <span class="math inline">\(x\in T\)</span>; entonces <span class="math inline">\(f(x)\in T\subseteq S\cup T\)</span>. En todos los casos, la imagen permanece en la unión, que es estable.</p>
+<p>No hace falta disjunción de conjuntos. Cuando <span class="math inline">\(x\)</span> pertenece a ambos, cualquiera de las dos hipótesis sirve; no hay conflicto. La elección de casos viene de la disyunción en la definición de unión, a diferencia de la conjunción que organizó la prueba para la intersección.</p>
+</section>
+<section id="solución-11.-resolver-y-verificar" class="level3">
+<h3 class="anchored" data-anchor-id="solución-11.-resolver-y-verificar">Solución 11. Resolver y verificar</h3>
+<p>Como <span class="math inline">\(a\ne0\)</span>, existe <span class="math inline">\(a^{-1}\in F\)</span>. Tomamos <span class="math inline">\(x=a^{-1}b\)</span>, que pertenece a <span class="math inline">\(F\)</span> por cierre del producto. Entonces</p>
+<p><span class="math display">\[
+ax=a(a^{-1}b)=(aa^{-1})b=1b=b.
+\]</span></p>
+<p>El candidato es una solución. Si <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> fueran dos soluciones, tendríamos <span class="math inline">\(ax=b=ay\)</span> y la cancelación con <span class="math inline">\(a\ne0\)</span> daría <span class="math inline">\(x=y\)</span>. Esto prueba unicidad, además de existencia.</p>
+<p>Si <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b=0\)</span>, todo <span class="math inline">\(x\in F\)</span> es solución por absorción del cero. No hay unicidad, pues al menos <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> son distintos. Si <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b\ne0\)</span>, ninguna entrada satisface <span class="math inline">\(0x=b\)</span>, ya que el miembro izquierdo siempre vale <span class="math inline">\(0\)</span>. Clasificar primero los casos evita aplicar una fórmula que no está definida en todos ellos.</p>
+</section>
+<section id="solución-12.-invertir-de-nuevo" class="level3">
+<h3 class="anchored" data-anchor-id="solución-12.-invertir-de-nuevo">Solución 12. Invertir de nuevo</h3>
+<p>Si <span class="math inline">\(a^{-1}=0\)</span>, entonces <span class="math inline">\(aa^{-1}=a0=0\)</span>. Pero la propiedad del inverso dice <span class="math inline">\(aa^{-1}=1\)</span>, de donde <span class="math inline">\(0=1\)</span>, contradicción. Por tanto, <span class="math inline">\(a^{-1}\ne0\)</span> y existe su inverso multiplicativo.</p>
+<p>La conmutatividad da <span class="math inline">\(a^{-1}a=aa^{-1}=1\)</span>. Así, <span class="math inline">\(a\)</span> es un candidato a inverso de <span class="math inline">\(a^{-1}\)</span>. Por unicidad, <span class="math inline">\((a^{-1})^{-1}=a\)</span>. El primer paso legitima la expresión que aparece en el segundo; encontrar una fórmula familiar no autoriza omitir su condición de existencia.</p>
+</section>
+<section id="solución-13.-una-función-sobre-un-cuerpo" class="level3">
+<h3 class="anchored" data-anchor-id="solución-13.-una-función-sobre-un-cuerpo">Solución 13. Una función sobre un cuerpo</h3>
+<p>La función está bien definida porque <span class="math inline">\(ax+b\in F\)</span>. Si <span class="math inline">\(g(x)=g(y)\)</span>, entonces <span class="math inline">\(ax+b=ay+b\)</span>; cancelando aditivamente <span class="math inline">\(b\)</span> obtenemos <span class="math inline">\(ax=ay\)</span>, y cancelando el factor no nulo <span class="math inline">\(a\)</span> concluimos <span class="math inline">\(x=y\)</span>. Por tanto, <span class="math inline">\(g\)</span> es inyectiva.</p>
+<p>Para <span class="math inline">\(t\in F\)</span> arbitrario, elegimos <span class="math inline">\(x=a^{-1}(t-b)\)</span>. La distributividad, la asociatividad y las identidades de inversos dan</p>
+<p><span class="math display">\[
+\begin{aligned}
+g(x)&amp;=a(a^{-1}(t-b))+b\\
+&amp;=(t-b)+b=t.
+\end{aligned}
+\]</span></p>
+<p>Así, es sobreyectiva y, por ambas propiedades, biyectiva. Definimos <span class="math inline">\(h:F\to F\)</span> por <span class="math inline">\(h(t)=a^{-1}(t-b)\)</span>. La igualdad anterior verifica <span class="math inline">\(g(h(t))=t\)</span>. En la otra dirección,</p>
+<p><span class="math display">\[
+\begin{aligned}
+h(g(x))&amp;=a^{-1}((ax+b)-b)\\
+&amp;=a^{-1}(ax)=x.
+\end{aligned}
+\]</span></p>
+<p>Hemos comprobado ambas recuperaciones sin usar un orden. La idea de elegir <span class="math inline">\(x\)</span> proviene de leer la ecuación <span class="math inline">\(ax+b=t\)</span> como una obligación y deshacer las operaciones con resultados ya justificados.</p>
+</section>
+<section id="solución-14.-el-símbolo-cambia-la-obligación-permanece" class="level3">
+<h3 class="anchored" data-anchor-id="solución-14.-el-símbolo-cambia-la-obligación-permanece">Solución 14. El símbolo cambia, la obligación permanece</h3>
+<p>El neutro debe satisfacer <span class="math inline">\(x\star e=x\)</span> y <span class="math inline">\(e\star x=x\)</span>. La primera ecuación se traduce en <span class="math inline">\(x+e+1=x\)</span>, que obliga a <span class="math inline">\(e=-1\)</span> en los racionales. Comprobamos las dos direcciones: <span class="math inline">\(x\star(-1)=x-1+1=x\)</span> y <span class="math inline">\((-1)\star x=-1+x+1=x\)</span>.</p>
+<p>Para hallar <span class="math inline">\(u\)</span>, usamos ahora el neutro correcto:</p>
+<p><span class="math display">\[
+x\star u=-1\quad\Longleftrightarrow\quad x+u+1=-1.
+\]</span></p>
+<p>El candidato es <span class="math inline">\(u=-x-2\)</span>. Sustituirlo da <span class="math inline">\(x\star u=-1\)</span> y <span class="math inline">\(u\star x=-1\)</span>. La asociatividad se comprueba expandiendo:</p>
+<p><span class="math display">\[
+(x\star y)\star z=x+y+z+2=x\star(y\star z).
+\]</span></p>
+<p>La operación es interna porque suma racionales. Pedir <span class="math inline">\(x\star u=0\)</span> sería pedir otro valor final: daría <span class="math inline">\(u=-x-1\)</span>, que no es un inverso respecto del neutro <span class="math inline">\(-1\)</span>. El nombre «inverso» depende de la operación y de su neutro, no del aspecto del símbolo <span class="math inline">\(0\)</span> de la aritmética usual.</p>
+</section>
+<section id="solución-15.-cuando-toda-parte-es-estable" class="level3">
+<h3 class="anchored" data-anchor-id="solución-15.-cuando-toda-parte-es-estable">Solución 15. Cuando toda parte es estable</h3>
+<p><strong>De (a) a (b).</strong> Fijemos <span class="math inline">\(x\in A\)</span>. El singleton <span class="math inline">\(\{x\}\)</span> es un subconjunto de <span class="math inline">\(A\)</span> y, por (a), es estable. Por tanto, <span class="math inline">\(f(x)\in\{x\}\)</span>, lo que significa <span class="math inline">\(f(x)=x\)</span>.</p>
+<p><strong>De (b) a (c).</strong> Para cualquier <span class="math inline">\(S\subseteq A\)</span>, si <span class="math inline">\(y\in f(S)\)</span> existe <span class="math inline">\(x\in S\)</span> con <span class="math inline">\(y=f(x)=x\)</span>; luego <span class="math inline">\(y\in S\)</span>. Recíprocamente, si <span class="math inline">\(y\in S\)</span>, entonces <span class="math inline">\(f(y)=y\)</span> y esa entrada muestra que <span class="math inline">\(y\in f(S)\)</span>. Por doble inclusión, <span class="math inline">\(f(S)=S\)</span>.</p>
+<p><strong>De (c) a (a).</strong> Para cualquier <span class="math inline">\(S\)</span>, la igualdad <span class="math inline">\(f(S)=S\)</span> implica <span class="math inline">\(f(S)\subseteq S\)</span>; por la equivalencia de §5.4, <span class="math inline">\(S\)</span> es estable. Las tres implicaciones cierran el ciclo y prueban equivalencia.</p>
+<p>Si <span class="math inline">\(A=\varnothing\)</span>, la única función <span class="math inline">\(A\to A\)</span> es la vacía y el único subconjunto es <span class="math inline">\(\varnothing\)</span>. (a) se cumple por estabilidad del vacío; (b), por vacuidad de su universal; (c), por <span class="math inline">\(f(\varnothing)=\varnothing\)</span>. La prueba general sigue siendo válida.</p>
+<p>La clave fue poder escoger <strong>cada singleton</strong>. La estabilidad de un conjunto aislado no ofrece esa información. Al cuantificar sobre todos los subconjuntos, la hipótesis se vuelve mucho más fuerte y fuerza que cada entrada sea un punto fijo.</p>
+</section>
+<section id="de-las-definiciones-a-la-arquitectura-de-las-demostraciones" class="level3">
+<h3 class="anchored" data-anchor-id="de-las-definiciones-a-la-arquitectura-de-las-demostraciones">De las definiciones a la arquitectura de las demostraciones</h3>
+<p>En este capítulo hemos usado definiciones para extraer datos, fijar objetivos, construir ejemplos y localizar errores. El laboratorio de cuerpos mostró que incluso reglas conocidas necesitan un lugar preciso en la cadena de razones: una existencia no implica por sí sola unicidad; una cancelación tiene hipótesis; una desigualdad exige un orden.</p>
+<p>En el capítulo 6 organizaremos las formas de demostración que ya hemos utilizado: prueba directa, dos direcciones de una equivalencia, casos, contraposición, contradicción, existencia y unicidad. Su estudio partirá de una disciplina que ahora podemos aplicar: antes de elegir una estrategia, saber exactamente qué dicen los datos y qué obliga a demostrar la conclusión.</p>
+<hr>
+<p><a href="../../libros/capitulos/fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.html">← Capítulo 4</a> · <a href="../../libros/para-matematicos/fundamentos-para-matematicos.html">Índice del libro y bibliografía</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
