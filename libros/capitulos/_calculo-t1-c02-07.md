@@ -419,31 +419,27 @@ $$
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** ¿Dónde se utiliza exactamente la completitud en la demostración de la propiedad arquimediana?
-
-**Respuesta.** Bajo la suposición de que $\mathbb N$ estuviera acotado superiormente, la completitud garantiza la existencia de $\alpha=\sup\mathbb N$. El resto del argumento contradice que ese supremo pueda existir.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** ¿Por qué $\alpha-1$ no puede ser una cota superior de $\mathbb N$?
-
-**Respuesta.** Porque sería una cota superior estrictamente menor que $\alpha$, contradiciendo que $\alpha$ es la **menor** cota superior.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** ¿Qué significa realmente
+**1.** Sean $k>0$ y $\varepsilon>0$. Demuestra que existe $n\in\mathbb N_{>0}$ tal que
 
 $$
-\forall\varepsilon>0\;\exists n\in\mathbb N_{>0}\quad \frac1n<\varepsilon?
+\frac{k}{n}<\varepsilon.
 $$
 
-**Respuesta.** Que ninguna tolerancia positiva es demasiado pequeña para la familia $1/n$: una vez dada $\varepsilon$, podemos escoger un natural —dependiente de esa tolerancia— cuyo recíproco sea menor.
+**Respuesta.** Por la propiedad arquimediana podemos escoger $n>k/\varepsilon$. Como todas las cantidades son positivas, esto equivale a $k/n<\varepsilon$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**4.** ¿La propiedad arquimediana implica completitud?
+**2.** Supón que $x\ge0$ y que existe $k>0$ tal que
 
-**Respuesta.** No. $\mathbb Q$ es arquimediano pero no completo, como mostró el conjunto racional asociado a $x^2=2$.
+$$
+x\le\frac{k}{n}
+\qquad
+\text{para todo }n\in\mathbb N_{>0}.
+$$
+
+Demuestra que $x=0$.
+
+**Respuesta.** Si $x>0$, la propiedad arquimediana permite escoger $n>k/x$, y entonces $k/n<x$, contradiciendo la hipótesis. Luego $x$ no puede ser positivo; como $x\ge0$, se sigue $x=0$.
 :::
 
 ### Lo que exporta esta sección
