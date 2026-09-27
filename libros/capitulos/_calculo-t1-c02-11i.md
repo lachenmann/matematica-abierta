@@ -1,3 +1,128 @@
+#### Soluciones del nivel G
+
+::: {#sol-t1-0073}
+<!-- CPM-T1-SOL-0073 -->
+**Solución G1.**
+
+Sea
+
+$$
+\alpha=\sup A,
+\qquad
+\beta=\sup B.
+$$
+
+Primero comprobamos que $\alpha+\beta$ es cota superior de $A+B$. Si $a\in A$ y $b\in B$, entonces
+
+$$
+a\le\alpha,
+\qquad
+b\le\beta,
+$$
+
+y sumando,
+
+$$
+a+b\le\alpha+\beta.
+$$
+
+Ahora debemos demostrar que ninguna cota menor funciona. Sea $\varepsilon>0$. Por la caracterización aproximativa del supremo existen $a\in A$ y $b\in B$ tales que
+
+$$
+\alpha-\frac\varepsilon2<a\le\alpha,
+$$
+
+$$
+\beta-\frac\varepsilon2<b\le\beta.
+$$
+
+Sumando,
+
+$$
+\alpha+\beta-\varepsilon<a+b\le\alpha+\beta.
+$$
+
+Como $a+b\in A+B$, la caracterización aproximativa vuelve a decir que
+
+$$
+\boxed{\sup(A+B)=\alpha+\beta=\sup A+\sup B.}
+$$
+
+La completitud interviene para garantizar la existencia de $\alpha$ y $\beta$; el resto es orden y la caracterización del supremo.
+:::
+
+::: {#sol-t1-0074}
+<!-- CPM-T1-SOL-0074 -->
+**Solución G2.**
+
+La condición de separación es
+
+$$
+\ell<u
+\qquad
+\text{para todo }\ell\in L\text{ y todo }u\in U.
+$$
+
+Como $U\ne\varnothing$, elegimos $u_0\in U$. Para todo $\ell\in L$,
+
+$$
+\ell<u_0,
+$$
+
+de modo que $u_0$ es cota superior de $L$. Como $L\ne\varnothing$, completitud garantiza
+
+$$
+c=\sup L.
+$$
+
+Por definición de supremo,
+
+$$
+\ell\le c
+$$
+
+para todo $\ell\in L$.
+
+Por otro lado, cada $u\in U$ es cota superior de $L$, porque todo $\ell\in L$ satisface $\ell<u$. Como $c$ es la menor cota superior,
+
+$$
+c\le u
+$$
+
+para todo $u\in U$.
+
+Así,
+
+$$
+\boxed{\ell\le c\le u}
+$$
+
+para todos $\ell\in L$, $u\in U$.
+
+Como $L\cup U=\mathbb R$, el real $c$ pertenece a uno de los dos conjuntos. Son disjuntos, así que pertenece exactamente a uno.
+
+- Si $c\in L$, como $c$ domina a todo elemento de $L$, tenemos $c=\max L$.
+- Si $c\in U$, como $c\le u$ para todo $u\in U$, tenemos $c=\min U$.
+
+Por tanto ocurre exactamente una de las dos posibilidades:
+
+$$
+\boxed{c=\max L\quad\text{o}\quad c=\min U.}
+$$
+
+Esta propiedad traduce completitud en lenguaje de cortes: una separación ordenada de la recta posee un punto frontera real.
+:::
+
+::: {#sol-t1-0075}
+<!-- CPM-T1-SOL-0075 -->
+**Solución G3.**
+
+Sea $a>0$ y
+
+$$
+S=\{x\ge0:x^3<a\}.
+$$
+
 La estrategia replica, con un grado algebraico mayor, la construcción de raíces cuadradas: completitud produce un candidato frontera y dos perturbaciones descartan que su cubo quede por debajo o por encima de $a$.
 
 **1. No vacuidad y acotación.**
@@ -119,13 +244,13 @@ $$
 c^3>\alpha^3-\delta=a.
 $$
 
-Si $x\in S$ y $x\ge c$, como $x,c\ge0$, la monotonía algebraica del cubo en los no negativos da
+Si $x\in S$ y $x\ge c$, como $x,c\ge0$, la identidad
 
 $$
-x^3\ge c^3>a,
+x^3-c^3=(x-c)(x^2+xc+c^2)\ge0
 $$
 
-contradicción. Así todo $x\in S$ satisface $x<c$. Por tanto $c$ es una cota superior de $S$, pero
+justifica directamente que $x^3\ge c^3>a$. Esto contradice la condición $x^3<a$ que define a $S$. Así todo $x\in S$ satisface $x<c$. Por tanto $c$ es una cota superior de $S$, pero
 
 $$
 c<\alpha,
@@ -161,7 +286,7 @@ $$
 \boxed{
 \text{conjunto de aproximantes}
 \to
-\text{supremo}
+\supremo
 \to
 \text{perturbaciones}
 \to
@@ -180,11 +305,11 @@ Antes de cerrar el capítulo, conviene verificar el contrato de esta sección.
 - Distribución A–G: $7+7+7+6+5+5+3=40$.
 - Tipologías `CONCEPTUAL`, `PROOF`, `COUNTEREXAMPLE`, `DISCOVERY`, `SYNTHESIS` y `GEOMETRY`: presentes.
 - Inecuaciones racionales con valor absoluto de alta complejidad: **3**, en B7, C6 y D5.
-- Cobertura del retrofit axiomático: **8/8 objetivos** — clasificación axioma/definición/resultado (A4), unicidad (B3), regla de signos (B6), existencia/unicidad de ecuaciones (C4), cancelación y producto nulo (D2), división por cero (E3), reconstrucción desde `C1--C9` (F5) y manipulación de desigualdades según signo (A2 + B7/C6/D5).
-- Problemas F obligatorios: caracterización del supremo, elección arquimediana, densidad, bisección y reconstrucción axiomática de $a0=0$: **5/5**. La necesidad del cierre permanece cubierta explícitamente en E4.
+- Reproducciones literales de demostraciones ya resueltas en el desarrollo: **eliminadas del banco**. Cuando una idea reaparece, exige transferencia, generalización, diagnóstico o combinación de herramientas.
+- Capa axiomática: clasificación axioma/definición/resultado (A4), identidad y orden de recíprocos (B3), signo de cocientes (B6), ecuación afín con existencia y unicidad (C4), cancelación con solución perdida (D2), división por cero (E3) y reconstrucción estructural de $(-1)a=-a$ (F5).
+- Transferencias de completitud: supremos bajo unión y traslación, eliminación finita de puntos, transporte del hueco racional, intervalos racionales encajados y propiedad de corte.
+- Problemas F: traslación del supremo, elección arquimediana simultánea, densidad con control de denominador, presupuesto de bisección y reconstrucción axiomática: **5/5**.
 - Problemas G de síntesis: suma de conjuntos, propiedad de corte y construcción de una raíz cúbica mediante supremo: **3/3**.
 - Dependencias de `T1-C03` o posteriores: **ninguna**.
 
-La auditoría final integral `T1_C02_FINAL_AUDIT_v02` recontroló de manera independiente estos recuentos, las dependencias y los problemas algebraicamente delicados. El veredicto es **PASS**; el capítulo queda nuevamente cerrado como `COMPLETE`.
-
-
+La política pedagógica del banco queda así alineada con la progresión del capítulo: **primero modelar la justificación, después retirar el andamiaje y exigir transferencia**.
