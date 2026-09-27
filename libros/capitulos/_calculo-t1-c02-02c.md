@@ -1754,40 +1754,124 @@ $$
 0\le a\le b.
 $$
 
-De $a\le b$, sumando $-a$, obtenemos
+La hipótesis contiene dos desigualdades:
 
 $$
-0\le b-a.
+0\le a
+\qquad\text{y}\qquad
+a\le b.
 $$
 
-Además, de $0\le a$, sumando $b$, resulta $b\le a+b$; combinando esto con $0\le b$ por transitividad,
+Por transitividad de $\le$,
 
 $$
+0\le b.
+$$
+
+Ahora trasladamos $a\le b$ sumando $-a$ a ambos miembros. Por la parte 1,
+
+$$
+a+(-a)\le b+(-a).
+$$
+
+Reduciendo ambos miembros mediante inverso aditivo y definición de resta,
+
+$$
+\boxed{0\le b-a}.
+$$
+
+Para obtener la segunda cantidad no negativa utilizamos la parte 2 en su versión débil. De
+
+$$
+0\le a
+\qquad\text{y}\qquad
+0\le b
+$$
+
+se sigue
+
+$$
+0+0\le a+b.
+$$
+
+Como $0+0=0$,
+
+$$
+\boxed{0\le a+b}.
+$$
+
+Tenemos, por tanto, dos factores no negativos:
+
+$$
+0\le b-a
+\qquad\text{y}\qquad
 0\le a+b.
 $$
 
-El producto de dos números no negativos es no negativo: si alguno es $0$, el producto es $0$; si ambos son positivos, (O2) da un producto positivo. Por tanto,
+Aplicamos la parte 3 a la desigualdad $0\le b-a$ con el factor no negativo $a+b$. Obtenemos
+
+$$
+0(a+b)\le(b-a)(a+b).
+$$
+
+Por @exm-t1-0040,
+
+$$
+0(a+b)=0,
+$$
+
+y así
 
 $$
 0\le(b-a)(a+b).
 $$
 
-Pero
+Hagamos explícita ahora la factorización que convierte este producto en una diferencia de cuadrados. Por definición de resta, distributividad, conmutatividad y las reglas de signos,
 
 $$
-(b-a)(a+b)=b^2-a^2.
+\begin{aligned}
+(b-a)(a+b)
+&=\bigl(b+(-a)\bigr)(a+b)\\
+&=b(a+b)+(-a)(a+b) && \text{(distributividad)}\\
+&=(ba+b^2)+\bigl((-a)a+(-a)b\bigr) && \text{(distributividad)}\\
+&=(ab+b^2)+\bigl(-(a^2)+(-(ab))\bigr)
+&& \text{(conmutatividad y reglas de signos)}\\
+&=b^2+\bigl(ab+(-(ab))\bigr)+(-(a^2))
+&& \text{(asociatividad y conmutatividad)}\\
+&=b^2+0+(-(a^2)) && \text{(inverso aditivo)}\\
+&=b^2-a^2 && \text{(neutro y definición de resta)}.
+\end{aligned}
 $$
 
-Luego
+Por sustitución de iguales por iguales,
 
 $$
-0\le b^2-a^2,
+0\le b^2-a^2.
 $$
 
-y la parte 1 permite sumar $a^2$ a ambos miembros:
+Finalmente trasladamos esta desigualdad sumando $a^2$ a ambos miembros. La parte 1 da
 
 $$
-a^2\le b^2.
+0+a^2\le(b^2-a^2)+a^2.
+$$
+
+Reducimos:
+
+$$
+\begin{aligned}
+0+a^2&=a^2,\\
+(b^2-a^2)+a^2
+&=\bigl(b^2+(-(a^2))\bigr)+a^2\\
+&=b^2+\bigl(-(a^2)+a^2\bigr) && \text{(asociatividad)}\\
+&=b^2+0 && \text{(inverso aditivo)}\\
+&=b^2 && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+\boxed{a^2\le b^2}.
 $$
 
 Esto demuestra las diez afirmaciones. $\blacksquare$
