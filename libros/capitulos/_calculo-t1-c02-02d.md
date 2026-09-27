@@ -3,49 +3,58 @@
 El riesgo aumenta cuando multiplicamos por una expresión cuyo signo depende de la incógnita. Consideremos
 
 $$
-\frac{2}{x}<3,
-\qquad x\ne0.
+\frac{2}{x}<3.
 $$
 
-No podemos «multiplicar por $x$» sin más, porque todavía no sabemos si $x$ es positivo o negativo.
-
-**Caso 1: $x>0$.** Multiplicar por $x$ conserva el sentido:
+Antes de operar debemos fijar el dominio. Como el denominador no puede ser $0$,
 
 $$
-2<3x,
+x\ne0.
 $$
 
-de donde
+La tricotomía deja entonces exactamente dos casos admisibles:
 
 $$
-x>\frac23.
+x>0
+\qquad\text{o}\qquad
+x<0.
 $$
 
-Esta condición ya implica $x>0$. Por tanto, las soluciones positivas son
+No podemos «multiplicar por $x$» antes de separar esos casos, porque el signo de $x$ decide si el orden se conserva o se invierte.
+
+**Caso 1: $x>0$.** Como el factor es positivo, multiplicar por $x$ es reversible y conserva el sentido de la desigualdad. Por tanto,
+
+$$
+\frac{2}{x}<3
+\iff
+2<3x
+\iff
+\frac23<x,
+$$
+
+donde en la segunda equivalencia hemos dividido por $3>0$. La condición $x>2/3$ ya implica $x>0$, de modo que las soluciones de esta rama son exactamente
 
 $$
 \left(\frac23,\infty\right).
 $$
 
-**Caso 2: $x<0$.** Multiplicar por $x$ invierte el sentido:
+**Caso 2: $x<0$.** Ahora multiplicar por $x$ sigue siendo reversible, pero invierte el orden:
 
 $$
-2>3x.
-$$
-
-Dividir por $3>0$ da
-
-$$
+\frac{2}{x}<3
+\iff
+2>3x
+\iff
 x<\frac23.
 $$
 
-Junto con la condición del caso $x<0$, esto deja simplemente
+Dentro de esta rama ya suponemos $x<0$, y como $2/3>0$, todo $x<0$ satisface automáticamente $x<2/3$. Por tanto, las soluciones de esta rama son exactamente
 
 $$
-x<0.
+(-\infty,0).
 $$
 
-Por tanto, el conjunto solución completo es
+Las dos ramas agotan el dominio, así que el conjunto solución de la desigualdad original es
 
 $$
 \boxed{
@@ -55,12 +64,12 @@ $$
 }
 $$
 
-El punto $x=0$ no se considera porque la expresión original no está definida allí.
+El punto $x=0$ queda excluido desde el comienzo porque la expresión original no está definida allí.
 
 ::: {.callout-warning title="Error frecuente"}
-Antes de multiplicar o dividir una desigualdad por una expresión variable, determine su signo.
+Antes de multiplicar o dividir una desigualdad por una expresión variable, determine su signo y audite su dominio.
 
-Si el signo no está fijado por las hipótesis, normalmente habrá que separar casos. Y si la expresión puede valer $0$, deberá auditarse además el dominio antes de dividir.
+Si el signo no está fijado por las hipótesis, separe el dominio en regiones donde sí lo esté. Dentro de cada región use equivalencias reversibles; al final, reúna las soluciones obtenidas mediante una unión.
 :::
 
 ### Intervalos: traducir entre orden y conjuntos
