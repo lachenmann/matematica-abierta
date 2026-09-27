@@ -1999,52 +1999,181 @@ a\le b
 a+c\le b+c.
 $$
 
-Para la parte 2, de $a<b$ y la parte 1 obtenemos
+Para la parte 2, supongamos primero
+
+$$
+a<b
+\qquad\text{y}\qquad
+c<d.
+$$
+
+Por la parte 1, podemos trasladar la primera desigualdad sumando $c$:
 
 $$
 a+c<b+c.
 $$
 
-De $c<d$, sumando $b$, obtenemos
+Del mismo modo, trasladamos $c<d$ sumando $b$:
 
 $$
 b+c<b+d.
 $$
 
-Por transitividad,
+Ahora la transitividad del orden estricto da
 
 $$
-a+c<b+d.
+a+c<b+c<b+d,
 $$
 
-Consideremos ahora la parte 3. Si $a<b$, entonces
+y por tanto
 
 $$
-b-a>0.
+\boxed{a+c<b+d.}
 $$
 
-Como además $c>0$, (O2) da
+La versión con orden débil se obtiene sin introducir una regla nueva. Si
 
 $$
-c(b-a)>0.
+a\le b
+\qquad\text{y}\qquad
+c\le d,
 $$
 
-Por distributividad,
+la parte 1 da
 
 $$
-bc-ac>0.
+a+c\le b+c
+$$
+
+y
+
+$$
+b+c\le b+d.
+$$
+
+Como ya demostramos que $\le$ es transitiva,
+
+$$
+\boxed{a+c\le b+d.}
+$$
+
+Consideremos ahora la parte 3. Supongamos primero
+
+$$
+a<b
+\qquad\text{y}\qquad
+c>0.
 $$
 
 Por definición del orden,
 
 $$
+b-a>0.
+$$
+
+Como $c>0$, la clausura de los positivos bajo el producto, (O2), da
+
+$$
+c(b-a)>0.
+$$
+
+Hagamos explícita la expresión que aparece a la izquierda. Por definición de resta, distributividad y las reglas de signos ya demostradas,
+
+$$
+\begin{aligned}
+c(b-a)
+&=c\bigl(b+(-a)\bigr)\\
+&=cb+c(-a) && \text{(distributividad)}\\
+&=cb+(-(ca)) && \text{(regla de signos)}\\
+&=bc+(-(ac)) && \text{(conmutatividad)}\\
+&=bc-ac && \text{(definición de resta)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales, de
+
+$$
+c(b-a)>0
+$$
+
+obtenemos
+
+$$
+bc-ac>0.
+$$
+
+Y como
+
+$$
+ac<bc
+\iff
+bc-ac>0,
+$$
+
+concluimos
+
+$$
+\boxed{ac<bc.}
+$$
+
+Pasemos a la versión no estricta. Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+c\ge0.
+$$
+
+Por definición,
+
+$$
+a\le b
+\iff
+a<b\ \text{o}\ a=b,
+$$
+
+mientras que
+
+$$
+c\ge0
+\iff
+c>0\ \text{o}\ c=0.
+$$
+
+Si $a=b$, la sustitución da
+
+$$
+ac=bc.
+$$
+
+Si $c=0$, entonces @exm-t1-0040 da
+
+$$
+ac=a0=0
+\qquad\text{y}\qquad
+bc=b0=0,
+$$
+
+de modo que nuevamente $ac=bc$.
+
+En el único caso restante,
+
+$$
+a<b
+\qquad\text{y}\qquad
+c>0,
+$$
+
+acabamos de demostrar que
+
+$$
 ac<bc.
 $$
 
-Si solo sabemos $a\le b$ y $c\ge0$, hay tres posibilidades relevantes: si $a=b$ o $c=0$, los productos son iguales; si $a<b$ y $c>0$, acabamos de demostrar $ac<bc$. En todos los casos,
+Por tanto, en todos los casos,
 
 $$
-ac\le bc.
+\boxed{ac\le bc.}
 $$
 
 Para la parte 4, supongamos primero $a<b$ y $c<0$. Entonces
