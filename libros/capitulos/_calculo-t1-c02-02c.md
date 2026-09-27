@@ -1279,41 +1279,103 @@ $$
 0<a<b.
 $$
 
-Por (O2),
+En particular,
 
 $$
-ab>0,
+a>0
+\qquad\text{y}\qquad
+b>0.
 $$
 
-y por la parte 5,
+Por (O2), el producto de estos dos números positivos también es positivo:
+
+$$
+ab>0.
+$$
+
+Así, $ab\ne0$, existe $(ab)^{-1}$ y, por la parte 5,
 
 $$
 (ab)^{-1}>0.
 $$
 
-Multiplicamos $a<b$ por esta cantidad positiva. La parte 3 produce
+Podemos entonces multiplicar la desigualdad
+
+$$
+a<b
+$$
+
+por la cantidad positiva $(ab)^{-1}$. La parte 3 da
 
 $$
 a(ab)^{-1}<b(ab)^{-1}.
 $$
 
-Usando @prp-t1-0026,
+Ahora hacemos explícita la simplificación de ambos miembros. Por @prp-t1-0026,
 
 $$
-(ab)^{-1}=a^{-1}b^{-1},
+(ab)^{-1}=a^{-1}b^{-1}.
 $$
 
-y simplificando,
+En el miembro izquierdo,
 
 $$
-b^{-1}<a^{-1}.
+\begin{aligned}
+a(ab)^{-1}
+&=a(a^{-1}b^{-1}) && \text{(inverso de un producto)}\\
+&=(aa^{-1})b^{-1} && \text{(asociatividad)}\\
+&=1b^{-1} && \text{(inverso multiplicativo)}\\
+&=b^{-1} && \text{(neutro multiplicativo)}.
+\end{aligned}
 $$
 
-Como ambos inversos son positivos,
+En el miembro derecho,
 
 $$
-0<\frac1b<\frac1a.
+\begin{aligned}
+b(ab)^{-1}
+&=b(a^{-1}b^{-1}) && \text{(inverso de un producto)}\\
+&=a^{-1}(bb^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=a^{-1}1 && \text{(inverso multiplicativo)}\\
+&=a^{-1} && \text{(neutro multiplicativo)}.
+\end{aligned}
 $$
+
+Por sustitución de iguales por iguales en la desigualdad anterior obtenemos
+
+$$
+\boxed{b^{-1}<a^{-1}}.
+$$
+
+Falta incorporar el extremo izquierdo de la cadena. Como $a>0$ y $b>0$, la parte 5 aplicada por separado a ambos números da
+
+$$
+a^{-1}>0
+\qquad\text{y}\qquad
+b^{-1}>0.
+$$
+
+En particular,
+
+$$
+0<b^{-1}<a^{-1}.
+$$
+
+Finalmente, por definición de cociente,
+
+$$
+\frac1b=1b^{-1}=b^{-1}
+\qquad\text{y}\qquad
+\frac1a=1a^{-1}=a^{-1}.
+$$
+
+Por sustitución concluimos
+
+$$
+\boxed{0<\frac1b<\frac1a}.
+$$
+
+La inversión del orden no procede de una nueva regla especial para recíprocos: aparece porque hemos multiplicado $a<b$ por el número positivo $(ab)^{-1}$ y después hemos reducido algebraicamente los dos productos resultantes.
 
 Probemos la parte 8. Supongamos primero $ab>0$. Entonces $a\ne0$ y $b\ne0$ por @prp-t1-0027. Por tricotomía, $a>0$ o $a<0$.
 
