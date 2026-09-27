@@ -1,4 +1,45 @@
-No cites simplemente la unicidad de los inversos: reconstruye la prueba desde los axiomas de cuerpo.
+### Nivel B — Aplicación directa: álgebra, desigualdades y estimaciones
+
+::: {#exr-t1-0043}
+<!-- CPM-T1-EXR-0043 | B | COMPUTATION | ABSOLUTE_VALUE | TRANSFER -->
+**Ejercicio B1. Valor absoluto anidado.** Resuelve completamente
+
+$$
+\bigl||x-1|-2\bigr|\le1.
+$$
+
+Entrega el conjunto solución como unión de intervalos cerrados.
+:::
+::: {#exr-t1-0044}
+<!-- CPM-T1-EXR-0044 | B | PROOF | ORIGINAL -->
+**Ejercicio B2. Una estimación alrededor de $2$.** Supón que
+
+$$
+|x-2|<\frac1{10}.
+$$
+
+Demuestra, sin usar aproximaciones decimales, que
+
+$$
+|x^2-4|<\frac{41}{100}.
+$$
+:::
+
+::: {#exr-t1-0045}
+<!-- CPM-T1-EXR-0045 | B | PROOF | ORDER | QUOTIENTS | TRANSFER -->
+**Ejercicio B3. La diferencia entre dos recíprocos.** Sean $a,b\ne0$.
+
+1. Demuestra que
+   $$
+   a^{-1}-b^{-1}=\frac{b-a}{ab}.
+   $$
+2. Usa esta identidad, junto con las leyes de signo ya demostradas, para recuperar el hecho de que
+   $$
+   0<a<b
+   \quad\Longrightarrow\quad
+   \frac1b<\frac1a,
+   $$
+   sin citar directamente la parte 7 de @prp-t1-0007.
 :::
 ::: {#exr-t1-0046}
 <!-- CPM-T1-EXR-0046 | B | COMPUTATION | CONCEPTUAL | ORIGINAL -->
@@ -25,14 +66,24 @@ Justifica cada decisión comparando cuadrados.
 :::
 
 ::: {#exr-t1-0048}
-<!-- CPM-T1-EXR-0048 | B | PROOF | AXIOMATIC | RETROFIT_AXIOMATIC -->
-**Ejercicio B6. Fabricar una regla de signos.** Sean $a,b\in F$, donde $F$ es un cuerpo. Demuestra que
+<!-- CPM-T1-EXR-0048 | B | PROOF | SIGNS | QUOTIENTS | TRANSFER -->
+**Ejercicio B6. Regla de signos para un cociente.** Sean $a,b\ne0$. Demuestra, sin hacer una tabla memorizada, que
 
 $$
-(-a)b=-(ab).
+\frac ab>0
+\iff
+(a>0\text{ y }b>0)\ \text{o}\ (a<0\text{ y }b<0),
 $$
 
-La estrategia debe ser estructural: prueba primero que $(-a)b$ es un inverso aditivo de $ab$ y concluye por unicidad. Señala dónde intervienen distributividad, conmutatividad y el hecho ya demostrado de que $b0=0$.
+y que
+
+$$
+\frac ab<0
+\iff
+(a>0\text{ y }b<0)\ \text{o}\ (a<0\text{ y }b>0).
+$$
+
+Debes reducir el problema al signo de $b^{-1}$ y al teorema del signo de un producto.
 :::
 ::: {#exr-t1-0049}
 <!-- CPM-T1-EXR-0049 | B | COMPUTATION | SYNTHESIS | ORIGINAL -->
@@ -80,27 +131,28 @@ $$
 :::
 
 ::: {#exr-t1-0052}
-<!-- CPM-T1-EXR-0052 | C | PROOF | SYNTHESIS | ORIGINAL -->
-**Ejercicio C3. Dos tipos de números dentro de cualquier intervalo.** Sean $a<b$. Demuestra que existe un racional $q$ y un irracional $\xi$ tales que
+<!-- CPM-T1-EXR-0052 | C | PROOF | DENSITY | SYNTHESIS | TRANSFER -->
+**Ejercicio C3. Alternar racionales e irracionales.** Sean $a<b$ y $N\in\mathbb N_{>0}$. Demuestra que existen racionales $q_1,\dots,q_N$ e irracionales $\xi_1,\dots,\xi_N$ tales que
 
 $$
-a<q<\xi<b.
+a<q_1<\xi_1<q_2<\xi_2<\cdots<q_N<\xi_N<b.
 $$
+
+No basta afirmar que ambos conjuntos son densos: organiza una construcción que garantice simultáneamente todo el orden indicado.
 :::
-
 ::: {#exr-t1-0053}
-<!-- CPM-T1-EXR-0053 | C | PROOF | EXISTENCE_UNIQUENESS | RETROFIT_AXIOMATIC -->
-**Ejercicio C4. Despejar significa demostrar existencia y unicidad.** Sean $a,b\in F$, con $F$ un cuerpo. Considera la ecuación
+<!-- CPM-T1-EXR-0053 | C | PROOF | EXISTENCE_UNIQUENESS | TRANSFER -->
+**Ejercicio C4. Una ecuación afín completa.** Sean $a,b,c\in F$, donde $F$ es un cuerpo y $a\ne0$. Considera
 
 $$
-a+x=b.
+ax+b=c.
 $$
 
-1. Construye explícitamente un candidato $x_0$ usando el inverso aditivo de $a$ y demuestra que satisface la ecuación.
-2. Si $y$ es cualquier otra solución, demuestra que $y=x_0$.
-3. Explica qué parte es una prueba de **existencia** y qué parte es una prueba de **unicidad**.
+1. Construye un candidato explícito para $x$.
+2. Verifica que satisface la ecuación.
+3. Demuestra que ninguna otra solución es posible.
 
-No basta escribir «restamos $a$ en ambos miembros»: debes traducir esa operación a suma e inverso aditivo.
+La solución debe combinar las dos ecuaciones elementales del capítulo; no basta escribir una cadena escolar de «pasar términos».
 :::
 ::: {#exr-t1-0054}
 <!-- CPM-T1-EXR-0054 | C | PROOF | ORIGINAL -->
@@ -123,67 +175,14 @@ Debes identificar el dominio, todos los puntos críticos relevantes y justificar
 :::
 
 ::: {#exr-t1-0056}
-<!-- CPM-T1-EXR-0056 | C | PROOF | ORIGINAL -->
-**Ejercicio C7. Un criterio de unicidad para intervalos encajados.** Sean
+<!-- CPM-T1-EXR-0056 | C | PROOF | NESTED_INTERVALS | SYNTHESIS | TRANSFER -->
+**Ejercicio C7. Dos cadenas encajadas que no pueden terminar en puntos distintos.** Sean $(I_n)$ y $(J_n)$ dos familias de intervalos cerrados, no vacíos y encajados. Supón que las longitudes de ambas familias pueden hacerse menores que cualquier $\varepsilon>0$ y que
 
 $$
-I_n=[a_n,b_n]
-$$
-intervalos cerrados, no vacíos y encajados. Supón además que para todo $\varepsilon>0$ existe $N$ tal que
-
-$$
-b_N-a_N<\varepsilon.
+I_n\cap J_n\ne\varnothing
+\qquad
+\text{para todo }n.
 $$
 
-Demuestra que $\bigcap_n I_n$ contiene exactamente un punto.
+Demuestra que las dos familias tienen el **mismo** único punto común.
 :::
-
-### Nivel D — Hipótesis esenciales, reversibilidad y diagnóstico
-
-::: {#exr-t1-0057}
-<!-- CPM-T1-EXR-0057 | D | CONCEPTUAL | COUNTEREXAMPLE | ORIGINAL -->
-**Ejercicio D1. El supremo no tiene que estar dentro.** Un estudiante afirma:
-
-> «Si $s=\sup A$, entonces $s\in A$».
-
-Explica el error, da un contraejemplo y formula una condición adicional sencilla que sí garantice $s=\max A$.
-:::
-
-::: {#exr-t1-0058}
-<!-- CPM-T1-EXR-0058 | D | CONCEPTUAL | COUNTEREXAMPLE | PROOF | RETROFIT_AXIOMATIC -->
-**Ejercicio D2. Cancelar exige una hipótesis.** Un estudiante afirma:
-
-> «De $ab=ac$ siempre se sigue $b=c$; basta cancelar $a$».
-
-1. Construye un contraejemplo con $a=0$ que refute la afirmación.
-2. Formula la ley correcta de cancelación multiplicativa e identifica la hipótesis que faltaba.
-3. Usando **solo** esa ley de cancelación, el hecho $a0=0$ y una separación de casos $a=0$ / $a\ne0$, reconstruye la implicación
-   $$
-   ab=0\Longrightarrow a=0\ \text{o}\ b=0.
-   $$
-4. Demuestra también la implicación recíproca y concluye la regla del producto nulo.
-
-No cites la regla del producto nulo para probarse a sí misma.
-:::
-::: {#exr-t1-0059}
-<!-- CPM-T1-EXR-0059 | D | CONCEPTUAL | ORIGINAL -->
-**Ejercicio D3. Las dos hipótesis que no pueden borrarse.** Explica por qué el axioma de completitud no puede formularse correctamente como
-
-> «Todo subconjunto de $\mathbb R$ tiene supremo real».
-
-Da un ejemplo que muestre la necesidad de **no vacío** y otro que muestre la necesidad de **acotado superiormente**.
-:::
-
-::: {#exr-t1-0060}
-<!-- CPM-T1-EXR-0060 | D | CONCEPTUAL | SYNTHESIS | ORIGINAL -->
-**Ejercicio D4. Denso no significa completo.** Explica por qué el hecho de que $\mathbb Q$ sea denso en $\mathbb R$ no contradice que $\mathbb Q$ sea incompleto. Debes mencionar un conjunto racional concreto que exhiba el fracaso de completitud.
-:::
-
-::: {#exr-t1-0061}
-<!-- CPM-T1-EXR-0061 | D | COMPUTATION | SYNTHESIS | ORIGINAL -->
-**Ejercicio D5. Inecuación racional con valor absoluto III.** Resuelve completamente
-
-$$
-\frac{|x-2|+|x+1|}{|x-1|}\le3.
-$$
-
