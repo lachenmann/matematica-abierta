@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-15'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -291,7 +291,13 @@ f(e_{\mathcal G})\diamond f(e_{\mathcal G})
 u\diamond u.
 $$
 
-El elemento $u$ pertenece al grupo $\mathcal H$, por lo que posee inverso $u^{-1}$. Multiplicando la igualdad anterior por $u^{-1}$ a la izquierda,
+El elemento $u$ pertenece al grupo $\mathcal H$, por lo que posee inverso $u^{-1}$. De la igualdad
+
+$$
+u=u\diamond u
+$$
+
+podemos multiplicar ambos miembros por $u^{-1}$ a la izquierda; la compatibilidad de la igualdad con la operación $\diamond$ da
 
 $$
 u^{-1}\diamond u
@@ -302,13 +308,43 @@ $$
 Por asociatividad en $\mathcal H$,
 
 $$
+u^{-1}\diamond(u\diamond u)
+=
+(u^{-1}\diamond u)\diamond u.
+$$
+
+Sustituyendo esta igualdad en la anterior,
+
+$$
+u^{-1}\diamond u
+=
+(u^{-1}\diamond u)\diamond u.
+$$
+
+Por la ley de inverso,
+
+$$
+u^{-1}\diamond u=e_{\mathcal H},
+$$
+
+de modo que
+
+$$
 e_{\mathcal H}
 =
-(u^{-1}\diamond u)\diamond u
-=
-e_{\mathcal H}\diamond u
-=
-u.
+e_{\mathcal H}\diamond u.
+$$
+
+Finalmente, por la ley de neutro izquierdo,
+
+$$
+e_{\mathcal H}\diamond u=u.
+$$
+
+Por transitividad de la igualdad,
+
+$$
+e_{\mathcal H}=u.
 $$
 
 Por tanto,
