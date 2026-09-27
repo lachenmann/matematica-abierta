@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -117,25 +117,65 @@ Como $I$ determina un subgrupo del grupo aditivo de $R$, contiene $0$, es cerrad
   $$
   luego $a\equiv_I a$.
 
-- **Simetría.** Si $a\equiv_I b$, entonces $a-b\in I$. Como $I$ es cerrado bajo opuestos,
+- **Simetría.** Si $a\equiv_I b$, entonces, por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042),
   $$
-  -(a-b)=b-a\in I,
+  a-b\in I.
   $$
-  y por tanto $b\equiv_I a$.
+  Como $I$ es cerrado bajo opuestos,
+  $$
+  -(a-b)\in I.
+  $$
+  En el grupo aditivo abeliano de $R$,
+  $$
+  \begin{aligned}
+  -(a-b)
+  &=-(a+(-b))\\
+  &=(-a)+(-(-b))\\
+  &=(-a)+b\\
+  &=b+(-a)\\
+  &=b-a,
+  \end{aligned}
+  $$
+  usando las leyes de inversos, doble opuesto y conmutatividad de la suma. Sustituyendo en la pertenencia anterior,
+  $$
+  b-a\in I.
+  $$
+  Por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042),
+  $$
+  b\equiv_I a.
+  $$
 
-- **Transitividad.** Si $a\equiv_I b$ y $b\equiv_I c$, entonces
+- **Transitividad.** Si $a\equiv_I b$ y $b\equiv_I c$, la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042) proporciona
   $$
   a-b\in I,
   \qquad
   b-c\in I.
   $$
-  Por cierre aditivo,
+  Como $I$ es cerrado bajo suma,
   $$
-  (a-b)+(b-c)=a-c\in I,
+  (a-b)+(b-c)\in I.
   $$
-  luego $a\equiv_I c$.
+  Desarrollando las restas en el grupo aditivo y usando asociatividad, inverso y neutro,
+  $$
+  \begin{aligned}
+  (a-b)+(b-c)
+  &=(a+(-b))+(b+(-c))\\
+  &=a+\bigl((-b)+b\bigr)+(-c)\\
+  &=a+0+(-c)\\
+  &=a+(-c)\\
+  &=a-c.
+  \end{aligned}
+  $$
+  Por sustitución en la pertenencia anterior,
+  $$
+  a-c\in I.
+  $$
+  De nuevo por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042),
+  $$
+  a\equiv_I c.
+  $$
 
-Por [`TALG-IMP-00003`](tratado-de-algebra-relaciones-equivalencia-cocientes.md#talg-imp-00003), $\equiv_I$ es una relación de equivalencia. $\square$
+Por `TALG-IMP-00003`, $\equiv_I$ es una relación de equivalencia. $\square$
 
 ---
 
@@ -187,9 +227,79 @@ $$
 
 #### Demostración {#talg-prf-00061}
 
-La equivalencia entre $a\equiv_I b$ y $a-b\in I$ es definicional.
+Por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042),
 
-Supongamos primero $a\equiv_I b$. Sea $x\in R$. Si $x\in[a]_I$, entonces $x\equiv_I a$; por transitividad con $a\equiv_I b$, se obtiene $x\equiv_I b$, y por tanto $x\in[b]_I$. La inclusión inversa se obtiene usando la simetría de $a\equiv_I b$. Por Extensionalidad,
+$$
+a\equiv_I b
+\quad\Longleftrightarrow\quad
+a-b\in I.
+$$
+
+Por tanto, basta relacionar la congruencia con la igualdad de clases.
+
+Supongamos primero
+
+$$
+a\equiv_I b.
+$$
+
+Para probar $[a]_I=[b]_I$ demostraremos ambas inclusiones.
+
+Sea $x\in[a]_I$. Por la [Definición 19.1.3](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00043) de clase de equivalencia,
+
+$$
+x\equiv_I a.
+$$
+
+Junto con $a\equiv_I b$, la transitividad de $\equiv_I$, demostrada en la [Proposición 19.1.2](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00039), da
+
+$$
+x\equiv_I b.
+$$
+
+De nuevo por la [Definición 19.1.3](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00043),
+
+$$
+x\in[b]_I.
+$$
+
+Como $x\in[a]_I$ era arbitrario,
+
+$$
+[a]_I\subseteq[b]_I.
+$$
+
+Para la inclusión inversa, sea ahora $y\in[b]_I$. Por la [Definición 19.1.3](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00043),
+
+$$
+y\equiv_I b.
+$$
+
+La simetría de $a\equiv_I b$, establecida como parte de la [Proposición 19.1.2](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00039), proporciona
+
+$$
+b\equiv_I a.
+$$
+
+Aplicando transitividad a $y\equiv_I b$ y $b\equiv_I a$, obtenemos
+
+$$
+y\equiv_I a.
+$$
+
+Por la [Definición 19.1.3](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00043),
+
+$$
+y\in[a]_I.
+$$
+
+Como $y\in[b]_I$ era arbitrario,
+
+$$
+[b]_I\subseteq[a]_I.
+$$
+
+Las dos inclusiones y Extensionalidad implican
 
 $$
 [a]_I=[b]_I.
@@ -235,7 +345,15 @@ $$
 
 #### Demostración {#talg-prf-00062}
 
-De las hipótesis se sigue
+Por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042), las hipótesis
+
+$$
+a\equiv_I a'
+\qquad\text{y}\qquad
+b\equiv_I b'
+$$
+
+equivalen respectivamente a
 
 $$
 a-a'\in I,
@@ -243,26 +361,97 @@ a-a'\in I,
 b-b'\in I.
 $$
 
-Como $I$ es un subgrupo aditivo,
+Como $I$ es un subgrupo del grupo aditivo de $R$, es cerrado bajo suma. Por tanto,
 
 $$
 (a-a')+(b-b')\in I.
 $$
 
-El grupo aditivo de un anillo es abeliano, de modo que
+Desarrollando las restas,
 
 $$
 (a-a')+(b-b')
-=(a+b)-(a'+b').
+=
+(a+(-a'))+(b+(-b')).
 $$
 
-Por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042), resulta
+Por asociatividad y conmutatividad de la suma,
+
+$$
+(a+(-a'))+(b+(-b'))
+=
+(a+b)+\bigl((-a')+(-b')\bigr).
+$$
+
+El elemento $(-a')+(-b')$ es el inverso aditivo de $a'+b'$. En efecto,
+
+$$
+\begin{aligned}
+(a'+b')+\bigl((-a')+(-b')\bigr)
+&=a'+b'+(-a')+(-b')\\
+&=a'+(-a')+b'+(-b')\\
+&=0+0\\
+&=0,
+\end{aligned}
+$$
+
+donde sólo hemos usado asociatividad y conmutatividad de la suma y las leyes de inverso. Como el grupo aditivo es abeliano, la misma igualdad vale también en el orden opuesto; por unicidad del inverso aditivo,
+
+$$
+(-a')+(-b')=-(a'+b').
+$$
+
+Sustituyendo,
+
+$$
+(a-a')+(b-b')
+=
+(a+b)+\bigl(-(a'+b')\bigr)
+=
+(a+b)-(a'+b').
+$$
+
+Como el miembro izquierdo pertenece a $I$, obtenemos
+
+$$
+(a+b)-(a'+b')\in I.
+$$
+
+Por la [Definición 19.1.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00042),
 
 $$
 a+b\equiv_I a'+b'.
 $$
 
-La formulación mediante igualdad de clases sigue de la [Proposición 19.1.5](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00040). $\square$
+Para la formulación mediante clases, supongamos
+
+$$
+[a]_I=[a']_I,
+\qquad
+[b]_I=[b']_I.
+$$
+
+La [Proposición 19.1.5](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00040) da
+
+$$
+a\equiv_I a',
+\qquad
+b\equiv_I b'.
+$$
+
+Por lo ya demostrado,
+
+$$
+a+b\equiv_I a'+b',
+$$
+
+y una nueva aplicación de la [Proposición 19.1.5](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00040) produce
+
+$$
+[a+b]_I=[a'+b']_I.
+$$
+
+$\square$
 
 ---
 
@@ -382,10 +571,10 @@ $$
 D:=(R/I)\times(R/I).
 $$
 
-Todo elemento de $R/I$ es, por definición del conjunto cociente, una clase $[a]_I$ para algún $a\in R$. Por tanto, para cada
+Por la [Definición 19.1.3](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-def-00043) y la [Notación 19.1.4](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-not-00014), todo elemento de $R/I$ es una clase $[a]_I$ para algún $a\in R$. Por tanto, si
 
 $$
-\langle A,B\rangle\in D
+\langle A,B\rangle\in D,
 $$
 
 existen $a,b\in R$ tales que
@@ -396,45 +585,217 @@ A=[a]_I,
 B=[b]_I.
 $$
 
-Para la suma, consideremos la condición
+La existencia de estos representantes se utilizará sólo localmente para la entrada fija $\langle A,B\rangle$.
+
+**Construcción de la suma.** Consideremos el subconjunto
 
 $$
+\Gamma_+
+\subseteq
+D\times(R/I)
+$$
+
+definido por
+
+$$
+\left\langle\langle A,B\rangle,C\right\rangle\in\Gamma_+
+$$
+
+si y sólo si existen $a,b\in R$ tales que
+
+$$
+A=[a]_I,
+\qquad
+B=[b]_I,
+\qquad
 C=[a+b]_I.
 $$
 
-Si también
+El producto cartesiano $D\times(R/I)$ existe por la interfaz conjuntista `TALG-IMP-00001`, y $\Gamma_+$ existe por Separación.
+
+Fijemos $\langle A,B\rangle\in D$. Elijamos localmente representantes $a,b\in R$ con
+
+$$
+A=[a]_I,
+\qquad
+B=[b]_I.
+$$
+
+Entonces
+
+$$
+C:=[a+b]_I
+$$
+
+pertenece a $R/I$ y satisface
+
+$$
+\left\langle\langle A,B\rangle,C\right\rangle\in\Gamma_+.
+$$
+
+Así, para cada entrada existe al menos una salida.
+
+Para demostrar que la salida es independiente de los representantes, supongamos que también
 
 $$
 A=[a']_I,
 \qquad
-B=[b']_I,
+B=[b']_I.
 $$
 
-entonces la [Proposición 19.2.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00041) da
+Entonces
+
+$$
+[a]_I=[a']_I,
+\qquad
+[b]_I=[b']_I.
+$$
+
+La formulación en clases de la [Proposición 19.2.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00041) proporciona
 
 $$
 [a+b]_I=[a'+b']_I.
 $$
 
-Por tanto, para cada entrada $\langle A,B\rangle$ existe un único $C\in R/I$ determinado por esa regla. Separando dentro de
+Por consiguiente, dos pares de representantes de la misma entrada producen la misma clase de salida. Esto demuestra que para cada $\langle A,B\rangle\in D$ existe un único $C\in R/I$ con
 
 $$
+\left\langle\langle A,B\rangle,C\right\rangle\in\Gamma_+.
+$$
+
+Por tanto, $\Gamma_+$ es el grafo de una función
+
+$$
++_I:D\to R/I
+$$
+
+que satisface, para todos $a,b\in R$,
+
+$$
++_I(\langle[a]_I,[b]_I\rangle)=[a+b]_I.
+$$
+
+Falta justificar la unicidad de la función con esta propiedad. Sea
+
+$$
+\oplus:D\to R/I
+$$
+
+otra función que satisfaga la misma fórmula para todos los representantes. Dada una entrada arbitraria $\langle A,B\rangle\in D$, tomamos localmente $a,b\in R$ con $A=[a]_I$ y $B=[b]_I$. Entonces
+
+$$
+\oplus(\langle A,B\rangle)
+=
+[a+b]_I
+=
++_I(\langle A,B\rangle).
+$$
+
+Como ambas funciones tienen el mismo dominio, el mismo codominio y coinciden en toda entrada, son iguales. La función $+_I$ es única.
+
+**Construcción del producto.** Definimos ahora
+
+$$
+\Gamma_{\cdot}
+\subseteq
 D\times(R/I)
 $$
 
-los pares $\langle\langle A,B\rangle,C\rangle$ que satisfacen la condición anterior obtenemos el grafo de una única función
+mediante la condición
 
 $$
-+_I:D\to R/I.
+\left\langle\langle A,B\rangle,C\right\rangle\in\Gamma_{\cdot}
 $$
 
-El argumento para el producto es idéntico, sustituyendo la [Proposición 19.2.1](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00041) por la [Proposición 19.2.2](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00042): la clase $[ab]_I$ es independiente de los representantes de $A$ y $B$, y por Separación obtenemos una única función
+si y sólo si existen $a,b\in R$ tales que
 
 $$
-\cdot_I:D\to R/I.
+A=[a]_I,
+\qquad
+B=[b]_I,
+\qquad
+C=[ab]_I.
 $$
 
-No se ha elegido globalmente ningún sistema de representantes; sólo se usa la existencia local de representantes certificada por la definición del cociente. $\square$
+El conjunto $\Gamma_{\cdot}$ existe por Separación dentro de $D\times(R/I)$.
+
+Fijemos de nuevo una entrada $\langle A,B\rangle\in D$ y representantes locales $a,b\in R$ con
+
+$$
+A=[a]_I,
+\qquad
+B=[b]_I.
+$$
+
+La clase
+
+$$
+C:=[ab]_I
+$$
+
+pertenece a $R/I$, de modo que existe al menos una salida para esa entrada.
+
+Supongamos que $a',b'\in R$ son otros representantes de las mismas clases:
+
+$$
+A=[a']_I,
+\qquad
+B=[b']_I.
+$$
+
+Entonces
+
+$$
+[a]_I=[a']_I,
+\qquad
+[b]_I=[b']_I.
+$$
+
+La formulación en clases de la [Proposición 19.2.2](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-pro-00042) da exactamente
+
+$$
+[ab]_I=[a'b']_I.
+$$
+
+Por tanto, la clase producto no depende de los representantes elegidos. En consecuencia, para cada $\langle A,B\rangle\in D$ existe un único $C\in R/I$ tal que
+
+$$
+\left\langle\langle A,B\rangle,C\right\rangle\in\Gamma_{\cdot}.
+$$
+
+Así, $\Gamma_{\cdot}$ es el grafo de una función
+
+$$
+\cdot_I:D\to R/I
+$$
+
+que satisface
+
+$$
+\cdot_I(\langle[a]_I,[b]_I\rangle)=[ab]_I
+$$
+
+para todos $a,b\in R$.
+
+Finalmente, sea
+
+$$
+\odot:D\to R/I
+$$
+
+otra función con esa misma propiedad. Para una entrada arbitraria $\langle A,B\rangle\in D$, elegimos localmente representantes $a,b\in R$. Entonces
+
+$$
+\odot(\langle A,B\rangle)
+=
+[ab]_I
+=
+\cdot_I(\langle A,B\rangle).
+$$
+
+Las dos funciones coinciden en toda entrada y tienen el mismo dominio y codominio; por tanto, son iguales. La función $\cdot_I$ es única.
+
+En ninguna de las dos construcciones se ha elegido globalmente un sistema de representantes. Sólo se eliminan existenciales localmente para una entrada ya fijada, y las Proposiciones 19.2.1 y 19.2.2 garantizan que el valor obtenido es independiente de esa elección local. $\square$
 
 ---
 
@@ -513,13 +874,29 @@ $$
 [0]_I+_I[a]_I=[0+a]_I=[a]_I,
 $$
 
-por lo que $[0]_I$ es el neutro aditivo. Además,
+por lo que $[0]_I$ es el neutro aditivo.
+
+Para verificar que $[-a]_I$ es el inverso aditivo de $[a]_I$ debemos comprobar las dos identidades exigidas en el grupo aditivo. Por la definición de la operación cociente, fijada en la [Notación 19.2.4](tratado-de-algebra-capitulo-19-cocientes-de-anillos.md#talg-not-00015),
 
 $$
-[a]_I+_I[-a]_I=[a-a]_I=[0]_I,
+\begin{aligned}
+[a]_I+_I[-a]_I
+&=[a+(-a)]_I\\
+&=[0]_I,
+\end{aligned}
 $$
 
-y análogamente en el otro orden; por tanto $[-a]_I$ es el inverso aditivo de $[a]_I$. Finalmente,
+porque $a+(-a)=0$ en el grupo aditivo del anillo. En el orden opuesto, usando la misma operación cociente pero ahora la igualdad $(-a)+a=0$,
+
+$$
+\begin{aligned}
+[-a]_I+_I[a]_I
+&=[(-a)+a]_I\\
+&=[0]_I.
+\end{aligned}
+$$
+
+Así, $[-a]_I$ es simultáneamente inverso aditivo por la derecha y por la izquierda de $[a]_I$. Por tanto, es su inverso aditivo bilateral en $R/I$. Finalmente,
 
 $$
 [a]_I+_I[b]_I=[a+b]_I=[b+a]_I=[b]_I+_I[a]_I,
