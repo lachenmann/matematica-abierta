@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -197,23 +197,73 @@ Sea $\mathcal R$ un anillo conmutativo y sea $I\subseteq R$. Entonces son equiva
 
 #### Demostración {#talg-prf-00057}
 
-Supongamos que $I$ es un ideal izquierdo. La condición de subgrupo aditivo ya está satisfecha. Sean $x\in I$ y $r\in R$. Como la multiplicación es conmutativa,
+Supongamos primero que $I$ es un ideal izquierdo. Por la [Definición 18.1.1](tratado-de-algebra-capitulo-18-ideales.md#talg-def-00040), $I$ determina un subgrupo del grupo aditivo $\langle R,+\rangle$ y satisface la absorción izquierda:
+
+$$
+r x\in I
+\qquad(r\in R,\ x\in I).
+$$
+
+Para demostrar que $I$ es también un ideal derecho, sean $x\in I$ y $r\in R$. Como $\mathcal R$ es conmutativo, la Definición 14.5.1 da
 
 $$
 xr=rx.
 $$
 
-Por absorción izquierda, $rx\in I$, y por tanto $xr\in I$. Luego $I$ es también ideal derecho y, en consecuencia, bilateral.
-
-El argumento inverso es idéntico: si $I$ es ideal derecho, entonces para $r\in R$ y $x\in I$,
+La absorción izquierda aplicada al par concreto $r\in R$, $x\in I$ proporciona
 
 $$
-rx=xr\in I,
+rx\in I.
 $$
 
-de modo que también es ideal izquierdo.
+Sustituyendo $rx=xr$, concluimos
 
-Todo ideal bilateral es, por definición, tanto izquierdo como derecho. Quedan así equivalentes las tres condiciones. $\square$
+$$
+xr\in I.
+$$
+
+Como $x\in I$ y $r\in R$ eran arbitrarios, $I$ satisface también la absorción derecha. La condición de subgrupo aditivo ya estaba incluida en la hipótesis de ideal izquierdo; por la [Definición 18.1.1](tratado-de-algebra-capitulo-18-ideales.md#talg-def-00040), $I$ es un ideal derecho. Por tanto es bilateral.
+
+Recíprocamente, supongamos que $I$ es un ideal derecho. De nuevo por la [Definición 18.1.1](tratado-de-algebra-capitulo-18-ideales.md#talg-def-00040), $I$ determina un subgrupo aditivo y satisface la absorción derecha:
+
+$$
+xr\in I
+\qquad(x\in I,\ r\in R).
+$$
+
+Para verificar la absorción izquierda, sean $r\in R$ y $x\in I$. La conmutatividad multiplicativa de la Definición 14.5.1 da
+
+$$
+rx=xr.
+$$
+
+La absorción derecha aplicada a $x\in I$ y $r\in R$ produce
+
+$$
+xr\in I.
+$$
+
+Sustituyendo la igualdad anterior, obtenemos
+
+$$
+rx\in I.
+$$
+
+Como $r\in R$ y $x\in I$ eran arbitrarios, se cumple la absorción izquierda. Junto con la estructura de subgrupo aditivo, la [Definición 18.1.1](tratado-de-algebra-capitulo-18-ideales.md#talg-def-00040) muestra que $I$ es un ideal izquierdo. Por tanto es bilateral.
+
+Finalmente, si $I$ es un ideal bilateral, la propia [Definición 18.1.1](tratado-de-algebra-capitulo-18-ideales.md#talg-def-00040) incluye simultáneamente la absorción izquierda y la absorción derecha, además de la condición de subgrupo aditivo. Por consiguiente, todo ideal bilateral es a la vez ideal izquierdo e ideal derecho.
+
+Quedan demostradas las implicaciones
+
+$$
+(1)\Longrightarrow(3),
+\qquad
+(2)\Longrightarrow(3),
+\qquad
+(3)\Longrightarrow(1),(2),
+$$
+
+y, por tanto, las tres condiciones son equivalentes. $\square$
 
 > **Convención terminológica.** Aunque en anillos conmutativos las tres nociones coinciden, el tratado mantendrá la definición bilateral como significado básico de *ideal*. La coincidencia es un teorema, no parte de la definición general.
 
