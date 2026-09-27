@@ -647,32 +647,6 @@ Cuando aparezca un problema de este capítulo, estas preguntas ayudan a elegir e
 
 No se trata de convertir estas preguntas en una tabla mecánica. Su función es ayudar a reconocer la **forma matemática** de un problema.
 
-### Antes de seguir
-
-::: {.callout-tip title="Antes de seguir"}
-**1.** En el Laboratorio 1, ¿dónde interviene la completitud si la prueba final solo menciona $\sqrt5$?
-
-**Respuesta.** Interviene en la dependencia del objeto: la existencia de $\sqrt5$ fue demostrada en §2.6 mediante completitud. Una prueba puede depender de un axioma aunque no lo invoque nuevamente de forma explícita.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**2.** En el Laboratorio 4, ¿por qué no basta escoger $\delta=\eta$?
-
-**Respuesta.** Porque $\eta$ controla cercanía a $x$, pero no garantiza que la perturbación permanezca dentro de $|y-a|<r$. También debemos respetar el margen $r-|x-a|$ hasta la frontera.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**3.** En la bisección, ¿qué produce existencia y qué produce unicidad?
-
-**Respuesta.** La existencia del punto común proviene del principio de intervalos encajados, y por tanto de completitud. La unicidad aparece cuando las longitudes pueden hacerse menores que cualquier distancia positiva entre dos supuestos puntos distintos.
-:::
-
-::: {.callout-tip title="Antes de seguir"}
-**4.** ¿La densidad de $\mathbb Q$ es equivalente a la completitud de $\mathbb R$?
-
-**Respuesta.** No. La densidad es una consecuencia mucho más débil. De hecho, $\mathbb Q$ es denso y, sin embargo, no es completo.
-:::
-
 ### Lo que queda antes de cerrar el capítulo
 
 Ya no falta teoría conceptual nueva en `T1-C02`. La última sección será el banco completo de ejercicios y soluciones.
