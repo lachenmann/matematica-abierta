@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-15'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -223,7 +223,7 @@ es asociativa.
 
 #### Demostración {#talg-prf-00004}
 
-Sean $x,y,z\in B$. Por cierre,
+Sean $x,y,z\in B$. Como $B$ es cerrado bajo $\star$,
 
 $$
 x\star y\in B,
@@ -231,7 +231,33 @@ x\star y\in B,
 y\star z\in B.
 $$
 
-Por definición de la operación inducida,
+Por la definición de la operación inducida,
+
+$$
+x\star_B y=x\star y
+\qquad\text{y}\qquad
+y\star_B z=y\star z.
+$$
+
+Las inclusiones anteriores garantizan, en particular, que
+
+$$
+x\star_B y\in B
+\qquad\text{y}\qquad
+y\star_B z\in B,
+$$
+
+de modo que las expresiones iteradas
+
+$$
+(x\star_B y)\star_B z
+\qquad\text{y}\qquad
+x\star_B(y\star_B z)
+$$
+
+están bien definidas en $B$.
+
+Aplicando de nuevo la definición de la operación inducida,
 
 $$
 (x\star_B y)\star_B z
@@ -239,7 +265,7 @@ $$
 (x\star y)\star z.
 $$
 
-Como $\star$ es asociativa,
+Como $\star$ es asociativa en $A$,
 
 $$
 (x\star y)\star z
@@ -247,7 +273,7 @@ $$
 x\star(y\star z).
 $$
 
-Aplicando nuevamente la definición de $\star_B$,
+Finalmente, puesto que $y\star z=y\star_B z\in B$, la definición de $\star_B$ da
 
 $$
 x\star(y\star z)
