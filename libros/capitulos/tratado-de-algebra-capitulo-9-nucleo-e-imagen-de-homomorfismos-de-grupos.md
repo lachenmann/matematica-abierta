@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -345,7 +345,25 @@ $$
 x=e_{\mathcal G}.
 $$
 
-Por doble inclusión y Extensionalidad,
+De
+
+$$
+e_{\mathcal G}\in\ker f
+$$
+
+se sigue
+
+$$
+\{e_{\mathcal G}\}\subseteq\ker f.
+$$
+
+Por otra parte, como $x\in\ker f$ era arbitrario y hemos demostrado $x=e_{\mathcal G}$,
+
+$$
+\ker f\subseteq\{e_{\mathcal G}\}.
+$$
+
+Las dos inclusiones y Extensionalidad dan
 
 $$
 \ker f=\{e_{\mathcal G}\}.
@@ -380,13 +398,31 @@ f(x\star y^{-1})
 \end{aligned}
 $$
 
-Por tanto,
+Por la [Definición 9.1.1](tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md#talg-def-00024) del núcleo, la igualdad
 
 $$
-x\star y^{-1}\in\ker f=\{e_{\mathcal G}\},
+f(x\star y^{-1})=e_{\mathcal H}
 $$
 
-de donde
+equivale a
+
+$$
+x\star y^{-1}\in\ker f.
+$$
+
+Usando la hipótesis
+
+$$
+\ker f=\{e_{\mathcal G}\},
+$$
+
+obtenemos
+
+$$
+x\star y^{-1}\in\{e_{\mathcal G}\}.
+$$
+
+Por la definición de conjunto unitario,
 
 $$
 x\star y^{-1}=e_{\mathcal G}.
@@ -405,7 +441,7 @@ x
 \end{aligned}
 $$
 
-Así, $f(x)=f(y)$ implica $x=y$. Por la definición de inyectividad importada mediante [`TALG-IMP-00002`](tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md#talg-imp-00002), $f$ es inyectiva. $\square$
+Así, $f(x)=f(y)$ implica $x=y$. Por la definición de inyectividad importada mediante `TALG-IMP-00002`, $f$ es inyectiva. $\square$
 
 ---
 
