@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -186,13 +186,43 @@ $$
 
 Por tanto $a\cdot0=0$.
 
-De manera análoga, usando ahora distributividad por la derecha,
+Para demostrar la absorción por la izquierda, partimos de la misma identidad aditiva
 
 $$
-0\cdot a=(0+0)\cdot a=(0\cdot a)+(0\cdot a),
+0+0=0.
 $$
 
-y sumando el opuesto aditivo de $0\cdot a$ se obtiene
+Esta vez usamos la distributividad por la derecha de la [Definición 14.1.1](tratado-de-algebra-capitulo-14-anillos.md#talg-def-00032). Sustituyendo $0$ por $0+0$ en el primer factor,
+
+$$
+\begin{aligned}
+0\cdot a
+&=(0+0)\cdot a\\
+&=(0\cdot a)+(0\cdot a).
+\end{aligned}
+$$
+
+Ahora sumamos el opuesto aditivo de $0\cdot a$ a ambos miembros. Por compatibilidad de la igualdad con la suma,
+
+$$
+-(0\cdot a)+(0\cdot a)
+=
+-(0\cdot a)+\bigl((0\cdot a)+(0\cdot a)\bigr).
+$$
+
+El miembro izquierdo es $0$. En el miembro derecho, la asociatividad de la suma permite reagrupar: 
+
+$$
+\begin{aligned}
+0
+&=-(0\cdot a)+\bigl((0\cdot a)+(0\cdot a)\bigr)\\
+&=\bigl(-(0\cdot a)+(0\cdot a)\bigr)+(0\cdot a)\\
+&=0+(0\cdot a)\\
+&=0\cdot a.
+\end{aligned}
+$$
+
+Por tanto,
 
 $$
 0\cdot a=0.
@@ -243,25 +273,78 @@ $$
 (-a)\cdot b=-(a\cdot b).
 $$
 
-Del mismo modo, por distributividad por la izquierda,
+Para la segunda identidad partimos de la igualdad
 
 $$
-a\cdot((-b)+b)=a\cdot(-b)+a\cdot b=0,
+(-b)+b=0,
 $$
 
-de donde
+que vale porque $-b$ es el inverso aditivo de $b$ en el grupo abeliano $\langle R,+\rangle$. Aplicando la distributividad por la izquierda de la [Definición 14.1.1](tratado-de-algebra-capitulo-14-anillos.md#talg-def-00032), obtenemos
+
+$$
+\begin{aligned}
+a\cdot\bigl((-b)+b\bigr)
+&=a\cdot(-b)+a\cdot b.
+\end{aligned}
+$$
+
+Por la [Proposición 14.3.1](tratado-de-algebra-capitulo-14-anillos.md#talg-pro-00024), el miembro izquierdo es
+
+$$
+a\cdot0=0.
+$$
+
+Por tanto,
+
+$$
+a\cdot(-b)+a\cdot b=0.
+$$
+
+Esta igualdad muestra que $a\cdot(-b)$ es un inverso aditivo de $a\cdot b$. Como el inverso en un grupo es único por la [Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002),
 
 $$
 a\cdot(-b)=-(a\cdot b).
 $$
 
-Aplicando la segunda identidad con $a$ reemplazado por $-a$,
+Queda demostrada la segunda identidad sin apelar a una simetría informal de la primera.
+
+Para la tercera identidad, observemos primero que $-a\in R$. Podemos, por tanto, aplicar la segunda identidad ya demostrada al elemento $-a$ en lugar de $a$:
 
 $$
 (-a)\cdot(-b)=-\bigl((-a)\cdot b\bigr).
 $$
 
-La primera identidad da $(-a)\cdot b=-(a\cdot b)$. Por unicidad del inverso aditivo, el inverso de $-(a\cdot b)$ es $a\cdot b$. Por tanto,
+La primera identidad, aplicada a $a$ y $b$, da
+
+$$
+(-a)\cdot b=-(a\cdot b).
+$$
+
+Sustituyendo esta igualdad en la anterior,
+
+$$
+(-a)\cdot(-b)=-\bigl(-(a\cdot b)\bigr).
+$$
+
+Ahora $a\cdot b$ es un inverso aditivo de $-(a\cdot b)$, pues
+
+$$
+-(a\cdot b)+(a\cdot b)=0
+$$
+
+y, por conmutatividad de la suma, también
+
+$$
+(a\cdot b)+(-(a\cdot b))=0.
+$$
+
+Por la unicidad del inverso aditivo de la [Proposición 4.1.2](tratado-de-algebra-capitulo-4-inversos-y-grupos.md#talg-pro-00002),
+
+$$
+-\bigl(-(a\cdot b)\bigr)=a\cdot b.
+$$
+
+En consecuencia,
 
 $$
 (-a)\cdot(-b)=a\cdot b.
