@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-09-27'
 areas:
 - algebra
 - fundamentos
@@ -251,23 +251,75 @@ $$
 
 #### Demostración {#talg-prf-00030}
 
-Por el [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), de $gN=g'N$ se sigue
+Por el [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), de
 
 $$
-a:=(g')^{-1}\star g\in N.
+gN=g'N
 $$
 
-Por tanto
+se sigue
+
+$$
+(g')^{-1}\star g\in N.
+$$
+
+Definamos
+
+$$
+a:=(g')^{-1}\star g.
+$$
+
+Entonces $a\in N$. Además,
+
+$$
+\begin{aligned}
+g'\star a
+&=g'\star\bigl((g')^{-1}\star g\bigr)\\
+&=\bigl(g'\star(g')^{-1}\bigr)\star g\\
+&=e_{\mathcal G}\star g\\
+&=g,
+\end{aligned}
+$$
+
+por asociatividad, inverso y neutro. Por simetría de la igualdad,
 
 $$
 g=g'\star a.
 $$
 
-Análogamente, de $hN=h'N$ se sigue
+Consideremos ahora la segunda igualdad de clases,
 
 $$
-b:=(h')^{-1}\star h\in N,
-\qquad
+hN=h'N.
+$$
+
+Aplicando nuevamente el [Teorema 11.2.1](tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md#talg-thm-00003), esta vez a $hN$ y $h'N$, obtenemos
+
+$$
+(h')^{-1}\star h\in N.
+$$
+
+Definamos
+
+$$
+b:=(h')^{-1}\star h.
+$$
+
+Entonces $b\in N$. Para la segunda igualdad, escribimos también la cadena algebraica completa:
+
+$$
+\begin{aligned}
+h'\star b
+&=h'\star\bigl((h')^{-1}\star h\bigr)\\
+&=\bigl(h'\star(h')^{-1}\bigr)\star h\\
+&=e_{\mathcal G}\star h\\
+&=h.
+\end{aligned}
+$$
+
+Por simetría de la igualdad,
+
+$$
 h=h'\star b.
 $$
 
