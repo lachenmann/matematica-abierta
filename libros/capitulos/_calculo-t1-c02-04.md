@@ -577,9 +577,7 @@ tienen sentido como números determinados una vez que su existencia ha sido esta
 
 La definición de supremo compara $s$ con **todas las cotas superiores**. Esa formulación es conceptualmente exacta, pero en las demostraciones necesitaremos una versión más operativa.
 
-Si $s$ es el supremo, podemos acercarnos a $s$ desde abajo mediante elementos de $A$ tanto como queramos.
-
-La palabra «acercarnos» puede expresarse sin límites, usando solo desigualdades y cuantificadores.
+Si $s$ es el supremo, ningún intervalo inmediatamente situado por debajo de $s$ puede quedar completamente vacío de elementos de $A$. La expresión «acercarnos tanto como queramos» puede formularse sin límites, usando solo desigualdades y cuantificadores.
 
 ::: {#prp-t1-0010}
 **Caracterización aproximativa del supremo y del ínfimo.** Sea $A\subseteq\mathbb R$ no vacío.
@@ -613,10 +611,24 @@ si y solo si:
    $$
 :::
 
+En la segunda condición para el supremo, la desigualdad $a\le s$ ya viene garantizada por la primera condición; la conservamos escrita porque muestra geométricamente que $a$ pertenece a la franja
+
+$$
+(s-\varepsilon,s].
+$$
+
+Del mismo modo, en la caracterización del ínfimo la condición $i\le a$ procede de que $i$ es una cota inferior y permite visualizar la franja
+
+$$
+[i,i+\varepsilon).
+$$
+
 ::: {.callout-note title="Idea de la prueba"}
 Si $s$ fuera el supremo pero existiera una franja $(s-\varepsilon,s]$ sin elementos de $A$, entonces $s-\varepsilon$ seguiría estando por encima de todo el conjunto. Habríamos encontrado una cota superior menor que $s$, contradiciendo que $s$ es la menor.
 
 En la dirección inversa, si podemos encontrar elementos de $A$ arbitrariamente cerca de $s$ por debajo, ninguna cota superior puede situarse estrictamente por debajo de $s$: algún elemento del conjunto la sobrepasaría.
+
+Para el ínfimo ocurre exactamente la imagen reflejada: una franja $[i,i+\varepsilon)$ no puede quedar vacía, y ninguna cota inferior puede situarse estrictamente por encima de $i$.
 :::
 
 **Demostración para el supremo.** Supongamos primero que
@@ -627,25 +639,39 @@ $$
 
 Por definición, $s$ es una cota superior. Sea ahora $\varepsilon>0$.
 
-Si no existiera ningún $a\in A$ con
+Supongamos que no existe ningún $a\in A$ tal que
 
 $$
-s-\varepsilon<a,
+s-\varepsilon<a.
 $$
 
-entonces todos los elementos de $A$ satisfarían
+Negar la existencia significa que, para todo $a\in A$,
+
+$$
+\neg(s-\varepsilon<a).
+$$
+
+Como el orden es total, esta negación equivale a
 
 $$
 a\le s-\varepsilon.
 $$
 
-Por tanto, $s-\varepsilon$ sería una cota superior de $A$. Pero
+Por tanto,
+
+$$
+\forall a\in A,\qquad a\le s-\varepsilon,
+$$
+
+de modo que $s-\varepsilon$ sería una cota superior de $A$. Pero, como $\varepsilon>0$,
 
 $$
 s-\varepsilon<s,
 $$
 
-lo que contradice que $s$ sea la menor cota superior. Luego existe $a\in A$ tal que
+lo que contradice que $s$ sea la menor cota superior.
+
+Luego existe $a\in A$ tal que
 
 $$
 s-\varepsilon<a.
@@ -657,13 +683,17 @@ $$
 s-\varepsilon<a\le s.
 $$
 
-Recíprocamente, supongamos que $s$ es una cota superior y que, para todo $\varepsilon>0$, existe $a\in A$ con
+Esto prueba la propiedad aproximativa.
+
+Recíprocamente, supongamos que $s$ es una cota superior y que
 
 $$
+\forall\varepsilon>0\;\exists a\in A
+\qquad
 s-\varepsilon<a\le s.
 $$
 
-Queremos probar que $s$ es la **menor** cota superior. Sea $u$ cualquier cota superior de $A$.
+Queremos demostrar que $s$ es la **menor** cota superior. Sea $u$ una cota superior cualquiera de $A$.
 
 Supongamos, para obtener una contradicción, que
 
@@ -671,7 +701,7 @@ $$
 u<s.
 $$
 
-Tomemos
+Entonces
 
 $$
 \varepsilon=s-u>0.
@@ -680,7 +710,7 @@ $$
 Por la propiedad aproximativa existe $a\in A$ tal que
 
 $$
-s-\varepsilon<a.
+s-\varepsilon<a\le s.
 $$
 
 Pero
@@ -693,38 +723,154 @@ s-(s-u)
 u,
 $$
 
-por lo que
+así que
 
 $$
 u<a.
 $$
 
-Esto contradice que $u$ sea una cota superior de $A$. Por tanto, toda cota superior $u$ satisface
+Esto contradice que $u$ sea una cota superior, pues toda cota superior debe satisfacer $a\le u$ para cada $a\in A$.
+
+Por tanto, $u<s$ es imposible. Como $u$ era una cota superior arbitraria,
 
 $$
-s\le u.
+s\le u
 $$
 
-Así, $s$ es la menor cota superior y
+para toda cota superior $u$ de $A$. Así, $s$ es la menor cota superior y
 
 $$
 s=\sup A.
 $$
 
-La demostración para el ínfimo es exactamente dual: se invierten las desigualdades y se aproxima el borde desde arriba. $\blacksquare$
+**Demostración para el ínfimo.** Supongamos ahora que
 
-::: {.callout-note title="Después de la prueba"}
-Aquí aparece por primera vez una forma cuantificada que será central en análisis:
+$$
+i=\inf A.
+$$
+
+Entonces $i$ es una cota inferior. Sea $\varepsilon>0$.
+
+Si no existiera ningún $a\in A$ con
+
+$$
+a<i+\varepsilon,
+$$
+
+entonces, para todo $a\in A$,
+
+$$
+a\ge i+\varepsilon.
+$$
+
+Por tanto, $i+\varepsilon$ sería una cota inferior de $A$. Pero
+
+$$
+i<i+\varepsilon,
+$$
+
+lo que contradice que $i$ sea la **mayor** cota inferior.
+
+Luego existe $a\in A$ tal que
+
+$$
+a<i+\varepsilon.
+$$
+
+Como $i$ es cota inferior, además $i\le a$. Por tanto,
+
+$$
+i\le a<i+\varepsilon.
+$$
+
+Recíprocamente, supongamos que $i$ es una cota inferior y que
 
 $$
 \forall\varepsilon>0\;\exists a\in A
-\quad
+\qquad
+i\le a<i+\varepsilon.
+$$
+
+Sea $\ell$ una cota inferior cualquiera de $A$. Queremos demostrar
+
+$$
+\ell\le i.
+$$
+
+Supongamos, por contradicción, que
+
+$$
+i<\ell.
+$$
+
+Tomemos
+
+$$
+\varepsilon=\ell-i>0.
+$$
+
+Por la propiedad aproximativa existe $a\in A$ tal que
+
+$$
+a<i+\varepsilon=\ell.
+$$
+
+Pero esto contradice que $\ell$ sea una cota inferior, pues debería cumplirse
+
+$$
+\ell\le a.
+$$
+
+Por tanto, ninguna cota inferior puede ser mayor que $i$. Así,
+
+$$
+i=\inf A.
+$$
+
+$\blacksquare$
+
+::: {.callout-note title="El orden de los cuantificadores no se puede intercambiar"}
+La propiedad del supremo dice
+
+$$
+\forall\varepsilon>0\;\exists a_\varepsilon\in A
+\qquad
+s-\varepsilon<a_\varepsilon\le s.
+$$
+
+El elemento $a_\varepsilon$ **puede depender de** $\varepsilon$. No estamos afirmando
+
+$$
+\exists a\in A\;\forall\varepsilon>0
+\qquad
 s-\varepsilon<a\le s.
 $$
 
-Todavía no hay límites. La expresión dice algo puramente ordenado: **ninguna franja positiva inmediatamente debajo de $s$ puede quedar vacía de elementos de $A$**.
+Esta segunda afirmación sería mucho más fuerte. En efecto, si un mismo $a\in A$ funcionara para todo $\varepsilon>0$ y tuviéramos $a<s$, podríamos elegir
 
-El orden de cuantificadores importa. El elemento $a$ puede depender de $\varepsilon$.
+$$
+\varepsilon=\frac{s-a}{2}>0.
+$$
+
+Entonces
+
+$$
+s-\varepsilon
+=
+\frac{s+a}{2}
+>
+a,
+$$
+
+contradiciendo $s-\varepsilon<a$. Por tanto tendría que cumplirse $a=s$, y en consecuencia $s\in A$: el supremo sería además un máximo.
+
+Así, el patrón
+
+$$
+\forall\varepsilon>0\;\exists a_\varepsilon
+$$
+
+expresa aproximación a una frontera sin exigir que la frontera pertenezca al conjunto.
 :::
 
 ### Ejemplos de lectura completa
