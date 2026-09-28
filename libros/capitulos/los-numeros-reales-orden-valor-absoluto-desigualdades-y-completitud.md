@@ -8084,41 +8084,136 @@ El objetivo de esta presentación no es, por tanto, construir los reales, sino f
 
 ### Qué autoriza el axioma y qué no
 
-Para aplicar completitud debemos verificar **antes** sus dos hipótesis:
+El axioma de completitud es una herramienta de existencia con hipótesis precisas. Antes de invocarlo conviene auditar tres datos.
+
+**1. Sistema ambiente.** Debemos estar considerando
 
 $$
-A\ne\varnothing,
+A\subseteq\mathbb R.
+$$
+
+La conclusión será la existencia de una frontera **real**. Si un conjunto de racionales se considera como subconjunto de $\mathbb R$, la completitud puede producir un supremo real, pero no garantiza que ese supremo pertenezca a $\mathbb Q$.
+
+**2. No vacuidad.** Debemos verificar
+
+$$
+A\ne\varnothing.
+$$
+
+En una demostración suele bastar exhibir un testigo concreto
+
+$$
+a_0\in A.
+$$
+
+**3. Acotación superior.** Debemos producir al menos un número $M\in\mathbb R$ tal que
+
+$$
+\forall a\in A,
 \qquad
-A\text{ está acotado superiormente}.
+a\le M.
 $$
 
-Si alguna falla, el axioma no dice nada.
-
-Por ejemplo, para
+Solo después de esas comprobaciones podemos concluir, por completitud, que existe $s\in\mathbb R$ tal que
 
 $$
-A=(0,\infty)
+s=\sup A.
 $$
 
-no podemos invocar completitud para obtener un supremo real, porque $A$ no está acotado superiormente.
-
-Tampoco el axioma afirma que $\sup A\in A$. El conjunto
+Y como la unicidad ya fue demostrada en §1.3, podemos resumir el protocolo completo así:
 
 $$
-A=(0,1)
+\boxed{
+\begin{array}{c}
+A\subseteq\mathbb R,\\
+A\ne\varnothing,\\
+\exists M\in\mathbb R\;\forall a\in A,\ a\le M
+\end{array}
+\quad\Longrightarrow\quad
+\exists!\,s\in\mathbb R
+\text{ tal que }
+s=\sup A.
+}
 $$
 
-es no vacío y acotado superiormente, y por tanto tiene supremo; ya sabemos que
+Conviene observar también qué **no** forma parte de las hipótesis. No necesitamos que $A$ esté acotado inferiormente. Por ejemplo,
+
+$$
+A=(-\infty,0]
+$$
+
+es no vacío y está acotado superiormente por $0$, aunque no está acotado inferiormente. La completitud se aplica igualmente y garantiza la existencia de su supremo.
+
+Veamos ahora dos fallos de hipótesis.
+
+Para
+
+$$
+A=\varnothing,
+$$
+
+la condición de no vacuidad falla. El conjunto vacío está acotado superiormente de manera vacua, pero eso no basta para aplicar el axioma.
+
+Para
+
+$$
+A=(0,\infty),
+$$
+
+la no vacuidad sí se cumple, pero no existe ninguna cota superior real. Por tanto, tampoco podemos invocar completitud.
+
+En ambos casos la conclusión del axioma queda fuera de alcance. Lógicamente, **no poder aplicar un teorema no equivale por sí solo a haber demostrado la negación de su conclusión**; cualquier afirmación adicional deberá justificarse por otro argumento.
+
+Hay otras tres cosas que el axioma tampoco afirma.
+
+Primero, no dice que el supremo pertenezca al conjunto. Para
+
+$$
+A=(0,1),
+$$
+
+la completitud garantiza la existencia del supremo, y ya demostramos que
 
 $$
 \sup A=1,
 $$
 
-aunque $1\notin A$.
+pero
 
-Finalmente, el axioma garantiza **existencia**, pero no nos entrega automáticamente una fórmula para el supremo ni sus propiedades adicionales. Esas deberán obtenerse mediante argumentos posteriores.
+$$
+1\notin A.
+$$
 
-Este punto será visible inmediatamente en el conjunto que preparará la existencia de la raíz de $2$.
+Por tanto,
+
+$$
+\boxed{
+\text{completitud garantiza un supremo, no necesariamente un máximo}.
+}
+$$
+
+Segundo, el axioma no **calcula** el supremo. Puede garantizar que existe un número
+
+$$
+s=\sup A
+$$
+
+sin proporcionar una fórmula explícita para $s$.
+
+Tercero, tampoco entrega automáticamente propiedades adicionales del objeto construido. Si más adelante definimos un conjunto mediante una ecuación o una desigualdad y obtenemos su supremo por completitud, todavía tendremos que demostrar por separado que esa frontera posee la propiedad concreta que buscamos.
+
+::: {.callout-important title="Protocolo de uso de completitud"}
+Antes de escribir «por completitud», audite:
+
+1. **ambiente:** ¿el conjunto está siendo considerado dentro de $\mathbb R$?;
+2. **testigo:** ¿hemos exhibido al menos un elemento del conjunto?;
+3. **cota:** ¿hemos exhibido una cota superior real?;
+4. **conclusión exacta:** ¿estamos usando el axioma solamente para afirmar la existencia del supremo?
+
+Cualquier identificación posterior del supremo requiere trabajo adicional.
+:::
+
+El axioma está formulado de manera unilateral, para cotas superiores. En el microtramo siguiente veremos que no hace falta postular por separado la existencia de ínfimos: la versión inferior puede deducirse de esta misma propiedad.
 
 ### El ínfimo no necesita un segundo axioma
 
