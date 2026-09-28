@@ -1295,3 +1295,4 @@ y en §1.5 incorporaremos la propiedad adicional de $\mathbb R$ que garantiza la
 $$
 \boxed{\text{la completitud}.}
 $$
+
