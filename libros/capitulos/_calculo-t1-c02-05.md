@@ -234,7 +234,7 @@ El objetivo de esta presentación no es, por tanto, construir los reales, sino f
 
 ### Qué autoriza el axioma y qué no
 
-El axioma de completitud es una herramienta de existencia con hipótesis precisas. Antes de invocarlo conviene auditar tres datos.
+El axioma de completitud es una herramienta de **existencia** con hipótesis precisas. Antes de invocarlo conviene auditar tres datos.
 
 **1. Sistema ambiente.** Debemos estar considerando
 
@@ -242,7 +242,7 @@ $$
 A\subseteq\mathbb R.
 $$
 
-La conclusión será la existencia de una frontera **real**. Si un conjunto de racionales se considera como subconjunto de $\mathbb R$, la completitud puede producir un supremo real, pero no garantiza que ese supremo pertenezca a $\mathbb Q$.
+La acotación y el supremo se entienden entonces dentro de $\mathbb R$. Si un conjunto de racionales se considera como subconjunto de $\mathbb R$, la completitud puede producir un supremo real, pero no afirma que ese supremo pertenezca a $\mathbb Q$.
 
 **2. No vacuidad.** Debemos verificar
 
@@ -256,7 +256,7 @@ $$
 a_0\in A.
 $$
 
-**3. Acotación superior.** Debemos producir al menos un número $M\in\mathbb R$ tal que
+**3. Acotación superior en $\mathbb R$.** Debemos producir al menos un número $M\in\mathbb R$ tal que
 
 $$
 \forall a\in A,
@@ -264,13 +264,19 @@ $$
 a\le M.
 $$
 
-Solo después de esas comprobaciones podemos concluir, por completitud, que existe $s\in\mathbb R$ tal que
+Solo después de estas comprobaciones el axioma autoriza exactamente la afirmación
 
 $$
+\boxed{
+\exists s\in\mathbb R
+\qquad
 s=\sup A.
+}
 $$
 
-Y como la unicidad ya fue demostrada en §1.3, podemos resumir el protocolo completo así:
+La palabra **exactamente** importa. La existencia procede del axioma de completitud; la unicidad no. La unicidad del supremo ya fue demostrada en §1.3 a partir de su definición y de la antisimetría del orden.
+
+Por tanto, al combinar ambos resultados obtenemos
 
 $$
 \boxed{
@@ -286,13 +292,15 @@ s=\sup A.
 }
 $$
 
+El cuantificador $\exists!$ es, pues, una **conclusión combinada**: completitud aporta existencia y el resultado previo de §1.3 aporta unicidad.
+
 Conviene observar también qué **no** forma parte de las hipótesis. No necesitamos que $A$ esté acotado inferiormente. Por ejemplo,
 
 $$
 A=(-\infty,0]
 $$
 
-es no vacío y está acotado superiormente por $0$, aunque no está acotado inferiormente. La completitud se aplica igualmente y garantiza la existencia de su supremo.
+es no vacío y está acotado superiormente en $\mathbb R$ por $0$, aunque no está acotado inferiormente. La completitud se aplica igualmente.
 
 Veamos ahora dos fallos de hipótesis.
 
@@ -312,17 +320,27 @@ $$
 
 la no vacuidad sí se cumple, pero no existe ninguna cota superior real. Por tanto, tampoco podemos invocar completitud.
 
-En ambos casos la conclusión del axioma queda fuera de alcance. Lógicamente, **no poder aplicar un teorema no equivale por sí solo a haber demostrado la negación de su conclusión**; cualquier afirmación adicional deberá justificarse por otro argumento.
+En ambos casos la conclusión del axioma queda fuera de alcance. Lógicamente,
+
+$$
+\boxed{
+\text{no poder aplicar un teorema}
+\not\Longrightarrow
+\text{haber demostrado la negación de su conclusión}.
+}
+$$
+
+Cualquier afirmación adicional deberá justificarse por otro argumento.
 
 Hay otras tres cosas que el axioma tampoco afirma.
 
-Primero, no dice que el supremo pertenezca al conjunto. Para
+**Primero, no dice que el supremo pertenezca al conjunto.** Para
 
 $$
 A=(0,1),
 $$
 
-la completitud garantiza la existencia del supremo, y ya demostramos que
+la completitud garantiza la existencia de un supremo real, y ya demostramos que
 
 $$
 \sup A=1,
@@ -342,7 +360,7 @@ $$
 }
 $$
 
-Segundo, el axioma no **calcula** el supremo. Puede garantizar que existe un número
+**Segundo, el axioma no calcula el supremo.** Puede garantizar que existe un número
 
 $$
 s=\sup A
@@ -350,17 +368,17 @@ $$
 
 sin proporcionar una fórmula explícita para $s$.
 
-Tercero, tampoco entrega automáticamente propiedades adicionales del objeto construido. Si más adelante definimos un conjunto mediante una ecuación o una desigualdad y obtenemos su supremo por completitud, todavía tendremos que demostrar por separado que esa frontera posee la propiedad concreta que buscamos.
+**Tercero, tampoco entrega automáticamente propiedades adicionales del objeto construido.** Si más adelante definimos un conjunto mediante una ecuación o una desigualdad y obtenemos su supremo por completitud, todavía tendremos que demostrar por separado que esa frontera posee la propiedad concreta que buscamos.
 
 ::: {.callout-important title="Protocolo de uso de completitud"}
 Antes de escribir «por completitud», audite:
 
 1. **ambiente:** ¿el conjunto está siendo considerado dentro de $\mathbb R$?;
 2. **testigo:** ¿hemos exhibido al menos un elemento del conjunto?;
-3. **cota:** ¿hemos exhibido una cota superior real?;
-4. **conclusión exacta:** ¿estamos usando el axioma solamente para afirmar la existencia del supremo?
+3. **cota:** ¿hemos exhibido una cota superior en $\mathbb R$?;
+4. **conclusión exacta:** ¿estamos usando el axioma solamente para afirmar existencia?
 
-Cualquier identificación posterior del supremo requiere trabajo adicional.
+Si después escribimos «existe un único supremo», la unicidad proviene del resultado ya demostrado en §1.3. Cualquier identificación o propiedad adicional del supremo requiere trabajo posterior.
 :::
 
 El axioma está formulado de manera unilateral, para cotas superiores. En el microtramo siguiente veremos que no hace falta postular por separado la existencia de ínfimos: la versión inferior puede deducirse de esta misma propiedad.
