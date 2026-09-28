@@ -391,47 +391,127 @@ Para $A=(0,1)$ sabemos, en cambio, que no hay máximo. Todavía falta justificar
 
 ### Por qué $1$ es realmente el supremo de $(0,1)$
 
-Ya sabemos que $1$ es una cota superior. Falta demostrar que es la menor.
+Probemos ahora las dos cláusulas de la definición de supremo.
 
-Sea $u$ una cota superior cualquiera de $(0,1)$. Como $1/2\in(0,1)$, necesariamente
-
-$$
-u\ge\frac12.
-$$
-
-Supongamos que $u<1$. Entonces
+**1. El número $1$ es una cota superior.** Sea $x\in(0,1)$. Por definición del intervalo,
 
 $$
-b=\frac{u+1}{2}
+0<x<1.
 $$
 
-satisface
+En particular,
+
+$$
+x\le1.
+$$
+
+Como $x$ fue arbitrario,
+
+$$
+\forall x\in(0,1),\qquad x\le1.
+$$
+
+Por tanto, $1$ es una cota superior de $(0,1)$.
+
+**2. Toda cota superior está por encima de $1$.** Sea $u$ una cota superior cualquiera de $(0,1)$. Como
+
+$$
+\frac12\in(0,1),
+$$
+
+la definición de cota superior obliga a que
+
+$$
+\frac12\le u.
+$$
+
+Supongamos, para obtener una contradicción, que
+
+$$
+u<1.
+$$
+
+Definamos
+
+$$
+b=\frac{u+1}{2}.
+$$
+
+De $u<1$, sumando primero $u$ y después $1$, obtenemos
+
+$$
+2u<u+1<2.
+$$
+
+Como $2>0$, al dividir por $2$ resulta
 
 $$
 u<b<1.
 $$
 
-Además, como $u\ge1/2$, tenemos $b>0$, de modo que $b\in(0,1)$. Pero $b>u$, lo que contradice que $u$ fuese una cota superior.
+Además, $u\ge1/2>0$, de modo que $b>u>0$. Por tanto,
 
-Por tanto, toda cota superior $u$ cumple
+$$
+b\in(0,1).
+$$
+
+Pero $b>u$, lo que contradice que $u$ sea una cota superior de $(0,1)$.
+
+La suposición $u<1$ es imposible. Por tricotomía,
 
 $$
 1\le u.
 $$
 
-Como $1$ es una cota superior y es menor o igual que cualquier otra,
+Como $u$ era una cota superior arbitraria, toda cota superior de $(0,1)$ domina a $1$. Junto con la primera parte, esto demuestra
 
 $$
 \boxed{\sup(0,1)=1.}
 $$
 
-La misma idea da
+El argumento inferior es dual, pero podemos dejarlo también explícito. El número $0$ es una cota inferior porque
 
 $$
-\inf(0,1)=0,
+0<x
 $$
 
-aunque ni $0$ ni $1$ pertenezcan al intervalo.
+para todo $x\in(0,1)$. Sea ahora $\ell$ cualquier cota inferior. Como $1/2\in(0,1)$,
+
+$$
+\ell\le\frac12.
+$$
+
+Si supusiéramos $\ell>0$, el número
+
+$$
+c=\frac{\ell}{2}
+$$
+
+satisfaría
+
+$$
+0<c<\ell
+$$
+
+y, como $\ell\le1/2<1$,
+
+$$
+c<1.
+$$
+
+Así $c\in(0,1)$, pero $c<\ell$, contradiciendo que $\ell$ fuera una cota inferior. Por tanto, toda cota inferior satisface
+
+$$
+\ell\le0.
+$$
+
+Concluimos
+
+$$
+\boxed{\inf(0,1)=0.}
+$$
+
+En particular, este intervalo tiene supremo e ínfimo aunque ninguno de los dos pertenezca al conjunto.
 
 ### El supremo es único
 
