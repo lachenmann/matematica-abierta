@@ -1221,35 +1221,76 @@ Como $t<s$ fue arbitrario, esto vale para todo real situado estrictamente por de
 
 ### El punto al que hemos llegado
 
-Desde §2.1 venimos hablando informalmente de una frontera entre dos regiones racionales. Ahora podemos decir exactamente qué tipo de objeto buscamos.
+La pregunta introductoria acerca de $x^2=2$ nos llevó a pensar en una frontera. Ahora disponemos del lenguaje necesario para distinguir tres situaciones que al comienzo podían confundirse.
 
-Un supremo no tiene que ser un elemento del conjunto. Su función es registrar la frontera superior mediante dos propiedades simultáneas:
+Una **cota superior** $M$ satisface
+
+$$
+\forall a\in A,\qquad a\le M,
+$$
+
+pero no necesita pertenecer a $A$.
+
+Un **máximo** $M$ satisface simultáneamente
+
+$$
+M\in A
+\qquad\text{y}\qquad
+\forall a\in A,\ a\le M.
+$$
+
+Un **supremo** $s$ es una cota superior con una exigencia adicional: ninguna otra cota superior puede quedar estrictamente por debajo de él. Cuando existe,
 
 $$
 \boxed{
-\text{está por encima de todo el conjunto}
-\quad+\quad
-\text{no puede bajarse ni una cantidad positiva sin dejar de estarlo}.
+s=\sup A
+\iff
+\begin{cases}
+a\le s & \text{para todo }a\in A,\\
+s\le u & \text{para toda cota superior }u\text{ de }A.
+\end{cases}
 }
 $$
 
-La segunda propiedad se expresa de manera operativa como
+También hemos demostrado que, cuando existe, el supremo es único. Y si además
 
 $$
-\forall\varepsilon>0\;\exists a\in A
+\sup A\in A,
+$$
+
+entonces esa frontera es alcanzada y coincide con el máximo.
+
+La caracterización aproximativa ofrece otra lectura de la misma frontera. Para un conjunto no vacío, una vez que $s$ es cota superior,
+
+$$
+s=\sup A
+$$
+
+equivale a exigir
+
+$$
+\boxed{
+\forall\varepsilon>0\;\exists a_\varepsilon\in A
 \qquad
-s-\varepsilon<a\le s.
+s-\varepsilon<a_\varepsilon\le s.
+}
 $$
 
-Pero hemos definido el supremo **condicionalmente**: hemos dicho qué debe cumplir si existe.
+Así, el supremo puede no pertenecer al conjunto, pero ningún descenso positivo desde $s$ sigue quedando por encima de todos sus elementos.
 
-Nos falta la pregunta decisiva:
+Hay, sin embargo, una cuestión que §1.3 **no** ha resuelto. Todas estas afirmaciones nos permiten reconocer, comparar y caracterizar un supremo **si existe**; no garantizan todavía su existencia.
 
-> si un subconjunto no vacío de $\mathbb R$ está acotado superiormente, ¿tenemos siempre derecho a afirmar que existe una menor cota superior real?
+La pregunta decisiva queda entonces formulada con precisión:
 
-La respuesta será sí, pero no se deduce de los axiomas de cuerpo y orden estudiados hasta ahora. De hecho, §2.1 ya nos mostró un sistema —$\mathbb Q$— donde esa garantía falla.
+> si $A\subseteq\mathbb R$ es no vacío y está acotado superiormente, ¿existe necesariamente una menor cota superior real?
 
-En §2.5 formularemos por fin la propiedad adicional que distingue a la recta real:
+Los axiomas de cuerpo y orden no bastan para responder afirmativamente. En §1.4 veremos de manera concreta qué puede fallar dentro de $\mathbb Q$ mediante la ecuación
+
+$$
+x^2=2,
+$$
+
+y en §1.5 incorporaremos la propiedad adicional de $\mathbb R$ que garantiza la existencia de esas fronteras bajo las hipótesis apropiadas:
 
 $$
 \boxed{\text{la completitud}.}
