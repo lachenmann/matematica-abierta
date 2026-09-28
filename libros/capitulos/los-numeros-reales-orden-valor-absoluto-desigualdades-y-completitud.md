@@ -4253,7 +4253,7 @@ Por tanto, $d(x,y)=|x-y|$ posee las cuatro propiedades fundamentales de una dist
 
 ### La desigualdad triangular inversa
 
-La desigualdad triangular también permite comparar las distancias de dos puntos al origen.
+La desigualdad triangular también permite controlar cuánto pueden cambiar las distancias al comparar dos puntos.
 
 ::: {#cor-t1-0001}
 **Desigualdad triangular inversa.** Para cualesquiera $x,y\in\mathbb R$,
@@ -4274,22 +4274,28 @@ Por la desigualdad triangular,
 $$
 |x|
 \le
-|x-y|+|y|.
+|x-y|+|y|,
 $$
 
-Restando $|y|$ obtenemos
+y por tanto
 
 $$
 |x|-|y|\le|x-y|.
 $$
 
-Si intercambiamos $x$ e $y$,
+Intercambiando $x$ e $y$ obtenemos
 
 $$
 |y|-|x|\le|y-x|=|x-y|.
 $$
 
-Las dos desigualdades juntas dicen
+Para convertir esta segunda desigualdad en una cota inferior de $|x|-|y|$, multiplicamos por $-1$ e invertimos el orden:
+
+$$
+-|x-y|\le |x|-|y|.
+$$
+
+Junto con la primera cota,
 
 $$
 -|x-y|
@@ -4299,24 +4305,46 @@ $$
 |x-y|.
 $$
 
-Por la caracterización del valor absoluto,
+Como $|x-y|\ge0$, la caracterización no estricta de @prp-t1-0008, aplicada a la cantidad $|x|-|y|$, da
 
 $$
+\boxed{
 \bigl||x|-|y|\bigr|\le|x-y|.
+}
 $$
 
 $\blacksquare$
 
-::: {.callout-note title="Por qué importa"}
-La desigualdad triangular ordinaria controla la distancia de una **suma**. La inversa controla cuánto pueden diferir dos **magnitudes**:
+::: {.callout-note title="Lectura métrica"}
+Como
 
 $$
-\bigl||x|-|y|\bigr|
-\le
-|x-y|.
+d(x,0)=|x|,
+\qquad
+d(y,0)=|y|,
 $$
 
-Dicho en lenguaje geométrico: la diferencia entre las distancias de $x$ e $y$ al origen nunca puede superar la distancia entre $x$ e $y$.
+la desigualdad triangular inversa puede escribirse como
+
+$$
+\bigl|d(x,0)-d(y,0)\bigr|\le d(x,y).
+$$
+
+Más generalmente, fijado cualquier $c\in\mathbb R$, la misma desigualdad aplicada a $x-c$ e $y-c$ produce
+
+$$
+\boxed{
+\bigl|d(x,c)-d(y,c)\bigr|\le d(x,y).
+}
+$$
+
+En efecto,
+
+$$
+(x-c)-(y-c)=x-y.
+$$
+
+Así, cambiar el punto desde $x$ hasta $y$ no puede modificar su distancia a un mismo punto de referencia $c$ en una cantidad mayor que la propia distancia entre $x$ e $y$.
 :::
 
 ### Una desigualdad centrada en un punto
