@@ -1593,32 +1593,71 @@ Ya disponemos del vocabulario necesario para formular la respuesta. La propiedad
 
 ### Qué nos llevamos a la sección siguiente
 
-Esta primera sección ha producido cuatro hechos conceptuales.
+El estudio del hueco racional deja cuatro conclusiones que conviene mantener separadas.
 
-Primero, los racionales son algebraicamente ricos pero no bastan para resolver todas las ecuaciones geométricamente naturales: hemos demostrado que
-
-$$
-q^2\ne2
-\qquad
-\text{para todo }q\in\mathbb Q.
-$$
-
-Segundo, el problema no desaparece por la densidad elemental de los racionales. Poder insertar siempre otro racional entre dos racionales no garantiza que todo conjunto racional posea el punto frontera que su orden sugiere.
-
-Tercero, el ejemplo de Rudin nos ha enseñado una técnica de construcción que vale por sí misma:
+**Primera.** Hemos demostrado una inexistencia precisa dentro de $\mathbb Q$:
 
 $$
 \boxed{
-\text{defecto}
-\to
-\text{corrección dirigida}
-\to
-\text{control del invariante}
-\to
-\text{nuevo objeto}
+\forall q\in\mathbb Q,
+\qquad
+q^2\ne2.
 }
 $$
 
-Cuarto, todavía no tenemos derecho a decir que el hueco ha sido llenado. Para ello necesitamos especificar qué estructura tendrán los números reales y qué propiedad adicional distinguirá a $\mathbb R$ de $\mathbb Q$.
+Esta afirmación no contiene todavía una prueba de que exista algún número real cuyo cuadrado sea $2$.
 
-La próxima sección comenzará ese trabajo. Presentaremos a $\mathbb R$ como un **cuerpo ordenado** y deduciremos cuidadosamente las reglas de desigualdad que hasta ahora hemos usado de manera familiar. Solo después estaremos preparados para formular con precisión qué significa que un conjunto tenga una frontera y, finalmente, qué significa que la recta real sea completa.
+**Segunda.** La densidad elemental de los racionales no resuelve el problema de las fronteras. Saber que entre dos racionales distintos existe otro racional responde a una pregunta sobre **puntos intermedios**. Preguntar si un conjunto no vacío y acotado superiormente posee una **menor cota superior dentro del mismo sistema** es una pregunta distinta.
+
+En particular, para
+
+$$
+S_{\mathbb Q}
+=
+\{q\in\mathbb Q:q\ge0,\ q^2<2\},
+$$
+
+la cuestión pendiente es
+
+$$
+\boxed{
+\text{¿existe }\sup_{\mathbb Q}S_{\mathbb Q}\text{?}
+}
+$$
+
+**Tercera.** El ejemplo de Rudin ha dejado una técnica de construcción reutilizable:
+
+$$
+\boxed{
+\text{medir el defecto}
+\to
+\text{corregir en la dirección adecuada}
+\to
+\text{controlar dominio y signo}
+\to
+\text{producir un nuevo punto sin cruzar la frontera}.
+}
+$$
+
+La fórmula concreta importa menos que esta arquitectura: una construcción útil debe satisfacer simultáneamente todas las condiciones exigidas por el problema.
+
+**Cuarta.** La deuda de existencia permanece abierta. Hasta aquí la estructura de cuerpo ordenado nos ha permitido formular el problema y analizarlo, pero no nos ha proporcionado todavía el punto frontera buscado en $\mathbb R$.
+
+La secuencia lógica de las dos secciones siguientes será deliberadamente separada. En §1.5 formularemos el **axioma de completitud** y volveremos a $S_{\mathbb Q}$ para demostrar formalmente que no posee supremo racional. Después consideraremos la región análoga dentro de $\mathbb R$ y la completitud garantizará la existencia de un supremo real.
+
+Eso todavía no bastará para resolver la ecuación. En §1.6 deberemos identificar la frontera obtenida y demostrar, sin continuidad ni límites, que su cuadrado es exactamente $2$.
+
+Podemos resumir el tránsito así:
+
+$$
+\boxed{
+\text{pregunta por el fallo en }\mathbb Q
+\to
+\text{completitud de }\mathbb R
+\to
+\text{existencia de una frontera real}
+\to
+\text{identificación de esa frontera}.
+}
+$$
+
