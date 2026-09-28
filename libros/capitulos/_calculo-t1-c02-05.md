@@ -946,45 +946,192 @@ $$
 \boxed{s^2<2\text{ es imposible}.}
 $$
 
-**Caso 2: $s^2>2$.** Ahora
+**Caso 2: $s^2>2$.** Entonces
 
 $$
-T(s)<s
+2-s^2<0.
 $$
 
-y
+Como ya sabemos que
 
 $$
-T(s)^2>2.
+s+2>0,
 $$
 
-Afirmamos que $T(s)$ sigue siendo una cota superior de $S_{\mathbb Q}$. En efecto, si existiera $q\in S_{\mathbb Q}$ con
+la identidad
 
 $$
-q\ge T(s),
+T(s)-s
+=
+\frac{2-s^2}{s+2}
 $$
 
-entonces, como $q\ge0$ y $T(s)>0$, la monotonía del cuadrado en $[0,\infty)$ daría
+da
 
 $$
-q^2\ge T(s)^2>2,
+T(s)-s<0.
 $$
 
-contradiciendo $q^2<2$.
-
-Así, todo $q\in S_{\mathbb Q}$ satisface
+Por definición del orden,
 
 $$
-q<T(s).
+\boxed{T(s)<s}.
 $$
 
-Por consiguiente, $T(s)$ es una cota superior racional de $S_{\mathbb Q}$ y
+La segunda identidad controla ahora el lado de la frontera. De
+
+$$
+s^2>2
+$$
+
+se sigue
+
+$$
+s^2-2>0.
+$$
+
+Además,
+
+$$
+\frac{2}{(s+2)^2}>0.
+$$
+
+Por tanto,
+
+$$
+T(s)^2-2
+=
+\frac{2(s^2-2)}{(s+2)^2}
+>0,
+$$
+
+y así
+
+$$
+\boxed{T(s)^2>2}.
+$$
+
+Hasta aquí solo sabemos que $T(s)$ es un racional positivo situado por encima del nivel $2$ y que además
 
 $$
 T(s)<s.
 $$
 
-Esto contradice que $s$ sea la **menor** cota superior.
+Para contradecir la **minimalidad** de $s$ todavía debemos demostrar que $T(s)$ es una cota superior de $S_{\mathbb Q}$.
+
+Sea, pues,
+
+$$
+q\in S_{\mathbb Q}
+$$
+
+arbitrario. Entonces
+
+$$
+q\ge0
+\qquad\text{y}\qquad
+q^2<2.
+$$
+
+Supongamos, para obtener una contradicción, que
+
+$$
+q\ge T(s).
+$$
+
+Ya demostramos antes de separar los casos que
+
+$$
+T(s)>0.
+$$
+
+Por tanto,
+
+$$
+0<T(s)\le q.
+$$
+
+La monotonía del cuadrado en los no negativos, @prp-t1-0007, implica
+
+$$
+T(s)^2\le q^2.
+$$
+
+Pero acabamos de demostrar
+
+$$
+T(s)^2>2,
+$$
+
+mientras que la pertenencia $q\in S_{\mathbb Q}$ exige
+
+$$
+q^2<2.
+$$
+
+Obtendríamos entonces
+
+$$
+2<T(s)^2\le q^2<2,
+$$
+
+una contradicción.
+
+Así, la suposición $q\ge T(s)$ es imposible y necesariamente
+
+$$
+q<T(s).
+$$
+
+Como $q\in S_{\mathbb Q}$ era arbitrario,
+
+$$
+\boxed{
+\forall q\in S_{\mathbb Q},
+\qquad
+q<T(s).
+}
+$$
+
+En particular,
+
+$$
+\forall q\in S_{\mathbb Q},
+\qquad
+q\le T(s).
+$$
+
+Por tanto, $T(s)$ es una cota superior de $S_{\mathbb Q}$. Y, como ya establecimos que
+
+$$
+T(s)\in\mathbb Q,
+$$
+
+se trata de una **cota superior racional**.
+
+Ahora entra la segunda cláusula de
+
+$$
+s=\sup_{\mathbb Q}S_{\mathbb Q}.
+$$
+
+Como $T(s)\in\mathbb Q$ es una cota superior racional, la minimalidad de $s$ obliga a que
+
+$$
+s\le T(s).
+$$
+
+Pero antes habíamos obtenido
+
+$$
+T(s)<s.
+$$
+
+Las dos desigualdades son incompatibles. Por tanto,
+
+$$
+\boxed{s^2>2\text{ es imposible}.}
+$$
 
 **Caso 3: $s^2=2$.** Este caso es imposible porque en §2.1 demostramos que ningún número racional tiene cuadrado igual a $2$.
 
