@@ -596,38 +596,124 @@ Todavía no sabemos si $q$ pertenece a $A$ o a $B$. Para decidirlo faltan dos co
 
 #### Segunda pregunta: ¿q se mueve en la dirección correcta?
 
-Restemos $p$:
+Comparemos ahora $q$ con el punto de partida $p$. Como
+
+$$
+q=\frac{2(p+1)}{p+2},
+$$
+
+podemos escribir
 
 $$
 \begin{aligned}
 q-p
 &=
--\frac{p^2-2}{p+2}\\
+\frac{2(p+1)}{p+2}-p\\
+&=
+\frac{2(p+1)-p(p+2)}{p+2}\\
+&=
+\frac{2+2p-p^2-2p}{p+2}\\
 &=
 \frac{2-p^2}{p+2}.
 \end{aligned}
 $$
 
-Como $p+2>0$, el signo de $q-p$ es exactamente el signo de $2-p^2$.
+La hipótesis $p>0$ ya nos dio
 
-Por tanto:
+$$
+p+2>0.
+$$
 
-- si $p^2<2$, entonces $2-p^2>0$ y $q-p>0$, de modo que $q>p$;
-- si $p^2>2$, entonces $2-p^2<0$ y $q-p<0$, de modo que $q<p$.
+Por tanto, dividir por $p+2$ **no cambia el signo**: el signo de $q-p$ es exactamente el signo de $2-p^2$.
 
-La fórmula mueve a $p$ **hacia** el borde que separa $p^2<2$ de $p^2>2$.
+Si $p\in A$, entonces
 
-Pero todavía falta algo esencial. Moverse en la dirección correcta no garantiza que no atravesemos el borde.
+$$
+p^2<2,
+$$
 
-Por ejemplo, si partiéramos de $p=1$ y usáramos la corrección ingenua
+de modo que
+
+$$
+2-p^2>0.
+$$
+
+Así,
+
+$$
+q-p>0,
+$$
+
+y por definición del orden
+
+$$
+\boxed{p<q}.
+$$
+
+Si, en cambio, $p\in B$, entonces
+
+$$
+p^2>2,
+$$
+
+por lo que
+
+$$
+2-p^2<0.
+$$
+
+En consecuencia,
+
+$$
+q-p<0,
+$$
+
+y por tanto
+
+$$
+\boxed{q<p}.
+$$
+
+Como ningún racional positivo satisface $p^2=2$, el numerador $2-p^2$ nunca es $0$ para los valores de $p$ que estamos considerando. Por ello el desplazamiento es siempre **estricto**.
+
+Hemos demostrado hasta aquí exactamente
+
+$$
+\boxed{
+\begin{aligned}
+p\in A&\Longrightarrow p<q,\\
+p\in B&\Longrightarrow q<p.
+\end{aligned}
+}
+$$
+
+La transformación se mueve, pues, en la dirección correcta: hacia la derecha desde $A$ y hacia la izquierda desde $B$.
+
+Pero esta información todavía no basta para concluir
+
+$$
+q\in A
+\qquad\text{o}\qquad
+q\in B
+$$
+
+en el caso correspondiente. Moverse en la dirección adecuada no garantiza que no atravesemos la frontera.
+
+Por ejemplo, si partiéramos de $p=1$ y utilizáramos la corrección ingenua
 
 $$
 p+(2-p^2),
 $$
 
-obtendríamos $2$, cuyo cuadrado es $4$. Nos habríamos pasado al otro lado.
+obtendríamos
 
-Así que necesitamos controlar no solo la dirección del movimiento, sino también el lado en el que termina $q$.
+$$
+1+(2-1)=2,
+$$
+
+cuyo cuadrado es $4>2$. La dirección del movimiento era correcta, pero el paso fue demasiado grande y terminó al otro lado.
+
+Por tanto, queda una tercera obligación: demostrar que la transformación de Rudin **conserva el lado** de la frontera en el que comenzó $p$.
 
 #### Tercera pregunta: ¿q permanece en el mismo lado?
 
