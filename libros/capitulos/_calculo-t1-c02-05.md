@@ -1133,9 +1133,70 @@ $$
 \boxed{s^2>2\text{ es imposible}.}
 $$
 
-**Caso 3: $s^2=2$.** Este caso es imposible porque en §2.1 demostramos que ningún número racional tiene cuadrado igual a $2$.
+**Caso 3: $s^2=2$.** Recordemos que, desde el comienzo de la contradicción, hemos supuesto
 
-Los tres casos conducen a contradicción. Por tanto, $S_{\mathbb Q}$ no posee supremo en $\mathbb Q$. $\blacksquare$
+$$
+s\in\mathbb Q.
+$$
+
+Pero en §1.4 demostramos
+
+$$
+\forall q\in\mathbb Q,
+\qquad
+q^2\ne2.
+$$
+
+Particularizando esa afirmación en el racional $s$, obtenemos
+
+$$
+s^2\ne2.
+$$
+
+Esto contradice directamente la hipótesis del caso. Por tanto,
+
+$$
+\boxed{s^2=2\text{ es imposible}.}
+$$
+
+La tricotomía aplicada a $s^2$ y $2$ afirma que ocurre exactamente una de las tres posibilidades
+
+$$
+s^2<2,
+\qquad
+s^2=2,
+\qquad
+s^2>2.
+$$
+
+Hemos demostrado que las tres son imposibles bajo la suposición
+
+$$
+s=\sup_{\mathbb Q}S_{\mathbb Q}.
+$$
+
+Por tanto, esa suposición inicial debe ser falsa:
+
+$$
+\boxed{
+\neg\exists s\in\mathbb Q
+\text{ tal que }
+s=\sup_{\mathbb Q}S_{\mathbb Q}.
+}
+$$
+
+Equivalentemente,
+
+$$
+\boxed{
+S_{\mathbb Q}
+\text{ no posee supremo en }\mathbb Q.
+}
+$$
+
+Junto con la no vacuidad y la acotación superior ya demostradas, concluimos que $\mathbb Q$ falla la propiedad del supremo.
+
+$\blacksquare$
 
 ### Qué hizo realmente la transformación de Rudin
 
