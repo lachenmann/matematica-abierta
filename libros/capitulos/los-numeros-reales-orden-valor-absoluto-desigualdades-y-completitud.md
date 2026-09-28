@@ -4944,6 +4944,14 @@ $$
 
 La primera condición es precisamente la que una cota superior arbitraria no necesita satisfacer.
 
+Máximo y mínimo, cuando existen, son únicos. En efecto, si $M$ y $N$ fueran dos máximos de $A$, entonces $M,N\in A$; como $M$ es máximo, $N\le M$, y como $N$ es máximo, $M\le N$. Por antisimetría,
+
+$$
+M=N.
+$$
+
+El argumento para el mínimo es dual. Por eso las notaciones $\max A$ y $\min A$ designan, cuando existen, números determinados.
+
 ::: {#exm-t1-0014}
 **Una cota superior que no es máximo.** Consideremos
 
@@ -4954,19 +4962,35 @@ $$
 El número $1$ es una cota superior de $A$, pero $A$ no tiene máximo.
 :::
 
-**¿Por qué no hay máximo?** Tomemos un elemento cualquiera $a\in(0,1)$. Como $a<1$, el punto medio entre $a$ y $1$,
+**¿Por qué no hay máximo?** Tomemos un elemento cualquiera $a\in(0,1)$. Como $a<1$, al sumar $a$ y después $1$ obtenemos
 
 $$
-b=\frac{a+1}{2},
+2a<a+1<2.
 $$
 
-satisface
+Dividiendo por $2>0$,
 
 $$
-a<b<1.
+a<\frac{a+1}{2}<1.
 $$
 
-Por tanto, $b\in A$ y $b>a$. Ningún elemento de $A$ puede ser el mayor, porque desde cualquiera de ellos podemos construir otro elemento del conjunto situado más a la derecha.
+Definamos
+
+$$
+b=\frac{a+1}{2}.
+$$
+
+Entonces $b\in A$ y $b>a$.
+
+Como el punto $a\in A$ fue arbitrario, hemos probado
+
+$$
+\forall a\in A\;\exists b\in A
+\qquad
+a<b.
+$$
+
+Por tanto, ningún elemento de $A$ puede ser máximo: desde cualquiera de ellos podemos construir otro elemento permitido situado más a la derecha.
 
 Observa la diferencia:
 
