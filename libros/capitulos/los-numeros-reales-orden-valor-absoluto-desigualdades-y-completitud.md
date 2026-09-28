@@ -7944,50 +7944,88 @@ El paso siguiente consistirá en incorporar, para $\mathbb R$, la afirmación de
 
 ### El axioma de completitud {#sec-t1-c02-completeness-axiom}
 
-Adoptaremos como propiedad fundamental de $\mathbb R$ el siguiente enunciado.
+La pregunta abierta al final del microtramo anterior era:
+
+$$
+A\ne\varnothing,
+\qquad
+A\text{ acotado superiormente}
+\quad\stackrel{?}{\Longrightarrow}\quad
+\exists s\in\mathbb R\;P_A(s).
+$$
+
+La propiedad adicional que adoptaremos para $\mathbb R$ responde afirmativamente a esa pregunta.
 
 ::: {.callout-important title="Axioma de completitud"}
 Todo subconjunto no vacío $A\subseteq\mathbb R$ que esté acotado superiormente posee un supremo en $\mathbb R$.
 
-En símbolos, si
+En símbolos,
 
 $$
+\boxed{
 A\ne\varnothing
+\quad\text{y}\quad
+\exists M\in\mathbb R\;
+\forall a\in A,\ a\le M
+\quad\Longrightarrow\quad
+\exists s\in\mathbb R\;P_A(s).
+}
 $$
 
-y existe $M\in\mathbb R$ tal que
-
-$$
-a\le M
-\qquad\text{para todo }a\in A,
-$$
-
-entonces existe $s\in\mathbb R$ tal que
+Equivalentemente, existe $s\in\mathbb R$ tal que
 
 $$
 s=\sup A.
 $$
 :::
 
-La fuerza del axioma está en una sola palabra: **existe**.
+La fuerza nueva del axioma está en el cuantificador
 
-Antes de §1.5 podíamos decir:
+$$
+\boxed{\exists s\in\mathbb R.}
+$$
 
-> si $A$ tiene supremo, entonces ese supremo es único y puede caracterizarse mediante cotas y aproximación desde abajo.
+La definición de supremo ya nos decía qué debía satisfacer un candidato; la completitud afirma que, bajo las hipótesis
 
-Ahora podemos añadir:
+$$
+A\ne\varnothing
+$$
 
-> si $A\subseteq\mathbb R$ es no vacío y está acotado superiormente, entonces ese supremo existe.
+y
 
-Por tanto,
+$$
+A\text{ acotado superiormente},
+$$
+
+ese candidato **existe dentro de $\mathbb R$**.
+
+Además, en §1.3 ya demostramos que el supremo, si existe, es único. Por tanto, combinando aquella unicidad con el axioma de completitud obtenemos inmediatamente
 
 $$
 \boxed{
-A\ne\varnothing
-\quad+\quad
+A\ne\varnothing,
+\quad
+A\subseteq\mathbb R,
+\quad
 A\text{ acotado superiormente}
 \quad\Longrightarrow\quad
-\exists\sup A\in\mathbb R.
+\exists!\,s\in\mathbb R
+\text{ tal que }
+s=\sup A.
+}
+$$
+
+Así, la completitud no redefine la noción de supremo. Añade exactamente la garantía de existencia que faltaba:
+
+$$
+\boxed{
+\text{definición}
++
+\text{unicidad}
++
+\text{completitud}
+\quad\Longrightarrow\quad
+\text{existencia y unicidad del supremo}.
 }
 $$
 
