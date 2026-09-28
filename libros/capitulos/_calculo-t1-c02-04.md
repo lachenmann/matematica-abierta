@@ -243,7 +243,47 @@ i=\inf A.
 $$
 :::
 
-Conviene leer lentamente estas definiciones.
+Conviene leer lentamente estas definiciones. En la definición de supremo intervienen dos comparaciones universales distintas. La primera dice
+
+$$
+\forall a\in A,\qquad a\le s,
+$$
+
+y compara el candidato $s$ con los **elementos del conjunto**. La segunda puede escribirse
+
+$$
+\forall u\in\mathbb R,
+\qquad
+\left[
+\bigl(\forall a\in A,\ a\le u\bigr)
+\Longrightarrow
+s\le u
+\right],
+$$
+
+y compara $s$ con **todas las cotas superiores** posibles.
+
+Por tanto, demostrar que $s=\sup A$ exige dos trabajos diferentes:
+
+$$
+\boxed{
+\text{$s$ domina a todos los elementos de $A$}
+\quad+\quad
+\text{toda cota superior domina a $s$}.
+}
+$$
+
+La lectura del ínfimo es exactamente dual:
+
+$$
+\forall a\in A,\qquad i\le a,
+$$
+
+y, para toda cota inferior $\ell$,
+
+$$
+\ell\le i.
+$$
 
 El supremo no es «el número más grande del conjunto». Esa frase describe, cuando existe, al **máximo**.
 
