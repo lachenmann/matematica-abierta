@@ -2,7 +2,7 @@
 
 ### Del orden a la distancia
 
-En §2.2 aprendimos a comparar números: sabemos qué significa que uno esté a la izquierda de otro y qué operaciones preservan o invierten una desigualdad. Pero el cálculo necesitará algo más fino que decidir cuál de dos números es mayor.
+En §1.1 aprendimos a comparar números: sabemos qué significa que uno esté a la izquierda de otro y qué operaciones preservan o invierten una desigualdad. Pero el cálculo necesitará algo más fino que decidir cuál de dos números es mayor.
 
 Necesitaremos responder preguntas como estas:
 
@@ -23,6 +23,8 @@ x, & x\ge0,\\
 -x, & x<0.
 \end{cases}
 $$
+
+La definición está bien determinada porque, por tricotomía, todo real satisface exactamente una de las condiciones $x\ge0$ o $x<0$. En particular, $x=0$ pertenece únicamente a la primera rama.
 
 El número $|x|$ representa la distancia de $x$ al origen sobre la recta real.
 :::
@@ -62,9 +64,7 @@ Para cualesquiera $x,y\in\mathbb R$ se cumplen las siguientes propiedades:
    $$
 :::
 
-**Demostración.** Las tres primeras afirmaciones se leen directamente de la definición por casos.
-
-Si $x\ge0$, entonces $|x|=x$; si $x<0$, entonces $|x|=-x>0$. Esto demuestra $|x|\ge0$, y la igualdad solo puede ocurrir cuando $x=0$. La igualdad $|-x|=|x|$ expresa algebraicamente que $x$ y $-x$ están a la misma distancia de $0$. Finalmente, tanto si $x\ge0$ como si $x<0$, se verifica
+**Demostración.** Las tres primeras afirmaciones se obtienen directamente de la definición por casos. Si $x\ge0$, entonces $|x|=x$; si $x<0$, entonces $|x|=-x>0$. De aquí se sigue $|x|\ge0$, y la igualdad ocurre exactamente cuando $x=0$. Aplicando la misma definición a $-x$ se obtiene $|-x|=|x|$, y en ambos casos
 
 $$
 -|x|\le x\le|x|.
@@ -88,19 +88,43 @@ $$
 |xy|=-xy=x(-y)=|x|\,|y|.
 $$
 
-El caso restante es simétrico. Por tanto, en todos los casos,
+El caso restante es simétrico. Por tanto,
 
 $$
 |xy|=|x|\,|y|.
 $$
 
-Consideremos ahora $a\ge0$. Si $|x|\le a$, entonces, usando
+Consideremos ahora $a\ge0$. Supongamos primero
+
+$$
+|x|\le a.
+$$
+
+Como ya sabemos que
 
 $$
 -|x|\le x\le|x|,
 $$
 
-obtenemos inmediatamente
+la desigualdad $|x|\le a$ da inmediatamente
+
+$$
+x\le|x|\le a.
+$$
+
+Al multiplicar $|x|\le a$ por $-1$, el orden se invierte:
+
+$$
+-a\le-|x|.
+$$
+
+Junto con $-|x|\le x$, obtenemos
+
+$$
+-a\le x.
+$$
+
+Por tanto,
 
 $$
 -a\le x\le a.
@@ -112,7 +136,59 @@ $$
 -a\le x\le a.
 $$
 
-Si $x\ge0$, entonces $|x|=x\le a$. Si $x<0$, de $-a\le x$ se sigue, al multiplicar por $-1$, que $-x\le a$; por tanto $|x|=-x\le a$. Esto demuestra la equivalencia no estricta. El argumento para desigualdades estrictas es idéntico. $\blacksquare$
+Si $x\ge0$, entonces $|x|=x\le a$. Si $x<0$, de $-a\le x$ se sigue, al multiplicar por $-1$, que $-x\le a$; como $|x|=-x$, también $|x|\le a$. Así,
+
+$$
+|x|\le a
+\iff
+-a\le x\le a.
+$$
+
+Para la versión estricta supongamos $a>0$. Si
+
+$$
+|x|<a,
+$$
+
+entonces
+
+$$
+x\le|x|<a,
+$$
+
+de modo que $x<a$. Además, al negar $|x|<a$ obtenemos
+
+$$
+-a<-|x|,
+$$
+
+y como $-|x|\le x$,
+
+$$
+-a<x.
+$$
+
+Luego
+
+$$
+-a<x<a.
+$$
+
+Recíprocamente, si
+
+$$
+-a<x<a,
+$$
+
+entonces, si $x\ge0$, tenemos $|x|=x<a$; y si $x<0$, de $-a<x$ se sigue $-x<a$, por lo que $|x|=-x<a$. En consecuencia,
+
+$$
+|x|<a
+\iff
+-a<x<a.
+$$
+
+$\blacksquare$
 
 ::: {.callout-note title="Lectura de la fórmula"}
 La equivalencia
