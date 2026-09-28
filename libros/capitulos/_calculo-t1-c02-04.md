@@ -1132,16 +1132,52 @@ $$
 
 Determina $\sup A$, $\inf A$ y decide si existen máximo y mínimo.
 
-**Respuesta.** El extremo superior es $3$, que no pertenece al conjunto, de modo que
+**Respuesta.** Todo elemento de $A$ es menor o igual que $3$, de modo que $3$ es una cota superior.
+
+Para demostrar que es la menor, sea $\varepsilon>0$ y definamos
 
 $$
-\sup A=3
+\delta=\min\left\{\frac{\varepsilon}{2},\frac12\right\}>0,
+\qquad
+a=3-\delta.
 $$
 
-y no hay máximo. El extremo inferior es $-2$ y sí pertenece a $A$, por lo que
+Como $\delta\le1/2$,
 
 $$
-\inf A=\min A=-2.
+\frac52\le a<3,
+$$
+
+así que $a\in(1,3)\subset A$. Además, $\delta<\varepsilon$, y por tanto
+
+$$
+3-\varepsilon<a\le3.
+$$
+
+La caracterización aproximativa @prp-t1-0010 da entonces
+
+$$
+\boxed{\sup A=3}.
+$$
+
+Como $3\notin A$, el resultado «máximo $\Leftrightarrow$ supremo perteneciente al conjunto» muestra que $A$ no tiene máximo.
+
+En el extremo inferior, todo elemento de $A$ satisface
+
+$$
+-2\le a,
+$$
+
+y además $-2\in A$. Por tanto,
+
+$$
+\boxed{\min A=-2}.
+$$
+
+Todo mínimo es también el ínfimo, luego
+
+$$
+\boxed{\inf A=\min A=-2}.
 $$
 :::
 
@@ -1152,13 +1188,35 @@ $$
 t<a\le s.
 $$
 
-**Respuesta.** Toma $\varepsilon=s-t>0$. La caracterización aproximativa del supremo produce $a\in A$ con
+**Respuesta.** Sea $t<s$ arbitrario. Entonces
+
+$$
+\varepsilon=s-t>0.
+$$
+
+La caracterización aproximativa del supremo produce un elemento $a\in A$ tal que
 
 $$
 s-\varepsilon<a\le s.
 $$
 
-Como $s-\varepsilon=t$, obtenemos la afirmación deseada.
+Como
+
+$$
+s-\varepsilon
+=
+s-(s-t)
+=
+t,
+$$
+
+obtenemos
+
+$$
+t<a\le s.
+$$
+
+Como $t<s$ fue arbitrario, esto vale para todo real situado estrictamente por debajo de $s$.
 :::
 
 ### El punto al que hemos llegado
