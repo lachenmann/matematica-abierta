@@ -1474,32 +1474,122 @@ El paso a $\mathbb R$ no consistirá, por tanto, en «rellenar espacios visibles
 
 ### Una segunda lectura del ejemplo de Rudin
 
-Vale la pena resumir ahora qué habilidades estaban comprimidas en aquellas pocas líneas del ejemplo clásico.
+El ejemplo clásico comprime mucho más que una manipulación ingeniosa. Conviene releerlo ahora como un pequeño mapa de habilidades matemáticas.
 
-Para seguir el argumento hay que saber hacer, al menos, todo esto:
+**1. Traducir una afirmación verbal a cuantificadores.** Decir que $A$ no tiene máximo no significa comprobar algunos elementos. Exige demostrar
 
-1. interpretar $p^2<2$ y $p^2>2$ como pertenencia a dos conjuntos distintos;
-2. reconocer que «$A$ no tiene mayor» exige tomar un $p\in A$ **arbitrario** y construir otro elemento mayor;
-3. reconocer que «$B$ no tiene menor» exige el problema dual;
-4. inventar o aceptar una transformación racional $p\mapsto q$;
-5. comprobar que $q$ sigue siendo positivo y racional;
-6. comparar $q$ con $p$ mediante el signo de $q-p$;
-7. comparar $q^2$ con $2$ mediante el signo de $q^2-2$;
-8. entender que las dos comparaciones deben controlarse **simultáneamente**;
-9. usar cuantificadores correctamente: la construcción debe funcionar para cada $p$ del conjunto correspondiente;
-10. interpretar el resultado como evidencia estructural de una carencia de $\mathbb Q$, no simplemente como una curiosidad algebraica.
+$$
+\forall p\in A\;\exists q\in A
+\qquad
+p<q.
+$$
 
-Rudin escribe para un lector que puede reconstruir una gran parte de esta ingeniería. Nuestro objetivo es distinto: queremos que el lector aprenda **la ingeniería misma**.
+Del mismo modo, decir que $B$ no tiene mínimo exige
 
-::: {.callout-note title="Por qué importa"}
-El verdadero tema que acaba de aparecer no es la raíz cuadrada de $2$ en particular.
+$$
+\forall p\in B\;\exists q\in B
+\qquad
+q<p.
+$$
 
-La pregunta general es:
+El elemento nuevo puede depender del punto de partida, pero la construcción debe funcionar para **todo** punto admisible.
 
-> cuando un conjunto ordenado se aproxima a una frontera sin alcanzarla, ¿qué propiedad del sistema numérico garantiza que esa frontera exista como número del sistema?
+**2. Diseñar un objeto que satisfaga varias condiciones a la vez.** No basta producir un racional mayor que $p$ cuando $p\in A$, ni uno menor cuando $p\in B$. El nuevo número debe conservar simultáneamente:
 
-La respuesta será la completitud de $\mathbb R$. Antes de formularla necesitamos construir cuidadosamente el vocabulario de orden, intervalos, cotas, supremos e ínfimos.
+$$
+q\in\mathbb Q,
+\qquad
+q>0,
+$$
+
+y el lado de la desigualdad respecto de $2$:
+
+$$
+p^2<2
+\Longrightarrow
+q^2<2,
+$$
+
+$$
+p^2>2
+\Longrightarrow
+q^2>2.
+$$
+
+Por eso el problema no era simplemente «mover $p$», sino moverlo **sin abandonar la región correcta**.
+
+**3. Separar las funciones de cada cálculo.** Las dos identidades centrales responden a preguntas distintas:
+
+$$
+q-p=\frac{2-p^2}{p+2}
+$$
+
+controla la **dirección** del movimiento, mientras que
+
+$$
+q^2-2=\frac{2(p^2-2)}{(p+2)^2}
+$$
+
+controla el **invariante de signo** que impide cruzar de $A$ a $B$ o de $B$ a $A$.
+
+Ninguna de las dos comprobaciones reemplaza a la otra.
+
+**4. Interpretar la construcción en el nivel estructural correcto.** De las identidades anteriores obtenemos
+
+$$
+A\text{ no tiene máximo}
+\qquad\text{y}\qquad
+B\text{ no tiene mínimo}.
+$$
+
+Pero, como acabamos de advertir, de aquí todavía no se sigue que $A$ —o $S_{\mathbb Q}$— carezca de supremo racional. La ausencia de un elemento extremo y la ausencia de una menor cota superior son afirmaciones diferentes.
+
+El paso conceptual decisivo consiste precisamente en cambiar de pregunta:
+
+$$
+\boxed{
+\text{¿existe dentro de }\mathbb Q
+\text{ una menor cota superior para }S_{\mathbb Q}\,?
+}
+$$
+
+La transformación de Rudin ya contiene la maquinaria que necesitaremos para responder, pero la respuesta formal pertenece a §1.5.
+
+::: {.callout-note title="Mapa de dependencias"}
+El argumento puede leerse también como una cadena de dependencias:
+
+$$
+\boxed{
+\begin{array}{c}
+\text{cuerpo ordenado}
+\\[3pt]
+\downarrow
+\\[3pt]
+\text{signos, desigualdades y monotonía del cuadrado}
+\\[3pt]
+\downarrow
+\\[3pt]
+\text{transformación racional controlada}
+\\[3pt]
+\downarrow
+\\[3pt]
+A\text{ sin máximo y }B\text{ sin mínimo}
+\\[3pt]
+\downarrow
+\\[3pt]
+\text{pregunta por la existencia de una frontera como supremo}.
+\end{array}
+}
+$$
+
+La demostración de que ningún racional satisface $q^2=2$ elimina además la única posibilidad de que la frontera buscada estuviera representada por un racional con cuadrado exactamente igual a $2$.
 :::
+
+El verdadero tema que ha aparecido no es, por tanto, la raíz cuadrada de $2$ como objeto aislado. La pregunta general es:
+
+> si un conjunto no vacío está acotado superiormente, ¿qué propiedad del sistema numérico garantiza que exista dentro de ese mismo sistema una menor cota superior?
+
+Ya disponemos del vocabulario necesario para formular la respuesta. La propiedad adicional será la **completitud**.
 
 ### Qué nos llevamos a la sección siguiente
 
