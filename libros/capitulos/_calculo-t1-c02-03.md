@@ -216,33 +216,44 @@ $$
 
 indica cuánto debemos desplazarnos desde $y$ para llegar a $x$, y su valor absoluto elimina la orientación del desplazamiento.
 
-Por eso definiremos, en la recta real,
+Definimos entonces, en la recta real,
 
 $$
-d(x,y)=|x-y|.
+d(x,y):=|x-y|.
 $$
 
-No necesitamos todavía desarrollar la teoría general de espacios métricos. Nos basta observar las propiedades que esta distancia hereda del valor absoluto:
+Antes de utilizar esta notación como una verdadera noción de distancia, registremos las propiedades que ya podemos justificar a partir de @prp-t1-0008. Para cualesquiera $x,y\in\mathbb R$,
 
 $$
-d(x,y)\ge0,
+d(x,y)\ge0.
 $$
 
-$$
-d(x,y)=0\iff x=y,
-$$
+Además,
 
 $$
-d(x,y)=d(y,x).
+\begin{aligned}
+d(x,y)=0
+&\iff |x-y|=0\\
+&\iff x-y=0\\
+&\iff x=y.
+\end{aligned}
 $$
 
-La última igualdad sigue de
+Por último,
 
 $$
-|x-y|=|-(y-x)|=|y-x|.
+d(x,y)
+=
+|x-y|
+=
+|-(y-x)|
+=
+|y-x|
+=
+d(y,x).
 $$
 
-Falta una propiedad más profunda. Si queremos viajar de $x$ a $z$, pasar primero por un punto intermedio $y$ no debería producir un trayecto más corto que ir directamente. Esa idea es la desigualdad triangular.
+Tenemos así no negatividad, separación de puntos y simetría. Falta una propiedad más profunda: la distancia directa de $x$ a $z$ no debería superar la longitud de un recorrido que pasa por un punto intermedio $y$. Esa propiedad será consecuencia de la desigualdad triangular para el valor absoluto.
 
 ### La desigualdad triangular
 
@@ -263,31 +274,47 @@ $$
 -|y|\le y\le|y|.
 $$
 
-Si sumamos ambas dobles desigualdades, obtendremos una cota inferior y otra superior para $x+y$. Después podremos volver a empaquetar esas dos cotas mediante la caracterización de $|\cdot|$ que acabamos de demostrar.
+La estrategia consiste en obtener por separado una cota inferior y una cota superior para $x+y$, reunirlas en una doble desigualdad y aplicar después la caracterización de $|\cdot|$ demostrada en @prp-t1-0008.
 :::
 
-**Demostración.** Sumando
+**Demostración.** De
 
 $$
--|x|\le x\le|x|
+-|x|\le x
+\qquad\text{y}\qquad
+-|y|\le y
 $$
 
-y
+se obtiene, al sumar,
 
 $$
--|y|\le y\le|y|,
+-(|x|+|y|)\le x+y.
 $$
 
-obtenemos
+Por otra parte, de
 
 $$
--(|x|+|y|)\le x+y\le |x|+|y|.
+x\le|x|
+\qquad\text{y}\qquad
+y\le|y|
 $$
 
-Como $|x|+|y|\ge0$, la Proposición `#prp-t1-0008` permite concluir
+se obtiene
 
 $$
-|x+y|\le|x|+|y|.
+x+y\le|x|+|y|.
+$$
+
+Reuniendo ambas cotas,
+
+$$
+-(|x|+|y|)\le x+y\le|x|+|y|.
+$$
+
+Como $|x|+|y|\ge0$, la caracterización no estricta de @prp-t1-0008 da
+
+$$
+\boxed{|x+y|\le|x|+|y|}.
 $$
 
 $\blacksquare$
@@ -295,30 +322,38 @@ $\blacksquare$
 ::: {.callout-note title="Después de la prueba"}
 La demostración tiene una arquitectura reutilizable:
 
-1. convertir una expresión con valor absoluto en dos desigualdades ordinarias;
-2. operar con ellas usando las leyes del orden;
-3. reconstruir al final una desigualdad con valor absoluto.
+1. obtener cotas ordinarias para una expresión;
+2. reunirlas en una doble desigualdad simétrica;
+3. volver a empaquetarlas como una desigualdad de valor absoluto.
 
-Este movimiento entre **distancia** y **orden** reaparecerá constantemente en cálculo.
+Este movimiento entre **orden**, **valor absoluto** y **distancia** reaparecerá constantemente en cálculo.
 :::
 
-Si sustituimos
+Aplicamos ahora el teorema a
 
 $$
-x=a-c,
+u=a-c,
 \qquad
-y=c-b,
+v=c-b.
 $$
 
-entonces $x+y=a-b$ y la desigualdad triangular adopta la forma
+Como $u+v=a-b$,
+
+$$
+|a-b|
+\le
+|a-c|+|c-b|.
+$$
+
+En términos de la función $d$,
 
 $$
 \boxed{
-|a-b|\le|a-c|+|c-b|.
+d(a,b)\le d(a,c)+d(c,b).
 }
 $$
 
-Ahora su nombre se vuelve completamente transparente: la distancia directa de $a$ a $b$ no supera la distancia obtenida pasando por $c$.
+Por tanto, $d(x,y)=|x-y|$ posee las cuatro propiedades fundamentales de una distancia sobre $\mathbb R$: no negatividad, separación de puntos, simetría y desigualdad triangular. No necesitamos todavía desarrollar la teoría general de espacios métricos; bastará reutilizar estas propiedades cuando aparezca la noción de cercanía.
 
 ### La desigualdad triangular inversa
 
