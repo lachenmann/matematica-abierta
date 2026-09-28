@@ -1116,7 +1116,21 @@ La fórmula de Rudin no es, por tanto, la única posible dentro de esta familia.
 
 ### Ver la máquina funcionando
 
-Tomemos primero un número que está por debajo del borde, por ejemplo $p=1$. La transformación produce
+Las identidades anteriores ya demuestran el comportamiento de la transformación para todo racional positivo. Ahora podemos seguir algunas iteraciones concretas para ver el mecanismo con aritmética exacta.
+
+Partamos por debajo del borde con
+
+$$
+p=1.
+$$
+
+Como
+
+$$
+T(p)=\frac{2(p+1)}{p+2},
+$$
+
+obtenemos sucesivamente
 
 $$
 1
@@ -1128,9 +1142,53 @@ $$
 \frac{24}{17}.
 $$
 
-Cada nuevo racional es mayor que el anterior y su cuadrado sigue siendo menor que $2$.
+Verifiquemos que cada punto sigue del mismo lado:
 
-Si comenzamos por encima, con $p=2$, obtenemos
+$$
+1^2=1<2,
+$$
+
+$$
+\left(\frac43\right)^2
+=
+\frac{16}{9}
+<2,
+$$
+
+$$
+\left(\frac75\right)^2
+=
+\frac{49}{25}
+<2,
+$$
+
+y
+
+$$
+\left(\frac{24}{17}\right)^2
+=
+\frac{576}{289}
+<
+\frac{578}{289}
+=
+2.
+$$
+
+Además,
+
+$$
+1<\frac43<\frac75<\frac{24}{17}.
+$$
+
+La cadena se mueve, por tanto, hacia la derecha sin abandonar $A$.
+
+Si comenzamos por encima del borde con
+
+$$
+p=2,
+$$
+
+la misma transformación produce
 
 $$
 2
@@ -1142,30 +1200,80 @@ $$
 \frac{17}{12}.
 $$
 
-Cada nuevo racional es menor que el anterior y su cuadrado sigue siendo mayor que $2$.
-
-Estas cadenas son útiles para visualizar el mecanismo, pero conviene aplicar aquí la lección del capítulo anterior: **una lista de ejemplos no demuestra la afirmación general**. La demostración está en las dos identidades
+Ahora las comprobaciones son
 
 $$
-q-p=\frac{2-p^2}{p+2}
+2^2=4>2,
+$$
+
+$$
+\left(\frac32\right)^2
+=
+\frac94
+>2,
+$$
+
+$$
+\left(\frac{10}{7}\right)^2
+=
+\frac{100}{49}
+>
+\frac{98}{49}
+=
+2,
 $$
 
 y
 
 $$
-q^2-2=\frac{2(p^2-2)}{(p+2)^2},
+\left(\frac{17}{12}\right)^2
+=
+\frac{289}{144}
+>
+\frac{288}{144}
+=
+2.
 $$
 
-porque controlan simultáneamente todos los racionales positivos $p$.
+También
 
-Tampoco diremos todavía que estas cadenas «convergen». El lenguaje de convergencia será construido más adelante. Por ahora solo necesitamos las desigualdades que acabamos de demostrar.
+$$
+2>\frac32>\frac{10}{7}>\frac{17}{12}.
+$$
+
+Esta cadena se mueve hacia la izquierda sin abandonar $B$.
+
+Los cálculos ilustran el comportamiento, pero **una lista de ejemplos no demuestra la afirmación general**. La demostración sigue estando en las dos identidades válidas para todo racional positivo $p$:
+
+$$
+\boxed{
+T(p)-p
+=
+\frac{2-p^2}{p+2},
+}
+$$
+
+y
+
+$$
+\boxed{
+T(p)^2-2
+=
+\frac{2(p^2-2)}{(p+2)^2}.
+}
+$$
+
+La primera controla la dirección del movimiento; la segunda controla el lado de la frontera.
+
+Tampoco diremos todavía que estas cadenas «convergen». No hemos definido convergencia de sucesiones ni demostrado ningún teorema que permita extraer de estas iteraciones la existencia de un límite. Por ahora solo estamos observando desigualdades exactas entre racionales.
 
 ::: {.callout-tip title="Antes de seguir"}
 Sea
 
 $$
 T(p)=p-\frac{p^2-2}{p+2},
-\qquad p\ge1.
+\qquad
+p\ge1.
 $$
 
 Usando la identidad ya demostrada para $T(p)^2-2$, prueba que
@@ -1176,21 +1284,64 @@ $$
 \frac29|p^2-2|.
 $$
 
-**Respuesta.** Tenemos
+**Respuesta.** De
+
+$$
+T(p)^2-2
+=
+\frac{2(p^2-2)}{(p+2)^2}
+$$
+
+obtenemos, usando la multiplicatividad del valor absoluto,
 
 $$
 |T(p)^2-2|
 =
-\frac{2}{(p+2)^2}|p^2-2|.
+\frac{2}{(p+2)^2}|p^2-2|,
 $$
 
-Como $p\ge1$, se cumple $(p+2)^2\ge9$, y por tanto
+porque $(p+2)^2>0$.
+
+Como $p\ge1$,
 
 $$
-\frac{2}{(p+2)^2}\le\frac29.
+p+2\ge3>0.
 $$
 
-La desigualdad muestra que una aplicación de $T$ reduce fuertemente el defecto respecto de $x^2=2$. Todavía no la interpretamos como una afirmación de convergencia: esa teoría aparecerá más adelante.
+La monotonía del cuadrado en los no negativos da
+
+$$
+(p+2)^2\ge9.
+$$
+
+Como ambas cantidades son positivas, al tomar recíprocos se invierte el orden:
+
+$$
+\frac{1}{(p+2)^2}
+\le
+\frac19.
+$$
+
+Multiplicando por $2>0$,
+
+$$
+0<
+\frac{2}{(p+2)^2}
+\le
+\frac29.
+$$
+
+Finalmente,
+
+$$
+\boxed{
+|T(p)^2-2|
+\le
+\frac29|p^2-2|.
+}
+$$
+
+Así, para $p\ge1$, una aplicación de $T$ deja el nuevo defecto absoluto como máximo en $2/9$ del defecto anterior. Esta es una estimación cuantitativa exacta; todavía no la interpretamos como una afirmación de convergencia.
 :::
 
 ### Entonces, ¿dónde está exactamente el hueco?
