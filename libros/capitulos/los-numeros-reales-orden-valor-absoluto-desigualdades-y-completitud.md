@@ -6295,19 +6295,80 @@ No hemos demostrado todavía que exista algún número real cuyo cuadrado sea $2
 
 ### Qué hemos demostrado y qué no
 
-Es fácil deslizarse sin advertirlo desde
+La proposición anterior establece exactamente
 
-> ningún racional satisface $x^2=2$
+$$
+\boxed{
+\neg\exists q\in\mathbb Q
+\qquad
+q^2=2.
+}
+$$
 
-hasta
+Es decir: **dentro de $\mathbb Q$ no existe solución** de la ecuación $x^2=2$.
 
-> existe un número no racional que satisface $x^2=2$.
+Es fácil deslizarse, sin advertirlo, desde esta afirmación hasta otra diferente:
 
-Pero estas afirmaciones no son equivalentes.
+$$
+\exists x\in\mathbb R\setminus\mathbb Q
+\qquad
+x^2=2.
+$$
 
-La primera acaba de ser demostrada. La segunda es una afirmación de **existencia** que todavía requiere una justificación. En particular, no utilizaremos todavía la notación habitual para la raíz cuadrada de $2$ como si su existencia dentro de nuestro sistema ya estuviera establecida. Esa notación quedará matemáticamente legitimada en §1.6, una vez que dispongamos de la completitud.
+Pero la segunda proposición contiene una afirmación nueva: **afirma que una solución existe**.
 
-Este cuidado puede parecer excesivo porque todos hemos usado raíces cuadradas mucho antes de estudiar análisis. Sin embargo, contiene una lección importante: una notación familiar no sustituye una prueba de existencia.
+La diferencia lógica puede verse separando dos trabajos:
+
+$$
+\boxed{
+\begin{array}{rcl}
+\text{(I)}&\neg\exists q\in\mathbb Q& q^2=2,\\[3pt]
+\text{(II)}&\exists x\in\mathbb R& x^2=2.
+\end{array}
+}
+$$
+
+La proposición anterior demuestra (I). Todavía no hemos demostrado (II).
+
+Solo después de establecer (II) podremos combinar ambas afirmaciones: si existe $x\in\mathbb R$ con $x^2=2$ y ningún racional satisface esa ecuación, entonces ese $x$ necesariamente cumple
+
+$$
+x\notin\mathbb Q,
+$$
+
+y por tanto
+
+$$
+x\in\mathbb R\setminus\mathbb Q.
+$$
+
+Así, demostrar que **ningún racional** posee cierta propiedad no fabrica por sí solo un objeto no racional que la posea.
+
+::: {.callout-warning title="Una negación de existencia no es una existencia"}
+De
+
+$$
+\neg\exists q\in\mathbb Q\qquad q^2=2
+$$
+
+no podemos concluir, sin una premisa adicional,
+
+$$
+\exists x\in\mathbb R\setminus\mathbb Q\qquad x^2=2.
+$$
+
+Para esa conclusión necesitamos primero demostrar que alguna solución existe en $\mathbb R$.
+:::
+
+Esta distinción explica también una precaución de notación. Todavía no utilizaremos el símbolo
+
+$$
+\sqrt2
+$$
+
+como nombre de un número real cuya existencia ya hubiese sido establecida. Una notación puede describir qué objeto **queremos** identificar, pero no sustituye una demostración de que tal objeto existe.
+
+La existencia real será obtenida más adelante mediante completitud: primero construiremos una frontera real como supremo y después demostraremos que esa frontera tiene cuadrado $2$. Solo entonces quedará legitimada, dentro de nuestra cadena lógica, la escritura $\sqrt2$.
 
 ### La diagonal de un cuadrado y el problema aritmético
 
