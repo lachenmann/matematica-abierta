@@ -5319,29 +5319,53 @@ En particular, este intervalo tiene supremo e ínfimo aunque ninguno de los dos 
 
 ### El supremo es único
 
-¿Podría un conjunto tener dos supremos diferentes?
+La definición de supremo contiene ya su unicidad.
 
-No.
-
-Si $s$ y $t$ fueran ambos supremos de $A$, entonces $t$ sería una cota superior y, como $s$ es la menor cota superior,
+Supongamos que $s$ y $t$ son ambos supremos de un mismo conjunto $A$. Como $t$ es un supremo, en particular es una cota superior de $A$. Pero $s$ es la menor cota superior, así que
 
 $$
 s\le t.
 $$
 
-Intercambiando los papeles,
+Ahora intercambiamos los papeles. Como $s$ es una cota superior de $A$ y $t$ es la menor cota superior,
 
 $$
+t\le s.
+$$
+
+Tenemos, por tanto,
+
+$$
+s\le t
+\qquad\text{y}\qquad
 t\le s.
 $$
 
 Por antisimetría del orden,
 
 $$
-s=t.
+\boxed{s=t}.
 $$
 
-La misma demostración muestra que el ínfimo, cuando existe, también es único.
+Así, un conjunto no puede tener dos supremos distintos: **si el supremo existe, es único**.
+
+La demostración para el ínfimo es dual. Si $i$ y $j$ fueran ambos ínfimos de $A$, entonces $j$ sería una cota inferior y la maximalidad de $i$ daría $j\le i$; intercambiando los papeles obtendríamos $i\le j$. Por antisimetría,
+
+$$
+\boxed{i=j}.
+$$
+
+En consecuencia,
+
+$$
+\boxed{
+\text{si }\sup A\text{ existe, es único;}
+\qquad
+\text{si }\inf A\text{ existe, es único.}
+}
+$$
+
+Conviene separar esta afirmación de una cuestión distinta: aquí hemos demostrado **unicidad**, no **existencia**. El argumento dice que puede haber a lo sumo un número con la propiedad de ser supremo o ínfimo; todavía no hemos probado que todo conjunto apropiado posea uno.
 
 Por eso las expresiones
 
@@ -5351,7 +5375,7 @@ $$
 \inf A
 $$
 
-tienen sentido como números determinados, siempre que su existencia haya sido establecida.
+tienen sentido como números determinados una vez que su existencia ha sido establecida.
 
 ### Una caracterización operativa: acercarse tanto como queramos
 
