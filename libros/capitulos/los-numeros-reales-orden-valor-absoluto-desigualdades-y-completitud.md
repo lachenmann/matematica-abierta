@@ -4846,6 +4846,22 @@ Decimos que $A$ está **acotado superiormente** si posee al menos una cota super
 
 La palabra decisiva es **barrera**. Una cota superior $M$ debe encontrarse a la derecha de todo el conjunto, pero no tiene por qué tocarlo ni pertenecer a él.
 
+El orden de los cuantificadores importa: primero se fija el candidato $M$ y después debe verificarse la desigualdad $a\le M$ para **todo** $a\in A$. Por negación,
+
+$$
+M\text{ no es cota superior de }A
+\iff
+\exists a\in A\text{ tal que }a>M.
+$$
+
+De manera dual,
+
+$$
+m\text{ no es cota inferior de }A
+\iff
+\exists a\in A\text{ tal que }a<m.
+$$
+
 Por ejemplo, para
 
 $$
@@ -4860,7 +4876,13 @@ $$
 
 son todos cotas superiores. También lo es cualquier real $M\ge1$.
 
-En cambio, $0.9$ no es una cota superior, porque existen elementos de $(0,1)$ mayores que $0.9$.
+En cambio, $0.9$ no es una cota superior. Basta exhibir un elemento de $(0,1)$ que la supere; por ejemplo,
+
+$$
+\frac{19}{20}\in(0,1)
+\qquad\text{y}\qquad
+\frac{19}{20}>\frac9{10}=0.9.
+$$
 
 Del mismo modo, cualquier real $m\le0$ es una cota inferior de $(0,1)$.
 
