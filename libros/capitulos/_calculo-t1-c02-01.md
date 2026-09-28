@@ -717,7 +717,15 @@ Por tanto, queda una tercera obligación: demostrar que la transformación de Ru
 
 #### Tercera pregunta: ¿q permanece en el mismo lado?
 
-Calculemos el nuevo «error» respecto de $2$:
+La comparación entre $q$ y $p$ controla la **dirección** del movimiento, pero todavía debemos verificar que la corrección no atraviese la frontera. Para ello necesitamos comparar $q^2$ con $2$.
+
+Partimos de
+
+$$
+q=\frac{2(p+1)}{p+2}.
+$$
+
+Entonces
 
 $$
 \begin{aligned}
@@ -725,51 +733,178 @@ q^2-2
 &=
 \left(\frac{2(p+1)}{p+2}\right)^2-2\\
 &=
-\frac{4(p+1)^2-2(p+2)^2}{(p+2)^2}\\
+\frac{4(p+1)^2}{(p+2)^2}
+-
+\frac{2(p+2)^2}{(p+2)^2}\\
 &=
-\frac{2(p^2-2)}{(p+2)^2}.
+\frac{4(p+1)^2-2(p+2)^2}{(p+2)^2}.
 \end{aligned}
 $$
 
-El denominador $(p+2)^2$ es positivo, y el factor $2$ también lo es. Por consiguiente,
+Abramos ahora el numerador:
+
+$$
+\begin{aligned}
+4(p+1)^2-2(p+2)^2
+&=
+4(p^2+2p+1)-2(p^2+4p+4)\\
+&=
+4p^2+8p+4-2p^2-8p-8\\
+&=
+2p^2-4\\
+&=
+2(p^2-2).
+\end{aligned}
+$$
+
+Por tanto,
 
 $$
 \boxed{
-q^2-2\ \text{tiene el mismo signo que}\ p^2-2.
+q^2-2
+=
+\frac{2(p^2-2)}{(p+2)^2}.
 }
 $$
 
-Esto completa el mecanismo.
-
-Si $p\in A$, entonces $p^2-2<0$. Hemos visto que
+De la primera comprobación sabemos que $p>0$, luego
 
 $$
-q>p
+p+2>0
+$$
+
+y, en consecuencia,
+
+$$
+(p+2)^2>0.
+$$
+
+Además,
+
+$$
+2>0.
+$$
+
+Así, el factor
+
+$$
+\frac{2}{(p+2)^2}
+$$
+
+es estrictamente positivo. Multiplicar por él no cambia el signo. Por consiguiente,
+
+$$
+\boxed{
+q^2-2\ \text{tiene exactamente el mismo signo que}\ p^2-2.
+}
+$$
+
+Ahora podemos reunir las tres comprobaciones anteriores.
+
+Si $p\in A$, entonces
+
+$$
+p\in\mathbb Q,
+\qquad
+p>0,
+\qquad
+p^2<2.
+$$
+
+La primera pregunta mostró que $q\in\mathbb Q$ y $q>0$; la segunda mostró que $p<q$; y la identidad recién obtenida da
+
+$$
+q^2-2<0,
+$$
+
+es decir,
+
+$$
+q^2<2.
+$$
+
+Por tanto,
+
+$$
+q\in A
+$$
+
+y, además,
+
+$$
+p<q.
+$$
+
+Como $p\in A$ fue arbitrario,
+
+$$
+\boxed{
+\forall p\in A\;\exists q\in A
+\qquad
+p<q.
+}
+$$
+
+En consecuencia, $A$ no tiene máximo.
+
+Si $p\in B$, entonces
+
+$$
+p\in\mathbb Q,
+\qquad
+p>0,
+\qquad
+p^2>2.
+$$
+
+De nuevo, $q\in\mathbb Q$ y $q>0$; la segunda pregunta dio $q<p$; y ahora
+
+$$
+q^2-2>0,
+$$
+
+de modo que
+
+$$
+q^2>2.
+$$
+
+Así,
+
+$$
+q\in B
 $$
 
 y
 
 $$
-q^2-2<0.
+q<p.
 $$
 
-Así que $q\in A$ y $q$ es mayor que $p$. Como podemos hacer esto partiendo de **cualquier** $p\in A$, ningún elemento de $A$ puede ser el mayor.
-
-Si $p\in B$, entonces $p^2-2>0$. Hemos visto que
+Como $p\in B$ fue arbitrario,
 
 $$
-0<q<p
+\boxed{
+\forall p\in B\;\exists q\in B
+\qquad
+q<p.
+}
 $$
 
-y
+Por tanto, $B$ no tiene mínimo.
+
+La transformación ha cumplido simultáneamente las dos exigencias que fijamos al comienzo:
 
 $$
-q^2-2>0.
+\boxed{
+\begin{array}{c}
+p\in A\Longrightarrow p<q\in A,\\[4pt]
+p\in B\Longrightarrow q\in B\text{ y }q<p.
+\end{array}
+}
 $$
 
-Así que $q\in B$ y $q$ es menor que $p$. Como podemos hacerlo desde **cualquier** $p\in B$, ningún elemento de $B$ puede ser el menor.
-
-La demostración está terminada. Ahora podemos abordar la pregunta más interesante: cómo fabricar la fórmula.
+La demostración del ejemplo de Rudin queda así cerrada. La cuestión siguiente ya no será verificar que la fórmula funciona, sino comprender cómo puede diseñarse una transformación con estas propiedades.
 
 ### Cómo se fabrica una fórmula que parece caída del cielo
 
