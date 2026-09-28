@@ -311,47 +311,83 @@ A=(0,1),
 B=(0,1].
 $$
 
-En ambos casos,
+Ya demostramos que $A$ no tiene máximo. En cambio,
 
 $$
-\sup A=1,
-\qquad
-\sup B=1.
+\max B=1,
 $$
 
-Pero
+porque $1\in B$ y todo $b\in B$ satisface $b\le1$.
+
+La relación entre máximo y supremo puede formularse ahora sin ambigüedad.
+
+Si $A$ tiene máximo $M$, entonces $M$ es una cota superior de $A$. Además, si $u$ es cualquier otra cota superior, como $M\in A$ debe cumplirse
 
 $$
-\max A\text{ no existe},
-\qquad
-\max B=1.
+M\le u.
 $$
 
-¿Qué cambió? Solo la pertenencia del punto frontera:
+Por tanto, $M$ es la menor cota superior y
 
 $$
-1\notin A,
-\qquad
-1\in B.
+\boxed{\sup A=\max A=M.}
 $$
 
-De aquí obtenemos una regla muy útil:
+Recíprocamente, supongamos que $s=\sup A$ existe y que además
 
-> Si $\sup A$ existe, entonces $A$ tiene máximo exactamente cuando $\sup A\in A$; en ese caso,
-> $$
-> \max A=\sup A.
-> $$
+$$
+s\in A.
+$$
 
-La afirmación dual vale para mínimo e ínfimo.
+Como $s$ es una cota superior,
 
-::: {.callout-note title="Lectura de la definición"}
-Para probar que $s=\sup A$ hay **dos trabajos**:
+$$
+\forall a\in A,\qquad a\le s.
+$$
 
-1. demostrar que $s$ está por encima de todos los elementos de $A$;
-2. demostrar que ninguna cota superior puede quedar por debajo de $s$.
+La pertenencia $s\in A$ y esta desigualdad universal son precisamente las dos condiciones que definen al máximo. Luego
 
-Probar solamente el primer punto demuestra que $s$ es **una** cota superior, no que sea el supremo.
-:::
+$$
+\boxed{\max A=s=\sup A.}
+$$
+
+En consecuencia, siempre que $\sup A$ exista,
+
+$$
+\boxed{
+A\text{ tiene máximo}
+\iff
+\sup A\in A,
+}
+$$
+
+y, en ese caso,
+
+$$
+\max A=\sup A.
+$$
+
+La afirmación dual es igualmente válida: si $\inf A$ existe, entonces
+
+$$
+A\text{ tiene mínimo}
+\iff
+\inf A\in A,
+$$
+
+y, cuando esto ocurre,
+
+$$
+\min A=\inf A.
+$$
+
+Aplicado a $B=(0,1]$, el máximo ya identificado nos permite concluir inmediatamente
+
+$$
+\sup B=\max B=1.
+$$
+
+Para $A=(0,1)$ sabemos, en cambio, que no hay máximo. Todavía falta justificar que $1$ es efectivamente su supremo: esa demostración será el objeto del microtramo siguiente.
 
 ### Por qué $1$ es realmente el supremo de $(0,1)$
 
