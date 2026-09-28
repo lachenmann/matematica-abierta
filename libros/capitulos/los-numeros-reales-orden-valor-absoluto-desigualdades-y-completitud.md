@@ -7010,19 +7010,36 @@ La demostración del ejemplo de Rudin queda así cerrada. La cuestión siguiente
 
 ### Cómo se fabrica una fórmula que parece caída del cielo
 
-Rudin presenta $q$ directamente. Nosotros reconstruiremos una ruta posible para descubrirla. No pretendemos afirmar que este haya sido históricamente el proceso mental exacto mediante el cual se eligió la fórmula. Lo que sí podemos hacer es mostrar que **la elección puede diseñarse sistemáticamente** a partir de las propiedades que necesitamos.
+Rudin presenta $q$ directamente. Nosotros reconstruiremos una ruta posible para descubrirla. No pretendemos afirmar que este haya sido históricamente el proceso mental exacto mediante el cual se eligió la fórmula. Lo que sí podemos mostrar es que **una transformación con las propiedades necesarias puede diseñarse sistemáticamente**.
 
-Empecemos con un racional positivo $p$. Definamos su defecto respecto de la ecuación por
+Partamos de un racional positivo $p$ y midamos su defecto respecto de la ecuación mediante
 
 $$
 E(p)=p^2-2.
 $$
 
-Si $E(p)<0$, necesitamos aumentar $p$.
+El signo de $E(p)$ indica de qué lado de la frontera se encuentra $p$:
 
-Si $E(p)>0$, necesitamos disminuirlo.
+$$
+E(p)<0
+\iff
+p\in A,
+$$
 
-Así que resulta natural buscar una corrección cuyo signo sea el opuesto al de $E(p)$. Una primera familia razonable es
+mientras que
+
+$$
+E(p)>0
+\iff
+p\in B.
+$$
+
+Por tanto, queremos que la corrección tenga signo opuesto al defecto:
+
+- si $E(p)<0$, debemos aumentar $p$;
+- si $E(p)>0$, debemos disminuirlo.
+
+Una familia natural es
 
 $$
 q_c
@@ -7030,29 +7047,63 @@ q_c
 p-\frac{p^2-2}{p+c},
 $$
 
-donde $c>0$ será un número racional que elegiremos después.
-
-¿Por qué introducir $c$? Porque queremos **regular el tamaño de la corrección**. El numerador $p^2-2$ decide la dirección; el denominador $p+c$ amortigua el desplazamiento.
-
-Para esta familia tenemos inmediatamente
+donde elegiremos
 
 $$
-q_c-p
-=
-\frac{2-p^2}{p+c}.
+c\in\mathbb Q,
+\qquad
+c>0.
 $$
 
-Como $p+c>0$, el movimiento tiene siempre la dirección deseada.
+La positividad de $c$ cumple una primera función. Como $p>0$,
 
-Ahora imponemos la segunda condición: queremos que $q_c$ no cruce el borde. Para descubrir qué debe cumplir $c$, calculamos:
+$$
+p+c>0,
+$$
+
+de modo que el denominador no se anula. Además,
 
 $$
 q_c
 =
-\frac{cp+2}{p+c},
+\frac{cp+2}{p+c}.
 $$
 
-y por tanto
+Como $c,p>0$, tanto $cp+2$ como $p+c$ son positivos. En consecuencia,
+
+$$
+\boxed{
+q_c\in\mathbb Q
+\qquad\text{y}\qquad
+q_c>0.
+}
+$$
+
+Ahora controlemos la **dirección** del movimiento. Restando $p$,
+
+$$
+\begin{aligned}
+q_c-p
+&=
+-\frac{p^2-2}{p+c}\\
+&=
+\frac{2-p^2}{p+c}.
+\end{aligned}
+$$
+
+Como $p+c>0$,
+
+$$
+\boxed{
+\operatorname{sgn}(q_c-p)
+=
+\operatorname{sgn}(2-p^2).
+}
+$$
+
+Así, para cualquier $c>0$, la transformación se mueve en la dirección deseada.
+
+Pero eso no basta: también debemos impedir que atraviese la frontera. Calculemos el nuevo defecto:
 
 $$
 \begin{aligned}
@@ -7060,52 +7111,110 @@ q_c^2-2
 &=
 \frac{(cp+2)^2-2(p+c)^2}{(p+c)^2}\\
 &=
-\frac{(c^2-2)(p^2-2)}{(p+c)^2}.
+\frac{c^2p^2+4cp+4-2p^2-4cp-2c^2}{(p+c)^2}\\
+&=
+\frac{(c^2-2)p^2-2(c^2-2)}{(p+c)^2}\\
+&=
+\boxed{
+\frac{(c^2-2)(p^2-2)}{(p+c)^2}
+}.
 \end{aligned}
 $$
 
-Ahora la elección de $c$ deja de ser misteriosa.
-
-Queremos que $q_c^2-2$ tenga el **mismo signo** que $p^2-2$. El denominador es positivo, así que basta exigir
+Como
 
 $$
-c^2-2>0.
+(p+c)^2>0,
 $$
 
-No necesitamos conocer ninguna solución de $x^2=2$ para encontrar un racional con esa propiedad. Podemos escoger sencillamente
+el signo del nuevo defecto queda determinado por los dos factores
+
+$$
+c^2-2
+\qquad\text{y}\qquad
+p^2-2.
+$$
+
+Queremos que $q_c^2-2$ tenga el **mismo signo** que $p^2-2$. Para ello basta imponer
+
+$$
+\boxed{c^2-2>0}.
+$$
+
+La condición sobre el parámetro ya no es arbitraria. Si eligiéramos un racional positivo con
+
+$$
+c^2<2,
+$$
+
+el factor $c^2-2$ sería negativo y el signo del defecto se invertiría: la transformación cruzaría al lado opuesto. La posibilidad
+
+$$
+c^2=2
+$$
+
+no está disponible dentro de $\mathbb Q$, porque ya demostramos que ningún racional tiene cuadrado $2$.
+
+Por tanto, entre los parámetros racionales positivos, la condición
+
+$$
+c^2>2
+$$
+
+es exactamente la que nos permite conservar el lado.
+
+No necesitamos conocer todavía ningún número real con cuadrado $2$ para exhibir un parámetro racional adecuado. Basta escoger
 
 $$
 c=2,
 $$
 
-porque
+pues
 
 $$
 2^2-2=2>0.
 $$
 
-Al sustituir $c=2$ obtenemos exactamente
+Sustituyendo $c=2$ obtenemos
 
 $$
+\boxed{
 q
 =
 p-\frac{p^2-2}{p+2},
+}
 $$
 
-la fórmula utilizada por Rudin.
+que es precisamente la transformación utilizada en el ejemplo.
 
 ::: {.callout-important title="La técnica escondida"}
-La expresión de Rudin no necesita verse como una inspiración inexplicable. Puede reconstruirse mediante cuatro movimientos:
+La fórmula puede reconstruirse mediante cuatro decisiones sucesivas:
 
 1. **medir el defecto:** $E(p)=p^2-2$;
-2. **corregir en la dirección opuesta al defecto:** restar una cantidad proporcional a $E(p)$;
-3. **introducir un parámetro** para controlar el tamaño de la corrección;
-4. **imponer un invariante:** después de corregir, el signo de $q^2-2$ debe seguir siendo el mismo.
+2. **elegir la dirección:** corregir $p$ con signo opuesto al defecto;
+3. **introducir un parámetro racional positivo:** controlar el tamaño de la corrección sin perder racionalidad ni positividad;
+4. **imponer un invariante de signo:** exigir que el nuevo defecto permanezca en el mismo lado.
 
-Esta forma de diseñar un objeto —decidir primero qué propiedades debe satisfacer y después resolver algebraicamente las condiciones que las garantizan— es una técnica matemática general. Volverá a aparecer muchas veces con disfraces distintos.
+En símbolos, el diseño busca simultáneamente
+
+$$
+\operatorname{sgn}(q_c-p)
+=
+-\operatorname{sgn}(E(p))
+$$
+
+y
+
+$$
+\operatorname{sgn}(E(q_c))
+=
+\operatorname{sgn}(E(p)).
+$$
+
+La primera condición mueve el punto **hacia** la frontera; la segunda evita que la atraviese.
 :::
 
-Hay además una consecuencia tranquilizadora: la fórmula no era única. Cualquier racional positivo $c$ con $c^2>2$ produciría una transformación del mismo tipo. Elegir $c=2$ hace la expresión particularmente simple.
+La fórmula de Rudin no es, por tanto, la única posible dentro de esta familia. Todo racional positivo $c$ con $c^2>2$ produce la misma arquitectura cualitativa. La elección $c=2$ es especialmente simple porque satisface inmediatamente la condición requerida y deja una expresión elemental.
 
 ### Ver la máquina funcionando
 
