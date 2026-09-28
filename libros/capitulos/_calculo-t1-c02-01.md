@@ -270,25 +270,78 @@ La existencia real será obtenida más adelante mediante completitud: primero co
 
 ### La diagonal de un cuadrado y el problema aritmético
 
-La geometría hace que la situación sea todavía más provocadora. Consideremos un cuadrado de lado $1$. El teorema de Pitágoras nos dice que, si $d$ representa la longitud de su diagonal, entonces
+La geometría hace que la situación sea todavía más provocadora. Consideremos un cuadrado de lado $1$. Si llamamos $d$ a la longitud de su diagonal, el teorema de Pitágoras impone la relación
 
 $$
 d^2=1^2+1^2=2.
 $$
 
-Geométricamente parece natural que esa diagonal tenga una longitud. Aritméticamente acabamos de probar que **ningún racional** puede representarla.
+Aquí conviene distinguir dos lenguajes. La geometría nos presenta una **magnitud** —la diagonal— y una relación que esa magnitud debe satisfacer. La aritmética pregunta además:
 
-No utilizaremos esta imagen como demostración de la existencia de un número real particular. Su función es motivadora: muestra que el sistema racional, aunque extraordinariamente rico, no basta para representar todas las magnitudes que la geometría nos invita a considerar.
+> ¿puede esa magnitud representarse mediante un número del sistema numérico en el que estamos trabajando?
 
-El problema no consiste en que los racionales estén muy separados. De hecho, entre dos racionales distintos siempre podemos insertar otro racional: si $r<s$, entonces
+Si intentáramos representarla por un racional $q>0$, necesariamente tendría que cumplirse
 
 $$
+q^2=2.
+$$
+
+Pero acabamos de demostrar que ningún racional satisface esa ecuación. Por tanto,
+
+$$
+\boxed{
+\text{la longitud de la diagonal de un cuadrado de lado }1
+\text{ no puede representarse mediante un número racional}.
+}
+$$
+
+Esta conclusión sigue sin ser una prueba de que, dentro de nuestro desarrollo axiomático, exista ya un número real particular que represente esa longitud. La imagen geométrica funciona aquí como **motivación del problema aritmético**: muestra qué clase de magnitud queremos poder incorporar, mientras que la existencia numérica deberá justificarse después mediante la completitud.
+
+El obstáculo tampoco consiste en que los racionales estén «muy separados». Sean $r,s\in\mathbb Q$ con
+
+$$
+r<s.
+$$
+
+Su punto medio
+
+$$
+m=\frac{r+s}{2}
+$$
+
+sigue siendo racional. Además,
+
+$$
+m-r
+=
+\frac{s-r}{2}
+>0
+$$
+
+y
+
+$$
+s-m
+=
+\frac{s-r}{2}
+>0.
+$$
+
+Por tanto,
+
+$$
+\boxed{
 r<\frac{r+s}{2}<s.
+}
 $$
 
-Hay racionales entre racionales sin importar cuán próximos parezcan. Y, sin embargo, algo puede seguir faltando.
+Así, entre dos racionales distintos siempre existe otro racional. Podemos incluso repetir el procedimiento indefinidamente y seguir insertando racionales entre racionales.
 
-Para comprender qué significa exactamente ese «algo», examinaremos un famoso ejemplo con mucho más detalle del que suele recibir.
+Pero esta riqueza local del orden no responde una pregunta diferente: si ciertos racionales quedan sistemáticamente a un lado de una frontera y otros al lado opuesto, **¿debe existir un racional que ocupe esa frontera?**
+
+La respuesta será negativa. La densidad entre puntos racionales no impide que falte un punto frontera racional.
+
+Para hacer precisa esta diferencia entre «siempre hay puntos intermedios» y «toda frontera existe dentro del sistema», examinaremos ahora el ejemplo introductorio de Rudin.
 
 ### El ejemplo introductorio de Rudin, paso a paso
 
