@@ -5833,7 +5833,7 @@ $$
 
 ### No todo conjunto tiene máximo, ni todo conjunto tiene una cota
 
-Conviene separar varios fenómenos.
+Conviene separar tres fenómenos: estar acotado, alcanzar una frontera y poseer siquiera una barrera en una dirección.
 
 El conjunto
 
@@ -5841,15 +5841,13 @@ $$
 (0,1)
 $$
 
-está acotado, pero no tiene máximo ni mínimo.
-
-El conjunto
+está acotado superior e inferiormente, pero no tiene máximo ni mínimo. En cambio,
 
 $$
 [0,1]
 $$
 
-está acotado y sí tiene ambos:
+también está acotado y sí alcanza ambas fronteras:
 
 $$
 \min[0,1]=0,
@@ -5857,27 +5855,75 @@ $$
 \max[0,1]=1.
 $$
 
-En cambio,
-
-$$
-(0,\infty)
-$$
-
-no está acotado superiormente. Para cualquier candidato $M\in\mathbb R$, existe un elemento del conjunto mayor que él; por ejemplo, si $M>0$, podemos tomar $M+1$, y si $M\le0$, basta tomar $1$.
-
-Por tanto, hablar de «la menor cota superior» carece de sentido si primero no hay ninguna cota superior.
-
-Esta observación anticipa dos hipótesis que aparecerán en el axioma de completitud:
+Por tanto, estar acotado no obliga a que exista un elemento extremo. En particular,
 
 $$
 \boxed{
-\text{conjunto no vacío}
-\quad+\quad
-\text{acotado superiormente}.
+A\text{ tiene máximo}
+\Longrightarrow
+A\text{ está acotado superiormente},
 }
 $$
 
-Todavía no afirmaremos que esas dos condiciones basten para garantizar la existencia de un supremo. Esa será precisamente la nueva propiedad de $\mathbb R$ que introduciremos en §1.5.
+pero la implicación recíproca es falsa, como muestra $(0,1)$.
+
+Consideremos ahora
+
+$$
+(0,\infty).
+$$
+
+Este conjunto está acotado inferiormente —por ejemplo, por $0$—, pero no está acotado superiormente. Negar la existencia de una cota superior significa precisamente afirmar
+
+$$
+\forall M\in\mathbb R\;\exists x\in(0,\infty)
+\qquad
+x>M.
+$$
+
+Fijemos, pues, un candidato arbitrario $M\in\mathbb R$. Si $M>0$, tomamos
+
+$$
+x=M+1;
+$$
+
+si $M\le0$, tomamos
+
+$$
+x=1.
+$$
+
+En ambos casos $x\in(0,\infty)$ y $x>M$. Como esto funciona para todo $M$, ninguna cota superior existe.
+
+En consecuencia, $(0,\infty)$ no puede tener máximo: un máximo sería, por definición, una cota superior que además pertenece al conjunto. Tampoco puede tener supremo, porque un supremo debe ser ante todo una cota superior.
+
+Hay todavía otra razón para exigir cuidado con las hipótesis. El conjunto vacío
+
+$$
+\varnothing
+$$
+
+está acotado superiormente en el sentido de la definición: dado cualquier $M\in\mathbb R$, no existe ningún elemento de $\varnothing$ que pueda violar la condición $a\le M$. Por tanto, **todo** real es una cota superior de $\varnothing$.
+
+Sin embargo, $\varnothing$ no tiene supremo real. En efecto, si $s$ fuera la menor cota superior, entonces $s-1$ también sería una cota superior y
+
+$$
+s-1<s,
+$$
+
+contradiciendo la minimalidad de $s$.
+
+Así aparecen de manera natural las dos hipótesis que más adelante acompañarán a la propiedad de existencia del supremo:
+
+$$
+\boxed{
+A\ne\varnothing
+\qquad+\qquad
+A\text{ acotado superiormente}.
+}
+$$
+
+Hasta aquí solo hemos comprobado que ambas condiciones son relevantes. **Todavía no hemos demostrado que basten** para garantizar la existencia de un supremo. Afirmar esa suficiencia será precisamente la nueva propiedad de $\mathbb R$ que introduciremos en §1.5.
 
 ### Antes de seguir
 
