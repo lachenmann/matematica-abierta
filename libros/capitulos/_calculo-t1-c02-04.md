@@ -2,13 +2,15 @@
 
 ### De estar cerca a tener una frontera
 
-En §2.3 aprendimos a medir cercanía. Podemos decir que un punto $x$ está a distancia menor que $r$ de $a$ escribiendo
+En §1.2 aprendimos a medir cercanía. Podemos decir que un punto $x$ está a distancia menor que $r$ de $a$ escribiendo
 
 $$
 |x-a|<r.
 $$
 
-Pero el problema que quedó abierto desde §2.1 es diferente. Allí aparecieron conjuntos de racionales cuyos elementos se acercaban cada vez más a un borde sin alcanzarlo. Para describir esa situación necesitamos distinguir preguntas que en el lenguaje informal suelen mezclarse:
+El cambio de pregunta es también un cambio de escala. La condición anterior compara un punto con otro; hablar de una frontera para un conjunto exigirá comparar un mismo candidato con **todos** los elementos del conjunto a la vez.
+
+Pero la pregunta planteada en la introducción es diferente: ¿qué significaría que el conjunto de números cuyo cuadrado es menor que $2$ tuviera una frontera? Antes de examinar ese conjunto necesitamos distinguir preguntas que en el lenguaje informal suelen mezclarse:
 
 - ¿hay algún número que quede por encima de todos los elementos del conjunto?;
 - ¿hay un elemento del propio conjunto que sea el mayor de todos?;
