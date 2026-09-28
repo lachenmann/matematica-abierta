@@ -5705,54 +5705,130 @@ y $C$ no tiene mínimo.
 
 La parte superior es inmediata porque $4\in C$ y todo elemento de $C$ es menor o igual que $4$. Por tanto, $4$ es máximo y, en consecuencia, también supremo.
 
-En el extremo inferior, $-2$ es una cota inferior, pero
+Estudiemos ahora el extremo inferior. Si $x\in C$, entonces o bien $x\in(-2,1]$ o bien $x=4$; en ambos casos
 
 $$
--2\notin C.
+-2<x.
 $$
 
-No hay mínimo: si $x\in(-2,1]$, entonces el punto medio
+Por tanto, $-2$ es una cota inferior de $C$. Sin embargo,
 
 $$
-\frac{x-2}{2}
+-2\notin C,
 $$
 
-satisface
+de modo que $-2$ no puede ser mínimo.
+
+Esto todavía no basta para concluir que $C$ carece de mínimo: podría existir otro elemento del conjunto que fuese el menor. Debemos descartarlo.
+
+Sea $x\in C$ arbitrario. Si $x=4$, podemos tomar
 
 $$
--2<\frac{x-2}{2}<x,
+y=1\in C,
 $$
 
-por lo que siempre podemos encontrar otro elemento de $C$ menor que $x$. El punto $4$ evidentemente tampoco puede ser mínimo.
+y entonces $y<x$.
 
-Para comprobar que $-2$ es el ínfimo, podemos usar la caracterización aproximativa. Dado $\varepsilon>0$, necesitamos un elemento de $C$ situado en
-
-$$
-[-2,-2+\varepsilon).
-$$
-
-Si $0<\varepsilon\le2$, podemos tomar
+Si, en cambio, $x\in(-2,1]$, definimos
 
 $$
-a=-2+\frac{\varepsilon}{2},
+y=\frac{x-2}{2}.
 $$
 
-que pertenece a $(-2,1]\subset C$ y satisface
+Como $x>-2$,
 
 $$
--2<a<-2+\varepsilon.
+y+2
+=
+\frac{x+2}{2}
+>0,
 $$
 
-Si $\varepsilon>2$, basta tomar, por ejemplo, $a=-1\in C$, pues
+y por tanto $y>-2$. Además,
+
+$$
+x-y
+=
+\frac{x+2}{2}
+>0,
+$$
+
+de modo que $y<x$. Puesto que $y<x\le1$, concluimos
+
+$$
+y\in(-2,1]\subset C.
+$$
+
+Así, en todos los casos,
+
+$$
+\forall x\in C\;\exists y\in C
+\qquad
+y<x.
+$$
+
+Ningún elemento de $C$ puede ser, por tanto, su mínimo.
+
+Falta comprobar que $-2$ no es solamente una cota inferior, sino la **mayor** cota inferior. Utilicemos la caracterización aproximativa del ínfimo. Sea $\varepsilon>0$. Necesitamos encontrar $a\in C$ tal que
+
+$$
+-2\le a<-2+\varepsilon.
+$$
+
+Si $0<\varepsilon\le2$, tomamos
+
+$$
+a=-2+\frac{\varepsilon}{2}.
+$$
+
+Entonces
+
+$$
+-2<a<-2+\varepsilon,
+$$
+
+y además
+
+$$
+-2<a\le-1<1,
+$$
+
+de modo que $a\in(-2,1]\subset C$.
+
+Si $\varepsilon>2$, basta tomar
+
+$$
+a=-1\in C,
+$$
+
+pues
 
 $$
 -2<-1<-2+\varepsilon.
 $$
 
-Así, ningún número mayor que $-2$ puede seguir siendo una cota inferior, y
+Hemos mostrado que para todo $\varepsilon>0$ existe $a\in C$ con
 
 $$
-\inf C=-2.
+-2\le a<-2+\varepsilon.
+$$
+
+Como $-2$ es una cota inferior, @prp-t1-0010 permite concluir
+
+$$
+\boxed{\inf C=-2}.
+$$
+
+Así, este único ejemplo reúne las cuatro nociones:
+
+$$
+\boxed{
+\max C=\sup C=4,
+\qquad
+\inf C=-2,
+\qquad
+C\text{ no tiene mínimo}.
+}
 $$
 
 ### No todo conjunto tiene máximo, ni todo conjunto tiene una cota
