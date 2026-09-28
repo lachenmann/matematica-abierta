@@ -4768,18 +4768,21 @@ $$
 }
 $$
 
-Ahora podemos traducir
+Si $r>0$, la definición de distancia y @prp-t1-0009 condensan la traducción fundamental en una sola cadena:
 
 $$
+\boxed{
 |x-a|<r
+\iff
+d(x,a)<r
+\iff
+a-r<x<a+r
+\iff
+x\in(a-r,a+r).
+}
 $$
 
-en cualquiera de estas formas:
-
-- una desigualdad de valor absoluto;
-- una afirmación de distancia;
-- una doble desigualdad;
-- pertenencia a un intervalo abierto.
+Así, una misma afirmación puede leerse como desigualdad de valor absoluto, condición de distancia, doble desigualdad o pertenencia a un intervalo abierto.
 
 También disponemos de las dos estimaciones fundamentales
 
@@ -4792,6 +4795,8 @@ y
 $$
 \bigl||x|-|y|\bigr|\le|x-y|.
 $$
+
+La desigualdad triangular controla cómo se acumulan tamaños o errores; la desigualdad triangular inversa controla cuánto puede cambiar una magnitud —o una distancia a un punto fijo— cuando cambia el punto.
 
 Estas herramientas permiten hablar con precisión de tamaño y cercanía. Pero todavía no permiten hablar de «puntos frontera» de conjuntos que quizá no contengan sus extremos.
 
