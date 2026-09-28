@@ -7448,27 +7448,65 @@ Así, para $p\ge1$, una aplicación de $T$ deja el nuevo defecto absoluto como m
 
 ### Entonces, ¿dónde está exactamente el hueco?
 
-Ya podemos describir con mucha más precisión el problema de los racionales.
+La palabra «hueco» puede inducir una imagen equivocada. No significa que exista alrededor de la frontera un intervalo sin números racionales. Eso sería falso: entre dos racionales distintos siempre podemos insertar otro racional.
 
-No existe un intervalo racional vacío alrededor del borde. Eso sería falso: entre dos racionales distintos siempre hay otros racionales.
+El fenómeno es más sutil.
 
-Lo que falta es otra cosa.
-
-El conjunto $A$ contiene racionales positivos cuyos cuadrados están por debajo de $2$. No tiene elemento mayor: desde cualquiera de ellos podemos subir a otro racional que sigue perteneciendo a $A$.
-
-El conjunto $B$ contiene racionales positivos cuyos cuadrados están por encima de $2$. No tiene elemento menor: desde cualquiera de ellos podemos bajar a otro racional que sigue perteneciendo a $B$.
-
-Y, sin embargo,
+Recordemos
 
 $$
-a<b
+A=\{p\in\mathbb Q:p>0,\ p^2<2\}
+$$
+
+y
+
+$$
+B=\{p\in\mathbb Q:p>0,\ p^2>2\}.
+$$
+
+Ya hemos demostrado cuatro hechos:
+
+$$
+A\ne\varnothing,
 \qquad
-\text{para todo }a\in A\text{ y todo }b\in B.
+B\ne\varnothing,
 $$
 
-Intuitivamente, $A$ y $B$ se acercan a una misma frontera desde lados opuestos, pero ningún racional ocupa esa frontera.
+$$
+\forall a\in A\;\forall b\in B,
+\qquad
+a<b,
+$$
 
-Podemos volver a nombrar el conjunto inferior como
+$$
+\forall a\in A\;\exists a'\in A,
+\qquad
+a<a',
+$$
+
+y
+
+$$
+\forall b\in B\;\exists b'\in B,
+\qquad
+b'<b.
+$$
+
+Por tanto, $A$ no tiene máximo y $B$ no tiene mínimo. Además, como todo elemento de $A$ está por debajo de todo elemento de $B$, cada $b\in B$ es una cota superior racional de $A$.
+
+Aquí aparece una distinción importante. Que $A$ no tenga máximo **no basta**, por sí solo, para decir que carece de supremo. Por ejemplo,
+
+$$
+(0,1)\cap\mathbb Q
+$$
+
+no tiene máximo dentro de $\mathbb Q$, pero sí posee la menor cota superior racional $1$.
+
+Así que el problema no consiste simplemente en que «falta el último elemento de $A$». La pregunta correcta es más fuerte:
+
+> entre todas las cotas superiores racionales de la región inferior, ¿existe una que sea menor que todas las demás?
+
+Para conectar esta pregunta con la formulación que utilizaremos en §1.5, introducimos
 
 $$
 S_{\mathbb Q}
@@ -7476,13 +7514,65 @@ S_{\mathbb Q}
 \{q\in\mathbb Q:q\ge0,\ q^2<2\}.
 $$
 
-Con el lenguaje de supremos que hemos introducido en §1.3, ahora podemos formular la pregunta correcta sobre él:
+Este conjunto no es literalmente el mismo que $A$. Como $0^2<2$,
 
-> ¿posee $S_{\mathbb Q}$ una **menor cota superior** dentro del sistema numérico en el que estamos trabajando?
+$$
+\boxed{
+S_{\mathbb Q}=A\cup\{0\}.
+}
+$$
 
-Las nociones de «cota superior» y «menor cota superior» ya están definidas. El ejemplo muestra ahora **por qué esas distinciones importan** y prepara una prueba precisa de la ausencia de supremo racional.
+Sin embargo, añadir $0$ no cambia las cotas superiores. En efecto, como
 
-En §1.5 regresaremos a este mismo conjunto y demostraremos formalmente que, considerado como subconjunto de $\mathbb Q$, no posee la propiedad de borde que necesitaremos. Después veremos que el paso a $\mathbb R$ no consiste simplemente en añadir números al azar, sino en exigir una propiedad estructural que garantice la existencia de esos bordes bajo hipótesis precisas.
+$$
+1\in A,
+$$
+
+toda cota superior $u$ de $A$ satisface
+
+$$
+1\le u,
+$$
+
+y por tanto también
+
+$$
+0\le u.
+$$
+
+Así, toda cota superior de $A$ también domina al nuevo elemento $0$. Recíprocamente, toda cota superior de $S_{\mathbb Q}$ es automáticamente cota superior de $A\subseteq S_{\mathbb Q}$. Luego ambos conjuntos tienen exactamente las mismas cotas superiores racionales.
+
+Podemos formular entonces con precisión la cuestión pendiente:
+
+$$
+\boxed{
+\text{¿existe }s\in\mathbb Q
+\text{ que sea la menor cota superior de }S_{\mathbb Q}\text{ dentro de }\mathbb Q?
+}
+$$
+
+El trabajo realizado en esta sección ya ha dejado visibles todos los ingredientes que harán fracasar esa posibilidad: por debajo siempre podemos subir, por encima siempre podemos bajar y ningún racional satisface $q^2=2$.
+
+Pero conviene mantener separadas **intuición estructural** y **demostración formal**. En §1.5 volveremos a $S_{\mathbb Q}$ y probaremos explícitamente, en el lenguaje de supremos, que
+
+$$
+S_{\mathbb Q}
+$$
+
+es no vacío y está acotado superiormente en $\mathbb Q$, pero no posee una menor cota superior racional.
+
+Ese será el sentido preciso del hueco:
+
+$$
+\boxed{
+\begin{array}{c}
+\text{no falta un intervalo de racionales;}\\[3pt]
+\text{falta en }\mathbb Q\text{ el punto frontera exigido por la propiedad del supremo.}
+\end{array}
+}
+$$
+
+El paso a $\mathbb R$ no consistirá, por tanto, en «rellenar espacios visibles» entre racionales, sino en imponer una propiedad estructural que garantice la existencia de fronteras bajo hipótesis precisas.
 
 ### Una segunda lectura del ejemplo de Rudin
 
