@@ -905,3 +905,4 @@ La desigualdad triangular controla cómo se acumulan tamaños o errores; la desi
 Estas herramientas permiten hablar con precisión de tamaño y cercanía. Pero todavía no permiten hablar de «puntos frontera» de conjuntos que quizá no contengan sus extremos.
 
 Ese será el problema de §1.3. Allí distinguiremos por primera vez entre **máximo** y **supremo**, y prepararemos el lenguaje con el que examinaremos, en §1.4, la frontera que sugiere la ecuación $x^2=2$.
+
