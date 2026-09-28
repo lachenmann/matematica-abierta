@@ -9050,53 +9050,125 @@ $\blacksquare$
 
 ### Qué hizo realmente la transformación de Rudin
 
-En §1.4 la fórmula
+En §1.4 introdujimos
 
 $$
 T(p)=p-\frac{p^2-2}{p+2}
 $$
 
-podía parecer una técnica ingeniosa para acercarnos a un borde todavía informal.
+para demostrar que no existe un último racional positivo con cuadrado menor que $2$ ni un primero con cuadrado mayor que $2$.
 
-Ahora su función estructural queda completamente visible.
+En la prueba que acabamos de cerrar, las mismas identidades desempeñan una función lógica más precisa. La transformación no intenta **encontrar** un supremo racional. Hace exactamente lo contrario: permite **refutar cualquier candidato racional** según el lado del nivel $2$ en que se encuentre.
 
-Si un candidato racional $s$ queda **por debajo** del borde, la transformación produce otro racional permitido que está más arriba:
-
-$$
-s^2<2
-\quad\Longrightarrow\quad
-s<T(s),\qquad T(s)^2<2.
-$$
-
-Por tanto, $s$ no puede ser cota superior.
-
-Si el candidato queda **por encima**, la transformación produce una cota superior racional más pequeña:
+Supongamos que $s\in\mathbb Q$ pretende satisfacer las dos cláusulas de
 
 $$
-s^2>2
-\quad\Longrightarrow\quad
-T(s)<s,\qquad T(s)^2>2.
+s=\sup_{\mathbb Q}S_{\mathbb Q}.
 $$
 
-Por tanto, $s$ no puede ser la menor cota superior.
+Hay tres posibilidades.
 
-Y el único tercer lugar imaginable,
+**1. Si $s^2<2$, falla la condición de cota superior.** La transformación produce
 
 $$
-s^2=2,
+T(s)\in S_{\mathbb Q}
+\qquad\text{y}\qquad
+T(s)>s.
 $$
 
-no existe dentro de $\mathbb Q$.
-
-Así, el «hueco» de §1.4 puede formularse ahora con total precisión:
+Así existe un elemento permitido situado por encima de $s$. En símbolos,
 
 $$
 \boxed{
-\mathbb Q\text{ contiene un conjunto no vacío y acotado superiormente que no tiene supremo en }\mathbb Q.
+s^2<2
+\quad\Longrightarrow\quad
+\exists q\in S_{\mathbb Q}\text{ tal que }q>s.
 }
 $$
 
-Esto, y no simplemente la frase informal «faltan irracionales», es el fracaso de completitud que nos interesa.
+Por tanto, $s$ no puede dominar a todos los elementos de $S_{\mathbb Q}$.
+
+**2. Si $s^2>2$, falla la minimalidad.** En este caso la transformación produce un racional $T(s)$ tal que
+
+$$
+T(s)<s
+$$
+
+y, además,
+
+$$
+\forall q\in S_{\mathbb Q},
+\qquad
+q\le T(s).
+$$
+
+Es decir, $T(s)$ es una cota superior racional estrictamente menor que $s$. Por tanto,
+
+$$
+\boxed{
+s^2>2
+\quad\Longrightarrow\quad
+\exists u\in\mathbb Q
+\text{ cota superior de }S_{\mathbb Q}
+\text{ con }u<s.
+}
+$$
+
+Así, aun cuando $s$ fuese una cota superior, no podría ser la menor.
+
+**3. Si $s^2=2$, falla la racionalidad del candidato.** Este caso no lo descarta la transformación, sino @prp-t1-0006:
+
+$$
+\boxed{
+\forall q\in\mathbb Q,
+\qquad
+q^2\ne2.
+}
+$$
+
+Por eso los tres casos atacan exactamente las tres posibilidades abiertas por la tricotomía, pero no todos con la misma herramienta: $T$ elimina las dos desigualdades estrictas y la inexistencia racional de una raíz elimina la igualdad.
+
+Podemos condensar la arquitectura así:
+
+$$
+\boxed{
+\begin{array}{ccl}
+s^2<2
+&\Longrightarrow&
+\text{$s$ no es cota superior},\\[4pt]
+s^2>2
+&\Longrightarrow&
+\text{$s$ no es la menor cota superior},\\[4pt]
+s^2=2
+&\Longrightarrow&
+\text{contradicción con }s\in\mathbb Q.
+\end{array}
+}
+$$
+
+En consecuencia, **todo candidato racional falla** antes de poder satisfacer simultáneamente las dos cláusulas de supremo.
+
+Esta es la función estructural de la transformación de Rudin: no aproxima por sí sola un objeto cuya existencia ya conozcamos, ni produce una frontera racional. Es un **mecanismo de exclusión** que muestra cómo fracasa cada candidato posible dentro de $\mathbb Q$.
+
+El resultado tiene además una consecuencia lógica que habíamos dejado pendiente. Ya sabemos que
+
+$$
+\mathbb Q
+$$
+
+es un cuerpo ordenado, pero acabamos de exhibir en él un conjunto no vacío y acotado superiormente que no posee supremo racional. Por tanto,
+
+$$
+\boxed{
+\text{cuerpo}
++
+\text{orden}
+\not\Longrightarrow
+\text{completitud}.
+}
+$$
+
+Así, la completitud contiene información estructural genuinamente adicional. El «hueco» no consiste simplemente en que «faltan irracionales», sino en que $\mathbb Q$ no garantiza la existencia interna de ciertas fronteras que su propio orden permite describir.
 
 ### El mismo problema dentro de $\mathbb R$
 
