@@ -676,7 +676,7 @@ Las dos lecturas caracterizan la misma región mediante equivalencias reversible
 
 El valor absoluto será también nuestra herramienta básica para **estimar** cantidades.
 
-Supongamos que conocemos una aproximación de $x$ a un punto $a$ en el sentido de que
+Supongamos que conocemos una aproximación de $x$ a un punto $a$, con $r>0$, en el sentido de que
 
 $$
 |x-a|<r.
@@ -688,7 +688,7 @@ $$
 x=(x-a)+a,
 $$
 
-la desigualdad triangular da
+la desigualdad triangular y la hipótesis dan
 
 $$
 |x|
@@ -708,6 +708,32 @@ $$
 }
 $$
 
+Podemos decir algo más preciso utilizando la desigualdad triangular inversa:
+
+$$
+\bigl||x|-|a|\bigr|
+\le
+|x-a|
+<
+r.
+$$
+
+Por la caracterización estricta del valor absoluto,
+
+$$
+-r<|x|-|a|<r,
+$$
+
+y por tanto
+
+$$
+\boxed{
+|a|-r<|x|<|a|+r.
+}
+$$
+
+La cota superior recupera la estimación anterior; la inferior muestra que, si $x$ está a distancia menor que $r$ de $a$, su magnitud tampoco puede disminuir respecto de $|a|$ en una cantidad igual o mayor que $r$.
+
 Este pequeño patrón es una de las técnicas fundamentales del análisis:
 
 $$
@@ -720,7 +746,7 @@ $$
 }
 $$
 
-Después aplicamos la desigualdad triangular para transformar esa descomposición en una cota.
+Después aplicamos desigualdades de valor absoluto para transformar esa descomposición en cotas.
 
 No estamos hablando todavía de límites. Pero cuando más adelante aparezcan expresiones como
 
