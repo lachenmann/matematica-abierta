@@ -138,9 +138,94 @@ $$
 
 Si $b\ne0$, el **cociente** de $a$ por $b$ se define por
 
-$$
+$
 \frac ab:=ab^{-1}.
-$$
+$
+:::
+
+::: {.callout-note title="Desarrollo optativo: la resta como operación inversa de la suma"}
+La definición anterior también puede obtenerse a partir de la idea elemental de que **restar $b$ debe deshacer la suma de $b$**.
+
+En vez de definir de entrada $a-b$, caractericemos provisionalmente la diferencia como el único elemento $x\in F$ que satisface
+
+$
+b+x=a.
+$
+
+Sumamos $-b$ a ambos miembros:
+
+$
+(-b)+(b+x)=(-b)+a.
+$
+
+Por asociatividad,
+
+$
+\bigl((-b)+b\bigr)+x=(-b)+a.
+$
+
+Como $(-b)+b=0$, obtenemos
+
+$
+0+x=(-b)+a,
+$
+
+y, por el neutro aditivo y la conmutatividad,
+
+$
+x=(-b)+a=a+(-b).
+$
+
+Por tanto, la operación caracterizada como «deshacer la suma de $b$» coincide necesariamente con sumar su inverso aditivo:
+
+$
+\boxed{a-b=a+(-b).}
+$
+
+En nuestro desarrollo esta igualdad es, desde ahora, **definicional**; el argumento muestra por qué esa definición captura exactamente la operación inversa de sumar $b$.
+:::
+
+::: {.callout-note title="Desarrollo optativo: la división como operación inversa del producto"}
+El mismo razonamiento funciona multiplicativamente, con una diferencia esencial: debemos exigir $b\ne0$ para que exista $b^{-1}$.
+
+En vez de definir de entrada $a/b$, caractericemos provisionalmente el cociente como el único elemento $x\in F$ que satisface
+
+$
+bx=a.
+$
+
+Multiplicamos ambos miembros por $b^{-1}$:
+
+$
+b^{-1}(bx)=b^{-1}a.
+$
+
+Por asociatividad,
+
+$
+(b^{-1}b)x=b^{-1}a.
+$
+
+Como $b^{-1}b=1$, obtenemos
+
+$
+1x=b^{-1}a,
+$
+
+y, por el neutro multiplicativo y la conmutatividad,
+
+$
+x=b^{-1}a=ab^{-1}.
+$
+
+Por tanto, la operación caracterizada como «deshacer la multiplicación por $b$» coincide necesariamente con multiplicar por su inverso:
+
+$
+\boxed{\frac ab=ab^{-1}},
+\qquad b\ne0.
+$
+
+Así como la resta no introduce una nueva operación primitiva, la división tampoco: ambas se construyen a partir de las operaciones del cuerpo y de sus respectivos inversos.
 :::
 
 La resta, por tanto, no es una tercera operación primitiva: es suma con un inverso aditivo.
