@@ -4357,9 +4357,7 @@ $$
 |x-a|<r
 $$
 
-significa que la distancia de $x$ a $a$ es menor que $r$.
-
-La Proposición `#prp-t1-0008` permite traducirla inmediatamente:
+significa que la distancia de $x$ a $a$ es menor que $r$. La caracterización de @prp-t1-0008 permite traducirla directamente:
 
 $$
 \begin{aligned}
@@ -4379,7 +4377,7 @@ x\in(a-r,a+r).
 }
 $$
 
-La misma idea funciona con extremos incluidos.
+La misma traducción con orden débil describe la banda cerrada alrededor de $a$.
 
 ::: {#prp-t1-0009}
 Si $a\in\mathbb R$ y $r>0$, entonces
@@ -4402,12 +4400,14 @@ a-r\le x\le a+r
 x\in[a-r,a+r].
 $$
 
-Además,
+Fuera de esas bandas se tiene
 
 $$
 |x-a|>r
 \iff
-x<a-r\ \text{o}\ x>a+r,
+x<a-r\ \text{o}\ x>a+r
+\iff
+x\in(-\infty,a-r)\cup(a+r,\infty),
 $$
 
 y
@@ -4415,9 +4415,73 @@ y
 $$
 |x-a|\ge r
 \iff
-x\le a-r\ \text{o}\ x\ge a+r.
+x\le a-r\ \text{o}\ x\ge a+r
+\iff
+x\in(-\infty,a-r]\cup[a+r,\infty).
 $$
 :::
+
+Las dos formas exteriores merecen una justificación porque introducen una disyunción. Como el orden de $\mathbb R$ es total,
+
+$$
+|x-a|>r
+\iff
+\neg\bigl(|x-a|\le r\bigr).
+$$
+
+La equivalencia para la banda cerrada transforma esto en
+
+$$
+\neg\bigl(a-r\le x\le a+r\bigr).
+$$
+
+Para que falle esa doble desigualdad debe fallar al menos una de sus dos condiciones. Por tricotomía,
+
+$$
+\neg(a-r\le x)
+\iff
+x<a-r,
+$$
+
+y
+
+$$
+\neg(x\le a+r)
+\iff
+x>a+r.
+$$
+
+Por tanto,
+
+$$
+\boxed{
+|x-a|>r
+\iff
+x<a-r\ \text{o}\ x>a+r.
+}
+$$
+
+De manera análoga,
+
+$$
+|x-a|\ge r
+\iff
+\neg\bigl(|x-a|<r\bigr)
+\iff
+\neg\bigl(a-r<x<a+r\bigr),
+$$
+
+y la negación de la banda abierta da
+
+$$
+\boxed{
+|x-a|\ge r
+\iff
+x\le a-r\ \text{o}\ x\ge a+r.
+}
+$$
+
+La diferencia entre $>$ y $\ge$ aparece exactamente en los dos puntos frontera $a-r$ y $a+r$: pertenecen a la región exterior cerrada, pero no a la exterior estricta.
 
 ::: {.callout-warning title="Error frecuente: olvidar el centro"}
 De
