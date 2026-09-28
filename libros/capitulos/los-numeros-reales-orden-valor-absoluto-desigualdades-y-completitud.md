@@ -8436,7 +8436,7 @@ Por tanto, no necesitamos añadir una segunda «propiedad de completitud para í
 
 ### Ahora volvamos a $\mathbb Q$
 
-La importancia del axioma sería difícil de apreciar si también fuera válido en $\mathbb Q$. Pero no lo es.
+La importancia del axioma de completitud sería difícil de apreciar si la misma propiedad fuese válida también en $\mathbb Q$. Veamos que no lo es.
 
 Consideremos nuevamente
 
@@ -8446,21 +8446,77 @@ S_{\mathbb Q}
 \{q\in\mathbb Q:q\ge0,\ q^2<2\}.
 $$
 
-Este conjunto es no vacío porque
+Antes de preguntar por su supremo debemos auditar las dos hipótesis de existencia.
+
+**1. $S_{\mathbb Q}$ es no vacío.** El número $1$ es racional y satisface
 
 $$
-1\in S_{\mathbb Q}.
+1\ge0
+\qquad\text{y}\qquad
+1^2=1<2.
 $$
 
-También está acotado superiormente dentro de $\mathbb Q$. Por ejemplo, $2$ es una cota superior: si $q\ge2$, entonces, como $q\ge0$,
+Por tanto,
 
 $$
-q^2\ge4>2,
+1\in S_{\mathbb Q},
 $$
 
-de modo que tal $q$ no puede pertenecer a $S_{\mathbb Q}$.
+y así
 
-Tenemos, pues,
+$$
+S_{\mathbb Q}\ne\varnothing.
+$$
+
+**2. $S_{\mathbb Q}$ está acotado superiormente en $\mathbb Q$.** Mostremos que $2$ es una cota superior racional. Sea
+
+$$
+q\in S_{\mathbb Q}.
+$$
+
+Entonces
+
+$$
+q\ge0
+\qquad\text{y}\qquad
+q^2<2.
+$$
+
+Si ocurriera $q\ge2$, tendríamos
+
+$$
+0\le2\le q,
+$$
+
+y la monotonía del cuadrado en los no negativos, @prp-t1-0007, daría
+
+$$
+4=2^2\le q^2.
+$$
+
+Esto contradice $q^2<2$. Por tanto,
+
+$$
+q<2,
+$$
+
+y en particular
+
+$$
+q\le2.
+$$
+
+Como $q\in S_{\mathbb Q}$ fue arbitrario,
+
+$$
+\forall q\in S_{\mathbb Q},
+\qquad
+q\le2.
+$$
+
+Así, $2\in\mathbb Q$ es una cota superior de $S_{\mathbb Q}$ dentro del sistema racional.
+
+Hemos verificado, pues,
 
 $$
 \boxed{
@@ -8470,9 +8526,37 @@ S_{\mathbb Q}\text{ está acotado superiormente en }\mathbb Q.
 }
 $$
 
-Si $\mathbb Q$ tuviera la propiedad de completitud que acabamos de adoptar para $\mathbb R$, este conjunto debería poseer un supremo racional.
+Si $\mathbb Q$ satisficiera la propiedad del supremo que hemos adoptado para $\mathbb R$, estas dos condiciones obligarían a que existiera una menor cota superior **racional**.
 
-No lo posee.
+Conviene fijar la notación. Escribiremos
+
+$$
+s=\sup_{\mathbb Q}S_{\mathbb Q}
+$$
+
+para decir que $s\in\mathbb Q$ satisface simultáneamente
+
+$$
+\forall q\in S_{\mathbb Q},
+\qquad
+q\le s,
+$$
+
+y
+
+$$
+\forall u\in\mathbb Q,
+\qquad
+\left[
+\bigl(\forall q\in S_{\mathbb Q},\ q\le u\bigr)
+\Longrightarrow
+s\le u
+\right].
+$$
+
+Es decir, $s$ tendría que ser una cota superior racional y, además, la menor entre **todas las cotas superiores racionales**.
+
+La siguiente proposición demuestra que tal $s$ no existe.
 
 ::: {#prp-t1-0012}
 **Fallo de la propiedad del supremo en $\mathbb Q$.** El conjunto
@@ -8487,7 +8571,15 @@ es no vacío y está acotado superiormente en $\mathbb Q$, pero no tiene supremo
 :::
 
 ::: {.callout-note title="Idea de la prueba"}
-Supongamos que existe un supremo racional $s$. Como $s\in\mathbb Q$, su cuadrado debe caer en exactamente uno de tres casos:
+Supongamos que existiera
+
+$$
+s=\sup_{\mathbb Q}S_{\mathbb Q}.
+$$
+
+Como $1\in S_{\mathbb Q}$ y $s$ sería una cota superior, tendríamos $s\ge1$. En particular, podremos aplicar a $s$ la transformación racional estudiada en §1.4.
+
+La tricotomía deja exactamente tres posibilidades:
 
 $$
 s^2<2,
@@ -8497,7 +8589,13 @@ s^2=2,
 s^2>2.
 $$
 
-La transformación de Rudin estudiada en §1.4 permitirá destruir los casos primero y tercero; el segundo ya fue excluido por la irracionalidad demostrada al comienzo del capítulo.
+Cada caso ataca una parte distinta de la definición de supremo.
+
+- Si $s^2<2$, la transformación producirá un elemento de $S_{\mathbb Q}$ estrictamente mayor que $s$. Así, $s$ dejará de ser siquiera una **cota superior**.
+- Si $s^2>2$, producirá una **cota superior racional** estrictamente menor que $s$. Así, $s$ dejará de ser la **menor** cota superior.
+- Si $s^2=2$, contradiremos el resultado de §1.4: ningún racional tiene cuadrado $2$.
+
+Los tres casos serán imposibles.
 :::
 
 **Demostración.** Supongamos, para obtener una contradicción, que existe
