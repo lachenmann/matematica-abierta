@@ -526,19 +526,73 @@ Por tanto, $A$ no tiene máximo y $B$ no tiene mínimo.
 
 #### Primera pregunta: ¿q sigue siendo racional y positivo?
 
-Sí. Si $p\in\mathbb Q$, entonces la expresión
+Sí, pero conviene separar tres comprobaciones.
+
+**1. La expresión está bien definida.** Partimos de $p\in\mathbb Q$ con $p>0$. Entonces
+
+$$
+p+2>0,
+$$
+
+y, en particular,
+
+$$
+p+2\ne0.
+$$
+
+Por tanto, el cociente que aparece en
 
 $$
 q=\frac{2(p+1)}{p+2}
 $$
 
-está formada mediante operaciones racionales. Como $p>0$, tenemos $p+1>0$ y $p+2>0$, así que
+está definido.
+
+**2. El nuevo número sigue siendo racional.** Como $p\in\mathbb Q$ y $\mathbb Q$ es un cuerpo,
 
 $$
+p+1\in\mathbb Q,
+\qquad
+p+2\in\mathbb Q.
+$$
+
+Además, $2(p+1)\in\mathbb Q$ y, como $p+2\ne0$, también su cociente pertenece a $\mathbb Q$. Por tanto,
+
+$$
+\boxed{q\in\mathbb Q}.
+$$
+
+**3. El nuevo número sigue siendo positivo.** De $p>0$ obtenemos
+
+$$
+p+1>0,
+\qquad
+p+2>0.
+$$
+
+Como $2>0$,
+
+$$
+2(p+1)>0.
+$$
+
+El cociente de dos números positivos es positivo, luego
+
+$$
+\boxed{q>0}.
+$$
+
+Hemos probado así las dos condiciones de dominio que necesitaremos después:
+
+$$
+\boxed{
+q\in\mathbb Q
+\qquad\text{y}\qquad
 q>0.
+}
 $$
 
-Esta comprobación es pequeña, pero no debe omitirse: para concluir que $q\in A$ o $q\in B$ necesitamos que $q$ siga perteneciendo al dominio de esos conjuntos.
+Todavía no sabemos si $q$ pertenece a $A$ o a $B$. Para decidirlo faltan dos controles distintos: comparar primero $q$ con $p$ y después comparar $q^2$ con $2$.
 
 #### Segunda pregunta: ¿q se mueve en la dirección correcta?
 
