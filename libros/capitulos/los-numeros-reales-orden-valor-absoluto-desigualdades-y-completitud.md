@@ -8598,21 +8598,47 @@ Cada caso ataca una parte distinta de la definición de supremo.
 Los tres casos serán imposibles.
 :::
 
-**Demostración.** Supongamos, para obtener una contradicción, que existe
+**Demostración.** Supongamos, para obtener una contradicción, que existe un racional
 
 $$
-s=\sup_{\mathbb Q}S_{\mathbb Q}
+s=\sup_{\mathbb Q}S_{\mathbb Q}.
 $$
 
-con $s\in\mathbb Q$.
-
-Como $1\in S_{\mathbb Q}$ y $s$ es una cota superior,
+Por la definición fijada arriba, $s$ es en particular una cota superior racional de $S_{\mathbb Q}$:
 
 $$
-s\ge1.
+\forall q\in S_{\mathbb Q},
+\qquad
+q\le s.
 $$
 
-En particular, $s+2>0$. Definamos, exactamente como en §1.4,
+Como
+
+$$
+1\in S_{\mathbb Q},
+$$
+
+obtenemos
+
+$$
+1\le s.
+$$
+
+En particular,
+
+$$
+s>0
+\qquad\text{y}\qquad
+s+2>0,
+$$
+
+de modo que
+
+$$
+s+2\ne0.
+$$
+
+Aplicaremos al candidato $s$ la misma transformación estudiada en §1.4:
 
 $$
 T(s)
@@ -8622,43 +8648,153 @@ s-\frac{s^2-2}{s+2}
 \frac{2(s+1)}{s+2}.
 $$
 
-Como $s\in\mathbb Q$, también $T(s)\in\mathbb Q$, y como $s\ge1$, tenemos $T(s)>0$.
-
-Ya demostramos las dos identidades decisivas
+Como $s\in\mathbb Q$, también
 
 $$
+s+1\in\mathbb Q,
+\qquad
+s+2\in\mathbb Q.
+$$
+
+Además, $s+2\ne0$. Puesto que $\mathbb Q$ es un cuerpo, concluimos
+
+$$
+\boxed{T(s)\in\mathbb Q}.
+$$
+
+Por otra parte,
+
+$$
+s+1>0,
+\qquad
+s+2>0,
+\qquad
+2>0,
+$$
+
+así que
+
+$$
+\boxed{T(s)>0}.
+$$
+
+Ya demostramos en §1.4 las dos identidades decisivas:
+
+$$
+\boxed{
 T(s)-s
 =
-\frac{2-s^2}{s+2},
+\frac{2-s^2}{s+2}
+}
 $$
 
+y
+
 $$
+\boxed{
 T(s)^2-2
 =
 \frac{2(s^2-2)}{(s+2)^2}.
+}
 $$
 
-Consideremos los tres casos posibles.
+La primera controla la **dirección** del desplazamiento; la segunda controla el **lado** respecto de $2$.
+
+Consideremos los tres casos que proporciona la tricotomía para $s^2$ y $2$.
 
 **Caso 1: $s^2<2$.** Entonces
 
 $$
-T(s)-s>0,
+2-s^2>0.
 $$
 
-de modo que $T(s)>s$. Además,
+Como
 
 $$
-T(s)^2-2<0.
+s+2>0,
+$$
+
+la primera identidad da
+
+$$
+T(s)-s>0.
+$$
+
+Por definición del orden,
+
+$$
+\boxed{T(s)>s}.
+$$
+
+Ahora debemos comprobar que este nuevo racional sigue perteneciendo al conjunto. De
+
+$$
+s^2<2
+$$
+
+obtenemos
+
+$$
+s^2-2<0.
+$$
+
+Además,
+
+$$
+\frac{2}{(s+2)^2}>0,
+$$
+
+pues $2>0$ y $(s+2)^2>0$. Multiplicar $s^2-2$ por este factor positivo conserva su signo. Por la segunda identidad,
+
+$$
+T(s)^2-2<0,
+$$
+
+y por tanto
+
+$$
+\boxed{T(s)^2<2}.
+$$
+
+Reunamos las condiciones de pertenencia:
+
+$$
+T(s)\in\mathbb Q,
+\qquad
+T(s)>0,
+\qquad
+T(s)^2<2.
+$$
+
+Luego
+
+$$
+\boxed{T(s)\in S_{\mathbb Q}}.
+$$
+
+Pero $s$ es una cota superior de $S_{\mathbb Q}$. Por consiguiente, todo elemento del conjunto debe satisfacer
+
+$$
+q\le s.
+$$
+
+Particularizando en el elemento $q=T(s)\in S_{\mathbb Q}$,
+
+$$
+T(s)\le s.
+$$
+
+Esto contradice
+
+$$
+T(s)>s.
 $$
 
 Por tanto,
 
 $$
-T(s)\in S_{\mathbb Q}
+\boxed{s^2<2\text{ es imposible}.}
 $$
-
-y $T(s)>s$. Esto contradice que $s$ sea una cota superior de $S_{\mathbb Q}$.
 
 **Caso 2: $s^2>2$.** Ahora
 
