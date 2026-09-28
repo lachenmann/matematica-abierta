@@ -801,7 +801,57 @@ $$
 |x-1|+|x+1|\le4.
 $$
 
-**Respuesta.** Si $-1\le x\le1$, la suma vale $2$. Si $x\ge1$, vale $2x$ y exige $x\le2$. Si $x\le-1$, vale $-2x$ y exige $x\ge-2$. Por tanto,
+**Respuesta.** Los puntos $-1$ y $1$ son los lugares donde cambian los signos de los argumentos de los valores absolutos, así que separamos tres regiones.
+
+Si $x\le-1$, entonces
+
+$$
+|x-1|+|x+1|
+=(1-x)+(-x-1)
+=-2x.
+$$
+
+La condición $-2x\le4$ equivale a $x\ge-2$, de modo que esta rama aporta
+
+$$
+[-2,-1].
+$$
+
+Si $-1\le x\le1$, entonces
+
+$$
+|x-1|+|x+1|
+=(1-x)+(x+1)
+=2,
+$$
+
+por lo que todos los puntos de esta región satisfacen la inequación. Esta rama aporta
+
+$$
+[-1,1].
+$$
+
+Si $x\ge1$, entonces
+
+$$
+|x-1|+|x+1|
+=(x-1)+(x+1)
+=2x.
+$$
+
+La condición $2x\le4$ equivale a $x\le2$, así que esta rama aporta
+
+$$
+[1,2].
+$$
+
+Las tres regiones cubren toda la recta real y sus soluciones se reúnen mediante una unión:
+
+$$
+[-2,-1]\cup[-1,1]\cup[1,2]=[-2,2].
+$$
+
+Por tanto,
 
 $$
 \boxed{x\in[-2,2]}.
