@@ -385,67 +385,153 @@ El axioma está formulado de manera unilateral, para cotas superiores. En el mic
 
 ### El ínfimo no necesita un segundo axioma
 
-El axioma fue formulado únicamente para conjuntos acotados **superiormente**. Podríamos añadir una versión dual para conjuntos acotados inferiormente, pero sería redundante.
+El axioma de completitud fue formulado únicamente para conjuntos no vacíos y acotados **superiormente**. Podríamos postular una segunda propiedad, dual, para conjuntos acotados inferiormente. No hace falta: la existencia de ínfimos puede deducirse del mismo axioma.
 
 ::: {#prp-t1-0011}
 **Existencia de ínfimos a partir del axioma de completitud.** Todo subconjunto no vacío $A\subseteq\mathbb R$ que esté acotado inferiormente posee un ínfimo en $\mathbb R$.
 :::
 
 ::: {.callout-note title="Idea de la prueba"}
-En lugar de buscar directamente el mayor de los límites inferiores de $A$, reuniremos **todas las cotas inferiores** de $A$ en un nuevo conjunto. Ese conjunto estará acotado superiormente. La completitud producirá entonces su supremo, y ese supremo resultará ser precisamente $\inf A$.
-:::
-
-**Demostración.** Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente. Definamos
+Reuniremos en un solo conjunto **todas las cotas inferiores de $A$**:
 
 $$
 L=\{\ell\in\mathbb R:\ell\le a\text{ para todo }a\in A\}.
 $$
 
-Así, $L$ es el conjunto de todas las cotas inferiores de $A$.
+La hipótesis de acotación inferior hará que $L$ sea no vacío. La hipótesis $A\ne\varnothing$ nos permitirá escoger un elemento de $A$ que funcione como cota superior de $L$.
 
-Como $A$ está acotado inferiormente, existe al menos una cota inferior. Por tanto,
+Entonces podremos aplicar completitud a $L$. Su supremo resultará ser exactamente la mayor de todas las cotas inferiores de $A$, es decir, $\inf A$.
+:::
+
+**Demostración.** Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente. Definamos
+
+$$
+L=\{\ell\in\mathbb R:\forall a\in A,\ \ell\le a\}.
+$$
+
+Por definición, $L$ es el conjunto de todas las cotas inferiores de $A$.
+
+**1. $L$ es no vacío.** Como $A$ está acotado inferiormente, existe algún $\ell_0\in\mathbb R$ tal que
+
+$$
+\forall a\in A,
+\qquad
+\ell_0\le a.
+$$
+
+Por la definición de $L$,
+
+$$
+\ell_0\in L.
+$$
+
+Por tanto,
 
 $$
 L\ne\varnothing.
 $$
 
-Como $A$ es no vacío, podemos escoger $a_0\in A$. Toda $\ell\in L$ satisface
+**2. $L$ está acotado superiormente.** Como $A\ne\varnothing$, podemos escoger
 
 $$
-\ell\le a_0,
+a_0\in A.
 $$
 
-porque $\ell$ es cota inferior de **todos** los elementos de $A$. Luego $a_0$ es una cota superior de $L$. Por tanto, $L$ está acotado superiormente.
+Sea $\ell\in L$ arbitrario. Puesto que $\ell$ es una cota inferior de $A$, debe cumplirse en particular
 
-El axioma de completitud puede aplicarse a $L$. Existe entonces
+$$
+\ell\le a_0.
+$$
+
+Así,
+
+$$
+\forall\ell\in L,
+\qquad
+\ell\le a_0.
+$$
+
+Por tanto, $a_0$ es una cota superior de $L$.
+
+Ya hemos verificado exactamente las dos hipótesis que necesita completitud:
+
+$$
+L\ne\varnothing
+\qquad\text{y}\qquad
+L\text{ está acotado superiormente}.
+$$
+
+Existe entonces un número real
 
 $$
 s=\sup L.
 $$
 
-Mostremos que $s=\inf A$.
+Debemos demostrar que este mismo número es el ínfimo de $A$. Para ello verificaremos las dos cláusulas de la definición.
 
-Sea $a\in A$ arbitrario. Por definición de $L$, toda $\ell\in L$ cumple
+**3. $s$ es una cota inferior de $A$.** Sea $a\in A$ arbitrario. Para todo $\ell\in L$ tenemos
 
 $$
-\ell\le a.
+\ell\le a,
 $$
 
-Así, $a$ es una cota superior de $L$. Como $s$ es la **menor** cota superior de $L$,
+porque cada elemento de $L$ es una cota inferior de $A$. Esto significa que $a$ es una cota superior de $L$.
+
+Como
+
+$$
+s=\sup L
+$$
+
+es la **menor** cota superior de $L$,
 
 $$
 s\le a.
 $$
 
-Esto vale para todo $a\in A$, de modo que $s$ es una cota inferior de $A$.
+El elemento $a\in A$ era arbitrario. Por tanto,
 
-Ahora sea $\ell$ cualquier cota inferior de $A$. Entonces $\ell\in L$, y como $s=\sup L$,
+$$
+\forall a\in A,
+\qquad
+s\le a,
+$$
+
+y así $s$ es una cota inferior de $A$. Equivalentemente,
+
+$$
+s\in L.
+$$
+
+**4. Ninguna cota inferior de $A$ es mayor que $s$.** Sea $\ell$ una cota inferior cualquiera de $A$. Entonces, por definición,
+
+$$
+\ell\in L.
+$$
+
+Pero $s=\sup L$ es, en particular, una cota superior de $L$. Por tanto,
 
 $$
 \ell\le s.
 $$
 
-Hemos demostrado que $s$ es una cota inferior de $A$ y que ninguna cota inferior puede ser mayor que $s$. Por definición,
+Hemos demostrado simultáneamente que
+
+$$
+s\le a
+\qquad
+\text{para todo }a\in A,
+$$
+
+y que
+
+$$
+\ell\le s
+\qquad
+\text{para toda cota inferior }\ell\text{ de }A.
+$$
+
+Estas son exactamente las dos cláusulas que caracterizan al ínfimo. En consecuencia,
 
 $$
 \boxed{s=\inf A.}
@@ -453,11 +539,50 @@ $$
 
 $\blacksquare$
 
-::: {.callout-note title="Después de la prueba"}
-La completitud se utilizó una sola vez: para garantizar que $L$, por ser no vacío y estar acotado superiormente, tenía supremo.
+La demostración proporciona además una identidad conceptual útil. Si
 
-Todo lo demás fue trabajo de definiciones y orden. Por eso no necesitamos postular por separado una «propiedad del ínfimo».
+$$
+L=\{\ell\in\mathbb R:\ell\text{ es cota inferior de }A\},
+$$
+
+entonces
+
+$$
+\boxed{
+\inf A=\sup L.
+}
+$$
+
+Más aún, como acabamos de demostrar que $s=\sup L$ pertenece al propio $L$,
+
+$$
+\boxed{
+\inf A=\sup L=\max L.
+}
+$$
+
+Es decir: el ínfimo de $A$ es literalmente **la mayor de todas sus cotas inferiores**.
+
+::: {.callout-note title="Dónde se usó cada hipótesis"}
+Las dos hipótesis sobre $A$ desempeñan funciones distintas:
+
+- $A$ **acotado inferiormente** $\Longrightarrow L\ne\varnothing$;
+- $A\ne\varnothing$ $\Longrightarrow$ podemos escoger $a_0\in A$, que sirve como cota superior de $L$.
+
+Solo después de esas dos verificaciones entra la completitud, una única vez:
+
+$$
+L\ne\varnothing
+\quad+\quad
+L\text{ acotado superiormente}
+\quad\Longrightarrow\quad
+\sup L\text{ existe}.
+$$
+
+El resto de la prueba utiliza únicamente las definiciones de cota, supremo e ínfimo y las propiedades del orden.
 :::
+
+Por tanto, no necesitamos añadir una segunda «propiedad de completitud para ínfimos». La versión inferior ya está contenida en la propiedad del supremo.
 
 ### Ahora volvamos a $\mathbb Q$
 
