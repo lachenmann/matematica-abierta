@@ -9172,7 +9172,7 @@ Así, la completitud contiene información estructural genuinamente adicional. E
 
 ### El mismo problema dentro de $\mathbb R$
 
-Ahora cambiemos de sistema ambiente. Consideremos
+Cambiemos ahora el sistema ambiente. Consideremos
 
 $$
 S_{\mathbb R}
@@ -9180,47 +9180,185 @@ S_{\mathbb R}
 \{x\in\mathbb R:x\ge0,\ x^2<2\}.
 $$
 
-::: {#exm-t1-0016}
-**La completitud produce la frontera antes de que sepamos identificarla.** El conjunto $S_{\mathbb R}$ es no vacío y está acotado superiormente. Por tanto, el axioma de completitud garantiza que existe un número real
+La desigualdad que define el conjunto es la misma que antes, pero ahora los candidatos y las cotas pertenecen a $\mathbb R$. Por eso podemos intentar aplicar el axioma de completitud.
+
+Antes debemos verificar sus dos hipótesis.
+
+**1. $S_{\mathbb R}$ es no vacío.** El número $1$ es real y satisface
 
 $$
+1\ge0
+\qquad\text{y}\qquad
+1^2=1<2.
+$$
+
+Por tanto,
+
+$$
+\boxed{1\in S_{\mathbb R}},
+$$
+
+y así
+
+$$
+S_{\mathbb R}\ne\varnothing.
+$$
+
+**2. $S_{\mathbb R}$ está acotado superiormente.** Mostremos que $2$ es una cota superior. Sea
+
+$$
+x\in S_{\mathbb R}.
+$$
+
+Entonces
+
+$$
+x\ge0
+\qquad\text{y}\qquad
+x^2<2.
+$$
+
+Si ocurriera $x\ge2$, tendríamos
+
+$$
+0\le2\le x.
+$$
+
+La monotonía del cuadrado en los no negativos, @prp-t1-0007, daría
+
+$$
+4=2^2\le x^2,
+$$
+
+en contradicción con $x^2<2$. Por tanto,
+
+$$
+x<2,
+$$
+
+y en particular
+
+$$
+x\le2.
+$$
+
+Como $x\in S_{\mathbb R}$ fue arbitrario,
+
+$$
+\boxed{
+\forall x\in S_{\mathbb R},
+\qquad
+x\le2.
+}
+$$
+
+Así, $2$ es una cota superior real de $S_{\mathbb R}$.
+
+Hemos verificado exactamente las hipótesis del axioma:
+
+$$
+S_{\mathbb R}\ne\varnothing
+\qquad\text{y}\qquad
+S_{\mathbb R}\text{ está acotado superiormente en }\mathbb R.
+$$
+
+Por completitud existe un número real
+
+$$
+\boxed{
 \alpha=\sup S_{\mathbb R}.
+}
 $$
 
-En este punto todavía no hemos demostrado que $\alpha^2=2$.
+::: {#exm-t1-0016}
+**La completitud produce la frontera antes de que sepamos identificarla.** La afirmación
+
+$$
+\alpha=\sup S_{\mathbb R}
+$$
+
+significa que $\alpha\in\mathbb R$ satisface simultáneamente
+
+$$
+\forall x\in S_{\mathbb R},
+\qquad
+x\le\alpha,
+$$
+
+y
+
+$$
+\forall u\in\mathbb R,
+\qquad
+\left[
+\bigl(\forall x\in S_{\mathbb R},\ x\le u\bigr)
+\Longrightarrow
+\alpha\le u
+\right].
+$$
+
+La completitud garantiza la **existencia** de ese número. La unicidad procede de la unicidad general del supremo demostrada en §1.3.
 :::
 
-En efecto,
+Podemos extraer inmediatamente dos cotas para $\alpha$.
+
+Como
 
 $$
-1\in S_{\mathbb R},
+1\in S_{\mathbb R}
 $$
 
-así que el conjunto es no vacío. Y $2$ es una cota superior por el mismo argumento usado antes. Por completitud, existe
+y $\alpha$ es una cota superior,
 
 $$
-\alpha=\sup S_{\mathbb R}\in\mathbb R.
+1\le\alpha.
 $$
 
-Observemos con cuidado lo que hemos ganado y lo que todavía falta.
+Por otra parte, $2$ es una cota superior de $S_{\mathbb R}$ y $\alpha$ es la menor de todas ellas. Por tanto,
 
-La completitud nos entrega **un punto frontera real**. No nos dice todavía que ese punto satisfaga
+$$
+\alpha\le2.
+$$
+
+Así,
+
+$$
+\boxed{
+1\le\alpha\le2.
+}
+$$
+
+En este punto sabemos rigurosamente que existe una frontera real y sabemos dónde está localizada. Pero completitud no nos ha entregado todavía la propiedad que motivó toda la construcción.
+
+No hemos demostrado aún
 
 $$
 \alpha^2=2.
 $$
 
-Demostrar esa igualdad será el trabajo de §1.6. Solo después podremos identificar legítimamente a $\alpha$ con la raíz cuadrada positiva de $2$.
+Tampoco tenemos derecho todavía a escribir
 
-Esta separación es un ejemplo perfecto de la arquitectura
+$$
+\alpha=\sqrt2,
+$$
+
+porque la notación $\sqrt2$ como nombre de una raíz real positiva solo quedará legitimada después de probar esa existencia e identificación.
+
+El trabajo se divide, por tanto, en dos etapas distintas:
 
 $$
 \boxed{
-\text{existencia estructural}
-\quad\longrightarrow\quad
-\text{identificación del objeto}.
+\begin{array}{c}
+\text{completitud}\\
+\downarrow\\
+\text{existe }\alpha=\sup S_{\mathbb R}\\
+\downarrow\\
+\text{demostrar que }\alpha^2=2.
+\end{array}
 }
 $$
+
+La primera etapa acaba de cerrarse. La segunda será el objetivo de §1.6, y requerirá un argumento adicional de álgebra y orden: la completitud fabrica el candidato, pero no lo identifica automáticamente.
 
 ### El sistema ambiente importa
 
