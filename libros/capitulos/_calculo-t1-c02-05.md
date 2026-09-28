@@ -181,27 +181,56 @@ $$
 
 ### ¿Por qué lo llamamos axioma?
 
-Dentro del desarrollo que hemos elegido, la completitud no se deduce de los axiomas de cuerpo y orden. La **adoptamos** como una propiedad adicional de los números reales.
+La palabra **axioma** describe el papel que una afirmación desempeña dentro de un desarrollo determinado. No significa que la afirmación carezca de justificación en cualquier contexto ni que deba adoptarse siempre como punto de partida.
 
-Esto no significa que sea una afirmación inmotivada ni que en todos los tratamientos deba aparecer necesariamente como axioma. Si se construye $\mathbb R$ a partir de objetos más elementales —por ejemplo, mediante cortes de Dedekind o clases apropiadas de sucesiones racionales—, la propiedad correspondiente de completitud debe demostrarse como un teorema acerca de la construcción realizada.
+En este libro hemos elegido una vía axiomática. No construiremos $\mathbb R$ a partir de objetos más elementales; asumiremos que los números reales forman un cuerpo ordenado y añadiremos como propiedad fundamental la completitud recién enunciada.
 
-Nuestro objetivo aquí es distinto. No estamos construyendo los reales desde cero; estamos identificando la estructura mínima que necesitaremos para hacer cálculo rigurosamente. En esta presentación,
+Así, dentro de nuestra cadena lógica,
 
 $$
 \boxed{
-\text{estructura axiomática de }\mathbb R
-=
-\text{cuerpo ordenado}
+\text{cuerpo}
++
+\text{orden}
 +
 \text{completitud}
 }
 $$
 
-es una caracterización estructural, no una receta de construcción.
+son datos estructurales de partida para $\mathbb R$, y las consecuencias posteriores deberán deducirse de ellos.
+
+Hay otra vía posible. Si se construye $\mathbb R$ —por ejemplo, mediante cortes de Dedekind o mediante una construcción apropiada a partir de sucesiones racionales—, entonces las propiedades de cuerpo, orden y completitud deben demostrarse para el objeto construido. En ese contexto, la propiedad del supremo aparece como **teorema de la construcción**, no como axioma inicial.
+
+Por tanto, la diferencia no está en el contenido matemático de la propiedad, sino en su **posición dentro de la cadena de dependencias**:
+
+$$
+\boxed{
+\begin{array}{c}
+\text{presentación axiomática:}
+\quad
+\text{completitud}\longrightarrow\text{consecuencias},\\[5pt]
+\text{presentación constructiva:}
+\quad
+\text{construcción de }\mathbb R
+\longrightarrow
+\text{demostración de completitud}.
+\end{array}
+}
+$$
+
+En nuestra presentación utilizaremos la primera ruta.
+
+Conviene añadir una precisión lógica. En este punto acabamos de **adoptar** la completitud como hipótesis adicional; todavía no hemos demostrado formalmente dentro del capítulo que no pueda deducirse de los axiomas de cuerpo y orden.
+
+Esa separación quedará certificada más adelante en esta misma sección. Demostraremos que $\mathbb Q$ es un cuerpo ordenado pero contiene un conjunto no vacío y acotado superiormente que no posee supremo racional. Entonces tendremos un ejemplo de estructura que satisface cuerpo y orden pero falla la propiedad del supremo. Por ello, la completitud contiene información que cuerpo y orden, por sí solos, no fuerzan.
 
 ::: {.callout-note title="Terminología"}
-En este capítulo, **completitud** significa específicamente la propiedad del supremo recién enunciada. Más adelante aparecerán formulaciones distintas pero relacionadas —por ejemplo, mediante sucesiones de Cauchy—. No las utilizaremos aquí para justificar este axioma, porque la teoría rigurosa de sucesiones todavía no ha sido desarrollada.
+En este capítulo, **completitud** significará específicamente la **propiedad del supremo** que acabamos de adoptar.
+
+Más adelante aparecerán otras nociones de completitud, por ejemplo formuladas mediante sucesiones de Cauchy. No las utilizaremos aquí para justificar este axioma: la teoría rigurosa de sucesiones todavía no ha sido desarrollada y las relaciones entre esas formulaciones deberán demostrarse en el lugar correspondiente.
 :::
+
+El objetivo de esta presentación no es, por tanto, construir los reales, sino fijar con precisión qué estructura de $\mathbb R$ utilizaremos para desarrollar el cálculo y qué resultados dependen de cada parte de esa estructura.
 
 ### Qué autoriza el axioma y qué no
 
