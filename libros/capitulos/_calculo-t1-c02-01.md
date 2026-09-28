@@ -345,7 +345,7 @@ Para hacer precisa esta diferencia entre «siempre hay puntos intermedios» y «
 
 ### El ejemplo introductorio de Rudin, paso a paso
 
-En el Ejemplo 1.1 de la tercera edición de *Principles of Mathematical Analysis*, Walter Rudin utiliza la ecuación $p^2=2$ para exhibir el hueco de los racionales. Después de demostrar la inexistencia de una solución racional, considera los conjuntos
+En el Ejemplo 1.1 de la tercera edición de *Principles of Mathematical Analysis*, Walter Rudin utiliza la ecuación $p^2=2$ para exhibir el hueco de los racionales. Después de demostrar que esa ecuación no tiene solución racional, considera los conjuntos
 
 $$
 A=\{p\in\mathbb Q:p>0,\ p^2<2\}
@@ -357,17 +357,81 @@ $$
 B=\{p\in\mathbb Q:p>0,\ p^2>2\}.
 $$
 
-Como ningún racional positivo tiene cuadrado exactamente igual a $2$, todo racional positivo pertenece a uno de estos dos conjuntos.
+Antes de estudiar la fórmula que aparecerá enseguida, conviene describir con precisión la estructura de estos dos conjuntos.
 
-Además, todo elemento de $A$ está a la izquierda de todo elemento de $B$. En efecto, si $a\in A$ y $b\in B$ pero $b\le a$, entonces, como ambos son positivos,
+En primer lugar, ambos son no vacíos:
+
+$$
+1\in A,
+\qquad
+2\in B,
+$$
+
+porque
+
+$$
+1^2<2<2^2.
+$$
+
+En segundo lugar, todo racional positivo pertenece exactamente a uno de ellos. En efecto, si $p\in\mathbb Q$ y $p>0$, la tricotomía aplicada a $p^2$ y $2$ da exactamente una de las posibilidades
+
+$$
+p^2<2,
+\qquad
+p^2=2,
+\qquad
+p^2>2.
+$$
+
+La posibilidad intermedia ya fue excluida: ningún racional tiene cuadrado igual a $2$. Por tanto,
+
+$$
+p\in A
+\qquad\text{o}\qquad
+p\in B,
+$$
+
+y las dos alternativas son mutuamente excluyentes.
+
+En tercer lugar, todo elemento de $A$ está estrictamente a la izquierda de todo elemento de $B$. Sean
+
+$$
+a\in A,
+\qquad
+b\in B.
+$$
+
+Supongamos, para obtener una contradicción, que $b\le a$. Como $a,b>0$, tenemos
+
+$$
+0<b\le a.
+$$
+
+La monotonía del cuadrado en los no negativos, @prp-t1-0007, da entonces
+
+$$
+b^2\le a^2.
+$$
+
+Pero $a\in A$ implica $a^2<2$, así que
 
 $$
 b^2\le a^2<2,
 $$
 
-lo que contradice $b^2>2$.
+en contradicción con $b\in B$, que exige $b^2>2$.
 
-Tenemos, pues, dos regiones racionales perfectamente ordenadas:
+Por tanto,
+
+$$
+\boxed{
+\forall a\in A\;\forall b\in B,
+\qquad
+a<b.
+}
+$$
+
+Tenemos así dos regiones racionales no vacías, disjuntas y ordenadas:
 
 $$
 \boxed{
@@ -377,17 +441,36 @@ B\quad\text{queda por encima del borde}.
 }
 $$
 
-La dificultad comienza cuando Rudin quiere demostrar algo más fino:
+Pero todavía no hemos producido ningún punto que ocupe ese borde. El paso siguiente de Rudin es más fino: demostrar que tampoco hay un **último** racional por debajo ni un **primero** por encima.
 
-- $A$ **no tiene un elemento mayor**;
-- $B$ **no tiene un elemento menor**.
+En términos de cuantificadores, debemos probar
 
-Para un racional positivo $p$, introduce de pronto
+$$
+\boxed{
+\forall p\in A\;\exists q\in A
+\qquad
+p<q,
+}
+$$
+
+y
+
+$$
+\boxed{
+\forall p\in B\;\exists q\in B
+\qquad
+q<p.
+}
+$$
+
+Estas dos afirmaciones implicarán, respectivamente, que $A$ no tiene máximo y que $B$ no tiene mínimo.
+
+Para lograr ambas cosas con una sola construcción, Rudin introduce, para un racional positivo $p$,
 
 $$
 q
 =
- p-\frac{p^2-2}{p+2}
+p-\frac{p^2-2}{p+2}
 =
 \frac{2p+2}{p+2}
 =
@@ -398,7 +481,7 @@ La fórmula funciona admirablemente, pero un lector novel puede preguntarse con 
 
 > ¿de dónde salió $q$?
 
-Si simplemente verificamos las cuentas después de conocer la fórmula, aprendemos que la fórmula funciona. Todavía no aprendemos **cómo podría habérsenos ocurrido construirla**. Vamos a separar esas dos cuestiones.
+Conviene separar dos tareas. Primero verificaremos que la fórmula satisface exactamente las propiedades cuantificadas que necesitamos. Después reconstruiremos una ruta sistemática para diseñarla.
 
 ::: {#exm-t1-0012}
 **El ejemplo de Rudin, sin pasos ocultos.** Para cada $p\in\mathbb Q$ con $p>0$, definamos
@@ -409,10 +492,36 @@ $$
 
 Entonces:
 
-- si $p^2<2$, se cumple $p<q$ y $q^2<2$;
-- si $p^2>2$, se cumple $0<q<p$ y $q^2>2$.
+- si $p^2<2$, se cumple
+  $$
+  p<q,
+  \qquad
+  q^2<2;
+  $$
+- si $p^2>2$, se cumple
+  $$
+  0<q<p,
+  \qquad
+  q^2>2.
+  $$
 
-Por tanto, desde cualquier elemento de $A$ podemos construir otro elemento de $A$ mayor, y desde cualquier elemento de $B$ podemos construir otro elemento de $B$ menor.
+En consecuencia,
+
+$$
+\forall p\in A\;\exists q\in A
+\qquad
+p<q,
+$$
+
+y
+
+$$
+\forall p\in B\;\exists q\in B
+\qquad
+q<p.
+$$
+
+Por tanto, $A$ no tiene máximo y $B$ no tiene mínimo.
 :::
 
 #### Primera pregunta: ¿q sigue siendo racional y positivo?
