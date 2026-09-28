@@ -639,28 +639,38 @@ $$
 x\in(-1,4).
 $$
 
-**Lectura geométrica.** Factorizamos primero:
+**Lectura geométrica.** Como
 
-$$
+$
+2x-3
+=
+2\left(x-\frac32\right),
+$
+
+la multiplicatividad del valor absoluto da
+
+$
 |2x-3|
 =
 2\left|x-\frac32\right|.
-$$
+$
 
-La inequación equivale a
+Puesto que $2>0$,
 
-$$
+$
+|2x-3|<5
+\iff
 \left|x-\frac32\right|<\frac52.
-$$
+$
 
 Así, $x$ debe encontrarse a distancia menor que $5/2$ del centro $3/2$. El intervalo correspondiente es
 
-$$
+$
 \left(\frac32-\frac52,\frac32+\frac52\right)
 =(-1,4).
-$$
+$
 
-Las dos soluciones son la misma demostración expresada en dos lenguajes diferentes.
+Las dos lecturas caracterizan la misma región mediante equivalencias reversibles: una en lenguaje de orden y la otra en lenguaje de distancia.
 
 ### Estimar no significa calcular exactamente
 
