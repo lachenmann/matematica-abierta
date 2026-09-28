@@ -2,7 +2,7 @@
 
 ### Una definición no garantiza una existencia
 
-En §2.4 aprendimos a reconocer un supremo cuando tenemos un candidato. Para demostrar que $s=\sup A$ verificamos dos hechos: que $s$ es una cota superior y que ninguna cota superior puede ser menor que $s$.
+En §1.3 aprendimos a reconocer un supremo cuando tenemos un candidato. Para demostrar que $s=\sup A$ verificamos dos hechos: que $s$ es una cota superior y que ninguna cota superior puede ser menor que $s$.
 
 Pero esa definición deja abierta una cuestión diferente:
 
@@ -22,7 +22,7 @@ $$
 \boxed{\text{¿tenemos derecho a afirmar que tal objeto existe?}}
 $$
 
-En §2.1 ya vimos una advertencia de este tipo: conocer la ecuación $x^2=2$ no nos autorizaba todavía a suponer que existía una solución positiva en nuestro dominio. Ahora aparece el mismo problema en un nivel estructural.
+En §1.4 ya vimos una advertencia de este tipo: conocer la ecuación $x^2=2$ no nos autorizaba todavía a suponer que existía una solución positiva en nuestro dominio. Ahora aparece el mismo problema en un nivel estructural.
 
 ### El axioma de completitud {#sec-t1-c02-completeness-axiom}
 
