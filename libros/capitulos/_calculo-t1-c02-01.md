@@ -8,13 +8,21 @@ $$
 x^2=2.
 $$
 
-Los cuadrados de $1$ y $2$ nos dicen que, si existiera una solución positiva, tendría que encontrarse entre ellos:
+Antes de decidir si tal racional existe, podemos localizar dónde tendría que estar una eventual solución positiva.
+
+Como
 
 $$
-1^2<2<2^2.
+1^2<2<2^2,
 $$
 
-Podemos probar números racionales intermedios:
+si $x\ge0$ y $x^2=2$, no puede ocurrir $x\le1$: por la monotonía del cuadrado en los no negativos, demostrada en @prp-t1-0007, tendríamos $x^2\le1$. Tampoco puede ocurrir $x\ge2$, pues entonces $x^2\ge4$. Por tanto,
+
+$$
+1<x<2.
+$$
+
+Podemos estrechar la localización con racionales intermedios:
 
 $$
 \left(\frac43\right)^2=\frac{16}{9}<2,
@@ -22,9 +30,17 @@ $$
 \left(\frac32\right)^2=\frac94>2.
 $$
 
-Así que una eventual solución tendría que estar entre $4/3$ y $3/2$. Si continuamos ensayando fracciones, podemos estrechar el intervalo cada vez más. Esto produce evidencia de que existe algún tipo de frontera entre los racionales cuyo cuadrado queda por debajo de $2$ y aquellos cuyo cuadrado queda por encima.
+El mismo argumento de monotonía muestra que una solución positiva debería satisfacer
 
-Pero una búsqueda de fracciones, por extensa que sea, no decide si alguna de ellas satisface **exactamente** la ecuación. Después de `T1-C01` sabemos qué pregunta debemos formular:
+$$
+\frac43<x<\frac32.
+$$
+
+Podríamos continuar insertando puntos medios racionales. En cada etapa ocurre una de tres cosas: el punto medio tiene cuadrado menor que $2$, mayor que $2$ o exactamente igual a $2$. En los dos primeros casos conservamos la mitad que todavía encierra una eventual solución; en el tercero habríamos encontrado una solución racional exacta.
+
+Este procedimiento puede producir intervalos racionales cada vez más estrechos, pero por sí solo no responde la pregunta decisiva: **¿algún racional satisface exactamente $x^2=2$?**
+
+La cuestión precisa es, por tanto:
 
 > ¿podemos demostrar que existe un racional con cuadrado $2$, o podemos demostrar que ninguno existe?
 
@@ -39,40 +55,78 @@ $$
 :::
 
 ::: {.callout-note title="Idea de la prueba"}
-Si un racional $q$ satisficiera $q^2=2$, podríamos escribirlo como una fracción reducida $m/n$. La ecuación obligará primero a que $m$ sea par y después a que $n$ también sea par. Pero una fracción reducida no puede tener numerador y denominador ambos pares.
+Si un racional $q$ satisficiera $q^2=2$, podríamos elegir una representación reducida
 
-El argumento utilizará precisamente la técnica de contradicción y el hecho, ya trabajado en `T1-C01`, de que si el cuadrado de un entero es par, entonces el entero es par.
+$$
+q=\frac mn
+$$
+
+con $m,n\in\mathbb Z$, $n\ne0$, y sin factor común entero mayor que $1$. La ecuación obligará primero a que $m$ sea par y después a que $n$ también sea par. Entonces ambos tendrán el factor común $2$, contradiciendo que la fracción fuese reducida.
+
+El único hecho aritmético adicional que necesitaremos es este: si el cuadrado de un entero es par, entonces el entero es par. Lo justificamos localmente antes de usarlo.
 :::
 
-**Demostración.** Supongamos, para obtener una contradicción, que existe $q\in\mathbb Q$ con $q^2=2$.
-
-Podemos escribir
-
-$$
-q=\frac{m}{n},
-$$
-
-con $m,n\in\mathbb Z$, $n\ne0$, y elegir la fracción reducida de manera que $m$ y $n$ no tengan un factor común mayor que $1$. En particular, no pueden ser ambos pares.
-
-De
+::: {.callout-note title="Lema de paridad (demostración local)"}
+Supongamos que $m\in\mathbb Z$ y que $m^2$ es par. Si $m$ no fuera par, sería impar y podríamos escribir
 
 $$
-\left(\frac{m}{n}\right)^2=2
+m=2k+1
 $$
 
-se obtiene
+para algún $k\in\mathbb Z$. Entonces
+
+$$
+m^2=(2k+1)^2
+=4k^2+4k+1
+=2(2k^2+2k)+1,
+$$
+
+que es impar. Esto contradice que $m^2$ sea par. Por tanto,
+
+$$
+\boxed{m^2\text{ par}\Longrightarrow m\text{ par}.}
+$$
+:::
+
+**Demostración.** Supongamos, para obtener una contradicción, que existe
+
+$$
+q\in\mathbb Q
+$$
+
+tal que
+
+$$
+q^2=2.
+$$
+
+Elegimos una representación reducida
+
+$$
+q=\frac mn,
+$$
+
+con $m,n\in\mathbb Z$, $n\ne0$, y sin factor común entero mayor que $1$.
+
+Sustituyendo en la ecuación,
+
+$$
+\left(\frac mn\right)^2=2.
+$$
+
+Como $n\ne0$, podemos multiplicar por $n^2$ y obtener
 
 $$
 m^2=2n^2.
 $$
 
-Por tanto, $m^2$ es par. En `T1-C01` demostramos, mediante contraposición, que si el cuadrado de un entero es par, entonces el entero es par. Luego $m$ es par. Existe entonces $k\in\mathbb Z$ tal que
+El miembro derecho es divisible por $2$, así que $m^2$ es par. Por el lema de paridad, $m$ es par. Existe entonces $k\in\mathbb Z$ tal que
 
 $$
 m=2k.
 $$
 
-Sustituyendo en $m^2=2n^2$,
+Sustituyendo esta expresión en $m^2=2n^2$,
 
 $$
 (2k)^2=2n^2,
@@ -81,30 +135,60 @@ $$
 de modo que
 
 $$
-4k^2=2n^2
+4k^2=2n^2.
 $$
 
-y, al dividir por $2$,
+Dividiendo por $2$,
 
 $$
 n^2=2k^2.
 $$
 
-Así, $n^2$ también es par y, por la misma razón, $n$ es par.
+Por la misma razón, $n^2$ es par y el lema implica que $n$ es par. Existe, pues, $\ell\in\mathbb Z$ tal que
 
-Hemos concluido que $m$ y $n$ son ambos pares. Esto contradice que $m/n$ se hubiese elegido como una fracción reducida. Por consiguiente, no existe $q\in\mathbb Q$ tal que $q^2=2$. $\blacksquare$
+$$
+n=2\ell.
+$$
+
+Hemos obtenido simultáneamente
+
+$$
+m=2k,
+\qquad
+n=2\ell.
+$$
+
+Por tanto, $m$ y $n$ tienen el factor común $2$, en contradicción con que $m/n$ hubiese sido elegida como una fracción reducida.
+
+La suposición inicial es imposible. En consecuencia,
+
+$$
+\boxed{
+\forall q\in\mathbb Q,\qquad q^2\ne2.
+}
+$$
+
+$\blacksquare$
 
 ::: {.callout-note title="Después de la prueba"}
 Conviene identificar la arquitectura del argumento.
 
-1. **Objetivo:** demostrar una inexistencia.
+1. **Objetivo:** demostrar una inexistencia dentro de $\mathbb Q$.
 2. **Estrategia:** contradicción.
-3. **Suposición temporal:** existe un racional $q$ con $q^2=2$.
+3. **Suposición temporal:** existe $q\in\mathbb Q$ con $q^2=2$.
 4. **Representación útil:** $q=m/n$ en forma reducida.
-5. **Mecanismo:** la ecuación fuerza paridad en $m$ y después en $n$.
-6. **Contradicción:** la supuesta fracción reducida tiene un factor común $2$.
+5. **Mecanismo:** la ecuación fuerza primero $2\mid m$ y después $2\mid n$.
+6. **Contradicción:** numerador y denominador tienen el factor común $2$.
 
-La prueba no demuestra todavía que haya un número real cuyo cuadrado sea $2$. Demuestra solamente que **si existe tal número, no puede ser racional**. Esta distinción entre inexistencia en un dominio y existencia en otro será esencial durante todo el capítulo.
+La conclusión debe leerse con precisión. Hemos demostrado
+
+$$
+\boxed{
+\text{no existe }q\in\mathbb Q\text{ tal que }q^2=2.
+}
+$$
+
+No hemos demostrado todavía que exista algún número real cuyo cuadrado sea $2$. La inexistencia en un dominio y la existencia en otro son afirmaciones lógicamente distintas. Mantendremos esa separación hasta que la completitud nos autorice a construir la frontera real correspondiente.
 :::
 
 ### Qué hemos demostrado y qué no
