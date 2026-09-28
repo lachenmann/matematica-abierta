@@ -140,6 +140,14 @@ $$
 
 La primera condición es precisamente la que una cota superior arbitraria no necesita satisfacer.
 
+Máximo y mínimo, cuando existen, son únicos. En efecto, si $M$ y $N$ fueran dos máximos de $A$, entonces $M,N\in A$; como $M$ es máximo, $N\le M$, y como $N$ es máximo, $M\le N$. Por antisimetría,
+
+$$
+M=N.
+$$
+
+El argumento para el mínimo es dual. Por eso las notaciones $\max A$ y $\min A$ designan, cuando existen, números determinados.
+
 ::: {#exm-t1-0014}
 **Una cota superior que no es máximo.** Consideremos
 
@@ -150,19 +158,35 @@ $$
 El número $1$ es una cota superior de $A$, pero $A$ no tiene máximo.
 :::
 
-**¿Por qué no hay máximo?** Tomemos un elemento cualquiera $a\in(0,1)$. Como $a<1$, el punto medio entre $a$ y $1$,
+**¿Por qué no hay máximo?** Tomemos un elemento cualquiera $a\in(0,1)$. Como $a<1$, al sumar $a$ y después $1$ obtenemos
 
 $$
-b=\frac{a+1}{2},
+2a<a+1<2.
 $$
 
-satisface
+Dividiendo por $2>0$,
 
 $$
-a<b<1.
+a<\frac{a+1}{2}<1.
 $$
 
-Por tanto, $b\in A$ y $b>a$. Ningún elemento de $A$ puede ser el mayor, porque desde cualquiera de ellos podemos construir otro elemento del conjunto situado más a la derecha.
+Definamos
+
+$$
+b=\frac{a+1}{2}.
+$$
+
+Entonces $b\in A$ y $b>a$.
+
+Como el punto $a\in A$ fue arbitrario, hemos probado
+
+$$
+\forall a\in A\;\exists b\in A
+\qquad
+a<b.
+$$
+
+Por tanto, ningún elemento de $A$ puede ser máximo: desde cualquiera de ellos podemos construir otro elemento permitido situado más a la derecha.
 
 Observa la diferencia:
 
@@ -177,7 +201,7 @@ $$
 
 Por eso $1$ puede ser una cota superior sin ser máximo.
 
-El razonamiento recuerda inmediatamente a §2.1: allí Rudin construía, desde cualquier racional con cuadrado menor que $2$, otro racional mayor que seguía teniendo cuadrado menor que $2$. Esa construcción demostraba que el conjunto correspondiente no tenía mayor elemento. Ahora poseemos el lenguaje exacto para decirlo.
+El argumento muestra una técnica general: para negar que un conjunto tenga máximo, tomamos un elemento arbitrario y construimos otro elemento permitido que lo supera. En §1.4 aplicaremos una técnica semejante, menos inmediata, al conjunto de racionales positivos cuyo cuadrado es menor que $2$.
 
 ### Una cota superior especial: la menor de todas
 
