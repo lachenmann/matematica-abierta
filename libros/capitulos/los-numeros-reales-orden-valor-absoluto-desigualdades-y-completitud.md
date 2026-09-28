@@ -7852,27 +7852,95 @@ $$
 
 ### Una definición no garantiza una existencia
 
-En §1.3 aprendimos a reconocer un supremo cuando tenemos un candidato. Para demostrar que $s=\sup A$ verificamos dos hechos: que $s$ es una cota superior y que ninguna cota superior puede ser menor que $s$.
-
-Pero esa definición deja abierta una cuestión diferente:
-
-> ¿qué ocurre si $A$ es no vacío y está acotado superiormente, pero no sabemos de antemano cuál debería ser su menor cota superior?
-
-Nada de lo demostrado hasta ahora garantiza que esa menor cota exista dentro del sistema numérico en el que estamos trabajando.
-
-Esta distinción es fundamental. Una definición responde a la pregunta
+En §1.3 fijamos qué significa afirmar que un número $s$ es el supremo de un conjunto $A$. Para un candidato dado $s\in\mathbb R$, esa afirmación reúne dos propiedades:
 
 $$
-\boxed{\text{¿qué propiedades tendría el objeto si existiera?}}
+\boxed{
+\begin{aligned}
+&\forall a\in A,\qquad a\le s,\\[3pt]
+&\forall u\in\mathbb R,\qquad
+\left[
+\bigl(\forall a\in A,\ a\le u\bigr)
+\Longrightarrow
+s\le u
+\right].
+\end{aligned}
+}
 $$
 
-mientras que un teorema o un axioma de existencia responde a otra:
+La primera cláusula dice que $s$ es una cota superior; la segunda, que ninguna otra cota superior queda por debajo de $s$.
+
+Para distinguir con claridad **caracterización** y **existencia**, llamemos provisionalmente $P_A(s)$ a la conjunción de esas dos condiciones. Entonces escribir
 
 $$
-\boxed{\text{¿tenemos derecho a afirmar que tal objeto existe?}}
+s=\sup A
 $$
 
-En §1.4 ya vimos una advertencia de este tipo: conocer la ecuación $x^2=2$ no nos autorizaba todavía a suponer que existía una solución positiva en nuestro dominio. Ahora aparece el mismo problema en un nivel estructural.
+significa precisamente que
+
+$$
+P_A(s)
+$$
+
+es verdadera.
+
+En §1.3 demostramos además que, si dos números satisfacen esa propiedad, necesariamente coinciden:
+
+$$
+P_A(s)\ \text{y}\ P_A(t)
+\Longrightarrow
+s=t.
+$$
+
+Es decir, la definición y la unicidad nos permiten afirmar que puede haber **a lo sumo un** supremo.
+
+Pero ninguna de esas afirmaciones produce por sí sola un número $s$ que satisfaga $P_A(s)$. La proposición
+
+$$
+\boxed{
+\exists s\in\mathbb R
+\qquad
+P_A(s)
+}
+$$
+
+es una afirmación adicional de existencia.
+
+Esta diferencia es exactamente la misma que ya encontramos con la ecuación
+
+$$
+x^2=2.
+$$
+
+La ecuación especifica qué propiedad tendría una solución; no demuestra que exista una. Del mismo modo, la definición de supremo especifica qué debe cumplir una menor cota superior; no garantiza que todo conjunto posea una.
+
+En §1.3 ya identificamos las hipótesis naturales bajo las cuales queremos plantear el problema:
+
+$$
+A\ne\varnothing
+$$
+
+y
+
+$$
+A\text{ está acotado superiormente}.
+$$
+
+La pregunta que queda abierta es, por tanto,
+
+$$
+\boxed{
+A\ne\varnothing
+\quad\text{y}\quad
+A\text{ acotado superiormente}
+\quad\stackrel{?}{\Longrightarrow}\quad
+\exists s\in\mathbb R\;P_A(s).
+}
+$$
+
+Nada de los axiomas de cuerpo y orden demostrados hasta ahora autoriza esa implicación. La sección anterior mostró precisamente por qué debemos esperar una propiedad adicional: dentro de $\mathbb Q$ puede aparecer una región acotada cuya frontera no está disponible como menor cota superior racional.
+
+El paso siguiente consistirá en incorporar, para $\mathbb R$, la afirmación de existencia que falta.
 
 ### El axioma de completitud {#sec-t1-c02-completeness-axiom}
 
