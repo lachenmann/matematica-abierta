@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MA-FE-02 · Cotes: del círculo al logaritmo</title>
+<style>
+:root{color-scheme:light;--ink:#17233f;--muted:#556480;--blue:#2463c5;--teal:#087e80;--pink:#b63670;--gold:#a45a06;--line:#d7e2f0;--bg:#f5f8fd;--paper:#fff;--soft:#f9fbff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{width:min(1080px,calc(100% - 28px));margin:24px auto 40px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #1c36500c}.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--teal)}h1{font-size:clamp(1.35rem,3vw,2rem);line-height:1.18;margin:.35rem 0 .5rem}.lead{color:var(--muted);max-width:850px;margin:.25rem 0 1rem}.formula{font-family:Georgia,serif;background:#f2f5fc;border-radius:10px;padding:10px 12px;margin:12px 0}.controls{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:end;margin:12px 0 16px}label{font-weight:650}input[type=range]{width:100%;margin-top:8px;accent-color:var(--blue);cursor:pointer}output{color:var(--blue);font-variant-numeric:tabular-nums}.preset{display:flex;gap:7px;flex-wrap:wrap}.preset button{border:1px solid #a6b7cd;background:white;color:var(--ink);border-radius:9px;padding:7px 10px;font:inherit;cursor:pointer}.preset button:focus-visible,input:focus-visible{outline:3px solid #efaa2e;outline-offset:3px}.grid{display:grid;grid-template-columns:1.04fr .96fr;gap:16px;align-items:stretch}.grid>*{min-width:0}.figureBox{background:var(--soft);border:1px solid #e5ecf6;border-radius:14px;padding:8px;min-height:420px}.figureBox h2{font-size:1rem;margin:6px 8px;color:var(--muted);font-weight:700}.diagram-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}svg{display:block;width:100%;height:auto;min-height:360px}svg text{font:14px system-ui,sans-serif;fill:var(--ink)}svg .small{font-size:12px;fill:var(--muted)}.readout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}.metric{padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}.metric small{display:block;color:var(--muted)}.metric strong{display:block;margin-top:2px;font:1.02rem Georgia,serif;overflow-wrap:anywhere}.message{border-left:4px solid var(--teal);background:#eefaf8;padding:12px 14px;border-radius:7px;margin-top:13px}.message.branch{border-left-color:var(--pink);background:#fff0f5}.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:.86rem;color:var(--muted);margin-top:10px}.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}.note{color:var(--muted);font-size:.9rem;margin-bottom:0}.eq{font-family:Georgia,serif}.nowrap{white-space:nowrap}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.figureBox{min-height:360px}.readout{grid-template-columns:1fr}.panel{padding:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="panel" aria-labelledby="title">
+<div class="kicker">Matemática Abierta · MA-ART-0011 · MA-FE-02</div>
+<h1 id="title">Cotes: del círculo al logaritmo</h1>
+<p class="lead">Sigue el punto <span class="eq">z(θ)=cos θ+i sin θ</span> mientras recorre el círculo. A la derecha aparecen dos objetos distintos: la continuación del logaritmo a lo largo del camino, <span class="eq">iθ</span>, y el valor principal, <span class="eq">Log z=i Arg(z)</span>.</p>
+<p class="formula"><strong>Lectura local:</strong> cerca de θ = 0, <span class="eq">log(cos θ+i sin θ)=iθ</span>. Una vuelta completa devuelve el punto del círculo a 1, pero la continuación del logaritmo ha avanzado <span class="eq">2πi</span>.</p>
+<div class="controls">
+<label>Ángulo θ: <output id="thetaOut">0</output>
+<input id="theta" type="range" min="0" max="12.566370614359172" step="0.001" value="0" aria-label="Variar theta entre cero y cuatro pi"></label>
+<div class="preset" aria-label="Valores notables">
+<button type="button" data-theta="0">0</button><button type="button" data-theta="3.141592653589793">π</button><button type="button" data-theta="6.283185307179586">2π</button><button type="button" data-theta="9.42477796076938">3π</button><button type="button" data-theta="12.566370614359172">4π</button>
+</div>
+</div>
+<div class="grid">
+<div class="figureBox">
+<h2>Plano de z: el mismo círculo puede recorrerse varias veces</h2>
+<div class="diagram-scroll" role="region" tabindex="0" aria-label="Diagrama del círculo unitario"><svg id="circle" viewBox="0 0 520 420" role="img" aria-labelledby="circleTitle circleDesc"><title id="circleTitle">Punto z sobre el círculo unitario</title><desc id="circleDesc">El punto recorre el círculo unitario al variar theta.</desc><g id="circleG"></g></svg></div>
+</div>
+<div class="figureBox">
+<h2>Plano del logaritmo: continuación y valor principal</h2>
+<div class="diagram-scroll" role="region" tabindex="0" aria-label="Diagrama de valores del logaritmo"><svg id="log" viewBox="0 0 520 420" role="img" aria-labelledby="logTitle logDesc"><title id="logTitle">Valores imaginarios del logaritmo</title><desc id="logDesc">Se comparan i theta y el logaritmo principal del mismo punto.</desc><g id="logG"></g></svg></div>
+</div>
+</div>
+<div class="legend"><span><b style="background:#2463c5"></b>z = cos θ + i sin θ</span><span><b style="background:#087e80"></b>continuación: iθ</span><span><b style="background:#b63670"></b>valor principal: Log z</span><span><b style="background:#a45a06"></b>ángulo θ</span></div>
+<div class="readout">
+<div class="metric"><small>Punto del círculo</small><strong id="zOut">z = 1</strong></div>
+<div class="metric"><small>Continuación a lo largo del camino</small><strong id="liftOut">log₍camino₎ z = 0</strong></div>
+<div class="metric"><small>Valor principal</small><strong id="principalOut">Log z = 0</strong></div>
+<div class="metric"><small>Número de vueltas completas</small><strong id="turnOut">0</strong></div>
+</div>
+<div id="message" class="message" role="status" aria-live="polite"></div>
+<p class="note">La igualdad histórica atribuida a Cotes se muestra aquí en notación moderna. La figura no identifica globalmente una rama continua y univaluada del logaritmo sobre todo el círculo: precisamente muestra por qué esa identificación falla después de rodear el origen.</p>
+</section>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg',TAU=2*Math.PI;
+const COLORS={ink:'#17233f',muted:'#556480',blue:'#2463c5',teal:'#087e80',pink:'#b63670',gold:'#a45a06',line:'#d7e2f0'};
+function elt(tag,a={},text){const e=document.createElementNS(ns,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,String(v));if(text!==undefined)e.textContent=text;return e}
+function add(g,t,a,txt){const e=elt(t,a,txt);g.appendChild(e);return e}
+function clean(x){return Math.abs(x)<5e-6?0:x}
+function fmt(x,d=3){x=clean(x);return Number(x).toFixed(d).replace('.',',').replace(/,000$/,'')}
+function piLabel(t){const q=t/Math.PI;const nearest=Math.round(q*100)/100;if(Math.abs(nearest)<.005)return '0';if(Math.abs(nearest-1)<.005)return 'π';if(Math.abs(nearest-2)<.005)return '2π';if(Math.abs(nearest-3)<.005)return '3π';if(Math.abs(nearest-4)<.005)return '4π';return fmt(t,2)}
+function cfmt(re,im){re=clean(re);im=clean(im);if(im===0)return fmt(re);if(re===0)return (im===1?'i':im===-1?'−i':fmt(im)+'i');return `${fmt(re)} ${im>=0?'+':'−'} ${fmt(Math.abs(im))}i`}
+function principalArg(theta){let a=((theta+Math.PI)%TAU+TAU)%TAU-Math.PI; if(Math.abs(a+Math.PI)<1e-10 && Math.abs(Math.sin(theta))<1e-8) a=Math.PI; return a}
+function drawCircle(theta){const g=$('circleG');g.replaceChildren();const cx=260,cy=215,R=145,re=Math.cos(theta),im=Math.sin(theta),px=cx+R*re,py=cy-R*im;
+add(g,'line',{x1:55,y1:cy,x2:465,y2:cy,stroke:'#aab7c8','stroke-width':1.5});add(g,'line',{x1:cx,y1:34,x2:cx,y2:390,stroke:'#aab7c8','stroke-width':1.5});
+add(g,'circle',{cx,cy,r:R,fill:'none',stroke:'#94a7c0','stroke-width':2});
+add(g,'text',{x:454,y:cy-9,class:'small'},'Re');add(g,'text',{x:cx+9,y:48,class:'small'},'Im');
+for(const [x,y,label] of [[cx+R,cy,'1'],[cx,cy-R,'i'],[cx-R,cy,'−1'],[cx,cy+R,'−i']]){add(g,'circle',{cx:x,cy:y,r:3.5,fill:'#94a7c0'});add(g,'text',{x:x+(x===cx?10:0),y:y+(y===cy?-8:4),'text-anchor':x===cx?'start':'middle',class:'small'},label)}
+const arcR=56,startX=cx+arcR,startY=cy;let a=theta%TAU;if(a<0)a+=TAU;const endX=cx+arcR*Math.cos(a),endY=cy-arcR*Math.sin(a),large=a>Math.PI?1:0;if(a>0.002)add(g,'path',{d:`M ${startX} ${startY} A ${arcR} ${arcR} 0 ${large} 0 ${endX} ${endY}`,fill:'none',stroke:COLORS.gold,'stroke-width':4,'stroke-linecap':'round'});
+add(g,'line',{x1:cx,y1:cy,x2:px,y2:py,stroke:COLORS.blue,'stroke-width':3});add(g,'line',{x1:px,y1:py,x2:px,y2:cy,stroke:COLORS.pink,'stroke-width':2,'stroke-dasharray':'5 4'});add(g,'line',{x1:cx,y1:cy,x2:px,y2:cy,stroke:COLORS.teal,'stroke-width':2,'stroke-dasharray':'5 4'});add(g,'circle',{cx:px,cy:py,r:7,fill:COLORS.blue,stroke:'white','stroke-width':2});
+add(g,'text',{x:px+(re>=0?12:-12),y:py+(im>=0?-12:20),'text-anchor':re>=0?'start':'end'},'z');add(g,'text',{x:(cx+px)/2,y:cy+20,'text-anchor':'middle',fill:COLORS.teal},'cos θ');add(g,'text',{x:px+(re>=0?14:-14),y:(cy+py)/2,'text-anchor':re>=0?'start':'end',fill:COLORS.pink},'sin θ');add(g,'text',{x:cx+71,y:cy-34,fill:COLORS.gold},'θ');
+const turns=Math.floor((theta+1e-8)/TAU);if(turns>=1){const residual=Math.abs(theta-turns*TAU);const label=`${turns} vuelta${turns===1?'':'s'} completa${turns===1?'':'s'}${residual<.01?'':' + ángulo residual'}`;add(g,'text',{x:260,y:386,'text-anchor':'middle',fill:COLORS.muted},label)}
+$('circleDesc').textContent=`Theta ${piLabel(theta)}; z igual a ${fmt(re)} más ${fmt(im)} i sobre el círculo unitario.`;
+}
+function drawLog(theta){const g=$('logG');g.replaceChildren();const top=45,bottom=372;const xLift=165,xPrin=355;const mapLift=t=>bottom-(t/(4*Math.PI))*(bottom-top);const mapPrin=a=>bottom-((a+Math.PI)/(2*Math.PI))*(bottom-top);const arg=principalArg(theta);
+add(g,'text',{x:xLift,y:24,'text-anchor':'middle',fill:COLORS.teal},'continuación a lo largo del camino');add(g,'text',{x:xPrin,y:24,'text-anchor':'middle',fill:COLORS.pink},'valor principal');
+add(g,'line',{x1:xLift,y1:top,x2:xLift,y2:bottom,stroke:'#9cabc0','stroke-width':2});add(g,'line',{x1:xPrin,y1:top,x2:xPrin,y2:bottom,stroke:'#9cabc0','stroke-width':2});
+for(let k=0;k<=4;k++){const y=mapLift(k*Math.PI);add(g,'line',{x1:xLift-8,y1:y,x2:xLift+8,y2:y,stroke:'#9cabc0'});add(g,'text',{x:xLift-15,y:y+4,'text-anchor':'end',class:'small'},k===0?'0':k===1?'πi':`${k}πi`)}
+for(const [a,label] of [[Math.PI,'πi'],[0,'0'],[-Math.PI,'−πi']]){const y=mapPrin(a);add(g,'line',{x1:xPrin-8,y1:y,x2:xPrin+8,y2:y,stroke:'#9cabc0'});add(g,'text',{x:xPrin+15,y:y+4,'text-anchor':'start',class:'small'},label)}
+add(g,'rect',{x:xPrin-36,y:top,width:72,height:bottom-top,fill:'#b63670',opacity:.045,stroke:'#b63670','stroke-dasharray':'5 5'});add(g,'text',{x:xPrin,y:bottom+24,'text-anchor':'middle',class:'small'},'Arg ∈ (−π, π]');
+const yLift=mapLift(theta),yPrin=mapPrin(arg);add(g,'circle',{cx:xLift,cy:yLift,r:7,fill:COLORS.teal,stroke:'white','stroke-width':2});add(g,'circle',{cx:xPrin,cy:yPrin,r:7,fill:COLORS.pink,stroke:'white','stroke-width':2});add(g,'line',{x1:xLift+10,y1:yLift,x2:xPrin-10,y2:yPrin,stroke:'#b8c3d3','stroke-width':1.5,'stroke-dasharray':'4 4'});
+add(g,'text',{x:xLift+13,y:yLift-10,fill:COLORS.teal},`iθ = ${piLabel(theta)}i`.replace('0i','0'));
+const argLabel=Math.abs(arg)<1e-5?'0':`${arg<0?'−':''}${piLabel(Math.abs(arg))}i`;add(g,'text',{x:xPrin-13,y:yPrin-10,'text-anchor':'end',fill:COLORS.pink},`i Arg(z) = ${argLabel}`);
+if(theta>=TAU-.01){const y0=mapLift(theta-TAU);add(g,'path',{d:`M ${xLift-24} ${y0} C ${xLift-58} ${(y0+yLift)/2}, ${xLift-58} ${(y0+yLift)/2}, ${xLift-24} ${yLift}`,fill:'none',stroke:COLORS.gold,'stroke-width':2});add(g,'text',{x:xLift-63,y:(y0+yLift)/2,'text-anchor':'end',fill:COLORS.gold},'+2πi')}
+$('logDesc').textContent=`La continuación vale i theta; el valor principal vale i por el argumento principal, ${fmt(arg)} radianes.`;
+}
+function update(){let theta=+$('theta').value;const notable=Math.round(theta/Math.PI)*Math.PI;if(Math.abs(theta-notable)<.003)theta=notable;const re=Math.cos(theta),im=Math.sin(theta),arg=principalArg(theta),turns=Math.floor((theta+1e-7)/TAU);$('thetaOut').textContent=piLabel(theta)+' rad';$('zOut').textContent='z = '+cfmt(re,im);$('liftOut').textContent=theta<1e-6?'log₍camino₎ z = 0':`log₍camino₎ z = ${piLabel(theta)}i`;$('principalOut').textContent=Math.abs(arg)<1e-5?'Log z = 0':`Log z = ${arg<0?'−':''}${piLabel(Math.abs(arg))}i`;$('turnOut').textContent=String(turns);drawCircle(theta);drawLog(theta);
+const m=$('message');m.className='message';if(Math.abs(theta-TAU)<.015||Math.abs(theta-2*TAU)<.015){m.innerHTML=`El punto ha vuelto a <strong>z = 1</strong>. El valor principal da <span class="eq">Log 1 = 0</span>, pero la continuación a lo largo del camino vale <span class="eq">${piLabel(theta)}i</span>. La diferencia acumulada es un múltiplo de <span class="eq">2πi</span>.`;}
+else if(theta>Math.PI && theta<Math.PI+.08 || theta>3*Math.PI && theta<3*Math.PI+.08){m.className='message branch';m.innerHTML=`Acabamos de cruzar el eje real negativo. El punto del círculo cambia de manera continua, pero <span class="eq">Arg(z)</span> de el argumento principal pasa de valores cercanos a <span class="eq">π</span> a valores cercanos a <span class="eq">−π</span>: el salto es de <span class="eq">2π</span>, y en el logaritmo corresponde a <span class="eq">2πi</span>.`;}
+else if(theta<=Math.PI){m.innerHTML=`En este tramo, la continuación iniciada en <span class="eq">log 1=0</span> coincide con el valor principal: <span class="eq">log z=iθ</span>. La diferencia aparecerá cuando el recorrido obligue a atravesar el corte del valor principal.`;}
+else{m.innerHTML=`El punto <span class="eq">z</span> sigue moviéndose continuamente sobre el círculo. La continuación conserva memoria de cuántas vueltas se han dado; el valor principal reduce el argumento al intervalo <span class="eq">(−π,π]</span>.`}
+}
+$('theta').addEventListener('input',update);document.querySelectorAll('[data-theta]').forEach(b=>b.addEventListener('click',()=>{$('theta').value=b.dataset.theta;update()}));update();
+})();
+</script>
+</body>
+</html>
