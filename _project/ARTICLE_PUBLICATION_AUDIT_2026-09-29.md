@@ -73,3 +73,13 @@ Mientras la fuente canónica `MA-ART-0008` continúe en `canonical-draft` y la a
 - no se modifica en este microtramo ninguna demostración ni dependencia `TA-*`.
 
 La publicación definitiva se reabrirá después del diferencial de versiones y del QA matemático previsto para M12–M15.
+
+## Cierre editorial de MA-ART-0003 — M05
+
+Auditoría canónica ↔ web realizada el 29-09-2026.
+
+- La estructura matemática, teoremas, demostraciones, ejemplos, ejercicios y fuentes históricas coinciden.
+- Las diferencias restantes son deliberadas: sintaxis de callouts Obsidian/Quarto, laboratorio interactivo y enlaces propios de la web.
+- El enlace web a MA-ART-0004 se retiró temporalmente mientras Cauchy–Schwarz permanezca protegido como borrador.
+- La fuente canónica de Drive pasó de `canonical-draft` a `published` y registra la paridad como auditada.
+- La derivación web pasó de `review` a `published`.
