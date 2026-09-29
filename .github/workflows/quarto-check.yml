@@ -52,6 +52,23 @@ jobs:
         run: |
           python3 tests/euler_article_static.py
 
+      - name: Materialize Euler institutional facsimile
+        run: |
+          mkdir -p /tmp/euler-f04
+          curl -fL "https://www.e-rara.ch/i3f/v21/2447306/full/0/0/default.jpg" -o /tmp/euler-f04/euler-introductio-p103.jpg
+          curl -fL "https://www.e-rara.ch/i3f/v21/2447307/full/0/0/default.jpg" -o /tmp/euler-f04/euler-introductio-p104.jpg
+          test -s /tmp/euler-f04/euler-introductio-p103.jpg
+          test -s /tmp/euler-f04/euler-introductio-p104.jpg
+          file /tmp/euler-f04/euler-introductio-p103.jpg /tmp/euler-f04/euler-introductio-p104.jpg
+
+      - name: Upload Euler institutional facsimile candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: euler-f04-institutional
+          path: /tmp/euler-f04/
+          retention-days: 1
+          if-no-files-found: error
+
       - name: Validate Cauchy-Schwarz source and laboratory
         run: |
           python3 tests/cauchy_static.py
