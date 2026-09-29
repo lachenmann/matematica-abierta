@@ -45,7 +45,7 @@
 | MA-PRB-0006 | problem | Producto nulo y cancelación en un cuerpo | `problemas/producto-nulo-y-cancelacion-en-un-cuerpo.md` | published |
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
 | MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | `blog/hemos-construido-realmente-los-numeros-reales.md` | published |
-| MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | web published; canonical/editorial close pending |
+| MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | published |
 | MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | draft-protected; editorial review pending |
 | MA-ART-0005 | article | El método de Diofanto y la parametrización racional de las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.md` | published |
 | MA-ART-0006 | article | La norma en matemáticas: medir magnitudes, distancias y estructuras | `conceptos/norma-en-matematicas.qmd` | published |
