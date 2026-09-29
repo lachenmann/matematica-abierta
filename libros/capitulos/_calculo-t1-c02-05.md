@@ -1691,27 +1691,130 @@ $$
 ### Antes de seguir
 
 ::: {.callout-tip title="Antes de seguir"}
-**1.** Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea $c\in\mathbb R$. Define
+**1. Cambio de ambiente y retorno.** Sea $A\subseteq\mathbb Q$ no vacío. Supón que, considerado como subconjunto de $\mathbb R$, posee supremo
 
 $$
-A+c=\{a+c:a\in A\}.
+s=\sup_{\mathbb R}A
 $$
 
-¿Por qué el axioma de completitud puede aplicarse a $A+c$?
+y que además
 
-**Respuesta.** Si $M$ es una cota superior de $A$, entonces $M+c$ es una cota superior de $A+c$. Además, si $a_0\in A$, entonces $a_0+c\in A+c$. Por tanto, $A+c$ es no vacío y está acotado superiormente.
+$$
+s\in\mathbb Q.
+$$
+
+Demuestra, sin utilizar densidad, que $A$ posee supremo en $\mathbb Q$ y que
+
+$$
+\boxed{
+\sup_{\mathbb Q}A=s.
+}
+$$
+
+**Respuesta.** Debemos verificar las dos cláusulas del supremo, ahora dentro de $\mathbb Q$.
+
+Como $s=\sup_{\mathbb R}A$, en particular
+
+$$
+\forall a\in A,
+\qquad
+a\le s.
+$$
+
+Además, $s\in\mathbb Q$. Por tanto, $s$ es una **cota superior racional** de $A$.
+
+Sea ahora $u\in\mathbb Q$ cualquier otra cota superior racional de $A$. Entonces
+
+$$
+\forall a\in A,
+\qquad
+a\le u.
+$$
+
+Pero $u\in\mathbb R$, de modo que $u$ es también una cota superior real de $A$. Como $s$ es la menor cota superior en $\mathbb R$,
+
+$$
+s\le u.
+$$
+
+Así, $s$ es menor o igual que toda cota superior racional. Reuniendo ambas condiciones,
+
+$$
+\boxed{
+s=\sup_{\mathbb Q}A.
+}
+$$
+
+El argumento utiliza únicamente la definición de supremo y la inclusión $\mathbb Q\subseteq\mathbb R$; no necesita ningún resultado de densidad.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
-**2.** Sea $A\ne\varnothing$ y acotado inferiormente. Explica cómo la completitud aplicada a
+**2. Reflejar un conjunto para aplicar completitud.** Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente, y define
 
 $$
--A=\{-a:a\in A\}
+-A=\{-a:a\in A\}.
 $$
 
-produce un candidato para $\inf A$.
+Sin citar @prp-t1-0011, verifica que $-A$ satisface las hipótesis del axioma de completitud y determina qué número aparece naturalmente como candidato para $\inf A$.
 
-**Respuesta.** Si $m$ es cota inferior de $A$, entonces $-m$ es cota superior de $-A$; así, $-A$ es no vacío y acotado superiormente. La completitud produce $s=\sup(-A)$, y el número $-s$ es el candidato natural a $\inf A$.
+**Respuesta.** Como $A\ne\varnothing$, podemos escoger
+
+$$
+a_0\in A.
+$$
+
+Entonces
+
+$$
+-a_0\in -A,
+$$
+
+así que
+
+$$
+-A\ne\varnothing.
+$$
+
+Como $A$ está acotado inferiormente, existe $m\in\mathbb R$ tal que
+
+$$
+\forall a\in A,
+\qquad
+m\le a.
+$$
+
+Al multiplicar por $-1$ se invierte el orden:
+
+$$
+-a\le -m.
+$$
+
+Por tanto,
+
+$$
+\forall(-a)\in -A,
+\qquad
+-a\le -m,
+$$
+
+y $-m$ es una cota superior de $-A$.
+
+Ya podemos aplicar completitud:
+
+$$
+\boxed{
+s=\sup(-A)
+\text{ existe en }\mathbb R.
+}
+$$
+
+Como la reflexión $x\mapsto -x$ invierte el orden, el candidato natural para la mayor cota inferior de $A$ es
+
+$$
+\boxed{-s=-\sup(-A).}
+$$
+
+Aquí solo hemos fabricado y motivado el candidato. La demostración completa de que realmente satisface las dos cláusulas del ínfimo reaparecerá más adelante como ejercicio de transferencia.
 :::
 
 ### La diferencia decisiva
