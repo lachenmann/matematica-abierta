@@ -52,3 +52,13 @@ Fuentes maestras fijadas:
 
 Las copias bajo `Copias de seguridad de Android` se conservan como respaldo y **no deben editarse ni utilizarse para derivar la web**.
 
+## Protección temporal de MA-ART-0004 — M03
+
+Mientras la fuente canónica `MA-ART-0004` continúe en `working-draft` y con revisión editorial integral pendiente:
+
+- la derivación `teoria/resultados/desigualdad-cauchy-schwarz.qmd` conserva `status: review` y añade `draft: true`;
+- `publication-state` queda en `draft-protected; editorial-review-pending`;
+- la entrada del artículo se retira de `teoria/resultados/index.qmd`;
+- no se modifica en este microtramo el contenido matemático ni el laboratorio `MA-APP-0002`.
+
+La publicación definitiva se reabrirá sólo después del QA matemático, editorial y bibliográfico previsto para los microtramos M07–M11.
