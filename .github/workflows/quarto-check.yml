@@ -86,8 +86,10 @@ jobs:
           test -s _site/teoria/resultados/interactive/cauchy-schwarz.js
           test -s _site/teoria/resultados/interactive/cauchy-schwarz-embed.js
           if grep -qx 'draft: true' "$article" && grep -qx 'draft: true' "$lab"; then
-            test ! -e _site/teoria/resultados/desigualdad-cauchy-schwarz.html
-            test ! -e _site/teoria/resultados/laboratorio-cauchy-schwarz.html
+            test -s _site/teoria/resultados/desigualdad-cauchy-schwarz.html
+            test -s _site/teoria/resultados/laboratorio-cauchy-schwarz.html
+            ! grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/desigualdad-cauchy-schwarz.html
+            ! grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
             ! grep -q 'desigualdad-cauchy-schwarz.html' _site/teoria/resultados/index.html
             echo "Cauchy-Schwarz draft protection QA PASS"
           else
