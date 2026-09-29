@@ -46,7 +46,7 @@
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
 | MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | `blog/hemos-construido-realmente-los-numeros-reales.md` | published |
 | MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | published |
-| MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | draft-protected; M07+M08 math QA + M09 editorial/bibliographic + M10 parity + MA-APP-0002 reconciliation PASS; M11 publication QA pending |
+| MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | published; M07–M11 QA PASS 2026-09-29 |
 | MA-ART-0005 | article | El método de Diofanto y la parametrización racional de las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.md` | published |
 | MA-ART-0006 | article | La norma en matemáticas: medir magnitudes, distancias y estructuras | `conceptos/norma-en-matematicas.qmd` | published |
 | MA-ART-0007 | article | Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo | `conceptos/supremo-infimo-maximo-minimo.qmd` | published |
@@ -55,7 +55,7 @@
 | MA-ART-0010 | article | La sección áurea: de una división geométrica a la ecuación φ² = φ + 1 | `conceptos/seccion-aurea.qmd` | published |
 | MA-ART-0011 | article | La fórmula de Euler: historia, derivación y geometría de $e^{i\theta}$ | Obsidian: `Matemática Abierta/Artículos/MA-ART-0011 - La fórmula de Euler.md` | canonical-draft; not published |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
-| MA-APP-0002 | interactive-application | Laboratorio de Cauchy–Schwarz: del cuadrado a la geometría | `teoria/resultados/laboratorio-cauchy-schwarz.qmd` | draft-protected; canonical-web reconciliation PASS; M11 publication QA pending |
+| MA-APP-0002 | interactive-application | Laboratorio de Cauchy–Schwarz: del cuadrado a la geometría | `teoria/resultados/laboratorio-cauchy-schwarz.qmd` | published; canonical-web reconciliation + M11 publication QA PASS 2026-09-29 |
 | MA-APP-0003 | interactive-application | Laboratorio de cotas óptimas: recta, banda épsilon y disco | `assets/labs/MA-APP-0003-supremo-infimo.html` | published |
 | MA-APP-0004 | interactive-application | MA-Práctica: matemáticas de bolsillo | `practica/` | prototype in development; not published |
 | MA-APP-0005 | interactive-application | Laboratorio de Arquímedes: encerrar π entre polígonos | Obsidian canonical spec | canonical-draft; implementation pending |
