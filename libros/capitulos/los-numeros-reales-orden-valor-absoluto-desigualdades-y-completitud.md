@@ -9362,21 +9362,181 @@ La primera etapa acaba de cerrarse. La segunda será el objetivo de §1.6, y req
 
 ### El sistema ambiente importa
 
-El conjunto $S_{\mathbb Q}$ puede verse como subconjunto de $\mathbb Q$ o como subconjunto de $\mathbb R$.
+La notación de supremo depende no solo del conjunto cuyos elementos estudiamos, sino también del **sistema ordenado en el que permitimos buscar las cotas**.
 
-Cuando trabajamos **dentro de $\mathbb Q$**, preguntamos si existe una menor cota superior racional. Acabamos de demostrar que no.
+Conviene separar dos operaciones distintas.
 
-Cuando lo consideramos como subconjunto de $\mathbb R$, la completitud de los reales garantiza que posee una menor cota superior real.
+**1. Mantener fijo el conjunto y cambiar el sistema ambiente.** Consideremos exactamente el mismo conjunto
 
-Por tanto, expresiones como
+$$
+S_{\mathbb Q}
+=
+\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
+$$
+
+Podemos estudiar sus cotas superiores dentro de $\mathbb Q$ o dentro de $\mathbb R$.
+
+Las cotas superiores racionales forman el conjunto
+
+$$
+U_{\mathbb Q}
+=
+\left\{
+u\in\mathbb Q:
+\forall q\in S_{\mathbb Q},\ q\le u
+\right\},
+$$
+
+mientras que las cotas superiores reales forman
+
+$$
+U_{\mathbb R}
+=
+\left\{
+u\in\mathbb R:
+\forall q\in S_{\mathbb Q},\ q\le u
+\right\}.
+$$
+
+Como $\mathbb Q\subseteq\mathbb R$,
+
+$$
+\boxed{
+U_{\mathbb Q}=U_{\mathbb R}\cap\mathbb Q.
+}
+$$
+
+En §1.5 demostramos que $U_{\mathbb Q}$ no posee elemento mínimo. Esta es exactamente la afirmación
+
+$$
+\boxed{
+S_{\mathbb Q}
+\text{ no tiene supremo dentro de }\mathbb Q.
+}
+$$
+
+Pero el mismo conjunto $S_{\mathbb Q}$, considerado ahora como subconjunto de $\mathbb R$, sigue siendo no vacío y está acotado superiormente por $2$. Por completitud existe entonces
+
+$$
+\boxed{
+\beta=\sup_{\mathbb R}S_{\mathbb Q}.
+}
+$$
+
+Aquí $\beta$ es el mínimo de $U_{\mathbb R}$.
+
+Podemos deducir inmediatamente algo más:
+
+$$
+\boxed{\beta\notin\mathbb Q.}
+$$
+
+En efecto, supongamos que $\beta\in\mathbb Q$. Como $\beta$ es una cota superior real de $S_{\mathbb Q}$, sería entonces también una cota superior racional:
+
+$$
+\beta\in U_{\mathbb Q}.
+$$
+
+Además, si $u\in U_{\mathbb Q}$, entonces $u\in U_{\mathbb R}$. Como $\beta$ es el mínimo de $U_{\mathbb R}$,
+
+$$
+\beta\le u.
+$$
+
+Por tanto, $\beta$ sería el mínimo de $U_{\mathbb Q}$, es decir,
+
+$$
+\beta=\sup_{\mathbb Q}S_{\mathbb Q},
+$$
+
+en contradicción con @prp-t1-0012.
+
+Así, el cambio de sistema ambiente puede convertir
+
+$$
+\boxed{
+\text{«no existe supremo en }\mathbb Q\text{»}
+}
+$$
+
+en
+
+$$
+\boxed{
+\text{«existe un supremo en }\mathbb R\text{, y no es racional».}
+}
+$$
+
+**2. Cambiar además el conjunto.** En el microtramo anterior introdujimos
+
+$$
+S_{\mathbb R}
+=
+\{x\in\mathbb R:x\ge0,\ x^2<2\}.
+$$
+
+Esto ya no consiste únicamente en buscar las cotas de $S_{\mathbb Q}$ en un sistema mayor. También hemos ampliado el universo permitido para los **elementos del propio conjunto**.
+
+La relación exacta entre ambos conjuntos es
+
+$$
+\boxed{
+S_{\mathbb Q}=S_{\mathbb R}\cap\mathbb Q.
+}
+$$
+
+Por tanto, debemos distinguir cuidadosamente
+
+$$
+\sup_{\mathbb R}S_{\mathbb Q}
+$$
+
+de
+
+$$
+\sup_{\mathbb R}S_{\mathbb R}.
+$$
+
+Sabemos que ambos existen por completitud, pero en este punto del desarrollo **no hemos demostrado que sean iguales**. Tampoco necesitamos esa igualdad para lo que sigue.
+
+Lo importante es comprender qué está variando en cada pregunta:
+
+$$
+\boxed{
+\begin{array}{c}
+\text{conjunto fijo }S_{\mathbb Q}
++\text{ ambiente }\mathbb Q
+\longrightarrow
+\text{no hay supremo racional},
+\\[5pt]
+\text{conjunto fijo }S_{\mathbb Q}
++\text{ ambiente }\mathbb R
+\longrightarrow
+\text{existe }\sup_{\mathbb R}S_{\mathbb Q},
+\\[5pt]
+\text{conjunto }S_{\mathbb R}
++\text{ ambiente }\mathbb R
+\longrightarrow
+\text{existe }\alpha=\sup_{\mathbb R}S_{\mathbb R}.
+\end{array}
+}
+$$
+
+Esta distinción evita una ambigüedad frecuente: un supremo no es una propiedad aislada de una colección de símbolos; depende del **orden ambiente en el que se permiten las cotas**.
+
+En nuestro desarrollo habitual, cuando $A\subseteq\mathbb R$ esté fijado y no exista ambigüedad, escribiremos simplemente
 
 $$
 \sup A
 $$
 
-no deben separarse del sistema ordenado en el que se está buscando esa frontera cuando existe alguna ambigüedad sobre el universo ambiente.
+para significar el supremo en $\mathbb R$. Cuando el sistema ambiente sea relevante —como en el contraste con $\mathbb Q$— utilizaremos explícitamente
 
-En nuestro desarrollo habitual, una vez fijado $A\subseteq\mathbb R$, la notación $\sup A$ significará siempre supremum en $\mathbb R$.
+$$
+\sup_{\mathbb Q}A
+\qquad\text{o}\qquad
+\sup_{\mathbb R}A.
+$$
 
 ### Antes de seguir
 
