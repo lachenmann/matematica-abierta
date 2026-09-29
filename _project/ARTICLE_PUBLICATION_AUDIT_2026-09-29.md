@@ -108,3 +108,16 @@ Correcciones de precisión aplicadas sin alterar los teoremas:
 - título de §13.1 generalizado a la desigualdad triangular de la norma inducida.
 
 M09+ permanece pendiente.
+
+## M09 — MA-ART-0004
+
+QA editorial y bibliográfico: **PASS** (29-09-2026).
+
+- Labbé: ejercicio 13 de §1.8 cotejado con el PDF fuente; enunciado y sugerencia cuadrática confirmados.
+- Steele: edición MAA/Cambridge 2004, capítulos 1 y 3, cotejados en la copia de Drive.
+- Historia: Cauchy 1821, Bunyakovsky 1859 y Schwarz 1885 precisados bibliográficamente.
+- Axler: 3.ª ed., Springer 2015, cap. 6, resultados 6.15 y 6.18.
+- Notación, procedencia, referencias cruzadas y límite de la certificación Lean revisados.
+- MA-APP-0002 permanece `working-prototype/not-published`; su página Quarto se protege con `draft: true` y se retira del índice público. El HTML canónico y el HTML del repositorio no son byte a byte idénticos y deberán reconciliarse antes de la publicación conjunta.
+
+M10: reconciliación integral Obsidian → Quarto.
