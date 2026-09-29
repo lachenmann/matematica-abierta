@@ -27,7 +27,14 @@ def verify(condition, message):
 verify(ARTICLE.is_file(), "falta derivado web MA-ART-0011")
 text = ARTICLE.read_text(encoding="utf-8")
 verify("content-id: MA-ART-0011" in text, "content-id incorrecto")
-verify(re.search(r"^draft:\s*true\s*$", text, re.M), "el derivado debe seguir como draft")
+is_published = bool(re.search(r"^status:\s*published\s*$", text, re.M))
+is_draft = bool(re.search(r"^draft:\s*true\s*$", text, re.M))
+is_released = bool(re.search(r"^draft:\s*false\s*$", text, re.M))
+verify(is_draft != is_released, "estado draft ambiguo o ausente")
+if is_published:
+    verify(is_released, "un artículo published no puede conservar draft:true")
+else:
+    verify(is_draft, "la prepublicación debe conservar draft:true")
 verify("style-standard: MA_STYLE_v1.7" in text, "MA-STYLE no declarado")
 verify('resources:\n  - "../assets/articles/ma-art-0011/**"' in text, "recursos MA-ART-0011 no declarados")
 verify("Dependencia de publicación de MA-FE-04" not in text, "F04 aún figura como dependencia de publicación")
