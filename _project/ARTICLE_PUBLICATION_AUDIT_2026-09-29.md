@@ -83,3 +83,13 @@ Auditoría canónica ↔ web realizada el 29-09-2026.
 - El enlace web a MA-ART-0004 se retiró temporalmente mientras Cauchy–Schwarz permanezca protegido como borrador.
 - La fuente canónica de Drive pasó de `canonical-draft` a `published` y registra la paridad como auditada.
 - La derivación web pasó de `review` a `published`.
+
+## Cierre editorial de MA-ART-0007 — M06
+
+Auditoría canónica ↔ web y QA del artefacto desplegado realizados el 29-09-2026.
+
+- La fuente canónica de Obsidian ya está en `published`.
+- La estructura matemática y el contenido de la derivación web corresponden al manuscrito; las diferencias son de transformación editorial deliberada: niveles de encabezado Quarto, callouts, enlaces web e iframe.
+- La derivación web declara `license: GFDL-1.3-or-later`, `interactive-resource: MA-APP-0003`, `publication-target` y `publication-state`.
+- En `gh-pages` se verificaron página sustantiva, iframe del laboratorio, MathJax 4 y recurso autónomo responsive `MA-APP-0003`.
+- El dominio personalizado no pudo abrirse desde la herramienta externa de navegación; no se confunde por ello QA del artefacto de Pages con una comprobación independiente del DNS/dominio.
