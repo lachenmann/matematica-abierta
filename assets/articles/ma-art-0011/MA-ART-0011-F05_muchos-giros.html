@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MA-FE-05 · Muchos giros pequeños</title>
+<style>
+:root{color-scheme:light;--ink:#17233f;--muted:#556480;--blue:#2463c5;--teal:#087e80;--pink:#b63670;--gold:#a45a06;--line:#d7e2f0;--bg:#f5f8fd;--paper:#fff;--soft:#f9fbff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{width:min(1100px,calc(100% - 28px));margin:24px auto 42px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #1c36500c}
+.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--teal)}
+h1{font-size:clamp(1.35rem,3vw,2rem);line-height:1.18;margin:.35rem 0 .5rem}
+.lead{color:var(--muted);max-width:920px;margin:.25rem 0 1rem}
+.formula{font-family:Georgia,"Times New Roman",serif;background:#f2f5fc;border-radius:10px;padding:10px 12px;margin:12px 0}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+label{font-weight:650}input[type=range]{width:100%;margin-top:8px;accent-color:var(--blue);cursor:pointer}
+output{color:var(--blue);font-variant-numeric:tabular-nums}
+.preset{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.preset button{border:1px solid #a6b7cd;background:#fff;color:var(--ink);border-radius:9px;padding:6px 10px;font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #efaa2e;outline-offset:3px}
+.grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:stretch}
+.figureBox{background:var(--soft);border:1px solid #e5ecf6;border-radius:14px;padding:9px;min-width:0}
+.figureBox h2{font-size:1rem;margin:6px 8px;color:var(--muted)}
+svg{display:block;width:100%;height:auto}
+svg text{font:14px system-ui,sans-serif;fill:var(--ink)}svg .small{font-size:12px;fill:var(--muted)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.86rem;color:var(--muted);margin:10px 0}
+.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:13px}
+.metric{padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}
+.metric small{display:block;color:var(--muted)}.metric strong{display:block;margin-top:2px;font:1.02rem Georgia,serif;overflow-wrap:anywhere}
+.message{border-left:4px solid var(--teal);background:#eefaf8;padding:12px 14px;border-radius:7px;margin-top:13px}
+.warning{border-left-color:var(--gold);background:#fff8e8}
+.eq{font-family:Georgia,"Times New Roman",serif}.note{color:var(--muted);font-size:.9rem;margin-bottom:0}
+@media(max-width:790px){.grid,.controls{grid-template-columns:1fr}.readout{grid-template-columns:1fr}.panel{padding:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="panel" aria-labelledby="title">
+<div class="kicker">Matemática Abierta · MA-ART-0011 · MA-FE-05</div>
+<h1 id="title">Muchos giros pequeños</h1>
+<p class="lead">Dividimos el ángulo total θ en N pasos. El giro exacto de cada paso vive sobre el círculo; la aproximación <span class="eq">1+iθ/N</span> vive sobre la tangente en 1. Al repetir N veces ambos procesos se ve qué es igualdad exacta, qué es aproximación y dónde aparece el límite exponencial.</p>
+<p class="formula"><strong>Exacto:</strong> [cos(θ/N)+i sin(θ/N)]<sup>N</sup> = cos θ+i sin θ. &nbsp; <strong>Asintótico:</strong> cos(θ/N)+i sin(θ/N) = 1+iθ/N+O(N<sup>−2</sup>).</p>
+
+<div class="controls">
+  <div>
+    <label>Ángulo total θ: <output id="thetaOut">π/2</output>
+      <input id="theta" type="range" min="-6.283185307179586" max="6.283185307179586" step="0.001" value="1.5707963267948966" aria-label="Variar ángulo theta entre menos dos pi y dos pi">
+    </label>
+    <div class="preset" aria-label="Ángulos notables">
+      <button type="button" data-theta="-3.141592653589793">−π</button>
+      <button type="button" data-theta="0">0</button>
+      <button type="button" data-theta="1.5707963267948966">π/2</button>
+      <button type="button" data-theta="3.141592653589793">π</button>
+      <button type="button" data-theta="6.283185307179586">2π</button>
+    </div>
+  </div>
+  <div>
+    <label>Número de pasos N: <output id="nOut">8</output>
+      <input id="n" type="range" min="2" max="128" step="1" value="8" aria-label="Variar el número de pasos N entre 2 y 128">
+    </label>
+    <div class="preset" aria-label="Valores de N">
+      <button type="button" data-n="4">4</button><button type="button" data-n="8">8</button>
+      <button type="button" data-n="16">16</button><button type="button" data-n="32">32</button>
+      <button type="button" data-n="64">64</button><button type="button" data-n="128">128</button>
+    </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="figureBox">
+    <h2>01 · Un paso: arco exacto frente a tangente</h2>
+    <svg id="local" viewBox="0 0 500 430" role="img" aria-labelledby="localTitle localDesc">
+      <title id="localTitle">Comparación de un giro exacto y su aproximación tangente</title>
+      <desc id="localDesc">Se muestran z sub N sobre el círculo unitario y w sub N igual a uno más i theta sobre N sobre la tangente.</desc>
+      <g id="localG"></g>
+    </svg>
+  </div>
+  <div class="figureBox">
+    <h2>02 · N pasos: igualdad exacta y convergencia</h2>
+    <svg id="global" viewBox="0 0 600 430" role="img" aria-labelledby="globalTitle globalDesc">
+      <title id="globalTitle">Productos acumulados exactos y aproximados</title>
+      <desc id="globalDesc">La trayectoria exacta permanece en el círculo y la aproximada converge hacia ella al crecer N.</desc>
+      <g id="globalG"></g>
+    </svg>
+  </div>
+</div>
+
+<div class="legend">
+  <span><b style="background:#2463c5"></b>exacto: z<sub>N</sub><sup>k</sup></span>
+  <span><b style="background:#b63670"></b>aproximado: w<sub>N</sub><sup>k</sup></span>
+  <span><b style="background:#087e80"></b>extremo exacto e<sup>iθ</sup></span>
+  <span><b style="background:#a45a06"></b>paso angular θ/N</span>
+</div>
+
+<div class="readout">
+  <div class="metric"><small>Paso angular</small><strong id="stepOut">θ/N = π/16</strong></div>
+  <div class="metric"><small>Error de un paso</small><strong id="localErr">|wₙ−zₙ| = 0</strong></div>
+  <div class="metric"><small>Error tras N pasos</small><strong id="finalErr">|wₙᴺ−eⁱθ| = 0</strong></div>
+</div>
+
+<div id="message" class="message" role="status" aria-live="polite"></div>
+<p class="note">La curva rosa no se normaliza al círculo: conserva el crecimiento radial real de <span class="eq">(1+iθ/N)<sup>k</sup></span>. Por eso, para N finito y θ≠0, la aproximación no es una rotación exacta. Lo que afirmamos es convergencia cuando N crece.</p>
+</section>
+</main>
+
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg',TAU=2*Math.PI;
+const C={ink:'#17233f',muted:'#556480',blue:'#2463c5',teal:'#087e80',pink:'#b63670',gold:'#a45a06'};
+function elt(t,a={},txt){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,String(v));if(txt!==undefined)e.textContent=txt;return e}
+function add(g,t,a,txt){const e=elt(t,a,txt);g.appendChild(e);return e}
+function fmt(x,d=4){if(Math.abs(x)<5e-10)x=0;return Number(x).toFixed(d).replace('.',',').replace(/,0+$/,'')}
+function piLabel(x){if(Math.abs(x)<5e-5)return '0';const q=x/Math.PI;const candidates=[[.25,'π/4'],[.5,'π/2'],[1,'π'],[1.5,'3π/2'],[2,'2π']];
+const s=q<0?'−':'';const a=Math.abs(q);for(const[v,l]of candidates)if(Math.abs(a-v)<.002)return s+l;return fmt(x,3)}
+function cmul(a,b){return {re:a.re*b.re-a.im*b.im,im:a.re*b.im+a.im*b.re}}
+function cpow(base,k){let r={re:1,im:0};for(let j=0;j<k;j++)r=cmul(r,base);return r}
+function abs(z){return Math.hypot(z.re,z.im)}
+function dist(a,b){return Math.hypot(a.re-b.re,a.im-b.im)}
+function drawLocal(theta,N){
+ const g=$('localG');g.replaceChildren();const delta=theta/N,cx=238,cy=236,R=132;
+ const z={re:Math.cos(delta),im:Math.sin(delta)},w={re:1,im:delta};
+ const scale=R;const p=o=>({x:cx+scale*o.re,y:cy-scale*o.im});
+ add(g,'line',{x1:58,y1:cy,x2:450,y2:cy,stroke:'#aab7c8','stroke-width':1.3});
+ add(g,'line',{x1:cx,y1:55,x2:cx,y2:390,stroke:'#aab7c8','stroke-width':1.3});
+ add(g,'circle',{cx,cy,r:R,fill:'none',stroke:'#9eafc5','stroke-width':2});
+ const one=p({re:1,im:0}),pz=p(z),pw=p(w);
+ add(g,'line',{x1:one.x,y1:55,x2:one.x,y2:390,stroke:C.gold,'stroke-width':1.5,'stroke-dasharray':'5 5'});
+ add(g,'text',{x:one.x+8,y:72,fill:C.gold},'tangente x = 1');
+ add(g,'line',{x1:cx,y1:cy,x2:pz.x,y2:pz.y,stroke:C.blue,'stroke-width':3});
+ add(g,'circle',{cx:pz.x,cy:pz.y,r:7,fill:C.blue,stroke:'white','stroke-width':2});
+ add(g,'circle',{cx:pw.x,cy:pw.y,r:7,fill:C.pink,stroke:'white','stroke-width':2});
+ add(g,'line',{x1:pz.x,y1:pz.y,x2:pw.x,y2:pw.y,stroke:C.pink,'stroke-width':1.5,'stroke-dasharray':'4 4'});
+ const ar=48,a=Math.abs(delta),dir=delta>=0?0:1,ex=cx+ar*Math.cos(delta),ey=cy-ar*Math.sin(delta);
+ if(a>.002)add(g,'path',{d:`M ${cx+ar} ${cy} A ${ar} ${ar} 0 0 ${dir} ${ex} ${ey}`,fill:'none',stroke:C.gold,'stroke-width':4,'stroke-linecap':'round'});
+ add(g,'text',{x:cx+62,y:cy-(delta>=0?28:-35),fill:C.gold},'θ/N');
+ add(g,'text',{x:pz.x+(z.re>=0?10:-10),y:pz.y-12,'text-anchor':z.re>=0?'start':'end',fill:C.blue},'zₙ');
+ add(g,'text',{x:pw.x+10,y:pw.y+(delta>=0?-10:20),fill:C.pink},'wₙ');
+ add(g,'text',{x:cx+R+8,y:cy+20,class:'small'},'1');
+ $('localDesc').textContent=`Paso theta sobre N igual a ${fmt(delta,4)} radianes. z N está en el círculo y w N en la tangente x igual uno.`;
+}
+function drawGlobal(theta,N){
+ const g=$('globalG');g.replaceChildren();const delta=theta/N,z={re:Math.cos(delta),im:Math.sin(delta)},w={re:1,im:delta},target={re:Math.cos(theta),im:Math.sin(theta)};
+ const approx=[];let cur={re:1,im:0};approx.push(cur);let maxR=1;
+ for(let k=1;k<=N;k++){cur=cmul(cur,w);approx.push(cur);maxR=Math.max(maxR,abs(cur))}
+ const lim=Math.max(1.15,maxR*1.08),cx=300,cy=220,R=160/lim,pt=o=>({x:cx+R*o.re,y:cy-R*o.im});
+ add(g,'line',{x1:45,y1:cy,x2:555,y2:cy,stroke:'#aab7c8','stroke-width':1.2});add(g,'line',{x1:cx,y1:35,x2:cx,y2:405,stroke:'#aab7c8','stroke-width':1.2});
+ add(g,'circle',{cx,cy,r:R,fill:'none',stroke:'#9eafc5','stroke-width':2});
+ let dExact='',dApprox='';
+ for(let k=0;k<=N;k++){const e={re:Math.cos(k*delta),im:Math.sin(k*delta)},pe=pt(e),pa=pt(approx[k]);dExact+=(k?' L ':'M ')+pe.x+' '+pe.y;dApprox+=(k?' L ':'M ')+pa.x+' '+pa.y}
+ add(g,'path',{d:dExact,fill:'none',stroke:C.blue,'stroke-width':2.6,'stroke-linecap':'round','stroke-linejoin':'round'});
+ add(g,'path',{d:dApprox,fill:'none',stroke:C.pink,'stroke-width':2.3,'stroke-linecap':'round','stroke-linejoin':'round'});
+ const stride=Math.max(1,Math.ceil(N/18));
+ for(let k=0;k<=N;k+=stride){const e=pt({re:Math.cos(k*delta),im:Math.sin(k*delta)}),a=pt(approx[k]);add(g,'circle',{cx:e.x,cy:e.y,r:3.2,fill:C.blue});add(g,'circle',{cx:a.x,cy:a.y,r:3.2,fill:C.pink})}
+ const pT=pt(target),pA=pt(approx[N]);add(g,'circle',{cx:pT.x,cy:pT.y,r:7.5,fill:C.teal,stroke:'white','stroke-width':2});add(g,'circle',{cx:pA.x,cy:pA.y,r:6.5,fill:C.pink,stroke:'white','stroke-width':2});
+ add(g,'line',{x1:pT.x,y1:pT.y,x2:pA.x,y2:pA.y,stroke:C.gold,'stroke-width':1.5,'stroke-dasharray':'4 4'});
+ add(g,'text',{x:pT.x+10,y:pT.y-10,fill:C.teal},'eⁱθ');
+ add(g,'text',{x:pA.x+10,y:pA.y+18,fill:C.pink},'wₙᴺ');
+ add(g,'text',{x:18,y:24,class:'small'},`escala radial visible: 0–${fmt(lim,2)}`);
+ $('globalDesc').textContent=`Trayectoria exacta de N igual ${N} pasos en el círculo y trayectoria aproximada de potencias de uno más i theta sobre N.`;
+}
+function update(){
+ let theta=+$('theta').value,N=+$('n').value;
+ const notable=Math.round(theta/(Math.PI/4))*(Math.PI/4);if(Math.abs(theta-notable)<.0025)theta=notable;
+ $('thetaOut').textContent=piLabel(theta);$('nOut').textContent=N;
+ const d=theta/N,z={re:Math.cos(d),im:Math.sin(d)},w={re:1,im:d},target={re:Math.cos(theta),im:Math.sin(theta)},wN=cpow(w,N);
+ $('stepOut').textContent=`θ/N = ${piLabel(d)==='0'?'0':piLabel(d)} ≈ ${fmt(d,5)}`;
+ $('localErr').textContent=`|wₙ−zₙ| = ${fmt(dist(w,z),6)}`;
+ $('finalErr').textContent=`|wₙᴺ−eⁱθ| = ${fmt(dist(wN,target),6)}`;
+ drawLocal(theta,N);drawGlobal(theta,N);
+ const m=$('message');m.className='message';
+ if(Math.abs(theta)<1e-8){m.innerHTML=`Con <span class="eq">θ=0</span>, ambos factores son exactamente 1. Este caso no muestra la diferencia entre igualdad y aproximación: elige un ángulo no nulo.`;return}
+ const err=dist(wN,target);
+ if(N<=4){m.className='message warning';m.innerHTML=`Con sólo <strong>${N}</strong> pasos, <span class="eq">(1+iθ/N)<sup>N</sup></span> todavía está visiblemente separado de <span class="eq">e<sup>iθ</sup></span>. No hay igualdad para N finito: la afirmación correcta es un límite.`}
+ else if(N<32){m.innerHTML=`Al aumentar N, cada paso <span class="eq">θ/N</span> se hace pequeño. El error local es de orden <span class="eq">N<sup>−2</sup></span>; tras acumular N pasos, la trayectoria rosa se acerca al extremo exacto. Error final actual: <strong>${fmt(err,6)}</strong>.`}
+ else{m.innerHTML=`Ahora los dos factores de un paso son muy cercanos. La trayectoria rosa sigue sin ser exactamente circular, pero su extremo converge a <span class="eq">e<sup>iθ</sup></span>. Con <strong>N=${N}</strong>, el error final es <strong>${fmt(err,6)}</strong>.`}
+}
+$('theta').addEventListener('input',update);$('n').addEventListener('input',update);
+document.querySelectorAll('[data-theta]').forEach(b=>b.addEventListener('click',()=>{$('theta').value=b.dataset.theta;update()}));
+document.querySelectorAll('[data-n]').forEach(b=>b.addEventListener('click',()=>{$('n').value=b.dataset.n;update()}));
+update();
+})();
+</script>
+</body></html>
