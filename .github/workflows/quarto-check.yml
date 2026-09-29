@@ -52,6 +52,54 @@ jobs:
         run: |
           python3 tests/euler_article_static.py
 
+      - name: Set up Quarto for isolated Euler render
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: Render Euler article in isolation
+        run: |
+          article="blog/formula-de-euler-historia-derivacion-geometria.qmd"
+          cp "$article" /tmp/ma-art-0011.qmd
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("blog/formula-de-euler-historia-derivacion-geometria.qmd")
+          s = p.read_text(encoding="utf-8")
+          old = "draft: true"
+          if old not in s:
+              raise SystemExit("MA-ART-0011 debe permanecer draft:true antes del QA")
+          p.write_text(s.replace(old, "draft: false", 1), encoding="utf-8")
+          PY
+          quarto render "$article"
+          cp /tmp/ma-art-0011.qmd "$article"
+
+      - name: Verify isolated Euler render
+        run: |
+          page="_site/blog/formula-de-euler-historia-derivacion-geometria.html"
+          test -s "$page"
+          grep -q 'MA-FE-01 — Una exponencial que gira' "$page"
+          grep -q 'MA-FE-10 — De círculos a Fourier' "$page"
+          grep -q 'assets/articles/ma-art-0011/MA-ART-0011-F01_euler-circulo.html' "$page"
+          grep -q 'assets/articles/ma-art-0011/MA-ART-0011-F10_circulos-fourier.html' "$page"
+          ! grep -q 'Aparato visual cerrado' "$page"
+          grep -qi 'mathjax' "$page"
+          for f in assets/articles/ma-art-0011/*.html assets/articles/ma-art-0011/*.jpg; do
+            out="_site/$f"
+            test -s "$out" || { echo "missing rendered resource: $out"; exit 1; }
+          done
+          grep -q 'MA-ART-0011-F04_euler-introductio-p103.jpg' _site/assets/articles/ma-art-0011/MA-ART-0011-F04_euler-138.html
+          grep -q 'MA-ART-0011-F04_euler-introductio-p104.jpg' _site/assets/articles/ma-art-0011/MA-ART-0011-F04_euler-138.html
+          ! grep -Eq '(src|href)="https?://' _site/assets/articles/ma-art-0011/MA-ART-0011-F04_euler-138.html
+          echo "Euler isolated Quarto render QA PASS"
+
+      - name: Preserve isolated Euler render
+        uses: actions/upload-artifact@v4
+        with:
+          name: ma-art-0011-euler-isolated-render
+          path: _site/
+          retention-days: 1
+          if-no-files-found: error
+
       - name: Validate Cauchy-Schwarz source and laboratory
         run: |
           python3 tests/cauchy_static.py
