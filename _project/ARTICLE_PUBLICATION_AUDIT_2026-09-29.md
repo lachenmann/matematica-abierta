@@ -93,3 +93,6 @@ Auditoría canónica ↔ web y QA del artefacto desplegado realizados el 29-09-2
 - La derivación web declara `license: GFDL-1.3-or-later`, `interactive-resource: MA-APP-0003`, `publication-target` y `publication-state`.
 - En `gh-pages` se verificaron página sustantiva, iframe del laboratorio, MathJax 4 y recurso autónomo responsive `MA-APP-0003`.
 - El dominio personalizado no pudo abrirse desde la herramienta externa de navegación; no se confunde por ello QA del artefacto de Pages con una comprobación independiente del DNS/dominio.
+
+## M07 — MA-ART-0004
+QA matemático de §§1–9: **PASS** (29-09-2026). Sin correcciones matemáticas; M08+ pendiente.
