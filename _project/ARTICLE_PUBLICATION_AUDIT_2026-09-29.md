@@ -35,3 +35,20 @@ Este archivo **no reemplaza la fuente canónica de Obsidian**. Su función es fi
 
 La prioridad inmediata no es crear nuevos artículos, sino cerrar la coherencia editorial de `0003`, `0004`, `0007` y `0008`; después se completa y publica `0009`.
 
+## Resolución de fuentes canónicas — M02
+
+La búsqueda en Drive devuelve dos carpetas llamadas `Artículos`. La jerarquía permite distinguirlas sin ambigüedad:
+
+- **Bóveda canónica editable:** `Mi unidad/Obsidian/Vault/Matemática/Matemática Abierta/Artículos` — folder ID `1oft_oa5Sk2uNIhunrQIDPANujhAaAMvs`.
+- **Copia de respaldo, no fuente editorial:** `Mi unidad/Copias de seguridad de Android/moto g86 power 5G/Obsidian/Vault/Matemática/Matemática Abierta/Artículos` — folder ID `1t00RBkjK7k1iP3Er5ZWW-VQNsy3t63Zq`.
+
+Fuentes maestras fijadas:
+
+| ID | Archivo canónico de Drive | Copia de respaldo identificada | Resolución |
+|---|---|---|---|
+| MA-ART-0003 | `1w9TsCwBD0CsHGbLXotwVI6hTnU09ZAnN` | `1n5c5JzxgdSyrvPKYLtWSim-dv_29Un8q` | usar exclusivamente el primero; contiene revisiones hasta 2026-09-20 |
+| MA-ART-0004 | `1AoE-duo6Hq-vKJX7RC-BoMyTkHqkRVPd` | `12_BJpmVkHixjGDQ7JEcrN3shkBBrTlvV` | usar exclusivamente el primero; contiene revisiones hasta 2026-09-20 |
+| MA-ART-0007 | `1zVN_nKRipa1pehY36fOlo8j6JpWH2FVR` | `1q-9kuKkU0Tmn2tFWe45UfPx8rgG360N2` | usar exclusivamente el primero; la fuente vigente está en `published` |
+
+Las copias bajo `Copias de seguridad de Android` se conservan como respaldo y **no deben editarse ni utilizarse para derivar la web**.
+
