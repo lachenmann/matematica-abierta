@@ -6,7 +6,7 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0004 |
+| Artículo | MA-ART-0011 |
 | Aplicación interactiva | MA-APP-0002 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0083 |
@@ -44,8 +44,15 @@
 | MA-PRB-0005 | problem | Existencia y unicidad en una ecuación lineal con parámetros | `problemas/existencia-y-unicidad-ecuacion-lineal-parametros.md` | published |
 | MA-PRB-0006 | problem | Producto nulo y cancelación en un cuerpo | `problemas/producto-nulo-y-cancelacion-en-un-cuerpo.md` | published |
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
-| MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | Obsidian: `Matemática Abierta/Artículos/MA-ART-0002 - Hemos construido realmente los números reales.md` | reserved: canonical-draft; not on web |
-| MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | review; sync pending |
+| MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | `blog/hemos-construido-realmente-los-numeros-reales.md` | published |
+| MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | web published; canonical/editorial close pending |
+| MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | web exposed; editorial review pending |
+| MA-ART-0005 | article | El método de Diofanto y la parametrización racional de las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.md` | published |
+| MA-ART-0006 | article | La norma en matemáticas: medir magnitudes, distancias y estructuras | `conceptos/norma-en-matematicas.qmd` | published |
+| MA-ART-0007 | article | Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo | `conceptos/supremo-infimo-maximo-minimo.qmd` | web published; canonical sync pending |
+| MA-ART-0008 | article | Existencia y unicidad del cuerpo ordenado completo | `teoria/resultados/existencia-unicidad-cuerpo-ordenado-completo.qmd` | web exposed; QA/editorial close pending |
+| MA-ART-0009 | article | Cómo Arquímedes acotó π: polígonos, exhaución y 96 lados | Obsidian: `Matemática Abierta/Artículos/MA-ART-0009 - Cómo Arquímedes acotó pi.md` | working-draft; not on web |
+| MA-ART-0010 | article | La sección áurea: de una división geométrica a la ecuación φ² = φ + 1 | `conceptos/seccion-aurea.qmd` | published |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
 | MA-LES-0001 | lesson | Topos desde cero — 1.4 Implicación, contrapositiva y recíproca | `libros/capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md` | published |
 | MA-LES-0002 | lesson | Topos desde cero — 1.5 Bicondicionales y condiciones necesarias y suficientes | `libros/capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md` | published |
