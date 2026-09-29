@@ -121,3 +121,13 @@ QA editorial y bibliográfico: **PASS** (29-09-2026).
 - MA-APP-0002 permanece `working-prototype/not-published`; su página Quarto se protege con `draft: true` y se retira del índice público. El HTML canónico y el HTML del repositorio no son byte a byte idénticos y deberán reconciliarse antes de la publicación conjunta.
 
 M10: reconciliación integral Obsidian → Quarto.
+
+## M10 — MA-ART-0004
+
+Reconciliación integral Obsidian → Quarto: **PASS** (29-09-2026).
+
+- La fuente canónica se comparó con `desigualdad-cauchy-schwarz.qmd` y los seis includes `_cauchy-1.qmd`–`_cauchy-6.qmd`.
+- 49 encabezados coinciden en el mismo orden y con las mismas anclas.
+- Tras normalizar callouts, wiki-links, enlaces web e integración del laboratorio, las únicas diferencias restantes son deliberadas: redacción web del recuadro Lean y del callout/laboratorio.
+- No hay divergencias sustantivas en teoremas, pruebas, ejemplos, ejercicios, FAQ ni bibliografía.
+- El artículo sigue `draft-protected`; antes de publicar debe reconciliarse `MA-APP-0002` y ejecutarse el QA técnico final.
