@@ -131,3 +131,17 @@ Reconciliación integral Obsidian → Quarto: **PASS** (29-09-2026).
 - Tras normalizar callouts, wiki-links, enlaces web e integración del laboratorio, las únicas diferencias restantes son deliberadas: redacción web del recuadro Lean y del callout/laboratorio.
 - No hay divergencias sustantivas en teoremas, pruebas, ejemplos, ejercicios, FAQ ni bibliografía.
 - El artículo sigue `draft-protected`; antes de publicar debe reconciliarse `MA-APP-0002` y ejecutarse el QA técnico final.
+
+## Reconciliación MA-APP-0002 — pre-M11
+
+Resultado: **PASS** (29-09-2026).
+
+- Drive conserva el HTML autónomo canónico; GitHub conserva una derivación modularizada con CSS/JS externos.
+- El CSS canónico y el web son idénticos.
+- Los mismos controles, identificadores DOM y funciones matemáticas se conservan en ambas versiones.
+- Se retroportó al canon la escala gráfica de 15 px/unidad del derivado web, necesaria para mantener visible el vector suma cuando las coordenadas de entrada alcanzan ±6.
+- Se retroportaron las etiquetas ARIA explícitas de los cuatro deslizadores.
+- El enlace contextual al artículo y el autoajuste de altura mediante `ResizeObserver` permanecen como adaptaciones deliberadas de la integración web.
+- La página Quarto `MA-APP-0002` continúa con `draft: true` y fuera del índice público.
+
+Con esto, el bloqueo de reconciliación del laboratorio queda cerrado; el siguiente paso es M11, QA técnico final de publicación conjunta de MA-ART-0004 y MA-APP-0002.
