@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Historia, derivación y geometría de la fórmula de Euler: de Bernoulli, Cotes y De Moivre a la exponencial compleja, las ecuaciones diferenciales y Fourier.">
+
+<title>La fórmula de Euler: historia, derivación y geometría de e^{iθ} – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-734c323c350767e86e203611e668e472.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-a628dcfeb5b33860baba5bec0d8f10cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-fórmula-de-euler" id="toc-la-fórmula-de-euler" class="nav-link active" data-scroll-target="#la-fórmula-de-euler">La fórmula de Euler</a>
+  <ul class="collapse">
+  <li><a href="#historia-derivación-y-geometría-de-eitheta" id="toc-historia-derivación-y-geometría-de-eitheta" class="nav-link" data-scroll-target="#historia-derivación-y-geometría-de-eitheta">Historia, derivación y geometría de <span class="math inline">\(e^{i\theta}\)</span></a></li>
+  <li><a href="#antes-de-euler-logaritmos-círculo-y-cantidades-imaginarias" id="toc-antes-de-euler-logaritmos-círculo-y-cantidades-imaginarias" class="nav-link" data-scroll-target="#antes-de-euler-logaritmos-círculo-y-cantidades-imaginarias">1. Antes de Euler: logaritmos, círculo y cantidades imaginarias</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli-y-los-logaritmos-imaginarios" id="toc-bernoulli-y-los-logaritmos-imaginarios" class="nav-link" data-scroll-target="#bernoulli-y-los-logaritmos-imaginarios">1.1. Bernoulli y los logaritmos imaginarios</a></li>
+  <li><a href="#cotes-el-logaritmo-del-círculo" id="toc-cotes-el-logaritmo-del-círculo" class="nav-link" data-scroll-target="#cotes-el-logaritmo-del-círculo">1.2. Cotes: el logaritmo del círculo</a></li>
+  </ul></li>
+  <li><a href="#de-moivre-multiplicar-es-girar" id="toc-de-moivre-multiplicar-es-girar" class="nav-link" data-scroll-target="#de-moivre-multiplicar-es-girar">2. De Moivre: multiplicar es girar</a></li>
+  <li><a href="#euler-prepara-el-encuentro-entre-exponencial-y-círculo" id="toc-euler-prepara-el-encuentro-entre-exponencial-y-círculo" class="nav-link" data-scroll-target="#euler-prepara-el-encuentro-entre-exponencial-y-círculo">3. Euler prepara el encuentro entre exponencial y círculo</a></li>
+  <li><a href="#la-derivación-de-euler-de-1748" id="toc-la-derivación-de-euler-de-1748" class="nav-link" data-scroll-target="#la-derivación-de-euler-de-1748">4. La derivación de Euler de 1748</a>
+  <ul class="collapse">
+  <li><a href="#la-reconstrucción-rigurosa" id="toc-la-reconstrucción-rigurosa" class="nav-link" data-scroll-target="#la-reconstrucción-rigurosa">4.1. La reconstrucción rigurosa</a></li>
+  </ul></li>
+  <li><a href="#primera-demostración-moderna-series-de-potencias" id="toc-primera-demostración-moderna-series-de-potencias" class="nav-link" data-scroll-target="#primera-demostración-moderna-series-de-potencias">5. Primera demostración moderna: series de potencias</a></li>
+  <li><a href="#segunda-demostración-moderna-la-ecuación-ziz" id="toc-segunda-demostración-moderna-la-ecuación-ziz" class="nav-link" data-scroll-target="#segunda-demostración-moderna-la-ecuación-ziz">6. Segunda demostración moderna: la ecuación <span class="math inline">\(z'=iz\)</span></a></li>
+  <li><a href="#la-geometría-de-la-exponencial-compleja" id="toc-la-geometría-de-la-exponencial-compleja" class="nav-link" data-scroll-target="#la-geometría-de-la-exponencial-compleja">7. La geometría de la exponencial compleja</a></li>
+  <li><a href="#la-identidad-de-euler-media-vuelta" id="toc-la-identidad-de-euler-media-vuelta" class="nav-link" data-scroll-target="#la-identidad-de-euler-media-vuelta">8. La identidad de Euler: media vuelta</a></li>
+  <li><a href="#consecuencias-trigonometría-forma-polar-y-raíces-de-la-unidad" id="toc-consecuencias-trigonometría-forma-polar-y-raíces-de-la-unidad" class="nav-link" data-scroll-target="#consecuencias-trigonometría-forma-polar-y-raíces-de-la-unidad">9. Consecuencias: trigonometría, forma polar y raíces de la unidad</a></li>
+  <li><a href="#de-euler-a-fourier" id="toc-de-euler-a-fourier" class="nav-link" data-scroll-target="#de-euler-a-fourier">10. De Euler a Fourier</a></li>
+  <li><a href="#conclusión-una-misma-estructura" id="toc-conclusión-una-misma-estructura" class="nav-link" data-scroll-target="#conclusión-una-misma-estructura">11. Conclusión: una misma estructura</a></li>
+  <li><a href="#cronología-esencial" id="toc-cronología-esencial" class="nav-link" data-scroll-target="#cronología-esencial">Cronología esencial</a></li>
+  <li><a href="#fuentes-primarias-y-secundarias" id="toc-fuentes-primarias-y-secundarias" class="nav-link" data-scroll-target="#fuentes-primarias-y-secundarias">Fuentes primarias y secundarias</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-primarias" id="toc-fuentes-primarias" class="nav-link" data-scroll-target="#fuentes-primarias">Fuentes primarias</a></li>
+  <li><a href="#fuentes-secundarias-de-control" id="toc-fuentes-secundarias-de-control" class="nav-link" data-scroll-target="#fuentes-secundarias-de-control">Fuentes secundarias de control</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">La fórmula de Euler: historia, derivación y geometría de e^{iθ}</h1>
+</div>
+
+<div>
+  <div class="description">
+    Historia, derivación y geometría de la fórmula de Euler: de Bernoulli, Cotes y De Moivre a la exponencial compleja, las ecuaciones diferenciales y Fourier.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">29 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.ma-euler-figure {
+  margin: 1.35rem 0 1.65rem;
+}
+.ma-euler-frame {
+  display: block;
+  width: 100%;
+  height: var(--ma-euler-h, 900px);
+  border: 1px solid #d7e2f0;
+  border-radius: 16px;
+  background: #f5f8fd;
+}
+.ma-euler-figure figcaption {
+  margin-top: .55rem;
+  font-size: .9rem;
+  line-height: 1.45;
+  opacity: .82;
+}
+@media (max-width: 767.98px) {
+  .ma-euler-frame {
+    height: var(--ma-euler-h-mobile, 1300px);
+  }
+}
+</style>
+<section id="la-fórmula-de-euler" class="level1">
+<h1>La fórmula de Euler</h1>
+<section id="historia-derivación-y-geometría-de-eitheta" class="level2">
+<h2 class="anchored" data-anchor-id="historia-derivación-y-geometría-de-eitheta">Historia, derivación y geometría de <span class="math inline">\(e^{i\theta}\)</span></h2>
+<p>La expresión</p>
+<p><span class="math display">\[
+e^{i\theta}
+\]</span></p>
+<p>parece extraña si sólo conocemos la exponencial sobre los números reales. Podemos interpretar sin dificultad <span class="math inline">\(e^2\)</span>, <span class="math inline">\(e^{-1}\)</span> o <span class="math inline">\(e^{1/2}\)</span>, pero <span class="math inline">\(i\theta\)</span> ya no pertenece a la recta real. ¿Qué puede significar elevar <span class="math inline">\(e\)</span> a un exponente imaginario?</p>
+<p>La respuesta es una de las relaciones centrales del análisis complejo:</p>
+<p><span class="math display">\[
+\boxed{e^{i\theta}=\cos\theta+i\sin\theta.}
+\]</span></p>
+<p>Esta es la <strong>fórmula de Euler</strong>. En todo el artículo los ángulos se miden en radianes, una elección esencial: es precisamente en radianes donde <span class="math inline">\(\sin\theta/\theta\to1\)</span> cuando <span class="math inline">\(\theta\to0\)</span>, y esa propiedad interviene tanto en la derivación histórica como en las demostraciones modernas.</p>
+<p>A primera vista, la fórmula reúne objetos nacidos en contextos muy distintos. La exponencial pertenece al mundo del crecimiento y los logaritmos; seno y coseno proceden históricamente del estudio de círculos y triángulos; <span class="math inline">\(i=\sqrt{-1}\)</span> aparece cuando el álgebra se extiende más allá de los reales. La fórmula afirma que estos tres ámbitos no sólo están relacionados: describen una misma estructura.</p>
+<p>Si interpretamos <span class="math inline">\(\cos\theta+i\sin\theta\)</span> como el punto <span class="math inline">\((\cos\theta,\sin\theta)\)</span> del plano complejo, entonces</p>
+<p><span class="math display">\[
+|\cos\theta+i\sin\theta|=\sqrt{\cos^2\theta+\sin^2\theta}=1.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(e^{i\theta}\)</span> permanece sobre el círculo unitario. Su parte real es <span class="math inline">\(\cos\theta\)</span> y su parte imaginaria es <span class="math inline">\(\sin\theta\)</span>; al variar <span class="math inline">\(\theta\)</span>, la exponencial imaginaria describe una rotación.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:790px;--ma-euler-h-mobile:960px" src="../assets/articles/ma-art-0011/MA-ART-0011-F01_euler-circulo.html" title="MA-FE-01 — Una exponencial que gira" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-01 — Una exponencial que gira.</strong> Círculo unitario interactivo: e^{iθ}, cos θ y sin θ. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F01_euler-circulo.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+<p>Conviene distinguir desde el comienzo la fórmula general de su caso más famoso. La <strong>identidad de Euler</strong></p>
+<p><span class="math display">\[
+e^{i\pi}+1=0
+\]</span></p>
+<p>se obtiene simplemente tomando <span class="math inline">\(\theta=\pi\)</span>. El fenómeno matemático profundo no es ese único valor, sino la relación completa entre exponenciación imaginaria y rotación.</p>
+</section>
+<section id="antes-de-euler-logaritmos-círculo-y-cantidades-imaginarias" class="level2">
+<h2 class="anchored" data-anchor-id="antes-de-euler-logaritmos-círculo-y-cantidades-imaginarias">1. Antes de Euler: logaritmos, círculo y cantidades imaginarias</h2>
+<p>La fórmula no apareció de una sola vez. A comienzos del siglo XVIII ya existían resultados que acercaban logaritmos, cantidades imaginarias y geometría circular.</p>
+<section id="bernoulli-y-los-logaritmos-imaginarios" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-y-los-logaritmos-imaginarios">1.1. Bernoulli y los logaritmos imaginarios</h3>
+<p>Un ejemplo moderno muestra por qué estos temas podían encontrarse. Consideremos</p>
+<p><span class="math display">\[
+\int\frac{dx}{1+x^2}.
+\]</span></p>
+<p>Geométricamente reconocemos una antiderivada como <span class="math inline">\(\arctan x\)</span>. Pero, usando <span class="math inline">\(i^2=-1\)</span>,</p>
+<p><span class="math display">\[
+1+x^2=(1+ix)(1-ix),
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\frac1{1+x^2}
+=\frac12\left(\frac1{1+ix}+\frac1{1-ix}\right).
+\]</span></p>
+<p>Al integrar se obtiene, con una elección adecuada de rama del logaritmo,</p>
+<p><span class="math display">\[
+\arctan x
+=\frac1{2i}\log\!\left(\frac{1+ix}{1-ix}\right).
+\]</span></p>
+<p>La notación es moderna, pero la idea histórica ya aparece en Johann Bernoulli: en 1702 estudió relaciones entre cantidades circulares y logaritmos de cantidades imaginarias. La dificultad era conceptual. Todavía no existía una teoría completa del logaritmo complejo, y por eso preguntas como «¿qué es <span class="math inline">\(\log(-1)\)</span>?» podían producir controversias profundas.</p>
+<p>La teoría moderna explica el problema. Si</p>
+<p><span class="math display">\[
+z=re^{i\theta},
+\]</span></p>
+<p>entonces el mismo número puede escribirse usando <span class="math inline">\(\theta+2\pi k\)</span>, con <span class="math inline">\(k\in\mathbb Z\)</span>. Por eso el logaritmo complejo posee valores</p>
+<p><span class="math display">\[
+\log z=\ln r+i(\theta+2\pi k).
+\]</span></p>
+<p>Esta multivaluación todavía no estaba disponible para Bernoulli y Leibniz cuando discutieron, alrededor de 1712, los logaritmos de números negativos.</p>
+</section>
+<section id="cotes-el-logaritmo-del-círculo" class="level3">
+<h3 class="anchored" data-anchor-id="cotes-el-logaritmo-del-círculo">1.2. Cotes: el logaritmo del círculo</h3>
+<p>Roger Cotes publicó en 1714 su <em>Logometria</em> en las <em>Philosophical Transactions</em> de la Royal Society. Parte de sus resultados fue incorporada después, póstumamente, a la <em>Harmonia mensurarum</em> de 1722. En ese contexto aparece una relación que, traducida a notación moderna y entendida localmente con una rama del logaritmo, escribimos como</p>
+<p><span class="math display">\[
+\log(\cos\theta+i\sin\theta)=i\theta.
+\]</span></p>
+<p>La cautela sobre la rama es indispensable. Globalmente no puede elegirse una rama continua del logaritmo a lo largo de todo el círculo: <span class="math inline">\(\theta\)</span> y <span class="math inline">\(\theta+2\pi\)</span> representan el mismo punto, mientras que la continuación <span class="math inline">\(i\theta\)</span> cambia en <span class="math inline">\(2\pi i\)</span> después de una vuelta. Si adoptamos el valor principal del argumento, <span class="math inline">\(\operatorname{Arg}z\in(-\pi,\pi]\)</span>, aparece necesariamente un corte en el eje real negativo; al atravesarlo, el valor principal del argumento cambia en <span class="math inline">\(2\pi\)</span>.</p>
+<p>La estructura puede verse de manera diferencial. Si</p>
+<p><span class="math display">\[
+z(\theta)=\cos\theta+i\sin\theta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+z'(\theta)=-\sin\theta+i\cos\theta=iz(\theta).
+\]</span></p>
+<p>Por tanto, sobre cualquier arco en el que se haya fijado una rama del logaritmo,</p>
+<p><span class="math display">\[
+\frac{d}{d\theta}\log z(\theta)=\frac{z'(\theta)}{z(\theta)}=i,
+\]</span></p>
+<p>y de ahí surge <span class="math inline">\(\log z(\theta)=i\theta+C\)</span> dentro de ese arco. Cerca de <span class="math inline">\(\theta=0\)</span> podemos tomar <span class="math inline">\(C=0\)</span>.</p>
+<p>Desde nuestro punto de vista es tentador exponentiar ambos lados y escribir inmediatamente</p>
+<p><span class="math display">\[
+e^{i\theta}=\cos\theta+i\sin\theta.
+\]</span></p>
+<p>Históricamente, sin embargo, esto comprime un paso decisivo: todavía no se había construido la exponencial compleja como una función analítica general. Cotes había llegado muy cerca desde el lado de los logaritmos y de la geometría circular; Euler incorporaría después la relación a una teoría sistemática de funciones.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:1000px;--ma-euler-h-mobile:1480px" src="../assets/articles/ma-art-0011/MA-ART-0011-F02_cotes-logaritmo.html" title="MA-FE-02 — Cotes: del círculo al logaritmo" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-02 — Cotes: del círculo al logaritmo.</strong> El mismo punto del círculo frente a la continuación del logaritmo y su valor principal. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F02_cotes-logaritmo.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="de-moivre-multiplicar-es-girar" class="level2">
+<h2 class="anchored" data-anchor-id="de-moivre-multiplicar-es-girar">2. De Moivre: multiplicar es girar</h2>
+<p>El siguiente antecedente importante procede de Abraham de Moivre. En un trabajo de 1707 aparece ya una fórmula estrechamente relacionada con la que hoy lleva su nombre; la forma familiar</p>
+<p><span class="math display">\[
+(\cos\theta+i\sin\theta)^n
+=\cos(n\theta)+i\sin(n\theta)
+\]</span></p>
+<p>fue publicada en 1722.</p>
+<p>La idea puede derivarse de las fórmulas de adición. Si</p>
+<p><span class="math display">\[
+z_1=\cos\alpha+i\sin\alpha,
+\qquad
+z_2=\cos\beta+i\sin\beta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+z_1z_2
+&amp;=(\cos\alpha\cos\beta-\sin\alpha\sin\beta)\\
+&amp;\quad+i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)\\
+&amp;=\cos(\alpha+\beta)+i\sin(\alpha+\beta).
+\end{aligned}
+\]</span></p>
+<p>Así, sobre el círculo unitario, <strong>multiplicar números complejos equivale a sumar ángulos</strong>. Repetir <span class="math inline">\(n\)</span> veces el mismo factor produce</p>
+<p><span class="math display">\[
+(\cos\theta+i\sin\theta)^n
+=\cos(n\theta)+i\sin(n\theta).
+\]</span></p>
+<p>En lenguaje moderno, si definimos</p>
+<p><span class="math display">\[
+C(\theta)=\cos\theta+i\sin\theta,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+C(\alpha+\beta)=C(\alpha)C(\beta).
+\]</span></p>
+<p>La función <span class="math inline">\(C\)</span> convierte suma en multiplicación, exactamente como la exponencial real:</p>
+<p><span class="math display">\[
+e^{x+y}=e^xe^y.
+\]</span></p>
+<p>Esta semejanza estructural es una de las piezas que hacen natural la fórmula de Euler. Cotes había mostrado que el logaritmo del punto circular estaba relacionado con un ángulo imaginario; De Moivre mostró que la multiplicación circular obedecía a la suma de ángulos. Faltaba una teoría suficientemente general de la exponencial para unir ambas observaciones.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:900px;--ma-euler-h-mobile:1120px" src="../assets/articles/ma-art-0011/MA-ART-0011-F03_multiplicar-girar.html" title="MA-FE-03 — Multiplicar es girar" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-03 — Multiplicar es girar.</strong> La multiplicación de complejos unitarios como suma de ángulos. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F03_multiplicar-girar.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+</section>
+<section id="euler-prepara-el-encuentro-entre-exponencial-y-círculo" class="level2">
+<h2 class="anchored" data-anchor-id="euler-prepara-el-encuentro-entre-exponencial-y-círculo">3. Euler prepara el encuentro entre exponencial y círculo</h2>
+<p>Euler no introduce <span class="math inline">\(e^{i\theta}\)</span> como un gesto aislado. En el primer volumen de la <em>Introductio in analysin infinitorum</em> de 1748, los capítulos VI, VII y VIII siguen una secuencia reveladora: primero estudia cantidades exponenciales y logarítmicas, después sus expansiones en series y finalmente las cantidades trascendentes que nacen del círculo.</p>
+<p>En el capítulo VII aparece la base natural</p>
+<p><span class="math display">\[
+e=2.718281828\ldots
+\]</span></p>
+<p>y la expansión</p>
+<p><span class="math display">\[
+e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots.
+\]</span></p>
+<p>Euler dispone también de una representación equivalente, expresada en su lenguaje de cantidades infinitamente grandes, que nosotros traducimos como</p>
+<p><span class="math display">\[
+e^z=\lim_{N\to\infty}\left(1+\frac zN\right)^N.
+\]</span></p>
+<p>Aquí hay una precaución de notación importante. En ciertos pasajes Euler utiliza una letra para representar una cantidad infinitamente grande; la unidad imaginaria aparece todavía como <span class="math inline">\(\sqrt{-1}\)</span>. Para evitar confusiones, en nuestra reconstrucción escribiremos siempre <span class="math inline">\(N\to\infty\)</span> para el parámetro grande y reservaremos <span class="math inline">\(i\)</span> para <span class="math inline">\(\sqrt{-1}\)</span>.</p>
+<p>En el capítulo VIII Euler combina seno y coseno con cantidades imaginarias. A partir de las fórmulas de adición obtiene expresiones equivalentes a</p>
+<p><span class="math display">\[
+(\cos z+i\sin z)^n=\cos(nz)+i\sin(nz).
+\]</span></p>
+<p>La idea decisiva aparece al hacer el arco <span class="math inline">\(z\)</span> extremadamente pequeño y el número de repeticiones extremadamente grande, de modo que su producto siga siendo un arco finito.</p>
+</section>
+<section id="la-derivación-de-euler-de-1748" class="level2">
+<h2 class="anchored" data-anchor-id="la-derivación-de-euler-de-1748">4. La derivación de Euler de 1748</h2>
+<p>Conviene distinguir la historia editorial de la estructura matemática. Euler ya había publicado en 1743, en su trabajo E61 escrito en 1742, fórmulas que expresan seno y coseno mediante exponentes imaginarios. La <em>Introductio</em> de 1748 ofrece una exposición sistemática y especialmente transparente de la relación.</p>
+<p>Tomemos un arco finito <span class="math inline">\(\theta\)</span> y dividámoslo en <span class="math inline">\(N\)</span> partes iguales. Escribimos</p>
+<p><span class="math display">\[
+z=\frac{\theta}{N}.
+\]</span></p>
+<p>Por De Moivre,</p>
+<p><span class="math display">\[
+\left(\cos\frac\theta N+i\sin\frac\theta N\right)^N
+=\cos\theta+i\sin\theta.
+\]</span></p>
+<p>Cuando <span class="math inline">\(N\)</span> es muy grande, <span class="math inline">\(\theta/N\)</span> es muy pequeño. En el lenguaje moderno,</p>
+<p><span class="math display">\[
+\sin\frac\theta N=\frac\theta N+O(N^{-3}),
+\qquad
+\cos\frac\theta N=1+O(N^{-2}).
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\cos\frac\theta N+i\sin\frac\theta N
+=1+\frac{i\theta}{N}+O(N^{-2}).
+\]</span></p>
+<p>La expresión para la rotación completa se aproxima así a</p>
+<p><span class="math display">\[
+\left(1+\frac{i\theta}{N}\right)^N.
+\]</span></p>
+<p>Pero Euler había relacionado ya esta estructura con la exponencial. En notación moderna,</p>
+<p><span class="math display">\[
+\lim_{N\to\infty}
+\left(1+\frac{i\theta}{N}\right)^N=e^{i\theta}.
+\]</span></p>
+<p>De ahí emerge la fórmula</p>
+<p><span class="math display">\[
+\boxed{e^{i\theta}=\cos\theta+i\sin\theta.}
+\]</span></p>
+<p>La idea geométrica merece conservarse: <strong>una rotación finita puede verse como la acumulación de un número cada vez mayor de rotaciones cada vez más pequeñas, y ese proceso tiene estructura exponencial</strong>.</p>
+<section id="la-reconstrucción-rigurosa" class="level3">
+<h3 class="anchored" data-anchor-id="la-reconstrucción-rigurosa">4.1. La reconstrucción rigurosa</h3>
+<p>La argumentación anterior puede formularse sin infinitesimales. Definamos</p>
+<p><span class="math display">\[
+z_N=\cos\frac\theta N+i\sin\frac\theta N,
+\qquad
+w_N=1+\frac{i\theta}{N}.
+\]</span></p>
+<p>Tenemos exactamente <span class="math inline">\(z_N^N=\cos\theta+i\sin\theta\)</span>. Además,</p>
+<p><span class="math display">\[
+\frac{z_N}{w_N}=1+O(N^{-2}),
+\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[
+\left(\frac{z_N}{w_N}\right)^N\longrightarrow1.
+\]</span></p>
+<p>Así, <span class="math inline">\(z_N^N\)</span> y <span class="math inline">\(w_N^N\)</span> tienen el mismo límite. Si la exponencial compleja ha sido definida previamente —por ejemplo mediante su serie de potencias— y se ha demostrado que</p>
+<p><span class="math display">\[
+e^z=\lim_{N\to\infty}\left(1+\frac zN\right)^N,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\cos\theta+i\sin\theta=e^{i\theta}.
+\]</span></p>
+<p>Este punto evita una circularidad frecuente: no podemos definir <span class="math inline">\(e^{i\theta}\)</span> como <span class="math inline">\(\cos\theta+i\sin\theta\)</span> y usar después esa misma identidad para demostrar la fórmula.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:980px;--ma-euler-h-mobile:1450px" src="../assets/articles/ma-art-0011/MA-ART-0011-F04_euler-138.html" title="MA-FE-04 — El §138 de la Introductio" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-04 — El §138 de la Introductio.</strong> Facsímil documental del cierre del §138 junto con una normalización matemática claramente separada. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F04_euler-138.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:980px;--ma-euler-h-mobile:1420px" src="../assets/articles/ma-art-0011/MA-ART-0011-F05_muchos-giros.html" title="MA-FE-05 — Muchos giros pequeños" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-05 — Muchos giros pequeños.</strong> Giro exacto, aproximación tangente y límite exponencial. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F05_muchos-giros.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="primera-demostración-moderna-series-de-potencias" class="level2">
+<h2 class="anchored" data-anchor-id="primera-demostración-moderna-series-de-potencias">5. Primera demostración moderna: series de potencias</h2>
+<p>La demostración más breve parte de una definición moderna de la exponencial compleja:</p>
+<p><span class="math display">\[
+e^z:=\sum_{n=0}^{\infty}\frac{z^n}{n!},
+\qquad z\in\mathbb C.
+\]</span></p>
+<p>La serie converge absolutamente para todo <span class="math inline">\(z\)</span>, porque</p>
+<p><span class="math display">\[
+\left|\frac{z^{n+1}/(n+1)!}{z^n/n!}\right|
+=\frac{|z|}{n+1}\longrightarrow0.
+\]</span></p>
+<p>Por tanto, sustituir <span class="math inline">\(z=i\theta\)</span> es completamente legítimo:</p>
+<p><span class="math display">\[
+e^{i\theta}
+=\sum_{n=0}^{\infty}\frac{(i\theta)^n}{n!}.
+\]</span></p>
+<p>Las potencias de <span class="math inline">\(i\)</span> siguen el ciclo</p>
+<p><span class="math display">\[
+1,\ i,\ -1,\ -i,\ 1,\ldots
+\]</span></p>
+<p>Separando términos pares e impares, operación válida por la convergencia absoluta, obtenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+e^{i\theta}
+&amp;=\sum_{k=0}^{\infty}(-1)^k\frac{\theta^{2k}}{(2k)!}
++i\sum_{k=0}^{\infty}(-1)^k\frac{\theta^{2k+1}}{(2k+1)!}\\
+&amp;=\cos\theta+i\sin\theta.
+\end{aligned}
+\]</span></p>
+<p>La prueba es algebraicamente transparente, pero presupone una decisión fundacional. Si seno y coseno se definen mediante sus series, la identificación es inmediata; si se definen primero de modo geométrico, debemos demostrar antes que poseen esas expansiones de Maclaurin. La frase escolar «sustituimos <span class="math inline">\(x\)</span> por <span class="math inline">\(ix\)</span>» resume, por tanto, varios resultados previos.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:1110px;--ma-euler-h-mobile:1600px" src="../assets/articles/ma-art-0011/MA-ART-0011-F06_serie-dos-ramas.html" title="MA-FE-06 — Una serie se divide en dos" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-06 — Una serie se divide en dos.</strong> Separación de la serie exponencial en sus subseries par e impar. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F06_serie-dos-ramas.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+</section>
+<section id="segunda-demostración-moderna-la-ecuación-ziz" class="level2">
+<h2 class="anchored" data-anchor-id="segunda-demostración-moderna-la-ecuación-ziz">6. Segunda demostración moderna: la ecuación <span class="math inline">\(z'=iz\)</span></h2>
+<p>La prueba por series explica la identidad algebraicamente. La ecuación diferencial explica su geometría.</p>
+<p>Sea</p>
+<p><span class="math display">\[
+f(\theta)=\cos\theta+i\sin\theta.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+f'(\theta)=-\sin\theta+i\cos\theta=if(\theta),
+\]</span></p>
+<p>y <span class="math inline">\(f(0)=1\)</span>. Por otra parte, si</p>
+<p><span class="math display">\[
+g(\theta)=e^{i\theta},
+\]</span></p>
+<p>entonces <span class="math inline">\(g'(\theta)=ig(\theta)\)</span> y <span class="math inline">\(g(0)=1\)</span>. Ambas funciones resuelven el mismo problema de valor inicial</p>
+<p><span class="math display">\[
+z'=iz,\qquad z(0)=1.
+\]</span></p>
+<p>Por unicidad,</p>
+<p><span class="math display">\[
+f(\theta)=g(\theta),
+\]</span></p>
+<p>y recuperamos la fórmula de Euler.</p>
+<p>La ecuación <span class="math inline">\(z'=iz\)</span> contiene además la interpretación geométrica. Si <span class="math inline">\(z=x+iy\)</span>, entonces</p>
+<p><span class="math display">\[
+iz=-y+ix,
+\]</span></p>
+<p>por lo que multiplicar por <span class="math inline">\(i\)</span> transforma el vector <span class="math inline">\((x,y)\)</span> en <span class="math inline">\((-y,x)\)</span>: una rotación de <span class="math inline">\(90^\circ\)</span> en sentido antihorario. La ecuación dice que la velocidad se obtiene girando un cuarto de vuelta el vector posición.</p>
+<p>De <span class="math inline">\(z'=iz\)</span> se sigue que posición y velocidad son perpendiculares. También</p>
+<p><span class="math display">\[
+\frac{d}{d\theta}|z|^2=0,
+\]</span></p>
+<p>de modo que el radio permanece constante; como <span class="math inline">\(|z(0)|=1\)</span>, la trayectoria está sobre el círculo unitario. Finalmente,</p>
+<p><span class="math display">\[
+|z'|=|i||z|=1,
+\]</span></p>
+<p>así que el punto recorre ese círculo con velocidad unitaria. En un círculo de radio uno, longitud de arco y ángulo en radianes coinciden: después de un parámetro <span class="math inline">\(\theta\)</span>, el punto se encuentra precisamente en el ángulo <span class="math inline">\(\theta\)</span>.</p>
+<p>Escribiendo <span class="math inline">\(z=x+iy\)</span>, el mismo sistema da</p>
+<p><span class="math display">\[
+x'=-y,\qquad y'=x,
+\]</span></p>
+<p>y, por tanto,</p>
+<p><span class="math display">\[
+x''+x=0,
+\qquad
+y''+y=0.
+\]</span></p>
+<p>La exponencial compleja, la rotación uniforme y el oscilador armónico son así tres descripciones de una misma dinámica.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:900px;--ma-euler-h-mobile:1320px" src="../assets/articles/ma-art-0011/MA-ART-0011-F07_velocidad-iz.html" title="MA-FE-07 — La velocidad es iz" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-07 — La velocidad es iz.</strong> Posición, velocidad tangencial y perpendicularidad en z’=iz. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F07_velocidad-iz.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+<div class="callout callout-style-default callout-note callout-titled" title="Para ir más lejos — rotaciones como exponenciales">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Para ir más lejos — rotaciones como exponenciales
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La multiplicación por <span class="math inline">\(i\)</span> corresponde a la matriz <span class="math inline">\(J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>, que satisface <span class="math inline">\(J^2=-I\)</span>. Por eso <span class="math inline">\(e^{\theta J}=I\cos\theta+J\sin\theta\)</span>, es decir, la matriz de rotación. La fórmula de Euler es el modelo complejo de este fenómeno más general.</p>
+</div>
+</div>
+</section>
+<section id="la-geometría-de-la-exponencial-compleja" class="level2">
+<h2 class="anchored" data-anchor-id="la-geometría-de-la-exponencial-compleja">7. La geometría de la exponencial compleja</h2>
+<p>Sea ahora</p>
+<p><span class="math display">\[
+z=x+iy.
+\]</span></p>
+<p>Usando <span class="math inline">\(e^{z+w}=e^ze^w\)</span> y la fórmula de Euler,</p>
+<p><span class="math display">\[
+\boxed{e^{x+iy}=e^x(\cos y+i\sin y).}
+\]</span></p>
+<p>La parte real del exponente controla el radio y la parte imaginaria controla el ángulo:</p>
+<p><span class="math display">\[
+|e^{x+iy}|=e^x,
+\qquad
+\arg(e^{x+iy})\equiv y\pmod{2\pi}.
+\]</span></p>
+<p>Esta fórmula permite leer geométricamente la aplicación exponencial. Si fijamos <span class="math inline">\(y\)</span>, el ángulo permanece constante mientras <span class="math inline">\(e^x\)</span> recorre todos los radios positivos; una recta horizontal del plano del exponente se transforma en un rayo. Si fijamos <span class="math inline">\(x\)</span>, el radio permanece constante mientras <span class="math inline">\(y\)</span> varía; una recta vertical se transforma en un círculo centrado en el origen.</p>
+<p>Así, la cuadrícula cartesiana del plano <span class="math inline">\(z\)</span> se transforma en una red polar en el plano <span class="math inline">\(w=e^z\)</span>. Además, como <span class="math inline">\(e^x&gt;0\)</span> para todo real <span class="math inline">\(x\)</span>, la exponencial compleja nunca vale cero y</p>
+<p><span class="math display">\[
+\exp(\mathbb C)=\mathbb C\setminus\{0\}.
+\]</span></p>
+<p>La periodicidad angular produce</p>
+<p><span class="math display">\[
+e^{z+2\pi ik}=e^z,
+\qquad k\in\mathbb Z.
+\]</span></p>
+<p>Esta igualdad explica la multivaluación del logaritmo. Resolver <span class="math inline">\(e^z=w\)</span>, con <span class="math inline">\(w\ne0\)</span> y <span class="math inline">\(w=re^{i\theta}\)</span>, conduce a</p>
+<p><span class="math display">\[
+z=\ln r+i(\theta+2\pi k),
+\qquad k\in\mathbb Z.
+\]</span></p>
+<p>Volvemos así al problema que aparecía en Bernoulli y Cotes: cada vuelta completa alrededor del origen cambia una determinación continua del logaritmo en <span class="math inline">\(2\pi i\)</span>.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:920px;--ma-euler-h-mobile:1460px" src="../assets/articles/ma-art-0011/MA-ART-0011-F08_cartesiana-polar.html" title="MA-FE-08 — De la cuadrícula cartesiana a la red polar" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-08 — De la cuadrícula cartesiana a la red polar.</strong> La exponencial compleja transforma verticales en círculos y horizontales en rayos. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F08_cartesiana-polar.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+<div class="callout callout-style-default callout-note callout-titled" title="Para ir más lejos — rectas oblicuas">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Para ir más lejos — rectas oblicuas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si <span class="math inline">\(z(t)=at+ibt\)</span>, entonces <span class="math inline">\(e^{z(t)}=e^{at}(\cos bt+i\sin bt)\)</span>. Cuando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son no nulos, la imagen es una espiral logarítmica. Esta observación es secundaria para la fórmula de Euler, pero muestra cómo crecimiento y rotación se combinan en una sola exponencial.</p>
+</div>
+</div>
+</section>
+<section id="la-identidad-de-euler-media-vuelta" class="level2">
+<h2 class="anchored" data-anchor-id="la-identidad-de-euler-media-vuelta">8. La identidad de Euler: media vuelta</h2>
+<p>Tomemos <span class="math inline">\(\theta=\pi\)</span> en la fórmula general:</p>
+<p><span class="math display">\[
+e^{i\pi}=\cos\pi+i\sin\pi=-1.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{e^{i\pi}+1=0.}
+\]</span></p>
+<p>Geométricamente no ocurre nada distinto de lo que ya sabemos: <span class="math inline">\(e^{i\theta}\)</span> parte de <span class="math inline">\(1\)</span> cuando <span class="math inline">\(\theta=0\)</span> y recorre el círculo unitario; al llegar a <span class="math inline">\(\theta=\pi\)</span> ha completado media vuelta y alcanza <span class="math inline">\(-1\)</span>.</p>
+<p>La presencia de las constantes famosas tiene una razón estructural. <span class="math inline">\(e\)</span> aparece porque estudiamos la exponencial natural; <span class="math inline">\(i\)</span> convierte el crecimiento exponencial en rotación; <span class="math inline">\(\pi\)</span> mide media vuelta en radianes; <span class="math inline">\(1\)</span> es el punto inicial <span class="math inline">\(e^0\)</span> y la identidad multiplicativa; <span class="math inline">\(0\)</span> aparece al trasladar <span class="math inline">\(-1\)</span> al otro miembro. La célebre elegancia de la identidad no es una coincidencia independiente de la fórmula general, sino una consecuencia especialmente compacta de ella.</p>
+<p>La vuelta completa da</p>
+<p><span class="math display">\[
+e^{2\pi i}=1,
+\]</span></p>
+<p>y, más generalmente,</p>
+<p><span class="math display">\[
+e^{i(2k+1)\pi}=-1,
+\qquad
+e^{2\pi ik}=1.
+\]</span></p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:920px;--ma-euler-h-mobile:1380px" src="../assets/articles/ma-art-0011/MA-ART-0011-F09_media-vuelta-raices.html" title="MA-FE-09 — Media vuelta y raíces de la unidad" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-09 — Media vuelta y raíces de la unidad.</strong> La identidad e^{iπ}=-1 dentro de la geometría general de las raíces de la unidad. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F09_media-vuelta-raices.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+</section>
+<section id="consecuencias-trigonometría-forma-polar-y-raíces-de-la-unidad" class="level2">
+<h2 class="anchored" data-anchor-id="consecuencias-trigonometría-forma-polar-y-raíces-de-la-unidad">9. Consecuencias: trigonometría, forma polar y raíces de la unidad</h2>
+<p>Sustituir <span class="math inline">\(\theta\)</span> por <span class="math inline">\(-\theta\)</span> da</p>
+<p><span class="math display">\[
+e^{-i\theta}=\cos\theta-i\sin\theta.
+\]</span></p>
+<p>Sumando y restando las dos ecuaciones obtenemos</p>
+<p><span class="math display">\[
+\cos\theta=\frac{e^{i\theta}+e^{-i\theta}}2,
+\qquad
+\sin\theta=\frac{e^{i\theta}-e^{-i\theta}}{2i}.
+\]</span></p>
+<p>A partir de <span class="math inline">\(e^{i(\alpha+\beta)}=e^{i\alpha}e^{i\beta}\)</span> recuperamos en una sola línea las fórmulas de adición del seno y del coseno. Elevando a una potencia entera recuperamos De Moivre:</p>
+<p><span class="math display">\[
+(\cos\theta+i\sin\theta)^n
+=\cos(n\theta)+i\sin(n\theta).
+\]</span></p>
+<p>La fórmula proporciona además la forma polar de cualquier complejo no nulo. Si <span class="math inline">\(z\)</span> tiene módulo <span class="math inline">\(r\)</span> y argumento <span class="math inline">\(\theta\)</span>, entonces</p>
+<p><span class="math display">\[
+z=r(\cos\theta+i\sin\theta)=re^{i\theta}.
+\]</span></p>
+<p>En esta notación, la geometría de la multiplicación queda incorporada al álgebra:</p>
+<p><span class="math display">\[
+r_1e^{i\theta_1}r_2e^{i\theta_2}
+=r_1r_2e^{i(\theta_1+\theta_2)}.
+\]</span></p>
+<p>Los módulos se multiplican y los argumentos se suman; al dividir, los módulos se dividen y los argumentos se restan.</p>
+<p>La ecuación <span class="math inline">\(z^n=1\)</span> se resuelve igualmente de forma natural. Sus soluciones son</p>
+<p><span class="math display">\[
+z_k=e^{2\pi ik/n}
+=\cos\frac{2\pi k}{n}+i\sin\frac{2\pi k}{n},
+\qquad k=0,\ldots,n-1.
+\]</span></p>
+<p>Geométricamente son los vértices de un polígono regular inscrito en el círculo unitario. La ecuación algebraica «<span class="math inline">\(z^n=1\)</span>» se convierte así en el problema geométrico de dividir el círculo en <span class="math inline">\(n\)</span> partes iguales.</p>
+</section>
+<section id="de-euler-a-fourier" class="level2">
+<h2 class="anchored" data-anchor-id="de-euler-a-fourier">10. De Euler a Fourier</h2>
+<p>La fórmula de Euler también convierte la trigonometría en un lenguaje algebraico para las oscilaciones. Para cada entero <span class="math inline">\(n\)</span>,</p>
+<p><span class="math display">\[
+e^{in\theta}=\cos(n\theta)+i\sin(n\theta).
+\]</span></p>
+<p>La frecuencia <span class="math inline">\(n\)</span> se representa mediante una rotación que completa <span class="math inline">\(n\)</span> vueltas cuando <span class="math inline">\(\theta\)</span> recorre un período. Por eso una suma trigonométrica</p>
+<p><span class="math display">\[
+a_0+\sum_{n=1}^{N}\bigl(a_n\cos nx+b_n\sin nx\bigr)
+\]</span></p>
+<p>puede reescribirse como una suma de exponenciales complejas</p>
+<p><span class="math display">\[
+\sum_{n=-N}^{N}c_ne^{inx}.
+\]</span></p>
+<p>Históricamente, el problema de descomponer movimientos en oscilaciones precede a Fourier. En el siglo XVIII, la controversia sobre la cuerda vibrante involucró a d’Alembert, Euler y Daniel Bernoulli y puso en primer plano la superposición de modos trigonométricos. Fourier trasladó después esta idea al estudio del calor: presentó en 1807 una memoria sobre la propagación térmica y publicó en 1822 la <em>Théorie analytique de la chaleur</em>.</p>
+<p>Fourier trabajó con senos y cosenos; la notación compleja moderna</p>
+<p><span class="math display">\[
+f(x)\sim\sum_{n=-\infty}^{\infty}c_ne^{inx}
+\]</span></p>
+<p>es posible precisamente porque la fórmula de Euler permite pasar de ambas funciones trigonométricas a una sola familia exponencial. La ventaja es conceptual y técnica: amplitud y fase pueden reunirse en un coeficiente complejo, mientras la evolución oscilatoria queda en <span class="math inline">\(e^{i\omega t}\)</span>, cuya derivación sólo multiplica por <span class="math inline">\(i\omega\)</span>.</p>
+<figure class="ma-euler-figure figure">
+<iframe class="ma-euler-frame" style="--ma-euler-h:940px;--ma-euler-h-mobile:1460px" src="../assets/articles/ma-art-0011/MA-ART-0011-F10_circulos-fourier.html" title="MA-FE-10 — De círculos a Fourier" loading="lazy">
+</iframe>
+<figcaption>
+<strong>MA-FE-10 — De círculos a Fourier.</strong> Vectores rotatorios y señal real obtenida por superposición de frecuencias. <a href="../assets/articles/ma-art-0011/MA-ART-0011-F10_circulos-fourier.html">Abrir recurso en una pestaña independiente</a>.
+</figcaption>
+</figure>
+</section>
+<section id="conclusión-una-misma-estructura" class="level2">
+<h2 class="anchored" data-anchor-id="conclusión-una-misma-estructura">11. Conclusión: una misma estructura</h2>
+<p>La historia de la fórmula de Euler muestra una convergencia gradual. Bernoulli encontró que cantidades circulares podían conducir a logaritmos imaginarios; Cotes obtuvo una relación logarítmica que, con nuestra teoría actual, está muy cerca de la fórmula exponencial; De Moivre mostró que multiplicar números complejos de módulo uno suma ángulos; Euler integró estas piezas dentro de una teoría de funciones y estableció la relación entre exponentes imaginarios y seno y coseno.</p>
+<p>Las demostraciones modernas permiten verla desde ángulos distintos. Las series de potencias muestran que las potencias pares e impares de <span class="math inline">\(i\)</span> separan la exponencial en coseno y seno. La ecuación <span class="math inline">\(z'=iz\)</span> muestra que multiplicar por <span class="math inline">\(i\)</span> obliga a la velocidad a ser tangente al círculo. La fórmula general <span class="math inline">\(e^{x+iy}=e^x(\cos y+i\sin y)\)</span> muestra que la parte real del exponente gobierna el radio y la imaginaria el ángulo. Fourier, finalmente, convierte esas rotaciones elementales en un lenguaje para analizar oscilaciones complejas.</p>
+<p>Podemos resumir el recorrido en una sola cadena conceptual:</p>
+<p><span class="math display">\[
+\text{adición de ángulos}
+\longleftrightarrow
+\text{multiplicación compleja}
+\longleftrightarrow
+\text{exponenciación imaginaria}
+\longleftrightarrow
+\text{rotación}
+\longleftrightarrow
+\text{oscilación}.
+\]</span></p>
+<p>La fórmula de Euler importa, por tanto, no porque reúna de manera sorprendente unas cuantas constantes famosas, sino porque revela que álgebra, geometría y análisis describen una misma estructura desde perspectivas diferentes.</p>
+</section>
+<section id="cronología-esencial" class="level2">
+<h2 class="anchored" data-anchor-id="cronología-esencial">Cronología esencial</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fecha</th>
+<th>Hito</th>
+<th>Papel en la historia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1702</td>
+<td>Johann Bernoulli relaciona cantidades circulares y logaritmos imaginarios</td>
+<td>Antecedente del logaritmo complejo.</td>
+</tr>
+<tr class="even">
+<td>1712 aprox.</td>
+<td>Controversia Bernoulli–Leibniz sobre logaritmos de cantidades negativas</td>
+<td>Hace visible la falta de una teoría satisfactoria de ramas del logaritmo.</td>
+</tr>
+<tr class="odd">
+<td>1714</td>
+<td>Roger Cotes publica <em>Logometria</em></td>
+<td>Desarrollo de relaciones entre logaritmos, cantidades imaginarias y geometría circular.</td>
+</tr>
+<tr class="even">
+<td>1722</td>
+<td>Publicación de una forma de la fórmula de De Moivre</td>
+<td>Multiplicación compleja y suma de ángulos quedan ligadas explícitamente.</td>
+</tr>
+<tr class="odd">
+<td>1743</td>
+<td>Euler publica E61, escrito en 1742</td>
+<td>Aparecen relaciones exponenciales para seno y coseno.</td>
+</tr>
+<tr class="even">
+<td>1748</td>
+<td>Euler publica la <em>Introductio in analysin infinitorum</em></td>
+<td>La relación queda integrada en una teoría sistemática de funciones exponenciales y circulares.</td>
+</tr>
+<tr class="odd">
+<td>1807</td>
+<td>Fourier presenta su memoria sobre el calor</td>
+<td>Las expansiones trigonométricas se convierten en herramienta para un problema físico general.</td>
+</tr>
+<tr class="even">
+<td>1822</td>
+<td>Fourier publica <em>Théorie analytique de la chaleur</em></td>
+<td>Las series trigonométricas adquieren un papel central en el análisis.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fuentes-primarias-y-secundarias" class="level2">
+<h2 class="anchored" data-anchor-id="fuentes-primarias-y-secundarias">Fuentes primarias y secundarias</h2>
+<section id="fuentes-primarias" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-primarias">Fuentes primarias</h3>
+<ul>
+<li>Bernoulli, Johann. Trabajos de 1702 sobre integración y cantidades circulares, relevantes para los primeros logaritmos imaginarios.</li>
+<li>Cotes, Roger. <em>Logometria</em>. <em>Philosophical Transactions of the Royal Society</em>, 29 (1714), 5–45; materiales relacionados fueron recogidos póstumamente en <em>Harmonia mensurarum</em> (1722).</li>
+<li>De Moivre, Abraham. Trabajos de 1707 y 1722 sobre potencias de expresiones trigonométricas complejas.</li>
+<li>Euler, Leonhard. E61, publicado en 1743, escrito en 1742.</li>
+<li>Euler, Leonhard. <em>Introductio in analysin infinitorum</em>, vol.&nbsp;I, 1748, especialmente capítulos VI–VIII y §138.</li>
+<li>Fourier, Joseph. <em>Théorie analytique de la chaleur</em>. Paris, 1822.</li>
+</ul>
+</section>
+<section id="fuentes-secundarias-de-control" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-secundarias-de-control">Fuentes secundarias de control</h3>
+<ul>
+<li>Euler Archive / Eneström Index, para cronología y localización de trabajos de Euler.</li>
+<li>MacTutor History of Mathematics, entradas sobre Cotes, De Moivre, Euler y funciones trigonométricas.</li>
+<li>Stillwell, John. <em>Mathematics and Its History</em>, para el desarrollo histórico del logaritmo complejo.</li>
+<li>Katz, Victor J. “The Calculus of the Trigonometric Functions”, <em>Historia Mathematica</em> 14 (1987), 311–324.</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
