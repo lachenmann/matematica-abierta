@@ -49,8 +49,8 @@ verify('Prototipo autónomo de evaluación' not in lab_html, 'metadatos de proto
 verify('## Correspondencia editorial y control de revisión' not in article, 'notas editoriales fuera del artículo')
 print('QA estático OK: IDs, 14 FAQ, matemáticas, enlaces, recursos, accesibilidad y progresión.')
 
-article_is_draft = bool(re.search(r'^draft:\\s*true\\s*, entry, re.M))
-lab_is_draft = bool(re.search(r'^draft:\\s*true\\s*, lab_page, re.M))
+article_is_draft = any(line.strip() == 'draft: true' for line in entry.splitlines())
+lab_is_draft = any(line.strip() == 'draft: true' for line in lab_page.splitlines())
 verify(article_is_draft == lab_is_draft, 'artículo y laboratorio con estados draft incoherentes')
 
 if (r / 'index.qmd').is_file():
