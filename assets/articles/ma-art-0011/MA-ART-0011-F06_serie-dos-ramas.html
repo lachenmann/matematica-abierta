@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MA-FE-06 · Una serie se divide en dos</title>
+<style>
+:root{color-scheme:light;--ink:#17233f;--muted:#556480;--blue:#2463c5;--teal:#087e80;--pink:#b63670;--gold:#a45a06;--line:#d7e2f0;--bg:#f5f8fd;--paper:#fff;--soft:#f9fbff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+main{width:min(1120px,calc(100% - 28px));margin:24px auto 42px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #1c36500c}
+.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--teal)}
+h1{font-size:clamp(1.35rem,3vw,2rem);line-height:1.18;margin:.35rem 0 .5rem}
+.lead{color:var(--muted);max-width:930px;margin:.25rem 0 1rem}
+.formula{font-family:Georgia,"Times New Roman",serif;background:#f2f5fc;border-radius:10px;padding:10px 12px;margin:12px 0}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+label{font-weight:650}input[type=range]{width:100%;margin-top:8px;accent-color:var(--blue);cursor:pointer}
+output{color:var(--blue);font-variant-numeric:tabular-nums}
+.preset{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.preset button{border:1px solid #a6b7cd;background:#fff;color:var(--ink);border-radius:9px;padding:6px 10px;font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid #efaa2e;outline-offset:3px}
+.streamWrap{overflow-x:auto;overscroll-behavior-x:contain;padding-bottom:5px}
+.stream{display:flex;gap:7px;min-width:max-content;padding:5px 0}
+.term{width:112px;min-height:84px;border:1px solid var(--line);border-radius:11px;background:white;padding:9px 8px}
+.term.real{border-top:5px solid var(--teal);background:#f2fbf9}.term.imag{border-top:5px solid var(--pink);background:#fff4f8}
+.term small{display:block;color:var(--muted);font-size:.75rem}.term strong{display:block;margin-top:5px;font:1rem Georgia,serif}.term em{display:block;margin-top:5px;font-style:normal;color:var(--muted);font-size:.76rem}
+.arrowRow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:11px 0}.branchLabel{text-align:center;font-weight:750}.branchLabel.real{color:var(--teal)}.branchLabel.imag{color:var(--pink)}
+.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:stretch}
+.figureBox{background:var(--soft);border:1px solid #e5ecf6;border-radius:14px;padding:12px;min-width:0}
+.figureBox h2{font-size:1rem;margin:3px 0 10px;color:var(--muted)}
+.branch{background:white;border:1px solid var(--line);border-radius:11px;padding:12px;margin:8px 0}
+.branch.real{border-left:5px solid var(--teal)}.branch.imag{border-left:5px solid var(--pink)}
+.branch .eq{font:1.03rem/1.55 Georgia,"Times New Roman",serif;overflow-wrap:anywhere}
+.branch .sum{font-weight:750;margin-top:5px}
+svg{display:block;width:100%;height:auto}svg text{font:14px system-ui,sans-serif;fill:var(--ink)}svg .small{font-size:12px;fill:var(--muted)}
+.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:13px}
+.metric{padding:11px 12px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}.metric small{display:block;color:var(--muted)}.metric strong{display:block;margin-top:2px;font:1.02rem Georgia,serif;overflow-wrap:anywhere}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.86rem;color:var(--muted);margin:10px 0}.legend b{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:middle;margin-right:5px}
+.message{border-left:4px solid var(--teal);background:#eefaf8;padding:12px 14px;border-radius:7px;margin-top:13px}.warning{border-left-color:var(--gold);background:#fff8e8}
+.eq{font-family:Georgia,"Times New Roman",serif}.note{color:var(--muted);font-size:.9rem;margin-bottom:0}
+@media(max-width:800px){.grid,.controls,.arrowRow{grid-template-columns:1fr}.readout{grid-template-columns:1fr}.panel{padding:14px}.term{width:105px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="panel" aria-labelledby="title">
+<div class="kicker">Matemática Abierta · MA-ART-0011 · MA-FE-06</div>
+<h1 id="title">Una serie se divide en dos</h1>
+<p class="lead">Cada término de la serie de <span class="eq">e<sup>iθ</sup></span> es real o puramente imaginario según la paridad del exponente. Separa los términos sin cambiar su orden interno y observa cómo las dos subseries construyen las sumas parciales de cos θ e i sin θ.</p>
+<p class="formula"><strong>Serie original:</strong> Σ (iθ)<sup>n</sup>/n! &nbsp; → &nbsp; <strong>pares:</strong> Σ (−1)<sup>k</sup>θ<sup>2k</sup>/(2k)! &nbsp; + &nbsp; <strong>impares:</strong> i Σ (−1)<sup>k</sup>θ<sup>2k+1</sup>/(2k+1)!</p>
+
+<div class="controls">
+  <div>
+    <label>Ángulo θ: <output id="thetaOut">π/2</output>
+      <input id="theta" type="range" min="-6.283185307179586" max="6.283185307179586" step="0.001" value="1.5707963267948966" aria-label="Variar theta entre menos dos pi y dos pi">
+    </label>
+    <div class="preset" aria-label="Ángulos notables">
+      <button type="button" data-theta="-3.141592653589793">−π</button><button type="button" data-theta="0">0</button>
+      <button type="button" data-theta="1.5707963267948966">π/2</button><button type="button" data-theta="3.141592653589793">π</button>
+      <button type="button" data-theta="6.283185307179586">2π</button>
+    </div>
+  </div>
+  <div>
+    <label>Último exponente m: <output id="mOut">8</output>
+      <input id="m" type="range" min="1" max="24" step="1" value="8" aria-label="Elegir el último exponente de la suma parcial">
+    </label>
+    <div class="preset" aria-label="Grados de truncamiento">
+      <button type="button" data-m="2">2</button><button type="button" data-m="4">4</button><button type="button" data-m="6">6</button>
+      <button type="button" data-m="8">8</button><button type="button" data-m="12">12</button><button type="button" data-m="18">18</button><button type="button" data-m="24">24</button>
+    </div>
+  </div>
+</div>
+
+<div class="figureBox">
+<h2>01 · La fila original: la paridad decide a qué rama va cada término</h2>
+<div class="streamWrap" role="region" tabindex="0" aria-label="Fila desplazable de términos de la serie exponencial">
+  <div id="stream" class="stream"></div>
+</div>
+<div class="arrowRow" aria-hidden="true">
+  <div class="branchLabel real">↙ términos pares → parte real</div>
+  <div class="branchLabel imag">términos impares → parte imaginaria ↘</div>
+</div>
+</div>
+
+<div class="grid">
+  <section class="figureBox" aria-labelledby="branches-title">
+    <h2 id="branches-title">02 · Las dos subseries</h2>
+    <div class="branch real">
+      <strong>Parte real</strong>
+      <div class="eq" id="realSeries"></div>
+      <div class="sum" id="realSum"></div>
+    </div>
+    <div class="branch imag">
+      <strong>Parte imaginaria</strong>
+      <div class="eq" id="imagSeries"></div>
+      <div class="sum" id="imagSum"></div>
+    </div>
+    <p class="note">Agrupar por paridad no introduce una hipótesis nueva: la serie exponencial converge absolutamente para todo número complejo.</p>
+  </section>
+
+  <section class="figureBox" aria-labelledby="plane-title">
+    <h2 id="plane-title">03 · Recombinar devuelve la misma suma parcial</h2>
+    <svg id="plane" viewBox="0 0 500 430" role="img" aria-labelledby="planeTitle planeDesc">
+      <title id="planeTitle">Suma parcial de la exponencial compleja</title>
+      <desc id="planeDesc">Se compara la suma parcial con el punto exacto coseno theta más i seno theta.</desc>
+      <g id="planeG"></g>
+    </svg>
+  </section>
+</div>
+
+<div class="legend">
+  <span><b style="background:#087e80"></b>subserie par / parte real</span>
+  <span><b style="background:#b63670"></b>subserie impar / parte imaginaria</span>
+  <span><b style="background:#2463c5"></b>suma parcial combinada</span>
+  <span><b style="background:#a45a06"></b>valor exacto</span>
+</div>
+
+<div class="readout">
+  <div class="metric"><small>Suma parcial</small><strong id="partialOut"></strong></div>
+  <div class="metric"><small>Valor exacto</small><strong id="exactOut"></strong></div>
+  <div class="metric"><small>Error complejo</small><strong id="errorOut"></strong></div>
+</div>
+
+<div id="message" class="message" role="status" aria-live="polite"></div>
+<p class="note">El control m no modifica la función exponencial: sólo decide cuántos términos de su serie mostramos. Cuando m aumenta, la suma parcial converge a <span class="eq">e<sup>iθ</sup></span>; simultáneamente, sus partes real e imaginaria convergen a cos θ y sin θ.</p>
+</section>
+</main>
+
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
+const C={ink:'#17233f',muted:'#556480',blue:'#2463c5',teal:'#087e80',pink:'#b63670',gold:'#a45a06'};
+function elt(t,a={},txt){const e=document.createElementNS(ns,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,String(v));if(txt!==undefined)e.textContent=txt;return e}
+function add(g,t,a,txt){const e=elt(t,a,txt);g.appendChild(e);return e}
+function fact(n){let r=1;for(let k=2;k<=n;k++)r*=k;return r}
+function fmt(x,d=6){if(Math.abs(x)<5e-12)x=0;return Number(x).toFixed(d).replace('.',',').replace(/,?0+$/,'')}
+function piLabel(x){if(Math.abs(x)<5e-5)return '0';const q=x/Math.PI,s=q<0?'−':'',a=Math.abs(q),vals=[[.25,'π/4'],[.5,'π/2'],[1,'π'],[1.5,'3π/2'],[2,'2π']];for(const[v,l]of vals)if(Math.abs(a-v)<.002)return s+l;return fmt(x,3)}
+function termValue(n,theta){
+ const mag=Math.pow(theta,n)/fact(n),r=n%4;
+ return r===0?{re:mag,im:0}:r===1?{re:0,im:mag}:r===2?{re:-mag,im:0}:{re:0,im:-mag};
+}
+function partial(m,theta){let re=0,im=0;for(let n=0;n<=m;n++){const t=termValue(n,theta);re+=t.re;im+=t.im}return{re,im}}
+function cfmt(z,d=6){let re=Math.abs(z.re)<5e-12?0:z.re,im=Math.abs(z.im)<5e-12?0:z.im;if(im===0)return fmt(re,d);if(re===0)return (im<0?'−':'')+fmt(Math.abs(im),d)+'i';return `${fmt(re,d)} ${im>=0?'+':'−'} ${fmt(Math.abs(im),d)}i`}
+function symbolicTerm(n){
+ if(n===0)return '1';
+ if(n===1)return 'iθ';
+ const k=Math.floor(n/2),pow=`θ${sup(n)}`,den=`${n}!`;
+ if(n%2===0)return `${k%2===0?'+':'−'}${pow}/${den}`;
+ return `${k%2===0?'+':'−'}i${pow}/${den}`;
+}
+function sup(n){const map={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return String(n).split('').map(x=>map[x]).join('')}
+function seriesText(indices,theta){
+ return indices.map(n=>symbolicTerm(n).replace(/^\+/,'')).join('  ');
+}
+function renderTerms(theta,m){
+ const s=$('stream');s.replaceChildren();
+ for(let n=0;n<=m;n++){
+  const t=termValue(n,theta),div=document.createElement('div');div.className='term '+(n%2===0?'real':'imag');
+  const typ=n%2===0?'real':'imaginario';
+  div.innerHTML=`<small>n = ${n} · ${typ}</small><strong>${symbolicTerm(n)}</strong><em>valor: ${n%2===0?fmt(t.re,5):fmt(t.im,5)+'i'}</em>`;
+  s.appendChild(div)
+ }
+}
+function renderBranches(theta,m){
+ const ev=[],od=[];for(let n=0;n<=m;n++)(n%2===0?ev:od).push(n);
+ const p=partial(m,theta);
+ $('realSeries').textContent=(ev.length?seriesText(ev,theta):'0');
+ $('imagSeries').textContent=(od.length?seriesText(od,theta):'0');
+ $('realSum').textContent=`suma real = ${fmt(p.re,8)}   ·   cos θ = ${fmt(Math.cos(theta),8)}`;
+ $('imagSum').textContent=`coeficiente de i = ${fmt(p.im,8)}   ·   sin θ = ${fmt(Math.sin(theta),8)}`;
+}
+function renderPlane(theta,m){
+ const g=$('planeG');g.replaceChildren();const p=partial(m,theta),e={re:Math.cos(theta),im:Math.sin(theta)};
+ const lim=Math.max(1.25,Math.abs(p.re)*1.18,Math.abs(p.im)*1.18),cx=250,cy=220,R=155/lim,to=o=>({x:cx+R*o.re,y:cy-R*o.im});
+ add(g,'line',{x1:38,y1:cy,x2:462,y2:cy,stroke:'#aab7c8','stroke-width':1.2});add(g,'line',{x1:cx,y1:35,x2:cx,y2:402,stroke:'#aab7c8','stroke-width':1.2});
+ add(g,'circle',{cx,cy,r:R,fill:'none',stroke:'#9eafc5','stroke-width':1.7,'stroke-dasharray':'5 4'});
+ const pp=to(p),pe=to(e),pr=to({re:p.re,im:0});
+ add(g,'line',{x1:cx,y1:cy,x2:pr.x,y2:pr.y,stroke:C.teal,'stroke-width':3});
+ add(g,'line',{x1:pr.x,y1:pr.y,x2:pp.x,y2:pp.y,stroke:C.pink,'stroke-width':3});
+ add(g,'line',{x1:cx,y1:cy,x2:pp.x,y2:pp.y,stroke:C.blue,'stroke-width':2.3});
+ add(g,'line',{x1:pp.x,y1:pp.y,x2:pe.x,y2:pe.y,stroke:C.gold,'stroke-width':1.6,'stroke-dasharray':'4 4'});
+ add(g,'circle',{cx:pp.x,cy:pp.y,r:7,fill:C.blue,stroke:'white','stroke-width':2});add(g,'circle',{cx:pe.x,cy:pe.y,r:7,fill:C.gold,stroke:'white','stroke-width':2});
+ add(g,'text',{x:pp.x+10,y:pp.y-10,fill:C.blue},`S${m}`);
+ add(g,'text',{x:pe.x+10,y:pe.y+19,fill:C.gold},'eⁱθ');
+ add(g,'text',{x:(cx+pr.x)/2,y:cy+20,'text-anchor':'middle',fill:C.teal},'Re Sₘ');
+ add(g,'text',{x:pr.x+10,y:(pr.y+pp.y)/2,'text-anchor':'start',fill:C.pink},'Im Sₘ');
+ add(g,'text',{x:20,y:25,class:'small'},`escala ±${fmt(lim,2)}`);
+ $('planeDesc').textContent=`Suma parcial hasta exponente ${m}: ${cfmt(p)}. Valor exacto: ${cfmt(e)}.`;
+}
+function update(){
+ let theta=+$('theta').value,m=+$('m').value;const notable=Math.round(theta/(Math.PI/4))*(Math.PI/4);if(Math.abs(theta-notable)<.0025)theta=notable;
+ const p=partial(m,theta),e={re:Math.cos(theta),im:Math.sin(theta)},err=Math.hypot(p.re-e.re,p.im-e.im);
+ $('thetaOut').textContent=piLabel(theta);$('mOut').textContent=m;renderTerms(theta,m);renderBranches(theta,m);renderPlane(theta,m);
+ $('partialOut').textContent=`Sₘ = ${cfmt(p,7)}`;$('exactOut').textContent=`eⁱθ = ${cfmt(e,7)}`;$('errorOut').textContent=`|Sₘ−eⁱθ| = ${fmt(err,8)}`;
+ const msg=$('message');msg.className='message';
+ if(Math.abs(theta)<1e-9){msg.innerHTML=`Con <span class="eq">θ=0</span>, todos los términos salvo el primero se anulan: la separación es correcta pero trivial. Elige un ángulo no nulo para ver el ciclo de las potencias de <span class="eq">i</span>.`;return}
+ if(m<4){msg.className='message warning';msg.innerHTML=`Con <strong>m=${m}</strong> todavía vemos muy pocos términos. La clasificación por paridad ya es exacta, pero las sumas parciales aún pueden estar lejos de cos θ y sin θ.`}
+ else if(err>0.02){msg.innerHTML=`La separación es exacta para esta suma parcial: <span class="eq">Sₘ = Re(Sₘ)+i Im(Sₘ)</span>. Lo que todavía es aproximado es identificar esas sumas finitas con cos θ y sin θ. Error actual: <strong>${fmt(err,8)}</strong>.`}
+ else{msg.innerHTML=`Las dos ramas ya están cerca de sus límites: la rama par aproxima <span class="eq">cos θ</span> y la impar aproxima <span class="eq">i sin θ</span>. Al recombinarlas obtenemos la misma suma parcial <span class="eq">Sₘ</span>, ahora a distancia <strong>${fmt(err,8)}</strong> de <span class="eq">e<sup>iθ</sup></span>.`}
+}
+$('theta').addEventListener('input',update);$('m').addEventListener('input',update);
+document.querySelectorAll('[data-theta]').forEach(b=>b.addEventListener('click',()=>{$('theta').value=b.dataset.theta;update()}));
+document.querySelectorAll('[data-m]').forEach(b=>b.addEventListener('click',()=>{$('m').value=b.dataset.m;update()}));
+update();
+})();
+</script>
+</body></html>
