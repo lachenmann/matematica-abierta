@@ -49,7 +49,7 @@
 | MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | draft-protected; editorial review pending |
 | MA-ART-0005 | article | El método de Diofanto y la parametrización racional de las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.md` | published |
 | MA-ART-0006 | article | La norma en matemáticas: medir magnitudes, distancias y estructuras | `conceptos/norma-en-matematicas.qmd` | published |
-| MA-ART-0007 | article | Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo | `conceptos/supremo-infimo-maximo-minimo.qmd` | published; final domain visual verification pending |
+| MA-ART-0007 | article | Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo | `conceptos/supremo-infimo-maximo-minimo.qmd` | published |
 | MA-ART-0008 | article | Existencia y unicidad del cuerpo ordenado completo | `teoria/resultados/existencia-unicidad-cuerpo-ordenado-completo.qmd` | draft-protected; QA/editorial close pending |
 | MA-ART-0009 | article | Cómo Arquímedes acotó π: polígonos, exhaución y 96 lados | Obsidian: `Matemática Abierta/Artículos/MA-ART-0009 - Cómo Arquímedes acotó pi.md` | working-draft; not on web |
 | MA-ART-0010 | article | La sección áurea: de una división geométrica a la ecuación φ² = φ + 1 | `conceptos/seccion-aurea.qmd` | published |
