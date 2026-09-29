@@ -46,7 +46,7 @@
 | MA-ART-0001 | article | Una identidad de sumación para productos consecutivos: dos demostraciones | `blog/una-identidad-de-sumacion-para-productos-consecutivos.md` | published |
 | MA-ART-0002 | article | ¿Hemos construido realmente los números reales? | `blog/hemos-construido-realmente-los-numeros-reales.md` | published |
 | MA-ART-0003 | article | La desigualdad triangular: demostraciones, variantes y su papel en el análisis | `teoria/resultados/desigualdad-triangular.qmd` | published |
-| MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | draft-protected; M07+M08 math QA + M09 editorial/bibliographic + M10 parity PASS; publication QA pending |
+| MA-ART-0004 | article | La desigualdad de Cauchy–Schwarz: de una suma de cuadrados a los espacios con producto interno | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | draft-protected; M07+M08 math QA + M09 editorial/bibliographic + M10 parity + MA-APP-0002 reconciliation PASS; M11 publication QA pending |
 | MA-ART-0005 | article | El método de Diofanto y la parametrización racional de las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.md` | published |
 | MA-ART-0006 | article | La norma en matemáticas: medir magnitudes, distancias y estructuras | `conceptos/norma-en-matematicas.qmd` | published |
 | MA-ART-0007 | article | Supremo e ínfimo: las cotas óptimas y su relación con el máximo y el mínimo | `conceptos/supremo-infimo-maximo-minimo.qmd` | published |
