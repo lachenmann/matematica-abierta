@@ -96,3 +96,15 @@ Auditoría canónica ↔ web y QA del artefacto desplegado realizados el 29-09-2
 
 ## M07 — MA-ART-0004
 QA matemático de §§1–9: **PASS** (29-09-2026). Sin correcciones matemáticas; M08+ pendiente.
+
+## M08 — MA-ART-0004
+
+QA matemático de §§10–13: **PASS** (29-09-2026).
+
+Correcciones de precisión aplicadas sin alterar los teoremas:
+- definición explícita de $A,B$ como raíces no negativas en §12.2;
+- distinción entre forma bilineal real y sesquilineal compleja en §11.3;
+- caso $\int g^2=0$ formulado explícitamente como $g\equiv0$ en §12.3;
+- título de §13.1 generalizado a la desigualdad triangular de la norma inducida.
+
+M09+ permanece pendiente.
