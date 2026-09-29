@@ -49,12 +49,27 @@ verify('Prototipo autónomo de evaluación' not in lab_html, 'metadatos de proto
 verify('## Correspondencia editorial y control de revisión' not in article, 'notas editoriales fuera del artículo')
 print('QA estático OK: IDs, 14 FAQ, matemáticas, enlaces, recursos, accesibilidad y progresión.')
 
+article_is_draft = bool(re.search(r'^draft:\\s*true\\s*, entry, re.M))
+lab_is_draft = bool(re.search(r'^draft:\\s*true\\s*, lab_page, re.M))
+verify(article_is_draft == lab_is_draft, 'artículo y laboratorio con estados draft incoherentes')
+
 if (r / 'index.qmd').is_file():
     index = (r / 'index.qmd').read_text(encoding='utf-8')
-    verify('desigualdad-cauchy-schwarz.qmd' in index, 'índice sin artículo')
-    verify('laboratorio-cauchy-schwarz.qmd' in index, 'índice sin laboratorio')
-    print('QA índice OK.')
+    if article_is_draft:
+        verify('desigualdad-cauchy-schwarz.qmd' not in index, 'borrador de artículo expuesto en índice público')
+        verify('laboratorio-cauchy-schwarz.qmd' not in index, 'borrador de laboratorio expuesto en índice público')
+        print('QA índice OK: borradores protegidos.')
+    else:
+        verify('desigualdad-cauchy-schwarz.qmd' in index, 'índice sin artículo publicado')
+        verify('laboratorio-cauchy-schwarz.qmd' in index, 'índice sin laboratorio publicado')
+        print('QA índice OK: recursos publicados enlazados.')
+
 if (r / 'desigualdad-triangular.qmd').is_file():
     triangle = (r / 'desigualdad-triangular.qmd').read_text(encoding='utf-8')
-    verify('desigualdad-cauchy-schwarz.qmd#cs-enunciado' in triangle, 'sin enlace desde desigualdad triangular')
-    print('QA reciprocidad triangular OK.')
+    reciprocal = 'desigualdad-cauchy-schwarz.qmd#cs-enunciado'
+    if article_is_draft:
+        verify(reciprocal not in triangle, 'página publicada enlaza a borrador de Cauchy-Schwarz')
+        print('QA reciprocidad triangular OK: borrador no expuesto.')
+    else:
+        verify(reciprocal in triangle, 'sin enlace desde desigualdad triangular')
+        print('QA reciprocidad triangular OK.')
