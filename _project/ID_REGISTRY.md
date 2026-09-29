@@ -6,8 +6,8 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0011 |
-| Aplicación interactiva | MA-APP-0002 |
+| Artículo | MA-ART-0012 |
+| Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0083 |
 | Curso | MA-CRS-0001 |
@@ -53,7 +53,12 @@
 | MA-ART-0008 | article | Existencia y unicidad del cuerpo ordenado completo | `teoria/resultados/existencia-unicidad-cuerpo-ordenado-completo.qmd` | draft-protected; QA/editorial close pending |
 | MA-ART-0009 | article | Cómo Arquímedes acotó π: polígonos, exhaución y 96 lados | Obsidian: `Matemática Abierta/Artículos/MA-ART-0009 - Cómo Arquímedes acotó pi.md` | working-draft; not on web |
 | MA-ART-0010 | article | La sección áurea: de una división geométrica a la ecuación φ² = φ + 1 | `conceptos/seccion-aurea.qmd` | published |
+| MA-ART-0011 | article | La fórmula de Euler: historia, derivación y geometría de $e^{i\theta}$ | Obsidian: `Matemática Abierta/Artículos/MA-ART-0011 - La fórmula de Euler.md` | canonical-draft; not published |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
+| MA-APP-0002 | interactive-application | Laboratorio de Cauchy–Schwarz: del cuadrado a la geometría | `teoria/resultados/laboratorio-cauchy-schwarz.qmd` | draft-protected; canonical-web reconciliation PASS; M11 publication QA pending |
+| MA-APP-0003 | interactive-application | Laboratorio de cotas óptimas: recta, banda épsilon y disco | `assets/labs/MA-APP-0003-supremo-infimo.html` | published |
+| MA-APP-0004 | interactive-application | MA-Práctica: matemáticas de bolsillo | `practica/` | prototype in development; not published |
+| MA-APP-0005 | interactive-application | Laboratorio de Arquímedes: encerrar π entre polígonos | Obsidian canonical spec | canonical-draft; implementation pending |
 | MA-LES-0001 | lesson | Topos desde cero — 1.4 Implicación, contrapositiva y recíproca | `libros/capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md` | published |
 | MA-LES-0002 | lesson | Topos desde cero — 1.5 Bicondicionales y condiciones necesarias y suficientes | `libros/capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md` | published |
 | MA-LES-0003 | lesson | Topos desde cero — 1.6 Argumentos deductivos y validez | `libros/capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md` | published |
