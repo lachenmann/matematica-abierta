@@ -62,3 +62,14 @@ Mientras la fuente canónica `MA-ART-0004` continúe en `working-draft` y con re
 - no se modifica en este microtramo el contenido matemático ni el laboratorio `MA-APP-0002`.
 
 La publicación definitiva se reabrirá sólo después del QA matemático, editorial y bibliográfico previsto para los microtramos M07–M11.
+
+## Protección temporal de MA-ART-0008 — M04
+
+Mientras la fuente canónica `MA-ART-0008` continúe en `canonical-draft` y la ampliación de la demostración requiera QA:
+
+- la derivación `teoria/resultados/existencia-unicidad-cuerpo-ordenado-completo.qmd` conserva `status: draft` y añade `draft: true`;
+- `publication-state` queda en `draft-protected; qa-and-editorial-close-pending`;
+- la entrada del artículo se retira de `teoria/resultados/index.qmd`;
+- no se modifica en este microtramo ninguna demostración ni dependencia `TA-*`.
+
+La publicación definitiva se reabrirá después del diferencial de versiones y del QA matemático previsto para M12–M15.
