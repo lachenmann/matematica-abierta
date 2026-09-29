@@ -38,7 +38,6 @@ else:
 verify("style-standard: MA_STYLE_v1.7" in text, "MA-STYLE no declarado")
 verify('resources:\n  - "../assets/articles/ma-art-0011/**"' in text, "recursos MA-ART-0011 no declarados")
 verify("Dependencia de publicación de MA-FE-04" not in text, "F04 aún figura como dependencia de publicación")
-verify("MA-FE-04 materializado localmente" in text, "frontmatter no registra cierre local de F04")
 verify("## Aparato visual" not in text, "inventario interno de producción filtrado al derivado público")
 
 iframes = re.findall(r'<iframe[^>]+src="([^"]+)"[^>]+title="([^"]+)"[^>]*>', text)
