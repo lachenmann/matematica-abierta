@@ -113,7 +113,7 @@ Cuando $a$ es punto de acumulación de $D$ por ambos lados, diremos que hay **ac
 ::: {.ma-block .ma-observacion}
 **Acumulación ordinaria y acumulación lateral**
 
-Ser punto de acumulación de $D$ en el sentido de `MA-CON-0011` exige que haya puntos de $D$ distintos de $a$ arbitrariamente cerca de $a$, pero esos puntos podrían aparecer sólo por un lado.
+Ser [punto de acumulación de $D$](limite-de-una-funcion-en-un-punto.md#def-ma-con-0011-punto-de-acumulacion) en el sentido de `MA-CON-0011` exige que haya puntos de $D$ distintos de $a$ arbitrariamente cerca de $a$, pero esos puntos podrían aparecer sólo por un lado.
 
 Por ejemplo, si
 
@@ -128,8 +128,8 @@ entonces $0$ es punto de acumulación de $D$ y también punto de acumulación po
 
 Supongamos que $a$ es punto de acumulación de $D$ por la derecha.
 
-::: {.ma-block .ma-definicion}
-**Límite lateral derecho**
+::: {#def-ma-con-0012-limite-lateral-derecho .ma-block .ma-definicion}
+**Definición — límite lateral derecho**
 
 Sea
 
@@ -178,8 +178,8 @@ $$
 
 Supongamos ahora que $a$ es punto de acumulación de $D$ por la izquierda.
 
-::: {.ma-block .ma-definicion}
-**Límite lateral izquierdo**
+::: {#def-ma-con-0012-limite-lateral-izquierdo .ma-block .ma-definicion}
+**Definición — límite lateral izquierdo**
 
 Decimos que
 
