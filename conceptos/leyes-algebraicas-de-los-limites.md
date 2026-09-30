@@ -186,7 +186,7 @@ $$
 
 ## Ley de la suma
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0013-suma-limites .ma-block .ma-definicion}
 **Teorema — suma de límites**
 
 Si
@@ -364,7 +364,7 @@ No estamos afirmando que $f$ sea globalmente acotada, sino sólo que lo es **loc
 
 ## Ley del producto
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0013-producto-limites .ma-block .ma-definicion}
 **Teorema — producto de límites**
 
 Si
@@ -623,7 +623,7 @@ $$
 
 ## Ley del cociente
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0013-cociente-limites .ma-block .ma-definicion}
 **Teorema — cociente de límites**
 
 Si
