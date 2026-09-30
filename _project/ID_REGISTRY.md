@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0012 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0083 |
+| Capítulo | MA-BCH-0099 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0009 |
+| Libro | MA-BOK-0010 |
 
 ## IDs asignados
 
@@ -182,3 +182,25 @@ Las piezas individuales mantienen siempre su identificador MA global.
 | MA-BCH-0080 | book-chapter | FND C3 — ¿Qué cambia cuando aparecen variables y cuantificadores? | `libros/capitulos/fundamentos-para-matematicos-capitulo-3-variables-y-cuantificadores.qmd` | published |
 | MA-BCH-0081 | book-chapter | FND C4 — Conjuntos, relaciones y funciones como lenguaje | `libros/capitulos/fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd` | published |
 | MA-BCH-0082 | book-chapter | FND C5 — ¿Cómo se convierten las definiciones en herramientas de prueba? | `libros/capitulos/fundamentos-para-matematicos-capitulo-5-definiciones-y-pruebas.qmd` | published |
+
+## Primera entrega de Análisis real para matemáticos — 2026-09-30
+
+| ID público | ID editorial canónico | Ruta | Estado |
+|---|---|---|---|
+| MA-BCH-0083 | MA-BCH-ANM-01-001 | `libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md` | published |
+| MA-BCH-0087 | MA-BCH-ANM-01-001-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.md` | published |
+| MA-BCH-0088 | MA-BCH-ANM-01-001-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.md` | published |
+| MA-BCH-0089 | MA-BCH-ANM-01-001-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.md` | published |
+| MA-BCH-0084 | MA-BCH-ANM-01-002 | `libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md` | published |
+| MA-BCH-0090 | MA-BCH-ANM-01-002-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.md` | published |
+| MA-BCH-0091 | MA-BCH-ANM-01-002-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.md` | published |
+| MA-BCH-0092 | MA-BCH-ANM-01-002-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.md` | published |
+| MA-BCH-0085 | MA-BCH-ANM-01-003 | `libros/capitulos/analisis-para-matematicos-capitulo-3-completitud.md` | published |
+| MA-BCH-0093 | MA-BCH-ANM-01-003-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-3-completitud-ejercicios.md` | published |
+| MA-BCH-0094 | MA-BCH-ANM-01-003-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-3-completitud-soluciones.md` | published |
+| MA-BCH-0095 | MA-BCH-ANM-01-003-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-3-completitud-microcontroles.md` | published |
+| MA-BCH-0086 | MA-BCH-ANM-01-004 | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.md` | published |
+| MA-BCH-0096 | MA-BCH-ANM-01-004-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.md` | published |
+| MA-BCH-0097 | MA-BCH-ANM-01-004-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.md` | published |
+| MA-BCH-0098 | MA-BCH-ANM-01-004-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.md` | published |
+| MA-BOK-0009 | MA-BOK-ANM-01 | `libros/para-matematicos/analisis-para-matematicos.md` | published |
