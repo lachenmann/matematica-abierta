@@ -80,8 +80,8 @@ x_1\ne x_2
 f(x_1)\ne f(x_2).
 $$
 
-::: {.ma-block .ma-definicion}
-**Definición**
+::: {#def-ma-con-0009-inyectividad .ma-block .ma-definicion}
+**Definición — inyectividad**
 
 Una función es inyectiva cuando cada valor que aparece como salida tiene **a lo sumo un antecedente** en el dominio.
 :::
@@ -198,8 +198,8 @@ $$
 
 Es decir, la imagen de la función coincide con su codominio.
 
-::: {.ma-block .ma-definicion}
-**Definición**
+::: {#def-ma-con-0009-sobreyectividad .ma-block .ma-definicion}
+**Definición — sobreyectividad**
 
 Una función es sobreyectiva cuando cada elemento del codominio tiene **al menos un antecedente** en el dominio.
 :::
@@ -305,7 +305,7 @@ Para probar que $f:A\to B$ es sobreyectiva:
 Para demostrar que una función **no** es sobreyectiva basta encontrar un elemento del codominio que no tenga antecedente.
 :::
 
-## Biyectividad
+## Biyectividad {#def-ma-con-0009-biyectividad}
 
 Una función es **biyectiva** si es simultáneamente inyectiva y sobreyectiva.
 
