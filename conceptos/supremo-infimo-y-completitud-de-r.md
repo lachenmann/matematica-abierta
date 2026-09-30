@@ -174,23 +174,23 @@ $$
 
 Un número $m$ es el **mínimo** de $A$ si
 
-$
+$$
 m\in A
-$
+$$
 
 y
 
-$
+$$
 m\le x
-$
+$$
 
 para todo $x\in A$.
 
 Escribimos
 
-$
+$$
 m=\min A.
-$
+$$
 :::
 
 Por tanto, [máximo](#def-ma-con-0016-maximo) y [mínimo](#def-ma-con-0016-minimo) son **extremos alcanzados** por el conjunto.
