@@ -90,7 +90,7 @@ y ese límite puede permitir construir una extensión continua.
 
 ## Definición épsilon-delta
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0014-continuidad-en-un-punto .ma-block .ma-definicion}
 **Continuidad en un punto**
 
 Sea
