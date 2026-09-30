@@ -525,7 +525,7 @@ Trabajamos aquí sólo dentro de $\mathbb R$. No estamos usando los símbolos $+
 
 La propiedad más importante para el análisis no es sólo que $s$ sea una cota superior, sino que los elementos de $A$ puedan acercarse a $s$ tanto como queramos desde abajo.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0016-aproximacion-supremo .ma-block .ma-definicion}
 **Teorema — aproximación al supremo**
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea
@@ -599,7 +599,7 @@ El conjunto se aproxima arbitrariamente a su supremo desde abajo.
 
 La propiedad anterior no es sólo una consecuencia: caracteriza al supremo.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0016-criterio-supremo .ma-block .ma-definicion}
 **Criterio del supremo**
 
 Un número $s$ es el supremo de $A$ si y sólo si:
@@ -652,19 +652,23 @@ $$
 
 Dualizando el argumento anterior obtenemos:
 
-si
+::: {#res-ma-con-0016-aproximacion-infimo .ma-block .ma-definicion}
+**Teorema — aproximación al ínfimo**
 
-$$
-i=\inf A,
-$$
+Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente, y sea
 
-entonces para todo $\varepsilon>0$ existe $x\in A$ tal que
+$
+i=\inf A.
+$
 
-$$
+Entonces, para todo $\varepsilon>0$, existe $x\in A$ tal que
+
+$
 \boxed{i\le x<i+\varepsilon.}
-$$
+$
 
-Y, recíprocamente, una cota inferior $i$ con esta propiedad es necesariamente el ínfimo.
+Recíprocamente, una [cota inferior](#def-ma-con-0016-cota-inferior) $i$ con esta propiedad es necesariamente el [ínfimo](#def-ma-con-0016-infimo) de $A$.
+:::
 
 ## Monotonía del supremo
 
@@ -852,9 +856,9 @@ está acotado superiormente dentro de $\mathbb Q$, pero no tiene supremo raciona
 
 ## Consecuencia: la propiedad arquimediana
 
-La completitud también impide que los números naturales queden encerrados bajo una cota real.
+La [completitud de $\mathbb R$](#def-ma-con-0016-completitud-de-r) también impide que los números naturales queden encerrados bajo una cota real.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0016-propiedad-arquimediana .ma-block .ma-definicion}
 **Teorema — propiedad arquimediana**
 
 El conjunto $\mathbb N$ no está acotado superiormente en $\mathbb R$.
