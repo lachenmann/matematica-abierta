@@ -2,6 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 import json,re,sys
+from collections import Counter
 
 ROOT=Path(__file__).resolve().parents[1]
 BOOK=ROOT/'libros/otros/tratado-funciones'
@@ -42,7 +43,8 @@ if '--html' in sys.argv:
  for page in pages:
   h=dest/(page.stem+'.html');assert h.is_file(),h
   parser=Parse();parser.feed(h.read_text());parsed[h.name]=parser
-  assert len(parser.ids)==len(set(parser.ids)),h
+  duplicates={id:count for id,count in Counter(parser.ids).items() if count>1}
+  assert not duplicates,(h,duplicates)
   assert anchors[page.name].issubset(set(parser.ids)),h
   assert 'drive.google.com' not in h.read_text(),h
  for name,p in parsed.items():
