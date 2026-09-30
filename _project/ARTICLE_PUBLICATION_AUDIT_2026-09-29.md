@@ -19,11 +19,11 @@ Este archivo **no reemplaza la fuente canónica de Obsidian**. Su función es fi
 | MA-ART-0003 | La desigualdad triangular | `teoria/resultados/desigualdad-triangular.qmd` | sí | web publicada; cierre canónico/editorial pendiente |
 | MA-ART-0004 | La desigualdad de Cauchy–Schwarz | `teoria/resultados/desigualdad-cauchy-schwarz.qmd` | sí | web expuesta; revisión editorial integral pendiente |
 | MA-ART-0005 | Diofanto y las ternas pitagóricas | `blog/el-metodo-de-diofanto-y-las-ternas-pitagoricas.md` | sí | published |
-| MA-ART-0006 | La norma en matemáticas | `conceptos/norma-en-matematicas.qmd` | sí | published |
-| MA-ART-0007 | Supremo e ínfimo, máximo y mínimo | `conceptos/supremo-infimo-maximo-minimo.qmd` | sí | web publicada; sincronización canónica pendiente |
+| MA-ART-0006 | La norma en matemáticas | `blog/norma-en-matematicas.qmd` | sí | published |
+| MA-ART-0007 | Supremo e ínfimo, máximo y mínimo | `blog/supremo-infimo-maximo-minimo.qmd` | sí | web publicada; sincronización canónica pendiente |
 | MA-ART-0008 | Existencia y unicidad del cuerpo ordenado completo | `teoria/resultados/existencia-unicidad-cuerpo-ordenado-completo.qmd` | sí | web expuesta; QA y cierre editorial pendientes |
 | MA-ART-0009 | Cómo Arquímedes acotó π | — | no | working-draft; no publicado |
-| MA-ART-0010 | La sección áurea | `conceptos/seccion-aurea.qmd` | sí | published |
+| MA-ART-0010 | La sección áurea | `blog/seccion-aurea.qmd` | sí | published |
 
 ## Identidad
 
