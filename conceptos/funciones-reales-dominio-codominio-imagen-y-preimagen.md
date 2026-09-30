@@ -116,17 +116,21 @@ $$
 f:A\to B,
 $$
 
-el **dominio** es el conjunto de entradas permitidas:
+::: {#def-ma-con-0007-dominio}
+El **dominio** es el conjunto de entradas permitidas:
 
-$$
+$
 \operatorname{Dom}(f)=A.
-$$
+$
+:::
 
+::: {#def-ma-con-0007-codominio}
 El **codominio** es el conjunto que se declara como espacio de llegada:
 
-$$
+$
 B.
-$$
+$
+:::
 
 Estos conjuntos forman parte de la definición de la función.
 
@@ -154,21 +158,23 @@ usan la misma fórmula, pero no tienen el mismo dominio ni el mismo codominio. P
 
 ## Imagen de una función
 
+::: {#def-ma-con-0007-imagen}
 La **imagen** de $f:A\to B$ es el conjunto de valores que la función alcanza realmente:
 
-$$
+$
 f(A)
 =
 \{f(x):x\in A\}.
-$$
+$
 
 También puede escribirse
 
-$$
+$
 \operatorname{Im}(f)
 =
 \{y\in B:\text{existe }x\in A\text{ tal que }f(x)=y\}.
-$$
+$
+:::
 
 Siempre se cumple
 
@@ -209,8 +215,8 @@ $$
 ::: {.ma-block .ma-definicion}
 **Codominio e imagen no son sinónimos**
 
-- **Codominio:** conjunto de llegada especificado al definir la función.
-- **Imagen:** valores del codominio que la función alcanza efectivamente.
+- [**Codominio**](#def-ma-con-0007-codominio): conjunto de llegada especificado al definir la función.
+- [**Imagen**](#def-ma-con-0007-imagen): valores del codominio que la función alcanza efectivamente.
 :::
 
 ## Imagen de un subconjunto
@@ -263,19 +269,21 @@ $$
 C\subseteq B.
 $$
 
+::: {#def-ma-con-0007-preimagen}
 La **preimagen** de $C$ es el conjunto de entradas cuya salida pertenece a $C$:
 
-$$
+$
 f^{-1}(C)
 =
 \{x\in A:f(x)\in C\}.
-$$
+$
 
-La preimagen es, por tanto, un subconjunto del dominio:
+La preimagen es, por tanto, un subconjunto del [dominio](#def-ma-con-0007-dominio):
 
-$$
+$
 f^{-1}(C)\subseteq A.
-$$
+$
+:::
 
 ::: {.ma-block .ma-intuicion}
 **Intuición**
