@@ -436,8 +436,8 @@ f^{-1}(\{y\})
 \{x\in A:f(x)=y\}.
 $$
 
-::: {.ma-block .ma-definicion}
-**Fibra de una función**
+::: {#def-ma-con-0009-fibra .ma-block .ma-definicion}
+**Definición — fibra de una función**
 
 Sea
 
