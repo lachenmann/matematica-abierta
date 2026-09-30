@@ -311,8 +311,8 @@ Nuevamente, $0$ no pertenece al conjunto.
 
 El artículo definido en “el supremo” está justificado: no puede haber dos.
 
-::: {.ma-block .ma-definicion}
-**Proposición — unicidad**
+::: {#res-ma-con-0016-unicidad-supremo-infimo .ma-block .ma-definicion}
+**Proposición — unicidad del supremo y del ínfimo**
 
 Si un conjunto tiene supremo, éste es único. Lo mismo vale para el ínfimo.
 :::
@@ -674,8 +674,8 @@ Recíprocamente, una [cota inferior](#def-ma-con-0016-cota-inferior) $i$ con est
 
 El supremo respeta la inclusión de conjuntos.
 
-::: {.ma-block .ma-definicion}
-**Proposición — monotonía**
+::: {#res-ma-con-0016-monotonia-supremo .ma-block .ma-definicion}
+**Proposición — monotonía del supremo**
 
 Sean $A,B\subseteq\mathbb R$ no vacíos y acotados superiormente. Si
 
@@ -708,13 +708,25 @@ $$
 \boxed{\sup A\le\sup B.}
 $$
 
-Análogamente, si ambos ínfimos existen,
+Dualmente:
 
-$$
-A\subseteq B
-\quad\Longrightarrow\quad
-\inf B\le\inf A.
-$$
+::: {#res-ma-con-0016-monotonia-infimo .ma-block .ma-definicion}
+**Proposición — monotonía del ínfimo**
+
+Sean $A,B\subseteq\mathbb R$ no vacíos y acotados inferiormente. Si
+
+$
+A\subseteq B,
+$
+
+entonces
+
+$
+\boxed{\inf B\le\inf A.}
+$
+:::
+
+La demostración es dual: toda cota inferior de $A$ es también cota inferior de $B$, y el [ínfimo](#def-ma-con-0016-infimo) es la mayor de las cotas inferiores.
 
 ## La completitud permite construir números
 
