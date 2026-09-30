@@ -15,6 +15,7 @@ for page in pages:
  text=page.read_text()
  assert '[[' not in text and 'drive.google.com' not in text,page
  assert 'draft: true' in text and 'status: draft' in text,page
+ assert not re.search(r'(no redactado|reservado pero no redactado|la introducción general sigue pendiente|La introducción general .*continúa pendiente)',text),page
  found=re.findall(r'<a id="([^"]+)"></a>',text)
  assert len(found)==len(set(found)),page
  anchors[page.name]=set(found)

@@ -23,13 +23,14 @@ const path=require('node:path');
      mathErrors:document.querySelectorAll('mjx-merror, [data-mjx-error]').length,
      unrenderedMath:[...document.querySelectorAll('.math')].filter(x=>!x.querySelector('mjx-container')).map(x=>x.textContent.slice(0,100)),
      theme:document.body.classList.contains('quarto-dark')?'dark':'light',
-     overflowing:[...document.querySelectorAll('main *')].filter(x=>{
+     overflowing:[...document.querySelectorAll('body *')].filter(x=>{
       if(x.getBoundingClientRect().right<=innerWidth+2)return false;
-      for(let p=x.parentElement;p;p=p.parentElement){if(['auto','scroll','hidden'].includes(getComputedStyle(p).overflowX)&&p.getBoundingClientRect().right<=innerWidth+2)return false;}
+      for(let p=x.parentElement;p&&p!==document.body;p=p.parentElement){if(['auto','scroll','hidden'].includes(getComputedStyle(p).overflowX)&&p.getBoundingClientRect().right<=innerWidth+2)return false;}
       return true;
      }).slice(0,12).map(x=>({tag:x.tagName,id:x.id,classes:x.className,right:x.getBoundingClientRect().right,text:x.textContent.slice(0,120)})),
      tableRegions:[...document.querySelectorAll('.tf-table')].map(x=>({tabindex:x.getAttribute('tabindex'),role:x.getAttribute('role')})),
      heading:document.querySelector('h1')?.textContent,
+     h1Count:document.querySelectorAll('h1').length,
      privateLinks:document.querySelectorAll('a[href*="drive.google.com"]').length
     }));
     findings.push({name,width,expectedTheme:theme,status:response?.status(),errors,...data});
@@ -37,10 +38,11 @@ const path=require('node:path');
     page.off('pageerror',handler);
     if(['index','capitulo-01','capitulo-16','matriz-hipotesis','apendice-d','bibliografia'].includes(name))
      await page.screenshot({path:path.join(out,`${name}-${width}-${theme}.png`),fullPage:true});
+    if(data.bodyWidth>data.viewport+2){console.log(JSON.stringify(findings.at(-1),null,2));throw new Error(`Horizontal overflow: ${name} ${width}px ${theme}`);}
    }
   }
  } finally {await browser.close();fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(findings,null,2));}
- const failed=findings.filter(x=>x.status!==200||!x.heading||x.privateLinks||x.errors.length||x.bodyWidth>x.viewport+2||x.theme!==x.expectedTheme||x.mathErrors||(x.mathSources>0&&x.mathRendered===0)||x.tableRegions.some(t=>t.tabindex!=='0'||t.role!=='region'));
+ const failed=findings.filter(x=>x.status!==200||!x.heading||x.h1Count!==1||x.privateLinks||x.errors.length||x.bodyWidth>x.viewport+2||x.theme!==x.expectedTheme||x.mathErrors||(x.mathSources>0&&x.mathRendered===0)||x.tableRegions.some(t=>t.tabindex!=='0'||t.role!=='region'));
  console.log(JSON.stringify({checks:findings.length,failed},null,2));
  if(failed.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1});
