@@ -739,7 +739,7 @@ $$
 
 Ya podemos reunir los resultados anteriores.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0018-heine-borel .ma-block .ma-definicion}
 **Teorema de Heine–Borel**
 
 Para un conjunto $K\subseteq\mathbb R$,
@@ -793,7 +793,7 @@ La afirmación “compacto si y sólo si cerrado y acotado” no debe trasladars
 
 Ahora conectamos la compacidad con la continuidad.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0018-imagen-continua-compacto .ma-block .ma-definicion}
 **Teorema — imagen continua de un compacto**
 
 Sea $K\subseteq\mathbb R$ compacto y sea
@@ -1084,7 +1084,7 @@ Todo subconjunto compacto y no vacío de $\mathbb R$ posee máximo y mínimo.
 
 # Teorema de Weierstrass
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0018-weierstrass .ma-block .ma-definicion}
 **Teorema del valor extremo — Weierstrass**
 
 Sea $K\subseteq\mathbb R$ compacto y no vacío, y sea

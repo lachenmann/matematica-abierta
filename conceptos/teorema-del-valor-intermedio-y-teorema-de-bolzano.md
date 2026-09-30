@@ -62,7 +62,7 @@ La continuidad impide un salto local. La completitud de $\mathbb R$ permite cons
 
 La versión más conocida del principio se refiere al nivel $y=0$.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0017-bolzano .ma-block .ma-definicion}
 **Teorema de Bolzano**
 
 Sea
@@ -104,7 +104,7 @@ Bolzano será una consecuencia inmediata de un resultado más general.
 
 ## El teorema del valor intermedio
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0017-valor-intermedio .ma-block .ma-definicion}
 **Teorema del valor intermedio**
 
 Sea
