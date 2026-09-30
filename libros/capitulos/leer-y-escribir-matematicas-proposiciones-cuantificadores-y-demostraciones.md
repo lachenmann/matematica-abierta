@@ -58,7 +58,9 @@ Este capítulo desarrolla ese lenguaje sin convertirlo en un curso aislado de l�
 En Matemática Abierta no queremos separar artificialmente «teoría» y «técnica de demostración». Aprender un resultado incluye aprender a reconocer **qué afirma**, **qué permite usar** y **qué estrategia podría justificarlo**.
 :::
 
-## 1. De observar ejemplos a demostrar {#ma-bch-0001-ejemplos}
+<span id="ma-bch-0001-ejemplos"></span>
+
+## 1. De observar ejemplos a demostrar {#met-ma-bch-0001-contraejemplos}
 
 Consideremos la afirmación
 
