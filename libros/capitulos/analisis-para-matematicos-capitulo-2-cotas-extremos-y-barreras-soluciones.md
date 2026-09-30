@@ -5,7 +5,7 @@ content-type: book-chapter
 collection: PM-ANA
 editorial-project: ANM
 editorial-id: MA-BCH-ANM-01-002-SOLUCIONES
-book-id: MA-BOK-0009
+book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
@@ -14,7 +14,7 @@ areas: [analisis]
 level: universitario
 topics: [analisis-real, orden, topologia]
 prerequisites: [MA-BCH-0083]
-related: [MA-BOK-0009]
+related: [MA-BOK-0010]
 provenance:
   type: original
   sources:

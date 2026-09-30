@@ -2,7 +2,7 @@
 title: "Análisis real para matemáticos"
 subtitle: "Un enfoque visual y geométrico"
 description: "Orden, distancia, completitud y topología de la recta real, con figuras originales y soluciones desarrolladas."
-content-id: MA-BOK-0009
+content-id: MA-BOK-0010
 content-type: book
 collection: PM-ANA
 editorial-project: ANM

@@ -11,7 +11,7 @@
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0099 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0010 |
+| Libro | MA-BOK-0011 |
 
 ## IDs asignados
 
@@ -203,4 +203,6 @@ Las piezas individuales mantienen siempre su identificador MA global.
 | MA-BCH-0096 | MA-BCH-ANM-01-004-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-ejercicios.md` | published |
 | MA-BCH-0097 | MA-BCH-ANM-01-004-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-soluciones.md` | published |
 | MA-BCH-0098 | MA-BCH-ANM-01-004-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto-microcontroles.md` | published |
-| MA-BOK-0009 | MA-BOK-ANM-01 | `libros/para-matematicos/analisis-para-matematicos.md` | published |
+| MA-BOK-0010 | MA-BOK-ANM-01 | `libros/para-matematicos/analisis-para-matematicos.md` | published |
+
+Registro de identidad pública ya existente: `MA-BOK-0009` — *Geometría plana y del espacio*, `libros/otros/wentworth-smith-geometria/index.qmd`, published. La entrada ANM usa `MA-BOK-0010` para conservar esa identidad.
