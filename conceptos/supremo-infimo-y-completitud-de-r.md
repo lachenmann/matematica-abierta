@@ -409,7 +409,7 @@ $$
 pero $1\notin A$. Por tanto $A$ no tiene máximo.
 :::
 
-## La propiedad de completitud de $\mathbb R$
+## La propiedad de completitud de $\mathbb R$ {#def-ma-con-0016-completitud-de-r}
 
 Hasta aquí sólo hemos definido qué significaría ser el supremo. Falta una pregunta mucho más importante:
 
@@ -417,10 +417,10 @@ Hasta aquí sólo hemos definido qué significaría ser el supremo. Falta una pr
 
 En los números reales, sí.
 
-::: {.ma-block .ma-definicion}
-**Axioma de completitud — propiedad del supremo**
+::: {#def-ma-con-0016-propiedad-del-supremo .ma-block .ma-definicion}
+**Definición — propiedad del supremo**
 
-Todo subconjunto no vacío de $\mathbb R$ que esté acotado superiormente posee un supremo en $\mathbb R$.
+Todo subconjunto no vacío de $\mathbb R$ que esté [acotado superiormente](#def-ma-con-0016-cota-superior) posee un [supremo](#def-ma-con-0016-supremo) en $\mathbb R$.
 
 En símbolos:
 
@@ -437,7 +437,7 @@ A\text{ acotado superiormente}
 $$
 :::
 
-Esta propiedad no es una mera regla de cálculo: es una propiedad estructural de los números reales.
+Esta [propiedad del supremo](#def-ma-con-0016-propiedad-del-supremo) no es una mera regla de cálculo: expresa aquí la [completitud de $\mathbb R$](#def-ma-con-0016-completitud-de-r) como propiedad estructural de los números reales.
 
 ::: {.ma-block .ma-intuicion}
 **Qué expresa la completitud**
@@ -475,10 +475,10 @@ $$
 
 Por tanto:
 
-::: {.ma-block .ma-definicion}
-**Propiedad del ínfimo**
+::: {#def-ma-con-0016-propiedad-del-infimo .ma-block .ma-definicion}
+**Definición — propiedad del ínfimo**
 
-Todo subconjunto no vacío de $\mathbb R$ que esté acotado inferiormente posee un ínfimo en $\mathbb R$.
+Todo subconjunto no vacío de $\mathbb R$ que esté [acotado inferiormente](#def-ma-con-0016-cota-inferior) posee un [ínfimo](#def-ma-con-0016-infimo) en $\mathbb R$.
 :::
 
 ## Por qué las hipótesis son necesarias
