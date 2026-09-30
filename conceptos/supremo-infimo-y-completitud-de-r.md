@@ -141,8 +141,8 @@ $$
 
 ## Máximo y mínimo
 
-::: {.ma-block .ma-definicion}
-**Máximo**
+::: {#def-ma-con-0016-maximo .ma-block .ma-definicion}
+**Definición — máximo**
 
 Un número $M$ es el **máximo** de $A$ si
 
@@ -165,21 +165,31 @@ M=\max A.
 $$
 :::
 
-Análogamente, $m=\min A$ si
+::: {#def-ma-con-0016-minimo .ma-block .ma-definicion}
+**Definición — mínimo**
 
-$$
+Un número $m$ es el **mínimo** de $A$ si
+
+$
 m\in A
-$$
+$
 
 y
 
-$$
+$
 m\le x
-$$
+$
 
 para todo $x\in A$.
 
-Por tanto, máximo y mínimo son **extremos alcanzados** por el conjunto.
+Escribimos
+
+$
+m=\min A.
+$
+:::
+
+Por tanto, [máximo](#def-ma-con-0016-maximo) y [mínimo](#def-ma-con-0016-minimo) son **extremos alcanzados** por el conjunto.
 
 ### Dos conjuntos casi iguales
 
@@ -213,8 +223,8 @@ mientras que $A$ no tiene ni mínimo ni máximo.
 
 ## Supremo: la menor cota superior
 
-::: {.ma-block .ma-definicion}
-**Supremo**
+::: {#def-ma-con-0016-supremo .ma-block .ma-definicion}
+**Definición — supremo**
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente.
 
@@ -262,8 +272,8 @@ $$
 
 ## Ínfimo: la mayor cota inferior
 
-::: {.ma-block .ma-definicion}
-**Ínfimo**
+::: {#def-ma-con-0016-infimo .ma-block .ma-definicion}
+**Definición — ínfimo**
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente.
 
@@ -329,7 +339,7 @@ La prueba para el ínfimo es análoga.
 
 ## Relación entre máximo y supremo
 
-Si $A$ tiene máximo $M$, entonces $M$ es una cota superior perteneciente al propio conjunto.
+Si $A$ tiene [máximo](#def-ma-con-0016-maximo) $M$, entonces $M$ es una cota superior perteneciente al propio conjunto.
 
 Además, toda cota superior $U$ debe satisfacer
 
@@ -682,7 +692,7 @@ $$
 
 es cota superior de $B$, también es cota superior de todo subconjunto $A\subseteq B$.
 
-Pero $\sup A$ es la menor cota superior de $A$.
+Pero el [supremo](#def-ma-con-0016-supremo) $\sup A$ es la menor cota superior de $A$.
 
 Por tanto,
 
