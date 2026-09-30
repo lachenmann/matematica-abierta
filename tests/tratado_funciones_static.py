@@ -33,10 +33,14 @@ print('35 pages; 18 chapters; 269 unique anchors; all local Markdown destination
 
 if '--html' in sys.argv:
  class Parse(HTMLParser):
-  def __init__(self):super().__init__();self.ids=[];self.links=[]
+  def __init__(self):super().__init__();self.ids=[];self.links=[];self.styles=[]
   def handle_starttag(self,tag,attrs):
    a=dict(attrs)
-   if 'id' in a:self.ids.append(a['id'])
+   if 'id' in a:
+    # Quarto reuses these two stylesheet IDs for light/dark variants.
+    # Only link elements with those IDs are excluded from content anchor QA.
+    if tag=='link' and a.get('rel')=='stylesheet' and a['id'] in {'quarto-bootstrap','quarto-text-highlighting-styles'}:self.styles.append(a['id'])
+    else:self.ids.append(a['id'])
    if tag=='a' and 'href' in a:self.links.append(a['href'])
  dest=ROOT/'_site/libros/otros/tratado-funciones'
  parsed={}
