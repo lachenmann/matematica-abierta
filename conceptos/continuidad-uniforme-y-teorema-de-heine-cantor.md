@@ -583,7 +583,7 @@ La compacidad impide que ese deterioro local escape sin control.
 
 # Teorema de Heine–Cantor
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0019-heine-cantor .ma-block .ma-definicion}
 **Teorema de Heine–Cantor**
 
 Sea $K\subseteq\mathbb R$ compacto y sea
