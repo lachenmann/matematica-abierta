@@ -193,7 +193,7 @@ Esta precisión será esencial en extremos y puntos aislados.
 
 Cuando $a$ es punto de acumulación de $D$, podemos comparar directamente la definición de continuidad con la definición de límite.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0014-continuidad-mediante-limite .ma-block .ma-definicion}
 **Teorema — criterio mediante el límite**
 
 Sea
@@ -602,7 +602,7 @@ es continua en todo $\mathbb R$.
 
 La composición introducida en `MA-CON-0008` preserva continuidad sin necesidad de separar puntos aislados y de acumulación.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0014-continuidad-composicion .ma-block .ma-definicion}
 **Teorema — continuidad de una composición**
 
 Sean
