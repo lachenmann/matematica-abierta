@@ -104,8 +104,8 @@ f\circ f^{-1}=\operatorname{id}_B
 }
 $$
 
-::: {.ma-block .ma-definicion}
-**Definición**
+::: {#def-ma-con-0010-funcion-inversa .ma-block .ma-definicion}
+**Definición — función inversa**
 
 La inversa de una función $f:A\to B$ es una función $f^{-1}:B\to A$ que deshace a $f$ en ambos sentidos mediante composición.
 :::
@@ -133,7 +133,7 @@ $$
 f:A\to B
 $$
 
-tiene función inversa si y sólo si es biyectiva.
+tiene función inversa si y sólo si es [biyectiva](inyectividad-sobreyectividad-y-biyectividad.md#def-ma-con-0009-biyectividad).
 
 En símbolos,
 
