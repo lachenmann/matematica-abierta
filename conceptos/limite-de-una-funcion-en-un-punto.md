@@ -88,8 +88,8 @@ Esto tendrá una consecuencia fundamental:
 
 Antes de definir el límite necesitamos asegurar que realmente existan puntos del dominio que puedan acercarse a $a$.
 
-::: {.ma-block .ma-definicion}
-**Punto de acumulación**
+::: {#def-ma-con-0011-punto-de-acumulacion .ma-block .ma-definicion}
+**Definición — punto de acumulación**
 
 Sea $D\subseteq\mathbb R$. Decimos que $a\in\mathbb R$ es un **punto de acumulación de $D$** si para todo $\delta>0$ existe algún $x\in D$ tal que
 
