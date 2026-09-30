@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Soluciones de microcontroles — Capítulo 2 – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-43ab80cd25c52ef0599ec15d71568536.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-68d0671eb70789670996f7bf02e3c4d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#soluciones-de-microcontroles-capítulo-2" id="toc-soluciones-de-microcontroles-capítulo-2" class="nav-link active" data-scroll-target="#soluciones-de-microcontroles-capítulo-2">Soluciones de microcontroles — Capítulo 2</a>
+  <ul class="collapse">
+  <li><a href="#controlar-un-conjunto-desde-arriba-y-desde-abajo" id="toc-controlar-un-conjunto-desde-arriba-y-desde-abajo" class="nav-link" data-scroll-target="#controlar-un-conjunto-desde-arriba-y-desde-abajo">§2.1. Controlar un conjunto desde arriba y desde abajo</a>
+  <ul class="collapse">
+  <li><a href="#para-a-24-decide-si-4-5-y-3-son-cotas-superiores" id="toc-para-a-24-decide-si-4-5-y-3-son-cotas-superiores" class="nav-link" data-scroll-target="#para-a-24-decide-si-4-5-y-3-son-cotas-superiores">1. Para <span class="math inline">\(A=(-2,4)\)</span>, decide si <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span> y <span class="math inline">\(3\)</span> son cotas superiores</a></li>
+  <li><a href="#para-a-24-decide-si--2--3-y-0-son-cotas-inferiores" id="toc-para-a-24-decide-si--2--3-y-0-son-cotas-inferiores" class="nav-link" data-scroll-target="#para-a-24-decide-si--2--3-y-0-son-cotas-inferiores">2. Para <span class="math inline">\(A=(-2,4)\)</span>, decide si <span class="math inline">\(-2\)</span>, <span class="math inline">\(-3\)</span> y <span class="math inline">\(0\)</span> son cotas inferiores</a></li>
+  <li><a href="#puede-una-cota-superior-pertenecer-al-conjunto-puede-no-pertenecer" id="toc-puede-una-cota-superior-pertenecer-al-conjunto-puede-no-pertenecer" class="nav-link" data-scroll-target="#puede-una-cota-superior-pertenecer-al-conjunto-puede-no-pertenecer">3. ¿Puede una cota superior pertenecer al conjunto? ¿Puede no pertenecer?</a></li>
+  <li><a href="#si-uin-ua-y-vu-qué-puedes-afirmar-sobre-v" id="toc-si-uin-ua-y-vu-qué-puedes-afirmar-sobre-v" class="nav-link" data-scroll-target="#si-uin-ua-y-vu-qué-puedes-afirmar-sobre-v">4. Si <span class="math inline">\(u\in U(A)\)</span> y <span class="math inline">\(v&gt;u\)</span>, ¿qué puedes afirmar sobre <span class="math inline">\(v\)</span>?</a></li>
+  <li><a href="#da-un-ejemplo-de-un-conjunto-infinito-pero-acotado" id="toc-da-un-ejemplo-de-un-conjunto-infinito-pero-acotado" class="nav-link" data-scroll-target="#da-un-ejemplo-de-un-conjunto-infinito-pero-acotado">5. Da un ejemplo de un conjunto infinito pero acotado</a></li>
+  <li><a href="#da-un-ejemplo-de-un-conjunto-acotado-superiormente-pero-no-inferiormente" id="toc-da-un-ejemplo-de-un-conjunto-acotado-superiormente-pero-no-inferiormente" class="nav-link" data-scroll-target="#da-un-ejemplo-de-un-conjunto-acotado-superiormente-pero-no-inferiormente">6. Da un ejemplo de un conjunto acotado superiormente pero no inferiormente</a></li>
+  </ul></li>
+  <li><a href="#extremos-alcanzados-máximo-y-mínimo" id="toc-extremos-alcanzados-máximo-y-mínimo" class="nav-link" data-scroll-target="#extremos-alcanzados-máximo-y-mínimo">§2.2. Extremos alcanzados: máximo y mínimo</a>
+  <ul class="collapse">
+  <li><a href="#para-a-3-127-determina-max-a-y-min-a" id="toc-para-a-3-127-determina-max-a-y-min-a" class="nav-link" data-scroll-target="#para-a-3-127-determina-max-a-y-min-a">7. Para <span class="math inline">\(A=\{-3,-1,2,7\}\)</span>, determina <span class="math inline">\(\max A\)</span> y <span class="math inline">\(\min A\)</span></a></li>
+  <li><a href="#en-b-25-existe-máximo-existe-mínimo-justifica-usando-las-definiciones" id="toc-en-b-25-existe-máximo-existe-mínimo-justifica-usando-las-definiciones" class="nav-link" data-scroll-target="#en-b-25-existe-máximo-existe-mínimo-justifica-usando-las-definiciones">8. En <span class="math inline">\(B=[-2,5)\)</span>, ¿existe máximo? ¿existe mínimo? Justifica usando las definiciones</a></li>
+  <li><a href="#si-uin-ua-y-además-uin-a-qué-puedes-concluir" id="toc-si-uin-ua-y-además-uin-a-qué-puedes-concluir" class="nav-link" data-scroll-target="#si-uin-ua-y-además-uin-a-qué-puedes-concluir">9. Si <span class="math inline">\(u\in U(A)\)</span> y además <span class="math inline">\(u\in A\)</span>, ¿qué puedes concluir?</a></li>
+  <li><a href="#es-correcta-la-afirmación-toda-cota-superior-de-un-conjunto-acotado-es-su-máximo-explica-el-error" id="toc-es-correcta-la-afirmación-toda-cota-superior-de-un-conjunto-acotado-es-su-máximo-explica-el-error" class="nav-link" data-scroll-target="#es-correcta-la-afirmación-toda-cota-superior-de-un-conjunto-acotado-es-su-máximo-explica-el-error">10. ¿Es correcta la afirmación «toda cota superior de un conjunto acotado es su máximo»? Explica el error</a></li>
+  <li><a href="#demuestra-directamente-que-24-no-tiene-máximo" id="toc-demuestra-directamente-que-24-no-tiene-máximo" class="nav-link" data-scroll-target="#demuestra-directamente-que-24-no-tiene-máximo">11. Demuestra directamente que <span class="math inline">\((2,4)\)</span> no tiene máximo</a></li>
+  <li><a href="#puede-un-conjunto-tener-dos-máximos-distintos-qué-parte-de-la-prueba-de-unicidad-lo-impide" id="toc-puede-un-conjunto-tener-dos-máximos-distintos-qué-parte-de-la-prueba-de-unicidad-lo-impide" class="nav-link" data-scroll-target="#puede-un-conjunto-tener-dos-máximos-distintos-qué-parte-de-la-prueba-de-unicidad-lo-impide">12. ¿Puede un conjunto tener dos máximos distintos? ¿Qué parte de la prueba de unicidad lo impide?</a></li>
+  </ul></li>
+  <li><a href="#la-mejor-barrera-supremo-e-ínfimo" id="toc-la-mejor-barrera-supremo-e-ínfimo" class="nav-link" data-scroll-target="#la-mejor-barrera-supremo-e-ínfimo">§2.3. La mejor barrera: supremo e ínfimo</a>
+  <ul class="collapse">
+  <li><a href="#para-a25-determina-ua-y-la-y-a-partir-de-ellos-identifica-sup-a-e-inf-a" id="toc-para-a25-determina-ua-y-la-y-a-partir-de-ellos-identifica-sup-a-e-inf-a" class="nav-link" data-scroll-target="#para-a25-determina-ua-y-la-y-a-partir-de-ellos-identifica-sup-a-e-inf-a">13. Para <span class="math inline">\(A=(2,5)\)</span>, determina <span class="math inline">\(U(A)\)</span> y <span class="math inline">\(L(A)\)</span> y, a partir de ellos, identifica <span class="math inline">\(\sup A\)</span> e <span class="math inline">\(\inf A\)</span></a></li>
+  <li><a href="#para-b-417-escribe-ub-y-lb-y-localiza-sus-extremos" id="toc-para-b-417-escribe-ub-y-lb-y-localiza-sus-extremos" class="nav-link" data-scroll-target="#para-b-417-escribe-ub-y-lb-y-localiza-sus-extremos">14. Para <span class="math inline">\(B=\{-4,1,7\}\)</span>, escribe <span class="math inline">\(U(B)\)</span> y <span class="math inline">\(L(B)\)</span> y localiza sus extremos</a></li>
+  <li><a href="#si-ssup-a-por-qué-ningún-número-menor-que-s-puede-pertenecer-a-ua" id="toc-si-ssup-a-por-qué-ningún-número-menor-que-s-puede-pertenecer-a-ua" class="nav-link" data-scroll-target="#si-ssup-a-por-qué-ningún-número-menor-que-s-puede-pertenecer-a-ua">15. Si <span class="math inline">\(s=\sup A\)</span>, ¿por qué ningún número menor que <span class="math inline">\(s\)</span> puede pertenecer a <span class="math inline">\(U(A)\)</span>?</a></li>
+  <li><a href="#demuestra-directamente-que-si-ssup-a-entonces-uasinfty" id="toc-demuestra-directamente-que-si-ssup-a-entonces-uasinfty" class="nav-link" data-scroll-target="#demuestra-directamente-que-si-ssup-a-entonces-uasinfty">16. Demuestra directamente que, si <span class="math inline">\(s=\sup A\)</span>, entonces <span class="math inline">\(U(A)=[s,\infty)\)</span></a></li>
+  <li><a href="#formula-y-demuestra-la-afirmación-dual-para-el-ínfimo" id="toc-formula-y-demuestra-la-afirmación-dual-para-el-ínfimo" class="nav-link" data-scroll-target="#formula-y-demuestra-la-afirmación-dual-para-el-ínfimo">17. Formula y demuestra la afirmación dual para el ínfimo</a></li>
+  <li><a href="#explica-por-qué-la-definición-de-supremo-no-incluye-la-condición-sin-a" id="toc-explica-por-qué-la-definición-de-supremo-no-incluye-la-condición-sin-a" class="nav-link" data-scroll-target="#explica-por-qué-la-definición-de-supremo-no-incluye-la-condición-sin-a">18. Explica por qué la definición de supremo no incluye la condición <span class="math inline">\(s\in A\)</span></a></li>
+  </ul></li>
+  <li><a href="#alcanzado-frente-a-no-alcanzado" id="toc-alcanzado-frente-a-no-alcanzado" class="nav-link" data-scroll-target="#alcanzado-frente-a-no-alcanzado">§2.4. Alcanzado frente a no alcanzado</a>
+  <ul class="collapse">
+  <li><a href="#para-a-13-determina-inf-a-sup-a-min-a-y-decide-si-existe-max-a" id="toc-para-a-13-determina-inf-a-sup-a-min-a-y-decide-si-existe-max-a" class="nav-link" data-scroll-target="#para-a-13-determina-inf-a-sup-a-min-a-y-decide-si-existe-max-a">19. Para <span class="math inline">\(A=[-1,3)\)</span>, determina <span class="math inline">\(\inf A\)</span>, <span class="math inline">\(\sup A\)</span>, <span class="math inline">\(\min A\)</span> y decide si existe <span class="math inline">\(\max A\)</span></a></li>
+  <li><a href="#para-b-24-identifica-qué-barrera-extremal-está-alcanzada-y-cuál-no" id="toc-para-b-24-identifica-qué-barrera-extremal-está-alcanzada-y-cuál-no" class="nav-link" data-scroll-target="#para-b-24-identifica-qué-barrera-extremal-está-alcanzada-y-cuál-no">20. Para <span class="math inline">\(B=(-2,4]\)</span>, identifica qué barrera extremal está alcanzada y cuál no</a></li>
+  <li><a href="#supón-que-sup-a-existe.-demuestra-que-si-sup-ain-a-entonces-sup-amax-a" id="toc-supón-que-sup-a-existe.-demuestra-que-si-sup-ain-a-entonces-sup-amax-a" class="nav-link" data-scroll-target="#supón-que-sup-a-existe.-demuestra-que-si-sup-ain-a-entonces-sup-amax-a">21. Supón que <span class="math inline">\(\sup A\)</span> existe. Demuestra que, si <span class="math inline">\(\sup A\in A\)</span>, entonces <span class="math inline">\(\sup A=\max A\)</span></a></li>
+  <li><a href="#demuestra-directamente-que-si-max-a-existe-entonces-también-existe-sup-a-y-ambos-coinciden" id="toc-demuestra-directamente-que-si-max-a-existe-entonces-también-existe-sup-a-y-ambos-coinciden" class="nav-link" data-scroll-target="#demuestra-directamente-que-si-max-a-existe-entonces-también-existe-sup-a-y-ambos-coinciden">22. Demuestra directamente que, si <span class="math inline">\(\max A\)</span> existe, entonces también existe <span class="math inline">\(\sup A\)</span> y ambos coinciden</a></li>
+  <li><a href="#da-un-ejemplo-de-una-cota-superior-que-no-sea-el-supremo" id="toc-da-un-ejemplo-de-una-cota-superior-que-no-sea-el-supremo" class="nav-link" data-scroll-target="#da-un-ejemplo-de-una-cota-superior-que-no-sea-el-supremo">23. Da un ejemplo de una cota superior que no sea el supremo</a></li>
+  <li><a href="#da-un-ejemplo-de-un-conjunto-con-supremo-pero-sin-máximo-y-otro-con-máximo" id="toc-da-un-ejemplo-de-un-conjunto-con-supremo-pero-sin-máximo-y-otro-con-máximo" class="nav-link" data-scroll-target="#da-un-ejemplo-de-un-conjunto-con-supremo-pero-sin-máximo-y-otro-con-máximo">24. Da un ejemplo de un conjunto con supremo pero sin máximo, y otro con máximo</a></li>
+  </ul></li>
+  <li><a href="#acercarse-a-una-barrera-sin-tocarla" id="toc-acercarse-a-una-barrera-sin-tocarla" class="nav-link" data-scroll-target="#acercarse-a-una-barrera-sin-tocarla">§2.5. Acercarse a una barrera sin tocarla</a>
+  <ul class="collapse">
+  <li><a href="#para-a25-y-s5-verifica-directamente-la-condición-con-varepsilon" id="toc-para-a25-y-s5-verifica-directamente-la-condición-con-varepsilon" class="nav-link" data-scroll-target="#para-a25-y-s5-verifica-directamente-la-condición-con-varepsilon">25. Para <span class="math inline">\(A=(2,5)\)</span> y <span class="math inline">\(s=5\)</span>, verifica directamente la condición con <span class="math inline">\(\varepsilon\)</span></a></li>
+  <li><a href="#explica-por-qué-si-existe-varepsilon_00-tal-que-ningún-elemento-de-a-pertenece-a-s-varepsilon_0s-entonces-s-no-puede-ser-el-supremo" id="toc-explica-por-qué-si-existe-varepsilon_00-tal-que-ningún-elemento-de-a-pertenece-a-s-varepsilon_0s-entonces-s-no-puede-ser-el-supremo" class="nav-link" data-scroll-target="#explica-por-qué-si-existe-varepsilon_00-tal-que-ningún-elemento-de-a-pertenece-a-s-varepsilon_0s-entonces-s-no-puede-ser-el-supremo">26. Explica por qué, si existe <span class="math inline">\(\varepsilon_0&gt;0\)</span> tal que ningún elemento de <span class="math inline">\(A\)</span> pertenece a <span class="math inline">\((s-\varepsilon_0,s]\)</span>, entonces <span class="math inline">\(s\)</span> no puede ser el supremo</a></li>
+  <li><a href="#supón-que-anevarnothing-que-s-es-cota-superior-y-que-para-todo-varepsilon0-existe-ain-a-con-s-varepsilonale-s.-demuestra-que-ssup-a" id="toc-supón-que-anevarnothing-que-s-es-cota-superior-y-que-para-todo-varepsilon0-existe-ain-a-con-s-varepsilonale-s.-demuestra-que-ssup-a" class="nav-link" data-scroll-target="#supón-que-anevarnothing-que-s-es-cota-superior-y-que-para-todo-varepsilon0-existe-ain-a-con-s-varepsilonale-s.-demuestra-que-ssup-a">27. Supón que <span class="math inline">\(A\ne\varnothing\)</span>, que <span class="math inline">\(s\)</span> es cota superior y que para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(s-\varepsilon&lt;a\le s\)</span>. Demuestra que <span class="math inline">\(s=\sup A\)</span></a></li>
+  <li><a href="#formula-y-demuestra-la-versión-dual-para-el-ínfimo" id="toc-formula-y-demuestra-la-versión-dual-para-el-ínfimo" class="nav-link" data-scroll-target="#formula-y-demuestra-la-versión-dual-para-el-ínfimo">28. Formula y demuestra la versión dual para el ínfimo</a></li>
+  <li><a href="#qué-cambia-en-la-condición-cuando-el-supremo-pertenece-a-a" id="toc-qué-cambia-en-la-condición-cuando-el-supremo-pertenece-a-a" class="nav-link" data-scroll-target="#qué-cambia-en-la-condición-cuando-el-supremo-pertenece-a-a">29. ¿Qué cambia en la condición cuando el supremo pertenece a <span class="math inline">\(A\)</span>?</a></li>
+  <li><a href="#explica-por-qué-la-expresión-hay-puntos-arbitrariamente-cerca-del-supremo-no-obliga-todavía-a-introducir-una-sucesión" id="toc-explica-por-qué-la-expresión-hay-puntos-arbitrariamente-cerca-del-supremo-no-obliga-todavía-a-introducir-una-sucesión" class="nav-link" data-scroll-target="#explica-por-qué-la-expresión-hay-puntos-arbitrariamente-cerca-del-supremo-no-obliga-todavía-a-introducir-una-sucesión">30. Explica por qué la expresión “hay puntos arbitrariamente cerca del supremo” no obliga todavía a introducir una sucesión</a></li>
+  </ul></li>
+  <li><a href="#comparar-conjuntos-por-sus-barreras" id="toc-comparar-conjuntos-por-sus-barreras" class="nav-link" data-scroll-target="#comparar-conjuntos-por-sus-barreras">§2.6. Comparar conjuntos por sus barreras</a>
+  <ul class="collapse">
+  <li><a href="#si-asubseteq-b-demuestra-directamente-que-ubsubseteq-ua" id="toc-si-asubseteq-b-demuestra-directamente-que-ubsubseteq-ua" class="nav-link" data-scroll-target="#si-asubseteq-b-demuestra-directamente-que-ubsubseteq-ua">31. Si <span class="math inline">\(A\subseteq B\)</span>, demuestra directamente que <span class="math inline">\(U(B)\subseteq U(A)\)</span></a></li>
+  <li><a href="#formula-y-demuestra-la-inclusión-correspondiente-para-la-y-lb" id="toc-formula-y-demuestra-la-inclusión-correspondiente-para-la-y-lb" class="nav-link" data-scroll-target="#formula-y-demuestra-la-inclusión-correspondiente-para-la-y-lb">32. Formula y demuestra la inclusión correspondiente para <span class="math inline">\(L(A)\)</span> y <span class="math inline">\(L(B)\)</span></a></li>
+  <li><a href="#supón-que-asubseteq-b-y-que-existen-sup-a-y-sup-b.-demuestra-que-sup-alesup-b" id="toc-supón-que-asubseteq-b-y-que-existen-sup-a-y-sup-b.-demuestra-que-sup-alesup-b" class="nav-link" data-scroll-target="#supón-que-asubseteq-b-y-que-existen-sup-a-y-sup-b.-demuestra-que-sup-alesup-b">33. Supón que <span class="math inline">\(A\subseteq B\)</span> y que existen <span class="math inline">\(\sup A\)</span> y <span class="math inline">\(\sup B\)</span>. Demuestra que <span class="math inline">\(\sup A\le\sup B\)</span></a></li>
+  <li><a href="#da-un-ejemplo-con-asubsetneq-b-pero-sup-asup-b" id="toc-da-un-ejemplo-con-asubsetneq-b-pero-sup-asup-b" class="nav-link" data-scroll-target="#da-un-ejemplo-con-asubsetneq-b-pero-sup-asup-b">34. Da un ejemplo con <span class="math inline">\(A\subsetneq B\)</span> pero <span class="math inline">\(\sup A=\sup B\)</span></a></li>
+  <li><a href="#si-existen-inf-a-y-sup-a-explica-por-qué-la-reflexión-obliga-a-que-sup-a-inf-a" id="toc-si-existen-inf-a-y-sup-a-explica-por-qué-la-reflexión-obliga-a-que-sup-a-inf-a" class="nav-link" data-scroll-target="#si-existen-inf-a-y-sup-a-explica-por-qué-la-reflexión-obliga-a-que-sup-a-inf-a">35. Si existen <span class="math inline">\(\inf A\)</span> y <span class="math inline">\(\sup(-A)\)</span>, explica por qué la reflexión obliga a que <span class="math inline">\(\sup(-A)=-\inf A\)</span></a></li>
+  <li><a href="#para-a-14-determina--a-y-compara-sus-extremos-con-los-de-a" id="toc-para-a-14-determina--a-y-compara-sus-extremos-con-los-de-a" class="nav-link" data-scroll-target="#para-a-14-determina--a-y-compara-sus-extremos-con-los-de-a">36. Para <span class="math inline">\(A=[-1,4)\)</span>, determina <span class="math inline">\(-A\)</span> y compara sus extremos con los de <span class="math inline">\(A\)</span></a></li>
+  </ul></li>
+  <li><a href="#definir-una-barrera-no-garantiza-que-exista" id="toc-definir-una-barrera-no-garantiza-que-exista" class="nav-link" data-scroll-target="#definir-una-barrera-no-garantiza-que-exista">§2.7. Definir una barrera no garantiza que exista</a>
+  <ul class="collapse">
+  <li><a href="#explica-por-qué-la-definición-de-sup-a-no-demuestra-por-sí-sola-que-sup-a-exista" id="toc-explica-por-qué-la-definición-de-sup-a-no-demuestra-por-sí-sola-que-sup-a-exista" class="nav-link" data-scroll-target="#explica-por-qué-la-definición-de-sup-a-no-demuestra-por-sí-sola-que-sup-a-exista">37. Explica por qué la definición de <span class="math inline">\(\sup A\)</span> no demuestra por sí sola que <span class="math inline">\(\sup A\)</span> exista</a></li>
+  <li><a href="#para-a0infty-identifica-cuál-de-los-dos-obstáculos-para-la-existencia-del-supremo-falla-primero" id="toc-para-a0infty-identifica-cuál-de-los-dos-obstáculos-para-la-existencia-del-supremo-falla-primero" class="nav-link" data-scroll-target="#para-a0infty-identifica-cuál-de-los-dos-obstáculos-para-la-existencia-del-supremo-falla-primero">38. Para <span class="math inline">\(A=(0,\infty)\)</span>, identifica cuál de los dos obstáculos para la existencia del supremo falla primero</a></li>
+  <li><a href="#demuestra-que-uvarnothinglvarnothingmathbb-r" id="toc-demuestra-que-uvarnothinglvarnothingmathbb-r" class="nav-link" data-scroll-target="#demuestra-que-uvarnothinglvarnothingmathbb-r">39. Demuestra que <span class="math inline">\(U(\varnothing)=L(\varnothing)=\mathbb R\)</span></a></li>
+  <li><a href="#explica-por-qué-de-la-igualdad-anterior-no-se-obtiene-un-supremo-o-un-ínfimo-real-del-conjunto-vacío" id="toc-explica-por-qué-de-la-igualdad-anterior-no-se-obtiene-un-supremo-o-un-ínfimo-real-del-conjunto-vacío" class="nav-link" data-scroll-target="#explica-por-qué-de-la-igualdad-anterior-no-se-obtiene-un-supremo-o-un-ínfimo-real-del-conjunto-vacío">40. Explica por qué de la igualdad anterior no se obtiene un supremo o un ínfimo real del conjunto vacío</a></li>
+  <li><a href="#qué-muestra-conceptualmente-el-contraste-con-mathbb-q-respecto-del-papel-del-orden" id="toc-qué-muestra-conceptualmente-el-contraste-con-mathbb-q-respecto-del-papel-del-orden" class="nav-link" data-scroll-target="#qué-muestra-conceptualmente-el-contraste-con-mathbb-q-respecto-del-papel-del-orden">41. ¿Qué muestra conceptualmente el contraste con <span class="math inline">\(\mathbb Q\)</span> respecto del papel del orden?</a></li>
+  <li><a href="#distingue-entre-verificar-un-supremo-en-un-ejemplo-y-garantizar-la-existencia-del-supremo-para-toda-una-clase-de-conjuntos" id="toc-distingue-entre-verificar-un-supremo-en-un-ejemplo-y-garantizar-la-existencia-del-supremo-para-toda-una-clase-de-conjuntos" class="nav-link" data-scroll-target="#distingue-entre-verificar-un-supremo-en-un-ejemplo-y-garantizar-la-existencia-del-supremo-para-toda-una-clase-de-conjuntos">42. Distingue entre “verificar un supremo en un ejemplo” y “garantizar la existencia del supremo para toda una clase de conjuntos”</a></li>
+  </ul></li>
+  <li><a href="#de-las-barreras-a-la-completitud" id="toc-de-las-barreras-a-la-completitud" class="nav-link" data-scroll-target="#de-las-barreras-a-la-completitud">§2.8. De las barreras a la completitud</a>
+  <ul class="collapse">
+  <li><a href="#por-qué-sup-a-puede-existir-sin-pertenecer-a-a" id="toc-por-qué-sup-a-puede-existir-sin-pertenecer-a-a" class="nav-link" data-scroll-target="#por-qué-sup-a-puede-existir-sin-pertenecer-a-a">43. ¿Por qué <span class="math inline">\(\sup A\)</span> puede existir sin pertenecer a <span class="math inline">\(A\)</span>?</a></li>
+  <li><a href="#por-qué-si-max-a-existe-entonces-coincide-necesariamente-con-sup-a" id="toc-por-qué-si-max-a-existe-entonces-coincide-necesariamente-con-sup-a" class="nav-link" data-scroll-target="#por-qué-si-max-a-existe-entonces-coincide-necesariamente-con-sup-a">44. ¿Por qué, si <span class="math inline">\(\max A\)</span> existe, entonces coincide necesariamente con <span class="math inline">\(\sup A\)</span>?</a></li>
+  <li><a href="#qué-niega-exactamente-la-condición" id="toc-qué-niega-exactamente-la-condición" class="nav-link" data-scroll-target="#qué-niega-exactamente-la-condición">45. ¿Qué niega exactamente la condición</a></li>
+  <li><a href="#qué-nueva-afirmación-necesita-c03-para-convertir-la-teoría-condicional-de-c02-en-una-garantía-general-de-existencia-dentro-de-mathbb-r" id="toc-qué-nueva-afirmación-necesita-c03-para-convertir-la-teoría-condicional-de-c02-en-una-garantía-general-de-existencia-dentro-de-mathbb-r" class="nav-link" data-scroll-target="#qué-nueva-afirmación-necesita-c03-para-convertir-la-teoría-condicional-de-c02-en-una-garantía-general-de-existencia-dentro-de-mathbb-r">46. ¿Qué nueva afirmación necesita C03 para convertir la teoría condicional de C02 en una garantía general de existencia dentro de <span class="math inline">\(\mathbb R\)</span>?</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soluciones de microcontroles — Capítulo 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">30 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html">Capítulo 2</a> · <a href="../../libros/para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-ejercicios.html">Ejercicios</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-soluciones.html">Soluciones</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras-microcontroles.html">Soluciones de microcontroles</a></p>
+<section id="soluciones-de-microcontroles-capítulo-2" class="level1">
+<h1>Soluciones de microcontroles — Capítulo 2</h1>
+<section id="controlar-un-conjunto-desde-arriba-y-desde-abajo" class="level2">
+<h2 class="anchored" data-anchor-id="controlar-un-conjunto-desde-arriba-y-desde-abajo">§2.1. Controlar un conjunto desde arriba y desde abajo</h2>
+<p><span id="MA-MSOL-ANM-01-002-001"></span></p>
+<section id="para-a-24-decide-si-4-5-y-3-son-cotas-superiores" class="level3">
+<h3 class="anchored" data-anchor-id="para-a-24-decide-si-4-5-y-3-son-cotas-superiores">1. Para <span class="math inline">\(A=(-2,4)\)</span>, decide si <span class="math inline">\(4\)</span>, <span class="math inline">\(5\)</span> y <span class="math inline">\(3\)</span> son cotas superiores</h3>
+<p>Los números <span class="math inline">\(4\)</span> y <span class="math inline">\(5\)</span> sí son cotas superiores de <span class="math inline">\(A\)</span>.</p>
+<p>En efecto, todo <span class="math inline">\(a\in(-2,4)\)</span> satisface <span class="math inline">\(a&lt;4\)</span>, y por tanto <span class="math inline">\(a\le4\)</span>. Así,</p>
+<p><span class="math display">\[
+4\in U(A).
+\]</span></p>
+<p>Como además <span class="math inline">\(5&gt;4\)</span>, también se cumple <span class="math inline">\(a&lt;4&lt;5\)</span> para todo <span class="math inline">\(a\in A\)</span>, de modo que</p>
+<p><span class="math display">\[
+5\in U(A).
+\]</span></p>
+<p>En cambio, <span class="math inline">\(3\)</span> no es cota superior. Por ejemplo,</p>
+<p><span class="math display">\[
+\frac{7}{2}\in(-2,4)
+\qquad\text{y}\qquad
+\frac{7}{2}&gt;3.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{4,5\in U(A),\qquad 3\notin U(A).}
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-002"></span></p>
+</section>
+<section id="para-a-24-decide-si--2--3-y-0-son-cotas-inferiores" class="level3">
+<h3 class="anchored" data-anchor-id="para-a-24-decide-si--2--3-y-0-son-cotas-inferiores">2. Para <span class="math inline">\(A=(-2,4)\)</span>, decide si <span class="math inline">\(-2\)</span>, <span class="math inline">\(-3\)</span> y <span class="math inline">\(0\)</span> son cotas inferiores</h3>
+<p>Los números <span class="math inline">\(-2\)</span> y <span class="math inline">\(-3\)</span> son cotas inferiores de <span class="math inline">\(A\)</span>.</p>
+<p>Para todo <span class="math inline">\(a\in(-2,4)\)</span> tenemos <span class="math inline">\(-2&lt;a\)</span>, luego también <span class="math inline">\(-2\le a\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+-2\in L(A).
+\]</span></p>
+<p>Como <span class="math inline">\(-3&lt;-2&lt;a\)</span> para todo <span class="math inline">\(a\in A\)</span>, también</p>
+<p><span class="math display">\[
+-3\in L(A).
+\]</span></p>
+<p>En cambio, <span class="math inline">\(0\)</span> no es cota inferior, porque existen elementos de <span class="math inline">\(A\)</span> menores que <span class="math inline">\(0\)</span>; por ejemplo,</p>
+<p><span class="math display">\[
+-1\in A
+\qquad\text{y}\qquad
+-1&lt;0.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{-2,-3\in L(A),\qquad 0\notin L(A).}
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-003"></span></p>
+</section>
+<section id="puede-una-cota-superior-pertenecer-al-conjunto-puede-no-pertenecer" class="level3">
+<h3 class="anchored" data-anchor-id="puede-una-cota-superior-pertenecer-al-conjunto-puede-no-pertenecer">3. ¿Puede una cota superior pertenecer al conjunto? ¿Puede no pertenecer?</h3>
+<p>Sí en ambos casos. La definición de cota superior exige únicamente que el número domine a todos los elementos del conjunto; no decide su pertenencia.</p>
+<p>Por ejemplo, para</p>
+<p><span class="math display">\[
+A=[0,1],
+\]</span></p>
+<p>el número <span class="math inline">\(1\)</span> es cota superior y pertenece a <span class="math inline">\(A\)</span>.</p>
+<p>En cambio, para</p>
+<p><span class="math display">\[
+B=(0,1),
+\]</span></p>
+<p>el mismo número <span class="math inline">\(1\)</span> es cota superior pero no pertenece a <span class="math inline">\(B\)</span>.</p>
+<p>Por tanto, ser cota superior y pertenecer al conjunto son propiedades independientes.</p>
+<p><span id="MA-MSOL-ANM-01-002-004"></span></p>
+</section>
+<section id="si-uin-ua-y-vu-qué-puedes-afirmar-sobre-v" class="level3">
+<h3 class="anchored" data-anchor-id="si-uin-ua-y-vu-qué-puedes-afirmar-sobre-v">4. Si <span class="math inline">\(u\in U(A)\)</span> y <span class="math inline">\(v&gt;u\)</span>, ¿qué puedes afirmar sobre <span class="math inline">\(v\)</span>?</h3>
+<p>Podemos afirmar que</p>
+<p><span class="math display">\[
+v\in U(A).
+\]</span></p>
+<p>En efecto, como <span class="math inline">\(u\)</span> es cota superior,</p>
+<p><span class="math display">\[
+a\le u
+\qquad\text{para todo }a\in A.
+\]</span></p>
+<p>Y como <span class="math inline">\(v&gt;u\)</span>, tenemos <span class="math inline">\(u&lt;v\)</span>, luego</p>
+<p><span class="math display">\[
+a\le u&lt;v
+\]</span></p>
+<p>para todo <span class="math inline">\(a\in A\)</span>. En particular, <span class="math inline">\(a\le v\)</span> para todo <span class="math inline">\(a\in A\)</span>, que es exactamente la condición para que <span class="math inline">\(v\)</span> sea cota superior.</p>
+<p>La familia <span class="math inline">\(U(A)\)</span> es, por tanto, estable al desplazar una cota hacia la derecha.</p>
+<p><span id="MA-MSOL-ANM-01-002-005"></span></p>
+</section>
+<section id="da-un-ejemplo-de-un-conjunto-infinito-pero-acotado" class="level3">
+<h3 class="anchored" data-anchor-id="da-un-ejemplo-de-un-conjunto-infinito-pero-acotado">5. Da un ejemplo de un conjunto infinito pero acotado</h3>
+<p>Un ejemplo es</p>
+<p><span class="math display">\[
+A=(0,1).
+\]</span></p>
+<p>El conjunto contiene infinitos números reales, pero está acotado inferiormente por <span class="math inline">\(0\)</span> y superiormente por <span class="math inline">\(1\)</span>:</p>
+<p><span class="math display">\[
+0\le a\le1
+\qquad\text{para todo }a\in A.
+\]</span></p>
+<p>Así, la acotación controla la posición de los elementos, no su cantidad.</p>
+<p><span id="MA-MSOL-ANM-01-002-006"></span></p>
+</section>
+<section id="da-un-ejemplo-de-un-conjunto-acotado-superiormente-pero-no-inferiormente" class="level3">
+<h3 class="anchored" data-anchor-id="da-un-ejemplo-de-un-conjunto-acotado-superiormente-pero-no-inferiormente">6. Da un ejemplo de un conjunto acotado superiormente pero no inferiormente</h3>
+<p>Un ejemplo es</p>
+<p><span class="math display">\[
+A=(-\infty,5).
+\]</span></p>
+<p>El número <span class="math inline">\(5\)</span> es una cota superior, porque todo <span class="math inline">\(a\in A\)</span> satisface <span class="math inline">\(a&lt;5\)</span> y, por tanto, <span class="math inline">\(a\le5\)</span>.</p>
+<p>En cambio, <span class="math inline">\(A\)</span> no tiene cota inferior. Dado cualquier candidato <span class="math inline">\(l\in\mathbb R\)</span>, el número</p>
+<p><span class="math display">\[
+a=l-1
+\]</span></p>
+<p>pertenece a <span class="math inline">\(A\)</span> siempre que <span class="math inline">\(l-1&lt;5\)</span>; si <span class="math inline">\(l-1\ge5\)</span>, basta tomar <span class="math inline">\(a=4\)</span>, que también satisface <span class="math inline">\(a&lt;l\)</span>. En ambos casos podemos encontrar un elemento de <span class="math inline">\(A\)</span> menor que <span class="math inline">\(l\)</span>.</p>
+<p>De forma más uniforme, puede elegirse</p>
+<p><span class="math display">\[
+a=\min\{4,l-1\},
+\]</span></p>
+<p>que cumple <span class="math inline">\(a\in A\)</span> y <span class="math inline">\(a&lt;l\)</span>. Por tanto ningún real es cota inferior de <span class="math inline">\(A\)</span>.</p>
+<p>Así,</p>
+<p><span class="math display">\[
+\boxed{A=(-\infty,5)\text{ está acotado superiormente, pero no inferiormente}.}
+\]</span></p>
+</section>
+</section>
+<section id="extremos-alcanzados-máximo-y-mínimo" class="level2">
+<h2 class="anchored" data-anchor-id="extremos-alcanzados-máximo-y-mínimo">§2.2. Extremos alcanzados: máximo y mínimo</h2>
+<p><span id="MA-MSOL-ANM-01-002-007"></span></p>
+<section id="para-a-3-127-determina-max-a-y-min-a" class="level3">
+<h3 class="anchored" data-anchor-id="para-a-3-127-determina-max-a-y-min-a">7. Para <span class="math inline">\(A=\{-3,-1,2,7\}\)</span>, determina <span class="math inline">\(\max A\)</span> y <span class="math inline">\(\min A\)</span></h3>
+<p>El número <span class="math inline">\(7\)</span> pertenece a <span class="math inline">\(A\)</span> y todo elemento de <span class="math inline">\(A\)</span> es menor o igual que <span class="math inline">\(7\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\max A=7}.
+\]</span></p>
+<p>Análogamente, <span class="math inline">\(-3\in A\)</span> y todo elemento de <span class="math inline">\(A\)</span> es mayor o igual que <span class="math inline">\(-3\)</span>. Así,</p>
+<p><span class="math display">\[
+\boxed{\min A=-3}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-008"></span></p>
+</section>
+<section id="en-b-25-existe-máximo-existe-mínimo-justifica-usando-las-definiciones" class="level3">
+<h3 class="anchored" data-anchor-id="en-b-25-existe-máximo-existe-mínimo-justifica-usando-las-definiciones">8. En <span class="math inline">\(B=[-2,5)\)</span>, ¿existe máximo? ¿existe mínimo? Justifica usando las definiciones</h3>
+<p>El conjunto sí tiene mínimo. El número <span class="math inline">\(-2\)</span> pertenece a <span class="math inline">\(B\)</span> y satisface</p>
+<p><span class="math display">\[
+-2\le b
+\qquad
+\text{para todo }b\in B.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\min B=-2}.
+\]</span></p>
+<p>En cambio, <span class="math inline">\(B\)</span> no tiene máximo. Si <span class="math inline">\(x\in B\)</span>, entonces <span class="math inline">\(x&lt;5\)</span> y</p>
+<p><span class="math display">\[
+y=\frac{x+5}{2}
+\]</span></p>
+<p>satisface</p>
+<p><span class="math display">\[
+x&lt;y&lt;5.
+\]</span></p>
+<p>Así, <span class="math inline">\(y\in B\)</span> y <span class="math inline">\(y&gt;x\)</span>. Ningún elemento de <span class="math inline">\(B\)</span> domina a todos los demás, de modo que</p>
+<p><span class="math display">\[
+\boxed{B\text{ no tiene máximo}.}
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-009"></span></p>
+</section>
+<section id="si-uin-ua-y-además-uin-a-qué-puedes-concluir" class="level3">
+<h3 class="anchored" data-anchor-id="si-uin-ua-y-además-uin-a-qué-puedes-concluir">9. Si <span class="math inline">\(u\in U(A)\)</span> y además <span class="math inline">\(u\in A\)</span>, ¿qué puedes concluir?</h3>
+<p>Podemos concluir que <span class="math inline">\(u\)</span> es el máximo de <span class="math inline">\(A\)</span>.</p>
+<p>La condición <span class="math inline">\(u\in U(A)\)</span> significa que</p>
+<p><span class="math display">\[
+a\le u
+\qquad
+\text{para todo }a\in A.
+\]</span></p>
+<p>Como además <span class="math inline">\(u\in A\)</span>, se cumplen exactamente las dos condiciones de la definición de máximo. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{u=\max A}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-010"></span></p>
+</section>
+<section id="es-correcta-la-afirmación-toda-cota-superior-de-un-conjunto-acotado-es-su-máximo-explica-el-error" class="level3">
+<h3 class="anchored" data-anchor-id="es-correcta-la-afirmación-toda-cota-superior-de-un-conjunto-acotado-es-su-máximo-explica-el-error">10. ¿Es correcta la afirmación «toda cota superior de un conjunto acotado es su máximo»? Explica el error</h3>
+<p>No.&nbsp;Una cota superior sólo debe dominar a todos los elementos del conjunto; para ser máximo debe, además, pertenecer al conjunto.</p>
+<p>Por ejemplo, si</p>
+<p><span class="math display">\[
+A=[0,1],
+\]</span></p>
+<p>entonces <span class="math inline">\(2\)</span> es una cota superior, porque todo <span class="math inline">\(a\in A\)</span> cumple <span class="math inline">\(a\le1&lt;2\)</span>. Sin embargo,</p>
+<p><span class="math display">\[
+2\notin A,
+\]</span></p>
+<p>de modo que <span class="math inline">\(2\)</span> no es el máximo. En realidad,</p>
+<p><span class="math display">\[
+\max A=1.
+\]</span></p>
+<p>El error consiste en omitir la condición de pertenencia.</p>
+<p><span id="MA-MSOL-ANM-01-002-011"></span></p>
+</section>
+<section id="demuestra-directamente-que-24-no-tiene-máximo" class="level3">
+<h3 class="anchored" data-anchor-id="demuestra-directamente-que-24-no-tiene-máximo">11. Demuestra directamente que <span class="math inline">\((2,4)\)</span> no tiene máximo</h3>
+<p>Sea <span class="math inline">\(x\in(2,4)\)</span> cualquier elemento. Como <span class="math inline">\(x&lt;4\)</span>, el número</p>
+<p><span class="math display">\[
+y=\frac{x+4}{2}
+\]</span></p>
+<p>satisface</p>
+<p><span class="math display">\[
+x&lt;y&lt;4.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(y\in(2,4)\)</span> y <span class="math inline">\(y&gt;x\)</span>. Así, cualquiera que sea el elemento <span class="math inline">\(x\)</span> elegido, existe otro elemento del conjunto estrictamente mayor.</p>
+<p>En consecuencia, ningún elemento puede ser máximo y</p>
+<p><span class="math display">\[
+\boxed{(2,4)\text{ no tiene máximo}.}
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-012"></span></p>
+</section>
+<section id="puede-un-conjunto-tener-dos-máximos-distintos-qué-parte-de-la-prueba-de-unicidad-lo-impide" class="level3">
+<h3 class="anchored" data-anchor-id="puede-un-conjunto-tener-dos-máximos-distintos-qué-parte-de-la-prueba-de-unicidad-lo-impide">12. ¿Puede un conjunto tener dos máximos distintos? ¿Qué parte de la prueba de unicidad lo impide?</h3>
+<p>No.&nbsp;Supongamos que <span class="math inline">\(M\)</span> y <span class="math inline">\(N\)</span> fueran ambos máximos de <span class="math inline">\(A\)</span>.</p>
+<p>Como <span class="math inline">\(M\)</span> es máximo, es cota superior de <span class="math inline">\(A\)</span>; y como <span class="math inline">\(N\in A\)</span>, se sigue que</p>
+<p><span class="math display">\[
+N\le M.
+\]</span></p>
+<p>Del mismo modo, como <span class="math inline">\(N\)</span> es máximo y <span class="math inline">\(M\in A\)</span>,</p>
+<p><span class="math display">\[
+M\le N.
+\]</span></p>
+<p>Por antisimetría del orden,</p>
+<p><span class="math display">\[
+\boxed{M=N}.
+\]</span></p>
+<p>La prueba depende de combinar las dos partes de la definición: <strong>cada máximo es una cota superior y, al mismo tiempo, pertenece al conjunto</strong>. Esa combinación produce las dos desigualdades opuestas; la antisimetría impide que los máximos sean distintos.</p>
+</section>
+</section>
+<section id="la-mejor-barrera-supremo-e-ínfimo" class="level2">
+<h2 class="anchored" data-anchor-id="la-mejor-barrera-supremo-e-ínfimo">§2.3. La mejor barrera: supremo e ínfimo</h2>
+<p><span id="MA-MSOL-ANM-01-002-013"></span></p>
+<section id="para-a25-determina-ua-y-la-y-a-partir-de-ellos-identifica-sup-a-e-inf-a" class="level3">
+<h3 class="anchored" data-anchor-id="para-a25-determina-ua-y-la-y-a-partir-de-ellos-identifica-sup-a-e-inf-a">13. Para <span class="math inline">\(A=(2,5)\)</span>, determina <span class="math inline">\(U(A)\)</span> y <span class="math inline">\(L(A)\)</span> y, a partir de ellos, identifica <span class="math inline">\(\sup A\)</span> e <span class="math inline">\(\inf A\)</span></h3>
+<p>Las cotas superiores son exactamente los números mayores o iguales que <span class="math inline">\(5\)</span>:</p>
+<p><span class="math display">\[
+U(A)=[5,\infty).
+\]</span></p>
+<p>En efecto, todo <span class="math inline">\(u\ge5\)</span> satisface <span class="math inline">\(a&lt;5\le u\)</span> para todo <span class="math inline">\(a\in A\)</span>, mientras que si <span class="math inline">\(u&lt;5\)</span> existe un punto de <span class="math inline">\((2,5)\)</span> mayor que <span class="math inline">\(u\)</span>.</p>
+<p>Dualmente,</p>
+<p><span class="math display">\[
+L(A)=(-\infty,2].
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\sup A=5,\qquad \inf A=2}.
+\]</span></p>
+<p>Ni <span class="math inline">\(2\)</span> ni <span class="math inline">\(5\)</span> pertenecen a <span class="math inline">\(A\)</span>; eso no afecta a su papel como barreras extremales.</p>
+<p><span id="MA-MSOL-ANM-01-002-014"></span></p>
+</section>
+<section id="para-b-417-escribe-ub-y-lb-y-localiza-sus-extremos" class="level3">
+<h3 class="anchored" data-anchor-id="para-b-417-escribe-ub-y-lb-y-localiza-sus-extremos">14. Para <span class="math inline">\(B=\{-4,1,7\}\)</span>, escribe <span class="math inline">\(U(B)\)</span> y <span class="math inline">\(L(B)\)</span> y localiza sus extremos</h3>
+<p>El elemento mayor de <span class="math inline">\(B\)</span> es <span class="math inline">\(7\)</span>, así que las cotas superiores son exactamente</p>
+<p><span class="math display">\[
+U(B)=[7,\infty).
+\]</span></p>
+<p>El elemento menor es <span class="math inline">\(-4\)</span>, por lo que</p>
+<p><span class="math display">\[
+L(B)=(-\infty,-4].
+\]</span></p>
+<p>Los extremos de estas familias son, respectivamente,</p>
+<p><span class="math display">\[
+\min U(B)=7,
+\qquad
+\max L(B)=-4.
+\]</span></p>
+<p>En consecuencia,</p>
+<p><span class="math display">\[
+\boxed{\sup B=7,\qquad \inf B=-4}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-015"></span></p>
+</section>
+<section id="si-ssup-a-por-qué-ningún-número-menor-que-s-puede-pertenecer-a-ua" class="level3">
+<h3 class="anchored" data-anchor-id="si-ssup-a-por-qué-ningún-número-menor-que-s-puede-pertenecer-a-ua">15. Si <span class="math inline">\(s=\sup A\)</span>, ¿por qué ningún número menor que <span class="math inline">\(s\)</span> puede pertenecer a <span class="math inline">\(U(A)\)</span>?</h3>
+<p>Porque <span class="math inline">\(s\)</span> es, por definición, la <strong>menor</strong> cota superior de <span class="math inline">\(A\)</span>.</p>
+<p>Si existiera <span class="math inline">\(u&lt;s\)</span> con <span class="math inline">\(u\in U(A)\)</span>, entonces <span class="math inline">\(u\)</span> sería una cota superior estrictamente menor que <span class="math inline">\(s\)</span>, contradiciendo la minimalidad de <span class="math inline">\(s\)</span>.</p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{u&lt;s\Longrightarrow u\notin U(A)}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-016"></span></p>
+</section>
+<section id="demuestra-directamente-que-si-ssup-a-entonces-uasinfty" class="level3">
+<h3 class="anchored" data-anchor-id="demuestra-directamente-que-si-ssup-a-entonces-uasinfty">16. Demuestra directamente que, si <span class="math inline">\(s=\sup A\)</span>, entonces <span class="math inline">\(U(A)=[s,\infty)\)</span></h3>
+<p>Como <span class="math inline">\(s=\sup A\)</span>, el número <span class="math inline">\(s\)</span> es cota superior. Si <span class="math inline">\(u\ge s\)</span>, entonces para todo <span class="math inline">\(a\in A\)</span>,</p>
+<p><span class="math display">\[
+a\le s\le u,
+\]</span></p>
+<p>de modo que <span class="math inline">\(u\in U(A)\)</span>. Así,</p>
+<p><span class="math display">\[
+[s,\infty)\subseteq U(A).
+\]</span></p>
+<p>Recíprocamente, si <span class="math inline">\(u\in U(A)\)</span>, la minimalidad del supremo obliga a</p>
+<p><span class="math display">\[
+s\le u.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(u\in[s,\infty)\)</span> y</p>
+<p><span class="math display">\[
+U(A)\subseteq[s,\infty).
+\]</span></p>
+<p>Concluimos</p>
+<p><span class="math display">\[
+\boxed{U(A)=[s,\infty)}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-017"></span></p>
+</section>
+<section id="formula-y-demuestra-la-afirmación-dual-para-el-ínfimo" class="level3">
+<h3 class="anchored" data-anchor-id="formula-y-demuestra-la-afirmación-dual-para-el-ínfimo">17. Formula y demuestra la afirmación dual para el ínfimo</h3>
+<p>La afirmación dual es:</p>
+<blockquote class="blockquote">
+<p>si <span class="math inline">\(i=\inf A\)</span>, entonces <span class="math display">\[
+L(A)=(-\infty,i].
+\]</span></p>
+</blockquote>
+<p>Como <span class="math inline">\(i\)</span> es cota inferior, todo <span class="math inline">\(l\le i\)</span> satisface, para cada <span class="math inline">\(a\in A\)</span>,</p>
+<p><span class="math display">\[
+l\le i\le a,
+\]</span></p>
+<p>de modo que <span class="math inline">\(l\in L(A)\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+(-\infty,i]\subseteq L(A).
+\]</span></p>
+<p>Si <span class="math inline">\(l\in L(A)\)</span>, como <span class="math inline">\(i\)</span> es la <strong>mayor</strong> cota inferior, necesariamente</p>
+<p><span class="math display">\[
+l\le i.
+\]</span></p>
+<p>Luego <span class="math inline">\(l\in(-\infty,i]\)</span>, y obtenemos la inclusión contraria. Así,</p>
+<p><span class="math display">\[
+\boxed{L(A)=(-\infty,i]}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-018"></span></p>
+</section>
+<section id="explica-por-qué-la-definición-de-supremo-no-incluye-la-condición-sin-a" class="level3">
+<h3 class="anchored" data-anchor-id="explica-por-qué-la-definición-de-supremo-no-incluye-la-condición-sin-a">18. Explica por qué la definición de supremo no incluye la condición <span class="math inline">\(s\in A\)</span></h3>
+<p>Porque el supremo responde a una pregunta sobre las <strong>cotas superiores</strong> de <span class="math inline">\(A\)</span>, no sobre la pertenencia al conjunto original.</p>
+<p>La definición exige que <span class="math inline">\(s\)</span> sea una cota superior y que sea la menor entre todas ellas. Es decir,</p>
+<p><span class="math display">\[
+s\in U(A)
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+s\le u
+\qquad\text{para todo }u\in U(A).
+\]</span></p>
+<p>Ninguna de estas condiciones obliga a que <span class="math inline">\(s\in A\)</span>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+A=(0,1)
+\]</span></p>
+<p>tiene</p>
+<p><span class="math display">\[
+\sup A=1,
+\]</span></p>
+<p>aunque</p>
+<p><span class="math display">\[
+1\notin A.
+\]</span></p>
+<p>La pertenencia de la barrera extremal es una cuestión distinta, que se estudia separadamente.</p>
+</section>
+</section>
+<section id="alcanzado-frente-a-no-alcanzado" class="level2">
+<h2 class="anchored" data-anchor-id="alcanzado-frente-a-no-alcanzado">§2.4. Alcanzado frente a no alcanzado</h2>
+<p><span id="MA-MSOL-ANM-01-002-019"></span></p>
+<section id="para-a-13-determina-inf-a-sup-a-min-a-y-decide-si-existe-max-a" class="level3">
+<h3 class="anchored" data-anchor-id="para-a-13-determina-inf-a-sup-a-min-a-y-decide-si-existe-max-a">19. Para <span class="math inline">\(A=[-1,3)\)</span>, determina <span class="math inline">\(\inf A\)</span>, <span class="math inline">\(\sup A\)</span>, <span class="math inline">\(\min A\)</span> y decide si existe <span class="math inline">\(\max A\)</span></h3>
+<p>La barrera inferior es <span class="math inline">\(-1\)</span>, y además pertenece al conjunto. Por tanto,</p>
+<p><span class="math display">\[
+\inf A=-1
+\qquad\text{y}\qquad
+\min A=-1.
+\]</span></p>
+<p>La barrera superior extremal es <span class="math inline">\(3\)</span>: todo elemento de <span class="math inline">\(A\)</span> es menor que <span class="math inline">\(3\)</span>, y ningún número menor que <span class="math inline">\(3\)</span> puede ser cota superior porque siempre hay puntos de <span class="math inline">\([-1,3)\)</span> situados entre ese número y <span class="math inline">\(3\)</span>. Así,</p>
+<p><span class="math display">\[
+\sup A=3.
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+3\notin A,
+\]</span></p>
+<p>de modo que esa barrera no está alcanzada. Por tanto, <span class="math inline">\(A\)</span> no tiene máximo.</p>
+<p>En resumen,</p>
+<p><span class="math display">\[
+\boxed{\inf A=\min A=-1,\qquad \sup A=3,\qquad \max A\text{ no existe}.}
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-020"></span></p>
+</section>
+<section id="para-b-24-identifica-qué-barrera-extremal-está-alcanzada-y-cuál-no" class="level3">
+<h3 class="anchored" data-anchor-id="para-b-24-identifica-qué-barrera-extremal-está-alcanzada-y-cuál-no">20. Para <span class="math inline">\(B=(-2,4]\)</span>, identifica qué barrera extremal está alcanzada y cuál no</h3>
+<p>Tenemos</p>
+<p><span class="math display">\[
+\inf B=-2
+\qquad\text{y}\qquad
+\sup B=4.
+\]</span></p>
+<p>La barrera superior está alcanzada porque</p>
+<p><span class="math display">\[
+4\in B.
+\]</span></p>
+<p>Por ello,</p>
+<p><span class="math display">\[
+\boxed{\max B=4=\sup B}.
+\]</span></p>
+<p>En cambio,</p>
+<p><span class="math display">\[
+-2\notin B,
+\]</span></p>
+<p>así que la barrera inferior extremal no está alcanzada y <span class="math inline">\(B\)</span> no tiene mínimo.</p>
+<p>Por tanto, la barrera superior está alcanzada y la inferior no.</p>
+<p><span id="MA-MSOL-ANM-01-002-021"></span></p>
+</section>
+<section id="supón-que-sup-a-existe.-demuestra-que-si-sup-ain-a-entonces-sup-amax-a" class="level3">
+<h3 class="anchored" data-anchor-id="supón-que-sup-a-existe.-demuestra-que-si-sup-ain-a-entonces-sup-amax-a">21. Supón que <span class="math inline">\(\sup A\)</span> existe. Demuestra que, si <span class="math inline">\(\sup A\in A\)</span>, entonces <span class="math inline">\(\sup A=\max A\)</span></h3>
+<p>Sea</p>
+<p><span class="math display">\[
+s=\sup A.
+\]</span></p>
+<p>Por definición de supremo, <span class="math inline">\(s\)</span> es una cota superior de <span class="math inline">\(A\)</span>, así que</p>
+<p><span class="math display">\[
+a\le s
+\qquad
+\text{para todo }a\in A.
+\]</span></p>
+<p>La hipótesis adicional dice que</p>
+<p><span class="math display">\[
+s\in A.
+\]</span></p>
+<p>Se cumplen entonces exactamente las dos condiciones que definen al máximo: pertenencia y dominio de todos los elementos. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\max A=s=\sup A}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-022"></span></p>
+</section>
+<section id="demuestra-directamente-que-si-max-a-existe-entonces-también-existe-sup-a-y-ambos-coinciden" class="level3">
+<h3 class="anchored" data-anchor-id="demuestra-directamente-que-si-max-a-existe-entonces-también-existe-sup-a-y-ambos-coinciden">22. Demuestra directamente que, si <span class="math inline">\(\max A\)</span> existe, entonces también existe <span class="math inline">\(\sup A\)</span> y ambos coinciden</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+M=\max A.
+\]</span></p>
+<p>Como <span class="math inline">\(M\)</span> domina a todos los elementos de <span class="math inline">\(A\)</span>, es una cota superior:</p>
+<p><span class="math display">\[
+M\in U(A).
+\]</span></p>
+<p>Ahora sea <span class="math inline">\(u\in U(A)\)</span> una cota superior cualquiera. Puesto que</p>
+<p><span class="math display">\[
+M\in A,
+\]</span></p>
+<p>la definición de cota superior aplicada a <span class="math inline">\(u\)</span> obliga a que</p>
+<p><span class="math display">\[
+M\le u.
+\]</span></p>
+<p>Así, <span class="math inline">\(M\)</span> es una cota superior menor o igual que cualquier otra cota superior. Es, por tanto, la menor cota superior de <span class="math inline">\(A\)</span>.</p>
+<p>Concluimos que el supremo existe y</p>
+<p><span class="math display">\[
+\boxed{\sup A=M=\max A}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-023"></span></p>
+</section>
+<section id="da-un-ejemplo-de-una-cota-superior-que-no-sea-el-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="da-un-ejemplo-de-una-cota-superior-que-no-sea-el-supremo">23. Da un ejemplo de una cota superior que no sea el supremo</h3>
+<p>Tomemos</p>
+<p><span class="math display">\[
+A=(0,1).
+\]</span></p>
+<p>El número <span class="math inline">\(2\)</span> es cota superior, pues todo <span class="math inline">\(a\in A\)</span> satisface</p>
+<p><span class="math display">\[
+a&lt;1&lt;2.
+\]</span></p>
+<p>Sin embargo,</p>
+<p><span class="math display">\[
+\sup A=1,
+\]</span></p>
+<p>de modo que <span class="math inline">\(2\)</span> no es el supremo.</p>
+<p>Por tanto, una cota superior puede controlar al conjunto sin ser la barrera superior extremal.</p>
+<p><span id="MA-MSOL-ANM-01-002-024"></span></p>
+</section>
+<section id="da-un-ejemplo-de-un-conjunto-con-supremo-pero-sin-máximo-y-otro-con-máximo" class="level3">
+<h3 class="anchored" data-anchor-id="da-un-ejemplo-de-un-conjunto-con-supremo-pero-sin-máximo-y-otro-con-máximo">24. Da un ejemplo de un conjunto con supremo pero sin máximo, y otro con máximo</h3>
+<p>Para un conjunto con supremo pero sin máximo podemos tomar</p>
+<p><span class="math display">\[
+A=(0,1).
+\]</span></p>
+<p>Se cumple</p>
+<p><span class="math display">\[
+\sup A=1,
+\]</span></p>
+<p>pero <span class="math inline">\(1\notin A\)</span>, así que <span class="math inline">\(A\)</span> no tiene máximo.</p>
+<p>Para un conjunto con máximo podemos tomar</p>
+<p><span class="math display">\[
+B=(0,1].
+\]</span></p>
+<p>Aquí</p>
+<p><span class="math display">\[
+1\in B
+\]</span></p>
+<p>y todo <span class="math inline">\(b\in B\)</span> satisface <span class="math inline">\(b\le1\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\max B=1}.
+\]</span></p>
+<p>Además, como todo máximo es también la menor cota superior,</p>
+<p><span class="math display">\[
+\sup B=1.
+\]</span></p>
+<p>Los dos conjuntos tienen la misma barrera superior extremal; lo que cambia es si esa barrera pertenece al conjunto.</p>
+</section>
+</section>
+<section id="acercarse-a-una-barrera-sin-tocarla" class="level2">
+<h2 class="anchored" data-anchor-id="acercarse-a-una-barrera-sin-tocarla">§2.5. Acercarse a una barrera sin tocarla</h2>
+<p><span id="MA-MSOL-ANM-01-002-025"></span></p>
+<section id="para-a25-y-s5-verifica-directamente-la-condición-con-varepsilon" class="level3">
+<h3 class="anchored" data-anchor-id="para-a25-y-s5-verifica-directamente-la-condición-con-varepsilon">25. Para <span class="math inline">\(A=(2,5)\)</span> y <span class="math inline">\(s=5\)</span>, verifica directamente la condición con <span class="math inline">\(\varepsilon\)</span></h3>
+<p>Sea <span class="math inline">\(\varepsilon&gt;0\)</span>. Debemos encontrar un elemento <span class="math inline">\(a\in(2,5)\)</span> tal que</p>
+<p><span class="math display">\[
+5-\varepsilon&lt;a\le5.
+\]</span></p>
+<p>Tomemos</p>
+<p><span class="math display">\[
+\delta=\min\left\{\frac{\varepsilon}{2},1\right\}
+\qquad\text{y}\qquad
+a=5-\delta.
+\]</span></p>
+<p>Como <span class="math inline">\(0&lt;\delta\le1\)</span>, se tiene</p>
+<p><span class="math display">\[
+4\le a&lt;5,
+\]</span></p>
+<p>por lo que <span class="math inline">\(a\in(2,5)\)</span>. Además, <span class="math inline">\(\delta&lt;\varepsilon\)</span>, así que</p>
+<p><span class="math display">\[
+5-\varepsilon&lt;5-\delta=a&lt;5.
+\]</span></p>
+<p>Por tanto, para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(a\in A\)</span> con</p>
+<p><span class="math display">\[
+\boxed{5-\varepsilon&lt;a\le5}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-026"></span></p>
+</section>
+<section id="explica-por-qué-si-existe-varepsilon_00-tal-que-ningún-elemento-de-a-pertenece-a-s-varepsilon_0s-entonces-s-no-puede-ser-el-supremo" class="level3">
+<h3 class="anchored" data-anchor-id="explica-por-qué-si-existe-varepsilon_00-tal-que-ningún-elemento-de-a-pertenece-a-s-varepsilon_0s-entonces-s-no-puede-ser-el-supremo">26. Explica por qué, si existe <span class="math inline">\(\varepsilon_0&gt;0\)</span> tal que ningún elemento de <span class="math inline">\(A\)</span> pertenece a <span class="math inline">\((s-\varepsilon_0,s]\)</span>, entonces <span class="math inline">\(s\)</span> no puede ser el supremo</h3>
+<p>Si <span class="math inline">\(s\)</span> fuera el supremo de <span class="math inline">\(A\)</span>, la caracterización <span class="math inline">\(\varepsilon\)</span> exigiría que para <strong>todo</strong> <span class="math inline">\(\varepsilon&gt;0\)</span> existiera algún <span class="math inline">\(a\in A\)</span> con</p>
+<p><span class="math display">\[
+s-\varepsilon&lt;a\le s.
+\]</span></p>
+<p>Al tomar precisamente <span class="math inline">\(\varepsilon=\varepsilon_0\)</span>, la hipótesis dice que no existe ningún elemento de <span class="math inline">\(A\)</span> en esa franja. Esto contradice la condición necesaria para ser supremo.</p>
+<p>Equivalentemente, si además recordamos que un supremo es cota superior, la ausencia de puntos en <span class="math inline">\((s-\varepsilon_0,s]\)</span> implica que todo <span class="math inline">\(a\in A\)</span> satisface</p>
+<p><span class="math display">\[
+a\le s-\varepsilon_0,
+\]</span></p>
+<p>de modo que <span class="math inline">\(s-\varepsilon_0\)</span> sería una cota superior estrictamente menor que <span class="math inline">\(s\)</span>.</p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{s\text{ no puede ser }\sup A}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-027"></span></p>
+</section>
+<section id="supón-que-anevarnothing-que-s-es-cota-superior-y-que-para-todo-varepsilon0-existe-ain-a-con-s-varepsilonale-s.-demuestra-que-ssup-a" class="level3">
+<h3 class="anchored" data-anchor-id="supón-que-anevarnothing-que-s-es-cota-superior-y-que-para-todo-varepsilon0-existe-ain-a-con-s-varepsilonale-s.-demuestra-que-ssup-a">27. Supón que <span class="math inline">\(A\ne\varnothing\)</span>, que <span class="math inline">\(s\)</span> es cota superior y que para todo <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(s-\varepsilon&lt;a\le s\)</span>. Demuestra que <span class="math inline">\(s=\sup A\)</span></h3>
+<p>Ya sabemos que <span class="math inline">\(s\)</span> es cota superior. Sólo falta demostrar que es la menor.</p>
+<p>Sea <span class="math inline">\(u\)</span> cualquier cota superior de <span class="math inline">\(A\)</span>. Si ocurriera que</p>
+<p><span class="math display">\[
+u&lt;s,
+\]</span></p>
+<p>tendríamos</p>
+<p><span class="math display">\[
+\varepsilon=s-u&gt;0.
+\]</span></p>
+<p>Por hipótesis, existe <span class="math inline">\(a\in A\)</span> tal que</p>
+<p><span class="math display">\[
+s-\varepsilon&lt;a\le s.
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+s-\varepsilon=s-(s-u)=u,
+\]</span></p>
+<p>de modo que <span class="math inline">\(u&lt;a\)</span>. Esto contradice que <span class="math inline">\(u\)</span> sea cota superior.</p>
+<p>Por tanto ninguna cota superior es menor que <span class="math inline">\(s\)</span>, es decir,</p>
+<p><span class="math display">\[
+s\le u
+\qquad\text{para toda }u\in U(A).
+\]</span></p>
+<p>Concluimos que</p>
+<p><span class="math display">\[
+\boxed{s=\sup A}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-028"></span></p>
+</section>
+<section id="formula-y-demuestra-la-versión-dual-para-el-ínfimo" class="level3">
+<h3 class="anchored" data-anchor-id="formula-y-demuestra-la-versión-dual-para-el-ínfimo">28. Formula y demuestra la versión dual para el ínfimo</h3>
+<p>La versión dual dice: si <span class="math inline">\(A\ne\varnothing\)</span>, <span class="math inline">\(i\)</span> es una cota inferior de <span class="math inline">\(A\)</span> y</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\;\exists a\in A
+\quad\text{tal que}\quad
+i\le a&lt;i+\varepsilon,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+\boxed{i=\inf A}.
+\]</span></p>
+<p>En efecto, sea <span class="math inline">\(l\)</span> una cota inferior cualquiera. Si <span class="math inline">\(l&gt;i\)</span>, entonces</p>
+<p><span class="math display">\[
+\varepsilon=l-i&gt;0.
+\]</span></p>
+<p>Por la condición dada existe <span class="math inline">\(a\in A\)</span> con</p>
+<p><span class="math display">\[
+i\le a&lt;i+\varepsilon=l.
+\]</span></p>
+<p>Así, <span class="math inline">\(a&lt;l\)</span>, contradiciendo que <span class="math inline">\(l\)</span> sea cota inferior. Por tanto toda cota inferior satisface</p>
+<p><span class="math display">\[
+l\le i.
+\]</span></p>
+<p>Como <span class="math inline">\(i\)</span> ya era cota inferior, resulta ser la mayor de todas ellas. Luego <span class="math inline">\(i=\inf A\)</span>.</p>
+<p><span id="MA-MSOL-ANM-01-002-029"></span></p>
+</section>
+<section id="qué-cambia-en-la-condición-cuando-el-supremo-pertenece-a-a" class="level3">
+<h3 class="anchored" data-anchor-id="qué-cambia-en-la-condición-cuando-el-supremo-pertenece-a-a">29. ¿Qué cambia en la condición cuando el supremo pertenece a <span class="math inline">\(A\)</span>?</h3>
+<p>La condición cuantificada no cambia:</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\;\exists a\in A
+\quad\text{tal que}\quad
+s-\varepsilon&lt;a\le s.
+\]</span></p>
+<p>Lo que cambia es que, si <span class="math inline">\(s\in A\)</span>, podemos escoger siempre el mismo testigo,</p>
+<p><span class="math display">\[
+a=s,
+\]</span></p>
+<p>porque para todo <span class="math inline">\(\varepsilon&gt;0\)</span> se cumple</p>
+<p><span class="math display">\[
+s-\varepsilon&lt;s=s.
+\]</span></p>
+<p>Si <span class="math inline">\(s\notin A\)</span>, en cambio, el testigo debe estar estrictamente por debajo de <span class="math inline">\(s\)</span> y puede depender del valor de <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Así, la caracterización cubre tanto el supremo alcanzado como el no alcanzado.</p>
+<p><span id="MA-MSOL-ANM-01-002-030"></span></p>
+</section>
+<section id="explica-por-qué-la-expresión-hay-puntos-arbitrariamente-cerca-del-supremo-no-obliga-todavía-a-introducir-una-sucesión" class="level3">
+<h3 class="anchored" data-anchor-id="explica-por-qué-la-expresión-hay-puntos-arbitrariamente-cerca-del-supremo-no-obliga-todavía-a-introducir-una-sucesión">30. Explica por qué la expresión “hay puntos arbitrariamente cerca del supremo” no obliga todavía a introducir una sucesión</h3>
+<p>La afirmación que hemos probado tiene la forma</p>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\;\exists a\in A
+\quad\text{tal que}\quad
+s-\varepsilon&lt;a\le s.
+\]</span></p>
+<p>Esto sólo dice que, <strong>después de elegir un margen positivo cualquiera</strong>, existe algún elemento de <span class="math inline">\(A\)</span> dentro de la franja correspondiente. No hemos elegido una lista numerada de márgenes ni una familia de puntos <span class="math inline">\(a_1,a_2,\dots\)</span>, y tampoco hemos formulado una afirmación de convergencia.</p>
+<p>Cada elección de <span class="math inline">\(\varepsilon\)</span> plantea un problema independiente de existencia. Por tanto, “arbitrariamente cerca” expresa aquí una propiedad cuantificada de las franjas alrededor de <span class="math inline">\(s\)</span>, no la existencia de una sucesión previamente construida.</p>
+</section>
+</section>
+<section id="comparar-conjuntos-por-sus-barreras" class="level2">
+<h2 class="anchored" data-anchor-id="comparar-conjuntos-por-sus-barreras">§2.6. Comparar conjuntos por sus barreras</h2>
+<p><span id="MA-MSOL-ANM-01-002-031"></span></p>
+<section id="si-asubseteq-b-demuestra-directamente-que-ubsubseteq-ua" class="level3">
+<h3 class="anchored" data-anchor-id="si-asubseteq-b-demuestra-directamente-que-ubsubseteq-ua">31. Si <span class="math inline">\(A\subseteq B\)</span>, demuestra directamente que <span class="math inline">\(U(B)\subseteq U(A)\)</span></h3>
+<p>Sea <span class="math inline">\(u\in U(B)\)</span>. Entonces</p>
+<p><span class="math display">\[
+b\le u
+\qquad\text{para todo }b\in B.
+\]</span></p>
+<p>Como <span class="math inline">\(A\subseteq B\)</span>, cada <span class="math inline">\(a\in A\)</span> pertenece también a <span class="math inline">\(B\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+a\le u
+\qquad\text{para todo }a\in A.
+\]</span></p>
+<p>Esto significa que <span class="math inline">\(u\in U(A)\)</span>. Como <span class="math inline">\(u\)</span> era una cota superior cualquiera de <span class="math inline">\(B\)</span>, concluimos</p>
+<p><span class="math display">\[
+\boxed{U(B)\subseteq U(A)}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-032"></span></p>
+</section>
+<section id="formula-y-demuestra-la-inclusión-correspondiente-para-la-y-lb" class="level3">
+<h3 class="anchored" data-anchor-id="formula-y-demuestra-la-inclusión-correspondiente-para-la-y-lb">32. Formula y demuestra la inclusión correspondiente para <span class="math inline">\(L(A)\)</span> y <span class="math inline">\(L(B)\)</span></h3>
+<p>La inclusión dual es</p>
+<p><span class="math display">\[
+\boxed{L(B)\subseteq L(A)}.
+\]</span></p>
+<p>En efecto, sea <span class="math inline">\(l\in L(B)\)</span>. Entonces</p>
+<p><span class="math display">\[
+l\le b
+\qquad\text{para todo }b\in B.
+\]</span></p>
+<p>Como todo <span class="math inline">\(a\in A\)</span> pertenece a <span class="math inline">\(B\)</span>, también</p>
+<p><span class="math display">\[
+l\le a
+\qquad\text{para todo }a\in A.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(l\in L(A)\)</span>, lo que prueba la inclusión.</p>
+<p><span id="MA-MSOL-ANM-01-002-033"></span></p>
+</section>
+<section id="supón-que-asubseteq-b-y-que-existen-sup-a-y-sup-b.-demuestra-que-sup-alesup-b" class="level3">
+<h3 class="anchored" data-anchor-id="supón-que-asubseteq-b-y-que-existen-sup-a-y-sup-b.-demuestra-que-sup-alesup-b">33. Supón que <span class="math inline">\(A\subseteq B\)</span> y que existen <span class="math inline">\(\sup A\)</span> y <span class="math inline">\(\sup B\)</span>. Demuestra que <span class="math inline">\(\sup A\le\sup B\)</span></h3>
+<p>Como <span class="math inline">\(\sup B\)</span> es una cota superior de <span class="math inline">\(B\)</span>, pertenece a <span class="math inline">\(U(B)\)</span>. Por la inclusión recién demostrada,</p>
+<p><span class="math display">\[
+U(B)\subseteq U(A),
+\]</span></p>
+<p>de modo que <span class="math inline">\(\sup B\)</span> también es una cota superior de <span class="math inline">\(A\)</span>.</p>
+<p>Pero <span class="math inline">\(\sup A\)</span> es la menor cota superior de <span class="math inline">\(A\)</span>. Luego</p>
+<p><span class="math display">\[
+\boxed{\sup A\le\sup B}.
+\]</span></p>
+<p>La desigualdad puede ser igualdad: la inclusión de conjuntos no obliga a que la barrera superior se desplace estrictamente.</p>
+<p><span id="MA-MSOL-ANM-01-002-034"></span></p>
+</section>
+<section id="da-un-ejemplo-con-asubsetneq-b-pero-sup-asup-b" class="level3">
+<h3 class="anchored" data-anchor-id="da-un-ejemplo-con-asubsetneq-b-pero-sup-asup-b">34. Da un ejemplo con <span class="math inline">\(A\subsetneq B\)</span> pero <span class="math inline">\(\sup A=\sup B\)</span></h3>
+<p>Tomemos</p>
+<p><span class="math display">\[
+A=(0,1)
+\qquad\text{y}\qquad
+B=[0,1].
+\]</span></p>
+<p>La inclusión es estricta porque, por ejemplo, <span class="math inline">\(0\in B\)</span> pero <span class="math inline">\(0\notin A\)</span>.</p>
+<p>Sin embargo, ambos conjuntos tienen la misma menor cota superior:</p>
+<p><span class="math display">\[
+\boxed{\sup A=\sup B=1}.
+\]</span></p>
+<p>Por tanto, de <span class="math inline">\(A\subsetneq B\)</span> no se puede deducir <span class="math inline">\(\sup A&lt;\sup B\)</span>.</p>
+<p><span id="MA-MSOL-ANM-01-002-035"></span></p>
+</section>
+<section id="si-existen-inf-a-y-sup-a-explica-por-qué-la-reflexión-obliga-a-que-sup-a-inf-a" class="level3">
+<h3 class="anchored" data-anchor-id="si-existen-inf-a-y-sup-a-explica-por-qué-la-reflexión-obliga-a-que-sup-a-inf-a">35. Si existen <span class="math inline">\(\inf A\)</span> y <span class="math inline">\(\sup(-A)\)</span>, explica por qué la reflexión obliga a que <span class="math inline">\(\sup(-A)=-\inf A\)</span></h3>
+<p>Sea</p>
+<p><span class="math display">\[
+i=\inf A.
+\]</span></p>
+<p>Entonces <span class="math inline">\(i\)</span> es la mayor cota inferior de <span class="math inline">\(A\)</span>. Al multiplicar las desigualdades por <span class="math inline">\(-1\)</span>, toda cota inferior <span class="math inline">\(l\)</span> de <span class="math inline">\(A\)</span> se transforma en la cota superior <span class="math inline">\(-l\)</span> de <span class="math inline">\(-A\)</span>. En particular,</p>
+<p><span class="math display">\[
+U(-A)=-L(A).
+\]</span></p>
+<p>Como <span class="math inline">\(i\)</span> es el mayor elemento de <span class="math inline">\(L(A)\)</span>, el número <span class="math inline">\(-i\)</span> es el menor elemento de <span class="math inline">\(-L(A)=U(-A)\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{\sup(-A)=-i=-\inf A}.
+\]</span></p>
+<p>La identidad expresa exactamente la inversión del orden bajo la reflexión <span class="math inline">\(x\mapsto -x\)</span>.</p>
+<p><span id="MA-MSOL-ANM-01-002-036"></span></p>
+</section>
+<section id="para-a-14-determina--a-y-compara-sus-extremos-con-los-de-a" class="level3">
+<h3 class="anchored" data-anchor-id="para-a-14-determina--a-y-compara-sus-extremos-con-los-de-a">36. Para <span class="math inline">\(A=[-1,4)\)</span>, determina <span class="math inline">\(-A\)</span> y compara sus extremos con los de <span class="math inline">\(A\)</span></h3>
+<p>Al reflejar <span class="math inline">\(A\)</span> respecto del origen obtenemos</p>
+<p><span class="math display">\[
+-A=(-4,1].
+\]</span></p>
+<p>Para el conjunto original,</p>
+<p><span class="math display">\[
+\inf A=-1,
+\qquad
+\sup A=4.
+\]</span></p>
+<p>Para el reflejado,</p>
+<p><span class="math display">\[
+\inf(-A)=-4,
+\qquad
+\sup(-A)=1.
+\]</span></p>
+<p>Estas igualdades verifican las relaciones de reflexión:</p>
+<p><span class="math display">\[
+\boxed{\sup(-A)=1=-\inf A}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\boxed{\inf(-A)=-4=-\sup A}.
+\]</span></p>
+<p>Además, <span class="math inline">\(1\in -A\)</span>, por lo que <span class="math inline">\(\max(-A)=1\)</span>, mientras que <span class="math inline">\(-4\notin -A\)</span>, de modo que <span class="math inline">\(-A\)</span> no tiene mínimo.</p>
+</section>
+</section>
+<section id="definir-una-barrera-no-garantiza-que-exista" class="level2">
+<h2 class="anchored" data-anchor-id="definir-una-barrera-no-garantiza-que-exista">§2.7. Definir una barrera no garantiza que exista</h2>
+<p><span id="MA-MSOL-ANM-01-002-037"></span></p>
+<section id="explica-por-qué-la-definición-de-sup-a-no-demuestra-por-sí-sola-que-sup-a-exista" class="level3">
+<h3 class="anchored" data-anchor-id="explica-por-qué-la-definición-de-sup-a-no-demuestra-por-sí-sola-que-sup-a-exista">37. Explica por qué la definición de <span class="math inline">\(\sup A\)</span> no demuestra por sí sola que <span class="math inline">\(\sup A\)</span> exista</h3>
+<p>Una definición establece <strong>qué condiciones tendría que satisfacer</strong> un número para recibir el nombre de supremo, pero no asegura que haya algún número que efectivamente las cumpla.</p>
+<p>Decir que <span class="math inline">\(s=\sup A\)</span> significa que <span class="math inline">\(s\)</span> es una cota superior y que es la menor entre todas las cotas superiores. En términos de <span class="math inline">\(U(A)\)</span>,</p>
+<p><span class="math display">\[
+\sup A=\min U(A)
+\]</span></p>
+<p>cuando ese mínimo existe.</p>
+<p>Por tanto, antes de poder escribir <span class="math inline">\(\sup A\)</span> debemos saber que <span class="math inline">\(U(A)\)</span> tiene un mínimo. Esa existencia es una cuestión adicional a la definición.</p>
+<p><span id="MA-MSOL-ANM-01-002-038"></span></p>
+</section>
+<section id="para-a0infty-identifica-cuál-de-los-dos-obstáculos-para-la-existencia-del-supremo-falla-primero" class="level3">
+<h3 class="anchored" data-anchor-id="para-a0infty-identifica-cuál-de-los-dos-obstáculos-para-la-existencia-del-supremo-falla-primero">38. Para <span class="math inline">\(A=(0,\infty)\)</span>, identifica cuál de los dos obstáculos para la existencia del supremo falla primero</h3>
+<p>Falla el primer obstáculo: el conjunto no tiene cotas superiores reales.</p>
+<p>En efecto, dado cualquier <span class="math inline">\(u\in\mathbb R\)</span>, podemos elegir, por ejemplo,</p>
+<p><span class="math display">\[
+a=\max\{1,u+1\}.
+\]</span></p>
+<p>Entonces <span class="math inline">\(a\in(0,\infty)\)</span> y <span class="math inline">\(a&gt;u\)</span>, de modo que <span class="math inline">\(u\)</span> no es cota superior. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{U(A)=\varnothing}.
+\]</span></p>
+<p>Ni siquiera llegamos a preguntar si <span class="math inline">\(U(A)\)</span> tiene mínimo, porque no hay cotas superiores entre las cuales buscar una barrera extremal.</p>
+<p><span id="MA-MSOL-ANM-01-002-039"></span></p>
+</section>
+<section id="demuestra-que-uvarnothinglvarnothingmathbb-r" class="level3">
+<h3 class="anchored" data-anchor-id="demuestra-que-uvarnothinglvarnothingmathbb-r">39. Demuestra que <span class="math inline">\(U(\varnothing)=L(\varnothing)=\mathbb R\)</span></h3>
+<p>Sea <span class="math inline">\(u\in\mathbb R\)</span>. Para que <span class="math inline">\(u\)</span> sea cota superior de <span class="math inline">\(\varnothing\)</span> debe cumplirse</p>
+<p><span class="math display">\[
+\forall a\in\varnothing,\qquad a\le u.
+\]</span></p>
+<p>Como no existe ningún elemento <span class="math inline">\(a\in\varnothing\)</span> que pueda violar esta desigualdad, la afirmación universal es verdadera. Así, <strong>todo</strong> real es cota superior de <span class="math inline">\(\varnothing\)</span> y</p>
+<p><span class="math display">\[
+U(\varnothing)=\mathbb R.
+\]</span></p>
+<p>Del mismo modo, para cualquier <span class="math inline">\(l\in\mathbb R\)</span> la afirmación</p>
+<p><span class="math display">\[
+\forall a\in\varnothing,\qquad l\le a
+\]</span></p>
+<p>es verdadera por la misma razón. Por tanto,</p>
+<p><span class="math display">\[
+L(\varnothing)=\mathbb R.
+\]</span></p>
+<p>En conjunto,</p>
+<p><span class="math display">\[
+\boxed{U(\varnothing)=L(\varnothing)=\mathbb R}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-040"></span></p>
+</section>
+<section id="explica-por-qué-de-la-igualdad-anterior-no-se-obtiene-un-supremo-o-un-ínfimo-real-del-conjunto-vacío" class="level3">
+<h3 class="anchored" data-anchor-id="explica-por-qué-de-la-igualdad-anterior-no-se-obtiene-un-supremo-o-un-ínfimo-real-del-conjunto-vacío">40. Explica por qué de la igualdad anterior no se obtiene un supremo o un ínfimo real del conjunto vacío</h3>
+<p>Para obtener un supremo real necesitaríamos</p>
+<p><span class="math display">\[
+\sup\varnothing=\min U(\varnothing).
+\]</span></p>
+<p>Pero</p>
+<p><span class="math display">\[
+U(\varnothing)=\mathbb R,
+\]</span></p>
+<p>y <span class="math inline">\(\mathbb R\)</span> no tiene mínimo: dado cualquier <span class="math inline">\(x\in\mathbb R\)</span>, el número <span class="math inline">\(x-1\)</span> es menor.</p>
+<p>Análogamente, un ínfimo real requeriría</p>
+<p><span class="math display">\[
+\inf\varnothing=\max L(\varnothing),
+\]</span></p>
+<p>pero <span class="math inline">\(L(\varnothing)=\mathbb R\)</span> y <span class="math inline">\(\mathbb R\)</span> no tiene máximo, porque <span class="math inline">\(x+1&gt;x\)</span> para todo <span class="math inline">\(x\in\mathbb R\)</span>.</p>
+<p>Así, con las convenciones de C02,</p>
+<p><span class="math display">\[
+\boxed{\sup\varnothing\text{ e }\inf\varnothing\text{ no existen como números reales}.}
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-041"></span></p>
+</section>
+<section id="qué-muestra-conceptualmente-el-contraste-con-mathbb-q-respecto-del-papel-del-orden" class="level3">
+<h3 class="anchored" data-anchor-id="qué-muestra-conceptualmente-el-contraste-con-mathbb-q-respecto-del-papel-del-orden">41. ¿Qué muestra conceptualmente el contraste con <span class="math inline">\(\mathbb Q\)</span> respecto del papel del orden?</h3>
+<p>Muestra que <strong>tener un orden y disponer de cotas superiores no basta, por sí solo, para garantizar una menor cota superior dentro del mismo sistema numérico</strong>.</p>
+<p>El conjunto racional considerado en el manuscrito,</p>
+<p><span class="math display">\[
+S=\{q\in\mathbb Q:q&gt;0\text{ y }q^2&lt;2\},
+\]</span></p>
+<p>tiene cotas superiores en <span class="math inline">\(\mathbb Q\)</span>, pero el contraste está precisamente diseñado para mostrar que de ese hecho no se sigue automáticamente la existencia de una menor cota superior racional.</p>
+<p>La función del ejemplo en C02 es conceptual: separar las propiedades del <strong>orden</strong> de la propiedad adicional que hará falta para garantizar extremos. No usamos aquí ese contraste para demostrar la completitud de <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><span id="MA-MSOL-ANM-01-002-042"></span></p>
+</section>
+<section id="distingue-entre-verificar-un-supremo-en-un-ejemplo-y-garantizar-la-existencia-del-supremo-para-toda-una-clase-de-conjuntos" class="level3">
+<h3 class="anchored" data-anchor-id="distingue-entre-verificar-un-supremo-en-un-ejemplo-y-garantizar-la-existencia-del-supremo-para-toda-una-clase-de-conjuntos">42. Distingue entre “verificar un supremo en un ejemplo” y “garantizar la existencia del supremo para toda una clase de conjuntos”</h3>
+<p><strong>Verificar un supremo en un ejemplo</strong> significa tomar un conjunto concreto <span class="math inline">\(A\)</span> y un candidato concreto <span class="math inline">\(s\)</span>, y demostrar directamente que:</p>
+<ol type="1">
+<li><span class="math inline">\(s\)</span> es cota superior de <span class="math inline">\(A\)</span>;</li>
+<li>ninguna cota superior de <span class="math inline">\(A\)</span> es menor que <span class="math inline">\(s\)</span>.</li>
+</ol>
+<p>Por ejemplo, para <span class="math inline">\(A=(0,1)\)</span> puede verificarse directamente que <span class="math inline">\(1=\sup A\)</span>.</p>
+<p>En cambio, <strong>garantizar la existencia para toda una clase de conjuntos</strong> significa demostrar un enunciado universal del tipo:</p>
+<blockquote class="blockquote">
+<p>todo conjunto que satisfaga ciertas hipótesis posee un supremo.</p>
+</blockquote>
+<p>Ese segundo nivel no se obtiene repitiendo la definición: requiere una propiedad general que asegure la existencia del extremo. C02 formula esta necesidad, pero no demuestra todavía esa garantía general.</p>
+</section>
+</section>
+<section id="de-las-barreras-a-la-completitud" class="level2">
+<h2 class="anchored" data-anchor-id="de-las-barreras-a-la-completitud">§2.8. De las barreras a la completitud</h2>
+<p><span id="MA-MSOL-ANM-01-002-043"></span></p>
+<section id="por-qué-sup-a-puede-existir-sin-pertenecer-a-a" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-sup-a-puede-existir-sin-pertenecer-a-a">43. ¿Por qué <span class="math inline">\(\sup A\)</span> puede existir sin pertenecer a <span class="math inline">\(A\)</span>?</h3>
+<p>Porque la definición de supremo no exige pertenencia al conjunto original. Exige que <span class="math inline">\(\sup A\)</span> sea una cota superior de <span class="math inline">\(A\)</span> y que sea la menor entre todas las cotas superiores.</p>
+<p>Por ejemplo, para</p>
+<p><span class="math display">\[
+A=(0,1)
+\]</span></p>
+<p>tenemos</p>
+<p><span class="math display">\[
+\sup A=1,
+\]</span></p>
+<p>pero</p>
+<p><span class="math display">\[
+1\notin A.
+\]</span></p>
+<p>No hay contradicción: <span class="math inline">\(1\)</span> es la barrera superior extremal aunque el conjunto no la alcance. La pertenencia es la condición adicional que distingue al máximo.</p>
+<p><span id="MA-MSOL-ANM-01-002-044"></span></p>
+</section>
+<section id="por-qué-si-max-a-existe-entonces-coincide-necesariamente-con-sup-a" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-si-max-a-existe-entonces-coincide-necesariamente-con-sup-a">44. ¿Por qué, si <span class="math inline">\(\max A\)</span> existe, entonces coincide necesariamente con <span class="math inline">\(\sup A\)</span>?</h3>
+<p>Sea</p>
+<p><span class="math display">\[
+M=\max A.
+\]</span></p>
+<p>Como <span class="math inline">\(M\)</span> es máximo, pertenece a <span class="math inline">\(A\)</span> y domina a todos sus elementos. Por tanto, <span class="math inline">\(M\)</span> es una cota superior.</p>
+<p>Ahora sea <span class="math inline">\(u\)</span> cualquier otra cota superior de <span class="math inline">\(A\)</span>. Como <span class="math inline">\(M\in A\)</span> y <span class="math inline">\(u\)</span> domina a todo elemento de <span class="math inline">\(A\)</span>, necesariamente</p>
+<p><span class="math display">\[
+M\le u.
+\]</span></p>
+<p>Así, <span class="math inline">\(M\)</span> es menor o igual que toda cota superior: es la menor cota superior. En consecuencia,</p>
+<p><span class="math display">\[
+\boxed{\max A=\sup A}.
+\]</span></p>
+<p><span id="MA-MSOL-ANM-01-002-045"></span></p>
+</section>
+<section id="qué-niega-exactamente-la-condición" class="level3">
+<h3 class="anchored" data-anchor-id="qué-niega-exactamente-la-condición">45. ¿Qué niega exactamente la condición</h3>
+<p><span class="math display">\[
+\forall\varepsilon&gt;0\;\exists a\in A:
+\quad
+\sup A-\varepsilon&lt;a\le\sup A?
+\]</span></p>
+<p>Niega que exista un margen positivo fijo por debajo del supremo que deje a todo el conjunto separado de la barrera.</p>
+<p>En efecto, si existiera algún <span class="math inline">\(\varepsilon_0&gt;0\)</span> sin elementos de <span class="math inline">\(A\)</span> en</p>
+<p><span class="math display">\[
+(\sup A-\varepsilon_0,\sup A],
+\]</span></p>
+<p>entonces <span class="math inline">\(\sup A-\varepsilon_0\)</span> seguiría siendo una cota superior de <span class="math inline">\(A\)</span>. Pero sería estrictamente menor que <span class="math inline">\(\sup A\)</span>, contradiciendo que éste sea la menor cota superior.</p>
+<p>Por tanto, la condición expresa que <strong>ninguna disminución positiva del supremo sigue controlando al conjunto completo</strong>.</p>
+<p><span id="MA-MSOL-ANM-01-002-046"></span></p>
+</section>
+<section id="qué-nueva-afirmación-necesita-c03-para-convertir-la-teoría-condicional-de-c02-en-una-garantía-general-de-existencia-dentro-de-mathbb-r" class="level3">
+<h3 class="anchored" data-anchor-id="qué-nueva-afirmación-necesita-c03-para-convertir-la-teoría-condicional-de-c02-en-una-garantía-general-de-existencia-dentro-de-mathbb-r">46. ¿Qué nueva afirmación necesita C03 para convertir la teoría condicional de C02 en una garantía general de existencia dentro de <span class="math inline">\(\mathbb R\)</span>?</h3>
+<p>C03 necesita introducir y justificar la afirmación:</p>
+<blockquote class="blockquote">
+<p><strong>Todo subconjunto no vacío de <span class="math inline">\(\mathbb R\)</span> que esté acotado superiormente posee un supremo en <span class="math inline">\(\mathbb R\)</span>.</strong></p>
+</blockquote>
+<p>Ésta es una afirmación de <strong>existencia general</strong>. No redefine qué es un supremo: garantiza que, bajo las hipótesis adecuadas, el objeto definido existe.</p>
+<p>C02 sólo identifica esta pieza faltante y no la usa como teorema. La demostración o adopción de esa propiedad pertenece al capítulo siguiente.</p>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          title = heading ? cleanText(heading.textContent) : '';
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          }
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

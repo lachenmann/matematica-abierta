@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Capítulo 1 — La recta real como espacio ordenado y métrico – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-43ab80cd25c52ef0599ec15d71568536.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-68d0671eb70789670996f7bf02e3c4d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-misma-recta-varias-estructuras" id="toc-la-misma-recta-varias-estructuras" class="nav-link active" data-scroll-target="#la-misma-recta-varias-estructuras">1.1. La misma recta, varias estructuras</a>
+  <ul class="collapse">
+  <li><a href="#qué-pregunta-estamos-haciendo" id="toc-qué-pregunta-estamos-haciendo" class="nav-link" data-scroll-target="#qué-pregunta-estamos-haciendo">¿Qué pregunta estamos haciendo?</a></li>
+  <li><a href="#una-precaución-con-los-dibujos" id="toc-una-precaución-con-los-dibujos" class="nav-link" data-scroll-target="#una-precaución-con-los-dibujos">Una precaución con los dibujos</a></li>
+  <li><a href="#probemos-la-distinción" id="toc-probemos-la-distinción" class="nav-link" data-scroll-target="#probemos-la-distinción">Probemos la distinción</a></li>
+  </ul></li>
+  <li><a href="#orden-izquierda-derecha-y-estar-entre" id="toc-orden-izquierda-derecha-y-estar-entre" class="nav-link" data-scroll-target="#orden-izquierda-derecha-y-estar-entre">1.2. Orden: izquierda, derecha y estar entre</a>
+  <ul class="collapse">
+  <li><a href="#qué-significa-realmente-estar-entre" id="toc-qué-significa-realmente-estar-entre" class="nav-link" data-scroll-target="#qué-significa-realmente-estar-entre">¿Qué significa realmente «estar entre»?</a></li>
+  <li><a href="#de-dos-fronteras-a-un-intervalo" id="toc-de-dos-fronteras-a-un-intervalo" class="nav-link" data-scroll-target="#de-dos-fronteras-a-un-intervalo">De dos fronteras a un intervalo</a></li>
+  <li><a href="#traducir-en-ambos-sentidos" id="toc-traducir-en-ambos-sentidos" class="nav-link" data-scroll-target="#traducir-en-ambos-sentidos">Traducir en ambos sentidos</a></li>
+  <li><a href="#los-intervalos-nacen-del-orden" id="toc-los-intervalos-nacen-del-orden" class="nav-link" data-scroll-target="#los-intervalos-nacen-del-orden">Los intervalos nacen del orden</a></li>
+  <li><a href="#antes-de-seguir" id="toc-antes-de-seguir" class="nav-link" data-scroll-target="#antes-de-seguir">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#valor-absoluto-distancia-al-origen" id="toc-valor-absoluto-distancia-al-origen" class="nav-link" data-scroll-target="#valor-absoluto-distancia-al-origen">1.3. Valor absoluto: distancia al origen</a>
+  <ul class="collapse">
+  <li><a href="#la-definición-por-casos-vista-de-nuevo" id="toc-la-definición-por-casos-vista-de-nuevo" class="nav-link" data-scroll-target="#la-definición-por-casos-vista-de-nuevo">La definición por casos, vista de nuevo</a></li>
+  <li><a href="#una-misma-distancia-dos-posiciones" id="toc-una-misma-distancia-dos-posiciones" class="nav-link" data-scroll-target="#una-misma-distancia-dos-posiciones">Una misma distancia, dos posiciones</a></li>
+  <li><a href="#tiene-algo-especial-el-origen" id="toc-tiene-algo-especial-el-origen" class="nav-link" data-scroll-target="#tiene-algo-especial-el-origen">¿Tiene algo especial el origen?</a></li>
+  <li><a href="#cambiar-el-centro-no-cambia-la-idea" id="toc-cambiar-el-centro-no-cambia-la-idea" class="nav-link" data-scroll-target="#cambiar-el-centro-no-cambia-la-idea">Cambiar el centro no cambia la idea</a></li>
+  <li><a href="#antes-de-seguir-1" id="toc-antes-de-seguir-1" class="nav-link" data-scroll-target="#antes-de-seguir-1">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#distancia-entre-dos-puntos-reales" id="toc-distancia-entre-dos-puntos-reales" class="nav-link" data-scroll-target="#distancia-entre-dos-puntos-reales">1.4. Distancia entre dos puntos reales</a>
+  <ul class="collapse">
+  <li><a href="#qué-debe-cumplir-una-distancia" id="toc-qué-debe-cumplir-una-distancia" class="nav-link" data-scroll-target="#qué-debe-cumplir-una-distancia">¿Qué debe cumplir una distancia?</a></li>
+  <li><a href="#una-primera-estimación-cuánto-puede-cambiar-una-distancia" id="toc-una-primera-estimación-cuánto-puede-cambiar-una-distancia" class="nav-link" data-scroll-target="#una-primera-estimación-cuánto-puede-cambiar-una-distancia">Una primera estimación: cuánto puede cambiar una distancia</a></li>
+  <li><a href="#la-orientación-desaparece-la-separación-permanece" id="toc-la-orientación-desaparece-la-separación-permanece" class="nav-link" data-scroll-target="#la-orientación-desaparece-la-separación-permanece">La orientación desaparece, la separación permanece</a></li>
+  <li><a href="#antes-de-seguir-2" id="toc-antes-de-seguir-2" class="nav-link" data-scroll-target="#antes-de-seguir-2">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#la-desigualdad-triangular-y-la-geometría-de-estar-entre" id="toc-la-desigualdad-triangular-y-la-geometría-de-estar-entre" class="nav-link" data-scroll-target="#la-desigualdad-triangular-y-la-geometría-de-estar-entre">1.5. La desigualdad triangular y la geometría de «estar entre»</a>
+  <ul class="collapse">
+  <li><a href="#cuando-y-está-entre-los-extremos" id="toc-cuando-y-está-entre-los-extremos" class="nav-link" data-scroll-target="#cuando-y-está-entre-los-extremos">Cuando <span class="math inline">\(y\)</span> está entre los extremos</a></li>
+  <li><a href="#y-si-aparece-la-igualdad" id="toc-y-si-aparece-la-igualdad" class="nav-link" data-scroll-target="#y-si-aparece-la-igualdad">¿Y si aparece la igualdad?</a></li>
+  <li><a href="#desigualdad-estricta-fuera-del-segmento" id="toc-desigualdad-estricta-fuera-del-segmento" class="nav-link" data-scroll-target="#desigualdad-estricta-fuera-del-segmento">Desigualdad estricta fuera del segmento</a></li>
+  <li><a href="#qué-nos-enseñó-realmente-la-igualdad" id="toc-qué-nos-enseñó-realmente-la-igualdad" class="nav-link" data-scroll-target="#qué-nos-enseñó-realmente-la-igualdad">Qué nos enseñó realmente la igualdad</a></li>
+  <li><a href="#antes-de-seguir-3" id="toc-antes-de-seguir-3" class="nav-link" data-scroll-target="#antes-de-seguir-3">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#bolas-métricas-ventanas-alrededor-de-un-punto" id="toc-bolas-métricas-ventanas-alrededor-de-un-punto" class="nav-link" data-scroll-target="#bolas-métricas-ventanas-alrededor-de-un-punto">1.6. Bolas métricas: ventanas alrededor de un punto</a>
+  <ul class="collapse">
+  <li><a href="#qué-forma-tiene-una-bola-en-la-recta" id="toc-qué-forma-tiene-una-bola-en-la-recta" class="nav-link" data-scroll-target="#qué-forma-tiene-una-bola-en-la-recta">¿Qué forma tiene una bola en la recta?</a></li>
+  <li><a href="#el-centro-localiza-el-radio-controla-el-margen" id="toc-el-centro-localiza-el-radio-controla-el-margen" class="nav-link" data-scroll-target="#el-centro-localiza-el-radio-controla-el-margen">El centro localiza; el radio controla el margen</a></li>
+  <li><a href="#por-qué-exigimos-r0" id="toc-por-qué-exigimos-r0" class="nav-link" data-scroll-target="#por-qué-exigimos-r0">Por qué exigimos <span class="math inline">\(r&gt;0\)</span></a></li>
+  <li><a href="#una-primera-lectura-de-tolerancia" id="toc-una-primera-lectura-de-tolerancia" class="nav-link" data-scroll-target="#una-primera-lectura-de-tolerancia">Una primera lectura de tolerancia</a></li>
+  <li><a href="#antes-de-seguir-4" id="toc-antes-de-seguir-4" class="nav-link" data-scroll-target="#antes-de-seguir-4">Antes de seguir</a></li>
+  </ul></li>
+  <li><a href="#traducir-entre-orden-distancia-y-tolerancia" id="toc-traducir-entre-orden-distancia-y-tolerancia" class="nav-link" data-scroll-target="#traducir-entre-orden-distancia-y-tolerancia">1.7. Traducir entre orden, distancia y tolerancia</a>
+  <ul class="collapse">
+  <li><a href="#leer-la-cadena-de-izquierda-a-derecha" id="toc-leer-la-cadena-de-izquierda-a-derecha" class="nav-link" data-scroll-target="#leer-la-cadena-de-izquierda-a-derecha">Leer la cadena de izquierda a derecha</a></li>
+  <li><a href="#leerla-también-de-derecha-a-izquierda" id="toc-leerla-también-de-derecha-a-izquierda" class="nav-link" data-scroll-target="#leerla-también-de-derecha-a-izquierda">Leerla también de derecha a izquierda</a></li>
+  <li><a href="#qué-cambia-si-admitimos-la-frontera" id="toc-qué-cambia-si-admitimos-la-frontera" class="nav-link" data-scroll-target="#qué-cambia-si-admitimos-la-frontera">¿Qué cambia si admitimos la frontera?</a></li>
+  <li><a href="#de-puntos-cercanos-a-puntos-lejanos" id="toc-de-puntos-cercanos-a-puntos-lejanos" class="nav-link" data-scroll-target="#de-puntos-cercanos-a-puntos-lejanos">De puntos cercanos a puntos lejanos</a></li>
+  <li><a href="#dos-decisiones-que-conviene-separar" id="toc-dos-decisiones-que-conviene-separar" class="nav-link" data-scroll-target="#dos-decisiones-que-conviene-separar">Dos decisiones que conviene separar</a></li>
+  <li><a href="#la-tolerancia-como-lenguaje-de-análisis" id="toc-la-tolerancia-como-lenguaje-de-análisis" class="nav-link" data-scroll-target="#la-tolerancia-como-lenguaje-de-análisis">La tolerancia como lenguaje de análisis</a></li>
+  <li><a href="#traducir-sin-perder-información" id="toc-traducir-sin-perder-información" class="nav-link" data-scroll-target="#traducir-sin-perder-información">Traducir sin perder información</a></li>
+  </ul></li>
+  <li><a href="#qué-ve-el-orden-y-qué-ve-la-distancia" id="toc-qué-ve-el-orden-y-qué-ve-la-distancia" class="nav-link" data-scroll-target="#qué-ve-el-orden-y-qué-ve-la-distancia">1.8. Qué ve el orden y qué ve la distancia</a>
+  <ul class="collapse">
+  <li><a href="#trasladar-la-recta" id="toc-trasladar-la-recta" class="nav-link" data-scroll-target="#trasladar-la-recta">Trasladar la recta</a></li>
+  <li><a href="#escalar-la-recta" id="toc-escalar-la-recta" class="nav-link" data-scroll-target="#escalar-la-recta">Escalar la recta</a></li>
+  <li><a href="#la-reflexión-como-caso-decisivo" id="toc-la-reflexión-como-caso-decisivo" class="nav-link" data-scroll-target="#la-reflexión-como-caso-decisivo">La reflexión como caso decisivo</a></li>
+  <li><a href="#el-caso-degenerado-lambda0" id="toc-el-caso-degenerado-lambda0" class="nav-link" data-scroll-target="#el-caso-degenerado-lambda0">El caso degenerado <span class="math inline">\(\lambda=0\)</span></a></li>
+  <li><a href="#tres-preguntas-diferentes" id="toc-tres-preguntas-diferentes" class="nav-link" data-scroll-target="#tres-preguntas-diferentes">Tres preguntas diferentes</a></li>
+  <li><a href="#volvamos-al-comienzo" id="toc-volvamos-al-comienzo" class="nav-link" data-scroll-target="#volvamos-al-comienzo">Volvamos al comienzo</a></li>
+  <li><a href="#antes-de-cerrar-el-capítulo" id="toc-antes-de-cerrar-el-capítulo" class="nav-link" data-scroll-target="#antes-de-cerrar-el-capítulo">Antes de cerrar el capítulo</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 1 — La recta real como espacio ordenado y métrico</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">30 de septiembre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-ejercicios.html">Ejercicios</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-soluciones.html">Soluciones</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica-microcontroles.html">Soluciones de microcontroles</a></p>
+<p>A esta altura ya hemos usado la recta real tantas veces que cuesta verla como un objeto que merezca explicación. Dibujamos puntos sobre ella, resolvemos desigualdades, hablamos de intervalos, seguimos el movimiento de una variable y, si alguien escribe <span class="math inline">\(x&lt;y\)</span>, casi sentimos que la posición de ambos números está delante de nosotros. La recta se ha vuelto tan familiar que muchas ideas distintas terminan fundiéndose en una sola imagen.</p>
+<p>Pero justamente ahí aparece una buena pregunta: <strong>¿qué estamos usando realmente cada vez que razonamos sobre la recta?</strong></p>
+<p>A veces necesitamos saber qué número está antes que otro; otras veces no nos importa quién está a la izquierda, sino cuánto separa a dos puntos; en otros argumentos hacemos operaciones algebraicas y sólo después interpretamos geométricamente lo que obtuvimos. Todo ocurre sobre los mismos números reales, pero no todo pertenece a la misma estructura.</p>
+<p>Ese será nuestro punto de partida. No vamos a reconstruir <span class="math inline">\(\mathbb R\)</span> desde sus fundamentos ni a repetir las técnicas elementales que ya manejamos. Vamos a hacer algo más útil para el análisis: tomar la recta que ya conocemos y preguntarnos qué información contiene cada una de las maneras habituales de mirarla.</p>
+<p>La pregunta que guiará el capítulo es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Qué información obtenemos al saber dónde está un punto en el orden de la recta y qué información obtenemos al saber a qué distancia está de otro?</strong></p>
+</blockquote>
+<p>No intentemos responderla demasiado rápido. Si lo hiciéramos, probablemente diríamos que ambas cosas son más o menos lo mismo, porque en la recta los intervalos, las desigualdades y las distancias parecen encajar de manera casi automática. Y es verdad que encajan extraordinariamente bien; lo interesante será descubrir <strong>por qué</strong> encajan y, antes de eso, aprender a distinguir las piezas.</p>
+<p>Empezaremos separando las distintas estructuras que solemos superponer en un mismo dibujo. Después veremos cómo el orden produce intervalos, cómo el valor absoluto deja de ser una regla algebraica algo misteriosa cuando lo leemos como distancia y, finalmente, por qué una condición métrica puede transformarse en una condición de intervalo. Ese ir y venir entre lenguajes será una de las herramientas básicas del análisis.</p>
+<section id="la-misma-recta-varias-estructuras" class="level2">
+<h2 class="anchored" data-anchor-id="la-misma-recta-varias-estructuras">1.1. La misma recta, varias estructuras</h2>
+<p>Escribamos simplemente <span class="math inline">\(\mathbb R\)</span> y hagamos una pausa. ¿Qué hemos escrito?</p>
+<p>La respuesta obvia es «los números reales», pero eso todavía deja abierta la pregunta importante. Sobre esos números podemos sumar y multiplicar; podemos decidir si uno es menor que otro; podemos colocarlos sobre una recta y medir separaciones. El conjunto de puntos es el mismo, pero las preguntas que hacemos no lo son.</p>
+<p>Desde el punto de vista <strong>algebraico</strong>, nos interesan operaciones como <span class="math inline">\(x+y\)</span>, <span class="math inline">\(xy\)</span> o <span class="math inline">\(x-y\)</span>. Desde el punto de vista <strong>ordenado</strong>, nos interesan relaciones como <span class="math inline">\(x&lt;y\)</span> o <span class="math inline">\(x\le y\)</span>. Y desde el punto de vista <strong>métrico</strong>, la pregunta típica ya no es «¿cuál viene antes?», sino «¿qué tan lejos están?».</p>
+<p>Pensemos en tres puntos reales <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> y <span class="math inline">\(z\)</span> y supongamos que sabemos que</p>
+<p><span class="math display">\[
+x&lt;y&lt;z.
+\]</span></p>
+<p>¿Qué hemos aprendido exactamente? Sabemos que <span class="math inline">\(y\)</span> queda entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span> en la orientación habitual de la recta; sabemos cuál aparece primero y cuál después. Pero no sabemos si <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> están casi pegados o enormemente separados, ni tampoco si <span class="math inline">\(y\)</span> está mucho más cerca de <span class="math inline">\(x\)</span> que de <span class="math inline">\(z\)</span>. El orden nos ha dado bastante información, pero no esa información.</p>
+<p>Probemos ahora el experimento contrario. Imaginemos que conocemos las separaciones entre los tres puntos, pero ocultamos las etiquetas «izquierda» y «derecha». Podemos seguir diciendo qué pares están más cerca, cuáles más lejos e incluso comparar longitudes, pero algo se ha perdido: la distancia, por sí sola, no nos dice hacia qué lado está cada punto.</p>
+<p>Una reflexión hace esta diferencia especialmente visible. Partamos otra vez de</p>
+<p><span class="math display">\[
+x&lt;y&lt;z.
+\]</span></p>
+<p>y reflejemos toda la configuración respecto del origen. La orientación cambia: lo que estaba a la izquierda pasa a la derecha y viceversa. Sin embargo, las separaciones permanecen iguales. Más adelante demostraremos este hecho con una fórmula muy sencilla; ahora lo que nos interesa es la idea que el experimento descubre.</p>
+<p>La figura C01-F01 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F01.svg" class="img-fluid" alt="Dos rectas numéricas comparan una configuración x<y<z con su reflejo. Las distancias correspondientes se mantienen, mientras el orden de izquierda a derecha se invierte."></p>
+<p><em>Figura C01-F01. La reflexión conserva todas las separaciones pero invierte la orientación; orden y métrica interactúan sin contener exactamente la misma información.</em></p>
+<p>Así aparece nuestra primera conclusión estructural: <strong>el orden sabe algo que la distancia no sabe</strong>, porque distingue una orientación. Pero conviene no exagerar la separación. En <span class="math inline">\(\mathbb R\)</span>, orden y distancia están tan bien coordinados que muchas veces podremos traducir exactamente una descripción en la otra. Los intervalos surgirán del orden y, unas páginas después, veremos que ciertas condiciones de distancia describen precisamente esos mismos intervalos.</p>
+<p>Ésa es una de las razones por las que la recta real es un lugar tan cómodo para aprender análisis: varias estructuras distintas cooperan de una manera excepcionalmente estrecha.</p>
+<section id="qué-pregunta-estamos-haciendo" class="level3">
+<h3 class="anchored" data-anchor-id="qué-pregunta-estamos-haciendo">¿Qué pregunta estamos haciendo?</h3>
+<p>Podemos convertir todo esto en un pequeño hábito. Cuando aparezca una afirmación sobre números reales, antes de manipular símbolos preguntémonos qué clase de información está pidiendo.</p>
+<p>Si escribimos</p>
+<p><span class="math display">\[
+x&lt;y,
+\]</span></p>
+<p>estamos comparando posiciones: la estructura relevante es el <strong>orden</strong>.</p>
+<p>Si preguntamos cuánto separa a <span class="math inline">\(x\)</span> de <span class="math inline">\(y\)</span>, estamos haciendo una pregunta <strong>métrica</strong>.</p>
+<p>Si calculamos <span class="math inline">\(x+y\)</span>, <span class="math inline">\(xy\)</span> o <span class="math inline">\(x-y\)</span>, estamos usando la estructura <strong>algebraica</strong>.</p>
+<p>Por supuesto, los argumentos interesantes empiezan cuando estas capas se mezclan. Una expresión algebraica puede aparecer dentro de una desigualdad; esa desigualdad puede describir una región de la recta; y esa misma región podrá terminar siendo descrita por una condición de distancia. Cuando lleguemos a ese punto, la traducción parecerá natural, pero será natural porque habremos entendido qué aporta cada estructura.</p>
+</section>
+<section id="una-precaución-con-los-dibujos" class="level3">
+<h3 class="anchored" data-anchor-id="una-precaución-con-los-dibujos">Una precaución con los dibujos</h3>
+<p>Hay otra cuestión que vale la pena aclarar desde ahora. Dibujamos la recta horizontalmente y colocamos los números crecientes de izquierda a derecha; después de años de hacerlo, casi parece que «izquierda» y «derecha» pertenecieran físicamente a <span class="math inline">\(\mathbb R\)</span>. Pero no es así: forman parte de nuestra representación de su orden.</p>
+<p>Esto no vuelve engañosos a los dibujos. Al contrario, los vuelve más interesantes, porque obliga a preguntar qué está haciendo exactamente cada elemento de una figura. Si una reflexión conserva las separaciones pero invierte la orientación, el dibujo puede hacernos ver el fenómeno de inmediato; lo que no puede hacer, por sí solo, es convertir esa observación en una afirmación universal demostrada.</p>
+<p>Usaremos muchas figuras de esta manera. Primero nos permitirán ver algo; después preguntaremos qué es exactamente lo que estamos viendo; finalmente buscaremos una formulación que pueda demostrarse. Una buena figura no reemplaza el argumento: nos ayuda a encontrarlo y, una vez encontrado, nos ayuda a comprender por qué funciona.</p>
+</section>
+<section id="probemos-la-distinción" class="level3">
+<h3 class="anchored" data-anchor-id="probemos-la-distinción">Probemos la distinción</h3>
+<p>Antes de avanzar, hagamos una pequeña prueba de lectura. En cada una de las afirmaciones siguientes, intentemos reconocer qué estructura está actuando en primer plano —aunque en algunos casos aparezca más de una—:</p>
+<ol type="1">
+<li><span class="math inline">\(x&lt;y\)</span>.</li>
+<li>«<span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>».</li>
+<li>«<span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> están separados por la misma cantidad que <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span>».</li>
+<li><span class="math inline">\(x+y=z\)</span>.</li>
+<li>«al reflejar una configuración, cambian izquierda y derecha pero no las separaciones».</li>
+</ol>
+<p>No hace falta formalizar todavía todas estas frases. Si logramos distinguir qué pregunta corresponde al orden, cuál a la distancia y cuál al álgebra, ya hemos conseguido lo que necesitábamos de esta primera sección.</p>
+<p>Ahora sí podemos empezar a estudiar una de esas estructuras por separado. En la sección siguiente nos concentraremos en el orden: veremos qué significa estar a la izquierda, a la derecha o entre dos puntos, y de esa relación tan elemental surgirán los intervalos que utilizaremos una y otra vez en el resto del libro.</p>
+</section>
+</section>
+<section id="orden-izquierda-derecha-y-estar-entre" class="level2">
+<h2 class="anchored" data-anchor-id="orden-izquierda-derecha-y-estar-entre">1.2. Orden: izquierda, derecha y estar entre</h2>
+<p>En la sección anterior vimos que el orden y la distancia responden preguntas distintas. Ahora vamos a concentrarnos, por un momento, sólo en el orden. Esto significa que todavía no preguntaremos cuánto separa a dos puntos; nos bastará con saber cuál aparece antes, cuál después y qué significa que uno quede entre otros dos.</p>
+<p>Empecemos con algo que parece demasiado sencillo para merecer atención. Si escribimos</p>
+<p><span class="math display">\[
+x&lt;y,
+\]</span></p>
+<p>decimos que <span class="math inline">\(x\)</span> es menor que <span class="math inline">\(y\)</span>. En la representación habitual de la recta real, esto significa que <span class="math inline">\(x\)</span> queda a la izquierda de <span class="math inline">\(y\)</span>. Si escribimos <span class="math inline">\(x\le y\)</span>, permitimos además el caso <span class="math inline">\(x=y\)</span>.</p>
+<p>Hasta aquí no hay ninguna novedad técnica. Lo importante es advertir que estas relaciones ya organizan la recta: en cuanto fijamos dos números distintos, uno queda antes que el otro, y esa comparación nos permite comenzar a hablar de regiones delimitadas por puntos.</p>
+<section id="qué-significa-realmente-estar-entre" class="level3">
+<h3 class="anchored" data-anchor-id="qué-significa-realmente-estar-entre">¿Qué significa realmente «estar entre»?</h3>
+<p>Tomemos tres números reales. Si escribimos</p>
+<p><span class="math display">\[
+x\le y\le z,
+\]</span></p>
+<p>es natural decir que <span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>. Pero hay un pequeño problema escondido en esa frase: hemos supuesto que <span class="math inline">\(x\)</span> está a la izquierda de <span class="math inline">\(z\)</span>. ¿Qué ocurriría si los extremos aparecieran en el orden contrario?</p>
+<p>No queremos que la expresión «<span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>» dependa del orden en que decidamos nombrar los extremos. Por eso conviene formularla de una manera que no privilegie ninguna orientación.</p>
+<p>Diremos que <strong><span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span></strong> cuando</p>
+<p><span class="math display">\[
+\min\{x,z\}\le y\le \max\{x,z\}.
+\]</span></p>
+<p>Esta fórmula hace exactamente lo que necesitamos. Si <span class="math inline">\(x\le z\)</span>, se reduce a</p>
+<p><span class="math display">\[
+x\le y\le z;
+\]</span></p>
+<p>si <span class="math inline">\(z\le x\)</span>, se convierte en</p>
+<p><span class="math display">\[
+z\le y\le x.
+\]</span></p>
+<p>En ambos casos expresa la misma idea geométrica: <span class="math inline">\(y\)</span> pertenece al tramo de la recta delimitado por <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>, y permitimos que coincida con uno de los extremos.</p>
+<p>¿Por qué molestarnos en escribirlo así? Porque más adelante aparecerá una caracterización de «estar entre» que ya no estará formulada con desigualdades, sino con distancias. Cuando comparemos ambas formulaciones necesitaremos una definición de «entre» que no haya incorporado accidentalmente una orientación.</p>
+</section>
+<section id="de-dos-fronteras-a-un-intervalo" class="level3">
+<h3 class="anchored" data-anchor-id="de-dos-fronteras-a-un-intervalo">De dos fronteras a un intervalo</h3>
+<p>Supongamos ahora que elegimos dos números <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> con</p>
+<p><span class="math display">\[
+a&lt;b.
+\]</span></p>
+<p>¿Qué puntos quedan estrictamente entre ellos? Exactamente aquellos <span class="math inline">\(x\)</span> que satisfacen</p>
+<p><span class="math display">\[
+a&lt;x&lt;b.
+\]</span></p>
+<p>A este conjunto lo llamamos <strong>intervalo abierto</strong> de extremos <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, y escribimos</p>
+<p><span class="math display">\[
+(a,b)=\{x\in\mathbb R:a&lt;x&lt;b\}.
+\]</span></p>
+<p>Los paréntesis nos recuerdan que los extremos no pertenecen al conjunto. En efecto, <span class="math inline">\(a\)</span> no satisface <span class="math inline">\(a&lt;a&lt;b\)</span>, y <span class="math inline">\(b\)</span> tampoco satisface <span class="math inline">\(a&lt;b&lt;b\)</span>.</p>
+<p>Pero quizá queramos incluir ambos extremos. Entonces cambiamos las desigualdades estrictas por desigualdades no estrictas:</p>
+<p><span class="math display">\[
+[a,b]=\{x\in\mathbb R:a\le x\le b\}.
+\]</span></p>
+<p>Éste es el <strong>intervalo cerrado</strong> de extremos <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>.</p>
+<p>Entre ambas posibilidades quedan dos casos mixtos:</p>
+<p><span class="math display">\[
+[a,b)=\{x\in\mathbb R:a\le x&lt;b\},
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+(a,b]=\{x\in\mathbb R:a&lt;x\le b\}.
+\]</span></p>
+<p>No hay que memorizar cuatro dibujos separados. La notación está diciendo exactamente qué ocurre en cada frontera: un corchete incluye el extremo correspondiente; un paréntesis lo excluye.</p>
+<p>La figura C01-F02 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F02.svg" class="img-fluid" alt="Cuatro rectas alineadas muestran (a,b), [a,b], (a,b] y [a,b), con extremos abiertos o cerrados y sus desigualdades equivalentes."></p>
+<p><em>Figura C01-F02. Paréntesis y corchetes registran exactamente si cada frontera satisface una desigualdad estricta o no estricta.</em></p>
+<p>Conviene detenernos en una posible confusión. Acabamos de usar las palabras «abierto» y «cerrado», pero todavía no estamos hablando de conjuntos abiertos y cerrados en sentido topológico. Por ahora son simplemente los nombres tradicionales de estos tipos de intervalo. La teoría general que explica esas palabras vendrá más adelante.</p>
+</section>
+<section id="traducir-en-ambos-sentidos" class="level3">
+<h3 class="anchored" data-anchor-id="traducir-en-ambos-sentidos">Traducir en ambos sentidos</h3>
+<p>La notación de intervalos es útil porque comprime información, pero no queremos que se convierta en un código que sólo sepamos leer de izquierda a derecha. Debemos poder pasar con soltura de desigualdades a intervalos y de intervalos a desigualdades.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+x\in(-2,5]
+\]</span></p>
+<p>significa exactamente</p>
+<p><span class="math display">\[
+-2&lt;x\le 5.
+\]</span></p>
+<p>Y si sabemos que</p>
+<p><span class="math display">\[
+3\le x&lt;7,
+\]</span></p>
+<p>podemos expresar la misma condición diciendo</p>
+<p><span class="math display">\[
+x\in[3,7).
+\]</span></p>
+<p>Parece una traducción elemental, y lo es, pero tiene una importancia que irá creciendo. Muy pronto aparecerán condiciones expresadas mediante valor absoluto y distancia, y querremos reconocer qué región de la recta describen. Si la traducción entre orden e intervalo no es automática, la traducción posterior entre distancia e intervalo tampoco lo será.</p>
+<p>Probemos un caso ligeramente menos inmediato. ¿Qué conjunto describe la condición</p>
+<p><span class="math display">\[
+x&lt;4?
+\]</span></p>
+<p>No hay una frontera izquierda finita. Queremos todos los reales que quedan a la izquierda de <span class="math inline">\(4\)</span>, de modo que escribimos</p>
+<p><span class="math display">\[
+(-\infty,4).
+\]</span></p>
+<p>Del mismo modo,</p>
+<p><span class="math display">\[
+x\ge -1
+\]</span></p>
+<p>describe la semirrecta</p>
+<p><span class="math display">\[
+[-1,\infty).
+\]</span></p>
+<p>Los símbolos <span class="math inline">\(-\infty\)</span> y <span class="math inline">\(\infty\)</span> no representan puntos reales que puedan incluirse en el conjunto. Por eso siempre aparecen acompañados por paréntesis, nunca por corchetes.</p>
+</section>
+<section id="los-intervalos-nacen-del-orden" class="level3">
+<h3 class="anchored" data-anchor-id="los-intervalos-nacen-del-orden">Los intervalos nacen del orden</h3>
+<p>Ya podemos ver la idea estructural de esta sección. Un intervalo no es, en primer lugar, una figura sombreada sobre una recta; es el conjunto de puntos que satisfacen ciertas relaciones de orden respecto de una o dos fronteras.</p>
+<p>Por eso</p>
+<p><span class="math display">\[
+(a,b)
+\]</span></p>
+<p>no es una notación independiente de</p>
+<p><span class="math display">\[
+a&lt;x&lt;b.
+\]</span></p>
+<p>Ambas expresiones dicen lo mismo en lenguajes distintos: la primera nombra el conjunto; la segunda describe mediante el orden qué significa pertenecer a él.</p>
+<p>Éste es nuestro primer puente sistemático entre dos representaciones de una misma condición. Más adelante añadiremos una tercera. Cuando aprendamos a interpretar <span class="math inline">\(|x-a|\)</span> como una distancia, veremos que algunas regiones que ahora describimos mediante desigualdades también pueden describirse diciendo simplemente que un punto está suficientemente cerca de otro.</p>
+<p>Antes de llegar allí, conviene conservar una imagen muy sencilla: <strong>el orden coloca fronteras; los intervalos reúnen los puntos que quedan entre ellas</strong>.</p>
+</section>
+<section id="antes-de-seguir" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir">Antes de seguir</h3>
+<p>Comprobemos que la traducción funciona en ambas direcciones. Sin resolver nada nuevo, intentemos leer cada expresión en el otro lenguaje:</p>
+<ol type="1">
+<li><span class="math inline">\(x\in(-3,2)\)</span>.</li>
+<li><span class="math inline">\(x\in[0,5)\)</span>.</li>
+<li><span class="math inline">\(-1&lt;x\le 4\)</span>.</li>
+<li><span class="math inline">\(x&gt;6\)</span>.</li>
+<li><span class="math inline">\(x\le 0\)</span>.</li>
+</ol>
+<p>El objetivo no es practicar mecánicamente desigualdades. Queremos que intervalo y condición de orden empiecen a sentirse como dos maneras de mirar el mismo objeto.</p>
+<p>Con esto tenemos preparada la siguiente pregunta. El orden nos permite decir que un punto queda entre dos fronteras, pero todavía no hemos introducido una manera sistemática de hablar de <strong>cuánto</strong> se separa de ellas o de un punto elegido. Para eso necesitaremos reinterpretar una operación que ya conocemos bien: el valor absoluto.</p>
+</section>
+</section>
+<section id="valor-absoluto-distancia-al-origen" class="level2">
+<h2 class="anchored" data-anchor-id="valor-absoluto-distancia-al-origen">1.3. Valor absoluto: distancia al origen</h2>
+<p>Hasta ahora hemos usado el orden para decidir dónde queda un punto respecto de otros. Pero al final de la sección anterior dejamos abierta una pregunta distinta: una vez que sabemos que un punto está a la izquierda o a la derecha, ¿cómo expresamos <strong>cuánto</strong> se ha alejado de un punto de referencia?</p>
+<p>Comencemos por el punto de referencia más familiar: el origen.</p>
+<p>El valor absoluto ya no es nuevo para nosotros. Sabemos calcular, por ejemplo,</p>
+<p><span class="math display">\[
+|5|=5
+\qquad\text{y}\qquad
+|-5|=5.
+\]</span></p>
+<p>Lo que nos interesa ahora no es repetir esa regla, sino preguntarnos qué está midiendo. Los números <span class="math inline">\(5\)</span> y <span class="math inline">\(-5\)</span> ocupan lados opuestos del origen, de modo que el orden distingue perfectamente sus posiciones; sin embargo, ambos están a la misma separación de <span class="math inline">\(0\)</span>. El valor absoluto conserva justamente esa información y deja de lado la orientación.</p>
+<p>Ésta es la lectura que queremos fijar:</p>
+<p><span class="math display">\[
+|x|=\text{distancia de }x\text{ al origen}.
+\]</span></p>
+<p>Dicho de otro modo, <span class="math inline">\(x\)</span> nos dice a qué lado del origen estamos y cuánto nos hemos desplazado con signo; <span class="math inline">\(|x|\)</span> conserva únicamente el tamaño de ese desplazamiento.</p>
+<section id="la-definición-por-casos-vista-de-nuevo" class="level3">
+<h3 class="anchored" data-anchor-id="la-definición-por-casos-vista-de-nuevo">La definición por casos, vista de nuevo</h3>
+<p>Recordemos brevemente la definición conocida:</p>
+<p><span class="math display">\[
+|x|=
+\begin{cases}
+x,&amp;x\ge 0,\\
+-x,&amp;x&lt;0.
+\end{cases}
+\]</span></p>
+<p>¿Por qué aparecen exactamente esos dos casos? Si <span class="math inline">\(x\ge0\)</span>, el número <span class="math inline">\(x\)</span> ya expresa una separación no negativa respecto de <span class="math inline">\(0\)</span>, así que no hay nada que corregir. Si <span class="math inline">\(x&lt;0\)</span>, en cambio, el número <span class="math inline">\(x\)</span> lleva incorporada la orientación hacia el lado negativo; para obtener solamente la magnitud de la separación necesitamos cambiar su signo, y por eso aparece <span class="math inline">\(-x\)</span>.</p>
+<p>Así, la definición por casos deja de parecer una receta arbitraria. Está haciendo una tarea geométrica muy precisa: producir siempre una cantidad no negativa que mida cuán lejos está <span class="math inline">\(x\)</span> de <span class="math inline">\(0\)</span>.</p>
+<p>Esto explica inmediatamente por qué</p>
+<p><span class="math display">\[
+|x|\ge0
+\]</span></p>
+<p>para todo <span class="math inline">\(x\in\mathbb R\)</span>, y también por qué</p>
+<p><span class="math display">\[
+|x|=0
+\]</span></p>
+<p>sólo cuando <span class="math inline">\(x=0\)</span>. No son propiedades desconectadas que haya que memorizar; son exactamente lo que esperaríamos de una medida de separación respecto del origen.</p>
+</section>
+<section id="una-misma-distancia-dos-posiciones" class="level3">
+<h3 class="anchored" data-anchor-id="una-misma-distancia-dos-posiciones">Una misma distancia, dos posiciones</h3>
+<p>Tomemos ahora un número <span class="math inline">\(r&gt;0\)</span> y preguntemos qué significa</p>
+<p><span class="math display">\[
+|x|=r.
+\]</span></p>
+<p>Si pensamos sólo algebraicamente, podemos resolver la ecuación y obtener</p>
+<p><span class="math display">\[
+x=r
+\qquad\text{o}\qquad
+x=-r.
+\]</span></p>
+<p>Pero la lectura geométrica dice algo más sencillo: buscamos los puntos cuya distancia al origen es exactamente <span class="math inline">\(r\)</span>. En una recta hay dos, uno a cada lado de <span class="math inline">\(0\)</span>.</p>
+<p>La orientación distingue esos dos puntos; la distancia al origen no.</p>
+<p>Lo mismo ocurre si cambiamos la igualdad por una desigualdad. La condición</p>
+<p><span class="math display">\[
+|x|&lt;r
+\]</span></p>
+<p>pide todos los puntos cuya separación del origen es menor que <span class="math inline">\(r\)</span>. Si miramos la recta, esos puntos son precisamente los que quedan entre <span class="math inline">\(-r\)</span> y <span class="math inline">\(r\)</span>:</p>
+<p><span class="math display">\[
+-r&lt;x&lt;r.
+\]</span></p>
+<p>En cambio,</p>
+<p><span class="math display">\[
+|x|&gt;r
+\]</span></p>
+<p>selecciona los puntos que quedan a más de <span class="math inline">\(r\)</span> unidades del origen, es decir,</p>
+<p><span class="math display">\[
+x&lt;-r
+\qquad\text{o}\qquad
+x&gt;r.
+\]</span></p>
+<p>Aquí reaparece el puente que comenzamos a construir en §1.2. Una expresión con valor absoluto puede describir una región de la recta, y esa misma región puede expresarse mediante relaciones de orden. Por ahora estamos trabajando con el origen como centro; más adelante haremos esta traducción de manera sistemática para un centro cualquiera.</p>
+</section>
+<section id="tiene-algo-especial-el-origen" class="level3">
+<h3 class="anchored" data-anchor-id="tiene-algo-especial-el-origen">¿Tiene algo especial el origen?</h3>
+<p>Ésta es una buena pregunta, porque hasta este momento podría parecer que el valor absoluto estuviera esencialmente ligado a <span class="math inline">\(0\)</span>. Pero supongamos que queremos medir la separación entre un punto <span class="math inline">\(x\)</span> y otro punto fijo <span class="math inline">\(a\)</span>.</p>
+<p>La cantidad</p>
+<p><span class="math display">\[
+x-a
+\]</span></p>
+<p>nos dice el desplazamiento de <span class="math inline">\(a\)</span> hacia <span class="math inline">\(x\)</span> con orientación: es positiva si <span class="math inline">\(x\)</span> queda a la derecha de <span class="math inline">\(a\)</span>, negativa si queda a la izquierda y cero si ambos puntos coinciden. Si queremos conservar sólo el tamaño de ese desplazamiento, hacemos exactamente lo mismo que antes:</p>
+<p><span class="math display">\[
+|x-a|.
+\]</span></p>
+<p>Así, <span class="math inline">\(|x-a|\)</span> mide la distancia de <span class="math inline">\(x\)</span> al punto <span class="math inline">\(a\)</span>.</p>
+<p>Esta observación es sencilla, pero cambia bastante nuestra manera de leer el valor absoluto. El origen deja de ocupar una posición privilegiada. La expresión <span class="math inline">\(|x|\)</span> no es más que el caso <span class="math inline">\(a=0\)</span> de una idea más general:</p>
+<p><span class="math display">\[
+|x-a|=\text{distancia de }x\text{ al centro }a.
+\]</span></p>
+<p>La figura C01-F03 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F03.svg" class="img-fluid" alt="Tres paneles muestran la distancia de x al origen, la distancia de x a un centro a y la distancia entre dos puntos x e y; el tercer panel distingue resta orientada de longitud no orientada."></p>
+<p><em>Figura C01-F03. El paso |x| → |x−a| → d(x,y)=|x−y| elimina gradualmente una referencia privilegiada y conserva la idea de medir separación.</em></p>
+<p>Probemos con un ejemplo. Si elegimos <span class="math inline">\(a=3\)</span>, entonces los puntos <span class="math inline">\(7\)</span> y <span class="math inline">\(-1\)</span> están en lados distintos de <span class="math inline">\(3\)</span>, pero</p>
+<p><span class="math display">\[
+|7-3|=4
+\qquad\text{y}\qquad
+|-1-3|=4.
+\]</span></p>
+<p>Ambos están a cuatro unidades del centro elegido. De nuevo, la expresión sin valor absoluto recuerda la orientación —<span class="math inline">\(7-3=4\)</span> mientras que <span class="math inline">\(-1-3=-4\)</span>—, pero el valor absoluto retiene solamente la separación.</p>
+</section>
+<section id="cambiar-el-centro-no-cambia-la-idea" class="level3">
+<h3 class="anchored" data-anchor-id="cambiar-el-centro-no-cambia-la-idea">Cambiar el centro no cambia la idea</h3>
+<p>Podemos mirar esta operación como una especie de recentrado conceptual. Cuando trabajamos con <span class="math inline">\(|x|\)</span>, preguntamos por la posición de <span class="math inline">\(x\)</span> respecto de <span class="math inline">\(0\)</span>; cuando trabajamos con <span class="math inline">\(|x-a|\)</span>, hacemos exactamente la misma pregunta, pero tomando <span class="math inline">\(a\)</span> como referencia.</p>
+<p>Conviene ser precisos aquí: no estamos afirmando que restar <span class="math inline">\(a\)</span> mueva físicamente el punto <span class="math inline">\(x\)</span> sobre la recta. Lo que cambia es la referencia desde la que describimos su posición. El número <span class="math inline">\(x-a\)</span> es el desplazamiento orientado desde <span class="math inline">\(a\)</span> hasta <span class="math inline">\(x\)</span>; el número <span class="math inline">\(|x-a|\)</span> es el tamaño de ese desplazamiento.</p>
+<p>Este modo de leer las barras de valor absoluto será mucho más útil en análisis que recordarlas sólo como una definición por casos. Cuando aparezca una condición como</p>
+<p><span class="math display">\[
+|x-a|&lt;r,
+\]</span></p>
+<p>querremos leerla primero en palabras: «<span class="math inline">\(x\)</span> está a menos de <span class="math inline">\(r\)</span> unidades de <span class="math inline">\(a\)</span>». Después podremos preguntarnos qué intervalo describe. Esa traducción completa llegará en §1.7; por ahora basta con reconocer qué está midiendo la expresión.</p>
+</section>
+<section id="antes-de-seguir-1" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-1">Antes de seguir</h3>
+<p>Detengámonos en cuatro preguntas rápidas.</p>
+<ol type="1">
+<li>Si <span class="math inline">\(|x|=6\)</span>, ¿qué sabemos sobre la posición de <span class="math inline">\(x\)</span>?</li>
+<li>Si <span class="math inline">\(|x|&lt;2\)</span>, ¿en qué parte de la recta puede estar <span class="math inline">\(x\)</span>?</li>
+<li>¿Qué diferencia de información hay entre <span class="math inline">\(x-a\)</span> y <span class="math inline">\(|x-a|\)</span>?</li>
+<li>Si <span class="math inline">\(|x-a|=0\)</span>, ¿qué debe ocurrir?</li>
+</ol>
+<p>La idea que necesitamos conservar es simple: <strong>el valor absoluto convierte un desplazamiento orientado en una separación no negativa</strong>. En el origen esto aparece como <span class="math inline">\(|x|\)</span>; respecto de un centro arbitrario aparece como <span class="math inline">\(|x-a|\)</span>.</p>
+<p>En la siguiente sección daremos un paso pequeño pero decisivo: dejaremos de hablar informalmente de «la distancia entre dos puntos» y convertiremos esta idea en una función con nombre y propiedades precisas.</p>
+</section>
+</section>
+<section id="distancia-entre-dos-puntos-reales" class="level2">
+<h2 class="anchored" data-anchor-id="distancia-entre-dos-puntos-reales">1.4. Distancia entre dos puntos reales</h2>
+<p>En §1.3 dejamos de pensar el valor absoluto únicamente como una regla por casos y empezamos a leer <span class="math inline">\(|x-a|\)</span> como la separación entre <span class="math inline">\(x\)</span> y un centro elegido <span class="math inline">\(a\)</span>. El paso siguiente es casi inevitable: si el punto de referencia puede ser cualquiera, ¿por qué seguir tratándolo como un centro fijo? Tomemos dos puntos reales <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> y hagamos que ambos puedan variar.</p>
+<p>La resta</p>
+<p><span class="math display">\[
+x-y
+\]</span></p>
+<p>sigue registrando un desplazamiento orientado: es positiva si <span class="math inline">\(x\)</span> queda a la derecha de <span class="math inline">\(y\)</span>, negativa si queda a la izquierda y cero si coinciden. Pero si queremos medir solamente cuánto separa a los dos puntos, la orientación vuelve a ser información sobrante. Por eso definimos</p>
+<p><span class="math display">\[
+d(x,y)=|x-y|.
+\]</span></p>
+<p>Llamaremos a <span class="math inline">\(d\)</span> la <strong>distancia estándar</strong> —o <strong>métrica estándar</strong>— de la recta real. Por ahora este nombre sólo se refiere a esta función concreta sobre <span class="math inline">\(\mathbb R\)</span>; la teoría abstracta de espacios métricos llegará mucho más adelante.</p>
+<p>La definición merece una primera comprobación. Si intercambiamos los puntos, la resta cambia de signo:</p>
+<p><span class="math display">\[
+y-x=-(x-y),
+\]</span></p>
+<p>pero su valor absoluto no cambia. Así que</p>
+<p><span class="math display">\[
+d(x,y)=|x-y|=|y-x|=d(y,x).
+\]</span></p>
+<p>Esto coincide con la geometría que esperamos: recorrer el segmento desde <span class="math inline">\(x\)</span> hasta <span class="math inline">\(y\)</span> o desde <span class="math inline">\(y\)</span> hasta <span class="math inline">\(x\)</span> cambia el sentido del recorrido, no su longitud.</p>
+<p>La tercera escena de la figura C01-F03 ya anticipaba esta simetría: <span class="math inline">\(x-y\)</span> y <span class="math inline">\(y-x\)</span> cambian de signo al invertir el sentido, mientras <span class="math inline">\(|x-y|\)</span> conserva la misma longitud.</p>
+<section id="qué-debe-cumplir-una-distancia" class="level3">
+<h3 class="anchored" data-anchor-id="qué-debe-cumplir-una-distancia">¿Qué debe cumplir una distancia?</h3>
+<p>Antes de seguir calculando ejemplos, conviene preguntarnos por qué esta función merece realmente el nombre de distancia. En la recta hay cuatro propiedades que esperamos de cualquier medición razonable entre puntos: que nunca produzca longitudes negativas, que sólo dé cero cuando los puntos coinciden, que no dependa del sentido en que medimos y que ir directamente de un punto a otro nunca sea más largo que obligarnos a pasar por un tercero.</p>
+<p>Para <span class="math inline">\(x,y,z\in\mathbb R\)</span>, la función</p>
+<p><span class="math display">\[
+d(x,y)=|x-y|
+\]</span></p>
+<p>satisface:</p>
+<ol type="1">
+<li><strong>No negatividad:</strong> <span class="math display">\[
+d(x,y)\ge0.
+\]</span></li>
+<li><strong>Identidad de los puntos a distancia cero:</strong> <span class="math display">\[
+d(x,y)=0\iff x=y.
+\]</span></li>
+<li><strong>Simetría:</strong> <span class="math display">\[
+d(x,y)=d(y,x).
+\]</span></li>
+<li><strong>Desigualdad triangular:</strong> <span class="math display">\[
+d(x,z)\le d(x,y)+d(y,z).
+\]</span></li>
+</ol>
+<p>Las tres primeras casi se leen directamente en la definición, pero vale la pena justificar las cuatro porque serán parte de la infraestructura del análisis posterior.</p>
+<p><strong>Demostración.</strong> La no negatividad sigue de <span class="math inline">\(|x-y|\ge0\)</span>. Además,</p>
+<p><span class="math display">\[
+d(x,y)=0
+\iff |x-y|=0
+\iff x-y=0
+\iff x=y,
+\]</span></p>
+<p>de modo que la distancia sólo se anula cuando los dos puntos coinciden. La simetría ya la vimos:</p>
+<p><span class="math display">\[
+d(x,y)=|x-y|=|-(y-x)|=|y-x|=d(y,x).
+\]</span></p>
+<p>Queda la cuarta propiedad. Aquí necesitamos una propiedad elemental del valor absoluto. Para cualquier número real <span class="math inline">\(u\)</span>,</p>
+<p><span class="math display">\[
+-|u|\le u\le |u|.
+\]</span></p>
+<p>Si escribimos esta desigualdad para <span class="math inline">\(u\)</span> y para <span class="math inline">\(v\)</span> y sumamos miembro a miembro, obtenemos</p>
+<p><span class="math display">\[
+-(|u|+|v|)\le u+v\le |u|+|v|.
+\]</span></p>
+<p>Como <span class="math inline">\(|u|+|v|\ge0\)</span>, estas dos desigualdades dicen precisamente que</p>
+<p><span class="math display">\[
+|u+v|\le |u|+|v|.
+\]</span></p>
+<p>Ahora basta elegir</p>
+<p><span class="math display">\[
+u=x-y,
+\qquad
+v=y-z.
+\]</span></p>
+<p>Entonces <span class="math inline">\(u+v=x-z\)</span>, y por tanto</p>
+<p><span class="math display">\[
+|x-z|\le |x-y|+|y-z|,
+\]</span></p>
+<p>o, en el lenguaje que acabamos de introducir,</p>
+<p><span class="math display">\[
+d(x,z)\le d(x,y)+d(y,z).
+\]</span></p>
+<p>Eso demuestra las cuatro propiedades. <span class="math inline">\(\square\)</span></p>
+<p>La última desigualdad es tan importante que recibirá atención propia en la sección siguiente. Allí dejaremos de verla sólo como una consecuencia algebraica de las barras de valor absoluto y preguntaremos qué dice geométricamente sobre una ruta que va de <span class="math inline">\(x\)</span> a <span class="math inline">\(z\)</span> pasando por <span class="math inline">\(y\)</span>.</p>
+</section>
+<section id="una-primera-estimación-cuánto-puede-cambiar-una-distancia" class="level3">
+<h3 class="anchored" data-anchor-id="una-primera-estimación-cuánto-puede-cambiar-una-distancia">Una primera estimación: cuánto puede cambiar una distancia</h3>
+<p>La desigualdad triangular permite obtener casi de inmediato otra estimación muy útil. Escribamos</p>
+<p><span class="math display">\[
+x=(x-y)+y.
+\]</span></p>
+<p>Aplicando la desigualdad triangular al valor absoluto,</p>
+<p><span class="math display">\[
+|x|\le |x-y|+|y|,
+\]</span></p>
+<p>de donde</p>
+<p><span class="math display">\[
+|x|-|y|\le |x-y|.
+\]</span></p>
+<p>Si intercambiamos <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>, obtenemos también</p>
+<p><span class="math display">\[
+|y|-|x|\le |x-y|.
+\]</span></p>
+<p>Las dos desigualdades juntas equivalen a</p>
+<p><span class="math display">\[
+\bigl||x|-|y|\bigr|\le |x-y|.
+\]</span></p>
+<p>Ésta es la <strong>desigualdad triangular inversa</strong>. Su lectura es especialmente instructiva: la diferencia entre las distancias de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> al origen nunca puede ser mayor que la distancia entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>.</p>
+<p>Por ejemplo, si dos puntos están separados por apenas <span class="math inline">\(0.01\)</span>, sus distancias al origen no pueden diferir en <span class="math inline">\(3\)</span> ni en <span class="math inline">\(100\)</span>; a lo sumo pueden diferir en <span class="math inline">\(0.01\)</span>. La desigualdad convierte una intuición geométrica bastante natural en una estimación exacta.</p>
+<p>No conviene memorizarla como una segunda fórmula independiente. Lo importante es reconocer de dónde salió: tomamos la desigualdad triangular, aislamos una diferencia y repetimos el argumento con los puntos intercambiados. Ese patrón de razonamiento —obtener control sobre una diferencia a partir de una desigualdad ya conocida— reaparecerá muchas veces en análisis.</p>
+</section>
+<section id="la-orientación-desaparece-la-separación-permanece" class="level3">
+<h3 class="anchored" data-anchor-id="la-orientación-desaparece-la-separación-permanece">La orientación desaparece, la separación permanece</h3>
+<p>Volvamos por un momento a la definición</p>
+<p><span class="math display">\[
+d(x,y)=|x-y|.
+\]</span></p>
+<p>La resta <span class="math inline">\(x-y\)</span> distingue orientación; la distancia no. Si <span class="math inline">\(x&lt;y\)</span>, entonces <span class="math inline">\(x-y&lt;0\)</span> y <span class="math inline">\(y-x&gt;0\)</span>, pero</p>
+<p><span class="math display">\[
+|x-y|=|y-x|.
+\]</span></p>
+<p>Esto nos permite precisar una idea que apareció ya en §1.1: conocer una distancia no nos dice cuál de los dos puntos está a la izquierda. La métrica registra <strong>separación</strong>, mientras que el orden registra <strong>orientación y posición relativa</strong>. En la recta ambas estructuras cooperan estrechamente, pero no contienen la misma información.</p>
+</section>
+<section id="antes-de-seguir-2" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-2">Antes de seguir</h3>
+<p>Comprobemos que la nueva notación está haciendo trabajo conceptual y no sólo abreviando barras de valor absoluto.</p>
+<ol type="1">
+<li>¿Por qué <span class="math inline">\(d(2,7)=d(7,2)\)</span> aunque <span class="math inline">\(2-7\)</span> y <span class="math inline">\(7-2\)</span> tengan signos distintos?</li>
+<li>Si <span class="math inline">\(d(x,y)=0\)</span>, ¿qué podemos concluir y qué propiedad acabamos de usar?</li>
+<li>¿Qué afirma en palabras <span class="math inline">\(d(x,z)\le d(x,y)+d(y,z)\)</span>?</li>
+<li>¿Qué controla la desigualdad <span class="math inline">\(\bigl||x|-|y|\bigr|\le |x-y|\)</span>?</li>
+</ol>
+<p>Con esto ya tenemos una noción de distancia suficientemente precisa para empezar a razonar geométricamente con ella. En §1.5 volveremos a la desigualdad triangular, pero la pregunta será distinta: <strong>¿cuándo el camino que pasa por un tercer punto no añade ninguna longitud?</strong> La respuesta nos devolverá, de manera inesperadamente exacta, a la noción de «estar entre» que formulamos usando el orden.</p>
+</section>
+</section>
+<section id="la-desigualdad-triangular-y-la-geometría-de-estar-entre" class="level2">
+<h2 class="anchored" data-anchor-id="la-desigualdad-triangular-y-la-geometría-de-estar-entre">1.5. La desigualdad triangular y la geometría de «estar entre»</h2>
+<p>En §1.4 demostramos que la distancia estándar satisface</p>
+<p><span class="math display">\[
+d(x,z)\le d(x,y)+d(y,z).
+\]</span></p>
+<p>Algebraicamente, la desigualdad ya está resuelta. Pero si nos quedáramos sólo con la demostración, perderíamos una parte importante de lo que esta fórmula está diciendo. En la recta, podemos leer los dos lados como longitudes de dos recorridos distintos: el lado izquierdo mide el trayecto directo de <span class="math inline">\(x\)</span> a <span class="math inline">\(z\)</span>; el lado derecho mide lo que recorremos si obligamos al camino a pasar primero por <span class="math inline">\(y\)</span>.</p>
+<p>La pregunta interesante ya no es entonces «¿por qué el camino directo no es más largo?», sino otra más fina:</p>
+<blockquote class="blockquote">
+<p><strong>¿Cuándo pasar por <span class="math inline">\(y\)</span> no añade ninguna longitud?</strong></p>
+</blockquote>
+<p>Tomemos un ejemplo sencillo. Si <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=4\)</span> y <span class="math inline">\(z=7\)</span>, entonces</p>
+<p><span class="math display">\[
+d(1,7)=6
+\]</span></p>
+<p>y, al mismo tiempo,</p>
+<p><span class="math display">\[
+d(1,4)+d(4,7)=3+3=6.
+\]</span></p>
+<p>No hemos pagado ninguna longitud extra por pasar por <span class="math inline">\(4\)</span>, porque <span class="math inline">\(4\)</span> ya estaba en el trayecto entre <span class="math inline">\(1\)</span> y <span class="math inline">\(7\)</span>. En cambio, si obligamos al recorrido a pasar por <span class="math inline">\(y=10\)</span>, obtenemos</p>
+<p><span class="math display">\[
+d(1,10)+d(10,7)=9+3=12,
+\]</span></p>
+<p>que es estrictamente mayor que la distancia directa <span class="math inline">\(d(1,7)=6\)</span>. Para visitar <span class="math inline">\(10\)</span> tenemos que sobrepasar <span class="math inline">\(7\)</span> y luego retroceder.</p>
+<p>Esta diferencia entre <strong>avanzar sin retroceso</strong> y <strong>salirse del segmento para volver</strong> contiene toda la geometría del caso de igualdad.</p>
+<p>La figura C01-F05 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F05.svg" class="img-fluid" alt="Tres paneles comparan el caso y entre x y z con y situado a la izquierda o a la derecha. La ruta pasando por y tiene la misma longitud sólo en el primer caso y es mayor en los otros dos."></p>
+<p><em>Figura C01-F05. En la recta hay igualdad triangular exactamente cuando <span class="math inline">\(y\)</span> está entre los extremos; fuera del segmento aparece recorrido redundante.</em></p>
+<section id="cuando-y-está-entre-los-extremos" class="level3">
+<h3 class="anchored" data-anchor-id="cuando-y-está-entre-los-extremos">Cuando <span class="math inline">\(y\)</span> está entre los extremos</h3>
+<p>Recordemos nuestra definición de §1.2: <span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span> cuando</p>
+<p><span class="math display">\[
+\min\{x,z\}\le y\le \max\{x,z\}.
+\]</span></p>
+<p>Supongamos primero que <span class="math inline">\(x\le y\le z\)</span>. Entonces las diferencias <span class="math inline">\(y-x\)</span> y <span class="math inline">\(z-y\)</span> son no negativas, de modo que</p>
+<p><span class="math display">\[
+d(x,y)=y-x
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+d(y,z)=z-y.
+\]</span></p>
+<p>Al sumarlas,</p>
+<p><span class="math display">\[
+d(x,y)+d(y,z)=(y-x)+(z-y)=z-x=d(x,z).
+\]</span></p>
+<p>Si el orden de los extremos es el contrario, <span class="math inline">\(z\le y\le x\)</span>, ocurre exactamente lo mismo con los papeles de <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span> intercambiados. Por tanto, siempre que <span class="math inline">\(y\)</span> esté entre los extremos,</p>
+<p><span class="math display">\[
+d(x,z)=d(x,y)+d(y,z).
+\]</span></p>
+<p>Los casos <span class="math inline">\(y=x\)</span> o <span class="math inline">\(y=z\)</span> están incluidos. Si, por ejemplo, <span class="math inline">\(y=x\)</span>, entonces <span class="math inline">\(d(x,y)=0\)</span> y la igualdad se reduce simplemente a <span class="math inline">\(d(x,z)=d(x,z)\)</span>. Esto importa porque nuestra noción de «estar entre» permite coincidir con los extremos.</p>
+</section>
+<section id="y-si-aparece-la-igualdad" class="level3">
+<h3 class="anchored" data-anchor-id="y-si-aparece-la-igualdad">¿Y si aparece la igualdad?</h3>
+<p>La dirección anterior era la más fácil de imaginar: si <span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>, las longitudes se concatenan sin retroceso. Lo más interesante es la conversa. Supongamos ahora que sabemos que</p>
+<p><span class="math display">\[
+d(x,z)=d(x,y)+d(y,z).
+\]</span></p>
+<p>¿Estamos obligados a concluir que <span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>? En la recta real, sí.</p>
+<p>Como la afirmación no cambia si intercambiamos <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>, podemos estudiar el caso <span class="math inline">\(x\le z\)</span>. Queremos ver dónde puede estar <span class="math inline">\(y\)</span>. Hay tres posibilidades: a la izquierda de <span class="math inline">\(x\)</span>, entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>, o a la derecha de <span class="math inline">\(z\)</span>.</p>
+<p>Ya sabemos qué ocurre en el caso intermedio. Veamos qué pasa si <span class="math inline">\(y&lt;x\)</span>. Entonces</p>
+<p><span class="math display">\[
+d(x,y)=x-y,
+\qquad
+d(y,z)=z-y,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+d(x,y)+d(y,z)=x+z-2y.
+\]</span></p>
+<p>Como <span class="math inline">\(y&lt;x\)</span>, tenemos <span class="math inline">\(x-y&gt;0\)</span>, y de hecho</p>
+<p><span class="math display">\[
+d(x,y)+d(y,z)=(z-x)+2(x-y)&gt;z-x=d(x,z).
+\]</span></p>
+<p>Aparece longitud extra: para ir de <span class="math inline">\(x\)</span> a <span class="math inline">\(z\)</span> pasando por un punto situado a la izquierda de <span class="math inline">\(x\)</span>, primero debemos retroceder y luego desandar ese retroceso.</p>
+<p>Si, en cambio, <span class="math inline">\(y&gt;z\)</span>, obtenemos de manera análoga</p>
+<p><span class="math display">\[
+d(x,y)+d(y,z)=(z-x)+2(y-z)&gt;z-x=d(x,z).
+\]</span></p>
+<p>También aquí aparece un recorrido redundante, ahora por haber sobrepasado <span class="math inline">\(z\)</span>.</p>
+<p>Así que la igualdad sólo puede ocurrir en el caso que quedaba: <span class="math inline">\(x\le y\le z\)</span>. Al devolver la simetría entre los extremos, obtenemos la caracterización completa:</p>
+<p><span class="math display">\[
+\boxed{
+d(x,z)=d(x,y)+d(y,z)
+\iff
+\min\{x,z\}\le y\le \max\{x,z\}.
+}
+\]</span></p>
+<p>Éste es uno de los primeros lugares del capítulo donde orden y distancia se encuentran de manera exacta. La frase «<span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>» pertenece al lenguaje del orden; la igualdad de distancias pertenece al lenguaje métrico. En la recta real, ambas descripciones expresan la misma situación.</p>
+</section>
+<section id="desigualdad-estricta-fuera-del-segmento" class="level3">
+<h3 class="anchored" data-anchor-id="desigualdad-estricta-fuera-del-segmento">Desigualdad estricta fuera del segmento</h3>
+<p>La caracterización anterior nos permite decir algo un poco más fuerte sin hacer una nueva demostración. Si <span class="math inline">\(y\)</span> <strong>no</strong> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>, entonces la igualdad es imposible y la desigualdad triangular se vuelve estricta:</p>
+<p><span class="math display">\[
+d(x,z)&lt;d(x,y)+d(y,z).
+\]</span></p>
+<p>En la recta, por tanto, la desigualdad triangular no es sólo una cota. También detecta si el punto intermedio pertenece o no al tramo determinado por los extremos.</p>
+<p>Conviene advertir desde ahora que esta lectura tan precisa depende de la geometría unidimensional de <span class="math inline">\(\mathbb R\)</span>. Más adelante, cuando trabajemos con espacios métricos abstractos, no podremos suponer sin demostración que la igualdad triangular caracteriza una noción única de «estar entre». Aquí sí podemos hacerlo porque el orden lineal de la recta controla completamente la posición relativa de tres puntos.</p>
+</section>
+<section id="qué-nos-enseñó-realmente-la-igualdad" class="level3">
+<h3 class="anchored" data-anchor-id="qué-nos-enseñó-realmente-la-igualdad">Qué nos enseñó realmente la igualdad</h3>
+<p>Volvamos a la pregunta inicial. ¿Cuándo pasar por <span class="math inline">\(y\)</span> no añade longitud? Exactamente cuando <span class="math inline">\(y\)</span> ya se encuentra entre los extremos. En cualquier otro caso, el recorrido contiene una ida y vuelta innecesaria.</p>
+<p>Podemos resumirlo así:</p>
+<ul>
+<li><strong>orden:</strong> <span class="math inline">\(y\)</span> está entre <span class="math inline">\(x\)</span> y <span class="math inline">\(z\)</span>;</li>
+<li><strong>métrica:</strong> <span class="math inline">\(d(x,z)=d(x,y)+d(y,z)\)</span>;</li>
+<li><strong>geometría:</strong> el recorrido <span class="math inline">\(x\to y\to z\)</span> no contiene retroceso.</li>
+</ul>
+<p>Tres lenguajes distintos, una misma configuración.</p>
+</section>
+<section id="antes-de-seguir-3" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-3">Antes de seguir</h3>
+<p>Probemos si la caracterización ya resulta natural.</p>
+<ol type="1">
+<li>Si <span class="math inline">\(x=-2\)</span>, <span class="math inline">\(z=5\)</span> y <span class="math inline">\(y=1\)</span>, ¿esperamos igualdad o desigualdad estricta?</li>
+<li>Si <span class="math inline">\(x=-2\)</span>, <span class="math inline">\(z=5\)</span> y <span class="math inline">\(y=8\)</span>, ¿dónde aparece el recorrido extra?</li>
+<li>Si <span class="math inline">\(d(x,z)=d(x,y)+d(y,z)\)</span>, ¿qué podemos afirmar sobre la posición de <span class="math inline">\(y\)</span> sin saber cuál de <span class="math inline">\(x\)</span> o <span class="math inline">\(z\)</span> está a la izquierda?</li>
+<li>¿Por qué los casos <span class="math inline">\(y=x\)</span> y <span class="math inline">\(y=z\)</span> deben formar parte de la caracterización?</li>
+</ol>
+<p>La desigualdad triangular comenzó como una propiedad algebraica de la distancia. Ahora vemos que, en la recta, también es una afirmación sobre <strong>posición</strong>. En la sección siguiente cambiaremos de pregunta una vez más: fijaremos un centro y un margen positivo, y estudiaremos qué conjunto de puntos queda a una distancia menor que ese margen.</p>
+</section>
+</section>
+<section id="bolas-métricas-ventanas-alrededor-de-un-punto" class="level2">
+<h2 class="anchored" data-anchor-id="bolas-métricas-ventanas-alrededor-de-un-punto">1.6. Bolas métricas: ventanas alrededor de un punto</h2>
+<p>En la sección anterior dejamos tres puntos libres y preguntamos qué ocurría al obligar a una ruta a pasar por uno de ellos. Ahora fijaremos sólo uno. Elegimos un punto <span class="math inline">\(a\in\mathbb R\)</span> y queremos reunir todos los puntos que estén <strong>suficientemente cerca</strong> de él.</p>
+<p>La palabra «suficientemente» necesita, naturalmente, una medida. Elijamos un número <span class="math inline">\(r&gt;0\)</span> y exijamos que la distancia desde <span class="math inline">\(x\)</span> hasta <span class="math inline">\(a\)</span> sea menor que <span class="math inline">\(r\)</span>. Esto conduce a la definición</p>
+<p><span class="math display">\[
+B(a,r)=\{x\in\mathbb R:d(x,a)&lt;r\}.
+\]</span></p>
+<p>Llamaremos a <span class="math inline">\(B(a,r)\)</span> la <strong>bola abierta de centro <span class="math inline">\(a\)</span> y radio <span class="math inline">\(r\)</span></strong> en la recta real.</p>
+<p>Hay dos datos que conviene mantener separados desde el comienzo. El <strong>centro</strong> <span class="math inline">\(a\)</span> decide alrededor de qué punto estamos midiendo; el <strong>radio</strong> <span class="math inline">\(r\)</span> decide cuánta separación estamos dispuestos a admitir. La condición <span class="math inline">\(r&gt;0\)</span> no es decorativa: un radio positivo expresa un margen real de cercanía alrededor del centro.</p>
+<section id="qué-forma-tiene-una-bola-en-la-recta" class="level3">
+<h3 class="anchored" data-anchor-id="qué-forma-tiene-una-bola-en-la-recta">¿Qué forma tiene una bola en la recta?</h3>
+<p>El nombre «bola» puede sugerir un disco o una esfera, pero aquí nuestros puntos viven en <span class="math inline">\(\mathbb R\)</span>. No deberíamos adivinar la forma del conjunto a partir de la palabra; debemos leer la definición.</p>
+<p>Un punto <span class="math inline">\(x\)</span> pertenece a <span class="math inline">\(B(a,r)\)</span> exactamente cuando</p>
+<p><span class="math display">\[
+d(x,a)&lt;r.
+\]</span></p>
+<p>Como la distancia estándar es <span class="math inline">\(d(x,a)=|x-a|\)</span>, esto equivale a</p>
+<p><span class="math display">\[
+|x-a|&lt;r.
+\]</span></p>
+<p>En §1.3 vimos que una desigualdad de valor absoluto centrada en el origen describe todos los puntos situados entre dos fronteras simétricas. Aplicando esa misma lectura al desplazamiento <span class="math inline">\(x-a\)</span>, obtenemos</p>
+<p><span class="math display">\[
+-r&lt;x-a&lt;r.
+\]</span></p>
+<p>Sumando <span class="math inline">\(a\)</span> en los tres miembros,</p>
+<p><span class="math display">\[
+a-r&lt;x&lt;a+r.
+\]</span></p>
+<p>Pero ésta es precisamente la condición de pertenencia al intervalo <span class="math inline">\((a-r,a+r)\)</span>. Hemos demostrado, por tanto, que</p>
+<p><span class="math display">\[
+\boxed{B(a,r)=(a-r,a+r)}.
+\]</span></p>
+<p>La igualdad de conjuntos merece leerse en ambas direcciones. Si <span class="math inline">\(x\)</span> está a menos de <span class="math inline">\(r\)</span> unidades de <span class="math inline">\(a\)</span>, entonces queda entre <span class="math inline">\(a-r\)</span> y <span class="math inline">\(a+r\)</span>; y si queda entre esas dos fronteras, entonces su distancia a <span class="math inline">\(a\)</span> es menor que <span class="math inline">\(r\)</span>.</p>
+<p>La figura C01-F06 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F06.svg" class="img-fluid" alt="Recta numérica centrada en a con extremos abiertos a-r y a+r, ambos a distancia r del centro, y cadena de equivalencias entre distancia, valor absoluto y desigualdad doble."></p>
+<p><em>Figura C01-F06. En ℝ, d(x,a)&lt;r selecciona exactamente los puntos del intervalo abierto (a−r,a+r); las fronteras quedan fuera porque están a distancia r.</em></p>
+</section>
+<section id="el-centro-localiza-el-radio-controla-el-margen" class="level3">
+<h3 class="anchored" data-anchor-id="el-centro-localiza-el-radio-controla-el-margen">El centro localiza; el radio controla el margen</h3>
+<p>La identidad</p>
+<p><span class="math display">\[
+B(a,r)=(a-r,a+r)
+\]</span></p>
+<p>nos permite ver con mucha claridad qué hace cada parámetro.</p>
+<p>Si mantenemos fijo <span class="math inline">\(r\)</span> y cambiamos <span class="math inline">\(a\)</span>, ambos extremos se desplazan en la misma cantidad. La bola se traslada a lo largo de la recta sin cambiar su tamaño. Por ejemplo,</p>
+<p><span class="math display">\[
+B(0,2)=(-2,2)
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+B(5,2)=(3,7).
+\]</span></p>
+<p>El radio sigue siendo <span class="math inline">\(2\)</span>; sólo hemos cambiado el punto alrededor del cual medimos.</p>
+<p>Si, en cambio, mantenemos fijo el centro y variamos <span class="math inline">\(r\)</span>, ocurre otra cosa. Con centro <span class="math inline">\(a\)</span>,</p>
+<p><span class="math display">\[
+B(a,1)=(a-1,a+1),
+\]</span></p>
+<p><span class="math display">\[
+B(a,2)=(a-2,a+2),
+\]</span></p>
+<p>y, más generalmente, un radio mayor permite una separación mayor en ambos sentidos. El intervalo se ensancha simétricamente respecto del centro.</p>
+<p>La figura C01-F07 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F07.svg" class="img-fluid" alt="Dos paneles: el primero compara dos bolas de igual radio y centros distintos; el segundo compara dos bolas del mismo centro y radios diferentes."></p>
+<p><em>Figura C01-F07. Mover el centro traslada la bola sin cambiar su anchura; aumentar el radio ensancha la región simétricamente alrededor del mismo centro.</em></p>
+<p>Por eso resulta útil pensar en la bola como una <strong>ventana</strong> alrededor de <span class="math inline">\(a\)</span>: mover <span class="math inline">\(a\)</span> desplaza la ventana; aumentar <span class="math inline">\(r\)</span> la abre; disminuir <span class="math inline">\(r\)</span> la estrecha. Pero conviene conservar la jerarquía correcta. «Ventana» es una imagen; la definición matemática es</p>
+<p><span class="math display">\[
+B(a,r)=\{x\in\mathbb R:d(x,a)&lt;r\}.
+\]</span></p>
+</section>
+<section id="por-qué-exigimos-r0" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-exigimos-r0">Por qué exigimos <span class="math inline">\(r&gt;0\)</span></h3>
+<p>Podría parecer que la condición <span class="math inline">\(r&gt;0\)</span> es una formalidad. Veamos qué ocurre si la abandonamos.</p>
+<p>Si <span class="math inline">\(r=0\)</span>, la condición sería</p>
+<p><span class="math display">\[
+d(x,a)&lt;0,
+\]</span></p>
+<p>que ningún punto puede satisfacer porque las distancias nunca son negativas. Si <span class="math inline">\(r&lt;0\)</span>, con mayor razón tampoco existe ningún <span class="math inline">\(x\)</span> cuya distancia no negativa a <span class="math inline">\(a\)</span> sea menor que ese número negativo.</p>
+<p>Así, los radios no positivos no producen una región de cercanía alrededor del centro. Para la noción que queremos usar, el radio debe ser estrictamente positivo.</p>
+</section>
+<section id="una-primera-lectura-de-tolerancia" class="level3">
+<h3 class="anchored" data-anchor-id="una-primera-lectura-de-tolerancia">Una primera lectura de tolerancia</h3>
+<p>La notación de bolas nos permite condensar una idea que aparecerá una y otra vez en análisis. Supongamos que <span class="math inline">\(a\)</span> es un valor de referencia y que aceptamos un error menor que <span class="math inline">\(r\)</span>. Decir</p>
+<p><span class="math display">\[
+x\in B(a,r)
+\]</span></p>
+<p>significa que <span class="math inline">\(x\)</span> permanece dentro de ese margen:</p>
+<p><span class="math display">\[
+d(x,a)&lt;r.
+\]</span></p>
+<p>En la recta, ya sabemos además que esto equivale a quedar entre las dos fronteras <span class="math inline">\(a-r\)</span> y <span class="math inline">\(a+r\)</span>. Todavía no vamos a sistematizar todas las traducciones posibles —eso será precisamente el trabajo de §1.7—, pero ya podemos ver la idea que las sostiene: <strong>una tolerancia positiva alrededor de un centro define una región precisa de puntos admitidos</strong>.</p>
+</section>
+<section id="antes-de-seguir-4" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-seguir-4">Antes de seguir</h3>
+<p>Comprobemos que centro, radio y conjunto no se mezclen entre sí.</p>
+<ol type="1">
+<li>¿Qué cambia en <span class="math inline">\(B(a,r)\)</span> si sustituimos <span class="math inline">\(a\)</span> por <span class="math inline">\(a+3\)</span> y mantenemos fijo <span class="math inline">\(r\)</span>?</li>
+<li>¿Qué cambia si dejamos fijo <span class="math inline">\(a\)</span> y duplicamos <span class="math inline">\(r\)</span>?</li>
+<li>¿Por qué <span class="math inline">\(a-r\)</span> y <span class="math inline">\(a+r\)</span> quedan a la misma distancia del centro?</li>
+<li>¿Por qué esos dos puntos no pertenecen a <span class="math inline">\(B(a,r)\)</span>?</li>
+<li>¿Qué falla si intentamos usar <span class="math inline">\(r=0\)</span> como radio de una bola abierta?</li>
+</ol>
+<p>Hemos llegado así a una primera traducción exacta entre dos estructuras de la recta:</p>
+<p><span class="math display">\[
+\text{distancia menor que }r
+\quad\longleftrightarrow\quad
+\text{estar entre }a-r\text{ y }a+r.
+\]</span></p>
+<p>En la sección siguiente convertiremos esta observación en un pequeño sistema de traducción. Compararemos no sólo <span class="math inline">\(&lt;\)</span>, sino también <span class="math inline">\(\le\)</span>, <span class="math inline">\(&gt;\)</span> y <span class="math inline">\(\ge\)</span>, y aprenderemos a pasar deliberadamente entre distancia, valor absoluto, desigualdad e intervalo.</p>
+</section>
+</section>
+<section id="traducir-entre-orden-distancia-y-tolerancia" class="level2">
+<h2 class="anchored" data-anchor-id="traducir-entre-orden-distancia-y-tolerancia">1.7. Traducir entre orden, distancia y tolerancia</h2>
+<p>En §1.6 apareció una equivalencia que merece algo más que una mirada pasajera. Para <span class="math inline">\(r&gt;0\)</span> vimos que</p>
+<p><span class="math display">\[
+B(a,r)=\{x\in\mathbb R:d(x,a)&lt;r\}=(a-r,a+r).
+\]</span></p>
+<p>Esta igualdad reúne varias maneras de describir exactamente el mismo conjunto. Una habla de <strong>distancia</strong>; otra, de <strong>valor absoluto</strong>; otra, de <strong>orden</strong>; y otra, de <strong>pertenencia a una región de la recta</strong>. A partir de ahora conviene aprender a cambiar de una a otra deliberadamente.</p>
+<p>La cadena fundamental es</p>
+<p><span class="math display">\[
+\boxed{
+|x-a|&lt;r
+\iff d(x,a)&lt;r
+\iff a-r&lt;x&lt;a+r
+\iff x\in(a-r,a+r)
+}
+\]</span></p>
+<p>para todo <span class="math inline">\(a,x\in\mathbb R\)</span> y todo <span class="math inline">\(r&gt;0\)</span>.</p>
+<p>No hay cuatro hechos distintos aquí. Hay una sola condición expresada en cuatro lenguajes.</p>
+<section id="leer-la-cadena-de-izquierda-a-derecha" class="level3">
+<h3 class="anchored" data-anchor-id="leer-la-cadena-de-izquierda-a-derecha">Leer la cadena de izquierda a derecha</h3>
+<p>Supongamos que comenzamos con</p>
+<p><span class="math display">\[
+|x-a|&lt;r.
+\]</span></p>
+<p>La expresión <span class="math inline">\(|x-a|\)</span> mide la separación entre <span class="math inline">\(x\)</span> y <span class="math inline">\(a\)</span>, de modo que podemos leer inmediatamente</p>
+<p><span class="math display">\[
+d(x,a)&lt;r.
+\]</span></p>
+<p>La desigualdad dice que <span class="math inline">\(x\)</span> está a menos de <span class="math inline">\(r\)</span> unidades del centro. En la recta, esto significa que no ha alcanzado ninguna de las dos fronteras situadas exactamente a distancia <span class="math inline">\(r\)</span>:</p>
+<p><span class="math display">\[
+a-r&lt;x&lt;a+r.
+\]</span></p>
+<p>Y esa condición de orden es precisamente la pertenencia al intervalo</p>
+<p><span class="math display">\[
+x\in(a-r,a+r).
+\]</span></p>
+<p>Cada paso cambia la representación, no el conjunto de puntos admitidos.</p>
+</section>
+<section id="leerla-también-de-derecha-a-izquierda" class="level3">
+<h3 class="anchored" data-anchor-id="leerla-también-de-derecha-a-izquierda">Leerla también de derecha a izquierda</h3>
+<p>La traducción sólo está realmente dominada cuando podemos recorrerla en sentido contrario. Si sabemos que</p>
+<p><span class="math display">\[
+x\in(a-r,a+r),
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+a-r&lt;x&lt;a+r.
+\]</span></p>
+<p>Restando <span class="math inline">\(a\)</span> en los tres miembros obtenemos</p>
+<p><span class="math display">\[
+-r&lt;x-a&lt;r,
+\]</span></p>
+<p>que equivale a</p>
+<p><span class="math display">\[
+|x-a|&lt;r,
+\]</span></p>
+<p>y, por definición de la distancia estándar,</p>
+<p><span class="math display">\[
+d(x,a)&lt;r.
+\]</span></p>
+<p>La utilidad de este recorrido inverso aparecerá constantemente: a veces un problema estará formulado mediante una región de la recta, pero lo que necesitaremos para argumentar será una estimación de distancia; otras veces ocurrirá exactamente al revés.</p>
+</section>
+<section id="qué-cambia-si-admitimos-la-frontera" class="level3">
+<h3 class="anchored" data-anchor-id="qué-cambia-si-admitimos-la-frontera">¿Qué cambia si admitimos la frontera?</h3>
+<p>Consideremos ahora</p>
+<p><span class="math display">\[
+|x-a|\le r.
+\]</span></p>
+<p>La única diferencia es que permitimos que la separación sea exactamente <span class="math inline">\(r\)</span>. Las dos fronteras <span class="math inline">\(a-r\)</span> y <span class="math inline">\(a+r\)</span> pasan entonces a formar parte del conjunto. La cadena correspondiente es</p>
+<p><span class="math display">\[
+\boxed{
+|x-a|\le r
+\iff d(x,a)\le r
+\iff a-r\le x\le a+r
+\iff x\in[a-r,a+r]
+}
+\]</span></p>
+<p>De <span class="math inline">\(&lt;\)</span> a <span class="math inline">\(\le\)</span> no cambia el centro ni cambia el radio: cambia únicamente la decisión sobre la frontera.</p>
+<p>Esta observación parece elemental, pero conviene hacerla explícita porque en análisis la diferencia entre «menor que» y «menor o igual que» puede determinar qué puntos pertenecen a un conjunto y cuáles quedan fuera.</p>
+</section>
+<section id="de-puntos-cercanos-a-puntos-lejanos" class="level3">
+<h3 class="anchored" data-anchor-id="de-puntos-cercanos-a-puntos-lejanos">De puntos cercanos a puntos lejanos</h3>
+<p>¿Qué ocurre si invertimos la comparación y preguntamos por puntos cuya distancia al centro sea <strong>mayor</strong> que <span class="math inline">\(r\)</span>?</p>
+<p>La condición</p>
+<p><span class="math display">\[
+|x-a|&gt;r
+\]</span></p>
+<p>ya no selecciona los puntos situados entre las dos fronteras, sino los que quedan fuera de ellas. Algebraicamente,</p>
+<p><span class="math display">\[
+|x-a|&gt;r
+\iff x&lt;a-r\quad\text{o}\quad x&gt;a+r.
+\]</span></p>
+<p>En términos métricos y de regiones,</p>
+<p><span class="math display">\[
+\boxed{
+|x-a|&gt;r
+\iff d(x,a)&gt;r
+\iff x&lt;a-r\ \text{o}\ x&gt;a+r
+\iff x\in(-\infty,a-r)\cup(a+r,\infty)
+}
+\]</span></p>
+<p>Aquí aparece una diferencia geométrica importante: la región ya no es un único intervalo, sino la unión de dos semirrectas. Para estar a más de <span class="math inline">\(r\)</span> unidades de <span class="math inline">\(a\)</span>, el punto debe haber cruzado una de las dos fronteras.</p>
+<p>Si permitimos además la igualdad, obtenemos</p>
+<p><span class="math display">\[
+\boxed{
+|x-a|\ge r
+\iff d(x,a)\ge r
+\iff x\le a-r\ \text{o}\ x\ge a+r
+\iff x\in(-\infty,a-r]\cup[a+r,\infty)
+}
+\]</span></p>
+<p>De nuevo, la diferencia entre <span class="math inline">\(&gt;\)</span> y <span class="math inline">\(\ge\)</span> sólo decide si los puntos frontera —aquellos cuya distancia a <span class="math inline">\(a\)</span> es exactamente <span class="math inline">\(r\)</span>— quedan excluidos o incluidos.</p>
+<p>La figura C01-F08 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F08.svg" class="img-fluid" alt="Matriz de cuatro rectas con las regiones definidas por |x-a|<r, |x-a|<=r, |x-a|>r y |x-a|>=r, manteniendo fijos a y r."></p>
+<p><em>Figura C01-F08. Las condiciones &lt;, ≤, &gt; y ≥ combinan dos decisiones: cerca o lejos del centro y frontera excluida o incluida.</em></p>
+</section>
+<section id="dos-decisiones-que-conviene-separar" class="level3">
+<h3 class="anchored" data-anchor-id="dos-decisiones-que-conviene-separar">Dos decisiones que conviene separar</h3>
+<p>Las cuatro condiciones anteriores pueden organizarse mediante dos preguntas independientes.</p>
+<p>La primera es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Queremos puntos más cercanos que <span class="math inline">\(r\)</span> o puntos más lejanos que <span class="math inline">\(r\)</span>?</strong></p>
+</blockquote>
+<p>La segunda es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Admitimos los puntos situados exactamente a distancia <span class="math inline">\(r\)</span>?</strong></p>
+</blockquote>
+<p>La primera decisión determina si seleccionamos la región entre <span class="math inline">\(a-r\)</span> y <span class="math inline">\(a+r\)</span> o la región situada fuera de esas dos marcas. La segunda determina si las marcas mismas se incluyen.</p>
+<p>Por eso las cuatro posibilidades no forman una lista arbitraria que haya que memorizar. Surgen al combinar dos elecciones conceptuales muy simples:</p>
+<ul>
+<li>cerca / lejos;</li>
+<li>frontera excluida / frontera incluida.</li>
+</ul>
+</section>
+<section id="la-tolerancia-como-lenguaje-de-análisis" class="level3">
+<h3 class="anchored" data-anchor-id="la-tolerancia-como-lenguaje-de-análisis">La tolerancia como lenguaje de análisis</h3>
+<p>La palabra <strong>tolerancia</strong> permite anticipar por qué estas traducciones serán útiles más adelante. Si <span class="math inline">\(a\)</span> es un valor de referencia y <span class="math inline">\(r&gt;0\)</span> es el error máximo que estamos dispuestos a tolerar estrictamente, entonces</p>
+<p><span class="math display">\[
+d(x,a)&lt;r
+\]</span></p>
+<p>significa que <span class="math inline">\(x\)</span> está dentro de ese margen. En la recta podemos decir exactamente lo mismo escribiendo</p>
+<p><span class="math display">\[
+a-r&lt;x&lt;a+r.
+\]</span></p>
+<p>La primera formulación enfatiza <strong>cuánto puede separarse</strong> <span class="math inline">\(x\)</span> de <span class="math inline">\(a\)</span>; la segunda muestra <strong>dónde puede estar</strong> <span class="math inline">\(x\)</span> en el orden de la recta.</p>
+<p>Esta dualidad será central cuando aparezcan definiciones de aproximación y límite. No necesitamos introducirlas todavía. Lo importante aquí es reconocer la infraestructura que esas definiciones utilizarán: una condición de cercanía puede leerse como una desigualdad, como una distancia o como una región alrededor de un punto.</p>
+</section>
+<section id="traducir-sin-perder-información" class="level3">
+<h3 class="anchored" data-anchor-id="traducir-sin-perder-información">Traducir sin perder información</h3>
+<p>Probemos algunas traducciones en ambas direcciones. Supongamos siempre que <span class="math inline">\(r&gt;0\)</span>.</p>
+<ol type="1">
+<li>Si <span class="math inline">\(d(x,a)\le r\)</span>, ¿qué intervalo describe la condición?</li>
+<li>Si <span class="math inline">\(x\in(a-r,a+r)\)</span>, ¿qué desigualdad de distancia satisface <span class="math inline">\(x\)</span>?</li>
+<li>Si <span class="math inline">\(x\in(-\infty,a-r)\cup(a+r,\infty)\)</span>, ¿qué podemos afirmar sobre <span class="math inline">\(|x-a|\)</span>?</li>
+<li>Si <span class="math inline">\(|x-a|\ge r\)</span>, ¿qué ocurre con los puntos <span class="math inline">\(a-r\)</span> y <span class="math inline">\(a+r\)</span>?</li>
+<li>Si reemplazamos <span class="math inline">\(r\)</span> por un número mayor, ¿qué sucede con la región descrita por <span class="math inline">\(d(x,a)&lt;r\)</span>? ¿Y con la descrita por <span class="math inline">\(d(x,a)&gt;r\)</span>?</li>
+</ol>
+<p>La pregunta que debe acompañar cada traducción es siempre la misma: <strong>¿qué conjunto de puntos describe realmente esta expresión?</strong> Si podemos responderla sin depender de una regla memorizada, hemos adquirido la herramienta que necesitamos.</p>
+<p>Podemos condensar toda la sección en este pequeño diccionario:</p>
+<p><span class="math display">\[
+\begin{array}{ccl}
+d(x,a)&lt;r &amp;\longleftrightarrow&amp; a-r&lt;x&lt;a+r,\\
+d(x,a)\le r &amp;\longleftrightarrow&amp; a-r\le x\le a+r,\\
+d(x,a)&gt;r &amp;\longleftrightarrow&amp; x&lt;a-r\ \text{o}\ x&gt;a+r,\\
+d(x,a)\ge r &amp;\longleftrightarrow&amp; x\le a-r\ \text{o}\ x\ge a+r.
+\end{array}
+\]</span></p>
+<p>Pero el diccionario es sólo el resultado final. La idea importante es más estructural: <strong>en la recta real, orden y distancia pueden traducirse uno en otro con una precisión excepcional</strong>.</p>
+<p>En §1.8 utilizaremos esta compatibilidad para cerrar el capítulo con una pregunta distinta: cuando trasladamos, escalamos o reflejamos la recta, ¿qué parte de la información de orden y qué parte de la información métrica permanece intacta?</p>
+</section>
+</section>
+<section id="qué-ve-el-orden-y-qué-ve-la-distancia" class="level2">
+<h2 class="anchored" data-anchor-id="qué-ve-el-orden-y-qué-ve-la-distancia">1.8. Qué ve el orden y qué ve la distancia</h2>
+<p>Hemos pasado buena parte del capítulo traduciendo entre dos maneras de describir la recta. El orden nos dice qué punto queda antes, después o entre otros; la distancia nos dice cuánto separa a dos puntos. En <span class="math inline">\(\mathbb R\)</span> ambas estructuras cooperan tan bien que es fácil olvidar que no contienen exactamente la misma información.</p>
+<p>Para cerrar el capítulo vamos a someter la recta a algunas transformaciones muy simples y preguntar, en cada caso, qué permanece y qué cambia.</p>
+<p>Partamos de dos puntos con</p>
+<p><span class="math display">\[
+x&lt;y.
+\]</span></p>
+<p>Nos interesarán dos datos distintos:</p>
+<ul>
+<li>su orden relativo;</li>
+<li>su distancia <span class="math inline">\(d(x,y)\)</span>.</li>
+</ul>
+<p>La pregunta será siempre la misma: <strong>después de transformar ambos puntos, ¿qué ha ocurrido con cada uno de esos datos?</strong></p>
+<section id="trasladar-la-recta" class="level3">
+<h3 class="anchored" data-anchor-id="trasladar-la-recta">Trasladar la recta</h3>
+<p>Empecemos sumando el mismo número <span class="math inline">\(c\)</span> a todos los puntos:</p>
+<p><span class="math display">\[
+x\longmapsto x+c.
+\]</span></p>
+<p>Si <span class="math inline">\(x&lt;y\)</span>, entonces</p>
+<p><span class="math display">\[
+x+c&lt;y+c.
+\]</span></p>
+<p>La traslación preserva, por tanto, el orden. Pero también preserva exactamente la distancia, porque</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(x+c,y+c)
+&amp;=|(x+c)-(y+c)|\\
+&amp;=|x-y|\\
+&amp;=d(x,y).
+\end{aligned}
+\]</span></p>
+<p>Nada se ha estirado, comprimido ni reflejado. Toda la configuración se ha desplazado como un bloque rígido a lo largo de la recta.</p>
+<p>Esta primera transformación conserva simultáneamente las dos estructuras que hemos estudiado: conserva la orientación del orden y conserva todas las distancias.</p>
+</section>
+<section id="escalar-la-recta" class="level3">
+<h3 class="anchored" data-anchor-id="escalar-la-recta">Escalar la recta</h3>
+<p>Consideremos ahora</p>
+<p><span class="math display">\[
+x\longmapsto \lambda x,
+\]</span></p>
+<p>donde <span class="math inline">\(\lambda\in\mathbb R\)</span>. Para la distancia obtenemos una fórmula que vale para cualquier <span class="math inline">\(\lambda\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(\lambda x,\lambda y)
+&amp;=|\lambda x-\lambda y|\\
+&amp;=|\lambda(x-y)|\\
+&amp;=|\lambda|\,|x-y|\\
+&amp;=|\lambda|\,d(x,y).
+\end{aligned}
+\]</span></p>
+<p>La consecuencia es clara: una escala no conserva necesariamente las distancias, pero las transforma de una manera perfectamente controlada. Todas se multiplican por el mismo factor <span class="math inline">\(|\lambda|\)</span>.</p>
+<p>¿Qué ocurre con el orden? Aquí el signo de <span class="math inline">\(\lambda\)</span> sí importa.</p>
+<p>Si <span class="math inline">\(\lambda&gt;0\)</span>, de <span class="math inline">\(x&lt;y\)</span> obtenemos</p>
+<p><span class="math display">\[
+\lambda x&lt;\lambda y.
+\]</span></p>
+<p>La orientación se conserva, mientras que las distancias se multiplican por <span class="math inline">\(\lambda\)</span>.</p>
+<p>Si <span class="math inline">\(\lambda&lt;0\)</span>, en cambio,</p>
+<p><span class="math display">\[
+\lambda x&gt;\lambda y.
+\]</span></p>
+<p>La orientación se invierte, aunque las distancias siguen escalándose por el factor positivo <span class="math inline">\(|\lambda|\)</span>.</p>
+<p>Este contraste merece atención: el signo de <span class="math inline">\(\lambda\)</span> es decisivo para el orden, pero la distancia sólo registra su valor absoluto.</p>
+</section>
+<section id="la-reflexión-como-caso-decisivo" class="level3">
+<h3 class="anchored" data-anchor-id="la-reflexión-como-caso-decisivo">La reflexión como caso decisivo</h3>
+<p>Tomemos ahora <span class="math inline">\(\lambda=-1\)</span>. La transformación es</p>
+<p><span class="math display">\[
+x\longmapsto -x.
+\]</span></p>
+<p>Por la fórmula anterior,</p>
+<p><span class="math display">\[
+d(-x,-y)=|-1|\,d(x,y)=d(x,y).
+\]</span></p>
+<p>Así que la reflexión preserva <strong>exactamente</strong> todas las distancias.</p>
+<p>Sin embargo, si</p>
+<p><span class="math display">\[
+x&lt;y,
+\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[
+-x&gt;-y.
+\]</span></p>
+<p>La izquierda y la derecha se intercambian.</p>
+<p>La figura C01-F09 concentra esta lectura en una sola comparación.</p>
+<p><img src="../../assets/books/anm/C01/C01-F09.svg" class="img-fluid" alt="Cuatro paneles muestran una traslación, una escala positiva, una reflexión y el caso lambda cero, indicando en cada caso qué ocurre con el orden y con las distancias."></p>
+<p><em>Figura C01-F09. Traslación, escala positiva, reflexión y λ=0 afectan de manera distinta orden y métrica; preservar distancia exacta no es lo mismo que escalarla uniformemente.</em></p>
+<p>Éste es el ejemplo que termina de separar las dos estructuras. Si conociéramos únicamente todas las distancias entre los puntos de una configuración, no podríamos distinguir esa configuración de su imagen reflejada. Las separaciones serían idénticas, aunque la orientación hubiese cambiado por completo.</p>
+<p>La aplicación <span class="math inline">\(x\mapsto -x\)</span> es, por ello, una <strong>isometría</strong> de la recta: preserva todas las distancias. Pero es una isometría que invierte la orientación.</p>
+</section>
+<section id="el-caso-degenerado-lambda0" class="level3">
+<h3 class="anchored" data-anchor-id="el-caso-degenerado-lambda0">El caso degenerado <span class="math inline">\(\lambda=0\)</span></h3>
+<p>Queda un caso que conviene no esconder dentro de la fórmula general. Si <span class="math inline">\(\lambda=0\)</span>, todos los puntos son enviados al mismo lugar:</p>
+<p><span class="math display">\[
+x\longmapsto 0.
+\]</span></p>
+<p>La ley métrica sigue siendo algebraicamente correcta:</p>
+<p><span class="math display">\[
+d(0,0)=0=|0|\,d(x,y).
+\]</span></p>
+<p>Pero ahora todas las distancias han colapsado a cero.</p>
+<p>Tampoco podemos decir que el orden se preserve o se invierta. Si <span class="math inline">\(x&lt;y\)</span>, ambos puntos tienen la misma imagen, <span class="math inline">\(0\)</span>. Por tanto, ya no aparece ninguna desigualdad estricta entre sus imágenes: no tenemos ni <span class="math inline">\(0&lt;0\)</span> ni <span class="math inline">\(0&gt;0\)</span>.</p>
+<p>El caso <span class="math inline">\(\lambda=0\)</span> no es una inversión del orden: es un <strong>colapso</strong>. Puntos distintos dejan de distinguirse después de la transformación.</p>
+<p>Esta distinción será útil cada vez que interpretemos una fórmula de transformación. Una identidad algebraica puede seguir siendo válida en un caso degenerado aunque la interpretación geométrica cambie radicalmente.</p>
+</section>
+<section id="tres-preguntas-diferentes" class="level3">
+<h3 class="anchored" data-anchor-id="tres-preguntas-diferentes">Tres preguntas diferentes</h3>
+<p>Podemos ahora organizar lo aprendido sin confundir tres preguntas que parecen similares.</p>
+<p>La primera es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Se preservan exactamente las distancias?</strong></p>
+</blockquote>
+<p>Para una traslación, sí. Para una escala <span class="math inline">\(x\mapsto\lambda x\)</span>, esto ocurre exactamente cuando</p>
+<p><span class="math display">\[
+|\lambda|=1.
+\]</span></p>
+<p>En la recta real, los casos son <span class="math inline">\(\lambda=1\)</span> y <span class="math inline">\(\lambda=-1\)</span>: identidad y reflexión.</p>
+<p>La segunda pregunta es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Cómo cambian las distancias?</strong></p>
+</blockquote>
+<p>Para cualquier escala,</p>
+<p><span class="math display">\[
+d(\lambda x,\lambda y)=|\lambda|d(x,y).
+\]</span></p>
+<p>Si <span class="math inline">\(|\lambda|&gt;1\)</span>, se amplían; si <span class="math inline">\(0&lt;|\lambda|&lt;1\)</span>, se contraen; si <span class="math inline">\(\lambda=0\)</span>, colapsan a cero.</p>
+<p>La tercera pregunta es:</p>
+<blockquote class="blockquote">
+<p><strong>¿Qué ocurre con el orden?</strong></p>
+</blockquote>
+<ul>
+<li>una traslación lo preserva;</li>
+<li>una escala con <span class="math inline">\(\lambda&gt;0\)</span> lo preserva;</li>
+<li>una escala con <span class="math inline">\(\lambda&lt;0\)</span> lo invierte;</li>
+<li>una escala con <span class="math inline">\(\lambda=0\)</span> no lo preserva ni lo invierte: destruye toda distinción estricta entre los puntos.</li>
+</ul>
+<p>Estas respuestas no son intercambiables. Saber qué sucede con las distancias no determina por sí solo qué sucede con la orientación.</p>
+</section>
+<section id="volvamos-al-comienzo" class="level3">
+<h3 class="anchored" data-anchor-id="volvamos-al-comienzo">Volvamos al comienzo</h3>
+<p>En §1.1 empezamos con una observación: sobre la misma recta podemos hacer preguntas algebraicas, de orden y métricas. Después fuimos construyendo puentes entre ellas. Los intervalos surgieron del orden; el valor absoluto se convirtió en distancia; la desigualdad triangular relacionó distancia y posición; las bolas resultaron ser intervalos; y una condición de tolerancia pudo escribirse indistintamente mediante distancia o desigualdades.</p>
+<p>Ahora podemos precisar la conclusión que entonces apenas intuíamos.</p>
+<p>La métrica estándar de <span class="math inline">\(\mathbb R\)</span> permite decir <strong>cuánto separa</strong> a los puntos. El orden permite decir <strong>cómo están orientados y situados unos respecto de otros</strong>. En la recta ambas estructuras son extraordinariamente compatibles, pero una no se reduce a la otra.</p>
+<p>La reflexión lo muestra de la manera más limpia:</p>
+<p><span class="math display">\[
+d(-x,-y)=d(x,y),
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+x&lt;y\iff -x&gt;-y.
+\]</span></p>
+<p>La distancia permanece; la orientación cambia.</p>
+</section>
+<section id="antes-de-cerrar-el-capítulo" class="level3">
+<h3 class="anchored" data-anchor-id="antes-de-cerrar-el-capítulo">Antes de cerrar el capítulo</h3>
+<p>Comprobemos que las distinciones estén claras.</p>
+<ol type="1">
+<li>Si trasladamos todos los puntos por <span class="math inline">\(c\)</span>, ¿qué ocurre con el orden y con las distancias?</li>
+<li>Si <span class="math inline">\(\lambda=3\)</span>, ¿qué ocurre con una distancia de longitud <span class="math inline">\(2\)</span>? ¿Y con el orden?</li>
+<li>Si <span class="math inline">\(\lambda=-3\)</span>, ¿qué cambia respecto del caso anterior?</li>
+<li>¿Por qué <span class="math inline">\(x\mapsto -x\)</span> preserva distancias y, sin embargo, invierte el orden?</li>
+<li>¿Por qué <span class="math inline">\(\lambda=0\)</span> no debe clasificarse como una transformación que «invierte» el orden?</li>
+<li>¿Qué información podemos perder aunque conozcamos todas las distancias de una configuración?</li>
+</ol>
+<p>Con esto queda establecida la infraestructura que necesitábamos al comienzo del análisis: intervalos, valor absoluto, distancia, bolas y traducciones de tolerancia viven sobre una misma recta, pero pertenecen a estructuras que conviene distinguir incluso cuando trabajan juntas.</p>
+<p>El resto del libro explotará una y otra vez esa cooperación. En particular, muchas afirmaciones analíticas podrán expresarse como condiciones de orden, como condiciones de distancia o como restricciones sobre regiones de la recta. Saber cambiar de lenguaje sin confundir qué información aporta cada uno será una de nuestras herramientas permanentes.</p>
+<p><a href="../../libros/para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html">Capítulo 2 →</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          title = heading ? cleanText(heading.textContent) : '';
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          }
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
