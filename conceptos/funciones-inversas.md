@@ -107,7 +107,7 @@ $$
 ::: {#def-ma-con-0010-funcion-inversa .ma-block .ma-definicion}
 **Definición — función inversa**
 
-La inversa de una función $f:A\to B$ es una función $f^{-1}:B\to A$ que deshace a $f$ en ambos sentidos mediante composición.
+La inversa de una función $f:A\to B$ es una función $f^{-1}:B\to A$ que deshace a $f$ en ambos sentidos mediante [composición](composicion-de-funciones-e-identidad.md#def-ma-con-0008-composicion).
 :::
 
 La dirección de la flecha se invierte:
@@ -118,7 +118,7 @@ f:A\to B
 f^{-1}:B\to A.
 $$
 
-Así, el dominio de $f^{-1}$ es el codominio de $f$, y el codominio de $f^{-1}$ es el dominio de $f$.
+Así, el dominio de $f^{-1}$ es el codominio de $f$, y el codominio de $f^{-1}$ es el dominio de $f$. Las identidades que intervienen en las igualdades anteriores son las [funciones identidad](composicion-de-funciones-e-identidad.md#def-ma-con-0008-identidad) de los conjuntos correspondientes.
 
 ## La condición exacta: biyectividad
 
@@ -311,7 +311,7 @@ $$
 
 ## La interpretación mediante fibras
 
-Para $y\in B$, la fibra de $f$ sobre $y$ es
+Para $y\in B$, la [fibra de $f$ sobre $y$](inyectividad-sobreyectividad-y-biyectividad.md#def-ma-con-0009-fibra) es
 
 $$
 f^{-1}(\{y\})
