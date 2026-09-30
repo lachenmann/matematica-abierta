@@ -120,7 +120,7 @@ El problema no está en la continuidad. Está en el dominio.
 
 Para formular la compacidad necesitamos primero una noción sencilla de conjunto abierto en $\mathbb R$.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0018-abierto .ma-block .ma-definicion}
 **Conjunto abierto**
 
 Un conjunto $U\subseteq\mathbb R$ es **abierto** si para todo $x\in U$ existe un número $r>0$ tal que
@@ -160,7 +160,7 @@ no es abierto en $\mathbb R$, porque alrededor de $0$ cualquier intervalo sufici
 
 ## Conjuntos cerrados
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0018-cerrado .ma-block .ma-definicion}
 **Conjunto cerrado**
 
 Un conjunto $F\subseteq\mathbb R$ es **cerrado** si su complemento
@@ -169,7 +169,7 @@ $$
 \mathbb R\setminus F
 $$
 
-es abierto.
+es [abierto](#def-ma-con-0018-abierto).
 :::
 
 Los intervalos cerrados
@@ -204,7 +204,7 @@ son simultáneamente abiertos y cerrados.
 
 Sea $K\subseteq\mathbb R$.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0018-recubrimiento-abierto .ma-block .ma-definicion}
 **Recubrimiento abierto**
 
 Una familia de conjuntos abiertos
@@ -265,10 +265,10 @@ $$
 
 Aquí aparece la propiedad central.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0018-compacto .ma-block .ma-definicion}
 **Compacidad**
 
-Un conjunto $K\subseteq\mathbb R$ es **compacto** si todo recubrimiento abierto de $K$ posee un subrecubrimiento finito.
+Un conjunto $K\subseteq\mathbb R$ es **compacto** si todo [recubrimiento abierto](#def-ma-con-0018-recubrimiento-abierto) de $K$ posee un subrecubrimiento finito.
 :::
 
 La definición parece abstracta, pero expresa una idea muy concreta:

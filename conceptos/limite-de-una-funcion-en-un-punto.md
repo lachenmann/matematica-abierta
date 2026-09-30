@@ -327,7 +327,7 @@ $$
 
 Así queda demostrada la afirmación.
 
-::: {.ma-block .ma-metodo}
+::: {#met-ma-con-0011-patron-epsilon-delta .ma-block .ma-metodo}
 **Patrón de una demostración épsilon-delta**
 
 1. Parte del objetivo
@@ -483,7 +483,7 @@ tienen los mismos puntos de dominio y los mismos valores en todo entorno perfora
 
 Una misma función no puede aproximarse a dos números distintos en el sentido de la definición épsilon-delta.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0011-unicidad-limite .ma-block .ma-definicion}
 **Teorema de unicidad del límite**
 
 Sea $a$ un punto de acumulación del dominio de $f$. Si

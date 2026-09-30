@@ -258,7 +258,7 @@ cada uno determina un único número real.
 
 Llegamos al resultado central.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0012-criterio-bilateral .ma-block .ma-definicion}
 **Teorema — criterio mediante límites laterales**
 
 Sea
@@ -659,7 +659,7 @@ En el segundo, como ocurre con $|x|/x$ en $0$, ambos lados existen geométricame
 
 ## Procedimiento práctico
 
-::: {.ma-block .ma-metodo}
+::: {#met-ma-con-0012-limites-laterales .ma-block .ma-metodo}
 **Cómo analizar un límite mediante sus lados**
 
 1. Identifica el dominio de la función cerca de $a$.
