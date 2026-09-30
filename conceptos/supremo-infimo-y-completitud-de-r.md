@@ -525,7 +525,7 @@ Trabajamos aquí sólo dentro de $\mathbb R$. No estamos usando los símbolos $+
 
 La propiedad más importante para el análisis no es sólo que $s$ sea una cota superior, sino que los elementos de $A$ puedan acercarse a $s$ tanto como queramos desde abajo.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0016-aproximacion-al-supremo .ma-block .ma-definicion}
 **Teorema — aproximación al supremo**
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente, y sea
@@ -599,7 +599,7 @@ El conjunto se aproxima arbitrariamente a su supremo desde abajo.
 
 La propiedad anterior no es sólo una consecuencia: caracteriza al supremo.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0016-criterio-del-supremo .ma-block .ma-definicion}
 **Criterio del supremo**
 
 Un número $s$ es el supremo de $A$ si y sólo si:
@@ -648,7 +648,7 @@ $$
 \boxed{s=\sup A.}
 $$
 
-## Caracterización épsilon del ínfimo
+## Caracterización épsilon del ínfimo {#def-ma-con-0016-caracterizacion-epsilon-del-infimo}
 
 Dualizando el argumento anterior obtenemos:
 
@@ -854,7 +854,7 @@ está acotado superiormente dentro de $\mathbb Q$, pero no tiene supremo raciona
 
 La completitud también impide que los números naturales queden encerrados bajo una cota real.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0016-propiedad-arquimediana .ma-block .ma-definicion}
 **Teorema — propiedad arquimediana**
 
 El conjunto $\mathbb N$ no está acotado superiormente en $\mathbb R$.
