@@ -174,23 +174,23 @@ $$
 
 Un número $m$ es el **mínimo** de $A$ si
 
-$
+$$
 m\in A
-$
+$$
 
 y
 
-$
+$$
 m\le x
-$
+$$
 
 para todo $x\in A$.
 
 Escribimos
 
-$
+$$
 m=\min A.
-$
+$$
 :::
 
 Por tanto, [máximo](#def-ma-con-0016-maximo) y [mínimo](#def-ma-con-0016-minimo) son **extremos alcanzados** por el conjunto.
@@ -311,8 +311,8 @@ Nuevamente, $0$ no pertenece al conjunto.
 
 El artículo definido en “el supremo” está justificado: no puede haber dos.
 
-::: {.ma-block .ma-definicion}
-**Proposición — unicidad**
+::: {#res-ma-con-0016-unicidad-supremo-infimo .ma-block .ma-definicion}
+**Proposición — unicidad del supremo y del ínfimo**
 
 Si un conjunto tiene supremo, éste es único. Lo mismo vale para el ínfimo.
 :::
@@ -657,15 +657,15 @@ Dualizando el argumento anterior obtenemos:
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente, y sea
 
-$
+$$
 i=\inf A.
-$
+$$
 
 Entonces, para todo $\varepsilon>0$, existe $x\in A$ tal que
 
-$
+$$
 \boxed{i\le x<i+\varepsilon.}
-$
+$$
 
 Recíprocamente, una [cota inferior](#def-ma-con-0016-cota-inferior) $i$ con esta propiedad es necesariamente el [ínfimo](#def-ma-con-0016-infimo) de $A$.
 :::
@@ -674,8 +674,8 @@ Recíprocamente, una [cota inferior](#def-ma-con-0016-cota-inferior) $i$ con est
 
 El supremo respeta la inclusión de conjuntos.
 
-::: {.ma-block .ma-definicion}
-**Proposición — monotonía**
+::: {#res-ma-con-0016-monotonia-supremo .ma-block .ma-definicion}
+**Proposición — monotonía del supremo**
 
 Sean $A,B\subseteq\mathbb R$ no vacíos y acotados superiormente. Si
 
@@ -708,13 +708,25 @@ $$
 \boxed{\sup A\le\sup B.}
 $$
 
-Análogamente, si ambos ínfimos existen,
+Dualmente:
+
+::: {#res-ma-con-0016-monotonia-infimo .ma-block .ma-definicion}
+**Proposición — monotonía del ínfimo**
+
+Sean $A,B\subseteq\mathbb R$ no vacíos y acotados inferiormente. Si
 
 $$
-A\subseteq B
-\quad\Longrightarrow\quad
-\inf B\le\inf A.
+A\subseteq B,
 $$
+
+entonces
+
+$$
+\boxed{\inf B\le\inf A.}
+$$
+:::
+
+La demostración es dual: toda cota inferior de $A$ es también cota inferior de $B$, y el [ínfimo](#def-ma-con-0016-infimo) es la mayor de las cotas inferiores.
 
 ## La completitud permite construir números
 
