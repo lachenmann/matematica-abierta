@@ -1,0 +1,241 @@
+---
+title: Extensionalidad, autorreferencia y estratificación de tipos
+document-id: TF-CAT-012
+status: draft
+draft: true
+toc: true
+format:
+  html:
+    css: tratado.css
+foundation: tipos simples como sistema explícito de comparación; productos y exponenciales
+  de TF-CAT-001; extensionalidad de TF-CAT-002 y TF-CAT-010; parcialidad y programas
+  de TF-CAT-006,009; diagonal de TF-CAT-011
+choice-use: none
+---
+
+::: {.callout-warning}
+## Edición en preparación
+El cotejo bibliográfico fino y la revisión transversal final siguen abiertos. Esta versión de revisión no constituye una edición publicada.
+:::
+
+[Índice del tratado](index.qmd)
+
+# Capítulo 12. Extensionalidad, autorreferencia y estratificación de tipos
+
+::: {.callout-note}
+## Pregunta rectora
+¿En qué condiciones puede una función recibir como argumento una representación de sí misma? ¿Por qué la diagonalización admite una formulación bien tipada, la igualdad de comportamientos no iguala programas y la comprensión irrestricta produce una contradicción?
+:::
+
+
+**Contrato de continuidad.** Una flecha $A\to B$ y la evaluación $B^A\times A\to B$ pertenecen a [TF-CAT-001](capitulo-01.qmd); la separación mediante elementos generalizados, a [TF-CAT-002](capitulo-02.qmd); los programas parciales, a [TF-CAT-009](capitulo-09.qmd); la equivalencia de índices, a [TF-CAT-010](capitulo-10.qmd). La diagonal total y la universalidad parcial están demostradas en [TF-CAT-011](capitulo-11.qmd). Este capítulo añade un **sistema de tipos simples como modelo de comparación**, no como supuesto retrospectivo de todos los capítulos, y enuncia expresamente la hipótesis efectiva adicional necesaria para la autorreferencia programática.
+
+## 12.1. Lo que las reglas de tipos permiten escribir
+
+<a id="TF-DEF-00048"></a>
+
+**Definición 12.1.1 — Tipos simples y juicio de tipado** <!-- result-id: TF-DEF-00048; depends-on: TF-AX-00004, TF-AX-00005, TF-DEF-00007 -->
+
+Fijemos símbolos de tipos básicos. Los tipos simples *finitos* se forman inductivamente por $\sigma ::= \iota\mid(\sigma\times\tau)\mid(\sigma\to\tau)$, con tantos tipos básicos como se indiquen. No se añaden tipos recursivos ni identificaciones entre expresiones sintácticas distintas. Un contexto $\Gamma$ asigna un único tipo a cada variable. Las reglas relevantes son
+
+$$\frac{\Gamma\vdash u:\sigma\to\tau\qquad\Gamma\vdash v:\sigma}{\Gamma\vdash u(v):\tau}\qquad
+\frac{\Gamma\vdash a:\sigma}{\Gamma\vdash(a,a):\sigma\times\sigma}.$$
+
+Para una función $f:\sigma\to\tau$ y un dato $a:\sigma$, el término $f(a)$ está bien tipado; ello **no** convierte a $f$ en elemento de $\sigma$. Estas son reglas sintácticas de este cálculo, no afirmaciones sobre objetos de todas las categorías.
+
+<a id="TF-THM-00096"></a>
+
+**Teorema 12.1.2 — La autoaplicación de una variable no se tipa en el cálculo simple** <!-- result-id: TF-THM-00096; depends-on: TF-DEF-00048 -->
+
+No existen un contexto $\Gamma$, una variable $x$ y un tipo $\tau$ tales que $\Gamma\vdash x(x):\tau$ bajo las reglas anteriores.
+
+*Demostración.* Si se pudiese derivar el juicio, su última regla sería la eliminación de la flecha: para algún $\sigma$ se tendría simultáneamente $\Gamma\vdash x:\sigma\to\tau$ y $\Gamma\vdash x:\sigma$. Como el contexto asigna un único tipo a $x$, exigiríamos la igualdad sintáctica $\sigma=\sigma\to\tau$. Definamos la longitud de un tipo básico como $1$ y la de cada tipo compuesto como $1$ más la suma de las longitudes de sus componentes. Entonces $|\sigma\to\tau|=1+|\sigma|+|\tau|>|\sigma|$, imposible. La prueba depende de **tipos finitos, monomorfos y sin ecuaciones recursivas**; no se afirma que toda forma de autorreferencia sea imposible. $\square$
+
+<a id="TF-EXA-00022"></a>
+
+**Ejemplo 12.1.3 — Una diagonal válida no es la expresión $f(f)$** <!-- result-id: TF-EXA-00022; depends-on: TF-DEF-00048, TF-THM-00096, TF-THM-00088 -->
+
+Supongamos $U:A\times A\to B$ y $a:A$. La expresión $U(a,a)$ abrevia $U((a,a))$ y está bien tipada porque $(a,a):A\times A$. No dice que $U:A$ ni que la función $U_a:A\to B$ tenga tipo $A$. En cambio, escribir $U_a(U_a)$ exigiría a la vez $U_a:A\to B$ y $U_a:A$; la segunda premisa no viene dada. **Pregunta de control:** en el lema diagonal del capítulo 11, ¿qué se repite: una función como argumento de sí misma o un *índice* usado también como entrada? Se repite el índice $a:A$.
+
+<a id="TF-DEF-00049"></a>
+
+**Definición 12.1.4 — Evaluación tipada de un exponencial** <!-- result-id: TF-DEF-00049; depends-on: TF-AX-00005, TF-THM-00006, TF-DEF-00048 -->
+
+En una categoría cartesianamente cerrada, $\operatorname{ev}_{A,B}:B^A\times A\to B$ recibe un elemento del objeto exponencial y un argumento de $A$. En $\mathbf{Set}$ se lee $(f,a)\mapsto f(a)$, con $f\in B^A$ y $a\in A$. La flecha de evaluación existe por la propiedad universal del exponencial; no se deduce de ello que los elementos de $A$ sean, a su vez, funciones $A\to B$, ni que una máquina calcule universalmente dicha evaluación.
+
+<a id="TF-THM-00097"></a>
+
+**Teorema 12.1.5 — La diagonal categórica está bien formada sin autoaplicación** <!-- result-id: TF-THM-00097; depends-on: TF-AX-00004, TF-DEF-00049 -->
+
+Dados objetos $A,B$, una flecha $U:A\times A\to B$ y un endomorfismo $s:B\to B$, existe la flecha tipada
+
+$$d=s\circ U\circ\Delta_A:A\longrightarrow B,\qquad \Delta_A=\langle\mathrm{id}_A,\mathrm{id}_A\rangle.$$
+
+Si, además, $U=\operatorname{ev}_{A,B}\circ(\widehat U\times\mathrm{id}_A)$ para $\widehat U:A\to B^A$, esta construcción no exige ninguna identificación $A=B^A$.
+
+*Demostración.* La propiedad universal del producto da $\Delta_A:A\to A\times A$. Por compatibilidad de dominios y codominios, $U\circ\Delta_A:A\to B$ y su composición con $s:B\to B$ es $d:A\to B$. Para la segunda afirmación, $\widehat U\times\mathrm{id}_A:A\times A\to B^A\times A$ es una flecha y la evaluación da $U$. Ningún paso aplica una flecha a sí misma como argumento. $\square$
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R4 -->
+::: {.callout-note}
+## Alcance exacto del refuerzo diagonal
+La prueba de [TF-CAT-011](capitulo-11.qmd) (`TF-THM-00088`) corresponde al caso de índices y argumentos del mismo tipo. Aquí el mapa $q:A\to P$ permite cambiar de tipo, y **su sobreyectividad es necesaria para el enunciado** de `TF-THM-00098`, como muestra `TF-CEX-00014`. Este cambio no convierte al evaluador universal parcial de `TF-THM-00092` en una función total. Mapa del recorrido.
+:::
+
+
+## 12.2. La diagonal reindexada: dónde importa la sobreyectividad
+
+<a id="TF-DEF-00050"></a>
+
+**Definición 12.2.1 — Familia con índices y argumentos de tipos distintos** <!-- result-id: TF-DEF-00050; depends-on: TF-DEF-00045, TF-THM-00097 -->
+
+Sean conjuntos $P,A,B$, $U:P\times A\to B$, una función *de reindexación* $q:A\to P$ y una función $s:B\to B$. La **diagonal reindexada** es
+
+$$d_q:A\to B,\qquad d_q(a)=s\bigl(U(q(a),a)\bigr).\tag{12.1}$$
+
+La forma (12.1) es tipada incluso si $A$ y $P$ son distintos. El codominio de $q$ es precisamente el conjunto de índices $P$: si se reemplaza $q$ por una transformación de otro tipo, la fórmula deja de tener ese significado.
+
+<a id="TF-THM-00098"></a>
+
+**Teorema 12.2.2 — Barrera diagonal bajo reindexación sobreyectiva** <!-- result-id: TF-THM-00098; depends-on: TF-DEF-00050, TF-DEF-00045, TF-THM-00009 -->
+
+Supongamos que $q:A\to P$ es sobreyectiva y que $s:B\to B$ carece de puntos fijos. Entonces $d_q\ne U_p$ para todo $p\in P$. En particular, $p\mapsto U_p:P\to B^A$ no es sobreyectiva. No se emplea elección.
+
+*Demostración.* (12.1) define una función total. Fijemos $p\in P$; por sobreyectividad de $q$ **para este único $p$** existe $a\in A$ con $q(a)=p$. Evaluando,
+
+$$d_q(a)=s\bigl(U(q(a),a)\bigr)=s(U(p,a))\ne U(p,a)=U_p(a).$$
+
+Luego $d_q\ne U_p$; como $p$ era arbitrario, ninguna sección es $d_q$. En ningún momento se definió una función que elija simultáneamente un representante $a$ de cada $p$: sólo usamos la instanciación de una existencia para probar una proposición universal. $\square$
+
+<a id="TF-CEX-00014"></a>
+
+**Contraejemplo 12.2.3 — Sin sobreyectividad sólo se excluye la subfamilia reindexada** <!-- result-id: TF-CEX-00014; depends-on: TF-DEF-00050, TF-THM-00098 -->
+
+Tomemos $A=\{*\}$, $P=\{0,1\}$, $B=\{0,1\}$, $q(*)=0$ y $s(b)=1-b$. Definamos $U(0,*)=0$ y $U(1,*)=1$. Entonces $d_q(*)=1$, que **sí es** la sección $U_1$. La familia $p\mapsto U_p$ es sobreyectiva sobre $B^A$, porque sus dos secciones agotan todas las funciones del singleton a $B$. La diagonal difiere de $U_0$, la única sección indexada por la imagen de $q$, pero no de la familia entera. El teorema anterior no admite suprimir la hipótesis de sobreyectividad.
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R3 -->
+::: {.callout-note}
+## Códigos, secciones totales y representaciones
+[El capítulo 10](capitulo-10.qmd) distingue igualdad de índices de equivalencia extensional para programas parciales (`TF-DEF-00040`), mientras que esta sección utiliza secciones de una familia **total** (`TF-DEF-00051`). [El capítulo 14](capitulo-14.qmd) exigirá traductores computables, y no meras biyecciones, al comparar representaciones (`TF-DEF-00063`). El punto fijo de programas de §12.4 pertenece a un modelo de numeración con especialización explícita y no modifica ninguno de esos criterios de igualdad. Mapa del recorrido.
+:::
+
+
+## 12.3. Extensionalidad: un código y la función que denota
+
+<a id="TF-DEF-00051"></a>
+
+**Definición 12.3.1 — Equivalencia semántica de índices totales** <!-- result-id: TF-DEF-00051; depends-on: TF-DEF-00045, TF-DEF-00040, TF-THM-00011 -->
+
+Para $U:P\times A\to B$ total, definimos $p\sim_U r$ si y sólo si $U_p=U_r$ como funciones $A\to B$, es decir,
+
+$$p\sim_U r\quad\Longleftrightarrow\quad\forall a\in A\;U(p,a)=U(r,a).\tag{12.2}$$
+
+La relación es reflexiva, simétrica y transitiva por las propiedades de la igualdad. **Igualdad de códigos** ($p=r$), **equivalencia extensional** ($p\sim_U r$) e **igualdad efectiva decidible** son nociones distintas. El capítulo 10 prueba límites de decisión para índices de programas parciales; (12.2) no aporta un decisor ni una forma normal computable.
+
+<a id="TF-THM-00099"></a>
+
+**Teorema 12.3.2 — El cociente extensional clasifica exactamente las secciones** <!-- result-id: TF-THM-00099; depends-on: TF-DEF-00051, TF-DEF-00045 -->
+
+En $\mathbf{Set}$, la aplicación $\nu_U:P\to B^A$, $p\mapsto U_p$, se factoriza de manera única por el cociente de clases de equivalencia,
+
+$$P\xrightarrow{\pi}P/{\sim_U}\xrightarrow{\overline\nu_U}B^A,
+\qquad\overline\nu_U([p])=U_p.$$
+
+La segunda flecha es inyectiva y su imagen es exactamente $\mathcal F_U=\{U_p:p\in P\}$. Así $P/{\sim_U}\cong\mathcal F_U$ mediante una biyección canónica. No se infiere que $\pi$ ni su inversa semántica computen representantes.
+
+*Demostración.* Si $[p]=[r]$, por definición de clases de una relación de equivalencia $p\sim_U r$; luego $U_p=U_r$ y la fórmula para $\overline\nu_U$ no depende del representante. Se cumple $\nu_U=\overline\nu_U\pi$. Si $\theta\pi=\nu_U$, para toda clase $[p]$, $\theta([p])=\theta(\pi(p))=\nu_U(p)$: unicidad. Si $\overline\nu_U([p])=\overline\nu_U([r])$, entonces $p\sim_U r$ y $[p]=[r]$: inyectividad. Cada $U_p$ es imagen de $[p]$, y cada valor de $\overline\nu_U$ tiene esa forma: imagen exacta. La construcción del cociente en ZF no selecciona un representante para cada clase; las clases son conjuntos de índices obtenidos por separación sobre $P$. $\square$
+
+<a id="TF-CEX-00015"></a>
+
+**Contraejemplo 12.3.3 — La misma función puede tener códigos distintos** <!-- result-id: TF-CEX-00015; depends-on: TF-DEF-00051, TF-THM-00099, TF-EXA-00017 -->
+
+Sean $P=\{0,1\}$ y $A=B=\{*\}$. Definamos $U(0,*)=U(1,*)=*$. Entonces $0\ne1$, pero $0\sim_U1$: ambas secciones son la única aplicación $A\to B$. La función semántica de denominación no es inyectiva. En programas reales pueden producirse duplicidades mucho menos triviales, como los dos programas de identidad del capítulo 10. Un teorema de punto fijo de *comportamientos* no debe anunciarse como igualdad literal de cadenas de código.
+
+## 12.4. La autorreferencia efectiva usa códigos, no $f(f)$
+
+<a id="TF-DEF-00052"></a>
+
+**Definición 12.4.1 — Numeración aceptable y especialización efectiva** <!-- result-id: TF-DEF-00052; depends-on: TF-DEF-00035, TF-DEF-00047, TF-THM-00092 -->
+
+Para esta sección reforzamos expresamente el contrato de la numeración $e\mapsto\varphi_e$ de funciones parciales $\mathbb N\rightharpoonup\mathbb N$. Suponemos una codificación efectiva de programas con evaluador universal parcial y un **especializador total computable** $S:\mathbb N^2\to\mathbb N$ que satisfaga, para cada índice $p$ de una función parcial computable de dos argumentos, y para todos $x,y$,
+
+$$\varphi_{S(p,x)}(y)\simeq\Phi_p(x,y).\tag{12.3}$$
+
+El símbolo $\simeq$ afirma igualdad de dominios y valores. La operación $S$ incorpora el parámetro fijo $x$ a un programa, y es una instancia del teorema $s$-$m$-$n$ en codificaciones usuales. Una mera enumeración abstracta de funciones parciales **no garantiza** (12.3). Se presupone asimismo que los algoritmos parciales obtenidos por composición y simulación poseen índices en esta numeración. Estas hipótesis efectivas se añaden aquí; no se atribuyen al objeto exponencial ni a la elección categórica.
+
+<a id="TF-THM-00100"></a>
+
+**Teorema 12.4.2 — Punto fijo extensional de programas (teorema de recursión)** <!-- result-id: TF-THM-00100; depends-on: TF-DEF-00052, TF-DEF-00051, TF-THM-00092 -->
+
+Bajo el contrato anterior, si $F:\mathbb N\to\mathbb N$ es **total computable**, existe un índice $e$ con
+
+$$\varphi_e\simeq\varphi_{F(e)}.\tag{12.4}$$
+
+No se afirma $e=F(e)$ ni que se pueda decidir en general si dos índices arbitrarios denotan la misma función.
+
+*Demostración.* Construyamos el algoritmo parcial binario
+
+$$H(x,y)\simeq\varphi_{F(S(x,x))}(y).\tag{12.5}$$
+
+En efecto, $S(x,x)$ y $F(S(x,x))$ se calculan totalmente; a continuación, el evaluador universal simula el índice calculado sobre $y$. Por las hipótesis efectivas, $H$ dispone de un índice $p$, de modo que $\Phi_p(x,y)\simeq H(x,y)$ para todos $x,y$. Póngase **explícitamente** $e=S(p,p)$. Por especialización y por (12.5), para todo $y$ tenemos
+
+$$\varphi_e(y)=_{\!\simeq}\varphi_{S(p,p)}(y)=_{\!\simeq}\Phi_p(p,y)=_{\!\simeq}H(p,y)=_{\!\simeq}\varphi_{F(S(p,p))}(y)=_{\!\simeq}\varphi_{F(e)}(y).$$
+
+Cada igualdad preserva simultáneamente convergencia y valor: se obtiene (12.4). La construcción de $e$ utiliza el índice $p$ del algoritmo $H$ y una sola aplicación efectiva de $S$; no busca un punto fijo por comparación extensional, que sería en general indecidible. $\square$
+
+<a id="TF-EXA-00023"></a>
+
+**Ejemplo 12.4.3 — Un programa que imprime su propio índice** <!-- result-id: TF-EXA-00023; depends-on: TF-THM-00100, TF-DEF-00052, TF-DEF-00051 -->
+
+Por la codificación efectiva, para cada $n$ puede construirse computablemente un índice $F(n)$ de la función constante $y\mapsto n$: el constructor de programas incorpora el numeral $n$ como dato fijo. El teorema precedente proporciona $e$ con $\varphi_e(y)=e$ para toda entrada $y$. Es autorreferencia **por representación numérica de un programa**, no la expresión tipada imposible $x(x)$. Es también un punto fijo *semántico*: el programa con índice $e$ y el de índice $F(e)$ pueden tener códigos distintos. El teorema diagonal del capítulo 11 permanece intacto, porque no hemos construido un evaluador universal **total** de todas las funciones totales computables.
+
+## 12.5. Estratificación y alcance de la comprensión
+
+<a id="TF-DEF-00053"></a>
+
+**Definición 12.5.1 — Comprensión relativa frente a comprensión irrestricta** <!-- result-id: TF-DEF-00053; depends-on: TF-DEF-00012, TF-THM-00090, TF-DEF-00048 -->
+
+En ZF, la *separación* construye, a partir de un conjunto previamente dado $X$ y una fórmula $\psi(x)$, el subconjunto $\{x\in X:\psi(x)\}$. La **comprensión irrestricta** afirmaría que $\{x:\psi(x)\}$ existe como conjunto sin proporcionar $X$; no es un axioma de ZF. En teoría simple de tipos, la pertenencia $a\in S$ exige tipos $a:A$ y $S:\operatorname{Set}(A)$; escribir $S\in S$ reutilizando **el mismo término con un mismo tipo simple** exigiría identificar $A$ con $\operatorname{Set}(A)$, cosa no autorizada por la gramática finita. Esta última observación es sintáctica y no niega que en ZF la fórmula $x\in x$ esté bien formada.
+
+<a id="TF-THM-00101"></a>
+
+**Teorema 12.5.2 — Russell: no existe un conjunto universal en ZF** <!-- result-id: TF-THM-00101; depends-on: TF-DEF-00053 -->
+
+En ZF no existe un conjunto $V$ al que pertenezcan todos los conjuntos.
+
+*Demostración.* Supongamos que existe tal $V$. La separación —que **sí está permitida** sobre $V$— produce el conjunto $R=\{x\in V:x\notin x\}$. Por universalidad, $R\in V$, y por definición de $R$,
+
+$$R\in R\quad\Longleftrightarrow\quad(R\in V\ \land\ R\notin R)
+\quad\Longleftrightarrow\quad R\notin R.$$
+
+Esta equivalencia es contradictoria incluso sin usar tercero excluido: su dirección izquierda a derecha muestra $\neg(R\in R)$, y la dirección derecha a izquierda aplicada a esa negación proporciona $R\in R$. Luego no existe $V$. La prueba no utiliza el axioma de elección ni concluye que toda colección definible sea un conjunto. $\square$
+
+<a id="TF-EXA-00024"></a>
+
+**Ejemplo 12.5.3 — Autoaplicación sin tipos y reducción divergente** <!-- result-id: TF-EXA-00024; depends-on: TF-THM-00096, TF-DEF-00048, TF-THM-00101 -->
+
+En el cálculo $\lambda$ **sin tipos**, $\omega=(\lambda x.xx)$ es un término y $\Omega=\omega\omega$ reduce en un paso beta a sí mismo: $\Omega\to_\beta\Omega$. Esto muestra que permitir la autoaplicación no produce por sí solo una contradicción lógica; puede producir una computación que no termina. En el cálculo *simplemente tipado* de §12.1 el subtermo $xx$ no tiene tipo. En ZF, por su parte, la expresión $x\in x$ es una fórmula legítima, pero el conjunto de **todos** los $x$ que la satisfacen no se obtiene por separación sin un universo previo. Son tres diagnósticos distintos: fallo de tipado, divergencia operacional y contradicción de un postulado de comprensión universal.
+
+### Lectura guiada: cuatro distinciones que deben conservarse
+
+1. **Tipado:** $U(a,a)$ usa un argumento $a$ dos veces; $f(f)$ requiere que una función sea también argumento de su propio tipo.
+2. **Cobertura:** (12.1) no contradice toda una familia si $q$ no alcanza sus índices; el contraejemplo 12.2.3 identifica el punto preciso.
+3. **Extensionalidad:** $p\sim_U r$ clasifica *resultados*, no iguala cadenas de programa ni decide su equivalencia.
+4. **Autorreferencia:** el teorema de recursión da un índice $e$ cuyo comportamiento coincide con el de $F(e)$; el teorema diagonal impide una **enumeración total computable exhaustiva** bajo sus propias hipótesis. No son negaciones mutuas.
+
+**Ejercicios de control.** (a) Demuestre que $q$ sobreyectiva no implica que posea una sección en ZF sin AC, e identifique por qué la prueba de 12.2.2 no la necesita. (b) Rehaga 12.3.2 para funciones *parciales*, reemplazando la igualdad puntual por igualdad de dominios y valores; explique por qué no obtiene un cociente computable. (c) En 12.4.2, marque exactamente los pasos que dejarían de estar justificados si $F$ fuese parcial. (d) Localice en 12.5.2 la única invocación de separación.
+
+### Auditoría fundacional y alcance formal
+
+- **Hipótesis por sección:** §12.1 adopta una gramática concreta de tipos simples; §12.2 es un teorema en Set sobre $q$ sobreyectiva; §12.3 usa cocientes en ZF; §12.4 añade **explícitamente** $s$-$m$-$n$ y universalidad computable; §12.5 usa separación en ZF y una comparación sintáctica independiente con tipos simples. No se trasladan estas hipótesis inadvertidamente entre fundamentos.
+- **No elección:** 12.2.2 escoge un testigo *local* para cada parámetro de una demostración; el cociente extensional es canónico; el especialista $S$ es un algoritmo supuesto con ley (12.3), no una elección arbitraria de programas.
+- **Límites:** no se presenta una solución general del problema de parada, un normalizador de programas o una identificación universal entre tipos y sus exponenciales. No se postula autoevaluación de un objeto de programas sin proporcionar una codificación adecuada.
+- **Referencias para cotejo externo:** F. W. Lawvere, *Diagonal Arguments and Cartesian Closed Categories* (1969; reimpresión en *Reprints in Theory and Applications of Categories*, n.º 15 (2006), pp. 1–13, Teorema 1.1 y Corolario 1.2, p. 5), https://lawverearchives.com/work/; G. A. Kavvos, [*On the Semantics of Intensionality and Intensional Recursion* (DPhil, University of Oxford, 2017), §2.1.2, Teorema 6](https://ora.ox.ac.uk/objects/uuid:f89b46d8-b514-42fd-9321-e2803452681f), para una exposición y prueba del segundo teorema de recursión con especialización $s$-$m$-$n$. Estas fuentes contextualizan, no suplen las pruebas explícitas del capítulo.
+- **Lean, estado independiente verificado:** [PR #108](https://github.com/lachenmann/matematica-abierta/pull/108), fusionada en `main` tras CI Lean y Quarto satisfactorio para cabeza `b53bc45772e5347e97eade49091aa3c659e387b1`. En el módulo `Reindexacion.lean`, dos declaraciones demuestran `TF-THM-00098` y una verifica el criterio extensional de `TF-DEF-00051`; las otras cinco proposiciones teoremáticas del capítulo, incluido Kleene `TF-THM-00100`, no han sido formalizadas. Reporte preciso: LEAN_VERIFICATION_REPORT_012; estados: PROGRESS.
+
+**Cierre editorial:** se registran 17 nodos estables `TF-DEF-00048…00053`, `TF-THM-00096…00101`, `TF-EXA-00022…00024`, `TF-CEX-00014…00015`. Próximo documento reservado: `TF-CAT-013 — Funciones y correspondencias entre sistemas fundacionales` (título provisional). Publicación web no realizada.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-11.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-13.qmd)
+:::

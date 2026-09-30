@@ -1,0 +1,122 @@
+---
+title: Convenciones, notación y contratos fundacionales
+document-id: TF-CONV-0001
+status: draft
+draft: true
+toc: true
+format:
+  html:
+    css: tratado.css
+---
+
+::: {.callout-warning}
+## Edición en preparación
+El cotejo bibliográfico fino y la revisión transversal final siguen abiertos. Esta versión de revisión no constituye una edición publicada.
+:::
+
+[Índice del tratado](index.qmd)
+
+# Convenciones, notación y contratos fundacionales
+
+::: {.callout-note}
+## Función editorial
+Este archivo explicita las convenciones ya usadas en los capítulos 1–16; **no redefine retroactivamente un resultado** ni añade axiomas al registro. Ante conflicto con el enunciado de un teorema, prevalecen sus hipótesis locales, y el desacuerdo debe abrir una corrección documentada. La [matriz](matriz-hipotesis.qmd) ofrece localizadores y estados por resultado. El autor aprobó estas convenciones el 2026-09-21; cualquier conflicto posterior con hipótesis locales se resolverá mediante corrección documentada.
+:::
+
+
+## 1. Universos, teoría base y metateoría
+
+1. **ZF y conjuntos.** Cuando se hable de $\mathbf{Set}$ en sentido clásico, se trabaja en la metateoría conjuntista indicada en el capítulo pertinente, habitualmente ZF **sin** añadir automáticamente AC. Existencia de conjuntos de pares, gráficas, potencias y cocientes se justifica con las operaciones conjuntistas disponibles. Una construcción por casos sobre pertenencia a un subconjunto arbitrario usa lógica clásica de esa presentación; no constituye un algoritmo de decisión.
+2. **Categorías.** Se especifican objetos, flechas, composición e identidades; las leyes categóricas iniciales son `TF-AX-00001` y `TF-AX-00002`. Una categoría puede ser localmente pequeña sin tener un conjunto de todos sus objetos. $\operatorname{Hom}_{\mathcal C}(A,B)$ denota una colección de flechas y se considera conjunto sólo bajo la hipótesis de tamaño correspondiente. $\operatorname{Sub}(A)$ y $\operatorname{Par}(A,B)$ se interpretan igualmente con la precaución adecuada.
+3. **Topos elemental.** En los términos de este libro: límites finitos (`TF-THM-00023`), exponenciales (`TF-AX-00005`) y clasificador de subobjetos (`TF-AX-00007`). El hecho externo «todo topos elemental es regular» se cita en el capítulo 4, pero **no** figura como teorema demostrado internamente ni formalizado en Lean. Una vía de trabajo distinta parte sólo de límites finitos y postula explícitamente el paquete regular `TF-AX-00008`.
+4. **Prehaces.** En el capítulo 16 la base $\mathcal C$ se toma pequeña; $[\mathcal C^{\mathrm{op}},\mathbf{Set}]$ y los colímites puntuales se entienden en una metateoría con tamaños compatibles. No se introduce una categoría de «todos los conjuntos» como conjunto sin justificarlo.
+5. **Tipos y cómputo.** Los términos del cálculo simplemente tipado y los datos de teoría dependiente se usan como interpretaciones comparativas declaradas; los programas se estudian tras fijar la numeración de máquinas o las representaciones. Ni la metateoría de conjuntos ni los axiomas categóricos proporcionan por sí solos códigos efectivos.
+
+La expresión «sin AC» significa **no emplear el axioma de elección en el resultado indicado**. «No se adopta AC» tampoco implica que se haya demostrado su negación. El paquete opcional `TF-AX-00009` sólo puede utilizarse cuando el resultado lo cite explícitamente como hipótesis.
+
+<a id="TF-CONV-NOTATION"></a>
+
+## 2. Notación de flechas y orden de composición
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Escritura | Significado y condiciones |
+|---|---|
+| $f:A\to B$ | Flecha total de $A$ en $B$ en la categoría indicada; no implica programa computable. |
+| $g\circ f$ o $gf$ | Primero $f$, después $g$, si $f:A\to B$ y $g:B\to C$; la categoría determina el tipo de composición. |
+| $1_A$ | Identidad de $A$; en código fuente, no confundir con el objeto terminal $1$. |
+| $!_A:A\to1$ | Única flecha a un objeto terminal cuando existe. |
+| $\langle f,g\rangle:X\to A\times B$ | Emparejamiento de flechas con la misma fuente; universalidad del producto. |
+| $\pi_A,\pi_B$ | Proyecciones del producto, indicadas según los factores. |
+| $B^A$ y $\operatorname{ev}:B^A\times A\to B$ | Exponencial y evaluación, sólo cuando el exponencial existe. |
+| $m:D\rightarrowtail A$ | Monomorfismo, empleado para representar un subobjeto; no declara complemento ni algoritmo de pertenencia. |
+| $e:X\twoheadrightarrow Y$ | **Epimorfismo regular** en capítulos 4–5, no un epi arbitrario; su estabilidad se invoca sólo bajo regularidad. |
+| $f^*[n]$ | Preimagen por producto fibrado del subobjeto $[n]$; requiere el pullback relevante. |
+| $\operatorname{Im}(f)$ y $\exists_f$ | Imagen mono en el marco regular y adjunto a preimagen; no selector computable. |
+| $R:A\rightsquigarrow B$ | Relación representada por un subobjeto de $A\times B$, no necesariamente función. |
+| $S\circ_{\mathrm{rel}}R$ | Composición relacional mediante pullback de testigos e imagen; requiere la estructura regular indicada. |
+| $\alpha:A\rightharpoonup B$ | Aplicación parcial, clase de spans con brazo izquierdo mono. |
+| $\beta\circ_{\mathrm{par}}\alpha$ | Composición parcial mediante pullback del valor de $\alpha$ contra el dominio de $\beta$; no evaluación fuera del dominio. |
+| $\operatorname{dom}(\alpha)$ | Clase del mono de definición en $\operatorname{Sub}(A)$, no el conjunto abstracto del codominio. |
+| $\delta_\alpha:A\to\Omega$ | Característica del dominio si existe clasificador; no implica predicado decidible. |
+| $L(B),\eta_B:B\rightarrowtail L(B)$ | Objeto y mono clasificadores de aplicaciones parciales, cuando existen; en un topos elemental se construyen en capítulo 8. |
+| $B\sqcup1$, $\bot$ | Suma etiquetada con un símbolo de indefinición: representación en Set clásico o globalmente en un topos booleano; no una identidad formal válida en toda categoría. |
+| $\varphi_e(n)\downarrow$ | La máquina con índice $e$ termina en $n$ bajo la numeración efectiva fijada. |
+| $\simeq$ | Igualdad extensional de funciones parciales sólo cuando el entorno lo explicite; no igualdad textual de programas. |
+
+:::
+
+
+Las leyes de la composición ordinaria, relacional, parcial y de Kleisli se usan **con sus tipos respectivos**: el simple hecho de que dos expresiones lleven $\circ$ no las identifica. Para la codificación en Set mediante $B\sqcup1$, la operación correspondiente a composición parcial es la de Kleisli (`TF-THM-00110`).
+
+## 3. Igualdad: cuatro preguntas distintas
+
+- **Identidad de expresión o código:** dos cadenas finitas o programas pueden compararse sintácticamente bajo una codificación decidible; eso no compara sus funciones denotadas.
+- **Igualdad extensional:** para funciones con dominio y codominio fijados, coinciden los valores y, en el caso parcial, los dominios efectivos. En categorías, la igualdad de flechas es un dato lógico primitivo; el criterio por puntos globales requiere que el terminal sea generador (`TF-THM-00007`), mientras que por elementos generalizados siempre se recupera (`TF-THM-00009`).
+- **Igualdad de subobjetos o spans:** representantes monomórficos o spans son equivalentes mediante isomorfismos que respetan las flechas estructurales (`TF-DEF-00009`, `TF-DEF-00021`). Un isomorfismo abstracto entre objetos sin compatibilidad no basta.
+- **Equivalencia de representaciones:** una biyección semántica y una traducción computable no son lo mismo; la segunda debe suministrar realizadores o traductores efectivos (`TF-DEF-00063`). La naturalidad exige cuadrados conmutativos y no sólo componentes independientes (`TF-DEF-00067`).
+
+**Regla de lectura:** una afirmación «único» se refiere al tipo de igualdad especificado. No inferir decisión o normalización de una igualdad extensional a partir de su definición.
+
+## 4. Totalidad, unicidad, testigos y elección
+
+«Total» tiene un significado dependiente del marco: $\forall a\exists b$ en Set, epi regular de proyección para relaciones regulares (`TF-DEF-00017`), o terminación para todas las entradas en un modelo de máquinas (`TF-DEF-00035`). «Univaluado» se expresa mediante monicidad de la primera proyección (`TF-DEF-00018`). Totalidad y univaluación juntas dan una gráfica sin elección (`TF-THM-00033`). Totalidad **sin** univaluación no produce en general una sección (`TF-THM-00034`, `TF-CEX-00003`).
+
+La notación $\exists!$ especifica existencia y unicidad, no una búsqueda terminante. Una prueba con un testigo explícito de tipo $\sum_{b:B}R(a,b)$ proporciona un valor mediante proyección; una prueba meramente proposicional de existencia no proporciona sin más datos de selección (`TF-DEF-00058`, `TF-THM-00107`). No extrapolar leyes de teoría de tipos a ZF o a una categoría arbitraria sin construir la interpretación.
+
+## 5. Lógica y dominios
+
+El clasificador $\Omega$ permite flechas características de subobjetos y lógica interna; no implica por sí solo que $\Omega\cong1\sqcup1$. Si un topos es booleano, el dominio se complementa y el clasificador parcial coincide con $B\sqcup1$ (`TF-THM-00065`). En un topos no booleano esa equivalencia puede fallar (`TF-CEX-00007`). «Complementado» es una propiedad interna de un subobjeto, mientras que «decidible» en computación requiere un algoritmo sobre nombres.
+
+La relación $D\hookrightarrow A$ puede ser un subobjeto válido sin que exista una operación efectiva «$a\in D$». En Set clásico, una definición por casos sobre $a\in D$ es una definición conjuntista, **no** una prueba de computabilidad. La función parcial representada por una flecha total a $L(B)$ tampoco queda por ello calculada (`TF-EXA-00014`).
+
+## 6. Computabilidad y contratos de programa
+
+Se fijan al menos dos contratos distintos: máquina que termina **exactamente** sobre el dominio (`TF-DEF-00035`) y realizador correcto **bajo promesa** de nombre válido (`TF-DEF-00038`). Una función parcial computable de parada exacta tiene dominio c.e. (`TF-THM-00069`); para los realizadores bajo promesa esa inferencia no es automática. Una función total bajo promesa no se comporta necesariamente como máquina de parada exacta para una función parcial con dominio indecidible.
+
+La totalización **etiquetada** de una función parcial computable puede necesitar decidir su dominio (`TF-THM-00073`), aunque haya prolongaciones conjuntistas no etiquetadas en ZF (`TF-THM-00048`). La codificación, el problema de igualdad y las reducciones deben citar el modelo de máquina, la representación de los datos y la clase de entradas admitidas.
+
+## 7. Tamaño y tipado de las construcciones
+
+Se distinguirán $\mathcal C$ pequeña y $\mathcal C$ localmente pequeña. En el capítulo 16, $\mathcal C$ es pequeña para que la categoría de elementos del prehaz y su diagrama de representables tengan el tamaño usado en los colímites (`TF-THM-00124`–`TF-THM-00127`). Cambiar de universo puede resolver problemas de tamaño, pero no se hará silenciosamente.
+
+Las expresiones $f(f)$ o $U(a,a)$ se escriben sólo tras comprobar sus tipos. La forma básica de diagonalización usa $U:A\times A\to B$ (`TF-THM-00088`); la reindexada necesita $U:P\times A\to B$ y $q:A\twoheadrightarrow P$ como sobreyección de índices (`TF-THM-00098`). Aquí «sobreyectivo» se refiere al conjunto de índices en el modelo correspondiente y no se sustituye automáticamente por «epi categórico».
+
+## 8. Fuentes, pruebas y traducción editorial
+
+- Una etiqueta `TF-AX`, `TF-DEF`, `TF-THM`, `TF-EXA` o `TF-CEX` tiene identidad permanente. Los IDs `TF-PREF`, `TF-INTRO`, `TF-CONV`, `TF-HYP`, `TF-ARCH` y `TF-AUD` nombran **documentos**, no resultados matemáticos. `TF-000` pertenece al proyecto.
+- Cada teorema incluye enunciado, demostración y dependencias directas. Una proposición importada de bibliografía externa se señala como tal y no adquiere ID de teorema demostrado por una mera cita.
+- «Manualmente revisado», «Lean verificado para esta declaración», «PR integrada», «render verificado» y «web publicada» designan cinco evidencias distintas. Consultar protocolo Lean y seguimiento.
+- Toda salida para Quarto se deriva del Markdown canónico. Si se cambia una afirmación sustantiva, se versiona el archivo y se auditan sus dependientes antes de publicar; cambiar la ubicación no cambia el ID del resultado.
+
+## 9. Guía de hipótesis antes de aplicar un teorema
+
+Para cada uso, complete mentalmente esta cadena: **marco → datos → hipótesis → afirmación → igualdad → testigo → alcance lógico → tamaño → efectividad → verificación**. Las celdas de [la matriz](matriz-hipotesis.qmd) constituyen una guía inicial auditada contra los manuscritos; no sustituyen al enunciado local del teorema ni sustituyen el desarrollo argumentado del capítulo 17 y la síntesis final del capítulo 18.
+
+---
+
+**Control editorial:** convenciones y notación aprobadas expresamente por el autor el 2026-09-21, sin modificar los enunciados del tratado. La revisión bibliográfica, el montaje tipográfico y la edición pública siguen pendientes; aprobación editorial no equivale a publicación.
+
+::: {.tf-navigation}
+[← Anterior](introduccion.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](matriz-hipotesis.qmd)
+:::

@@ -1,0 +1,285 @@
+---
+title: Imágenes y composición categórica de relaciones
+document-id: TF-CAT-004
+status: draft
+draft: true
+toc: true
+format:
+  html:
+    css: tratado.css
+foundation: 'vía mínima: límites finitos + TF-AX-00008; vía acumulada de topos elemental:
+  la regularidad es consecuencia externa conocida, no demostrada aquí; pruebas diagramáticas
+  con precaución de tamaño'
+choice-use: none
+---
+
+::: {.callout-warning}
+## Edición en preparación
+El cotejo bibliográfico fino y la revisión transversal final siguen abiertos. Esta versión de revisión no constituye una edición publicada.
+:::
+
+[Índice del tratado](index.qmd)
+
+# Capítulo 4. Imágenes y composición categórica de relaciones
+
+::: {.callout-note}
+## Problema rector
+Dados dos subobjetos relacionales $R\rightarrowtail A\times B$ y $S\rightarrowtail B\times C$, el producto fibrado $R\times_B S$ reúne testigos de una composición, pero su flecha inducida hacia $A\times C$ puede no ser monomórfica. ¿Qué axiomas permiten reemplazarla por su imagen y demostrar que esta operación es asociativa, tiene identidades y prolonga la composición de aplicaciones?
+:::
+
+
+**Contrato de lectura.** Usamos [capítulo 1](capitulo-01.qmd) para productos, gráficas y monomorfismos; [capítulo 2](capitulo-02.qmd) para separar puntos globales de igualdad de flechas; [capítulo 3](capitulo-03.qmd) para subobjetos, relaciones y productos fibrados. No presupongamos el clasificador $\Omega$ para demostrar la composición: el axioma `TF-AX-00007` es innecesario aquí. Los símbolos $\operatorname{Sub}(X)$ y $\operatorname{Rel}(A,B)$ pueden denotar colecciones en la metateoría; sólo escribimos hom-conjuntos cuando se ha fijado una hipótesis de tamaño.
+
+## 4.1. ¿Dónde se detuvo exactamente la construcción anterior?
+
+Sean $r:R\rightarrowtail A\times B$ y $s:S\rightarrowtail B\times C$, con componentes $r_A,r_B$ y $s_B,s_C$. Formemos $P=R\times_B S$ usando $r_B$ y $s_B$, con proyecciones $p:P\to R$ y $q:P\to S$. La flecha
+
+$$
+t=\langle r_Ap,s_Cq\rangle:P\longrightarrow A\times C
+\tag{4.1}
+$$
+
+no es necesariamente mono. En $\mathbf{Set}$, si $A=\{a\}$, $B=\{b_0,b_1\}$ y $C=\{c\}$, y $R=A\times B$, $S=B\times C$, entonces $P$ tiene dos elementos, ambos enviados por $t$ al único par $(a,c)$. La relación compuesta es la **imagen** $\{(a,c)\}$, no el conjunto de sus dos testigos. Esta frontera quedó registrada al final del capítulo 3; ahora vamos a cruzarla.
+
+<a id="TF-THM-00023"></a>
+
+**Teorema 4.1.1 — Los axiomas anteriores dan límites finitos** <!-- result-id: TF-THM-00023; depends-on: TF-AX-00003, TF-AX-00004, TF-AX-00006 -->
+
+Una categoría con objeto terminal, productos binarios y productos fibrados posee igualadores y, por tanto, todos los límites finitos.
+
+*Demostración.* Para $f,g:X\to Y$, sea $\Delta_Y=\langle1_Y,1_Y\rangle:Y\to Y\times Y$. Formemos el pullback de $\langle f,g\rangle:X\to Y\times Y$ por $\Delta_Y$ y llamemos $e:E\to X$ a su proyección sobre $X$. La conmutatividad y las proyecciones del producto dan $fe=ge$. Dada $h:T\to X$ con $fh=gh$, el emparejamiento $\langle fh,1_Y\circ fh\rangle$ proporciona la flecha pertinente hacia $Y$ y la universalidad del pullback produce una única $T\to E$ sobre $X$. Más directamente, el par $(h,fh)$ verifica $\langle f,g\rangle h=\Delta_Y(fh)$ y determina dicha flecha de manera única. Así $e$ iguala $f$ y $g$. Un objeto terminal, productos e igualadores construyen todos los límites de diagramas finitos: primero se toma el producto de sus objetos y después se igualan las dos aplicaciones inducidas por las flechas del diagrama. $\square$
+
+<a id="TF-DEF-00014"></a>
+
+**Definición 4.1.2 — Epimorfismo regular** <!-- result-id: TF-DEF-00014; depends-on: TF-AX-00001, TF-AX-00002 -->
+
+Una flecha $e:X\to Y$ es *epimorfismo regular* si es un coigualador de algún par paralelo $u,v:T\rightrightarrows X$: $eu=ev$ y, para toda $h:X\to Z$ con $hu=hv$, existe una única $\bar h:Y\to Z$ con $\bar h e=h$. Un coigualador es epi: si $ae=be$, las flechas $a,b$ satisfacen la misma factorización universal de $ae$, luego coinciden. Denotamos por $X\twoheadrightarrow Y$ un epimorfismo regular, no un epimorfismo arbitrario.
+
+::: {.callout-warning}
+## Distinción necesaria
+La definición de epimorfismo (cancelación por la derecha) no garantiza que sea coigualador ni que sobreviva al cambio de base. Tampoco estamos postulando coigualadores de **todas** las relaciones de equivalencia: esa exigencia es más fuerte que la regularidad.
+:::
+
+
+## 4.2. Introducción explícita de la regularidad
+
+<a id="TF-AX-00008"></a>
+
+**Axioma 4.2.1 — Paquete de regularidad** <!-- result-id: TF-AX-00008; depends-on: TF-THM-00023, TF-DEF-00014 -->
+
+Como **contrato suficiente de trabajo sobre la base débil de límites finitos**, añadimos estas dos exigencias: (i) toda $f:X\to Y$ admite una factorización $f=me$ con $e:X\twoheadrightarrow I$ epimorfismo regular y $m:I\rightarrowtail Y$ monomorfismo; (ii) todo cambio de base de un epimorfismo regular mediante un producto fibrado vuelve a ser epimorfismo regular. Llamamos *categoría regular* a una categoría que satisface este paquete y los límites finitos ya demostrados. La composición de epimorfismos regulares y la unicidad de las factorizaciones se demostrarán, no se añaden como axiomas independientes. El rótulo «axioma» en `TF-AX-00008` señala una **hipótesis explícita para esta vía de demostración**, no independencia lógica respecto de todos los axiomas de los capítulos precedentes.
+
+::: {.callout-note}
+## Dos rutas fundacionales, sin confundir sus dependencias
+**Ruta regular mínima:** límites finitos (`TF-THM-00023`) y el paquete `TF-AX-00008`; las pruebas de este capítulo sólo usan esta ruta y no recurren a exponenciales ni al clasificador de subobjetos. **Ruta acumulada del topos:** si también se mantienen los exponenciales (`TF-AX-00005`) y el clasificador (`TF-AX-00007`) de los capítulos 1–3, se está en un topos elemental, y todo topos elemental es regular. Esta última implicación es un **resultado externo citado, no demostrado ni incorporado como nuevo teorema del tratado**; su prueba completa y su eventual formalización quedan fuera del alcance de esta corrección. Véase Todd Trimble, [*An elementary approach to elementary topos theory*, «A topos is a regular category»](https://ncatlab.org/toddtrimble/published/An%2Belementary%2Bapproach%2Bto%2Belementary%2Btopos%2Btheory).
+:::
+
+
+<a id="TF-THM-00024"></a>
+
+**Teorema 4.2.2 — Ortogonalidad y composición de cubrimientos** <!-- result-id: TF-THM-00024; depends-on: TF-DEF-00014, TF-AX-00008, TF-DEF-00003 -->
+
+(a) Todo epimorfismo regular tiene la propiedad de levantamiento único frente a cualquier monomorfismo. (b) La composición de dos epimorfismos regulares es regular. (c) Todo epimorfismo regular que además sea mono es isomorfismo.
+
+*Demostración.* (a) Sea $e:X\twoheadrightarrow Y$ el coigualador de $u,v:T\rightrightarrows X$ y consideremos un cuadrado con $m:U\rightarrowtail V$, $a:X\to U$, $b:Y\to V$ y $ma=be$. Entonces $mau=beu$ y, de modo explícito, $mau=beu=bev=mav$; por monicidad $au=av$. Existe una única $d:Y\to U$ tal que $de=a$. Además $mde=ma=be$, y, por ser $e$ epi, $md=b$. La unicidad de $d$ resulta de $e$ epi.
+
+(b) Si $e_1:X\twoheadrightarrow Y$ y $e_2:Y\twoheadrightarrow Z$, el procedimiento de (a) resuelve primero un cuadrado frente a $e_1$ y después otro frente a $e_2$; por ello $e_2e_1$ también es ortogonal a todo mono. Factoricemos $e_2e_1=mq$ según el axioma, con $q$ regular epi y $m$ mono. Aplicando la ortogonalidad de $e_2e_1$ frente a $m$ al cuadrado con flecha superior $q:X\to I$ e inferior $1_Z$, obtenemos $d:Z\to I$ con $d(e_2e_1)=q$ y $md=1_Z$. De $dmq=q$ y la epimorfía de $q$ se deduce $dm=1_I$. Por tanto $m$ es iso y $e_2e_1$ es isomorfo a $q$, luego es regular epi.
+
+(c) Aplicar (a) al cuadrado con izquierda y derecha $e$, y con horizontales identidades, produce una inversa bilateral. $\square$
+
+<a id="TF-THM-00025"></a>
+
+**Teorema 4.2.3 — Unicidad, propiedad de imagen y estabilidad** <!-- result-id: TF-THM-00025; depends-on: TF-AX-00008, TF-THM-00024, TF-DEF-00009, TF-AX-00006 -->
+
+La parte monomórfica de una factorización regular-epi/mono de $f:X\to Y$ determina un subobjeto $\operatorname{Im}(f)\in\operatorname{Sub}(Y)$ único. Es el menor subobjeto de $Y$ por el cual factoriza $f$. Si $q:W\twoheadrightarrow X$ es epi regular, entonces $\operatorname{Im}(fq)=\operatorname{Im}(f)$. Además, para cualquier $g:Y'\to Y$, la imagen del cambio de base $g^*f:X\times_YY'\to Y'$ es $g^*\operatorname{Im}(f)$.
+
+*Demostración.* Consideremos dos factorizaciones $f=me=nd$ con $e,d$ regulares epi y $m,n$ monos. La ortogonalidad de $e$ frente a $n$, aplicada al cuadrado $nd=me$, proporciona $u:I\to J$ con $ue=d$ y $nu=m$; invirtiendo los papeles aparece $v:J\to I$. Como $vue=e$ y $uvd=d$, la epimorfía de $e,d$ implica $vu=1_I$ y $uv=1_J$. Por ello $m$ y $n$ son isomorfos sobre $Y$.
+
+Si $f=nh$ factoriza por cualquier mono $n:N\rightarrowtail Y$, la misma ortogonalidad, ahora de $e$ frente a $n$, produce $u:I\to N$ con $nu=m$. Esto prueba $[m]\le[n]$ y su minimalidad. Para $fq= m(e q)$, el teorema anterior dice que $eq$ vuelve a ser regular epi; por unicidad, su imagen sigue siendo $[m]$. Finalmente, el pullback de $f=me$ por $g$ se descompone, por pegado de cuadrados, como el pullback de $e$ seguido del de $m$. La primera flecha sigue siendo regular epi por estabilidad y la segunda sigue siendo mono por el Teorema 3.2.3. Es una factorización imagen de $g^*f$, que por unicidad coincide con $g^*[m]$. $\square$
+
+::: {.callout-note}
+## ¿Por qué no basta con «tomar el codominio»?
+El codominio $Y$ está declarado incluso cuando la imagen es un subobjeto propio. La imagen es una construcción con una propiedad mínima y estabilidad por cambio de base; ninguno de esos rasgos es una consecuencia de la sola declaración del codominio.
+:::
+
+
+## 4.3. La categoría de relaciones
+
+<a id="TF-DEF-00015"></a>
+
+**Definición 4.3.1 — Composición categórica** <!-- result-id: TF-DEF-00015; depends-on: TF-DEF-00010, TF-AX-00006, TF-THM-00025 -->
+
+Para relaciones $r:R\rightarrowtail A\times B$ y $s:S\rightarrowtail B\times C$, sea $P=R\times_B S$ y $t=\langle r_Ap,s_Cq\rangle:P\to A\times C$ como en (4.1). Definimos
+
+$$
+S\mathbin{\circ_{\mathrm{rel}}}R:=\operatorname{Im}(t)
+\quad\in\operatorname{Sub}(A\times C).
+\tag{4.2}
+$$
+
+La notación $\circ_{\mathrm{rel}}$ diferencia esta composición de la composición primitiva de flechas. El producto fibrado no es la relación compuesta: aporta sus testigos.
+
+<a id="TF-THM-00026"></a>
+
+**Teorema 4.3.2 — Independencia de representantes** <!-- result-id: TF-THM-00026; depends-on: TF-DEF-00015, TF-THM-00025, TF-AX-00006 -->
+
+La operación (4.2) no depende de los representantes monomórficos ni de la elección de producto fibrado o factorización imagen.
+
+*Demostración.* Sustituir $r$ o $s$ por un mono isomorfo sobre su producto induce, por universalidad, un isomorfismo entre los dos productos fibrados de testigos. Bajo él coinciden las flechas hacia $A\times C$. Dos flechas cuya fuente difiere por un isomorfismo tienen la misma imagen: el isomorfismo es en particular epi regular y aplicamos el Teorema 4.2.3. La unicidad de la imagen y de los productos fibrados hasta isomorfismo concluye la prueba. $\square$
+
+<a id="TF-THM-00027"></a>
+
+**Teorema 4.3.3 — Identidades relacionales** <!-- result-id: TF-THM-00027; depends-on: TF-DEF-00015, TF-THM-00025, TF-AX-00004, TF-AX-00006 -->
+
+La diagonal $\Delta_A=\langle1_A,1_A\rangle:A\rightarrowtail A\times A$ es una relación $1_A^{\mathrm{rel}}$ y, para $R:A\rightsquigarrow B$,
+
+$$
+R\circ_{\mathrm{rel}}1_A^{\mathrm{rel}}=R
+=1_B^{\mathrm{rel}}\circ_{\mathrm{rel}}R.
+\tag{4.3}
+$$
+
+*Demostración.* La diagonal es mono porque su primera proyección es una retracción. El objeto de testigos $\Delta_A\times_A R$ del producto de la diagonal por $R$ es canónicamente isomorfo a $R$: el punto intermedio queda forzado por la igualdad de las dos proyecciones de la diagonal. La flecha inducida hacia $A\times B$ coincide bajo ese isomorfismo con el representante monomórfico $r:R\rightarrowtail A\times B$. La imagen de un mono $r$ es el mismo subobjeto, pues $r=r\circ1_R$ es una factorización regular-epi/mono. La unidad derecha se prueba de forma simétrica. $\square$
+
+<a id="TF-THM-00028"></a>
+
+**Teorema 4.3.4 — Asociatividad** <!-- result-id: TF-THM-00028; depends-on: TF-DEF-00015, TF-THM-00025, TF-THM-00024, TF-AX-00006 -->
+
+Para $R:A\rightsquigarrow B$, $S:B\rightsquigarrow C$ y $T:C\rightsquigarrow D$,
+
+$$
+T\circ_{\mathrm{rel}}(S\circ_{\mathrm{rel}}R)
+=(T\circ_{\mathrm{rel}}S)\circ_{\mathrm{rel}}R.
+\tag{4.4}
+$$
+
+*Demostración.* Escribamos $P=R\times_BS$, $u:P\to A\times C$ y factoricemos $u=i e$ con $e:P\twoheadrightarrow I$ y $i:I\rightarrowtail A\times C$. Por definición, $I$ representa $S\circ_{\mathrm{rel}}R$. Su composición con $T$ usa $Q=I\times_C T$ y una flecha $v:Q\to A\times D$. El pullback de $e$ por la proyección $Q\to I$ da un epi regular $\widetilde e:W=P\times_IQ\twoheadrightarrow Q$. Por pegado de productos fibrados,
+
+$$
+W\cong P\times_C T\cong R\times_B S\times_C T.
+$$
+
+La flecha $v\widetilde e:W\to A\times D$ es la flecha que conserva el primer componente de $R$ y el último de $T$; su imagen coincide con la de $v$ por el Teorema 4.2.3. Si primero componemos $T$ y $S$, el argumento simétrico proporciona otro epi regular desde un objeto canónicamente isomorfo a $R\times_BS\times_CT$ hacia el objeto de testigos de $(T\circ_{\mathrm{rel}}S)\circ_{\mathrm{rel}}R$. Ambas composiciones son así la imagen de la misma flecha desde el objeto de testigos triples hasta $A\times D$. Por unicidad de las imágenes coinciden. $\square$
+
+Por estos teoremas existe la categoría $\mathbf{Rel}(\mathcal C)$ cuyos objetos son los de $\mathcal C$ y cuyas flechas $A\rightsquigarrow B$ son subobjetos de $A\times B$, siempre interpretando sus tamaños en la metateoría. La composición es (4.2), y las identidades son las diagonales. Para una categoría localmente pequeña y bien potenciada, las colecciones pertinentes son conjuntos.
+
+<a id="TF-THM-00029"></a>
+
+**Teorema 4.3.5 — Inclusión fiel de aplicaciones como gráficas** <!-- result-id: TF-THM-00029; depends-on: TF-THM-00004, TF-THM-00005, TF-DEF-00015, TF-THM-00027, TF-THM-00025 -->
+
+La asignación $f:A\to B\mapsto[\gamma_f]:A\rightsquigarrow B$ preserva identidades y composición y es inyectiva en cada clase de flechas paralelas; define un funtor fiel $\mathcal C\to\mathbf{Rel}(\mathcal C)$ identidad sobre los objetos.
+
+*Demostración.* La gráfica de $1_A$ es la diagonal. Para $f:A\to B$ y $g:B\to C$, el producto fibrado de $\gamma_f:A\rightarrowtail A\times B$ y $\gamma_g:B\rightarrowtail B\times C$ es canónicamente $A$, pues un testigo intermedio debe ser $f(a)$. La flecha inducida a $A\times C$ es $\gamma_{gf}$; como es mono, su imagen es ella misma. Por tanto $[\gamma_g]\circ_{\mathrm{rel}}[\gamma_f]=[\gamma_{gf}]$. Si $[\gamma_f]=[\gamma_g]$, el isomorfismo de representantes sobre $A\times B$ y la primera proyección muestran que el isomorfismo es $1_A$; componiendo con la segunda proyección se obtiene $f=g$. No se usan elementos globales ni la hipótesis de que el terminal sea generador. $\square$
+
+<a id="TF-THM-00030"></a>
+
+**Teorema 4.3.6 — Totalidad más unicidad sin elección** <!-- result-id: TF-THM-00030; depends-on: TF-THM-00005, TF-THM-00024, TF-DEF-00010, TF-THM-00029 -->
+
+Sea $r:R\rightarrowtail A\times B$ una relación y $p=r_A:R\to A$ su primera proyección. Si $p$ es mono y epi regular, existe una única flecha $f:A\to B$ cuya gráfica representa $r$. Más aún, $p$ es isomorfismo y $f=r_Bp^{-1}$.
+
+*Demostración.* El Teorema 4.2.2(c) hace invertible a $p$; el Teorema 1.3.4 caracteriza entonces a $r$ como gráfica y proporciona $f=r_Bp^{-1}$. Si otra $g$ tuviese esa misma gráfica, la fidelidad probada en el Teorema 4.3.5 daría $f=g$. $\square$
+
+::: {.callout-note}
+## Existencia, unicidad y elección
+«$p$ es epi regular» formaliza una noción de cobertura del dominio; «$p$ es mono» formaliza la unicidad del testigo relacional sobre cada argumento. Ambas condiciones juntas dan una inversa única **sin axioma de elección**. Si omitimos la monicidad, una cobertura regular no tiene por qué disponer de sección. No se infiere una elección global de la mera totalidad.
+:::
+
+
+## 4.4. Imagen directa y cuantificación existencial
+
+<a id="TF-DEF-00016"></a>
+
+**Definición 4.4.1 — Imagen directa de subobjetos** <!-- result-id: TF-DEF-00016; depends-on: TF-DEF-00009, TF-THM-00025 -->
+
+Para $f:X\to Y$ y $m:U\rightarrowtail X$ definimos $\exists_f[m]:=\operatorname{Im}(fm)\in\operatorname{Sub}(Y)$. Esta notación indica la interpretación lógica de la imagen, no una afirmación de que el testigo se pueda calcular.
+
+<a id="TF-THM-00031"></a>
+
+**Teorema 4.4.2 — Adjunción imagen/preimagen** <!-- result-id: TF-THM-00031; depends-on: TF-DEF-00016, TF-THM-00025, TF-DEF-00011, TF-AX-00006 -->
+
+Para subobjetos $[m]\in\operatorname{Sub}(X)$ y $[n]\in\operatorname{Sub}(Y)$,
+
+$$
+\exists_f[m]\le[n]
+\quad\Longleftrightarrow\quad
+[m]\le f^*[n].
+\tag{4.5}
+$$
+
+*Demostración.* La minimalidad de $\operatorname{Im}(fm)$ dice que la desigualdad de la izquierda equivale a que $fm$ factorice por $n:N\rightarrowtail Y$. Por la propiedad universal del pullback $X\times_YN$, una factorización $fm=nu$ equivale a una flecha $U\to X\times_YN$ cuya composición con la proyección a $X$ es $m$. Esta última condición es exactamente $[m]\le f^*[n]$. $\square$
+
+<a id="TF-THM-00032"></a>
+
+**Teorema 4.4.3 — Beck–Chevalley para imágenes** <!-- result-id: TF-THM-00032; depends-on: TF-DEF-00016, TF-THM-00025, TF-AX-00006 -->
+
+Sea un cuadrado de producto fibrado
+
+$$
+\begin{array}{ccc}
+X'&\xrightarrow{g'}&X\\
+\scriptstyle f'\downarrow&&\downarrow\scriptstyle f\\
+Y'&\xrightarrow{g}&Y.
+\end{array}
+$$
+
+Para todo $[m]\in\operatorname{Sub}(X)$,
+
+$$
+g^*(\exists_f[m])=\exists_{f'}(g'^*[m]).
+\tag{4.6}
+$$
+
+*Demostración.* El producto fibrado del mono $m$ por $g'$ determina $m':U'\rightarrowtail X'$. Por pegado de productos fibrados, la flecha $f'm':U'\to Y'$ es el cambio de base por $g$ de $fm:U\to Y$. La estabilidad de imágenes del Teorema 4.2.3 da $\operatorname{Im}(f'm')=g^*\operatorname{Im}(fm)$, exactamente (4.6). $\square$
+
+La asociación $\exists_f\dashv f^*$ expresa categóricamente la cuantificación existencial: en $\mathbf{Set}$, $y$ está en $\exists_f(U)$ cuando existe $x\in U$ con $f(x)=y$. La identidad (4.6) muestra que esta existencia es estable por sustitución; no afirma que se haya escogido, ni mucho menos calculado, un testigo uniforme.
+
+<a id="TF-EXA-00004"></a>
+
+**Ejemplo 4.4.4 — Control en conjuntos** <!-- result-id: TF-EXA-00004; depends-on: TF-DEF-00015, TF-THM-00031 -->
+
+En $\mathbf{Set}$ clásico (ZF) los epimorfismos regulares son exactamente las sobreyecciones: toda sobreyección es coigualador de su par núcleo y toda flecha coigualadora es sobreyectiva. Para $t:P\to A\times C$ de (4.1), $\operatorname{Im}(t)$ es el subconjunto
+
+$$
+\{(a,c):\exists b\in B,\ (a,b)\in R\land(b,c)\in S\}.
+$$
+
+No se requiere elegir una función $A\times C\to B$: la imagen registra sólo la existencia de testigos. Cuando éstos no son únicos, el conjunto de testigos y la relación compuesta son objetos diferentes. Así se recupera exactamente la composición del capítulo 3.
+
+## 4.5. Auditoría fundacional y pedagógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Pregunta | Resultado |
+|---|---|
+| Marco de existencia | En la **ruta mínima usada aquí**, límites finitos más factorización imagen y estabilidad postuladas explícitamente en `TF-AX-00008`. Con **todos** los axiomas acumulados de los capítulos 1–3 (topos elemental), la regularidad sí se deduce por un resultado conocido, citado en §4.2 pero no demostrado en este tratado. |
+| Elección | Ninguna: los objetos y sus factorizaciones se caracterizan por universalidad y unicidad salvo isomorfismo; no se seleccionan representantes ni se escogen testigos para cada argumento. |
+| Lógica clásica | Ninguna en las pruebas categóricas adoptadas; el ejemplo de correspondencia epi regular/sobreyectividad se declara en Set clásico. |
+| Igualdad | Igualdad de subobjetos = isomorfismo sobre un mismo objeto; no se afirma decidibilidad de esta igualdad. |
+| Efectividad | Ninguna: una imagen y un epi regular son construcciones formales, no procedimientos computables. |
+| Infinito y tamaño | No se requiere objeto de números naturales ni clasificador ni exponenciales; las colecciones de subobjetos pueden requerir precauciones de tamaño. |
+| Comprobación | Demostraciones revisadas manualmente; Lean no ejecutado. |
+
+:::
+
+
+::: {.callout-warning}
+## Hipótesis que no deben introducirse por silencio
+La regularidad **no** incluye que toda relación de equivalencia interna sea el par núcleo de un cociente (exactitud de Barr); tampoco exige un clasificador de subobjetos, un objeto de números naturales o el axioma de elección. En particular, las nuevas demostraciones no dependen de `TF-AX-00005` ni de `TF-AX-00007`, **aunque tales axiomas, si están disponibles junto con los restantes del topos, proporcionen una vía alternativa hacia la regularidad**.
+:::
+
+
+::: {.callout-note}
+## Ejercicio de lectura de prueba
+En la asociatividad, localice el único paso que fracasa al conservar imágenes sin estabilidad por pullback: la flecha $\widetilde e:W\twoheadrightarrow Q$ dejaría de estar garantizada como epi regular. ¿Qué igualdad de imágenes perderíamos entonces?
+:::
+
+
+## 4.6. Fuentes y originalidad de la exposición
+
+La composición por productos fibrados e imágenes y su asociatividad en categorías regulares son resultados **clásicos**, no nuevos. Esta exposición reconstruye paso a paso su dependencia de los axiomas y los inserta en el proyecto fundacional de las funciones. Controles externos consultados: Daniel Naylor, *Regular Categories*, §7 (https://danielnaylor.uk/notes/III/Michaelmas/CT/HTML/CTse7.html); Chris Heunen y Sean Tull, *Categories of Relations as Models of Quantum Theory* (2015, §2, DOI [10.4204/EPTCS.195.18](https://doi.org/10.4204/EPTCS.195.18)), sobre composición de relaciones; Alexander Kurz, *Regular and Exact Categories* (https://alexhkurz.github.io/topics-in-category-theory/contents/regular-and-exact-categories.html), **notas en construcción: lectura auxiliar, no autoridad única para la definición**; W. P. Stekelenburg, *Realizability Categories* (tesis doctoral, Universidad de Utrecht, 2013, [ficha institucional](https://research-portal.uu.nl/en/publications/realizability-categories/)), como contexto para realizabilidad. Para las nociones de gráfica, relación y subobjeto prevalecen los capítulos 1–3 del maestro y el cotejo de Lawvere–Rosebrugh, *Sets for Mathematics*, §§1.1, 3.3 y 4.
+
+**Cierre editorial.** Este capítulo registra el paso de relaciones definidas como subobjetos a una categoría de relaciones. La siguiente cuestión reservada es `TF-CAT-005 — Funciones, relaciones totales y principios de elección`: confrontará las diferentes nociones de totalidad, unicidad y sección, e identificará sus dependencias lógicas. No se ha publicado contenido web ni se ha afirmado formalización Lean.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-03.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-05.qmd)
+:::

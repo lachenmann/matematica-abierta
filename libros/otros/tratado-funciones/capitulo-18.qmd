@@ -1,0 +1,302 @@
+---
+title: 'Síntesis: qué significa definir una función'
+document-id: TF-CAT-018
+status: draft
+draft: true
+toc: true
+format:
+  html:
+    css: tratado.css
+foundation: síntesis de marcos declarados; ejemplo en naturales de Set y lectura tipada
+  bajo reglas explícitas
+choice-use: ninguna elección arbitraria en el ejemplo; principios de elección sólo
+  como fronteras
+---
+
+::: {.callout-warning}
+## Edición en preparación
+El cotejo bibliográfico fino y la revisión transversal final siguen abiertos. Esta versión de revisión no constituye una edición publicada.
+:::
+
+[Índice del tratado](index.qmd)
+
+# Capítulo 18. Síntesis: qué significa definir una función
+
+El prefacio preguntaba qué convierte una correspondencia en función, cómo reconocemos el mismo objeto bajo descripciones distintas y cuándo podemos escoger, extender o calcular sus valores. Tras el recorrido del tratado podemos responder con precisión: definir una función consiste en suministrar los datos y las justificaciones que la hacen determinada en un marco declarado. Lo que cuenta como dato, determinación y justificación depende de ese marco.
+
+La respuesta exige conservar algunas distinciones hasta el final. Una gráfica necesita extremos; una aplicación parcial necesita dominio; un término necesita reglas de tipos e igualdad; un programa necesita representación y contrato de terminación. Las traducciones estudiadas permiten comparar esos objetos cuando verificamos sus condiciones. No proporcionan una identificación irrestricta de todos ellos.
+
+Este capítulo vuelve sobre las seis operaciones de la [introducción](introduccion.qmd) —definir, evaluar, comparar, construir, componer y computar— mediante un ejemplo común y las fronteras ya demostradas. Su función es cerrar el argumento del libro. Los cálculos del ejemplo son aplicaciones elementales de resultados existentes; no abren otra serie de teoremas.
+
+## 18.1. La respuesta cambia con el marco
+
+### 18.1.1. Determinación y existencia
+
+En ZF, fijados conjuntos $A,B$, una relación $R\subseteq A\times B$ total y univaluada determina una función. La existencia única permite formar su gráfica sin escoger arbitrariamente entre varios candidatos: Teorema 5.3.3, TF-THM-00039. Si sólo sabemos que cada fibra es no vacía, una selección es una exigencia adicional.
+
+En el enfoque categórico, una función es inicialmente una flecha con dominio, codominio y leyes de composición. No se necesita reducir todas las flechas a conjuntos de pares. Si hay productos, puede construirse su gráfica, y el Teorema 1.3.4, TF-THM-00005, dice cuándo un subobjeto del producto permite recuperar una flecha. En una categoría regular, totalidad y univaluación proporcionan ese criterio, según TF-THM-00033.
+
+En una teoría de tipos, definir una función exige formar un término de un tipo de funciones con las reglas que se hayan fijado. Una igualdad por reducción, una igualdad proposicional y una igualdad extensional no se identifican automáticamente. La lectura de abstracción y aplicación como currificación y evaluación, en §13.2, compara reglas específicas; no demuestra equivalencia entre todas las teorías de tipos y todas las categorías.
+
+En computación, una especificación sólo se convierte en procedimiento cuando se suministra un programa bajo una representación de entradas y salidas. Además hay que indicar si debe terminar exactamente en el dominio, trabajar bajo una promesa o devolver una etiqueta para la indefinición. Una función matemática puede estar determinada aunque no exista el procedimiento exigido: TF-EXA-00007 y las fronteras de los capítulos 9–10.
+
+### 18.1.2. Las seis operaciones y sus obligaciones
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Operación | Qué debe quedar justificado |
+|---|---|
+| Definir | Marco, extremos, tipo de objeto y totalidad o dominio parcial |
+| Evaluar | Regla de aplicación y condiciones bajo las que el argumento es admisible |
+| Comparar | Igualdad pertinente: flechas, subobjetos, spans, términos o comportamiento extensional |
+| Construir | Existencia del objeto y, si se pide, el testigo o dato que lo presenta |
+| Componer | Concordancia de tipos y dominio exacto; propagación de indefinición cuando corresponda |
+| Computar | Representaciones, algoritmo, corrección y contrato de terminación |
+
+:::
+
+
+La tabla es una pauta de lectura, no una axiomatización nueva. Sus obligaciones se justifican por las construcciones y contraejemplos del corpus. La [matriz argumentada del capítulo 17](capitulo-17.qmd) permite localizar las hipótesis para cada paso.
+
+## 18.2. Un ejemplo común: la raíz cuadrada exacta
+
+### 18.2.1. La función total sobre su dominio
+
+Trabajamos con $\mathbb N=\{0,1,2,\ldots\}$, aritmética exacta y lógica conjuntista clásica. Sea
+
+$$
+D=\{n\in\mathbb N:\exists k\in\mathbb N,\ k^2=n\}.
+$$
+
+Para cada $n\in D$ existe un único $k\in\mathbb N$ con $k^2=n$. La existencia forma parte de la definición de $D$. Para la unicidad, si $k<\ell$, entonces $\ell\ge k+1$, de donde
+$\ell^2\ge(k+1)^2=k^2+2k+1>k^2$; por simetría, raíces con el mismo cuadrado no pueden ser diferentes.
+
+Queda así definida la función total
+
+$$
+r:D\longrightarrow\mathbb N,\qquad r(n)=\text{el único }k\text{ tal que }k^2=n.
+$$
+
+Ésta es una aplicación del criterio de existencia única TF-THM-00039. No elegimos un representante arbitrario. Por ejemplo, $r(0)=0$, $r(1)=1$ y $r(9)=3$; la expresión $r(2)$ no está tipada con ese dominio.
+
+La aplicación $s:\mathbb N\to D$, $s(k)=k^2$, satisface $r(s(k))=k$ y $s(r(n))=n$. Ambas igualdades se siguen de la unicidad y de la ecuación definitoria. Si $i:D\hookrightarrow\mathbb N$ es la inclusión, $i\circ s$ es la función cuadrado habitual, ahora con codominio $\mathbb N$. Distinguir $s$ de $i\circ s$ conserva información sobre sus extremos.
+
+### 18.2.2. Gráfica y aplicación parcial
+
+La gráfica de $r$ como función total es
+
+$$
+G=\{(n,k)\in D\times\mathbb N:k^2=n\}.
+$$
+
+La primera proyección $p:G\to D$ es biyectiva y su inversa es $n\mapsto(n,r(n))$. Con $q:G\to\mathbb N$, $q(n,k)=k$, recuperamos $r=q p^{-1}$. Es exactamente el recorrido del Teorema 1.3.4 y §17.5.1.
+
+Podemos considerar los mismos pares dentro de $\mathbb N\times\mathbb N$. En ese ambiente presentan la función parcial
+
+$$
+\rho:\mathbb N\rightharpoonup\mathbb N,\qquad
+\operatorname{dom}(\rho)=D,\qquad \rho(n)=r(n)\quad(n\in D).
+$$
+
+La proyección de esa relación sobre $\mathbb N$ tiene imagen $D$ y no es sobreyectiva: $2$ queda fuera. Su span es
+$\mathbb N\xleftarrow{i}D\xrightarrow{r}\mathbb N$, según TF-DEF-00021. La gráfica como pares no ha cambiado, pero sí el extremo sobre el que se pregunta por totalidad.
+
+Como comparación de composición, sea $q_2:\mathbb N\to\mathbb N$, $q_2(k)=k^2$. La composición parcial $\rho\circ q_2$ está definida en todo $\mathbb N$ y vale la identidad. En cambio, $q_2\circ\rho$ está definida exactamente en $D$ y allí devuelve $n$. Es la identidad restringida a $D$, no la identidad total de $\mathbb N$. El cálculo instancia la regla de dominio exacto de TF-THM-00054.
+
+### 18.2.3. Etiqueta de indefinición y prolongación
+
+La codificación total etiquetada es
+
+$$
+\widehat\rho:\mathbb N\to\mathbb N\sqcup\{\bot\},
+\qquad
+\widehat\rho(n)=
+\begin{cases}
+\operatorname{inl}(r(n)),&n\in D,\\
+\bot,&n\notin D.
+\end{cases}
+$$
+
+La etiqueta $\bot$ es distinta de todo valor numérico, incluido $\operatorname{inl}(0)$. Recuperamos $D$ como la preimagen de la componente numérica y, dentro de ella, recuperamos $r$. Se trata del caso conjuntista de TF-THM-00110 y de las condiciones de clasificación de los capítulos 8 y 14.
+
+En cambio, la prolongación $e:\mathbb N\to\mathbb N$ que vale $r(n)$ en $D$ y $0$ fuera de $D$ conserva los valores originales, pero pierde la frontera del dominio. En efecto, $e(0)=e(2)=0$ aunque $\rho$ está definida en $0$ y no en $2$. La función total $e$ y la función parcial $\rho$ son objetos distintos; pasar sólo a $e$ no permite recuperar por esa operación el dominio de una aplicación parcial arbitraria. Haría falta conservar el predicado $D$ como dato adicional.
+
+### 18.2.4. Lectura tipada
+
+Para esta lectura suponemos un sistema con naturales, productos dependientes y sumas, igualdad de naturales, recursión y comparaciones decidibles. No atribuimos esas construcciones al cálculo simplemente tipado puro sin extensiones.
+
+Una forma de proporcionar el dato de dominio es el tipo
+
+$$
+D_{\mathrm{testigo}}
+=\sum_{n:\mathbb N}\sum_{k:\mathbb N}(k^2=n).
+$$
+
+El término
+
+$$
+r_{\mathrm{testigo}}
+=\lambda(n,(k,h)).\,k
+:\ D_{\mathrm{testigo}}\to\mathbb N
+$$
+
+extrae un testigo ya suministrado, conforme a la distinción de §13.4 y TF-THM-00107. Si dos entradas tienen el mismo $n$, la unicidad aritmética prueba igualdad de los valores $k$. Esta afirmación no requiere identificar todos los términos de prueba $h$ ni postular que el tipo completo de testigos sea idéntico al conjunto $D$. No se extrae un testigo de una proposición existencial truncada mediante una regla tácita.
+
+También podemos formar un término total $t:\mathbb N\to\operatorname{Option}(\mathbb N)$ mediante la búsqueda finita que sigue. Con la interpretación conjuntista de naturales y de las dos etiquetas, su denotación es $\widehat\rho$. Se afirma esta correspondencia concreta; no completitud de la interpretación ni coincidencia de todas las nociones de igualdad de términos.
+
+### 18.2.5. Programa y prueba de terminación
+
+Representamos los naturales por sus numerales habituales, con aritmética de enteros no negativos de precisión arbitraria y etiquetas decidibles. No usamos aritmética de máquina con desbordamiento. El siguiente pseudocódigo devuelve una etiqueta o una raíz:
+
+~~~text
+raiz_etiquetada(n):
+    k := 0
+    mientras (k + 1) * (k + 1) <= n:
+        k := k + 1
+    si k * k == n:
+        devolver Some(k)
+    devolver None
+~~~
+
+El invariante es $k^2\le n$. Vale al comenzar y se conserva porque la condición del bucle comprueba precisamente la desigualdad para el nuevo $k$. Mientras se ejecuta una iteración, $k$ aumenta en uno; siempre $k\le n$ (para $k\ge1$, $k\le k^2\le n$). Por tanto no puede haber infinitas iteraciones: la cota $n$ basta, aunque no sea una estimación óptima.
+
+Al salir se tiene $k^2\le n<(k+1)^2$. Si $k^2=n$, la salida es la raíz única. Si no, $k^2<n<(k+1)^2$, y la monotonía estricta de los cuadrados descarta cualquier raíz natural. El algoritmo es total y decide pertenencia a $D$, además de calcular $\widehat\rho$.
+
+Un programa con contrato de **parada exacta** para $\rho$ se obtiene ejecutando esta búsqueda y devolviendo $k$ en la rama Some; en la rama None entra en un bucle sin salida. Su dominio de terminación es exactamente $D$. Devolver None y divergir no son el mismo comportamiento: el primer programa realiza la codificación total; el segundo, la parcial de parada exacta. Esto instancia TF-THM-00073, sin pretender una receta para etiquetar dominios indecidibles.
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Entrada | Pertenencia a $D$ | Salida etiquetada | Programa de parada exacta | Prolongación $e$ |
+|---|---|---|---|---|
+| $0$ | Sí | Some(0) | Termina con $0$ | $0$ |
+| $2$ | No | None | Diverge | $0$ |
+| $9$ | Sí | Some(3) | Termina con $3$ | $3$ |
+
+:::
+
+
+La prueba de terminación y corrección cubre todos los naturales. Comprobar estas entradas o un rango finito sirve para detectar errores de implementación, no para reemplazar esa prueba.
+
+### 18.2.6. Balance de las traducciones
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Paso | Información conservada | Condición o pérdida |
+|---|---|---|
+| $r:D\to\mathbb N$ a su gráfica en $D\times\mathbb N$ | Todos los valores y extremos | Recuperación por proyección invertible |
+| Gráfica en $\mathbb N\times\mathbb N$ a span de $\rho$ | Dominio $D$ y valores | La totalidad sobre $D$ pasa a parcialidad sobre $\mathbb N$ |
+| $\rho$ a $\widehat\rho$ | Dominio y valores recuperables | Etiqueta separada; composición levantada cuando se compongan codificaciones |
+| $\rho$ a prolongación $e$ | Valores en $D$ | El valor por defecto no codifica por sí solo el dominio |
+| Testigo tipado a valor | Raíz suministrada y ecuación justificante | No identifica pruebas ni introduce extracción desde una mera proposición |
+| Algoritmo total a programa parcial | Valores en cuadrados | Cambia la terminación fuera de $D$ |
+| Fórmula matemática a procedimiento | Aquí, raíz y decisión del dominio | Requiere la búsqueda, su prueba y la representación declarada |
+
+:::
+
+
+El predecesor parcial de la introducción mostraba la primera distinción entre indefinición, etiqueta y prolongación. La raíz exacta añade una búsqueda y una prueba de terminación; conserva la misma disciplina de comparación.
+
+## 18.3. Qué se recupera y con qué datos
+
+### 18.3.1. Extensionalidad, características y unicidad
+
+Dos funciones conjuntistas con los mismos extremos son iguales si coinciden en todos los argumentos. Para las aplicaciones parciales hay que comparar también los dominios: TF-THM-00056. La igualdad de valores donde ambas están definidas no basta, como muestra la comparación de $\rho$ con $e$.
+
+En una categoría arbitraria, comprobar sólo puntos globales puede ser insuficiente: TF-CEX-00001. Los elementos generalizados permiten separar flechas, TF-THM-00009; una reducción a ciertas sondas necesita la propiedad generadora pertinente. El ejemplo conjuntista no autoriza a omitir ese requisito al cambiar de categoría.
+
+Con un clasificador de subobjetos, la característica determina el subobjeto; aplicada a gráficas permite comparar flechas, TF-THM-00020. En nuestro ejemplo, el predicado «ser cuadrado» determina $D$, pero **no determina los valores de $\rho$**. La función constante cero sobre $D$ tiene el mismo dominio y otros valores. Hace falta añadir la gráfica o el mapa $r$.
+
+La existencia única reconstruye los valores de $r$ porque la ecuación $k^2=n$ contiene esa información. No es una selección entre varias raíces naturales. Si sustituyéramos $\mathbb N$ por enteros y admitiéramos las dos raíces de un cuadrado positivo, habría que especificar cuál se quiere; una convención explícita de signo puede resolver ese ejemplo, sin demostrar un principio general de elección.
+
+### 18.3.2. Familias naturales y densidad
+
+En una categoría localmente pequeña, con el control de universos de §15.2, una flecha $f:A\to B$ determina funciones $g\mapsto fg$ para todas las sondas $g:X\to A$. La naturalidad las hace coherentes. Recíprocamente, de $\alpha:yA\Rightarrow yB$ se recupera
+
+$$
+f=\alpha_A(1_A),\qquad \alpha_X(g)=fg.
+$$
+
+Es el contenido de TF-THM-00117 y TF-THM-00120, desarrollado en §17.5.2. Aplicado en Set a $r:D\to\mathbb N$, recupera exactamente $r$. La identidad de $D$ actúa como dato suficiente porque se ha suministrado una familia natural completa; no porque una muestra finita de evaluaciones determine cualquier función.
+
+Para base pequeña, la densidad TF-THM-00127 reconstruye un prehaz como colímite canónico de representables. Su objeto de reconstrucción es aquí un **prehaz**, no necesariamente una flecha de la categoría base. TF-CEX-00022 prueba que un prehaz puede ser colímite de representables sin ser representable. Ninguno de esos resultados ofrece por sí solo una codificación finita de todas las componentes o un algoritmo que decida igualdad.
+
+### 18.3.3. Reconstrucción matemática y reconocimiento efectivo
+
+Reconstruir un objeto desde datos adecuados y reconocer algorítmicamente que dos descripciones presentan el mismo objeto son tareas distintas. Podemos probar por invariantes que el programa anterior computa la raíz exacta. Esto no suministra un decisor que compare dos programas arbitrarios: TF-THM-00080 y TF-THM-00082 delimitan ese salto.
+
+Lo mismo vale para representaciones. Un cambio de nombres que sea biyectivo puede conservar los objetos sin permitir traducir nombres computablemente; TF-CEX-00019 y §17.4.3 dan el obstáculo. La representación habitual de naturales es parte del ejemplo, no una propiedad prescindible de su análisis efectivo.
+
+## 18.4. Cinco obstáculos que el cierre debe conservar
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Obstáculo | Resultado que lo delimita | Consecuencia para una definición |
+|---|---|---|
+| Elección no suministrada | TF-THM-00034; TF-CEX-00003 | Una relación total no entrega automáticamente un selector compatible con la estructura |
+| Parcialidad | TF-THM-00054; TF-THM-00056; TF-CEX-00005 | Dominio y valores son datos separados; extender puede exigir hipótesis y cambiar el objeto |
+| Lógica no booleana | TF-THM-00066; TF-CEX-00007 | En un topos arbitrario no se sustituye el clasificador parcial por $B\sqcup1$ sin justificarlo |
+| Igualdad indecidible | TF-THM-00080; TF-THM-00082 | Determinación extensional y programa decisor no coinciden |
+| Tamaño | Marco de §16.1 y TF-THM-00127 | Una fórmula de reconstrucción no autoriza colímites sobre índices arbitrariamente grandes |
+
+:::
+
+
+El ejemplo resuelve algunas exigencias por datos particulares: raíz única, dominio decidible, conjuntos y numerales habituales. No elimina las fronteras del cuadro. Que podamos etiquetar aquí la indefinición no implica que todos los programas parciales admitan esa totalización computable.
+
+Tampoco las fronteras dicen que toda comparación deba fallar. Indican la obligación que falta cuando una conclusión se intenta trasladar fuera de su marco. En grupos, la falta de una sección homomorfa no niega que existan representantes como conjuntos; en un topos no booleano, el fallo de la etiqueta binaria no elimina el clasificador parcial adecuado.
+
+## 18.5. Lectura integradora y ejercicios de control
+
+No hace falta agregar un teorema que repita las equivalencias anteriores. La síntesis consiste en encadenar correctamente los resultados existentes y señalar dónde cada cadena deja de ser válida.
+
+El recorrido del ejemplo puede verificarse así: TF-THM-00039 justifica $r$ por unicidad; TF-THM-00005 permite recuperarla desde la gráfica con extremos $D,\mathbb N$; TF-DEF-00021 y TF-THM-00056 registran el paso a parcialidad sobre $\mathbb N$; TF-THM-00110 explica la codificación etiquetada; TF-THM-00073 exige la decidibilidad que hemos demostrado; TF-THM-00120 recupera la flecha desde su familia natural. Ningún eslabón deduce computabilidad de la sola existencia del anterior.
+
+**Ejercicio 1. Igualdad tras prolongar.** Compare $\rho$ con la aplicación parcial $\tau$ de dominio $D\cup\{2\}$ que vale $r$ en $D$ y $0$ en $2$. Prolongue ambas por cero fuera de su dominio. ¿Son iguales las prolongaciones? ¿Y las aplicaciones parciales?
+
+*Solución.* Las prolongaciones coinciden en todo natural. En $D$ dan $r$ y fuera de $D$ dan cero. Sin embargo, $\rho$ y $\tau$ tienen dominios distintos; sus gráficas difieren por $(2,0)$. Por TF-THM-00056 no son iguales. Esto prueba concretamente la pérdida de información de la prolongación, sin introducir un resultado general nuevo.
+
+**Ejercicio 2. Composición y etiqueta.** Calcule $\rho\circ\rho$ en $0$, $4$ y $16$, y determine su dominio. Después describa cómo componer las codificaciones.
+
+*Solución.* La composición está definida cuando $n=k^2$ y $k=\ell^2$, es decir, cuando $n=\ell^4$. Devuelve entonces $\ell$. En $0$ devuelve $0$; en $4$ la primera raíz es $2$, que no pertenece a $D$, por lo que queda indefinida; en $16$ devuelve $2$. Las codificaciones se componen propagando None y aplicando $\widehat\rho$ al valor contenido en Some. La composición ordinaria $\widehat\rho\circ\widehat\rho$ no está tipada. Es el contrato de TF-THM-00110 y §17.2.3.
+
+**Ejercicio 3. Qué demuestra una prueba de programa.** Dos implementaciones pasan las entradas $0$ a $1000$. ¿Queda demostrada su igualdad extensional sobre los naturales?
+
+*Solución.* No. Una implementación puede coincidir en esas entradas y cambiar la salida en $1001$. TF-THM-00081 impide convertir una batería finita de pruebas en certificación universal para la clase general considerada. Para el algoritmo de §18.2.5, la garantía universal procede del invariante, la terminación y la caracterización de la salida.
+
+Estos ejercicios hacen intervenir dominio, igualdad, composición y efectividad en una misma lectura. Sus soluciones reutilizan los criterios del tratado; no reciben nuevos identificadores matemáticos.
+
+## 18.6. Cierre y límites de la obra
+
+### 18.6.1. La respuesta alcanzada
+
+Hemos definido una función cuando hemos fijado qué objeto se pretende, cuáles son sus extremos y qué justifica su determinación bajo una noción explícita de igualdad. Si la definición reclama evaluación, composición o computación, hay que acreditar también esas operaciones en el mismo marco.
+
+La raíz exacta permite ver la respuesta completa. La ecuación y la unicidad determinan $r$ sobre $D$. La gráfica conserva esa función cuando se guardan sus extremos. El span registra que se trata de una aplicación parcial sobre $\mathbb N$. La etiqueta conserva la frontera de definición. El término con testigo extrae información recibida. El programa finito aporta algo adicional: una manera de decidir el dominio y calcular los valores. Las recuperaciones justifican las correspondencias; las diferencias de dominio, tipo y terminación explican sus límites.
+
+El tratado ha construido y comparado estos mecanismos bajo hipótesis declaradas. No ha demostrado que todas las fundaciones tengan el mismo concepto primitivo de función ni que toda existencia matemática produzca un algoritmo.
+
+### 18.6.2. Relación con otros desarrollos
+
+La teoría de conjuntos suministra al tratamiento conjuntista conjuntos, naturales y operaciones de formación. La lógica y las teorías de tipos suministran sus reglas de inferencia, formación e igualdad. La teoría de categorías proporciona marcos estructurales cuyo uso local se declara en cada resultado. Esas aportaciones son presupuestos identificados o desarrollos parciales del corpus; este libro no certifica la completitud de tratados externos.
+
+Para trabajos sobre el continuo o el análisis, el paso adicional relevante será especificar cómo se representan puntos y funciones y qué operaciones son efectivas; las fronteras del capítulo 10 impiden transferir sin prueba decisiones sobre numerales a objetos dados por aproximaciones. Para trabajos especializados en computabilidad quedan la elección de modelos, complejidad y análisis de representaciones. Para topoi y tipos quedan sus desarrollos generales y sus propias cuestiones metateóricas. Son direcciones de continuación, no capítulos adicionales exigidos por este cierre ni dependencias editoriales ya satisfechas por otras obras.
+
+### 18.6.3. Qué queda cerrado y qué queda pendiente
+
+Con este capítulo se completa la redacción editorial de los dieciocho capítulos del índice aprobado. Los capítulos 17 y 18 sintetizan el corpus sin aumentar los 269 nodos matemáticos. Ese hecho no cierra automáticamente la edición completa: permanecen la bibliografía global, los materiales auxiliares previstos, la revisión transversal final, los objetivos de formalización y la publicación.
+
+La formalización se juzga por declaraciones y evidencias específicas. F1 acredita TF-THM-00005; F2 y la compleción F3 siguen pendientes según sus informes. Las instancias Set o de categoría terminal no certifican resultados categóricos generales. Este capítulo no incorpora código Lean, compilaciones ni una aprobación autoral específica de su texto.
+
+El paso siguiente es consolidar el libro ya redactado: concordar preliminares y capítulos, completar los anexos e índices previstos, cerrar las referencias y revisar la edición. El criterio matemático que orientará esa fase es el mismo que ha guiado la redacción: que cada afirmación permita reconocer sus datos, hipótesis, prueba y alcance.
+
+### Fuentes y control del tramo
+
+- [Prefacio](prefacio.qmd), [introducción](introduccion.qmd), [convenciones](convenciones.qmd) y [el mapa del tratado](index.qmd).
+- Resultados internos identificados en las seis secciones: registro y grafo. Las demostraciones generales permanecen en sus capítulos de origen.
+- [Capítulo 17](capitulo-17.qmd) como mapa de hipótesis y alcance. El capítulo 18 no agrega remisiones externas ni pretende cerrar la bibliografía global.
+- Control editorial 018: cotejo de referencias, comprobación del ejemplo y registro de canonización. La verificación finita del algoritmo acompaña, sin sustituir, la demostración universal escrita.
+- Estado: cierre editorial después de revisión manual y readback; publicación web y formalización integral pendientes.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-17.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](apendice-a.qmd)
+:::

@@ -1,0 +1,237 @@
+---
+title: Categoría de elementos y densidad de Yoneda
+document-id: TF-CAT-016
+status: draft
+draft: true
+toc: true
+format:
+  html:
+    css: tratado.css
+foundation: categoría pequeña C; prehaces contravariantes C^op -> Set; conjuntos y
+  cocientes de conjuntos en ZF, sin axioma de elección
+choice-use: none
+---
+
+::: {.callout-warning}
+## Edición en preparación
+El cotejo bibliográfico fino y la revisión transversal final siguen abiertos. Esta versión de revisión no constituye una edición publicada.
+:::
+
+[Índice del tratado](index.qmd)
+
+# Capítulo 16. Categoría de elementos y densidad de Yoneda
+
+::: {.callout-note}
+## Pregunta rectora
+El capítulo [15](capitulo-15.qmd) recuperó una flecha a partir de una transformación entre *representables*. ¿Se puede recuperar ahora **cualquier prehaz** a partir de los representables? ¿Qué información adicional exige el ensamblaje de sus elementos?
+:::
+
+
+La respuesta no consiste en escoger una «base» ni en afirmar que todos los funtores son representables. Consiste en un diagrama determinado por los elementos del prehaz y en una propiedad universal de su cocono. Fijaremos cuidadosamente las direcciones de las flechas: una inversión inadvertida destruye la construcción.
+
+## 16.1. El marco y su control de tamaño
+
+<a id="TF-DEF-00070"></a>
+
+**Definición 16.1.1 — Categoría de prehaces** <!-- result-id: TF-DEF-00070; depends-on: TF-DEF-00066, TF-DEF-00067, TF-DEF-00068, TF-THM-00115 -->
+
+Sea $\mathcal C$ una **categoría pequeña**: sus objetos y todas sus flechas forman conjuntos, sus hom-conjuntos están dados y las operaciones categóricas son funciones. Un *prehaz conjuntista* es un funtor $F:\mathcal C^{\mathrm{op}}\to\mathbf{Set}$. Escribimos $\widehat{\mathcal C}=[\mathcal C^{\mathrm{op}},\mathbf{Set}]$ para la categoría cuyos objetos son prehaces y cuyas flechas son transformaciones naturales. En este contexto $y c=\operatorname{Hom}_{\mathcal C}(-,c)$ es el representable del capítulo 15. Como $\mathcal C$ es pequeña, las colecciones de transformaciones entre dos prehaces dados son conjuntos. Para tratar $\mathbf{Set}$ y toda la categoría de prehaces como objetos de una sola teoría de conjuntos, se trabaja con la convención usual de clases metateóricas o con universos apropiados; **no** se supone que la clase de todos los conjuntos sea un conjunto de ZF.
+
+<a id="TF-THM-00124"></a>
+
+**Teorema 16.1.2 — Los colímites pequeños de prehaces se calculan por componentes** <!-- result-id: TF-THM-00124; depends-on: TF-DEF-00070, TF-THM-00115, TF-DEF-00067 -->
+
+Sea $I$ una categoría pequeña y $D:I\to\widehat{\mathcal C}$ un diagrama. Existe su colímite $L$ y, para cada $c\in\mathcal C$, se cumple canónicamente
+
+$$L(c)\cong\operatorname*{colim}_{i\in I}D(i)(c).\tag{16.1}$$
+
+*Demostración.* Para cada $c$, construyamos el colímite conjuntista mediante la unión disjunta $S_c=\coprod_{i\in\operatorname{Ob}I}D(i)(c)$ y el cociente por la **menor relación de equivalencia** que identifica $(i,z)$ con $(j,D(a)_c(z))$ para cada flecha $a:i\to j$. Se trata de conjuntos: unión disjunta, relación y cociente se forman por los axiomas de ZF, sin elegir representantes. Denotemos su clase por $[i,z]$.
+
+Para $u:d\to c$ en $\mathcal C$, pongamos $L(u)([i,z])=[i,D(i)(u)(z)]$. Si $a:i\to j$, la naturalidad de $D(a)$ asegura $D(j)(u)D(a)_c=D(a)_dD(i)(u)$; por tanto la regla respeta los generadores de la equivalencia y desciende al cociente. Las identidades y la composición se preservan por las leyes de cada $D(i)$. Los mapas $\iota_i:D(i)\Rightarrow L$, $z\mapsto[i,z]$, son naturales y forman un cocono. Dado otro cocono $\beta_i:D(i)\Rightarrow G$, la regla $[i,z]\mapsto\beta_{i,c}(z)$ es independiente de la clase, natural en $c$, y es la única transformación $L\Rightarrow G$ que factoriza los $\beta_i$. Queda probada la universalidad y (16.1). El argumento cubre también $I$ vacío. $\square$
+
+<a id="TF-DEF-00071"></a>
+
+**Definición 16.1.3 — Categoría de elementos de un prehaz** <!-- result-id: TF-DEF-00071; depends-on: TF-DEF-00070, TF-DEF-00068 -->
+
+Para $F:\mathcal C^{\mathrm{op}}\to\mathbf{Set}$ definimos $\operatorname{El}(F)$ así:
+
+- los objetos son pares $(c,x)$ con $c\in\mathcal C$ y $x\in F(c)$;
+- una flecha $(c,x)\xrightarrow{u}(c',x')$ es una flecha $u:c\to c'$ de $\mathcal C$ tal que **$F(u)(x')=x$**.
+
+La igualdad anterior tiene el sentido de tipos correcto: $F(u):F(c')\to F(c)$. Llamamos $\pi_F:\operatorname{El}(F)\to\mathcal C$ a la proyección $(c,x)\mapsto c$, $u\mapsto u$. No confundimos esta categoría con la de elementos de un funtor *covariante*, donde se invierte la condición de los valores.
+
+<a id="TF-THM-00125"></a>
+
+**Teorema 16.1.4 — Categoría bien definida, pequeña y proyectada** <!-- result-id: TF-THM-00125; depends-on: TF-DEF-00071, TF-DEF-00066, TF-DEF-00070 -->
+
+$\operatorname{El}(F)$ es una categoría pequeña y $\pi_F$ es un funtor.
+
+*Demostración.* La identidad de $(c,x)$ satisface $F(1_c)(x)=x$. Si $u:(c,x)\to(c',x')$ y $v:(c',x')\to(c'',x'')$, entonces $F(vu)(x'')=F(u)F(v)(x'')=F(u)(x')=x$, de modo que la composición está definida. Sus leyes se heredan de $\mathcal C$ y la proyección las conserva. El conjunto de objetos es la unión disjunta $\coprod_cF(c)$; las flechas son un subconjunto de $\coprod_{c,c'}F(c)\times\operatorname{Hom}_{\mathcal C}(c,c')\times F(c')$, definido por separación. Pequeñez y ausencia de selección son explícitas. $\square$
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+::: {.callout-note}
+## Qué añade la densidad a las sondas
+[TF-CAT-013](capitulo-13.qmd) recupera flechas entre representables (`TF-THM-00105`), y [TF-CAT-015](capitulo-15.qmd) prueba Yoneda (`TF-THM-00117`, `TF-THM-00120`). El paso presente **ensambla un prehaz arbitrario** mediante su categoría de elementos y un colímite de representables (`TF-DEF-00071`, `TF-THM-00127`): no afirma que el prehaz mismo sea representable, como muestra `TF-CEX-00022`. La construcción es matemática, no una codificación efectiva. Mapa del recorrido.
+:::
+
+
+## 16.2. El cocono canónico y el teorema de densidad
+
+<a id="TF-DEF-00072"></a>
+
+**Definición 16.2.1 — Diagrama de representables y cocono elemental** <!-- result-id: TF-DEF-00072; depends-on: TF-DEF-00071, TF-THM-00125, TF-DEF-00068, TF-THM-00117 -->
+
+El diagrama $D_F=y\circ\pi_F:\operatorname{El}(F)\to\widehat{\mathcal C}$ envía $(c,x)$ al representable $yc$ y una flecha $u:(c,x)\to(c',x')$ a $yu:yc\Rightarrow yc'$. A cada elemento $(c,x)$ le corresponde una transformación natural
+
+$$\lambda_{(c,x)}:yc\Rightarrow F,\qquad
+(\lambda_{(c,x)})_d(f:d\to c)=F(f)(x).\tag{16.2}$$
+
+Es precisamente la correspondencia de Yoneda $\operatorname{Nat}(yc,F)\cong F(c)$, no un principio adicional de elección.
+
+<a id="TF-THM-00126"></a>
+
+**Teorema 16.2.2 — Compatibilidad del cocono** <!-- result-id: TF-THM-00126; depends-on: TF-DEF-00072, TF-DEF-00071, TF-THM-00117, TF-THM-00120 -->
+
+Las transformaciones $(\lambda_{(c,x)})$ forman un cocono de $D_F$ con vértice $F$: si $u:(c,x)\to(c',x')$, entonces $\lambda_{(c',x')}\circ yu=\lambda_{(c,x)}$.
+
+*Demostración.* Para $f:d\to c$, la componente izquierda devuelve $F(uf)(x')=F(f)F(u)(x')=F(f)(x)$, que es (16.2). La igualdad es válida para todos $d$ y $f$, por lo cual las transformaciones son iguales. En particular, la igualdad es una condición natural concreta, no mera igualdad de cardinalidades. $\square$
+
+<a id="TF-THM-00127"></a>
+
+**Teorema 16.2.3 — Densidad de Yoneda: todo prehaz es un colímite canónico de representables** <!-- result-id: TF-THM-00127; depends-on: TF-DEF-00072, TF-THM-00124, TF-THM-00126, TF-THM-00117 -->
+
+Para cada prehaz $F$ de una categoría pequeña $\mathcal C$, el cocono (16.2) es colimitante. Por consiguiente,
+
+$$F\ \cong\ \operatorname*{colim}_{(c,x)\in\operatorname{El}(F)}yc.\tag{16.3}$$
+
+*Demostración.* Sea $G$ otro prehaz y $\beta_{(c,x)}:yc\Rightarrow G$ un cocono cualquiera sobre $D_F$. **Construiremos** la única transformación $\eta:F\Rightarrow G$ compatible. Para cada $c$ y $x\in F(c)$, definamos
+
+$$\eta_c(x)=(\beta_{(c,x)})_c(1_c).\tag{16.4}$$
+
+Sea $u:d\to c$ y $x\in F(c)$. Existe en la categoría de elementos la flecha $u:(d,F(u)x)\to(c,x)$. La condición de cocono impone $\beta_{(d,F(u)x)}=\beta_{(c,x)}\circ yu$. Aplicada al mapa identidad de $d$ da
+
+$$\eta_d(F(u)x)=(\beta_{(c,x)})_d(u)=G(u)((\beta_{(c,x)})_c(1_c))=G(u)(\eta_c(x)),$$
+
+siendo la segunda igualdad Yoneda/naturalidad de $\beta_{(c,x)}$. Esto demuestra que $\eta$ es natural. La misma identidad de Yoneda, ahora para $f:d\to c$, produce
+
+$$(\eta\lambda_{(c,x)})_d(f)=\eta_d(F(f)x)=G(f)(\eta_c(x))=(\beta_{(c,x)})_d(f),$$
+
+por lo que $\eta\lambda_{(c,x)}=\beta_{(c,x)}$. Finalmente, si $\theta:F\Rightarrow G$ también factoriza el cocono, entonces $\theta_c(x)=(\theta\lambda_{(c,x)})_c(1_c)=(\beta_{(c,x)})_c(1_c)=\eta_c(x)$ para todo $c,x$. Por extensionalidad $\theta=\eta$. Se ha probado la propiedad universal sin seleccionar elementos de fibras ni representantes de clases. $\square$
+
+<a id="TF-THM-00128"></a>
+
+**Teorema 16.2.4 — Fórmula puntual, clases y forma normal de cada elemento** <!-- result-id: TF-THM-00128; depends-on: TF-THM-00124, TF-THM-00127, TF-DEF-00071 -->
+
+Para $d\in\mathcal C$, el conjunto $F(d)$ se identifica con el cociente de
+
+$$S_d=\coprod_{(c,x)\in\operatorname{El}(F)}\operatorname{Hom}_{\mathcal C}(d,c)$$
+
+por la equivalencia generada por $((c,x),f)\sim((c',x'),uf)$ siempre que $u:(c,x)\to(c',x')$ y $f:d\to c$. La biyección canónica viene dada por
+
+$$[((c,x),f)]\longmapsto F(f)(x).\tag{16.5}$$
+
+Todo elemento $z\in F(d)$ tiene una presentación **canónica** $((d,z),1_d)$; no se afirma que sea la única presentación.
+
+*Demostración.* La regla (16.5) es constante en los generadores, porque $F(uf)(x')=F(f)F(u)(x')=F(f)(x)$; desciende por tanto al cociente. Es sobreyectiva: $z$ procede de $((d,z),1_d)$. Para verificar la inyectividad sin elegir representantes globales, consideremos una pareja específica $((c,x),f)$ y escribamos $z=F(f)(x)$. La propia flecha $f:(d,z)\to(c,x)$ en $\operatorname{El}(F)$ identifica $((d,z),1_d)$ con $((c,x),f)$. Así **cada clase** es igual a la clase de su presentación canónica determinada por el valor de (16.5). Dos clases con el mismo valor son iguales. El argumento coincide con el colímite puntual de (16.3). $\square$
+
+## 16.3. Co-Yoneda: la misma construcción como cociente explícito
+
+<a id="TF-DEF-00073"></a>
+
+**Definición 16.3.1 — Presentación por coextremo conjuntista** <!-- result-id: TF-DEF-00073; depends-on: TF-DEF-00070, TF-THM-00124, TF-DEF-00068 -->
+
+Para un prehaz $F$ y un objeto $d$ definimos el conjunto
+
+$$Q_F(d)=\left(\coprod_{c\in\mathcal C}F(c)\times\operatorname{Hom}_{\mathcal C}(d,c)\right)\big/\approx,$$
+
+donde $\approx$ es la equivalencia generada por
+
+$$(F(u)(x'),f)\approx(x',uf),\qquad u:c\to c',\ x'\in F(c'),\ f:d\to c.\tag{16.6}$$
+
+El índice $c$ de cada par se conserva en la notación de la unión disjunta. Esta es una presentación concreta del **coextremo** $\int^{c\in\mathcal C}F(c)\times\mathcal C(d,c)$ en $\mathbf{Set}$. No se usa un cociente de una clase propia: $\mathcal C$ es pequeña.
+
+<a id="TF-THM-00129"></a>
+
+**Teorema 16.3.2 — Fórmula co-Yoneda sin elección** <!-- result-id: TF-THM-00129; depends-on: TF-DEF-00073, TF-THM-00128, TF-THM-00127 -->
+
+La fórmula $[x,f]\mapsto F(f)(x)$ induce un isomorfismo natural de prehaces
+
+$$\int^{c\in\mathcal C}F(c)\times\mathcal C(-,c)\ \cong\ F.\tag{16.7}$$
+
+*Demostración.* Si $(F(u)x',f)\approx(x',uf)$, entonces $F(f)F(u)x'=F(uf)x'$; la aplicación está bien definida. Para $z\in F(d)$ su inversa manda $z$ a $[z,1_d]$. Componer primero inversa y luego evaluación da $F(1_d)z=z$. Para cualquier $[x,f]$, la relación (16.6) aplicada a $u=f:d\to c$, $x'=x$ y $1_d:d\to d$ identifica $[F(f)x,1_d]=[x,f]$. Si $v:e\to d$, la acción contravariante de $Q_F$ es $[x,f]\mapsto[x,fv]$; la evaluación satisface $F(fv)x=F(v)F(f)x$. La inversa también es natural porque $[z,v]=[F(v)z,1_e]$. La correspondencia es un isomorfismo natural explícito. Su presentación (16.6) reorganiza la del teorema anterior; no reemplaza los coconos universales por una elección de representantes. $\square$
+
+## 16.4. Reconstrucción de flechas y representabilidad
+
+<a id="TF-THM-00130"></a>
+
+**Teorema 16.4.1 — La reconstrucción es natural respecto del prehaz** <!-- result-id: TF-THM-00130; depends-on: TF-THM-00127, TF-DEF-00071, TF-DEF-00072, TF-DEF-00067 -->
+
+Una transformación natural $\varphi:F\Rightarrow G$ induce un funtor $\operatorname{El}(\varphi):\operatorname{El}(F)\to\operatorname{El}(G)$, que envía $(c,x)$ a $(c,\varphi_c(x))$ y deja la flecha subyacente $u$ sin cambiar. Los coconos canónicos son compatibles con $\varphi$ y la flecha que inducen entre los dos colímites de (16.3) corresponde exactamente a $\varphi$.
+
+*Demostración.* Para $u:(c,x)\to(c',x')$, la naturalidad de $\varphi$ da $G(u)(\varphi_{c'}x')=\varphi_c(F(u)x')=\varphi_c x$, así que $u$ también es flecha entre sus imágenes. Identidades y composición se preservan porque no se modifica $u$. En cada $(c,x)$, la igualdad $\varphi\lambda^F_{(c,x)}=\lambda^G_{(c,\varphi_c x)}$ se comprueba en $f:d\to c$: ambos lados valen $G(f)(\varphi_c x)$. Por la unicidad universal del teorema 16.2.3, la aplicación inducida por los coconos no puede ser distinta de $\varphi$. $\square$
+
+<a id="TF-THM-00131"></a>
+
+**Teorema 16.4.2 — Los representables detectan conjuntamente transformaciones** <!-- result-id: TF-THM-00131; depends-on: TF-THM-00127, TF-THM-00117, TF-THM-00121 -->
+
+Si $\varphi,\psi:F\Rightarrow G$ satisfacen $\varphi\lambda_{(c,x)}=\psi\lambda_{(c,x)}$ para todo $(c,x)\in\operatorname{El}(F)$, entonces $\varphi=\psi$. Equivalentemente, basta comprobar $\varphi_c(x)=\psi_c(x)$ para todos los elementos $x$ de todos los componentes.
+
+*Demostración.* Evaluando ambas igualdades en $c$ y en $1_c$, la fórmula (16.2) entrega $\varphi_c(x)=\psi_c(x)$. Como $c$ y $x$ eran arbitrarios, las componentes coinciden por extensionalidad; las transformaciones son iguales. También es la unicidad de la propiedad universal (16.3). Este criterio cuantifica sobre todos los elementos de los conjuntos dados: **no** produce un algoritmo que recorra un conjunto infinito ni decide igualdad de programas del capítulo 10. $\square$
+
+<a id="TF-THM-00132"></a>
+
+**Teorema 16.4.3 — Criterio exacto de representabilidad por objeto terminal de elementos** <!-- result-id: TF-THM-00132; depends-on: TF-DEF-00071, TF-THM-00117, TF-THM-00127, TF-DEF-00068 -->
+
+Un prehaz $F$ es representable (es decir, $F\cong yc$ para algún $c$) **si y sólo si** $\operatorname{El}(F)$ posee un objeto terminal.
+
+*Demostración.* Supongamos terminal $(c,x)$. Para cada $d$ definamos $\Phi_d:\mathcal C(d,c)\to F(d)$ por $f\mapsto F(f)x$. Dado $z\in F(d)$, la terminalidad proporciona una **única** flecha $(d,z)\to(c,x)$; su flecha subyacente es precisamente el único $f:d\to c$ que satisface $F(f)x=z$. Luego $\Phi_d$ es biyectiva. Para $v:e\to d$, $\Phi_e(fv)=F(v)F(f)x=F(v)\Phi_d(f)$, así que las biyecciones son naturales: $yc\cong F$.
+
+Recíprocamente, para $F=yc$ la categoría de elementos tiene objetos $(d,f:d\to c)$ y flechas $u:(d,f)\to(d',f')$ con $f'u=f$: es la categoría de objetos sobre $c$. El objeto $(c,1_c)$ es terminal, pues la única flecha desde $(d,f)$ hacia él es $f$. Si $F\cong yc$, una isomorfía natural transporta esta construcción a $\operatorname{El}(F)$; concretamente, si $\alpha:yc\cong F$, el objeto $(c,\alpha_c(1_c))$ es terminal por naturalidad y biyectividad de cada $\alpha_d$. No se elige un representante para cada $z$: la única flecha terminal lo determina. $\square$
+
+<a id="TF-THM-00133"></a>
+
+**Teorema 16.4.4 — Correspondencia entre transformaciones y familias compatibles** <!-- result-id: TF-THM-00133; depends-on: TF-THM-00127, TF-THM-00117, TF-THM-00130, TF-DEF-00071 -->
+
+Para prehaces $F,G$ hay una biyección natural
+
+$$\operatorname{Nat}(F,G)\cong\left\{(b_{(c,x)})\in\prod_{(c,x)\in\operatorname{El}(F)}G(c):\ 
+G(u)(b_{(c',x')})=b_{(c,x)}\ \text{para cada }u:(c,x)\to(c',x')\right\}.\tag{16.8}$$
+
+*Demostración.* Enviemos $\eta:F\Rightarrow G$ a la familia $b_{(c,x)}=\eta_c(x)$. Si $u$ es flecha de elementos, $G(u)\eta_{c'}(x')=\eta_c F(u)(x')=\eta_c(x)$, luego la familia es compatible. Para una familia compatible dada definamos $\eta_c(x)=b_{(c,x)}$. La flecha $u:(d,F(u)x)\to(c,x)$ impone $\eta_d(F(u)x)=G(u)\eta_c(x)$, que es exactamente la naturalidad de $\eta$. Ambas operaciones son inversas por definición, y su naturalidad en el codominio $G$ consiste en componer cada componente con una transformación $G\Rightarrow H$. Esta prueba es también la propiedad universal (16.3) traducida por Yoneda; adviértase que una familia sin la condición escrita en (16.8) **no** define una transformación natural. $\square$
+
+## 16.5. Ejemplos y fronteras del resultado
+
+<a id="TF-CEX-00022"></a>
+
+**Contraejemplo 16.5.1 — Densidad no significa que cada prehaz sea representable** <!-- result-id: TF-CEX-00022; depends-on: TF-THM-00127, TF-THM-00132, TF-DEF-00071 -->
+
+Tomemos la categoría terminal $\mathcal C=\{*\}$, con una sola identidad. Un prehaz es simplemente un conjunto $S=F(*)$ y todo representable $y*$ tiene un único elemento. Para $S=\{0,1\}$ no existe isomorfismo $y*\cong F$, por desigualdad de cardinalidades. Sin embargo, $\operatorname{El}(F)$ es discreta con dos objetos $(*,0)$ y $(*,1)$; el diagrama $D_F$ son dos copias del representable unitario y su coproducto tiene dos elementos, luego es $F$. La categoría de elementos no tiene terminal (no hay flechas entre los dos objetos). **Densidad proporciona colímites, no representabilidad individual.**
+
+<a id="TF-EXA-00031"></a>
+
+**Ejemplo 16.5.2 — Una flecha basta para ensamblar un representable** <!-- result-id: TF-EXA-00031; depends-on: TF-DEF-00071, TF-THM-00127, TF-THM-00132 -->
+
+Sea $\mathcal C$ la categoría $0\xrightarrow{u}1$ con identidades y sin flecha $1\to0$. Para $F=y1$ se tienen $F(0)=\{u\}$ y $F(1)=\{1_1\}$. La categoría de elementos tiene dos objetos $(0,u)$ y $(1,1_1)$, y una flecha no identidad $(0,u)\xrightarrow{u}(1,1_1)$. El diagrama representable es $y0\xrightarrow{yu}y1$: su colímite es $y1$, porque el objeto $(1,1_1)$ es terminal en el índice. Los valores son explícitos y muestran la dirección correcta de la flecha de elementos.
+
+<a id="TF-EXA-00032"></a>
+
+**Ejemplo 16.5.3 — Prehaz vacío y diagrama de índices vacío** <!-- result-id: TF-EXA-00032; depends-on: TF-DEF-00071, TF-THM-00124, TF-THM-00127 -->
+
+Si $F(c)=\varnothing$ para todo $c$, la categoría $\operatorname{El}(F)$ no tiene objetos; su diagrama de representables es vacío. El colímite de un diagrama vacío en $\widehat{\mathcal C}$ es el prehaz inicial, cuyos valores son vacíos en todos los componentes, por el teorema 16.1.2. Esto también verifica (16.3) sin postular un elemento del dominio ni fabricar una elección imposible.
+
+## 16.6. Auditoría fundacional, lectura guiada y continuidad
+
+**Lectura de la prueba principal.** El paso decisivo en 16.2.3 no es calcular un colímite «por analogía»: dados coconos $\beta$, construimos $\eta_c(x)$ evaluando en $1_c$ y probamos que la condición sobre todas las flechas de $\operatorname{El}(F)$ equivale a la naturalidad de $\eta$. La misma igualdad se hace visible como relación generadora en (16.6). Las fórmulas (16.4), (16.5) y (16.7) permiten recorrer ambas direcciones: universalidad $\leftrightarrow$ presentación por clases.
+
+**Preguntas para verificar comprensión.** ¿Por qué en $F(u)(x')=x$ el elemento $x'$ pertenece a $F(c')$ y no a $F(c)$? ¿Cuál es la flecha que compara $((d,z),1_d)$ con cualquier presentación de $z$? ¿Por qué la categoría terminal con un prehaz de dos elementos refuta «todo prehaz es representable» pero no la densidad? ¿En qué paso haría falta una hipótesis de pequeñez si $\mathcal C$ fuese una clase propia?
+
+**Hipótesis y límites.** (i) Pequeñez de $\mathcal C$ y de los diagramas garantiza que coproductos, productos y relaciones usados en las pruebas se formen a partir de **conjuntos**, no de clases propias. (ii) Los colímites de conjuntos y los cocientes se construyen en ZF; no se introdujo AC ni se escogieron simultáneamente representantes. (iii) Las pruebas se formulan mediante transformaciones suministradas y muestran existencia y unicidad **estructurales**. (iv) Ninguna fórmula presupone que exista una codificación finita de $\mathcal C$ o un procedimiento que decida la equivalencia (16.6), la naturalidad (16.8) o la igualdad extensional. (v) El teorema no afirma que la categoría $\mathcal C$ tenga por sí misma todos los colímites: los construimos en la categoría de prehaces.
+
+**Nota bibliográfica de control externo.** La formulación de densidad/co-Yoneda puede cotejarse con [nLab, *co-Yoneda lemma*](https://ncatlab.org/nlab/show/co-Yoneda%2Blemma) y la [biblioteca Mathlib, colímites de prehaces](https://math.iisc.ac.in/~gadgil/proofs-and-programs-2023/doc/Mathlib/CategoryTheory/Limits/Presheaf.html). Los argumentos y la distribución de dependencias anteriores están desarrollados aquí, no se atribuyen a una formalización Lean del capítulo completo.
+
+**Frontera editorial.** El capítulo añade 17 nodos y deja reservado `TF-CAT-017` únicamente como identificador documental, sin fijar el título. La introducción general «Qué significa definir una función» continúa pendiente. La prueba editorial, la formalización Lean y la publicación Quarto/web son estados independientes.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-15.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-17.qmd)
+:::

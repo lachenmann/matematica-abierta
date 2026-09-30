@@ -1,0 +1,234 @@
+---
+title: Funciones y correspondencias entre sistemas fundacionales
+document-id: TF-CAT-013
+status: draft
+draft: true
+toc: true
+format:
+  html:
+    css: tratado.css
+foundation: 'comparación relativa: ZF clásico para conjuntos y Set; cálculo lambda
+  simplemente tipado con productos y unidad; categoría cartesianamente cerrada; teoría
+  de tipos dependientes explícita cuando se indique; modelo efectivo de Turing'
+choice-use: none
+---
+
+::: {.callout-warning}
+## Edición en preparación
+El cotejo bibliográfico fino y la revisión transversal final siguen abiertos. Esta versión de revisión no constituye una edición publicada.
+:::
+
+[Índice del tratado](index.qmd)
+
+# Capítulo 13. Funciones y correspondencias entre sistemas fundacionales
+
+::: {.callout-note}
+## Pregunta rectora
+¿Qué información sobre una función sobrevive al pasar de gráficas conjuntistas a flechas categóricas, de términos tipados a sus denotaciones y de programas a sus comportamientos? ¿Qué traducciones tienen inversa y dónde aparecen pérdidas irreversibles?
+:::
+
+
+**Contrato de continuidad.** La gráfica y su criterio de reconocimiento se fijaron en [el capítulo 1](capitulo-01.qmd), y los subobjetos y relaciones en [el 3](capitulo-03.qmd) y [el 4](capitulo-04.qmd). La elección única, pero no la selección arbitraria, fue probada en [el 5](capitulo-05.qmd). La semántica efectiva pertenece a [el 9](capitulo-09.qmd); la igualdad de códigos a [el 10](capitulo-10.qmd); la barrera diagonal a [el 11](capitulo-11.qmd); los tipos simples y la autorreferencia codificada a [el 12](capitulo-12.qmd). Las correspondencias de este capítulo son **relativas a marcos y traducciones precisos**: no se afirma una equivalencia de ZF, teoría de tipos y teoría de categorías como teorías completas.
+
+## 13.1. Contratos de traducción: conservar no significa identificar
+
+<a id="TF-DEF-00054"></a>
+
+**Definición 13.1.1 — Contrato de correspondencia fundacional** <!-- result-id: TF-DEF-00054; depends-on: TF-THM-00005, TF-THM-00029, TF-DEF-00048, TF-DEF-00040 -->
+
+Un *contrato de correspondencia* consta de (i) estructuras fuente y destino especificadas, (ii) una traducción de objetos y aplicaciones, (iii) leyes que la traducción preserva y (iv) una indicación separada de qué información puede recuperarse. Para una traducción de categorías, preservar identidad y composición se expresa mediante $F(1_A)=1_{F(A)}$ y $F(g\circ f)=F(g)\circ F(f)$. Para comparar funciones individuales, exigiremos además precisar si la traducción es inyectiva, sobreyectiva sobre la clase pretendida o sólo fiel sobre flechas. **Plenitud** significa cubrir las flechas entre imágenes de objetos; **fidelidad**, distinguir las flechas originales. Ninguna propiedad se infiere de la palabra «representación».
+
+En particular, tres expresiones no intercambiables son $f:A\to B$ (flecha), $\Gamma_f\subseteq A\times B$ (subconjunto) y $p$ (código con interpretación $\varphi_p$). Una flecha puede poseer gráfica única sin tener código computable, y códigos diferentes pueden denotar una sola flecha. La conversión $f\mapsto\Gamma_f$ pertenece al modelo $\mathbf{Set}$ o a categorías con productos; $p\mapsto\varphi_p$ pertenece a una numeración efectiva previamente fijada.
+
+<a id="TF-THM-00102"></a>
+
+**Teorema 13.1.2 — Compatibilidad exacta de gráficas con sustitución y composición** <!-- result-id: TF-THM-00102; depends-on: TF-THM-00004, TF-THM-00005, TF-THM-00016, TF-THM-00029, TF-DEF-00013 -->
+
+Sean conjuntos y funciones $u:A'\to A$, $f:A\to B$ y $g:B\to C$. Se tienen las igualdades de relaciones
+
+$$\Gamma_{f\circ u}=(u\times 1_B)^{-1}(\Gamma_f)\subseteq A'\times B,\qquad
+\Gamma_{g\circ f}=\Gamma_g\circ\Gamma_f\subseteq A\times C.\tag{13.1}$$
+
+El operador $(u\times1_B)^{-1}$ es preimagen ordinaria, que en $\mathbf{Set}$ representa el producto fibrado categórico del capítulo 3. Además, $\Gamma_{1_A}=\Delta_A$ y la primera proyección de $\Gamma_f$ es biyectiva. Por tanto, pasar de flecha a gráfica y recuperarla mediante su primera proyección son operaciones inversas **sobre las relaciones totales y univaluadas**, sin invocar elección.
+
+*Demostración.* Para $(a',b)\in A'\times B$:
+
+$$(a',b)\in (u\times1_B)^{-1}(\Gamma_f)
+\iff (u(a'),b)\in\Gamma_f\iff b=f(u(a'))
+\iff (a',b)\in\Gamma_{f\circ u}.$$
+
+Para $(a,c)\in A\times C$, la composición relacional exige $\exists b\in B$ con $b=f(a)$ y $c=g(b)$; sustituyendo el único valor posible de $b$, esto equivale a $c=g(f(a))$. Para la identidad, $b=1_A(a)$ equivale a $b=a$. Finalmente $\pi_A:\Gamma_f\to A$, $(a,f(a))\mapsto a$, tiene inversa $a\mapsto(a,f(a))$. Si $R\subseteq A\times B$ es total y univaluada, para cada $a$ existe un único $b$ relacionado: la fórmula $f(a)=b\iff(a,b)\in R$ determina por reemplazo de ZF la función $f$ y $R=\Gamma_f$. Alternativamente, $\pi_A:R\to A$ es biyectiva y $f=\pi_B\pi_A^{-1}$ por [TF-THM-00005](capitulo-01.qmd). La unicidad, no AC, justifica la recuperación. $\square$
+
+<a id="TF-EXA-00025"></a>
+
+**Ejemplo 13.1.3 — Una prueba finita de conmutación** <!-- result-id: TF-EXA-00025; depends-on: TF-THM-00102 -->
+
+Sean $A=\{0,1\}$, $B=\{a,b\}$, $C=\{*\}$; $f(0)=a$, $f(1)=b$, y $g(a)=g(b)=*$. Entonces $\Gamma_f=\{(0,a),(1,b)\}$, $\Gamma_g=\{(a,*),(b,*)\}$ y la composición relacional es $\{(0,*),(1,*)\}=\Gamma_{g\circ f}$. Si $A'=\{x\}$ y $u(x)=1$, la preimagen de $\Gamma_f$ por $u\times1_B$ es $\{(x,b)\}=\Gamma_{f\circ u}$. **Pregunta:** ¿en qué paso habría que elegir un valor si $R$ fuese solamente total pero no univaluada? Precisamente al intentar definir $f(a)$ sin disponer de unicidad; el ejemplo no es una prueba general de elección.
+
+## 13.2. De términos tipados a flechas: evaluación y abstracción
+
+<a id="TF-DEF-00055"></a>
+
+**Definición 13.2.1 — Interpretación del fragmento funcional simplemente tipado** <!-- result-id: TF-DEF-00055; depends-on: TF-DEF-00048, TF-DEF-00049, TF-AX-00003, TF-AX-00004, TF-AX-00005 -->
+
+Fijemos un cálculo simplemente tipado con tipos básicos, unidad $1$, producto $\sigma\times\tau$ y flecha $\sigma\to\tau$, con las reglas usuales de variables, proyección, emparejamiento, abstracción y aplicación. En **una categoría cartesianamente cerrada elegida** interpretamos los tipos básicos por objetos, $1$ por un terminal, los productos por productos y $\sigma\to\tau$ por el exponencial $\llbracket\tau\rrbracket^{\llbracket\sigma\rrbracket}$. Un contexto $x_1:\sigma_1,\ldots,x_n:\sigma_n$ se interpreta por su producto elegido; un juicio $\Gamma\vdash t:\tau$ recibe una flecha $\llbracket t\rrbracket:\llbracket\Gamma\rrbracket\to\llbracket\tau\rrbracket$. La elección de productos/exponenciales hace la notación coherente hasta los isomorfismos canónicos pertinentes; no crea un algoritmo para calcular todas las flechas de la categoría. La siguiente pareja de teoremas verifica las dos leyes fundamentales de la traducción sin presuponer una equivalencia completa de sistemas.
+
+<a id="TF-THM-00103"></a>
+
+**Teorema 13.2.2 — Ley beta categórica para la abstracción y la aplicación** <!-- result-id: TF-THM-00103; depends-on: TF-DEF-00055, TF-DEF-00049, TF-AX-00005, TF-THM-00010 -->
+
+Para $h:X\times A\to B$, denotemos por $\Lambda(h):X\to B^A$ su transpuesta. Entonces
+
+$$\mathrm{ev}_{A,B}\circ\langle\Lambda(h)\circ\pi_X,\pi_A\rangle=h:X\times A\to B.\tag{13.2}$$
+
+*Demostración.* La propiedad universal del exponencial da, para cada $h$, una **única** transpuesta $\Lambda(h)$ cuyo compuesto con la evaluación satisface precisamente (13.2). Es el triángulo de evaluación del adjunto $(-\times A)\dashv(-)^A$. Si $h=\llbracket\Gamma,x:A\vdash t:B\rrbracket$, la flecha izquierda interpreta aplicar $\lambda x.t$ al argumento variable, y la derecha interpreta el cuerpo con el argumento introducido. La ecuación es semántica; una prueba de la ley de sustitución para **toda** la gramática se obtiene adicionalmente por inducción en la derivación de tipado y no se afirma completada sólo con esta igualdad. $\square$
+
+<a id="TF-THM-00104"></a>
+
+**Teorema 13.2.3 — Ley eta categórica y recuperación de la abstracción** <!-- result-id: TF-THM-00104; depends-on: TF-THM-00103, TF-AX-00005, TF-DEF-00055 -->
+
+Para cada $k:X\to B^A$ se cumple
+
+$$\Lambda\bigl(\mathrm{ev}_{A,B}\circ\langle k\circ\pi_X,\pi_A\rangle\bigr)=k.\tag{13.3}$$
+
+Por consiguiente $\operatorname{Hom}(X\times A,B)\cong\operatorname{Hom}(X,B^A)$ mediante las operaciones $h\mapsto\Lambda(h)$ y $k\mapsto\mathrm{ev}\circ\langle k\pi_X,\pi_A\rangle$.
+
+*Demostración.* Definamos $h=\mathrm{ev}\circ\langle k\pi_X,\pi_A\rangle$. Por definición, $k$ es una flecha cuya evaluación vuelve a dar $h$. La unicidad de la transpuesta obliga a $\Lambda(h)=k$. Combinada con (13.2), esta igualdad demuestra que ambas transformaciones se anulan mutuamente al componerlas en cualquiera de los dos órdenes. La ley eta interpreta la recuperación de una función a partir de su abstracción extensional; no decide si dos expresiones sintácticas se convierten una en otra por reducción. $\square$
+
+<a id="TF-CEX-00016"></a>
+
+**Contraejemplo 13.2.4 — Una interpretación puede identificar constantes distintas** <!-- result-id: TF-CEX-00016; depends-on: TF-DEF-00055, TF-THM-00103, TF-THM-00104, TF-DEF-00051 -->
+
+Tomemos un lenguaje con un tipo básico $\iota$ y dos constantes sin ecuación $c,d:\iota$. Interpretemos $\iota$ en el conjunto unitario $\{*\}$ y ambas constantes por $*$. Las dos flechas $1\to\{*\}$ coinciden, pero el lenguaje **no** contiene una ecuación $c=d$. Para justificar que ésta tampoco se sigue de las leyes $\beta\eta$, considérese otra interpretación en $\{0,1\}$ con $\llbracket c\rrbracket=0$ y $\llbracket d\rrbracket=1$: la semántica de producto, evaluación y transposición respeta esas leyes, mientras que $c=d$ sería falsa. Por corrección de las reglas ecuacionales elementales, $c=d$ no puede derivarse exclusivamente de ellas. **Una interpretación puntual no es necesariamente fiel respecto de las expresiones o clases sintácticas.** Tampoco se ha probado aquí una equivalencia entre ZF y la sintaxis de tipos: se ha construido una interpretación bajo estructura categórica escogida.
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+::: {.callout-note}
+## De separación a reconstrucción natural
+La separación mediante elementos generalizados `TF-THM-00009` de [TF-CAT-002](capitulo-02.qmd) requiere considerar etapas de dominio arbitrario. Aquí se añade la **naturalidad** y se recupera la flecha evaluando en su identidad (`TF-THM-00105`). [TF-CAT-015](capitulo-15.qmd) desarrolla el lema de Yoneda y su plena fidelidad; [TF-CAT-016](capitulo-16.qmd) pasa de flechas representables a la reconstrucción de prehaces por colímites. No se concluye en ninguno de esos pasos que exista un algoritmo para enumerar o comparar todas las flechas. Mapa del recorrido.
+:::
+
+
+## 13.3. Recuperar flechas mediante todas las sondas: Yoneda elemental
+
+<a id="TF-DEF-00056"></a>
+
+**Definición 13.3.1 — Sondas representables y familias naturales** <!-- result-id: TF-DEF-00056; depends-on: TF-DEF-00007, TF-DEF-00006, TF-THM-00009 -->
+
+Sea $\mathcal C$ una categoría localmente pequeña. Para cada objeto $A$ consideremos la asignación contravariante $h_A(X)=\operatorname{Hom}_{\mathcal C}(X,A)$. Una *familia natural* $\alpha:h_A\Rightarrow h_B$ consta de funciones $\alpha_X:\operatorname{Hom}(X,A)\to\operatorname{Hom}(X,B)$ tales que para toda flecha $u:Y\to X$ y $x:X\to A$ se tiene
+
+$$\alpha_Y(x\circ u)=\alpha_X(x)\circ u.\tag{13.4}$$
+
+Las sondas $X\to A$ recorren **todos los objetos $X$**, no sólo los puntos $1\to A$. Cuando $\mathcal C$ es grande, «todas las familias naturales» puede designar una colección de clase; la prueba siguiente no presupone que sea un conjunto ni un universo sin estratos.
+
+<a id="TF-THM-00105"></a>
+
+**Teorema 13.3.2 — Recuperación natural de una flecha (Yoneda elemental)** <!-- result-id: TF-THM-00105; depends-on: TF-DEF-00056, TF-THM-00009, TF-AX-00002 -->
+
+La correspondencia
+
+$$f:A\to B\quad\longmapsto\quad\alpha^f_X(x)=f\circ x\tag{13.5}$$
+
+es biyectiva entre las flechas $A\to B$ y las familias naturales $h_A\Rightarrow h_B$ (como correspondencia entre colecciones cuando sea necesario). Su inversa explícita envía $\alpha$ a $\alpha_A(1_A)$.
+
+*Demostración.* Dada $f$, para cada $u:Y\to X$ tenemos $\alpha^f_Y(xu)=f(xu)=(fx)u=\alpha^f_X(x)u$ por asociatividad; así la familia es natural. Dada una familia natural arbitraria $\alpha$, pongamos $f=\alpha_A(1_A):A\to B$. Apliquemos (13.4) a $u=x:X\to A$ y al elemento $1_A:A\to A$. Entonces
+
+$$\alpha_X(x)=\alpha_X(1_A\circ x)=\alpha_A(1_A)\circ x=f\circ x.$$
+
+Por tanto $\alpha=\alpha^f$ componente a componente. A la inversa, $\alpha^f_A(1_A)=f\circ1_A=f$. Hemos construido ambas direcciones y probado las leyes inversas; **no se eligió un punto global de $A$**. La naturalidad, y no una presunta abundancia de puntos $1\to A$, es la información que permite recuperar la flecha. $\square$
+
+El ejemplo de $C_2\text{-}\mathbf{Set}$ de [TF-CEX-00001](capitulo-02.qmd) muestra por qué sustituir todas las sondas por $X=1$ destruiría esta prueba: una órbita libre no tiene elementos globales y, sin embargo, admite endomorfismos diferentes. El teorema sólo afirma plenamente fiel la *representación por todos los Hom*, no la asignación de puntos globales.
+
+## 13.4. Funciones dependientes y el límite de la selección
+
+<a id="TF-DEF-00057"></a>
+
+**Definición 13.4.1 — Familia conjuntista y sección sobre una base** <!-- result-id: TF-DEF-00057; depends-on: TF-DEF-00010, TF-DEF-00017, TF-DEF-00019, TF-DEF-00021 -->
+
+En ZF, sean $A,B$ conjuntos y $R\subseteq A\times B$. Definamos $E_R=\{(a,b)\in A\times B:(a,b)\in R\}$ con su proyección $p:E_R\to A$, $p(a,b)=a$. Una sección es una función $s:A\to E_R$ con $p\circ s=1_A$. La fibra sobre $a$ es $E_a=\{b\in B:(a,b)\in R\}$. La escritura de tipo dependiente $\prod_{a:A}E_a$ puede representar una **familia de valores efectivamente suministrados**; para expresar sólo la proposición de que cada fibra es habitada hace falta otro contrato lógico.
+
+<a id="TF-THM-00106"></a>
+
+**Teorema 13.4.2 — Secciones y selección de valores: correspondencia sin elección** <!-- result-id: TF-THM-00106; depends-on: TF-DEF-00057, TF-THM-00034, TF-THM-00039 -->
+
+Para **cada** relación $R\subseteq A\times B$, las secciones de $p:E_R\to A$ se corresponden biyectivamente con las funciones $f:A\to B$ que satisfacen $\forall a\in A\;(a,f(a))\in R$. Ninguna dirección utiliza AC; tampoco se afirma que tales objetos existan para cualquier relación total.
+
+*Demostración.* De una sección $s$, escríbase $s(a)=(a',b)$; la identidad $p(s(a))=a$ obliga a $a'=a$. Definamos $f_s(a)=\pi_B(s(a))$. Al ser $s(a)\in E_R$, se obtiene $(a,f_s(a))\in R$. Recíprocamente, dada $f$ con la propiedad indicada, definimos $s_f(a)=(a,f(a))\in E_R$; entonces $p(s_f(a))=a$. Claramente $f_{s_f}=f$. Para una sección $s$ previa, su primera coordenada es $a$ y la segunda $f_s(a)$, de modo que $s_{f_s}(a)=s(a)$ para todo $a$ y ambas funciones son iguales. Es una biyección explícita **condicionada a disponer de un selector**; la inferencia «cada fibra es no vacía, luego existe $s$» es la cuestión adicional discutida en [TF-THM-00038](capitulo-05.qmd). $\square$
+
+<a id="TF-DEF-00058"></a>
+
+**Definición 13.4.3 — Testigo dependiente frente a existencia proposicional** <!-- result-id: TF-DEF-00058; depends-on: TF-DEF-00048, TF-DEF-00057, TF-AX-00009 -->
+
+Al introducir *un sistema dependiente adicional* con productos $\Pi$ y sumas $\Sigma$ de tipos y una familia $R(a,b)$ de **tipos de pruebas**, una expresión
+
+$$w:\prod_{a:A}\sum_{b:B}R(a,b)\tag{13.6}$$
+
+es un dato que suministra para cada $a$ un par $\bigl(b,r:R(a,b)\bigr)$. No debe identificarse (13.6) con la mera proposición $\forall a\,\exists b\,R(a,b)$ en ZF ni con una imagen regular interna: esta última expresa existencia local sin necesariamente suministrar una sección. Si el sistema distingue proposiciones mediante truncación proposicional $\|{-}\|$, la fórmula $\prod_a\|\sum_b R(a,b)\|$ omite, por su propio contrato de eliminación, una operación general que extraiga los $b$ hacia tipos arbitrarios. Ni $\Pi/\Sigma$, ni la truncación, se han postulado retrospectivamente en el cálculo **simple** del capítulo 12.
+
+<a id="TF-THM-00107"></a>
+
+**Teorema 13.4.4 — Extraer un selector de un testigo dependiente explícito** <!-- result-id: TF-THM-00107; depends-on: TF-DEF-00058, TF-DEF-00057, TF-THM-00106 -->
+
+En el sistema de tipos dependientes que admite los constructores y proyecciones ordinarios de $\Sigma$ y $\Pi$, existe una transformación explícita
+
+$$\Bigl(\prod_{a:A}\sum_{b:B}R(a,b)\Bigr)\longrightarrow
+\sum_{f:\prod_{a:A}B}\prod_{a:A}R(a,f(a)).\tag{13.7}$$
+
+Existe además una transformación inversa para estos **tipos de datos**, dada por el emparejamiento de cada valor con su prueba.
+
+*Demostración.* Dado $w$ del tipo izquierdo, defínase $f(a)=\pi_1(w(a))$ y $r(a)=\pi_2(w(a))$. La regla de eliminación de $\Sigma$ establece $r(a):R(a,\pi_1(w(a)))=R(a,f(a))$. Por introducción de $\Pi$ obtenemos $f:\prod_a B$ y $r:\prod_a R(a,f(a))$, y por introducción de $\Sigma$ el par $(f,r)$ del codominio. Recíprocamente, dado $(f,r)$, defínase $a\mapsto(f(a),r(a))$; ambas composiciones recuperan las componentes, en sentido proposicional/extensional adecuado a las reglas de igualdad de pares y funciones del sistema elegido. No se seleccionaron testigos de proposiciones truncadas: los testigos son los datos $w(a)$ suministrados. Por ello (13.7) es un principio estructural de tipos de datos y **no una prueba de AC en ZF**. $\square$
+
+<a id="TF-CEX-00017"></a>
+
+**Contraejemplo 13.4.5 — Totalidad interna sin selector externo** <!-- result-id: TF-CEX-00017; depends-on: TF-DEF-00057, TF-DEF-00058, TF-CEX-00003, TF-CEX-00013 -->
+
+En $C_2\text{-}\mathbf{Set}$, sea $G=\{0,1\}$ con la acción que intercambia los elementos y sea $p:G\twoheadrightarrow1$ el mapa equivariante único. Es epimorfismo regular por ser una sobreyección de $G$-conjuntos, así que su imagen es $1$: expresa totalidad interna de la relación $1\times G\subseteq1\times G$. Sin embargo, una sección $s:1\to G$ sería un punto **fijo** de la acción, y ninguno existe. Esta instancia concreta, ya fundada en [TF-CEX-00003](capitulo-05.qmd), verifica el límite de la traducción: el enunciado existencial interpretado por una imagen regular no proporciona los datos dependientes (13.6) en una semántica que exigiese que éstos fueran una sección. La diferencia persiste incluso si en la metateoría clásica el conjunto subyacente $G$ es explícitamente habitado.
+
+## 13.5. Semántica conjuntista y efectividad: una inclusión no plena
+
+<a id="TF-DEF-00059"></a>
+
+**Definición 13.5.1 — Categoría de endomorfismos totales computables** <!-- result-id: TF-DEF-00059; depends-on: TF-DEF-00035, TF-THM-00074, TF-THM-00093, TF-DEF-00040 -->
+
+En el modelo clásico ZF y con la numeración de máquinas del capítulo 9, sea $\mathcal T$ la categoría de **un único objeto** $N$ cuyos endomorfismos son las funciones totales computables $\mathbb N\to\mathbb N$, identificadas *extensionalmente*. La composición es la composición usual, y la identidad es computable. La asignación $J:\mathcal T\to\mathbf{Set}$ envía $N$ a $\mathbb N$ y cada endomorfismo a su misma función subyacente. Las flechas son funciones, **no códigos**; si se usan códigos sin cocientar por su comportamiento, esta descripción de $J$ no sería fiel.
+
+<a id="TF-THM-00108"></a>
+
+**Teorema 13.5.2 — El olvido de la computabilidad es fiel pero no pleno** <!-- result-id: TF-THM-00108; depends-on: TF-DEF-00059, TF-THM-00095, TF-THM-00074, TF-THM-00079 -->
+
+La asignación $J$ es un funtor fiel, pero no pleno.
+
+*Demostración.* Las identidades y las composiciones de funciones computables totales se preservan exactamente, y toda composición sigue siendo computable total, así que $J$ está bien definido. Como las flechas de $\mathcal T$ **ya son** funciones consideradas iguales extensionalmente, si $J(f)=J(g)$ como aplicaciones de conjuntos, entonces $f=g$ como flechas; ésta es la fidelidad. Para refutar plenitud, tomemos el conjunto diagonal de parada $K=\{n:V(n,n)\downarrow\}$ del [TF-THM-00095](capitulo-11.qmd). ZF clásico define una función total $\chi_K:\mathbb N\to\{0,1\}\subseteq\mathbb N$ mediante $\chi_K(n)=1$ cuando $n\in K$ y $0$ en caso contrario. Si fuese computable, su evaluación decidiría $K$, contradiciendo el teorema citado. Así $\chi_K$ pertenece a $\operatorname{Hom}_{\mathbf{Set}}(\mathbb N,\mathbb N)$ pero no a la imagen de $\operatorname{Hom}_{\mathcal T}(N,N)$ por $J$. Es una prueba de falta de plenitud, **no de falta de fidelidad**. La definición conjuntista de $\chi_K$ no es un algoritmo, ni la ausencia de elección hace por sí sola que una construcción sea computable. $\square$
+
+<a id="TF-EXA-00026"></a>
+
+**Ejemplo 13.5.3 — Cuadro de conservación y pérdida** <!-- result-id: TF-EXA-00026; depends-on: TF-DEF-00054, TF-THM-00102, TF-THM-00103, TF-THM-00104, TF-CEX-00016, TF-THM-00105, TF-THM-00106, TF-THM-00107, TF-THM-00108 -->
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Cambio de presentación | Datos conservados | Condición de recuperación | No se concluye |
+|---|---|---|---|
+| $f\leftrightarrow\Gamma_f$ en $\mathbf{Set}$ | Dominio, codominio, valores, composición | Relación **total y univaluada**, primera proyección isomorfa | Elección para relaciones multivaluadas |
+| Término tipado $\mapsto$ flecha en una CCC elegida | Reglas $\beta$ y $\eta$ para evaluación/abstracción | Fidelidad sólo si la interpretación separa clases de términos | Que cada modelo particular sea fiel o completo |
+| $f\leftrightarrow(\alpha^f_X)_X$ | Todos los elementos generalizados y su naturalidad | Usar **todos** los objetos de prueba, incluida $A$ | Reconstrucción desde puntos globales únicamente |
+| Sección $s\leftrightarrow$ selector $f$ | Valores elegidos y pruebas de pertenencia | Una sección o familia de testigos efectivamente disponible | Convertir existencia interna en sección sin hipótesis |
+| Computable total $\xrightarrow{J}$ conjuntista total | Valores, identidades y composición | Recuperable si el mapa subyacente ya es computable | Que $J$ sea pleno o la igualdad programática decidible |
+
+:::
+
+
+**Lectura guiada.** (a) Explique por qué en (13.1) no aparece elección. (b) Identifique la única sonda utilizada para recuperar $f$ de $\alpha$ en 13.3.2; luego justifique por qué se necesitó naturalidad para las demás sondas. (c) Compare los **datos** de (13.6) con la imagen regular de $G\to1$. (d) En 13.5.2, encuentre el paso que exige la lógica clásica de ZF y el paso independiente que descarta computabilidad. (e) Distinga «no pleno» de «no fiel» usando la interpretación de $c,d$ y el funtor $J$.
+
+### Auditoría fundacional y editorial
+
+- **Paquetes:** §13.1 usa conjuntos ZF para pertenencia y gráficas, aunque las identidades tienen traducción categórica; §13.2 presupone una CCC **elegida** y un fragmento de sintaxis tipada, no toda la lógica de un topos; §13.3 requiere local pequeñez para tener cada Hom como conjunto, sin asumir terminal generador; §13.4 introduce tipos dependientes explícitos únicamente allí; §13.5 usa un modelo clásico efectivo con máquinas fijadas.
+- **Existencia y elección:** en las gráficas hay valor único; en la correspondencia de secciones hay equivalencia **entre datos ya existentes**; en $\Pi\Sigma$ se proyectan testigos suministrados; la cobertura regular no se eleva a sección sin una condición adicional de elección. No se adopta `TF-AX-00009` globalmente.
+- **Efectividad e igualdad:** la transposición exponencial y la transformación de Yoneda son matemáticas, no intérpretes algorítmicos. El funtor $J$ es fiel sólo después de identificar extensionalmente flechas; la imagen no cubre $\chi_K$. Ninguna correspondencia proporciona un decisor universal de equivalencia de códigos.
+- **Fuentes de cotejo (alcance):** Steve Awodey, *Topics in Logic: Type Theory* (curso de 2025), https://awodey.github.io/typetheory/, para el puente $\lambda$/CCC; nLab, «Rel», https://ncatlab.org/nlab/show/Rel, para gráficas y categorías de relaciones; *Stanford Encyclopedia of Philosophy*, «Intuitionistic Type Theory», https://plato.stanford.edu/entries/type-theory-intuitionistic/, para distinguir elección mediante $\Pi\Sigma$ de elección extensional; el tratado previo suministra los lemas internos citados. La bibliografía sólo orienta: las pruebas anteriores exponen sus propios pasos.
+- **Formalización independiente verificada:** [PR #111](https://github.com/lachenmann/matematica-abierta/pull/111) integrada en `main` después de [Lean #40](https://github.com/lachenmann/matematica-abierta/actions/runs/35489487022) y [Quarto #271](https://github.com/lachenmann/matematica-abierta/actions/runs/35489487026) satisfactorios para `463e8c9dd8ebedba0eeda49e94b85b2d37c117be`; módulo `Correspondencias.lean` y su importación confirmados en `main`. Cobertura **parcial**: dos declaraciones sobre gráficas `TF-THM-00102`, y las instancias **en Set** de beta `TF-THM-00103` y eta `TF-THM-00104`; no queda certificada la forma general de beta/eta en una CCC arbitraria. Yoneda `TF-THM-00105`, extracción dependiente `TF-THM-00107` y no plenitud `TF-THM-00108` permanecen **sin formalización Lean**. Correspondencias: LEAN_VERIFICATION_REPORT_013.
+
+**Cierre editorial:** 17 nodos estables: `TF-DEF-00054…00059`, `TF-THM-00102…00108`, `TF-EXA-00025…00026`, `TF-CEX-00016…00017`. Próximo documento reservado: `TF-CAT-014 — Semántica de funciones y límites de equivalencia` (título provisional). No publicado en la web.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-12.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-14.qmd)
+:::

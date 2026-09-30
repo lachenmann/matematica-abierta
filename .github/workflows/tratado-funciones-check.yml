@@ -1,0 +1,31 @@
+name: Tratado de funciones draft QA
+on:
+  pull_request:
+    paths:
+      - 'libros/otros/tratado-funciones/**'
+      - 'tests/tratado_funciones_static.py'
+      - '.github/workflows/tratado-funciones-check.yml'
+permissions:
+  contents: read
+jobs:
+  draft-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate derivative structure
+        run: python tests/tratado_funciones_static.py
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Render review pages without publishing
+        run: quarto render libros/otros/tratado-funciones --to html -M draft:false
+      - name: Validate rendered anchors
+        run: python tests/tratado_funciones_static.py --html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tratado-funciones-draft-review
+          path: _site
+          retention-days: 7
