@@ -137,7 +137,7 @@ $$
 
 ## 2. Los axiomas de cuerpo {#ma-con-0020-axiomas}
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0020-cuerpo .ma-block .ma-definicion}
 **Definición — cuerpo**
 
 Un **cuerpo** es un conjunto $F$ con dos operaciones, suma y producto, que satisfacen las siguientes propiedades para todos $a,b,c\in F$.

@@ -32,7 +32,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-El concepto de límite permite describir el comportamiento de una función **cerca de un punto** sin exigir que la función esté definida en ese punto ni que su valor allí coincida con el valor límite.
+El concepto de límite permite describir el comportamiento de una [función](funciones-reales-dominio-codominio-imagen-y-preimagen.md#def-ma-con-0007-funcion) **cerca de un punto** sin exigir que la función esté definida en ese punto ni que su valor allí coincida con el valor límite.
 
 Si
 
@@ -147,7 +147,7 @@ La intuición de proximidad se vuelve rigurosa mediante dos números positivos:
 - $\varepsilon$ controla la distancia permitida entre $f(x)$ y $L$;
 - $\delta$ controla la distancia permitida entre $x$ y $a$.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0011-limite .ma-block .ma-definicion}
 **Definición de límite**
 
 Sea

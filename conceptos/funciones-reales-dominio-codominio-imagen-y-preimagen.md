@@ -56,7 +56,7 @@ $$
 por sí sola no especifica todavía toda la información de una función.
 :::
 
-## Definición de función
+## Definición de función {#def-ma-con-0007-funcion}
 
 Sean $A$ y $B$ conjuntos. Una **función**
 
