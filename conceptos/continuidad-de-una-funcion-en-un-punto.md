@@ -37,7 +37,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-La noción de límite estudia qué ocurre con $f(x)$ cuando $x$ se aproxima a un punto. La **continuidad** añade una condición decisiva: el comportamiento cercano debe concordar con el valor que la función toma exactamente en ese punto.
+La noción de [límite](limite-de-una-funcion-en-un-punto.md#def-ma-con-0011-limite) estudia qué ocurre con $f(x)$ cuando $x$ se aproxima a un punto. La **continuidad** añade una condición decisiva: el comportamiento cercano debe concordar con el valor que la función toma exactamente en ese punto.
 
 ::: {.ma-block .ma-intuicion}
 **Intuición**
