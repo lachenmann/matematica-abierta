@@ -69,8 +69,8 @@ $$
 A\subseteq\mathbb R.
 $$
 
-::: {.ma-block .ma-definicion}
-**Cota superior**
+::: {#def-ma-con-0016-cota-superior .ma-block .ma-definicion}
+**Definición — cota superior**
 
 Un número $M\in\mathbb R$ es una **cota superior** de $A$ si
 
@@ -85,8 +85,8 @@ Decimos que $A$ está **acotado superiormente** si posee al menos una cota super
 
 De manera dual:
 
-::: {.ma-block .ma-definicion}
-**Cota inferior**
+::: {#def-ma-con-0016-cota-inferior .ma-block .ma-definicion}
+**Definición — cota inferior**
 
 Un número $m\in\mathbb R$ es una **cota inferior** de $A$ si
 
@@ -99,7 +99,11 @@ para todo $x\in A$.
 
 Decimos que $A$ está **acotado inferiormente** si posee al menos una cota inferior.
 
-Si ambas propiedades se cumplen, decimos simplemente que $A$ está **acotado**.
+::: {#def-ma-con-0016-conjunto-acotado .ma-block .ma-definicion}
+**Definición — conjunto acotado**
+
+Decimos que $A$ está **acotado** si está acotado superiormente y acotado inferiormente; es decir, si posee al menos una [cota superior](#def-ma-con-0016-cota-superior) y al menos una [cota inferior](#def-ma-con-0016-cota-inferior).
+:::
 
 ### Ejemplo
 
@@ -230,7 +234,7 @@ Sea $A\subseteq\mathbb R$ no vacío y acotado superiormente.
 
 Un número $s\in\mathbb R$ es el **supremo** de $A$ si:
 
-1. $s$ es una cota superior de $A$;
+1. $s$ es una [cota superior](#def-ma-con-0016-cota-superior) de $A$;
 2. $s$ es menor o igual que cualquier otra cota superior de $A$.
 
 Es decir,
@@ -279,7 +283,7 @@ Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente.
 
 Un número $i\in\mathbb R$ es el **ínfimo** de $A$ si:
 
-1. $i$ es una cota inferior de $A$;
+1. $i$ es una [cota inferior](#def-ma-con-0016-cota-inferior) de $A$;
 2. toda cota inferior $m$ de $A$ satisface
 
 $$
