@@ -24,6 +24,7 @@ const path=require('node:path');
      privateLinks:document.querySelectorAll('a[href*="drive.google.com"]').length
     }));
     findings.push({name,width,status:response?.status(),errors,...data});
+    console.log(`${width}px ${name}: width=${data.bodyWidth}, math=${data.mathRendered}, errors=${errors.length}`);
     page.off('pageerror',handler);
     if(['index','capitulo-01','capitulo-16','matriz-hipotesis','apendice-d','bibliografia'].includes(name))
      await page.screenshot({path:path.join(out,`${name}-${width}.png`),fullPage:true});
