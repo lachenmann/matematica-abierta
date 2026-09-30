@@ -363,7 +363,7 @@ no necesariamente una desigualdad estricta.
 
 Ahora llegamos al resultado central.
 
-::: {.ma-block .ma-definicion}
+::: {#res-ma-con-0015-sandwich .ma-block .ma-definicion}
 **Teorema — sándwich**
 
 Sean
