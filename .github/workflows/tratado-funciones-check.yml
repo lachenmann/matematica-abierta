@@ -4,6 +4,7 @@ on:
     paths:
       - 'libros/otros/tratado-funciones/**'
       - 'tests/tratado_funciones_static.py'
+      - 'tests/tratado_funciones_browser.cjs'
       - '.github/workflows/tratado-funciones-check.yml'
 permissions:
   contents: read
@@ -24,6 +25,27 @@ jobs:
         run: quarto render libros/otros/tratado-funciones --to html -M draft:false
       - name: Validate rendered anchors
         run: python tests/tratado_funciones_static.py --html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependencies
+        run: |
+          npm install --prefix "$RUNNER_TEMP/tf-browser" playwright@1.62.1
+          "$RUNNER_TEMP/tf-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Check desktop and mobile rendering
+        env:
+          NODE_PATH: ${{ runner.temp }}/tf-browser/node_modules
+        run: |
+          python -m http.server 8765 --directory _site > "$RUNNER_TEMP/tf-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tests/tratado_funciones_browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tratado-funciones-browser-evidence
+          path: browser-evidence
+          retention-days: 7
       - uses: actions/upload-artifact@v4
         if: always()
         with:

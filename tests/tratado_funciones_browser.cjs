@@ -1,0 +1,36 @@
+// Browser evidence for the rendered draft; does not publish the site.
+const {chromium}=require('playwright');
+const fs=require('node:fs');
+const path=require('node:path');
+(async()=>{
+ const out='browser-evidence'; fs.mkdirSync(out,{recursive:true});
+ const browser=await chromium.launch({headless:true});
+ const page=await browser.newPage(); const findings=[];
+ const names=fs.readdirSync('libros/otros/tratado-funciones').filter(x=>x.endsWith('.qmd')).map(x=>x.slice(0,-4));
+ try {
+  for(const width of [390,1280]){
+   await page.setViewportSize({width,height:900});
+   for(const name of names){
+    const errors=[];const handler=e=>errors.push(e.message);page.on('pageerror',handler);
+    const response=await page.goto(`http://127.0.0.1:8765/libros/otros/tratado-funciones/${name}.html`,{waitUntil:'networkidle'});
+    await page.evaluate(async()=>{if(window.MathJax?.startup?.promise)await window.MathJax.startup.promise;await document.fonts.ready;});
+    const data=await page.evaluate(()=>({
+     bodyWidth:document.documentElement.scrollWidth,viewport:innerWidth,
+     mathSources:document.querySelectorAll('.math').length,
+     mathRendered:document.querySelectorAll('mjx-container').length,
+     mathErrors:document.querySelectorAll('mjx-merror, [data-mjx-error]').length,
+     tableRegions:[...document.querySelectorAll('.tf-table')].map(x=>({tabindex:x.getAttribute('tabindex'),role:x.getAttribute('role')})),
+     heading:document.querySelector('h1')?.textContent,
+     privateLinks:document.querySelectorAll('a[href*="drive.google.com"]').length
+    }));
+    findings.push({name,width,status:response?.status(),errors,...data});
+    page.off('pageerror',handler);
+    if(['index','capitulo-01','capitulo-16','matriz-hipotesis','apendice-d','bibliografia'].includes(name))
+     await page.screenshot({path:path.join(out,`${name}-${width}.png`),fullPage:true});
+   }
+  }
+ } finally {await browser.close();fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(findings,null,2));}
+ const failed=findings.filter(x=>x.status!==200||!x.heading||x.privateLinks||x.errors.length||x.bodyWidth>x.viewport+2||x.mathErrors||(x.mathSources>0&&x.mathRendered===0)||x.tableRegions.some(t=>t.tabindex!=='0'||t.role!=='region'));
+ console.log(JSON.stringify({checks:findings.length,failed},null,2));
+ if(failed.length)process.exitCode=1;
+})().catch(e=>{console.error(e);process.exitCode=1});
