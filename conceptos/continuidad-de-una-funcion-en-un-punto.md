@@ -736,8 +736,8 @@ implica que $f(x)$ permanece distinto de cero en algún entorno relativo de $a$.
 
 ## Continuidad en un conjunto
 
-::: {.ma-block .ma-definicion}
-**Continuidad en un conjunto**
+::: {#def-ma-con-0014-continuidad-en-un-conjunto .ma-block .ma-definicion}
+**Definición — continuidad en un conjunto**
 
 Sea
 
@@ -745,7 +745,7 @@ $$
 f:D\to\mathbb R.
 $$
 
-Decimos que $f$ es **continua en $D$** si es continua en cada punto $a\in D$.
+Decimos que $f$ es **continua en $D$** si es [continua en cada punto](#def-ma-con-0014-continuidad-en-un-punto) $a\in D$.
 :::
 
 Esto incluye extremos y puntos aislados utilizando siempre la geometría real del dominio.
