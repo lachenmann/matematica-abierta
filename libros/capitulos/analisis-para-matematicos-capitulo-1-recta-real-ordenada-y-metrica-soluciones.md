@@ -1650,7 +1650,7 @@ Por eso $E(y)$ mide exactamente la longitud adicional causada por el retroceso.
 
 La figura C01-F11 concentra esta lectura en una sola comparación.
 
-![Gráfico por tramos de E(y): una meseta igual a cero entre x y z y dos ramas lineales crecientes hacia afuera.](../../assets/books/anm/C01/C01-F11.svg)
+![](../../assets/books/anm/C01/C01-F11.svg){fig-alt="Gráfico por tramos de E(y): una meseta igual a cero entre x y z y dos ramas lineales crecientes hacia afuera."}
 
 *Figura C01-F11. El exceso $E(y)$ es cero sobre $[x,z]$ y crece linealmente con pendiente de magnitud $2$ cuando $y$ sale del segmento.*
 
@@ -2163,7 +2163,7 @@ Geométricamente, mantener fijo $r$ conserva el ancho de ambas ventanas; mover l
 
 La figura C01-F12 concentra esta lectura en una sola comparación.
 
-![Figura multipanel: bolas abiertas de igual radio que se solapan, tocan fronteras o se separan; una bola abierta incluida en otra; y dos intervalos cerrados que se tocan en un único punto.](../../assets/books/anm/C01/C01-F12.svg)
+![](../../assets/books/anm/C01/C01-F12.svg){fig-alt="Figura multipanel: bolas abiertas de igual radio que se solapan, tocan fronteras o se separan; una bola abierta incluida en otra; y dos intervalos cerrados que se tocan en un único punto."}
 
 *Figura C01-F12. La posición relativa de las fronteras controla solapamiento, inclusión y contacto límite de bolas y tolerancias.*
 
@@ -2803,7 +2803,7 @@ La diferencia con las bolas es estructural. En una bola $B(a,r)$ sólo hay un um
 
 La figura C01-F13 concentra esta lectura en una sola comparación.
 
-![Dos paneles comparan las bandas métricas A_t y A_s en la recta y los intervalos de distancias (t,2t] y (s,2s] en un eje auxiliar.](../../assets/books/anm/C01/C01-F13.svg)
+![](../../assets/books/anm/C01/C01-F13.svg){fig-alt="Dos paneles comparan las bandas métricas A_t y A_s en la recta y los intervalos de distancias (t,2t] y (s,2s] en un eje auxiliar."}
 
 *Figura C01-F13. En A_t={x: t<d(x,a)≤2t}, aumentar t mueve los dos umbrales; por eso la familia no es monótona por inclusión y A_t∩A_s es vacía exactamente cuando s≥2t.*
 
@@ -3283,6 +3283,6 @@ Este resultado cierra el hilo conceptual del capítulo. Las distancias determina
 
 La figura C01-F14 concentra esta lectura en una sola comparación.
 
-![Diagrama de flujo de la prueba: se define G(x)=F(x)-F(0), se obtiene G(0)=0 y |G(x)|=|x|, se fuerza un signo global y aparecen las dos formas F(x)=x+c o F(x)=-x+c.](../../assets/books/anm/C01/C01-F14.svg)
+![](../../assets/books/anm/C01/C01-F14.svg){fig-alt="Diagrama de flujo de la prueba: se define G(x)=F(x)-F(0), se obtiene G(0)=0 y |G(x)|=|x|, se fuerza un signo global y aparecen las dos formas F(x)=x+c o F(x)=-x+c."}
 
 *Figura C01-F14. Tras normalizar F(0), toda isometría fija el origen y sólo puede elegir un signo global: las dos ramas finales son traslación o reflexión seguida de traslación.*

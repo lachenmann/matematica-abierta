@@ -2522,7 +2522,7 @@ No se ha invocado completitud: las existencias de $s_A,s_B,i_A,i_B$ estaban dada
 
 La figura C02-F09 sintetiza las dos mitades de la prueba del supremo y hace visible por qué se reparte el margen $\varepsilon$ en dos franjas de anchura $\varepsilon/2$.
 
-![Tres paneles muestran puntos a y b a menos de epsilon sobre dos de sus supremos y la suma a+b a menos de epsilon de sA+sB. Un panel inferior separa las dos mitades de la prueba.](../../assets/books/anm/C02/C02-F09.svg)
+![](../../assets/books/anm/C02/C02-F09.svg){fig-alt="Tres paneles muestran puntos a y b a menos de epsilon sobre dos de sus supremos y la suma a+b a menos de epsilon de sA+sB. Un panel inferior separa las dos mitades de la prueba."}
 
 *Figura C02-F09. La prueba de sup(A+B)=sup A+sup B combina una cota superior obvia con testigos a y b elegidos dentro de franjas epsilon sobre dos.*
 
@@ -3996,7 +3996,7 @@ Por eso el capítulo puede haber agotado la teoría de **reconocimiento** del su
 
 La figura C02-F10 reúne estas dependencias en un único mapa lógico y deja la garantía general de existencia como una puerta discontinua hacia C03.
 
-![Grafo de dependencias con nodos para s=sup A, s=min U(A), cota superior más condición epsilon, s en A, s=max A y una caja discontinua C03 para la garantía general de existencia.](../../assets/books/anm/C02/C02-F10.svg)
+![](../../assets/books/anm/C02/C02-F10.svg){fig-alt="Grafo de dependencias con nodos para s=sup A, s=min U(A), cota superior más condición epsilon, s en A, s=max A y una caja discontinua C03 para la garantía general de existencia."}
 
 *Figura C02-F10. Las relaciones de C02 forman un grafo: varias caracterizaciones del supremo son equivalentes; la pertenencia produce máximo; la garantía general de existencia pertenece a C03.*
 

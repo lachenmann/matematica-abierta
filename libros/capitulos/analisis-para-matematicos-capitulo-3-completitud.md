@@ -96,7 +96,7 @@ sino
 
 La figura C03-F01 hace visible esta diferencia entre el estado lógico de C02 —`min U(A)?`— y la garantía de existencia que introduce C03.
 
-![Tres paneles separan definición condicional, hipótesis verificadas y existencia garantizada del supremo; una etiqueta recuerda que no se decide si el supremo pertenece al conjunto.](../../assets/books/anm/C03/C03-F01.svg)
+![](../../assets/books/anm/C03/C03-F01.svg){fig-alt="Tres paneles separan definición condicional, hipótesis verificadas y existencia garantizada del supremo; una etiqueta recuerda que no se decide si el supremo pertenece al conjunto."}
 
 *Figura C03-F01. La definición describe la mejor barrera; completitud garantiza su existencia bajo las hipótesis, sin decidir si pertenece a A.*
 
@@ -159,7 +159,7 @@ El defecto es más sutil:
 
 La figura C03-F02 representa precisamente este fenómeno: no mediante un punto irracional ya identificado, sino mostrando que $U_{\mathbb Q}(S_2)$ tiene cotas racionales mejorables y, sin embargo, ninguna de ellas es mínima.
 
-![Dos paneles muestran S2 racional y una familia de cotas superiores racionales mejorables sin mínimo; Q aparece como denso y arquimediano, pero incompleto.](../../assets/books/anm/C03/C03-F02.svg)
+![](../../assets/books/anm/C03/C03-F02.svg){fig-alt="Dos paneles muestran S2 racional y una familia de cotas superiores racionales mejorables sin mínimo; Q aparece como denso y arquimediano, pero incompleto."}
 
 *Figura C03-F02. En Q pueden existir cotas superiores racionales sin una menor cota superior racional; densidad y arquimedianidad no reparan ese defecto.*
 
@@ -985,7 +985,7 @@ $$
 \inf A\text{ existe}.
 $$
 
-![Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A).](../../assets/books/anm/C02/C02-F07.svg)
+![](../../assets/books/anm/C02/C02-F07.svg){fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
 
 *Figura C02-F07. La reflexión x↦−x invierte el orden y, en C03, transporta también la garantía de existencia: de sup(-A) existente obtenemos inf A=-sup(-A) sin un segundo principio de completitud.*
 
@@ -1381,7 +1381,7 @@ Esta separación es importante. La completitud no dice directamente que los natu
 
 La figura C03-F04 representa exactamente esta anatomía: un único distintivo de **COMPLETITUD** sobre el paso $s=\sup\mathbb N$ y, después, sólo orden y aritmética.
 
-![Cadena lógica desde suponer N acotado hasta la contradicción n+1>s; sólo el nodo s=sup N lleva la marca COMPLETITUD.](../../assets/books/anm/C03/C03-F04.svg)
+![](../../assets/books/anm/C03/C03-F04.svg){fig-alt="Cadena lógica desde suponer N acotado hasta la contradicción n+1>s; sólo el nodo s=sup N lleva la marca COMPLETITUD."}
 
 *Figura C03-F04. La completitud se usa una sola vez para producir s=sup N bajo la hipótesis contradictoria; el resto es orden y aritmética.*
 
@@ -2093,7 +2093,7 @@ La segunda requerirá una hipótesis adicional de estrechamiento y será el prob
 
 La figura C03-F06 hace visible esta distinción: una cadena de intervalos cerrados encajados puede conservar un núcleo común no degenerado, mientras una familia semiabierta puede estrecharse y perder todo punto común.
 
-![Dos paneles contrastan cerrados encajados con núcleo no degenerado y semiabiertos estrechantes con intersección vacía.](../../assets/books/anm/C03/C03-F06.svg)
+![](../../assets/books/anm/C03/C03-F06.svg){fig-alt="Dos paneles contrastan cerrados encajados con núcleo no degenerado y semiabiertos estrechantes con intersección vacía."}
 
 *Figura C03-F06. Los intervalos cerrados encajados garantizan existencia pero no unicidad; una familia semiabierta puede estrecharse y aun así perder todo punto común.*
 
@@ -2423,7 +2423,7 @@ La contradicción es completamente finita una vez elegido el índice $n$.
 
 La figura C03-F07 representa esta estructura: dos candidatos $x<y$, la distancia fija $\delta=y-x$ y un intervalo cuyo ancho es menor que $\delta$.
 
-![Dos puntos x e y determinan delta igual a su distancia; un intervalo de ancho menor que delta no puede contenerlos a ambos.](../../assets/books/anm/C03/C03-F07.svg)
+![](../../assets/books/anm/C03/C03-F07.svg){fig-alt="Dos puntos x e y determinan delta igual a su distancia; un intervalo de ancho menor que delta no puede contenerlos a ambos."}
 
 *Figura C03-F07. Dos puntos distintos no pueden permanecer en intervalos cuyo ancho puede hacerse menor que su distancia positiva.*
 
@@ -2717,7 +2717,7 @@ y una tolerancia $\varepsilon$ que se supera después de un número finito de pa
 
 La figura C03-F08 resume ese mecanismo finito sin introducir lenguaje de convergencia.
 
-![Una rama de bisección muestra anchos L, L/2, L/4 y L/8 y una regla final para elegir k finito según epsilon.](../../assets/books/anm/C03/C03-F08.svg)
+![](../../assets/books/anm/C03/C03-F08.svg){fig-alt="Una rama de bisección muestra anchos L, L/2, L/4 y L/8 y una regla final para elegir k finito según epsilon."}
 
 *Figura C03-F08. Dada una tolerancia positiva, arquimedianidad permite elegir un número finito de bisecciones con L/2^k menor que epsilon, sin lenguaje de límites.*
 
@@ -3897,13 +3897,13 @@ El problema es que ciertas familias de restricciones compatibles no poseen dentr
 
 La figura `C03-F05` corresponde al contenido matemático local de **GCI**: representa una familia general, no necesariamente numerable ni encajada, cuyos extremos satisfacen la condición cruzada y que posee un punto común $c$.
 
-![Varios intervalos cerrados no presentados como cadena comparten un punto; un panel lateral separa condición cruzada, compatibilidad por pares y el uso de GCI.](../../assets/books/anm/C03/C03-F05.svg)
+![](../../assets/books/anm/C03/C03-F05.svg){fig-alt="Varios intervalos cerrados no presentados como cadena comparten un punto; un panel lateral separa condición cruzada, compatibilidad por pares y el uso de GCI."}
 
 *Figura C03-F05. La condición cruzada de una familia general de intervalos cerrados permite, mediante GCI, obtener un punto común; en la recta equivale a intersección por pares.*
 
 La figura `C03-F09` tiene una función diferente: organiza el estatus lógico de las formulaciones.
 
-![Cuatro nodos equivalentes forman un ciclo; una flecha unilateral baja al caso numerable encajado y un carril separado lleva del estrechamiento a unicidad.](../../assets/books/anm/C03/C03-F09.svg)
+![](../../assets/books/anm/C03/C03-F09.svg){fig-alt="Cuatro nodos equivalentes forman un ciclo; una flecha unilateral baja al caso numerable encajado y un carril separado lleva del estrechamiento a unicidad."}
 
 *Figura C03-F09. SUP, INF, SEP y GCI forman un ciclo de equivalencias; el caso numerable encajado es una consecuencia y el estrechamiento pertenece a la capa de unicidad.*
 
@@ -4510,7 +4510,7 @@ Distingue dos tipos de conexión:
 - **uso directo o estructural previsto**, cuando un capítulo futuro necesita una garantía de existencia proveniente de C03;
 - **comparación o reformulación posterior**, cuando el objetivo es relacionar la completitud de orden con otra noción de completitud.
 
-![Grafo con C03 en el centro: C07, C08, C16 y C23 reciben flechas de consumo estructural; C10 y C31 flechas de comparación o reformulación; todos están marcados FUTURO.](../../assets/books/anm/C03/C03-F10.svg)
+![](../../assets/books/anm/C03/C03-F10.svg){fig-alt="Grafo con C03 en el centro: C07, C08, C16 y C23 reciben flechas de consumo estructural; C10 y C31 flechas de comparación o reformulación; todos están marcados FUTURO."}
 
 *Figura C03-F10. C03 exporta infraestructura de existencia a capítulos futuros y sirve de referencia para comparaciones posteriores de completitud.*
 

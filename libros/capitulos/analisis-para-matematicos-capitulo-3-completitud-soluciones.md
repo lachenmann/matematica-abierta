@@ -3755,7 +3755,7 @@ Por tanto, las equivalencias posteriores no son nuevas aplicaciones del principi
 
 La figura C03-F11 comprime estas tres descripciones equivalentes y mantiene fuera del triángulo el único antecedente estructural: la existencia previa de $s$ y $t$.
 
-![Diagrama triangular de equivalencias entre estrechamiento, coincidencia s=t e intersección puntual, con completitud indicada sólo como dependencia previa para la existencia de s y t.](../../assets/books/anm/C03/C03-F11.svg)
+![](../../assets/books/anm/C03/C03-F11.svg){fig-alt="Diagrama triangular de equivalencias entre estrechamiento, coincidencia s=t e intersección puntual, con completitud indicada sólo como dependencia previa para la existencia de s y t."}
 
 *Figura C03-F11. Una vez existentes s y t, estrechamiento arbitrario, s=t e intersección puntual son tres descripciones equivalentes.*
 
@@ -5183,7 +5183,7 @@ Después de producir ese objeto, las dos pruebas terminan con pasos elementales 
 
 La figura C03-F12 coloca ambas compilaciones en paralelo: cambia el objeto estructural intermedio, pero no aparece una segunda fuente de existencia.
 
-![Dos flujos paralelos parten de la compatibilidad cruzada y terminan en un punto común; uno usa SUP y otro SEP, cada cual con una sola marca COMPLETITUD.](../../assets/books/anm/C03/C03-F12.svg)
+![](../../assets/books/anm/C03/C03-F12.svg){fig-alt="Dos flujos paralelos parten de la compatibilidad cruzada y terminan en un punto común; uno usa SUP y otro SEP, cada cual con una sola marca COMPLETITUD."}
 
 *Figura C03-F12. SUP y SEP recompilan la misma prueba de existencia con distintos objetos intermedios, sin añadir una segunda infraestructura de completitud.*
 

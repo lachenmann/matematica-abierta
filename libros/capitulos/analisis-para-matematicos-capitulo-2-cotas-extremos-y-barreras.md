@@ -163,7 +163,7 @@ Dualmente, si $l$ es una cota inferior de $A$ y $m\le l$, entonces $m$ también 
 
 La figura C02-F01 hace visible precisamente esta movilidad de las barreras.
 
-![Dos paneles muestran cotas superiores e inferiores válidas e inválidas alrededor de un conjunto finito sobre la recta. Las barreras válidas conservan su propiedad al moverse en la dirección exterior y pueden perderla al cruzar elementos del conjunto.](../../assets/books/anm/C02/C02-F01.svg)
+![](../../assets/books/anm/C02/C02-F01.svg){fig-alt="Dos paneles muestran cotas superiores e inferiores válidas e inválidas alrededor de un conjunto finito sobre la recta. Las barreras válidas conservan su propiedad al moverse en la dirección exterior y pueden perderla al cruzar elementos del conjunto."}
 
 *Figura C02-F01. La validez de una barrera depende de su posición respecto del conjunto: una cota superior sigue siéndolo al desplazarse a la derecha y una inferior al desplazarse a la izquierda.*
 
@@ -492,7 +492,7 @@ $$
 
 La figura C02-F02 hace visible esta diferencia sin convertirla en una mera cuestión de apariencia gráfica.
 
-![Dos intervalos comparan extremos cerrados y abiertos. En el intervalo cerrado los extremos pertenecen y son mínimo y máximo; en el abierto las mismas fronteras no pertenecen y no son extremos alcanzados.](../../assets/books/anm/C02/C02-F02.svg)
+![](../../assets/books/anm/C02/C02-F02.svg){fig-alt="Dos intervalos comparan extremos cerrados y abiertos. En el intervalo cerrado los extremos pertenecen y son mínimo y máximo; en el abierto las mismas fronteras no pertenecen y no son extremos alcanzados."}
 
 *Figura C02-F02. Máximo y mínimo combinan dos condiciones: ser barrera y pertenecer al conjunto; los puntos llenos y huecos separan visualmente ambas condiciones.*
 
@@ -837,7 +837,7 @@ Estas identidades muestran que, cuando el extremo existe, toda la familia de bar
 
 La figura C02-F03 separa visualmente los tres objetos que intervienen aquí: el conjunto original $A$, el conjunto $U(A)$ de cotas superiores y el conjunto $L(A)$ de cotas inferiores.
 
-![Tres carriles alineados muestran A=(2,5), L(A)=(-infinito,2] y U(A)=[5,infinito). Las marcas 2 y 5 son respectivamente el máximo de L(A) y el mínimo de U(A), aunque sean puntos abiertos en A.](../../assets/books/anm/C02/C02-F03.svg)
+![](../../assets/books/anm/C02/C02-F03.svg){fig-alt="Tres carriles alineados muestran A=(2,5), L(A)=(-infinito,2] y U(A)=[5,infinito). Las marcas 2 y 5 son respectivamente el máximo de L(A) y el mínimo de U(A), aunque sean puntos abiertos en A."}
 
 *Figura C02-F03. El supremo y el ínfimo son extremos de las familias de cotas U(A) y L(A), no condiciones de pertenencia al conjunto original.*
 
@@ -1085,7 +1085,7 @@ mientras que $B$ no tiene máximo.
 
 La figura C02-F04 hace visible exactamente esta invariancia de la barrera y el cambio de pertenencia.
 
-![Dos intervalos alineados, uno cerrado en s y otro abierto en s, comparten el mismo supremo. Sólo el intervalo que contiene s tiene máximo.](../../assets/books/anm/C02/C02-F04.svg)
+![](../../assets/books/anm/C02/C02-F04.svg){fig-alt="Dos intervalos alineados, uno cerrado en s y otro abierto en s, comparten el mismo supremo. Sólo el intervalo que contiene s tiene máximo."}
 
 *Figura C02-F04. Cerrar o abrir la barrera extremal puede cambiar la existencia del máximo sin cambiar el supremo.*
 
@@ -1314,7 +1314,7 @@ Por eso esta formulación describe tanto extremos alcanzados como no alcanzados.
 
 La figura C02-F05 hace visible exactamente esta idea, sin convertir las distintas elecciones de $\varepsilon$ en una sucesión.
 
-![Tres franjas de distinto ancho junto a una misma barrera s muestran un testigo de A dentro de cada una. Las franjas son instancias independientes y no forman una sucesión.](../../assets/books/anm/C02/C02-F05.svg)
+![](../../assets/books/anm/C02/C02-F05.svg){fig-alt="Tres franjas de distinto ancho junto a una misma barrera s muestran un testigo de A dentro de cada una. Las franjas son instancias independientes y no forman una sucesión."}
 
 *Figura C02-F05. La caracterización epsilon dice que ninguna franja positiva inmediatamente bajo el supremo puede quedar vacía de puntos del conjunto.*
 
@@ -1709,7 +1709,7 @@ Al agregar puntos, la barrera inferior extremal no puede desplazarse hacia la de
 
 La figura C02-F06 muestra primero la inclusión entre conjuntos de cotas y sólo después el movimiento posible de las barreras extremales.
 
-![Tres paneles comparan una inclusión estricta con el mismo supremo, otra con supremo desplazado y la adición de un punto dentro o fuera del intervalo entre ínfimo y supremo.](../../assets/books/anm/C02/C02-F06.svg)
+![](../../assets/books/anm/C02/C02-F06.svg){fig-alt="Tres paneles comparan una inclusión estricta con el mismo supremo, otra con supremo desplazado y la adición de un punto dentro o fuera del intervalo entre ínfimo y supremo."}
 
 *Figura C02-F06. Al ampliar un conjunto, las familias de cotas se restringen; las barreras extremales pueden permanecer o desplazarse según dónde aparezcan los nuevos puntos.*
 
@@ -1891,7 +1891,7 @@ Estas identidades no son reglas algebraicas independientes. Expresan simplemente
 
 La figura C02-F07 acompaña esta dualidad mediante la reflexión de la recta, sin sustituir la justificación algebraica de la inversión del orden.
 
-![Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A).](../../assets/books/anm/C02/C02-F07.svg)
+![](../../assets/books/anm/C02/C02-F07.svg){fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
 
 *Figura C02-F07. La reflexión x↦−x invierte el orden y convierte cotas inferiores en superiores, intercambiando ínfimo y supremo con cambio de signo.*
 
@@ -2039,7 +2039,7 @@ Pero ese cálculo particular no demuestra una afirmación general sobre **todo**
 
 La figura C02-F08 fija precisamente esta separación entre definición y existencia.
 
-![Diagrama vertical de tres niveles: definición, verificación particular y garantía general. En el último nivel permanece abierta la pregunta min U(A)?, conectada mediante una flecha discontinua con C03 completitud.](../../assets/books/anm/C02/C02-F08.svg)
+![](../../assets/books/anm/C02/C02-F08.svg){fig-alt="Diagrama vertical de tres niveles: definición, verificación particular y garantía general. En el último nivel permanece abierta la pregunta min U(A)?, conectada mediante una flecha discontinua con C03 completitud."}
 
 *Figura C02-F08. Definir el supremo y verificarlo en un caso concreto no equivalen a disponer de una garantía general de existencia; esa última puerta queda para C03.*
 

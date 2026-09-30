@@ -496,7 +496,7 @@ No estamos formulando todavía axiomas abstractos de una topología. Simplemente
 
 La figura `C04-F01` distingue una vecindad básica de una vecindad general. La matemática no depende de la figura, pero el contraste hace visible el margen exigido por la definición.
 
-![Dos paneles comparan un conjunto que contiene una bola centrada en x con otro que contiene a x sólo como punto de borde y no es vecindad.](../../assets/books/anm/C04/C04-F01.svg)
+![](../../assets/books/anm/C04/C04-F01.svg){fig-alt="Dos paneles comparan un conjunto que contiene una bola centrada en x con otro que contiene a x sólo como punto de borde y no es vecindad."}
 
 *Figura C04-F01. La bola es la ventana básica. Una vecindad general puede ser mayor, pero debe contener alguna bola centrada en el punto.*
 
@@ -1954,7 +1954,7 @@ El punto $1/2$ muestra por qué la imagen «añadir extremos» es insuficiente. 
 
 La figura `C04-F03` rompe precisamente la falsa identificación entre clausura y «cerrar extremos».
 
-![Dos rectas muestran un intervalo abierto perforado en un medio y su clausura; una lupa local muestra que toda ventana alrededor de la perforación vuelve a encontrar el conjunto.](../../assets/books/anm/C04/C04-F03.svg)
+![](../../assets/books/anm/C04/C04-F03.svg){fig-alt="Dos rectas muestran un intervalo abierto perforado en un medio y su clausura; una lupa local muestra que toda ventana alrededor de la perforación vuelve a encontrar el conjunto."}
 
 *Figura C04-F03. La clausura no se define añadiendo extremos: también recupera puntos interiores ausentes cuando ninguna ventana logra evitar al conjunto.*
 
@@ -2579,7 +2579,7 @@ Alrededor de cada uno, toda bola positiva contiene puntos del intervalo $(0,1)$ 
 
 La figura `C04-F05` hace visible exactamente esta independencia.
 
-![Cuatro filas muestran los intervalos (0,1), [0,1], [0,1) y (0,1]; la pertenencia de los extremos cambia pero la frontera permanece igual a {0,1}.](../../assets/books/anm/C04/C04-F05.svg)
+![](../../assets/books/anm/C04/C04-F05.svg){fig-alt="Cuatro filas muestran los intervalos (0,1), [0,1], [0,1) y (0,1]; la pertenencia de los extremos cambia pero la frontera permanece igual a {0,1}."}
 
 *Figura C04-F05. La frontera describe lo que ve toda ventana, no si el centro pertenece al conjunto.*
 
@@ -2826,7 +2826,7 @@ Esta partición resume geométricamente las tres respuestas posibles al test de 
 
 Ahora ya puede leerse su tercer panel.
 
-![Tres paneles muestran interior, exterior y frontera con la misma gramática de ventanas; el tercer panel recuerda que la definición cuantifica todos los radios.](../../assets/books/anm/C04/C04-F02.svg)
+![](../../assets/books/anm/C04/C04-F02.svg){fig-alt="Tres paneles muestran interior, exterior y frontera con la misma gramática de ventanas; el tercer panel recuerda que la definición cuantifica todos los radios."}
 
 *Figura C04-F02. Interior y exterior requieren que exista margen; en la frontera toda ventana positiva ve ambos lados. Las ventanas dibujadas son sólo instancias.*
 
@@ -4082,7 +4082,7 @@ Confundir cualquiera de ellas con otra destruye la clasificación local.
 
 La figura `C04-F04`, anticipada en §4.5, puede leerse ahora con su tercer concepto.
 
-![Tres paneles para x igual a cero, un medio y dos comparan bola completa, bola perforada y ventana aislante en A igual a (0,1) unido con el punto 2.](../../assets/books/anm/C04/C04-F04.svg)
+![](../../assets/books/anm/C04/C04-F04.svg){fig-alt="Tres paneles para x igual a cero, un medio y dos comparan bola completa, bola perforada y ventana aislante en A igual a (0,1) unido con el punto 2."}
 
 *Figura C04-F04. Perforar el centro cambia el test: un punto aislado puede ser adherente sin ser de acumulación, y un punto de acumulación puede quedar fuera del conjunto.*
 
@@ -4864,7 +4864,7 @@ $$
 
 La figura `C04-F06` muestra el cambio de escala de esta sección.
 
-![Dos paneles muestran varios radios locales distintos en un abierto y ventanas exteriores que evitan un cerrado; una banda inferior contrasta el orden correcto de cuantificadores con un radio global falso.](../../assets/books/anm/C04/C04-F06.svg)
+![](../../assets/books/anm/C04/C04-F06.svg){fig-alt="Dos paneles muestran varios radios locales distintos en un abierto y ventanas exteriores que evitan un cerrado; una banda inferior contrasta el orden correcto de cuantificadores con un radio global falso."}
 
 *Figura C04-F06. Ser abierto es global, pero se construye con radios locales que pueden depender del punto; cerrado se lee dualmente en el complemento.*
 
@@ -5785,7 +5785,7 @@ La perforación muestra algo que un simple intervalo no deja ver: un punto puede
 
 La figura `C04-F08` representa el diccionario anterior sin convertirlo en una tabla para memorizar.
 
-![Mapa lógico con B(x,r) en el centro y seis nodos para interior, exterior, adherencia, frontera, acumulación y aislamiento.](../../assets/books/anm/C04/C04-F08.svg)
+![](../../assets/books/anm/C04/C04-F08.svg){fig-alt="Mapa lógico con B(x,r) en el centro y seis nodos para interior, exterior, adherencia, frontera, acumulación y aislamiento."}
 
 *Figura C04-F08. Las nociones de C04 reutilizan la misma ventana y cambian el cuantificador o la forma de intersectar el conjunto.*
 
