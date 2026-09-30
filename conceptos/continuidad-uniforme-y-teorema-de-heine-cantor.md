@@ -103,7 +103,7 @@ $$
 
 # Continuidad uniforme
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0019-continuidad-uniforme .ma-block .ma-definicion}
 **Continuidad uniforme**
 
 Sea
@@ -492,7 +492,7 @@ La misma fórmula que fracasa globalmente en $\mathbb R$ funciona perfectamente 
 
 El argumento anterior exhibe una estructura especialmente útil.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0019-lipschitz .ma-block .ma-definicion}
 **Condición de Lipschitz**
 
 Una función
