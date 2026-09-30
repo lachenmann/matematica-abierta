@@ -477,7 +477,7 @@ window.Quarto = {
   <ul>
   <li><a href="#leer-y-escribir-matemáticas" id="toc-leer-y-escribir-matemáticas" class="nav-link active" data-scroll-target="#leer-y-escribir-matemáticas">Leer y escribir matemáticas</a>
   <ul class="collapse">
-  <li><a href="#ma-bch-0001-ejemplos" id="toc-ma-bch-0001-ejemplos" class="nav-link" data-scroll-target="#ma-bch-0001-ejemplos">1. De observar ejemplos a demostrar</a>
+  <li><a href="#met-ma-bch-0001-contraejemplos" id="toc-met-ma-bch-0001-contraejemplos" class="nav-link" data-scroll-target="#met-ma-bch-0001-contraejemplos">1. De observar ejemplos a demostrar</a>
   <ul class="collapse">
   <li><a href="#proposición-conjetura-y-contraejemplo" id="toc-proposición-conjetura-y-contraejemplo" class="nav-link" data-scroll-target="#proposición-conjetura-y-contraejemplo">Proposición, conjetura y contraejemplo</a></li>
   <li><a href="#un-ejemplo-que-sí-conduce-a-una-prueba" id="toc-un-ejemplo-que-sí-conduce-a-una-prueba" class="nav-link" data-scroll-target="#un-ejemplo-que-sí-conduce-a-una-prueba">Un ejemplo que sí conduce a una prueba</a></li>
@@ -593,8 +593,9 @@ window.Quarto = {
 <p><strong>Idea rectora</strong></p>
 <p>En Matemática Abierta no queremos separar artificialmente «teoría» y «técnica de demostración». Aprender un resultado incluye aprender a reconocer <strong>qué afirma</strong>, <strong>qué permite usar</strong> y <strong>qué estrategia podría justificarlo</strong>.</p>
 </div>
-<section id="ma-bch-0001-ejemplos" class="level2">
-<h2 class="anchored" data-anchor-id="ma-bch-0001-ejemplos">1. De observar ejemplos a demostrar</h2>
+<p><span id="ma-bch-0001-ejemplos"></span></p>
+<section id="met-ma-bch-0001-contraejemplos" class="level2">
+<h2 class="anchored" data-anchor-id="met-ma-bch-0001-contraejemplos">1. De observar ejemplos a demostrar</h2>
 <p>Consideremos la afirmación</p>
 <p><span class="math display">\[
 n^2+n+1\text{ es primo para todo entero positivo }n.
@@ -1432,13 +1433,27 @@ body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-000
           text = parts.join(' ');
         } else {
           const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
-          title = heading ? cleanText(heading.textContent) : '';
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
           const clone = target.cloneNode(true);
           clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
           if (heading) {
             const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
             if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
           }
+
           text = cleanText(clone.textContent);
         }
 

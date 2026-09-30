@@ -759,13 +759,27 @@ body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-000
           text = parts.join(' ');
         } else {
           const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
-          title = heading ? cleanText(heading.textContent) : '';
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
           const clone = target.cloneNode(true);
           clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
           if (heading) {
             const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
             if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
           }
+
           text = cleanText(clone.textContent);
         }
 

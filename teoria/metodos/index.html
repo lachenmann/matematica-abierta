@@ -514,7 +514,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="razonamiento-y-demostración">Razonamiento y demostración</h2>
 <p>El primer capítulo público de <em>Cálculo para matemáticos</em> incorpora un repertorio inicial:</p>
 <ul>
-<li><a href="../../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html#ma-bch-0001-ejemplos"><strong>Búsqueda de contraejemplos</strong></a> — refutar afirmaciones universales y diagnosticar hipótesis insuficientes.</li>
+<li><a href="../../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html#met-ma-bch-0001-contraejemplos"><strong>Búsqueda de contraejemplos</strong></a> — refutar afirmaciones universales y diagnosticar hipótesis insuficientes.</li>
 <li><a href="../../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html#met-ma-bch-0001-doble-inclusion"><strong>Doble inclusión</strong></a> — demostrar igualdad de conjuntos mediante dos inclusiones.</li>
 <li><a href="../../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html#met-ma-bch-0001-directa-contraposicion"><strong>Demostración directa y contraposición</strong></a> — elegir el punto de partida más informativo para una implicación.</li>
 <li><a href="../../libros/capitulos/leer-y-escribir-matematicas-proposiciones-cuantificadores-y-demostraciones.html#met-ma-bch-0001-contradiccion-casos"><strong>Contradicción y demostración por casos</strong></a> — trabajar con una negación imposible o dividir el universo en posibilidades exhaustivas.</li>
@@ -827,13 +827,27 @@ body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-000
           text = parts.join(' ');
         } else {
           const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
-          title = heading ? cleanText(heading.textContent) : '';
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
           const clone = target.cloneNode(true);
           clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
           if (heading) {
             const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
             if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
           }
+
           text = cleanText(clone.textContent);
         }
 
