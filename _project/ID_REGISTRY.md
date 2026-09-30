@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0012 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0099 |
+| Capítulo | MA-BCH-0117 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0011 |
+| Libro | MA-BOK-0012 |
 
 ## IDs asignados
 
@@ -206,3 +206,30 @@ Las piezas individuales mantienen siempre su identificador MA global.
 | MA-BOK-0010 | MA-BOK-ANM-01 | `libros/para-matematicos/analisis-para-matematicos.md` | published |
 
 Registro de identidad pública ya existente: `MA-BOK-0009` — *Geometría plana y del espacio*, `libros/otros/wentworth-smith-geometria/index.qmd`, published. La entrada ANM usa `MA-BOK-0010` para conservar esa identidad.
+
+
+## Tratado fundacional de la teoría de funciones — reserva de preparación 2026-09-30
+
+Reserva en rama de preparación; no acredita publicación ni despliegue. Los 269 IDs matemáticos TF existentes se conservan. `source-id` identifica la pieza editorial cualificada y `editorial-id` mantiene el ID documental del canon.
+
+| ID público | Tipo | ID de fuente | ID documental canónico | Ruta | Estado |
+|---|---|---|---|---|---|
+| MA-BOK-0011 | book | TF-T1 | TF-000 | `libros/otros/tratado-funciones/index.qmd` | draft-protected |
+| MA-BCH-0099 | book-chapter | TF-T1-C01 | TF-CAT-001 | `libros/otros/tratado-funciones/capitulo-01.qmd` | draft-protected |
+| MA-BCH-0100 | book-chapter | TF-T1-C02 | TF-CAT-002 | `libros/otros/tratado-funciones/capitulo-02.qmd` | draft-protected |
+| MA-BCH-0101 | book-chapter | TF-T1-C03 | TF-CAT-003 | `libros/otros/tratado-funciones/capitulo-03.qmd` | draft-protected |
+| MA-BCH-0102 | book-chapter | TF-T1-C04 | TF-CAT-004 | `libros/otros/tratado-funciones/capitulo-04.qmd` | draft-protected |
+| MA-BCH-0103 | book-chapter | TF-T1-C05 | TF-CAT-005 | `libros/otros/tratado-funciones/capitulo-05.qmd` | draft-protected |
+| MA-BCH-0104 | book-chapter | TF-T1-C06 | TF-CAT-006 | `libros/otros/tratado-funciones/capitulo-06.qmd` | draft-protected |
+| MA-BCH-0105 | book-chapter | TF-T1-C07 | TF-CAT-007 | `libros/otros/tratado-funciones/capitulo-07.qmd` | draft-protected |
+| MA-BCH-0106 | book-chapter | TF-T1-C08 | TF-CAT-008 | `libros/otros/tratado-funciones/capitulo-08.qmd` | draft-protected |
+| MA-BCH-0107 | book-chapter | TF-T1-C09 | TF-CAT-009 | `libros/otros/tratado-funciones/capitulo-09.qmd` | draft-protected |
+| MA-BCH-0108 | book-chapter | TF-T1-C10 | TF-CAT-010 | `libros/otros/tratado-funciones/capitulo-10.qmd` | draft-protected |
+| MA-BCH-0109 | book-chapter | TF-T1-C11 | TF-CAT-011 | `libros/otros/tratado-funciones/capitulo-11.qmd` | draft-protected |
+| MA-BCH-0110 | book-chapter | TF-T1-C12 | TF-CAT-012 | `libros/otros/tratado-funciones/capitulo-12.qmd` | draft-protected |
+| MA-BCH-0111 | book-chapter | TF-T1-C13 | TF-CAT-013 | `libros/otros/tratado-funciones/capitulo-13.qmd` | draft-protected |
+| MA-BCH-0112 | book-chapter | TF-T1-C14 | TF-CAT-014 | `libros/otros/tratado-funciones/capitulo-14.qmd` | draft-protected |
+| MA-BCH-0113 | book-chapter | TF-T1-C15 | TF-CAT-015 | `libros/otros/tratado-funciones/capitulo-15.qmd` | draft-protected |
+| MA-BCH-0114 | book-chapter | TF-T1-C16 | TF-CAT-016 | `libros/otros/tratado-funciones/capitulo-16.qmd` | draft-protected |
+| MA-BCH-0115 | book-chapter | TF-T1-C17 | TF-CAT-017 | `libros/otros/tratado-funciones/capitulo-17.qmd` | draft-protected |
+| MA-BCH-0116 | book-chapter | TF-T1-C18 | TF-CAT-018 | `libros/otros/tratado-funciones/capitulo-18.qmd` | draft-protected |
