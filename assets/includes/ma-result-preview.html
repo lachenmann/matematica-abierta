@@ -2,8 +2,11 @@
 (() => {
   'use strict';
 
-  const CATALOG_URL = new URL('/teoria/resultados/index.html', window.location.origin);
-  const RESULT_HASH = /^#res-/i;
+  const CATALOGS = [
+    new URL('/teoria/resultados/index.html', window.location.origin),
+    new URL('/teoria/metodos/index.html', window.location.origin)
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
   const cache = new Map();
   let catalog = new Map();
   let activeLink = null;
@@ -15,12 +18,13 @@
   panel.setAttribute('role', 'tooltip');
   panel.hidden = true;
   panel.innerHTML = [
-    '<div class="ma-result-preview-kicker">Resultado</div>',
+    '<div class="ma-result-preview-kicker"></div>',
     '<div class="ma-result-preview-title"></div>',
     '<div class="ma-result-preview-summary"></div>'
   ].join('');
   document.body.append(panel);
 
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
   const titleEl = panel.querySelector('.ma-result-preview-title');
   const summaryEl = panel.querySelector('.ma-result-preview-summary');
 
@@ -38,6 +42,18 @@
     }
   };
 
+  const kindForHash = hash => {
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return 'result';
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
   const cleanText = text => (text || '')
     .replace(/\(\s*MA-[^)]+\)/g, '')
     .replace(/^\s*[—–-]\s*/, '')
@@ -52,34 +68,48 @@
     return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
   };
 
-  const loadCatalog = async () => {
+  const readCatalog = async catalogUrl => {
     try {
-      const response = await fetch(CATALOG_URL, { credentials: 'same-origin' });
-      if (!response.ok) return new Map();
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const next = new Map();
+      const entries = [];
 
       doc.querySelectorAll('main.content li').forEach(li => {
         const link = li.querySelector('a[href]');
         if (!link) return;
-        const key = keyFor(link.getAttribute('href'), CATALOG_URL);
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
         if (!key) return;
 
+        const url = new URL(link.getAttribute('href'), catalogUrl);
         const clone = li.cloneNode(true);
         clone.querySelectorAll('a, code').forEach(el => el.remove());
         const summary = cleanText(clone.textContent);
 
-        next.set(key, {
+        entries.push([key, {
           title: cleanText(link.textContent),
-          summary
-        });
+          summary,
+          kind: kindForHash(url.hash)
+        }]);
       });
 
-      return next;
+      return entries;
     } catch (_) {
-      return new Map();
+      return [];
     }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
   };
 
   const fallbackFromTarget = async url => {
@@ -129,8 +159,9 @@
         }
 
         return {
-          title: title || 'Resultado',
-          summary: truncate(text)
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
         };
       } catch (_) {
         return null;
@@ -174,15 +205,19 @@
     const key = keyFor(url.href);
     let item = key ? catalog.get(key) : null;
 
-    if ((!item || !item.summary) && RESULT_HASH.test(url.hash)) {
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
       item = await fallbackFromTarget(url);
     }
 
     if (token !== requestToken || !item || !item.summary) return;
 
+    const kind = item.kind || kindForHash(url.hash);
     activeLink = link;
-    titleEl.textContent = item.title || cleanText(link.textContent) || 'Resultado';
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
     summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
     link.setAttribute('aria-describedby', panel.id);
     panel.hidden = false;
     requestAnimationFrame(() => position(link));
@@ -194,10 +229,12 @@
     const key = keyFor(url.href);
     if (!key) return;
 
-    const isCandidate = catalog.has(key) || RESULT_HASH.test(url.hash);
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
     if (!isCandidate) return;
 
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
     link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
     link.classList.add('ma-result-link');
 
     link.addEventListener('mouseenter', () => show(link));
