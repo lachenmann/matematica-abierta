@@ -38,7 +38,14 @@ const path=require('node:path');
     page.off('pageerror',handler);
     if(['index','capitulo-01','capitulo-16','matriz-hipotesis','apendice-d','bibliografia'].includes(name))
      await page.screenshot({path:path.join(out,`${name}-${width}-${theme}.png`),fullPage:true});
-    if(data.bodyWidth>data.viewport+2){console.log(JSON.stringify(findings.at(-1),null,2));throw new Error(`Horizontal overflow: ${name} ${width}px ${theme}`);}
+    if(data.bodyWidth>data.viewport+2){
+     const diagnostics=await page.evaluate(()=>({scrollX,rootWidth:document.documentElement.clientWidth,
+      wide:[...document.querySelectorAll('body *')].filter(x=>x.getBoundingClientRect().right>innerWidth+2).slice(0,15).map(x=>({tag:x.tagName,classes:x.className,right:x.getBoundingClientRect().right,parent:x.parentElement?.className,text:x.textContent.slice(0,100)})),
+      regions:[...document.querySelectorAll('.tf-table,.sourceCode,pre,main,#quarto-content')].map(x=>({tag:x.tagName,classes:x.className,display:getComputedStyle(x).display,overflow:getComputedStyle(x).overflowX,width:x.clientWidth,scroll:x.scrollWidth,right:x.getBoundingClientRect().right}))}));
+     await page.addStyleTag({content:'.tf-table,.sourceCode,pre,.math.inline,.math.display {contain:layout paint;}'});
+     diagnostics.containedWidth=await page.evaluate(()=>document.documentElement.scrollWidth);
+     console.log(JSON.stringify({finding:findings.at(-1),diagnostics},null,2));throw new Error(`Horizontal overflow: ${name} ${width}px ${theme}`);
+    }
    }
   }
  } finally {await browser.close();fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(findings,null,2));}
