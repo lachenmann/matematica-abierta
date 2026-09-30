@@ -30,12 +30,42 @@ Se presupone familiaridad con aritmética, álgebra elemental, conjuntos y cuant
 
 La primera entrega reúne **cuatro capítulos completos**, **162 ejercicios con soluciones desarrolladas**, **233 microcontroles con sus soluciones** y **41 figuras originales** que cubren 42 ubicaciones visuales. Conviene resolver las actividades antes de consultar las respuestas.
 
-| Capítulo | Tema | Ejercicios | Microcontroles |
-|---|---|---:|---:|
-| 1 | [La recta real como espacio ordenado y métrico](../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.md) | 42 | 38 |
-| 2 | [Cotas, extremos y barreras](../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.md) | 40 | 46 |
-| 3 | [Completitud: una recta sin huecos](../capitulos/analisis-para-matematicos-capitulo-3-completitud.md) | 40 | 84 |
-| 4 | [Mirar localmente un conjunto](../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.md) | 40 | 65 |
+<table class="ma-chapter-table">
+<thead>
+<tr>
+<th scope="col">Capítulo</th>
+<th scope="col">Tema</th>
+<th scope="col">Ejercicios</th>
+<th scope="col">Microcontroles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="../capitulos/analisis-para-matematicos-capitulo-1-recta-real-ordenada-y-metrica.html">La recta real como espacio ordenado y métrico</a></td>
+<td>42</td>
+<td>38</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="../capitulos/analisis-para-matematicos-capitulo-2-cotas-extremos-y-barreras.html">Cotas, extremos y barreras</a></td>
+<td>40</td>
+<td>46</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="../capitulos/analisis-para-matematicos-capitulo-3-completitud.html">Completitud: una recta sin huecos</a></td>
+<td>40</td>
+<td>84</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="../capitulos/analisis-para-matematicos-capitulo-4-mirar-localmente-un-conjunto.html">Mirar localmente un conjunto</a></td>
+<td>40</td>
+<td>65</td>
+</tr>
+</tbody>
+</table>
 
 Cada capítulo enlaza su banco de ejercicios, el solucionario principal y las soluciones de los microcontroles incluidos en la exposición.
 
