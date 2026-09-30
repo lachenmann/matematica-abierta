@@ -3,8 +3,14 @@
   'use strict';
 
   const CATALOGS = [
-    new URL('/teoria/resultados/index.html', window.location.origin),
-    new URL('/teoria/metodos/index.html', window.location.origin)
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
   ];
   const PREVIEW_HASH = /^#(?:res|met|def)-/i;
   const cache = new Map();
@@ -42,10 +48,11 @@
     }
   };
 
-  const kindForHash = hash => {
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
     if (/^#met-/i.test(hash)) return 'method';
     if (/^#def-/i.test(hash)) return 'definition';
-    return 'result';
+    return fallback;
   };
 
   const labelForKind = kind => ({
@@ -68,7 +75,7 @@
     return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
   };
 
-  const readCatalog = async catalogUrl => {
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
     try {
       const response = await fetch(catalogUrl, { credentials: 'same-origin' });
       if (!response.ok) return [];
@@ -90,7 +97,7 @@
         entries.push([key, {
           title: cleanText(link.textContent),
           summary,
-          kind: kindForHash(url.hash)
+          kind: kindForHash(url.hash, defaultKind)
         }]);
       });
 
