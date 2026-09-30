@@ -657,15 +657,15 @@ Dualizando el argumento anterior obtenemos:
 
 Sea $A\subseteq\mathbb R$ no vacío y acotado inferiormente, y sea
 
-$
+$$
 i=\inf A.
-$
+$$
 
 Entonces, para todo $\varepsilon>0$, existe $x\in A$ tal que
 
-$
+$$
 \boxed{i\le x<i+\varepsilon.}
-$
+$$
 
 Recíprocamente, una [cota inferior](#def-ma-con-0016-cota-inferior) $i$ con esta propiedad es necesariamente el [ínfimo](#def-ma-con-0016-infimo) de $A$.
 :::
@@ -715,15 +715,15 @@ Dualmente:
 
 Sean $A,B\subseteq\mathbb R$ no vacíos y acotados inferiormente. Si
 
-$
+$$
 A\subseteq B,
-$
+$$
 
 entonces
 
-$
+$$
 \boxed{\inf B\le\inf A.}
-$
+$$
 :::
 
 La demostración es dual: toda cota inferior de $A$ es también cota inferior de $B$, y el [ínfimo](#def-ma-con-0016-infimo) es la mayor de las cotas inferiores.
