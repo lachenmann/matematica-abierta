@@ -107,8 +107,8 @@ $$
 
 La salida de $f$ pertenece a $B$, y $B$ es precisamente el conjunto desde el que $g$ acepta entradas.
 
-::: {.ma-block .ma-definicion}
-**Definición**
+::: {#def-ma-con-0008-composicion .ma-block .ma-definicion}
+**Definición — composición**
 
 Si $f:A\to B$ y $g:B\to C$, entonces
 
@@ -377,7 +377,7 @@ $$
 es válida para los valores de $x$ para los que $\sqrt{x}$ está definida como número real, es decir, para $x\ge0$.
 :::
 
-## La función identidad
+## La función identidad {#def-ma-con-0008-identidad}
 
 Para cualquier conjunto $A$, definimos la **función identidad sobre $A$** por
 
