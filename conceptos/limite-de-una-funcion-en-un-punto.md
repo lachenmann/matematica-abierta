@@ -147,7 +147,7 @@ La intuición de proximidad se vuelve rigurosa mediante dos números positivos:
 - $\varepsilon$ controla la distancia permitida entre $f(x)$ y $L$;
 - $\delta$ controla la distancia permitida entre $x$ y $a$.
 
-::: {.ma-block .ma-definicion}
+::: {#def-ma-con-0011-limite .ma-block .ma-definicion}
 **Definición de límite**
 
 Sea
