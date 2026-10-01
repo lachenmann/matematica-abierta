@@ -36,7 +36,7 @@ try {
         check.status=response.status();check.errors=errors;
         check.pass=check.status===200&&check.pageWidth<=width+2&&check.math>0&&check.mathErrors===0&&check.failedImages.length===0&&check.missingAlt===0&&check.unresolved===0&&check.duplicateIds.length===0&&errors.length===0;
         await page.screenshot({path:path.join(output,`${row.chapter}-${width}.png`),fullPage:true});
-      } catch(e) {check.exception=e.message;}
+      } catch(e) {check.pass=false;check.exception=e.message;}
       checks.push(check);
       fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({complete:checks.length===100,checks},null,2));
       console.log(JSON.stringify(check));
