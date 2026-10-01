@@ -169,6 +169,8 @@ class MAVizC13RiemannRefinement(Scene):
 
         self.play(
             FadeOut(formula),
+            FadeOut(gap_label),
+            FadeOut(n_label),
             Create(term_brace),
             FadeIn(width_label),
             Create(sample_height),
