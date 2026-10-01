@@ -9,7 +9,8 @@ Fuente interna: T1-C14.md — Del área y las sumas a la integral.
 La primera prueba mezclaba dos ideas en una sola escena y dejaba residuos de fórmulas y etiquetas. La versión 2 adopta fondo oscuro y separa:
 
 - MA-VIZ-C13-002 — encierro y refinamiento;
-- MA-VIZ-C13-003 — de una franja a una suma de Riemann.
+- MA-VIZ-C13-003 — de una franja a una suma de Riemann;
+- MA-VIZ-C13-004 — integral con signo frente a área geométrica total.
 
 ## Render rápido
 
@@ -21,10 +22,15 @@ Segunda escena:
 
     uv run manim -pql ma_cls_c13_p01/scene.py MAVizC13RiemannTermToSum
 
+Tercera escena:
+
+    uv run manim -pql ma_cls_c13_p01/scene.py MAVizC13SignedIntegralVsArea
+
 Ambas en alta calidad:
 
     uv run manim -pqh ma_cls_c13_p01/scene.py MAVizC13RiemannRefinement
     uv run manim -pqh ma_cls_c13_p01/scene.py MAVizC13RiemannTermToSum
+    uv run manim -pqh ma_cls_c13_p01/scene.py MAVizC13SignedIntegralVsArea
 
 ## Estado
 

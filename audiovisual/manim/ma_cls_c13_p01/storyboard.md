@@ -78,6 +78,54 @@ Desaparecen las marcas de la franja aislada y aparece
 
 Se identifica como **suma de Riemann**, pero se explicita que todavía no estamos definiendo la integral general.
 
+## MA-VIZ-C13-004 — Integral con signo y área geométrica total
+
+**Anclaje canónico:** ejemplo exm-t1-0179 de §13.5.
+
+La función escalonada satisface
+
+\[
+s(x)=1\quad(0<x<1),\qquad s(x)=-1\quad(1<x<2).
+\]
+
+### Fase A — dos contribuciones con signo
+
+Se muestran simultáneamente la franja positiva y la negativa, codificadas por color.
+
+### Fase B — cancelación
+
+La relación dominante es
+
+\[
+\int_0^2 s(x)\,dx
+=1\cdot1+(-1)\cdot1
+=0.
+\]
+
+### Fase C — pasar a \(|s|\)
+
+La franja negativa se refleja conceptualmente sobre el eje horizontal. Ambas franjas pasan a aportar área geométrica positiva.
+
+La relación dominante es
+
+\[
+\int_0^2 |s(x)|\,dx
+=1\cdot1+1\cdot1
+=2.
+\]
+
+### Fase D — contraste final
+
+\[
+\int_0^2 s(x)\,dx=0,
+\qquad
+\int_0^2 |s(x)|\,dx=2.
+\]
+
+Cierre: **integral con signo ≠ área geométrica total**.
+
+No se utiliza todavía la integral de Riemann de una función general; la escena trabaja exclusivamente con la integral elemental de una función escalonada.
+
 ## Reglas visuales fijadas
 
 1. Fondo oscuro.

@@ -11,6 +11,7 @@ MA_MUTED = "#A9B4BF"
 MA_BLUE = "#4DA3D9"
 MA_ORANGE = "#F29D62"
 MA_GREEN = "#58C4A3"
+MA_NEG = "#E06C75"
 
 config.background_color = MA_BG
 
@@ -44,6 +45,39 @@ def make_axes():
     curve_label = MAMathTex("f(x)=x^2", color=MA_TEXT, font_size=32)
     curve_label.next_to(axes.c2p(0.67, 0.77), LEFT, buff=0.12)
     return axes, labels, curve, curve_label
+
+
+def make_signed_axes():
+    axes = Axes(
+        x_range=[-0.1, 2.15, 0.5],
+        y_range=[-1.25, 1.25, 0.5],
+        x_length=7.0,
+        y_length=4.6,
+        axis_config={"color": MA_MUTED, "stroke_width": 2},
+        tips=False,
+    ).shift(LEFT * 2.25 + DOWN * 0.45)
+
+    labels = axes.get_axis_labels(
+        x_label=MAMathTex("x", color=MA_TEXT, font_size=30),
+        y_label=MAMathTex("y", color=MA_TEXT, font_size=30),
+    )
+    x_marks = VGroup(
+        *[
+            MAMathTex(str(k), color=MA_MUTED, font_size=24).next_to(
+                axes.c2p(k, 0), DOWN, buff=0.10
+            )
+            for k in (0, 1, 2)
+        ]
+    )
+    y_marks = VGroup(
+        MAMathTex("1", color=MA_MUTED, font_size=24).next_to(
+            axes.c2p(0, 1), LEFT, buff=0.12
+        ),
+        MAMathTex("-1", color=MA_MUTED, font_size=24).next_to(
+            axes.c2p(0, -1), LEFT, buff=0.12
+        ),
+    )
+    return axes, labels, x_marks, y_marks
 
 
 def make_header(title: str, subtitle: str):
@@ -416,3 +450,213 @@ class MAVizC13RiemannTermToSum(Scene):
 
         self.play(FadeIn(caution), run_time=0.55)
         self.wait(1.3)
+
+
+
+class MAVizC13SignedIntegralVsArea(Scene):
+    """MA-VIZ-C13-004 — Integral con signo frente a área geométrica total."""
+
+    def construct(self):
+        self.camera.background_color = MA_BG
+
+        header = make_header(
+            "Integral con signo y área",
+            "cancelar no es lo mismo que medir área geométrica total",
+        )
+        axes, labels, x_marks, y_marks = make_signed_axes()
+        panel = make_panel()
+
+        positive_region = graph_rect(axes, 0, 1, 1, MA_GREEN, 0.30)
+        negative_region = graph_rect(axes, 1, 2, -1, MA_NEG, 0.30)
+
+        positive_segment = Line(
+            axes.c2p(0, 1),
+            axes.c2p(1, 1),
+            color=MA_TEXT,
+            stroke_width=4,
+        )
+        negative_segment = Line(
+            axes.c2p(1, -1),
+            axes.c2p(2, -1),
+            color=MA_TEXT,
+            stroke_width=4,
+        )
+
+        open_points = VGroup(
+            *[
+                Circle(radius=0.055, color=MA_TEXT, stroke_width=2).set_fill(
+                    MA_BG, opacity=1
+                ).move_to(axes.c2p(x, y))
+                for x, y in ((0, 1), (1, 1), (1, -1), (2, -1))
+            ]
+        )
+
+        self.play(FadeIn(header), FadeIn(panel), run_time=0.8)
+        self.play(
+            Create(axes),
+            FadeIn(labels),
+            FadeIn(x_marks),
+            FadeIn(y_marks),
+            run_time=1.0,
+        )
+        self.play(
+            FadeIn(positive_region),
+            FadeIn(negative_region),
+            Create(positive_segment),
+            Create(negative_segment),
+            FadeIn(open_points),
+            run_time=1.0,
+        )
+
+        function_label = MAMathTex(
+            r"s(x)=1\ \text{en }(0,1),\qquad s(x)=-1\ \text{en }(1,2)",
+            color=MA_TEXT,
+            font_size=28,
+        ).move_to(panel.get_top() + DOWN * 0.60)
+        fit_to_panel(function_label, panel)
+
+        plus_row = VGroup(
+            Dot(radius=0.065, color=MA_GREEN),
+            Text("contribución positiva", font_size=19, color=MA_GREEN),
+        ).arrange(RIGHT, buff=0.16)
+        minus_row = VGroup(
+            Dot(radius=0.065, color=MA_NEG),
+            Text("contribución negativa", font_size=19, color=MA_NEG),
+        ).arrange(RIGHT, buff=0.16)
+        signs = VGroup(plus_row, minus_row).arrange(
+            DOWN, aligned_edge=LEFT, buff=0.18
+        ).move_to(panel.get_center() + UP * 0.55)
+        fit_to_panel(signs, panel)
+
+        self.play(FadeIn(function_label), FadeIn(signs), run_time=0.8)
+        self.wait(0.7)
+
+        signed_formula = VGroup(
+            MAMathTex(
+                r"\int_0^2 s(x)\,dx",
+                color=MA_TEXT,
+                font_size=35,
+            ),
+            MAMathTex(
+                r"=1\cdot1+(-1)\cdot1=0",
+                color=MA_GREEN,
+                font_size=33,
+            ),
+        ).arrange(DOWN, buff=0.20)
+        signed_formula.move_to(panel.get_center() + DOWN * 0.68)
+        fit_to_panel(signed_formula, panel)
+
+        self.play(FadeIn(signed_formula), run_time=0.8)
+        self.wait(1.0)
+
+        self.play(
+            FadeOut(function_label),
+            FadeOut(signs),
+            FadeOut(signed_formula),
+            run_time=0.45,
+        )
+
+        abs_positive = graph_rect(axes, 0, 1, 1, MA_ORANGE, 0.28)
+        abs_negative = graph_rect(axes, 1, 2, 1, MA_ORANGE, 0.28)
+        abs_segment = Line(
+            axes.c2p(0, 1),
+            axes.c2p(2, 1),
+            color=MA_TEXT,
+            stroke_width=4,
+        )
+        abs_points = VGroup(
+            *[
+                Circle(radius=0.055, color=MA_TEXT, stroke_width=2).set_fill(
+                    MA_BG, opacity=1
+                ).move_to(axes.c2p(x, 1))
+                for x in (0, 1, 2)
+            ]
+        )
+
+        self.play(
+            FadeOut(positive_region),
+            FadeOut(negative_region),
+            FadeOut(positive_segment),
+            FadeOut(negative_segment),
+            FadeOut(open_points),
+            run_time=0.35,
+        )
+        self.play(
+            FadeIn(abs_positive),
+            FadeIn(abs_negative),
+            FadeIn(abs_segment),
+            FadeIn(abs_points),
+            run_time=0.9,
+        )
+
+        abs_label = MAMathTex(
+            r"|s(x)|=1",
+            color=MA_ORANGE,
+            font_size=38,
+        ).move_to(panel.get_center() + UP * 0.72)
+        fit_to_panel(abs_label, panel)
+
+        area_formula = VGroup(
+            MAMathTex(
+                r"\int_0^2 |s(x)|\,dx",
+                color=MA_TEXT,
+                font_size=35,
+            ),
+            MAMathTex(
+                r"=1\cdot1+1\cdot1=2",
+                color=MA_ORANGE,
+                font_size=33,
+            ),
+        ).arrange(DOWN, buff=0.20)
+        area_formula.move_to(panel.get_center() + DOWN * 0.15)
+        fit_to_panel(area_formula, panel)
+
+        area_note = panel_paragraph(
+            panel,
+            "área geométrica total",
+            font_size=18,
+            color=MA_MUTED,
+        ).next_to(area_formula, DOWN, buff=0.30)
+        fit_to_panel(area_note, panel)
+
+        self.play(
+            FadeIn(abs_label),
+            FadeIn(area_formula),
+            FadeIn(area_note),
+            run_time=0.8,
+        )
+        self.wait(1.0)
+
+        self.play(
+            FadeOut(abs_label),
+            FadeOut(area_formula),
+            FadeOut(area_note),
+            run_time=0.40,
+        )
+
+        comparison = VGroup(
+            MAMathTex(
+                r"\int_0^2 s(x)\,dx=0",
+                color=MA_GREEN,
+                font_size=34,
+            ),
+            MAMathTex(
+                r"\int_0^2 |s(x)|\,dx=2",
+                color=MA_ORANGE,
+                font_size=34,
+            ),
+        ).arrange(DOWN, buff=0.32)
+        comparison.move_to(panel.get_center() + UP * 0.35)
+        fit_to_panel(comparison, panel)
+
+        conclusion = panel_paragraph(
+            panel,
+            "integral con signo ≠",
+            "área geométrica total",
+            font_size=20,
+            color=MA_TEXT,
+        ).next_to(comparison, DOWN, buff=0.48)
+        fit_to_panel(conclusion, panel)
+
+        self.play(FadeIn(comparison), FadeIn(conclusion), run_time=0.85)
+        self.wait(1.5)
