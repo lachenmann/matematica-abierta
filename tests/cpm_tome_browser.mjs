@@ -10,14 +10,29 @@ const output=path.join(root,'cpm-browser-qa');
 fs.mkdirSync(output,{recursive:true});
 const browser=await chromium.launch({headless:true});
 const checks=[];
+let phase={name:'launch',chapter:null,width:null};
+function checkpoint(name,chapter,width=null) {
+  phase={name,chapter,width,time:new Date().toISOString()};
+  fs.writeFileSync(path.join(output,'progress.json'),JSON.stringify({phase,checks},null,2));
+  console.log(JSON.stringify({phase}));
+}
 try {
   for(const row of rows) {
+    checkpoint('open-page',row.chapter);
+    // Independent Node timer also fires if Chromium's rendering thread stalls.
+    const watchdog=setTimeout(()=>{
+      fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({status:'FAIL',complete:false,exception:'Chapter exceeded five minutes',phase,checks},null,2));
+      console.error('Chapter watchdog expired: '+JSON.stringify(phase));
+      process.exit(1);
+    },300000);
     const page=await browser.newPage({viewport:{width:320,height:900}});
     const errors=[];
     page.on('pageerror',e=>errors.push(e.message));
     let response,loadError;
     try {
+      checkpoint('navigate',row.chapter);
       response=await page.goto(base+'/'+row.path.replace(/\.md$/,'.html'),{waitUntil:'networkidle',timeout:120000});
+      checkpoint('mathjax-startup',row.chapter);
       await page.waitForFunction(()=>!!window.MathJax?.startup?.promise,{timeout:120000});
       await page.evaluate(async()=>{await Promise.race([Promise.all([window.MathJax.startup.promise,document.fonts.ready]),new Promise((_,reject)=>setTimeout(()=>reject(new Error('MathJax/font startup exceeded 120 seconds')),120000))]);});
     } catch(e) {loadError=e.message;}
@@ -25,8 +40,10 @@ try {
       const check={chapter:row.chapter,width,pass:false};
       try {
         if(loadError)throw new Error(loadError);
+        checkpoint('resize',row.chapter,width);
         await page.setViewportSize({width,height:900});
         await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+        checkpoint('inspect',row.chapter,width);
         Object.assign(check,await page.evaluate(()=>{
           const main=document.querySelector('main');
           // Quarto clones its TOC for responsive navigation; audit manuscript IDs.
@@ -45,6 +62,7 @@ try {
         check.pass=check.status===200&&check.pageWidth<=width+2&&check.math>0&&check.math===check.sourceMath&&check.mathErrors===0&&check.failedImages.length===0&&check.missingAlt===0&&check.unresolved===0&&check.duplicateIds.length===0&&check.overflowing.length===0&&errors.length===0;
         const height=await page.evaluate(()=>document.documentElement.scrollHeight);
         for(const [part,y] of [['start',0],['middle',height/2],['end',height]]) {
+          checkpoint('capture-'+part,row.chapter,width);
           await page.evaluate(y=>window.scrollTo(0,y),y);
           await page.screenshot({path:path.join(output,`${row.chapter}-${width}-${part}.png`),timeout:20000,animations:'disabled'});
         }
@@ -53,7 +71,9 @@ try {
       fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({complete:checks.length===100,checks},null,2));
       console.log(JSON.stringify(check));
     }
+    checkpoint('close-page',row.chapter);
     await page.close();
+    clearTimeout(watchdog);
   }
 } finally {await browser.close();}
 const pass=checks.length===100&&checks.every(e=>e.pass);
