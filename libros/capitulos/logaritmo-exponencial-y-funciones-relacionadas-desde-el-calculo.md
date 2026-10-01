@@ -39,6 +39,9 @@ crossref:
 format:
   html:
     css: calculo-para-matematicos.css
+    html-math-method:
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
 # Logaritmo, exponencial y funciones relacionadas desde el cálculo {#sec-t1-c18}

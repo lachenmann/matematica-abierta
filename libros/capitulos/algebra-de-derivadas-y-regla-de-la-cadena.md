@@ -29,6 +29,9 @@ crossref:
 format:
   html:
     css: calculo-para-matematicos.css
+    html-math-method:
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
 # Álgebra de derivadas y regla de la cadena {#sec-t1-c08}
