@@ -97,3 +97,16 @@ El preview silencioso `MAClsC13P01` fue revisado sobre el render CI completo.
 - sincronización temporal con narración: **PENDIENTE**.
 
 La duración editorial objetivo sigue siendo aproximadamente **185 s**. El preview silencioso no debe estirarse artificialmente antes de disponer de una voz de referencia.
+
+
+## Temporización de voz
+
+La narración fue segmentada y medida en `narration-cues.yml`.
+
+- 353 palabras habladas equivalentes;
+- ritmo de referencia: 115 palabras/minuto;
+- voz estimada: 184,1 s;
+- permanencia final: 0,9 s;
+- objetivo total: **185,0 s**.
+
+La expansión desde el preview silencioso de 49,799 s será semántica, no un ralentizado uniforme. Véase `TIMING.md`.
