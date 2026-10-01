@@ -1,0 +1,264 @@
+---
+title: Capítulo 15. Familias naturales de funciones y reconstrucción mediante sondas
+document-id: TF-CAT-015
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-015
+source-version: 1.0.4
+date-modified: '2026-10-01'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-015
+    locator: TF-CAT-015 - Familias naturales de funciones y reconstruccion mediante
+      sondas.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0131
+content-type: book-chapter
+source-id: TF-T1-C15
+description: 'Tratado fundacional de la teoría de funciones: capítulo 15, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: teoría de categorías localmente pequeñas; categoría índice pequeña para
+  formar conjuntos de transformaciones; Set en ZF sin AC para ejemplos de acciones
+  y familias de productos
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Pregunta rectora
+¿Cuándo una familia de funciones descrita para cada objeto constituye **una transformación coherente**? ¿Cómo recuperamos una flecha examinando su comportamiento ante todas las sondas, y por qué esa recuperación no es automáticamente un algoritmo?
+:::
+
+
+En [TF-CAT-013](capitulo-13.qmd) se obtuvo la recuperación elemental de una flecha mediante la identidad (Yoneda). [TF-CAT-014](capitulo-14.qmd) distinguió equivalencia semántica, representaciones computables y separación por observadores. Aquí convertimos esas intuiciones en una arquitectura: **funtores, naturalidad, objetos representables y sondas**. No postulamos que una categoría sea pequeña cuando no lo es, ni que observar todos los componentes de una transformación suministre un decisor de igualdad.
+
+## 15.1. De funciones aisladas a transformaciones coherentes
+
+<a id="TF-DEF-00066"></a>
+
+**Definición 15.1.1 — Funtor covariante y contravariante** <!-- result-id: TF-DEF-00066; depends-on: TF-AX-00001, TF-AX-00002, TF-DEF-00054 -->
+
+Para categorías $\mathcal J,\mathcal C$, un *funtor covariante* $F:\mathcal J\to\mathcal C$ asigna objetos $j\mapsto Fj$ y flechas $u:j\to k$ a flechas $Fu:Fj\to Fk$, conservando $F1_j=1_{Fj}$ y $F(vu)=Fv\,Fu$. Un funtor *contravariante* $H:\mathcal J^{\mathrm{op}}\to\mathcal C$ invierte la dirección: a $u:j\to k$ corresponde $H(u):Hk\to Hj$ y $H(vu)=H(u)H(v)$. No identificamos las categorías opuesta y original; la inversión es parte de los tipos de las flechas.
+
+<a id="TF-DEF-00067"></a>
+
+**Definición 15.1.2 — Transformación natural** <!-- result-id: TF-DEF-00067; depends-on: TF-DEF-00066, TF-DEF-00003 -->
+
+Dados funtores $F,G:\mathcal J\to\mathcal C$, una transformación natural $\alpha:F\Rightarrow G$ es una familia **especificada** $\alpha_j:Fj\to Gj$ tal que para toda flecha $u:j\to k$,
+
+$$G(u)\circ\alpha_j=\alpha_k\circ F(u).\tag{15.1}$$
+
+Su componente está definida para *cada* objeto, pero la condición (15.1) no se deduce de esa definición individual. Para dos funtores contravariantes se invierten apropiadamente las direcciones; la igualdad natural conserva su significado de conmutación de cuadrados.
+
+<a id="TF-THM-00115"></a>
+
+**Teorema 15.1.3 — Categoría de funtores y transformaciones naturales** <!-- result-id: TF-THM-00115; depends-on: TF-DEF-00066, TF-DEF-00067, TF-AX-00001, TF-AX-00002 -->
+
+Si $\mathcal J$ es pequeña y $\mathcal C$ localmente pequeña, los funtores $\mathcal J\to\mathcal C$ y sus transformaciones naturales forman una categoría localmente pequeña $[\mathcal J,\mathcal C]$. La identidad tiene componentes $(1_F)_j=1_{Fj}$ y la composición vertical viene dada por $(\beta\alpha)_j=\beta_j\alpha_j$.
+
+*Demostración.* Para cada $u:j\to k$, la naturalidad de $\alpha:F\Rightarrow G$ y $\beta:G\Rightarrow H$ da
+
+$$H(u)\beta_j\alpha_j=\beta_kG(u)\alpha_j=\beta_k\alpha_kF(u),$$
+
+que es (15.1) para $\beta\alpha$. Las identidades son naturales porque $F(u)1_{Fj}=1_{Fk}F(u)$. Asociatividad e identidades de transformaciones se verifican en cada componente y siguen de las leyes de $\mathcal C$. Finalmente, las familias de componentes están contenidas en el producto conjuntista $\prod_{j\in\mathrm{Ob}\mathcal J}\operatorname{Hom}_{\mathcal C}(Fj,Gj)$; como $\mathcal J$ es pequeña y los hom son conjuntos, este producto es un conjunto. La naturalidad define un subconjunto por separación. Que el producto pudiera ser vacío no afecta al argumento; no se eligió un componente por objeto a partir de existencias individuales. $\square$
+
+<a id="TF-THM-00116"></a>
+
+**Teorema 15.1.4 — Invertibilidad componente a componente** <!-- result-id: TF-THM-00116; depends-on: TF-DEF-00067, TF-THM-00115, TF-DEF-00001 -->
+
+Una transformación natural $\alpha:F\Rightarrow G$ es un isomorfismo de funtores si y sólo si cada $\alpha_j$ es un isomorfismo en $\mathcal C$.
+
+*Demostración.* Si $\beta$ es inversa natural, $\beta_j\alpha_j=1_{Fj}$ y $\alpha_j\beta_j=1_{Gj}$, de modo que $\alpha_j$ es invertible. Recíprocamente, sea $\beta_j=\alpha_j^{-1}$ la **única** inversa de cada componente. No hay elección arbitraria. De (15.1), $G(u)\alpha_j=\alpha_kF(u)$, componiendo por $\alpha_k^{-1}$ a izquierda y $\alpha_j^{-1}$ a derecha resulta
+
+$$F(u)\beta_j=\beta_kG(u),$$
+
+la naturalidad de $\beta:G\Rightarrow F$. Las composiciones componente a componente son identidades y $\beta$ es la inversa natural. $\square$
+
+<a id="TF-CEX-00020"></a>
+
+**Contraejemplo 15.1.5 — Biyectividad componente a componente sin naturalidad** <!-- result-id: TF-CEX-00020; depends-on: TF-DEF-00067, TF-THM-00116 -->
+
+Sea $\mathcal J$ la categoría con objetos $0,1$, identidades y una flecha adicional $u:0\to1$. Sean $F=G$ el funtor constante sobre $B=\{a,b\}$, que envía $u$ a $1_B$. Pongamos $\alpha_0=1_B$ y $\alpha_1$ igual a la transposición $a\leftrightarrow b$. Ambas son biyecciones, pero $G(u)\alpha_0=1_B\ne\alpha_1=\alpha_1F(u)$. Esta familia *no es* una transformación natural, y el teorema anterior no puede aplicarse. Una colección de biyecciones no constituye por sí misma un cambio de coordenadas coherente.
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+::: {.callout-note}
+## Alcance nuevo de Yoneda
+[TF-CAT-002](capitulo-02.qmd) establece la separación por etapas (`TF-THM-00009`), y [TF-CAT-013](capitulo-13.qmd) recupera una flecha de la acción natural sobre representables (`TF-THM-00105`). Aquí se demuestra la **biyección natural para un prehaz** y el encaje pleno y fiel de Yoneda (`TF-THM-00117`–`00120`); [TF-CAT-016](capitulo-16.qmd) usará esos resultados para un colímite de representables, que no implica representabilidad individual. Mapa del recorrido.
+:::
+
+
+## 15.2. Representables: la identidad como dato universal de recuperación
+
+<a id="TF-DEF-00068"></a>
+
+**Definición 15.2.1 — Funtores Hom representables** <!-- result-id: TF-DEF-00068; depends-on: TF-DEF-00066, TF-DEF-00007, TF-DEF-00056 -->
+
+Sea $\mathcal C$ localmente pequeña. Para $A\in\mathcal C$ definimos el funtor contravariante $yA=\operatorname{Hom}_{\mathcal C}(-,A):\mathcal C^{\mathrm{op}}\to\mathbf{Set}$, que envía $u:Y\to X$ a la función $f:X\to A\mapsto f\circ u:Y\to A$. Su versión covariante es $h_A=\operatorname{Hom}_{\mathcal C}(A,-):\mathcal C\to\mathbf{Set}$, con $h_A(u)(f)=u\circ f$. Ambas cumplen las leyes de funtor por asociatividad y unidad. Para hablar de la categoría $[\mathcal C^{\mathrm{op}},\mathbf{Set}]$ como localmente pequeña exigimos en lo sucesivo que $\mathcal C$ sea **pequeña**; los argumentos de recuperación para un objeto fijo también son válidos en una categoría localmente pequeña grande cuando se interpretan las familias como datos de clase adecuados.
+
+<a id="TF-THM-00117"></a>
+
+**Teorema 15.2.2 — Lema de Yoneda contravariante con reconstrucción explícita** <!-- result-id: TF-THM-00117; depends-on: TF-DEF-00068, TF-DEF-00067, TF-THM-00105 -->
+
+Para un funtor contravariante $H:\mathcal C^{\mathrm{op}}\to\mathbf{Set}$ y $A\in\mathcal C$, existe una biyección canónica
+
+$$\operatorname{Nat}(yA,H)\longrightarrow H(A),\qquad\alpha\longmapsto\alpha_A(1_A).\tag{15.2}$$
+
+Su inversa envía $x\in H(A)$ a la familia $(\alpha^x)_X(f)=H(f)(x)$, para $f:X\to A$.
+
+*Demostración.* La fórmula de la inversa está correctamente tipada: $H(f):H(A)\to H(X)$. Si $u:Y\to X$, la ley contravariante produce
+
+$$H(u)((\alpha^x)_X(f))=H(u)H(f)(x)=H(fu)(x)=(\alpha^x)_Y(fu),$$
+
+la naturalidad de $\alpha^x$. En $A$, $(\alpha^x)_A(1_A)=H(1_A)(x)=x$. En el otro sentido, sea $\alpha:yA\Rightarrow H$, $x=\alpha_A(1_A)$ y $f:X\to A$. La naturalidad de $\alpha$ aplicada a $f$ e identidad $1_A$ obliga a
+
+$$\alpha_X(f)=H(f)(\alpha_A(1_A))=H(f)(x)=(\alpha^x)_X(f).$$
+
+La igualdad de componentes y de sus valores implica $\alpha=\alpha^x$. Las dos correspondencias son mutuamente inversas sin elegir representantes. Esta prueba precisa y refina la recuperación elemental establecida en `TF-THM-00105`. $\square$
+
+<a id="TF-THM-00118"></a>
+
+**Teorema 15.2.3 — Yoneda covariante** <!-- result-id: TF-THM-00118; depends-on: TF-DEF-00068, TF-DEF-00067, TF-THM-00117 -->
+
+Para $K:\mathcal C\to\mathbf{Set}$ y $A\in\mathcal C$ hay una biyección
+
+$$\operatorname{Nat}(h_A,K)\cong K(A),\qquad\alpha\longmapsto\alpha_A(1_A),$$
+
+con inversa $x\mapsto\bigl(\alpha^x_X(f)=K(f)(x)\bigr)$, para $f:A\to X$.
+
+*Demostración.* Para $u:X\to Y$, $K(u)\alpha^x_X(f)=K(u)K(f)(x)=K(uf)(x)=\alpha^x_Y(uf)$, así la familia es natural. El componente $A$ en $1_A$ recupera $x$ por preservación de identidades. Si $\alpha$ es natural, aplicar el cuadrado de $f:A\to X$ a $1_A$ da $\alpha_X(f)=K(f)(\alpha_A(1_A))$; por extensionalidad de funciones, las correspondencias son inversas. No se está usando la versión contravariante sin cambiar tipos: se ha repetido el argumento con el orden correcto de composición. $\square$
+
+<a id="TF-THM-00119"></a>
+
+**Teorema 15.2.4 — Naturalidad de la biyección de Yoneda** <!-- result-id: TF-THM-00119; depends-on: TF-THM-00117, TF-THM-00118, TF-DEF-00067 -->
+
+La correspondencia (15.2) es natural tanto en $H$ como, contravariantemente, en $A$: para $\tau:H\Rightarrow K$ se cumple $\tau_A(\alpha_A(1_A))=(\tau\alpha)_A(1_A)$; y para $f:A\to B$, la precomposición de $\beta:yB\Rightarrow H$ con $yf:yA\Rightarrow yB$ corresponde exactamente a $H(f)(\beta_B(1_B))$.
+
+*Demostración.* La primera igualdad es la definición de composición vertical y evaluación de componentes. Para la segunda, $(yf)_X(g)=fg$; en particular, $(yf)_A(1_A)=f$. Por tanto,
+
+$$(\beta\circ yf)_A(1_A)=\beta_A(f)=H(f)(\beta_B(1_B)),$$
+
+aplicando la naturalidad de $\beta$ al mapa $f$. Se obtiene un cuadrado conmutativo **de biyecciones**, no simplemente una coincidencia numérica para un objeto. $\square$
+
+<a id="TF-THM-00120"></a>
+
+**Teorema 15.2.5 — El encaje de Yoneda es pleno y fiel** <!-- result-id: TF-THM-00120; depends-on: TF-THM-00117, TF-THM-00119, TF-DEF-00068, TF-DEF-00054 -->
+
+Para $A,B\in\mathcal C$, todo $f:A\to B$ determina $yf:yA\Rightarrow yB$ con $(yf)_X(g)=f\circ g$, y la aplicación
+
+$$\operatorname{Hom}_{\mathcal C}(A,B)\longrightarrow\operatorname{Nat}(yA,yB),\quad f\longmapsto yf\tag{15.3}$$
+
+es biyectiva. Preserva identidades y composición. En particular, el funtor $y:\mathcal C\to[\mathcal C^{\mathrm{op}},\mathbf{Set}]$ es pleno y fiel cuando la categoría de funtores se forma bajo las hipótesis de tamaño ya fijadas.
+
+*Demostración.* Por `TF-THM-00117` con $H=yB$, $\operatorname{Nat}(yA,yB)\cong(yB)(A)=\operatorname{Hom}_{\mathcal C}(A,B)$. La transformación asociada al elemento $f$ tiene componente $g\mapsto(yB)(g)(f)=fg$, que es exactamente $yf$; la evaluación inversa envía $\alpha$ a $\alpha_A(1_A)$. Para identidades, $(y1_A)_X(g)=g$, y para $f:A\to B$, $q:B\to C$, $(yq\,yf)_X(g)=q(fg)=(qf)g=(y(qf))_X(g)$. Por tanto (15.3) es biyectiva y funtorial. A diferencia de la plenitud de una traducción computable, esta conclusión es **estructural**, no efectiva. $\square$
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+::: {.callout-note}
+## Sondas frente a observadores
+La condición de esta sección es la separación mediante **precomposición** $f x=g x$ (`TF-DEF-00069`, `TF-THM-00121`); difiere de la separación mediante **postcomposición** $t_i f=t_i g$ estudiada en [TF-CAT-014](capitulo-14.qmd) (`TF-DEF-00065`, `TF-THM-00113`). La comparación no autoriza atribuir un algoritmo a ninguna de las dos familias. Mapa del recorrido.
+:::
+
+
+## 15.3. Sondas suficientes y observadores insuficientes
+
+<a id="TF-DEF-00069"></a>
+
+**Definición 15.3.1 — Familia generadora de sondas** <!-- result-id: TF-DEF-00069; depends-on: TF-DEF-00007, TF-DEF-00065, TF-DEF-00005 -->
+
+Una familia suministrada de objetos $(P_i)_{i\in I}$ es *generadora* si, para todo par $f,g:A\rightrightarrows B$, de
+
+$$f\circ x=g\circ x\qquad\text{para todo }i\in I\text{ y todo }x:P_i\to A\tag{15.4}$$
+
+se sigue $f=g$. Aquí las sondas se **precomponen** con las flechas comparadas, a diferencia de los observadores $B\to C_i$ **postcompuestos** del capítulo 14. La familia de todas las identidades $1_A:A\to A$ separa tautológicamente, pero no es en general una familia *pequeña y fijada de antemano*.
+
+<a id="TF-THM-00121"></a>
+
+**Teorema 15.3.2 — Criterio de fidelidad por sondas** <!-- result-id: TF-THM-00121; depends-on: TF-DEF-00069, TF-DEF-00068, TF-THM-00007, TF-THM-00120 -->
+
+La familia $(P_i)$ es generadora si y sólo si el sistema de funtores $\operatorname{Hom}(P_i,-)$ distingue conjuntamente todas las flechas. En particular, $\{1\}$ es generadora si y sólo si el terminal es generador, **no** por el mero hecho de que exista un terminal.
+
+*Demostración.* Para $f:A\to B$, la acción de $h_{P_i}(f)$ en $x:P_i\to A$ es $f\circ x$. Igualdad de funciones $h_{P_i}(f)=h_{P_i}(g)$ equivale, por extensionalidad en Set, a la igualdad $fx=gx$ para todo $x$. Por tanto la implicación conjunta es literalmente (15.4). Para $P=1$, los mapas $1\to A$ son los elementos globales del capítulo 2 y la condición coincide con `TF-DEF-00005`; el resultado `TF-THM-00007` proporciona la misma separación. La familia de *todos* los representables distingue flechas por (15.3), aunque un único terminal puede no hacerlo. $\square$
+
+<a id="TF-CEX-00021"></a>
+
+**Contraejemplo 15.3.3 — En acciones de $C_2$, el terminal no basta, pero una órbita libre sí** <!-- result-id: TF-CEX-00021; depends-on: TF-DEF-00069, TF-THM-00121, TF-CEX-00001 -->
+
+En la categoría $C_2\text{-}\mathbf{Set}$, sea $P=C_2=\{e,s\}$ con acción izquierda regular ($s$ intercambia $e,s$). Una flecha $1\to P$ equivaldría a un punto fijo de $s$, que no existe. Las flechas equivariantes $1_P$ y $\sigma:P\to P$, $\sigma(e)=s$, $\sigma(s)=e$, son distintas; $\sigma$ es equivariante porque $C_2$ es abeliano, pero ninguna sonda $1\to P$ las distingue. En cambio, para cualquier $C_2$-conjunto $A$ y cada elemento dado $a\in A$, la fórmula $x_a(g)=g\cdot a$ define un mapa equivariante $P\to A$, único con $x_a(e)=a$. Si $f,g:A\to B$ satisfacen $fx=gx$ para toda $x:P\to A$, entonces $f(a)=(fx_a)(e)=(gx_a)(e)=g(a)$ para todo $a$; por extensionalidad $f=g$. Así la sonda **fija $P$** genera esta categoría mientras $1$ no la genera. No se escogió simultáneamente un elemento de cada órbita: cada $a$ aparece como variable ligada en una prueba universal.
+
+<a id="TF-THM-00122"></a>
+
+**Teorema 15.3.4 — Monomorfismos de diagramas conjuntistas detectados por componentes** <!-- result-id: TF-THM-00122; depends-on: TF-THM-00115, TF-THM-00118, TF-DEF-00067, TF-DEF-00003 -->
+
+Sea $\mathcal J$ pequeña y $\alpha:F\Rightarrow G$ una transformación de funtores $\mathcal J\to\mathbf{Set}$. Entonces $\alpha$ es monomorfismo en $[\mathcal J,\mathbf{Set}]$ si y sólo si cada $\alpha_j:Fj\to Gj$ es inyectiva.
+
+*Demostración.* Si cada $\alpha_j$ es inyectiva y $\alpha\beta=\alpha\gamma$ para $\beta,\gamma:H\Rightarrow F$, entonces $\alpha_j\beta_j=\alpha_j\gamma_j$ implica $\beta_j=\gamma_j$ para cada $j$; por igualdad componente a componente, $\beta=\gamma$.
+
+Recíprocamente, supongamos $\alpha$ mono y $\alpha_j(x)=\alpha_j(y)$ para $x,y\in Fj$. Consideremos el funtor covariante $h_j=\operatorname{Hom}_{\mathcal J}(j,-)$. Por Yoneda covariante, $x,y$ corresponden a transformaciones $\bar x,\bar y:h_j\Rightarrow F$, definidas en $k$ por $\bar x_k(u)=F(u)(x)$ y análogamente para $y$. Para $u:j\to k$, la naturalidad de $\alpha$ produce
+
+$$\alpha_k\bar x_k(u)=\alpha_kF(u)(x)=G(u)\alpha_j(x)=G(u)\alpha_j(y)=\alpha_k\bar y_k(u).$$
+
+Luego $\alpha\bar x=\alpha\bar y$; la monomorfía obliga $\bar x=\bar y$. Evaluando el componente $j$ en $1_j$, obtenemos $x=y$. Así cada componente es inyectiva. **No** extendemos esta implicación a cualquier categoría de valores sin disponer de las sondas representables y su codominio en Set. $\square$
+
+## 15.4. Parametrización natural: una función escondida en toda una familia
+
+<a id="TF-THM-00123"></a>
+
+**Teorema 15.4.1 — Las transformaciones naturales entre productos son funciones** <!-- result-id: TF-THM-00123; depends-on: TF-DEF-00067, TF-THM-00121, TF-AX-00004, TF-AX-00003 -->
+
+En el modelo conjuntista, sean $A,B$ conjuntos y los endofuntores $P_A(X)=X\times A$, $P_B(X)=X\times B$, con $P_A(u)=u\times1_A$. Toda transformación natural $\alpha:P_A\Rightarrow P_B$ está determinada de manera única por una función $h:A\to B$:
+
+$$\alpha_X(x,a)=(x,h(a))\qquad(X\text{ conjunto},\ x\in X,\ a\in A).\tag{15.5}$$
+
+Recíprocamente cada $h$ define esa transformación. La correspondencia entre familias naturales y funciones $h:A\to B$ no usa AC. Si se trabaja con la clase de *todos* los conjuntos, «familia natural» se entiende en el nivel metateórico de clases o en un universo escogido, no como una colección que ZF declare conjunto sin más.
+
+*Demostración.* Evaluemos el componente $\alpha_1:1\times A\to1\times B$, donde $1=\{*\}$. El único primer valor posible es $*$; por tanto existe una única función $h:A\to B$ dada por $\alpha_1(*,a)=(*,h(a))$. Para un conjunto $X$ y un elemento específico $x\in X$, sea $\widehat x:1\to X$ la flecha $*\mapsto x$. La naturalidad para $\widehat x$ dice
+
+$$\alpha_X(\widehat x(*),a)=(\widehat x\times1_B)(\alpha_1(*,a))=(x,h(a)).$$
+
+Esto es (15.5). En caso $X=\varnothing$, no existen parejas $(x,a)$ y la igualdad funcional es vacua; no se requiere un punto de $X$. En sentido inverso, dada $h$, definamos $\alpha^h_X(x,a)=(x,h(a))$. Para cualquier $u:X\to Y$,
+
+$$(u\times1_B)\alpha^h_X(x,a)=(u(x),h(a))=\alpha^h_Y(u(x),a)$$
+
+verifica (15.1). Evaluar en $1$ recupera $h$ y reconstruir mediante (15.5) recupera $\alpha$; son inversas. No afirmamos que computar $h$ sea posible sin una representación efectiva de sus valores ni que la igualdad de dos tales familias sea decidible. $\square$
+
+<a id="TF-EXA-00030"></a>
+
+**Ejemplo 15.4.2 — Un cuadrado conmutativo calculado** <!-- result-id: TF-EXA-00030; depends-on: TF-DEF-00067, TF-THM-00123 -->
+
+Tomemos $A=\{0,1\}$, $B=\{p,q\}$ y $h(0)=p$, $h(1)=q$. Sean $X=\{x_0,x_1\}$, $Y=\{y\}$ y $u(x_0)=u(x_1)=y$. Para cada $i,j\in\{0,1\}$, los dos recorridos del cuadrado dan $((u\times1_B)\alpha_X)(x_i,j)=(y,h(j))=(\alpha_Y(u\times1_A))(x_i,j)$. La comprobación finita hace visible el papel de la naturalidad, pero el argumento del teorema 15.4.1 funciona para **todo** conjunto y toda flecha, no sólo para esta tabla.
+
+## 15.5. Contrato fundacional y frontera de formalización
+
+La reconstrucción por Yoneda es una identidad entre **datos matemáticos**: transformar naturalmente una función representable equivale a especificar su valor en la identidad. La distinción se mantiene incluso si cada conjunto Hom es infinito. No se ha producido un programa que enumere todas las transformaciones ni se ha demostrado decidible su igualdad. El teorema 15.4.1 reconstruye una función a partir de una *familia natural suministrada*, no a partir de la mera existencia de componentes sueltos.
+
+**Auditoría.** Base categórica: identidades, composición, categorías pequeñas y hom-conjuntos; la hipótesis de pequeñez se utiliza para que $\operatorname{Nat}$ sea un conjunto en la categoría de diagramas, no para los cálculos de composición. Elección: ninguna, porque las inversiones son únicas y las familias de las fórmulas se definen uniformemente. Lógica clásica: no requerida en las demostraciones categóricas. Computabilidad y decisión: no se infieren de ninguna biyección estructural. Tamaño: el endofuntor sobre toda $\mathbf{Set}$ de §15.4 se trata como clase metateórica, o se restringe a un universo que contenga los conjuntos y productos pertinentes; no se trata a toda $\mathbf{Set}$ como categoría pequeña.
+
+
+## 15.6. Fuentes de cotejo
+
+Para el lema de Yoneda, el encaje y los funtores de conjuntos puede cotejarse Steve Awodey, *Category Theory* (Oxford University Press, 2006), capítulo 8, «Categories of Diagrams», pp. 159–178 ([ficha editorial y localizador](https://academic.oup.com/book/7134/chapter-abstract/151699740)). La referencia identifica una exposición externa; las correspondencias y demostraciones del capítulo se encuentran en el manuscrito. Esta nota no añade teoremas, no declara verificación Lean general y no altera los resultados registrados.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-14.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-16.qmd)
+:::

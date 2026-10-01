@@ -1,0 +1,132 @@
+---
+title: Introducción. Qué significa definir una función
+document-id: TF-INTRO-0001
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-INTRO-0001
+source-version: 1.0.3
+date-modified: '2026-10-01'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-INTRO-0001
+    locator: INTRODUCTION.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+---
+
+[Índice del tratado](index.qmd)
+
+## I. Una misma palabra, varios contratos
+
+Escribimos $f:A\to B$ y, sin dificultad aparente, preguntamos cuánto vale $f(a)$. Sin embargo, la expresión sólo es legítima después de fijar de qué clase de objeto hablamos, cuáles son sus argumentos y valores, y qué significa su igualdad. En una descripción conjuntista, una función puede presentarse como cierta relación entre elementos. En una categoría, es una flecha entre dos objetos, y la evaluación por elementos globales puede no capturarla. En una teoría de tipos es un término con un tipo, sujeto a reglas de formación, eliminación y, según el sistema, distintas reglas de igualdad. En un modelo de computación puede tratarse de un programa que quizá no termine. Ninguna de estas diferencias desaparece porque empleemos la misma letra $f$.
+
+El problema fundacional de este libro no es únicamente *qué objeto llamamos función*. Es también determinar el contrato que hace legítimas seis operaciones: **definir**, **evaluar**, **comparar**, **construir**, **componer** y **computar**. El contrato incluye la base lógica y ontológica, los objetos de partida y llegada, la totalidad o parcialidad, el criterio de igualdad, las hipótesis de existencia y, si se pretende efectividad, una representación y un procedimiento.
+
+No todas las teorías resuelven estas cuestiones de la misma manera. Nuestro método consistirá en ofrecer traducciones precisas y en registrar sus límites, en lugar de decidir de antemano que las diferencias son sólo notacionales. Las convenciones generales están reunidas en [el documento de convenciones](convenciones.qmd), y las hipótesis por resultado en [la matriz de hipótesis](matriz-hipotesis.qmd).
+
+## II. El contrato de la función conjuntista
+
+En un contexto conjuntista clásico, dados conjuntos $A$ y $B$, una relación $R\subseteq A\times B$ presenta una función *total y univaluada* de $A$ en $B$ cuando
+
+$$
+\forall a\in A\;\exists!b\in B\;R(a,b).
+$$
+
+Su gráfica es el conjunto de pares $(a,f(a))$. Aquí la totalidad proporciona un valor para cada argumento; la unicidad impide que la relación asigne dos valores distintos al mismo argumento. La existencia de esa única gráfica y la obtención de una función en ZF no requieren el axioma de elección cuando los valores están individualmente determinados de forma única y la relación pertinente es definible como conjunto. Véanse [capítulo 1](capitulo-01.qmd), `TF-THM-00005` y [capítulo 5](capitulo-05.qmd), `TF-THM-00033`/`TF-THM-00039`.
+
+Ahora eliminemos la unicidad. Una relación total puede ofrecer varios valores admisibles a cada argumento. Exigir una **función selectora** es un problema diferente: en una categoría regular equivale a pedir una sección de su proyección sobre $A$ (`TF-THM-00034`), y pedirla para todas las relaciones totales conduce a un principio adicional de elección (`TF-AX-00009`, expresamente opcional). En ZF, el principio general de elección tiene sus propias formulaciones equivalentes (`TF-THM-00038`). No convertiremos el paso de «existe un valor» a «se ha dado un valor para cada argumento» en una deducción silenciosa.
+
+## III. Aplicaciones antes que elementos
+
+En [el capítulo 1](capitulo-01.qmd) comenzamos con objetos, flechas, identidades y composición. Productos binarios permiten construir la gráfica de $f:A\to B$ como la flecha
+
+$$
+\gamma_f=\langle 1_A,f\rangle:A\longrightarrow A\times B.
+$$
+
+Es monomórfica, y una relación representada por $m:R\rightarrowtail A\times B$ es la gráfica de una única flecha precisamente cuando su proyección $R\to A$ es isomorfismo (`TF-THM-00004`/`TF-THM-00005`). Este criterio no escoge valores arbitrarios: recupera una aplicación a partir de la inversa de una proyección ya invertible.
+
+Una flecha no necesita estar determinada por los puntos $1\to A$ si el terminal no es generador. El [capítulo 2](capitulo-02.qmd) exhibe esa limitación (`TF-CEX-00001`) y muestra por qué los **elementos generalizados** $X\to A$, al variar $X$, permiten recuperar la igualdad de flechas (`TF-THM-00009`). El tránsito desde los elementos hacia familias naturales y representables será desarrollado en los capítulos 13, 15 y 16, sin atribuir a una familia de puntos globales una fuerza que no posee.
+
+## IV. Qué se presupone al formar relaciones e imágenes
+
+Los capítulos 1–3 introducen productos, exponenciales, productos fibrados y clasificador de subobjetos como hipótesis expresas. En conjunto constituyen el marco habitual de un *topos elemental*. El [capítulo 4](capitulo-04.qmd) adopta para sus propias demostraciones una ruta **más débil**: límites finitos y el paquete de regularidad `TF-AX-00008`, mediante el que se obtienen imágenes estables y la composición relacional. La regularidad se deduce también de los axiomas acumulados de un topos elemental, pero ese puente es allí un resultado **externo citado**, no un teorema nuevo demostrado en el tratado. Confundir esas dos rutas falsearía las dependencias.
+
+Este es un patrón que volverá constantemente: una hipótesis puede introducirse como condición suficiente en una demostración aun cuando un marco más fuerte permita derivarla. El lector debe distinguir qué se usa *en la prueba ofrecida* de qué se sabe *en otra teoría*. La [matriz fundacional](matriz-hipotesis.qmd) marca esta diferencia por filas.
+
+## V. Dominios efectivos, indefinición y prolongación
+
+Una aplicación parcial de $A$ en $B$ puede representarse, en una categoría con límites finitos, por un span
+
+$$
+A\xleftarrow{\;m\;}D\xrightarrow{\;u\;}B,\qquad m\text{ mono},
+$$
+
+considerado salvo isomorfismo compatible (`TF-DEF-00021`). El objeto $D$, incluido en $A$, determina dónde está definida. Dos aplicaciones parciales pueden tener codominio declarado idéntico y dominios efectivos distintos. Para componerlas hay que formar el producto fibrado que comprueba si la segunda aplicación admite el valor de la primera (`TF-THM-00043`). No se evalúa una aplicación fuera de su dominio.
+
+Una prolongación total puede existir como función conjuntista y fallar como función continua o computable. En ZF, con $B$ no vacío y un elemento fijo $b_0\in B$, basta completar cualquier $u:D\to B$ asignando $b_0$ en $A\setminus D$ (`TF-THM-00048`): **no se necesita elección arbitraria**. En cambio, exigir que cada nuevo valor pertenezca a una fibra variable y no vacía es un problema de selección distinto (`TF-THM-00050`). En la categoría de espacios topológicos, además, extender una aplicación puede requerir continuidad (`TF-CEX-00004`). Estas precisiones impiden formular una afirmación global engañosa sobre «toda extensión».
+
+El clasificador de aplicaciones parciales $L(B)$ del capítulo 8 reúne la información del dominio y de su valor bajo axiomas de topos (`TF-THM-00062`). En conjuntos clásicos se identifica con $B\sqcup1$ (`TF-THM-00064`), pero esa fórmula no reemplaza sin hipótesis la construcción general, ni la composición ordinaria de funciones sustituye la composición de Kleisli que corresponde a funciones parciales (`TF-THM-00110`).
+
+## VI. Que exista no significa que pueda calcularse
+
+Para hablar de algoritmos necesitaremos más que conjuntos o flechas: un modelo de máquina, una codificación de las entradas y una interpretación de lo que significa producir un resultado. Los capítulos 9 y 10 separan la **máquina que se detiene exactamente en el dominio** del **realizador correcto sólo bajo promesa de entrada válida** (`TF-DEF-00035`, `TF-DEF-00038`). Bajo la segunda convención, disponer de un realizador computable no obliga a poder reconocer el dominio.
+
+La igualdad matemática de dos funciones tampoco viene acompañada de un decisor. La igualdad de códigos puede ser sintácticamente decidible, mientras que la equivalencia extensional de programas parciales es indecidible y ni siquiera semidecidible en general (`TF-THM-00080`–`TF-THM-00083`). Las representaciones de un mismo espacio pueden alterar qué funciones se computan: para transportar computabilidad se necesitan traductores computables, no sólo una biyección abstracta (`TF-THM-00111`, `TF-CEX-00019`).
+
+La diagonalización muestra por qué no podemos enumerar mediante un evaluador **total computable** todas las funciones totales computables y conservar la evaluación total (`TF-THM-00093`); no contradice la existencia de un intérprete universal **parcial** (`TF-THM-00092`). La autorreferencia se articula mediante índices, especialización y reglas de tipos (`TF-THM-00100`), no mediante la aplicación indiscriminada de $f$ a sí misma. La formalización Lean de algunos fragmentos de estos capítulos no debe confundirse con la certificación de todas estas afirmaciones.
+
+## VII. Reconstrucción y límites
+
+La pregunta «¿cómo recuperar una función?» admite más de una respuesta. Una gráfica puede determinarla cuando su proyección al dominio es isomorfismo; todos los elementos generalizados pueden distinguir flechas; una familia natural entre representables se recupera evaluándola sobre una identidad (`TF-THM-00105`, `TF-THM-00117`); en la categoría de prehaces, la densidad de Yoneda reconstruye un prehaz como colímite de representables (`TF-THM-00127`). **Ser colímite de representables no significa ser representable** (`TF-CEX-00022`), y ninguna de esas recuperaciones asegura por sí misma un algoritmo de igualdad.
+
+El orden del tratado sigue esta progresión: de las operaciones primitivas a las representaciones relacionales, de ellas a la parcialidad y la lógica, después a la efectividad y finalmente a las transformaciones que permiten comparar y reconstruir. La quinta parte, incluida en el índice aprobado el 2026-09-21, desarrolla esa síntesis: el capítulo 17 organiza hipótesis y correspondencias; el capítulo 18 responde a la pregunta inicial con un ejemplo transversal.
+
+## VIII. Una prueba de lectura: el predecesor parcial
+
+Consideremos en conjuntos clásicos el predecesor parcial sobre los naturales:
+
+$$
+\operatorname{pred}:\mathbb N\rightharpoonup\mathbb N,
+\qquad \operatorname{dom}(\operatorname{pred})=\mathbb N\setminus\{0\},
+\qquad \operatorname{pred}(n+1)=n.
+$$
+
+Su gráfica es $\{(n+1,n):n\in\mathbb N\}\subseteq\mathbb N\times\mathbb N$. Como span, usa el mono $\mathbb N\setminus\{0\}\hookrightarrow\mathbb N$ y la función $n+1\mapsto n$. En conjuntos, podemos representarlo por una aplicación total a $\mathbb N\sqcup1$ que devuelve $\bot$ en cero. Un programa puede comprobar si la entrada es cero, devolver «indefinido» en esa rama o calcular $n-1$ en las demás; pero habrá que precisar si su especificación exige no terminación, una etiqueta o un tipo opcional. Una prolongación conjuntista se consigue, por ejemplo, asignando cero a cero; no es *la misma aplicación parcial* como dato de dominio.
+
+Estas descripciones iluminan rasgos distintos de un mismo ejemplo. No constituyen una identificación automática de teorías ni un puente hacia la computabilidad de aplicaciones sobre espacios arbitrarios. La Parte V retoma esta distinción y desarrolla en [el capítulo 18](capitulo-18.qmd) la raíz cuadrada exacta como ejemplo transversal con sus contratos especificados.
+
+## IX. Cómo leer las pruebas y los estados del proyecto
+
+Cada resultado tiene un identificador estable que no se modifica por razones de paginación; las dependencias se consultan en el registro y el grafo. Antes de usar una proposición, pregúntese: ¿es una definición, un axioma añadido o un teorema?, ¿en qué teoría se trabaja?, ¿se declara elección o lógica clásica?, ¿se ha construido el testigo o sólo se ha acreditado su existencia?, ¿interviene una restricción de tamaño?, ¿se afirma un procedimiento efectivo o únicamente una relación matemática?
+
+Los manuscritos 1–18 están cerrados **editorialmente**, pero su revisión no equivale a una certificación formal exhaustiva. La formalización Lean existente es parcial en los capítulos 11–16 y está documentada por enunciado; en los capítulos 1–10, F1 y la PR #144 acreditan `TF-THM-00005`; [el apéndice D](apendice-d.qmd) reconoce además `TF-THM-00004` en `graphStructural_mono` del mismo código ya verificado. Esa correspondencia adicional no amplía el alcance histórico declarado por F1 ni se extiende a los demás resultados. Ningún capítulo del tratado está publicado en la web según el seguimiento actual. El lector debe interpretar cada estado según su correspondiente comprobación, nunca como una etiqueta global de calidad.
+
+**Orientación final.** Al concluir una demostración, no pregunte sólo si la conclusión es cierta. Pregunte qué hizo posible enunciarla, qué se pierde al retirar una hipótesis y qué información conserva cada representación. Ese será nuestro criterio para responder, al final, qué hemos hecho exactamente cuando decimos que hemos definido una función.
+
+---
+
+
+
+
+::: {.tf-navigation}
+[← Anterior](prefacio.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](convenciones.qmd)
+:::

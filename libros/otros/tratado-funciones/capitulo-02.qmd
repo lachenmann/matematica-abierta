@@ -1,0 +1,354 @@
+---
+title: Capítulo 2. Extensionalidad y evaluación
+document-id: TF-CAT-002
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-002
+source-version: 1.0.2
+date-modified: '2026-10-01'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-002
+    locator: TF-CAT-002 - Extensionalidad y evaluacion.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0118
+content-type: book-chapter
+source-id: TF-T1-C02
+description: 'Tratado fundacional de la teoría de funciones: capítulo 2, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: categoría con terminal y productos; exponenciales sólo desde §2.5; metateoría
+  conjuntista explícita para ejemplos y funtor de puntos
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Problema
+En la categoría de conjuntos, dos funciones del mismo dominio y codominio son iguales cuando asignan el mismo valor a cada elemento. ¿Puede reconstruirse esta afirmación únicamente a partir de las flechas $1\to A$? Veremos que requiere una hipótesis adicional. En cambio, la propiedad universal de un objeto exponencial garantiza una igualdad por evaluación que no depende de dicha hipótesis.
+:::
+
+
+**Contrato de lectura.** Las nociones de categoría, terminal, elemento global, producto y exponencial proceden de [Capítulo 1](capitulo-01.qmd). Suponemos siempre que las flechas comparadas tienen los mismos extremos. No confundimos la igualdad de flechas con la decidibilidad de esa igualdad ni con su codificación conjuntista.
+
+## 2.1. Primera prueba de estrés: ¿bastan los elementos?
+
+Dados $f,g:A\to B$ y un elemento global $a:1\to A$, las flechas $f\circ a$ y $g\circ a$ tienen dominio $1$ y codominio $B$, por lo que tiene sentido compararlas.
+
+<a id="TF-DEF-00004"></a>
+
+**Definición 2.1.1 — Coincidencia en elementos globales** <!-- result-id: TF-DEF-00004; depends-on: TF-DEF-00002 -->
+
+Escribimos $f\sim_1 g$ cuando
+
+$$
+\forall a:1\to A,\qquad f\circ a=g\circ a.
+$$
+
+Esta definición no afirma aún que $f=g$. Si $A$ carece de elementos globales, la condición se cumple para **cualquier** par de flechas paralelas, por vacuidad del cuantificador.
+
+<a id="TF-DEF-00005"></a>
+
+**Definición 2.1.2 — El terminal como generador** <!-- result-id: TF-DEF-00005; depends-on: TF-AX-00003 -->
+
+El objeto terminal $1$ se llama *generador* de $\mathcal C$ si, para todos $A,B$ y flechas $f,g:A\to B$,
+
+$$
+\bigl[\forall a:1\to A,\ f\circ a=g\circ a\bigr]\Longrightarrow f=g.
+\tag{2.1}
+$$
+
+Equivalentemente, las flechas con origen $1$ son conjuntamente suficientes para distinguir flechas paralelas. Aquí usamos la implicación (2.1), no su formulación contrapositiva mediante desigualdades, que requeriría cautela lógica en una metateoría constructiva.
+
+<a id="TF-THM-00007"></a>
+
+**Teorema 2.1.3 — Extensionalidad por puntos** <!-- result-id: TF-THM-00007; depends-on: TF-DEF-00004, TF-DEF-00005 -->
+
+En una categoría cuyo terminal es generador, para cualesquiera $f,g:A\to B$ se cumple
+
+$$
+f=g\quad\Longleftrightarrow\quad f\sim_1g.
+$$
+
+*Demostración.* Si $f=g$, la congruencia de la composición da $f\circ a=g\circ a$ para cada $a:1\to A$. Si $f\sim_1g$, la implicación de la Definición 2.1.2 da $f=g$. $\square$
+
+::: {.callout-note}
+## ¿Qué hipótesis utilizamos realmente?
+La dirección $f=g\Rightarrow f\sim_1g$ sólo usa la igualdad y la composición. La dirección contraria utiliza exactamente que el terminal sea generador. Un terminal no garantiza por sí solo suficientes elementos.
+:::
+
+
+## 2.2. El funtor de elementos globales
+
+Para formular de modo estructural qué ocurre al «evaluar una flecha en sus puntos», precisemos nuestra metateoría. Si $\mathcal C$ es localmente pequeña, cada colección $\operatorname{Hom}_{\mathcal C}(A,B)$ es un conjunto, y podemos construir el siguiente funtor con valores en $\mathbf{Set}$. Si no es localmente pequeña, el mismo razonamiento se interpreta clase a clase con las precauciones de tamaño correspondientes.
+
+<a id="TF-DEF-00006"></a>
+
+**Definición 2.2.1 — Funtor de elementos globales** <!-- result-id: TF-DEF-00006; depends-on: TF-AX-00001, TF-AX-00002, TF-AX-00003 -->
+
+Definimos
+
+$$
+\Gamma(A):=\operatorname{Hom}_{\mathcal C}(1,A),\qquad
+\Gamma(f)(a):=f\circ a.
+$$
+
+La asociatividad prueba $\Gamma(g\circ f)=\Gamma(g)\circ\Gamma(f)$; las identidades prueban $\Gamma(1_A)=1_{\Gamma(A)}$. Por ello $\Gamma=\operatorname{Hom}(1,-)$ es un funtor.
+
+<a id="TF-THM-00008"></a>
+
+**Teorema 2.2.2 — Criterio de fidelidad** <!-- result-id: TF-THM-00008; depends-on: TF-DEF-00005, TF-DEF-00006 -->
+
+Si $\mathcal C$ es localmente pequeña, el objeto $1$ es generador si y sólo si $\Gamma:\mathcal C\to\mathbf{Set}$ es *fiel*, esto es, si $\Gamma(f)=\Gamma(g)$ implica $f=g$ para todas las flechas paralelas $f,g$.
+
+*Demostración.* Como $\Gamma(f)$ y $\Gamma(g)$ son funciones conjuntistas de $\Gamma(A)$ en $\Gamma(B)$, su igualdad equivale, por extensionalidad de funciones en la **metateoría**, a
+
+$$
+\forall a\in\Gamma(A),\quad\Gamma(f)(a)=\Gamma(g)(a),
+$$
+
+que por definición equivale a $\forall a:1\to A,\ f\circ a=g\circ a$. La equivalencia entre esta condición y $f=g$ para toda pareja de flechas paralelas es precisamente la Definición 2.1.2. $\square$
+
+La demostración hace explícito dónde interviene la teoría de conjuntos: en el tratamiento metateórico de los hom-conjuntos y de la igualdad de las funciones $\Gamma(f)$. No se utiliza esa igualdad para definir anticipadamente la igualdad de las flechas de $\mathcal C$.
+
+<a id="TF-EXA-00001"></a>
+
+**Ejemplo 2.2.3 — La categoría ordinaria de conjuntos** <!-- result-id: TF-EXA-00001; depends-on: TF-DEF-00005, TF-THM-00008 -->
+
+En $\mathbf{Set}$, una flecha $a:1\to A$ queda determinada por el único elemento $a(*)\in A$. Si $f\circ a=g\circ a$ para todas estas flechas, entonces $f(x)=g(x)$ para cada $x\in A$; por extensionalidad conjuntista de las funciones, $f=g$. Así, $1$ es generador.
+
+El caso $A=\varnothing$ no es una excepción: no hay elementos globales, pero tampoco existen dos aplicaciones distintas $\varnothing\to B$. Esta comprobación muestra por qué la ausencia de puntos, **por sí sola**, no refuta que el terminal sea generador.
+
+## 2.3. Contraejemplo: una categoría con productos y exponenciales donde fallan los puntos
+
+<a id="TF-CEX-00001"></a>
+
+**Contraejemplo 2.3.1 — Conjuntos con acción de $C_2$** <!-- result-id: TF-CEX-00001; depends-on: TF-DEF-00004, TF-DEF-00005, TF-AX-00003, TF-AX-00004, TF-AX-00005 -->
+
+Sea $C_2=\{e,s\}$ con $s^2=e$. Consideremos la categoría $C_2\text{-}\mathbf{Set}$: sus objetos son conjuntos $X$ provistos de una acción de $C_2$, y sus flechas $u:X\to Y$ son funciones *equivariantes*, es decir,
+
+$$
+u(s\cdot x)=s\cdot u(x).
+$$
+
+El terminal es el conjunto unitario $1=\{*\}$ con acción trivial. Una flecha equivariante $a:1\to X$ selecciona un punto fijo $x=a(*)$, pues la equivariancia exige $s\cdot x=x$. Recíprocamente, todo punto fijo determina una flecha global.
+
+Tomemos $A=\{0,1\}$ con $s\cdot0=1$ y $s\cdot1=0$. Este objeto no tiene puntos fijos; por tanto, no hay flechas $1\to A$. Sin embargo, las funciones
+
+$$
+\operatorname{id}_A:A\to A,\qquad
+\tau:A\to A,\quad \tau(0)=1,\ \tau(1)=0,
+$$
+
+son equivariantes y distintas: $\operatorname{id}_A(0)=0\ne1=\tau(0)$. Satisfacen $\operatorname{id}_A\sim_1\tau$ porque no existe ningún $a:1\to A$ al que aplicar la condición. Luego el terminal **no es** un generador.
+
+Esto sigue siendo un contraejemplo aunque exijamos los cinco grupos de axiomas del Capítulo 1. En efecto, el producto de dos $C_2$-conjuntos es su producto cartesiano con acción diagonal; sus proyecciones y emparejamientos son equivariantes. Para objetos $X,Y$, el exponencial $Y^X$ puede construirse sobre el conjunto de **todas** las funciones conjuntistas $u:X\to Y$, con la acción
+
+$$
+(s\cdot u)(x):=s\cdot u(s^{-1}\cdot x).
+\tag{2.2}
+$$
+
+La evaluación $\operatorname{ev}(u,x)=u(x)$ es equivariante porque
+
+$$
+\operatorname{ev}(s\cdot u,s\cdot x)
+=(s\cdot u)(s\cdot x)=s\cdot u(x).
+$$
+
+Si $h:Z\times X\to Y$ es equivariante, su currificación $\widehat h(z)(x):=h(z,x)$ también lo es: por la equivariancia de $h$,
+
+$$
+\widehat h(s\cdot z)(x)
+=h(s\cdot z,x)
+=s\cdot h(z,s^{-1}\cdot x)
+=(s\cdot\widehat h(z))(x).
+$$
+
+La descurrificación es inversa y la unicidad procede de la igualdad de funciones conjuntistas, verificando la propiedad universal del exponencial. Así, $C_2\text{-}\mathbf{Set}$ tiene terminal, productos y exponenciales, pero no separación por puntos globales. $\square$
+
+::: {.callout-warning}
+## Error previsible
+«No hay elementos globales» no significa que el objeto esté vacío: $A$ contiene dos elementos en su conjunto subyacente. Lo que falta son *puntos invariantes bajo la acción*, es decir, flechas desde el terminal en **esa categoría**.
+:::
+
+
+## 2.4. Elementos generalizados: separación sin axioma adicional
+
+<a id="TF-DEF-00007"></a>
+
+**Definición 2.4.1 — Elemento generalizado** <!-- result-id: TF-DEF-00007; depends-on: TF-AX-00001, TF-AX-00002 -->
+
+Un elemento generalizado de $A$ de *etapa* $X$ es una flecha $x:X\to A$. Los elementos globales son el caso particular $X=1$.
+
+<a id="TF-THM-00009"></a>
+
+**Teorema 2.4.2 — Separación por todos los elementos generalizados** <!-- result-id: TF-THM-00009; depends-on: TF-DEF-00007, TF-AX-00002 -->
+
+Para cualesquiera $f,g:A\to B$ en una categoría,
+
+$$
+f=g\quad\Longleftrightarrow\quad
+\forall X\ \forall x:X\to A,\quad f\circ x=g\circ x.
+\tag{2.3}
+$$
+
+*Demostración.* La implicación directa es congruencia de la composición. Para la recíproca basta escoger la etapa $X=A$ y el elemento generalizado $x=1_A$; la hipótesis proporciona $f\circ1_A=g\circ1_A$ y la ley de identidad da $f=g$. $\square$
+
+El teorema es elemental, pero explica la razón exacta del contraejemplo: exigir igualdad sólo en la etapa terminal puede ser insuficiente; permitir todas las etapas incluye la identidad del dominio, que distingue cualquier par de flechas distintas. La formulación no presupone que todos los elementos generalizados formen un conjunto único.
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+::: {.callout-note}
+## Continuidad: de los elementos generalizados a Yoneda
+`TF-THM-00009` separa flechas usando **todas las etapas** $X\to A$, sin exigir que $1$ sea generador. [El capítulo 13](capitulo-13.qmd) recupera una flecha a partir de una familia **natural** de esas sondas (`TF-THM-00105`); [el capítulo 15](capitulo-15.qmd) formula Yoneda y su plena fidelidad (`TF-THM-00117`, `TF-THM-00120`), y [el capítulo 16](capitulo-16.qmd) reconstruye prehaces como colímites de representables (`TF-THM-00127`). Son cuatro contratos sucesivos, no cuatro pruebas de la misma afirmación. Véase atlas de remisiones.
+:::
+
+
+## 2.5. Exponenciales y la igualdad por evaluación
+
+Volvamos a suponer terminal, productos binarios y exponenciales. Por la propiedad universal del exponencial, cada $h:X\times A\to B$ tiene una única transpuesta $\lambda h:X\to B^A$ tal que
+
+$$
+\operatorname{ev}\circ((\lambda h)\times1_A)=h.
+\tag{2.4}
+$$
+
+<a id="TF-DEF-00008"></a>
+
+**Definición 2.5.1 — Elemento exponencial asociado a una flecha** <!-- result-id: TF-DEF-00008; depends-on: TF-AX-00003, TF-AX-00004, TF-AX-00005 -->
+
+Para $f:A\to B$, sea
+
+$$
+\ulcorner f\urcorner:=\lambda(f\circ\pi_A):1\to B^A,
+$$
+
+siendo $\pi_A:1\times A\to A$ la proyección. Es el elemento global de $B^A$ que representa $f$ bajo la biyección del Teorema 1.4.2.
+
+<a id="TF-THM-00010"></a>
+
+**Teorema 2.5.2 — Ecuación de evaluación en un punto** <!-- result-id: TF-THM-00010; depends-on: TF-DEF-00008, TF-AX-00004, TF-AX-00005 -->
+
+Para todo $a:1\to A$,
+
+$$
+\operatorname{ev}\circ\langle\ulcorner f\urcorner,a\rangle=f\circ a.
+\tag{2.5}
+$$
+
+*Demostración.* Sea $t:=\langle1_1,a\rangle:1\to1\times A$. Por las propiedades del producto,
+
+$$
+(\ulcorner f\urcorner\times1_A)\circ t
+=\langle\ulcorner f\urcorner,a\rangle.
+$$
+
+Aplicando (2.4) a $h=f\circ\pi_A$, resulta
+
+$$
+\begin{aligned}
+\operatorname{ev}\circ\langle\ulcorner f\urcorner,a\rangle
+&=(f\circ\pi_A)\circ t\\
+&=f\circ(\pi_A\circ t)\\
+&=f\circ a.
+\end{aligned}
+$$
+
+$\square$
+
+<a id="TF-THM-00011"></a>
+
+**Teorema 2.5.3 — Extensionalidad de las transpuestas** <!-- result-id: TF-THM-00011; depends-on: TF-DEF-00008, TF-THM-00006, TF-AX-00005 -->
+
+Para cualesquiera $f,g:A\to B$,
+
+$$
+f=g\quad\Longleftrightarrow\quad
+\ulcorner f\urcorner=\ulcorner g\urcorner.
+\tag{2.6}
+$$
+
+*Demostración.* La propiedad universal establece una biyección entre flechas $1\times A\to B$ y flechas $1\to B^A$, y la proyección $\pi_A:1\times A\to A$ es un isomorfismo por el Teorema 1.4.2. Por ello $f\mapsto\ulcorner f\urcorner$ es una biyección de hom-colecciones; una biyección preserva y refleja la igualdad. Alternativamente, si las transpuestas coinciden, descurrificando se obtiene $f\circ\pi_A=g\circ\pi_A$, y componiendo con $\pi_A^{-1}$ se concluye $f=g$. $\square$
+
+<a id="TF-THM-00012"></a>
+
+**Teorema 2.5.4 — Extensionalidad de la evaluación parametrizada** <!-- result-id: TF-THM-00012; depends-on: TF-AX-00004, TF-AX-00005 -->
+
+Para todo $X$ y todas $u,v:X\to B^A$,
+
+$$
+u=v\quad\Longleftrightarrow\quad
+\operatorname{ev}\circ(u\times1_A)
+=\operatorname{ev}\circ(v\times1_A).
+\tag{2.7}
+$$
+
+*Demostración.* La implicación directa se obtiene por congruencia. Para la recíproca, ambas aplicaciones del lado derecho tienen, por la unicidad de la transposición exponencial, una única transpuesta $X\to B^A$. Dado que $u$ y $v$ satisfacen la ecuación definitoria de esa transpuesta, ambas coinciden. $\square$
+
+**Lectura crítica.** La ecuación (2.7) no dice que baste evaluar en todos los elementos *globales* de $A$; compara flechas $X\times A\to B$ completas. En el contraejemplo 2.3.1, la identidad y el intercambio de $A$ poseen transpuestas globales distintas en $A^A$ aunque $A$ no tenga puntos globales. Las ecuaciones (2.6) y (2.7) siguen siendo válidas allí.
+
+## 2.6. Tres proposiciones distintas llamadas «extensionalidad»
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Afirmación | Hipótesis o marco | Estado |
+|---|---|---|
+| $f=g\Rightarrow f\circ a=g\circ a$ | Categoría y lógica con igualdad | Siempre válida. |
+| $\forall a:1\to A,\ f\circ a=g\circ a\Rightarrow f=g$ | El terminal es generador | No es válida en toda categoría. |
+| $\operatorname{ev}(u\times1_A)=\operatorname{ev}(v\times1_A)\Rightarrow u=v$ | Objeto exponencial | Consecuencia de la propiedad universal. |
+
+:::
+
+
+Una cuarta afirmación, propia de teoría de tipos intensional, concierne a construir una *igualdad de términos funcionales* a partir de igualdades de sus valores. En *Homotopy Type Theory*, §2.9, esta extensionalidad funcional se formula como axioma 2.9.3 y puede deducirse de univalencia (§4.9). No se identifica automáticamente con que el terminal de una categoría externa sea generador: compara igualdades de una teoría de tipos, no solamente flechas paralelas de una categoría bien punteada.
+
+## 2.7. Auditoría del capítulo
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Nodo | Dependencias directas | Elección | Efectividad |
+|---|---|---|---|
+| 2.1.3 — TF-THM-00007 | TF-DEF-00004, TF-DEF-00005 | Ninguna | No afirmada |
+| 2.2.2 — TF-THM-00008 | TF-DEF-00005, TF-DEF-00006 | Ninguna | No afirmada |
+| 2.3.1 — TF-CEX-00001 | Terminal, productos, exponenciales y definiciones 2.1 | Ninguna | Ejemplo finito explícito |
+| 2.4.2 — TF-THM-00009 | TF-DEF-00007 e identidades | Ninguna | No afirmada |
+| 2.5.2 — TF-THM-00010 | Transposición y productos | Ninguna | No afirmada |
+| 2.5.3 — TF-THM-00011 | Transposición y Teorema 1.4.2 | Ninguna | No afirmada |
+| 2.5.4 — TF-THM-00012 | Unicidad exponencial | Ninguna | No afirmada |
+
+:::
+
+
+Los resultados categóricos se prueban usando propiedades universales y reglas de igualdad. El contraejemplo se construye mediante conjuntos finitos; para exhibir que *toda la categoría* tiene exponenciales se utiliza el objeto metateórico de todas las funciones $X\to Y$, sin afirmar que su igualdad sea decidible o que toda función sea computable. La existencia de exponentiales se supone donde se usa; no se deduce de productos. No se emplean elección ni principios clásicos sustantivos en las pruebas adoptadas. No hay formalización en Lean en esta versión.
+
+## 2.8. Fuentes y trazabilidad
+
+- Lawvere, F. William, y Robert Rosebrugh, *Sets for Mathematics*, Cambridge University Press, 2003; §§1.1–1.5 (aplicaciones, composición, categorías), 3.3 (productos y gráficas), 5.1–5.2 (exponenciales). Copia de trabajo: [bibliografía pública](bibliografia.qmd)
+- The Univalent Foundations Program, *Homotopy Type Theory: Univalent Foundations of Mathematics*, Institute for Advanced Study, 2013; §§1.2, 2.9 y 4.9. Copia de trabajo: [bibliografía pública](bibliografia.qmd)
+- Enderton, Herbert B., *Elements of Set Theory*, Academic Press, 1977, cap. 3 (relaciones y funciones). Copia de trabajo: [bibliografía pública](bibliografia.qmd)
+
+**Naturaleza del trabajo:** las pruebas anteriores son reconstrucciones originales en su exposición, pero los resultados categóricos son estándar. Los ejemplos, la arquitectura comparativa y la auditoría se presentan como desarrollo editorial de este tratado, no como reclamaciones de prioridad matemática.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-01.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-03.qmd)
+:::

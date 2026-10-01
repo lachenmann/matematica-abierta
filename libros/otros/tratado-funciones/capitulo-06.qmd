@@ -1,0 +1,330 @@
+---
+title: Capítulo 6. Funciones parciales, dominios y extensiones
+document-id: TF-CAT-006
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-006
+source-version: 1.0.3
+date-modified: '2026-10-01'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-006
+    locator: TF-CAT-006 - Funciones parciales dominios y extensiones.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0122
+content-type: book-chapter
+source-id: TF-T1-C06
+description: 'Tratado fundacional de la teoría de funciones: capítulo 6, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: categoría con límites finitos para mapas parciales; categoría regular
+  sólo cuando se comparan relaciones de capítulos 4–5; teoría ZF clásica para extensiones
+  conjuntistas; Top y computabilidad en sus modelos explícitos
+choice-use: none en construcción de Par(C), extensiones no restringidas a codominio
+  habitado en ZF y diagonal computacional; AC se compara sólo para extensiones sometidas
+  a relaciones totales arbitrarias, sin asumirlo
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Problema rector
+¿Qué es una función que sólo está definida en una parte de su dominio declarado? ¿Cómo se compone y cuándo admite extensión total? Separaremos la existencia estructural de una aplicación, la elección, la continuidad, la computabilidad y la representabilidad de la indefinición.
+:::
+
+
+**Contrato y fuentes.** Trabajamos con una categoría $\mathcal C$ con límites finitos, ya construidos en [TF-CAT-004](capitulo-04.qmd), `TF-THM-00023`. Usamos monomorfismos `TF-DEF-00003`, subobjetos `TF-DEF-00009`, productos `TF-AX-00004` y pullbacks `TF-AX-00006`. La regularidad `TF-AX-00008` y el principio opcional de elección regular `TF-AX-00009` **no son necesarios** para formar la categoría de aplicaciones parciales. La comparación con relaciones univaluadas remite a [TF-CAT-005](capitulo-05.qmd), `TF-DEF-00018` y `TF-THM-00033`. Para las extensiones de conjuntos utilizamos ZF clásico, sin AC. Se entiende que el conjunto de clases de spans puede requerir hipótesis de tamaño; donde corresponda escribiremos «colección».
+
+## 6.1. Dos dominios, no uno
+
+Una escritura como $f:A\rightharpoonup B$ declara el **objeto de argumentos posibles** $A$ y el codominio $B$; no afirma que $f$ tenga valor para todo argumento de $A$. El dominio efectivo de definición será un subobjeto de $A$. Éste es un dato matemático, no una falla de notación.
+
+<a id="TF-DEF-00021"></a>
+
+**Definición 6.1.1 — Aplicación parcial** <!-- result-id: TF-DEF-00021; depends-on: TF-DEF-00003, TF-DEF-00009, TF-AX-00006 -->
+
+Una aplicación parcial $\alpha:A\rightharpoonup B$ está representada por un span
+
+$$A\xleftarrow{\ m\ }D\xrightarrow{\ u\ }B,\qquad m:D\rightarrowtail A\ \text{monomorfismo}.\tag{6.1}$$
+
+Dos spans $(m:D\rightarrowtail A,u:D\to B)$ y $(n:E\rightarrowtail A,v:E\to B)$ representan la misma aplicación parcial si existe un isomorfismo $i:D\xrightarrow{\sim}E$ con $n i=m$ y $v i=u$. En particular, el codominio $B$ y el objeto declarado $A$ forman parte de su tipo; el dominio efectivo es el subobjeto $[m]\in\operatorname{Sub}(A)$. No se añade como dato independiente una elección de representantes.
+
+<a id="TF-THM-00041"></a>
+
+**Teorema 6.1.2 — Caracterización por relaciones univaluadas** <!-- result-id: TF-THM-00041; depends-on: TF-DEF-00021, TF-DEF-00010, TF-DEF-00018, TF-AX-00004, TF-DEF-00009 -->
+
+Las aplicaciones parciales $A\rightharpoonup B$ corresponden biyectivamente a las relaciones $[r:R\rightarrowtail A\times B]$ cuya primera proyección $p=\pi_A r:R\to A$ es monomorfismo. Es una correspondencia entre las colecciones de clases de representantes, no una identificación literal de las codificaciones.
+
+*Demostración.* Dado $(m,u)$, la flecha $r=\langle m,u\rangle:D\to A\times B$ es monomorfismo: $r a=r b$ implica $ma=mb$, de donde $a=b$. Su primera proyección es $m$, luego es mono. Recíprocamente, dado $r$, tomamos $(p,q)$, con $q=\pi_Br$; $p$ es mono por hipótesis. Reunir estas dos operaciones recupera los representantes: $\langle\pi_Ar,\pi_Br\rangle=r$, y $\pi_A\langle m,u\rangle=m$, $\pi_B\langle m,u\rangle=u$. Los isomorfismos de spans son exactamente los isomorfismos de representantes relacionales sobre $A\times B$. $\square$
+
+<a id="TF-DEF-00022"></a>
+
+**Definición 6.1.3 — Dominio efectivo y totalidad parcial** <!-- result-id: TF-DEF-00022; depends-on: TF-DEF-00021, TF-DEF-00009, TF-DEF-00017 -->
+
+Definimos $\operatorname{dom}(\alpha)=[m]\in\operatorname{Sub}(A)$. La aplicación parcial $\alpha$ es *total* si $[m]=[1_A]$; equivalentemente, su representante $m$ es isomorfismo. Esta totalidad **no** es la noción «la primera proyección es epi regular» de una relación arbitraria: aquí ya sabemos que $m$ es mono.
+
+<a id="TF-THM-00042"></a>
+
+**Teorema 6.1.4 — Recuperación de las flechas totales** <!-- result-id: TF-THM-00042; depends-on: TF-DEF-00022, TF-DEF-00021, TF-DEF-00001, TF-THM-00005 -->
+
+Si $\alpha$ es total, determina una única flecha $f:A\to B$, concretamente $f=u m^{-1}$. Su span representa la misma aplicación parcial que $(1_A,f)$. A la inversa, toda flecha $f:A\to B$ define una aplicación parcial total por $(1_A,f)$.
+
+*Demostración.* Como $m$ es iso, $u=(u m^{-1})m$, y el isomorfismo $m:D\to A$ identifica $(m,u)$ con $(1_A,u m^{-1})$. Si dos flechas $f,g$ producen spans equivalentes $(1_A,f)$ y $(1_A,g)$, el isomorfismo $i:A\to A$ entre ellos debe satisfacer $1_Ai=1_A$; entonces $i=1_A$ y $f=g$. El recíproco es inmediato. $\square$
+
+::: {.callout-note}
+## Lectura formal
+Toda flecha primitiva $A\to B$ es una aplicación parcial total, pero una aplicación parcial puede existir sin proporcionar una flecha $A\to B$. Ésta es la diferencia que preservaremos incluso si $D$ es vacío en el modelo conjuntista.
+:::
+
+
+## 6.2. Composición: restringir antes de evaluar
+
+<a id="TF-DEF-00023"></a>
+
+**Definición 6.2.1 — Composición de aplicaciones parciales** <!-- result-id: TF-DEF-00023; depends-on: TF-DEF-00021, TF-AX-00006, TF-DEF-00003 -->
+
+Dadas $\alpha=[A\xleftarrow m D\xrightarrow u B]$ y $\beta=[B\xleftarrow n E\xrightarrow v C]$, formemos un producto fibrado de $u$ y $n$:
+
+$$
+\begin{array}{ccc}
+P&\xrightarrow{q}&E\\
+\scriptstyle p\downarrow&&\downarrow\scriptstyle n\\
+D&\xrightarrow{u}&B.
+\end{array}
+\tag{6.2}
+$$
+
+Definimos $\beta\circ_{\mathrm{par}}\alpha$ mediante el span
+
+$$A\xleftarrow{\ mp\ }P\xrightarrow{\ vq\ }C.\tag{6.3}$$
+
+La flecha $p$ es monomorfismo por estabilidad de los monos bajo pullback y, por tanto, también lo es $mp$. No es necesario tomar una imagen regular: el span ya conserva un dominio univaluado.
+
+<a id="TF-THM-00043"></a>
+
+**Teorema 6.2.2 — La categoría $\mathbf{Par}(\mathcal C)$** <!-- result-id: TF-THM-00043; depends-on: TF-DEF-00023, TF-DEF-00021, TF-AX-00006, TF-AX-00001, TF-AX-00002 -->
+
+La composición (6.3) está bien definida sobre las clases de spans, es asociativa y admite identidades $[A\xleftarrow{1_A}A\xrightarrow{1_A}A]$. En consecuencia, los objetos de $\mathcal C$ y sus aplicaciones parciales forman una categoría $\mathbf{Par}(\mathcal C)$, con la salvedad habitual sobre tamaños.
+
+*Demostración.* (i) Un isomorfismo de representantes induce, por la universalidad del pullback, un isomorfismo entre los objetos $P$ obtenidos; éste conmuta con los dos brazos externos. Por ello la clase compuesta no depende de representantes ni del producto fibrado escogido. (ii) Para tres spans $A\xleftarrow m D\xrightarrow u B$, $B\xleftarrow n E\xrightarrow v C$ y $C\xleftarrow k F\xrightarrow w H$, las dos asociaciones de pullbacks representan el mismo límite de las condiciones $u(d)=n(e)$ y $v(e)=k(t)$. La propiedad universal produce un isomorfismo canónico entre los dominios de ambas composiciones, que identifica sus flechas a $A$ y $H$. (iii) Componer con $(1_A,1_A)$ forma un pullback de una identidad; el objeto obtenido es canónicamente isomorfo al dominio inicial y sus dos brazos son los originales. Las leyes de categoría siguen. $\square$
+
+En $\mathbf{Set}$, la fórmula de la composición es especialmente transparente:
+
+$$\operatorname{dom}(\beta\circ_{\mathrm{par}}\alpha)
+=\{a\in D_\alpha:\alpha(a)\in D_\beta\},\qquad
+(\beta\circ_{\mathrm{par}}\alpha)(a)=\beta(\alpha(a)).\tag{6.4}$$
+
+No confundamos (6.4) con afirmar que la pertenencia al dominio pueda decidirse mediante un algoritmo.
+
+<a id="TF-THM-00044"></a>
+
+**Teorema 6.2.3 — Inclusión fiel de aplicaciones totales** <!-- result-id: TF-THM-00044; depends-on: TF-THM-00042, TF-THM-00043, TF-DEF-00023 -->
+
+La asignación $J(f)=[1_A,f]$ define un funtor fiel $J:\mathcal C\to\mathbf{Par}(\mathcal C)$, identidad sobre los objetos, cuya imagen consiste exactamente en las flechas parciales totales.
+
+*Demostración.* Las identidades coinciden por definición. El pullback de $f:A\to B$ por $1_B:B\to B$ es isomorfo a $A$, y $J(g)\circ_{\mathrm{par}}J(f)=J(gf)$. La fidelidad y la caracterización de la imagen son el Teorema 6.1.4. $\square$
+
+## 6.3. Restricción y extensión no son igualdad
+
+<a id="TF-DEF-00024"></a>
+
+**Definición 6.3.1 — Orden de extensión** <!-- result-id: TF-DEF-00024; depends-on: TF-DEF-00021, TF-DEF-00009 -->
+
+Para aplicaciones parciales paralelas $\alpha=[m:D\rightarrowtail A,u:D\to B]$ y $\beta=[n:E\rightarrowtail A,v:E\to B]$, escribimos $\alpha\preceq\beta$ si existe $i:D\to E$ tal que $ni=m$ y $vi=u$. Así, $\beta$ coincide con $\alpha$ donde ésta está definida y puede tener un dominio mayor. El mediador $i$ es único por la monicidad de $n$.
+
+<a id="TF-THM-00045"></a>
+
+**Teorema 6.3.2 — Orden y compatibilidad con composición** <!-- result-id: TF-THM-00045; depends-on: TF-DEF-00024, TF-DEF-00023, TF-AX-00006, TF-DEF-00009 -->
+
+La relación $\preceq$ es un orden parcial sobre las clases de aplicaciones parciales $A\rightharpoonup B$. Además, si $\alpha\preceq\alpha'$ y $\beta\preceq\beta'$, con tipos componibles, entonces
+
+$$\beta\circ_{\mathrm{par}}\alpha\preceq\beta'\circ_{\mathrm{par}}\alpha'.\tag{6.5}$$
+
+*Demostración.* Reflexividad: $i=1_D$. Transitividad: se componen las factorizaciones. Antisimetría: si $i:D\to E$ y $j:E\to D$ atestiguan ambas comparaciones, $mji=m$ y $nij=n$; la monicidad de $m,n$ da $ji=1_D$ e $ij=1_E$. Como los valores también se preservan, los spans son isomorfos. Para (6.5), los mediadores $D\to D'$ y $E\to E'$ inducen por universalidad una flecha entre los pullbacks de (6.2). El compuesto con los brazos a $A$ y al codominio final coincide; por la monicidad del brazo del span mayor, el mediador exhibe precisamente la relación de extensión. $\square$
+
+<a id="TF-DEF-00025"></a>
+
+**Definición 6.3.3 — Idempotente de dominio** <!-- result-id: TF-DEF-00025; depends-on: TF-DEF-00021, TF-DEF-00023 -->
+
+Para $\alpha=[m:D\rightarrowtail A,u:D\to B]$ definimos la aplicación parcial de dominio $\overline\alpha=[m:D\rightarrowtail A,m:D\to A]$, de $A$ en $A$. Coincide con la identidad sobre el dominio efectivo y queda indefinida fuera de él. La fórmula no depende del representante escogido.
+
+<a id="TF-THM-00046"></a>
+
+**Teorema 6.3.4 — Leyes de la restricción** <!-- result-id: TF-THM-00046; depends-on: TF-DEF-00025, TF-DEF-00023, TF-THM-00043, TF-DEF-00024, TF-DEF-00022 -->
+
+Para cada aplicación parcial $\alpha:A\rightharpoonup B$ se cumplen
+
+$$\overline\alpha\circ_{\mathrm{par}}\overline\alpha=\overline\alpha,
+\qquad \alpha\circ_{\mathrm{par}}\overline\alpha=\alpha.\tag{6.6}$$
+
+Además, $\alpha$ es total si y sólo si $\overline\alpha=1_A$; y, para $\alpha,\beta:A\rightharpoonup B$,
+
+$$\alpha\preceq\beta\quad\Longleftrightarrow\quad
+\alpha=\beta\circ_{\mathrm{par}}\overline\alpha.\tag{6.7}$$
+
+*Demostración.* El pullback de $m$ consigo mismo tiene una diagonal $D\to D\times_AD$ que es isomorfismo: para dos flechas hacia $D$ con igual composición por $m$, la monicidad las iguala. Por ello componer $[m,m]$ consigo misma recupera $[m,m]$ y componer $[m,u]$ con $[m,m]$ recupera $[m,u]$. La igualdad $[m,m]=[1_A,1_A]$ equivale a que $m$ sea isomorfismo. Si $\alpha\preceq\beta$, la composición a la derecha de $\beta$ por $\overline\alpha$ restringe el dominio de $\beta$ al de $\alpha$; la inclusión de dominios y la coincidencia de valores la identifican con $\alpha$. Recíprocamente, la igualdad de la derecha de (6.7) identifica $\alpha$ con una restricción de $\beta$, por lo que produce un mediador $D_\alpha\to D_\beta$ que preserva el valor. $\square$
+
+Estas leyes explican por qué en una *categoría de restricción* puede manejarse la parcialidad mediante operadores algebraicos. No adoptamos aquí todos sus axiomas abstractos: hemos construido su ejemplo estándar desde spans.
+
+## 6.4. ¿Se puede extender toda función parcial?
+
+<a id="TF-DEF-00026"></a>
+
+**Definición 6.4.1 — Objeto inyectivo respecto de monomorfismos** <!-- result-id: TF-DEF-00026; depends-on: TF-DEF-00003, TF-DEF-00021 -->
+
+Un objeto $B$ es *inyectivo* (respecto de todos los monomorfismos de $\mathcal C$) si, para cualquier mono $m:D\rightarrowtail A$ y cualquier $u:D\to B$, existe $F:A\to B$ con $Fm=u$. Esto no afirma que $F$ sea único ni computable. Es una propiedad de $B$ relativa a la categoría y a la clase de monomorfismos adoptada.
+
+<a id="TF-THM-00047"></a>
+
+**Teorema 6.4.2 — Caracterización mediante aplicaciones parciales** <!-- result-id: TF-THM-00047; depends-on: TF-DEF-00026, TF-DEF-00024, TF-THM-00042 -->
+
+Un objeto $B$ es inyectivo respecto de los monomorfismos si y sólo si toda aplicación parcial $\alpha:A\rightharpoonup B$ admite una extensión total $J(F)$, es decir, $\alpha\preceq J(F)$ para alguna flecha $F:A\to B$.
+
+*Demostración.* Para $\alpha=[m,u]$, la condición $\alpha\preceq[1_A,F]$ exige un mediador $i:D\to A$ con $1_Ai=m$ y $Fi=u$. Necesariamente $i=m$; queda exactamente $Fm=u$. La definición de inyectividad cuantifica sobre todos los pares $(m,u)$, de modo que ambas afirmaciones equivalen. $\square$
+
+<a id="TF-THM-00048"></a>
+
+**Teorema 6.4.3 — Criterio exacto de extensión en ZF** <!-- result-id: TF-THM-00048; depends-on: TF-DEF-00024, TF-THM-00042, TF-THM-00039 -->
+
+En **ZF con lógica clásica**, sean $D\subseteq A$, $B$ un conjunto y $u:D\to B$. Existe una extensión total $F:A\to B$ si y sólo si
+
+$$A\setminus D=\varnothing\quad\text{o bien}\quad B\ne\varnothing.\tag{6.8}$$
+
+En particular, si $B$ es habitado, **toda** función parcial con codominio $B$ se extiende, sin AC.
+
+*Demostración.* Si $A\setminus D=\varnothing$, entonces $D=A$ y sirve $F=u$. Si $B\ne\varnothing$, tomemos **un solo** $b_0\in B$ y definamos por separación en $A\times B$
+
+$$F(a)=\begin{cases}u(a),&a\in D,\\b_0,&a\in A\setminus D.\end{cases}\tag{6.9}$$
+
+El tercero excluido garantiza la partición de casos, y la gráfica es un conjunto definido mediante los datos $A,D,B,u,b_0$. Existencia y unicidad de valor son inmediatas. Ninguna familia de conjuntos no vacíos debe elegirse: $b_0$ es un único testigo fijo. Recíprocamente, si existe $F:A\to B$ y $A\setminus D\ne\varnothing$, tomamos $a_0\in A\setminus D$; entonces $F(a_0)\in B$, así que $B\ne\varnothing$. $\square$
+
+::: {.callout-warning}
+## Corrección de alcance sobre elección
+La frase informal «extender todas las funciones parciales exige elección» es **falsa** si se entiende como el Teorema 6.4.3 para un codominio fijo habitado. En ZF se demuestra ese teorema sin AC. La elección puede aparecer cuando la extensión está sujeta a restricciones variables o cuando se requiere elegir simultáneamente valores o extensiones en muchas familias; no debe confundirse con la sola prolongación no restringida.
+:::
+
+
+<a id="TF-THM-00049"></a>
+
+**Teorema 6.4.4 — Objetos inyectivos de $\mathbf{Set}$** <!-- result-id: TF-THM-00049; depends-on: TF-DEF-00026, TF-THM-00047, TF-THM-00048 -->
+
+En ZF clásico, un conjunto $B$ es inyectivo respecto de todas las inclusiones (equivalentemente, todos los monomorfismos de $\mathbf{Set}$) si y sólo si $B\ne\varnothing$.
+
+*Demostración.* Si $B$ está habitado, el teorema anterior extiende toda función en un subconjunto $D\subseteq A$. Para un mono abstracto $m:D\rightarrowtail A$, su imagen identifica $D$ biyectivamente con un subconjunto de $A$, y la misma extensión produce $F$ con $Fm=u$. Si $B=\varnothing$, tomemos el mono $\varnothing\rightarrowtail\{*\}$ y la única flecha $\varnothing\to\varnothing$. No puede existir $\{*\}\to\varnothing$. Por tanto el vacío no es inyectivo. $\square$
+
+<a id="TF-THM-00050"></a>
+
+**Teorema 6.4.5 — Extensiones sujetas a valores permitidos y elección** <!-- result-id: TF-THM-00050; depends-on: TF-THM-00038, TF-DEF-00019, TF-THM-00048 -->
+
+Sobre ZF clásico, el siguiente principio es equivalente al axioma de elección: para toda relación total $R\subseteq A\times B$ y toda función parcial $u:D\to B$ con $D\subseteq A$ cuya gráfica esté contenida en $R$, existe una extensión total $F:A\to B$ que satisface simultáneamente $F|_D=u$ y $\operatorname{graph}(F)\subseteq R$.
+
+*Demostración.* Supongamos AC. Para $a\in A\setminus D$ las fibras $R_a=\{b\in B:(a,b)\in R\}$ son conjuntos no vacíos; AC permite elegir $c(a)\in R_a$ para toda la familia. Definimos $F(a)=u(a)$ en $D$ y $F(a)=c(a)$ fuera de $D$. Es una función total que satisface ambas restricciones. Recíprocamente, dado $R$ total, aplicamos el principio a $D=\varnothing$ y a la única función $u:\varnothing\to B$; obtenemos una función selectora total de $R$. El Teorema 5.3.2, `TF-THM-00038`, demuestra que esto implica AC. $\square$
+
+Obsérvese la diferencia: el Teorema 6.4.3 fija **el mismo** valor $b_0$ fuera del dominio, mientras que el Teorema 6.4.5 exige que $F(a)$ pertenezca a una fibra $R_a$ que puede variar con $a$.
+
+## 6.5. Contraejemplos: estructura y efectividad
+
+<a id="TF-CEX-00004"></a>
+
+**Contraejemplo 6.5.1 — La continuidad puede impedir la extensión** <!-- result-id: TF-CEX-00004; depends-on: TF-DEF-00026, TF-THM-00047, TF-DEF-00021 -->
+
+En $\mathbf{Top}$, consideremos $A=\mathbb R$, $D=\mathbb R\setminus\{0\}$ con su topología de subespacio y $B=\{0,1\}$ discreto. La aplicación $u:D\to B$ dada por $u(x)=0$ si $x<0$ y $u(x)=1$ si $x>0$ es continua: las preimágenes de $\{0\}$ y $\{1\}$ son abiertas en $D$. La inclusión $D\hookrightarrow A$ es mono. Si hubiese extensión continua $F:\mathbb R\to B$, la continuidad en $0$ forzaría, por la sucesión $-1/n\to0$, $F(0)=0$, y por $1/n\to0$, $F(0)=1$, contradicción. (Equivalente: la imagen continua de un espacio conexo en un discreto es un punto.) Existe una extensión **como función de conjuntos**, por ejemplo poniendo $F(0)=0$, pero no como flecha de $\mathbf{Top}$. No interviene aquí ninguna cuestión de AC.
+
+<a id="TF-CEX-00005"></a>
+
+**Contraejemplo 6.5.2 — Una función parcial computable sin extensión total computable** <!-- result-id: TF-CEX-00005; depends-on: TF-THM-00048, TF-EXA-00007, TF-DEF-00021 -->
+
+Fijemos una enumeración estándar $\varphi_e$ de todas las funciones parciales computables $\mathbb N\rightharpoonup\mathbb N$. Definamos
+
+$$d(e)=\varphi_e(e)+1\quad\text{si }\varphi_e(e)\downarrow,\qquad d(e)\uparrow\text{ en caso contrario}.\tag{6.10}$$
+
+La función $d$ es parcialmente computable: simula $\varphi_e(e)$ y, si termina, suma uno. Supongamos que una función total computable $F:\mathbb N\to\mathbb N$ prolonga $d$. Como $F$ es total computable, hay un índice $k$ con $F=\varphi_k$; en particular $\varphi_k(k)\downarrow$. La definición (6.10) da $d(k)=\varphi_k(k)+1=F(k)+1$, mientras que la extensión exige $F(k)=d(k)$. Se seguiría $F(k)=F(k)+1$, contradicción. Por el Teorema 6.4.3 existe, sin embargo, una prolongación **conjuntista** de $d$ (por ejemplo, asignando cero fuera de su dominio). No es computable. Además, si el dominio de $d$ fuera decidible, podríamos decidir si ejecutar la simulación que calcula $d(e)$ o devolver cero, obteniendo una extensión total computable; esto contradice lo probado. Por tanto el dominio es semidecidible, pero no decidible.
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R2 -->
+::: {.callout-note}
+## Continuidad: representar la indefinición no determina todavía la composición
+La construcción de spans (`TF-DEF-00021`, `TF-DEF-00023`) precede a la codificación **conjuntista clásica** de esta sección (`TF-THM-00051`). [El capítulo 8](capitulo-08.qmd) exige y construye un **clasificador universal** $L(B)$ bajo hipótesis de topos (`TF-THM-00062`), y [el capítulo 14](capitulo-14.qmd) comprueba la composición de funciones etiquetadas mediante la operación de Kleisli (`TF-DEF-00061`, `TF-THM-00110`). La biyección de conjuntos no debe interpretarse como universalidad en toda categoría ni como compatibilidad con la composición ordinaria. Mapa del recorrido.
+:::
+
+
+## 6.6. Codificar indefinición mediante un valor adicional
+
+<a id="TF-THM-00051"></a>
+
+**Teorema 6.6.1 — Clasificador de funciones parciales en $\mathbf{Set}$** <!-- result-id: TF-THM-00051; depends-on: TF-DEF-00021, TF-THM-00041, TF-DEF-00022 -->
+
+En ZF clásico, fijemos un singleton etiquetado $\{\bot\}$ disjunto de $B$ y la suma disjunta $B_\bot=B\sqcup\{\bot\}$. Existe una biyección natural en $A$
+
+$$\operatorname{Par}_{\mathbf{Set}}(A,B)\ \cong\ \operatorname{Hom}_{\mathbf{Set}}(A,B_\bot).\tag{6.11}$$
+
+*Demostración.* A partir de $(D\subseteq A,u:D\to B)$, definimos $\widehat u:A\to B_\bot$ mediante $\widehat u(a)=\operatorname{inl}(u(a))$ si $a\in D$ y $\widehat u(a)=\operatorname{inr}(\bot)$ si $a\notin D$. La lógica clásica justifica esta definición por casos y separación forma su gráfica. En sentido inverso, dada $h:A\to B_\bot$, tomemos $D=h^{-1}(\operatorname{inl}(B))$ y $u(a)=\operatorname{inl}^{-1}(h(a))$ para $a\in D$. Las dos operaciones son inversas por extensionalidad de conjuntos. La naturalidad contravariante en $A$ es inmediata: restringir una función parcial por $g:A'\to A$ produce dominio $g^{-1}(D)$ y corresponde a $\widehat u\circ g$. No se usa AC. $\square$
+
+**Frontera categórica.** La fórmula $B_\bot=B\sqcup1$ no clasifica automáticamente todas las aplicaciones parciales de una categoría con coproductos. Para eso se requieren condiciones que conviertan todo subobjeto de dominio en una descomposición complementaria; funciona, por ejemplo, en categorías booleanas extensivas, incluyendo topoi booleanos. Los topoi elementales también poseen clasificadores de aplicaciones parciales bajo sus hipótesis propias, pero no se identifican en general con $B\sqcup1$. No postulamos esos resultados como consecuencias de los axiomas `TF-AX-00001`–`TF-AX-00009`; su estudio queda reservado para la reconstrucción de la lógica interna.
+
+## 6.7. Ejemplos y lectura guiada
+
+<a id="TF-EXA-00009"></a>
+
+**Ejemplo 6.7.1 — El recíproco, dominio y regularidad** <!-- result-id: TF-EXA-00009; depends-on: TF-DEF-00021, TF-THM-00048, TF-CEX-00004 -->
+
+La regla $u(x)=1/x$ determina una función parcial $\mathbb R\rightharpoonup\mathbb R$ con dominio efectivo $D=\mathbb R\setminus\{0\}$. Se puede prolongar como **función conjuntista** dando cualquier valor a $0$. No existe prolongación continua $\mathbb R\to\mathbb R$: si $F(0)=c$, la continuidad en cero haría que $F(1/n)=n$ tendiese a $c$, lo cual es imposible. Aquí la obstrucción no es falta de elección ni de valor disponible; es el requisito topológico.
+
+<a id="TF-EXA-00010"></a>
+
+**Ejemplo 6.7.2 — La función vacía y el codominio vacío** <!-- result-id: TF-EXA-00010; depends-on: TF-DEF-00021, TF-THM-00048, TF-EXA-00008 -->
+
+En $\mathbf{Set}$ existe para todo par de conjuntos $A,B$ una única función parcial con dominio efectivo vacío: $\varnothing\to B$, representada por $A\xleftarrow{}\varnothing\to B$. Para $B=\varnothing$ y $A\ne\varnothing$, esta aplicación parcial existe, pero no tiene extensión total $A\to\varnothing$. Si $A=\varnothing$ sí es ya total. Así, «la función parcial existe» no implica «existe una función total de su tipo».
+
+::: {.callout-note}
+## Ejercicios de lectura de pruebas
+1. En el Teorema 6.2.2, escriba los dos objetos de testigos correspondientes a la asociación izquierda y derecha de tres aplicaciones parciales y construya su isomorfismo por universalidad. 2. Muestre que $\operatorname{dom}(\alpha)$ puede ser un subobjeto no complementado en una categoría no booleana; explique por qué una fórmula por casos no es automática. 3. Localice la única elección de un **elemento fijo** en el Teorema 6.4.3 y compárela con la familia de elecciones del 6.4.5. 4. Explique por qué los contraejemplos 6.5.1 y 6.5.2 no contradicen el Teorema 6.4.3. 5. Reconstruya la representación de la función vacía por un span incluso cuando su codominio también sea vacío.
+:::
+
+
+## 6.8. Auditoría fundacional y pedagógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Pregunta | Dictamen del capítulo |
+|---|---|
+| Hipótesis categóricas | Límites finitos y todos los monomorfismos como dominios admisibles. No se emplean regularidad, clasificador $\Omega$ ni exponenciales para formar $\mathbf{Par}(\mathcal C)$. |
+| Conceptos separados | Dominio declarado $A$, dominio efectivo $[m]$, codominio $B$, gráfica relacional, flecha total, extensión por coincidencia. |
+| Elección | Extensión no restringida hacia un conjunto habitado demostrable en ZF sin AC. El principio de extensión **restringida a relaciones totales arbitrarias** equivale a AC. |
+| Lógica | Construcciones categóricas por universalidad; definición conjuntista por casos usa lógica clásica. |
+| Testigos | Composición y dominios de restricción canónicos hasta isomorfismo; extensión libre usa un único $b_0$; existencia abstracta de selector de relación requiere hipótesis expresa. |
+| Efectividad | Existencia de extensión conjuntista no implica computabilidad, ni la pertenencia al dominio es decidible. Si $D$ es decidible, $u$ computable allí y se conoce $b_0$ computable, la extensión por casos puede calcularse; estas condiciones no se suponen en general. |
+| Continuidad | La extensión debe ser una flecha de la categoría elegida: un conjunto de valores seleccionado arbitrariamente puede romper continuidad. |
+| Tamaño | Los spans hasta isomorfismo pueden formar colecciones propias salvo hipótesis sobre clases de subobjetos; la formulación no confunde colecciones con objetos internos. |
+| Verificación | Pruebas revisadas manualmente, registro y grafo actualizados tras cierre; sin Lean ni publicación web. |
+
+:::
+
+
+## 6.9. Fuentes y originalidad
+
+Las categorías de aplicaciones parciales y sus operadores de restricción son construcciones establecidas; no se reivindica su descubrimiento. Nuestra aportación editorial es el cotejo axiomático y la distinción precisa entre extensión libre, selección sujeta a fibras, continuidad y computabilidad. Fuentes consultadas: [nLab, *partial function*](https://ncatlab.org/nlab/show/partial%2Bfunction), para spans monomórficos, orden y suma disjunta; [nLab, *partial map classifier*](https://ncatlab.org/nlab/show/partial%2Bmap%2Bclassifier), para la representación y su alcance booleano; Chapman et al., [*Formalizing Restriction Categories*, §2.1](https://strathprints.strath.ac.uk/60204/1/Chapman_etal_JFR2017_Formalizing_restriction_categories.pdf), para composición por pullbacks y el idempotente de dominio; Herbert B. Enderton, [*Computability Theory: An Introduction to Recursion Theory* (Academic Press, 2011), cap. 3, p. 67](https://www.sciencedirect.com/book/monograph/9780123849588/computability-theory), para la obstrucción diagonal a la extensión total computable. Se preservan las distinciones y el principio de elección del capítulo precedente, no se extrapolan a una categoría arbitraria sin nuevas hipótesis.
+
+**Síntesis.** Se reconstruyó una categoría de aplicaciones parciales sin imágenes ni elección, se caracterizó la extensión total como una propiedad de inyectividad del codominio y se demostró que toda aplicación parcial en conjuntos hacia un codominio habitado se prolonga sin AC. Los obstáculos topológicos y computacionales son independientes de ese hecho conjuntista.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-05.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-07.qmd)
+:::
