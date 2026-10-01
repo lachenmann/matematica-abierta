@@ -6,7 +6,7 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0012 |
+| Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0099 |
@@ -53,7 +53,8 @@
 | MA-ART-0008 | article | Existencia y unicidad del cuerpo ordenado completo | `teoria/resultados/existencia-unicidad-cuerpo-ordenado-completo.qmd` | draft-protected; M12-B PASS; M13-A §§1–5 PASS; M13-B §§6–8 PASS; M14-A foundational QA PASS; M14-B editorial QA PASS 2026-09-30; publication pending |
 | MA-ART-0009 | article | Cómo Arquímedes acotó π: polígonos, exhaución y 96 lados | Obsidian: `Matemática Abierta/Artículos/MA-ART-0009 - Cómo Arquímedes acotó pi.md` | working-draft; not on web |
 | MA-ART-0010 | article | La sección áurea: de una división geométrica a la ecuación φ² = φ + 1 | `blog/seccion-aurea.qmd` | published |
-| MA-ART-0011 | article | La fórmula de Euler: historia, derivación y geometría de $e^{i\theta}$ | Obsidian: `Matemática Abierta/Artículos/MA-ART-0011 - La fórmula de Euler.md` | canonical-draft; not published |
+| MA-ART-0011 | article | La fórmula de Euler: historia, derivación y geometría de $e^{i\theta}$ | `blog/formula-de-euler-historia-derivacion-geometria.qmd` | published |
+| MA-ART-0012 | article | El teorema de De Moivre: potencias, rotaciones y raíces complejas | `teoria/resultados/teorema-de-moivre.qmd` | published |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
 | MA-APP-0002 | interactive-application | Laboratorio de Cauchy–Schwarz: del cuadrado a la geometría | `teoria/resultados/laboratorio-cauchy-schwarz.qmd` | published; canonical-web reconciliation + M11 publication QA PASS 2026-09-29 |
 | MA-APP-0003 | interactive-application | Laboratorio de cotas óptimas: recta, banda épsilon y disco | `assets/labs/MA-APP-0003-supremo-infimo.html` | published |

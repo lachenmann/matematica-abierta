@@ -48,6 +48,7 @@ Una pieza sólo puede pasar a `published` cuando cumple todos los controles rele
 - si una publicación altera la red pública de conceptos y problemas, se actualiza el mapa de relaciones de la landing correspondiente;
 - si pertenece a «Para matemáticos», `collection` usa el código `PM-*` correcto;
 - si es un capítulo de libro, `book-id` apunta al `MA-BOK-*` del libro padre cuando corresponda.
+- Todo contenido publicado con identificador `MA-ART-*` aparece también en `blog/index.qmd` (sección «Artículos»), aunque su ruta canónica pertenezca a Resultados, Teoría u otra sección.
 
 ## QA técnico
 
