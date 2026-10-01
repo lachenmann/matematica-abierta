@@ -1,59 +1,74 @@
-# Protocolo de grabación — voz de referencia
+# Protocolo de grabación — Reaper / toma continua
 
-## Objetivo
+## Decisión de flujo
 
-Obtener una pista de referencia suficientemente estable para sincronizar Manim. **No es todavía el máster de audio**.
+La locución se graba como **una sola toma continua** en Reaper. No se divide en archivos por tramo.
 
-## Formato
+Los siete bloques siguen existiendo únicamente como **marcadores temporales** para sincronizar Manim.
 
-- un archivo por segmento;
-- WAV PCM preferido;
+## Grabación
+
+- una pista de voz continua;
+- WAV PCM preferido para el render de referencia;
 - 48 kHz;
 - mono;
-- 24 bit si el grabador lo permite; 16 bit también sirve para referencia;
-- no normalizar, comprimir ni aplicar reducción de ruido destructiva antes de medir.
+- 24 bit si está disponible;
+- no es necesario cortar los bloques ni exportarlos individualmente.
 
-## Archivos
+Puedes editar respiraciones, errores o silencios dentro de Reaper como lo haces normalmente. Lo importante es que, después de editar, los marcadores queden en las posiciones definitivas.
 
-1. `01-opening.wav`
-2. `02-block-1.wav`
-3. `03-bridge-1.wav`
-4. `04-block-2.wav`
-5. `05-bridge-2.wav`
-6. `06-block-3.wav`
-7. `07-closing.wav`
+## Marcadores canónicos
 
-Los archivos deben guardarse localmente en:
+Coloca un marcador de Reaper al **comienzo** de cada unidad con estos nombres exactos:
 
-`audiovisual/manim/ma_cls_c13_p01/voice-reference/audio/`
+1. `opening`
+2. `block-1`
+3. `bridge-1`
+4. `block-2`
+5. `bridge-2`
+6. `block-3`
+7. `closing`
 
-La carpeta `audio/` queda ignorada por Git: una voz de referencia no debe entrar accidentalmente en el repositorio.
+Opcionalmente añade `end` al final exacto de la locución. Si no existe, el analizador usa el final del archivo de audio.
 
-## Criterio de lectura
+En Reaper basta con situar el cursor y pulsar **M** para crear un marcador; después asigna uno de esos nombres.
 
-- leer el texto de `spoken-script.md` literalmente;
-- conservar pausas naturales en comas, dos puntos y fórmulas;
-- no intentar alcanzar exactamente el tiempo objetivo;
-- no acelerar una fórmula para “entrar” en el cue;
-- dejar aproximadamente 100–250 ms de silencio al comienzo y al final de cada archivo;
-- si hay un error, repetir el segmento completo en vez de hacer un empalme.
+## Archivos necesarios
 
-## Después de grabar
+Sólo necesitamos dos archivos de trabajo:
+
+- el render continuo, por ejemplo `MA-CLS-C13-P01-reference.wav`;
+- tu proyecto de Reaper, por ejemplo `MA-CLS-C13-P01-reference.rpp`.
+
+No hace falta exportar CSV ni regiones, y tampoco separar la voz en clips.
+
+## Análisis
 
 Desde `audiovisual/manim/ma_cls_c13_p01`:
 
 ```powershell
-uv run python analyze_voice_reference.py voice-reference/audio
+uv run python analyze_voice_reference.py `
+  --audio "RUTA\MA-CLS-C13-P01-reference.wav" `
+  --rpp "RUTA\MA-CLS-C13-P01-reference.rpp"
 ```
 
-El analizador crea:
+El script lee los marcadores directamente del archivo `.rpp` y crea:
 
 `voice-reference/voice-reference-timing.json`
 
-con las duraciones reales, los tiempos acumulados y la desviación frente al modelo de 115 palabras/minuto.
+con:
+
+- duración real de cada unidad;
+- tiempos absolutos de inicio y término;
+- duración total;
+- desviación respecto del modelo de 185 s.
+
+## Guion
+
+Lee `spoken-script.md` como una locución continua. Los encabezados 01–07 son sólo referencias editoriales; **no se pronuncian**.
 
 ## Regla MA-M06
 
 **La voz gobierna la permanencia; la matemática gobierna el momento de aparición.**
 
-La locución real puede cambiar cuánto permanece visible un estado, pero no puede adelantar una fórmula antes de que sus componentes conceptuales hayan sido presentados.
+La grabación continua puede tener el ritmo natural que necesites. Manim se ajustará después a la voz; no debes forzar tu lectura para coincidir con los tiempos estimados.
