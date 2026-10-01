@@ -48,8 +48,8 @@ for path, parser in pages.items():
             assert image.get('alt')
             assert (path.parent/unquote(src)).resolve().is_file()
             images.add(src.split('/')[-1])
-assert len(images) == 56
-result = {'chapters':20,'images':56,'math_spans':sum(p.math for p in pages.values()),
+assert len(images) == 64
+result = {'chapters':20,'images':64,'math_spans':sum(p.math for p in pages.values()),
           'duplicate_body_ids':0,'unresolved_refs':0,'broken_chapter_links':0}
 (repo/'cpm-html-qa.json').write_text(json.dumps(result, indent=2)+'\n')
 print(result)

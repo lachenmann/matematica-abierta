@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -175,6 +175,8 @@ No hemos usado una integral para obtener $1/2$: el valor ya era conocido por geo
 :::
 
 El cálculo anterior contiene ya varios ingredientes de la teoría futura: una división finita del intervalo, alturas elegidas en cada pieza, una suma y una comparación entre sumas. Sin embargo, utilizamos una división particularmente cómoda y una función creciente. Una teoría general no puede depender de esas ventajas.
+
+![Cuatro franjas encierran el área del triángulo entre $3/8$ y $5/8$.](<../../assets/books/cpm-tomo-i/t1-c14-fig-01.png>){#fig-t1-c14-01 width=94% fig-alt="Rectángulos inferiores y superiores para f(x)=x en cuatro subintervalos uniformes."}
 
 ### El dibujo no decide qué suma es correcta
 
@@ -444,6 +446,8 @@ $$
 La falsedad de la recíproca aparecerá en el ejemplo siguiente. $\square$
 
 La primera parte proporciona una herramienta de comparación que usaremos repetidamente. Si dos sumas fueron construidas sobre $P$ y $Q$, no necesitaremos decidir cuál partición es «mejor». Podremos trasladar ambas construcciones al refinamiento común $P\vee Q$ y compararlas allí.
+
+![El refinamiento común conserva los cortes de ambas particiones, incluso cuando estas no se refinan entre sí.](<../../assets/books/cpm-tomo-i/t1-c14-fig-02.png>){#fig-t1-c14-02 width=94% fig-alt="Particiones P y Q distintas y su unión que conserva todos los cortes."}
 
 ### Refinamiento y malla no dicen lo mismo
 
@@ -832,6 +836,8 @@ $$
 
 Los valores $7,5,10,0$ en los puntos de corte no son las alturas de las franjas; son valores puntuales adicionales de la función.
 
+![Los escalones tienen alturas $2,1,3$ y anchuras $1,2,1$; los valores aislados se indican por separado.](<../../assets/books/cpm-tomo-i/t1-c14-fig-03.png>){#fig-t1-c14-03 width=94% fig-alt="Función escalonada con tres franjas y valores excepcionales 7, 5, 10 y 0 en los cortes."}
+
 Ahora consideremos
 
 $$
@@ -1149,6 +1155,8 @@ $$
 $$
 
 cuando los puntos intermedios subdividen $[u,v]$. El refinamiento no añade ni quita anchura; solo reparte la misma longitud entre más sumandos que conservan la misma altura.
+
+![La subdivisión de una franja mantiene la altura y descompone su anchura: la contribución total permanece igual.](<../../assets/books/cpm-tomo-i/t1-c14-fig-04.png>){#fig-t1-c14-04 width=94% fig-alt="Un rectángulo de altura c y anchura b menos a se divide en dos sin cambiar su área."}
 
 ### Dos representaciones arbitrarias dan el mismo número
 
@@ -1590,6 +1598,8 @@ $$
 
 Así, la integral de $s$ es cero por **cancelación de contribuciones con signo**. No expresa el área geométrica total comprendida entre la gráfica y el eje horizontal; esa cantidad corresponde aquí a la integral de $|s|$.
 :::
+
+![Las contribuciones $+1$ y $-1$ se cancelan en la integral, mientras que las dos áreas geométricas se suman.](<../../assets/books/cpm-tomo-i/t1-c14-fig-05.png>){#fig-t1-c14-05 width=94% fig-alt="Una franja positiva y otra negativa, ambas de área geométrica uno; integral cero y área total dos."}
 
 Este ejemplo separa dos conceptos que conviene mantener distintos desde el comienzo:
 
@@ -2149,6 +2159,8 @@ $$
 
 El valor $1/2$ aparece aquí solo porque conocemos previamente el área del triángulo y podemos usarla como referencia, exactamente como en §13.1. Las sumas $L(f,P)$ y $U(f,P)$ se han obtenido sin usar ninguna integral de $f$.
 
+![Para $P=\{0,1/4,3/4,1\}$, las cotas son $L(f,P)=5/16$ y $U(f,P)=11/16$.](<../../assets/books/cpm-tomo-i/t1-c14-fig-06.png>){#fig-t1-c14-06 width=94% fig-alt="Rectángulos inferiores y superiores de la identidad en una partición con anchuras un cuarto, un medio y un cuarto."}
+
 ### Los valores en los cortes vuelven a importar para las cotas de una partición
 
 En §13.4 demostramos que modificar finitísimos valores de una función escalonada no cambia su **integral elemental**. No debe concluirse que tales valores sean invisibles para toda construcción posterior.
@@ -2557,6 +2569,8 @@ $$
 La cota inferior sube de $1/4$ a $3/8$ y la superior baja de $3/4$ a $5/8$. La mejora no depende de una intuición gráfica: es una instancia concreta de [Proposición 13.6](#prp-t1-0069).
 :::
 
+![Al pasar de cuatro a ocho piezas uniformes, la brecha de las sumas de la identidad disminuye de $1/4$ a $1/8$.](<../../assets/books/cpm-tomo-i/t1-c14-fig-07.png>){#fig-t1-c14-07 width=94% fig-alt="Dos encierros con cuatro y ocho franjas; el refinamiento estrecha la diferencia entre la suma superior y la inferior."}
+
 ### Dos particiones no necesitan ser comparables
 
 La proposición anterior compara directamente $P$ y $Q$ solo cuando una refina a la otra. Pero en §13.2 vimos que dos particiones cualesquiera admiten el refinamiento común
@@ -2809,6 +2823,8 @@ $$
 La suma anterior es finita. Por ello, para **definirla** no necesitamos suponer que $f$ sea acotada: cada $f(\xi_k)$ es un número real y aparecen solamente finitísimos términos. La acotación sí será necesaria cuando queramos compararla con $L(f,P)$ y $U(f,P)$, porque esas dos cantidades fueron definidas en §13.6 para funciones acotadas.
 
 La malla tampoco depende de las etiquetas. Dos particiones etiquetadas pueden tener exactamente los mismos puntos de corte y, por tanto, la misma malla, aunque sus sumas de Riemann sean diferentes. La geometría horizontal está codificada por $P$; las alturas elegidas están codificadas por $\xi$.
+
+![Los puntos medios $1/8,1/2,7/8$ determinan las alturas de tres rectángulos sobre la misma partición no uniforme.](<../../assets/books/cpm-tomo-i/t1-c14-fig-08.png>){#fig-t1-c14-08 width=94% fig-alt="Tres rectángulos cuyas alturas son los valores de la identidad en las etiquetas de punto medio."}
 
 ### Qué representa cada término
 
