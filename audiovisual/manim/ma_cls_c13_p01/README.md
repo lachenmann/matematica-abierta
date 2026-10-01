@@ -160,3 +160,12 @@ Regla `MA-M06`: **la voz gobierna la permanencia; la matemática gobierna el mom
 PASS — workflow `36941707095`.
 
 El script `analyze_voice_reference.py --self-test` leyó correctamente audio WAV sintético en el entorno oficial de Manim y validó la extracción de duraciones.
+
+
+## Flujo Reaper
+
+La voz de referencia se graba como **una sola toma continua**. Los siete bloques se identifican mediante marcadores dentro del proyecto `.rpp`; no se exportan archivos separados.
+
+Marcadores: `opening`, `block-1`, `bridge-1`, `block-2`, `bridge-2`, `block-3`, `closing` y opcionalmente `end`.
+
+El analizador recibe el WAV continuo y el `.rpp` y reconstruye automáticamente los tiempos reales de cada unidad.
