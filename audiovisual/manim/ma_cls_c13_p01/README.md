@@ -44,3 +44,22 @@ Criterios de aprobación:
 4. legibilidad en 1080p y móvil;
 5. correspondencia exacta con T1-C14;
 6. ningún salto prematuro desde suma de Riemann a integral general.
+
+
+## Ensamblaje de la microclase
+
+La primera `MA-CLS` se construirá con las tres visualizaciones ya aprobadas, sin añadir contenido matemático nuevo:
+
+1. `MA-VIZ-C13-002` — encierro y refinamiento;
+2. `MA-VIZ-C13-003` — de una franja a una suma;
+3. `MA-VIZ-C13-004` — integral con signo frente a área geométrica total.
+
+Duración objetivo: **185 s**, con tolerancia de ±20 s después de disponer de una locución de referencia.
+
+Archivos de control:
+
+- `class-plan.yml` — orden, tiempos y restricciones;
+- `narration.md` — texto de locución;
+- `ASSEMBLY.md` — reglas de montaje.
+
+Regla `MA-M05`: **la unidad de montaje es la idea matemática, no el clip**.
