@@ -153,3 +153,10 @@ Después de grabar:
 El analizador genera tiempos acumulados reales para sustituir el modelo de 115 palabras/minuto.
 
 Regla `MA-M06`: **la voz gobierna la permanencia; la matemática gobierna el momento de aparición**.
+
+
+### Self-test del analizador
+
+PASS — workflow `36941707095`.
+
+El script `analyze_voice_reference.py --self-test` leyó correctamente audio WAV sintético en el entorno oficial de Manim y validó la extracción de duraciones.
