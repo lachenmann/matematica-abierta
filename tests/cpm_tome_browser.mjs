@@ -20,10 +20,11 @@ try {
       try {
         const response=await page.goto(base+'/'+row.path.replace(/\.md$/,'.html'),{waitUntil:'networkidle',timeout:120000});
         await page.waitForFunction(()=>!!window.MathJax?.startup?.promise,{timeout:120000});
-        await page.evaluate(async()=>{await window.MathJax.startup.promise; if(window.MathJax.typesetPromise)await window.MathJax.typesetPromise();await document.fonts.ready;});
+        await page.evaluate(async()=>{await window.MathJax.startup.promise;await document.fonts.ready;});
         Object.assign(check,await page.evaluate(()=>{
           const main=document.querySelector('main');
-          const ids=[...document.querySelectorAll('body [id]')].filter(e=>!e.closest('.hidden')).map(e=>e.id);
+          // Quarto clones its TOC for responsive navigation; audit manuscript IDs.
+          const ids=[...main.querySelectorAll('[id]')].map(e=>e.id);
           return {pageWidth:document.documentElement.scrollWidth,mathjax:window.MathJax.version,
             math:main.querySelectorAll('mjx-container').length,
             mathErrors:main.querySelectorAll('mjx-merror,merror,[data-mjx-error]').length,
@@ -35,7 +36,11 @@ try {
         }));
         check.status=response.status();check.errors=errors;
         check.pass=check.status===200&&check.pageWidth<=width+2&&check.math>0&&check.mathErrors===0&&check.failedImages.length===0&&check.missingAlt===0&&check.unresolved===0&&check.duplicateIds.length===0&&errors.length===0;
-        await page.screenshot({path:path.join(output,`${row.chapter}-${width}.png`),fullPage:true});
+        const height=await page.evaluate(()=>document.documentElement.scrollHeight);
+        for(const [part,y] of [['start',0],['middle',height/2],['end',height]]) {
+          await page.evaluate(y=>window.scrollTo(0,y),y);
+          await page.screenshot({path:path.join(output,`${row.chapter}-${width}-${part}.png`)});
+        }
       } catch(e) {check.pass=false;check.exception=e.message;}
       checks.push(check);
       fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({complete:checks.length===100,checks},null,2));
