@@ -74,7 +74,7 @@ asset_dir = root/'assets/books/cpm-tomo-i'
 asset_dir.mkdir(parents=True, exist_ok=True)
 figure_source=args.figures or next((p for p in [args.canonical.parent/'90 - Assets/figures',args.canonical.parent/'book/90 - Assets/figures'] if p.is_dir()),None)
 assert figure_source is not None, 'pass --figures with the canonical PNG directory'
-assert len(list(figure_source.glob('*.png')))==56
+assert len(list(figure_source.glob('*.png')))==64
 for image in figure_source.glob('*.png'):
     shutil.copyfile(image, asset_dir/image.name)
 print('Adapted', len(rows), 'chapters; copied', len(list(asset_dir.glob('*.png'))), 'figures')

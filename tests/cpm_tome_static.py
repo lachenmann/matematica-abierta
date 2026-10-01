@@ -31,9 +31,9 @@ for row in rows:
     for image in re.findall(r'../../assets/books/cpm-tomo-i/([^>\s)]+\.png)', source):
         assert (root/'assets/books/cpm-tomo-i'/image).is_file()
         images.add(image)
-assert len(owners) == 2438
+assert len(owners) == 2446
 assert sorted(map(int, exercise_ids)) == list(range(36, 836))
-assert exercise_ids == solution_ids and len(images) == 56
+assert exercise_ids == solution_ids and len(images) == 64
 for row in rows:
     source = (root/row['path']).read_text()
     for file, anchor in re.findall(r'\]\(([^)#]*)#([\w-]+)\)', source):
@@ -43,4 +43,4 @@ for row in rows:
 hub = (root/'libros/para-matematicos/calculo-para-matematicos.md').read_text()
 assert 'Publicación progresiva' not in hub
 assert all('../capitulos/'+Path(r['path']).name in hub for r in rows)
-print('PASS: 20 chapters, 800 matched pairs, 2438 anchors, 56 images, all reference destinations, unique public IDs')
+print('PASS: 20 chapters, 800 matched pairs, 2446 anchors, 64 images, all reference destinations, unique public IDs')
