@@ -1,49 +1,40 @@
 ---
 title: "Sucesiones y la primera noción rigurosa de límite"
-description: "Capítulo 3 de Cálculo para matemáticos. Edición canónica v11."
+description: "Capítulo 3 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0010
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-date-created: 2026-09-10
-date-modified: 2026-09-19
-areas:
-  - fundamentos
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
-topics:
-  - sucesiones
-  - colas
-  - convergencia
-  - limites-secuenciales
-  - epsilon-N
-  - algebra-de-limites
-  - teorema-del-sandwich
-  - monotonia
-  - completitud
-  - sucesiones-recursivas
-  - limites-infinitos
-prerequisites: 
-  - MA-BCH-0003
-  - MA-BCH-0004
-related:
-  - MA-CON-0016
-  - MA-BOK-0001
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
+date-created: 2026-09-10
+date-modified: 2026-09-30
+prerequisites:
+  - MA-BCH-0003
+  - MA-BCH-0004
 number-sections: true
 number-depth: 2
 number-offset: [2]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
+    html-math-method:
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js
 ---
 
 # Sucesiones y la primera noción rigurosa de límite {#sec-t1-c04}
+
+[← Capítulo 2](funciones-reales-estructura-composicion-inversas-y-graficas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 4 →](limites-de-funciones.md)
+
+En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
 
 Los dos capítulos precedentes proporcionaron la estructura ordenada y completa de $\mathbb R$ y la definición precisa de función. En ambos aprendimos también a separar hipótesis, existencia y unicidad y a justificar los pasos de una demostración.
 
@@ -2107,7 +2098,7 @@ $$
 |b_n|=1
 $$
 
-para todo $n$, la sucesión es acotada. Sin embargo, @exm-t1-0033 demostró que no converge a ningún número real.
+para todo $n$, la sucesión es acotada. Sin embargo, [Ejemplo 3.4](#exm-t1-0033) demostró que no converge a ningún número real.
 
 Tenemos entonces dos contraejemplos complementarios:
 
@@ -2162,7 +2153,7 @@ $$
 
 Y la unicidad no afirma existencia: decir que **si** existe un límite entonces es único no demuestra que una sucesión dada converja.
 
-Esta distinción entre existencia y unicidad es la misma que empleamos al demostrar la unicidad de inversos y la existencia de raíces en el capítulo inicial. El @thm-t1-0009 resuelve solamente la parte de «a lo sumo uno». Para establecer que una sucesión concreta tiene límite todavía necesitamos demostrar existencia mediante la definición o mediante resultados que construiremos después.
+Esta distinción entre existencia y unicidad es la misma que empleamos al demostrar la unicidad de inversos y la existencia de raíces en el capítulo inicial. El [Teorema 3.1](#thm-t1-0009) resuelve solamente la parte de «a lo sumo uno». Para establecer que una sucesión concreta tiene límite todavía necesitamos demostrar existencia mediante la definición o mediante resultados que construiremos después.
 
 ### Qué hemos ganado
 
@@ -2401,7 +2392,7 @@ $$
 a_n+b_n\to A+B.
 $$
 
-**3. Producto.** Esta es la parte delicada. Por @prp-t1-0020, la sucesión convergente $(b_n)$ es acotada. Por tanto existe $M>0$ tal que
+**3. Producto.** Esta es la parte delicada. Por [Proposición 3.2](#prp-t1-0020), la sucesión convergente $(b_n)$ es acotada. Por tanto existe $M>0$ tal que
 
 $$
 |b_n|\le M
@@ -2603,7 +2594,7 @@ $$
 }
 $$
 
-Esto explica por qué @prp-t1-0020 no era una propiedad decorativa. El teorema de acotación se convierte inmediatamente en una herramienta para demostrar otro teorema.
+Esto explica por qué [Proposición 3.2](#prp-t1-0020) no era una propiedad decorativa. El teorema de acotación se convierte inmediatamente en una herramienta para demostrar otro teorema.
 
 ### Una observación sobre las cotas usadas en una prueba
 
@@ -2754,7 +2745,7 @@ La demostración merece atención por su economía. No hemos utilizado ninguna a
 
 ### De la prueba a la herramienta de cálculo
 
-Una vez demostrado @prp-t1-0021, ya podemos utilizarlo como un resultado previo. Esto cambia el modo de resolver muchos problemas.
+Una vez demostrado [Proposición 3.3](#prp-t1-0021), ya podemos utilizarlo como un resultado previo. Esto cambia el modo de resolver muchos problemas.
 
 Si sabemos, por ejemplo, que
 
@@ -2917,7 +2908,7 @@ $$
 \lim_{n\to\infty}\frac{a_n}{b_n}=\frac AB.
 $$
 
-Pero estas fórmulas deben leerse como aplicaciones de @prp-t1-0021, no como una licencia para sustituir símbolos mecánicamente.
+Pero estas fórmulas deben leerse como aplicaciones de [Proposición 3.3](#prp-t1-0021), no como una licencia para sustituir símbolos mecánicamente.
 
 Antes de usar una regla conviene comprobar:
 
@@ -3223,7 +3214,7 @@ Estas versiones permiten transportar al límite cotas que solo empiezan a cumpli
 
 ### El orden estricto puede desaparecer
 
-Hay que leer @prp-t1-0022 con precisión. De
+Hay que leer [Proposición 3.4](#prp-t1-0022) con precisión. De
 
 $$
 a_n<b_n
@@ -3565,23 +3556,23 @@ Su lógica es particularmente transparente: si el **tamaño** de $u_n$ está dom
 **Una sucesión oscilante controlada por sándwich.** Consideremos
 
 $$
-a_n=\frac{\sin n}{n+1},
+a_n=\frac{\sigma n}{n+1},
 \qquad
 n\in\mathbb N.
 $$
 
-Los valores de $\sin n$ oscilan y no necesitamos describir su comportamiento con mayor precisión. Basta la desigualdad elemental
+Los valores de $\sigma n$ oscilan y no necesitamos describir su comportamiento con mayor precisión. Basta la desigualdad elemental
 
 $$
-|\sin n|\le1.
+|\sigma n|\le1.
 $$
 
 Por tanto,
 
 $$
-\left|\frac{\sin n}{n+1}\right|
+\left|\frac{\sigma n}{n+1}\right|
 =
-\frac{|\sin n|}{n+1}
+\frac{|\sigma n|}{n+1}
 \le
 \frac1{n+1}.
 $$
@@ -3596,7 +3587,7 @@ Aplicando la forma absoluta del teorema del sándwich,
 
 $$
 \boxed{
-\frac{\sin n}{n+1}\to0.
+\frac{\sigma n}{n+1}\to0.
 }
 $$
 
@@ -3605,7 +3596,7 @@ Equivalentemente, podríamos escribir
 $$
 -\frac1{n+1}
 \le
-\frac{\sin n}{n+1}
+\frac{\sigma n}{n+1}
 \le
 \frac1{n+1},
 $$
@@ -3618,7 +3609,7 @@ Este ejemplo muestra por qué el sándwich es más que una regla para «calcular
 Aquí no necesitamos averiguar si
 
 $$
-\sin n
+\sigma n
 $$
 
 se acerca a algún número. Ni siquiera necesitamos que converja. Lo único relevante es que su tamaño nunca excede $1$, mientras que el factor
@@ -4379,7 +4370,7 @@ suele producir crecimiento sin límite real finito. Lo estudiaremos cuando dispo
 El ejemplo de §3.5 con
 
 $$
-\frac{\sin n}{n+1}
+\frac{\sigma n}{n+1}
 $$
 
 mostró un fenómeno general: una parte de la sucesión puede oscilar sin converger, mientras otro factor reduce su tamaño hasta volver irrelevante esa oscilación para el límite.
@@ -4388,16 +4379,16 @@ Consideremos, por ejemplo,
 
 $$
 a_n=
-\frac{3(-1)^n-2\sin n}{(n+1)^2}.
+\frac{3(-1)^n-2\sigma n}{(n+1)^2}.
 $$
 
-No necesitamos comprender la interacción exacta entre $(-1)^n$ y $\sin n$. Basta estimar:
+No necesitamos comprender la interacción exacta entre $(-1)^n$ y $\sigma n$. Basta estimar:
 
 $$
 \begin{aligned}
-|3(-1)^n-2\sin n|
+|3(-1)^n-2\sigma n|
 &\le
-3|(-1)^n|+2|\sin n|\\
+3|(-1)^n|+2|\sigma n|\\
 &\le3+2\\
 &=5.
 \end{aligned}
@@ -4421,7 +4412,7 @@ la forma absoluta del sándwich da
 
 $$
 \boxed{
-\frac{3(-1)^n-2\sin n}{(n+1)^2}
+\frac{3(-1)^n-2\sigma n}{(n+1)^2}
 \to0.
 }
 $$
@@ -4493,9 +4484,9 @@ Esto explica por qué podemos controlar factores como
 $$
 (-1)^n,
 \qquad
-\sin n,
+\sigma n,
 \qquad
-\cos n,
+\kappa n,
 $$
 
 cuando aparecen multiplicados por una sucesión que tiende a cero.
@@ -4537,13 +4528,13 @@ $$
 y
 
 $$
-\frac{2+\sin n}{n+1}\to0,
+\frac{2+\sigma n}{n+1}\to0,
 $$
 
 porque
 
 $$
-|2+\sin n|\le3.
+|2+\sigma n|\le3.
 $$
 
 La meta de esta sección no era acumular ejemplos, sino disponer de unas pocas **unidades de construcción** cuyo origen conocemos.
@@ -5059,7 +5050,7 @@ $$
 a_n=n
 $$
 
-es creciente, pero no está acotada superiormente. Tampoco puede converger a un número real: si convergiera, @prp-t1-0020 implicaría que sería acotada, contradiciendo la propiedad arquimediana.
+es creciente, pero no está acotada superiormente. Tampoco puede converger a un número real: si convergiera, [Proposición 3.2](#prp-t1-0020) implicaría que sería acotada, contradiciendo la propiedad arquimediana.
 
 Así,
 
@@ -5079,7 +5070,7 @@ $$
 b_n=(-1)^n
 $$
 
-es acotada, pero @exm-t1-0033 demostró que diverge.
+es acotada, pero [Ejemplo 3.4](#exm-t1-0033) demostró que diverge.
 
 Por tanto,
 
@@ -5170,7 +5161,7 @@ $$
 (a_n)_{n\ge N_0}
 $$
 
-es creciente y está acotada superiormente, el teorema de convergencia monótona se aplica a esa cola. La cola converge y, por @prp-t1-0019, la sucesión completa converge al mismo límite.
+es creciente y está acotada superiormente, el teorema de convergencia monótona se aplica a esa cola. La cola converge y, por [Proposición 3.1](#prp-t1-0019), la sucesión completa converge al mismo límite.
 
 Análogamente, una cola decreciente y acotada inferiormente basta.
 
@@ -5200,7 +5191,7 @@ En §3.8 aplicaremos exactamente este mecanismo a una sucesión definida recursi
 4. ¿por qué existe un límite?;
 5. una vez establecida la existencia, ¿cómo identificamos ese límite sin invocar continuidad?
 
-El cuarto paso será una aplicación directa del @thm-t1-0010. El quinto utilizará el desplazamiento de índices y el álgebra de límites ya demostrados.
+El cuarto paso será una aplicación directa del [Teorema 3.2](#thm-t1-0010). El quinto utilizará el desplazamiento de índices y el álgebra de límites ya demostrados.
 
 ## Sucesiones recursivas: fabricar y controlar un límite {#sec-t1-c04-08}
 
@@ -5306,7 +5297,7 @@ A partir de ahora organizaremos muchos problemas recursivos mediante cinco pregu
    ¿Los términos avanzan sistemáticamente en una dirección?
 
 4. **¿Por qué existe un límite?**  
-   Si obtenemos monotonía y una cota en la dirección correcta, podemos invocar @thm-t1-0010.
+   Si obtenemos monotonía y una cota en la dirección correcta, podemos invocar [Teorema 3.2](#thm-t1-0010).
 
 5. **Una vez demostrada la existencia, ¿cómo identificamos el límite?**  
    Aquí utilizaremos desplazamiento de índices y el álgebra de límites de §3.4.
@@ -5553,7 +5544,7 @@ $$
 
 Por tanto, la sucesión es creciente y está acotada superiormente.
 
-Aplicando @thm-t1-0010, existe un número real $L$ tal que
+Aplicando [Teorema 3.2](#thm-t1-0010), existe un número real $L$ tal que
 
 $$
 a_n\to L.
@@ -5916,7 +5907,7 @@ pero no al revés.
 
 ### En nuestro ejemplo no pasamos el límite «a través de la raíz»
 
-Conviene aislar un detalle metodológico del @exm-t1-0038.
+Conviene aislar un detalle metodológico del [Ejemplo 3.9](#exm-t1-0038).
 
 Podría resultar tentador escribir
 
@@ -5997,7 +5988,7 @@ a_n\to L.
 }
 $$
 
-Aquí entra la completitud a través de @thm-t1-0010.
+Aquí entra la completitud a través de [Teorema 3.2](#thm-t1-0010).
 
 **Bloque B: identificar el número.**
 
@@ -6169,7 +6160,7 @@ $$
 \lim_{n\to\infty}a_n=+\infty
 $$
 
-es útil, pero debe interpretarse mediante @def-t1-0031. No significa que exista un número real llamado $+\infty$ al cual se acerquen los términos.
+es útil, pero debe interpretarse mediante [Definición 3.5](#def-t1-0031). No significa que exista un número real llamado $+\infty$ al cual se acerquen los términos.
 
 En particular,
 
@@ -6179,11 +6170,11 @@ $$
 -\infty\notin\mathbb R.
 $$
 
-Por eso, si $a_n\to+\infty$ o $a_n\to-\infty$, la sucesión **no converge en el sentido real ordinario** de @def-t1-0028.
+Por eso, si $a_n\to+\infty$ o $a_n\to-\infty$, la sucesión **no converge en el sentido real ordinario** de [Definición 3.2](#def-t1-0028).
 
 Hay también una razón estructural inmediata. Si $a_n\to+\infty$, entonces la sucesión no está acotada superiormente: dada cualquier supuesta cota $B$, la definición con $M=B$ produce términos tardíos mayores que $B$. Análogamente, si $a_n\to-\infty$, no está acotada inferiormente.
 
-Pero @prp-t1-0020 demostró que toda sucesión convergente a un número real es acotada. Por tanto,
+Pero [Proposición 3.2](#prp-t1-0020) demostró que toda sucesión convergente a un número real es acotada. Por tanto,
 
 $$
 \boxed{
@@ -6218,7 +6209,7 @@ $$
 \quad n>M,
 $$
 
-y por @def-t1-0031,
+y por [Definición 3.5](#def-t1-0031),
 
 $$
 \boxed{n\to+\infty.}
@@ -6507,7 +6498,7 @@ Esta distinción será importante cuando más adelante clasifiquemos comportamie
 
 ### No haremos álgebra formal con el símbolo $\infty$
 
-Las leyes de @prp-t1-0021 fueron demostradas para límites **reales**. No hemos demostrado todavía un cálculo general para expresiones que involucren $+\infty$ o $-\infty$.
+Las leyes de [Proposición 3.3](#prp-t1-0021) fueron demostradas para límites **reales**. No hemos demostrado todavía un cálculo general para expresiones que involucren $+\infty$ o $-\infty$.
 
 Y no podemos obtenerlo tratando esos símbolos como números.
 
@@ -6747,7 +6738,7 @@ $$
 
 no es todavía la demostración: es la **búsqueda** que nos permite diseñar el testigo existencial $N$.
 
-Podríamos obtener el mismo límite más rápidamente mediante el álgebra de límites de @prp-t1-0021. Aquí hemos evitado deliberadamente ese atajo porque el objetivo de la estación era reconstruir la lógica elemental sobre la que descansa toda la teoría.
+Podríamos obtener el mismo límite más rápidamente mediante el álgebra de límites de [Proposición 3.3](#prp-t1-0021). Aquí hemos evitado deliberadamente ese atajo porque el objetivo de la estación era reconstruir la lógica elemental sobre la que descansa toda la teoría.
 
 ### Estación 2 — Negar una convergencia sin cambiar el orden de los cuantificadores
 
@@ -7062,35 +7053,35 @@ $$
 }
 $$
 
-El teorema algebraico de @prp-t1-0021 comprime estos razonamientos para reutilizarlos. Esta estación muestra qué información permanece escondida cuando escribimos simplemente «por el álgebra de límites».
+El teorema algebraico de [Proposición 3.3](#prp-t1-0021) comprime estos razonamientos para reutilizarlos. Esta estación muestra qué información permanece escondida cuando escribimos simplemente «por el álgebra de límites».
 
 ### Estación 4 — Cuando la oscilación no necesita tener límite
 
 Consideremos
 
 $$
-u_n=\frac{2\sin n-\cos n}{n+1}.
+u_n=\frac{2\sigma n-\kappa n}{n+1}.
 $$
 
-**Problema.** Determinar el límite sin suponer que las sucesiones $(\sin n)$ o $(\cos n)$ tengan límite.
+**Problema.** Determinar el límite sin suponer que las sucesiones $(\sigma n)$ o $(\kappa n)$ tengan límite.
 
 #### Diagnóstico
 
-La expresión contiene dos factores oscilantes. Intentar aplicar el álgebra de límites término a término nos obligaría a conocer primero límites para $\sin n$ y $\cos n$.
+La expresión contiene dos factores oscilantes. Intentar aplicar el álgebra de límites término a término nos obligaría a conocer primero límites para $\sigma n$ y $\kappa n$.
 
 Pero no necesitamos esa información.
 
 Lo que sí sabemos es
 
 $$
-|\sin n|\le1,
+|\sigma n|\le1,
 \qquad
-|\cos n|\le1.
+|\kappa n|\le1.
 $$
 
 La pregunta correcta no es, por tanto,
 
-> ¿a qué número se acercan el seno y el coseno?,
+> ¿a qué número se acercan las funciones $\sigma$ y $\kappa$?,
 
 sino
 
@@ -7103,9 +7094,9 @@ Eso apunta al teorema del sándwich.
 Por desigualdad triangular,
 
 $$
-|2\sin n-\cos n|
+|2\sigma n-\kappa n|
 \le
-2|\sin n|+|\cos n|
+2|\sigma n|+|\kappa n|
 \le3.
 $$
 
@@ -7114,7 +7105,7 @@ Por tanto,
 $$
 |u_n|
 =
-\frac{|2\sin n-\cos n|}{n+1}
+\frac{|2\sigma n-\kappa n|}{n+1}
 \le
 \frac3{n+1}.
 $$
@@ -7131,7 +7122,7 @@ $$
 \frac3{n+1}\to0.
 $$
 
-La forma absoluta del teorema del sándwich @prp-t1-0023 da entonces
+La forma absoluta del teorema del sándwich [Proposición 3.5](#prp-t1-0023) da entonces
 
 $$
 \boxed{
@@ -7152,7 +7143,7 @@ $$
 }
 $$
 
-Esta arquitectura es más importante que el ejemplo trigonométrico concreto. Cuando una parte de una expresión se resiste a tener un comportamiento simple, conviene preguntar si basta controlar su magnitud.
+Esta arquitectura es más importante que el ejemplo periódico concreto. Cuando una parte de una expresión se resiste a tener un comportamiento simple, conviene preguntar si basta controlar su magnitud.
 
 ### Estación 5 — Detectar cuándo la completitud produce el límite
 
@@ -7234,7 +7225,7 @@ La sucesión es, pues, creciente y acotada superiormente.
 
 #### Existencia del límite
 
-Por el teorema de convergencia monótona @thm-t1-0010, existe $L\in\mathbb R$ tal que
+Por el teorema de convergencia monótona [Teorema 3.2](#thm-t1-0010), existe $L\in\mathbb R$ tal que
 
 $$
 a_n\to L.
@@ -7436,7 +7427,7 @@ $$
 
 #### Paso 3: existencia por completitud
 
-La sucesión es creciente y acotada superiormente. Por @thm-t1-0010,
+La sucesión es creciente y acotada superiormente. Por [Teorema 3.2](#thm-t1-0010),
 
 $$
 u_n\to L
@@ -7448,7 +7439,7 @@ Solo ahora tenemos derecho a buscar una ecuación para $L$.
 
 #### Paso 4: identificación mediante desplazamiento y álgebra
 
-Por la estabilidad bajo desplazamiento de índices @prp-t1-0019,
+Por la estabilidad bajo desplazamiento de índices [Proposición 3.1](#prp-t1-0019),
 
 $$
 u_{n+1}\to L.
@@ -7530,11 +7521,11 @@ $$
 
 Cuando el error se reduce a una expresión elemental en $n$, una prueba $\varepsilon$–$N$ puede ser la ruta más transparente.
 
-**Si la sucesión está construida a partir de otras cuyos límites ya conocemos**, el álgebra de @prp-t1-0021 puede comprimir el trabajo. Pero debemos auditar sus hipótesis: en productos aparece acotación y en cocientes el denominador debe quedar eventualmente separado de cero.
+**Si la sucesión está construida a partir de otras cuyos límites ya conocemos**, el álgebra de [Proposición 3.3](#prp-t1-0021) puede comprimir el trabajo. Pero debemos auditar sus hipótesis: en productos aparece acotación y en cocientes el denominador debe quedar eventualmente separado de cero.
 
 **Si aparece una oscilación acotada multiplicada por algo pequeño**, conviene buscar una desigualdad en valor absoluto y aplicar el sándwich en vez de intentar asignar un límite a cada factor.
 
-**Si no conocemos el candidato pero la sucesión tiene una dirección de movimiento**, preguntamos si es monótona y está acotada en la dirección adecuada. Si ambas respuestas son afirmativas, la completitud puede producir el límite mediante @thm-t1-0010.
+**Si no conocemos el candidato pero la sucesión tiene una dirección de movimiento**, preguntamos si es monótona y está acotada en la dirección adecuada. Si ambas respuestas son afirmativas, la completitud puede producir el límite mediante [Teorema 3.2](#thm-t1-0010).
 
 **Si la sucesión está dada por recurrencia**, no comenzamos resolviendo una ecuación de punto fijo. Primero debemos demostrar que la regla está bien definida, encontrar una región invariante o cotas, estudiar monotonía y obtener existencia. Solo después usamos desplazamiento de índices y álgebra para identificar el límite.
 
@@ -7763,7 +7754,7 @@ $$
 **Ejercicio B3. Oscilación amortiguada.** Demuestra que
 
 $$
-\frac{2+\sin n}{n+1}\to0.
+\frac{2+\sigma n}{n+1}\to0.
 $$
 :::
 
@@ -8372,7 +8363,7 @@ $$
 a_n=b_n.
 $$
 
-Las dos sucesiones coinciden eventualmente. Por @prp-t1-0019, la convergencia y el límite no cambian al modificar una cantidad finita de términos.
+Las dos sucesiones coinciden eventualmente. Por [Proposición 3.1](#prp-t1-0019), la convergencia y el límite no cambian al modificar una cantidad finita de términos.
 
 Como
 
@@ -8550,13 +8541,13 @@ $$
 Como
 
 $$
--1\le\sin n\le1,
+-1\le\sigma n\le1,
 $$
 
 tenemos
 
 $$
-1\le2+\sin n\le3.
+1\le2+\sigma n\le3.
 $$
 
 Para todo $n\ge0$,
@@ -8564,7 +8555,7 @@ Para todo $n\ge0$,
 $$
 0
 \le
-\frac{2+\sin n}{n+1}
+\frac{2+\sigma n}{n+1}
 \le
 \frac3{n+1}.
 $$
@@ -8579,7 +8570,7 @@ Por el teorema del sándwich,
 
 $$
 \boxed{
-\frac{2+\sin n}{n+1}\to0.
+\frac{2+\sigma n}{n+1}\to0.
 }
 $$
 :::
@@ -8594,7 +8585,7 @@ $$
 \left|-\frac35\right|<1,
 $$
 
-el resultado geométrico @cor-t1-0008 da
+el resultado geométrico [Corolario 3.2](#cor-t1-0008) da
 
 $$
 \left(-\frac35\right)^n\to0.
@@ -8636,7 +8627,7 @@ $$
 a_n\le b_n
 $$
 
-eventualmente. Por @prp-t1-0022,
+eventualmente. Por [Proposición 3.4](#prp-t1-0022),
 
 $$
 \boxed{A\le B.}
@@ -8671,7 +8662,7 @@ La desigualdad estricta de los términos puede colapsar a igualdad en el límite
 <!-- CPM-T1-SOL-0128 -->
 **Solución B6.**
 
-Por @cor-t1-0007,
+Por [Corolario 3.1](#cor-t1-0007),
 
 $$
 |a_n|\to|-3|=3.
@@ -9129,7 +9120,7 @@ $$
 
 para todo $n$.
 
-Sin embargo, no converge. Como se demostró en @exm-t1-0033, la alternancia entre $1$ y $-1$ impide que una cola completa quede dentro de una tolerancia suficientemente pequeña alrededor de cualquier real.
+Sin embargo, no converge. Como se demostró en [Ejemplo 3.4](#exm-t1-0033), la alternancia entre $1$ y $-1$ impide que una cola completa quede dentro de una tolerancia suficientemente pequeña alrededor de cualquier real.
 
 Por tanto,
 
@@ -9305,7 +9296,7 @@ $$
 \sqrt{n+1}\to+\infty,
 $$
 
-y por @prp-t1-0024,
+y por [Proposición 3.6](#prp-t1-0024),
 
 $$
 \frac1{\sqrt{n+1}}\to0.
@@ -9921,13 +9912,13 @@ $$
 
 Por tanto, $(a_n)$ es estrictamente creciente.
 
-**3. Existencia del límite.** La sucesión es creciente y está acotada superiormente por $4$. Por @thm-t1-0010 existe $L\in\mathbb R$ tal que
+**3. Existencia del límite.** La sucesión es creciente y está acotada superiormente por $4$. Por [Teorema 3.2](#thm-t1-0010) existe $L\in\mathbb R$ tal que
 
 $$
 a_n\to L.
 $$
 
-**4. Identificación.** Por @prp-t1-0019,
+**4. Identificación.** Por [Proposición 3.1](#prp-t1-0019),
 
 $$
 a_{n+1}\to L.
@@ -10357,7 +10348,7 @@ $$
 \sqrt{n+1}\to+\infty
 $$
 
-y la sucesión es positiva. Por @prp-t1-0024,
+y la sucesión es positiva. Por [Proposición 3.6](#prp-t1-0024),
 
 $$
 \frac1{\sqrt{n+1}}\to0.
@@ -10416,3 +10407,7 @@ Los niveles E–G añaden construcción de contraejemplos, reconstrucción de pr
 Ninguna solución utiliza límites funcionales, continuidad, IVT/EVT, derivadas, regla de l'Hôpital, subsucesiones, Bolzano–Weierstrass, criterio de Cauchy ni $\limsup/\liminf$.
 
 Con este banco queda cerrado el primer capítulo del tratado dedicado a una noción rigurosa de límite. El paso siguiente ya no será una nueva técnica de sucesiones: en `T1-C05` la misma arquitectura de tolerancias y cuantificadores se trasladará al estudio del límite de una función real.
+
+---
+
+[← Capítulo 2](funciones-reales-estructura-composicion-inversas-y-graficas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 4 →](limites-de-funciones.md)
