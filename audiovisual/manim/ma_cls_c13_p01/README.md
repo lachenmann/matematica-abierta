@@ -126,3 +126,17 @@ CI verifica automáticamente que la duración quede entre 183 y 187 s.
 ### Duración medida del preview temporizado
 
 El primer render real de `MAClsC13P01Timed` produjo **185,599 s**, frente al objetivo de 185,0 s: desviación de **+0,599 s**. El resultado queda dentro de la tolerancia de ±2 s.
+
+
+### Workflow final de temporización
+
+PASS — run `36939896397`.
+
+- `MAVizC13RiemannRefinement`: PASS
+- `MAVizC13RiemannTermToSum`: PASS
+- `MAVizC13SignedIntegralVsArea`: PASS
+- `MAClsC13P01`: PASS
+- `MAClsC13P01Timed`: PASS
+- verificación de duración: **185,599 s — PASS**
+
+Artefacto: `MA-C13-prototype-timed`.
