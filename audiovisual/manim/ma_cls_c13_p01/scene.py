@@ -75,6 +75,17 @@ def make_panel():
     ).to_edge(RIGHT, buff=0.38).shift(DOWN * 0.34)
 
 
+def panel_paragraph(*lines, font_size=17, color=MA_MUTED):
+    """Texto auxiliar centrado y contenido dentro del panel lateral."""
+    return Paragraph(
+        *lines,
+        alignment="center",
+        font_size=font_size,
+        color=color,
+        line_spacing=0.85,
+    )
+
+
 def graph_rect(axes: Axes, a: float, b: float, h: float, color: str, opacity: float):
     return Polygon(
         axes.c2p(a, 0),
@@ -185,11 +196,12 @@ class MAVizC13RiemannRefinement(Scene):
             font_size=40,
         ).move_to(panel.get_center() + UP * 0.05)
 
-        exact_note = Text(
-            "brecha exacta para estas particiones uniformes",
-            font_size=17,
-            color=MA_MUTED,
-        ).next_to(gap_formula, DOWN, buff=0.32)
+        exact_note = panel_paragraph(
+            "brecha exacta para estas",
+            "particiones uniformes",
+            font_size=16,
+        ).next_to(gap_formula, DOWN, buff=0.30)
+        exact_note.set_x(panel.get_center()[0])
 
         n_label = MAMathTex(
             r"n=4",
@@ -239,12 +251,13 @@ class MAVizC13RiemannRefinement(Scene):
             font_size=44,
         ).move_to(panel.get_center() + UP * 0.18)
 
-        conclusion = Text(
-            "la incertidumbre entre las cotas\npuede hacerse arbitrariamente pequeña",
-            font_size=20,
+        conclusion = panel_paragraph(
+            "la incertidumbre entre las cotas",
+            "puede hacerse arbitrariamente pequeña",
+            font_size=18,
             color=MA_TEXT,
-            line_spacing=1.15,
-        ).next_to(limit_formula, DOWN, buff=0.38)
+        ).next_to(limit_formula, DOWN, buff=0.36)
+        conclusion.set_x(panel.get_center()[0])
 
         self.play(Write(limit_formula), FadeIn(conclusion), run_time=0.9)
         self.wait(1.5)
@@ -379,11 +392,12 @@ class MAVizC13RiemannTermToSum(Scene):
         )
         self.wait(0.75)
 
-        caution = Text(
-            "todavía no es la definición general de integral",
-            font_size=17,
-            color=MA_MUTED,
-        ).next_to(sum_block, DOWN, buff=0.40)
+        caution = panel_paragraph(
+            "todavía no es la definición general",
+            "de integral",
+            font_size=16,
+        ).next_to(sum_block, DOWN, buff=0.36)
+        caution.set_x(panel.get_center()[0])
 
         self.play(FadeIn(caution), run_time=0.55)
         self.wait(1.3)
