@@ -1,48 +1,40 @@
-# MA-CLS-C13-P01 — Del área y las sumas a la integral
+# MA-CLS-C13-P01 — Prototipo audiovisual v2
 
-Prototipo audiovisual para el capítulo visible 13 de Cálculo para matemáticos.
+Prototipo para el capítulo visible 13 de Cálculo para matemáticos.
 
-La fuente interna del tratado es T1-C14.md; la diferencia se debe a la numeración editorial visible.
+Fuente interna: T1-C14.md — Del área y las sumas a la integral.
 
-## Primer módulo implementado
+## Cambio principal de v2
 
-MA-VIZ-C13-002 — Refinamiento de sumas rectangulares.
+La primera prueba mezclaba dos ideas en una sola escena y dejaba residuos de fórmulas y etiquetas. La versión 2 adopta fondo oscuro y separa:
 
-La escena usa
+- MA-VIZ-C13-002 — encierro y refinamiento;
+- MA-VIZ-C13-003 — de una franja a una suma de Riemann.
 
-\[
-f(x)=x^2,\qquad x\in[0,1],
-\]
+## Render rápido
 
-y las particiones uniformes con n=4,8,16,32. Para esta función:
+Desde audiovisual/manim:
 
-\[
-U_n-L_n=\frac1n.
-\]
+    uv run manim -pql ma_cls_c13_p01/scene.py MAVizC13RiemannRefinement
 
-Por tanto, el refinamiento visual corresponde a una igualdad exacta del capítulo y no a una mera impresión gráfica.
+Segunda escena:
 
-## Render
+    uv run manim -pql ma_cls_c13_p01/scene.py MAVizC13RiemannTermToSum
 
-Entorno recomendado:
+Ambas en alta calidad:
 
-    python -m venv .venv
-    source .venv/bin/activate
-    pip install -r requirements.txt
-    manim -pqh scene.py MAVizC13RiemannRefinement
-
-Para una prueba rápida:
-
-    manim -pql scene.py MAVizC13RiemannRefinement
+    uv run manim -pqh ma_cls_c13_p01/scene.py MAVizC13RiemannRefinement
+    uv run manim -pqh ma_cls_c13_p01/scene.py MAVizC13RiemannTermToSum
 
 ## Estado
 
-**PROTOTYPE / NO PUBLICAR AÚN.**
+PROTOTYPE / NO PUBLICAR AÚN.
 
-Antes de integrar el vídeo en la página pública deben revisarse:
+Criterios de aprobación:
 
-1. legibilidad a 1080p y en móvil;
-2. sincronización de narración;
-3. ritmo de las transformaciones;
-4. correspondencia exacta con la notación del capítulo;
-5. exportación de un fotograma estático reutilizable.
+1. fondo oscuro consistente;
+2. ninguna superposición no intencional;
+3. una relación matemática dominante por fase;
+4. legibilidad en 1080p y móvil;
+5. correspondencia exacta con T1-C14;
+6. ningún salto prematuro desde suma de Riemann a integral general.

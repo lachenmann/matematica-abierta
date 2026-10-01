@@ -1,81 +1,87 @@
-# Storyboard — MA-EXP-C13-001
+# Storyboard v2 — prototipo audiovisual del capítulo visible 13
 
-**Título de trabajo:** Del área a las sumas  
-**Duración objetivo:** 75–100 s  
-**Núcleo visual:** MA-VIZ-C13-002
+La primera prueba reveló superposiciones y residuos entre fases. La versión 2 separa dos relaciones matemáticas diferentes en dos escenas.
 
-## 00:00–00:12 — El objeto geométrico
+## MA-VIZ-C13-002 — Encierro y refinamiento
 
-Aparecen los ejes y la parábola \(f(x)=x^2\) en \([0,1]\).
+**Objetivo único:** hacer visible que el refinamiento estrecha el intervalo de incertidumbre.
 
-Narración:
+### Fase A — problema y encierro
 
-> Queremos asignar un número a esta región curva. Pero el dibujo todavía no define ninguna integral.
-
-## 00:12–00:30 — Dos encierros
-
-Aparecen, con \(n=4\), rectángulos inferiores y superiores.
-
-En pantalla:
+- curva \(f(x)=x^2\) en \([0,1]\);
+- rectángulos inferiores y superiores para \(n=4\);
+- única expresión dominante:
 
 \[
 L(f,P)\le A\le U(f,P).
 \]
 
-Narración:
+### Fase B — refinamiento cuantificado
 
-> Los rectángulos convierten el problema geométrico en dos sumas finitas: una por abajo y otra por arriba.
-
-## 00:30–00:55 — Refinar
-
-La misma escena pasa, sin corte, por \(n=4,8,16,32\).
-
-A la derecha:
+Desaparece la desigualdad anterior. Se mantiene únicamente
 
 \[
-U_n-L_n=\frac1n.
+U_n-L_n=\frac1n
 \]
 
-Narración:
-
-> Al refinar la partición obtenemos más información. Para \(x^2\) en este intervalo, la diferencia entre las dos sumas es exactamente \(1/n\).
-
-## 00:55–01:12 — La brecha
-
-La expresión se transforma en
+mientras la partición pasa por
 
 \[
-U_n-L_n\longrightarrow0.
+n=4,\;8,\;16,\;32.
 \]
 
-Narración:
+Cada valor anterior de \(n\) desaparece antes de aparecer el siguiente.
 
-> La importancia del refinamiento no es que los rectángulos se vean más bonitos. Es que la incertidumbre entre las cotas puede hacerse arbitrariamente pequeña.
+### Fase C — conclusión
 
-## 01:12–01:28 — De rectángulo a término
+Desaparecen \(n\) y la fórmula de la brecha exacta. Aparece únicamente
 
-Se aísla una franja. Se marcan ancho \(\Delta x_i\) y altura \(f(\xi_i)\).
+\[
+U_n-L_n\to0.
+\]
 
-Aparece
+Texto asociado: la incertidumbre entre las cotas puede hacerse arbitrariamente pequeña.
+
+---
+
+## MA-VIZ-C13-003 — De una franja a una suma
+
+**Objetivo único:** hacer emerger la estructura algebraica desde una partición etiquetada.
+
+### Fase A — partición etiquetada
+
+Rectángulos de puntos medios para \(f(x)=x^2\).
+
+### Fase B — una franja
+
+Se destaca exactamente una franja y se muestran sólo sus dos datos:
+
+\[
+f(\xi_i),\qquad \Delta x_i.
+\]
+
+### Fase C — contribución
+
+Los dos datos anteriores desaparecen y son reemplazados por
 
 \[
 f(\xi_i)\Delta x_i.
 \]
 
-Después varias franjas recomponen
+### Fase D — todas las franjas
+
+Desaparecen las marcas de la franja aislada y aparece
 
 \[
 \sum_{i=1}^{n}f(\xi_i)\Delta x_i.
 \]
 
-Narración:
+Se identifica como **suma de Riemann**, pero se explicita que todavía no estamos definiendo la integral general.
 
-> Cada rectángulo aporta altura por anchura. Al sumar esas contribuciones aparece la estructura algebraica que más adelante reconoceremos como suma de Riemann.
+## Reglas visuales fijadas
 
-## 01:28–01:35 — Cierre
-
-En pantalla:
-
-**El dibujo motiva. La teoría debe demostrar qué sobrevive al refinar.**
-
-No presentar todavía como definición general de integral: el capítulo canónico reserva esa extensión para C15.
+1. Fondo oscuro.
+2. Una relación matemática dominante por momento.
+3. Toda fase debe cerrarse antes de abrir la siguiente.
+4. Ninguna fórmula debe quedar como residuo si deja de cumplir una función explicativa.
+5. Movimiento sólo cuando expresa una transformación matemática.
