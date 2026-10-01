@@ -31,7 +31,7 @@ class MAVizC13RiemannRefinement(Scene):
             "Del área a las sumas",
             font_size=42,
             color=MA_INK,
-            weight=SEMIBOLD,
+            weight=BOLD,
         ).to_edge(UP, buff=0.35)
 
         subtitle = Text(
@@ -186,13 +186,25 @@ class MAVizC13RiemannRefinement(Scene):
                 "La teoría debe demostrar qué sobrevive al refinar.",
                 font_size=30,
                 color=MA_INK,
-                weight=SEMIBOLD,
+                weight=BOLD,
             ),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.12)
         conclusion.to_edge(DOWN, buff=0.28)
 
         self.play(FadeIn(conclusion, shift=UP * 0.12), run_time=1.0)
         self.wait(1.5)
+
+    def _rect(self, axes: Axes, a: float, b: float, h: float, color: str, opacity: float):
+        return Polygon(
+            axes.c2p(a, 0),
+            axes.c2p(b, 0),
+            axes.c2p(b, h),
+            axes.c2p(a, h),
+            stroke_color=color,
+            stroke_width=1.3,
+            fill_color=color,
+            fill_opacity=opacity,
+        )
 
     def _bounds_rectangles(self, axes: Axes, n: int):
         dx = 1 / n
@@ -206,26 +218,8 @@ class MAVizC13RiemannRefinement(Scene):
             h_up = f(b)
 
             if h_low > 0:
-                low = Rectangle(
-                    width=axes.x_axis.unit_size * dx,
-                    height=axes.y_axis.unit_size * h_low,
-                    stroke_color=MA_BLUE,
-                    stroke_width=1.3,
-                    fill_color=MA_BLUE,
-                    fill_opacity=0.23,
-                )
-                low.move_to(axes.c2p((a + b) / 2, h_low / 2))
-                lower.add(low)
+                lower.add(self._rect(axes, a, b, h_low, MA_BLUE, 0.23))
 
-            up = Rectangle(
-                width=axes.x_axis.unit_size * dx,
-                height=axes.y_axis.unit_size * h_up,
-                stroke_color=MA_ORANGE,
-                stroke_width=1.2,
-                fill_color=MA_ORANGE,
-                fill_opacity=0.13,
-            )
-            up.move_to(axes.c2p((a + b) / 2, h_up / 2))
-            upper.add(up)
+            upper.add(self._rect(axes, a, b, h_up, MA_ORANGE, 0.13))
 
         return lower, upper
