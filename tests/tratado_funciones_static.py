@@ -30,7 +30,15 @@ for page in pages:
   if anchor:assert anchor in anchors[Path(target).name],(page.name,target,anchor)
 assert len(manifest['sources'])==34
 assert all(re.fullmatch('[0-9a-f]{64}',s['sha256']) for s in manifest['sources'])
-print('35 pages; 18 chapters; 269 unique anchors; all local Markdown destinations valid')
+for source in manifest['sources']:
+ text=(BOOK/source['derived']).read_text()
+ version_line=next(line for line in text.splitlines() if line.startswith('source-version:'))
+ assert version_line.split(':',1)[1].strip().strip('"').strip("'")==source['version'], source['derived']
+tfkeys=re.findall(r'@\w+\{(tf-[^,]+),',(ROOT/'references.bib').read_text())
+assert len(tfkeys)==len(set(tfkeys))==37, 'TF bibliography keys'
+assert next(s for s in manifest['sources'] if s['document_id']=='TF-CAT-009')['version']=='1.0.4'
+assert next(s for s in manifest['sources'] if s['document_id']=='TF-BIB-PUBLIC-0001')['version']=='1.0.0'
+print('35 pages; 18 chapters; 269 unique anchors; local destinations and source versions valid; 37 unique TF bibliography keys')
 
 if '--html' in sys.argv:
  class Parse(HTMLParser):
