@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0012 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0117 |
+| Capítulo | MA-BCH-0135 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0012 |
 
@@ -215,21 +215,47 @@ Candidato de publicación en rama de preparación; integración y despliegue pen
 | ID público | Tipo | ID de fuente | ID documental canónico | Ruta | Estado |
 |---|---|---|---|---|---|
 | MA-BOK-0011 | book | TF-T1 | TF-000 | `libros/otros/tratado-funciones/index.qmd` | publication-candidate |
-| MA-BCH-0099 | book-chapter | TF-T1-C01 | TF-CAT-001 | `libros/otros/tratado-funciones/capitulo-01.qmd` | publication-candidate |
-| MA-BCH-0100 | book-chapter | TF-T1-C02 | TF-CAT-002 | `libros/otros/tratado-funciones/capitulo-02.qmd` | publication-candidate |
-| MA-BCH-0101 | book-chapter | TF-T1-C03 | TF-CAT-003 | `libros/otros/tratado-funciones/capitulo-03.qmd` | publication-candidate |
-| MA-BCH-0102 | book-chapter | TF-T1-C04 | TF-CAT-004 | `libros/otros/tratado-funciones/capitulo-04.qmd` | publication-candidate |
-| MA-BCH-0103 | book-chapter | TF-T1-C05 | TF-CAT-005 | `libros/otros/tratado-funciones/capitulo-05.qmd` | publication-candidate |
-| MA-BCH-0104 | book-chapter | TF-T1-C06 | TF-CAT-006 | `libros/otros/tratado-funciones/capitulo-06.qmd` | publication-candidate |
-| MA-BCH-0105 | book-chapter | TF-T1-C07 | TF-CAT-007 | `libros/otros/tratado-funciones/capitulo-07.qmd` | publication-candidate |
-| MA-BCH-0106 | book-chapter | TF-T1-C08 | TF-CAT-008 | `libros/otros/tratado-funciones/capitulo-08.qmd` | publication-candidate |
-| MA-BCH-0107 | book-chapter | TF-T1-C09 | TF-CAT-009 | `libros/otros/tratado-funciones/capitulo-09.qmd` | publication-candidate |
-| MA-BCH-0108 | book-chapter | TF-T1-C10 | TF-CAT-010 | `libros/otros/tratado-funciones/capitulo-10.qmd` | publication-candidate |
-| MA-BCH-0109 | book-chapter | TF-T1-C11 | TF-CAT-011 | `libros/otros/tratado-funciones/capitulo-11.qmd` | publication-candidate |
-| MA-BCH-0110 | book-chapter | TF-T1-C12 | TF-CAT-012 | `libros/otros/tratado-funciones/capitulo-12.qmd` | publication-candidate |
-| MA-BCH-0111 | book-chapter | TF-T1-C13 | TF-CAT-013 | `libros/otros/tratado-funciones/capitulo-13.qmd` | publication-candidate |
-| MA-BCH-0112 | book-chapter | TF-T1-C14 | TF-CAT-014 | `libros/otros/tratado-funciones/capitulo-14.qmd` | publication-candidate |
-| MA-BCH-0113 | book-chapter | TF-T1-C15 | TF-CAT-015 | `libros/otros/tratado-funciones/capitulo-15.qmd` | publication-candidate |
-| MA-BCH-0114 | book-chapter | TF-T1-C16 | TF-CAT-016 | `libros/otros/tratado-funciones/capitulo-16.qmd` | publication-candidate |
-| MA-BCH-0115 | book-chapter | TF-T1-C17 | TF-CAT-017 | `libros/otros/tratado-funciones/capitulo-17.qmd` | publication-candidate |
-| MA-BCH-0116 | book-chapter | TF-T1-C18 | TF-CAT-018 | `libros/otros/tratado-funciones/capitulo-18.qmd` | publication-candidate |
+| MA-BCH-0117 | book-chapter | TF-T1-C01 | TF-CAT-001 | `libros/otros/tratado-funciones/capitulo-01.qmd` | publication-candidate |
+| MA-BCH-0118 | book-chapter | TF-T1-C02 | TF-CAT-002 | `libros/otros/tratado-funciones/capitulo-02.qmd` | publication-candidate |
+| MA-BCH-0119 | book-chapter | TF-T1-C03 | TF-CAT-003 | `libros/otros/tratado-funciones/capitulo-03.qmd` | publication-candidate |
+| MA-BCH-0120 | book-chapter | TF-T1-C04 | TF-CAT-004 | `libros/otros/tratado-funciones/capitulo-04.qmd` | publication-candidate |
+| MA-BCH-0121 | book-chapter | TF-T1-C05 | TF-CAT-005 | `libros/otros/tratado-funciones/capitulo-05.qmd` | publication-candidate |
+| MA-BCH-0122 | book-chapter | TF-T1-C06 | TF-CAT-006 | `libros/otros/tratado-funciones/capitulo-06.qmd` | publication-candidate |
+| MA-BCH-0123 | book-chapter | TF-T1-C07 | TF-CAT-007 | `libros/otros/tratado-funciones/capitulo-07.qmd` | publication-candidate |
+| MA-BCH-0124 | book-chapter | TF-T1-C08 | TF-CAT-008 | `libros/otros/tratado-funciones/capitulo-08.qmd` | publication-candidate |
+| MA-BCH-0125 | book-chapter | TF-T1-C09 | TF-CAT-009 | `libros/otros/tratado-funciones/capitulo-09.qmd` | publication-candidate |
+| MA-BCH-0126 | book-chapter | TF-T1-C10 | TF-CAT-010 | `libros/otros/tratado-funciones/capitulo-10.qmd` | publication-candidate |
+| MA-BCH-0127 | book-chapter | TF-T1-C11 | TF-CAT-011 | `libros/otros/tratado-funciones/capitulo-11.qmd` | publication-candidate |
+| MA-BCH-0128 | book-chapter | TF-T1-C12 | TF-CAT-012 | `libros/otros/tratado-funciones/capitulo-12.qmd` | publication-candidate |
+| MA-BCH-0129 | book-chapter | TF-T1-C13 | TF-CAT-013 | `libros/otros/tratado-funciones/capitulo-13.qmd` | publication-candidate |
+| MA-BCH-0130 | book-chapter | TF-T1-C14 | TF-CAT-014 | `libros/otros/tratado-funciones/capitulo-14.qmd` | publication-candidate |
+| MA-BCH-0131 | book-chapter | TF-T1-C15 | TF-CAT-015 | `libros/otros/tratado-funciones/capitulo-15.qmd` | publication-candidate |
+| MA-BCH-0132 | book-chapter | TF-T1-C16 | TF-CAT-016 | `libros/otros/tratado-funciones/capitulo-16.qmd` | publication-candidate |
+| MA-BCH-0133 | book-chapter | TF-T1-C17 | TF-CAT-017 | `libros/otros/tratado-funciones/capitulo-17.qmd` | publication-candidate |
+| MA-BCH-0134 | book-chapter | TF-T1-C18 | TF-CAT-018 | `libros/otros/tratado-funciones/capitulo-18.qmd` | publication-candidate |
+
+
+### Reconciliación de reservas TF — 2026-10-01
+
+La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. CI sobre el árbol integrado detectó que Cálculo ya publicó MA-BCH-0099…0109, aunque el registro de main no lo indicaba. Se conserva la identidad de esas piezas publicadas y se sustituye la reserva del candidato TF por MA-BCH-0117…0134. Los IDs matemáticos TF-CAT/AX/DEF/THM/EXA/CEX se conservan. No reutilizar las reservas TF abandonadas 0110…0116.
+
+| ID editorial | Reserva TF anterior | Candidato TF actual |
+|---|---|---|
+| TF-CAT-001 | MA-BCH-0099 | MA-BCH-0117 |
+| TF-CAT-002 | MA-BCH-0100 | MA-BCH-0118 |
+| TF-CAT-003 | MA-BCH-0101 | MA-BCH-0119 |
+| TF-CAT-004 | MA-BCH-0102 | MA-BCH-0120 |
+| TF-CAT-005 | MA-BCH-0103 | MA-BCH-0121 |
+| TF-CAT-006 | MA-BCH-0104 | MA-BCH-0122 |
+| TF-CAT-007 | MA-BCH-0105 | MA-BCH-0123 |
+| TF-CAT-008 | MA-BCH-0106 | MA-BCH-0124 |
+| TF-CAT-009 | MA-BCH-0107 | MA-BCH-0125 |
+| TF-CAT-010 | MA-BCH-0108 | MA-BCH-0126 |
+| TF-CAT-011 | MA-BCH-0109 | MA-BCH-0127 |
+| TF-CAT-012 | MA-BCH-0110 | MA-BCH-0128 |
+| TF-CAT-013 | MA-BCH-0111 | MA-BCH-0129 |
+| TF-CAT-014 | MA-BCH-0112 | MA-BCH-0130 |
+| TF-CAT-015 | MA-BCH-0113 | MA-BCH-0131 |
+| TF-CAT-016 | MA-BCH-0114 | MA-BCH-0132 |
+| TF-CAT-017 | MA-BCH-0115 | MA-BCH-0133 |
+| TF-CAT-018 | MA-BCH-0116 | MA-BCH-0134 |
