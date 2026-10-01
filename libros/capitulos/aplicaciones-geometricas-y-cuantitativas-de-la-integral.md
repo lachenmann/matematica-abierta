@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -774,6 +774,8 @@ $$
 $$
 
 La integral aparece al final. La decisión geométrica esencial sigue siendo identificar la sección transversal correcta y su radio respecto del eje de rotación.
+
+![Al girar $y=x$, $0\le x\le1$, alrededor del eje horizontal, el radio de la sección es $r(x)=x$ y su área es $A(x)=\pi x^2$. La integral de secciones usa esta área, no solo el radio.](<../../assets/books/cpm-tomo-i/t1-c20-fig-01.png>){#fig-t1-c20-01 width=94% fig-alt="Perfil triangular y cono esquemático con secciones circulares de radio x y área pi por x al cuadrado."}
 
 ### Arandelas: un disco menos un disco interior
 

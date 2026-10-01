@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -387,6 +387,8 @@ Esto **no** significa que el proceso haya fracasado. Significa que estamos ante 
 
 El límite analiza valores arbitrariamente próximos al centro; no necesita evaluar la expresión en el centro.
 :::
+
+![Las secantes de $f(x)=x^2$ desde $x=1$ tienen pendiente $2+h$. Al disminuir $h>0$, sus pendientes se acercan a $2$, pendiente de la tangente $y=2x-1$.](<../../assets/books/cpm-tomo-i/t1-c07-fig-01.png>){#fig-t1-c07-01 width=94% fig-alt="Parábola, dos secantes de pendientes 2.6 y 2.2 y tangente de pendiente 2 en uno."}
 
 ### Cambiar de escala sin perder la información principal
 

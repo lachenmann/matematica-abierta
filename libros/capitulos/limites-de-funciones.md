@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1369,6 +1369,8 @@ $$
 $$
 
 y recorrió las implicaciones en el sentido correcto.
+
+![Para $f(x)=x^2$ cerca de $1$, la ventana $0<|x-1|<0.2$ obliga a que $|x^2-1|<0.5$. La ventana de entrada y la banda de salida representan dos tolerancias diferentes.](<../../assets/books/cpm-tomo-i/t1-c05-fig-01.png>){#fig-t1-c05-01 width=94% fig-alt="Parábola con ventana horizontal entre 0.8 y 1.2 y banda vertical entre 0.5 y 1.5."}
 
 ### El valor puntual no participa
 

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -291,6 +291,8 @@ No la hemos olvidado. Simplemente estamos negando la definición de continuidad,
 Más adelante utilizaremos esta forma para diagnosticar discontinuidades. Por ahora lo importante es leerla correctamente:
 
 > hay una distancia vertical fija respecto de $f(a)$ que sigue siendo violada por algún punto del dominio, por mucho que reduzcamos el entorno alrededor de $a$.
+
+![El cuadrado es continuo en $0$. En cambio, la función que vale $0$ a la izquierda y $1$ desde $0$ presenta un salto: sus límites laterales no coinciden.](<../../assets/books/cpm-tomo-i/t1-c06-fig-01.png>){#fig-t1-c06-01 width=94% fig-alt="Comparación de una parábola continua y una función con salto en cero, con extremos abiertos y cerrados."}
 
 ### Una primera prueba directa: el cuadrado es continuo
 

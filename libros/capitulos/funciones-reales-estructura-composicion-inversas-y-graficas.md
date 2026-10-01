@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
 number-sections: true
@@ -6103,6 +6103,8 @@ $$
 $$
 
 de la gráfica de $q^{-1}(x)=\sqrt x$.
+
+![Para $f(x)=x^2$ en $[0,\infty)$, la gráfica de $f^{-1}(x)=\sqrt{x}$ se obtiene intercambiando las coordenadas. La diagonal $y=x$ permite ver esa simetría.](<../../assets/books/cpm-tomo-i/t1-c03-fig-01.png>){#fig-t1-c03-01 width=94% fig-alt="Parábola restringida a números no negativos y raíz cuadrada reflejadas respecto de la diagonal."}
 
 ### Qué aporta realmente la monotonía
 

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -260,6 +260,8 @@ $$
 
 y preguntaremos después qué sabemos demostrar sobre $R(x)$.
 :::
+
+![Para $f(x)=1/(1-x)$ cerca de $0$, los modelos $T_1(x)=1+x$ y $T_2(x)=1+x+x^2$ incorporan sucesivamente más datos locales. El control riguroso de la diferencia requiere una fórmula para el resto.](<../../assets/books/cpm-tomo-i/t1-c12-fig-01.png>){#fig-t1-c12-01 width=94% fig-alt="Función racional y polinomios de Taylor de grados uno y dos centrados en cero."}
 
 ### Tres preguntas diferentes que no debemos fusionar
 

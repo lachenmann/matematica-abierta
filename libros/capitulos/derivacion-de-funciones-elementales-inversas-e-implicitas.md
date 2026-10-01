@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -360,6 +360,8 @@ $$
 $$
 
 La razón de cambio de la inversa es, entre los puntos correspondientes, el recíproco de la razón de cambio de la función original. Pero **una identidad entre cocientes no demuestra todavía que sus límites existan**. Para convertirla en un teorema tenemos que controlar dónde se acercan $x$ e $y$ y cuándo se permite pasar al recíproco.
+
+![En el punto $(1,1)$, la tangente a $x^2$ tiene pendiente $2$ y la tangente a su inversa $\sqrt{x}$ tiene pendiente $1/2$. La fórmula exige que la derivada de la función original no sea cero.](<../../assets/books/cpm-tomo-i/t1-c09-fig-01.png>){#fig-t1-c09-01 width=94% fig-alt="Función cuadrado y raíz cuadrada con sus tangentes en uno y pendientes recíprocas."}
 
 ### El enunciado: dominios y puntos de evaluación visibles
 

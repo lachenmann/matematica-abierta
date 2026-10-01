@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -714,6 +714,8 @@ Una solución afirma: «La derivada de $p$ se anula únicamente en $-1$ y $1$; p
 ## Convexidad como propiedad de las cuerdas {#sec-t1-c11-06}
 
 Hasta aquí hemos comparado valores de una función para averiguar si crece o decrece, o para localizar sus extremos. Ahora compararemos algo distinto: el valor de la función **entre dos puntos** con el valor que tendría allí la recta que une los puntos correspondientes de su gráfica. Esa comparación permitirá definir la convexidad sin mencionar derivadas. Los criterios mediante pendientes y derivadas vendrán después, como consecuencias que habrá que demostrar.
+
+![La parábola convexa $x^2$ queda por debajo de la cuerda $y=2x$ en $[0,2]$ y por encima de la tangente $y=2x-1$ en $x=1$. Las dos comparaciones expresan propiedades distintas.](<../../assets/books/cpm-tomo-i/t1-c11-fig-01.png>){#fig-t1-c11-01 width=94% fig-alt="Parábola convexa entre la cuerda de los extremos cero y dos y su tangente en uno."}
 
 ### De dos puntos a una cuerda
 

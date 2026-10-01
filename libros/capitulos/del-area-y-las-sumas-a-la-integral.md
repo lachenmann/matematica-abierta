@@ -87,6 +87,8 @@ $$
 
 No tomaremos esta fórmula como una definición de área. Solo identifica el conjunto geométrico que queremos estudiar.
 
+![La imagen clásica del área bajo la curva: para $f(x)=x^2$ en $[0,1]$, la región $S_f$ queda entre la gráfica y el eje horizontal. El sombreado identifica el problema geométrico; todavía no define una integral.](<../../assets/books/cpm-tomo-i/t1-c14-fig-09.png>){#fig-t1-c14-09 width=94% fig-alt="Región positiva sombreada bajo la parábola x al cuadrado entre cero y uno."}
+
 Si dividimos el intervalo $[a,b]$ en franjas verticales, cada franja puede compararse con rectángulos. Un rectángulo de base $\Delta x$ y altura $h$ tiene área exacta
 
 $$
@@ -193,11 +195,15 @@ Una figura puede sugerir respuestas, pero no resolver estas preguntas. Necesitam
 
 Esta observación será especialmente importante cuando abandonemos las funciones continuas y no negativas. Una función puede tomar valores negativos, tener discontinuidades o no alcanzar sus extremos en ciertos subconjuntos. El objeto analítico que construiremos debe seguir teniendo sentido aun cuando la imagen geométrica de «área ordinaria» deje de ser suficiente.
 
+![La imagen de área positiva tiene un límite: en $f(x)=x^3$ sobre $[-1,1]$, las dos regiones tienen área geométrica positiva, pero sus contribuciones analíticas llevan signos opuestos. La teoría posterior debe distinguir ambas lecturas.](<../../assets/books/cpm-tomo-i/t1-c14-fig-11.png>){#fig-t1-c14-11 width=94% fig-alt="Cúbica con región negativa a la izquierda y positiva a la derecha; la simetría permite cancelación de contribuciones con signo."}
+
 ::: {.callout-important title="Todavía no hemos definido la integral"}
 Las cantidades $L_n$ y $U_n$ del ejemplo son **sumas finitas de áreas de rectángulos**. Que ambas se acerquen a $1/2$ explica qué esperamos de una teoría integral, pero no constituye todavía la definición de la integral de una función general.
 
 Antes debemos demostrar que las construcciones son coherentes frente a cambios de partición y de representación. Esa tarea ocupará este capítulo; la definición general de integrabilidad de Riemann quedará para el siguiente.
 :::
+
+![Un borde curvo también puede encerrarse entre escalones. Para $f(x)=x^2$ en $[0,1]$, cuatro y ocho subintervalos uniformes producen diferencias $U_n-L_n=1/4$ y $1/8$, respectivamente.](<../../assets/books/cpm-tomo-i/t1-c14-fig-10.png>){#fig-t1-c14-10 width=94% fig-alt="Rectángulos inferiores azules y superiores naranjas para una parábola con cuatro y ocho subintervalos."}
 
 ### De la aproximación especial al lenguaje general
 
