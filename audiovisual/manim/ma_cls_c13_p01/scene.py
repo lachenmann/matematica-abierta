@@ -50,11 +50,11 @@ class MAVizC13RiemannRefinement(Scene):
         ).shift(LEFT * 1.7 + DOWN * 0.35)
 
         labels = axes.get_axis_labels(
-            x_label=MathTex("x", color=MA_INK),
-            y_label=MathTex("y", color=MA_INK),
+            x_label=MathTex("x", tex_template=MA_TEX, color=MA_INK),
+            y_label=MathTex("y", tex_template=MA_TEX, color=MA_INK),
         )
         curve = axes.plot(f, x_range=[0, 1], color=MA_INK, stroke_width=4)
-        curve_label = MathTex("f(x)=x^2", color=MA_INK, font_size=34)
+        curve_label = MathTex("f(x)=x^2", tex_template=MA_TEX, color=MA_INK, font_size=34)
         curve_label.next_to(axes.c2p(0.72, 0.78), LEFT, buff=0.08)
 
         self.play(FadeIn(title), FadeIn(subtitle), run_time=1.0)
