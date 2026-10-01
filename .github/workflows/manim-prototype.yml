@@ -48,9 +48,37 @@ jobs:
           MAClsC13P01
           --media_dir media
 
+      - name: Render timed microclass
+        run: >
+          manim -ql
+          audiovisual/manim/ma_cls_c13_p01/scene.py
+          MAClsC13P01Timed
+          --media_dir media
+
+      - name: Verify timed duration
+        run: |
+          python - <<'PY'
+          import glob
+          import subprocess
+
+          matches = glob.glob("media/**/MAClsC13P01Timed.mp4", recursive=True)
+          if not matches:
+              raise SystemExit("No se encontró MAClsC13P01Timed.mp4")
+          path = matches[0]
+          duration = float(subprocess.check_output([
+              "ffprobe", "-v", "error",
+              "-show_entries", "format=duration",
+              "-of", "default=nw=1:nk=1",
+              path,
+          ], text=True).strip())
+          print(f"Timed preview: {duration:.3f} s")
+          if not 183.0 <= duration <= 187.0:
+              raise SystemExit(f"Duración fuera de tolerancia: {duration:.3f} s")
+          PY
+
       - name: Upload previews
         uses: actions/upload-artifact@v4
         with:
-          name: MA-C13-prototype-assembly
+          name: MA-C13-prototype-timed
           path: media/videos/**/*.mp4
           if-no-files-found: error

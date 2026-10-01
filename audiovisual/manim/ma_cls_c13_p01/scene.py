@@ -27,6 +27,12 @@ def f(x: float) -> float:
     return x * x
 
 
+def ma_wait(scene: Scene, key: str, default: float):
+    """Espera semántica: conserva el timing original salvo que haya un perfil activo."""
+    profile = getattr(scene, "ma_wait_profile", {})
+    scene.wait(profile.get(key, default))
+
+
 def make_axes():
     axes = Axes(
         x_range=[0, 1.05, 0.25],
@@ -232,7 +238,7 @@ class MAVizC13RiemannRefinement(Scene):
         )
         self.bring_to_front(curve)
         self.play(Write(inequality), FadeIn(motivation), run_time=0.9)
-        self.wait(0.9)
+        ma_wait(self, "b1_encirclement", 0.9)
 
         self.play(FadeOut(inequality), FadeOut(motivation), run_time=0.45)
 
@@ -257,7 +263,7 @@ class MAVizC13RiemannRefinement(Scene):
         ).next_to(gap_formula, UP, buff=0.48)
 
         self.play(FadeIn(n_label), Write(gap_formula), FadeIn(exact_note), run_time=0.8)
-        self.wait(0.65)
+        ma_wait(self, "b1_gap_intro", 0.65)
 
         for n in (8, 16, 32):
             new_lower, new_upper = bound_rectangles(axes, n)
@@ -283,7 +289,7 @@ class MAVizC13RiemannRefinement(Scene):
             self.bring_to_front(curve)
 
             lower_rects, upper_rects, n_label = new_lower, new_upper, new_n
-            self.wait(0.55)
+            ma_wait(self, f"b1_refine_{n}", 0.55)
 
         self.play(
             FadeOut(n_label),
@@ -308,7 +314,7 @@ class MAVizC13RiemannRefinement(Scene):
         fit_to_panel(conclusion, panel)
 
         self.play(Write(limit_formula), FadeIn(conclusion), run_time=0.9)
-        self.wait(1.5)
+        ma_wait(self, "b1_conclusion", 1.5)
 
 
 class MAVizC13RiemannTermToSum(Scene):
@@ -345,7 +351,7 @@ class MAVizC13RiemannTermToSum(Scene):
 
         self.play(FadeIn(panel_title), FadeIn(rects), run_time=0.9)
         self.bring_to_front(curve)
-        self.wait(0.65)
+        ma_wait(self, "b2_partition", 0.65)
 
         idx = 5
         a = idx * dx
@@ -387,7 +393,7 @@ class MAVizC13RiemannTermToSum(Scene):
             FadeIn(height_label),
             run_time=0.95,
         )
-        self.wait(0.65)
+        ma_wait(self, "b2_single_strip", 0.65)
 
         dimensions = VGroup(
             Text("altura", font_size=18, color=MA_MUTED),
@@ -398,7 +404,7 @@ class MAVizC13RiemannTermToSum(Scene):
         dimensions.move_to(panel.get_center() + UP * 0.10)
 
         self.play(FadeIn(dimensions), run_time=0.65)
-        self.wait(0.65)
+        ma_wait(self, "b2_dimensions", 0.65)
 
         product = VGroup(
             Text("contribución de esta franja", font_size=18, color=MA_MUTED),
@@ -411,7 +417,7 @@ class MAVizC13RiemannTermToSum(Scene):
         product.move_to(dimensions)
 
         self.play(FadeOut(dimensions), FadeIn(product), run_time=0.65)
-        self.wait(0.8)
+        ma_wait(self, "b2_product", 0.8)
 
         sum_block = VGroup(
             Text("todas las franjas", font_size=18, color=MA_MUTED),
@@ -438,7 +444,7 @@ class MAVizC13RiemannTermToSum(Scene):
             FadeIn(sum_block),
             run_time=0.85,
         )
-        self.wait(0.75)
+        ma_wait(self, "b2_sum", 0.75)
 
         caution = panel_paragraph(
             panel,
@@ -449,7 +455,7 @@ class MAVizC13RiemannTermToSum(Scene):
         fit_to_panel(caution, panel)
 
         self.play(FadeIn(caution), run_time=0.55)
-        self.wait(1.3)
+        ma_wait(self, "b2_caution", 1.3)
 
 
 
@@ -529,7 +535,7 @@ class MAVizC13SignedIntegralVsArea(Scene):
         fit_to_panel(signs, panel)
 
         self.play(FadeIn(function_label), FadeIn(signs), run_time=0.8)
-        self.wait(0.7)
+        ma_wait(self, "b3_signed_regions", 0.7)
 
         signed_formula = VGroup(
             MAMathTex(
@@ -547,7 +553,7 @@ class MAVizC13SignedIntegralVsArea(Scene):
         fit_to_panel(signed_formula, panel)
 
         self.play(FadeIn(signed_formula), run_time=0.8)
-        self.wait(1.0)
+        ma_wait(self, "b3_cancellation", 1.0)
 
         self.play(
             FadeOut(function_label),
@@ -625,7 +631,7 @@ class MAVizC13SignedIntegralVsArea(Scene):
             FadeIn(area_note),
             run_time=0.8,
         )
-        self.wait(1.0)
+        ma_wait(self, "b3_absolute_area", 1.0)
 
         self.play(
             FadeOut(abs_label),
@@ -659,7 +665,7 @@ class MAVizC13SignedIntegralVsArea(Scene):
         fit_to_panel(conclusion, panel)
 
         self.play(FadeIn(comparison), FadeIn(conclusion), run_time=0.85)
-        self.wait(1.5)
+        ma_wait(self, "b3_comparison", 1.5)
 
 
 
@@ -796,3 +802,152 @@ class MAClsC13P01(Scene):
         fade_to_background(self)
 
         play_closing(self)
+
+
+
+def play_opening_timed(scene: Scene):
+    """Apertura temporizada a 21.9 s según narration-cues.yml."""
+    title = Text(
+        "Del área a las sumas",
+        font_size=46,
+        color=MA_TEXT,
+        weight=BOLD,
+    )
+    subtitle = Text(
+        "Tres ideas para entrar en la teoría integral",
+        font_size=25,
+        color=MA_MUTED,
+    )
+    tag = Text(
+        "Matemática Abierta · Cálculo para matemáticos · capítulo 13",
+        font_size=16,
+        color=MA_MUTED,
+    )
+    block = VGroup(title, subtitle, tag).arrange(DOWN, buff=0.28)
+    fit_to_frame(block, margin=1.2)
+    block.move_to(ORIGIN)
+
+    keyword = Text(
+        "encerrar",
+        font_size=24,
+        color=MA_GREEN,
+        weight=BOLD,
+    ).next_to(block, DOWN, buff=0.72)
+
+    scene.play(FadeIn(block, shift=UP * 0.10), run_time=0.75)
+    scene.wait(9.0)
+    scene.play(FadeIn(keyword), run_time=0.45)
+    scene.wait(11.15)
+    scene.play(FadeOut(VGroup(block, keyword)), run_time=0.55)
+    scene.clear()
+
+
+def play_bridge_timed(scene: Scene, *lines: str):
+    """Puente de 7.3 s: 0.45 + 6.4 + 0.45."""
+    bridge = Paragraph(
+        *lines,
+        alignment="center",
+        font_size=28,
+        color=MA_TEXT,
+        line_spacing=0.85,
+    )
+    fit_to_frame(bridge, margin=1.4)
+    bridge.move_to(ORIGIN)
+
+    scene.play(FadeIn(bridge), run_time=0.45)
+    scene.wait(6.4)
+    scene.play(FadeOut(bridge), run_time=0.45)
+    scene.clear()
+
+
+def play_closing_timed(scene: Scene):
+    """Cierre temporizado a 33.2 s; la secuencia sigue primero/segundo/tercero."""
+    left = Text("encerrar", font_size=28, color=MA_GREEN)
+    middle = Text("sumar", font_size=28, color=MA_BLUE)
+    right = Text("distinguir signo y área", font_size=28, color=MA_ORANGE)
+
+    arrow_1 = Arrow(
+        ORIGIN, RIGHT,
+        buff=0,
+        color=MA_MUTED,
+        stroke_width=2.2,
+        max_tip_length_to_length_ratio=0.14,
+    ).scale(0.55)
+    arrow_2 = arrow_1.copy()
+
+    row = VGroup(left, arrow_1, middle, arrow_2, right).arrange(
+        RIGHT, buff=0.32
+    )
+    fit_to_frame(row, margin=0.8)
+
+    title = Text(
+        "Tres pasos, tres ideas distintas",
+        font_size=24,
+        color=MA_MUTED,
+    )
+    block = VGroup(title, row).arrange(DOWN, buff=0.42)
+    block.move_to(ORIGIN)
+
+    scene.play(FadeIn(title), run_time=0.45)
+    scene.wait(3.7)
+    scene.play(FadeIn(left), run_time=0.40)
+    scene.wait(5.6)
+    scene.play(GrowArrow(arrow_1), FadeIn(middle), run_time=0.60)
+    scene.wait(5.8)
+    scene.play(GrowArrow(arrow_2), FadeIn(right), run_time=0.60)
+    scene.wait(16.05)
+
+
+class MAClsC13P01Timed(Scene):
+    """MA-CLS-C13-P01 — preview silencioso temporizado a ~185 s."""
+
+    def construct(self):
+        self.camera.background_color = MA_BG
+
+        play_opening_timed(self)
+
+        self.ma_wait_profile = {
+            "b1_encirclement": 5.20,
+            "b1_gap_intro": 3.80,
+            "b1_refine_8": 3.00,
+            "b1_refine_16": 3.00,
+            "b1_refine_32": 3.00,
+            "b1_conclusion": 7.04,
+        }
+        MAVizC13RiemannRefinement.construct(self)
+        fade_to_background(self, run_time=0.6)
+
+        play_bridge_timed(
+            self,
+            "Refinar controla la incertidumbre.",
+            "Ahora falta entender qué se suma.",
+        )
+
+        self.ma_wait_profile = {
+            "b2_partition": 4.50,
+            "b2_single_strip": 5.00,
+            "b2_dimensions": 5.00,
+            "b2_product": 5.50,
+            "b2_sum": 5.80,
+            "b2_caution": 7.15,
+        }
+        MAVizC13RiemannTermToSum.construct(self)
+        fade_to_background(self, run_time=0.6)
+
+        play_bridge_timed(
+            self,
+            "Una suma puede acumular cantidades",
+            "positivas y negativas.",
+        )
+
+        self.ma_wait_profile = {
+            "b3_signed_regions": 5.00,
+            "b3_cancellation": 7.70,
+            "b3_absolute_area": 7.70,
+            "b3_comparison": 11.55,
+        }
+        MAVizC13SignedIntegralVsArea.construct(self)
+        fade_to_background(self, run_time=0.6)
+
+        self.ma_wait_profile = {}
+        play_closing_timed(self)

@@ -110,3 +110,14 @@ La narración fue segmentada y medida en `narration-cues.yml`.
 - objetivo total: **185,0 s**.
 
 La expansión desde el preview silencioso de 49,799 s será semántica, no un ralentizado uniforme. Véase `TIMING.md`.
+
+
+## Preview temporizado
+
+La clase `MAClsC13P01Timed` aplica el cue sheet de 185 s sin ralentizar uniformemente las animaciones. Los movimientos mantienen su velocidad; las permanencias se amplían en los hitos matemáticos.
+
+Render local:
+
+    uv run manim -pql ma_cls_c13_p01/scene.py MAClsC13P01Timed
+
+CI verifica automáticamente que la duración quede entre 183 y 187 s.
