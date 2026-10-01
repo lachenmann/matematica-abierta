@@ -121,3 +121,8 @@ Render local:
     uv run manim -pql ma_cls_c13_p01/scene.py MAClsC13P01Timed
 
 CI verifica automáticamente que la duración quede entre 183 y 187 s.
+
+
+### Duración medida del preview temporizado
+
+El primer render real de `MAClsC13P01Timed` produjo **185,599 s**, frente al objetivo de 185,0 s: desviación de **+0,599 s**. El resultado queda dentro de la tolerancia de ±2 s.
