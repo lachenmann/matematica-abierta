@@ -140,3 +140,16 @@ PASS — run `36939896397`.
 - verificación de duración: **185,599 s — PASS**
 
 Artefacto: `MA-C13-prototype-timed`.
+
+
+## Voz de referencia
+
+La sincronización final usa siete archivos independientes, uno por unidad narrativa. El guion oral está en `voice-reference/spoken-script.md` y el protocolo en `voice-reference/RECORDING.md`.
+
+Después de grabar:
+
+    uv run python analyze_voice_reference.py voice-reference/audio
+
+El analizador genera tiempos acumulados reales para sustituir el modelo de 115 palabras/minuto.
+
+Regla `MA-M06`: **la voz gobierna la permanencia; la matemática gobierna el momento de aparición**.
