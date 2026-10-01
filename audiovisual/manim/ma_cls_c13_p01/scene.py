@@ -75,15 +75,25 @@ def make_panel():
     ).to_edge(RIGHT, buff=0.38).shift(DOWN * 0.34)
 
 
-def panel_paragraph(*lines, font_size=17, color=MA_MUTED):
-    """Texto auxiliar centrado y contenido dentro del panel lateral."""
-    return Paragraph(
+def fit_to_panel(mob, panel, margin=0.42):
+    """Impone el ancho útil del panel y centra el objeto horizontalmente."""
+    max_width = panel.width - 2 * margin
+    if mob.width > max_width:
+        mob.scale_to_fit_width(max_width)
+    mob.set_x(panel.get_center()[0])
+    return mob
+
+
+def panel_paragraph(panel, *lines, font_size=17, color=MA_MUTED, margin=0.42):
+    """Párrafo auxiliar con ancho máximo real dentro del panel lateral."""
+    mob = Paragraph(
         *lines,
         alignment="center",
         font_size=font_size,
         color=color,
         line_spacing=0.85,
     )
+    return fit_to_panel(mob, panel, margin=margin)
 
 
 def graph_rect(axes: Axes, a: float, b: float, h: float, color: str, opacity: float):
@@ -172,11 +182,13 @@ class MAVizC13RiemannRefinement(Scene):
             font_size=37,
         ).move_to(panel.get_center() + DOWN * 0.10)
 
-        motivation = Text(
-            "dos sumas finitas encierran el problema",
-            font_size=18,
-            color=MA_MUTED,
+        motivation = panel_paragraph(
+            panel,
+            "dos sumas finitas",
+            "encierran el problema",
+            font_size=17,
         ).next_to(inequality, DOWN, buff=0.34)
+        fit_to_panel(motivation, panel)
 
         self.play(
             FadeIn(legend),
@@ -197,11 +209,12 @@ class MAVizC13RiemannRefinement(Scene):
         ).move_to(panel.get_center() + UP * 0.05)
 
         exact_note = panel_paragraph(
+            panel,
             "brecha exacta para estas",
             "particiones uniformes",
             font_size=16,
         ).next_to(gap_formula, DOWN, buff=0.30)
-        exact_note.set_x(panel.get_center()[0])
+        fit_to_panel(exact_note, panel)
 
         n_label = MAMathTex(
             r"n=4",
@@ -252,12 +265,13 @@ class MAVizC13RiemannRefinement(Scene):
         ).move_to(panel.get_center() + UP * 0.18)
 
         conclusion = panel_paragraph(
+            panel,
             "la incertidumbre entre las cotas",
             "puede hacerse arbitrariamente pequeña",
             font_size=18,
             color=MA_TEXT,
         ).next_to(limit_formula, DOWN, buff=0.36)
-        conclusion.set_x(panel.get_center()[0])
+        fit_to_panel(conclusion, panel)
 
         self.play(Write(limit_formula), FadeIn(conclusion), run_time=0.9)
         self.wait(1.5)
@@ -393,11 +407,12 @@ class MAVizC13RiemannTermToSum(Scene):
         self.wait(0.75)
 
         caution = panel_paragraph(
+            panel,
             "todavía no es la definición general",
             "de integral",
             font_size=16,
         ).next_to(sum_block, DOWN, buff=0.36)
-        caution.set_x(panel.get_center()[0])
+        fit_to_panel(caution, panel)
 
         self.play(FadeIn(caution), run_time=0.55)
         self.wait(1.3)
