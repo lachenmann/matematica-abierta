@@ -1,21 +1,19 @@
 ---
 title: "Teoremas de Rolle y del valor medio"
-description: "Capítulo 9 de Cálculo para matemáticos: extremos, Fermat, Rolle, valor medio de Lagrange, estimaciones y Lipschitz; 40 ejercicios resueltos."
+description: "Capítulo 9 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0076
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-areas:
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-09-21
+date-modified: 2026-09-30
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -28,12 +26,16 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [8]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Teoremas de Rolle y del valor medio {#sec-t1-c10}
+
+[← Capítulo 8](derivacion-de-funciones-elementales-inversas-e-implicitas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 10 →](monotonia-extremos-convexidad-y-forma-de-las-graficas.md)
 
 En los capítulos anteriores construimos la derivada como un límite local y demostramos las reglas necesarias para calcularla. Sabemos derivar polinomios y numerosas funciones algebraicas, y hemos aprendido a no aplicar una fórmula antes de comprobar la existencia de la función y la legitimidad de sus operaciones. Pero todavía no sabemos responder una pregunta que parece natural cuando observamos una función sobre **todo un intervalo**: ¿qué información acerca de sus derivadas puede deducirse de los valores que toma en dos puntos distintos?
 
@@ -184,7 +186,7 @@ $$
 
 y la pregunta se reduce a saber si debe existir algún punto interior con derivada nula. La igualdad de los valores extremos no basta por sí sola: todavía debemos investigar qué ocurre con la continuidad en el intervalo cerrado y con la diferenciabilidad en su interior.
 
-Para abordar esa situación recuperaremos un resultado ya demostrado en el capítulo 5: una función continua sobre un intervalo cerrado y acotado alcanza sus valores máximo y mínimo (@thm-t1-0021). A continuación estudiaremos qué impone la diferenciabilidad cuando uno de esos extremos se alcanza **en un punto interior**. Este será el contenido del teorema de Fermat, que construiremos sin recurrir a criterios posteriores de monotonía.
+Para abordar esa situación recuperaremos un resultado ya demostrado en el capítulo 5: una función continua sobre un intervalo cerrado y acotado alcanza sus valores máximo y mínimo ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)). A continuación estudiaremos qué impone la diferenciabilidad cuando uno de esos extremos se alcanza **en un punto interior**. Este será el contenido del teorema de Fermat, que construiremos sin recurrir a criterios posteriores de monotonía.
 
 Con ese resultado podremos investigar la situación de los extremos iguales y demostrar el teorema de Rolle. Solo después transformaremos el problema de una secante de pendiente arbitraria en otro de pendiente cero mediante una función auxiliar. Esa transformación será la clave del teorema del valor medio.
 
@@ -351,7 +353,7 @@ $$
 p(x)=(1-x^2)^2<1=p(0).
 $$
 
-Por tanto, $0$ es un punto interior de **máximo local estricto**, tomando $\delta=1$ en @def-t1-0048. Sin embargo,
+Por tanto, $0$ es un punto interior de **máximo local estricto**, tomando $\delta=1$ en [Definición 9.2](#def-t1-0048). Sin embargo,
 
 $$
 p(-2)=p(2)=9>1=p(0).
@@ -366,7 +368,7 @@ De «máximo absoluto» se sigue «máximo local» porque la desigualdad global 
 
 ### Lo que aporta el teorema de los valores extremos
 
-El teorema de los valores extremos del capítulo 5 (@thm-t1-0021) afirma lo siguiente: si $f\colon[a,b]\to\mathbb R$ es continua y $a<b$, existen $x_m,x_M\in[a,b]$ tales que
+El teorema de los valores extremos del capítulo 5 ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)) afirma lo siguiente: si $f\colon[a,b]\to\mathbb R$ es continua y $a<b$, existen $x_m,x_M\in[a,b]$ tales que
 
 $$
 f(x_m)\le f(x)\le f(x_M)
@@ -398,7 +400,7 @@ $$
 
 No se exige que el extremo sea estricto, que sea absoluto ni que $f$ sea diferenciable en otros puntos del dominio.
 
-**Demostración.** Supongamos primero que $c$ es un punto de **máximo local**. Por @def-t1-0048, existe $\delta_1>0$ tal que
+**Demostración.** Supongamos primero que $c$ es un punto de **máximo local**. Por [Definición 9.2](#def-t1-0048), existe $\delta_1>0$ tal que
 
 $$
 f(c+h)-f(c)\le0
@@ -428,7 +430,7 @@ $$
 -\rho<h<0\quad\Longrightarrow\quad Q(h)\ge0.
 $$
 
-La diferenciabilidad en $c$ afirma que existe un número real $L=f'_A(c)$ tal que $Q(h)\to L$ cuando $h\to0$ por los incrementos admisibles. En particular, las restricciones de $Q$ a los incrementos positivos y negativos tienen **el mismo límite** $L$; ambos lados están disponibles porque $c$ es interior. Aplicando la preservación del orden bajo límites (@prp-t1-0032) a cada lado por separado, obtenemos
+La diferenciabilidad en $c$ afirma que existe un número real $L=f'_A(c)$ tal que $Q(h)\to L$ cuando $h\to0$ por los incrementos admisibles. En particular, las restricciones de $Q$ a los incrementos positivos y negativos tienen **el mismo límite** $L$; ambos lados están disponibles porque $c$ es interior. Aplicando la preservación del orden bajo límites ([Proposición 4.4](limites-de-funciones.md#prp-t1-0032)) a cada lado por separado, obtenemos
 
 $$
 \underbrace{L\le0}_{h\to0^+},
@@ -451,7 +453,7 @@ La demostración no dice que un máximo o un mínimo «tenga una tangente horizo
 | Punto **interior** | Garantiza incrementos admisibles positivos y negativos. |
 | **Diferenciabilidad en $c$** | Garantiza un único límite real finito común a ambos lados. |
 
-No hemos utilizado la continuidad en todo un intervalo cerrado ni el teorema de los valores extremos. Este último será necesario **después**, cuando queramos garantizar que existe algún punto extremo; Fermat parte de un punto extremo ya dado y obtiene información sobre su derivada. Si un extremo **absoluto** se alcanza en un punto interior diferenciable, el teorema se aplica porque todo extremo absoluto es local (@def-t1-0047 y @def-t1-0048).
+No hemos utilizado la continuidad en todo un intervalo cerrado ni el teorema de los valores extremos. Este último será necesario **después**, cuando queramos garantizar que existe algún punto extremo; Fermat parte de un punto extremo ya dado y obtiene información sobre su derivada. Si un extremo **absoluto** se alcanza en un punto interior diferenciable, el teorema se aplica porque todo extremo absoluto es local ([Definición 9.1](#def-t1-0047) y [Definición 9.2](#def-t1-0048)).
 
 ### La recíproca es falsa: una derivada nula sin extremo
 
@@ -506,20 +508,20 @@ $$
 \end{cases}
 $$
 
-Los límites laterales no coinciden y, por el criterio @prp-t1-0037, $g'(0)$ no existe como número real. El extremo subsiste: lo que falla es **una de las hipótesis de Fermat**, no su conclusión aplicada ilegítimamente.
+Los límites laterales no coinciden y, por el criterio [Proposición 6.3](la-derivada-y-la-aproximacion-lineal-local.md#prp-t1-0037), $g'(0)$ no existe como número real. El extremo subsiste: lo que falla es **una de las hipótesis de Fermat**, no su conclusión aplicada ilegítimamente.
 :::
 
-También debemos mantener la condición de **interioridad**. La identidad sobre $[0,1]$ del @exm-t1-0093 alcanza extremos en ambos bordes y tiene allí derivadas relativas iguales a $1$. En esos puntos solo es posible acercarse desde un lado, de modo que no aparecen las dos desigualdades opuestas que obligaron a concluir $L=0$.
+También debemos mantener la condición de **interioridad**. La identidad sobre $[0,1]$ del [Ejemplo 9.2](#exm-t1-0093) alcanza extremos en ambos bordes y tiene allí derivadas relativas iguales a $1$. En esos puntos solo es posible acercarse desde un lado, de modo que no aparecen las dos desigualdades opuestas que obligaron a concluir $L=0$.
 
 ::: {.callout-warning title="Tres afirmaciones diferentes"}
-Que $f'(c)=0$ **no garantiza** un extremo local (función cúbica). Que exista un extremo local **no garantiza** diferenciabilidad (cúspide). Y un extremo de borde, incluso con derivada relativa existente, **no obliga** a que esa derivada sea cero (función identidad restringida). Ninguna de estas observaciones contradice @thm-t1-0033: en cada caso falta una condición necesaria para aplicarlo o se intenta invertir su implicación.
+Que $f'(c)=0$ **no garantiza** un extremo local (función cúbica). Que exista un extremo local **no garantiza** diferenciabilidad (cúspide). Y un extremo de borde, incluso con derivada relativa existente, **no obliga** a que esa derivada sea cero (función identidad restringida). Ninguna de estas observaciones contradice [Teorema 9.1](#thm-t1-0033): en cada caso falta una condición necesaria para aplicarlo o se intenta invertir su implicación.
 :::
 
 ### Laboratorio de demostración: reconstruir el argumento
 
 Antes de pasar a Rolle, reconstruye el razonamiento sin consultar la prueba: (i) escribe la desigualdad que caracteriza un máximo local; (ii) explica por qué el denominador cambia el sentido de esa desigualdad al pasar de $h>0$ a $h<0$; (iii) identifica qué hipótesis asegura que los dos límites corresponden al **mismo número**; (iv) repite el argumento para un mínimo; (v) señala en cuál de esos pasos fracasa cada uno de los ejemplos anteriores. Si no puedes justificar una flecha, todavía falta una hipótesis o una propiedad del límite.
 
-La siguiente sección combinará dos resultados que ya están disponibles: la **existencia** de máximos y mínimos para funciones continuas en un intervalo cerrado (@thm-t1-0021) y la **nulidad de la derivada** cuando uno de esos extremos se alcanza en un punto interior diferenciable (@thm-t1-0033). La igualdad de los valores en los extremos del intervalo permitirá enlazar ambos hechos y obtener el teorema de Rolle.
+La siguiente sección combinará dos resultados que ya están disponibles: la **existencia** de máximos y mínimos para funciones continuas en un intervalo cerrado ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)) y la **nulidad de la derivada** cuando uno de esos extremos se alcanza en un punto interior diferenciable ([Teorema 9.1](#thm-t1-0033)). La igualdad de los valores en los extremos del intervalo permitirá enlazar ambos hechos y obtener el teorema de Rolle.
 
 ## El teorema de Rolle {#sec-t1-c10-04}
 
@@ -548,7 +550,7 @@ $$
 k:=f(a)=f(b).
 $$
 
-**Primer paso: existencia de extremos absolutos.** Como $f$ es continua en el intervalo cerrado y acotado $[a,b]$, el teorema de los valores extremos (@thm-t1-0021) proporciona puntos $u,v\in[a,b]$ y números $m:=f(u)$ y $M:=f(v)$ tales que
+**Primer paso: existencia de extremos absolutos.** Como $f$ es continua en el intervalo cerrado y acotado $[a,b]$, el teorema de los valores extremos ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)) proporciona puntos $u,v\in[a,b]$ y números $m:=f(u)$ y $M:=f(v)$ tales que
 
 $$
 m\le f(x)\le M\qquad(x\in[a,b]).
@@ -573,7 +575,7 @@ Supongamos ahora que $m<M$. **Al menos una** de las desigualdades $m\le k\le M$ 
 - Si $M>k$, el punto $v$ donde se alcanza el máximo absoluto **no puede ser $a$ ni $b$**, porque $f(a)=f(b)=k<M=f(v)$. De $v\in[a,b]$ deducimos $v\in(a,b)$.
 - Si no ocurre $M>k$, entonces $M=k$ y, puesto que $m<M$, se tiene $m<k$. El punto $u$ donde se alcanza el mínimo absoluto tampoco puede ser $a$ ni $b$, ya que $f(u)=m<k=f(a)=f(b)$. En consecuencia, $u\in(a,b)$.
 
-En cualquiera de los dos casos existe un punto $c\in(a,b)$ donde $f$ alcanza un extremo absoluto, máximo o mínimo. Por @def-t1-0047 y @def-t1-0048, ese extremo es también local. La segunda hipótesis asegura que $f$ es diferenciable precisamente en ese $c$. Podemos aplicar ahora el teorema de Fermat (@thm-t1-0033) y concluir
+En cualquiera de los dos casos existe un punto $c\in(a,b)$ donde $f$ alcanza un extremo absoluto, máximo o mínimo. Por [Definición 9.1](#def-t1-0047) y [Definición 9.2](#def-t1-0048), ese extremo es también local. La segunda hipótesis asegura que $f$ es diferenciable precisamente en ese $c$. Podemos aplicar ahora el teorema de Fermat ([Teorema 9.1](#thm-t1-0033)) y concluir
 
 $$
 f'(c)=0.
@@ -589,7 +591,7 @@ La prueba no comienza buscando una solución de $f'(x)=0$. **Construye la existe
 Conviene identificar la inferencia exacta del segundo paso. El teorema de los valores extremos solo entrega $u,v\in[a,b]$; por sí mismo no sitúa ninguno en $(a,b)$. Tampoco basta escribir $f(a)=f(b)$ y afirmar sin más que «el máximo está en el interior»: una función no constante puede alcanzar su máximo exclusivamente en los bordes. Lo que sí sabemos es que, al ser no constante, **algún valor de la función difiere del valor común $k$**; si un valor lo supera, un máximo absoluto debe alcanzarse adentro; si ninguno lo supera, algún valor es inferior a $k$ y un mínimo absoluto debe alcanzarse adentro. El argumento cubre ambas posibilidades.
 
 ::: {.callout-note title="Mapa de dependencias de Rolle"}
-Continuidad en $[a,b]$ $\longrightarrow$ extremos absolutos existentes (@thm-t1-0021). Igualdad $f(a)=f(b)$ y no constancia $\longrightarrow$ uno de esos extremos tiene un punto de realización interior. Diferenciabilidad en $(a,b)$ $\longrightarrow$ la derivada existe en ese punto. Extremo interior y derivabilidad $\longrightarrow$ derivada nula (@thm-t1-0033). Si la función es constante, basta calcular directamente el cociente incremental en cualquier punto interior.
+Continuidad en $[a,b]$ $\longrightarrow$ extremos absolutos existentes ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)). Igualdad $f(a)=f(b)$ y no constancia $\longrightarrow$ uno de esos extremos tiene un punto de realización interior. Diferenciabilidad en $(a,b)$ $\longrightarrow$ la derivada existe en ese punto. Extremo interior y derivabilidad $\longrightarrow$ derivada nula ([Teorema 9.1](#thm-t1-0033)). Si la función es constante, basta calcular directamente el cociente incremental en cualquier punto interior.
 :::
 
 ### Un ejemplo que permite encontrar el punto, pero no lo presupone
@@ -607,7 +609,7 @@ $$
 f(0)=0=f(2).
 $$
 
-Las tres hipótesis de @thm-t1-0034 están verificadas **antes de derivar**. Rolle garantiza, por tanto, al menos un $c\in(0,2)$ con $f'(c)=0$. La derivada, obtenida mediante las reglas ya demostradas, es
+Las tres hipótesis de [Teorema 9.2](#thm-t1-0034) están verificadas **antes de derivar**. Rolle garantiza, por tanto, al menos un $c\in(0,2)$ con $f'(c)=0$. La derivada, obtenida mediante las reglas ya demostradas, es
 
 $$
 f'(x)=3x^2-4x=x(3x-4).
@@ -624,7 +626,7 @@ El punto medio es $1$ y $f'(1)=-1\ne0$. La igualdad de los valores en los bordes
 :::
 
 ::: {.callout-warning title="Existencia no significa unicidad"}
-Para la función constante $f(x)=k$ en cualquier $[a,b]$ con $a<b$, **todos** los puntos de $(a,b)$ satisfacen $f'(c)=0$. En @exm-t1-0098 encontramos exactamente uno. Ambos comportamientos cumplen Rolle: su conclusión tiene la forma «existe al menos un punto».
+Para la función constante $f(x)=k$ en cualquier $[a,b]$ con $a<b$, **todos** los puntos de $(a,b)$ satisfacen $f'(c)=0$. En [Ejemplo 9.7](#exm-t1-0098) encontramos exactamente uno. Ambos comportamientos cumplen Rolle: su conclusión tiene la forma «existe al menos un punto».
 :::
 
 ### Laboratorio de lectura: localizar cada salto lógico
@@ -635,7 +637,7 @@ Hemos obtenido una afirmación global a partir de dos resultados anteriores, per
 
 ## Auditoría de las hipótesis de Rolle {#sec-t1-c10-05}
 
-La demostración de @thm-t1-0034 utiliza tres datos distintos. La continuidad en el intervalo cerrado asegura la **existencia de extremos absolutos**; la igualdad de los valores de borde permite encontrar un punto extremo interior cuando la función no es constante; y la diferenciabilidad en el interior autoriza aplicar Fermat en ese punto. ¿Qué sucede si conservamos dos de esas condiciones y retiramos la tercera? Para responder no basta con señalar que un paso de la demostración deja de estar justificado: construiremos funciones en las que también **fracasa la conclusión**.
+La demostración de [Teorema 9.2](#thm-t1-0034) utiliza tres datos distintos. La continuidad en el intervalo cerrado asegura la **existencia de extremos absolutos**; la igualdad de los valores de borde permite encontrar un punto extremo interior cuando la función no es constante; y la diferenciabilidad en el interior autoriza aplicar Fermat en ese punto. ¿Qué sucede si conservamos dos de esas condiciones y retiramos la tercera? Para responder no basta con señalar que un paso de la demostración deja de estar justificado: construiremos funciones en las que también **fracasa la conclusión**.
 
 ### Sin continuidad en el intervalo cerrado
 
@@ -671,7 +673,7 @@ $$
 En efecto, $f([0,1])=[0,1)$: la función tiene supremo $1$, pero no alcanza un máximo absoluto. Ha fallado precisamente la garantía de existencia de extremos utilizada al comenzar la prueba de Rolle.
 :::
 
-El ejemplo no permite reemplazar «continua en $[a,b]$» por «continua y diferenciable en $(a,b)$». La diferenciabilidad interior ya implica continuidad en el interior (@thm-t1-0024), pero **no controla la continuidad relativa en los dos bordes**. La falla de este ejemplo se concentra en $b=1$.
+El ejemplo no permite reemplazar «continua en $[a,b]$» por «continua y diferenciable en $(a,b)$». La diferenciabilidad interior ya implica continuidad en el interior ([Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024)), pero **no controla la continuidad relativa en los dos bordes**. La falla de este ejemplo se concentra en $b=1$.
 
 ### Sin diferenciabilidad en un punto interior
 
@@ -704,15 +706,15 @@ $$
 =\begin{cases}-1,&h<0,\\1,&h>0.\end{cases}
 $$
 
-Como sus límites laterales difieren, $g'(0)$ no existe (@prp-t1-0037). No hay **ningún punto interior con derivada existente e igual a cero**: fuera de $0$ las derivadas son $-1$ o $1$, y en $0$ la derivada no está definida. Precisamente donde se alcanza el mínimo absoluto, $g(0)=0$, no podemos aplicar Fermat.
+Como sus límites laterales difieren, $g'(0)$ no existe ([Proposición 6.3](la-derivada-y-la-aproximacion-lineal-local.md#prp-t1-0037)). No hay **ningún punto interior con derivada existente e igual a cero**: fuera de $0$ las derivadas son $-1$ o $1$, y en $0$ la derivada no está definida. Precisamente donde se alcanza el mínimo absoluto, $g(0)=0$, no podemos aplicar Fermat.
 :::
 
-Continuidad y valores de borde iguales sí bastan para encontrar un extremo interior en este caso; **no bastan para convertirlo en un cero de la derivada**. Un extremo angular no contradice Fermat: le falta la diferenciabilidad exigida por @thm-t1-0033. Compárese con la cúspide de @exm-t1-0097, donde también existe un extremo interior sin derivada, aunque el signo de la función es opuesto.
+Continuidad y valores de borde iguales sí bastan para encontrar un extremo interior en este caso; **no bastan para convertirlo en un cero de la derivada**. Un extremo angular no contradice Fermat: le falta la diferenciabilidad exigida por [Teorema 9.1](#thm-t1-0033). Compárese con la cúspide de [Ejemplo 9.6](#exm-t1-0097), donde también existe un extremo interior sin derivada, aunque el signo de la función es opuesto.
 
 ### Sin igualdad de los valores en los bordes
 
 ::: {#exm-t1-0101}
-**La identidad no tiene derivada nula.** Recuperemos la función de @exm-t1-0093, ahora para comprobar una hipótesis diferente:
+**La identidad no tiene derivada nula.** Recuperemos la función de [Ejemplo 9.2](#exm-t1-0093), ahora para comprobar una hipótesis diferente:
 
 $$
 h\colon[0,1]\longrightarrow\mathbb R,\qquad h(x)=x.
@@ -736,9 +738,9 @@ En cada fila se conserva el mismo tipo de dominio, un intervalo cerrado no degen
 
 | Función | Continua en el cerrado | Diferenciable en el abierto | Valores de borde iguales | ¿Existe $c$ interior con $f'(c)=0$? |
 |---|:---:|:---:|:---:|:---:|
-| $f$ de @exm-t1-0099 | No | Sí | Sí | No |
-| $g$ de @exm-t1-0100 | Sí | No | Sí | No |
-| $h$ de @exm-t1-0101 | Sí | Sí | No | No |
+| $f$ de [Ejemplo 9.8](#exm-t1-0099) | No | Sí | Sí | No |
+| $g$ de [Ejemplo 9.9](#exm-t1-0100) | Sí | No | Sí | No |
+| $h$ de [Ejemplo 9.10](#exm-t1-0101) | Sí | Sí | No | No |
 
 Las tres filas prueban algo preciso: **ninguna de las tres hipótesis puede suprimirse sin más del enunciado de Rolle, conservando la misma conclusión para todas las funciones**. No prueban que las hipótesis sean individualmente necesarias para que *alguna función concreta* tenga una derivada nula; el ejemplo $q$ anterior ya descarta esa interpretación.
 
@@ -811,7 +813,7 @@ Verifiquemos, una por una, las hipótesis de Rolle.
 
 **Continuidad en el cerrado.** Por hipótesis, $f$ es continua en $[a,b]$. La función $x\mapsto f(a)+m(x-a)$ es afín y continua en ese mismo dominio. Las reglas de continuidad para diferencias aseguran que $g$ es continua en $[a,b]$, incluidos los dos bordes en el sentido relativo.
 
-**Diferenciabilidad en el abierto.** Para cada $x\in(a,b)$, la derivada $f'(x)$ existe. La función afín es diferenciable y tiene derivada $m$; por la linealidad de la derivada (@thm-t1-0027),
+**Diferenciabilidad en el abierto.** Para cada $x\in(a,b)$, la derivada $f'(x)$ existe. La función afín es diferenciable y tiene derivada $m$; por la linealidad de la derivada ([Teorema 7.1](algebra-de-derivadas-y-regla-de-la-cadena.md#thm-t1-0027)),
 
 $$
 g'(x)=f'(x)-m\qquad(x\in(a,b)).
@@ -823,7 +825,7 @@ $$
 g(a)=0=g(b).
 $$
 
-El intervalo es no degenerado porque $a<b$. Todas las hipótesis de @thm-t1-0034 están ahora comprobadas **para $g$**. Por Rolle existe $c\in(a,b)$ tal que $g'(c)=0$. Utilizando la fórmula para la derivada de $g$ obtenemos
+El intervalo es no degenerado porque $a<b$. Todas las hipótesis de [Teorema 9.2](#thm-t1-0034) están ahora comprobadas **para $g$**. Por Rolle existe $c\in(a,b)$ tal que $g'(c)=0$. Utilizando la fórmula para la derivada de $g$ obtenemos
 
 $$
 0=g'(c)=f'(c)-m,
@@ -897,7 +899,7 @@ Hemos alcanzado el resultado central de este capítulo. Antes de utilizarlo para
 
 ## Qué afirma realmente el valor medio {#sec-t1-c10-07}
 
-El teorema del valor medio (@thm-t1-0035) ha cerrado la pregunta planteada en §9.1, pero su fórmula admite lecturas incorrectas si confundimos **igualdad de pendientes**, **coincidencia de rectas** y **determinación de un punto**. En esta sección no añadiremos hipótesis ni demostraremos un teorema nuevo: examinaremos exactamente la conclusión que ya está disponible.
+El teorema del valor medio ([Teorema 9.3](#thm-t1-0035)) ha cerrado la pregunta planteada en §9.1, pero su fórmula admite lecturas incorrectas si confundimos **igualdad de pendientes**, **coincidencia de rectas** y **determinación de un punto**. En esta sección no añadiremos hipótesis ni demostraremos un teorema nuevo: examinaremos exactamente la conclusión que ya está disponible.
 
 ### La pendiente común y las dos rectas
 
@@ -930,7 +932,7 @@ La igualdad $f'(c)=m$ **no contiene** la segunda condición. Dicho de otro modo,
 
 ### El cuantificador: al menos uno, no exactamente uno
 
-La conclusión de @thm-t1-0035 puede expresarse mediante el conjunto
+La conclusión de [Teorema 9.3](#thm-t1-0035) puede expresarse mediante el conjunto
 
 $$
 S_{f,[a,b]}:=\left\{x\in(a,b):
@@ -986,8 +988,8 @@ Disponemos ya de ejemplos que muestran comportamientos diferentes, todos compati
 
 | Función e intervalo | Pendiente de la secante | Puntos interiores que la reproducen |
 |---|---:|---|
-| $x^3$ en $[0,2]$ (@exm-t1-0102) | $4$ | Exactamente uno: $2/\sqrt3$ |
-| $x^3$ en $[-1,1]$ (@exm-t1-0103) | $1$ | Exactamente dos: $\pm1/\sqrt3$ |
+| $x^3$ en $[0,2]$ ([Ejemplo 9.11](#exm-t1-0102)) | $4$ | Exactamente uno: $2/\sqrt3$ |
+| $x^3$ en $[-1,1]$ ([Ejemplo 9.12](#exm-t1-0103)) | $1$ | Exactamente dos: $\pm1/\sqrt3$ |
 | $p(x)=2x+1$ en $[0,2]$ | $2$ | Todos los puntos de $(0,2)$, pues $p'(x)=2$ |
 
 En el último caso, la secante y todas las tangentes son la misma recta $y=2x+1$; en el segundo, las tangentes y la secante son rectas distintas. Por tanto, ni la cantidad de puntos ni la coincidencia de las rectas pueden añadirse gratuitamente a la conclusión de Lagrange. La única cota de cantidad garantizada es que **hay al menos uno**.
@@ -1004,7 +1006,7 @@ La fórmula está ahora interpretada sin atribuirle más de lo que demuestra. En
 
 ## Auditoría de las hipótesis del valor medio {#sec-t1-c10-08}
 
-El teorema del valor medio (@thm-t1-0035) parte de una función $f\colon[a,b]\to\mathbb R$ con $a<b$ y exige **continuidad en todo $[a,b]$** y **diferenciabilidad en todo $(a,b)$**. Entonces garantiza un punto interior $c$ donde la derivada reproduce la pendiente de la secante. Para auditar las hipótesis construiremos dos funciones: en cada una conservará su validez una de las condiciones, fallará la otra y **la igualdad prometida no tendrá ninguna solución admisible**. Esto es más exigente que señalar una simple imposibilidad de aplicar el teorema.
+El teorema del valor medio ([Teorema 9.3](#thm-t1-0035)) parte de una función $f\colon[a,b]\to\mathbb R$ con $a<b$ y exige **continuidad en todo $[a,b]$** y **diferenciabilidad en todo $(a,b)$**. Entonces garantiza un punto interior $c$ donde la derivada reproduce la pendiente de la secante. Para auditar las hipótesis construiremos dos funciones: en cada una conservará su validez una de las condiciones, fallará la otra y **la igualdad prometida no tendrá ninguna solución admisible**. Esto es más exigente que señalar una simple imposibilidad de aplicar el teorema.
 
 ### Retirar la continuidad en un borde, manteniendo la diferenciabilidad interior
 
@@ -1054,7 +1056,7 @@ g(x)=-x\quad(0\le x<1),\qquad
 \lim_{x\to1^-}g(x)=-1\ne0=g(1).
 $$
 
-Aunque $g'(x)=-1$ en todo $(0,1)$ y sus valores en los dos bordes coinciden, **no es continua en $[0,1]$**. Rolle (@thm-t1-0034) no puede utilizarse, y aquí comprobamos además que su conclusión, $g'(c)=0$, es efectivamente falsa. Compárese con @exm-t1-0099: modificar el dato de borde permite refutar tanto Rolle como Lagrange, pero en este ejemplo la secante tiene pendiente $2$, no pendiente cero.
+Aunque $g'(x)=-1$ en todo $(0,1)$ y sus valores en los dos bordes coinciden, **no es continua en $[0,1]$**. Rolle ([Teorema 9.2](#thm-t1-0034)) no puede utilizarse, y aquí comprobamos además que su conclusión, $g'(c)=0$, es efectivamente falsa. Compárese con [Ejemplo 9.8](#exm-t1-0099): modificar el dato de borde permite refutar tanto Rolle como Lagrange, pero en este ejemplo la secante tiene pendiente $2$, no pendiente cero.
 
 ### Retirar la diferenciabilidad en el interior, manteniendo la continuidad global
 
@@ -1087,7 +1089,7 @@ $$
 =\begin{cases}-1,&t<0,\\1,&t>0.\end{cases}
 $$
 
-Los límites laterales no coinciden, por lo que $h'(0)$ no existe (@prp-t1-0037). Hemos examinado **todos** los puntos interiores: donde existe la derivada vale $-1$ o $1$, nunca $1/3$; en el único punto restante ni siquiera está definida. Por tanto,
+Los límites laterales no coinciden, por lo que $h'(0)$ no existe ([Proposición 6.3](la-derivada-y-la-aproximacion-lineal-local.md#prp-t1-0037)). Hemos examinado **todos** los puntos interiores: donde existe la derivada vale $-1$ o $1$, nunca $1/3$; en el único punto restante ni siquiera está definida. Por tanto,
 
 $$
 \boxed{\nexists c\in(-1,2):\quad
@@ -1112,10 +1114,10 @@ mientras que en $0$ su derivada no existe: restar una función afín diferenciab
 
 | Función e intervalo | Continuidad en el cerrado | Diferenciabilidad en el abierto | Pendiente de la secante | Valores de la derivada interior existente | ¿Se alcanza la pendiente? |
 |---|:---:|:---:|---:|---|:---:|
-| $f$ de @exm-t1-0104, $[0,1]$ | No: falla en $1$ | Sí | $2$ | Siempre $1$ | No |
-| $h$ de @exm-t1-0105, $[-1,2]$ | Sí | No: falla en $0$ | $1/3$ | $-1$ o $1$ | No |
+| $f$ de [Ejemplo 9.13](#exm-t1-0104), $[0,1]$ | No: falla en $1$ | Sí | $2$ | Siempre $1$ | No |
+| $h$ de [Ejemplo 9.14](#exm-t1-0105), $[-1,2]$ | Sí | No: falla en $0$ | $1/3$ | $-1$ o $1$ | No |
 
-Las dos filas prueban que **ninguna de las dos hipótesis analíticas puede simplemente omitirse de la garantía universal de Lagrange**. La primera muestra que la diferenciabilidad interior no controla los valores fijados en los bordes; la segunda, que la continuidad global no obliga a que exista una derivada en el lugar donde sería necesaria la pendiente intermedia. No existe en Lagrange una hipótesis adicional de igualdad de los valores extremos: esa condición pertenece al caso particular de Rolle y no debe incorporarse por error al enunciado de @thm-t1-0035.
+Las dos filas prueban que **ninguna de las dos hipótesis analíticas puede simplemente omitirse de la garantía universal de Lagrange**. La primera muestra que la diferenciabilidad interior no controla los valores fijados en los bordes; la segunda, que la continuidad global no obliga a que exista una derivada en el lugar donde sería necesaria la pendiente intermedia. No existe en Lagrange una hipótesis adicional de igualdad de los valores extremos: esa condición pertenece al caso particular de Rolle y no debe incorporarse por error al enunciado de [Teorema 9.3](#thm-t1-0035).
 
 ::: {.callout-warning title="Ausencia de garantía no equivale a imposibilidad en cada función"}
 De que falle una hipótesis no se deduce automáticamente que la igualdad del valor medio sea falsa; hay que comprobarlo, como hicimos. Por ejemplo, si $q\colon[0,1]\to\mathbb R$ está dada por $q(x)=x^2$ para $0\le x<1$ y $q(1)=1/2$, falla la continuidad en $1$; sin embargo, la secante tiene pendiente $1/2$ y $q'(1/4)=1/2$. De forma similar, $r(x)=x^2-|x|$ en $[-1,1]$ es continua y no diferenciable en $0$, pero sus bordes valen $0$ y $r'(-1/2)=r'(1/2)=0$. Las hipótesis de Lagrange son condiciones **suficientes para asegurar** la existencia en toda función que las cumpla; estos ejemplos favorables no permiten suprimirlas del teorema general.
@@ -1154,7 +1156,7 @@ $$
 
 **Demostración.** Fijemos arbitrariamente $x,y\in[a,b]$ con $x<y$. Como $[x,y]\subseteq[a,b]$, la restricción $f|_{[x,y]}$ es continua en $[x,y]$ y diferenciable en $(x,y)$. Estas propiedades se heredan de las dos hipótesis sobre $f$; no estamos suponiendo una derivada en $x$ ni en $y$.
 
-Por el teorema del valor medio (@thm-t1-0035), existe un punto $c\in(x,y)$ para el que
+Por el teorema del valor medio ([Teorema 9.3](#thm-t1-0035)), existe un punto $c\in(x,y)$ para el que
 
 $$
 \frac{f(y)-f(x)}{y-x}=f'(c).
@@ -1187,7 +1189,7 @@ $$
 |f'(t)|\le K\qquad(t\in(a,b)).
 $$
 
-Esta condición equivale a $-K\le f'(t)\le K$. Aplicando @prp-t1-0044 con $m=-K$ y $M=K$, para $x<y$ obtenemos
+Esta condición equivale a $-K\le f'(t)\le K$. Aplicando [Proposición 9.1](#prp-t1-0044) con $m=-K$ y $M=K$, para $x<y$ obtenemos
 
 $$
 -K(y-x)\le f(y)-f(x)\le K(y-x).
@@ -1231,7 +1233,7 @@ $$
 Si $K=0$, la propia desigualdad Lipschitz fuerza $f(x)=f(x_0)$ para todos los argumentos del dominio y la continuidad es inmediata. Por tanto, toda función Lipschitz es continua **relativamente a su dominio**, incluidos los puntos de borde que pertenezcan a él.
 
 ::: {.callout-warning title="No invertir el resultado sin comprobar sus hipótesis"}
-De «derivada existente y uniformemente acotada en el interior, junto con continuidad en el cerrado» se deduce «Lipschitz». La recíproca no exige diferenciabilidad: $u\colon[-1,1]\to\mathbb R$, $u(x)=|x|$, satisface $||x|-|y||\le|x-y|$, pero no es diferenciable en $0$ (@exm-t1-0100). Si una función Lipschitz es diferenciable en un punto interior, entonces allí sí se obtiene $|f'(c)|\le K$ pasando al límite en $|(f(c+h)-f(c))/h|\le K$; esto **no crea** una derivada donde no existe.
+De «derivada existente y uniformemente acotada en el interior, junto con continuidad en el cerrado» se deduce «Lipschitz». La recíproca no exige diferenciabilidad: $u\colon[-1,1]\to\mathbb R$, $u(x)=|x|$, satisface $||x|-|y||\le|x-y|$, pero no es diferenciable en $0$ ([Ejemplo 9.9](#exm-t1-0100)). Si una función Lipschitz es diferenciable en un punto interior, entonces allí sí se obtiene $|f'(c)|\le K$ pasando al límite en $|(f(c+h)-f(c))/h|\le K$; esto **no crea** una derivada donde no existe.
 :::
 
 ### Ejemplo: una cota global y su precisión
@@ -1249,7 +1251,7 @@ $$
 0\le f'(t)\le4.
 $$
 
-La proposición @prp-t1-0044 proporciona, para $0\le x<y\le2$,
+La proposición [Proposición 9.1](#prp-t1-0044) proporciona, para $0\le x<y\le2$,
 
 $$
 \boxed{0\le y^2-x^2\le4(y-x).}
@@ -1297,16 +1299,16 @@ $$
 =\frac{\sqrt h}{h}=\frac1{\sqrt h}.
 $$
 
-Dado cualquier $K\ge0$, podemos elegir $h\in(0,1]$ suficientemente pequeño para que $1/\sqrt h>K$. Así, ninguna constante finita satisface la desigualdad de @def-t1-0049 en todos los pares de $[0,1]$. La función es continua en el cerrado, pero **no es Lipschitz allí**.
+Dado cualquier $K\ge0$, podemos elegir $h\in(0,1]$ suficientemente pequeño para que $1/\sqrt h>K$. Así, ninguna constante finita satisface la desigualdad de [Definición 9.3](#def-t1-0049) en todos los pares de $[0,1]$. La función es continua en el cerrado, pero **no es Lipschitz allí**.
 :::
 
 ::: {.callout-note title="Una frontera que importa"}
-En cualquier subintervalo $[\varepsilon,1]$ con $0<\varepsilon<1$, sí se tiene $|g'(t)|\le1/(2\sqrt\varepsilon)$ para los puntos interiores, de modo que $g$ es Lipschitz en ese subintervalo. Una familia de constantes que depende de $\varepsilon$ y crece sin cota cuando $\varepsilon\to0^+$ no proporciona una única constante válida para todo $[0,1]$. Por el contrario, @exm-t1-0105 muestra que una función puede ser Lipschitz aunque no sea diferenciable en un punto interior.
+En cualquier subintervalo $[\varepsilon,1]$ con $0<\varepsilon<1$, sí se tiene $|g'(t)|\le1/(2\sqrt\varepsilon)$ para los puntos interiores, de modo que $g$ es Lipschitz en ese subintervalo. Una familia de constantes que depende de $\varepsilon$ y crece sin cota cuando $\varepsilon\to0^+$ no proporciona una única constante válida para todo $[0,1]$. Por el contrario, [Ejemplo 9.14](#exm-t1-0105) muestra que una función puede ser Lipschitz aunque no sea diferenciable en un punto interior.
 :::
 
 ### Laboratorio: reconstruir una estimación sin resolver la ecuación de Lagrange
 
-Sean $f\colon[a,b]\to\mathbb R$ continua en $[a,b]$ y diferenciable en $(a,b)$, con $a<b$. Reconstruye la prueba de @prp-t1-0044 eligiendo primero $x<y$, justificando todas las hipótesis sobre la restricción $f|_{[x,y]}$, señalando en qué momento aparece $c\in(x,y)$ y explicando por qué es legítimo multiplicar las desigualdades por $y-x$. Repite la deducción cuando solo conoces $|f'(t)|\le K$; comprueba por separado $x<y$, $x>y$ y $x=y$. Para detectar una reparación necesaria, intenta aplicar la estimación con $M=1$ a @exm-t1-0104: $f'(t)=1$ para todo punto interior, pero $f(1)-f(0)=2>1$. Identifica exactamente la hipótesis omitida.
+Sean $f\colon[a,b]\to\mathbb R$ continua en $[a,b]$ y diferenciable en $(a,b)$, con $a<b$. Reconstruye la prueba de [Proposición 9.1](#prp-t1-0044) eligiendo primero $x<y$, justificando todas las hipótesis sobre la restricción $f|_{[x,y]}$, señalando en qué momento aparece $c\in(x,y)$ y explicando por qué es legítimo multiplicar las desigualdades por $y-x$. Repite la deducción cuando solo conoces $|f'(t)|\le K$; comprueba por separado $x<y$, $x>y$ y $x=y$. Para detectar una reparación necesaria, intenta aplicar la estimación con $M=1$ a [Ejemplo 9.13](#exm-t1-0104): $f'(t)=1$ para todo punto interior, pero $f(1)-f(0)=2>1$. Identifica exactamente la hipótesis omitida.
 
 Ya disponemos de un procedimiento para controlar incrementos y diferencias sin conocer el punto de valor medio. La siguiente sección examinará una consecuencia estructural especial: qué ocurre cuando **dos funciones tienen la misma derivada** en todo un intervalo y cómo reconstruir correctamente las demostraciones correspondientes.
 
@@ -1331,7 +1333,7 @@ $$
 u:=\min\{x,x_0\},\qquad v:=\max\{x,x_0\}.
 $$
 
-Entonces $a\le u<v\le b$. La restricción $f|_{[u,v]}$ es continua en $[u,v]$ y diferenciable en $(u,v)$. Por el teorema del valor medio (@thm-t1-0035), existe $c\in(u,v)\subseteq(a,b)$ con
+Entonces $a\le u<v\le b$. La restricción $f|_{[u,v]}$ es continua en $[u,v]$ y diferenciable en $(u,v)$. Por el teorema del valor medio ([Teorema 9.3](#thm-t1-0035)), existe $c\in(u,v)\subseteq(a,b)$ con
 
 $$
 \frac{f(v)-f(u)}{v-u}=f'(c)=0.
@@ -1340,7 +1342,7 @@ $$
 Puesto que $v-u>0$, concluimos $f(v)=f(u)$. El par $u,v$ está formado exactamente por $x$ y $x_0$; por tanto, $f(x)=f(x_0)=k$. Como $x$ fue arbitrario, $f$ es constante en todo $[a,b]$. $\square$
 :::
 
-También puede recuperarse la conclusión de @prp-t1-0044 tomando $m=M=0$, pues sus dos desigualdades obligan a $f(y)-f(x)=0$ para $x<y$. La prueba anterior expone directamente **dónde** aparece el punto de Lagrange y por qué podemos comparar cualquier par de argumentos. No hemos requerido derivadas en los bordes ni continuidad de la función derivada.
+También puede recuperarse la conclusión de [Proposición 9.1](#prp-t1-0044) tomando $m=M=0$, pues sus dos desigualdades obligan a $f(y)-f(x)=0$ para $x<y$. La prueba anterior expone directamente **dónde** aparece el punto de Lagrange y por qué podemos comparar cualquier par de argumentos. No hemos requerido derivadas en los bordes ni continuidad de la función derivada.
 
 La implicación recíproca, con el mismo dominio, es inmediata por la definición: si $f(x)=k$ para todos los argumentos, cada cociente incremental interior es $(k-k)/h=0$. Así, bajo las hipótesis de la proposición, la constancia equivale a que la derivada sea idénticamente nula **en todo el abierto**, no simplemente en uno o varios puntos.
 
@@ -1369,13 +1371,13 @@ $$
 h\colon[a,b]\to\mathbb R,\qquad h(x):=f(x)-g(x).
 $$
 
-Por las reglas de continuidad y la linealidad de la derivada (@thm-t1-0027), $h$ es continua en $[a,b]$, diferenciable en $(a,b)$ y satisface
+Por las reglas de continuidad y la linealidad de la derivada ([Teorema 7.1](algebra-de-derivadas-y-regla-de-la-cadena.md#thm-t1-0027)), $h$ es continua en $[a,b]$, diferenciable en $(a,b)$ y satisface
 
 $$
 h'(t)=f'(t)-g'(t)=0\qquad(t\in(a,b)).
 $$
 
-La proposición @prp-t1-0045 se aplica a $h$ y proporciona una constante $C$ con $h(x)=C$ para todo $x\in[a,b]$; esto equivale a $f(x)=g(x)+C$. Evaluar en $x_0$ da forzosamente $C=f(x_0)-g(x_0)$, lo que demuestra además su unicidad. $\square$
+La proposición [Proposición 9.2](#prp-t1-0045) se aplica a $h$ y proporciona una constante $C$ con $h(x)=C$ para todo $x\in[a,b]$; esto equivale a $f(x)=g(x)+C$. Evaluar en $x_0$ da forzosamente $C=f(x_0)-g(x_0)$, lo que demuestra además su unicidad. $\square$
 :::
 
 Por consiguiente, si además de $f'=g'$ sabemos que **coinciden en un punto** $x_0$, entonces $C=0$ y $f=g$ sobre todo el intervalo. El dato de un solo valor elimina la ambigüedad aditiva; no se necesita conocer ambos valores en todos los argumentos. Recíprocamente, sumar una constante no cambia las derivadas interiores: si $f=g+C$, la linealidad proporciona $f'=g'$. Esta afirmación se refiere a las funciones bajo sus hipótesis de diferenciabilidad, y no construye derivadas en puntos donde faltan.
@@ -1399,7 +1401,7 @@ $$
 f(x)-g(x)=(x^3+7)-(x^3-2)=9
 $$
 
-para todo $x\in[-2,2]$: la constante de @prp-t1-0046 es $C=f(0)-g(0)=9$. Si, en cambio, se prescribe para otra función $q$ la misma derivada $q'(t)=3t^2$ y el valor $q(0)=7$, la proposición fuerza $q(x)=x^3+7$ en todo el intervalo, siempre que $q$ satisfaga las hipótesis de continuidad y diferenciabilidad exigidas.
+para todo $x\in[-2,2]$: la constante de [Proposición 9.3](#prp-t1-0046) es $C=f(0)-g(0)=9$. Si, en cambio, se prescribe para otra función $q$ la misma derivada $q'(t)=3t^2$ y el valor $q(0)=7$, la proposición fuerza $q(x)=x^3+7$ en todo el intervalo, siempre que $q$ satisfaga las hipótesis de continuidad y diferenciabilidad exigidas.
 :::
 
 ### Por qué el intervalo y la continuidad no son detalles
@@ -1435,7 +1437,7 @@ La razón es verificable: $[-1,1]$ **no** está contenido en $A$, por lo que no 
 Para la versión de las derivadas iguales, tomemos $p(x)=x^2$ y $q(x)=x^2+u(x)$ en $A$. Ambas funciones son continuas relativamente a $A$, sus derivadas coinciden en los puntos interiores, pero $q-p=u$ vale $0$ en una componente y $1$ en la otra. Tampoco existe una única constante global que exprese esa diferencia.
 :::
 
-Una segunda frontera ya está disponible en @exm-t1-0104. Allí $f(x)=x$ para $0\le x<1$ y $f(1)=2$. La función $h(x):=f(x)-x$ cumple $h'(t)=0$ en todo $(0,1)$, pero $h(x)=0$ para $x<1$ y $h(1)=1$. **La continuidad relativa en el borde derecho falla**, de modo que @prp-t1-0045 no se aplica. Del mismo modo, la igualdad de derivadas en *un solo punto* no controla todo un intervalo: $p(x)=x^2$ y $q(x)=0$ sobre $[-1,1]$ cumplen $p'(0)=q'(0)$, pero $p-q=x^2$ no es constante.
+Una segunda frontera ya está disponible en [Ejemplo 9.13](#exm-t1-0104). Allí $f(x)=x$ para $0\le x<1$ y $f(1)=2$. La función $h(x):=f(x)-x$ cumple $h'(t)=0$ en todo $(0,1)$, pero $h(x)=0$ para $x<1$ y $h(1)=1$. **La continuidad relativa en el borde derecho falla**, de modo que [Proposición 9.2](#prp-t1-0045) no se aplica. Del mismo modo, la igualdad de derivadas en *un solo punto* no controla todo un intervalo: $p(x)=x^2$ y $q(x)=0$ sobre $[-1,1]$ cumplen $p'(0)=q'(0)$, pero $p-q=x^2$ no es constante.
 
 ::: {.callout-warning title="Tres límites lógicos de estas conclusiones"}
 «La derivada vale cero en algún punto» no equivale a «vale cero en todos los puntos interiores». «Las derivadas coinciden en un punto» no equivale a «coinciden en todo el abierto». Y «la derivada es nula en todas las partes de un dominio desconectado» no obliga a una sola constante entre partes: el teorema del valor medio exige disponer del segmento completo entre los argumentos comparados.
@@ -1443,9 +1445,9 @@ Una segunda frontera ya está disponible en @exm-t1-0104. Allí $f(x)=x$ para $0
 
 ### Laboratorio de demostraciones: verificar, reconstruir y reparar
 
-Trabaja con un intervalo $[a,b]$ no degenerado antes de generalizar. **Estación A:** en @prp-t1-0045, fija $x_0$, elige $x$ arbitrario, construye $[u,v]$ y marca el paso que utiliza cada una de las dos hipótesis analíticas. Explica por qué basta la existencia de algún $c$ sin calcularlo. **Estación B:** vuelve a demostrar la constancia desde @prp-t1-0044 con $m=M=0$ y comprueba que ambas rutas tienen las mismas hipótesis. **Estación C:** en @prp-t1-0046, escribe el dominio de $h=f-g$, justifica por separado su continuidad y su diferenciabilidad, y localiza el uso de la linealidad. **Estación D:** identifica qué aporta conocer $f(x_0)=g(x_0)$ y por qué una igualdad de derivadas aislada no lo reemplaza.
+Trabaja con un intervalo $[a,b]$ no degenerado antes de generalizar. **Estación A:** en [Proposición 9.2](#prp-t1-0045), fija $x_0$, elige $x$ arbitrario, construye $[u,v]$ y marca el paso que utiliza cada una de las dos hipótesis analíticas. Explica por qué basta la existencia de algún $c$ sin calcularlo. **Estación B:** vuelve a demostrar la constancia desde [Proposición 9.1](#prp-t1-0044) con $m=M=0$ y comprueba que ambas rutas tienen las mismas hipótesis. **Estación C:** en [Proposición 9.3](#prp-t1-0046), escribe el dominio de $h=f-g$, justifica por separado su continuidad y su diferenciabilidad, y localiza el uso de la linealidad. **Estación D:** identifica qué aporta conocer $f(x_0)=g(x_0)$ y por qué una igualdad de derivadas aislada no lo reemplaza.
 
-**Estación E:** intenta aplicar la primera proposición a $h=f-\mathrm{id}$ construida desde @exm-t1-0104; señala la hipótesis exacta que falta y verifica que la conclusión es falsa. **Estación F:** intenta comparar $-1$ y $1$ en @exm-t1-0109 y escribe la inclusión de conjuntos que necesitarías para usar Lagrange; comprueba que esa inclusión es falsa. **Estación G:** formula con cuantificadores las dos proposiciones y señala el cambio ilícito cuando se reemplaza «para todo $t$ interior» por «existe $t$ interior». **Estación H:** reconstruye la extensión a un intervalo general y explica por qué la continuidad relativa en los extremos de cada subintervalo cerrado se conserva.
+**Estación E:** intenta aplicar la primera proposición a $h=f-\mathrm{id}$ construida desde [Ejemplo 9.13](#exm-t1-0104); señala la hipótesis exacta que falta y verifica que la conclusión es falsa. **Estación F:** intenta comparar $-1$ y $1$ en [Ejemplo 9.18](#exm-t1-0109) y escribe la inclusión de conjuntos que necesitarías para usar Lagrange; comprueba que esa inclusión es falsa. **Estación G:** formula con cuantificadores las dos proposiciones y señala el cambio ilícito cuando se reemplaza «para todo $t$ interior» por «existe $t$ interior». **Estación H:** reconstruye la extensión a un intervalo general y explica por qué la continuidad relativa en los extremos de cada subintervalo cerrado se conserva.
 
 Con esto terminan las consecuencias teóricas previstas para el capítulo: desde la existencia de valores extremos construimos Fermat, Rolle y Lagrange, controlamos sus hipótesis y dedujimos estimaciones y criterios de constancia. La sección final presentará un banco original de cuarenta ejercicios y cuarenta soluciones razonadas, organizados para obligar a verificar hipótesis, no solamente a efectuar cálculos.
 
@@ -1673,7 +1675,7 @@ La cuestión rectora de este banco no es solamente encontrar un número $c$, sin
 
 ::: {#sol-t1-0356}
 <!-- CPM-T1-SOL-0356 -->
-**Solución A1.** La identidad $(x-1)^2\ge0$ muestra que el mínimo es $0$, alcanzado únicamente en $x=1\in(0,3)$. Como $-1\le x-1\le2$, tenemos $(x-1)^2\le4$, con igualdad exclusivamente en $x=3$; el máximo es $4$ en ese borde. La derivada interior es $f'(x)=2(x-1)$, de modo que $f'(1)=0$, como exige @thm-t1-0033 en el mínimo interior. Por cocientes relativos, las derivadas de borde son $f'(0)=-2$ y $f'(3)=4$, no nulas. Fermat no se aplica en esos puntos porque ninguno pertenece al interior del dominio. Tampoco debemos suponer que el máximo de borde debe proporcionar una derivada cero.
+**Solución A1.** La identidad $(x-1)^2\ge0$ muestra que el mínimo es $0$, alcanzado únicamente en $x=1\in(0,3)$. Como $-1\le x-1\le2$, tenemos $(x-1)^2\le4$, con igualdad exclusivamente en $x=3$; el máximo es $4$ en ese borde. La derivada interior es $f'(x)=2(x-1)$, de modo que $f'(1)=0$, como exige [Teorema 9.1](#thm-t1-0033) en el mínimo interior. Por cocientes relativos, las derivadas de borde son $f'(0)=-2$ y $f'(3)=4$, no nulas. Fermat no se aplica en esos puntos porque ninguno pertenece al interior del dominio. Tampoco debemos suponer que el máximo de borde debe proporcionar una derivada cero.
 :::
 
 ::: {#sol-t1-0357}
@@ -1683,7 +1685,7 @@ La cuestión rectora de este banco no es solamente encontrar un número $c$, sin
 
 ::: {#sol-t1-0358}
 <!-- CPM-T1-SOL-0358 -->
-**Solución A3.** $p'(x)=3x^2$ en $(-1,1)$, así que $p'(0)=0$. Dado cualquier $\delta>0$, elegimos $t$ con $0<t<\min\{1,\delta\}$. Entonces $p(-t)=2-t^3<2=p(0)<2+t^3=p(t)$. Todo entorno relativo del origen contiene un valor inferior y otro superior; por @def-t1-0048, no hay extremo local en $0$. Fermat establece «extremo local interior y derivabilidad $\Rightarrow$ derivada cero». El ejemplo invalida la **recíproca** «derivada cero $\Rightarrow$ extremo local»; no invalida el teorema en su dirección demostrada.
+**Solución A3.** $p'(x)=3x^2$ en $(-1,1)$, así que $p'(0)=0$. Dado cualquier $\delta>0$, elegimos $t$ con $0<t<\min\{1,\delta\}$. Entonces $p(-t)=2-t^3<2=p(0)<2+t^3=p(t)$. Todo entorno relativo del origen contiene un valor inferior y otro superior; por [Definición 9.2](#def-t1-0048), no hay extremo local en $0$. Fermat establece «extremo local interior y derivabilidad $\Rightarrow$ derivada cero». El ejemplo invalida la **recíproca** «derivada cero $\Rightarrow$ extremo local»; no invalida el teorema en su dirección demostrada.
 :::
 
 ::: {#sol-t1-0359}
@@ -1704,14 +1706,14 @@ El primer término es no negativo, y $m\in(a,b)$, de modo que el mínimo absolut
 
 ::: {#sol-t1-0361}
 <!-- CPM-T1-SOL-0361 -->
-**Solución A6.** En $[0,2]$ se cumple $1\le3x+1\le7$, con igualdad inferior solo en $0$ y superior solo en $2$. Así, el mínimo absoluto vale $1$ y el máximo $7$, ambos en bordes. Para cualquier incremento admisible no nulo, $[s(c+h)-s(c)]/h=3$; las derivadas relativas en $0$ y $2$ son, pues, ambas $3$. La hipótesis «$c$ interior» de @thm-t1-0033 es falsa en los dos puntos extremos. Allí únicamente existen incrementos admisibles de un signo y el argumento bilateral de Fermat no obliga a obtener cero.
+**Solución A6.** En $[0,2]$ se cumple $1\le3x+1\le7$, con igualdad inferior solo en $0$ y superior solo en $2$. Así, el mínimo absoluto vale $1$ y el máximo $7$, ambos en bordes. Para cualquier incremento admisible no nulo, $[s(c+h)-s(c)]/h=3$; las derivadas relativas en $0$ y $2$ son, pues, ambas $3$. La hipótesis «$c$ interior» de [Teorema 9.1](#thm-t1-0033) es falsa en los dos puntos extremos. Allí únicamente existen incrementos admisibles de un signo y el argumento bilateral de Fermat no obliga a obtener cero.
 :::
 
 #### Soluciones del nivel B
 
 ::: {#sol-t1-0362}
 <!-- CPM-T1-SOL-0362 -->
-**Solución B1.** $f$ es polinómica, por lo que es continua en $[-2,2]$ y diferenciable en $(-2,2)$. Además, $f(-2)=0=f(2)$: están verificadas las tres hipótesis de @thm-t1-0034. La derivada es $f'(x)=2x$, cuyo único cero real es $x=0$. Como $-2<0<2$, ese es el único punto admisible. Rolle asegura al menos uno; el cálculo adicional permite demostrar aquí la unicidad, que no forma parte de su enunciado general.
+**Solución B1.** $f$ es polinómica, por lo que es continua en $[-2,2]$ y diferenciable en $(-2,2)$. Además, $f(-2)=0=f(2)$: están verificadas las tres hipótesis de [Teorema 9.2](#thm-t1-0034). La derivada es $f'(x)=2x$, cuyo único cero real es $x=0$. Como $-2<0<2$, ese es el único punto admisible. Rolle asegura al menos uno; el cálculo adicional permite demostrar aquí la unicidad, que no forma parte de su enunciado general.
 :::
 
 ::: {#sol-t1-0363}
@@ -1856,7 +1858,7 @@ Las rectas son paralelas, pero $T_1(0)=-1\ne0=\ell(0)$; no coinciden. Coincidir 
 
 ::: {#sol-t1-0381}
 <!-- CPM-T1-SOL-0381 -->
-**Solución D7.** Todo polinomio es continuo en el intervalo cerrado y diferenciable en el abierto, así que la existencia de un punto está garantizada por @thm-t1-0035, con independencia de $A$. La pendiente secante se simplifica usando $b^2-a^2=(b-a)(a+b)$:
+**Solución D7.** Todo polinomio es continuo en el intervalo cerrado y diferenciable en el abierto, así que la existencia de un punto está garantizada por [Teorema 9.3](#thm-t1-0035), con independencia de $A$. La pendiente secante se simplifica usando $b^2-a^2=(b-a)(a+b)$:
 
 $$
 m=A(a+b)+B.
@@ -1869,7 +1871,7 @@ La derivada es $P'(x)=2Ax+B$. Si $A\ne0$, $2Ac+B=m$ equivale a $c=(a+b)/2$, el �
 
 ::: {#sol-t1-0382}
 <!-- CPM-T1-SOL-0382 -->
-**Solución E1.** El intervalo tiene longitud $3-(-1)=4$. Aplicando @prp-t1-0044 a $x=-1$, $y=3$ y a las cotas dadas,
+**Solución E1.** El intervalo tiene longitud $3-(-1)=4$. Aplicando [Proposición 9.1](#prp-t1-0044) a $x=-1$, $y=3$ y a las cotas dadas,
 
 $$
 2\cdot4\le f(3)-f(-1)\le5\cdot4,
@@ -1882,7 +1884,7 @@ Ninguna de las cotas puede mejorarse para **todas** las funciones admitidas: la 
 
 ::: {#sol-t1-0383}
 <!-- CPM-T1-SOL-0383 -->
-**Solución E2.** Por la cota de derivada y @prp-t1-0044, $f$ es $3$-Lipschitz en $[-2,2]$. Comparar $x$ con el argumento conocido $0$ da, para cualquier $x$ del dominio,
+**Solución E2.** Por la cota de derivada y [Proposición 9.1](#prp-t1-0044), $f$ es $3$-Lipschitz en $[-2,2]$. Comparar $x$ con el argumento conocido $0$ da, para cualquier $x$ del dominio,
 
 $$
 |f(x)-4|=|f(x)-f(0)|\le3|x-0|=3|x|.
@@ -1893,7 +1895,7 @@ Como $|x|\le2$, se deduce $|f(x)-4|\le6$, equivalente a $-2\le f(x)\le10$ para t
 
 ::: {#sol-t1-0384}
 <!-- CPM-T1-SOL-0384 -->
-**Solución E3.** La función es polinómica, continua en $[-2,2]$ y diferenciable en $(-2,2)$. Allí $f'(x)=3x^2$, por lo que $|f'(x)|\le3\cdot4=12$; @prp-t1-0044 proporciona
+**Solución E3.** La función es polinómica, continua en $[-2,2]$ y diferenciable en $(-2,2)$. Allí $f'(x)=3x^2$, por lo que $|f'(x)|\le3\cdot4=12$; [Proposición 9.1](#prp-t1-0044) proporciona
 
 $$
 |x^3-y^3|\le12|x-y|\qquad(x,y\in[-2,2]).
@@ -1916,7 +1918,7 @@ $$
 f'(t)=-\frac1{t^2},\qquad -1\le f'(t)\le-\frac1{16}.
 $$
 
-Por @prp-t1-0044, para $1\le x<y\le4$,
+Por [Proposición 9.1](#prp-t1-0044), para $1\le x<y\le4$,
 
 $$
 -(y-x)\le f(y)-f(x)\le-\frac{y-x}{16}.
@@ -1947,7 +1949,7 @@ $$
 \qquad(1/4<x<1).
 $$
 
-Por @prp-t1-0044, $K=1$ sirve allí. Para su optimalidad, tomando $h>0$ suficientemente pequeño, racionalizamos:
+Por [Proposición 9.1](#prp-t1-0044), $K=1$ sirve allí. Para su optimalidad, tomando $h>0$ suficientemente pequeño, racionalizamos:
 
 $$
 \frac{\sqrt{1/4+h}-1/2}{h}
@@ -1971,7 +1973,7 @@ $$
 \frac{u(1+h)-u(1)}h=\frac{|h|}{h}
 $$
 
-Este cociente vale $-1$ para incrementos negativos y $1$ para incrementos positivos, por lo que no hay derivada bilateral. Lipschitz **no implica** diferenciabilidad. Por otro lado, $x\mapsto\sqrt x$ es continua en $[0,1]$, pero @exr-t1-0386 demuestra por cocientes sin cota que no es Lipschitz. La continuidad tampoco implica Lipschitz; este último sí implica continuidad, como se demostró en §9.9.
+Este cociente vale $-1$ para incrementos negativos y $1$ para incrementos positivos, por lo que no hay derivada bilateral. Lipschitz **no implica** diferenciabilidad. Por otro lado, $x\mapsto\sqrt x$ es continua en $[0,1]$, pero [Ejercicio 9.31](#exr-t1-0386) demuestra por cocientes sin cota que no es Lipschitz. La continuidad tampoco implica Lipschitz; este último sí implica continuidad, como se demostró en §9.9.
 :::
 
 #### Soluciones del nivel F
@@ -2051,9 +2053,13 @@ $$
 
 La diferenciabilidad en $t$ proporciona el límite de estos cocientes, y la continuidad del valor absoluto junto con la preservación del orden da $|f'(t)|\le K$. Por consiguiente, **toda** constante Lipschitz domina el conjunto $\{|f'(t)|:t\in(a,b)\}$.
 
-Recíprocamente, si $f'$ está acotada en $(a,b)$, el número $S=\sup_{t\in(a,b)}|f'(t)|$ es finito y no negativo (el abierto es no vacío). En todo punto interior, $|f'(t)|\le S$ por definición de supremo. Aplicando @prp-t1-0044 a cualquier par del intervalo concluimos $|f(y)-f(x)|\le S|y-x|$. Así, $S$ es una constante Lipschitz, y la primera parte demuestra que ninguna menor es admisible: **es la mínima**. Si la derivada no está acotada, la primera parte descarta toda constante Lipschitz finita.
+Recíprocamente, si $f'$ está acotada en $(a,b)$, el número $S=\sup_{t\in(a,b)}|f'(t)|$ es finito y no negativo (el abierto es no vacío). En todo punto interior, $|f'(t)|\le S$ por definición de supremo. Aplicando [Proposición 9.1](#prp-t1-0044) a cualquier par del intervalo concluimos $|f(y)-f(x)|\le S|y-x|$. Así, $S$ es una constante Lipschitz, y la primera parte demuestra que ninguna menor es admisible: **es la mínima**. Si la derivada no está acotada, la primera parte descarta toda constante Lipschitz finita.
 
 No se ha supuesto que $f'$ sea continua ni que alcance su supremo; bastan sus cotas puntuales y el teorema de Lagrange. La equivalencia requiere la **diferenciabilidad interior que figura en el enunciado**: $x\mapsto|x|$ es $1$-Lipschitz en $[-1,1]$ por desigualdad triangular, pero carece de derivada en el origen. No constituye contraejemplo a la equivalencia condicionada, sino a una generalización que suprimiera la diferenciabilidad.
 :::
 
 El banco vuelve sobre una misma disciplina de lectura: primero deben existir la función, el dominio y sus propiedades; después se aplican los teoremas con cuantificadores y bordes correctos; por último se comprueba si una conclusión de existencia puede precisarse a partir de la función particular. Los cuarenta problemas y sus cuarenta soluciones forman parte de este único manuscrito; su redacción no equivale al cierre editorial ni a la publicación, que requieren todavía auditorías independientes.
+
+---
+
+[← Capítulo 8](derivacion-de-funciones-elementales-inversas-e-implicitas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 10 →](monotonia-extremos-convexidad-y-forma-de-las-graficas.md)

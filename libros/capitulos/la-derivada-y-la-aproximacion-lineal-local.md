@@ -1,21 +1,19 @@
 ---
 title: "La derivada y la aproximación lineal local"
-description: "Capítulo 6 de Cálculo para matemáticos. Edición canónica v11."
+description: "Capítulo 6 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0064
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-areas:
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-09-19
+date-modified: 2026-09-30
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -25,12 +23,18 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [5]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # La derivada y la aproximación lineal local {#sec-t1-c07}
+
+[← Capítulo 5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 7 →](algebra-de-derivadas-y-regla-de-la-cadena.md)
+
+En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
 
 En los capítulos anteriores hemos aprendido a describir cada vez con mayor precisión el comportamiento de una función cerca de un punto. Primero construimos el lenguaje del límite; después exigimos que ese comportamiento alrededor del punto fuese compatible con el valor tomado en el centro y obtuvimos la continuidad.
 
@@ -2083,7 +2087,7 @@ No hay una derivada real finita, aunque geométricamente las secantes sugieren l
 $$
 p(x)=
 \begin{cases}
- x\sin(1/x), & x\ne0,\\
+ x\sigma(1/x), & x\ne0,\\
  0, & x=0.
 \end{cases}
 $$
@@ -2091,7 +2095,7 @@ $$
 La función es continua en $0$ porque
 
 $$
-|x\sin(1/x)|\le |x|\longrightarrow0.
+|x\sigma(1/x)|\le |x|\longrightarrow0.
 $$
 
 Sin embargo, para $h\ne0$,
@@ -2099,15 +2103,15 @@ Sin embargo, para $h\ne0$,
 $$
 \frac{p(h)-p(0)}{h}
 =
-\sin(1/h).
+\sigma(1/h).
 $$
 
 Incluso restringiéndonos a $h>0$, tomemos
 
 $$
-h_n=\frac{1}{\frac{\pi}{2}+2\pi n},
+h_n=\frac{1}{\frac{\omega}{2}+2\omega n},
 \qquad
-k_n=\frac{1}{\frac{3\pi}{2}+2\pi n}.
+k_n=\frac{1}{\frac{3\omega}{2}+2\omega n}.
 $$
 
 Entonces
@@ -2121,9 +2125,9 @@ $$
 pero
 
 $$
-\sin(1/h_n)=1,
+\sigma(1/h_n)=1,
 \qquad
-\sin(1/k_n)=-1.
+\sigma(1/k_n)=-1.
 $$
 
 Por el criterio secuencial, ni siquiera existe la derivada derecha de $p$ en $0$.
@@ -2222,7 +2226,7 @@ Eso preserva la dirección deductiva del capítulo.
 
 ### Hacia una relación estructural con la continuidad
 
-Las secciones anteriores han mostrado que una función puede ser continua y, sin embargo, fallar en ser diferenciable: $|x|$ y la función oscilatoria $x\sin(1/x)$ en $0$ son ejemplos distintos de ese fenómeno.
+Las secciones anteriores han mostrado que una función puede ser continua y, sin embargo, fallar en ser diferenciable: $|x|$ y la función oscilatoria $x\sigma(1/x)$ en $0$ son ejemplos distintos de ese fenómeno.
 
 La pregunta inversa es más profunda:
 
@@ -5001,7 +5005,7 @@ Podemos comparar varios mecanismos ya vistos:
 |---|---|---|---|
 | $x^2$ en $0$ | sí | existen y coinciden | sí |
 | $|x|$ en $0$ | sí | existen, pero difieren | no |
-| $x\sin(1/x)$ en $0$, con valor $0$ | sí | el cociente oscila | no |
+| $x\sigma(1/x)$ en $0$, con valor $0$ | sí | el cociente oscila | no |
 | pendiente que crece sin cota | puede haber continuidad | no hay límite lateral real finito | no |
 
 La tabla no sustituye las definiciones. Su función es mostrar que distintos fallos deben diagnosticarse con distintas preguntas.
@@ -8326,3 +8330,7 @@ Todos los ejercicios son `ORIGINAL`. La frontera demostrativa permanece dentro d
 Las pruebas de estrés del capítulo quedan cubiertas explícitamente: continuidad sin diferenciabilidad; tangentes que cruzan o vuelven a intersectar la gráfica; cociente simétrico insuficiente; pendiente no acotada sin derivada real finita; dependencia respecto del dominio; irregularidad racional/irracional; y distinción entre información puntual de $f'(a)>0$ y monotonía en un entorno.
 
 Con este banco queda materialmente completa la redacción de §§6.1–6.11 en la numeración visible proyectada. La auditoría histórica del manuscrito original consta en `00 - Administración/T1_C07_FINAL_AUDIT_v01.md`: **PASS / COMPLETE**; la numeración de esta maqueta aún requiere validación editorial y de Quarto. Se precisó el dominio común en la comparación de primer orden y el desafío G2 (`0274`), sin alterar resultados, IDs ni secuencia de ejercicios.
+
+---
+
+[← Capítulo 5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 7 →](algebra-de-derivadas-y-regla-de-la-cadena.md)

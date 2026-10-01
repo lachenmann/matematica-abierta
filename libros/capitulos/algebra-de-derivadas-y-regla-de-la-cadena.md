@@ -1,21 +1,19 @@
 ---
 title: "Álgebra de derivadas y regla de la cadena"
-description: "Capítulo 7 de Cálculo para matemáticos: linealidad, producto, cociente, potencias y regla de la cadena; 40 ejercicios resueltos."
+description: "Capítulo 7 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0065
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-areas:
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-20
-date-modified: 2026-09-20
+date-modified: 2026-09-30
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -26,12 +24,16 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [6]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Álgebra de derivadas y regla de la cadena {#sec-t1-c08}
+
+[← Capítulo 6](la-derivada-y-la-aproximacion-lineal-local.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 8 →](derivacion-de-funciones-elementales-inversas-e-implicitas.md)
 
 En el capítulo anterior aprendimos a determinar la derivada de una función *en un punto*. Si $a$ pertenece al dominio $A$ de $f$ y es punto de acumulación de $A$, la existencia de $f'_A(a)$ significa que el cociente de incrementos tiene un límite real finito. Aprendimos también a interpretar ese número como el coeficiente de una aproximación afín cuyo error es despreciable frente al incremento.
 
@@ -308,7 +310,7 @@ $$
 u'(a)=3f'(a)-2g'(a)=3(2a)-2(1)=6a-2.
 $$
 
-Las dos rutas coinciden. La primera verifica el cálculo directamente; la segunda ilustra cómo un teorema demostrado ahorra rehacer expansiones y límites cada vez. La segunda ruta **no** sustituye la prueba general: solo es legítima porque @thm-t1-0027 ya ha sido establecido.
+Las dos rutas coinciden. La primera verifica el cálculo directamente; la segunda ilustra cómo un teorema demostrado ahorra rehacer expansiones y límites cada vez. La segunda ruta **no** sustituye la prueba general: solo es legítima porque [Teorema 7.1](#thm-t1-0027) ya ha sido establecido.
 :::
 
 ### ¿Por qué también funcionan las combinaciones finitas?
@@ -320,7 +322,7 @@ $$
 =\sum_{k=1}^n c_k f'_{k,A}(a).
 $$
 
-**Demostración por inducción sobre $n$.** Para $n=1$, es el caso de multiplicación escalar del teorema. Supongamos demostrada la afirmación para $n$ funciones. La suma parcial $s_n=\sum_{k=1}^n c_k f_k$ es entonces diferenciable en $a$ y tiene derivada $\sum_{k=1}^n c_k f'_{k,A}(a)$. Aplicando @thm-t1-0027 a $s_n$ y $f_{n+1}$ con coeficientes $1$ y $c_{n+1}$, concluimos que $s_n+c_{n+1}f_{n+1}$ es diferenciable y que
+**Demostración por inducción sobre $n$.** Para $n=1$, es el caso de multiplicación escalar del teorema. Supongamos demostrada la afirmación para $n$ funciones. La suma parcial $s_n=\sum_{k=1}^n c_k f_k$ es entonces diferenciable en $a$ y tiene derivada $\sum_{k=1}^n c_k f'_{k,A}(a)$. Aplicando [Teorema 7.1](#thm-t1-0027) a $s_n$ y $f_{n+1}$ con coeficientes $1$ y $c_{n+1}$, concluimos que $s_n+c_{n+1}f_{n+1}$ es diferenciable y que
 
 $$
 \begin{aligned}
@@ -425,7 +427,7 @@ $$
 \frac{g(a+h)-g(a)}h\longrightarrow g'_A(a)
 $$
 
-cuando $h\to0$ a través de $H_a\setminus\{0\}$. Además, la diferenciabilidad de $f$ implica su continuidad relativa en $a$, por @thm-t1-0024; por tanto,
+cuando $h\to0$ a través de $H_a\setminus\{0\}$. Además, la diferenciabilidad de $f$ implica su continuidad relativa en $a$, por [Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024); por tanto,
 
 $$
 f(a+h)\longrightarrow f(a).
@@ -565,7 +567,7 @@ Aunque $g(a)\ne0$ garantiza que $a\in A_g$, todavía debemos justificar que hay 
 
 ### La no anulación local no es una suposición adicional
 
-Supongamos que $g$ es diferenciable relativamente a $A$ en $a$ y que $g(a)\ne0$. Por el teorema «diferenciabilidad implica continuidad» (@thm-t1-0024), $g$ es continua relativamente a $A$ en $a$. Apliquemos la definición de continuidad con la tolerancia positiva $\varepsilon=|g(a)|/2$. Existe $\delta>0$ tal que, para todo $x\in A$ con $|x-a|<\delta$,
+Supongamos que $g$ es diferenciable relativamente a $A$ en $a$ y que $g(a)\ne0$. Por el teorema «diferenciabilidad implica continuidad» ([Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024)), $g$ es continua relativamente a $A$ en $a$. Apliquemos la definición de continuidad con la tolerancia positiva $\varepsilon=|g(a)|/2$. Existe $\delta>0$ tal que, para todo $x\in A$ con $|x-a|<\delta$,
 
 $$
 |g(x)-g(a)|<\frac{|g(a)|}{2}.
@@ -665,13 +667,13 @@ $$
 \frac{f'_A(a)g(a)-f(a)g'_A(a)}{g(a)^2}.}
 $$
 
-**Demostración.** La no anulación local prueba que $a$ es punto de acumulación de $A_g$ y que las restricciones de $f$ y $g$ conservan sus derivadas en $a$. Por @prp-t1-0039, $r=1/g$ es diferenciable en $a$ sobre $A_g$ y
+**Demostración.** La no anulación local prueba que $a$ es punto de acumulación de $A_g$ y que las restricciones de $f$ y $g$ conservan sus derivadas en $a$. Por [Proposición 7.1](#prp-t1-0039), $r=1/g$ es diferenciable en $a$ sobre $A_g$ y
 
 $$
 r'_{A_g}(a)=-\frac{g'_A(a)}{g(a)^2}.
 $$
 
-Como $q=(f|_{A_g})r$, el teorema del producto (@thm-t1-0028) proporciona tanto la existencia de $q'_{A_g}(a)$ como la igualdad
+Como $q=(f|_{A_g})r$, el teorema del producto ([Teorema 7.2](#thm-t1-0028)) proporciona tanto la existencia de $q'_{A_g}(a)$ como la igualdad
 
 $$
 \begin{aligned}
@@ -770,7 +772,7 @@ $$
 p_{n+1}(x)=p_n(x)\,p_1(x)=x^n x.
 $$
 
-Ambos factores son diferenciables en cualquier $a$: el primero por hipótesis inductiva y el segundo por el caso inicial. La regla del producto, demostrada en @thm-t1-0028, prueba **también la existencia** de la derivada de $p_{n+1}$ y proporciona
+Ambos factores son diferenciables en cualquier $a$: el primero por hipótesis inductiva y el segundo por el caso inicial. La regla del producto, demostrada en [Teorema 7.2](#thm-t1-0028), prueba **también la existencia** de la derivada de $p_{n+1}$ y proporciona
 
 $$
 \begin{aligned}
@@ -784,7 +786,7 @@ $$
 La igualdad algebraica $a^{n-1}a=a^n$ vale igualmente para $a=0$ con $n\ge1$ y $a^0$ interpretado como la función constante $1$. Queda probada $P(n+1)$. El principio de inducción concluye la afirmación para todos los enteros $n\ge1$. $\square$
 :::
 
-**Lectura de la prueba.** El paso inductivo no deriva una potencia mediante una regla que aún desconocemos: deriva un **producto** utilizando @thm-t1-0028. De ese teorema obtenemos simultáneamente la existencia de la derivada y su valor. La inducción construye una familia de resultados, uno para cada exponente natural positivo; no es una autorización para sustituir $n$ por un exponente real cualquiera.
+**Lectura de la prueba.** El paso inductivo no deriva una potencia mediante una regla que aún desconocemos: deriva un **producto** utilizando [Teorema 7.2](#thm-t1-0028). De ese teorema obtenemos simultáneamente la existencia de la derivada y su valor. La inducción construye una familia de resultados, uno para cada exponente natural positivo; no es una autorización para sustituir $n$ por un exponente real cualquiera.
 
 Podemos comprobar el primer paso sin acudir a la fórmula general: $D(x^2)=D(x\cdot x)=1\cdot x+x\cdot1=2x$. A continuación, $D(x^3)=D(x^2\cdot x)=2x\cdot x+x^2\cdot1=3x^2$. Son aplicaciones particulares de una demostración que ya cubre **todos** los enteros positivos, no evidencias aisladas que debamos extrapolar.
 
@@ -819,7 +821,7 @@ $$
 
 Cuando $m=0$, la suma del miembro derecho es vacía y su valor es $0$.
 
-**Demostración.** El término $c_0p_0$ es constante y tiene derivada nula. Para cada $1\le k\le m$, la proposición @prp-t1-0040 demuestra que $p_k(x)=x^k$ es diferenciable en todo punto y que $p_k'(a)=ka^{k-1}$. La regla de las combinaciones lineales finitas, establecida en §7.2 a partir de @thm-t1-0027, asegura que la suma $p=\sum_{k=0}^m c_kp_k$ es diferenciable y que su derivada es la suma de las derivadas:
+**Demostración.** El término $c_0p_0$ es constante y tiene derivada nula. Para cada $1\le k\le m$, la proposición [Proposición 7.2](#prp-t1-0040) demuestra que $p_k(x)=x^k$ es diferenciable en todo punto y que $p_k'(a)=ka^{k-1}$. La regla de las combinaciones lineales finitas, establecida en §7.2 a partir de [Teorema 7.1](#thm-t1-0027), asegura que la suma $p=\sum_{k=0}^m c_kp_k$ es diferenciable y que su derivada es la suma de las derivadas:
 
 $$
 \begin{aligned}
@@ -906,7 +908,7 @@ La semejanza entre exponentes positivos y negativos debe, por tanto, construirse
 
 ### Del recíproco a las potencias negativas
 
-El resultado de §7.4 ya contiene la herramienta necesaria. Si tomamos $g(x)=x^n$, sabemos por @prp-t1-0040 que $g$ es diferenciable en todo punto real y que $g'(a)=na^{n-1}$. Para $a\ne0$ también sabemos que $g(a)=a^n\ne0$. En consecuencia, la proposición del recíproco (@prp-t1-0039) es aplicable **en ese punto**.
+El resultado de §7.4 ya contiene la herramienta necesaria. Si tomamos $g(x)=x^n$, sabemos por [Proposición 7.2](#prp-t1-0040) que $g$ es diferenciable en todo punto real y que $g'(a)=na^{n-1}$. Para $a\ne0$ también sabemos que $g(a)=a^n\ne0$. En consecuencia, la proposición del recíproco ([Proposición 7.1](#prp-t1-0039)) es aplicable **en ese punto**.
 
 No necesitamos inventar una nueva regla ni recurrir a la regla de la cadena, que todavía no hemos probado. La derivada se obtiene como
 
@@ -931,7 +933,7 @@ $$
  \qquad r(x)=\frac{p(x)}{q(x)}.
 $$
 
-El conjunto $D_{p,q}$ se determina con el **denominador de la expresión que define la función**; una factorización posterior puede facilitar los cálculos, pero no modifica por sí sola ese dominio. Ambos polinomios son diferenciables en toda la recta, por @cor-t1-0014, y por tanto son continuos. Si $a\in D_{p,q}$, la continuidad de $q$ y $q(a)\ne0$ proporcionan un entorno de $a$ donde $q$ no se anula. Ese entorno está contenido en $D_{p,q}$: en particular, $a$ es punto de acumulación de su dominio natural.
+El conjunto $D_{p,q}$ se determina con el **denominador de la expresión que define la función**; una factorización posterior puede facilitar los cálculos, pero no modifica por sí sola ese dominio. Ambos polinomios son diferenciables en toda la recta, por [Corolario 7.1](#cor-t1-0014), y por tanto son continuos. Si $a\in D_{p,q}$, la continuidad de $q$ y $q(a)\ne0$ proporcionan un entorno de $a$ donde $q$ no se anula. Ese entorno está contenido en $D_{p,q}$: en particular, $a$ es punto de acumulación de su dominio natural.
 
 Estamos exactamente en las hipótesis de la regla del cociente de §7.4. Podemos reunir las dos consecuencias en un enunciado que mantiene visibles sus dominios.
 
@@ -950,15 +952,15 @@ Estamos exactamente en las hipótesis de la regla del cociente de §7.4. Podemos
    \boxed{r'(a)=\frac{p'(a)q(a)-p(a)q'(a)}{q(a)^2}.}
    $$
 
-En la segunda fórmula, $p'$ y $q'$ son los polinomios derivados obtenidos por @cor-t1-0014.
+En la segunda fórmula, $p'$ y $q'$ son los polinomios derivados obtenidos por [Corolario 7.1](#cor-t1-0014).
 
-**Demostración.** Para la primera afirmación, sea $n\ge1$ y sea $a\ne0$. La proposición @prp-t1-0040 da la derivabilidad de $g(x)=x^n$ y $g'(a)=na^{n-1}$. Como $g(a)=a^n\ne0$, @prp-t1-0039 demuestra la existencia de la derivada de $1/g$ en $a$ sobre su dominio natural y proporciona
+**Demostración.** Para la primera afirmación, sea $n\ge1$ y sea $a\ne0$. La proposición [Proposición 7.2](#prp-t1-0040) da la derivabilidad de $g(x)=x^n$ y $g'(a)=na^{n-1}$. Como $g(a)=a^n\ne0$, [Proposición 7.1](#prp-t1-0039) demuestra la existencia de la derivada de $1/g$ en $a$ sobre su dominio natural y proporciona
 
 $$
  u_{-n}'(a)=-\frac{na^{n-1}}{a^{2n}}=-na^{-n-1}.
 $$
 
-Para la segunda, fijemos $a\in D_{p,q}$. Ambos polinomios son diferenciables en $a$ por @cor-t1-0014 y $q(a)\ne0$ por la definición del dominio. La no anulación local establecida en §7.4 asegura que $a$ es de acumulación de $D_{p,q}$. Aplicar @thm-t1-0029 a $p$ y $q$ demuestra simultáneamente la diferenciabilidad de $r$ sobre ese dominio y la fórmula indicada. Como $a$ era arbitrario, la conclusión vale en cada punto de $D_{p,q}$. $\square$
+Para la segunda, fijemos $a\in D_{p,q}$. Ambos polinomios son diferenciables en $a$ por [Corolario 7.1](#cor-t1-0014) y $q(a)\ne0$ por la definición del dominio. La no anulación local establecida en §7.4 asegura que $a$ es de acumulación de $D_{p,q}$. Aplicar [Teorema 7.3](#thm-t1-0029) a $p$ y $q$ demuestra simultáneamente la diferenciabilidad de $r$ sobre ese dominio y la fórmula indicada. Como $a$ era arbitrario, la conclusión vale en cada punto de $D_{p,q}$. $\square$
 :::
 
 **Auditoría de dependencias.** La primera parte se apoya en potencias naturales y recíproco; la segunda, en polinomios y cociente. La regla de la cadena no aparece en ninguna prueba. La hipótesis $q\not\equiv0$ permite hablar de un cociente racional no vacío en el sentido habitual; la derivada solo se afirma en puntos donde $q(a)\ne0$. No se requiere que $q'(a)$ sea no nulo.
@@ -1125,7 +1127,7 @@ $$
 \boxed{(g\circ f)'_A(a)=g'_B(f(a))\,f'_A(a).}
 $$
 
-**Demostración.** Sea $K:B\to\mathbb R$ la función construida en @lem-t1-0002 para $g$ y $b=f(a)$. Su identidad fundamental, aplicada al valor $t=f(a+h)\in B$, da
+**Demostración.** Sea $K:B\to\mathbb R$ la función construida en [Lema 7.1](#lem-t1-0002) para $g$ y $b=f(a)$. Su identidad fundamental, aplicada al valor $t=f(a+h)\in B$, da
 
 $$
 g(f(a+h))-g(f(a))
@@ -1146,7 +1148,7 @@ $$
 \frac{f(a+h)-f(a)}h\longrightarrow f'_A(a).
 $$
 
-Además, diferenciabilidad implica continuidad (@thm-t1-0024), de modo que $f(a+h)\to f(a)=b$ a través de $A$. El lema establece que $K$ es continua en $b$ **incluido su valor central**. La composición de funciones continuas, ya demostrada en el capítulo 5, permite concluir que
+Además, diferenciabilidad implica continuidad ([Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024)), de modo que $f(a+h)\to f(a)=b$ a través de $A$. El lema establece que $K$ es continua en $b$ **incluido su valor central**. La composición de funciones continuas, ya demostrada en el capítulo 5, permite concluir que
 
 $$
 K(f(a+h))\longrightarrow K(b)=g'_B(b).
@@ -1188,7 +1190,7 @@ $$
 u(x)=81x^8-108x^6+54x^4-12x^2+1.
 $$
 
-El corolario polinómico @cor-t1-0014, demostrado antes de la regla de la cadena, produce
+El corolario polinómico [Corolario 7.1](#cor-t1-0014), demostrado antes de la regla de la cadena, produce
 
 $$
 u'(x)=648x^7-648x^5+216x^3-24x.
@@ -1325,7 +1327,7 @@ $$
 F_m(a)=f_m(\cdots f_1(a)\cdots)=x_m.
 $$
 
-La hipótesis inductiva garantiza que $F_m:A_0\to A_m$ es diferenciable en $a$. La hipótesis correspondiente a $k=m+1$ garantiza que $x_m$ es punto de acumulación de $A_m$ y que $f_{m+1}:A_m\to A_{m+1}$ es diferenciable allí. Por tanto, **se cumplen las dos hipótesis de diferenciabilidad y las dos de acumulación** del teorema de la cadena @thm-t1-0030. Aplicándolo a $F_{m+1}=f_{m+1}\circ F_m$, obtenemos la existencia de $F'_{m+1,A_0}(a)$ y
+La hipótesis inductiva garantiza que $F_m:A_0\to A_m$ es diferenciable en $a$. La hipótesis correspondiente a $k=m+1$ garantiza que $x_m$ es punto de acumulación de $A_m$ y que $f_{m+1}:A_m\to A_{m+1}$ es diferenciable allí. Por tanto, **se cumplen las dos hipótesis de diferenciabilidad y las dos de acumulación** del teorema de la cadena [Teorema 7.4](#thm-t1-0030). Aplicándolo a $F_{m+1}=f_{m+1}\circ F_m$, obtenemos la existencia de $F'_{m+1,A_0}(a)$ y
 
 $$
 \begin{aligned}
@@ -1364,7 +1366,7 @@ f_4(t)&=t^3.
 \end{aligned}
 $$
 
-Todas son polinómicas y, por @cor-t1-0014, diferenciables en toda la recta. La composición tipada es
+Todas son polinómicas y, por [Corolario 7.1](#cor-t1-0014), diferenciables en toda la recta. La composición tipada es
 
 $$
 H=f_4\circ f_3\circ f_2\circ f_1.
@@ -1391,7 +1393,7 @@ La tabla de evaluación de las derivadas se reconstruye sin adivinar:
 | $f_3$ | $f'_3(t)=2$ | $f'_3(x_2)=2$ |
 | $f_4$ | $f'_4(t)=3t^2$ | $f'_4(x_3)=3\bigl(2(3a-2)^2+1\bigr)^2$ |
 
-Como se satisfacen todas las hipótesis de @prp-t1-0041, podemos multiplicar los cuatro valores. El resultado es
+Como se satisfacen todas las hipótesis de [Proposición 7.3](#prp-t1-0041), podemos multiplicar los cuatro valores. El resultado es
 
 $$
 \begin{aligned}
@@ -1434,7 +1436,7 @@ La regla de la cadena finita ya está demostrada. En §7.9 examinaremos el alcan
 
 ### Un teorema condicional no es una equivalencia
 
-Hemos demostrado reglas que permiten construir derivadas a partir de otras derivadas previamente conocidas. Su forma lógica es siempre condicional. Por ejemplo, la regla de la cadena afirma que, bajo las hipótesis de dominio, acumulación y diferenciabilidad de @thm-t1-0030, **la composición es diferenciable** y su derivada tiene una expresión determinada. No afirma que esas hipótesis sean necesarias para que *alguna* composición resulte diferenciable.
+Hemos demostrado reglas que permiten construir derivadas a partir de otras derivadas previamente conocidas. Su forma lógica es siempre condicional. Por ejemplo, la regla de la cadena afirma que, bajo las hipótesis de dominio, acumulación y diferenciabilidad de [Teorema 7.4](#thm-t1-0030), **la composición es diferenciable** y su derivada tiene una expresión determinada. No afirma que esas hipótesis sean necesarias para que *alguna* composición resulte diferenciable.
 
 Conviene separar tres preguntas: ¿la función está definida en el punto?, ¿se han verificado las hipótesis de una regla que garantiza su diferenciabilidad?, ¿podría demostrarse su diferenciabilidad por otra vía aunque esas hipótesis fallen? Una respuesta negativa a la segunda no decide la tercera. Una respuesta negativa a la primera, en cambio, impide atribuir una derivada a la función original en ese punto.
 
@@ -1478,7 +1480,7 @@ $$
 \qquad g'_{\mathbb R}(f(0))\ \text{no existe}.}
 $$
 
-La conclusión «la composición es diferenciable» es verdadera, pero **no podemos justificarla aplicando @thm-t1-0030 a estas dos funciones completas**, pues falta una de sus hipótesis. Escribir $g'_{\mathbb R}(0)f'_{\mathbb R}(0)=0$ sería ilegítimo: un factor indefinido no adquiere valor por multiplicarlo formalmente por cero.
+La conclusión «la composición es diferenciable» es verdadera, pero **no podemos justificarla aplicando [Teorema 7.4](#thm-t1-0030) a estas dos funciones completas**, pues falta una de sus hipótesis. Escribir $g'_{\mathbb R}(0)f'_{\mathbb R}(0)=0$ sería ilegítimo: un factor indefinido no adquiere valor por multiplicarlo formalmente por cero.
 :::
 
 **Un matiz importante sobre los dominios.** En este ejemplo, la imagen de $f$ está contenida en $B=[0,\infty)$. Si declaramos explícitamente una función exterior distinta, a saber, la restricción $\widetilde g=g|_B:B\to\mathbb R$, entonces $\widetilde g(t)=t$ para $t\ge0$. Su derivada **relativa a $B$** existe en $0$ y vale $1$, porque los incrementos admisibles allí son positivos. La regla de la cadena sí puede aplicarse a la composición tipada $\widetilde g\circ f$ y da
@@ -1494,7 +1496,7 @@ La diferenciabilidad de la composición tampoco obliga a que la **función inter
 
 ### Las operaciones algebraicas también pueden ocultar dificultades
 
-La regla del producto @thm-t1-0028 garantiza la diferenciabilidad de $fg$ cuando ambos factores son diferenciables en el punto pertinente. Su conversa falla incluso si **ninguno** de los dos factores es diferenciable. Sean $f(x)=g(x)=|x|$ en $\mathbb R$. Sus cocientes incrementales en $0$ son $|h|/h$, con límites laterales distintos. Sin embargo,
+La regla del producto [Teorema 7.2](#thm-t1-0028) garantiza la diferenciabilidad de $fg$ cuando ambos factores son diferenciables en el punto pertinente. Su conversa falla incluso si **ninguno** de los dos factores es diferenciable. Sean $f(x)=g(x)=|x|$ en $\mathbb R$. Sus cocientes incrementales en $0$ son $|h|/h$, con límites laterales distintos. Sin embargo,
 
 $$
 (fg)(x)=|x|^2=x^2,
@@ -1503,7 +1505,7 @@ $$
 
 La regla del producto no era aplicable en $0$, aunque el producto resultante tenga derivada. Esta constatación complementa el ejemplo de §7.3, donde bastaba que uno de los factores fuese la función nula.
 
-Tampoco podemos invertir la regla del cociente @thm-t1-0029. Definamos $f(x)=g(x)=1+|x|$ para todo $x\in\mathbb R$. Ninguno de los dos factores es diferenciable en $0$: para $h\ne0$ su cociente incremental vale $|h|/h$. No obstante, $g(x)\ge1$, de manera que el cociente está definido **en toda la recta**, incluida la entrada central, y satisface
+Tampoco podemos invertir la regla del cociente [Teorema 7.3](#thm-t1-0029). Definamos $f(x)=g(x)=1+|x|$ para todo $x\in\mathbb R$. Ninguno de los dos factores es diferenciable en $0$: para $h\ne0$ su cociente incremental vale $|h|/h$. No obstante, $g(x)\ge1$, de manera que el cociente está definido **en toda la recta**, incluida la entrada central, y satisface
 
 $$
 q(x)=\frac{1+|x|}{1+|x|}=1,
@@ -1632,7 +1634,7 @@ f(a+h)\frac{g(a+h)-g(a)}h
 \longrightarrow f(a)g'_A(a)
 $$
 
-necesitamos **dos** límites. El del cociente procede de la diferenciabilidad de $g$; el del factor $f(a+h)$ procede de la diferenciabilidad de $f$ mediante «derivabilidad implica continuidad» (@thm-t1-0024). El otro sumando tiende a $g(a)f'_A(a)$ porque $g(a)$ es constante respecto de $h$. Esta identificación muestra que la continuidad no es una hipótesis suplementaria oculta: ya está garantizada por las hipótesis de la regla.
+necesitamos **dos** límites. El del cociente procede de la diferenciabilidad de $g$; el del factor $f(a+h)$ procede de la diferenciabilidad de $f$ mediante «derivabilidad implica continuidad» ([Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024)). El otro sumando tiende a $g(a)f'_A(a)$ porque $g(a)$ es constante respecto de $h$. Esta identificación muestra que la continuidad no es una hipótesis suplementaria oculta: ya está garantizada por las hipótesis de la regla.
 
 Podemos reconstruir la misma identidad usando otro término intermedio, ahora $f(a)g(a+h)$:
 
@@ -1652,7 +1654,7 @@ Aquí el factor cuyo límite requiere continuidad es $g(a+h)$, y la conclusión 
 
 **Consigna.** Sean $g:A\to\mathbb R$, $a\in A$ punto de acumulación, $g'_A(a)$ existente y $g(a)\ne0$. Demuestra que el cociente $f/g$ estará definido en todos los puntos de $A$ suficientemente cercanos a $a$, siempre que $f:A\to\mathbb R$ esté definida. No sustituyas esta prueba por «el denominador parece no anularse».
 
-**Reconstrucción.** Por @thm-t1-0024, $g$ es continua en $a$ relativamente a $A$. Elegimos la tolerancia positiva $\varepsilon=|g(a)|/2$. Existe $\delta>0$ tal que, para $x\in A$ con $|x-a|<\delta$,
+**Reconstrucción.** Por [Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024), $g$ es continua en $a$ relativamente a $A$. Elegimos la tolerancia positiva $\varepsilon=|g(a)|/2$. Existe $\delta>0$ tal que, para $x\in A$ con $|x-a|<\delta$,
 
 $$
 |g(x)-g(a)|<\frac{|g(a)|}{2}.
@@ -1730,7 +1732,7 @@ $$
 =K(f(a+h))\frac{f(a+h)-f(a)}h.
 $$
 
-No aparece ningún incremento interior en un denominador. La continuidad de $f$ en $a$ y la de $K$ en $b$ dan el límite del primer factor; la diferenciabilidad de $f$ da el del segundo. Recuperamos @thm-t1-0030 sin excepción para los incrementos interiores nulos.
+No aparece ningún incremento interior en un denominador. La continuidad de $f$ en $a$ y la de $K$ en $b$ dan el límite del primer factor; la diferenciabilidad de $f$ da el del segundo. Recuperamos [Teorema 7.4](#thm-t1-0030) sin excepción para los incrementos interiores nulos.
 
 **Prueba de estrés.** Definamos $f:\mathbb R\to[0,\infty)$ por $f(x)=0$ si $x\le0$ y $f(x)=x^2$ si $x>0$; definamos $g:[0,\infty)\to\mathbb R$ por $g(t)=t^2+1$. En $a=0$, $f'_{\mathbb R}(0)=0$ porque su cociente es $0$ para $h<0$ y $h$ para $h>0$; $g'_{[0,\infty)}(0)=0$ porque su cociente exterior es $t$ para $t>0$. Aquí $K(t)=t$ para $t\ge0$. Para todo $h<0$ se cumple $f(h)-f(0)=0$, pero la identidad corregida sigue definida. Directamente, el cociente de la composición es $0$ para $h<0$ y $h^3$ para $h>0$: converge a $0$, como exige la regla.
 
@@ -1756,7 +1758,7 @@ g'_{[1,\infty)}(1)=0,\qquad
 k'_{[0,\infty)}(0)=-1.
 $$
 
-La regla finita @prp-t1-0041 entrega
+La regla finita [Proposición 7.3](#prp-t1-0041) entrega
 
 $$
 H'_{[0,\infty)}(0)=k'(x_2)g'(x_1)f'(x_0)
@@ -1825,70 +1827,86 @@ Los cuarenta ejercicios están distribuidos en siete niveles, $7A+7B+7C+6D+5E+5F
 ### Nivel A — Reconocimiento y comprensión
 
 ::: {#exr-t1-0276}
+<!-- CPM-T1-EXR-0276 | A | CONCEPTUAL | ORIGINAL -->
 **Ejercicio A1. Linealidad no significa multiplicatividad.** Enuncia la regla para $D(\alpha f+\beta g)$ y explica por qué no permite concluir que $D(fg)=(Df)(Dg)$. Refuta esta última fórmula con $f(x)=g(x)=x$ en $a=1$, calculando ambos miembros.
 :::
 
 ::: {#exr-t1-0277}
+<!-- CPM-T1-EXR-0277 | A | COMPUTATION | ORIGINAL -->
 **Ejercicio A2. Datos puntuales y combinación lineal.** Sean $f,g:A\to\mathbb R$ diferenciables en un punto de acumulación $a\in A$, y supón que $f(a)=2$, $g(a)=-1$, $f'_A(a)=3$ y $g'_A(a)=4$. Calcula $(2f-3g)'_A(a)$ y explica qué datos se utilizan.
 :::
 
 ::: {#exr-t1-0278}
+<!-- CPM-T1-EXR-0278 | A | COMPUTATION | ORIGINAL -->
 **Ejercicio A3. Los valores centrales también intervienen.** Con las funciones y los cuatro datos del ejercicio A2, calcula $(fg)'_A(a)$. Identifica los sumandos procedentes de la variación de cada factor.
 :::
 
 ::: {#exr-t1-0279}
+<!-- CPM-T1-EXR-0279 | A | CONCEPTUAL | DOMAIN | ORIGINAL -->
 **Ejercicio A4. La condición del cociente.** Sean $f,g:A\to\mathbb R$ diferenciables en $a$, punto de acumulación de $A$. ¿Qué hipótesis adicional garantiza que $f/g$ esté definido en un entorno relativo de $a$ y sea diferenciable **en $a$**? Explica por qué la condición pertinente no es $g'_A(a)\ne0$.
 :::
 
 ::: {#exr-t1-0280}
+<!-- CPM-T1-EXR-0280 | A | COMPUTATION | DOMAIN | ORIGINAL -->
 **Ejercicio A5. Primero el dominio.** Determina el dominio natural de $r(x)=(x^2+1)/(x^2-4)$ y calcula $r'(x)$ en ese dominio. ¿Tiene sentido pedir la derivada de *esa función* en $2$?
 :::
 
 ::: {#exr-t1-0281}
+<!-- CPM-T1-EXR-0281 | A | PROOF | ORIGINAL -->
 **Ejercicio A6. Reconstruir la derivada cúbica.** Demuestra que $D(x^3)=3x^2$ utilizando solamente $D(x)=1$ y la regla del producto; no cites como premisa la regla general para potencias.
 :::
 
 ::: {#exr-t1-0282}
+<!-- CPM-T1-EXR-0282 | A | CONCEPTUAL | COMPOSITION | ORIGINAL -->
 **Ejercicio A7. ¿Dónde se evalúa la derivada exterior?** Escribe $(3x+1)^4$ como $g\circ f$, indica los dominios y calcula la derivada en un punto arbitrario $a$. Explica por qué el argumento de $g'$ es $3a+1$ y no necesariamente $a$.
 :::
 
 ### Nivel B — Aplicación directa
 
 ::: {#exr-t1-0283}
+<!-- CPM-T1-EXR-0283 | B | COMPUTATION | ORIGINAL -->
 **Ejercicio B1. Un polinomio.** Deriva $p(x)=3x^5-2x^3+7x-4$ para todo $x\in\mathbb R$. Indica qué resultados justifican la derivación término a término.
 :::
 
 ::: {#exr-t1-0284}
+<!-- CPM-T1-EXR-0284 | B | COMPUTATION | ORIGINAL -->
 **Ejercicio B2. Un producto comprobado de dos modos.** Calcula la derivada de $p(x)=(x^2+1)(x^3-2x)$ aplicando la regla del producto; expande después $p$ y verifica independientemente la respuesta.
 :::
 
 ::: {#exr-t1-0285}
+<!-- CPM-T1-EXR-0285 | B | COMPUTATION | DOMAIN | ORIGINAL -->
 **Ejercicio B3. Un cociente racional.** Declara el dominio natural de $r(x)=(x^2+1)/(x-2)$, deriva y simplifica el numerador resultante. ¿Es legítimo evaluar $r'(2)$?
 :::
 
 ::: {#exr-t1-0286}
+<!-- CPM-T1-EXR-0286 | B | COMPUTATION | DOMAIN | ORIGINAL -->
 **Ejercicio B4. Una potencia negativa.** Deduce la derivada de $r(x)=x^{-4}$ utilizando el recíproco de $x^4$, con indicación del dominio. No supongas de antemano la fórmula para exponentes negativos.
 :::
 
 ::: {#exr-t1-0287}
+<!-- CPM-T1-EXR-0287 | B | COMPUTATION | COMPOSITION | ORIGINAL -->
 **Ejercicio B5. Una potencia compuesta.** Calcula $D((2x^2-1)^5)$ identificando función interior, exterior y puntos de evaluación de sus derivadas.
 :::
 
 ::: {#exr-t1-0288}
+<!-- CPM-T1-EXR-0288 | B | COMPUTATION | SYNTHESIS | ORIGINAL -->
 **Ejercicio B6. Dos capas de composición.** Deriva $H(x)=((x^2+1)^3-2)^4$. Define los valores intermedios y muestra cómo se obtiene cada factor de la derivada.
 :::
 
 ::: {#exr-t1-0289}
+<!-- CPM-T1-EXR-0289 | B | PROOF | DOMAIN | ORIGINAL -->
 **Ejercicio B7. Derivar en un extremo.** Sea $A=[0,\infty)$ y sea $p:A\to\mathbb R$ dada por $p(x)=x^2(x+1)$. Calcula $p'_A(0)$ mediante la regla del producto relativa a $A$ y verifica el valor directamente con el cociente incremental derecho.
 :::
 
 ### Nivel C — Combinación estructural
 
 ::: {#exr-t1-0290}
+<!-- CPM-T1-EXR-0290 | C | PROOF | ORIGINAL -->
 **Ejercicio C1. Linealidad finita.** Para $n\ge1$, supón que $f_1,\ldots,f_n:A\to\mathbb R$ son diferenciables en el mismo punto de acumulación $a\in A$ y $c_1,\ldots,c_n\in\mathbb R$. Demuestra por inducción que $\sum_{k=1}^n c_kf_k$ es diferenciable en $a$ y que su derivada es $\sum_{k=1}^n c_kf'_{k,A}(a)$.
 :::
 
 ::: {#exr-t1-0291}
+<!-- CPM-T1-EXR-0291 | C | PROOF | ORIGINAL -->
 **Ejercicio C2. Producto de un número finito de factores.** Para $n\ge1$, demuestra por inducción que, si $f_1,\ldots,f_n:A\to\mathbb R$ son diferenciables en un punto de acumulación $a\in A$, entonces
 
 $$
@@ -1900,10 +1918,12 @@ Convén explícitamente que el producto vacío vale $1$. No dividas por ningún 
 :::
 
 ::: {#exr-t1-0292}
+<!-- CPM-T1-EXR-0292 | C | PROOF | DOMAIN | ORIGINAL -->
 **Ejercicio C3. La derivada de $x^{-1}$.** Demuestra sobre $\mathbb R\setminus\{0\}$ que $D(x^{-1})=-x^{-2}$ aplicando la proposición del recíproco a la función identidad. Explica por qué el resultado no atribuye derivada en $0$.
 :::
 
 ::: {#exr-t1-0293}
+<!-- CPM-T1-EXR-0293 | C | COMPUTATION | DOMAIN | ORIGINAL -->
 **Ejercicio C4. Recíproco de una composición.** Determina el dominio y la derivada de
 
 $$
@@ -1914,98 +1934,120 @@ Justifica primero que el denominador no se anula en ningún real.
 :::
 
 ::: {#exr-t1-0294}
+<!-- CPM-T1-EXR-0294 | C | DOMAIN | COMPOSITION | ORIGINAL -->
 **Ejercicio C5. Una composición con puntos excluidos.** Sean $f:\mathbb R\to\mathbb R$, $f(x)=x^2$, y $g:\mathbb R\setminus\{1\}\to\mathbb R$, $g(t)=1/(t-1)$. Determina el dominio efectivo de $g\circ f$ y su derivada allí, sin reintegrar los puntos excluidos.
 :::
 
 ::: {#exr-t1-0295}
+<!-- CPM-T1-EXR-0295 | C | PROOF | COMPARISON | ORIGINAL -->
 **Ejercicio C6. Dos pruebas para un mismo cuadrado.** Deriva $H(x)=(x^2+1)^2$ de dos maneras: interpretándolo como producto de dos polinomios iguales e interpretándolo como composición $g\circ f$. Comprueba que ambos resultados coinciden para todo real.
 :::
 
 ::: {#exr-t1-0296}
+<!-- CPM-T1-EXR-0296 | C | PROOF | DOMAIN | ORIGINAL -->
 **Ejercicio C7. No anulación local cuantitativa.** Sean $g:A\to\mathbb R$ diferenciable en el punto de acumulación $a\in A$, con $g(a)\ne0$. Demuestra que existe $\delta>0$ tal que $g(a+h)\ne0$ si $a+h\in A$ y $|h|<\delta$. Obtén, de hecho, una cota inferior positiva para $|g(a+h)|$.
 :::
 
 ### Nivel D — Inversión y diagnóstico
 
 ::: {#exr-t1-0297}
+<!-- CPM-T1-EXR-0297 | D | DIAGNOSIS | PROOF | ORIGINAL -->
 **Ejercicio D1. Una falsa multiplicación de pendientes.** Un estudiante escribe $(fg)'=f'g'$ y pretende demostrarlo multiplicando los dos cocientes incrementales. Localiza el error con $f=g=x$ en $a=1$; después reconstruye la identidad de incrementos que conduce a la fórmula correcta para funciones diferenciables en un dominio común.
 :::
 
 ::: {#exr-t1-0298}
+<!-- CPM-T1-EXR-0298 | D | DIAGNOSIS | ORIGINAL -->
 **Ejercicio D2. Derivar «arriba y abajo» no funciona.** Refuta $(f/g)'=f'/g'$ usando $f(x)=x^2$, $g(x)=x$ en $a=1$. Demuestra que todos los cocientes numéricos que comparas están definidos y escribe la fórmula correcta.
 :::
 
 ::: {#exr-t1-0299}
+<!-- CPM-T1-EXR-0299 | D | DIAGNOSIS | PROOF | ORIGINAL -->
 **Ejercicio D3. Un incremento interior nulo.** Define $f:\mathbb R\to[0,\infty)$ por $f(x)=0$ si $x\le0$ y $f(x)=x^2$ si $x>0$; sea $g:[0,\infty)\to\mathbb R$, $g(t)=t^2+1$. Explica por qué no es válido dividir siempre por $f(h)-f(0)$ al derivar $g\circ f$ en $0$. Repara la demostración con la extensión continua del cociente de $g$ y comprueba la derivada directamente.
 :::
 
 ::: {#exr-t1-0300}
+<!-- CPM-T1-EXR-0300 | D | DIAGNOSIS | COUNTEREXAMPLE | ORIGINAL -->
 **Ejercicio D4. Una conversa inexistente.** Refuta la afirmación «si $g\circ f$ es diferenciable en $a$, entonces $g$ lo es en $f(a)$» mediante $f(x)=x^2$, $g(t)=|t|$ declaradas sobre $\mathbb R$, con $a=0$. Distingue este caso de restringir $g$ explícitamente a $[0,\infty)$.
 :::
 
 ::: {#exr-t1-0301}
+<!-- CPM-T1-EXR-0301 | D | DOMAIN | ORIGINAL -->
 **Ejercicio D5. Cancelar no crea un valor perdido.** Examina la afirmación «$r(x)=x^2/x$ tiene derivada en $0$ porque se simplifica a $x$». Especifica el dominio natural de $r$, determina dónde vale la simplificación y construye, si es posible, una extensión distinta que sí tenga derivada en $0$.
 :::
 
 ::: {#exr-t1-0302}
+<!-- CPM-T1-EXR-0302 | D | DOMAIN | COUNTEREXAMPLE | ORIGINAL -->
 **Ejercicio D6. La intersección puede aislar un punto.** Sean $A=\{0\}\cup\{1/n:n\ge1\}$ y $B=\{0\}\cup\{-1/n:n\ge1\}$. Define $f:A\to\mathbb R$ y $g:B\to\mathbb R$ como funciones constantemente nulas. Comprueba que ambas tienen derivada relativa en $0$. ¿Tiene derivada relativa en $0$ su suma definida sobre $A\cap B$? Justifica sin utilizar un límite vacuo.
 :::
 
 ### Nivel E — Construcción de contraejemplos
 
 ::: {#exr-t1-0303}
+<!-- CPM-T1-EXR-0303 | E | COUNTEREXAMPLE | ORIGINAL -->
 **Ejercicio E1. Producto regular, factores irregulares.** Construye dos funciones no diferenciables en $0$ cuyo producto sí lo sea. Usa $f(x)=g(x)=|x|$ y verifica las tres afirmaciones con cocientes incrementales.
 :::
 
 ::: {#exr-t1-0304}
+<!-- CPM-T1-EXR-0304 | E | COUNTEREXAMPLE | DOMAIN | ORIGINAL -->
 **Ejercicio E2. El cociente puede ocultar dos esquinas.** Construye numerador y denominador no diferenciables en $0$ pero con denominador no nulo en toda la recta y cociente diferenciable. Utiliza $f(x)=g(x)=1+|x|$ y demuestra cada propiedad.
 :::
 
 ::: {#exr-t1-0305}
+<!-- CPM-T1-EXR-0305 | E | COUNTEREXAMPLE | COMPOSITION | ORIGINAL -->
 **Ejercicio E3. Una función exterior no diferenciable.** Da un ejemplo de funciones completas $f,g:\mathbb R\to\mathbb R$ tal que $g\circ f$ tenga derivada en $0$ pero $g$ no la tenga en $f(0)$. Verifica con $f(x)=x^2$ y $g(t)=|t|$ y explica qué hipótesis de la regla de la cadena falla.
 :::
 
 ::: {#exr-t1-0306}
+<!-- CPM-T1-EXR-0306 | E | COUNTEREXAMPLE | PROOF | ORIGINAL -->
 **Ejercicio E4. Infinitos incrementos interiores nulos.** Define $f:\mathbb R\to[0,\infty)$ por $f(x)=0$ si $x\in\mathbb Q$ y $f(x)=x^2$ si $x\notin\mathbb Q$. Demuestra que $f'(0)=0$ pero $f$ no es constante en ningún entorno de $0$ y que $f(h)-f(0)=0$ para infinitos $h\ne0$ arbitrariamente cercanos a $0$. Con $g:[0,\infty)\to\mathbb R$, $g(t)=t^2+1$, verifica la regla de la cadena en $0$ sin dividir por ese incremento interior.
 :::
 
 ::: {#exr-t1-0307}
+<!-- CPM-T1-EXR-0307 | E | COUNTEREXAMPLE | COMPOSITION | ORIGINAL -->
 **Ejercicio E5. Una función interior no diferenciable.** Da una composición diferenciable en $0$ cuya función interior no sea diferenciable. Usa $f(x)=|x|$ y una función exterior constante $g(t)=7$, declarando dominios y verificando la derivada de la composición.
 :::
 
 ### Nivel F — Descubrimiento guiado
 
 ::: {#exr-t1-0308}
+<!-- CPM-T1-EXR-0308 | F | DISCOVERY | PROOF | ORIGINAL -->
 **Ejercicio F1. Inventar el término intermedio.** Para $f,g:A\to\mathbb R$ diferenciables en $a$, punto de acumulación, parte de $f(a+h)g(a+h)-f(a)g(a)$. Añade y sustrae un mismo término para separar el cambio de los factores. Divide por $h\ne0$, identifica todos los límites necesarios y demuestra la regla del producto sin citarla como premisa.
 :::
 
 ::: {#exr-t1-0309}
+<!-- CPM-T1-EXR-0309 | F | DISCOVERY | PROOF | DOMAIN | ORIGINAL -->
 **Ejercicio F2. Construir el recíproco.** Sean $g:A\to\mathbb R$ diferenciable en $a$, punto de acumulación, y $g(a)\ne0$. Obtén un entorno relativo donde $g$ no se anule, transforma exactamente $1/g(a+h)-1/g(a)$ y deduce la derivada del recíproco desde la definición. Indica en qué paso se requiere la continuidad.
 :::
 
 ::: {#exr-t1-0310}
+<!-- CPM-T1-EXR-0310 | F | DISCOVERY | PROOF | ORIGINAL -->
 **Ejercicio F3. Inducir la regla de las potencias.** Usando la derivada de la identidad y la regla del producto, demuestra por inducción que $D(x^n)=nx^{n-1}$ para todo entero $n\ge1$. Trata por separado el exponente $0$ y especifica por qué esta demostración no cubre exponentes fraccionarios.
 :::
 
 ::: {#exr-t1-0311}
+<!-- CPM-T1-EXR-0311 | F | DISCOVERY | PROOF | COMPOSITION | ORIGINAL -->
 **Ejercicio F4. Reparar la cadena en el centro.** Sean $f:A\to B\subseteq\mathbb R$ y $g:B\to\mathbb R$, con $a\in A$, $b=f(a)$, ambos puntos de acumulación de sus respectivos dominios y ambas derivadas relativas finitas. Define una función $K:B\to\mathbb R$ prolongando $(g(t)-g(b))/(t-b)$ en $t=b$; demuestra su continuidad en $b$ y deduce la regla de la cadena mediante una identidad válida incluso cuando $f(a+h)=b$.
 :::
 
 ::: {#exr-t1-0312}
+<!-- CPM-T1-EXR-0312 | F | DISCOVERY | PROOF | SYNTHESIS | ORIGINAL -->
 **Ejercicio F5. La composición desde residuos.** En las hipótesis del ejercicio F4, escribe $f(a+h)=b+Lh+r_f(h)$ y $g(b+t)=g(b)+Mt+t\eta(t)$ con $r_f(h)=o(h)$ y $\eta(t)\to0$, definiendo $\eta(0)=0$. Para $t=f(a+h)-b$, demuestra directamente que el último término de la segunda linealización es $o(h)$, incluso cuando $t=0$. Concluye la derivada de la composición sin citar la regla de la cadena.
 :::
 
 ### Nivel G — Desafíos
 
 ::: {#exr-t1-0313}
+<!-- CPM-T1-EXR-0313 | G | CHALLENGE | PROOF | ORIGINAL -->
 **Ejercicio G1. Ceros en un producto finito.** Prueba por inducción la fórmula de la derivada de $P=\prod_{k=1}^n f_k$, para $n\ge2$ y factores diferenciables en $a$ sobre un dominio común. Demuestra que $P'(a)=0$ si al menos dos factores se anulan en $a$. ¿Qué fórmula queda si exactamente un factor, $f_j$, se anula allí? No dividas por ninguno.
 :::
 
 ::: {#exr-t1-0314}
+<!-- CPM-T1-EXR-0314 | G | CHALLENGE | COUNTEREXAMPLE | ORIGINAL -->
 **Ejercicio G2. Un conjunto denso de incrementos nulos.** Construye una función $f:\mathbb R\to\mathbb R$ diferenciable en $0$, con $f'(0)=0$ e infinitos ceros no nulos arbitrariamente próximos a $0$, pero que no sea localmente constante. Usa $f(x)=0$ en los racionales y $f(x)=x^2$ en los irracionales. Para $g(t)=3t+1$ sobre $\mathbb R$, comprueba directamente $(g\circ f)'(0)=g'(f(0))f'(0)$ y explica por qué la habitual división por $f(h)-f(0)$ fracasa.
 :::
 
 ::: {#exr-t1-0315}
+<!-- CPM-T1-EXR-0315 | G | CHALLENGE | PROOF | ORIGINAL -->
 **Ejercicio G3. El cociente desde las linealizaciones.** Sean $f,g:A\to\mathbb R$ diferenciables en un punto de acumulación $a$, con $g(a)\ne0$. Escribe sus aproximaciones de primer orden con residuos $o(h)$ y demuestra *directamente* que $f/g$ es diferenciable en $a$ y que
 
 $$
@@ -2021,7 +2063,8 @@ No uses las reglas del recíproco ni del cociente; identifica el papel de la no 
 #### Soluciones del nivel A
 
 ::: {#sol-t1-0276}
-**Solución A1.** Para funciones diferenciables en un punto de acumulación $a$ de un dominio común y escalares fijos, @thm-t1-0027 da
+<!-- CPM-T1-SOL-0276 -->
+**Solución A1.** Para funciones diferenciables en un punto de acumulación $a$ de un dominio común y escalares fijos, [Teorema 7.1](#thm-t1-0027) da
 
 $$
 (\alpha f+\beta g)'_A(a)=\alpha f'_A(a)+\beta g'_A(a).
@@ -2037,6 +2080,7 @@ Por tanto, $(fg)'(1)=2\ne1=f'(1)g'(1)$. La regla verdadera exige los valores de 
 :::
 
 ::: {#sol-t1-0277}
+<!-- CPM-T1-SOL-0277 -->
 **Solución A2.** Ambas funciones son diferenciables en $a$ relativamente al mismo dominio, de modo que podemos aplicar linealidad con coeficientes $2$ y $-3$:
 
 $$
@@ -2048,7 +2092,8 @@ Los valores $f(a)=2$ y $g(a)=-1$ no intervienen: la derivada de una combinación
 :::
 
 ::: {#sol-t1-0278}
-**Solución A3.** La regla del producto @thm-t1-0028, aplicable por diferenciabilidad común, proporciona
+<!-- CPM-T1-SOL-0278 -->
+**Solución A3.** La regla del producto [Teorema 7.2](#thm-t1-0028), aplicable por diferenciabilidad común, proporciona
 
 $$
 (fg)'_A(a)=f'_A(a)g(a)+f(a)g'_A(a)
@@ -2059,24 +2104,26 @@ El primer término $-3$ corresponde a la variación de $f$, ponderada por el val
 :::
 
 ::: {#sol-t1-0279}
-**Solución A4.** Se requiere $g(a)\ne0$. Como $g$ es diferenciable en $a$, es continua allí por @thm-t1-0024. Con $\varepsilon=|g(a)|/2>0$ encontramos $\delta>0$ tal que, para $x\in A$ y $|x-a|<\delta$,
+<!-- CPM-T1-SOL-0279 -->
+**Solución A4.** Se requiere $g(a)\ne0$. Como $g$ es diferenciable en $a$, es continua allí por [Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024). Con $\varepsilon=|g(a)|/2>0$ encontramos $\delta>0$ tal que, para $x\in A$ y $|x-a|<\delta$,
 
 $$
 |g(x)|\ge|g(a)|-|g(x)-g(a)|>
 \frac{|g(a)|}{2}>0.
 $$
 
-Así $a$ y un entorno relativo suyo pertenecen al dominio natural del cociente; las restricciones tienen las mismas derivadas puntuales por localidad y @thm-t1-0029 asegura la derivabilidad de $f/g$ en $a$. No se necesita $g'_A(a)\ne0$: si $g=1$, entonces $g'=0$ y $f/g=f$ sigue siendo derivable.
+Así $a$ y un entorno relativo suyo pertenecen al dominio natural del cociente; las restricciones tienen las mismas derivadas puntuales por localidad y [Teorema 7.3](#thm-t1-0029) asegura la derivabilidad de $f/g$ en $a$. No se necesita $g'_A(a)\ne0$: si $g=1$, entonces $g'=0$ y $f/g=f$ sigue siendo derivable.
 :::
 
 ::: {#sol-t1-0280}
+<!-- CPM-T1-SOL-0280 -->
 **Solución A5.** El denominador se factoriza como $x^2-4=(x-2)(x+2)$. El dominio natural es, por tanto,
 
 $$
 A=\mathbb R\setminus\{-2,2\}.
 $$
 
-Los polinomios son diferenciables en toda la recta y el denominador es distinto de cero en $A$. Por @thm-t1-0029,
+Los polinomios son diferenciables en toda la recta y el denominador es distinto de cero en $A$. Por [Teorema 7.3](#thm-t1-0029),
 
 $$
 \begin{aligned}
@@ -2089,6 +2136,7 @@ No existe $r(2)$ en la función original; en consecuencia, tampoco existe $r'(2)
 :::
 
 ::: {#sol-t1-0281}
+<!-- CPM-T1-SOL-0281 -->
 **Solución A6.** Por la definición aplicada a la identidad, $D(x)=1$. La regla del producto, ya demostrada, da primero
 
 $$
@@ -2106,6 +2154,7 @@ Todas las funciones se consideran sobre $\mathbb R$, así que no hay restriccion
 :::
 
 ::: {#sol-t1-0282}
+<!-- CPM-T1-SOL-0282 -->
 **Solución A7.** Tomamos $f:\mathbb R\to\mathbb R$, $f(x)=3x+1$, y $g:\mathbb R\to\mathbb R$, $g(t)=t^4$. Entonces $g\circ f(x)=(3x+1)^4$. Para un punto $a$:
 
 $$
@@ -2113,7 +2162,7 @@ f(a)=3a+1,\quad f'(a)=3,\quad
 g'(t)=4t^3.
 $$
 
-Ambas funciones son diferenciables en todos los puntos pertinentes. Aplicando @thm-t1-0030,
+Ambas funciones son diferenciables en todos los puntos pertinentes. Aplicando [Teorema 7.4](#thm-t1-0030),
 
 $$
 (g\circ f)'(a)=g'(f(a))f'(a)
@@ -2126,7 +2175,8 @@ La derivada exterior se calcula en la *salida* de la función interior, $f(a)$; 
 #### Soluciones del nivel B
 
 ::: {#sol-t1-0283}
-**Solución B1.** Cada monomio es diferenciable por @prp-t1-0040, la constante tiene derivada cero, y @thm-t1-0027 permite derivar la combinación finita. Obtenemos, para cualquier $x\in\mathbb R$,
+<!-- CPM-T1-SOL-0283 -->
+**Solución B1.** Cada monomio es diferenciable por [Proposición 7.2](#prp-t1-0040), la constante tiene derivada cero, y [Teorema 7.1](#thm-t1-0027) permite derivar la combinación finita. Obtenemos, para cualquier $x\in\mathbb R$,
 
 $$
 \begin{aligned}
@@ -2139,6 +2189,7 @@ El dominio es toda la recta: ninguna de estas operaciones introduce un denominad
 :::
 
 ::: {#sol-t1-0284}
+<!-- CPM-T1-SOL-0284 -->
 **Solución B2.** Definimos $f(x)=x^2+1$, $g(x)=x^3-2x$ sobre $\mathbb R$. Sus derivadas polinómicas son $f'(x)=2x$, $g'(x)=3x^2-2$. Por la regla del producto,
 
 $$
@@ -2153,6 +2204,7 @@ De modo independiente, antes de derivar expandimos la función: $p(x)=x^5-x^3-2x
 :::
 
 ::: {#sol-t1-0285}
+<!-- CPM-T1-SOL-0285 -->
 **Solución B3.** El dominio original es $A=\mathbb R\setminus\{2\}$. Para $x\in A$, numerador y denominador son polinomios diferenciables y $x-2\ne0$. La regla del cociente da
 
 $$
@@ -2166,7 +2218,8 @@ En $x=2$ la función $r$ no está definida y no puede tener derivada, con indepe
 :::
 
 ::: {#sol-t1-0286}
-**Solución B4.** En $A=\mathbb R\setminus\{0\}$, la potencia cuarta $u(x)=x^4$ no se anula. Su derivada es $u'(x)=4x^3$ por @prp-t1-0040. Como $r=1/u$, la proposición del recíproco @prp-t1-0039 implica
+<!-- CPM-T1-SOL-0286 -->
+**Solución B4.** En $A=\mathbb R\setminus\{0\}$, la potencia cuarta $u(x)=x^4$ no se anula. Su derivada es $u'(x)=4x^3$ por [Proposición 7.2](#prp-t1-0040). Como $r=1/u$, la proposición del recíproco [Proposición 7.1](#prp-t1-0039) implica
 
 $$
 r'(x)=-\frac{u'(x)}{u(x)^2}
@@ -2178,6 +2231,7 @@ La simplificación se realiza únicamente donde $x\ne0$; no se ha supuesto una r
 :::
 
 ::: {#sol-t1-0287}
+<!-- CPM-T1-SOL-0287 -->
 **Solución B5.** La función interior es $f(x)=2x^2-1$, la exterior $g(t)=t^5$, ambas de $\mathbb R$ en $\mathbb R$. Sus derivadas son
 
 $$
@@ -2195,6 +2249,7 @@ En particular, el término exterior se evalúa en $t=f(x)=2x^2-1$, no en $t=x$.
 :::
 
 ::: {#sol-t1-0288}
+<!-- CPM-T1-SOL-0288 -->
 **Solución B6.** Introducimos los valores intermedios
 
 $$
@@ -2202,7 +2257,7 @@ u_1=x^2+1,\qquad u_2=u_1^3,\qquad
 u_3=u_2-2,\qquad H=u_3^4.
 $$
 
-Las cuatro funciones elementales de esta cadena son polinómicas, luego sus derivadas existen sobre $\mathbb R$. Sucesivas aplicaciones de @thm-t1-0030, o @prp-t1-0041, entregan
+Las cuatro funciones elementales de esta cadena son polinómicas, luego sus derivadas existen sobre $\mathbb R$. Sucesivas aplicaciones de [Teorema 7.4](#thm-t1-0030), o [Proposición 7.3](#prp-t1-0041), entregan
 
 $$
 \begin{aligned}
@@ -2215,7 +2270,8 @@ La resta de $2$ aporta derivada $1$ respecto de $u_2$. Es decisivo sustituir cad
 :::
 
 ::: {#sol-t1-0289}
-**Solución B7.** Las funciones $f(x)=x^2$ y $g(x)=x+1$, restringidas a $A=[0,\infty)$, son diferenciables relativamente a ese dominio en $0$. Sus derivadas relativas son $f'_A(0)=0$, $g'_A(0)=1$, y sus valores centrales son $f(0)=0$, $g(0)=1$. Por @thm-t1-0028,
+<!-- CPM-T1-SOL-0289 -->
+**Solución B7.** Las funciones $f(x)=x^2$ y $g(x)=x+1$, restringidas a $A=[0,\infty)$, son diferenciables relativamente a ese dominio en $0$. Sus derivadas relativas son $f'_A(0)=0$, $g'_A(0)=1$, y sus valores centrales son $f(0)=0$, $g(0)=1$. Por [Teorema 7.2](#thm-t1-0028),
 
 $$
 p'_A(0)=f'_A(0)g(0)+f(0)g'_A(0)
@@ -2235,7 +2291,8 @@ La derivada solicitada es relativa al dominio declarado; no hemos supuesto ningu
 #### Soluciones del nivel C
 
 ::: {#sol-t1-0290}
-**Solución C1.** Escribamos $S_n=\sum_{k=1}^n c_kf_k$. Para $n=1$, la multiplicación por un escalar, caso particular de @thm-t1-0027, establece la diferenciabilidad de $S_1=c_1f_1$ y $S'_{1,A}(a)=c_1f'_{1,A}(a)$.
+<!-- CPM-T1-SOL-0290 -->
+**Solución C1.** Escribamos $S_n=\sum_{k=1}^n c_kf_k$. Para $n=1$, la multiplicación por un escalar, caso particular de [Teorema 7.1](#thm-t1-0027), establece la diferenciabilidad de $S_1=c_1f_1$ y $S'_{1,A}(a)=c_1f'_{1,A}(a)$.
 
 Supongamos para cierto $n\ge1$ que $S_n$ es diferenciable y que $S'_{n,A}(a)=\sum_{k=1}^n c_kf'_{k,A}(a)$. Entonces $S_{n+1}=S_n+c_{n+1}f_{n+1}$ es combinación lineal de dos funciones diferenciables en el mismo punto y dominio. La linealidad proporciona
 
@@ -2250,7 +2307,8 @@ El paso está probado y la inducción concluye el resultado para todo $n\ge1$. L
 :::
 
 ::: {#sol-t1-0291}
-**Solución C2.** Para $n=1$, la fórmula tiene un único término $f'_{1,A}(a)$ multiplicado por el producto vacío $1$. Supongamos probada la fórmula para $P_n=\prod_{k=1}^n f_k$. Es una función diferenciable en $a$. Como $P_{n+1}=P_nf_{n+1}$, @thm-t1-0028 da
+<!-- CPM-T1-SOL-0291 -->
+**Solución C2.** Para $n=1$, la fórmula tiene un único término $f'_{1,A}(a)$ multiplicado por el producto vacío $1$. Supongamos probada la fórmula para $P_n=\prod_{k=1}^n f_k$. Es una función diferenciable en $a$. Como $P_{n+1}=P_nf_{n+1}$, [Teorema 7.2](#thm-t1-0028) da
 
 $$
 P'_{n+1,A}(a)=P'_{n,A}(a)f_{n+1}(a)
@@ -2268,7 +2326,8 @@ La inducción vale aun si uno o varios factores se anulan, porque en ningún pas
 :::
 
 ::: {#sol-t1-0292}
-**Solución C3.** Sea $u:\mathbb R\to\mathbb R$, $u(x)=x$. Es diferenciable con $u'(a)=1$ para todo real $a$. Para $a\ne0$ podemos tomar su recíproco en un entorno del punto. @prp-t1-0039 asegura
+<!-- CPM-T1-SOL-0292 -->
+**Solución C3.** Sea $u:\mathbb R\to\mathbb R$, $u(x)=x$. Es diferenciable con $u'(a)=1$ para todo real $a$. Para $a\ne0$ podemos tomar su recíproco en un entorno del punto. [Proposición 7.1](#prp-t1-0039) asegura
 
 $$
 D\!\left(\frac1u\right)(a)
@@ -2285,6 +2344,7 @@ En $a=0$ la función recíproca no está definida; tampoco existe una derivada d
 :::
 
 ::: {#sol-t1-0293}
+<!-- CPM-T1-SOL-0293 -->
 **Solución C4.** Para todo $x\in\mathbb R$, se tiene $x^2+1\ge1$, luego $(x^2+1)^3\ge1$ y
 
 $$
@@ -2309,6 +2369,7 @@ La demostración de positividad no es una formalidad: justifica que no hay punto
 :::
 
 ::: {#sol-t1-0294}
+<!-- CPM-T1-SOL-0294 -->
 **Solución C5.** La composición solo está definida donde $f(x)=x^2$ pertenece al dominio de $g$, es decir, donde $x^2\ne1$. Su dominio efectivo es
 
 $$
@@ -2327,14 +2388,15 @@ En $x=\pm1$ la función exterior recibe la entrada prohibida $t=1$. No hay valor
 :::
 
 ::: {#sol-t1-0295}
-**Solución C6.** En la ruta del producto, $H=(x^2+1)(x^2+1)$ y ambos factores son diferenciables. Aplicando @thm-t1-0028,
+<!-- CPM-T1-SOL-0295 -->
+**Solución C6.** En la ruta del producto, $H=(x^2+1)(x^2+1)$ y ambos factores son diferenciables. Aplicando [Teorema 7.2](#thm-t1-0028),
 
 $$
 H'(x)=2x(x^2+1)+(x^2+1)2x
 =4x(x^2+1).
 $$
 
-En la ruta de composición, $f(x)=x^2+1$ y $g(t)=t^2$. Puesto que $g'(t)=2t$ y $f'(x)=2x$, @thm-t1-0030 da
+En la ruta de composición, $f(x)=x^2+1$ y $g(t)=t^2$. Puesto que $g'(t)=2t$ y $f'(x)=2x$, [Teorema 7.4](#thm-t1-0030) da
 
 $$
 (g\circ f)'(x)=2f(x)\,f'(x)
@@ -2345,7 +2407,8 @@ Ambos razonamientos son válidos para todo real y concuerdan. La primera ruta no
 :::
 
 ::: {#sol-t1-0296}
-**Solución C7.** Como $g$ es diferenciable en $a$, @thm-t1-0024 la hace continua relativamente a $A$ en ese punto. Elegimos $\varepsilon=|g(a)|/2>0$. Existe $\delta>0$ tal que, para $x=a+h\in A$ con $|h|<\delta$,
+<!-- CPM-T1-SOL-0296 -->
+**Solución C7.** Como $g$ es diferenciable en $a$, [Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024) la hace continua relativamente a $A$ en ese punto. Elegimos $\varepsilon=|g(a)|/2>0$. Existe $\delta>0$ tal que, para $x=a+h\in A$ con $|h|<\delta$,
 
 $$
 |g(a+h)-g(a)|<\frac{|g(a)|}{2}.
@@ -2364,6 +2427,7 @@ Esta cota proporciona simultáneamente la no anulación local y una separación 
 #### Soluciones del nivel D
 
 ::: {#sol-t1-0297}
+<!-- CPM-T1-SOL-0297 -->
 **Solución D1.** Con $f=g=x$ en $\mathbb R$, las pendientes en $1$ son $1$ y $1$; sin embargo, el producto $x^2$ tiene derivada $2$. El error consiste en reemplazar el cociente incremental de $fg$ por el *producto* de los cocientes de $f$ y $g$: esas expresiones no son iguales. Para encontrar la identidad correcta, añadimos y sustraemos $f(a+h)g(a)$:
 
 $$
@@ -2384,6 +2448,7 @@ La continuidad solo se invoca después de establecer la identidad. En particular
 :::
 
 ::: {#sol-t1-0298}
+<!-- CPM-T1-SOL-0298 -->
 **Solución D2.** Tomemos $f(x)=x^2$, $g(x)=x$ y $a=1$. Como $g(1)=1\ne0$, el cociente $q=f/g$ está definido sobre $\mathbb R\setminus\{0\}$ y allí satisface $q(x)=x$. En el punto $1$,
 
 $$
@@ -2401,6 +2466,7 @@ Para este ejemplo resulta $(2\cdot1-1\cdot1)/1^2=1$. La condición de no anulaci
 :::
 
 ::: {#sol-t1-0299}
+<!-- CPM-T1-SOL-0299 -->
 **Solución D3.** Aquí $a=b=0$, $f(h)-f(0)=0$ para *todo* $h<0$. Por eso la descomposición que divide por tal diferencia no es una identidad válida para todos los incrementos $h\ne0$ admisibles. En cambio, la función
 
 $$
@@ -2419,6 +2485,7 @@ La derivada de $f$ en $0$ existe y vale $0$: su cociente es $0$ para $h<0$ y $h$
 :::
 
 ::: {#sol-t1-0300}
+<!-- CPM-T1-SOL-0300 -->
 **Solución D4.** La interior $f(x)=x^2$ tiene $f(0)=0$ y derivada $f'(0)=0$. Para la exterior *declarada sobre $\mathbb R$*, los cocientes incrementales en $0$ son $|t|/t$, que valen $-1$ si $t<0$ y $1$ si $t>0$; por tanto, $g'_{\mathbb R}(0)$ no existe. Pero
 
 $$
@@ -2430,12 +2497,14 @@ La composición tiene derivada sin que la función exterior original satisfaga l
 :::
 
 ::: {#sol-t1-0301}
+<!-- CPM-T1-SOL-0301 -->
 **Solución D5.** El cociente original $r(x)=x^2/x$ exige $x\ne0$, de modo que su dominio natural es $A=\mathbb R\setminus\{0\}$. En $A$ podemos cancelar el factor y concluir $r(x)=x$; por consiguiente, $r'_A(a)=1$ para cada $a\in A$. Sin embargo, $r(0)$ no está definido: no existe derivada de *esa función* en $0$.
 
 Sí podemos construir una función nueva $\widetilde r:\mathbb R\to\mathbb R$ por $\widetilde r(x)=x$, incluida la asignación expresa $\widetilde r(0)=0$. Su cociente incremental en $0$ es $h/h=1$ para $h\ne0$, así que $\widetilde r'(0)=1$. Este valor pertenece a la extensión, no al cociente original.
 :::
 
 ::: {#sol-t1-0302}
+<!-- CPM-T1-SOL-0302 -->
 **Solución D6.** Hay elementos $1/n\in A\setminus\{0\}$ que convergen a $0$, y elementos $-1/n\in B\setminus\{0\}$ que también lo hacen: $0$ es punto de acumulación de ambos dominios. Para sus respectivas funciones nulas, todos los cocientes incrementales admisibles valen $0$, luego $f'_A(0)=g'_B(0)=0$.
 
 La suma natural solo está definida donde ambos dominios coinciden. Como los puntos no nulos de $A$ son positivos y los de $B$ negativos,
@@ -2450,6 +2519,7 @@ En la intersección, $0$ es aislado. La definición de derivada relativa exige u
 #### Soluciones del nivel E
 
 ::: {#sol-t1-0303}
+<!-- CPM-T1-SOL-0303 -->
 **Solución E1.** En $\mathbb R$, tanto $f$ como $g$ valen $|x|$. Como $f(0)=g(0)=0$, para $h\ne0$ los cocientes incrementales de ambos son
 
 $$
@@ -2466,6 +2536,7 @@ El producto es diferenciable en $0$, con $(fg)'(0)=0$. La regla del producto sol
 :::
 
 ::: {#sol-t1-0304}
+<!-- CPM-T1-SOL-0304 -->
 **Solución E2.** Definimos $f=g=1+|x|$ sobre $\mathbb R$. Para ambos, el cociente incremental en $0$ es
 
 $$
@@ -2482,6 +2553,7 @@ Por definición, $(q(h)-q(0))/h=0$ para $h\ne0$ y $q'(0)=0$. La fórmula del coc
 :::
 
 ::: {#sol-t1-0305}
+<!-- CPM-T1-SOL-0305 -->
 **Solución E3.** Tomemos $f(x)=x^2$ y $g(t)=|t|$, cada una con dominio $\mathbb R$ y codominio $\mathbb R$. El punto central es $a=0$, con imagen $b=f(0)=0$. La derivada $f'(0)=0$ existe, pero el cociente de $g$ en $b$ toma los valores $-1$ a la izquierda y $1$ a la derecha, así que $g'_{\mathbb R}(0)$ no existe.
 
 Como $f(x)\ge0$ para todo $x$,
@@ -2495,6 +2567,7 @@ Falla la hipótesis de diferenciabilidad de la exterior en $b$ para las funcione
 :::
 
 ::: {#sol-t1-0306}
+<!-- CPM-T1-SOL-0306 -->
 **Solución E4.** Puesto que $0\in\mathbb Q$, $f(0)=0$. Para todo $h\ne0$ tenemos $0\le f(h)\le h^2$, independientemente de si $h$ es racional o irracional. En consecuencia,
 
 $$
@@ -2514,6 +2587,7 @@ Por tanto, $(g\circ f)'(0)=0=g'_{[0,\infty)}(0)f'(0)$. La comprobación utiliza 
 :::
 
 ::: {#sol-t1-0307}
+<!-- CPM-T1-SOL-0307 -->
 **Solución E5.** Declaramos $f:\mathbb R\to[0,\infty)$, $f(x)=|x|$, y $g:[0,\infty)\to\mathbb R$, $g(t)=7$. La derivada de la interior en $0$ no existe: $|h|/h$ vale $-1$ a la izquierda y $1$ a la derecha. La exterior es constante y posee derivada relativa cero en todos los puntos de acumulación de su dominio, incluido el extremo $0$.
 
 La composición está definida para todo real y satisface $(g\circ f)(x)=7$. Su cociente incremental en $0$ es
@@ -2529,6 +2603,7 @@ así que $(g\circ f)'(0)=0$. No podemos *invocar* la regla de la cadena con la i
 #### Soluciones del nivel F
 
 ::: {#sol-t1-0308}
+<!-- CPM-T1-SOL-0308 -->
 **Solución F1.** La variación que debemos analizar es $f(a+h)g(a+h)-f(a)g(a)$. Añadimos y sustraemos el producto intermedio $f(a+h)g(a)$ y agrupamos:
 
 $$
@@ -2547,10 +2622,11 @@ $$
 +g(a)\frac{f(a+h)-f(a)}h.
 $$
 
-Por diferenciabilidad, los dos cocientes convergen a $g'_A(a)$ y $f'_A(a)$. La diferenciabilidad de $f$ implica además $f(a+h)\to f(a)$ por @thm-t1-0024. Aplicamos el álgebra de límites una vez comprobadas estas tres convergencias: el límite existe, es finito y vale $f(a)g'_A(a)+g(a)f'_A(a)$. Esto prueba, desde la definición, la diferenciabilidad de $fg$ y la fórmula correspondiente sin presuponerla.
+Por diferenciabilidad, los dos cocientes convergen a $g'_A(a)$ y $f'_A(a)$. La diferenciabilidad de $f$ implica además $f(a+h)\to f(a)$ por [Teorema 6.1](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0024). Aplicamos el álgebra de límites una vez comprobadas estas tres convergencias: el límite existe, es finito y vale $f(a)g'_A(a)+g(a)f'_A(a)$. Esto prueba, desde la definición, la diferenciabilidad de $fg$ y la fórmula correspondiente sin presuponerla.
 :::
 
 ::: {#sol-t1-0309}
+<!-- CPM-T1-SOL-0309 -->
 **Solución F2.** La continuidad de $g$ en $a$, consecuencia de su diferenciabilidad, nos permite elegir $\delta>0$ tal que, si $a+h\in A$ y $|h|<\delta$,
 
 $$
@@ -2583,6 +2659,7 @@ No se ha utilizado la regla del cociente que esta prueba ayuda a construir.
 :::
 
 ::: {#sol-t1-0310}
+<!-- CPM-T1-SOL-0310 -->
 **Solución F3.** Para $n=1$, la función identidad es diferenciable sobre $\mathbb R$ y $D(x)=1=1\cdot x^0$. Supongamos que, para cierto $n\ge1$, la potencia $x^n$ es diferenciable y satisface $D(x^n)=nx^{n-1}$. Factorizamos $x^{n+1}=x^n\cdot x$. La regla del producto asegura su diferenciabilidad y
 
 $$
@@ -2596,6 +2673,7 @@ Queda probado el paso inductivo y, con la base, $\boxed{D(x^n)=nx^{n-1}}$ para t
 :::
 
 ::: {#sol-t1-0311}
+<!-- CPM-T1-SOL-0311 -->
 **Solución F4.** Definimos en *todo* $B$ la función
 
 $$
@@ -2622,6 +2700,7 @@ La diferenciabilidad de $f$ proporciona tanto $f(a+h)\to b$ como el límite $f'_
 :::
 
 ::: {#sol-t1-0312}
+<!-- CPM-T1-SOL-0312 -->
 **Solución F5.** Sean $L=f'_A(a)$ y $M=g'_B(b)$, con $b=f(a)$. De la diferenciabilidad de $f$ obtenemos, para $h$ admisible,
 
 $$
@@ -2664,6 +2743,7 @@ La unicidad del coeficiente lineal, o directamente el cociente incremental, da $
 #### Soluciones del nivel G
 
 ::: {#sol-t1-0313}
+<!-- CPM-T1-SOL-0313 -->
 **Solución G1.** Para $n=1$ vale la fórmula con producto vacío igual a $1$. Si para $P_n=\prod_{k=1}^n f_k$ sabemos que
 
 $$
@@ -2695,6 +2775,7 @@ No se concluye automáticamente que esta última derivada sea distinta de cero, 
 :::
 
 ::: {#sol-t1-0314}
+<!-- CPM-T1-SOL-0314 -->
 **Solución G2.** Definimos $f(0)=0$ y, para cualquier real $x$, $f(x)=0$ si $x\in\mathbb Q$ y $f(x)=x^2$ si $x\notin\mathbb Q$. Para $h\ne0$,
 
 $$
@@ -2714,6 +2795,7 @@ Así, $(g\circ f)'(0)=0=g'(f(0))f'(0)$. La descomposición formal que divide por
 :::
 
 ::: {#sol-t1-0315}
+<!-- CPM-T1-SOL-0315 -->
 **Solución G3.** Escribamos $F=f(a)$, $G=g(a)\ne0$, $L=f'_A(a)$ y $M=g'_A(a)$. Por diferenciabilidad existen residuos tales que, para incrementos admisibles,
 
 $$
@@ -2744,3 +2826,13 @@ $$
 
 La no anulación local fue necesaria para escribir la fracción inicial y pasar al límite. No se dividió por incrementos de $f$ o $g$, que podrían ser cero, ni se usaron las reglas del recíproco o del cociente como premisas.
 :::
+
+### Auditoría del banco
+
+El inventario de esta sección comprende cuarenta enunciados y cuarenta soluciones homólogas con identificadores continuos `CPM-T1-EXR-0276--0315` y `CPM-T1-SOL-0276--0315`, distribuidos como $7A+7B+7C+6D+5E+5F+3G$. Las soluciones se han redactado para este tratado conforme al diseño del capítulo; la indicación editorial `ORIGINAL` no equivale a una certificación de similitud externa.
+
+La comprobación de correspondencias, sintaxis, referencias internas y dependencias se documenta en la auditoría técnica independiente. Completar el manuscrito no reemplaza su revisión matemática final, la compilación efectiva con Quarto ni la aprobación visual; esas condiciones siguen siendo necesarias antes de declarar el capítulo cerrado y publicable.
+
+---
+
+[← Capítulo 6](la-derivada-y-la-aproximacion-lineal-local.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 8 →](derivacion-de-funciones-elementales-inversas-e-implicitas.md)

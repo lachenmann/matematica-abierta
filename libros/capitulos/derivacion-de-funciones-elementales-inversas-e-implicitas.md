@@ -1,21 +1,19 @@
 ---
 title: "Derivación de funciones elementales, inversas e implícitas"
-description: "Capítulo 8 de Cálculo para matemáticos: inversas, raíces, potencias racionales y derivación implícita justificada; 40 ejercicios resueltos."
+description: "Capítulo 8 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0066
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-areas:
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-09-21
+date-modified: 2026-09-30
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -27,12 +25,16 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [7]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Derivación de funciones elementales, inversas e implícitas {#sec-t1-c09}
+
+[← Capítulo 7](algebra-de-derivadas-y-regla-de-la-cadena.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 9 →](teoremas-de-rolle-y-del-valor-medio.md)
 
 En el capítulo anterior demostramos cómo derivar combinaciones lineales, productos, cocientes y composiciones. También obtuvimos las derivadas de potencias enteras, polinomios y funciones racionales. Esas reglas permiten calcular mucho, pero no resuelven por sí solas una pregunta anterior a cualquier cálculo: **¿existe, y cuál es exactamente, la función cuya derivada queremos encontrar?**
 
@@ -173,7 +175,7 @@ Obsérvese el papel de $J=f(A)$. Si el codominio declarado de la función origin
 
 ### Recuperación de un teorema ya demostrado
 
-En el capítulo 5 demostramos @thm-t1-0023. Su especial relevancia aquí merece recuperar el enunciado, **sin repetir su demostración**:
+En el capítulo 5 demostramos [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023). Su especial relevancia aquí merece recuperar el enunciado, **sin repetir su demostración**:
 
 ::: {.callout-important title="Inversa continua sobre un intervalo: resultado disponible"}
 Sean $I\subseteq\mathbb R$ un intervalo y $f:I\to\mathbb R$ una función continua e inyectiva. Pongamos $J=f(I)$. Entonces $J$ es un intervalo, existe la inversa única
@@ -247,7 +249,7 @@ g:\mathbb R\longrightarrow\mathbb R,
 \qquad g(t)=\text{el único real }u\text{ tal que }u^3+u=t.
 $$
 
-El resultado @thm-t1-0023 asegura que $g$ es continua en toda la recta. No hemos despejado $u$ ni calculado $g'(t)$; ninguna de esas operaciones era necesaria para justificar su existencia y continuidad. Por ejemplo, $g(0)=0$ y $g(2)=1$, pues $0^3+0=0$ y $1^3+1=2$.
+El resultado [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) asegura que $g$ es continua en toda la recta. No hemos despejado $u$ ni calculado $g'(t)$; ninguna de esas operaciones era necesaria para justificar su existencia y continuidad. Por ejemplo, $g(0)=0$ y $g(2)=1$, pues $0^3+0=0$ y $1^3+1=2$.
 :::
 
 Este ejemplo separa el *conocimiento estructural* del *cálculo simbólico*. Sabemos qué función es $g$, cuál es su dominio, por qué cada valor tiene una única salida y por qué es continua. Todavía no sabemos, a partir de lo aquí demostrado, cuál es su derivada: esa conclusión exige un argumento nuevo.
@@ -317,7 +319,7 @@ Recuperemos brevemente el cuadrado, ahora mediante un diagrama de funciones tipa
 | $q_+:[0,2]\to[0,4]$, $q_+(x)=x^2$ | $[0,4]$ | $q_+^{-1}:[0,4]\to[0,2]$, $q_+^{-1}(t)=\sqrt t$ |
 | $q_-:[-2,0]\to[0,4]$, $q_-(x)=x^2$ | $[0,4]$ | $q_-^{-1}:[0,4]\to[-2,0]$, $q_-^{-1}(t)=-\sqrt t$ |
 
-La existencia de las raíces cuadradas no negativas, probada en el capítulo 1, permite verificar las dos imágenes y las dos identidades inversas. Las funciones $q_+$ y $q_-$ son continuas y estrictamente monótonas en sus respectivos intervalos: para $0\le u<v$ tenemos $u^2<v^2$, mientras que para $u<v\le0$ se cumple $u^2>v^2$. Por @thm-t1-0023, **ambas inversas son continuas sobre $[0,4]$**, incluidos sus extremos en el sentido relativo.
+La existencia de las raíces cuadradas no negativas, probada en el capítulo 1, permite verificar las dos imágenes y las dos identidades inversas. Las funciones $q_+$ y $q_-$ son continuas y estrictamente monótonas en sus respectivos intervalos: para $0\le u<v$ tenemos $u^2<v^2$, mientras que para $u<v\le0$ se cumple $u^2>v^2$. Por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023), **ambas inversas son continuas sobre $[0,4]$**, incluidos sus extremos en el sentido relativo.
 
 No debemos reemplazar ese enunciado por «las inversas son derivables también en $0$ y $4$». Continuidad y derivabilidad son propiedades diferentes; además, una derivada en un extremo, según la definición de nuestro capítulo 6, solo podría considerarse con los incrementos admitidos por el dominio. El estudio de tales cocientes pertenece al paso siguiente.
 
@@ -359,7 +361,7 @@ La razón de cambio de la inversa es, entre los puntos correspondientes, el rec�
 ### El enunciado: dominios y puntos de evaluación visibles
 
 ::: {#thm-t1-0031}
-**Teorema de la derivada de una función inversa en un intervalo.** Sea $I\subseteq\mathbb R$ un intervalo y sea $f:I\to\mathbb R$ continua e inyectiva. Definamos $J=f(I)$ y consideremos la inversa, existente y continua por @thm-t1-0023,
+**Teorema de la derivada de una función inversa en un intervalo.** Sea $I\subseteq\mathbb R$ un intervalo y sea $f:I\to\mathbb R$ continua e inyectiva. Definamos $J=f(I)$ y consideremos la inversa, existente y continua por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023),
 
 $$
 g=f^{-1}:J\longrightarrow I.
@@ -386,7 +388,7 @@ $$
 
 **Demostración.** Separamos los pasos que suelen quedar ocultos en la fórmula.
 
-**1. La inversa existe y es continua antes de derivarla.** Por hipótesis, $f$ es inyectiva y $J$ es su imagen; por tanto $f:I\to J$ es biyectiva. El teorema @thm-t1-0023 asegura que $g=f^{-1}$ existe y es continua en $b$, relativamente a $J$. No hemos supuesto que $g$ sea diferenciable.
+**1. La inversa existe y es continua antes de derivarla.** Por hipótesis, $f$ es inyectiva y $J$ es su imagen; por tanto $f:I\to J$ es biyectiva. El teorema [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) asegura que $g=f^{-1}$ existe y es continua en $b$, relativamente a $J$. No hemos supuesto que $g$ sea diferenciable.
 
 **2. El punto $b$ permite un límite perforado en $J$.** Como $a$ es punto de acumulación de $I$, podemos escoger puntos $x\in I\setminus\{a\}$ arbitrariamente próximos a $a$. La continuidad de $f$ en $a$ garantiza que sus imágenes $f(x)$ se aproximan a $f(a)=b$; la inyectividad garantiza, además, que $f(x)\ne b$. Más explícitamente, dado $\varepsilon>0$, la continuidad proporciona $\delta>0$ tal que
 
@@ -395,7 +397,7 @@ x\in I,\quad |x-a|<\delta
 \quad\Longrightarrow\quad |f(x)-b|<\varepsilon.
 $$
 
-Por acumulación elegimos $x\in I$ con $0<|x-a|<\delta$. Entonces $y=f(x)\in J$ cumple $0<|y-b|<\varepsilon$. Esto demuestra que $b$ es punto de acumulación de $J$, condición necesaria para definir $g'_J(b)$ según @def-t1-0042.
+Por acumulación elegimos $x\in I$ con $0<|x-a|<\delta$. Entonces $y=f(x)\in J$ cumple $0<|y-b|<\varepsilon$. Esto demuestra que $b$ es punto de acumulación de $J$, condición necesaria para definir $g'_J(b)$ según [Definición 6.1](la-derivada-y-la-aproximacion-lineal-local.md#def-t1-0042).
 
 **3. Los antecedentes se aproximan al punto correcto.** Para $y\in J\setminus\{b\}$ escribamos $x=g(y)$. Por la continuidad de $g$ en $b$,
 
@@ -460,7 +462,7 @@ $$
 Por eso escribir $(f^{-1})'(x)=1/f'(x)$ sin explicar qué representa $x$ es, en general, incorrecto. Si la variable de entrada de la inversa se llama $y$, el antecedente en el que se evalúa $f'$ es $g(y)$: la forma correcta es $g'(y)=1/f'(g(y))$, exclusivamente donde las hipótesis estén verificadas.
 
 ::: {.callout-warning title="Una justificación circular que debemos evitar"}
-De $g(f(x))=x$ sería tentador escribir $(g\circ f)'(a)=g'(f(a))f'(a)=1$ y despejar $g'(f(a))$. **Ese cálculo ya supone que $g'(f(a))$ existe**, precisamente lo que teníamos que demostrar. Ahora sí podemos emplear la regla de la cadena de @thm-t1-0030 como comprobación *posterior* del resultado, nunca como su fundamento inicial.
+De $g(f(x))=x$ sería tentador escribir $(g\circ f)'(a)=g'(f(a))f'(a)=1$ y despejar $g'(f(a))$. **Ese cálculo ya supone que $g'(f(a))$ existe**, precisamente lo que teníamos que demostrar. Ahora sí podemos emplear la regla de la cadena de [Teorema 7.4](algebra-de-derivadas-y-regla-de-la-cadena.md#thm-t1-0030) como comprobación *posterior* del resultado, nunca como su fundamento inicial.
 :::
 
 ### Una inversa cuyo valor conocemos sin disponer de una fórmula cerrada
@@ -475,7 +477,7 @@ f:\mathbb R\longrightarrow\mathbb R,
 \qquad f(x)=x^3+x,
 $$
 
-cuya biyectividad y cuya inversa continua $g:\mathbb R\to\mathbb R$ quedaron demostradas en @exm-t1-0083 mediante álgebra y el teorema del valor intermedio. El capítulo 7 permite derivar el polinomio:
+cuya biyectividad y cuya inversa continua $g:\mathbb R\to\mathbb R$ quedaron demostradas en [Ejemplo 8.2](#exm-t1-0083) mediante álgebra y el teorema del valor intermedio. El capítulo 7 permite derivar el polinomio:
 
 $$
 f'(x)=3x^2+1.
@@ -640,7 +642,7 @@ q_n(r_n(t))=t\quad(t\ge0),
 \qquad r_n(q_n(u))=u\quad(u\ge0).
 $$
 
-El teorema @thm-t1-0023, aplicado al intervalo $[0,\infty)$, asegura la continuidad de $r_n$ en todo su dominio, **incluido $0$ en sentido relativo**. Ni la inyectividad ni esta continuidad han sido obtenidas a partir de una derivada.
+El teorema [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023), aplicado al intervalo $[0,\infty)$, asegura la continuidad de $r_n$ en todo su dominio, **incluido $0$ en sentido relativo**. Ni la inyectividad ni esta continuidad han sido obtenidas a partir de una derivada.
 
 **3. Derivada para $t>0$.** Fijemos $t>0$ y pongamos $a=r_n(t)>0$. El capítulo 7 proporciona la derivada de una potencia natural, relativamente a $[0,\infty)$:
 
@@ -648,7 +650,7 @@ $$
 (q_n)'_{[0,\infty)}(a)=n a^{n-1}>0.
 $$
 
-Las hipótesis de @thm-t1-0031 ya están justificadas: dominio intervalar, continuidad, inyectividad, inversa continua, punto $a$ de acumulación y derivada no nula. Como $q_n(a)=t$, concluimos que
+Las hipótesis de [Teorema 8.1](#thm-t1-0031) ya están justificadas: dominio intervalar, continuidad, inyectividad, inversa continua, punto $a$ de acumulación y derivada no nula. Como $q_n(a)=t$, concluimos que
 
 $$
 r_n'(t)=\frac1{(q_n)'(a)}
@@ -674,9 +676,9 @@ r_n(t),&t\ge0,\\
 \end{cases}
 $$
 
-Acabamos de construir una inversa global de $Q_n:\mathbb R\to\mathbb R$, $Q_n(u)=u^n$. Esta función es continua por ser polinómica e inyectiva por la unicidad de las raíces para cada signo; su imagen es toda $\mathbb R$ por existencia. El teorema @thm-t1-0023 aplicado al intervalo $\mathbb R$ demuestra que $\widetilde r_n$ es continua en toda la recta, incluido el origen: no hace falta presumir continuidad en el empalme de la definición por casos.
+Acabamos de construir una inversa global de $Q_n:\mathbb R\to\mathbb R$, $Q_n(u)=u^n$. Esta función es continua por ser polinómica e inyectiva por la unicidad de las raíces para cada signo; su imagen es toda $\mathbb R$ por existencia. El teorema [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) aplicado al intervalo $\mathbb R$ demuestra que $\widetilde r_n$ es continua en toda la recta, incluido el origen: no hace falta presumir continuidad en el empalme de la definición por casos.
 
-Si $t<0$ y $a=\widetilde r_n(t)<0$, se cumple $Q_n'(a)=na^{n-1}>0$, ya que $n-1$ es par. El teorema @thm-t1-0031 da la fórmula anunciada; para $t>0$ ya la obtuvimos en el paso anterior. El caso $n=1$ vuelve a ser la identidad, incluida su derivada en $0$.
+Si $t<0$ y $a=\widetilde r_n(t)<0$, se cumple $Q_n'(a)=na^{n-1}>0$, ya que $n-1$ es par. El teorema [Teorema 8.1](#thm-t1-0031) da la fórmula anunciada; para $t>0$ ya la obtuvimos en el paso anterior. El caso $n=1$ vuelve a ser la identidad, incluida su derivada en $0$.
 
 **5. Índice par y entrada negativa.** Si $n$ es par, $u^n\ge0$ para cualquier $u\in\mathbb R$. Por consiguiente, la igualdad $u^n=t$ es imposible en los reales cuando $t<0$. Esto no significa que falle un método para hallar la raíz: **no existe el número real buscado**. $\square$
 :::
@@ -691,7 +693,7 @@ Hay un detalle de notación que será decisivo en §8.5: **todavía no hemos def
 
 ### ¿Qué ocurre en cero? El límite que la fórmula no incluye
 
-El resultado @prp-t1-0042 garantiza diferenciabilidad de $r_n$ para $t>0$, pero no permite sustituir $t=0$ en un denominador que entonces puede anularse. El caso $n=1$ es excepcional y sencillo: $r_1$ es la identidad y su derivada relativa en $0$ vale $1$. Consideremos $n\ge2$.
+El resultado [Proposición 8.1](#prp-t1-0042) garantiza diferenciabilidad de $r_n$ para $t>0$, pero no permite sustituir $t=0$ en un denominador que entonces puede anularse. El caso $n=1$ es excepcional y sencillo: $r_1$ es la identidad y su derivada relativa en $0$ vale $1$. Consideremos $n\ge2$.
 
 Para $h>0$, pongamos $u=r_n(h)>0$. Como $u^n=h$ y $r_n(0)=0$, el cociente incremental derecho es exactamente
 
@@ -715,7 +717,7 @@ que crece sin cota porque $n-1$ es par. Esto recupera y generaliza el diagnósti
 ### Un ejemplo que obliga a comprobar todas las etapas
 
 ::: {#exm-t1-0086}
-**Cuarta raíz positiva y raíz cúbica negativa.** Sabemos que $3^4=81$, con $3\ge0$; la unicidad de @prp-t1-0042 demuestra $\sqrt[4]{81}=3$. Para $t=81>0$, la fórmula diferencial sí es aplicable y da
+**Cuarta raíz positiva y raíz cúbica negativa.** Sabemos que $3^4=81$, con $3\ge0$; la unicidad de [Proposición 8.1](#prp-t1-0042) demuestra $\sqrt[4]{81}=3$. Para $t=81>0$, la fórmula diferencial sí es aplicable y da
 
 $$
 \left.\frac{d}{dt}\sqrt[4]{t}\right|_{t=81}
@@ -774,7 +776,7 @@ $$
 x^{m/n}:=[r_n(x)]^m,
 $$
 
-con las potencias enteras interpretadas como en el capítulo 7; el número $r_n(x)$ es estrictamente positivo, de modo que también están definidos sus exponentes negativos. Si $n$ es impar, utilizamos exactamente la misma expresión para $x<0$, pero entendiendo $r_n(x)$ como la extensión real impar $\widetilde r_n(x)$ de @prp-t1-0042. Para $x=0$, definimos $0^{m/n}=0$ **si $m>0$**; si $m<0$, la expresión queda indefinida porque exigiría el recíproco de cero. Para $q=0$, adoptamos la función potencia constante $x^0=1$ en toda $\mathbb R$, en consonancia con el tratamiento funcional del capítulo 7: no estamos asignando aquí un valor a un símbolo aislado $0^0$.
+con las potencias enteras interpretadas como en el capítulo 7; el número $r_n(x)$ es estrictamente positivo, de modo que también están definidos sus exponentes negativos. Si $n$ es impar, utilizamos exactamente la misma expresión para $x<0$, pero entendiendo $r_n(x)$ como la extensión real impar $\widetilde r_n(x)$ de [Proposición 8.1](#prp-t1-0042). Para $x=0$, definimos $0^{m/n}=0$ **si $m>0$**; si $m<0$, la expresión queda indefinida porque exigiría el recíproco de cero. Para $q=0$, adoptamos la función potencia constante $x^0=1$ en toda $\mathbb R$, en consonancia con el tratamiento funcional del capítulo 7: no estamos asignando aquí un valor a un símbolo aislado $0^0$.
 
 Así, para $q\ne0$ reducido, el dominio real natural que hemos fijado es
 
@@ -824,7 +826,7 @@ La derivada de una potencia racional se deduce de las raíces construidas y de l
    $$
 2. Si $n$ es impar, la misma conclusión vale para todo $x<0$, con ambas potencias racionales entendidas mediante sus exponentes reducidos y sus raíces reales. Para $q=0$, la función constante $x^0=1$ tiene derivada $0$ en toda la recta. El enunciado no incluye automáticamente la derivabilidad en $x=0$ cuando $q\ne0$.
 
-**Demostración.** El caso $q=0$ está resuelto por la derivada de la función constante. Supongamos $m\ne0$. En un punto $x>0$, pongamos $u=r_n(x)>0$. Por @prp-t1-0042, $r_n$ es diferenciable en $x$ y $r_n'(x)=1/(nu^{n-1})$. La potencia entera $v\mapsto v^m$ es diferenciable en $u$: para $m>0$ por la regla de potencias naturales y para $m<0$ por la regla de potencias enteras negativas del capítulo 7. La regla de la cadena da
+**Demostración.** El caso $q=0$ está resuelto por la derivada de la función constante. Supongamos $m\ne0$. En un punto $x>0$, pongamos $u=r_n(x)>0$. Por [Proposición 8.1](#prp-t1-0042), $r_n$ es diferenciable en $x$ y $r_n'(x)=1/(nu^{n-1})$. La potencia entera $v\mapsto v^m$ es diferenciable en $u$: para $m>0$ por la regla de potencias naturales y para $m<0$ por la regla de potencias enteras negativas del capítulo 7. La regla de la cadena da
 
 $$
 \begin{aligned}
@@ -836,7 +838,7 @@ $$
 
 El exponente $(m-n)/n$ también está reducido, porque $\gcd(|m-n|,n)=\gcd(|m|,n)=1$. Por la definición anterior, $u^{m-n}=x^{(m-n)/n}=x^{q-1}$; se obtiene así la fórmula anunciada.
 
-Si $n$ es impar y $x<0$, elegimos $u=\widetilde r_n(x)<0$. En particular, $u\ne0$, por lo que la potencia entera $u^m$ sigue siendo diferenciable y su derivada es $mu^{m-1}$. La extensión impar posee, por @prp-t1-0042, derivada $1/(nu^{n-1})$ en $x$, ya que $x\ne0$. Aplicando la misma cadena se obtiene $(m/n)u^{m-n}$. La fracción de $q-1$ continúa reducida y su denominador sigue siendo impar, de modo que $u^{m-n}=x^{q-1}$ también tiene significado real. En ningún paso se ha exigido que $u>0$ para la regla de potencias **enteras**; solo se ha exigido $u\ne0$ cuando el exponente es negativo. $\square$
+Si $n$ es impar y $x<0$, elegimos $u=\widetilde r_n(x)<0$. En particular, $u\ne0$, por lo que la potencia entera $u^m$ sigue siendo diferenciable y su derivada es $mu^{m-1}$. La extensión impar posee, por [Proposición 8.1](#prp-t1-0042), derivada $1/(nu^{n-1})$ en $x$, ya que $x\ne0$. Aplicando la misma cadena se obtiene $(m/n)u^{m-n}$. La fracción de $q-1$ continúa reducida y su denominador sigue siendo impar, de modo que $u^{m-n}=x^{q-1}$ también tiene significado real. En ningún paso se ha exigido que $u>0$ para la regla de potencias **enteras**; solo se ha exigido $u\ne0$ cuando el exponente es negativo. $\square$
 :::
 
 El caso $n=1$ recupera las derivadas enteras previas. Para $q\ne0$, la fórmula se establece en los puntos **no nulos** del dominio correspondiente. Cuando la base es negativa con denominador impar, la potencia $x^{q-1}$ del resultado está igualmente definida, pero su valor no tiene por qué ser positivo: los signos han de obtenerse de la raíz real, no de una interpretación mediante raíces pares.
@@ -882,7 +884,7 @@ $$
 F(x)=(x^2+1)^{3/2},\qquad x\in\mathbb R.
 $$
 
-La función interior siempre es positiva. Como $3/2$ está reducido, @prp-t1-0043 y la regla de la cadena permiten derivar en toda la recta:
+La función interior siempre es positiva. Como $3/2$ está reducido, [Proposición 8.2](#prp-t1-0043) y la regla de la cadena permiten derivar en toda la recta:
 
 $$
 F'(x)=\frac32(x^2+1)^{1/2}\cdot2x
@@ -924,7 +926,7 @@ Aunque esta expresión derivada tenga sentido al sustituir $x=1$, **$H$ sigue si
 Para cada una de las expresiones $(-8)^{2/3}$, $(-8)^{2/6}$, $(-8)^{1/6}$, $x^{3/2}$ en $x=0$ y $((x^2-1)/(x-1))^{-1/2}$ en $x=1$, responde por este orden: ¿cuál es el exponente reducido?, ¿existe la raíz real pertinente?, ¿está permitido el recíproco?, ¿pertenece el punto al dominio de la función original?, ¿se puede aplicar la derivada racional o hay que volver al cociente incremental? Explica asimismo por qué $\sqrt[6]{(-8)^2}$ no puede sustituir a $(-8)^{2/6}$ bajo la convención adoptada.
 :::
 
-Hemos ampliado el repertorio sin ampliar arbitrariamente los dominios: las raíces existen por §8.4; las potencias racionales se definen en términos de ellas y de potencias enteras; sus derivadas proceden de @prp-t1-0043 y de la cadena. La §8.6 estudiará con mayor detalle los puntos donde fallan las hipótesis de esas reglas, las funciones con valor absoluto y los empalmes por tramos.
+Hemos ampliado el repertorio sin ampliar arbitrariamente los dominios: las raíces existen por §8.4; las potencias racionales se definen en términos de ellas y de potencias enteras; sus derivadas proceden de [Proposición 8.2](#prp-t1-0043) y de la cadena. La §8.6 estudiará con mayor detalle los puntos donde fallan las hipótesis de esas reglas, las funciones con valor absoluto y los empalmes por tramos.
 
 ## Puntos excepcionales y funciones por tramos {#sec-t1-c09-06}
 
@@ -944,7 +946,7 @@ $$
 \frac{f(a+h)-c}{h},\qquad h<0\quad\text{y}\quad h>0,
 $$
 
-han de converger al **mismo número real finito**. Es exactamente el criterio de derivadas laterales demostrado en @prp-t1-0037, recuperado aquí para analizar empalmes. Si una de las dos derivadas laterales no existe como número real, o si existen pero difieren, no hay derivada bilateral. Si coinciden, su valor común es la derivada. La continuidad, por sí sola, tampoco garantiza esa igualdad.
+han de converger al **mismo número real finito**. Es exactamente el criterio de derivadas laterales demostrado en [Proposición 6.3](la-derivada-y-la-aproximacion-lineal-local.md#prp-t1-0037), recuperado aquí para analizar empalmes. Si una de las dos derivadas laterales no existe como número real, o si existen pero difieren, no hay derivada bilateral. Si coinciden, su valor común es la derivada. La continuidad, por sí sola, tampoco garantiza esa igualdad.
 
 Podemos comprobarlo directamente: todo incremento no nulo suficientemente pequeño queda a uno de los dos lados de $a$. Si los dos cocientes laterales convergen a $L$, dado $\varepsilon>0$ cada lado proporciona una cota $\delta_-$ o $\delta_+$ para que su cociente diste de $L$ menos de $\varepsilon$. Con $\delta=\min\{\delta_-,\delta_+\}$ la estimación vale para ambos signos de $h$ y, por tanto, para el límite bilateral. Recíprocamente, un límite bilateral restringido a cualquiera de los dos lados conserva su valor. No se ha usado ningún teorema del valor medio.
 
@@ -986,7 +988,7 @@ lo que confirma el resultado sin recurrir a una regla que fuera ilegítima en el
 
 ### Radicales en cero: la cadena puede fallar o quedar restituida
 
-Recordemos de @prp-t1-0042 que $r_n$ no tiene derivada relativa real finita en cero cuando $n\ge2$. Por ello, no podemos aplicar la regla de la cadena a $r_n\circ u$ en un punto $a$ con $u(a)=0$ alegando que conocemos $u'(a)$: falta una de las derivadas requeridas por el teorema. **Esto no prueba que la composición carezca de derivada.** Para decidirlo hay que volver a su cociente, teniendo en cuenta el dominio efectivo $\{x:u(x)\in D_{r_n}\}$.
+Recordemos de [Proposición 8.1](#prp-t1-0042) que $r_n$ no tiene derivada relativa real finita en cero cuando $n\ge2$. Por ello, no podemos aplicar la regla de la cadena a $r_n\circ u$ en un punto $a$ con $u(a)=0$ alegando que conocemos $u'(a)$: falta una de las derivadas requeridas por el teorema. **Esto no prueba que la composición carezca de derivada.** Para decidirlo hay que volver a su cociente, teniendo en cuenta el dominio efectivo $\{x:u(x)\in D_{r_n}\}$.
 
 Concretamente, $x\mapsto\sqrt{x^2}$ está definida en toda la recta e iguala $|x|$; su cociente en cero vale $|h|/h$, cuyos límites laterales son $-1$ y $1$. No hay derivada. En cambio, $x\mapsto\sqrt{x^4}$ está igualmente definida en toda la recta, pero la raíz no negativa de $x^4$ es $x^2$: su cociente en cero es $h^2/h=h$, y su derivada es $0$. Tampoco sería válido concluir que $\sqrt[3]{x^3}$ no es diferenciable en cero porque la raíz cúbica aislada no lo es allí: esta composición coincide con la identidad $x$ y su derivada es $1$.
 
@@ -1053,9 +1055,9 @@ Una vez controlados estos puntos excepcionales, aún queda una precaución anter
 
 ### Lo que afirma una derivada y lo que exige una inversa
 
-En §8.3 demostramos @thm-t1-0031: si una función continua e inyectiva está definida en un intervalo, su inversa existe y es continua sobre la imagen; si además la derivada de la función original en el punto considerado es finita y no nula, entonces podemos derivar la inversa. El orden lógico era importante: **la inyectividad se estableció antes de utilizar la derivada**. ¿Podríamos invertirlo y fabricar la inyectividad únicamente a partir de $f'(a)\ne0$?
+En §8.3 demostramos [Teorema 8.1](#thm-t1-0031): si una función continua e inyectiva está definida en un intervalo, su inversa existe y es continua sobre la imagen; si además la derivada de la función original en el punto considerado es finita y no nula, entonces podemos derivar la inversa. El orden lógico era importante: **la inyectividad se estableció antes de utilizar la derivada**. ¿Podríamos invertirlo y fabricar la inyectividad únicamente a partir de $f'(a)\ne0$?
 
-Conviene separar tres afirmaciones. Que $f'(a)\ne0$ significa que converge a un número no nulo el cociente de incrementos **con un extremo fijo en $a$**. Que $f$ sea inyectiva en un intervalo $I$ significa que $f(u)\ne f(v)$ siempre que $u,v\in I$ y $u\ne v$: aquí **ambos extremos pueden variar**. Finalmente, disponer de una inversa diferenciable en $f(a)$ requiere primero una inversa bien definida y continua, además de las condiciones de @thm-t1-0031. Ninguna de estas afirmaciones es un mero cambio de notación de otra.
+Conviene separar tres afirmaciones. Que $f'(a)\ne0$ significa que converge a un número no nulo el cociente de incrementos **con un extremo fijo en $a$**. Que $f$ sea inyectiva en un intervalo $I$ significa que $f(u)\ne f(v)$ siempre que $u,v\in I$ y $u\ne v$: aquí **ambos extremos pueden variar**. Finalmente, disponer de una inversa diferenciable en $f(a)$ requiere primero una inversa bien definida y continua, además de las condiciones de [Teorema 8.1](#thm-t1-0031). Ninguna de estas afirmaciones es un mero cambio de notación de otra.
 
 La derivada no nula sí da una información local precisa. Sea $a$ un punto interior del dominio de $f$, y supongamos que existe $c=f'(a)\ne0$. Por definición de límite, existe $\delta>0$ tal que
 
@@ -1178,7 +1180,7 @@ $$
 v^3-u^3=(v-u)(v^2+uv+u^2)>0
 $$
 
-prueba su crecimiento estricto: el primer factor es positivo y el segundo también, porque $v^2+uv+u^2=(u+v/2)^2+3v^2/4$ solo se anula cuando $u=v=0$, imposible si $u<v$. La continuidad polinómica, el teorema de los valores intermedios y los valores de $q$ en enteros positivos y negativos muestran que su imagen es toda $\mathbb R$. Por tanto, $q$ es biyectiva y su inversa $q^{-1}(y)=\sqrt[3]{y}$ existe y es continua por @thm-t1-0023. Pero $q'(0)=0$.
+prueba su crecimiento estricto: el primer factor es positivo y el segundo también, porque $v^2+uv+u^2=(u+v/2)^2+3v^2/4$ solo se anula cuando $u=v=0$, imposible si $u<v$. La continuidad polinómica, el teorema de los valores intermedios y los valores de $q$ en enteros positivos y negativos muestran que su imagen es toda $\mathbb R$. Por tanto, $q$ es biyectiva y su inversa $q^{-1}(y)=\sqrt[3]{y}$ existe y es continua por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023). Pero $q'(0)=0$.
 
 La inversa no tiene derivada real finita en el origen: para $y\ne0$,
 
@@ -1190,7 +1192,7 @@ $$
 \qquad(y\to0).
 $$
 
-Aquí la inversa **existe y es continua**, pero la condición $q'(0)\ne0$ de @thm-t1-0031 no se cumple y su conclusión de diferenciabilidad tampoco. Hay una distinción más precisa: **si una función y su inversa son ambas derivables con derivadas finitas en puntos correspondientes, la derivada de la primera no puede anularse**. En efecto, aplicada *después* de haber demostrado ambas derivabilidades, la regla de la cadena a $q^{-1}\circ q=\operatorname{id}$ da $1=(q^{-1})'(q(a))q'(a)$. Esta observación no prueba la derivabilidad de la inversa: solo comprueba una condición necesaria cuando ya se la conoce.
+Aquí la inversa **existe y es continua**, pero la condición $q'(0)\ne0$ de [Teorema 8.1](#thm-t1-0031) no se cumple y su conclusión de diferenciabilidad tampoco. Hay una distinción más precisa: **si una función y su inversa son ambas derivables con derivadas finitas en puntos correspondientes, la derivada de la primera no puede anularse**. En efecto, aplicada *después* de haber demostrado ambas derivabilidades, la regla de la cadena a $q^{-1}\circ q=\operatorname{id}$ da $1=(q^{-1})'(q(a))q'(a)$. Esta observación no prueba la derivabilidad de la inversa: solo comprueba una condición necesaria cuando ya se la conoce.
 
 ::: {#exm-t1-0089}
 **Tres diagnósticos que no deben confundirse.** Compara las siguientes situaciones antes de intentar utilizar una fórmula de derivación inversa.
@@ -1205,7 +1207,7 @@ $$
 r(v)-r(u)=(v-u)(v^2+uv+u^2+1)>0.
 $$
 
-La inyectividad proviene de esta desigualdad **algebraica**. La imagen es toda $\mathbb R$ por continuidad y los valores $r(N)>M$ y $r(-N)<-M$ para enteros $N$ suficientemente grandes y cualquier $M>0$. Su inversa $s$ existe y es continua; dado que $r'(0)=1$, @thm-t1-0031 autoriza $s'(0)=1/r'(0)=1$. Advertencia: haber calculado únicamente $r'(0)=1$ no habría demostrado la inyectividad necesaria.
+La inyectividad proviene de esta desigualdad **algebraica**. La imagen es toda $\mathbb R$ por continuidad y los valores $r(N)>M$ y $r(-N)<-M$ para enteros $N$ suficientemente grandes y cualquier $M>0$. Su inversa $s$ existe y es continua; dado que $r'(0)=1$, [Teorema 8.1](#thm-t1-0031) autoriza $s'(0)=1/r'(0)=1$. Advertencia: haber calculado únicamente $r'(0)=1$ no habría demostrado la inyectividad necesaria.
 :::
 
 ### Leer el teorema en la dirección correcta
@@ -1425,7 +1427,7 @@ $$
 \varphi(a)=b,\qquad F(x,\varphi(x))=0\quad(x\in I),
 $$
 
-y que $\varphi$ es continua en $a$, con respecto al dominio $I$. Sean $A_{a,b}$ y $B_{a,b}$ dos polinomios que satisfacen la descomposición de @lem-t1-0003:
+y que $\varphi$ es continua en $a$, con respecto al dominio $I$. Sean $A_{a,b}$ y $B_{a,b}$ dos polinomios que satisfacen la descomposición de [Lema 8.1](#lem-t1-0003):
 
 $$
 F(x,y)-F(a,b)
@@ -1447,7 +1449,7 @@ $$
 
 La fórmula no depende de la descomposición escogida. El teorema no afirma la existencia de la rama a partir de $F(a,b)=0$.
 
-**Demostración.** Por @lem-t1-0003, para cada $x\in I$ podemos sustituir $y=\varphi(x)$ en la identidad exacta. Como $F(x,\varphi(x))=F(a,b)=0$ y $\varphi(a)=b$, obtenemos
+**Demostración.** Por [Lema 8.1](#lem-t1-0003), para cada $x\in I$ podemos sustituir $y=\varphi(x)$ en la identidad exacta. Como $F(x,\varphi(x))=F(a,b)=0$ y $\varphi(a)=b$, obtenemos
 
 $$
 0=(x-a)A_{a,b}(x,\varphi(x))
@@ -1491,7 +1493,7 @@ $$
 =-\frac{A_{a,b}(a,b)}{B_{a,b}(a,b)}\in\mathbb R.
 $$
 
-El punto de acumulación garantiza que el límite corresponde a incrementos admisibles no vacíos; por definición, es la derivada relativa de $\varphi$ en $a$. El último enunciado sobre independencia procede también de @lem-t1-0003: aunque puedan variar los polinomios $A,B$, sus valores en $(a,b)$ no varían. $\square$
+El punto de acumulación garantiza que el límite corresponde a incrementos admisibles no vacíos; por definición, es la derivada relativa de $\varphi$ en $a$. El último enunciado sobre independencia procede también de [Lema 8.1](#lem-t1-0003): aunque puedan variar los polinomios $A,B$, sus valores en $(a,b)$ no varían. $\square$
 :::
 
 ### Lectura de la prueba: dónde entra cada hipótesis
@@ -1603,7 +1605,7 @@ $$
 y=\sqrt{1-x^2}\qquad\text{e}\qquad y=-\sqrt{1-x^2}.
 $$
 
-Por tanto, $C$ no es la gráfica de una sola función $y(x)$ definida sobre $(-1,1)$. La proyección de $C$ sobre el eje horizontal es $[-1,1]$, pero la unicidad vertical falla en cada punto interior. En cambio, para $x=\pm1$ ambas expresiones producen el mismo valor $0$. Recordemos la definición @def-t1-0046: solo después de fijar una función $\varphi:I\to\mathbb R$ cuyo grafo esté contenido en el conjunto de ceros podemos hablar de *su* derivada.
+Por tanto, $C$ no es la gráfica de una sola función $y(x)$ definida sobre $(-1,1)$. La proyección de $C$ sobre el eje horizontal es $[-1,1]$, pero la unicidad vertical falla en cada punto interior. En cambio, para $x=\pm1$ ambas expresiones producen el mismo valor $0$. Recordemos la definición [Definición 8.1](#def-t1-0046): solo después de fijar una función $\varphi:I\to\mathbb R$ cuyo grafo esté contenido en el conjunto de ceros podemos hablar de *su* derivada.
 
 ::: {.callout-warning title="Error de lectura"}
 Resolver una ecuación para $y$ puede ofrecer varias expresiones. Anotar $y'$ antes de escoger dominio y rama no especifica qué objeto se pretende derivar.
@@ -1625,7 +1627,7 @@ $$
 \qquad \psi_\pm(x)^2=x^3.
 $$
 
-La potencia racional ya fue construida en §8.5; no necesitamos postular una solución implícita. Para apreciar por qué la condición $F(a,b)=0$ **no es, por sí sola, una construcción de rama**, tomemos $F(x,y)=x^2+y^2$. Su único cero real es $(0,0)$: los cuadrados son no negativos y su suma solo puede ser cero cuando ambos se anulan. No existe una rama $\varphi:I\to\mathbb R$ por ese punto si exigimos que $0$ sea punto de acumulación de $I$ y $F(x,\varphi(x))=0$ para todo $x\in I$, porque entonces $I\subseteq\{0\}$, contradiciendo la acumulación. Esto no contradice @thm-t1-0032: aquí no se ha dado una rama continua a la cual aplicarlo.
+La potencia racional ya fue construida en §8.5; no necesitamos postular una solución implícita. Para apreciar por qué la condición $F(a,b)=0$ **no es, por sí sola, una construcción de rama**, tomemos $F(x,y)=x^2+y^2$. Su único cero real es $(0,0)$: los cuadrados son no negativos y su suma solo puede ser cero cuando ambos se anulan. No existe una rama $\varphi:I\to\mathbb R$ por ese punto si exigimos que $0$ sea punto de acumulación de $I$ y $F(x,\varphi(x))=0$ para todo $x\in I$, porque entonces $I\subseteq\{0\}$, contradiciendo la acumulación. Esto no contradice [Teorema 8.2](#thm-t1-0032): aquí no se ha dado una rama continua a la cual aplicarlo.
 
 ### Estación 3. Precisar el dominio y los incrementos admisibles
 
@@ -1674,7 +1676,7 @@ que pertenece al mismo conjunto de ceros, pero tiene cocientes laterales $-1$ y 
 
 ### Estación 5. Calcular los coeficientes algebraicos correctos
 
-Para aplicar @thm-t1-0032, el punto $(a,b)$ debe pertenecer a la relación, la rama ya debe estar construida y hay que disponer de la identidad exacta de @lem-t1-0003:
+Para aplicar [Teorema 8.2](#thm-t1-0032), el punto $(a,b)$ debe pertenecer a la relación, la rama ya debe estar construida y hay que disponer de la identidad exacta de [Lema 8.1](#lem-t1-0003):
 
 $$
 F(x,y)-F(a,b)=(x-a)A_{a,b}(x,y)+(y-b)B_{a,b}(x,y).
@@ -1729,7 +1731,7 @@ No basta advertir que una conclusión «puede fallar»; debe identificarse exact
 | «No se aplica el teorema; por tanto, no existe derivada». | Es la misma confusión lógica anterior: la rama $\psi_+$ no satisface $B\ne0$ y, sin embargo, tiene derivada. |
 | «La ecuación fija una sola pendiente en el cruce». | $\chi_1'(0)=1$ y $\chi_2'(0)=-1$ para la misma ecuación. |
 
-Una condición suficiente como $B(a,b)\ne0$ sirve para **probar** una conclusión cuando concurren *todas* las hipótesis de @thm-t1-0032. Su incumplimiento no demuestra la negación de la conclusión. En cambio, la ausencia de rama sí impide formular una derivada de esa rama: no es un defecto de cálculo, sino una ausencia del objeto que se pretende estudiar.
+Una condición suficiente como $B(a,b)\ne0$ sirve para **probar** una conclusión cuando concurren *todas* las hipótesis de [Teorema 8.2](#thm-t1-0032). Su incumplimiento no demuestra la negación de la conclusión. En cambio, la ausencia de rama sí impide formular una derivada de esa rama: no es un defecto de cálculo, sino una ausencia del objeto que se pretende estudiar.
 
 ### Estación 8. Parametrizar con restricción y recuperar una gráfica local
 
@@ -1747,14 +1749,14 @@ x(t)-x(s)
 =(t-s)(t^2+ts+s^2+1)>0.
 $$
 
-Por tanto, $x:T\to J=x(T)=[0,10]$ es continua, estrictamente creciente y biyectiva sobre su imagen. @thm-t1-0023 garantiza que su inversa $g:J\to T$ es continua: ahora sí existe la función
+Por tanto, $x:T\to J=x(T)=[0,10]$ es continua, estrictamente creciente y biyectiva sobre su imagen. [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) garantiza que su inversa $g:J\to T$ es continua: ahora sí existe la función
 
 $$
 \Phi:J\longrightarrow\mathbb R,
 \qquad\Phi(u)=y(g(u))=g(u)^2.
 $$
 
-En $t_0=1$ obtenemos $u_0=x(1)=2$ y $\Phi(2)=1$. Como $x'(1)=4\ne0$ y $y'(1)=2$, @thm-t1-0031 y la regla de la cadena, aplicados **después de construir la inversa**, producen
+En $t_0=1$ obtenemos $u_0=x(1)=2$ y $\Phi(2)=1$. Como $x'(1)=4\ne0$ y $y'(1)=2$, [Teorema 8.1](#thm-t1-0031) y la regla de la cadena, aplicados **después de construir la inversa**, producen
 
 $$
 \Phi'(2)=y'(1)g'(2)
@@ -1776,7 +1778,7 @@ $$
 F(u,v)=u^2-v(v+1)^2=0,
 $$
 
-porque $u=t(t^2+1)$ y $v=t^2$. En $(u,v)=(2,1)$ el telescopado tiene valores $A=2u=4$ y $B=-(3v^2+4v+1)=-8$; @thm-t1-0032 vuelve a dar $-A/B=1/2$ para la rama continua $\Phi$ ya construida. El acuerdo entre los dos métodos verifica un mismo objeto, no la existencia automática de una rama a partir de la ecuación.
+porque $u=t(t^2+1)$ y $v=t^2$. En $(u,v)=(2,1)$ el telescopado tiene valores $A=2u=4$ y $B=-(3v^2+4v+1)=-8$; [Teorema 8.2](#thm-t1-0032) vuelve a dar $-A/B=1/2$ para la rama continua $\Phi$ ya construida. El acuerdo entre los dos métodos verifica un mismo objeto, no la existencia automática de una rama a partir de la ecuación.
 
 ### Traducción final: qué significa la pendiente y qué no significa
 
@@ -1909,17 +1911,17 @@ Los cuarenta ejercicios originales se distribuyen en los niveles $7A+7B+7C+6D+5E
 
 ::: {#exr-t1-0337}
 <!-- CPM-T1-EXR-0337 | D | CONCEPTUAL | PROOF | ORIGINAL -->
-**Ejercicio D1. La cadena no construye la inversa diferenciable.** Alguien escribe $f(g(y))=y$ y, derivando, obtiene $f'(g(y))g'(y)=1$. Identifica la hipótesis que da por supuesta; reconstruye el orden no circular de @thm-t1-0031.
+**Ejercicio D1. La cadena no construye la inversa diferenciable.** Alguien escribe $f(g(y))=y$ y, derivando, obtiene $f'(g(y))g'(y)=1$. Identifica la hipótesis que da por supuesta; reconstruye el orden no circular de [Teorema 8.1](#thm-t1-0031).
 :::
 
 ::: {#exr-t1-0338}
 <!-- CPM-T1-EXR-0338 | D | COUNTEREXAMPLE | INVERSE | ORIGINAL -->
-**Ejercicio D2. ¿La derivada no nula es necesaria para la existencia de la inversa?** Contrasta las propiedades de $f(x)=x^3$ y $g=f^{-1}$ en el origen. Precisa qué requisito sirve para construir $g$ y qué falla al tratar de derivarla con @thm-t1-0031.
+**Ejercicio D2. ¿La derivada no nula es necesaria para la existencia de la inversa?** Contrasta las propiedades de $f(x)=x^3$ y $g=f^{-1}$ en el origen. Precisa qué requisito sirve para construir $g$ y qué falla al tratar de derivarla con [Teorema 8.1](#thm-t1-0031).
 :::
 
 ::: {#exr-t1-0339}
 <!-- CPM-T1-EXR-0339 | D | CONCEPTUAL | IMPLICIT | ORIGINAL -->
-**Ejercicio D3. Una conclusión que no figura en el teorema.** Si $F(a,b)=0$ y $B_{a,b}(a,b)\ne0$, ¿puede invocarse **únicamente** @thm-t1-0032 para declarar que existe una rama continua alrededor de $a$? Identifica con precisión la hipótesis que falta en ese teorema y distingue «no demostrado por este resultado» de «matemáticamente falso».
+**Ejercicio D3. Una conclusión que no figura en el teorema.** Si $F(a,b)=0$ y $B_{a,b}(a,b)\ne0$, ¿puede invocarse **únicamente** [Teorema 8.2](#thm-t1-0032) para declarar que existe una rama continua alrededor de $a$? Identifica con precisión la hipótesis que falta en ese teorema y distingue «no demostrado por este resultado» de «matemáticamente falso».
 :::
 
 ::: {#exr-t1-0340}
@@ -2026,7 +2028,7 @@ son biyectivas: cada $t\ge0$ tiene exactamente una preimagen no negativa y una n
 
 ::: {#sol-t1-0317}
 <!-- CPM-T1-SOL-0317 -->
-**Solución A2.** Por @thm-t1-0023, $g:J\to I$ existe y es continua. Las hipótesis de @thm-t1-0031 permiten afirmar, con derivadas relativas,
+**Solución A2.** Por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023), $g:J\to I$ existe y es continua. Las hipótesis de [Teorema 8.1](#thm-t1-0031) permiten afirmar, con derivadas relativas,
 
 $$
 g'_J(b)=\frac{1}{f'_I(a)},\qquad b=f(a),\quad a=g(b).
@@ -2037,7 +2039,7 @@ Si la condición se verifica en todos los puntos apropiados de $J$, puede escrib
 
 ::: {#sol-t1-0318}
 <!-- CPM-T1-SOL-0318 -->
-**Solución A3.** Si $f'(a)=L\ne0$, el cociente $(f(x)-f(a))/(x-a)$ tiene el signo de $L$ cerca de $a$ para $x\ne a$. De ello se deduce que $f(x)\ne f(a)$ suficientemente cerca de $a$, esto es, el valor central queda aislado entre los valores vecinos. Pero la inyectividad exige $f(u)\ne f(v)$ para **cualesquiera** $u\ne v$ del mismo intervalo, no solo cuando uno sea $a$. El contraejemplo construido en §8.7 (y reconstruido en G1) presenta $f'(0)=1$ con valores repetidos en cada entorno de $0$. @thm-t1-0023 supone continuidad e inyectividad en el intervalo; no deriva esta última de una sola pendiente no nula.
+**Solución A3.** Si $f'(a)=L\ne0$, el cociente $(f(x)-f(a))/(x-a)$ tiene el signo de $L$ cerca de $a$ para $x\ne a$. De ello se deduce que $f(x)\ne f(a)$ suficientemente cerca de $a$, esto es, el valor central queda aislado entre los valores vecinos. Pero la inyectividad exige $f(u)\ne f(v)$ para **cualesquiera** $u\ne v$ del mismo intervalo, no solo cuando uno sea $a$. El contraejemplo construido en §8.7 (y reconstruido en G1) presenta $f'(0)=1$ con valores repetidos en cada entorno de $0$. [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) supone continuidad e inyectividad en el intervalo; no deriva esta última de una sola pendiente no nula.
 :::
 
 ::: {#sol-t1-0319}
@@ -2138,13 +2140,13 @@ El punto $-3$ no pertenece a la función. En $2$, el cociente derecho es $f(2+h)
 
 ::: {#sol-t1-0327}
 <!-- CPM-T1-SOL-0327 -->
-**Solución B5.** Si $u<v\le0$, entonces $u^2>v^2$, de modo que $q$ es inyectiva en el semieje negativo. Toda salida $y\ge0$ tiene una única preimagen allí, $u=-\sqrt y$; la función es biyectiva y $g(y)=-\sqrt y$. La continuidad de la inversa también se obtiene por @thm-t1-0023. Para $y>0$,
+**Solución B5.** Si $u<v\le0$, entonces $u^2>v^2$, de modo que $q$ es inyectiva en el semieje negativo. Toda salida $y\ge0$ tiene una única preimagen allí, $u=-\sqrt y$; la función es biyectiva y $g(y)=-\sqrt y$. La continuidad de la inversa también se obtiene por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023). Para $y>0$,
 
 $$
 g'(y)=-\frac1{2\sqrt y},
 $$
 
-por la regla de la raíz o @thm-t1-0031, pues $q'(-\sqrt y)=-2\sqrt y\ne0$. La rama inversa positiva del cuadrado posee el signo opuesto, $+1/(2\sqrt y)$; ambas requieren indicar qué función se está invirtiendo.
+por la regla de la raíz o [Teorema 8.1](#thm-t1-0031), pues $q'(-\sqrt y)=-2\sqrt y\ne0$. La rama inversa positiva del cuadrado posee el signo opuesto, $+1/(2\sqrt y)$; ambas requieren indicar qué función se está invirtiendo.
 :::
 
 ::: {#sol-t1-0328}
@@ -2155,7 +2157,7 @@ $$
 F(x,y)-F(a,b)=(x-a)(x+a)+(y-b)(y+b).
 $$
 
-En $(a,b)=(3,4)$, $A(a,b)=6$ y $B(a,b)=8\ne0$. Por @thm-t1-0032, la rama continua es diferenciable en $3$ y $\varphi'(3)=-6/8=\boxed{-3/4}$. La existencia y continuidad de la rama precedieron a la aplicación del criterio.
+En $(a,b)=(3,4)$, $A(a,b)=6$ y $B(a,b)=8\ne0$. Por [Teorema 8.2](#thm-t1-0032), la rama continua es diferenciable en $3$ y $\varphi'(3)=-6/8=\boxed{-3/4}$. La existencia y continuidad de la rama precedieron a la aplicación del criterio.
 :::
 
 ::: {#sol-t1-0329}
@@ -2180,7 +2182,7 @@ $$
 v^n-u^n=(v-u)\sum_{k=0}^{n-1}v^{n-1-k}u^k>0,
 $$
 
-así que la solución es única. La restricción $P:[0,\infty)\to[0,\infty)$ es una biyección continua en un intervalo, cuya inversa $r_n$ es continua por @thm-t1-0023. En $a=r_n(t)>0$, $P'(a)=na^{n-1}>0$; @thm-t1-0031 da $r_n'(t)=1/(na^{n-1})$. Para $n=1$, la misma fórmula es $1$. Ni la existencia ni la inyectividad se obtuvieron del signo de una derivada.
+así que la solución es única. La restricción $P:[0,\infty)\to[0,\infty)$ es una biyección continua en un intervalo, cuya inversa $r_n$ es continua por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023). En $a=r_n(t)>0$, $P'(a)=na^{n-1}>0$; [Teorema 8.1](#thm-t1-0031) da $r_n'(t)=1/(na^{n-1})$. Para $n=1$, la misma fórmula es $1$. Ni la existencia ni la inyectividad se obtuvieron del signo de una derivada.
 :::
 
 ::: {#sol-t1-0331}
@@ -2229,7 +2231,7 @@ F(x,y)-F(a,b)&=(x-a)(x^2+xa+a^2+y)\\
 \end{aligned}
 $$
 
-pues primero variamos $x$ manteniendo $y$ fijo y luego $y$ manteniendo $x=a$. Por tanto $A_{a,b}(a,b)=3a^2+b$ y $B_{a,b}(a,b)=a+3b^2$; en $(0,1)$ valen $1$ y $3$, respectivamente. Como la rama ha sido **dada** y es continua en $0$, @thm-t1-0032 asegura que $\varphi'_I(0)=-1/3$. El enunciado no ha construido una rama para esta ecuación ni demuestra, por sí solo, un teorema general de existencia local; la diferenciabilidad es una conclusión condicionada a la rama continua especificada.
+pues primero variamos $x$ manteniendo $y$ fijo y luego $y$ manteniendo $x=a$. Por tanto $A_{a,b}(a,b)=3a^2+b$ y $B_{a,b}(a,b)=a+3b^2$; en $(0,1)$ valen $1$ y $3$, respectivamente. Como la rama ha sido **dada** y es continua en $0$, [Teorema 8.2](#thm-t1-0032) asegura que $\varphi'_I(0)=-1/3$. El enunciado no ha construido una rama para esta ecuación ni demuestra, por sí solo, un teorema general de existencia local; la diferenciabilidad es una conclusión condicionada a la rama continua especificada.
 :::
 
 ::: {#sol-t1-0335}
@@ -2240,7 +2242,7 @@ $$
 x(t)-x(s)=(t-s)(t^2+ts+s^2+1)>0.
 $$
 
-La función $x:[0,2]\to[0,10]$ es continua, estrictamente creciente y sobreyectiva por el valor intermedio; por @thm-t1-0023 posee inversa continua $g:[0,10]\to[0,2]$. Así existe la función $Y(u)=g(u)^2$ y $Y(2)=1$. En $t_0=1$, $x'(1)=4\ne0$ y $y'(1)=2$; la regla inversa seguida de cadena proporciona $Y'(2)=2/4=1/2$. Independientemente, si $t\ne1$,
+La función $x:[0,2]\to[0,10]$ es continua, estrictamente creciente y sobreyectiva por el valor intermedio; por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) posee inversa continua $g:[0,10]\to[0,2]$. Así existe la función $Y(u)=g(u)^2$ y $Y(2)=1$. En $t_0=1$, $x'(1)=4\ne0$ y $y'(1)=2$; la regla inversa seguida de cadena proporciona $Y'(2)=2/4=1/2$. Independientemente, si $t\ne1$,
 
 $$
 \frac{y(t)-y(1)}{x(t)-x(1)}
@@ -2275,7 +2277,7 @@ El numerador tiende a $\sqrt[3]3>0$, mientras el denominador tiende a $0$ por va
 
 ::: {#sol-t1-0337}
 <!-- CPM-T1-SOL-0337 -->
-**Solución D1.** La cadena $D(f\circ g)(y)=f'(g(y))g'(y)$ solo puede invocarse si **ya sabemos que $g$ es diferenciable**. Pero esa es precisamente la conclusión buscada. El orden correcto es: (i) demostrar que $f:I\to J=f(I)$ es biyectiva a partir de la inyectividad y de su imagen; (ii) obtener la continuidad de $g:J\to I$ por @thm-t1-0023; (iii) fijar $b=f(a)$ y escribir, para $y\ne b$, con $x=g(y)$,
+**Solución D1.** La cadena $D(f\circ g)(y)=f'(g(y))g'(y)$ solo puede invocarse si **ya sabemos que $g$ es diferenciable**. Pero esa es precisamente la conclusión buscada. El orden correcto es: (i) demostrar que $f:I\to J=f(I)$ es biyectiva a partir de la inyectividad y de su imagen; (ii) obtener la continuidad de $g:J\to I$ por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023); (iii) fijar $b=f(a)$ y escribir, para $y\ne b$, con $x=g(y)$,
 
 $$
 \frac{g(y)-g(b)}{y-b}
@@ -2293,12 +2295,12 @@ $$
 \frac{g(h)-g(0)}h=\frac{\sqrt[3]h}{h}=\frac1{|h|^{2/3}}\longrightarrow+\infty,
 $$
 
-por lo que $g$ no tiene derivada real finita allí. La inyectividad y la correspondencia con la imagen crean la inversa; la condición $f'(a)\ne0$ es una hipótesis **suficiente para la fórmula diferencial** de @thm-t1-0031, no un requisito para que exista una inversa como función.
+por lo que $g$ no tiene derivada real finita allí. La inyectividad y la correspondencia con la imagen crean la inversa; la condición $f'(a)\ne0$ es una hipótesis **suficiente para la fórmula diferencial** de [Teorema 8.1](#thm-t1-0031), no un requisito para que exista una inversa como función.
 :::
 
 ::: {#sol-t1-0339}
 <!-- CPM-T1-SOL-0339 -->
-**Solución D3.** @thm-t1-0032 tiene la forma: «si hay un intervalo $I$, un punto $a$ de acumulación y una rama $\varphi:I\to\mathbb R$ **ya dada y continua** que satisface la relación, entonces, bajo $B(a,b)\ne0$, esa rama es diferenciable». Por tanto, no puede invocarse el propio teorema para obtener la existencia de $\varphi$; sería afirmar una premisa a partir de su consecuencia condicionada. La frase «no está demostrado por este teorema» **no** implica que el enunciado de existencia con $B\ne0$ sea falso en matemáticas. La cuestión general de existencia local requiere una demostración adicional que no forma parte del resultado aquí utilizado y se reserva para el teorema implícito posterior. Sin condición sobre $B$, incluso $F(x,y)=x^2+y^2$ en $(0,0)$ muestra que una ecuación satisfecha en un punto puede carecer de ramas sobre intervalos no triviales.
+**Solución D3.** [Teorema 8.2](#thm-t1-0032) tiene la forma: «si hay un intervalo $I$, un punto $a$ de acumulación y una rama $\varphi:I\to\mathbb R$ **ya dada y continua** que satisface la relación, entonces, bajo $B(a,b)\ne0$, esa rama es diferenciable». Por tanto, no puede invocarse el propio teorema para obtener la existencia de $\varphi$; sería afirmar una premisa a partir de su consecuencia condicionada. La frase «no está demostrado por este teorema» **no** implica que el enunciado de existencia con $B\ne0$ sea falso en matemáticas. La cuestión general de existencia local requiere una demostración adicional que no forma parte del resultado aquí utilizado y se reserva para el teorema implícito posterior. Sin condición sobre $B$, incluso $F(x,y)=x^2+y^2$ en $(0,0)$ muestra que una ecuación satisfecha en un punto puede carecer de ramas sobre intervalos no triviales.
 :::
 
 ::: {#sol-t1-0340}
@@ -2341,7 +2343,7 @@ Para $0<s<1$, $\sqrt{2-s}\ge1$, así que el cociente es a lo sumo $-1/\sqrt s$ y
 
 ::: {#sol-t1-0343}
 <!-- CPM-T1-SOL-0343 -->
-**Solución E1.** Tomemos $f:\mathbb R\to\mathbb R$, $f(x)=x^3$. Es polinómica, luego continua. Si $u<v$, el cubo preserva estrictamente el orden, de modo que $f$ es inyectiva; $f'(0)=3\cdot0^2=0$. La inversa existe y es continua por @thm-t1-0023, pero $g(y)=\sqrt[3]y$ tiene en $0$ el cociente $g(h)/h=|h|^{-2/3}$, que no posee límite real finito. Se ha construido una inversa a pesar de una derivada original nula; no se ha afirmado que todas las inversas presenten ese comportamiento.
+**Solución E1.** Tomemos $f:\mathbb R\to\mathbb R$, $f(x)=x^3$. Es polinómica, luego continua. Si $u<v$, el cubo preserva estrictamente el orden, de modo que $f$ es inyectiva; $f'(0)=3\cdot0^2=0$. La inversa existe y es continua por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023), pero $g(y)=\sqrt[3]y$ tiene en $0$ el cociente $g(h)/h=|h|^{-2/3}$, que no posee límite real finito. Se ha construido una inversa a pesar de una derivada original nula; no se ha afirmado que todas las inversas presenten ese comportamiento.
 :::
 
 ::: {#sol-t1-0344}
@@ -2368,7 +2370,7 @@ Para $0<s<1$, $\sqrt{2-s}\ge1$, así que el cociente es a lo sumo $-1/\sqrt s$ y
 
 ::: {#sol-t1-0348}
 <!-- CPM-T1-SOL-0348 -->
-**Solución F1.** (a) $f:I\to J=f(I)$ es biyectiva por inyectividad y definición de imagen. @thm-t1-0023 proporciona su inversa continua $g$. Dado $\varepsilon>0$, la continuidad de $f$ y la acumulación de $a$ permiten encontrar $x\ne a$ con $|x-a|$ pequeño y $0<|f(x)-f(a)|<\varepsilon$; la segunda desigualdad estricta usa inyectividad. Luego $b$ es punto de acumulación de $J$.
+**Solución F1.** (a) $f:I\to J=f(I)$ es biyectiva por inyectividad y definición de imagen. [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) proporciona su inversa continua $g$. Dado $\varepsilon>0$, la continuidad de $f$ y la acumulación de $a$ permiten encontrar $x\ne a$ con $|x-a|$ pequeño y $0<|f(x)-f(a)|<\varepsilon$; la segunda desigualdad estricta usa inyectividad. Luego $b$ es punto de acumulación de $J$.
 
 (b) Para $y\in J\setminus\{b\}$ sea $x=g(y)\ne a$. Se cumple exactamente
 
@@ -2392,7 +2394,7 @@ Así $g'_J(b)=1/L$. La demostración construye la derivada a partir de límites 
 <!-- CPM-T1-SOL-0349 -->
 **Solución F2.** (a) Sean $u<v$. Si ambos son no negativos, $u^n<v^n$ por la factorización de $v^n-u^n$ con factores no negativos. Si ambos son negativos, $0<-v<-u$ y, como $n$ es impar, $u^n=-(-u)^n<-(-v)^n=v^n$. Si $u<0\le v$, también $u^n<0\le v^n$. La potencia impar es estrictamente creciente en toda $\mathbb R$.
 
-(b) El polinomio $P(u)=u^n$ es continuo. Para cualquier $t$ elegimos $M>|t|+1$, de modo que $P(-M)<t<P(M)$; el valor intermedio da una solución y la estrictez la hace única. Por @thm-t1-0023 la inversa $r_n:\mathbb R\to\mathbb R$ es continua. Equivale a la raíz impar construida en §8.4.
+(b) El polinomio $P(u)=u^n$ es continuo. Para cualquier $t$ elegimos $M>|t|+1$, de modo que $P(-M)<t<P(M)$; el valor intermedio da una solución y la estrictez la hace única. Por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023) la inversa $r_n:\mathbb R\to\mathbb R$ es continua. Equivale a la raíz impar construida en §8.4.
 
 (c) Para $t<0$, $a=r_n(t)<0$, y $P'(a)=na^{n-1}>0$ porque $n-1$ es par (para $n=1$, $P'=1$). El teorema inverso da
 
@@ -2442,7 +2444,7 @@ $$
 P(v)-P(u)=(v-u)(v^2+uv+u^2+1)>0,
 $$
 
-pues $v^2+uv+u^2\ge0$. Así $P$ es inyectiva; para cualquier $x\in\mathbb R$, eligiendo $M>|x|+1$ se obtiene $P(-M)<x<P(M)$ y el valor intermedio garantiza un único antecedente. Podemos definir $\varphi=P^{-1}:\mathbb R\to\mathbb R$; es continua por @thm-t1-0023. Como $P'(u)=3u^2+1\ge1$, @thm-t1-0031 demuestra que la inversa es diferenciable en cada salida $x$ y
+pues $v^2+uv+u^2\ge0$. Así $P$ es inyectiva; para cualquier $x\in\mathbb R$, eligiendo $M>|x|+1$ se obtiene $P(-M)<x<P(M)$ y el valor intermedio garantiza un único antecedente. Podemos definir $\varphi=P^{-1}:\mathbb R\to\mathbb R$; es continua por [Teorema 5.7](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0023). Como $P'(u)=3u^2+1\ge1$, [Teorema 8.1](#thm-t1-0031) demuestra que la inversa es diferenciable en cada salida $x$ y
 
 $$
 \boxed{\varphi'(x)=\frac{1}{3[\varphi(x)]^2+1}}.
@@ -2524,7 +2526,11 @@ $$
 
 por lo que $\varphi_+'(0)=1$ y $\varphi_-'(0)=-1$. Se puede comprobar directamente en $0$ con $\varphi_\pm(h)/h=\pm\sqrt{1+h}\to\pm1$, sin presumir diferenciabilidad de una función implícita.
 
-En el telescopado respecto de $(0,0)$ podemos tomar $A_{0,0}(x,y)=-x(1+x)$ y $B_{0,0}(x,y)=y$, pues $F(x,y)=-x\,[x(1+x)]+y\,y$. Ambos valores en $(0,0)$ son $0$. El criterio suficiente de @thm-t1-0032 no se aplica ($B=0$), pero **no contradice** que cada rama construida posea su propia derivada. Las dos rectas de pendiente $1$ y $-1$ son tangentes a dos gráficas distintas, no una pendiente escogida por la ecuación completa.
+En el telescopado respecto de $(0,0)$ podemos tomar $A_{0,0}(x,y)=-x(1+x)$ y $B_{0,0}(x,y)=y$, pues $F(x,y)=-x\,[x(1+x)]+y\,y$. Ambos valores en $(0,0)$ son $0$. El criterio suficiente de [Teorema 8.2](#thm-t1-0032) no se aplica ($B=0$), pero **no contradice** que cada rama construida posea su propia derivada. Las dos rectas de pendiente $1$ y $-1$ son tangentes a dos gráficas distintas, no una pendiente escogida por la ecuación completa.
 :::
 
 El banco cierra la progresión del capítulo: una función debe existir antes de que podamos derivarla; la diferenciabilidad requiere límites con el dominio correcto; una condición suficiente nunca puede invertirse sin argumento adicional. Los cuarenta enunciados y sus cuarenta soluciones permanecen unidos en este manuscrito. El cierre editorial y la publicación quedan supeditados a las auditorías matemática, estructural y visual del capítulo completo.
+
+---
+
+[← Capítulo 7](algebra-de-derivadas-y-regla-de-la-cadena.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 9 →](teoremas-de-rolle-y-del-valor-medio.md)

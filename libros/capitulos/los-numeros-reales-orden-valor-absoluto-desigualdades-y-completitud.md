@@ -1,57 +1,34 @@
 ---
 title: "Los números reales: axiomas de cuerpo, orden y completitud"
-description: "Capítulo 1 de Cálculo para matemáticos. Edición canónica v11."
+description: "Capítulo 1 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0003
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-date-created: 2026-09-09
-date-modified: 2026-09-28
-areas:
-  - fundamentos
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
-topics:
-  - numeros-reales
-  - numeros-racionales
-  - cuerpo-ordenado
-  - orden
-  - desigualdades
-  - valor-absoluto
-  - distancia
-  - cotas
-  - supremo
-  - infimo
-  - completitud
-  - raices
-  - propiedad-arquimediana
-  - densidad
-  - intervalos-encajados
-  - biseccion
-prerequisites: []
-related:
-  - MA-CON-0020
-  - MA-CON-0005
-  - MA-CON-0002
-  - MA-CON-0016
-  - MA-PRB-0006
-  - MA-ART-0003
-  - MA-BOK-0001
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
+date-created: 2026-09-09
+date-modified: 2026-09-30
+prerequisites:
+  []
 number-sections: true
 number-depth: 2
 number-offset: [0]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Los números reales: axiomas de cuerpo, orden y completitud {#sec-t1-c02}
+
+[Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 2 →](funciones-reales-estructura-composicion-inversas-y-graficas.md)
 
 En los cálculos elementales solemos utilizar los números reales como si fueran un escenario ya terminado. Sumamos, multiplicamos, comparamos, trazamos puntos sobre una recta y escribimos expresiones con raíces sin detenernos a preguntar qué propiedad del sistema numérico hace posibles esas operaciones y esas existencias.
 
@@ -536,7 +513,7 @@ $$
 0+0=0,
 $$
 
-el propio $0$ es un inverso aditivo de $0$. Por la unicidad demostrada en @prp-t1-0025,
+el propio $0$ es un inverso aditivo de $0$. Por la unicidad demostrada en [Proposición 1.1](#prp-t1-0025),
 
 $$
 -0=0.
@@ -571,7 +548,7 @@ $$
 -(a+b)=(-a)+(-b).
 $$
 
-Pasemos a las reglas de signos. Por conmutatividad, distributividad y @exm-t1-0040,
+Pasemos a las reglas de signos. Por conmutatividad, distributividad y [Ejemplo 1.1](#exm-t1-0040),
 
 $$
 \begin{aligned}
@@ -612,7 +589,7 @@ $$
 aa^{-1}=1.
 $$
 
-No puede ocurrir que $a^{-1}=0$, porque entonces @exm-t1-0040 daría
+No puede ocurrir que $a^{-1}=0$, porque entonces [Ejemplo 1.1](#exm-t1-0040) daría
 
 $$
 aa^{-1}=a0=0,
@@ -657,7 +634,7 @@ En particular, $ab$ no puede ser $0$: si lo fuera, el miembro izquierdo sería
 $$
 0c=c0=0,
 $$
-por conmutatividad y @exm-t1-0040, contradiciendo $1\ne0$. Por tanto, $ab\ne0$ y posee inverso multiplicativo. Como $c$ es un inverso de $ab$, la unicidad implica
+por conmutatividad y [Ejemplo 1.1](#exm-t1-0040), contradiciendo $1\ne0$. Por tanto, $ab\ne0$ y posee inverso multiplicativo. Como $c$ es un inverso de $ab$, la unicidad implica
 
 $$
 (ab)^{-1}=a^{-1}b^{-1}.
@@ -756,7 +733,7 @@ $$
 
 Nuevamente, la recíproca sigue de sustituir iguales por iguales.
 
-Consideremos ahora el producto nulo. Si $b=0$, @exm-t1-0040 da directamente $ab=a0=0$. Si $a=0$, usamos además conmutatividad:
+Consideremos ahora el producto nulo. Si $b=0$, [Ejemplo 1.1](#exm-t1-0040) da directamente $ab=a0=0$. Si $a=0$, usamos además conmutatividad:
 $$
 ab=0b=b0=0.
 $$
@@ -821,7 +798,7 @@ para **todos** $b,c\in F$, aunque $b\ne c$.
 Por eso la cancelación multiplicativa exige $a\ne0$. Esa hipótesis es exactamente la que permite invocar $a^{-1}$.
 :::
 
-La tercera parte de @prp-t1-0027 dice que un cuerpo no tiene divisores de cero no triviales. Más adelante, en álgebra abstracta, esta propiedad aparecerá en contextos más generales. Aquí nos interesa sobre todo porque justifica el método de resolver ecuaciones factorizadas:
+La tercera parte de [Proposición 1.3](#prp-t1-0027) dice que un cuerpo no tiene divisores de cero no triviales. Más adelante, en álgebra abstracta, esta propiedad aparecerá en contextos más generales. Aquí nos interesa sobre todo porque justifica el método de resolver ecuaciones factorizadas:
 
 $$
 (x-r)(x-s)=0
@@ -927,7 +904,7 @@ $$
 ay=b=ax.
 $$
 
-Como $a\ne0$, la cancelación multiplicativa de @prp-t1-0027 da
+Como $a\ne0$, la cancelación multiplicativa de [Proposición 1.3](#prp-t1-0027) da
 
 $$
 y=x.
@@ -1077,7 +1054,7 @@ $$
 0c=1,
 $$
 
-@exm-t1-0040 daría $0c=0$, y obtendríamos
+[Ejemplo 1.1](#exm-t1-0040) daría $0c=0$, y obtendríamos
 
 $$
 0=1,
@@ -1085,7 +1062,7 @@ $$
 
 contradiciendo la definición de cuerpo.
 
-De la definición de resta y @prp-t1-0026 se obtienen, por ejemplo,
+De la definición de resta y [Proposición 1.2](#prp-t1-0026) se obtienen, por ejemplo,
 
 $$
 a-(-b)=a+b
@@ -1099,7 +1076,7 @@ a-b=0
 a=b.
 $$
 
-La segunda equivalencia también puede leerse mediante @thm-t1-0011: la ecuación
+La segunda equivalencia también puede leerse mediante [Teorema 1.1](#thm-t1-0011): la ecuación
 
 $$
 a+(-b)=0
@@ -1270,7 +1247,7 @@ $$
 \frac ab=\frac cd.
 $$
 
-Para el producto usamos @prp-t1-0026:
+Para el producto usamos [Proposición 1.2](#prp-t1-0026):
 
 $$
 \begin{aligned}
@@ -1466,7 +1443,7 @@ $$
 \boxed{x=a+bc}.
 $$
 
-También esta flecha es reversible: sumando $-a$ a ambos miembros de $x=a+bc$ recuperamos $x-a=bc$. Por tanto, no solo hemos encontrado un candidato; hemos mostrado una cadena de equivalencias. En particular, @thm-t1-0011 garantiza que la solución es única.
+También esta flecha es reversible: sumando $-a$ a ambos miembros de $x=a+bc$ recuperamos $x-a=bc$. Por tanto, no solo hemos encontrado un candidato; hemos mostrado una cadena de equivalencias. En particular, [Teorema 1.1](#thm-t1-0011) garantiza que la solución es única.
 
 Podemos resumir la auditoría así:
 
@@ -1475,7 +1452,7 @@ Podemos resumir la auditoría así:
 | «multiplicar ambos miembros por $b$» | sustitución en una igualdad; por sí sola no exige $b\ne0$ |
 | «se cancela $b$» | $b\ne0$, existencia de $b^{-1}$, $b^{-1}b=1$ y neutro multiplicativo |
 | «pasar $a$ sumando» | resta $=$ suma con inverso; asociatividad, inverso y neutro aditivos |
-| «la solución es la única» | reversibilidad de las equivalencias y @thm-t1-0011 |
+| «la solución es la única» | reversibilidad de las equivalencias y [Teorema 1.1](#thm-t1-0011) |
 
 La última fila es importante. Encontrar un valor que satisface una ecuación prueba **existencia**; demostrar que ningún otro valor puede satisfacerla prueba **unicidad**.
 
@@ -2231,7 +2208,7 @@ $$
 ac=bc.
 $$
 
-Si $c=0$, entonces @exm-t1-0040 da
+Si $c=0$, entonces [Ejemplo 1.1](#exm-t1-0040) da
 
 $$
 ac=a0=0
@@ -2366,7 +2343,7 @@ $$
 ac=bc.
 $$
 
-Si $c=0$, entonces @exm-t1-0040 da
+Si $c=0$, entonces [Ejemplo 1.1](#exm-t1-0040) da
 
 $$
 ac=a0=0
@@ -2456,7 +2433,7 @@ a>0
 a^{-1}>0.
 $$
 
-Supongamos $a>0$. En particular, $a\ne0$, por lo que existe $a^{-1}$; además, @prp-t1-0026 garantiza
+Supongamos $a>0$. En particular, $a\ne0$, por lo que existe $a^{-1}$; además, [Proposición 1.2](#prp-t1-0026) garantiza
 
 $$
 a^{-1}\ne0.
@@ -2518,7 +2495,7 @@ $$
 (a^{-1})^{-1}>0.
 $$
 
-Por @prp-t1-0026,
+Por [Proposición 1.2](#prp-t1-0026),
 
 $$
 (a^{-1})^{-1}=a,
@@ -2842,7 +2819,7 @@ $$
 a(ab)^{-1}<b(ab)^{-1}.
 $$
 
-Ahora hacemos explícita la simplificación de ambos miembros. Por @prp-t1-0026,
+Ahora hacemos explícita la simplificación de ambos miembros. Por [Proposición 1.2](#prp-t1-0026),
 
 $$
 (ab)^{-1}=a^{-1}b^{-1}.
@@ -2914,7 +2891,7 @@ $$
 ab>0.
 $$
 
-En particular, $ab\ne0$. Si $a=0$ o $b=0$, @prp-t1-0027 daría $ab=0$, en contradicción con $ab>0$. Por tanto,
+En particular, $ab\ne0$. Si $a=0$ o $b=0$, [Proposición 1.3](#prp-t1-0027) daría $ab=0$, en contradicción con $ab>0$. Por tanto,
 
 $$
 a\ne0
@@ -2948,7 +2925,7 @@ $$
 \frac0a=0a^{-1}=0
 $$
 
-por definición de cociente y @exm-t1-0040.
+por definición de cociente y [Ejemplo 1.1](#exm-t1-0040).
 
 Si $a>0$, de $0<ab$ y la parte 6 obtenemos
 
@@ -3046,7 +3023,7 @@ $$
 ab<0.
 $$
 
-Nuevamente $ab\ne0$. Si $a=0$ o $b=0$, @prp-t1-0027 implicaría $ab=0$, contradicción. Luego
+Nuevamente $ab\ne0$. Si $a=0$ o $b=0$, [Proposición 1.3](#prp-t1-0027) implicaría $ab=0$, contradicción. Luego
 
 $$
 a\ne0
@@ -3176,7 +3153,7 @@ $$
 a=0,
 $$
 
-entonces, por @exm-t1-0040,
+entonces, por [Ejemplo 1.1](#exm-t1-0040),
 
 $$
 a^2=aa=00=0.
@@ -3261,7 +3238,7 @@ $$
 aa=0.
 $$
 
-La ley del producto nulo, @prp-t1-0027, afirma que al menos uno de los dos factores debe ser $0$. Como ambos factores son el mismo número $a$, necesariamente
+La ley del producto nulo, [Proposición 1.3](#prp-t1-0027), afirma que al menos uno de los dos factores debe ser $0$. Como ambos factores son el mismo número $a$, necesariamente
 
 $$
 a=0.
@@ -3345,7 +3322,7 @@ $$
 0(a+b)\le(b-a)(a+b).
 $$
 
-Por @exm-t1-0040,
+Por [Ejemplo 1.1](#exm-t1-0040),
 
 $$
 0(a+b)=0,
@@ -3434,7 +3411,7 @@ Las reglas anteriores pueden condensarse, una vez demostradas, en la tabla sigui
 
 La fila de la resta no requiere una regla independiente: restar $c$ significa sumar $-c$, y la parte 1 vale para cualquier elemento del cuerpo, sin hipótesis de signo.
 
-También conviene aislar el caso excluido de las filas multiplicativas estrictas. Si $a<b$ y $c=0$, entonces @exm-t1-0040 da
+También conviene aislar el caso excluido de las filas multiplicativas estrictas. Si $a<b$ y $c=0$, entonces [Ejemplo 1.1](#exm-t1-0040) da
 
 $$
 ac=a0=0
@@ -3450,7 +3427,7 @@ $$
 
 no $ac<bc$ ni $ac>bc$. Una desigualdad estricta colapsa a igualdad al multiplicar ambos miembros por $0$.
 
-La tabla es, pues, una herramienta de cálculo **derivada**. Su contenido ya está demostrado en @prp-t1-0007.
+La tabla es, pues, una herramienta de cálculo **derivada**. Su contenido ya está demostrado en [Proposición 1.5](#prp-t1-0007).
 
 ### Una regla que necesitaremos al estudiar el hueco racional
 
@@ -3466,7 +3443,7 @@ $$
 0\le b\le a.
 $$
 
-La parte 10 de @prp-t1-0007 afirma que, si $0\le u\le v$, entonces
+La parte 10 de [Proposición 1.5](#prp-t1-0007) afirma que, si $0\le u\le v$, entonces
 
 $$
 u^2\le v^2.
@@ -3522,7 +3499,7 @@ $$
 3x-7<8.
 $$
 
-Por la parte 1 de @prp-t1-0007 podemos sumar $7$ a ambos miembros:
+Por la parte 1 de [Proposición 1.5](#prp-t1-0007) podemos sumar $7$ a ambos miembros:
 
 $$
 (3x-7)+7<8+7.
@@ -3546,7 +3523,7 @@ $$
 3x<15.
 $$
 
-Ahora usamos la parte 6 de @prp-t1-0007. Puesto que $3>0$, dividir por $3$ conserva el orden:
+Ahora usamos la parte 6 de [Proposición 1.5](#prp-t1-0007). Puesto que $3>0$, dividir por $3$ conserva el orden:
 
 $$
 \frac{3x}{3}<\frac{15}{3}.
@@ -3595,7 +3572,7 @@ $$
 x<5.
 $$
 
-Como $3>0$, la parte 3 de @prp-t1-0007 permite multiplicar ambos miembros por $3$ sin invertir el orden:
+Como $3>0$, la parte 3 de [Proposición 1.5](#prp-t1-0007) permite multiplicar ambos miembros por $3$ sin invertir el orden:
 
 $$
 3x<3\cdot5=15.
@@ -3871,7 +3848,7 @@ $$
 a-d<b-c.
 $$
 
-**Respuesta.** De $c<d$, al multiplicar por $-1<0$, obtenemos $-d<-c$. Sumando esta desigualdad con $a<b$ mediante la parte 2 de @prp-t1-0007,
+**Respuesta.** De $c<d$, al multiplicar por $-1<0$, obtenemos $-d<-c$. Sumando esta desigualdad con $a<b$ mediante la parte 2 de [Proposición 1.5](#prp-t1-0007),
 
 $$
 a+(-d)<b+(-c),
@@ -4203,7 +4180,7 @@ $$
 d(x,y):=|x-y|.
 $$
 
-Antes de utilizar esta notación como una verdadera noción de distancia, registremos las propiedades que ya podemos justificar a partir de @prp-t1-0008. Para cualesquiera $x,y\in\mathbb R$,
+Antes de utilizar esta notación como una verdadera noción de distancia, registremos las propiedades que ya podemos justificar a partir de [Proposición 1.6](#prp-t1-0008). Para cualesquiera $x,y\in\mathbb R$,
 
 $$
 d(x,y)\ge0.
@@ -4255,7 +4232,7 @@ $$
 -|y|\le y\le|y|.
 $$
 
-La estrategia consiste en obtener por separado una cota inferior y una cota superior para $x+y$, reunirlas en una doble desigualdad y aplicar después la caracterización de $|\cdot|$ demostrada en @prp-t1-0008.
+La estrategia consiste en obtener por separado una cota inferior y una cota superior para $x+y$, reunirlas en una doble desigualdad y aplicar después la caracterización de $|\cdot|$ demostrada en [Proposición 1.6](#prp-t1-0008).
 :::
 
 **Demostración.** De
@@ -4292,7 +4269,7 @@ $$
 -(|x|+|y|)\le x+y\le|x|+|y|.
 $$
 
-Como $|x|+|y|\ge0$, la caracterización no estricta de @prp-t1-0008 da
+Como $|x|+|y|\ge0$, la caracterización no estricta de [Proposición 1.6](#prp-t1-0008) da
 
 $$
 \boxed{|x+y|\le|x|+|y|}.
@@ -4390,7 +4367,7 @@ $$
 |x-y|.
 $$
 
-Como $|x-y|\ge0$, la caracterización no estricta de @prp-t1-0008, aplicada a la cantidad $|x|-|y|$, da
+Como $|x-y|\ge0$, la caracterización no estricta de [Proposición 1.6](#prp-t1-0008), aplicada a la cantidad $|x|-|y|$, da
 
 $$
 \boxed{
@@ -4442,7 +4419,7 @@ $$
 |x-a|<r
 $$
 
-significa que la distancia de $x$ a $a$ es menor que $r$. La caracterización de @prp-t1-0008 permite traducirla directamente:
+significa que la distancia de $x$ a $a$ es menor que $r$. La caracterización de [Proposición 1.6](#prp-t1-0008) permite traducirla directamente:
 
 $$
 \begin{aligned}
@@ -4853,7 +4830,7 @@ $$
 }
 $$
 
-Si $r>0$, la definición de distancia y @prp-t1-0009 condensan la traducción fundamental en una sola cadena:
+Si $r>0$, la definición de distancia y [Proposición 1.7](#prp-t1-0009) condensan la traducción fundamental en una sola cadena:
 
 $$
 \boxed{
@@ -5898,7 +5875,7 @@ $$
 -2\le a<-2+\varepsilon.
 $$
 
-Como $-2$ es una cota inferior, @prp-t1-0010 permite concluir
+Como $-2$ es una cota inferior, [Proposición 1.8](#prp-t1-0010) permite concluir
 
 $$
 \boxed{\inf C=-2}.
@@ -6043,7 +6020,7 @@ $$
 3-\varepsilon<a\le3.
 $$
 
-La caracterización aproximativa @prp-t1-0010 da entonces
+La caracterización aproximativa [Proposición 1.8](#prp-t1-0010) da entonces
 
 $$
 \boxed{\sup A=3}.
@@ -6203,7 +6180,7 @@ $$
 1^2<2<2^2,
 $$
 
-si $x\ge0$ y $x^2=2$, no puede ocurrir $x\le1$: por la monotonía del cuadrado en los no negativos, demostrada en @prp-t1-0007, tendríamos $x^2\le1$. Tampoco puede ocurrir $x\ge2$, pues entonces $x^2\ge4$. Por tanto,
+si $x\ge0$ y $x^2=2$, no puede ocurrir $x\le1$: por la monotonía del cuadrado en los no negativos, demostrada en [Proposición 1.5](#prp-t1-0007), tendríamos $x^2\le1$. Tampoco puede ocurrir $x\ge2$, pues entonces $x^2\ge4$. Por tanto,
 
 $$
 1<x<2.
@@ -6594,7 +6571,7 @@ $$
 0<b\le a.
 $$
 
-La monotonía del cuadrado en los no negativos, @prp-t1-0007, da entonces
+La monotonía del cuadrado en los no negativos, [Proposición 1.5](#prp-t1-0007), da entonces
 
 $$
 b^2\le a^2.
@@ -7780,167 +7757,61 @@ Ya disponemos del vocabulario necesario para formular la respuesta. La propiedad
 
 ### Qué nos llevamos a la sección siguiente
 
-El estudio del hueco racional deja cuatro conclusiones que conviene mantener separadas.
+Este estudio del hueco racional ha producido cuatro hechos conceptuales.
 
-**Primera.** Hemos demostrado una inexistencia precisa dentro de $\mathbb Q$:
+Primero, los racionales son algebraicamente ricos pero no bastan para resolver todas las ecuaciones geométricamente naturales: hemos demostrado que
 
 $$
-\boxed{
-\forall q\in\mathbb Q,
+q^2\ne2
 \qquad
-q^2\ne2.
-}
+\text{para todo }q\in\mathbb Q.
 $$
 
-Esta afirmación no contiene todavía una prueba de que exista algún número real cuyo cuadrado sea $2$.
+Segundo, el problema no desaparece por la densidad elemental de los racionales. Poder insertar siempre otro racional entre dos racionales no garantiza que todo conjunto racional posea el punto frontera que su orden sugiere.
 
-**Segunda.** La densidad elemental de los racionales no resuelve el problema de las fronteras. Saber que entre dos racionales distintos existe otro racional responde a una pregunta sobre **puntos intermedios**. Preguntar si un conjunto no vacío y acotado superiormente posee una **menor cota superior dentro del mismo sistema** es una pregunta distinta.
-
-En particular, para
-
-$$
-S_{\mathbb Q}
-=
-\{q\in\mathbb Q:q\ge0,\ q^2<2\},
-$$
-
-la cuestión pendiente es
+Tercero, el ejemplo de Rudin nos ha enseñado una técnica de construcción que vale por sí misma:
 
 $$
 \boxed{
-\text{¿existe }\sup_{\mathbb Q}S_{\mathbb Q}\text{?}
+\text{defecto}
+\to
+\text{corrección dirigida}
+\to
+\text{control del invariante}
+\to
+\text{nuevo objeto}
 }
 $$
 
-**Tercera.** El ejemplo de Rudin ha dejado una técnica de construcción reutilizable:
+Cuarto, todavía no tenemos derecho a afirmar que una solución real de $x^2=2$ exista. Ya conocemos la estructura de cuerpo ordenado; falta incorporar y utilizar una propiedad adicional que garantice determinados supremos reales.
 
-$$
-\boxed{
-\text{medir el defecto}
-\to
-\text{corregir en la dirección adecuada}
-\to
-\text{controlar dominio y signo}
-\to
-\text{producir un nuevo punto sin cruzar la frontera}.
-}
-$$
-
-La fórmula concreta importa menos que esta arquitectura: una construcción útil debe satisfacer simultáneamente todas las condiciones exigidas por el problema.
-
-**Cuarta.** La deuda de existencia permanece abierta. Hasta aquí la estructura de cuerpo ordenado nos ha permitido formular el problema y analizarlo, pero no nos ha proporcionado todavía el punto frontera buscado en $\mathbb R$.
-
-La secuencia lógica de las dos secciones siguientes será deliberadamente separada. En §1.5 formularemos el **axioma de completitud** y volveremos a $S_{\mathbb Q}$ para demostrar formalmente que no posee supremo racional. Después consideraremos la región análoga dentro de $\mathbb R$ y la completitud garantizará la existencia de un supremo real.
-
-Eso todavía no bastará para resolver la ecuación. En §1.6 deberemos identificar la frontera obtenida y demostrar, sin continuidad ni límites, que su cuadrado es exactamente $2$.
-
-Podemos resumir el tránsito así:
-
-$$
-\boxed{
-\text{pregunta por el fallo en }\mathbb Q
-\to
-\text{completitud de }\mathbb R
-\to
-\text{existencia de una frontera real}
-\to
-\text{identificación de esa frontera}.
-}
-$$
+En §1.5 formularemos el **axioma de completitud**, demostraremos que $\mathbb Q$ falla en la propiedad del supremo y obtendremos una frontera real. En §1.6 probaremos que esa frontera da efectivamente un número cuyo cuadrado es $2$, sin invocar continuidad ni límites.
 
 ## Completitud: la propiedad que falta en $\mathbb Q$ {#sec-t1-c02-05}
 
 ### Una definición no garantiza una existencia
 
-En §1.3 fijamos qué significa afirmar que un número $s$ es el supremo de un conjunto $A$. Para un candidato dado $s\in\mathbb R$, esa afirmación reúne dos propiedades:
+En §1.3 aprendimos a reconocer un supremo cuando tenemos un candidato. Para demostrar que $s=\sup A$ verificamos dos hechos: que $s$ es una cota superior y que ninguna cota superior puede ser menor que $s$.
+
+Pero esa definición deja abierta una cuestión diferente:
+
+> ¿qué ocurre si $A$ es no vacío y está acotado superiormente, pero no sabemos de antemano cuál debería ser su menor cota superior?
+
+Nada de lo demostrado hasta ahora garantiza que esa menor cota exista dentro del sistema numérico en el que estamos trabajando.
+
+Esta distinción es fundamental. Una definición responde a la pregunta
 
 $$
-\boxed{
-\begin{aligned}
-&\forall a\in A,\qquad a\le s,\\[3pt]
-&\forall u\in\mathbb R,\qquad
-\left[
-\bigl(\forall a\in A,\ a\le u\bigr)
-\Longrightarrow
-s\le u
-\right].
-\end{aligned}
-}
+\boxed{\text{¿qué propiedades tendría el objeto si existiera?}}
 $$
 
-La primera cláusula dice que $s$ es una cota superior; la segunda, que ninguna otra cota superior queda por debajo de $s$.
-
-Para distinguir con claridad **caracterización** y **existencia**, llamemos provisionalmente $P_A(s)$ a la conjunción de esas dos condiciones. Entonces escribir
+mientras que un teorema o un axioma de existencia responde a otra:
 
 $$
-s=\sup A
+\boxed{\text{¿tenemos derecho a afirmar que tal objeto existe?}}
 $$
 
-significa precisamente que
-
-$$
-P_A(s)
-$$
-
-es verdadera.
-
-En §1.3 demostramos además que, si dos números satisfacen esa propiedad, necesariamente coinciden:
-
-$$
-P_A(s)\ \text{y}\ P_A(t)
-\Longrightarrow
-s=t.
-$$
-
-Es decir, la definición y la unicidad nos permiten afirmar que puede haber **a lo sumo un** supremo.
-
-Pero ninguna de esas afirmaciones produce por sí sola un número $s$ que satisfaga $P_A(s)$. La proposición
-
-$$
-\boxed{
-\exists s\in\mathbb R
-\qquad
-P_A(s)
-}
-$$
-
-es una afirmación adicional de existencia.
-
-Esta diferencia es exactamente la misma que ya encontramos con la ecuación
-
-$$
-x^2=2.
-$$
-
-La ecuación especifica qué propiedad tendría una solución; no demuestra que exista una. Del mismo modo, la definición de supremo especifica qué debe cumplir una menor cota superior; no garantiza que todo conjunto posea una.
-
-En §1.3 ya identificamos las hipótesis naturales bajo las cuales queremos plantear el problema:
-
-$$
-A\ne\varnothing
-$$
-
-y
-
-$$
-A\text{ está acotado superiormente}.
-$$
-
-La pregunta que queda abierta es, por tanto,
-
-$$
-\boxed{
-A\ne\varnothing
-\quad\text{y}\quad
-A\text{ acotado superiormente}
-\quad\stackrel{?}{\Longrightarrow}\quad
-\exists s\in\mathbb R\;P_A(s).
-}
-$$
-
-Nada de los axiomas de cuerpo y orden demostrados hasta ahora autoriza esa implicación. La sección anterior mostró precisamente por qué debemos esperar una propiedad adicional: dentro de $\mathbb Q$ puede aparecer una región acotada cuya frontera no está disponible como menor cota superior racional.
-
-El paso siguiente consistirá en incorporar, para $\mathbb R$, la afirmación de existencia que falta.
+En §1.4 ya vimos una advertencia de este tipo: conocer la ecuación $x^2=2$ no nos autorizaba todavía a suponer que existía una solución positiva en nuestro dominio. Ahora aparece el mismo problema en un nivel estructural.
 
 ### El axioma de completitud {#sec-t1-c02-completeness-axiom}
 
@@ -8488,7 +8359,7 @@ $$
 0\le2\le q,
 $$
 
-y la monotonía del cuadrado en los no negativos, @prp-t1-0007, daría
+y la monotonía del cuadrado en los no negativos, [Proposición 1.5](#prp-t1-0007), daría
 
 $$
 4=2^2\le q^2.
@@ -8901,7 +8772,7 @@ $$
 0<T(s)\le q.
 $$
 
-La monotonía del cuadrado en los no negativos, @prp-t1-0007, implica
+La monotonía del cuadrado en los no negativos, [Proposición 1.5](#prp-t1-0007), implica
 
 $$
 T(s)^2\le q^2.
@@ -9116,7 +8987,7 @@ $$
 
 Así, aun cuando $s$ fuese una cota superior, no podría ser la menor.
 
-**3. Si $s^2=2$, falla la racionalidad del candidato.** Este caso no lo descarta la transformación, sino @prp-t1-0006:
+**3. Si $s^2=2$, falla la racionalidad del candidato.** Este caso no lo descarta la transformación, sino [Proposición 1.9](#prp-t1-0006):
 
 $$
 \boxed{
@@ -9224,7 +9095,7 @@ $$
 0\le2\le x.
 $$
 
-La monotonía del cuadrado en los no negativos, @prp-t1-0007, daría
+La monotonía del cuadrado en los no negativos, [Proposición 1.5](#prp-t1-0007), daría
 
 $$
 4=2^2\le x^2,
@@ -9362,60 +9233,39 @@ La primera etapa acaba de cerrarse. La segunda será el objetivo de §1.6, y req
 
 ### El sistema ambiente importa
 
-La notación de supremo depende no solo del conjunto cuyos elementos estudiamos, sino también del **sistema ordenado en el que permitimos buscar las cotas**.
-
-Conviene separar dos operaciones distintas.
-
-**1. Mantener fijo el conjunto y cambiar el sistema ambiente.** Consideremos exactamente el mismo conjunto
+Conviene separar dos cambios que podrían confundirse. En el apartado anterior pasamos de $S_{\mathbb Q}$ a $S_{\mathbb R}$ y, al mismo tiempo, pasamos de trabajar en $\mathbb Q$ a trabajar en $\mathbb R$. Para aislar el papel del sistema ambiente, mantengamos ahora **fijo el conjunto**
 
 $$
-S_{\mathbb Q}
-=
-\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
+S_{\mathbb Q}=\{q\in\mathbb Q:q\ge0,\ q^2<2\}
 $$
 
-Podemos estudiar sus cotas superiores dentro de $\mathbb Q$ o dentro de $\mathbb R$.
+y cambiemos únicamente el universo en el que buscamos sus cotas.
 
-Las cotas superiores racionales forman el conjunto
+Si trabajamos dentro de $\mathbb Q$, las cotas superiores admisibles deben ser racionales. Podemos reunirlas en
 
 $$
 U_{\mathbb Q}
 =
-\left\{
-u\in\mathbb Q:
-\forall q\in S_{\mathbb Q},\ q\le u
-\right\},
+\{u\in\mathbb Q:\forall q\in S_{\mathbb Q},\ q\le u\}.
 $$
 
-mientras que las cotas superiores reales forman
+Preguntar por $\sup_{\mathbb Q}S_{\mathbb Q}$ significa preguntar si $U_{\mathbb Q}$ posee un menor elemento. Acabamos de demostrar que no lo posee.
+
+Pero como
+
+$$
+\mathbb Q\subset\mathbb R,
+$$
+
+podemos considerar exactamente los mismos elementos de $S_{\mathbb Q}$ como un subconjunto de $\mathbb R$. Entonces cambia el universo de cotas posibles:
 
 $$
 U_{\mathbb R}
 =
-\left\{
-u\in\mathbb R:
-\forall q\in S_{\mathbb Q},\ q\le u
-\right\}.
+\{u\in\mathbb R:\forall q\in S_{\mathbb Q},\ q\le u\}.
 $$
 
-Como $\mathbb Q\subseteq\mathbb R$,
-
-$$
-\boxed{
-U_{\mathbb Q}=U_{\mathbb R}\cap\mathbb Q.
-}
-$$
-
-En §1.5 demostramos que $U_{\mathbb Q}$ no posee elemento mínimo. Esta es exactamente la afirmación
-
-$$
-\boxed{
-S_{\mathbb Q}
-\text{ no tiene supremo dentro de }\mathbb Q.
-}
-$$
-
-Pero el mismo conjunto $S_{\mathbb Q}$, considerado ahora como subconjunto de $\mathbb R$, sigue siendo no vacío y está acotado superiormente por $2$. Por completitud existe entonces
+El conjunto $S_{\mathbb Q}$ sigue siendo no vacío y $2$ sigue siendo una cota superior. Por completitud de $\mathbb R$ existe, por tanto,
 
 $$
 \boxed{
@@ -9423,120 +9273,73 @@ $$
 }
 $$
 
-Aquí $\beta$ es el mínimo de $U_{\mathbb R}$.
-
-Podemos deducir inmediatamente algo más:
+Este nuevo supremo no puede ser racional. En efecto, supongamos que
 
 $$
-\boxed{\beta\notin\mathbb Q.}
+\beta\in\mathbb Q.
 $$
 
-En efecto, supongamos que $\beta\in\mathbb Q$. Como $\beta$ es una cota superior real de $S_{\mathbb Q}$, sería entonces también una cota superior racional:
+Como $\beta$ es una cota superior real de $S_{\mathbb Q}$, sería también una cota superior racional, es decir,
 
 $$
 \beta\in U_{\mathbb Q}.
 $$
 
-Además, si $u\in U_{\mathbb Q}$, entonces $u\in U_{\mathbb R}$. Como $\beta$ es el mínimo de $U_{\mathbb R}$,
+Además, si $u\in U_{\mathbb Q}$, entonces $u$ es también una cota superior real; por la minimalidad de $\beta$ en $\mathbb R$,
 
 $$
 \beta\le u.
 $$
 
-Por tanto, $\beta$ sería el mínimo de $U_{\mathbb Q}$, es decir,
-
-$$
-\beta=\sup_{\mathbb Q}S_{\mathbb Q},
-$$
-
-en contradicción con @prp-t1-0012.
-
-Así, el cambio de sistema ambiente puede convertir
+Así, $\beta$ sería el menor elemento de $U_{\mathbb Q}$, contradiciendo que $S_{\mathbb Q}$ no posee supremo en $\mathbb Q$. Luego
 
 $$
 \boxed{
-\text{«no existe supremo en }\mathbb Q\text{»}
+\beta\notin\mathbb Q.
 }
 $$
 
-en
+No hay contradicción entre
 
 $$
-\boxed{
-\text{«existe un supremo en }\mathbb R\text{, y no es racional».}
-}
+\sup_{\mathbb Q}S_{\mathbb Q}
+\quad\text{no existe}
 $$
 
-**2. Cambiar además el conjunto.** En el microtramo anterior introdujimos
-
-$$
-S_{\mathbb R}
-=
-\{x\in\mathbb R:x\ge0,\ x^2<2\}.
-$$
-
-Esto ya no consiste únicamente en buscar las cotas de $S_{\mathbb Q}$ en un sistema mayor. También hemos ampliado el universo permitido para los **elementos del propio conjunto**.
-
-La relación exacta entre ambos conjuntos es
-
-$$
-\boxed{
-S_{\mathbb Q}=S_{\mathbb R}\cap\mathbb Q.
-}
-$$
-
-Por tanto, debemos distinguir cuidadosamente
+y
 
 $$
 \sup_{\mathbb R}S_{\mathbb Q}
+=
+\beta
+\quad\text{sí existe}.
 $$
 
-de
+Son dos preguntas diferentes porque las cotas admisibles pertenecen a sistemas distintos. Un candidato real no racional sencillamente **no estaba disponible** en el primer problema.
+
+Tampoco necesitamos identificar todavía $\beta$ con el número
 
 $$
-\sup_{\mathbb R}S_{\mathbb R}.
+\alpha=\sup S_{\mathbb R}
 $$
 
-Sabemos que ambos existen por completitud, pero en este punto del desarrollo **no hemos demostrado que sean iguales**. Tampoco necesitamos esa igualdad para lo que sigue.
+obtenido en el apartado anterior. Esa sería una afirmación adicional acerca de la relación entre los racionales y los reales. Para el argumento presente basta algo más elemental y más importante: **el conjunto se ha mantenido fijo y solo ha cambiado el sistema ambiente**.
 
-Lo importante es comprender qué está variando en cada pregunta:
-
-$$
-\boxed{
-\begin{array}{c}
-\text{conjunto fijo }S_{\mathbb Q}
-+\text{ ambiente }\mathbb Q
-\longrightarrow
-\text{no hay supremo racional},
-\\[5pt]
-\text{conjunto fijo }S_{\mathbb Q}
-+\text{ ambiente }\mathbb R
-\longrightarrow
-\text{existe }\sup_{\mathbb R}S_{\mathbb Q},
-\\[5pt]
-\text{conjunto }S_{\mathbb R}
-+\text{ ambiente }\mathbb R
-\longrightarrow
-\text{existe }\alpha=\sup_{\mathbb R}S_{\mathbb R}.
-\end{array}
-}
-$$
-
-Esta distinción evita una ambigüedad frecuente: un supremo no es una propiedad aislada de una colección de símbolos; depende del **orden ambiente en el que se permiten las cotas**.
-
-En nuestro desarrollo habitual, cuando $A\subseteq\mathbb R$ esté fijado y no exista ambigüedad, escribiremos simplemente
-
-$$
-\sup A
-$$
-
-para significar el supremo en $\mathbb R$. Cuando el sistema ambiente sea relevante —como en el contraste con $\mathbb Q$— utilizaremos explícitamente
+Por eso, cuando exista ambigüedad, escribiremos si hace falta
 
 $$
 \sup_{\mathbb Q}A
 \qquad\text{o}\qquad
 \sup_{\mathbb R}A.
 $$
+
+En nuestro desarrollo habitual, una vez fijado $A\subseteq\mathbb R$, la notación abreviada
+
+$$
+\sup A
+$$
+
+significará siempre el supremo calculado en $\mathbb R$.
 
 ### Antes de seguir
 
@@ -9605,7 +9408,7 @@ $$
 -A=\{-a:a\in A\}.
 $$
 
-Sin citar @prp-t1-0011, verifica que $-A$ satisface las hipótesis del axioma de completitud y determina qué número aparece naturalmente como candidato para $\inf A$.
+Sin citar [Proposición 1.10](#prp-t1-0011), verifica que $-A$ satisface las hipótesis del axioma de completitud y determina qué número aparece naturalmente como candidato para $\inf A$.
 
 **Respuesta.** Como $A\ne\varnothing$, podemos escoger
 
@@ -9669,21 +9472,25 @@ Aquí solo hemos fabricado y motivado el candidato. La demostración completa de
 
 ### La diferencia decisiva
 
-Podemos resumir el capítulo hasta aquí de la siguiente manera.
+A esta altura ya podemos aislar con precisión qué aporta la completitud. Los axiomas de cuerpo y de orden permiten operar, comparar, definir cotas y formular qué significaría ser una menor cota superior. Pero no obligan a que esa frontera pertenezca al sistema.
 
-Los racionales y los reales comparten la estructura de cuerpo ordenado. En ambos podemos sumar, multiplicar, comparar, utilizar valor absoluto, hablar de distancia, definir cotas y formular qué significaría ser supremo.
-
-La diferencia aparece cuando preguntamos si ciertas fronteras **deben existir**.
-
-En $\mathbb Q$ encontramos el conjunto
+El ejemplo racional lo demuestra. El conjunto
 
 $$
-S_{\mathbb Q}=\{q\in\mathbb Q:q\ge0,\ q^2<2\},
+S_{\mathbb Q}=\{q\in\mathbb Q:q\ge0,\ q^2<2\}
 $$
 
-que es no vacío y acotado superiormente pero no posee supremo racional.
+es no vacío y está acotado superiormente en $\mathbb Q$, pero no posee supremo racional. Por tanto,
 
-En $\mathbb R$, la completitud afirma que ese tipo de fracaso no puede ocurrir:
+$$
+\boxed{
+\text{cuerpo ordenado}
+\not\Longrightarrow
+\text{completitud}.
+}
+$$
+
+La completitud de $\mathbb R$ añade precisamente una afirmación de **existencia**:
 
 $$
 \boxed{
@@ -9697,76 +9504,84 @@ A\text{ acotado superiormente}
 }
 $$
 
-Esta es la primera respuesta rigurosa a la pregunta que abrió el capítulo:
+La diferencia estructural no consiste solo en decir que $\mathbb R$ contiene números que $\mathbb Q$ no contiene. El punto decisivo es que, en $\mathbb R$, determinados problemas de frontera que pueden formularse mediante el orden tienen garantizada una solución interna.
+
+Esto permite separar dos trabajos que conviene no confundir:
 
 $$
 \boxed{
-\text{lo que añadimos al pasar de un cuerpo ordenado a }\mathbb R
-\text{ es una garantía de existencia de fronteras.}
+\begin{array}{c}
+\text{completitud: existe la frontera}\\[4pt]
+\text{álgebra y orden: identificamos qué propiedad satisface.}
+\end{array}
 }
 $$
 
-En §1.6 haremos trabajar esa garantía. Tomaremos
+En §1.6 aplicaremos exactamente esta arquitectura. Ya sabemos que existe
 
 $$
-\alpha=\sup\{x\in\mathbb R:x\ge0,\ x^2<2\}
+\alpha=\sup\{x\in\mathbb R:x\ge0,\ x^2<2\}.
 $$
 
-y demostraremos, sin utilizar continuidad ni límites, que necesariamente
+Lo que falta no es producir otro candidato, sino demostrar que el candidato garantizado por completitud satisface
 
 $$
 \alpha^2=2.
 $$
 
-Solo entonces la raíz que faltaba desde la primera página del capítulo habrá sido construida dentro de nuestro sistema axiomático.
+Esa identificación se obtendrá sin continuidad ni límites, utilizando únicamente las herramientas algebraicas y de orden ya desarrolladas.
 
 ## Completitud en acción: existencia de raíces {#sec-t1-c02-06}
 
 ### La frontera ya existe; ahora debemos identificarla
 
-Al final de §1.5 llegamos a un punto que habría sido imposible justificar al comienzo del capítulo. Para el conjunto
+En §1.5 la completitud hizo exactamente el trabajo que le correspondía. Para
 
 $$
 S_{\mathbb R}=\{x\in\mathbb R:x\ge0,\ x^2<2\}
 $$
 
-la completitud garantiza la existencia de un número real
+quedó garantizada la existencia de un número real
 
 $$
 \alpha=\sup S_{\mathbb R}.
 $$
 
-Por primera vez sabemos rigurosamente que la región situada «por debajo de $2$» posee una frontera real. Pero todavía falta demostrar que esa frontera es exactamente el número que buscábamos desde §1.4.
-
-La pregunta es:
+A partir de aquí el problema cambia de naturaleza. Ya no necesitamos producir una frontera: necesitamos **identificarla**. En concreto, debemos demostrar
 
 $$
-\boxed{\text{¿por qué debe cumplirse }\alpha^2=2?}
+\boxed{
+\alpha=\sup S_{\mathbb R}
+\quad\Longrightarrow\quad
+\alpha^2=2.
+}
 $$
 
-No utilizaremos continuidad de la función $x\mapsto x^2$, porque la continuidad todavía no ha sido definida. Tampoco utilizaremos límites ni sucesiones convergentes. Toda la prueba deberá salir de tres recursos que ya poseemos:
+La completitud, por sí sola, no calcula el supremo ni afirma qué ecuación satisface. Su intervención terminó al asegurar que $\alpha$ existe. La identificación posterior dependerá de las herramientas que ya hemos desarrollado:
 
+- el álgebra del cuerpo;
 - las propiedades del orden;
-- la definición de supremo;
-- la completitud, utilizada para garantizar que el supremo existe.
+- las dos cláusulas que caracterizan al supremo: ser cota superior y ser la menor de las cotas superiores.
 
-La idea que resolverá el problema es muy general. Si una frontera propuesta no tiene exactamente la propiedad que esperamos, intentaremos **perturbarla ligeramente** y demostrar que deja de poder ser un supremo.
+No utilizaremos continuidad de $x\mapsto x^2$, ni límites, ni sucesiones convergentes. Esos conceptos todavía no forman parte de nuestra teoría.
+
+La estrategia será perturbativa. Si $\alpha^2$ fuese menor o mayor que $2$, intentaremos desplazar ligeramente a $\alpha$ y hacer fracasar una de las dos cláusulas que definen al supremo. La igualdad $\alpha^2=2$ aparecerá entonces como la única posibilidad compatible con ambas.
 
 ### Qué significaría que el supremo estuviese en el lugar equivocado
 
-Sustituyamos temporalmente el número $2$ por un real positivo arbitrario $a$. Consideremos
+Para aislar la lógica del argumento, reemplacemos temporalmente $2$ por un real positivo arbitrario $a$ y consideremos
 
 $$
 S_a=\{x\in\mathbb R:x\ge0,\ x^2<a\}.
 $$
 
-Si la completitud nos proporciona
+Supongamos que ya hemos verificado las hipótesis necesarias para que exista
 
 $$
-\alpha=\sup S_a,
+\alpha=\sup S_a.
 $$
 
-hay solamente tres posibilidades:
+La tricotomía deja exactamente tres posibilidades:
 
 $$
 \alpha^2<a,
@@ -9776,114 +9591,220 @@ $$
 \alpha^2>a.
 $$
 
-La igualdad es precisamente lo que deseamos. Así que debemos comprender por qué las otras dos posibilidades son incompatibles con la condición de supremo.
+La igualdad es la conclusión buscada. Las otras dos alternativas deben fracasar por razones distintas, y cada una entra en conflicto con una cláusula diferente de la definición de supremo.
 
-Si
+**Primer modo de fracaso: $\alpha$ dejaría de ser una cota superior.** Si
 
 $$
 \alpha^2<a,
 $$
 
-entonces queda un margen positivo
+existe un margen positivo
 
 $$
 a-\alpha^2>0.
 $$
 
-Debería ser posible movernos un poco hacia la derecha, hasta $\alpha+h$, sin hacer que el cuadrado alcance todavía a $a$. Pero entonces $\alpha+h$ pertenecería a $S_a$ y sería mayor que $\alpha$, contradiciendo que $\alpha$ sea una cota superior.
+Si podemos elegir $h>0$ suficientemente pequeño para que
 
-En cambio, si
+$$
+(\alpha+h)^2<a,
+$$
+
+entonces
+
+$$
+\alpha+h\in S_a
+$$
+
+y, al mismo tiempo,
+
+$$
+\alpha+h>\alpha.
+$$
+
+Eso contradice la primera obligación del supremo:
+
+$$
+\forall x\in S_a,
+\qquad
+x\le\alpha.
+$$
+
+**Segundo modo de fracaso: $\alpha$ dejaría de ser la menor cota superior.** Si
 
 $$
 \alpha^2>a,
 $$
 
-hay un exceso positivo
+existe un exceso positivo
 
 $$
 \alpha^2-a>0.
 $$
 
-Debería ser posible movernos un poco hacia la izquierda y encontrar $c<\alpha$ cuyo cuadrado siga siendo mayor que $a$. Si $c^2>a$, entonces todo $x\in S_a$ debe satisfacer $x<c$; por tanto, $c$ sería una cota superior de $S_a$ menor que $\alpha$. Eso contradice que $\alpha$ sea la **menor** cota superior.
+Si podemos encontrar $c<\alpha$ tal que
 
-Tenemos, pues, dos tipos de contradicción:
+$$
+c^2>a,
+$$
+
+entonces ningún elemento de $S_a$ puede alcanzar a $c$. En efecto, si $x\in S_a$ y $x\ge c$, la monotonía del cuadrado en los no negativos daría
+
+$$
+x^2\ge c^2>a,
+$$
+
+en contradicción con $x^2<a$. Por tanto, $c$ sería una cota superior de $S_a$ con
+
+$$
+c<\alpha,
+$$
+
+lo que contradice la segunda obligación del supremo: ser la menor de todas las cotas superiores.
+
+La arquitectura queda así completamente separada:
 
 $$
 \boxed{
 \begin{array}{ccl}
-\alpha^2<a&\Longrightarrow&\text{elemento de }S_a\text{ mayor que }\alpha,\\[4pt]
-\alpha^2>a&\Longrightarrow&\text{cota superior menor que }\alpha.
+\alpha^2<a
+&\Longrightarrow&
+\text{fracasa la condición de cota superior},\\[4pt]
+\alpha^2>a
+&\Longrightarrow&
+\text{fracasa la condición de minimalidad}.
 \end{array}
 }
 $$
 
-El problema técnico consiste únicamente en diseñar las perturbaciones con suficiente control algebraico.
+Una vez construidas las dos perturbaciones, la tricotomía dejará únicamente
+
+$$
+\alpha^2=a.
+$$
+
+El trabajo que queda es, por tanto, cuantitativo: elegir las perturbaciones de manera que las desigualdades anteriores queden garantizadas por el álgebra ya disponible.
 
 ### Cómo se diseña una perturbación controlada
 
-El primer caso nos pide controlar
+En la prueba que sigue habremos establecido que
 
 $$
-(\alpha+h)^2
-=
-\alpha^2+h(2\alpha+h).
+a>0
+\qquad\text{y}\qquad
+\alpha>0.
 $$
 
-Si sabemos que $\alpha^2<a$, llamemos
+Esto nos permite convertir las dos contradicciones anteriores en elecciones explícitas.
+
+**Perturbación hacia la derecha.** Supongamos primero
+
+$$
+\alpha^2<a
+$$
+
+y definamos el defecto
 
 $$
 \delta=a-\alpha^2>0.
 $$
 
-Queremos que
+Queremos elegir $h>0$ de modo que
 
 $$
-h(2\alpha+h)<\delta.
+(\alpha+h)^2<a.
 $$
 
-Una manera sencilla de garantizarlo consiste en imponer primero $h<\alpha$. Entonces
+Como
 
 $$
-2\alpha+h<3\alpha,
+(\alpha+h)^2
+=
+\alpha^2+h(2\alpha+h),
 $$
 
-y basta exigir además
+basta controlar el término añadido. Si imponemos $h<\alpha$, entonces
+
+$$
+2\alpha+h<3\alpha.
+$$
+
+Por ello es suficiente exigir además
 
 $$
 3\alpha h<\delta.
 $$
 
-Así aparece una elección de $h$ que no es adivinatoria: surge de las desigualdades que necesitamos satisfacer.
-
-El segundo caso admite una elección todavía más reveladora. Si
+Una sola elección garantiza simultáneamente ambas condiciones:
 
 $$
-\alpha^2>a,
+\boxed{
+h=
+\frac12
+\min\left\{
+\alpha,\frac{\delta}{3\alpha}
+\right\}.
+}
 $$
 
-queremos disminuir $\alpha$ sin atravesar el nivel $a$. Sea
+En efecto,
+
+$$
+0<h<\alpha
+\qquad\text{y}\qquad
+3\alpha h<\delta,
+$$
+
+de modo que
+
+$$
+(\alpha+h)^2
+<
+\alpha^2+\delta
+=
+a.
+$$
+
+La perturbación produce así un elemento de $S_a$ estrictamente mayor que $\alpha$.
+
+**Perturbación hacia la izquierda.** Supongamos ahora
+
+$$
+\alpha^2>a
+$$
+
+y midamos el exceso mediante
 
 $$
 E=\alpha^2-a>0.
 $$
 
-Probemos a restar
+Buscamos un número $c<\alpha$ cuyo cuadrado siga por encima de $a$. Definimos
 
 $$
-\frac{E}{2\alpha}.
-$$
-
-Definimos
-
-$$
+\boxed{
 c
 =
-\alpha-\frac{\alpha^2-a}{2\alpha}
+\alpha-\frac{E}{2\alpha}
 =
 \frac12\left(\alpha+\frac{a}{\alpha}\right).
+}
 $$
 
-Entonces $c<\alpha$, pero el nuevo defecto puede calcularse exactamente:
+Como $E>0$,
+
+$$
+c<\alpha,
+$$
+
+y como $a,\alpha>0$,
+
+$$
+c>0.
+$$
+
+Además, el nuevo exceso puede calcularse exactamente:
 
 $$
 \begin{aligned}
@@ -9902,19 +9823,19 @@ $$
 c^2>a.
 $$
 
-La corrección ha reducido el error sin cambiar su signo. Esta es la misma filosofía que ya vimos al descomprimir el ejemplo de Rudin:
+Las dos construcciones responden al mismo patrón:
 
 $$
 \boxed{
 \text{medir el defecto}
-\to
+\longrightarrow
 \text{elegir una corrección}
-\to
-\text{controlar algebraicamente el nuevo defecto}.
+\longrightarrow
+\text{controlar el nuevo defecto}.
 }
 $$
 
-Ahora podemos ejecutar la prueba completa.
+Ya no queda ninguna elección heurística pendiente. Podemos utilizar estas perturbaciones dentro de la demostración formal.
 
 ::: {#thm-t1-0002}
 **Existencia y unicidad de la raíz cuadrada no negativa.** Para todo número real $a\ge0$ existe un único número real $\alpha\ge0$ tal que
@@ -9927,16 +9848,10 @@ Cuando $a>0$, este número es positivo.
 :::
 
 ::: {.callout-note title="Idea de la prueba"}
-Para $a>0$ construiremos el candidato como
-
-$$
-\alpha=\sup\{x\ge0:x^2<a\}.
-$$
-
-La completitud garantiza que este $\alpha$ existe. Luego descartaremos las posibilidades $\alpha^2<a$ y $\alpha^2>a$ mediante las dos perturbaciones preparadas arriba. La unicidad será un argumento separado: dos raíces no negativas del mismo número deben coincidir.
+Para $a>0$ consideraremos el conjunto de los números no negativos cuyo cuadrado aún queda por debajo de $a$. La completitud se utilizará una sola vez, para garantizar que ese conjunto tiene supremo. Las dos perturbaciones construidas inmediatamente antes excluirán después las posibilidades $\alpha^2<a$ y $\alpha^2>a$. La unicidad se obtendrá al final mediante la monotonía estricta del cuadrado en los números no negativos.
 :::
 
-**Demostración.** Si $a=0$, el número $0$ satisface $0^2=0$. Además, si $x\ge0$ y $x^2=0$, entonces $x$ no puede ser positivo, porque $x>0$ implicaría $x^2>0$. Por tanto, necesariamente $x=0$, y el resultado es inmediato en este caso.
+**Demostración.** Si $a=0$, el número $0$ satisface $0^2=0$, de modo que la existencia es inmediata. La unicidad se demostrará al final junto con el caso general.
 
 Supongamos ahora que $a>0$ y definamos
 
@@ -9944,41 +9859,45 @@ $$
 S_a=\{x\in\mathbb R:x\ge0,\ x^2<a\}.
 $$
 
-Antes de utilizar completitud debemos verificar sus hipótesis.
+Antes de invocar completitud debemos verificar que $S_a$ es no vacío y está acotado superiormente.
 
-**1. $S_a$ es no vacío.** De hecho, el número
-
-$$
-r=\frac{a}{1+a}
-$$
-
-es positivo y pertenece a $S_a$. En efecto,
+**1. $S_a$ es no vacío.** Sea
 
 $$
-r^2=\frac{a^2}{(1+a)^2}<a,
+r=\frac{a}{1+a}.
 $$
 
-porque
+Como $a>0$, se tiene
 
 $$
-a<(1+a)^2
+0<r<1
+\qquad\text{y}\qquad
+r<a.
 $$
 
-para todo $a>0$.
+Por tanto,
 
-**2. $S_a$ está acotado superiormente.** El número $a+1$ es una cota superior. Si existiera $x\in S_a$ con $x\ge a+1$, como ambos números son no negativos tendríamos
+$$
+r^2<r<a,
+$$
+
+y así $r\in S_a$.
+
+**2. $S_a$ está acotado superiormente.** El número $a+1$ es una cota superior. En efecto, si $x\in S_a$ y fuese $x\ge a+1$, como ambos números son no negativos, la monotonía del cuadrado daría
 
 $$
 x^2\ge(a+1)^2>a,
 $$
 
-lo que contradice $x^2<a$.
+en contradicción con $x^2<a$.
 
-Podemos aplicar entonces el axioma de completitud. Existe
+Ahora sí interviene la completitud: como $S_a$ es no vacío y está acotado superiormente, el axioma del supremo garantiza la existencia de
 
 $$
 \alpha=\sup S_a.
 $$
+
+Este es el único paso de la demostración en el que se usa completitud.
 
 Además, como $r\in S_a$ y $r>0$,
 
@@ -9986,149 +9905,83 @@ $$
 \alpha\ge r>0.
 $$
 
-Tenemos tres casos posibles.
+Queda identificar este supremo. Por tricotomía, exactamente una de las relaciones
 
-**Caso 1: supongamos que $\alpha^2<a$.** Definamos
+$$
+\alpha^2<a,
+\qquad
+\alpha^2=a,
+\qquad
+\alpha^2>a
+$$
+
+debe cumplirse.
+
+**Caso 1: $\alpha^2<a$.** Pongamos
 
 $$
 \delta=a-\alpha^2>0
 $$
 
-y elijamos
+y elijamos, como en la perturbación hacia la derecha construida arriba,
 
 $$
-h=\frac12\min\left\{\alpha,\frac{\delta}{3\alpha}\right\}.
+h=
+\frac12
+\min\left\{
+\alpha,\frac{\delta}{3\alpha}
+\right\}.
 $$
 
-Entonces $h>0$, $h<\alpha$ y
+La construcción precedente garantiza
 
 $$
-h<\frac{\delta}{3\alpha}.
+h>0
+\qquad\text{y}\qquad
+(\alpha+h)^2<a.
 $$
 
-Como $h<\alpha$,
+Por tanto, $\alpha+h\in S_a$, pero $\alpha+h>\alpha$. Esto contradice que $\alpha$ sea una cota superior de $S_a$. Luego $\alpha^2<a$ es imposible.
 
-$$
-2\alpha+h<3\alpha.
-$$
-
-Por tanto,
-
-$$
-\begin{aligned}
-(\alpha+h)^2
-&=\alpha^2+h(2\alpha+h)\\
-&<\alpha^2+3\alpha h\\
-&<\alpha^2+\delta\\
-&=a.
-\end{aligned}
-$$
-
-Así,
-
-$$
-\alpha+h\in S_a.
-$$
-
-Pero $h>0$, de modo que
-
-$$
-\alpha+h>\alpha,
-$$
-
-lo cual contradice que $\alpha$ sea una cota superior de $S_a$.
-
-Por consiguiente,
-
-$$
-\alpha^2<a
-$$
-
-es imposible.
-
-**Caso 2: supongamos que $\alpha^2>a$.** Definamos
+**Caso 2: $\alpha^2>a$.** Definamos, como en la perturbación hacia la izquierda,
 
 $$
 c
 =
-\alpha-\frac{\alpha^2-a}{2\alpha}.
-$$
-
-Como $a>0$ y $\alpha>0$, también podemos escribir
-
-$$
-c=\frac{\alpha^2+a}{2\alpha}>0.
-$$
-
-Además, $\alpha^2-a>0$, por lo que
-
-$$
-c<\alpha.
-$$
-
-Por el cálculo preparado antes,
-
-$$
-c^2-a
+\alpha-\frac{\alpha^2-a}{2\alpha}
 =
-\frac{(\alpha^2-a)^2}{4\alpha^2}>0,
+\frac12\left(
+\alpha+\frac a\alpha
+\right).
 $$
 
-así que
+La construcción precedente garantiza
 
 $$
+0<c<\alpha
+\qquad\text{y}\qquad
 c^2>a.
 $$
 
-Veamos ahora que $c$ es una cota superior de $S_a$. Si $x\in S_a$, entonces
-
-$$
-0\le x,
-\qquad
-x^2<a<c^2,
-\qquad
-c>0.
-$$
-
-Si fuese $x\ge c$, la monotonía del cuadrado para números no negativos daría
+Veamos que $c$ es una cota superior de $S_a$. Si $x\in S_a$ y fuese $x\ge c$, entonces, como $x,c\ge0$, la monotonía del cuadrado implicaría
 
 $$
 x^2\ge c^2>a,
 $$
 
-contradiciendo $x^2<a$. Por tanto,
+en contradicción con $x^2<a$. Por consiguiente, todo $x\in S_a$ satisface $x<c$, de modo que $c$ es una cota superior de $S_a$.
 
-$$
-x<c.
-$$
+Pero $c<\alpha$, lo cual contradice que $\alpha$ sea la menor cota superior de $S_a$. Luego $\alpha^2>a$ es imposible.
 
-Por tanto, todo elemento de $S_a$ es menor que $c$, de modo que $c$ es una cota superior de $S_a$.
-
-Pero acabamos de demostrar también que
-
-$$
-c<\alpha.
-$$
-
-Esto contradice que $\alpha$ sea la **menor** cota superior de $S_a$.
-
-Por consiguiente,
-
-$$
-\alpha^2>a
-$$
-
-es imposible.
-
-Como las dos desigualdades estrictas son imposibles, la tricotomía obliga a que
+La tricotomía deja entonces una única posibilidad:
 
 $$
 \boxed{\alpha^2=a.}
 $$
 
-Esto demuestra la existencia.
+Esto demuestra la existencia. Como además $\alpha>0$ cuando $a>0$, queda probada también la afirmación de positividad.
 
-Falta la unicidad. Supongamos que $u,v\ge0$ satisfacen
+Falta la unicidad. Sean $u,v\ge0$ tales que
 
 $$
 u^2=a,
@@ -10136,106 +9989,98 @@ u^2=a,
 v^2=a.
 $$
 
-Entonces
-
-$$
-u^2-v^2=0,
-$$
-
-y por factorización,
-
-$$
-(u-v)(u+v)=0.
-$$
-
-Si $a>0$, tanto $u$ como $v$ son positivos, de modo que $u+v>0$. Por tanto,
-
-$$
-u-v=0,
-$$
-
-es decir,
+Si $u<v$, la monotonía estricta del cuadrado en los números no negativos daría $u^2<v^2$, contradicción. Del mismo modo, $v<u$ es imposible. Por tricotomía,
 
 $$
 u=v.
 $$
 
-El caso $a=0$ ya fue resuelto al comienzo. Por consiguiente, para todo $a\ge0$ existe exactamente una raíz cuadrada no negativa. $\blacksquare$
+Por consiguiente, para todo $a\ge0$ existe exactamente una raíz cuadrada no negativa. $\blacksquare$
 
 ### Dónde entró realmente la completitud
 
-La demostración es larga, pero la nueva propiedad de $\mathbb R$ se utilizó en un lugar muy preciso:
+La prueba anterior permite localizar con precisión la dependencia lógica. Primero verificamos, usando solo álgebra y orden, que
 
 $$
-S_a\ne\varnothing,
-\quad
-S_a\text{ acotado superiormente}
-\quad\Longrightarrow\quad
-\boxed{\alpha=\sup S_a\text{ existe}}.
+S_a\ne\varnothing
+\qquad\text{y}\qquad
+S_a\text{ está acotado superiormente}.
 $$
 
-Todo lo que vino después fue álgebra y orden.
+Solo entonces interviene la completitud, y lo hace una única vez:
 
-Esto permite distinguir dos tareas:
+$$
+\boxed{\alpha=\sup S_a\text{ existe}.}
+$$
 
-1. **la completitud fabrica el candidato** al garantizar la existencia de la frontera;
-2. **las perturbaciones identifican el candidato** al demostrar que su cuadrado no puede quedar ni por debajo ni por encima de $a$.
+El axioma no afirma que $\alpha^2=a$ ni proporciona la unicidad de la raíz. A partir de $\alpha=\sup S_a$, esas tareas se resuelven con las propiedades del supremo, las perturbaciones ya construidas y el orden:
 
-La estructura completa es, por tanto,
+- si $\alpha^2<a$, una perturbación hacia la derecha produce un elemento de $S_a$ mayor que $\alpha$, contradiciendo que $\alpha$ sea cota superior;
+- si $\alpha^2>a$, una perturbación hacia la izquierda produce una cota superior menor que $\alpha$, contradiciendo su minimalidad;
+- descartadas ambas desigualdades, la tricotomía obliga a que $\alpha^2=a$;
+- una vez obtenida la existencia, la monotonía estricta del cuadrado en los no negativos da la unicidad.
+
+La arquitectura completa queda así:
 
 $$
 \boxed{
-\text{conjunto adecuado}
-\to
-\text{supremo}
-\to
-\text{perturbaciones}
-\to
-\text{ecuación exacta}
-\to
+\text{hipótesis del supremo}
+\xrightarrow{\text{completitud}}
+\text{existencia de }\alpha
+\xrightarrow{\text{álgebra + orden}}
+\alpha^2=a
+\xrightarrow{\text{monotonía}}
 \text{unicidad}.
 }
 $$
 
-Este patrón reaparecerá muchas veces en análisis: primero se construye un objeto mediante una propiedad de existencia; después se demuestra que posee exactamente la característica buscada.
+Este patrón será recurrente en análisis: una propiedad de existencia fabrica un candidato; después, argumentos adicionales lo identifican y determinan si es único.
 
 ### Ahora sí podemos definir $\sqrt a$
 
-Hasta este punto habíamos evitado cuidadosamente utilizar la notación de raíz cuadrada como si su existencia fuese automática.
+Hasta este punto habíamos evitado utilizar la notación de raíz cuadrada como si la existencia del número designado fuese automática. El teorema anterior elimina esa dificultad: para cada $a\ge0$ existe un único real no negativo cuyo cuadrado es $a$.
 
-El teorema anterior nos autoriza finalmente a hacer la siguiente convención.
-
-Para cada $a\ge0$, escribiremos
+Definimos, por tanto,
 
 $$
 \boxed{\sqrt a}
 $$
 
-para designar **el único número real no negativo** cuyo cuadrado es $a$.
-
-Así,
+como **el único número real no negativo** que satisface
 
 $$
-(\sqrt a)^2=a,
-\qquad
+(\sqrt a)^2=a.
+$$
+
+En particular,
+
+$$
 \sqrt a\ge0.
 $$
 
-Si $a<0$, no existe ningún número real cuyo cuadrado sea $a$, porque todo cuadrado real es no negativo. Por tanto, dentro de $\mathbb R$ la notación $\sqrt a$ se reserva aquí para $a\ge0$.
+El símbolo $\sqrt a$ designa un solo número; el signo $\pm$ no forma parte de esta definición. Si $a<0$, ningún real tiene cuadrado igual a $a$, porque todo cuadrado real es no negativo. Por ello, dentro de $\mathbb R$, la notación $\sqrt a$ queda reservada para $a\ge0$.
 
-Es importante leer correctamente la definición. Si $a>0$, la ecuación
-
-$$
-x^2=a
-$$
-
-no tiene una única solución real. Tiene exactamente dos:
+Conviene distinguir ahora la raíz no negativa de las soluciones de la ecuación
 
 $$
-\boxed{x=\sqrt a\quad\text{o}\quad x=-\sqrt a.}
+x^2=a.
 $$
 
-La unicidad demostrada en el teorema es la unicidad de la **raíz no negativa**.
+Si $a=0$, la única solución es $x=0=\sqrt0$. Si $a>0$, entonces $\sqrt a>0$, y tanto $\sqrt a$ como $-\sqrt a$ tienen cuadrado $a$. Recíprocamente, sea $x\in\mathbb R$ tal que $x^2=a$. Como $a>0$, tenemos $x\ne0$. Si $x>0$, la unicidad de la raíz no negativa obliga a que $x=\sqrt a$. Si $x<0$, entonces $-x>0$ y
+
+$$
+(-x)^2=x^2=a,
+$$
+
+de modo que, por la misma unicidad, $-x=\sqrt a$ y por tanto $x=-\sqrt a$.
+
+Así, para $a>0$,
+
+$$
+\boxed{x^2=a\iff x=\sqrt a\ \text{o}\ x=-\sqrt a.}
+$$
+
+La unicidad del teorema se refiere, pues, a la **raíz cuadrada no negativa**; la ecuación $x^2=a$ tiene dos soluciones reales distintas cuando $a>0$.
 
 ### La raíz que faltaba desde §1.4
 
@@ -10257,56 +10102,74 @@ $$
 (\sqrt2)^2=2.
 $$
 
-Además,
+La existencia y la notación están ahora justificadas. Además, podemos localizar este número sin recurrir a aproximaciones decimales. Como
 
 $$
-1^2<2<2^2,
+1^2<2=(\sqrt2)^2,
 $$
 
-y la monotonía del cuadrado en los no negativos nos da
+no puede ocurrir $\sqrt2\le1$: en tal caso, de $0\le\sqrt2\le1$ y la monotonía del cuadrado en los no negativos se seguiría
 
 $$
-1<\sqrt2<2.
+2=(\sqrt2)^2\le1,
 $$
 
-En §1.4 demostramos que ningún racional tiene cuadrado igual a $2$. Por tanto,
+una contradicción. Del mismo modo, como
+
+$$
+(\sqrt2)^2=2<4=2^2,
+$$
+
+no puede ocurrir $\sqrt2\ge2$, pues $0\le2\le\sqrt2$ implicaría
+
+$$
+4\le(\sqrt2)^2=2.
+$$
+
+Por tanto,
+
+$$
+\boxed{1<\sqrt2<2.}
+$$
+
+En §1.4 demostramos que ningún racional tiene cuadrado igual a $2$. Como $\sqrt2\in\mathbb R$ y $(\sqrt2)^2=2$, necesariamente
 
 $$
 \boxed{\sqrt2\in\mathbb R\setminus\mathbb Q.}
 $$
 
-Ahora sí hemos probado las dos afirmaciones que al comienzo debían mantenerse separadas:
+Ahora sí podemos reunir las dos afirmaciones que al comienzo debían mantenerse separadas:
 
 $$
 \boxed{
 \begin{array}{c}
 \text{existe un número real positivo cuyo cuadrado es }2,\\[3pt]
-\text{y ese número no es racional.}
+\text{y ningún número racional posee esa propiedad.}
 \end{array}
 }
 $$
 
-El «hueco» de los racionales ha sido ocupado dentro de $\mathbb R$, no mediante una aproximación decimal ni mediante una suposición geométrica, sino como consecuencia de la completitud.
+El «hueco» racional queda así expresado con precisión: no faltaba un intervalo sin números racionales, sino una frontera que $\mathbb Q$ no podía realizar internamente. En $\mathbb R$, la completitud garantiza la existencia de esa frontera y el argumento anterior la identifica como $\sqrt2$.
 
 ### Una prueba sin continuidad
 
-Conviene notar algo que adquirirá importancia cuando estudiemos funciones.
+Más adelante, una vez desarrollada la continuidad, podremos obtener también la existencia de raíces mediante resultados como el teorema del valor intermedio. Aquí esa ruta sería lógicamente prematura: ni la continuidad ni ese teorema forman todavía parte de nuestra teoría.
 
-Más adelante podremos demostrar la existencia de raíces usando resultados de continuidad, por ejemplo mediante un teorema de valor intermedio. Pero ese camino no está disponible aquí y, sobre todo, **no debe utilizarse para fundamentar las herramientas que luego ayudarán a demostrar esos mismos teoremas de continuidad**.
-
-Nuestra cadena lógica ha sido deliberadamente la contraria:
+La dependencia construida en este capítulo va en la dirección opuesta:
 
 $$
 \boxed{
 \text{completitud}
-\to
+\longrightarrow
+\text{existencia del supremo}
+\xrightarrow{\text{álgebra + orden}}
 \text{existencia de raíces}
-\to
-\text{herramientas para el análisis posterior}.
+\longrightarrow
+\text{análisis posterior}.
 }
 $$
 
-No hemos utilizado:
+En particular, la demostración no ha utilizado:
 
 - límites;
 - convergencia de sucesiones;
@@ -10314,7 +10177,7 @@ No hemos utilizado:
 - teorema del valor intermedio;
 - Bolzano–Weierstrass.
 
-La prueba es enteramente una prueba de orden y completitud.
+La raíz se obtuvo únicamente con álgebra del cuerpo, propiedades del orden y completitud. Más adelante podremos demostrar el mismo hecho por otras vías, pero sin invertir retroactivamente esta cadena de dependencias.
 
 ### Antes de seguir
 
@@ -10325,13 +10188,19 @@ $$
 \boxed{\sqrt{x^2}=|x|}.
 $$
 
-**Respuesta.** El número $|x|$ es no negativo y
+**Respuesta.** Como $x^2\ge0$, la raíz $\sqrt{x^2}$ está definida. Además, $|x|\ge0$ y
 
 $$
 |x|^2=x^2.
 $$
 
-Por la unicidad de la raíz cuadrada no negativa de $x^2$, necesariamente $\sqrt{x^2}=|x|$.
+Así, $|x|$ es un número no negativo cuyo cuadrado es $x^2$. Por la unicidad de la raíz cuadrada no negativa,
+
+$$
+\boxed{\sqrt{x^2}=|x|}.
+$$
+
+En particular, no puede reemplazarse $|x|$ por $x$ sin conocer previamente el signo de $x$.
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
@@ -10341,18 +10210,34 @@ $$
 \sqrt a<\sqrt b.
 $$
 
-**Respuesta.** Si $\sqrt a\ge\sqrt b$, como ambos números son no negativos, la monotonía del cuadrado daría
+**Respuesta.** Supongamos, por contradicción, que
 
 $$
-a=(\sqrt a)^2\ge(\sqrt b)^2=b,
+\sqrt a\ge\sqrt b.
 $$
 
-contradicción. Por tanto $\sqrt a<\sqrt b$.
+Como ambas raíces son no negativas, tendríamos
+
+$$
+0\le\sqrt b\le\sqrt a.
+$$
+
+La monotonía del cuadrado en los no negativos daría entonces
+
+$$
+b=(\sqrt b)^2\le(\sqrt a)^2=a,
+$$
+
+lo cual contradice $a<b$. Por tanto,
+
+$$
+\boxed{\sqrt a<\sqrt b}.
+$$
 :::
 
 ### Del primer hueco a una herramienta permanente
 
-La ecuación $x^2=2$ fue elegida al comienzo del capítulo porque exhibía una insuficiencia concreta de $\mathbb Q$. Pero el resultado obtenido es mucho más general:
+La ecuación $x^2=2$ fue el problema que hizo visible la insuficiencia de $\mathbb Q$, pero el resultado obtenido no pertenece solo a ese ejemplo. Hemos demostrado que
 
 $$
 \boxed{
@@ -10360,37 +10245,39 @@ $$
 }
 $$
 
-La completitud no se limitó a añadir un número especial llamado $\sqrt2$. Garantizó de una sola vez la existencia de una familia completa de objetos que el álgebra elemental utiliza constantemente.
+Así, para cada real no negativo existe una raíz cuadrada no negativa bien determinada. La completitud aporta el paso de existencia decisivo: cuando $a>0$, garantiza el supremo del conjunto adecuado. Después, el álgebra y el orden identifican ese supremo mediante $\alpha^2=a$, y la monotonía del cuadrado proporciona la unicidad.
 
-En §1.7 extraeremos una consecuencia de naturaleza distinta. Ya no preguntaremos por una ecuación, sino por el tamaño de los números naturales dentro de la recta real. Demostraremos que
+La sección deja, por tanto, algo más que la existencia de $\sqrt2$: deja una arquitectura reutilizable,
 
 $$
-\mathbb N
+\boxed{
+\text{conjunto adecuado}
+\xrightarrow{\text{completitud}}
+\text{supremo}
+\xrightarrow{\text{álgebra + orden}}
+\text{propiedad buscada}.
+}
 $$
 
-no puede quedar atrapado bajo ninguna cota real. Esa es la **propiedad arquimediana**, y también resultará ser una consecuencia de la completitud.
+En §1.7 aplicaremos la completitud de otra manera. Ya no construiremos la solución de una ecuación: supondremos que $\mathbb N$ está acotado superiormente y mostraremos que la existencia de un supremo conduce a una contradicción. Obtendremos así la **propiedad arquimediana**: ningún número real puede ser una cota superior de todos los naturales.
 
 ## La propiedad arquimediana {#sec-t1-c02-07}
 
 ### ¿Pueden los naturales quedar atrapados bajo un número real?
 
-Hasta ahora la completitud ha servido para resolver un problema de existencia: a partir de un conjunto no vacío y acotado hemos obtenido una frontera real y, en §1.6, hemos demostrado que esa frontera produce raíces cuadradas.
+En §1.6 utilizamos la completitud de manera constructiva: una vez verificadas las hipótesis del supremo, el axioma produjo una frontera real que después identificamos mediante álgebra y orden. Ahora la emplearemos de otra manera: supondremos que cierto conjunto está acotado y mostraremos que el supremo cuya existencia impondría la completitud conduce a una contradicción.
 
-La siguiente consecuencia parece, a primera vista, mucho más elemental:
+La afirmación que queremos obtener es familiar desde la aritmética:
 
 > por grande que sea un número real, siempre existe un número natural mayor.
 
-La afirmación nos resulta familiar desde la aritmética. Si pensamos en $10$, $10^{100}$ o cualquier número concreto, parece evidente que podemos sumar $1$ tantas veces como sea necesario y terminar superándolo. Pero nuestro objetivo no es superar números concretos uno por uno. Debemos demostrar una afirmación universal:
+Lo que debemos demostrar no es una colección de casos particulares, sino la afirmación universal
 
 $$
 \forall x\in\mathbb R\;\exists n\in\mathbb N\quad n>x.
 $$
 
-Y aquí aparece una pregunta estructural que no conviene ocultar:
-
-> ¿los axiomas de cuerpo y orden obligan por sí solos a que los naturales no tengan una cota superior dentro del sistema?
-
-En nuestro desarrollo, la respuesta no se dará por supuesta. La deduciremos de la completitud.
+En nuestro desarrollo esta propiedad no se dará por supuesta: la deduciremos de la completitud.
 
 ::: {#thm-t1-0003}
 **Propiedad arquimediana.** El conjunto $\mathbb N$ no está acotado superiormente en $\mathbb R$. Equivalentemente, para todo $x\in\mathbb R$ existe $n\in\mathbb N$ tal que
@@ -10401,106 +10288,123 @@ $$
 :::
 
 ::: {.callout-note title="Idea de la prueba"}
-La afirmación habla de ausencia de cotas. Supongamos lo contrario: que $\mathbb N$ sí está acotado superiormente.
-
-Entonces la completitud nos obligaría a aceptar la existencia de
+Supongamos, por contradicción, que $\mathbb N$ está acotado superiormente. Como es no vacío, la completitud produciría
 
 $$
 \alpha=\sup\mathbb N.
 $$
 
-Pero, si $\alpha$ es la **menor** cota superior, el número $\alpha-1$ no puede seguir siendo cota superior. De ahí obtendremos un natural muy próximo a $\alpha$ por debajo. Al sumarle $1$, aparecerá un natural estrictamente mayor que $\alpha$, contradiciendo que $\alpha$ fuese cota superior.
+La caracterización aproximativa del supremo, aplicada con $\varepsilon=1$, daría un natural $n$ situado a menos de una unidad por debajo de $\alpha$:
 
-La prueba no necesita calcular $\alpha$. De hecho, su fuerza está en demostrar que tal $\alpha$ no puede existir.
+$$
+\alpha-1<n\le\alpha.
+$$
+
+Pero entonces $n+1$ seguiría siendo natural y satisfaría $n+1>\alpha$, contradiciendo que $\alpha$ fuese una cota superior.
 :::
 
-**Demostración.** Supongamos, para obtener una contradicción, que $\mathbb N$ está acotado superiormente en $\mathbb R$.
-
-Como $\mathbb N$ es no vacío, el axioma de completitud garantiza que existe
+**Demostración.** Supongamos, para obtener una contradicción, que $\mathbb N$ está acotado superiormente en $\mathbb R$. Como $\mathbb N$ es no vacío, el axioma de completitud garantiza la existencia de
 
 $$
 \alpha=\sup\mathbb N.
 $$
 
-Por definición, $\alpha$ es una cota superior de $\mathbb N$ y ninguna cota superior puede ser menor que $\alpha$.
-
-Consideremos ahora
+Puesto que $1>0$, podemos aplicar la caracterización aproximativa del supremo, [Proposición 1.8](#prp-t1-0010), con $\varepsilon=1$. Existe entonces $n\in\mathbb N$ tal que
 
 $$
-\alpha-1<\alpha.
+\alpha-1<n\le\alpha.
 $$
 
-El número $\alpha-1$ **no puede** ser una cota superior de $\mathbb N$, porque entonces tendríamos una cota superior estrictamente menor que el supremo.
-
-Por consiguiente, existe algún $n\in\mathbb N$ tal que
+De la primera desigualdad, sumando $1$, obtenemos
 
 $$
-n>\alpha-1.
+\alpha<n+1.
 $$
 
-Sumando $1$ obtenemos
+Pero $n+1\in\mathbb N$. Como $\alpha$ es una cota superior de $\mathbb N$, también debería cumplirse
 
 $$
-n+1>\alpha.
+n+1\le\alpha,
 $$
 
-Pero $n+1\in\mathbb N$. Esto contradice que $\alpha$ sea una cota superior de $\mathbb N$.
-
-La suposición inicial era imposible. Por tanto, $\mathbb N$ no está acotado superiormente en $\mathbb R$. $\blacksquare$
+lo cual es imposible. Por tanto, $\mathbb N$ no está acotado superiormente en $\mathbb R$. $\blacksquare$
 
 ::: {.callout-note title="Después de la prueba"}
-Conviene localizar con precisión el papel de cada ingrediente.
+La dependencia es especialmente limpia:
 
-- **Completitud:** se utiliza una sola vez, para obtener $\alpha=\sup\mathbb N$ bajo la hipótesis de que $\mathbb N$ estuviera acotado.
-- **Propiedad de supremo:** como $\alpha-1<\alpha$, ese número no puede ser otra cota superior.
-- **Aritmética de $\mathbb N$:** si $n\in\mathbb N$, entonces $n+1\in\mathbb N$.
-- **Contradicción:** aparece un elemento $n+1$ del conjunto que es mayor que una supuesta cota superior.
+- **completitud:** bajo la hipótesis de acotación, produce $\alpha=\sup\mathbb N$;
+- **propiedad aproximativa del supremo:** con $\varepsilon=1$, produce un natural $n$ con $\alpha-1<n$;
+- **aritmética de $\mathbb N$:** de $n\in\mathbb N$ se obtiene $n+1\in\mathbb N$;
+- **contradicción:** ese sucesor satisface $n+1>\alpha$, aunque $\alpha$ debía dominar a todos los naturales.
 
-La prueba es breve, pero no es meramente aritmética: dentro de nuestra arquitectura, la completitud es el paso que impide que $\mathbb N$ quede encerrado bajo una frontera real.
+Aquí la completitud no identifica un objeto que queramos conservar: fabrica, bajo una hipótesis falsa, un supremo cuya existencia hace visible la contradicción.
 :::
 
 ### Dos maneras de leer la misma propiedad
 
-Decir que $\mathbb N$ no está acotado superiormente equivale exactamente a decir
+Decir que $\mathbb N$ no está acotado superiormente equivale exactamente a afirmar
 
 $$
 \boxed{
-\forall x\in\mathbb R\;\exists n\in\mathbb N\quad n>x.
+\forall x\in\mathbb R\;\exists n\in\mathbb N
+\qquad n>x.
 }
 $$
 
-En efecto, si hubiera algún $x\in\mathbb R$ para el cual ningún natural satisficiera $n>x$, entonces todos los naturales verificarían $n\le x$, y $x$ sería una cota superior de $\mathbb N$.
-
-Esta formulación es la que utilizaremos cuando necesitemos elegir un natural **suficientemente grande**.
-
-Por ejemplo, dados $u>0$ y $v\in\mathbb R$, podemos elegir un natural positivo $n$ con
+Veamos ambas direcciones. Si $\mathbb N$ no está acotado superiormente y fijamos $x\in\mathbb R$, entonces $x$ no puede ser una cota superior de $\mathbb N$. Por definición de cota, debe existir algún $n\in\mathbb N$ tal que
 
 $$
-n>\frac{v}{u}
+n>x.
 $$
 
-cuando $v>0$, y entonces
+Recíprocamente, supongamos que para todo $x\in\mathbb R$ existe $n\in\mathbb N$ con $n>x$. Si $\mathbb N$ tuviera una cota superior $M\in\mathbb R$, al particularizar la propiedad en $x=M$ obtendríamos un natural $n>M$, contradiciendo que $M$ domine a todos los naturales.
+
+La forma cuantificada es la que utilizaremos cuando necesitemos elegir un natural **suficientemente grande**. De ella se obtiene inmediatamente una versión escalada. Sean
+
+$$
+u>0,
+\qquad
+v\in\mathbb R.
+$$
+
+Definamos
+
+$$
+R=\max\left\{\frac vu,0\right\}.
+$$
+
+Por la propiedad arquimediana existe $n\in\mathbb N$ tal que
+
+$$
+n>R.
+$$
+
+Como $R\ge0$, se tiene $n>0$, de modo que $n\in\mathbb N_{>0}$. Además,
+
+$$
+n>R\ge\frac vu.
+$$
+
+Multiplicando por $u>0$ conservamos el orden y obtenemos
 
 $$
 nu>v.
 $$
 
-Si $v\le0$, cualquier $n\in\mathbb N_{>0}$ ya satisface $nu>v$.
-
-Así obtenemos una forma útil de la misma idea:
+Por tanto,
 
 $$
 \boxed{
 \forall u>0\;\forall v\in\mathbb R\;\exists n\in\mathbb N_{>0}
-\quad nu>v.
+\qquad nu>v.
 }
 $$
 
-No hay un tamaño positivo fijo que, multiplicado por naturales cada vez mayores, permanezca por debajo de todos los reales.
+Así, cualquier escala positiva fija puede hacerse superar cualquier umbral real mediante un múltiplo natural suficientemente grande.
 
 ### Naturales grandes, recíprocos pequeños
 
-La forma que aparecerá con mayor frecuencia en análisis es la recíproca.
+La propiedad arquimediana también permite fabricar escalas positivas tan pequeñas como se desee.
 
 ::: {#cor-t1-0002}
 **Recíprocos arbitrariamente pequeños.** Para todo $\varepsilon>0$ existe $n\in\mathbb N_{>0}$ tal que
@@ -10516,13 +10420,13 @@ $$
 \frac1\varepsilon>0.
 $$
 
-Por la propiedad arquimediana existe $n\in\mathbb N_{>0}$ tal que
+Por la propiedad arquimediana existe $n\in\mathbb N$ tal que
 
 $$
 n>\frac1\varepsilon.
 $$
 
-Como ambos miembros son positivos, al tomar recíprocos se invierte la desigualdad:
+Como el miembro derecho es positivo, también $n>0$, de modo que $n\in\mathbb N_{>0}$. Además, ambos miembros de la desigualdad anterior son positivos; al tomar recíprocos se invierte el orden y obtenemos
 
 $$
 \frac1n<\varepsilon.
@@ -10530,54 +10434,53 @@ $$
 
 Esto prueba el resultado. $\blacksquare$
 
-Esta afirmación merece leerse lentamente. No dice simplemente que algunos recíprocos son pequeños. Dice algo cuantificado mucho más fuerte:
+La afirmación completa es
 
 $$
 \boxed{
-\text{por pequeña que sea la tolerancia positiva }\varepsilon,
-\text{ existe un }1/n\text{ todavía menor.}
+\forall\varepsilon>0\;\exists n\in\mathbb N_{>0}
+\qquad
+\frac1n<\varepsilon.
 }
 $$
 
-El orden de los cuantificadores es decisivo:
-
-$$
-\forall\varepsilon>0\;\exists n\in\mathbb N_{>0}.
-$$
-
-El natural $n$ **puede depender de** $\varepsilon$. Si exigimos una tolerancia menor, podemos necesitar elegir un natural mayor.
-
-Esta es una de las primeras ocasiones en las que el orden de los cuantificadores se convierte en una herramienta cuantitativa del análisis.
+El natural se elige **después** de fijar $\varepsilon$ y, por tanto, puede depender de esa tolerancia. Al disminuir $\varepsilon$, puede ser necesario escoger un natural mayor. Este patrón de cuantificadores aparecerá repetidamente en análisis.
 
 ::: {.callout-tip title="Lectura de la fórmula"}
-Si necesitamos garantizar
+Para $n\in\mathbb N_{>0}$ y $\varepsilon>0$,
+
+$$
+\boxed{
+\frac1n<\varepsilon
+\iff
+n>\frac1\varepsilon.
+}
+$$
+
+Así, si queremos garantizar
 
 $$
 \frac1n<10^{-6},
 $$
 
-no tenemos que adivinar $n$. Basta imponer
+basta elegir
 
 $$
 n>10^6.
 $$
 
-Por ejemplo, $n=1\,000\,001$ funciona.
-
-La técnica general es:
+Por ejemplo,
 
 $$
-\boxed{
-\frac1n<\varepsilon
-\quad\Longleftarrow\quad
-n>\frac1\varepsilon.
-}
+n=1\,000\,001
 $$
+
+satisface la condición.
 :::
 
 ### En $\mathbb R$ no hay infinitésimos positivos
 
-La misma propiedad puede formularse negativamente.
+El corolario anterior puede leerse también como una afirmación de exclusión.
 
 ::: {#cor-t1-0003}
 **Ausencia de infinitésimos reales positivos.** No existe $\eta\in\mathbb R$ tal que
@@ -10586,7 +10489,7 @@ $$
 \eta>0
 $$
 
-y simultáneamente
+y
 
 $$
 \eta<\frac1n
@@ -10595,69 +10498,77 @@ $$
 $$
 :::
 
-**Demostración.** Supongamos que existiera tal $\eta>0$. Aplicando el corolario anterior con $\varepsilon=\eta$, existiría $n\in\mathbb N_{>0}$ tal que
+**Demostración.** Supongamos que existiera tal $\eta>0$. Aplicando [Corolario 1.2](#cor-t1-0002) con $\varepsilon=\eta$, existiría $n\in\mathbb N_{>0}$ tal que
 
 $$
 \frac1n<\eta.
 $$
 
-Pero la propiedad supuesta de $\eta$ exigiría, para ese mismo $n$,
+La propiedad atribuida a $\eta$ exigiría para ese mismo natural
 
 $$
-\eta<\frac1n.
+\eta<\frac1n,
 $$
 
-Las dos desigualdades son incompatibles. Por tanto, no existe tal $\eta$. $\blacksquare$
+lo cual es imposible. Por tanto, no existe tal $\eta$. $\blacksquare$
 
-La palabra **infinitésimo** se usa aquí únicamente para describir esta propiedad hipotética: un real positivo menor que todos los números $1/n$. No estamos introduciendo un nuevo tipo de número ni una teoría de infinitesimales.
-
-El mensaje dentro de $\mathbb R$ es preciso:
+Entre los reales no negativos, la conclusión puede escribirse de manera equivalente como
 
 $$
 \boxed{
-0\text{ es el único real no negativo que puede quedar por debajo de }1/n
-\text{ para todo }n.
+\eta\ge0
+\quad\Longrightarrow\quad
+\left[
+\left(\forall n\in\mathbb N_{>0},\ \eta<\frac1n\right)
+\iff
+\eta=0
+\right].
 }
 $$
 
+En este pasaje, **infinitésimo** designa únicamente la propiedad hipotética de ser un real positivo menor que todos los recíprocos $1/n$. No introducimos aquí una clase adicional de números ni una teoría de infinitesimales.
+
+Este resultado no requiere una nueva aplicación de completitud: es una consecuencia inmediata de la propiedad arquimediana, a través de [Corolario 1.2](#cor-t1-0002).
+
 ### La propiedad arquimediana no es lo mismo que la completitud
 
-Como acabamos de deducirla a partir de la completitud, podría surgir una conclusión demasiado fuerte:
+Hemos deducido la propiedad arquimediana a partir de la completitud. Esta implicación no debe confundirse con una equivalencia entre ambas propiedades de un cuerpo ordenado.
 
-> quizá un cuerpo ordenado sea completo exactamente cuando satisface la propiedad arquimediana.
+El contraejemplo ya está disponible: $\mathbb Q$.
 
-Eso es falso.
-
-El ejemplo ya está delante de nosotros. Como
+Sea $q\in\mathbb Q$. Como $\mathbb Q\subseteq\mathbb R$, el teorema arquimediano [Teorema 1.4](#thm-t1-0003), aplicado al real $q$, proporciona un natural $n$ tal que
 
 $$
-\mathbb Q\subseteq\mathbb R,
+n>q.
 $$
 
-para todo racional $q$ también existe un natural $n>q$. Por tanto, $\mathbb Q$ satisface la propiedad arquimediana.
+Por tanto, $\mathbb N$ no está acotado superiormente dentro de $\mathbb Q$: el cuerpo ordenado $\mathbb Q$ es arquimediano.
 
-Sin embargo, en §1.5 demostramos que
+Por otra parte, [Proposición 1.11](#prp-t1-0012) mostró que
 
 $$
-S_{\mathbb Q}=\{q\in\mathbb Q:q\ge0,\ q^2<2\}
+S_{\mathbb Q}
+=
+\{q\in\mathbb Q:q\ge0,\ q^2<2\}
 $$
 
-es no vacío y acotado superiormente en $\mathbb Q$, pero no posee supremo racional. Luego $\mathbb Q$ no es completo.
+es no vacío y está acotado superiormente en $\mathbb Q$, pero no posee supremo en $\mathbb Q$. Así, $\mathbb Q$ no es completo.
 
-Por consiguiente,
+En consecuencia,
 
 $$
 \boxed{
 \text{completitud}\Longrightarrow\text{propiedad arquimediana},
 \qquad
-\text{pero no recíprocamente}.}
+\text{propiedad arquimediana}\not\Longrightarrow\text{completitud}.
+}
 $$
 
-Esta distinción es importante. La propiedad arquimediana elimina ciertos comportamientos de escala —por ejemplo, un real positivo menor que todos los $1/n$—, pero por sí sola no rellena los huecos de $\mathbb Q$.
+Las dos propiedades tienen alcances distintos. La arquimedianidad controla la escala del orden: los naturales superan cualquier elemento y los recíprocos $1/n$ pueden hacerse menores que cualquier cantidad positiva. La completitud añade un principio de existencia para fronteras: garantiza supremos bajo las hipótesis correspondientes. El cuerpo $\mathbb Q$ satisface la primera propiedad y falla la segunda.
 
 ### Encajonar un real entre dos enteros consecutivos
 
-Para la siguiente sección necesitaremos transformar la propiedad arquimediana en una herramienta de localización.
+Para la siguiente sección necesitaremos convertir la propiedad arquimediana en una herramienta de localización respecto de los enteros.
 
 ::: {#lem-t1-0001}
 **Encajonamiento entero.** Para todo $x\in\mathbb R$ existe $m\in\mathbb Z$ tal que
@@ -10667,26 +10578,20 @@ m\le x<m+1.
 $$
 :::
 
-Antes de la demostración enunciaremos aquí el **principio de inducción** que necesitamos: si una propiedad $P(n)$ de los naturales vale en $n=0$ y, para cada $k\in\mathbb N$, la validez de $P(k)$ implica la de $P(k+1)$, entonces $P(n)$ vale para todo $n\in\mathbb N$. Usaremos ese principio para justificar el siguiente hecho elemental:
+Usaremos una consecuencia elemental del **principio de inducción**: todo subconjunto no vacío de $\mathbb N$ posee un elemento mínimo. Para justificarla localmente, recordemos que la inducción afirma que, si una propiedad $P(n)$ vale para $n=0$ y $P(k)$ implica $P(k+1)$ para todo $k\in\mathbb N$, entonces vale para todo $n\in\mathbb N$.
 
-> todo subconjunto no vacío de $\mathbb N$ posee un elemento mínimo.
+Supongamos que un conjunto no vacío $A\subseteq\mathbb N$ no tuviera mínimo. Entonces $0\notin A$. Si ninguno de $0,1,\dots,k$ pertenece a $A$, tampoco puede pertenecer $k+1$: en tal caso, $k+1$ sería el mínimo de $A$. Por inducción, ningún natural pertenecería a $A$, contradicción. Queda así justificado el principio de buena ordenación que utilizaremos a continuación.
 
-Veamos por qué. Si un conjunto no vacío $A\subseteq\mathbb N$ no tuviera mínimo, entonces $0\notin A$. Supongamos inductivamente que ninguno de $0,1,\dots,k$ pertenece a $A$. Si $k+1\in A$, entonces, como ninguno de los naturales menores que $k+1$ pertenece a $A$, el número $k+1$ sería el mínimo de $A$, contradicción. Así $k+1\notin A$. Por inducción, ningún natural pertenecería a $A$, contradiciendo que $A$ fuese no vacío.
-
-Ahora podemos demostrar el lema.
-
-**Demostración.** Sea $x\in\mathbb R$.
-
-Por la propiedad arquimediana podemos elegir $k\in\mathbb N_{>0}$ tan grande que
+**Demostración.** Sea $x\in\mathbb R$. Por la propiedad arquimediana podemos elegir $k\in\mathbb N$ tal que
 
 $$
-k>|x|+1.
+k>|x|.
 $$
 
-En particular,
+Entonces $k>0$ y, como $x\ge-|x|$,
 
 $$
-x+k>0.
+x+k\ge k-|x|>0.
 $$
 
 Consideremos
@@ -10695,15 +10600,31 @@ $$
 A=\{n\in\mathbb N:n>x+k\}.
 $$
 
-La propiedad arquimediana garantiza que $A$ es no vacío. Por el hecho de buena ordenación recién justificado, $A$ posee un elemento mínimo; llamémoslo $n_0$.
+La propiedad arquimediana, aplicada a $x+k$, garantiza que $A$ es no vacío. Por buena ordenación, existe
 
-Como $x+k>0$, necesariamente $n_0\ge1$. Además, por minimalidad de $n_0$,
+$$
+n_0=\min A.
+$$
+
+Como $x+k>0$, tenemos $0\notin A$ y por tanto $n_0\ge1$. En particular, $n_0-1\in\mathbb N$. La minimalidad de $n_0$ implica que $n_0-1\notin A$, de modo que
+
+$$
+n_0-1\le x+k.
+$$
+
+Por otra parte, $n_0\in A$, así que
+
+$$
+x+k<n_0.
+$$
+
+Reuniendo ambas desigualdades,
 
 $$
 n_0-1\le x+k<n_0.
 $$
 
-Restando $k$ en toda la desigualdad,
+Restando $k$,
 
 $$
 n_0-k-1\le x<n_0-k.
@@ -10718,21 +10639,21 @@ $$
 Entonces
 
 $$
-m\le x<m+1,
+\boxed{m\le x<m+1},
 $$
 
 como queríamos demostrar. $\blacksquare$
 
-::: {.callout-note title="Qué hemos construido y qué no"}
-El lema garantiza la existencia de un entero $m$ que encajona a $x$ entre dos enteros consecutivos. Más adelante ese entero se describirá mediante la función piso,
+::: {.callout-note title="Lectura del lema"}
+El argumento combina dos hechos distintos. La propiedad arquimediana garantiza que siempre hay naturales a la derecha de un real; la buena ordenación permite escoger el **primero** de esos naturales después de trasladar el problema a una posición positiva.
+
+Más adelante el entero $m$ quedará asociado a la función piso,
 
 $$
 \lfloor x\rfloor,
 $$
 
-pero no necesitamos introducir ahora esa función como objeto formal.
-
-Lo que sí necesitamos es la **existencia del entero apropiado**, porque será el engranaje que permitirá fabricar un racional entre dos reales cualesquiera.
+pero aquí solo necesitamos su existencia. Esa existencia será el engranaje que permitirá construir un racional entre dos reales cualesquiera.
 :::
 
 ### Preparación para la densidad
@@ -10743,49 +10664,76 @@ $$
 a<b.
 $$
 
-La distancia entre ambos es positiva:
+Entonces
 
 $$
 b-a>0.
 $$
 
-Por el corolario arquimediano podremos elegir $n\in\mathbb N_{>0}$ de modo que
+Por [Corolario 1.2](#cor-t1-0002) podemos elegir $n\in\mathbb N_{>0}$ de modo que
 
 $$
 \frac1n<b-a.
 $$
 
-Equivalentemente,
+Como $n>0$, esta desigualdad equivale a
 
 $$
-1<n(b-a),
+1<n(b-a)=nb-na,
 $$
 
-o
+y por tanto
 
 $$
 na+1<nb.
 $$
 
-Por otra parte, el lema de encajonamiento podrá situar $na$ entre dos enteros consecutivos. Esa combinación producirá un entero $m$ con
+Apliquemos ahora [Lema 1.1](#lem-t1-0001) al real $na$. Existe $k\in\mathbb Z$ tal que
 
 $$
-na<m<nb,
+k\le na<k+1.
 $$
 
-y, al dividir por $n$, un racional $m/n$ estrictamente entre $a$ y $b$.
+Si definimos
 
-No ejecutaremos todavía la prueba completa: ese será el comienzo de §1.8. Lo importante ahora es reconocer la maquinaria que ya está disponible:
+$$
+m=k+1,
+$$
+
+entonces $m\in\mathbb Z$ y
+
+$$
+na<m=k+1\le na+1<nb.
+$$
+
+Así obtenemos
+
+$$
+na<m<nb.
+$$
+
+Al dividir por $n>0$ resulta
+
+$$
+a<\frac mn<b,
+$$
+
+y $m/n\in\mathbb Q$.
+
+Esta es la construcción que formalizaremos como teorema en §1.8. Conviene retener la arquitectura antes que las letras concretas:
 
 $$
 \boxed{
 \text{propiedad arquimediana}
-\to
-\text{escala }1/n\text{ suficientemente fina}
-\to
-\text{encajonamiento entero}
-\to
-\text{densidad racional}.}
+\longrightarrow
+\text{escala }1/n\text{ menor que }b-a
+\longrightarrow
+\text{intervalo escalado de longitud }>1
+\longrightarrow
+\text{entero intermedio}
+\longrightarrow
+\text{racional intermedio}.
+}
 $$
 
 ### Antes de seguir
@@ -10797,7 +10745,23 @@ $$
 \frac{k}{n}<\varepsilon.
 $$
 
-**Respuesta.** Por la propiedad arquimediana podemos escoger $n>k/\varepsilon$. Como todas las cantidades son positivas, esto equivale a $k/n<\varepsilon$.
+**Respuesta.** Como $k/\varepsilon>0$, la propiedad arquimediana permite elegir $n\in\mathbb N$ tal que
+
+$$
+n>\frac{k}{\varepsilon}.
+$$
+
+En particular, $n>0$, así que $n\in\mathbb N_{>0}$. Multiplicando por $\varepsilon>0$,
+
+$$
+n\varepsilon>k,
+$$
+
+y dividiendo por $n>0$,
+
+$$
+\boxed{\frac{k}{n}<\varepsilon}.
+$$
 :::
 
 ::: {.callout-tip title="Antes de seguir"}
@@ -10811,34 +10775,88 @@ $$
 
 Demuestra que $x=0$.
 
-**Respuesta.** Si $x>0$, la propiedad arquimediana permite escoger $n>k/x$, y entonces $k/n<x$, contradiciendo la hipótesis. Luego $x$ no puede ser positivo; como $x\ge0$, se sigue $x=0$.
+**Respuesta.** Supongamos, por contradicción, que $x>0$. Como $k/x>0$, la propiedad arquimediana permite elegir $n\in\mathbb N$ tal que
+
+$$
+n>\frac{k}{x}.
+$$
+
+Entonces $n>0$. Multiplicando por $x>0$,
+
+$$
+nx>k,
+$$
+
+y dividiendo por $n>0$,
+
+$$
+x>\frac{k}{n}.
+$$
+
+Esto contradice la hipótesis, que exige $x\le k/n$ para todo $n\in\mathbb N_{>0}$. Por tanto, $x>0$ es imposible. Como $x\ge0$, la tricotomía da
+
+$$
+\boxed{x=0}.
+$$
 :::
 
 ### Lo que exporta esta sección
 
-La propiedad arquimediana nos ha dado tres herramientas distintas:
+La sección ha convertido la propiedad arquimediana en tres herramientas concretas:
 
 $$
 \boxed{
 \begin{array}{c}
-\text{naturales arbitrariamente grandes},\\[3pt]
-\text{recíprocos }1/n\text{ arbitrariamente pequeños},\\[3pt]
-\text{encajonamiento de un real entre enteros consecutivos}.
+\forall x\in\mathbb R\;\exists n\in\mathbb N:\ n>x,\\[4pt]
+\forall\varepsilon>0\;\exists n\in\mathbb N_{>0}:\ \dfrac1n<\varepsilon,\\[4pt]
+\forall x\in\mathbb R\;\exists m\in\mathbb Z:\ m\le x<m+1.
 \end{array}
 }
 $$
 
-Estas tres formas son equivalentes o estrechamente derivadas, pero cumplen papeles diferentes en las pruebas.
+Su dependencia interna es precisa. La primera es la propiedad arquimediana. La segunda se deduce directamente de ella aplicándola a $1/\varepsilon$. La tercera combina arquimedianidad con la buena ordenación de $\mathbb N$ para seleccionar el primer natural adecuado después de una traslación.
 
-La segunda será recurrente en límites: cuando aparezca una tolerancia positiva, podremos fabricar una escala $1/n$ menor que ella. La tercera será utilizada de inmediato.
+Podemos resumir esa arquitectura como
 
-En §1.8 veremos que, por pequeños que sean dos extremos reales distintos, siempre cabe entre ellos un número racional y también un número irracional.
+$$
+\boxed{
+\text{completitud}
+\longrightarrow
+\text{propiedad arquimediana}
+\longrightarrow
+\begin{cases}
+\text{naturales suficientemente grandes},\\
+\text{recíprocos }1/n\text{ arbitrariamente pequeños},
+\end{cases}
+}
+$$
+
+mientras que
+
+$$
+\boxed{
+\text{propiedad arquimediana}
++\text{ buena ordenación de }\mathbb N
+\longrightarrow
+\text{encajonamiento entero}.
+}
+$$
+
+En §1.8 combinaremos las dos últimas herramientas. Si $a<b$, elegiremos $n$ con $1/n<b-a$; después, el encajonamiento entero producirá un entero $m$ con
+
+$$
+na<m<nb,
+$$
+
+y por tanto un racional $m/n$ dentro de $(a,b)$. Una vez establecida la densidad racional, la existencia del irracional $\sqrt2$ permitirá obtener también densidad irracional mediante traslación.
+
+Así, por estrecho que sea un intervalo abierto no vacío, la maquinaria construida hasta aquí permitirá encontrar en él números racionales e irracionales.
 
 ## Entre dos reales siempre hay más números {#sec-t1-c02-08}
 
 ### Qué significa que un conjunto sea denso
 
-En §1.7 obtuvimos las herramientas necesarias para fabricar números entre dos reales cualesquiera. Antes de utilizarlas conviene precisar qué propiedad queremos demostrar.
+En §1.7 obtuvimos las herramientas necesarias para fabricar números entre dos reales cualesquiera. Antes de utilizarlas conviene precisar la propiedad que queremos demostrar.
 
 ::: {#def-t1-0018}
 **Densidad en la recta real.** Sea $D\subseteq\mathbb R$. Diremos que $D$ es **denso en $\mathbb R$** si, para cualesquiera $a,b\in\mathbb R$ con $a<b$, existe $d\in D$ tal que
@@ -10847,22 +10865,40 @@ $$
 a<d<b.
 $$
 
-Equivalentemente: todo intervalo abierto no vacío $(a,b)$ contiene al menos un elemento de $D$.
+Equivalentemente, todo intervalo abierto no vacío contiene algún elemento de $D$:
+
+$$
+\boxed{
+\forall a,b\in\mathbb R,
+\quad
+a<b
+\Longrightarrow
+D\cap(a,b)\ne\varnothing.
+}
+$$
 :::
 
-La palabra *denso* puede inducir una imagen equivocada si se interpreta como «ocupa casi todos los puntos». No significa eso.
+Las dos formulaciones expresan la misma condición: encontrar $d\in D$ con $a<d<b$ equivale a encontrar un elemento de la intersección $D\cap(a,b)$.
 
-Un conjunto puede ser denso y, sin embargo, dejar fuera muchísimos números. Lo que la definición prohíbe es que exista un **intervalo abierto completo** que no contenga ningún elemento del conjunto.
-
-La primera sorpresa será que los racionales son densos:
+La palabra *denso* describe un comportamiento local respecto de los intervalos. Un conjunto denso puede omitir muchos puntos; la definición exige que ninguno de esos puntos ausentes abra un intervalo no vacío completamente separado del conjunto. En símbolos, si $a<b$, no puede ocurrir
 
 $$
-\mathbb Q\text{ aparece dentro de todo intervalo abierto no vacío.}
+D\cap(a,b)=\varnothing.
 $$
 
-La segunda será que los irracionales también lo son.
+En esta sección demostraremos dos hechos que conviene mantener simultáneamente:
 
-Por tanto, ningún intervalo real, por pequeño que sea, puede estar reservado exclusivamente a una de las dos clases.
+$$
+\mathbb Q\text{ es denso en }\mathbb R
+$$
+
+y
+
+$$
+\mathbb R\setminus\mathbb Q\text{ es denso en }\mathbb R.
+$$
+
+Así, todo intervalo abierto no vacío contiene racionales e irracionales. La anchura del intervalo puede ser tan pequeña como se quiera mientras sus extremos sigan siendo distintos.
 
 ### Densidad de los racionales
 
@@ -10875,57 +10911,39 @@ $$
 :::
 
 ::: {.callout-note title="Idea de la prueba"}
-Un racional tiene la forma $m/n$. Así que el objetivo
+Buscamos un racional de la forma $m/n$, con $m\in\mathbb Z$ y $n\in\mathbb N_{>0}$. Como $n>0$,
 
 $$
 a<\frac mn<b
-$$
-
-se vuelve, después de multiplicar por un entero positivo $n$,
-
-$$
+\iff
 na<m<nb.
 $$
 
-La pregunta es entonces: ¿podemos hacer que el intervalo $(na,nb)$ sea lo bastante ancho como para contener un entero?
-
-La propiedad arquimediana permite escoger $n$ con
+La estrategia consiste en elegir $n$ de modo que el intervalo escalado $(na,nb)$ tenga anchura mayor que $1$. Por [Corolario 1.2](#cor-t1-0002) podemos imponer
 
 $$
 \frac1n<b-a,
 $$
 
-es decir,
+lo que equivale a
 
 $$
 nb-na>1.
 $$
 
-Una vez que el intervalo escalado tiene longitud mayor que $1$, el lema de encajonamiento entero de §1.7 nos proporciona el entero que necesitamos.
+Después, [Lema 1.1](#lem-t1-0001) aplicado a $na$ produce un entero inmediatamente a su derecha; la desigualdad anterior garantiza que ese entero todavía queda a la izquierda de $nb$.
 :::
 
-**Demostración.** Sean $a,b\in\mathbb R$ con
-
-$$
-a<b.
-$$
-
-Entonces
-
-$$
-b-a>0.
-$$
-
-Por el corolario arquimediano existe $n\in\mathbb N_{>0}$ tal que
+**Demostración.** Sean $a,b\in\mathbb R$ con $a<b$. Entonces $b-a>0$. Por [Corolario 1.2](#cor-t1-0002) existe $n\in\mathbb N_{>0}$ tal que
 
 $$
 \frac1n<b-a.
 $$
 
-Multiplicando por $n>0$ obtenemos
+Como $n>0$, multiplicando por $n$ obtenemos
 
 $$
-1<n(b-a),
+1<n(b-a)=nb-na,
 $$
 
 y por tanto
@@ -10934,7 +10952,7 @@ $$
 na+1<nb.
 $$
 
-Apliquemos ahora el lema de encajonamiento entero al número real $na$. Existe $k\in\mathbb Z$ tal que
+Apliquemos [Lema 1.1](#lem-t1-0001) al real $na$. Existe $k\in\mathbb Z$ tal que
 
 $$
 k\le na<k+1.
@@ -10946,47 +10964,53 @@ $$
 m=k+1.
 $$
 
-Entonces $m\in\mathbb Z$ y, como $na<k+1$, tenemos
+Entonces $m\in\mathbb Z$ y
 
 $$
-na<m.
+na<m=k+1\le na+1<nb.
 $$
 
-Además, de $k\le na$ se sigue
-
-$$
-m=k+1\le na+1<nb.
-$$
-
-Por consiguiente,
+En particular,
 
 $$
 na<m<nb.
 $$
 
-Como $n>0$, podemos dividir toda la desigualdad por $n$ sin cambiar su sentido:
+Dividiendo por $n>0$ conservamos el orden:
 
 $$
 a<\frac mn<b.
 $$
 
-Finalmente, $m\in\mathbb Z$ y $n\in\mathbb N_{>0}$, de modo que
+Como $m\in\mathbb Z$ y $n\in\mathbb N_{>0}$,
 
 $$
-\frac mn\in\mathbb Q.
+r:=\frac mn\in\mathbb Q.
 $$
 
-Hemos construido un racional estrictamente entre $a$ y $b$. $\blacksquare$
+Por consiguiente,
+
+$$
+\boxed{a<r<b}.
+$$
+
+Esto demuestra la densidad de $\mathbb Q$ en $\mathbb R$. $\blacksquare$
 
 ::: {.callout-note title="Después de la prueba"}
-La prueba tiene cuatro engranajes, y conviene poder reconstruirlos sin memorizar las líneas:
+Los extremos $a$ y $b$ son reales arbitrarios; no se ha supuesto que sean racionales. La construcción introduce racionalidad únicamente al elegir
 
-1. **medir el hueco:** $b-a>0$;
-2. **elegir una escala fina:** $1/n<b-a$;
-3. **escalar el intervalo:** $nb-na>1$;
-4. **insertar un entero y desescalar:** $na<m<nb\Rightarrow a<m/n<b$.
+$$
+r=\frac mn.
+$$
 
-En nuestra cadena de dependencias, la completitud entra **indirectamente**: §1.7 la utilizó para demostrar la propiedad arquimediana, y esta es la herramienta inmediata que se usa aquí.
+La prueba puede reconstruirse mediante cuatro movimientos:
+
+1. **medir el intervalo:** $b-a>0$;
+2. **elegir una escala:** $1/n<b-a$;
+3. **insertar un entero:** $na<m<nb$;
+4. **desescalar:** $a<m/n<b$.
+
+La dependencia estructural también queda localizada. [Corolario 1.2](#cor-t1-0002) procede de la propiedad arquimediana; [Lema 1.1](#lem-t1-0001) combina arquimedianidad con la buena ordenación de $\mathbb N$. En la arquitectura adoptada por este capítulo, la completitud interviene por tanto de manera indirecta, a través de §1.7.
 :::
 
 ### Un ejemplo construido, no adivinado
@@ -12785,7 +12809,6 @@ $$
 
 como una desigualdad compuesta y como un intervalo. Indica con cuidado qué extremos pertenecen al conjunto.
 :::
-
 ::: {#exr-t1-0037}
 <!-- CPM-T1-EXR-0037 | A | CONCEPTUAL | ORDER | TRANSFER -->
 **Ejercicio A2. Tres transformaciones del mismo orden.** Supón
@@ -12802,7 +12825,6 @@ Ordena correctamente, justificando cada caso:
 2. $a/c$, $b/c$ y $0$;
 3. $1/a$, $1/b$ y $0$.
 :::
-
 ::: {#exr-t1-0038}
 <!-- CPM-T1-EXR-0038 | A | CONCEPTUAL | SUPREMUM | TRANSFER -->
 **Ejercicio A3. Dos componentes y cuatro extremos.** Sea
@@ -12813,7 +12835,6 @@ $$
 
 Determina $\sup A$, $\inf A$ y decide si $A$ tiene máximo y mínimo. Justifica la diferencia entre frontera y pertenencia.
 :::
-
 ::: {#exr-t1-0039}
 <!-- CPM-T1-EXR-0039 | A | CONCEPTUAL | PROOF_AUDIT | RETROFIT_AXIOMATIC -->
 **Ejercicio A4. Axioma, definición o resultado demostrado.** Clasifica cada afirmación en una de las categorías **axioma**, **definición** o **resultado demostrado**. Cuando corresponda, identifica el axioma `C1--C9` o el resultado de §1.1 que la respalda.
@@ -12838,7 +12859,6 @@ Explica por qué confundir estas categorías puede ocultar una dependencia lógi
 
 No calcules el supremo salvo que sea necesario para justificar una cota.
 :::
-
 ::: {#exr-t1-0041}
 <!-- CPM-T1-EXR-0041 | A | CONCEPTUAL | ORIGINAL -->
 **Ejercicio A6. Dependencia estructural.** Clasifica cada hecho según dependa de **cuerpo ordenado**, **completitud directamente** o **una consecuencia previa de completitud**:
@@ -12874,7 +12894,6 @@ $$
 
 Entrega el conjunto solución como unión de intervalos cerrados.
 :::
-
 ::: {#exr-t1-0044}
 <!-- CPM-T1-EXR-0044 | B | PROOF | ORIGINAL -->
 **Ejercicio B2. Una estimación alrededor de $2$.** Supón que
@@ -12904,7 +12923,7 @@ $$
    \quad\Longrightarrow\quad
    \frac1b<\frac1a,
    $$
-   sin citar directamente la parte 7 de @prp-t1-0007.
+   sin citar directamente la parte 7 de [Proposición 1.5](#prp-t1-0007).
 :::
 ::: {#exr-t1-0046}
 <!-- CPM-T1-EXR-0046 | B | COMPUTATION | CONCEPTUAL | ORIGINAL -->
@@ -13005,7 +13024,6 @@ $$
 
 No basta afirmar que ambos conjuntos son densos: organiza una construcción que garantice simultáneamente todo el orden indicado.
 :::
-
 ::: {#exr-t1-0053}
 <!-- CPM-T1-EXR-0053 | C | PROOF | EXISTENCE_UNIQUENESS | TRANSFER -->
 **Ejercicio C4. Una ecuación afín completa.** Sean $a,b,c\in F$, donde $F$ es un cuerpo y $a\ne0$. Considera
@@ -13067,7 +13085,6 @@ $$
 2. Formula la identidad correcta.
 3. Demuéstrala a partir de la definición de supremo.
 :::
-
 ::: {#exr-t1-0058}
 <!-- CPM-T1-EXR-0058 | D | CONCEPTUAL | CANCELLATION | DIAGNOSIS | TRANSFER -->
 **Ejercicio D2. Cancelar puede borrar una solución.** Resuelve en un cuerpo ordenado
@@ -13090,7 +13107,6 @@ Un estudiante cancela inmediatamente el factor $x-1$ y obtiene una sola solució
    \sup A\notin F.
    $$
 :::
-
 ::: {#exr-t1-0060}
 <!-- CPM-T1-EXR-0060 | D | CONCEPTUAL | NESTED_INTERVALS | INCOMPLETENESS | TRANSFER -->
 **Ejercicio D4. Intervalos racionales encajados alrededor de un punto que no es racional.** Parte de $I_0=[1,2]$ y aplica bisección conservando siempre la mitad cerrada que contiene a $\sqrt2$.
@@ -13106,7 +13122,6 @@ Un estudiante cancela inmediatamente el factor $x-1$ y obtiene una sola solució
 
 Explica por qué este fenómeno muestra que densidad y completitud son propiedades diferentes.
 :::
-
 ::: {#exr-t1-0061}
 <!-- CPM-T1-EXR-0061 | D | COMPUTATION | SYNTHESIS | ORIGINAL -->
 **Ejercicio D5. Inecuación racional con valor absoluto III.** Resuelve completamente
@@ -13140,7 +13155,6 @@ Explica por qué este argumento no es admisible dentro de este capítulo, aunque
 
 Justifica cada elección.
 :::
-
 ::: {#exr-t1-0064}
 <!-- CPM-T1-EXR-0064 | E | COUNTEREXAMPLE | ONE_SIDED_BOUNDS | TRANSFER -->
 **Ejercicio E2. El mismo supremo con comportamientos inferiores opuestos.** Encuentra dos conjuntos $A,B\subseteq\mathbb R$ tales que
@@ -13151,7 +13165,6 @@ $$
 
 pero $A$ esté acotado inferiormente y $B$ no. Determina además si existe $\inf A$ y explica por qué $B$ no posee ínfimo real.
 :::
-
 ::: {#exr-t1-0065}
 <!-- CPM-T1-EXR-0065 | E | COUNTEREXAMPLE | DIAGNOSIS | RETROFIT_AXIOMATIC -->
 **Ejercicio E3. La división por cero no es una simplificación pendiente.** Un estudiante escribe
@@ -13183,7 +13196,6 @@ Identifica exactamente el primer paso ilegítimo de la cadena.
 
 Explica por qué esto no contradice el principio de intervalos encajados.
 :::
-
 ::: {#exr-t1-0067}
 <!-- CPM-T1-EXR-0067 | E | COUNTEREXAMPLE | INCOMPLETENESS | AFFINE_TRANSFER -->
 **Ejercicio E5. Transportar el hueco racional.** Sea
@@ -13226,7 +13238,6 @@ $$
 \boxed{\sup(A+c)=s+c}.
 $$
 :::
-
 ::: {#exr-t1-0069}
 <!-- CPM-T1-EXR-0069 | F | DISCOVERY | ARCHIMEDEAN | FINITE_CONSTRAINTS | TRANSFER -->
 **Ejercicio F2. Una sola elección para muchas exigencias.** Sean
@@ -13253,7 +13264,6 @@ $$
 \frac1n<\varepsilon_j\quad(j=1,\dots,s).
 $$
 :::
-
 ::: {#exr-t1-0070}
 <!-- CPM-T1-EXR-0070 | F | DISCOVERY | DENSITY | DENOMINATOR_CONTROL | TRANSFER -->
 **Ejercicio F3. Densidad racional con control del denominador.** Sean $a<b$ y $N\in\mathbb N_{>0}$. Demuestra que existen $m\in\mathbb Z$ y $n\in\mathbb N_{>0}$ tales que
@@ -13270,7 +13280,6 @@ $$
 
 No basta citar densidad de $\mathbb Q$: debes adaptar su construcción para imponer además la cota inferior sobre el denominador.
 :::
-
 ::: {#exr-t1-0071}
 <!-- CPM-T1-EXR-0071 | F | DISCOVERY | BISECTION | ERROR_BUDGET | TRANSFER -->
 **Ejercicio F4. Presupuesto de bisección sin calcular todos los puntos medios.** Parte de un intervalo de longitud $1$ que contiene a $\sqrt7$ y aplica bisección conservando siempre una mitad que contenga la raíz.
@@ -13279,7 +13288,6 @@ No basta citar densidad de $\mathbb Q$: debes adaptar su construcción para impo
 2. Determina el menor $n$ que garantiza una longitud estrictamente menor que $1/100$.
 3. Explica qué certificado de localización de $\sqrt7$ proporciona esa etapa, aunque no calcules sus extremos concretos.
 :::
-
 ::: {#exr-t1-0072}
 <!-- CPM-T1-EXR-0072 | F | DISCOVERY | AXIOMATIC | TRANSFER -->
 **Ejercicio F5. Reconstruir $(-1)a=-a$ sin usar las reglas de signos.** Sea $F$ un cuerpo y $a\in F$.
@@ -13395,7 +13403,6 @@ $$
 
 El extremo $-1$ queda excluido por la primera desigualdad estricta; el extremo $1$ satisface ambas condiciones.
 :::
-
 ::: {#sol-t1-0037}
 <!-- CPM-T1-SOL-0037 -->
 **Solución A2.**
@@ -13420,7 +13427,6 @@ $$
 
 Las tres cadenas usan el mismo dato $a<b$, pero cada transformación exige controlar el signo del factor o divisor.
 :::
-
 ::: {#sol-t1-0038}
 <!-- CPM-T1-SOL-0038 -->
 **Solución A3.**
@@ -13441,7 +13447,6 @@ $$
 
 y como $-2\notin A$, tampoco hay mínimo.
 :::
-
 ::: {#sol-t1-0039}
 <!-- CPM-T1-SOL-0039 -->
 **Solución A4.**
@@ -13464,13 +13469,13 @@ La clasificación es la siguiente.
    $$
    a0=0
    $$
-   no figura entre `C1--C9`. Se demuestra a partir de los axiomas; en §1.1 aparece como la prueba auditada @exm-t1-0040.
+   no figura entre `C1--C9`. Se demuestra a partir de los axiomas; en §1.1 aparece como la prueba auditada [Ejemplo 1.1](#exm-t1-0040).
 
 4. **Resultado demostrado.** La implicación
    $$
    a\ne0,\quad ab=ac\Longrightarrow b=c
    $$
-   es la cancelación multiplicativa de @prp-t1-0027. La hipótesis $a\ne0$ no es decorativa: permite usar el inverso multiplicativo de $a$.
+   es la cancelación multiplicativa de [Proposición 1.3](#prp-t1-0027). La hipótesis $a\ne0$ no es decorativa: permite usar el inverso multiplicativo de $a$.
 
 5. **Definición.** El orden se introduce mediante la positividad:
    $$
@@ -13494,7 +13499,6 @@ La distinción importa porque un axioma puede usarse como punto de partida, una 
 
 La quinta parte subraya que el axioma solo exige acotación **superior**; el conjunto puede ser ilimitado hacia abajo.
 :::
-
 ::: {#sol-t1-0041}
 <!-- CPM-T1-SOL-0041 -->
 **Solución A6.**
@@ -13584,7 +13588,6 @@ $$
 \boxed{x\in[-2,0]\cup[2,4]}.
 $$
 :::
-
 ::: {#sol-t1-0044}
 <!-- CPM-T1-SOL-0044 -->
 **Solución B2.**
@@ -13736,7 +13739,7 @@ $$
 \frac ab=ab^{-1}.
 $$
 
-La parte 5 de @prp-t1-0007 dice que $b^{-1}$ tiene el mismo signo que $b$. La parte 8 caracteriza el signo de un producto: es positivo cuando los factores tienen el mismo signo y negativo cuando tienen signos opuestos. Sustituyendo el signo de $b^{-1}$ por el de $b$ obtenemos exactamente
+La parte 5 de [Proposición 1.5](#prp-t1-0007) dice que $b^{-1}$ tiene el mismo signo que $b$. La parte 8 caracteriza el signo de un producto: es positivo cuando los factores tienen el mismo signo y negativo cuando tienen signos opuestos. Sustituyendo el signo de $b^{-1}$ por el de $b$ obtenemos exactamente
 
 $$
 \boxed{\frac ab>0
@@ -13962,7 +13965,6 @@ $$
 
 Esto demuestra la afirmación.
 :::
-
 ::: {#sol-t1-0053}
 <!-- CPM-T1-SOL-0053 -->
 **Solución C4.**
@@ -14188,7 +14190,6 @@ $$
 
 y en consecuencia $s\le u$. Así $s$ es la menor cota superior.
 :::
-
 ::: {#sol-t1-0058}
 <!-- CPM-T1-SOL-0058 -->
 **Solución D2.**
@@ -14265,7 +14266,6 @@ $$
 \boxed{\sup(A\setminus F)=s=\sup A}.
 $$
 :::
-
 ::: {#sol-t1-0060}
 <!-- CPM-T1-SOL-0060 -->
 **Solución D4.**
@@ -14292,7 +14292,6 @@ $$
 
 Los racionales siguen siendo densos —cada intervalo contiene racionales—, pero el punto común exigido por completitud puede faltar dentro de $\mathbb Q$.
 :::
-
 ::: {#sol-t1-0061}
 <!-- CPM-T1-SOL-0061 -->
 **Solución D5.**
@@ -14472,7 +14471,6 @@ Todos tienen supremo $1$. Además:
 
 La pertenencia de los puntos frontera, no el valor del supremo o del ínfimo, decide la existencia de extremos alcanzados.
 :::
-
 ::: {#sol-t1-0064}
 <!-- CPM-T1-SOL-0064 -->
 **Solución E2.**
@@ -14501,7 +14499,6 @@ En cambio, $B$ no está acotado inferiormente: dado cualquier $m\in\mathbb R$, e
 
 El ejemplo muestra que la existencia de un supremo es una propiedad unilateral: no implica acotación por abajo.
 :::
-
 ::: {#sol-t1-0065}
 <!-- CPM-T1-SOL-0065 -->
 **Solución E3.**
@@ -14590,7 +14587,6 @@ $$
 
 La familia no es encajada: por ejemplo, $I_1=[1,2]$ e $I_2=[0,1]$ no satisfacen $I_2\subseteq I_1$. No se viola ninguna hipótesis del teorema porque precisamente falta el encajamiento.
 :::
-
 ::: {#sol-t1-0067}
 <!-- CPM-T1-SOL-0067 -->
 **Solución E5.**
@@ -14660,7 +14656,6 @@ $$
 \boxed{\sup(A+c)=s+c}.
 $$
 :::
-
 ::: {#sol-t1-0069}
 <!-- CPM-T1-SOL-0069 -->
 **Solución F2.**
@@ -14683,7 +14678,6 @@ $$
 
 para todo $j$. Como $n,\varepsilon_j>0$, esto último equivale a $1/n<\varepsilon_j$. Una sola elección satisface todas las restricciones.
 :::
-
 ::: {#sol-t1-0070}
 <!-- CPM-T1-SOL-0070 -->
 **Solución F3.**
@@ -14720,7 +14714,6 @@ $$
 
 con el denominador además sujeto a $n>N$.
 :::
-
 ::: {#sol-t1-0071}
 <!-- CPM-T1-SOL-0071 -->
 **Solución F4.**
@@ -14765,7 +14758,6 @@ $$
 
 Ese es un certificado exacto de incertidumbre, independientemente de que hayamos escrito los extremos.
 :::
-
 ::: {#sol-t1-0072}
 <!-- CPM-T1-SOL-0072 -->
 **Solución F5.**
@@ -15112,3 +15104,7 @@ Antes de cerrar el capítulo, conviene verificar el contrato de esta sección.
 - Dependencias de `T1-C03` o posteriores: **ninguna**.
 
 La política pedagógica del banco queda así alineada con la progresión del capítulo: **primero modelar la justificación, después retirar el andamiaje y exigir transferencia**.
+
+---
+
+[Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 2 →](funciones-reales-estructura-composicion-inversas-y-graficas.md)

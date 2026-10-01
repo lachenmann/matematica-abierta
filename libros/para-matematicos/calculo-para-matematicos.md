@@ -1,12 +1,12 @@
 ---
 title: "Cálculo para matemáticos"
-description: "Libro abierto de cálculo: números reales, funciones, sucesiones, límites, continuidad y derivada."
+description: "Tomo I completo de cálculo de una variable: veinte capítulos y ochocientos ejercicios con soluciones."
 content-id: MA-BOK-0001
 content-type: book
 collection: PM-CAL
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-21
+date-modified: 2026-09-30
 areas:
   - fundamentos
   - calculo
@@ -34,6 +34,17 @@ related:
   - MA-BCH-0065
   - MA-BCH-0066
   - MA-BCH-0076
+  - MA-BCH-0099
+  - MA-BCH-0100
+  - MA-BCH-0101
+  - MA-BCH-0102
+  - MA-BCH-0103
+  - MA-BCH-0104
+  - MA-BCH-0105
+  - MA-BCH-0106
+  - MA-BCH-0107
+  - MA-BCH-0108
+  - MA-BCH-0109
 provenance:
   type: synthesis
   sources: []
@@ -42,43 +53,11 @@ license: GFDL-1.3-or-later
 
 # Cálculo para matemáticos
 
-**Cálculo para matemáticos** es un libro abierto en construcción dentro de la colección *Para matemáticos*. Su objetivo es desarrollar el cálculo de una variable con suficiente rigor para servir de puente hacia el análisis, pero sin convertir la exposición en una sucesión comprimida de definiciones y teoremas.
+**Tomo I — Fundamentos del cálculo de una variable** reúne veinte capítulos y ochocientos ejercicios con soluciones desarrolladas. El recorrido comienza con la estructura de los números reales y culmina en aplicaciones de la integral y ecuaciones diferenciales elementales.
 
-La edición vigente comienza con los números reales. Conserva una idea sencilla: aprender cálculo no consiste solamente en adquirir técnicas de derivación e integración. También exige aprender a leer una afirmación matemática, reconocer sus hipótesis, construir una demostración, controlar un argumento algebraico y entender qué estructura de los números reales hace posibles los principales teoremas del cálculo.
+La exposición combina motivación, definiciones, demostraciones, ejemplos y contraejemplos. Cada técnica se apoya en resultados construidos previamente y hace visibles sus hipótesis, dominios y límites de aplicación.
 
-## Principios de la obra
-
-El desarrollo combina cuatro capas que se refuerzan mutuamente:
-
-$$
-\boxed{
-\text{conceptos}
-\longleftrightarrow
-\text{resultados}
-\longleftrightarrow
-\text{métodos}
-\longleftrightarrow
-\text{problemas}
-}
-$$
-
-En particular, el libro procura:
-
-- introducir intuición y motivación antes de las formulaciones más abstractas cuando eso mejora la comprensión;
-- explicitar hipótesis, dominios y condiciones de aplicación;
-- desarrollar demostraciones sin ocultar los pasos que contienen razonamiento nuevo;
-- distinguir una regla algebraica de la estructura que la justifica;
-- acompañar la teoría con ejemplos, contraejemplos, ejercicios y problemas;
-- extraer de las soluciones técnicas reutilizables;
-- y conectar cada capítulo con el corpus modular de Matemática Abierta.
-
-## Tomo I — Fundamentos del cálculo de una variable
-
-El primer tomo avanza desde la estructura de los números reales hasta el cálculo diferencial e integral de una variable y las ecuaciones diferenciales elementales.
-
-Los capítulos posteriores desarrollarán aplicaciones de la derivada, integración, el teorema fundamental del cálculo y otras herramientas necesarias para completar el recorrido de una variable.
-
-## Capítulos publicados
+## Capítulos del Tomo I
 
 1. [**Los números reales: axiomas de cuerpo, orden y completitud**](../capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) (`MA-BCH-0003`).
 2. [**Funciones reales: estructura, composición, inversas y gráficas**](../capitulos/funciones-reales-estructura-composicion-inversas-y-graficas.md) (`MA-BCH-0004`).
@@ -89,25 +68,24 @@ Los capítulos posteriores desarrollarán aplicaciones de la derivada, integraci
 7. [**Álgebra de derivadas y regla de la cadena**](../capitulos/algebra-de-derivadas-y-regla-de-la-cadena.md) (`MA-BCH-0065`).
 8. [**Derivación de funciones elementales, inversas e implícitas**](../capitulos/derivacion-de-funciones-elementales-inversas-e-implicitas.md) (`MA-BCH-0066`).
 9. [**Teoremas de Rolle y del valor medio**](../capitulos/teoremas-de-rolle-y-del-valor-medio.md) (`MA-BCH-0076`).
+10. [**Monotonía, extremos, convexidad y forma de las gráficas**](../capitulos/monotonia-extremos-convexidad-y-forma-de-las-graficas.md) (`MA-BCH-0099`).
+11. [**Derivadas superiores y fórmula de Taylor con resto**](../capitulos/derivadas-superiores-y-formula-de-taylor-con-resto.md) (`MA-BCH-0100`).
+12. [**Aproximación, método de Newton y problemas de optimización**](../capitulos/aproximacion-metodo-de-newton-y-problemas-de-optimizacion.md) (`MA-BCH-0101`).
+13. [**Del área y las sumas a la integral**](../capitulos/del-area-y-las-sumas-a-la-integral.md) (`MA-BCH-0102`).
+14. [**Integral de Riemann: definición, integrabilidad y propiedades**](../capitulos/integral-de-riemann-definicion-integrabilidad-y-propiedades.md) (`MA-BCH-0103`).
+15. [**Teoremas de valor medio para integrales**](../capitulos/teoremas-de-valor-medio-para-integrales.md) (`MA-BCH-0104`).
+16. [**Teorema fundamental del cálculo**](../capitulos/teorema-fundamental-del-calculo.md) (`MA-BCH-0105`).
+17. [**Logaritmo, exponencial y funciones relacionadas desde el cálculo**](../capitulos/logaritmo-exponencial-y-funciones-relacionadas-desde-el-calculo.md) (`MA-BCH-0106`).
+18. [**Técnicas de integración**](../capitulos/tecnicas-de-integracion.md) (`MA-BCH-0107`).
+19. [**Aplicaciones geométricas y cuantitativas de la integral**](../capitulos/aplicaciones-geometricas-y-cuantitativas-de-la-integral.md) (`MA-BCH-0108`).
+20. [**Ecuaciones diferenciales elementales y síntesis Newton–Leibniz**](../capitulos/ecuaciones-diferenciales-elementales-y-sintesis-newtonleibniz.md) (`MA-BCH-0109`).
 
-Los capítulos publicados se conectan con [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y con problemas independientes que desarrollan técnicas reutilizables.
+## Una edición integral
 
-## Publicación progresiva
+El Tomo I se presenta como una unidad: sus veinte capítulos forman un recorrido continuo de cálculo diferencial e integral de una variable. Las correcciones posteriores se incorporan a esta edición manteniendo las rutas e identificadores de los capítulos.
 
-El libro no necesita estar terminado para ser útil. Cada capítulo se publica cuando supera su revisión editorial y matemática; el volumen completo puede continuar en desarrollo mientras sus partes ya cerradas permanecen disponibles.
+Los tomos siguientes continúan en preparación. Sus capítulos no forman parte de esta entrega.
 
-Esta política permite que el libro crezca junto con el resto de Matemática Abierta:
+## Conexiones con Matemática Abierta
 
-- los conceptos fundamentales tienen páginas autocontenidas en [Conceptos](../../conceptos/index.qmd);
-- los teoremas y proposiciones pueden localizarse también en [Resultados y teoremas](../../teoria/resultados/index.qmd);
-- las herramientas de resolución se organizan en [Métodos y técnicas](../../teoria/metodos/index.qmd);
-- y los ejercicios sustanciales pueden tener vida propia en [Problemas](../../problemas/index.qmd).
-
-El capítulo ofrece el **recorrido pedagógico**; estas páginas transversales ofrecen las **unidades reutilizables**. No son copias paralelas, sino distintas formas de recorrer el mismo sistema matemático.
-
-## Estado de publicación
-
-La edición pública está abierta y contiene **nueve capítulos completos**. Los capítulos siguientes se incorporarán progresivamente después de superar su auditoría matemática y su reescritura específica para la edición web.
-
-Consulta el [índice transversal de capítulos](../capitulos/index.qmd) para ver las partes disponibles.
-
+El libro ofrece el recorrido pedagógico. [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y [Problemas](../../problemas/index.qmd) permiten explorar unidades y técnicas del mismo sistema matemático.

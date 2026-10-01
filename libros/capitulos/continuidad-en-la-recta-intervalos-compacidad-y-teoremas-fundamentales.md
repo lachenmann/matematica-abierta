@@ -1,21 +1,19 @@
 ---
 title: "Continuidad en la recta: intervalos, compacidad y teoremas fundamentales"
-description: "Capítulo 5 de Cálculo para matemáticos. Edición canónica v11."
+description: "Capítulo 5 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0063
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-areas:
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-09-19
+date-modified: 2026-09-30
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -24,12 +22,20 @@ prerequisites:
 number-sections: true
 number-depth: 2
 number-offset: [4]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Continuidad en la recta: intervalos, compacidad y teoremas fundamentales {#sec-t1-c06}
+
+[← Capítulo 4](limites-de-funciones.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 6 →](la-derivada-y-la-aproximacion-lineal-local.md)
+
+En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
+
+Las funciones $\sigma$ y $\kappa$ son continuas: en cada tramo son afines y en los puntos de unión coinciden ambos valores laterales con el valor de la función. Cada punto tiene un entorno que corta solo finitos tramos, así que el criterio de empalme se aplica también a su prolongación periódica.
 
 En el capítulo anterior aprendimos a estudiar el comportamiento de una función **alrededor** de un punto sin mirar necesariamente lo que ocurre exactamente en él. La definición de límite funcional estaba construida sobre un entorno perforado:
 
@@ -112,7 +118,7 @@ Antes de responderla globalmente debemos fijar con precisión qué significa ser
 
 ### Del entorno perforado al entorno completo
 
-Recordemos la forma del límite finito introducido en [definición](limites-de-funciones.md#def-t1-0034). Bajo la hipótesis de que $a$ sea punto de acumulación del dominio $A$, escribir
+Recordemos la forma del límite finito introducido en [Definición 4.2](limites-de-funciones.md#def-t1-0034). Bajo la hipótesis de que $a$ sea punto de acumulación del dominio $A$, escribir
 
 $$
 \lim_{x\to a}f(x)=L
@@ -630,7 +636,7 @@ $$
 V_{1/2}(0)\cap A=\{0\}.
 $$
 
-Por @prp-t1-0033, $f$ es continua en $0$ cualquiera sea el valor que hayamos asignado a $f(0)$. El número $100$ no necesita parecerse en absoluto a los valores $x^2$ de la otra componente del dominio.
+Por [Proposición 5.1](#prp-t1-0033), $f$ es continua en $0$ cualquiera sea el valor que hayamos asignado a $f(0)$. El número $100$ no necesita parecerse en absoluto a los valores $x^2$ de la otra componente del dominio.
 
 Esto no es una anomalía. Localmente, alrededor de $0$, no existen otros puntos del dominio con los cuales comparar $f(0)$.
 
@@ -728,7 +734,7 @@ $$
 g(1)=7.
 $$
 
-Como $1$ es punto de acumulación de $\mathbb R$, @prp-t1-0033 nos dice inmediatamente que $g$ no es continua en $1$:
+Como $1$ es punto de acumulación de $\mathbb R$, [Proposición 5.1](#prp-t1-0033) nos dice inmediatamente que $g$ no es continua en $1$:
 
 $$
 \lim_{x\to1}g(x)=2\ne7=g(1).
@@ -827,7 +833,7 @@ Podemos resumir la transición desde límite a continuidad en la siguiente tabla
 | ¿Cuál es el objetivo de salida? | Un candidato $L$ | El valor forzado $f(a)$ |
 | ¿Qué ocurre si $a$ es aislado? | No formulamos el límite bajo nuestra convención | Toda función es continua en $a$ |
 
-En un punto de acumulación, @prp-t1-0033 une las dos columnas:
+En un punto de acumulación, [Proposición 5.1](#prp-t1-0033) une las dos columnas:
 
 $$
 \boxed{
@@ -1061,7 +1067,7 @@ La propia violación de continuidad expulsa automáticamente al centro de la suc
 
 Conviene colocar los dos criterios uno junto al otro.
 
-Para el límite funcional de [teorema](limites-de-funciones.md#thm-t1-0013):
+Para el límite funcional de [Teorema 4.2](limites-de-funciones.md#thm-t1-0013):
 
 $$
 \lim_{x\to a}f(x)=L
@@ -1079,7 +1085,7 @@ x_n\to a
 f(x_n)\to L.
 $$
 
-Para la continuidad de @thm-t1-0017:
+Para la continuidad de [Teorema 5.1](#thm-t1-0017):
 
 $$
 f\text{ continua en }a
@@ -1110,7 +1116,7 @@ No estamos añadiendo una excepción al criterio secuencial. Estamos reflejando 
 
 ### Los puntos aislados vistos mediante sucesiones
 
-El criterio secuencial ofrece una segunda explicación de la continuidad automática en puntos aislados demostrada en @prp-t1-0033.
+El criterio secuencial ofrece una segunda explicación de la continuidad automática en puntos aislados demostrada en [Proposición 5.1](#prp-t1-0033).
 
 Sea $a$ un punto aislado de $A$. Existe entonces $r>0$ tal que
 
@@ -1149,7 +1155,7 @@ $$
 f(x_n)\to f(a).
 $$
 
-Por @thm-t1-0017, $f$ es continua en $a$.
+Por [Teorema 5.1](#thm-t1-0017), $f$ es continua en $a$.
 
 La continuidad en un punto aislado puede leerse, por tanto, de dos maneras equivalentes:
 
@@ -1180,7 +1186,7 @@ f(x_n)\to f(a),
 g(x_n)\to g(a).
 $$
 
-En ese momento ya no estamos ante un problema nuevo de continuidad: estamos ante dos sucesiones reales convergentes. Podemos aplicar su álgebra y después regresar al lenguaje funcional mediante @thm-t1-0017.
+En ese momento ya no estamos ante un problema nuevo de continuidad: estamos ante dos sucesiones reales convergentes. Podemos aplicar su álgebra y después regresar al lenguaje funcional mediante [Teorema 5.1](#thm-t1-0017).
 
 Esta idea concentra varias reglas en una sola proposición.
 
@@ -1237,7 +1243,7 @@ $$
 x_n\to a.
 $$
 
-Como $f$ y $g$ son continuas en $a$, @thm-t1-0017 da
+Como $f$ y $g$ son continuas en $a$, [Teorema 5.1](#thm-t1-0017) da
 
 $$
 f(x_n)\to f(a),
@@ -1269,7 +1275,7 @@ $$
 |f(x_n)|\to|f(a)|.
 $$
 
-Como estas conclusiones valen para toda sucesión $(x_n)$ del dominio que converge a $a$, @thm-t1-0017 implica que $cf$, $f+g$, $f-g$, $fg$ y $|f|$ son continuas en $a$.
+Como estas conclusiones valen para toda sucesión $(x_n)$ del dominio que converge a $a$, [Teorema 5.1](#thm-t1-0017) implica que $cf$, $f+g$, $f-g$, $fg$ y $|f|$ son continuas en $a$.
 
 Para el cociente supongamos
 
@@ -1368,7 +1374,7 @@ Para la composición, en cambio, hemos usado una prueba directa. La razón es pe
 
 ### Por qué desaparece la hipótesis de no impacto
 
-Recordemos la dificultad de [teorema](limites-de-funciones.md#thm-t1-0016).
+Recordemos la dificultad de [Teorema 4.5](limites-de-funciones.md#thm-t1-0016).
 
 Si solo sabemos que
 
@@ -1511,7 +1517,7 @@ $$
 \le\varepsilon.
 $$
 
-Por @prp-t1-0034, $F\circ g$ es continua en $0$.
+Por [Proposición 5.2](#prp-t1-0034), $F\circ g$ es continua en $0$.
 
 En realidad,
 
@@ -1603,7 +1609,7 @@ es continua en todo punto de $D$.
 
 En consecuencia, cualquier expresión obtenida mediante un número finito de sumas, diferencias, productos, valores absolutos, cocientes en puntos donde el denominador no se anula y composiciones de funciones cuya continuidad ya haya sido establecida es continua en los puntos de su dominio natural donde todas esas operaciones están definidas.
 
-**Demostración.** Las funciones constantes y la identidad son continuas por @prp-t1-0034. Aplicando repetidamente las leyes de suma, producto y multiplicación por constantes, obtenemos la continuidad de cada monomio
+**Demostración.** Las funciones constantes y la identidad son continuas por [Proposición 5.2](#prp-t1-0034). Aplicando repetidamente las leyes de suma, producto y multiplicación por constantes, obtenemos la continuidad de cada monomio
 
 $$
 x\mapsto c_kx^k
@@ -1617,11 +1623,11 @@ $$
 q(a)\ne0.
 $$
 
-Los polinomios $p$ y $q$ son continuos en $a$, así que la ley del cociente de @prp-t1-0034 implica que $p/q$ es continua en $a$ relativamente a su dominio natural $D$.
+Los polinomios $p$ y $q$ son continuos en $a$, así que la ley del cociente de [Proposición 5.2](#prp-t1-0034) implica que $p/q$ es continua en $a$ relativamente a su dominio natural $D$.
 
 Como $a$ era arbitrario, la función racional es continua en todo $D$.
 
-La última afirmación se obtiene aplicando finitamente las cláusulas de @prp-t1-0034, auditando en cada cociente que el denominador sea no nulo y en cada composición que la imagen de la función interior pertenezca al dominio de la exterior.
+La última afirmación se obtiene aplicando finitamente las cláusulas de [Proposición 5.2](#prp-t1-0034), auditando en cada cociente que el denominador sea no nulo y en cada composición que la imagen de la función interior pertenezca al dominio de la exterior.
 :::
 
 Este corolario cambia de manera importante nuestra forma de trabajar.
@@ -1638,9 +1644,9 @@ $$
 a^2+1>0.
 $$
 
-Por tanto, el denominador no se anula y @cor-t1-0010 autoriza la continuidad.
+Por tanto, el denominador no se anula y [Corolario 5.1](#cor-t1-0010) autoriza la continuidad.
 
-La teoría no ha sustituido a las pruebas anteriores; las ha **encapsulado**. Las estimaciones de `T1-C05` justificaron las leyes de límite. El criterio secuencial y @prp-t1-0034 convierten ahora esas leyes en un repertorio estable de construcción de funciones continuas.
+La teoría no ha sustituido a las pruebas anteriores; las ha **encapsulado**. Las estimaciones de `T1-C05` justificaron las leyes de límite. El criterio secuencial y [Proposición 5.2](#prp-t1-0034) convierten ahora esas leyes en un repertorio estable de construcción de funciones continuas.
 
 ### La continuidad se puede demostrar por construcción
 
@@ -1836,7 +1842,7 @@ $$
 \widetilde f(a)=L,
 $$
 
-@prp-t1-0033 implica que $\widetilde f$ es continua en $a$.
+[Proposición 5.1](#prp-t1-0033) implica que $\widetilde f$ es continua en $a$.
 
 Pero hay algo más: **ningún otro valor podría funcionar**.
 
@@ -1852,7 +1858,7 @@ $$
 \lim_{x\to a}g(x)=L.
 $$
 
-Si $g$ fuese continua en $a$, @prp-t1-0033 exigiría
+Si $g$ fuese continua en $a$, [Proposición 5.1](#prp-t1-0033) exigiría
 
 $$
 \lim_{x\to a}g(x)=g(a)=M.
@@ -1931,7 +1937,7 @@ $$
 f(1)=100.
 $$
 
-Como $1$ es punto de acumulación de $\mathbb R$, @prp-t1-0033 da inmediatamente
+Como $1$ es punto de acumulación de $\mathbb R$, [Proposición 5.1](#prp-t1-0033) da inmediatamente
 
 $$
 2
@@ -2036,7 +2042,7 @@ O\colon\mathbb R\to\mathbb R,
 \qquad
 O(x)=
 \begin{cases}
-\sin(1/x),&x\ne0,\\
+\sigma(1/x),&x\ne0,\\
 0,&x=0.
 \end{cases}
 $$
@@ -2052,7 +2058,7 @@ $$
 \lim_{x\to0^+}J_c(x)=1.
 $$
 
-Ambos existen y son finitos, pero son distintos. Por [teorema](limites-de-funciones.md#thm-t1-0015), el límite bilateral
+Ambos existen y son finitos, pero son distintos. Por [Teorema 4.4](limites-de-funciones.md#thm-t1-0015), el límite bilateral
 
 $$
 \lim_{x\to0}J_c(x)
@@ -2072,7 +2078,7 @@ $$
 
 o cualquier otro real: los valores laterales siguen siendo $-1$ y $1$.
 
-Como $0$ es punto de acumulación de $\mathbb R$, si $J_c$ fuese continua en $0$, @prp-t1-0033 forzaría la existencia del límite bilateral y su igualdad con $J_c(0)$. Pero ese límite no existe. Por tanto, $J_c$ es discontinua en $0$ para todo $c$.
+Como $0$ es punto de acumulación de $\mathbb R$, si $J_c$ fuese continua en $0$, [Proposición 5.1](#prp-t1-0033) forzaría la existencia del límite bilateral y su igualdad con $J_c(0)$. Pero ese límite no existe. Por tanto, $J_c$ es discontinua en $0$ para todo $c$.
 
 El defecto no está concentrado en el centro. Está en la incompatibilidad entre **dos comportamientos laterales**.
 
@@ -2081,9 +2087,9 @@ El defecto no está concentrado en el centro. Está en la incompatibilidad entre
 Consideremos las sucesiones
 
 $$
-x_n=\frac{2}{(4n+1)\pi},
+x_n=\frac{2}{(4n+1)\omega},
 \qquad
- y_n=\frac{2}{(4n+3)\pi},
+ y_n=\frac{2}{(4n+3)\omega},
 \qquad n\ge0.
 $$
 
@@ -2098,8 +2104,8 @@ $$
 Además,
 
 $$
-\frac1{x_n}=\frac{(4n+1)\pi}{2}
-=\frac\pi2+2n\pi,
+\frac1{x_n}=\frac{(4n+1)\omega}{2}
+=\frac\omega2+2n\omega,
 $$
 
 de modo que
@@ -2111,8 +2117,8 @@ $$
 para todo $n$. Del mismo modo,
 
 $$
-\frac1{y_n}=\frac{(4n+3)\pi}{2}
-=\frac{3\pi}{2}+2n\pi,
+\frac1{y_n}=\frac{(4n+3)\omega}{2}
+=\frac{3\omega}{2}+2n\omega,
 $$
 
 y por tanto
@@ -2131,7 +2137,7 @@ O(x_n)\to1,
 O(y_n)\to-1.
 $$
 
-Si $O$ fuese continua en $0$, el criterio secuencial @thm-t1-0017 obligaría a que **toda** sucesión del dominio convergente a $0$ tuviera imágenes convergentes a
+Si $O$ fuese continua en $0$, el criterio secuencial [Teorema 5.1](#thm-t1-0017) obligaría a que **toda** sucesión del dominio convergente a $0$ tuviera imágenes convergentes a
 
 $$
 O(0)=0.
@@ -2706,7 +2712,7 @@ $$
 f(a)>y>f(b),
 $$
 
-consideramos la función $-f$, que es continua por @prp-t1-0034. Entonces
+consideramos la función $-f$, que es continua por [Proposición 5.2](#prp-t1-0034). Entonces
 
 $$
 -f(a)<-y<-f(b),
@@ -2844,7 +2850,7 @@ f\colon A\to\mathbb R,
 f(x)=x.
 $$
 
-Los dos puntos del dominio son aislados, así que $f$ es continua en ambos por @prp-t1-0033.
+Los dos puntos del dominio son aislados, así que $f$ es continua en ambos por [Proposición 5.1](#prp-t1-0033).
 
 Además,
 
@@ -2930,7 +2936,7 @@ $$
 f(a)f(b)<0
 $$
 
-significa que $f(a)$ y $f(b)$ tienen signos opuestos. Por tanto $0$ está estrictamente entre ambos valores. Aplicando @thm-t1-0018 con $y=0$, obtenemos un punto
+significa que $f(a)$ y $f(b)$ tienen signos opuestos. Por tanto $0$ está estrictamente entre ambos valores. Aplicando [Teorema 5.2](#thm-t1-0018) con $y=0$, obtenemos un punto
 
 $$
 c\in(a,b)
@@ -3018,7 +3024,7 @@ $$
 
 La restricción de $f$ a $[\alpha,\beta]$ sigue siendo continua. El número $y$ está entre los valores de $f$ en los extremos $x_u$ y $x_v$, aunque estos puntos puedan aparecer en cualquiera de los dos órdenes dentro del dominio.
 
-Por @thm-t1-0018 existe $c\in[\alpha,\beta]$ tal que
+Por [Teorema 5.2](#thm-t1-0018) existe $c\in[\alpha,\beta]$ tal que
 
 $$
 f(c)=y.
@@ -3061,7 +3067,7 @@ $$
 p(x)=x^5+x-1
 $$
 
-es un polinomio y, por @cor-t1-0010, es continua en $\mathbb R$.
+es un polinomio y, por [Corolario 5.1](#cor-t1-0010), es continua en $\mathbb R$.
 
 Además,
 
@@ -3075,7 +3081,7 @@ $$
 p(1)=1>0.
 $$
 
-Por @cor-t1-0011 existe al menos un número
+Por [Corolario 5.2](#cor-t1-0011) existe al menos un número
 
 $$
 c\in(0,1)
@@ -3132,7 +3138,7 @@ $$
 g(x)=f(x)-y.
 $$
 
-Si $f$ es continua, @prp-t1-0034 implica que $g$ también lo es. Además,
+Si $f$ es continua, [Proposición 5.2](#prp-t1-0034) implica que $g$ también lo es. Además,
 
 $$
 f(a)<y<f(b)
@@ -3685,7 +3691,7 @@ a_n\to c,
 b_n\to c,
 $$
 
-el criterio secuencial de continuidad @thm-t1-0017 da
+el criterio secuencial de continuidad [Teorema 5.1](#thm-t1-0017) da
 
 $$
 f(a_n)\to f(c)
@@ -4966,7 +4972,7 @@ solo cubre finitos puntos y deja sin cubrir todos los demás.
 
 No existe subrecubrimiento finito.
 
-Esto no contradice @thm-t1-0020 porque los singletons
+Esto no contradice [Teorema 5.4](#thm-t1-0020) porque los singletons
 
 $$
 \{x\}
@@ -5007,7 +5013,7 @@ Esta condición es exactamente la que hará útil la compactitud en §5.7 y §5.
 
 ### Prueba de estrés III — ¿dónde importa que el extremo derecho pertenezca al intervalo?
 
-El ejemplo @exm-t1-0058 ya mostró que $(0,1)$ no es compacto. Allí la cobertura
+El ejemplo [Ejemplo 5.7](#exm-t1-0058) ya mostró que $(0,1)$ no es compacto. Allí la cobertura
 
 $$
 \left(\frac1n,1\right),
@@ -5108,7 +5114,7 @@ Ese es precisamente el poder que necesitaremos para transformar información loc
 
 ### Por qué este teorema pertenece al capítulo de continuidad
 
-A primera vista, @thm-t1-0020 no menciona funciones.
+A primera vista, [Teorema 5.4](#thm-t1-0020) no menciona funciones.
 
 No hay ninguna $f$ en su enunciado.
 
@@ -5193,7 +5199,7 @@ No necesitamos todavía desarrollar sistemáticamente:
 - espacios métricos o topológicos abstractos.
 
 ::: {.callout-warning title="Frontera de no circularidad"}
-La demostración de @thm-t1-0020 **no usa Bolzano–Weierstrass** ni extrae subsucesiones convergentes.
+La demostración de [Teorema 5.4](#thm-t1-0020) **no usa Bolzano–Weierstrass** ni extrae subsucesiones convergentes.
 
 Su cadena demostrativa es
 
@@ -5520,7 +5526,7 @@ $$
 c\in V_{r_c}(c).
 $$
 
-Por @thm-t1-0020, el intervalo $[a,b]$ es compacto. Por tanto, existe una subfamilia finita
+Por [Teorema 5.4](#thm-t1-0020), el intervalo $[a,b]$ es compacto. Por tanto, existe una subfamilia finita
 
 $$
 V_{r_{c_1}}(c_1),
@@ -5903,7 +5909,7 @@ $$
 g=-f.
 $$
 
-Por el álgebra de funciones continuas de @prp-t1-0034, $g$ es continua en $[a,b]$.
+Por el álgebra de funciones continuas de [Proposición 5.2](#prp-t1-0034), $g$ es continua en $[a,b]$.
 
 Acabamos de demostrar que toda función continua en $[a,b]$ alcanza su máximo. Por tanto, existe $x_m\in[a,b]$ tal que
 
@@ -5929,7 +5935,7 @@ para todo $x\in[a,b]$.
 
 Así, $f$ alcanza también su mínimo global.
 
-Hemos demostrado @thm-t1-0021. $\blacksquare$
+Hemos demostrado [Teorema 5.5](#thm-t1-0021). $\blacksquare$
 
 ### Anatomía de la demostración
 
@@ -6252,7 +6258,7 @@ $$
 
 ### Una consecuencia geométrica combinando IVT y EVT
 
-@thm-t1-0021 nos da puntos $x_m,x_M\in[a,b]$ con
+[Teorema 5.5](#thm-t1-0021) nos da puntos $x_m,x_M\in[a,b]$ con
 
 $$
 m=f(x_m),
@@ -6268,7 +6274,7 @@ $$
 
 para todo $x\in[a,b]$.
 
-Por @cor-t1-0012, la imagen continua de un intervalo es un intervalo.
+Por [Corolario 5.3](#cor-t1-0012), la imagen continua de un intervalo es un intervalo.
 
 Como la imagen contiene sus extremos $m$ y $M$ y no puede contener valores fuera de ellos, necesariamente
 
@@ -6979,7 +6985,7 @@ $$
 x\in V_{r_x/2}(x).
 $$
 
-Por la compactitud de $[a,b]$ demostrada en @thm-t1-0020, existe una subcubierta finita:
+Por la compactitud de $[a,b]$ demostrada en [Teorema 5.4](#thm-t1-0020), existe una subcubierta finita:
 
 $$
 [a,b]
@@ -7207,7 +7213,7 @@ $$
 
 ### El mismo cuadrado cambia de comportamiento al cambiar el dominio
 
-En @exm-t1-0060 demostramos que
+En [Ejemplo 5.9](#exm-t1-0060) demostramos que
 
 $$
 x^2
@@ -7227,7 +7233,7 @@ $$
 x^2|_{[a,b]}
 $$
 
-sí es uniformemente continua por @thm-t1-0022.
+sí es uniformemente continua por [Teorema 5.6](#thm-t1-0022).
 
 La fórmula no ha cambiado.
 
@@ -7713,7 +7719,7 @@ Si $I$ consta de un solo punto, la afirmación sobre la inversa sigue siendo tri
 
 **Demostración.** La monotonía estricta ya ha sido establecida por el argumento anterior: el teorema del valor intermedio impide picos y valles interiores, y la inyectividad fuerza a que la orientación elegida entre dos puntos se propague a todo el intervalo.
 
-Por @cor-t1-0012, como $I$ es un intervalo y $f$ es continua,
+Por [Corolario 5.3](#cor-t1-0012), como $I$ es un intervalo y $f$ es continua,
 
 $$
 J=f(I)
@@ -7935,7 +7941,7 @@ $$
 F=-f.
 $$
 
-Por @prp-t1-0034, $F$ es continua; además es inyectiva y estrictamente creciente. Por el caso ya demostrado, la inversa de
+Por [Proposición 5.2](#prp-t1-0034), $F$ es continua; además es inyectiva y estrictamente creciente. Por el caso ya demostrado, la inversa de
 
 $$
 F\colon I\to -J
@@ -7955,7 +7961,7 @@ $$
 f^{-1}(y)=F^{-1}(-y).
 $$
 
-La función $y\mapsto -y$ es continua, y la composición de funciones continuas lo es por @prp-t1-0034. Por tanto $f^{-1}$ es continua también en el caso decreciente. $\blacksquare$
+La función $y\mapsto -y$ es continua, y la composición de funciones continuas lo es por [Proposición 5.2](#prp-t1-0034). Por tanto $f^{-1}$ es continua también en el caso decreciente. $\blacksquare$
 
 ### Dónde entró realmente cada hipótesis
 
@@ -8046,7 +8052,7 @@ $$
 f^{-1}(y)=\sqrt y.
 $$
 
-Por @thm-t1-0023,
+Por [Teorema 5.7](#thm-t1-0023),
 
 $$
 \sqrt{\phantom{x}}\colon[0,\infty)\to[0,\infty)
@@ -8055,7 +8061,7 @@ $$
 es continua en todo su dominio.
 :::
 
-La continuidad de $f$ proviene de @cor-t1-0010, porque $x^2$ es un polinomio.
+La continuidad de $f$ proviene de [Corolario 5.1](#cor-t1-0010), porque $x^2$ es un polinomio.
 
 La monotonía estricta sobre $[0,\infty)$ puede verificarse directamente: si
 
@@ -8127,7 +8133,7 @@ No necesitamos extender la raíz cuadrada a números negativos para hablar de co
 
 ### La inversa refleja el orden
 
-Cuando $f$ es estrictamente creciente, [corolario](funciones-reales-estructura-composicion-inversas-y-graficas.md#cor-t1-0006) ya nos dice que
+Cuando $f$ es estrictamente creciente, [Corolario 2.2](funciones-reales-estructura-composicion-inversas-y-graficas.md#cor-t1-0006) ya nos dice que
 
 $$
 f^{-1}
@@ -8295,7 +8301,7 @@ $$
 V_{1/2}(-1)\cap A=\{-1\}.
 $$
 
-Por @prp-t1-0033, **toda** función definida sobre $A$ es continua en $-1$, independientemente del valor que tome allí.
+Por [Proposición 5.1](#prp-t1-0033), **toda** función definida sobre $A$ es continua en $-1$, independientemente del valor que tome allí.
 
 El número
 
@@ -8420,7 +8426,7 @@ $$
 \phi(0)=1.
 $$
 
-Por @prp-t1-0033, $\phi$ no es continua en $0$.
+Por [Proposición 5.1](#prp-t1-0033), $\phi$ no es continua en $0$.
 
 Como
 
@@ -8442,7 +8448,7 @@ $$
 
 para cualquier $a$, y no $0$.
 
-Esto es exactamente el tipo de fenómeno que obligó a introducir la condición de no impacto en [teorema](limites-de-funciones.md#thm-t1-0016).
+Esto es exactamente el tipo de fenómeno que obligó a introducir la condición de no impacto en [Teorema 4.5](limites-de-funciones.md#thm-t1-0016).
 
 #### El caso de $\psi$
 
@@ -8454,7 +8460,7 @@ $$
 
 es continua en $0$, y $g$ es continua en todo punto porque es constante.
 
-Por @prp-t1-0034,
+Por [Proposición 5.2](#prp-t1-0034),
 
 $$
 \psi\circ g
@@ -8518,7 +8524,7 @@ tiene una única solución en $(0,1)$ y localizarla en un intervalo más pequeñ
 
 #### Existencia
 
-Como $p$ es un polinomio, es continua en $\mathbb R$ por @cor-t1-0010.
+Como $p$ es un polinomio, es continua en $\mathbb R$ por [Corolario 5.1](#cor-t1-0010).
 
 Además,
 
@@ -8532,7 +8538,7 @@ $$
 p(1)=1>0.
 $$
 
-Por @cor-t1-0011 existe al menos un punto
+Por [Corolario 5.2](#cor-t1-0011) existe al menos un punto
 
 $$
 c\in(0,1)
@@ -8661,9 +8667,9 @@ $$
 
 por lo que $f$ es continua en todo $A$.
 
-Como $A$ es un intervalo cerrado y acotado, @thm-t1-0020 nos dice que es compacto.
+Como $A$ es un intervalo cerrado y acotado, [Teorema 5.4](#thm-t1-0020) nos dice que es compacto.
 
-Entonces @thm-t1-0021 garantiza que $f$ es acotada y alcanza un máximo y un mínimo.
+Entonces [Teorema 5.5](#thm-t1-0021) garantiza que $f$ es acotada y alcanza un máximo y un mínimo.
 
 En este ejemplo podemos identificarlos además por orden. Si
 
@@ -8869,7 +8875,7 @@ $$
 
 #### Paso 1: continuidad
 
-$F$ es un polinomio. Por @cor-t1-0010 es continua en $\mathbb R$.
+$F$ es un polinomio. Por [Corolario 5.1](#cor-t1-0010) es continua en $\mathbb R$.
 
 #### Paso 2: monotonía estricta
 
@@ -8974,7 +8980,7 @@ es biyectiva.
 
 #### Paso 4: continuidad de la inversa
 
-Ahora se activa @thm-t1-0023.
+Ahora se activa [Teorema 5.7](#thm-t1-0023).
 
 $F$ es continua e inyectiva sobre el intervalo $\mathbb R$. En consecuencia, su inversa
 
@@ -9050,12 +9056,12 @@ Las seis estaciones pueden condensarse en una tabla de decisión.
 
 | Pregunta | Herramienta principal | Hipótesis que deben auditarse | Conclusión típica |
 |---|---|---|---|
-| ¿Es continua en un punto concreto? | definición / @prp-t1-0033 / @thm-t1-0017 | dominio, punto aislado o de acumulación | control local |
-| ¿Puedo componer funciones continuas? | @prp-t1-0034 | continuidad interior y exterior en el valor correcto | continuidad de la composición |
+| ¿Es continua en un punto concreto? | definición / [Proposición 5.1](#prp-t1-0033) / [Teorema 5.1](#thm-t1-0017) | dominio, punto aislado o de acumulación | control local |
+| ¿Puedo componer funciones continuas? | [Proposición 5.2](#prp-t1-0034) | continuidad interior y exterior en el valor correcto | continuidad de la composición |
 | ¿Debe existir una solución entre dos puntos? | IVT / Bolzano | intervalo + continuidad + valor intermedio o cambio de signo | existencia |
 | ¿Puedo pasar de controles locales a una conclusión en todo $[a,b]$? | compactitud / EVT | dominio compacto + continuidad | acotación y extremos alcanzados |
 | ¿Puede elegirse una sola $\delta$ para todo el dominio? | definición uniforme / Heine--Cantor | control global directo o continuidad sobre $[a,b]$ | continuidad uniforme |
-| ¿La inversa existe y es continua? | inyectividad + IVT + @thm-t1-0023 | dominio intervalar, continuidad, inyectividad; sobreyectividad sobre el codominio pretendido | inversa continua |
+| ¿La inversa existe y es continua? | inyectividad + IVT + [Teorema 5.7](#thm-t1-0023) | dominio intervalar, continuidad, inyectividad; sobreyectividad sobre el codominio pretendido | inversa continua |
 
 La tabla no sustituye las demostraciones. Su función es impedir dos errores frecuentes:
 
@@ -9314,7 +9320,7 @@ $$
    V_n=\left(\frac1n,1\right).
    $$
    Demuestra que $\{V_n:n\ge2\}$ recubre $(0,1)$, pero ninguna subfamilia finita lo recubre.
-3. Explica por qué el segundo apartado no contradice la compactitud de los intervalos cerrados demostrada en @thm-t1-0020.
+3. Explica por qué el segundo apartado no contradice la compactitud de los intervalos cerrados demostrada en [Teorema 5.4](#thm-t1-0020).
 :::
 
 ### Nivel B — Aplicación directa
@@ -9358,7 +9364,7 @@ Determina el único valor de $a$ para el cual $f_a$ es continua en $1$. Justific
 
 ::: {#exr-t1-0206}
 <!-- CPM-T1-EXR-0206 | B | PROOF | ORIGINAL -->
-**Ejercicio B4. Criterio secuencial en acción.** Usa @thm-t1-0017 para demostrar que
+**Ejercicio B4. Criterio secuencial en acción.** Usa [Teorema 5.1](#thm-t1-0017) para demostrar que
 
 $$
 f(x)=\frac1{1+x^2}
@@ -9394,7 +9400,7 @@ en $[-2,2]$.
 
 ::: {#exr-t1-0209}
 <!-- CPM-T1-EXR-0209 | B | PROOF | ORIGINAL -->
-**Ejercicio B7. Uniformidad directa.** Demuestra directamente desde @def-t1-0041 que
+**Ejercicio B7. Uniformidad directa.** Demuestra directamente desde [Definición 5.4](#def-t1-0041) que
 
 $$
 f(x)=3x-2
@@ -9489,7 +9495,7 @@ $$
 
 en $[0,1]$.
 
-1. Demuestra que $p$ es continua en $[0,1]$ y concluye por @thm-t1-0022 que es uniformemente continua allí.
+1. Demuestra que $p$ es continua en $[0,1]$ y concluye por [Teorema 5.6](#thm-t1-0022) que es uniformemente continua allí.
 2. Sean $(x_n)$ y $(y_n)$ sucesiones en $[0,1]$ tales que
    $$
    |x_n-y_n|\to0.
@@ -9598,7 +9604,7 @@ $$
 f(-1)<0<f(1),
 $$
 
-pero $f(x)\ne0$ para todo $x\in[-1,1]$. Explica exactamente qué hipótesis de @cor-t1-0011 falla.
+pero $f(x)\ne0$ para todo $x\in[-1,1]$. Explica exactamente qué hipótesis de [Corolario 5.2](#cor-t1-0011) falla.
 :::
 
 ::: {#exr-t1-0227}
@@ -9615,7 +9621,7 @@ pero $f(x)\ne0$ para todo $x\in[-1,1]$. Explica exactamente qué hipótesis de @
 1. Supón que $f$ es continua en $a$ y que $x_n\in A$, $x_n\to a$. Partiendo de un $\varepsilon>0$, encadena la elección de $\delta$ con la elección de $N$ y demuestra $f(x_n)\to f(a)$.
 2. Supón ahora que $f$ no es continua en $a$. Escribe la negación cuantificada de continuidad.
 3. Usando $\delta_n=1/(n+1)$, construye una sucesión $x_n\to a$ para la cual $f(x_n)\not\to f(a)$.
-4. Concluye la equivalencia de @thm-t1-0017 y explica por qué aquí no es necesario imponer $x_n\ne a$.
+4. Concluye la equivalencia de [Teorema 5.1](#thm-t1-0017) y explica por qué aquí no es necesario imponer $x_n\ne a$.
 :::
 
 ::: {#exr-t1-0229}
@@ -9755,7 +9761,7 @@ $$
 V_{1/2}(-1)\cap A=\{-1\}.
 $$
 
-Por @prp-t1-0033, toda función definida sobre $A$ es continua en ese punto, independientemente del valor $50$.
+Por [Proposición 5.1](#prp-t1-0033), toda función definida sobre $A$ es continua en ese punto, independientemente del valor $50$.
 
 En $0$, los puntos del dominio que pueden aproximarse suficientemente son los de $[0,2]$ por la derecha. El punto $-1$ queda excluido tomando, por ejemplo, un radio menor que $1/2$. Como $f(x)=x^2$ sobre esa componente y $x^2$ es continua, $f$ es continua en $0$ relativamente a $A$.
 
@@ -9794,7 +9800,7 @@ $$
 f(1)=5.
 $$
 
-Como $1$ es punto de acumulación de $\mathbb R$, @prp-t1-0033 da
+Como $1$ es punto de acumulación de $\mathbb R$, [Proposición 5.1](#prp-t1-0033) da
 
 $$
 f\text{ continua en }1
@@ -9848,7 +9854,7 @@ El límite perforado no cambia porque no depende del valor puntual.
 <!-- CPM-T1-SOL-0200 -->
 **Solución A5.**
 
-1. Se aplica **IVT**, y más precisamente Bolzano @cor-t1-0011: dominio intervalar cerrado, continuidad y cambio de signo. Se concluye existencia de una raíz.
+1. Se aplica **IVT**, y más precisamente Bolzano [Corolario 5.2](#cor-t1-0011): dominio intervalar cerrado, continuidad y cambio de signo. Se concluye existencia de una raíz.
 2. **Ninguno** de los dos teoremas globales en la forma requerida. El dominio $(0,1)$ no es compacto; EVT no puede invocarse para extremos alcanzados. IVT no responde a esa pregunta.
 3. Se aplica **EVT**: continuidad sobre el intervalo cerrado $[-2,2]$ garantiza acotación y alcanzamiento de máximo y mínimo. IVT también está disponible para preguntas de valores intermedios, pero no es el teorema que produce los extremos.
 4. Se aplica **IVT** directamente: $y$ está entre los valores extremos de los puntos $a,b$ y la función es continua en todo el intervalo.
@@ -9892,7 +9898,7 @@ Por tanto, solo en la continuidad ordinaria el radio puede depender del centro. 
    $$
    El punto $1/(N+1)$ pertenece a $(0,1)$ pero no a esa unión. No hay subrecubrimiento finito.
 
-3. No hay contradicción: @thm-t1-0020 afirma la compactitud de **intervalos cerrados** $[a,b]$. El dominio $(0,1)$ no es cerrado y este recubrimiento exhibe precisamente su falta de compactitud.
+3. No hay contradicción: [Teorema 5.4](#thm-t1-0020) afirma la compactitud de **intervalos cerrados** $[a,b]$. El dominio $(0,1)$ no es cerrado y este recubrimiento exhibe precisamente su falta de compactitud.
 :::
 
 #### Soluciones del nivel B
@@ -9901,7 +9907,7 @@ Por tanto, solo en la continuidad ordinaria el radio puede depender del centro. 
 <!-- CPM-T1-SOL-0203 -->
 **Solución B1.**
 
-El numerador $x^3-2x+1$ y el denominador $x^2+1$ son polinomios, luego son continuos en $\mathbb R$ por @cor-t1-0010.
+El numerador $x^3-2x+1$ y el denominador $x^2+1$ son polinomios, luego son continuos en $\mathbb R$ por [Corolario 5.1](#cor-t1-0010).
 
 Además,
 
@@ -9909,7 +9915,7 @@ $$
 x^2+1\ge1>0
 $$
 
-para todo $x\in\mathbb R$. El denominador nunca se anula, así que la ley del cociente de @prp-t1-0034 es aplicable en todo punto. Por tanto, $f$ es continua en $\mathbb R$.
+para todo $x\in\mathbb R$. El denominador nunca se anula, así que la ley del cociente de [Proposición 5.2](#prp-t1-0034) es aplicable en todo punto. Por tanto, $f$ es continua en $\mathbb R$.
 
 Finalmente,
 
@@ -9928,7 +9934,7 @@ $$
 h(x)=x^2-4x+3
 $$
 
-es continuo en $\mathbb R$. La función valor absoluto es continua, y @prp-t1-0034 garantiza que la composición
+es continuo en $\mathbb R$. La función valor absoluto es continua, y [Proposición 5.2](#prp-t1-0034) garantiza que la composición
 
 $$
 g=|\,\cdot\,|\circ h
@@ -10014,7 +10020,7 @@ $$
 f(x_n)\to f(0).
 $$
 
-El criterio secuencial @thm-t1-0017 implica que $f$ es continua en $0$.
+El criterio secuencial [Teorema 5.1](#thm-t1-0017) implica que $f$ es continua en $0$.
 :::
 
 ::: {#sol-t1-0207}
@@ -10035,7 +10041,7 @@ p(0)=-1<0,
 p(1)=1>0.
 $$
 
-Por Bolzano @cor-t1-0011 existe $c\in(0,1)$ tal que
+Por Bolzano [Corolario 5.2](#cor-t1-0011) existe $c\in(0,1)$ tal que
 
 $$
 p(c)=0.
@@ -10054,7 +10060,7 @@ El teorema garantiza **existencia**; este argumento todavía no afirma unicidad 
 <!-- CPM-T1-SOL-0208 -->
 **Solución B6.**
 
-La función es polinómica, por tanto continua en el intervalo cerrado $[-2,2]$. Por EVT @thm-t1-0021 alcanza máximo y mínimo.
+La función es polinómica, por tanto continua en el intervalo cerrado $[-2,2]$. Por EVT [Teorema 5.5](#thm-t1-0021) alcanza máximo y mínimo.
 
 Para localizarlos sin derivadas, ponemos
 
@@ -10113,7 +10119,7 @@ $$
 =\varepsilon.
 $$
 
-El radio depende solo de $\varepsilon$ y no de un centro particular. Por @def-t1-0041, $f$ es uniformemente continua en $\mathbb R$.
+El radio depende solo de $\varepsilon$ y no de un centro particular. Por [Definición 5.4](#def-t1-0041), $f$ es uniformemente continua en $\mathbb R$.
 :::
 
 #### Soluciones del nivel C
@@ -10150,7 +10156,7 @@ $$
 \frac{|x^2-1|}{x^2+1}
 $$
 
-está definido y es continuo en todo $\mathbb R$ por @prp-t1-0034.
+está definido y es continuo en todo $\mathbb R$ por [Proposición 5.2](#prp-t1-0034).
 :::
 
 ::: {#sol-t1-0211}
@@ -10416,7 +10422,7 @@ $$
 p(x)=x^4-3x
 $$
 
-es continuo en $\mathbb R$, luego también en $[0,1]$. Como $[0,1]$ es compacto, Heine--Cantor @thm-t1-0022 implica que $p$ es uniformemente continua en ese intervalo.
+es continuo en $\mathbb R$, luego también en $[0,1]$. Como $[0,1]$ es compacto, Heine--Cantor [Teorema 5.6](#thm-t1-0022) implica que $p$ es uniformemente continua en ese intervalo.
 
 Ahora sea $\varepsilon>0$. Por uniformidad existe $\delta>0$ tal que para cualesquiera $u,v\in[0,1]$,
 
@@ -10498,7 +10504,7 @@ $$
 F(\mathbb R)=\mathbb R.
 $$
 
-La función es biyectiva $\mathbb R\to\mathbb R$. Como además es continua e inyectiva sobre el intervalo $\mathbb R$, @thm-t1-0023 asegura que
+La función es biyectiva $\mathbb R\to\mathbb R$. Como además es continua e inyectiva sobre el intervalo $\mathbb R$, [Teorema 5.7](#thm-t1-0023) asegura que
 
 $$
 F^{-1}:\mathbb R\to\mathbb R
@@ -10535,7 +10541,7 @@ $$
 f(0)=1.
 $$
 
-Por @prp-t1-0033, $f$ no es continua en $0$.
+Por [Proposición 5.1](#prp-t1-0033), $f$ no es continua en $0$.
 
 Una versión correcta es: si $a$ es punto de acumulación del dominio y $a$ pertenece al dominio, entonces
 
@@ -10834,7 +10840,7 @@ $$
 
 de modo que $0$ nunca se alcanza.
 
-La hipótesis que falla en @cor-t1-0011 es la continuidad sobre $[-1,1]$: la función tiene un salto en $0$.
+La hipótesis que falla en [Corolario 5.2](#cor-t1-0011) es la continuidad sobre $[-1,1]$: la función tiene un salto en $0$.
 :::
 
 ::: {#sol-t1-0227}
@@ -11469,3 +11475,7 @@ $$
 La frontera demostrativa se mantiene dentro de los capítulos publicados desde los números reales hasta el presente: no se usa derivación, teorema del valor medio diferencial, integración, series, Bolzano--Weierstrass, compactitud secuencial general ni teoría de espacios métricos.
 
 Con este banco queda completo el desarrollo matemático de `T1-C06` y se cierra la Parte I del Tomo I. La trayectoria construida —lenguaje, números reales, funciones, sucesiones, límites y continuidad— deja ahora disponible la base rigurosa para iniciar el cálculo diferencial con la derivada como aproximación lineal local.
+
+---
+
+[← Capítulo 4](limites-de-funciones.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 6 →](la-derivada-y-la-aproximacion-lineal-local.md)

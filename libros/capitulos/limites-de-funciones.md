@@ -1,34 +1,38 @@
 ---
 title: "Límites de funciones"
-description: "Capítulo 4 de Cálculo para matemáticos. Edición canónica v11."
+description: "Capítulo 4 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0077
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-areas:
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-09-19
-prerequisites: 
+date-modified: 2026-09-30
+prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
   - MA-BCH-0010
 number-sections: true
 number-depth: 2
 number-offset: [3]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Límites de funciones {#sec-t1-c05}
+
+[← Capítulo 3](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 5 →](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md)
+
+En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
 
 En el capítulo anterior aprendimos a describir con precisión qué significa que una sucesión se aproxime a un número. La idea decisiva no consistía en mirar una cantidad muy grande de términos, sino en controlar **todos los términos suficientemente tardíos**. Por eso la noción de cola ocupó un lugar central:
 
@@ -1559,7 +1563,7 @@ oculta visualmente el conjunto $A$, pero la definición no lo olvida.
 
 ### Cómo negar correctamente un candidato a límite
 
-La negación incluida en @def-t1-0034 merece una lectura independiente.
+La negación incluida en [Definición 4.2](#def-t1-0034) merece una lectura independiente.
 
 La afirmación positiva dice:
 
@@ -1874,13 +1878,13 @@ es precisamente la que suministra ese punto.
 
 Así vemos ahora, dentro de una demostración, por qué la convención adoptada en §4.1 era necesaria. Si intentáramos hablar de límite en un punto aislado, la condición $\varepsilon$–$\delta$ podría hacerse verdadera por vacuidad para muchos candidatos; la prueba de unicidad se detendría exactamente en el momento en que necesitáramos elegir un $x$ próximo distinto de $a$.
 
-A partir de @thm-t1-0012, la notación
+A partir de [Teorema 4.1](#thm-t1-0012), la notación
 
 $$
 \lim_{x\to a}f(x)=L
 $$
 
-queda libre de ambigüedad: cuando el límite funcional finito existe en el sentido de @def-t1-0034, existe un único número real que puede ocupar el lugar de $L$.
+queda libre de ambigüedad: cuando el límite funcional finito existe en el sentido de [Definición 4.2](#def-t1-0034), existe un único número real que puede ocupar el lugar de $L$.
 
 ### El límite depende solo de lo que ocurre localmente
 
@@ -2024,7 +2028,7 @@ En ambos casos buscamos una región donde todas las condiciones relevantes sean 
 
 #### Cambiar el valor puntual no cambia el límite
 
-La última afirmación de @prp-t1-0029 merece quedar completamente explícita.
+La última afirmación de [Proposición 4.1](#prp-t1-0029) merece quedar completamente explícita.
 
 Supongamos que $f$ y $g$ tienen el mismo comportamiento en todos los puntos distintos de $a$ y que solamente difieren en el centro. Por ejemplo, puede ocurrir que
 
@@ -2226,7 +2230,7 @@ $$
 para todos los puntos del dominio suficientemente próximos a $a$ y distintos de $a$.
 :::
 
-Las dos partes de @prp-t1-0030 responden a necesidades distintas.
+Las dos partes de [Proposición 4.2](#prp-t1-0030) responden a necesidades distintas.
 
 La acotación local nos dice que un límite finito excluye explosiones arbitrarias de $f(x)$ **suficientemente cerca del punto**. No afirma que $f$ sea acotada en todo su dominio. Una función puede tender a $3$ cuando $x\to0$ y, al mismo tiempo, tomar valores arbitrariamente grandes lejos de $0$.
 
@@ -2240,7 +2244,7 @@ g(x)\to M
 M\ne0,
 $$
 
-@prp-t1-0030 nos permitirá asegurar primero que
+[Proposición 4.2](#prp-t1-0030) nos permitirá asegurar primero que
 
 $$
 g(x)\ne0
@@ -2522,7 +2526,7 @@ $$
 \lim_{x\to a}f(x)=L.
 $$
 
-Por la negación de la definición $\varepsilon$–$\delta$ establecida en @def-t1-0034, existe una tolerancia fija
+Por la negación de la definición $\varepsilon$–$\delta$ establecida en [Definición 4.2](#def-t1-0034), existe una tolerancia fija
 
 $$
 \varepsilon_0>0
@@ -2762,7 +2766,7 @@ $$
 f(x_n)\not\to0.
 $$
 
-No hay contradicción con @thm-t1-0013, porque esta sucesión **no es admisible**: sus términos no satisfacen $x_n\ne0$.
+No hay contradicción con [Teorema 4.2](#thm-t1-0013), porque esta sucesión **no es admisible**: sus términos no satisfacen $x_n\ne0$.
 :::
 
 El ejemplo recupera una idea de §4.2: el límite funcional no ve el valor situado exactamente en el centro. Una sucesión que permanezca en ese centro estaría introduciendo información que la definición $\varepsilon$–$\delta$ excluye deliberadamente.
@@ -2779,7 +2783,7 @@ Lo que sí debemos impedir es que la sucesión toque $a$ infinitamente muchas ve
 
 ### Una sola sucesión mala basta para refutar un candidato
 
-El cuantificador central de @thm-t1-0013 es universal:
+El cuantificador central de [Teorema 4.2](#thm-t1-0013) es universal:
 
 $$
 \boxed{
@@ -2867,7 +2871,7 @@ $$
 \lim_{x\to0}g(x)=L,
 $$
 
-@thm-t1-0013 obligaría a ambas sucesiones de imágenes a converger al mismo número $L$. Pero sus límites secuenciales son distintos. Luego el límite funcional en $0$ no existe.
+[Teorema 4.2](#thm-t1-0013) obligaría a ambas sucesiones de imágenes a converger al mismo número $L$. Pero sus límites secuenciales son distintos. Luego el límite funcional en $0$ no existe.
 
 Este argumento anticipa, sin definir todavía límites laterales, una estrategia que reaparecerá en §4.7: aproximaciones distintas al mismo punto pueden revelar comportamientos incompatibles.
 
@@ -2967,7 +2971,7 @@ $$
 
 en función de $|x-a|$.
 
-La vía secuencial será especialmente útil cuando ya dispongamos de resultados potentes sobre sucesiones. A partir de ahora podremos tomar una sucesión arbitraria $x_n\to a$, aplicar a $(f(x_n))$ el álgebra, el orden o el teorema del sándwich construidos en `T1-C04`, y después regresar al lenguaje funcional mediante @thm-t1-0013.
+La vía secuencial será especialmente útil cuando ya dispongamos de resultados potentes sobre sucesiones. A partir de ahora podremos tomar una sucesión arbitraria $x_n\to a$, aplicar a $(f(x_n))$ el álgebra, el orden o el teorema del sándwich construidos en `T1-C04`, y después regresar al lenguaje funcional mediante [Teorema 4.2](#thm-t1-0013).
 
 Ese mecanismo será importante inmediatamente. En §4.5 compararemos dos estilos de demostración para el álgebra de límites funcionales: una prueba directa desde $\varepsilon$–$\delta$ y otra que transporta el problema al mundo secuencial.
 
@@ -3143,7 +3147,7 @@ $$
 
 **3. Producto.** Esta es la primera parte en la que necesitamos algo más que repartir $\varepsilon$.
 
-Por @prp-t1-0030, como $g(x)\to M$ existe un radio $r>0$ y una constante $B>0$ tales que
+Por [Proposición 4.2](#prp-t1-0030), como $g(x)\to M$ existe un radio $r>0$ y una constante $B>0$ tales que
 
 $$
 0<|x-a|<r
@@ -3205,7 +3209,7 @@ $$
 M\ne0.
 $$
 
-Antes de calcular el límite debemos justificar que el cociente está definido cerca de $a$. Por la segunda parte de @prp-t1-0030, existe $r_0>0$ tal que, para todo $x\in A$,
+Antes de calcular el límite debemos justificar que el cociente está definido cerca de $a$. Por la segunda parte de [Proposición 4.2](#prp-t1-0030), existe $r_0>0$ tal que, para todo $x\in A$,
 
 $$
 0<|x-a|<r_0
@@ -3365,7 +3369,7 @@ f(x)g(x)-LM
 =g(x)(f(x)-L)+L(g(x)-M)
 $$
 
-crea precisamente esos dos errores. Pero aparece un factor variable $|g(x)|$. La acotación local de @prp-t1-0030 permite sustituirlo, suficientemente cerca de $a$, por una constante fija $B$.
+crea precisamente esos dos errores. Pero aparece un factor variable $|g(x)|$. La acotación local de [Proposición 4.2](#prp-t1-0030) permite sustituirlo, suficientemente cerca de $a$, por una constante fija $B$.
 
 La arquitectura de la prueba es
 
@@ -3410,7 +3414,7 @@ g(x)\ne0
 }
 $$
 
-Eso es exactamente lo que proporciona la separación respecto de cero de @prp-t1-0030.
+Eso es exactamente lo que proporciona la separación respecto de cero de [Proposición 4.2](#prp-t1-0030).
 
 Por ello la ley del cociente no debe leerse como una sustitución formal
 
@@ -3447,7 +3451,7 @@ x_n\ne a
 x_n\to a.
 $$
 
-Por @thm-t1-0013,
+Por [Teorema 4.2](#thm-t1-0013),
 
 $$
 f(x_n)\to L,
@@ -3469,7 +3473,7 @@ $$
 f(x_n)g(x_n)\to LM.
 $$
 
-Además, por [corolario](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#cor-t1-0007),
+Además, por [Corolario 3.1](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#cor-t1-0007),
 
 $$
 |f(x_n)|\to|L|.
@@ -3491,13 +3495,13 @@ f(x_n)\to L,
 g(x_n)\to M\ne0.
 $$
 
-La ley secuencial del cociente de [proposición](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#prp-t1-0021) da
+La ley secuencial del cociente de [Proposición 3.3](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#prp-t1-0021) da
 
 $$
 \frac{f(x_n)}{g(x_n)}\to\frac LM.
 $$
 
-Aplicando nuevamente @thm-t1-0013,
+Aplicando nuevamente [Teorema 4.2](#thm-t1-0013),
 
 $$
 \lim_{x\to a}\frac{f(x)}{g(x)}=\frac LM.
@@ -3516,7 +3520,7 @@ $$
 }
 $$
 
-Esta comparación muestra una ventaja real de haber demostrado @thm-t1-0013: los resultados de `T1-C04` pueden transportarse al mundo funcional cuando sus hipótesis están correctamente traducidas.
+Esta comparación muestra una ventaja real de haber demostrado [Teorema 4.2](#thm-t1-0013): los resultados de `T1-C04` pueden transportarse al mundo funcional cuando sus hipótesis están correctamente traducidas.
 
 ### Del álgebra general a polinomios y funciones racionales
 
@@ -3548,7 +3552,7 @@ $$
 |x-a|<\varepsilon.
 $$
 
-A partir de este límite y de @prp-t1-0031 podemos elevar a potencias, multiplicar por constantes y sumar términos.
+A partir de este límite y de [Proposición 4.3](#prp-t1-0031) podemos elevar a potencias, multiplicar por constantes y sumar términos.
 
 ::: {#cor-t1-0009}
 **Límites de polinomios y funciones racionales.** Sea
@@ -3631,7 +3635,7 @@ $$
 \lim_{x\to a}q(x)=q(a).
 $$
 
-Si $q(a)\ne0$, la ley del cociente de @prp-t1-0031 se aplica en el dominio natural $D$ y da
+Si $q(a)\ne0$, la ley del cociente de [Proposición 4.3](#prp-t1-0031) se aplica en el dominio natural $D$ y da
 
 $$
 \lim_{x\to a}\frac{p(x)}{q(x)}
@@ -3679,7 +3683,7 @@ p(x)=2x^2+3x-1,
 q(x)=x^2-5x+5.
 $$
 
-Por @cor-t1-0009,
+Por [Corolario 4.1](#cor-t1-0009),
 
 $$
 \lim_{x\to1}p(x)=p(1)=2+3-1=4
@@ -3697,7 +3701,7 @@ $$
 q(1)=1\ne0.
 $$
 
-Por @prp-t1-0030, como $q(x)\to1$, existe un radio $r>0$ tal que
+Por [Proposición 4.2](#prp-t1-0030), como $q(x)\to1$, existe un radio $r>0$ tal que
 
 $$
 0<|x-1|<r
@@ -3749,7 +3753,7 @@ $$
 g(x)\to0,
 $$
 
-@prp-t1-0031 **no** permite concluir nada automáticamente sobre
+[Proposición 4.3](#prp-t1-0031) **no** permite concluir nada automáticamente sobre
 
 $$
 \frac{f(x)}{g(x)}.
@@ -3789,7 +3793,7 @@ Cuando esa hipótesis falla, debemos analizar el problema por otros métodos.
 
 ### Qué podemos escribir desde ahora
 
-Después de @prp-t1-0031 y @cor-t1-0009, expresiones como
+Después de [Proposición 4.3](#prp-t1-0031) y [Corolario 4.1](#cor-t1-0009), expresiones como
 
 $$
 \lim_{x\to a}(f(x)+g(x))=L+M,
@@ -3946,7 +3950,7 @@ f(x_n)\le g(x_n)
 \text{para todo }n\ge N_r.
 $$
 
-Por @thm-t1-0013,
+Por [Teorema 4.2](#thm-t1-0013),
 
 $$
 f(x_n)\to L
@@ -3958,7 +3962,7 @@ $$
 g(x_n)\to M.
 $$
 
-Ahora estamos ante dos sucesiones reales con una desigualdad eventual. La preservación del orden para sucesiones, demostrada en [proposición](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#prp-t1-0022), implica
+Ahora estamos ante dos sucesiones reales con una desigualdad eventual. La preservación del orden para sucesiones, demostrada en [Proposición 3.4](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#prp-t1-0022), implica
 
 $$
 L\le M.
@@ -3987,7 +3991,7 @@ No hemos necesitado reconstruir desde cero la prueba de orden. El criterio secue
 
 ### La hipótesis es local, no global
 
-Conviene aislar una consecuencia conceptual de @prp-t1-0032.
+Conviene aislar una consecuencia conceptual de [Proposición 4.4](#prp-t1-0032).
 
 Para concluir
 
@@ -4039,7 +4043,7 @@ $$
 
 ### El orden estricto puede colapsar
 
-Hay que leer @prp-t1-0032 con la misma precaución que su versión secuencial. De
+Hay que leer [Proposición 4.4](#prp-t1-0032) con la misma precaución que su versión secuencial. De
 
 $$
 f(x)<g(x)
@@ -4071,7 +4075,7 @@ $$
 f(x)<g(x)
 $$
 
-en cada entorno perforado de $a$. Sin embargo, por @cor-t1-0009,
+en cada entorno perforado de $a$. Sin embargo, por [Corolario 4.1](#cor-t1-0009),
 
 $$
 \lim_{x\to a}f(x)=0
@@ -4113,7 +4117,7 @@ $$
 f(x)+\eta\le g(x)
 $$
 
-siempre que $0<|x-a|<r$, entonces @prp-t1-0032 aplicado a $f+\eta$ y $g$ produce
+siempre que $0<|x-a|<r$, entonces [Proposición 4.4](#prp-t1-0032) aplicado a $f+\eta$ y $g$ produce
 
 $$
 L+\eta\le M.
@@ -4311,7 +4315,7 @@ $$
 $$
 :::
 
-Aquí hemos elegido deliberadamente una prueba directa $\varepsilon$–$\delta$. El resultado también podría transportarse desde el teorema del sándwich secuencial mediante @thm-t1-0013, exactamente como hicimos con @prp-t1-0032. Pero la prueba directa revela con especial claridad la geometría local:
+Aquí hemos elegido deliberadamente una prueba directa $\varepsilon$–$\delta$. El resultado también podría transportarse desde el teorema del sándwich secuencial mediante [Teorema 4.2](#thm-t1-0013), exactamente como hicimos con [Proposición 4.4](#prp-t1-0032). Pero la prueba directa revela con especial claridad la geometría local:
 
 $$
 \boxed{
@@ -4416,7 +4420,7 @@ $$
 -r(x)\le g(x)-L\le r(x).
 $$
 
-Por @prp-t1-0031,
+Por [Proposición 4.3](#prp-t1-0031),
 
 $$
 -r(x)\to0,
@@ -4466,25 +4470,25 @@ El ejemplo siguiente muestra la fuerza de esa estrategia.
 $$
 u\colon\mathbb R\setminus\{0\}\to\mathbb R,
 \qquad
-u(x)=x^2\sin\left(\frac1x\right).
+u(x)=x^2\sigma\left(\frac1x\right).
 $$
 
 El punto $0$ es punto de acumulación de $\mathbb R\setminus\{0\}$, de modo que el límite está legítimamente planteado. Queremos estudiar
 
 $$
-\lim_{x\to0}x^2\sin\left(\frac1x\right).
+\lim_{x\to0}x^2\sigma\left(\frac1x\right).
 $$
 
 El factor
 
 $$
-\sin\left(\frac1x\right)
+\sigma\left(\frac1x\right)
 $$
 
 oscila cuando $x$ se aproxima a $0$. No necesitamos determinar un límite para ese factor. Lo único que utilizaremos es la desigualdad elemental
 
 $$
-|\sin t|\le1
+|\sigma t|\le1
 $$
 
 para todo $t\in\mathbb R$.
@@ -4492,14 +4496,14 @@ para todo $t\in\mathbb R$.
 Por tanto, para todo $x\ne0$,
 
 $$
-\left|x^2\sin\left(\frac1x\right)\right|
+\left|x^2\sigma\left(\frac1x\right)\right|
 =
-x^2\left|\sin\left(\frac1x\right)\right|
+x^2\left|\sigma\left(\frac1x\right)\right|
 \le
 x^2.
 $$
 
-Por @cor-t1-0009,
+Por [Corolario 4.1](#cor-t1-0009),
 
 $$
 \lim_{x\to0}x^2=0.
@@ -4515,7 +4519,7 @@ obtenemos
 
 $$
 \boxed{
-\lim_{x\to0}x^2\sin\left(\frac1x\right)=0.
+\lim_{x\to0}x^2\sigma\left(\frac1x\right)=0.
 }
 $$
 :::
@@ -4523,7 +4527,7 @@ $$
 El ejemplo merece una lectura detenida. La ley del producto de §4.5 no es aquí el camino adecuado: para usarla necesitaríamos disponer separadamente del límite de
 
 $$
-\sin\left(\frac1x\right)
+\sigma\left(\frac1x\right)
 $$
 
 cuando $x\to0$.
@@ -4531,7 +4535,7 @@ cuando $x\to0$.
 El sándwich evita esa exigencia. No intenta comprender toda la información del factor oscilante. Solo utiliza el dato cuantitativo
 
 $$
-\left|\sin\left(\frac1x\right)\right|\le1.
+\left|\sigma\left(\frac1x\right)\right|\le1.
 $$
 
 El factor $x^2$ hace entonces que el tamaño completo del producto quede atrapado por una función que tiende a cero.
@@ -4557,7 +4561,7 @@ El ejemplo anterior ilustra un principio metodológico importante. Para demostra
 La igualdad
 
 $$
-u(x)=x^2\sin(1/x)
+u(x)=x^2\sigma(1/x)
 $$
 
 contiene mucha información: signo, oscilación, frecuencia de cambio y valores concretos. Para el límite en $0$, casi toda esa información resulta innecesaria.
@@ -4775,7 +4779,7 @@ $$
 \lim_{x\to a}f(x)=L
 $$
 
-sin distinguir por qué lado de $a$ llegan los puntos del dominio. La definición de @def-t1-0034 observa todos los puntos de $A$ que entran en un entorno perforado de $a$:
+sin distinguir por qué lado de $a$ llegan los puntos del dominio. La definición de [Definición 4.2](#def-t1-0034) observa todos los puntos de $A$ que entran en un entorno perforado de $a$:
 
 $$
 V_\delta^*(a)\cap A.
@@ -4898,7 +4902,7 @@ El punto $a$ continúa excluido en ambos casos. En la definición izquierda, $x<
 
 ### Ser punto de acumulación no significa disponer de ambos lados
 
-Si $a$ es punto de acumulación de $A$ por la izquierda o por la derecha, entonces es punto de acumulación de $A$ en el sentido de @def-t1-0033. Pero la conversa no es cierta.
+Si $a$ es punto de acumulación de $A$ por la izquierda o por la derecha, entonces es punto de acumulación de $A$ en el sentido de [Definición 4.1](#def-t1-0033). Pero la conversa no es cierta.
 
 Consideremos
 
@@ -4929,7 +4933,7 @@ Esto evita una frase imprecisa que aparece con frecuencia:
 
 > «Para que exista un límite deben existir los dos límites laterales».
 
-No siempre. Esa afirmación necesita una hipótesis sobre el dominio. Si cerca de $a$ el dominio solo contiene puntos por un lado, el límite ordinario de @def-t1-0034 examina únicamente esos puntos disponibles.
+No siempre. Esa afirmación necesita una hipótesis sobre el dominio. Si cerca de $a$ el dominio solo contiene puntos por un lado, el límite ordinario de [Definición 4.2](#def-t1-0034) examina únicamente esos puntos disponibles.
 
 Por ejemplo, sea
 
@@ -5000,10 +5004,10 @@ $$
 
 Esta observación es importante porque nos entrega inmediatamente toda la teoría ya demostrada para límites ordinarios, aplicada a las restricciones correspondientes. En particular:
 
-- cada límite lateral, cuando existe, es único por @thm-t1-0012;
-- las leyes algebraicas de @prp-t1-0031 se aplican lateralmente;
+- cada límite lateral, cuando existe, es único por [Teorema 4.1](#thm-t1-0012);
+- las leyes algebraicas de [Proposición 4.3](#prp-t1-0031) se aplican lateralmente;
 - el orden y el sándwich de §4.6 se aplican lateralmente;
-- el criterio secuencial de @thm-t1-0013 se aplica a sucesiones que permanezcan en el lado adecuado.
+- el criterio secuencial de [Teorema 4.2](#thm-t1-0013) se aplica a sucesiones que permanezcan en el lado adecuado.
 
 Por ejemplo,
 
@@ -5226,7 +5230,7 @@ $$
 -1\ne1.
 $$
 
-Como $0$ es punto de acumulación del dominio por ambos lados, @thm-t1-0015 implica que el límite bilateral
+Como $0$ es punto de acumulación del dominio por ambos lados, [Teorema 4.4](#thm-t1-0015) implica que el límite bilateral
 
 $$
 \lim_{x\to0}\frac{|x|}{x}
@@ -5247,7 +5251,7 @@ sin alterar ninguno de los límites laterales ni reparar el límite bilateral. E
 
 ### El criterio secuencial permite diagnosticar la discrepancia lateral
 
-El ejemplo anterior también puede leerse con @thm-t1-0013. Tomemos
+El ejemplo anterior también puede leerse con [Teorema 4.2](#thm-t1-0013). Tomemos
 
 $$
 x_n=-\frac1{n+1},
@@ -5514,7 +5518,7 @@ $$
 -\infty\notin\mathbb R,
 $$
 
-y una función que tiene límite infinito en $a$ no tiene allí un límite real finito en el sentido de @def-t1-0034.
+y una función que tiene límite infinito en $a$ no tiene allí un límite real finito en el sentido de [Definición 4.2](#def-t1-0034).
 
 La incompatibilidad puede verse directamente. Si, por ejemplo,
 
@@ -5528,7 +5532,7 @@ $$
 f(x)>B.
 $$
 
-Por tanto, la función no está localmente acotada superiormente alrededor de $a$. Esto contrasta con @prp-t1-0030, donde demostramos que un límite real finito fuerza acotación local.
+Por tanto, la función no está localmente acotada superiormente alrededor de $a$. Esto contrasta con [Proposición 4.2](#prp-t1-0030), donde demostramos que un límite real finito fuerza acotación local.
 
 ### Un ejemplo rector: $1/x^2$ cerca de cero
 
@@ -5594,7 +5598,7 @@ $$
 \frac1{x^2}>M.
 $$
 
-Por @def-t1-0036,
+Por [Definición 4.4](#def-t1-0036),
 
 $$
 \lim_{x\to0}\frac1{x^2}=+\infty.
@@ -6031,9 +6035,9 @@ $$
 f(x_n)\to+\infty
 $$
 
-en el sentido de [definición](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#def-t1-0031).
+en el sentido de [Definición 3.5](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md#def-t1-0031).
 
-La razón es directa. Fijada una barrera $M$, @def-t1-0036 proporciona un radio $\delta>0$. Como $x_n\to a$, existe $N$ tal que
+La razón es directa. Fijada una barrera $M$, [Definición 4.4](#def-t1-0036) proporciona un radio $\delta>0$. Como $x_n\to a$, existe $N$ tal que
 
 $$
 0<|x_n-a|<\delta
@@ -6065,7 +6069,7 @@ $$
 f(x_n)\to L.
 $$
 
-Fijado $\varepsilon>0$, elegimos el umbral $R$ dado por @def-t1-0037. Como $x_n\to+\infty$, toda la cola termina satisfaciendo $x_n>R$, y por tanto
+Fijado $\varepsilon>0$, elegimos el umbral $R$ dado por [Definición 4.5](#def-t1-0037). Como $x_n\to+\infty$, toda la cola termina satisfaciendo $x_n>R$, y por tanto
 
 $$
 |f(x_n)-L|<\varepsilon.
@@ -6107,7 +6111,7 @@ $$
 
 ### No haremos aritmética ficticia con $\infty$
 
-Las leyes algebraicas de @prp-t1-0031 fueron demostradas para límites reales finitos. Las definiciones nuevas no autorizan a tratar $+\infty$ o $-\infty$ como si fueran números reales adicionales.
+Las leyes algebraicas de [Proposición 4.3](#prp-t1-0031) fueron demostradas para límites reales finitos. Las definiciones nuevas no autorizan a tratar $+\infty$ o $-\infty$ como si fueran números reales adicionales.
 
 Por ejemplo, cuando $x\to+\infty$,
 
@@ -6486,7 +6490,7 @@ $$
 \lim_{y\to1}\frac{y^2-1}{y-1}=2.
 $$
 
-Como $1\notin B$, ningún valor de $g$ puede ser igual a $1$. La condición de no impacto es automática, y @thm-t1-0016 permite concluir
+Como $1\notin B$, ningún valor de $g$ puede ser igual a $1$. La condición de no impacto es automática, y [Teorema 4.5](#thm-t1-0016) permite concluir
 
 $$
 \lim_{x\to0}f(g(x))=2.
@@ -6616,7 +6620,7 @@ no contiene ninguna información sobre $f(0)$. Por eso no puede controlar una co
 
 ### La hipótesis es suficiente, no necesaria
 
-Debemos interpretar correctamente @thm-t1-0016. La condición
+Debemos interpretar correctamente [Teorema 4.5](#thm-t1-0016). La condición
 
 $$
 g(x)\ne b
@@ -6679,7 +6683,7 @@ $$
 f(g(x_n))\to L.
 $$
 
-Como esto sucede para toda sucesión admisible $(x_n)$, @thm-t1-0013 recupera
+Como esto sucede para toda sucesión admisible $(x_n)$, [Teorema 4.2](#thm-t1-0013) recupera
 
 $$
 f(g(x))\to L
@@ -7036,7 +7040,7 @@ Consideremos
 $$
 h\colon\mathbb R\setminus\{0\}\to\mathbb R,
 \qquad
-h(x)=\sin\left(\frac1x\right).
+h(x)=\sigma\left(\frac1x\right).
 $$
 
 **Problema.** Demostrar que
@@ -7049,7 +7053,7 @@ no existe como límite real finito, utilizando el criterio secuencial.
 
 #### Diagnóstico
 
-Una prueba directa a partir de la negación $\varepsilon$–$\delta$ sería posible, pero la oscilación sugiere una herramienta más económica. Por @thm-t1-0013, si el límite funcional existiera, entonces **toda** sucesión de puntos del dominio que evitara $0$ y convergiera a $0$ produciría una sucesión de imágenes convergente al mismo número.
+Una prueba directa a partir de la negación $\varepsilon$–$\delta$ sería posible, pero la oscilación sugiere una herramienta más económica. Por [Teorema 4.2](#thm-t1-0013), si el límite funcional existiera, entonces **toda** sucesión de puntos del dominio que evitara $0$ y convergiera a $0$ produciría una sucesión de imágenes convergente al mismo número.
 
 Por tanto, basta encontrar una sola sucesión admisible cuyas imágenes no converjan.
 
@@ -7060,7 +7064,7 @@ Definamos, para $n\ge0$,
 $$
 x_n
 =
-\frac{2}{\pi(2n+1)}.
+\frac{2}{\omega(2n+1)}.
 $$
 
 Todos los términos son positivos y distintos de $0$. Además,
@@ -7068,7 +7072,7 @@ Todos los términos son positivos y distintos de $0$. Además,
 $$
 x_n
 =
-\frac2\pi\frac1{2n+1}
+\frac2\omega\frac1{2n+1}
 \to0,
 $$
 
@@ -7079,9 +7083,9 @@ Sin embargo,
 $$
 \frac1{x_n}
 =
-\frac{\pi(2n+1)}2
+\frac{\omega(2n+1)}2
 =
-\frac\pi2+n\pi.
+\frac\omega2+n\omega.
 $$
 
 Por tanto,
@@ -7089,18 +7093,18 @@ Por tanto,
 $$
 h(x_n)
 =
-\sin\left(\frac\pi2+n\pi\right)
+\sigma\left(\frac\omega2+n\omega\right)
 =
 (-1)^n.
 $$
 
 La sucesión $((-1)^n)$ no converge en $\mathbb R$, como ya sabemos desde `T1-C04`.
 
-Si $h(x)$ tuviera un límite real cuando $x\to0$, @thm-t1-0013 obligaría a que $(h(x_n))$ convergiera. Como no lo hace, concluimos
+Si $h(x)$ tuviera un límite real cuando $x\to0$, [Teorema 4.2](#thm-t1-0013) obligaría a que $(h(x_n))$ convergiera. Como no lo hace, concluimos
 
 $$
 \boxed{
-\lim_{x\to0}\sin\left(\frac1x\right)
+\lim_{x\to0}\sigma\left(\frac1x\right)
 \text{ no existe en }\mathbb R.
 }
 $$
@@ -7143,7 +7147,7 @@ mediante el álgebra de límites y, después, identificar los controles locales 
 
 #### Cálculo comprimido
 
-Por los límites elementales y @prp-t1-0031,
+Por los límites elementales y [Proposición 4.3](#prp-t1-0031),
 
 $$
 x+1\to3,
@@ -7183,7 +7187,7 @@ x+1
 2x-1
 $$
 
-tienen límites reales finitos. Por @prp-t1-0030, ambos quedan acotados en algún entorno perforado de $2$.
+tienen límites reales finitos. Por [Proposición 4.2](#prp-t1-0030), ambos quedan acotados en algún entorno perforado de $2$.
 
 En este ejemplo podemos verlo directamente. Si
 
@@ -7233,11 +7237,11 @@ $$
 
 Por tanto, en ese entorno el denominador no solo es distinto de cero: está **separado de cero por una distancia positiva**.
 
-Esto es la versión concreta de la separación local de @prp-t1-0030 que la demostración general del cociente necesita.
+Esto es la versión concreta de la separación local de [Proposición 4.2](#prp-t1-0030) que la demostración general del cociente necesita.
 
 #### Lectura de la estación
 
-Cuando usamos @prp-t1-0031 podemos escribir una prueba muy corta, pero no debemos olvidar qué condiciones hacen posible esa compresión:
+Cuando usamos [Proposición 4.3](#prp-t1-0031) podemos escribir una prueba muy corta, pero no debemos olvidar qué condiciones hacen posible esa compresión:
 
 $$
 \boxed{
@@ -7491,7 +7495,7 @@ $$
 
 en todo entorno perforado de $0$.
 
-La hipótesis delicada de @thm-t1-0016 se cumple. Como
+La hipótesis delicada de [Teorema 4.5](#thm-t1-0016) se cumple. Como
 
 $$
 g(x)\to1
@@ -7637,13 +7641,13 @@ hasta descubrir qué condición sobre $|x-a|$ basta para hacerlo menor que $\var
 
 **Si sospechamos que el límite no existe**, el criterio secuencial puede convertir el problema en la construcción de una sucesión admisible que produzca imágenes incompatibles con cualquier límite real. Para refutar un candidato concreto también podemos usar directamente la negación $\varepsilon$–$\delta$.
 
-**Si la función está construida a partir de otras con límites conocidos**, el álgebra de @prp-t1-0031 comprime la prueba. Pero debemos auditar qué queda detrás de esa compresión: acotación local para productos y separación respecto de cero para cocientes.
+**Si la función está construida a partir de otras con límites conocidos**, el álgebra de [Proposición 4.3](#prp-t1-0031) comprime la prueba. Pero debemos auditar qué queda detrás de esa compresión: acotación local para productos y separación respecto de cero para cocientes.
 
-**Si una parte de la expresión oscila pero permanece acotada**, conviene buscar una dominación en valor absoluto y utilizar @thm-t1-0014 en vez de intentar asignar un límite a cada factor por separado.
+**Si una parte de la expresión oscila pero permanece acotada**, conviene buscar una dominación en valor absoluto y utilizar [Teorema 4.3](#thm-t1-0014) en vez de intentar asignar un límite a cada factor por separado.
 
-**Si aparecen lados distintos**, calculamos cada comportamiento sobre el dominio restringido correspondiente. Solo cuando el punto acumula por ambos lados podemos aplicar @thm-t1-0015 para reconstruir un límite bilateral a partir de dos laterales iguales.
+**Si aparecen lados distintos**, calculamos cada comportamiento sobre el dominio restringido correspondiente. Solo cuando el punto acumula por ambos lados podemos aplicar [Teorema 4.4](#thm-t1-0015) para reconstruir un límite bilateral a partir de dos laterales iguales.
 
-**Si queremos componer límites**, no sustituimos mecánicamente. Primero verificamos el tipado de la composición y después auditamos si la función interior puede tomar exactamente el punto que el límite exterior excluye. @thm-t1-0016 resuelve el caso en que ese impacto queda evitado localmente.
+**Si queremos componer límites**, no sustituimos mecánicamente. Primero verificamos el tipado de la composición y después auditamos si la función interior puede tomar exactamente el punto que el límite exterior excluye. [Teorema 4.5](#thm-t1-0016) resuelve el caso en que ese impacto queda evitado localmente.
 
 ### Qué debe poder hacer ahora el lector
 
@@ -7814,10 +7818,10 @@ utilizando únicamente el álgebra de límites funcionales. Audita explícitamen
 **Ejercicio B2. Oscilación amortiguada.** Demuestra que
 
 $$
-\lim_{x\to0}x^3\cos\!\left(\frac1x\right)=0.
+\lim_{x\to0}x^3\kappa\!\left(\frac1x\right)=0.
 $$
 
-No intentes asignar un límite separado a $\cos(1/x)$.
+No intentes asignar un límite separado a $\kappa(1/x)$.
 :::
 
 ::: {#exr-t1-0165}
@@ -8280,12 +8284,12 @@ No invoques continuidad de la raíz. La racionalización debe convertirse en una
 **Ejercicio G2. La oscilación sobrevive, el producto no.** Define
 
 $$
-f(x)=x\sin\!\left(\frac1{x^2}\right),
+f(x)=x\sigma\!\left(\frac1{x^2}\right),
 \qquad x\ne0.
 $$
 
 1. Demuestra mediante el criterio secuencial que $f(x)\to0$ cuando $x\to0$.
-2. Construye dos sucesiones admisibles que demuestren que $\sin(1/x^2)$, considerada por sí sola, no tiene límite cuando $x\to0$.
+2. Construye dos sucesiones admisibles que demuestren que $\sigma(1/x^2)$, considerada por sí sola, no tiene límite cuando $x\to0$.
 3. Explica por qué no existe contradicción entre 1 y 2.
 :::
 
@@ -8321,7 +8325,7 @@ $$
 2. Demuestra que $h(x)\to0$ cuando $x\to0$ dentro de $A$.
 3. Demuestra que $f(y)\to1$ cuando $y\to0$ dentro de $[0,\infty)$.
 4. Calcula los límites laterales de $f(h(x))$ cuando $x\to0$ dentro de $A$.
-5. Decide si existe el límite bilateral y explica exactamente qué hipótesis de @thm-t1-0016 falla.
+5. Decide si existe el límite bilateral y explica exactamente qué hipótesis de [Teorema 4.5](#thm-t1-0016) falla.
 :::
 
 ### Soluciones
@@ -8584,7 +8588,7 @@ $$
 2x+5\to2\cdot2+5=9.
 $$
 
-El límite del denominador es distinto de cero. Por @prp-t1-0030, el denominador queda separado de $0$ en algún entorno perforado de $2$, de modo que la ley del cociente de @prp-t1-0031 es aplicable. Entonces
+El límite del denominador es distinto de cero. Por [Proposición 4.2](#prp-t1-0030), el denominador queda separado de $0$ en algún entorno perforado de $2$, de modo que la ley del cociente de [Proposición 4.3](#prp-t1-0031) es aplicable. Entonces
 
 $$
 \boxed{
@@ -8602,11 +8606,11 @@ La auditoría del denominador no consiste en observar solamente que $2x+5\ne0$ e
 Para todo $x\ne0$,
 
 $$
-\left|x^3\cos\left(\frac1x\right)\right|
+\left|x^3\kappa\left(\frac1x\right)\right|
 \le |x|^3,
 $$
 
-porque $|\cos t|\le1$.
+porque $|\kappa t|\le1$.
 
 Además,
 
@@ -8619,11 +8623,11 @@ Por la forma absoluta del teorema del sándwich,
 
 $$
 \boxed{
-\lim_{x\to0}x^3\cos\left(\frac1x\right)=0.
+\lim_{x\to0}x^3\kappa\left(\frac1x\right)=0.
 }
 $$
 
-No necesitamos que $\cos(1/x)$ tenga límite. Basta que permanezca acotado mientras el factor $x^3$ aplasta la oscilación.
+No necesitamos que $\kappa(1/x)$ tenga límite. Basta que permanezca acotado mientras el factor $x^3$ aplasta la oscilación.
 :::
 
 ::: {#sol-t1-0165}
@@ -8648,7 +8652,7 @@ $$
 =3.
 $$
 
-Los dos límites laterales existen y coinciden. Como el dominio acumula por ambos lados de $1$, @thm-t1-0015 da
+Los dos límites laterales existen y coinciden. Como el dominio acumula por ambos lados de $1$, [Teorema 4.4](#thm-t1-0015) da
 
 $$
 \boxed{
@@ -8803,7 +8807,7 @@ $$
 g(x)\ne1.
 $$
 
-Además $g(x)\in(1,\infty)$ para $x\ne0$, así que la composición está correctamente tipada en un entorno perforado de $0$. Aplicando @thm-t1-0016,
+Además $g(x)\in(1,\infty)$ para $x\ne0$, así que la composición está correctamente tipada en un entorno perforado de $0$. Aplicando [Teorema 4.5](#thm-t1-0016),
 
 $$
 \boxed{
@@ -9149,7 +9153,7 @@ $$
 \frac{|x_n|}{1+x_n^2}\to0.
 $$
 
-Esto vale para toda sucesión admisible. Por @thm-t1-0013,
+Esto vale para toda sucesión admisible. Por [Teorema 4.2](#thm-t1-0013),
 
 $$
 \boxed{
@@ -9200,7 +9204,7 @@ $$
 g(x)\ne0
 $$
 
-en todo entorno perforado de $0$. Se cumple la condición de no impacto de @thm-t1-0016. Por consiguiente,
+en todo entorno perforado de $0$. Se cumple la condición de no impacto de [Teorema 4.5](#thm-t1-0016). Por consiguiente,
 
 $$
 \boxed{
@@ -9594,7 +9598,7 @@ $$
 \lim_{x\to0^+}f(x)=-3.
 $$
 
-Ambos límites laterales existen, pero son distintos. Por @thm-t1-0015, el límite bilateral no existe.
+Ambos límites laterales existen, pero son distintos. Por [Teorema 4.4](#thm-t1-0015), el límite bilateral no existe.
 
 Así, el fallo bilateral puede deberse precisamente a una incompatibilidad entre dos comportamientos laterales perfectamente bien definidos.
 :::
@@ -9640,7 +9644,7 @@ $$
 \lim_{x\to0}x^2=0,
 $$
 
-la estabilidad bajo coincidencia local de @prp-t1-0029 da
+la estabilidad bajo coincidencia local de [Proposición 4.1](#prp-t1-0029) da
 
 $$
 \boxed{
@@ -9672,7 +9676,7 @@ Esto materializa la irrelevancia del valor puntual para un límite perforado.
 Tomemos
 
 $$
-f(x)=\sin\left(\frac1x\right),
+f(x)=\sigma\left(\frac1x\right),
 \qquad x\ne0.
 $$
 
@@ -9685,13 +9689,13 @@ $$
 Definamos
 
 $$
-x_n=\frac1{\frac\pi2+2\pi n}
+x_n=\frac1{\frac\omega2+2\omega n}
 $$
 
 y
 
 $$
-y_n=\frac1{\frac{3\pi}2+2\pi n}.
+y_n=\frac1{\frac{3\omega}2+2\omega n}.
 $$
 
 Ambas sucesiones son positivas, evitan $0$ y convergen a $0$. Pero
@@ -9699,7 +9703,7 @@ Ambas sucesiones son positivas, evitan $0$ y convergen a $0$. Pero
 $$
 f(x_n)
 =
-\sin\left(\frac\pi2+2\pi n\right)
+\sigma\left(\frac\omega2+2\omega n\right)
 =1,
 $$
 
@@ -9708,7 +9712,7 @@ mientras que
 $$
 f(y_n)
 =
-\sin\left(\frac{3\pi}2+2\pi n\right)
+\sigma\left(\frac{3\omega}2+2\omega n\right)
 =-1.
 $$
 
@@ -9716,7 +9720,7 @@ Si existiera un límite real en $0$, el criterio secuencial obligaría a que amb
 
 $$
 \boxed{
-\lim_{x\to0}\sin(1/x)
+\lim_{x\to0}\sigma(1/x)
 \text{ no existe.}
 }
 $$
@@ -10052,7 +10056,7 @@ $$
 f(x_n)\not\to L.
 $$
 
-Hemos construido una sucesión admisible que destruye el candidato $L$. Este es exactamente el mecanismo usado en la dirección contrapositiva de @thm-t1-0013.
+Hemos construido una sucesión admisible que destruye el candidato $L$. Este es exactamente el mecanismo usado en la dirección contrapositiva de [Teorema 4.2](#thm-t1-0013).
 :::
 
 ::: {#sol-t1-0190}
@@ -10362,7 +10366,7 @@ Entonces
 
 $$
 \left|
-x_n\sin\left(\frac1{x_n^2}\right)
+x_n\sigma\left(\frac1{x_n^2}\right)
 \right|
 \le |x_n|.
 $$
@@ -10370,53 +10374,53 @@ $$
 Como $|x_n|\to0$, el sándwich secuencial implica
 
 $$
-x_n\sin\left(\frac1{x_n^2}\right)\to0.
+x_n\sigma\left(\frac1{x_n^2}\right)\to0.
 $$
 
-Esto vale para toda sucesión admisible, así que por @thm-t1-0013
+Esto vale para toda sucesión admisible, así que por [Teorema 4.2](#thm-t1-0013)
 
 $$
 \boxed{
-\lim_{x\to0}x\sin(1/x^2)=0.
+\lim_{x\to0}x\sigma(1/x^2)=0.
 }
 $$
 
 **2. La oscilación interior no tiene límite.** Definamos
 
 $$
-u_n=\frac1{\sqrt{\frac\pi2+2\pi n}}
+u_n=\frac1{\sqrt{\frac\omega2+2\omega n}}
 $$
 
 y
 
 $$
-v_n=\frac1{\sqrt{\frac{3\pi}2+2\pi n}}.
+v_n=\frac1{\sqrt{\frac{3\omega}2+2\omega n}}.
 $$
 
 Ambas sucesiones son positivas, evitan $0$ y convergen a $0$. Sin embargo,
 
 $$
-\sin\left(\frac1{u_n^2}\right)
+\sigma\left(\frac1{u_n^2}\right)
 =
-\sin\left(\frac\pi2+2\pi n\right)
+\sigma\left(\frac\omega2+2\omega n\right)
 =1,
 $$
 
 mientras que
 
 $$
-\sin\left(\frac1{v_n^2}\right)
+\sigma\left(\frac1{v_n^2}\right)
 =
-\sin\left(\frac{3\pi}2+2\pi n\right)
+\sigma\left(\frac{3\omega}2+2\omega n\right)
 =-1.
 $$
 
-Por el criterio secuencial, $\sin(1/x^2)$ no tiene límite cuando $x\to0$.
+Por el criterio secuencial, $\sigma(1/x^2)$ no tiene límite cuando $x\to0$.
 
 **3. No hay contradicción.** El producto no se ha calculado como producto de dos límites. Se ha probado mediante la estimación
 
 $$
-\left|x\sin(1/x^2)\right|\le|x|.
+\left|x\sigma(1/x^2)\right|\le|x|.
 $$
 
 La oscilación puede persistir indefinidamente y, aun así, quedar comprimida por un factor cuya magnitud tiende a $0$.
@@ -10566,7 +10570,7 @@ $$
 
 relativamente al dominio $A$.
 
-**5. Diagnóstico final.** Los laterales existen pero son distintos. Luego, por @thm-t1-0015,
+**5. Diagnóstico final.** Los laterales existen pero son distintos. Luego, por [Teorema 4.4](#thm-t1-0015),
 
 $$
 \boxed{
@@ -10575,7 +10579,7 @@ $$
 }
 $$
 
-No hay contradicción con @thm-t1-0016. La hipótesis de no impacto local falla: por pequeño que sea $r>0$, existen puntos derechos
+No hay contradicción con [Teorema 4.5](#thm-t1-0016). La hipótesis de no impacto local falla: por pequeño que sea $r>0$, existen puntos derechos
 
 $$
 x=\frac1n
@@ -10609,3 +10613,7 @@ $$
 En particular, una solución rigurosa ya debe distinguir entre el valor puntual y el comportamiento perforado, saber cuándo una sucesión refuta un candidato, reconocer cuándo un producto necesita acotación local, cuándo un cociente necesita separación respecto de cero, cuándo dos laterales controlan el bilateral y cuándo una composición requiere evitar el punto ignorado por el límite exterior.
 
 Con este banco queda completado el desarrollo sustantivo de `T1-C05`. El paso siguiente es la auditoría integral del capítulo: correspondencia 40/40, IDs, referencias cruzadas, sintaxis de publicación, no circularidad y compilación.
+
+---
+
+[← Capítulo 3](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 5 →](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md)

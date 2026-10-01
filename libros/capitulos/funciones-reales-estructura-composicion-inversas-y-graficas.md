@@ -1,56 +1,34 @@
 ---
 title: "Funciones reales: estructura, composición, inversas y gráficas"
-description: "Capítulo 2 de Cálculo para matemáticos. Edición canónica v11."
+description: "Capítulo 2 de Cálculo para matemáticos, Tomo I; 40 ejercicios con soluciones."
 content-id: MA-BCH-0004
 content-type: book-chapter
 collection: PM-CAL
 book-id: MA-BOK-0001
 status: published
-date-created: 2026-09-09
-date-modified: 2026-09-19
-areas:
-  - fundamentos
-  - calculo
-  - analisis
+areas: [calculo, analisis]
 level: fundamental
-topics:
-  - funciones
-  - dominio
-  - codominio
-  - imagen
-  - preimagen
-  - inyectividad
-  - sobreyectividad
-  - biyectividad
-  - composicion
-  - identidad
-  - funcion-inversa
-  - graficas
-  - funciones-por-tramos
-  - transformaciones-de-graficas
-  - monotonia
-prerequisites: 
-  - MA-BCH-0003
-related:
-  - MA-CON-0006
-  - MA-CON-0007
-  - MA-CON-0008
-  - MA-CON-0009
-  - MA-CON-0010
-  - MA-BOK-0001
 provenance:
   type: original
   sources: []
 license: GFDL-1.3-or-later
+date-created: 2026-09-09
+date-modified: 2026-09-30
+prerequisites:
+  - MA-BCH-0003
 number-sections: true
 number-depth: 2
 number-offset: [1]
+crossref:
+  chapters: true
 format:
   html:
     css: calculo-para-matematicos.css
 ---
 
 # Funciones reales: estructura, composición, inversas y gráficas {#sec-t1-c03}
+
+[← Capítulo 1](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 3 →](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md)
 
 Durante buena parte de la matemática escolar una función aparece casi siempre acompañada por una fórmula:
 
@@ -59,7 +37,7 @@ f(x)=x^2,
 \qquad
 f(x)=\frac{1}{x},
 \qquad
-f(x)=\sin x.
+f(x)=\sigma x.
 $$
 
 Es natural que acabemos asociando las dos ideas: **función** y **fórmula**. Para calcular valores concretos, esa identificación suele resultar inofensiva. Para hacer análisis, deja de serlo.
@@ -73,6 +51,23 @@ $$
 $$
 
 El recorrido irá desde la definición completa de función hasta imágenes, preimágenes, composición, inversas, gráficas y monotonía. La idea será siempre la misma: no manipular una fórmula antes de haber identificado el objeto matemático al que esa fórmula pertenece.
+
+### Un modelo periódico que podemos definir sin trigonometría
+
+Para disponer de ejemplos de oscilación sin presuponer seno ni coseno, construiremos dos funciones por tramos. Todo real $t$ pertenece a un único intervalo $[4m-1,4m+3)$, con $m\in\mathbb Z$; la existencia y unicidad de ese entero se deducen de la propiedad arquimediana. Escribamos $r=t-4m\in[-1,3)$ y definamos
+
+$$
+\sigma(t)=\begin{cases}
+r,&-1\le r\le1,\\
+2-r,&1<r<3,
+\end{cases}
+\qquad \kappa(t)=\sigma(t+1),\qquad \omega=2.
+$$
+
+Ambas funciones están definidas en toda la recta y sus valores pertenecen a $[-1,1]$. Tienen período $4=2\omega$, y la definición da directamente $\sigma(1+2n)=(-1)^n$, $\sigma(1+4n)=1$ y $\sigma(3+4n)=-1$ para todo entero $n$. Las fórmulas afines coinciden en las uniones: en $r=1$ dan uno, y al pasar de $r=3$ a $r=-1$ dan menos uno. Cuando dispongamos de la definición de continuidad, estos empalmes probarán continuidad en toda la recta. No afirmamos diferenciabilidad en los vértices.
+
+Este modelo triangular servirá en los capítulos iniciales para separar acotación, convergencia, continuidad y derivabilidad. Las funciones circulares se construirán desde el cálculo cuando contemos con la teoría de la integral; no necesitamos anticiparlas para probar ninguno de esos fenómenos.
+
 
 ## Convenciones conjuntistas indispensables {.unnumbered}
 
@@ -3250,7 +3245,7 @@ $$
 
 En §2.3 demostramos que $q$ es biyectiva: es inyectiva porque en el dominio no negativo el cuadrado conserva el orden estricto, y es sobreyectiva porque cada $y\ge0$ posee una raíz cuadrada no negativa.
 
-Por el Teorema @thm-t1-0007, $q$ admite inversa. Para $y\ge0$, el único $x\ge0$ que satisface
+Por el Teorema [Teorema 2.1](#thm-t1-0007), $q$ admite inversa. Para $y\ge0$, el único $x\ge0$ que satisface
 
 $$
 x^2=y
@@ -4904,13 +4899,13 @@ $$
 [-2,2].
 $$
 
-Entre las funciones trigonométricas conocidas, $\sin x$ y $\cos x$ están definidas para todo real, mientras que una expresión como
+Entre las funciones periódicas construidas aquí, $\sigma x$ y $\kappa x$ están definidas para todo real, mientras que una expresión como
 
 $$
-\tan x=\frac{\sin x}{\cos x}
+q(x)=\frac{\sigma x}{\kappa x}
 $$
 
-solo está definida donde $\cos x\ne0$.
+solo está definida donde $\kappa x\ne0$.
 
 Estas observaciones conducen a una convención útil, pero debemos formularla con cuidado:
 
@@ -5792,7 +5787,7 @@ $$
 f\colon I\to f(I)
 $$
 
-es automática, porque cada elemento de $f(I)$ es, precisamente, un valor $f(x)$ con $x\in I$. La inyectividad proviene de @thm-t1-0008. Por @thm-t1-0007, la función es biyectiva y admite una única inversa.
+es automática, porque cada elemento de $f(I)$ es, precisamente, un valor $f(x)$ con $x\in I$. La inyectividad proviene de [Teorema 2.2](#thm-t1-0008). Por [Teorema 2.1](#thm-t1-0007), la función es biyectiva y admite una única inversa.
 
 Queda demostrar el comportamiento del orden.
 
@@ -9968,3 +9963,7 @@ $$
 El banco final muestra hasta dónde llega esa advertencia. Para decidir si una función puede invertirse, si una composición tiene sentido, si una igualdad entre imágenes es correcta o si una gráfica representa realmente una función, la manipulación algebraica por sí sola no basta. Hay que controlar dominio, codominio, asignación y las propiedades estructurales que se han demostrado.
 
 Con este lenguaje ya podemos dar el siguiente paso. Una sucesión será, antes que nada, una función cuyo dominio es $\mathbb N$. Esa perspectiva permitirá que las herramientas de este capítulo entren directamente en `T1-C04`, sin introducir todavía ninguna teoría nueva en estas páginas.
+
+---
+
+[← Capítulo 1](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 3 →](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md)
