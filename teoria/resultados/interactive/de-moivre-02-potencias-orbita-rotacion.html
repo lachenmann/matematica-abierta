@@ -91,6 +91,13 @@ svg{display:block;width:100%;height:auto}svg text{font:14px system-ui,sans-serif
 const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg',TAU=2*Math.PI;
 const C={ink:'#17233f',muted:'#556480',blue:'#2463c5',teal:'#087e80',pink:'#b63670',gold:'#a45a06',line:'#d7e2f0'};
 let mode='two7';
+function effectiveTheta(){
+ if(mode==='pi2')return Math.PI/2;
+ if(mode==='two7')return TAU/7;
+ if(mode==='four7')return 2*TAU/7;
+ if(mode==='irr')return Math.PI*Math.SQRT2;
+ return +$('theta').value
+}
 function elt(tag,a={},txt){const e=document.createElementNS(ns,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,String(v));if(txt!==undefined)e.textContent=txt;return e}
 function add(g,t,a,txt){const e=elt(t,a,txt);g.appendChild(e);return e}
 function fmt(x,d=3){if(Math.abs(x)<5e-10)x=0;return Number(x).toFixed(d).replace('.',',').replace(/,0+$/,'')}
@@ -127,7 +134,7 @@ function draw(theta,K){const g=$('g');g.replaceChildren();const cx=350,cy=286,R=
  $('svgDesc').textContent=`Órbita de z elevado a k para theta ${mode==='irr'?'pi por raíz de dos':piLabel(theta)}, con K igual a ${K}.`;
 }
 function sup(n){const m={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return String(n).split('').map(c=>m[c]||c).join('')}
-function update(){const theta=+$('theta').value,K=+$('k').value,info=known();$('thetaOut').textContent=mode==='irr'?'π√2':piLabel(theta);$('kOut').textContent=K;$('thetaMetric').textContent=`θ = ${mode==='irr'?'π√2':piLabel(theta)}`;$('statusMetric').textContent=info.kind==='rat'?`período ${info.q}`:info.kind==='irr'?'sin retorno exacto':'no clasificado';$('iterMetric').textContent=`z${sup(K)} = C(${K}θ)`;draw(theta,K);
+function update(){const theta=effectiveTheta(),K=+$('k').value,info=known();$('thetaOut').textContent=mode==='irr'?'π√2':piLabel(theta);$('kOut').textContent=K;$('thetaMetric').textContent=`θ = ${mode==='irr'?'π√2':piLabel(theta)}`;$('statusMetric').textContent=info.kind==='rat'?`período ${info.q}`:info.kind==='irr'?'sin retorno exacto':'no clasificado';$('iterMetric').textContent=`z${sup(K)} = C(${K}θ)`;draw(theta,K);
  const m=$('message');m.className='message';if(info.kind==='rat'){m.innerHTML=`Como <span class="eq">θ/(2π)=${info.p}/${info.q}</span> está en forma reducida, aparecen exactamente <strong>${info.q}</strong> puntos distintos y el primer retorno ocurre en <span class="eq">k=${info.q}</span>. ${mode==='four7'?'El conjunto de puntos coincide con el caso 2π/7, pero el orden de visita es diferente.':''}`}
  else if(info.kind==='irr'){m.innerHTML=`Aquí <span class="eq">θ/(2π)=√2/2</span> es irracional, por lo que ninguna potencia positiva satisface <span class="eq">z<sup>k</sup>=1</span>. Los <strong>${K+1}</strong> puntos dibujados son sólo un prefijo finito: no constituyen una prueba visual de densidad ni de equidistribución.`}
  else{m.className='message warning';m.innerHTML=`El ángulo fue elegido con un deslizador decimal. La figura muestra correctamente los puntos <span class="eq">C(kθ)</span>, pero <strong>no clasifica</strong> automáticamente <span class="eq">θ/(2π)</span> como racional o irracional.`}}
