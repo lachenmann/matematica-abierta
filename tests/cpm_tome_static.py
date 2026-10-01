@@ -3,7 +3,8 @@ from pathlib import Path
 import hashlib, json, re
 
 root = Path(__file__).resolve().parents[1]
-rows = json.loads((root/'data/cpm-tome-i-manifest.json').read_text())['chapters']
+manifest = json.loads((root/'data/cpm-tome-i-manifest.json').read_text())
+rows = manifest['chapters']
 assert len(rows) == 20
 owners = {}
 exercise_ids, solution_ids = [], []
@@ -31,9 +32,9 @@ for row in rows:
     for image in re.findall(r'../../assets/books/cpm-tomo-i/([^>\s)]+\.png)', source):
         assert (root/'assets/books/cpm-tomo-i'/image).is_file()
         images.add(image)
-assert len(owners) == 2446
+assert len(owners) == manifest['anchor_count']
 assert sorted(map(int, exercise_ids)) == list(range(36, 836))
-assert exercise_ids == solution_ids and len(images) == 64
+assert exercise_ids == solution_ids and len(images) == manifest['figure_count']
 for row in rows:
     source = (root/row['path']).read_text()
     for file, anchor in re.findall(r'\]\(([^)#]*)#([\w-]+)\)', source):
@@ -43,4 +44,4 @@ for row in rows:
 hub = (root/'libros/para-matematicos/calculo-para-matematicos.md').read_text()
 assert 'Publicación progresiva' not in hub
 assert all('../capitulos/'+Path(r['path']).name in hub for r in rows)
-print('PASS: 20 chapters, 800 matched pairs, 2446 anchors, 64 images, all reference destinations, unique public IDs')
+print(f"PASS: 20 chapters, 800 matched pairs, {len(owners)} anchors, {len(images)} images, all reference destinations, unique public IDs")

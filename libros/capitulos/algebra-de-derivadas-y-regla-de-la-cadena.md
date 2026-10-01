@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-20
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1290,6 +1290,8 @@ $$
 $$
 
 La fórmula es una consecuencia de dos aplicaciones sucesivas, no una nueva regla admitida por analogía. Para extenderla a cualquier cantidad **finita** de eslabones, debemos controlar tanto las derivadas como los dominios durante una inducción.
+
+![En $u(x)=x^2$ y $v(u)=u^3$, la entrada $x=1$ produce $u=1$. Los factores se evalúan en sus respectivos puntos: $(v\circ u)'(1)=v'(u(1))u'(1)=3\cdot2=6$.](<../../assets/books/cpm-tomo-i/t1-c08-fig-01.png>){#fig-t1-c08-01 width=94% fig-alt="Cadena desde x igual a uno hacia u igual a x al cuadrado y v igual a u al cubo, con factores 2 y 3."}
 
 ### Teorema para una cantidad finita de composiciones
 

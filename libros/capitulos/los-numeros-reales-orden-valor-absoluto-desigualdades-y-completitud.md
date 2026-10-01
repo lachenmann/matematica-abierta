@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   []
 number-sections: true
@@ -4563,6 +4563,8 @@ $$
 (a-r,a+r).
 $$
 :::
+
+![La condición $|x-a|<r$ describe el intervalo abierto $(a-r,a+r)$: cada punto está a distancia menor que $r$ del centro $a$.](<../../assets/books/cpm-tomo-i/t1-c02-fig-01.png>){#fig-t1-c02-01 width=94% fig-alt="Recta real con centro a y extremos abiertos a menos r y a más r."}
 
 ### Dos maneras de leer una misma inequación
 

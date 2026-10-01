@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -176,6 +176,8 @@ El cálculo muestra algo más que la coincidencia numérica. Para la función cu
 ::: {.callout-warning title="Una verificación particular no es un teorema universal"}
 El ejemplo demuestra la existencia del punto para $f(x)=x^2$ y para los intervalos no degenerados considerados. No demuestra que el punto buscado sea siempre el punto medio ni que cualquier función definida en $[a,b]$ satisfaga la misma conclusión. Esas afirmaciones requerirían argumentos independientes; no pueden deducirse de un caso favorable.
 :::
+
+![En $[0,2]$, $x(2-x)$ ilustra Rolle con tangente horizontal en $c=1$; $x^2$ ilustra el valor medio con tangente paralela a la secante entre los extremos, también en $c=1$.](<../../assets/books/cpm-tomo-i/t1-c10-fig-01.png>){#fig-t1-c10-01 width=94% fig-alt="Dos gráficos muestran una tangente horizontal para Rolle y una tangente paralela a la secante para el valor medio."}
 
 ### Qué tendremos que demostrar antes de responder
 

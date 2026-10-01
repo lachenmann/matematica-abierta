@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-10
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1161,6 +1161,8 @@ sino
 > ¿existe algún índice a partir del cual funciona para todos los términos posteriores?
 
 Esta diferencia libera muchas pruebas de cálculos innecesarios. Un $N$ más grande de lo imprescindible sigue siendo perfectamente válido.
+
+![En $a_n=1/n$, la banda $|a_n|<1/5$ contiene todos los términos con $n>5$. El término $a_5=1/5$ queda en el borde y no satisface la desigualdad estricta.](<../../assets/books/cpm-tomo-i/t1-c04-fig-01.png>){#fig-t1-c04-01 width=94% fig-alt="Sucesión uno sobre n y banda de tolerancia un quinto; los términos posteriores al quinto están dentro."}
 
 ### Estar cerca muchas veces no es converger
 

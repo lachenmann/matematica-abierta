@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-01
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -790,6 +790,8 @@ Los dos pasos son legítimos porque los puntos desde los cuales dividimos perten
 :::
 
 El ejemplo permite leer geométricamente cada cálculo sin apoyarse en un dibujo como prueba: el punto de contacto es $(x_n,p(x_n))$, la pendiente es $p'(x_n)$ y la intersección de esa recta con el eje horizontal es $(x_{n+1},0)$. Para construir el paso siguiente se vuelve a la gráfica, al punto $(x_{n+1},p(x_{n+1}))$; no se supone que este último coincida con $(x_{n+1},0)$.
+
+![Para $f(x)=x^2-2$, las intersecciones de las tangentes con el eje horizontal dan $x_0=2$, $x_1=3/2$ y $x_2=17/12$. La construcción de los pasos precede a la justificación de su convergencia.](<../../assets/books/cpm-tomo-i/t1-c13-fig-01.png>){#fig-t1-c13-01 width=94% fig-alt="Parábola x al cuadrado menos dos y dos tangentes que producen los primeros pasos de Newton."}
 
 ### El caso en que un solo paso resuelve el problema
 
