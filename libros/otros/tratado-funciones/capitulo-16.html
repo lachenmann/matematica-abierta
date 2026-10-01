@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Tratado fundacional de la teoría de funciones: capítulo 16, con hipótesis, pruebas y límites de formalización explícitos.">
 
-<title>Otros libros y monografías – Matemática Abierta</title>
+<title>Capítulo 16. Categoría de elementos y densidad de Yoneda – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,26 +30,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-51f45f8b71e3aeb9ec98fa4bf4833bba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-34ed7760a8e6ccb8df528ee07d5f546e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-51f45f8b71e3aeb9ec98fa4bf4833bba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-34ed7760a8e6ccb8df528ee07d5f546e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +78,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="tratado.css">
 </head>
 
 <body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -247,9 +278,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
-    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
@@ -259,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -268,23 +299,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
         <li>
-    <a class="dropdown-item" href="../../teoria/index.html">
+    <a class="dropdown-item" href="../../../teoria/index.html">
  <span class="dropdown-text">Portada de Teoría</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../conceptos/index.html">
+    <a class="dropdown-item" href="../../../conceptos/index.html">
  <span class="dropdown-text">Conceptos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
  <span class="dropdown-text">Resultados y teoremas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
  <span class="dropdown-text">Métodos y técnicas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
  <span class="dropdown-text">Mapas y conexiones</span></a>
   </li>  
     </ul>
@@ -295,23 +326,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
         <li>
-    <a class="dropdown-item" href="../../problemas/index.html">
+    <a class="dropdown-item" href="../../../problemas/index.html">
  <span class="dropdown-text">Todos los problemas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
  <span class="dropdown-text">Por área</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
  <span class="dropdown-text">Por técnica</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
  <span class="dropdown-text">Por dificultad</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
  <span class="dropdown-text">Colecciones</span></a>
   </li>  
     </ul>
@@ -322,15 +353,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
         <li>
-    <a class="dropdown-item" href="../../cursos/index.html">
+    <a class="dropdown-item" href="../../../cursos/index.html">
  <span class="dropdown-text">Portada de Cursos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
  <span class="dropdown-text">Rutas de estudio</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
  <span class="dropdown-text">Lecciones</span></a>
   </li>  
     </ul>
@@ -341,19 +372,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
         <li>
-    <a class="dropdown-item" href="../../libros/index.html">
+    <a class="dropdown-item" href="../../../libros/index.html">
  <span class="dropdown-text">Portada de Libros</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
  <span class="dropdown-text">Para matemáticos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../libros/otros/index.html">
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
  <span class="dropdown-text">Otros libros y monografías</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
  <span class="dropdown-text">Capítulos publicados</span></a>
   </li>  
     </ul>
@@ -364,31 +395,31 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
         <li>
-    <a class="dropdown-item" href="../../explorar/index.html">
+    <a class="dropdown-item" href="../../../explorar/index.html">
  <span class="dropdown-text">Portada de Explorar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/areas/index.html">
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
  <span class="dropdown-text">Áreas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/temas/index.html">
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
  <span class="dropdown-text">Índice temático</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../blog/index.html">
+    <a class="dropdown-item" href="../../../blog/index.html">
  <span class="dropdown-text">Artículos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
  <span class="dropdown-text">Bibliografía</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
  <span class="dropdown-text">Notación y convenciones</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
  <span class="dropdown-text">Glosario</span></a>
   </li>  
     </ul>
@@ -399,31 +430,31 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
         <li>
-    <a class="dropdown-item" href="../../proyecto/index.html">
+    <a class="dropdown-item" href="../../../proyecto/index.html">
  <span class="dropdown-text">Portada del Proyecto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../acerca-de.html">
+    <a class="dropdown-item" href="../../../acerca-de.html">
  <span class="dropdown-text">Acerca de</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
  <span class="dropdown-text">Política editorial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
  <span class="dropdown-text">Procedencia y derechos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../licencia.html">
+    <a class="dropdown-item" href="../../../licencia.html">
  <span class="dropdown-text">Licencia</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
  <span class="dropdown-text">Cómo citar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
  <span class="dropdown-text">Estado y hoja de ruta</span></a>
   </li>  
     </ul>
@@ -445,10 +476,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#otros-libros-y-monografías" id="toc-otros-libros-y-monografías" class="nav-link active" data-scroll-target="#otros-libros-y-monografías">Otros libros y monografías</a>
-  <ul class="collapse">
-  <li><a href="#obras-publicadas" id="toc-obras-publicadas" class="nav-link" data-scroll-target="#obras-publicadas">Obras publicadas</a></li>
-  </ul></li>
+  <li><a href="#el-marco-y-su-control-de-tamaño" id="toc-el-marco-y-su-control-de-tamaño" class="nav-link active" data-scroll-target="#el-marco-y-su-control-de-tamaño">16.1. El marco y su control de tamaño</a></li>
+  <li><a href="#el-cocono-canónico-y-el-teorema-de-densidad" id="toc-el-cocono-canónico-y-el-teorema-de-densidad" class="nav-link" data-scroll-target="#el-cocono-canónico-y-el-teorema-de-densidad">16.2. El cocono canónico y el teorema de densidad</a></li>
+  <li><a href="#co-yoneda-la-misma-construcción-como-cociente-explícito" id="toc-co-yoneda-la-misma-construcción-como-cociente-explícito" class="nav-link" data-scroll-target="#co-yoneda-la-misma-construcción-como-cociente-explícito">16.3. Co-Yoneda: la misma construcción como cociente explícito</a></li>
+  <li><a href="#reconstrucción-de-flechas-y-representabilidad" id="toc-reconstrucción-de-flechas-y-representabilidad" class="nav-link" data-scroll-target="#reconstrucción-de-flechas-y-representabilidad">16.4. Reconstrucción de flechas y representabilidad</a></li>
+  <li><a href="#ejemplos-y-fronteras-del-resultado" id="toc-ejemplos-y-fronteras-del-resultado" class="nav-link" data-scroll-target="#ejemplos-y-fronteras-del-resultado">16.5. Ejemplos y fronteras del resultado</a></li>
+  <li><a href="#auditoría-fundacional-lectura-guiada-y-continuidad" id="toc-auditoría-fundacional-lectura-guiada-y-continuidad" class="nav-link" data-scroll-target="#auditoría-fundacional-lectura-guiada-y-continuidad">16.6. Auditoría fundacional, lectura guiada y continuidad</a></li>
   </ul>
 </nav>
     </div>
@@ -458,15 +491,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Otros libros y monografías</h1>
+<h1 class="title">Capítulo 16. Categoría de elementos y densidad de Yoneda</h1>
 </div>
 
+<div>
+  <div class="description">
+    Tratado fundacional de la teoría de funciones: capítulo 16, con hipótesis, pruebas y límites de formalización explícitos.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">1 de octubre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -475,26 +519,154 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="otros-libros-y-monografías" class="level1">
-<h1>Otros libros y monografías</h1>
-<p>Espacio para libros abiertos y monografías que no pertenezcan a la colección <em>Para matemáticos</em>.</p>
-<p>La incorporación de una nueva obra exige la misma política de identificación, procedencia, revisión y licencia que el resto del proyecto.</p>
-<section id="obras-publicadas" class="level2">
-<h2 class="anchored" data-anchor-id="obras-publicadas">Obras publicadas</h2>
+<p><a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Pregunta rectora
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El capítulo <a href="../../../libros/otros/tratado-funciones/capitulo-15.html">15</a> recuperó una flecha a partir de una transformación entre <em>representables</em>. ¿Se puede recuperar ahora <strong>cualquier prehaz</strong> a partir de los representables? ¿Qué información adicional exige el ensamblaje de sus elementos?</p>
+</div>
+</div>
+<p>La respuesta no consiste en escoger una «base» ni en afirmar que todos los funtores son representables. Consiste en un diagrama determinado por los elementos del prehaz y en una propiedad universal de su cocono. Fijaremos cuidadosamente las direcciones de las flechas: una inversión inadvertida destruye la construcción.</p>
+<section id="el-marco-y-su-control-de-tamaño" class="level2">
+<h2 class="anchored" data-anchor-id="el-marco-y-su-control-de-tamaño">16.1. El marco y su control de tamaño</h2>
+<p><a id="TF-DEF-00070"></a></p>
+<p><strong>Definición 16.1.1 — Categoría de prehaces</strong> <!-- result-id: TF-DEF-00070; depends-on: TF-DEF-00066, TF-DEF-00067, TF-DEF-00068, TF-THM-00115 --></p>
+<p>Sea <span class="math inline">\(\mathcal C\)</span> una <strong>categoría pequeña</strong>: sus objetos y todas sus flechas forman conjuntos, sus hom-conjuntos están dados y las operaciones categóricas son funciones. Un <em>prehaz conjuntista</em> es un funtor <span class="math inline">\(F:\mathcal C^{\mathrm{op}}\to\mathbf{Set}\)</span>. Escribimos <span class="math inline">\(\widehat{\mathcal C}=[\mathcal C^{\mathrm{op}},\mathbf{Set}]\)</span> para la categoría cuyos objetos son prehaces y cuyas flechas son transformaciones naturales. En este contexto <span class="math inline">\(y c=\operatorname{Hom}_{\mathcal C}(-,c)\)</span> es el representable del capítulo 15. Como <span class="math inline">\(\mathcal C\)</span> es pequeña, las colecciones de transformaciones entre dos prehaces dados son conjuntos. Para tratar <span class="math inline">\(\mathbf{Set}\)</span> y toda la categoría de prehaces como objetos de una sola teoría de conjuntos, se trabaja con la convención usual de clases metateóricas o con universos apropiados; <strong>no</strong> se supone que la clase de todos los conjuntos sea un conjunto de ZF.</p>
+<p><a id="TF-THM-00124"></a></p>
+<p><strong>Teorema 16.1.2 — Los colímites pequeños de prehaces se calculan por componentes</strong> <!-- result-id: TF-THM-00124; depends-on: TF-DEF-00070, TF-THM-00115, TF-DEF-00067 --></p>
+<p>Sea <span class="math inline">\(I\)</span> una categoría pequeña y <span class="math inline">\(D:I\to\widehat{\mathcal C}\)</span> un diagrama. Existe su colímite <span class="math inline">\(L\)</span> y, para cada <span class="math inline">\(c\in\mathcal C\)</span>, se cumple canónicamente</p>
+<p><span class="math display">\[L(c)\cong\operatorname*{colim}_{i\in I}D(i)(c).\tag{16.1}\]</span></p>
+<p><em>Demostración.</em> Para cada <span class="math inline">\(c\)</span>, construyamos el colímite conjuntista mediante la unión disjunta <span class="math inline">\(S_c=\coprod_{i\in\operatorname{Ob}I}D(i)(c)\)</span> y el cociente por la <strong>menor relación de equivalencia</strong> que identifica <span class="math inline">\((i,z)\)</span> con <span class="math inline">\((j,D(a)_c(z))\)</span> para cada flecha <span class="math inline">\(a:i\to j\)</span>. Se trata de conjuntos: unión disjunta, relación y cociente se forman por los axiomas de ZF, sin elegir representantes. Denotemos su clase por <span class="math inline">\([i,z]\)</span>.</p>
+<p>Para <span class="math inline">\(u:d\to c\)</span> en <span class="math inline">\(\mathcal C\)</span>, pongamos <span class="math inline">\(L(u)([i,z])=[i,D(i)(u)(z)]\)</span>. Si <span class="math inline">\(a:i\to j\)</span>, la naturalidad de <span class="math inline">\(D(a)\)</span> asegura <span class="math inline">\(D(j)(u)D(a)_c=D(a)_dD(i)(u)\)</span>; por tanto la regla respeta los generadores de la equivalencia y desciende al cociente. Las identidades y la composición se preservan por las leyes de cada <span class="math inline">\(D(i)\)</span>. Los mapas <span class="math inline">\(\iota_i:D(i)\Rightarrow L\)</span>, <span class="math inline">\(z\mapsto[i,z]\)</span>, son naturales y forman un cocono. Dado otro cocono <span class="math inline">\(\beta_i:D(i)\Rightarrow G\)</span>, la regla <span class="math inline">\([i,z]\mapsto\beta_{i,c}(z)\)</span> es independiente de la clase, natural en <span class="math inline">\(c\)</span>, y es la única transformación <span class="math inline">\(L\Rightarrow G\)</span> que factoriza los <span class="math inline">\(\beta_i\)</span>. Queda probada la universalidad y (16.1). El argumento cubre también <span class="math inline">\(I\)</span> vacío. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-DEF-00071"></a></p>
+<p><strong>Definición 16.1.3 — Categoría de elementos de un prehaz</strong> <!-- result-id: TF-DEF-00071; depends-on: TF-DEF-00070, TF-DEF-00068 --></p>
+<p>Para <span class="math inline">\(F:\mathcal C^{\mathrm{op}}\to\mathbf{Set}\)</span> definimos <span class="math inline">\(\operatorname{El}(F)\)</span> así:</p>
 <ul>
-<li><p><a href="../../libros/axler-ladr-es/index.html"><strong>Linear Algebra Done Right — edición de estudio en español</strong></a> — traducción y adaptación no oficiales de Sheldon Axler; publicación progresiva de las secciones verificadas, con soluciones originales y licencia específica CC BY-NC 4.0.</p></li>
-<li><p><a href="../../libros/otros/wentworth-smith-geometria/index.html"><strong>Geometría plana y del espacio — edición digital de 1915</strong></a> — edición abierta de Wentworth y Smith con transcripción literal y facsímiles originales; preliminares e Introducción, pp.&nbsp;1–4, disponibles.</p></li>
-<li><p><a href="../../libros/otros/topos-desde-cero.html"><strong>Topos desde cero</strong></a> — manual autocontenido de fundamentos, categorías, haces y sitios, en publicación progresiva.</p></li>
-<li><p><a href="../../libros/otros/tratado-de-analisis.html"><strong>Tratado de análisis</strong></a> — tratado moderno de análisis desde fundamentos explícitos, por Gustav A. Tachek; publicación progresiva iniciada con el prefacio.</p></li>
-<li><p><a href="../../libros/otros/tratado-de-algebra.html"><strong>Tratado moderno de Álgebra</strong></a> — tratado formal de estructuras algebraicas desde fundamentos explícitos, por Gustav A. Tachek; edición publicada con prefacio, tres interfaces fundacionales y capítulos 1–26; capítulo 27 en elaboración.</p></li>
-<li><p><a href="../../libros/otros/tratado-funciones/index.html"><strong>Tratado fundacional de la teoría de funciones</strong></a> — dieciocho capítulos en cinco partes sobre definición, igualdad, parcialidad, computabilidad y representación de funciones, con apéndices, ejercicios, bibliografía, glosario y seis índices.</p></li>
+<li>los objetos son pares <span class="math inline">\((c,x)\)</span> con <span class="math inline">\(c\in\mathcal C\)</span> y <span class="math inline">\(x\in F(c)\)</span>;</li>
+<li>una flecha <span class="math inline">\((c,x)\xrightarrow{u}(c',x')\)</span> es una flecha <span class="math inline">\(u:c\to c'\)</span> de <span class="math inline">\(\mathcal C\)</span> tal que <strong><span class="math inline">\(F(u)(x')=x\)</span></strong>.</li>
 </ul>
+<p>La igualdad anterior tiene el sentido de tipos correcto: <span class="math inline">\(F(u):F(c')\to F(c)\)</span>. Llamamos <span class="math inline">\(\pi_F:\operatorname{El}(F)\to\mathcal C\)</span> a la proyección <span class="math inline">\((c,x)\mapsto c\)</span>, <span class="math inline">\(u\mapsto u\)</span>. No confundimos esta categoría con la de elementos de un funtor <em>covariante</em>, donde se invierte la condición de los valores.</p>
+<p><a id="TF-THM-00125"></a></p>
+<p><strong>Teorema 16.1.4 — Categoría bien definida, pequeña y proyectada</strong> <!-- result-id: TF-THM-00125; depends-on: TF-DEF-00071, TF-DEF-00066, TF-DEF-00070 --></p>
+<p><span class="math inline">\(\operatorname{El}(F)\)</span> es una categoría pequeña y <span class="math inline">\(\pi_F\)</span> es un funtor.</p>
+<p><em>Demostración.</em> La identidad de <span class="math inline">\((c,x)\)</span> satisface <span class="math inline">\(F(1_c)(x)=x\)</span>. Si <span class="math inline">\(u:(c,x)\to(c',x')\)</span> y <span class="math inline">\(v:(c',x')\to(c'',x'')\)</span>, entonces <span class="math inline">\(F(vu)(x'')=F(u)F(v)(x'')=F(u)(x')=x\)</span>, de modo que la composición está definida. Sus leyes se heredan de <span class="math inline">\(\mathcal C\)</span> y la proyección las conserva. El conjunto de objetos es la unión disjunta <span class="math inline">\(\coprod_cF(c)\)</span>; las flechas son un subconjunto de <span class="math inline">\(\coprod_{c,c'}F(c)\times\operatorname{Hom}_{\mathcal C}(c,c')\times F(c')\)</span>, definido por separación. Pequeñez y ausencia de selección son explícitas. <span class="math inline">\(\square\)</span></p>
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Qué añade la densidad a las sondas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-13.html">TF-CAT-013</a> recupera flechas entre representables (<code>TF-THM-00105</code>), y <a href="../../../libros/otros/tratado-funciones/capitulo-15.html">TF-CAT-015</a> prueba Yoneda (<code>TF-THM-00117</code>, <code>TF-THM-00120</code>). El paso presente <strong>ensambla un prehaz arbitrario</strong> mediante su categoría de elementos y un colímite de representables (<code>TF-DEF-00071</code>, <code>TF-THM-00127</code>): no afirma que el prehaz mismo sea representable, como muestra <code>TF-CEX-00022</code>. La construcción es matemática, no una codificación efectiva. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="el-cocono-canónico-y-el-teorema-de-densidad" class="level2">
+<h2 class="anchored" data-anchor-id="el-cocono-canónico-y-el-teorema-de-densidad">16.2. El cocono canónico y el teorema de densidad</h2>
+<p><a id="TF-DEF-00072"></a></p>
+<p><strong>Definición 16.2.1 — Diagrama de representables y cocono elemental</strong> <!-- result-id: TF-DEF-00072; depends-on: TF-DEF-00071, TF-THM-00125, TF-DEF-00068, TF-THM-00117 --></p>
+<p>El diagrama <span class="math inline">\(D_F=y\circ\pi_F:\operatorname{El}(F)\to\widehat{\mathcal C}\)</span> envía <span class="math inline">\((c,x)\)</span> al representable <span class="math inline">\(yc\)</span> y una flecha <span class="math inline">\(u:(c,x)\to(c',x')\)</span> a <span class="math inline">\(yu:yc\Rightarrow yc'\)</span>. A cada elemento <span class="math inline">\((c,x)\)</span> le corresponde una transformación natural</p>
+<p><span class="math display">\[\lambda_{(c,x)}:yc\Rightarrow F,\qquad
+(\lambda_{(c,x)})_d(f:d\to c)=F(f)(x).\tag{16.2}\]</span></p>
+<p>Es precisamente la correspondencia de Yoneda <span class="math inline">\(\operatorname{Nat}(yc,F)\cong F(c)\)</span>, no un principio adicional de elección.</p>
+<p><a id="TF-THM-00126"></a></p>
+<p><strong>Teorema 16.2.2 — Compatibilidad del cocono</strong> <!-- result-id: TF-THM-00126; depends-on: TF-DEF-00072, TF-DEF-00071, TF-THM-00117, TF-THM-00120 --></p>
+<p>Las transformaciones <span class="math inline">\((\lambda_{(c,x)})\)</span> forman un cocono de <span class="math inline">\(D_F\)</span> con vértice <span class="math inline">\(F\)</span>: si <span class="math inline">\(u:(c,x)\to(c',x')\)</span>, entonces <span class="math inline">\(\lambda_{(c',x')}\circ yu=\lambda_{(c,x)}\)</span>.</p>
+<p><em>Demostración.</em> Para <span class="math inline">\(f:d\to c\)</span>, la componente izquierda devuelve <span class="math inline">\(F(uf)(x')=F(f)F(u)(x')=F(f)(x)\)</span>, que es (16.2). La igualdad es válida para todos <span class="math inline">\(d\)</span> y <span class="math inline">\(f\)</span>, por lo cual las transformaciones son iguales. En particular, la igualdad es una condición natural concreta, no mera igualdad de cardinalidades. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00127"></a></p>
+<p><strong>Teorema 16.2.3 — Densidad de Yoneda: todo prehaz es un colímite canónico de representables</strong> <!-- result-id: TF-THM-00127; depends-on: TF-DEF-00072, TF-THM-00124, TF-THM-00126, TF-THM-00117 --></p>
+<p>Para cada prehaz <span class="math inline">\(F\)</span> de una categoría pequeña <span class="math inline">\(\mathcal C\)</span>, el cocono (16.2) es colimitante. Por consiguiente,</p>
+<p><span class="math display">\[F\ \cong\ \operatorname*{colim}_{(c,x)\in\operatorname{El}(F)}yc.\tag{16.3}\]</span></p>
+<p><em>Demostración.</em> Sea <span class="math inline">\(G\)</span> otro prehaz y <span class="math inline">\(\beta_{(c,x)}:yc\Rightarrow G\)</span> un cocono cualquiera sobre <span class="math inline">\(D_F\)</span>. <strong>Construiremos</strong> la única transformación <span class="math inline">\(\eta:F\Rightarrow G\)</span> compatible. Para cada <span class="math inline">\(c\)</span> y <span class="math inline">\(x\in F(c)\)</span>, definamos</p>
+<p><span class="math display">\[\eta_c(x)=(\beta_{(c,x)})_c(1_c).\tag{16.4}\]</span></p>
+<p>Sea <span class="math inline">\(u:d\to c\)</span> y <span class="math inline">\(x\in F(c)\)</span>. Existe en la categoría de elementos la flecha <span class="math inline">\(u:(d,F(u)x)\to(c,x)\)</span>. La condición de cocono impone <span class="math inline">\(\beta_{(d,F(u)x)}=\beta_{(c,x)}\circ yu\)</span>. Aplicada al mapa identidad de <span class="math inline">\(d\)</span> da</p>
+<p><span class="math display">\[\eta_d(F(u)x)=(\beta_{(c,x)})_d(u)=G(u)((\beta_{(c,x)})_c(1_c))=G(u)(\eta_c(x)),\]</span></p>
+<p>siendo la segunda igualdad Yoneda/naturalidad de <span class="math inline">\(\beta_{(c,x)}\)</span>. Esto demuestra que <span class="math inline">\(\eta\)</span> es natural. La misma identidad de Yoneda, ahora para <span class="math inline">\(f:d\to c\)</span>, produce</p>
+<p><span class="math display">\[(\eta\lambda_{(c,x)})_d(f)=\eta_d(F(f)x)=G(f)(\eta_c(x))=(\beta_{(c,x)})_d(f),\]</span></p>
+<p>por lo que <span class="math inline">\(\eta\lambda_{(c,x)}=\beta_{(c,x)}\)</span>. Finalmente, si <span class="math inline">\(\theta:F\Rightarrow G\)</span> también factoriza el cocono, entonces <span class="math inline">\(\theta_c(x)=(\theta\lambda_{(c,x)})_c(1_c)=(\beta_{(c,x)})_c(1_c)=\eta_c(x)\)</span> para todo <span class="math inline">\(c,x\)</span>. Por extensionalidad <span class="math inline">\(\theta=\eta\)</span>. Se ha probado la propiedad universal sin seleccionar elementos de fibras ni representantes de clases. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00128"></a></p>
+<p><strong>Teorema 16.2.4 — Fórmula puntual, clases y forma normal de cada elemento</strong> <!-- result-id: TF-THM-00128; depends-on: TF-THM-00124, TF-THM-00127, TF-DEF-00071 --></p>
+<p>Para <span class="math inline">\(d\in\mathcal C\)</span>, el conjunto <span class="math inline">\(F(d)\)</span> se identifica con el cociente de</p>
+<p><span class="math display">\[S_d=\coprod_{(c,x)\in\operatorname{El}(F)}\operatorname{Hom}_{\mathcal C}(d,c)\]</span></p>
+<p>por la equivalencia generada por <span class="math inline">\(((c,x),f)\sim((c',x'),uf)\)</span> siempre que <span class="math inline">\(u:(c,x)\to(c',x')\)</span> y <span class="math inline">\(f:d\to c\)</span>. La biyección canónica viene dada por</p>
+<p><span class="math display">\[[((c,x),f)]\longmapsto F(f)(x).\tag{16.5}\]</span></p>
+<p>Todo elemento <span class="math inline">\(z\in F(d)\)</span> tiene una presentación <strong>canónica</strong> <span class="math inline">\(((d,z),1_d)\)</span>; no se afirma que sea la única presentación.</p>
+<p><em>Demostración.</em> La regla (16.5) es constante en los generadores, porque <span class="math inline">\(F(uf)(x')=F(f)F(u)(x')=F(f)(x)\)</span>; desciende por tanto al cociente. Es sobreyectiva: <span class="math inline">\(z\)</span> procede de <span class="math inline">\(((d,z),1_d)\)</span>. Para verificar la inyectividad sin elegir representantes globales, consideremos una pareja específica <span class="math inline">\(((c,x),f)\)</span> y escribamos <span class="math inline">\(z=F(f)(x)\)</span>. La propia flecha <span class="math inline">\(f:(d,z)\to(c,x)\)</span> en <span class="math inline">\(\operatorname{El}(F)\)</span> identifica <span class="math inline">\(((d,z),1_d)\)</span> con <span class="math inline">\(((c,x),f)\)</span>. Así <strong>cada clase</strong> es igual a la clase de su presentación canónica determinada por el valor de (16.5). Dos clases con el mismo valor son iguales. El argumento coincide con el colímite puntual de (16.3). <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="co-yoneda-la-misma-construcción-como-cociente-explícito" class="level2">
+<h2 class="anchored" data-anchor-id="co-yoneda-la-misma-construcción-como-cociente-explícito">16.3. Co-Yoneda: la misma construcción como cociente explícito</h2>
+<p><a id="TF-DEF-00073"></a></p>
+<p><strong>Definición 16.3.1 — Presentación por coextremo conjuntista</strong> <!-- result-id: TF-DEF-00073; depends-on: TF-DEF-00070, TF-THM-00124, TF-DEF-00068 --></p>
+<p>Para un prehaz <span class="math inline">\(F\)</span> y un objeto <span class="math inline">\(d\)</span> definimos el conjunto</p>
+<p><span class="math display">\[Q_F(d)=\left(\coprod_{c\in\mathcal C}F(c)\times\operatorname{Hom}_{\mathcal C}(d,c)\right)\big/\approx,\]</span></p>
+<p>donde <span class="math inline">\(\approx\)</span> es la equivalencia generada por</p>
+<p><span class="math display">\[(F(u)(x'),f)\approx(x',uf),\qquad u:c\to c',\ x'\in F(c'),\ f:d\to c.\tag{16.6}\]</span></p>
+<p>El índice <span class="math inline">\(c\)</span> de cada par se conserva en la notación de la unión disjunta. Esta es una presentación concreta del <strong>coextremo</strong> <span class="math inline">\(\int^{c\in\mathcal C}F(c)\times\mathcal C(d,c)\)</span> en <span class="math inline">\(\mathbf{Set}\)</span>. No se usa un cociente de una clase propia: <span class="math inline">\(\mathcal C\)</span> es pequeña.</p>
+<p><a id="TF-THM-00129"></a></p>
+<p><strong>Teorema 16.3.2 — Fórmula co-Yoneda sin elección</strong> <!-- result-id: TF-THM-00129; depends-on: TF-DEF-00073, TF-THM-00128, TF-THM-00127 --></p>
+<p>La fórmula <span class="math inline">\([x,f]\mapsto F(f)(x)\)</span> induce un isomorfismo natural de prehaces</p>
+<p><span class="math display">\[\int^{c\in\mathcal C}F(c)\times\mathcal C(-,c)\ \cong\ F.\tag{16.7}\]</span></p>
+<p><em>Demostración.</em> Si <span class="math inline">\((F(u)x',f)\approx(x',uf)\)</span>, entonces <span class="math inline">\(F(f)F(u)x'=F(uf)x'\)</span>; la aplicación está bien definida. Para <span class="math inline">\(z\in F(d)\)</span> su inversa manda <span class="math inline">\(z\)</span> a <span class="math inline">\([z,1_d]\)</span>. Componer primero inversa y luego evaluación da <span class="math inline">\(F(1_d)z=z\)</span>. Para cualquier <span class="math inline">\([x,f]\)</span>, la relación (16.6) aplicada a <span class="math inline">\(u=f:d\to c\)</span>, <span class="math inline">\(x'=x\)</span> y <span class="math inline">\(1_d:d\to d\)</span> identifica <span class="math inline">\([F(f)x,1_d]=[x,f]\)</span>. Si <span class="math inline">\(v:e\to d\)</span>, la acción contravariante de <span class="math inline">\(Q_F\)</span> es <span class="math inline">\([x,f]\mapsto[x,fv]\)</span>; la evaluación satisface <span class="math inline">\(F(fv)x=F(v)F(f)x\)</span>. La inversa también es natural porque <span class="math inline">\([z,v]=[F(v)z,1_e]\)</span>. La correspondencia es un isomorfismo natural explícito. Su presentación (16.6) reorganiza la del teorema anterior; no reemplaza los coconos universales por una elección de representantes. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="reconstrucción-de-flechas-y-representabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="reconstrucción-de-flechas-y-representabilidad">16.4. Reconstrucción de flechas y representabilidad</h2>
+<p><a id="TF-THM-00130"></a></p>
+<p><strong>Teorema 16.4.1 — La reconstrucción es natural respecto del prehaz</strong> <!-- result-id: TF-THM-00130; depends-on: TF-THM-00127, TF-DEF-00071, TF-DEF-00072, TF-DEF-00067 --></p>
+<p>Una transformación natural <span class="math inline">\(\varphi:F\Rightarrow G\)</span> induce un funtor <span class="math inline">\(\operatorname{El}(\varphi):\operatorname{El}(F)\to\operatorname{El}(G)\)</span>, que envía <span class="math inline">\((c,x)\)</span> a <span class="math inline">\((c,\varphi_c(x))\)</span> y deja la flecha subyacente <span class="math inline">\(u\)</span> sin cambiar. Los coconos canónicos son compatibles con <span class="math inline">\(\varphi\)</span> y la flecha que inducen entre los dos colímites de (16.3) corresponde exactamente a <span class="math inline">\(\varphi\)</span>.</p>
+<p><em>Demostración.</em> Para <span class="math inline">\(u:(c,x)\to(c',x')\)</span>, la naturalidad de <span class="math inline">\(\varphi\)</span> da <span class="math inline">\(G(u)(\varphi_{c'}x')=\varphi_c(F(u)x')=\varphi_c x\)</span>, así que <span class="math inline">\(u\)</span> también es flecha entre sus imágenes. Identidades y composición se preservan porque no se modifica <span class="math inline">\(u\)</span>. En cada <span class="math inline">\((c,x)\)</span>, la igualdad <span class="math inline">\(\varphi\lambda^F_{(c,x)}=\lambda^G_{(c,\varphi_c x)}\)</span> se comprueba en <span class="math inline">\(f:d\to c\)</span>: ambos lados valen <span class="math inline">\(G(f)(\varphi_c x)\)</span>. Por la unicidad universal del teorema 16.2.3, la aplicación inducida por los coconos no puede ser distinta de <span class="math inline">\(\varphi\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00131"></a></p>
+<p><strong>Teorema 16.4.2 — Los representables detectan conjuntamente transformaciones</strong> <!-- result-id: TF-THM-00131; depends-on: TF-THM-00127, TF-THM-00117, TF-THM-00121 --></p>
+<p>Si <span class="math inline">\(\varphi,\psi:F\Rightarrow G\)</span> satisfacen <span class="math inline">\(\varphi\lambda_{(c,x)}=\psi\lambda_{(c,x)}\)</span> para todo <span class="math inline">\((c,x)\in\operatorname{El}(F)\)</span>, entonces <span class="math inline">\(\varphi=\psi\)</span>. Equivalentemente, basta comprobar <span class="math inline">\(\varphi_c(x)=\psi_c(x)\)</span> para todos los elementos <span class="math inline">\(x\)</span> de todos los componentes.</p>
+<p><em>Demostración.</em> Evaluando ambas igualdades en <span class="math inline">\(c\)</span> y en <span class="math inline">\(1_c\)</span>, la fórmula (16.2) entrega <span class="math inline">\(\varphi_c(x)=\psi_c(x)\)</span>. Como <span class="math inline">\(c\)</span> y <span class="math inline">\(x\)</span> eran arbitrarios, las componentes coinciden por extensionalidad; las transformaciones son iguales. También es la unicidad de la propiedad universal (16.3). Este criterio cuantifica sobre todos los elementos de los conjuntos dados: <strong>no</strong> produce un algoritmo que recorra un conjunto infinito ni decide igualdad de programas del capítulo 10. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00132"></a></p>
+<p><strong>Teorema 16.4.3 — Criterio exacto de representabilidad por objeto terminal de elementos</strong> <!-- result-id: TF-THM-00132; depends-on: TF-DEF-00071, TF-THM-00117, TF-THM-00127, TF-DEF-00068 --></p>
+<p>Un prehaz <span class="math inline">\(F\)</span> es representable (es decir, <span class="math inline">\(F\cong yc\)</span> para algún <span class="math inline">\(c\)</span>) <strong>si y sólo si</strong> <span class="math inline">\(\operatorname{El}(F)\)</span> posee un objeto terminal.</p>
+<p><em>Demostración.</em> Supongamos terminal <span class="math inline">\((c,x)\)</span>. Para cada <span class="math inline">\(d\)</span> definamos <span class="math inline">\(\Phi_d:\mathcal C(d,c)\to F(d)\)</span> por <span class="math inline">\(f\mapsto F(f)x\)</span>. Dado <span class="math inline">\(z\in F(d)\)</span>, la terminalidad proporciona una <strong>única</strong> flecha <span class="math inline">\((d,z)\to(c,x)\)</span>; su flecha subyacente es precisamente el único <span class="math inline">\(f:d\to c\)</span> que satisface <span class="math inline">\(F(f)x=z\)</span>. Luego <span class="math inline">\(\Phi_d\)</span> es biyectiva. Para <span class="math inline">\(v:e\to d\)</span>, <span class="math inline">\(\Phi_e(fv)=F(v)F(f)x=F(v)\Phi_d(f)\)</span>, así que las biyecciones son naturales: <span class="math inline">\(yc\cong F\)</span>.</p>
+<p>Recíprocamente, para <span class="math inline">\(F=yc\)</span> la categoría de elementos tiene objetos <span class="math inline">\((d,f:d\to c)\)</span> y flechas <span class="math inline">\(u:(d,f)\to(d',f')\)</span> con <span class="math inline">\(f'u=f\)</span>: es la categoría de objetos sobre <span class="math inline">\(c\)</span>. El objeto <span class="math inline">\((c,1_c)\)</span> es terminal, pues la única flecha desde <span class="math inline">\((d,f)\)</span> hacia él es <span class="math inline">\(f\)</span>. Si <span class="math inline">\(F\cong yc\)</span>, una isomorfía natural transporta esta construcción a <span class="math inline">\(\operatorname{El}(F)\)</span>; concretamente, si <span class="math inline">\(\alpha:yc\cong F\)</span>, el objeto <span class="math inline">\((c,\alpha_c(1_c))\)</span> es terminal por naturalidad y biyectividad de cada <span class="math inline">\(\alpha_d\)</span>. No se elige un representante para cada <span class="math inline">\(z\)</span>: la única flecha terminal lo determina. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00133"></a></p>
+<p><strong>Teorema 16.4.4 — Correspondencia entre transformaciones y familias compatibles</strong> <!-- result-id: TF-THM-00133; depends-on: TF-THM-00127, TF-THM-00117, TF-THM-00130, TF-DEF-00071 --></p>
+<p>Para prehaces <span class="math inline">\(F,G\)</span> hay una biyección natural</p>
+<p><span class="math display">\[\operatorname{Nat}(F,G)\cong\left\{(b_{(c,x)})\in\prod_{(c,x)\in\operatorname{El}(F)}G(c):\
+G(u)(b_{(c',x')})=b_{(c,x)}\ \text{para cada }u:(c,x)\to(c',x')\right\}.\tag{16.8}\]</span></p>
+<p><em>Demostración.</em> Enviemos <span class="math inline">\(\eta:F\Rightarrow G\)</span> a la familia <span class="math inline">\(b_{(c,x)}=\eta_c(x)\)</span>. Si <span class="math inline">\(u\)</span> es flecha de elementos, <span class="math inline">\(G(u)\eta_{c'}(x')=\eta_c F(u)(x')=\eta_c(x)\)</span>, luego la familia es compatible. Para una familia compatible dada definamos <span class="math inline">\(\eta_c(x)=b_{(c,x)}\)</span>. La flecha <span class="math inline">\(u:(d,F(u)x)\to(c,x)\)</span> impone <span class="math inline">\(\eta_d(F(u)x)=G(u)\eta_c(x)\)</span>, que es exactamente la naturalidad de <span class="math inline">\(\eta\)</span>. Ambas operaciones son inversas por definición, y su naturalidad en el codominio <span class="math inline">\(G\)</span> consiste en componer cada componente con una transformación <span class="math inline">\(G\Rightarrow H\)</span>. Esta prueba es también la propiedad universal (16.3) traducida por Yoneda; adviértase que una familia sin la condición escrita en (16.8) <strong>no</strong> define una transformación natural. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="ejemplos-y-fronteras-del-resultado" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-fronteras-del-resultado">16.5. Ejemplos y fronteras del resultado</h2>
+<p><a id="TF-CEX-00022"></a></p>
+<p><strong>Contraejemplo 16.5.1 — Densidad no significa que cada prehaz sea representable</strong> <!-- result-id: TF-CEX-00022; depends-on: TF-THM-00127, TF-THM-00132, TF-DEF-00071 --></p>
+<p>Tomemos la categoría terminal <span class="math inline">\(\mathcal C=\{*\}\)</span>, con una sola identidad. Un prehaz es simplemente un conjunto <span class="math inline">\(S=F(*)\)</span> y todo representable <span class="math inline">\(y*\)</span> tiene un único elemento. Para <span class="math inline">\(S=\{0,1\}\)</span> no existe isomorfismo <span class="math inline">\(y*\cong F\)</span>, por desigualdad de cardinalidades. Sin embargo, <span class="math inline">\(\operatorname{El}(F)\)</span> es discreta con dos objetos <span class="math inline">\((*,0)\)</span> y <span class="math inline">\((*,1)\)</span>; el diagrama <span class="math inline">\(D_F\)</span> son dos copias del representable unitario y su coproducto tiene dos elementos, luego es <span class="math inline">\(F\)</span>. La categoría de elementos no tiene terminal (no hay flechas entre los dos objetos). <strong>Densidad proporciona colímites, no representabilidad individual.</strong></p>
+<p><a id="TF-EXA-00031"></a></p>
+<p><strong>Ejemplo 16.5.2 — Una flecha basta para ensamblar un representable</strong> <!-- result-id: TF-EXA-00031; depends-on: TF-DEF-00071, TF-THM-00127, TF-THM-00132 --></p>
+<p>Sea <span class="math inline">\(\mathcal C\)</span> la categoría <span class="math inline">\(0\xrightarrow{u}1\)</span> con identidades y sin flecha <span class="math inline">\(1\to0\)</span>. Para <span class="math inline">\(F=y1\)</span> se tienen <span class="math inline">\(F(0)=\{u\}\)</span> y <span class="math inline">\(F(1)=\{1_1\}\)</span>. La categoría de elementos tiene dos objetos <span class="math inline">\((0,u)\)</span> y <span class="math inline">\((1,1_1)\)</span>, y una flecha no identidad <span class="math inline">\((0,u)\xrightarrow{u}(1,1_1)\)</span>. El diagrama representable es <span class="math inline">\(y0\xrightarrow{yu}y1\)</span>: su colímite es <span class="math inline">\(y1\)</span>, porque el objeto <span class="math inline">\((1,1_1)\)</span> es terminal en el índice. Los valores son explícitos y muestran la dirección correcta de la flecha de elementos.</p>
+<p><a id="TF-EXA-00032"></a></p>
+<p><strong>Ejemplo 16.5.3 — Prehaz vacío y diagrama de índices vacío</strong> <!-- result-id: TF-EXA-00032; depends-on: TF-DEF-00071, TF-THM-00124, TF-THM-00127 --></p>
+<p>Si <span class="math inline">\(F(c)=\varnothing\)</span> para todo <span class="math inline">\(c\)</span>, la categoría <span class="math inline">\(\operatorname{El}(F)\)</span> no tiene objetos; su diagrama de representables es vacío. El colímite de un diagrama vacío en <span class="math inline">\(\widehat{\mathcal C}\)</span> es el prehaz inicial, cuyos valores son vacíos en todos los componentes, por el teorema 16.1.2. Esto también verifica (16.3) sin postular un elemento del dominio ni fabricar una elección imposible.</p>
+</section>
+<section id="auditoría-fundacional-lectura-guiada-y-continuidad" class="level2">
+<h2 class="anchored" data-anchor-id="auditoría-fundacional-lectura-guiada-y-continuidad">16.6. Auditoría fundacional, lectura guiada y continuidad</h2>
+<p><strong>Lectura de la prueba principal.</strong> El paso decisivo en 16.2.3 no es calcular un colímite «por analogía»: dados coconos <span class="math inline">\(\beta\)</span>, construimos <span class="math inline">\(\eta_c(x)\)</span> evaluando en <span class="math inline">\(1_c\)</span> y probamos que la condición sobre todas las flechas de <span class="math inline">\(\operatorname{El}(F)\)</span> equivale a la naturalidad de <span class="math inline">\(\eta\)</span>. La misma igualdad se hace visible como relación generadora en (16.6). Las fórmulas (16.4), (16.5) y (16.7) permiten recorrer ambas direcciones: universalidad <span class="math inline">\(\leftrightarrow\)</span> presentación por clases.</p>
+<p><strong>Preguntas para verificar comprensión.</strong> ¿Por qué en <span class="math inline">\(F(u)(x')=x\)</span> el elemento <span class="math inline">\(x'\)</span> pertenece a <span class="math inline">\(F(c')\)</span> y no a <span class="math inline">\(F(c)\)</span>? ¿Cuál es la flecha que compara <span class="math inline">\(((d,z),1_d)\)</span> con cualquier presentación de <span class="math inline">\(z\)</span>? ¿Por qué la categoría terminal con un prehaz de dos elementos refuta «todo prehaz es representable» pero no la densidad? ¿En qué paso haría falta una hipótesis de pequeñez si <span class="math inline">\(\mathcal C\)</span> fuese una clase propia?</p>
+<p><strong>Hipótesis y límites.</strong> (i) Pequeñez de <span class="math inline">\(\mathcal C\)</span> y de los diagramas garantiza que coproductos, productos y relaciones usados en las pruebas se formen a partir de <strong>conjuntos</strong>, no de clases propias. (ii) Los colímites de conjuntos y los cocientes se construyen en ZF; no se introdujo AC ni se escogieron simultáneamente representantes. (iii) Las pruebas se formulan mediante transformaciones suministradas y muestran existencia y unicidad <strong>estructurales</strong>. (iv) Ninguna fórmula presupone que exista una codificación finita de <span class="math inline">\(\mathcal C\)</span> o un procedimiento que decida la equivalencia (16.6), la naturalidad (16.8) o la igualdad extensional. (v) El teorema no afirma que la categoría <span class="math inline">\(\mathcal C\)</span> tenga por sí misma todos los colímites: los construimos en la categoría de prehaces.</p>
+<p><strong>Nota bibliográfica de control externo.</strong> La formulación de densidad/co-Yoneda puede cotejarse con <a href="https://ncatlab.org/nlab/show/co-Yoneda%2Blemma">nLab, <em>co-Yoneda lemma</em></a> y la <a href="https://math.iisc.ac.in/~gadgil/proofs-and-programs-2023/doc/Mathlib/CategoryTheory/Limits/Presheaf.html">biblioteca Mathlib, colímites de prehaces</a>. Los argumentos y la distribución de dependencias anteriores están desarrollados aquí, no se atribuyen a una formalización Lean del capítulo completo.</p>
+<div class="tf-navigation">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-15.html">← Anterior</a> · <a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-funciones/capitulo-17.html">Siguiente →</a></p>
+</div>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <style>
 /* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
 body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {

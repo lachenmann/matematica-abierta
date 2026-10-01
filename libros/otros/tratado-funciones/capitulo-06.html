@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Tratado fundacional de la teoría de funciones: capítulo 6, con hipótesis, pruebas y límites de formalización explícitos.">
+
+<title>Capítulo 6. Funciones parciales, dominios y extensiones – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-51f45f8b71e3aeb9ec98fa4bf4833bba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-34ed7760a8e6ccb8df528ee07d5f546e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="tratado.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#dos-dominios-no-uno" id="toc-dos-dominios-no-uno" class="nav-link active" data-scroll-target="#dos-dominios-no-uno">6.1. Dos dominios, no uno</a></li>
+  <li><a href="#composición-restringir-antes-de-evaluar" id="toc-composición-restringir-antes-de-evaluar" class="nav-link" data-scroll-target="#composición-restringir-antes-de-evaluar">6.2. Composición: restringir antes de evaluar</a></li>
+  <li><a href="#restricción-y-extensión-no-son-igualdad" id="toc-restricción-y-extensión-no-son-igualdad" class="nav-link" data-scroll-target="#restricción-y-extensión-no-son-igualdad">6.3. Restricción y extensión no son igualdad</a></li>
+  <li><a href="#se-puede-extender-toda-función-parcial" id="toc-se-puede-extender-toda-función-parcial" class="nav-link" data-scroll-target="#se-puede-extender-toda-función-parcial">6.4. ¿Se puede extender toda función parcial?</a></li>
+  <li><a href="#contraejemplos-estructura-y-efectividad" id="toc-contraejemplos-estructura-y-efectividad" class="nav-link" data-scroll-target="#contraejemplos-estructura-y-efectividad">6.5. Contraejemplos: estructura y efectividad</a></li>
+  <li><a href="#codificar-indefinición-mediante-un-valor-adicional" id="toc-codificar-indefinición-mediante-un-valor-adicional" class="nav-link" data-scroll-target="#codificar-indefinición-mediante-un-valor-adicional">6.6. Codificar indefinición mediante un valor adicional</a></li>
+  <li><a href="#ejemplos-y-lectura-guiada" id="toc-ejemplos-y-lectura-guiada" class="nav-link" data-scroll-target="#ejemplos-y-lectura-guiada">6.7. Ejemplos y lectura guiada</a></li>
+  <li><a href="#auditoría-fundacional-y-pedagógica" id="toc-auditoría-fundacional-y-pedagógica" class="nav-link" data-scroll-target="#auditoría-fundacional-y-pedagógica">6.8. Auditoría fundacional y pedagógica</a></li>
+  <li><a href="#fuentes-y-originalidad" id="toc-fuentes-y-originalidad" class="nav-link" data-scroll-target="#fuentes-y-originalidad">6.9. Fuentes y originalidad</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 6. Funciones parciales, dominios y extensiones</h1>
+</div>
+
+<div>
+  <div class="description">
+    Tratado fundacional de la teoría de funciones: capítulo 6, con hipótesis, pruebas y límites de formalización explícitos.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">1 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Problema rector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¿Qué es una función que sólo está definida en una parte de su dominio declarado? ¿Cómo se compone y cuándo admite extensión total? Separaremos la existencia estructural de una aplicación, la elección, la continuidad, la computabilidad y la representabilidad de la indefinición.</p>
+</div>
+</div>
+<p><strong>Contrato y fuentes.</strong> Trabajamos con una categoría <span class="math inline">\(\mathcal C\)</span> con límites finitos, ya construidos en <a href="../../../libros/otros/tratado-funciones/capitulo-04.html">TF-CAT-004</a>, <code>TF-THM-00023</code>. Usamos monomorfismos <code>TF-DEF-00003</code>, subobjetos <code>TF-DEF-00009</code>, productos <code>TF-AX-00004</code> y pullbacks <code>TF-AX-00006</code>. La regularidad <code>TF-AX-00008</code> y el principio opcional de elección regular <code>TF-AX-00009</code> <strong>no son necesarios</strong> para formar la categoría de aplicaciones parciales. La comparación con relaciones univaluadas remite a <a href="../../../libros/otros/tratado-funciones/capitulo-05.html">TF-CAT-005</a>, <code>TF-DEF-00018</code> y <code>TF-THM-00033</code>. Para las extensiones de conjuntos utilizamos ZF clásico, sin AC. Se entiende que el conjunto de clases de spans puede requerir hipótesis de tamaño; donde corresponda escribiremos «colección».</p>
+<section id="dos-dominios-no-uno" class="level2">
+<h2 class="anchored" data-anchor-id="dos-dominios-no-uno">6.1. Dos dominios, no uno</h2>
+<p>Una escritura como <span class="math inline">\(f:A\rightharpoonup B\)</span> declara el <strong>objeto de argumentos posibles</strong> <span class="math inline">\(A\)</span> y el codominio <span class="math inline">\(B\)</span>; no afirma que <span class="math inline">\(f\)</span> tenga valor para todo argumento de <span class="math inline">\(A\)</span>. El dominio efectivo de definición será un subobjeto de <span class="math inline">\(A\)</span>. Éste es un dato matemático, no una falla de notación.</p>
+<p><a id="TF-DEF-00021"></a></p>
+<p><strong>Definición 6.1.1 — Aplicación parcial</strong> <!-- result-id: TF-DEF-00021; depends-on: TF-DEF-00003, TF-DEF-00009, TF-AX-00006 --></p>
+<p>Una aplicación parcial <span class="math inline">\(\alpha:A\rightharpoonup B\)</span> está representada por un span</p>
+<p><span class="math display">\[A\xleftarrow{\ m\ }D\xrightarrow{\ u\ }B,\qquad m:D\rightarrowtail A\ \text{monomorfismo}.\tag{6.1}\]</span></p>
+<p>Dos spans <span class="math inline">\((m:D\rightarrowtail A,u:D\to B)\)</span> y <span class="math inline">\((n:E\rightarrowtail A,v:E\to B)\)</span> representan la misma aplicación parcial si existe un isomorfismo <span class="math inline">\(i:D\xrightarrow{\sim}E\)</span> con <span class="math inline">\(n i=m\)</span> y <span class="math inline">\(v i=u\)</span>. En particular, el codominio <span class="math inline">\(B\)</span> y el objeto declarado <span class="math inline">\(A\)</span> forman parte de su tipo; el dominio efectivo es el subobjeto <span class="math inline">\([m]\in\operatorname{Sub}(A)\)</span>. No se añade como dato independiente una elección de representantes.</p>
+<p><a id="TF-THM-00041"></a></p>
+<p><strong>Teorema 6.1.2 — Caracterización por relaciones univaluadas</strong> <!-- result-id: TF-THM-00041; depends-on: TF-DEF-00021, TF-DEF-00010, TF-DEF-00018, TF-AX-00004, TF-DEF-00009 --></p>
+<p>Las aplicaciones parciales <span class="math inline">\(A\rightharpoonup B\)</span> corresponden biyectivamente a las relaciones <span class="math inline">\([r:R\rightarrowtail A\times B]\)</span> cuya primera proyección <span class="math inline">\(p=\pi_A r:R\to A\)</span> es monomorfismo. Es una correspondencia entre las colecciones de clases de representantes, no una identificación literal de las codificaciones.</p>
+<p><em>Demostración.</em> Dado <span class="math inline">\((m,u)\)</span>, la flecha <span class="math inline">\(r=\langle m,u\rangle:D\to A\times B\)</span> es monomorfismo: <span class="math inline">\(r a=r b\)</span> implica <span class="math inline">\(ma=mb\)</span>, de donde <span class="math inline">\(a=b\)</span>. Su primera proyección es <span class="math inline">\(m\)</span>, luego es mono. Recíprocamente, dado <span class="math inline">\(r\)</span>, tomamos <span class="math inline">\((p,q)\)</span>, con <span class="math inline">\(q=\pi_Br\)</span>; <span class="math inline">\(p\)</span> es mono por hipótesis. Reunir estas dos operaciones recupera los representantes: <span class="math inline">\(\langle\pi_Ar,\pi_Br\rangle=r\)</span>, y <span class="math inline">\(\pi_A\langle m,u\rangle=m\)</span>, <span class="math inline">\(\pi_B\langle m,u\rangle=u\)</span>. Los isomorfismos de spans son exactamente los isomorfismos de representantes relacionales sobre <span class="math inline">\(A\times B\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-DEF-00022"></a></p>
+<p><strong>Definición 6.1.3 — Dominio efectivo y totalidad parcial</strong> <!-- result-id: TF-DEF-00022; depends-on: TF-DEF-00021, TF-DEF-00009, TF-DEF-00017 --></p>
+<p>Definimos <span class="math inline">\(\operatorname{dom}(\alpha)=[m]\in\operatorname{Sub}(A)\)</span>. La aplicación parcial <span class="math inline">\(\alpha\)</span> es <em>total</em> si <span class="math inline">\([m]=[1_A]\)</span>; equivalentemente, su representante <span class="math inline">\(m\)</span> es isomorfismo. Esta totalidad <strong>no</strong> es la noción «la primera proyección es epi regular» de una relación arbitraria: aquí ya sabemos que <span class="math inline">\(m\)</span> es mono.</p>
+<p><a id="TF-THM-00042"></a></p>
+<p><strong>Teorema 6.1.4 — Recuperación de las flechas totales</strong> <!-- result-id: TF-THM-00042; depends-on: TF-DEF-00022, TF-DEF-00021, TF-DEF-00001, TF-THM-00005 --></p>
+<p>Si <span class="math inline">\(\alpha\)</span> es total, determina una única flecha <span class="math inline">\(f:A\to B\)</span>, concretamente <span class="math inline">\(f=u m^{-1}\)</span>. Su span representa la misma aplicación parcial que <span class="math inline">\((1_A,f)\)</span>. A la inversa, toda flecha <span class="math inline">\(f:A\to B\)</span> define una aplicación parcial total por <span class="math inline">\((1_A,f)\)</span>.</p>
+<p><em>Demostración.</em> Como <span class="math inline">\(m\)</span> es iso, <span class="math inline">\(u=(u m^{-1})m\)</span>, y el isomorfismo <span class="math inline">\(m:D\to A\)</span> identifica <span class="math inline">\((m,u)\)</span> con <span class="math inline">\((1_A,u m^{-1})\)</span>. Si dos flechas <span class="math inline">\(f,g\)</span> producen spans equivalentes <span class="math inline">\((1_A,f)\)</span> y <span class="math inline">\((1_A,g)\)</span>, el isomorfismo <span class="math inline">\(i:A\to A\)</span> entre ellos debe satisfacer <span class="math inline">\(1_Ai=1_A\)</span>; entonces <span class="math inline">\(i=1_A\)</span> y <span class="math inline">\(f=g\)</span>. El recíproco es inmediato. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Lectura formal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Toda flecha primitiva <span class="math inline">\(A\to B\)</span> es una aplicación parcial total, pero una aplicación parcial puede existir sin proporcionar una flecha <span class="math inline">\(A\to B\)</span>. Ésta es la diferencia que preservaremos incluso si <span class="math inline">\(D\)</span> es vacío en el modelo conjuntista.</p>
+</div>
+</div>
+</section>
+<section id="composición-restringir-antes-de-evaluar" class="level2">
+<h2 class="anchored" data-anchor-id="composición-restringir-antes-de-evaluar">6.2. Composición: restringir antes de evaluar</h2>
+<p><a id="TF-DEF-00023"></a></p>
+<p><strong>Definición 6.2.1 — Composición de aplicaciones parciales</strong> <!-- result-id: TF-DEF-00023; depends-on: TF-DEF-00021, TF-AX-00006, TF-DEF-00003 --></p>
+<p>Dadas <span class="math inline">\(\alpha=[A\xleftarrow m D\xrightarrow u B]\)</span> y <span class="math inline">\(\beta=[B\xleftarrow n E\xrightarrow v C]\)</span>, formemos un producto fibrado de <span class="math inline">\(u\)</span> y <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[
+\begin{array}{ccc}
+P&amp;\xrightarrow{q}&amp;E\\
+\scriptstyle p\downarrow&amp;&amp;\downarrow\scriptstyle n\\
+D&amp;\xrightarrow{u}&amp;B.
+\end{array}
+\tag{6.2}
+\]</span></p>
+<p>Definimos <span class="math inline">\(\beta\circ_{\mathrm{par}}\alpha\)</span> mediante el span</p>
+<p><span class="math display">\[A\xleftarrow{\ mp\ }P\xrightarrow{\ vq\ }C.\tag{6.3}\]</span></p>
+<p>La flecha <span class="math inline">\(p\)</span> es monomorfismo por estabilidad de los monos bajo pullback y, por tanto, también lo es <span class="math inline">\(mp\)</span>. No es necesario tomar una imagen regular: el span ya conserva un dominio univaluado.</p>
+<p><a id="TF-THM-00043"></a></p>
+<p><strong>Teorema 6.2.2 — La categoría <span class="math inline">\(\mathbf{Par}(\mathcal C)\)</span></strong> <!-- result-id: TF-THM-00043; depends-on: TF-DEF-00023, TF-DEF-00021, TF-AX-00006, TF-AX-00001, TF-AX-00002 --></p>
+<p>La composición (6.3) está bien definida sobre las clases de spans, es asociativa y admite identidades <span class="math inline">\([A\xleftarrow{1_A}A\xrightarrow{1_A}A]\)</span>. En consecuencia, los objetos de <span class="math inline">\(\mathcal C\)</span> y sus aplicaciones parciales forman una categoría <span class="math inline">\(\mathbf{Par}(\mathcal C)\)</span>, con la salvedad habitual sobre tamaños.</p>
+<p><em>Demostración.</em> (i) Un isomorfismo de representantes induce, por la universalidad del pullback, un isomorfismo entre los objetos <span class="math inline">\(P\)</span> obtenidos; éste conmuta con los dos brazos externos. Por ello la clase compuesta no depende de representantes ni del producto fibrado escogido. (ii) Para tres spans <span class="math inline">\(A\xleftarrow m D\xrightarrow u B\)</span>, <span class="math inline">\(B\xleftarrow n E\xrightarrow v C\)</span> y <span class="math inline">\(C\xleftarrow k F\xrightarrow w H\)</span>, las dos asociaciones de pullbacks representan el mismo límite de las condiciones <span class="math inline">\(u(d)=n(e)\)</span> y <span class="math inline">\(v(e)=k(t)\)</span>. La propiedad universal produce un isomorfismo canónico entre los dominios de ambas composiciones, que identifica sus flechas a <span class="math inline">\(A\)</span> y <span class="math inline">\(H\)</span>. (iii) Componer con <span class="math inline">\((1_A,1_A)\)</span> forma un pullback de una identidad; el objeto obtenido es canónicamente isomorfo al dominio inicial y sus dos brazos son los originales. Las leyes de categoría siguen. <span class="math inline">\(\square\)</span></p>
+<p>En <span class="math inline">\(\mathbf{Set}\)</span>, la fórmula de la composición es especialmente transparente:</p>
+<p><span class="math display">\[\operatorname{dom}(\beta\circ_{\mathrm{par}}\alpha)
+=\{a\in D_\alpha:\alpha(a)\in D_\beta\},\qquad
+(\beta\circ_{\mathrm{par}}\alpha)(a)=\beta(\alpha(a)).\tag{6.4}\]</span></p>
+<p>No confundamos (6.4) con afirmar que la pertenencia al dominio pueda decidirse mediante un algoritmo.</p>
+<p><a id="TF-THM-00044"></a></p>
+<p><strong>Teorema 6.2.3 — Inclusión fiel de aplicaciones totales</strong> <!-- result-id: TF-THM-00044; depends-on: TF-THM-00042, TF-THM-00043, TF-DEF-00023 --></p>
+<p>La asignación <span class="math inline">\(J(f)=[1_A,f]\)</span> define un funtor fiel <span class="math inline">\(J:\mathcal C\to\mathbf{Par}(\mathcal C)\)</span>, identidad sobre los objetos, cuya imagen consiste exactamente en las flechas parciales totales.</p>
+<p><em>Demostración.</em> Las identidades coinciden por definición. El pullback de <span class="math inline">\(f:A\to B\)</span> por <span class="math inline">\(1_B:B\to B\)</span> es isomorfo a <span class="math inline">\(A\)</span>, y <span class="math inline">\(J(g)\circ_{\mathrm{par}}J(f)=J(gf)\)</span>. La fidelidad y la caracterización de la imagen son el Teorema 6.1.4. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="restricción-y-extensión-no-son-igualdad" class="level2">
+<h2 class="anchored" data-anchor-id="restricción-y-extensión-no-son-igualdad">6.3. Restricción y extensión no son igualdad</h2>
+<p><a id="TF-DEF-00024"></a></p>
+<p><strong>Definición 6.3.1 — Orden de extensión</strong> <!-- result-id: TF-DEF-00024; depends-on: TF-DEF-00021, TF-DEF-00009 --></p>
+<p>Para aplicaciones parciales paralelas <span class="math inline">\(\alpha=[m:D\rightarrowtail A,u:D\to B]\)</span> y <span class="math inline">\(\beta=[n:E\rightarrowtail A,v:E\to B]\)</span>, escribimos <span class="math inline">\(\alpha\preceq\beta\)</span> si existe <span class="math inline">\(i:D\to E\)</span> tal que <span class="math inline">\(ni=m\)</span> y <span class="math inline">\(vi=u\)</span>. Así, <span class="math inline">\(\beta\)</span> coincide con <span class="math inline">\(\alpha\)</span> donde ésta está definida y puede tener un dominio mayor. El mediador <span class="math inline">\(i\)</span> es único por la monicidad de <span class="math inline">\(n\)</span>.</p>
+<p><a id="TF-THM-00045"></a></p>
+<p><strong>Teorema 6.3.2 — Orden y compatibilidad con composición</strong> <!-- result-id: TF-THM-00045; depends-on: TF-DEF-00024, TF-DEF-00023, TF-AX-00006, TF-DEF-00009 --></p>
+<p>La relación <span class="math inline">\(\preceq\)</span> es un orden parcial sobre las clases de aplicaciones parciales <span class="math inline">\(A\rightharpoonup B\)</span>. Además, si <span class="math inline">\(\alpha\preceq\alpha'\)</span> y <span class="math inline">\(\beta\preceq\beta'\)</span>, con tipos componibles, entonces</p>
+<p><span class="math display">\[\beta\circ_{\mathrm{par}}\alpha\preceq\beta'\circ_{\mathrm{par}}\alpha'.\tag{6.5}\]</span></p>
+<p><em>Demostración.</em> Reflexividad: <span class="math inline">\(i=1_D\)</span>. Transitividad: se componen las factorizaciones. Antisimetría: si <span class="math inline">\(i:D\to E\)</span> y <span class="math inline">\(j:E\to D\)</span> atestiguan ambas comparaciones, <span class="math inline">\(mji=m\)</span> y <span class="math inline">\(nij=n\)</span>; la monicidad de <span class="math inline">\(m,n\)</span> da <span class="math inline">\(ji=1_D\)</span> e <span class="math inline">\(ij=1_E\)</span>. Como los valores también se preservan, los spans son isomorfos. Para (6.5), los mediadores <span class="math inline">\(D\to D'\)</span> y <span class="math inline">\(E\to E'\)</span> inducen por universalidad una flecha entre los pullbacks de (6.2). El compuesto con los brazos a <span class="math inline">\(A\)</span> y al codominio final coincide; por la monicidad del brazo del span mayor, el mediador exhibe precisamente la relación de extensión. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-DEF-00025"></a></p>
+<p><strong>Definición 6.3.3 — Idempotente de dominio</strong> <!-- result-id: TF-DEF-00025; depends-on: TF-DEF-00021, TF-DEF-00023 --></p>
+<p>Para <span class="math inline">\(\alpha=[m:D\rightarrowtail A,u:D\to B]\)</span> definimos la aplicación parcial de dominio <span class="math inline">\(\overline\alpha=[m:D\rightarrowtail A,m:D\to A]\)</span>, de <span class="math inline">\(A\)</span> en <span class="math inline">\(A\)</span>. Coincide con la identidad sobre el dominio efectivo y queda indefinida fuera de él. La fórmula no depende del representante escogido.</p>
+<p><a id="TF-THM-00046"></a></p>
+<p><strong>Teorema 6.3.4 — Leyes de la restricción</strong> <!-- result-id: TF-THM-00046; depends-on: TF-DEF-00025, TF-DEF-00023, TF-THM-00043, TF-DEF-00024, TF-DEF-00022 --></p>
+<p>Para cada aplicación parcial <span class="math inline">\(\alpha:A\rightharpoonup B\)</span> se cumplen</p>
+<p><span class="math display">\[\overline\alpha\circ_{\mathrm{par}}\overline\alpha=\overline\alpha,
+\qquad \alpha\circ_{\mathrm{par}}\overline\alpha=\alpha.\tag{6.6}\]</span></p>
+<p>Además, <span class="math inline">\(\alpha\)</span> es total si y sólo si <span class="math inline">\(\overline\alpha=1_A\)</span>; y, para <span class="math inline">\(\alpha,\beta:A\rightharpoonup B\)</span>,</p>
+<p><span class="math display">\[\alpha\preceq\beta\quad\Longleftrightarrow\quad
+\alpha=\beta\circ_{\mathrm{par}}\overline\alpha.\tag{6.7}\]</span></p>
+<p><em>Demostración.</em> El pullback de <span class="math inline">\(m\)</span> consigo mismo tiene una diagonal <span class="math inline">\(D\to D\times_AD\)</span> que es isomorfismo: para dos flechas hacia <span class="math inline">\(D\)</span> con igual composición por <span class="math inline">\(m\)</span>, la monicidad las iguala. Por ello componer <span class="math inline">\([m,m]\)</span> consigo misma recupera <span class="math inline">\([m,m]\)</span> y componer <span class="math inline">\([m,u]\)</span> con <span class="math inline">\([m,m]\)</span> recupera <span class="math inline">\([m,u]\)</span>. La igualdad <span class="math inline">\([m,m]=[1_A,1_A]\)</span> equivale a que <span class="math inline">\(m\)</span> sea isomorfismo. Si <span class="math inline">\(\alpha\preceq\beta\)</span>, la composición a la derecha de <span class="math inline">\(\beta\)</span> por <span class="math inline">\(\overline\alpha\)</span> restringe el dominio de <span class="math inline">\(\beta\)</span> al de <span class="math inline">\(\alpha\)</span>; la inclusión de dominios y la coincidencia de valores la identifican con <span class="math inline">\(\alpha\)</span>. Recíprocamente, la igualdad de la derecha de (6.7) identifica <span class="math inline">\(\alpha\)</span> con una restricción de <span class="math inline">\(\beta\)</span>, por lo que produce un mediador <span class="math inline">\(D_\alpha\to D_\beta\)</span> que preserva el valor. <span class="math inline">\(\square\)</span></p>
+<p>Estas leyes explican por qué en una <em>categoría de restricción</em> puede manejarse la parcialidad mediante operadores algebraicos. No adoptamos aquí todos sus axiomas abstractos: hemos construido su ejemplo estándar desde spans.</p>
+</section>
+<section id="se-puede-extender-toda-función-parcial" class="level2">
+<h2 class="anchored" data-anchor-id="se-puede-extender-toda-función-parcial">6.4. ¿Se puede extender toda función parcial?</h2>
+<p><a id="TF-DEF-00026"></a></p>
+<p><strong>Definición 6.4.1 — Objeto inyectivo respecto de monomorfismos</strong> <!-- result-id: TF-DEF-00026; depends-on: TF-DEF-00003, TF-DEF-00021 --></p>
+<p>Un objeto <span class="math inline">\(B\)</span> es <em>inyectivo</em> (respecto de todos los monomorfismos de <span class="math inline">\(\mathcal C\)</span>) si, para cualquier mono <span class="math inline">\(m:D\rightarrowtail A\)</span> y cualquier <span class="math inline">\(u:D\to B\)</span>, existe <span class="math inline">\(F:A\to B\)</span> con <span class="math inline">\(Fm=u\)</span>. Esto no afirma que <span class="math inline">\(F\)</span> sea único ni computable. Es una propiedad de <span class="math inline">\(B\)</span> relativa a la categoría y a la clase de monomorfismos adoptada.</p>
+<p><a id="TF-THM-00047"></a></p>
+<p><strong>Teorema 6.4.2 — Caracterización mediante aplicaciones parciales</strong> <!-- result-id: TF-THM-00047; depends-on: TF-DEF-00026, TF-DEF-00024, TF-THM-00042 --></p>
+<p>Un objeto <span class="math inline">\(B\)</span> es inyectivo respecto de los monomorfismos si y sólo si toda aplicación parcial <span class="math inline">\(\alpha:A\rightharpoonup B\)</span> admite una extensión total <span class="math inline">\(J(F)\)</span>, es decir, <span class="math inline">\(\alpha\preceq J(F)\)</span> para alguna flecha <span class="math inline">\(F:A\to B\)</span>.</p>
+<p><em>Demostración.</em> Para <span class="math inline">\(\alpha=[m,u]\)</span>, la condición <span class="math inline">\(\alpha\preceq[1_A,F]\)</span> exige un mediador <span class="math inline">\(i:D\to A\)</span> con <span class="math inline">\(1_Ai=m\)</span> y <span class="math inline">\(Fi=u\)</span>. Necesariamente <span class="math inline">\(i=m\)</span>; queda exactamente <span class="math inline">\(Fm=u\)</span>. La definición de inyectividad cuantifica sobre todos los pares <span class="math inline">\((m,u)\)</span>, de modo que ambas afirmaciones equivalen. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00048"></a></p>
+<p><strong>Teorema 6.4.3 — Criterio exacto de extensión en ZF</strong> <!-- result-id: TF-THM-00048; depends-on: TF-DEF-00024, TF-THM-00042, TF-THM-00039 --></p>
+<p>En <strong>ZF con lógica clásica</strong>, sean <span class="math inline">\(D\subseteq A\)</span>, <span class="math inline">\(B\)</span> un conjunto y <span class="math inline">\(u:D\to B\)</span>. Existe una extensión total <span class="math inline">\(F:A\to B\)</span> si y sólo si</p>
+<p><span class="math display">\[A\setminus D=\varnothing\quad\text{o bien}\quad B\ne\varnothing.\tag{6.8}\]</span></p>
+<p>En particular, si <span class="math inline">\(B\)</span> es habitado, <strong>toda</strong> función parcial con codominio <span class="math inline">\(B\)</span> se extiende, sin AC.</p>
+<p><em>Demostración.</em> Si <span class="math inline">\(A\setminus D=\varnothing\)</span>, entonces <span class="math inline">\(D=A\)</span> y sirve <span class="math inline">\(F=u\)</span>. Si <span class="math inline">\(B\ne\varnothing\)</span>, tomemos <strong>un solo</strong> <span class="math inline">\(b_0\in B\)</span> y definamos por separación en <span class="math inline">\(A\times B\)</span></p>
+<p><span class="math display">\[F(a)=\begin{cases}u(a),&amp;a\in D,\\b_0,&amp;a\in A\setminus D.\end{cases}\tag{6.9}\]</span></p>
+<p>El tercero excluido garantiza la partición de casos, y la gráfica es un conjunto definido mediante los datos <span class="math inline">\(A,D,B,u,b_0\)</span>. Existencia y unicidad de valor son inmediatas. Ninguna familia de conjuntos no vacíos debe elegirse: <span class="math inline">\(b_0\)</span> es un único testigo fijo. Recíprocamente, si existe <span class="math inline">\(F:A\to B\)</span> y <span class="math inline">\(A\setminus D\ne\varnothing\)</span>, tomamos <span class="math inline">\(a_0\in A\setminus D\)</span>; entonces <span class="math inline">\(F(a_0)\in B\)</span>, así que <span class="math inline">\(B\ne\varnothing\)</span>. <span class="math inline">\(\square\)</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Corrección de alcance sobre elección
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La frase informal «extender todas las funciones parciales exige elección» es <strong>falsa</strong> si se entiende como el Teorema 6.4.3 para un codominio fijo habitado. En ZF se demuestra ese teorema sin AC. La elección puede aparecer cuando la extensión está sujeta a restricciones variables o cuando se requiere elegir simultáneamente valores o extensiones en muchas familias; no debe confundirse con la sola prolongación no restringida.</p>
+</div>
+</div>
+<p><a id="TF-THM-00049"></a></p>
+<p><strong>Teorema 6.4.4 — Objetos inyectivos de <span class="math inline">\(\mathbf{Set}\)</span></strong> <!-- result-id: TF-THM-00049; depends-on: TF-DEF-00026, TF-THM-00047, TF-THM-00048 --></p>
+<p>En ZF clásico, un conjunto <span class="math inline">\(B\)</span> es inyectivo respecto de todas las inclusiones (equivalentemente, todos los monomorfismos de <span class="math inline">\(\mathbf{Set}\)</span>) si y sólo si <span class="math inline">\(B\ne\varnothing\)</span>.</p>
+<p><em>Demostración.</em> Si <span class="math inline">\(B\)</span> está habitado, el teorema anterior extiende toda función en un subconjunto <span class="math inline">\(D\subseteq A\)</span>. Para un mono abstracto <span class="math inline">\(m:D\rightarrowtail A\)</span>, su imagen identifica <span class="math inline">\(D\)</span> biyectivamente con un subconjunto de <span class="math inline">\(A\)</span>, y la misma extensión produce <span class="math inline">\(F\)</span> con <span class="math inline">\(Fm=u\)</span>. Si <span class="math inline">\(B=\varnothing\)</span>, tomemos el mono <span class="math inline">\(\varnothing\rightarrowtail\{*\}\)</span> y la única flecha <span class="math inline">\(\varnothing\to\varnothing\)</span>. No puede existir <span class="math inline">\(\{*\}\to\varnothing\)</span>. Por tanto el vacío no es inyectivo. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-THM-00050"></a></p>
+<p><strong>Teorema 6.4.5 — Extensiones sujetas a valores permitidos y elección</strong> <!-- result-id: TF-THM-00050; depends-on: TF-THM-00038, TF-DEF-00019, TF-THM-00048 --></p>
+<p>Sobre ZF clásico, el siguiente principio es equivalente al axioma de elección: para toda relación total <span class="math inline">\(R\subseteq A\times B\)</span> y toda función parcial <span class="math inline">\(u:D\to B\)</span> con <span class="math inline">\(D\subseteq A\)</span> cuya gráfica esté contenida en <span class="math inline">\(R\)</span>, existe una extensión total <span class="math inline">\(F:A\to B\)</span> que satisface simultáneamente <span class="math inline">\(F|_D=u\)</span> y <span class="math inline">\(\operatorname{graph}(F)\subseteq R\)</span>.</p>
+<p><em>Demostración.</em> Supongamos AC. Para <span class="math inline">\(a\in A\setminus D\)</span> las fibras <span class="math inline">\(R_a=\{b\in B:(a,b)\in R\}\)</span> son conjuntos no vacíos; AC permite elegir <span class="math inline">\(c(a)\in R_a\)</span> para toda la familia. Definimos <span class="math inline">\(F(a)=u(a)\)</span> en <span class="math inline">\(D\)</span> y <span class="math inline">\(F(a)=c(a)\)</span> fuera de <span class="math inline">\(D\)</span>. Es una función total que satisface ambas restricciones. Recíprocamente, dado <span class="math inline">\(R\)</span> total, aplicamos el principio a <span class="math inline">\(D=\varnothing\)</span> y a la única función <span class="math inline">\(u:\varnothing\to B\)</span>; obtenemos una función selectora total de <span class="math inline">\(R\)</span>. El Teorema 5.3.2, <code>TF-THM-00038</code>, demuestra que esto implica AC. <span class="math inline">\(\square\)</span></p>
+<p>Obsérvese la diferencia: el Teorema 6.4.3 fija <strong>el mismo</strong> valor <span class="math inline">\(b_0\)</span> fuera del dominio, mientras que el Teorema 6.4.5 exige que <span class="math inline">\(F(a)\)</span> pertenezca a una fibra <span class="math inline">\(R_a\)</span> que puede variar con <span class="math inline">\(a\)</span>.</p>
+</section>
+<section id="contraejemplos-estructura-y-efectividad" class="level2">
+<h2 class="anchored" data-anchor-id="contraejemplos-estructura-y-efectividad">6.5. Contraejemplos: estructura y efectividad</h2>
+<p><a id="TF-CEX-00004"></a></p>
+<p><strong>Contraejemplo 6.5.1 — La continuidad puede impedir la extensión</strong> <!-- result-id: TF-CEX-00004; depends-on: TF-DEF-00026, TF-THM-00047, TF-DEF-00021 --></p>
+<p>En <span class="math inline">\(\mathbf{Top}\)</span>, consideremos <span class="math inline">\(A=\mathbb R\)</span>, <span class="math inline">\(D=\mathbb R\setminus\{0\}\)</span> con su topología de subespacio y <span class="math inline">\(B=\{0,1\}\)</span> discreto. La aplicación <span class="math inline">\(u:D\to B\)</span> dada por <span class="math inline">\(u(x)=0\)</span> si <span class="math inline">\(x&lt;0\)</span> y <span class="math inline">\(u(x)=1\)</span> si <span class="math inline">\(x&gt;0\)</span> es continua: las preimágenes de <span class="math inline">\(\{0\}\)</span> y <span class="math inline">\(\{1\}\)</span> son abiertas en <span class="math inline">\(D\)</span>. La inclusión <span class="math inline">\(D\hookrightarrow A\)</span> es mono. Si hubiese extensión continua <span class="math inline">\(F:\mathbb R\to B\)</span>, la continuidad en <span class="math inline">\(0\)</span> forzaría, por la sucesión <span class="math inline">\(-1/n\to0\)</span>, <span class="math inline">\(F(0)=0\)</span>, y por <span class="math inline">\(1/n\to0\)</span>, <span class="math inline">\(F(0)=1\)</span>, contradicción. (Equivalente: la imagen continua de un espacio conexo en un discreto es un punto.) Existe una extensión <strong>como función de conjuntos</strong>, por ejemplo poniendo <span class="math inline">\(F(0)=0\)</span>, pero no como flecha de <span class="math inline">\(\mathbf{Top}\)</span>. No interviene aquí ninguna cuestión de AC.</p>
+<p><a id="TF-CEX-00005"></a></p>
+<p><strong>Contraejemplo 6.5.2 — Una función parcial computable sin extensión total computable</strong> <!-- result-id: TF-CEX-00005; depends-on: TF-THM-00048, TF-EXA-00007, TF-DEF-00021 --></p>
+<p>Fijemos una enumeración estándar <span class="math inline">\(\varphi_e\)</span> de todas las funciones parciales computables <span class="math inline">\(\mathbb N\rightharpoonup\mathbb N\)</span>. Definamos</p>
+<p><span class="math display">\[d(e)=\varphi_e(e)+1\quad\text{si }\varphi_e(e)\downarrow,\qquad d(e)\uparrow\text{ en caso contrario}.\tag{6.10}\]</span></p>
+<p>La función <span class="math inline">\(d\)</span> es parcialmente computable: simula <span class="math inline">\(\varphi_e(e)\)</span> y, si termina, suma uno. Supongamos que una función total computable <span class="math inline">\(F:\mathbb N\to\mathbb N\)</span> prolonga <span class="math inline">\(d\)</span>. Como <span class="math inline">\(F\)</span> es total computable, hay un índice <span class="math inline">\(k\)</span> con <span class="math inline">\(F=\varphi_k\)</span>; en particular <span class="math inline">\(\varphi_k(k)\downarrow\)</span>. La definición (6.10) da <span class="math inline">\(d(k)=\varphi_k(k)+1=F(k)+1\)</span>, mientras que la extensión exige <span class="math inline">\(F(k)=d(k)\)</span>. Se seguiría <span class="math inline">\(F(k)=F(k)+1\)</span>, contradicción. Por el Teorema 6.4.3 existe, sin embargo, una prolongación <strong>conjuntista</strong> de <span class="math inline">\(d\)</span> (por ejemplo, asignando cero fuera de su dominio). No es computable. Además, si el dominio de <span class="math inline">\(d\)</span> fuera decidible, podríamos decidir si ejecutar la simulación que calcula <span class="math inline">\(d(e)\)</span> o devolver cero, obteniendo una extensión total computable; esto contradice lo probado. Por tanto el dominio es semidecidible, pero no decidible.</p>
+<!-- editorial-crossref: TF-XREF-0001; route: R2 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Continuidad: representar la indefinición no determina todavía la composición
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La construcción de spans (<code>TF-DEF-00021</code>, <code>TF-DEF-00023</code>) precede a la codificación <strong>conjuntista clásica</strong> de esta sección (<code>TF-THM-00051</code>). <a href="../../../libros/otros/tratado-funciones/capitulo-08.html">El capítulo 8</a> exige y construye un <strong>clasificador universal</strong> <span class="math inline">\(L(B)\)</span> bajo hipótesis de topos (<code>TF-THM-00062</code>), y <a href="../../../libros/otros/tratado-funciones/capitulo-14.html">el capítulo 14</a> comprueba la composición de funciones etiquetadas mediante la operación de Kleisli (<code>TF-DEF-00061</code>, <code>TF-THM-00110</code>). La biyección de conjuntos no debe interpretarse como universalidad en toda categoría ni como compatibilidad con la composición ordinaria. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="codificar-indefinición-mediante-un-valor-adicional" class="level2">
+<h2 class="anchored" data-anchor-id="codificar-indefinición-mediante-un-valor-adicional">6.6. Codificar indefinición mediante un valor adicional</h2>
+<p><a id="TF-THM-00051"></a></p>
+<p><strong>Teorema 6.6.1 — Clasificador de funciones parciales en <span class="math inline">\(\mathbf{Set}\)</span></strong> <!-- result-id: TF-THM-00051; depends-on: TF-DEF-00021, TF-THM-00041, TF-DEF-00022 --></p>
+<p>En ZF clásico, fijemos un singleton etiquetado <span class="math inline">\(\{\bot\}\)</span> disjunto de <span class="math inline">\(B\)</span> y la suma disjunta <span class="math inline">\(B_\bot=B\sqcup\{\bot\}\)</span>. Existe una biyección natural en <span class="math inline">\(A\)</span></p>
+<p><span class="math display">\[\operatorname{Par}_{\mathbf{Set}}(A,B)\ \cong\ \operatorname{Hom}_{\mathbf{Set}}(A,B_\bot).\tag{6.11}\]</span></p>
+<p><em>Demostración.</em> A partir de <span class="math inline">\((D\subseteq A,u:D\to B)\)</span>, definimos <span class="math inline">\(\widehat u:A\to B_\bot\)</span> mediante <span class="math inline">\(\widehat u(a)=\operatorname{inl}(u(a))\)</span> si <span class="math inline">\(a\in D\)</span> y <span class="math inline">\(\widehat u(a)=\operatorname{inr}(\bot)\)</span> si <span class="math inline">\(a\notin D\)</span>. La lógica clásica justifica esta definición por casos y separación forma su gráfica. En sentido inverso, dada <span class="math inline">\(h:A\to B_\bot\)</span>, tomemos <span class="math inline">\(D=h^{-1}(\operatorname{inl}(B))\)</span> y <span class="math inline">\(u(a)=\operatorname{inl}^{-1}(h(a))\)</span> para <span class="math inline">\(a\in D\)</span>. Las dos operaciones son inversas por extensionalidad de conjuntos. La naturalidad contravariante en <span class="math inline">\(A\)</span> es inmediata: restringir una función parcial por <span class="math inline">\(g:A'\to A\)</span> produce dominio <span class="math inline">\(g^{-1}(D)\)</span> y corresponde a <span class="math inline">\(\widehat u\circ g\)</span>. No se usa AC. <span class="math inline">\(\square\)</span></p>
+<p><strong>Frontera categórica.</strong> La fórmula <span class="math inline">\(B_\bot=B\sqcup1\)</span> no clasifica automáticamente todas las aplicaciones parciales de una categoría con coproductos. Para eso se requieren condiciones que conviertan todo subobjeto de dominio en una descomposición complementaria; funciona, por ejemplo, en categorías booleanas extensivas, incluyendo topoi booleanos. Los topoi elementales también poseen clasificadores de aplicaciones parciales bajo sus hipótesis propias, pero no se identifican en general con <span class="math inline">\(B\sqcup1\)</span>. No postulamos esos resultados como consecuencias de los axiomas <code>TF-AX-00001</code>–<code>TF-AX-00009</code>; su estudio queda reservado para la reconstrucción de la lógica interna.</p>
+</section>
+<section id="ejemplos-y-lectura-guiada" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-y-lectura-guiada">6.7. Ejemplos y lectura guiada</h2>
+<p><a id="TF-EXA-00009"></a></p>
+<p><strong>Ejemplo 6.7.1 — El recíproco, dominio y regularidad</strong> <!-- result-id: TF-EXA-00009; depends-on: TF-DEF-00021, TF-THM-00048, TF-CEX-00004 --></p>
+<p>La regla <span class="math inline">\(u(x)=1/x\)</span> determina una función parcial <span class="math inline">\(\mathbb R\rightharpoonup\mathbb R\)</span> con dominio efectivo <span class="math inline">\(D=\mathbb R\setminus\{0\}\)</span>. Se puede prolongar como <strong>función conjuntista</strong> dando cualquier valor a <span class="math inline">\(0\)</span>. No existe prolongación continua <span class="math inline">\(\mathbb R\to\mathbb R\)</span>: si <span class="math inline">\(F(0)=c\)</span>, la continuidad en cero haría que <span class="math inline">\(F(1/n)=n\)</span> tendiese a <span class="math inline">\(c\)</span>, lo cual es imposible. Aquí la obstrucción no es falta de elección ni de valor disponible; es el requisito topológico.</p>
+<p><a id="TF-EXA-00010"></a></p>
+<p><strong>Ejemplo 6.7.2 — La función vacía y el codominio vacío</strong> <!-- result-id: TF-EXA-00010; depends-on: TF-DEF-00021, TF-THM-00048, TF-EXA-00008 --></p>
+<p>En <span class="math inline">\(\mathbf{Set}\)</span> existe para todo par de conjuntos <span class="math inline">\(A,B\)</span> una única función parcial con dominio efectivo vacío: <span class="math inline">\(\varnothing\to B\)</span>, representada por <span class="math inline">\(A\xleftarrow{}\varnothing\to B\)</span>. Para <span class="math inline">\(B=\varnothing\)</span> y <span class="math inline">\(A\ne\varnothing\)</span>, esta aplicación parcial existe, pero no tiene extensión total <span class="math inline">\(A\to\varnothing\)</span>. Si <span class="math inline">\(A=\varnothing\)</span> sí es ya total. Así, «la función parcial existe» no implica «existe una función total de su tipo».</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ejercicios de lectura de pruebas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>En el Teorema 6.2.2, escriba los dos objetos de testigos correspondientes a la asociación izquierda y derecha de tres aplicaciones parciales y construya su isomorfismo por universalidad. 2. Muestre que <span class="math inline">\(\operatorname{dom}(\alpha)\)</span> puede ser un subobjeto no complementado en una categoría no booleana; explique por qué una fórmula por casos no es automática. 3. Localice la única elección de un <strong>elemento fijo</strong> en el Teorema 6.4.3 y compárela con la familia de elecciones del 6.4.5. 4. Explique por qué los contraejemplos 6.5.1 y 6.5.2 no contradicen el Teorema 6.4.3. 5. Reconstruya la representación de la función vacía por un span incluso cuando su codominio también sea vacío.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="auditoría-fundacional-y-pedagógica" class="level2">
+<h2 class="anchored" data-anchor-id="auditoría-fundacional-y-pedagógica">6.8. Auditoría fundacional y pedagógica</h2>
+<div class="tf-table" role="region" tabindex="0" aria-label="Tabla matemática desplazable">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pregunta</th>
+<th>Dictamen del capítulo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hipótesis categóricas</td>
+<td>Límites finitos y todos los monomorfismos como dominios admisibles. No se emplean regularidad, clasificador <span class="math inline">\(\Omega\)</span> ni exponenciales para formar <span class="math inline">\(\mathbf{Par}(\mathcal C)\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Conceptos separados</td>
+<td>Dominio declarado <span class="math inline">\(A\)</span>, dominio efectivo <span class="math inline">\([m]\)</span>, codominio <span class="math inline">\(B\)</span>, gráfica relacional, flecha total, extensión por coincidencia.</td>
+</tr>
+<tr class="odd">
+<td>Elección</td>
+<td>Extensión no restringida hacia un conjunto habitado demostrable en ZF sin AC. El principio de extensión <strong>restringida a relaciones totales arbitrarias</strong> equivale a AC.</td>
+</tr>
+<tr class="even">
+<td>Lógica</td>
+<td>Construcciones categóricas por universalidad; definición conjuntista por casos usa lógica clásica.</td>
+</tr>
+<tr class="odd">
+<td>Testigos</td>
+<td>Composición y dominios de restricción canónicos hasta isomorfismo; extensión libre usa un único <span class="math inline">\(b_0\)</span>; existencia abstracta de selector de relación requiere hipótesis expresa.</td>
+</tr>
+<tr class="even">
+<td>Efectividad</td>
+<td>Existencia de extensión conjuntista no implica computabilidad, ni la pertenencia al dominio es decidible. Si <span class="math inline">\(D\)</span> es decidible, <span class="math inline">\(u\)</span> computable allí y se conoce <span class="math inline">\(b_0\)</span> computable, la extensión por casos puede calcularse; estas condiciones no se suponen en general.</td>
+</tr>
+<tr class="odd">
+<td>Continuidad</td>
+<td>La extensión debe ser una flecha de la categoría elegida: un conjunto de valores seleccionado arbitrariamente puede romper continuidad.</td>
+</tr>
+<tr class="even">
+<td>Tamaño</td>
+<td>Los spans hasta isomorfismo pueden formar colecciones propias salvo hipótesis sobre clases de subobjetos; la formulación no confunde colecciones con objetos internos.</td>
+</tr>
+<tr class="odd">
+<td>Verificación</td>
+<td>Pruebas revisadas manualmente, registro y grafo actualizados tras cierre; sin Lean ni publicación web.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="fuentes-y-originalidad" class="level2">
+<h2 class="anchored" data-anchor-id="fuentes-y-originalidad">6.9. Fuentes y originalidad</h2>
+<p>Las categorías de aplicaciones parciales y sus operadores de restricción son construcciones establecidas; no se reivindica su descubrimiento. Nuestra aportación editorial es el cotejo axiomático y la distinción precisa entre extensión libre, selección sujeta a fibras, continuidad y computabilidad. Fuentes consultadas: <a href="https://ncatlab.org/nlab/show/partial%2Bfunction">nLab, <em>partial function</em></a>, para spans monomórficos, orden y suma disjunta; <a href="https://ncatlab.org/nlab/show/partial%2Bmap%2Bclassifier">nLab, <em>partial map classifier</em></a>, para la representación y su alcance booleano; Chapman et al., <a href="https://strathprints.strath.ac.uk/60204/1/Chapman_etal_JFR2017_Formalizing_restriction_categories.pdf"><em>Formalizing Restriction Categories</em>, §2.1</a>, para composición por pullbacks y el idempotente de dominio; Herbert B. Enderton, <a href="https://www.sciencedirect.com/book/monograph/9780123849588/computability-theory"><em>Computability Theory: An Introduction to Recursion Theory</em> (Academic Press, 2011), cap. 3, p.&nbsp;67</a>, para la obstrucción diagonal a la extensión total computable. Se preservan las distinciones y el principio de elección del capítulo precedente, no se extrapolan a una categoría arbitraria sin nuevas hipótesis.</p>
+<p><strong>Síntesis.</strong> Se reconstruyó una categoría de aplicaciones parciales sin imágenes ni elección, se caracterizó la extensión total como una propiedad de inyectividad del codominio y se demostró que toda aplicación parcial en conjuntos hacia un codominio habitado se prolonga sin AC. Los obstáculos topológicos y computacionales son independientes de ese hecho conjuntista.</p>
+<div class="tf-navigation">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-05.html">← Anterior</a> · <a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-funciones/capitulo-07.html">Siguiente →</a></p>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

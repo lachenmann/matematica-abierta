@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Tratado fundacional de la teoría de funciones: capítulo 14, con hipótesis, pruebas y límites de formalización explícitos.">
+
+<title>Capítulo 14. Semántica de funciones y límites de equivalencia – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-51f45f8b71e3aeb9ec98fa4bf4833bba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-34ed7760a8e6ccb8df528ee07d5f546e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="tratado.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#cuatro-niveles-de-equivalencia" id="toc-cuatro-niveles-de-equivalencia" class="nav-link active" data-scroll-target="#cuatro-niveles-de-equivalencia">14.1. Cuatro niveles de equivalencia</a></li>
+  <li><a href="#aplicaciones-parciales-y-la-composición-que-corresponde-a-su-codificación" id="toc-aplicaciones-parciales-y-la-composición-que-corresponde-a-su-codificación" class="nav-link" data-scroll-target="#aplicaciones-parciales-y-la-composición-que-corresponde-a-su-codificación">14.2. Aplicaciones parciales y la composición que corresponde a su codificación</a></li>
+  <li><a href="#representaciones-mismo-objeto-no-significa-mismos-algoritmos" id="toc-representaciones-mismo-objeto-no-significa-mismos-algoritmos" class="nav-link" data-scroll-target="#representaciones-mismo-objeto-no-significa-mismos-algoritmos">14.3. Representaciones: mismo objeto no significa mismos algoritmos</a></li>
+  <li><a href="#cocientes-semánticos-y-barreras-de-decisión" id="toc-cocientes-semánticos-y-barreras-de-decisión" class="nav-link" data-scroll-target="#cocientes-semánticos-y-barreras-de-decisión">14.4. Cocientes semánticos y barreras de decisión</a></li>
+  <li><a href="#observadores-y-transporte-de-coordenadas" id="toc-observadores-y-transporte-de-coordenadas" class="nav-link" data-scroll-target="#observadores-y-transporte-de-coordenadas">14.5. Observadores y transporte de coordenadas</a></li>
+  <li><a href="#cuadro-de-control-y-auditoría-fundacional" id="toc-cuadro-de-control-y-auditoría-fundacional" class="nav-link" data-scroll-target="#cuadro-de-control-y-auditoría-fundacional">14.6. Cuadro de control y auditoría fundacional</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 14. Semántica de funciones y límites de equivalencia</h1>
+</div>
+
+<div>
+  <div class="description">
+    Tratado fundacional de la teoría de funciones: capítulo 14, con hipótesis, pruebas y límites de formalización explícitos.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">1 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Pregunta rectora
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cuando dos formulaciones describen «las mismas funciones», ¿qué operación permite recuperar una desde la otra? ¿Se conserva sólo el valor, la composición, la estructura categórica o además la computabilidad? La palabra «equivalencia» no puede sustituir esas verificaciones.</p>
+</div>
+</div>
+<p><strong>Continuidad.</strong> El paso de flechas a gráficas y las reglas de traducción se fijaron en <a href="../../../libros/otros/tratado-funciones/capitulo-13.html">el capítulo 13</a>. Allí ya vimos que una interpretación puede confundir términos y que una inclusión de mapas computables en conjuntos puede ser fiel sin ser plena. Las aplicaciones parciales pertenecen a <a href="../../../libros/otros/tratado-funciones/capitulo-06.html">TF-CAT-006</a>, su clasificador a <a href="../../../libros/otros/tratado-funciones/capitulo-08.html">TF-CAT-008</a>, los traductores de nombres a <a href="../../../libros/otros/tratado-funciones/capitulo-09.html">TF-CAT-009</a> y las imposibilidades de decidir comportamientos a <a href="../../../libros/otros/tratado-funciones/capitulo-10.html">TF-CAT-010</a>. Este capítulo <strong>no</strong> identifica ZF, la teoría de tipos y una categoría como teorías globalmente equivalentes. Compara estructuras, funtores y códigos bajo contratos expresos.</p>
+<section id="cuatro-niveles-de-equivalencia" class="level2">
+<h2 class="anchored" data-anchor-id="cuatro-niveles-de-equivalencia">14.1. Cuatro niveles de equivalencia</h2>
+<p><a id="TF-DEF-00060"></a></p>
+<p><strong>Definición 14.1.1 — Contrato de equivalencia de funciones</strong> <!-- result-id: TF-DEF-00060; depends-on: TF-DEF-00054, TF-DEF-00040, TF-DEF-00059 --></p>
+<p>Para evitar que una semejanza de notación se convierta en identidad injustificada, distinguimos cuatro afirmaciones con tipos de datos diferentes:</p>
+<ol type="1">
+<li><em>Equivalencia extensional relativa a dominio y codominio fijados:</em> <span class="math inline">\(f=g:A\to B\)</span> cuando sus valores coinciden; para aplicaciones parciales también deben coincidir los dominios efectivos.</li>
+<li><em>Isomorfismo de presentaciones:</em> se especifican biyecciones de objetos o portadores y las aplicaciones se transportan mediante ellas. Un isomorfismo es una afirmación estructural, no una implementación computable.</li>
+<li><em>Equivalencia categórica:</em> se suministran funtores <span class="math inline">\(F:\mathcal C\rightleftarrows\mathcal D:G\)</span> e isomorfismos naturales <span class="math inline">\(GF\cong1_{\mathcal C}\)</span> y <span class="math inline">\(FG\cong1_{\mathcal D}\)</span>. No se exige que los objetos de ambas categorías coincidan literalmente.</li>
+<li><em>Equivalencia efectiva de representaciones:</em> hay algoritmos uniformes que traducen los nombres válidos en ambas direcciones sin cambiar su denotación; no basta con tener una biyección de conjuntos de nombres.</li>
+</ol>
+<p>Cada afirmación obliga a explicitar fuente, destino, igualdad considerada, inversa o recuperación, y principios de construcción. Una equivalencia de categorías no afirma por sí sola que los objetos o sus códigos puedan identificarse computablemente; una equivalencia de nombres no decide por sí sola la igualdad de los objetos nombrados.</p>
+<p><a id="TF-THM-00109"></a></p>
+<p><strong>Teorema 14.1.2 — Criterio de equivalencia categórica con representantes suministrados</strong> <!-- result-id: TF-THM-00109; depends-on: TF-DEF-00060, TF-DEF-00054, TF-AX-00001, TF-AX-00002, TF-DEF-00001 --></p>
+<p>Sean <span class="math inline">\(\mathcal C,\mathcal D\)</span> categorías localmente pequeñas y <span class="math inline">\(F:\mathcal C\to\mathcal D\)</span> un funtor. Supóngase que (i) para todos <span class="math inline">\(A,A'\)</span>, la aplicación <span class="math inline">\(F_{A,A'}:\operatorname{Hom}_{\mathcal C}(A,A')\to\operatorname{Hom}_{\mathcal D}(FA,FA')\)</span> es biyectiva, y (ii) <strong>se han suministrado para cada objeto <span class="math inline">\(D\)</span></strong> un objeto <span class="math inline">\(G_0D\)</span> de <span class="math inline">\(\mathcal C\)</span> y un isomorfismo <span class="math inline">\(\varepsilon_D:F(G_0D)\xrightarrow{\sim}D\)</span>. Entonces se construye un funtor <span class="math inline">\(G:\mathcal D\to\mathcal C\)</span> y se tienen isomorfismos naturales <span class="math inline">\(FG\cong1_{\mathcal D}\)</span> y <span class="math inline">\(1_{\mathcal C}\cong GF\)</span>. Recíprocamente, un funtor dotado de cuasiinverso y tales isomorfismos es plenamente fiel y esencialmente sobreyectivo. El enunciado inverso sobre esencial sobreyectividad <em>sin datos elegidos</em> no se utiliza aquí como permiso para escoger simultáneamente representantes en ZF sin AC.</p>
+<p><em>Demostración (construcción).</em> En los objetos, pongamos <span class="math inline">\(GD=G_0D\)</span>. Dada <span class="math inline">\(u:D\to D'\)</span>, la plenitud y fidelidad proporcionan <strong>una única</strong> flecha <span class="math inline">\(Gu:GD\to GD'\)</span> cuya imagen satisface</p>
+<p><span class="math display">\[F(Gu)=\varepsilon_{D'}^{-1}\circ u\circ\varepsilon_D.\tag{14.1}\]</span></p>
+<p>La identidad satisface (14.1) con <span class="math inline">\(u=1_D\)</span> porque el lado derecho es <span class="math inline">\(1_{FGD}\)</span>; por inyectividad de <span class="math inline">\(F_{GD,GD}\)</span>, <span class="math inline">\(G(1_D)=1_{GD}\)</span>. Si <span class="math inline">\(u:D\to D'\)</span> y <span class="math inline">\(v:D'\to D''\)</span>, entonces</p>
+<p><span class="math display">\[F(Gv\circ Gu)=(\varepsilon_{D''}^{-1}v\varepsilon_{D'})(\varepsilon_{D'}^{-1}u\varepsilon_D)
+=\varepsilon_{D''}^{-1}(vu)\varepsilon_D=F(G(vu)),\]</span></p>
+<p>y la fidelidad fuerza <span class="math inline">\(G(vu)=Gv\,Gu\)</span>. Así <span class="math inline">\(G\)</span> es funtor. Reescrita como <span class="math inline">\(u\varepsilon_D=\varepsilon_{D'}F(Gu)\)</span>, (14.1) expresa exactamente la naturalidad de <span class="math inline">\(\varepsilon:FG\Rightarrow1_{\mathcal D}\)</span>.</p>
+<p>Para <span class="math inline">\(A\in\mathcal C\)</span> usemos la biyectividad de <span class="math inline">\(F_{A,GFA}\)</span> para definir <span class="math inline">\(\eta_A:A\to GFA\)</span> mediante <span class="math inline">\(F(\eta_A)=\varepsilon_{FA}^{-1}\)</span>. La misma construcción aplicada a <span class="math inline">\(\varepsilon_{FA}\)</span> produce <span class="math inline">\(\theta_A:GFA\to A\)</span> con <span class="math inline">\(F(\theta_A)=\varepsilon_{FA}\)</span>; se tiene <span class="math inline">\(F(\theta_A\eta_A)=1_{FA}\)</span> y <span class="math inline">\(F(\eta_A\theta_A)=1_{FGFA}\)</span>, y por fidelidad ambas composiciones son identidades. Para <span class="math inline">\(f:A\to A'\)</span>, la naturalidad de <span class="math inline">\(\varepsilon\)</span> con respecto a <span class="math inline">\(Ff\)</span> da</p>
+<p><span class="math display">\[F(GFf)\varepsilon_{FA}^{-1}=\varepsilon_{FA'}^{-1}Ff,
+\quad\text{luego}\quad GFf\,\eta_A=\eta_{A'}f\]</span></p>
+<p>por fidelidad; <span class="math inline">\(\eta:1_{\mathcal C}\Rightarrow GF\)</span> es un isomorfismo natural. Se ha construido el cuasiinverso sin una elección adicional: los representantes <span class="math inline">\(G_0D,\varepsilon_D\)</span> eran <strong>datos de entrada</strong>, y cada flecha recuperada es única.</p>
+<p><em>Recíproca.</em> Sean <span class="math inline">\(G,\eta:1\Rightarrow GF\)</span> y <span class="math inline">\(\varepsilon:FG\Rightarrow1\)</span> isomorfismos naturales. Cada <span class="math inline">\(D\)</span> es isomorfo a <span class="math inline">\(FGD\)</span>, de modo que la sobreyectividad esencial está provista con testigos. Si <span class="math inline">\(Ff=Fg\)</span>, entonces <span class="math inline">\(GFf=GFg\)</span> y, por naturalidad de <span class="math inline">\(\eta\)</span>, <span class="math inline">\(\eta_{A'}f=\eta_{A'}g\)</span>, luego <span class="math inline">\(f=g\)</span>; <span class="math inline">\(F\)</span> es fiel. Para la plenitud, dado <span class="math inline">\(u:FA\to FA'\)</span>, definamos el automorfismo natural de <span class="math inline">\(F\)</span>, <span class="math inline">\(\beta_A=\varepsilon_{FA}\circ F\eta_A:FA\to FA\)</span>. La naturalidad de ambos isomorfismos da <span class="math inline">\(\beta_{A'}Ff=Ff\beta_A\)</span>. Apliquemos <span class="math inline">\(G\)</span> a <span class="math inline">\(u'=\beta_{A'}u\beta_A^{-1}\)</span> y pongamos <span class="math inline">\(h=\eta_{A'}^{-1}\circ G(u')\circ\eta_A\)</span>. La naturalidad de <span class="math inline">\(\varepsilon\)</span> proporciona <span class="math inline">\(Fh=\beta_{A'}^{-1}u'\beta_A=u\)</span>. Luego <span class="math inline">\(F\)</span> es pleno. No se exigió que los isomorfismos originales satisficieran previamente identidades triangulares: el automorfismo <span class="math inline">\(\beta\)</span> corrige esa diferencia. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-EXA-00027"></a></p>
+<p><strong>Ejemplo 14.1.3 — Categorías equivalentes sin ser isomorfas</strong> <!-- result-id: TF-EXA-00027; depends-on: TF-THM-00109 --></p>
+<p>Sea <span class="math inline">\(\mathcal C\)</span> la categoría terminal con un objeto <span class="math inline">\(*\)</span> y una flecha. Sea <span class="math inline">\(\mathcal D\)</span> el grupoide con <strong>dos objetos distintos</strong> <span class="math inline">\(0,1\)</span> y exactamente una flecha entre cada par ordenado; por unicidad, cada flecha tiene inversa. El funtor <span class="math inline">\(F:\mathcal C\to\mathcal D\)</span> envía <span class="math inline">\(*\)</span> a <span class="math inline">\(0\)</span>. Es pleno y fiel porque <span class="math inline">\(\operatorname{Hom}_{\mathcal C}(*,*)\)</span> y <span class="math inline">\(\operatorname{Hom}_{\mathcal D}(0,0)\)</span> son singletons. Ambos objetos de <span class="math inline">\(\mathcal D\)</span> son isomorfos a <span class="math inline">\(0\)</span>; el funtor <span class="math inline">\(G\)</span> envía ambos a <span class="math inline">\(*\)</span> y todas las flechas a <span class="math inline">\(1_*\)</span>. Los isomorfismos <span class="math inline">\(FGD\to D\)</span> son las flechas únicas de <span class="math inline">\(0\)</span> a <span class="math inline">\(D\)</span>, y <span class="math inline">\(GF=1_{\mathcal C}\)</span>. Sin embargo, <strong>no hay isomorfismo de categorías</strong>: un isomorfismo estricto exigiría una función biyectiva entre sus conjuntos de objetos, de cardinalidades uno y dos. Equivalencia no es identidad ni isomorfismo estricto.</p>
+<p><a id="TF-CEX-00018"></a></p>
+<p><strong>Contraejemplo 14.1.4 — Plenitud y fidelidad sin equivalencia</strong> <!-- result-id: TF-CEX-00018; depends-on: TF-DEF-00060, TF-THM-00109 --></p>
+<p>Considérese la inclusión <span class="math inline">\(I:\mathbf{Set}_{\ne\varnothing}\hookrightarrow\mathbf{Set}\)</span> de la subcategoría <em>plena</em> de los conjuntos no vacíos. Para objetos <span class="math inline">\(A,B\ne\varnothing\)</span>, los hom-conjuntos en ambas categorías son el mismo conjunto de aplicaciones <span class="math inline">\(A\to B\)</span>: <span class="math inline">\(I\)</span> es pleno y fiel. Pero <span class="math inline">\(\varnothing\)</span> no es isomorfo a la imagen de ningún conjunto no vacío: una biyección entre ambos implicaría que el conjunto no vacío carece de elementos. Por tanto, <span class="math inline">\(I\)</span> no es esencialmente sobreyectivo ni equivalencia. La existencia de aplicaciones adecuadas entre los objetos <strong>ya presentes</strong> no garantiza que el modelo de destino no tenga objetos nuevos.</p>
+<!-- editorial-crossref: TF-XREF-0001; route: R2 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Por qué esta composición no repite la codificación previa
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-06.html">TF-CAT-006</a> construye mapas parciales como spans y su codificación en Set (<code>TF-DEF-00021</code>, <code>TF-THM-00051</code>); <a href="../../../libros/otros/tratado-funciones/capitulo-08.html">TF-CAT-008</a> formula el clasificador <span class="math inline">\(L(B)\)</span> en topoi y estudia la composición levantada (<code>TF-THM-00062</code>, <code>TF-THM-00068</code>). La presente sección identifica la <strong>operación de Kleisli</strong> entre mapas etiquetados (<code>TF-DEF-00061</code>), que no debe confundirse con la composición ordinaria de dos flechas de tipos incompatibles. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="aplicaciones-parciales-y-la-composición-que-corresponde-a-su-codificación" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones-parciales-y-la-composición-que-corresponde-a-su-codificación">14.2. Aplicaciones parciales y la composición que corresponde a su codificación</h2>
+<p><a id="TF-DEF-00061"></a></p>
+<p><strong>Definición 14.2.1 — Función parcial etiquetada y composición de Kleisli</strong> <!-- result-id: TF-DEF-00061; depends-on: TF-DEF-00021, TF-THM-00051, TF-THM-00064, TF-DEF-00023 --></p>
+<p>En <span class="math inline">\(\mathbf{Set}\)</span> clásico, para un conjunto <span class="math inline">\(B\)</span> definimos <span class="math inline">\(M(B)=B\sqcup\{\bot\}\)</span>, donde <span class="math inline">\(\bot\)</span> lleva una etiqueta <strong>disjunta</strong> de los elementos de <span class="math inline">\(B\)</span> (aunque <span class="math inline">\(B\)</span> ya contenga un símbolo escrito <span class="math inline">\(\bot\)</span>). Escribimos <span class="math inline">\(\operatorname{some}(b)\)</span> para la inyección de <span class="math inline">\(B\)</span> y <span class="math inline">\(\operatorname{none}\)</span> para la otra sumanda. Una flecha <span class="math inline">\(u:A\to M(B)\)</span> representa una función parcial <span class="math inline">\(A\rightharpoonup B\)</span>. Para <span class="math inline">\(u:A\to M(B)\)</span> y <span class="math inline">\(v:B\to M(C)\)</span>, definimos la composición etiquetada por</p>
+<p><span class="math display">\[ (v\star u)(a)=\begin{cases}\operatorname{none},&amp;u(a)=\operatorname{none},\\v(b),&amp;u(a)=\operatorname{some}(b).\end{cases}\tag{14.2}\]</span></p>
+<p>Esta operación tiene tipo <span class="math inline">\(A\to M(C)\)</span>; <strong><span class="math inline">\(v\circ u\)</span> no está, en general, tipada</strong>, puesto que el dominio de <span class="math inline">\(v\)</span> es <span class="math inline">\(B\)</span> y el codominio de <span class="math inline">\(u\)</span> es <span class="math inline">\(M(B)\)</span>. La unidad parcial etiquetada es <span class="math inline">\(\eta_A(a)=\operatorname{some}(a)\)</span>.</p>
+<p><a id="TF-THM-00110"></a></p>
+<p><strong>Teorema 14.2.2 — Correspondencia exacta entre aplicaciones parciales y flechas etiquetadas</strong> <!-- result-id: TF-THM-00110; depends-on: TF-DEF-00061, TF-THM-00043, TF-THM-00051, TF-THM-00064 --></p>
+<p>En ZF clásico, para cualesquiera conjuntos <span class="math inline">\(A,B\)</span> existe una biyección</p>
+<p><span class="math display">\[\operatorname{Par}_{\mathbf{Set}}(A,B)\ \cong\ \operatorname{Set}(A,M(B)),\tag{14.3}\]</span></p>
+<p>que transporta la composición parcial a <span class="math inline">\(\star\)</span> y las identidades a <span class="math inline">\(\eta\)</span>. En consecuencia, la categoría de aplicaciones parciales de conjuntos y la categoría cuyos objetos son conjuntos y cuyas flechas <span class="math inline">\(A\to B\)</span> son funciones <span class="math inline">\(A\to M(B)\)</span> con composición (14.2) son <strong>isomorfas por un funtor identidad en los objetos</strong>. No se afirma que sean la categoría ordinaria <span class="math inline">\(\mathbf{Set}\)</span>.</p>
+<p><em>Demostración.</em> Represéntese una aplicación parcial por <span class="math inline">\(D\subseteq A\)</span> y <span class="math inline">\(f:D\to B\)</span>, identificando pares equivalentes mediante su misma relación gráfica. Definamos</p>
+<p><span class="math display">\[\Phi(D,f)(a)=\begin{cases}\operatorname{some}(f(a)),&amp;a\in D,\\\operatorname{none},&amp;a\notin D.\end{cases}\]</span></p>
+<p>En ZF clásico el tercero excluido separa los dos casos; no se escoge ningún valor de una fibra. Recíprocamente, para <span class="math inline">\(u:A\to M(B)\)</span>, pongamos <span class="math inline">\(D_u=\{a\in A:u(a)\in\operatorname{some}(B)\}\)</span> y <span class="math inline">\(f_u(a)=b\)</span> cuando <span class="math inline">\(u(a)=\operatorname{some}(b)\)</span>; la inyectividad de la etiqueta hace único ese <span class="math inline">\(b\)</span>. Si <span class="math inline">\(u(a)=\operatorname{none}\)</span>, entonces <span class="math inline">\(a\notin D_u\)</span>. Se sigue por separación de casos que <span class="math inline">\(\Phi(D_u,f_u)=u\)</span> punto a punto y que <span class="math inline">\(D_{\Phi(D,f)}=D\)</span> con valores <span class="math inline">\(f\)</span>; las construcciones son inversas.</p>
+<p>Sean <span class="math inline">\((D,f):A\rightharpoonup B\)</span> y <span class="math inline">\((E,g):B\rightharpoonup C\)</span>. La composición parcial está definida exactamente en <span class="math inline">\(\{a\in D:f(a)\in E\}\)</span> y allí vale <span class="math inline">\(g(f(a))\)</span>, según <a href="../../../libros/otros/tratado-funciones/capitulo-06.html">TF-THM-00043</a>. Si <span class="math inline">\(a\notin D\)</span>, (14.2) devuelve <span class="math inline">\(\operatorname{none}\)</span>; si <span class="math inline">\(a\in D\)</span> pero <span class="math inline">\(f(a)\notin E\)</span>, también; en el caso restante, (14.2) devuelve <span class="math inline">\(\operatorname{some}(g(f(a)))\)</span>. Por los tres casos, <span class="math inline">\(\Phi(g\circ_{\mathrm{par}}f)=\Phi(g)\star\Phi(f)\)</span>. La identidad total <span class="math inline">\(1_A\)</span> se convierte en <span class="math inline">\(\eta_A\)</span>. La asociatividad y las leyes de identidad de <span class="math inline">\(\star\)</span> se transportan desde la categoría de mapas parciales, ya probada; también se verifican directamente separando los casos <span class="math inline">\(\operatorname{none}\)</span> y <span class="math inline">\(\operatorname{some}\)</span>. El isomorfismo de categorías resulta porque la biyección (14.3) es identidad en objetos y respeta todas las composiciones. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-EXA-00028"></a></p>
+<p><strong>Ejemplo 14.2.3 — Tabla de propagación de la indefinición</strong> <!-- result-id: TF-EXA-00028; depends-on: TF-DEF-00061, TF-THM-00110 --></p>
+<p>Sean <span class="math inline">\(A=\{x,y\}\)</span>, <span class="math inline">\(B=\{b\}\)</span>, <span class="math inline">\(C=\{c\}\)</span>. Póngase <span class="math inline">\(u(x)=\operatorname{some}(b)\)</span>, <span class="math inline">\(u(y)=\operatorname{none}\)</span> y <span class="math inline">\(v(b)=\operatorname{some}(c)\)</span>. Entonces <span class="math inline">\((v\star u)(x)=\operatorname{some}(c)\)</span> y <span class="math inline">\((v\star u)(y)=\operatorname{none}\)</span>. La composición conserva el dominio <span class="math inline">\(\{x\}\)</span> y no «rellena» por defecto el valor de <span class="math inline">\(y\)</span>. Si se pretendiera escribir <span class="math inline">\(v(u(y))\)</span>, se intentaría aplicar una flecha definida en <span class="math inline">\(B\)</span> a un dato de <span class="math inline">\(M(B)\)</span>: el término ni siquiera tendría el tipo correcto. <strong>Pregunta pedagógica:</strong> ¿qué valor obtendría <span class="math inline">\(v\star u\)</span> si <span class="math inline">\(v(b)=\operatorname{none}\)</span>? Ambos argumentos resultarían indefinidos, y el dominio compuesto sería vacío.</p>
+<!-- editorial-crossref: TF-XREF-0001; route: R3 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>El contrato que faltaba a la mera igualdad de nombres
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-10.html">TF-CAT-010</a> distingue igualdad sintáctica de equivalencia extensional (<code>TF-DEF-00040</code>) y estudia nombres de objetos representados (<code>TF-DEF-00044</code>); <a href="../../../libros/otros/tratado-funciones/capitulo-12.html">TF-CAT-012</a> separa los índices totales de las funciones que denotan (<code>TF-DEF-00051</code>). Aquí el paso adicional es suministrar <strong>traductores computables en ambos sentidos</strong> bajo el modelo de realizadores, con la hipótesis exacta de <code>TF-THM-00111</code>. No inferir esa efectividad de un isomorfismo abstracto. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="representaciones-mismo-objeto-no-significa-mismos-algoritmos" class="level2">
+<h2 class="anchored" data-anchor-id="representaciones-mismo-objeto-no-significa-mismos-algoritmos">14.3. Representaciones: mismo objeto no significa mismos algoritmos</h2>
+<p><a id="TF-DEF-00062"></a></p>
+<p><strong>Definición 14.3.1 — Sistema de nombres naturales</strong> <!-- result-id: TF-DEF-00062; depends-on: TF-DEF-00038, TF-DEF-00039, TF-DEF-00040 --></p>
+<p>Como modelo discreto suficiente para exhibir el fenómeno, una <em>representación por nombres naturales</em> de un conjunto <span class="math inline">\(X\)</span> es una sobreyección parcial <span class="math inline">\(\delta:D_\delta\subseteq\mathbb N\to X\)</span>. Un <span class="math inline">\(n\in D_\delta\)</span> es un nombre de <span class="math inline">\(\delta(n)\)</span>. Esto es un subcaso de los espacios representados del capítulo 9, cuyos nombres pueden ser secuencias infinitas; no afirmamos que las representaciones mediante naturales cubran todos los espacios representados. Para una función <strong>total</strong> <span class="math inline">\(f:X\to Y\)</span>, un realizador de <span class="math inline">\(f\)</span> entre <span class="math inline">\(\delta_X,\delta_Y\)</span> es un algoritmo parcial <span class="math inline">\(F\)</span> que termina para cada nombre válido <span class="math inline">\(n\in D_{\delta_X}\)</span>, produce un nombre válido de salida y cumple <span class="math inline">\(\delta_Y(F(n))=f(\delta_X(n))\)</span>. No se exige que termine en entradas inválidas.</p>
+<p><a id="TF-DEF-00063"></a></p>
+<p><strong>Definición 14.3.2 — Reducibilidad y equivalencia computable de representaciones</strong> <!-- result-id: TF-DEF-00063; depends-on: TF-DEF-00062, TF-DEF-00039, TF-THM-00076 --></p>
+<p>Para representaciones <span class="math inline">\(\delta,\gamma\)</span> de <strong>un mismo conjunto <span class="math inline">\(X\)</span></strong>, escribimos <span class="math inline">\(\delta\preceq_c\gamma\)</span> si existe un programa traductor parcial <span class="math inline">\(T\)</span>, definido sobre todos los nombres <span class="math inline">\(\delta\)</span>-válidos, tal que</p>
+<p><span class="math display">\[n\in D_\delta\implies T(n)\in D_\gamma\quad\text{y}\quad\gamma(T(n))=\delta(n).\tag{14.4}\]</span></p>
+<p>Escribimos <span class="math inline">\(\delta\equiv_c\gamma\)</span> si hay traductores en ambos sentidos. El símbolo <span class="math inline">\(\preceq_c\)</span> expresa que <strong>un nombre <span class="math inline">\(\delta\)</span> puede convertirse algorítmicamente en uno <span class="math inline">\(\gamma\)</span></strong>; invertir verbalmente el símbolo sin revisar (14.4) induce errores. Los traductores actúan sobre nombres y no necesitan decidir la igualdad de objetos ni disponer de inversas como funciones entre conjuntos de nombres.</p>
+<p><a id="TF-THM-00111"></a></p>
+<p><strong>Teorema 14.3.3 — Las equivalencias de nombres transportan la computabilidad</strong> <!-- result-id: TF-THM-00111; depends-on: TF-DEF-00062, TF-DEF-00063, TF-THM-00076, TF-THM-00074 --></p>
+<p>La relación <span class="math inline">\(\preceq_c\)</span> es reflexiva y transitiva; <span class="math inline">\(\equiv_c\)</span> es una relación de equivalencia. Si <span class="math inline">\(f:X\to Y\)</span> es computable desde <span class="math inline">\(\delta_X\)</span> hacia <span class="math inline">\(\delta_Y\)</span>, y se conocen <span class="math inline">\(\delta'_X\preceq_c\delta_X\)</span> y <span class="math inline">\(\delta_Y\preceq_c\delta'_Y\)</span>, entonces <span class="math inline">\(f\)</span> es computable desde <span class="math inline">\(\delta'_X\)</span> hacia <span class="math inline">\(\delta'_Y\)</span>. Por tanto, reemplazar cualquiera de las representaciones de entrada y salida por otras <strong>computablemente equivalentes</strong> preserva la clase de funciones totales realizables en ambas direcciones.</p>
+<p><em>Demostración.</em> La identidad <span class="math inline">\(T(n)=n\)</span> verifica reflexividad, y si <span class="math inline">\(T\)</span> traduce <span class="math inline">\(\delta\)</span> a <span class="math inline">\(\gamma\)</span> y <span class="math inline">\(S\)</span> traduce <span class="math inline">\(\gamma\)</span> a <span class="math inline">\(\lambda\)</span>, entonces <span class="math inline">\(S(T(n))\)</span> termina en todo nombre <span class="math inline">\(\delta\)</span>-válido; además <span class="math inline">\(\lambda(S(T(n)))=\gamma(T(n))=\delta(n)\)</span>. La composición efectiva es un programa por cierre de los programas parciales bajo composición. Esto prueba transitividad y, con simetría incorporada por definición, que <span class="math inline">\(\equiv_c\)</span> es equivalencia.</p>
+<p>Para el transporte de <span class="math inline">\(f\)</span>, sean <span class="math inline">\(T_X\)</span> el traductor de <span class="math inline">\(\delta'_X\)</span> a <span class="math inline">\(\delta_X\)</span>, <span class="math inline">\(F\)</span> un realizador de <span class="math inline">\(f\)</span> desde <span class="math inline">\(\delta_X\)</span> a <span class="math inline">\(\delta_Y\)</span>, y <span class="math inline">\(T_Y\)</span> el traductor de <span class="math inline">\(\delta_Y\)</span> a <span class="math inline">\(\delta'_Y\)</span>. En cada entrada válida <span class="math inline">\(n\)</span> el compuesto <span class="math inline">\(T_Y(F(T_X(n)))\)</span> termina, da un nombre válido de <span class="math inline">\(Y\)</span>, y</p>
+<p><span class="math display">\[\delta'_Y(T_Y(F(T_X(n))))=\delta_Y(F(T_X(n)))=f(\delta_X(T_X(n)))=f(\delta'_X(n)).\]</span></p>
+<p>Es, pues, un realizador del mismo <span class="math inline">\(f\)</span>. Usando los traductores contrarios se obtiene la implicación recíproca cuando ambas representaciones son equivalentes. No hay aquí un algoritmo para <em>encontrar</em> traductores a partir de una simple biyección semántica: su existencia efectiva es hipótesis explícita. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-CEX-00019"></a></p>
+<p><strong>Contraejemplo 14.3.4 — Dos nombres biyectivos sin traductor computable</strong> <!-- result-id: TF-CEX-00019; depends-on: TF-DEF-00062, TF-DEF-00063, TF-CEX-00008, TF-THM-00095 --></p>
+<p>Trabajemos en ZF clásico y fijemos el conjunto de parada no decidible <span class="math inline">\(K=\{n:V(n,n)\downarrow\}\)</span> de <a href="../../../libros/otros/tratado-funciones/capitulo-11.html">TF-THM-00095</a>. Construyamos la permutación <span class="math inline">\(p:\mathbb N\to\mathbb N\)</span> que, para cada <span class="math inline">\(n\)</span>, intercambia <span class="math inline">\(2n\)</span> con <span class="math inline">\(2n+1\)</span> <strong>si <span class="math inline">\(n\in K\)</span></strong>, y deja ambos fijos si <span class="math inline">\(n\notin K\)</span>. Cada pareja es disjunta de las otras y <span class="math inline">\(p(p(m))=m\)</span>; <span class="math inline">\(p\)</span> es una biyección explícitamente definida como conjunto, sin AC. No es computable: si lo fuera, al calcular <span class="math inline">\(p(2n)\)</span> y comprobar si es impar se decidiría <span class="math inline">\(n\in K\)</span>.</p>
+<p>Sobre el <strong>mismo conjunto</strong> <span class="math inline">\(X=\mathbb N\)</span>, consideremos las representaciones totales y biyectivas <span class="math inline">\(\delta_0(m)=m\)</span> y <span class="math inline">\(\delta_p(m)=p(m)\)</span>. Para traducir un nombre <span class="math inline">\(m\)</span> de <span class="math inline">\(\delta_0\)</span> a uno de <span class="math inline">\(\delta_p\)</span>, necesariamente <span class="math inline">\(p(T(m))=m\)</span>; al ser <span class="math inline">\(p^{-1}=p\)</span>, necesariamente <span class="math inline">\(T(m)=p(m)\)</span>. Tal traductor no puede ser computable. En el otro sentido la ecuación <span class="math inline">\(\delta_0(S(m))=\delta_p(m)\)</span> también exige <span class="math inline">\(S(m)=p(m)\)</span>. Así ambas representaciones son <strong>isomorfas como presentaciones conjuntistas</strong>, incluso biyectivas, pero <span class="math inline">\(\delta_0\not\equiv_c\delta_p\)</span>. En particular, la función identidad <span class="math inline">\(X\to X\)</span> no es computable en el contrato mixto <span class="math inline">\((\delta_0,\delta_p)\)</span>, aunque sí lo es con <span class="math inline">\((\delta_0,\delta_0)\)</span> o <span class="math inline">\((\delta_p,\delta_p)\)</span>. La semántica subyacente no determina por sí sola el costo de traducir sus nombres. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="cocientes-semánticos-y-barreras-de-decisión" class="level2">
+<h2 class="anchored" data-anchor-id="cocientes-semánticos-y-barreras-de-decisión">14.4. Cocientes semánticos y barreras de decisión</h2>
+<p><a id="TF-DEF-00064"></a></p>
+<p><strong>Definición 14.4.1 — Cociente de índices por denotación</strong> <!-- result-id: TF-DEF-00064; depends-on: TF-DEF-00040, TF-DEF-00041, TF-DEF-00051, TF-THM-00099 --></p>
+<p>Fijada una numeración <span class="math inline">\(e\mapsto\varphi_e\)</span> de funciones parciales computables <span class="math inline">\(\mathbb N\rightharpoonup\mathbb N\)</span>, definimos <span class="math inline">\(e\sim e'\)</span> si tienen el <strong>mismo dominio</strong> y los mismos valores en él. ZF forma el cociente conjuntista <span class="math inline">\(Q=\mathbb N/{\sim}\)</span> y la proyección <span class="math inline">\(q:e\mapsto[e]\)</span>. El cociente clasifica denotaciones, no programas ni pruebas de igualdad; como conjunto existe por separación y reemplazo. Una <em>codificación computable con igualdad decidible</em> de este cociente requeriría una función total computable <span class="math inline">\(c:\mathbb N\to\mathbb N\)</span> con</p>
+<p><span class="math display">\[c(e)=c(e')\iff e\sim e'.\tag{14.5}\]</span></p>
+<p>Tal requisito es adicional al cociente abstracto. La prueba de factorización por el cociente ya figura en <a href="../../../libros/otros/tratado-funciones/capitulo-12.html">TF-THM-00099</a>; aquí se examina la restricción efectiva.</p>
+<p><a id="TF-THM-00112"></a></p>
+<p><strong>Teorema 14.4.2 — No existe un cociente universal efectivo con igualdad decidible</strong> <!-- result-id: TF-THM-00112; depends-on: TF-DEF-00064, TF-THM-00080, TF-THM-00086 --></p>
+<p>No hay función total computable <span class="math inline">\(c:\mathbb N\to\mathbb N\)</span> que satisfaga (14.5). Más generalmente, tampoco existe una reducción computable total de los índices hacia un sistema de códigos con igualdad decidible que identifique exactamente las clases extensionales de las funciones parciales.</p>
+<p><em>Demostración.</em> Supongamos que existe <span class="math inline">\(c\)</span>. Dados dos índices <span class="math inline">\(e,e'\)</span>, calculemos <span class="math inline">\(c(e)\)</span> y <span class="math inline">\(c(e')\)</span>, que terminan por totalidad, y comparemos los enteros resultantes, cuya igualdad es decidible. Por (14.5), el procedimiento responde «iguales» si y sólo si <span class="math inline">\(\varphi_e=\varphi_{e'}\)</span> como aplicaciones parciales. Contradice la indecidibilidad de la equivalencia de índices, demostrada —con un resultado más fuerte de no semidecidibilidad— en <a href="../../../libros/otros/tratado-funciones/capitulo-10.html">TF-THM-00080</a>. Para un sistema de códigos <span class="math inline">\(C\)</span> con decisor de igualdad, sustitúyase la comparación de enteros por ese decisor; el mismo argumento funciona. La existencia abstracta de <span class="math inline">\(Q\)</span> no queda cuestionada: lo imposible es añadirle <strong>simultáneamente</strong> estos datos de computación y decisión en la numeración fijada. <span class="math inline">\(\square\)</span></p>
+<!-- editorial-crossref: TF-XREF-0001; route: R1 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Dos direcciones diferentes de observación
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los elementos generalizados de <a href="../../../libros/otros/tratado-funciones/capitulo-02.html">TF-CAT-002</a> y las sondas representables de <a href="../../../libros/otros/tratado-funciones/capitulo-13.html">TF-CAT-013</a> prueban igualdad <strong>precomponiendo</strong> <span class="math inline">\(f,g:A\to B\)</span> con <span class="math inline">\(x:X\to A\)</span>. En esta sección, los observadores <span class="math inline">\(t_i:B\to C_i\)</span> separan flechas <strong>postcomponiendo</strong> (<code>TF-DEF-00065</code>, <code>TF-THM-00113</code>). <a href="../../../libros/otros/tratado-funciones/capitulo-15.html">TF-CAT-015</a> distingue formalmente ambas direcciones al estudiar familias generadoras (<code>TF-DEF-00069</code>). No se identifica una familia separadora con un procedimiento de decisión. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="observadores-y-transporte-de-coordenadas" class="level2">
+<h2 class="anchored" data-anchor-id="observadores-y-transporte-de-coordenadas">14.5. Observadores y transporte de coordenadas</h2>
+<p><a id="TF-DEF-00065"></a></p>
+<p><strong>Definición 14.5.1 — Familia de observadores y separación</strong> <!-- result-id: TF-DEF-00065; depends-on: TF-DEF-00003, TF-DEF-00007, TF-THM-00009, TF-THM-00105 --></p>
+<p>Sea <span class="math inline">\(\mathcal C\)</span> una categoría y sea <span class="math inline">\((t_i:B\to C_i)_{i\in I}\)</span> una familia <strong>especificada</strong> de flechas (para una familia pequeña, <span class="math inline">\(I\)</span> es un conjunto; el enunciado vale asimismo para una colección de sondas bien tipadas). Dos flechas paralelas <span class="math inline">\(f,g:A\to B\)</span> son <em>indistinguibles por esos observadores</em> cuando <span class="math inline">\(t_i f=t_i g\)</span> para todo <span class="math inline">\(i\)</span>. La familia es <em>conjuntamente monomórfica</em> si, para todos <span class="math inline">\(A,f,g\)</span>, esta condición implica <span class="math inline">\(f=g\)</span>. No presupone que los observadores constituyan un conjunto completo de funciones ni que su igualdad sea decidible.</p>
+<p><a id="TF-THM-00113"></a></p>
+<p><strong>Teorema 14.5.2 — Criterio exacto de recuperación por observadores</strong> <!-- result-id: TF-THM-00113; depends-on: TF-DEF-00065, TF-DEF-00003, TF-THM-00009, TF-THM-00105 --></p>
+<p>Una familia <span class="math inline">\((t_i:B\to C_i)\)</span> distingue <strong>todas</strong> las flechas con codominio <span class="math inline">\(B\)</span> si y sólo si es conjuntamente monomórfica. Si contiene <span class="math inline">\(1_B\)</span>, siempre distingue todas las flechas. En cambio, un conjunto de observadores insuficiente puede identificar flechas distintas aunque cada una esté perfectamente definida.</p>
+<p><em>Demostración.</em> Decir que distingue todas las flechas es, por definición expandida, afirmar para todo <span class="math inline">\(A\)</span> y todas <span class="math inline">\(f,g:A\to B\)</span> que <span class="math inline">\([\forall i\;t_i f=t_i g]\Rightarrow f=g\)</span>, exactamente la condición de monomorfía conjunta. Si algún <span class="math inline">\(t_j=1_B\)</span>, entonces de <span class="math inline">\(t_j f=t_jg\)</span> se obtiene <span class="math inline">\(1_B f=1_Bg\)</span>, esto es, <span class="math inline">\(f=g\)</span> por la ley de identidad. A la inversa, si la familia no es conjuntamente monomórfica, la negación de la implicación universal proporciona, en lógica clásica, testigos <span class="math inline">\(A,f,g\)</span> con <span class="math inline">\(f\ne g\)</span> y <span class="math inline">\(t_i f=t_i g\)</span> para todos los <span class="math inline">\(i\)</span>; aun sin invocar ese paso clásico, la definición indica la obstrucción exacta. No se confunde este criterio de <strong>postcomposición</strong> con Yoneda elemental, que recupera una flecha por naturalidad de todas las <strong>precomposiciones</strong> con sondas <span class="math inline">\(X\to A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-EXA-00029"></a></p>
+<p><strong>Ejemplo 14.5.3 — Un observador constante no distingue dos funciones</strong> <!-- result-id: TF-EXA-00029; depends-on: TF-DEF-00065, TF-THM-00113, TF-CEX-00016 --></p>
+<p>En <span class="math inline">\(\mathbf{Set}\)</span>, tome <span class="math inline">\(A=\{*\}\)</span>, <span class="math inline">\(B=\{0,1\}\)</span>, <span class="math inline">\(f(*)=0\)</span>, <span class="math inline">\(g(*)=1\)</span>, y el único observador <span class="math inline">\(t:B\to\{*\}\)</span>. Aunque <span class="math inline">\(f\ne g\)</span>, ambas composiciones <span class="math inline">\(tf,tg\)</span> son la única flecha <span class="math inline">\(A\to\{*\}\)</span>. La familia <span class="math inline">\(\{t\}\)</span> no es conjuntamente monomórfica. Añadir <span class="math inline">\(1_B\)</span> separa inmediatamente <span class="math inline">\(f\)</span> de <span class="math inline">\(g\)</span>. Así la pregunta «¿estas funciones son observacionalmente iguales?» está incompleta hasta declarar <strong>qué experimentos están disponibles</strong>.</p>
+<p><a id="TF-THM-00114"></a></p>
+<p><strong>Teorema 14.5.4 — El cambio de coordenadas transporta funciones, pero no por sí solo algoritmos</strong> <!-- result-id: TF-THM-00114; depends-on: TF-DEF-00060, TF-THM-00102, TF-THM-00111, TF-CEX-00019 --></p>
+<p>Sean biyecciones de conjuntos <span class="math inline">\(e_A:A\xrightarrow{\sim}A'\)</span> y <span class="math inline">\(e_B:B\xrightarrow{\sim}B'\)</span>. La asignación</p>
+<p><span class="math display">\[T_{e_A,e_B}:\operatorname{Set}(A,B)\to\operatorname{Set}(A',B'),\quad f\longmapsto e_B\circ f\circ e_A^{-1}\tag{14.6}\]</span></p>
+<p>es biyectiva, con inversa <span class="math inline">\(h\mapsto e_B^{-1}\circ h\circ e_A\)</span>; preserva y refleja la igualdad de funciones. Dados además <span class="math inline">\(e_C:C\xrightarrow{\sim}C'\)</span>, cumple</p>
+<p><span class="math display">\[T_{e_A,e_C}(g\circ f)=T_{e_B,e_C}(g)\circ T_{e_A,e_B}(f).\tag{14.7}\]</span></p>
+<p>Sin hipótesis efectivas sobre las biyecciones (y sus inversas) <strong>no</strong> se infiere que <span class="math inline">\(T\)</span> preserve la computabilidad.</p>
+<p><em>Demostración.</em> Para cada <span class="math inline">\(f:A\to B\)</span> se tiene <span class="math inline">\(e_B^{-1}(e_Bfe_A^{-1})e_A=f\)</span> por las identidades de inversa; para <span class="math inline">\(h:A'\to B'\)</span> se tiene <span class="math inline">\(e_B(e_B^{-1}he_A)e_A^{-1}=h\)</span>. Las transformaciones son inversas, así que la igualdad se preserva y refleja. Para (14.7), expándase el lado derecho:</p>
+<p><span class="math display">\[(e_Cge_B^{-1})(e_Bfe_A^{-1})=e_Cg(e_B^{-1}e_B)fe_A^{-1}=e_Cgf e_A^{-1}.\]</span></p>
+<p>En cuanto a computabilidad, el contraejemplo 14.3.4 suministra una biyección no computable <span class="math inline">\(p:\mathbb N\to\mathbb N\)</span>. Tómense <span class="math inline">\(A=B=A'=B'=\mathbb N\)</span>, <span class="math inline">\(e_A=1_{\mathbb N}\)</span>, <span class="math inline">\(e_B=p\)</span> y <span class="math inline">\(f=1_{\mathbb N}\)</span>: <span class="math inline">\(f\)</span> es computable, pero <span class="math inline">\(T_{e_A,e_B}(f)=p\)</span> no lo es. Si, en cambio, las biyecciones e inversas se realizan por algoritmos en representaciones compatibles, el compuesto (14.6) sí es computable por cierre bajo composición, como en el teorema 14.3.3. El obstáculo no está en las leyes algebraicas, sino en que <strong>la presentación puede esconder información no computable</strong>. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="cuadro-de-control-y-auditoría-fundacional" class="level2">
+<h2 class="anchored" data-anchor-id="cuadro-de-control-y-auditoría-fundacional">14.6. Cuadro de control y auditoría fundacional</h2>
+<div class="tf-table" role="region" tabindex="0" aria-label="Tabla matemática desplazable">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Equivalencia alegada</th>
+<th>Invariante demostrado</th>
+<th>Dato imprescindible</th>
+<th>Lo que no se obtiene</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Categorías equivalentes</td>
+<td>Hom y composición recuperables hasta isomorfismo natural</td>
+<td>Cuasiinverso o representantes/isomorfismos <strong>ya dados</strong></td>
+<td>Igualdad literal de objetos; AC a partir de esencial sobreyectividad</td>
+</tr>
+<tr class="even">
+<td>Función parcial <span class="math inline">\(\leftrightarrow A\to B\sqcup\{\bot\}\)</span></td>
+<td>Dominios y valores; composición de Kleisli</td>
+<td>En ZF clásico, separación por pertenencia; constructivamente, decisión de dominio o levantamiento adecuado</td>
+<td>Composición ordinaria de Set; algoritmo de parada</td>
+</tr>
+<tr class="odd">
+<td>Representaciones <span class="math inline">\(\delta\equiv_c\gamma\)</span></td>
+<td>Computabilidad total preservada por traducción</td>
+<td>Programas traductores en ambas direcciones</td>
+<td>Decisión de igualdad semántica</td>
+</tr>
+<tr class="even">
+<td>Cociente extensional de programas</td>
+<td>Una clase por comportamiento</td>
+<td>Relación <span class="math inline">\(e\sim e'\)</span> bien definida</td>
+<td>Código computable canónico universal con igualdad decidible</td>
+</tr>
+<tr class="odd">
+<td>Observadores <span class="math inline">\(t_i\)</span></td>
+<td>Igualdad recuperable <strong>si y sólo si</strong> son conjuntamente monomórficos</td>
+<td>Familia de experimentos explicitada</td>
+<td>Separación mediante un observador constante</td>
+</tr>
+<tr class="even">
+<td>Transporte por isomorfismos</td>
+<td>Identidades, composición e igualdad extensional</td>
+<td>Biyecciones e inversas</td>
+<td>Computabilidad sin realizadores de los cambios de coordenadas</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Lectura guiada (MA-PED).</strong> (a) Recupere de (14.1) por qué <em>fidelidad</em> es indispensable para la composición de <span class="math inline">\(G\)</span>. (b) Explique por qué <span class="math inline">\(\star\)</span> tiene un tipo correcto mientras <span class="math inline">\(v\circ u\)</span> puede no tenerlo. (c) Para <span class="math inline">\(p\)</span>, calcule <span class="math inline">\(p(2n)\)</span> bajo las dos hipótesis <span class="math inline">\(n\in K\)</span> y <span class="math inline">\(n\notin K\)</span>; señale el decisor que surgiría si hubiese un traductor. (d) Identifique dónde el teorema 14.4.2 usa <strong>totalidad</strong> y dónde usa <strong>decidibilidad</strong>. (e) Compare las familias <span class="math inline">\(\{t:B\to1\}\)</span> y <span class="math inline">\(\{1_B\}\)</span>: ¿qué igualdad detecta cada una? (f) Refute la afirmación «si dos conjuntos son isomorfos, todos los algoritmos se transportan» indicando el paso no efectivo de (14.6).</p>
+<p><strong>Auditoría matemática.</strong> Las pruebas de 14.1.2 separan datos de representantes y existencia débil; ninguna elección global se infiere de la sobreyectividad esencial en solitario. 14.2 presupone <span class="math inline">\(\mathbf{Set}\)</span> clásico para separar dominios arbitrarios: la presencia de un clasificador de aplicaciones parciales en un topos no convierte automáticamente todo dominio en complementado. 14.3 trabaja con <em>nombres naturales</em> y programas parciales que terminan en nombres válidos; no extiende sin hipótesis la demostración a todos los espacios representados de Baire. 14.4 usa una <strong>numeración efectiva fija</strong> y equivalencia extensional <strong>de funciones parciales</strong>; su contradicción es una reducción a la indecidibilidad anterior, no un nuevo axioma. 14.5 distingue postcomposición observacional de precomposición de Yoneda y separa biyección de isomorfismo computable.</p>
+<p><strong>Fuentes de cotejo:</strong> <a href="../../../libros/otros/tratado-funciones/capitulo-13.html">capítulo 13</a> y sus referencias; nLab, «Equivalence of categories», <a href="https://ncatlab.org/nlab/show/equivalence+of+categories" class="uri">https://ncatlab.org/nlab/show/equivalence+of+categories</a> (advierte sobre elección y sobreyectividad esencial); nLab, «Partial function», <a href="https://ncatlab.org/nlab/show/partial+function" class="uri">https://ncatlab.org/nlab/show/partial+function</a> (span monomórfico y mónada de posibilidad); V. Brattka, «Computability over topological structures», <a href="https://cca-net.de/vasco/publications/model.pdf" class="uri">https://cca-net.de/vasco/publications/model.pdf</a>, §3 (reducciones y equivalencia efectiva de representaciones). Estos recursos son cotejos conceptuales: las pruebas anteriores declaran hipótesis y desarrollan sus propios argumentos.</p>
+<p><strong>Formalización independiente verificada y parcial:</strong> <a href="https://github.com/lachenmann/matematica-abierta/pull/118">PR #118</a> fusionada en <code>main</code> (cabeza <code>9541a9d8115a7ee3629abd1b60fcff1befa65fc8</code>, integración <code>a89e73c153ca110a0d1e5794f67b59194f00fddb</code>) tras <a href="https://github.com/lachenmann/matematica-abierta/actions/runs/35551153957">Lean #53</a> y <a href="https://github.com/lachenmann/matematica-abierta/actions/runs/35551153969">Quarto #287</a> en <code>completed/success</code> para la cabeza final. Cuatro teoremas Lean y una definición cubren la <strong>identidad semántica con traductores totales suministrados</strong> de <code>TF-THM-00111</code>, sólo el <strong>caso de un observador inyectivo en Set</strong> de <code>TF-THM-00113</code> y las <strong>identidades algebraicas conjuntistas</strong> de <code>TF-THM-00114</code>. No certifican la computabilidad de traductores, equivalencias de categorías abstractas, la construcción Kleisli ni indecidibilidad. Consulte TF-LEAN-014; no se efectuó compilación local.</p>
+<div class="tf-navigation">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-13.html">← Anterior</a> · <a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-funciones/capitulo-15.html">Siguiente →</a></p>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

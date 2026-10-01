@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Tratado fundacional de la teoría de funciones: capítulo 12, con hipótesis, pruebas y límites de formalización explícitos.">
 
-<title>Otros libros y monografías – Matemática Abierta</title>
+<title>Capítulo 12. Extensionalidad, autorreferencia y estratificación de tipos – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,26 +30,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-51f45f8b71e3aeb9ec98fa4bf4833bba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-34ed7760a8e6ccb8df528ee07d5f546e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-51f45f8b71e3aeb9ec98fa4bf4833bba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-34ed7760a8e6ccb8df528ee07d5f546e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +78,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="tratado.css">
 </head>
 
 <body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -247,9 +278,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
-    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
@@ -259,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -268,23 +299,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
         <li>
-    <a class="dropdown-item" href="../../teoria/index.html">
+    <a class="dropdown-item" href="../../../teoria/index.html">
  <span class="dropdown-text">Portada de Teoría</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../conceptos/index.html">
+    <a class="dropdown-item" href="../../../conceptos/index.html">
  <span class="dropdown-text">Conceptos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
  <span class="dropdown-text">Resultados y teoremas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
  <span class="dropdown-text">Métodos y técnicas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
  <span class="dropdown-text">Mapas y conexiones</span></a>
   </li>  
     </ul>
@@ -295,23 +326,23 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
         <li>
-    <a class="dropdown-item" href="../../problemas/index.html">
+    <a class="dropdown-item" href="../../../problemas/index.html">
  <span class="dropdown-text">Todos los problemas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
  <span class="dropdown-text">Por área</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
  <span class="dropdown-text">Por técnica</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
  <span class="dropdown-text">Por dificultad</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
  <span class="dropdown-text">Colecciones</span></a>
   </li>  
     </ul>
@@ -322,15 +353,15 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
         <li>
-    <a class="dropdown-item" href="../../cursos/index.html">
+    <a class="dropdown-item" href="../../../cursos/index.html">
  <span class="dropdown-text">Portada de Cursos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
  <span class="dropdown-text">Rutas de estudio</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
  <span class="dropdown-text">Lecciones</span></a>
   </li>  
     </ul>
@@ -341,19 +372,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
         <li>
-    <a class="dropdown-item" href="../../libros/index.html">
+    <a class="dropdown-item" href="../../../libros/index.html">
  <span class="dropdown-text">Portada de Libros</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
  <span class="dropdown-text">Para matemáticos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../libros/otros/index.html">
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
  <span class="dropdown-text">Otros libros y monografías</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
  <span class="dropdown-text">Capítulos publicados</span></a>
   </li>  
     </ul>
@@ -364,31 +395,31 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
         <li>
-    <a class="dropdown-item" href="../../explorar/index.html">
+    <a class="dropdown-item" href="../../../explorar/index.html">
  <span class="dropdown-text">Portada de Explorar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/areas/index.html">
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
  <span class="dropdown-text">Áreas</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/temas/index.html">
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
  <span class="dropdown-text">Índice temático</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../blog/index.html">
+    <a class="dropdown-item" href="../../../blog/index.html">
  <span class="dropdown-text">Artículos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
  <span class="dropdown-text">Bibliografía</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
  <span class="dropdown-text">Notación y convenciones</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
  <span class="dropdown-text">Glosario</span></a>
   </li>  
     </ul>
@@ -399,31 +430,31 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
         <li>
-    <a class="dropdown-item" href="../../proyecto/index.html">
+    <a class="dropdown-item" href="../../../proyecto/index.html">
  <span class="dropdown-text">Portada del Proyecto</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../acerca-de.html">
+    <a class="dropdown-item" href="../../../acerca-de.html">
  <span class="dropdown-text">Acerca de</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
  <span class="dropdown-text">Política editorial</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
  <span class="dropdown-text">Procedencia y derechos</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../licencia.html">
+    <a class="dropdown-item" href="../../../licencia.html">
  <span class="dropdown-text">Licencia</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
  <span class="dropdown-text">Cómo citar</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
  <span class="dropdown-text">Estado y hoja de ruta</span></a>
   </li>  
     </ul>
@@ -445,9 +476,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#otros-libros-y-monografías" id="toc-otros-libros-y-monografías" class="nav-link active" data-scroll-target="#otros-libros-y-monografías">Otros libros y monografías</a>
+  <li><a href="#lo-que-las-reglas-de-tipos-permiten-escribir" id="toc-lo-que-las-reglas-de-tipos-permiten-escribir" class="nav-link active" data-scroll-target="#lo-que-las-reglas-de-tipos-permiten-escribir">12.1. Lo que las reglas de tipos permiten escribir</a></li>
+  <li><a href="#la-diagonal-reindexada-dónde-importa-la-sobreyectividad" id="toc-la-diagonal-reindexada-dónde-importa-la-sobreyectividad" class="nav-link" data-scroll-target="#la-diagonal-reindexada-dónde-importa-la-sobreyectividad">12.2. La diagonal reindexada: dónde importa la sobreyectividad</a></li>
+  <li><a href="#extensionalidad-un-código-y-la-función-que-denota" id="toc-extensionalidad-un-código-y-la-función-que-denota" class="nav-link" data-scroll-target="#extensionalidad-un-código-y-la-función-que-denota">12.3. Extensionalidad: un código y la función que denota</a></li>
+  <li><a href="#la-autorreferencia-efectiva-usa-códigos-no-ff" id="toc-la-autorreferencia-efectiva-usa-códigos-no-ff" class="nav-link" data-scroll-target="#la-autorreferencia-efectiva-usa-códigos-no-ff">12.4. La autorreferencia efectiva usa códigos, no <span class="math inline">\(f(f)\)</span></a></li>
+  <li><a href="#estratificación-y-alcance-de-la-comprensión" id="toc-estratificación-y-alcance-de-la-comprensión" class="nav-link" data-scroll-target="#estratificación-y-alcance-de-la-comprensión">12.5. Estratificación y alcance de la comprensión</a>
   <ul class="collapse">
-  <li><a href="#obras-publicadas" id="toc-obras-publicadas" class="nav-link" data-scroll-target="#obras-publicadas">Obras publicadas</a></li>
+  <li><a href="#lectura-guiada-cuatro-distinciones-que-deben-conservarse" id="toc-lectura-guiada-cuatro-distinciones-que-deben-conservarse" class="nav-link" data-scroll-target="#lectura-guiada-cuatro-distinciones-que-deben-conservarse">Lectura guiada: cuatro distinciones que deben conservarse</a></li>
+  <li><a href="#auditoría-fundacional-y-alcance-formal" id="toc-auditoría-fundacional-y-alcance-formal" class="nav-link" data-scroll-target="#auditoría-fundacional-y-alcance-formal">Auditoría fundacional y alcance formal</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -458,15 +494,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Otros libros y monografías</h1>
+<h1 class="title">Capítulo 12. Extensionalidad, autorreferencia y estratificación de tipos</h1>
 </div>
 
+<div>
+  <div class="description">
+    Tratado fundacional de la teoría de funciones: capítulo 12, con hipótesis, pruebas y límites de formalización explícitos.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">1 de octubre de 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -475,26 +522,173 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="otros-libros-y-monografías" class="level1">
-<h1>Otros libros y monografías</h1>
-<p>Espacio para libros abiertos y monografías que no pertenezcan a la colección <em>Para matemáticos</em>.</p>
-<p>La incorporación de una nueva obra exige la misma política de identificación, procedencia, revisión y licencia que el resto del proyecto.</p>
-<section id="obras-publicadas" class="level2">
-<h2 class="anchored" data-anchor-id="obras-publicadas">Obras publicadas</h2>
+<p><a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Pregunta rectora
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¿En qué condiciones puede una función recibir como argumento una representación de sí misma? ¿Por qué la diagonalización admite una formulación bien tipada, la igualdad de comportamientos no iguala programas y la comprensión irrestricta produce una contradicción?</p>
+</div>
+</div>
+<p><strong>Contrato de continuidad.</strong> Una flecha <span class="math inline">\(A\to B\)</span> y la evaluación <span class="math inline">\(B^A\times A\to B\)</span> pertenecen a <a href="../../../libros/otros/tratado-funciones/capitulo-01.html">TF-CAT-001</a>; la separación mediante elementos generalizados, a <a href="../../../libros/otros/tratado-funciones/capitulo-02.html">TF-CAT-002</a>; los programas parciales, a <a href="../../../libros/otros/tratado-funciones/capitulo-09.html">TF-CAT-009</a>; la equivalencia de índices, a <a href="../../../libros/otros/tratado-funciones/capitulo-10.html">TF-CAT-010</a>. La diagonal total y la universalidad parcial están demostradas en <a href="../../../libros/otros/tratado-funciones/capitulo-11.html">TF-CAT-011</a>. Este capítulo añade un <strong>sistema de tipos simples como modelo de comparación</strong>, no como supuesto retrospectivo de todos los capítulos, y enuncia expresamente la hipótesis efectiva adicional necesaria para la autorreferencia programática.</p>
+<section id="lo-que-las-reglas-de-tipos-permiten-escribir" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-las-reglas-de-tipos-permiten-escribir">12.1. Lo que las reglas de tipos permiten escribir</h2>
+<p><a id="TF-DEF-00048"></a></p>
+<p><strong>Definición 12.1.1 — Tipos simples y juicio de tipado</strong> <!-- result-id: TF-DEF-00048; depends-on: TF-AX-00004, TF-AX-00005, TF-DEF-00007 --></p>
+<p>Fijemos símbolos de tipos básicos. Los tipos simples <em>finitos</em> se forman inductivamente por <span class="math inline">\(\sigma ::= \iota\mid(\sigma\times\tau)\mid(\sigma\to\tau)\)</span>, con tantos tipos básicos como se indiquen. No se añaden tipos recursivos ni identificaciones entre expresiones sintácticas distintas. Un contexto <span class="math inline">\(\Gamma\)</span> asigna un único tipo a cada variable. Las reglas relevantes son</p>
+<p><span class="math display">\[\frac{\Gamma\vdash u:\sigma\to\tau\qquad\Gamma\vdash v:\sigma}{\Gamma\vdash u(v):\tau}\qquad
+\frac{\Gamma\vdash a:\sigma}{\Gamma\vdash(a,a):\sigma\times\sigma}.\]</span></p>
+<p>Para una función <span class="math inline">\(f:\sigma\to\tau\)</span> y un dato <span class="math inline">\(a:\sigma\)</span>, el término <span class="math inline">\(f(a)\)</span> está bien tipado; ello <strong>no</strong> convierte a <span class="math inline">\(f\)</span> en elemento de <span class="math inline">\(\sigma\)</span>. Estas son reglas sintácticas de este cálculo, no afirmaciones sobre objetos de todas las categorías.</p>
+<p><a id="TF-THM-00096"></a></p>
+<p><strong>Teorema 12.1.2 — La autoaplicación de una variable no se tipa en el cálculo simple</strong> <!-- result-id: TF-THM-00096; depends-on: TF-DEF-00048 --></p>
+<p>No existen un contexto <span class="math inline">\(\Gamma\)</span>, una variable <span class="math inline">\(x\)</span> y un tipo <span class="math inline">\(\tau\)</span> tales que <span class="math inline">\(\Gamma\vdash x(x):\tau\)</span> bajo las reglas anteriores.</p>
+<p><em>Demostración.</em> Si se pudiese derivar el juicio, su última regla sería la eliminación de la flecha: para algún <span class="math inline">\(\sigma\)</span> se tendría simultáneamente <span class="math inline">\(\Gamma\vdash x:\sigma\to\tau\)</span> y <span class="math inline">\(\Gamma\vdash x:\sigma\)</span>. Como el contexto asigna un único tipo a <span class="math inline">\(x\)</span>, exigiríamos la igualdad sintáctica <span class="math inline">\(\sigma=\sigma\to\tau\)</span>. Definamos la longitud de un tipo básico como <span class="math inline">\(1\)</span> y la de cada tipo compuesto como <span class="math inline">\(1\)</span> más la suma de las longitudes de sus componentes. Entonces <span class="math inline">\(|\sigma\to\tau|=1+|\sigma|+|\tau|&gt;|\sigma|\)</span>, imposible. La prueba depende de <strong>tipos finitos, monomorfos y sin ecuaciones recursivas</strong>; no se afirma que toda forma de autorreferencia sea imposible. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-EXA-00022"></a></p>
+<p><strong>Ejemplo 12.1.3 — Una diagonal válida no es la expresión <span class="math inline">\(f(f)\)</span></strong> <!-- result-id: TF-EXA-00022; depends-on: TF-DEF-00048, TF-THM-00096, TF-THM-00088 --></p>
+<p>Supongamos <span class="math inline">\(U:A\times A\to B\)</span> y <span class="math inline">\(a:A\)</span>. La expresión <span class="math inline">\(U(a,a)\)</span> abrevia <span class="math inline">\(U((a,a))\)</span> y está bien tipada porque <span class="math inline">\((a,a):A\times A\)</span>. No dice que <span class="math inline">\(U:A\)</span> ni que la función <span class="math inline">\(U_a:A\to B\)</span> tenga tipo <span class="math inline">\(A\)</span>. En cambio, escribir <span class="math inline">\(U_a(U_a)\)</span> exigiría a la vez <span class="math inline">\(U_a:A\to B\)</span> y <span class="math inline">\(U_a:A\)</span>; la segunda premisa no viene dada. <strong>Pregunta de control:</strong> en el lema diagonal del capítulo 11, ¿qué se repite: una función como argumento de sí misma o un <em>índice</em> usado también como entrada? Se repite el índice <span class="math inline">\(a:A\)</span>.</p>
+<p><a id="TF-DEF-00049"></a></p>
+<p><strong>Definición 12.1.4 — Evaluación tipada de un exponencial</strong> <!-- result-id: TF-DEF-00049; depends-on: TF-AX-00005, TF-THM-00006, TF-DEF-00048 --></p>
+<p>En una categoría cartesianamente cerrada, <span class="math inline">\(\operatorname{ev}_{A,B}:B^A\times A\to B\)</span> recibe un elemento del objeto exponencial y un argumento de <span class="math inline">\(A\)</span>. En <span class="math inline">\(\mathbf{Set}\)</span> se lee <span class="math inline">\((f,a)\mapsto f(a)\)</span>, con <span class="math inline">\(f\in B^A\)</span> y <span class="math inline">\(a\in A\)</span>. La flecha de evaluación existe por la propiedad universal del exponencial; no se deduce de ello que los elementos de <span class="math inline">\(A\)</span> sean, a su vez, funciones <span class="math inline">\(A\to B\)</span>, ni que una máquina calcule universalmente dicha evaluación.</p>
+<p><a id="TF-THM-00097"></a></p>
+<p><strong>Teorema 12.1.5 — La diagonal categórica está bien formada sin autoaplicación</strong> <!-- result-id: TF-THM-00097; depends-on: TF-AX-00004, TF-DEF-00049 --></p>
+<p>Dados objetos <span class="math inline">\(A,B\)</span>, una flecha <span class="math inline">\(U:A\times A\to B\)</span> y un endomorfismo <span class="math inline">\(s:B\to B\)</span>, existe la flecha tipada</p>
+<p><span class="math display">\[d=s\circ U\circ\Delta_A:A\longrightarrow B,\qquad \Delta_A=\langle\mathrm{id}_A,\mathrm{id}_A\rangle.\]</span></p>
+<p>Si, además, <span class="math inline">\(U=\operatorname{ev}_{A,B}\circ(\widehat U\times\mathrm{id}_A)\)</span> para <span class="math inline">\(\widehat U:A\to B^A\)</span>, esta construcción no exige ninguna identificación <span class="math inline">\(A=B^A\)</span>.</p>
+<p><em>Demostración.</em> La propiedad universal del producto da <span class="math inline">\(\Delta_A:A\to A\times A\)</span>. Por compatibilidad de dominios y codominios, <span class="math inline">\(U\circ\Delta_A:A\to B\)</span> y su composición con <span class="math inline">\(s:B\to B\)</span> es <span class="math inline">\(d:A\to B\)</span>. Para la segunda afirmación, <span class="math inline">\(\widehat U\times\mathrm{id}_A:A\times A\to B^A\times A\)</span> es una flecha y la evaluación da <span class="math inline">\(U\)</span>. Ningún paso aplica una flecha a sí misma como argumento. <span class="math inline">\(\square\)</span></p>
+<!-- editorial-crossref: TF-XREF-0001; route: R4 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Alcance exacto del refuerzo diagonal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La prueba de <a href="../../../libros/otros/tratado-funciones/capitulo-11.html">TF-CAT-011</a> (<code>TF-THM-00088</code>) corresponde al caso de índices y argumentos del mismo tipo. Aquí el mapa <span class="math inline">\(q:A\to P\)</span> permite cambiar de tipo, y <strong>su sobreyectividad es necesaria para el enunciado</strong> de <code>TF-THM-00098</code>, como muestra <code>TF-CEX-00014</code>. Este cambio no convierte al evaluador universal parcial de <code>TF-THM-00092</code> en una función total. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="la-diagonal-reindexada-dónde-importa-la-sobreyectividad" class="level2">
+<h2 class="anchored" data-anchor-id="la-diagonal-reindexada-dónde-importa-la-sobreyectividad">12.2. La diagonal reindexada: dónde importa la sobreyectividad</h2>
+<p><a id="TF-DEF-00050"></a></p>
+<p><strong>Definición 12.2.1 — Familia con índices y argumentos de tipos distintos</strong> <!-- result-id: TF-DEF-00050; depends-on: TF-DEF-00045, TF-THM-00097 --></p>
+<p>Sean conjuntos <span class="math inline">\(P,A,B\)</span>, <span class="math inline">\(U:P\times A\to B\)</span>, una función <em>de reindexación</em> <span class="math inline">\(q:A\to P\)</span> y una función <span class="math inline">\(s:B\to B\)</span>. La <strong>diagonal reindexada</strong> es</p>
+<p><span class="math display">\[d_q:A\to B,\qquad d_q(a)=s\bigl(U(q(a),a)\bigr).\tag{12.1}\]</span></p>
+<p>La forma (12.1) es tipada incluso si <span class="math inline">\(A\)</span> y <span class="math inline">\(P\)</span> son distintos. El codominio de <span class="math inline">\(q\)</span> es precisamente el conjunto de índices <span class="math inline">\(P\)</span>: si se reemplaza <span class="math inline">\(q\)</span> por una transformación de otro tipo, la fórmula deja de tener ese significado.</p>
+<p><a id="TF-THM-00098"></a></p>
+<p><strong>Teorema 12.2.2 — Barrera diagonal bajo reindexación sobreyectiva</strong> <!-- result-id: TF-THM-00098; depends-on: TF-DEF-00050, TF-DEF-00045, TF-THM-00009 --></p>
+<p>Supongamos que <span class="math inline">\(q:A\to P\)</span> es sobreyectiva y que <span class="math inline">\(s:B\to B\)</span> carece de puntos fijos. Entonces <span class="math inline">\(d_q\ne U_p\)</span> para todo <span class="math inline">\(p\in P\)</span>. En particular, <span class="math inline">\(p\mapsto U_p:P\to B^A\)</span> no es sobreyectiva. No se emplea elección.</p>
+<p><em>Demostración.</em> (12.1) define una función total. Fijemos <span class="math inline">\(p\in P\)</span>; por sobreyectividad de <span class="math inline">\(q\)</span> <strong>para este único <span class="math inline">\(p\)</span></strong> existe <span class="math inline">\(a\in A\)</span> con <span class="math inline">\(q(a)=p\)</span>. Evaluando,</p>
+<p><span class="math display">\[d_q(a)=s\bigl(U(q(a),a)\bigr)=s(U(p,a))\ne U(p,a)=U_p(a).\]</span></p>
+<p>Luego <span class="math inline">\(d_q\ne U_p\)</span>; como <span class="math inline">\(p\)</span> era arbitrario, ninguna sección es <span class="math inline">\(d_q\)</span>. En ningún momento se definió una función que elija simultáneamente un representante <span class="math inline">\(a\)</span> de cada <span class="math inline">\(p\)</span>: sólo usamos la instanciación de una existencia para probar una proposición universal. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-CEX-00014"></a></p>
+<p><strong>Contraejemplo 12.2.3 — Sin sobreyectividad sólo se excluye la subfamilia reindexada</strong> <!-- result-id: TF-CEX-00014; depends-on: TF-DEF-00050, TF-THM-00098 --></p>
+<p>Tomemos <span class="math inline">\(A=\{*\}\)</span>, <span class="math inline">\(P=\{0,1\}\)</span>, <span class="math inline">\(B=\{0,1\}\)</span>, <span class="math inline">\(q(*)=0\)</span> y <span class="math inline">\(s(b)=1-b\)</span>. Definamos <span class="math inline">\(U(0,*)=0\)</span> y <span class="math inline">\(U(1,*)=1\)</span>. Entonces <span class="math inline">\(d_q(*)=1\)</span>, que <strong>sí es</strong> la sección <span class="math inline">\(U_1\)</span>. La familia <span class="math inline">\(p\mapsto U_p\)</span> es sobreyectiva sobre <span class="math inline">\(B^A\)</span>, porque sus dos secciones agotan todas las funciones del singleton a <span class="math inline">\(B\)</span>. La diagonal difiere de <span class="math inline">\(U_0\)</span>, la única sección indexada por la imagen de <span class="math inline">\(q\)</span>, pero no de la familia entera. El teorema anterior no admite suprimir la hipótesis de sobreyectividad.</p>
+<!-- editorial-crossref: TF-XREF-0001; route: R3 -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Códigos, secciones totales y representaciones
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-10.html">El capítulo 10</a> distingue igualdad de índices de equivalencia extensional para programas parciales (<code>TF-DEF-00040</code>), mientras que esta sección utiliza secciones de una familia <strong>total</strong> (<code>TF-DEF-00051</code>). <a href="../../../libros/otros/tratado-funciones/capitulo-14.html">El capítulo 14</a> exigirá traductores computables, y no meras biyecciones, al comparar representaciones (<code>TF-DEF-00063</code>). El punto fijo de programas de §12.4 pertenece a un modelo de numeración con especialización explícita y no modifica ninguno de esos criterios de igualdad. Mapa del recorrido.</p>
+</div>
+</div>
+</section>
+<section id="extensionalidad-un-código-y-la-función-que-denota" class="level2">
+<h2 class="anchored" data-anchor-id="extensionalidad-un-código-y-la-función-que-denota">12.3. Extensionalidad: un código y la función que denota</h2>
+<p><a id="TF-DEF-00051"></a></p>
+<p><strong>Definición 12.3.1 — Equivalencia semántica de índices totales</strong> <!-- result-id: TF-DEF-00051; depends-on: TF-DEF-00045, TF-DEF-00040, TF-THM-00011 --></p>
+<p>Para <span class="math inline">\(U:P\times A\to B\)</span> total, definimos <span class="math inline">\(p\sim_U r\)</span> si y sólo si <span class="math inline">\(U_p=U_r\)</span> como funciones <span class="math inline">\(A\to B\)</span>, es decir,</p>
+<p><span class="math display">\[p\sim_U r\quad\Longleftrightarrow\quad\forall a\in A\;U(p,a)=U(r,a).\tag{12.2}\]</span></p>
+<p>La relación es reflexiva, simétrica y transitiva por las propiedades de la igualdad. <strong>Igualdad de códigos</strong> (<span class="math inline">\(p=r\)</span>), <strong>equivalencia extensional</strong> (<span class="math inline">\(p\sim_U r\)</span>) e <strong>igualdad efectiva decidible</strong> son nociones distintas. El capítulo 10 prueba límites de decisión para índices de programas parciales; (12.2) no aporta un decisor ni una forma normal computable.</p>
+<p><a id="TF-THM-00099"></a></p>
+<p><strong>Teorema 12.3.2 — El cociente extensional clasifica exactamente las secciones</strong> <!-- result-id: TF-THM-00099; depends-on: TF-DEF-00051, TF-DEF-00045 --></p>
+<p>En <span class="math inline">\(\mathbf{Set}\)</span>, la aplicación <span class="math inline">\(\nu_U:P\to B^A\)</span>, <span class="math inline">\(p\mapsto U_p\)</span>, se factoriza de manera única por el cociente de clases de equivalencia,</p>
+<p><span class="math display">\[P\xrightarrow{\pi}P/{\sim_U}\xrightarrow{\overline\nu_U}B^A,
+\qquad\overline\nu_U([p])=U_p.\]</span></p>
+<p>La segunda flecha es inyectiva y su imagen es exactamente <span class="math inline">\(\mathcal F_U=\{U_p:p\in P\}\)</span>. Así <span class="math inline">\(P/{\sim_U}\cong\mathcal F_U\)</span> mediante una biyección canónica. No se infiere que <span class="math inline">\(\pi\)</span> ni su inversa semántica computen representantes.</p>
+<p><em>Demostración.</em> Si <span class="math inline">\([p]=[r]\)</span>, por definición de clases de una relación de equivalencia <span class="math inline">\(p\sim_U r\)</span>; luego <span class="math inline">\(U_p=U_r\)</span> y la fórmula para <span class="math inline">\(\overline\nu_U\)</span> no depende del representante. Se cumple <span class="math inline">\(\nu_U=\overline\nu_U\pi\)</span>. Si <span class="math inline">\(\theta\pi=\nu_U\)</span>, para toda clase <span class="math inline">\([p]\)</span>, <span class="math inline">\(\theta([p])=\theta(\pi(p))=\nu_U(p)\)</span>: unicidad. Si <span class="math inline">\(\overline\nu_U([p])=\overline\nu_U([r])\)</span>, entonces <span class="math inline">\(p\sim_U r\)</span> y <span class="math inline">\([p]=[r]\)</span>: inyectividad. Cada <span class="math inline">\(U_p\)</span> es imagen de <span class="math inline">\([p]\)</span>, y cada valor de <span class="math inline">\(\overline\nu_U\)</span> tiene esa forma: imagen exacta. La construcción del cociente en ZF no selecciona un representante para cada clase; las clases son conjuntos de índices obtenidos por separación sobre <span class="math inline">\(P\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-CEX-00015"></a></p>
+<p><strong>Contraejemplo 12.3.3 — La misma función puede tener códigos distintos</strong> <!-- result-id: TF-CEX-00015; depends-on: TF-DEF-00051, TF-THM-00099, TF-EXA-00017 --></p>
+<p>Sean <span class="math inline">\(P=\{0,1\}\)</span> y <span class="math inline">\(A=B=\{*\}\)</span>. Definamos <span class="math inline">\(U(0,*)=U(1,*)=*\)</span>. Entonces <span class="math inline">\(0\ne1\)</span>, pero <span class="math inline">\(0\sim_U1\)</span>: ambas secciones son la única aplicación <span class="math inline">\(A\to B\)</span>. La función semántica de denominación no es inyectiva. En programas reales pueden producirse duplicidades mucho menos triviales, como los dos programas de identidad del capítulo 10. Un teorema de punto fijo de <em>comportamientos</em> no debe anunciarse como igualdad literal de cadenas de código.</p>
+</section>
+<section id="la-autorreferencia-efectiva-usa-códigos-no-ff" class="level2">
+<h2 class="anchored" data-anchor-id="la-autorreferencia-efectiva-usa-códigos-no-ff">12.4. La autorreferencia efectiva usa códigos, no <span class="math inline">\(f(f)\)</span></h2>
+<p><a id="TF-DEF-00052"></a></p>
+<p><strong>Definición 12.4.1 — Numeración aceptable y especialización efectiva</strong> <!-- result-id: TF-DEF-00052; depends-on: TF-DEF-00035, TF-DEF-00047, TF-THM-00092 --></p>
+<p>Para esta sección reforzamos expresamente el contrato de la numeración <span class="math inline">\(e\mapsto\varphi_e\)</span> de funciones parciales <span class="math inline">\(\mathbb N\rightharpoonup\mathbb N\)</span>. Suponemos una codificación efectiva de programas con evaluador universal parcial y un <strong>especializador total computable</strong> <span class="math inline">\(S:\mathbb N^2\to\mathbb N\)</span> que satisfaga, para cada índice <span class="math inline">\(p\)</span> de una función parcial computable de dos argumentos, y para todos <span class="math inline">\(x,y\)</span>,</p>
+<p><span class="math display">\[\varphi_{S(p,x)}(y)\simeq\Phi_p(x,y).\tag{12.3}\]</span></p>
+<p>El símbolo <span class="math inline">\(\simeq\)</span> afirma igualdad de dominios y valores. La operación <span class="math inline">\(S\)</span> incorpora el parámetro fijo <span class="math inline">\(x\)</span> a un programa, y es una instancia del teorema <span class="math inline">\(s\)</span>-<span class="math inline">\(m\)</span>-<span class="math inline">\(n\)</span> en codificaciones usuales. Una mera enumeración abstracta de funciones parciales <strong>no garantiza</strong> (12.3). Se presupone asimismo que los algoritmos parciales obtenidos por composición y simulación poseen índices en esta numeración. Estas hipótesis efectivas se añaden aquí; no se atribuyen al objeto exponencial ni a la elección categórica.</p>
+<p><a id="TF-THM-00100"></a></p>
+<p><strong>Teorema 12.4.2 — Punto fijo extensional de programas (teorema de recursión)</strong> <!-- result-id: TF-THM-00100; depends-on: TF-DEF-00052, TF-DEF-00051, TF-THM-00092 --></p>
+<p>Bajo el contrato anterior, si <span class="math inline">\(F:\mathbb N\to\mathbb N\)</span> es <strong>total computable</strong>, existe un índice <span class="math inline">\(e\)</span> con</p>
+<p><span class="math display">\[\varphi_e\simeq\varphi_{F(e)}.\tag{12.4}\]</span></p>
+<p>No se afirma <span class="math inline">\(e=F(e)\)</span> ni que se pueda decidir en general si dos índices arbitrarios denotan la misma función.</p>
+<p><em>Demostración.</em> Construyamos el algoritmo parcial binario</p>
+<p><span class="math display">\[H(x,y)\simeq\varphi_{F(S(x,x))}(y).\tag{12.5}\]</span></p>
+<p>En efecto, <span class="math inline">\(S(x,x)\)</span> y <span class="math inline">\(F(S(x,x))\)</span> se calculan totalmente; a continuación, el evaluador universal simula el índice calculado sobre <span class="math inline">\(y\)</span>. Por las hipótesis efectivas, <span class="math inline">\(H\)</span> dispone de un índice <span class="math inline">\(p\)</span>, de modo que <span class="math inline">\(\Phi_p(x,y)\simeq H(x,y)\)</span> para todos <span class="math inline">\(x,y\)</span>. Póngase <strong>explícitamente</strong> <span class="math inline">\(e=S(p,p)\)</span>. Por especialización y por (12.5), para todo <span class="math inline">\(y\)</span> tenemos</p>
+<p><span class="math display">\[\varphi_e(y)=_{\!\simeq}\varphi_{S(p,p)}(y)=_{\!\simeq}\Phi_p(p,y)=_{\!\simeq}H(p,y)=_{\!\simeq}\varphi_{F(S(p,p))}(y)=_{\!\simeq}\varphi_{F(e)}(y).\]</span></p>
+<p>Cada igualdad preserva simultáneamente convergencia y valor: se obtiene (12.4). La construcción de <span class="math inline">\(e\)</span> utiliza el índice <span class="math inline">\(p\)</span> del algoritmo <span class="math inline">\(H\)</span> y una sola aplicación efectiva de <span class="math inline">\(S\)</span>; no busca un punto fijo por comparación extensional, que sería en general indecidible. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-EXA-00023"></a></p>
+<p><strong>Ejemplo 12.4.3 — Un programa que imprime su propio índice</strong> <!-- result-id: TF-EXA-00023; depends-on: TF-THM-00100, TF-DEF-00052, TF-DEF-00051 --></p>
+<p>Por la codificación efectiva, para cada <span class="math inline">\(n\)</span> puede construirse computablemente un índice <span class="math inline">\(F(n)\)</span> de la función constante <span class="math inline">\(y\mapsto n\)</span>: el constructor de programas incorpora el numeral <span class="math inline">\(n\)</span> como dato fijo. El teorema precedente proporciona <span class="math inline">\(e\)</span> con <span class="math inline">\(\varphi_e(y)=e\)</span> para toda entrada <span class="math inline">\(y\)</span>. Es autorreferencia <strong>por representación numérica de un programa</strong>, no la expresión tipada imposible <span class="math inline">\(x(x)\)</span>. Es también un punto fijo <em>semántico</em>: el programa con índice <span class="math inline">\(e\)</span> y el de índice <span class="math inline">\(F(e)\)</span> pueden tener códigos distintos. El teorema diagonal del capítulo 11 permanece intacto, porque no hemos construido un evaluador universal <strong>total</strong> de todas las funciones totales computables.</p>
+</section>
+<section id="estratificación-y-alcance-de-la-comprensión" class="level2">
+<h2 class="anchored" data-anchor-id="estratificación-y-alcance-de-la-comprensión">12.5. Estratificación y alcance de la comprensión</h2>
+<p><a id="TF-DEF-00053"></a></p>
+<p><strong>Definición 12.5.1 — Comprensión relativa frente a comprensión irrestricta</strong> <!-- result-id: TF-DEF-00053; depends-on: TF-DEF-00012, TF-THM-00090, TF-DEF-00048 --></p>
+<p>En ZF, la <em>separación</em> construye, a partir de un conjunto previamente dado <span class="math inline">\(X\)</span> y una fórmula <span class="math inline">\(\psi(x)\)</span>, el subconjunto <span class="math inline">\(\{x\in X:\psi(x)\}\)</span>. La <strong>comprensión irrestricta</strong> afirmaría que <span class="math inline">\(\{x:\psi(x)\}\)</span> existe como conjunto sin proporcionar <span class="math inline">\(X\)</span>; no es un axioma de ZF. En teoría simple de tipos, la pertenencia <span class="math inline">\(a\in S\)</span> exige tipos <span class="math inline">\(a:A\)</span> y <span class="math inline">\(S:\operatorname{Set}(A)\)</span>; escribir <span class="math inline">\(S\in S\)</span> reutilizando <strong>el mismo término con un mismo tipo simple</strong> exigiría identificar <span class="math inline">\(A\)</span> con <span class="math inline">\(\operatorname{Set}(A)\)</span>, cosa no autorizada por la gramática finita. Esta última observación es sintáctica y no niega que en ZF la fórmula <span class="math inline">\(x\in x\)</span> esté bien formada.</p>
+<p><a id="TF-THM-00101"></a></p>
+<p><strong>Teorema 12.5.2 — Russell: no existe un conjunto universal en ZF</strong> <!-- result-id: TF-THM-00101; depends-on: TF-DEF-00053 --></p>
+<p>En ZF no existe un conjunto <span class="math inline">\(V\)</span> al que pertenezcan todos los conjuntos.</p>
+<p><em>Demostración.</em> Supongamos que existe tal <span class="math inline">\(V\)</span>. La separación —que <strong>sí está permitida</strong> sobre <span class="math inline">\(V\)</span>— produce el conjunto <span class="math inline">\(R=\{x\in V:x\notin x\}\)</span>. Por universalidad, <span class="math inline">\(R\in V\)</span>, y por definición de <span class="math inline">\(R\)</span>,</p>
+<p><span class="math display">\[R\in R\quad\Longleftrightarrow\quad(R\in V\ \land\ R\notin R)
+\quad\Longleftrightarrow\quad R\notin R.\]</span></p>
+<p>Esta equivalencia es contradictoria incluso sin usar tercero excluido: su dirección izquierda a derecha muestra <span class="math inline">\(\neg(R\in R)\)</span>, y la dirección derecha a izquierda aplicada a esa negación proporciona <span class="math inline">\(R\in R\)</span>. Luego no existe <span class="math inline">\(V\)</span>. La prueba no utiliza el axioma de elección ni concluye que toda colección definible sea un conjunto. <span class="math inline">\(\square\)</span></p>
+<p><a id="TF-EXA-00024"></a></p>
+<p><strong>Ejemplo 12.5.3 — Autoaplicación sin tipos y reducción divergente</strong> <!-- result-id: TF-EXA-00024; depends-on: TF-THM-00096, TF-DEF-00048, TF-THM-00101 --></p>
+<p>En el cálculo <span class="math inline">\(\lambda\)</span> <strong>sin tipos</strong>, <span class="math inline">\(\omega=(\lambda x.xx)\)</span> es un término y <span class="math inline">\(\Omega=\omega\omega\)</span> reduce en un paso beta a sí mismo: <span class="math inline">\(\Omega\to_\beta\Omega\)</span>. Esto muestra que permitir la autoaplicación no produce por sí solo una contradicción lógica; puede producir una computación que no termina. En el cálculo <em>simplemente tipado</em> de §12.1 el subtermo <span class="math inline">\(xx\)</span> no tiene tipo. En ZF, por su parte, la expresión <span class="math inline">\(x\in x\)</span> es una fórmula legítima, pero el conjunto de <strong>todos</strong> los <span class="math inline">\(x\)</span> que la satisfacen no se obtiene por separación sin un universo previo. Son tres diagnósticos distintos: fallo de tipado, divergencia operacional y contradicción de un postulado de comprensión universal.</p>
+<section id="lectura-guiada-cuatro-distinciones-que-deben-conservarse" class="level3">
+<h3 class="anchored" data-anchor-id="lectura-guiada-cuatro-distinciones-que-deben-conservarse">Lectura guiada: cuatro distinciones que deben conservarse</h3>
+<ol type="1">
+<li><strong>Tipado:</strong> <span class="math inline">\(U(a,a)\)</span> usa un argumento <span class="math inline">\(a\)</span> dos veces; <span class="math inline">\(f(f)\)</span> requiere que una función sea también argumento de su propio tipo.</li>
+<li><strong>Cobertura:</strong> (12.1) no contradice toda una familia si <span class="math inline">\(q\)</span> no alcanza sus índices; el contraejemplo 12.2.3 identifica el punto preciso.</li>
+<li><strong>Extensionalidad:</strong> <span class="math inline">\(p\sim_U r\)</span> clasifica <em>resultados</em>, no iguala cadenas de programa ni decide su equivalencia.</li>
+<li><strong>Autorreferencia:</strong> el teorema de recursión da un índice <span class="math inline">\(e\)</span> cuyo comportamiento coincide con el de <span class="math inline">\(F(e)\)</span>; el teorema diagonal impide una <strong>enumeración total computable exhaustiva</strong> bajo sus propias hipótesis. No son negaciones mutuas.</li>
+</ol>
+<p><strong>Ejercicios de control.</strong> (a) Demuestre que <span class="math inline">\(q\)</span> sobreyectiva no implica que posea una sección en ZF sin AC, e identifique por qué la prueba de 12.2.2 no la necesita. (b) Rehaga 12.3.2 para funciones <em>parciales</em>, reemplazando la igualdad puntual por igualdad de dominios y valores; explique por qué no obtiene un cociente computable. (c) En 12.4.2, marque exactamente los pasos que dejarían de estar justificados si <span class="math inline">\(F\)</span> fuese parcial. (d) Localice en 12.5.2 la única invocación de separación.</p>
+</section>
+<section id="auditoría-fundacional-y-alcance-formal" class="level3">
+<h3 class="anchored" data-anchor-id="auditoría-fundacional-y-alcance-formal">Auditoría fundacional y alcance formal</h3>
 <ul>
-<li><p><a href="../../libros/axler-ladr-es/index.html"><strong>Linear Algebra Done Right — edición de estudio en español</strong></a> — traducción y adaptación no oficiales de Sheldon Axler; publicación progresiva de las secciones verificadas, con soluciones originales y licencia específica CC BY-NC 4.0.</p></li>
-<li><p><a href="../../libros/otros/wentworth-smith-geometria/index.html"><strong>Geometría plana y del espacio — edición digital de 1915</strong></a> — edición abierta de Wentworth y Smith con transcripción literal y facsímiles originales; preliminares e Introducción, pp.&nbsp;1–4, disponibles.</p></li>
-<li><p><a href="../../libros/otros/topos-desde-cero.html"><strong>Topos desde cero</strong></a> — manual autocontenido de fundamentos, categorías, haces y sitios, en publicación progresiva.</p></li>
-<li><p><a href="../../libros/otros/tratado-de-analisis.html"><strong>Tratado de análisis</strong></a> — tratado moderno de análisis desde fundamentos explícitos, por Gustav A. Tachek; publicación progresiva iniciada con el prefacio.</p></li>
-<li><p><a href="../../libros/otros/tratado-de-algebra.html"><strong>Tratado moderno de Álgebra</strong></a> — tratado formal de estructuras algebraicas desde fundamentos explícitos, por Gustav A. Tachek; edición publicada con prefacio, tres interfaces fundacionales y capítulos 1–26; capítulo 27 en elaboración.</p></li>
-<li><p><a href="../../libros/otros/tratado-funciones/index.html"><strong>Tratado fundacional de la teoría de funciones</strong></a> — dieciocho capítulos en cinco partes sobre definición, igualdad, parcialidad, computabilidad y representación de funciones, con apéndices, ejercicios, bibliografía, glosario y seis índices.</p></li>
+<li><strong>Hipótesis por sección:</strong> §12.1 adopta una gramática concreta de tipos simples; §12.2 es un teorema en Set sobre <span class="math inline">\(q\)</span> sobreyectiva; §12.3 usa cocientes en ZF; §12.4 añade <strong>explícitamente</strong> <span class="math inline">\(s\)</span>-<span class="math inline">\(m\)</span>-<span class="math inline">\(n\)</span> y universalidad computable; §12.5 usa separación en ZF y una comparación sintáctica independiente con tipos simples. No se trasladan estas hipótesis inadvertidamente entre fundamentos.</li>
+<li><strong>No elección:</strong> 12.2.2 escoge un testigo <em>local</em> para cada parámetro de una demostración; el cociente extensional es canónico; el especialista <span class="math inline">\(S\)</span> es un algoritmo supuesto con ley (12.3), no una elección arbitraria de programas.</li>
+<li><strong>Límites:</strong> no se presenta una solución general del problema de parada, un normalizador de programas o una identificación universal entre tipos y sus exponenciales. No se postula autoevaluación de un objeto de programas sin proporcionar una codificación adecuada.</li>
+<li><strong>Referencias para cotejo externo:</strong> F. W. Lawvere, <em>Diagonal Arguments and Cartesian Closed Categories</em> (1969; reimpresión en <em>Reprints in Theory and Applications of Categories</em>, n.º 15 (2006), pp.&nbsp;1–13, Teorema 1.1 y Corolario 1.2, p.&nbsp;5), <a href="https://lawverearchives.com/work/" class="uri">https://lawverearchives.com/work/</a>; G. A. Kavvos, <a href="https://ora.ox.ac.uk/objects/uuid:f89b46d8-b514-42fd-9321-e2803452681f"><em>On the Semantics of Intensionality and Intensional Recursion</em> (DPhil, University of Oxford, 2017), §2.1.2, Teorema 6</a>, para una exposición y prueba del segundo teorema de recursión con especialización <span class="math inline">\(s\)</span>-<span class="math inline">\(m\)</span>-<span class="math inline">\(n\)</span>. Estas fuentes contextualizan, no suplen las pruebas explícitas del capítulo.</li>
+<li><strong>Lean, estado independiente verificado:</strong> <a href="https://github.com/lachenmann/matematica-abierta/pull/108">PR #108</a>, fusionada en <code>main</code> tras CI Lean y Quarto satisfactorio para cabeza <code>b53bc45772e5347e97eade49091aa3c659e387b1</code>. En el módulo <code>Reindexacion.lean</code>, dos declaraciones demuestran <code>TF-THM-00098</code> y una verifica el criterio extensional de <code>TF-DEF-00051</code>; las otras cinco proposiciones teoremáticas del capítulo, incluido Kleene <code>TF-THM-00100</code>, no han sido formalizadas. Reporte preciso: LEAN_VERIFICATION_REPORT_012; estados: PROGRESS.</li>
 </ul>
+<div class="tf-navigation">
+<p><a href="../../../libros/otros/tratado-funciones/capitulo-11.html">← Anterior</a> · <a href="../../../libros/otros/tratado-funciones/index.html">Índice del tratado</a> · <a href="../../../libros/otros/tratado-funciones/capitulo-13.html">Siguiente →</a></p>
+</div>
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
 <style>
 /* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
 body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
