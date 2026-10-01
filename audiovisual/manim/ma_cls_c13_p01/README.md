@@ -76,3 +76,24 @@ Alta calidad:
     uv run manim -pqh ma_cls_c13_p01/scene.py MAClsC13P01
 
 Este render sirve para QA de continuidad visual. La duración definitiva se ajustará después con una locución de referencia.
+
+
+## QA del ensamblaje
+
+Estado: **PASS visual**.
+
+El preview silencioso `MAClsC13P01` fue revisado sobre el render CI completo.
+
+- duración medida: **49,799 s**;
+- apertura: PASS;
+- transición al bloque 1: PASS;
+- puente 1: PASS;
+- bloque 2 y transición: PASS;
+- puente 2: PASS;
+- bloque 3: PASS;
+- cierre: PASS;
+- residuos entre fases: ninguno;
+- desbordes de zona segura: ninguno detectado;
+- sincronización temporal con narración: **PENDIENTE**.
+
+La duración editorial objetivo sigue siendo aproximadamente **185 s**. El preview silencioso no debe estirarse artificialmente antes de disponer de una voz de referencia.
