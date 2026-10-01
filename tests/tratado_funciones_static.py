@@ -10,7 +10,7 @@ manifest=json.loads((BOOK/'source-manifest.json').read_text())
 pages=list(BOOK.glob('*.qmd'))
 assert len(pages)==35, len(pages)
 assert len(list(BOOK.glob('capitulo-*.qmd')))==18
-assert manifest['status']=='publication-candidate-ci-pending'
+assert manifest['status']=='published'
 for catalog,target in [('libros/index.qmd','otros/tratado-funciones/index.html'),('libros/otros/index.qmd','tratado-funciones/index.qmd')]:
  assert (ROOT/catalog).read_text().count(target)>=1, catalog
 anchors={}

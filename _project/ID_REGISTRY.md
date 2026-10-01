@@ -209,38 +209,38 @@ Las piezas individuales mantienen siempre su identificador MA global.
 Registro de identidad pública ya existente: `MA-BOK-0009` — *Geometría plana y del espacio*, `libros/otros/wentworth-smith-geometria/index.qmd`, published. La entrada ANM usa `MA-BOK-0010` para conservar esa identidad.
 
 
-## Tratado fundacional de la teoría de funciones — reserva de preparación 2026-09-30
+## Tratado fundacional de la teoría de funciones — publicación 2026-10-01
 
-Candidato de publicación en rama de preparación; integración y despliegue pendientes. Los 269 IDs matemáticos TF existentes se conservan. `source-id` identifica la pieza editorial cualificada y `editorial-id` mantiene el ID documental del canon.
+Publicación integrada por PR #235 (merge `358e0ff1909ed1aeaffa51fe3a3588d108f8e058`); Quarto Publish #36934301756 y Pages #36935040792 completed/success. Artefacto desplegado `c06dd0ad17d39926bd7c7214e940676d260f4365`. Comprobación directa del dominio y manifiesto canónico final pendientes. Los 269 IDs matemáticos TF existentes se conservan. `source-id` identifica la pieza editorial cualificada y `editorial-id` mantiene el ID documental del canon.
 
 | ID público | Tipo | ID de fuente | ID documental canónico | Ruta | Estado |
 |---|---|---|---|---|---|
-| MA-BOK-0011 | book | TF-T1 | TF-000 | `libros/otros/tratado-funciones/index.qmd` | publication-candidate |
-| MA-BCH-0117 | book-chapter | TF-T1-C01 | TF-CAT-001 | `libros/otros/tratado-funciones/capitulo-01.qmd` | publication-candidate |
-| MA-BCH-0118 | book-chapter | TF-T1-C02 | TF-CAT-002 | `libros/otros/tratado-funciones/capitulo-02.qmd` | publication-candidate |
-| MA-BCH-0119 | book-chapter | TF-T1-C03 | TF-CAT-003 | `libros/otros/tratado-funciones/capitulo-03.qmd` | publication-candidate |
-| MA-BCH-0120 | book-chapter | TF-T1-C04 | TF-CAT-004 | `libros/otros/tratado-funciones/capitulo-04.qmd` | publication-candidate |
-| MA-BCH-0121 | book-chapter | TF-T1-C05 | TF-CAT-005 | `libros/otros/tratado-funciones/capitulo-05.qmd` | publication-candidate |
-| MA-BCH-0122 | book-chapter | TF-T1-C06 | TF-CAT-006 | `libros/otros/tratado-funciones/capitulo-06.qmd` | publication-candidate |
-| MA-BCH-0123 | book-chapter | TF-T1-C07 | TF-CAT-007 | `libros/otros/tratado-funciones/capitulo-07.qmd` | publication-candidate |
-| MA-BCH-0124 | book-chapter | TF-T1-C08 | TF-CAT-008 | `libros/otros/tratado-funciones/capitulo-08.qmd` | publication-candidate |
-| MA-BCH-0125 | book-chapter | TF-T1-C09 | TF-CAT-009 | `libros/otros/tratado-funciones/capitulo-09.qmd` | publication-candidate |
-| MA-BCH-0126 | book-chapter | TF-T1-C10 | TF-CAT-010 | `libros/otros/tratado-funciones/capitulo-10.qmd` | publication-candidate |
-| MA-BCH-0127 | book-chapter | TF-T1-C11 | TF-CAT-011 | `libros/otros/tratado-funciones/capitulo-11.qmd` | publication-candidate |
-| MA-BCH-0128 | book-chapter | TF-T1-C12 | TF-CAT-012 | `libros/otros/tratado-funciones/capitulo-12.qmd` | publication-candidate |
-| MA-BCH-0129 | book-chapter | TF-T1-C13 | TF-CAT-013 | `libros/otros/tratado-funciones/capitulo-13.qmd` | publication-candidate |
-| MA-BCH-0130 | book-chapter | TF-T1-C14 | TF-CAT-014 | `libros/otros/tratado-funciones/capitulo-14.qmd` | publication-candidate |
-| MA-BCH-0131 | book-chapter | TF-T1-C15 | TF-CAT-015 | `libros/otros/tratado-funciones/capitulo-15.qmd` | publication-candidate |
-| MA-BCH-0132 | book-chapter | TF-T1-C16 | TF-CAT-016 | `libros/otros/tratado-funciones/capitulo-16.qmd` | publication-candidate |
-| MA-BCH-0133 | book-chapter | TF-T1-C17 | TF-CAT-017 | `libros/otros/tratado-funciones/capitulo-17.qmd` | publication-candidate |
-| MA-BCH-0134 | book-chapter | TF-T1-C18 | TF-CAT-018 | `libros/otros/tratado-funciones/capitulo-18.qmd` | publication-candidate |
+| MA-BOK-0011 | book | TF-T1 | TF-000 | `libros/otros/tratado-funciones/index.qmd` | published |
+| MA-BCH-0117 | book-chapter | TF-T1-C01 | TF-CAT-001 | `libros/otros/tratado-funciones/capitulo-01.qmd` | published |
+| MA-BCH-0118 | book-chapter | TF-T1-C02 | TF-CAT-002 | `libros/otros/tratado-funciones/capitulo-02.qmd` | published |
+| MA-BCH-0119 | book-chapter | TF-T1-C03 | TF-CAT-003 | `libros/otros/tratado-funciones/capitulo-03.qmd` | published |
+| MA-BCH-0120 | book-chapter | TF-T1-C04 | TF-CAT-004 | `libros/otros/tratado-funciones/capitulo-04.qmd` | published |
+| MA-BCH-0121 | book-chapter | TF-T1-C05 | TF-CAT-005 | `libros/otros/tratado-funciones/capitulo-05.qmd` | published |
+| MA-BCH-0122 | book-chapter | TF-T1-C06 | TF-CAT-006 | `libros/otros/tratado-funciones/capitulo-06.qmd` | published |
+| MA-BCH-0123 | book-chapter | TF-T1-C07 | TF-CAT-007 | `libros/otros/tratado-funciones/capitulo-07.qmd` | published |
+| MA-BCH-0124 | book-chapter | TF-T1-C08 | TF-CAT-008 | `libros/otros/tratado-funciones/capitulo-08.qmd` | published |
+| MA-BCH-0125 | book-chapter | TF-T1-C09 | TF-CAT-009 | `libros/otros/tratado-funciones/capitulo-09.qmd` | published |
+| MA-BCH-0126 | book-chapter | TF-T1-C10 | TF-CAT-010 | `libros/otros/tratado-funciones/capitulo-10.qmd` | published |
+| MA-BCH-0127 | book-chapter | TF-T1-C11 | TF-CAT-011 | `libros/otros/tratado-funciones/capitulo-11.qmd` | published |
+| MA-BCH-0128 | book-chapter | TF-T1-C12 | TF-CAT-012 | `libros/otros/tratado-funciones/capitulo-12.qmd` | published |
+| MA-BCH-0129 | book-chapter | TF-T1-C13 | TF-CAT-013 | `libros/otros/tratado-funciones/capitulo-13.qmd` | published |
+| MA-BCH-0130 | book-chapter | TF-T1-C14 | TF-CAT-014 | `libros/otros/tratado-funciones/capitulo-14.qmd` | published |
+| MA-BCH-0131 | book-chapter | TF-T1-C15 | TF-CAT-015 | `libros/otros/tratado-funciones/capitulo-15.qmd` | published |
+| MA-BCH-0132 | book-chapter | TF-T1-C16 | TF-CAT-016 | `libros/otros/tratado-funciones/capitulo-16.qmd` | published |
+| MA-BCH-0133 | book-chapter | TF-T1-C17 | TF-CAT-017 | `libros/otros/tratado-funciones/capitulo-17.qmd` | published |
+| MA-BCH-0134 | book-chapter | TF-T1-C18 | TF-CAT-018 | `libros/otros/tratado-funciones/capitulo-18.qmd` | published |
 
 
 ### Reconciliación de reservas TF — 2026-10-01
 
 La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. CI sobre el árbol integrado detectó que Cálculo ya publicó MA-BCH-0099…0109, aunque el registro de main no lo indicaba. Se conserva la identidad de esas piezas publicadas y se sustituye la reserva del candidato TF por MA-BCH-0117…0134. Los IDs matemáticos TF-CAT/AX/DEF/THM/EXA/CEX se conservan. No reutilizar las reservas TF abandonadas 0110…0116.
 
-| ID editorial | Reserva TF anterior | Candidato TF actual |
+| ID editorial | Reserva TF anterior | ID TF publicado |
 |---|---|---|
 | TF-CAT-001 | MA-BCH-0099 | MA-BCH-0117 |
 | TF-CAT-002 | MA-BCH-0100 | MA-BCH-0118 |
