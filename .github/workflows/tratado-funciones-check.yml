@@ -1,8 +1,11 @@
-name: Tratado de funciones draft QA
+name: Tratado de funciones publication QA
 on:
   pull_request:
     paths:
       - 'libros/otros/tratado-funciones/**'
+      - 'libros/index.qmd'
+      - 'libros/otros/index.qmd'
+      - 'references.bib'
       - 'tests/tratado_funciones_static.py'
       - 'tests/tratado_funciones_browser.cjs'
       - '.github/workflows/tratado-funciones-check.yml'
@@ -21,9 +24,11 @@ jobs:
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
-      - name: Render review pages without publishing
+      - name: Render publication candidate
         run: |
-          quarto render libros/otros/tratado-funciones --to html -M draft:false
+          quarto render libros/otros/tratado-funciones --to html
+          quarto render libros/index.qmd --to html
+          quarto render libros/otros/index.qmd --to html
           quarto render teoria/resultados/index.qmd --to html
           quarto render teoria/metodos/index.qmd --to html
       - name: Validate rendered anchors
