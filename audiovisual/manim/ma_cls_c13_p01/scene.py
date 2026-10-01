@@ -660,3 +660,139 @@ class MAVizC13SignedIntegralVsArea(Scene):
 
         self.play(FadeIn(comparison), FadeIn(conclusion), run_time=0.85)
         self.wait(1.5)
+
+
+
+def fade_to_background(scene: Scene, run_time=0.6):
+    """Cierra completamente un bloque antes de abrir el siguiente."""
+    if scene.mobjects:
+        scene.play(FadeOut(Group(*list(scene.mobjects))), run_time=run_time)
+    scene.clear()
+
+
+def fit_to_frame(mob, margin=1.0):
+    max_width = config.frame_width - 2 * margin
+    if mob.width > max_width:
+        mob.scale_to_fit_width(max_width)
+    return mob
+
+
+def play_opening(scene: Scene):
+    title = Text(
+        "Del área a las sumas",
+        font_size=46,
+        color=MA_TEXT,
+        weight=BOLD,
+    )
+    subtitle = Text(
+        "Tres ideas para entrar en la teoría integral",
+        font_size=25,
+        color=MA_MUTED,
+    )
+    tag = Text(
+        "Matemática Abierta · Cálculo para matemáticos · capítulo 13",
+        font_size=16,
+        color=MA_MUTED,
+    )
+
+    block = VGroup(title, subtitle, tag).arrange(DOWN, buff=0.28)
+    fit_to_frame(block, margin=1.2)
+    block.move_to(ORIGIN)
+
+    scene.play(FadeIn(block, shift=UP * 0.10), run_time=0.75)
+    scene.wait(1.25)
+    scene.play(FadeOut(block), run_time=0.55)
+    scene.clear()
+
+
+def play_bridge(scene: Scene, *lines: str):
+    bridge = Paragraph(
+        *lines,
+        alignment="center",
+        font_size=28,
+        color=MA_TEXT,
+        line_spacing=0.85,
+    )
+    fit_to_frame(bridge, margin=1.4)
+    bridge.move_to(ORIGIN)
+
+    scene.play(FadeIn(bridge), run_time=0.45)
+    scene.wait(1.15)
+    scene.play(FadeOut(bridge), run_time=0.45)
+    scene.clear()
+
+
+def play_closing(scene: Scene):
+    left = Text("encerrar", font_size=28, color=MA_GREEN)
+    middle = Text("sumar", font_size=28, color=MA_BLUE)
+    right = Text("distinguir signo y área", font_size=28, color=MA_ORANGE)
+
+    arrow_1 = Arrow(
+        ORIGIN, RIGHT,
+        buff=0,
+        color=MA_MUTED,
+        stroke_width=2.2,
+        max_tip_length_to_length_ratio=0.14,
+    ).scale(0.55)
+    arrow_2 = arrow_1.copy()
+
+    row = VGroup(left, arrow_1, middle, arrow_2, right).arrange(
+        RIGHT, buff=0.32
+    )
+    fit_to_frame(row, margin=0.8)
+
+    title = Text(
+        "Tres pasos, tres ideas distintas",
+        font_size=24,
+        color=MA_MUTED,
+    )
+    block = VGroup(title, row).arrange(DOWN, buff=0.42)
+    block.move_to(ORIGIN)
+
+    scene.play(FadeIn(title), run_time=0.45)
+    scene.play(
+        LaggedStart(
+            FadeIn(left),
+            GrowArrow(arrow_1),
+            FadeIn(middle),
+            GrowArrow(arrow_2),
+            FadeIn(right),
+            lag_ratio=0.16,
+        ),
+        run_time=1.3,
+    )
+    scene.wait(1.35)
+    scene.play(FadeOut(block), run_time=0.55)
+    scene.clear()
+
+
+class MAClsC13P01(Scene):
+    """MA-CLS-C13-P01 — ensamblaje silencioso de la primera microclase."""
+
+    def construct(self):
+        self.camera.background_color = MA_BG
+
+        play_opening(self)
+
+        MAVizC13RiemannRefinement.construct(self)
+        fade_to_background(self)
+
+        play_bridge(
+            self,
+            "Refinar controla la incertidumbre.",
+            "Ahora falta entender qué se suma.",
+        )
+
+        MAVizC13RiemannTermToSum.construct(self)
+        fade_to_background(self)
+
+        play_bridge(
+            self,
+            "Una suma puede acumular cantidades",
+            "positivas y negativas.",
+        )
+
+        MAVizC13SignedIntegralVsArea.construct(self)
+        fade_to_background(self)
+
+        play_closing(self)

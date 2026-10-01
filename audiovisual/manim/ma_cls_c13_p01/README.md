@@ -63,3 +63,16 @@ Archivos de control:
 - `ASSEMBLY.md` — reglas de montaje.
 
 Regla `MA-M05`: **la unidad de montaje es la idea matemática, no el clip**.
+
+
+## Render de la microclase completa
+
+Preview silencioso del ensamblaje:
+
+    uv run manim -pql ma_cls_c13_p01/scene.py MAClsC13P01
+
+Alta calidad:
+
+    uv run manim -pqh ma_cls_c13_p01/scene.py MAClsC13P01
+
+Este render sirve para QA de continuidad visual. La duración definitiva se ajustará después con una locución de referencia.
