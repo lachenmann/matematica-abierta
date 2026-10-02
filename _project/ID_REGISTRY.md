@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0135 |
+| Capítulo | MA-BCH-0136 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0012 |
 
@@ -260,3 +260,10 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | TF-CAT-016 | MA-BCH-0114 | MA-BCH-0132 |
 | TF-CAT-017 | MA-BCH-0115 | MA-BCH-0133 |
 | TF-CAT-018 | MA-BCH-0116 | MA-BCH-0134 |
+
+## Tratado moderno de Álgebra — cierre editorial 2026-10-02
+
+| ID público | Tipo | ID canónico | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0135 | book-chapter | TALG-0032 | `libros/capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md` | published |
+
