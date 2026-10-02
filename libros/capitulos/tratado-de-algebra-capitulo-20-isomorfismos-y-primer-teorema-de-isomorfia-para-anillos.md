@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 20 — Isomorfismos y primer teorema de isomorfía para anillos
-
 ## 20.0. Propósito y posición deductiva
 
 La teoría desarrollada hasta aquí dispone ya de las cuatro piezas necesarias para el primer teorema de isomorfía en anillos:

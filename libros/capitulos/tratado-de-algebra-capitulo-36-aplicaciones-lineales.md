@@ -36,8 +36,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 36 — Aplicaciones lineales
-
 ## 36.0. Propósito y posición deductiva
 
 Una aplicación lineal conserva suma y escalares del mismo cuerpo. Se demuestran las propiedades de núcleo e imagen, la construcción del [espacio libre de soporte finito](#talg-pro-00114), la determinación de un mapa por una [base dada](#talg-thm-00038) y [rango-nulidad en dimensión finita](#talg-thm-00039). El espacio libre prepara también la construcción tensorial posterior.

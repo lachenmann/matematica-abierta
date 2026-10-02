@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 22 — Cuerpos y subcuerpos
-
 ## 22.0. Propósito y posición deductiva
 
 La Parte III dejó construida la jerarquía

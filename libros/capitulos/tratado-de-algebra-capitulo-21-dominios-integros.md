@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 21 — Dominios íntegros
-
 ## 21.0. Propósito y posición deductiva
 
 La teoría construida hasta aquí permite aislar una clase fundamental de anillos conmutativos. Ya disponemos de:

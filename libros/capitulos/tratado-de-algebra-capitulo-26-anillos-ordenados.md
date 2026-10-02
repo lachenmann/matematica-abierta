@@ -26,8 +26,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 26 — Anillos ordenados
-
 ## 26.0. El problema: hacer compatible el orden con dos operaciones
 
 Un grupo ordenado combina una operación con una relación de orden. Un anillo introduce una dificultad nueva: sobre el mismo conjunto conviven **suma** y **multiplicación**, y el orden no interactúa con ambas de la misma manera.

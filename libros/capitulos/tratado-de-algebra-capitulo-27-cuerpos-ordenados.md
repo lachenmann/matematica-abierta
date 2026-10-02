@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 27 — Cuerpos ordenados
-
 ## 27.0. El problema: introducir la división sin perder el orden
 
 El capítulo 22 construyó los cuerpos como **anillos conmutativos no triviales** en los que todo elemento no nulo es invertible (Definición 22.1.1). El capítulo 26 construyó independientemente los anillos totalmente ordenados (Definición 26.12.1): el grupo aditivo es totalmente ordenado y el conjunto de elementos no negativos es cerrado bajo multiplicación.

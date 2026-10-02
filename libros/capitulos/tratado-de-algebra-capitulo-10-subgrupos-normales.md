@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 10 — Subgrupos normales
-
 ## 10.0. Propósito y posición deductiva
 
 El capítulo anterior asoció a cada homomorfismo de grupos dos subgrupos canónicos: su núcleo y su imagen. Para construir cocientes de grupos no basta, sin embargo, con disponer de un subgrupo cualquiera. Es necesario aislar una condición adicional que permita que la multiplicación de representantes descienda de manera coherente a las clases laterales.

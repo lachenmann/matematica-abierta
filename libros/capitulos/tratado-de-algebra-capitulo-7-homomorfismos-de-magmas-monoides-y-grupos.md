@@ -36,8 +36,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 7 — Homomorfismos de magmas, monoides y grupos
-
 ## 7.0. Propósito y criterio de economía axiomática
 
 Una estructura algebraica no se estudia solamente por sus elementos y operaciones, sino también por las funciones que respetan esas operaciones. El objetivo de este capítulo es introducir la noción de **homomorfismo** en el nivel mínimo —los magmas— y especializarla después a semigrupos, monoides y grupos.

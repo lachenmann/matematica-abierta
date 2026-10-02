@@ -29,8 +29,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 29 — Productos directos y propiedades universales
-
 ## 29.0. Por qué la Parte VI comienza aquí
 
 Las Partes II–V ya construyeron homomorfismos, núcleos, imágenes, cocientes, isomorfismos y primeros teoremas de isomorfía para grupos y anillos. Por tanto, la Parte VI no debe volver a demostrar que

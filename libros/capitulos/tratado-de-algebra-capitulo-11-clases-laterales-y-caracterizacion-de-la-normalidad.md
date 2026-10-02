@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 11 — Clases laterales y caracterización de la normalidad
-
 ## 11.0. Propósito y posición deductiva
 
 El capítulo anterior introdujo la normalidad mediante estabilidad bajo conjugación, deliberadamente antes de hablar de clases laterales. Ahora construiremos esas clases como subconjuntos explícitamente definidos del grupo ambiente y demostraremos las propiedades que hacen posible el paso posterior a los cocientes.

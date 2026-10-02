@@ -37,8 +37,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 39 — Multilinealidad y formas
-
 ## 39.0. Propósito y posición deductiva
 
 Se trabaja con un número positivo y finito de entradas. Se generaliza la [expansión bilineal](tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md#talg-pro-00118), y se distinguen [simetría, alternancia y cambio de signo](#talg-def-00080) sobre [cuerpos](tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md#talg-def-00048) de cualquier característica.
@@ -132,8 +130,8 @@ Si $2_F=0$, todo $t\in F$ cumple $t+t=(1_F+1_F)t=0$, por lo que $-t=t$. La [mult
 
 ## 39.99. Síntesis
 
-La multilinealidad se obtiene imponiendo linealidad separada en un número positivo y finito de variables. La expansión sobre bases dadas sigue siendo finita, y la distinción entre simetría, alternancia y cambio de signo conserva explícitamente la excepción de característica dos. No se introduce todavía producto tensorial ni álgebra exterior.
+La multilinealidad se obtiene imponiendo linealidad separada en un número positivo y finito de variables. La expansión sobre bases dadas sigue siendo finita, y la distinción entre simetría, alternancia y cambio de signo conserva explícitamente la excepción de característica dos. No se introduce todavía [producto tensorial](tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md) ni álgebra exterior.
 
 ---
 
-[← **Capítulo 38 — Aplicaciones bilineales**](tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 38 — Aplicaciones bilineales**](tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) · [**Capítulo 40 — Infraestructura tensorial mínima →**](tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)

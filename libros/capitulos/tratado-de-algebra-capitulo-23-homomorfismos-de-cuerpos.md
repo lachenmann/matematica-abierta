@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 23 — Homomorfismos de cuerpos
-
 ## 23.0. Propósito y convención
 
 El capítulo anterior definió los cuerpos como anillos conmutativos, no triviales y con todos sus elementos no nulos invertibles. Corresponde ahora fijar la noción de morfismo compatible con esa estructura.

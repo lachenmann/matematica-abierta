@@ -32,8 +32,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Interfaz fundacional III — Relaciones de equivalencia y cocientes
-
 **Coordenada deductiva:** `TALG-0016`  
 **Importación interna:** `TALG-IMP-00003`
 

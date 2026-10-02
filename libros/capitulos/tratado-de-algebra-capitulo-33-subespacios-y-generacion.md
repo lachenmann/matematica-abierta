@@ -32,8 +32,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 33 — Subespacios y generación
-
 ## 33.0. Propósito y posición deductiva
 
 Una subestructura vectorial debe conservar suma y acción escalar. Se construye la generación mediante combinaciones finitas, sin presuponer bases. Las sumas se definen mediante la [recursión natural](tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md#talg-imp-00006), y su independencia del orden se prueba antes de emplear conjuntos finitos sin enumeración distinguida.

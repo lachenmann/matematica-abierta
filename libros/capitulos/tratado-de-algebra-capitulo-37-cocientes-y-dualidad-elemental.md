@@ -38,8 +38,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 37 — Cocientes y dualidad elemental
-
 ## 37.0. Propósito y posición deductiva
 
 El [cociente aditivo](tratado-de-algebra-capitulo-12-cocientes-de-grupos.md#talg-thm-00005) ya existe. La tarea nueva es demostrar que la acción escalar desciende y, después, añadir factorización lineal e isomorfía.

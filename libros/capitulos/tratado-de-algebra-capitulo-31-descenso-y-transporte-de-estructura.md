@@ -31,8 +31,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 31 — Descenso y transporte de estructura
-
 ## 31.0. Propósito y posición deductiva
 
 Los capítulos 29 y 30 establecieron las propiedades universales de los cocientes, los teoremas de isomorfía superiores y las correspondencias de subestructuras sobre cocientes. Este capítulo sistematiza el paso de un homomorfismo compatible con los subgrupos normales o ideales elegidos a un homomorfismo inducido entre sus cocientes.

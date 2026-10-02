@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 12 — Cocientes de grupos
-
 ## 12.0. Propósito y posición deductiva
 
 Ya disponemos de subgrupos normales y de clases laterales. Falta realizar el paso decisivo: convertir las clases laterales en elementos de un nuevo conjunto y demostrar que la multiplicación de representantes produce una operación independiente de la representación elegida.

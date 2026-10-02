@@ -28,8 +28,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 28 — Propiedades arquimedianas
-
 ## 28.0. El problema: comparar escalas finitas sin introducir completitud
 
 Los capítulos 25–27 han construido el orden compatible con las operaciones hasta llegar a los cuerpos ordenados. Falta aislar una propiedad de **escala** que no forma parte de la definición de cuerpo ordenado: la posibilidad de sobrepasar cualquier elemento mediante un número finito de copias de una unidad positiva, o, en formulaciones equivalentes, de hacer suficientemente grande un múltiplo natural de un elemento positivo.

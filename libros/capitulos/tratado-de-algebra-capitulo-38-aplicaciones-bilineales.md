@@ -35,8 +35,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 38 — Aplicaciones bilineales
-
 ## 38.0. Propósito y posición deductiva
 
 La bilinealidad exige [linealidad](tratado-de-algebra-capitulo-36-aplicaciones-lineales.md#talg-def-00075) en cada entrada por separado. El objetivo es controlar combinaciones en ambas variables, construir [ejemplos](#talg-pro-00118) y demostrar que los valores sobre parejas de vectores de [bases dadas](tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md#talg-def-00073) [determinan toda la aplicación](#talg-thm-00042). No se usa bilineal como sinónimo de lineal en el producto.

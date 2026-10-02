@@ -31,8 +31,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 3 — Elementos neutros y monoides
-
 ## 3.0. Propósito y posición deductiva
 
 Un semigrupo aporta una operación interna asociativa, pero todavía no contiene un elemento que pueda insertarse sin alterar los demás elementos. Esa propiedad será el siguiente nivel estructural.

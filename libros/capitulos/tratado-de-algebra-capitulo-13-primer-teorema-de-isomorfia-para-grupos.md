@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 13 — Primer teorema de isomorfía para grupos
-
 ## 13.0. Propósito y posición deductiva
 
 Ya disponemos de todas las piezas que el primer teorema de isomorfía necesita: núcleo, imagen, normalidad del núcleo, grupos cociente e isomorfismos. El objetivo de este capítulo es mostrar que esas piezas no son construcciones independientes, sino partes de una misma estructura.

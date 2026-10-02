@@ -30,8 +30,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 30 — Teoremas de isomorfía superiores y correspondencia
-
 ## 30.0. Propósito y posición deductiva
 
 El capítulo 29 estableció las propiedades universales de productos, cocientes y cuerpo de fracciones. En este capítulo, los primeros teoremas de isomorfía para [grupos](tratado-de-algebra-capitulo-13-primer-teorema-de-isomorfia-para-grupos.md#talg-thm-00006) y [anillos](tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md#talg-thm-00012), junto con las propiedades universales de los cocientes, permiten organizar los resultados superiores de isomorfía.

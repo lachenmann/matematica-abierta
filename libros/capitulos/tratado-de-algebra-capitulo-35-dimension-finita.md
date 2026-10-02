@@ -34,8 +34,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 35 — Dimensión finita
-
 ## 35.0. Propósito y posición deductiva
 
 La dimensión natural debe ser independiente de la base elegida. Se demuestra [intercambio finito](#talg-lem-00010) antes de [definirla](#talg-def-00074); después se obtienen el control de subespacios y las fórmulas de suma.

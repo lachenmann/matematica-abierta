@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 19 — Cocientes de anillos
-
 ## 19.0. Propósito y posición deductiva
 
 Un ideal bilateral no sólo aparece como núcleo de un homomorfismo: también determina exactamente la relación de congruencia necesaria para identificar elementos de un anillo sin destruir la suma ni el producto.

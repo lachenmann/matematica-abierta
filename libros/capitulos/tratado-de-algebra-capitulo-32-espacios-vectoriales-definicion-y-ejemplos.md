@@ -32,8 +32,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 32 — Espacios vectoriales: definición y ejemplos
-
 ## 32.0. Propósito y posición deductiva
 
 Un [grupo abeliano](tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md#talg-def-00010) permite sumar vectores; una acción de un [cuerpo](tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md#talg-def-00048) permite variar su escala. La compatibilidad entre ambas operaciones define el espacio vectorial. Se fija un cuerpo conmutativo arbitrario $F$. Los ejemplos se construyen como conjuntos de funciones, sin presuponer coordenadas o bases.

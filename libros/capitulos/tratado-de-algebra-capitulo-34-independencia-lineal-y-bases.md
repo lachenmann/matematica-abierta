@@ -34,8 +34,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 34 — Independencia lineal y bases
-
 ## 34.0. Propósito y posición deductiva
 
 Generar proporciona expresiones; la independencia controla su unicidad. Se distinguen listas finitas, familias arbitrarias con combinaciones finitas y bases como conjuntos.

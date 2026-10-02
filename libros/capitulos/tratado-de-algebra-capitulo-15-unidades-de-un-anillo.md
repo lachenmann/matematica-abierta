@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 15 — Unidades de un anillo
-
 ## 15.0. Propósito y terminología
 
 En un anillo, el símbolo $1$ denota el **elemento neutro de la multiplicación**. La palabra **unidad**, en cambio, se reservará para un elemento que posee inverso multiplicativo bilateral. Esta distinción es esencial: $1$ es un elemento distinguido que existe en todo anillo según nuestra convención, mientras que una unidad es cualquier elemento que satisface una propiedad adicional.
