@@ -1,6 +1,7 @@
 from manim import *
 from pathlib import Path
 import json
+import sys
 
 # -----------------------------------------------------------------------------
 # Cálculo para matemáticos — Video 1 — Preview local de animaciones
@@ -21,12 +22,19 @@ VIOLET = "#B794F4"
 config.background_color = BG
 
 MANIM_ROOT = Path(__file__).resolve().parents[1]
+COMMON_ROOT = MANIM_ROOT / "escenas" / "comunes"
+if str(COMMON_ROOT) not in sys.path:
+    sys.path.insert(0, str(COMMON_ROOT))
+
+from intro_canal import IntroCanal
+from marca import play_bouncy_a_squared
+
 VOICE_ROOT = MANIM_ROOT / "cpm_yt_c01_v01" / "voice-reference"
 TIMING_FILE = VOICE_ROOT / "voice-reference-timing.json"
 AUDIO_FILE = VOICE_ROOT / "audio" / "CPM-YT-C01-V01-reference.wav"
 
 
-class CPMYTC01V01Production(Scene):
+class CPMYTC01V01Production(IntroCanal):
     """Render de producción sincronizado con la toma continua de Reaper."""
 
     def construct(self):
@@ -34,9 +42,23 @@ class CPMYTC01V01Production(Scene):
         self.load_voice_reference()
         self.sync_to("c01v01-00-start")
 
-        # 01 — Apertura algebraica
-        self.section_title("Aritmética conocida")
+        # 00 — Intro canónica del canal durante la bienvenida.
+        IntroCanal.construct(self)
+
+        # El logomark a² ocupa el resto de la introducción hablada.
+        opening_mark = play_bouncy_a_squared(
+            self,
+            scale=1.0,
+            center=ORIGIN,
+        )
+
+        # 01 — El título temático aparece sólo cuando comienza el contenido.
         self.sync_to("c01v01-01-aritmetica")
+        for obj in opening_mark:
+            obj.clear_updaters()
+        self.play(FadeOut(opening_mark), run_time=0.30)
+        self.section_title("Aritmética conocida")
+
         arithmetic = MathTex(
             r"2+3=5", r"\qquad", r"2\cdot3=6", r"\qquad",
             r"2\cdot x=1\Longrightarrow x=\frac12",
