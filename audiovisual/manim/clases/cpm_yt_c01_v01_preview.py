@@ -51,17 +51,17 @@ class CPMYTC01V01Preview(Scene):
         self.play(LaggedStart(*[FadeIn(m, shift=0.18 * RIGHT) for m in chain], lag_ratio=0.10))
         self.hold(0.6)
 
-        # Primero una proposición verdadera dentro de los naturales.
+        # Una proposición verdadera en N.
         expr = MathTex(
             r"3", r"+", r"5", r"=", r"8",
             color=FG,
-        ).scale(1.5).to_edge(DOWN, buff=1.05)
+        ).scale(1.5).to_edge(DOWN, buff=1.0)
         expr[4].set_color(BLUE)
         marker = SurroundingRectangle(chain[0], color=BLUE, buff=0.12)
         self.play(Create(marker), FadeIn(expr))
         self.hold(0.55)
 
-        # Cambia la operación y, con ella, cambia el resultado.
+        # Cambian la operación y el resultado, pero no los operandos.
         minus = MathTex(r"-", color=RED).scale(1.5).move_to(expr[1].get_center())
         negative_two = MathTex(r"-2", color=RED).scale(1.5).move_to(expr[4].get_center())
         self.play(
@@ -70,29 +70,49 @@ class CPMYTC01V01Preview(Scene):
             run_time=0.75,
             rate_func=smooth,
         )
-        self.hold(0.4)
+        self.hold(0.35)
 
         not_natural = MathTex(r"-2\notin\mathbb N", color=RED).scale(1.0)
-        not_natural.next_to(expr, DOWN, buff=0.45)
+        not_natural.next_to(expr, DOWN, buff=0.38)
         self.play(FadeIn(not_natural, shift=0.10 * UP))
-        self.hold(0.6)
+        self.hold(0.55)
 
-        # El resultado ya no pertenece a N: ampliamos a Z.
+        # Z resuelve exactamente el problema anterior.
+        in_integers = MathTex(r"-2\in\mathbb Z", color=ORANGE).scale(1.0)
+        in_integers.next_to(expr, DOWN, buff=0.38)
         self.play(
             marker.animate.move_to(chain[2]).set_color(ORANGE),
-            not_natural.animate.set_opacity(0.55),
+            FadeOut(not_natural),
+            FadeIn(in_integers, shift=0.10 * UP),
             run_time=0.8,
         )
-        self.hold(0.45)
-        self.play(FadeOut(expr), FadeOut(not_natural), FadeOut(marker))
+        self.hold(0.55)
+        self.play(FadeOut(expr), FadeOut(in_integers))
 
-        eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.25)
+        # Ahora aparece un problema nuevo dentro de Z.
+        eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.0)
+        self.play(FadeIn(eq))
+        self.hold(0.35)
+
         half = MathTex(r"x=\frac12", color=GREEN).scale(1.35).move_to(eq)
-        marker2 = SurroundingRectangle(chain[2], color=ORANGE, buff=0.12)
-        self.play(FadeIn(eq), Create(marker2))
-        self.play(TransformMatchingTex(eq, half), marker2.animate.move_to(chain[4]))
-        self.hold(0.6)
-        self.clear_stage(chain, half, marker2)
+        self.play(TransformMatchingTex(eq, half))
+        self.hold(0.35)
+
+        half_not_z = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.0)
+        half_not_z.next_to(half, DOWN, buff=0.38)
+        self.play(FadeIn(half_not_z, shift=0.10 * UP))
+        self.hold(0.55)
+
+        half_in_q = MathTex(r"\frac12\in\mathbb Q", color=GREEN).scale(1.0)
+        half_in_q.next_to(half, DOWN, buff=0.38)
+        self.play(
+            marker.animate.move_to(chain[4]).set_color(GREEN),
+            FadeOut(half_not_z),
+            FadeIn(half_in_q, shift=0.10 * UP),
+            run_time=0.8,
+        )
+        self.hold(0.55)
+        self.clear_stage(chain, half, half_in_q, marker)
 
         # 03 — Spoiler tenue
         spoiler = Tex(r"Spoiler: supremo", color=MUTED).scale(0.78)
@@ -211,15 +231,56 @@ class CPMYTC01V01Preview(Scene):
 
         # 21 — Capa algebraica / capa de orden
         self.section_title("Siguiente capa: orden")
-        algebra = Tex(r"Capa algebraica", color=BLUE).scale(0.95)
-        order = Tex(r"Capa de orden", color=GREEN).scale(0.95)
-        layers = VGroup(algebra, order).arrange(DOWN, buff=0.75)
-        relation = MathTex(r"2<3", color=FG).scale(1.55).next_to(order, DOWN, buff=0.7)
-        self.play(FadeIn(algebra, shift=0.15 * RIGHT))
-        self.play(FadeIn(order, shift=0.15 * RIGHT))
-        self.play(Write(relation))
+
+        algebra_box = RoundedRectangle(
+            width=7.2, height=1.55, corner_radius=0.16,
+            color=BLUE, stroke_width=2.0,
+        ).move_to([0, 0.75, 0])
+        algebra_title = Tex(r"Capa algebraica", color=BLUE).scale(0.82)
+        algebra_title.move_to(algebra_box.get_center() + 0.35 * UP)
+        algebra_symbols = MathTex(
+            r"+", r"\qquad", r"\cdot", r"\qquad", r"0", r"\qquad", r"1",
+            color=FG,
+        ).scale(1.0).move_to(algebra_box.get_center() + 0.28 * DOWN)
+
+        algebra_group = VGroup(algebra_box, algebra_title, algebra_symbols)
+        self.play(Create(algebra_box))
+        self.play(FadeIn(algebra_title), FadeIn(algebra_symbols))
+        self.hold(0.45)
+
+        # La estructura ya construida sube para dejar entrar una nueva capa.
+        self.play(algebra_group.animate.shift(0.75 * UP), run_time=0.7)
+
+        order_box = RoundedRectangle(
+            width=7.2, height=1.45, corner_radius=0.16,
+            color=GREEN, stroke_width=2.0,
+        ).move_to([0, -0.65, 0])
+        order_title = Tex(r"Capa de orden", color=GREEN).scale(0.82)
+        order_title.move_to(order_box.get_center() + 0.32 * UP)
+
+        two = MathTex(r"2", color=FG).scale(1.45).move_to([-0.85, -0.92, 0])
+        three = MathTex(r"3", color=FG).scale(1.45).move_to([0.85, -0.92, 0])
+        less = MathTex(r"<", color=GREEN).scale(1.45).move_to([0, -0.92, 0])
+
+        self.play(FadeIn(order_box, shift=0.22 * UP), FadeIn(order_title, shift=0.22 * UP))
+        self.play(FadeIn(two), FadeIn(three))
+        self.hold(0.25)
+
+        # La nueva relación entra entre los mismos objetos.
+        self.play(GrowFromCenter(less), run_time=0.55)
+        self.hold(0.45)
+
+        proposition = MathTex(r"2<3", color=FG).scale(1.55).move_to([0, -2.15, 0])
+        proposition[0][1].set_color(GREEN) if len(proposition[0]) > 1 else None
+        self.play(FadeIn(proposition, shift=0.10 * UP))
         self.hold(0.8)
-        self.clear_stage(layers, relation)
+
+        self.clear_stage(
+            algebra_group,
+            order_box, order_title,
+            two, less, three,
+            proposition,
+        )
 
         # 22 — Cierre
         closing = Tex(r"Fin del preview local", color=MUTED).scale(0.82)
