@@ -516,9 +516,9 @@ class CPMYTC01V01Preview(Scene):
     # ------------------------------------------------------------------
     def axiom_summary(self):
         condition = VGroup(
-            Tex(r"Condición estructural", color=MUTED).scale(0.55),
-            MathTex(r"0\neq1", color=GREEN).scale(0.9),
-        ).arrange(RIGHT, buff=0.35).to_edge(UP, buff=1.35)
+            Tex(r"Condición estructural", color=MUTED).scale(0.68),
+            MathTex(r"0\neq1", color=GREEN).scale(1.05),
+        ).arrange(RIGHT, buff=0.38).move_to([0, 2.15, 0])
 
         labels = [
             ("1", "Asociatividad de la suma", r"a+(b+c)=(a+b)+c"),
@@ -531,20 +531,32 @@ class CPMYTC01V01Preview(Scene):
             ("8", "Conmutatividad del producto", r"a\cdot b=b\cdot a"),
             ("9", "Distributividad", r"a\cdot(b+c)=a\cdot b+a\cdot c"),
         ]
+
         rows = VGroup()
-        for n, name, formula in labels:
-            n_obj = MathTex(n, color=MUTED).scale(0.52)
-            name_obj = Tex(name, color=FG).scale(0.46)
-            formula_obj = MathTex(formula, color=FG).scale(0.50)
-            row = VGroup(n_obj, name_obj, formula_obj)
-            n_obj.set_x(-5.35)
-            name_obj.set_x(-2.95)
-            formula_obj.set_x(2.35)
-            rows.add(row)
-        rows.arrange(DOWN, buff=0.17, center=False, aligned_edge=LEFT).shift(0.35 * DOWN)
+        first_y = 1.32
+        row_step = 0.47
+
+        for i, (n, name, formula) in enumerate(labels):
+            y = first_y - i * row_step
+
+            n_obj = MathTex(n, color=MUTED).scale(0.64)
+            name_obj = Tex(name, color=FG).scale(0.58)
+            formula_obj = MathTex(formula, color=FG).scale(0.62)
+
+            n_obj.move_to([-5.45, y, 0])
+            name_obj.move_to([-2.75, y, 0])
+            formula_obj.move_to([2.25, y, 0])
+
+            rows.add(VGroup(n_obj, name_obj, formula_obj))
 
         self.play(FadeIn(condition))
-        self.play(LaggedStart(*[FadeIn(row, shift=0.08 * RIGHT) for row in rows], lag_ratio=0.08), run_time=2.1)
+        self.play(
+            LaggedStart(
+                *[FadeIn(row, shift=0.06 * RIGHT) for row in rows],
+                lag_ratio=0.07,
+            ),
+            run_time=2.0,
+        )
         self.hold(1.0)
         self.play(FadeOut(condition), FadeOut(rows), run_time=0.55)
         self.clear_stage()
