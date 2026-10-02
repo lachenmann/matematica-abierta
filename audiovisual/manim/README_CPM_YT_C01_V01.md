@@ -44,3 +44,30 @@ uv run manim -pqh --disable_caching .\clases\cpm_yt_c01_v01_preview.py CPMYTC01V
 - El preview no fija todavía la sincronía definitiva con el audio.
 
 No grabar el audio definitivo hasta aprobar el render local.
+
+
+## Render sincronizado con la voz definitiva
+
+La toma continua de Reaper se conserva localmente, fuera de Git:
+
+```text
+cpm_yt_c01_v01\voice-reference\CPM-YT-C01-V01-reference.rpp
+cpm_yt_c01_v01\voice-reference\audio\CPM-YT-C01-V01-reference.wav
+```
+
+Los tiempos canónicos extraídos de los 39 marcadores se guardan en:
+
+```text
+cpm_yt_c01_v01\voice-reference\voice-reference-timing.json
+```
+
+El render de producción se genera con:
+
+```powershell
+cd D:\MatematicaAbierta-Main\audiovisual\manim
+.\render-cpm-yt-c01-v01-production.ps1
+```
+
+El script vuelve a analizar el `.rpp` antes de renderizar y usa la clase
+`CPMYTC01V01Production`. El preview mudo permanece separado como referencia
+visual aprobada.
