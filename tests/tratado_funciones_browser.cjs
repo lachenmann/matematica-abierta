@@ -41,7 +41,7 @@ const path=require('node:path');
     console.log(`${width}px ${name}: width=${data.bodyWidth}, math=${data.mathRendered}, errors=${errors.length}`);
     page.off('pageerror',handler);
     page.off('response',resourceHandler);
-    if(['index','capitulo-01','capitulo-16','matriz-hipotesis','apendice-d','bibliografia'].includes(name))
+    if(['index','capitulo-01','capitulo-16','matriz-hipotesis','apendice-b','apendice-d','bibliografia'].includes(name))
      await page.screenshot({path:path.join(out,`${name}-${width}-${theme}.png`),fullPage:true});
     if(data.bodyWidth>data.viewport+2){
      const diagnostics=await page.evaluate(()=>({scrollX,rootWidth:document.documentElement.clientWidth,
