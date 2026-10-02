@@ -53,7 +53,7 @@ const pages=['libros/otros/tratado-de-algebra.html','libros/tratados/index.html'
     await page.screenshot({path:path.join(out,name+'-'+width+'-'+theme+'.png')});
     if(file==='libros/otros/tratado-de-algebra.html'){
      const locations=[
-      ['edition',page.getByRole('heading',{name:'Edición web completa',exact:true})],
+      ['edition',page.getByRole('heading',{name:/^Edición web completa/})],
       ['contents',page.locator('#parte-0')],
       ['closure',page.locator('#parte-viii')]
      ];
