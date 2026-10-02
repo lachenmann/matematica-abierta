@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0141 |
+| Capítulo | MA-BCH-0142 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0012 |
 
@@ -271,3 +271,4 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | MA-BCH-0138 | book-chapter | TALG-0035 | `libros/capitulos/tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md` | published |
 | MA-BCH-0139 | book-chapter | TALG-0036 | `libros/capitulos/tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md` | published |
 | MA-BCH-0140 | book-chapter | TALG-0037 | `libros/capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md` | published |
+| MA-BCH-0141 | book-chapter | TALG-0038 | `libros/capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.md` | published |

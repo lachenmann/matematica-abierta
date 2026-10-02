@@ -118,8 +118,8 @@ Finalmente, la adición de $F$ ya es grupo abeliano. La multiplicación $F\times
 
 ## 32.99. Síntesis
 
-El espacio vectorial combina un grupo abeliano con una acción escalar compatible. Las identidades de ceros y opuestos se deducen, no se añaden como axiomas. Los espacios de funciones proporcionan ejemplos sobre un cuerpo arbitrario y permiten construir potencias finitas sin disponer aún de bases. La unidad siguiente estudiará qué subconjuntos conservan las dos operaciones.
+El espacio vectorial combina un grupo abeliano con una acción escalar compatible. Las identidades de ceros y opuestos se deducen, no se añaden como axiomas. Los espacios de funciones proporcionan ejemplos sobre un cuerpo arbitrario y permiten construir potencias finitas sin disponer aún de bases. La [unidad siguiente](tratado-de-algebra-capitulo-33-subespacios-y-generacion.md) estudiará qué subconjuntos conservan las dos operaciones.
 
 ---
 
-[← **Capítulo 31 — Descenso y transporte de estructura**](tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 31 — Descenso y transporte de estructura**](tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 33 — Subespacios y generación** →](tratado-de-algebra-capitulo-33-subespacios-y-generacion.md)
