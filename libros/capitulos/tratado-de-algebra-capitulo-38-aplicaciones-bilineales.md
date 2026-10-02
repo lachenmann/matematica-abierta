@@ -105,8 +105,8 @@ Toda aplicación bilineal con esos valores debe satisfacer la [expansión finita
 
 ## 38.99. Síntesis
 
-La bilinealidad se comprueba por secciones lineales y se calcula por expansión finita. Los valores sobre parejas de bases dadas permiten construir una única aplicación; no se añade ningún principio de existencia de bases.
+La bilinealidad se comprueba por secciones lineales y se calcula por expansión finita. Los valores sobre parejas de bases dadas permiten construir una única aplicación; no se añade ningún principio de existencia de bases. La [multilinealidad](tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md) extiende este procedimiento a un número positivo y finito de entradas.
 
 ---
 
-[← **Capítulo 37 — Cocientes y dualidad elemental**](tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 37 — Cocientes y dualidad elemental**](tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md) · [**Capítulo 39 — Multilinealidad y formas →**](tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
