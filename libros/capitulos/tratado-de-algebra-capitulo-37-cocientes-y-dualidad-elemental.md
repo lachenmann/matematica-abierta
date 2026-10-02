@@ -249,8 +249,8 @@ Cuando $U=0$ o $U=V$, los bloques de base correspondientes pueden ser vacíos; l
 
 ## 37.99. Síntesis
 
-El cociente vectorial reutiliza el cociente aditivo y añade una acción escalar bien definida. Su propiedad universal produce factorizaciones lineales e isomorfías. La dualidad algebraica se construyó como conjunto de mapas lineales, y su evaluación se certificó canónicamente. Los resultados dimensionales y de recuperación por aniquiladores permanecen explícitamente finitos. La parte de álgebra multilineal puede utilizar mapas lineales, espacios libres y cocientes sin nuevas hipótesis de elección.
+El cociente vectorial reutiliza el cociente aditivo y añade una acción escalar bien definida. Su propiedad universal produce factorizaciones lineales e isomorfías. La dualidad algebraica se construyó como conjunto de mapas lineales, y su evaluación se certificó canónicamente. Los resultados dimensionales y de recuperación por aniquiladores permanecen explícitamente finitos. La parte de [álgebra multilineal](tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) puede utilizar mapas lineales, espacios libres y cocientes sin nuevas hipótesis de elección.
 
 ---
 
-[← **Capítulo 36 — Aplicaciones lineales**](tratado-de-algebra-capitulo-36-aplicaciones-lineales.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 36 — Aplicaciones lineales**](tratado-de-algebra-capitulo-36-aplicaciones-lineales.md) · [**Capítulo 38 — Aplicaciones bilineales →**](tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)

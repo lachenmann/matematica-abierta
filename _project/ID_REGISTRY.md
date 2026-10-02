@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0146 |
+| Capítulo | MA-BCH-0147 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0012 |
 
@@ -276,3 +276,4 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | MA-BCH-0143 | book-chapter | TALG-0040 | `libros/capitulos/tratado-de-algebra-capitulo-35-dimension-finita.md` | published |
 | MA-BCH-0144 | book-chapter | TALG-0041 | `libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.md` | published |
 | MA-BCH-0145 | book-chapter | TALG-0042 | `libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md` | published |
+| MA-BCH-0146 | book-chapter | TALG-0043 | `libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md` | published |
