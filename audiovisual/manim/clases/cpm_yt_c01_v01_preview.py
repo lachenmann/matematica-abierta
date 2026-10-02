@@ -266,14 +266,20 @@ class CPMYTC01V01Preview(Scene):
             self.theorem_card("Unicidad del inverso", r"b+c=0=b+d\Longrightarrow c=d", ORANGE),
             self.theorem_card("Producto por cero", r"a\cdot0=0", GREEN),
             self.theorem_card("Cancelación", r"a\cdot b=a\cdot c,\ a\neq0\Longrightarrow b=c", VIOLET),
-        ).arrange_in_grid(rows=2, cols=2, buff=(0.45, 0.45))
-        cards.scale(0.78).move_to([0, -0.75, 0])
+        ).arrange_in_grid(rows=2, cols=2, buff=(0.90, 0.70))
+        cards.scale(0.74).move_to([0, -1.00, 0])
 
         arrows = VGroup()
-        for card in cards:
+        arrow_starts = [
+            source_box.get_bottom() + 1.85 * LEFT,
+            source_box.get_bottom() + 1.85 * RIGHT,
+            source_box.get_bottom() + 0.75 * LEFT,
+            source_box.get_bottom() + 0.75 * RIGHT,
+        ]
+        for start, card in zip(arrow_starts, cards):
             arrows.add(
                 Arrow(
-                    source_box.get_bottom(),
+                    start,
                     card.get_top(),
                     buff=0.10,
                     stroke_width=1.8,
