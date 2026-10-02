@@ -142,7 +142,7 @@ class CPMYTC01V01Preview(Scene):
         pending = VGroup(
             MathTex(r"a\cdot0=0", color=FG),
             MathTex(r"-(-a)=a", color=FG),
-            MathTex(r"(-a)(-b)=ab", color=FG),
+            MathTex(r"(-a)\\cdot(-b)=a\\cdot b", color=FG),
             MathTex(r"ab=0\Longrightarrow a=0\ \text{o}\ b=0", color=FG),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.42).scale(0.92)
         for row in pending:
@@ -225,206 +225,291 @@ class CPMYTC01V01Preview(Scene):
     # Axiomas aditivos
     # ------------------------------------------------------------------
     def associativity_sum(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55).move_to([-2.40, 0, 0])
-        plus1 = MathTex(r"+", color=FG).scale(1.45).move_to([-1.55, 0, 0])
-        lpar = MathTex(r"(", color=MUTED).scale(1.75).move_to([-0.95, 0, 0])
-        b = MathTex(r"b", color=ORANGE).scale(1.55).move_to([-0.35, 0, 0])
-        plus2 = MathTex(r"+", color=FG).scale(1.45).move_to([0.45, 0, 0])
-        cc = MathTex(r"c", color=GREEN).scale(1.55).move_to([1.25, 0, 0])
-        rpar = MathTex(r")", color=MUTED).scale(1.75).move_to([1.85, 0, 0])
-        expr = VGroup(a, plus1, lpar, b, plus2, cc, rpar)
+        source = MathTex(
+            r"a", r"+", r"(", r"b", r"+", r"c", r")",
+            color=FG,
+        ).scale(1.5)
+        target = MathTex(
+            r"(", r"a", r"+", r"b", r")", r"+", r"c",
+            color=FG,
+        ).scale(1.5)
+        source[0].set_color(BLUE)
+        source[3].set_color(ORANGE)
+        source[5].set_color(GREEN)
+        target[1].set_color(BLUE)
+        target[3].set_color(ORANGE)
+        target[6].set_color(GREEN)
 
-        self.play(LaggedStart(*[FadeIn(m) for m in expr], lag_ratio=0.06))
+        self.play(Write(source))
         self.hold(0.25)
 
-        targets = {
-            lpar: [-2.78, 0, 0],
-            a: [-2.18, 0, 0],
-            plus1: [-1.35, 0, 0],
-            b: [-0.55, 0, 0],
-            rpar: [0.05, 0, 0],
-            plus2: [0.78, 0, 0],
-            cc: [1.58, 0, 0],
+        mapping = {
+            0: 1,  # a
+            1: 2,  # primer +
+            2: 0,  # (
+            3: 3,  # b
+            4: 5,  # segundo +
+            5: 6,  # c
+            6: 4,  # )
         }
         self.play(
-            *[mob.animate.move_to(pos) for mob, pos in targets.items()],
+            *[
+                source[i].animate.move_to(target[j].get_center())
+                for i, j in mapping.items()
+            ],
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.45)
-        self.play(FadeOut(expr))
+        self.hold(0.5)
+        self.play(FadeOut(source))
 
     def additive_identity(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55)
-        zero = MathTex(r"+0", color=MUTED).scale(1.55).next_to(a, RIGHT, buff=0.12)
-        result = MathTex(r"a+0=a", color=FG).scale(1.45)
-        self.play(FadeIn(a))
-        self.play(FadeIn(zero, shift=0.18 * LEFT))
-        pair = VGroup(a, zero)
-        self.play(ReplacementTransform(pair, result))
-        self.hold(0.45)
-        self.play(FadeOut(result))
+        expr = MathTex(
+            r"a", r"+", r"0", r"=", r"a",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[2].set_color(MUTED)
+        expr[4].set_color(BLUE)
+
+        self.play(FadeIn(expr[0]))
+        self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT))
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT))
+        self.hold(0.5)
+        self.play(FadeOut(expr))
 
     def additive_inverse(self):
-        left = MathTex(r"a", color=BLUE).scale(1.55).shift(1.35 * LEFT)
-        right = MathTex(r"-a", color=ORANGE).scale(1.55).shift(1.35 * RIGHT)
-        zero = MathTex(r"0", color=GREEN).scale(1.65)
-        self.play(FadeIn(left), FadeIn(right))
-        self.play(left.animate.shift(0.75 * RIGHT), right.animate.shift(0.75 * LEFT))
-        self.play(ReplacementTransform(VGroup(left, right), zero))
-        self.hold(0.45)
-        self.play(FadeOut(zero))
+        expr = MathTex(
+            r"a", r"+", r"(", r"-a", r")", r"=", r"0",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[3].set_color(ORANGE)
+        expr[6].set_color(GREEN)
+
+        # Primero queda visible la estructura completa a + (-a).
+        self.play(
+            FadeIn(expr[1]),
+            FadeIn(expr[2]),
+            FadeIn(expr[4]),
+        )
+        self.play(
+            FadeIn(expr[0], shift=0.35 * RIGHT),
+            FadeIn(expr[3], shift=0.35 * LEFT),
+            run_time=0.75,
+        )
+        self.hold(0.35)
+
+        # Sólo después aparece el resultado = 0.
+        self.play(
+            FadeIn(expr[5]),
+            FadeIn(expr[6], shift=0.12 * UP),
+            run_time=0.55,
+        )
+        self.hold(0.6)
+        self.play(FadeOut(expr))
 
     def commutativity_sum(self):
-        a = MathTex(r"a", color=BLUE).scale(1.6).move_to([-1.25, 0, 0])
-        plus = MathTex(r"+", color=FG).scale(1.45)
-        b = MathTex(r"b", color=ORANGE).scale(1.6).move_to([1.25, 0, 0])
-        self.play(FadeIn(a), FadeIn(plus), FadeIn(b))
+        source = MathTex(r"a", r"+", r"b", color=FG).scale(1.6)
+        target = MathTex(r"b", r"+", r"a", color=FG).scale(1.6)
+        source[0].set_color(BLUE)
+        source[2].set_color(ORANGE)
+        target[0].set_color(ORANGE)
+        target[2].set_color(BLUE)
 
-        a_start = a.get_center()
-        b_start = b.get_center()
-        path_a = VMobject().set_points_smoothly([a_start, UP * 0.95, b_start])
-        path_b = VMobject().set_points_smoothly([b_start, DOWN * 0.95, a_start])
+        self.play(Write(source))
+        a_start = source[0].get_center()
+        b_start = source[2].get_center()
+        a_end = target[2].get_center()
+        b_end = target[0].get_center()
+
+        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI / 2)
+        path_b = ArcBetweenPoints(b_start, b_end, angle=PI / 2)
         self.play(
-            MoveAlongPath(a, path_a),
-            MoveAlongPath(b, path_b),
+            MoveAlongPath(source[0], path_a),
+            MoveAlongPath(source[2], path_b),
+            source[1].animate.move_to(target[1].get_center()),
             run_time=1.25,
             rate_func=smooth,
         )
         self.hold(0.5)
-        self.play(FadeOut(VGroup(a, plus, b)))
+        self.play(FadeOut(source))
         self.clear_stage()
 
     # ------------------------------------------------------------------
     # Axiomas multiplicativos
     # ------------------------------------------------------------------
+    # Axiomas multiplicativos
+    # ------------------------------------------------------------------
     def associativity_product(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55).move_to([-1.95, 0, 0])
-        lpar = MathTex(r"(", color=MUTED).scale(1.75).move_to([-1.18, 0, 0])
-        b = MathTex(r"b", color=ORANGE).scale(1.55).move_to([-0.58, 0, 0])
-        cc = MathTex(r"c", color=GREEN).scale(1.55).move_to([0.35, 0, 0])
-        rpar = MathTex(r")", color=MUTED).scale(1.75).move_to([1.03, 0, 0])
-        expr = VGroup(a, lpar, b, cc, rpar)
+        source = MathTex(
+            r"a", r"\cdot", r"(", r"b", r"\cdot", r"c", r")",
+            color=FG,
+        ).scale(1.5)
+        target = MathTex(
+            r"(", r"a", r"\cdot", r"b", r")", r"\cdot", r"c",
+            color=FG,
+        ).scale(1.5)
+        source[0].set_color(BLUE)
+        source[3].set_color(ORANGE)
+        source[5].set_color(GREEN)
+        target[1].set_color(BLUE)
+        target[3].set_color(ORANGE)
+        target[6].set_color(GREEN)
 
-        self.play(LaggedStart(*[FadeIn(m) for m in expr], lag_ratio=0.07))
+        self.play(Write(source))
         self.hold(0.25)
 
-        targets = {
-            lpar: [-2.30, 0, 0],
-            a: [-1.70, 0, 0],
-            b: [-0.80, 0, 0],
-            rpar: [-0.10, 0, 0],
-            cc: [0.82, 0, 0],
+        mapping = {
+            0: 1,  # a
+            1: 2,  # primer punto
+            2: 0,  # (
+            3: 3,  # b
+            4: 5,  # segundo punto
+            5: 6,  # c
+            6: 4,  # )
         }
         self.play(
-            *[mob.animate.move_to(pos) for mob, pos in targets.items()],
+            *[
+                source[i].animate.move_to(target[j].get_center())
+                for i, j in mapping.items()
+            ],
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.45)
-        self.play(FadeOut(expr))
+        self.hold(0.5)
+        self.play(FadeOut(source))
 
     def multiplicative_identity(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55)
-        one = MathTex(r"\cdot1", color=MUTED).scale(1.55).next_to(a, RIGHT, buff=0.12)
-        result = MathTex(r"a\cdot1=a", color=FG).scale(1.45)
-        self.play(FadeIn(a))
-        self.play(FadeIn(one, shift=0.18 * LEFT))
-        self.play(ReplacementTransform(VGroup(a, one), result))
-        self.hold(0.45)
-        self.play(FadeOut(result))
+        expr = MathTex(
+            r"a", r"\cdot", r"1", r"=", r"a",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[2].set_color(MUTED)
+        expr[4].set_color(BLUE)
+
+        self.play(FadeIn(expr[0]))
+        self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT))
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT))
+        self.hold(0.5)
+        self.play(FadeOut(expr))
 
     def multiplicative_inverse(self):
         hypothesis = MathTex(r"a\neq0", color=ORANGE).scale(1.05).to_edge(UP, buff=1.55)
-        left = MathTex(r"a", color=BLUE).scale(1.55).shift(1.45 * LEFT)
-        right = MathTex(r"a^{-1}", color=GREEN).scale(1.55).shift(1.45 * RIGHT)
-        one = MathTex(r"1", color=GREEN).scale(1.65)
+        expr = MathTex(
+            r"a", r"\cdot", r"a^{-1}", r"=", r"1",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[2].set_color(GREEN)
+        expr[4].set_color(GREEN)
+
         self.play(FadeIn(hypothesis))
-        self.play(FadeIn(left), FadeIn(right))
-        self.play(left.animate.shift(0.78 * RIGHT), right.animate.shift(0.78 * LEFT))
-        self.play(ReplacementTransform(VGroup(left, right), one))
-        self.hold(0.45)
-        self.play(FadeOut(hypothesis), FadeOut(one))
+        self.play(FadeIn(expr[1]))
+        self.play(
+            FadeIn(expr[0], shift=0.35 * RIGHT),
+            FadeIn(expr[2], shift=0.35 * LEFT),
+            run_time=0.75,
+        )
+        self.hold(0.3)
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * UP))
+        self.hold(0.5)
+        self.play(FadeOut(hypothesis), FadeOut(expr))
 
     def commutativity_product(self):
-        a = MathTex(r"a", color=BLUE).scale(1.6).move_to([-0.65, 0, 0])
-        b = MathTex(r"b", color=ORANGE).scale(1.6).move_to([0.65, 0, 0])
-        self.play(FadeIn(a), FadeIn(b))
+        source = MathTex(r"a", r"\cdot", r"b", color=FG).scale(1.6)
+        target = MathTex(r"b", r"\cdot", r"a", color=FG).scale(1.6)
+        source[0].set_color(BLUE)
+        source[2].set_color(ORANGE)
+        target[0].set_color(ORANGE)
+        target[2].set_color(BLUE)
 
-        a_start = a.get_center()
-        b_start = b.get_center()
-        path_a = VMobject().set_points_smoothly([a_start, UP * 0.90, b_start])
-        path_b = VMobject().set_points_smoothly([b_start, DOWN * 0.90, a_start])
+        self.play(Write(source))
+        a_start = source[0].get_center()
+        b_start = source[2].get_center()
+        a_end = target[2].get_center()
+        b_end = target[0].get_center()
+
+        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI / 2)
+        path_b = ArcBetweenPoints(b_start, b_end, angle=PI / 2)
         self.play(
-            MoveAlongPath(a, path_a),
-            MoveAlongPath(b, path_b),
+            MoveAlongPath(source[0], path_a),
+            MoveAlongPath(source[2], path_b),
+            source[1].animate.move_to(target[1].get_center()),
             run_time=1.20,
             rate_func=smooth,
         )
         self.hold(0.5)
-        self.play(FadeOut(VGroup(a, b)))
+        self.play(FadeOut(source))
         self.clear_stage()
 
     # ------------------------------------------------------------------
     # Distributividad
     # ------------------------------------------------------------------
+    # Distributividad
+    # ------------------------------------------------------------------
     def distributivity_demo(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55).move_to([-2.15, 0, 0])
-        lpar = MathTex(r"(", color=MUTED).scale(1.75).move_to([-1.42, 0, 0])
-        b = MathTex(r"b", color=ORANGE).scale(1.55).move_to([-0.78, 0, 0])
-        plus = MathTex(r"+", color=FG).scale(1.45).move_to([0.02, 0, 0])
-        cc = MathTex(r"c", color=GREEN).scale(1.55).move_to([0.82, 0, 0])
-        rpar = MathTex(r")", color=MUTED).scale(1.75).move_to([1.46, 0, 0])
-        initial = VGroup(a, lpar, b, plus, cc, rpar)
+        source = MathTex(
+            r"a", r"\cdot", r"(", r"b", r"+", r"c", r")",
+            color=FG,
+        ).scale(1.5)
+        target = MathTex(
+            r"a", r"\cdot", r"b", r"+", r"a", r"\cdot", r"c",
+            color=FG,
+        ).scale(1.5)
 
-        self.play(LaggedStart(*[FadeIn(m) for m in initial], lag_ratio=0.06))
-        self.hold(0.25)
+        source[0].set_color(BLUE)
+        source[3].set_color(ORANGE)
+        source[5].set_color(GREEN)
+        target[0].set_color(BLUE)
+        target[2].set_color(ORANGE)
+        target[4].set_color(BLUE)
+        target[6].set_color(GREEN)
 
-        a_left = a.copy()
-        a_right = a.copy()
-        left_target = [-1.55, 0, 0]
-        b_target = [-0.82, 0, 0]
-        plus_target = [0.00, 0, 0]
-        right_target = [0.82, 0, 0]
-        c_target = [1.55, 0, 0]
+        self.play(Write(source))
+        self.hold(0.3)
+
+        # Duplicamos explícitamente el factor a y su signo de multiplicación.
+        a_copy = source[0].copy()
+        dot_copy = source[1].copy()
+        self.add(a_copy, dot_copy)
 
         self.play(
-            TransformFromCopy(a, a_left),
-            TransformFromCopy(a, a_right),
-            FadeOut(a),
-            FadeOut(lpar),
-            FadeOut(rpar),
-            b.animate.move_to(b_target),
-            plus.animate.move_to(plus_target),
-            cc.animate.move_to(c_target),
-            run_time=0.65,
-        )
-        self.play(
-            a_left.animate.move_to(left_target),
-            a_right.animate.move_to(right_target),
-            run_time=0.95,
+            source[0].animate.move_to(target[0].get_center()),
+            source[1].animate.move_to(target[1].get_center()),
+            source[3].animate.move_to(target[2].get_center()),
+            source[4].animate.move_to(target[3].get_center()),
+            a_copy.animate.move_to(target[4].get_center()),
+            dot_copy.animate.move_to(target[5].get_center()),
+            source[5].animate.move_to(target[6].get_center()),
+            FadeOut(source[2]),
+            FadeOut(source[6]),
+            run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.55)
+        self.hold(0.6)
 
-        # Lectura inversa: las dos copias de a se reúnen de nuevo en un factor común.
-        a_factor_pos = [-2.15, 0, 0]
+        # Factorización inversa: las dos copias de a se reúnen.
         self.play(
-            a_left.animate.move_to(a_factor_pos),
-            a_right.animate.move_to(a_factor_pos),
-            b.animate.move_to([-0.78, 0, 0]),
-            plus.animate.move_to([0.02, 0, 0]),
-            cc.animate.move_to([0.82, 0, 0]),
-            FadeIn(lpar),
-            FadeIn(rpar),
-            run_time=1.05,
+            source[0].animate.move_to(source[0].get_center()),
+            a_copy.animate.move_to(source[0].get_center()),
+            dot_copy.animate.move_to(source[1].get_center()),
+            source[3].animate.move_to(source[3].get_center()),
+            source[4].animate.move_to(source[4].get_center()),
+            source[5].animate.move_to(source[5].get_center()),
+            FadeIn(source[2]),
+            FadeIn(source[6]),
+            run_time=1.0,
             rate_func=smooth,
         )
-        self.play(FadeOut(a_right), run_time=0.25)
+        self.play(FadeOut(a_copy), FadeOut(dot_copy), run_time=0.25)
         self.hold(0.45)
-        self.play(FadeOut(VGroup(a_left, lpar, b, plus, cc, rpar)))
+        self.play(FadeOut(source))
         self.clear_stage()
 
+    # ------------------------------------------------------------------
+    # Tabla de síntesis
     # ------------------------------------------------------------------
     # Tabla de síntesis
     # ------------------------------------------------------------------
