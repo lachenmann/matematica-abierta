@@ -382,11 +382,11 @@ class CPMYTC01V01Preview(Scene):
 
         a_left = a.copy()
         a_right = a.copy()
-        left_target = np.array([-1.55, 0, 0])
-        b_target = np.array([-0.82, 0, 0])
-        plus_target = np.array([0.00, 0, 0])
-        right_target = np.array([0.82, 0, 0])
-        c_target = np.array([1.55, 0, 0])
+        left_target = [-1.55, 0, 0]
+        b_target = [-0.82, 0, 0]
+        plus_target = [0.00, 0, 0]
+        right_target = [0.82, 0, 0]
+        c_target = [1.55, 0, 0]
 
         self.play(
             TransformFromCopy(a, a_left),
@@ -408,7 +408,7 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.55)
 
         # Lectura inversa: las dos copias de a se reúnen de nuevo en un factor común.
-        a_factor_pos = np.array([-2.15, 0, 0])
+        a_factor_pos = [-2.15, 0, 0]
         self.play(
             a_left.animate.move_to(a_factor_pos),
             a_right.animate.move_to(a_factor_pos),
