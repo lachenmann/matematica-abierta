@@ -155,8 +155,8 @@ Finalmente, $\operatorname{span}(A)+\operatorname{span}(B)$ es subespacio y cont
 
 ## 33.99. Síntesis
 
-Las subestructuras vectoriales conservan simultáneamente suma y acción. La generación ofrece representaciones finitas, sin prometer unicidad: esa diferencia prepara la independencia y las bases. La propiedad mínima permite controlar inclusiones y sumas sin elegir representaciones simultáneamente.
+Las subestructuras vectoriales conservan simultáneamente suma y acción. La generación ofrece representaciones finitas, sin prometer unicidad: esa diferencia prepara [la independencia y las bases](tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md). La propiedad mínima permite controlar inclusiones y sumas sin elegir representaciones simultáneamente.
 
 ---
 
-[← **Capítulo 32 — Espacios vectoriales: definición y ejemplos**](tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 32 — Espacios vectoriales: definición y ejemplos**](tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 34 — Independencia lineal y bases** →](tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md)
