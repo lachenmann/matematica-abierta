@@ -1,0 +1,289 @@
+# 2B · Bases
+
+**Estado:** `COTEJADO`  
+**Fuente:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª ed., PDF oficial de 16-08-2026, pp. 39–43.  
+**Licencia:** adaptación/traducción no oficial bajo CC BY-NC 4.0.  
+**Control de erratas:** la errata oficial vigente no registra correcciones específicas para las pp. 39–43.
+
+> [TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas y estructura lógica. Las explicaciones se formulan en español natural sin alterar el contenido matemático.
+
+En 2A estudiamos por separado las listas linealmente independientes y las listas generadoras. Ahora reunimos ambas propiedades.
+
+## 2.26 Definición: base
+
+Una **base** de $V$ es una lista de vectores de $V$ que es linealmente independiente y genera $V$.
+
+## 2.27 Ejemplos: bases
+
+**(a)** La lista
+
+$$
+(1,0,\ldots,0),(0,1,0,\ldots,0),\ldots,(0,\ldots,0,1)
+$$
+
+es una base de $\mathbf F^n$, llamada **base estándar** de $\mathbf F^n$.
+
+**(b)** La lista
+
+$$
+(1,2),(3,5)
+$$
+
+es una base de $\mathbf F^2$.
+
+**(c)** La lista
+
+$$
+(1,2,-4),(7,-5,6)
+$$
+
+es linealmente independiente en $\mathbf F^3$, pero no es una base porque no genera $\mathbf F^3$.
+
+**(d)** La lista
+
+$$
+(1,2),(3,5),(4,13)
+$$
+
+genera $\mathbf F^2$, pero no es una base porque no es linealmente independiente.
+
+**(e)** La lista
+
+$$
+(1,1,0),(0,0,1)
+$$
+
+es una base de
+
+$$
+\{(x,x,y)\in\mathbf F^3:x,y\in\mathbf F\}.
+$$
+
+**(f)** La lista
+
+$$
+(1,-1,0),(1,0,-1)
+$$
+
+es una base de
+
+$$
+\{(x,y,z)\in\mathbf F^3:x+y+z=0\}.
+$$
+
+**(g)** La lista
+
+$$
+1,z,\ldots,z^m
+$$
+
+es la **base estándar** de $\mathcal P_m(\mathbf F)$.
+
+Además de sus bases estándar, los espacios $\mathbf F^n$ tienen muchas otras bases; por ejemplo,
+
+$$
+(7,5),(-4,9)
+$$
+
+y
+
+$$
+(1,2),(3,5)
+$$
+
+son bases de $\mathbf F^2$.
+
+## 2.28 Criterio para una base
+
+Una lista $v_1,\ldots,v_n$ de vectores de $V$ es una base de $V$ si y sólo si todo $v\in V$ puede escribirse **de manera única** en la forma
+
+## 2.29
+
+$$
+v=a_1v_1+\cdots+a_nv_n,
+$$
+
+con $a_1,\ldots,a_n\in\mathbf F$.
+
+**Demostración.** Si $v_1,\ldots,v_n$ es una base, la existencia de una representación 2.29 se sigue de que la lista genera $V$. Si
+
+$$
+v=a_1v_1+\cdots+a_nv_n=c_1v_1+\cdots+c_nv_n,
+$$
+
+entonces
+
+$$
+0=(a_1-c_1)v_1+\cdots+(a_n-c_n)v_n.
+$$
+
+La independencia lineal obliga a que $a_k=c_k$ para todo $k$, de modo que la representación es única.
+
+Recíprocamente, si todo vector admite una representación única de la forma 2.29, entonces la lista genera $V$. Aplicando la unicidad al vector $0$, la igualdad
+
+$$
+0=a_1v_1+\cdots+a_nv_n
+$$
+
+sólo puede ocurrir con $a_1=\cdots=a_n=0$; por tanto la lista es linealmente independiente. $\square$
+
+Una lista generadora puede contener redundancias. El siguiente resultado muestra que esas redundancias pueden eliminarse sin perder la propiedad de generar el espacio.
+
+## 2.30 Toda lista generadora contiene una base
+
+Toda lista generadora de un espacio vectorial puede reducirse a una base del espacio.
+
+**Demostración.** Supongamos que $v_1,\ldots,v_n$ genera $V$. Comenzamos con la lista completa y recorremos sus términos en orden.
+
+- Si $v_1=0$, eliminamos $v_1$; si $v_1\neq0$, lo conservamos.
+- En el paso $k$, eliminamos $v_k$ si
+  $$
+  v_k\in\operatorname{span}(v_1,\ldots,v_{k-1});
+  $$
+  en caso contrario lo conservamos.
+
+Al terminar, la lista restante sigue generando $V$, porque sólo se eliminaron vectores que ya eran combinaciones lineales de términos anteriores. Además, ningún vector conservado pertenece al span de los anteriores; por el lema de dependencia lineal 2.19, la lista resultante es linealmente independiente. Por tanto es una base de $V$. $\square$
+
+Por ejemplo, al aplicar este procedimiento a
+
+$$
+(1,2),(3,6),(4,7),(5,9)
+$$
+
+en $\mathbf F^2$, se eliminan el segundo y el cuarto vector, quedando
+
+$$
+(1,2),(4,7),
+$$
+
+que es una base.
+
+## 2.31 Base de un espacio vectorial de dimensión finita
+
+Todo espacio vectorial de dimensión finita tiene una base.
+
+**Demostración.** Por definición, un espacio de dimensión finita posee una lista generadora. Por 2.30, esa lista puede reducirse a una base. $\square$
+
+El resultado siguiente es, en cierto sentido, dual de 2.30: en lugar de reducir una lista generadora, extendemos una lista linealmente independiente.
+
+## 2.32 Toda lista linealmente independiente se extiende a una base
+
+Toda lista linealmente independiente de vectores de un espacio vectorial de dimensión finita puede extenderse a una base del espacio.
+
+**Demostración.** Sea $u_1,\ldots,u_m$ linealmente independiente en el espacio de dimensión finita $V$, y sea $w_1,\ldots,w_n$ una lista que genera $V$. La lista concatenada
+
+$$
+u_1,\ldots,u_m,w_1,\ldots,w_n
+$$
+
+genera $V$. Aplicamos el procedimiento de 2.30. Ninguno de los $u_j$ puede eliminarse, porque $u_1,\ldots,u_m$ es linealmente independiente. El resultado es una base formada por todos los $u_j$ y algunos de los $w_k$. $\square$
+
+Como ejemplo, en $\mathbf F^3$, la lista linealmente independiente
+
+$$
+(2,3,4),(9,6,8)
+$$
+
+puede extenderse usando la base estándar hasta obtener, por el procedimiento anterior,
+
+$$
+(2,3,4),(9,6,8),(0,1,0),
+$$
+
+que es una base de $\mathbf F^3$.
+
+## 2.33 Todo subespacio de $V$ forma parte de una suma directa igual a $V$
+
+Supongamos que $V$ es de dimensión finita y que $U$ es un subespacio de $V$. Entonces existe un subespacio $W$ de $V$ tal que
+
+$$
+V=U\oplus W.
+$$
+
+**Demostración.** Por 2.25, $U$ es de dimensión finita; por 2.31 tiene una base
+
+$$
+u_1,\ldots,u_m.
+$$
+
+Esta lista es linealmente independiente en $V$, así que por 2.32 puede extenderse a una base
+
+$$
+u_1,\ldots,u_m,w_1,\ldots,w_n
+$$
+
+de $V$. Definimos
+
+$$
+W=\operatorname{span}(w_1,\ldots,w_n).
+$$
+
+La base extendida genera $V$, de modo que $V=U+W$.
+
+Si $v\in U\cap W$, entonces existen escalares $a_j,b_k$ tales que
+
+$$
+v=a_1u_1+\cdots+a_mu_m=b_1w_1+\cdots+b_nw_n.
+$$
+
+Por tanto
+
+$$
+a_1u_1+\cdots+a_mu_m-b_1w_1-\cdots-b_nw_n=0.
+$$
+
+Como la lista extendida es linealmente independiente, todos los coeficientes son $0$; así $v=0$. Luego
+
+$$
+U\cap W=\{0\}.
+$$
+
+Por el criterio 1.46,
+
+$$
+\boxed{V=U\oplus W}.
+$$
+
+$\square$
+
+# Ejercicios 2B
+
+1. Encuentra todos los espacios vectoriales que tienen exactamente una base.
+2. Verifica todas las afirmaciones del Ejemplo 2.27.
+3. Sea
+   $$
+   U=\{(x_1,x_2,x_3,x_4,x_5)\in\mathbf R^5:x_1=3x_2\text{ y }x_3=7x_4\}.
+   $$
+   (a) Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathbf R^5$.  
+   (c) Encuentra un subespacio $W$ de $\mathbf R^5$ tal que $\mathbf R^5=U\oplus W$.
+4. Sea
+   $$
+   U=\{(z_1,z_2,z_3,z_4,z_5)\in\mathbf C^5:6z_1=z_2\text{ y }z_3+2z_4+3z_5=0\}.
+   $$
+   (a) Encuentra una base de $U$.  
+   (b) Extiende la base de (a) a una base de $\mathbf C^5$.  
+   (c) Encuentra un subespacio $W$ de $\mathbf C^5$ tal que $\mathbf C^5=U\oplus W$.
+5. Supón que $V$ es de dimensión finita y que $U,W$ son subespacios de $V$ tales que $V=U+W$. Demuestra que existe una base de $V$ formada por vectores de $U\cup W$.
+6. Demuestra o da un contraejemplo: si $p_0,p_1,p_2,p_3$ es una lista de $\mathcal P_3(\mathbf F)$ y ninguno de esos polinomios tiene grado $2$, entonces la lista no es una base de $\mathcal P_3(\mathbf F)$.
+7. Supón que $v_1,v_2,v_3,v_4$ es una base de $V$. Demuestra que
+   $$
+   v_1+v_2,\quad v_2+v_3,\quad v_3+v_4,\quad v_4
+   $$
+   también es una base de $V$.
+8. Demuestra o da un contraejemplo: si $v_1,v_2,v_3,v_4$ es una base de $V$ y $U$ es un subespacio de $V$ tal que $v_1,v_2\in U$ y $v_3,v_4\notin U$, entonces $v_1,v_2$ es una base de $U$.
+9. Sea $v_1,\ldots,v_m$ una lista de vectores de $V$. Para $k\in\{1,\ldots,m\}$ define
+   $$
+   w_k=v_1+\cdots+v_k.
+   $$
+   Demuestra que $v_1,\ldots,v_m$ es una base de $V$ si y sólo si $w_1,\ldots,w_m$ es una base de $V$.
+10. Supón que $V=U\oplus W$, que $u_1,\ldots,u_m$ es una base de $U$ y que $w_1,\ldots,w_n$ es una base de $W$. Demuestra que
+    $$
+    u_1,\ldots,u_m,w_1,\ldots,w_n
+    $$
+    es una base de $V$.
+11. Supón que $V$ es un espacio vectorial real. Demuestra que si $v_1,\ldots,v_n$ es una base de $V$ como espacio vectorial real, entonces la misma lista es una base de la complexificación $V_{\mathbf C}$ como espacio vectorial complejo.
+
+---
+
+**Atribución:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición. Traducción/adaptación no oficial realizada para Matemática Abierta bajo CC BY-NC 4.0. Fuente oficial: <https://linear.axler.net/>.
