@@ -52,6 +52,25 @@ assert 'pendiente técnico:' not in book_text.lower()
 assert '### 18.6.3. Cierre editorial y continuidad formal' in (BOOK/'capitulo-18.qmd').read_text()
 assert '[Apéndice C](apendice-c.qmd)' in (BOOK/'indice-ejemplos.qmd').read_text()
 
+# Linear reading navigation must remain complete and reciprocal.
+reading_order=[
+ 'prefacio.qmd','introduccion.qmd','convenciones.qmd','matriz-hipotesis.qmd',
+ *[f'capitulo-{n:02d}.qmd' for n in range(1,19)],
+ 'apendice-a.qmd','apendice-b.qmd','apendice-c.qmd','apendice-d.qmd',
+ 'bibliografia.qmd','glosario.qmd','indice-conceptos.qmd','indice-notacion.qmd',
+ 'indice-resultados.qmd','indice-ejemplos.qmd','indice-contraejemplos.qmd','indice-fundamentos.qmd'
+]
+for i,name in enumerate(reading_order):
+ text=(BOOK/name).read_text()
+ navs=re.findall(r'::: \{\.tf-navigation\}([\s\S]*?):::',text)
+ assert navs,name
+ nav=navs[-1]
+ prev='index.qmd' if i==0 else reading_order[i-1]
+ nxt='index.qmd' if i==len(reading_order)-1 else reading_order[i+1]
+ assert f'[← Anterior]({prev})' in nav,(name,'previous',prev)
+ assert '[Índice del tratado](index.qmd)' in nav,name
+ assert f'[Siguiente →]({nxt})' in nav,(name,'next',nxt)
+
 # Reconstruct the declared dependency graph from result comments.
 node_owner={anchor:page.name for page in pages for anchor in anchors[page.name] if re.fullmatch(r'TF-(?:AX|DEF|THM|EXA|CEX)-\d{5}',anchor)}
 edges=[]
