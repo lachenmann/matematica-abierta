@@ -26,20 +26,12 @@ COMMON_ROOT = MANIM_ROOT / "escenas" / "comunes"
 if str(COMMON_ROOT) not in sys.path:
     sys.path.insert(0, str(COMMON_ROOT))
 
-from intro_canal import IntroCanal
+from intro_canal import IntroCanal, add_intro_music
 from marca import play_bouncy_a_squared
 
 VOICE_ROOT = MANIM_ROOT / "cpm_yt_c01_v01" / "voice-reference"
 TIMING_FILE = VOICE_ROOT / "voice-reference-timing.json"
 AUDIO_FILE = VOICE_ROOT / "audio" / "CPM-YT-C01-V01-reference.wav"
-INTRO_MUSIC_FILE = (
-    MANIM_ROOT
-    / "cpm_yt_c01_v01"
-    / "intro-music"
-    / "CPM-intro-music.wav"
-)
-INTRO_MUSIC_GAIN_DB = -18.0
-
 
 class CPMYTC01V01Production(IntroCanal):
     """Render de producción sincronizado con la toma continua de Reaper."""
@@ -47,7 +39,7 @@ class CPMYTC01V01Production(IntroCanal):
     def construct(self):
         self.camera.background_color = BG
         self.load_voice_reference()
-        self.load_intro_music()
+        add_intro_music(self)
         self.sync_to("c01v01-00-start")
 
         # 00 — Intro canónica del canal durante la bienvenida.
@@ -451,18 +443,6 @@ class CPMYTC01V01Production(IntroCanal):
         }
         self.audio_duration = float(data["audio_duration_seconds"])
         self.add_sound(str(AUDIO_FILE))
-
-    def load_intro_music(self):
-        """Añade la cortina musical sólo al comienzo del video."""
-        if not INTRO_MUSIC_FILE.exists():
-            raise FileNotFoundError(
-                "No existe la cortina musical local. Se espera en: "
-                + str(INTRO_MUSIC_FILE)
-            )
-        self.add_sound(
-            str(INTRO_MUSIC_FILE),
-            gain=INTRO_MUSIC_GAIN_DB,
-        )
 
     def sync_to(self, marker_name: str):
         target = self.marker_times[marker_name]
