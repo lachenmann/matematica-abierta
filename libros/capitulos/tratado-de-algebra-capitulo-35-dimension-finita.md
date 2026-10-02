@@ -153,6 +153,8 @@ Si además $U+W=V$, la intersección tiene dimensión cero y la fórmula se redu
 
 La dimensión natural es una invariante demostrada por intercambio finito. Las cotas de independencia y generación controlan subespacios y permiten construir sus bases sin Zorn. La suma directa interna añade unicidad a la descomposición; la fórmula de dimensiones mide la superposición mediante la intersección.
 
+El capítulo siguiente aplica estas construcciones al [estudio de las aplicaciones lineales](tratado-de-algebra-capitulo-36-aplicaciones-lineales.md).
+
 ---
 
-[← **Capítulo 34 — Independencia lineal y bases**](tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 34 — Independencia lineal y bases**](tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 36 — Aplicaciones lineales →**](tratado-de-algebra-capitulo-36-aplicaciones-lineales.md)
