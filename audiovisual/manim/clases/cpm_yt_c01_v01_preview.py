@@ -51,29 +51,41 @@ class CPMYTC01V01Preview(Scene):
         self.play(LaggedStart(*[FadeIn(m, shift=0.18 * RIGHT) for m in chain], lag_ratio=0.10))
         self.hold(0.6)
 
-        # Primero una operación que sí permanece en los naturales.
-        expr = MathTex(r"3", r"+", r"5", color=FG).scale(1.5).to_edge(DOWN, buff=1.25)
+        # Primero una proposición verdadera dentro de los naturales.
+        expr = MathTex(
+            r"3", r"+", r"5", r"=", r"8",
+            color=FG,
+        ).scale(1.5).to_edge(DOWN, buff=1.05)
+        expr[4].set_color(BLUE)
         marker = SurroundingRectangle(chain[0], color=BLUE, buff=0.12)
         self.play(Create(marker), FadeIn(expr))
-        self.hold(0.45)
+        self.hold(0.55)
 
-        # Cambia únicamente la operación: 3+5 pasa a 3-5.
+        # Cambia la operación y, con ella, cambia el resultado.
         minus = MathTex(r"-", color=RED).scale(1.5).move_to(expr[1].get_center())
+        negative_two = MathTex(r"-2", color=RED).scale(1.5).move_to(expr[4].get_center())
         self.play(
             Transform(expr[1], minus),
-            run_time=0.65,
+            Transform(expr[4], negative_two),
+            run_time=0.75,
             rate_func=smooth,
         )
-        self.hold(0.45)
+        self.hold(0.4)
 
-        # El nuevo problema obliga a ampliar de N a Z.
+        not_natural = MathTex(r"-2\notin\mathbb N", color=RED).scale(1.0)
+        not_natural.next_to(expr, DOWN, buff=0.45)
+        self.play(FadeIn(not_natural, shift=0.10 * UP))
+        self.hold(0.6)
+
+        # El resultado ya no pertenece a N: ampliamos a Z.
         self.play(
             marker.animate.move_to(chain[2]).set_color(ORANGE),
             expr.animate.set_color(ORANGE),
+            not_natural.animate.set_opacity(0.55),
             run_time=0.8,
         )
-        self.hold(0.5)
-        self.play(FadeOut(expr), FadeOut(marker))
+        self.hold(0.45)
+        self.play(FadeOut(expr), FadeOut(not_natural), FadeOut(marker))
 
         eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.25)
         half = MathTex(r"x=\frac12", color=GREEN).scale(1.35).move_to(eq)
@@ -276,8 +288,17 @@ class CPMYTC01V01Preview(Scene):
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.5)
-        self.play(FadeOut(source))
+        self.hold(0.35)
+        proposition = MathTex(
+            r"a+(b+c)=(a+b)+c",
+            color=FG,
+        ).scale(1.35)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        proposition.set_color_by_tex("c", GREEN)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
 
     def additive_identity(self):
         expr = MathTex(
@@ -348,12 +369,15 @@ class CPMYTC01V01Preview(Scene):
             run_time=1.25,
             rate_func=smooth,
         )
-        self.hold(0.5)
-        self.play(FadeOut(source))
+        self.hold(0.35)
+        proposition = MathTex(r"a+b=b+a", color=FG).scale(1.45)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
         self.clear_stage()
 
-    # ------------------------------------------------------------------
-    # Axiomas multiplicativos
     # ------------------------------------------------------------------
     # Axiomas multiplicativos
     # ------------------------------------------------------------------
@@ -393,8 +417,17 @@ class CPMYTC01V01Preview(Scene):
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.5)
-        self.play(FadeOut(source))
+        self.hold(0.35)
+        proposition = MathTex(
+            r"a\cdot(b\cdot c)=(a\cdot b)\cdot c",
+            color=FG,
+        ).scale(1.28)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        proposition.set_color_by_tex("c", GREEN)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
 
     def multiplicative_identity(self):
         expr = MathTex(
@@ -456,8 +489,13 @@ class CPMYTC01V01Preview(Scene):
             run_time=1.20,
             rate_func=smooth,
         )
-        self.hold(0.5)
-        self.play(FadeOut(source))
+        self.hold(0.35)
+        proposition = MathTex(r"a\cdot b=b\cdot a", color=FG).scale(1.4)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
         self.clear_stage()
 
     # ------------------------------------------------------------------
@@ -504,7 +542,22 @@ class CPMYTC01V01Preview(Scene):
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.6)
+        self.hold(0.35)
+
+        proposition = MathTex(
+            r"a\cdot(b+c)=a\cdot b+a\cdot c",
+            color=FG,
+        ).scale(1.28)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        proposition.set_color_by_tex("c", GREEN)
+        moving_state = VGroup(
+            source[0], source[1], source[3], source[4], source[5],
+            a_copy, dot_copy,
+        )
+        self.play(FadeOut(moving_state), FadeIn(proposition))
+        self.hold(0.65)
+        self.play(FadeOut(proposition), FadeIn(moving_state))
 
         # Factorización inversa: las dos copias de a se reúnen en la posición original.
         self.play(
@@ -521,12 +574,19 @@ class CPMYTC01V01Preview(Scene):
             rate_func=smooth,
         )
         self.play(FadeOut(a_copy), FadeOut(dot_copy), run_time=0.25)
-        self.hold(0.45)
-        self.play(FadeOut(source))
+        self.hold(0.3)
+        proposition_back = MathTex(
+            r"a\cdot b+a\cdot c=a\cdot(b+c)",
+            color=FG,
+        ).scale(1.28)
+        proposition_back.set_color_by_tex("a", BLUE)
+        proposition_back.set_color_by_tex("b", ORANGE)
+        proposition_back.set_color_by_tex("c", GREEN)
+        self.play(FadeOut(source), FadeIn(proposition_back))
+        self.hold(0.55)
+        self.play(FadeOut(proposition_back))
         self.clear_stage()
 
-    # ------------------------------------------------------------------
-    # Tabla de síntesis
     # ------------------------------------------------------------------
     # Tabla de síntesis
     # ------------------------------------------------------------------
