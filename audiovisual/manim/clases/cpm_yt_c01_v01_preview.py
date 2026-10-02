@@ -80,7 +80,6 @@ class CPMYTC01V01Preview(Scene):
         # El resultado ya no pertenece a N: ampliamos a Z.
         self.play(
             marker.animate.move_to(chain[2]).set_color(ORANGE),
-            expr.animate.set_color(ORANGE),
             not_natural.animate.set_opacity(0.55),
             run_time=0.8,
         )
