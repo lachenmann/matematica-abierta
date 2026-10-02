@@ -38,7 +38,7 @@ El capítulo 29 estableció las propiedades universales de productos, cocientes 
 
 El desarrollo sigue, para grupos y anillos, una misma secuencia: construcción de las combinaciones de subestructuras, segundo teorema de isomorfía, correspondencia y tercer teorema de isomorfía.
 
-Los subanillos conservan la convención unital del tratado; los ideales se consideran bilaterales y mantienen su tipo propio. Las construcciones generales de descenso y transporte de estructura se desarrollan en el capítulo 31.
+Los subanillos conservan la convención unital del tratado; los ideales se consideran bilaterales y mantienen su tipo propio. Las construcciones generales de descenso y transporte de estructura se desarrollan en el [capítulo 31](tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md).
 
 ---
 
@@ -2045,7 +2045,7 @@ $$
 
 Ésta es exactamente (126), y en particular obtenemos (125). $\square$
 
-> **Punto estructural.** El tercer teorema combina tres mecanismos ya establecidos: la correspondencia certifica $J/I\triangleleft R/I$, la propiedad universal hace descender $q_J$ a $R/I$, y el primer teorema de isomorfía se aplica al homomorfismo concreto resultante. La teoría general de descenso se desarrolla en el capítulo 31.
+> **Punto estructural.** El tercer teorema combina tres mecanismos ya establecidos: la correspondencia certifica $J/I\triangleleft R/I$, la propiedad universal hace descender $q_J$ a $R/I$, y el primer teorema de isomorfía se aplica al homomorfismo concreto resultante. La teoría general de descenso se desarrolla en el [capítulo 31](tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md#talg-thm-00031).
 
 > **Lectura fundacional.** La representación $C=q_I(r)$ se utiliza sólo localmente a partir de la sobreyectividad de $q_I$; no se selecciona un representante para cada clase de $R/I$. No intervienen el axioma de elección ni lógica clásica sustantiva nueva.
 
@@ -2083,8 +2083,8 @@ $$
 
 Los resultados de esta cadena son [Definición 30.21.1](#talg-def-00069), [Proposición 30.23.1](#talg-pro-00104), [Teorema 30.25.1](#talg-thm-00027), [Teorema 30.28.1](#talg-thm-00028) y [Teorema 30.30.1](#talg-thm-00029).
 
-En ambos casos, los morfismos se construyen concretamente como restricciones de proyecciones canónicas o como factores únicos suministrados por las propiedades universales de los cocientes de grupos ([Teorema 29.29.1](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md#talg-thm-00021)) y anillos ([Teorema 29.32.1](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md#talg-thm-00022)). La identidad y composición generales de morfismos inducidos, el transporte sistemático de subestructuras y los criterios generales de isomorfía inducida se estudian en el capítulo 31.
+En ambos casos, los morfismos se construyen concretamente como restricciones de proyecciones canónicas o como factores únicos suministrados por las propiedades universales de los cocientes de grupos ([Teorema 29.29.1](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md#talg-thm-00021)) y anillos ([Teorema 29.32.1](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md#talg-thm-00022)). La identidad y composición generales de morfismos inducidos, el transporte sistemático de subestructuras y los criterios generales de isomorfía inducida se estudian en el [capítulo 31](tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md).
 
 ---
 
-[← **Capítulo 29 — Productos directos y propiedades universales**](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 29 — Productos directos y propiedades universales**](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 31 — Descenso y transporte de estructura** →](tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md)
