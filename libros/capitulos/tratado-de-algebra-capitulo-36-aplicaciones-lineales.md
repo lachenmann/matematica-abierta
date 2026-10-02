@@ -189,8 +189,8 @@ Si $T$ es sobreyectiva, $s=\dim W=n$ y $r+n=n$. Esto fuerza $r=0$: una concatena
 
 ## 36.99. Síntesis
 
-La linealidad preserva combinaciones finitas y convierte núcleo e imagen en subespacios. El espacio libre posee una base canónica sin elección, y una base dada determina mapas por sus valores. Rango-nulidad se obtuvo extendiendo una base finita del núcleo; no se presupuso finitud del codominio. La unidad siguiente añadirá la acción escalar a los cocientes aditivos y construirá el dual algebraico.
+La linealidad preserva combinaciones finitas y convierte núcleo e imagen en subespacios. El espacio libre posee una base canónica sin elección, y una base dada determina mapas por sus valores. Rango-nulidad se obtuvo extendiendo una base finita del núcleo; no se presupuso finitud del codominio. El [capítulo siguiente](tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md) añadirá la acción escalar a los cocientes aditivos y construirá el dual algebraico.
 
 ---
 
-[← **Capítulo 35 — Dimensión finita**](tratado-de-algebra-capitulo-35-dimension-finita.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 35 — Dimensión finita**](tratado-de-algebra-capitulo-35-dimension-finita.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 37 — Cocientes y dualidad elemental →**](tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md)
