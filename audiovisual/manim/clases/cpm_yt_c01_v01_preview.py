@@ -124,11 +124,12 @@ class CPMYTC01V01Preview(Scene):
         self.section_title("Operaciones internas")
         f_nonempty = MathTex(r"F\neq\varnothing", color=FG).scale(1.35)
         closure = MathTex(
-            r"a,b\in F", r"\Longrightarrow", r"a+b\in F", r",\qquad", r"a\cdot b\in F",
+            r"a,b\in F",
+            r"\Longrightarrow",
+            r"a+b\in F,\qquad a\cdot b\in F",
             color=FG,
         ).scale(1.05).next_to(f_nonempty, DOWN, buff=0.65)
         closure[2].set_color(BLUE)
-        closure[4].set_color(ORANGE)
         self.play(FadeIn(f_nonempty))
         self.play(LaggedStart(*[FadeIn(m) for m in closure], lag_ratio=0.10))
         self.hold()
@@ -163,13 +164,13 @@ class CPMYTC01V01Preview(Scene):
 
         # 15 — Cuerpo trivial
         self.section_title("Cuerpo trivial")
-        trivial = MathTex(r"F=\{0\}", r",\qquad", r"1=0", color=FG).scale(1.25)
-        trivial[2].set_color(RED)
-        ops_trivial = MathTex(r"0+0=0", r",\qquad", r"0\cdot0=0", color=FG).scale(1.1)
+        trivial = MathTex(r"F=\{0\},\qquad", r"1=0", color=FG).scale(1.25)
+        trivial[1].set_color(RED)
+        ops_trivial = MathTex(r"0+0=0,\qquad", r"0\cdot0=0", color=FG).scale(1.1)
         ops_trivial.next_to(trivial, DOWN, buff=0.65)
         exclusion = MathTex(r"0\neq1", color=GREEN).scale(1.45).next_to(ops_trivial, DOWN, buff=0.65)
         self.play(Write(trivial))
-        self.play(LaggedStart(Write(ops_trivial[0]), Write(ops_trivial[2]), lag_ratio=0.45))
+        self.play(LaggedStart(Write(ops_trivial[0]), Write(ops_trivial[1]), lag_ratio=0.45))
         self.play(FadeIn(exclusion, shift=0.15 * UP))
         box = SurroundingRectangle(exclusion, color=GREEN, buff=0.16)
         self.play(Create(box))
@@ -742,7 +743,7 @@ class CPMYTC01V01Preview(Scene):
         self.play(FadeOut(add_highlight), FadeOut(sum_result))
 
         mul_highlight = SurroundingRectangle(mul_table.get_entries((2, 2)), color=GREEN, buff=0.10)
-        mul_result = MathTex(r"1\cdot1=1", r",\qquad", r"1^{-1}=1", color=GREEN).scale(0.98).to_edge(DOWN, buff=0.75)
+        mul_result = MathTex(r"1\cdot1=1", r"\qquad", r"1^{-1}=1", color=GREEN).scale(0.98).to_edge(DOWN, buff=0.75)
         self.play(Create(mul_highlight), FadeIn(mul_result))
         self.hold(0.75)
         self.play(FadeOut(mul_highlight), FadeOut(mul_result))
