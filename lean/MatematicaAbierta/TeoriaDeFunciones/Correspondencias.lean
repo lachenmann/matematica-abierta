@@ -11,7 +11,7 @@ Alcance exacto:
 
 No se declaran formalizados el teorema categórico en una CCC arbitraria,
 Yoneda (`TF-THM-00105`), los tipos dependientes del manuscrito ni el
-contraejemplo computacional (`TF-THM-00108`).
+teorema de falta de plenitud computacional (`TF-THM-00108`).
 -/
 
 namespace MatematicaAbierta.TeoriaDeFunciones

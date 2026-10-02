@@ -47,6 +47,11 @@ jobs:
           python -m http.server 8765 --directory _site > "$RUNNER_TEMP/tf-server.log" 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
+          curl --fail --silent --show-error --retry 10 --retry-delay 1 --retry-connrefused --retry-max-time 20 --max-time 2 \
+            http://127.0.0.1:8765/libros/otros/tratado-funciones/index.html > /dev/null || {
+            cat "$RUNNER_TEMP/tf-server.log"
+            exit 1
+          }
           node tests/tratado_funciones_browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
