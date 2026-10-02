@@ -51,11 +51,27 @@ class CPMYTC01V01Preview(Scene):
         self.play(LaggedStart(*[FadeIn(m, shift=0.18 * RIGHT) for m in chain], lag_ratio=0.10))
         self.hold(0.6)
 
-        expr = MathTex(r"3-5", color=FG).scale(1.5).to_edge(DOWN, buff=1.25)
-        self.play(FadeIn(expr))
+        # Primero una operación que sí permanece en los naturales.
+        expr = MathTex(r"3", r"+", r"5", color=FG).scale(1.5).to_edge(DOWN, buff=1.25)
         marker = SurroundingRectangle(chain[0], color=BLUE, buff=0.12)
-        self.play(Create(marker))
-        self.play(marker.animate.move_to(chain[2]), expr.animate.set_color(ORANGE))
+        self.play(Create(marker), FadeIn(expr))
+        self.hold(0.45)
+
+        # Cambia únicamente la operación: 3+5 pasa a 3-5.
+        minus = MathTex(r"-", color=RED).scale(1.5).move_to(expr[1].get_center())
+        self.play(
+            Transform(expr[1], minus),
+            run_time=0.65,
+            rate_func=smooth,
+        )
+        self.hold(0.45)
+
+        # El nuevo problema obliga a ampliar de N a Z.
+        self.play(
+            marker.animate.move_to(chain[2]).set_color(ORANGE),
+            expr.animate.set_color(ORANGE),
+            run_time=0.8,
+        )
         self.hold(0.5)
         self.play(FadeOut(expr), FadeOut(marker))
 
