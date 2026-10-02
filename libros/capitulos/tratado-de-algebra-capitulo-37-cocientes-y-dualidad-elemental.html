@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gustav A. Tachek">
+<meta name="description" content="Cocientes vectoriales, factorización lineal, dual algebraico, base dual, evaluación canónica y aniquiladores en dimensión finita.">
+
+<title>Tratado moderno de Álgebra — Capítulo 37: Cocientes y dualidad elemental – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-85add0f92a978ca2f87bbec4f151f3a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4b616e518205283c34662efb7eb16ef7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#propósito-y-posición-deductiva" id="toc-propósito-y-posición-deductiva" class="nav-link active" data-scroll-target="#propósito-y-posición-deductiva">37.0. Propósito y posición deductiva</a></li>
+  <li><a href="#cociente-aditivo-de-un-espacio-por-un-subespacio" id="toc-cociente-aditivo-de-un-espacio-por-un-subespacio" class="nav-link" data-scroll-target="#cociente-aditivo-de-un-espacio-por-un-subespacio">37.1. Cociente aditivo de un espacio por un subespacio</a>
+  <ul class="collapse">
+  <li><a href="#talg-def-00076" id="toc-talg-def-00076" class="nav-link" data-scroll-target="#talg-def-00076">Definición 37.1.1 — Cociente aditivo de un espacio por un subespacio</a></li>
+  </ul></li>
+  <li><a href="#estructura-vectorial-del-cociente-y-proyección-lineal" id="toc-estructura-vectorial-del-cociente-y-proyección-lineal" class="nav-link" data-scroll-target="#estructura-vectorial-del-cociente-y-proyección-lineal">37.2. Estructura vectorial del cociente y proyección lineal</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00115" id="toc-talg-pro-00115" class="nav-link" data-scroll-target="#talg-pro-00115">Proposición 37.2.1 — Estructura vectorial del cociente y proyección lineal</a></li>
+  </ul></li>
+  <li><a href="#factorización-isomorfía-y-dimensión-del-cociente" id="toc-factorización-isomorfía-y-dimensión-del-cociente" class="nav-link" data-scroll-target="#factorización-isomorfía-y-dimensión-del-cociente">37.3. Factorización, isomorfía y dimensión del cociente</a>
+  <ul class="collapse">
+  <li><a href="#talg-thm-00040" id="toc-talg-thm-00040" class="nav-link" data-scroll-target="#talg-thm-00040">Teorema 37.3.1 — Factorización, isomorfía y dimensión del cociente</a></li>
+  </ul></li>
+  <li><a href="#espacio-de-aplicaciones-lineales-y-dual-algebraico" id="toc-espacio-de-aplicaciones-lineales-y-dual-algebraico" class="nav-link" data-scroll-target="#espacio-de-aplicaciones-lineales-y-dual-algebraico">37.4. Espacio de aplicaciones lineales y dual algebraico</a>
+  <ul class="collapse">
+  <li><a href="#talg-def-00077" id="toc-talg-def-00077" class="nav-link" data-scroll-target="#talg-def-00077">Definición 37.4.1 — Espacio de aplicaciones lineales y dual algebraico</a></li>
+  </ul></li>
+  <li><a href="#estructura-del-dual-mapa-dual-y-evaluación" id="toc-estructura-del-dual-mapa-dual-y-evaluación" class="nav-link" data-scroll-target="#estructura-del-dual-mapa-dual-y-evaluación">37.5. Estructura del dual, mapa dual y evaluación</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00116" id="toc-talg-pro-00116" class="nav-link" data-scroll-target="#talg-pro-00116">Proposición 37.5.1 — Estructura del dual, mapa dual y evaluación</a></li>
+  </ul></li>
+  <li><a href="#base-dual-y-evaluación-en-dimensión-finita" id="toc-base-dual-y-evaluación-en-dimensión-finita" class="nav-link" data-scroll-target="#base-dual-y-evaluación-en-dimensión-finita">37.6. Base dual y evaluación en dimensión finita</a>
+  <ul class="collapse">
+  <li><a href="#talg-thm-00041" id="toc-talg-thm-00041" class="nav-link" data-scroll-target="#talg-thm-00041">Teorema 37.6.1 — Base dual y evaluación en dimensión finita</a></li>
+  </ul></li>
+  <li><a href="#aniquiladores-dual-del-cociente-y-recuperación-finita" id="toc-aniquiladores-dual-del-cociente-y-recuperación-finita" class="nav-link" data-scroll-target="#aniquiladores-dual-del-cociente-y-recuperación-finita">37.7. Aniquiladores, dual del cociente y recuperación finita</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00117" id="toc-talg-pro-00117" class="nav-link" data-scroll-target="#talg-pro-00117">Proposición 37.7.1 — Aniquiladores, dual del cociente y recuperación finita</a></li>
+  </ul></li>
+  <li><a href="#síntesis" id="toc-síntesis" class="nav-link" data-scroll-target="#síntesis">37.99. Síntesis</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tratado moderno de Álgebra — Capítulo 37: Cocientes y dualidad elemental</h1>
+</div>
+
+<div>
+  <div class="description">
+    Cocientes vectoriales, factorización lineal, dual algebraico, base dual, evaluación canónica y aniquiladores en dimensión finita.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gustav A. Tachek </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="propósito-y-posición-deductiva" class="level2">
+<h2 class="anchored" data-anchor-id="propósito-y-posición-deductiva">37.0. Propósito y posición deductiva</h2>
+<p>El <a href="../../libros/capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.html#talg-thm-00005">cociente aditivo</a> ya existe. La tarea nueva es demostrar que la acción escalar desciende y, después, añadir factorización lineal e isomorfía.</p>
+<p>El <a href="#talg-def-00077">dual algebraico</a> reúne las aplicaciones lineales al <a href="../../libros/capitulos/tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.html#talg-def-00048">cuerpo</a> <span class="math inline">\(F\)</span> y permite construir el mapa dual y la <a href="#talg-pro-00116">evaluación canónica</a>. La base dual, la biyectividad de la evaluación y la recuperación por aniquiladores se prueban en <a href="../../libros/capitulos/tratado-de-algebra-capitulo-35-dimension-finita.html#talg-def-00074">dimensión finita</a>. Se mantiene la distinción entre <span class="math inline">\(V\)</span> y <span class="math inline">\(V^{**}\)</span>.</p>
+<p>El marco fundacional es ZF con lógica clásica. Los representantes de clases y las bases finitas se utilizan como testigos locales. La acción escalar se define después de probar independencia de representantes; la estructura del dual se certifica después de construir su conjunto. Ninguna demostración invoca Zorn.</p>
+<hr>
+</section>
+<section id="cociente-aditivo-de-un-espacio-por-un-subespacio" class="level2">
+<h2 class="anchored" data-anchor-id="cociente-aditivo-de-un-espacio-por-un-subespacio">37.1. Cociente aditivo de un espacio por un subespacio</h2>
+<section id="talg-def-00076" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00076">Definición 37.1.1 — Cociente aditivo de un espacio por un subespacio</h3>
+<p>Para <span class="math inline">\(U\le V\)</span>, el grupo aditivo de <span class="math inline">\(U\)</span> es <a href="../../libros/capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.html#talg-pro-00018">subgrupo normal</a> del grupo abeliano de <span class="math inline">\(V\)</span>. El conjunto cociente aditivo <span class="math inline">\(V/U\)</span> y su proyección <span class="math inline">\(q_U:V\to V/U\)</span> están disponibles por la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.html#talg-thm-00005">construcción de cocientes de grupos</a>. Escribimos <span class="math inline">\([v]_U=v+U\)</span>, con <span class="math display">\[
+[v]_U=[w]_U\iff v-w\in U,\qquad
+[v]_U+[w]_U=[v+w]_U.
+\]</span> La regla candidata para escalares será <span class="math inline">\(a[v]_U=[av]_U\)</span>. Todavía no se utiliza como una función sobre clases: la siguiente proposición probará su independencia de representantes y certificará la estructura vectorial. El conjunto y la suma preceden así a la acción escalar.</p>
+</section>
+</section>
+<section id="estructura-vectorial-del-cociente-y-proyección-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-vectorial-del-cociente-y-proyección-lineal">37.2. Estructura vectorial del cociente y proyección lineal</h2>
+<section id="talg-pro-00115" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00115">Proposición 37.2.1 — Estructura vectorial del cociente y proyección lineal</h3>
+<p>La regla <span class="math inline">\(a[v]_U=[av]_U\)</span> está bien definida y hace de <span class="math inline">\(V/U\)</span> un espacio vectorial sobre <span class="math inline">\(F\)</span>. La proyección <span class="math inline">\(q_U(v)=[v]_U\)</span> es lineal y sobreyectiva, con <span class="math inline">\(\ker q_U=U\)</span>. Se incluyen <span class="math inline">\(U=0\)</span> y <span class="math inline">\(U=V\)</span>.</p>
+<section id="talg-prf-00184" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00184">Demostración</h4>
+<p>Si <span class="math inline">\([v]_U=[v']_U\)</span>, el <a href="../../libros/capitulos/tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.html#talg-thm-00003">criterio de clases aditivas</a> da <span class="math inline">\(v-v'\in U\)</span>. Por cierre escalar de <span class="math inline">\(U\)</span>, <span class="math inline">\(a(v-v')\in U\)</span>. Las <a href="../../libros/capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.html#talg-pro-00107">identidades vectoriales</a> dan <span class="math inline">\(av-av'=a(v-v')\)</span>, luego <span class="math inline">\([av]_U=[av']_U\)</span>. Cada entrada <span class="math inline">\((a,C)\)</span> posee un representante local de <span class="math inline">\(C\)</span> y un valor único; Separación en <span class="math inline">\((F\times V/U)\times V/U\)</span> produce el grafo de la acción, sin una sección elegida de la proyección.</p>
+<p>El grupo aditivo cociente ya existe. Es abeliano porque <span class="math display">\[
+[v]_U+[w]_U=[v+w]_U=[w+v]_U=[w]_U+[v]_U.
+\]</span> Las cuatro leyes escalares se verifican sobre representantes: <span class="math display">\[
+\begin{aligned}
+a([v]_U+[w]_U)&amp;=[a(v+w)]_U=[av+aw]_U=a[v]_U+a[w]_U,\\
+(a+b)[v]_U&amp;=[(a+b)v]_U=[av+bv]_U=a[v]_U+b[v]_U,\\
+(ab)[v]_U&amp;=[(ab)v]_U=[a(bv)]_U=a(b[v]_U),\\
+1_F[v]_U&amp;=[v]_U.
+\end{aligned}
+\]</span> Como toda clase tiene un representante local y la acción es bien definida, estas son leyes en todo el cociente.</p>
+<p>La proyección conserva suma por la estructura de grupo cociente y conserva escalares porque <span class="math inline">\(q_U(av)=[av]_U=a[v]_U=a q_U(v)\)</span>. Su sobreyectividad y núcleo <span class="math inline">\(U\)</span> ya estaban probados para la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.html#talg-pro-00023">proyección aditiva</a> y permanecen iguales al añadir la acción escalar.</p>
+<p>Si <span class="math inline">\(U=V\)</span>, todas las clases coinciden con la clase cero y se obtiene el espacio cero. Si <span class="math inline">\(U=0\)</span>, de <span class="math inline">\(q_U(v)=q_U(w)\)</span> se obtiene <span class="math inline">\(v-w\in\{0\}\)</span> y por tanto <span class="math inline">\(v=w\)</span>. La proyección es así inyectiva, además de lineal y sobreyectiva, y es un isomorfismo vectorial por definición. Esta conclusión es isomorfía, sin identificación literal del conjunto de clases con <span class="math inline">\(V\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="factorización-isomorfía-y-dimensión-del-cociente" class="level2">
+<h2 class="anchored" data-anchor-id="factorización-isomorfía-y-dimensión-del-cociente">37.3. Factorización, isomorfía y dimensión del cociente</h2>
+<section id="talg-thm-00040" class="level3">
+<h3 class="anchored" data-anchor-id="talg-thm-00040">Teorema 37.3.1 — Factorización, isomorfía y dimensión del cociente</h3>
+<p>Para <span class="math inline">\(U\le V\)</span> y <span class="math inline">\(T:V\to W\)</span> lineal, <span class="math inline">\(U\subseteq\ker T\)</span> equivale a la existencia de una única aplicación lineal <span class="math display">\[
+\overline T:V/U\to W,\qquad \overline T\circ q_U=T.
+\]</span> Está dada por <span class="math inline">\(\overline T([v]_U)=T(v)\)</span>. En particular, <span class="math display">\[
+V/\ker T\cong\operatorname{im}T.
+\]</span> Si <span class="math inline">\(V\)</span> es de dimensión finita, también lo es <span class="math inline">\(V/U\)</span> y <span class="math display">\[
+\dim U+\dim(V/U)=\dim V.
+\]</span> Si <span class="math inline">\(T(U)\subseteq Z\le W\)</span>, existe el descenso lineal <span class="math inline">\(V/U\to W/Z\)</span> dado por <span class="math inline">\([v]_U\mapsto[T(v)]_Z\)</span>.</p>
+<section id="talg-prf-00185" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00185">Demostración</h4>
+<p>Si <span class="math inline">\(U\subseteq\ker T\)</span> y <span class="math inline">\([v]_U=[w]_U\)</span>, <span class="math inline">\(v-w\in U\)</span> implica <span class="math inline">\(T(v)-T(w)=T(v-w)=0\)</span>. Por tanto <span class="math inline">\(T(v)=T(w)\)</span> y la regla sobre clases tiene valor único. Su grafo existe por Separación y cada clase posee localmente un representante. Preserva suma porque <span class="math inline">\(T(v+w)=T(v)+T(w)\)</span> y preserva escalares porque <span class="math inline">\(T(av)=aT(v)\)</span>; ambas <a href="#talg-pro-00115">operaciones cociente</a> ya están bien definidas. Así produce una aplicación lineal con la identidad conmutativa. Si otra aplicación <span class="math inline">\(S\)</span> la satisface, sobre cada clase <span class="math inline">\([v]_U\)</span> vale <span class="math inline">\(S([v]_U)=T(v)\)</span>; la sobreyectividad de <span class="math inline">\(q_U\)</span> y Extensionalidad dan unicidad.</p>
+<p>Recíprocamente, para <span class="math inline">\(u\in U\)</span>, <span class="math inline">\(q_U(u)=0\)</span>, luego <span class="math inline">\(T(u)=\overline T(0)=0\)</span> por <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00113">preservación del cero</a>. Así <span class="math inline">\(U\subseteq\ker T\)</span>.</p>
+<p>Para la isomorfía, tomemos <span class="math inline">\(U=\ker T\)</span> y codominio <span class="math inline">\(\operatorname{im}T\)</span> con operaciones restringidas. La aplicación inducida es sobreyectiva por la definición de imagen. Si sus valores en <span class="math inline">\([v]\)</span> y <span class="math inline">\([w]\)</span> coinciden, <span class="math inline">\(T(v-w)=0\)</span> implica <span class="math inline">\(v-w\in\ker T\)</span>, y las clases coinciden. Es por tanto un homomorfismo lineal biyectivo, es decir, un isomorfismo vectorial.</p>
+<p>Para dimensión, sea <span class="math inline">\((u_i)_{i&lt;r}\)</span> una base de <span class="math inline">\(U\)</span> y <a href="../../libros/capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.html#talg-pro-00111">extendámosla</a> a una base <span class="math inline">\((u_i,v_j)\)</span> de <span class="math inline">\(V\)</span>, con <span class="math inline">\(s\)</span> vectores adicionales. Las clases <span class="math inline">\([v_j]_U\)</span> generan el cociente, porque para una expresión de <span class="math inline">\(x\)</span> en esa base los términos de <span class="math inline">\(U\)</span> se proyectan a cero. Si <span class="math inline">\(\sum_j a_j[v_j]_U=0\)</span>, entonces <span class="math inline">\(\sum_j a_jv_j\in U\)</span>. Expresándolo en la base de <span class="math inline">\(U\)</span> se obtiene una relación en la base completa de <span class="math inline">\(V\)</span>; independencia fuerza todos los <span class="math inline">\(a_j\)</span> a cero. Las clases forman base del cociente, luego su dimensión es <span class="math inline">\(s\)</span> y la de <span class="math inline">\(V\)</span> es <span class="math inline">\(r+s\)</span>. Esto prueba la fórmula, incluyendo las listas vacías.</p>
+<p>Finalmente, si <span class="math inline">\(T(U)\subseteq Z\)</span>, el compuesto <span class="math inline">\(q_Z\circ T\)</span> es lineal. Para <span class="math inline">\(u\in U\)</span>, su valor es <span class="math inline">\([T(u)]_Z=0\)</span>, luego <span class="math inline">\(U\)</span> está en su núcleo. La factorización ya probada produce el descenso lineal anunciado y su fórmula al evaluar representantes. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="espacio-de-aplicaciones-lineales-y-dual-algebraico" class="level2">
+<h2 class="anchored" data-anchor-id="espacio-de-aplicaciones-lineales-y-dual-algebraico">37.4. Espacio de aplicaciones lineales y dual algebraico</h2>
+<section id="talg-def-00077" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00077">Definición 37.4.1 — Espacio de aplicaciones lineales y dual algebraico</h3>
+<p>Definimos <span class="math display">\[
+\mathcal L_F(V,W)=\{T:V\to W:T\text{ lineal}\},
+\qquad V^*=\mathcal L_F(V,F).
+\]</span> El cuerpo <span class="math inline">\(F\)</span> se considera como espacio vectorial sobre sí mismo, ya construido. Los conjuntos de funciones existen por Potencia y Separación y la condición lineal selecciona subconjuntos de ellos.</p>
+<p>Para las funciones lineales proponemos las operaciones puntuales <span class="math inline">\((S+T)(v)=S(v)+T(v)\)</span> y <span class="math inline">\((aT)(v)=aT(v)\)</span>. La siguiente proposición probará que permanecen en <span class="math inline">\(\mathcal L_F(V,W)\)</span> y certificará su estructura vectorial. El dual es algebraico: su definición incluye todas las funciones lineales al cuerpo y no contiene una condición de continuidad.</p>
+</section>
+</section>
+<section id="estructura-del-dual-mapa-dual-y-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-del-dual-mapa-dual-y-evaluación">37.5. Estructura del dual, mapa dual y evaluación</h2>
+<section id="talg-pro-00116" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00116">Proposición 37.5.1 — Estructura del dual, mapa dual y evaluación</h3>
+<p><span class="math inline">\(\mathcal L_F(V,W)\)</span> es espacio vectorial con operaciones puntuales; en particular <span class="math inline">\(V^*\)</span> lo es. Para <span class="math inline">\(T:V\to W\)</span> lineal, la función <span class="math display">\[
+T^*:W^*\to V^*,\qquad T^*(\ell)=\ell\circ T
+\]</span> es lineal. Se cumple <span class="math inline">\((S\circ T)^*=T^*\circ S^*\)</span> e <span class="math inline">\(\operatorname{id}_V^*=\operatorname{id}_{V^*}\)</span> con los dominios adecuados. El doble dual <span class="math inline">\(V^{**}=(V^*)^*\)</span> existe, y <span class="math display">\[
+J_V:V\to V^{**},\qquad J_V(v)(\ell)=\ell(v)
+\]</span> es una aplicación lineal canónica. Todavía no se afirma su biyectividad.</p>
+<section id="talg-prf-00186" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00186">Demostración</h4>
+<p>La función cero es lineal y pertenece a <span class="math inline">\(\mathcal L_F(V,W)\)</span>. Para <span class="math inline">\(A,B\)</span> lineales, <span class="math display">\[
+(A+B)(u+v)=A(u)+A(v)+B(u)+B(v)
+=(A+B)(u)+(A+B)(v)
+\]</span> por conmutatividad aditiva, y <span class="math inline">\((A+B)(au)=aA(u)+aB(u)=a(A+B)(u)\)</span>. Para <span class="math inline">\(\lambda\in F\)</span>, <span class="math inline">\((\lambda A)(u+v)=\lambda A(u)+\lambda A(v)\)</span>; además <span class="math display">\[
+(\lambda A)(au)=\lambda aA(u)=a\lambda A(u)=a(\lambda A)(u).
+\]</span> El paso central usa conmutatividad del cuerpo. Así las operaciones puntuales están cerradas en el conjunto.</p>
+<p>Los grafos de esas operaciones existen por Separación y determinación única de cada valor. La asociatividad, conmutatividad, cero y opuestos del grupo se verifican en cada <span class="math inline">\(v\)</span> mediante las leyes del grupo aditivo de <span class="math inline">\(W\)</span>. Las cuatro leyes escalares se verifican asimismo punto a punto: <span class="math inline">\((a+b)A(v)=aA(v)+bA(v)\)</span>, <span class="math inline">\(a(A(v)+B(v))=aA(v)+aB(v)\)</span>, <span class="math inline">\((ab)A(v)=a(bA(v))\)</span> y <span class="math inline">\(1_FA(v)=A(v)\)</span>. Extensionalidad funcional prueba la estructura vectorial.</p>
+<p>La composición <span class="math inline">\(\ell\circ T\)</span> es lineal por la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00113">composición ya cerrada</a>, por lo que <span class="math inline">\(T^*\)</span> está bien tipada. Evaluando en <span class="math inline">\(v\)</span>, <span class="math display">\[
+T^*(\ell_1+\ell_2)(v)=\ell_1(Tv)+\ell_2(Tv),\qquad
+T^*(a\ell)(v)=a\ell(Tv).
+\]</span> Son exactamente los valores de <span class="math inline">\(T^*\ell_1+T^*\ell_2\)</span> y <span class="math inline">\(aT^*\ell\)</span>. Así <span class="math inline">\(T^*\)</span> es lineal. Si <span class="math inline">\(S:W\to X\)</span> es lineal y <span class="math inline">\(\eta\in X^*\)</span>, <span class="math display">\[
+(S\circ T)^*(\eta)(v)=\eta(S(T(v)))=(T^*(S^*(\eta)))(v).
+\]</span> Extensionalidad primero en <span class="math inline">\(v\)</span> y luego en <span class="math inline">\(\eta\)</span> da la identidad de composición. La identidad dual se prueba por <span class="math inline">\(\ell\circ\operatorname{id}_V=\ell\)</span>.</p>
+<p>Como <span class="math inline">\(V^*\)</span> ya está certificado vectorialmente, la definición del dual se aplica a él y produce <span class="math inline">\(V^{**}\)</span>. Para <span class="math inline">\(v\in V\)</span>, la función <span class="math inline">\(\ell\mapsto\ell(v)\)</span> es lineal por las operaciones puntuales del dual, luego pertenece a <span class="math inline">\(V^{**}\)</span>. Su grafo y el de <span class="math inline">\(J_V\)</span> existen por Separación; el valor es único para cada entrada. Finalmente, para cualquier <span class="math inline">\(\ell\in V^*\)</span>, <span class="math display">\[
+J_V(u+v)(\ell)=\ell(u)+\ell(v),\qquad
+J_V(au)(\ell)=a\ell(u).
+\]</span> Estas igualdades prueban linealidad de <span class="math inline">\(J_V\)</span>. La construcción es canónica y no presupone que los funcionales separen puntos en espacios arbitrarios. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="base-dual-y-evaluación-en-dimensión-finita" class="level2">
+<h2 class="anchored" data-anchor-id="base-dual-y-evaluación-en-dimensión-finita">37.6. Base dual y evaluación en dimensión finita</h2>
+<section id="talg-thm-00041" class="level3">
+<h3 class="anchored" data-anchor-id="talg-thm-00041">Teorema 37.6.1 — Base dual y evaluación en dimensión finita</h3>
+<p>Sea <span class="math inline">\((v_i)_{i&lt;n}\)</span> una lista base de <span class="math inline">\(V\)</span>. Existen únicos funcionales <span class="math inline">\(\ell_i\in V^*\)</span> con <span class="math inline">\(\ell_i(v_j)=1_F\)</span> si <span class="math inline">\(i=j\)</span> y cero si <span class="math inline">\(i\ne j\)</span>. Constituyen una lista base dual y <span class="math display">\[
+v=\sum_{i&lt;n}\ell_i(v)v_i,\qquad
+\ell=\sum_{i&lt;n}\ell(v_i)\ell_i.
+\]</span> Por tanto <span class="math inline">\(\dim V^*=\dim V\)</span>. Si <span class="math inline">\(V\)</span> es de dimensión finita, la evaluación canónica <span class="math inline">\(J_V:V\to V^{**}\)</span> es un isomorfismo. Es una isomorfía canónica, no igualdad literal de conjuntos.</p>
+<section id="talg-prf-00187" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00187">Demostración</h4>
+<p>El <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-thm-00038">teorema de especificación por una base</a> produce cada <span class="math inline">\(\ell_i\)</span> y su unicidad a partir de los valores indicados. Para <span class="math inline">\(v=\sum_ja_jv_j\)</span>, la preservación de combinaciones da <span class="math inline">\(\ell_i(v)=a_i\)</span>, por lo que la primera fórmula reproduce la representación de <span class="math inline">\(v\)</span>.</p>
+<p>Para independencia de los <span class="math inline">\(\ell_i\)</span>, si <span class="math inline">\(\sum_i b_i\ell_i=0\)</span>, evaluar en <span class="math inline">\(v_j\)</span> da <span class="math inline">\(b_j=0\)</span> para cada <span class="math inline">\(j\)</span>. Para generación del dual, fijemos <span class="math inline">\(\ell\in V^*\)</span> y consideremos <span class="math inline">\(L=\sum_i\ell(v_i)\ell_i\)</span>. En cada vector de base, <span class="math inline">\(L(v_j)=\ell(v_j)\)</span>. Por <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-thm-00038">unicidad del mapa lineal con valores dados en la base</a>, <span class="math inline">\(L=\ell\)</span>. Así la lista dual es base de longitud <span class="math inline">\(n\)</span> y la dimensión es la misma.</p>
+<p>La evaluación <span class="math inline">\(J_V\)</span> es lineal por la <a href="#talg-pro-00116">proposición anterior</a>. Si <span class="math inline">\(J_V(v)=0\)</span>, entonces <span class="math inline">\(\ell_i(v)=J_V(v)(\ell_i)=0\)</span> para todos los índices. La primera fórmula da <span class="math inline">\(v=0\)</span>, y el <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00113">criterio de núcleo trivial</a> prueba inyectividad.</p>
+<p>Para sobreyectividad, sea <span class="math inline">\(\Lambda\in V^{**}\)</span> y definamos explícitamente <span class="math display">\[
+v_\Lambda=\sum_{i&lt;n}\Lambda(\ell_i)v_i.
+\]</span> Para cualquier <span class="math inline">\(\ell\in V^*\)</span>, <span class="math display">\[
+\begin{aligned}
+J_V(v_\Lambda)(\ell)
+&amp;=\ell(v_\Lambda)
+=\sum_i\Lambda(\ell_i)\ell(v_i)\\
+&amp;=\sum_i\ell(v_i)\Lambda(\ell_i)
+=\Lambda\left(\sum_i\ell(v_i)\ell_i\right)
+=\Lambda(\ell).
+\end{aligned}
+\]</span> Se usó conmutatividad del cuerpo en el intercambio de los coeficientes y linealidad de <span class="math inline">\(\Lambda\)</span> en la penúltima igualdad. Extensionalidad funcional da <span class="math inline">\(J_V(v_\Lambda)=\Lambda\)</span>. Así <span class="math inline">\(J_V\)</span> es sobreyectiva y, junto con inyectividad, isomorfismo.</p>
+<p>Si <span class="math inline">\(n=0\)</span>, <span class="math inline">\(V\)</span> es cero, el único funcional es la función cero, y los spans vacíos son los espacios cero tanto del dual como del doble dual; las dos fórmulas son sumas vacías y la evaluación sigue siendo isomorfismo. La existencia local de una base finita utiliza la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-35-dimension-finita.html#talg-thm-00037">teoría finita</a> ya cerrada, sin Zorn. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="aniquiladores-dual-del-cociente-y-recuperación-finita" class="level2">
+<h2 class="anchored" data-anchor-id="aniquiladores-dual-del-cociente-y-recuperación-finita">37.7. Aniquiladores, dual del cociente y recuperación finita</h2>
+<section id="talg-pro-00117" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00117">Proposición 37.7.1 — Aniquiladores, dual del cociente y recuperación finita</h3>
+<p>Para <span class="math inline">\(U\le V\)</span>, definimos su <strong>aniquilador</strong> <span class="math display">\[
+U^0=\{\ell\in V^*:\forall u\in U,\ \ell(u)=0_F\}.
+\]</span> Es subespacio y el mapa <span class="math inline">\(\ell\mapsto\ell\circ q_U\)</span> identifica mediante isomorfismo <span class="math inline">\((V/U)^*\)</span> con <span class="math inline">\(U^0\)</span>.</p>
+<p>Si <span class="math inline">\(V\)</span> es de dimensión finita, <span class="math display">\[
+\dim U+\dim U^0=\dim V,\qquad
+U=\{v\in V:\forall\ell\in U^0,\ \ell(v)=0_F\}.
+\]</span> La última igualdad se formula en <span class="math inline">\(V\)</span>; la relación con el doble dual se interpreta mediante <span class="math inline">\(J_V\)</span>, sin identificación literal.</p>
+<section id="talg-prf-00188" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00188">Demostración</h4>
+<p>El aniquilador existe por Separación en <span class="math inline">\(V^*\)</span>. Contiene el funcional cero; si <span class="math inline">\(\alpha,\beta\)</span> se anulan en <span class="math inline">\(U\)</span>, también <span class="math inline">\((\alpha+\beta)(u)=0+0=0\)</span> y <span class="math inline">\((a\alpha)(u)=a0=0\)</span>. El <a href="../../libros/capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.html#talg-pro-00109">criterio de subespacio</a> lo certifica.</p>
+<p>Para <span class="math inline">\(\ell\in(V/U)^*\)</span>, la composición <span class="math inline">\(\ell\circ q_U\)</span> se anula en <span class="math inline">\(U\)</span>, porque <span class="math inline">\(q_U(u)=0\)</span> y <span class="math inline">\(\ell(0)=0\)</span>. El mapa de composición es lineal por la <a href="#talg-pro-00116">proposición de mapa dual</a>, ahora con codominio restringido al aniquilador. Es inyectivo: si <span class="math inline">\(\ell_1\circ q_U=\ell_2\circ q_U\)</span>, para una clase <span class="math inline">\(C\)</span> tomemos localmente <span class="math inline">\(v\)</span> con <span class="math inline">\(C=q_U(v)\)</span>; entonces <span class="math inline">\(\ell_1(C)=\ell_2(C)\)</span>. Extensionalidad da igualdad de funcionales. Es sobreyectivo: para <span class="math inline">\(\alpha\in U^0\)</span>, la <a href="#talg-thm-00040">factorización lineal del cociente</a> produce el único funcional <span class="math inline">\(\ell:V/U\to F\)</span> con <span class="math inline">\(\ell\circ q_U=\alpha\)</span>. Así es isomorfismo.</p>
+<p>Si <span class="math inline">\(V\)</span> es de dimensión finita, el cociente también es de dimensión finita. La <a href="#talg-thm-00041">igualdad dimensional del dual</a> y la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00113">invariancia bajo isomorfismos</a> dan <span class="math inline">\(\dim U^0=\dim(V/U)\)</span>. La <a href="#talg-thm-00040">fórmula de dimensión del cociente</a> concluye <span class="math inline">\(\dim U+\dim U^0=\dim V\)</span>.</p>
+<p>Para recuperación, una inclusión sigue de la definición: todo <span class="math inline">\(u\in U\)</span> es anulado por cada miembro de <span class="math inline">\(U^0\)</span>. A la inversa, fijemos una base finita de <span class="math inline">\(U\)</span> y <a href="../../libros/capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.html#talg-pro-00111">extendámosla</a> a una base de <span class="math inline">\(V\)</span> con vectores adicionales <span class="math inline">\(w_0,\ldots,w_{s-1}\)</span>. Los funcionales de la base dual correspondientes a estos vectores adicionales se anulan en todos los vectores de la base de <span class="math inline">\(U\)</span> y, por linealidad, en todo <span class="math inline">\(U\)</span>; pertenecen a <span class="math inline">\(U^0\)</span>. Si <span class="math inline">\(v\)</span> es anulado por todos los miembros de <span class="math inline">\(U^0\)</span>, sus coeficientes en los <span class="math inline">\(w_j\)</span> son cero, por la <a href="#talg-thm-00041">fórmula de coordenadas de la base dual</a>. Su expresión en la base completa sólo contiene vectores de <span class="math inline">\(U\)</span>, luego <span class="math inline">\(v\in U\)</span>. Esto prueba la inclusión recíproca.</p>
+<p>Cuando <span class="math inline">\(U=0\)</span> o <span class="math inline">\(U=V\)</span>, los bloques de base correspondientes pueden ser vacíos; la argumentación cubre esos casos y el espacio cero. No se afirma recuperación para un espacio arbitrario sin hipótesis adicionales que garanticen suficientes funcionales. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="síntesis" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis">37.99. Síntesis</h2>
+<p>El cociente vectorial reutiliza el cociente aditivo y añade una acción escalar bien definida. Su propiedad universal produce factorizaciones lineales e isomorfías. La dualidad algebraica se construyó como conjunto de mapas lineales, y su evaluación se certificó canónicamente. Los resultados dimensionales y de recuperación por aniquiladores permanecen explícitamente finitos. La parte de <a href="../../libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.html">álgebra multilineal</a> puede utilizar mapas lineales, espacios libres y cocientes sin nuevas hipótesis de elección.</p>
+<hr>
+<p><a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html">← <strong>Capítulo 36 — Aplicaciones lineales</strong></a> · <a href="../../libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.html"><strong>Capítulo 38 — Aplicaciones bilineales →</strong></a> · <a href="../../libros/otros/tratado-de-algebra.html"><strong>Tratado moderno de Álgebra</strong></a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

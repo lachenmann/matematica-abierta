@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gustav A. Tachek">
+<meta name="description" content="Construcción del producto tensorial por cociente, aplicación canónica, tensores puros, propiedad universal, mapas inducidos y bases tensoriales dadas.">
+
+<title>Tratado moderno de Álgebra — Capítulo 40: Infraestructura tensorial mínima – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-85add0f92a978ca2f87bbec4f151f3a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4b616e518205283c34662efb7eb16ef7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#propósito-y-posición-deductiva" id="toc-propósito-y-posición-deductiva" class="nav-link active" data-scroll-target="#propósito-y-posición-deductiva">40.0. Propósito y posición deductiva</a></li>
+  <li><a href="#relaciones-bilineales-en-el-espacio-libre" id="toc-relaciones-bilineales-en-el-espacio-libre" class="nav-link" data-scroll-target="#relaciones-bilineales-en-el-espacio-libre">40.1. Relaciones bilineales en el espacio libre</a>
+  <ul class="collapse">
+  <li><a href="#talg-def-00081" id="toc-talg-def-00081" class="nav-link" data-scroll-target="#talg-def-00081">Definición 40.1.1 — Familias de relaciones bilineales y su span</a></li>
+  </ul></li>
+  <li><a href="#el-subespacio-de-relaciones" id="toc-el-subespacio-de-relaciones" class="nav-link" data-scroll-target="#el-subespacio-de-relaciones">40.2. El subespacio de relaciones</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00120" id="toc-talg-pro-00120" class="nav-link" data-scroll-target="#talg-pro-00120">Proposición 40.2.1 — El span de relaciones bilineales es un subespacio</a></li>
+  </ul></li>
+  <li><a href="#cociente-vectorial-preliminar" id="toc-cociente-vectorial-preliminar" class="nav-link" data-scroll-target="#cociente-vectorial-preliminar">40.3. Cociente vectorial preliminar</a>
+  <ul class="collapse">
+  <li><a href="#talg-def-00082" id="toc-talg-def-00082" class="nav-link" data-scroll-target="#talg-def-00082">Definición 40.3.1 — Cociente vectorial preliminar de la construcción tensorial</a></li>
+  </ul></li>
+  <li><a href="#notación-tensorial-y-aplicación-canónica" id="toc-notación-tensorial-y-aplicación-canónica" class="nav-link" data-scroll-target="#notación-tensorial-y-aplicación-canónica">40.4. Notación tensorial y aplicación canónica</a>
+  <ul class="collapse">
+  <li><a href="#talg-not-00020" id="toc-talg-not-00020" class="nav-link" data-scroll-target="#talg-not-00020">Notación 40.4.1 — Producto tensorial</a></li>
+  <li><a href="#talg-def-00083" id="toc-talg-def-00083" class="nav-link" data-scroll-target="#talg-def-00083">Definición 40.4.2 — Aplicación tensorial canónica</a></li>
+  <li><a href="#talg-not-00021" id="toc-talg-not-00021" class="nav-link" data-scroll-target="#talg-not-00021">Notación 40.4.3 — Tensor puro</a></li>
+  </ul></li>
+  <li><a href="#bilinealidad-y-generación" id="toc-bilinealidad-y-generación" class="nav-link" data-scroll-target="#bilinealidad-y-generación">40.5. Bilinealidad y generación</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00121" id="toc-talg-pro-00121" class="nav-link" data-scroll-target="#talg-pro-00121">Proposición 40.5.1 — Bilinealidad y generación por tensores puros</a></li>
+  </ul></li>
+  <li><a href="#propiedad-universal" id="toc-propiedad-universal" class="nav-link" data-scroll-target="#propiedad-universal">40.6. Propiedad universal</a>
+  <ul class="collapse">
+  <li><a href="#talg-thm-00044" id="toc-talg-thm-00044" class="nav-link" data-scroll-target="#talg-thm-00044">Teorema 40.6.1 — Propiedad universal del producto tensorial</a></li>
+  </ul></li>
+  <li><a href="#unicidad-del-objeto-universal" id="toc-unicidad-del-objeto-universal" class="nav-link" data-scroll-target="#unicidad-del-objeto-universal">40.7. Unicidad del objeto universal</a>
+  <ul class="collapse">
+  <li><a href="#talg-thm-00045" id="toc-talg-thm-00045" class="nav-link" data-scroll-target="#talg-thm-00045">Teorema 40.7.1 — Unicidad hasta isomorfismo compatible</a></li>
+  </ul></li>
+  <li><a href="#mapas-inducidos" id="toc-mapas-inducidos" class="nav-link" data-scroll-target="#mapas-inducidos">40.8. Mapas inducidos</a>
+  <ul class="collapse">
+  <li><a href="#talg-pro-00122" id="toc-talg-pro-00122" class="nav-link" data-scroll-target="#talg-pro-00122">Proposición 40.8.1 — Mapas tensoriales inducidos</a></li>
+  </ul></li>
+  <li><a href="#bases-dadas-y-cálculos-finitos" id="toc-bases-dadas-y-cálculos-finitos" class="nav-link" data-scroll-target="#bases-dadas-y-cálculos-finitos">40.9. Bases dadas y cálculos finitos</a>
+  <ul class="collapse">
+  <li><a href="#talg-thm-00046" id="toc-talg-thm-00046" class="nav-link" data-scroll-target="#talg-thm-00046">Teorema 40.9.1 — Base tensorial a partir de bases dadas</a></li>
+  </ul></li>
+  <li><a href="#síntesis" id="toc-síntesis" class="nav-link" data-scroll-target="#síntesis">40.99. Síntesis</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tratado moderno de Álgebra — Capítulo 40: Infraestructura tensorial mínima</h1>
+</div>
+
+<div>
+  <div class="description">
+    Construcción del producto tensorial por cociente, aplicación canónica, tensores puros, propiedad universal, mapas inducidos y bases tensoriales dadas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gustav A. Tachek </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="propósito-y-posición-deductiva" class="level2">
+<h2 class="anchored" data-anchor-id="propósito-y-posición-deductiva">40.0. Propósito y posición deductiva</h2>
+<p>Se construirá el producto tensorial binario de dos espacios vectoriales sobre un mismo cuerpo conmutativo mediante un <a href="../../libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.html#talg-pro-00115">cociente vectorial</a> de un <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00114">espacio vectorial libre</a>. La construcción precede a la notación tensorial: primero se definen las <a href="#talg-def-00081">relaciones bilineales</a> en el espacio libre, después se certifica su span como subespacio, luego se forma el cociente vectorial y sólo entonces se introducen <span class="math inline">\(U\otimes_F V\)</span> y los tensores puros.</p>
+<p>El alcance queda restringido a la infraestructura algebraica mínima necesaria para tratados posteriores: construcción por cociente, aplicación bilineal canónica, <a href="#talg-thm-00044">propiedad universal</a>, unicidad hasta isomorfismo, mapas inducidos y comportamiento sobre bases dadas. No se desarrollan módulos sobre anillos, categorías generales, completaciones, productos tensoriales topológicos, álgebras simétricas o exteriores ni teoría de representaciones.</p>
+<p>El marco fundacional es ZF, con los usos de lógica clásica declarados en las dependencias y en la comparación de índices para la base tensorial. No se presupone igualdad decidible. Las bases arbitrarias se reciben como datos; los representantes se utilizan como testigos locales. No se usa el axioma de elección ni la rama de Zorn.</p>
+<hr>
+</section>
+<section id="relaciones-bilineales-en-el-espacio-libre" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-bilineales-en-el-espacio-libre">40.1. Relaciones bilineales en el espacio libre</h2>
+<section id="talg-def-00081" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00081">Definición 40.1.1 — Familias de relaciones bilineales y su span</h3>
+<p>Sean <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> espacios vectoriales sobre un mismo cuerpo conmutativo <span class="math inline">\(F\)</span>. En el espacio libre <span class="math display">\[
+E_F(U,V)=F^{(U\times V)}
+\]</span> escribimos <span class="math inline">\(\delta_{(u,v)}\)</span> para el vector delta canónico asociado a <span class="math inline">\((u,v)\in U\times V\)</span>.</p>
+<p>Definimos cuatro subconjuntos de <span class="math inline">\(E_F(U,V)\)</span>: <span class="math display">\[
+\begin{aligned}
+\mathcal R_1&amp;=\{\delta_{(u+u',v)}-\delta_{(u,v)}-\delta_{(u',v)}:
+                 u,u'\in U,\ v\in V\},\\
+\mathcal R_2&amp;=\{\delta_{(au,v)}-a\delta_{(u,v)}:
+                 a\in F,\ u\in U,\ v\in V\},\\
+\mathcal R_3&amp;=\{\delta_{(u,v+v')}-\delta_{(u,v)}-\delta_{(u,v')}:
+                 u\in U,\ v,v'\in V\},\\
+\mathcal R_4&amp;=\{\delta_{(u,av)}-a\delta_{(u,v)}:
+                 a\in F,\ u\in U,\ v\in V\}.
+\end{aligned}
+\]</span></p>
+<p>Cada familia existe por Separación dentro de <span class="math inline">\(E_F(U,V)\)</span>: las expresiones que aparecen en ella están bien tipadas por las operaciones del espacio libre y por las operaciones de <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span>. Llamamos <strong>familia de relaciones bilineales</strong> a <span class="math display">\[
+\mathcal R_F(U,V)=\mathcal R_1\cup\mathcal R_2\cup\mathcal R_3\cup\mathcal R_4
+\]</span> y definimos su <strong>span de relaciones</strong> por <span class="math display">\[
+R_F(U,V)=\operatorname{span}_F\!\bigl(\mathcal R_F(U,V)\bigr)
+\subseteq E_F(U,V).
+\]</span></p>
+<p>En este punto <span class="math inline">\(R_F(U,V)\)</span> es únicamente el conjunto definido mediante el <a href="../../libros/capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.html#talg-def-00072">span ya construido</a>. Todavía no se utiliza que sea un subespacio, no se forma ningún cociente y no se introduce la notación <span class="math inline">\(U\otimes_F V\)</span>.</p>
+</section>
+</section>
+<section id="el-subespacio-de-relaciones" class="level2">
+<h2 class="anchored" data-anchor-id="el-subespacio-de-relaciones">40.2. El subespacio de relaciones</h2>
+<section id="talg-pro-00120" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00120">Proposición 40.2.1 — El span de relaciones bilineales es un subespacio</h3>
+<p>Sean <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> espacios vectoriales sobre el mismo cuerpo conmutativo <span class="math inline">\(F\)</span>. Entonces <span class="math display">\[
+R_F(U,V)\le E_F(U,V)=F^{(U\times V)}.
+\]</span> En particular, el span de relaciones bilineales es un subespacio del espacio vectorial libre sobre <span class="math inline">\(U\times V\)</span>.</p>
+<section id="talg-prf-00193" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00193">Demostración</h4>
+<p>Por la <a href="#talg-def-00081">Definición 40.1.1</a>, <span class="math inline">\(\mathcal R_F(U,V)\)</span> es un subconjunto de <span class="math inline">\(E_F(U,V)\)</span> y <span class="math display">\[
+R_F(U,V)=\operatorname{span}_F\!\bigl(\mathcal R_F(U,V)\bigr).
+\]</span> La <a href="../../libros/capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.html#talg-pro-00110">Proposición 33.5.1</a> afirma que, para todo subconjunto <span class="math inline">\(A\)</span> de un espacio vectorial <span class="math inline">\(X\)</span>, <span class="math inline">\(\operatorname{span}_F(A)\)</span> es un subespacio de <span class="math inline">\(X\)</span>. Al aplicarla con <span class="math display">\[
+X=E_F(U,V),\qquad A=\mathcal R_F(U,V),
+\]</span> se obtiene inmediatamente <span class="math inline">\(R_F(U,V)\le E_F(U,V)\)</span>. No se requiere una nueva verificación de cierre por suma o por escalares. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="cociente-vectorial-preliminar" class="level2">
+<h2 class="anchored" data-anchor-id="cociente-vectorial-preliminar">40.3. Cociente vectorial preliminar</h2>
+<section id="talg-def-00082" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00082">Definición 40.3.1 — Cociente vectorial preliminar de la construcción tensorial</h3>
+<p>Sean <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> espacios vectoriales sobre un mismo cuerpo conmutativo <span class="math inline">\(F\)</span>. Como <span class="math display">\[
+R_F(U,V)\le E_F(U,V),
+\]</span> definimos el <strong>cociente vectorial preliminar de la construcción tensorial</strong> por <span class="math display">\[
+Q_F(U,V):=E_F(U,V)/R_F(U,V).
+\]</span></p>
+<p>La <a href="../../libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.html#talg-def-00076">Definición 37.1.1</a> proporciona el conjunto cociente aditivo y la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.html#talg-pro-00115">Proposición 37.2.1</a> certifica que este cociente es un espacio vectorial sobre <span class="math inline">\(F\)</span>. En particular, la proyección cociente <span class="math display">\[
+q_{R_F(U,V)}:E_F(U,V)\longrightarrow Q_F(U,V)
+\]</span> es lineal y sobreyectiva, y satisface <span class="math display">\[
+\ker q_{R_F(U,V)}=R_F(U,V).
+\]</span></p>
+<p>La letra <span class="math inline">\(Q_F(U,V)\)</span> es deliberadamente provisional. En esta etapa no se identifica todavía este espacio con <span class="math inline">\(U\otimes_F V\)</span>, no se define la notación <span class="math inline">\(u\otimes v\)</span> y no se afirma aún que la aplicación <span class="math inline">\((u,v)\mapsto q_{R_F(U,V)}(\delta_{(u,v)})\)</span> sea bilineal.</p>
+</section>
+</section>
+<section id="notación-tensorial-y-aplicación-canónica" class="level2">
+<h2 class="anchored" data-anchor-id="notación-tensorial-y-aplicación-canónica">40.4. Notación tensorial y aplicación canónica</h2>
+<section id="talg-not-00020" class="level3">
+<h3 class="anchored" data-anchor-id="talg-not-00020">Notación 40.4.1 — Producto tensorial</h3>
+<p>Sean <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> espacios vectoriales sobre un mismo cuerpo conmutativo <span class="math inline">\(F\)</span>. Como el cociente vectorial <span class="math inline">\(Q_F(U,V)\)</span> ya fue construido en la <a href="#talg-def-00082">Definición 40.3.1</a>, escribimos <span class="math display">\[
+U\otimes_F V:=Q_F(U,V)
+=E_F(U,V)/R_F(U,V)
+\]</span> y llamamos a este espacio vectorial el <strong>producto tensorial de <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> sobre <span class="math inline">\(F\)</span></strong>.</p>
+<p>Esta escritura es una abreviatura para el espacio ya existente; no constituye una nueva construcción ni incorpora todavía su propiedad universal. En particular, en este punto no se define <span class="math inline">\(u\otimes v\)</span>, no se ha construido aún la aplicación canónica <span class="math inline">\(U\times V\to U\otimes_F V\)</span> y no se afirma bilinealidad.</p>
+</section>
+<section id="talg-def-00083" class="level3">
+<h3 class="anchored" data-anchor-id="talg-def-00083">Definición 40.4.2 — Aplicación tensorial canónica</h3>
+<p>Sean <span class="math inline">\(U,V\)</span> espacios sobre el mismo cuerpo conmutativo <span class="math inline">\(F\)</span>. La función <span class="math display">\[
+\tau_{U,V}:U\times V\longrightarrow U\otimes_F V,\qquad
+\tau_{U,V}(u,v)=q_{R_F(U,V)}(\delta_{(u,v)})
+\]</span> existe: para cada pareja la función delta tiene un valor único en <span class="math inline">\(E_F(U,V)\)</span>, y la proyección tiene un valor único en el cociente. El grafo del compuesto se obtiene por Separación en <span class="math inline">\((U\times V)\times(U\otimes_F V)\)</span>. La llamamos <strong>aplicación tensorial canónica</strong>. Su bilinealidad se probará en <a href="#talg-pro-00121">§40.5</a>.</p>
+</section>
+<section id="talg-not-00021" class="level3">
+<h3 class="anchored" data-anchor-id="talg-not-00021">Notación 40.4.3 — Tensor puro</h3>
+<p>Una vez definida <span class="math inline">\(\tau_{U,V}\)</span>, escribimos <span class="math display">\[
+u\otimes v:=\tau_{U,V}(u,v).
+\]</span> Un elemento del producto tensorial se llama <strong>tensor puro</strong> o <strong>descomponible</strong> cuando pertenece a la imagen de <span class="math inline">\(\tau_{U,V}\)</span>; esto significa que existen <span class="math inline">\(u\in U,v\in V\)</span> cuyo tensor es ese elemento. No se exige unicidad de los factores ni se afirma que todos los tensores sean puros.</p>
+</section>
+</section>
+<section id="bilinealidad-y-generación" class="level2">
+<h2 class="anchored" data-anchor-id="bilinealidad-y-generación">40.5. Bilinealidad y generación</h2>
+<section id="talg-pro-00121" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00121">Proposición 40.5.1 — Bilinealidad y generación por tensores puros</h3>
+<p>La aplicación <span class="math inline">\(\tau_{U,V}\)</span> es bilineal. Para <span class="math inline">\(a\in F\)</span>, <span class="math display">\[
+\begin{aligned}
+(u+u')\otimes v&amp;=u\otimes v+u'\otimes v,\\
+(au)\otimes v&amp;=a(u\otimes v),\\
+u\otimes(v+v')&amp;=u\otimes v+u\otimes v',\\
+u\otimes(av)&amp;=a(u\otimes v).
+\end{aligned}
+\]</span> En particular <span class="math inline">\(0\otimes v=u\otimes0=0\)</span>, y <span class="math display">\[
+(au)\otimes v=u\otimes(av).
+\]</span> Todo tensor es una combinación lineal finita de tensores puros. Una aplicación lineal que sale de <span class="math inline">\(U\otimes_F V\)</span> queda determinada por sus valores en los tensores puros. Si <span class="math inline">\(U=0\)</span> o <span class="math inline">\(V=0\)</span>, el producto tensorial es el espacio cero.</p>
+<section id="talg-prf-00194" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00194">Demostración</h4>
+<p>Cada generador de las cuatro familias de <a href="#talg-def-00081">§40.1</a> pertenece a <span class="math inline">\(R_F(U,V)=\ker q_{R_F(U,V)}\)</span>. Aplicar la proyección lineal al generador de <span class="math inline">\(\mathcal R_1\)</span> da <span class="math display">\[
+q(\delta_{(u+u',v)})-q(\delta_{(u,v)})-q(\delta_{(u',v)})=0,
+\]</span> que es la primera identidad. Aplicarla a los generadores de <span class="math inline">\(\mathcal R_2,\mathcal R_3,\mathcal R_4\)</span> da, respectivamente, la segunda, tercera y cuarta. Estas son exactamente las cuatro leyes de bilinealidad. Poner <span class="math inline">\(a=0\)</span> en las leyes homogéneas prueba las identidades con cero. Las dos leyes homogéneas tienen el mismo lado derecho, lo que prueba el traslado del escalar.</p>
+<p>Sea <span class="math inline">\(t\)</span> un elemento del cociente. Por sobreyectividad existe localmente <span class="math inline">\(x\in E_F(U,V)\)</span> con <span class="math inline">\(q(x)=t\)</span>. La <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00114">expansión canónica de soporte finito del espacio libre</a> da <span class="math display">\[
+x=\sum_{(u,v)\in D}x(u,v)\delta_{(u,v)}
+\]</span> para algún conjunto finito <span class="math inline">\(D\)</span>. La linealidad de <span class="math inline">\(q\)</span> implica <span class="math display">\[
+t=\sum_{(u,v)\in D}x(u,v)(u\otimes v).
+\]</span> No se selecciona simultáneamente un representante para cada tensor. Si dos aplicaciones lineales coinciden en cada tensor puro, conservan esta suma y coinciden en <span class="math inline">\(t\)</span>; Extensionalidad prueba su igualdad.</p>
+<p>Si <span class="math inline">\(U=0\)</span>, todo puro tiene primer factor cero, luego es cero. La generación recién probada muestra que todo tensor es cero. Para <span class="math inline">\(V=0\)</span> se usa el segundo factor. Se incluyen sumas vacías. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="propiedad-universal" class="level2">
+<h2 class="anchored" data-anchor-id="propiedad-universal">40.6. Propiedad universal</h2>
+<section id="talg-thm-00044" class="level3">
+<h3 class="anchored" data-anchor-id="talg-thm-00044">Teorema 40.6.1 — Propiedad universal del producto tensorial</h3>
+<p>Para cualquier espacio <span class="math inline">\(W\)</span> sobre <span class="math inline">\(F\)</span> y aplicación bilineal <span class="math inline">\(\beta:U\times V\to W\)</span>, existe una única aplicación lineal <span class="math display">\[
+\widehat\beta:U\otimes_F V\longrightarrow W
+\]</span> tal que <span class="math inline">\(\widehat\beta(u\otimes v)=\beta(u,v)\)</span> para todo <span class="math inline">\(u,v\)</span>, es decir, <span class="math display">\[
+\widehat\beta\circ\tau_{U,V}=\beta.
+\]</span> En consecuencia, la función <span class="math display">\[
+\Phi_W:\mathcal L_F(U\otimes_F V,W)\longrightarrow
+\operatorname{Bil}_F(U,V;W),\qquad
+T\longmapsto T\circ\tau_{U,V}
+\]</span> es un isomorfismo vectorial. No se presupone una base de <span class="math inline">\(U\)</span> o de <span class="math inline">\(V\)</span>.</p>
+<section id="talg-prf-00195" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00195">Demostración</h4>
+<p>Apliquemos el <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-thm-00038">Teorema 36.4.1</a> al espacio libre sobre <span class="math inline">\(U\times V\)</span> y a la función dada <span class="math inline">\(\beta\)</span>. Obtenemos una única aplicación lineal <span class="math inline">\(L:E_F(U,V)\to W\)</span> con <span class="math display">\[
+L(\delta_{(u,v)})=\beta(u,v).
+\]</span> Para un generador de <span class="math inline">\(\mathcal R_1\)</span>, <span class="math display">\[
+L(\delta_{(u+u',v)}-\delta_{(u,v)}-\delta_{(u',v)})
+=\beta(u+u',v)-\beta(u,v)-\beta(u',v)=0.
+\]</span> En <span class="math inline">\(\mathcal R_2\)</span>, el valor es <span class="math inline">\(\beta(au,v)-a\beta(u,v)=0\)</span>; en <span class="math inline">\(\mathcal R_3\)</span>, <span class="math inline">\(\beta(u,v+v')-\beta(u,v)-\beta(u,v')=0\)</span>; en <span class="math inline">\(\mathcal R_4\)</span>, <span class="math inline">\(\beta(u,av)-a\beta(u,v)=0\)</span>. Así <span class="math inline">\(\mathcal R_F(U,V)\subseteq\ker L\)</span>. El <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00113">núcleo es subespacio</a> y la propiedad mínima del span implica <span class="math inline">\(R_F(U,V)\subseteq\ker L\)</span>.</p>
+<p>La factorización lineal del <a href="../../libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.html#talg-thm-00040">Teorema 37.3.1</a> produce <span class="math inline">\(\widehat\beta\)</span> sobre el cociente, con <span class="math inline">\(\widehat\beta\circ q=L\)</span>. Esta aplicación ya está bien definida sobre clases por ese teorema, antes de utilizarla. Al evaluar en <span class="math inline">\(\delta_{(u,v)}\)</span> se obtiene la identidad requerida. Si <span class="math inline">\(S\)</span> es otra aplicación lineal con esos valores, coincide con <span class="math inline">\(\widehat\beta\)</span> en los tensores puros; la <a href="#talg-pro-00121">Proposición 40.5.1</a> da <span class="math inline">\(S=\widehat\beta\)</span>.</p>
+<p>Para cualquier <span class="math inline">\(T\)</span> lineal, <span class="math inline">\(T\circ\tau_{U,V}\)</span> es bilineal: aplicar <span class="math inline">\(T\)</span> a cada una de las cuatro identidades de <a href="#talg-pro-00121">§40.5</a> conserva suma y escalares. Por tanto <span class="math inline">\(\Phi_W\)</span> tiene el codominio anunciado. La existencia anterior da sobreyectividad de <span class="math inline">\(\Phi_W\)</span>, y la unicidad da inyectividad. Además, <span class="math display">\[
+\Phi_W(S+T)(u,v)=S(u\otimes v)+T(u\otimes v),\qquad
+\Phi_W(aT)(u,v)=aT(u\otimes v).
+\]</span> Son las identidades de linealidad para las estructuras puntuales ya certificadas en <a href="../../libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.html#talg-pro-00116">§§37.5</a> y <a href="../../libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.html#talg-pro-00118">38.2</a>. Así <span class="math inline">\(\Phi_W\)</span> es lineal y biyectiva, y su inversa es lineal por la <a href="../../libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.html#talg-pro-00113">Proposición 36.2.1</a>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="unicidad-del-objeto-universal" class="level2">
+<h2 class="anchored" data-anchor-id="unicidad-del-objeto-universal">40.7. Unicidad del objeto universal</h2>
+<section id="talg-thm-00045" class="level3">
+<h3 class="anchored" data-anchor-id="talg-thm-00045">Teorema 40.7.1 — Unicidad hasta isomorfismo compatible</h3>
+<p>Sea <span class="math inline">\(X\)</span> un espacio sobre <span class="math inline">\(F\)</span> y <span class="math inline">\(\sigma:U\times V\to X\)</span> una aplicación bilineal con la siguiente propiedad: para todo espacio <span class="math inline">\(W\)</span> y todo mapa bilineal <span class="math inline">\(\beta:U\times V\to W\)</span> existe un único mapa lineal <span class="math inline">\(A:X\to W\)</span> con <span class="math inline">\(A\circ\sigma=\beta\)</span>. Entonces existe un único isomorfismo lineal <span class="math display">\[
+I:U\otimes_F V\longrightarrow X,\qquad I\circ\tau_{U,V}=\sigma.
+\]</span> La unicidad corresponde al isomorfismo que respeta las aplicaciones canónicas; no es una igualdad literal de los conjuntos subyacentes.</p>
+<section id="talg-prf-00196" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00196">Demostración</h4>
+<p>La propiedad universal de <span class="math inline">\(U\otimes_F V\)</span>, aplicada a <span class="math inline">\(\sigma\)</span>, da un mapa lineal <span class="math inline">\(I\)</span> con <span class="math inline">\(I\circ\tau=\sigma\)</span>. La propiedad supuesta de <span class="math inline">\((X,\sigma)\)</span>, aplicada a <span class="math inline">\(\tau\)</span>, da un mapa lineal <span class="math inline">\(J:X\to U\otimes_F V\)</span> con <span class="math inline">\(J\circ\sigma=\tau\)</span>.</p>
+<p>Las composiciones son lineales y cumplen <span class="math display">\[
+(J\circ I)\circ\tau=\tau,\qquad
+(I\circ J)\circ\sigma=\sigma.
+\]</span> También las identidades de los dos espacios cumplen estas ecuaciones. La unicidad en cada propiedad universal fuerza <span class="math display">\[
+J\circ I=\operatorname{id}_{U\otimes_F V},\qquad
+I\circ J=\operatorname{id}_X.
+\]</span> Así <span class="math inline">\(I\)</span> es biyectivo, con inversa lineal <span class="math inline">\(J\)</span>. Cualquier isomorfismo compatible es, en particular, un mapa lineal que factoriza <span class="math inline">\(\sigma\)</span> a través de <span class="math inline">\(\tau\)</span>, y coincide con <span class="math inline">\(I\)</span> por la misma unicidad. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="mapas-inducidos" class="level2">
+<h2 class="anchored" data-anchor-id="mapas-inducidos">40.8. Mapas inducidos</h2>
+<section id="talg-pro-00122" class="level3">
+<h3 class="anchored" data-anchor-id="talg-pro-00122">Proposición 40.8.1 — Mapas tensoriales inducidos</h3>
+<p>Para mapas lineales <span class="math inline">\(f:U\to U'\)</span> y <span class="math inline">\(g:V\to V'\)</span> sobre <span class="math inline">\(F\)</span>, existe un único mapa lineal <span class="math display">\[
+f\otimes_F g:U\otimes_F V\longrightarrow U'\otimes_F V'
+\]</span> con <span class="math display">\[
+(f\otimes_F g)(u\otimes v)=f(u)\otimes g(v).
+\]</span> La notación designa ahora un mapa lineal, y sus dominios distinguen este uso del tensor de vectores. Para <span class="math inline">\(f':U'\to U''\)</span> y <span class="math inline">\(g':V'\to V''\)</span>, <span class="math display">\[
+(f'\circ f)\otimes_F(g'\circ g)
+=(f'\otimes_F g')\circ(f\otimes_F g).
+\]</span> También <span class="math inline">\(\operatorname{id}_U\otimes_F\operatorname{id}_V
+=\operatorname{id}_{U\otimes_F V}\)</span>. Si <span class="math inline">\(f\)</span> y <span class="math inline">\(g\)</span> son isomorfismos, <span class="math inline">\(f\otimes_F g\)</span> lo es y su inversa es <span class="math inline">\(f^{-1}\otimes_F g^{-1}\)</span>.</p>
+<section id="talg-prf-00197" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00197">Demostración</h4>
+<p>La función <span class="math inline">\((u,v)\mapsto f(u)\otimes g(v)\)</span> existe como compuesto de funciones dadas. En la primera variable, la aditividad de <span class="math inline">\(f\)</span> y la bilinealidad de <span class="math inline">\(\tau_{U',V'}\)</span> dan <span class="math display">\[
+f(u+u')\otimes g(v)=f(u)\otimes g(v)+f(u')\otimes g(v),
+\]</span> y <span class="math inline">\(f(au)\otimes g(v)=a(f(u)\otimes g(v))\)</span>. En la segunda variable se obtienen las dos leyes restantes usando <span class="math inline">\(g\)</span>. Es bilineal, y el <a href="#talg-thm-00044">Teorema 40.6.1</a> proporciona el mapa lineal único anunciado.</p>
+<p>Los dos lados de la fórmula de composición, evaluados en <span class="math inline">\(u\otimes v\)</span>, dan <span class="math inline">\(f'(f(u))\otimes g'(g(v))\)</span>. Ambos son lineales, luego la generación por puros prueba su igualdad. El mismo argumento prueba la fórmula para identidades. Si ambos mapas son isomorfismos, sus inversas son lineales, y las fórmulas ya probadas muestran que <span class="math inline">\(f^{-1}\otimes_F g^{-1}\)</span> es inversa por ambos lados. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="bases-dadas-y-cálculos-finitos" class="level2">
+<h2 class="anchored" data-anchor-id="bases-dadas-y-cálculos-finitos">40.9. Bases dadas y cálculos finitos</h2>
+<section id="talg-thm-00046" class="level3">
+<h3 class="anchored" data-anchor-id="talg-thm-00046">Teorema 40.9.1 — Base tensorial a partir de bases dadas</h3>
+<p>Sean <span class="math inline">\(B\subseteq U\)</span> y <span class="math inline">\(C\subseteq V\)</span> bases dadas. La familia <span class="math display">\[
+(b\otimes c)_{(b,c)\in B\times C}
+\]</span> es independiente y genera <span class="math inline">\(U\otimes_F V\)</span>; por tanto su imagen es una base. Para las funciones de coordenadas de soporte finito, <span class="math display">\[
+u\otimes v=\sum_{b\in B}\sum_{c\in C}a_u(b)a_v(c)(b\otimes c),
+\]</span> donde sólo se suman sobre soportes finitos. Si <span class="math inline">\(B\)</span> o <span class="math inline">\(C\)</span> es vacío, la base tensorial es vacía y el producto es cero. Cuando <span class="math inline">\(U,V\)</span> tienen dimensión finita, <span class="math display">\[
+\dim(U\otimes_F V)=\dim U\,\dim V.
+\]</span> Las bases arbitrarias se suponen dadas; no se obtiene aquí su existencia.</p>
+<section id="talg-prf-00198" class="level4">
+<h4 class="anchored" data-anchor-id="talg-prf-00198">Demostración</h4>
+<p>La expansión bilineal de <a href="../../libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.html#talg-pro-00118">§38.2</a>, aplicada a <span class="math inline">\(\tau\)</span>, da la fórmula de coordenadas. Cada tensor es suma finita de puros por <a href="#talg-pro-00121">§40.5</a>, y cada puro se expande así en la familia indicada. Por tanto esa familia genera.</p>
+<p>Para independencia fijemos una pareja <span class="math inline">\((b_0,c_0)\in B\times C\)</span>. La función dada <span class="math display">\[
+h_{b_0,c_0}:B\times C\to F,\qquad
+h_{b_0,c_0}(b,c)=
+\begin{cases}
+1_F,&amp;(b,c)=(b_0,c_0),\\
+0_F,&amp;(b,c)\ne(b_0,c_0)
+\end{cases}
+\]</span> existe por Separación y la disyunción clásica de igualdad de índices; no se atribuye decidibilidad efectiva. El <a href="../../libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.html#talg-thm-00042">Teorema 38.3.1</a> la extiende a una forma bilineal <span class="math inline">\(\beta_{b_0,c_0}:U\times V\to F\)</span>. El <a href="#talg-thm-00044">Teorema 40.6.1</a> da el mapa lineal <span class="math inline">\(\widehat\beta_{b_0,c_0}\)</span> cuyo valor en <span class="math inline">\(b\otimes c\)</span> es <span class="math inline">\(h_{b_0,c_0}(b,c)\)</span>.</p>
+<p>En una relación finita con parejas distintas, <span class="math display">\[
+\sum_{k&lt;n}\lambda_k(b_k\otimes c_k)=0,
+\]</span> aplicar <span class="math inline">\(\widehat\beta_{b_j,c_j}\)</span> deja exactamente <span class="math inline">\(\lambda_j=0\)</span>. Esto prueba independencia. Además, evaluar uno de estos mapas muestra que cada vector de la familia es no nulo; evaluar en una pareja distingue su tensor del de cualquier pareja diferente. Por ello la imagen no tiene repeticiones y es una base en el sentido de <a href="../../libros/capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.html#talg-def-00073">§34.1</a>.</p>
+<p>Si una base es vacía, su espacio está generado por la suma vacía y es cero; <a href="#talg-pro-00121">§40.5</a> da el producto cero y la base vacía. Para bases finitas de longitudes <span class="math inline">\(r,s\)</span>, las parejas se enumeran mediante <span class="math inline">\(s\)</span> bloques de <span class="math inline">\(r\)</span> elementos, sin repeticiones. Su número satisface <span class="math inline">\(N(r,0)=0\)</span> y <span class="math inline">\(N(r,s+1)=N(r,s)+r\)</span>, las <a href="../../libros/capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.html#talg-imp-00006">ecuaciones recursivas del producto natural</a> <span class="math inline">\(rs\)</span>. La dimensión, definida como la longitud de una base finita, vale entonces <span class="math inline">\(rs\)</span>. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+</section>
+<section id="síntesis" class="level2">
+<h2 class="anchored" data-anchor-id="síntesis">40.99. Síntesis</h2>
+<p>El cociente del espacio libre impone las cuatro relaciones de bilinealidad. Los tensores puros generan, pero esa afirmación no identifica generación con descomponibilidad. La propiedad universal permite factorizar mapas bilineales sin escoger bases ni representantes. La unicidad del objeto universal es una isomorfía compatible; los mapas inducidos y las bases dadas se deducen después.</p>
+<p>El caso cero queda incluido. Para dimensiones finitas, el conteo es un producto de longitudes de bases; para bases infinitas dadas sólo se afirman generación e independencia, sin dimensión cardinal. Todo uso clásico nuevo se limita a funciones delta por igualdad de índices, además de los usos ya declarados en las dependencias. No se usa el axioma de elección ni la rama de Zorn del capítulo 34.</p>
+<hr>
+<p><a href="../../libros/capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.html">← <strong>Capítulo 39 — Multilinealidad y formas</strong></a> · <a href="../../libros/otros/tratado-de-algebra.html"><strong>Tratado moderno de Álgebra</strong></a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
