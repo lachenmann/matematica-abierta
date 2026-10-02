@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0137 |
+| Capítulo | MA-BCH-0138 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0012 |
 
@@ -267,4 +267,5 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 |---|---|---|---|---|
 | MA-BCH-0135 | book-chapter | TALG-0032 | `libros/capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md` | published |
 | MA-BCH-0136 | book-chapter | TALG-0033 | `libros/capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md` | published |
+| MA-BCH-0137 | book-chapter | TALG-0034 | `libros/capitulos/tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md` | published |
 
