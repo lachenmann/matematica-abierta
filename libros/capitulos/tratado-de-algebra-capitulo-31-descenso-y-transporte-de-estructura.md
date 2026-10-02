@@ -322,8 +322,8 @@ Para un subanillo $A$, la restricción es inyectiva y sobreyectiva sobre la imag
 
 El descenso exige compatibilidad con las relaciones que definen las clases. La propiedad universal construye el morfismo y garantiza buena definición y unicidad. Identidad y composición se conservan porque sus valores coinciden sobre las proyecciones sobreyectivas. La inyectividad mide la ausencia de nuevas identificaciones; la sobreyectividad mide si cada clase del codominio posee un representante procedente de la imagen. El transporte bajo isomorfismos conserva las subestructuras y permite recuperarlas mediante la inversa.
 
-La Parte VII utiliza a continuación los grupos aditivos y los principios funcionales y de cocientes como base de la construcción de espacios vectoriales. Cada nuevo objeto requiere definir la acción escalar y comprobar su buena definición.
+La [Parte VII](tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md) utiliza a continuación los grupos aditivos y los principios funcionales y de cocientes como base de la construcción de espacios vectoriales. Cada nuevo objeto requiere definir la acción escalar y comprobar su buena definición.
 
 ---
 
-[← **Capítulo 30 — Teoremas de isomorfía superiores y correspondencia**](tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 30 — Teoremas de isomorfía superiores y correspondencia**](tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 32 — Espacios vectoriales: definición y ejemplos** →](tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md)
