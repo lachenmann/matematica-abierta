@@ -35,7 +35,9 @@ const path=require('node:path');
      tableRegions:[...document.querySelectorAll('.tf-table')].map(x=>({tabindex:x.getAttribute('tabindex'),role:x.getAttribute('role')})),
      heading:document.querySelector('h1')?.textContent,
      h1Count:document.querySelectorAll('h1').length,
-     privateLinks:document.querySelectorAll('a[href*="drive.google.com"]').length
+     privateLinks:document.querySelectorAll('a[href*="drive.google.com"]').length,
+     inlineMathScrollable:[...document.querySelectorAll('.math.inline,mjx-container:not([display="true"])')].filter(x=>['auto','scroll'].includes(getComputedStyle(x).overflowX)).length,
+     rawMermaidBlocks:[...document.querySelectorAll('pre,code')].filter(x=>x.textContent.includes('flowchart LR')).length
     }));
     findings.push({name,width,expectedTheme:theme,status:response?.status(),errors,localResourceErrors,...data});
     console.log(`${width}px ${name}: width=${data.bodyWidth}, math=${data.mathRendered}, errors=${errors.length}`);
@@ -52,7 +54,7 @@ const path=require('node:path');
    }
   }
  } finally {await browser.close();fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(findings,null,2));}
- const failed=findings.filter(x=>x.status!==200||!x.heading||x.h1Count!==1||x.privateLinks||x.errors.length||x.localResourceErrors.length||x.bodyWidth>x.viewport+2||x.theme!==x.expectedTheme||x.mathErrors||x.visibleMathMissing.length||(x.mathSources>0&&x.mathRendered===0)||x.tableRegions.some(t=>t.tabindex!=='0'||t.role!=='region'));
+ const failed=findings.filter(x=>x.status!==200||!x.heading||x.h1Count!==1||x.privateLinks||x.errors.length||x.localResourceErrors.length||x.bodyWidth>x.viewport+2||x.theme!==x.expectedTheme||x.mathErrors||x.visibleMathMissing.length||(x.mathSources>0&&x.mathRendered===0)||x.inlineMathScrollable||x.rawMermaidBlocks||x.tableRegions.some(t=>t.tabindex!=='0'||t.role!=='region'));
  console.log(JSON.stringify({checks:findings.length,failed},null,2));
  if(failed.length)process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1});

@@ -12,7 +12,9 @@ assert len(pages)==35, len(pages)
 assert len(list(BOOK.glob('capitulo-*.qmd')))==18
 assert manifest['status']=='published'
 for catalog,target in [('libros/index.qmd','otros/tratado-funciones/index.html'),('libros/tratados/index.qmd','../otros/tratado-funciones/index.html')]:
- assert (ROOT/catalog).read_text().count(target)>=1, catalog
+ catalog_text=(ROOT/catalog).read_text()
+ assert catalog_text.count(target)>=1, catalog
+ assert 'dieciocho capítulos, ejercicios' not in catalog_text.lower(), catalog
 anchors={}
 for page in pages:
  text=page.read_text()
@@ -32,6 +34,7 @@ for kind,count in {'AX':9,'DEF':73,'THM':133,'EXA':32,'CEX':22}.items():
 for n in range(1,19):
  text=(BOOK/f'capitulo-{n:02d}.qmd').read_text()
  assert not re.search(r'(?im)^(?:#{1,6}\s+.*\bejercicios?\b|\*\*Ejercicios?\b)',text), f'embedded exercise in chapter {n}'
+ assert not re.search(r'(?i)(Pregunta de control|Pregunta pedagógica|Preguntas para verificar comprensión|Cinco verificaciones para el lector|Lectura guiada \(MA-PED\))',text), f'exercise-like reader prompt in chapter {n}'
 
 # Appendix C is part of the treatise as worked examples, not as exercises or a problem-bank collection.
 appendix_c=(BOOK/'apendice-c.qmd').read_text()
@@ -42,6 +45,34 @@ assert not re.search(r'(?i)\bejercicios?\b|\bsoluciones?\b',appendix_c_body)
 assert '**Enunciado.**' not in appendix_c and '**Pista.**' not in appendix_c and '**Solución.**' not in appendix_c
 assert not (ROOT/'problemas/colecciones/tratado-funciones/index.qmd').exists()
 assert '[Apéndice C — Ejemplos desarrollados](apendice-c.qmd)' in (BOOK/'index.qmd').read_text()
+
+# Final editorial closure: no stale publication/pedagogy language may remain.
+book_text='\n'.join(page.read_text() for page in pages)
+assert 'banco de problemas' not in book_text.lower()
+assert 'sin publicación web' not in book_text.lower()
+assert 'preguntas para verificar comprensión' not in book_text.lower()
+assert 'pendiente técnico:' not in book_text.lower()
+assert '### 18.6.3. Cierre editorial y continuidad formal' in (BOOK/'capitulo-18.qmd').read_text()
+assert '[Apéndice C](apendice-c.qmd)' in (BOOK/'indice-ejemplos.qmd').read_text()
+
+# Linear reading navigation must remain complete and reciprocal.
+reading_order=[
+ 'prefacio.qmd','introduccion.qmd','convenciones.qmd','matriz-hipotesis.qmd',
+ *[f'capitulo-{n:02d}.qmd' for n in range(1,19)],
+ 'apendice-a.qmd','apendice-b.qmd','apendice-c.qmd','apendice-d.qmd',
+ 'bibliografia.qmd','glosario.qmd','indice-conceptos.qmd','indice-notacion.qmd',
+ 'indice-resultados.qmd','indice-ejemplos.qmd','indice-contraejemplos.qmd','indice-fundamentos.qmd'
+]
+for i,name in enumerate(reading_order):
+ text=(BOOK/name).read_text()
+ navs=re.findall(r'::: \{\.tf-navigation\}([\s\S]*?):::',text)
+ assert navs,name
+ nav=navs[-1]
+ prev='index.qmd' if i==0 else reading_order[i-1]
+ nxt='index.qmd' if i==len(reading_order)-1 else reading_order[i+1]
+ assert f'[← Anterior]({prev})' in nav,(name,'previous',prev)
+ assert '[Índice del tratado](index.qmd)' in nav,name
+ assert f'[Siguiente →]({nxt})' in nav,(name,'next',nxt)
 
 # Reconstruct the declared dependency graph from result comments.
 node_owner={anchor:page.name for page in pages for anchor in anchors[page.name] if re.fullmatch(r'TF-(?:AX|DEF|THM|EXA|CEX)-\d{5}',anchor)}

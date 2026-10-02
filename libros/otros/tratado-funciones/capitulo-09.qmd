@@ -11,7 +11,7 @@ book-id: MA-BOK-0011
 editorial-project: TF
 editorial-id: TF-CAT-009
 source-version: 1.0.4
-date-modified: '2026-10-01'
+date-modified: '2026-10-02'
 areas:
 - fundamentos
 level: avanzado
@@ -106,8 +106,8 @@ $$d\in K\iff Q(d)\downarrow\iff d\notin K,$$
 contradicción. Por tanto $K$ es c.e. e indecidible. Su complemento no es c.e.: si $K$ y su complemento fueran c.e., simularíamos sus dos reconocedores en paralelo hasta que uno terminara y decidiríamos $K$. Esta prueba es una diagonalización sobre la numeración de programas, no una apelación a «cálculos muy largos». $\square$
 
 ::: {.callout-note}
-## Antes de continuar
-¿En qué línea de las pruebas anteriores usamos una *máquina que diverge fuera del dominio*, y no sólo una función que promete devolver el resultado correcto cuando el argumento pertenece al dominio? La diferencia será decisiva en §9.5.
+## Dónde entra la divergencia exacta
+El contrato de divergencia fuera del dominio se usa en el Teorema 9.1.3 cuando el reconocedor se detiene **si y sólo si** la entrada pertenece a $\operatorname{dom}(f)$, y en el Teorema 9.1.4, en sentido inverso, cuando la búsqueda de un par $(n,m)$ en la gráfica no termina si tal par no existe. Un realizador bajo promesa no posee este contrato: fuera de los nombres válidos de argumentos del dominio puede terminar, divergir o producir datos irrelevantes. Esta diferencia será decisiva en §9.5.
 :::
 
 
@@ -240,11 +240,13 @@ La función $f_K(n)=0$ si $\varphi_n(n)\downarrow$ y sin valor en otro caso es p
 
 **Ejemplo 9.5.2 — Un dominio decidible que sí admite etiqueta efectiva** <!-- result-id: TF-EXA-00016; depends-on: TF-THM-00072, TF-THM-00073, TF-DEF-00036 -->
 
-Sea $h:\mathbb N\rightharpoonup\mathbb N$, $h(2k)=k$ e indefinida en los impares. Su dominio es decidible por la paridad. El algoritmo etiquetado calcula $\mathsf{valor}(n/2)$ si $n$ es par y $\bot$ si es impar. La extensión total $g(n)=\lfloor n/2\rfloor$ coincide con $h$ en los pares; también existirían otras extensiones. Pregunta de control: ¿qué información conserva el algoritmo etiquetado que pierde la extensión $g$?
+Sea $h:\mathbb N\rightharpoonup\mathbb N$, $h(2k)=k$ e indefinida en los impares. Su dominio es decidible por la paridad. El algoritmo etiquetado calcula $\mathsf{valor}(n/2)$ si $n$ es par y $\bot$ si es impar. La extensión total $g(n)=\lfloor n/2\rfloor$ coincide con $h$ en los pares; también existirían otras extensiones. La diferencia informativa es exacta: la salida etiquetada conserva la frontera del dominio —distingue valor de indefinición—, mientras que la extensión $g$ sólo conserva los valores sobre el dominio original y no permite recuperar por sí sola dónde $h$ estaba definida.
 
 ::: {.callout-note}
-## Cinco verificaciones para el lector
-1. Demuestre de nuevo la implicación gráfica c.e. $\Rightarrow$ función parcial computable y señale dónde usa univaluación. 2. Explique por qué la computabilidad de *alguna* extensión no decide el dominio. 3. Trace las llamadas del algoritmo de (9.2) e identifique por qué las dos ramas terminan. 4. Construya dos nombres distintos de $3$ bajo $\delta_{\mathbb N}(p)=p(0)$ y distinga igualdad de valor e igualdad de secuencias. 5. En 9.4.6, indique el punto preciso que impide aplicar 9.1.3 al realizador constante.
+## Cinco comprobaciones desarrolladas
+La implicación «gráfica c.e. $\Rightarrow$ función parcial computable» se realiza buscando en la enumeración el primer par $(n,m)$ con la entrada requerida; la univaluación garantiza que cualquier par encontrado posee el mismo segundo componente y, por tanto, que la salida está bien definida. La existencia de una extensión computable no decide el dominio porque la extensión puede devolver el mismo valor dentro y fuera de él, como ocurre con $f_K$ y la función total constante cero.
+
+En (9.2), primero termina siempre el decisor de pertenencia al dominio. Si responde negativamente, se devuelve $\bot$ de inmediato; si responde afirmativamente, se ejecuta $f(n)$, que termina precisamente porque ya se estableció $n\in D$. Para la representación $\delta_{\mathbb N}(p)=p(0)$, dos secuencias distintas pueden nombrar el mismo natural: por ejemplo, la secuencia constante $3,3,3,\ldots$ y otra con primer término $3$ y términos posteriores diferentes tienen el mismo valor representado sin ser la misma secuencia. Finalmente, el realizador total constante de 9.4.6 termina también fuera del dominio semántico prometido; su conjunto de terminación no coincide con el dominio de la función representada y, por ello, el Teorema 9.1.3 no puede aplicarse para concluir que ese dominio sea c.e.
 :::
 
 
