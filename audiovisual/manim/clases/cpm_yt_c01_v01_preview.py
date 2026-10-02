@@ -234,21 +234,32 @@ class CPMYTC01V01Preview(Scene):
         self.section_title("Siguiente clase: teoremas derivados de los axiomas")
 
         source_box = RoundedRectangle(
-            width=5.3, height=1.25, corner_radius=0.16,
+            width=6.2, height=1.65, corner_radius=0.16,
             color=BLUE, stroke_width=2.0,
-        ).move_to([0, 1.55, 0])
+        ).move_to([0, 1.45, 0])
         source_title = Tex(r"Axiomas de cuerpo", color=BLUE).scale(0.82)
         source_formula = MathTex(
             r"0\neq1", r"\qquad", r"+", r"\qquad", r"\cdot",
             color=FG,
-        ).scale(0.90)
-        source_group = VGroup(source_box, source_title, source_formula)
-        source_title.move_to(source_box.get_center() + 0.28 * UP)
-        source_formula.move_to(source_box.get_center() + 0.28 * DOWN)
+        ).scale(0.86)
+        source_distributivity = MathTex(
+            r"a\cdot(b+c)=a\cdot b+a\cdot c",
+            color=FG,
+        ).scale(0.62)
+        source_group = VGroup(
+            source_box,
+            source_title,
+            source_formula,
+            source_distributivity,
+        )
+        source_title.move_to(source_box.get_center() + 0.47 * UP)
+        source_formula.move_to(source_box.get_center() + 0.02 * UP)
+        source_distributivity.move_to(source_box.get_center() + 0.45 * DOWN)
 
         self.play(Create(source_box))
         self.play(FadeIn(source_title), FadeIn(source_formula))
-        self.hold(0.35)
+        self.play(FadeIn(source_distributivity, shift=0.08 * UP))
+        self.hold(0.45)
 
         cards = VGroup(
             self.theorem_card("Unicidad del cero", r"0=0'", BLUE),
