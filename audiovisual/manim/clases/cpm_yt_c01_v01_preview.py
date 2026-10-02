@@ -230,7 +230,7 @@ class CPMYTC01V01Preview(Scene):
         self.clear_stage(qr)
 
         # 21 — Enlace con el siguiente video
-        self.section_title("Siguiente video: teoremas derivados de los axiomas")
+        self.section_title("Siguiente clase: teoremas derivados de los axiomas")
 
         source_box = RoundedRectangle(
             width=5.3, height=1.25, corner_radius=0.16,
