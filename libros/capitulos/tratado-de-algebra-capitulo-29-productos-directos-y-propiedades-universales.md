@@ -2453,4 +2453,4 @@ Este nivel es suficiente para que las unidades 6.2 y 6.3 reutilicen los principi
 
 ---
 
-[← **Capítulo 28 — Propiedades arquimedianas**](tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 28 — Propiedades arquimedianas**](tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 30 — Teoremas de isomorfía superiores y correspondencia** →](tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md)
