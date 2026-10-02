@@ -239,6 +239,8 @@ Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas
 
 **Edición del 2 de octubre de 2026:** están disponibles los **capítulos 1–40 y las tres interfaces fundacionales**, incluida la interfaz inicial presentada como capítulo 0. Son **43 unidades matemáticas**, además del prefacio y la guía de lectura.
 
+::: {.talg-parts-table}
+
 | Parte | Unidades | Contenido |
 |---|---|---|
 | [Parte 0 — Fundamentos y lenguaje](#parte-0) | Tres interfaces fundacionales | Funciones, inversas, equivalencias y cocientes |
@@ -250,6 +252,8 @@ Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas
 | [Parte VI — Construcciones y transporte](#parte-vi) | Capítulos 29–31 | Productos, isomorfías superiores, correspondencia y descenso |
 | [Parte VII — Espacios vectoriales](#parte-vii) | Capítulos 32–37 | Subespacios, bases, dimensión finita, mapas lineales, cocientes y dualidad |
 | [Parte VIII — Álgebra multilineal básica](#parte-viii) | Capítulos 38–40 | Bilinealidad, multilinealidad, formas y producto tensorial |
+
+:::
 
 Las referencias de lectura usan números editoriales; los identificadores estables se conservan como anclas para recorrer las dependencias. Cada capítulo presenta sus definiciones, hipótesis y demostraciones, con los fundamentos y usos del axioma de elección declarados donde corresponden.
 
