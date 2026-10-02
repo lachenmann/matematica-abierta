@@ -28,7 +28,7 @@ class CPMYTC01V01Preview(Scene):
         # 01 — Apertura algebraica
         self.section_title("Aritmética conocida")
         arithmetic = MathTex(
-            r"2+3=5", r"\qquad", r"2\cdot3=6", r"\qquad", r"2x=1\Longrightarrow x=\frac12",
+            r"2+3=5", r"\qquad", r"2\cdot3=6", r"\qquad", r"2\cdot x=1\Longrightarrow x=\frac12",
             color=FG,
         ).scale(0.95)
         arithmetic[0].set_color(BLUE)
@@ -59,7 +59,7 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.5)
         self.play(FadeOut(expr), FadeOut(marker))
 
-        eq = MathTex(r"2x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.25)
+        eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.25)
         half = MathTex(r"x=\frac12", color=GREEN).scale(1.35).move_to(eq)
         marker2 = SurroundingRectangle(chain[2], color=ORANGE, buff=0.12)
         self.play(FadeIn(eq), Create(marker2))
@@ -156,7 +156,7 @@ class CPMYTC01V01Preview(Scene):
         self.section_title("Los enteros no forman un cuerpo")
         integers = MathTex(r"\mathbb Z", color=ORANGE).scale(2.2)
         circle = Circle(radius=1.5, color=ORANGE).move_to(integers)
-        eq2 = MathTex(r"2x=1", color=FG).scale(1.25).to_edge(DOWN, buff=1.2)
+        eq2 = MathTex(r"2\cdot x=1", color=FG).scale(1.25).to_edge(DOWN, buff=1.2)
         half2 = MathTex(r"x=\frac12", color=GREEN).scale(1.25).move_to(eq2)
         half_floating = MathTex(r"\frac12", color=GREEN).scale(1.6).move_to(integers)
         self.play(Create(circle), FadeIn(integers))
@@ -470,6 +470,8 @@ class CPMYTC01V01Preview(Scene):
         self.play(Write(source))
         self.hold(0.3)
 
+        initial_positions = [part.get_center().copy() for part in source]
+
         # Duplicamos explícitamente el factor a y su signo de multiplicación.
         a_copy = source[0].copy()
         dot_copy = source[1].copy()
@@ -490,14 +492,15 @@ class CPMYTC01V01Preview(Scene):
         )
         self.hold(0.6)
 
-        # Factorización inversa: las dos copias de a se reúnen.
+        # Factorización inversa: las dos copias de a se reúnen en la posición original.
         self.play(
-            source[0].animate.move_to(source[0].get_center()),
-            a_copy.animate.move_to(source[0].get_center()),
-            dot_copy.animate.move_to(source[1].get_center()),
-            source[3].animate.move_to(source[3].get_center()),
-            source[4].animate.move_to(source[4].get_center()),
-            source[5].animate.move_to(source[5].get_center()),
+            source[0].animate.move_to(initial_positions[0]),
+            a_copy.animate.move_to(initial_positions[0]),
+            source[1].animate.move_to(initial_positions[1]),
+            dot_copy.animate.move_to(initial_positions[1]),
+            source[3].animate.move_to(initial_positions[3]),
+            source[4].animate.move_to(initial_positions[4]),
+            source[5].animate.move_to(initial_positions[5]),
             FadeIn(source[2]),
             FadeIn(source[6]),
             run_time=1.0,
