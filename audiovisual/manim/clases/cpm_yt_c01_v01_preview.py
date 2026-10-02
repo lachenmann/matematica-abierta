@@ -268,18 +268,12 @@ class CPMYTC01V01Preview(Scene):
 
         # La nueva relación entra entre los mismos objetos.
         self.play(GrowFromCenter(less), run_time=0.55)
-        self.hold(0.45)
-
-        proposition = MathTex(r"2<3", color=FG).scale(1.55).move_to([0, -2.15, 0])
-        proposition[0][1].set_color(GREEN) if len(proposition[0]) > 1 else None
-        self.play(FadeIn(proposition, shift=0.10 * UP))
-        self.hold(0.8)
+        self.hold(0.75)
 
         self.clear_stage(
             algebra_group,
             order_box, order_title,
             two, less, three,
-            proposition,
         )
 
         # 22 — Cierre
