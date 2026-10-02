@@ -229,52 +229,58 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.8)
         self.clear_stage(qr)
 
-        # 21 — Capa algebraica / capa de orden
-        self.section_title("Siguiente capa: orden")
+        # 21 — Enlace con el siguiente video
+        self.section_title("Siguiente video: teoremas derivados de los axiomas")
 
-        algebra_box = RoundedRectangle(
-            width=7.2, height=1.55, corner_radius=0.16,
+        source_box = RoundedRectangle(
+            width=5.3, height=1.25, corner_radius=0.16,
             color=BLUE, stroke_width=2.0,
-        ).move_to([0, 0.75, 0])
-        algebra_title = Tex(r"Capa algebraica", color=BLUE).scale(0.82)
-        algebra_title.move_to(algebra_box.get_center() + 0.35 * UP)
-        algebra_symbols = MathTex(
-            r"+", r"\qquad", r"\cdot", r"\qquad", r"0", r"\qquad", r"1",
+        ).move_to([0, 1.55, 0])
+        source_title = Tex(r"Axiomas de cuerpo", color=BLUE).scale(0.82)
+        source_formula = MathTex(
+            r"0\neq1", r"\qquad", r"+", r"\qquad", r"\cdot",
             color=FG,
-        ).scale(1.0).move_to(algebra_box.get_center() + 0.28 * DOWN)
+        ).scale(0.90)
+        source_group = VGroup(source_box, source_title, source_formula)
+        source_title.move_to(source_box.get_center() + 0.28 * UP)
+        source_formula.move_to(source_box.get_center() + 0.28 * DOWN)
 
-        algebra_group = VGroup(algebra_box, algebra_title, algebra_symbols)
-        self.play(Create(algebra_box))
-        self.play(FadeIn(algebra_title), FadeIn(algebra_symbols))
-        self.hold(0.45)
+        self.play(Create(source_box))
+        self.play(FadeIn(source_title), FadeIn(source_formula))
+        self.hold(0.35)
 
-        # La estructura ya construida sube para dejar entrar una nueva capa.
-        self.play(algebra_group.animate.shift(0.75 * UP), run_time=0.7)
+        cards = VGroup(
+            self.theorem_card("Unicidad del cero", r"0=0'", BLUE),
+            self.theorem_card("Unicidad del inverso", r"b+c=0=b+d\Longrightarrow c=d", ORANGE),
+            self.theorem_card("Producto por cero", r"a\cdot0=0", GREEN),
+            self.theorem_card("Cancelación", r"a\cdot b=a\cdot c,\ a\neq0\Longrightarrow b=c", VIOLET),
+        ).arrange_in_grid(rows=2, cols=2, buff=(0.45, 0.45))
+        cards.scale(0.78).move_to([0, -0.75, 0])
 
-        order_box = RoundedRectangle(
-            width=7.2, height=1.45, corner_radius=0.16,
-            color=GREEN, stroke_width=2.0,
-        ).move_to([0, -0.65, 0])
-        order_title = Tex(r"Capa de orden", color=GREEN).scale(0.82)
-        order_title.move_to(order_box.get_center() + 0.32 * UP)
+        arrows = VGroup()
+        for card in cards:
+            arrows.add(
+                Arrow(
+                    source_box.get_bottom(),
+                    card.get_top(),
+                    buff=0.10,
+                    stroke_width=1.8,
+                    max_tip_length_to_length_ratio=0.10,
+                    color=MUTED,
+                )
+            )
 
-        two = MathTex(r"2", color=FG).scale(1.45).move_to([-0.85, -0.92, 0])
-        three = MathTex(r"3", color=FG).scale(1.45).move_to([0.85, -0.92, 0])
-        less = MathTex(r"<", color=GREEN).scale(1.45).move_to([0, -0.92, 0])
-
-        self.play(FadeIn(order_box, shift=0.22 * UP), FadeIn(order_title, shift=0.22 * UP))
-        self.play(FadeIn(two), FadeIn(three))
-        self.hold(0.25)
-
-        # La nueva relación entra entre los mismos objetos.
-        self.play(GrowFromCenter(less), run_time=0.55)
-        self.hold(0.75)
-
-        self.clear_stage(
-            algebra_group,
-            order_box, order_title,
-            two, less, three,
+        self.play(
+            LaggedStart(*[GrowArrow(a) for a in arrows], lag_ratio=0.12),
+            run_time=0.8,
         )
+        self.play(
+            LaggedStart(*[FadeIn(card, shift=0.10 * UP) for card in cards], lag_ratio=0.14),
+            run_time=1.2,
+        )
+        self.hold(1.0)
+
+        self.clear_stage(source_group, arrows, cards)
 
         # 22 — Cierre
         closing = Tex(r"Fin del preview local", color=MUTED).scale(0.82)
@@ -640,6 +646,17 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.55)
         self.play(FadeOut(proposition_back))
         self.clear_stage()
+
+    def theorem_card(self, title_text, formula, color):
+        box = RoundedRectangle(
+            width=4.6, height=1.35, corner_radius=0.14,
+            color=color, stroke_width=1.8,
+        )
+        title = Tex(title_text, color=color).scale(0.56)
+        math = MathTex(formula, color=FG).scale(0.58)
+        title.move_to(box.get_center() + 0.28 * UP)
+        math.move_to(box.get_center() + 0.25 * DOWN)
+        return VGroup(box, title, math)
 
     # ------------------------------------------------------------------
     # Tabla de síntesis
