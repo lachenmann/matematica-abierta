@@ -1696,6 +1696,4 @@ Finalmente, el capítulo no usa completitud, supremos, topología ni propiedad a
 
 ---
 
----
-
-[← **Capítulo 26 — Anillos ordenados**](tratado-de-algebra-capitulo-26-anillos-ordenados.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 26 — Anillos ordenados**](tratado-de-algebra-capitulo-26-anillos-ordenados.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 28 — Propiedades arquimedianas** →](tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md)
