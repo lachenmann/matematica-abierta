@@ -1,13 +1,39 @@
 from manim import *
+from pathlib import Path
 import numpy as np
 
 from marca import BG, BLUE, FG, MUTED, a_squared
 
 config.background_color = BG
 
+MANIM_ROOT = Path(__file__).resolve().parents[2]
+INTRO_DURATION_SECONDS = 8.0
+INTRO_MUSIC_FILE = (
+    MANIM_ROOT
+    / "assets"
+    / "audio"
+    / "intro"
+    / "CPM-intro-music.wav"
+)
+INTRO_MUSIC_GAIN_DB = -18.0
+
+
+def add_intro_music(scene: Scene) -> None:
+    """Añade la cortina oficial sólo al tramo de 8 s de IntroCanal."""
+    if not INTRO_MUSIC_FILE.exists():
+        raise FileNotFoundError(
+            "No existe la cortina musical canónica. Ejecuta "
+            "prepare-intro-music.ps1. Ruta esperada: "
+            + str(INTRO_MUSIC_FILE)
+        )
+    scene.add_sound(
+        str(INTRO_MUSIC_FILE),
+        gain=INTRO_MUSIC_GAIN_DB,
+    )
+
 
 class IntroCanal(Scene):
-    """Reconstrucción v2 de la intro aprobada de Matemática Abierta."""
+    """Intro canónica de Matemática Abierta, retimizada a 8,00 s."""
 
     def construct(self):
         self.camera.background_color = BG
@@ -19,22 +45,22 @@ class IntroCanal(Scene):
                 *[FadeIn(obj, shift=0.06 * UP) for obj in background],
                 lag_ratio=0.08,
             ),
-            run_time=1.0,
+            run_time=0.55,
         )
 
         ring = Circle(radius=1.38, color=BLUE, stroke_width=4.0)
         mark = a_squared(scale=1.15)
         a, two = mark
 
-        self.play(Create(ring), run_time=1.0)
-        self.play(Write(a), run_time=0.9)
-        self.play(FadeIn(two, shift=0.22 * UP), run_time=0.55)
-        self.wait(0.45)
+        self.play(Create(ring), run_time=0.55)
+        self.play(Write(a), run_time=0.45)
+        self.play(FadeIn(two, shift=0.22 * UP), run_time=0.30)
+        self.wait(0.20)
 
         self.play(
             FadeOut(ring),
             mark.animate.scale(0.70).move_to(ORIGIN),
-            run_time=0.75,
+            run_time=0.45,
         )
 
         left = Tex(r"Matemátic", color=FG).scale(1.25)
@@ -52,7 +78,7 @@ class IntroCanal(Scene):
             left_start.animate.move_to(full[0]),
             right_start.animate.move_to(full[2]),
             mark.animate.move_to(full[1]).scale(0.72 / 0.805),
-            run_time=1.35,
+            run_time=0.85,
             rate_func=smooth,
         )
 
@@ -68,22 +94,25 @@ class IntroCanal(Scene):
         rule = VGroup(line_l, inf, line_r).arrange(RIGHT, buff=0.18)
         rule.next_to(tag, DOWN, buff=0.30)
 
-        self.play(FadeIn(tag, shift=0.10 * UP), run_time=0.65)
-        self.play(Create(line_l), FadeIn(inf), Create(line_r), run_time=0.70)
-        self.wait(2.1)
+        self.play(FadeIn(tag, shift=0.10 * UP), run_time=0.40)
+        self.play(Create(line_l), FadeIn(inf), Create(line_r), run_time=0.40)
+
+        # El lockup permanece el tiempo suficiente para que la frase musical
+        # complete su arco antes del fade-out final.
+        self.wait(2.35)
 
         lockup = VGroup(left_start, target_mark, right_start, tag, rule)
         self.play(
             background.animate.set_opacity(0.0),
             lockup.animate.scale(0.92),
-            run_time=0.80,
+            run_time=0.55,
         )
-        self.wait(0.45)
+        self.wait(0.35)
 
         for obj in background:
             obj.clear_updaters()
 
-        self.play(FadeOut(lockup), run_time=0.65)
+        self.play(FadeOut(lockup), run_time=0.60)
 
 
     def add_background_motion(self, background: VGroup):
@@ -172,3 +201,11 @@ class IntroCanal(Scene):
         )
         group.set_opacity(opacity)
         return group
+
+
+class IntroCanalConMusica(IntroCanal):
+    """Wrapper para render aislado: intro visual + cortina oficial."""
+
+    def construct(self):
+        add_intro_music(self)
+        super().construct()
