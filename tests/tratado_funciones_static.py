@@ -34,6 +34,7 @@ for kind,count in {'AX':9,'DEF':73,'THM':133,'EXA':32,'CEX':22}.items():
 for n in range(1,19):
  text=(BOOK/f'capitulo-{n:02d}.qmd').read_text()
  assert not re.search(r'(?im)^(?:#{1,6}\s+.*\bejercicios?\b|\*\*Ejercicios?\b)',text), f'embedded exercise in chapter {n}'
+ assert not re.search(r'(?i)(Pregunta de control|Pregunta pedagógica|Preguntas para verificar comprensión|Cinco verificaciones para el lector|Lectura guiada \(MA-PED\))',text), f'exercise-like reader prompt in chapter {n}'
 
 # Appendix C is part of the treatise as worked examples, not as exercises or a problem-bank collection.
 appendix_c=(BOOK/'apendice-c.qmd').read_text()
