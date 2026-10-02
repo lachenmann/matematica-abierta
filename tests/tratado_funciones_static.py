@@ -33,6 +33,16 @@ for n in range(1,19):
  text=(BOOK/f'capitulo-{n:02d}.qmd').read_text()
  assert not re.search(r'(?im)^(?:#{1,6}\s+.*\bejercicios?\b|\*\*Ejercicios?\b)',text), f'embedded exercise in chapter {n}'
 
+# Appendix C is part of the treatise as worked examples, not as exercises or a problem-bank collection.
+appendix_c=(BOOK/'apendice-c.qmd').read_text()
+appendix_c_body=appendix_c.split('---',2)[-1]
+assert 'title: Apéndice C. Ejemplos desarrollados' in appendix_c
+assert len(re.findall(r'^### Ejemplo C\.\d+\.',appendix_c,re.M))==41
+assert not re.search(r'(?i)\bejercicios?\b|\bsoluciones?\b',appendix_c_body)
+assert '**Enunciado.**' not in appendix_c and '**Pista.**' not in appendix_c and '**Solución.**' not in appendix_c
+assert not (ROOT/'problemas/colecciones/tratado-funciones/index.qmd').exists()
+assert '[Apéndice C — Ejemplos desarrollados](apendice-c.qmd)' in (BOOK/'index.qmd').read_text()
+
 # Reconstruct the declared dependency graph from result comments.
 node_owner={anchor:page.name for page in pages for anchor in anchors[page.name] if re.fullmatch(r'TF-(?:AX|DEF|THM|EXA|CEX)-\d{5}',anchor)}
 edges=[]
