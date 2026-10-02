@@ -48,6 +48,19 @@ def source_target(origin, href):
         target = next((p for p in candidates if p.is_file()), target)
     return target, unquote(u.fragment)
 
+def source_anchors(path, seen=None):
+    seen = set() if seen is None else seen
+    assert path not in seen, ("recursive include", path)
+    seen.add(path)
+    source = path.read_text(encoding="utf-8")
+    ids = set(ANCHOR.findall(source))
+    ids.update(re.findall(r"""\bid=["']([^"']+)["']""", source))
+    for include in re.findall(r"\{\{<\s*include\s+(.+?)\s*>\}\}", source):
+        included = path.parent / include.strip().strip("'\\\"")
+        assert included.is_file(), ("missing include", path, included)
+        ids.update(source_anchors(included, seen.copy()))
+    return ids
+
 class Page(HTMLParser):
     def __init__(self, source):
         super().__init__(convert_charrefs=True)
@@ -129,7 +142,7 @@ def main():
                 continue
             assert target.is_file(), (path, href, target)
             if fragment.startswith(("talg-", "ta-", "parte-")) and target.suffix in {".md", ".qmd"}:
-                assert fragment in ANCHOR.findall(target.read_text(encoding="utf-8")), (path, href, fragment)
+                assert fragment in source_anchors(target), (path, href, fragment)
     rendered = 0
     if args.html:
         out = ROOT / args.html
