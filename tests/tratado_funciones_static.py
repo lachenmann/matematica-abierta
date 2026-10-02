@@ -12,7 +12,9 @@ assert len(pages)==35, len(pages)
 assert len(list(BOOK.glob('capitulo-*.qmd')))==18
 assert manifest['status']=='published'
 for catalog,target in [('libros/index.qmd','otros/tratado-funciones/index.html'),('libros/tratados/index.qmd','../otros/tratado-funciones/index.html')]:
- assert (ROOT/catalog).read_text().count(target)>=1, catalog
+ catalog_text=(ROOT/catalog).read_text()
+ assert catalog_text.count(target)>=1, catalog
+ assert 'dieciocho capítulos, ejercicios' not in catalog_text.lower(), catalog
 anchors={}
 for page in pages:
  text=page.read_text()
