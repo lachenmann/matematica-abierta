@@ -447,8 +447,6 @@ class CPMYTC01V01Preview(Scene):
     # ------------------------------------------------------------------
     # Distributividad
     # ------------------------------------------------------------------
-    # Distributividad
-    # ------------------------------------------------------------------
     def distributivity_demo(self):
         source = MathTex(
             r"a", r"\cdot", r"(", r"b", r"+", r"c", r")",
@@ -527,11 +525,11 @@ class CPMYTC01V01Preview(Scene):
             ("2", "Neutro aditivo", r"a+0=a"),
             ("3", "Inverso aditivo", r"a+(-a)=0"),
             ("4", "Conmutatividad de la suma", r"a+b=b+a"),
-            ("5", "Asociatividad del producto", r"a(bc)=(ab)c"),
+            ("5", "Asociatividad del producto", r"a\\cdot(b\\cdot c)=(a\\cdot b)\\cdot c"),
             ("6", "Neutro multiplicativo", r"a\cdot1=a"),
             ("7", "Inverso multiplicativo", r"aa^{-1}=1\quad(a\neq0)"),
-            ("8", "Conmutatividad del producto", r"ab=ba"),
-            ("9", "Distributividad", r"a(b+c)=ab+ac"),
+            ("8", "Conmutatividad del producto", r"a\\cdot b=b\\cdot a"),
+            ("9", "Distributividad", r"a\\cdot(b+c)=a\\cdot b+a\\cdot c"),
         ]
         rows = VGroup()
         for n, name, formula in labels:
