@@ -6,6 +6,12 @@ const chapters=fs.readdirSync('libros/capitulos').filter(n=>/^tratado-de-algebra
 const pages=['libros/otros/tratado-de-algebra.html','libros/tratados/index.html','libros/index.html',...chapters.map(n=>'libros/capitulos/'+n.replace(/\.md$/,'.html'))];
 (async()=>{
  fs.mkdirSync(out,{recursive:true});
+ let ready=false;
+ for(let attempt=0;attempt<50;attempt++){
+  try{const response=await fetch('http://127.0.0.1:8789/'+pages[0],{signal:AbortSignal.timeout(1000)});if(response.ok){ready=true;break;}}catch{}
+  await new Promise(resolve=>setTimeout(resolve,100));
+ }
+ if(!ready)throw new Error('The review server did not become ready');
  const browser=await chromium.launch({headless:true});
  const page=await browser.newPage();
  page.setDefaultTimeout(90000);
@@ -43,11 +49,22 @@ const pages=['libros/otros/tratado-de-algebra.html','libros/tratados/index.html'
     const row={file,width,expectedTheme:theme,status:response?.status(),errors,resources,...data};
     findings.push(row);
     console.log(JSON.stringify(row));
-    const name=path.basename(file,'.html');
+    const name=file.replace(/\.html$/,'').replaceAll('/','__');
     await page.screenshot({path:path.join(out,name+'-'+width+'-'+theme+'.png')});
+    if(file==='libros/otros/tratado-de-algebra.html'){
+     const locations=[
+      ['edition',page.getByRole('heading',{name:'Edición web completa',exact:true})],
+      ['contents',page.locator('#parte-0')],
+      ['closure',page.locator('#parte-viii')]
+     ];
+     for(const [label,location] of locations){
+      await location.evaluate(el=>window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-100,behavior:'instant'}));
+      await page.screenshot({path:path.join(out,name+'-'+label+'-'+width+'-'+theme+'.png')});
+     }
+    }
     if(file.endsWith('capitulo-40-infraestructura-tensorial-minima.html')){
      for(const id of ['talg-def-00081','talg-thm-00044','talg-thm-00046']){
-      await page.locator('#'+id).scrollIntoViewIfNeeded();
+      await page.locator('#'+id).evaluate(el=>window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-100,behavior:'instant'}));
       await page.screenshot({path:path.join(out,name+'-'+id+'-'+width+'-'+theme+'.png')});
      }
     }
