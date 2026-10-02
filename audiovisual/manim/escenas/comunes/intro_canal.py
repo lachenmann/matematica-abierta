@@ -1,4 +1,5 @@
 from manim import *
+import numpy as np
 
 from marca import BG, BLUE, FG, MUTED, a_squared
 
@@ -12,6 +13,7 @@ class IntroCanal(Scene):
         self.camera.background_color = BG
 
         background = self.math_background()
+        self.add_background_motion(background)
         self.play(
             LaggedStart(
                 *[FadeIn(obj, shift=0.06 * UP) for obj in background],
@@ -77,7 +79,40 @@ class IntroCanal(Scene):
             run_time=0.80,
         )
         self.wait(0.45)
+
+        for obj in background:
+            obj.clear_updaters()
+
         self.play(FadeOut(lockup), run_time=0.65)
+
+
+    def add_background_motion(self, background: VGroup):
+        """Movimiento tenue y continuo del fondo matemático."""
+        for i, obj in enumerate(background):
+            base = np.array(obj.get_center())
+            phase = 0.70 * i
+            speed = 0.38 + 0.05 * i
+            amp_x = 0.05 + 0.01 * (i % 3)
+            amp_y = 0.035 + 0.008 * (i % 4)
+
+            def drift(
+                m,
+                dt,
+                base=base,
+                phase=phase,
+                speed=speed,
+                amp_x=amp_x,
+                amp_y=amp_y,
+            ):
+                t = getattr(m, "_drift_t", 0.0) + dt
+                m._drift_t = t
+                x = base[0] + amp_x * np.sin(speed * t + phase)
+                y = base[1] + amp_y * np.cos(
+                    0.82 * speed * t + phase
+                )
+                m.move_to([x, y, base[2]])
+
+            obj.add_updater(drift)
 
     def math_background(self) -> VGroup:
         """Motivos matemáticos recordados de la intro original."""
