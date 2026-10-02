@@ -55,7 +55,7 @@ class CPMYTC01V01Preview(Scene):
         expr = MathTex(
             r"3", r"+", r"5", r"=", r"8",
             color=FG,
-        ).scale(1.5).to_edge(DOWN, buff=1.0)
+        ).scale(1.5).move_to([0, -1.45, 0])
         expr[4].set_color(BLUE)
         marker = SurroundingRectangle(chain[0], color=BLUE, buff=0.12)
         self.play(Create(marker), FadeIn(expr))
@@ -73,13 +73,13 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.35)
 
         not_natural = MathTex(r"-2\notin\mathbb N", color=RED).scale(1.0)
-        not_natural.next_to(expr, DOWN, buff=0.38)
+        not_natural.next_to(expr, DOWN, buff=0.30)
         self.play(FadeIn(not_natural, shift=0.10 * UP))
         self.hold(0.55)
 
         # Z resuelve exactamente el problema anterior.
         in_integers = MathTex(r"-2\in\mathbb Z", color=ORANGE).scale(1.0)
-        in_integers.next_to(expr, DOWN, buff=0.38)
+        in_integers.next_to(expr, DOWN, buff=0.30)
         self.play(
             marker.animate.move_to(chain[2]).set_color(ORANGE),
             FadeOut(not_natural),
@@ -90,7 +90,7 @@ class CPMYTC01V01Preview(Scene):
         self.play(FadeOut(expr), FadeOut(in_integers))
 
         # Ahora aparece un problema nuevo dentro de Z.
-        eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.0)
+        eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).move_to([0, -1.45, 0])
         self.play(FadeIn(eq))
         self.hold(0.35)
 
@@ -99,12 +99,12 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.35)
 
         half_not_z = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.0)
-        half_not_z.next_to(half, DOWN, buff=0.38)
+        half_not_z.next_to(half, DOWN, buff=0.30)
         self.play(FadeIn(half_not_z, shift=0.10 * UP))
         self.hold(0.55)
 
         half_in_q = MathTex(r"\frac12\in\mathbb Q", color=GREEN).scale(1.0)
-        half_in_q.next_to(half, DOWN, buff=0.38)
+        half_in_q.next_to(half, DOWN, buff=0.30)
         self.play(
             marker.animate.move_to(chain[4]).set_color(GREEN),
             FadeOut(half_not_z),
