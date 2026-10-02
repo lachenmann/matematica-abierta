@@ -77,7 +77,7 @@ class CPMYTC01V01Preview(Scene):
         self.section_title("Operaciones internas")
         f_nonempty = MathTex(r"F\neq\varnothing", color=FG).scale(1.35)
         closure = MathTex(
-            r"a,b\in F", r"\Longrightarrow", r"a+b\in F", r",\qquad", r"ab\in F",
+            r"a,b\in F", r"\Longrightarrow", r"a+b\in F", r",\qquad", r"a\cdot b\in F",
             color=FG,
         ).scale(1.05).next_to(f_nonempty, DOWN, buff=0.65)
         closure[2].set_color(BLUE)
@@ -142,8 +142,8 @@ class CPMYTC01V01Preview(Scene):
         pending = VGroup(
             MathTex(r"a\cdot0=0", color=FG),
             MathTex(r"-(-a)=a", color=FG),
-            MathTex(r"(-a)\\cdot(-b)=a\\cdot b", color=FG),
-            MathTex(r"ab=0\Longrightarrow a=0\ \text{o}\ b=0", color=FG),
+            MathTex(r"(-a)\cdot(-b)=a\cdot b", color=FG),
+            MathTex(r"a\cdot b=0\Longrightarrow a=0\ \text{o}\ b=0", color=FG),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.42).scale(0.92)
         for row in pending:
             q = MathTex(r"?", color=ORANGE).scale(1.15).next_to(row, RIGHT, buff=0.35)
@@ -525,11 +525,11 @@ class CPMYTC01V01Preview(Scene):
             ("2", "Neutro aditivo", r"a+0=a"),
             ("3", "Inverso aditivo", r"a+(-a)=0"),
             ("4", "Conmutatividad de la suma", r"a+b=b+a"),
-            ("5", "Asociatividad del producto", r"a\\cdot(b\\cdot c)=(a\\cdot b)\\cdot c"),
+            ("5", "Asociatividad del producto", r"a\cdot(b\cdot c)=(a\cdot b)\cdot c"),
             ("6", "Neutro multiplicativo", r"a\cdot1=a"),
-            ("7", "Inverso multiplicativo", r"aa^{-1}=1\quad(a\neq0)"),
-            ("8", "Conmutatividad del producto", r"a\\cdot b=b\\cdot a"),
-            ("9", "Distributividad", r"a\\cdot(b+c)=a\\cdot b+a\\cdot c"),
+            ("7", "Inverso multiplicativo", r"a\cdot a^{-1}=1\quad(a\neq0)"),
+            ("8", "Conmutatividad del producto", r"a\cdot b=b\cdot a"),
+            ("9", "Distributividad", r"a\cdot(b+c)=a\cdot b+a\cdot c"),
         ]
         rows = VGroup()
         for n, name, formula in labels:
