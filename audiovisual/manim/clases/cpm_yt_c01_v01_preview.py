@@ -269,32 +269,74 @@ class CPMYTC01V01Preview(Scene):
         ).arrange_in_grid(rows=2, cols=2, buff=(0.90, 0.70))
         cards.scale(0.74).move_to([0, -1.00, 0])
 
-        arrows = VGroup()
-        arrow_starts = [
-            source_box.get_bottom() + 1.85 * LEFT,
-            source_box.get_bottom() + 1.85 * RIGHT,
-            source_box.get_bottom() + 0.75 * LEFT,
-            source_box.get_bottom() + 0.75 * RIGHT,
-        ]
-        for start, card in zip(arrow_starts, cards):
-            arrows.add(
-                Arrow(
-                    start,
-                    card.get_top(),
-                    buff=0.10,
-                    stroke_width=1.8,
-                    max_tip_length_to_length_ratio=0.10,
-                    color=MUTED,
-                )
-            )
-
-        self.play(
-            LaggedStart(*[GrowArrow(a) for a in arrows], lag_ratio=0.12),
-            run_time=0.8,
-        )
+        # Primero aparecen los resultados; después se dibuja una ramificación limpia.
         self.play(
             LaggedStart(*[FadeIn(card, shift=0.10 * UP) for card in cards], lag_ratio=0.14),
             run_time=1.2,
+        )
+
+        top_left_arrow = Arrow(
+            source_box.get_bottom() + 1.55 * LEFT,
+            cards[0].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+        top_right_arrow = Arrow(
+            source_box.get_bottom() + 1.55 * RIGHT,
+            cards[1].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+
+        # Para la fila inferior usamos un tronco central que baja por el espacio
+        # entre las tarjetas superiores y se bifurca recién en el pasillo central.
+        junction_y = 0.5 * (cards[0].get_bottom()[1] + cards[2].get_top()[1])
+        junction = [0, junction_y, 0]
+        trunk = Line(
+            source_box.get_bottom(),
+            junction,
+            stroke_width=1.8,
+            color=MUTED,
+        )
+        bottom_left_arrow = Arrow(
+            junction,
+            cards[2].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+        bottom_right_arrow = Arrow(
+            junction,
+            cards[3].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+
+        arrows = VGroup(
+            top_left_arrow,
+            top_right_arrow,
+            trunk,
+            bottom_left_arrow,
+            bottom_right_arrow,
+        )
+
+        self.play(
+            GrowArrow(top_left_arrow),
+            GrowArrow(top_right_arrow),
+            Create(trunk),
+            run_time=0.70,
+        )
+        self.play(
+            GrowArrow(bottom_left_arrow),
+            GrowArrow(bottom_right_arrow),
+            run_time=0.60,
         )
         self.hold(1.0)
 
