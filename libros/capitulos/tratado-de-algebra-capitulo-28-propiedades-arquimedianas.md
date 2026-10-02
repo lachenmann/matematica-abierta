@@ -1161,4 +1161,4 @@ El capítulo hereda el axioma de Infinito a través de la construcción de $\mat
 
 ---
 
-[← **Capítulo 27 — Cuerpos ordenados**](tratado-de-algebra-capitulo-27-cuerpos-ordenados.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 27 — Cuerpos ordenados**](tratado-de-algebra-capitulo-27-cuerpos-ordenados.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 29 — Productos directos y propiedades universales** →](tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md)
