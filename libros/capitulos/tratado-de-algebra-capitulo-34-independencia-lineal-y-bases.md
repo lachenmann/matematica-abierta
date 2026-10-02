@@ -153,8 +153,8 @@ Tomando $I=\varnothing$, independiente por definición, se obtiene una base de c
 
 ## 34.99. Síntesis
 
-Independencia convierte las representaciones finitas en coordenadas únicas. La existencia de bases finitas se obtuvo recorriendo una lista generadora; la existencia general queda expresamente condicionada a Zorn. La dimensión natural del capítulo siguiente se construirá desde intercambio finito y no dependerá de la rama de Zorn.
+Independencia convierte las representaciones finitas en coordenadas únicas. La existencia de bases finitas se obtuvo recorriendo una lista generadora; la existencia general queda expresamente condicionada a Zorn. La [dimensión natural del capítulo siguiente](tratado-de-algebra-capitulo-35-dimension-finita.md) se construirá desde intercambio finito y no dependerá de la rama de Zorn.
 
 ---
 
-[← **Capítulo 33 — Subespacios y generación**](tratado-de-algebra-capitulo-33-subespacios-y-generacion.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md)
+[← **Capítulo 33 — Subespacios y generación**](tratado-de-algebra-capitulo-33-subespacios-y-generacion.md) · [**Tratado moderno de Álgebra**](../otros/tratado-de-algebra.md) · [**Capítulo 35 — Dimensión finita →**](tratado-de-algebra-capitulo-35-dimension-finita.md)
