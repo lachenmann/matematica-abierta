@@ -14,6 +14,13 @@ if (-not (Test-Path $Rpp)) {
     throw "Falta el proyecto Reaper: $Rpp"
 }
 
+Write-Host "Preparando cortina musical de IntroCanal..." -ForegroundColor Cyan
+& ".\prepare-intro-music.ps1"
+
+if ($LASTEXITCODE -ne 0) {
+    throw "La preparacion de la cortina musical termino con codigo $LASTEXITCODE."
+}
+
 Write-Host "Analizando marcadores Reaper..." -ForegroundColor Cyan
 uv run python ".\cpm_yt_c01_v01\analyze_voice_reference.py"
 
@@ -22,7 +29,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "Render integrado: CPM-YT-C01-V01" -ForegroundColor Cyan
-Write-Host "1920x1080 - 60 fps - voz Reaper - intro canonica" -ForegroundColor DarkGray
+Write-Host "1920x1080 - 60 fps - voz Reaper - intro canonica + cortina 8 s" -ForegroundColor DarkGray
 
 uv run manim -p -r 1920,1080 --fps 60 --disable_caching `
   ".\clases\cpm_yt_c01_v01_production.py" CPMYTC01V01Production
