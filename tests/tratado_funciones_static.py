@@ -43,6 +43,15 @@ assert '**Enunciado.**' not in appendix_c and '**Pista.**' not in appendix_c and
 assert not (ROOT/'problemas/colecciones/tratado-funciones/index.qmd').exists()
 assert '[Apéndice C — Ejemplos desarrollados](apendice-c.qmd)' in (BOOK/'index.qmd').read_text()
 
+# Final editorial closure: no stale publication/pedagogy language may remain.
+book_text='\n'.join(page.read_text() for page in pages)
+assert 'banco de problemas' not in book_text.lower()
+assert 'sin publicación web' not in book_text.lower()
+assert 'preguntas para verificar comprensión' not in book_text.lower()
+assert 'pendiente técnico:' not in book_text.lower()
+assert '### 18.6.3. Cierre editorial y continuidad formal' in (BOOK/'capitulo-18.qmd').read_text()
+assert '[Apéndice C](apendice-c.qmd)' in (BOOK/'indice-ejemplos.qmd').read_text()
+
 # Reconstruct the declared dependency graph from result comments.
 node_owner={anchor:page.name for page in pages for anchor in anchors[page.name] if re.fullmatch(r'TF-(?:AX|DEF|THM|EXA|CEX)-\d{5}',anchor)}
 edges=[]
