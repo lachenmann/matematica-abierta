@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 import json,re,sys
 from collections import Counter
+from urllib.parse import urljoin, urlsplit, unquote
 
 ROOT=Path(__file__).resolve().parents[1]
 BOOK=ROOT/'libros/otros/tratado-funciones'
@@ -64,8 +65,23 @@ if '--html' in sys.argv:
   assert not duplicates,(h,duplicates)
   assert anchors[page.name].issubset(set(parser.ids)),h
   assert 'drive.google.com' not in h.read_text(),h
+ # Resolve against the rendered page: Quarto can emit site-relative paths,
+ # root-relative paths and fragments referring to the current page.
+ origin='https://tf-qa.invalid'
+ book_path='/libros/otros/tratado-funciones/'
+ checked_links=0
  for name,p in parsed.items():
   for url in p.links:
-   path,_,fragment=url.partition('#')
-   if path in parsed and fragment:assert fragment in parsed[path].ids,(name,url)
- print('35 rendered pages; all result anchors retained; no private Drive URLs')
+   resolved=urlsplit(urljoin(origin+book_path+name,url))
+   if resolved.netloc!='tf-qa.invalid':continue
+   target=unquote(resolved.path)
+   if not target.startswith(book_path):continue
+   filename=target[len(book_path):] or 'index.html'
+   if not filename.endswith('.html'):continue
+   assert filename in parsed,(name,url,'missing book page')
+   if resolved.fragment:
+    fragment=unquote(resolved.fragment)
+    assert fragment in parsed[filename].ids,(name,url,'missing fragment')
+    checked_links+=1
+ assert checked_links>0,'HTML link validation did not inspect any internal fragments'
+ print(f'35 rendered pages; {checked_links} internal fragment links verified; all result anchors retained; no private Drive URLs')
