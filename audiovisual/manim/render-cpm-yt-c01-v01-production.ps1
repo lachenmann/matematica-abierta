@@ -18,14 +18,15 @@ Write-Host "Analizando marcadores Reaper..." -ForegroundColor Cyan
 uv run python ".\cpm_yt_c01_v01\analyze_voice_reference.py"
 
 if ($LASTEXITCODE -ne 0) {
-    throw "El análisis de voz terminó con código $LASTEXITCODE."
+    throw "El analisis de voz termino con codigo $LASTEXITCODE."
 }
 
-Write-Host "Render sincronizado: CPM-YT-C01-V01" -ForegroundColor Cyan
-Write-Host "Manim Community + audio Reaper + timing canónico." -ForegroundColor DarkGray
+Write-Host "Render integrado: CPM-YT-C01-V01" -ForegroundColor Cyan
+Write-Host "1920x1080 - 60 fps - voz Reaper - intro canonica" -ForegroundColor DarkGray
 
-uv run manim -pql --disable_caching ".\clases\cpm_yt_c01_v01_production.py" CPMYTC01V01Production
+uv run manim -p -r 1920,1080 --fps 60 --disable_caching `
+  ".\clases\cpm_yt_c01_v01_production.py" CPMYTC01V01Production
 
 if ($LASTEXITCODE -ne 0) {
-    throw "El render sincronizado terminó con código $LASTEXITCODE."
+    throw "El render integrado termino con codigo $LASTEXITCODE."
 }
