@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0135 |
+| Capítulo | MA-BCH-0151 |
 | Curso | MA-CRS-0001 |
-| Libro | MA-BOK-0012 |
+| Libro | MA-BOK-0013 |
 
 ## IDs asignados
 
@@ -144,6 +144,31 @@
 | MA-BOK-0005 | book | Física para matemáticos | `libros/para-matematicos/fisica-para-matematicos.md` | published |
 | MA-BOK-0006 | book | Álgebra para matemáticos | `libros/para-matematicos/algebra-para-matematicos.md` | published |
 | MA-BOK-0007 | book | Tratado moderno de Álgebra | `libros/otros/tratado-de-algebra.md` | published |
+
+
+## Reserva FDA — La demostración admirable — 2026-10-02
+
+Reserva efectuada en `editorial/fda-m10-web` durante `FDA-M10-01`. Estas identidades quedan fuera del pool disponible aunque las páginas web permanezcan en `draft` hasta completar la adaptación y el QA.
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BOK-0012 | book | La demostración admirable | `libros/otros/la-demostracion-admirable/index.qmd` | reserved — FDA-M10 |
+| MA-BCH-0135 | book-chapter | Preámbulo — La frase en el margen | `libros/otros/la-demostracion-admirable/preambulo.qmd` | reserved — FDA-M10 |
+| MA-BCH-0136 | book-chapter | I. El problema detrás de la leyenda | `libros/otros/la-demostracion-admirable/01-problema-detras-leyenda.qmd` | reserved — FDA-M10 |
+| MA-BCH-0137 | book-chapter | II. Diofanto II.8 y el arte de construir auxiliares | `libros/otros/la-demostracion-admirable/02-diofanto-ii8.qmd` | reserved — FDA-M10 |
+| MA-BCH-0138 | book-chapter | III. El horizonte matemático de Fermat, 1621–1659 | `libros/otros/la-demostracion-admirable/03-horizonte-matematico-fermat.qmd` | reserved — FDA-M10 |
+| MA-BCH-0139 | book-chapter | IV. Qué significa descender: el caso biquadrático | `libros/otros/la-demostracion-admirable/04-descenso-biquadratico.qmd` | reserved — FDA-M10 |
+| MA-BCH-0140 | book-chapter | V. El cubo perdido: testimonio sin mecanismo conservado | `libros/otros/la-demostracion-admirable/05-cubo-perdido.qmd` | reserved — FDA-M10 |
+| MA-BCH-0141 | book-chapter | VI. De las fórmulas a los grafos de descenso | `libros/otros/la-demostracion-admirable/06-grafos-descenso.qmd` | reserved — FDA-M10 |
+| MA-BCH-0142 | book-chapter | VII. Por qué una única fórmula no basta | `libros/otros/la-demostracion-admirable/07-unica-formula-no-basta.qmd` | reserved — FDA-M10 |
+| MA-BCH-0143 | book-chapter | VIII. Qué pudo significar la demostración general | `libros/otros/la-demostracion-admirable/08-demostracion-general.qmd` | reserved — FDA-M10 |
+| MA-BCH-0144 | book-chapter | IX. Los límites de lo que podemos saber | `libros/otros/la-demostracion-admirable/09-limites-conocimiento.qmd` | reserved — FDA-M10 |
+| MA-BCH-0145 | book-chapter | Apéndice A. Cronología documental mínima | `libros/otros/la-demostracion-admirable/apendice-a-cronologia.qmd` | reserved — FDA-M10 |
+| MA-BCH-0146 | book-chapter | Apéndice B. Anatomía formal de un descenso | `libros/otros/la-demostracion-admirable/apendice-b-anatomia-descenso.qmd` | reserved — FDA-M10 |
+| MA-BCH-0147 | book-chapter | Apéndice C. Controles modernos p=5 y p=7 | `libros/otros/la-demostracion-admirable/apendice-c-controles-p5-p7.qmd` | reserved — FDA-M10 |
+| MA-BCH-0148 | book-chapter | Apéndice D. Escala pública de evidencia | `libros/otros/la-demostracion-admirable/apendice-d-escala-evidencia.qmd` | reserved — FDA-M10 |
+| MA-BCH-0149 | book-chapter | Apéndice E. Nota textual sobre la Observatio | `libros/otros/la-demostracion-admirable/apendice-e-observatio.qmd` | reserved — FDA-M10 |
+| MA-BCH-0150 | book-chapter | Bibliografía selecta | `libros/otros/la-demostracion-admirable/bibliografia.qmd` | reserved — FDA-M10 |
 
 ## Regla de uso
 
