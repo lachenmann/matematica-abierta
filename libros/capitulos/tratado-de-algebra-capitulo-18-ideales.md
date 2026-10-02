@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 18 — Ideales
-
 ## 18.0. Propósito y separación conceptual
 
 El capítulo anterior mostró una asimetría fundamental. La imagen de un homomorfismo de anillos unitarios es un subanillo, pero su núcleo, cuando el codominio es no trivial, no puede serlo: un subanillo contiene la unidad multiplicativa ambiente, mientras que el núcleo de un homomorfismo unital no contiene esa unidad salvo que el codominio sea trivial.

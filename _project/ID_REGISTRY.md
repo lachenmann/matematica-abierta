@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0135 |
+| Capítulo | MA-BCH-0149 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0012 |
 
@@ -260,3 +260,22 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | TF-CAT-016 | MA-BCH-0114 | MA-BCH-0132 |
 | TF-CAT-017 | MA-BCH-0115 | MA-BCH-0133 |
 | TF-CAT-018 | MA-BCH-0116 | MA-BCH-0134 |
+
+## Tratado moderno de Álgebra — cierre editorial 2026-10-02
+
+| ID público | Tipo | ID canónico | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0135 | book-chapter | TALG-0032 | `libros/capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md` | published |
+| MA-BCH-0136 | book-chapter | TALG-0033 | `libros/capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md` | published |
+| MA-BCH-0137 | book-chapter | TALG-0034 | `libros/capitulos/tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md` | published |
+| MA-BCH-0138 | book-chapter | TALG-0035 | `libros/capitulos/tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md` | published |
+| MA-BCH-0139 | book-chapter | TALG-0036 | `libros/capitulos/tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md` | published |
+| MA-BCH-0140 | book-chapter | TALG-0037 | `libros/capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md` | published |
+| MA-BCH-0141 | book-chapter | TALG-0038 | `libros/capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.md` | published |
+| MA-BCH-0142 | book-chapter | TALG-0039 | `libros/capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md` | published |
+| MA-BCH-0143 | book-chapter | TALG-0040 | `libros/capitulos/tratado-de-algebra-capitulo-35-dimension-finita.md` | published |
+| MA-BCH-0144 | book-chapter | TALG-0041 | `libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.md` | published |
+| MA-BCH-0145 | book-chapter | TALG-0042 | `libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md` | published |
+| MA-BCH-0146 | book-chapter | TALG-0043 | `libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md` | published |
+| MA-BCH-0147 | book-chapter | TALG-0044 | `libros/capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md` | published |
+| MA-BCH-0148 | book-chapter | TALG-0045 | `libros/capitulos/tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md` | published |

@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 17 — Subanillos y homomorfismos de anillos
-
 ## 17.0. Propósito y convención unital
 
 El paso siguiente consiste en trasladar a los anillos dos ideas ya construidas para estructuras con una sola operación:

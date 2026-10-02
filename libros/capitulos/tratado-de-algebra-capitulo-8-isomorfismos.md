@@ -39,8 +39,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 8 — Isomorfismos
-
 ## 8.0. Propósito
 
 Un homomorfismo expresa compatibilidad entre operaciones. Un **isomorfismo** añade la exigencia de que esa compatibilidad sea reversible: la función subyacente debe ser biyectiva y su inversa debe recuperar la estructura sin pérdida.

@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 14 — Anillos
-
 ## 14.0. Propósito y convención estructural
 
 La teoría de grupos estudia una sola operación. Un anillo introduce dos operaciones sobre el mismo conjunto y, por primera vez en el tratado, exige leyes que relacionan estructuras ya construidas de manera independiente.

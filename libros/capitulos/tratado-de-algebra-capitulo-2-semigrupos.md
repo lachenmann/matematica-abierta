@@ -29,8 +29,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 2 — Semigrupos
-
 ## 2.0. De magma a semigrupo
 
 Un magma proporciona un conjunto no vacío y una operación interna. La primera ley que impondremos sobre esa operación es la asociatividad. La combinación de ambos ingredientes define la estructura de semigrupo.
