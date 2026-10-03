@@ -15,6 +15,7 @@ Cada video avanza por estos estados:
 SCRIPT_DRAFT
 → SCRIPT_LOCKED
 → ANIMATION_DRAFT
+→ ANIMATION_REFINEMENT
 → ANIMATION_LOCKED
 → VOICE_LOCKED
 → FINAL_EDIT
@@ -128,6 +129,45 @@ justifican el paso correspondiente.
 - Verificar legibilidad real en 1920×1080.
 
 ---
+
+## 4.6 Refinamiento audiovisual en Work
+
+El caso piloto mostró que la inspección del **render real** permite mejorar
+sustancialmente animaciones que parecen correctas al leer el código.
+
+Por tanto, antes de declarar `ANIMATION_LOCKED`, los videos deben pasar por una
+fase explícita de `ANIMATION_REFINEMENT` en Work cuando esté disponible el
+entorno local.
+
+Work debe recibir acceso al repositorio local y a un render completo, y ejecutar
+iterativamente:
+
+```text
+ver render
+→ detectar problemas de movimiento/composición/ritmo
+→ corregir Manim
+→ renderizar
+→ volver a inspeccionar
+```
+
+Esta fase no es sólo corrección de errores. También puede mejorar:
+
+- trayectorias de objetos;
+- separación espacial de operandos;
+- movimiento de paréntesis;
+- ritmo de entrada y salida;
+- permanencia de estados finales;
+- jerarquía visual;
+- progresión semántica de fórmulas y listas;
+- composición de tarjetas y tablas;
+- continuidad entre escenas.
+
+La calidad del movimiento debe juzgarse por el video resultante, no por la
+elegancia aparente del código.
+
+El chat de diseño/redacción puede producir la primera implementación, pero
+`ANIMATION_LOCKED` sólo se alcanza después de inspección visual del render y
+refinamiento suficiente.
 
 ## 5. Sincronización
 
