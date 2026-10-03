@@ -106,6 +106,9 @@ def main():
     assert len(CHAPTERS) == 43, len(CHAPTERS)
     sources = {path: path.read_text(encoding="utf-8") for path in CHAPTERS}
     sources[BOOK] = BOOK.read_text(encoding="utf-8")
+    for path, source in sources.items():
+        for expression in formulas(source):
+            assert not re.search(r"\[[^\]]+\]\([^)]*\.(?:md|qmd|html)(?:#[^)]*)?\)", expression), ("Markdown link inside math", path, expression)
     chapter_ids, anchors = [], []
     for path in CHAPTERS:
         s = sources[path]

@@ -2,7 +2,7 @@ const {chromium}=require('playwright');
 const fs=require('node:fs');
 const path=require('node:path');
 const out='talg-browser-evidence';
-const chapters=fs.readdirSync('libros/capitulos').filter(n=>/^tratado-de-algebra-capitulo-(0|27|28|30|34|37|39|40)-.*\.md$/.test(n));
+const chapters=fs.readdirSync('libros/capitulos').filter(n=>/^tratado-de-algebra-capitulo-(0|21|27|28|30|34|37|39|40)-.*\.md$/.test(n));
 const pages=['libros/otros/tratado-de-algebra.html','libros/tratados/index.html','libros/index.html',...chapters.map(n=>'libros/capitulos/'+n.replace(/\.md$/,'.html'))];
 (async()=>{
  fs.mkdirSync(out,{recursive:true});
@@ -61,6 +61,10 @@ const pages=['libros/otros/tratado-de-algebra.html','libros/tratados/index.html'
       await location.evaluate(el=>window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-100,behavior:'instant'}));
       await page.screenshot({path:path.join(out,name+'-'+label+'-'+width+'-'+theme+'.png')});
      }
+    }
+    if(file.endsWith('capitulo-21-dominios-integros.html')){
+     await page.locator('#cierre-deductivo').evaluate(el=>window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-100,behavior:'instant'}));
+     await page.screenshot({path:path.join(out,name+'-closure-'+width+'-'+theme+'.png')});
     }
     if(file.endsWith('capitulo-40-infraestructura-tensorial-minima.html')){
      for(const id of ['talg-def-00081','talg-thm-00044','talg-thm-00046']){
