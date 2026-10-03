@@ -2,6 +2,7 @@ from manim import *
 from pathlib import Path
 import json
 import sys
+import re
 
 # -----------------------------------------------------------------------------
 # Cálculo para matemáticos — Video 1 — Producción final
@@ -64,16 +65,21 @@ class CPMYTC01V01Production(IntroCanal):
 
         arithmetic = MathTex(
             r"2+3=5", r"\qquad", r"2\cdot3=6", r"\qquad",
-            r"2\cdot x=1\Longrightarrow x=\frac12",
+            r"2\cdot x=1", r"\Longrightarrow", r"x=\frac12",
             color=FG,
         ).scale(0.95)
         arithmetic[0].set_color(BLUE)
         arithmetic[2].set_color(ORANGE)
         arithmetic[4].set_color(GREEN)
-        self.play(LaggedStart(
-            *[FadeIn(m, shift=0.15 * UP) for m in arithmetic],
-            lag_ratio=0.12,
-        ))
+        arithmetic[5:].set_color(GREEN)
+        self.sync_video_time(26.6, "dos más tres")
+        self.play(Write(arithmetic[0]), run_time=1.40)
+        self.sync_video_time(28.9, "dos por tres")
+        self.play(Write(arithmetic[2]), run_time=1.20)
+        self.sync_video_time(31.5, "ecuación dos por x")
+        self.play(Write(arithmetic[4]), run_time=1.35)
+        self.sync_video_time(35.0, "solución un medio")
+        self.play(FadeIn(arithmetic[5:]), run_time=0.55)
 
         # 02 — Cadena de sistemas numéricos
         self.sync_to("c01v01-02-cadena")
@@ -88,10 +94,10 @@ class CPMYTC01V01Production(IntroCanal):
         chain[2].set_color(ORANGE)
         chain[4].set_color(GREEN)
         chain[6].set_color(VIOLET)
-        self.play(LaggedStart(
-            *[FadeIn(m, shift=0.18 * RIGHT) for m in chain],
-            lag_ratio=0.10,
-        ))
+        for parts, cue in ((chain[0], 72.0), (chain[1:3], 73.3),
+                           (chain[3:5], 75.0), (chain[5:7], 77.0)):
+            self.sync_video_time(cue, "cadena de sistemas numéricos")
+            self.play(FadeIn(parts, shift=0.18 * RIGHT), run_time=0.45)
 
         self.sync_to("c01v01-03-naturales-suma")
         expr = MathTex(r"3", r"+", r"5", r"=", r"8", color=FG).scale(1.5)
@@ -119,27 +125,29 @@ class CPMYTC01V01Production(IntroCanal):
         self.play(
             marker.animate.move_to(chain[2]).set_color(ORANGE),
             FadeOut(not_natural),
-            FadeIn(in_integers, shift=0.10 * UP),
-            run_time=0.8,
+            run_time=0.4,
         )
+        self.play(FadeIn(in_integers, shift=0.10 * UP), run_time=0.4)
 
         self.sync_to("c01v01-06-racionales")
         self.play(FadeOut(expr), FadeOut(in_integers), run_time=0.35)
         eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).move_to([0, -1.45, 0])
         self.play(FadeIn(eq))
         half = MathTex(r"x=\frac12", color=GREEN).scale(1.35).move_to(eq)
-        self.play(TransformMatchingTex(eq, half))
+        self.sync_video_time(102.0, "solución fuera de los enteros")
+        self.replace_formula(eq, half)
         half_not_z = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.0)
         half_not_z.next_to(half, DOWN, buff=0.30)
         self.play(FadeIn(half_not_z, shift=0.10 * UP))
         half_in_q = MathTex(r"\frac12\in\mathbb Q", color=GREEN).scale(1.0)
         half_in_q.next_to(half, DOWN, buff=0.30)
+        self.sync_video_time(106.0, "ampliación a los racionales")
         self.play(
             marker.animate.move_to(chain[4]).set_color(GREEN),
             FadeOut(half_not_z),
-            FadeIn(half_in_q, shift=0.10 * UP),
-            run_time=0.8,
+            run_time=0.4,
         )
+        self.play(FadeIn(half_in_q, shift=0.10 * UP), run_time=0.4)
 
         # 03 — Spoiler tenue
         self.sync_to("c01v01-07-spoiler-supremo")
@@ -168,7 +176,9 @@ class CPMYTC01V01Production(IntroCanal):
             color=FG,
         ).scale(1.05).next_to(f_nonempty, DOWN, buff=0.65)
         closure[2].set_color(BLUE)
-        self.play(LaggedStart(*[FadeIn(m) for m in closure], lag_ratio=0.10))
+        self.play(FadeIn(closure[0]), run_time=0.45)
+        self.sync_video_time(161.0, "clausura de suma y producto")
+        self.play(FadeIn(closure[1:]), run_time=0.55)
 
         # 05 — Dos operaciones primitivas
         self.sync_to("c01v01-11-operaciones-primitivas")
@@ -177,7 +187,10 @@ class CPMYTC01V01Production(IntroCanal):
         plus = MathTex(r"+", color=BLUE).scale(3)
         times = MathTex(r"\cdot", color=ORANGE).scale(3)
         ops = VGroup(plus, times).arrange(RIGHT, buff=2.4)
-        self.play(GrowFromCenter(plus), GrowFromCenter(times))
+        self.sync_video_time(192.0, "sólo dos operaciones primitivas")
+        self.play(GrowFromCenter(plus), run_time=0.55)
+        self.sync_video_time(194.0, "multiplicación primitiva")
+        self.play(GrowFromCenter(times), run_time=0.55)
 
         # 06–09 — Axiomas aditivos
         self.sync_to("c01v01-12-asoc-suma")
@@ -231,6 +244,7 @@ class CPMYTC01V01Production(IntroCanal):
         self.sync_to("c01v01-21-distributividad")
         self.play(FadeOut(state), run_time=0.35)
         self.clear_stage()
+        self.sync_video_time(338.0, "puente distributivo")
         self.section_title("Axioma 9 — Distributividad")
         state = self.distributivity_demo()
 
@@ -245,7 +259,7 @@ class CPMYTC01V01Production(IntroCanal):
                 color=FG,
             ).scale(1.32),
             MathTex(
-                r"F\neq\varnothing,\qquad 0,1\in F,\qquad 0\neq1",
+                r"F\neq\varnothing,", r"\qquad 0,1\in F,", r"\qquad 0\neq1",
                 color=FG,
             ).scale(0.98),
             MathTex(
@@ -261,28 +275,36 @@ class CPMYTC01V01Production(IntroCanal):
                 color=MUTED,
             ).scale(0.72),
         ).arrange(DOWN, buff=0.34)
-        definition[1].set_color_by_tex(r"0\neq1", GREEN)
-        self.play(
-            LaggedStart(
-                *[FadeIn(row, shift=0.08 * UP) for row in definition],
-                lag_ratio=0.14,
-            ),
-            run_time=1.4,
-        )
+        definition[1][2].set_color(GREEN)
+        for part, cue in (
+            (definition[1][0], 369.0),
+            (definition[2], 372.1),
+            (definition[3], 373.4),
+            (definition[1][1], 375.5),
+            (definition[0], 377.0),
+            (definition[1][2], 378.0),
+            (definition[4], 379.0),
+        ):
+            self.sync_video_time(cue, "definición progresiva de cuerpo")
+            self.play(FadeIn(part, shift=0.08 * UP), run_time=0.45)
 
         self.sync_to("c01v01-24-cuerpo-trivial")
         self.clear_stage(definition)
         self.section_title("Cuerpo trivial")
         trivial = MathTex(r"F=\{0\},\qquad", r"1=0", color=FG).scale(1.25)
         trivial[1].set_color(RED)
-        self.play(Write(trivial))
+        self.sync_video_time(387.3, "cero y uno como el mismo elemento")
+        self.play(Write(trivial[1]), run_time=0.65)
+        self.sync_video_time(392.2, "conjunto de un solo elemento")
+        self.play(Write(trivial[0]), run_time=0.65)
 
         self.sync_to("c01v01-25-trivial-operaciones")
         ops_trivial = MathTex(r"0+0=0,\qquad", r"0\cdot0=0", color=FG).scale(1.1)
         ops_trivial.next_to(trivial, DOWN, buff=0.65)
-        self.play(LaggedStart(
-            Write(ops_trivial[0]), Write(ops_trivial[1]), lag_ratio=0.45
-        ))
+        self.sync_video_time(403.0, "suma en el conjunto trivial")
+        self.play(Write(ops_trivial[0]), run_time=0.65)
+        self.sync_video_time(406.0, "producto en el conjunto trivial")
+        self.play(Write(ops_trivial[1]), run_time=0.65)
 
         self.sync_to("c01v01-26-excluir-trivial")
         exclusion = MathTex(r"0\neq1", color=GREEN).scale(1.45)
@@ -293,33 +315,28 @@ class CPMYTC01V01Production(IntroCanal):
 
         # La voz recapitula ahora, uno por uno, los grupos de axiomas.
         # Tiempos QA fijados por el autor: 7:16 / 7:29 / 7:40.
-        self.sync_between(
-            "c01v01-26-excluir-trivial",
-            "c01v01-27-tabla-axiomas",
-            0.236398,
-        )
+        self.sync_video_time(435.55, "salida previa a estructura aditiva")
         self.clear_stage(trivial, ops_trivial, exclusion, box)
+        self.sync_video_time(436.0, "estructura aditiva")
         self.section_title("Axiomas 1–4 — Estructura aditiva")
         recap = self.axiom_recap_panel("additive")
-        self.play(FadeIn(recap, shift=0.08 * UP), run_time=0.65)
+        for index, cue in ((0, 439.9), (3, 440.8), (1, 443.0), (2, 445.5)):
+            self.sync_video_time(cue, "recapitulación aditiva progresiva")
+            self.play(FadeIn(recap[index], shift=0.08 * UP), run_time=0.45)
 
-        self.sync_between(
-            "c01v01-26-excluir-trivial",
-            "c01v01-27-tabla-axiomas",
-            0.573739,
-        )
-        self.play(FadeOut(recap), run_time=0.35)
-        self.replace_section_title("Axiomas 5–8 — Estructura multiplicativa")
+        self.sync_video_time(448.55, "salida previa a estructura multiplicativa")
+        self.clear_stage(recap)
+        self.sync_video_time(449.0, "estructura multiplicativa")
+        self.section_title("Axiomas 5–8 — Estructura multiplicativa")
         recap = self.axiom_recap_panel("multiplicative")
-        self.play(FadeIn(recap, shift=0.08 * UP), run_time=0.65)
+        for index, cue in ((0, 449.7), (3, 450.5), (1, 452.1), (2, 456.2)):
+            self.sync_video_time(cue, "recapitulación multiplicativa progresiva")
+            self.play(FadeIn(recap[index], shift=0.08 * UP), run_time=0.45)
 
-        self.sync_between(
-            "c01v01-26-excluir-trivial",
-            "c01v01-27-tabla-axiomas",
-            0.859181,
-        )
-        self.play(FadeOut(recap), run_time=0.35)
-        self.replace_section_title("Axioma 9 — Distributividad")
+        self.sync_video_time(459.55, "salida previa a distributividad")
+        self.clear_stage(recap)
+        self.sync_video_time(460.0, "distributividad")
+        self.section_title("Axioma 9 — Distributividad")
         recap = self.axiom_recap_panel("distributive")
         self.play(FadeIn(recap, shift=0.08 * UP), run_time=0.65)
 
@@ -345,13 +362,9 @@ class CPMYTC01V01Production(IntroCanal):
         pending = self.pending_consequences_panel()
 
         # El inventario se construye en el mismo orden en que lo enumera la voz.
-        reveal_fractions = [0.05, 0.14, 0.23, 0.34, 0.44, 0.55, 0.66]
-        for row, fraction in zip(pending, reveal_fractions):
-            self.sync_between(
-                "c01v01-32-consecuencias-pendientes",
-                "c01v01-33-enteros-ejemplo",
-                fraction,
-            )
+        reveal_times = [597.7, 600.7, 605.2, 611.2, 611.8, 614.6, 621.0]
+        for row, cue in zip(pending, reveal_times):
+            self.sync_video_time(cue, "propiedad todavía no supuesta")
             self.play(FadeIn(row, shift=0.10 * RIGHT), run_time=0.45)
 
         # 19 — Los enteros no forman un cuerpo
@@ -364,36 +377,21 @@ class CPMYTC01V01Production(IntroCanal):
         integers = MathTex(r"\mathbb Z", color=ORANGE).scale(2.2)
         circle = Circle(radius=1.5, color=ORANGE).move_to(integers)
         integer_set = VGroup(circle, integers).move_to([-4.35, -0.25, 0])
+        self.sync_video_time(668.0, "los números enteros como candidato")
         self.play(Create(circle), FadeIn(integers), run_time=0.75)
 
         integer_audit = self.integer_field_audit_cards()
 
-        self.sync_between(
-            "c01v01-33-enteros-ejemplo",
-            "c01v01-34-enteros-inverso",
-            0.12,
-        )
+        self.sync_video_time(672.0, "auditoría de la suma de enteros")
         self.play(FadeIn(integer_audit[0], shift=0.10 * RIGHT), run_time=0.65)
 
-        self.sync_between(
-            "c01v01-33-enteros-ejemplo",
-            "c01v01-34-enteros-inverso",
-            0.50,
-        )
+        self.sync_video_time(681.0, "auditoría del producto de enteros")
         self.play(FadeIn(integer_audit[1], shift=0.10 * RIGHT), run_time=0.65)
 
-        self.sync_between(
-            "c01v01-33-enteros-ejemplo",
-            "c01v01-34-enteros-inverso",
-            0.70,
-        )
+        self.sync_video_time(687.5, "auditoría de distributividad en enteros")
         self.play(FadeIn(integer_audit[2], shift=0.10 * RIGHT), run_time=0.55)
 
-        self.sync_between(
-            "c01v01-33-enteros-ejemplo",
-            "c01v01-34-enteros-inverso",
-            0.86,
-        )
+        self.sync_video_time(691.0, "pregunta por el inverso en enteros")
         self.play(FadeIn(integer_audit[3], shift=0.10 * RIGHT), run_time=0.55)
         self.play(Indicate(integer_audit[3], color=ORANGE), run_time=0.75)
 
@@ -411,15 +409,12 @@ class CPMYTC01V01Production(IntroCanal):
 
         # Primero se plantea la ecuación y se deja respirar mientras la voz
         # explica qué exigiría el axioma del inverso multiplicativo en Z.
+        self.sync_video_time(701.0, "ecuación del inverso de dos")
         self.play(Write(eq2), run_time=0.70)
 
         # La solución aparece recién cuando la voz llega a «un medio».
-        self.sync_between(
-            "c01v01-34-enteros-inverso",
-            "c01v01-35-medio-no-entero",
-            0.74,
-        )
-        self.play(TransformMatchingTex(eq2, half2), run_time=0.75)
+        self.sync_video_time(706.0, "solución un medio")
+        self.replace_formula(eq2, half2)
 
         # Dentro del círculo, 1/2 aparece como candidato, a un costado de Z,
         # nunca superpuesto sobre el símbolo del conjunto.
@@ -440,7 +435,7 @@ class CPMYTC01V01Production(IntroCanal):
         )
         not_in = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.2)
         not_in.to_edge(DOWN, buff=1.0)
-        self.play(FadeOut(half2), FadeIn(not_in, shift=0.14 * UP))
+        self.replace_formula(half2, not_in)
 
         # 20 — Q y R sí
         self.sync_to("c01v01-36-racionales-reales")
@@ -481,23 +476,23 @@ class CPMYTC01V01Production(IntroCanal):
         self.play(Write(qr_story[4]), run_time=0.80)
 
         # QA autor: la pantalla siguiente no entra antes de 12:15.000.
+        self.sync_video_time(734.55, "salida previa a conceptos no supuestos")
+        self.clear_stage(qr_story)
         self.sync_video_time(735.0, "lo que todavía no hemos supuesto")
-        self.play(FadeOut(qr_story), run_time=0.35)
-        self.replace_section_title("Lo que todavía no hemos supuesto")
+        self.section_title("Lo que todavía no hemos supuesto")
 
         # Cada concepto aparece sólo cuando la narración llega a él.
         not_yet = self.not_yet_order_panel()
-        self.play(Write(not_yet[0]), run_time=0.60)
+        self.sync_video_time(739.3, "orden no supuesto")
+        self.play(Write(not_yet[0][0]), run_time=0.60)
+        self.sync_video_time(742.0, "ejemplo dos menor que tres")
+        self.play(Write(not_yet[0][1]), run_time=0.60)
 
-        for row, fraction in zip(
+        for row, cue in zip(
             not_yet[1:],
-            [0.39, 0.45, 0.52, 0.60],
+            [745.4, 747.2, 748.3, 753.5],
         ):
-            self.sync_between(
-                "c01v01-36-racionales-reales",
-                "c01v01-37-cierre-siguiente-clase",
-                fraction,
-            )
+            self.sync_video_time(cue, "concepto no supuesto")
             self.play(Write(row), run_time=0.60)
 
         # Consecuencia: todo teorema obtenido aquí vale en cualquier cuerpo.
@@ -516,18 +511,10 @@ class CPMYTC01V01Production(IntroCanal):
             Write(universality[1]),
             run_time=0.70,
         )
-        self.sync_between(
-            "c01v01-36-racionales-reales",
-            "c01v01-37-cierre-siguiente-clase",
-            0.74,
-        )
+        self.sync_video_time(762.5, "afirmación demostrada sólo con los axiomas")
         self.play(Write(universality[2]), run_time=0.65)
 
-        self.sync_between(
-            "c01v01-36-racionales-reales",
-            "c01v01-37-cierre-siguiente-clase",
-            0.80,
-        )
+        self.sync_video_time(766.2, "validez en cualquier cuerpo")
         self.play(
             LaggedStart(
                 *[Write(item) for item in universality[3]],
@@ -536,11 +523,7 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=0.90,
         )
 
-        self.sync_between(
-            "c01v01-36-racionales-reales",
-            "c01v01-37-cierre-siguiente-clase",
-            0.86,
-        )
+        self.sync_video_time(767.5, "vínculo de los teoremas con todos los cuerpos")
         self.play(
             LaggedStart(
                 *[GrowArrow(arrow) for arrow in universality[4]],
@@ -574,9 +557,9 @@ class CPMYTC01V01Production(IntroCanal):
         source_formula.move_to(source_box.get_center() + 0.02 * UP)
         source_distributivity.move_to(source_box.get_center() + 0.45 * DOWN)
 
-        self.play(Create(source_box))
-        self.play(FadeIn(source_title), FadeIn(source_formula))
-        self.play(FadeIn(source_distributivity, shift=0.08 * UP))
+        self.play(Create(source_box), run_time=0.45)
+        self.play(FadeIn(source_title), FadeIn(source_formula), run_time=0.45)
+        self.play(FadeIn(source_distributivity, shift=0.08 * UP), run_time=0.45)
 
         cards = VGroup(
             self.theorem_card("Unicidad del cero", r"0=0'", BLUE),
@@ -593,13 +576,9 @@ class CPMYTC01V01Production(IntroCanal):
             ),
         ).arrange_in_grid(rows=2, cols=2, buff=(0.90, 0.70))
         cards.scale(0.74).move_to([0, -1.00, 0])
-        self.play(
-            LaggedStart(
-                *[FadeIn(card, shift=0.10 * UP) for card in cards],
-                lag_ratio=0.14,
-            ),
-            run_time=1.2,
-        )
+        for card, cue in zip(cards, [786.0, 788.5, 791.8, 794.4]):
+            self.sync_video_time(cue, "pregunta para la siguiente clase")
+            self.play(FadeIn(card, shift=0.10 * UP), run_time=0.55)
 
         top_left_arrow = Arrow(
             source_box.get_bottom() + 1.55 * LEFT,
@@ -646,6 +625,12 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=0.60,
         )
 
+        self.sync_video_time(798.0, "definir resta y división")
+        definitions = VGroup(
+            Tex("Definir resta y división", color=FG).scale(0.60),
+            MathTex(r"a-b\ ?\qquad\frac{a}{b}\ ?", color=ORANGE).scale(0.72),
+        ).arrange(RIGHT, buff=0.45).move_to([0, -3.05, 0])
+        self.play(FadeIn(definitions), run_time=0.65)
         self.sync_to("c01v01-38-end")
         tail = VOICE_OFFSET_SECONDS + self.audio_duration - float(self.renderer.time)
         if tail > 0:
@@ -654,6 +639,19 @@ class CPMYTC01V01Production(IntroCanal):
     # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
+    def colored_formula(self, formula, scale=1.0):
+        """Colorea variables aisladas, sin teñir toda la igualdad ni comandos TeX."""
+        parts = re.split(r"((?<![A-Za-z\\])[abc](?![A-Za-z]))", formula)
+        expr = MathTex(*[part for part in parts if part], color=FG).scale(scale)
+        for variable, color in (("a", BLUE), ("b", ORANGE), ("c", GREEN)):
+            expr.set_color_by_tex(variable, color, substring=False)
+        return expr
+
+    def replace_formula(self, old, new):
+        """Evita dos expresiones legibles superpuestas durante un fundido."""
+        self.play(FadeOut(old), run_time=0.20)
+        self.play(FadeIn(new), run_time=0.35)
+
     def load_voice_reference(self):
         if not TIMING_FILE.exists():
             raise FileNotFoundError(f"No existe el timing canónico: {TIMING_FILE}")
@@ -722,10 +720,9 @@ class CPMYTC01V01Production(IntroCanal):
         rule.next_to(title, DOWN, buff=0.18)
         new_header = VGroup(title, rule)
 
-        animations = [FadeIn(title), Create(rule)]
         if old is not None:
-            animations.insert(0, FadeOut(old))
-        self.play(*animations, run_time=0.45)
+            self.play(FadeOut(old), run_time=0.20)
+        self.play(FadeIn(title), Create(rule), run_time=0.25)
         self._current_header = new_header
 
     def axiom_recap_panel(self, group: str) -> VGroup:
@@ -749,20 +746,19 @@ class CPMYTC01V01Production(IntroCanal):
         }
 
         rows = VGroup()
-        for number, name, formula in data[group]:
+        for i, (number, name, formula) in enumerate(data[group]):
             badge = MathTex(number, color=MUTED).scale(0.72)
             label = Tex(name, color=FG).scale(0.62)
             expr = MathTex(formula, color=FG).scale(
                 0.72 if group != "distributive" else 0.92
             )
-            row = VGroup(badge, label, expr).arrange(
-                RIGHT,
-                buff=0.42,
-                aligned_edge=DOWN,
-            )
+            y = 1.10 - 0.78 * i
+            badge.move_to([-5.30, y, 0])
+            label.move_to([-4.80, y, 0], aligned_edge=LEFT)
+            expr.move_to([-0.40, y, 0], aligned_edge=LEFT)
+            row = VGroup(badge, label, expr)
             rows.add(row)
 
-        rows.arrange(DOWN, aligned_edge=LEFT, buff=0.48)
         if group == "distributive":
             rows.move_to([0, -0.25, 0])
         else:
@@ -782,9 +778,15 @@ class CPMYTC01V01Production(IntroCanal):
             title = Tex(title_text, color=accent).scale(0.56)
             body = VGroup(
                 *[MathTex(formula, color=FG).scale(0.56) for formula in formulas]
-            ).arrange(RIGHT, buff=0.42)
+            )
+            if len(formulas) == 4:
+                body.arrange_in_grid(rows=2, cols=2, buff=(0.40, 0.18))
+            else:
+                body.arrange(RIGHT, buff=0.42)
+            if body.width > box.width - 0.50:
+                body.scale_to_fit_width(box.width - 0.50)
             title.move_to(box.get_center() + 0.34 * UP)
-            body.move_to(box.get_center() + 0.22 * DOWN)
+            body.move_to(box.get_center() + 0.17 * DOWN)
             return VGroup(box, title, body)
 
         additive = card(
@@ -799,7 +801,7 @@ class CPMYTC01V01Production(IntroCanal):
         )
 
         multiplicative = card(
-            "Producto — cumple parcialmente",
+            "Producto — cumple axiomas 5, 6 y 8",
             [
                 r"a\cdot(b\cdot c)=(a\cdot b)\cdot c",
                 r"a\cdot b=b\cdot a",
@@ -1024,7 +1026,7 @@ class CPMYTC01V01Production(IntroCanal):
         target[6].set_color(GREEN)
 
         self.play(Write(source))
-        self.hold(0.25)
+        self.sync_video_time(210.4, "reagrupar la suma")
 
         mapping = {
             0: 1,  # a
@@ -1036,22 +1038,29 @@ class CPMYTC01V01Production(IntroCanal):
             6: 4,  # )
         }
         self.play(
+            source[2].animate.shift(0.60 * UP),
+            source[6].animate.shift(0.60 * DOWN),
+            run_time=0.25,
+        )
+        self.play(
             *[
-                source[i].animate.move_to(target[j].get_center())
+                source[i].animate.move_to(
+                    target[j].get_center()
+                    + (0.60 * UP if i == 2 else 0.60 * DOWN if i == 6 else ORIGIN)
+                )
                 for i, j in mapping.items()
             ],
-            run_time=1.15,
+            run_time=0.70,
             rate_func=smooth,
         )
+        self.play(
+            source[2].animate.move_to(target[0]),
+            source[6].animate.move_to(target[4]),
+            run_time=0.25,
+        )
         self.hold(1.80)
-        proposition = MathTex(
-            r"a+(b+c)=(a+b)+c",
-            color=FG,
-        ).scale(1.35)
-        proposition.set_color_by_tex("a", BLUE)
-        proposition.set_color_by_tex("b", ORANGE)
-        proposition.set_color_by_tex("c", GREEN)
-        self.play(FadeOut(source), FadeIn(proposition))
+        proposition = self.colored_formula(r"a+(b+c)=(a+b)+c", scale=1.35)
+        self.replace_formula(source, proposition)
         self.hold(0.55)
         return proposition
 
@@ -1065,6 +1074,7 @@ class CPMYTC01V01Production(IntroCanal):
         expr[4].set_color(BLUE)
 
         self.play(FadeIn(expr[0]))
+        self.sync_video_time(220.0, "neutro cero")
         self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT))
         self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT))
         self.hold(0.5)
@@ -1079,25 +1089,18 @@ class CPMYTC01V01Production(IntroCanal):
         expr[3].set_color(ORANGE)
         expr[6].set_color(GREEN)
 
-        # Primero queda visible la estructura completa a + (-a).
-        self.play(
-            FadeIn(expr[1]),
-            FadeIn(expr[2]),
-            FadeIn(expr[4]),
-        )
-        self.play(
-            FadeIn(expr[0], shift=0.35 * RIGHT),
-            FadeIn(expr[3], shift=0.35 * LEFT),
-            run_time=0.75,
-        )
-        self.hold(0.35)
-
-        # Sólo después aparece el resultado = 0.
+        self.sync_video_time(232.5, "cada elemento tiene un compañero aditivo")
+        unknown = MathTex("?", color=ORANGE).scale(1.5).move_to(expr[2:5])
+        self.play(FadeIn(expr[0]), FadeIn(expr[1]), FadeIn(unknown), run_time=0.55)
+        self.sync_video_time(235.7, "compañero que devuelve a cero")
         self.play(
             FadeIn(expr[5]),
             FadeIn(expr[6], shift=0.12 * UP),
             run_time=0.55,
         )
+        self.sync_video_time(239.5, "notación menos a")
+        self.play(FadeOut(unknown), run_time=0.20)
+        self.play(FadeIn(expr[2:5]), run_time=0.55)
         self.hold(0.6)
         return expr
 
@@ -1115,8 +1118,8 @@ class CPMYTC01V01Production(IntroCanal):
         a_end = target[2].get_center()
         b_end = target[0].get_center()
 
-        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI / 2)
-        path_b = ArcBetweenPoints(b_start, b_end, angle=PI / 2)
+        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI)
+        path_b = ArcBetweenPoints(b_start, b_end, angle=-PI)
         self.play(
             MoveAlongPath(source[0], path_a),
             MoveAlongPath(source[2], path_b),
@@ -1125,10 +1128,8 @@ class CPMYTC01V01Production(IntroCanal):
             rate_func=smooth,
         )
         self.hold(1.80)
-        proposition = MathTex(r"a+b=b+a", color=FG).scale(1.45)
-        proposition.set_color_by_tex("a", BLUE)
-        proposition.set_color_by_tex("b", ORANGE)
-        self.play(FadeOut(source), FadeIn(proposition))
+        proposition = self.colored_formula(r"a+b=b+a", scale=1.45)
+        self.replace_formula(source, proposition)
         self.hold(0.55)
         return proposition
 
@@ -1152,7 +1153,7 @@ class CPMYTC01V01Production(IntroCanal):
         target[6].set_color(GREEN)
 
         self.play(Write(source))
-        self.hold(0.25)
+        self.sync_video_time(270.2, "reagrupar el producto")
 
         mapping = {
             0: 1,  # a
@@ -1164,22 +1165,29 @@ class CPMYTC01V01Production(IntroCanal):
             6: 4,  # )
         }
         self.play(
+            source[2].animate.shift(0.60 * UP),
+            source[6].animate.shift(0.60 * DOWN),
+            run_time=0.25,
+        )
+        self.play(
             *[
-                source[i].animate.move_to(target[j].get_center())
+                source[i].animate.move_to(
+                    target[j].get_center()
+                    + (0.60 * UP if i == 2 else 0.60 * DOWN if i == 6 else ORIGIN)
+                )
                 for i, j in mapping.items()
             ],
-            run_time=1.15,
+            run_time=0.70,
             rate_func=smooth,
         )
+        self.play(
+            source[2].animate.move_to(target[0]),
+            source[6].animate.move_to(target[4]),
+            run_time=0.25,
+        )
         self.hold(1.80)
-        proposition = MathTex(
-            r"a\cdot(b\cdot c)=(a\cdot b)\cdot c",
-            color=FG,
-        ).scale(1.28)
-        proposition.set_color_by_tex("a", BLUE)
-        proposition.set_color_by_tex("b", ORANGE)
-        proposition.set_color_by_tex("c", GREEN)
-        self.play(FadeOut(source), FadeIn(proposition))
+        proposition = self.colored_formula(r"a\cdot(b\cdot c)=(a\cdot b)\cdot c", scale=1.28)
+        self.replace_formula(source, proposition)
         self.hold(0.55)
         return proposition
 
@@ -1193,13 +1201,14 @@ class CPMYTC01V01Production(IntroCanal):
         expr[4].set_color(BLUE)
 
         self.play(FadeIn(expr[0]))
-        self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT))
-        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT))
-        self.hold(0.5)
+        self.sync_video_time(279.0, "neutro uno")
+        self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT), run_time=0.45)
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT), run_time=0.45)
+        self.hold(0.15)
         return expr
 
     def multiplicative_inverse(self):
-        hypothesis = MathTex(r"a\neq0", color=ORANGE).scale(1.05).to_edge(UP, buff=1.55)
+        hypothesis = MathTex(r"a\neq0", color=FG).scale(1.05).to_edge(UP, buff=1.55)
         expr = MathTex(
             r"a", r"\cdot", r"a^{-1}", r"=", r"1",
             color=FG,
@@ -1208,15 +1217,17 @@ class CPMYTC01V01Production(IntroCanal):
         expr[2].set_color(GREEN)
         expr[4].set_color(GREEN)
 
-        self.play(FadeIn(hypothesis))
-        self.play(FadeIn(expr[1]))
-        self.play(
-            FadeIn(expr[0], shift=0.35 * RIGHT),
-            FadeIn(expr[2], shift=0.35 * LEFT),
-            run_time=0.75,
-        )
-        self.hold(0.3)
-        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * UP))
+        # La hipótesis acompaña la definición; el énfasis llega recién en 5:06.
+        self.sync_video_time(283.0, "elemento distinto de cero")
+        self.play(FadeIn(hypothesis), run_time=0.45)
+        unknown = MathTex("?", color=GREEN).scale(1.5).move_to(expr[2])
+        self.sync_video_time(289.9, "elemento que multiplicado por a da uno")
+        self.play(FadeIn(expr[0]), FadeIn(expr[1]), FadeIn(unknown), run_time=0.55)
+        self.sync_video_time(291.7, "resultado uno")
+        self.play(FadeIn(expr[3]), FadeIn(expr[4]), run_time=0.55)
+        self.sync_video_time(295.5, "notación del inverso multiplicativo")
+        self.play(FadeOut(unknown), run_time=0.20)
+        self.play(FadeIn(expr[2]), run_time=0.55)
         self.hold(0.5)
         return VGroup(hypothesis, expr)
 
@@ -1234,8 +1245,8 @@ class CPMYTC01V01Production(IntroCanal):
         a_end = target[2].get_center()
         b_end = target[0].get_center()
 
-        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI / 2)
-        path_b = ArcBetweenPoints(b_start, b_end, angle=PI / 2)
+        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI)
+        path_b = ArcBetweenPoints(b_start, b_end, angle=-PI)
         self.play(
             MoveAlongPath(source[0], path_a),
             MoveAlongPath(source[2], path_b),
@@ -1244,10 +1255,8 @@ class CPMYTC01V01Production(IntroCanal):
             rate_func=smooth,
         )
         self.hold(1.80)
-        proposition = MathTex(r"a\cdot b=b\cdot a", color=FG).scale(1.4)
-        proposition.set_color_by_tex("a", BLUE)
-        proposition.set_color_by_tex("b", ORANGE)
-        self.play(FadeOut(source), FadeIn(proposition))
+        proposition = self.colored_formula(r"a\cdot b=b\cdot a", scale=1.4)
+        self.replace_formula(source, proposition)
         self.hold(0.55)
         return proposition
 
@@ -1272,8 +1281,9 @@ class CPMYTC01V01Production(IntroCanal):
         target[4].set_color(BLUE)
         target[6].set_color(GREEN)
 
+        self.sync_video_time(340.0, "multiplicar por una suma")
         self.play(Write(source))
-        self.hold(0.3)
+        self.sync_video_time(344.7, "distribuir sobre cada sumando")
 
         initial_positions = [part.get_center().copy() for part in source]
 
@@ -1283,60 +1293,66 @@ class CPMYTC01V01Production(IntroCanal):
         self.add(a_copy, dot_copy)
 
         self.play(
+            a_copy.animate.shift(1.0 * UP),
+            dot_copy.animate.shift(1.0 * UP),
+            FadeOut(source[2]), FadeOut(source[6]),
+            run_time=0.30,
+        )
+
+        self.play(
             source[0].animate.move_to(target[0].get_center()),
             source[1].animate.move_to(target[1].get_center()),
             source[3].animate.move_to(target[2].get_center()),
             source[4].animate.move_to(target[3].get_center()),
-            a_copy.animate.move_to(target[4].get_center()),
-            dot_copy.animate.move_to(target[5].get_center()),
+            a_copy.animate.move_to(target[4].get_center() + UP),
+            dot_copy.animate.move_to(target[5].get_center() + UP),
             source[5].animate.move_to(target[6].get_center()),
-            FadeOut(source[2]),
-            FadeOut(source[6]),
-            run_time=1.15,
+            run_time=0.70,
             rate_func=smooth,
+        )
+        self.play(
+            a_copy.animate.move_to(target[4]),
+            dot_copy.animate.move_to(target[5]),
+            run_time=0.30,
         )
         self.hold(1.80)
 
-        proposition = MathTex(
-            r"a\cdot(b+c)=a\cdot b+a\cdot c",
-            color=FG,
-        ).scale(1.28)
-        proposition.set_color_by_tex("a", BLUE)
-        proposition.set_color_by_tex("b", ORANGE)
-        proposition.set_color_by_tex("c", GREEN)
+        proposition = self.colored_formula(r"a\cdot(b+c)=a\cdot b+a\cdot c", scale=1.28)
         moving_state = VGroup(
             source[0], source[1], source[3], source[4], source[5],
             a_copy, dot_copy,
         )
-        self.play(FadeOut(moving_state), FadeIn(proposition))
+        self.replace_formula(moving_state, proposition)
         self.hold(0.65)
         self.sync_to("c01v01-22-factor-comun")
-        self.play(FadeOut(proposition), FadeIn(moving_state))
+        self.replace_formula(proposition, moving_state)
+
+        self.play(
+            a_copy.animate.shift(UP),
+            dot_copy.animate.shift(UP),
+            run_time=0.30,
+        )
 
         # Factorización inversa: las dos copias de a se reúnen en la posición original.
         self.play(
             source[0].animate.move_to(initial_positions[0]),
-            a_copy.animate.move_to(initial_positions[0]),
+            a_copy.animate.move_to(initial_positions[0] + UP),
             source[1].animate.move_to(initial_positions[1]),
-            dot_copy.animate.move_to(initial_positions[1]),
+            dot_copy.animate.move_to(initial_positions[1] + UP),
             source[3].animate.move_to(initial_positions[3]),
             source[4].animate.move_to(initial_positions[4]),
             source[5].animate.move_to(initial_positions[5]),
-            FadeIn(source[2]),
-            FadeIn(source[6]),
-            run_time=1.0,
+            run_time=0.70,
             rate_func=smooth,
         )
-        self.play(FadeOut(a_copy), FadeOut(dot_copy), run_time=0.25)
+        self.play(
+            FadeOut(a_copy), FadeOut(dot_copy),
+            FadeIn(source[2]), FadeIn(source[6]),
+            run_time=0.30,
+        )
         self.hold(1.80)
-        proposition_back = MathTex(
-            r"a\cdot b+a\cdot c=a\cdot(b+c)",
-            color=FG,
-        ).scale(1.28)
-        proposition_back.set_color_by_tex("a", BLUE)
-        proposition_back.set_color_by_tex("b", ORANGE)
-        proposition_back.set_color_by_tex("c", GREEN)
-        self.play(FadeOut(source), FadeIn(proposition_back))
+        proposition_back = self.colored_formula(r"a\cdot b+a\cdot c=a\cdot(b+c)", scale=1.28)
+        self.replace_formula(source, proposition_back)
         self.hold(0.55)
         return proposition_back
 
@@ -1384,8 +1400,8 @@ class CPMYTC01V01Production(IntroCanal):
             formula_obj = MathTex(formula, color=FG).scale(0.62)
 
             n_obj.move_to([-5.45, y, 0])
-            name_obj.move_to([-2.75, y, 0])
-            formula_obj.move_to([2.25, y, 0])
+            name_obj.move_to([-4.95, y, 0], aligned_edge=LEFT)
+            formula_obj.move_to([0.15, y, 0], aligned_edge=LEFT)
 
             rows.add(VGroup(n_obj, name_obj, formula_obj))
 
@@ -1427,6 +1443,7 @@ class CPMYTC01V01Production(IntroCanal):
         self.play(FadeIn(f2))
 
         self.sync_to("c01v01-29-f2-tablas")
+        self.sync_video_time(510.0, "dos tablas de operaciones")
         self.play(Create(add_table), Create(mul_table), run_time=1.5)
 
         self.sync_to("c01v01-30-f2-suma")
@@ -1437,7 +1454,10 @@ class CPMYTC01V01Production(IntroCanal):
         )
         sum_result = MathTex(r"1+1=0", color=ORANGE).scale(1.05)
         sum_result.to_edge(DOWN, buff=0.75)
-        self.play(Create(add_highlight), FadeIn(sum_result))
+        self.sync_video_time(520.8, "uno más uno en F2")
+        self.play(Create(add_highlight), run_time=0.55)
+        self.sync_video_time(522.0, "resultado cero en F2")
+        self.play(FadeIn(sum_result), run_time=0.55)
 
         self.sync_to("c01v01-31-f2-producto")
         self.play(FadeOut(add_highlight), FadeOut(sum_result), run_time=0.35)
@@ -1450,7 +1470,21 @@ class CPMYTC01V01Production(IntroCanal):
             r"1\cdot1=1", r"\qquad", r"1^{-1}=1",
             color=GREEN,
         ).scale(0.98).to_edge(DOWN, buff=0.75)
-        self.play(Create(mul_highlight), FadeIn(mul_result))
+        self.play(Create(mul_highlight), run_time=0.55)
+        self.sync_video_time(531.5, "inverso del único elemento no nulo")
+        self.play(FadeIn(mul_result[2]), run_time=0.55)
+        self.sync_video_time(535.0, "uno por uno en F2")
+        self.play(FadeIn(mul_result[0]), run_time=0.55)
 
-        return VGroup(f2, add_table, mul_table, mul_highlight, mul_result)
+        self.sync_video_time(554.5, "retomar la suma distinta de la aritmética real")
+        self.play(FadeOut(mul_highlight), FadeOut(mul_result), run_time=0.35)
+        self.play(Create(add_highlight), FadeIn(sum_result), run_time=0.55)
+        self.sync_video_time(566.5, "control para los teoremas posteriores")
+        self.play(FadeOut(add_highlight), FadeOut(sum_result), run_time=0.35)
+        self.sync_video_time(574.0, "todo teorema debe valer también en F2")
+        self.play(Indicate(f2, color=ORANGE), run_time=0.80)
+        self.sync_video_time(577.0, "retorno al inventario de axiomas")
+        self.clear_stage(f2, add_table, mul_table)
+        self.section_title("Condición estructural y nueve axiomas")
+        return self.axiom_summary()
 
