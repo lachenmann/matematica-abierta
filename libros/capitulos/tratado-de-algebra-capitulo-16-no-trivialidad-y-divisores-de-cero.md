@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 16 — No trivialidad y divisores de cero
-
 ## 16.0. Propósito y convención lateral
 
 La definición general de anillo adoptada en la [Definición 14.1.1](tratado-de-algebra-capitulo-14-anillos.md#talg-def-00032) admite el caso $0=1$. Esa amplitud era útil mientras se construían las leyes básicas y el grupo de unidades, pero la teoría de divisores de cero necesita separar explícitamente el caso trivial.

@@ -27,8 +27,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 24 — Cuerpo de fracciones de un dominio íntegro
-
 ## 24.0. El problema: hacer divisibles los elementos no nulos
 
 Sea

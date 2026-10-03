@@ -30,8 +30,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 0 — Interfaz fundacional para Álgebra
-
 **Coordenada deductiva:** `TALG-0003`
 
 ## 0.0. Propósito

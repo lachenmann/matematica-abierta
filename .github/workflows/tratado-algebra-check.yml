@@ -1,0 +1,64 @@
+name: Tratado de Álgebra · web
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'libros/capitulos/tratado-de-algebra*.md'
+      - 'libros/otros/tratado-de-algebra.md'
+      - 'libros/index.qmd'
+      - 'libros/tratados/index.qmd'
+      - 'libros/capitulos/index.qmd'
+      - 'tests/tratado_algebra_*'
+      - '_quarto-talg-qa.yml'
+      - '.github/workflows/tratado-algebra-check.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tratado-algebra-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify complete edition and public links
+        run: python3 tests/tratado_algebra_static.py
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Render algebra edition and verify formulas
+        run: |
+          quarto render --profile talg-qa --to html
+          python3 tests/tratado_algebra_static.py --html _site-talg-qa
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated browser dependencies
+        run: |
+          npm install --prefix "$RUNNER_TEMP/talg-browser" playwright@1.62.1
+          "$RUNNER_TEMP/talg-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify desktop, mobile, themes and MathJax
+        env:
+          NODE_PATH: ${{ runner.temp }}/talg-browser/node_modules
+        run: |
+          python3 -m http.server 8789 --directory _site-talg-qa > "$RUNNER_TEMP/talg-server.log" 2>&1 &
+          talg_server_pid=$!
+          trap 'kill "$talg_server_pid"' EXIT
+          node tests/tratado_algebra_browser.cjs
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tratado-algebra-browser-evidence
+          path: talg-browser-evidence/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Preserve rendered edition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tratado-algebra-web-review
+          path: _site-talg-qa/
+          retention-days: 7
+          if-no-files-found: warn

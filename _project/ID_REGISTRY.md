@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0013 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0151 |
+| Capítulo | MA-BCH-0165 |
 | Curso | MA-CRS-0001 |
 | Libro | MA-BOK-0013 |
 
@@ -148,27 +148,27 @@
 
 ## Reserva FDA — La demostración admirable — 2026-10-02
 
-Reserva efectuada en `editorial/fda-m10-web` durante `FDA-M10-01`. Estas identidades quedan fuera del pool disponible aunque las páginas web permanezcan en `draft` hasta completar la adaptación y el QA.
+Reserva reconciliada con `main@2a3ea28aff5f64c5b9392b8bba1371379cae70d2` durante `FDA-M10-02`. La reserva inicial `MA-BCH-0135…0150` quedó invalidada por la publicación concurrente del Tratado moderno de Álgebra y no debe considerarse asignación FDA. Se conserva `MA-BOK-0012` y se reasignan las páginas hijas a `MA-BCH-0149…0164`.
 
 | ID | Tipo | Título | Ruta | Estado |
 |---|---|---|---|---|
 | MA-BOK-0012 | book | La demostración admirable | `libros/otros/la-demostracion-admirable/index.qmd` | reserved — FDA-M10 |
-| MA-BCH-0135 | book-chapter | Preámbulo — La frase en el margen | `libros/otros/la-demostracion-admirable/preambulo.qmd` | reserved — FDA-M10 |
-| MA-BCH-0136 | book-chapter | I. El problema detrás de la leyenda | `libros/otros/la-demostracion-admirable/01-problema-detras-leyenda.qmd` | reserved — FDA-M10 |
-| MA-BCH-0137 | book-chapter | II. Diofanto II.8 y el arte de construir auxiliares | `libros/otros/la-demostracion-admirable/02-diofanto-ii8.qmd` | reserved — FDA-M10 |
-| MA-BCH-0138 | book-chapter | III. El horizonte matemático de Fermat, 1621–1659 | `libros/otros/la-demostracion-admirable/03-horizonte-matematico-fermat.qmd` | reserved — FDA-M10 |
-| MA-BCH-0139 | book-chapter | IV. Qué significa descender: el caso biquadrático | `libros/otros/la-demostracion-admirable/04-descenso-biquadratico.qmd` | reserved — FDA-M10 |
-| MA-BCH-0140 | book-chapter | V. El cubo perdido: testimonio sin mecanismo conservado | `libros/otros/la-demostracion-admirable/05-cubo-perdido.qmd` | reserved — FDA-M10 |
-| MA-BCH-0141 | book-chapter | VI. De las fórmulas a los grafos de descenso | `libros/otros/la-demostracion-admirable/06-grafos-descenso.qmd` | reserved — FDA-M10 |
-| MA-BCH-0142 | book-chapter | VII. Por qué una única fórmula no basta | `libros/otros/la-demostracion-admirable/07-unica-formula-no-basta.qmd` | reserved — FDA-M10 |
-| MA-BCH-0143 | book-chapter | VIII. Qué pudo significar la demostración general | `libros/otros/la-demostracion-admirable/08-demostracion-general.qmd` | reserved — FDA-M10 |
-| MA-BCH-0144 | book-chapter | IX. Los límites de lo que podemos saber | `libros/otros/la-demostracion-admirable/09-limites-conocimiento.qmd` | reserved — FDA-M10 |
-| MA-BCH-0145 | book-chapter | Apéndice A. Cronología documental mínima | `libros/otros/la-demostracion-admirable/apendice-a-cronologia.qmd` | reserved — FDA-M10 |
-| MA-BCH-0146 | book-chapter | Apéndice B. Anatomía formal de un descenso | `libros/otros/la-demostracion-admirable/apendice-b-anatomia-descenso.qmd` | reserved — FDA-M10 |
-| MA-BCH-0147 | book-chapter | Apéndice C. Controles modernos p=5 y p=7 | `libros/otros/la-demostracion-admirable/apendice-c-controles-p5-p7.qmd` | reserved — FDA-M10 |
-| MA-BCH-0148 | book-chapter | Apéndice D. Escala pública de evidencia | `libros/otros/la-demostracion-admirable/apendice-d-escala-evidencia.qmd` | reserved — FDA-M10 |
-| MA-BCH-0149 | book-chapter | Apéndice E. Nota textual sobre la Observatio | `libros/otros/la-demostracion-admirable/apendice-e-observatio.qmd` | reserved — FDA-M10 |
-| MA-BCH-0150 | book-chapter | Bibliografía selecta | `libros/otros/la-demostracion-admirable/bibliografia.qmd` | reserved — FDA-M10 |
+| MA-BCH-0149 | book-chapter | Preámbulo — La frase en el margen | `libros/otros/la-demostracion-admirable/preambulo.qmd` | reserved — FDA-M10 |
+| MA-BCH-0150 | book-chapter | I. El problema detrás de la leyenda | `libros/otros/la-demostracion-admirable/01-problema-detras-leyenda.qmd` | reserved — FDA-M10 |
+| MA-BCH-0151 | book-chapter | II. Diofanto II.8 y el arte de construir auxiliares | `libros/otros/la-demostracion-admirable/02-diofanto-ii8.qmd` | reserved — FDA-M10 |
+| MA-BCH-0152 | book-chapter | III. El horizonte matemático de Fermat, 1621–1659 | `libros/otros/la-demostracion-admirable/03-horizonte-matematico-fermat.qmd` | reserved — FDA-M10 |
+| MA-BCH-0153 | book-chapter | IV. Qué significa descender: el caso biquadrático | `libros/otros/la-demostracion-admirable/04-descenso-biquadratico.qmd` | reserved — FDA-M10 |
+| MA-BCH-0154 | book-chapter | V. El cubo perdido: testimonio sin mecanismo conservado | `libros/otros/la-demostracion-admirable/05-cubo-perdido.qmd` | reserved — FDA-M10 |
+| MA-BCH-0155 | book-chapter | VI. De las fórmulas a los grafos de descenso | `libros/otros/la-demostracion-admirable/06-grafos-descenso.qmd` | reserved — FDA-M10 |
+| MA-BCH-0156 | book-chapter | VII. Por qué una única fórmula no basta | `libros/otros/la-demostracion-admirable/07-unica-formula-no-basta.qmd` | reserved — FDA-M10 |
+| MA-BCH-0157 | book-chapter | VIII. Qué pudo significar la demostración general | `libros/otros/la-demostracion-admirable/08-demostracion-general.qmd` | reserved — FDA-M10 |
+| MA-BCH-0158 | book-chapter | IX. Los límites de lo que podemos saber | `libros/otros/la-demostracion-admirable/09-limites-conocimiento.qmd` | reserved — FDA-M10 |
+| MA-BCH-0159 | book-chapter | Apéndice A. Cronología documental mínima | `libros/otros/la-demostracion-admirable/apendice-a-cronologia.qmd` | reserved — FDA-M10 |
+| MA-BCH-0160 | book-chapter | Apéndice B. Anatomía formal de un descenso | `libros/otros/la-demostracion-admirable/apendice-b-anatomia-descenso.qmd` | reserved — FDA-M10 |
+| MA-BCH-0161 | book-chapter | Apéndice C. Controles modernos p=5 y p=7 | `libros/otros/la-demostracion-admirable/apendice-c-controles-p5-p7.qmd` | reserved — FDA-M10 |
+| MA-BCH-0162 | book-chapter | Apéndice D. Escala pública de evidencia | `libros/otros/la-demostracion-admirable/apendice-d-escala-evidencia.qmd` | reserved — FDA-M10 |
+| MA-BCH-0163 | book-chapter | Apéndice E. Nota textual sobre la Observatio | `libros/otros/la-demostracion-admirable/apendice-e-observatio.qmd` | reserved — FDA-M10 |
+| MA-BCH-0164 | book-chapter | Bibliografía selecta | `libros/otros/la-demostracion-admirable/bibliografia.qmd` | reserved — FDA-M10 |
 
 ## Regla de uso
 
@@ -285,3 +285,22 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | TF-CAT-016 | MA-BCH-0114 | MA-BCH-0132 |
 | TF-CAT-017 | MA-BCH-0115 | MA-BCH-0133 |
 | TF-CAT-018 | MA-BCH-0116 | MA-BCH-0134 |
+
+## Tratado moderno de Álgebra — cierre editorial 2026-10-02
+
+| ID público | Tipo | ID canónico | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0135 | book-chapter | TALG-0032 | `libros/capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md` | published |
+| MA-BCH-0136 | book-chapter | TALG-0033 | `libros/capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md` | published |
+| MA-BCH-0137 | book-chapter | TALG-0034 | `libros/capitulos/tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md` | published |
+| MA-BCH-0138 | book-chapter | TALG-0035 | `libros/capitulos/tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md` | published |
+| MA-BCH-0139 | book-chapter | TALG-0036 | `libros/capitulos/tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md` | published |
+| MA-BCH-0140 | book-chapter | TALG-0037 | `libros/capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md` | published |
+| MA-BCH-0141 | book-chapter | TALG-0038 | `libros/capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.md` | published |
+| MA-BCH-0142 | book-chapter | TALG-0039 | `libros/capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md` | published |
+| MA-BCH-0143 | book-chapter | TALG-0040 | `libros/capitulos/tratado-de-algebra-capitulo-35-dimension-finita.md` | published |
+| MA-BCH-0144 | book-chapter | TALG-0041 | `libros/capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.md` | published |
+| MA-BCH-0145 | book-chapter | TALG-0042 | `libros/capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md` | published |
+| MA-BCH-0146 | book-chapter | TALG-0043 | `libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md` | published |
+| MA-BCH-0147 | book-chapter | TALG-0044 | `libros/capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md` | published |
+| MA-BCH-0148 | book-chapter | TALG-0045 | `libros/capitulos/tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md` | published |

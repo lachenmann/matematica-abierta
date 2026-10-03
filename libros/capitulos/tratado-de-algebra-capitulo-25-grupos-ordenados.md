@@ -26,8 +26,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 25 — Grupos ordenados
-
 ## 25.0. El problema: hacer compatible comparar con operar
 
 Hasta ahora una estructura algebraica decía **qué operaciones pueden realizarse** y qué leyes satisfacen. Un orden añade otra clase de información: permite comparar elementos. El punto delicado no consiste en poner ambas estructuras una junto a otra, sino en exigir que sean compatibles.

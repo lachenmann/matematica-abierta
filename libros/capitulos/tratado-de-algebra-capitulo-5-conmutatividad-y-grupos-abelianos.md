@@ -31,8 +31,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 5 — Conmutatividad y grupos abelianos
-
 ## 5.0. Propósito
 
 La definición de grupo controla cierre, asociatividad, neutro e inversos, pero no impone ninguna simetría al intercambiar los argumentos de la operación. La conmutatividad es una ley independiente y debe introducirse como tal.

@@ -34,8 +34,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 9 — Núcleo e imagen de homomorfismos de grupos
-
 ## 9.0. Propósito y posición deductiva
 
 Un homomorfismo de grupos

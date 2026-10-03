@@ -32,8 +32,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 4 — Inversos y grupos
-
 ## 4.0. Propósito y posición deductiva
 
 Un monoide dispone de una operación asociativa y de un neutro único. El paso hacia los grupos consiste en estudiar cuándo un elemento puede deshacerse, por la izquierda y por la derecha, mediante otro elemento del mismo monoide.

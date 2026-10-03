@@ -35,8 +35,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 6 — Subestructuras y criterio de subgrupo
-
 ## 6.0. Propósito y posición deductiva
 
 Hasta ahora todas las estructuras se han construido sobre un conjunto completo. El siguiente problema es interno: dado un magma, semigrupo, monoide o grupo, ¿cuándo un subconjunto conserva suficiente estructura como para ser considerado una estructura del mismo tipo?

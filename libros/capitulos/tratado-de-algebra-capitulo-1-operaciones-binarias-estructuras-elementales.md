@@ -32,8 +32,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Capítulo 1 — Operaciones binarias y estructuras elementales
-
 ## 1.0. Propósito y posición deductiva
 
 El álgebra comienza a adquirir una forma estructural cuando dejamos de estudiar únicamente objetos aislados y fijamos, junto con un conjunto, una regla que combina elementos de ese conjunto. Antes de hablar de grupos, anillos o cuerpos debemos precisar qué significa que una operación sea realmente **interna**, qué datos forman una estructura con una operación y qué clase de ley expresa la asociatividad.
