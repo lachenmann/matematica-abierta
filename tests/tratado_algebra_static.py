@@ -106,9 +106,6 @@ def main():
     assert len(CHAPTERS) == 43, len(CHAPTERS)
     sources = {path: path.read_text(encoding="utf-8") for path in CHAPTERS}
     sources[BOOK] = BOOK.read_text(encoding="utf-8")
-    for path, source in sources.items():
-        for expression in formulas(source):
-            assert not re.search(r"\[[^\]]+\]\([^)]*\.(?:md|qmd|html)(?:#[^)]*)?\)", expression), ("Markdown link inside math", path, expression)
     chapter_ids, anchors = [], []
     for path in CHAPTERS:
         s = sources[path]
@@ -161,6 +158,8 @@ def main():
             expected = {a for a in ANCHOR.findall(source) if a.startswith("talg-")}
             actual = {a for a in p.main_ids if a.startswith("talg-")}
             assert expected == actual, (target, expected ^ actual)
+            for expression in p.math:
+                assert not re.search(r"\[[^\]]+\]\([^)]*\.(?:md|qmd|html)(?:#[^)]*)?\)", expression), ("Markdown link inside math", target, expression)
             assert p.math == formulas(source), (target, len(p.math), len(formulas(source)))
             for href in p.links:
                 u = urlsplit(href)
