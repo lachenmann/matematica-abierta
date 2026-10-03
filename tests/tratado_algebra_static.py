@@ -158,6 +158,8 @@ def main():
             expected = {a for a in ANCHOR.findall(source) if a.startswith("talg-")}
             actual = {a for a in p.main_ids if a.startswith("talg-")}
             assert expected == actual, (target, expected ^ actual)
+            for expression in p.math:
+                assert not re.search(r"\[[^\]]+\]\([^)]*\.(?:md|qmd|html)(?:#[^)]*)?\)", expression), ("Markdown link inside math", target, expression)
             assert p.math == formulas(source), (target, len(p.math), len(formulas(source)))
             for href in p.links:
                 u = urlsplit(href)

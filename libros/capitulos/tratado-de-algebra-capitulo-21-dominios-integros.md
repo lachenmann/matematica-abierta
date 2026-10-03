@@ -7,7 +7,7 @@ content-type: book-chapter
 book-id: MA-BOK-0007
 status: published
 date-created: '2026-09-16'
-date-modified: '2026-09-16'
+date-modified: '2026-10-02'
 areas:
 - algebra
 - fundamentos
@@ -349,9 +349,7 @@ No se ha utilizado el axioma de elección. No se ha abierto ninguna nueva depend
 
 Con este capítulo queda cerrada la sección **3.5 — Dominios íntegros** y, con ella, la Parte III en su arquitectura actual. El siguiente nodo canónico abre la Parte IV:
 
-$$
-\boxed{\text{[Definición 22.1.1](tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md#talg-def-00048) — Cuerpo}.}
-$$
+[Definición 22.1.1](tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md#talg-def-00048) — **Cuerpo**.
 
 ---
 
