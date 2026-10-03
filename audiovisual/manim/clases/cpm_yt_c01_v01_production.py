@@ -26,12 +26,13 @@ COMMON_ROOT = MANIM_ROOT / "escenas" / "comunes"
 if str(COMMON_ROOT) not in sys.path:
     sys.path.insert(0, str(COMMON_ROOT))
 
-from intro_canal import IntroCanal, add_intro_music
+from intro_canal import IntroCanal, INTRO_DURATION_SECONDS, add_intro_music
 from marca import play_bouncy_a_squared
 
 VOICE_ROOT = MANIM_ROOT / "cpm_yt_c01_v01" / "voice-reference"
 TIMING_FILE = VOICE_ROOT / "voice-reference-timing.json"
 AUDIO_FILE = VOICE_ROOT / "audio" / "CPM-YT-C01-V01-reference.wav"
+VOICE_OFFSET_SECONDS = INTRO_DURATION_SECONDS
 
 class CPMYTC01V01Production(IntroCanal):
     """Render de producción sincronizado con la toma continua de Reaper."""
@@ -40,10 +41,12 @@ class CPMYTC01V01Production(IntroCanal):
         self.camera.background_color = BG
         self.load_voice_reference()
         add_intro_music(self)
-        self.sync_to("c01v01-00-start")
 
-        # 00 — Intro canónica del canal durante la bienvenida.
+        # 00 — Intro canónica autónoma: música, sin voz.
         IntroCanal.construct(self)
+
+        # La voz comienza exactamente al terminar IntroCanal.
+        self.sync_to("c01v01-00-start")
 
         # El logomark a² ocupa el resto de la introducción hablada.
         opening_mark = play_bouncy_a_squared(
@@ -421,7 +424,7 @@ class CPMYTC01V01Production(IntroCanal):
         )
 
         self.sync_to("c01v01-38-end")
-        tail = self.audio_duration - float(self.renderer.time)
+        tail = VOICE_OFFSET_SECONDS + self.audio_duration - float(self.renderer.time)
         if tail > 0:
             self.wait(tail)
 
@@ -442,10 +445,13 @@ class CPMYTC01V01Production(IntroCanal):
             for row in data["markers"]
         }
         self.audio_duration = float(data["audio_duration_seconds"])
-        self.add_sound(str(AUDIO_FILE))
+        self.add_sound(
+            str(AUDIO_FILE),
+            time_offset=VOICE_OFFSET_SECONDS,
+        )
 
     def sync_to(self, marker_name: str):
-        target = self.marker_times[marker_name]
+        target = VOICE_OFFSET_SECONDS + self.marker_times[marker_name]
         current = float(self.renderer.time)
         delta = target - current
         if delta > 0.001:
@@ -901,7 +907,7 @@ class CPMYTC01V01Production(IntroCanal):
 
         self.sync_to("c01v01-30-f2-suma")
         add_highlight = SurroundingRectangle(
-            add_table.get_entries((2, 2)),
+            add_table.get_entries((3, 3)),
             color=ORANGE,
             buff=0.10,
         )
@@ -912,7 +918,7 @@ class CPMYTC01V01Production(IntroCanal):
         self.sync_to("c01v01-31-f2-producto")
         self.play(FadeOut(add_highlight), FadeOut(sum_result), run_time=0.35)
         mul_highlight = SurroundingRectangle(
-            mul_table.get_entries((2, 2)),
+            mul_table.get_entries((3, 3)),
             color=GREEN,
             buff=0.10,
         )
