@@ -182,34 +182,39 @@ class CPMYTC01V01Production(IntroCanal):
         # 06–09 — Axiomas aditivos
         self.sync_to("c01v01-12-asoc-suma")
         self.clear_stage(ops)
-        self.section_title("Axiomas aditivos")
+        self.section_title("Axioma 1 — Asociatividad de la suma")
         state = self.associativity_sum()
 
         self.sync_to("c01v01-13-neutro-suma")
         self.play(FadeOut(state), run_time=0.35)
+        self.replace_section_title("Axioma 2 — Neutro aditivo")
         state = self.additive_identity()
 
         self.sync_to("c01v01-14-inverso-suma")
         self.play(FadeOut(state), run_time=0.35)
+        self.replace_section_title("Axioma 3 — Inverso aditivo")
         state = self.additive_inverse()
 
         self.sync_to("c01v01-15-conmut-suma")
         self.play(FadeOut(state), run_time=0.35)
+        self.replace_section_title("Axioma 4 — Conmutatividad de la suma")
         state = self.commutativity_sum()
 
         # 10–13 — Axiomas multiplicativos
         self.sync_to("c01v01-16-asoc-producto")
         self.play(FadeOut(state), run_time=0.35)
         self.clear_stage()
-        self.section_title("Axiomas multiplicativos")
+        self.section_title("Axioma 5 — Asociatividad del producto")
         state = self.associativity_product()
 
         self.sync_to("c01v01-17-neutro-producto")
         self.play(FadeOut(state), run_time=0.35)
+        self.replace_section_title("Axioma 6 — Neutro multiplicativo")
         state = self.multiplicative_identity()
 
         self.sync_to("c01v01-18-inverso-producto")
         self.play(FadeOut(state), run_time=0.35)
+        self.replace_section_title("Axioma 7 — Inverso multiplicativo")
         state = self.multiplicative_inverse()
 
         self.sync_to("c01v01-19-cero-sin-inverso")
@@ -217,26 +222,51 @@ class CPMYTC01V01Production(IntroCanal):
 
         self.sync_to("c01v01-20-conmut-producto")
         self.play(FadeOut(state), run_time=0.35)
+        self.replace_section_title("Axioma 8 — Conmutatividad del producto")
         state = self.commutativity_product()
 
         # 14 — Distributividad y lectura inversa
         self.sync_to("c01v01-21-distributividad")
         self.play(FadeOut(state), run_time=0.35)
         self.clear_stage()
-        self.section_title("Distributividad")
+        self.section_title("Axioma 9 — Distributividad")
         state = self.distributivity_demo()
 
         # 15 — Definición y cuerpo trivial
         self.sync_to("c01v01-23-def-cuerpo")
         self.play(FadeOut(state), run_time=0.35)
         self.clear_stage()
-        self.section_title("Definición de cuerpo")
-        definition = MathTex(
-            r"F\neq\varnothing,\qquad +,\qquad \cdot,\qquad 0\neq1",
-            color=FG,
-        ).scale(1.18)
-        definition.set_color_by_tex(r"0\neq1", GREEN)
-        self.play(FadeIn(definition, shift=0.10 * UP))
+        self.section_title("Definición formal de cuerpo")
+        definition = VGroup(
+            MathTex(
+                r"(F,+,\cdot,0,1)",
+                color=FG,
+            ).scale(1.32),
+            MathTex(
+                r"F\neq\varnothing,\qquad 0,1\in F,\qquad 0\neq1",
+                color=FG,
+            ).scale(0.98),
+            MathTex(
+                r"+\colon F\times F\longrightarrow F",
+                color=BLUE,
+            ).scale(0.98),
+            MathTex(
+                r"\cdot\colon F\times F\longrightarrow F",
+                color=ORANGE,
+            ).scale(0.98),
+            MathTex(
+                r"\forall a,b,c\in F:\quad \text{se satisfacen los axiomas }1\text{--}9",
+                color=MUTED,
+            ).scale(0.72),
+        ).arrange(DOWN, buff=0.34)
+        definition[1].set_color_by_tex(r"0\neq1", GREEN)
+        self.play(
+            LaggedStart(
+                *[FadeIn(row, shift=0.08 * UP) for row in definition],
+                lag_ratio=0.14,
+            ),
+            run_time=1.4,
+        )
 
         self.sync_to("c01v01-24-cuerpo-trivial")
         self.clear_stage(definition)
@@ -259,9 +289,42 @@ class CPMYTC01V01Production(IntroCanal):
         box = SurroundingRectangle(exclusion, color=GREEN, buff=0.16)
         self.play(Create(box))
 
+        # La voz recapitula ahora, uno por uno, los grupos de axiomas.
+        # Este tramo empieza aproximadamente en 7:08 del video final.
+        self.sync_between(
+            "c01v01-26-excluir-trivial",
+            "c01v01-27-tabla-axiomas",
+            0.05,
+        )
+        self.clear_stage(trivial, ops_trivial, exclusion, box)
+        self.section_title("Axiomas 1–4 — Estructura aditiva")
+        recap = self.axiom_recap_panel("additive")
+        self.play(FadeIn(recap, shift=0.08 * UP), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-26-excluir-trivial",
+            "c01v01-27-tabla-axiomas",
+            0.45,
+        )
+        self.play(FadeOut(recap), run_time=0.35)
+        self.replace_section_title("Axiomas 5–8 — Estructura multiplicativa")
+        recap = self.axiom_recap_panel("multiplicative")
+        self.play(FadeIn(recap, shift=0.08 * UP), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-26-excluir-trivial",
+            "c01v01-27-tabla-axiomas",
+            0.76,
+        )
+        self.play(FadeOut(recap), run_time=0.35)
+        self.replace_section_title("Axioma 9 — Distributividad")
+        recap = self.axiom_recap_panel("distributive")
+        self.play(FadeIn(recap, shift=0.08 * UP), run_time=0.65)
+
         # 16 — Tabla de síntesis
         self.sync_to("c01v01-27-tabla-axiomas")
-        self.clear_stage(trivial, ops_trivial, exclusion, box)
+        self.play(FadeOut(recap), run_time=0.35)
+        self.clear_stage()
         self.section_title("Condición estructural y nueve axiomas")
         state = self.axiom_summary()
 
@@ -461,6 +524,77 @@ class CPMYTC01V01Production(IntroCanal):
                 f"[SYNC WARN] {marker_name}: visual timeline "
                 f"{-delta:.3f}s late"
             )
+
+    def sync_between(self, start_marker: str, end_marker: str, fraction: float):
+        """Sincroniza a una fracción estable del intervalo entre dos marcadores."""
+        start = self.marker_times[start_marker]
+        end = self.marker_times[end_marker]
+        voice_target = start + fraction * (end - start)
+        target = VOICE_OFFSET_SECONDS + voice_target
+        current = float(self.renderer.time)
+        delta = target - current
+        if delta > 0.001:
+            self.wait(delta)
+        elif delta < -0.25:
+            print(
+                f"[SYNC WARN] {start_marker}->{end_marker} "
+                f"@{fraction:.2f}: visual timeline {-delta:.3f}s late"
+            )
+
+    def replace_section_title(self, text: str):
+        """Sustituye el encabezado superior sin tocar el contenido central."""
+        old = getattr(self, "_current_header", None)
+        title = Tex(text, color=FG).scale(0.82).to_edge(UP, buff=0.35)
+        rule = Line(LEFT * 5.5, RIGHT * 5.5, color=MUTED, stroke_width=1.2)
+        rule.next_to(title, DOWN, buff=0.18)
+        new_header = VGroup(title, rule)
+
+        animations = [FadeIn(title), Create(rule)]
+        if old is not None:
+            animations.insert(0, FadeOut(old))
+        self.play(*animations, run_time=0.45)
+        self._current_header = new_header
+
+    def axiom_recap_panel(self, group: str) -> VGroup:
+        """Paneles que acompañan la recapitulación verbal previa a la tabla final."""
+        data = {
+            "additive": [
+                ("1", "Asociatividad", r"a+(b+c)=(a+b)+c"),
+                ("2", "Neutro aditivo", r"a+0=a"),
+                ("3", "Inverso aditivo", r"a+(-a)=0"),
+                ("4", "Conmutatividad", r"a+b=b+a"),
+            ],
+            "multiplicative": [
+                ("5", "Asociatividad", r"a\cdot(b\cdot c)=(a\cdot b)\cdot c"),
+                ("6", "Neutro multiplicativo", r"a\cdot1=a"),
+                ("7", "Inverso multiplicativo", r"a\cdot a^{-1}=1\quad(a\neq0)"),
+                ("8", "Conmutatividad", r"a\cdot b=b\cdot a"),
+            ],
+            "distributive": [
+                ("9", "Distributividad", r"a\cdot(b+c)=a\cdot b+a\cdot c"),
+            ],
+        }
+
+        rows = VGroup()
+        for number, name, formula in data[group]:
+            badge = MathTex(number, color=MUTED).scale(0.72)
+            label = Tex(name, color=FG).scale(0.62)
+            expr = MathTex(formula, color=FG).scale(
+                0.72 if group != "distributive" else 0.92
+            )
+            row = VGroup(badge, label, expr).arrange(
+                RIGHT,
+                buff=0.42,
+                aligned_edge=DOWN,
+            )
+            rows.add(row)
+
+        rows.arrange(DOWN, aligned_edge=LEFT, buff=0.48)
+        if group == "distributive":
+            rows.move_to([0, -0.25, 0])
+        else:
+            rows.move_to([0, -0.35, 0])
+        return rows
 
     def section_title(self, text: str):
         title = Tex(text, color=FG).scale(0.82).to_edge(UP, buff=0.35)
