@@ -4,7 +4,7 @@ import json
 import sys
 
 # -----------------------------------------------------------------------------
-# Cálculo para matemáticos — Video 1 — Preview local de animaciones
+# Cálculo para matemáticos — Video 1 — Producción final
 # Manim Community 0.21.0
 # Render local previsto desde:
 # D:\\MatematicaAbierta-Main\\audiovisual\\manim
