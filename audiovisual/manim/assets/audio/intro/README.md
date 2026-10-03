@@ -14,7 +14,7 @@
 > “Simple Piano Logo” — _MC5_, Freesound.org — CC BY 4.0.
 
 La versión usada por Matemática Abierta es una adaptación técnica: se convierte a
-48 kHz/stereo, se fija a 8.00 s y se aplica un fade-out de 0.65 s. No se hace loop.
+48 kHz/stereo, se fija a 7.00 s y se aplica un fade-out de 0.65 s. No se hace loop.
 
 ## Pipeline
 
@@ -29,5 +29,8 @@ Se genera de forma reproducible con:
 El script busca dentro de `audiovisual/manim` un archivo cuyo nombre contenga
 `524847`, o coincida con “Simple Piano Logo”, y crea el WAV canónico.
 
-En Manim la cortina se reproduce a `-18 dB` y sólo durante los primeros 8.00 s
+En Manim la cortina se reproduce a `-18 dB` y sólo durante los primeros 7.00 s
 de `IntroCanal`. Después de la intro, el resto del video queda sólo con voz.
+
+
+La voz de cada clase conserva su WAV/RPP intacto y comienza a los `7.00 s` del video; todos los marcadores Reaper se interpretan con ese desplazamiento global.
