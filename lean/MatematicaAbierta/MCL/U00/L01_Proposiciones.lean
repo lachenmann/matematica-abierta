@@ -7,8 +7,8 @@ Objetivo matemático:
 reconocer una proposición matemática, distinguirla de su demostración
 y comenzar a leer una meta elemental de Lean.
 
-Estado pedagógico: REVIEW
-Fuente humana: MCL-U00-L01_QUE_ES_UNA_PROPOSICION_v02.md
+Estado pedagógico: CLOSED
+Fuente humana: MCL-U00-L01_QUE_ES_UNA_PROPOSICION_v03.md
 MA-Lean mapping: MA-Lean/mapeos/MCL/MCL-U00-L01.json
 -/
 
