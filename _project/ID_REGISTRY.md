@@ -6,7 +6,7 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0013 |
+| Artículo | MA-ART-0014 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0165 |
@@ -55,6 +55,7 @@
 | MA-ART-0010 | article | La sección áurea: de una división geométrica a la ecuación φ² = φ + 1 | `blog/seccion-aurea.qmd` | published |
 | MA-ART-0011 | article | La fórmula de Euler: historia, derivación y geometría de $e^{i\theta}$ | `blog/formula-de-euler-historia-derivacion-geometria.qmd` | published |
 | MA-ART-0012 | article | El teorema de De Moivre: potencias, rotaciones y raíces complejas | `teoria/resultados/teorema-de-moivre.qmd` | published |
+| MA-ART-0013 | article | ¿Puede cualquier teorema demostrarse con 100 operaciones? Lo que realmente dice James P. Jones | `blog/jones-100-operaciones.md` | published |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
 | MA-APP-0002 | interactive-application | Laboratorio de Cauchy–Schwarz: del cuadrado a la geometría | `teoria/resultados/laboratorio-cauchy-schwarz.qmd` | published; canonical-web reconciliation + M11 publication QA PASS 2026-09-29 |
 | MA-APP-0003 | interactive-application | Laboratorio de cotas óptimas: recta, banda épsilon y disco | `assets/labs/MA-APP-0003-supremo-infimo.html` | published |
