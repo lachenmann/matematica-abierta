@@ -28,7 +28,7 @@ class CPMYTC01V01Preview(Scene):
         # 01 — Apertura algebraica
         self.section_title("Aritmética conocida")
         arithmetic = MathTex(
-            r"2+3=5", r"\qquad", r"2\cdot3=6", r"\qquad", r"2x=1\Longrightarrow x=\frac12",
+            r"2+3=5", r"\qquad", r"2\cdot3=6", r"\qquad", r"2\cdot x=1\Longrightarrow x=\frac12",
             color=FG,
         ).scale(0.95)
         arithmetic[0].set_color(BLUE)
@@ -51,21 +51,68 @@ class CPMYTC01V01Preview(Scene):
         self.play(LaggedStart(*[FadeIn(m, shift=0.18 * RIGHT) for m in chain], lag_ratio=0.10))
         self.hold(0.6)
 
-        expr = MathTex(r"3-5", color=FG).scale(1.5).to_edge(DOWN, buff=1.25)
-        self.play(FadeIn(expr))
+        # Una proposición verdadera en N.
+        expr = MathTex(
+            r"3", r"+", r"5", r"=", r"8",
+            color=FG,
+        ).scale(1.5).move_to([0, -1.45, 0])
+        expr[4].set_color(BLUE)
         marker = SurroundingRectangle(chain[0], color=BLUE, buff=0.12)
-        self.play(Create(marker))
-        self.play(marker.animate.move_to(chain[2]), expr.animate.set_color(ORANGE))
-        self.hold(0.5)
-        self.play(FadeOut(expr), FadeOut(marker))
+        self.play(Create(marker), FadeIn(expr))
+        self.hold(0.55)
 
-        eq = MathTex(r"2x=1", color=FG).scale(1.35).to_edge(DOWN, buff=1.25)
+        # Cambian la operación y el resultado, pero no los operandos.
+        minus = MathTex(r"-", color=RED).scale(1.5).move_to(expr[1].get_center())
+        negative_two = MathTex(r"-2", color=RED).scale(1.5).move_to(expr[4].get_center())
+        self.play(
+            Transform(expr[1], minus),
+            Transform(expr[4], negative_two),
+            run_time=0.75,
+            rate_func=smooth,
+        )
+        self.hold(0.35)
+
+        not_natural = MathTex(r"-2\notin\mathbb N", color=RED).scale(1.0)
+        not_natural.next_to(expr, DOWN, buff=0.30)
+        self.play(FadeIn(not_natural, shift=0.10 * UP))
+        self.hold(0.55)
+
+        # Z resuelve exactamente el problema anterior.
+        in_integers = MathTex(r"-2\in\mathbb Z", color=ORANGE).scale(1.0)
+        in_integers.next_to(expr, DOWN, buff=0.30)
+        self.play(
+            marker.animate.move_to(chain[2]).set_color(ORANGE),
+            FadeOut(not_natural),
+            FadeIn(in_integers, shift=0.10 * UP),
+            run_time=0.8,
+        )
+        self.hold(0.55)
+        self.play(FadeOut(expr), FadeOut(in_integers))
+
+        # Ahora aparece un problema nuevo dentro de Z.
+        eq = MathTex(r"2\cdot x=1", color=FG).scale(1.35).move_to([0, -1.45, 0])
+        self.play(FadeIn(eq))
+        self.hold(0.35)
+
         half = MathTex(r"x=\frac12", color=GREEN).scale(1.35).move_to(eq)
-        marker2 = SurroundingRectangle(chain[2], color=ORANGE, buff=0.12)
-        self.play(FadeIn(eq), Create(marker2))
-        self.play(TransformMatchingTex(eq, half), marker2.animate.move_to(chain[4]))
-        self.hold(0.6)
-        self.clear_stage(chain, half, marker2)
+        self.play(TransformMatchingTex(eq, half))
+        self.hold(0.35)
+
+        half_not_z = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.0)
+        half_not_z.next_to(half, DOWN, buff=0.30)
+        self.play(FadeIn(half_not_z, shift=0.10 * UP))
+        self.hold(0.55)
+
+        half_in_q = MathTex(r"\frac12\in\mathbb Q", color=GREEN).scale(1.0)
+        half_in_q.next_to(half, DOWN, buff=0.30)
+        self.play(
+            marker.animate.move_to(chain[4]).set_color(GREEN),
+            FadeOut(half_not_z),
+            FadeIn(half_in_q, shift=0.10 * UP),
+            run_time=0.8,
+        )
+        self.hold(0.55)
+        self.clear_stage(chain, half, half_in_q, marker)
 
         # 03 — Spoiler tenue
         spoiler = Tex(r"Spoiler: supremo", color=MUTED).scale(0.78)
@@ -77,11 +124,12 @@ class CPMYTC01V01Preview(Scene):
         self.section_title("Operaciones internas")
         f_nonempty = MathTex(r"F\neq\varnothing", color=FG).scale(1.35)
         closure = MathTex(
-            r"a,b\in F", r"\Longrightarrow", r"a+b\in F", r",\qquad", r"ab\in F",
+            r"a,b\in F",
+            r"\Longrightarrow",
+            r"a+b\in F,\qquad a\cdot b\in F",
             color=FG,
         ).scale(1.05).next_to(f_nonempty, DOWN, buff=0.65)
         closure[2].set_color(BLUE)
-        closure[4].set_color(ORANGE)
         self.play(FadeIn(f_nonempty))
         self.play(LaggedStart(*[FadeIn(m) for m in closure], lag_ratio=0.10))
         self.hold()
@@ -112,26 +160,17 @@ class CPMYTC01V01Preview(Scene):
 
         # 14 — Distributividad y lectura inversa
         self.section_title("Distributividad")
-        lhs = MathTex(r"a(b+c)", color=FG).scale(1.45)
-        rhs = MathTex(r"ab+ac", color=FG).scale(1.45)
-        lhs[0][0].set_color(GREEN)
-        self.play(Write(lhs))
-        self.play(TransformMatchingTex(lhs, rhs))
-        self.hold(0.6)
-        factor = MathTex(r"a(b+c)", color=FG).scale(1.45)
-        self.play(TransformMatchingTex(rhs, factor))
-        self.hold(0.5)
-        self.clear_stage(factor)
+        self.distributivity_demo()
 
         # 15 — Cuerpo trivial
         self.section_title("Cuerpo trivial")
-        trivial = MathTex(r"F=\{0\}", r",\qquad", r"1=0", color=FG).scale(1.25)
-        trivial[2].set_color(RED)
-        ops_trivial = MathTex(r"0+0=0", r",\qquad", r"0\cdot0=0", color=FG).scale(1.1)
+        trivial = MathTex(r"F=\{0\},\qquad", r"1=0", color=FG).scale(1.25)
+        trivial[1].set_color(RED)
+        ops_trivial = MathTex(r"0+0=0,\qquad", r"0\cdot0=0", color=FG).scale(1.1)
         ops_trivial.next_to(trivial, DOWN, buff=0.65)
         exclusion = MathTex(r"0\neq1", color=GREEN).scale(1.45).next_to(ops_trivial, DOWN, buff=0.65)
         self.play(Write(trivial))
-        self.play(LaggedStart(Write(ops_trivial[0]), Write(ops_trivial[2]), lag_ratio=0.45))
+        self.play(LaggedStart(Write(ops_trivial[0]), Write(ops_trivial[1]), lag_ratio=0.45))
         self.play(FadeIn(exclusion, shift=0.15 * UP))
         box = SurroundingRectangle(exclusion, color=GREEN, buff=0.16)
         self.play(Create(box))
@@ -151,8 +190,8 @@ class CPMYTC01V01Preview(Scene):
         pending = VGroup(
             MathTex(r"a\cdot0=0", color=FG),
             MathTex(r"-(-a)=a", color=FG),
-            MathTex(r"(-a)(-b)=ab", color=FG),
-            MathTex(r"ab=0\Longrightarrow a=0\ \text{o}\ b=0", color=FG),
+            MathTex(r"(-a)\cdot(-b)=a\cdot b", color=FG),
+            MathTex(r"a\cdot b=0\Longrightarrow a=0\ \text{o}\ b=0", color=FG),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.42).scale(0.92)
         for row in pending:
             q = MathTex(r"?", color=ORANGE).scale(1.15).next_to(row, RIGHT, buff=0.35)
@@ -165,16 +204,22 @@ class CPMYTC01V01Preview(Scene):
         self.section_title("Los enteros no forman un cuerpo")
         integers = MathTex(r"\mathbb Z", color=ORANGE).scale(2.2)
         circle = Circle(radius=1.5, color=ORANGE).move_to(integers)
-        eq2 = MathTex(r"2x=1", color=FG).scale(1.25).to_edge(DOWN, buff=1.2)
+        eq2 = MathTex(r"2\cdot x=1", color=FG).scale(1.25).to_edge(DOWN, buff=1.2)
         half2 = MathTex(r"x=\frac12", color=GREEN).scale(1.25).move_to(eq2)
         half_floating = MathTex(r"\frac12", color=GREEN).scale(1.6).move_to(integers)
         self.play(Create(circle), FadeIn(integers))
         self.play(Write(eq2))
         self.play(TransformMatchingTex(eq2, half2))
         self.play(FadeIn(half_floating))
-        self.play(half_floating.animate.shift(3.0 * RIGHT), circle.animate.set_color(RED), integers.animate.set_color(RED))
-        self.hold(0.7)
-        self.clear_stage(circle, integers, half2, half_floating)
+        self.play(
+            half_floating.animate.shift(3.0 * RIGHT).set_color(RED),
+            circle.animate.set_color(RED),
+            integers.animate.set_color(RED),
+        )
+        not_in = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.2).to_edge(DOWN, buff=1.0)
+        self.play(FadeOut(half2), FadeIn(not_in, shift=0.14 * UP))
+        self.hold(0.8)
+        self.clear_stage(circle, integers, half_floating, not_in)
 
         # 20 — Q y R sí
         self.section_title("Dos cuerpos familiares")
@@ -185,17 +230,117 @@ class CPMYTC01V01Preview(Scene):
         self.hold(0.8)
         self.clear_stage(qr)
 
-        # 21 — Capa algebraica / capa de orden
-        self.section_title("Siguiente capa: orden")
-        algebra = Tex(r"Capa algebraica", color=BLUE).scale(0.95)
-        order = Tex(r"Capa de orden", color=GREEN).scale(0.95)
-        layers = VGroup(algebra, order).arrange(DOWN, buff=0.75)
-        relation = MathTex(r"2<3", color=FG).scale(1.55).next_to(order, DOWN, buff=0.7)
-        self.play(FadeIn(algebra, shift=0.15 * RIGHT))
-        self.play(FadeIn(order, shift=0.15 * RIGHT))
-        self.play(Write(relation))
-        self.hold(0.8)
-        self.clear_stage(layers, relation)
+        # 21 — Enlace con el siguiente video
+        self.section_title("Siguiente clase: teoremas derivados de los axiomas")
+
+        source_box = RoundedRectangle(
+            width=6.2, height=1.65, corner_radius=0.16,
+            color=BLUE, stroke_width=2.0,
+        ).move_to([0, 1.45, 0])
+        source_title = Tex(r"Axiomas de cuerpo", color=BLUE).scale(0.82)
+        source_formula = MathTex(
+            r"0\neq1", r"\qquad", r"+", r"\qquad", r"\cdot",
+            color=FG,
+        ).scale(0.86)
+        source_distributivity = MathTex(
+            r"a\cdot(b+c)=a\cdot b+a\cdot c",
+            color=FG,
+        ).scale(0.62)
+        source_group = VGroup(
+            source_box,
+            source_title,
+            source_formula,
+            source_distributivity,
+        )
+        source_title.move_to(source_box.get_center() + 0.47 * UP)
+        source_formula.move_to(source_box.get_center() + 0.02 * UP)
+        source_distributivity.move_to(source_box.get_center() + 0.45 * DOWN)
+
+        self.play(Create(source_box))
+        self.play(FadeIn(source_title), FadeIn(source_formula))
+        self.play(FadeIn(source_distributivity, shift=0.08 * UP))
+        self.hold(0.45)
+
+        cards = VGroup(
+            self.theorem_card("Unicidad del cero", r"0=0'", BLUE),
+            self.theorem_card("Unicidad del inverso", r"b+c=0=b+d\Longrightarrow c=d", ORANGE),
+            self.theorem_card("Producto por cero", r"a\cdot0=0", GREEN),
+            self.theorem_card("Cancelación", r"a\cdot b=a\cdot c,\ a\neq0\Longrightarrow b=c", VIOLET),
+        ).arrange_in_grid(rows=2, cols=2, buff=(0.90, 0.70))
+        cards.scale(0.74).move_to([0, -1.00, 0])
+
+        # Primero aparecen los resultados; después se dibuja una ramificación limpia.
+        self.play(
+            LaggedStart(*[FadeIn(card, shift=0.10 * UP) for card in cards], lag_ratio=0.14),
+            run_time=1.2,
+        )
+
+        top_left_arrow = Arrow(
+            source_box.get_bottom() + 1.55 * LEFT,
+            cards[0].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+        top_right_arrow = Arrow(
+            source_box.get_bottom() + 1.55 * RIGHT,
+            cards[1].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+
+        # Para la fila inferior usamos un tronco central que baja por el espacio
+        # entre las tarjetas superiores y se bifurca recién en el pasillo central.
+        junction_y = 0.5 * (cards[0].get_bottom()[1] + cards[2].get_top()[1])
+        junction = [0, junction_y, 0]
+        trunk = Line(
+            source_box.get_bottom(),
+            junction,
+            stroke_width=1.8,
+            color=MUTED,
+        )
+        bottom_left_arrow = Arrow(
+            junction,
+            cards[2].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+        bottom_right_arrow = Arrow(
+            junction,
+            cards[3].get_top(),
+            buff=0.10,
+            stroke_width=1.8,
+            max_tip_length_to_length_ratio=0.10,
+            color=MUTED,
+        )
+
+        arrows = VGroup(
+            top_left_arrow,
+            top_right_arrow,
+            trunk,
+            bottom_left_arrow,
+            bottom_right_arrow,
+        )
+
+        self.play(
+            GrowArrow(top_left_arrow),
+            GrowArrow(top_right_arrow),
+            Create(trunk),
+            run_time=0.70,
+        )
+        self.play(
+            GrowArrow(bottom_left_arrow),
+            GrowArrow(bottom_right_arrow),
+            run_time=0.60,
+        )
+        self.hold(1.0)
+
+        self.clear_stage(source_group, arrows, cards)
 
         # 22 — Cierre
         closing = Tex(r"Fin del preview local", color=MUTED).scale(0.82)
@@ -228,127 +373,397 @@ class CPMYTC01V01Preview(Scene):
     # Axiomas aditivos
     # ------------------------------------------------------------------
     def associativity_sum(self):
-        a = MathTex(r"a+(b+c)", color=FG).scale(1.5)
-        b = MathTex(r"(a+b)+c", color=FG).scale(1.5)
-        self.play(Write(a))
-        self.play(TransformMatchingTex(a, b))
-        self.hold(0.45)
-        self.play(FadeOut(b))
+        source = MathTex(
+            r"a", r"+", r"(", r"b", r"+", r"c", r")",
+            color=FG,
+        ).scale(1.5)
+        target = MathTex(
+            r"(", r"a", r"+", r"b", r")", r"+", r"c",
+            color=FG,
+        ).scale(1.5)
+        source[0].set_color(BLUE)
+        source[3].set_color(ORANGE)
+        source[5].set_color(GREEN)
+        target[1].set_color(BLUE)
+        target[3].set_color(ORANGE)
+        target[6].set_color(GREEN)
+
+        self.play(Write(source))
+        self.hold(0.25)
+
+        mapping = {
+            0: 1,  # a
+            1: 2,  # primer +
+            2: 0,  # (
+            3: 3,  # b
+            4: 5,  # segundo +
+            5: 6,  # c
+            6: 4,  # )
+        }
+        self.play(
+            *[
+                source[i].animate.move_to(target[j].get_center())
+                for i, j in mapping.items()
+            ],
+            run_time=1.15,
+            rate_func=smooth,
+        )
+        self.hold(0.35)
+        proposition = MathTex(
+            r"a+(b+c)=(a+b)+c",
+            color=FG,
+        ).scale(1.35)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        proposition.set_color_by_tex("c", GREEN)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
 
     def additive_identity(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55)
-        zero = MathTex(r"+0", color=MUTED).scale(1.55).next_to(a, RIGHT, buff=0.12)
-        result = MathTex(r"a+0=a", color=FG).scale(1.45)
-        self.play(FadeIn(a))
-        self.play(FadeIn(zero, shift=0.18 * LEFT))
-        pair = VGroup(a, zero)
-        self.play(ReplacementTransform(pair, result))
-        self.hold(0.45)
-        self.play(FadeOut(result))
+        expr = MathTex(
+            r"a", r"+", r"0", r"=", r"a",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[2].set_color(MUTED)
+        expr[4].set_color(BLUE)
+
+        self.play(FadeIn(expr[0]))
+        self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT))
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT))
+        self.hold(0.5)
+        self.play(FadeOut(expr))
 
     def additive_inverse(self):
-        left = MathTex(r"a", color=BLUE).scale(1.55).shift(1.35 * LEFT)
-        right = MathTex(r"-a", color=ORANGE).scale(1.55).shift(1.35 * RIGHT)
-        zero = MathTex(r"0", color=GREEN).scale(1.65)
-        self.play(FadeIn(left), FadeIn(right))
-        self.play(left.animate.shift(0.75 * RIGHT), right.animate.shift(0.75 * LEFT))
-        self.play(ReplacementTransform(VGroup(left, right), zero))
-        self.hold(0.45)
-        self.play(FadeOut(zero))
+        expr = MathTex(
+            r"a", r"+", r"(", r"-a", r")", r"=", r"0",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[3].set_color(ORANGE)
+        expr[6].set_color(GREEN)
+
+        # Primero queda visible la estructura completa a + (-a).
+        self.play(
+            FadeIn(expr[1]),
+            FadeIn(expr[2]),
+            FadeIn(expr[4]),
+        )
+        self.play(
+            FadeIn(expr[0], shift=0.35 * RIGHT),
+            FadeIn(expr[3], shift=0.35 * LEFT),
+            run_time=0.75,
+        )
+        self.hold(0.35)
+
+        # Sólo después aparece el resultado = 0.
+        self.play(
+            FadeIn(expr[5]),
+            FadeIn(expr[6], shift=0.12 * UP),
+            run_time=0.55,
+        )
+        self.hold(0.6)
+        self.play(FadeOut(expr))
 
     def commutativity_sum(self):
-        start = MathTex(r"a+b", color=FG).scale(1.5)
-        end = MathTex(r"b+a", color=FG).scale(1.5)
-        start[0][0].set_color(BLUE)
-        start[0][2].set_color(ORANGE)
-        end[0][0].set_color(ORANGE)
-        end[0][2].set_color(BLUE)
-        self.play(Write(start))
-        self.play(TransformMatchingTex(start, end))
-        self.hold(0.45)
-        self.play(FadeOut(end))
+        source = MathTex(r"a", r"+", r"b", color=FG).scale(1.6)
+        target = MathTex(r"b", r"+", r"a", color=FG).scale(1.6)
+        source[0].set_color(BLUE)
+        source[2].set_color(ORANGE)
+        target[0].set_color(ORANGE)
+        target[2].set_color(BLUE)
+
+        self.play(Write(source))
+        a_start = source[0].get_center()
+        b_start = source[2].get_center()
+        a_end = target[2].get_center()
+        b_end = target[0].get_center()
+
+        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI / 2)
+        path_b = ArcBetweenPoints(b_start, b_end, angle=PI / 2)
+        self.play(
+            MoveAlongPath(source[0], path_a),
+            MoveAlongPath(source[2], path_b),
+            source[1].animate.move_to(target[1].get_center()),
+            run_time=1.25,
+            rate_func=smooth,
+        )
+        self.hold(0.35)
+        proposition = MathTex(r"a+b=b+a", color=FG).scale(1.45)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
         self.clear_stage()
 
     # ------------------------------------------------------------------
     # Axiomas multiplicativos
     # ------------------------------------------------------------------
     def associativity_product(self):
-        a = MathTex(r"a(bc)", color=FG).scale(1.5)
-        b = MathTex(r"(ab)c", color=FG).scale(1.5)
-        self.play(Write(a))
-        self.play(TransformMatchingTex(a, b))
-        self.hold(0.45)
-        self.play(FadeOut(b))
+        source = MathTex(
+            r"a", r"\cdot", r"(", r"b", r"\cdot", r"c", r")",
+            color=FG,
+        ).scale(1.5)
+        target = MathTex(
+            r"(", r"a", r"\cdot", r"b", r")", r"\cdot", r"c",
+            color=FG,
+        ).scale(1.5)
+        source[0].set_color(BLUE)
+        source[3].set_color(ORANGE)
+        source[5].set_color(GREEN)
+        target[1].set_color(BLUE)
+        target[3].set_color(ORANGE)
+        target[6].set_color(GREEN)
+
+        self.play(Write(source))
+        self.hold(0.25)
+
+        mapping = {
+            0: 1,  # a
+            1: 2,  # primer punto
+            2: 0,  # (
+            3: 3,  # b
+            4: 5,  # segundo punto
+            5: 6,  # c
+            6: 4,  # )
+        }
+        self.play(
+            *[
+                source[i].animate.move_to(target[j].get_center())
+                for i, j in mapping.items()
+            ],
+            run_time=1.15,
+            rate_func=smooth,
+        )
+        self.hold(0.35)
+        proposition = MathTex(
+            r"a\cdot(b\cdot c)=(a\cdot b)\cdot c",
+            color=FG,
+        ).scale(1.28)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        proposition.set_color_by_tex("c", GREEN)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
 
     def multiplicative_identity(self):
-        a = MathTex(r"a", color=BLUE).scale(1.55)
-        one = MathTex(r"\cdot1", color=MUTED).scale(1.55).next_to(a, RIGHT, buff=0.12)
-        result = MathTex(r"a\cdot1=a", color=FG).scale(1.45)
-        self.play(FadeIn(a))
-        self.play(FadeIn(one, shift=0.18 * LEFT))
-        self.play(ReplacementTransform(VGroup(a, one), result))
-        self.hold(0.45)
-        self.play(FadeOut(result))
+        expr = MathTex(
+            r"a", r"\cdot", r"1", r"=", r"a",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[2].set_color(MUTED)
+        expr[4].set_color(BLUE)
+
+        self.play(FadeIn(expr[0]))
+        self.play(FadeIn(expr[1]), FadeIn(expr[2], shift=0.12 * LEFT))
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * LEFT))
+        self.hold(0.5)
+        self.play(FadeOut(expr))
 
     def multiplicative_inverse(self):
         hypothesis = MathTex(r"a\neq0", color=ORANGE).scale(1.05).to_edge(UP, buff=1.55)
-        left = MathTex(r"a", color=BLUE).scale(1.55).shift(1.45 * LEFT)
-        right = MathTex(r"a^{-1}", color=GREEN).scale(1.55).shift(1.45 * RIGHT)
-        one = MathTex(r"1", color=GREEN).scale(1.65)
+        expr = MathTex(
+            r"a", r"\cdot", r"a^{-1}", r"=", r"1",
+            color=FG,
+        ).scale(1.5)
+        expr[0].set_color(BLUE)
+        expr[2].set_color(GREEN)
+        expr[4].set_color(GREEN)
+
         self.play(FadeIn(hypothesis))
-        self.play(FadeIn(left), FadeIn(right))
-        self.play(left.animate.shift(0.78 * RIGHT), right.animate.shift(0.78 * LEFT))
-        self.play(ReplacementTransform(VGroup(left, right), one))
-        self.hold(0.45)
-        self.play(FadeOut(hypothesis), FadeOut(one))
+        self.play(FadeIn(expr[1]))
+        self.play(
+            FadeIn(expr[0], shift=0.35 * RIGHT),
+            FadeIn(expr[2], shift=0.35 * LEFT),
+            run_time=0.75,
+        )
+        self.hold(0.3)
+        self.play(FadeIn(expr[3]), FadeIn(expr[4], shift=0.12 * UP))
+        self.hold(0.5)
+        self.play(FadeOut(hypothesis), FadeOut(expr))
 
     def commutativity_product(self):
-        start = MathTex(r"ab", color=FG).scale(1.5)
-        end = MathTex(r"ba", color=FG).scale(1.5)
-        start[0][0].set_color(BLUE)
-        start[0][1].set_color(ORANGE)
-        end[0][0].set_color(ORANGE)
-        end[0][1].set_color(BLUE)
-        self.play(Write(start))
-        self.play(TransformMatchingTex(start, end))
-        self.hold(0.45)
-        self.play(FadeOut(end))
+        source = MathTex(r"a", r"\cdot", r"b", color=FG).scale(1.6)
+        target = MathTex(r"b", r"\cdot", r"a", color=FG).scale(1.6)
+        source[0].set_color(BLUE)
+        source[2].set_color(ORANGE)
+        target[0].set_color(ORANGE)
+        target[2].set_color(BLUE)
+
+        self.play(Write(source))
+        a_start = source[0].get_center()
+        b_start = source[2].get_center()
+        a_end = target[2].get_center()
+        b_end = target[0].get_center()
+
+        path_a = ArcBetweenPoints(a_start, a_end, angle=-PI / 2)
+        path_b = ArcBetweenPoints(b_start, b_end, angle=PI / 2)
+        self.play(
+            MoveAlongPath(source[0], path_a),
+            MoveAlongPath(source[2], path_b),
+            source[1].animate.move_to(target[1].get_center()),
+            run_time=1.20,
+            rate_func=smooth,
+        )
+        self.hold(0.35)
+        proposition = MathTex(r"a\cdot b=b\cdot a", color=FG).scale(1.4)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        self.play(FadeOut(source), FadeIn(proposition))
+        self.hold(0.55)
+        self.play(FadeOut(proposition))
         self.clear_stage()
+
+    # ------------------------------------------------------------------
+    # Distributividad
+    # ------------------------------------------------------------------
+    def distributivity_demo(self):
+        source = MathTex(
+            r"a", r"\cdot", r"(", r"b", r"+", r"c", r")",
+            color=FG,
+        ).scale(1.5)
+        target = MathTex(
+            r"a", r"\cdot", r"b", r"+", r"a", r"\cdot", r"c",
+            color=FG,
+        ).scale(1.5)
+
+        source[0].set_color(BLUE)
+        source[3].set_color(ORANGE)
+        source[5].set_color(GREEN)
+        target[0].set_color(BLUE)
+        target[2].set_color(ORANGE)
+        target[4].set_color(BLUE)
+        target[6].set_color(GREEN)
+
+        self.play(Write(source))
+        self.hold(0.3)
+
+        initial_positions = [part.get_center().copy() for part in source]
+
+        # Duplicamos explícitamente el factor a y su signo de multiplicación.
+        a_copy = source[0].copy()
+        dot_copy = source[1].copy()
+        self.add(a_copy, dot_copy)
+
+        self.play(
+            source[0].animate.move_to(target[0].get_center()),
+            source[1].animate.move_to(target[1].get_center()),
+            source[3].animate.move_to(target[2].get_center()),
+            source[4].animate.move_to(target[3].get_center()),
+            a_copy.animate.move_to(target[4].get_center()),
+            dot_copy.animate.move_to(target[5].get_center()),
+            source[5].animate.move_to(target[6].get_center()),
+            FadeOut(source[2]),
+            FadeOut(source[6]),
+            run_time=1.15,
+            rate_func=smooth,
+        )
+        self.hold(0.35)
+
+        proposition = MathTex(
+            r"a\cdot(b+c)=a\cdot b+a\cdot c",
+            color=FG,
+        ).scale(1.28)
+        proposition.set_color_by_tex("a", BLUE)
+        proposition.set_color_by_tex("b", ORANGE)
+        proposition.set_color_by_tex("c", GREEN)
+        moving_state = VGroup(
+            source[0], source[1], source[3], source[4], source[5],
+            a_copy, dot_copy,
+        )
+        self.play(FadeOut(moving_state), FadeIn(proposition))
+        self.hold(0.65)
+        self.play(FadeOut(proposition), FadeIn(moving_state))
+
+        # Factorización inversa: las dos copias de a se reúnen en la posición original.
+        self.play(
+            source[0].animate.move_to(initial_positions[0]),
+            a_copy.animate.move_to(initial_positions[0]),
+            source[1].animate.move_to(initial_positions[1]),
+            dot_copy.animate.move_to(initial_positions[1]),
+            source[3].animate.move_to(initial_positions[3]),
+            source[4].animate.move_to(initial_positions[4]),
+            source[5].animate.move_to(initial_positions[5]),
+            FadeIn(source[2]),
+            FadeIn(source[6]),
+            run_time=1.0,
+            rate_func=smooth,
+        )
+        self.play(FadeOut(a_copy), FadeOut(dot_copy), run_time=0.25)
+        self.hold(0.3)
+        proposition_back = MathTex(
+            r"a\cdot b+a\cdot c=a\cdot(b+c)",
+            color=FG,
+        ).scale(1.28)
+        proposition_back.set_color_by_tex("a", BLUE)
+        proposition_back.set_color_by_tex("b", ORANGE)
+        proposition_back.set_color_by_tex("c", GREEN)
+        self.play(FadeOut(source), FadeIn(proposition_back))
+        self.hold(0.55)
+        self.play(FadeOut(proposition_back))
+        self.clear_stage()
+
+    def theorem_card(self, title_text, formula, color):
+        box = RoundedRectangle(
+            width=4.6, height=1.35, corner_radius=0.14,
+            color=color, stroke_width=1.8,
+        )
+        title = Tex(title_text, color=color).scale(0.56)
+        math = MathTex(formula, color=FG).scale(0.58)
+        title.move_to(box.get_center() + 0.28 * UP)
+        math.move_to(box.get_center() + 0.25 * DOWN)
+        return VGroup(box, title, math)
 
     # ------------------------------------------------------------------
     # Tabla de síntesis
     # ------------------------------------------------------------------
     def axiom_summary(self):
         condition = VGroup(
-            Tex(r"Condición estructural", color=MUTED).scale(0.55),
-            MathTex(r"0\neq1", color=GREEN).scale(0.9),
-        ).arrange(RIGHT, buff=0.35).to_edge(UP, buff=1.35)
+            Tex(r"Condición estructural", color=MUTED).scale(0.68),
+            MathTex(r"0\neq1", color=GREEN).scale(1.05),
+        ).arrange(RIGHT, buff=0.38).move_to([0, 2.15, 0])
 
         labels = [
             ("1", "Asociatividad de la suma", r"a+(b+c)=(a+b)+c"),
             ("2", "Neutro aditivo", r"a+0=a"),
             ("3", "Inverso aditivo", r"a+(-a)=0"),
             ("4", "Conmutatividad de la suma", r"a+b=b+a"),
-            ("5", "Asociatividad del producto", r"a(bc)=(ab)c"),
+            ("5", "Asociatividad del producto", r"a\cdot(b\cdot c)=(a\cdot b)\cdot c"),
             ("6", "Neutro multiplicativo", r"a\cdot1=a"),
-            ("7", "Inverso multiplicativo", r"aa^{-1}=1\quad(a\neq0)"),
-            ("8", "Conmutatividad del producto", r"ab=ba"),
-            ("9", "Distributividad", r"a(b+c)=ab+ac"),
+            ("7", "Inverso multiplicativo", r"a\cdot a^{-1}=1\quad(a\neq0)"),
+            ("8", "Conmutatividad del producto", r"a\cdot b=b\cdot a"),
+            ("9", "Distributividad", r"a\cdot(b+c)=a\cdot b+a\cdot c"),
         ]
+
         rows = VGroup()
-        for n, name, formula in labels:
-            n_obj = MathTex(n, color=MUTED).scale(0.52)
-            name_obj = Tex(name, color=FG).scale(0.46)
-            formula_obj = MathTex(formula, color=FG).scale(0.50)
-            row = VGroup(n_obj, name_obj, formula_obj)
-            n_obj.set_x(-5.35)
-            name_obj.set_x(-2.95)
-            formula_obj.set_x(2.35)
-            rows.add(row)
-        rows.arrange(DOWN, buff=0.17, center=False, aligned_edge=LEFT).shift(0.35 * DOWN)
+        first_y = 1.32
+        row_step = 0.47
+
+        for i, (n, name, formula) in enumerate(labels):
+            y = first_y - i * row_step
+
+            n_obj = MathTex(n, color=MUTED).scale(0.64)
+            name_obj = Tex(name, color=FG).scale(0.58)
+            formula_obj = MathTex(formula, color=FG).scale(0.62)
+
+            n_obj.move_to([-5.45, y, 0])
+            name_obj.move_to([-2.75, y, 0])
+            formula_obj.move_to([2.25, y, 0])
+
+            rows.add(VGroup(n_obj, name_obj, formula_obj))
 
         self.play(FadeIn(condition))
-        self.play(LaggedStart(*[FadeIn(row, shift=0.08 * RIGHT) for row in rows], lag_ratio=0.08), run_time=2.1)
+        self.play(
+            LaggedStart(
+                *[FadeIn(row, shift=0.06 * RIGHT) for row in rows],
+                lag_ratio=0.07,
+            ),
+            run_time=2.0,
+        )
         self.hold(1.0)
         self.play(FadeOut(condition), FadeOut(rows), run_time=0.55)
         self.clear_stage()
@@ -380,14 +795,14 @@ class CPMYTC01V01Preview(Scene):
         self.play(FadeIn(f2))
         self.play(Create(add_table), Create(mul_table), run_time=1.5)
 
-        add_highlight = SurroundingRectangle(add_table.get_entries((2, 2)), color=ORANGE, buff=0.10)
+        add_highlight = SurroundingRectangle(add_table.get_entries((3, 3)), color=ORANGE, buff=0.10)
         sum_result = MathTex(r"1+1=0", color=ORANGE).scale(1.05).to_edge(DOWN, buff=0.75)
         self.play(Create(add_highlight), FadeIn(sum_result))
         self.hold(0.75)
         self.play(FadeOut(add_highlight), FadeOut(sum_result))
 
-        mul_highlight = SurroundingRectangle(mul_table.get_entries((2, 2)), color=GREEN, buff=0.10)
-        mul_result = MathTex(r"1\cdot1=1", r",\qquad", r"1^{-1}=1", color=GREEN).scale(0.98).to_edge(DOWN, buff=0.75)
+        mul_highlight = SurroundingRectangle(mul_table.get_entries((3, 3)), color=GREEN, buff=0.10)
+        mul_result = MathTex(r"1\cdot1=1", r"\qquad", r"1^{-1}=1", color=GREEN).scale(0.98).to_edge(DOWN, buff=0.75)
         self.play(Create(mul_highlight), FadeIn(mul_result))
         self.hold(0.75)
         self.play(FadeOut(mul_highlight), FadeOut(mul_result))

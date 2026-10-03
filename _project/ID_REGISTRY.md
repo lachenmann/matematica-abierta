@@ -10,7 +10,7 @@
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0165 |
-| Curso | MA-CRS-0001 |
+| Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0013 |
 
 ## IDs asignados
@@ -60,6 +60,7 @@
 | MA-APP-0003 | interactive-application | Laboratorio de cotas óptimas: recta, banda épsilon y disco | `assets/labs/MA-APP-0003-supremo-infimo.html` | published |
 | MA-APP-0004 | interactive-application | MA-Práctica: matemáticas de bolsillo | `practica/` | prototype in development; not published |
 | MA-APP-0005 | interactive-application | Laboratorio de Arquímedes: encerrar π entre polígonos | Obsidian canonical spec | canonical-draft; implementation pending |
+| MA-CRS-0001 | course | Cálculo para matemáticos — Cálculo I | `cursos/calculo-i/index.qmd` | published |
 | MA-LES-0001 | lesson | Topos desde cero — 1.4 Implicación, contrapositiva y recíproca | `libros/capitulos/topos-desde-cero-1-4-implicacion-contrapositiva-y-reciproca.md` | published |
 | MA-LES-0002 | lesson | Topos desde cero — 1.5 Bicondicionales y condiciones necesarias y suficientes | `libros/capitulos/topos-desde-cero-1-5-bicondicionales-y-condiciones-necesarias-y-suficientes.md` | published |
 | MA-LES-0003 | lesson | Topos desde cero — 1.6 Argumentos deductivos y validez | `libros/capitulos/topos-desde-cero-1-6-argumentos-deductivos-y-validez.md` | published |
