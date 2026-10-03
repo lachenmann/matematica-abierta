@@ -795,13 +795,13 @@ class CPMYTC01V01Preview(Scene):
         self.play(FadeIn(f2))
         self.play(Create(add_table), Create(mul_table), run_time=1.5)
 
-        add_highlight = SurroundingRectangle(add_table.get_entries((2, 2)), color=ORANGE, buff=0.10)
+        add_highlight = SurroundingRectangle(add_table.get_entries((3, 3)), color=ORANGE, buff=0.10)
         sum_result = MathTex(r"1+1=0", color=ORANGE).scale(1.05).to_edge(DOWN, buff=0.75)
         self.play(Create(add_highlight), FadeIn(sum_result))
         self.hold(0.75)
         self.play(FadeOut(add_highlight), FadeOut(sum_result))
 
-        mul_highlight = SurroundingRectangle(mul_table.get_entries((2, 2)), color=GREEN, buff=0.10)
+        mul_highlight = SurroundingRectangle(mul_table.get_entries((3, 3)), color=GREEN, buff=0.10)
         mul_result = MathTex(r"1\cdot1=1", r"\qquad", r"1^{-1}=1", color=GREEN).scale(0.98).to_edge(DOWN, buff=0.75)
         self.play(Create(mul_highlight), FadeIn(mul_result))
         self.hold(0.75)
