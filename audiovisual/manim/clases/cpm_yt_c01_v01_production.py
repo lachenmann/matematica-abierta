@@ -445,28 +445,59 @@ class CPMYTC01V01Production(IntroCanal):
         self.sync_to("c01v01-36-racionales-reales")
         self.clear_stage(circle, integers, half_floating, not_in)
         self.section_title("Dos cuerpos familiares")
-        qr = MathTex(r"\mathbb Q", r"\qquad", r"\mathbb R", color=FG).scale(1.8)
-        qr[0].set_color(GREEN)
-        qr[2].set_color(VIOLET)
-        self.play(FadeIn(qr, scale=0.92))
 
-        # La narración pasa de los cuerpos familiares a la estructura que
-        # todavía NO se ha añadido: orden, intervalos, cotas y completitud.
+        # La comparación Q/R se construye al ritmo de la voz, en vez de quedar
+        # como dos símbolos inmóviles durante todo el tramo.
+        qr_story = self.qr_comparison_panel()
+        self.play(Write(qr_story[0]), run_time=0.75)
+
         self.sync_between(
             "c01v01-36-racionales-reales",
             "c01v01-37-cierre-siguiente-clase",
-            0.20,
+            0.03,
         )
-        self.play(FadeOut(qr), run_time=0.35)
+        self.play(Write(qr_story[1]), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.08,
+        )
+        self.play(Write(qr_story[2]), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.15,
+        )
+        self.play(Write(qr_story[3]), run_time=0.70)
+
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.23,
+        )
+        self.play(Write(qr_story[4]), run_time=0.80)
+
+        # QA autor: la pantalla siguiente no entra antes de 12:15.000.
+        self.sync_video_time(735.0, "lo que todavía no hemos supuesto")
+        self.play(FadeOut(qr_story), run_time=0.35)
         self.replace_section_title("Lo que todavía no hemos supuesto")
+
+        # Cada concepto aparece sólo cuando la narración llega a él.
         not_yet = self.not_yet_order_panel()
-        self.play(
-            LaggedStart(
-                *[FadeIn(row, shift=0.08 * RIGHT) for row in not_yet],
-                lag_ratio=0.14,
-            ),
-            run_time=1.25,
-        )
+        self.play(Write(not_yet[0]), run_time=0.60)
+
+        for row, fraction in zip(
+            not_yet[1:],
+            [0.39, 0.45, 0.52, 0.60],
+        ):
+            self.sync_between(
+                "c01v01-36-racionales-reales",
+                "c01v01-37-cierre-siguiente-clase",
+                fraction,
+            )
+            self.play(Write(row), run_time=0.60)
 
         # Consecuencia: todo teorema obtenido aquí vale en cualquier cuerpo.
         self.sync_between(
@@ -477,7 +508,45 @@ class CPMYTC01V01Production(IntroCanal):
         self.play(FadeOut(not_yet), run_time=0.35)
         self.replace_section_title("Consecuencias puramente algebraicas")
         universality = self.field_universality_panel()
-        self.play(FadeIn(universality, shift=0.08 * UP), run_time=0.75)
+
+        # También esta conclusión se construye en etapas, siguiendo la voz.
+        self.play(
+            Create(universality[0]),
+            Write(universality[1]),
+            run_time=0.70,
+        )
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.74,
+        )
+        self.play(Write(universality[2]), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.80,
+        )
+        self.play(
+            LaggedStart(
+                *[Write(item) for item in universality[3]],
+                lag_ratio=0.25,
+            ),
+            run_time=0.90,
+        )
+
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.86,
+        )
+        self.play(
+            LaggedStart(
+                *[GrowArrow(arrow) for arrow in universality[4]],
+                lag_ratio=0.18,
+            ),
+            run_time=0.85,
+        )
 
         # 21 — Enlace con el siguiente video
         self.sync_to("c01v01-37-cierre-siguiente-clase")
@@ -631,6 +700,19 @@ class CPMYTC01V01Production(IntroCanal):
                 f"@{fraction:.2f}: visual timeline {-delta:.3f}s late"
             )
 
+    def sync_video_time(self, target_seconds: float, label: str = ""):
+        """Sincroniza con un tiempo absoluto del video final."""
+        current = float(self.renderer.time)
+        delta = target_seconds - current
+        if delta > 0.001:
+            self.wait(delta)
+        elif delta < -0.25:
+            suffix = f" ({label})" if label else ""
+            print(
+                f"[SYNC WARN] video {target_seconds:.3f}s{suffix}: "
+                f"visual timeline {-delta:.3f}s late"
+            )
+
     def replace_section_title(self, text: str):
         """Sustituye el encabezado superior sin tocar el contenido central."""
         old = getattr(self, "_current_header", None)
@@ -773,6 +855,55 @@ class CPMYTC01V01Production(IntroCanal):
         rows.arrange(DOWN, aligned_edge=LEFT, buff=0.24)
         rows.move_to([0, -0.38, 0])
         return rows
+
+    def qr_comparison_panel(self) -> VGroup:
+        """Historia visual Q/R construida en el orden de la narración."""
+        chain = MathTex(
+            r"\mathbb Z",
+            r"\subset",
+            r"\mathbb Q",
+            r"\subset",
+            r"\mathbb R",
+            color=FG,
+        ).scale(1.25).move_to([0, 1.15, 0])
+        chain[0].set_color(MUTED)
+        chain[2].set_color(GREEN)
+        chain[4].set_color(VIOLET)
+
+        q_field = VGroup(
+            MathTex(r"\mathbb Q", color=GREEN).scale(0.92),
+            Tex("es un cuerpo", color=FG).scale(0.58),
+        ).arrange(RIGHT, buff=0.22).move_to([-2.65, 0.10, 0])
+
+        r_field = VGroup(
+            MathTex(r"\mathbb R", color=VIOLET).scale(0.92),
+            Tex("es un cuerpo", color=FG).scale(0.58),
+        ).arrange(RIGHT, buff=0.22).move_to([2.65, 0.10, 0])
+
+        half_in_q = MathTex(
+            r"\frac12\in\mathbb Q",
+            color=GREEN,
+        ).scale(1.00).move_to([-2.65, -1.00, 0])
+
+        inverse_rule = VGroup(
+            Tex(
+                "Todo elemento no nulo puede invertirse multiplicativamente",
+                color=MUTED,
+            ).scale(0.56),
+            MathTex(
+                r"a\neq0\Longrightarrow \exists\,a^{-1}\in F:"
+                r"\ a\cdot a^{-1}=1",
+                color=FG,
+            ).scale(0.82),
+        ).arrange(DOWN, buff=0.25).move_to([0, -2.10, 0])
+
+        return VGroup(
+            chain,
+            q_field,
+            r_field,
+            half_in_q,
+            inverse_rule,
+        )
 
     def not_yet_order_panel(self) -> VGroup:
         """Conceptos que aún no forman parte de la estructura de cuerpo."""
