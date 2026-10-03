@@ -356,12 +356,55 @@ class CPMYTC01V01Production(IntroCanal):
         # 19 — Los enteros no forman un cuerpo
         self.sync_to("c01v01-33-enteros-ejemplo")
         self.clear_stage(pending)
-        self.section_title("Los enteros no forman un cuerpo")
+        self.section_title("¿Los enteros forman un cuerpo?")
+
+        # La Z deja de ser una imagen estática: funciona como referencia mientras
+        # se auditan, en el orden de la voz, las propiedades que sí se cumplen.
         integers = MathTex(r"\mathbb Z", color=ORANGE).scale(2.2)
         circle = Circle(radius=1.5, color=ORANGE).move_to(integers)
-        self.play(Create(circle), FadeIn(integers))
+        integer_set = VGroup(circle, integers).move_to([-4.35, -0.25, 0])
+        self.play(Create(circle), FadeIn(integers), run_time=0.75)
+
+        integer_audit = self.integer_field_audit_cards()
+
+        self.sync_between(
+            "c01v01-33-enteros-ejemplo",
+            "c01v01-34-enteros-inverso",
+            0.12,
+        )
+        self.play(FadeIn(integer_audit[0], shift=0.10 * RIGHT), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-33-enteros-ejemplo",
+            "c01v01-34-enteros-inverso",
+            0.50,
+        )
+        self.play(FadeIn(integer_audit[1], shift=0.10 * RIGHT), run_time=0.65)
+
+        self.sync_between(
+            "c01v01-33-enteros-ejemplo",
+            "c01v01-34-enteros-inverso",
+            0.70,
+        )
+        self.play(FadeIn(integer_audit[2], shift=0.10 * RIGHT), run_time=0.55)
+
+        self.sync_between(
+            "c01v01-33-enteros-ejemplo",
+            "c01v01-34-enteros-inverso",
+            0.86,
+        )
+        self.play(FadeIn(integer_audit[3], shift=0.10 * RIGHT), run_time=0.55)
+        self.play(Indicate(integer_audit[3], color=ORANGE), run_time=0.75)
 
         self.sync_to("c01v01-34-enteros-inverso")
+        self.play(
+            FadeOut(integer_audit),
+            circle.animate.move_to(ORIGIN),
+            integers.animate.move_to(ORIGIN),
+            run_time=0.55,
+        )
+        self.replace_section_title("Falla el inverso multiplicativo")
+
         eq2 = MathTex(r"2\cdot x=1", color=FG).scale(1.25).to_edge(DOWN, buff=1.2)
         half2 = MathTex(r"x=\frac12", color=GREEN).scale(1.25).move_to(eq2)
         half_floating = MathTex(r"\frac12", color=GREEN).scale(1.6).move_to(integers)
@@ -623,6 +666,66 @@ class CPMYTC01V01Production(IntroCanal):
         else:
             rows.move_to([0, -0.35, 0])
         return rows
+
+    def integer_field_audit_cards(self) -> VGroup:
+        """Auditoría visual de los axiomas que sí satisfacen los enteros."""
+        def card(title_text, formulas, accent):
+            box = RoundedRectangle(
+                width=6.2,
+                height=1.25,
+                corner_radius=0.12,
+                color=accent,
+                stroke_width=1.5,
+            )
+            title = Tex(title_text, color=accent).scale(0.56)
+            body = VGroup(
+                *[MathTex(formula, color=FG).scale(0.56) for formula in formulas]
+            ).arrange(RIGHT, buff=0.42)
+            title.move_to(box.get_center() + 0.34 * UP)
+            body.move_to(box.get_center() + 0.22 * DOWN)
+            return VGroup(box, title, body)
+
+        additive = card(
+            "Suma — cumple",
+            [
+                r"a+(b+c)=(a+b)+c",
+                r"a+b=b+a",
+                r"a+0=a",
+                r"a+(-a)=0",
+            ],
+            GREEN,
+        )
+
+        multiplicative = card(
+            "Producto — cumple parcialmente",
+            [
+                r"a\cdot(b\cdot c)=(a\cdot b)\cdot c",
+                r"a\cdot b=b\cdot a",
+                r"a\cdot1=a",
+            ],
+            BLUE,
+        )
+
+        distributive = card(
+            "Distributividad — cumple",
+            [r"a\cdot(b+c)=a\cdot b+a\cdot c"],
+            VIOLET,
+        )
+
+        inverse = card(
+            "Inverso multiplicativo — falta comprobar",
+            [r"a\neq0\Longrightarrow a^{-1}\in\mathbb Z\ ?"],
+            ORANGE,
+        )
+
+        cards = VGroup(
+            additive,
+            multiplicative,
+            distributive,
+            inverse,
+        ).arrange(DOWN, buff=0.20)
+        cards.scale(0.82).move_to([2.25, -0.30, 0])
+        return cards
 
     def pending_consequences_panel(self) -> VGroup:
         """Inventario completo de reglas mencionadas pero aún no disponibles."""
