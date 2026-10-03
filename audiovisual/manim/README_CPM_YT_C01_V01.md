@@ -98,3 +98,13 @@ Tiempos de QA fijados explícitamente por el autor:
 
 La atribución de la cortina musical permanece documentada en
 `assets/audio/intro/README.md`.
+
+
+## Protocolo general de la serie
+
+El proceso validado en este video quedó canonizado para los videos siguientes en:
+
+- `AUDIOVISUAL_PRODUCTION_PROTOCOL.md`
+- `QA_FINAL_TEMPLATE.md`
+
+El gate de publicación general es: **0 BLOCKER y 0 MAJOR después de inspeccionar el último render**.
