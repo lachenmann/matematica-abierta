@@ -71,3 +71,30 @@ cd D:\MatematicaAbierta-Main\audiovisual\manim
 El script vuelve a analizar el `.rpp` antes de renderizar y usa la clase
 `CPMYTC01V01Production`. El preview mudo permanece separado como referencia
 visual aprobada.
+
+
+## Candidato final de producción
+
+Estado de código: observaciones de QA del autor incorporadas.
+
+- Intro canónica + cortina: 7,00 s, sin voz.
+- Voz: comienza en 7,00 s; WAV/RPP originales permanecen intactos.
+- Resolución: 1920×1080, 60 fps.
+- Render:
+  `render-cpm-yt-c01-v01-production.ps1`.
+- El script valida RPP/WAV, recompila los tiempos, verifica sintaxis Python,
+  regenera la cortina, renderiza y copia el master final a:
+  `exports/CPM-YT-C01-V01-production.mp4`.
+- Se genera también:
+  `exports/CPM-YT-C01-V01-production.mp4.sha256`.
+
+Tiempos de QA fijados explícitamente por el autor:
+
+- 5:06.000 — énfasis de `a\neq0`;
+- 7:16.000 — estructura aditiva;
+- 7:29.000 — estructura multiplicativa;
+- 7:40.000 — distributividad;
+- 12:15.000 — pantalla «Lo que todavía no hemos supuesto».
+
+La atribución de la cortina musical permanece documentada en
+`assets/audio/intro/README.md`.
