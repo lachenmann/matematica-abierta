@@ -16,10 +16,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lean/aprender-matematicas-con-lean
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
+
+      - name: Install Lean toolchain
+        uses: leanprover/lean-action@v1
         with:
           lake-package-directory: lean/aprender-matematicas-con-lean
-          build: true
+          auto-config: false
+          build: false
           test: false
+          lint: false
+
+      - name: Resolve dependencies
+        run: lake update
+
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+
+      - name: Build MCL
+        run: lake build
