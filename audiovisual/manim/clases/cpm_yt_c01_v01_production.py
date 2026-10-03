@@ -407,16 +407,35 @@ class CPMYTC01V01Production(IntroCanal):
 
         eq2 = MathTex(r"2\cdot x=1", color=FG).scale(1.25).to_edge(DOWN, buff=1.2)
         half2 = MathTex(r"x=\frac12", color=GREEN).scale(1.25).move_to(eq2)
-        half_floating = MathTex(r"\frac12", color=GREEN).scale(1.6).move_to(integers)
-        self.play(Write(eq2))
-        self.play(TransformMatchingTex(eq2, half2))
-        self.play(FadeIn(half_floating))
+
+        # Primero se plantea la ecuación y se deja respirar mientras la voz
+        # explica qué exigiría el axioma del inverso multiplicativo en Z.
+        self.play(Write(eq2), run_time=0.70)
+
+        # La solución aparece recién cuando la voz llega a «un medio».
+        self.sync_between(
+            "c01v01-34-enteros-inverso",
+            "c01v01-35-medio-no-entero",
+            0.74,
+        )
+        self.play(TransformMatchingTex(eq2, half2), run_time=0.75)
+
+        # Dentro del círculo, 1/2 aparece como candidato, a un costado de Z,
+        # nunca superpuesto sobre el símbolo del conjunto.
+        self.play(
+            integers.animate.shift(0.42 * LEFT),
+            run_time=0.35,
+        )
+        half_floating = MathTex(r"\frac12", color=GREEN).scale(1.28)
+        half_floating.move_to(circle.get_center() + 0.82 * RIGHT + 0.08 * DOWN)
+        self.play(FadeIn(half_floating, shift=0.08 * UP), run_time=0.45)
 
         self.sync_to("c01v01-35-medio-no-entero")
         self.play(
-            half_floating.animate.shift(3.0 * RIGHT).set_color(RED),
+            half_floating.animate.shift(2.8 * RIGHT).set_color(RED),
             circle.animate.set_color(RED),
             integers.animate.set_color(RED),
+            run_time=0.95,
         )
         not_in = MathTex(r"\frac12\notin\mathbb Z", color=RED).scale(1.2)
         not_in.to_edge(DOWN, buff=1.0)
