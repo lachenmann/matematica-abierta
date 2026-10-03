@@ -106,9 +106,10 @@ const path=require('node:path');
     failed,
     footnoteTotalAt390Light:findings.filter(x=>x.width===390&&x.expectedTheme==='light').reduce((n,x)=>n+x.footnotes,0),
     mobileTables,
+    mobileTableFailures:mobileTables.filter(t=>t.width>390+2&&!t.scrollable),
     screenshots:fs.readdirSync(out).filter(x=>x.endsWith('.png')).length
   };
   fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(summary,null,2));
   console.log(JSON.stringify(summary,null,2));
-  if(findings.length!==68 || failed.length || summary.footnoteTotalAt390Light!==14) process.exitCode=1;
+  if(findings.length!==68 || failed.length || summary.footnoteTotalAt390Light!==14 || summary.mobileTableFailures.length) process.exitCode=1;
 })().catch(e=>{console.error(e);process.exitCode=1});
