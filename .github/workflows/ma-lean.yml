@@ -53,3 +53,28 @@ jobs:
           PYTHONPATH: MA-Lean
         run: |
           python -m adapters.mcl_formal             --mapping MA-Lean/mapeos/MCL/MCL-U00-L01.json             --profile MA-Lean/profiles/mcl.json             --repo-root .             --output /tmp/MCL-U00-L01-formal-audit.json
+
+      - name: Runner accepts canonical P1 solution
+        env:
+          PYTHONPATH: MA-Lean
+        run: |
+          printf 'rfl\n' > /tmp/mcl-solution.lean
+          python -m adapters.mcl_runner             --spec MA-Lean/exercises/MCL/U00/L01.json             --exercise MCL-U00-L01-E04             --solution-file /tmp/mcl-solution.lean             --lean-root lean
+
+      - name: Runner separates kernel correctness from pedagogy
+        env:
+          PYTHONPATH: MA-Lean
+        run: |
+          printf 'simp\n' > /tmp/mcl-simp.lean
+          set +e
+          python -m adapters.mcl_runner             --spec MA-Lean/exercises/MCL/U00/L01.json             --exercise MCL-U00-L01-E04             --solution-file /tmp/mcl-simp.lean             --lean-root lean > /tmp/mcl-simp-result.json
+          code=$?
+          set -e
+          test "$code" -eq 2
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/mcl-simp-result.json',encoding='utf-8'))
+          assert data['kernel_accepts'] is True
+          assert data['pedagogical_policy_accepts'] is False
+          assert data['outcome']=='kernel_correct_policy_rejected'
+          PY
