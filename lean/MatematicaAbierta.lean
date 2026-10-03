@@ -23,6 +23,7 @@ import MatematicaAbierta.Continuo.DecididoresCortesEfectivos
 import MatematicaAbierta.Continuo.SumaCortesReduccion
 import MatematicaAbierta.Continuo.ContradiccionUniforme
 import MatematicaAbierta.MCL.U00.L01_Proposiciones
+import MatematicaAbierta.MCL.U00.L02_Igualdad
 
 /-!
 # Matemática Abierta: biblioteca formal
