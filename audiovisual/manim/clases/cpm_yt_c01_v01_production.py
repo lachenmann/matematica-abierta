@@ -218,6 +218,7 @@ class CPMYTC01V01Production(IntroCanal):
         state = self.multiplicative_inverse()
 
         self.sync_to("c01v01-19-cero-sin-inverso")
+        state[0].set_color(ORANGE)
         self.play(Indicate(state[0], color=ORANGE), run_time=0.8)
 
         self.sync_to("c01v01-20-conmut-producto")
@@ -290,11 +291,11 @@ class CPMYTC01V01Production(IntroCanal):
         self.play(Create(box))
 
         # La voz recapitula ahora, uno por uno, los grupos de axiomas.
-        # Este tramo empieza aproximadamente en 7:08 del video final.
+        # Tiempos QA fijados por el autor: 7:16 / 7:29 / 7:40.
         self.sync_between(
             "c01v01-26-excluir-trivial",
             "c01v01-27-tabla-axiomas",
-            0.05,
+            0.236398,
         )
         self.clear_stage(trivial, ops_trivial, exclusion, box)
         self.section_title("Axiomas 1–4 — Estructura aditiva")
@@ -304,7 +305,7 @@ class CPMYTC01V01Production(IntroCanal):
         self.sync_between(
             "c01v01-26-excluir-trivial",
             "c01v01-27-tabla-axiomas",
-            0.45,
+            0.573739,
         )
         self.play(FadeOut(recap), run_time=0.35)
         self.replace_section_title("Axiomas 5–8 — Estructura multiplicativa")
@@ -314,7 +315,7 @@ class CPMYTC01V01Production(IntroCanal):
         self.sync_between(
             "c01v01-26-excluir-trivial",
             "c01v01-27-tabla-axiomas",
-            0.76,
+            0.859181,
         )
         self.play(FadeOut(recap), run_time=0.35)
         self.replace_section_title("Axioma 9 — Distributividad")
@@ -340,19 +341,17 @@ class CPMYTC01V01Production(IntroCanal):
         self.play(FadeOut(state), run_time=0.35)
         self.clear_stage()
         self.section_title("Propiedades todavía no demostradas")
-        pending = VGroup(
-            MathTex(r"a\cdot0=0", color=FG),
-            MathTex(r"-(-a)=a", color=FG),
-            MathTex(r"(-a)\cdot(-b)=a\cdot b", color=FG),
-            MathTex(r"a\cdot b=0\Longrightarrow a=0\ \text{o}\ b=0", color=FG),
-        ).arrange(DOWN, aligned_edge=LEFT, buff=0.42).scale(0.92)
-        for row in pending:
-            q = MathTex(r"?", color=ORANGE).scale(1.15).next_to(row, RIGHT, buff=0.35)
-            row.add(q)
-        self.play(LaggedStart(
-            *[FadeIn(row, shift=0.12 * RIGHT) for row in pending],
-            lag_ratio=0.18,
-        ))
+        pending = self.pending_consequences_panel()
+
+        # El inventario se construye en el mismo orden en que lo enumera la voz.
+        reveal_fractions = [0.05, 0.14, 0.23, 0.34, 0.44, 0.55, 0.66]
+        for row, fraction in zip(pending, reveal_fractions):
+            self.sync_between(
+                "c01v01-32-consecuencias-pendientes",
+                "c01v01-33-enteros-ejemplo",
+                fraction,
+            )
+            self.play(FadeIn(row, shift=0.10 * RIGHT), run_time=0.45)
 
         # 19 — Los enteros no forman un cuerpo
         self.sync_to("c01v01-33-enteros-ejemplo")
@@ -625,6 +624,34 @@ class CPMYTC01V01Production(IntroCanal):
             rows.move_to([0, -0.35, 0])
         return rows
 
+    def pending_consequences_panel(self) -> VGroup:
+        """Inventario completo de reglas mencionadas pero aún no disponibles."""
+        specs = [
+            (r"a\cdot0=0", 0.82),
+            (r"-(-a)=a", 0.82),
+            (r"(-a)\cdot(-b)=a\cdot b", 0.82),
+            (r"a+c=b+c\Longrightarrow a=b", 0.76),
+            (r"a\cdot c=b\cdot c,\ c\neq0\Longrightarrow a=b", 0.70),
+            (r"a\cdot b=0\Longrightarrow a=0\ \text{o}\ b=0", 0.70),
+            (r"a-b\ ?\qquad \frac{a}{b}\ ?", 0.82),
+        ]
+
+        rows = VGroup()
+        for formula, scale in specs:
+            expr = MathTex(formula, color=FG).scale(scale)
+            q = MathTex(r"?", color=ORANGE).scale(0.92)
+            if formula.endswith(r"\ ?"):
+                # La propia fórmula ya expresa que resta/división siguen sin definir.
+                row = VGroup(expr)
+            else:
+                q.next_to(expr, RIGHT, buff=0.28)
+                row = VGroup(expr, q)
+            rows.add(row)
+
+        rows.arrange(DOWN, aligned_edge=LEFT, buff=0.24)
+        rows.move_to([0, -0.38, 0])
+        return rows
+
     def not_yet_order_panel(self) -> VGroup:
         """Conceptos que aún no forman parte de la estructura de cuerpo."""
         rows = VGroup(
@@ -762,7 +789,7 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.35)
+        self.hold(1.80)
         proposition = MathTex(
             r"a+(b+c)=(a+b)+c",
             color=FG,
@@ -843,7 +870,7 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=1.25,
             rate_func=smooth,
         )
-        self.hold(0.35)
+        self.hold(1.80)
         proposition = MathTex(r"a+b=b+a", color=FG).scale(1.45)
         proposition.set_color_by_tex("a", BLUE)
         proposition.set_color_by_tex("b", ORANGE)
@@ -890,7 +917,7 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.35)
+        self.hold(1.80)
         proposition = MathTex(
             r"a\cdot(b\cdot c)=(a\cdot b)\cdot c",
             color=FG,
@@ -962,7 +989,7 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=1.20,
             rate_func=smooth,
         )
-        self.hold(0.35)
+        self.hold(1.80)
         proposition = MathTex(r"a\cdot b=b\cdot a", color=FG).scale(1.4)
         proposition.set_color_by_tex("a", BLUE)
         proposition.set_color_by_tex("b", ORANGE)
@@ -1014,7 +1041,7 @@ class CPMYTC01V01Production(IntroCanal):
             run_time=1.15,
             rate_func=smooth,
         )
-        self.hold(0.35)
+        self.hold(1.80)
 
         proposition = MathTex(
             r"a\cdot(b+c)=a\cdot b+a\cdot c",
@@ -1047,7 +1074,7 @@ class CPMYTC01V01Production(IntroCanal):
             rate_func=smooth,
         )
         self.play(FadeOut(a_copy), FadeOut(dot_copy), run_time=0.25)
-        self.hold(0.3)
+        self.hold(1.80)
         proposition_back = MathTex(
             r"a\cdot b+a\cdot c=a\cdot(b+c)",
             color=FG,
