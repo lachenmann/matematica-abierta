@@ -31,13 +31,21 @@ def wav_duration(path: Path):
 
 def parse_markers(path: Path):
     found={}
+    duplicates=[]
     for raw in path.read_text(encoding="utf-8",errors="replace").splitlines():
         line=raw.strip()
         if not line.startswith("MARKER "):
             continue
         parts=shlex.split(line)
         if len(parts)>=4:
-            found[parts[3].strip()]=float(parts[2])
+            name=parts[3].strip()
+            if name in found:
+                duplicates.append(name)
+            found[name]=float(parts[2])
+    if duplicates:
+        raise SystemExit(
+            "Marcadores duplicados: " + ", ".join(sorted(set(duplicates)))
+        )
     return found
 
 def main():
