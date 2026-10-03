@@ -389,9 +389,38 @@ class CPMYTC01V01Production(IntroCanal):
         qr[2].set_color(VIOLET)
         self.play(FadeIn(qr, scale=0.92))
 
+        # La narración pasa de los cuerpos familiares a la estructura que
+        # todavía NO se ha añadido: orden, intervalos, cotas y completitud.
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.20,
+        )
+        self.play(FadeOut(qr), run_time=0.35)
+        self.replace_section_title("Lo que todavía no hemos supuesto")
+        not_yet = self.not_yet_order_panel()
+        self.play(
+            LaggedStart(
+                *[FadeIn(row, shift=0.08 * RIGHT) for row in not_yet],
+                lag_ratio=0.14,
+            ),
+            run_time=1.25,
+        )
+
+        # Consecuencia: todo teorema obtenido aquí vale en cualquier cuerpo.
+        self.sync_between(
+            "c01v01-36-racionales-reales",
+            "c01v01-37-cierre-siguiente-clase",
+            0.68,
+        )
+        self.play(FadeOut(not_yet), run_time=0.35)
+        self.replace_section_title("Consecuencias puramente algebraicas")
+        universality = self.field_universality_panel()
+        self.play(FadeIn(universality, shift=0.08 * UP), run_time=0.75)
+
         # 21 — Enlace con el siguiente video
         self.sync_to("c01v01-37-cierre-siguiente-clase")
-        self.clear_stage(qr)
+        self.clear_stage(universality)
         self.section_title("Siguiente clase: teoremas derivados de los axiomas")
 
         source_box = RoundedRectangle(
@@ -595,6 +624,86 @@ class CPMYTC01V01Production(IntroCanal):
         else:
             rows.move_to([0, -0.35, 0])
         return rows
+
+    def not_yet_order_panel(self) -> VGroup:
+        """Conceptos que aún no forman parte de la estructura de cuerpo."""
+        rows = VGroup(
+            VGroup(
+                Tex("Orden", color=FG).scale(0.66),
+                MathTex(r"2<3", color=ORANGE).scale(0.96),
+            ),
+            VGroup(
+                Tex("Positividad", color=FG).scale(0.66),
+                MathTex(r"x>0,\qquad x<0", color=MUTED).scale(0.82),
+            ),
+            VGroup(
+                Tex("Intervalos", color=FG).scale(0.66),
+                MathTex(r"(a,b),\qquad [a,b]", color=MUTED).scale(0.82),
+            ),
+            VGroup(
+                Tex("Cotas, máximos y supremos", color=FG).scale(0.66),
+                MathTex(r"\sup A,\qquad \max A", color=MUTED).scale(0.82),
+            ),
+            VGroup(
+                Tex("Completitud", color=FG).scale(0.66),
+                MathTex(r"?", color=ORANGE).scale(0.96),
+            ),
+        )
+        for row in rows:
+            row.arrange(RIGHT, buff=0.55)
+        rows.arrange(DOWN, aligned_edge=LEFT, buff=0.42)
+        rows.move_to([0, -0.35, 0])
+        return rows
+
+    def field_universality_panel(self) -> VGroup:
+        """Lo demostrado sólo desde los axiomas vale en todo cuerpo."""
+        source = RoundedRectangle(
+            width=5.4,
+            height=1.3,
+            corner_radius=0.14,
+            color=BLUE,
+            stroke_width=2.0,
+        ).move_to([0, 1.25, 0])
+        source_text = VGroup(
+            Tex("Axiomas de cuerpo", color=BLUE).scale(0.72),
+            MathTex(r"(F,+,\cdot,0,1)", color=FG).scale(0.72),
+        ).arrange(DOWN, buff=0.16).move_to(source)
+
+        theorem = Tex(
+            "Teorema demostrado sólo con estos axiomas",
+            color=FG,
+        ).scale(0.64).move_to([0, -0.10, 0])
+
+        examples = VGroup(
+            MathTex(r"F_2", color=ORANGE).scale(1.05),
+            MathTex(r"\mathbb Q", color=GREEN).scale(1.05),
+            MathTex(r"\mathbb R", color=VIOLET).scale(1.05),
+        ).arrange(RIGHT, buff=1.55).move_to([0, -1.45, 0])
+
+        arrows = VGroup(
+            Arrow(
+                theorem.get_bottom(),
+                examples[0].get_top(),
+                buff=0.12,
+                stroke_width=1.6,
+                color=MUTED,
+            ),
+            Arrow(
+                theorem.get_bottom(),
+                examples[1].get_top(),
+                buff=0.12,
+                stroke_width=1.6,
+                color=MUTED,
+            ),
+            Arrow(
+                theorem.get_bottom(),
+                examples[2].get_top(),
+                buff=0.12,
+                stroke_width=1.6,
+                color=MUTED,
+            ),
+        )
+        return VGroup(source, source_text, theorem, examples, arrows)
 
     def section_title(self, text: str):
         title = Tex(text, color=FG).scale(0.82).to_edge(UP, buff=0.35)
