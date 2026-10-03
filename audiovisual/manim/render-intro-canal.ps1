@@ -4,7 +4,7 @@ $Root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $Root
 
 Write-Host "Preparando cortina musical de IntroCanal..." -ForegroundColor Cyan
-& ".\prepare-intro-music.ps1"
+& ".\prepare-intro-music.ps1" -Force
 
 if ($LASTEXITCODE -ne 0) {
     throw "La preparacion de la cortina musical termino con codigo $LASTEXITCODE."
