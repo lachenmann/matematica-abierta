@@ -217,7 +217,8 @@ class CPMYTC01V01Production(IntroCanal):
         self.replace_section_title("Axioma 7 — Inverso multiplicativo")
         state = self.multiplicative_inverse()
 
-        self.sync_to("c01v01-19-cero-sin-inverso")
+        # QA autor: a\neq0 se enfatiza recién en 5:06.000 del video final.
+        self.sync_video_time(306.0, "resaltado de a distinto de cero")
         state[0].set_color(ORANGE)
         self.play(Indicate(state[0], color=ORANGE), run_time=0.8)
 
