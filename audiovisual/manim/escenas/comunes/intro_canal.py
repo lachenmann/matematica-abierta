@@ -7,7 +7,7 @@ from marca import BG, BLUE, FG, MUTED, a_squared
 config.background_color = BG
 
 MANIM_ROOT = Path(__file__).resolve().parents[2]
-INTRO_DURATION_SECONDS = 8.0
+INTRO_DURATION_SECONDS = 7.0
 INTRO_MUSIC_FILE = (
     MANIM_ROOT
     / "assets"
@@ -19,7 +19,7 @@ INTRO_MUSIC_GAIN_DB = -18.0
 
 
 def add_intro_music(scene: Scene) -> None:
-    """Añade la cortina oficial sólo al tramo de 8 s de IntroCanal."""
+    """Añade la cortina oficial sólo al tramo de 7 s de IntroCanal."""
     if not INTRO_MUSIC_FILE.exists():
         raise FileNotFoundError(
             "No existe la cortina musical canónica. Ejecuta "
@@ -33,7 +33,7 @@ def add_intro_music(scene: Scene) -> None:
 
 
 class IntroCanal(Scene):
-    """Intro canónica de Matemática Abierta, retimizada a 8,00 s."""
+    """Intro canónica de Matemática Abierta, retimizada a 7,00 s."""
 
     def construct(self):
         self.camera.background_color = BG
@@ -99,7 +99,7 @@ class IntroCanal(Scene):
 
         # El lockup permanece el tiempo suficiente para que la frase musical
         # complete su arco antes del fade-out final.
-        self.wait(2.35)
+        self.wait(1.35)
 
         lockup = VGroup(left_start, target_mark, right_start, tag, rule)
         self.play(
