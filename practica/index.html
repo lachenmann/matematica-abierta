@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2f66">
+  <meta name="description" content="MA-Práctica: decisiones matemáticas, explicaciones y una planilla de resolución revisable.">
+  <title>MA-Práctica | Matemática Abierta</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ma-theme.css">
+  <link rel="stylesheet" href="math-display.css">
+  <link rel="stylesheet" href="attempt-flow.css">
+  <link rel="stylesheet" href="minimal-ui.css">
+  <link rel="stylesheet" href="development.css">
+  <!-- TeX solo de presentación: los textos del motor no se transforman ni se guardan en LaTeX. -->
+  <script>
+    window.MathJax = {
+      startup: { typeset: false },
+      loader: { paths: { fonts: 'vendor' } },
+      output: { fontPath: '[fonts]/%%FONT%%-font' }
+    };
+  </script>
+  <script type="module" src="app.mjs"></script>
+  <!-- MathJax 4.0.0 se prepara como dependencia local; si falta, queda el texto de reserva. -->
+  <script async src="vendor/mathjax/tex-chtml.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <a class="home-link" href="../index.html" aria-label="Volver al inicio de Matemática Abierta">← Matemática Abierta</a>
+      <div class="brand-actions"><span class="version">Práctica · v0.1</span><button id="history-toggle" type="button" class="nav-button" aria-expanded="false" aria-controls="history-panel">Historial</button></div>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">MA-Práctica</h1>
+      <p>Una decisión matemática a la vez.</p>
+      <p class="privacy-disclosure">En modo local: Las respuestas, el historial y el Elo se guardan en este navegador y MA-Práctica no los transmite. Si eliges «Guardar mi progreso», la aplicación enviará a Supabase el identificador técnico de tu cuenta, sesiones y progreso matemático necesarios para sincronizar. MathJax se sirve desde la misma copia de la aplicación: no se requiere un CDN durante el uso.</p>
+    </section>
+
+    <section id="account-card" class="account-card card" aria-labelledby="account-title">
+      <div class="account-heading">
+        <h2 id="account-title">Mi progreso</h2>
+        <span id="account-badge" class="account-badge">Solo en este navegador</span>
+      </div>
+      <p id="account-copy" class="muted small">Puedes practicar sin cuenta. Si decides guardar tu progreso, se creará una identidad anónima y se importará explícitamente la copia de este navegador.</p>
+      <button id="account-save" type="button" class="secondary">Guardar mi progreso</button>
+      <p id="account-status" class="muted small" role="status" aria-live="polite">No se ha iniciado sincronización.</p>
+    </section>
+
+    <section class="rating-board card" aria-labelledby="rating-title">
+      <div class="rating-heading"><h2 id="rating-title">Mi Elo</h2><span id="rating-current" class="rating-current" aria-live="polite">Cargando…</span></div>
+      <details id="rating-details">
+        <summary>Ver evolución</summary>
+        <div id="rating-list" class="rating-list"></div>
+        <p class="rating-description">Elo personal y experimental. Los cambios mostrados pertenecen al historial, no necesariamente a esta sesión. Cada ejercicio puntúa una sola vez; se conservan hasta 20 sesiones y no se reconstruyen movimientos eliminados.</p>
+      </details>
+    </section>
+
+    <details id="settings-panel" class="settings card">
+      <summary>Ajustes <span class="settings-hint">Área y modalidad</span></summary>
+      <div class="settings-grid">
+        <label for="area">Área</label>
+        <select id="area"><option value="todas">Todas las áreas</option><option value="aritmetica">Aritmética</option><option value="algebra">Álgebra</option><option value="calculo">Cálculo</option><option value="demostraciones">Demostraciones</option></select>
+        <label for="mode">Modalidad</label>
+        <select id="mode"><option value="training">Entrenamiento — sin Elo</option><option value="challenge">Desafío — Elo experimental</option></select>
+        <p id="settings-status" class="settings-help" role="status" aria-live="polite">Elige área y modalidad, o aplica un solo cambio.</p>
+        <p class="settings-help">Al aplicar, comienza otro ejercicio; los intentos respondidos se archivan.</p>
+        <button id="apply-settings" type="button" disabled>Aplicar ajustes</button>
+        <button id="new" type="button" class="secondary">Otro ejercicio</button>
+      </div>
+    </details>
+
+    <section id="workspace" aria-label="Resolución del ejercicio">
+      <div class="workspace-grid">
+        <section class="card exercise" aria-label="Problema y respuesta">
+          <div class="topline status-line"><span id="area-label" class="pill"></span><span id="mode-label" class="mode-pill"></span><span id="progress" class="muted"></span></div>
+          <div id="stepsbar" class="stepsbar" role="progressbar" aria-label="Progreso de las decisiones" aria-valuemin="0" aria-valuenow="0" aria-valuemax="1"></div>
+          <h2 id="title" tabindex="-1"></h2>
+          <p id="prompt" class="math"></p>
+
+          <!-- La resolución se construye en orden bajo la expresión original. La consulta es de solo lectura. -->
+          <section class="worked-development" aria-labelledby="trace-title">
+            <details id="trace-disclosure" open>
+              <summary class="trace-toggle"><span id="trace-title">Desarrollo</span><span id="trace-count" class="muted">0 pasos</span></summary>
+              <ol id="trace" class="trace"><li class="muted">Tus decisiones aparecerán aquí.</li></ol>
+              <section id="review" class="review-panel" aria-labelledby="review-title" hidden>
+                <p class="review-kicker">Solo lectura</p>
+                <h3 id="review-title" tabindex="-1"></h3>
+                <p id="review-question"></p>
+                <p class="review-formula math" id="review-notation"></p>
+                <p id="review-choice"></p>
+                <p id="review-attempts" hidden></p>
+                <p id="review-correction"></p>
+                <p id="review-explanation"></p>
+                <button id="review-return" type="button" class="secondary">Volver al paso actual</button>
+              </section>
+            </details>
+          </section>
+
+          <div class="decision-divider"></div>
+          <section id="question" class="question" aria-label="Decisión actual"></section>
+          <div class="actions" role="group" aria-label="Acciones del ejercicio">
+            <button id="submit" type="button" disabled>Registrar decisión</button>
+            <button id="retry" type="button" class="secondary" hidden>Intentar de nuevo</button>
+            <button id="give-up" type="button" hidden>Rendirse y ver la solución</button>
+            <button id="next" type="button" hidden>Continuar tras ver la solución →</button>
+            <button id="another" type="button" hidden>Otro ejercicio →</button>
+          </div>
+          <div id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+          <details id="elo-rules" class="rating-note">
+            <summary>Cómo se calcula el Elo</summary>
+            <p>Elo ilustrativo, no calibrado: todos los primeros intentos correctos cuentan como éxito; un error inicial cuenta como fallo aunque después se corrija. Entrenamientos y repeticiones no puntúan. Las puntuaciones históricas no se recalculan.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+
+    <section id="history-panel" class="card history" aria-labelledby="history-title" hidden>
+      <div class="topline"><h2 id="history-title" tabindex="-1">Historial</h2><button id="clear" type="button" class="textbutton">Borrar datos locales</button></div>
+      <p id="storage-note" class="muted small" role="status" aria-live="polite">Solo en este navegador. Las respuestas, el historial y el Elo no se transmiten.</p>
+      <p class="muted small">Hasta 20 sesiones, incluidas las incompletas.</p>
+      <ol id="past" class="past-list"></ol>
+    </section>
+    <footer>MA-Práctica · Prototipo de Matemática Abierta, con cuentas opcionales y sin rankings.</footer>
+  </main>
+</body>
+</html>
