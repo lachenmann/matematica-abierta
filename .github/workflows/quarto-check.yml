@@ -63,6 +63,42 @@ jobs:
         with:
           version: 1.10.18
 
+      - name: Gate B2 generator before full site render
+        run: |
+          rm -rf .b2-site
+          mkdir -p .b2-site/app
+          cp app/catalog-v1.json .b2-site/app/catalog-v1.json
+          python3 tools/generate_offline_manifests.py \
+            --site-dir .b2-site \
+            --book-id MA-BOK-0005
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          package = Path(".b2-site/app/offline/MA-BOK-0005")
+          manifest = json.loads(
+              (package / "manifest-v1.json").read_text(encoding="utf-8")
+          )
+          assert [item["contentId"] for item in manifest["contents"]] == [
+              "MA-BCH-0009",
+              "MA-BCH-0031",
+          ]
+          assert manifest["assets"] == []
+          total = 0
+          for item in manifest["contents"]:
+              data = (package / item["localPath"]).read_bytes()
+              assert len(data) == item["size"]
+              assert hashlib.sha256(data).hexdigest() == item["sha256"]
+              total += len(data)
+          assert total == manifest["totalSize"]
+          print(
+              f"B2 targeted gate: {len(manifest['contents'])} capítulos, "
+              f"{manifest['totalSize']} bytes, {manifest['version']}"
+          )
+          PY
+          rm -rf .b2-site
+
       - name: Render site
         run: quarto render
 
