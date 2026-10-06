@@ -166,6 +166,85 @@ jobs:
           )
           PY
 
+
+      - name: Package reduced FND official HTML
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urlsplit, unquote
+          import re, shutil, json, hashlib
+          root = Path("_site").resolve()
+          out = Path("qa-reduced")
+          out.mkdir(exist_ok=True)
+          names = [Path(x).stem for x in ("libros/capitulos/fnd-c10-quarto-qa.qmd", "libros/capitulos/fnd-c11-quarto-qa.qmd", "libros/capitulos/fnd-global-quarto-qa.qmd")]
+          targets = []
+          for name in names:
+              found = list(root.rglob(name + ".html"))
+              assert len(found) == 1, (name, found)
+              targets.extend(found)
+          print("Actual Quarto outputs:", [str(p.relative_to(root)) for p in targets])
+          selected = set(targets)
+          shared = list(root.rglob("site_libs"))
+          for directory in shared:
+              selected.update(p for p in directory.rglob("*") if p.is_file() and p.suffix != ".map")
+          class Links(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  a = dict(attrs)
+                  for key in ("src", "poster", "data-src"):
+                      if a.get(key): self.refs.append(a[key])
+                  if tag == "link" and a.get("href"): self.refs.append(a["href"])
+                  if a.get("srcset"):
+                      self.refs.extend(v.strip().split()[0] for v in a["srcset"].split(","))
+          def resolve(p, value):
+              u = urlsplit(value)
+              if u.scheme or u.netloc or not u.path: return None
+              q = (root / unquote(u.path).lstrip("/") if u.path.startswith("/") else p.parent / unquote(u.path)).resolve()
+              if not q.is_relative_to(root): return None
+              return q
+          seen = set()
+          while selected - seen:
+              p = next(iter(selected - seen))
+              seen.add(p)
+              refs = []
+              if p.suffix in (".html", ".css", ".js", ".svg"):
+                  text = p.read_text(errors="replace")
+                  refs += re.findall(r"url\(\s*['\"]?([^)'\"\s]+)", text)
+                  if p.suffix == ".html":
+                      parser = Links()
+                      parser.feed(text)
+                      refs += parser.refs
+                  if p.suffix == ".js":
+                      refs += re.findall(r"""['"]([^'"]+\.(?:css|js|woff2?|ttf|svg|png|jpe?g|webp|gif)(?:\?[^'"]*)?)['"]""", text)
+              for value in refs:
+                  q = resolve(p, value)
+                  if q and q.is_file() and q.suffix not in (".map", ".qmd", ".md"):
+                      selected.add(q)
+          for p in sorted(selected):
+              dest = out / p.relative_to(root)
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(p, dest)
+          size = sum(p.stat().st_size for p in out.rglob("*") if p.is_file())
+          manifest = {"targets": [str(p.relative_to(root)) for p in targets], "bytes": size, "files": [{"path": str(p.relative_to(root)), "bytes":p.stat().st_size, "sha256":hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(selected)], "excluded": "All other site HTML, unreferenced chapter assets, source files, caches, offline packages and source maps. Full site_libs retained except source maps."}
+          (out / "qa-manifest.json").write_text(json.dumps(manifest, indent=2))
+          size = sum(p.stat().st_size for p in out.rglob("*") if p.is_file())
+          print("REDUCED_BYTES", size, "FILES", len(selected))
+          assert size < 32 * 1024 * 1024, "Conservative reduction still exceeds 32 MiB"
+          
+          PY
+
+      - name: Preserve reduced FND QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: fnd-qa-reduced
+          path: qa-reduced/
+          compression-level: 9
+          retention-days: 2
+          if-no-files-found: error
+
       - name: Preserve rendered site for visual and link QA
         uses: actions/upload-artifact@v4
         with:
