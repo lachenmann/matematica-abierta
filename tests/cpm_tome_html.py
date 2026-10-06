@@ -49,7 +49,11 @@ for path, parser in pages.items():
         if url.scheme or url.netloc: continue
         target = (path.parent/unquote(url.path)).resolve() if url.path else path
         if target in pages and url.fragment:
-            assert unquote(url.fragment) in pages[target].ids, href
+            anchor = unquote(url.fragment)
+            landing = (root/Path(rows[0]['path']).with_suffix('.html')).resolve()
+            if target == landing and anchor in rows[0].get('anchor_routes', {}):
+                target = target.parent/rows[0]['anchor_routes'][anchor]
+            assert anchor in pages[target].ids, href
     for image in parser.images:
         src = image.get('src', '')
         if 'assets/books/cpm-tomo-i/' in src:
