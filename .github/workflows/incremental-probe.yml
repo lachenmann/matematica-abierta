@@ -1,0 +1,31 @@
+name: Quarto incremental equivalence probe
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/incremental-probe.yml'
+      - 'tools/probe_incremental_render.py'
+permissions:
+  contents: read
+concurrency:
+  group: incremental-probe-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Compare baseline, incremental and complete render
+        run: python3 tools/probe_incremental_render.py
+      - name: Preserve comparison evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: incremental-equivalence-probe
+          path: incremental-probe-report/
+          retention-days: 14
+          if-no-files-found: error
