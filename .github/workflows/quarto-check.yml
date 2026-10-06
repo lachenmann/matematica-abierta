@@ -19,7 +19,7 @@ jobs:
 
       - name: Test and generate public mobile catalog
         run: |
-          python3 -m unittest tests/test_app_catalog_generator.py
+          python3 -m unittest tests/test_app_catalog_generator.py tests/test_offline_manifest_generator.py
           python3 tools/generate_app_catalog.py
           python3 - <<'PY'
           import json
@@ -62,6 +62,42 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
+
+      - name: Gate B2 generator before full site render
+        run: |
+          rm -rf .b2-site
+          mkdir -p .b2-site/app
+          cp app/catalog-v1.json .b2-site/app/catalog-v1.json
+          python3 tools/generate_offline_manifests.py \
+            --site-dir .b2-site \
+            --book-id MA-BOK-0005
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          package = Path(".b2-site/app/offline/MA-BOK-0005")
+          manifest = json.loads(
+              (package / "manifest-v1.json").read_text(encoding="utf-8")
+          )
+          assert [item["contentId"] for item in manifest["contents"]] == [
+              "MA-BCH-0009",
+              "MA-BCH-0031",
+          ]
+          assert manifest["assets"] == []
+          total = 0
+          for item in manifest["contents"]:
+              data = (package / item["localPath"]).read_bytes()
+              assert len(data) == item["size"]
+              assert hashlib.sha256(data).hexdigest() == item["sha256"]
+              total += len(data)
+          assert total == manifest["totalSize"]
+          print(
+              f"B2 targeted gate: {len(manifest['contents'])} capítulos, "
+              f"{manifest['totalSize']} bytes, {manifest['version']}"
+          )
+          PY
+          rm -rf .b2-site
 
       - name: Render site
         run: quarto render
@@ -111,6 +147,52 @@ jobs:
           data = json.loads(Path("_site/app/catalog-v1.json").read_text(encoding="utf-8"))
           assert data["schemaVersion"] == 1
           assert data["items"]
+          PY
+
+      - name: Generate B2 offline pilot package
+        run: |
+          python3 tools/generate_offline_manifests.py \
+            --site-dir _site \
+            --book-id MA-BOK-0005
+
+      - name: Verify B2 offline pilot package
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          package = Path("_site/app/offline/MA-BOK-0005")
+          manifest_path = package / "manifest-v1.json"
+          assert manifest_path.is_file() and manifest_path.stat().st_size > 0
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+          assert manifest["schemaVersion"] == 1
+          assert manifest["siteBaseUrl"] == "https://matematicaabierta.cl"
+          assert manifest["hashAlgorithm"] == "sha256"
+          assert manifest["bookId"] == "MA-BOK-0005"
+          assert manifest["entryContentId"] == "MA-BCH-0009"
+          assert [item["contentId"] for item in manifest["contents"]] == [
+              "MA-BCH-0009",
+              "MA-BCH-0031",
+          ]
+          assert manifest["assets"] == []
+
+          total = 0
+          for item in manifest["contents"]:
+              path = package / item["localPath"]
+              data = path.read_bytes()
+              assert len(data) == item["size"]
+              assert hashlib.sha256(data).hexdigest() == item["sha256"]
+              assert b"<html" in data.lower() and b"<body" in data.lower()
+              total += len(data)
+
+          assert total == manifest["totalSize"]
+          assert manifest["version"].startswith("sha256-")
+          print(
+              f"B2 offline QA: {len(manifest['contents'])} capítulos, "
+              f"{manifest['totalSize']} bytes, {manifest['version']}"
+          )
           PY
 
       - name: Preserve rendered site for visual and link QA

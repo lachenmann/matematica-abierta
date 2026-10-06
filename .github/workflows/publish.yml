@@ -28,9 +28,19 @@ jobs:
         with:
           version: 1.10.18
 
-      - name: Render and publish to GitHub Pages
+      - name: Render site
+        run: quarto render
+
+      - name: Generate B2 offline pilot package
+        run: |
+          python3 tools/generate_offline_manifests.py \
+            --site-dir _site \
+            --book-id MA-BOK-0005
+
+      - name: Publish rendered site to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
