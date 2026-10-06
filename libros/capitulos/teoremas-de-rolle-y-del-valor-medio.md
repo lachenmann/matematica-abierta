@@ -2068,4 +2068,3 @@ El banco vuelve sobre una misma disciplina de lectura: primero deben existir la 
 ---
 
 [← Capítulo 8](derivacion-de-funciones-elementales-inversas-e-implicitas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 10 →](monotonia-extremos-convexidad-y-forma-de-las-graficas.md)
-

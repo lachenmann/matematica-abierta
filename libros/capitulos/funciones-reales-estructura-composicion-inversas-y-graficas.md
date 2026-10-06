@@ -9972,4 +9972,3 @@ Con este lenguaje ya podemos dar el siguiente paso. Una sucesión será, antes q
 ---
 
 [← Capítulo 1](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 3 →](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md)
-

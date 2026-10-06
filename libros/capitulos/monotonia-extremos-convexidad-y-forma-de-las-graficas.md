@@ -2239,4 +2239,3 @@ La correspondencia entre los cuarenta enunciados y sus cuarenta soluciones no co
 ---
 
 [← Capítulo 9](teoremas-de-rolle-y-del-valor-medio.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 11 →](derivadas-superiores-y-formula-de-taylor-con-resto.md)
-

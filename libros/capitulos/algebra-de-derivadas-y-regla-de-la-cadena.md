@@ -2841,4 +2841,3 @@ La comprobación de correspondencias, sintaxis, referencias internas y dependenc
 ---
 
 [← Capítulo 6](la-derivada-y-la-aproximacion-lineal-local.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 8 →](derivacion-de-funciones-elementales-inversas-e-implicitas.md)
-

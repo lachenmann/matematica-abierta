@@ -10413,4 +10413,3 @@ Con este banco queda cerrado el primer capítulo del libro dedicado a una noció
 ---
 
 [← Capítulo 2](funciones-reales-estructura-composicion-inversas-y-graficas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 4 →](limites-de-funciones.md)
-

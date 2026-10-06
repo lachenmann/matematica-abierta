@@ -8546,4 +8546,3 @@ El error lógico del estudiante consiste en confundir **existencia de un modelo 
 ---
 
 [← Capítulo 18](tecnicas-de-integracion.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 20 →](ecuaciones-diferenciales-elementales-y-sintesis-newtonleibniz.md)
-

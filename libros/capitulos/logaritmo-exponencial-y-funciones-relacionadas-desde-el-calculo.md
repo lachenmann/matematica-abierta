@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -7823,4 +7823,3 @@ La fórmula logarítmica y la derivada de la inversa han sido reconstruidas sin 
 ---
 
 [← Capítulo 16](teorema-fundamental-del-calculo.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 18 →](tecnicas-de-integracion.md)
-

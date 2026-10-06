@@ -10622,4 +10622,3 @@ Con este banco queda completado el desarrollo sustantivo de `T1-C05`. El paso si
 ---
 
 [← Capítulo 3](sucesiones-y-la-primera-nocion-rigurosa-de-limite.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 5 →](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md)
-

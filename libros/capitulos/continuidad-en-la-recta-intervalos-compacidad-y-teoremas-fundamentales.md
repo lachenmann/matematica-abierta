@@ -11484,4 +11484,3 @@ Con este banco queda completo el desarrollo matemático de `T1-C06` y se cierra 
 ---
 
 [← Capítulo 4](limites-de-funciones.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 6 →](la-derivada-y-la-aproximacion-lineal-local.md)
-

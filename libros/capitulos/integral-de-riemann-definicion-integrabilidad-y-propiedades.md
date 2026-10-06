@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -6556,4 +6556,3 @@ En los cuatro casos la corrección consiste en respetar la dirección lógica de
 ---
 
 [← Capítulo 13](del-area-y-las-sumas-a-la-integral.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 15 →](teoremas-de-valor-medio-para-integrales.md)
-
