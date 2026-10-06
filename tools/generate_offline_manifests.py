@@ -152,6 +152,152 @@ def validate_self_contained_html(data: bytes, *, label: str) -> None:
             raise ValueError(f"{label}: conserva un subrecurso externo")
 
 
+_OFFLINE_STRIP_SCRIPT_SIGNATURES = (
+    'headroomChanged = new CustomEvent("quarto-hrChanged"',
+    "headroom.js v0.12.0",
+    "clipboard.js v2.0.11",
+    "@algolia/autocomplete-js",
+    "Fuse.js v6.6.2",
+    'const kQueryArg = "q";',
+    "@popperjs/core v2.11.7",
+    ").tippy=t(",
+    "AnchorJS - v5.0.0",
+    "Bootstrap v5.3.1",
+)
+
+_OFFLINE_STRIP_SCRIPT_IDS = {
+    "quarto-search-options",
+}
+
+_DATA_CSS_LINK_RE = re.compile(
+    r'<link\\b[^>]*href="(data:text/css,[^"]+)"[^>]*>',
+    re.I,
+)
+_SCRIPT_RE = re.compile(
+    r"<script\\b([^>]*)>([\\s\\S]*?)</script>",
+    re.I,
+)
+_STYLE_RE = re.compile(
+    r"<style\\b[^>]*>([\\s\\S]*?)</style>",
+    re.I,
+)
+_MAIN_RE = re.compile(
+    r"<main\\b[\\s\\S]*?</main>",
+    re.I,
+)
+_HEAD_RE = re.compile(
+    r"<head>([\\s\\S]*?)</head>",
+    re.I,
+)
+_BODY_OPEN_RE = re.compile(
+    r"<body\\b[^>]*>",
+    re.I,
+)
+_FONT_FACE_RE = re.compile(
+    r"@font-face\\s*\\{[^{}]*font-family:\\s*['\"](?:Source Sans Pro|Lato)['\"][^{}]*\\}",
+    re.I | re.S,
+)
+
+
+def _script_id(attrs: str) -> str | None:
+    match = re.search(r'\\bid=["\']([^"\']+)["\']', attrs, re.I)
+    return match.group(1) if match else None
+
+
+def _strip_offline_scripts(head: str) -> str:
+    def replace(match: re.Match[str]) -> str:
+        attrs = match.group(1)
+        body = match.group(2)
+        if _script_id(attrs) in _OFFLINE_STRIP_SCRIPT_IDS:
+            return ""
+        if any(signature in body for signature in _OFFLINE_STRIP_SCRIPT_SIGNATURES):
+            return ""
+        return match.group(0)
+
+    return _SCRIPT_RE.sub(replace, head)
+
+
+def _strip_embedded_webfonts(head: str) -> str:
+    from urllib.parse import quote, unquote
+
+    def replace_link(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        href = match.group(1)
+        encoded_css = href[len("data:text/css,") :]
+        try:
+            css = unquote(encoded_css)
+        except Exception:
+            return tag
+
+        if "Source Sans Pro" not in css and "Lato" not in css:
+            return tag
+
+        stripped = _FONT_FACE_RE.sub("", css)
+        if stripped == css:
+            return tag
+
+        replacement_href = "data:text/css," + quote(
+            stripped,
+            safe="!def validate_self_contained_html(data: bytes, *, label: str) -> None:
+    if not data or b"<html" not in data.lower() or b"<body" not in data.lower():
+        raise ValueError(f"{label}: HTML offline vacío o incompleto")
+
+    text = data.decode("utf-8", errors="strict")
+    for pattern in EXTERNAL_SUBRESOURCE_PATTERNS:
+        if pattern.search(text):
+            raise ValueError(f"{label}: conserva un subrecurso externo")
+
+
+'()*+,/:;=?@-._~",
+        )
+        return tag.replace(href, replacement_href, 1)
+
+    return _DATA_CSS_LINK_RE.sub(replace_link, head)
+
+
+def _strip_unused_bootstrap_icons(head: str, main: str) -> str:
+    if re.search(r'class=["\'][^"\']*\\bbi(?:\\s|[-"\'])', main, re.I):
+        return head
+
+    def replace_style(match: re.Match[str]) -> str:
+        return "" if "bootstrap-icons" in match.group(1) else match.group(0)
+
+    return _STYLE_RE.sub(replace_style, head)
+
+
+def optimize_offline_html(data: bytes, *, label: str) -> bytes:
+    """Keep the static reading document while dropping website-only runtime.
+
+    The public website render includes navigation, search, webfonts and generic
+    interaction libraries that are useful in a browser but redundant inside the
+    native offline reader. MathJax, content styles and unknown/content-specific
+    scripts are preserved.
+    """
+
+    text = data.decode("utf-8", errors="strict")
+    head_match = _HEAD_RE.search(text)
+    main_match = _MAIN_RE.search(text)
+    body_open_match = _BODY_OPEN_RE.search(text)
+    if not head_match or not main_match or not body_open_match:
+        raise ValueError(f"{label}: no se pudo aislar head/main/body para offline")
+
+    head = _strip_offline_scripts(head_match.group(1))
+    head = _strip_embedded_webfonts(head)
+    main = main_match.group(0)
+    head = _strip_unused_bootstrap_icons(head, main)
+
+    lang_match = re.search(r'<html\\b[^>]*\\blang=["\']([^"\']+)["\']', text, re.I)
+    lang = lang_match.group(1) if lang_match else "es"
+    optimized = (
+        "<!DOCTYPE html>\\n"
+        f'<html lang="{lang}"><head>{head}</head>'
+        f"{body_open_match.group(0)}{main}</body></html>\\n"
+    ).encode("utf-8")
+
+    validate_self_contained_html(optimized, label=label)
+    return optimized
+
+
 def build_offline_render_command(
     root: Path,
     source: Path,
@@ -216,7 +362,10 @@ def render_offline_chapter(root: Path, source: Path, quarto: str = "quarto") -> 
             )
 
         data = matches[0].read_bytes()
-        validate_self_contained_html(data, label=str(source.relative_to(root)))
+        data = optimize_offline_html(
+            data,
+            label=str(source.relative_to(root)),
+        )
         return data
 
 
