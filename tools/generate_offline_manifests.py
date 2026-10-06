@@ -82,6 +82,7 @@ def select_book(catalog: dict[str, Any], book_id: str) -> tuple[dict[str, Any], 
     if len(books) != 1:
         raise ValueError(f"libro {book_id} ausente o duplicado en catalog-v1")
 
+    book = books[0]
     chapters = [
         item
         for item in items
@@ -90,15 +91,37 @@ def select_book(catalog: dict[str, Any], book_id: str) -> tuple[dict[str, Any], 
     if not chapters:
         raise ValueError(f"libro {book_id} no tiene capítulos publicados")
 
+    by_id: dict[str, dict[str, Any]] = {}
     for chapter in chapters:
         chapter_id = chapter.get("id")
         if not isinstance(chapter_id, str) or not CHAPTER_ID_RE.fullmatch(chapter_id):
             raise ValueError(f"capítulo con ID inválido en {book_id}: {chapter_id!r}")
         if not isinstance(chapter.get("path"), str) or not chapter["path"].startswith("/"):
             raise ValueError(f"capítulo {chapter_id} no tiene path canónico")
+        by_id[chapter_id] = chapter
 
-    chapters.sort(key=lambda item: item["id"])
-    return books[0], chapters
+    related = book.get("related")
+    if not isinstance(related, list):
+        raise ValueError(
+            f"libro {book_id} no declara un orden completo de capítulos en related"
+        )
+
+    ordered_ids = [
+        value
+        for value in related
+        if isinstance(value, str) and value in by_id
+    ]
+    if len(ordered_ids) != len(set(ordered_ids)):
+        raise ValueError(f"libro {book_id} repite capítulos en related")
+
+    missing = sorted(set(by_id) - set(ordered_ids))
+    if missing:
+        raise ValueError(
+            f"libro {book_id} no declara el orden de todos sus capítulos: "
+            + ", ".join(missing)
+        )
+
+    return book, [by_id[chapter_id] for chapter_id in ordered_ids]
 
 
 def resolve_source_path(root: Path, public_path: str) -> Path:
