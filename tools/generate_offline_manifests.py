@@ -351,10 +351,17 @@ def render_offline_chapter(root: Path, source: Path, quarto: str = "quarto") -> 
                 f"render offline ambiguo para {source.relative_to(root)}: {len(matches)} salidas"
             )
 
-        data = matches[0].read_bytes()
+        raw_data = matches[0].read_bytes()
         data = optimize_offline_html(
-            data,
+            raw_data,
             label=str(source.relative_to(root)),
+        )
+        reduction = 100.0 * (1.0 - (len(data) / len(raw_data)))
+        print(
+            "offline-optimize: "
+            f"{source.relative_to(root)}: "
+            f"{len(raw_data)} -> {len(data)} bytes "
+            f"({reduction:.1f}% menos)"
         )
         return data
 
