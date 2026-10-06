@@ -152,36 +152,50 @@ def validate_self_contained_html(data: bytes, *, label: str) -> None:
             raise ValueError(f"{label}: conserva un subrecurso externo")
 
 
+def build_offline_render_command(
+    root: Path,
+    source: Path,
+    output_dir: Path,
+    quarto: str = "quarto",
+) -> list[str]:
+    return [
+        quarto,
+        "render",
+        str(source.relative_to(root)),
+        "--to",
+        "html",
+        "--output-dir",
+        str(output_dir),
+        "-M",
+        "minimal:true",
+        "-M",
+        "toc:false",
+        "-M",
+        "anchor-sections:false",
+        "-M",
+        "code-copy:false",
+        "-M",
+        "citations-hover:false",
+        "-M",
+        "footnotes-hover:false",
+        "-M",
+        "fig-responsive:true",
+        "-M",
+        "embed-resources:true",
+        "-M",
+        "self-contained-math:true",
+    ]
+
+
 def render_offline_chapter(root: Path, source: Path, quarto: str = "quarto") -> bytes:
     with tempfile.TemporaryDirectory(prefix="ma-offline-") as tmp:
         output_dir = Path(tmp).resolve()
-        command = [
-            quarto,
-            "render",
-            str(source.relative_to(root)),
-            "--to",
-            "html",
-            "--output-dir",
-            str(output_dir),
-            "-M",
-            "minimal:true",
-            "-M",
-            "toc:false",
-            "-M",
-            "anchor-sections:false",
-            "-M",
-            "code-copy:false",
-            "-M",
-            "citations-hover:false",
-            "-M",
-            "footnotes-hover:false",
-            "-M",
-            "fig-responsive:true",
-            "-M",
-            "embed-resources:true",
-            "-M",
-            "self-contained-math:true",
-        ]
+        command = build_offline_render_command(
+            root,
+            source,
+            output_dir,
+            quarto=quarto,
+        )
         completed = subprocess.run(
             command,
             cwd=root,
