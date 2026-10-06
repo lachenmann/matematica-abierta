@@ -63,14 +63,19 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
 
         book, chapters = select_book(catalog, "MA-BOK-0005")
         self.assertEqual(book["id"], "MA-BOK-0005")
-        self.assertEqual([item["id"] for item in chapters], ["MA-BCH-0009", "MA-BCH-0031"])
+        self.assertEqual(
+            [item["id"] for item in chapters],
+            ["MA-BCH-0009", "MA-BCH-0031"],
+        )
 
         with self.assertRaisesRegex(ValueError, "bookId inválido"):
             select_book(catalog, "../bad")
 
     def test_book_related_defines_reading_order(self):
         catalog = sample_catalog()
-        book = next(item for item in catalog["items"] if item["id"] == "MA-BOK-0005")
+        book = next(
+            item for item in catalog["items"] if item["id"] == "MA-BOK-0005"
+        )
         book["related"] = ["MA-BCH-0031", "MA-BCH-0009"]
 
         _, chapters = select_book(catalog, "MA-BOK-0005")
@@ -81,7 +86,9 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
 
     def test_book_without_complete_reading_order_fails_closed(self):
         catalog = sample_catalog()
-        book = next(item for item in catalog["items"] if item["id"] == "MA-BOK-0005")
+        book = next(
+            item for item in catalog["items"] if item["id"] == "MA-BOK-0005"
+        )
         book["related"] = ["MA-BCH-0009"]
 
         with self.assertRaisesRegex(ValueError, "orden de todos sus capítulos"):
@@ -190,45 +197,6 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         self.assertIn('<html lang="la">', optimized)
         self.assertIn("bootstrap-icons", optimized)
         self.assertIn('class="bi bi-star"', optimized)
-
-    def test_self_contained_validation_allows_external_links_but_not_subresources(self):'()*+,/:;=?@-._~",
-        )
-        html = f"""<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<link href="{encoded_theme}" rel="stylesheet">
-<style>@font-face {{font-family: "bootstrap-icons";src:url(data:font/woff;base64,BBBB);}} .bi{{display:inline-block}}</style>
-<script>/*! @algolia/autocomplete-js 1.19.1 */ window.SEARCH = true;</script>
-<script type="text/javascript">window.MathJax = {{startup: {{}}}};</script>
-<script>window.CONTENT_SPECIFIC = true;</script>
-</head>
-<body class="fullcontent">
-<header id="quarto-header"><nav>chrome</nav></header>
-<main class="content" id="quarto-document-content">
-<h1 id="x">Capítulo</h1>
-<p><span class="math inline">\\(x^2\\)</span></p>
-<table><tr><td>1</td></tr></table>
-</main>
-<footer>chrome</footer>
-</body>
-</html>""".encode("utf-8")
-
-        optimized = optimize_offline_html(html, label="sample").decode("utf-8")
-
-        self.assertIn('id="quarto-document-content"', optimized)
-        self.assertIn('class="math inline"', optimized)
-        self.assertIn("<table>", optimized)
-        self.assertIn("window.MathJax", optimized)
-        self.assertIn("window.CONTENT_SPECIFIC", optimized)
-        self.assertIn("Source%20Sans%20Pro", optimized)
-
-        self.assertNotIn("quarto-header", optimized)
-        self.assertNotIn("<footer>", optimized)
-        self.assertNotIn("@algolia/autocomplete-js", optimized)
-        self.assertNotIn("data:font/ttf;base64,AAAA", optimized)
-        self.assertNotIn("bootstrap-icons", optimized)
-        self.assertLess(len(optimized), len(html))
 
     def test_self_contained_validation_allows_external_links_but_not_subresources(self):
         validate_self_contained_html(
