@@ -51,9 +51,6 @@ jobs:
           MA_FORCE_FULL: ${{ github.event.inputs.full_render || 'false' }}
         run: python3 tools/smart_render.py build --offline-book MA-BOK-0005
 
-      - name: Seal verified complete output
-        run: python3 tools/smart_render.py seal
-
       - name: Publish rendered site to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
@@ -61,6 +58,9 @@ jobs:
           render: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Seal successfully published output and final Quarto state
+        run: python3 tools/smart_render.py seal
 
       - name: Save state only after successful publication
         if: steps.site-base.outputs.cache-hit != 'true'
@@ -81,4 +81,3 @@ jobs:
           include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn
-

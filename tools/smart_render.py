@@ -256,6 +256,7 @@ def build(root, force_full=False, books=None):
         except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
             decision["reason"] = "unusable base or dependency map: " + str(error)
     print(json.dumps(decision, ensure_ascii=False), flush=True)
+    packages = {}
     if decision["mode"] in {"incremental", "reuse"}:
         try:
             render(root, decision["targets"])
@@ -265,6 +266,7 @@ def build(root, force_full=False, books=None):
                 shutil.copy2(catalog, root / "_site/app/catalog-v1.json")
             validate_site(root, decision["targets"])
             check_preservation(root, base, decision["targets"])
+            packages = offline(root, books, decision)
         except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
             decision.update(mode="full", reason="incremental fallback: " + str(error))
             print(decision["reason"], flush=True)
@@ -275,7 +277,7 @@ def build(root, force_full=False, books=None):
         shutil.rmtree(root / ".quarto", ignore_errors=True)
         render(root)
         validate_site(root, decision["targets"])
-    packages = offline(root, books, decision)
+        packages = offline(root, books, decision)
     report = {**decision, "schema": SCHEMA, "commit": git(root, "rev-parse", "HEAD"), "base_commit": base["commit"] if base else None,
               "quarto": quarto, "seconds": round(time.monotonic() - start, 3), "offline_books": books, "offline": packages,
               "files": len(inventory(root / "_site"))}
