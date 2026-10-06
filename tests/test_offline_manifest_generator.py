@@ -133,7 +133,26 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         )
         encoded_theme = "data:text/css," + quote(
             theme_css,
-            safe="!    def test_self_contained_validation_allows_external_links_but_not_subresources(self):'()*+,/:;=?@-._~",
+            safe="!    def test_offline_optimizer_preserves_content_icons_and_language(self):
+        html = b"""<!DOCTYPE html>
+<html lang="la">
+<head>
+<style>@font-face {font-family: "bootstrap-icons";src:url(data:font/woff;base64,BBBB);} .bi{display:inline-block}</style>
+<script>window.MathJax = {};</script>
+</head>
+<body>
+<header id="quarto-header">chrome</header>
+<main id="quarto-document-content"><i class="bi bi-star"></i><p>Textus</p></main>
+</body>
+</html>"""
+
+        optimized = optimize_offline_html(html, label="icons").decode("utf-8")
+
+        self.assertIn('<html lang="la">', optimized)
+        self.assertIn("bootstrap-icons", optimized)
+        self.assertIn('class="bi bi-star"', optimized)
+
+    def test_self_contained_validation_allows_external_links_but_not_subresources(self):'()*+,/:;=?@-._~",
         )
         html = f"""<!DOCTYPE html>
 <html lang="es">
