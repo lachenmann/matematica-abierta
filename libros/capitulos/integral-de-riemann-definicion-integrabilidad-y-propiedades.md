@@ -4190,7 +4190,7 @@ Por debajo de estos niveles quedan datos que pueden ser útiles pero que necesit
 
 **Razonamiento 1.** «$f$ es continua, luego tiene una primitiva, y por el teorema fundamental del cálculo es integrable.»
 
-La conclusión es verdadera, pero esa ruta no pertenece a C15 y sería circular respecto de la arquitectura del tratado. Aquí la integrabilidad de las continuas se obtuvo directamente en [Teorema 14.4](#thm-t1-0049) mediante continuidad uniforme y Darboux. El FTC se demostrará después, en C17.
+La conclusión es verdadera, pero esa ruta no pertenece a C15 y sería circular respecto de la arquitectura del libro. Aquí la integrabilidad de las continuas se obtuvo directamente en [Teorema 14.4](#thm-t1-0049) mediante continuidad uniforme y Darboux. El FTC se demostrará después, en C17.
 
 **Razonamiento 2.** «$f$ es monótona, así que el área bajo su gráfica existe.»
 
@@ -6556,3 +6556,4 @@ En los cuatro casos la corrección consiste en respetar la dirección lógica de
 ---
 
 [← Capítulo 13](del-area-y-las-sumas-a-la-integral.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 15 →](teoremas-de-valor-medio-para-integrales.md)
+

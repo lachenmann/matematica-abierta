@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-20
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -2834,10 +2834,11 @@ La no anulación local fue necesaria para escribir la fracción inicial y pasar 
 
 ### Auditoría del banco
 
-El inventario de esta sección comprende cuarenta enunciados y cuarenta soluciones homólogas con identificadores continuos `CPM-T1-EXR-0276--0315` y `CPM-T1-SOL-0276--0315`, distribuidos como $7A+7B+7C+6D+5E+5F+3G$. Las soluciones se han redactado para este tratado conforme al diseño del capítulo; la indicación editorial `ORIGINAL` no equivale a una certificación de similitud externa.
+El inventario de esta sección comprende cuarenta enunciados y cuarenta soluciones homólogas con identificadores continuos `CPM-T1-EXR-0276--0315` y `CPM-T1-SOL-0276--0315`, distribuidos como $7A+7B+7C+6D+5E+5F+3G$. Las soluciones se han redactado para este libro conforme al diseño del capítulo; la indicación editorial `ORIGINAL` no equivale a una certificación de similitud externa.
 
 La comprobación de correspondencias, sintaxis, referencias internas y dependencias se documenta en la auditoría técnica independiente. Completar el manuscrito no reemplaza su revisión matemática final, la compilación efectiva con Quarto ni la aprobación visual; esas condiciones siguen siendo necesarias antes de declarar el capítulo cerrado y publicable.
 
 ---
 
 [← Capítulo 6](la-derivada-y-la-aproximacion-lineal-local.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 8 →](derivacion-de-funciones-elementales-inversas-e-implicitas.md)
+

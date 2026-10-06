@@ -4315,7 +4315,7 @@ Esto señala una diferencia importante con §18.7--§18.8: el obstáculo ya no e
 
 ### Construir la nueva primitiva antes de usarla
 
-Podríamos introducir una fórmula de memoria, pero eso rompería la lógica del tratado. En lugar de ello construiremos la función que necesitamos a partir del teorema fundamental del cálculo.
+Podríamos introducir una fórmula de memoria, pero eso rompería la lógica del libro. En lugar de ello construiremos la función que necesitamos a partir del teorema fundamental del cálculo.
 
 ::: {#def-t1-0080}
 **Definición (arco tangente por acumulación).** Para $x\in\mathbb R$ definimos
@@ -8676,3 +8676,4 @@ $$
 ---
 
 [← Capítulo 17](logaritmo-exponencial-y-funciones-relacionadas-desde-el-calculo.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 19 →](aplicaciones-geometricas-y-cuantitativas-de-la-integral.md)
+
