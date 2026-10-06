@@ -263,3 +263,120 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
 
+
+  browser:
+    needs: render
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: fnd-qa-reduced
+          path: qa-reduced
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install official browser QA dependency
+        run: |
+          npm install --no-save --package-lock=false playwright@1.61.1
+          npx playwright install --with-deps chromium
+      - name: Inspect reduced official FND HTML over HTTP
+        run: |
+          python3 -m http.server 8789 --bind 127.0.0.1 --directory qa-reduced >/tmp/fnd-http.log 2>&1 &
+          cat > fnd-browser.cjs <<'JS'
+          const {chromium}=require('playwright');
+          const fs=require('fs'), path=require('path');
+          (async()=>{
+           const base=__dirname, manifest=JSON.parse(fs.readFileSync(base+'/qa-reduced/qa-manifest.json'));
+           const browser=await chromium.launch({headless:true});
+           const results=[];
+           fs.mkdirSync(base+'/qa-evidence/screens',{recursive:true});
+           for(const target of manifest.targets){
+            const key=path.basename(target,'.html'), p=await browser.newPage({viewport:{width:1440,height:1000}});
+            const errors=[], failed=[], responses=[];
+            p.on('pageerror',e=>errors.push(e.message));p.on('requestfailed',r=>failed.push({url:r.url(),error:r.failure()}));
+            p.on('response',r=>{if(r.status()>=400)responses.push({url:r.url(),status:r.status()})});
+            await p.goto('http://127.0.0.1:8789/'+target,{waitUntil:'load',timeout:180000});
+            await p.waitForFunction(()=>!!window.MathJax?.startup?.promise,null,{timeout:60000});
+            await p.evaluate(()=>MathJax.startup.promise);
+            const math=await p.evaluate(()=>{
+             const items=[...MathJax.startup.document.math];
+             return {version:MathJax.version,items:items.length,containers:document.querySelectorAll('mjx-container').length,
+              unprocessed:items.filter(x=>!x.typesetRoot||!x.typesetRoot.isConnected).length,
+              rawMath:document.querySelectorAll('span.math:not(:has(mjx-container))').length,
+              merror:[...document.querySelectorAll('mjx-merror,merror,[data-mjx-error]')].map(e=>e.textContent),
+              headings:[...document.querySelectorAll('main h1,main h2')].map(e=>({id:e.id,text:e.textContent})),
+              tables:document.querySelectorAll('main table').length,callouts:document.querySelectorAll('main .callout').length};
+            });
+            const result={target,math,viewports:[],errors,failed,responses,navigation:[]};
+            for(const width of [320,390,1440]){
+             await p.setViewportSize({width,height:width===1440?1000:844});
+             await p.evaluate(()=>document.fonts.ready);
+             const layout=await p.evaluate(()=>{
+              const protectedBy=e=>{
+               for(let a=e.parentElement;a;a=a.parentElement){
+                const s=getComputedStyle(a);
+                if(['auto','scroll'].includes(s.overflowX)&&a.scrollWidth>a.clientWidth+1)return a;
+               } return null;
+              };
+              const bad=[];
+              for(const e of document.querySelectorAll('main *')){
+               const r=e.getBoundingClientRect(),s=getComputedStyle(e);
+               if(!r.width||!r.height||s.visibility==='hidden'||s.display==='none')continue;
+               if((r.right>document.documentElement.clientWidth+1||r.left< -1)&&!protectedBy(e)){
+                bad.push({tag:e.tagName,cls:String(e.className).slice(0,100),text:e.textContent.slice(0,110),left:r.left,right:r.right});
+               }
+              }
+              const displays=[...document.querySelectorAll('main mjx-container[display="true"]')];
+              const scrolls=[...document.querySelectorAll('main *')].filter(e=>['auto','scroll'].includes(getComputedStyle(e).overflowX)&&e.scrollWidth>e.clientWidth+1);
+              return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,
+               bodyScrollWidth:document.body.scrollWidth,unprotected:bad,internalScrolls:scrolls.length,
+               displayMath:displays.length,scrollingDisplays:displays.filter(e=>e.scrollWidth>e.clientWidth+1||protectedBy(e)).length};
+             });
+             result.viewports.push(layout);
+             await p.evaluate(()=>scrollTo(0,0));
+             await p.screenshot({path:base+'/qa-evidence/screens/'+key+'-'+width+'-top.png'});
+             const selectors=key.includes('global')?'main h1':'main h2';
+             if(width===390) continue;
+             const headings=p.locator(selectors);
+             for(let i=0;i<await headings.count();i++){
+              await headings.nth(i).scrollIntoViewIfNeeded();
+              await p.screenshot({path:base+'/screens/'+key+'-'+width+'-section'+i+'.png'});
+             }
+             for(const kind of (width===320&&!key.includes('global')?['table','.callout']:[])){
+              const loc=p.locator('main '+kind);
+              for(let i=0;i<await loc.count();i++){
+               await loc.nth(i).scrollIntoViewIfNeeded();
+               await p.screenshot({path:base+'/screens/'+key+'-'+width+'-'+kind.replace('.','')+i+'.png'});
+              }
+             }
+            }
+            if(key.includes('global')){
+             result.navigation=await p.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].filter(a=>/C10|C11|ap[eé]ndice|10\.|11\./i.test(a.textContent)).map(a=>({text:a.textContent,href:a.getAttribute('href'),exists:!!document.getElementById(decodeURIComponent(a.hash.slice(1)))})));
+             result.appendices=await p.evaluate(()=>[...document.querySelectorAll('main h1')].filter(h=>/Apéndice/.test(h.textContent)).map(h=>({id:h.id,text:h.textContent,visible:h.getBoundingClientRect().height>0})));
+            }
+            results.push(result);fs.writeFileSync(base+'/qa-evidence/browser-results.json',JSON.stringify(results,null,2));
+            console.log(JSON.stringify({target,math:{items:math.items,containers:math.containers,unprocessed:math.unprocessed,rawMath:math.rawMath,merror:math.merror},viewports:result.viewports.map(v=>({width:v.width,scrollWidth:v.scrollWidth,clientWidth:v.clientWidth,bad:v.unprotected.length,internalScrolls:v.internalScrolls})),errors,failed,responses}));
+            await p.close();
+           }
+           await browser.close();
+           fs.writeFileSync(base+'/qa-evidence/verdict.json',JSON.stringify({pass:results.every(r=>!r.math.merror.length&&!r.math.unprocessed&&!r.math.rawMath&&!r.errors.length&&r.viewports.every(v=>v.scrollWidth===v.clientWidth&&!v.unprotected.length))},null,2));
+          })().catch(e=>{console.error(e);process.exit(1)});
+          
+          JS
+          node fnd-browser.cjs
+          python3 - <<'PY'
+          from pathlib import Path
+          size = sum(p.stat().st_size for p in Path('qa-evidence').rglob('*') if p.is_file())
+          print('BROWSER_EVIDENCE_BYTES', size)
+          assert size < 32*1024*1024
+          PY
+      - name: Preserve reduced browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fnd-browser-evidence
+          path: qa-evidence/
+          compression-level: 9
+          retention-days: 7
+          if-no-files-found: error
