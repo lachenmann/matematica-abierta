@@ -151,6 +151,11 @@ class StructureTests(unittest.TestCase):
             with self.subTest(old=old):
                 self.assertFalse(smart.safe_edit(old, new))
 
+    def test_unclosed_and_inline_code_changes_force_full(self):
+        self.assertFalse(smart.safe_edit("```python\n1", "```python\n2"))
+        self.assertFalse(smart.safe_edit("Resultado `{python} 1`", "Resultado `{python} 2`"))
+        self.assertFalse(smart.safe_edit("<script>run(1)</script>", "<script>run(2)</script>"))
+
     def test_offline_package_reused_for_unrelated_page(self):
         manifest = {"contents": [{"canonicalPath": "/physics.html"}]}
         with patch.object(smart, "verify_package", return_value=manifest), patch.object(smart.subprocess, "run") as run:

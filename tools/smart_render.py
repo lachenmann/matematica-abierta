@@ -22,7 +22,26 @@ INCLUDE = re.compile(r'\{\{<\s*include\s+(?:"([^"]+)"|\x27([^\x27]+)\x27|([^\s>]
 # Preserve structure, cross-reference labels/citations, resource/link destinations
 # and executable code. Prose and math expressions may change.
 TOKENS = re.compile(r"(?m)^\s*#{1,6}\s+.*$|^\s*:::.*$|\{#[^}]+\}|(?<![\w])@[\w:.-]+|!?\[[^\]\n]*\]\([^\n)]*\)|^\s*\[[^\]]+\]:.*$|<[^>]+>|\{\{.*?\}\}")
-CODE = re.compile(r"(?ms)^\s*(`{3,}|~{3,}).*?^\s*\1\s*$")
+INLINE_CODE = re.compile(r"(`+)[^`\n]*?\1")
+HTML_CODE = re.compile(r"(?is)<(?:script|style)\b[^>]*>.*?</(?:script|style)>")
+
+
+def fenced_code(text):
+    chunks = []
+    active = None
+    current = []
+    for line in text.splitlines(keepends=True):
+        fence = re.match(r"^\s*(`{3,}|~{3,})(.*)$", line.rstrip("\n"))
+        if active is None:
+            if fence:
+                active = fence.group(1)
+                current = [line]
+        else:
+            current.append(line)
+            if fence and fence.group(1)[0] == active[0] and len(fence.group(1)) >= len(active) and not fence.group(2).strip():
+                chunks.append("".join(current))
+                active = None
+    return None if active is not None else chunks
 
 
 def git(root, *args):
@@ -55,9 +74,12 @@ def safe_edit(before, after):
         return False
     old_body = before[old_front.end():] if old_front else before
     new_body = after[new_front.end():] if new_front else after
-    return (TOKENS.findall(old_body) == TOKENS.findall(new_body)
-            and CODE.findall(old_body) == CODE.findall(new_body)
-            and [m.group() for m in CODE.finditer(old_body)] == [m.group() for m in CODE.finditer(new_body)])
+    old_code, new_code = fenced_code(old_body), fenced_code(new_body)
+    return (old_code is not None and new_code is not None
+            and TOKENS.findall(old_body) == TOKENS.findall(new_body)
+            and old_code == new_code
+            and [m.group() for m in INLINE_CODE.finditer(old_body)] == [m.group() for m in INLINE_CODE.finditer(new_body)]
+            and HTML_CODE.findall(old_body) == HTML_CODE.findall(new_body))
 
 
 def documents(root):
