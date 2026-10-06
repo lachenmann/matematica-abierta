@@ -4,7 +4,9 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 const {chromium}=require('playwright');
 const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
-const rows=JSON.parse(fs.readFileSync(path.join(root,'data/cpm-tome-i-manifest.json'))).chapters;
+const chapters=JSON.parse(fs.readFileSync(path.join(root,'data/cpm-tome-i-manifest.json'))).chapters;
+const rows=chapters.flatMap(row=>[row,...(row.pages??[]).map(p=>({...p,chapter:row.chapter+'-'+path.basename(p.path,'.md')}))]);
+const expectedChecks=rows.length*5;
 const base=process.env.CPM_QA_URL??'http://127.0.0.1:8788';
 const output=path.join(root,'cpm-browser-qa');
 fs.mkdirSync(output,{recursive:true});
@@ -68,7 +70,7 @@ try {
         }
       } catch(e) {check.pass=false;check.exception=e.message;}
       checks.push(check);
-      fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({complete:checks.length===100,checks},null,2));
+      fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({complete:checks.length===expectedChecks,checks},null,2));
       console.log(JSON.stringify(check));
     }
     checkpoint('close-page',row.chapter);
@@ -76,6 +78,7 @@ try {
     clearTimeout(watchdog);
   }
 } finally {await browser.close();}
-const pass=checks.length===100&&checks.every(e=>e.pass);
+const pass=checks.length===expectedChecks&&checks.every(e=>e.pass);
 fs.writeFileSync(path.join(output,'results.json'),JSON.stringify({status:pass?'AUTOMATED_PASS_VISUAL_REVIEW_REQUIRED':'FAIL',browser:'Chromium',checks},null,2));
 process.exitCode=pass?0:1;
+
