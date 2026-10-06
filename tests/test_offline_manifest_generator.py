@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from generate_offline_manifests import (
     build_manifest,
+    build_offline_render_command,
     load_catalog,
     resolve_source_path,
     select_book,
@@ -84,6 +85,30 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "orden de todos sus capítulos"):
             select_book(catalog, "MA-BOK-0005")
+
+    def test_offline_render_uses_minimal_self_contained_html(self):
+        root = Path("/repo")
+        source = root / "libros" / "capitulos" / "capitulo-1.md"
+        output_dir = Path("/tmp/offline")
+
+        command = build_offline_render_command(
+            root,
+            source,
+            output_dir,
+            quarto="quarto",
+        )
+
+        self.assertIn("minimal:true", command)
+        self.assertIn("toc:false", command)
+        self.assertIn("anchor-sections:false", command)
+        self.assertIn("code-copy:false", command)
+        self.assertIn("fig-responsive:true", command)
+        self.assertIn("embed-resources:true", command)
+        self.assertIn("self-contained-math:true", command)
+        self.assertEqual(
+            command[:4],
+            ["quarto", "render", "libros/capitulos/capitulo-1.md", "--to"],
+        )
 
     def test_source_resolution_uses_canonical_path(self):
         with tempfile.TemporaryDirectory() as tmp:
