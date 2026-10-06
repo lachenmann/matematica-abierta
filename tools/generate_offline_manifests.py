@@ -5,10 +5,12 @@ The public catalog supplies canonical identities. Each selected book chapter is
 rendered again as standalone HTML with Quarto's embedded resources and embedded
 math runtime, then hashed into the B1 manifest contract.
 
-Initial B2 policy:
+B2 policy:
 - public books only;
 - explicit book IDs at generation time;
 - chapter-level self-contained HTML;
+- offline render uses Quarto minimal HTML rather than the full website chrome;
+- math remains self-contained;
 - assets array empty because page resources are embedded in the HTML;
 - deterministic package version derived from manifest content hashes;
 - fail closed on missing source, unsafe output, external subresources, or
@@ -161,6 +163,20 @@ def render_offline_chapter(root: Path, source: Path, quarto: str = "quarto") -> 
             "html",
             "--output-dir",
             str(output_dir),
+            "-M",
+            "minimal:true",
+            "-M",
+            "toc:false",
+            "-M",
+            "anchor-sections:false",
+            "-M",
+            "code-copy:false",
+            "-M",
+            "citations-hover:false",
+            "-M",
+            "footnotes-hover:false",
+            "-M",
+            "fig-responsive:true",
             "-M",
             "embed-resources:true",
             "-M",
