@@ -163,7 +163,7 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         self.assertIn("<table>", optimized)
         self.assertIn("window.MathJax", optimized)
         self.assertIn("window.CONTENT_SPECIFIC", optimized)
-        self.assertIn("body{font-family", optimized)
+        self.assertIn("Source%20Sans%20Pro", optimized)
 
         self.assertNotIn("quarto-header", optimized)
         self.assertNotIn("<footer>", optimized)
