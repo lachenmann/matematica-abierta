@@ -16,10 +16,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
       - name: Test and generate public mobile catalog
         run: |
-          python3 -m unittest tests/test_app_catalog_generator.py tests/test_offline_manifest_generator.py
+          python3 -m unittest tests/test_app_catalog_generator.py tests/test_offline_manifest_generator.py tests/test_smart_render.py
           python3 tools/generate_app_catalog.py
           python3 - <<'PY'
           import json
@@ -63,44 +65,19 @@ jobs:
         with:
           version: 1.10.18
 
-      - name: Gate B2 generator before full site render
-        run: |
-          rm -rf .b2-site
-          mkdir -p .b2-site/app
-          cp app/catalog-v1.json .b2-site/app/catalog-v1.json
-          python3 tools/generate_offline_manifests.py \
-            --site-dir .b2-site \
-            --book-id MA-BOK-0005
-          python3 - <<'PY'
-          import hashlib
-          import json
-          from pathlib import Path
+      - name: Restore published complete state for proportional QA
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            _site
+            .quarto
+            .ma-build/base.json
+          key: ${{ runner.os }}-ma-site-v1-quarto-1.10.18-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-ma-site-v1-quarto-1.10.18-
 
-          package = Path(".b2-site/app/offline/MA-BOK-0005")
-          manifest = json.loads(
-              (package / "manifest-v1.json").read_text(encoding="utf-8")
-          )
-          assert [item["contentId"] for item in manifest["contents"]] == [
-              "MA-BCH-0009",
-              "MA-BCH-0031",
-          ]
-          assert manifest["assets"] == []
-          total = 0
-          for item in manifest["contents"]:
-              data = (package / item["localPath"]).read_bytes()
-              assert len(data) == item["size"]
-              assert hashlib.sha256(data).hexdigest() == item["sha256"]
-              total += len(data)
-          assert total == manifest["totalSize"]
-          print(
-              f"B2 targeted gate: {len(manifest['contents'])} capítulos, "
-              f"{manifest['totalSize']} bytes, {manifest['version']}"
-          )
-          PY
-          rm -rf .b2-site
-
-      - name: Render site
-        run: quarto render
+      - name: Render affected pages or complete site and offline pilot
+        run: python3 tools/smart_render.py build --offline-book MA-BOK-0005
 
       - name: Verify laboratory assets and rendered page
         run: |
@@ -149,12 +126,6 @@ jobs:
           assert data["items"]
           PY
 
-      - name: Generate B2 offline pilot package
-        run: |
-          python3 tools/generate_offline_manifests.py \
-            --site-dir _site \
-            --book-id MA-BOK-0005
-
       - name: Verify B2 offline pilot package
         run: |
           python3 - <<'PY'
@@ -202,3 +173,14 @@ jobs:
           path: _site/
           retention-days: 2
           if-no-files-found: error
+
+      - name: Preserve build decision and timing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ma-pr-build-report
+          path: .ma-build/report.json
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: warn
+
