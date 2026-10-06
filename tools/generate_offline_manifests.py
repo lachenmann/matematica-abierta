@@ -238,17 +238,7 @@ def _strip_embedded_webfonts(head: str) -> str:
 
         replacement_href = "data:text/css," + quote(
             stripped,
-            safe="!def validate_self_contained_html(data: bytes, *, label: str) -> None:
-    if not data or b"<html" not in data.lower() or b"<body" not in data.lower():
-        raise ValueError(f"{label}: HTML offline vacío o incompleto")
-
-    text = data.decode("utf-8", errors="strict")
-    for pattern in EXTERNAL_SUBRESOURCE_PATTERNS:
-        if pattern.search(text):
-            raise ValueError(f"{label}: conserva un subrecurso externo")
-
-
-'()*+,/:;=?@-._~",
+            safe="!$&'()*+,/:;=?@-._~",
         )
         return tag.replace(href, replacement_href, 1)
 
