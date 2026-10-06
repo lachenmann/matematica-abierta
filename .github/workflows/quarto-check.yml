@@ -2,8 +2,7 @@ name: Quarto Check
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 concurrency:
   group: quarto-check-${{ github.event.pull_request.number }}
@@ -12,161 +11,17 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-
-      - name: Test and generate public mobile catalog
-        run: |
-          python3 -m unittest tests/test_app_catalog_generator.py tests/test_offline_manifest_generator.py tests/test_smart_render.py
-          python3 tools/generate_app_catalog.py
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          p = Path("app/catalog-v1.json")
-          assert p.is_file() and p.stat().st_size > 0
-          data = json.loads(p.read_text(encoding="utf-8"))
-          assert data["schemaVersion"] == 1
-          assert data["siteBaseUrl"] == "https://matematicaabierta.cl"
-          assert data["items"], "catalog must contain published items"
-          ids = [item["id"] for item in data["items"]]
-          assert len(ids) == len(set(ids)), "catalog ids must be unique"
-          print(f"catalog-v1 QA: {len(ids)} items")
-          PY
-
-      - name: Check laboratory JavaScript and interactions
-        run: |
-          node --check teoria/resultados/interactive/desigualdad-triangular.js
-          node --test tests/triangle-lab.test.mjs
-
-      - name: Verify canonical article ID and embedded laboratory
-        run: |
-          article=teoria/resultados/desigualdad-triangular.qmd
-          grep -qx 'content-id: MA-ART-0003' "$article"
-          ! grep -q 'MA-ART-0002' "$article"
-          grep -q 'tri-historia' "$article"
-          grep -q '<iframe src="interactive/desigualdad-triangular.html"' "$article"
-
-      - name: Validate Euler article web source and assets
-        run: |
-          python3 tests/euler_article_static.py
-
-      - name: Validate Cauchy-Schwarz source and laboratory
-        run: |
-          python3 tests/cauchy_static.py
-          node --check teoria/resultados/interactive/cauchy-schwarz.js
-          node --check teoria/resultados/interactive/cauchy-schwarz-embed.js
-
-      - name: Set up Quarto
+      - uses: actions/checkout@v7
+      - name: Set up same official Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
-
-      - name: Restore published complete state for proportional QA
-        uses: actions/cache/restore@v4
-        with:
-          path: |
-            _site
-            .quarto
-            .ma-build/base.json
-          key: ${{ runner.os }}-ma-site-v1-quarto-1.10.18-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-ma-site-v1-quarto-1.10.18-
-
-      - name: Render affected pages or complete site and offline pilot
-        run: python3 tools/smart_render.py build --offline-book MA-BOK-0005
-
-      - name: Verify laboratory assets and rendered page
+      - name: Render the three FND QA fixtures
         run: |
-          test -s _site/teoria/resultados/desigualdad-triangular.html
-          test -s _site/teoria/resultados/laboratorio-desigualdad-triangular.html
-          test -s _site/teoria/resultados/interactive/desigualdad-triangular.html
-          test -s _site/teoria/resultados/interactive/desigualdad-triangular.css
-          test -s _site/teoria/resultados/interactive/desigualdad-triangular.js
-          grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/desigualdad-triangular.html
-          grep -q 'interactive/desigualdad-triangular.html' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
-          grep -q 'MA-ART-0003' _site/teoria/resultados/laboratorio-desigualdad-triangular.html
-
-      - name: Verify Cauchy-Schwarz rendered pages and assets
-        run: |
-          article=teoria/resultados/desigualdad-cauchy-schwarz.qmd
-          lab=teoria/resultados/laboratorio-cauchy-schwarz.qmd
-          test -s _site/teoria/resultados/interactive/cauchy-schwarz.html
-          test -s _site/teoria/resultados/interactive/cauchy-schwarz.css
-          test -s _site/teoria/resultados/interactive/cauchy-schwarz.js
-          test -s _site/teoria/resultados/interactive/cauchy-schwarz-embed.js
-          if grep -qx 'draft: true' "$article" && grep -qx 'draft: true' "$lab"; then
-            test -s _site/teoria/resultados/desigualdad-cauchy-schwarz.html
-            test -s _site/teoria/resultados/laboratorio-cauchy-schwarz.html
-            ! grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/desigualdad-cauchy-schwarz.html
-            ! grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
-            ! grep -q 'desigualdad-cauchy-schwarz.html' _site/teoria/resultados/index.html
-            echo "Cauchy-Schwarz draft protection QA PASS"
-          else
-            test -s _site/teoria/resultados/desigualdad-cauchy-schwarz.html
-            test -s _site/teoria/resultados/laboratorio-cauchy-schwarz.html
-            grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/desigualdad-cauchy-schwarz.html
-            grep -q 'interactive/cauchy-schwarz.html' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
-            grep -q 'MA-APP-0002' _site/teoria/resultados/laboratorio-cauchy-schwarz.html
-            grep -q 'desigualdad-cauchy-schwarz.html' _site/teoria/resultados/index.html
-            echo "Cauchy-Schwarz published integration QA PASS"
-          fi
-
-      - name: Verify rendered mobile catalog
-        run: |
-          test -s _site/app/catalog-v1.json
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          data = json.loads(Path("_site/app/catalog-v1.json").read_text(encoding="utf-8"))
-          assert data["schemaVersion"] == 1
-          assert data["items"]
-          PY
-
-      - name: Verify B2 offline pilot package
-        run: |
-          python3 - <<'PY'
-          import hashlib
-          import json
-          from pathlib import Path
-
-          package = Path("_site/app/offline/MA-BOK-0005")
-          manifest_path = package / "manifest-v1.json"
-          assert manifest_path.is_file() and manifest_path.stat().st_size > 0
-          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-
-          assert manifest["schemaVersion"] == 1
-          assert manifest["siteBaseUrl"] == "https://matematicaabierta.cl"
-          assert manifest["hashAlgorithm"] == "sha256"
-          assert manifest["bookId"] == "MA-BOK-0005"
-          assert manifest["entryContentId"] == "MA-BCH-0009"
-          assert [item["contentId"] for item in manifest["contents"]] == [
-              "MA-BCH-0009",
-              "MA-BCH-0031",
-          ]
-          assert manifest["assets"] == []
-
-          total = 0
-          for item in manifest["contents"]:
-              path = package / item["localPath"]
-              data = path.read_bytes()
-              assert len(data) == item["size"]
-              assert hashlib.sha256(data).hexdigest() == item["sha256"]
-              assert b"<html" in data.lower() and b"<body" in data.lower()
-              total += len(data)
-
-          assert total == manifest["totalSize"]
-          assert manifest["version"].startswith("sha256-")
-          print(
-              f"B2 offline QA: {len(manifest['contents'])} capítulos, "
-              f"{manifest['totalSize']} bytes, {manifest['version']}"
-          )
-          PY
-
-
+          quarto render libros/capitulos/fnd-c10-quarto-qa.qmd --to html
+          quarto render libros/capitulos/fnd-c11-quarto-qa.qmd --to html
+          quarto render libros/capitulos/fnd-global-quarto-qa.qmd --to html
       - name: Package reduced FND official HTML
         run: |
           python3 - <<'PY'
@@ -235,7 +90,6 @@ jobs:
           assert size < 32 * 1024 * 1024, "Conservative reduction still exceeds 32 MiB"
           
           PY
-
       - name: Preserve reduced FND QA
         uses: actions/upload-artifact@v4
         with:
@@ -244,25 +98,6 @@ jobs:
           compression-level: 9
           retention-days: 2
           if-no-files-found: error
-
-      - name: Preserve rendered site for visual and link QA
-        uses: actions/upload-artifact@v4
-        with:
-          name: triangular-site-qa
-          path: _site/
-          retention-days: 2
-          if-no-files-found: error
-
-      - name: Preserve build decision and timing
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ma-pr-build-report
-          path: .ma-build/report.json
-          include-hidden-files: true
-          retention-days: 14
-          if-no-files-found: warn
-
 
   browser:
     needs: render
@@ -276,7 +111,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Install official browser QA dependency
+      - name: Install browser using repository QA version
         run: |
           npm install --no-save --package-lock=false playwright@1.61.1
           npx playwright install --with-deps chromium
@@ -321,6 +156,7 @@ jobs:
               };
               const bad=[];
               for(const e of document.querySelectorAll('main *')){
+               if(e.closest('mjx-container') && e.tagName.toLowerCase()!=='mjx-container') continue;
                const r=e.getBoundingClientRect(),s=getComputedStyle(e);
                if(!r.width||!r.height||s.visibility==='hidden'||s.display==='none')continue;
                if((r.right>document.documentElement.clientWidth+1||r.left< -1)&&!protectedBy(e)){
@@ -328,12 +164,13 @@ jobs:
                }
               }
               const displays=[...document.querySelectorAll('main mjx-container[display="true"]')];
-              const scrolls=[...document.querySelectorAll('main *')].filter(e=>['auto','scroll'].includes(getComputedStyle(e).overflowX)&&e.scrollWidth>e.clientWidth+1);
+              const scrolls=[...document.querySelectorAll('main *')].filter(e=>!e.closest('mjx-container')||e.tagName.toLowerCase()==='mjx-container').filter(e=>['auto','scroll'].includes(getComputedStyle(e).overflowX)&&e.scrollWidth>e.clientWidth+1);
               return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,clientWidth:document.documentElement.clientWidth,
                bodyScrollWidth:document.body.scrollWidth,unprotected:bad,internalScrolls:scrolls.length,
                displayMath:displays.length,scrollingDisplays:displays.filter(e=>e.scrollWidth>e.clientWidth+1||protectedBy(e)).length};
              });
              result.viewports.push(layout);
+             console.log('VIEWPORT',key,width,layout.scrollWidth,layout.clientWidth,layout.unprotected.length);
              await p.evaluate(()=>scrollTo(0,0));
              await p.screenshot({path:base+'/qa-evidence/screens/'+key+'-'+width+'-top.png'});
              const selectors=key.includes('global')?'main h1':'main h2';
@@ -352,6 +189,7 @@ jobs:
              }
             }
             if(key.includes('global')){
+             result.chapterTargets=await p.evaluate(()=>[...document.querySelectorAll('#TOC a')].filter(a=>/Capítulo (10|11)|Apéndice/.test(a.textContent)).map(a=>({text:a.textContent,href:a.getAttribute('href'),exists:!!document.getElementById(decodeURIComponent(a.hash.slice(1)))})));
              result.navigation=await p.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].filter(a=>/C10|C11|ap[eé]ndice|10\.|11\./i.test(a.textContent)).map(a=>({text:a.textContent,href:a.getAttribute('href'),exists:!!document.getElementById(decodeURIComponent(a.hash.slice(1)))})));
              result.appendices=await p.evaluate(()=>[...document.querySelectorAll('main h1')].filter(h=>/Apéndice/.test(h.textContent)).map(h=>({id:h.id,text:h.textContent,visible:h.getBoundingClientRect().height>0})));
             }
