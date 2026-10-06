@@ -1,0 +1,2645 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 1 de Cálculo para matemáticos: lectura por secciones.">
+
+<title>1.4 — Por qué los racionales no bastan: el ejemplo de Rudin – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-85add0f92a978ca2f87bbec4f151f3a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4b616e518205283c34662efb7eb16ef7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="calculo-para-matematicos.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#los-números-reales-axiomas-de-cuerpo-orden-y-completitud" id="toc-los-números-reales-axiomas-de-cuerpo-orden-y-completitud" class="nav-link active" data-scroll-target="#los-números-reales-axiomas-de-cuerpo-orden-y-completitud"><span class="header-section-number">1</span> Los números reales: axiomas de cuerpo, orden y completitud</a>
+  <ul class="collapse">
+  <li><a href="#sec-t1-c02-01" id="toc-sec-t1-c02-01" class="nav-link" data-scroll-target="#sec-t1-c02-01"><span class="header-section-number">1.4</span> Por qué los racionales no bastan: el ejemplo de Rudin</a>
+  <ul class="collapse">
+  <li><a href="#una-ecuación-demasiado-sencilla-para-causar-problemas" id="toc-una-ecuación-demasiado-sencilla-para-causar-problemas" class="nav-link" data-scroll-target="#una-ecuación-demasiado-sencilla-para-causar-problemas">Una ecuación demasiado sencilla para causar problemas</a></li>
+  <li><a href="#qué-hemos-demostrado-y-qué-no" id="toc-qué-hemos-demostrado-y-qué-no" class="nav-link" data-scroll-target="#qué-hemos-demostrado-y-qué-no">Qué hemos demostrado y qué no</a></li>
+  <li><a href="#la-diagonal-de-un-cuadrado-y-el-problema-aritmético" id="toc-la-diagonal-de-un-cuadrado-y-el-problema-aritmético" class="nav-link" data-scroll-target="#la-diagonal-de-un-cuadrado-y-el-problema-aritmético">La diagonal de un cuadrado y el problema aritmético</a></li>
+  <li><a href="#el-ejemplo-introductorio-de-rudin-paso-a-paso" id="toc-el-ejemplo-introductorio-de-rudin-paso-a-paso" class="nav-link" data-scroll-target="#el-ejemplo-introductorio-de-rudin-paso-a-paso">El ejemplo introductorio de Rudin, paso a paso</a></li>
+  <li><a href="#cómo-se-fabrica-una-fórmula-que-parece-caída-del-cielo" id="toc-cómo-se-fabrica-una-fórmula-que-parece-caída-del-cielo" class="nav-link" data-scroll-target="#cómo-se-fabrica-una-fórmula-que-parece-caída-del-cielo">Cómo se fabrica una fórmula que parece caída del cielo</a></li>
+  <li><a href="#ver-la-máquina-funcionando" id="toc-ver-la-máquina-funcionando" class="nav-link" data-scroll-target="#ver-la-máquina-funcionando">Ver la máquina funcionando</a></li>
+  <li><a href="#entonces-dónde-está-exactamente-el-hueco" id="toc-entonces-dónde-está-exactamente-el-hueco" class="nav-link" data-scroll-target="#entonces-dónde-está-exactamente-el-hueco">Entonces, ¿dónde está exactamente el hueco?</a></li>
+  <li><a href="#una-segunda-lectura-del-ejemplo-de-rudin" id="toc-una-segunda-lectura-del-ejemplo-de-rudin" class="nav-link" data-scroll-target="#una-segunda-lectura-del-ejemplo-de-rudin">Una segunda lectura del ejemplo de Rudin</a></li>
+  <li><a href="#qué-nos-llevamos-a-la-sección-siguiente" id="toc-qué-nos-llevamos-a-la-sección-siguiente" class="nav-link" data-scroll-target="#qué-nos-llevamos-a-la-sección-siguiente">Qué nos llevamos a la sección siguiente</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">1.4 — Por qué los racionales no bastan: el ejemplo de Rudin</h1>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 1 de Cálculo para matemáticos: lectura por secciones.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">6 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="los-números-reales-axiomas-de-cuerpo-orden-y-completitud" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Los números reales: axiomas de cuerpo, orden y completitud</h1>
+<p><a href="../../libros/capitulos/cpm-c01-03.html">← Anterior</a> · <a href="../../libros/capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.html">Índice del capítulo</a> · <a href="../../libros/capitulos/cpm-c01-05.html">Siguiente →</a></p>
+<section id="sec-t1-c02-01" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-t1-c02-01"><span class="header-section-number">1.4</span> Por qué los racionales no bastan: el ejemplo de Rudin</h2>
+<section id="una-ecuación-demasiado-sencilla-para-causar-problemas" class="level3">
+<h3 class="anchored" data-anchor-id="una-ecuación-demasiado-sencilla-para-causar-problemas">Una ecuación demasiado sencilla para causar problemas</h3>
+<p>Busquemos primero soluciones racionales de</p>
+<p><span class="math display">\[
+x^2=2.
+\]</span></p>
+<p>Antes de decidir si tal racional existe, podemos localizar dónde tendría que estar una eventual solución positiva.</p>
+<p>Como</p>
+<p><span class="math display">\[
+1^2&lt;2&lt;2^2,
+\]</span></p>
+<p>si <span class="math inline">\(x\ge0\)</span> y <span class="math inline">\(x^2=2\)</span>, no puede ocurrir <span class="math inline">\(x\le1\)</span>: por la monotonía del cuadrado en los no negativos, demostrada en <a href="../../libros/capitulos/cpm-c01-01.html#prp-t1-0007">Proposición 1.5</a>, tendríamos <span class="math inline">\(x^2\le1\)</span>. Tampoco puede ocurrir <span class="math inline">\(x\ge2\)</span>, pues entonces <span class="math inline">\(x^2\ge4\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+1&lt;x&lt;2.
+\]</span></p>
+<p>Podemos estrechar la localización con racionales intermedios:</p>
+<p><span class="math display">\[
+\left(\frac43\right)^2=\frac{16}{9}&lt;2,
+\qquad
+\left(\frac32\right)^2=\frac94&gt;2.
+\]</span></p>
+<p>El mismo argumento de monotonía muestra que una solución positiva debería satisfacer</p>
+<p><span class="math display">\[
+\frac43&lt;x&lt;\frac32.
+\]</span></p>
+<p>Podríamos continuar insertando puntos medios racionales. En cada etapa ocurre una de tres cosas: el punto medio tiene cuadrado menor que <span class="math inline">\(2\)</span>, mayor que <span class="math inline">\(2\)</span> o exactamente igual a <span class="math inline">\(2\)</span>. En los dos primeros casos conservamos la mitad que todavía encierra una eventual solución; en el tercero habríamos encontrado una solución racional exacta.</p>
+<p>Este procedimiento puede producir intervalos racionales cada vez más estrechos, pero por sí solo no responde la pregunta decisiva: <strong>¿algún racional satisface exactamente <span class="math inline">\(x^2=2\)</span>?</strong></p>
+<p>La cuestión precisa es, por tanto:</p>
+<blockquote class="blockquote">
+<p>¿podemos demostrar que existe un racional con cuadrado <span class="math inline">\(2\)</span>, o podemos demostrar que ninguno existe?</p>
+</blockquote>
+<p>La segunda alternativa es la correcta.</p>
+<div id="prp-t1-0006" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposición 1.1</strong></span> <strong>Inexistencia de una solución racional de <span class="math inline">\(x^2=2\)</span>.</strong> No existe ningún número racional <span class="math inline">\(q\)</span> tal que</p>
+<p><span class="math display">\[
+q^2=2.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Idea de la prueba">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Idea de la prueba
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si un racional <span class="math inline">\(q\)</span> satisficiera <span class="math inline">\(q^2=2\)</span>, podríamos elegir una representación reducida</p>
+<p><span class="math display">\[
+q=\frac mn
+\]</span></p>
+<p>con <span class="math inline">\(m,n\in\mathbb Z\)</span>, <span class="math inline">\(n\ne0\)</span>, y sin factor común entero mayor que <span class="math inline">\(1\)</span>. La ecuación obligará primero a que <span class="math inline">\(m\)</span> sea par y después a que <span class="math inline">\(n\)</span> también sea par. Entonces ambos tendrán el factor común <span class="math inline">\(2\)</span>, contradiciendo que la fracción fuese reducida.</p>
+<p>El único hecho aritmético adicional que necesitaremos es este: si el cuadrado de un entero es par, entonces el entero es par. Lo justificamos localmente antes de usarlo.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Lema de paridad (demostración local)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Lema de paridad (demostración local)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Supongamos que <span class="math inline">\(m\in\mathbb Z\)</span> y que <span class="math inline">\(m^2\)</span> es par. Si <span class="math inline">\(m\)</span> no fuera par, sería impar y podríamos escribir</p>
+<p><span class="math display">\[
+m=2k+1
+\]</span></p>
+<p>para algún <span class="math inline">\(k\in\mathbb Z\)</span>. Entonces</p>
+<p><span class="math display">\[
+m^2=(2k+1)^2
+=4k^2+4k+1
+=2(2k^2+2k)+1,
+\]</span></p>
+<p>que es impar. Esto contradice que <span class="math inline">\(m^2\)</span> sea par. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{m^2\text{ par}\Longrightarrow m\text{ par}.}
+\]</span></p>
+</div>
+</div>
+<p><strong>Demostración.</strong> Supongamos, para obtener una contradicción, que existe</p>
+<p><span class="math display">\[
+q\in\mathbb Q
+\]</span></p>
+<p>tal que</p>
+<p><span class="math display">\[
+q^2=2.
+\]</span></p>
+<p>Elegimos una representación reducida</p>
+<p><span class="math display">\[
+q=\frac mn,
+\]</span></p>
+<p>con <span class="math inline">\(m,n\in\mathbb Z\)</span>, <span class="math inline">\(n\ne0\)</span>, y sin factor común entero mayor que <span class="math inline">\(1\)</span>.</p>
+<p>Sustituyendo en la ecuación,</p>
+<p><span class="math display">\[
+\left(\frac mn\right)^2=2.
+\]</span></p>
+<p>Como <span class="math inline">\(n\ne0\)</span>, podemos multiplicar por <span class="math inline">\(n^2\)</span> y obtener</p>
+<p><span class="math display">\[
+m^2=2n^2.
+\]</span></p>
+<p>El miembro derecho es divisible por <span class="math inline">\(2\)</span>, así que <span class="math inline">\(m^2\)</span> es par. Por el lema de paridad, <span class="math inline">\(m\)</span> es par. Existe entonces <span class="math inline">\(k\in\mathbb Z\)</span> tal que</p>
+<p><span class="math display">\[
+m=2k.
+\]</span></p>
+<p>Sustituyendo esta expresión en <span class="math inline">\(m^2=2n^2\)</span>,</p>
+<p><span class="math display">\[
+(2k)^2=2n^2,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+4k^2=2n^2.
+\]</span></p>
+<p>Dividiendo por <span class="math inline">\(2\)</span>,</p>
+<p><span class="math display">\[
+n^2=2k^2.
+\]</span></p>
+<p>Por la misma razón, <span class="math inline">\(n^2\)</span> es par y el lema implica que <span class="math inline">\(n\)</span> es par. Existe, pues, <span class="math inline">\(\ell\in\mathbb Z\)</span> tal que</p>
+<p><span class="math display">\[
+n=2\ell.
+\]</span></p>
+<p>Hemos obtenido simultáneamente</p>
+<p><span class="math display">\[
+m=2k,
+\qquad
+n=2\ell.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(m\)</span> y <span class="math inline">\(n\)</span> tienen el factor común <span class="math inline">\(2\)</span>, en contradicción con que <span class="math inline">\(m/n\)</span> hubiese sido elegida como una fracción reducida.</p>
+<p>La suposición inicial es imposible. En consecuencia,</p>
+<p><span class="math display">\[
+\boxed{
+\forall q\in\mathbb Q,\qquad q^2\ne2.
+}
+\]</span></p>
+<p><span class="math inline">\(\blacksquare\)</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Después de la prueba">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Después de la prueba
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Conviene identificar la arquitectura del argumento.</p>
+<ol type="1">
+<li><strong>Objetivo:</strong> demostrar una inexistencia dentro de <span class="math inline">\(\mathbb Q\)</span>.</li>
+<li><strong>Estrategia:</strong> contradicción.</li>
+<li><strong>Suposición temporal:</strong> existe <span class="math inline">\(q\in\mathbb Q\)</span> con <span class="math inline">\(q^2=2\)</span>.</li>
+<li><strong>Representación útil:</strong> <span class="math inline">\(q=m/n\)</span> en forma reducida.</li>
+<li><strong>Mecanismo:</strong> la ecuación fuerza primero <span class="math inline">\(2\mid m\)</span> y después <span class="math inline">\(2\mid n\)</span>.</li>
+<li><strong>Contradicción:</strong> numerador y denominador tienen el factor común <span class="math inline">\(2\)</span>.</li>
+</ol>
+<p>La conclusión debe leerse con precisión. Hemos demostrado</p>
+<p><span class="math display">\[
+\boxed{
+\text{no existe }q\in\mathbb Q\text{ tal que }q^2=2.
+}
+\]</span></p>
+<p>No hemos demostrado todavía que exista algún número real cuyo cuadrado sea <span class="math inline">\(2\)</span>. La inexistencia en un dominio y la existencia en otro son afirmaciones lógicamente distintas. Mantendremos esa separación hasta que la completitud nos autorice a construir la frontera real correspondiente.</p>
+</div>
+</div>
+</section>
+<section id="qué-hemos-demostrado-y-qué-no" class="level3">
+<h3 class="anchored" data-anchor-id="qué-hemos-demostrado-y-qué-no">Qué hemos demostrado y qué no</h3>
+<p>La proposición anterior establece exactamente</p>
+<p><span class="math display">\[
+\boxed{
+\neg\exists q\in\mathbb Q
+\qquad
+q^2=2.
+}
+\]</span></p>
+<p>Es decir: <strong>dentro de <span class="math inline">\(\mathbb Q\)</span> no existe solución</strong> de la ecuación <span class="math inline">\(x^2=2\)</span>.</p>
+<p>Es fácil deslizarse, sin advertirlo, desde esta afirmación hasta otra diferente:</p>
+<p><span class="math display">\[
+\exists x\in\mathbb R\setminus\mathbb Q
+\qquad
+x^2=2.
+\]</span></p>
+<p>Pero la segunda proposición contiene una afirmación nueva: <strong>afirma que una solución existe</strong>.</p>
+<p>La diferencia lógica puede verse separando dos trabajos:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{rcl}
+\text{(I)}&amp;\neg\exists q\in\mathbb Q&amp; q^2=2,\\[3pt]
+\text{(II)}&amp;\exists x\in\mathbb R&amp; x^2=2.
+\end{array}
+}
+\]</span></p>
+<p>La proposición anterior demuestra (I). Todavía no hemos demostrado (II).</p>
+<p>Solo después de establecer (II) podremos combinar ambas afirmaciones: si existe <span class="math inline">\(x\in\mathbb R\)</span> con <span class="math inline">\(x^2=2\)</span> y ningún racional satisface esa ecuación, entonces ese <span class="math inline">\(x\)</span> necesariamente cumple</p>
+<p><span class="math display">\[
+x\notin\mathbb Q,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+x\in\mathbb R\setminus\mathbb Q.
+\]</span></p>
+<p>Así, demostrar que <strong>ningún racional</strong> posee cierta propiedad no fabrica por sí solo un objeto no racional que la posea.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Una negación de existencia no es una existencia">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Una negación de existencia no es una existencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>De</p>
+<p><span class="math display">\[
+\neg\exists q\in\mathbb Q\qquad q^2=2
+\]</span></p>
+<p>no podemos concluir, sin una premisa adicional,</p>
+<p><span class="math display">\[
+\exists x\in\mathbb R\setminus\mathbb Q\qquad x^2=2.
+\]</span></p>
+<p>Para esa conclusión necesitamos primero demostrar que alguna solución existe en <span class="math inline">\(\mathbb R\)</span>.</p>
+</div>
+</div>
+<p>Esta distinción explica también una precaución de notación. Todavía no utilizaremos el símbolo</p>
+<p><span class="math display">\[
+\sqrt2
+\]</span></p>
+<p>como nombre de un número real cuya existencia ya hubiese sido establecida. Una notación puede describir qué objeto <strong>queremos</strong> identificar, pero no sustituye una demostración de que tal objeto existe.</p>
+<p>La existencia real será obtenida más adelante mediante completitud: primero construiremos una frontera real como supremo y después demostraremos que esa frontera tiene cuadrado <span class="math inline">\(2\)</span>. Solo entonces quedará legitimada, dentro de nuestra cadena lógica, la escritura <span class="math inline">\(\sqrt2\)</span>.</p>
+</section>
+<section id="la-diagonal-de-un-cuadrado-y-el-problema-aritmético" class="level3">
+<h3 class="anchored" data-anchor-id="la-diagonal-de-un-cuadrado-y-el-problema-aritmético">La diagonal de un cuadrado y el problema aritmético</h3>
+<p>La geometría hace que la situación sea todavía más provocadora. Consideremos un cuadrado de lado <span class="math inline">\(1\)</span>. Si llamamos <span class="math inline">\(d\)</span> a la longitud de su diagonal, el teorema de Pitágoras impone la relación</p>
+<p><span class="math display">\[
+d^2=1^2+1^2=2.
+\]</span></p>
+<p>Aquí conviene distinguir dos lenguajes. La geometría nos presenta una <strong>magnitud</strong> —la diagonal— y una relación que esa magnitud debe satisfacer. La aritmética pregunta además:</p>
+<blockquote class="blockquote">
+<p>¿puede esa magnitud representarse mediante un número del sistema numérico en el que estamos trabajando?</p>
+</blockquote>
+<p>Si intentáramos representarla por un racional <span class="math inline">\(q&gt;0\)</span>, necesariamente tendría que cumplirse</p>
+<p><span class="math display">\[
+q^2=2.
+\]</span></p>
+<p>Pero acabamos de demostrar que ningún racional satisface esa ecuación. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+\text{la longitud de la diagonal de un cuadrado de lado }1
+\text{ no puede representarse mediante un número racional}.
+}
+\]</span></p>
+<p>Esta conclusión sigue sin ser una prueba de que, dentro de nuestro desarrollo axiomático, exista ya un número real particular que represente esa longitud. La imagen geométrica funciona aquí como <strong>motivación del problema aritmético</strong>: muestra qué clase de magnitud queremos poder incorporar, mientras que la existencia numérica deberá justificarse después mediante la completitud.</p>
+<p>El obstáculo tampoco consiste en que los racionales estén «muy separados». Sean <span class="math inline">\(r,s\in\mathbb Q\)</span> con</p>
+<p><span class="math display">\[
+r&lt;s.
+\]</span></p>
+<p>Su punto medio</p>
+<p><span class="math display">\[
+m=\frac{r+s}{2}
+\]</span></p>
+<p>sigue siendo racional. Además,</p>
+<p><span class="math display">\[
+m-r
+=
+\frac{s-r}{2}
+&gt;0
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+s-m
+=
+\frac{s-r}{2}
+&gt;0.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+r&lt;\frac{r+s}{2}&lt;s.
+}
+\]</span></p>
+<p>Así, entre dos racionales distintos siempre existe otro racional. Podemos incluso repetir el procedimiento indefinidamente y seguir insertando racionales entre racionales.</p>
+<p>Pero esta riqueza local del orden no responde una pregunta diferente: si ciertos racionales quedan sistemáticamente a un lado de una frontera y otros al lado opuesto, <strong>¿debe existir un racional que ocupe esa frontera?</strong></p>
+<p>La respuesta será negativa. La densidad entre puntos racionales no impide que falte un punto frontera racional.</p>
+<p>Para hacer precisa esta diferencia entre «siempre hay puntos intermedios» y «toda frontera existe dentro del sistema», examinaremos ahora el ejemplo introductorio de Rudin.</p>
+</section>
+<section id="el-ejemplo-introductorio-de-rudin-paso-a-paso" class="level3">
+<h3 class="anchored" data-anchor-id="el-ejemplo-introductorio-de-rudin-paso-a-paso">El ejemplo introductorio de Rudin, paso a paso</h3>
+<p>En el Ejemplo 1.1 de la tercera edición de <em>Principles of Mathematical Analysis</em>, Walter Rudin utiliza la ecuación <span class="math inline">\(p^2=2\)</span> para exhibir el hueco de los racionales. Después de demostrar que esa ecuación no tiene solución racional, considera los conjuntos</p>
+<p><span class="math display">\[
+A=\{p\in\mathbb Q:p&gt;0,\ p^2&lt;2\}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+B=\{p\in\mathbb Q:p&gt;0,\ p^2&gt;2\}.
+\]</span></p>
+<p>Antes de estudiar la fórmula que aparecerá enseguida, conviene describir con precisión la estructura de estos dos conjuntos.</p>
+<p>En primer lugar, ambos son no vacíos:</p>
+<p><span class="math display">\[
+1\in A,
+\qquad
+2\in B,
+\]</span></p>
+<p>porque</p>
+<p><span class="math display">\[
+1^2&lt;2&lt;2^2.
+\]</span></p>
+<p>En segundo lugar, todo racional positivo pertenece exactamente a uno de ellos. En efecto, si <span class="math inline">\(p\in\mathbb Q\)</span> y <span class="math inline">\(p&gt;0\)</span>, la tricotomía aplicada a <span class="math inline">\(p^2\)</span> y <span class="math inline">\(2\)</span> da exactamente una de las posibilidades</p>
+<p><span class="math display">\[
+p^2&lt;2,
+\qquad
+p^2=2,
+\qquad
+p^2&gt;2.
+\]</span></p>
+<p>La posibilidad intermedia ya fue excluida: ningún racional tiene cuadrado igual a <span class="math inline">\(2\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+p\in A
+\qquad\text{o}\qquad
+p\in B,
+\]</span></p>
+<p>y las dos alternativas son mutuamente excluyentes.</p>
+<p>En tercer lugar, todo elemento de <span class="math inline">\(A\)</span> está estrictamente a la izquierda de todo elemento de <span class="math inline">\(B\)</span>. Sean</p>
+<p><span class="math display">\[
+a\in A,
+\qquad
+b\in B.
+\]</span></p>
+<p>Supongamos, para obtener una contradicción, que <span class="math inline">\(b\le a\)</span>. Como <span class="math inline">\(a,b&gt;0\)</span>, tenemos</p>
+<p><span class="math display">\[
+0&lt;b\le a.
+\]</span></p>
+<p>La monotonía del cuadrado en los no negativos, <a href="../../libros/capitulos/cpm-c01-01.html#prp-t1-0007">Proposición 1.5</a>, da entonces</p>
+<p><span class="math display">\[
+b^2\le a^2.
+\]</span></p>
+<p>Pero <span class="math inline">\(a\in A\)</span> implica <span class="math inline">\(a^2&lt;2\)</span>, así que</p>
+<p><span class="math display">\[
+b^2\le a^2&lt;2,
+\]</span></p>
+<p>en contradicción con <span class="math inline">\(b\in B\)</span>, que exige <span class="math inline">\(b^2&gt;2\)</span>.</p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+\forall a\in A\;\forall b\in B,
+\qquad
+a&lt;b.
+}
+\]</span></p>
+<p>Tenemos así dos regiones racionales no vacías, disjuntas y ordenadas:</p>
+<p><span class="math display">\[
+\boxed{
+A\quad\text{queda por debajo del borde},
+\qquad
+B\quad\text{queda por encima del borde}.
+}
+\]</span></p>
+<p>Pero todavía no hemos producido ningún punto que ocupe ese borde. El paso siguiente de Rudin es más fino: demostrar que tampoco hay un <strong>último</strong> racional por debajo ni un <strong>primero</strong> por encima.</p>
+<p>En términos de cuantificadores, debemos probar</p>
+<p><span class="math display">\[
+\boxed{
+\forall p\in A\;\exists q\in A
+\qquad
+p&lt;q,
+}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\boxed{
+\forall p\in B\;\exists q\in B
+\qquad
+q&lt;p.
+}
+\]</span></p>
+<p>Estas dos afirmaciones implicarán, respectivamente, que <span class="math inline">\(A\)</span> no tiene máximo y que <span class="math inline">\(B\)</span> no tiene mínimo.</p>
+<p>Para lograr ambas cosas con una sola construcción, Rudin introduce, para un racional positivo <span class="math inline">\(p\)</span>,</p>
+<p><span class="math display">\[
+q
+=
+p-\frac{p^2-2}{p+2}
+=
+\frac{2p+2}{p+2}
+=
+\frac{2(p+1)}{p+2}.
+\]</span></p>
+<p>La fórmula funciona admirablemente, pero un lector novel puede preguntarse con toda razón:</p>
+<blockquote class="blockquote">
+<p>¿de dónde salió <span class="math inline">\(q\)</span>?</p>
+</blockquote>
+<p>Conviene separar dos tareas. Primero verificaremos que la fórmula satisface exactamente las propiedades cuantificadas que necesitamos. Después reconstruiremos una ruta sistemática para diseñarla.</p>
+<div id="exm-t1-0012" class="theorem example">
+<p><span class="theorem-title"><strong>Ejemplo 1.1</strong></span> <strong>El ejemplo de Rudin, sin pasos ocultos.</strong> Para cada <span class="math inline">\(p\in\mathbb Q\)</span> con <span class="math inline">\(p&gt;0\)</span>, definamos</p>
+<p><span class="math display">\[
+q=p-\frac{p^2-2}{p+2}.
+\]</span></p>
+<p>Entonces:</p>
+<ul>
+<li>si <span class="math inline">\(p^2&lt;2\)</span>, se cumple <span class="math display">\[
+p&lt;q,
+\qquad
+q^2&lt;2;
+\]</span></li>
+<li>si <span class="math inline">\(p^2&gt;2\)</span>, se cumple <span class="math display">\[
+0&lt;q&lt;p,
+\qquad
+q^2&gt;2.
+\]</span></li>
+</ul>
+<p>En consecuencia,</p>
+<p><span class="math display">\[
+\forall p\in A\;\exists q\in A
+\qquad
+p&lt;q,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\forall p\in B\;\exists q\in B
+\qquad
+q&lt;p.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(A\)</span> no tiene máximo y <span class="math inline">\(B\)</span> no tiene mínimo.</p>
+</div>
+<section id="primera-pregunta-q-sigue-siendo-racional-y-positivo" class="level4">
+<h4 class="anchored" data-anchor-id="primera-pregunta-q-sigue-siendo-racional-y-positivo">Primera pregunta: ¿q sigue siendo racional y positivo?</h4>
+<p>Sí, pero conviene separar tres comprobaciones.</p>
+<p><strong>1. La expresión está bien definida.</strong> Partimos de <span class="math inline">\(p\in\mathbb Q\)</span> con <span class="math inline">\(p&gt;0\)</span>. Entonces</p>
+<p><span class="math display">\[
+p+2&gt;0,
+\]</span></p>
+<p>y, en particular,</p>
+<p><span class="math display">\[
+p+2\ne0.
+\]</span></p>
+<p>Por tanto, el cociente que aparece en</p>
+<p><span class="math display">\[
+q=\frac{2(p+1)}{p+2}
+\]</span></p>
+<p>está definido.</p>
+<p><strong>2. El nuevo número sigue siendo racional.</strong> Como <span class="math inline">\(p\in\mathbb Q\)</span> y <span class="math inline">\(\mathbb Q\)</span> es un cuerpo,</p>
+<p><span class="math display">\[
+p+1\in\mathbb Q,
+\qquad
+p+2\in\mathbb Q.
+\]</span></p>
+<p>Además, <span class="math inline">\(2(p+1)\in\mathbb Q\)</span> y, como <span class="math inline">\(p+2\ne0\)</span>, también su cociente pertenece a <span class="math inline">\(\mathbb Q\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\boxed{q\in\mathbb Q}.
+\]</span></p>
+<p><strong>3. El nuevo número sigue siendo positivo.</strong> De <span class="math inline">\(p&gt;0\)</span> obtenemos</p>
+<p><span class="math display">\[
+p+1&gt;0,
+\qquad
+p+2&gt;0.
+\]</span></p>
+<p>Como <span class="math inline">\(2&gt;0\)</span>,</p>
+<p><span class="math display">\[
+2(p+1)&gt;0.
+\]</span></p>
+<p>El cociente de dos números positivos es positivo, luego</p>
+<p><span class="math display">\[
+\boxed{q&gt;0}.
+\]</span></p>
+<p>Hemos probado así las dos condiciones de dominio que necesitaremos después:</p>
+<p><span class="math display">\[
+\boxed{
+q\in\mathbb Q
+\qquad\text{y}\qquad
+q&gt;0.
+}
+\]</span></p>
+<p>Todavía no sabemos si <span class="math inline">\(q\)</span> pertenece a <span class="math inline">\(A\)</span> o a <span class="math inline">\(B\)</span>. Para decidirlo faltan dos controles distintos: comparar primero <span class="math inline">\(q\)</span> con <span class="math inline">\(p\)</span> y después comparar <span class="math inline">\(q^2\)</span> con <span class="math inline">\(2\)</span>.</p>
+</section>
+<section id="segunda-pregunta-q-se-mueve-en-la-dirección-correcta" class="level4">
+<h4 class="anchored" data-anchor-id="segunda-pregunta-q-se-mueve-en-la-dirección-correcta">Segunda pregunta: ¿q se mueve en la dirección correcta?</h4>
+<p>Comparemos ahora <span class="math inline">\(q\)</span> con el punto de partida <span class="math inline">\(p\)</span>. Como</p>
+<p><span class="math display">\[
+q=\frac{2(p+1)}{p+2},
+\]</span></p>
+<p>podemos escribir</p>
+<p><span class="math display">\[
+\begin{aligned}
+q-p
+&amp;=
+\frac{2(p+1)}{p+2}-p\\
+&amp;=
+\frac{2(p+1)-p(p+2)}{p+2}\\
+&amp;=
+\frac{2+2p-p^2-2p}{p+2}\\
+&amp;=
+\frac{2-p^2}{p+2}.
+\end{aligned}
+\]</span></p>
+<p>La hipótesis <span class="math inline">\(p&gt;0\)</span> ya nos dio</p>
+<p><span class="math display">\[
+p+2&gt;0.
+\]</span></p>
+<p>Por tanto, dividir por <span class="math inline">\(p+2\)</span> <strong>no cambia el signo</strong>: el signo de <span class="math inline">\(q-p\)</span> es exactamente el signo de <span class="math inline">\(2-p^2\)</span>.</p>
+<p>Si <span class="math inline">\(p\in A\)</span>, entonces</p>
+<p><span class="math display">\[
+p^2&lt;2,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+2-p^2&gt;0.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+q-p&gt;0,
+\]</span></p>
+<p>y por definición del orden</p>
+<p><span class="math display">\[
+\boxed{p&lt;q}.
+\]</span></p>
+<p>Si, en cambio, <span class="math inline">\(p\in B\)</span>, entonces</p>
+<p><span class="math display">\[
+p^2&gt;2,
+\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[
+2-p^2&lt;0.
+\]</span></p>
+<p>En consecuencia,</p>
+<p><span class="math display">\[
+q-p&lt;0,
+\]</span></p>
+<p>y por tanto</p>
+<p><span class="math display">\[
+\boxed{q&lt;p}.
+\]</span></p>
+<p>Como ningún racional positivo satisface <span class="math inline">\(p^2=2\)</span>, el numerador <span class="math inline">\(2-p^2\)</span> nunca es <span class="math inline">\(0\)</span> para los valores de <span class="math inline">\(p\)</span> que estamos considerando. Por ello el desplazamiento es siempre <strong>estricto</strong>.</p>
+<p>Hemos demostrado hasta aquí exactamente</p>
+<p><span class="math display">\[
+\boxed{
+\begin{aligned}
+p\in A&amp;\Longrightarrow p&lt;q,\\
+p\in B&amp;\Longrightarrow q&lt;p.
+\end{aligned}
+}
+\]</span></p>
+<p>La transformación se mueve, pues, en la dirección correcta: hacia la derecha desde <span class="math inline">\(A\)</span> y hacia la izquierda desde <span class="math inline">\(B\)</span>.</p>
+<p>Pero esta información todavía no basta para concluir</p>
+<p><span class="math display">\[
+q\in A
+\qquad\text{o}\qquad
+q\in B
+\]</span></p>
+<p>en el caso correspondiente. Moverse en la dirección adecuada no garantiza que no atravesemos la frontera.</p>
+<p>Por ejemplo, si partiéramos de <span class="math inline">\(p=1\)</span> y utilizáramos la corrección ingenua</p>
+<p><span class="math display">\[
+p+(2-p^2),
+\]</span></p>
+<p>obtendríamos</p>
+<p><span class="math display">\[
+1+(2-1)=2,
+\]</span></p>
+<p>cuyo cuadrado es <span class="math inline">\(4&gt;2\)</span>. La dirección del movimiento era correcta, pero el paso fue demasiado grande y terminó al otro lado.</p>
+<p>Por tanto, queda una tercera obligación: demostrar que la transformación de Rudin <strong>conserva el lado</strong> de la frontera en el que comenzó <span class="math inline">\(p\)</span>.</p>
+</section>
+<section id="tercera-pregunta-q-permanece-en-el-mismo-lado" class="level4">
+<h4 class="anchored" data-anchor-id="tercera-pregunta-q-permanece-en-el-mismo-lado">Tercera pregunta: ¿q permanece en el mismo lado?</h4>
+<p>La comparación entre <span class="math inline">\(q\)</span> y <span class="math inline">\(p\)</span> controla la <strong>dirección</strong> del movimiento, pero todavía debemos verificar que la corrección no atraviese la frontera. Para ello necesitamos comparar <span class="math inline">\(q^2\)</span> con <span class="math inline">\(2\)</span>.</p>
+<p>Partimos de</p>
+<p><span class="math display">\[
+q=\frac{2(p+1)}{p+2}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+\begin{aligned}
+q^2-2
+&amp;=
+\left(\frac{2(p+1)}{p+2}\right)^2-2\\
+&amp;=
+\frac{4(p+1)^2}{(p+2)^2}
+-
+\frac{2(p+2)^2}{(p+2)^2}\\
+&amp;=
+\frac{4(p+1)^2-2(p+2)^2}{(p+2)^2}.
+\end{aligned}
+\]</span></p>
+<p>Abramos ahora el numerador:</p>
+<p><span class="math display">\[
+\begin{aligned}
+4(p+1)^2-2(p+2)^2
+&amp;=
+4(p^2+2p+1)-2(p^2+4p+4)\\
+&amp;=
+4p^2+8p+4-2p^2-8p-8\\
+&amp;=
+2p^2-4\\
+&amp;=
+2(p^2-2).
+\end{aligned}
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+\boxed{
+q^2-2
+=
+\frac{2(p^2-2)}{(p+2)^2}.
+}
+\]</span></p>
+<p>De la primera comprobación sabemos que <span class="math inline">\(p&gt;0\)</span>, luego</p>
+<p><span class="math display">\[
+p+2&gt;0
+\]</span></p>
+<p>y, en consecuencia,</p>
+<p><span class="math display">\[
+(p+2)^2&gt;0.
+\]</span></p>
+<p>Además,</p>
+<p><span class="math display">\[
+2&gt;0.
+\]</span></p>
+<p>Así, el factor</p>
+<p><span class="math display">\[
+\frac{2}{(p+2)^2}
+\]</span></p>
+<p>es estrictamente positivo. Multiplicar por él no cambia el signo. Por consiguiente,</p>
+<p><span class="math display">\[
+\boxed{
+q^2-2\ \text{tiene exactamente el mismo signo que}\ p^2-2.
+}
+\]</span></p>
+<p>Ahora podemos reunir las tres comprobaciones anteriores.</p>
+<p>Si <span class="math inline">\(p\in A\)</span>, entonces</p>
+<p><span class="math display">\[
+p\in\mathbb Q,
+\qquad
+p&gt;0,
+\qquad
+p^2&lt;2.
+\]</span></p>
+<p>La primera pregunta mostró que <span class="math inline">\(q\in\mathbb Q\)</span> y <span class="math inline">\(q&gt;0\)</span>; la segunda mostró que <span class="math inline">\(p&lt;q\)</span>; y la identidad recién obtenida da</p>
+<p><span class="math display">\[
+q^2-2&lt;0,
+\]</span></p>
+<p>es decir,</p>
+<p><span class="math display">\[
+q^2&lt;2.
+\]</span></p>
+<p>Por tanto,</p>
+<p><span class="math display">\[
+q\in A
+\]</span></p>
+<p>y, además,</p>
+<p><span class="math display">\[
+p&lt;q.
+\]</span></p>
+<p>Como <span class="math inline">\(p\in A\)</span> fue arbitrario,</p>
+<p><span class="math display">\[
+\boxed{
+\forall p\in A\;\exists q\in A
+\qquad
+p&lt;q.
+}
+\]</span></p>
+<p>En consecuencia, <span class="math inline">\(A\)</span> no tiene máximo.</p>
+<p>Si <span class="math inline">\(p\in B\)</span>, entonces</p>
+<p><span class="math display">\[
+p\in\mathbb Q,
+\qquad
+p&gt;0,
+\qquad
+p^2&gt;2.
+\]</span></p>
+<p>De nuevo, <span class="math inline">\(q\in\mathbb Q\)</span> y <span class="math inline">\(q&gt;0\)</span>; la segunda pregunta dio <span class="math inline">\(q&lt;p\)</span>; y ahora</p>
+<p><span class="math display">\[
+q^2-2&gt;0,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+q^2&gt;2.
+\]</span></p>
+<p>Así,</p>
+<p><span class="math display">\[
+q\in B
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+q&lt;p.
+\]</span></p>
+<p>Como <span class="math inline">\(p\in B\)</span> fue arbitrario,</p>
+<p><span class="math display">\[
+\boxed{
+\forall p\in B\;\exists q\in B
+\qquad
+q&lt;p.
+}
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(B\)</span> no tiene mínimo.</p>
+<p>La transformación ha cumplido simultáneamente las dos exigencias que fijamos al comienzo:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c}
+p\in A\Longrightarrow p&lt;q\in A,\\[4pt]
+p\in B\Longrightarrow q\in B\text{ y }q&lt;p.
+\end{array}
+}
+\]</span></p>
+<p>La demostración del ejemplo de Rudin queda así cerrada. La cuestión siguiente ya no será verificar que la fórmula funciona, sino comprender cómo puede diseñarse una transformación con estas propiedades.</p>
+</section>
+</section>
+<section id="cómo-se-fabrica-una-fórmula-que-parece-caída-del-cielo" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-se-fabrica-una-fórmula-que-parece-caída-del-cielo">Cómo se fabrica una fórmula que parece caída del cielo</h3>
+<p>Rudin presenta <span class="math inline">\(q\)</span> directamente. Nosotros reconstruiremos una ruta posible para descubrirla. No pretendemos afirmar que este haya sido históricamente el proceso mental exacto mediante el cual se eligió la fórmula. Lo que sí podemos mostrar es que <strong>una transformación con las propiedades necesarias puede diseñarse sistemáticamente</strong>.</p>
+<p>Partamos de un racional positivo <span class="math inline">\(p\)</span> y midamos su defecto respecto de la ecuación mediante</p>
+<p><span class="math display">\[
+E(p)=p^2-2.
+\]</span></p>
+<p>El signo de <span class="math inline">\(E(p)\)</span> indica de qué lado de la frontera se encuentra <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[
+E(p)&lt;0
+\iff
+p\in A,
+\]</span></p>
+<p>mientras que</p>
+<p><span class="math display">\[
+E(p)&gt;0
+\iff
+p\in B.
+\]</span></p>
+<p>Por tanto, queremos que la corrección tenga signo opuesto al defecto:</p>
+<ul>
+<li>si <span class="math inline">\(E(p)&lt;0\)</span>, debemos aumentar <span class="math inline">\(p\)</span>;</li>
+<li>si <span class="math inline">\(E(p)&gt;0\)</span>, debemos disminuirlo.</li>
+</ul>
+<p>Una familia natural es</p>
+<p><span class="math display">\[
+q_c
+=
+p-\frac{p^2-2}{p+c},
+\]</span></p>
+<p>donde elegiremos</p>
+<p><span class="math display">\[
+c\in\mathbb Q,
+\qquad
+c&gt;0.
+\]</span></p>
+<p>La positividad de <span class="math inline">\(c\)</span> cumple una primera función. Como <span class="math inline">\(p&gt;0\)</span>,</p>
+<p><span class="math display">\[
+p+c&gt;0,
+\]</span></p>
+<p>de modo que el denominador no se anula. Además,</p>
+<p><span class="math display">\[
+q_c
+=
+\frac{cp+2}{p+c}.
+\]</span></p>
+<p>Como <span class="math inline">\(c,p&gt;0\)</span>, tanto <span class="math inline">\(cp+2\)</span> como <span class="math inline">\(p+c\)</span> son positivos. En consecuencia,</p>
+<p><span class="math display">\[
+\boxed{
+q_c\in\mathbb Q
+\qquad\text{y}\qquad
+q_c&gt;0.
+}
+\]</span></p>
+<p>Ahora controlemos la <strong>dirección</strong> del movimiento. Restando <span class="math inline">\(p\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+q_c-p
+&amp;=
+-\frac{p^2-2}{p+c}\\
+&amp;=
+\frac{2-p^2}{p+c}.
+\end{aligned}
+\]</span></p>
+<p>Como <span class="math inline">\(p+c&gt;0\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+\operatorname{sgn}(q_c-p)
+=
+\operatorname{sgn}(2-p^2).
+}
+\]</span></p>
+<p>Así, para cualquier <span class="math inline">\(c&gt;0\)</span>, la transformación se mueve en la dirección deseada.</p>
+<p>Pero eso no basta: también debemos impedir que atraviese la frontera. Calculemos el nuevo defecto:</p>
+<p><span class="math display">\[
+\begin{aligned}
+q_c^2-2
+&amp;=
+\frac{(cp+2)^2-2(p+c)^2}{(p+c)^2}\\
+&amp;=
+\frac{c^2p^2+4cp+4-2p^2-4cp-2c^2}{(p+c)^2}\\
+&amp;=
+\frac{(c^2-2)p^2-2(c^2-2)}{(p+c)^2}\\
+&amp;=
+\boxed{
+\frac{(c^2-2)(p^2-2)}{(p+c)^2}
+}.
+\end{aligned}
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+(p+c)^2&gt;0,
+\]</span></p>
+<p>el signo del nuevo defecto queda determinado por los dos factores</p>
+<p><span class="math display">\[
+c^2-2
+\qquad\text{y}\qquad
+p^2-2.
+\]</span></p>
+<p>Queremos que <span class="math inline">\(q_c^2-2\)</span> tenga el <strong>mismo signo</strong> que <span class="math inline">\(p^2-2\)</span>. Para ello basta imponer</p>
+<p><span class="math display">\[
+\boxed{c^2-2&gt;0}.
+\]</span></p>
+<p>La condición sobre el parámetro ya no es arbitraria. Si eligiéramos un racional positivo con</p>
+<p><span class="math display">\[
+c^2&lt;2,
+\]</span></p>
+<p>el factor <span class="math inline">\(c^2-2\)</span> sería negativo y el signo del defecto se invertiría: la transformación cruzaría al lado opuesto. La posibilidad</p>
+<p><span class="math display">\[
+c^2=2
+\]</span></p>
+<p>no está disponible dentro de <span class="math inline">\(\mathbb Q\)</span>, porque ya demostramos que ningún racional tiene cuadrado <span class="math inline">\(2\)</span>.</p>
+<p>Por tanto, entre los parámetros racionales positivos, la condición</p>
+<p><span class="math display">\[
+c^2&gt;2
+\]</span></p>
+<p>es exactamente la que nos permite conservar el lado.</p>
+<p>No necesitamos conocer todavía ningún número real con cuadrado <span class="math inline">\(2\)</span> para exhibir un parámetro racional adecuado. Basta escoger</p>
+<p><span class="math display">\[
+c=2,
+\]</span></p>
+<p>pues</p>
+<p><span class="math display">\[
+2^2-2=2&gt;0.
+\]</span></p>
+<p>Sustituyendo <span class="math inline">\(c=2\)</span> obtenemos</p>
+<p><span class="math display">\[
+\boxed{
+q
+=
+p-\frac{p^2-2}{p+2},
+}
+\]</span></p>
+<p>que es precisamente la transformación utilizada en el ejemplo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="La técnica escondida">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>La técnica escondida
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La fórmula puede reconstruirse mediante cuatro decisiones sucesivas:</p>
+<ol type="1">
+<li><strong>medir el defecto:</strong> <span class="math inline">\(E(p)=p^2-2\)</span>;</li>
+<li><strong>elegir la dirección:</strong> corregir <span class="math inline">\(p\)</span> con signo opuesto al defecto;</li>
+<li><strong>introducir un parámetro racional positivo:</strong> controlar el tamaño de la corrección sin perder racionalidad ni positividad;</li>
+<li><strong>imponer un invariante de signo:</strong> exigir que el nuevo defecto permanezca en el mismo lado.</li>
+</ol>
+<p>En símbolos, el diseño busca simultáneamente</p>
+<p><span class="math display">\[
+\operatorname{sgn}(q_c-p)
+=
+-\operatorname{sgn}(E(p))
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\operatorname{sgn}(E(q_c))
+=
+\operatorname{sgn}(E(p)).
+\]</span></p>
+<p>La primera condición mueve el punto <strong>hacia</strong> la frontera; la segunda evita que la atraviese.</p>
+</div>
+</div>
+<p>La fórmula de Rudin no es, por tanto, la única posible dentro de esta familia. Todo racional positivo <span class="math inline">\(c\)</span> con <span class="math inline">\(c^2&gt;2\)</span> produce la misma arquitectura cualitativa. La elección <span class="math inline">\(c=2\)</span> es especialmente simple porque satisface inmediatamente la condición requerida y deja una expresión elemental.</p>
+</section>
+<section id="ver-la-máquina-funcionando" class="level3">
+<h3 class="anchored" data-anchor-id="ver-la-máquina-funcionando">Ver la máquina funcionando</h3>
+<p>Las identidades anteriores ya demuestran el comportamiento de la transformación para todo racional positivo. Ahora podemos seguir algunas iteraciones concretas para ver el mecanismo con aritmética exacta.</p>
+<p>Partamos por debajo del borde con</p>
+<p><span class="math display">\[
+p=1.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+T(p)=\frac{2(p+1)}{p+2},
+\]</span></p>
+<p>obtenemos sucesivamente</p>
+<p><span class="math display">\[
+1
+\longmapsto
+\frac43
+\longmapsto
+\frac75
+\longmapsto
+\frac{24}{17}.
+\]</span></p>
+<p>Verifiquemos que cada punto sigue del mismo lado:</p>
+<p><span class="math display">\[
+1^2=1&lt;2,
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac43\right)^2
+=
+\frac{16}{9}
+&lt;2,
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac75\right)^2
+=
+\frac{49}{25}
+&lt;2,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\left(\frac{24}{17}\right)^2
+=
+\frac{576}{289}
+&lt;
+\frac{578}{289}
+=
+2.
+\]</span></p>
+<p>Además,</p>
+<p><span class="math display">\[
+1&lt;\frac43&lt;\frac75&lt;\frac{24}{17}.
+\]</span></p>
+<p>La cadena se mueve, por tanto, hacia la derecha sin abandonar <span class="math inline">\(A\)</span>.</p>
+<p>Si comenzamos por encima del borde con</p>
+<p><span class="math display">\[
+p=2,
+\]</span></p>
+<p>la misma transformación produce</p>
+<p><span class="math display">\[
+2
+\longmapsto
+\frac32
+\longmapsto
+\frac{10}{7}
+\longmapsto
+\frac{17}{12}.
+\]</span></p>
+<p>Ahora las comprobaciones son</p>
+<p><span class="math display">\[
+2^2=4&gt;2,
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac32\right)^2
+=
+\frac94
+&gt;2,
+\]</span></p>
+<p><span class="math display">\[
+\left(\frac{10}{7}\right)^2
+=
+\frac{100}{49}
+&gt;
+\frac{98}{49}
+=
+2,
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\left(\frac{17}{12}\right)^2
+=
+\frac{289}{144}
+&gt;
+\frac{288}{144}
+=
+2.
+\]</span></p>
+<p>También</p>
+<p><span class="math display">\[
+2&gt;\frac32&gt;\frac{10}{7}&gt;\frac{17}{12}.
+\]</span></p>
+<p>Esta cadena se mueve hacia la izquierda sin abandonar <span class="math inline">\(B\)</span>.</p>
+<p>Los cálculos ilustran el comportamiento, pero <strong>una lista de ejemplos no demuestra la afirmación general</strong>. La demostración sigue estando en las dos identidades válidas para todo racional positivo <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+T(p)-p
+=
+\frac{2-p^2}{p+2},
+}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\boxed{
+T(p)^2-2
+=
+\frac{2(p^2-2)}{(p+2)^2}.
+}
+\]</span></p>
+<p>La primera controla la dirección del movimiento; la segunda controla el lado de la frontera.</p>
+<p>Tampoco diremos todavía que estas cadenas «convergen». No hemos definido convergencia de sucesiones ni demostrado ningún teorema que permita extraer de estas iteraciones la existencia de un límite. Por ahora solo estamos observando desigualdades exactas entre racionales.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Antes de seguir">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Antes de seguir
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sea</p>
+<p><span class="math display">\[
+T(p)=p-\frac{p^2-2}{p+2},
+\qquad
+p\ge1.
+\]</span></p>
+<p>Usando la identidad ya demostrada para <span class="math inline">\(T(p)^2-2\)</span>, prueba que</p>
+<p><span class="math display">\[
+|T(p)^2-2|
+\le
+\frac29|p^2-2|.
+\]</span></p>
+<p><strong>Respuesta.</strong> De</p>
+<p><span class="math display">\[
+T(p)^2-2
+=
+\frac{2(p^2-2)}{(p+2)^2}
+\]</span></p>
+<p>obtenemos, usando la multiplicatividad del valor absoluto,</p>
+<p><span class="math display">\[
+|T(p)^2-2|
+=
+\frac{2}{(p+2)^2}|p^2-2|,
+\]</span></p>
+<p>porque <span class="math inline">\((p+2)^2&gt;0\)</span>.</p>
+<p>Como <span class="math inline">\(p\ge1\)</span>,</p>
+<p><span class="math display">\[
+p+2\ge3&gt;0.
+\]</span></p>
+<p>La monotonía del cuadrado en los no negativos da</p>
+<p><span class="math display">\[
+(p+2)^2\ge9.
+\]</span></p>
+<p>Como ambas cantidades son positivas, al tomar recíprocos se invierte el orden:</p>
+<p><span class="math display">\[
+\frac{1}{(p+2)^2}
+\le
+\frac19.
+\]</span></p>
+<p>Multiplicando por <span class="math inline">\(2&gt;0\)</span>,</p>
+<p><span class="math display">\[
+0&lt;
+\frac{2}{(p+2)^2}
+\le
+\frac29.
+\]</span></p>
+<p>Finalmente,</p>
+<p><span class="math display">\[
+\boxed{
+|T(p)^2-2|
+\le
+\frac29|p^2-2|.
+}
+\]</span></p>
+<p>Así, para <span class="math inline">\(p\ge1\)</span>, una aplicación de <span class="math inline">\(T\)</span> deja el nuevo defecto absoluto como máximo en <span class="math inline">\(2/9\)</span> del defecto anterior. Esta es una estimación cuantitativa exacta; todavía no la interpretamos como una afirmación de convergencia.</p>
+</div>
+</div>
+</section>
+<section id="entonces-dónde-está-exactamente-el-hueco" class="level3">
+<h3 class="anchored" data-anchor-id="entonces-dónde-está-exactamente-el-hueco">Entonces, ¿dónde está exactamente el hueco?</h3>
+<p>La palabra «hueco» puede inducir una imagen equivocada. No significa que exista alrededor de la frontera un intervalo sin números racionales. Eso sería falso: entre dos racionales distintos siempre podemos insertar otro racional.</p>
+<p>El fenómeno es más sutil.</p>
+<p>Recordemos</p>
+<p><span class="math display">\[
+A=\{p\in\mathbb Q:p&gt;0,\ p^2&lt;2\}
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+B=\{p\in\mathbb Q:p&gt;0,\ p^2&gt;2\}.
+\]</span></p>
+<p>Ya hemos demostrado cuatro hechos:</p>
+<p><span class="math display">\[
+A\ne\varnothing,
+\qquad
+B\ne\varnothing,
+\]</span></p>
+<p><span class="math display">\[
+\forall a\in A\;\forall b\in B,
+\qquad
+a&lt;b,
+\]</span></p>
+<p><span class="math display">\[
+\forall a\in A\;\exists a'\in A,
+\qquad
+a&lt;a',
+\]</span></p>
+<p>y</p>
+<p><span class="math display">\[
+\forall b\in B\;\exists b'\in B,
+\qquad
+b'&lt;b.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(A\)</span> no tiene máximo y <span class="math inline">\(B\)</span> no tiene mínimo. Además, como todo elemento de <span class="math inline">\(A\)</span> está por debajo de todo elemento de <span class="math inline">\(B\)</span>, cada <span class="math inline">\(b\in B\)</span> es una cota superior racional de <span class="math inline">\(A\)</span>.</p>
+<p>Aquí aparece una distinción importante. Que <span class="math inline">\(A\)</span> no tenga máximo <strong>no basta</strong>, por sí solo, para decir que carece de supremo. Por ejemplo,</p>
+<p><span class="math display">\[
+(0,1)\cap\mathbb Q
+\]</span></p>
+<p>no tiene máximo dentro de <span class="math inline">\(\mathbb Q\)</span>, pero sí posee la menor cota superior racional <span class="math inline">\(1\)</span>.</p>
+<p>Así que el problema no consiste simplemente en que «falta el último elemento de <span class="math inline">\(A\)</span>». La pregunta correcta es más fuerte:</p>
+<blockquote class="blockquote">
+<p>entre todas las cotas superiores racionales de la región inferior, ¿existe una que sea menor que todas las demás?</p>
+</blockquote>
+<p>Para conectar esta pregunta con la formulación que utilizaremos en §1.5, introducimos</p>
+<p><span class="math display">\[
+S_{\mathbb Q}
+=
+\{q\in\mathbb Q:q\ge0,\ q^2&lt;2\}.
+\]</span></p>
+<p>Este conjunto no es literalmente el mismo que <span class="math inline">\(A\)</span>. Como <span class="math inline">\(0^2&lt;2\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+S_{\mathbb Q}=A\cup\{0\}.
+}
+\]</span></p>
+<p>Sin embargo, añadir <span class="math inline">\(0\)</span> no cambia las cotas superiores. En efecto, como</p>
+<p><span class="math display">\[
+1\in A,
+\]</span></p>
+<p>toda cota superior <span class="math inline">\(u\)</span> de <span class="math inline">\(A\)</span> satisface</p>
+<p><span class="math display">\[
+1\le u,
+\]</span></p>
+<p>y por tanto también</p>
+<p><span class="math display">\[
+0\le u.
+\]</span></p>
+<p>Así, toda cota superior de <span class="math inline">\(A\)</span> también domina al nuevo elemento <span class="math inline">\(0\)</span>. Recíprocamente, toda cota superior de <span class="math inline">\(S_{\mathbb Q}\)</span> es automáticamente cota superior de <span class="math inline">\(A\subseteq S_{\mathbb Q}\)</span>. Luego ambos conjuntos tienen exactamente las mismas cotas superiores racionales.</p>
+<p>Podemos formular entonces con precisión la cuestión pendiente:</p>
+<p><span class="math display">\[
+\boxed{
+\text{¿existe }s\in\mathbb Q
+\text{ que sea la menor cota superior de }S_{\mathbb Q}\text{ dentro de }\mathbb Q?
+}
+\]</span></p>
+<p>El trabajo realizado en esta sección ya ha dejado visibles todos los ingredientes que harán fracasar esa posibilidad: por debajo siempre podemos subir, por encima siempre podemos bajar y ningún racional satisface <span class="math inline">\(q^2=2\)</span>.</p>
+<p>Pero conviene mantener separadas <strong>intuición estructural</strong> y <strong>demostración formal</strong>. En §1.5 volveremos a <span class="math inline">\(S_{\mathbb Q}\)</span> y probaremos explícitamente, en el lenguaje de supremos, que</p>
+<p><span class="math display">\[
+S_{\mathbb Q}
+\]</span></p>
+<p>es no vacío y está acotado superiormente en <span class="math inline">\(\mathbb Q\)</span>, pero no posee una menor cota superior racional.</p>
+<p>Ese será el sentido preciso del hueco:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c}
+\text{no falta un intervalo de racionales;}\\[3pt]
+\text{falta en }\mathbb Q\text{ el punto frontera exigido por la propiedad del supremo.}
+\end{array}
+}
+\]</span></p>
+<p>El paso a <span class="math inline">\(\mathbb R\)</span> no consistirá, por tanto, en «rellenar espacios visibles» entre racionales, sino en imponer una propiedad estructural que garantice la existencia de fronteras bajo hipótesis precisas.</p>
+</section>
+<section id="una-segunda-lectura-del-ejemplo-de-rudin" class="level3">
+<h3 class="anchored" data-anchor-id="una-segunda-lectura-del-ejemplo-de-rudin">Una segunda lectura del ejemplo de Rudin</h3>
+<p>El ejemplo clásico comprime mucho más que una manipulación ingeniosa. Conviene releerlo ahora como un pequeño mapa de habilidades matemáticas.</p>
+<p><strong>1. Traducir una afirmación verbal a cuantificadores.</strong> Decir que <span class="math inline">\(A\)</span> no tiene máximo no significa comprobar algunos elementos. Exige demostrar</p>
+<p><span class="math display">\[
+\forall p\in A\;\exists q\in A
+\qquad
+p&lt;q.
+\]</span></p>
+<p>Del mismo modo, decir que <span class="math inline">\(B\)</span> no tiene mínimo exige</p>
+<p><span class="math display">\[
+\forall p\in B\;\exists q\in B
+\qquad
+q&lt;p.
+\]</span></p>
+<p>El elemento nuevo puede depender del punto de partida, pero la construcción debe funcionar para <strong>todo</strong> punto admisible.</p>
+<p><strong>2. Diseñar un objeto que satisfaga varias condiciones a la vez.</strong> No basta producir un racional mayor que <span class="math inline">\(p\)</span> cuando <span class="math inline">\(p\in A\)</span>, ni uno menor cuando <span class="math inline">\(p\in B\)</span>. El nuevo número debe conservar simultáneamente:</p>
+<p><span class="math display">\[
+q\in\mathbb Q,
+\qquad
+q&gt;0,
+\]</span></p>
+<p>y el lado de la desigualdad respecto de <span class="math inline">\(2\)</span>:</p>
+<p><span class="math display">\[
+p^2&lt;2
+\Longrightarrow
+q^2&lt;2,
+\]</span></p>
+<p><span class="math display">\[
+p^2&gt;2
+\Longrightarrow
+q^2&gt;2.
+\]</span></p>
+<p>Por eso el problema no era simplemente «mover <span class="math inline">\(p\)</span>», sino moverlo <strong>sin abandonar la región correcta</strong>.</p>
+<p><strong>3. Separar las funciones de cada cálculo.</strong> Las dos identidades centrales responden a preguntas distintas:</p>
+<p><span class="math display">\[
+q-p=\frac{2-p^2}{p+2}
+\]</span></p>
+<p>controla la <strong>dirección</strong> del movimiento, mientras que</p>
+<p><span class="math display">\[
+q^2-2=\frac{2(p^2-2)}{(p+2)^2}
+\]</span></p>
+<p>controla el <strong>invariante de signo</strong> que impide cruzar de <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span> o de <span class="math inline">\(B\)</span> a <span class="math inline">\(A\)</span>.</p>
+<p>Ninguna de las dos comprobaciones reemplaza a la otra.</p>
+<p><strong>4. Interpretar la construcción en el nivel estructural correcto.</strong> De las identidades anteriores obtenemos</p>
+<p><span class="math display">\[
+A\text{ no tiene máximo}
+\qquad\text{y}\qquad
+B\text{ no tiene mínimo}.
+\]</span></p>
+<p>Pero, como acabamos de advertir, de aquí todavía no se sigue que <span class="math inline">\(A\)</span> —o <span class="math inline">\(S_{\mathbb Q}\)</span>— carezca de supremo racional. La ausencia de un elemento extremo y la ausencia de una menor cota superior son afirmaciones diferentes.</p>
+<p>El paso conceptual decisivo consiste precisamente en cambiar de pregunta:</p>
+<p><span class="math display">\[
+\boxed{
+\text{¿existe dentro de }\mathbb Q
+\text{ una menor cota superior para }S_{\mathbb Q}\,?
+}
+\]</span></p>
+<p>La transformación de Rudin ya contiene la maquinaria que necesitaremos para responder, pero la respuesta formal pertenece a §1.5.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Mapa de dependencias">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Mapa de dependencias
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El argumento puede leerse también como una cadena de dependencias:</p>
+<p><span class="math display">\[
+\boxed{
+\begin{array}{c}
+\text{cuerpo ordenado}
+\\[3pt]
+\downarrow
+\\[3pt]
+\text{signos, desigualdades y monotonía del cuadrado}
+\\[3pt]
+\downarrow
+\\[3pt]
+\text{transformación racional controlada}
+\\[3pt]
+\downarrow
+\\[3pt]
+A\text{ sin máximo y }B\text{ sin mínimo}
+\\[3pt]
+\downarrow
+\\[3pt]
+\text{pregunta por la existencia de una frontera como supremo}.
+\end{array}
+}
+\]</span></p>
+<p>La demostración de que ningún racional satisface <span class="math inline">\(q^2=2\)</span> elimina además la única posibilidad de que la frontera buscada estuviera representada por un racional con cuadrado exactamente igual a <span class="math inline">\(2\)</span>.</p>
+</div>
+</div>
+<p>El verdadero tema que ha aparecido no es, por tanto, la raíz cuadrada de <span class="math inline">\(2\)</span> como objeto aislado. La pregunta general es:</p>
+<blockquote class="blockquote">
+<p>si un conjunto no vacío está acotado superiormente, ¿qué propiedad del sistema numérico garantiza que exista dentro de ese mismo sistema una menor cota superior?</p>
+</blockquote>
+<p>Ya disponemos del vocabulario necesario para formular la respuesta. La propiedad adicional será la <strong>completitud</strong>.</p>
+</section>
+<section id="qué-nos-llevamos-a-la-sección-siguiente" class="level3">
+<h3 class="anchored" data-anchor-id="qué-nos-llevamos-a-la-sección-siguiente">Qué nos llevamos a la sección siguiente</h3>
+<p>Este estudio del hueco racional ha producido cuatro hechos conceptuales.</p>
+<p>Primero, los racionales son algebraicamente ricos pero no bastan para resolver todas las ecuaciones geométricamente naturales: hemos demostrado que</p>
+<p><span class="math display">\[
+q^2\ne2
+\qquad
+\text{para todo }q\in\mathbb Q.
+\]</span></p>
+<p>Segundo, el problema no desaparece por la densidad elemental de los racionales. Poder insertar siempre otro racional entre dos racionales no garantiza que todo conjunto racional posea el punto frontera que su orden sugiere.</p>
+<p>Tercero, el ejemplo de Rudin nos ha enseñado una técnica de construcción que vale por sí misma:</p>
+<p><span class="math display">\[
+\boxed{
+\text{defecto}
+\to
+\text{corrección dirigida}
+\to
+\text{control del invariante}
+\to
+\text{nuevo objeto}
+}
+\]</span></p>
+<p>Cuarto, todavía no tenemos derecho a afirmar que una solución real de <span class="math inline">\(x^2=2\)</span> exista. Ya conocemos la estructura de cuerpo ordenado; falta incorporar y utilizar una propiedad adicional que garantice determinados supremos reales.</p>
+<p>En §1.5 formularemos el <strong>axioma de completitud</strong>, demostraremos que <span class="math inline">\(\mathbb Q\)</span> falla en la propiedad del supremo y obtendremos una frontera real. En §1.6 probaremos que esa frontera da efectivamente un número cuyo cuadrado es <span class="math inline">\(2\)</span>, sin invocar continuidad ni límites.</p>
+<hr>
+<p><a href="../../libros/capitulos/cpm-c01-03.html">← Anterior</a> · <a href="../../libros/capitulos/los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.html">Índice del capítulo</a> · <a href="../../libros/capitulos/cpm-c01-05.html">Siguiente →</a></p>
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
