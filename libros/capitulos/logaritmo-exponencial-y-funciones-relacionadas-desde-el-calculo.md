@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -149,7 +149,7 @@ $$
 
 No necesitamos adivinar una fórmula cerrada antes de diferenciar. La integral **es** la construcción de la función buscada.
 
-Este cambio de perspectiva es uno de los puntos estructurales del tratado:
+Este cambio de perspectiva es uno de los puntos estructurales del libro:
 
 $$
 \boxed{
@@ -212,7 +212,7 @@ resuelve únicamente el primer problema: proporciona el candidato natural a prim
 5. ¿Qué propiedades hereda su inversa y cómo nace de allí la exponencial?
 6. ¿Cómo se extienden después, sin circularidad, las potencias a exponentes reales?
 
-El resto de C18 responderá estas preguntas sin usar sustitución integral, series de potencias ni ecuaciones diferenciales como fundamento. La cadena será deliberadamente autorreferencial: cada paso utilizará únicamente resultados ya construidos en el tratado.
+El resto de C18 responderá estas preguntas sin usar sustitución integral, series de potencias ni ecuaciones diferenciales como fundamento. La cadena será deliberadamente autorreferencial: cada paso utilizará únicamente resultados ya construidos en el libro.
 
 La próxima sección comienza por el primer eslabón. Formalizaremos la función integral anterior como el **logaritmo natural**, estableceremos su dominio, su normalización y su derivada mediante el teorema fundamental del cálculo.
 
@@ -2026,7 +2026,7 @@ $$
 e=\exp1.
 $$
 
-Para exponentes enteros o racionales, la teoría anterior del tratado ya sabía interpretar potencias de una base positiva como $e$. Lo que aún no existía era un significado canónico para
+Para exponentes enteros o racionales, la teoría anterior del libro ya sabía interpretar potencias de una base positiva como $e$. Lo que aún no existía era un significado canónico para
 
 $$
 e^x

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -4190,7 +4190,7 @@ Por debajo de estos niveles quedan datos que pueden ser útiles pero que necesit
 
 **Razonamiento 1.** «$f$ es continua, luego tiene una primitiva, y por el teorema fundamental del cálculo es integrable.»
 
-La conclusión es verdadera, pero esa ruta no pertenece a C15 y sería circular respecto de la arquitectura del tratado. Aquí la integrabilidad de las continuas se obtuvo directamente en [Teorema 14.4](#thm-t1-0049) mediante continuidad uniforme y Darboux. El FTC se demostrará después, en C17.
+La conclusión es verdadera, pero esa ruta no pertenece a C15 y sería circular respecto de la arquitectura del libro. Aquí la integrabilidad de las continuas se obtuvo directamente en [Teorema 14.4](#thm-t1-0049) mediante continuidad uniforme y Darboux. El FTC se demostrará después, en C17.
 
 **Razonamiento 2.** «$f$ es monótona, así que el área bajo su gráfica existe.»
 

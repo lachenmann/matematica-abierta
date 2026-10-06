@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1090,7 +1090,7 @@ F'_{[a,b]}(x)=f(x)
 }
 $$
 
-En los puntos interiores esta condición coincide con la derivada bilateral ordinaria. En los extremos se entiende mediante la derivada relativa al dominio, conforme a la convención usada en este tratado.
+En los puntos interiores esta condición coincide con la derivada bilateral ordinaria. En los extremos se entiende mediante la derivada relativa al dominio, conforme a la convención usada en este libro.
 :::
 
 La definición describe una relación entre dos funciones. La función $f$ está dada y buscamos funciones $F$ cuya tasa de cambio sea exactamente $f$.
@@ -2921,7 +2921,7 @@ $$
 F'=f.
 $$
 
-Nada de ello implica que podamos transformar $F$ en una fórmula cerrada usando el repertorio algebraico disponible en este punto del tratado.
+Nada de ello implica que podamos transformar $F$ en una fórmula cerrada usando el repertorio algebraico disponible en este punto del libro.
 
 Por ejemplo, si se nos entrega una función continua
 

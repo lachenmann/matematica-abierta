@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -4315,7 +4315,7 @@ Esto señala una diferencia importante con §18.7--§18.8: el obstáculo ya no e
 
 ### Construir la nueva primitiva antes de usarla
 
-Podríamos introducir una fórmula de memoria, pero eso rompería la lógica del tratado. En lugar de ello construiremos la función que necesitamos a partir del teorema fundamental del cálculo.
+Podríamos introducir una fórmula de memoria, pero eso rompería la lógica del libro. En lugar de ello construiremos la función que necesitamos a partir del teorema fundamental del cálculo.
 
 ::: {#def-t1-0080}
 **Definición (arco tangente por acumulación).** Para $x\in\mathbb R$ definimos

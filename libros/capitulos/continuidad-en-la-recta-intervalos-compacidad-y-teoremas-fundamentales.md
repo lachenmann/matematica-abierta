@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -5434,7 +5434,7 @@ $$
 \text{alcanzamiento}.}
 $$
 
-La prueba combina, por tanto, dos mecanismos ya construidos en el tratado:
+La prueba combina, por tanto, dos mecanismos ya construidos en el libro:
 
 1. **compactitud**, para transformar infinitos controles locales en finitos controles globales;
 2. **bisección e intervalos cerrados encajados**, para localizar un punto donde el supremo de la imagen se materializa.
@@ -6350,7 +6350,7 @@ Sin releer la prueba, el lector debería poder responder estas preguntas:
 9. ¿por qué, para $n$ grande, todo $I_n$ queda dentro de ese entorno?
 10. ¿por qué eso contradice $\sup f(I_n)=M$?
 11. ¿cómo se obtiene el mínimo sin repetir toda la construcción?
-12. ¿en qué parte de la prueba sería ilegítimo invocar Bolzano–Weierstrass según la arquitectura actual del tratado?
+12. ¿en qué parte de la prueba sería ilegítimo invocar Bolzano–Weierstrass según la arquitectura actual del libro?
 
 La pregunta central de autoexplicación es:
 
@@ -7244,7 +7244,7 @@ La fórmula no ha cambiado.
 
 Lo que ha cambiado es el dominio.
 
-Esto retoma una lección que atraviesa todo el tratado:
+Esto retoma una lección que atraviesa todo el libro:
 
 $$
 \boxed{

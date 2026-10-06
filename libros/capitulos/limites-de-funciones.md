@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -251,7 +251,7 @@ $$
 
 Un punto aislado pertenece al conjunto, pero queda separado de todos los demás puntos del conjunto por alguna distancia positiva.
 
-Esta diferencia aparecerá repetidamente en análisis.
+Esta diferencia aparecerá repetidamente en cálculo.
 
 ### Primeros ejemplos: intervalos y enteros
 
@@ -1638,7 +1638,7 @@ Eso puede sugerir una conjetura.
 
 Pero la definición exige controlar **todos** los puntos del dominio que estén suficientemente cerca de $a$, no solo una lista finita o una colección escogida de ejemplos.
 
-La diferencia es la misma que aprendimos al comenzar el tratado:
+La diferencia es la misma que aprendimos al comenzar el libro:
 
 $$
 \boxed{
@@ -4587,7 +4587,7 @@ conviene preguntar también
 
 > ¿puedo controlar su tamaño mediante algo cuyo límite ya conozco?
 
-En análisis, una estimación adecuada puede ser más útil que una fórmula exacta.
+En cálculo, una estimación adecuada puede ser más útil que una fórmula exacta.
 
 ### Cómo fabricar una cota útil
 
@@ -6869,7 +6869,7 @@ $$
 
 No existen puntos del dominio distintos de $0$ a distancia menor que $1/2$ del centro. Por tanto, $0$ es aislado en $B$ y **no** es punto de acumulación.
 
-En este tratado no formulamos entonces
+En este libro no formulamos entonces
 
 $$
 \lim_{x\to0}g(x).

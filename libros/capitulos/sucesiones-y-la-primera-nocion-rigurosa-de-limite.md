@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-10
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -69,7 +69,7 @@ a_n=\frac{1}{n+1},
 \qquad n\in\mathbb N.
 $$
 
-Como en este tratado usamos
+Como en este libro usamos
 
 $$
 \mathbb N=\{0,1,2,\dots\},
@@ -582,7 +582,7 @@ $$
 }
 $$
 
-Esta arquitectura aparecerá una y otra vez en análisis. En la sección siguiente añadiremos un cuantificador nuevo delante de ella: alguien fijará una tolerancia y nosotros tendremos que responder con un umbral que controle toda la cola.
+Esta arquitectura aparecerá una y otra vez en cálculo. En la sección siguiente añadiremos un cuantificador nuevo delante de ella: alguien fijará una tolerancia y nosotros tendremos que responder con un umbral que controle toda la cola.
 
 ### Un prefijo enorme sigue siendo un prefijo finito
 
@@ -2541,7 +2541,7 @@ Esto completa la demostración.
 
 ### Cómo leer la prueba del producto
 
-La prueba anterior contiene una técnica que aparecerá muchas veces en análisis.
+La prueba anterior contiene una técnica que aparecerá muchas veces en cálculo.
 
 Nuestro objetivo era controlar
 
@@ -3674,7 +3674,7 @@ hacia
 
 > encontrar una estimación suficientemente buena del error.
 
-Este cambio de perspectiva es central en análisis. Una cota puede contener menos información que una fórmula exacta y, sin embargo, ser exactamente la información necesaria para demostrar convergencia.
+Este cambio de perspectiva es central en cálculo. Una cota puede contener menos información que una fórmula exacta y, sin embargo, ser exactamente la información necesaria para demostrar convergencia.
 
 ### Tres errores que conviene evitar
 
@@ -4666,7 +4666,7 @@ a_n>a_m.
 $$
 :::
 
-En este tratado, por tanto, las palabras **creciente** y **decreciente** se usan en sentido débil: se permite la igualdad entre términos distintos. Cuando necesitemos excluirla diremos explícitamente **estrictamente** creciente o decreciente.
+En este libro, por tanto, las palabras **creciente** y **decreciente** se usan en sentido débil: se permite la igualdad entre términos distintos. Cuando necesitemos excluirla diremos explícitamente **estrictamente** creciente o decreciente.
 
 Por ejemplo, una sucesión constante es a la vez creciente y decreciente. Esta convención es importante porque el teorema que demostraremos no necesita monotonía estricta.
 
@@ -5030,7 +5030,7 @@ no estaría disponible.
 
 Por eso el teorema de convergencia monótona no es simplemente una consecuencia del orden: es una manifestación secuencial de la completitud de los números reales.
 
-Podemos condensar esta segunda gran aparición operativa de completitud en el tratado como
+Podemos condensar esta segunda gran aparición operativa de completitud en el libro como
 
 $$
 \boxed{
@@ -5931,7 +5931,7 @@ $$
 
 preserva límites.
 
-En este tratado esa propiedad pertenecerá a la teoría de continuidad posterior. No la necesitamos aquí.
+En este libro esa propiedad pertenecerá a la teoría de continuidad posterior. No la necesitamos aquí.
 
 En lugar de ello utilizamos la identidad algebraica
 
@@ -10408,7 +10408,7 @@ Los niveles E–G añaden construcción de contraejemplos, reconstrucción de pr
 
 Ninguna solución utiliza límites funcionales, continuidad, IVT/EVT, derivadas, regla de l'Hôpital, subsucesiones, Bolzano–Weierstrass, criterio de Cauchy ni $\limsup/\liminf$.
 
-Con este banco queda cerrado el primer capítulo del tratado dedicado a una noción rigurosa de límite. El paso siguiente ya no será una nueva técnica de sucesiones: en `T1-C05` la misma arquitectura de tolerancias y cuantificadores se trasladará al estudio del límite de una función real.
+Con este banco queda cerrado el primer capítulo del libro dedicado a una noción rigurosa de límite. El paso siguiente ya no será una nueva técnica de sucesiones: en `T1-C05` la misma arquitectura de tolerancias y cuantificadores se trasladará al estudio del límite de una función real.
 
 ---
 

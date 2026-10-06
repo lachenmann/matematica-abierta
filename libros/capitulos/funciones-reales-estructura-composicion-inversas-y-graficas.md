@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
 number-sections: true
@@ -5586,7 +5586,7 @@ $$
 D=\{-3,-1,2,7\}.
 $$
 
-Sin embargo, en análisis trabajaremos con especial frecuencia sobre **intervalos**, porque allí no hemos eliminado artificialmente puntos intermedios del dominio. Por esa razón el título de esta sección habla de monotonía sobre intervalos.
+Sin embargo, en cálculo trabajaremos con especial frecuencia sobre **intervalos**, porque allí no hemos eliminado artificialmente puntos intermedios del dominio. Por esa razón el título de esta sección habla de monotonía sobre intervalos.
 
 Conviene separar desde ahora dos afirmaciones:
 

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1458,7 +1458,7 @@ Con esto terminan las consecuencias teóricas previstas para el capítulo: desde
 
 ## Ejercicios y soluciones {#sec-t1-c10-11}
 
-La cuestión rectora de este banco no es solamente encontrar un número $c$, sino decidir **qué teorema permite afirmar que existe**, verificar cada hipótesis en el dominio indicado y distinguir una garantía universal de una conclusión accidentalmente verdadera. Los cuarenta ejercicios, originales para este tratado, forman siete niveles: $6A+6B+7C+7D+6E+5F+3G=40$. Sus soluciones razonadas siguen a todos los enunciados y conservan la correspondencia estricta `CPM-T1-EXR-0356--0395` / `CPM-T1-SOL-0356--0395`. Se admiten solamente los resultados anteriores y los establecidos en §§9.1–9.10; no se utilizarán integración, Taylor, convexidad ni criterios sistemáticos de monotonía del capítulo siguiente.
+La cuestión rectora de este banco no es solamente encontrar un número $c$, sino decidir **qué teorema permite afirmar que existe**, verificar cada hipótesis en el dominio indicado y distinguir una garantía universal de una conclusión accidentalmente verdadera. Los cuarenta ejercicios, originales para este libro, forman siete niveles: $6A+6B+7C+7D+6E+5F+3G=40$. Sus soluciones razonadas siguen a todos los enunciados y conservan la correspondencia estricta `CPM-T1-EXR-0356--0395` / `CPM-T1-SOL-0356--0395`. Se admiten solamente los resultados anteriores y los establecidos en §§9.1–9.10; no se utilizarán integración, Taylor, convexidad ni criterios sistemáticos de monotonía del capítulo siguiente.
 
 ### Nivel A — Extremos y Fermat
 

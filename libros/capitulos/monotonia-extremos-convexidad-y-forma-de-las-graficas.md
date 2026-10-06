@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1364,7 +1364,7 @@ Una función afín es simultáneamente convexa y cóncava por [Proposición 10.6
 Llamaremos **punto de inflexión de la gráfica** al punto $(c,f(c))$ correspondiente, para distinguirlo de su abscisa $c$.
 :::
 
-La elección de las desigualdades estrictas es una convención de este tratado. Hay exposiciones que admiten otras formulaciones del cambio de concavidad; al comparar resultados debemos comprobar cuál se está utilizando. Nuestra definición exige curvatura estricta en cada intervalo lateral completo, pero **no** exige tangente ni derivada segunda en $c$. Tampoco confunde un intervalo rectilíneo con una transición de curvatura.
+La elección de las desigualdades estrictas es una convención de este libro. Hay exposiciones que admiten otras formulaciones del cambio de concavidad; al comparar resultados debemos comprobar cuál se está utilizando. Nuestra definición exige curvatura estricta en cada intervalo lateral completo, pero **no** exige tangente ni derivada segunda en $c$. Tampoco confunde un intervalo rectilíneo con una transición de curvatura.
 
 La continuidad central es una hipótesis expresa: que una función tenga una forma a cada lado no autoriza a unirlas mediante un valor aislado arbitrario. Además, $c$ es interior del dominio y $f(c)$ debe estar definido. Si el dominio excluye $c$, no tenemos un punto de la gráfica que pueda recibir ese nombre según la definición.
 

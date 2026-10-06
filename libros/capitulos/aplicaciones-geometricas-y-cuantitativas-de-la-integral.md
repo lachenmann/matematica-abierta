@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-01
+date-modified: 2026-10-06
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -1549,7 +1549,7 @@ $$
 
 Esto demuestra el teorema. $\square$
 
-La fórmula de longitud surge así de tres ingredientes que ya pertenecían al tratado: geometría euclidiana de las cuerdas, teorema del valor medio y convergencia de sumas etiquetadas de Riemann.
+La fórmula de longitud surge así de tres ingredientes que ya pertenecían al libro: geometría euclidiana de las cuerdas, teorema del valor medio y convergencia de sumas etiquetadas de Riemann.
 
 **Antes de seguir.** ¿Por qué no basta observar que una sola longitud poligonal es una suma etiquetada? ¿Qué papel cumple la monotonía bajo refinamiento? ¿Dónde se usa exactamente la hipótesis $f\in C^1([a,b])$?
 
