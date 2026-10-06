@@ -246,7 +246,7 @@ def _strip_embedded_webfonts(head: str) -> str:
 
 
 def _strip_unused_bootstrap_icons(head: str, main: str) -> str:
-    if re.search(r'class=["\'][^"\']*\\bbi(?:\\s|[-"\'])', main, re.I):
+    if re.search(r'class=["\'][^"\']*\bbi(?:\s|[-"\'])', main, re.I):
         return head
 
     def replace_style(match: re.Match[str]) -> str:
@@ -276,7 +276,7 @@ def optimize_offline_html(data: bytes, *, label: str) -> bytes:
     main = main_match.group(0)
     head = _strip_unused_bootstrap_icons(head, main)
 
-    lang_match = re.search(r'<html\\b[^>]*\\blang=["\']([^"\']+)["\']', text, re.I)
+    lang_match = re.search(r'<html\b[^>]*\blang=["\']([^"\']+)["\']', text, re.I)
     lang = lang_match.group(1) if lang_match else "es"
     optimized = (
         "<!DOCTYPE html>\\n"
