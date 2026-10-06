@@ -170,37 +170,37 @@ _OFFLINE_STRIP_SCRIPT_IDS = {
 }
 
 _DATA_CSS_LINK_RE = re.compile(
-    r'<link\\b[^>]*href="(data:text/css,[^"]+)"[^>]*>',
+    r'<link\b[^>]*href="(data:text/css,[^"]+)"[^>]*>',
     re.I,
 )
 _SCRIPT_RE = re.compile(
-    r"<script\\b([^>]*)>([\\s\\S]*?)</script>",
+    r"<script\b([^>]*)>([\s\S]*?)</script>",
     re.I,
 )
 _STYLE_RE = re.compile(
-    r"<style\\b[^>]*>([\\s\\S]*?)</style>",
+    r"<style\b[^>]*>([\s\S]*?)</style>",
     re.I,
 )
 _MAIN_RE = re.compile(
-    r"<main\\b[\\s\\S]*?</main>",
+    r"<main\b[\s\S]*?</main>",
     re.I,
 )
 _HEAD_RE = re.compile(
-    r"<head>([\\s\\S]*?)</head>",
+    r"<head>([\s\S]*?)</head>",
     re.I,
 )
 _BODY_OPEN_RE = re.compile(
-    r"<body\\b[^>]*>",
+    r"<body\b[^>]*>",
     re.I,
 )
 _FONT_FACE_RE = re.compile(
-    r"@font-face\\s*\\{[^{}]*font-family:\\s*['\"](?:Source Sans Pro|Lato)['\"][^{}]*\\}",
+    r"@font-face\s*\{[^{}]*font-family:\s*['\"](?:Source Sans Pro|Lato)['\"][^{}]*\}",
     re.I | re.S,
 )
 
 
 def _script_id(attrs: str) -> str | None:
-    match = re.search(r'\\bid=["\']([^"\']+)["\']', attrs, re.I)
+    match = re.search(r'\bid=["\']([^"\']+)["\']', attrs, re.I)
     return match.group(1) if match else None
 
 
