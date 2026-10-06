@@ -133,7 +133,46 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         )
         encoded_theme = "data:text/css," + quote(
             theme_css,
-            safe="!    def test_offline_optimizer_preserves_content_icons_and_language(self):
+            safe="!()*+,/:;=?@-._~",
+        )
+        html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="{encoded_theme}" rel="stylesheet">
+<style>@font-face {{font-family: "bootstrap-icons";src:url(data:font/woff;base64,BBBB);}} .bi{{display:inline-block}}</style>
+<script>/*! @algolia/autocomplete-js 1.19.1 */ window.SEARCH = true;</script>
+<script type="text/javascript">window.MathJax = {{startup: {{}}}};</script>
+<script>window.CONTENT_SPECIFIC = true;</script>
+</head>
+<body class="fullcontent">
+<header id="quarto-header"><nav>chrome</nav></header>
+<main class="content" id="quarto-document-content">
+<h1 id="x">Capítulo</h1>
+<p><span class="math inline">\\(x^2\\)</span></p>
+<table><tr><td>1</td></tr></table>
+</main>
+<footer>chrome</footer>
+</body>
+</html>""".encode("utf-8")
+
+        optimized = optimize_offline_html(html, label="sample").decode("utf-8")
+
+        self.assertIn('id="quarto-document-content"', optimized)
+        self.assertIn('class="math inline"', optimized)
+        self.assertIn("<table>", optimized)
+        self.assertIn("window.MathJax", optimized)
+        self.assertIn("window.CONTENT_SPECIFIC", optimized)
+        self.assertIn("Source%20Sans%20Pro", optimized)
+
+        self.assertNotIn("quarto-header", optimized)
+        self.assertNotIn("<footer>", optimized)
+        self.assertNotIn("@algolia/autocomplete-js", optimized)
+        self.assertNotIn("data:font/ttf;base64,AAAA", optimized)
+        self.assertNotIn("bootstrap-icons", optimized)
+        self.assertLess(len(optimized), len(html))
+
+    def test_offline_optimizer_preserves_content_icons_and_language(self):
         html = b"""<!DOCTYPE html>
 <html lang="la">
 <head>
