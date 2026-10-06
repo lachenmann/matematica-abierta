@@ -69,7 +69,10 @@ format:
 '''
     first_end = body.index('\n', body.index('# '))
     body = body[:first_end]+'\n\n'+nav+body[first_end:]
-    (root/row['path']).write_text(metadata+body+'\n\n---\n\n'+nav+'\n')
+    destination = root/row.get('web_source', row['path'])
+    if row.get('web_source'):
+        metadata = re.sub(r'^content-id: .*\n', '', metadata, flags=re.M)
+    destination.write_text(metadata+body+'\n\n---\n\n'+nav+'\n')
 asset_dir = root/'assets/books/cpm-tomo-i'
 asset_dir.mkdir(parents=True, exist_ok=True)
 figure_source=args.figures or next((p for p in [args.canonical.parent/'90 - Assets/figures',args.canonical.parent/'book/90 - Assets/figures'] if p.is_dir()),None)
@@ -78,3 +81,8 @@ assert len(list(figure_source.glob('*.png')))==manifest['figure_count']
 for image in figure_source.glob('*.png'):
     shutil.copyfile(image, asset_dir/image.name)
 print('Adapted', len(rows), 'chapters; copied', len(list(asset_dir.glob('*.png'))), 'figures')
+
+if rows[0].get('pages'):
+    from paginate_cpm_c01 import paginate
+    paginate()
+

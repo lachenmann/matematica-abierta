@@ -26,15 +26,22 @@ class Inspect(HTMLParser):
         if tag == 'body': self.body = False
 pages = {}
 for row in rows:
-    path = (root/Path(row['path']).with_suffix('.html')).resolve()
+  for relative in [row['path']] + [p['path'] for p in row.get('pages', [])]:
+    path = (root/Path(relative).with_suffix('.html')).resolve()
     raw = re.sub(r'<div id="quarto-meta-markdown" class="hidden">.*?</div>', '', path.read_text(), flags=re.S)
     parser = Inspect(); parser.feed(raw)
     assert not [i for i,n in Counter(parser.ids).items() if n > 1], row['chapter']
     assert 'quarto-unresolved-ref' not in raw and parser.math > 0
-    for section in row['sections']:
+    for section in row['sections'] if relative == row['path'] and not row.get('pages') else []:
         anchor, expected = section['anchor'], section['number']
         assert re.search(r'<section id="'+anchor+r'"[^>]*data-number="'+re.escape(expected)+r'"', raw), (row['chapter'], anchor, expected)
     pages[path] = parser
+for row in rows:
+    for section in row['sections']:
+        if row.get('pages'):
+            relative = str(Path(row['path']).parent/row['anchor_routes'][section['anchor']])
+            raw = (root/relative).read_text()
+            assert re.search(r'<section id="'+section['anchor']+r'"[^>]*data-number="'+re.escape(section['number'])+r'"', raw), (relative, section)
 images = set()
 for path, parser in pages.items():
     for href in parser.links:
@@ -54,3 +61,4 @@ result = {'chapters':20,'images':len(images),'math_spans':sum(p.math for p in pa
           'duplicate_body_ids':0,'unresolved_refs':0,'broken_chapter_links':0}
 (repo/'cpm-html-qa.json').write_text(json.dumps(result, indent=2)+'\n')
 print(result)
+
