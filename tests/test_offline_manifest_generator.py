@@ -11,6 +11,7 @@ from generate_offline_manifests import (
     build_manifest,
     build_offline_render_command,
     load_catalog,
+    optimize_offline_html,
     resolve_source_path,
     select_book,
     validate_self_contained_html,
@@ -121,6 +122,55 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
                 resolve_source_path(root, "/libros/capitulos/capitulo-1.html"),
                 source,
             )
+
+    def test_offline_optimizer_keeps_main_math_and_static_css(self):
+        from urllib.parse import quote
+
+        theme_css = (
+            "@font-face {font-family: 'Source Sans Pro';"
+            "src:url(data:font/ttf;base64,AAAA);}"
+            "body{font-family:'Source Sans Pro',sans-serif}"
+        )
+        encoded_theme = "data:text/css," + quote(
+            theme_css,
+            safe="!    def test_self_contained_validation_allows_external_links_but_not_subresources(self):'()*+,/:;=?@-._~",
+        )
+        html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link href="{encoded_theme}" rel="stylesheet">
+<style>@font-face {{font-family: "bootstrap-icons";src:url(data:font/woff;base64,BBBB);}} .bi{{display:inline-block}}</style>
+<script>/*! @algolia/autocomplete-js 1.19.1 */ window.SEARCH = true;</script>
+<script type="text/javascript">window.MathJax = {{startup: {{}}}};</script>
+<script>window.CONTENT_SPECIFIC = true;</script>
+</head>
+<body class="fullcontent">
+<header id="quarto-header"><nav>chrome</nav></header>
+<main class="content" id="quarto-document-content">
+<h1 id="x">Capítulo</h1>
+<p><span class="math inline">\\(x^2\\)</span></p>
+<table><tr><td>1</td></tr></table>
+</main>
+<footer>chrome</footer>
+</body>
+</html>""".encode("utf-8")
+
+        optimized = optimize_offline_html(html, label="sample").decode("utf-8")
+
+        self.assertIn('id="quarto-document-content"', optimized)
+        self.assertIn('class="math inline"', optimized)
+        self.assertIn("<table>", optimized)
+        self.assertIn("window.MathJax", optimized)
+        self.assertIn("window.CONTENT_SPECIFIC", optimized)
+        self.assertIn("body{font-family", optimized)
+
+        self.assertNotIn("quarto-header", optimized)
+        self.assertNotIn("<footer>", optimized)
+        self.assertNotIn("@algolia/autocomplete-js", optimized)
+        self.assertNotIn("data:font/ttf;base64,AAAA", optimized)
+        self.assertNotIn("bootstrap-icons", optimized)
+        self.assertLess(len(optimized), len(html))
 
     def test_self_contained_validation_allows_external_links_but_not_subresources(self):
         validate_self_contained_html(
