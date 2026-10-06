@@ -28,6 +28,7 @@ def sample_catalog():
                 "title": "Física para matemáticos",
                 "path": "/libros/para-matematicos/fisica-para-matematicos.html",
                 "status": "published",
+                "related": ["MA-BCH-0009", "MA-BCH-0031"],
             },
             {
                 "id": "MA-BCH-0009",
@@ -64,6 +65,25 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "bookId inválido"):
             select_book(catalog, "../bad")
+
+    def test_book_related_defines_reading_order(self):
+        catalog = sample_catalog()
+        book = next(item for item in catalog["items"] if item["id"] == "MA-BOK-0005")
+        book["related"] = ["MA-BCH-0031", "MA-BCH-0009"]
+
+        _, chapters = select_book(catalog, "MA-BOK-0005")
+        self.assertEqual(
+            [item["id"] for item in chapters],
+            ["MA-BCH-0031", "MA-BCH-0009"],
+        )
+
+    def test_book_without_complete_reading_order_fails_closed(self):
+        catalog = sample_catalog()
+        book = next(item for item in catalog["items"] if item["id"] == "MA-BOK-0005")
+        book["related"] = ["MA-BCH-0009"]
+
+        with self.assertRaisesRegex(ValueError, "orden de todos sus capítulos"):
+            select_book(catalog, "MA-BOK-0005")
 
     def test_source_resolution_uses_canonical_path(self):
         with tempfile.TemporaryDirectory() as tmp:
