@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -243,10 +244,10 @@ const template = "<html><head></head><body><main>fake</main></body></html>";
 
     def test_global_display_math_does_not_clip_vertical_glyphs(self):
         css = (ROOT / "styles.scss").read_text(encoding="utf-8")
-        match = __import__("re").search(
-            r"\\.math\\.display\\s*\\{([^}]*)\\}",
+        match = re.search(
+            r"\.math\.display\s*\{([^}]*)\}",
             css,
-            __import__("re").S,
+            re.S,
         )
         self.assertIsNotNone(match)
         block = match.group(1)
