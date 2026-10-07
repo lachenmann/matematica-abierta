@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from generate_offline_manifests import (
     build_manifest,
     build_offline_render_command,
+    extract_shared_theme_styles,
     load_catalog,
     optimize_offline_html,
     resolve_source_path,
@@ -217,6 +218,50 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         self.assertNotIn("quarto-header", optimized)
         self.assertNotIn("quarto-footer", optimized)
 
+    def test_shared_theme_styles_are_deduplicated_as_b1_assets(self):
+        from urllib.parse import quote
+
+        light_css = (
+            "@font-face {font-family:'Source Sans Pro';"
+            "src:url(data:font/ttf;base64,AAAA)}body{font-family:'Source Sans Pro'}"
+        )
+        dark_css = (
+            "@font-face {font-family:'Lato';"
+            "src:url(data:font/ttf;base64,BBBB)}body{font-family:'Lato'}"
+        )
+        light_href = "data:text/css," + quote(light_css, safe="")
+        dark_href = "data:text/css," + quote(dark_css, safe="")
+        html = f"""<!DOCTYPE html>
+<html><head>
+<link id="quarto-bootstrap" data-mode="light" rel="stylesheet" href="{light_href}">
+<link id="quarto-bootstrap" data-mode="dark" rel="stylesheet" href="{dark_href}">
+<script>window.MathJax = {{}};</script>
+</head><body>
+<div id="quarto-content"><main id="quarto-document-content">X</main></div>
+</body></html>""".encode("utf-8")
+
+        rewritten, assets = extract_shared_theme_styles(html, label="shared-css")
+        text = rewritten.decode("utf-8")
+
+        self.assertEqual(
+            set(assets),
+            {
+                "assets/quarto-bootstrap-light.css",
+                "assets/quarto-bootstrap-dark.css",
+            },
+        )
+        self.assertEqual(
+            assets["assets/quarto-bootstrap-light.css"],
+            light_css.encode("utf-8"),
+        )
+        self.assertEqual(
+            assets["assets/quarto-bootstrap-dark.css"],
+            dark_css.encode("utf-8"),
+        )
+        self.assertIn('href="../assets/quarto-bootstrap-light.css"', text)
+        self.assertIn('href="../assets/quarto-bootstrap-dark.css"', text)
+        self.assertNotIn("data:font/ttf", text)
+
     def test_offline_optimizer_ignores_html_literals_inside_mathjax(self):
         html = b"""<!DOCTYPE html>
 <html lang="es">
@@ -357,6 +402,27 @@ const template = "<html><head></head><body><main>fake</main></body></html>";
             generated_at="2026-10-05T18:00:00Z",
         )
         self.assertNotEqual(first["version"], third["version"])
+
+        with_assets = build_manifest(
+            book,
+            chapters,
+            artifacts,
+            generated_at="2026-10-05T18:00:00Z",
+            assets={
+                "assets/quarto-bootstrap-light.css": b"body{font-family:test}",
+                "assets/quarto-bootstrap-dark.css": b"body{font-family:test-dark}",
+            },
+        )
+        self.assertEqual(len(with_assets["assets"]), 2)
+        self.assertEqual(
+            with_assets["totalSize"],
+            first["totalSize"]
+            + sum(item["size"] for item in with_assets["assets"]),
+        )
+        self.assertTrue(
+            all(item["mediaType"] == "text/css" for item in with_assets["assets"])
+        )
+        self.assertNotEqual(first["version"], with_assets["version"])
 
 
 if __name__ == "__main__":
