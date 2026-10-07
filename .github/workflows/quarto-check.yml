@@ -147,16 +147,31 @@ jobs:
               "MA-BCH-0009",
               "MA-BCH-0031",
           ]
-          assert manifest["assets"] == []
+          assert [item["localPath"] for item in manifest["assets"]] == [
+              "assets/quarto-bootstrap-dark.css",
+              "assets/quarto-bootstrap-light.css",
+          ]
 
           total = 0
-          for item in manifest["contents"]:
+          for item in [*manifest["contents"], *manifest["assets"]]:
               path = package / item["localPath"]
               data = path.read_bytes()
               assert len(data) == item["size"]
               assert hashlib.sha256(data).hexdigest() == item["sha256"]
-              assert b"<html" in data.lower() and b"<body" in data.lower()
               total += len(data)
+
+          for item in manifest["contents"]:
+              data = (package / item["localPath"]).read_bytes()
+              assert b"<html" in data.lower() and b"<body" in data.lower()
+              assert b'id="quarto-content"' in data
+              assert b"../assets/quarto-bootstrap-light.css" in data
+              assert b"../assets/quarto-bootstrap-dark.css" in data
+
+          for item in manifest["assets"]:
+              assert item["mediaType"] == "text/css"
+              assert item["remotePath"].startswith(
+                  "/app/offline/MA-BOK-0005/assets/"
+              )
 
           assert total == manifest["totalSize"]
           assert manifest["version"].startswith("sha256-")
