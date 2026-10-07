@@ -1,0 +1,2068 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Soluciones de microcontroles — Capítulo 5 – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5590f821fa3f52fc44bd14b8fd9d1fcc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-dbc5faed65952462864f3e01761da9af.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/anm/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-sucesión-es-una-función-índice-y-término" id="toc-una-sucesión-es-una-función-índice-y-término" class="nav-link active" data-scroll-target="#una-sucesión-es-una-función-índice-y-término">§5.1 — Una sucesión es una función: índice y término</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-001" id="toc-microcontrol-001" class="nav-link" data-scroll-target="#microcontrol-001">Microcontrol 001</a></li>
+  <li><a href="#microcontrol-002" id="toc-microcontrol-002" class="nav-link" data-scroll-target="#microcontrol-002">Microcontrol 002</a></li>
+  <li><a href="#microcontrol-003" id="toc-microcontrol-003" class="nav-link" data-scroll-target="#microcontrol-003">Microcontrol 003</a></li>
+  <li><a href="#microcontrol-004" id="toc-microcontrol-004" class="nav-link" data-scroll-target="#microcontrol-004">Microcontrol 004</a></li>
+  <li><a href="#microcontrol-005" id="toc-microcontrol-005" class="nav-link" data-scroll-target="#microcontrol-005">Microcontrol 005</a></li>
+  <li><a href="#microcontrol-006" id="toc-microcontrol-006" class="nav-link" data-scroll-target="#microcontrol-006">Microcontrol 006</a></li>
+  <li><a href="#microcontrol-007" id="toc-microcontrol-007" class="nav-link" data-scroll-target="#microcontrol-007">Microcontrol 007</a></li>
+  <li><a href="#microcontrol-008" id="toc-microcontrol-008" class="nav-link" data-scroll-target="#microcontrol-008">Microcontrol 008</a></li>
+  </ul></li>
+  <li><a href="#el-orden-de-las-visitas-importa" id="toc-el-orden-de-las-visitas-importa" class="nav-link" data-scroll-target="#el-orden-de-las-visitas-importa">§5.2 — El orden de las visitas importa</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-009" id="toc-microcontrol-009" class="nav-link" data-scroll-target="#microcontrol-009">Microcontrol 009</a></li>
+  <li><a href="#microcontrol-010" id="toc-microcontrol-010" class="nav-link" data-scroll-target="#microcontrol-010">Microcontrol 010</a></li>
+  <li><a href="#microcontrol-011" id="toc-microcontrol-011" class="nav-link" data-scroll-target="#microcontrol-011">Microcontrol 011</a></li>
+  <li><a href="#microcontrol-012" id="toc-microcontrol-012" class="nav-link" data-scroll-target="#microcontrol-012">Microcontrol 012</a></li>
+  <li><a href="#microcontrol-013" id="toc-microcontrol-013" class="nav-link" data-scroll-target="#microcontrol-013">Microcontrol 013</a></li>
+  <li><a href="#microcontrol-014" id="toc-microcontrol-014" class="nav-link" data-scroll-target="#microcontrol-014">Microcontrol 014</a></li>
+  <li><a href="#microcontrol-015" id="toc-microcontrol-015" class="nav-link" data-scroll-target="#microcontrol-015">Microcontrol 015</a></li>
+  <li><a href="#microcontrol-016" id="toc-microcontrol-016" class="nav-link" data-scroll-target="#microcontrol-016">Microcontrol 016</a></li>
+  </ul></li>
+  <li><a href="#ver-una-sucesión-sin-perder-el-índice" id="toc-ver-una-sucesión-sin-perder-el-índice" class="nav-link" data-scroll-target="#ver-una-sucesión-sin-perder-el-índice">§5.3 — Ver una sucesión sin perder el índice</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-017" id="toc-microcontrol-017" class="nav-link" data-scroll-target="#microcontrol-017">Microcontrol 017</a></li>
+  <li><a href="#microcontrol-018" id="toc-microcontrol-018" class="nav-link" data-scroll-target="#microcontrol-018">Microcontrol 018</a></li>
+  <li><a href="#microcontrol-019" id="toc-microcontrol-019" class="nav-link" data-scroll-target="#microcontrol-019">Microcontrol 019</a></li>
+  <li><a href="#microcontrol-020" id="toc-microcontrol-020" class="nav-link" data-scroll-target="#microcontrol-020">Microcontrol 020</a></li>
+  <li><a href="#microcontrol-021" id="toc-microcontrol-021" class="nav-link" data-scroll-target="#microcontrol-021">Microcontrol 021</a></li>
+  <li><a href="#microcontrol-022" id="toc-microcontrol-022" class="nav-link" data-scroll-target="#microcontrol-022">Microcontrol 022</a></li>
+  <li><a href="#microcontrol-023" id="toc-microcontrol-023" class="nav-link" data-scroll-target="#microcontrol-023">Microcontrol 023</a></li>
+  <li><a href="#microcontrol-024" id="toc-microcontrol-024" class="nav-link" data-scroll-target="#microcontrol-024">Microcontrol 024</a></li>
+  </ul></li>
+  <li><a href="#colas-olvidar-un-comienzo-finito" id="toc-colas-olvidar-un-comienzo-finito" class="nav-link" data-scroll-target="#colas-olvidar-un-comienzo-finito">§5.4 — Colas: olvidar un comienzo finito</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-025" id="toc-microcontrol-025" class="nav-link" data-scroll-target="#microcontrol-025">Microcontrol 025</a></li>
+  <li><a href="#microcontrol-026" id="toc-microcontrol-026" class="nav-link" data-scroll-target="#microcontrol-026">Microcontrol 026</a></li>
+  <li><a href="#microcontrol-027" id="toc-microcontrol-027" class="nav-link" data-scroll-target="#microcontrol-027">Microcontrol 027</a></li>
+  <li><a href="#microcontrol-028" id="toc-microcontrol-028" class="nav-link" data-scroll-target="#microcontrol-028">Microcontrol 028</a></li>
+  <li><a href="#microcontrol-029" id="toc-microcontrol-029" class="nav-link" data-scroll-target="#microcontrol-029">Microcontrol 029</a></li>
+  <li><a href="#microcontrol-030" id="toc-microcontrol-030" class="nav-link" data-scroll-target="#microcontrol-030">Microcontrol 030</a></li>
+  <li><a href="#microcontrol-031" id="toc-microcontrol-031" class="nav-link" data-scroll-target="#microcontrol-031">Microcontrol 031</a></li>
+  <li><a href="#microcontrol-032" id="toc-microcontrol-032" class="nav-link" data-scroll-target="#microcontrol-032">Microcontrol 032</a></li>
+  </ul></li>
+  <li><a href="#a-partir-de-cierto-momento-propiedades-eventuales" id="toc-a-partir-de-cierto-momento-propiedades-eventuales" class="nav-link" data-scroll-target="#a-partir-de-cierto-momento-propiedades-eventuales">§5.5 — «A partir de cierto momento»: propiedades eventuales</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-033" id="toc-microcontrol-033" class="nav-link" data-scroll-target="#microcontrol-033">Microcontrol 033</a></li>
+  <li><a href="#microcontrol-034" id="toc-microcontrol-034" class="nav-link" data-scroll-target="#microcontrol-034">Microcontrol 034</a></li>
+  <li><a href="#microcontrol-035" id="toc-microcontrol-035" class="nav-link" data-scroll-target="#microcontrol-035">Microcontrol 035</a></li>
+  <li><a href="#microcontrol-036" id="toc-microcontrol-036" class="nav-link" data-scroll-target="#microcontrol-036">Microcontrol 036</a></li>
+  <li><a href="#microcontrol-037" id="toc-microcontrol-037" class="nav-link" data-scroll-target="#microcontrol-037">Microcontrol 037</a></li>
+  <li><a href="#microcontrol-038" id="toc-microcontrol-038" class="nav-link" data-scroll-target="#microcontrol-038">Microcontrol 038</a></li>
+  <li><a href="#microcontrol-039" id="toc-microcontrol-039" class="nav-link" data-scroll-target="#microcontrol-039">Microcontrol 039</a></li>
+  <li><a href="#microcontrol-040" id="toc-microcontrol-040" class="nav-link" data-scroll-target="#microcontrol-040">Microcontrol 040</a></li>
+  </ul></li>
+  <li><a href="#eventualmente-no-significa-infinitas-veces" id="toc-eventualmente-no-significa-infinitas-veces" class="nav-link" data-scroll-target="#eventualmente-no-significa-infinitas-veces">§5.6 — Eventualmente no significa infinitas veces</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-041" id="toc-microcontrol-041" class="nav-link" data-scroll-target="#microcontrol-041">Microcontrol 041</a></li>
+  <li><a href="#microcontrol-042" id="toc-microcontrol-042" class="nav-link" data-scroll-target="#microcontrol-042">Microcontrol 042</a></li>
+  <li><a href="#microcontrol-043" id="toc-microcontrol-043" class="nav-link" data-scroll-target="#microcontrol-043">Microcontrol 043</a></li>
+  <li><a href="#microcontrol-044" id="toc-microcontrol-044" class="nav-link" data-scroll-target="#microcontrol-044">Microcontrol 044</a></li>
+  <li><a href="#microcontrol-045" id="toc-microcontrol-045" class="nav-link" data-scroll-target="#microcontrol-045">Microcontrol 045</a></li>
+  <li><a href="#microcontrol-046" id="toc-microcontrol-046" class="nav-link" data-scroll-target="#microcontrol-046">Microcontrol 046</a></li>
+  <li><a href="#microcontrol-047" id="toc-microcontrol-047" class="nav-link" data-scroll-target="#microcontrol-047">Microcontrol 047</a></li>
+  <li><a href="#microcontrol-048" id="toc-microcontrol-048" class="nav-link" data-scroll-target="#microcontrol-048">Microcontrol 048</a></li>
+  </ul></li>
+  <li><a href="#sincronizar-colas-y-olvidar-perturbaciones-finitas" id="toc-sincronizar-colas-y-olvidar-perturbaciones-finitas" class="nav-link" data-scroll-target="#sincronizar-colas-y-olvidar-perturbaciones-finitas">§5.7 — Sincronizar colas y olvidar perturbaciones finitas</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-049" id="toc-microcontrol-049" class="nav-link" data-scroll-target="#microcontrol-049">Microcontrol 049</a></li>
+  <li><a href="#microcontrol-050" id="toc-microcontrol-050" class="nav-link" data-scroll-target="#microcontrol-050">Microcontrol 050</a></li>
+  <li><a href="#microcontrol-051" id="toc-microcontrol-051" class="nav-link" data-scroll-target="#microcontrol-051">Microcontrol 051</a></li>
+  <li><a href="#microcontrol-052" id="toc-microcontrol-052" class="nav-link" data-scroll-target="#microcontrol-052">Microcontrol 052</a></li>
+  <li><a href="#microcontrol-053" id="toc-microcontrol-053" class="nav-link" data-scroll-target="#microcontrol-053">Microcontrol 053</a></li>
+  <li><a href="#microcontrol-054" id="toc-microcontrol-054" class="nav-link" data-scroll-target="#microcontrol-054">Microcontrol 054</a></li>
+  <li><a href="#microcontrol-055" id="toc-microcontrol-055" class="nav-link" data-scroll-target="#microcontrol-055">Microcontrol 055</a></li>
+  <li><a href="#microcontrol-056" id="toc-microcontrol-056" class="nav-link" data-scroll-target="#microcontrol-056">Microcontrol 056</a></li>
+  </ul></li>
+  <li><a href="#captura-eventual-la-puerta-a-εn" id="toc-captura-eventual-la-puerta-a-εn" class="nav-link" data-scroll-target="#captura-eventual-la-puerta-a-εn">§5.8 — Captura eventual: la puerta a ε–N</a>
+  <ul class="collapse">
+  <li><a href="#microcontrol-057" id="toc-microcontrol-057" class="nav-link" data-scroll-target="#microcontrol-057">Microcontrol 057</a></li>
+  <li><a href="#microcontrol-058" id="toc-microcontrol-058" class="nav-link" data-scroll-target="#microcontrol-058">Microcontrol 058</a></li>
+  <li><a href="#microcontrol-059" id="toc-microcontrol-059" class="nav-link" data-scroll-target="#microcontrol-059">Microcontrol 059</a></li>
+  <li><a href="#microcontrol-060" id="toc-microcontrol-060" class="nav-link" data-scroll-target="#microcontrol-060">Microcontrol 060</a></li>
+  <li><a href="#microcontrol-061" id="toc-microcontrol-061" class="nav-link" data-scroll-target="#microcontrol-061">Microcontrol 061</a></li>
+  <li><a href="#microcontrol-062" id="toc-microcontrol-062" class="nav-link" data-scroll-target="#microcontrol-062">Microcontrol 062</a></li>
+  <li><a href="#microcontrol-063" id="toc-microcontrol-063" class="nav-link" data-scroll-target="#microcontrol-063">Microcontrol 063</a></li>
+  <li><a href="#microcontrol-064" id="toc-microcontrol-064" class="nav-link" data-scroll-target="#microcontrol-064">Microcontrol 064</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Soluciones de microcontroles — Capítulo 5</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">7 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html">Capítulo 5</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html">Ejercicios</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html">Soluciones</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html">Soluciones de microcontroles</a></p>
+<section id="una-sucesión-es-una-función-índice-y-término" class="level2">
+<h2 class="anchored" data-anchor-id="una-sucesión-es-una-función-índice-y-término">§5.1 — Una sucesión es una función: índice y término</h2>
+<section id="microcontrol-001" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-001">Microcontrol 001</h3>
+<p><span id="MA-MIC-ANM-01-005-001"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-001"></span></p>
+<p><span id="MA-SEC-ANM-01-005-001"></span></p>
+<ol type="1">
+<li>Sea <span class="math inline">\(a_n=3n-2\)</span>. Identifica el dominio, el codominio, el índice y el término cuando <span class="math inline">\(n=4\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> La sucesión es la función <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span> dada por <span class="math inline">\(a(n)=3n-2\)</span>. Su dominio es <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span> y su codominio es <span class="math inline">\(\mathbb R\)</span>. Al fijar <span class="math inline">\(n=4\)</span>, el índice es <span class="math inline">\(4\in\mathbb N\)</span> y el término correspondiente es <span class="math inline">\(a_4=3\cdot4-2=10\in\mathbb R\)</span>. La función <span class="math inline">\(a\)</span>, la entrada <span class="math inline">\(4\)</span> y el valor <span class="math inline">\(10\)</span> cumplen papeles distintos.</p>
+</section>
+<section id="microcontrol-002" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-002">Microcontrol 002</h3>
+<p><span id="MA-MIC-ANM-01-005-002"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-002"></span></p>
+<ol start="2" type="1">
+<li>Escribe los primeros cinco términos de <span class="math inline">\(a_n=1/(n+1)\)</span> usando la convención <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Los primeros cinco índices son <span class="math inline">\(0,1,2,3,4\)</span>. Sustituyéndolos en la fórmula obtenemos <span class="math inline">\(a_0=1\)</span>, <span class="math inline">\(a_1=1/2\)</span>, <span class="math inline">\(a_2=1/3\)</span>, <span class="math inline">\(a_3=1/4\)</span> y <span class="math inline">\(a_4=1/5\)</span>. Por tanto, los primeros cinco términos, en su orden, son <span class="math inline">\((1,1/2,1/3,1/4,1/5)\)</span>. Comenzar en <span class="math inline">\(n=1\)</span> omitiría el primer término.</p>
+</section>
+<section id="microcontrol-003" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-003">Microcontrol 003</h3>
+<p><span id="MA-MIC-ANM-01-005-003"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-003"></span></p>
+<ol start="3" type="1">
+<li>Explica por qué las expresiones <span class="math inline">\(f(x)=x^2\)</span> con <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span> y <span class="math inline">\(a_n=n^2\)</span> con <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span> no definen el mismo objeto matemático.</li>
+</ol>
+<p><strong>Solución.</strong> Los dominios son diferentes: <span class="math inline">\(f\)</span> admite cualquier entrada real, mientras que <span class="math inline">\(a\)</span> sólo admite índices naturales; ambas tienen codominio <span class="math inline">\(\mathbb R\)</span>. Por ejemplo, <span class="math inline">\(f(1/2)=1/4\)</span> está definido, pero <span class="math inline">\(a_{1/2}\)</span> no está definido porque <span class="math inline">\(1/2\notin\mathbb N\)</span>. Para cada <span class="math inline">\(n\in\mathbb N\)</span> sí se cumple <span class="math inline">\(a_n=f(n)\)</span>: <span class="math inline">\(a\)</span> es la restricción de <span class="math inline">\(f\)</span> a <span class="math inline">\(\mathbb N\)</span>. Esa coincidencia de valores en los naturales no hace iguales las dos funciones, pues el dominio forma parte del objeto.</p>
+</section>
+<section id="microcontrol-004" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-004">Microcontrol 004</h3>
+<p><span id="MA-MIC-ANM-01-005-004"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-004"></span></p>
+<ol start="4" type="1">
+<li>Decide si la frase «<span class="math inline">\(a_3\)</span> es el tercer índice de la sucesión» es correcta. Si no lo es, reescríbela con los tipos adecuados.</li>
+</ol>
+<p><strong>Solución.</strong> La frase es incorrecta. La redacción adecuada es: «<span class="math inline">\(a_3\)</span> es el término de índice <span class="math inline">\(3\)</span> de la sucesión». El índice es <span class="math inline">\(3\in\mathbb N\)</span> y el término es <span class="math inline">\(a_3=a(3)\in\mathbb R\)</span>. Con la indexación desde <span class="math inline">\(0\)</span>, <span class="math inline">\(3\)</span> ocupa la cuarta posición entre los índices y <span class="math inline">\(a_3\)</span> es el cuarto término. Aunque en alguna sucesión se tenga <span class="math inline">\(a_3=3\)</span>, esa igualdad numérica no identifica el papel de entrada con el de salida ni identifica un término con la función completa.</p>
+</section>
+<section id="microcontrol-005" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-005">Microcontrol 005</h3>
+<p><span id="MA-MIC-ANM-01-005-005"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-005"></span></p>
+<ol start="5" type="1">
+<li>Sean <span class="math inline">\(a,b:\mathbb N\to\mathbb R\)</span> tales que <span class="math inline">\(a_n=b_n\)</span> para todo <span class="math inline">\(n\in\mathbb N\)</span>. Justifica, usando la definición de igualdad de funciones, por qué <span class="math inline">\(a=b\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Las funciones <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> tienen el mismo dominio <span class="math inline">\(\mathbb N\)</span> y el mismo codominio <span class="math inline">\(\mathbb R\)</span>. La hipótesis dice que, para cada entrada <span class="math inline">\(n\in\mathbb N\)</span>, sus valores satisfacen <span class="math inline">\(a(n)=a_n=b_n=b(n)\)</span>. Como la igualdad de funciones exige precisamente el mismo dominio, el mismo codominio y la misma asignación en cada entrada, se concluye que <span class="math inline">\(a=b\)</span>.</p>
+</section>
+<section id="microcontrol-006" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-006">Microcontrol 006</h3>
+<p><span id="MA-MIC-ANM-01-005-006"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-006"></span></p>
+<ol start="6" type="1">
+<li>Construye una sucesión real en la que el mismo valor aparezca en infinitos índices distintos. Explica por qué esto no contradice que una sucesión sea una función.</li>
+</ol>
+<p><strong>Solución.</strong> Definamos <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span> por <span class="math inline">\(a(n)=2\)</span> para todo <span class="math inline">\(n\in\mathbb N\)</span>. El valor <span class="math inline">\(2\)</span> aparece en todos los índices <span class="math inline">\(0,1,2,\ldots\)</span>, que son infinitos y distintos. Cada índice recibe un único valor, como exige la definición de función; la definición permite que índices diferentes reciban el mismo valor.</p>
+</section>
+<section id="microcontrol-007" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-007">Microcontrol 007</h3>
+<p><span id="MA-MIC-ANM-01-005-007"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-007"></span></p>
+<ol start="7" type="1">
+<li>En una gráfica de puntos <span class="math inline">\((n,a_n)\)</span> alguien une todos los puntos con una curva y afirma que esa curva «es la sucesión». Localiza el error.</li>
+</ol>
+<p><strong>Solución.</strong> La gráfica de la sucesión es la colección discreta <span class="math inline">\(\{(n,a_n):n\in\mathbb N\}\)</span>. Al unir los puntos se añaden puntos cuyas primeras coordenadas pueden no ser naturales; por ejemplo, no existe un término de índice <span class="math inline">\(1/2\)</span>. La curva es una representación adicional escogida por quien dibuja y no la gráfica de la función <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>. Incluso los puntos originales representan la sucesión: la función queda definida por sus asignaciones en los índices naturales.</p>
+</section>
+<section id="microcontrol-008" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-008">Microcontrol 008</h3>
+<p><span id="MA-MIC-ANM-01-005-008"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-008"></span></p>
+<ol start="8" type="1">
+<li>En la notación <span class="math inline">\(\{a_n:n\in\mathbb N\}\)</span> se ha olvidado parte de la información de la sucesión. Sin desarrollar todavía §5.2, indica qué clase de información sospechas que ya no puede recuperarse.</li>
+</ol>
+<p><strong>Solución.</strong> El conjunto conserva qué valores aparecen, pero no registra qué valor corresponde a cada índice. Por ello se pierde el orden de aparición y la información sobre repeticiones: en qué índices se repite un valor y cuántas veces aparece. Esos datos pertenecen a la asignación <span class="math inline">\(n\mapsto a_n\)</span> y no quedan guardados al reunir los valores en un conjunto.</p>
+</section>
+</section>
+<section id="el-orden-de-las-visitas-importa" class="level2">
+<h2 class="anchored" data-anchor-id="el-orden-de-las-visitas-importa">§5.2 — El orden de las visitas importa</h2>
+<section id="microcontrol-009" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-009">Microcontrol 009</h3>
+<p><span id="MA-MIC-ANM-01-005-009"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-009"></span></p>
+<p><span id="MA-SEC-ANM-01-005-002"></span></p>
+<ol type="1">
+<li>Para <span class="math inline">\(a_n=(-1)^n\)</span>, determina el conjunto de valores y explica qué información de la sucesión no queda registrada en ese conjunto.</li>
+</ol>
+<p><strong>Solución.</strong> Si <span class="math inline">\(n=2k\)</span> con <span class="math inline">\(k\in\mathbb N\)</span>, entonces <span class="math inline">\(a_n=1\)</span>; si <span class="math inline">\(n=2k+1\)</span>, entonces <span class="math inline">\(a_n=-1\)</span>. Ambos valores aparecen, por ejemplo en <span class="math inline">\(n=0\)</span> y <span class="math inline">\(n=1\)</span>, y no aparece ningún otro. Por tanto, el conjunto de valores es <span class="math inline">\(\{-1,1\}\subseteq\mathbb R\)</span>. Ese conjunto no registra que <span class="math inline">\(1\)</span> corresponde a los índices pares y <span class="math inline">\(-1\)</span> a los impares, ni el orden de las visitas ni sus repeticiones.</p>
+</section>
+<section id="microcontrol-010" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-010">Microcontrol 010</h3>
+<p><span id="MA-MIC-ANM-01-005-010"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-010"></span></p>
+<ol start="2" type="1">
+<li>Sean <span class="math inline">\(a=(0,1,0,1,\ldots)\)</span> y <span class="math inline">\(b=(0,0,1,1,0,0,1,1,\ldots)\)</span>. Demuestra que tienen el mismo conjunto de valores pero que <span class="math inline">\(a\ne b\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Cada una de las dos sucesiones toma sólo los valores <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, y ambas toman los dos: en <span class="math inline">\(a\)</span> aparecen en los índices <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, y en <span class="math inline">\(b\)</span> en los índices <span class="math inline">\(0\)</span> y <span class="math inline">\(2\)</span>. Sus conjuntos de valores son, por tanto, <span class="math inline">\(\{0,1\}\)</span>. Sin embargo, <span class="math inline">\(a_1=1\)</span> y <span class="math inline">\(b_1=0\)</span>; la diferencia en esa entrada impide la igualdad de las funciones <span class="math inline">\(a,b:\mathbb N\to\mathbb R\)</span>.</p>
+</section>
+<section id="microcontrol-011" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-011">Microcontrol 011</h3>
+<p><span id="MA-MIC-ANM-01-005-011"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-011"></span></p>
+<ol start="3" type="1">
+<li>Construye dos sucesiones distintas con conjunto de valores <span class="math inline">\(\{0,1,2\}\)</span> y con órdenes de aparición diferentes.</li>
+</ol>
+<p><strong>Solución.</strong> Definamos <span class="math inline">\(a,b:\mathbb N\to\mathbb R\)</span> mediante <span class="math inline">\(a_0=0\)</span>, <span class="math inline">\(a_1=1\)</span>, <span class="math inline">\(a_n=2\)</span> para <span class="math inline">\(n\ge2\)</span>, y <span class="math inline">\(b_0=1\)</span>, <span class="math inline">\(b_1=0\)</span>, <span class="math inline">\(b_n=2\)</span> para <span class="math inline">\(n\ge2\)</span>. Así, <span class="math inline">\(a=(0,1,2,2,2,\ldots)\)</span> y <span class="math inline">\(b=(1,0,2,2,2,\ldots)\)</span>. En ambas aparecen los tres valores <span class="math inline">\(0,1,2\)</span> y ningún otro. El orden de aparición de <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> está intercambiado, y <span class="math inline">\(a_0=0\ne1=b_0\)</span> prueba que son distintas.</p>
+</section>
+<section id="microcontrol-012" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-012">Microcontrol 012</h3>
+<p><span id="MA-MIC-ANM-01-005-012"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-012"></span></p>
+<ol start="4" type="1">
+<li>Construye dos sucesiones con el mismo conjunto de valores en las que el valor <span class="math inline">\(0\)</span> tenga patrones de repetición distintos. Describe la diferencia usando índices concretos.</li>
+</ol>
+<p><strong>Solución.</strong> Tomemos <span class="math inline">\(a_0=0\)</span> y <span class="math inline">\(a_n=1\)</span> para <span class="math inline">\(n\ge1\)</span>. Definamos <span class="math inline">\(b_{2k}=0\)</span> y <span class="math inline">\(b_{2k+1}=1\)</span> para cada <span class="math inline">\(k\in\mathbb N\)</span>. Ambas son funciones <span class="math inline">\(\mathbb N\to\mathbb R\)</span> con conjunto de valores <span class="math inline">\(\{0,1\}\)</span>. En <span class="math inline">\(a\)</span>, el valor <span class="math inline">\(0\)</span> aparece sólo en el índice <span class="math inline">\(0\)</span>; en <span class="math inline">\(b\)</span>, aparece en los índices <span class="math inline">\(0,2,4,6,\ldots\)</span>. Por ejemplo, <span class="math inline">\(a_2=a_4=1\)</span>, mientras que <span class="math inline">\(b_2=b_4=0\)</span>. El conjunto de valores no distingue esos patrones.</p>
+</section>
+<section id="microcontrol-013" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-013">Microcontrol 013</h3>
+<p><span id="MA-MIC-ANM-01-005-013"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-013"></span></p>
+<ol start="5" type="1">
+<li>Demuestra que si <span class="math inline">\(a=b\)</span> como sucesiones, entonces <span class="math inline">\(\{a_n:n\in\mathbb N\}=\{b_n:n\in\mathbb N\}\)</span>. Explica por qué el recíproco falla.</li>
+</ol>
+<p><strong>Solución.</strong> Sea <span class="math inline">\(x\in\{a_n:n\in\mathbb N\}\)</span>. Existe un índice <span class="math inline">\(m\in\mathbb N\)</span> con <span class="math inline">\(x=a_m\)</span>. Como <span class="math inline">\(a=b\)</span>, se tiene <span class="math inline">\(a_m=b_m\)</span>, de modo que <span class="math inline">\(x\)</span> pertenece también al conjunto de valores de <span class="math inline">\(b\)</span>. Esto prueba una inclusión; intercambiando <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> obtenemos la otra y, por tanto, la igualdad de conjuntos. El recíproco falla: las sucesiones <span class="math inline">\((0,1,0,1,\ldots)\)</span> y <span class="math inline">\((0,0,1,1,0,0,1,1,\ldots)\)</span> tienen conjunto de valores <span class="math inline">\(\{0,1\}\)</span>, pero sus términos de índice <span class="math inline">\(1\)</span> son diferentes.</p>
+</section>
+<section id="microcontrol-014" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-014">Microcontrol 014</h3>
+<p><span id="MA-MIC-ANM-01-005-014"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-014"></span></p>
+<ol start="6" type="1">
+<li>Sea <span class="math inline">\(p_n=n\)</span> y define <span class="math inline">\(q=(1,0,2,3,4,\ldots)\)</span>. Verifica que <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> tienen el mismo conjunto de valores y localiza un índice que pruebe que son distintas.</li>
+</ol>
+<p><strong>Solución.</strong> El conjunto de valores de <span class="math inline">\(p\)</span> es <span class="math inline">\(\mathbb N\)</span>, considerado como subconjunto de <span class="math inline">\(\mathbb R\)</span>: cada natural <span class="math inline">\(k\)</span> aparece como <span class="math inline">\(p_k=k\)</span>. Para <span class="math inline">\(q\)</span>, tenemos <span class="math inline">\(q_0=1\)</span>, <span class="math inline">\(q_1=0\)</span> y <span class="math inline">\(q_n=n\)</span> para <span class="math inline">\(n\ge2\)</span>. Todos sus valores son naturales; además, <span class="math inline">\(0\)</span> aparece en el índice <span class="math inline">\(1\)</span>, <span class="math inline">\(1\)</span> en el índice <span class="math inline">\(0\)</span> y cada <span class="math inline">\(k\ge2\)</span> en el índice <span class="math inline">\(k\)</span>. Por tanto, su conjunto de valores también es <span class="math inline">\(\mathbb N\)</span>. Las sucesiones son distintas porque <span class="math inline">\(p_0=0\ne1=q_0\)</span>.</p>
+</section>
+<section id="microcontrol-015" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-015">Microcontrol 015</h3>
+<p><span id="MA-MIC-ANM-01-005-015"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-015"></span></p>
+<ol start="7" type="1">
+<li>Si <span class="math inline">\(\sigma:\mathbb N\to\mathbb N\)</span> es biyectiva y <span class="math inline">\(b_n=a_{\sigma(n)}\)</span>, demuestra directamente que <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> tienen el mismo conjunto de valores. ¿Por qué eso no prueba que <span class="math inline">\(a=b\)</span>?</li>
+</ol>
+<p><strong>Solución.</strong> Si <span class="math inline">\(x\)</span> es un valor de <span class="math inline">\(b\)</span>, existe <span class="math inline">\(n\in\mathbb N\)</span> tal que <span class="math inline">\(x=b_n=a_{\sigma(n)}\)</span>. Como <span class="math inline">\(\sigma(n)\in\mathbb N\)</span>, <span class="math inline">\(x\)</span> es un valor de <span class="math inline">\(a\)</span>. Recíprocamente, si <span class="math inline">\(x=a_m\)</span> para algún <span class="math inline">\(m\in\mathbb N\)</span>, la sobreyectividad de <span class="math inline">\(\sigma\)</span> proporciona un <span class="math inline">\(n\in\mathbb N\)</span> con <span class="math inline">\(\sigma(n)=m\)</span>; entonces <span class="math inline">\(x=a_m=b_n\)</span>. Las dos inclusiones prueban la igualdad de conjuntos de valores. Esta prueba permite que el índice <span class="math inline">\(n\)</span> de <span class="math inline">\(b\)</span> sea distinto del índice <span class="math inline">\(m\)</span> de <span class="math inline">\(a\)</span>, mientras que <span class="math inline">\(a=b\)</span> exigiría <span class="math inline">\(a_n=a_{\sigma(n)}\)</span> para cada mismo índice <span class="math inline">\(n\)</span>. Por ejemplo, con <span class="math inline">\(a_n=n\)</span> y la biyección que intercambia <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> y deja fijos los demás índices, resulta <span class="math inline">\(a_0=0\)</span> y <span class="math inline">\(b_0=1\)</span>.</p>
+</section>
+<section id="microcontrol-016" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-016">Microcontrol 016</h3>
+<p><span id="MA-MIC-ANM-01-005-016"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-016"></span></p>
+<ol start="8" type="1">
+<li>Explica con tus propias palabras qué información conserva la lista ordenada <span class="math inline">\((a_0,a_1,a_2,\ldots)\)</span> que desaparece al pasar al conjunto <span class="math inline">\(\{a_n:n\in\mathbb N\}\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> La lista ordenada permite recuperar el valor asignado a cada índice: la primera entrada es <span class="math inline">\(a_0\)</span>, la segunda es <span class="math inline">\(a_1\)</span>, y así sucesivamente. Conserva en qué posiciones aparece cada valor, el orden de las visitas y las repeticiones. El conjunto <span class="math inline">\(\{a_n:n\in\mathbb N\}\)</span> guarda únicamente qué valores aparecen al menos una vez; no indica sus posiciones ni cuántas veces se repiten.</p>
+</section>
+</section>
+<section id="ver-una-sucesión-sin-perder-el-índice" class="level2">
+<h2 class="anchored" data-anchor-id="ver-una-sucesión-sin-perder-el-índice">§5.3 — Ver una sucesión sin perder el índice</h2>
+<section id="microcontrol-017" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-017">Microcontrol 017</h3>
+<p><span id="MA-MIC-ANM-01-005-017"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-017"></span></p>
+<p><span id="MA-SEC-ANM-01-005-003"></span></p>
+<ol type="1">
+<li>Para <span class="math inline">\(a_n=3-2n\)</span>, escribe los primeros cinco términos, una tabla con índices <span class="math inline">\(0\)</span> a <span class="math inline">\(4\)</span> y los cinco puntos correspondientes de la gráfica discreta.</li>
+</ol>
+<p><strong>Solución.</strong> Al evaluar <span class="math inline">\(a_n=3-2n\)</span> en <span class="math inline">\(n=0,1,2,3,4\)</span>, obtenemos los términos <span class="math inline">\((3,1,-1,-3,-5)\)</span> en ese orden. La tabla mantiene explícita cada entrada y su valor:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;"><span class="math inline">\(n\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(a_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-3\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-5\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Los cinco puntos correspondientes son <span class="math inline">\((0,3)\)</span>, <span class="math inline">\((1,1)\)</span>, <span class="math inline">\((2,-1)\)</span>, <span class="math inline">\((3,-3)\)</span> y <span class="math inline">\((4,-5)\)</span>. Son puntos de la gráfica discreta de <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>; no se añaden segmentos entre ellos.</p>
+</section>
+<section id="microcontrol-018" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-018">Microcontrol 018</h3>
+<p><span id="MA-MIC-ANM-01-005-018"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-018"></span></p>
+<ol start="2" type="1">
+<li>En la sucesión <span class="math inline">\(b_n=(-1)^n\)</span>, explica por qué los puntos <span class="math inline">\((0,1)\)</span> y <span class="math inline">\((2,1)\)</span> contienen más información que la sola marca <span class="math inline">\(1\)</span> sobre la recta real.</li>
+</ol>
+<p><strong>Solución.</strong> Los puntos <span class="math inline">\((0,1)\)</span> y <span class="math inline">\((2,1)\)</span> registran las dos asignaciones <span class="math inline">\(b_0=1\)</span> y <span class="math inline">\(b_2=1\)</span>. Tienen la misma coordenada vertical, pero son distintos porque sus primeras coordenadas son <span class="math inline">\(0\)</span> y <span class="math inline">\(2\)</span>. Una sola marca en <span class="math inline">\(1\)</span> sobre la recta real indica que ese valor aparece; sin etiquetas no identifica ninguno de esos índices ni muestra que corresponda a más de una entrada.</p>
+</section>
+<section id="microcontrol-019" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-019">Microcontrol 019</h3>
+<p><span id="MA-MIC-ANM-01-005-019"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-019"></span></p>
+<ol start="3" type="1">
+<li>Un estudiante dibuja los puntos de <span class="math inline">\(a_n=n^2\)</span> y los une con la parábola <span class="math inline">\(y=x^2\)</span>. Explica qué parte del dibujo representa la sucesión y qué parte es información adicional.</li>
+</ol>
+<p><strong>Solución.</strong> La sucesión está representada por los puntos <span class="math inline">\(\{(n,n^2):n\in\mathbb N\}\)</span>, con dominio <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span> y codominio <span class="math inline">\(\mathbb R\)</span>. La parábola completa es la gráfica de la función <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span>, <span class="math inline">\(f(x)=x^2\)</span>. Contiene los puntos de la sucesión, pero también puntos como <span class="math inline">\((1/2,1/4)\)</span>, que no pertenecen a ella porque <span class="math inline">\(1/2\)</span> no es un índice natural. Toda parte de la curva ajena a los puntos de índice natural es información adicional.</p>
+</section>
+<section id="microcontrol-020" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-020">Microcontrol 020</h3>
+<p><span id="MA-MIC-ANM-01-005-020"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-020"></span></p>
+<ol start="4" type="1">
+<li>Decide si una lista ordenada puede representar correctamente una sucesión sin escribir explícitamente todos los índices. ¿Qué convención permite hacerlo?</li>
+</ol>
+<p><strong>Solución.</strong> Sí, si se fija la convención <span class="math inline">\(\mathbb N=\{0,1,2,\ldots\}\)</span> y se escriben los términos en ese orden: el primer lugar de <span class="math inline">\((a_0,a_1,a_2,\ldots)\)</span> corresponde al índice <span class="math inline">\(0\)</span>, el segundo al índice <span class="math inline">\(1\)</span> y el lugar <span class="math inline">\(n+1\)</span> al índice <span class="math inline">\(n\)</span>. Así los índices quedan implícitos en las posiciones. Una lista de sólo unos pocos términos, acompañada de puntos suspensivos sin una regla de continuación determinada, no especifica por sí sola toda la función.</p>
+</section>
+<section id="microcontrol-021" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-021">Microcontrol 021</h3>
+<p><span id="MA-MIC-ANM-01-005-021"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-021"></span></p>
+<ol start="5" type="1">
+<li>Da un ejemplo de una representación sobre la recta real que pierda información de índice y explica cómo repararla mediante etiquetas.</li>
+</ol>
+<p><strong>Solución.</strong> Para <span class="math inline">\(b_n=(-1)^n\)</span>, marcar únicamente <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span> en la recta real representa su conjunto de valores y pierde la asignación a los índices. Se repara asociando a la marca <span class="math inline">\(1\)</span> las etiquetas <span class="math inline">\(n=0,2,4,\ldots\)</span> y a la marca <span class="math inline">\(-1\)</span> las etiquetas <span class="math inline">\(n=1,3,5,\ldots\)</span>, o indicando respectivamente «<span class="math inline">\(n=2k\)</span>, <span class="math inline">\(k\in\mathbb N\)</span>» y «<span class="math inline">\(n=2k+1\)</span>, <span class="math inline">\(k\in\mathbb N\)</span>». Las etiquetas permiten recuperar qué valor corresponde a cada índice, incluidas las repeticiones.</p>
+</section>
+<section id="microcontrol-022" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-022">Microcontrol 022</h3>
+<p><span id="MA-MIC-ANM-01-005-022"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-022"></span></p>
+<ol start="6" type="1">
+<li>Para <span class="math inline">\(a_n=2n-1\)</span>, localiza la afirmación <span class="math inline">\(a_3=5\)</span> en la fórmula, la lista, la tabla y la gráfica discreta.</li>
+</ol>
+<p><strong>Solución.</strong> En la fórmula, sustituir <span class="math inline">\(n=3\)</span> da <span class="math inline">\(a_3=2\cdot3-1=5\)</span>. En la lista <span class="math inline">\((-1,1,3,5,7,\ldots)\)</span>, el <span class="math inline">\(5\)</span> ocupa el cuarto lugar, que corresponde al índice <span class="math inline">\(3\)</span> porque se comienza en <span class="math inline">\(0\)</span>. En la tabla, la afirmación está en la fila con entrada <span class="math inline">\(3\)</span> y valor <span class="math inline">\(5\)</span>. En la gráfica discreta, está representada por el punto <span class="math inline">\((3,5)\)</span>. Los cuatro registros conservan la misma asignación <span class="math inline">\(3\mapsto5\)</span>.</p>
+</section>
+<section id="microcontrol-023" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-023">Microcontrol 023</h3>
+<p><span id="MA-MIC-ANM-01-005-023"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-023"></span></p>
+<ol start="7" type="1">
+<li>Explica por qué una fórmula cerrada no forma parte de la definición de sucesión, aunque muchas sucesiones de ejemplo se presenten mediante fórmulas.</li>
+</ol>
+<p><strong>Solución.</strong> La definición exige una función <span class="math inline">\(a:\mathbb N\to\mathbb R\)</span>: a cada índice natural debe corresponderle un único valor real. No exige que esa asignación tenga una fórmula cerrada. Una fórmula es una manera de describir la función; también la describe la colección completa de sus pares <span class="math inline">\((n,a_n)\)</span>, y dos expresiones diferentes pueden determinar la misma asignación. Por ello, usar fórmulas en muchos ejemplos no añade una condición a la definición general.</p>
+</section>
+<section id="microcontrol-024" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-024">Microcontrol 024</h3>
+<p><span id="MA-MIC-ANM-01-005-024"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-024"></span></p>
+<ol start="8" type="1">
+<li>Compara el conjunto <span class="math inline">\(\{a_n:n\in\mathbb N\}\)</span> con la gráfica <span class="math inline">\(\{(n,a_n):n\in\mathbb N\}\)</span>. ¿Cuál de los dos conserva necesariamente el índice?</li>
+</ol>
+<p><strong>Solución.</strong> El conjunto de valores <span class="math inline">\(\{a_n:n\in\mathbb N\}\subseteq\mathbb R\)</span> conserva sólo los valores que aparecen. La gráfica <span class="math inline">\(\{(n,a_n):n\in\mathbb N\}\subseteq\mathbb N\times\mathbb R\)</span> conserva necesariamente el índice en la primera coordenada y su término en la segunda. Para cada <span class="math inline">\(n\)</span>, su único punto de primera coordenada <span class="math inline">\(n\)</span> permite recuperar <span class="math inline">\(a_n\)</span>. Si un valor se repite, los pares siguen siendo distintos por sus índices; el conjunto de valores reúne todas esas apariciones en un solo elemento.</p>
+</section>
+</section>
+<section id="colas-olvidar-un-comienzo-finito" class="level2">
+<h2 class="anchored" data-anchor-id="colas-olvidar-un-comienzo-finito">§5.4 — Colas: olvidar un comienzo finito</h2>
+<section id="microcontrol-025" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-025">Microcontrol 025</h3>
+<p><span id="MA-MIC-ANM-01-005-025"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-025"></span></p>
+<p><span id="MA-SEC-ANM-01-005-004"></span></p>
+<ol type="1">
+<li>Para <span class="math inline">\(a_n=2n+1\)</span> y <span class="math inline">\(N=3\)</span>, escribe la cola restringida desde <span class="math inline">\(3\)</span> indicando su dominio y calcula sus primeros cuatro valores.</li>
+</ol>
+<p><strong>Solución.</strong> La cola restringida es <span class="math inline">\(a|_{\mathbb N_{\ge3}}:\mathbb N_{\ge3}\to\mathbb R\)</span>, con dominio <span class="math inline">\(\{3,4,5,\ldots\}\)</span> y regla <span class="math inline">\(n\mapsto2n+1\)</span>. Sus primeros cuatro valores, en los índices originales <span class="math inline">\(3,4,5,6\)</span>, son <span class="math inline">\(7,9,11,13\)</span>.</p>
+</section>
+<section id="microcontrol-026" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-026">Microcontrol 026</h3>
+<p><span id="MA-MIC-ANM-01-005-026"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-026"></span></p>
+<ol start="2" type="1">
+<li>Para la misma sucesión, escribe la cola reindexada <span class="math inline">\(a^{\langle3\rangle}\)</span> y verifica que <span class="math inline">\(a^{\langle3\rangle}_2=a_5\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> La cola reindexada tiene dominio <span class="math inline">\(\mathbb N\)</span> y regla <span class="math inline">\(a^{\langle3\rangle}_k=a_{3+k}=2(3+k)+1=2k+7\)</span>. Al tomar <span class="math inline">\(k=2\)</span>, resulta <span class="math inline">\(a^{\langle3\rangle}_2=11=a_5\)</span>. El nuevo índice <span class="math inline">\(2\)</span> corresponde al antiguo índice <span class="math inline">\(5\)</span>.</p>
+</section>
+<section id="microcontrol-027" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-027">Microcontrol 027</h3>
+<p><span id="MA-MIC-ANM-01-005-027"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-027"></span></p>
+<ol start="3" type="1">
+<li>Explica por qué <span class="math inline">\(a|_{\mathbb N_{\ge3}}\)</span> y <span class="math inline">\(a^{\langle3\rangle}\)</span> contienen la misma información ordenada pero no son la misma función.</li>
+</ol>
+<p><strong>Solución.</strong> La restricción conserva los índices <span class="math inline">\(3,4,5,\ldots\)</span>; la reindexación usa <span class="math inline">\(0,1,2,\ldots\)</span> y asigna a <span class="math inline">\(k\)</span> el antiguo valor <span class="math inline">\(a_{3+k}\)</span>. El corrimiento biyectivo <span class="math inline">\(k\mapsto3+k\)</span> permite recuperar una representación desde la otra sin alterar el orden. Sus dominios son distintos, de modo que no son la misma función, aunque tengan el mismo codominio <span class="math inline">\(\mathbb R\)</span>.</p>
+</section>
+<section id="microcontrol-028" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-028">Microcontrol 028</h3>
+<p><span id="MA-MIC-ANM-01-005-028"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-028"></span></p>
+<ol start="4" type="1">
+<li>Sea <span class="math inline">\(a=(5,8,1,0,1,0,1,0,\ldots)\)</span>. Para <span class="math inline">\(N=2\)</span>, determina la cola reindexada y el conjunto de valores tardíos. ¿Qué información pierde el segundo objeto?</li>
+</ol>
+<p><strong>Solución.</strong> La cola reindexada desde <span class="math inline">\(2\)</span> es <span class="math inline">\(a^{\langle2\rangle}=(1,0,1,0,\ldots)\)</span>, con valor <span class="math inline">\(1\)</span> en índices nuevos pares y <span class="math inline">\(0\)</span> en impares. El conjunto de valores tardíos es <span class="math inline">\(\{0,1\}\)</span>. Este conjunto olvida las posiciones originales y nuevas, el orden de alternancia y las repeticiones.</p>
+</section>
+<section id="microcontrol-029" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-029">Microcontrol 029</h3>
+<p><span id="MA-MIC-ANM-01-005-029"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-029"></span></p>
+<ol start="5" type="1">
+<li>Demuestra directamente que <span class="math inline">\(\tau_N(k)=N+k\)</span> es biyectiva de <span class="math inline">\(\mathbb N\)</span> sobre <span class="math inline">\(\mathbb N_{\ge N}\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Para <span class="math inline">\(k\in\mathbb N\)</span>, <span class="math inline">\(N+k\ge N\)</span>, por lo que <span class="math inline">\(\tau_N\)</span> toma valores en <span class="math inline">\(\mathbb N_{\ge N}\)</span>. Si <span class="math inline">\(N+k=N+\ell\)</span>, la cancelación da <span class="math inline">\(k=\ell\)</span>, luego es inyectiva. Dado <span class="math inline">\(n\in\mathbb N_{\ge N}\)</span>, el natural <span class="math inline">\(k=n-N\)</span> satisface <span class="math inline">\(\tau_N(k)=n\)</span>; por tanto es sobreyectiva y, en consecuencia, biyectiva.</p>
+</section>
+<section id="microcontrol-030" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-030">Microcontrol 030</h3>
+<p><span id="MA-MIC-ANM-01-005-030"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-030"></span></p>
+<ol start="6" type="1">
+<li>Si <span class="math inline">\(M\ge N\)</span>, demuestra que <span class="math inline">\(\{a_n:n\ge M\}\subseteq\{a_n:n\ge N\}\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Sea <span class="math inline">\(x\in\{a_n:n\ge M\}\)</span>. Existe <span class="math inline">\(n\in\mathbb N\)</span> con <span class="math inline">\(n\ge M\)</span> y <span class="math inline">\(x=a_n\)</span>. Como <span class="math inline">\(M\ge N\)</span>, también <span class="math inline">\(n\ge N\)</span>, de modo que <span class="math inline">\(x\in\{a_n:n\ge N\}\)</span>. Esto prueba la inclusión.</p>
+</section>
+<section id="microcontrol-031" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-031">Microcontrol 031</h3>
+<p><span id="MA-MIC-ANM-01-005-031"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-031"></span></p>
+<ol start="7" type="1">
+<li>Verifica la identidad <span class="math inline">\(a^{\langle M\rangle}=(a^{\langle N\rangle})^{\langle M-N\rangle}\)</span> cuando <span class="math inline">\(M\ge N\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Como <span class="math inline">\(M-N\in\mathbb N\)</span>, la reindexación de la derecha está definida. Para cada <span class="math inline">\(k\in\mathbb N\)</span>, su término es <span class="math inline">\((a^{\langle N\rangle})_{M-N+k}=a_{N+(M-N+k)}=a_{M+k}=a^{\langle M\rangle}_k\)</span>. Ambas funciones tienen dominio <span class="math inline">\(\mathbb N\)</span>, codominio <span class="math inline">\(\mathbb R\)</span> y valores iguales en cada índice, luego son iguales.</p>
+</section>
+<section id="microcontrol-032" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-032">Microcontrol 032</h3>
+<p><span id="MA-MIC-ANM-01-005-032"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-032"></span></p>
+<ol start="8" type="1">
+<li>Explica qué sucede cuando <span class="math inline">\(N=0\)</span>: ¿cuál es el prefijo eliminado, qué es la cola restringida y qué es la cola reindexada?</li>
+</ol>
+<p><strong>Solución.</strong> El prefijo eliminado es vacío. Como <span class="math inline">\(\mathbb N_{\ge0}=\mathbb N\)</span>, la cola restringida es <span class="math inline">\(a\)</span> misma. También <span class="math inline">\(a^{\langle0\rangle}_k=a_{0+k}=a_k\)</span> para todo <span class="math inline">\(k\in\mathbb N\)</span>, así que la cola reindexada es <span class="math inline">\(a\)</span>. No cambia ningún índice ni término.</p>
+</section>
+</section>
+<section id="a-partir-de-cierto-momento-propiedades-eventuales" class="level2">
+<h2 class="anchored" data-anchor-id="a-partir-de-cierto-momento-propiedades-eventuales">§5.5 — «A partir de cierto momento»: propiedades eventuales</h2>
+<section id="microcontrol-033" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-033">Microcontrol 033</h3>
+<p><span id="MA-MIC-ANM-01-005-033"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-033"></span></p>
+<p><span id="MA-SEC-ANM-01-005-005"></span></p>
+<ol type="1">
+<li>Sea <span class="math inline">\(a_n=3n-10\)</span>. Encuentra un testigo <span class="math inline">\(N\)</span> de que <span class="math inline">\(a_n&gt;0\)</span> eventualmente y verifica tu elección para todo <span class="math inline">\(n\ge N\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> Elegimos <span class="math inline">\(N=4\)</span>. Para cualquier <span class="math inline">\(n\ge4\)</span>, <span class="math inline">\(3n-10\ge12-10=2&gt;0\)</span>, así que <span class="math inline">\(a_n&gt;0\)</span> en toda la cola desde <span class="math inline">\(4\)</span>. El índice <span class="math inline">\(3\)</span> aún da <span class="math inline">\(a_3=-1\)</span>, por lo que la propiedad no vale desde <span class="math inline">\(3\)</span>.</p>
+</section>
+<section id="microcontrol-034" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-034">Microcontrol 034</h3>
+<p><span id="MA-MIC-ANM-01-005-034"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-034"></span></p>
+<ol start="2" type="1">
+<li>Explica por qué, si <span class="math inline">\(N\)</span> es un testigo de eventualidad, todo <span class="math inline">\(M\ge N\)</span> también lo es.</li>
+</ol>
+<p><strong>Solución.</strong> Si <span class="math inline">\(\forall n\ge N:P(n)\)</span> y <span class="math inline">\(M\ge N\)</span>, cualquier índice <span class="math inline">\(n\ge M\)</span> satisface también <span class="math inline">\(n\ge N\)</span>. Por tanto, <span class="math inline">\(P(n)\)</span> vale para todos los índices desde <span class="math inline">\(M\)</span>, que también es un testigo.</p>
+</section>
+<section id="microcontrol-035" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-035">Microcontrol 035</h3>
+<p><span id="MA-MIC-ANM-01-005-035"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-035"></span></p>
+<ol start="3" type="1">
+<li>Construye una propiedad de una sucesión que sea eventual pero no verdadera para todos los índices.</li>
+</ol>
+<p><strong>Solución.</strong> Definamos <span class="math inline">\(a_0=-1\)</span> y <span class="math inline">\(a_n=1\)</span> para <span class="math inline">\(n\ge1\)</span>. La propiedad <span class="math inline">\(P(n):a_n&gt;0\)</span> vale para todos los índices desde <span class="math inline">\(N=1\)</span>, pero falla en <span class="math inline">\(n=0\)</span>. Es eventual y no global.</p>
+</section>
+<section id="microcontrol-036" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-036">Microcontrol 036</h3>
+<p><span id="MA-MIC-ANM-01-005-036"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-036"></span></p>
+<ol start="4" type="1">
+<li>Para <span class="math inline">\(b_n=1/(n+1)\)</span>, demuestra que <span class="math inline">\(b_n\in(0,1/5)\)</span> eventualmente usando un intervalo fijo y un testigo explícito.</li>
+</ol>
+<p><strong>Solución.</strong> Elegimos <span class="math inline">\(N=5\)</span>. Si <span class="math inline">\(n\ge5\)</span>, entonces <span class="math inline">\(n+1\ge6\)</span>, de modo que <span class="math inline">\(0&lt;1/(n+1)\le1/6&lt;1/5\)</span>. Así <span class="math inline">\(b_n\in(0,1/5)\)</span> para toda la cola desde <span class="math inline">\(5\)</span>. El extremo estricto importa: <span class="math inline">\(b_4=1/5\)</span> no pertenece al intervalo.</p>
+</section>
+<section id="microcontrol-037" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-037">Microcontrol 037</h3>
+<p><span id="MA-MIC-ANM-01-005-037"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-037"></span></p>
+<ol start="5" type="1">
+<li>Reescribe <span class="math inline">\(\exists N\,\forall n\ge N:P(n)\)</span> usando la cola reindexada y la variable <span class="math inline">\(k\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> El cambio <span class="math inline">\(n=N+k\)</span> da la formulación equivalente <span class="math inline">\(\exists N\in\mathbb N\,\forall k\in\mathbb N:P(N+k)\)</span>. Si <span class="math inline">\(P(n)\)</span> tiene la forma <span class="math inline">\(R(a_n)\)</span> para un predicado fijo <span class="math inline">\(R\)</span>, puede escribirse <span class="math inline">\(\exists N\in\mathbb N\,\forall k\in\mathbb N:R(a^{\langle N\rangle}_k)\)</span>. En un predicado general se conserva el índice original <span class="math inline">\(N+k\)</span>; no se reemplaza sin más por <span class="math inline">\(k\)</span>.</p>
+</section>
+<section id="microcontrol-038" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-038">Microcontrol 038</h3>
+<p><span id="MA-MIC-ANM-01-005-038"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-038"></span></p>
+<ol start="6" type="1">
+<li>Decide si comprobar <span class="math inline">\(P(10),P(11),\ldots,P(1000)\)</span> basta para demostrar que <span class="math inline">\(P(n)\)</span> ocurre eventualmente. Justifica.</li>
+</ol>
+<p><strong>Solución.</strong> No.&nbsp;Esas verificaciones no controlan los índices mayores que <span class="math inline">\(1000\)</span>. Por ejemplo, <span class="math inline">\(a_n=1\)</span> para <span class="math inline">\(n\le1000\)</span> y <span class="math inline">\(a_n=-1\)</span> para <span class="math inline">\(n&gt;1000\)</span> satisface <span class="math inline">\(P(n):a_n&gt;0\)</span> en todos los índices comprobados. Pero dado cualquier <span class="math inline">\(N\)</span>, el índice <span class="math inline">\(n=N+1001\)</span> cumple <span class="math inline">\(n\ge N\)</span> y <span class="math inline">\(a_n=-1\)</span>, así que ninguna cola satisface <span class="math inline">\(P\)</span> por completo.</p>
+</section>
+<section id="microcontrol-039" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-039">Microcontrol 039</h3>
+<p><span id="MA-MIC-ANM-01-005-039"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-039"></span></p>
+<ol start="7" type="1">
+<li>Si una propiedad vale para todo <span class="math inline">\(n\in\mathbb N\)</span>, ¿qué testigo de eventualidad puede elegirse inmediatamente?</li>
+</ol>
+<p><strong>Solución.</strong> Puede elegirse <span class="math inline">\(N=0\)</span>. La cola desde <span class="math inline">\(0\)</span> contiene todo el dominio natural, y la hipótesis garantiza <span class="math inline">\(P(n)\)</span> en cada uno de sus índices.</p>
+</section>
+<section id="microcontrol-040" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-040">Microcontrol 040</h3>
+<p><span id="MA-MIC-ANM-01-005-040"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-040"></span></p>
+<ol start="8" type="1">
+<li>En la afirmación «eventualmente <span class="math inline">\(a_n\in I\)</span>», explica qué objeto debe estar fijado antes de elegir <span class="math inline">\(N\)</span> y qué variable continúa recorriendo la cola.</li>
+</ol>
+<p><strong>Solución.</strong> El conjunto <span class="math inline">\(I\subseteq\mathbb R\)</span> debe estar fijado antes de buscar el umbral <span class="math inline">\(N\in\mathbb N\)</span>. Después, <span class="math inline">\(n\)</span> recorre todos los índices naturales con <span class="math inline">\(n\ge N\)</span> y se exige que cada término <span class="math inline">\(a_n\)</span> pertenezca al mismo <span class="math inline">\(I\)</span>. El umbral puede depender de <span class="math inline">\(I\)</span>; <span class="math inline">\(I\)</span> no cambia al recorrer la cola.</p>
+</section>
+</section>
+<section id="eventualmente-no-significa-infinitas-veces" class="level2">
+<h2 class="anchored" data-anchor-id="eventualmente-no-significa-infinitas-veces">§5.6 — Eventualmente no significa infinitas veces</h2>
+<section id="microcontrol-041" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-041">Microcontrol 041</h3>
+<p><span id="MA-MIC-ANM-01-005-041"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-041"></span></p>
+<p><span id="MA-SEC-ANM-01-005-006"></span></p>
+<ol type="1">
+<li>Para <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(P(n):a_n=1\)</span>, demuestra desde la definición que <span class="math inline">\(P\)</span> ocurre infinitas veces y que no ocurre eventualmente.</li>
+</ol>
+<p><strong>Solución.</strong> Dado cualquier corte <span class="math inline">\(N\in\mathbb N\)</span>, el índice par <span class="math inline">\(n=2N\)</span> cumple <span class="math inline">\(n\ge N\)</span> y <span class="math inline">\(a_n=1\)</span>. Por tanto, <span class="math inline">\(P\)</span> ocurre infinitas veces. Para el mismo corte, el índice impar <span class="math inline">\(m=2N+1\)</span> cumple <span class="math inline">\(m\ge N\)</span> y <span class="math inline">\(a_m=-1\)</span>, por lo que <span class="math inline">\(P(m)\)</span> falla. Ningún corte elimina todas las excepciones y <span class="math inline">\(P\)</span> no ocurre eventualmente.</p>
+</section>
+<section id="microcontrol-042" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-042">Microcontrol 042</h3>
+<p><span id="MA-MIC-ANM-01-005-042"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-042"></span></p>
+<ol start="2" type="1">
+<li>Escribe con palabras la afirmación <span class="math inline">\(\forall N\in\mathbb N\,\exists n\ge N:P(n)\)</span> sin usar la expresión «infinitas veces».</li>
+</ol>
+<p><strong>Solución.</strong> Para cada índice de corte <span class="math inline">\(N\)</span>, se puede encontrar al menos un índice <span class="math inline">\(n\)</span> igual o posterior a ese corte en el que <span class="math inline">\(P(n)\)</span> es verdadera. El índice encontrado puede depender del corte elegido.</p>
+</section>
+<section id="microcontrol-043" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-043">Microcontrol 043</h3>
+<p><span id="MA-MIC-ANM-01-005-043"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-043"></span></p>
+<ol start="3" type="1">
+<li>Demuestra directamente que si <span class="math inline">\(P\)</span> ocurre eventualmente, entonces ocurre infinitas veces, sin usar todavía el lema de sincronización de §5.7.</li>
+</ol>
+<p><strong>Solución.</strong> Sea <span class="math inline">\(N_0\)</span> un testigo de eventualidad. Dado cualquier corte <span class="math inline">\(M\)</span>, tomemos <span class="math inline">\(n=M+N_0\)</span>. Como los dos sumandos son naturales no negativos, <span class="math inline">\(n\ge M\)</span> y <span class="math inline">\(n\ge N_0\)</span>. La segunda desigualdad garantiza <span class="math inline">\(P(n)\)</span>; la primera muestra una ocurrencia posterior al corte arbitrario. Esto prueba <span class="math inline">\(\forall M\,\exists n\ge M:P(n)\)</span> sin usar el lema de sincronización.</p>
+</section>
+<section id="microcontrol-044" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-044">Microcontrol 044</h3>
+<p><span id="MA-MIC-ANM-01-005-044"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-044"></span></p>
+<ol start="4" type="1">
+<li>Niega paso a paso la afirmación <span class="math inline">\(\exists N\,\forall n\ge N:P(n)\)</span> y explica por qué el resultado significa que <span class="math inline">\(\neg P\)</span> ocurre infinitas veces.</li>
+</ol>
+<p><strong>Solución.</strong> Negar la existencia de un testigo da <span class="math inline">\(\forall N\in\mathbb N\,\neg(\forall n\in\mathbb N,\ n\ge N\Rightarrow P(n))\)</span>. Negar el universal interior produce <span class="math inline">\(\forall N\in\mathbb N\,\exists n\in\mathbb N:\neg(n\ge N\Rightarrow P(n))\)</span>. La negación de la implicación es <span class="math inline">\(n\ge N\land\neg P(n)\)</span>. Por tanto, la fórmula final es <span class="math inline">\(\forall N\,\exists n\ge N:\neg P(n)\)</span>: después de cada corte aparece un fallo de <span class="math inline">\(P\)</span>.</p>
+</section>
+<section id="microcontrol-045" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-045">Microcontrol 045</h3>
+<p><span id="MA-MIC-ANM-01-005-045"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-045"></span></p>
+<ol start="5" type="1">
+<li>Construye una propiedad <span class="math inline">\(P\)</span> tal que tanto <span class="math inline">\(P\)</span> como <span class="math inline">\(\neg P\)</span> ocurran infinitas veces.</li>
+</ol>
+<p><strong>Solución.</strong> Tomemos <span class="math inline">\(a_n=(-1)^n\)</span> y <span class="math inline">\(P(n):a_n=1\)</span>. Para cualquier <span class="math inline">\(N\)</span>, <span class="math inline">\(2N\ge N\)</span> es una ocurrencia de <span class="math inline">\(P\)</span>, y <span class="math inline">\(2N+1\ge N\)</span> es una ocurrencia de <span class="math inline">\(\neg P\)</span>. Ambas propiedades tienen ocurrencias posteriores a cualquier corte.</p>
+</section>
+<section id="microcontrol-046" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-046">Microcontrol 046</h3>
+<p><span id="MA-MIC-ANM-01-005-046"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-046"></span></p>
+<ol start="6" type="1">
+<li>Decide si «<span class="math inline">\(P\)</span> ocurre en cien mil índices distintos» basta para concluir que <span class="math inline">\(P\)</span> ocurre infinitas veces en el sentido de esta sección. Justifica.</li>
+</ol>
+<p><strong>Solución.</strong> No.&nbsp;Una cantidad finita de ocurrencias, por grande que sea, no garantiza una ocurrencia después de cada corte. Por ejemplo, <span class="math inline">\(P(n):n&lt;100000\)</span> vale en cien mil índices distintos, <span class="math inline">\(0,\ldots,99999\)</span>, pero no vale en ningún índice <span class="math inline">\(n\ge100000\)</span>.</p>
+</section>
+<section id="microcontrol-047" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-047">Microcontrol 047</h3>
+<p><span id="MA-MIC-ANM-01-005-047"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-047"></span></p>
+<ol start="7" type="1">
+<li>Para <span class="math inline">\(P(n):n\)</span> es un cuadrado perfecto, demuestra que <span class="math inline">\(P\)</span> ocurre infinitas veces pero no eventualmente.</li>
+</ol>
+<p><strong>Solución.</strong> Dado <span class="math inline">\(N\in\mathbb N\)</span>, el número <span class="math inline">\(n=N^2\)</span> es un cuadrado y satisface <span class="math inline">\(n\ge N\)</span>: para <span class="math inline">\(N=0\)</span> es inmediato, y para <span class="math inline">\(N\ge1\)</span> se tiene <span class="math inline">\(N^2\ge N\)</span>. Así <span class="math inline">\(P\)</span> ocurre infinitas veces. Para demostrar que no es eventual, tomemos <span class="math inline">\(k=N+1\)</span> y <span class="math inline">\(m=k^2+1\ge N\)</span>. Como <span class="math inline">\(k\ge1\)</span>, <span class="math inline">\(k^2&lt;m&lt;(k+1)^2\)</span>, pues <span class="math inline">\(1&lt;2k+1\)</span>. No hay ningún cuadrado de un natural entre esos dos cuadrados consecutivos. Luego <span class="math inline">\(m\)</span> no es cuadrado y hay un fallo después de cada corte.</p>
+</section>
+<section id="microcontrol-048" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-048">Microcontrol 048</h3>
+<p><span id="MA-MIC-ANM-01-005-048"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-048"></span></p>
+<ol start="8" type="1">
+<li>Completa y justifica las equivalencias: «<span class="math inline">\(P\)</span> no ocurre infinitas veces» <span class="math inline">\(\iff\)</span> ______ ocurre eventualmente; «<span class="math inline">\(P\)</span> no ocurre eventualmente» <span class="math inline">\(\iff\)</span> ______ ocurre infinitas veces.</li>
+</ol>
+<p><strong>Solución.</strong> En ambos espacios corresponde <span class="math inline">\(\neg P\)</span>. Negar <span class="math inline">\(\forall N\,\exists n\ge N:P(n)\)</span> da <span class="math inline">\(\exists N\,\forall n\ge N:\neg P(n)\)</span>, es decir, <span class="math inline">\(\neg P\)</span> eventualmente. Negar <span class="math inline">\(\exists N\,\forall n\ge N:P(n)\)</span> da <span class="math inline">\(\forall N\,\exists n\ge N:\neg P(n)\)</span>, es decir, <span class="math inline">\(\neg P\)</span> ocurre infinitas veces.</p>
+</section>
+</section>
+<section id="sincronizar-colas-y-olvidar-perturbaciones-finitas" class="level2">
+<h2 class="anchored" data-anchor-id="sincronizar-colas-y-olvidar-perturbaciones-finitas">§5.7 — Sincronizar colas y olvidar perturbaciones finitas</h2>
+<section id="microcontrol-049" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-049">Microcontrol 049</h3>
+<p><span id="MA-MIC-ANM-01-005-049"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-049"></span></p>
+<p><span id="MA-SEC-ANM-01-005-007"></span></p>
+<ol type="1">
+<li>Supón que <span class="math inline">\(P(n)\)</span> vale para todo <span class="math inline">\(n\ge5\)</span> y <span class="math inline">\(Q(n)\)</span> para todo <span class="math inline">\(n\ge9\)</span>. Encuentra un testigo común y demuestra que <span class="math inline">\(P(n)\land Q(n)\)</span> vale desde ese índice.</li>
+</ol>
+<p><strong>Solución.</strong> Elegimos <span class="math inline">\(N=9=\max\{5,9\}\)</span>. Si <span class="math inline">\(n\ge9\)</span>, entonces <span class="math inline">\(n\ge5\)</span> y <span class="math inline">\(n\ge9\)</span>, de modo que ambas hipótesis se aplican y <span class="math inline">\(P(n)\land Q(n)\)</span> es verdadera.</p>
+</section>
+<section id="microcontrol-050" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-050">Microcontrol 050</h3>
+<p><span id="MA-MIC-ANM-01-005-050"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-050"></span></p>
+<ol start="2" type="1">
+<li>Sean <span class="math inline">\(P_1,P_2,P_3\)</span> propiedades eventuales con testigos <span class="math inline">\(4\)</span>, <span class="math inline">\(11\)</span> y <span class="math inline">\(7\)</span>. ¿Qué umbral común produce el lema de sincronización? Justifica por qué funciona.</li>
+</ol>
+<p><strong>Solución.</strong> El umbral común es <span class="math inline">\(N=\max\{4,11,7\}=11\)</span>. Cualquier <span class="math inline">\(n\ge11\)</span> supera o iguala los tres testigos, por lo que satisface simultáneamente <span class="math inline">\(P_1(n)\)</span>, <span class="math inline">\(P_2(n)\)</span> y <span class="math inline">\(P_3(n)\)</span>.</p>
+</section>
+<section id="microcontrol-051" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-051">Microcontrol 051</h3>
+<p><span id="MA-MIC-ANM-01-005-051"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-051"></span></p>
+<ol start="3" type="1">
+<li>Explica por qué el máximo de los umbrales no necesita ser el menor testigo posible para la conjunción.</li>
+</ol>
+<p><strong>Solución.</strong> Los testigos dados sólo garantizan validez desde sus respectivos cortes; no afirman que los cortes sean mínimos. Por ejemplo, si <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> son verdaderas en todos los índices, <span class="math inline">\(5\)</span> y <span class="math inline">\(9\)</span> son testigos válidos, pero su conjunción tiene el testigo menor <span class="math inline">\(0\)</span>. El máximo de los testigos suministrados garantiza un corte común sin pretender optimizarlo.</p>
+</section>
+<section id="microcontrol-052" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-052">Microcontrol 052</h3>
+<p><span id="MA-MIC-ANM-01-005-052"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-052"></span></p>
+<ol start="4" type="1">
+<li>Sean <span class="math inline">\(a=(3,4,5,6,7,\ldots)\)</span> y <span class="math inline">\(b=(-100,4,5,6,7,\ldots)\)</span>. Determina desde qué índice coinciden eventualmente y explica por qué no son iguales como funciones.</li>
+</ol>
+<p><strong>Solución.</strong> Coinciden desde el índice <span class="math inline">\(1\)</span>: para todo <span class="math inline">\(n\ge1\)</span>, <span class="math inline">\(a_n=b_n=n+3\)</span>. No son iguales como funciones <span class="math inline">\(\mathbb N\to\mathbb R\)</span>, porque en <span class="math inline">\(n=0\)</span> se tiene <span class="math inline">\(a_0=3\)</span> y <span class="math inline">\(b_0=-100\)</span>. El menor testigo de coincidencia es <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="microcontrol-053" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-053">Microcontrol 053</h3>
+<p><span id="MA-MIC-ANM-01-005-053"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-053"></span></p>
+<ol start="5" type="1">
+<li>Demuestra que si <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> coinciden eventualmente y <span class="math inline">\(a_n&gt;0\)</span> eventualmente, entonces <span class="math inline">\(b_n&gt;0\)</span> eventualmente. Haz visible el umbral común que utilizas.</li>
+</ol>
+<p><strong>Solución.</strong> Sean <span class="math inline">\(N_E\)</span> un testigo de <span class="math inline">\(a_n=b_n\)</span> y <span class="math inline">\(N_P\)</span> un testigo de <span class="math inline">\(a_n&gt;0\)</span>. Tomemos <span class="math inline">\(M=\max\{N_E,N_P\}\)</span>. Para cada <span class="math inline">\(n\ge M\)</span> se cumplen las dos condiciones, así que <span class="math inline">\(b_n=a_n&gt;0\)</span>. Por tanto, <span class="math inline">\(M\)</span> es un testigo de la positividad eventual de <span class="math inline">\(b\)</span>.</p>
+</section>
+<section id="microcontrol-054" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-054">Microcontrol 054</h3>
+<p><span id="MA-MIC-ANM-01-005-054"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-054"></span></p>
+<ol start="6" type="1">
+<li>Da un contraejemplo a la frase «toda propiedad de una sucesión es invariante al modificar finitos términos» y explica qué parte de la formulación correcta falta en esa frase.</li>
+</ol>
+<p><strong>Solución.</strong> La sucesión constante <span class="math inline">\(a_n=0\)</span> satisface <span class="math inline">\(a_0=0\)</span>. Si cambiamos sólo el primer término, definiendo <span class="math inline">\(b_0=1\)</span> y <span class="math inline">\(b_n=0\)</span> para <span class="math inline">\(n\ge1\)</span>, la propiedad <span class="math inline">\(b_0=0\)</span> es falsa. La invariancia correcta se restringe a propiedades que dependen exclusivamente de una cola suficientemente tardía; la afirmación sobre el índice <span class="math inline">\(0\)</span> no cumple esa condición.</p>
+</section>
+<section id="microcontrol-055" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-055">Microcontrol 055</h3>
+<p><span id="MA-MIC-ANM-01-005-055"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-055"></span></p>
+<ol start="7" type="1">
+<li>Dos sucesiones difieren sólo en los índices <span class="math inline">\(2\)</span>, <span class="math inline">\(8\)</span> y <span class="math inline">\(13\)</span>. Encuentra un índice a partir del cual necesariamente coinciden y explica qué tipo de propiedades pueden transferirse desde allí.</li>
+</ol>
+<p><strong>Solución.</strong> Desde <span class="math inline">\(N=14\)</span> coinciden necesariamente, porque todos los índices modificados son menores que <span class="math inline">\(14\)</span>. Se pueden transferir propiedades que dependen exclusivamente de una cola común suficientemente tardía. En particular, si un predicado fijo <span class="math inline">\(R(a_n)\)</span> tiene testigo <span class="math inline">\(N_R\)</span>, entonces <span class="math inline">\(R(b_n)\)</span> vale desde <span class="math inline">\(\max\{14,N_R\}\)</span>. No se transfieren por esta razón propiedades que miren los índices modificados.</p>
+</section>
+<section id="microcontrol-056" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-056">Microcontrol 056</h3>
+<p><span id="MA-MIC-ANM-01-005-056"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-056"></span></p>
+<ol start="8" type="1">
+<li>Sin desarrollar todavía §5.8, explica por qué disponer de un único umbral común será útil cuando una misma cola deba satisfacer simultáneamente dos condiciones de pertenencia.</li>
+</ol>
+<p><strong>Solución.</strong> Si una condición de pertenencia tiene testigo <span class="math inline">\(N_1\)</span> y otra tiene testigo <span class="math inline">\(N_2\)</span>, el corte común <span class="math inline">\(\max\{N_1,N_2\}\)</span> permite usar ambas en cada mismo índice posterior. Así se trabaja con una única cola sobre la que las dos obligaciones están disponibles simultáneamente, sin confundir términos de índices distintos.</p>
+</section>
+</section>
+<section id="captura-eventual-la-puerta-a-εn" class="level2">
+<h2 class="anchored" data-anchor-id="captura-eventual-la-puerta-a-εn">§5.8 — Captura eventual: la puerta a ε–N</h2>
+<section id="microcontrol-057" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-057">Microcontrol 057</h3>
+<p><span id="MA-MIC-ANM-01-005-057"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-057"></span></p>
+<p><span id="MA-SEC-ANM-01-005-008"></span></p>
+<ol type="1">
+<li>Sea <span class="math inline">\(a=(5,-2,1,1,1,\ldots)\)</span> y <span class="math inline">\(U=\{1\}\)</span>. Encuentra un testigo explícito de que <span class="math inline">\(a\)</span> está eventualmente en <span class="math inline">\(U\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> El testigo es <span class="math inline">\(N=2\)</span>. Para todo <span class="math inline">\(n\ge2\)</span> se tiene <span class="math inline">\(a_n=1\in U=\{1\}\)</span>. Los valores iniciales <span class="math inline">\(5\)</span> y <span class="math inline">\(-2\)</span> no pertenecen a <span class="math inline">\(U\)</span>, pero quedan fuera de esa cola.</p>
+</section>
+<section id="microcontrol-058" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-058">Microcontrol 058</h3>
+<p><span id="MA-MIC-ANM-01-005-058"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-058"></span></p>
+<ol start="2" type="1">
+<li>Reescribe «<span class="math inline">\(a\)</span> está eventualmente en <span class="math inline">\(U\)</span>» usando el conjunto de valores tardíos <span class="math inline">\(\{a_n:n\ge N\}\)</span>.</li>
+</ol>
+<p><strong>Solución.</strong> La formulación es <span class="math inline">\(\exists N\in\mathbb N:\{a_n:n\in\mathbb N,\ n\ge N\}\subseteq U\)</span>. La inclusión significa que cada valor de la cola pertenece al mismo conjunto fijo <span class="math inline">\(U\)</span>, y equivale a <span class="math inline">\(\forall n\ge N:a_n\in U\)</span> para ese testigo.</p>
+</section>
+<section id="microcontrol-059" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-059">Microcontrol 059</h3>
+<p><span id="MA-MIC-ANM-01-005-059"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-059"></span></p>
+<ol start="3" type="1">
+<li>Da un ejemplo de un conjunto fijo <span class="math inline">\(U\)</span> que no sea un intervalo y de una sucesión que esté eventualmente en él.</li>
+</ol>
+<p><strong>Solución.</strong> Tomemos <span class="math inline">\(U=\{0,2\}\)</span> y <span class="math inline">\(a_0=5\)</span>, <span class="math inline">\(a_n=0\)</span> si <span class="math inline">\(n\ge1\)</span> es par, <span class="math inline">\(a_n=2\)</span> si <span class="math inline">\(n\)</span> es impar. Desde <span class="math inline">\(N=1\)</span>, todos los términos pertenecen a <span class="math inline">\(U\)</span>. El conjunto no es un intervalo: contiene <span class="math inline">\(0\)</span> y <span class="math inline">\(2\)</span>, pero no contiene el número intermedio <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="microcontrol-060" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-060">Microcontrol 060</h3>
+<p><span id="MA-MIC-ANM-01-005-060"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-060"></span></p>
+<ol start="4" type="1">
+<li>Explica por qué permitir <span class="math inline">\(U_n=\{a_n\}\)</span> para cada índice destruiría el contenido de la noción de captura eventual.</li>
+</ol>
+<p><strong>Solución.</strong> La elección <span class="math inline">\(U_n=\{a_n\}\)</span> asegura automáticamente <span class="math inline">\(a_n\in U_n\)</span> para cada índice de cualquier sucesión. La región se adapta al término en vez de imponerle una condición previamente fijada. Así no se exige que una cola permanezca en un mismo conjunto <span class="math inline">\(U\)</span> elegido antes del umbral.</p>
+</section>
+<section id="microcontrol-061" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-061">Microcontrol 061</h3>
+<p><span id="MA-MIC-ANM-01-005-061"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-061"></span></p>
+<ol start="5" type="1">
+<li>Supón que <span class="math inline">\(a\)</span> está eventualmente en <span class="math inline">\(U\)</span> desde <span class="math inline">\(N_U=4\)</span> y eventualmente en <span class="math inline">\(V\)</span> desde <span class="math inline">\(N_V=9\)</span>. Demuestra que está eventualmente en <span class="math inline">\(U\cap V\)</span> e identifica un testigo.</li>
+</ol>
+<p><strong>Solución.</strong> Por el lema de sincronización, elegimos <span class="math inline">\(N=\max\{4,9\}=9\)</span>. Si <span class="math inline">\(n\ge9\)</span>, entonces <span class="math inline">\(n\ge4\)</span> y <span class="math inline">\(n\ge9\)</span>, por lo que <span class="math inline">\(a_n\in U\)</span> y <span class="math inline">\(a_n\in V\)</span>. Por definición de intersección, <span class="math inline">\(a_n\in U\cap V\)</span> en toda esa cola.</p>
+</section>
+<section id="microcontrol-062" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-062">Microcontrol 062</h3>
+<p><span id="MA-MIC-ANM-01-005-062"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-062"></span></p>
+<ol start="6" type="1">
+<li>Si <span class="math inline">\(U\cap V=\varnothing\)</span>, explica por qué una sucesión no puede estar eventualmente en ambos conjuntos.</li>
+</ol>
+<p><strong>Solución.</strong> Si hubiera testigos <span class="math inline">\(N_U\)</span> y <span class="math inline">\(N_V\)</span>, el máximo <span class="math inline">\(N=\max\{N_U,N_V\}\)</span> garantizaría <span class="math inline">\(a_n\in U\cap V\)</span> para todo <span class="math inline">\(n\ge N\)</span>. En particular, <span class="math inline">\(a_N\)</span> tendría que pertenecer al conjunto vacío, lo cual es imposible. El índice <span class="math inline">\(N\)</span> existe y pertenece a la cola, así que la obligación no es vacía.</p>
+</section>
+<section id="microcontrol-063" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-063">Microcontrol 063</h3>
+<p><span id="MA-MIC-ANM-01-005-063"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-063"></span></p>
+<ol start="7" type="1">
+<li>Fija <span class="math inline">\(L\in\mathbb R\)</span> y <span class="math inline">\(r&gt;0\)</span>. Explica por qué «eventualmente <span class="math inline">\(a_n\in B(L,r)\)</span>» sigue siendo sólo una captura por un conjunto fijo y no constituye todavía la definición de convergencia.</li>
+</ol>
+<p><strong>Solución.</strong> Al fijar <span class="math inline">\(L\)</span> y <span class="math inline">\(r&gt;0\)</span>, queda fijado el conjunto <span class="math inline">\(B(L,r)=(L-r,L+r)\)</span>. La afirmación controla una sola región. Por ejemplo, la sucesión constante <span class="math inline">\(a_n=L+r/2\)</span> pertenece a esa bola en todos los índices, pero no pertenece a la bola más pequeña <span class="math inline">\(B(L,r/4)\)</span> en ningún índice. Por tanto, una captura en la primera bola no garantiza las exigencias de tolerancia más pequeñas necesarias para hablar de convergencia hacia <span class="math inline">\(L\)</span>.</p>
+</section>
+<section id="microcontrol-064" class="level3">
+<h3 class="anchored" data-anchor-id="microcontrol-064">Microcontrol 064</h3>
+<p><span id="MA-MIC-ANM-01-005-064"></span></p>
+<p><span id="MA-MSOL-ANM-01-005-064"></span></p>
+<ol start="8" type="1">
+<li>Describe con palabras el cambio de arquitectura entre C05 y C06 usando el esquema «tolerancia → umbral → todos los índices posteriores», sin escribir aún la definición formal de convergencia.</li>
+</ol>
+<p><strong>Solución.</strong> En C05 se fija una región y se busca un umbral desde el que todos los términos permanecen en ella. En C06 la tolerancia podrá exigirse tan pequeña como se quiera: primero se elegirá esa tolerancia, después un umbral que responda a ella y, finalmente, se controlarán todos los índices posteriores. El umbral podrá cambiar con la tolerancia; una única región fija deja de ser suficiente.</p>
+<p><a href="../../libros/para-matematicos/analisis-para-matematicos.html">Índice del libro</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.html">Capítulo 5</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.html">Ejercicios</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.html">Soluciones</a> · <a href="../../libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.html">Soluciones de microcontroles</a></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
