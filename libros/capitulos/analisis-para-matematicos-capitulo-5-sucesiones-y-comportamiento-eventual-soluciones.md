@@ -2195,16 +2195,16 @@ Así, entre $0$ y $20$ el patrón puede registrarse como
 
 $$
 \begin{array}{c|l}
-\text{valor lógico} & \text{índices}\
+\text{valor lógico} & \text{índices}\\
 \hline
-\text{falso} & 0\
-\text{verdadero} & 1\
-\text{falso} & 2,3\
-\text{verdadero} & 4,5\
-\text{falso} & 6,7,8\
-\text{verdadero} & 9,10,11\
-\text{falso} & 12,13,14,15\
-\text{verdadero} & 16,17,18,19\
+\text{falso} & 0\\
+\text{verdadero} & 1\\
+\text{falso} & 2,3\\
+\text{verdadero} & 4,5\\
+\text{falso} & 6,7,8\\
+\text{verdadero} & 9,10,11\\
+\text{falso} & 12,13,14,15\\
+\text{verdadero} & 16,17,18,19\\
 \text{falso} & 20.
 \end{array}
 $$
