@@ -6,7 +6,7 @@ content-type: article
 status: published
 draft: false
 date-created: 2026-10-03
-date-modified: 2026-10-03
+date-modified: 2026-10-06
 areas:
   - fundamentos
   - teoria-de-numeros
@@ -19,7 +19,7 @@ prerequisites: []
 related: []
 provenance:
   type: synthesis
-  note: "Adaptación web de JONES_100_ARTICLE_v1.0.md; Apéndice A: S126-REPRO v1.0."
+  note: "Adaptación web de JONES_100_ARTICLE_v1.2.md; Apéndice A: S126-REPRO v1.0."
 license: GFDL-1.3-or-later
 toc: true
 toc-depth: 2
@@ -30,6 +30,8 @@ format:
     include-after-body:
       - ../assets/articles/ma-art-0013/responsive.html
 ---
+
+**Nota de versión — v1.2 — 6 oct 2026.** Derivada del máster canónico v1.1 mediante la actualización de los estados de OUC G2 y G3 en §14 y un bloque sobre la investigación en curso. Se conservan intactos el interludio sobre publicación, peer review y reproducibilidad, la nota posterior a RED TEAM R1 y S126-REPRO v1.0 en el Apéndice A. La atribución Pascal–Kline es provisional; la referencia a Matiyasevich 1993 conserva el alcance documental del cotejo disponible.
 
 Cien operaciones aritméticas no son cien pasos de demostración. Este artículo distingue la cota publicada por Jones, su alcance documental y una construcción independiente cuyo certificado puede reproducirse operación por operación.
 
@@ -48,6 +50,7 @@ De esa dificultad surgieron las preguntas que guían estas páginas: ¿qué afir
 5. [El antecedente de 243 operaciones](#seccion-05)
 6. [El eslabón perdido de 149](#seccion-06)
 7. [El teorema de las 100 operaciones](#seccion-07)
+   - [7.1. Publicación, peer review y reproducibilidad](#seccion-07-1)
 8. [¿Podemos construir nosotros un certificado completamente verificable?](#seccion-08)
 9. [La arquitectura de S126](#seccion-09)
 10. [Cómo se cuentan exactamente 126 operaciones](#seccion-10)
@@ -431,6 +434,28 @@ $$
 $$
 
 **[R]** $o_{\rm Jones}=100$: resultado publicado y recibido posteriormente, pero construcción histórica no reproducible con la documentación localizada. El escalón $o=149$ sólo ha sido localizado como anuncio en Jones 1978; no se ha encontrado una construcción publicada que documente $243\to149\to100$.
+
+### 7.1. Publicación, peer review y reproducibilidad {#seccion-07-1}
+
+**[I]** La publicación de un resultado, su evaluación por pares y la posibilidad de reproducir su demostración son aspectos relacionados, pero no equivalentes:
+
+$$
+\boxed{\text{publicado}\neq\text{independientemente verificado}},
+\qquad
+\boxed{\text{recepción posterior}\neq\text{reproducción de la demostración}}.
+$$
+
+El peer review puede evaluar los argumentos, sus hipótesis y el uso de resultados previos sin reproducir cada cálculo o reconstruir un circuito completo. Una publicación breve puede comunicar un resultado y las ideas que lo sustentan sin imprimir toda su derivación. Esto limita lo que un lector posterior puede verificar a partir del texto; no implica por sí solo que el resultado sea falso. No sabemos qué material adicional, si alguno, tuvo el referee de Jones: no inferimos nada sobre ello ni sobre su actuación.
+
+**[P/R]** Un ejemplo de recepción posterior es *Hilbert’s Tenth Problem* de Matiyasevich (1993), p. 163: sigue atribuyendo a Jones la cota universal de 100 operaciones, pero ese pasaje no reconstruye el circuito ni desglosa su presupuesto. El expediente S1-02 localizó la atribución en una vista OCR; el testimonio de Friedman (1998), que remite al libro y a Jones 1982, también la documenta. El cotejo visual de la página del libro sigue pendiente. Esta evidencia acredita la transmisión del resultado con ese alcance documental; no proporciona una verificación independiente de las cien operaciones. ([Friedman 1998](https://fomarchive.ugent.be/1998-March/001726.html); `JONES100_SOURCE_HUNT_S1_02_MISSING_SOURCES.md`, §3).
+
+**[I]** La filosofía de trabajo puede expresarse mediante una **paráfrasis provisional atribuida a Pascal a través de Morris Kline**: cuando citemos autores, citaremos sus demostraciones, no sus nombres. La fuente exacta y su formulación no están verificadas aquí; por eso no se presenta como cita literal ni se añade una referencia bibliográfica a Pascal o Kline. Adoptamos la idea como criterio de trabajo: identificar qué se demuestra, bajo qué hipótesis y mediante qué objeto verificable. El mismo criterio se aplica a los resultados del proyecto. La recepción histórica de 100 y el certificado reproducible de S126 responden a preguntas distintas y deben evaluarse mediante sus respectivas evidencias.
+
+**Nota de estado posterior a RED TEAM R1.** **[R]** Las versiones impresas auditadas del Teorema 3 presentan una inconsistencia global de la conjunción; designamos ese objeto como $J_{\rm print}$. El proyecto ha derivado una reparación matemática, $J_{\rm repair}$, cuya forma completa no está documentada históricamente en las fuentes localizadas. La derivación propia no se atribuye a Jones ni se confunde con una errata histórica documentada.
+
+En $J_{\rm repair}$, la selección Pell reparada es segura bajo las cotas explícitas del expediente, y la eliminación local de la potencia es semánticamente viable. Estas conclusiones no identifican el objeto histórico modificado que Jones contó como 100 ni establecen su recuento. Se mantienen separados $J_{\rm print}$, $J_{\rm repair}$, el objeto histórico de cien operaciones todavía no identificado y S126, construcción independiente con certificado de 126 operaciones bajo la convención del proyecto.
+
+**R1 no refuta $o=100$.** Su conclusión sobre el sistema impreso no se transfiere al objeto histórico modificado que sustenta la cota anunciada. Tampoco permite inferir mala praxis de Jones o de sus evaluadores. El problema pendiente sigue siendo documental y matemático: identificar ese objeto y reproducir su demostración y su presupuesto.
 
 ## 8. ¿Podemos construir nosotros un certificado completamente verificable? {#seccion-08}
 
@@ -899,7 +924,19 @@ $$
 
 Algunas compilaciones concretas resultaban demasiado costosas; otras trasladaban el trabajo a un componente esencial cuyo presupuesto seguía sin cerrarse. Estas conclusiones se refieren a las implementaciones y estrategias examinadas. No son cotas inferiores universales ni pruebas de imposibilidad para familias enteras.
 
+Estados de investigación:
+
+- `OUC GENERATION 1 — CLOSED AT S126`
+- `OUC GENERATION 2 — CLOSED AT S126`
+- `OUC GENERATION 3 — WORK IN PROGRESS`
+
 **[R]** La primera generación de investigación se cerró en S126. El cierre es una decisión de investigación: conserva S126, los lemas locales y los contraejemplos obtenidos, y termina las líneas examinadas. **No es un resultado de optimalidad.**
+
+### Investigación en curso: más allá de S126
+
+**[R]** La segunda generación (G2) cerró sin mejorar S126. En la tercera (G3), todavía en curso, se obtuvo el resultado `EXACTNESS EMERGENT FROM GLOBAL CONTEXT`: la exactitud emerge del contexto global. Esto permitió debilitar el contrato de puertos y eliminar $q_\ast$ como obligación independiente.
+
+**[A]** Quedan pendientes la condición $k<(2p)^r$ y el margen interior de $P_0$ respecto de la celda de $Y$. Todavía no se dispone de un coste completo, un ahorro certificado ni una nueva cota. **S126 sigue en 126 operaciones.**
 
 ## 15. Entonces, ¿puede cualquier teorema demostrarse con 100 operaciones? {#seccion-15}
 
@@ -2037,3 +2074,4 @@ Los siguientes expedientes son documentos de trabajo y certificación propios, n
 - **`S126_REPRODUCIBLE_CERTIFICATE_v01.md`**, S126-REPRO v1.0: sistema, prueba escrita, DAG y verificador independiente; reproducido en el Apéndice A.
 
 [Descargar las fuentes canónicas, el certificado S126-REPRO y su verificador](../assets/articles/ma-art-0013/S126_REPRO_v1.0.zip).
+
