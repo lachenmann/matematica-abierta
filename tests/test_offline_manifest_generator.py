@@ -166,19 +166,56 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
 
         optimized = optimize_offline_html(html, label="sample").decode("utf-8")
 
+        self.assertIn('id="quarto-content"', optimized)
+        self.assertIn(
+            'class="quarto-container page-columns page-rows-contents '
+            'page-layout-article page-navbar"',
+            optimized,
+        )
         self.assertIn('id="quarto-document-content"', optimized)
+        self.assertIn('id="ma-offline-reader-layout"', optimized)
         self.assertIn('class="math inline"', optimized)
         self.assertIn("<table>", optimized)
         self.assertIn("window.MathJax", optimized)
         self.assertIn("window.CONTENT_SPECIFIC", optimized)
         self.assertIn("Source%20Sans%20Pro", optimized)
+        self.assertIn("data:font/ttf;base64,AAAA", optimized)
 
         self.assertNotIn("quarto-header", optimized)
         self.assertNotIn("<footer>", optimized)
         self.assertNotIn("@algolia/autocomplete-js", optimized)
-        self.assertNotIn("data:font/ttf;base64,AAAA", optimized)
         self.assertNotIn("bootstrap-icons", optimized)
-        self.assertLess(len(optimized), len(html))
+
+    def test_offline_optimizer_restores_reader_shell_without_changing_main(self):
+        html = b"""<!DOCTYPE html>
+<html lang="es">
+<head><script>window.MathJax = {};</script></head>
+<body class="nav-fixed fullcontent quarto-dark">
+<header id="quarto-header">chrome</header>
+<main class="content" id="quarto-document-content">
+<section><p>Texto</p><p><span class="math display">\\[x^2\\]</span></p></section>
+</main>
+<footer id="quarto-footer">chrome</footer>
+</body>
+</html>"""
+
+        optimized = optimize_offline_html(html, label="reader-shell").decode(
+            "utf-8"
+        )
+
+        self.assertIn(
+            '<div id="quarto-content" class="quarto-container page-columns '
+            'page-rows-contents page-layout-article page-navbar">',
+            optimized,
+        )
+        self.assertIn(
+            '<main class="content" id="quarto-document-content">',
+            optimized,
+        )
+        self.assertIn("padding-left: max(1rem, env(safe-area-inset-left))", optimized)
+        self.assertIn("overflow: visible !important", optimized)
+        self.assertNotIn("quarto-header", optimized)
+        self.assertNotIn("quarto-footer", optimized)
 
     def test_offline_optimizer_ignores_html_literals_inside_mathjax(self):
         html = b"""<!DOCTYPE html>
