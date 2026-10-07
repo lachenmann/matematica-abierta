@@ -416,12 +416,12 @@ Podemos resumir la transición así:
 $$
 \boxed{
 \mathbb N
-\xhookrightarrow{\ \iota_{\mathbb N\mathbb Z}\ }
+\overset{\ \iota_{\mathbb N\mathbb Z}\}{\hookrightarrow}
 \mathbb Z
-\qquad
-\text{preservando suma, producto y orden, y añadiendo opuestos aditivos.}
 }
-$$
+$
+
+Preservando suma, producto y orden, y añadiendo opuestos aditivos.
 
 ### Segundo paso: de $\mathbb Z$ a $\mathbb Q$
 
@@ -499,12 +499,12 @@ La segunda ampliación puede resumirse así:
 $$
 \boxed{
 \mathbb Z
-\xhookrightarrow{\ \iota_{\mathbb Z\mathbb Q}\ }
+\overset{\ \iota_{\mathbb Z\mathbb Q}\}{\hookrightarrow}
 \mathbb Q
-\qquad
-\text{preservando la estructura de anillo ordenado y añadiendo cocientes.}
 }
-$$
+$
+
+Preservando la estructura de anillo ordenado y añadiendo cocientes.
 
 ### Una ampliación no borra el sistema anterior
 
@@ -514,9 +514,9 @@ Podemos verlo como una cadena:
 
 $$
 \mathbb N
-\xhookrightarrow{}
+\hookrightarrow
 \mathbb Z
-\xhookrightarrow{}
+\hookrightarrow
 \mathbb Q.
 $$
 
@@ -616,9 +616,9 @@ conviene que mentalmente veamos detrás el diagrama más preciso
 
 $$
 \mathbb N
-\xhookrightarrow{\ \iota_{\mathbb N\mathbb Z}\ }
+\overset{\ \iota_{\mathbb N\mathbb Z}\}{\hookrightarrow}
 \mathbb Z
-\xhookrightarrow{\ \iota_{\mathbb Z\mathbb Q}\ }
+\overset{\ \iota_{\mathbb Z\mathbb Q}\}{\hookrightarrow}
 \mathbb Q,
 $$
 
@@ -1926,7 +1926,7 @@ Podemos resumir el resultado de esta sección como
 $$
 \boxed{
 \mathbb Q
-\xhookrightarrow{\ \iota_{\mathbb Q}\ }
+\overset{\ \iota_{\mathbb Q}\}{\hookrightarrow}
 (\mathcal D,\subseteq)
 \qquad
 \text{como orden lineal.}
@@ -5247,9 +5247,9 @@ es decir, de la composición
 
 $$
 \mathbb Z
-\xhookrightarrow{\ \iota_{\mathbb Z\mathbb Q}\ }
+\overset{\ \iota_{\mathbb Z\mathbb Q}\}{\hookrightarrow}
 \mathbb Q
-\xhookrightarrow{\ \iota_F\ }
+\overset{\ \iota_F\}{\hookrightarrow}
 F.
 $$
 
