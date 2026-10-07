@@ -24,6 +24,7 @@ import hashlib
 import json
 import re
 import shutil
+from html.parser import HTMLParser
 import subprocess
 import tempfile
 from datetime import datetime, timezone
@@ -181,18 +182,104 @@ _STYLE_RE = re.compile(
     r"<style\b[^>]*>([\s\S]*?)</style>",
     re.I,
 )
-_MAIN_RE = re.compile(
-    r"<main\b[\s\S]*?</main>",
-    re.I,
-)
-_HEAD_RE = re.compile(
-    r"<head>([\s\S]*?)</head>",
-    re.I,
-)
-_BODY_OPEN_RE = re.compile(
-    r"<body\b[^>]*>",
-    re.I,
-)
+class _OfflineStructureParser(HTMLParser):
+    """Locate real document tags without matching HTML-like strings in scripts."""
+
+    def __init__(self, text: str) -> None:
+        super().__init__(convert_charrefs=False)
+        self.text = text
+        self._line_starts = [0]
+        self._line_starts.extend(match.end() for match in re.finditer("\n", text))
+        self.lang = "es"
+        self.head_inner_start: int | None = None
+        self.head_inner_end: int | None = None
+        self.body_open_start: int | None = None
+        self.body_open_end: int | None = None
+        self.main_start: int | None = None
+        self.main_end: int | None = None
+
+    def _absolute_index(self) -> int:
+        line, column = self.getpos()
+        return self._line_starts[line - 1] + column
+
+    def handle_starttag(
+        self,
+        tag: str,
+        attrs: list[tuple[str, str | None]],
+    ) -> None:
+        tag = tag.lower()
+        start = self._absolute_index()
+        raw = self.get_starttag_text()
+        if raw is None:
+            return
+        end = start + len(raw)
+        attr_map = dict(attrs)
+
+        if tag == "html" and attr_map.get("lang"):
+            self.lang = str(attr_map["lang"])
+        elif tag == "head" and self.head_inner_start is None:
+            self.head_inner_start = end
+        elif tag == "body" and self.body_open_start is None:
+            self.body_open_start = start
+            self.body_open_end = end
+        elif (
+            tag == "main"
+            and attr_map.get("id") == "quarto-document-content"
+            and self.main_start is None
+        ):
+            self.main_start = start
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        start = self._absolute_index()
+        close = self.text.find(">", start)
+        if close < 0:
+            return
+        end = close + 1
+
+        if tag == "head" and self.head_inner_start is not None:
+            if self.head_inner_end is None:
+                self.head_inner_end = start
+        elif tag == "main" and self.main_start is not None:
+            if self.main_end is None:
+                self.main_end = end
+
+
+def _isolate_offline_structure(
+    text: str,
+    *,
+    label: str,
+) -> tuple[str, str, str, str]:
+    parser = _OfflineStructureParser(text)
+    parser.feed(text)
+    parser.close()
+
+    required = (
+        parser.head_inner_start,
+        parser.head_inner_end,
+        parser.body_open_start,
+        parser.body_open_end,
+        parser.main_start,
+        parser.main_end,
+    )
+    if any(value is None for value in required):
+        raise ValueError(f"{label}: no se pudo aislar head/main/body para offline")
+
+    assert parser.head_inner_start is not None
+    assert parser.head_inner_end is not None
+    assert parser.body_open_start is not None
+    assert parser.body_open_end is not None
+    assert parser.main_start is not None
+    assert parser.main_end is not None
+
+    return (
+        text[parser.head_inner_start : parser.head_inner_end],
+        text[parser.body_open_start : parser.body_open_end],
+        text[parser.main_start : parser.main_end],
+        parser.lang,
+    )
+
+
 _FONT_FACE_RE = re.compile(
     r"@font-face\s*\{[^{}]*font-family:\s*['\"](?:Source Sans Pro|Lato)['\"][^{}]*\}",
     re.I | re.S,
@@ -265,24 +352,19 @@ def optimize_offline_html(data: bytes, *, label: str) -> bytes:
     """
 
     text = data.decode("utf-8", errors="strict")
-    head_match = _HEAD_RE.search(text)
-    main_match = _MAIN_RE.search(text)
-    body_open_match = _BODY_OPEN_RE.search(text)
-    if not head_match or not main_match or not body_open_match:
-        raise ValueError(f"{label}: no se pudo aislar head/main/body para offline")
+    head, body_open, main, lang = _isolate_offline_structure(text, label=label)
 
-    head = _strip_offline_scripts(head_match.group(1))
+    head = _strip_offline_scripts(head)
     head = _strip_embedded_webfonts(head)
-    main = main_match.group(0)
     head = _strip_unused_bootstrap_icons(head, main)
 
-    lang_match = re.search(r'<html\b[^>]*\blang=["\']([^"\']+)["\']', text, re.I)
-    lang = lang_match.group(1) if lang_match else "es"
-    optimized = (
-        "<!DOCTYPE html>\\n"
+    optimized_text = (
+        "<!DOCTYPE html>\n"
         f'<html lang="{lang}"><head>{head}</head>'
-        f"{body_open_match.group(0)}{main}</body></html>\\n"
-    ).encode("utf-8")
+        f"{body_open}{main}</body></html>\n"
+    )
+    _isolate_offline_structure(optimized_text, label=f"{label} optimizado")
+    optimized = optimized_text.encode("utf-8")
 
     validate_self_contained_html(optimized, label=label)
     return optimized
