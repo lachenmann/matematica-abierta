@@ -12,6 +12,24 @@ SPEC.loader.exec_module(smart)
 
 
 class PlannerTests(unittest.TestCase):
+    def test_offline_integrity_includes_shared_assets(self):
+        import hashlib
+        package = self.root / '_site/app/offline/MA-BOK-0005'
+        entries = []
+        for name, content in [('content/chapter.html', b'<html>chapter</html>'),
+                              ('assets/shared.css', b'body{color:red}')]:
+            path = package / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(content)
+            entries.append({'localPath': name, 'sha256': hashlib.sha256(content).hexdigest(), 'size': len(content)})
+        manifest = {'schemaVersion': 1, 'bookId': 'MA-BOK-0005', 'contents': entries[:1],
+                    'assets': entries[1:], 'totalSize': sum(e['size'] for e in entries)}
+        (package / 'manifest-v1.json').write_text(json.dumps(manifest))
+        self.assertEqual(smart.verify_package(self.root, 'MA-BOK-0005'), manifest)
+        (package / 'assets/shared.css').write_bytes(b'corrupt')
+        with self.assertRaisesRegex(ValueError, 'integrity'):
+            smart.verify_package(self.root, 'MA-BOK-0005')
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)

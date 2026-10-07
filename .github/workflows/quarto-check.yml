@@ -19,6 +19,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install offline resource validator
+        run: python3 -m pip install -r tools/requirements-offline.txt
+
       - name: Test and generate public mobile catalog
         run: |
           python3 -m unittest tests/test_app_catalog_generator.py tests/test_offline_manifest_generator.py tests/test_smart_render.py
@@ -147,16 +150,31 @@ jobs:
               "MA-BCH-0009",
               "MA-BCH-0031",
           ]
-          assert manifest["assets"] == []
+          assert {"assets/quarto-bootstrap-dark.css", "assets/quarto-bootstrap-light.css",
+                  "assets/mathjax/tex-chtml.js"}.issubset(
+                      item["localPath"] for item in manifest["assets"])
+
 
           total = 0
-          for item in manifest["contents"]:
+          for item in [*manifest["contents"], *manifest["assets"]]:
               path = package / item["localPath"]
               data = path.read_bytes()
               assert len(data) == item["size"]
               assert hashlib.sha256(data).hexdigest() == item["sha256"]
-              assert b"<html" in data.lower() and b"<body" in data.lower()
               total += len(data)
+
+          for item in manifest["contents"]:
+              data = (package / item["localPath"]).read_bytes()
+              assert b"<html" in data.lower() and b"<body" in data.lower()
+              assert b'id="quarto-content"' in data
+              assert b"../assets/quarto-bootstrap-light.css" in data
+              assert b"../assets/quarto-bootstrap-dark.css" in data
+
+          for item in manifest["assets"]:
+              assert item["mediaType"]
+              assert item["remotePath"].startswith(
+                  "/app/offline/MA-BOK-0005/assets/"
+              )
 
           assert total == manifest["totalSize"]
           assert manifest["version"].startswith("sha256-")
@@ -166,7 +184,23 @@ jobs:
           )
           PY
 
+      - name: Compare canonical online and offline Android reader layouts
+        run: |
+          python3 -m pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+          python3 tests/offline_parity_browser.py --site _site --output .ma-build/offline-parity
+
+      - name: Preserve offline parity evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-parity-qa
+          path: .ma-build/offline-parity/
+          retention-days: 7
+          if-no-files-found: warn
+
       - name: Preserve rendered site for visual and link QA
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: triangular-site-qa
@@ -183,4 +217,3 @@ jobs:
           include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn
-

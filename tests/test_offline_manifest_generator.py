@@ -3,6 +3,7 @@ import re
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,13 +11,13 @@ sys.path.insert(0, str(ROOT / "tools"))
 
 from generate_offline_manifests import (
     build_manifest,
-    build_offline_render_command,
     load_catalog,
-    optimize_offline_html,
     resolve_source_path,
     select_book,
     validate_self_contained_html,
+    write_book_package,
 )
+from canonical_offline import CanonicalAssets
 
 
 def sample_catalog():
@@ -56,6 +57,94 @@ def sample_catalog():
 
 
 class OfflineManifestGeneratorTests(unittest.TestCase):
+    def test_runtime_distribution_integrity_is_checked_before_extraction(self):
+        with tempfile.TemporaryDirectory() as tmp, patch('canonical_offline.download', return_value=b'corrupt archive'):
+            with self.assertRaisesRegex(ValueError, 'integrity failed'):
+                CanonicalAssets(Path(tmp)).mathjax()
+
+    def test_canonical_resource_cannot_escape_site_or_fetch_unknown_origin(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            assets = CanonicalAssets(Path(tmp))
+            for url in ['../../outside.css', 'https://unapproved.example/style.css', 'file://host/private/style.css']:
+                with self.subTest(url=url), self.assertRaises(ValueError):
+                    assets.resource(url, (Path(tmp) / 'chapter.html').as_uri())
+
+    def test_package_derives_canonical_html_without_rendering_markdown(self):
+        catalog = sample_catalog()
+        main = '<main class="content" id="quarto-document-content"><p id="p">Texto <span class="math inline">\\(x^2\\)</span></p></main>'
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            (site / 'libros/capitulos').mkdir(parents=True)
+            (site / 'theme.css').write_text('body{color:white}')
+            for number in [1, 2]:
+                (site / f'libros/capitulos/capitulo-{number}.html').write_text(
+                    '<html lang="es"><head><link rel="stylesheet" href="../../theme.css">'
+                    '<script id="ma-math-font-ready">window.MathJax={startup:{}};</script>'
+                    '<script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>'
+                    '</head><body class="quarto-dark"><script id="quarto-html-before-body">window.theme=true;</script>'
+                    '<nav>chrome</nav><div id="quarto-content" class="canonical-shell">' + main + '</div></body></html>')
+            def runtime(assets):
+                assets.assets['assets/mathjax/tex-chtml.js'] = b'window.MathJax={};'
+                assets.assets['assets/mathjax-offline-speech.js'] = b'window.__maCreateSpeechWorker=null;'
+            with patch.object(CanonicalAssets, 'mathjax', runtime), patch('subprocess.run', side_effect=AssertionError('must not render')):
+                manifest_path = write_book_package(site, site, catalog, 'MA-BOK-0005')
+            manifest = json.loads(manifest_path.read_text())
+            self.assertEqual(len(manifest['assets']), 3)
+            package = manifest_path.parent
+            for item in manifest['contents']:
+                html = (package / item['localPath']).read_text()
+                self.assertIn(main, html)
+                self.assertIn('class="canonical-shell"', html)
+                self.assertIn('window.theme=true;', html)
+                self.assertNotIn('<nav>', html)
+                self.assertNotIn('cdn.jsdelivr.net', html)
+            self.assertEqual(manifest['totalSize'], sum((package / i['localPath']).stat().st_size
+                             for i in manifest['contents'] + manifest['assets']))
+
+    def test_declared_relative_resources_and_css_dependencies(self):
+        assets = {"assets/theme.css": b"body{color:red}"}
+        html = b'<html><body><link rel="stylesheet" href="../assets/theme.css"></body></html>'
+        validate_self_contained_html(html, label="ok", assets=assets)
+        with self.assertRaises(ValueError):
+            validate_self_contained_html(html, label="undeclared")
+        validate_self_contained_html(
+            b'<html><body><script>const sample="<img src=https://example.com/x>";</script></body></html>',
+            label="script literal")
+
+    def test_unsafe_resource_urls_fail_closed(self):
+        for url in ["https://host/x", "http://host/x", "//host/x", "/assets/x.css",
+                    "../../assets/x.css", "file:///assets/x.css", "javascript:alert(1)",
+                    "../assets/missing.css", "../assets/%2e%2e/x.css", "..\\assets/x.css"]:
+            for tag in ['<link rel="stylesheet" href="{}">', '<img src="{}">',
+                        '<script src="{}"></script>', '<object data="{}"></object>']:
+                with self.subTest(url=url, tag=tag), self.assertRaises(ValueError):
+                    validate_self_contained_html(
+                        ('<html><body>' + tag.format(url) + '</body></html>').encode(),
+                        label="unsafe", assets={"assets/x.css": b""})
+
+    def test_css_escape_import_and_embedded_styles_are_checked(self):
+        from urllib.parse import quote
+        css_cases = [r'@import "https://host/x";',
+                     r'@\69mport "//host/x";',
+                     r'body{background:u\72l(https://host/x)}',
+                     'body{background:url(../outside.png)}',
+                     'body{background:image-set("https://host/x" 1x)}']
+        for css in css_cases:
+            for markup in [f'<style>{css}</style>',
+                           f'<link rel="stylesheet" href="data:text/css,{quote(css)}">']:
+                with self.subTest(css=css), self.assertRaises(ValueError):
+                    validate_self_contained_html(
+                        f'<html><body>{markup}</body></html>'.encode(), label="css")
+
+    def test_asset_paths_and_transitive_css_are_validated_before_manifest(self):
+        book, chapters = select_book(sample_catalog(), "MA-BOK-0005")
+        artifacts = {c["id"]: b"<html><body>x</body></html>" for c in chapters}
+        for assets in [{"assets/../../escape.css": b""},
+                       {"assets/a.css": b'@import "missing.css";'},
+                       {"assets/a.css": b'body{background:url(https://host/x)}'}]:
+            with self.subTest(assets=assets), self.assertRaises(ValueError):
+                build_manifest(book, chapters, artifacts, generated_at="now", assets=assets)
+
     def test_catalog_and_book_selection_are_fail_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "catalog.json"
@@ -95,29 +184,6 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "orden de todos sus capítulos"):
             select_book(catalog, "MA-BOK-0005")
 
-    def test_offline_render_uses_minimal_self_contained_html(self):
-        root = Path("/repo")
-        source = root / "libros" / "capitulos" / "capitulo-1.md"
-        output_dir = Path("/tmp/offline")
-
-        command = build_offline_render_command(
-            root,
-            source,
-            output_dir,
-            quarto="quarto",
-        )
-
-        self.assertIn("minimal:true", command)
-        self.assertIn("toc:false", command)
-        self.assertIn("anchor-sections:false", command)
-        self.assertIn("code-copy:false", command)
-        self.assertIn("fig-responsive:true", command)
-        self.assertIn("embed-resources:true", command)
-        self.assertIn("self-contained-math:true", command)
-        self.assertEqual(
-            command[:4],
-            ["quarto", "render", "libros/capitulos/capitulo-1.md", "--to"],
-        )
 
     def test_source_resolution_uses_canonical_path(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -131,116 +197,6 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
                 source,
             )
 
-    def test_offline_optimizer_keeps_main_math_and_static_css(self):
-        from urllib.parse import quote
-
-        theme_css = (
-            "@font-face {font-family: 'Source Sans Pro';"
-            "src:url(data:font/ttf;base64,AAAA);}"
-            "body{font-family:'Source Sans Pro',sans-serif}"
-        )
-        encoded_theme = "data:text/css," + quote(
-            theme_css,
-            safe="!()*+,/:;=?@-._~",
-        )
-        html = f"""<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<link href="{encoded_theme}" rel="stylesheet">
-<style>@font-face {{font-family: "bootstrap-icons";src:url(data:font/woff;base64,BBBB);}} .bi{{display:inline-block}}</style>
-<script>/*! @algolia/autocomplete-js 1.19.1 */ window.SEARCH = true;</script>
-<script type="text/javascript">window.MathJax = {{startup: {{}}}};</script>
-<script>window.CONTENT_SPECIFIC = true;</script>
-</head>
-<body class="fullcontent">
-<header id="quarto-header"><nav>chrome</nav></header>
-<main class="content" id="quarto-document-content">
-<h1 id="x">Capítulo</h1>
-<p><span class="math inline">\\(x^2\\)</span></p>
-<table><tr><td>1</td></tr></table>
-</main>
-<footer>chrome</footer>
-</body>
-</html>""".encode("utf-8")
-
-        optimized = optimize_offline_html(html, label="sample").decode("utf-8")
-
-        self.assertIn('id="quarto-document-content"', optimized)
-        self.assertIn('class="math inline"', optimized)
-        self.assertIn("<table>", optimized)
-        self.assertIn("window.MathJax", optimized)
-        self.assertIn("window.CONTENT_SPECIFIC", optimized)
-        self.assertIn("Source%20Sans%20Pro", optimized)
-
-        self.assertNotIn("quarto-header", optimized)
-        self.assertNotIn("<footer>", optimized)
-        self.assertNotIn("@algolia/autocomplete-js", optimized)
-        self.assertNotIn("data:font/ttf;base64,AAAA", optimized)
-        self.assertNotIn("bootstrap-icons", optimized)
-        self.assertLess(len(optimized), len(html))
-
-    def test_offline_optimizer_ignores_html_literals_inside_mathjax(self):
-        html = b"""<!DOCTYPE html>
-<html lang="es">
-<head>
-<script type="text/javascript">
-window.MathJax = {};
-const template = "<html><head></head><body><main>fake</main></body></html>";
-</script>
-<style>main{max-width:70ch}</style>
-</head>
-<body class="fullcontent">
-<header id="quarto-header">chrome</header>
-<main id="quarto-document-content">
-<figure><img src="data:image/png;base64,AA=="><figcaption>Figura</figcaption></figure>
-<table><tr><td>dato</td></tr></table>
-<p><a href="https://example.com">fuente</a></p>
-</main>
-<footer>chrome</footer>
-</body>
-</html>"""
-
-        optimized = optimize_offline_html(html, label="mathjax-template").decode(
-            "utf-8"
-        )
-
-        self.assertTrue(optimized.startswith("<!DOCTYPE html>\n<html"))
-        self.assertIn("window.MathJax", optimized)
-        self.assertIn(
-            'const template = "<html><head></head><body><main>fake</main></body></html>";',
-            optimized,
-        )
-        self.assertIn('id="quarto-document-content"', optimized)
-        self.assertEqual(optimized.count('id="quarto-document-content"'), 1)
-        self.assertIn('src="data:image/png;base64,AA=="', optimized)
-        self.assertIn("<table>", optimized)
-        self.assertIn('<a href="https://example.com">fuente</a>', optimized)
-        self.assertLess(
-            optimized.index("</script>"),
-            optimized.index('<main id="quarto-document-content">'),
-        )
-        self.assertNotIn("quarto-header", optimized)
-        self.assertNotIn("<footer>", optimized)
-
-    def test_offline_optimizer_preserves_content_icons_and_language(self):
-        html = b"""<!DOCTYPE html>
-<html lang="la">
-<head>
-<style>@font-face {font-family: "bootstrap-icons";src:url(data:font/woff;base64,BBBB);} .bi{display:inline-block}</style>
-<script>window.MathJax = {};</script>
-</head>
-<body>
-<header id="quarto-header">chrome</header>
-<main id="quarto-document-content"><i class="bi bi-star"></i><p>Textus</p></main>
-</body>
-</html>"""
-
-        optimized = optimize_offline_html(html, label="icons").decode("utf-8")
-
-        self.assertIn('<html lang="la">', optimized)
-        self.assertIn("bootstrap-icons", optimized)
-        self.assertIn('class="bi bi-star"', optimized)
 
     def test_display_math_separates_vertical_overflow_from_horizontal_scroll(self):
         css = (ROOT / "styles.scss").read_text(encoding="utf-8")
@@ -320,6 +276,27 @@ const template = "<html><head></head><body><main>fake</main></body></html>";
             generated_at="2026-10-05T18:00:00Z",
         )
         self.assertNotEqual(first["version"], third["version"])
+
+        with_assets = build_manifest(
+            book,
+            chapters,
+            artifacts,
+            generated_at="2026-10-05T18:00:00Z",
+            assets={
+                "assets/quarto-bootstrap-light.css": b"body{font-family:test}",
+                "assets/quarto-bootstrap-dark.css": b"body{font-family:test-dark}",
+            },
+        )
+        self.assertEqual(len(with_assets["assets"]), 2)
+        self.assertEqual(
+            with_assets["totalSize"],
+            first["totalSize"]
+            + sum(item["size"] for item in with_assets["assets"]),
+        )
+        self.assertTrue(
+            all(item["mediaType"] == "text/css" for item in with_assets["assets"])
+        )
+        self.assertNotEqual(first["version"], with_assets["version"])
 
 
 if __name__ == "__main__":

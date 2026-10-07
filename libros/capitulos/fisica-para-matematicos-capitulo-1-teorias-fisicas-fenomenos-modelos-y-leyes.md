@@ -2,6 +2,7 @@
 title: "Teorías físicas: fenómenos, modelos y leyes"
 description: "Primer capítulo de Física para matemáticos: cómo pasar del fenómeno al sistema, la representación, el modelo, la ley y la teoría, distinguiendo exactitud matemática de adecuación física."
 content-id: MA-BCH-0009
+include-in-header: ../../assets/includes/ma-math-font-ready.html
 content-type: book-chapter
 collection: PM-FIS
 book-id: MA-BOK-0005
