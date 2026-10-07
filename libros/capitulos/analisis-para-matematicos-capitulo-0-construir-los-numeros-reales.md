@@ -418,10 +418,10 @@ $$
 \mathbb N
 \overset{\ \iota_{\mathbb N\mathbb Z}\}{\hookrightarrow}
 \mathbb Z
+\qquad
+\text{preservando suma, producto y orden, y añadiendo opuestos aditivos.}
 }
-$
-
-Preservando suma, producto y orden, y añadiendo opuestos aditivos.
+$$
 
 ### Segundo paso: de $\mathbb Z$ a $\mathbb Q$
 
@@ -501,10 +501,10 @@ $$
 \mathbb Z
 \overset{\ \iota_{\mathbb Z\mathbb Q}\}{\hookrightarrow}
 \mathbb Q
+\qquad
+\text{preservando la estructura de anillo ordenado y añadiendo cocientes.}
 }
-$
-
-Preservando la estructura de anillo ordenado y añadiendo cocientes.
+$$
 
 ### Una ampliación no borra el sistema anterior
 
