@@ -242,19 +242,29 @@ const template = "<html><head></head><body><main>fake</main></body></html>";
         self.assertIn("bootstrap-icons", optimized)
         self.assertIn('class="bi bi-star"', optimized)
 
-    def test_global_display_math_does_not_clip_vertical_glyphs(self):
+    def test_display_math_separates_vertical_overflow_from_horizontal_scroll(self):
         css = (ROOT / "styles.scss").read_text(encoding="utf-8")
-        match = re.search(
+
+        outer_match = re.search(
             r"\.math\.display\s*\{([^}]*)\}",
             css,
             re.S,
         )
-        self.assertIsNotNone(match)
-        block = match.group(1)
-        self.assertIn("overflow-x: auto", block)
-        self.assertIn("overflow-y: visible", block)
-        self.assertNotIn("overflow-y: hidden", block)
-        self.assertIn("padding: 0.45rem 0 0.55rem", block)
+        self.assertIsNotNone(outer_match)
+        outer = outer_match.group(1)
+        self.assertIn("overflow: visible", outer)
+        self.assertNotIn("overflow-x: auto", outer)
+
+        scroll_match = re.search(
+            r'\.math\.display\s*>\s*mjx-container\[display="true"\]\s*\{([^}]*)\}',
+            css,
+            re.S,
+        )
+        self.assertIsNotNone(scroll_match)
+        scroll = scroll_match.group(1)
+        self.assertIn("overflow-x: auto", scroll)
+        self.assertIn("padding-top: 0.55em !important", scroll)
+        self.assertIn("padding-bottom: 0.65em !important", scroll)
 
     def test_self_contained_validation_allows_external_links_but_not_subresources(self):
         validate_self_contained_html(
