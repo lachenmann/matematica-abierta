@@ -12,8 +12,8 @@ B2 policy:
 - offline render uses Quarto minimal HTML but restores the canonical reader shell;
 - embedded theme fonts are preserved for online/offline visual parity;
 - math remains self-contained;
-- assets array empty because page resources are embedded in the HTML;
-- deterministic package version derived from manifest content hashes;
+- heavy embedded theme styles/fonts are shared once per book through B1 assets;
+- deterministic package version derives from content and shared asset hashes;
 - fail closed on missing source, unsafe output, external subresources, or
   catalog inconsistencies.
 """
@@ -389,6 +389,68 @@ def _strip_embedded_webfonts(head: str) -> str:
     return _DATA_CSS_LINK_RE.sub(replace_link, head)
 
 
+def _html_attr_value(tag: str, name: str) -> str | None:
+    match = re.search(
+        rf'\\b{re.escape(name)}=["\\\']([^"\\\']+)["\\\']',
+        tag,
+        re.I,
+    )
+    return match.group(1) if match else None
+
+
+def extract_shared_theme_styles(
+    data: bytes,
+    *,
+    label: str,
+) -> tuple[bytes, dict[str, bytes]]:
+    """Move Quarto's embedded light/dark theme CSS to shared book assets."""
+
+    from urllib.parse import unquote
+
+    text = data.decode("utf-8", errors="strict")
+    assets: dict[str, bytes] = {}
+
+    def replace_link(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        href = match.group(1)
+        if _html_attr_value(tag, "id") != "quarto-bootstrap":
+            return tag
+
+        mode = _html_attr_value(tag, "data-mode")
+        if mode not in {"light", "dark"}:
+            raise ValueError(f"{label}: tema Bootstrap offline sin data-mode válido")
+
+        css = unquote(href[len("data:text/css,") :])
+        for pattern in EXTERNAL_SUBRESOURCE_PATTERNS[-2:]:
+            if pattern.search(css):
+                raise ValueError(
+                    f"{label}: CSS compartido conserva un subrecurso externo"
+                )
+
+        local_path = f"assets/quarto-bootstrap-{mode}.css"
+        css_bytes = css.encode("utf-8")
+        previous = assets.get(local_path)
+        if previous is not None and previous != css_bytes:
+            raise ValueError(f"{label}: tema Bootstrap {mode} duplicado y divergente")
+        assets[local_path] = css_bytes
+
+        return tag.replace(href, f"../{local_path}", 1)
+
+    rewritten = _DATA_CSS_LINK_RE.sub(replace_link, text)
+    expected = {
+        "assets/quarto-bootstrap-light.css",
+        "assets/quarto-bootstrap-dark.css",
+    }
+    if set(assets) != expected:
+        raise ValueError(
+            f"{label}: no se pudieron extraer ambos temas Bootstrap compartidos"
+        )
+
+    rewritten_bytes = rewritten.encode("utf-8")
+    validate_self_contained_html(rewritten_bytes, label=label)
+    return rewritten_bytes, assets
+
+
 def _strip_unused_bootstrap_icons(head: str, main: str) -> str:
     if re.search(r'class=["\'][^"\']*\bbi(?:\s|[-"\'])', main, re.I):
         return head
@@ -523,8 +585,10 @@ def build_manifest(
     artifacts: dict[str, bytes],
     *,
     generated_at: str,
+    assets: dict[str, bytes] | None = None,
 ) -> dict[str, Any]:
     contents: list[dict[str, Any]] = []
+    asset_bytes = assets or {}
 
     for chapter in chapters:
         chapter_id = chapter["id"]
@@ -546,6 +610,20 @@ def build_manifest(
             }
         )
 
+    asset_entries: list[dict[str, Any]] = []
+    for local_path, data in sorted(asset_bytes.items()):
+        if not local_path.startswith("assets/") or not local_path.endswith(".css"):
+            raise ValueError(f"asset offline no soportado: {local_path}")
+        asset_entries.append(
+            {
+                "remotePath": f"/app/offline/{book['id']}/{local_path}",
+                "localPath": local_path,
+                "mediaType": "text/css",
+                "size": len(data),
+                "sha256": sha256_bytes(data),
+            }
+        )
+
     version_material = {
         "bookId": book["id"],
         "title": book["title"],
@@ -559,7 +637,14 @@ def build_manifest(
             }
             for item in contents
         ],
-        "assets": [],
+        "assets": [
+            {
+                "remotePath": item["remotePath"],
+                "localPath": item["localPath"],
+                "sha256": item["sha256"],
+            }
+            for item in asset_entries
+        ],
     }
     version_digest = hashlib.sha256(
         json.dumps(
@@ -579,9 +664,12 @@ def build_manifest(
         "version": f"sha256-{version_digest[:24]}",
         "generatedAt": generated_at,
         "entryContentId": contents[0]["contentId"],
-        "totalSize": sum(item["size"] for item in contents),
+        "totalSize": (
+            sum(item["size"] for item in contents)
+            + sum(item["size"] for item in asset_entries)
+        ),
         "contents": contents,
-        "assets": [],
+        "assets": asset_entries,
     }
 
 
@@ -601,11 +689,36 @@ def write_book_package(
     content_dir.mkdir(parents=True, exist_ok=True)
 
     artifacts: dict[str, bytes] = {}
+    shared_assets: dict[str, bytes] = {}
     for chapter in chapters:
         source = resolve_source_path(root, chapter["path"])
-        data = render_offline_chapter(root, source, quarto=quarto)
+        optimized = render_offline_chapter(root, source, quarto=quarto)
+        data, chapter_assets = extract_shared_theme_styles(
+            optimized,
+            label=str(source.relative_to(root)),
+        )
+        for local_path, asset_data in chapter_assets.items():
+            previous = shared_assets.get(local_path)
+            if previous is not None and previous != asset_data:
+                raise ValueError(
+                    f"asset compartido divergente entre capítulos: {local_path}"
+                )
+            shared_assets[local_path] = asset_data
+
+        reduction = 100.0 * (1.0 - (len(data) / len(optimized)))
+        print(
+            "offline-share-theme: "
+            f"{source.relative_to(root)}: "
+            f"{len(optimized)} -> {len(data)} bytes "
+            f"({reduction:.1f}% menos en HTML)"
+        )
         artifacts[chapter["id"]] = data
         (content_dir / f"{chapter['id']}.html").write_bytes(data)
+
+    for local_path, asset_data in shared_assets.items():
+        asset_path = package_dir / local_path
+        asset_path.parent.mkdir(parents=True, exist_ok=True)
+        asset_path.write_bytes(asset_data)
 
     generated_at = catalog.get("generatedAt")
     if not isinstance(generated_at, str) or not generated_at:
@@ -616,6 +729,7 @@ def write_book_package(
         chapters,
         artifacts,
         generated_at=generated_at,
+        assets=shared_assets,
     )
     manifest_path = package_dir / "manifest-v1.json"
     manifest_path.write_text(
