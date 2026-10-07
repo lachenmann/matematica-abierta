@@ -129,7 +129,7 @@ def main():
                     cdp.send('DOM.enable')
                     cdp.send('CSS.enable')
                     root = cdp.send('DOM.getDocument')
-                    node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content'})
+                    node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content li'})
                     pair[mode]['renderedFonts'] = cdp.send('CSS.getPlatformFontsForNode', {'nodeId':node['nodeId']})['fonts']
                     cdp.detach()
                     page.screenshot(path=str(args.output / f'{chapter["contentId"]}-{width}-{mode}.png'),
