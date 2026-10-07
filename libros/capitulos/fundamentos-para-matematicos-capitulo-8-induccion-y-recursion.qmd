@@ -1,0 +1,7024 @@
+---
+title: "Capítulo 8 — Naturales, recursión, inducción y buen orden"
+description: "Fundamentos para matemáticos: capítulo 8."
+content-id: MA-BCH-0167
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C08
+editorial-id: MA-BCH-FND-01-008
+source-version: v01
+status: published
+date-created: 2026-10-06
+date-modified: 2026-10-06
+areas: [fundamentos]
+level: fundamental
+topics: [razonamiento-matematico, lenguaje-matematico, demostraciones]
+prerequisites: []
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito FND-T1-C08, v01; bibliografía y convenciones en la página del libro."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+En los capítulos anteriores aprendimos a leer afirmaciones cuantificadas, reconocer obligaciones de prueba y construir o descubrir cadenas de justificación. Hasta ahora, sin embargo, la mayor parte de nuestros argumentos podía examinarse localmente: fijábamos objetos arbitrarios, desplegábamos definiciones y buscábamos una cadena que llevara de las hipótesis a la conclusión.
+
+Los números naturales introducen una estructura adicional.
+
+Una afirmación puede pedirnos demostrar una propiedad no de un único objeto ni de un conjunto finito de casos, sino de todos los índices de una sucesión potencialmente infinita:
+
+$$
+P(0),\quad P(1),\quad P(2),\quad P(3),\quad\ldots
+$$
+
+También podemos querer **definir** un objeto cuyo valor en cada índice dependa de valores anteriores:
+
+$$
+a_0,\quad a_1,\quad a_2,\quad a_3,\quad\ldots
+$$
+
+Y, cuando una propiedad falla en algún natural, podemos preguntarnos si existe un **primer índice** donde ocurre el fallo.
+
+Estas tres situaciones conducirán respectivamente a la inducción, la recursión y el buen orden.
+
+Conviene mantener desde el comienzo una distinción que gobernará todo el capítulo:
+
+$$
+\boxed{\text{inducción = demostrar propiedades}}
+$$
+
+$$
+\boxed{\text{recursión = definir objetos}}
+$$
+
+$$
+\boxed{\text{buen orden = localizar mínimos}}.
+$$
+
+No son tres nombres para la misma técnica. Son tres maneras diferentes de explotar una misma característica estructural de los números naturales: su organización sucesiva.
+
+## 8.1. ¿Qué tiene de especial $\mathbb N$? {#fnd-section-8-1}
+
+### Una convención que debe quedar fijada
+
+En este capítulo utilizaremos
+
+$$
+\mathbb N=\{0,1,2,3,\ldots\}.
+$$
+
+El cero pertenece, por tanto, a nuestros naturales.
+
+Esta convención no es universal. Otros textos utilizan
+
+$$
+\{1,2,3,\ldots\}
+$$
+
+para denotar los números naturales. Ninguna de las dos elecciones crea una diferencia matemática profunda, pero una demostración puede quedar mal formulada si el punto inicial permanece implícito.
+
+Por eso, cuando una afirmación sólo pretenda valer desde un índice determinado
+
+$$
+n_0\in\mathbb N,
+$$
+
+escribiremos explícitamente el rango correspondiente:
+
+$$
+n\ge n_0.
+$$
+
+Por ejemplo,
+
+$$
+\forall n\in\mathbb N,\ n\ge3\Rightarrow P(n)
+$$
+
+afirma algo distinto de
+
+$$
+\forall n\in\mathbb N\;P(n).
+$$
+
+Los valores
+
+$$
+n=0,1,2
+$$
+
+no pertenecen a la obligación de la primera afirmación.
+
+Esto será importante cuando aparezca la inducción: el punto donde comienza una afirmación forma parte del teorema que estamos intentando demostrar.
+
+### Los naturales avanzan mediante sucesores
+
+Para cada natural
+
+$$
+n\in\mathbb N
+$$
+
+existe el natural siguiente
+
+$$
+n+1.
+$$
+
+Podemos considerar la función sucesor
+
+$$
+S:\mathbb N\to\mathbb N,
+\qquad
+S(n)=n+1.
+$$
+
+Así,
+
+$$
+0\mapsto1\mapsto2\mapsto3\mapsto\cdots.
+$$
+
+La palabra **sucesor** no significa solamente “un número mayor”. Entre dos números naturales consecutivos no hay otro natural:
+
+$$
+n<k<n+1
+$$
+
+no puede ocurrir con
+
+$$
+k\in\mathbb N.
+$$
+
+En este sentido, $\mathbb N$ tiene una estructura discreta.
+
+Esto contrasta con lo que ocurre en $\mathbb R$. Si
+
+$$
+x<y,
+$$
+
+siempre podemos encontrar otro real estrictamente entre ambos; por ejemplo,
+
+$$
+\frac{x+y}{2}.
+$$
+
+Por ello no existe, para cada real $x$, un “real siguiente” análogo a $n+1$.
+
+La estructura
+
+$$
+0,\ 1,\ 2,\ 3,\ldots
+$$
+
+nos proporciona algo que utilizaremos repetidamente: un punto inicial y una regla natural para pasar de un índice al siguiente.
+
+Todavía no hemos formulado ningún principio de inducción. Sólo estamos identificando la estructura sobre la cual ese principio podrá actuar.
+
+### Tramos de naturales
+
+No siempre trabajaremos desde $0$.
+
+Si fijamos
+
+$$
+n_0\in\mathbb N,
+$$
+
+llamaremos tramo desde $n_0$ al conjunto
+
+$$
+\mathbb N_{\ge n_0}
+=
+\{n\in\mathbb N:n\ge n_0\}.
+$$
+
+Por ejemplo,
+
+$$
+\mathbb N_{\ge4}
+=
+\{4,5,6,7,\ldots\}.
+$$
+
+Este conjunto conserva la misma forma sucesiva:
+
+$$
+4\mapsto5\mapsto6\mapsto7\mapsto\cdots.
+$$
+
+Su primer elemento ya no es $0$, sino $4$.
+
+Esta observación parece elemental, pero evita un error frecuente: pensar que cualquier argumento sobre naturales debe comenzar obligatoriamente en $0$ o en $1$.
+
+El dominio de la afirmación decide dónde comienza la obligación.
+
+Si queremos demostrar
+
+$$
+P(n)
+$$
+
+para todo
+
+$$
+n\ge n_0,
+$$
+
+los casos anteriores a $n_0$ pueden ser completamente irrelevantes.
+
+### Una propiedad indexada no es todavía una afirmación universal
+
+Volvamos ahora al lenguaje de los cuantificadores.
+
+Supongamos que $P(n)$ expresa una propiedad que depende de un natural $n$.
+
+Por ejemplo, podríamos considerar
+
+$$
+P(n):\quad n(n+1)\text{ es par}.
+$$
+
+Mientras $n$ permanece libre, $P(n)$ es una propiedad indexada: su valor de verdad depende del natural que sustituyamos por $n$.
+
+Podemos formar instancias concretas:
+
+$$
+P(0),\quad P(1),\quad P(2),\quad\ldots
+$$
+
+En nuestro ejemplo:
+
+$$
+P(0):\quad 0\cdot1\text{ es par},
+$$
+
+$$
+P(1):\quad 1\cdot2\text{ es par},
+$$
+
+$$
+P(2):\quad 2\cdot3\text{ es par}.
+$$
+
+Cada una de estas expresiones es ya una proposición.
+
+Pero el enunciado que dice que la propiedad vale para **todos** los naturales es otra proposición:
+
+$$
+\forall n\in\mathbb N\;P(n).
+$$
+
+En el ejemplo:
+
+$$
+\forall n\in\mathbb N,\quad n(n+1)\text{ es par}.
+$$
+
+Es importante no confundir
+
+$$
+P(n)
+$$
+
+con
+
+$$
+\forall n\in\mathbb N\;P(n).
+$$
+
+La primera es una propiedad cuyo índice todavía debe fijarse o cuantificarse.
+
+La segunda es una afirmación universal que abarca infinitas instancias.
+
+Esta distinción ya estaba disponible desde C03. Ahora adquirirá una función nueva: la inducción será una forma de justificar ciertas afirmaciones universales sobre familias indexadas por $\mathbb N$.
+
+### Una universal contiene infinitas obligaciones
+
+Si queremos establecer
+
+$$
+\forall n\in\mathbb N\;P(n),
+$$
+
+debemos justificar simultáneamente
+
+$$
+P(0),
+$$
+
+$$
+P(1),
+$$
+
+$$
+P(2),
+$$
+
+y así sucesivamente.
+
+No podemos completar esta tarea escribiendo una prueba separada para cada natural. No existe un “último caso” después del cual podamos detenernos.
+
+Tampoco basta verificar una cantidad muy grande de casos.
+
+Incluso si comprobamos
+
+$$
+P(0),P(1),\ldots,P(10^6),
+$$
+
+todavía quedan
+
+$$
+P(10^6+1),\quad P(10^6+2),\quad\ldots
+$$
+
+fuera de lo comprobado.
+
+Esto marca una diferencia entre
+
+$$
+\boxed{\text{muchas verificaciones particulares}}
+$$
+
+y
+
+$$
+\boxed{\text{una justificación universal}}.
+$$
+
+La inducción no será una forma elegante de abreviar un millón de comprobaciones. Tendrá que proporcionar algo que ninguna lista finita de ejemplos puede ofrecer: una razón que alcance **todos** los índices del tramo pertinente.
+
+### La regularidad que queremos explotar
+
+¿Qué característica adicional tenemos en $\mathbb N$?
+
+Los índices no están dispuestos como puntos aislados sin relación. Cada uno tiene un sucesor.
+
+Podemos representar una propiedad indexada sobre un tramo así:
+
+$$
+P(n_0),
+\quad
+P(n_0+1),
+\quad
+P(n_0+2),
+\quad
+P(n_0+3),
+\quad\ldots
+$$
+
+y colocar entre los índices la estructura sucesiva:
+
+$$
+n_0
+\longrightarrow
+n_0+1
+\longrightarrow
+n_0+2
+\longrightarrow
+n_0+3
+\longrightarrow
+\cdots.
+$$
+
+Esto sugiere una pregunta distinta de “¿puedo verificar todos los casos uno por uno?”:
+
+> **¿Existe una manera de hacer que la verdad de la propiedad se propague a lo largo de la estructura sucesiva de los índices?**
+
+Ésta es todavía una pregunta, no el principio de inducción.
+
+Para responderla necesitaremos distinguir dos tipos de información:
+
+1. una afirmación que nos permita entrar en el tramo;
+2. una afirmación que controle el paso de un índice al siguiente.
+
+La sección siguiente formalizará exactamente esa combinación.
+
+### El caso inicial depende del enunciado
+
+Supongamos que la propiedad sólo pretende valer para
+
+$$
+n\ge5.
+$$
+
+Entonces la familia relevante es
+
+$$
+P(5),P(6),P(7),\ldots
+$$
+
+y no
+
+$$
+P(0),P(1),P(2),\ldots.
+$$
+
+El primer caso pertinente es
+
+$$
+P(5).
+$$
+
+Esto puede parecer una cuestión de notación, pero no lo es.
+
+Si una futura prueba consiguiera establecer
+
+$$
+P(0)
+$$
+
+y una regla que sólo funcionara desde $n\ge5$, todavía existiría un hueco entre el caso inicial demostrado y el lugar donde la regla puede comenzar a aplicarse.
+
+De manera inversa, si el teorema sólo afirma la propiedad desde $5$, no hay motivo para exigir una demostración de $P(0)$.
+
+El rango cuantificado determina qué casos deben cubrirse.
+
+Por eso conviene escribir explícitamente:
+
+$$
+\forall n\in\mathbb N,\quad n\ge n_0\Rightarrow P(n),
+$$
+
+o, de forma abreviada cuando el contexto ya está fijado,
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+### Un índice arbitrario sigue siendo un índice concreto dentro de la prueba
+
+Hay otra distinción que necesitaremos más adelante.
+
+Cuando escribimos
+
+$$
+\forall n\ge n_0,\quad P(n),
+$$
+
+el símbolo $n$ recorre todos los índices del tramo.
+
+En una demostración, sin embargo, podemos fijar temporalmente un
+
+$$
+n\ge n_0
+$$
+
+arbitrario y estudiar la relación entre
+
+$$
+P(n)
+$$
+
+y
+
+$$
+P(n+1).
+$$
+
+Ese $n$ no representa un valor especial como $3$ o $100$. Tampoco significa que hayamos supuesto la afirmación universal.
+
+Representa un índice cualquiera dentro del rango donde queremos entender un paso general.
+
+La diferencia entre
+
+$$
+\boxed{\forall n\ge n_0\;P(n)}
+$$
+
+y
+
+$$
+\boxed{\text{fijar un }n\ge n_0\text{ y estudiar }P(n)}
+$$
+
+será esencial para comprender la hipótesis inductiva en §8.4.
+
+### El buen orden aparece ya en el horizonte
+
+La organización de $\mathbb N$ tiene otra característica que utilizaremos más adelante.
+
+Si tomamos un subconjunto no vacío de naturales, por ejemplo
+
+$$
+A=\{4,7,11,18,\ldots\},
+$$
+
+podemos preguntar por su primer elemento.
+
+En $\mathbb N$, la idea de “primer índice donde ocurre algo” tiene sentido estructural.
+
+Esto permitirá, por ejemplo, convertir una afirmación del tipo
+
+> «la propiedad falla para algún natural»
+
+en el estudio de
+
+$$
+F=\{n\in\mathbb N:\neg P(n)\}
+$$
+
+y preguntar, si $F$ no es vacío, por su menor elemento.
+
+No utilizaremos todavía este principio para demostrar nada. Su función aquí es mostrar que la estructura discreta de $\mathbb N$ permite formular dos preguntas relacionadas:
+
+- ¿cómo se propaga una propiedad hacia los sucesores?;
+- si la propiedad falla, ¿dónde aparece el primer fallo?
+
+La relación entre ambas preguntas se desarrollará en §§8.6–8.7.
+
+### Demostrar y definir son tareas diferentes
+
+Finalmente, la estructura sucesiva de los naturales no sólo puede organizar demostraciones.
+
+También puede organizar definiciones.
+
+Por ejemplo, podemos imaginar que queremos construir una función
+
+$$
+a:\mathbb N\to X.
+$$
+
+Una manera natural de hacerlo sería indicar un valor inicial
+
+$$
+a(0)
+$$
+
+y una regla que explique cómo obtener
+
+$$
+a(n+1)
+$$
+
+a partir de información anterior.
+
+Aquí la pregunta no es
+
+> «¿es verdadera una propiedad para todo $n$?»
+
+sino
+
+> «¿qué objeto queda definido en cada índice?»
+
+Éste será el territorio de la recursión.
+
+La semejanza externa entre
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+y una regla del tipo
+
+$$
+a(n+1)=F(a(n))
+$$
+
+puede ser engañosa.
+
+La primera expresión relaciona **proposiciones** dentro de una demostración.
+
+La segunda relaciona **valores** dentro de una definición.
+
+Mantener esta diferencia desde el comienzo evitará que inducción y recursión se confundan más adelante.
+
+::: {.callout-important title="Antes de hablar de inducción"}
+Sobre un tramo de naturales debemos distinguir cuatro niveles:
+
+1. el **índice** $n$;
+2. la **propiedad indexada** $P(n)$;
+3. una **instancia concreta** como $P(7)$;
+4. la **afirmación universal**
+   $$
+   \forall n\ge n_0,\quad P(n).
+   $$
+
+Comprobar muchas instancias no establece automáticamente la universal.
+
+La estructura sucesiva de $\mathbb N$ será lo que permita sustituir una lista infinita de verificaciones por una justificación estructurada.
+:::
+
+### Comprobación
+
+Considera la propiedad
+
+$$
+P(n):\quad n^2+n\text{ es par},
+$$
+
+con $n\in\mathbb N$.
+
+Explica la diferencia entre las tres expresiones siguientes:
+
+$$
+P(4),
+$$
+
+$$
+P(n),
+$$
+
+y
+
+$$
+\forall n\in\mathbb N\;P(n).
+$$
+
+¿Bastaría comprobar $P(n)$ para los primeros mil naturales para establecer la tercera?
+
+**Respuesta razonada.**
+
+La expresión
+
+$$
+P(4)
+$$
+
+es una proposición concreta:
+
+$$
+4^2+4=20
+$$
+
+es par.
+
+La expresión
+
+$$
+P(n)
+$$
+
+mantiene el índice $n$ libre. Describe una propiedad que puede evaluarse para distintos naturales, pero todavía no afirma por sí sola que todos ellos la satisfagan.
+
+En cambio,
+
+$$
+\forall n\in\mathbb N\;P(n)
+$$
+
+es una proposición universal: afirma que cada natural satisface la propiedad.
+
+Verificar los primeros mil casos sólo establece
+
+$$
+P(0),P(1),\ldots,P(999).
+$$
+
+No proporciona por sí solo información sobre
+
+$$
+P(1000),P(1001),\ldots.
+$$
+
+Por tanto, una cantidad finita de comprobaciones favorables no demuestra la afirmación universal.
+
+Lo que necesitaremos es una razón que no dependa de enumerar los casos uno por uno.
+
+### La pregunta que queda abierta
+
+Ya tenemos el problema correctamente formulado.
+
+Queremos comprender cómo demostrar una afirmación de la forma
+
+$$
+\forall n\ge n_0,\quad P(n)
+$$
+
+sin verificar separadamente infinitos casos.
+
+Sabemos además que los índices están conectados mediante
+
+$$
+n\longmapsto n+1.
+$$
+
+La pregunta natural es entonces:
+
+> **¿qué combinación de información inicial y regla de paso permite cubrir todo el tramo?**
+
+La respuesta será el principio de inducción matemática.
+
+Ése es el contenido de §8.2.
+
+## 8.2. El principio de inducción {#fnd-section-8-2}
+
+En la sección anterior dejamos planteada una pregunta precisa. Si queremos demostrar
+
+$$
+\forall n\in\mathbb N,\quad P(n),
+$$
+
+¿cómo podemos evitar una lista infinita de verificaciones separadas?
+
+La respuesta es aprovechar la estructura sucesiva de los naturales.
+
+No intentaremos demostrar de manera independiente
+
+$$
+P(0),\ P(1),\ P(2),\ P(3),\ldots
+$$
+
+En lugar de eso, buscaremos dos tipos de información:
+
+1. una afirmación que nos permita **entrar** en la cadena;
+2. una regla que nos permita **propagar** la propiedad de un índice al siguiente.
+
+Ésta es la arquitectura del principio de inducción.
+
+### Formulación del principio
+
+Sea $P(n)$ una propiedad definida para $n\in\mathbb N$.
+
+Si podemos demostrar:
+
+$$
+P(0),
+$$
+
+y además
+
+$$
+\forall n\in\mathbb N,
+\qquad
+P(n)\Rightarrow P(n+1),
+$$
+
+entonces podemos concluir
+
+$$
+\forall n\in\mathbb N,\qquad P(n).
+$$
+
+Lo escribiremos esquemáticamente como
+
+$$
+\boxed{P(0)}
+\qquad+
+\qquad
+\boxed{\forall n\in\mathbb N\;\bigl(P(n)\Rightarrow P(n+1)\bigr)}
+\qquad\Longrightarrow\qquad
+\boxed{\forall n\in\mathbb N\;P(n)}.
+$$
+
+A la primera obligación la llamamos **caso base** o **base de la inducción**.
+
+A la segunda la llamamos **paso inductivo**.
+
+Dentro del paso inductivo, cuando fijamos un $n$ arbitrario y suponemos temporalmente $P(n)$ para demostrar $P(n+1)$, la afirmación $P(n)$ recibe el nombre de **hipótesis inductiva**.
+
+La conclusión final es la afirmación universal que queríamos establecer.
+
+### La base proporciona un punto de entrada
+
+¿Por qué necesitamos demostrar $P(0)$?
+
+Porque la regla
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+no produce por sí sola ninguna instancia verdadera.
+
+Supongamos que sabemos
+
+$$
+P(0)\Rightarrow P(1),
+$$
+
+$$
+P(1)\Rightarrow P(2),
+$$
+
+$$
+P(2)\Rightarrow P(3),
+$$
+
+y así sucesivamente.
+
+Si no sabemos que alguna de las afirmaciones del comienzo es verdadera, la cadena no arranca.
+
+Por ejemplo, una implicación
+
+$$
+P(0)\Rightarrow P(1)
+$$
+
+puede ser verdadera incluso si tanto $P(0)$ como $P(1)$ son falsas.
+
+Por eso el paso inductivo no sustituye al caso base.
+
+La base afirma que existe un primer punto de la cadena en el que la propiedad está efectivamente establecida.
+
+### El paso proporciona propagación
+
+La base tampoco basta por sí sola.
+
+Demostrar
+
+$$
+P(0)
+$$
+
+sólo demuestra una instancia.
+
+Para llegar al resto necesitamos una regla que funcione uniformemente.
+
+El paso inductivo exige demostrar
+
+$$
+\forall n\in\mathbb N,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+La palabra **para todo** es decisiva.
+
+No alcanza con comprobar, por ejemplo,
+
+$$
+P(0)\Rightarrow P(1),
+$$
+
+$$
+P(1)\Rightarrow P(2),
+$$
+
+$$
+P(2)\Rightarrow P(3).
+$$
+
+Eso seguiría siendo una colección finita de casos.
+
+Necesitamos una razón que funcione para un índice natural arbitrario.
+
+Podemos imaginar entonces la combinación:
+
+$$
+P(0)
+\Rightarrow
+P(1)
+\Rightarrow
+P(2)
+\Rightarrow
+P(3)
+\Rightarrow
+\cdots.
+$$
+
+La base legitima el primer eslabón disponible.
+
+El paso inductivo garantiza que cada eslabón verdadero permite alcanzar el siguiente.
+
+### Ninguna de las dos partes puede omitirse
+
+Conviene separar tres situaciones.
+
+**Sólo base.**
+
+Sabemos
+
+$$
+P(0),
+$$
+
+pero no poseemos una regla que conecte $P(n)$ con $P(n+1)$.
+
+Entonces no sabemos nada, en general, sobre $P(1),P(2),\ldots$.
+
+**Sólo paso.**
+
+Sabemos
+
+$$
+\forall n\in\mathbb N,
+\qquad
+P(n)\Rightarrow P(n+1),
+$$
+
+pero no sabemos que $P(0)$ sea verdadera.
+
+Entonces la regla puede estar perfectamente demostrada y, aun así, no proporcionar ninguna instancia verdadera.
+
+**Base y paso.**
+
+Cuando ambas piezas están disponibles, podemos avanzar:
+
+$$
+P(0),
+$$
+
+por el paso con $n=0$ obtenemos
+
+$$
+P(1),
+$$
+
+por el paso con $n=1$ obtenemos
+
+$$
+P(2),
+$$
+
+y el mismo mecanismo continúa a lo largo de todos los naturales.
+
+La inducción no consiste en escribir efectivamente esta cadena infinita. El principio nos autoriza a concluir de una vez que toda la cadena queda cubierta.
+
+::: {.callout-important title="Base + propagación"}
+Una prueba por inducción combina dos obligaciones distintas:
+
+$$
+\boxed{\text{entrada}}
+\qquad+
+\qquad
+\boxed{\text{propagación}}
+\qquad\Longrightarrow\qquad
+\boxed{\text{cobertura universal}}.
+$$
+
+La base establece el primer caso del tramo.
+
+El paso demuestra una regla uniforme que lleva de un caso al siguiente.
+
+Ninguna de las dos partes, tomada aisladamente, produce la conclusión universal.
+:::
+
+### Un ejemplo completo
+
+Demostremos que para todo $n\in\mathbb N$,
+
+$$
+2^n\ge n+1.
+$$
+
+Definimos la propiedad
+
+$$
+P(n):\quad 2^n\ge n+1.
+$$
+
+Queremos establecer
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+#### Caso base
+
+Para $n=0$,
+
+$$
+2^0=1
+$$
+
+y
+
+$$
+0+1=1.
+$$
+
+Por tanto,
+
+$$
+2^0\ge0+1.
+$$
+
+Así, $P(0)$ es verdadera.
+
+#### Paso inductivo
+
+Sea $n\in\mathbb N$ arbitrario y supongamos
+
+$$
+P(n),
+$$
+
+es decir,
+
+$$
+2^n\ge n+1.
+$$
+
+Debemos demostrar
+
+$$
+P(n+1),
+$$
+
+que en este caso significa
+
+$$
+2^{n+1}\ge n+2.
+$$
+
+A partir de la hipótesis inductiva,
+
+$$
+2^n\ge n+1,
+$$
+
+multiplicamos por $2>0$:
+
+$$
+2^{n+1}\ge2n+2.
+$$
+
+Como $n\ge0$,
+
+$$
+2n+2\ge n+2.
+$$
+
+Por transitividad,
+
+$$
+2^{n+1}\ge n+2.
+$$
+
+Así hemos demostrado
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+para un $n\in\mathbb N$ arbitrario.
+
+Por el principio de inducción,
+
+$$
+\boxed{2^n\ge n+1\text{ para todo }n\in\mathbb N}.
+$$
+
+### La arquitectura y el contenido siguen siendo distintos
+
+El principio de inducción nos dice **qué obligaciones debe cumplir la prueba**:
+
+$$
+\text{base}
+\qquad+
+\qquad
+\text{paso}
+\qquad\Longrightarrow\qquad
+\text{conclusión universal}.
+$$
+
+Pero no nos dice automáticamente cómo demostrar el paso.
+
+En el ejemplo anterior, la parte específicamente matemática fue reconocer que
+
+$$
+2^{n+1}=2\cdot2^n
+$$
+
+y que la hipótesis
+
+$$
+2^n\ge n+1
+$$
+
+podía combinarse con
+
+$$
+2n+2\ge n+2.
+$$
+
+Otra propiedad $P(n)$ requerirá otra idea.
+
+Esto conecta C08 con la distinción ya desarrollada entre arquitectura y contenido: saber que una prueba debe ser inductiva no significa haber encontrado todavía el argumento inductivo.
+
+### Qué significa realmente "suponer $P(n)$"
+
+En el paso acabamos de escribir:
+
+> sea $n\in\mathbb N$ arbitrario y supongamos $P(n)$.
+
+Esa frase puede parecer sospechosa al principio.
+
+¿No estamos suponiendo precisamente lo que queremos demostrar?
+
+No.
+
+El objetivo global es
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+Dentro del paso no suponemos esa afirmación universal.
+
+Suponemos temporalmente, para un índice arbitrario pero fijo,
+
+$$
+P(n),
+$$
+
+con el único objetivo de demostrar la implicación
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+La diferencia lógica es
+
+$$
+\boxed{\forall n\;P(n)}
+\qquad\neq\qquad
+\boxed{\forall n\;\bigl(P(n)\Rightarrow P(n+1)\bigr)}.
+$$
+
+En §8.4 estudiaremos esta distinción con más detalle y veremos varios usos incorrectos de la hipótesis inductiva.
+
+### La conclusión no es sólo el caso siguiente
+
+Otro error frecuente consiste en terminar el paso después de demostrar
+
+$$
+P(n+1)
+$$
+
+y creer que ésa es la conclusión del teorema.
+
+No lo es.
+
+Demostrar
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+establece la regla de propagación.
+
+La conclusión que autoriza el principio, después de haber verificado también la base, es
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+Por eso una prueba inductiva tiene tres niveles que no deben mezclarse:
+
+$$
+\begin{array}{ccl}
+\text{base} &:& P(0),\\
+\text{paso} &:& \forall n\in\mathbb N\;\bigl(P(n)\Rightarrow P(n+1)\bigr),\\
+\text{conclusión} &:& \forall n\in\mathbb N\;P(n).
+\end{array}
+$$
+
+### Comprobación
+
+Supón que una propiedad $Q(n)$ está definida para todos los naturales y que has demostrado:
+
+$$
+Q(0)
+$$
+
+y
+
+$$
+\forall n\in\mathbb N,\qquad Q(n)\Rightarrow Q(n+1).
+$$
+
+Un compañero afirma que todavía habría que demostrar por separado
+
+$$
+Q(1),Q(2),Q(3),\ldots
+$$
+
+antes de poder concluir que $Q(n)$ vale para todo natural.
+
+¿Tiene razón? Explica exactamente qué papel cumple cada una de las dos premisas.
+
+**Respuesta razonada.**
+
+No.
+
+La primera premisa,
+
+$$
+Q(0),
+$$
+
+proporciona el punto de entrada.
+
+La segunda,
+
+$$
+\forall n\in\mathbb N,\qquad Q(n)\Rightarrow Q(n+1),
+$$
+
+proporciona una regla de propagación válida para cualquier índice natural.
+
+En particular, como $Q(0)$ es verdadera, el paso con $n=0$ da $Q(1)$. Después, como $Q(1)$ es verdadera, el paso con $n=1$ da $Q(2)$, y así sucesivamente.
+
+El principio de inducción afirma precisamente que no necesitamos ejecutar esta cadena como una lista infinita de pruebas separadas. La combinación de base y paso basta para concluir
+
+$$
+\forall n\in\mathbb N,\quad Q(n).
+$$
+
+La base sin el paso sólo cubriría un caso; el paso sin la base no proporcionaría un caso verdadero desde el cual comenzar.
+
+### Lo que todavía no hemos variado
+
+Hasta aquí hemos formulado la inducción con la convención canónica del capítulo:
+
+$$
+\mathbb N=\{0,1,2,\ldots\}
+$$
+
+y hemos usado como base
+
+$$
+P(0).
+$$
+
+Pero muchas afirmaciones matemáticas comienzan en otro índice.
+
+Podemos querer demostrar, por ejemplo,
+
+$$
+\forall n\ge5,\quad P(n).
+$$
+
+En ese caso no debemos insertar mecánicamente una base en $0$.
+
+La siguiente sección estudiará cómo se desplaza correctamente toda la arquitectura inductiva cuando el tramo empieza en un índice $n_0$ distinto de $0$.
+
+## 8.3. Empezar en otro índice {#fnd-section-8-3}
+
+La formulación de §8.2 comenzó en $0$ porque hemos fijado
+
+$$
+\mathbb N=\{0,1,2,\ldots\}.
+$$
+
+Pero el principio de inducción no está ligado al número $0$.
+
+Una afirmación puede pretender valer sólo a partir de cierto índice
+
+$$
+n_0\in\mathbb N.
+$$
+
+En ese caso el dominio real del teorema es
+
+$$
+\mathbb N_{\ge n_0}
+=
+\{n\in\mathbb N:n\ge n_0\},
+$$
+
+y la arquitectura inductiva debe comenzar precisamente allí.
+
+### La forma desplazada del principio
+
+Sea $P(n)$ una propiedad de los naturales. Supongamos que la afirmación que queremos demostrar sólo pretende cubrir el tramo $n\ge n_0$.
+
+Si demostramos
+
+$$
+P(n_0)
+$$
+
+y además
+
+$$
+\forall n\ge n_0,
+\qquad
+P(n)\Rightarrow P(n+1),
+$$
+
+entonces podemos concluir
+
+$$
+\forall n\ge n_0,
+\qquad
+P(n).
+$$
+
+La estructura es exactamente la misma que antes:
+
+$$
+\boxed{P(n_0)}
+\qquad+
+\qquad
+\boxed{\forall n\ge n_0\;\bigl(P(n)\Rightarrow P(n+1)\bigr)}
+\qquad\Longrightarrow\qquad
+\boxed{\forall n\ge n_0\;P(n)}.
+$$
+
+Sólo ha cambiado el punto de entrada.
+
+Esto significa que la base correcta no se elige por costumbre. Se lee en el propio enunciado.
+
+Si el teorema afirma algo para
+
+$$
+n\ge 3,
+$$
+
+la primera obligación es $P(3)$.
+
+Si afirma algo para
+
+$$
+n\ge 12,
+$$
+
+la primera obligación es $P(12)$.
+
+El índice inicial es parte de la información matemática del teorema.
+
+### Un ejemplo que no comienza en cero
+
+Consideremos la propiedad
+
+$$
+P(n):\quad n^2\ge 2n+1.
+$$
+
+No es verdadera para todos los naturales.
+
+En efecto,
+
+$$
+P(0):\quad 0\ge1
+$$
+
+es falsa,
+
+$$
+P(1):\quad 1\ge3
+$$
+
+es falsa, y
+
+$$
+P(2):\quad 4\ge5
+$$
+
+es falsa.
+
+En cambio,
+
+$$
+P(3):\quad 9\ge7
+$$
+
+es verdadera.
+
+El enunciado correcto que estudiaremos es, por tanto,
+
+$$
+\forall n\ge3,
+\qquad
+n^2\ge2n+1.
+$$
+
+#### Caso base
+
+Para $n=3$,
+
+$$
+3^2=9
+$$
+
+y
+
+$$
+2\cdot3+1=7.
+$$
+
+Por tanto,
+
+$$
+3^2\ge2\cdot3+1.
+$$
+
+Así, $P(3)$ es verdadera.
+
+#### Paso inductivo
+
+Sea $n\ge3$ y supongamos
+
+$$
+P(n),
+$$
+
+es decir,
+
+$$
+n^2\ge2n+1.
+$$
+
+Queremos demostrar
+
+$$
+P(n+1),
+$$
+
+que significa
+
+$$
+(n+1)^2\ge2(n+1)+1.
+$$
+
+Partimos de
+
+$$
+(n+1)^2=n^2+2n+1.
+$$
+
+Usando la hipótesis inductiva,
+
+$$
+n^2\ge2n+1,
+$$
+
+obtenemos
+
+$$
+(n+1)^2
+\ge
+(2n+1)+2n+1
+=
+4n+2.
+$$
+
+Como $n\ge3$, en particular
+
+$$
+2n-1\ge0,
+$$
+
+y por tanto
+
+$$
+4n+2\ge2n+3.
+$$
+
+Pero
+
+$$
+2n+3=2(n+1)+1.
+$$
+
+Así,
+
+$$
+(n+1)^2\ge2(n+1)+1.
+$$
+
+Hemos probado
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+para todo $n\ge3$.
+
+Por inducción desde $3$,
+
+$$
+\boxed{n^2\ge2n+1\text{ para todo }n\ge3}.
+$$
+
+Este ejemplo muestra por qué no debemos exigir una base en $0$: la afirmación que queremos demostrar ni siquiera es verdadera allí.
+
+### La base debe pertenecer al dominio real del teorema
+
+Supongamos que nuestro objetivo es
+
+$$
+\forall n\ge5,\quad P(n).
+$$
+
+Demostrar $P(0)$ no cumple la obligación de base de este argumento.
+
+Incluso si $P(0)$ fuese verdadera, el paso podría estar disponible únicamente para
+
+$$
+n\ge5.
+$$
+
+Entonces conoceríamos
+
+$$
+P(0)
+$$
+
+y
+
+$$
+P(5)\Rightarrow P(6),
+\quad
+P(6)\Rightarrow P(7),
+\quad\ldots,
+$$
+
+pero no tendríamos ninguna cadena que conectara $P(0)$ con $P(5)$.
+
+La base no es simplemente “algún caso verdadero”.
+
+Debe ser un caso desde el cual la regla de propagación pueda comenzar a recorrer exactamente el tramo que queremos cubrir.
+
+### Base y paso deben conectarse sin huecos
+
+También podemos equivocarnos aunque hayamos elegido un índice cercano al correcto.
+
+Supongamos nuevamente que queremos demostrar
+
+$$
+\forall n\ge3,\quad P(n).
+$$
+
+Consideremos dos conjuntos de información.
+
+**Primera situación:**
+
+$$
+P(4)
+$$
+
+y
+
+$$
+\forall n\ge4,\quad P(n)\Rightarrow P(n+1).
+$$
+
+Esto permite concluir
+
+$$
+P(4),P(5),P(6),\ldots
+$$
+
+pero no establece $P(3)$.
+
+Hemos demostrado una afirmación sobre un tramo más corto:
+
+$$
+\forall n\ge4,\quad P(n).
+$$
+
+**Segunda situación:**
+
+$$
+P(3)
+$$
+
+y
+
+$$
+\forall n\ge4,\quad P(n)\Rightarrow P(n+1).
+$$
+
+Ahora sí tenemos la base correcta, pero falta el enlace
+
+$$
+P(3)\Rightarrow P(4).
+$$
+
+La regla de propagación comienza demasiado tarde.
+
+Por tanto, una prueba inductiva debe pasar una prueba de continuidad lógica:
+
+$$
+\boxed{\text{base}}
+\longrightarrow
+\boxed{\text{primer paso disponible}}
+\longrightarrow
+\boxed{\text{todos los sucesores del tramo}}.
+$$
+
+Si queda un hueco entre la base y el rango del paso, la inducción no cubre el dominio anunciado.
+
+### La forma con cuantificadores
+
+La abreviatura
+
+$$
+\forall n\ge n_0,\quad P(n)
+$$
+
+puede leerse como una cuantificación sobre el dominio restringido
+
+$$
+\mathbb N_{\ge n_0}.
+$$
+
+Si $P(n)$ está definida para todo $n\in\mathbb N$, podemos expandir esa restricción como
+
+$$
+\forall n\in\mathbb N,
+\qquad
+n\ge n_0\Rightarrow P(n).
+$$
+
+Del mismo modo, cuando $P$ tiene sentido en todo $\mathbb N$, el paso desplazado puede escribirse como
+
+$$
+\forall n\in\mathbb N,
+\qquad
+n\ge n_0
+\Rightarrow
+\bigl(P(n)\Rightarrow P(n+1)\bigr).
+$$
+
+Si $P$ sólo está formulada sobre $\mathbb N_{\ge n_0}$, conservaremos en cambio la notación restringida y no evaluaremos $P(n)$ fuera de su dominio.
+
+Esto hace visible que la restricción
+
+$$
+n\ge n_0
+$$
+
+forma parte de la hipótesis bajo la cual exigimos el paso.
+
+No afirmamos necesariamente nada sobre
+
+$$
+P(0),P(1),\ldots,P(n_0-1).
+$$
+
+Esos casos están fuera del dominio de la conclusión.
+
+### Inducción desde $n_0$ no es un principio nuevo
+
+La forma desplazada puede reducirse a la inducción ordinaria de §8.2.
+
+Definamos, para $k\in\mathbb N$,
+
+$$
+Q(k):=P(n_0+k).
+$$
+
+La base de $Q$ es
+
+$$
+Q(0)=P(n_0).
+$$
+
+Ahora supongamos $Q(k)$ para un $k\in\mathbb N$. Esto significa
+
+$$
+P(n_0+k).
+$$
+
+Como
+
+$$
+n_0+k\ge n_0,
+$$
+
+podemos aplicar el paso desplazado y obtener
+
+$$
+P(n_0+k+1).
+$$
+
+Pero esto es exactamente
+
+$$
+Q(k+1).
+$$
+
+Por la inducción ordinaria,
+
+$$
+Q(k)
+$$
+
+vale para todo $k\in\mathbb N$.
+
+Es decir,
+
+$$
+P(n_0+k)
+$$
+
+vale para todo $k\in\mathbb N$.
+
+Y todo natural $n\ge n_0$ puede escribirse como
+
+$$
+n=n_0+k
+$$
+
+con
+
+$$
+k=n-n_0\in\mathbb N.
+$$
+
+Por tanto,
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+La “inducción desde $n_0$” es la misma estructura vista después de cambiar el origen de los índices.
+
+::: {.callout-important title="El primer índice no es decoración"}
+Para demostrar
+
+$$
+\forall n\ge n_0,\quad P(n),
+$$
+
+la arquitectura correcta es
+
+$$
+P(n_0)
+$$
+
+y
+
+$$
+\forall n\ge n_0,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+La base debe pertenecer al dominio real del teorema y el paso debe comenzar exactamente donde esa base puede activarlo.
+
+Si el paso empieza más tarde o la base pertenece a otro tramo, hay que localizar y justificar explícitamente el hueco restante.
+:::
+
+### Comprobación
+
+Quieres demostrar
+
+$$
+\forall n\ge6,\quad P(n).
+$$
+
+Has conseguido demostrar
+
+$$
+P(6)
+$$
+
+y
+
+$$
+\forall n\ge7,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+¿Basta esta información para aplicar directamente la inducción desde $6$? Si no basta, identifica exactamente qué falta y da dos maneras de reparar el argumento.
+
+**Respuesta razonada.**
+
+No basta.
+
+La base
+
+$$
+P(6)
+$$
+
+es correcta, pero la regla disponible sólo empieza en
+
+$$
+n=7.
+$$
+
+Por tanto, conocemos
+
+$$
+P(7)\Rightarrow P(8),
+\quad
+P(8)\Rightarrow P(9),
+\quad\ldots,
+$$
+
+pero todavía no hemos justificado
+
+$$
+P(6)\Rightarrow P(7).
+$$
+
+El hueco está exactamente entre $6$ y $7$.
+
+Una primera reparación consiste en fortalecer el paso y demostrar
+
+$$
+\forall n\ge6,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+Entonces $P(6)$ activa inmediatamente la propagación.
+
+Una segunda reparación consiste en demostrar $P(7)$ por separado. Después podemos usar $P(7)$ como base de una inducción que cubra
+
+$$
+n\ge7,
+$$
+
+y combinar ese resultado con el caso ya demostrado $P(6)$.
+
+En ambos casos desaparece el hueco. Lo importante no es que la palabra “base” aparezca en la prueba, sino que la cadena de cobertura alcance efectivamente todos los índices anunciados.
+
+### La próxima dificultad no es el índice
+
+Ya sabemos adaptar la base al dominio correcto.
+
+Pero incluso con el índice inicial bien elegido puede persistir una duda más profunda.
+
+En el paso inductivo escribimos
+
+$$
+\text{“supongamos }P(n)\text{ y demostremos }P(n+1)\text{”.}
+$$
+
+¿Por qué esa suposición es legítima?
+
+¿Qué podemos hacer con ella?
+
+¿Y en qué momento un uso descuidado de $P(n)$ sí produciría circularidad?
+
+Éstas serán las preguntas de §8.4.
+
+## 8.4. La hipótesis inductiva: uso y límites {#fnd-section-8-4}
+
+En una prueba por inducción hay una frase que merece una atención especial:
+
+> supongamos que $P(n)$ es verdadera.
+
+A primera vista puede parecer que estamos suponiendo exactamente lo que queremos demostrar. Si el objetivo global es
+
+$$
+\forall n\ge n_0,\quad P(n),
+$$
+
+¿cómo puede ser legítimo escribir $P(n)$ como hipótesis?
+
+La respuesta está en distinguir con precisión **qué afirmación estamos demostrando en cada nivel**.
+
+### El paso inductivo es una implicación
+
+Dentro del paso inductivo no intentamos demostrar todavía
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+Intentamos demostrar otra afirmación:
+
+$$
+\forall n\ge n_0,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+Para probar una implicación
+
+$$
+A\Rightarrow B,
+$$
+
+la arquitectura directa de C06 permite suponer temporalmente $A$ y, bajo esa suposición, demostrar $B$.
+
+Aquí hacemos exactamente lo mismo.
+
+Fijamos un índice arbitrario
+
+$$
+n\ge n_0,
+$$
+
+suponemos
+
+$$
+P(n),
+$$
+
+y tratamos de obtener
+
+$$
+P(n+1).
+$$
+
+Si lo conseguimos, hemos probado la implicación
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+para ese índice arbitrario. Como $n$ no tenía ninguna característica especial, queda establecida la regla universal de propagación.
+
+La hipótesis inductiva es, por tanto, la **hipótesis local de una prueba condicional**.
+
+No es la conclusión universal.
+
+### Tres afirmaciones que no deben confundirse
+
+Conviene colocar juntas las tres piezas:
+
+$$
+\boxed{P(n)}
+$$
+
+es la hipótesis inductiva para un índice arbitrario pero fijo;
+
+$$
+\boxed{P(n)\Rightarrow P(n+1)}
+$$
+
+es la implicación que debemos demostrar en el paso;
+
+$$
+\boxed{\forall k\ge n_0,\quad P(k)}
+$$
+
+es la conclusión global que sólo podremos obtener después de combinar base y paso mediante el principio de inducción.
+
+El cambio de letra en la última expresión es deliberado. Ayuda a recordar que el $n$ usado dentro del paso tiene alcance local. La conclusión final habla de **todos** los índices del tramo.
+
+### La hipótesis inductiva tiene un alcance limitado
+
+Supongamos que estamos probando por inducción
+
+$$
+\forall n\ge2,\quad P(n).
+$$
+
+En el paso podemos escribir:
+
+> Sea $n\ge2$ arbitrario. Supongamos $P(n)$. Demostraremos $P(n+1)$.
+
+Durante ese argumento podemos utilizar:
+
+- $P(n)$;
+- las hipótesis generales del teorema, si las hay;
+- resultados ya demostrados anteriormente;
+- hechos algebraicos o lógicos disponibles.
+
+Pero no podemos utilizar gratuitamente
+
+$$
+P(n+1),
+$$
+
+porque ésa es justamente la conclusión local del paso.
+
+Tampoco podemos utilizar
+
+$$
+\forall k\ge2,\quad P(k),
+$$
+
+porque ésa es la conclusión global que todavía estamos intentando establecer.
+
+En otras palabras, la hipótesis inductiva concede exactamente
+
+$$
+P(n),
+$$
+
+no una licencia para usar cualquier instancia futura de la propiedad.
+
+### Un uso legítimo de la hipótesis inductiva
+
+Consideremos la afirmación
+
+$$
+P(n):\quad 6\mid 7^n-1,
+$$
+
+para $n\in\mathbb N$.
+
+El caso base es inmediato:
+
+$$
+7^0-1=0,
+$$
+
+que es divisible por $6$.
+
+Para el paso inductivo, fijemos $n\in\mathbb N$ y supongamos
+
+$$
+6\mid 7^n-1.
+$$
+
+Esta hipótesis no es sólo una etiqueta. Debemos convertirla en información utilizable. Por definición de divisibilidad, existe un entero $k$ tal que
+
+$$
+7^n-1=6k.
+$$
+
+Ahora observamos que
+
+$$
+7^{n+1}-1
+=
+7\cdot 7^n-1.
+$$
+
+Reescribimos:
+
+$$
+7^{n+1}-1
+=
+7(7^n-1)+6.
+$$
+
+Usando la hipótesis inductiva,
+
+$$
+7^{n+1}-1
+=
+7(6k)+6
+=
+6(7k+1).
+$$
+
+Como $7k+1$ es un entero,
+
+$$
+6\mid 7^{n+1}-1.
+$$
+
+Así hemos demostrado
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+Aquí puede señalarse exactamente dónde se usó la hipótesis inductiva: en la sustitución
+
+$$
+7^n-1=6k.
+$$
+
+Una buena prueba inductiva permite localizar ese punto.
+
+### La hipótesis debe transformarse, no sólo mencionarse
+
+Un defecto frecuente consiste en escribir algo como:
+
+> Por hipótesis inductiva, $P(n)$ es verdadera. Entonces claramente $P(n+1)$ también es verdadera.
+
+Esto no demuestra el paso.
+
+La hipótesis inductiva sólo tiene valor matemático cuando podemos explicar **qué información concreta aporta** y **cómo esa información contribuye al objetivo $P(n+1)$**.
+
+En el ejemplo anterior, la cadena fue:
+
+$$
+6\mid 7^n-1
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+7^n-1=6k
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+7^{n+1}-1=6(7k+1)
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+6\mid 7^{n+1}-1.
+$$
+
+La hipótesis no funciona por proximidad notacional entre $n$ y $n+1$. Tiene que existir un argumento que conecte ambas instancias.
+
+### Cuándo aparece circularidad
+
+Ahora podemos identificar con precisión varios usos ilegítimos.
+
+#### 1. Suponer directamente el objetivo local
+
+Si queremos demostrar
+
+$$
+P(n+1)
+$$
+
+y escribimos
+
+> Supongamos que $P(n+1)$ es verdadera.
+
+sin estar dentro de una prueba por contradicción u otra arquitectura que lo justifique, hemos supuesto la conclusión que queríamos obtener.
+
+Eso es circular.
+
+#### 2. Usar la conclusión universal dentro del paso
+
+Si durante el paso escribimos
+
+$$
+\forall k\ge n_0,\quad P(k),
+$$
+
+y luego tomamos $k=n+1$, obtenemos inmediatamente $P(n+1)$.
+
+Pero la afirmación universal es precisamente el teorema completo que tratamos de demostrar.
+
+Utilizarla en el paso equivale a dar por demostrado el resultado global.
+
+#### 3. Cambiar el índice de la hipótesis sin justificación
+
+De
+
+$$
+P(n)
+$$
+
+no podemos pasar simplemente a
+
+$$
+P(n+1)
+$$
+
+sustituyendo $n$ por $n+1$.
+
+La hipótesis inductiva no es una afirmación universal en la variable $n$. Es una afirmación asumida para el índice arbitrario que hemos fijado dentro del paso.
+
+Precisamente la tarea del paso consiste en justificar el tránsito
+
+$$
+P(n)\longrightarrow P(n+1).
+$$
+
+### Una distinción sutil: no usar la hipótesis no siempre es un error
+
+Supongamos que durante el paso conseguimos demostrar $P(n+1)$ sin utilizar $P(n)$ en absoluto.
+
+¿La prueba es incorrecta?
+
+No necesariamente.
+
+Si el argumento demuestra $P(n+1)$ a partir de hechos independientes de la hipótesis inductiva, entonces hemos demostrado algo incluso más fuerte que la implicación condicional necesaria.
+
+En efecto, si $P(n+1)$ puede establecerse directamente para un $n$ arbitrario, entonces ciertamente
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+es verdadera.
+
+Lo que ocurre es distinto: **la inducción era innecesaria**.
+
+Esto proporciona una buena regla diagnóstica:
+
+- si la hipótesis inductiva no aparece porque hemos encontrado una prueba directa más fuerte, no hay error lógico;
+- si la hipótesis inductiva no aparece porque hemos omitido el único puente disponible hacia $P(n+1)$, el paso está incompleto.
+
+La ausencia de uso de la hipótesis es, por tanto, una señal que debe interpretarse, no una falacia automática.
+
+### El supuesto se descarga al terminar el paso
+
+La hipótesis inductiva tampoco permanece disponible después del paso como una afirmación demostrada de manera independiente.
+
+El esquema lógico es:
+
+$$
+\begin{array}{l}
+\text{Sea }n\ge n_0\text{ arbitrario}.\\[2mm]
+\quad \text{Supongamos }P(n).\\
+\quad \vdots\\
+\quad \text{Demostramos }P(n+1).\\[2mm]
+\text{Por tanto }P(n)\Rightarrow P(n+1).
+\end{array}
+$$
+
+Al llegar a la última línea, la suposición local $P(n)$ ha sido **descargada**: lo que queda demostrado es la implicación.
+
+Después universalizamos sobre el índice arbitrario:
+
+$$
+\forall n\ge n_0,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+Sólo entonces, junto con la base, invocamos el principio de inducción para obtener la conclusión global.
+
+Esta secuencia de dependencias puede representarse así:
+
+$$
+\boxed{P(n_0)}
+\qquad+
+\qquad
+\boxed{
+\begin{array}{c}
+P(n)\ \text{[supuesto local]}\\
+\Downarrow\\
+P(n+1)
+\end{array}}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\forall n\ge n_0\;\bigl(P(n)\Rightarrow P(n+1)\bigr)}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\forall n\ge n_0\;P(n)}.
+$$
+
+::: {.callout-important title="Alcance de la hipótesis inductiva"}
+La hipótesis inductiva no dice
+
+$$
+\forall k\ge n_0,\quad P(k).
+$$
+
+Dentro del paso dice únicamente:
+
+$$
+\text{para este }n\text{ arbitrario y fijo, supongamos }P(n).
+$$
+
+Su función es demostrar la implicación
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+Es legítima porque estamos probando una condicional. Se vuelve circular si utilizamos sin justificación $P(n+1)$ o la conclusión universal antes de haberlas demostrado.
+:::
+
+### Comprobación
+
+Quieres demostrar por inducción una propiedad $P(n)$ para todo $n\ge1$. En el paso inductivo, un borrador contiene estas cuatro líneas:
+
+1. Sea $n\ge1$ arbitrario.
+2. Supongamos $P(n)$.
+3. Como el teorema dice que $P(k)$ vale para todo $k\ge1$, tomando $k=n+1$ tenemos $P(n+1)$.
+4. Por tanto, el paso inductivo está demostrado.
+
+Localiza exactamente el error. ¿Por qué la línea 2 sí es legítima pero la línea 3 no lo es?
+
+**Respuesta razonada.**
+
+La línea 2 es legítima porque el paso inductivo tiene como objetivo demostrar la implicación
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+Para probar esa implicación podemos suponer temporalmente su antecedente $P(n)$.
+
+La línea 3, en cambio, utiliza
+
+$$
+\forall k\ge1,\quad P(k),
+$$
+
+que es precisamente la conclusión global del teorema que todavía no ha sido demostrada.
+
+Al tomar $k=n+1$ se obtiene el objetivo local sólo porque se ha supuesto de antemano el resultado universal completo.
+
+Por tanto, el argumento es circular.
+
+La reparación no consiste en eliminar la hipótesis inductiva, sino en conservar $P(n)$ y encontrar una cadena matemática independiente que, a partir de esa información y de resultados previamente disponibles, conduzca a $P(n+1)$.
+
+### De una hipótesis a varias
+
+La inducción ordinaria concede, en el paso, una sola instancia previa:
+
+$$
+P(n).
+$$
+
+Hay problemas en los que para demostrar $P(n+1)$ resulta natural necesitar información sobre más de un índice anterior, por ejemplo
+
+$$
+P(n),\quad P(n-1),\quad P(n-2).
+$$
+
+Intentar forzar toda esa información dentro de una única hipótesis $P(n)$ puede volver artificial la prueba.
+
+La siguiente sección estudia una formulación en la que el paso puede utilizar todas las instancias anteriores pertinentes.
+
+Ése será el principio de **inducción fuerte**.
+
+## 8.5. Inducción fuerte {#fnd-section-8-5}
+
+En la inducción ordinaria, el paso tiene la forma
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+La información inductiva disponible es, por tanto, una sola instancia previa:
+
+$$
+P(n).
+$$
+
+Pero hay situaciones en las que el caso siguiente no depende de manera natural del caso inmediatamente anterior. Para demostrar $P(n+1)$ quizá necesitemos una afirmación sobre
+
+$$
+P(n-1),
+$$
+
+o sobre varios índices anteriores a la vez.
+
+La **inducción fuerte** organiza precisamente esa situación.
+
+### La forma fuerte del paso
+
+Sea $P(n)$ una propiedad que queremos demostrar para todos los naturales
+
+$$
+n\ge n_0.
+$$
+
+En la forma ordinaria intentaríamos probar
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+En la forma fuerte podemos suponer, para un índice arbitrario $n\ge n_0$, que todas las instancias anteriores del tramo son verdaderas:
+
+$$
+P(n_0),P(n_0+1),\ldots,P(n).
+$$
+
+Bajo esa hipótesis debemos demostrar
+
+$$
+P(n+1).
+$$
+
+Esquemáticamente:
+
+$$
+\boxed{P(n_0),P(n_0+1),\ldots,P(n)}
+\quad\Longrightarrow\quad
+\boxed{P(n+1)}.
+$$
+
+La conclusión final sigue siendo exactamente la misma:
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+Por eso la palabra **fuerte** puede ser engañosa si se interpreta mal.
+
+No estamos intentando demostrar una afirmación más fuerte.
+
+Lo que se fortalece es la **hipótesis local disponible durante el paso**.
+
+### Formulación del principio
+
+Una forma básica del principio de inducción fuerte es la siguiente.
+
+Sea $P(n)$ una propiedad de los naturales y supongamos que queremos demostrarla para todo $n\ge n_0$. Supongamos que:
+
+1. $P(n_0)$ es verdadera;
+2. para todo $n\ge n_0$, si
+
+   $$
+   P(k)
+   $$
+
+   es verdadera para cada $k$ con
+
+   $$
+   n_0\le k\le n,
+   $$
+
+   entonces $P(n+1)$ es verdadera.
+
+Entonces
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+Podemos escribir el paso de manera compacta como
+
+$$
+\left[
+\forall k\in\mathbb N,
+\quad
+n_0\le k\le n\Rightarrow P(k)
+\right]
+\Rightarrow
+P(n+1).
+$$
+
+La expresión entre corchetes es la **hipótesis inductiva fuerte**.
+
+Su alcance sigue siendo local: se supone para demostrar el paso correspondiente a un índice arbitrario $n$.
+
+No estamos suponiendo de antemano
+
+$$
+\forall k\ge n_0,\quad P(k).
+$$
+
+Sólo suponemos las instancias comprendidas entre el inicio del tramo y el índice actual.
+
+### Qué información adicional obtenemos
+
+Comparemos las dos formas.
+
+En inducción ordinaria, para demostrar $P(n+1)$ disponemos de
+
+$$
+\boxed{P(n)}.
+$$
+
+En inducción fuerte, para demostrar $P(n+1)$ disponemos de
+
+$$
+\boxed{P(n_0),P(n_0+1),\ldots,P(n)}.
+$$
+
+La segunda caja contiene la primera, pero también contiene información sobre índices anteriores.
+
+Eso permite, por ejemplo, utilizar legítimamente
+
+$$
+P(n-2)
+$$
+
+si
+
+$$
+n-2\ge n_0.
+$$
+
+En una inducción ordinaria, $P(n-2)$ no forma parte automáticamente de la hipótesis inductiva local.
+
+### Un ejemplo donde conviene mirar más atrás
+
+Demostremos que todo entero
+
+$$
+n\ge8
+$$
+
+puede escribirse en la forma
+
+$$
+n=3a+5b
+$$
+
+para ciertos
+
+$$
+a,b\in\mathbb N.
+$$
+
+Definamos
+
+$$
+P(n):\quad \exists a,b\in\mathbb N\text{ tales que }n=3a+5b.
+$$
+
+Nuestro objetivo es
+
+$$
+\forall n\ge8,\quad P(n).
+$$
+
+#### Casos iniciales
+
+Tenemos
+
+$$
+8=3+5=3\cdot1+5\cdot1,
+$$
+
+$$
+9=3\cdot3+5\cdot0,
+$$
+
+y
+
+$$
+10=3\cdot0+5\cdot2.
+$$
+
+Por tanto,
+
+$$
+P(8),\qquad P(9),\qquad P(10)
+$$
+
+son verdaderas.
+
+Aquí hemos verificado tres casos iniciales porque el mecanismo que utilizaremos en el paso necesita retroceder tres unidades.
+
+#### Paso fuerte
+
+Sea
+
+$$
+n\ge10
+$$
+
+arbitrario y supongamos que
+
+$$
+P(k)
+$$
+
+es verdadera para todo
+
+$$
+8\le k\le n.
+$$
+
+Queremos demostrar
+
+$$
+P(n+1).
+$$
+
+Como
+
+$$
+n\ge10,
+$$
+
+tenemos
+
+$$
+n-2\ge8.
+$$
+
+Además,
+
+$$
+n-2\le n.
+$$
+
+Por la hipótesis inductiva fuerte podemos utilizar específicamente
+
+$$
+P(n-2).
+$$
+
+Esto significa que existen
+
+$$
+a,b\in\mathbb N
+$$
+
+tales que
+
+$$
+n-2=3a+5b.
+$$
+
+Sumando $3$ obtenemos
+
+$$
+n+1=3(a+1)+5b.
+$$
+
+Como
+
+$$
+a+1\in\mathbb N,
+$$
+
+hemos obtenido una representación de la forma requerida.
+
+Por tanto,
+
+$$
+P(n+1)
+$$
+
+es verdadera.
+
+Así, por inducción fuerte,
+
+$$
+\boxed{
+\forall n\ge8,
+\quad
+\exists a,b\in\mathbb N\text{ tales que }n=3a+5b
+}.
+$$
+
+### Por qué la hipótesis ordinaria sería incómoda aquí
+
+En el paso anterior no utilizamos
+
+$$
+P(n).
+$$
+
+Utilizamos
+
+$$
+P(n-2).
+$$
+
+La forma fuerte nos permitió hacerlo porque $n-2$ pertenece al intervalo de índices ya cubierto:
+
+$$
+8\le n-2\le n.
+$$
+
+Podríamos intentar reorganizar el argumento para usar sólo inducción ordinaria, pero entonces tendríamos que modificar la propiedad inductiva o empaquetar información adicional.
+
+La inducción fuerte permite expresar directamente la dependencia matemática que el problema ya tiene.
+
+Ésta es su principal ventaja práctica.
+
+### Varios casos base no son un ritual
+
+El ejemplo anterior utilizó
+
+$$
+P(8),P(9),P(10).
+$$
+
+Esto no significa que toda inducción fuerte requiera tres casos base.
+
+La cantidad de casos iniciales depende de cuándo comienza a ser válida la regla del paso.
+
+En nuestro argumento, para producir $P(n+1)$ utilizamos $P(n-2)$. El primer valor de $n$ para el cual
+
+$$
+n-2\ge8
+$$
+
+es
+
+$$
+n=10.
+$$
+
+Por eso el paso empieza en $10$, y los índices
+
+$$
+8,9,10
+$$
+
+deben quedar cubiertos antes de activarlo.
+
+La regla general es la misma que encontramos en §8.3:
+
+> **los casos iniciales y el rango del paso deben conectarse sin huecos.**
+
+### Fuerte no significa circular
+
+La hipótesis fuerte puede parecer aún más sospechosa que la ordinaria:
+
+> “supongamos que $P(k)$ es verdadera para todos los índices desde $n_0$ hasta $n$”.
+
+¿Por qué no estamos suponiendo ya el teorema?
+
+Porque el alcance termina en $n$.
+
+La instancia que debemos demostrar es
+
+$$
+P(n+1),
+$$
+
+y no está incluida entre las hipótesis disponibles.
+
+La frontera lógica es
+
+$$
+\boxed{n_0\le k\le n}
+\qquad\text{frente a}\qquad
+\boxed{k=n+1}.
+$$
+
+Mientras no utilicemos sin justificación $P(n+1)$ ni una instancia posterior, no hay circularidad.
+
+### La inducción fuerte no cambia la conclusión
+
+Comparemos otra vez:
+
+**Inducción ordinaria**
+
+$$
+P(n)
+\Rightarrow
+P(n+1).
+$$
+
+**Inducción fuerte**
+
+$$
+P(n_0)\land P(n_0+1)\land\cdots\land P(n)
+\Rightarrow
+P(n+1).
+$$
+
+En ambos casos queremos terminar con
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+La diferencia reside en cómo organizamos la información utilizada durante el paso.
+
+En §8.7 demostraremos con detalle que las formas de inducción que estamos estudiando están estrechamente relacionadas. Por ahora basta observar una transformación importante.
+
+Si definimos
+
+$$
+Q(n):\quad P(n_0),P(n_0+1),\ldots,P(n)\text{ son todas verdaderas},
+$$
+
+entonces una prueba por inducción ordinaria sobre $Q(n)$ puede transportar simultáneamente toda la información acumulada hasta $n$.
+
+Esta idea explica por qué la forma fuerte no introduce una fuente nueva y misteriosa de verdad: puede **empaquetarse** la historia previa en una sola propiedad inductiva.
+
+No desarrollaremos todavía la equivalencia completa; ése será uno de los objetivos de §8.7.
+
+::: {.callout-important title="Qué fortalece la inducción fuerte"}
+La inducción fuerte no fortalece la conclusión.
+
+En el paso fortalece la información disponible:
+
+$$
+P(n)
+$$
+
+se reemplaza por
+
+$$
+P(n_0),P(n_0+1),\ldots,P(n).
+$$
+
+Esto permite usar cualquier caso anterior pertinente, pero no autoriza a usar $P(n+1)$ ni casos futuros.
+:::
+
+### Comprobación
+
+Quieres demostrar una propiedad $P(n)$ para todo
+
+$$
+n\ge4.
+$$
+
+Has probado
+
+$$
+P(4),\qquad P(5)
+$$
+
+y has demostrado que, para todo
+
+$$
+n\ge5,
+$$
+
+si $P(k)$ es verdadera para cada $k$ con
+
+$$
+4\le k\le n,
+$$
+
+entonces $P(n+1)$ es verdadera.
+
+Un compañero afirma que también debes demostrar $P(6)$ como caso base antes de aplicar inducción fuerte.
+
+¿Tiene razón?
+
+**Respuesta razonada.**
+
+No.
+
+Cuando tomamos
+
+$$
+n=5,
+$$
+
+la hipótesis fuerte disponible contiene exactamente
+
+$$
+P(4)\quad\text{y}\quad P(5),
+$$
+
+que ya han sido demostradas.
+
+El paso con $n=5$ produce entonces
+
+$$
+P(6).
+$$
+
+Después, el paso con $n=6$ puede utilizar
+
+$$
+P(4),P(5),P(6)
+$$
+
+para obtener $P(7)$, y el mecanismo continúa.
+
+Por tanto, los dos casos iniciales bastan.
+
+Lo que debemos comprobar no es una cantidad prefijada de bases, sino que **el primer paso disponible pueda activarse con los casos iniciales ya establecidos**.
+
+### Hacia el primer fallo
+
+La inducción ordinaria y la fuerte razonan hacia adelante: parten de casos establecidos y controlan cómo avanzar.
+
+Existe otra manera de explotar la estructura de los naturales.
+
+Podemos preguntar:
+
+> si una afirmación universal fallara, ¿habría un primer índice donde falla?
+
+Esta pregunta conduce al **principio de buen orden** y al método del menor contraejemplo.
+
+Ése será el contenido de §8.6.
+
+## 8.6. Buen orden y contraejemplo mínimo {#fnd-section-8-6}
+
+Hasta ahora hemos explotado la estructura de los naturales mirando **hacia adelante**.
+
+En la inducción ordinaria partimos de un caso inicial y demostramos que la propiedad pasa de un índice al siguiente. En la inducción fuerte disponemos, durante el paso, de todas las instancias anteriores pertinentes.
+
+El principio de buen orden permite mirar la misma estructura desde otra dirección.
+
+En lugar de preguntar
+
+> «¿cómo avanzo desde los casos que ya conozco?»,
+
+podemos preguntar
+
+> **«si la afirmación fallara, ¿dónde aparecería el primer fallo?»**
+
+Esa pregunta sólo tiene fuerza porque estamos trabajando sobre los números naturales.
+
+### El principio de buen orden
+
+Diremos que un elemento
+
+$$
+m\in A
+$$
+
+es un **mínimo** de un conjunto ordenado $A$ si
+
+$$
+m\le a
+$$
+
+para todo
+
+$$
+a\in A.
+$$
+
+El principio de buen orden de los naturales afirma:
+
+::: {.callout-important title="Principio de buen orden"}
+Todo subconjunto no vacío de $\mathbb N$ tiene un elemento mínimo.
+
+Es decir, si
+
+$$
+A\subseteq\mathbb N
+$$
+
+y
+
+$$
+A\neq\varnothing,
+$$
+
+entonces existe
+
+$$
+m\in A
+$$
+
+tal que
+
+$$
+m\le a
+$$
+
+para todo $a\in A$.
+:::
+
+La condición
+
+$$
+A\neq\varnothing
+$$
+
+es esencial. El conjunto vacío no posee ningún elemento que pueda ser su mínimo.
+
+También es esencial que estemos hablando de subconjuntos de los naturales. Por ejemplo, el conjunto real
+
+$$
+(0,1)
+$$
+
+no tiene mínimo: dado cualquier
+
+$$
+x\in(0,1),
+$$
+
+también
+
+$$
+\frac{x}{2}\in(0,1)
+$$
+
+y
+
+$$
+\frac{x}{2}<x.
+$$
+
+No existe, por tanto, un “primer” número real positivo del intervalo.
+
+En $\mathbb N$, en cambio, todo subconjunto no vacío tiene un primer elemento en el sentido del orden.
+
+### Convertir una falla en un conjunto
+
+Supongamos que queremos demostrar
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+Si esta afirmación fuese falsa, entonces existiría al menos un índice del tramo para el cual $P$ falla.
+
+Podemos reunir todos esos índices en el conjunto
+
+$$
+F
+=
+\{n\in\mathbb N:n\ge n_0\text{ y }\neg P(n)\}.
+$$
+
+Llamaremos a $F$ el **conjunto de índices de fallo**.
+
+La negación de la afirmación universal
+
+$$
+\forall n\ge n_0,\quad P(n)
+$$
+
+se traduce precisamente en
+
+$$
+F\neq\varnothing.
+$$
+
+Y si $F$ no es vacío, el buen orden garantiza que existe
+
+$$
+m=\min F.
+$$
+
+Este $m$ es el **menor contraejemplo** a la afirmación universal.
+
+No significa que hayamos buscado computacionalmente todos los casos hasta encontrarlo.
+
+El argumento es estructural:
+
+$$
+\boxed{\text{la propiedad falla en algún índice}}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{F\neq\varnothing}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{m=\min F}.
+$$
+
+### Qué nos entrega la minimalidad
+
+Elegir el menor contraejemplo proporciona mucha más información que elegir simplemente algún índice de fallo.
+
+Si
+
+$$
+m=\min F,
+$$
+
+entonces
+
+$$
+\neg P(m).
+$$
+
+Pero además, para todo índice del dominio que sea estrictamente menor que $m$, la propiedad **no puede fallar**.
+
+En símbolos, si
+
+$$
+n_0\le k<m,
+$$
+
+entonces
+
+$$
+k\notin F,
+$$
+
+y por tanto
+
+$$
+P(k).
+$$
+
+Así, la minimalidad convierte automáticamente todos los índices anteriores en casos buenos:
+
+$$
+\boxed{n_0\le k<m\quad\Longrightarrow\quad P(k)}.
+$$
+
+Ésta es la información decisiva del método.
+
+Comparemos.
+
+Un contraejemplo cualquiera sólo nos dice
+
+$$
+\neg P(m).
+$$
+
+El **menor** contraejemplo nos dice simultáneamente
+
+$$
+\neg P(m)
+$$
+
+y
+
+$$
+P(n_0),P(n_0+1),\ldots,P(m-1).
+$$
+
+El objetivo es utilizar esas instancias anteriores para demostrar que $P(m)$ también tendría que ser verdadera.
+
+Si lo conseguimos, obtenemos una contradicción.
+
+### La base reaparece como exclusión del primer índice
+
+El índice inicial sigue importando.
+
+Supongamos que ya hemos demostrado
+
+$$
+P(n_0).
+$$
+
+Si $m$ es un contraejemplo, entonces necesariamente
+
+$$
+m\neq n_0.
+$$
+
+Como además
+
+$$
+m\ge n_0,
+$$
+
+obtenemos
+
+$$
+m>n_0.
+$$
+
+Por tanto,
+
+$$
+m-1\ge n_0.
+$$
+
+Esto permite mirar el índice inmediatamente anterior sin salir del dominio del teorema.
+
+Además, por minimalidad de $m$,
+
+$$
+P(m-1)
+$$
+
+debe ser verdadera.
+
+Aquí reaparece, desde otra perspectiva, la misma continuidad que vimos en §§8.2–8.3:
+
+- la base impide que el primer índice sea un fallo;
+- la minimalidad garantiza que todos los índices anteriores al primer fallo son buenos;
+- una regla que lleve de esos casos anteriores al índice $m$ destruye la posibilidad de que $m$ sea realmente un contraejemplo.
+
+### Un ejemplo completo
+
+Demostremos, mediante menor contraejemplo, que para todo
+
+$$
+n\ge1,
+$$
+
+se cumple
+
+$$
+1+3+5+\cdots+(2n-1)=n^2.
+$$
+
+Definamos
+
+$$
+P(n):\quad 1+3+5+\cdots+(2n-1)=n^2.
+$$
+
+Supongamos, buscando una contradicción, que la afirmación universal es falsa.
+
+Entonces el conjunto
+
+$$
+F
+=
+\{n\in\mathbb N:n\ge1\text{ y }\neg P(n)\}
+$$
+
+es no vacío.
+
+Por buen orden, existe
+
+$$
+m=\min F.
+$$
+
+Así,
+
+$$
+\neg P(m).
+$$
+
+Pero
+
+$$
+P(1)
+$$
+
+es verdadera, porque
+
+$$
+1=1^2.
+$$
+
+Por tanto,
+
+$$
+m\neq1,
+$$
+
+y como $m\ge1$,
+
+$$
+m\ge2.
+$$
+
+En consecuencia,
+
+$$
+m-1\ge1.
+$$
+
+Como $m-1<m$ y $m$ es el menor elemento de $F$, el índice $m-1$ no pertenece a $F$.
+
+Por tanto,
+
+$$
+P(m-1)
+$$
+
+es verdadera:
+
+$$
+1+3+\cdots+\bigl(2(m-1)-1\bigr)
+=
+(m-1)^2.
+$$
+
+Para obtener la suma correspondiente a $m$, añadimos el siguiente número impar:
+
+$$
+\begin{aligned}
+1+3+\cdots+\bigl(2(m-1)-1\bigr)+(2m-1)
+&=(m-1)^2+(2m-1)\\
+&=m^2.
+\end{aligned}
+$$
+
+Así,
+
+$$
+P(m)
+$$
+
+es verdadera.
+
+Pero habíamos elegido
+
+$$
+m\in F,
+$$
+
+lo que significa
+
+$$
+\neg P(m).
+$$
+
+Hemos llegado a una contradicción.
+
+Por tanto,
+
+$$
+F=\varnothing,
+$$
+
+y concluimos
+
+$$
+\boxed{
+1+3+5+\cdots+(2n-1)=n^2
+\text{ para todo }n\ge1
+}.
+$$
+
+### La contradicción se concentra en un solo índice
+
+La estructura del argumento anterior merece aislarse.
+
+Partimos de una afirmación universal que queremos demostrar:
+
+$$
+\forall n\ge n_0,\quad P(n).
+$$
+
+Negamos provisionalmente esa afirmación y construimos
+
+$$
+F=\{n\ge n_0:\neg P(n)\}.
+$$
+
+Si $F\neq\varnothing$, tomamos
+
+$$
+m=\min F.
+$$
+
+Entonces disponemos simultáneamente de:
+
+$$
+\neg P(m)
+$$
+
+y
+
+$$
+P(k)\quad\text{para todo }n_0\le k<m.
+$$
+
+La prueba debe encontrar ahora una razón independiente por la cual esos casos anteriores obliguen a que
+
+$$
+P(m)
+$$
+
+sea verdadera.
+
+El esquema es:
+
+$$
+\boxed{m\text{ es el primer fallo}}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\text{todo índice anterior pertinente es bueno}}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{P(m)\text{ debe ser verdadera}}
+$$
+
+$$
+\Downarrow
+$$
+
+$$
+\boxed{\text{contradicción}}.
+$$
+
+Una afirmación sobre infinitos índices queda así concentrada en el análisis de un único objeto mínimo.
+
+### Menor contraejemplo no significa “probar casos hasta que algo salga mal”
+
+La expresión **menor contraejemplo** puede sugerir un procedimiento de búsqueda:
+
+$$
+n_0,n_0+1,n_0+2,\ldots
+$$
+
+hasta encontrar un fallo.
+
+Ésa no es la estructura lógica del método.
+
+En una prueba no necesitamos saber cuál es el valor numérico de $m$.
+
+Suponemos que existe algún fallo; el buen orden nos garantiza que, entre todos los fallos, hay uno mínimo. Trabajamos entonces con ese $m$ abstracto y utilizamos únicamente las consecuencias de su minimalidad.
+
+Por eso el método no depende de haber calculado muchos casos favorables.
+
+Tampoco demuestra que una afirmación sea falsa. Al contrario: normalmente **supone provisionalmente que hay un contraejemplo** para mostrar que tal contraejemplo no puede existir.
+
+La búsqueda sistemática de afirmaciones falsas y de contraejemplos reales pertenece a C09. Aquí el contraejemplo mínimo es una herramienta para explotar el buen orden de $\mathbb N$.
+
+### Cuándo el método se atasca
+
+Elegir un menor contraejemplo no produce por sí solo la contradicción.
+
+De
+
+$$
+m=\min F
+$$
+
+obtenemos información sobre los índices anteriores, pero todavía necesitamos un mecanismo matemático que conecte esa información con $P(m)$.
+
+Si sabemos únicamente que
+
+$$
+P(k)
+$$
+
+es verdadera para todo $k<m$, pero no existe ninguna razón disponible que permita deducir $P(m)$, el argumento se detiene.
+
+El buen orden localiza el punto crítico; no inventa el puente que falta.
+
+Esto refleja una distinción que ya apareció en C07:
+
+$$
+\boxed{\text{arquitectura de prueba}}
+\neq
+\boxed{\text{contenido matemático que cierra la prueba}}.
+$$
+
+El método del menor contraejemplo decide **dónde** debe concentrarse el argumento. Todavía debemos demostrar **por qué** ese primer fallo sería imposible.
+
+::: {.callout-important title="Qué aporta el menor contraejemplo"}
+Si
+
+$$
+F=\{n\ge n_0:\neg P(n)\}
+$$
+
+es no vacío y
+
+$$
+m=\min F,
+$$
+
+entonces sabemos dos cosas:
+
+$$
+\neg P(m)
+$$
+
+y
+
+$$
+P(k)\quad\text{para todo }n_0\le k<m.
+$$
+
+La prueba debe utilizar la segunda información para contradecir la primera.
+
+El buen orden garantiza el mínimo; no proporciona automáticamente el argumento que hace imposible ese mínimo.
+:::
+
+### Comprobación
+
+Quieres demostrar
+
+$$
+\forall n\ge4,\quad P(n)
+$$
+
+mediante menor contraejemplo.
+
+Supón que el conjunto
+
+$$
+F=\{n\in\mathbb N:n\ge4\text{ y }\neg P(n)\}
+$$
+
+es no vacío y sea
+
+$$
+m=\min F.
+$$
+
+Sabes además que $P(4)$ es verdadera.
+
+Explica qué puedes concluir sobre $m$ y sobre todos los índices $k$ con
+
+$$
+4\le k<m.
+$$
+
+¿Qué información adicional necesitarías para obtener una contradicción?
+
+**Respuesta razonada.**
+
+Como
+
+$$
+P(4)
+$$
+
+es verdadera, el índice $4$ no pertenece a $F$.
+
+Por tanto, el mínimo de $F$ no puede ser $4$:
+
+$$
+m>4.
+$$
+
+En particular,
+
+$$
+m-1\ge4.
+$$
+
+Además, si
+
+$$
+4\le k<m,
+$$
+
+entonces $k$ no puede pertenecer a $F$, porque eso contradiciría la minimalidad de $m$.
+
+Así,
+
+$$
+P(k)
+$$
+
+es verdadera para todo
+
+$$
+4\le k<m.
+$$
+
+En particular disponemos de
+
+$$
+P(m-1).
+$$
+
+Sin embargo, todavía no hay contradicción. Para obtenerla necesitamos una regla, lema o argumento matemático que, a partir de las instancias anteriores disponibles —por ejemplo de $P(m-1)$, o quizá de varias $P(k)$ con $k<m$—, permita demostrar
+
+$$
+P(m).
+$$
+
+Eso contradirá
+
+$$
+\neg P(m),
+$$
+
+que viene de $m\in F$.
+
+### Tres lenguajes para una misma estructura
+
+Ya hemos conocido tres maneras de razonar sobre una propiedad indexada por los naturales.
+
+La inducción ordinaria pregunta:
+
+$$
+P(n)\Rightarrow P(n+1)?
+$$
+
+La inducción fuerte pregunta:
+
+$$
+P(n_0),\ldots,P(n)\Rightarrow P(n+1)?
+$$
+
+El método del menor contraejemplo pregunta:
+
+$$
+\text{si }m\text{ fuera el primer fallo, ¿cómo podrían los casos anteriores forzar }P(m)?
+$$
+
+Las tres formas utilizan la misma estructura del tramo de naturales, pero organizan la dependencia de maneras distintas.
+
+La siguiente sección hará explícita esa relación y demostrará, en el nivel fundacional apropiado, por qué inducción ordinaria, inducción fuerte y buen orden no son principios desconectados.
+
+## 8.7. Cómo se relacionan los tres principios {#fnd-section-8-7}
+
+En las tres secciones anteriores hemos presentado tres formas de organizar argumentos sobre los números naturales:
+
+- la **inducción ordinaria**;
+- la **inducción fuerte**;
+- el **principio de buen orden**, utilizado mediante menor contraejemplo.
+
+Podrían parecer tres recursos independientes.
+
+No lo son.
+
+En el marco elemental de este capítulo, y trabajando con la lógica clásica que hemos utilizado desde C02 y C06, estos principios pueden derivarse unos de otros. No son la misma afirmación escrita con símbolos distintos, pero expresan aspectos equivalentes de la estructura sucesiva y ordenada de $\mathbb N$.
+
+Conviene demostrar esta relación porque evita una impresión engañosa: que al pasar de inducción ordinaria a fuerte, o de inducción a menor contraejemplo, estuviéramos incorporando una fuente adicional de verdad.
+
+No ocurre eso.
+
+Lo que cambia es la **organización de la dependencia** dentro de la prueba.
+
+### Qué significa aquí que dos principios sean equivalentes
+
+Diremos que dos principios son equivalentes, en el nivel de este capítulo, si podemos demostrar cada uno suponiendo el otro.
+
+Por ejemplo, para justificar
+
+$$
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{inducción fuerte},
+$$
+
+debemos mostrar dos direcciones:
+
+$$
+\text{inducción ordinaria}
+\Longrightarrow
+\text{inducción fuerte},
+$$
+
+y
+
+$$
+\text{inducción fuerte}
+\Longrightarrow
+\text{inducción ordinaria}.
+$$
+
+Del mismo modo, relacionaremos inducción y buen orden demostrando
+
+$$
+\text{buen orden}
+\Longrightarrow
+\text{inducción ordinaria}
+$$
+
+y
+
+$$
+\text{inducción ordinaria}
+\Longrightarrow
+\text{buen orden}.
+$$
+
+Para mantener limpia la notación utilizaremos en las demostraciones la convención
+
+$$
+\mathbb N=\{0,1,2,\ldots\}.
+$$
+
+Las versiones que comienzan en un índice $n_0$ se recuperan mediante la reindexación estudiada en §8.3.
+
+### De inducción ordinaria a inducción fuerte
+
+Supongamos que podemos utilizar el principio de inducción ordinaria.
+
+Queremos deducir de él la inducción fuerte.
+
+Sea $P(n)$ una propiedad de los naturales. Supongamos que hemos demostrado:
+
+$$
+P(0),
+$$
+
+y que, para todo $n\in\mathbb N$, si
+
+$$
+P(0),P(1),\ldots,P(n)
+$$
+
+son todas verdaderas, entonces
+
+$$
+P(n+1)
+$$
+
+también es verdadera.
+
+Ésta es exactamente la información que exige una prueba por inducción fuerte.
+
+La dificultad es que la inducción ordinaria sólo permite transportar una propiedad desde $n$ hasta $n+1$.
+
+La solución consiste en **empaquetar toda la historia previa dentro de una sola propiedad**.
+
+Definamos
+
+$$
+Q(n):\quad P(0),P(1),\ldots,P(n)\text{ son todas verdaderas}.
+$$
+
+Ahora aplicaremos inducción ordinaria a $Q$.
+
+#### Base para $Q$
+
+La afirmación
+
+$$
+Q(0)
+$$
+
+significa simplemente
+
+$$
+P(0),
+$$
+
+que ya conocemos.
+
+#### Paso para $Q$
+
+Supongamos
+
+$$
+Q(n).
+$$
+
+Entonces sabemos simultáneamente
+
+$$
+P(0),P(1),\ldots,P(n).
+$$
+
+Por la hipótesis de paso de la inducción fuerte obtenemos
+
+$$
+P(n+1).
+$$
+
+Pero ahora conocemos
+
+$$
+P(0),P(1),\ldots,P(n),P(n+1),
+$$
+
+que es exactamente
+
+$$
+Q(n+1).
+$$
+
+Por inducción ordinaria,
+
+$$
+Q(n)
+$$
+
+es verdadera para todo $n\in\mathbb N$.
+
+En particular, como $Q(n)$ contiene $P(n)$,
+
+$$
+P(n)
+$$
+
+es verdadera para todo $n\in\mathbb N$.
+
+Hemos derivado la inducción fuerte a partir de la ordinaria.
+
+La idea conceptual puede resumirse así:
+
+$$
+\boxed{\text{historia acumulada}}
+\quad\longrightarrow\quad
+\boxed{\text{una sola propiedad }Q(n)}.
+$$
+
+La inducción ordinaria puede transportar un paquete que contiene toda la información previa.
+
+### De inducción fuerte a inducción ordinaria
+
+La dirección contraria es más inmediata.
+
+Supongamos ahora que disponemos del principio de inducción fuerte y queremos demostrar la validez de la inducción ordinaria.
+
+Sean dadas las hipótesis ordinarias:
+
+$$
+P(0)
+$$
+
+y
+
+$$
+\forall n\in\mathbb N,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+Para aplicar inducción fuerte, fijemos un $n\in\mathbb N$ y supongamos que
+
+$$
+P(0),P(1),\ldots,P(n)
+$$
+
+son verdaderas.
+
+Entre todas esas afirmaciones está, en particular,
+
+$$
+P(n).
+$$
+
+Entonces el paso ordinario nos da
+
+$$
+P(n+1).
+$$
+
+Así hemos verificado el paso fuerte.
+
+Por inducción fuerte concluimos
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+Por tanto,
+
+$$
+\boxed{
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{inducción fuerte}
+}.
+$$
+
+La forma fuerte puede ser más cómoda cuando el caso siguiente depende de índices anteriores no inmediatos, pero no demuestra una clase misteriosamente mayor de afirmaciones.
+
+### Del buen orden a la inducción ordinaria
+
+Supongamos ahora el principio de buen orden:
+
+> todo subconjunto no vacío de $\mathbb N$ tiene mínimo.
+
+Queremos recuperar el principio de inducción ordinaria.
+
+Sea $P(n)$ una propiedad tal que
+
+$$
+P(0)
+$$
+
+y
+
+$$
+\forall n\in\mathbb N,
+\qquad
+P(n)\Rightarrow P(n+1).
+$$
+
+Debemos demostrar
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+Supongamos, buscando una contradicción, que esto es falso.
+
+Entonces el conjunto de índices de fallo
+
+$$
+F=\{n\in\mathbb N:\neg P(n)\}
+$$
+
+es no vacío.
+
+Por buen orden, existe
+
+$$
+m=\min F.
+$$
+
+Como $P(0)$ es verdadera,
+
+$$
+m\neq0.
+$$
+
+Por tanto,
+
+$$
+m\ge1,
+$$
+
+de modo que
+
+$$
+m-1\in\mathbb N.
+$$
+
+Además,
+
+$$
+m-1<m.
+$$
+
+Por minimalidad de $m$, el índice $m-1$ no pertenece a $F$. Luego
+
+$$
+P(m-1)
+$$
+
+es verdadera.
+
+Aplicando el paso inductivo con
+
+$$
+n=m-1,
+$$
+
+obtenemos
+
+$$
+P(m).
+$$
+
+Pero $m\in F$, por lo que también tenemos
+
+$$
+\neg P(m).
+$$
+
+Contradicción.
+
+Por tanto $F$ debe ser vacío, y concluimos
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+Así, el principio de buen orden implica la inducción ordinaria.
+
+Esta demostración hace visible una idea importante: **la inducción puede verse como la imposibilidad de un primer fallo**.
+
+### De inducción ordinaria al buen orden
+
+Falta la dirección inversa.
+
+Supongamos ahora que disponemos del principio de inducción ordinaria.
+
+Sea
+
+$$
+A\subseteq\mathbb N
+$$
+
+un conjunto no vacío.
+
+Queremos demostrar que $A$ tiene mínimo.
+
+Supongamos, buscando una contradicción, que $A$ **no** tiene mínimo.
+
+Definamos la propiedad
+
+$$
+Q(n):\quad A\cap\{0,1,\ldots,n\}=\varnothing.
+$$
+
+En palabras, $Q(n)$ afirma que ninguno de los naturales desde $0$ hasta $n$ pertenece a $A$.
+
+#### Base
+
+Si
+
+$$
+0\in A,
+$$
+
+entonces $0$ sería automáticamente el mínimo de $A$.
+
+Eso contradice nuestra suposición de que $A$ no tiene mínimo.
+
+Por tanto,
+
+$$
+0\notin A,
+$$
+
+y así
+
+$$
+Q(0)
+$$
+
+es verdadera.
+
+#### Paso inductivo
+
+Supongamos
+
+$$
+Q(n).
+$$
+
+Entonces ningún natural
+
+$$
+0,1,\ldots,n
+$$
+
+pertenece a $A$.
+
+Si ocurriera que
+
+$$
+n+1\in A,
+$$
+
+entonces no habría ningún elemento de $A$ menor que $n+1$.
+
+Por tanto, $n+1$ sería el mínimo de $A$.
+
+Eso contradice otra vez la suposición de que $A$ no tiene mínimo.
+
+Luego
+
+$$
+n+1\notin A.
+$$
+
+Junto con $Q(n)$, esto implica
+
+$$
+Q(n+1).
+$$
+
+Por inducción ordinaria,
+
+$$
+Q(n)
+$$
+
+es verdadera para todo $n\in\mathbb N$.
+
+Pero $A$ es no vacío. Podemos elegir
+
+$$
+a\in A.
+$$
+
+La afirmación $Q(a)$ dice, en particular, que
+
+$$
+a\notin A,
+$$
+
+contradicción.
+
+Por tanto nuestra suposición era imposible: todo subconjunto no vacío de $\mathbb N$ tiene mínimo.
+
+Hemos obtenido
+
+$$
+\boxed{
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{buen orden}
+}.
+$$
+
+### Las tres formas quedan conectadas
+
+Ya tenemos las relaciones necesarias:
+
+$$
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{inducción fuerte}
+$$
+
+y
+
+$$
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{buen orden}.
+$$
+
+Por tanto, en el marco de este capítulo,
+
+$$
+\boxed{
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{inducción fuerte}
+\Longleftrightarrow
+\text{buen orden}
+}.
+$$
+
+Esto no significa que las tres demostraciones tengan la misma forma práctica.
+
+Cada una organiza la información de manera distinta.
+
+Podemos resumirlas así:
+
+$$
+\begin{array}{ccl}
+\text{inducción ordinaria}
+&:&
+P(n)\Rightarrow P(n+1),\\[2mm]
+\text{inducción fuerte}
+&:&
+P(0),\ldots,P(n)\Rightarrow P(n+1),\\[2mm]
+\text{menor contraejemplo}
+&:&
+P(0),\ldots,P(m-1)\ \text{y}\ \neg P(m)
+\Rightarrow\text{ contradicción}.
+\end{array}
+$$
+
+La estructura subyacente es la misma: ningún índice puede aparecer como un punto aislado que rompa para siempre la cadena de los naturales.
+
+### Inducción fuerte y menor contraejemplo son especialmente cercanos
+
+La relación entre estas dos formas merece verse de manera directa.
+
+En un paso de inducción fuerte para demostrar $P(n+1)$ podemos utilizar
+
+$$
+P(0),P(1),\ldots,P(n).
+$$
+
+En una prueba por menor contraejemplo, si
+
+$$
+m
+$$
+
+fuera el primer fallo, la minimalidad nos concede precisamente
+
+$$
+P(0),P(1),\ldots,P(m-1).
+$$
+
+Entonces intentamos demostrar
+
+$$
+P(m).
+$$
+
+Si escribimos
+
+$$
+n=m-1,
+$$
+
+la información disponible es formalmente la misma que en un paso fuerte.
+
+La diferencia es narrativa y lógica:
+
+- la inducción fuerte formula directamente una regla de avance;
+- el menor contraejemplo supone provisionalmente un primer fallo y demuestra que los casos anteriores lo hacen imposible.
+
+Una mira hacia adelante.
+
+La otra concentra la atención en el supuesto primer punto de ruptura.
+
+### Equivalentes no significa intercambiables en toda prueba
+
+Que los principios sean equivalentes no significa que toda demostración deba escribirse en cualquiera de las tres formas con la misma comodidad.
+
+Una propiedad con dependencia inmediata puede quedar transparente mediante inducción ordinaria.
+
+Una propiedad cuyo caso siguiente depende de varios índices anteriores puede expresarse naturalmente mediante inducción fuerte.
+
+Una afirmación cuya negación produce un objeto mínimo con buenas propiedades puede volverse especialmente clara mediante buen orden o menor contraejemplo.
+
+La equivalencia nos dice que no cambia la fuerza lógica disponible en este nivel.
+
+La elección de la forma cambia la **geometría de la prueba**.
+
+Esta distinción enlaza con C07: dos arquitecturas pueden ser lógicamente suficientes, pero una de ellas puede hacer visible el puente matemático con mucha mayor claridad.
+
+### Una precisión fundacional
+
+En esta sección hemos demostrado equivalencias **dentro del marco elemental adoptado por el libro**: los números naturales, su orden y la lógica clásica ordinaria ya forman parte del contexto.
+
+No estamos afirmando que las expresiones “inducción”, “inducción fuerte” y “buen orden” sean sintácticamente idénticas, ni que ocupen el mismo lugar primitivo en toda axiomatización posible de los naturales.
+
+Una teoría fundacional puede tomar uno de estos principios como básico y derivar otros.
+
+Lo que hemos establecido aquí es exactamente lo necesario para la práctica matemática del libro:
+
+> una vez aceptada cualquiera de estas formulaciones en el marco considerado, las otras pueden recuperarse mediante argumentos explícitos.
+
+::: {.callout-important title="Tres formulaciones, una estructura"}
+En el nivel de C08:
+
+$$
+\boxed{
+\text{inducción ordinaria}
+\Longleftrightarrow
+\text{inducción fuerte}
+\Longleftrightarrow
+\text{buen orden}
+}.
+$$
+
+La equivalencia no elimina las diferencias de uso.
+
+- La inducción ordinaria transporta una instancia.
+- La inducción fuerte transporta un bloque de instancias anteriores.
+- El buen orden convierte un supuesto fallo en un primer fallo.
+
+Las tres explotan la estructura de $\mathbb N$ desde perspectivas distintas.
+:::
+
+### Comprobación
+
+Supón que sólo aceptas como principio la inducción ordinaria y quieres demostrar que todo subconjunto no vacío de $\mathbb N$ tiene mínimo.
+
+Sea
+
+$$
+A\subseteq\mathbb N,
+\qquad
+A\neq\varnothing,
+$$
+
+y supón, buscando una contradicción, que $A$ no tiene mínimo.
+
+¿Por qué es útil definir
+
+$$
+Q(n):\quad A\cap\{0,1,\ldots,n\}=\varnothing?
+$$
+
+Explica la base, el paso inductivo y la contradicción final.
+
+**Respuesta razonada.**
+
+La propiedad $Q(n)$ traduce la ausencia de un mínimo en una afirmación que puede propagarse por inducción.
+
+Para la base, si
+
+$$
+0\in A,
+$$
+
+entonces $0$ sería el mínimo de $A$. Como hemos supuesto que $A$ no tiene mínimo,
+
+$$
+0\notin A,
+$$
+
+y por tanto $Q(0)$ es verdadera.
+
+Para el paso, supongamos $Q(n)$. Entonces ninguno de los números
+
+$$
+0,1,\ldots,n
+$$
+
+pertenece a $A$.
+
+Si
+
+$$
+n+1\in A,
+$$
+
+entonces $n+1$ sería menor o igual que cualquier elemento de $A$, porque no existe ningún elemento de $A$ entre $0$ y $n$.
+
+Así, $n+1$ sería el mínimo de $A$, contradicción.
+
+Por tanto,
+
+$$
+n+1\notin A,
+$$
+
+y obtenemos $Q(n+1)$.
+
+La inducción ordinaria da entonces $Q(n)$ para todo $n\in\mathbb N$.
+
+Pero como $A$ es no vacío, existe algún
+
+$$
+a\in A.
+$$
+
+La afirmación $Q(a)$ implica que $a\notin A$, contradicción.
+
+Luego nuestra suposición era falsa y $A$ debe tener mínimo.
+
+### Lo que cambia a partir de aquí
+
+Hasta §8.7 hemos estudiado principios que sirven para **demostrar** propiedades de los naturales.
+
+El siguiente paso cambia de tarea.
+
+Querremos construir objetos indexados por $\mathbb N$ mediante reglas como
+
+$$
+a_0=c,
+\qquad
+a_{n+1}=F(a_n).
+$$
+
+Ahora la pregunta ya no será
+
+> «¿cómo pruebo que una propiedad vale para todos los índices?»
+
+sino
+
+> **«¿cómo queda definido legítimamente un objeto en cada índice?»**
+
+Ése es el problema de la **recursión**, y será el contenido de §8.8.
+
+## 8.8. Definir por recursión {#fnd-section-8-8}
+
+Hasta aquí hemos utilizado la estructura de los naturales para **demostrar** afirmaciones. La inducción ordinaria, la inducción fuerte y el buen orden nos ayudaban a justificar que una propiedad debía valer en todos los índices pertinentes.
+
+La recursión cambia la tarea.
+
+Ahora no partimos de una propiedad $P(n)$ que queremos demostrar. Queremos **definir** un objeto en cada índice natural.
+
+La forma más simple es ésta:
+
+$$
+a_0=c,
+$$
+
+y, para cada $n\in\mathbb N$,
+
+$$
+a_{n+1}=F(a_n).
+$$
+
+El primer dato nos dice dónde comienza la construcción. La segunda regla nos dice cómo obtener un valor nuevo a partir del anterior.
+
+La semejanza con una prueba inductiva es visible, pero la función lógica es distinta:
+
+$$
+\boxed{P(n)\Rightarrow P(n+1)}
+$$
+
+relaciona **proposiciones** dentro de una demostración, mientras que
+
+$$
+\boxed{a_{n+1}=F(a_n)}
+$$
+
+relaciona **valores** dentro de una definición.
+
+Por eso conviene conservar la distinción rectora del capítulo:
+
+$$
+\boxed{\text{inducción = demostrar}}
+\qquad
+\boxed{\text{recursión = definir}}.
+$$
+
+### Una definición recursiva necesita un punto de partida
+
+Consideremos solamente la regla
+
+$$
+a_{n+1}=a_n+3.
+$$
+
+Esta ecuación no determina por sí sola una única sucesión.
+
+Si elegimos
+
+$$
+a_0=0,
+$$
+
+obtenemos
+
+$$
+0,3,6,9,\ldots
+$$
+
+Pero si elegimos
+
+$$
+a_0=5,
+$$
+
+obtenemos
+
+$$
+5,8,11,14,\ldots
+$$
+
+La misma regla de transición es compatible con muchas sucesiones distintas.
+
+Por tanto, una definición recursiva elemental necesita al menos dos componentes:
+
+1. **dato inicial**;
+2. **regla de generación**.
+
+En la forma
+
+$$
+a_0=c,
+\qquad
+a_{n+1}=F(a_n),
+$$
+
+el dato inicial fija el primer valor y la regla determina cómo continuar.
+
+### La regla debe producir valores legítimos
+
+Tampoco basta escribir cualquier expresión que contenga $a_n$.
+
+Supongamos que pretendemos definir una función
+
+$$
+a:\mathbb N\to\mathbb R
+$$
+
+mediante
+
+$$
+a_0=1,
+\qquad
+a_{n+1}=\frac{1}{a_n-1}.
+$$
+
+Al intentar calcular el siguiente valor obtenemos
+
+$$
+a_1=\frac{1}{1-1},
+$$
+
+que no es un número real definido.
+
+La construcción se detiene inmediatamente.
+
+El problema no es una dificultad de cálculo posterior. La propia regla no produce un valor legítimo a partir del dato inicial elegido.
+
+Por eso, si queremos construir valores dentro de un conjunto $X$, la regla debe estar formulada de manera que, cada vez que recibe datos permitidos, produzca nuevamente un elemento de $X$.
+
+En la forma más simple esto significa disponer de una función
+
+$$
+F:X\to X.
+$$
+
+Si
+
+$$
+a_n\in X,
+$$
+
+entonces automáticamente
+
+$$
+F(a_n)\in X,
+$$
+
+y el siguiente valor
+
+$$
+a_{n+1}=F(a_n)
+$$
+
+permanece en el dominio declarado de la construcción.
+
+### El teorema elemental de recursión
+
+La intuición de “seguir aplicando la regla para siempre” necesita una justificación matemática.
+
+En este capítulo utilizaremos la siguiente forma elemental del **teorema de recursión**.
+
+::: {.callout-important title="Teorema elemental de recursión"}
+Sea $X$ un conjunto no vacío, sea
+
+$$
+c\in X,
+$$
+
+y sea
+
+$$
+G:\mathbb N\times X\to X
+$$
+
+una función.
+
+Entonces existe una única función
+
+$$
+a:\mathbb N\to X
+$$
+
+tal que
+
+$$
+a(0)=c
+$$
+
+y, para todo $n\in\mathbb N$,
+
+$$
+a(n+1)=G(n,a(n)).
+$$
+:::
+
+La versión
+
+$$
+a_{n+1}=F(a_n)
+$$
+
+se obtiene como caso particular tomando
+
+$$
+G(n,x)=F(x).
+$$
+
+La forma con $G(n,x)$ es útil porque muchas reglas dependen tanto del índice actual como del valor ya construido.
+
+El teorema afirma dos cosas distintas:
+
+$$
+\boxed{\text{existencia}}
+\qquad\text{y}\qquad
+\boxed{\text{unicidad}}.
+$$
+
+**Existencia:** hay efectivamente una función definida en todos los naturales que satisface los datos recursivos.
+
+**Unicidad:** no hay dos funciones diferentes que satisfagan exactamente el mismo dato inicial y la misma regla.
+
+En FND utilizaremos este teorema en esta forma elemental. Una construcción set-teórica completa de la existencia exigiría infraestructura adicional sobre familias de conjuntos y no será introducida aquí de manera encubierta; esa cuestión pertenece a una capa fundacional posterior. Sí podemos, en cambio, comprender y demostrar ahora por qué la **unicidad** es natural.
+
+### Por qué el objeto recursivo es único
+
+Supongamos que dos funciones
+
+$$
+a,b:\mathbb N\to X
+$$
+
+satisfacen el mismo dato inicial
+
+$$
+a(0)=c=b(0)
+$$
+
+y la misma regla
+
+$$
+a(n+1)=G(n,a(n)),
+$$
+
+$$
+b(n+1)=G(n,b(n)).
+$$
+
+Queremos demostrar que
+
+$$
+a=b.
+$$
+
+Por la igualdad de funciones estudiada en C04, basta demostrar
+
+$$
+a(n)=b(n)
+$$
+
+para todo $n\in\mathbb N$.
+
+Definamos
+
+$$
+P(n):\quad a(n)=b(n).
+$$
+
+**Base.** Tenemos
+
+$$
+a(0)=c=b(0),
+$$
+
+así que $P(0)$ es verdadera.
+
+**Paso.** Supongamos
+
+$$
+a(n)=b(n).
+$$
+
+Entonces, usando la misma regla $G$,
+
+$$
+\begin{aligned}
+a(n+1)
+&=G(n,a(n))\\
+&=G(n,b(n))\\
+&=b(n+1).
+\end{aligned}
+$$
+
+Por inducción,
+
+$$
+a(n)=b(n)
+$$
+
+para todo $n\in\mathbb N$.
+
+Por tanto,
+
+$$
+\boxed{a=b}.
+$$
+
+Aquí aparece por primera vez una interacción importante:
+
+- la **recursión** especifica qué función queremos construir;
+- la **inducción** demuestra que dos funciones que satisfacen esa especificación no pueden diferir.
+
+### Un ejemplo propio: construir una sucesión
+
+Definamos una sucesión
+
+$$
+a:\mathbb N\to\mathbb N
+$$
+
+mediante
+
+$$
+a_0=2
+$$
+
+y
+
+$$
+a_{n+1}=a_n+2n+1.
+$$
+
+La regla depende del índice y del valor anterior. Podemos escribirla mediante
+
+$$
+G:\mathbb N\times\mathbb N\to\mathbb N,
+$$
+
+$$
+G(n,x)=x+2n+1.
+$$
+
+Como
+
+$$
+x+2n+1\in\mathbb N
+$$
+
+siempre que
+
+$$
+n,x\in\mathbb N,
+$$
+
+la regla produce valores legítimos en el codominio declarado.
+
+El teorema de recursión garantiza entonces una única función
+
+$$
+a:\mathbb N\to\mathbb N
+$$
+
+con esos datos.
+
+Podemos calcular sus primeros valores:
+
+$$
+a_0=2,
+$$
+
+$$
+a_1=a_0+1=3,
+$$
+
+$$
+a_2=a_1+3=6,
+$$
+
+$$
+a_3=a_2+5=11,
+$$
+
+$$
+a_4=a_3+7=18.
+$$
+
+Así obtenemos
+
+$$
+2,3,6,11,18,\ldots
+$$
+
+Estos cálculos ilustran la definición, pero no la sustituyen.
+
+La sucesión no está definida porque hayamos calculado cinco términos. Está definida por el dato inicial, la regla y el teorema que garantiza que ambos determinan una única función sobre todo $\mathbb N$.
+
+### Calcular términos no es demostrar una fórmula general
+
+Al observar
+
+$$
+2,3,6,11,18,\ldots
+$$
+
+podríamos sospechar que existe una fórmula cerrada sencilla para $a_n$.
+
+Esa conjetura pertenece a otra tarea.
+
+La definición recursiva ya nos dice **qué es** la sucesión:
+
+$$
+a_0=2,
+\qquad
+a_{n+1}=a_n+2n+1.
+$$
+
+Si luego proponemos una fórmula explícita
+
+$$
+a_n=H(n),
+$$
+
+tendremos que **demostrar** que esa fórmula describe realmente los valores definidos recursivamente.
+
+En otras palabras:
+
+$$
+\boxed{\text{definir por recursión}}
+\neq
+\boxed{\text{demostrar una fórmula para el objeto definido}}.
+$$
+
+La segunda tarea será el tema de §8.9.
+
+### Una regla sin dato inicial está incompleta
+
+Consideremos
+
+$$
+b_{n+1}=2b_n+1.
+$$
+
+No hay todavía una sucesión única.
+
+Por ejemplo, si
+
+$$
+b_0=0,
+$$
+
+obtenemos
+
+$$
+0,1,3,7,15,\ldots
+$$
+
+mientras que si
+
+$$
+b_0=1,
+$$
+
+obtenemos
+
+$$
+1,3,7,15,31,\ldots
+$$
+
+La regla explica cómo continuar **una vez conocido un valor inicial**, pero no elige ese valor por nosotros.
+
+Por tanto, la especificación recursiva está incompleta mientras no fijemos el punto de partida.
+
+### Un dato inicial sin regla también está incompleto
+
+De manera simétrica, escribir solamente
+
+$$
+c_0=4
+$$
+
+no define una función sobre $\mathbb N$.
+
+Existen infinitas sucesiones que empiezan en $4$.
+
+Por ejemplo,
+
+$$
+4,4,4,4,\ldots
+$$
+
+y
+
+$$
+4,5,6,7,\ldots
+$$
+
+comparten el mismo valor inicial.
+
+El dato inicial determina dónde empieza la construcción; la regla determina cómo continúa.
+
+### Recursión que comienza en otro índice
+
+También una definición recursiva puede empezar en un índice distinto de $0$.
+
+Si queremos definir valores sólo para
+
+$$
+n\ge n_0,
+$$
+
+podemos especificar
+
+$$
+a_{n_0}=c
+$$
+
+y una regla
+
+$$
+a_{n+1}=G(n,a_n)
+$$
+
+para
+
+$$
+n\ge n_0.
+$$
+
+Como ocurrió con la inducción desplazada, esto no requiere un principio nuevo. Podemos reindexar mediante
+
+$$
+b_k=a_{n_0+k},
+\qquad k\in\mathbb N,
+$$
+
+y convertir la construcción en una recursión que comienza en $k=0$.
+
+El índice inicial forma parte, otra vez, de la especificación matemática del objeto.
+
+### La recursión puede necesitar más memoria
+
+La forma
+
+$$
+a_{n+1}=G(n,a_n)
+$$
+
+usa sólo el valor inmediatamente anterior.
+
+Pero también aparecen definiciones donde el siguiente término depende de varios términos previos. Por ejemplo, una regla podría tener la forma
+
+$$
+a_{n+2}=H(n,a_n,a_{n+1}).
+$$
+
+Entonces harán falta suficientes datos iniciales para que la primera aplicación de la regla sea legítima.
+
+El principio conceptual sigue siendo el mismo:
+
+1. proporcionar todos los datos iniciales necesarios;
+2. dar una regla determinista;
+3. asegurar que la regla produce valores dentro del dominio declarado;
+4. justificar que la especificación determina un único objeto.
+
+No desarrollaremos aquí una teoría general de recurrencias de orden superior. En C08 sólo necesitamos reconocer la arquitectura recursiva y controlar que esté bien formada.
+
+::: {.callout-important title="Qué debe contener una definición recursiva"}
+Para construir un objeto indexado por los naturales debemos controlar:
+
+1. **dominio de índices**;
+2. **codominio de los valores**;
+3. **dato o datos iniciales**;
+4. **regla que produce el valor siguiente**;
+5. **legitimidad de la regla dentro del codominio**;
+6. **existencia y unicidad** del objeto determinado por esos datos.
+
+Una relación recursiva no es todavía una definición completa si alguno de estos componentes necesarios queda indeterminado.
+:::
+
+### Comprobación
+
+Se pretende definir una sucesión
+
+$$
+c:\mathbb N\to\mathbb R
+$$
+
+mediante
+
+$$
+c_0=2,
+\qquad
+c_{n+1}=\frac{1}{c_n-2}.
+$$
+
+¿Esta especificación produce legítimamente una función $c:\mathbb N\to\mathbb R$?
+
+**Respuesta razonada.**
+
+No.
+
+El dato inicial pertenece al codominio declarado:
+
+$$
+c_0=2\in\mathbb R.
+$$
+
+Pero al intentar aplicar la regla por primera vez obtenemos
+
+$$
+c_1=\frac{1}{c_0-2}
+=\frac{1}{0},
+$$
+
+que no es un número real definido.
+
+Por tanto, la expresión
+
+$$
+G(n,x)=\frac{1}{x-2}
+$$
+
+no determina una función
+
+$$
+G:\mathbb N\times\mathbb R\to\mathbb R
+$$
+
+sobre todos los pares permitidos: falla, en particular, cuando $x=2$.
+
+No podemos invocar el teorema elemental de recursión con ese codominio y ese dato inicial.
+
+Para reparar la definición habría que modificar el dato inicial, la regla o el dominio de valores de modo que cada aplicación requerida sea legítima; además habría que comprobar que la construcción nunca sale del dominio elegido.
+
+### Definir primero, demostrar después
+
+Ya disponemos de la sucesión
+
+$$
+a_0=2,
+\qquad
+a_{n+1}=a_n+2n+1.
+$$
+
+La recursión nos garantiza qué objeto estamos estudiando.
+
+Ahora podemos formular preguntas sobre él:
+
+- ¿existe una expresión cerrada para $a_n$?;
+- ¿todos sus valores satisfacen cierta desigualdad?;
+- ¿qué paridad tienen?;
+- ¿cómo crecen?
+
+Esas preguntas ya no son definiciones. Son **afirmaciones acerca de un objeto definido**.
+
+La herramienta natural para muchas de ellas será precisamente la inducción.
+
+§8.9 estudiará esta combinación:
+
+$$
+\boxed{\text{recursión para definir}}
+\qquad+
+\qquad
+\boxed{\text{inducción para demostrar}}.
+$$
+
+## 8.9. Probar propiedades de objetos recursivos {#fnd-section-8-9}
+
+En §8.8 construimos, mediante recursión, una sucesión concreta:
+
+$$
+a_0=2,
+\qquad
+a_{n+1}=a_n+2n+1.
+$$
+
+La definición ya resolvió una pregunta:
+
+> ¿qué valor tiene la sucesión en cada índice natural?
+
+Pero dejó abiertas muchas otras.
+
+Podemos preguntar, por ejemplo, si existe una fórmula explícita para $a_n$, si la sucesión es creciente, si sus términos satisfacen cierta paridad o si alguna desigualdad vale para todos los índices.
+
+Estas preguntas no forman parte de la definición.
+
+Son **propiedades del objeto ya definido**.
+
+Aquí aparece la interacción central de esta sección:
+
+$$
+\boxed{\text{recursión para definir}}
+\qquad+
+\qquad
+\boxed{\text{inducción para demostrar}}.
+$$
+
+La proximidad entre ambas técnicas no debe borrar su diferencia lógica.
+
+La ecuación recursiva
+
+$$
+a_{n+1}=a_n+2n+1
+$$
+
+es un hecho disponible porque forma parte de la definición de $a$.
+
+Una afirmación como
+
+$$
+a_n=n^2+2
+$$
+
+no forma parte de esa definición. Si queremos utilizarla para todo $n$, debemos demostrarla.
+
+### Los primeros términos sugieren, pero no prueban
+
+Calculemos de nuevo algunos valores:
+
+$$
+a_0=2,
+$$
+
+$$
+a_1=3,
+$$
+
+$$
+a_2=6,
+$$
+
+$$
+a_3=11,
+$$
+
+$$
+a_4=18.
+$$
+
+La sucesión comienza, por tanto,
+
+$$
+2,3,6,11,18,\ldots
+$$
+
+Si restamos $2$ obtenemos
+
+$$
+0,1,4,9,16,\ldots,
+$$
+
+lo que sugiere la conjetura
+
+$$
+\boxed{a_n=n^2+2}.
+$$
+
+Esta observación es útil para el **descubrimiento** de la fórmula, pero todavía no la demuestra.
+
+Comprobar que
+
+$$
+a_0=0^2+2,
+\quad
+a_1=1^2+2,
+\quad
+\ldots,
+\quad
+a_4=4^2+2
+$$
+
+sólo verifica cinco instancias.
+
+El objetivo real es universal:
+
+$$
+\forall n\in\mathbb N,
+\qquad
+a_n=n^2+2.
+$$
+
+Necesitamos una razón que cubra todos los índices.
+
+### La definición recursiva proporciona el puente del paso
+
+Definamos la propiedad
+
+$$
+P(n):\quad a_n=n^2+2.
+$$
+
+Demostraremos $P(n)$ para todo $n\in\mathbb N$ por inducción.
+
+#### Caso base
+
+Para $n=0$, la definición recursiva da
+
+$$
+a_0=2.
+$$
+
+Por otra parte,
+
+$$
+0^2+2=2.
+$$
+
+Luego
+
+$$
+a_0=0^2+2,
+$$
+
+y $P(0)$ es verdadera.
+
+#### Paso inductivo
+
+Sea $n\in\mathbb N$ arbitrario y supongamos
+
+$$
+P(n),
+$$
+
+es decir,
+
+$$
+a_n=n^2+2.
+$$
+
+Debemos demostrar
+
+$$
+P(n+1),
+$$
+
+que significa
+
+$$
+a_{n+1}=(n+1)^2+2.
+$$
+
+Aquí entran simultáneamente dos tipos de información.
+
+La **definición recursiva** nos dice
+
+$$
+a_{n+1}=a_n+2n+1.
+$$
+
+La **hipótesis inductiva** nos dice
+
+$$
+a_n=n^2+2.
+$$
+
+Sustituyendo la segunda información en la primera obtenemos
+
+$$
+\begin{aligned}
+a_{n+1}
+&=a_n+2n+1\\
+&=(n^2+2)+2n+1\\
+&=n^2+2n+3\\
+&=(n+1)^2+2.
+\end{aligned}
+$$
+
+Así hemos demostrado
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+Por inducción,
+
+$$
+\boxed{a_n=n^2+2\text{ para todo }n\in\mathbb N}.
+$$
+
+### Qué hizo cada herramienta
+
+La prueba anterior permite localizar con precisión la función de cada componente.
+
+La recursión proporcionó
+
+$$
+\boxed{a_{n+1}=a_n+2n+1}.
+$$
+
+Esa igualdad relaciona **valores consecutivos del objeto definido**.
+
+La inducción proporcionó la arquitectura para demostrar
+
+$$
+\boxed{a_n=n^2+2\text{ para todo }n}.
+$$
+
+Dentro del paso, la hipótesis inductiva permitió reemplazar el valor anterior por la descripción explícita que queríamos propagar:
+
+$$
+a_n
+\quad\rightsquigarrow\quad
+n^2+2.
+$$
+
+Podemos resumir el mecanismo así:
+
+$$
+\boxed{\text{regla recursiva para }a_{n+1}}
+\quad+
+\quad
+\boxed{\text{hipótesis inductiva sobre }a_n}
+\quad\Longrightarrow\quad
+\boxed{\text{propiedad en }n+1}.
+$$
+
+La definición y la prueba cooperan, pero no se identifican.
+
+### La hipótesis inductiva habla de una propiedad, no de la existencia del término
+
+Conviene precisar un punto lógico.
+
+En el paso anterior no supusimos que $a_n$ **existiera**.
+
+La existencia de todos los valores
+
+$$
+a_0,a_1,a_2,\ldots
+$$
+
+ya estaba garantizada por la definición recursiva legitimada en §8.8.
+
+Lo que supusimos inductivamente fue una propiedad adicional del valor ya definido:
+
+$$
+a_n=n^2+2.
+$$
+
+Por eso las dos capas deben permanecer separadas:
+
+$$
+\begin{array}{ccl}
+\text{recursión} &:& \text{construye }a_n,\\[2mm]
+\text{inducción} &:& \text{demuestra algo acerca de }a_n.
+\end{array}
+$$
+
+Confundirlas conduce a frases engañosas como
+
+> “suponemos que $a_n$ está definido y entonces definimos $a_{n+1}$ por inducción”.
+
+En nuestro marco, no hacemos eso. La sucesión ya está definida globalmente por el teorema de recursión; la inducción entra después para demostrar propiedades.
+
+### Una segunda ruta: verificar la misma recursión
+
+La fórmula
+
+$$
+a_n=n^2+2
+$$
+
+puede justificarse también explotando la **unicidad** de la definición recursiva.
+
+Definamos explícitamente una función
+
+$$
+b:\mathbb N\to\mathbb N,
+\qquad
+b(n)=n^2+2.
+$$
+
+Comprobemos primero el dato inicial:
+
+$$
+b(0)=0^2+2=2.
+$$
+
+Por tanto,
+
+$$
+b(0)=a_0.
+$$
+
+Ahora calculemos el valor siguiente de $b$:
+
+$$
+\begin{aligned}
+b(n+1)
+&=(n+1)^2+2\\
+&=n^2+2n+3\\
+&=(n^2+2)+2n+1\\
+&=b(n)+2n+1.
+\end{aligned}
+$$
+
+Así, $b$ satisface exactamente la misma especificación recursiva que $a$:
+
+$$
+b(0)=2,
+\qquad
+b(n+1)=b(n)+2n+1.
+$$
+
+Pero §8.8 estableció que esa especificación determina una **única** función sobre $\mathbb N$.
+
+Por tanto,
+
+$$
+a=b.
+$$
+
+En consecuencia,
+
+$$
+a_n=b(n)=n^2+2
+$$
+
+para todo $n\in\mathbb N$.
+
+Esta segunda prueba no repite el paso inductivo sobre la fórmula. Utiliza un resultado estructural previo: la unicidad del objeto recursivo.
+
+Sin embargo, la conexión con la inducción no ha desaparecido por completo: la unicidad del teorema de recursión fue demostrada en §8.8 precisamente mediante inducción.
+
+### Una fórmula candidata debe cumplir dos pruebas distintas
+
+Cuando proponemos una expresión explícita
+
+$$
+H(n)
+$$
+
+para una sucesión definida recursivamente, hay dos preguntas diferentes.
+
+La primera es experimental o heurística:
+
+> ¿parece que $H(n)$ coincide con los primeros valores?
+
+La segunda es matemática:
+
+> ¿qué argumento demuestra que coincide con **todos** los valores?
+
+Comprobar sólo
+
+$$
+H(0)=a_0,
+\quad
+H(1)=a_1,
+\quad
+\ldots,
+\quad
+H(10)=a_{10}
+$$
+
+no resuelve la segunda pregunta.
+
+Dos caminos legítimos, cuando están disponibles, son:
+
+1. demostrar por inducción
+   $$
+   a_n=H(n);
+   $$
+2. demostrar que $H$ satisface el mismo dato inicial y la misma regla recursiva, y usar unicidad.
+
+Ambas estrategias convierten una conjetura obtenida de casos particulares en una afirmación universal justificada.
+
+### No toda propiedad de un objeto recursivo necesita inducción
+
+La presencia de una definición recursiva tampoco obliga a utilizar inducción en toda afirmación posterior.
+
+Para nuestra sucesión,
+
+$$
+a_{n+1}=a_n+2n+1.
+$$
+
+Como
+
+$$
+2n+1>0
+$$
+
+para todo $n\in\mathbb N$, obtenemos directamente
+
+$$
+a_{n+1}>a_n.
+$$
+
+Por tanto, la sucesión es estrictamente creciente.
+
+Aquí no fue necesario suponer una propiedad en $n$ para demostrarla en $n+1$. La regla recursiva ya contenía toda la información requerida para comparar términos consecutivos.
+
+Éste es un criterio diagnóstico importante:
+
+> **que un objeto esté definido recursivamente no implica que toda propiedad suya deba probarse por inducción.**
+
+La arquitectura de la prueba debe responder a la propiedad concreta que queremos demostrar.
+
+### Cuándo la forma de la recursión sugiere la forma de la inducción
+
+Si una definición utiliza sólo el término anterior,
+
+$$
+a_{n+1}=G(n,a_n),
+$$
+
+es frecuente que una propiedad de $a_{n+1}$ pueda relacionarse con una propiedad de $a_n$ mediante inducción ordinaria.
+
+Pero si la definición tiene memoria mayor, por ejemplo
+
+$$
+a_{n+2}=H(n,a_n,a_{n+1}),
+$$
+
+entonces una propiedad del término nuevo puede depender de información sobre dos términos anteriores.
+
+En tal situación podemos necesitar:
+
+- varios casos iniciales;
+- una propiedad inductiva que empaquete varias instancias;
+- o una formulación mediante inducción fuerte.
+
+La regla recursiva no determina mecánicamente qué forma de inducción debemos usar, pero sí revela las **dependencias** que una prueba tendrá que respetar.
+
+### Un error típico: usar la fórmula que todavía se está demostrando
+
+Supongamos que queremos probar
+
+$$
+a_n=n^2+2
+$$
+
+para nuestra sucesión.
+
+Un borrador incorrecto podría decir:
+
+> Como $a_n=n^2+2$, entonces
+> $$
+> a_{n+1}=a_n+2n+1=(n+1)^2+2.
+> $$
+> Luego la fórmula es verdadera para todo $n$.
+
+El cálculo algebraico es correcto, pero la justificación está incompleta si la igualdad
+
+$$
+a_n=n^2+2
+$$
+
+se utiliza sin declarar que es la **hipótesis inductiva local** dentro de un paso inductivo y sin haber verificado la base.
+
+La reparación consiste en reconstruir las dependencias:
+
+1. demostrar $P(0)$;
+2. fijar $n$ arbitrario;
+3. suponer temporalmente $P(n)$;
+4. usar la regla recursiva para demostrar $P(n+1)$;
+5. invocar el principio de inducción.
+
+La misma ecuación puede ser legítima o circular según el lugar que ocupe en la arquitectura de la prueba.
+
+::: {.callout-important title="Definir no es demostrar"}
+Si un objeto está definido por
+
+$$
+a_0=c,
+\qquad
+a_{n+1}=G(n,a_n),
+$$
+
+la recursión garantiza **qué objeto** tenemos.
+
+Para demostrar una propiedad universal
+
+$$
+P(n,a_n)
+$$
+
+podemos necesitar inducción:
+
+$$
+P(0,a_0)
+\qquad+
+\qquad
+P(n,a_n)\Rightarrow P(n+1,a_{n+1}).
+$$
+
+La regla recursiva suele ser el puente que permite reescribir $a_{n+1}$ en términos de información ya disponible en el índice $n$.
+:::
+
+### Comprobación
+
+Sea una sucesión
+
+$$
+b:\mathbb N\to\mathbb N
+$$
+
+definida recursivamente por
+
+$$
+b_0=4,
+\qquad
+b_{n+1}=b_n+4n+2.
+$$
+
+Los primeros términos son
+
+$$
+4,6,12,22,\ldots
+$$
+
+y sugieren la fórmula
+
+$$
+b_n=2n^2+4.
+$$
+
+Explica cómo demostrarla por inducción e identifica, en el paso, qué información procede de la definición recursiva y cuál procede de la hipótesis inductiva.
+
+**Respuesta razonada.**
+
+Definimos
+
+$$
+P(n):\quad b_n=2n^2+4.
+$$
+
+Para la base,
+
+$$
+b_0=4=2\cdot0^2+4,
+$$
+
+así que $P(0)$ es verdadera.
+
+Para el paso, fijamos $n\in\mathbb N$ y suponemos la hipótesis inductiva
+
+$$
+b_n=2n^2+4.
+$$
+
+La **definición recursiva** proporciona
+
+$$
+b_{n+1}=b_n+4n+2.
+$$
+
+Sustituyendo la **hipótesis inductiva** obtenemos
+
+$$
+\begin{aligned}
+b_{n+1}
+&=b_n+4n+2\\
+&=(2n^2+4)+4n+2\\
+&=2n^2+4n+6\\
+&=2(n+1)^2+4.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+El principio de inducción da
+
+$$
+\boxed{b_n=2n^2+4\text{ para todo }n\in\mathbb N}.
+$$
+
+La separación de funciones es exacta:
+
+- la recursión aporta la relación entre $b_{n+1}$ y $b_n$;
+- la hipótesis inductiva aporta la fórmula explícita para $b_n$ en el índice actual;
+- la inducción convierte ese mecanismo local en una conclusión universal.
+
+### Hacia la integración del capítulo
+
+Ya tenemos las cuatro piezas centrales de C08:
+
+$$
+\boxed{\text{inducción ordinaria}}
+$$
+
+$$
+\boxed{\text{inducción fuerte}}
+$$
+
+$$
+\boxed{\text{buen orden}}
+$$
+
+$$
+\boxed{\text{recursión}}.
+$$
+
+También sabemos cómo interactúan sin confundirse:
+
+- inducción ordinaria, inducción fuerte y buen orden son formulaciones equivalentes en el marco elemental adoptado;
+- recursión cumple otra función: **define** objetos sobre los naturales;
+- una vez definido un objeto recursivamente, la inducción puede utilizar su regla de definición para demostrar propiedades universales sobre él.
+
+La sección final integrará estas ideas mediante ejercicios que exigirán no sólo ejecutar pruebas, sino también diagnosticar bases insuficientes, elegir entre inducción ordinaria y fuerte, reconstruir argumentos por menor contraejemplo y decidir si una especificación recursiva está realmente bien formada.
+
+## 8.10. Ejercicios y soluciones desarrolladas {#fnd-section-8-10}
+
+Esta sección integra los principios del capítulo sin convertirlos en una colección de trucos separados. Los ejercicios están organizados en tres familias:
+
+1. **diagnóstico y arquitectura**: reconocer qué obligación falta, qué supuesto es legítimo y qué tipo de argumento está realmente disponible;
+2. **ejecución guiada**: construir pruebas completas por inducción ordinaria, inducción fuerte y buen orden, y trabajar con definiciones recursivas;
+3. **integración y comparación**: relacionar los principios, justificar unicidad, reparar definiciones y distinguir cuándo la inducción es natural y cuándo no es necesaria.
+
+La meta no es acumular identidades. Es aprender a leer la estructura de cada problema.
+
+### Ejercicios
+
+#### E1. La base pertenece al dominio del teorema
+
+Considera la afirmación
+
+$$
+P(n):\quad n^2\ge n+6.
+$$
+
+Se quiere demostrar
+
+$$
+\forall n\ge3,\quad P(n).
+$$
+
+1. Identifica la base correcta.
+2. Formula el paso inductivo con su rango exacto.
+3. Demuestra la afirmación por inducción.
+4. Explica por qué demostrar $P(0)$ no cumpliría la obligación de base de este teorema.
+
+#### E2. Una base correcta y un paso demasiado tardío
+
+Supón que quieres demostrar
+
+$$
+\forall n\ge4,\quad P(n).
+$$
+
+Has demostrado
+
+$$
+P(4)
+$$
+
+y también
+
+$$
+\forall n\ge5,\qquad P(n)\Rightarrow P(n+1).
+$$
+
+1. Explica por qué esta información no basta todavía.
+2. Localiza exactamente el hueco.
+3. Da dos reparaciones distintas que permitan concluir el teorema deseado.
+
+#### E3. Diagnóstico de circularidad
+
+Un borrador de prueba por inducción de
+
+$$
+\forall n\ge1,\quad P(n)
+$$
+
+contiene el siguiente paso:
+
+> Sea $n\ge1$ arbitrario y supongamos $P(n)$. Como el teorema afirma que $P(k)$ vale para todo $k\ge1$, tomamos $k=n+1$ y obtenemos $P(n+1)$. Por tanto, el paso está demostrado.
+
+1. ¿Qué línea es legítima?
+2. ¿Dónde aparece la circularidad?
+3. ¿Qué clase de información tendría que reemplazar el paso circular para que la inducción fuese válida?
+
+#### E4. ¿Ordinaria o fuerte?
+
+Se quiere demostrar una propiedad $P(n)$ para todo $n\ge6$. El único mecanismo disponible para producir el caso siguiente tiene esta forma:
+
+$$
+P(n-2)\Longrightarrow P(n+1),
+$$
+
+siempre que $n\ge8$.
+
+1. ¿Qué forma de inducción expresa de manera más natural esta dependencia?
+2. ¿Qué casos iniciales deben quedar demostrados antes de activar el primer paso?
+3. Explica cómo podría, en principio, reorganizarse el argumento usando inducción ordinaria sobre una propiedad más rica.
+
+#### E5. Una regla que sale del codominio
+
+Se pretende definir
+
+$$
+a:\mathbb N\to\mathbb N
+$$
+
+mediante
+
+$$
+a_0=1,
+\qquad
+a_{n+1}=a_n-2.
+$$
+
+1. ¿Es ésta una definición recursiva legítima de una función $\mathbb N\to\mathbb N$?
+2. Identifica exactamente el fallo.
+3. Propón una reparación mínima que conserve la misma regla algebraica.
+
+---
+
+#### E6. Inducción ordinaria
+
+Demuestra por inducción que
+
+$$
+3^n\ge2n+1
+$$
+
+para todo
+
+$$
+n\in\mathbb N.
+$$
+
+Indica explícitamente la base, la hipótesis inductiva, el objetivo del paso y la conclusión universal.
+
+#### E7. Inducción desde un índice no nulo
+
+Demuestra que
+
+$$
+n^3\ge4n
+$$
+
+para todo
+
+$$
+n\ge2.
+$$
+
+Explica por qué el índice $2$ es un punto inicial natural para el enunciado, aunque $n=0$ también satisfaga accidentalmente la desigualdad.
+
+#### E8. Una aplicación de inducción fuerte
+
+Demuestra que todo entero
+
+$$
+n\ge18
+$$
+
+puede escribirse en la forma
+
+$$
+n=4a+7b
+$$
+
+para ciertos
+
+$$
+a,b\in\mathbb N.
+$$
+
+Tu prueba debe hacer explícitos los casos iniciales necesarios y el índice anterior que se utiliza en el paso fuerte.
+
+#### E9. No existe una cadena infinita estrictamente decreciente en $\mathbb N$
+
+Demuestra, utilizando el principio de buen orden, que no existe una función
+
+$$
+a:\mathbb N\to\mathbb N
+$$
+
+tal que
+
+$$
+a_{n+1}<a_n
+$$
+
+para todo $n\in\mathbb N$.
+
+#### E10. Definir recursivamente y luego demostrar
+
+Sea
+
+$$
+\mathbb Q_{>0}=\{q\in\mathbb Q:q>0\}.
+$$
+
+Considera la especificación
+
+$$
+c_0=1,
+\qquad
+c_{n+1}=\frac{c_n}{1+c_n}.
+$$
+
+1. Justifica que esta regla define legítimamente una única función
+   $$
+   c:\mathbb N\to\mathbb Q_{>0}.
+   $$
+2. Demuestra por inducción que
+   $$
+   c_n=\frac1{n+1}
+   $$
+   para todo $n\in\mathbb N$.
+3. Señala qué parte de tu argumento pertenece a la recursión y qué parte pertenece a la inducción.
+
+---
+
+#### E11. Unicidad de un objeto recursivo
+
+Sean
+
+$$
+x,y:\mathbb N\to\mathbb R
+$$
+
+dos funciones tales que
+
+$$
+x_0=y_0=2
+$$
+
+y, para todo $n\in\mathbb N$,
+
+$$
+x_{n+1}=3x_n+1,
+\qquad
+y_{n+1}=3y_n+1.
+$$
+
+Demuestra por inducción que
+
+$$
+x=y.
+$$
+
+Explica por qué ésta es una prueba de **unicidad** y no la definición de las funciones.
+
+#### E12. Una recursión de segundo orden
+
+Se propone la regla
+
+$$
+r_{n+2}=r_{n+1}+2r_n
+$$
+
+junto con el único dato
+
+$$
+r_0=1.
+$$
+
+1. Explica por qué la especificación está incompleta.
+2. Añade el dato
+   $$
+   r_1=2.
+   $$
+   Calcula $r_2,r_3,r_4$.
+3. Demuestra, utilizando inducción fuerte, que
+   $$
+   r_n=2^n
+   $$
+   para todo $n\in\mathbb N$.
+4. Explica por qué una inducción ordinaria también sería posible si se empaquetara suficiente información en la propiedad inductiva.
+
+#### E13. Reconstruir la inducción como imposibilidad de un primer fallo
+
+Supón que una propiedad $P(n)$ satisface
+
+$$
+P(0)
+$$
+
+y
+
+$$
+\forall n\in\mathbb N,\qquad P(n)\Rightarrow P(n+1).
+$$
+
+Sin invocar directamente el principio de inducción, demuestra mediante buen orden que
+
+$$
+\forall n\in\mathbb N,\quad P(n).
+$$
+
+Debes construir el conjunto de índices de fallo y explicar exactamente cómo se contradice la minimalidad de su supuesto mínimo.
+
+#### E14. Elegir la arquitectura natural
+
+Para cada situación, indica qué herramienta expresa de manera más natural la estructura del problema y justifica tu elección.
+
+1. Para demostrar $P(n+1)$ sólo necesitas $P(n)$.
+2. Para demostrar $P(n+1)$ necesitas una instancia como $P(n-3)$, además de saber que todos los índices anteriores pertinentes ya están cubiertos.
+3. La negación del teorema produce un conjunto no vacío de índices de fallo, y la minimalidad del primero permite demostrar que también debería ser un caso bueno.
+4. Quieres construir una sucesión indicando un valor inicial y una regla que produce el siguiente término.
+
+Compara, en particular, **inducción ordinaria**, **inducción fuerte**, **menor contraejemplo** y **recursión**.
+
+#### E15. Integración final: definir, conjeturar, demostrar y comparar
+
+Define una sucesión
+
+$$
+s:\mathbb N\to\mathbb N
+$$
+
+por
+
+$$
+s_0=3,
+\qquad
+s_{n+1}=s_n+6n+4.
+$$
+
+1. Justifica que la especificación es una definición recursiva legítima sobre $\mathbb N$.
+2. Calcula $s_1,s_2,s_3$ y formula una conjetura para $s_n$.
+3. Demuestra por inducción que
+   $$
+   s_n=3n^2+n+3
+   $$
+   para todo $n\in\mathbb N$.
+4. Demuestra que la sucesión es estrictamente creciente.
+5. Explica por qué la parte 4 admite una prueba directa muy breve y no requiere inducción, aunque el objeto haya sido definido recursivamente.
+
+---
+
+### Soluciones desarrolladas
+
+#### Solución E1
+
+La conclusión que queremos demostrar es
+
+$$
+\forall n\ge3,\qquad n^2\ge n+6.
+$$
+
+Por tanto, el primer índice del tramo es $3$.
+
+La base correcta es
+
+$$
+P(3):\quad 3^2\ge3+6.
+$$
+
+En efecto,
+
+$$
+9=9.
+$$
+
+Para el paso, fijamos un $n\ge3$ arbitrario y suponemos
+
+$$
+P(n):\quad n^2\ge n+6.
+$$
+
+Debemos demostrar
+
+$$
+P(n+1):\quad (n+1)^2\ge(n+1)+6=n+7.
+$$
+
+A partir de la hipótesis inductiva,
+
+$$
+\begin{aligned}
+(n+1)^2
+&=n^2+2n+1\\
+&\ge (n+6)+2n+1\\
+&=3n+7.
+\end{aligned}
+$$
+
+Como $n\ge3$, en particular $2n\ge0$, y por tanto
+
+$$
+3n+7\ge n+7.
+$$
+
+Así,
+
+$$
+(n+1)^2\ge n+7,
+$$
+
+y hemos probado
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+para todo $n\ge3$.
+
+Por inducción desde $3$,
+
+$$
+\boxed{n^2\ge n+6\text{ para todo }n\ge3}.
+$$
+
+Demostrar $P(0)$ no cumpliría la obligación de base porque el teorema no empieza en $0$. Más aún,
+
+$$
+P(0):\quad 0\ge6
+$$
+
+es falsa. La base debe pertenecer al dominio real de la conclusión y conectar con el primer paso disponible.
+
+#### Solución E2
+
+La base
+
+$$
+P(4)
+$$
+
+es correcta, pero el paso disponible comienza en
+
+$$
+n=5.
+$$
+
+Por tanto sabemos
+
+$$
+P(5)\Rightarrow P(6),
+\quad
+P(6)\Rightarrow P(7),
+\quad\ldots,
+$$
+
+pero no hemos justificado
+
+$$
+P(4)\Rightarrow P(5).
+$$
+
+El hueco está exactamente entre los índices $4$ y $5$.
+
+Hay al menos dos reparaciones naturales.
+
+**Primera reparación.** Fortalecer el paso y demostrar
+
+$$
+\forall n\ge4,\qquad P(n)\Rightarrow P(n+1).
+$$
+
+Entonces $P(4)$ activa inmediatamente la propagación.
+
+**Segunda reparación.** Demostrar $P(5)$ por separado. Después podemos usar $P(5)$ como base de una inducción que cubra todos los índices $n\ge5$, y combinar ese resultado con el caso $P(4)$ ya conocido.
+
+Lo que importa no es la apariencia formal de la prueba, sino que no quede ningún índice del dominio sin cubrir.
+
+#### Solución E3
+
+La frase
+
+> sea $n\ge1$ arbitrario y supongamos $P(n)$
+
+es legítima. Dentro del paso inductivo estamos intentando demostrar la implicación
+
+$$
+P(n)\Rightarrow P(n+1),
+$$
+
+y para probar una condicional podemos suponer temporalmente su antecedente.
+
+La circularidad aparece después, cuando el borrador utiliza
+
+$$
+\forall k\ge1,\quad P(k).
+$$
+
+Ésa es precisamente la conclusión universal que todavía queremos demostrar. Tomar $k=n+1$ sólo produce el objetivo porque el teorema completo ya fue supuesto de antemano.
+
+La reparación exige un puente matemático independiente:
+
+$$
+P(n)
+\quad+
+\quad
+\text{definiciones, hipótesis o resultados previos}
+\quad\Longrightarrow\quad
+P(n+1).
+$$
+
+La hipótesis inductiva debe transformarse en información útil; no puede sustituirse por la conclusión universal.
+
+#### Solución E4
+
+La dependencia disponible es
+
+$$
+P(n-2)\Rightarrow P(n+1).
+$$
+
+Por tanto, para producir el caso $n+1$ no basta necesariamente con la instancia inmediata $P(n)$. La **inducción fuerte** expresa de manera natural la situación, porque permite utilizar cualquier caso anterior ya cubierto.
+
+El paso sólo está disponible para
+
+$$
+n\ge8.
+$$
+
+El primer paso produce $P(9)$ y utiliza
+
+$$
+P(6).
+$$
+
+Por tanto, antes de activar el mecanismo deben estar cubiertos
+
+$$
+P(6),\quad P(7),\quad P(8).
+$$
+
+Con esos tres casos iniciales, la hipótesis fuerte para $n=8$ contiene $P(6)$ y permite obtener $P(9)$. Después la hipótesis para $n=9$ contiene todos los casos desde $6$ hasta $9$, y el proceso continúa.
+
+También sería posible usar inducción ordinaria sobre una propiedad acumulativa, por ejemplo una afirmación que transporte simultáneamente tres casos consecutivos. Esquemáticamente podríamos definir
+
+$$
+Q(n):\quad P(n)\land P(n+1)\land P(n+2).
+$$
+
+Si el argumento permite demostrar
+
+$$
+Q(n)\Rightarrow Q(n+1),
+$$
+
+la inducción ordinaria puede transportar el bloque completo. La forma fuerte, sin embargo, refleja más directamente la dependencia original.
+
+#### Solución E5
+
+La especificación no define legítimamente una función
+
+$$
+a:\mathbb N\to\mathbb N.
+$$
+
+El dato inicial es válido:
+
+$$
+a_0=1\in\mathbb N.
+$$
+
+Pero la primera aplicación de la regla produce
+
+$$
+a_1=a_0-2=-1,
+$$
+
+y
+
+$$
+-1\notin\mathbb N.
+$$
+
+Por tanto, la regla
+
+$$
+G(n,x)=x-2
+$$
+
+no determina una función
+
+$$
+G:\mathbb N\times\mathbb N\to\mathbb N.
+$$
+
+Una reparación mínima consiste en cambiar el codominio y trabajar con
+
+$$
+a:\mathbb N\to\mathbb Z.
+$$
+
+Entonces
+
+$$
+G:\mathbb N\times\mathbb Z\to\mathbb Z,
+\qquad
+G(n,x)=x-2
+$$
+
+sí es una función total, y el teorema de recursión determina una única sucesión entera. De hecho, sus valores satisfacen
+
+$$
+a_n=1-2n,
+$$
+
+aunque esa fórmula explícita sería una propiedad que todavía habría que demostrar si quisiéramos utilizarla universalmente.
+
+---
+
+#### Solución E6
+
+Definimos
+
+$$
+P(n):\quad 3^n\ge2n+1.
+$$
+
+**Base.** Para $n=0$,
+
+$$
+3^0=1=2\cdot0+1.
+$$
+
+Así, $P(0)$ es verdadera.
+
+**Paso.** Sea $n\in\mathbb N$ arbitrario y supongamos
+
+$$
+3^n\ge2n+1.
+$$
+
+Debemos demostrar
+
+$$
+3^{n+1}\ge2(n+1)+1=2n+3.
+$$
+
+Multiplicando la hipótesis inductiva por $3>0$,
+
+$$
+3^{n+1}\ge6n+3.
+$$
+
+Como $n\ge0$,
+
+$$
+6n+3\ge2n+3.
+$$
+
+Por tanto,
+
+$$
+3^{n+1}\ge2n+3.
+$$
+
+Hemos demostrado
+
+$$
+P(n)\Rightarrow P(n+1)
+$$
+
+para un $n$ arbitrario. Por inducción,
+
+$$
+\boxed{3^n\ge2n+1\text{ para todo }n\in\mathbb N}.
+$$
+
+La hipótesis inductiva es la desigualdad en el índice $n$; el objetivo local es la desigualdad en $n+1$; la conclusión universal sólo aparece después de combinar base y paso.
+
+#### Solución E7
+
+Definimos
+
+$$
+P(n):\quad n^3\ge4n,
+$$
+
+para $n\ge2$.
+
+**Base.** Para $n=2$,
+
+$$
+2^3=8=4\cdot2.
+$$
+
+**Paso.** Sea $n\ge2$ y supongamos
+
+$$
+n^3\ge4n.
+$$
+
+Entonces
+
+$$
+\begin{aligned}
+(n+1)^3
+&=n^3+3n^2+3n+1\\
+&\ge4n+3n^2+3n+1.
+\end{aligned}
+$$
+
+Como $n\ge2$, tenemos en particular
+
+$$
+3n^2+3n+1\ge4.
+$$
+
+Luego
+
+$$
+(n+1)^3\ge4n+4=4(n+1).
+$$
+
+Por inducción desde $2$,
+
+$$
+\boxed{n^3\ge4n\text{ para todo }n\ge2}.
+$$
+
+El valor $n=0$ satisface también $0^3\ge4\cdot0$, pero eso no cambia el dominio natural del enunciado propuesto. El caso $n=1$ falla:
+
+$$
+1^3<4.
+$$
+
+Por eso no existe una cadena inductiva continua desde $0$ que cubra el teorema sin tratar el hueco en $1$. El tramo $n\ge2$ expresa exactamente la región continua donde la afirmación es verdadera y el paso puede propagarse.
+
+#### Solución E8
+
+Sea
+
+$$
+P(n):\quad \exists a,b\in\mathbb N\text{ tales que }n=4a+7b.
+$$
+
+Queremos demostrar $P(n)$ para todo $n\ge18$.
+
+Los primeros cuatro casos son:
+
+$$
+18=4\cdot1+7\cdot2,
+$$
+
+$$
+19=4\cdot3+7\cdot1,
+$$
+
+$$
+20=4\cdot5+7\cdot0,
+$$
+
+y
+
+$$
+21=4\cdot0+7\cdot3.
+$$
+
+Por tanto,
+
+$$
+P(18),P(19),P(20),P(21)
+$$
+
+son verdaderas.
+
+Ahora sea $n\ge21$ y supongamos, como hipótesis inductiva fuerte, que
+
+$$
+P(k)
+$$
+
+es verdadera para todo
+
+$$
+18\le k\le n.
+$$
+
+Queremos demostrar $P(n+1)$.
+
+Como $n\ge21$,
+
+$$
+n-3\ge18.
+$$
+
+Además,
+
+$$
+n-3\le n.
+$$
+
+Por la hipótesis fuerte podemos utilizar
+
+$$
+P(n-3).
+$$
+
+Así existen $a,b\in\mathbb N$ tales que
+
+$$
+n-3=4a+7b.
+$$
+
+Sumando $4$,
+
+$$
+n+1=4(a+1)+7b.
+$$
+
+Como $a+1\in\mathbb N$, queda demostrada $P(n+1)$.
+
+Por inducción fuerte,
+
+$$
+\boxed{\forall n\ge18,\ \exists a,b\in\mathbb N\text{ tales que }n=4a+7b}.
+$$
+
+Los cuatro casos iniciales no son un ritual: son exactamente los índices que deben quedar cubiertos antes de que el mecanismo “retroceder cuatro unidades y sumar $4$” pueda activarse sin huecos.
+
+#### Solución E9
+
+Supongamos, buscando una contradicción, que existe una función
+
+$$
+a:\mathbb N\to\mathbb N
+$$
+
+tal que
+
+$$
+a_{n+1}<a_n
+$$
+
+para todo $n\in\mathbb N$.
+
+Consideremos el conjunto de todos sus valores:
+
+$$
+S=\{a_n:n\in\mathbb N\}.
+$$
+
+El conjunto $S$ es un subconjunto no vacío de $\mathbb N$, porque contiene al menos $a_0$.
+
+Por el principio de buen orden, $S$ tiene un mínimo. Por tanto, existe algún índice $m\in\mathbb N$ tal que
+
+$$
+a_m=\min S.
+$$
+
+Pero la condición de decrecimiento estricto da
+
+$$
+a_{m+1}<a_m.
+$$
+
+Además,
+
+$$
+a_{m+1}\in S.
+$$
+
+Esto contradice que $a_m$ sea el mínimo de $S$.
+
+Por tanto, no existe una cadena infinita estrictamente decreciente de números naturales:
+
+$$
+\boxed{\nexists a:\mathbb N\to\mathbb N\text{ con }a_{n+1}<a_n\text{ para todo }n}.
+$$
+
+El buen orden concentra el argumento en un supuesto valor mínimo y hace imposible que la cadena siga descendiendo después de alcanzarlo.
+
+#### Solución E10
+
+Trabajemos en
+
+$$
+X=\mathbb Q_{>0}.
+$$
+
+Definamos
+
+$$
+G:X\to X,
+\qquad
+G(x)=\frac{x}{1+x}.
+$$
+
+Si $x\in\mathbb Q_{>0}$, entonces $1+x>0$, el cociente es racional y
+
+$$
+\frac{x}{1+x}>0.
+$$
+
+Por tanto,
+
+$$
+G(x)\in\mathbb Q_{>0}.
+$$
+
+El dato inicial
+
+$$
+c_0=1
+$$
+
+pertenece también a $X$. La forma elemental del teorema de recursión garantiza entonces una única función
+
+$$
+c:\mathbb N\to\mathbb Q_{>0}
+$$
+
+tal que
+
+$$
+c_0=1,
+\qquad
+c_{n+1}=\frac{c_n}{1+c_n}.
+$$
+
+Ahora demostremos la fórmula explícita. Definimos
+
+$$
+P(n):\quad c_n=\frac1{n+1}.
+$$
+
+**Base.** Para $n=0$,
+
+$$
+c_0=1=\frac1{0+1}.
+$$
+
+**Paso.** Supongamos
+
+$$
+c_n=\frac1{n+1}.
+$$
+
+Usando la definición recursiva,
+
+$$
+\begin{aligned}
+c_{n+1}
+&=\frac{c_n}{1+c_n}\\
+&=\frac{\frac1{n+1}}{1+\frac1{n+1}}\\
+&=\frac{\frac1{n+1}}{\frac{n+2}{n+1}}\\
+&=\frac1{n+2}.
+\end{aligned}
+$$
+
+Esto es exactamente $P(n+1)$.
+
+Por inducción,
+
+$$
+\boxed{c_n=\frac1{n+1}\text{ para todo }n\in\mathbb N}.
+$$
+
+La separación conceptual es ésta:
+
+- la **recursión** garantiza la existencia y unicidad de la función $c$;
+- la ecuación recursiva proporciona el puente entre $c_{n+1}$ y $c_n$;
+- la **inducción** demuestra que la fórmula $1/(n+1)$ describe todos los valores de ese objeto ya definido.
+
+---
+
+#### Solución E11
+
+Queremos demostrar que las funciones $x$ e $y$ coinciden en todos los naturales.
+
+Definamos
+
+$$
+P(n):\quad x_n=y_n.
+$$
+
+**Base.** Por hipótesis,
+
+$$
+x_0=2=y_0.
+$$
+
+Así, $P(0)$ es verdadera.
+
+**Paso.** Supongamos
+
+$$
+x_n=y_n.
+$$
+
+Entonces
+
+$$
+\begin{aligned}
+x_{n+1}
+&=3x_n+1\\
+&=3y_n+1\\
+&=y_{n+1}.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+La inducción da
+
+$$
+x_n=y_n
+$$
+
+para todo $n\in\mathbb N$. Por igualdad de funciones,
+
+$$
+\boxed{x=y}.
+$$
+
+La recursión especifica cómo debe avanzar cada función desde el dato inicial. La inducción demuestra que dos funciones que obedecen exactamente la misma especificación no pueden separarse en ningún índice. Por eso el argumento establece **unicidad**; no es el acto de definir $x$ o $y$.
+
+#### Solución E12
+
+La regla
+
+$$
+r_{n+2}=r_{n+1}+2r_n
+$$
+
+necesita dos valores anteriores para producir el siguiente término.
+
+Conocer sólo
+
+$$
+r_0=1
+$$
+
+no permite calcular $r_2$, porque antes necesitamos $r_1$.
+
+Por eso la especificación original está incompleta.
+
+Añadamos
+
+$$
+r_1=2.
+$$
+
+Entonces
+
+$$
+r_2=r_1+2r_0=2+2=4,
+$$
+
+$$
+r_3=r_2+2r_1=4+4=8,
+$$
+
+y
+
+$$
+r_4=r_3+2r_2=8+8=16.
+$$
+
+Esto sugiere
+
+$$
+r_n=2^n.
+$$
+
+Demostremos la fórmula mediante inducción fuerte.
+
+Los dos casos iniciales son
+
+$$
+r_0=1=2^0
+$$
+
+y
+
+$$
+r_1=2=2^1.
+$$
+
+Ahora supongamos que la fórmula es verdadera para todos los índices hasta $n+1$. En particular podemos utilizar
+
+$$
+r_n=2^n
+$$
+
+y
+
+$$
+r_{n+1}=2^{n+1}.
+$$
+
+Entonces
+
+$$
+\begin{aligned}
+r_{n+2}
+&=r_{n+1}+2r_n\\
+&=2^{n+1}+2\cdot2^n\\
+&=2^{n+1}+2^{n+1}\\
+&=2^{n+2}.
+\end{aligned}
+$$
+
+Por inducción fuerte,
+
+$$
+\boxed{r_n=2^n\text{ para todo }n\in\mathbb N}.
+$$
+
+También podríamos usar inducción ordinaria si empaquetamos las dos instancias necesarias en una sola propiedad. Por ejemplo,
+
+$$
+Q(n):\quad r_n=2^n\ \text{y}\ r_{n+1}=2^{n+1}.
+$$
+
+El paso $Q(n)\Rightarrow Q(n+1)$ transportaría simultáneamente la información de dos índices consecutivos. La forma fuerte evita tener que introducir artificialmente ese paquete.
+
+#### Solución E13
+
+Queremos demostrar
+
+$$
+\forall n\in\mathbb N,\quad P(n)
+$$
+
+a partir de
+
+$$
+P(0)
+$$
+
+y
+
+$$
+\forall n\in\mathbb N,\qquad P(n)\Rightarrow P(n+1).
+$$
+
+Supongamos, buscando una contradicción, que la conclusión universal es falsa.
+
+Definamos el conjunto de índices de fallo:
+
+$$
+F=\{n\in\mathbb N:\neg P(n)\}.
+$$
+
+Bajo nuestra suposición,
+
+$$
+F\neq\varnothing.
+$$
+
+Por buen orden existe
+
+$$
+m=\min F.
+$$
+
+Como $P(0)$ es verdadera,
+
+$$
+0\notin F,
+$$
+
+y por tanto
+
+$$
+m\ge1.
+$$
+
+Así,
+
+$$
+m-1\in\mathbb N.
+$$
+
+Además,
+
+$$
+m-1<m.
+$$
+
+Por minimalidad de $m$,
+
+$$
+m-1\notin F,
+$$
+
+de modo que
+
+$$
+P(m-1)
+$$
+
+es verdadera.
+
+Aplicando la regla de paso al índice $m-1$ obtenemos
+
+$$
+P(m).
+$$
+
+Pero $m\in F$, así que también
+
+$$
+\neg P(m).
+$$
+
+Contradicción.
+
+Por tanto,
+
+$$
+F=\varnothing,
+$$
+
+y concluimos
+
+$$
+\boxed{\forall n\in\mathbb N,\ P(n)}.
+$$
+
+El argumento muestra de manera concreta que la inducción ordinaria puede interpretarse como la imposibilidad de un **primer fallo**.
+
+#### Solución E14
+
+**Situación 1.** Si para demostrar $P(n+1)$ sólo necesitamos $P(n)$, la arquitectura más natural es la **inducción ordinaria**:
+
+$$
+P(n)\Rightarrow P(n+1).
+$$
+
+**Situación 2.** Si el caso siguiente depende de una instancia anterior no inmediata, como $P(n-3)$, y queremos disponer de todos los casos anteriores pertinentes, la forma más natural es la **inducción fuerte**. Ésta organiza la hipótesis local como un bloque
+
+$$
+P(n_0),\ldots,P(n).
+$$
+
+**Situación 3.** Si suponemos que el teorema falla, obtenemos un conjunto no vacío de índices de fallo y la minimalidad del primero convierte todos los casos anteriores en casos buenos. Entonces la arquitectura natural es el **menor contraejemplo**, apoyado en buen orden.
+
+**Situación 4.** Si la tarea consiste en construir una sucesión mediante un valor inicial y una regla para producir valores posteriores, no estamos todavía demostrando una propiedad universal. La herramienta es la **recursión**.
+
+Podemos resumir:
+
+$$
+\begin{array}{ccl}
+\text{inducción ordinaria} &:& \text{transportar una instancia},\\[1mm]
+\text{inducción fuerte} &:& \text{transportar historia previa},\\[1mm]
+\text{menor contraejemplo} &:& \text{hacer imposible el primer fallo},\\[1mm]
+\text{recursión} &:& \text{definir el objeto índice por índice}.
+\end{array}
+$$
+
+Las tres primeras son arquitecturas para demostrar propiedades. La cuarta cumple otra función lógica: construir un objeto.
+
+#### Solución E15
+
+La especificación es
+
+$$
+s_0=3,
+\qquad
+s_{n+1}=s_n+6n+4.
+$$
+
+Podemos escribir la regla como
+
+$$
+G:\mathbb N\times\mathbb N\to\mathbb N,
+\qquad
+G(n,x)=x+6n+4.
+$$
+
+Si $n,x\in\mathbb N$, entonces
+
+$$
+x+6n+4\in\mathbb N.
+$$
+
+Además,
+
+$$
+s_0=3\in\mathbb N.
+$$
+
+Por el teorema elemental de recursión existe una única función
+
+$$
+s:\mathbb N\to\mathbb N
+$$
+
+que satisface la especificación.
+
+Calculemos algunos términos:
+
+$$
+s_1=s_0+4=7,
+$$
+
+$$
+s_2=s_1+10=17,
+$$
+
+y
+
+$$
+s_3=s_2+16=33.
+$$
+
+Los valores
+
+$$
+3,7,17,33,\ldots
+$$
+
+sugieren la fórmula
+
+$$
+s_n=3n^2+n+3.
+$$
+
+Demostrémosla.
+
+Definimos
+
+$$
+P(n):\quad s_n=3n^2+n+3.
+$$
+
+**Base.** Para $n=0$,
+
+$$
+s_0=3=3\cdot0^2+0+3.
+$$
+
+**Paso.** Supongamos
+
+$$
+s_n=3n^2+n+3.
+$$
+
+La definición recursiva da
+
+$$
+s_{n+1}=s_n+6n+4.
+$$
+
+Sustituyendo la hipótesis inductiva,
+
+$$
+\begin{aligned}
+s_{n+1}
+&=(3n^2+n+3)+6n+4\\
+&=3n^2+7n+7.
+\end{aligned}
+$$
+
+Por otra parte,
+
+$$
+\begin{aligned}
+3(n+1)^2+(n+1)+3
+&=3(n^2+2n+1)+n+1+3\\
+&=3n^2+7n+7.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+s_{n+1}=3(n+1)^2+(n+1)+3.
+$$
+
+Así hemos demostrado el paso inductivo. Por inducción,
+
+$$
+\boxed{s_n=3n^2+n+3\text{ para todo }n\in\mathbb N}.
+$$
+
+Ahora estudiemos el crecimiento. De la propia definición,
+
+$$
+s_{n+1}-s_n=6n+4.
+$$
+
+Como
+
+$$
+6n+4>0
+$$
+
+para todo $n\in\mathbb N$, se sigue directamente que
+
+$$
+s_{n+1}>s_n
+$$
+
+para todo $n$.
+
+Por tanto, la sucesión es estrictamente creciente.
+
+No hizo falta inducción para esta última afirmación porque la regla recursiva proporciona directamente, para un índice arbitrario, una diferencia positiva entre términos consecutivos. La inducción fue natural para demostrar una fórmula explícita universal; la monotonía, en cambio, se deduce localmente de la definición.
+
+---
+
+### Cierre del capítulo
+
+A lo largo de C08 hemos utilizado la estructura de los naturales de cuatro maneras que ahora pueden distinguirse con precisión:
+
+$$
+\boxed{\text{inducción ordinaria}}
+\qquad
+\boxed{\text{inducción fuerte}}
+\qquad
+\boxed{\text{buen orden}}
+\qquad
+\boxed{\text{recursión}}.
+$$
+
+Las tres primeras permiten organizar demostraciones universales sobre $\mathbb N$ y, en el marco elemental del capítulo, quedaron conectadas por equivalencias explícitas. La recursión cumple una función distinta: permite construir objetos indexados por los naturales a partir de datos iniciales y reglas de generación.
+
+La relación más útil puede resumirse así:
+
+$$
+\boxed{\text{recursión construye}}
+\qquad\text{y}\qquad
+\boxed{\text{inducción verifica}}.
+$$
+
+Pero tampoco debemos convertir esta fórmula en una receta mecánica. Un objeto recursivo puede poseer propiedades demostrables directamente; una prueba inductiva puede requerir una idea matemática no suministrada por la arquitectura; y el buen orden sólo localiza un mínimo, no inventa la contradicción que debe excluirlo.
+
+El capítulo siguiente cambiará de pregunta. Ya no preguntará principalmente cómo propagar una propiedad verdadera, sino cómo reconocer que una afirmación universal **es falsa**, cómo encontrar un contraejemplo y cómo diagnosticar exactamente dónde se rompe un argumento.
+
+Ése será el problema de C09.
+
+---
+
+[Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd) · [← Capítulo 7](fundamentos-para-matematicos-capitulo-7-descubrir-demostraciones.qmd) · [Capítulo 9 →](fundamentos-para-matematicos-capitulo-9-contraejemplos.qmd)

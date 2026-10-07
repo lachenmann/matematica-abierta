@@ -1,0 +1,2303 @@
+---
+title: "Capítulo 10 — ¿Cómo se escribe una prueba para que otro matemático pueda verificarla?"
+description: "Fundamentos para matemáticos: capítulo 10."
+content-id: MA-BCH-0169
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C10
+editorial-id: MA-BCH-FND-01-010
+source-version: v01
+status: published
+date-created: 2026-10-06
+date-modified: 2026-10-06
+areas: [fundamentos]
+level: fundamental
+topics: [razonamiento-matematico, lenguaje-matematico, demostraciones]
+prerequisites: []
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito FND-T1-C10, v01; bibliografía y convenciones en la página del libro."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+En los capítulos anteriores hemos trabajado casi siempre con una pregunta matemática: ¿qué debe demostrarse, cómo puede encontrarse una prueba, qué ocurre si el enunciado es falso o en qué punto falla un argumento?
+
+C06 organizó arquitecturas de demostración. C07 separó el trabajo de descubrimiento de la prueba final. C09 entrenó el diagnóstico de argumentos defectuosos y la reparación de dependencias inválidas.
+
+Pero incluso después de haber encontrado una demostración correcta queda una tarea distinta.
+
+Tenemos que **escribirla**.
+
+No basta con que el autor sepa por qué funciona.
+
+La prueba debe quedar construida de manera que otro lector pueda reconstruirla.
+
+Ésa es una exigencia más fuerte que «anotar las cuentas que hice» y distinta de «contar todo lo que pensé mientras buscaba la solución».
+
+Una prueba final no es un diario del descubrimiento.
+
+Es una exposición organizada de dependencias.
+
+El lector debe poder reconocer:
+
+- qué objetos están en juego;
+- qué hipótesis están disponibles;
+- qué variables se introducen y qué representan;
+- qué resultado autoriza cada paso no rutinario;
+- cuándo se abre una obligación nueva;
+- cuándo esa obligación queda cerrada;
+- y por qué la conclusión final es exactamente la que se quería demostrar.
+
+Esto conduce al principio rector de C10:
+
+$$
+\boxed{
+\text{una prueba está lista cuando otro lector puede auditarla sin adivinar sus dependencias}
+}.
+$$
+
+La palabra **auditar** será importante.
+
+No significa formalizar cada línea en un asistente de pruebas ni justificar operaciones elementales hasta volver ilegible la idea principal.
+
+Significa algo más básico y más práctico: que un lector del nivel previsto pueda seguir el argumento, comprobarlo y localizar de dónde proviene cada paso importante.
+
+La escritura matemática tendrá entonces una función lógica.
+
+Una notación inestable puede ocultar qué objeto estamos usando. Un pronombre ambiguo puede dejar incierto el referente de una afirmación. Una cadena de símbolos puede borrar la diferencia entre igualdad, implicación y equivalencia. Una referencia vaga como «por lo anterior» puede obligar al lector a buscar por ensayo qué resultado se está invocando.
+
+Estos problemas no son idénticos a una inferencia falsa.
+
+Una prueba puede ser correcta y estar mal escrita.
+
+También puede estar escrita con gran claridad y ser matemáticamente incorrecta.
+
+C10 conservará siempre esa distinción.
+
+Nuestro objetivo no será confundir estilo con verdad, sino aprender a presentar una demostración correcta de modo que su corrección pueda **verificarse**.
+
+Durante el capítulo trabajaremos con una pregunta recurrente:
+
+> **¿qué información necesita realmente el lector para reconstruir este paso sin inventar nada que el autor no haya dicho?**
+
+Comenzaremos precisamente por aclarar qué significa que una prueba sea auditable.
+
+## 10.1. Una prueba correcta también debe poder auditarse {#fnd-section-10-1}
+
+Consideremos una situación elemental.
+
+Queremos demostrar:
+
+> Para todo entero $n$, si $18\mid n$, entonces $6\mid n$.
+
+La idea matemática es muy simple.
+
+Si $n$ es múltiplo de $18$, entonces puede escribirse como $18$ por un entero; por tanto también puede escribirse como $6$ por un entero.
+
+Supongamos que alguien redacta:
+
+> Como $18\mid n$, tenemos $n=18k=6(3k)$. Luego $6\mid n$.
+
+Un lector experimentado probablemente entiende lo que quiso decir el autor.
+
+Puede reconstruir mentalmente que $k$ debe ser un entero y que la primera igualdad proviene de la definición de divisibilidad.
+
+Pero observe qué trabajo tuvo que hacer el lector.
+
+Tuvo que completar información que no estaba escrita.
+
+La prueba puede arreglarse con muy poco:
+
+> Sea $n\in\mathbb Z$ y supongamos que $18\mid n$. Por definición de divisibilidad, existe $k\in\mathbb Z$ tal que $n=18k$. Como
+> $$
+> n=18k=6(3k)
+> $$
+> y $3k\in\mathbb Z$, se sigue que $6\mid n$.
+
+La matemática esencial no cambió.
+
+No apareció una idea nueva.
+
+Lo que cambió fue la **trazabilidad**.
+
+Ahora podemos señalar con precisión:
+
+1. cuál es el objeto arbitrario: $n$;
+2. cuál es su dominio: $\mathbb Z$;
+3. cuál es la hipótesis: $18\mid n$;
+4. de dónde surge $k$: de la definición de divisibilidad;
+5. qué sabemos sobre $k$: $k\in\mathbb Z$;
+6. por qué $3k$ sirve como nuevo factor entero;
+7. qué conclusión queda establecida: $6\mid n$.
+
+La segunda versión no es mejor porque sea más larga.
+
+Es mejor porque deja visibles las dependencias necesarias.
+
+### Corrección, legibilidad y auditabilidad
+
+Conviene separar tres propiedades.
+
+**Corrección matemática.**
+
+Cada afirmación utilizada es verdadera bajo las hipótesis disponibles y cada inferencia está autorizada.
+
+**Legibilidad.**
+
+El texto puede seguirse sin fricción innecesaria: los símbolos son estables, las oraciones son comprensibles y la organización permite reconocer la estructura general.
+
+**Auditabilidad.**
+
+El lector puede reconstruir qué información estaba disponible en cada punto y por qué el paso siguiente se sigue de ella.
+
+Estas propiedades están relacionadas, pero no son equivalentes.
+
+Una prueba puede ser matemáticamente correcta y aun así obligar al lector a reconstruir demasiado.
+
+También puede ser muy legible y, sin embargo, contener una inferencia inválida.
+
+Podemos resumir las posibilidades así:
+
+::: {.table-responsive}
+
+| | Auditable | No auditable |
+|---|---|---|
+| **Correcta** | objetivo de C10 | necesita edición |
+| **Incorrecta** | el error puede localizarse con claridad | falla matemática y expositivamente |
+
+:::
+
+La escritura no convierte una prueba inválida en válida.
+
+Pero una buena escritura sí permite **ver** mejor por qué un argumento funciona o dónde deja de funcionar.
+
+### El lector no debe leer la mente del autor
+
+Cuando el autor conoce la solución, muchas dependencias le parecen invisibles por exceso de familiaridad.
+
+Puede pensar:
+
+> «es obvio de dónde salió $k$»
+
+porque él mismo acaba de usar la definición de divisibilidad.
+
+Pero el lector sólo dispone de lo que el texto le ofrece.
+
+Ésta es una asimetría fundamental entre escribir y leer una prueba.
+
+El autor conoce:
+
+- el objetivo;
+- la estrategia;
+- los intentos descartados;
+- el significado que quiso dar a cada símbolo;
+- el resultado al que quiere llegar.
+
+El lector, en cambio, recibe una secuencia de frases y fórmulas.
+
+Por eso una prueba no debe evaluarse preguntando únicamente
+
+> «¿yo sé lo que quise decir?»
+
+sino también
+
+> **«¿puede reconstruirlo un lector que conoce la materia pero no conoce esta solución?»**
+
+Ése será nuestro lector de referencia durante C10.
+
+No será un principiante absoluto.
+
+Podrá utilizar lo ya establecido en FND: definiciones, cuantificadores, métodos de prueba, conjuntos, funciones, inducción y diagnóstico de argumentos.
+
+Pero no deberá adivinar la solución concreta que el autor tiene en mente.
+
+### Auditar es reconstruir dependencias
+
+Podemos imaginar una prueba como una red orientada.
+
+Tenemos ciertos datos iniciales:
+
+$$
+H_1,H_2,\ldots,H_r.
+$$
+
+A partir de ellos obtenemos afirmaciones intermedias:
+
+$$
+A_1,A_2,\ldots,A_s,
+$$
+
+hasta alcanzar la conclusión
+
+$$
+C.
+$$
+
+La estructura ideal no necesita ser literalmente una cadena lineal, pero cada nodo importante debe tener una procedencia reconocible.
+
+Podemos representar una versión simple como
+
+$$
+\boxed{H_1,\ldots,H_r}
+\longrightarrow
+\boxed{A_1}
+\longrightarrow
+\boxed{A_2}
+\longrightarrow
+\cdots
+\longrightarrow
+\boxed{C}.
+$$
+
+Una auditoría pregunta, en cada transición:
+
+> **¿qué autoriza esta flecha?**
+
+La respuesta puede ser:
+
+- una definición;
+- una hipótesis;
+- un resultado demostrado antes;
+- una operación algebraica legítima;
+- una regla lógica;
+- una separación exhaustiva de casos;
+- una construcción realizada en la propia prueba.
+
+Si el lector debe inventar la respuesta, la dependencia no está suficientemente visible.
+
+### No todas las razones deben escribirse con la misma amplitud
+
+De aquí podría surgir una reacción excesiva.
+
+Tal vez pensemos que toda línea necesita una explicación completa.
+
+No es así.
+
+Supongamos que en una prueba ya sabemos que
+
+$$
+a=3
+$$
+
+y necesitamos escribir
+
+$$
+a+2=5.
+$$
+
+Para el lector previsto no hace falta insertar una teoría de la suma de enteros.
+
+El paso es rutinario.
+
+En cambio, si usamos un resultado anterior cuyas hipótesis no son evidentes, sí necesitamos dejar visible por qué podemos aplicarlo.
+
+Por tanto, auditabilidad no significa máxima longitud.
+
+Significa **detalle suficiente en los puntos donde aparece nueva dependencia matemática**.
+
+Más adelante, en §10.8, estudiaremos directamente cómo decidir cuánto detalle escribir.
+
+Por ahora basta con una regla provisional:
+
+$$
+\boxed{
+\text{explicar lo que el lector no puede recuperar de manera segura a partir del contexto disponible}
+}.
+$$
+
+### Una prueba puede ser demasiado comprimida sin ser falsa
+
+Volvamos al ejemplo de divisibilidad.
+
+La versión
+
+> Como $18\mid n$, tenemos $n=18k=6(3k)$. Luego $6\mid n$.
+
+no contiene necesariamente una idea matemática equivocada.
+
+El problema es que deja implícitas varias piezas:
+
+- que $n$ es entero;
+- que $k$ es entero;
+- que $k$ existe por la definición de $18\mid n$;
+- que $3k$ sigue siendo entero.
+
+En un contexto muy avanzado, algunas de estas piezas podrían comprimirse legítimamente.
+
+En un capítulo fundacional, donde precisamente se está aprendiendo a escribir pruebas verificables, conviene hacerlas visibles.
+
+Esto muestra que la auditabilidad depende en parte del **lector previsto**.
+
+No existe una longitud universalmente correcta para toda demostración.
+
+Una misma frase puede ser suficiente en un artículo especializado y demasiado comprimida en una primera introducción a las pruebas.
+
+### Una prueba también puede ser demasiado larga
+
+El defecto contrario existe.
+
+Podríamos expandir la prueba anterior así:
+
+> Como $k\in\mathbb Z$, entonces $3\in\mathbb Z$. Como el producto de enteros es entero, $3k\in\mathbb Z$. Como $6\in\mathbb Z$ y $3k\in\mathbb Z$, el producto $6(3k)$ es entero. Además, $18=6\cdot3$. Por tanto $18k=6\cdot3\cdot k=6(3k)$...
+
+Nada de esto es necesariamente falso.
+
+Pero ahora la idea principal comienza a desaparecer bajo información que el lector ya domina.
+
+La prueba deja de ser eficiente.
+
+Por eso C10 buscará un equilibrio:
+
+$$
+\boxed{\text{ningún hueco decisivo}}
+\qquad\text{y}\qquad
+\boxed{\text{ningún detalle rutinario que oculte la idea}}.
+$$
+
+La economía es parte de la claridad, pero sólo después de asegurar la trazabilidad.
+
+### Auditabilidad no significa formalización completa
+
+También debemos evitar otra confusión.
+
+Una demostración ordinaria y una prueba formalizada en un sistema lógico no tienen el mismo nivel de explicitación.
+
+En una formalización completa pueden necesitarse pasos que, en prosa matemática, se consideran parte del conocimiento compartido del lector.
+
+C10 no convertirá cada demostración en una derivación formal simbólica.
+
+Nuestro criterio será más práctico:
+
+> **¿puede un lector competente reconstruir el argumento sin introducir hipótesis, significados o resultados que el texto nunca hizo disponibles?**
+
+Si la respuesta es sí, la prueba puede ser suficientemente auditable aunque omita operaciones rutinarias.
+
+Si la respuesta es no, falta información.
+
+### El test de reconstrucción
+
+Podemos formular un primer protocolo de lectura.
+
+Ante una prueba breve, intenta responder sin consultar la intención del autor:
+
+**1. ¿Qué objetos están fijados?**
+
+¿Sabemos qué representan y a qué dominios pertenecen?
+
+**2. ¿Qué hipótesis están activas?**
+
+¿Se distinguen de las conclusiones que todavía deben demostrarse?
+
+**3. ¿Qué símbolos nuevos aparecen?**
+
+¿Fueron introducidos antes de usarse?
+
+**4. ¿De dónde proviene cada paso no rutinario?**
+
+¿Definición, hipótesis, teorema previo, construcción, cálculo?
+
+**5. ¿Cuándo se cierra la obligación?**
+
+¿La conclusión obtenida coincide exactamente con el objetivo?
+
+Si podemos responder estas preguntas, tenemos una ruta de auditoría.
+
+Si alguna respuesta exige adivinar, hemos localizado un punto de edición.
+
+### Editar no significa cambiar la matemática
+
+Una de las habilidades centrales de C10 será transformar versiones opacas en versiones auditables **sin alterar el contenido matemático**.
+
+Esto importa porque editar una prueba no es reparar un teorema falso.
+
+En C09 podíamos necesitar cambiar una hipótesis, restringir un dominio o sustituir una inferencia inválida.
+
+En C10 muchas veces la matemática ya está bien.
+
+La tarea consiste en volver visible algo que estaba implícito:
+
+- introducir una variable;
+- nombrar su dominio;
+- separar dos casos en párrafos;
+- indicar qué definición se usa;
+- reemplazar «por lo anterior» por una referencia identificable;
+- añadir una frase que explique por qué una igualdad produce la conclusión.
+
+La edición correcta conserva la prueba y mejora su trazabilidad.
+
+### Una dependencia visible también ayuda a detectar errores
+
+Aunque C10 no repite el catálogo de fallos de C09, una consecuencia importante de la auditabilidad es que los errores quedan más expuestos.
+
+Si escribimos
+
+> «por el Teorema 6.4, como se cumplen sus hipótesis...»
+
+el lector puede comprobar esas hipótesis.
+
+Si escribimos simplemente
+
+> «por un teorema conocido...»
+
+la dependencia queda oculta.
+
+Si declaramos
+
+> «sea $x\in A\cap B$»
+
+queda claro qué sabemos sobre $x$.
+
+Si aparece de pronto una letra $x$ sin introducción, el lector debe reconstruir su función.
+
+La buena exposición no garantiza que la prueba sea correcta.
+
+Pero crea mejores condiciones para verificarla.
+
+Podemos condensar esta idea así:
+
+$$
+\boxed{
+\text{hacer visible una dependencia no la hace verdadera, pero permite comprobarla}
+}.
+$$
+
+### La prueba final es un objeto público
+
+Durante el descubrimiento podemos escribir abreviaturas personales:
+
+- flechas;
+- palabras sueltas;
+- símbolos temporales;
+- diagramas incompletos;
+- pasos hacia atrás;
+- conjeturas que después descartaremos.
+
+Ese trabajo puede ser excelente para pensar.
+
+Pero la versión final tiene otra función.
+
+Debe poder salir de la libreta del autor y ser leída por otra persona.
+
+En ese momento deja de bastar con que el texto funcione como recordatorio privado.
+
+Debe funcionar como argumento público.
+
+Ésta es la transición que organiza todo C10:
+
+$$
+\boxed{\text{yo sé por qué funciona}}
+\quad\longrightarrow\quad
+\boxed{\text{otro lector puede verificar por qué funciona}}.
+$$
+
+::: {.callout-important title="La prueba no debe exigir telepatía"}
+Una prueba auditable permite identificar:
+
+- los objetos y sus dominios;
+- las hipótesis activas;
+- los símbolos introducidos;
+- la procedencia de cada paso no rutinario;
+- la obligación que se está resolviendo;
+- el punto donde esa obligación queda cerrada.
+
+No hace falta escribir cada operación elemental.
+
+Sí hace falta evitar que el lector deba inventar una hipótesis, un referente, un significado o una dependencia esencial que el texto no declaró.
+:::
+
+### Comprobación
+
+Compara las dos versiones siguientes del mismo argumento.
+
+Se quiere demostrar:
+
+> Para todo $n\in\mathbb Z$, si $15\mid n$, entonces $5\mid n$.
+
+**Versión A.**
+
+> Como $15\mid n$, $n=15k=5(3k)$. Luego $5\mid n$.
+
+**Versión B.**
+
+> Sea $n\in\mathbb Z$ y supongamos que $15\mid n$. Por definición de divisibilidad, existe $k\in\mathbb Z$ tal que $n=15k$. Entonces
+> $$
+> n=15k=5(3k).
+> $$
+> Como $3k\in\mathbb Z$, concluimos que $5\mid n$.
+
+Responde:
+
+1. ¿Utilizan las dos versiones la misma idea matemática?
+2. ¿Qué información debe reconstruir el lector en la versión A?
+3. ¿Hay una nueva idea matemática en la versión B?
+4. ¿Por qué la versión B es más auditable?
+5. ¿Sería útil añadir una demostración completa de que $3k\in\mathbb Z$? Justifica según el lector previsto.
+
+**Respuesta razonada.**
+
+Las dos versiones utilizan la misma idea central: desplegar la definición de divisibilidad y reescribir un múltiplo de $15$ como múltiplo de $5$.
+
+En la versión A, el lector debe inferir que la variable $k$ es un entero y que aparece porque $15\mid n$ significa que existe algún entero $k$ con
+
+$$
+n=15k.
+$$
+
+También debe reconstruir que el factor
+
+$$
+3k
+$$
+
+es entero y, por tanto, puede funcionar como testigo de que $5\mid n$.
+
+La versión B no introduce una nueva estrategia ni una nueva propiedad profunda.
+
+Hace explícitas las dependencias que la versión A había comprimido.
+
+Por eso es más auditable: un lector puede identificar el dominio de $n$, la hipótesis activa, el origen y dominio de $k$, la transformación utilizada y el punto exacto donde se satisface la definición de $5\mid n$.
+
+No hace falta demostrar desde cero que el producto de dos enteros es un entero.
+
+Para el lector previsto de C10, saber que $3k\in\mathbb Z$ cuando $k\in\mathbb Z$ es un paso rutinario. Basta con registrarlo cuando cumple una función lógica importante, porque necesitamos saber que el factor de $5$ pertenece al dominio correcto.
+
+La diferencia entre ambas versiones no es, por tanto, «larga frente a corta».
+
+Es:
+
+$$
+\boxed{\text{dependencias implícitas que el lector debe reconstruir}}
+\qquad\text{frente a}\qquad
+\boxed{\text{dependencias visibles en el texto}}.
+$$
+
+### La siguiente obligación aparece antes del primer cálculo
+
+En los ejemplos anteriores la auditabilidad dependió, antes que nada, de saber qué representan $n$ y $k$.
+
+Esto señala el siguiente problema del capítulo.
+
+Antes de escribir una sola inferencia debemos controlar la entrada de cada objeto al argumento:
+
+- ¿qué variable estamos fijando?;
+- ¿a qué dominio pertenece?;
+- ¿es arbitraria o elegida?;
+- ¿qué hipótesis suponemos sobre ella?;
+- ¿qué símbolos auxiliares introduciremos después?
+
+Una gran cantidad de ambigüedades puede eliminarse si la apertura de la prueba está bien construida.
+
+Ése será el contenido de §10.2.
+
+## 10.2. Introducir objetos, variables, dominios e hipótesis {#fnd-section-10-2}
+
+En §10.1 formulamos una prueba sencilla de auditabilidad: otro lector debe poder reconstruir qué se supone, qué se introduce, por qué cada paso está autorizado y cuándo se alcanza la conclusión.
+
+La primera oportunidad de cumplir —o de romper— ese contrato aparece antes de la primera inferencia.
+
+Aparece en la **entrada de los objetos al argumento**.
+
+Cuando una prueba utiliza una letra, el lector necesita saber qué representa. Cuando fija una variable, necesita saber de qué dominio proviene. Cuando introduce una hipótesis, necesita reconocer desde qué punto está disponible. Cuando aparece un símbolo auxiliar, debe quedar claro si fue dado, elegido, construido o garantizado por una definición o un resultado previo.
+
+Una gran cantidad de pruebas difíciles de leer no falla porque contenga matemática sofisticada.
+
+Falla porque empieza demasiado tarde.
+
+El texto comienza manipulando símbolos cuya historia el lector todavía no conoce.
+
+### La prueba comienza antes del primer cálculo
+
+Consideremos la afirmación
+
+$$
+\forall n\in\mathbb Z,
+\qquad
+6\mid n\Rightarrow12\mid n^2.
+$$
+
+Una versión opaca podría comenzar así:
+
+> $n=6k$, luego $n^2=36k^2=12(3k^2)$, por tanto $12\mid n^2$.
+
+La idea matemática es correcta.
+
+Pero el lector debe reconstruir varias piezas:
+
+- ¿qué es $n$?;
+- ¿por qué pertenece a $\mathbb Z$?;
+- ¿se está suponiendo $6\mid n$?;
+- ¿de dónde apareció $k$?;
+- ¿por qué $k\in\mathbb Z$?;
+- ¿qué permite concluir finalmente $12\mid n^2$?
+
+Una apertura auditable hace visible esa información antes de utilizarla:
+
+> Sea $n\in\mathbb Z$ y supongamos que $6\mid n$. Por definición de divisibilidad, existe $k\in\mathbb Z$ tal que $n=6k$. Entonces
+> $$
+> n^2=36k^2=12(3k^2).
+> $$
+> Como $3k^2\in\mathbb Z$, concluimos que $12\mid n^2$.
+
+La segunda versión no contiene una idea matemática adicional.
+
+Contiene una **entrada ordenada de la información**.
+
+El lector puede distinguir ahora:
+
+$$
+\boxed{n\in\mathbb Z}
+\qquad
+\boxed{6\mid n}
+\qquad
+\boxed{k\in\mathbb Z\text{ con }n=6k}.
+$$
+
+Cada dato tiene un origen identificable.
+
+### Un símbolo nuevo necesita una historia
+
+No hace falta escribir una biografía de cada letra.
+
+Sí hace falta que el símbolo tenga una introducción suficiente para responder, cuando corresponda, tres preguntas:
+
+1. **¿qué objeto representa?**
+2. **¿a qué dominio pertenece?**
+3. **¿por qué tenemos derecho a utilizarlo?**
+
+Por ejemplo, si durante una prueba aparece
+
+$$
+x\in A\cap B,
+$$
+
+puede ser suficiente escribir:
+
+> Sea $x\in A\cap B$.
+
+Con una sola frase sabemos que $x$ es un elemento, que está siendo fijado en ese momento y que pertenece al conjunto indicado.
+
+En cambio, comenzar con
+
+> $x\in A\cap B$, entonces...
+
+puede ser comprensible en unas notas privadas, pero deja sin marcar el acto lógico de fijar el objeto con el que trabajaremos.
+
+Del mismo modo, si escribimos
+
+$$
+y=f(x),
+$$
+
+debemos haber dejado disponible qué es $f$ y qué es $x$.
+
+El orden de aparición importa:
+
+$$
+\boxed{\text{introducir}}
+\longrightarrow
+\boxed{\text{usar}}.
+$$
+
+No al revés.
+
+### Arbitrario, fijo, elegido y construido no significan lo mismo
+
+Las frases con las que introducimos objetos registran papeles lógicos diferentes.
+
+Supongamos que queremos demostrar una afirmación universal
+
+$$
+\forall x\in D,
+\qquad
+P(x).
+$$
+
+Una apertura natural es:
+
+> Sea $x\in D$ arbitrario.
+
+La palabra **arbitrario** indica que no hemos escogido un caso favorable. El argumento debe funcionar para cualquier elemento del dominio.
+
+En muchas pruebas también basta escribir
+
+> Sea $x\in D$.
+
+si el contexto deja inequívoco que se está demostrando una universal y que no se impondrá sobre $x$ ninguna propiedad adicional no autorizada.
+
+Pero la situación cambia cuando necesitamos un testigo existencial.
+
+Para demostrar, por ejemplo, que para cada $x\in\mathbb R$ existe un real mayor que $x$, podemos comenzar:
+
+> Sea $x\in\mathbb R$. Elijamos $y=x+1$.
+
+Aquí $x$ es el objeto universal fijado y $y$ es un objeto **construido a partir de él**.
+
+La dependencia queda visible:
+
+$$
+y=y(x)=x+1.
+$$
+
+Si, en cambio, un teorema previo garantiza la existencia de algún objeto sin darnos una fórmula, la redacción debe reflejarlo:
+
+> Como se cumplen las hipótesis del teorema, existe $y\in E$ tal que $P(x,y)$.
+
+En ese caso $y$ no fue inventado por el autor ni elegido libremente entre todos los objetos de $E$.
+
+Fue garantizado por una dependencia previa.
+
+Estas diferencias de lenguaje ayudan a registrar la arquitectura real del argumento:
+
+- **sea**: fija un objeto para trabajar con él;
+- **sea ... arbitrario**: subraya que no se eligió un caso especial;
+- **elijamos**: selecciona un objeto entre opciones permitidas;
+- **definamos**: introduce un objeto mediante una regla explícita;
+- **existe ... tal que**: registra una existencia ya justificada;
+- **tomemos el objeto garantizado por...**: hace visible la procedencia de un testigo.
+
+No son fórmulas rígidas.
+
+Son maneras de hacer legible el papel de cada objeto.
+
+### El dominio no debe quedar a cargo de la memoria del lector
+
+C03 enseñó que el dominio forma parte del significado de una afirmación. C10 no reabre esa teoría.
+
+La pregunta ahora es editorial:
+
+> **¿dónde debe aparecer el dominio para que la prueba pueda seguirse sin ambigüedad?**
+
+Consideremos una prueba que empieza:
+
+> Sea $x$. Como $x^2=1$, tenemos $x=\pm1$.
+
+El texto puede ser correcto o incorrecto según qué objetos se permitan.
+
+Si trabajamos en $\mathbb R$, la conclusión tiene el sentido esperado.
+
+Si el contexto fuera otro, podría cambiar qué operaciones, raíces o soluciones están disponibles.
+
+Una versión auditable no obliga al lector a recuperar el dominio desde varias páginas atrás cuando éste es relevante para la inferencia:
+
+> Sea $x\in\mathbb R$ y supongamos que $x^2=1$.
+
+No hace falta repetir $x\in\mathbb R$ en cada línea posterior.
+
+Hace falta **establecerlo una vez y mantenerlo estable**.
+
+La repetición constante produce ruido.
+
+La omisión inicial produce incertidumbre.
+
+### Las hipótesis deben entrar antes de ser utilizadas
+
+Una demostración condicional necesita distinguir con claridad entre:
+
+- el objeto que estamos considerando;
+- la hipótesis adicional que suponemos sobre ese objeto;
+- la conclusión que pretendemos obtener.
+
+Para demostrar
+
+$$
+\forall x\in\mathbb R,
+\qquad
+x>2\Rightarrow x^2>4,
+$$
+
+una apertura suficiente es:
+
+> Sea $x\in\mathbb R$ y supongamos que $x>2$.
+
+Desde ese momento están disponibles dos datos diferentes:
+
+$$
+x\in\mathbb R
+$$
+
+y
+
+$$
+x>2.
+$$
+
+La primera afirmación fija el dominio.
+
+La segunda es la hipótesis del condicional.
+
+Si el texto comienza directamente con
+
+> Como $x>2$, entonces...
+
+el lector quizá pueda reconstruir la intención, pero no sabe todavía si $x$ fue fijado, si es arbitrario, si pertenece al dominio correcto o si la hipótesis procede del enunciado o de un paso anterior.
+
+Una prueba auditable no debería depender de esa reconstrucción cuando una frase breve puede evitarla.
+
+### Las hipótesis locales tienen duración limitada
+
+No toda hipótesis permanece activa durante toda la demostración.
+
+En una prueba por casos podemos escribir:
+
+> **Caso 1.** Supongamos que $x=0$.
+
+La hipótesis
+
+$$
+x=0
+$$
+
+pertenece a ese caso.
+
+Cuando el caso termina y comenzamos
+
+> **Caso 2.** Supongamos que $x\neq0$,
+
+la primera hipótesis ya no está disponible.
+
+Algo semejante ocurre en una prueba por contradicción: la negación provisional del objetivo está activa dentro de esa subdemostración y desaparece cuando la contradicción cierra el argumento.
+
+C10 no reenseñará estas arquitecturas de C06.
+
+Sí exigirá que su **alcance textual** quede reconocible.
+
+Los recursos más sencillos suelen bastar:
+
+- abrir un párrafo nuevo;
+- rotular los casos;
+- anunciar «supongamos, para llegar a una contradicción, que...»;
+- cerrar explícitamente el caso o la contradicción antes de volver al argumento principal.
+
+La disposición textual ayuda a responder:
+
+> **¿qué hipótesis están activas en esta línea?**
+
+### Un testigo existencial debe entrar con sus propiedades pertinentes
+
+Supongamos que sabemos
+
+$$
+6\mid n.
+$$
+
+Por definición de divisibilidad obtenemos
+
+$$
+\exists k\in\mathbb Z,
+\qquad
+n=6k.
+$$
+
+Si la prueba escribe simplemente
+
+> Entonces $n=6k$,
+
+ha ocultado una parte esencial de la información: que el testigo pertenece a $\mathbb Z$.
+
+Esto puede parecer pequeño, pero esa pertenencia suele ser exactamente lo que permitirá cerrar la conclusión más adelante.
+
+Por eso es preferible:
+
+> Existe $k\in\mathbb Z$ tal que $n=6k$.
+
+A partir de ahí no necesitamos repetir en cada línea que $k$ es entero.
+
+Ya ha quedado incorporado al contexto activo.
+
+La introducción correcta funciona como una especie de registro:
+
+$$
+\boxed{k\in\mathbb Z}
+\qquad+
+\qquad
+\boxed{n=6k}.
+$$
+
+Ambas piezas pueden utilizarse después.
+
+### Varias variables exigen conservar sus dependencias
+
+Cuando aparecen varios objetos, la apertura también debe mostrar quién depende de quién.
+
+Consideremos
+
+$$
+\forall x\in\mathbb R\;\exists y\in\mathbb R,
+\qquad
+y>x.
+$$
+
+Una prueba clara puede escribir:
+
+> Sea $x\in\mathbb R$ arbitrario. Definamos $y=x+1$.
+
+Aquí la elección de $y$ ocurre **después** de fijar $x$.
+
+El texto refleja por tanto la dependencia lógica
+
+$$
+x\longmapsto y=x+1.
+$$
+
+En cambio, una apertura como
+
+> Sea $y=x+1$ y sea $x\in\mathbb R$,
+
+puede acabar describiendo la misma fórmula, pero presenta los objetos en un orden que oscurece la dependencia que la prueba debe certificar.
+
+La regla editorial es sencilla:
+
+> **introducir los objetos en un orden compatible con la dependencia lógica que la demostración utiliza.**
+
+Esto será especialmente importante cuando una misma prueba combine parámetros, objetos arbitrarios, testigos y construcciones auxiliares.
+
+### Declarar demasiado también puede entorpecer
+
+La solución no consiste en comenzar cada prueba con un inventario enciclopédico.
+
+Una apertura como
+
+> Sean $n,k,m,r,s,t\in\mathbb Z$, sea $A$ un conjunto, sea $f$ una función...
+
+es peor si la mayoría de esos objetos todavía no tiene ninguna función.
+
+Conviene introducir un símbolo **cuando entra en la dependencia**, no páginas antes por si acaso aparece después.
+
+Podemos pensar en un principio de proximidad:
+
+$$
+\boxed{\text{declarar antes de usar}}
+$$
+
+pero también
+
+$$
+\boxed{\text{declarar cerca del primer uso}}.
+$$
+
+Eso reduce la carga de memoria del lector y permite que cada objeto aparezca acompañado por la razón que lo introduce.
+
+### Un protocolo para auditar la apertura de una prueba
+
+Antes de revisar cálculos o inferencias internas, podemos auditar sólo las primeras líneas.
+
+**1. ¿Qué objetos vienen dados por el enunciado?**
+
+¿Conjuntos, números, funciones, relaciones, índices?
+
+**2. ¿Qué variable se fija primero?**
+
+¿Es arbitraria, particular, un parámetro o un candidato elegido?
+
+**3. ¿Su dominio quedó declarado?**
+
+¿El dominio es relevante para las operaciones posteriores?
+
+**4. ¿Qué hipótesis quedan activas?**
+
+¿Proceden del enunciado, de un caso, de una contradicción o de un resultado anterior?
+
+**5. ¿Qué símbolos auxiliares aparecen?**
+
+¿Cada uno fue introducido antes de usarse?
+
+**6. ¿Qué justifica su existencia?**
+
+¿Una definición, una construcción explícita, una elección o un teorema previo?
+
+**7. ¿El orden de introducción refleja las dependencias?**
+
+Si $y$ depende de $x$, ¿se fijó primero $x$?
+
+Este control no demuestra todavía que la prueba sea correcta.
+
+Pero permite saber si el lector dispone de un contexto suficientemente bien formado para empezar a verificarla.
+
+::: {.callout-important title="Antes de usar un símbolo, el lector debe saber de dónde salió"}
+Una apertura auditable hace visibles, cuando son relevantes:
+
+- el objeto que se fija;
+- su dominio;
+- las hipótesis activas;
+- el origen de cada símbolo auxiliar;
+- la dependencia entre objetos.
+
+No es necesario repetir esos datos en cada línea.
+
+Sí es necesario declararlos antes de que una inferencia dependa de ellos.
+
+Una regla práctica es:
+
+$$
+\boxed{\text{introducir} \;\to\; \text{establecer dominio/papel} \;\to\; \text{usar}}.
+$$
+:::
+
+### Comprobación
+
+Examina las tres aperturas siguientes.
+
+**A.** Se quiere demostrar:
+
+$$
+\forall n\in\mathbb Z,
+\qquad
+10\mid n\Rightarrow5\mid n.
+$$
+
+La prueba comienza:
+
+> $n=10k=5(2k)$, luego $5\mid n$.
+
+**B.** Se quiere demostrar:
+
+$$
+\forall x\in\mathbb R\;\exists y\in\mathbb R,
+\qquad
+y>x.
+$$
+
+La prueba comienza:
+
+> Sea $x\in\mathbb R$ arbitrario. Definamos $y=x+1$.
+
+**C.** Se quiere demostrar, para conjuntos $A$ y $B$,
+
+$$
+A\cap B\subseteq A.
+$$
+
+La prueba comienza:
+
+> Sea $x\in A\cap B$. Entonces $x\in A$ y $x\in B$.
+
+Para cada caso:
+
+1. identifica los objetos que el lector necesita tener registrados;
+2. decide si la apertura ya los introduce de manera suficiente;
+3. si falta información, reescribe sólo lo necesario;
+4. explica qué parte de la mejora es matemática y qué parte es expositiva.
+
+**Respuesta razonada.**
+
+En **A**, la idea matemática es correcta, pero la apertura es insuficiente como texto final.
+
+El lector necesita saber que estamos trabajando con un entero arbitrario $n$ que satisface la hipótesis
+
+$$
+10\mid n.
+$$
+
+También necesita saber por qué existe el símbolo $k$ y cuál es su dominio.
+
+Una versión suficiente es:
+
+> Sea $n\in\mathbb Z$ y supongamos que $10\mid n$. Por definición de divisibilidad, existe $k\in\mathbb Z$ tal que $n=10k$. Entonces
+> $$
+> n=10k=5(2k).
+> $$
+> Como $2k\in\mathbb Z$, concluimos que $5\mid n$.
+
+No hemos cambiado la demostración.
+
+Hemos hecho explícitos el dominio de $n$, la hipótesis activa y el origen de $k$.
+
+En **B**, la apertura ya es adecuada.
+
+El objeto universal $x$ aparece primero, con dominio y carácter arbitrario. Después se introduce el testigo
+
+$$
+y=x+1,
+$$
+
+cuya dependencia respecto de $x$ queda visible en la propia definición.
+
+Todavía habrá que verificar que $y\in\mathbb R$ y que $y>x$, pero no falta información sobre el origen de los objetos.
+
+En **C**, la apertura también es suficiente.
+
+Al escribir
+
+> Sea $x\in A\cap B$,
+
+fijamos el elemento con el que se demostrará la inclusión. La definición de intersección permite después obtener
+
+$$
+x\in A
+\qquad\text{y}\qquad
+x\in B.
+$$
+
+No necesitamos añadir «sea $x$ arbitrario» si el contexto de una prueba de inclusión deja claro que el elemento fijado no posee ninguna propiedad adicional aparte de pertenecer a $A\cap B$.
+
+Tampoco hace falta volver a definir $A$ y $B$ dentro de la prueba si el enunciado ya los introdujo como conjuntos.
+
+Los tres casos muestran el criterio buscado:
+
+$$
+\boxed{\text{hacer explícita la información necesaria}}
+\neq
+\boxed{\text{repetir toda la información disponible}}.
+$$
+
+### De introducir símbolos a conservar su significado
+
+Una apertura correcta resuelve sólo el primer problema.
+
+Después de introducir un símbolo todavía debemos conservar estable su significado.
+
+Si una letra representa un entero, no debería reaparecer unas líneas más abajo nombrando un conjunto. Si $f$ representa una función, debemos distinguirla de un valor $f(x)$. Si creamos una notación local, el lector debe poder recordar qué comprime y por qué resulta útil.
+
+La siguiente sección estudia precisamente esa responsabilidad:
+
+> **¿cómo escoger y mantener una notación que reduzca trabajo al lector en lugar de crear nuevas ambigüedades?**
+
+Ése será el contenido de §10.3.
+
+## 10.3. Notación coherente y nombres estables {#fnd-section-10-3}
+
+En §10.2 vimos cómo entra un símbolo en una prueba.
+
+Ahora aparece una responsabilidad distinta:
+
+> **una vez que un símbolo ha entrado, su significado debe mantenerse estable mientras siga activo.**
+
+Ésta parece una regla menor.
+
+No lo es.
+
+En una demostración breve, una sola letra puede transportar mucha información:
+
+- qué tipo de objeto representa;
+- de qué conjunto proviene;
+- si es arbitrario o elegido;
+- qué propiedades sabemos de él;
+- y qué papel cumple en la arquitectura del argumento.
+
+Si una misma letra cambia de objeto sin aviso, el lector ya no puede saber qué hipótesis siguen disponibles.
+
+La notación deja entonces de comprimir información y empieza a destruirla.
+
+Podemos expresar el principio así:
+
+$$
+\boxed{
+\text{un símbolo útil conserva una identidad matemática reconocible durante su alcance}
+}.
+$$
+
+Esto no significa que cada letra deba tener un significado universal para toda la matemática.
+
+La letra $x$ puede representar un número en una prueba y un elemento de un conjunto en otra.
+
+La exigencia es **local**:
+
+> dentro de un mismo tramo de razonamiento, el lector debe poder seguir la historia de cada símbolo sin preguntarse si el autor cambió silenciosamente su significado.
+
+### Un símbolo no es sólo una marca gráfica
+
+Consideremos una prueba elemental.
+
+Queremos demostrar que si $n$ es múltiplo de $12$, entonces es múltiplo de $4$.
+
+Una redacción razonable comienza:
+
+> Sea $n\in\mathbb Z$ y supongamos que $12\mid n$. Entonces existe $k\in\mathbb Z$ tal que $n=12k$.
+
+Hasta aquí tenemos dos símbolos con papeles claros:
+
+- $n$: entero arbitrario sometido a la hipótesis principal;
+- $k$: entero cuya existencia está garantizada por la definición de divisibilidad.
+
+Supongamos ahora que la prueba continúa:
+
+> Como $n=12k=4(3k)$, definamos $n=3k$. Entonces $n\in\mathbb Z$ y se sigue que $4\mid n$.
+
+La dificultad no es sólo estética.
+
+La letra $n$ ya tenía un significado: era el entero original del teorema.
+
+La frase «definamos $n=3k$» intenta reutilizarla para nombrar otro entero.
+
+A partir de ese momento, preguntas muy simples quedan sin respuesta inmediata:
+
+- ¿el símbolo $n$ sigue nombrando al entero original?;
+- ¿ahora nombra al factor $3k$?;
+- ¿la conclusión $4\mid n$ se refiere al objeto que queríamos estudiar o al objeto redefinido?
+
+La prueba puede repararse sin cambiar la matemática:
+
+> Como $n=12k=4(3k)$ y $3k\in\mathbb Z$, concluimos que $4\mid n$.
+
+O, si realmente necesitamos nombrar el factor:
+
+> Definamos $m=3k$. Entonces $m\in\mathbb Z$ y $n=4m$, por lo que $4\mid n$.
+
+La mejora consiste en preservar una identidad ya asignada y utilizar un nombre nuevo para un objeto nuevo.
+
+### Una letra, una función local
+
+Una regla práctica muy útil es:
+
+$$
+\boxed{
+\text{si el objeto cambia, considere cambiar también el símbolo}
+}.
+$$
+
+No es una ley absoluta.
+
+Hay contextos donde una variable puede reasignarse de manera inequívoca —por ejemplo en un algoritmo o en una sucesión de sustituciones cuidadosamente declaradas—, pero en una demostración fundacional la reutilización innecesaria suele aumentar el costo de lectura.
+
+Pensemos en el siguiente texto:
+
+> Sea $A$ un conjunto y sea $x\in A$. Definamos $A=f(x)$. Entonces...
+
+Aunque la gramática sea correcta, la notación es peligrosa.
+
+El símbolo $A$ empezó nombrando un conjunto y después intenta nombrar un valor de una función.
+
+El lector debe borrar mentalmente la primera identidad de $A$ y reemplazarla por otra.
+
+Eso vuelve inestable la historia del argumento.
+
+Es mejor escribir, por ejemplo,
+
+> Sea $A$ un conjunto y sea $x\in A$. Definamos $y=f(x)$. Entonces...
+
+Ahora cada símbolo conserva un papel reconocible.
+
+### Objeto y valor no son lo mismo
+
+Uno de los conflictos más frecuentes aparece con funciones.
+
+Si escribimos
+
+$$
+f:X\to Y,
+$$
+
+el símbolo $f$ representa una **función**.
+
+Para un elemento $x\in X$, el símbolo
+
+$$
+f(x)
+$$
+
+representa el **valor de esa función en $x$**.
+
+Estos objetos están relacionados, pero no son intercambiables.
+
+Por ejemplo, una frase como
+
+> «Sea $f(x)$ una función inyectiva»
+
+puede resultar comprensible por costumbre, pero mezcla el nombre del objeto con una de sus evaluaciones.
+
+En C10 preferiremos escribir:
+
+> Sea $f:X\to Y$ una función inyectiva.
+
+Y después, cuando aparezca un elemento $x\in X$, utilizar
+
+$$
+f(x)
+$$
+
+para su imagen.
+
+Esta distinción importa especialmente cuando la prueba contiene varias funciones, composiciones o igualdades.
+
+Compare:
+
+> Como $f=g$, tenemos $f(x)=g(x)$ para todo $x\in X$.
+
+con
+
+> Como $f(x)=g(x)$, tenemos $f=g$.
+
+La segunda frase sólo puede ser correcta si la igualdad se ha establecido **para todo** elemento del dominio y ambas funciones tienen dominios y codominios compatibles.
+
+Una notación estable ayuda a no confundir
+
+$$
+\text{igualdad de objetos}
+$$
+
+con
+
+$$
+\text{igualdad de valores en un punto}.
+$$
+
+### Convención no significa obligación absoluta
+
+La matemática dispone de muchas convenciones útiles.
+
+Por ejemplo, es frecuente usar:
+
+- $n,m,k$ para enteros o naturales;
+- $x,y,z$ para elementos o números variables;
+- $A,B,C$ para conjuntos;
+- $f,g,h$ para funciones;
+- $\varepsilon,\delta$ para cantidades positivas pequeñas en análisis.
+
+Estas convenciones reducen fricción porque ofrecen expectativas al lector.
+
+Pero no son leyes lógicas.
+
+Podemos llamar $u$ a un conjunto o $A$ a un número si lo declaramos con claridad.
+
+El problema aparece cuando una elección no convencional no aporta ninguna ventaja y obliga al lector a reaprender el código local sin necesidad.
+
+La regla no será entonces
+
+> «use siempre las letras tradicionales».
+
+Será:
+
+> **aproveche las convenciones cuando ayuden y defina con claridad cualquier desviación que pueda producir ambigüedad.**
+
+### La notación local debe pagar su costo
+
+A veces una expresión larga aparece muchas veces.
+
+Entonces puede ser útil introducir una abreviatura.
+
+Supongamos que necesitamos repetir con frecuencia
+
+$$
+(A\cap B)\cup(A\cap C).
+$$
+
+Podríamos escribir:
+
+> Denotemos por $S$ el conjunto $(A\cap B)\cup(A\cap C)$.
+
+A partir de ahí, usar $S$ puede reducir ruido.
+
+Pero si la expresión sólo aparece una vez, crear el símbolo $S$ puede producir el efecto contrario.
+
+El lector debe ahora recordar una traducción adicional:
+
+$$
+S\quad\leftrightarrow\quad(A\cap B)\cup(A\cap C).
+$$
+
+Toda notación nueva tiene un costo cognitivo.
+
+Por eso conviene preguntar:
+
+> **¿este símbolo elimina más trabajo del que introduce?**
+
+Si la respuesta es no, quizá sea mejor conservar la expresión original.
+
+### Nombrar puede revelar estructura
+
+Una buena abreviatura no sólo acorta.
+
+También puede hacer visible una idea.
+
+Supongamos que en una prueba aparecen repetidamente dos conjuntos:
+
+$$
+\{x\in X:P(x)\}
+\qquad\text{y}\qquad
+\{x\in X:Q(x)\}.
+$$
+
+Si la demostración estudia sistemáticamente la relación entre ambos, puede ser útil definir
+
+$$
+A=\{x\in X:P(x)\},
+\qquad
+B=\{x\in X:Q(x)\}.
+$$
+
+Entonces una discusión larga sobre predicados puede convertirse en una pregunta estructural sobre
+
+$$
+A\subseteq B,
+\qquad
+A=B,
+\qquad
+A\cap B,
+$$
+
+según el problema.
+
+Aquí la notación no es meramente abreviatura tipográfica.
+
+Organiza el razonamiento.
+
+Pero esa ventaja sólo existe si los símbolos $A$ y $B$ conservan después su significado.
+
+### La reutilización puede ser legítima cuando el alcance terminó
+
+No toda repetición de una letra es un error.
+
+Supongamos que una demostración se divide en dos casos completamente separados.
+
+En el primer caso escribimos:
+
+> Existe $k\in\mathbb Z$ tal que $n=2k$.
+
+Terminamos ese caso.
+
+En el segundo caso podríamos volver a escribir:
+
+> Existe $k\in\mathbb Z$ tal que $n=2k+1$.
+
+¿Es obligatorio cambiar a otra letra?
+
+No necesariamente.
+
+Si el primer $k$ dejó de estar activo al cerrar el caso y el segundo se introduce de nuevo con claridad, no existe conflicto lógico.
+
+Podemos representarlo así:
+
+$$
+\boxed{\text{caso 1: }k\text{ local}}
+\qquad
+\boxed{\text{caso 2: }k\text{ local}}.
+$$
+
+El problema no es repetir una letra en todo el universo del texto.
+
+El problema es tener dos significados activos que el lector pueda confundir.
+
+Por eso la estabilidad debe analizarse junto con el **alcance**.
+
+### Índices y subíndices también cuentan una historia
+
+Los subíndices son útiles cuando varios objetos cumplen papeles paralelos.
+
+Por ejemplo,
+
+$$
+x_1,x_2,\ldots,x_n
+$$
+
+sugiere una familia o lista de objetos relacionados.
+
+En cambio, escribir
+
+$$
+x,\ y,\ z,\ w,\ u,\ v
+$$
+
+para seis objetos de la misma clase puede ser menos informativo si la elección de letras no refleja ninguna diferencia conceptual.
+
+Pero tampoco conviene introducir índices sin necesidad.
+
+Si sólo hay dos candidatos, escribir
+
+$$
+a_1,a_2
+$$
+
+puede ser útil.
+
+Escribir
+
+$$
+a_{1,0},a_{1,1},a_{2,0},a_{2,1}
+$$
+
+cuando no existe una estructura doble real añade una organización que el problema no tiene.
+
+Una notación buena **expresa estructura existente**; no inventa estructura gráfica para parecer más formal.
+
+### La notación debe ser compatible con las operaciones que hacemos
+
+Considere una prueba donde $A$ es un conjunto y más adelante aparece
+
+$$
+A+1.
+$$
+
+Tal expresión podría tener significado en algún contexto especializado, pero si nunca se definió una suma entre conjuntos, el lector tiene una alerta legítima.
+
+Del mismo modo, si $f$ es una función y escribimos
+
+$$
+f+1,
+$$
+
+necesitamos un contexto donde esa operación esté definida.
+
+La notación no sólo debe ser estable; también debe ser **tipológicamente compatible** con lo que hacemos con el objeto.
+
+En lenguaje informal podemos preguntarnos:
+
+> «¿este símbolo sigue comportándose como el tipo de objeto que dije que era?»
+
+Esta pregunta descubre muchos errores de escritura e incluso algunos errores matemáticos.
+
+### El mismo símbolo en dos niveles puede inducir confusión
+
+Otro caso frecuente ocurre cuando una letra nombra una colección y también uno de sus elementos.
+
+Por ejemplo:
+
+> Sea $A=\{A_1,A_2,A_3\}$. Tomemos $A\in A$.
+
+La frase intenta usar $A$ al mismo tiempo para el conjunto total y para un elemento de ese conjunto.
+
+Aunque pudiera reconstruirse la intención, la escritura es innecesariamente hostil.
+
+Podemos escribir:
+
+> Sea $\mathcal A=\{A_1,A_2,A_3\}$. Tomemos $B\in\mathcal A$.
+
+Ahora la diferencia de niveles queda visible:
+
+- $\mathcal A$: colección;
+- $B$: uno de sus elementos.
+
+No es obligatorio usar letra caligráfica.
+
+Lo esencial es impedir que dos niveles distintos compitan por el mismo nombre dentro del mismo alcance.
+
+### Coherencia no significa monotonía visual
+
+También puede ocurrir el defecto contrario: intentar que todo se parezca demasiado.
+
+Si tenemos una función
+
+$$
+f:X\to Y
+$$
+
+y un elemento
+
+$$
+x\in X,
+$$
+
+no ayuda llamar a la imagen
+
+$$
+x'
+$$
+
+si después necesitamos recordar que, en realidad,
+
+$$
+x'=f(x).
+$$
+
+A veces es mejor conservar directamente $f(x)$ porque esa notación muestra la dependencia funcional.
+
+En otros contextos, definir
+
+$$
+y=f(x)
+$$
+
+sí puede ser conveniente si $y$ tendrá una vida larga en la prueba.
+
+La elección depende de cuánto trabajo ahorre y cuánta estructura conserve.
+
+### Cambiar una letra puede cambiar la lectura lógica
+
+Compare las dos redacciones siguientes.
+
+**Versión A.**
+
+> Sea $x\in X$. Como $f$ es sobreyectiva, existe $x\in X$ tal que $f(x)=y$.
+
+**Versión B.**
+
+> Sea $y\in Y$. Como $f:X\to Y$ es sobreyectiva, existe $x\in X$ tal que $f(x)=y$.
+
+En A, la letra $x$ aparece primero como objeto ya fijado y después se reutiliza en una existencia nueva.
+
+Además, $y$ aparece sin introducción.
+
+La idea matemática quizá sea recuperable, pero la dependencia queda dañada.
+
+En B, el orden de nombres refleja la estructura lógica:
+
+$$
+y\in Y
+\quad\longrightarrow\quad
+\exists x\in X
+\quad\text{tal que}\quad
+f(x)=y.
+$$
+
+La notación correcta no es aquí cosmética.
+
+Hace visible qué objeto depende de cuál.
+
+### Un nombre estable facilita referencias posteriores
+
+Si un objeto tendrá un papel importante varias líneas después, conviene darle un nombre que pueda recuperarse de forma inequívoca.
+
+Supongamos que construimos
+
+$$
+z=\frac{x+y}{2}.
+$$
+
+Si después debemos demostrar tres propiedades distintas de ese mismo objeto, nombrarlo como $z$ puede ser mucho mejor que repetir cada vez
+
+$$
+\frac{x+y}{2}.
+$$
+
+El nombre permite escribir:
+
+- primero, $z$ pertenece al dominio pertinente;
+- segundo, $x<z$;
+- tercero, $z<y$.
+
+La notación actúa como una **referencia persistente**.
+
+Pero, otra vez, esa ventaja desaparece si después reutilizamos $z$ para otro objeto.
+
+### Un protocolo de estabilidad notacional
+
+Podemos auditar una prueba con cinco preguntas.
+
+**1. ¿Cada símbolo fue introducido antes de utilizarse?**
+
+Ésta era la responsabilidad principal de §10.2.
+
+**2. ¿Conserva el mismo significado mientras permanece activo?**
+
+Si cambia, ¿el cambio fue declarado y terminó el alcance anterior?
+
+**3. ¿El tipo de objeto sigue siendo reconocible?**
+
+¿Conjunto, elemento, función, valor, número, proposición?
+
+**4. ¿La notación nueva reduce realmente complejidad?**
+
+¿O obliga al lector a memorizar traducciones innecesarias?
+
+**5. ¿Las convenciones elegidas ayudan a leer la estructura?**
+
+¿Los nombres paralelos, índices o letras reflejan relaciones reales entre los objetos?
+
+Podemos condensar el protocolo así:
+
+$$
+\boxed{
+\text{introducir}
+\longrightarrow
+\text{mantener}
+\longrightarrow
+\text{usar}
+\longrightarrow
+\text{cerrar alcance}
+}.
+$$
+
+### El criterio de sustitución mental
+
+Existe una prueba práctica de claridad notacional.
+
+Elija un símbolo importante y pregunte:
+
+> **¿puedo reemplazar mentalmente este símbolo por su significado original en cada aparición sin obtener contradicciones ni cambios de objeto?**
+
+Si $A$ significa «el conjunto de enteros pares» y en cada línea podemos leer esa frase en lugar de $A$, la notación es estable.
+
+Si a mitad de la prueba una aparición de $A$ sólo tiene sentido interpretándola como «un entero par particular», hemos detectado un cambio de nivel o de significado.
+
+Este test no sustituye el análisis matemático, pero es muy eficaz para revisar borradores.
+
+::: {.callout-important title="Un símbolo debe tener memoria"}
+Una notación auditable permite reconstruir la historia de cada símbolo:
+
+- dónde fue introducido;
+- qué objeto representa;
+- qué propiedades se le asignaron;
+- de qué otros objetos depende;
+- durante qué tramo permanece activo.
+
+Reutilizar una letra no es un error por sí mismo. El problema aparece cuando dos significados incompatibles permanecen activos o cuando el cambio ocurre sin señal suficiente para el lector.
+:::
+
+### Comprobación
+
+Examina las tres versiones siguientes.
+
+**A. Función y valor.**
+
+> Sea $f:X\to Y$ una función. Sea $x\in X$. Como $f(x)$ es inyectiva, de $f(x)=f(y)$ concluimos $x=y$.
+
+**B. Reutilización de nombre.**
+
+> Sea $A\subseteq X$ y sea $x\in A$. Definimos $A=f(x)$. Como $A\in Y$, continuamos...
+
+**C. Símbolo local útil.**
+
+> Sean $x<y$ números reales. Definamos
+> $$
+> m=\frac{x+y}{2}.
+> $$
+> Demostraremos que $x<m<y$.
+
+Para cada caso:
+
+1. identifica qué representa cada símbolo;
+2. decide si el significado permanece estable;
+3. localiza cualquier conflicto entre objeto y valor o entre dos niveles de objetos;
+4. reescribe sólo lo necesario;
+5. decide si la notación nueva reduce o aumenta el trabajo del lector.
+
+**Respuesta razonada.**
+
+En **A**, el conflicto aparece en la frase
+
+> «$f(x)$ es inyectiva».
+
+La inyectividad es una propiedad de la función $f$, no del valor particular $f(x)$.
+
+Además, aparece $y$ sin que se haya declarado que pertenece a $X$.
+
+Una versión adecuada es:
+
+> Sea $f:X\to Y$ una función inyectiva. Sean $x,y\in X$ y supongamos que $f(x)=f(y)$. Por inyectividad de $f$, concluimos que $x=y$.
+
+La reparación conserva tres niveles:
+
+- $f$: función;
+- $x,y$: elementos del dominio;
+- $f(x),f(y)$: valores de la función.
+
+En **B**, el símbolo $A$ cambia de identidad.
+
+Primero representa un subconjunto de $X$; después se redefine como el valor $f(x)$.
+
+Ese cambio destruye la posibilidad de recuperar de manera estable qué significaba $A$ en las líneas anteriores.
+
+Podemos escribir:
+
+> Sea $A\subseteq X$ y sea $x\in A$. Definamos $y=f(x)$. Como $y\in Y$, continuamos...
+
+Ahora $A$ conserva su papel de conjunto y $y$ nombra el nuevo objeto.
+
+En **C**, la notación local es útil.
+
+La expresión
+
+$$
+\frac{x+y}{2}
+$$
+
+será utilizada como objeto central de varias comparaciones.
+
+Nombrarla $m$ reduce repetición y hace más visible la estructura:
+
+$$
+x<m<y.
+$$
+
+El símbolo $m$ tiene además una interpretación natural como punto medio, aunque la prueba no depende de esa palabra.
+
+La diferencia entre los tres casos puede resumirse así:
+
+$$
+\boxed{\text{notación estable: comprime estructura}}
+\qquad\text{mientras que}\qquad
+\boxed{\text{notación inestable: obliga a reconstruir identidad}}.
+$$
+
+### De los nombres a la arquitectura visible
+
+Una vez que los objetos están bien introducidos y sus nombres permanecen estables, aparece una pregunta de escala mayor.
+
+Una demostración no es una sola oración larga.
+
+Puede contener:
+
+- dos direcciones de un bicondicional;
+- varios casos;
+- una construcción auxiliar;
+- una contradicción;
+- una cadena de cálculos seguida por una conclusión conceptual.
+
+El lector necesita ver cuándo cambia la función lógica del texto.
+
+Esa estructura no depende sólo de las letras que elegimos, sino también de cómo **agrupamos las inferencias en párrafos y transiciones**.
+
+Ése será el contenido de §10.4.
+
+## 10.4. Párrafos de prueba y transiciones lógicas {#fnd-section-10-4}
+
+Considere este argumento, cuya matemática ya conocemos:
+
+> Sean $A,B,C$ conjuntos. Si $A\subseteq B$, entonces $A\cap C\subseteq B\cap C$. Si $x\in A\cap C$, está en $A$ y en $C$, por tanto en $B$ y en $C$, luego en $B\cap C$. Si $A\cap C\subseteq B\cap C$ para todo conjunto $C$, tomamos $C=A$, luego $A\subseteq B$.
+
+El texto contiene las dos direcciones de una equivalencia, pero no anuncia esa equivalencia ni señala el cambio de dirección. La primera oración parece fijar el único objetivo; la última empieza otra prueba y obliga a reinterpretar lo anterior. Un lector puede reconstruirlo, aunque una organización más clara le ahorraría ese trabajo.
+
+### Separar obligaciones
+
+La siguiente versión conserva el argumento y organiza sus dependencias.
+
+**Proposición.** Para cualesquiera conjuntos $A$ y $B$, se tiene $A\subseteq B$ si y sólo si, para todo conjunto $C$, se cumple $A\cap C\subseteq B\cap C$.
+
+**Demostración.** Supongamos primero que $A\subseteq B$. Sea $C$ un conjunto arbitrario y sea $x\in A\cap C$. Entonces $x\in A$ y $x\in C$. La inclusión $A\subseteq B$ da $x\in B$; junto con $x\in C$, obtenemos $x\in B\cap C$. Queda probada la inclusión para todo $C$.
+
+Recíprocamente, supongamos que $A\cap C\subseteq B\cap C$ para todo conjunto $C$. En particular, podemos elegir $C=A$, con lo que $A=A\cap A\subseteq B\cap A\subseteq B$. Por tanto, $A\subseteq B$.
+
+Cada párrafo responde a una obligación distinta. «Supongamos primero» abre la primera dirección; «recíprocamente» abre la segunda y sustituye la hipótesis disponible. La primera dirección termina antes de que comience la otra. No estamos enseñando de nuevo cómo probar una equivalencia: estamos haciendo visible una arquitectura ya disponible en C06.
+
+La separación también protege las hipótesis. En el segundo párrafo no se permite utilizar $A\subseteq B$ porque era la hipótesis de la dirección anterior y ahora es el objetivo. La transición informa al lector de ese cambio.
+
+### Qué hace un párrafo
+
+Un párrafo puede introducir una construcción y verificar sus propiedades, resolver un caso o aplicar un lema para alcanzar una conclusión parcial. La unidad la determina esa función. Si una construcción breve y su verificación caben en cuatro frases, separarlas artificialmente puede volver más difícil seguir el objeto construido. Si una prueba contiene dos direcciones independientes, juntarlas en un bloque largo oculta su frontera.
+
+En una prueba por casos conviene que el inicio de cada párrafo nombre la condición que lo gobierna. Para demostrar $|t|\ge t$ con $t\in\mathbb R$, por ejemplo:
+
+> Si $t\ge0$, la definición de valor absoluto da $|t|=t$.
+>
+> Si $t<0$, tenemos $|t|=-t$. Como $-t>0>t$, se cumple $|t|>t$.
+>
+> Los dos casos cubren todos los números reales; en ambos se obtiene $|t|\ge t$.
+
+Los dos primeros párrafos contienen argumentos locales. El tercero cierra la afirmación global al registrar que la división fue exhaustiva. No todas las pruebas por casos necesitan una oración final tan explícita, pero aquí permite distinguir la conclusión local del cierre completo.
+
+### Los conectores declaran relaciones
+
+«Como» introduce una razón; «por tanto» anuncia una consecuencia; «para comprobar» declara un objetivo todavía pendiente; «en particular» restringe una afirmación disponible; «recíprocamente» cambia de dirección. Elegir un conector exige saber qué relación existe entre las frases.
+
+Compare:
+
+> Para probar que $u\in B$, usamos $A\subseteq B$ y $u\in A$.
+
+con
+
+> Como $u\in B$, usamos $A\subseteq B$ y $u\in A$.
+
+La primera frase distingue el objetivo de los datos. La segunda presenta ese objetivo como una razón ya disponible. Aunque el lector conozca la intención, el texto le ofrece un orden de dependencia diferente. Un conector no justifica por sí mismo una inferencia; la razón nombrada debe autorizarla.
+
+La palabra «entonces» admite varios usos. En una prueba conviene comprobar que significa consecuencia y que no está sustituyendo una relación más precisa, como «en el segundo caso» o «al aplicar la definición». Tampoco hace falta comenzar cada frase con un conector: dos oraciones pueden pertenecer a un mismo movimiento y resultar inequívocas sin una señal adicional.
+
+### Comprobación
+
+Reorganice el texto siguiente sin cambiar su contenido: «Sean $f:X\to Y$ y $g:Y\to Z$ inyectivas. Sean $u,v\in X$ con $g(f(u))=g(f(v))$. Son iguales. Por inyectividad son iguales. La composición es inyectiva». Identifique qué deben nombrar las dos frases «son iguales» y qué función cumple cada tramo.
+
+**Respuesta razonada.** Una versión verificable es:
+
+> Sean $u,v\in X$ y supongamos que $(g\circ f)(u)=(g\circ f)(v)$. Esto significa $g(f(u))=g(f(v))$. Como $f(u),f(v)\in Y$ y $g$ es inyectiva, obtenemos $f(u)=f(v)$.
+>
+> La inyectividad de $f$ da ahora $u=v$. Puesto que $u$ y $v$ eran elementos arbitrarios de $X$, la composición $g\circ f:X\to Z$ es inyectiva.
+
+El primer tramo reduce la igualdad de valores de la composición a una igualdad en $Y$; el segundo usa esa igualdad para cerrar la obligación en $X$. También sería aceptable conservar toda esta prueba corta en un párrafo. La división elegida deja visibles las dos aplicaciones, pero la auditabilidad depende de nombrarlas y de identificar sus entradas, no del número de saltos de línea.
+
+Una lectura de los comienzos de párrafo debería permitir reconocer qué obligación se está resolviendo. Después, la lectura de sus frases debe proporcionar las razones que sostienen ese movimiento.
+
+## 10.5. Ecuaciones como parte de la oración {#fnd-section-10-5}
+
+Una fórmula en una línea separada sigue perteneciendo a la oración. Considere la frase «Como $a=b$, obtenemos» seguida del bloque
+
+$$
+a+c=b+c.
+$$
+
+El punto cierra la frase que empezó antes del bloque. La posición de la expresión no modifica su función gramatical. Una lectura en voz alta permite comprobar si las palabras y los símbolos forman una afirmación completa.
+
+### Una cadena tiene una relación determinada
+
+Sean $r,s\in\mathbb R$. La cadena
+
+$$
+(r+s)^2=r^2+2rs+s^2
+$$
+
+conecta dos números iguales. Si además conocemos $r,s\ge0$, podemos deducir $(r+s)^2\ge r^2+s^2$, pero no añadir esa desigualdad mediante otro signo igual. Una versión coherente es:
+
+> Como $r,s\ge0$, tenemos $2rs\ge0$. Al desarrollar el cuadrado, obtenemos
+> $$
+> (r+s)^2=r^2+s^2+2rs\ge r^2+s^2.
+> $$
+
+La mezcla de igualdad y desigualdad es legítima: cada relación afirma lo que corresponde. Si el propósito es destacar la consecuencia lógica, podemos escribirla en prosa después de la identidad.
+
+Los signos de implicación y equivalencia relacionan proposiciones. Para $t\in\mathbb R$, la expresión
+
+$$
+t=5\ \Longrightarrow\ t^2=25
+$$
+
+es una implicación válida. La expresión $t=5\Longleftrightarrow t^2=25$ es falsa, porque $t=-5$ satisface la segunda proposición y no la primera. Bajo la hipótesis adicional $t\ge0$, sí se obtiene esa equivalencia. La exposición debe hacer visible la restricción que autoriza la reversibilidad.
+
+En cambio, «$t\Rightarrow t^2\Rightarrow25$» usa números o expresiones numéricas como si fueran afirmaciones. Puede servir como apunte personal de una operación, pero el lector de una prueba necesita saber qué se afirma sobre esos objetos.
+
+### Introducir y cerrar los bloques
+
+Compare «Aplicamos» seguido de $a(b+c)=ab+ac$ con «Por distributividad,» seguido de la misma identidad. La segunda apertura permite identificar la razón; la primera deja indeterminado qué se aplica. A menudo conviene escribir toda la oración: «Por distributividad, $a(b+c)=ab+ac$». El bloque se reserva para una fórmula que requiere espacio o merece atención particular.
+
+También se puede continuar una oración después del bloque:
+
+> Si $u\in A\setminus B$, entonces
+> $$
+> u\in A\quad\text{y}\quad u\notin B,
+> $$
+> por definición de diferencia de conjuntos.
+
+La coma señala que la justificación posterior pertenece a la misma frase. El lector debe poder reconocer dónde termina la afirmación y cómo se enlaza con su razón.
+
+### Cadenas largas y razones locales
+
+Si $f:X\to Y$, $g:Y\to Z$ y $h:Z\to W$, para cada $x\in X$ tenemos, por la definición de composición,
+
+$$
+\begin{aligned}
+((h\circ g)\circ f)(x)
+&=(h\circ g)(f(x))\\
+&=h(g(f(x)))\\
+&=h((g\circ f)(x))\\
+&=(h\circ(g\circ f))(x).
+\end{aligned}
+$$
+
+Todas las igualdades proceden de la misma definición. Basta nombrar esa razón antes de la cadena; repetirla al final de cada fila añadiría poco. El texto debe completar después la obligación sobre funciones: ambas composiciones van de $X$ a $W$ y coinciden en cada elemento de $X$, por lo que son iguales. La cadena compara valores; la frase final establece la igualdad de las funciones.
+
+Si una fila utilizara un resultado distinto, la explicación debería quedar junto a ella o en una oración cercana. La razón debe poder localizarse sin recorrer todo el capítulo buscando cuál podría encajar.
+
+### Referencias que se reutilizan
+
+Una identidad puede recibir un nombre o una etiqueta cuando será usada otra vez. Supongamos que hemos obtenido
+
+$$
+p=q+r.\tag{10.5.1}
+$$
+
+Más adelante, «al sustituir $p$ mediante (10.5.1)» identifica tanto el dato como la operación. Para una identidad usada sólo una vez suele bastar una referencia verbal cercana. Numerar todas las fórmulas puede crear una segunda tarea de memoria sin mejorar la verificación.
+
+### Comprobación
+
+Reescriba este apunte como argumento completo: «$x\ge0$, $y\ge0$, $x+y=0=x=0=y=0$». Determine cuáles son hipótesis, qué debe concluirse y cuáles relaciones pueden escribirse con $=$.
+
+**Respuesta razonada.** Las hipótesis son $x,y\in\mathbb R$, $x,y\ge0$ y $x+y=0$. Se quiere demostrar que $x=y=0$. Una prueba breve es:
+
+> Como $y\ge0$, tenemos $x\le x+y=0$. Junto con $x\ge0$, esto da $x=0$. Al sustituir en $x+y=0$, obtenemos $y=0$.
+
+La cadena del apunte junta conclusiones sin mostrar por qué se obtienen. El texto corregido conserva la identidad $x+y=0$ y añade la desigualdad que permite establecer la primera conclusión. Una vez demostradas ambas igualdades, $x=y=0$ sí es una cadena legítima.
+
+La fórmula final debe expresar una relación matemática precisa y ocupar un lugar reconocible en la oración y en el argumento.
+
+## 10.6. Referencias a definiciones y resultados previos {#fnd-section-10-6}
+
+La frase «por lo anterior» puede ser suficiente cuando una única igualdad acaba de aparecer. En una prueba que contiene una definición, dos inclusiones y una hipótesis de inyectividad, esa frase puede dejar al lector sin saber qué autoriza el paso. La precisión necesaria depende de cuántos antecedentes son posibles y del papel que cumple el resultado citado.
+
+### Identificar la herramienta y sus entradas
+
+Recordemos el resultado de C04: si $f:X\to Y$ es inyectiva, entonces $f(u)=f(v)$ con $u,v\in X$ implica $u=v$. Una aplicación auditable puede escribir:
+
+> Como $u,v\in X$ y $f(u)=f(v)$, la inyectividad de $f$ da $u=v$.
+
+El texto identifica la propiedad utilizada y muestra sus entradas. La mera frase «por C04» obligaría a buscar cuál de sus muchos resultados interviene. Una referencia a capítulo es útil para recuperar una noción, pero una razón local suele necesitar el nombre de esa noción o el enunciado de la herramienta.
+
+Una referencia numerada tampoco reemplaza la comprobación de hipótesis. Si un lema requiere $a\ne0$, invocarlo con $a$ sin determinar si se anula deja pendiente una condición. El lema puede ser correcto y estar perfectamente localizado; su aplicación necesita todavía ese dato.
+
+### Una referencia puede ser verbal
+
+No toda dependencia requiere un número. «Por la definición de preimagen» localiza una herramienta única en el contexto. «Por la igualdad de conjuntos que acabamos de probar» puede bastar si sólo se demostró una. En cambio, «por un teorema conocido» no permite identificar una herramienta sin adivinarla.
+
+Una buena referencia permite recuperar el enunciado empleado y confrontarlo con los datos actuales. Puede hacerlo mediante nombre, número o una formulación breve. La elección debe servir a esa recuperación y evitar códigos que el lector tenga que aprender para seguir una prueba elemental.
+
+### Cuando conviene escribir un lema local
+
+Si una misma observación sostiene varios pasos, puede merecer una formulación separada. Por ejemplo:
+
+**Lema local.** Para $f:X\to Y$ y $S,T\subseteq X$, si $S\subseteq T$, entonces $f(S)\subseteq f(T)$.
+
+**Demostración.** Si $y\in f(S)$, existe $x\in S$ con $f(x)=y$. Como $S\subseteq T$, ese mismo elemento pertenece a $T$, por lo que $y\in f(T)$.
+
+Después, «aplicando el lema local a $S=A\cap B$ y $T=A$» permite verificar los dos subconjuntos y su inclusión. La identificación de entradas también impide usar por descuido un lema de imágenes como si fuera de preimágenes.
+
+En una prueba muy corta podría incorporarse la observación directamente. Separarla es útil cuando volverá a emplearse, cuando organiza una dependencia importante o cuando su prueba interrumpiría el argumento principal.
+
+### Citar sin esconder ni saturar
+
+Las referencias deben tener una densidad proporcional a la dificultad. Para el lector de C10, escribir $3(k+1)=3k+3$ no exige remitir a la sección de distributividad. Si una prueba utiliza la cancelación en un cuerpo, en cambio, puede ser relevante indicar que el factor cancelado es no nulo y que la propiedad fue demostrada desde los axiomas en C05.
+
+La precisión tampoco obliga a copiar cada resultado previo. Un recordatorio breve puede exponer la hipótesis decisiva: «Como $a\ne0$, la cancelación multiplicativa en el cuerpo permite...». Esa frase informa por qué la herramienta está disponible en ese punto.
+
+### Comprobación
+
+Audite esta aplicación: «Sean $f:X\to Y$ y $g:Y\to Z$. Si $g\circ f$ es inyectiva, entonces $f$ es inyectiva, por el resultado sobre composiciones». Reescríbala sin usar una referencia que obligue a adivinar y distinga la hipótesis disponible de una que no hace falta.
+
+**Respuesta razonada.** El resultado «la composición de dos inyecciones es inyectiva» no demuestra esta afirmación mediante una aplicación directa. Una prueba auditable es:
+
+> Sean $u,v\in X$ y supongamos que $f(u)=f(v)$. Al aplicar $g$ a ambos lados, obtenemos $(g\circ f)(u)=(g\circ f)(v)$. La inyectividad de $g\circ f$ da $u=v$. Por tanto, $f$ es inyectiva.
+
+La herramienta invocada es la definición de inyectividad de la composición, cuya hipótesis fue declarada. No es necesario suponer que $g$ es inyectiva. La referencia imprecisa de la primera versión ocultaba esa diferencia entre resultados próximos.
+
+Al revisar una referencia, conviene reconstruir la aplicación completa: enunciado utilizado, objetos que lo instancian, hipótesis verificadas y conclusión que efectivamente proporciona.
+
+## 10.7. Pronombres, alcance y ambigüedad {#fnd-section-10-7}
+
+«Éste pertenece al dominio» puede ser una afirmación clara si sólo se acaba de introducir un elemento. Si la frase aparece después de mencionar una función, un conjunto y dos elementos, el lector puede tener que decidir cuál es su antecedente. La dificultad afecta la matemática: una misma propiedad puede ser verdadera para un objeto y falsa para otro.
+
+### Recuperar el referente
+
+Considere: «Sean $A\subseteq X$, $f:X\to Y$ y $y\in f(A)$. Existe $x\in A$ con $f(x)=y$. Como éste está en el dominio, pertenece a la imagen». La última oración podría referirse a $x$ o a $y$; además, estar en el dominio no significa pertenecer a la imagen, porque los dos conjuntos pueden tener elementos distintos.
+
+Una versión que conserva la intención pertinente es: «Como $x\in A\subseteq X$, el valor $f(x)$ está definido. La igualdad $f(x)=y$ muestra que $y\in f(X)$». Nombrar $x$ y $y$ permite distinguir el argumento de entrada del valor de salida. Una revisión de pronombres puede revelar que, además de una ambigüedad, había una frase matemática que necesitaba reparación.
+
+No hace falta eliminar todos los pronombres. En «$u=v$; esta igualdad permite sustituir $u$ por $v$», el referente es único y la referencia resulta económica. El criterio consiste en verificar que la sustitución del pronombre por su antecedente produce la afirmación que el texto pretende sostener.
+
+### Referirse a afirmaciones, no sólo a objetos
+
+«Esto prueba el resultado» también necesita un antecedente. En una existencia única, haber construido un candidato sólo cierra la existencia. Si después de esa construcción aparece la frase, el lector puede creer que ya se probó todo. Conviene escribir «la construcción prueba la existencia» y reservar el cierre completo para cuando también se haya establecido la unicidad.
+
+Igualmente, «el caso anterior» debe permitir identificar qué caso terminó y qué propiedad se reutiliza. Si una propiedad dependía de una condición local, no puede trasladarse al nuevo caso sin comprobar esa condición.
+
+### Cerrar el alcance de una elección
+
+Los nombres introducidos en una subprueba tienen un alcance. Supongamos que, para cada $y\in Y$, la sobreyectividad de $f:X\to Y$ permite tomar un $x\in X$ con $f(x)=y$. La frase «este $x$ sirve para todos los $y$» cambia la dependencia: la elección anterior se hizo después de fijar $y$ y puede variar con él.
+
+Una redacción suficiente es: «Fijado $y\in Y$, elegimos $x\in X$ con $f(x)=y$». Si se necesita repetir el argumento para otro valor, se abre otra elección. Aquí no estamos reconstruyendo la teoría de cuantificadores de C03; estamos conservando en la prosa una dependencia que ya fue establecida.
+
+Cuando dos subpruebas tienen nombres locales iguales, el cambio de párrafo y la introducción explícita pueden separar sus alcances. Si ambos candidatos deben compararse después, es preferible nombrarlos $x_1,x_2$ y mantenerlos activos. El contexto decide qué objetos necesita recordar el lector.
+
+### Comparar versiones
+
+Sean $A,B\subseteq X$ y $f:X\to Y$. Para justificar $f(A\cap B)\subseteq f(A)\cap f(B)$, alguien escribe:
+
+> Sea $y\in f(A\cap B)$. Existe $x\in A\cap B$ con $f(x)=y$. Como pertenece a ambos, también pertenece a ambas imágenes.
+
+El primer «pertenece» debe referirse a $x$; el segundo, a $y$. El texto cambia de referente sin nombrarlo. Una edición mínima dice:
+
+> Como $x\in A$ y $x\in B$, el mismo testigo $x$ muestra que $y=f(x)\in f(A)$ y $y\in f(B)$. Por tanto, $y\in f(A)\cap f(B)$.
+
+La edición también hace visible que usamos el mismo testigo. Esa información será importante cuando se compare esta inclusión con su recíproca, que no vale para una función arbitraria.
+
+### Comprobación
+
+Reescriba: «Sean $a,b\in\mathbb R$ con $a<b$. Su promedio está entre ellos porque su diferencia es positiva». Indique a qué diferencia se refiere y compruebe ambas desigualdades.
+
+**Respuesta razonada.** Definamos $m=(a+b)/2$. Las diferencias pertinentes son
+
+$$
+m-a=\frac{b-a}{2}>0,
+\qquad
+b-m=\frac{b-a}{2}>0.
+$$
+
+Ambas son positivas por $a<b$. La primera demuestra $a<m$ y la segunda $m<b$. Una versión completa puede decir: «Las igualdades anteriores y $b-a>0$ dan $a<m<b$». El término «su diferencia» ocultaba que había dos obligaciones, cada una asociada a una diferencia distinta.
+
+Una prueba debe conservar el referente de sus palabras con el mismo cuidado que conserva el significado de sus símbolos.
+
+## 10.8. Cuánto detalle escribir y el uso de «claramente» {#fnd-section-10-8}
+
+Una prueba puede omitir información necesaria o acumular tantos detalles que el lector pierda su dirección. El lector de referencia de este capítulo conoce las herramientas anteriores de FND y puede hacer cálculos elementales; todavía necesita ver qué herramienta organiza el paso decisivo.
+
+### Reconstrucción segura
+
+Considere la afirmación $f^{-1}(U\cap V)=f^{-1}(U)\cap f^{-1}(V)$ para $f:X\to Y$ y $U,V\subseteq Y$. Escribir «se sigue claramente» puede resultar suficiente para quien ya usa rutinariamente preimágenes, pero no deja visible el mecanismo. Una versión breve y verificable es:
+
+> Para cada $x\in X$, pertenecer a $f^{-1}(U\cap V)$ significa que $f(x)$ pertenece a $U$ y a $V$. Esto equivale a que $x\in f^{-1}(U)$ y $x\in f^{-1}(V)$, es decir, a que $x\in f^{-1}(U)\cap f^{-1}(V)$. Ambos conjuntos tienen, por tanto, los mismos elementos.
+
+La expansión proporciona la razón que sostiene la igualdad. No necesita reproducir la definición de función ni desarrollar de nuevo la doble inclusión de C06. El nivel de detalle se concentra en la correspondencia entre pertenencias.
+
+### Detectar qué se está comprimiendo
+
+Una omisión es razonable si el lector puede recuperarla mediante una operación conocida y única, sin añadir hipótesis ni encontrar una nueva idea. Por ejemplo, después de $n=7k$ con $k\in\mathbb Z$, escribir $2n=7(2k)$ permite reconstruir el cálculo de inmediato. En cambio, de $y\in f(A)\cap f(B)$ no puede deducirse $y\in f(A\cap B)$ por un cálculo rutinario: los testigos de ambas imágenes podrían ser distintos.
+
+Esa diferencia proporciona una prueba práctica para la edición. Expanda mentalmente la frase omitida. Si exige elegir entre varias herramientas, demostrar un resultado nuevo o controlar una hipótesis que todavía no aparece, la exposición necesita más información. Si sólo exige distribuir un factor o sustituir una igualdad ya escrita, suele bastar una compresión.
+
+### Quitar un adverbio
+
+Al revisar «claramente», «obviamente» o «trivialmente», borre primero la palabra y lea el paso. Si la razón sigue siendo recuperable, el adverbio puede ser innecesario. Si desaparece la única apariencia de justificación, escriba la razón.
+
+Compare «Claramente, $x\ne0$» con «Como $x>0$, se tiene $x\ne0$». La segunda frase registra una dependencia de la que quizá dependa después una división. En otra prueba donde se acaba de fijar $x>0$ y no existe ambigüedad, podría bastar escribir directamente «dividimos por $x$». La decisión depende de la distancia y del riesgo de perder la hipótesis.
+
+El mismo problema aparece sin adverbios, en frases como «se obtiene», «es inmediato» o «el cálculo da». El control debe recaer sobre la inferencia omitida, no sobre una lista de palabras prohibidas.
+
+### Retirar explicación rutinaria
+
+Para demostrar que $n\mapsto3n+2$ es inyectiva en $\mathbb Z$, una vez fijados $u,v\in\mathbb Z$ con $3u+2=3v+2$, basta explicar que restar $2$ y cancelar el factor no nulo $3$ da $u=v$. Enumerar por separado que $2$ es entero, que su opuesto existe y que podemos sumar iguales a ambos miembros ocultaría la operación relevante.
+
+Una prueba más extensa puede necesitar un mapa inicial: «primero construiremos el candidato y después verificaremos su unicidad». Esa frase reduce el trabajo de orientación y permite comprimir detalles posteriores. El detalle útil puede consistir en una señal de arquitectura, aunque no añada una fórmula.
+
+### Comprobación
+
+Sean $f:X\to Y$ inyectiva y $A,B\subseteq X$. Evalúe el nivel de detalle de «Claramente, $f(A)\cap f(B)\subseteq f(A\cap B)$». Redacte el paso que el lector necesitaría reconstruir y explique por qué es decisivo.
+
+**Respuesta razonada.** Si $y\in f(A)\cap f(B)$, existen $a\in A$ y $b\in B$ con $f(a)=y=f(b)$. La inyectividad de $f$ da $a=b$. Por tanto, $a\in A\cap B$ y $y=f(a)\in f(A\cap B)$.
+
+La información decisiva es que dos testigos inicialmente distintos coinciden por inyectividad. Ocultarla impide ver dónde se usa la hipótesis que hace verdadera la inclusión. La edición puede comprimirse, pero debe conservar ese encuentro de testigos y su razón.
+
+El detalle suficiente permite al lector verificar el paso sin descubrir por su cuenta la idea que falta en el texto.
+
+## 10.9. Auditoría por terceros y edición final {#fnd-section-10-9}
+
+El autor conoce la solución y puede completar sin advertirlo una frase incompleta. Otro lector dispone sólo del argumento escrito. Pedirle que reconstruya la prueba permite contrastar la exposición con esa diferencia de información.
+
+### Qué pedir al lector
+
+«¿Se entiende?» produce una respuesta demasiado general para editar. Es más útil pedir que el lector identifique los objetos, las hipótesis y el objetivo; explique la razón de los pasos decisivos; y marque el primer lugar donde tuvo que añadir información que el texto no proporcionaba.
+
+Si el lector no puede justificar un paso, todavía debemos determinar qué ocurrió. Puede faltar un prerrequisito que el texto había declarado, puede existir una dependencia expositiva omitida o puede haber una inferencia incorrecta. Estas situaciones requieren acciones diferentes. La crítica es evidencia para revisar; su mera existencia no demuestra que la prueba sea falsa.
+
+### Revisar con preguntas separadas
+
+Una lectura final resulta más eficaz si concentra su atención en una clase de problemas cada vez. El orden siguiente evita pulir una frase que después habrá que retirar por una razón matemática.
+
+1. **Matemática y lógica.** Comprobar que las afirmaciones y las inferencias son correctas con las hipótesis disponibles. Verificar que se cumplieron todas las obligaciones del enunciado.
+2. **Dependencias.** Localizar definiciones, hipótesis y resultados que autorizan los pasos decisivos. Comprobar las entradas de cada aplicación.
+3. **Notación y alcance.** Seguir la historia de cada símbolo y cerrar elecciones e hipótesis locales. Distinguir objetos de sus valores o representaciones.
+4. **Prosa.** Leer las oraciones, incluidas sus fórmulas; comprobar referentes, conectores y puntuación.
+5. **Arquitectura.** Reconocer direcciones, casos, construcciones y cierres mediante los párrafos y sus transiciones.
+6. **Economía.** Retirar repeticiones que no añaden verificabilidad y completar las omisiones que todavía exigen adivinar.
+
+Estas preguntas pueden requerir volver a un pase anterior. Si una corrección de pronombre revela que se usó el objeto equivocado, corresponde reabrir el control matemático. Separar focos de revisión ayuda a prestar atención, pero no convierte la edición en una secuencia irreversible.
+
+### Una auditoría completa de una prueba corta
+
+Se quiere demostrar que, para $A\subseteq X$ y $f:X\to Y$, se cumple $A\subseteq f^{-1}(f(A))$. El borrador dice:
+
+> Tome $x$ en el conjunto. Por la definición pertenece a la imagen y entonces a la preimagen. Luego la inclusión.
+
+La idea correcta consiste en utilizar $x$ como testigo de que $f(x)\in f(A)$. La primera frase no identifica el conjunto; la segunda cambia tácitamente de $x$ a $f(x)$ y después vuelve a $x$. El lector debe reconstruir una parte sustancial del contenido.
+
+Una versión revisada es:
+
+> Sea $x\in A$. Como $A\subseteq X$, el valor $f(x)$ está definido. El propio $x$ es testigo de que $f(x)\in f(A)$. Por definición de preimagen, esto da $x\in f^{-1}(f(A))$. Puesto que $x$ era arbitrario en $A$, queda probada la inclusión.
+
+El pase matemático comprueba las dos definiciones y la inclusión. El de dependencias identifica el testigo y la condición $A\subseteq X$. El de notación distingue $x$ de $f(x)$. El de prosa verifica que «esto» se refiere a una única pertenencia inmediata. La arquitectura cabe en un párrafo porque sólo hay una obligación de inclusión. La revisión de economía puede comprimir «el valor está definido», pero aquí esa frase sirve para hacer visible la entrada de la función.
+
+### Recibir una observación y verificar la edición
+
+Si un lector pide que se explique de dónde salió un testigo, la revisión debe localizar la definición o hipótesis que garantiza su existencia. Añadir una explicación extensa del método de descubrimiento podría no resolver la observación. La edición debe atender al punto donde el lector perdió la dependencia.
+
+Después de corregir, hay que releer el tramo modificado con su contexto. Un cambio de letra puede romper una referencia posterior; separar párrafos puede dejar activa una hipótesis que debía cerrarse; eliminar una frase puede borrar la única justificación de una elección. La versión final es el objeto que se verifica, no una suma de correcciones aisladas.
+
+### Comprobación
+
+Un lector propone reemplazar el borrador anterior por «Por definición de imagen y preimagen, $A\subseteq f^{-1}(f(A))$». ¿Es una edición correcta? ¿Es suficiente para el lector de referencia de C10? Produzca una alternativa breve que conserve el mecanismo.
+
+**Respuesta razonada.** La afirmación es correcta, pero esa versión vuelve a comprimir el testigo y el cambio entre objeto y valor que la actividad pretende auditar. Una alternativa breve es: «Para $x\in A$, el propio $x$ muestra que $f(x)\in f(A)$; por definición de preimagen, $x\in f^{-1}(f(A))$. Esto demuestra la inclusión». Se presuponen aquí $f:X\to Y$ y $A\subseteq X$, declarados en el enunciado. La explicación conserva las dos dependencias y el testigo sin repetir el desarrollo completo.
+
+Una prueba está lista para otro lector cuando su versión escrita permite reconstruir y verificar las dependencias de las que procede la conclusión.
+
+## 10.10. Ejercicios y soluciones desarrolladas {#fnd-section-10-10}
+
+La tarea principal de estos ejercicios es editar o auditar matemática elemental ya disponible. Una edición debe preservar el enunciado, hacer visibles las dependencias y permitir comprobar la conclusión. Cuando el borrador contiene un error matemático, hay que identificarlo antes de producir la versión corregida.
+
+### Ejercicios
+
+#### Nivel I — Edición guiada
+
+**Ejercicio 1.** Reescriba la apertura «Como $n=20k$, $5\mid n$» para demostrar que todo entero divisible por $20$ es divisible por $5$. Declare el origen y dominio de $k$; cierre la obligación con un testigo entero.
+
+**Ejercicio 2.** Se afirma que $q:\mathbb Z\to\mathbb Z$, $q(t)=5t-4$, es inyectiva. Edite: «Sean $x,y$, como $q$ es igual, $5x-4=5y-4$, $x=y$». No suponga la inyectividad que se quiere demostrar.
+
+**Ejercicio 3.** Sean $A,B,C$ conjuntos. Organice en dos párrafos la prueba de $A\setminus(B\cup C)=(A\setminus B)\cap(A\setminus C)$, una dirección por párrafo. Nombre los objetos arbitrarios y el cierre de cada inclusión.
+
+**Ejercicio 4.** Reescriba y puntúe: «$a,b$ reales positivos, $a/b=2\Rightarrow a=2b= a-b=b$». Determine qué igualdad del apunte es incorrecta y conserve la conclusión válida $a-b=b$.
+
+**Ejercicio 5.** Sean $f:X\to Y$, $A\subseteq X$ y $u\in A$. Edite: «Su imagen está en ella y éste pertenece a la preimagen». Escriba las pertenencias pertinentes con referentes inequívocos.
+
+#### Nivel II — Auditoría y comparación
+
+**Ejercicio 6.** Para $a,b\in\mathbb R$, compare «Si $a<b$, su punto medio está dentro» con una prueba de $a<(a+b)/2<b$. Produzca una versión breve que haga visibles las dos razones. Identifique qué detalle rutinario puede omitirse.
+
+**Ejercicio 7.** Un borrador dice: «Sean $a,b,c$ elementos de un cuerpo con $ac=bc$. Cancelamos $c$, de modo que $a=b$». Determine la condición faltante y redacte una aplicación auditable de cancelación. Explique qué ocurre si $c=0$.
+
+**Ejercicio 8.** Sean $f:X\to Y$ y $U,V\subseteq Y$. Escriba una prueba de $f^{-1}(U\setminus V)=f^{-1}(U)\setminus f^{-1}(V)$ en un párrafo con una cadena de equivalencias de pertenencia. Indique qué definiciones autorizan la cadena.
+
+**Ejercicio 9.** Para mostrar que todo entero tiene un único opuesto aditivo, un autor construye $-n$ y termina con «Esto prueba el resultado». Separe existencia y unicidad, cierre ambas y explique qué ocultaba el demostrativo.
+
+**Ejercicio 10.** Sean $f:X\to Y$ y $g:Y\to Z$. Edite: «Si la composición es sobreyectiva, dado $z$, existe $x$, luego la otra también». Identifique qué función resulta sobreyectiva y compruebe el dominio del testigo que necesita.
+
+#### Nivel III — Reescritura e integración
+
+**Ejercicio 11.** Se dispone de la siguiente matemática: para $A\subseteq X$ y $f:X\to Y$ inyectiva, $x\in f^{-1}(f(A))$ implica que existe $a\in A$ con $f(x)=f(a)$; la inyectividad da $x=a$. Redacte la prueba completa de $f^{-1}(f(A))=A$ en dos direcciones. Explique por qué omitir la inyectividad cambia el resultado.
+
+**Ejercicio 12.** Se quiere demostrar por inducción que $s_n=4n+1$ si $s_0=1$ y $s_{n+1}=s_n+4$ para $n\in\mathbb N$. Edite «Vale al principio; si vale, sumamos $4$; listo». Mantenga visibles base, hipótesis, paso y conclusión sin desarrollar otra vez la teoría de inducción.
+
+**Ejercicio 13.** Se quiere probar que existe un único par real $(x,y)$ con $x+3y=17$ y $2x-y=-1$. La matemática disponible proporciona el candidato $(2,5)$ y permite probar unicidad al restar las ecuaciones de dos soluciones. Redacte dos párrafos, uno por obligación. Un borrador comienza la unicidad con «Como el único par es $(2,5)$». Explique el problema de dependencia y evítelo.
+
+**Ejercicio 14.** Audite dos versiones de la inyectividad de $p:\mathbb R\to\mathbb R$, $p(t)=t^3$: A, «Claramente es creciente y por tanto inyectiva»; B, «Si $u^3=v^3$, entonces $(u-v)(u^2+uv+v^2)=0$; de aquí $u=v$». Produzca una versión que justifique la conclusión sin presuponer un resultado de monotonía no demostrado.
+
+**Ejercicio 15.** Redacte y audite una prueba completa de que, para $f:X\to Y$ y $A,B\subseteq X$, siempre se cumple $f(A\cup B)=f(A)\cup f(B)$. La prueba debe permitir localizar objetos, testigos, casos y cierres. Proponga después una compresión que conserve esas dependencias.
+
+### Soluciones desarrolladas
+
+**Solución 1.** Sea $n\in\mathbb Z$ y supongamos que $20\mid n$. Por definición de divisibilidad, existe $k\in\mathbb Z$ con $n=20k$. Entonces $n=5(4k)$ y $4k\in\mathbb Z$, por lo que $5\mid n$. La edición registra la hipótesis que garantiza $k$ y el dominio que convierte $4k$ en un testigo admisible. La frase inicial del borrador podía entenderse, pero no permitía recuperar esos datos sin reconstruirlos.
+
+**Solución 2.** Sean $x,y\in\mathbb Z$ y supongamos que $q(x)=q(y)$. Por la definición de $q$, tenemos $5x-4=5y-4$. Al sumar $4$ y cancelar el factor no nulo $5$, obtenemos $x=y$. Por tanto, $q$ es inyectiva. La igualdad inicial compara los valores $q(x),q(y)$; «$q$ es igual» no identifica dos objetos comparados. La inyectividad aparece como conclusión después de comprobar su condición para elementos arbitrarios.
+
+**Solución 3.** Sea $x\in A\setminus(B\cup C)$. Entonces $x\in A$ y $x\notin B\cup C$, de modo que $x\notin B$ y $x\notin C$. Por tanto, $x\in A\setminus B$ y $x\in A\setminus C$, lo que prueba la primera inclusión.
+
+Recíprocamente, sea $x\in(A\setminus B)\cap(A\setminus C)$. Tenemos $x\in A$, $x\notin B$ y $x\notin C$; luego $x\notin B\cup C$. Así, $x\in A\setminus(B\cup C)$ y queda probada la segunda inclusión. Las definiciones de diferencia, unión e intersección justifican las pertenencias. Los dos párrafos separan las obligaciones que componen la igualdad.
+
+**Solución 4.** Sean $a,b>0$ números reales y supongamos que $a/b=2$. Como $b\ne0$, podemos multiplicar la igualdad por $b$, obteniendo $a=2b$. Al restar $b$, resulta $a-b=2b-b=b$. El apunte escribía $2b=a-b$, igualdad incompatible con $a=2b$ y $b>0$. La primera transición es una consecuencia entre proposiciones; la cadena final contiene números iguales. La puntuación separa los dos movimientos sin borrar sus razones.
+
+**Solución 5.** Como $u\in A$, el elemento $u$ es testigo de que $f(u)\in f(A)$. Por definición de preimagen, esta pertenencia da $u\in f^{-1}(f(A))$. «Su imagen» debía nombrar $f(u)$; «ella», el conjunto $f(A)$; «éste», el elemento $u$. La versión explícita conserva esos tres referentes y evita afirmar que $u$ pertenece al conjunto de imágenes.
+
+**Solución 6.** Definamos $m=(a+b)/2$. Como $a<b$, tenemos $b-a>0$. Las identidades $m-a=(b-a)/2$ y $b-m=(b-a)/2$ muestran que $a<m<b$. Basta escribir las identidades sin desplegar cada suma y resta, pues esas operaciones son rutinarias. En cambio, la positividad de ambas diferencias hace visible por qué se obtienen las dos desigualdades. «Dentro» no especificaba el intervalo ni las obligaciones que debían comprobarse.
+
+**Solución 7.** Hay que añadir $c\ne0$. Una aplicación auditable dice: «Como $c\ne0$, su inverso multiplicativo existe. Multiplicando $ac=bc$ por $c^{-1}$ y usando asociatividad e identidad, obtenemos $a=b$». También puede invocarse directamente la cancelación no nula demostrada en C05, nombrando esa condición. Si $c=0$, la hipótesis se reduce a $0=0$ para cualesquiera $a,b$ y no implica que coincidan. Por ejemplo, $a=0,b=1$ satisfacen la hipótesis y contradicen la conclusión.
+
+**Solución 8.** Para cada $x\in X$, por las definiciones de preimagen y diferencia,
+
+$$
+\begin{aligned}
+x\in f^{-1}(U\setminus V)
+&\Longleftrightarrow f(x)\in U\setminus V\\
+&\Longleftrightarrow f(x)\in U\text{ y }f(x)\notin V\\
+&\Longleftrightarrow x\in f^{-1}(U)\text{ y }x\notin f^{-1}(V)\\
+&\Longleftrightarrow x\in f^{-1}(U)\setminus f^{-1}(V).
+\end{aligned}
+$$
+
+Los dos conjuntos son subconjuntos de $X$ y tienen exactamente los mismos elementos, luego son iguales. La cadena es reversible porque cada fila despliega una definición; no presupone que $f$ sea inyectiva ni sobreyectiva.
+
+**Solución 9.** Fijemos $n\in\mathbb Z$. El entero $-n$ satisface $n+(-n)=0$, por lo que existe un opuesto. Si $u,v\in\mathbb Z$ satisfacen $n+u=0=n+v$, entonces $n+u=n+v$ y la cancelación aditiva da $u=v$. Esto prueba la unicidad. Por tanto, $n$ tiene un único opuesto aditivo. El demostrativo del borrador se refería a la construcción, que sólo cerraba la existencia, pero anunciaba un cierre que incluía una obligación todavía pendiente.
+
+**Solución 10.** La función que resulta sobreyectiva es $g$. Sea $z\in Z$. Por sobreyectividad de $g\circ f$, existe $x\in X$ tal que $g(f(x))=z$. Como $f(x)\in Y$, el elemento $y=f(x)$ es un testigo de que $z$ tiene preimagen por $g$. Por tanto, $g:Y\to Z$ es sobreyectiva. No se obtiene necesariamente la sobreyectividad de $f$. Por ejemplo, para $X=\{0\}$, $Y=\{0,1\}$ y $Z=\{0\}$, la inclusión $f(0)=0$ no es sobreyectiva, mientras que $g$ constante y $g\circ f$ sí lo son.
+
+**Solución 11.** Si $x\in A$, entonces $f(x)\in f(A)$ y, por definición de preimagen, $x\in f^{-1}(f(A))$. Queda probada $A\subseteq f^{-1}(f(A))$.
+
+Para la otra inclusión, sea $x\in f^{-1}(f(A))$. Entonces $x\in X$ y existe $a\in A$ con $f(x)=f(a)$. La inyectividad de $f$, aplicada a $x,a\in X$, da $x=a$, por lo que $x\in A$. Ambas inclusiones prueban la igualdad. Sin inyectividad, la segunda dirección puede fallar: si $X=\{0,1\}$, $Y=\{0\}$, $f$ es constante y $A=\{0\}$, tenemos $f^{-1}(f(A))=X\ne A$.
+
+**Solución 12.** Para $n=0$, la definición da $s_0=1=4\cdot0+1$. Supongamos que $s_k=4k+1$ para un $k\in\mathbb N$ arbitrario. Por la regla recursiva y la hipótesis inductiva,
+
+$$
+s_{k+1}=s_k+4=(4k+1)+4=4(k+1)+1.
+$$
+
+La base y el paso inductivo permiten concluir que $s_n=4n+1$ para todo $n\in\mathbb N$. La regla recursiva justifica la primera igualdad, la hipótesis la segunda y el cálculo las restantes. La hipótesis sólo estuvo disponible en el paso; la conclusión universal procede del principio de inducción de C08.
+
+**Solución 13.** El par real $(2,5)$ satisface $2+3\cdot5=17$ y $2\cdot2-5=-1$. Por tanto, existe al menos una solución.
+
+Para probar unicidad, sean $(u,v)$ y $(r,s)$ dos soluciones. Al restar sus primeras ecuaciones, obtenemos $(u-r)+3(v-s)=0$; al restar las segundas, $2(u-r)-(v-s)=0$. La segunda igualdad da $v-s=2(u-r)$. Sustituyendo en la primera, resulta $7(u-r)=0$, luego $u=r$ y después $v=s$. Ambas obligaciones prueban la existencia de un único par. El borrador presuponía la unicidad que debía demostrar; la introducción de dos soluciones arbitrarias permite verificarla sin asumir la conclusión.
+
+**Solución 14.** Sean $u,v\in\mathbb R$ con $u^3=v^3$. La factorización de la diferencia de cubos da $(u-v)(u^2+uv+v^2)=0$. Si $u^2+uv+v^2\ne0$, la cancelación da $u=v$. Si ese factor es cero, usamos
+
+$$
+u^2+uv+v^2=\left(u+\frac v2\right)^2+\frac{3v^2}{4}.
+$$
+
+Los dos sumandos son no negativos; su suma cero obliga a que ambos sean cero. Así, $v=0$ y luego $u=0$, de modo que también $u=v$. Por tanto, $p$ es inyectiva. A omitía una justificación de monotonía; B omitía la razón que controla el segundo factor y, en particular, su posible anulación. La versión completa resuelve esa condición sin añadir un resultado posterior.
+
+**Solución 15.** Si $y\in f(A\cup B)$, existe $x\in A\cup B$ con $f(x)=y$. Cuando $x\in A$, ese testigo da $y\in f(A)$; cuando $x\in B$, da $y\in f(B)$. Los casos cubren $A\cup B$, luego $y\in f(A)\cup f(B)$.
+
+Recíprocamente, si $y\in f(A)\cup f(B)$, pertenece al menos a una de esas imágenes. En el primer caso existe $a\in A$ con $f(a)=y$; como $a\in A\cup B$, se sigue $y\in f(A\cup B)$. En el segundo existe $b\in B$ con $f(b)=y$ y la misma conclusión se obtiene con $b\in A\cup B$. Ambas inclusiones prueban la igualdad.
+
+Una compresión posible dice: «Un testigo de $y\in f(A\cup B)$ pertenece a $A$ o a $B$, por lo que muestra $y\in f(A)\cup f(B)$. Recíprocamente, un testigo de pertenencia a cualquiera de esas imágenes pertenece a $A\cup B$ y muestra $y\in f(A\cup B)$». El enunciado proporciona los dominios; la compresión conserva los testigos, las alternativas y las dos direcciones.
+
+La revisión de una prueba termina al verificar que la conclusión responde al enunciado y que el lector puede recuperar las dependencias utilizadas para alcanzarla.
+
+---
+
+[Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd) · [← Capítulo 9](fundamentos-para-matematicos-capitulo-9-contraejemplos.qmd) · [Capítulo 11 →](fundamentos-para-matematicos-capitulo-11-familias-productos-cocientes-y-tamano.qmd)

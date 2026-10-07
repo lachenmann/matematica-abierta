@@ -17,11 +17,24 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
-      - name: Render the three FND QA fixtures
+      - name: Render integrated FND pages with official Quarto
         run: |
-          quarto render libros/capitulos/fnd-c10-quarto-qa.qmd --to html
-          quarto render libros/capitulos/fnd-c11-quarto-qa.qmd --to html
-          quarto render libros/capitulos/fnd-global-quarto-qa.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-1-afirmaciones-matematicas.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-2-consecuencia-e-hipotesis.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-3-variables-y-cuantificadores.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-5-definiciones-y-pruebas.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-6-demostraciones.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-7-descubrir-demostraciones.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-8-induccion-y-recursion.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-9-contraejemplos.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-10-escritura-de-pruebas.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-capitulo-11-familias-productos-cocientes-y-tamano.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-apendice-a.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-apendice-b.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-apendice-c.qmd --to html
+          quarto render libros/capitulos/fundamentos-para-matematicos-apendice-d.qmd --to html
+          quarto render libros/para-matematicos/fundamentos-para-matematicos.qmd --to html
       - name: Package reduced FND official HTML
         run: |
           python3 - <<'PY'
@@ -32,7 +45,7 @@ jobs:
           root = Path("_site").resolve()
           out = Path("qa-reduced")
           out.mkdir(exist_ok=True)
-          names = [Path(x).stem for x in ("libros/capitulos/fnd-c10-quarto-qa.qmd", "libros/capitulos/fnd-c11-quarto-qa.qmd", "libros/capitulos/fnd-global-quarto-qa.qmd")]
+          names = [Path(x).stem for x in ["libros/capitulos/fundamentos-para-matematicos-capitulo-1-afirmaciones-matematicas.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-2-consecuencia-e-hipotesis.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-3-variables-y-cuantificadores.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-5-definiciones-y-pruebas.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-6-demostraciones.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-7-descubrir-demostraciones.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-8-induccion-y-recursion.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-9-contraejemplos.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-10-escritura-de-pruebas.qmd","libros/capitulos/fundamentos-para-matematicos-capitulo-11-familias-productos-cocientes-y-tamano.qmd","libros/capitulos/fundamentos-para-matematicos-apendice-a.qmd","libros/capitulos/fundamentos-para-matematicos-apendice-b.qmd","libros/capitulos/fundamentos-para-matematicos-apendice-c.qmd","libros/capitulos/fundamentos-para-matematicos-apendice-d.qmd","libros/para-matematicos/fundamentos-para-matematicos.qmd"]]
           targets = []
           for name in names:
               found = list(root.rglob(name + ".html"))
@@ -177,6 +190,7 @@ jobs:
              if(width===390) continue;
              const headings=p.locator(selectors);
              for(let i=0;i<await headings.count();i++){
+              if(!/capitulo-(10|11)-/.test(key)&&i!==0&&i!==await headings.count()-1)continue;
               await headings.nth(i).scrollIntoViewIfNeeded();
               await p.screenshot({path:base+'/qa-evidence/screens/'+key+'-'+width+'-section'+i+'.png'});
              }
@@ -187,6 +201,9 @@ jobs:
                await p.screenshot({path:base+'/qa-evidence/screens/'+key+'-'+width+'-'+kind.replace('.','')+i+'.png'});
               }
              }
+            }
+            if(target.includes('/para-matematicos/')){
+             result.publicNavigation=await p.locator('main a[href]').evaluateAll(es=>es.filter(e=>/capitulos\/fundamentos-para-matematicos/.test(e.getAttribute('href'))).map(e=>({text:e.textContent,href:e.getAttribute('href')})));
             }
             if(key.includes('global')){
              result.chapterTargets=await p.evaluate(()=>[...document.querySelectorAll('#TOC a')].filter(a=>/Capítulo (10|11)|Apéndice/.test(a.textContent)).map(a=>({text:a.textContent,href:a.getAttribute('href'),exists:!!document.getElementById(decodeURIComponent(a.hash.slice(1)))})));
@@ -200,7 +217,6 @@ jobs:
            await browser.close();
            fs.writeFileSync(base+'/qa-evidence/verdict.json',JSON.stringify({pass:results.every(r=>!r.math.merror.length&&!r.math.unprocessed&&!r.math.rawMath&&!r.errors.length&&r.viewports.every(v=>v.scrollWidth===v.clientWidth&&!v.unprotected.length))},null,2));
           })().catch(e=>{console.error(e);process.exit(1)});
-          
           JS
           node fnd-browser.cjs
           python3 - <<'PY'
