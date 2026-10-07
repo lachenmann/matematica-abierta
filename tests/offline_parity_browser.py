@@ -18,7 +18,8 @@ PROBE = """() => {
   const main = document.querySelector('main');
   const nodes = [...main.querySelectorAll('h1,h2,h3,p,li,td,th,table,.callout,mjx-container')];
   return {mathVersion: window.MathJax?.version,
-    mathMetrics: [...window.MathJax.startup.document.math].slice(0,3).map(m=>m.metrics),
+    mathMetrics: [...window.MathJax.startup.document.math].filter(m=>main.contains(m.start.node)).slice(0,3).map(m=>m.metrics),
+    fonts: [...document.fonts].map(f=>({family:f.family,weight:f.weight,style:f.style,status:f.status})),
     outputOptions: JSON.stringify(window.MathJax.startup.document.outputJax.options),
     mathCount: main.querySelectorAll('mjx-container').length,
     errors: main.querySelectorAll('mjx-merror,[data-mjx-error]').length,
@@ -75,7 +76,8 @@ def main():
                     context = browser.new_context(viewport={'width': width, 'height': 844},
                                                   color_scheme='dark', device_scale_factor=1)
                     page = context.new_page()
-                    errors, failed, external = [], [], []
+                    errors, failed, external, responses = [], [], [], []
+                    page.on('response', lambda r: responses.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
                     page.on('pageerror', lambda e: (errors.append(str(e)), print('page error', str(e), flush=True)))
                     page.on('requestfailed', lambda r: failed.append(r.url))
                     if mode == 'online':
@@ -122,7 +124,14 @@ def main():
                     print('math ready', mode, flush=True)
                     page.wait_for_timeout(300)
                     pair[mode] = {**page.evaluate(PROBE), 'pageErrors': errors,
-                                  'failedRequests': failed, 'externalRequests': external}
+                                  'failedRequests': failed, 'externalRequests': external, 'httpErrors': responses}
+                    cdp = context.new_cdp_session(page)
+                    cdp.send('DOM.enable')
+                    cdp.send('CSS.enable')
+                    root = cdp.send('DOM.getDocument')
+                    node = cdp.send('DOM.querySelector', {'nodeId':root['root']['nodeId'], 'selector':'main.content'})
+                    pair[mode]['renderedFonts'] = cdp.send('CSS.getPlatformFontsForNode', {'nodeId':node['nodeId']})['fonts']
+                    cdp.detach()
                     page.screenshot(path=str(args.output / f'{chapter["contentId"]}-{width}-{mode}.png'),
                                     full_page=False)
                     samples = page.evaluate(r'''() => {
@@ -165,6 +174,7 @@ def main():
     server.shutdown()
     if any(r['differences'] or r['offline']['errors'] or r['offline']['pageErrors'] or
            r['offline']['failedRequests'] or r['offline']['externalRequests'] or r['offline']['clippedMath'] or
+           r['online']['httpErrors'] or r['offline']['httpErrors'] or
            r['online']['errors'] or r['online']['failedRequests'] or r['online']['pageErrors'] or
            not r['offline'].get('fragmentNavigation', True) for r in results):
         raise SystemExit('PARITY FAILED: inspect report.json')
