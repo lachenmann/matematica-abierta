@@ -9,7 +9,8 @@ B2 policy:
 - public books only;
 - explicit book IDs at generation time;
 - chapter-level self-contained HTML;
-- offline render uses Quarto minimal HTML rather than the full website chrome;
+- offline render uses Quarto minimal HTML but restores the canonical reader shell;
+- embedded theme fonts are preserved for online/offline visual parity;
 - math remains self-contained;
 - assets array empty because page resources are embedded in the HTML;
 - deterministic package version derived from manifest content hashes;
@@ -169,6 +170,62 @@ _OFFLINE_STRIP_SCRIPT_SIGNATURES = (
 _OFFLINE_STRIP_SCRIPT_IDS = {
     "quarto-search-options",
 }
+
+_OFFLINE_READER_LAYOUT_CSS = r"""
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+#quarto-content .math.display > mjx-container[display="true"] {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding-top: 0.55em !important;
+  padding-bottom: 0.65em !important;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+"""
 
 _DATA_CSS_LINK_RE = re.compile(
     r'<link\b[^>]*href="(data:text/css,[^"]+)"[^>]*>',
@@ -345,23 +402,35 @@ def _strip_unused_bootstrap_icons(head: str, main: str) -> str:
 def optimize_offline_html(data: bytes, *, label: str) -> bytes:
     """Keep the static reading document while dropping website-only runtime.
 
-    The public website render includes navigation, search, webfonts and generic
-    interaction libraries that are useful in a browser but redundant inside the
-    native offline reader. MathJax, content styles and unknown/content-specific
-    scripts are preserved.
+    The public website render includes navigation, search and generic
+    interaction libraries that are redundant inside the native offline reader.
+    MathJax, theme fonts, content styles and unknown/content-specific scripts
+    are preserved. The canonical reader shell is restored around <main> so the
+    same mobile layout contract applies online and offline.
     """
 
     text = data.decode("utf-8", errors="strict")
     head, body_open, main, lang = _isolate_offline_structure(text, label=label)
 
     head = _strip_offline_scripts(head)
-    head = _strip_embedded_webfonts(head)
     head = _strip_unused_bootstrap_icons(head, main)
+    head += (
+        '<style id="ma-offline-reader-layout" data-ma-offline-reader-layout="v1">'
+        + _OFFLINE_READER_LAYOUT_CSS
+        + "</style>"
+    )
 
+    reader_shell = (
+        '<div id="quarto-content" '
+        'class="quarto-container page-columns page-rows-contents '
+        'page-layout-article page-navbar">'
+        + main
+        + "</div>"
+    )
     optimized_text = (
         "<!DOCTYPE html>\n"
         f'<html lang="{lang}"><head>{head}</head>'
-        f"{body_open}{main}</body></html>\n"
+        f"{body_open}{reader_shell}</body></html>\n"
     )
     _isolate_offline_structure(optimized_text, label=f"{label} optimizado")
     optimized = optimized_text.encode("utf-8")
