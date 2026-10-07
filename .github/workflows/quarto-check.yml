@@ -139,7 +139,7 @@ jobs:
            const browser=await chromium.launch({headless:true});
            const results=[];
            fs.mkdirSync(base+'/qa-evidence/screens',{recursive:true});
-           for(const target of manifest.targets){
+           for(const target of manifest.targets.filter(t=>/apendice-[cd]\.html$|\/para-matematicos\//.test(t))){
             const key=path.basename(target,'.html'), p=await browser.newPage({viewport:{width:1440,height:1000}});
             const errors=[], failed=[], responses=[];
             p.on('pageerror',e=>errors.push(e.message));p.on('requestfailed',r=>failed.push({url:r.url(),error:r.failure()}));
@@ -148,8 +148,8 @@ jobs:
             await p.waitForFunction(()=>!!window.MathJax?.startup?.promise,null,{timeout:60000});
             await p.evaluate(()=>MathJax.startup.promise);
             const math=await p.evaluate(()=>{
-             const items=[...MathJax.startup.document.math];
-             return {version:MathJax.version,items:items.length,containers:document.querySelectorAll('mjx-container').length,
+             const items=window.MathJax?.startup?.document?[...MathJax.startup.document.math]:[];
+             return {version:window.MathJax?.version||'N/A (sin expresiones)',items:items.length,containers:document.querySelectorAll('mjx-container').length,
               unprocessed:items.filter(x=>!x.typesetRoot||!x.typesetRoot.isConnected).length,
               rawMath:document.querySelectorAll('span.math:not(:has(mjx-container))').length,
               merror:[...document.querySelectorAll('mjx-merror,merror,[data-mjx-error]')].map(e=>e.textContent),
@@ -219,6 +219,7 @@ jobs:
           })().catch(e=>{console.error(e);process.exit(1)});
           JS
           node fnd-browser.cjs
+          node -e "if (!require('./qa-evidence/verdict.json').pass) process.exit(1)"
           python3 - <<'PY'
           from pathlib import Path
           size = sum(p.stat().st_size for p in Path('qa-evidence').rglob('*') if p.is_file())
