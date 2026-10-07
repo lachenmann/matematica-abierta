@@ -213,7 +213,12 @@ def verify_package(root, book):
     if data.get("schemaVersion") != 1 or data.get("bookId") != book or not data.get("contents"):
         raise ValueError("invalid offline package")
     total = 0
-    for item in data["contents"]:
+    seen = set()
+    for item in [*data["contents"], *data.get("assets", [])]:
+        local = item["localPath"]
+        if not isinstance(local, str) or local.startswith("/") or "\\" in local or any(part in {"", ".", ".."} for part in local.split("/")) or local in seen:
+            raise ValueError("unsafe or duplicate offline resource path")
+        seen.add(local)
         path = (package / item["localPath"]).resolve()
         if not path.is_relative_to(package.resolve()):
             raise ValueError("unsafe offline resource path")

@@ -2,6 +2,7 @@
 title: "Magnitudes, unidades y análisis dimensional"
 description: "Segundo capítulo de Física para matemáticos: magnitudes físicas, unidades, Sistema Internacional, homogeneidad, escalamiento, adimensionalización, semejanza y teorema Π de Buckingham."
 content-id: MA-BCH-0031
+include-in-header: ../../assets/includes/ma-math-font-ready.html
 content-type: book-chapter
 collection: PM-FIS
 book-id: MA-BOK-0005
