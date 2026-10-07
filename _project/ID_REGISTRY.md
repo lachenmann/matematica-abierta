@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0016 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0175 |
+| Capítulo | MA-BCH-0183 |
 | Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0013 |
 
@@ -324,3 +324,16 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | MA-BCH-0172 | book-chapter | Apéndice B — Formas de objetivo y estrategias iniciales | `libros/capitulos/fundamentos-para-matematicos-apendice-b.qmd` | published |
 | MA-BCH-0173 | book-chapter | Apéndice C — Errores frecuentes y pruebas defectuosas | `libros/capitulos/fundamentos-para-matematicos-apendice-c.qmd` | published |
 | MA-BCH-0174 | book-chapter | Apéndice D — Directorio de soluciones desarrolladas | `libros/capitulos/fundamentos-para-matematicos-apendice-d.qmd` | published |
+
+## ANM — publicación de C00 y C05, 2026-10-07
+
+| ID público | Tipo | ID editorial canónico | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0175 | book-chapter | MA-BCH-ANM-01-000 | `libros/capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md` | published |
+| MA-BCH-0176 | book-chapter | MA-BCH-ANM-01-000-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.md` | published |
+| MA-BCH-0177 | book-chapter | MA-BCH-ANM-01-000-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.md` | published |
+| MA-BCH-0178 | book-chapter | MA-BCH-ANM-01-000-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.md` | published |
+| MA-BCH-0179 | book-chapter | MA-BCH-ANM-01-005 | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual.md` | published |
+| MA-BCH-0180 | book-chapter | MA-BCH-ANM-01-005-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.md` | published |
+| MA-BCH-0181 | book-chapter | MA-BCH-ANM-01-005-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.md` | published |
+| MA-BCH-0182 | book-chapter | MA-BCH-ANM-01-005-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.md` | published |
