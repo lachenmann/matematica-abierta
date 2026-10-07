@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0016 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0165 |
+| Capítulo | MA-BCH-0175 |
 | Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0013 |
 
@@ -308,3 +308,19 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | MA-BCH-0146 | book-chapter | TALG-0043 | `libros/capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md` | published |
 | MA-BCH-0147 | book-chapter | TALG-0044 | `libros/capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md` | published |
 | MA-BCH-0148 | book-chapter | TALG-0045 | `libros/capitulos/tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md` | published |
+
+
+## FND — ampliación 2026-10-06
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0165 | book-chapter | Capítulo 6 — ¿Cómo se demuestra una afirmación? | `libros/capitulos/fundamentos-para-matematicos-capitulo-6-demostraciones.qmd` | published |
+| MA-BCH-0166 | book-chapter | Capítulo 7 — ¿Cómo se descubre una demostración que todavía no conocemos? | `libros/capitulos/fundamentos-para-matematicos-capitulo-7-descubrir-demostraciones.qmd` | published |
+| MA-BCH-0167 | book-chapter | Capítulo 8 — Naturales, recursión, inducción y buen orden | `libros/capitulos/fundamentos-para-matematicos-capitulo-8-induccion-y-recursion.qmd` | published |
+| MA-BCH-0168 | book-chapter | Capítulo 9 — ¿Cómo sabemos que una afirmación universal es falsa? | `libros/capitulos/fundamentos-para-matematicos-capitulo-9-contraejemplos.qmd` | published |
+| MA-BCH-0169 | book-chapter | Capítulo 10 — ¿Cómo se escribe una prueba para que otro matemático pueda verificarla? | `libros/capitulos/fundamentos-para-matematicos-capitulo-10-escritura-de-pruebas.qmd` | published |
+| MA-BCH-0170 | book-chapter | Capítulo 11 — Familias, productos, cocientes y tamaño | `libros/capitulos/fundamentos-para-matematicos-capitulo-11-familias-productos-cocientes-y-tamano.qmd` | published |
+| MA-BCH-0171 | book-chapter | Apéndice A — Glosario lógico y demostrativo | `libros/capitulos/fundamentos-para-matematicos-apendice-a.qmd` | published |
+| MA-BCH-0172 | book-chapter | Apéndice B — Formas de objetivo y estrategias iniciales | `libros/capitulos/fundamentos-para-matematicos-apendice-b.qmd` | published |
+| MA-BCH-0173 | book-chapter | Apéndice C — Errores frecuentes y pruebas defectuosas | `libros/capitulos/fundamentos-para-matematicos-apendice-c.qmd` | published |
+| MA-BCH-0174 | book-chapter | Apéndice D — Directorio de soluciones desarrolladas | `libros/capitulos/fundamentos-para-matematicos-apendice-d.qmd` | published |
