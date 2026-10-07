@@ -64,3 +64,11 @@ El contenido textual y educativo original se publica bajo GNU Free Documentation
 El código o los scripts propios pueden usar GNU GPLv3 o posterior de forma separada cuando corresponda.
 
 El material de terceros conserva sus derechos y licencias y no se relicencia por aparecer citado en el proyecto.
+
+## 9. Maquetación web de los libros
+
+`MA_WEB_BOOK_LAYOUT_v1.0.md`, en los protocolos canónicos de Obsidian/Drive, rige la presentación HTML de libros, tratados y sus bancos. `libros/_metadata.yml` hereda `assets/books/reader.css` para todo el árbol de libros. Las páginas nuevas no deben copiar reglas de otro libro ni declarar de nuevo la hoja común.
+
+La tipografía y los temas de MA siguen en las hojas generales del sitio. La hoja común de libros concentra el ritmo vertical, las fórmulas desplazables, las tablas, figuras y navegación móvil. Las hojas particulares contienen únicamente excepciones editoriales documentadas. No se cambia la matemática para ajustar la maquetación.
+
+Antes de publicar, `python3 tools/check_book_layout.py --site-dir _site` verifica que cada página Quarto de libros cargue la hoja común exactamente una vez y que sus estilos locales existan. Las exportaciones PDF/EPUB, laboratorios independientes y documentos externos conservan su formato propio.
