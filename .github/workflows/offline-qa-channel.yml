@@ -1,0 +1,99 @@
+name: Offline QA Channel PR275
+
+on:
+  push:
+    branches:
+      - qa/offline-pr-275-channel
+  workflow_dispatch:
+
+concurrency:
+  group: offline-qa-pr-275-channel
+  cancel-in-progress: true
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  publish-reviewed-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out QA channel branch
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Download reviewed Quarto Check artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf /tmp/ma-offline-qa
+          mkdir -p /tmp/ma-offline-qa
+          gh run download 37574801625 \
+            --repo "${{ github.repository }}" \
+            --name triangular-site-qa \
+            --dir /tmp/ma-offline-qa
+
+      - name: Verify exact reviewed package
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          roots = list(Path("/tmp/ma-offline-qa").rglob(
+              "app/offline/MA-BOK-0005/manifest-v1.json"
+          ))
+          assert len(roots) == 1, roots
+          manifest_path = roots[0]
+          package = manifest_path.parent
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+          assert manifest["bookId"] == "MA-BOK-0005"
+          assert manifest["version"] == "sha256-a1d714a43a8106977989a4c2"
+          assert manifest["totalSize"] == 6529479
+
+          total = 0
+          for item in [*manifest["contents"], *manifest["assets"]]:
+              path = package / item["localPath"]
+              data = path.read_bytes()
+              assert len(data) == item["size"]
+              assert hashlib.sha256(data).hexdigest() == item["sha256"]
+              total += len(data)
+          assert total == manifest["totalSize"]
+
+          Path("/tmp/qa-package-path.txt").write_text(str(package))
+          print(f"QA package verified: {manifest['version']} · {total} bytes")
+          PY
+
+      - name: Publish isolated raw QA branch
+        run: |
+          package="$(cat /tmp/qa-package-path.txt)"
+          rm -rf /tmp/qa-publish
+          mkdir -p /tmp/qa-publish/app/offline
+          cp -a "$package" /tmp/qa-publish/app/offline/MA-BOK-0005
+
+          cat > /tmp/qa-publish/QA_CHANNEL.json <<'JSON'
+          {
+            "channel": "pr-275",
+            "sourcePr": 275,
+            "sourceHead": "6e81bb821c1d652856bf2f3292bc4f9724793cdb",
+            "sourceWorkflowRun": 37574801625,
+            "manifestVersion": "sha256-a1d714a43a8106977989a4c2",
+            "production": false
+          }
+          JSON
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --orphan qa-offline-pr-275
+          git rm -rf . || true
+          cp -a /tmp/qa-publish/. .
+          git add -A
+          git commit -m "QA: publish reviewed PR275 offline package"
+          git push --force origin HEAD:qa-offline-pr-275
+
+      - name: Report QA base URL
+        run: |
+          echo "QA base URL:"
+          echo "https://raw.githubusercontent.com/${{ github.repository }}/qa-offline-pr-275/app/offline"
