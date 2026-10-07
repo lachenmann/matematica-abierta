@@ -60,7 +60,8 @@ python3 -m playwright install chromium
 python3 tests/offline_parity_browser.py --site _site --output .ma-build/offline-parity
 ```
 
-El QA compara el mismo build en Chromium a 390 y 430 px, modo oscuro, con el CSS
+El QA compara el mismo build en Chromium a 390 y 430 px, modo oscuro, con el
+User-Agent Android compartido con el empaquetador y con el CSS
 `ma-reader-mode-v1` de la app. Inspecciona todos los párrafos, encabezados, listas,
 celdas, tablas, callouts y contenedores MathJax (tolerancia geométrica: 1 px).
 Incluye capturas de fórmulas inline, fracciones, potencias, primas, raíces y
@@ -121,3 +122,21 @@ la instalación del libro. No cambiar sus IDs, hashes ni el manifiesto.
 El APK de producción no permite necesariamente `adb run-as`; no es una vía de
 instalación del candidato en ese caso. No se ha conectado ni probado un dispositivo
 físico durante este trabajo.
+
+## Hallazgo del gate Linux y corrección del QA
+
+Quarto Check del HEAD `0ab911c` pasó el render y la integridad, pero falló la
+paridad visual. El QA usaba el User-Agent Linux del runner, mientras que el
+empaquetador solicita las fuentes con un perfil Android. Google Fonts negocia
+archivos distintos: Lato normal latino para Linux incluye 30.361 bytes de
+instrucciones de hinting, mientras que la variante Android no las incluye;
+las métricas `hmtx` de los caracteres comparados son iguales. Esto introduce
+saltos de línea diferentes en Chromium Linux aunque `font-family` coincida.
+
+El QA ahora comparte `READER_USER_AGENT` con el empaquetador y registra el perfil,
+las fuentes usadas, estados de carga y errores HTTP. La comparación conserva su
+tolerancia de 1 px y todos los controles de red, integridad y recorte. No se
+modifica el lector ni se añaden parches de CSS. El sitio candidato se conserva
+como artifact incluso si falla el QA. Los resultados con este perfil siguen
+siendo de Chromium de escritorio, no de Android físico ni de un perfil desktop
+Linux. La compatibilidad iOS/WebView físico sigue pendiente.

@@ -8,10 +8,14 @@ import functools
 import http.server
 import json
 from pathlib import Path
+import sys
 import threading
 import time
 
 from playwright.sync_api import sync_playwright
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
+from canonical_offline import READER_USER_AGENT
 
 
 PROBE = """() => {
@@ -74,7 +78,8 @@ def main():
                 pair = {}
                 for mode in ['online', 'offline']:
                     context = browser.new_context(viewport={'width': width, 'height': 844},
-                                                  color_scheme='dark', device_scale_factor=1)
+                                                  color_scheme='dark', device_scale_factor=1,
+                                                  user_agent=READER_USER_AGENT)
                     page = context.new_page()
                     errors, failed, external, responses = [], [], [], []
                     page.on('response', lambda r: responses.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
@@ -123,7 +128,7 @@ def main():
                         page.wait_for_timeout(50)
                     print('math ready', mode, flush=True)
                     page.wait_for_timeout(300)
-                    pair[mode] = {**page.evaluate(PROBE), 'pageErrors': errors,
+                    pair[mode] = {'userAgent': page.evaluate('() => navigator.userAgent'), **page.evaluate(PROBE), 'pageErrors': errors,
                                   'failedRequests': failed, 'externalRequests': external, 'httpErrors': responses}
                     cdp = context.new_cdp_session(page)
                     cdp.send('DOM.enable')

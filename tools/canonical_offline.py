@@ -19,6 +19,9 @@ import tinycss2
 
 from offline_resources import Resources, package_path
 
+# Google Fonts negotiates hinted/unhinted files by platform. The offline book
+# targets Android; browser parity QA must request the same font distribution.
+READER_USER_AGENT = "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36"
 LOCK = Path(__file__).with_name("offline-runtime-lock.json")
 MEDIA = {".css": "text/css", ".js": "application/javascript", ".woff2": "font/woff2",
          ".woff": "font/woff", ".ttf": "font/ttf", ".svg": "image/svg+xml",
@@ -32,7 +35,7 @@ def download(url):
         "fonts.googleapis.com", "fonts.gstatic.com", "registry.npmjs.org", "cdn.jsdelivr.net"
     }:
         raise ValueError(f"build resource origin not allowed: {url}")
-    request = Request(url, headers={"User-Agent": "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36"})
+    request = Request(url, headers={"User-Agent": READER_USER_AGENT})
     with urlopen(request, timeout=60) as response:
         if urlsplit(response.url).hostname != parsed.hostname:
             raise ValueError("resource redirected outside its origin")
