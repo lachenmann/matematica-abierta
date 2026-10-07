@@ -179,6 +179,49 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
         self.assertNotIn("bootstrap-icons", optimized)
         self.assertLess(len(optimized), len(html))
 
+    def test_offline_optimizer_ignores_html_literals_inside_mathjax(self):
+        html = b"""<!DOCTYPE html>
+<html lang="es">
+<head>
+<script type="text/javascript">
+window.MathJax = {};
+const template = "<html><head></head><body><main>fake</main></body></html>";
+</script>
+<style>main{max-width:70ch}</style>
+</head>
+<body class="fullcontent">
+<header id="quarto-header">chrome</header>
+<main id="quarto-document-content">
+<figure><img src="data:image/png;base64,AA=="><figcaption>Figura</figcaption></figure>
+<table><tr><td>dato</td></tr></table>
+<p><a href="https://example.com">fuente</a></p>
+</main>
+<footer>chrome</footer>
+</body>
+</html>"""
+
+        optimized = optimize_offline_html(html, label="mathjax-template").decode(
+            "utf-8"
+        )
+
+        self.assertTrue(optimized.startswith("<!DOCTYPE html>\n<html"))
+        self.assertIn("window.MathJax", optimized)
+        self.assertIn(
+            'const template = "<html><head></head><body><main>fake</main></body></html>";',
+            optimized,
+        )
+        self.assertIn('id="quarto-document-content"', optimized)
+        self.assertEqual(optimized.count('id="quarto-document-content"'), 1)
+        self.assertIn('src="data:image/png;base64,AA=="', optimized)
+        self.assertIn("<table>", optimized)
+        self.assertIn('<a href="https://example.com">fuente</a>', optimized)
+        self.assertLess(
+            optimized.index("</script>"),
+            optimized.index('<main id="quarto-document-content">'),
+        )
+        self.assertNotIn("quarto-header", optimized)
+        self.assertNotIn("<footer>", optimized)
+
     def test_offline_optimizer_preserves_content_icons_and_language(self):
         html = b"""<!DOCTYPE html>
 <html lang="la">
