@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -240,6 +241,20 @@ const template = "<html><head></head><body><main>fake</main></body></html>";
         self.assertIn('<html lang="la">', optimized)
         self.assertIn("bootstrap-icons", optimized)
         self.assertIn('class="bi bi-star"', optimized)
+
+    def test_global_display_math_does_not_clip_vertical_glyphs(self):
+        css = (ROOT / "styles.scss").read_text(encoding="utf-8")
+        match = re.search(
+            r"\.math\.display\s*\{([^}]*)\}",
+            css,
+            re.S,
+        )
+        self.assertIsNotNone(match)
+        block = match.group(1)
+        self.assertIn("overflow-x: auto", block)
+        self.assertIn("overflow-y: visible", block)
+        self.assertNotIn("overflow-y: hidden", block)
+        self.assertIn("padding: 0.45rem 0 0.55rem", block)
 
     def test_self_contained_validation_allows_external_links_but_not_subresources(self):
         validate_self_contained_html(
