@@ -391,7 +391,7 @@ def _strip_embedded_webfonts(head: str) -> str:
 
 def _html_attr_value(tag: str, name: str) -> str | None:
     match = re.search(
-        rf'\\b{re.escape(name)}=["\\\']([^"\\\']+)["\\\']',
+        rf'\b{re.escape(name)}=["\']([^"\']+)["\']',
         tag,
         re.I,
     )
