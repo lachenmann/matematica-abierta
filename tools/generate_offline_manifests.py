@@ -5,10 +5,12 @@ The public catalog supplies canonical identities. Each selected book chapter is
 rendered again as standalone HTML with Quarto's embedded resources and embedded
 math runtime, then hashed into the B1 manifest contract.
 
-Initial B2 policy:
+B2 policy:
 - public books only;
 - explicit book IDs at generation time;
 - chapter-level self-contained HTML;
+- offline render uses Quarto minimal HTML rather than the full website chrome;
+- math remains self-contained;
 - assets array empty because page resources are embedded in the HTML;
 - deterministic package version derived from manifest content hashes;
 - fail closed on missing source, unsafe output, external subresources, or
@@ -22,6 +24,7 @@ import hashlib
 import json
 import re
 import shutil
+from html.parser import HTMLParser
 import subprocess
 import tempfile
 from datetime import datetime, timezone
@@ -150,22 +153,267 @@ def validate_self_contained_html(data: bytes, *, label: str) -> None:
             raise ValueError(f"{label}: conserva un subrecurso externo")
 
 
+_OFFLINE_STRIP_SCRIPT_SIGNATURES = (
+    'headroomChanged = new CustomEvent("quarto-hrChanged"',
+    "headroom.js v0.12.0",
+    "clipboard.js v2.0.11",
+    "@algolia/autocomplete-js",
+    "Fuse.js v6.6.2",
+    'const kQueryArg = "q";',
+    "@popperjs/core v2.11.7",
+    ").tippy=t(",
+    "AnchorJS - v5.0.0",
+    "Bootstrap v5.3.1",
+)
+
+_OFFLINE_STRIP_SCRIPT_IDS = {
+    "quarto-search-options",
+}
+
+_DATA_CSS_LINK_RE = re.compile(
+    r'<link\b[^>]*href="(data:text/css,[^"]+)"[^>]*>',
+    re.I,
+)
+_SCRIPT_RE = re.compile(
+    r"<script\b([^>]*)>([\s\S]*?)</script>",
+    re.I,
+)
+_STYLE_RE = re.compile(
+    r"<style\b[^>]*>([\s\S]*?)</style>",
+    re.I,
+)
+class _OfflineStructureParser(HTMLParser):
+    """Locate real document tags without matching HTML-like strings in scripts."""
+
+    def __init__(self, text: str) -> None:
+        super().__init__(convert_charrefs=False)
+        self.text = text
+        self._line_starts = [0]
+        self._line_starts.extend(match.end() for match in re.finditer("\n", text))
+        self.lang = "es"
+        self.head_inner_start: int | None = None
+        self.head_inner_end: int | None = None
+        self.body_open_start: int | None = None
+        self.body_open_end: int | None = None
+        self.main_start: int | None = None
+        self.main_end: int | None = None
+
+    def _absolute_index(self) -> int:
+        line, column = self.getpos()
+        return self._line_starts[line - 1] + column
+
+    def handle_starttag(
+        self,
+        tag: str,
+        attrs: list[tuple[str, str | None]],
+    ) -> None:
+        tag = tag.lower()
+        start = self._absolute_index()
+        raw = self.get_starttag_text()
+        if raw is None:
+            return
+        end = start + len(raw)
+        attr_map = dict(attrs)
+
+        if tag == "html" and attr_map.get("lang"):
+            self.lang = str(attr_map["lang"])
+        elif tag == "head" and self.head_inner_start is None:
+            self.head_inner_start = end
+        elif tag == "body" and self.body_open_start is None:
+            self.body_open_start = start
+            self.body_open_end = end
+        elif (
+            tag == "main"
+            and attr_map.get("id") == "quarto-document-content"
+            and self.main_start is None
+        ):
+            self.main_start = start
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        start = self._absolute_index()
+        close = self.text.find(">", start)
+        if close < 0:
+            return
+        end = close + 1
+
+        if tag == "head" and self.head_inner_start is not None:
+            if self.head_inner_end is None:
+                self.head_inner_end = start
+        elif tag == "main" and self.main_start is not None:
+            if self.main_end is None:
+                self.main_end = end
+
+
+def _isolate_offline_structure(
+    text: str,
+    *,
+    label: str,
+) -> tuple[str, str, str, str]:
+    parser = _OfflineStructureParser(text)
+    parser.feed(text)
+    parser.close()
+
+    required = (
+        parser.head_inner_start,
+        parser.head_inner_end,
+        parser.body_open_start,
+        parser.body_open_end,
+        parser.main_start,
+        parser.main_end,
+    )
+    if any(value is None for value in required):
+        raise ValueError(f"{label}: no se pudo aislar head/main/body para offline")
+
+    assert parser.head_inner_start is not None
+    assert parser.head_inner_end is not None
+    assert parser.body_open_start is not None
+    assert parser.body_open_end is not None
+    assert parser.main_start is not None
+    assert parser.main_end is not None
+
+    return (
+        text[parser.head_inner_start : parser.head_inner_end],
+        text[parser.body_open_start : parser.body_open_end],
+        text[parser.main_start : parser.main_end],
+        parser.lang,
+    )
+
+
+_FONT_FACE_RE = re.compile(
+    r"@font-face\s*\{[^{}]*font-family:\s*['\"](?:Source Sans Pro|Lato)['\"][^{}]*\}",
+    re.I | re.S,
+)
+
+
+def _script_id(attrs: str) -> str | None:
+    match = re.search(r'\bid=["\']([^"\']+)["\']', attrs, re.I)
+    return match.group(1) if match else None
+
+
+def _strip_offline_scripts(head: str) -> str:
+    def replace(match: re.Match[str]) -> str:
+        attrs = match.group(1)
+        body = match.group(2)
+        if _script_id(attrs) in _OFFLINE_STRIP_SCRIPT_IDS:
+            return ""
+        if any(signature in body for signature in _OFFLINE_STRIP_SCRIPT_SIGNATURES):
+            return ""
+        return match.group(0)
+
+    return _SCRIPT_RE.sub(replace, head)
+
+
+def _strip_embedded_webfonts(head: str) -> str:
+    from urllib.parse import quote, unquote
+
+    def replace_link(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        href = match.group(1)
+        encoded_css = href[len("data:text/css,") :]
+        try:
+            css = unquote(encoded_css)
+        except Exception:
+            return tag
+
+        if "Source Sans Pro" not in css and "Lato" not in css:
+            return tag
+
+        stripped = _FONT_FACE_RE.sub("", css)
+        if stripped == css:
+            return tag
+
+        replacement_href = "data:text/css," + quote(
+            stripped,
+            safe="!$&'()*+,/:;=?@-._~",
+        )
+        return tag.replace(href, replacement_href, 1)
+
+    return _DATA_CSS_LINK_RE.sub(replace_link, head)
+
+
+def _strip_unused_bootstrap_icons(head: str, main: str) -> str:
+    if re.search(r'class=["\'][^"\']*\bbi(?:\s|[-"\'])', main, re.I):
+        return head
+
+    def replace_style(match: re.Match[str]) -> str:
+        return "" if "bootstrap-icons" in match.group(1) else match.group(0)
+
+    return _STYLE_RE.sub(replace_style, head)
+
+
+def optimize_offline_html(data: bytes, *, label: str) -> bytes:
+    """Keep the static reading document while dropping website-only runtime.
+
+    The public website render includes navigation, search, webfonts and generic
+    interaction libraries that are useful in a browser but redundant inside the
+    native offline reader. MathJax, content styles and unknown/content-specific
+    scripts are preserved.
+    """
+
+    text = data.decode("utf-8", errors="strict")
+    head, body_open, main, lang = _isolate_offline_structure(text, label=label)
+
+    head = _strip_offline_scripts(head)
+    head = _strip_embedded_webfonts(head)
+    head = _strip_unused_bootstrap_icons(head, main)
+
+    optimized_text = (
+        "<!DOCTYPE html>\n"
+        f'<html lang="{lang}"><head>{head}</head>'
+        f"{body_open}{main}</body></html>\n"
+    )
+    _isolate_offline_structure(optimized_text, label=f"{label} optimizado")
+    optimized = optimized_text.encode("utf-8")
+
+    validate_self_contained_html(optimized, label=label)
+    return optimized
+
+
+def build_offline_render_command(
+    root: Path,
+    source: Path,
+    output_dir: Path,
+    quarto: str = "quarto",
+) -> list[str]:
+    return [
+        quarto,
+        "render",
+        str(source.relative_to(root)),
+        "--to",
+        "html",
+        "--output-dir",
+        str(output_dir),
+        "-M",
+        "minimal:true",
+        "-M",
+        "toc:false",
+        "-M",
+        "anchor-sections:false",
+        "-M",
+        "code-copy:false",
+        "-M",
+        "citations-hover:false",
+        "-M",
+        "footnotes-hover:false",
+        "-M",
+        "fig-responsive:true",
+        "-M",
+        "embed-resources:true",
+        "-M",
+        "self-contained-math:true",
+    ]
+
+
 def render_offline_chapter(root: Path, source: Path, quarto: str = "quarto") -> bytes:
     with tempfile.TemporaryDirectory(prefix="ma-offline-") as tmp:
         output_dir = Path(tmp).resolve()
-        command = [
-            quarto,
-            "render",
-            str(source.relative_to(root)),
-            "--to",
-            "html",
-            "--output-dir",
-            str(output_dir),
-            "-M",
-            "embed-resources:true",
-            "-M",
-            "self-contained-math:true",
-        ]
+        command = build_offline_render_command(
+            root,
+            source,
+            output_dir,
+            quarto=quarto,
+        )
         completed = subprocess.run(
             command,
             cwd=root,
@@ -185,8 +433,18 @@ def render_offline_chapter(root: Path, source: Path, quarto: str = "quarto") -> 
                 f"render offline ambiguo para {source.relative_to(root)}: {len(matches)} salidas"
             )
 
-        data = matches[0].read_bytes()
-        validate_self_contained_html(data, label=str(source.relative_to(root)))
+        raw_data = matches[0].read_bytes()
+        data = optimize_offline_html(
+            raw_data,
+            label=str(source.relative_to(root)),
+        )
+        reduction = 100.0 * (1.0 - (len(data) / len(raw_data)))
+        print(
+            "offline-optimize: "
+            f"{source.relative_to(root)}: "
+            f"{len(raw_data)} -> {len(data)} bytes "
+            f"({reduction:.1f}% menos)"
+        )
         return data
 
 
