@@ -1,0 +1,76 @@
+name: FND release QA (temporary)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'libros/capitulos/fundamentos-para-matematicos-*'
+      - 'libros/para-matematicos/fundamentos-para-matematicos.qmd'
+      - '.github/workflows/_fnd_release_qa_20261008.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  fnd-official:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out proposed public edition
+        uses: actions/checkout@v4
+      - name: Set up official Quarto 1.10.18
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Render all FND chapters, appendices and book index
+        shell: bash
+        run: |
+          set -euo pipefail
+          quarto render libros/para-matematicos/fundamentos-para-matematicos.qmd --to html
+          for page in libros/capitulos/fundamentos-para-matematicos-capitulo-*.qmd libros/capitulos/fundamentos-para-matematicos-apendice-*.qmd; do
+            quarto render "$page" --to html
+          done
+          test "$(find _site/libros/capitulos -name 'fundamentos-para-matematicos-capitulo-*.html' | wc -l)" -eq 11
+          test "$(find _site/libros/capitulos -name 'fundamentos-para-matematicos-apendice-*.html' | wc -l)" -eq 4
+          test -s _site/libros/para-matematicos/fundamentos-para-matematicos.html
+      - name: Set up Chromium for real MathJax and responsive QA
+        run: |
+          python3 -m pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Inspect MathJax, 320/390/1440 px, and internal FND links
+        run: python3 tools/_fnd_release_qa_20261008.py
+      - name: Package reduced browser evidence
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          site = Path('_site')
+          out = Path('qa-fnd-release')
+          out.mkdir(exist_ok=True)
+          html = [site/'libros/para-matematicos/fundamentos-para-matematicos.html']
+          html.extend(sorted((site/'libros/capitulos').glob('fundamentos-para-matematicos-capitulo-*.html')))
+          html.extend(sorted((site/'libros/capitulos').glob('fundamentos-para-matematicos-apendice-*.html')))
+          for source in html:
+              if source.is_file():
+                  target = out / source.relative_to(site)
+                  target.parent.mkdir(parents=True,exist_ok=True)
+                  shutil.copy2(source,target)
+          for lib in site.rglob('site_libs'):
+              if lib.is_dir():
+                  dest=out/lib.relative_to(site)
+                  if not dest.exists():
+                      shutil.copytree(lib,dest,ignore=shutil.ignore_patterns('*.map'))
+          size=sum(f.stat().st_size for f in out.rglob('*') if f.is_file())
+          print('FND_REDUCED_QA_BYTES', size)
+          assert size < 32*1024*1024, 'Reduced FND QA artifact too large'
+          PY
+      - name: Preserve browser QA and reduced HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fnd-release-qa-20261008
+          path: qa-fnd-release/
+          if-no-files-found: warn
+          retention-days: 5
+          compression-level: 9
