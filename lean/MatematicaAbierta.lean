@@ -23,6 +23,7 @@ import MatematicaAbierta.Continuo.DecididoresCortesEfectivos
 import MatematicaAbierta.Continuo.SumaCortesReduccion
 import MatematicaAbierta.Continuo.ContradiccionUniforme
 import MatematicaAbierta.Continuo.NoPertenenciaUniforme
+import MatematicaAbierta.Continuo.EtapasUniformes
 import MatematicaAbierta.MCL.U00.L01_Proposiciones
 import MatematicaAbierta.MCL.U00.L02_Igualdad
 
