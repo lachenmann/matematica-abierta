@@ -144,9 +144,11 @@ theorem primrec_sumCertificateStage : Primrec sumCertificateStage := by
     Primrec.eq.comp hcomparison (Primrec.const (some false))
 
   have hinside : PrimrecPred (fun w : W => sumStageInterior w) :=
-    ((htrueA.and htrueB).and htrueCmp).of_eq fun _ => Iff.rfl
+    ((htrueA.and htrueB).and htrueCmp).of_eq fun _ => by
+      simp only [sumStageInterior, and_assoc]
   have houtside : PrimrecPred (fun w : W => sumStageExterior w) :=
-    ((hfalseA.and hfalseB).and hfalseCmp).of_eq fun _ => Iff.rfl
+    ((hfalseA.and hfalseB).and hfalseCmp).of_eq fun _ => by
+      simp only [sumStageExterior, and_assoc]
 
   exact (Primrec.ite hinside (Primrec.const (some true))
       (Primrec.ite houtside (Primrec.const (some false))
