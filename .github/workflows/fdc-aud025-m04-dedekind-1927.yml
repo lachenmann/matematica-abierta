@@ -1,0 +1,51 @@
+name: FDC AUD025 M04 | Visual collate Dedekind 1927
+on:
+  push:
+    branches:
+      - audit/fdc-aud-025-dedekind-1872
+    paths:
+      - .github/workflows/fdc-aud025-m04-dedekind-1927.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Install PDF renderer
+        run: python -m pip install --quiet pymupdf requests pillow
+      - name: Download original 1927 scan and render page 329
+        run: |
+          python - <<'PY'
+          import pathlib,requests,hashlib,json,fitz
+          p=pathlib.Path('M04_1927_FACSIMILE');p.mkdir(exist_ok=True)
+          url='https://rcin.org.pl/Content/142099/PDF/WA35_176311_15883-3_Art5.pdf'
+          data={'source':'RCIN','url':url,'description':'Erste Auflage 1872. Fünfte Auflage 1927. Reprint image; not first edition 1872','first_edition_original':False,'image_verified':False}
+          try:
+            r=requests.get(url,timeout=(12,35),headers={'User-Agent':'Mozilla/5.0','Accept':'application/pdf'})
+            blob=r.content
+            data.update({'status':r.status_code,'mime':r.headers.get('content-type',''),'bytes':len(blob),'sha256':hashlib.sha256(blob).hexdigest(),'head':repr(blob[:10])})
+            if r.ok and blob.startswith(b'%PDF'):
+              src=p/'Dedekind_1927_original_RCIN.pdf';src.write_bytes(blob)
+              d=fitz.open(src)
+              data['pdf_pages']=len(d)
+              for idx in [0,14,15]:
+                if idx>=len(d):continue
+                pg=d[idx]
+                pix=pg.get_pixmap(matrix=fitz.Matrix(3,3),alpha=False)
+                target=p/f'1927_scan_PDFpage_{idx+1:02d}.png';pix.save(target)
+                data[f'image_{idx+1}_sha256']=hashlib.sha256(target.read_bytes()).hexdigest()
+              data['image_verified']=True
+              data['section6_extracted_text']=d[14].get_text()[:4500] if len(d)>14 else ''
+          except Exception as e:data['error']=repr(e)
+          (p/'MANIFEST.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))
+          print(json.dumps({k:v for k,v in data.items() if k!='section6_extracted_text'},ensure_ascii=False,indent=2))
+          PY
+      - name: Preserve page images and source manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdc-aud025-m04-dedekind-1927-source
+          path: M04_1927_FACSIMILE/
+          retention-days: 14
