@@ -24,6 +24,9 @@ import MatematicaAbierta.Continuo.SumaCortesReduccion
 import MatematicaAbierta.Continuo.ContradiccionUniforme
 import MatematicaAbierta.Continuo.NoPertenenciaUniforme
 import MatematicaAbierta.Continuo.EtapasUniformes
+import MatematicaAbierta.Continuo.CertificadosSumaEfectivos
+import MatematicaAbierta.Continuo.SemanticaCertificadosSuma
+import MatematicaAbierta.Continuo.PrimitividadCertificadosSuma
 import MatematicaAbierta.MCL.U00.L01_Proposiciones
 import MatematicaAbierta.MCL.U00.L02_Igualdad
 
