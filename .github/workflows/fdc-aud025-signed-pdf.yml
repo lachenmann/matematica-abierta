@@ -1,0 +1,72 @@
+name: FDC AUD025 M03 | Signed 1872 PDF facsimile
+on:
+  push:
+    branches:
+      - audit/fdc-aud-025-dedekind-1872
+    paths:
+      - .github/workflows/fdc-aud025-signed-pdf.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original_pdf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Install PDF renderer
+        run: python -m pip install --quiet pymupdf requests
+      - name: Get signed Michigan 1872 download and render section six
+        run: |
+          python - <<'PY'
+          import requests,pathlib,hashlib,json,fitz,traceback
+          from urllib.parse import urlparse
+          p=pathlib.Path('AUD025_M03_SIGNED_PDF');p.mkdir(exist_ok=True)
+          base='https://books.google.ca/books/download/Stetigkeit_und_irrationale_Zahlen.pdf?id=n-43AAAAMAAJ&output=pdf&sig=ACfU3U26R1Gs5kZo0-5HINtp4GpVKV-OHA'
+          targets=[
+             base,
+             base.replace('books.google.ca','books.google.com'),
+             'https://books.google.ca/books/download/Stetigkeit_und_irrationale_Zahlen.epub?id=n-43AAAAMAAJ&output=epub',
+             'https://play.google.com/books/reader?id=n-43AAAAMAAJ',
+          ]
+          sess=requests.Session()
+          sess.headers.update({'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126.0.0.0 Safari/537.36','Referer':'https://books.google.ca/books?id=n-43AAAAMAAJ','Accept':'application/pdf,application/epub+zip,*/*'})
+          report={'source':'Google Books / University of Michigan 1872','book_id':'n-43AAAAMAAJ','requests':[],'verified_pdf':False}
+          for i,u in enumerate(targets):
+            item={'request':i,'url':u}
+            try:
+              r=sess.get(u,timeout=(10,35))
+              b=r.content
+              item.update({'status':r.status_code,'content_type':r.headers.get('content-type',''),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'final_url':r.url,'magic':repr(b[:16])})
+              if b.startswith(b'%PDF') and len(b)>100000:
+                fname=p/'Dedekind_1872_Michigan_Google_Books.pdf'
+                fname.write_bytes(b)
+                d=fitz.open(fname)
+                report.update({'verified_pdf':True,'total_pages':len(d),'pdf_sha256':item['sha256']})
+                for ix in range(len(d)):
+                  page=d[ix]
+                  excerpt=page.get_text()
+                  if ix<8 or 'Rechnungen mit reellen Zahlen' in excerpt or 'Summe' in excerpt or ix in list(range(22,min(len(d),36))):
+                    pix=page.get_pixmap(matrix=fitz.Matrix(2,2),alpha=False)
+                    output=p/f'facsimile_pdf_page_{ix+1:03d}.png'
+                    pix.save(output)
+                    if 'Summe' in excerpt:report.setdefault('section6_pages',[]).append(ix+1)
+                report['rendered_pages']=len(list(p.glob('facsimile_pdf_page_*.png')))
+                report['cover_text']=d[2].get_text()[:650] if len(d)>2 else ''
+                report['near_section_text']=[{'page':ix+1,'text':d[ix].get_text()[:1500]} for ix in range(max(0,min(len(d)-1,21)),min(len(d),35)) if 'Summe' in d[ix].get_text() or 'Rechnungen' in d[ix].get_text()]
+                report['requests'].append(item)
+                break
+              if b[:2]==b'PK':
+                (p/'Google_Books_1872_epub.zip').write_bytes(b)
+            except Exception as e:item['error']=str(e)[:500]
+            report['requests'].append(item)
+          (p/'DOWNLOAD_MANIFEST.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          print(json.dumps({k:v for k,v in report.items() if k!='requests'},ensure_ascii=False,indent=2)[:2800])
+          for x in report['requests']:print(x['request'],x.get('status'),x.get('content_type'),x.get('bytes'),x.get('error','')[:80])
+          PY
+      - name: Preserve original evidence, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FDC-AUD025-M03-1872-Michigan-signed
+          path: AUD025_M03_SIGNED_PDF/
+          retention-days: 14
