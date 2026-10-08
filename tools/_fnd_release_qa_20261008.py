@@ -68,17 +68,19 @@ def main():
         for file in paths:
             slug = str(file.relative_to(SITE))
             chapter = "capitulo-" in file.name
-            for width in WIDTHS:
-                context = browser.new_context(viewport={"width": width, "height": 900}, device_scale_factor=1)
-                page = context.new_page()
-                errors = []
-                page.on("pageerror", lambda exception: errors.append(str(exception)))
-                try:
-                    page.goto("http://127.0.0.1:8765/" + slug, wait_until="load", timeout=90000)
-                    if chapter:
-                        page.wait_for_function("() => Boolean(window.MathJax && MathJax.startup && MathJax.startup.promise)", timeout=90000)
-                        page.evaluate("async () => { await MathJax.startup.promise; if (MathJax.typesetPromise) await MathJax.typesetPromise(); }")
-                    page.evaluate("() => document.fonts.ready")
+            context = browser.new_context(viewport={"width": WIDTHS[0], "height": 900}, device_scale_factor=1)
+            page = context.new_page()
+            errors = []
+            page.on("pageerror", lambda exception: errors.append(str(exception)))
+            try:
+                page.goto("http://127.0.0.1:8765/" + slug, wait_until="load", timeout=60000)
+                if chapter:
+                    page.wait_for_function("() => Boolean(window.MathJax && MathJax.startup && MathJax.startup.promise)", timeout=60000)
+                    page.evaluate("async () => { await MathJax.startup.promise; if (MathJax.typesetPromise) await MathJax.typesetPromise(); }")
+                page.evaluate("() => document.fonts.ready")
+                for width in WIDTHS:
+                    page.set_viewport_size({"width": width, "height": 900})
+                    page.wait_for_timeout(150)
                     stats = page.evaluate("""() => {
                        const W = document.documentElement.clientWidth;
                        const H = Math.max(document.documentElement.scrollWidth, document.body.scrollWidth);
@@ -120,10 +122,13 @@ def main():
                         "fundamentos-para-matematicos.html"
                     )):
                         page.screenshot(path=str(OUT / f"{file.stem}-{width}.png"), full_page=False)
-                except Exception as err:
-                    issues.append(f"{slug}/{width}: browser failure {err}")
-                finally:
-                    context.close()
+                    print("FND_VIEWPORT_DONE", slug, width, stats["math"], flush=True)
+                print("FND_PAGE_DONE", slug, flush=True)
+            except Exception as err:
+                issues.append(f"{slug}: browser failure {err}")
+                print("FND_PAGE_ERROR", slug, str(err), flush=True)
+            finally:
+                context.close()
         browser.close()
     server.shutdown()
     report = {"pages":len(paths), "viewports":list(WIDTHS), "loads":len(results),
