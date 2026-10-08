@@ -13,6 +13,8 @@ de suma de cortes bajo promesa de frontera irracional es una obligación distint
 
 namespace Continuo.Indices
 
+open Denumerable
+
 /-- Búsqueda efectiva de la primera etapa que emite una respuesta booleana. -/
 def uniformStageSearch
     (stage : (((Code × Code) × ℕ) × ℕ) → Option Bool)
