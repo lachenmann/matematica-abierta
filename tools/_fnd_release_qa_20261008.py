@@ -65,18 +65,20 @@ def main():
     issues = []
     with sync_playwright() as pw:
         browser = pw.chromium.launch(headless=True, args=["--no-sandbox", "--disable-dev-shm-usage"])
+        context = browser.new_context(viewport={"width": WIDTHS[0], "height": 900}, device_scale_factor=1)
+        page = context.new_page()
+        errors = []
+        page.on("pageerror", lambda exception: errors.append(str(exception)))
         for file in paths:
             slug = str(file.relative_to(SITE))
             chapter = "capitulo-" in file.name
-            context = browser.new_context(viewport={"width": WIDTHS[0], "height": 900}, device_scale_factor=1)
-            page = context.new_page()
             errors = []
-            page.on("pageerror", lambda exception: errors.append(str(exception)))
             try:
+                page.set_viewport_size({"width": WIDTHS[0], "height": 900})
                 page.goto("http://127.0.0.1:8765/" + slug, wait_until="load", timeout=60000)
                 if chapter:
                     page.wait_for_function("() => Boolean(window.MathJax && MathJax.startup && MathJax.startup.promise)", timeout=60000)
-                    page.evaluate("async () => { await MathJax.startup.promise; if (MathJax.typesetPromise) await MathJax.typesetPromise(); }")
+                    page.evaluate("async () => { await MathJax.startup.promise; }")
                 page.evaluate("() => document.fonts.ready")
                 for width in WIDTHS:
                     page.set_viewport_size({"width": width, "height": 900})
@@ -127,8 +129,7 @@ def main():
             except Exception as err:
                 issues.append(f"{slug}: browser failure {err}")
                 print("FND_PAGE_ERROR", slug, str(err), flush=True)
-            finally:
-                context.close()
+        context.close()
         browser.close()
     server.shutdown()
     report = {"pages":len(paths), "viewports":list(WIDTHS), "loads":len(results),
