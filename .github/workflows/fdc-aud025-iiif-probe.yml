@@ -1,0 +1,91 @@
+name: FDC AUD025 M03 | IIIF multi-endpoint archival images
+on:
+  push:
+    branches:
+      - audit/fdc-aud-025-dedekind-1872
+    paths:
+      - .github/workflows/fdc-aud025-iiif-probe.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  iiif_probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Install document tooling
+        run: python -m pip install --disable-pip-version-check -q requests pillow pymupdf
+      - name: Probe IIIF API and preserve original bytes if accessible
+        run: |
+          cat > /tmp/probe.py <<'PY'
+          import requests,json,hashlib,pathlib,concurrent.futures,traceback,time,re
+          out=pathlib.Path('AUD025_M03_PROBE')
+          out.mkdir(exist_ok=True)
+          sources={
+           'eth_manifest':'https://www.e-rara.ch/i3f/v20/19451236/manifest',
+           'eth_manifest_nowww':'https://e-rara.ch/i3f/v20/19451236/manifest',
+           'eth_manifest_api_v21':'https://www.e-rara.ch/i3f/v21/19451236/manifest',
+           'eth_first_page':'https://www.e-rara.ch/zut/content/pageview/19451236',
+           'eth_fulltext':'https://www.e-rara.ch/zut/download/ftpack/plain/19451236',
+           'eth_pdf':'https://www.e-rara.ch/zut/download/pdf/19451236',
+           'eth_universal_viewer':'https://viewer.zb.uzh.ch/uv/?manifest=https%3A%2F%2Fwww.e-rara.ch%2Fi3f%2Fv20%2F19451236%2Fmanifest',
+           'rcin_catalog':'https://rcin.org.pl/impan/dlibra/publication/13029/edition/2281',
+           'rcin_document':'https://rcin.org.pl/impan/dlibra/doccontent?id=2281',
+           'hathitrust_book':'https://catalog.hathitrust.org/Search/Home?lookfor=Dedekind%20Stetigkeit%201872&type=all&inst=',
+           'google_books':'https://books.google.com/books?id=n-43AAAAMAAJ',
+           'michigan_catalog':'https://books.google.com/books?vid=n-43AAAAMAAJ',
+          }
+          def get(item):
+           key,url=item
+           result={'key':key,'url':url}
+           try:
+            r=requests.get(url,headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126.0.0.0 Safari/537.36','Accept':'application/json,application/pdf,image/*,text/html,*/*'},timeout=(9,16),allow_redirects=True)
+            b=r.content
+            result.update({'status':r.status_code,'final_url':r.url,'mime':r.headers.get('content-type',''),'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'magic':repr(b[:16]),'preview':b[:300].decode('utf-8','replace')})
+            if r.ok and (b.startswith(b'%PDF') or b.startswith(b'\xff\xd8') or b.startswith(b'\x89PNG') or ('manifest' in key and b[:1]==b'{')):
+             ext='.pdf' if b.startswith(b'%PDF') else '.jpg' if b.startswith(b'\xff\xd8') else '.png' if b.startswith(b'\x89PNG') else '.json'
+             (out/(key+ext)).write_bytes(b)
+             result['saved_as']=key+ext
+           except Exception as e:result['error']=repr(e)
+           return result
+          with concurrent.futures.ThreadPoolExecutor(max_workers=12) as ex:
+           results=list(ex.map(get,sources.items()))
+          manifest_path=out/'eth_manifest.json'
+          if not manifest_path.exists():manifest_path=out/'eth_manifest_nowww.json'
+          images=[]
+          if manifest_path.exists():
+           try:
+            data=json.loads(manifest_path.read_bytes())
+            canvases=data.get('sequences',[{}])[0].get('canvases',[])
+            for i,c in enumerate(canvases):
+             label=c.get('label','')
+             images_list=c.get('images',[])
+             resource=images_list[0].get('resource',{}) if images_list else {}
+             service=resource.get('service',{})
+             url=resource.get('@id') or resource.get('id') or ''
+             base=service.get('@id') or service.get('id') or ''
+             images.append({'i':i,'label':label,'url':url,'service':base})
+            (out/'canvas_index.json').write_text(json.dumps(images,ensure_ascii=False,indent=2))
+            wanted=[0]+list(range(13,min(len(images),27)))
+            for i in wanted:
+             obj=images[i];url=(obj['service'].rstrip('/')+'/full/1400,/0/default.jpg') if obj['service'] else obj['url']
+             try:
+              r=requests.get(url,timeout=(8,15))
+              if r.ok and r.content[:2]==b'\xff\xd8':
+               p=out/f'page_{i:03d}.jpg';p.write_bytes(r.content)
+               obj['image_sha256']=hashlib.sha256(r.content).hexdigest()
+               obj['image_file']=p.name
+             except Exception as e:obj['error']=str(e)
+           except Exception as e:results.append({'key':'parse-manifest','error':repr(e)})
+          state={'status':'MANIFEST_RETRIEVED' if images else 'UNRESOLVED','sources':results,'canvases_count':len(images),'original_page_images':[x for x in images if 'image_file' in x]}
+          (out/'AUD025_M03_PROBE_MANIFEST.json').write_text(json.dumps(state,ensure_ascii=False,indent=2))
+          print(json.dumps({'status':state['status'],'responses':[{k:v for k,v in x.items() if k in ['key','status','mime','bytes','error','saved_as']} for x in results],'canvases_count':len(images),'page_images':len(state['original_page_images'])},ensure_ascii=False,indent=2))
+          PY
+          python /tmp/probe.py
+      - name: Upload evidence regardless of result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FDC-AUD025-M03-IIIF-source-probe
+          path: AUD025_M03_PROBE/
+          retention-days: 14
