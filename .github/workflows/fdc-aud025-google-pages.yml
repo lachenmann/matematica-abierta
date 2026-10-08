@@ -1,0 +1,74 @@
+name: FDC AUD025 M03 | Google Books page image authentication
+on:
+  push:
+    branches:
+      - audit/fdc-aud-025-dedekind-1872
+    paths:
+      - .github/workflows/fdc-aud025-google-pages.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Retrieve page scans and API evidence
+        run: |
+          python - <<'PY'
+          import requests,pathlib,hashlib,re,json,concurrent.futures
+          p=pathlib.Path('AUD025_M03_GOOGLE')
+          p.mkdir(exist_ok=True)
+          s=requests.Session()
+          s.headers.update({'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126.0 Safari/537.36','Accept':'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'})
+          page=s.get('https://books.google.com/books?id=n-43AAAAMAAJ',timeout=(10,22))
+          (p/'google_books_page.html').write_bytes(page.content)
+          t=page.text
+          snippets=[]
+          for pat in ['google.books','pageImage','bookId','volumeId','frontcover','PA17','PA20','PA25','pageCount','viewability','public_domain','scan','jscmd','bookreader']:
+            for m in list(re.finditer(re.escape(pat),t,re.I))[:5]:
+              snippets.append({'pattern':pat,'left':t[max(0,m.start()-180):m.start()],'right':t[m.end():m.end()+180]})
+          (p/'html_image_clues.json').write_text(json.dumps(snippets,indent=2,ensure_ascii=False))
+          urls=[]
+          for q in ['Rechnungen mit reellen Zahlen','Summe a','Classe C','Dedekind']:
+            from urllib.parse import quote
+            urls.append(('search_'+str(len(urls)),'https://books.google.com/books?jscmd=SearchWithinVolume2&q='+quote(q)+'&vid=n-43AAAAMAAJ'))
+          for n in range(1,35):
+            urls.append((f'image_page_{n:02d}',f'https://books.google.com/books/content?id=n-43AAAAMAAJ&pg=PA{n}&img=1&zoom=2&hl=en'))
+          urls.append(('image_title','https://books.google.com/books/content?id=n-43AAAAMAAJ&pg=PP1&img=1&zoom=2&hl=en'))
+          urls.append(('image_cover','https://books.google.com/books/content?id=n-43AAAAMAAJ&pg=PR1&img=1&zoom=2&hl=en'))
+          def run(t):
+            key,url=t
+            z={'key':key,'url':url}
+            try:
+              r=s.get(url,timeout=(8,15))
+              b=r.content
+              z.update({'status':r.status_code,'mime':r.headers.get('content-type',''),'length':len(b),'sha256':hashlib.sha256(b).hexdigest(),'head':repr(b[:18])})
+              ext='.jpg' if b.startswith(b'\xff\xd8') else '.png' if b.startswith(b'\x89PNG') else '.json' if b[:1] in [b'{',b'['] else '.html' if b.startswith(b'<!DOCTYPE') else '.bin'
+              if r.ok and (b[:2]==b'\xff\xd8' or b[:4]==b'\x89PNG' or b[:1] in [b'{',b'[']):
+                z['saved_as']=key+ext
+                (p/(key+ext)).write_bytes(b)
+                if ext in ['.jpg','.png']:
+                  try:
+                   from PIL import Image
+                   with Image.open(p/(key+ext)) as im:z['dimensions']=im.size
+                  except:pass
+              elif key.startswith('search_'):
+                (p/(key+ext)).write_bytes(b[:25000])
+            except Exception as e:z['error']=str(e)[:450]
+            return z
+          with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
+            results=list(ex.map(run,urls))
+          (p/'IMAGE_MANIFEST.json').write_text(json.dumps({'source':'University of Michigan copy, Google Books','book_id':'n-43AAAAMAAJ','html_status':page.status_code,'html_length':len(t),'results':results},ensure_ascii=False,indent=2))
+          for a in results:
+            if a.get('saved_as'):print('SAVED',a['key'],a['length'],a.get('dimensions'),a['sha256'][:14])
+          print('total_images',sum('dimensions' in a for a in results))
+          print('api_counts',[(a['key'],a.get('status'),a.get('length')) for a in results if a['key'].startswith('search_')])
+          PY
+      - name: Preserve source pages
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FDC-AUD025-M03-Google-1872-pages
+          path: AUD025_M03_GOOGLE/
+          retention-days: 14
