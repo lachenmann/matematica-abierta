@@ -84,6 +84,17 @@ def sumStageExterior (w : ((Code × Code) × ℕ) × ℕ) : Prop :=
     sumStageComparison w.1.2 (sumStageLeft w.2)
       (sumStageRight w.2) (sumStageMargin w.2) = some false
 
+/-- Decidibilidad constructiva del certificado finito, sin `Classical.decEq`. -/
+instance (w : ((Code × Code) × ℕ) × ℕ) :
+    Decidable (sumStageInterior w) := by
+  unfold sumStageInterior
+  infer_instance
+
+instance (w : ((Code × Code) × ℕ) × ℕ) :
+    Decidable (sumStageExterior w) := by
+  unfold sumStageExterior
+  infer_instance
+
 /-- Etapa ejecutable por decisiones finitas. La evaluación acotada puede
 devolver `none`; ello no se interpreta como decisión negativa del corte. -/
 def sumCertificateStage (w : ((Code × Code) × ℕ) × ℕ) : Option Bool :=
