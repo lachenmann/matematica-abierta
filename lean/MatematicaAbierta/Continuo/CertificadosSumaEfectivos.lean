@@ -113,4 +113,60 @@ theorem sumCertificateStage_total (w : ((Code × Code) × ℕ) × ℕ) :
     ∃ answer : Option Bool, sumCertificateStage w = answer :=
   ⟨sumCertificateStage w, rfl⟩
 
+
+/-- Una salida observada de `evaln` coincide con el booleano correcto de un
+decididor total prometido: la unicidad de `Part` impide un valor espurio. -/
+theorem evaln_cut_decider_sound (e : Code) (A : Set ℚ)
+    (hdec : DecidesCut e A) (z fuel : ℕ) (answer : Bool)
+    (h : Nat.Partrec.Code.evaln fuel e z =
+      some (Encodable.encode answer)) :
+    answer = true ↔ codedQuery z ∈ A := by
+  obtain ⟨b, hb, hiff⟩ := hdec z
+  have hopt :
+      Encodable.encode answer ∈ Nat.Partrec.Code.evaln fuel e z := by
+    simp [h]
+  have hcode : Encodable.encode answer ∈
+      Nat.Partrec.Code.eval e z :=
+    Nat.Partrec.Code.evaln_sound hopt
+  have hEq : answer = b :=
+    Encodable.encode_injective (Part.mem_unique hcode hb)
+  simpa [hEq] using hiff
+
+/-- El certificado interior contiene dos testigos que efectivamente
+pertenecen a los respectivos cortes prometidos. -/
+theorem sumStageInterior_correct_inputs
+    (w : ((Code × Code) × ℕ) × ℕ) (A B : Set ℚ)
+    (hA : DecidesCut w.1.1.1 A) (hB : DecidesCut w.1.1.2 B)
+    (h : sumStageInterior w) :
+    codedQuery (sumStageLeft w.2) ∈ A ∧
+      codedQuery (sumStageRight w.2) ∈ B := by
+  rcases h with ⟨ha, hb, _⟩
+  constructor
+  · exact (evaln_cut_decider_sound w.1.1.1 A hA
+      (sumStageLeft w.2) (sumStageFuel w.2) true ha).mp rfl
+  · exact (evaln_cut_decider_sound w.1.1.2 B hB
+      (sumStageRight w.2) (sumStageFuel w.2) true hb).mp rfl
+
+/-- El certificado exterior no acepta la falta de respuesta: requiere
+que ambos programas produzcan expresamente el código de `false`. -/
+theorem sumStageExterior_correct_inputs
+    (w : ((Code × Code) × ℕ) × ℕ) (A B : Set ℚ)
+    (hA : DecidesCut w.1.1.1 A) (hB : DecidesCut w.1.1.2 B)
+    (h : sumStageExterior w) :
+    codedQuery (sumStageLeft w.2) ∉ A ∧
+      codedQuery (sumStageRight w.2) ∉ B := by
+  rcases h with ⟨ha, hb, _⟩
+  constructor
+  · intro hmem
+    have hiff := evaln_cut_decider_sound w.1.1.1 A hA
+      (sumStageLeft w.2) (sumStageFuel w.2) false ha
+    have hbad : (false : Bool) = true := hiff.mpr hmem
+    cases hbad
+  · intro hmem
+    have hiff := evaln_cut_decider_sound w.1.1.2 B hB
+      (sumStageRight w.2) (sumStageFuel w.2) false hb
+    have hbad : (false : Bool) = true := hiff.mpr hmem
+    cases hbad
+
+
 end Continuo.Indices
