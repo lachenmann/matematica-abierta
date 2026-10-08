@@ -1,0 +1,56 @@
+name: FDC AUD025 | Alternative first-edition facsimile
+on:
+  push:
+    branches: [audit/fdc-aud-025-dedekind-1872]
+    paths: [.github/workflows/fdc-aud-025-alternative-1872.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  alternate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - name: Install PDF tools
+        run: python -m pip install -q pymupdf requests pillow
+      - name: Fetch independent 1872 catalogue facsimile
+        run: |
+          python - <<'PY'
+          import requests,hashlib,json,pathlib,time
+          import fitz
+          from PIL import Image,ImageDraw
+          out=pathlib.Path('FDC_AUD025_ALTERNATIVE');out.mkdir(exist_ok=True)
+          sites=[
+          ('GoogleBooksMichigan_1872','https://books.google.com/books/download/Stetigkeit_und_irrationale_Zahlen.pdf?id=n-43AAAAMAAJ&output=pdf'),
+          ('GoogleBooksMichigan_1872_alt','https://books.google.com/books?id=n-43AAAAMAAJ&printsec=frontcover&jscmd=download'),
+          ('GoogleBooksMichigan_1872_pdf','https://books.google.com/books/download/Stetigkeit_und_irrationale_Zahlen.pdf?id=n-43AAAAMAAJ'),
+          ('RCIN_1872','https://rcin.org.pl/dlibra/publication/13029/edition/2281/content'),
+          ('RCIN_1872_alt','https://rcin.org.pl/dlibra/content/2281/format/pdf'),
+          ('RCIN_1872_download','https://rcin.org.pl/dlibra/docmetadata?id=2281&from=publication'),
+          ]
+          log={'status':'FAILED','targets':[], 'goal':'1st-edition 1872, 31 printed pages; no 1892 substitutes accepted'}
+          for name,url in sites:
+            try:
+              r=requests.get(url,headers={'User-Agent':'Mozilla/5.0','Accept':'application/pdf,*/*'},timeout=(15,35),allow_redirects=True)
+              m={'target':name,'url':url,'http':r.status_code,'final_url':r.url,'mime':r.headers.get('content-type'), 'bytes':len(r.content),'starts_pdf':r.content[:4]==b'%PDF'}
+              log['targets'].append(m)
+              if r.ok and m['starts_pdf'] and len(r.content)>50000:
+                f=out/(name+'.pdf');f.write_bytes(r.content)
+                d=fitz.open(f);log['result_pdf']=f.name;log['pdf_pages']=len(d);log['pdf_sha256']=hashlib.sha256(r.content).hexdigest()
+                for i,p in enumerate(d):
+                  z=p.get_pixmap(matrix=fitz.Matrix(1.6,1.6),alpha=False)
+                  z.save(str(out/f'page_{i+1:03d}.png'))
+                log['status']='CANDIDATE_FETCHED_NEEDS_VISUAL_EDITION_VALIDATION'
+                break
+            except Exception as e:
+              log['targets'].append({'target':name,'error':str(e)[:450]})
+          (out/'SOURCE_MANIFEST.json').write_text(json.dumps(log,indent=2,ensure_ascii=False))
+          print(json.dumps(log,indent=2,ensure_ascii=False)[:15000])
+          PY
+      - name: Preserve evidence, even if source inaccessible
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdc-aud025-alternative-1872
+          path: FDC_AUD025_ALTERNATIVE/
+          retention-days: 7
