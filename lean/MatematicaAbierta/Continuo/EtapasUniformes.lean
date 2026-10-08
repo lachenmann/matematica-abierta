@@ -101,7 +101,14 @@ theorem exists_uniform_stage_codes
   · intro p z
     rw [Nat.Partrec.Code.eval_curry]
     rw [hu]
-    simp [packedUniformStageSearch]
+    change
+      (uniformStageSearch stage
+        (ofNat (Code × Code)
+            (Nat.unpair (Nat.pair (Encodable.encode p) z)).1,
+          (Nat.unpair (Nat.pair (Encodable.encode p) z)).2)).map
+        Encodable.encode =
+      (uniformStageSearch stage (p, z)).map Encodable.encode
+    simp only [Nat.unpair_pair, Denumerable.ofNat_encode]
 
 /-- Transferencia al contrato de decididores del continuo:
 si las etapas son correctas y aparecen para todas las consultas prometidas,
