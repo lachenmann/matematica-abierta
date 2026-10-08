@@ -8,10 +8,10 @@ editorial-project: FND
 book-id: MA-BOK-0008
 source-id: FND-T1-C08
 editorial-id: MA-BCH-FND-01-008
-source-version: v01
+source-version: v02
 status: published
 date-created: 2026-10-06
-date-modified: 2026-10-06
+date-modified: 2026-10-08
 areas: [fundamentos]
 level: fundamental
 topics: [razonamiento-matematico, lenguaje-matematico, demostraciones]
@@ -20,7 +20,7 @@ related: [MA-BOK-0008]
 provenance:
   type: original
   sources:
-    - "Manuscrito FND-T1-C08, v01; bibliografía y convenciones en la página del libro."
+    - "Manuscrito FND-T1-C08, v02; bibliografía y convenciones en la página del libro."
 license: GFDL-1.3-or-later
 ---
 
@@ -1600,6 +1600,41 @@ $$
 $$
 
 Si queda un hueco entre la base y el rango del paso, la inducción no cubre el dominio anunciado.
+
+### Saltar dos índices no equivale a recorrer todos
+
+En §8.2 exigimos que la propagación pasara de $n$ a $n+1$. Es posible, sin embargo, que la única implicación que hayamos conseguido demostrar sea
+
+$$
+\forall n\in\mathbb N,\qquad P(n)\Rightarrow P(n+2).
+$$
+
+Esta información tampoco es inútil, pero **no** constituye el paso inductivo ordinario para una conclusión sobre *todos* los naturales. El salto de dos unidades conserva la paridad del índice: desde $0$ permite alcanzar $2,4,6,\ldots$, sin llegar a $1,3,5,\ldots$.
+
+**Contraejemplo a una inducción incompleta.** Definamos $P(n)$ como «$n$ es par». La base $P(0)$ es verdadera. Además, si $n=2k$ para algún $k\in\mathbb N$, entonces $n+2=2(k+1)$, de modo que $P(n)\Rightarrow P(n+2)$ es verdadera para los índices pares. Para un índice impar, $P(n)$ es falsa y la implicación también es verdadera en lógica clásica. Así, la regla vale para **todos** los naturales. A pesar de ello, la afirmación $\forall n\in\mathbb N\;P(n)$ es falsa: $1$ no es par. No ha fallado la aritmética del paso; ha fallado su capacidad para cubrir el dominio anunciado.
+
+**Proposición (dos bases para un salto de dos).** Para una propiedad $P$ de los naturales, supongamos que se han demostrado
+
+$$
+P(0),\qquad P(1),\qquad
+\forall n\in\mathbb N\;\bigl(P(n)\Rightarrow P(n+2)\bigr).
+$$
+
+Entonces $P(n)$ vale para todo $n\in\mathbb N$.
+
+**Demostración.** Reunamos las dos clases de índices en una sola propiedad:
+
+$$
+Q(k):\quad P(2k)\land P(2k+1).
+$$
+
+Por las dos bases, $Q(0)$ es verdadera. Supongamos $Q(k)$ para un $k\in\mathbb N$ arbitrario. Podemos aplicar el paso dado con $n=2k$ y con $n=2k+1$; obtenemos respectivamente $P(2k+2)$ y $P(2k+3)$. Ambas constituyen $Q(k+1)$. Por inducción ordinaria, $Q(k)$ vale para todo natural $k$. Como cualquier natural es de la forma $2k$ o $2k+1$, todas las instancias de $P$ quedan cubiertas. $\square$
+
+El resultado no rescata la falsa afirmación «todos los naturales son pares»: en ese caso falta precisamente $P(1)$. Muestra, en cambio, cómo una regla que salta posiciones exige suficientes casos iniciales para alcanzar **cada clase de índices**. La prueba agrupó dos casos consecutivos y aplicó el principio ordinario a esa propiedad más rica.
+
+**Comprobación.** ¿Serían suficientes $P(0)$, $P(2)$ y la regla $P(n)\Rightarrow P(n+2)$ para todo natural $n$?
+
+**Respuesta razonada.** No. Las dos bases pertenecen a la misma clase de índices: son pares. La regla sólo produce otros índices pares y no aporta $P(1)$ ni ninguna instancia impar. Tomando otra vez $P(n)$ como «$n$ es par» se verifican los tres datos, pero no la conclusión universal. Para cubrir todos los naturales mediante ese salto haría falta una base impar, como $P(1)$, además de una base par.
 
 ### La forma con cuantificadores
 

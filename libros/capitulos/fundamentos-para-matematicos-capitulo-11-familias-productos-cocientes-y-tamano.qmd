@@ -8,10 +8,10 @@ editorial-project: FND
 book-id: MA-BOK-0008
 source-id: FND-T1-C11
 editorial-id: MA-BCH-FND-01-011
-source-version: v01
+source-version: v03
 status: published
 date-created: 2026-10-06
-date-modified: 2026-10-06
+date-modified: 2026-10-08
 areas: [fundamentos]
 level: fundamental
 topics: [razonamiento-matematico, lenguaje-matematico, demostraciones]
@@ -20,7 +20,7 @@ related: [MA-BOK-0008]
 provenance:
   type: original
   sources:
-    - "Manuscrito FND-T1-C11, v01; bibliografía y convenciones en la página del libro."
+    - "Manuscrito FND-T1-C11, v03; bibliografía y convenciones en la página del libro."
 license: GFDL-1.3-or-later
 ---
 
@@ -178,13 +178,13 @@ Para un conjunto índice finito de etiquetas cualesquiera usamos directamente es
 
 ### Vacío en el índice y vacío en un factor
 
-El **producto de una familia vacía** contiene exactamente la función vacía. Su dominio es $\varnothing$, su grafo no tiene pares y no hay restricciones de coordenadas que verificar. Es un conjunto con un elemento:
+El **producto de una familia vacía** contiene exactamente una función, la función vacía $e_{\varnothing}:\varnothing\to\varnothing$. Su grafo no tiene pares y no hay restricciones de coordenadas que verificar. Es un conjunto con un elemento:
 
 $$
-\prod_{i\in\varnothing}A_i=\{\varnothing\}.
+\prod_{i\in\varnothing}A_i=\{e_{\varnothing}\}.
 $$
 
-Aquí $\varnothing$ dentro de las llaves representa el grafo de la función vacía. El producto no es $\varnothing$. Esta convención permite que el número de elecciones para cero posiciones sea uno: la asignación sin coordenadas.
+Si identificáramos una función con su grafo, podríamos escribir también $\{\varnothing\}$. Sin embargo, en este libro (§4.5 y §4.7) declaramos dominio y codominio como parte de los datos de cada función. Bajo **esa convención**, el elemento $e_{\varnothing}$ no es literalmente el conjunto vacío: es la función de $\varnothing$ en $\varnothing$ cuyo grafo es vacío. El producto, en cualquier caso, tiene un elemento, no cero. Esta precisión será útil en §11.5, cuando comparemos productos vacíos y potencias $A^{\varnothing}$ con codominios declarados distintos.
 
 En cambio, si $k\in I$ y $A_k=\varnothing$, el producto es vacío. Un elemento del producto tendría que asignar a $k$ un valor en $A_k$, lo cual es imposible. La conclusión requiere un factor vacío con índice existente; no se aplica a la familia sin índices.
 
@@ -282,6 +282,22 @@ $$
 
 Sus elementos son clases, no los elementos originales de $X$. La proyección $q:X\to X/{\sim}$, definida por $q(x)=[x]$, es sobreyectiva: cada clase del cociente tiene por definición al menos un representante. Para justificar esa sobreyectividad tomamos una clase particular y un representante de ella; no elegimos simultáneamente un representante de todas las clases.
 
+### Qué significa que una regla esté bien definida
+
+Antes de preguntar si una fórmula define una función, debemos precisar **qué son sus entradas y sus salidas**. Hay al menos dos controles diferentes.
+
+El primero es el **control de dominio y unicidad del valor**. Una regla propuesta como $f:A\to B$ debe asignar a cada $x\in A$ un valor que exista, pertenezca a $B$ y sea único. Cuando la regla se presenta mediante operaciones, también debemos comprobar que éstas están definidas para las entradas permitidas. Esto **no exige un algoritmo para calcular cada valor**: la existencia y la unicidad son requisitos matemáticos, distintos de la computabilidad. Por ejemplo, la fórmula
+
+$$
+f(x)=\frac{1}{x-1}
+$$
+
+define una función $\mathbb R\setminus\{1\}\to\mathbb R$, pero **no** define una función $\mathbb R\to\mathbb R$ mediante la misma regla, porque en $x=1$ el denominador es cero. No se corrige ese defecto demostrando que la fórmula funciona en muchos valores: la definición de función exige una salida para **cada** entrada del dominio declarado.
+
+El segundo control aparece cuando una entrada puede escribirse con **representantes distintos**, como ocurre en un conjunto cociente. Aun si la fórmula puede evaluarse para cada representante, habrá que demostrar que todos los representantes de una misma clase producen **el mismo valor**. De otro modo no se ha definido una función *sobre las clases*. La independencia del representante no es una condición adicional de inyectividad o sobreyectividad; es anterior a ambas, porque determina si la aplicación misma existe.
+
+De este modo, «estar bien definida» no significa simplemente «tener una fórmula conocida»: significa que **la regla determina inequívocamente un objeto del tipo anunciado para cada entrada legítima**. En el caso de los cocientes, veremos enseguida cómo se traduce esta exigencia a una implicación precisa.
+
 ### Una fórmula con clases puede ser ambigua
 
 Si proponemos $\overline F([x])=F(x)$, dos representantes $x$ e $y$ de una misma clase deben dar el mismo resultado. La condición precisa es
@@ -300,6 +316,34 @@ Para la equivalencia por suma de §11.6, $F(a,b)=a+b$ es constante en clases y d
 
 Si después queremos definir una operación entre clases, habrá que comprobar independencia de cada representante que interviene. No basta con que la fórmula se pueda calcular en representantes particulares. Esa obligación será decisiva en álgebra; aquí la reconocemos sin desarrollar cocientes de grupos o anillos.
 
+### Dos clases como entradas: la independencia se comprueba dos veces
+
+Sea $Q=(\mathbb Z\times\mathbb Z)/{\sim}$ el cociente por igualdad de sumas de §11.6. Queremos proponer una función $\Theta:Q\times Q\to\mathbb Z$. Si escribimos dos de sus entradas como $C=[(a,b)]$ y $D=[(c,d)]$, una fórmula posible es
+
+$$
+\Theta(C,D)=(a+b)+(c+d).
+$$
+
+¿Depende de cómo escribamos cada clase? Supongamos que elegimos otros representantes $(a',b')$ y $(c',d')$ de $C$ y $D$, respectivamente. Por la definición de equivalencia,
+
+$$
+a+b=a'+b',\qquad c+d=c'+d'.
+$$
+
+Sumar esas dos igualdades da
+
+$$
+(a+b)+(c+d)=(a'+b')+(c'+d').
+$$
+
+Por tanto, cambiar el representante de **cualquiera de las dos entradas**, o de ambas a la vez, conserva el resultado. La regla determina una función $Q\times Q\to\mathbb Z$ bien definida. Su salida es un entero, no una clase: no estamos introduciendo aquí una operación algebraica sobre $Q$.
+
+En cambio, la propuesta $\Lambda(C,D)=a+c$ no está bien definida. Para la primera clase podemos escribir tanto $[(2,5)]$ como $[(4,3)]$, que son iguales porque ambas sumas valen $7$. Fijando como segunda entrada $D=[(0,0)]$, la fórmula daría respectivamente $2$ y $4$. Una misma pareja de clases recibiría dos valores distintos, aun cuando en cada cálculo individual no haya ninguna operación ilegítima.
+
+**Comprobación.** ¿Define $\Omega(C,D)=(a+b)-(c+d)$ una función de $Q\times Q$ en $\mathbb Z$?
+
+**Respuesta razonada.** Sí. Si cambiamos las representaciones de $C$ y $D$, las dos sumas permanecen iguales a sus valores iniciales, y por tanto también permanece igual su diferencia. Todas las operaciones son legítimas en $\mathbb Z$ y para cada pareja de clases se determina un único entero. No necesitamos elegir de antemano un representante privilegiado de cada clase.
+
 **Comprobación.** En el cociente por suma, ¿desciende $K(a,b)=2(a+b)+1$?
 
 **Respuesta.** Sí. Si $(a,b)\sim(c,d)$, sus sumas son iguales y por ello $2(a+b)+1=2(c+d)+1$. La función descendida tiene dominio el cociente y codominio $\mathbb Z$; no es sobreyectiva en ese codominio porque sólo alcanza enteros impares. Buena definición y sobreyectividad son comprobaciones distintas.
@@ -314,11 +358,37 @@ La equipotencia es reflexiva, simétrica y transitiva. La identidad prueba refle
 
 Para $n\in\mathbb N$ fijamos $I_n=\{0,\ldots,n-1\}$, con $I_0=\varnothing$. Un conjunto $A$ es **finito** si hay alguna biyección $I_n\to A$. En ese caso escribimos $|A|=n$. Para que esa notación sea legítima tenemos que demostrar que el número no depende de cómo se haya contado.
 
-La herramienta es el principio finito siguiente: si existe una inyección $I_m\to I_n$, entonces $m\le n$. Lo probamos por inducción sobre $n$. Para $n=0$, un dominio no vacío no admite función a $\varnothing$; por tanto $m=0$. En el paso, si $m=0$ no hay nada que demostrar. Si $m\ge1$, tomemos la imagen de $m-1$ y permutemos las etiquetas del codominio para situarla en $n-1$. Por inyectividad, las otras $m-1$ entradas no llegan a ese valor; la restricción da una inyección $I_{m-1}\to I_{n-1}$. La hipótesis inductiva implica $m-1\le n-1$, luego $m\le n$.
+La herramienta es el siguiente resultado, que merece una demostración completa porque la unicidad del tamaño finito dependerá de él.
+
+**Lema (no caben más entradas distintas que posiciones disponibles).** Si existe una inyección $u:I_m\to I_n$, entonces $m\le n$.
+
+**Demostración.** Procedemos por inducción sobre $n$; en cada etapa la afirmación comprende **todos** los posibles tamaños $m$ del dominio.
+
+**Base $n=0$.** El codominio es $I_0=\varnothing$. Si existe una función $I_m\to\varnothing$, su dominio necesariamente es vacío. Por tanto $m=0$ y se cumple $m\le0$.
+
+**Paso de $n$ a $n+1$.** Supongamos que el lema vale para cualquier inyección con codominio $I_n$. Sea $u:I_m\to I_{n+1}$ una inyección. Si $m=0$, ya tenemos $m\le n+1$. Supongamos $m\ge1$ y fijemos la última posición del dominio, $m-1$. Su imagen es algún índice $j=u(m-1)\in I_{n+1}$.
+
+Podemos intercambiar las etiquetas $j$ y $n$ del codominio, dejando fijas las demás. Esa permutación $\sigma:I_{n+1}\to I_{n+1}$ es una biyección (si $j=n$, es la identidad). La composición $v=\sigma\circ u$ sigue siendo inyectiva y satisface $v(m-1)=n$.
+
+Ahora retiremos la última posición del dominio. Para todo $k\in I_{m-1}$ tenemos $k\ne m-1$, de modo que la inyectividad de $v$ implica $v(k)\ne n$. Por tanto, la restricción de $v$ a $I_{m-1}$ toma valores **sólo** en $I_n$ y sigue siendo inyectiva:
+
+$$
+v\vert_{I_{m-1}}:I_{m-1}\longrightarrow I_n.
+$$
+
+Por la hipótesis inductiva, $m-1\le n$; sumando $1$ obtenemos $m\le n+1$. Concluye la inducción. $\square$
+
+**Lectura de la prueba.** No hemos supuesto que el codominio tenga exactamente tantas posiciones como el dominio. Hemos elegido una entrada existente, trasladado su imagen a una posición conveniente y retirado ambas sin destruir la inyectividad. Lo que queda es un problema del mismo tipo, con un codominio de tamaño menor: por eso puede aplicarse la hipótesis inductiva. La permutación sólo cambia nombres de posiciones; no crea ni elimina imágenes.
 
 Una biyección $I_m\to I_n$ y su inversa dan $m\le n$ y $n\le m$; por tanto $m=n$. Si hay biyecciones $I_m\to A$ e $I_n\to A$, componemos la primera con la inversa de la segunda y aplicamos el resultado. Así el tamaño finito está bien definido.
 
-Un subconjunto de un conjunto finito es finito. Para verlo basta considerar un subconjunto $S$ de $I_n$ y usar inducción: si no contiene $n-1$, está en $I_{n-1}$; si lo contiene, contamos primero $S\setminus\{n-1\}$ y añadimos una última posición. Transportar esta cuenta por una biyección prueba la afirmación para cualquier conjunto finito.
+Un subconjunto de un conjunto finito también es finito. Veamos por qué sin presuponer que podemos «contarlo» antes de haber construido la biyección. Basta probarlo para subconjuntos de cada $I_n$ y transportar después el resultado mediante una biyección.
+
+Procedemos por inducción sobre $n$. Para $n=0$, el único subconjunto de $I_0$ es $\varnothing$, equipotente a $I_0$. Supongamos que todo subconjunto de $I_n$ es finito y tomemos $S\subseteq I_{n+1}$. Si $n\notin S$, entonces $S\subseteq I_n$ y aplicamos la hipótesis inductiva. Si $n\in S$, el conjunto $T=S\setminus\{n\}$ está contenido en $I_n$ y, por hipótesis inductiva, existe alguna biyección $h:I_k\to T$. La ampliamos a $I_{k+1}$ mediante la misma regla en las primeras $k$ posiciones y asignando a la nueva posición $k$ el valor $n$. La ampliación es biyectiva sobre $S$: las imágenes anteriores eran exactamente $T$ y la nueva imagen $n$ no pertenece a $T$. Así también $S$ es finito. Si $A$ es finito y $S\subseteq A$, transportamos $S$ por la inversa de una biyección $I_n\to A$ y aplicamos lo demostrado.
+
+**Comprobación.** ¿Por qué no basta afirmar que la restricción $v\vert_{I_{m-1}}$ sigue siendo inyectiva, sin explicar además cuál es su codominio?
+
+**Respuesta razonada.** La hipótesis inductiva se refiere a inyecciones **en $I_n$**, no a inyecciones en $I_{n+1}$. Debemos comprobar que ninguna de las entradas restantes llega a $n$, para poder restringir de verdad el codominio a $I_n$. Esa comprobación es el paso que conecta el argumento con la hipótesis inductiva.
 
 ### Ser infinito no significa tener un último número muy grande
 
@@ -326,7 +396,9 @@ Un conjunto es **infinito** si no es finito. Los naturales son infinitos. Si hub
 
 La función $f:\mathbb N\to\mathbb N\setminus\{0\}$, $f(n)=n+1$, es una biyección: su inversa envía $m\ge1$ a $m-1$. Por tanto un conjunto infinito puede ser equipotente a un subconjunto propio. Esto no cambia la inclusión: $\mathbb N\setminus\{0\}\ne\mathbb N$.
 
-Para un conjunto finito ocurre lo contrario. Si una biyección lo identificara con un subconjunto propio, contar ese subconjunto daría un número menor: bajo una cuenta de $n$ elementos, omitir una posición permite inyectarlo en $I_{n-1}$; una biyección desde el conjunto completo produciría una inyección $I_n\to I_{n-1}$, imposible. La intuición «quitar elementos reduce necesariamente el tamaño» necesita, por tanto, la hipótesis de finitud.
+Para un conjunto finito ocurre lo contrario, y podemos justificarlo con el lema anterior. Sea $A$ finito, con $|A|=n$, y tomemos un subconjunto propio $S\subsetneq A$. Si $n=0$, $A=\varnothing$ y no existe tal subconjunto propio, de modo que el caso sólo puede presentarse con $n\ge1$. Fijemos una biyección $e:I_n\to A$ y elijamos $a\in A\setminus S$. El índice $j=e^{-1}(a)$ no pertenece a $e^{-1}(S)$. La permutación de $I_n$ que intercambia $j$ con $n-1$ lleva **todos los índices de $e^{-1}(S)$** a $I_{n-1}$, pues la única posición que podría transformarse en $n-1$ es $j$, que hemos excluido.
+
+Ya sabemos que $S$ es finito; sea $|S|=k$ y fijemos una biyección $h:I_k\to S$. Al componer $h$ con $e^{-1}$ y con la permutación anterior, obtenemos una inyección $I_k\to I_{n-1}$. Nuestro lema obliga a que $k\le n-1<n$. Por tanto, ningún conjunto finito puede ser equipotente a un subconjunto propio. La intuición «quitar elementos reduce necesariamente el tamaño» requiere la hipótesis de finitud, y ahora hemos probado exactamente dónde interviene.
 
 **Comprobación.** Una función inyectiva $I_5\to A$ y otra inyectiva $A\to I_5$ están dadas. ¿Qué tamaño tiene $A$?
 
