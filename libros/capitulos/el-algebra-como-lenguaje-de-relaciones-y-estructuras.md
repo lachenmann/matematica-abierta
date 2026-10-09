@@ -9,7 +9,7 @@ source-id: APM-T1-C01
 editorial-id: MA-BCH-APM-01-001
 status: published
 date-created: 2026-09-12
-date-modified: 2026-09-12
+date-modified: 2026-10-09
 areas:
   - algebra
   - fundamentos
@@ -32,8 +32,6 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 ---
-
-# 1. El álgebra como lenguaje de relaciones y estructuras
 
 ## 1.1. Una operación puede convertirse en objeto de estudio
 
@@ -310,6 +308,24 @@ Más adelante encontraremos invariantes mucho más profundos: dimensión, grado,
 
 ---
 
+### Conservar una propiedad no significa conservarlo todo
+
+Comparemos dos cambios sobre el mismo par de números. Empezamos con $4$ y $9$. En el primero intercambiamos las entradas; en el segundo aumentamos la primera en $1$ y disminuimos la segunda en $1$.
+
+| Situación | Entradas, en orden | Suma | Producto |
+|---|---|---:|---:|
+| Inicial | $4,9$ | $13$ | $36$ |
+| Intercambiar | $9,4$ | $13$ | $36$ |
+| Transferir una unidad | $5,8$ | $13$ | $40$ |
+
+En estos casos la suma no distingue los dos cambios, pero el producto sí. Por eso decir «la transformación conserva el resultado» es insuficiente si no hemos indicado el resultado de qué operación. Tampoco debemos confundir «las entradas siguen siendo las mismas, en otro orden» con «la suma sigue siendo la misma». El segundo cambio conserva la suma del ejemplo aunque modifica ambas entradas.
+
+Podemos proponer la pregunta general: ¿aumentar una entrada y disminuir la otra en la misma cantidad conserva siempre la suma? La tabla sugiere esa pauta. La justificación mediante las leyes de las operaciones se estudiará en C3; aquí debemos separar la observación comprobada de la afirmación pendiente.
+
+**Control.** Parte de $2,5$. Compara intercambiar las entradas con aumentar la primera en $2$ y disminuir la segunda en $2$. ¿Qué distingue la suma y qué distingue el producto? ¿Qué puedes concluir sobre todos los pares a partir de este control?
+
+**Solución.** El par inicial tiene suma $7$ y producto $10$. El intercambio produce $5,2$, con suma $7$ y producto $10$. El otro cambio produce $4,3$, con suma $7$ y producto $12$. La suma no distingue estas situaciones; el producto distingue el segundo cambio del intercambio. Hemos verificado este par, no todos los pares. Para reconocer qué estamos comparando, retoma §1.3, operaciones y relaciones; para precisar la fuerza de los datos, retoma §1.5, evidencia y conjetura.
+
 ## 1.8. Una idea, varias representaciones
 
 Una misma relación matemática puede presentarse de formas distintas.
@@ -355,6 +371,24 @@ En esta colección no utilizaremos representaciones visuales como adorno. Las us
 - reconocer una estructura.
 
 ---
+
+### Lo que una tabla finita permite reconstruir
+
+Supongamos que sólo se nos entregan estos datos:
+
+| Entrada | Salida |
+|---:|---:|
+| $0$ | $2$ |
+| $1$ | $4$ |
+| $2$ | $6$ |
+
+La regla «duplica la entrada y suma $2$» reproduce la tabla. Pero también lo hace esta otra regla, definida para todas las entradas enteras: «para $0,1,2$, duplica y suma $2$; para cualquier otro entero, duplica y suma $3$». En la entrada $3$, la primera da $8$ y la segunda $9$. Las reglas son distintas aunque la tabla disponible no las distingue.
+
+No se trata de decidir cuál parece más natural. Si el único dato es la tabla, ambas son compatibles. Si además se nos dice que la regla siempre consiste en duplicar y sumar una cantidad fija, hemos recibido una restricción nueva. Las condiciones del problema pueden descartar candidatos; la apariencia de los primeros valores no reemplaza esas condiciones.
+
+**Control.** Se agrega a la tabla la fila $3\mapsto8$. ¿Esto selecciona una de las dos reglas anteriores? ¿Prueba que no pueda existir ninguna otra regla compatible con las cuatro filas?
+
+**Solución.** Descarta la segunda regla y conserva la primera entre esos dos candidatos. No establece unicidad entre todas las reglas posibles. Por ejemplo, «duplica y suma $2$, excepto en la entrada $4$, donde entrega $100$» coincide en las cuatro filas y difiere en otra entrada. La comprobación adicional discrimina los candidatos comparados, pero no agota los que no fueron considerados. Si falta esta distinción, retoma §1.2, casos y conjetura, y §1.5, alcance de una comprobación finita. Después escribe por separado las filas observadas y la regla que estás proponiendo.
 
 ## 1.9. Generalizar exige controlar el dominio de la afirmación
 
@@ -461,101 +495,145 @@ Los ejercicios están ordenados por función matemática. No todos piden calcula
 
 ## A. Leer antes de transformar
 
-<!-- SOURCE: ORIGINAL | CALIBRATION: UCHILE/VELLEMAN | LEVEL: A-B -->
 
-1. En $5x-3$, identifica los objetos visibles y las operaciones. Explica por qué no aparece todavía una relación.
 
-2. Compara $5x-3$ con $5x-3=12$. ¿Qué elemento nuevo aparece en la segunda escritura y qué cambia en su significado?
+**1.** En $5x-3$, identifica los objetos visibles y las operaciones. Explica por qué no aparece todavía una relación.
 
-3. Clasifica cada escritura como expresión o afirmación de una relación: $a^2+b^2$, $a^2+b^2=c^2$, $m<n$, $4\mid 28$, $3(y+1)$.
+**2.** Compara $5x-3$ con $5x-3=12$. ¿Qué elemento nuevo aparece en la segunda escritura y qué cambia en su significado?
 
-4. En $2(a+b)=2a+2b$, identifica las operaciones y la relación principal. Sin justificar todavía la igualdad en general, explica qué afirma la escritura.
+**3.** Clasifica cada escritura como expresión o afirmación de una relación: $a^2+b^2$, $a^2+b^2=c^2$, $m<n$, $4\mid 28$, $3(y+1)$.
 
-5. Explica la diferencia entre $x+4$ y $x+4=0$ sin resolver ninguna ecuación.
+**4.** En $2(a+b)=2a+2b$, identifica las operaciones y la relación principal. Sin justificar todavía la igualdad en general, explica qué afirma la escritura.
 
-6. Un estudiante dice que «$7\mid 35$ es una división». Explica con precisión por qué esa lectura es incorrecta.
+**5.** Explica la diferencia entre $x+4$ y $x+4=0$ sin resolver ninguna ecuación.
+
+**6.** Un estudiante dice que «$7\mid 35$ es una división». Explica con precisión por qué esa lectura es incorrecta.
 
 ## B. Casos, patrones y generalidad
 
-<!-- SOURCE: ORIGINAL | INSPIRED_BY: VELLEMAN_PATTERN_CONJECTURE | LEVEL: A-C -->
 
-7. Calcula $1\cdot2$, $2\cdot3$, $3\cdot4$, $4\cdot5$, $5\cdot6$ y formula una conjetura sobre la paridad del producto de dos enteros consecutivos.
 
-8. Examina $n^2-n$ para $n=1,2,3,4,5,6$. Formula una conjetura precisa e indica cuál es el dominio sobre el que la propones.
+**7.** Calcula $1\cdot2$, $2\cdot3$, $3\cdot4$, $4\cdot5$, $5\cdot6$ y formula una conjetura sobre la paridad del producto de dos enteros consecutivos.
 
-9. Observa $1$, $1+3$, $1+3+5$, $1+3+5+7$ y $1+3+5+7+9$. Formula una conjetura que describa los resultados.
+**8.** Examina $n^2-n$ para $n=1,2,3,4,5,6$. Formula una conjetura precisa e indica cuál es el dominio sobre el que la propones.
 
-10. Calcula $(-1)^n$ para $n=0,1,2,3,4,5,6$. Describe el patrón en palabras y luego mediante una regla que distinga dos casos.
+**9.** Observa $1$, $1+3$, $1+3+5$, $1+3+5+7$ y $1+3+5+7+9$. Formula una conjetura que describa los resultados.
 
-11. Busca seis valores iniciales de $2^n$ y describe dos regularidades diferentes que observes. Distingue claramente «regularidad observada» de «afirmación demostrada».
+**10.** Calcula $(-1)^n$ para $n=0,1,2,3,4,5,6$. Describe el patrón en palabras y luego mediante una regla que distinga dos casos.
 
-12. Construye cinco ejemplos numéricos que sugieran una regla general propia. Escribe por separado: los casos, la regularidad observada y la conjetura.
+**11.** Busca seis valores iniciales de $2^n$ y describe dos regularidades diferentes que observes. Distingue claramente «regularidad observada» de «afirmación demostrada».
+
+**12.** Construye cinco ejemplos numéricos que sugieran una regla general propia. Escribe por separado: los casos, la regularidad observada y la conjetura.
 
 ## C. Contraejemplos y límites de la evidencia
 
-<!-- SOURCE: ORIGINAL | INSPIRED_BY: VELLEMAN_COUNTEREXAMPLE | LEVEL: B-C -->
 
-13. Refuta: «para todos los números reales $a,b$, se cumple $a-b=b-a$».
 
-14. Refuta: «si $a^2=b^2$, entonces $a=b$» para números reales.
+**13.** Refuta: «para todos los números reales $a,b$, se cumple $a-b=b-a$».
 
-15. Refuta: «la suma de dos enteros impares es impar».
+**14.** Refuta: «si $a^2=b^2$, entonces $a=b$» para números reales.
 
-16. Un estudiante comprueba veinte valores de $n$ y observa que una fórmula produce siempre un número primo. Explica por qué eso no basta para demostrar que la fórmula produce primos para todo $n$.
+**15.** Refuta: «la suma de dos enteros impares es impar».
 
-17. Considera $n^2+n+41$. Comprueba algunos valores iniciales y encuentra un valor que destruya la afirmación «siempre es primo».
+**16.** Un estudiante comprueba veinte valores de $n$ y observa que una fórmula produce siempre un número primo. Explica por qué eso no basta para demostrar que la fórmula produce primos para todo $n$.
 
-18. Inventa una afirmación universal falsa sobre enteros que resulte plausible al mirar al menos tres casos iniciales. Luego encuentra un contraejemplo.
+**17.** Considera $n^2+n+41$. Comprueba algunos valores iniciales y encuentra un valor que destruya la afirmación «siempre es primo».
+
+**18.** Inventa una afirmación universal falsa sobre enteros que resulte plausible al mirar al menos tres casos iniciales. Luego encuentra un contraejemplo.
 
 ## D. Comparar comportamientos
 
-<!-- SOURCE: ORIGINAL | CALIBRATION: NICHOLSON_CONCRETE_TO_ABSTRACT | LEVEL: B-C -->
 
-19. Compara $14+9$ con $9+14$, y $14-9$ con $9-14$. Describe el cambio aplicado y lo que ocurre con el resultado en cada operación.
 
-20. Compara $3\cdot 8$ con $8\cdot 3$, y $3/8$ con $8/3$. Formula una pregunta general sugerida por el contraste.
+**19.** Compara $14+9$ con $9+14$, y $14-9$ con $9-14$. Describe el cambio aplicado y lo que ocurre con el resultado en cada operación.
 
-21. Considera los pares $2+7=9$, $5+4=9$ y $12+(-3)=9$. ¿Qué cambia entre los ejemplos y qué permanece?
+**20.** Compara $3\cdot 8$ con $8\cdot 3$, y $3/8$ con $8/3$. Formula una pregunta general sugerida por el contraste.
 
-22. Considera $4^2$, $6^2$, $10^2$ y $14^2$. ¿Qué propiedad de las bases permanece en los cuadrados? Formula la observación sin intentar demostrarla.
+**21.** Considera los pares $2+7=9$, $5+4=9$ y $12+(-3)=9$. ¿Qué cambia entre los ejemplos y qué permanece?
 
-23. Da un ejemplo de una transformación de una expresión que preserve su valor en los casos que pruebes y otro ejemplo de una transformación que no lo preserve.
+**22.** Considera $4^2$, $6^2$, $10^2$ y $14^2$. ¿Qué propiedad de las bases permanece en los cuadrados? Formula la observación sin intentar demostrarla.
 
-24. Explica, con un ejemplo propio, qué significa estudiar «el comportamiento de una operación» en lugar de limitarse a efectuarla.
+**23.** Da un ejemplo de una transformación de una expresión que preserve su valor en los casos que pruebes y otro ejemplo de una transformación que no lo preserve.
+
+**24.** Explica, con un ejemplo propio, qué significa estudiar «el comportamiento de una operación» en lugar de limitarse a efectuarla.
 
 ## E. Representaciones
 
-<!-- SOURCE: ORIGINAL | CALIBRATION: SELF_STUDY / MULTIPLE_REPRESENTATIONS | LEVEL: A-C -->
 
-25. Traduce al lenguaje simbólico: «tres veces un número, menos cinco».
 
-26. Explica la diferencia entre «tres veces un número, menos cinco» y «tres veces la diferencia entre un número y cinco». Escribe ambas expresiones.
+**25.** Traduce al lenguaje simbólico: «tres veces un número, menos cinco».
 
-27. Representa «la suma de dos enteros consecutivos» usando una sola letra.
+**26.** Explica la diferencia entre «tres veces un número, menos cinco» y «tres veces la diferencia entre un número y cinco». Escribe ambas expresiones.
 
-28. Construye una tabla de cinco valores para la regla $3x+2$. ¿Qué información se hace más visible en la tabla que en la expresión aislada?
+**27.** Representa «la suma de dos enteros consecutivos» usando una sola letra.
 
-29. Una tabla contiene los pares $(0,1)$, $(1,3)$, $(2,5)$, $(3,7)$, $(4,9)$. Propón una expresión sencilla que reproduzca esos valores. Explica por qué cinco pares compatibles no demuestran que esa expresión sea la única regla posible.
+**28.** Construye una tabla de cinco valores para la regla $3x+2$. ¿Qué información se hace más visible en la tabla que en la expresión aislada?
 
-30. Da un ejemplo de una idea matemática elemental que puedas expresar verbalmente, mediante símbolos y mediante una tabla. Explica qué revela mejor cada representación.
+**29.** Una tabla contiene los pares $(0,1)$, $(1,3)$, $(2,5)$, $(3,7)$, $(4,9)$. Propón una expresión sencilla que reproduzca esos valores. Explica por qué cinco pares compatibles no demuestran que esa expresión sea la única regla posible.
+
+**30.** Da un ejemplo de una idea matemática elemental que puedas expresar verbalmente, mediante símbolos y mediante una tabla. Explica qué revela mejor cada representación.
 
 ## F. Pensamiento estructural y síntesis
 
-<!-- SOURCE: ORIGINAL | INSPIRED_BY: NICHOLSON/CORRY | CALIBRATION: UCHILE | LEVEL: C-E -->
 
-31. Explica por qué «enteros con suma» y «movimientos de un cuadrado que lo llevan sobre sí mismo» podrían ser comparables desde un punto de vista estructural, aunque sus objetos sean completamente distintos. No uses todavía vocabulario de teoría de grupos.
 
-32. Considera el paso de $8+13$ a $13+8$. Identifica la transformación y una cantidad que permanece. Explica por qué la palabra «invariante» requiere mencionar la transformación considerada.
+**31.** Explica por qué «enteros con suma» y «movimientos de un cuadrado que lo llevan sobre sí mismo» podrían ser comparables desde un punto de vista estructural, aunque sus objetos sean completamente distintos. No uses todavía vocabulario de teoría de grupos.
 
-33. Considera el paso de un entero par $n$ a su cuadrado $n^2$. ¿Qué propiedad parece preservarse? ¿Qué tendría que hacerse más adelante para convertir la observación en una afirmación demostrada?
+**32.** Considera el paso de $8+13$ a $13+8$. Identifica la transformación y una cantidad que permanece. Explica por qué la palabra «invariante» requiere mencionar la transformación considerada.
 
-34. Analiza la escritura $a(b+c)=ab+ac$ mediante la rutina de lectura algebraica: objetos, operaciones, relación, familia de casos, posible regularidad y cuestión de justificación.
+**33.** Considera el paso de un entero par $n$ a su cuadrado $n^2$. ¿Qué propiedad parece preservarse? ¿Qué tendría que hacerse más adelante para convertir la observación en una afirmación demostrada?
 
-35. Un estudiante afirma: «como $2^2+1=5$, $4^2+1=17$ y $6^2+1=37$, entonces $n^2+1$ es primo para todo entero par $n$». Evalúa el razonamiento y encuentra un contraejemplo.
+**34.** Analiza la escritura $a(b+c)=ab+ac$ mediante la rutina de lectura algebraica: objetos, operaciones, relación, familia de casos, posible regularidad y cuestión de justificación.
 
-36. Escribe un párrafo matemático breve que responda: **¿qué diferencia hay entre resolver un cálculo y reconocer una estructura?** Tu respuesta debe mencionar al menos objetos, operaciones o relaciones, y generalidad.
+**35.** Un estudiante afirma: «como $2^2+1=5$, $4^2+1=17$ y $6^2+1=37$, entonces $n^2+1$ es primo para todo entero par $n$». Evalúa el razonamiento y encuentra un contraejemplo.
+
+**36.** Escribe un párrafo matemático breve que responda: **¿qué diferencia hay entre resolver un cálculo y reconocer una estructura?** Tu respuesta debe mencionar al menos objetos, operaciones o relaciones, y generalidad.
 
 ---
+
+## G. Reglas distintas para los mismos datos
+
+
+**37.** Una tabla para entradas enteras contiene $0\mapsto2$, $1\mapsto5$ y $2\mapsto8$. Escribe dos reglas completas que reproduzcan esas filas y den salidas distintas en $3$. Calcula ambas salidas. Explica qué dato nuevo permitiría distinguir tus dos candidatos y qué no demostraría todavía ese dato.
+
+
+**38.** El costo de un servicio para $1,2,3$ usos es, respectivamente, $7,10,13$. Propón dos reglas para cualquier cantidad entera no negativa de usos que coincidan con esos datos y difieran cuando no hay usos. Añade una condición verbal que haga elegir una de ellas. Distingue el costo observado de la condición que tú agregaste.
+
+
+**39.** Se estudia una operación con dos entradas enteras. Sólo se conoce la tabla de las entradas $0$ y $1$: al combinar $0,0$ sale $0$; $0,1$ y $1,0$ dan $1$; $1,1$ da $2$. Propón dos operaciones completas compatibles, una que siempre sea la suma ordinaria y otra que falle en conservar el resultado al intercambiar alguna pareja de entradas. Comprueba tu pareja y explica el límite de la tabla.
+
+## H. Objetos, operaciones y relaciones en nuevos contextos
+
+
+**40.** Ana tiene $7$ fichas y Beto $5$. Ana entrega dos fichas a Beto sin perder ninguna. Identifica objetos, operación y una relación numérica que se conserve. Compara esta entrega con intercambiar los nombres de los dueños en el registro inicial. Explica por qué tener el mismo total no significa que todos los datos sean iguales.
+
+
+**41.** Trabajamos con las letras $a,b$ y con la operación de escribir una detrás de otra, conservando el orden. Completa los cuatro resultados posibles para dos entradas de una letra. Identifica una propiedad que todos esos resultados compartan y una relación que distinga $ab$ de $ba$. Compara lo observado con intercambiar dos sumandos numéricos, sin usar teoría de grupos.
+
+
+**42.** Un reloj tiene posiciones $0,1,\ldots,11$; después de $11$ se vuelve a $0$. Desde la posición $10$ se avanza cuatro posiciones. Describe el recorrido y compara la posición final con la suma entera $10+4$. Identifica objetos, operación y relación en ambos contextos. ¿Un caso donde ambos resultados coincidan mostraría que las dos operaciones son siempre iguales?
+
+## I. Conjeturas y casos frontera
+
+
+**43.** Al calcular $x^2$ para $x=1,2,3$, se obtiene un valor mayor o igual que $x$. Formula la conjetura que extendería esa observación a todos los reales y refútala con una entrada entre $0$ y $1$. Comprueba también $0$ y $-1$. Propón un dominio más estrecho sobre el cual convendría investigar la pauta, sin presentar tus comprobaciones como demostración.
+
+
+**44.** Los casos $8/2<8$, $12/3<12$ y $20/5<20$ sugieren «dividir un número positivo por cualquier número positivo siempre lo disminuye». Evalúa los casos frontera con divisor $1$, $1/2$ y $0$. Decide cuáles son contraejemplos admisibles y formula una nueva pregunta cuyo rango respete lo observado.
+
+
+**45.** Tres cuadrados tienen lados $1,2,3$. Calcula sus perímetros y áreas, y formula una conjetura que extienda a todos los rectángulos positivos la comparación que sugieren. Busca un contraejemplo usando un rectángulo de lados $1,9$ y otro de lados $4,4$. Explica qué restricción de los ejemplos iniciales se perdió al generalizar.
+
+## J. Elegir una representación y reconocer sus límites
+
+
+**46.** Se resumen tres salidas escribiéndolas ordenadas: $0,1,4$. Se pierde qué entrada produjo cada una. Construye dos tablas sobre las mismas entradas $0,1,2$ que tengan ese mismo resumen, pero asignen salidas distintas a la entrada $0$. Para responder «¿qué entrada dio $4$?», elige entre el resumen y una tabla completa. Explica la información perdida.
+
+
+**47.** Una persona camina en una recta. En el recorrido A va directamente de $0$ a $3$ y después directamente de $3$ a $0$, sin desvíos. En B permanece en $0$. Ambos se resumen con «posición final: $0$». Elige una representación que permita responder cuánto se recorrió y cuál permita responder dónde terminó. Calcula las distancias y explica por qué el resumen final no basta para ambas preguntas.
+
+
+**48.** Dos procedimientos de rebaja de un precio positivo son: A, quitar $2$ unidades; B, quitar la quinta parte del precio. Para un precio de $10$, ambos dan $8$. Escribe cada regla en palabras y con símbolos; elige un segundo precio que las distinga y organiza ambos casos en una tabla. Identifica los objetos, operaciones y relaciones. Explica qué concluirías si sólo estuvieran permitidos estos dos procedimientos, y qué no concluirías sin esa restricción.
 
 # Soluciones
 
@@ -813,3 +891,119 @@ El error del estudiante no fue calcular mal; fue atribuir a unos pocos ejemplos 
 Respuesta modelo:
 
 Resolver un cálculo consiste en obtener información sobre un caso concreto, por ejemplo hallar el valor de $17+8$. Reconocer una estructura exige mirar más allá del resultado y preguntar qué objetos intervienen, qué operaciones o relaciones los conectan y qué propiedades continúan siendo válidas al cambiar los ejemplos. El cálculo puede aportar evidencia, pero el pensamiento estructural busca una organización que explique una familia de casos.
+
+## G. Reglas distintas para los mismos datos
+
+
+### 37
+
+Una regla es «multiplica por $3$ y suma $2$», es decir, $3x+2$. Otra es «si la entrada es $0,1$ o $2$, multiplica por $3$ y suma $2$; para cualquier otra entrada entera, multiplica por $3$ y suma $3$». Ambas están especificadas para todas las entradas enteras y dan respectivamente $2,5,8$ en las filas entregadas.
+
+En $3$, la primera da $11$ y la segunda $12$. Conocer la salida real en esa entrada distinguiría esos dos candidatos: $11$ apoyaría al primero y descartaría al segundo; $12$ haría lo contrario. Una salida distinta descartaría ambos. Ninguno de esos resultados probaría por sí solo que no existan otros candidatos compatibles con todos los datos observados. El ejercicio pide reglas distintas, no sólo dos maneras de escribir la misma regla.
+
+
+### 38
+
+Primera regla: cobrar $4$ de cargo fijo y $3$ por cada uso, incluso cuando hay cero usos; su expresión es $4+3n$. Segunda: cobrar $0$ cuando no hay usos y, cuando hay al menos uno, cobrar $4+3n$. En $1,2,3$, ambas dan $7,10,13$; en $0$, dan $4$ y $0$.
+
+La condición «el cargo fijo se cobra incluso si no se utiliza el servicio» selecciona la primera. La condición «sin usos no se cobra nada» selecciona la segunda. La tabla no afirma ninguna de estas condiciones: sólo informa tres costos. No se debe presentar una condición añadida como si fuera una conclusión de esas filas. Las dos reglas respetan la interpretación de $n$ como cantidad entera no negativa, sin inventar usos negativos.
+
+
+### 39
+
+La primera operación suma siempre las dos entradas. La segunda también las suma, excepto cuando la primera es $2$ y la segunda $3$: en ese caso entrega $0$. Esta excepción define un resultado único para cada pareja y no afecta ninguna de las cuatro entradas conocidas, por lo que ambas operaciones reproducen la tabla.
+
+En la segunda operación, combinar $2,3$ da $0$, mientras combinar $3,2$ da la suma ordinaria $5$. El intercambio cambia el resultado. En la primera, ambas sumas valen $5$. La tabla inicial sólo compara parejas cuyas entradas son $0$ o $1$; su simetría visible no establece cómo se comporta la operación fuera de esas entradas. No estamos demostrando una ley general de operaciones: estamos construyendo dos posibilidades que los datos finitos no distinguen.
+
+## H. Objetos, operaciones y relaciones en nuevos contextos
+
+
+### 40
+
+Los objetos son las cantidades asignadas a cada persona y las fichas que se trasladan. La operación de entrega cambia el registro $\text{Ana}:7,\text{Beto}:5$ a $\text{Ana}:5,\text{Beto}:7$. La relación «las dos cantidades suman $12$» permanece, pues $7+5=12$ y $5+7=12$.
+
+Intercambiar los nombres en el registro inicial produce las mismas cantidades finales asociadas a los nombres, pero es un cambio de descripción: por sí mismo no afirma que se hayan trasladado fichas. La entrega sí describe una acción física. El total coincide antes y después, pero la cantidad de Ana cambia, la de Beto cambia y los procedimientos descritos difieren. Un registro de cantidades puede representar el estado final sin conservar la historia que llevó a él.
+
+
+### 41
+
+Los cuatro resultados son:
+
+| Primera entrada | Segunda entrada | Resultado |
+|---|---|---|
+| $a$ | $a$ | $aa$ |
+| $a$ | $b$ | $ab$ |
+| $b$ | $a$ | $ba$ |
+| $b$ | $b$ | $bb$ |
+
+Todos tienen dos letras. $ab$ y $ba$ tienen incluso las mismas letras y el mismo número de cada una, pero no son la misma escritura ordenada: la primera empieza por $a$ y la segunda por $b$. Los objetos son letras o cadenas, la operación es escribir en orden y la relación de igualdad compara las escrituras completas. En $2+5$ y $5+2$, el intercambio conserva el resultado numérico $7$; en estas cadenas, conservar la longitud no equivale a conservar el resultado. La propiedad elegida y la clase de objetos importan.
+
+
+### 42
+
+El recorrido es $10\to11\to0\to1\to2$, así que la posición final es $2$. En los enteros, $10+4=14$. El reloj trabaja con doce posiciones y la operación consiste en avanzar por el recorrido circular; la suma ordinaria trabaja con enteros. El número $14$ es un entero admisible, pero no una de las etiquetas del reloj.
+
+La relación «posición final igual a $2$» describe el reloj; «suma igual a $14$» describe la cuenta entera. No se puede reemplazar una por otra ignorando los objetos del contexto. Desde $3$, avanzar cuatro posiciones termina en $7$, que también es $3+4$; ese caso coincidente no hace idénticas las operaciones. El ejemplo desde $10$ ya muestra una diferencia. No hace falta teoría de congruencias para leer el recorrido dado.
+
+## I. Conjeturas y casos frontera
+
+
+### 43
+
+La conjetura sería: «para todo real $x$, $x^2\ge x$». Con $x=1/2$ resulta $x^2=1/4<1/2$, así que es falsa. En $0$ hay igualdad y en $-1$ se obtiene $1\ge-1$. Estos casos favorables no anulan el contraejemplo: una afirmación universal debe cubrir también la entrada $1/2$.
+
+Un dominio más estrecho que se puede investigar es el de los enteros positivos; otra propuesta es estudiar los reales mayores o iguales que $1$. En este punto se han propuesto nuevas afirmaciones, no demostrado que todos sus casos funcionen. La diferencia decisiva es que el primer dominio probado contenía sólo unos pocos enteros, mientras la conjetura incluía entradas fraccionarias.
+
+
+### 44
+
+La afirmación se refuta con $8/1=8$: la entrada y el divisor son positivos, pero el resultado no es estrictamente menor. También $8/(1/2)=16>8$ la refuta, mostrando que el resultado incluso puede aumentar. Con divisor $0$, la división no tiene valor y, además, ese divisor no es positivo; no es un contraejemplo admisible a la afirmación tal como fue escrita.
+
+Una nueva pregunta es: «¿dividir un número positivo por un divisor mayor que $1$ siempre produce un número menor?». Es más precisa que la primera y compatible con los tres casos iniciales. Su justificación general mediante orden y operaciones queda pendiente. No basta cambiar “positivo” por “distinto de cero”, porque eso introduciría además divisores negativos que no hemos estudiado en la comparación.
+
+
+### 45
+
+Los cuadrados tienen perímetros $4,8,12$ y áreas $1,4,9$. Sugieren: «entre rectángulos de lados positivos, el de mayor perímetro siempre tiene mayor área».
+
+El rectángulo de lados $1,9$ tiene perímetro $2(1+9)=20$ y área $9$. El de lados $4,4$ tiene perímetro $16$ y área $16$. El primero tiene mayor perímetro y menor área, así que refuta la conjetura; ambos tienen lados positivos y son entradas admisibles.
+
+En los ejemplos iniciales los dos lados de cada figura eran iguales. Al extender a todos los rectángulos se retiró esa restricción y apareció la posibilidad de una figura alargada. Se puede volver a investigar la comparación sólo entre cuadrados, pero tres cálculos no reemplazan la justificación general de esa versión.
+
+## J. Elegir una representación y reconocer sus límites
+
+
+### 46
+
+Dos tablas posibles son:
+
+| Entrada | Tabla A | Tabla B |
+|---:|---:|---:|
+| $0$ | $0$ | $4$ |
+| $1$ | $1$ | $1$ |
+| $2$ | $4$ | $0$ |
+
+Ambas tienen las salidas $0,1,4$ si se las ordena y se omiten las entradas. Pero en A la entrada $0$ da $0$, y en B da $4$. La salida $4$ procede de $2$ en A y de $0$ en B. Para identificar la entrada hace falta la tabla que conserve las asociaciones, u otra representación que las indique.
+
+El resumen conserva cuáles salidas aparecen en estos datos y cuántas veces, pero pierde el vínculo entre entrada y salida. No es sólo una tabla corta: incluso para las tres entradas observadas se ha eliminado información necesaria.
+
+
+### 47
+
+La posición final es $0$ en los dos casos, así que ese resumen responde dónde terminó. Para calcular lo recorrido necesitamos conservar los tramos, por ejemplo con la lista ordenada A: $0\to3\to0$ y B: permanecer en $0$, junto con la información de que los tramos son directos y sin desvíos.
+
+En A se recorren $3$ unidades de ida y $3$ de vuelta: total $6$. En B se recorren $0$. El regreso al mismo lugar no significa ausencia de movimiento. La representación final conserva la posición, pero no el recorrido ni su longitud. La condición “sin desvíos” importa: conocer sólo los extremos de un tramo no excluiría viajes adicionales de ida y vuelta. Tampoco estos datos informan cuánto tiempo tomó cada recorrido.
+
+
+### 48
+
+Con precio $p$, A se escribe $p-2$ y B se escribe $p-p/5$. Las frases indican respectivamente una cantidad fija y una cantidad que depende del precio. Para distinguirlas elegimos $p=20$:
+
+| Precio inicial | A: quitar $2$ | B: quitar la quinta parte |
+|---:|---:|---:|
+| $10$ | $8$ | $8$ |
+| $20$ | $18$ | $16$ |
+
+Los objetos son precios y cantidades retiradas; las operaciones son resta y, en B, división para calcular la quinta parte. La relación comparada es igualdad entre los precios finales. En $10$ coincide el resultado, pero los procedimientos no son el mismo; en $20$ se distinguen.
+
+Si se sabe que el procedimiento real debe ser A o B, una salida $18$ para precio $20$ selecciona A, y una salida $16$ selecciona B. Una salida diferente descartaría ambos candidatos. Sin esa restricción, dos filas no garantizan una regla única para otros precios. La tabla facilita comparar esos casos; las frases y expresiones conservan el procedimiento completo declarado. Para precios menores que $2$, A daría un resultado negativo: si el contexto lo prohíbe, haría falta restringir su aplicación, aunque los dos precios usados aquí son admisibles.

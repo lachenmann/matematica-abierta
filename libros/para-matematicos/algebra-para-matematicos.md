@@ -7,7 +7,7 @@ collection: PM-ALG
 editorial-project: APM
 status: published
 date-created: 2026-09-12
-date-modified: 2026-09-12
+date-modified: 2026-10-09
 areas:
   - algebra
   - fundamentos
@@ -35,7 +35,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Álgebra para matemáticos
 
 **Álgebra para matemáticos** es una obra abierta de Matemática Abierta concebida como un recorrido progresivo desde el paso inicial de la aritmética al pensamiento algebraico hasta las estructuras que culminan en la teoría de Galois.
 
@@ -52,13 +51,13 @@ El proyecto está organizado en seis tomos:
 5. **Cuerpos y extensiones**.
 6. **Teoría de Galois y síntesis algebraica**.
 
-La arquitectura completa comprende 106 capítulos previstos. La publicación es progresiva: cada capítulo aparece cuando ha cerrado su redacción, sus ejercicios y soluciones, y su control matemático y editorial.
+La arquitectura completa comprende 110 capítulos previstos. La publicación es progresiva: cada capítulo aparece cuando ha cerrado su redacción, sus ejercicios y soluciones, y su control matemático y editorial.
 
 ## Tomo I — Fundamentos algebraicos y razonamiento matemático
 
 El primer tomo reconstruye el álgebra elemental desde un punto de vista matemático y desarrolla, al mismo tiempo, las herramientas de lenguaje, lógica, demostración y razonamiento necesarias para avanzar hacia el álgebra lineal y el álgebra abstracta.
 
-Sus 22 capítulos recorren pensamiento algebraico, expresiones y leyes de las operaciones; lógica, cuantificadores, conjuntos, relaciones y funciones; métodos de demostración e inducción; divisibilidad, congruencias, ecuaciones e inequaciones; polinomios y números complejos.
+Sus 26 capítulos recorren pensamiento algebraico, expresiones y leyes de las operaciones; lógica, cuantificadores, conjuntos, relaciones y funciones; métodos de demostración e inducción; divisibilidad, congruencias, ecuaciones e inequaciones; polinomios y números complejos.
 
 ## Capítulos publicados
 
@@ -78,4 +77,5 @@ Los ejercicios sustanciales incluyen soluciones desarrolladas en el propio capí
 
 ## Estado
 
-La segunda fundación editorial de la obra está activa. El Tomo I tiene actualmente cerrados y aprobados sus primeros doce capítulos. La edición web ha publicado ya los capítulos 1, 2, 3, 4, 5, 6 y 7 mediante el flujo canónico de derivación, QA y despliegue progresivo.
+La segunda fundación editorial de la obra está activa. El Tomo I tiene cerrados y aprobados sus 26 capítulos, con 2352 ejercicios y sus soluciones desarrolladas; el manuscrito completo ha superado el QA matemático y pedagógico integral. La edición web ha publicado ya los capítulos 1, 2, 3, 4, 5, 6 y 7 mediante el flujo canónico de derivación, QA y despliegue progresivo.
+

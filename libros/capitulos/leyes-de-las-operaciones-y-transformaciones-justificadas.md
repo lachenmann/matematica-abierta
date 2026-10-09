@@ -9,7 +9,7 @@ source-id: APM-T1-C03
 editorial-id: MA-BCH-APM-01-003
 status: published
 date-created: 2026-09-12
-date-modified: 2026-09-12
+date-modified: 2026-10-09
 areas:
   - algebra
   - fundamentos
@@ -36,8 +36,6 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 ---
-
-# 3. Leyes de las operaciones y transformaciones justificadas
 
 Los dos primeros capítulos enseñaron a leer el lenguaje algebraico: distinguir objetos, operaciones y relaciones; reconocer el papel de una variable; controlar el dominio; diferenciar una ecuación de una identidad.
 
@@ -260,6 +258,26 @@ $aa^{-1}=1$.
 
 Llamamos $a^{-1}$ **inverso multiplicativo** de $a$.
 
+### Por qué los inversos son únicos
+
+La existencia de un inverso no basta para justificar que lo llamemos «el inverso». También debemos probar su unicidad.
+
+Si $a+u=0$ y $a+v=0$, entonces
+
+$$
+u=u+0=u+(a+v)=(u+a)+v=0+v=v.
+$$
+
+Usamos los neutros, la asociatividad y la conmutatividad. Por tanto, el inverso aditivo es único y podemos denotarlo por $-a$.
+
+Si $au=1$ y $av=1$, entonces
+
+$$
+u=u(av)=(ua)v=1v=v.
+$$
+
+El inverso multiplicativo también es único. Su existencia se exige sólo cuando $a\neq0$.
+
 ### El cero marca una diferencia
 
 El número $0$ tiene inverso aditivo: su inverso aditivo es él mismo, porque $0+0=0$.
@@ -441,6 +459,22 @@ La hipótesis $c\neq0$ es indispensable.
 
 Si $c=0$, la igualdad $ac=bc$ se convierte en $0=0$, independientemente de los valores de $a$ y $b$. Ya no contiene información suficiente para concluir $a=b$.
 
+### El criterio del producto nulo
+
+En $\mathbb Q$ y $\mathbb R$,
+
+$$
+ab=0\quad\Longleftrightarrow\quad a=0\ \text{o}\ b=0.
+$$
+
+Si $ab=0$ y $a=0$, ya tenemos una de las alternativas. Si $a\neq0$, multiplicamos por su inverso:
+
+$$
+b=1b=(a^{-1}a)b=a^{-1}(ab)=a^{-1}0=0.
+$$
+
+Recíprocamente, si cualquiera de los factores es cero, el producto es cero por la primera consecuencia de esta sección. La disponibilidad de inversos para los factores no nulos es esencial para esta demostración.
+
 ---
 
 ## 3.7. Distributividad en ambos sentidos
@@ -598,6 +632,26 @@ Esta pregunta reaparecerá constantemente en ecuaciones, polinomios, matrices y 
 
 ---
 
+### Qué conserva cada transformación
+
+Antes de aceptar un paso conviene precisar qué se quiere conservar. El mismo factor puede ser seguro en una expresión y exigir una separación de casos en una ecuación.
+
+| Situación | Transformación | Información que debe conservarse |
+|---|---|---|
+| Expresión | $\frac{(x-2)(x+1)}{x-2}=x+1$ | El valor, con la restricción original $x\neq2$ |
+| Ecuación | $x+1=4$ pasa a $(x-2)(x+1)=4(x-2)$ | Las soluciones: aparece $x=2$ además de $x=3$ |
+| Ecuación con dominio declarado | El paso anterior, trabajando sólo con $x\neq2$ | Las soluciones del problema restringido: únicamente $x=3$ |
+
+En la primera fila, $x=2$ nunca fue una entrada admisible. Simplificar conserva los valores originales si conservamos también esa exclusión. En la segunda, $x=2$ sí era una entrada admisible de la ecuación inicial, pero no una solución: sus miembros valían $3$ y $4$. Multiplicarlos por $x-2$ los convierte en $0$ y $0$. El paso hace verdadera una igualdad que antes era falsa. En la tercera fila, esa entrada ya estaba excluida, y multiplicar o dividir por $x-2$ resulta reversible dentro del dominio declarado.
+
+El dominio no cambia silenciosamente para acomodar el procedimiento. Si el problema se plantea para todos los reales, imponer $x\neq2$ crea un subproblema y obliga a examinar por separado $x=2$.
+
+**Control.** Resuelve $\frac{(x-2)(x+1)}{x-2}=3$ y compara el resultado con el de $x+1=3$ planteada para todos los reales. Explica qué conserva la simplificación.
+
+**Resolución.** La ecuación fraccionaria exige $x\neq2$. En ese dominio podemos cancelar el factor no nulo y obtener $x+1=3$, cuyo único candidato es $x=2$. El candidato está excluido: la ecuación original no tiene soluciones. La ecuación $x+1=3$ sobre todos los reales sí tiene la solución $2$. La simplificación conserva valores y soluciones **en el dominio original**; olvidar la restricción cambia el problema. Si la dificultad estuvo en identificar la entrada excluida, vuelve a §2.3; si estuvo en distinguir valor y solución, contrasta §§3.8–3.9.
+
+---
+
 ## 3.11. Cancelar no significa borrar símbolos
 
 Consideremos
@@ -638,6 +692,30 @@ La pregunta debe ser:
 
 ---
 
+### Buscar el factor de todo el numerador
+
+Para cancelar, primero hay que identificar un producto completo. Consideremos
+
+$\frac{(x-1)(x+2)+(x-1)}{x-1}$, con $x\neq1$.
+
+El factor $x-1$ aparece en ambos sumandos del numerador. La distributividad permite escribir el numerador entero como $(x-1)((x+2)+1)$. Ahora sí tenemos un producto y podemos multiplicar por el inverso del denominador:
+
+$\frac{(x-1)((x+2)+1)}{x-1}=(x+2)+1=x+3$, con $x\neq1$.
+
+Comparemos esa expresión con
+
+$\frac{(x-1)(x+2)+1}{x-1}$.
+
+Aquí el segundo sumando no contiene el factor $x-1$. La descomposición correcta es $x+2+\frac1{x-1}$, siempre con $x\neq1$. Cancelar el factor del primer sumando no elimina el denominador del segundo.
+
+En $x=3$, la primera expresión vale $6$ y la segunda vale $11/2$. Este cálculo detecta que no son la misma expresión; la justificación general viene de examinar la estructura de sus sumandos y aplicar distributividad. Un caso numérico basta para refutar una identidad, pero no reemplaza la explicación de una identidad verdadera.
+
+**Control.** Simplifica $\frac{(x-1)(x+2)+(x-1)c}{x-1}$, donde $c$ es un real fijo. ¿Qué cambia si el último sumando del numerador se sustituye por $c$?
+
+**Resolución.** En el primer caso, ambos sumandos tienen factor $x-1$: el numerador es $(x-1)(x+2+c)$ y el resultado es $x+2+c$, con $x\neq1$. En el segundo obtenemos $x+2+\frac c{x-1}$, con la misma restricción. Si $c=0$, las dos formas simplificadas coinciden; si $c\neq0$, coinciden solamente cuando $\frac c{x-1}=c$, es decir, cuando $x=2$. Esta coincidencia puntual no autoriza la cancelación propuesta para todo $x$. Para recuperar la factorización, vuelve a §3.7; para recuperar la condición sobre el inverso, vuelve a §§3.4–3.6.
+
+---
+
 ## 3.12. Cadenas justificadas: escribir álgebra como argumento
 
 Una cadena algebraica puede leerse como una demostración en miniatura.
@@ -666,6 +744,36 @@ Al comienzo conviene hacer visibles más pasos.
 Con la práctica, una cadena puede comprimirse. Pero la compresión es legítima sólo cuando el lector podría reconstruir los pasos omitidos.
 
 La meta no es escribir siempre la versión más larga. La meta es poder defenderla.
+
+---
+
+### Detallar y abreviar sin cambiar el argumento
+
+Un argumento detallado ayuda a reconocer sus mecanismos. Una vez comprendidos, puede escribirse una versión más breve que conserve las justificaciones decisivas.
+
+Para resolver $4(x+3)-2x=18$ sobre los reales, una ruta detallada es:
+
+$$
+\begin{aligned}
+4(x+3)-2x&=18\\
+4x+12-2x&=18 &&\text{[distributividad]}\\
+(4x-2x)+12&=18 &&\text{[reagrupar e intercambiar sumandos]}\\
+(4-2)x+12&=18 &&\text{[distributividad en sentido inverso]}\\
+2x+12&=18 &&\text{[calcular $4-2$]}\\
+2x&=6 &&\text{[sumar $-12$ a ambos miembros]}\\
+x&=3 &&\text{[multiplicar por $1/2$]}.
+\end{aligned}
+$$
+
+Una ruta económica escribe $4(x+3)-2x=2x+12$, justificando esa identidad por distributividad y agrupación de términos. La ecuación queda $2x+12=18$; sumar $-12$ y dividir por $2\neq0$ da $x=3$. La verificación en la ecuación inicial es $4(3+3)-2\cdot3=24-6=18$.
+
+La versión breve conserva las razones de la versión detallada. Repetir una línea, insertar $+0$ sin necesidad o deshacer un paso para rehacerlo aumenta la longitud sin explicar una decisión nueva. En cambio, escribir la condición de un divisor o separar su posible valor cero sí conserva información que podría perderse.
+
+En los ejercicios de cadenas detalladas, haz visibles las transformaciones que permiten reconstruir el argumento. Después ensaya una versión más económica y explica qué pasos comprimiste. La extensión adecuada depende de lo que necesita comprender el lector.
+
+**Control.** Presenta una ruta detallada y una breve para $5(x-2)-3(x-2)=8$. ¿Qué ventaja tiene reconocer un factor común?
+
+**Resolución.** Una ruta detallada desarrolla: $5x-10-3x+6=8$; por agrupación y cálculo, $2x-4=8$; sumando $4$, $2x=12$; dividiendo por $2\neq0$, $x=6$. La ruta breve factoriza primero: $(5-3)(x-2)=8$, luego $2(x-2)=8$. Dividir por $2$ y sumar $2$ da $x=6$. Ambas rutas son reversibles. La verificación es $5(6-2)-3(6-2)=20-12=8$. Factorizar aprovecha el bloque repetido $x-2$ y evita desarrollar para volver a agrupar. Si no reconociste el bloque, vuelve a §3.7; si faltó justificar la división, vuelve a §3.9.
 
 ---
 
@@ -742,49 +850,49 @@ Todos los ejercicios son originales para *Álgebra para matemáticos*, calibrado
 
 ## A. Identificar la propiedad
 
-1. Indica qué propiedad justifica $a+b=b+a$.
+**1.** Indica qué propiedad justifica $a+b=b+a$.
 
-2. Indica qué propiedad justifica $(ab)c=a(bc)$.
+**2.** Indica qué propiedad justifica $(ab)c=a(bc)$.
 
-3. Indica qué propiedad justifica $a+0=a$.
+**3.** Indica qué propiedad justifica $a+0=a$.
 
-4. Indica qué propiedad justifica $a(b+c)=ab+ac$.
+**4.** Indica qué propiedad justifica $a(b+c)=ab+ac$.
 
-5. Explica por qué pasar de $a+(b+c)$ a $(a+b)+c$ no usa conmutatividad.
+**5.** Explica por qué pasar de $a+(b+c)$ a $(a+b)+c$ no usa conmutatividad.
 
-6. En la cadena $a+(b+c)=(a+b)+c=(b+a)+c$, identifica la propiedad usada en cada paso.
+**6.** En la cadena $a+(b+c)=(a+b)+c=(b+a)+c$, identifica la propiedad usada en cada paso.
 
 ## B. Neutros e inversos
 
-7. Explica la diferencia entre $0$ como neutro aditivo y $-a$ como inverso aditivo de $a$.
+**7.** Explica la diferencia entre $0$ como neutro aditivo y $-a$ como inverso aditivo de $a$.
 
-8. Explica la diferencia entre $1$ como neutro multiplicativo y $a^{-1}$ como inverso multiplicativo de $a$.
+**8.** Explica la diferencia entre $1$ como neutro multiplicativo y $a^{-1}$ como inverso multiplicativo de $a$.
 
-9. ¿Cuál es el inverso aditivo de $0$? Justifica.
+**9.** ¿Cuál es el inverso aditivo de $0$? Justifica.
 
-10. ¿Por qué la frase «todo número real tiene inverso multiplicativo» es falsa?
+**10.** ¿Por qué la frase «todo número real tiene inverso multiplicativo» es falsa?
 
-11. Si $a\neq0$, completa y justifica: $a\cdot(\ \ )=1$.
+**11.** Si $a\neq0$, completa y justifica: $a\cdot(\ \ )=1$.
 
-12. Reescribe $a-b$ usando sólo suma e inverso aditivo, y $\frac ab$ usando producto e inverso multiplicativo.
+**12.** Reescribe $a-b$ usando sólo suma e inverso aditivo, y $\frac ab$ usando producto e inverso multiplicativo.
 
 ## C. Consecuencias derivadas
 
-13. Demuestra que $0a=0$ para todo número real $a$.
+**13.** Demuestra que $0a=0$ para todo número real $a$.
 
-14. Demuestra que $-(-a)=a$.
+**14.** Demuestra que $-(-a)=a$.
 
-15. Demuestra que $(-a)b=-(ab)$.
+**15.** Demuestra que $(-a)b=-(ab)$.
 
-16. Demuestra que $a(-b)=-(ab)$.
+**16.** Demuestra que $a(-b)=-(ab)$.
 
-17. Deduce que $(-a)(-b)=ab$.
+**17.** Deduce que $(-a)(-b)=ab$.
 
-18. Demuestra que $-(a+b)=(-a)+(-b)$.
+**18.** Demuestra que $-(a+b)=(-a)+(-b)$.
 
 ## D. Conmutatividad, asociatividad y distributividad
 
-19. Justifica cada paso:
+**19.** Justifica cada paso:
 $$
 \begin{aligned}
 a+(b+c)
@@ -794,61 +902,61 @@ a+(b+c)
 \end{aligned}
 $$
 
-20. Transforma $3(x+4)$ en $3x+12$ e identifica la propiedad.
+**20.** Transforma $3(x+4)$ en $3x+12$ e identifica la propiedad.
 
-21. Transforma $7x+7y$ en una forma factorizada e identifica la propiedad usada en sentido inverso.
+**21.** Transforma $7x+7y$ en una forma factorizada e identifica la propiedad usada en sentido inverso.
 
-22. Explica por qué $(a+b)^2=a^2+b^2$ no se deduce de distributividad.
+**22.** Explica por qué $(a+b)^2=a^2+b^2$ no se deduce de distributividad.
 
-23. Desarrolla correctamente $(a+b)^2$ justificando la estructura del cálculo.
+**23.** Desarrolla correctamente $(a+b)^2$ justificando la estructura del cálculo.
 
-24. Elige una forma más útil para calcular mentalmente $19\cdot101$ y explica tu elección.
+**24.** Elige una forma más útil para calcular mentalmente $19\cdot101$ y explica tu elección.
 
 ## E. Cancelación
 
-25. A partir de $a+c=b+c$, deriva $a=b$ justificando cada paso.
+**25.** A partir de $a+c=b+c$, deriva $a=b$ justificando cada paso.
 
-26. A partir de $ac=bc$ con $c\neq0$, deriva $a=b$.
+**26.** A partir de $ac=bc$ con $c\neq0$, deriva $a=b$.
 
-27. Explica por qué no puede omitirse $c\neq0$ en el ejercicio anterior.
+**27.** Explica por qué no puede omitirse $c\neq0$ en el ejercicio anterior.
 
-28. Simplifica $\frac{x(x+5)}x$ indicando el dominio.
+**28.** Simplifica $\frac{x(x+5)}x$ indicando el dominio.
 
-29. Explica por qué $\frac{x+5}{x}$ no permite cancelar $x$.
+**29.** Explica por qué $\frac{x+5}{x}$ no permite cancelar $x$.
 
-30. Corrige el razonamiento falso $\frac{2x+6}{2}=x+6$.
+**30.** Corrige el razonamiento falso $\frac{2x+6}{2}=x+6$.
 
 ## F. Dominio y expresiones equivalentes
 
-31. Compara $\frac{x^2-9}{x-3}$ y $x+3$. Indica el dominio de cada expresión y dónde coinciden.
+**31.** Compara $\frac{x^2-9}{x-3}$ y $x+3$. Indica el dominio de cada expresión y dónde coinciden.
 
-32. Simplifica $\frac{x^2+2x}{x}$ conservando la restricción original.
+**32.** Simplifica $\frac{x^2+2x}{x}$ conservando la restricción original.
 
-33. Explica por qué $\frac{x^2+2x}{x}$ y $x+2$ no tienen el mismo dominio natural.
+**33.** Explica por qué $\frac{x^2+2x}{x}$ y $x+2$ no tienen el mismo dominio natural.
 
-34. Construye dos expresiones que coincidan donde la primera está definida, pero cuyos dominios naturales sean diferentes.
+**34.** Construye dos expresiones que coincidan donde la primera está definida, pero cuyos dominios naturales sean diferentes.
 
-35. Determina la restricción necesaria para $\frac{(x-4)(x+1)}{x-4}=x+1$.
+**35.** Determina la restricción necesaria para $\frac{(x-4)(x+1)}{x-4}=x+1$.
 
-36. Un estudiante sustituye $x=4$ después de simplificar el ejercicio anterior. Explica exactamente el error.
+**36.** Un estudiante sustituye $x=4$ después de simplificar el ejercicio anterior. Explica exactamente el error.
 
 ## G. Transformaciones de ecuaciones
 
-37. Explica por qué sumar $5$ a ambos miembros de una ecuación es reversible.
+**37.** Explica por qué sumar $5$ a ambos miembros de una ecuación es reversible.
 
-38. Explica por qué multiplicar ambos miembros por $7$ es reversible.
+**38.** Explica por qué multiplicar ambos miembros por $7$ es reversible.
 
-39. Explica por qué multiplicar ambos miembros por $0$ no es reversible.
+**39.** Explica por qué multiplicar ambos miembros por $0$ no es reversible.
 
-40. Da un ejemplo donde elevar ambos miembros al cuadrado introduzca una solución adicional.
+**40.** Da un ejemplo donde elevar ambos miembros al cuadrado introduzca una solución adicional.
 
-41. Analiza el paso de $x=3$ a $(x-3)(x+2)=0$. ¿Es válido? ¿Es reversible?
+**41.** Analiza el paso de $x=3$ a $(x-3)(x+2)=0$. ¿Es válido? ¿Es reversible?
 
-42. Explica la diferencia entre «el paso es válido» y «el paso es reversible».
+**42.** Explica la diferencia entre «el paso es válido» y «el paso es reversible».
 
 ## H. Dividir y perder soluciones
 
-43. Encuentra el primer paso inválido:
+**43.** Encuentra el primer paso inválido:
 $$
 \begin{aligned}
 x^2&=2x\\
@@ -859,19 +967,19 @@ x&=2.
 \end{aligned}
 $$
 
-44. Repara el argumento anterior para obtener todas las soluciones.
+**44.** Repara el argumento anterior para obtener todas las soluciones.
 
-45. En $x(x+4)=x(x-1)$, explica por qué dividir inmediatamente por $x$ requiere separar un caso.
+**45.** En $x(x+4)=x(x-1)$, explica por qué dividir inmediatamente por $x$ requiere separar un caso.
 
-46. Resuelve la ecuación anterior sin perder soluciones y señala en qué momento controlas el caso $x=0$.
+**46.** Resuelve la ecuación anterior sin perder soluciones y señala en qué momento controlas el caso $x=0$.
 
-47. Da un ejemplo de una ecuación donde dividir por una expresión variable elimine una solución.
+**47.** Da un ejemplo de una ecuación donde dividir por una expresión variable elimine una solución.
 
-48. Formula en palabras una regla segura antes de dividir ambos miembros por una expresión que contiene la incógnita.
+**48.** Formula en palabras una regla segura antes de dividir ambos miembros por una expresión que contiene la incógnita.
 
 ## I. Diagnóstico de razonamientos
 
-49. Localiza el primer error:
+**49.** Localiza el primer error:
 $$
 \begin{aligned}
 2(x+3)&=2x+3\\
@@ -879,7 +987,7 @@ $$
 \end{aligned}
 $$
 
-50. Localiza el primer error:
+**50.** Localiza el primer error:
 $$
 \begin{aligned}
 \frac{x+2}{x}
@@ -889,7 +997,7 @@ $$
 \end{aligned}
 $$
 
-51. Localiza el primer error:
+**51.** Localiza el primer error:
 $$
 \begin{aligned}
 x^2&=4\\
@@ -897,7 +1005,7 @@ x&=2.
 \end{aligned}
 $$
 
-52. Localiza el primer error:
+**52.** Localiza el primer error:
 $$
 \begin{aligned}
 a+(b+c)&=(b+a)+c.
@@ -905,19 +1013,19 @@ a+(b+c)&=(b+a)+c.
 $$
 Un estudiante afirma que el único paso se justifica por conmutatividad. ¿Qué falta en su explicación?
 
-53. Repara la cadena $3+5=8\cdot2=16$ para que exprese correctamente dos cálculos sucesivos.
+**53.** Repara la cadena $3+5=8\cdot2=16$ para que exprese correctamente dos cálculos sucesivos.
 
-54. Construye una secuencia de tres transformaciones que parta de una afirmación verdadera, contenga un paso inválido y termine nuevamente en una afirmación verdadera. Explica por qué el resultado final correcto no salva el razonamiento.
+**54.** Construye una secuencia de tres transformaciones que parta de una afirmación verdadera, contenga un paso inválido y termine nuevamente en una afirmación verdadera. Explica por qué el resultado final correcto no salva el razonamiento.
 
-55. Construye una cadena justificada de **al menos ocho transformaciones** que lleve $-(a-(b-c))$ hasta una forma sin paréntesis anidados. Usa sólo la definición de resta, reglas de inversos, asociatividad y conmutatividad de la suma.
+**55.** Construye una cadena justificada que haga explícitas las justificaciones sustantivas que lleve $-(a-(b-c))$ hasta una forma sin paréntesis anidados. Usa sólo la definición de resta, reglas de inversos, asociatividad y conmutatividad de la suma. Después presenta una versión más económica y explica qué justificaciones has comprimido.
 
-56. Desarrolla $(a-b)(c-d)$ hasta obtener $ac-ad-bc+bd$ mediante una cadena de **al menos ocho transformaciones explícitas**, interpretando cada resta como suma de un inverso y justificando distributividad y reglas de signos.
+**56.** Desarrolla $(a-b)(c-d)$ hasta obtener $ac-ad-bc+bd$ mediante una cadena de transformaciones justificadas, interpretando cada resta como suma de un inverso y justificando distributividad y reglas de signos. Después presenta una versión más económica y explica qué justificaciones has comprimido.
 
-57. Resuelve $3(2x-5)-4(x+1)=5(x-2)+7$ mediante una cadena de **8–15 transformaciones reversibles**. Justifica las transformaciones estructurales y verifica la solución en la ecuación original.
+**57.** Resuelve $3(2x-5)-4(x+1)=5(x-2)+7$ mediante una cadena de transformaciones reversibles. Justifica las transformaciones estructurales y verifica la solución en la ecuación original. Después presenta una versión más económica y explica qué justificaciones has comprimido.
 
-58. Resuelve $\frac{2x-1}{3}-\frac{x+2}{4}=\frac{x-5}{6}+1$ mediante una cadena de **8–15 transformaciones reversibles**. Explica por qué el número usado para eliminar denominadores es seguro y verifica la solución.
+**58.** Resuelve $\frac{2x-1}{3}-\frac{x+2}{4}=\frac{x-5}{6}+1$ mediante una cadena de transformaciones reversibles. Explica por qué el número usado para eliminar denominadores es seguro y verifica la solución. Después presenta una versión más económica y explica qué justificaciones has comprimido.
 
-59. Audita la siguiente cadena: indica cuáles pasos son reversibles y cuál puede añadir soluciones.
+**59.** Audita la siguiente cadena: indica cuáles pasos son reversibles y cuál puede añadir soluciones.
 $$
 \begin{aligned}
 x-1&=2\\
@@ -928,7 +1036,56 @@ x^2-2x-3&=0.
 $$
 Luego determina qué soluciones de la ecuación final satisfacen la ecuación inicial.
 
-60. Escribe una explicación matemática de 8–12 líneas que responda: **¿por qué una transformación algebraica es una forma de razonamiento y no sólo una manipulación de símbolos?** Debes mencionar propiedad, hipótesis, dominio, reversibilidad y conservación de información.
+**60.** Escribe una explicación matemática de 8–12 líneas que responda: **¿por qué una transformación algebraica es una forma de razonamiento y no sólo una manipulación de símbolos?** Debes mencionar propiedad, hipótesis, dominio, reversibilidad y conservación de información.
+
+
+## K. Transformaciones bajo dominios distintos
+
+
+**61.** Se pasa de $x-1=3$ a $(x-1)^2=9$. Compara las soluciones de ambas ecuaciones cuando el dominio declarado es: a) todos los reales; b) $x\geq1$; c) $x\leq1$. Decide en cada caso si este paso conserva exactamente las soluciones. Justifica las posibilidades de la ecuación cuadrática sin usar una fórmula de resolución.
+
+
+**62.** La ecuación $x+1=4$ se multiplica en ambos miembros por $x-2$. Determina las soluciones antes y después, primero sobre todos los reales y luego sobre $x>2$. Un estudiante impone $x>2$ al final para defender su procedimiento: explica qué tendría que hacer si el problema original se planteó sobre todos los reales.
+
+
+**63.** Audita dos procedimientos para $\frac1{x-1}=\frac2{x-1}$. Uno multiplica por $x-1$ y obtiene $1=2$; otro multiplica por $(x-1)^2$ y obtiene $x-1=2(x-1)$. Explica por qué ambos multiplicadores son seguros en el dominio original y por qué el segundo procedimiento puede dar un candidato que debe rechazarse si se olvida ese dominio.
+
+
+## L. Dos rutas y una misma justificación
+
+
+**64.** Resuelve $(x-1)(x+2)=(x-1)(x+5)$ por dos rutas: restar y factorizar, y separar el caso $x=1$ antes de dividir. Compara sus justificaciones y explica por qué una ruta más corta puede ser más clara sin omitir casos.
+
+
+**65.** Resuelve $\frac{3x-2}{4}-\frac{x+1}{6}=\frac5{12}$ por dos rutas: multiplicar toda la ecuación por $12$, y reunir primero el miembro izquierdo en una sola fracción. Identifica qué justificaciones comparten las rutas y verifica la respuesta en la escritura original.
+
+
+**66.** Compara dos resoluciones de $\frac{x+2}{x-3}=\frac{2x-1}{x-3}$. En la primera se elimina el denominador; en la segunda se resta el miembro derecho y se simplifica la fracción resultante. Presenta ambas completas y explica cómo una de ellas detecta antes que no hay soluciones.
+
+
+## M. Reparar errores que se compensan
+
+
+**67.** Para reales $a,x$, un estudiante escribe $a(x+2)=ax+2=ax+2+2(a-1)=ax+2a$. La primera y la última expresión sí coinciden para todo $a,x$. Localiza los enlaces que fallan, determina para qué valores del parámetro quedan correctos y repara la cadena. Da un caso numérico que muestre por qué llegar al valor correcto no valida los pasos intermedios.
+
+
+**68.** Audita $2-(x-3)=2-x-3=-x-1=-x-1+6=5-x$. Comprueba que el inicio y el final coinciden, identifica el primer error y el ajuste posterior que lo oculta, y escribe una cadena correcta. Explica por qué aquí ningún valor de $x$ vuelve correcta la cadena completa.
+
+
+**69.** Un razonamiento parte de $x(x-4)=0$, divide por $x$, obtiene $x-4=0$, concluye $x=4$ y termina escribiendo otra vez $x(x-4)=0$. Su última condición es idéntica a la primera. Audita la cadena en $x=0$ y en $x=4$, y repara el argumento para conservar todas las soluciones. Distingue comprobar una solución de demostrar que no falta otra.
+
+
+## N. Diseñar y recuperar casos
+
+
+**70.** Sean $a,b,c$ parámetros reales fijos. Diseña una resolución de $(x-a)(x-b)=c(x-a)$ que divida por $x-a$ sin perder casos: examina primero $a\neq b+c$ y después $a=b+c$. Explica qué pierde la división en el primer caso y por qué en el segundo puede parecer que recupera el mismo número aun siendo indefinida allí.
+
+
+**71.** Sean $p,q$ reales fijos. Partiendo de $x=p$, construye una transformación por multiplicación que produzca $(x-q)(x-p)=0$. Determina cuándo añade una solución distinta y cuándo conserva las soluciones de esta ecuación particular aun sin poder invertir el multiplicador en todo el dominio. Si $p\neq q$, reconstruye la respuesta original a partir de los candidatos nuevos y decide en qué dominio la multiplicación sería reversible por su inversa.
+
+
+**72.** Sean $a,b$ reales fijos. Resuelve $\frac{(x-a)(x-b)}{x-a}=0$ conservando el dominio, tanto si $a\neq b$ como si $a=b$. Compara cancelar el factor común con eliminar el denominador y resolver una ecuación producto. Diseña con estos parámetros un ejemplo que tenga una solución y otro que no tenga ninguna.
+
 
 ---
 
@@ -1239,13 +1396,10 @@ $2(x+3)\neq2x+3$.
 La distributividad exige multiplicar ambos términos: $2(x+3)=2x+6$.
 
 ### 50
-El primer paso es incorrecto:
+El primer paso no es una identidad en el dominio $x\neq0$. Por ejemplo, para $x=2$ el miembro izquierdo vale $2$ y el derecho vale $3$. Para $x=1$ sí coinciden, pero esa coincidencia no justifica la transformación general.
 
-$$
-\frac{x+2}{x}\neq\frac{x}{x}+2.
-$$
-
-Al separar una fracción, ambos términos del numerador conservan el mismo denominador:
+Al separar una fracción, ambos términos del numerador conservan el mismo denominador, con $x
+eq0$:
 
 $$
 \frac{x+2}{x}=\frac{x}{x}+\frac2x.
@@ -1289,6 +1443,8 @@ $$
 La última igualdad es verdadera cuando la afirmación inicial $x=1$ es verdadera, pero el paso $x^2=1\to x=-1$ no está justificado: de $x^2=1$ se obtienen dos posibilidades, $x=1$ y $x=-1$. El hecho de terminar en una afirmación verdadera no repara el razonamiento roto.
 
 ## J. Cadenas largas y síntesis
+
+Para los ejercicios 55–58, las cadenas siguientes muestran una ruta detallada. Una comparación económica puede terminar el 55 en $-a+b-c$, desarrollar el 56 aplicando distributividad y reunir los signos, reducir el 57 a $2x-19=5x-3$, y reducir el 58 a $5x-10=2x+2$ después de multiplicar por $12$. Esas abreviaciones conservan definición de resta, distributividad, agrupación y condiciones de divisores no nulos. Comprimirlas exige saber reconstruirlas; no exige repetir pasos para alcanzar una cuota.
 
 ### 55
 Una cadena posible es:
@@ -1431,9 +1587,9 @@ es válida pero no reversible: al elevar al cuadrado puede añadirse la posibili
 
 Los pasos posteriores son identidades o sumas de la misma cantidad y preservan las soluciones de la ecuación ya ampliada.
 
-La ecuación final es
+La identidad $x^2-2x-3=(x-3)(x+1)$ permite escribir la ecuación final como
 
-$x^2-2x-3=0=(x-3)(x+1)$,
+$(x-3)(x+1)=0$,
 
 con soluciones $x=3$ y $x=-1$.
 
@@ -1443,3 +1599,121 @@ La ecuación inicial $x-1=2$ sólo admite $x=3$. Por tanto, $x=-1$ es la soluci�
 Respuesta modelo:
 
 Una transformación algebraica es una forma de razonamiento porque cada cambio de escritura afirma algo que debe ser matemáticamente válido. Para pasar de una expresión a otra necesitamos una propiedad, como asociatividad o distributividad; para transformar una ecuación debemos además controlar si conservamos exactamente sus soluciones. Las hipótesis son parte del proceso: dividir por una cantidad exige saber que no es cero. El dominio determina qué operaciones están definidas y qué valores están excluidos. Algunas transformaciones son reversibles y permiten recuperar la condición anterior; otras sólo funcionan en una dirección y pueden añadir o eliminar posibilidades. Por eso una cadena algebraica no es simplemente un movimiento de símbolos: es una secuencia de afirmaciones cuya información y validez deben poder defenderse.
+
+
+## K. Transformaciones bajo dominios distintos
+
+
+### 61
+Sobre todos los reales, la primera ecuación da $x=4$. En la segunda, poniendo $u=x-1$, tenemos $u^2=9$. Como $u^2-9=(u-3)(u+3)$, un producto nulo exige $u=3$ o $u=-3$: los candidatos son $x=4$ y $x=-2$. El cuadrado añade $-2$ y el paso no es reversible sobre todos los reales.
+
+Con $x\geq1$, sólo $4$ pertenece al dominio de los dos problemas. Dentro de ese dominio, $x-1\geq0$ descarta la posibilidad $-3$, y el paso sí conserva exactamente las soluciones. Con $x\leq1$, la ecuación inicial no tiene soluciones, mientras la nueva admite $-2$: vuelve a perderse la reversibilidad. El paso hacia el cuadrado es válido en los tres dominios; su regreso depende de qué candidatos admite el dominio declarado.
+
+
+### 62
+La ecuación inicial tiene sólo $x=3$. La nueva es $(x-2)(x+1)=4(x-2)$. Restando el miembro derecho y factorizando se obtiene $(x-2)(x-3)=0$, con soluciones $2$ y $3$. La multiplicación es válida hacia adelante, pero sobre todos los reales añade $2$, porque allí el factor multiplicador es cero.
+
+Sobre el dominio declarado $x>2$, el factor $x-2$ es no nulo, puede invertirse y ambas ecuaciones tienen únicamente la solución $3$. Si el dominio inicial era todo $\mathbb R$, el estudiante no puede sustituirlo retrospectivamente por $x>2$: debe analizar también $x\leq2$. En esa parte del dominio, $x+1\leq3$, de modo que la ecuación original no tiene soluciones. Así se justifica que la única solución global es $3$, mediante un examen de ambos casos, no mediante un cambio silencioso del problema.
+
+
+### 63
+El dominio original es $x\neq1$. Allí, tanto $x-1$ como $(x-1)^2$ son distintos de cero: multiplicar por cualquiera de ellos es reversible.
+
+El primer procedimiento produce $1=2$, que no es verdadero para ninguna entrada. No hay soluciones. El segundo produce $x-1=2(x-1)$; restando $x-1$ a ambos miembros, $0=x-1$, cuyo único candidato es $1$. Ese candidato está fuera del dominio original y debe rechazarse. En el dominio original, la segunda ecuación tampoco tiene soluciones. Lo que introduce el candidato inadmisible no es la multiplicación correctamente restringida, sino interpretar después una ecuación polinómica sobre un dominio más amplio. La sustitución de $1$ en las fracciones originales no produce valores.
+
+
+## L. Dos rutas y una misma justificación
+
+
+### 64
+Primera ruta: restamos el miembro derecho y aplicamos distributividad en sentido inverso:
+
+$(x-1)((x+2)-(x+5))=0$.
+
+El paréntesis interior vale $-3$, así que $-3(x-1)=0$. Dividir por $-3\neq0$ da $x-1=0$, y sumar $1$ da $x=1$. Todos los pasos son reversibles sobre los reales.
+
+Segunda ruta: si $x=1$, ambos miembros originales valen cero, por lo que sí es solución. Si $x\neq1$, podemos dividir por $x-1$ y obtenemos $x+2=x+5$. Restar $x$ da $2=5$, imposible; ese caso no aporta soluciones. El examen es exhaustivo porque toda entrada es $1$ o distinta de $1$.
+
+Ambas rutas justifican la única solución $1$. La primera evita una bifurcación usando un divisor constante no nulo; la segunda muestra por qué cancelar sin separar casos habría eliminado precisamente la solución. La claridad se evalúa por las razones y los casos visibles, no por el número de líneas.
+
+
+### 65
+Los denominadores son constantes no nulas, así que el dominio es todo $\mathbb R$.
+
+Primera ruta: multiplicar ambos miembros por $12\neq0$ es reversible y da $3(3x-2)-2(x+1)=5$. Por distributividad, $9x-6-2x-2=5$; agrupando, $7x-8=5$. Sumar $8$ y dividir por $7\neq0$ da $x=13/7$.
+
+Segunda ruta: llevar las fracciones al denominador común $12$ da
+
+$\frac{3(3x-2)-2(x+1)}{12}=\frac5{12}$,
+
+y el miembro izquierdo es $\frac{7x-8}{12}$. Multiplicar por $12$ conduce a la misma ecuación $7x-8=5$ y al mismo resultado. Las dos rutas usan equivalencia de fracciones, distributividad, agrupación y operaciones con inversa; cambia el orden en que se presentan esas razones.
+
+Verificación: para $x=13/7$, el primer término vale $25/28$ y el segundo $10/21$. Su diferencia es $75/84-40/84=35/84=5/12$. La coincidencia en la ecuación original confirma el candidato; las transformaciones reversibles garantizan que no falta otro.
+
+
+### 66
+Ambas rutas empiezan por $x\neq3$.
+
+Al multiplicar por $x-3$, no nulo en ese dominio, obtenemos $x+2=2x-1$. Restar $x$ y sumar $1$ da $x=3$, que está excluido. Por tanto, no hay soluciones. El candidato no puede comprobarse en la ecuación original porque sus denominadores serían cero.
+
+Al restar el miembro derecho, la ecuación equivale a $\frac{(x+2)-(2x-1)}{x-3}=0$, es decir, $\frac{3-x}{x-3}=0$. Como $3-x=-(x-3)$, el miembro izquierdo es $-1$ para todo $x\neq3$. La ecuación queda $-1=0$, imposible.
+
+La segunda ruta muestra inmediatamente que la diferencia de los dos miembros es constante y nunca nula; la primera da un candidato y exige contrastarlo con el dominio. Ambas son correctas si conservan $x\neq3$. La ruta breve no elimina la condición que hace legítima la simplificación.
+
+
+## M. Reparar errores que se compensan
+
+
+### 67
+Distributividad da $a(x+2)=ax+2a$, no $ax+2$. El primer enlace requeriría $2a=2$, es decir, $a=1$. El segundo añade $2(a-1)$ a una sola expresión y sólo conserva su valor si $a=1$. El tercer enlace sí es una identidad: $ax+2+2(a-1)=ax+2+2a-2=ax+2a$.
+
+Para $a=1$, todos los enlaces quedan correctos, sea cual sea $x$; eso no justifica una identidad con parámetro real arbitrario. Para $a=2,x=1$, la secuencia de valores es $6,4,6,6$. La caída de $6$ a $4$ y la vuelta a $6$ exhiben dos cambios de valor que se compensan.
+
+La reparación es $a(x+2)=ax+a\cdot2=ax+2a$, por distributividad y conmutatividad del producto. Ya no hace falta añadir una corrección posterior. Las expresiones inicial y final pueden coincidir aunque la cadena que pretende conectarlas sea falsa.
+
+
+### 68
+La expresión original vale $2-x+3=5-x$. El primer enlace distribuye mal el inverso aditivo: restar $x-3$ exige restar $x$ y sumar $3$, no restar ambos. El supuesto segundo valor $2-x-3=-x-1$ difiere del original en $6$, para todo $x$.
+
+El enlace $2-x-3=-x-1$ sí es correcto. El paso $-x-1=-x-1+6$ no conserva el valor: añade $6$ a una sola expresión y compensa exactamente el error inicial. El último enlace $-x-1+6=5-x$ vuelve a ser correcto. Ninguna elección de $x$ hace que sumar $6$ deje inalterado un real; por tanto, no hay un valor que convierta la cadena completa en una cadena de igualdades verdaderas.
+
+Una reparación es $2-(x-3)=2+(-(x+(-3)))=2+((-x)+3)=5-x$. Se usan definición de resta, inverso de una suma, doble inverso y agrupación. El final correcto ya se obtiene mediante enlaces que conservan el valor.
+
+
+### 69
+En $x=0$, la condición inicial es verdadera, $0\cdot(-4)=0$, pero la condición $x-4=0$ es falsa. El primer paso pretende dividir por cero y elimina esa posibilidad. En $x=4$, todas las condiciones son verdaderas y la división por $x$ sí está definida. Que el procedimiento funcione en una solución no demuestra que preserve las demás.
+
+La reparación separa casos. Si $x=0$, la ecuación original queda satisfecha. Si $x\neq0$, dividir por $x$ es reversible y da $x=4$, que pertenece a ese caso. Las soluciones son exactamente $0$ y $4$.
+
+Volver a la condición original al final permite comprobar que $4$ es solución; no repara la pérdida de $0$ ocurrida en la ruta. Para justificar exhaustividad hay que mostrar que todo valor admisible que satisface la ecuación se considera en uno de los casos y que no hay otras soluciones en ellos.
+
+
+## N. Diseñar y recuperar casos
+
+
+### 70
+Restar $c(x-a)$ y factorizar da $(x-a)(x-b-c)=0$. Los posibles valores son $x=a$ y $x=b+c$.
+
+Una resolución segura por división comienza con $x=a$: ambos miembros originales valen cero, así que siempre es solución. En el caso $x\neq a$, podemos dividir por $x-a$, obtener $x-b=c$ y concluir $x=b+c$, conservando $x\neq a$.
+
+Si $a\neq b+c$, el segundo candidato pertenece al caso de división. Hay dos soluciones distintas, $a$ y $b+c$; dividir sin examinar el factor nulo omitiría $a$.
+
+Si $a=b+c$, el candidato del caso $x\neq a$ contradice la restricción de ese caso y se rechaza allí. Sólo queda la solución $a$, ya recuperada por el caso separado. Si se divide sin registrar el dominio, aparece formalmente ese mismo número al resolver $x-b=c$, pero el paso de división estaba indefinido en él. Obtener un número correcto por esa ruta no la hace válida. La solución queda justificada por el caso $x=a$, no por dividir por cero.
+
+
+### 71
+Reescribimos $x=p$ como $x-p=0$ restando $p$ y multiplicamos ambos miembros por $x-q$. La nueva ecuación es $(x-q)(x-p)=0$. La transformación hacia adelante es válida para todo real, pues no introduce divisiones.
+
+La original tiene sólo $p$. La nueva tiene $p$ y $q$. Si $p\neq q$, añade una solución distinta: $q$ no satisface $x=p$ y se descarta al volver a la ecuación original. Si $p=q$, la nueva es $(x-p)^2=0$ y tiene sólo $p$, porque un real con cuadrado cero es cero. En este caso particular las soluciones coinciden, aunque el multiplicador $x-p$ no tenga inversa en la solución. La coincidencia se demuestra examinando la ecuación resultante, no dividiendo por un factor nulo.
+
+Si $p\neq q$, declarar de antemano el dominio $x\neq q$ hace que $x-q$ tenga inversa para todas sus entradas. Dentro de ese dominio la multiplicación sí es reversible por división y conserva la solución $p$. La hipótesis de multiplicador no nulo garantiza el regreso en general; cuando falla, hay que analizar la ecuación concreta para saber si realmente se añadieron posibilidades.
+
+
+### 72
+El dominio original exige $x\neq a$. Cancelar el factor no nulo da $x-b=0$ dentro de ese dominio. El único candidato es $b$.
+
+Si $a\neq b$, el candidato pertenece al dominio y es la única solución. Si $a=b$, el candidato está excluido y no hay soluciones.
+
+Eliminar el denominador es reversible sobre $x\neq a$ y conduce a $(x-a)(x-b)=0$. Como el primer factor no puede ser cero en ese dominio, sólo puede anularse $x-b$; se obtienen los mismos casos. Resolver el producto sobre todos los reales y aceptar $a$ olvidaría la exclusión inicial. Cuando $a=b$, ese olvido convertiría un problema sin soluciones en uno con una solución inadmisible.
+
+Con $a=1,b=4$, la ecuación $\frac{(x-1)(x-4)}{x-1}=0$ tiene sólo $x=4$; la sustitución produce $0/3=0$. Con $a=b=1$, $\frac{(x-1)^2}{x-1}=0$ no tiene soluciones: fuera de $1$ vale $x-1\neq0$, y en $1$ no está definida. Los dos ejemplos comprueban que la relación entre los parámetros afecta la admisibilidad del candidato, sin alterar la regla de cancelación.

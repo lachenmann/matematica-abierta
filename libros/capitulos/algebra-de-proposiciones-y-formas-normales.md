@@ -9,7 +9,7 @@ source-id: APM-T1-C05
 editorial-id: MA-BCH-APM-01-005
 status: published
 date-created: 2026-09-12
-date-modified: 2026-09-12
+date-modified: 2026-10-09
 areas:
   - algebra
   - fundamentos
@@ -38,8 +38,6 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 ---
-
-# 5. Álgebra de proposiciones y formas normales
 
 En C4 aprendimos a **leer** una fórmula proposicional. Sabemos localizar su conectivo principal, construir una tabla de verdad, distinguir implicación de bicondicional y reconocer tautologías, contradicciones y contingencias.
 
@@ -602,6 +600,33 @@ No necesitamos una teoría más avanzada para garantizar la existencia: la propi
 
 ---
 
+### Los casos extremos y las listas vacías
+
+La convención de esta sección admite las constantes $V$ y $F$ como representaciones de los casos extremos. Para entender el procedimiento canónico, interpretaremos una disyunción sin términos como $F$ y una conjunción sin cláusulas como $V$. La primera no ofrece ninguna fila verdadera; la segunda no impone ninguna exclusión.
+
+Con las variables declaradas $P,Q$, hay cuatro filas. Una tautología utiliza todas en su FND canónica:
+
+$(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q)\lor(\neg P\land\neg Q)$.
+
+Su FNC canónica no tiene cláusulas, porque no hay filas falsas, y se representa por $V$. Para una contradicción ocurre lo opuesto: su FND canónica no tiene términos y se representa por $F$; su FNC canónica incluye una cláusula por cada fila:
+
+$(\neg P\lor\neg Q)\land(\neg P\lor Q)\land(P\lor\neg Q)\land(P\lor Q)$.
+
+La conjunción anterior es falsa en todas las filas: cada valuación hace falsa la cláusula construida específicamente para ella. No hay que inventar una fila verdadera para una contradicción ni una fila falsa para una tautología.
+
+| Comportamiento con $P,Q$ declaradas | Términos de la FND canónica | Cláusulas de la FNC canónica |
+|---|---:|---:|
+| Siempre verdadero | $4$ | $0$: se representa por $V$ |
+| Siempre falso | $0$: se representa por $F$ | $4$ |
+
+Una escritura como $P\lor\neg P$ representa una tautología con literales, pero no es la FND canónica relativa a $P,Q$: sus términos no contienen la variable $Q$. Ser equivalente y ser canónica respecto de una lista dada son requisitos diferentes.
+
+**Control.** Para las variables declaradas $P,Q$, ¿puede $P\land\neg P$ ser una FND equivalente a una contradicción sin ser su FND canónica? ¿Qué ocurre con $P\lor\neg P$ como FNC de una tautología?
+
+**Resolución.** Sí. $P\land\neg P$ es un término conjuntivo de literales y, por tanto, una FND de un término; siempre es falso. No es la FND canónica, que no tiene términos verdaderos y se representa por $F$. Análogamente, $P\lor\neg P$ es una FNC de una cláusula siempre verdadera; no es la FNC canónica de la tautología, que no tiene cláusulas y se representa por $V$. Las formas normales ordinarias permiten esas escrituras; el procedimiento canónico selecciona exactamente las filas pertinentes. Si la dificultad estuvo en reconocer un término o una cláusula, vuelve a §§5.10–5.12; si estuvo en seleccionar filas, vuelve al comienzo de §5.13.
+
+---
+
 ## 5.14. Normalizar no es minimizar
 
 Una **forma normal** cumple una arquitectura sintáctica determinada.
@@ -629,6 +654,30 @@ Dos fórmulas con la misma tabla producirán la misma FND canónica y la misma F
 ### Primera advertencia algorítmica
 
 El crecimiento de $2^n$ anuncia un fenómeno que reaparecerá muchas veces: un procedimiento completamente sistemático puede ser costoso. Aquí sólo registramos la idea; no desarrollaremos teoría de complejidad.
+
+---
+
+### Declarar las variables y el criterio de tamaño
+
+La fórmula $P$ no depende del valor de $Q$ ni de $R$. Sin embargo, su forma canónica cambia cuando decidimos que esas variables también formarán parte de la tabla de comparación.
+
+Con sólo $P$ declarada, la FND canónica es $P$. Con $P,Q$ declaradas, las filas verdaderas son $(V,V)$ y $(V,F)$, y la FND canónica pasa a ser $(P\land Q)\lor(P\land\neg Q)$. Con $P,Q,R$, cada una de esas filas se desdobla según el valor de $R$: aparecen cuatro términos de tres literales. Por distributividad y complemento, todas esas escrituras siguen siendo equivalentes a $P$.
+
+Para comparar tamaños, aquí contaremos **apariciones de literales**, no variables distintas. En $P\land\neg Q$, el literal $P$ cuenta una vez y $\neg Q$ una vez; la negación no añade otra aparición de literal. En dos términos que repiten $P$, se cuentan sus dos apariciones. Los paréntesis no se cuentan.
+
+| Variables declaradas | Filas verdaderas de $P$ | Literales en su FND canónica | Filas falsas de $P$ | Literales en su FNC canónica |
+|---|---:|---:|---:|---:|
+| $P$ | $1$ | $1$ | $1$ | $1$ |
+| $P,Q$ | $2$ | $4$ | $2$ | $4$ |
+| $P,Q,R$ | $4$ | $12$ | $4$ | $12$ |
+
+Añadir una variable que la fórmula no utiliza duplica las filas verdaderas y falsas: cada valuación previa se extiende con esa variable verdadera o falsa. No cambia el significado original. La forma canónica describe ahora una tabla más grande.
+
+Antes de decir «esta forma es menor», declara qué comparas: apariciones de literales, términos, cláusulas o conectivos. Una reducción respecto de una escritura concreta no demuestra por sí sola que se haya alcanzado el mínimo entre todas las escrituras posibles.
+
+**Control.** Sin enumerar todos los términos, compara los tamaños canónicos de $Q\lor R$ con las variables declaradas $Q,R$ y con $P,Q,R$.
+
+**Resolución.** Con $Q,R$, hay tres filas verdaderas y una falsa: la FND canónica tiene tres términos y seis apariciones de literales; la FNC canónica tiene una cláusula y dos apariciones. Al añadir $P$, las filas se duplican: seis términos de tres literales, con dieciocho apariciones, y dos cláusulas de tres literales, con seis apariciones. La fórmula compacta $Q\lor R$ sigue teniendo sólo dos apariciones y no depende de $P$. Si confundiste la cantidad de variables con las apariciones, compara §5.10 con el criterio fijado aquí; si omitiste la duplicación de filas, vuelve a §4.11.
 
 ---
 
@@ -679,6 +728,34 @@ Aprender matemática implica también desarrollar controles independientes.
 
 ---
 
+### Comparar rutas sin perder el objetivo
+
+Sea $X=Q\lor R$ y consideremos $G=(P\land X)\lor(P\land\neg X)$. Una simplificación local reconoce el bloque repetido completo:
+
+$G\equiv P\land(X\lor\neg X)\equiv P\land V\equiv P$.
+
+Aquí complemento se aplica a $X$ y a su negación, aunque $X$ sea una fórmula compuesta. No se ha negado por separado un símbolo que aparezca dentro del bloque.
+
+Una normalización sistemática trabaja directamente con $Q,R$:
+
+$$
+\begin{aligned}
+G
+&\equiv (P\land(Q\lor R))\lor(P\land(\neg Q\land\neg R)) &&\text{[De Morgan]}\\
+&\equiv(P\land Q)\lor(P\land R)\lor(P\land\neg Q\land\neg R) &&\text{[distributividad]}.
+\end{aligned}
+$$
+
+Esta última escritura es una FND equivalente, pero no canónica respecto de $P,Q,R$: sus dos primeros términos no incluyen todas las variables. Para obtener la FND canónica de $P$ en esas variables habría que desdoblarlos y conservar exactamente las cuatro filas con $P=V$.
+
+El control semántico de ambas rutas puede hacerse separando los valores de $P$. Si $P=F$, todos los términos de $G$ son falsos. Si $P=V$, una de $X,\neg X$ es verdadera y $G$ es verdadero. Por eso $G$ siempre comparte el valor de $P$. La ruta local exhibe una ley útil; la sistemática produce la arquitectura solicitada; la canónica enumera filas. Elige la ruta según lo que necesites entregar.
+
+**Control.** Simplifica $G\Rightarrow R$ sin expandir primero todo $G$. Da una FNC y comprueba la equivalencia por los casos que podrían hacer falso al condicional.
+
+**Resolución.** Como $G\equiv P$, podemos reemplazar el antecedente completo y obtener $P\Rightarrow R\equiv\neg P\lor R$. Una sola cláusula constituye una FNC. El original sólo es falso cuando $G=V,R=F$; como $G$ y $P$ coinciden en toda valuación, eso ocurre exactamente cuando $P=V,R=F$, la misma combinación que hace falsa a $\neg P\lor R$. El valor de $Q$ no altera el resultado. Si aplicaste una ley a símbolos dispersos, vuelve a §5.2; si no identificaste el antecedente, vuelve a §4.10.
+
+---
+
 ## 5.16. Cierre — protocolo de transformación proposicional
 
 Ante una fórmula extensa, preguntaremos:
@@ -708,255 +785,255 @@ Todos los ejercicios son originales para *Álgebra para matemáticos* y han sido
 
 ## A. Reconocer equivalencia y no equivalencia
 
-<!-- ID: MA-EX-APM-01-005-001 | PROVENANCE: ORIGINAL -->
-1. Mediante tabla de verdad, decide si $P\Rightarrow Q\equiv\neg P\lor Q$.
 
-<!-- ID: MA-EX-APM-01-005-002 | PROVENANCE: ORIGINAL -->
-2. Decide si $P\land Q\equiv P\lor Q$. Si no lo son, da una valuación que lo muestre.
+**1.** Mediante tabla de verdad, decide si $P\Rightarrow Q\equiv\neg P\lor Q$.
 
-<!-- ID: MA-EX-APM-01-005-003 | PROVENANCE: ORIGINAL -->
-3. Explica la diferencia entre escribir $P\Leftrightarrow Q$ y escribir $P\equiv Q$.
 
-<!-- ID: MA-EX-APM-01-005-004 | PROVENANCE: ORIGINAL -->
-4. Verifica por tabla que $P\Rightarrow Q\equiv\neg Q\Rightarrow\neg P$.
+**2.** Decide si $P\land Q\equiv P\lor Q$. Si no lo son, da una valuación que lo muestre.
 
-<!-- ID: MA-EX-APM-01-005-005 | PROVENANCE: ORIGINAL -->
-5. Decide si $P\Rightarrow Q\equiv Q\Rightarrow P$ y produce una contra-valuación si falla.
 
-<!-- ID: MA-EX-APM-01-005-006 | PROVENANCE: ORIGINAL -->
-6. Demuestra que $A\equiv B$ si y sólo si $A\Leftrightarrow B$ es tautología.
+**3.** Explica la diferencia entre escribir $P\Leftrightarrow Q$ y escribir $P\equiv Q$.
+
+
+**4.** Verifica por tabla que $P\Rightarrow Q\equiv\neg Q\Rightarrow\neg P$.
+
+
+**5.** Decide si $P\Rightarrow Q\equiv Q\Rightarrow P$ y produce una contra-valuación si falla.
+
+
+**6.** Demuestra que $A\equiv B$ si y sólo si $A\Leftrightarrow B$ es tautología.
 
 ## B. Leyes básicas
 
-<!-- ID: MA-EX-APM-01-005-007 | PROVENANCE: ORIGINAL -->
-7. Simplifica $P\land V$.
 
-<!-- ID: MA-EX-APM-01-005-008 | PROVENANCE: ORIGINAL -->
-8. Simplifica $P\lor F$.
+**7.** Simplifica $P\land V$.
 
-<!-- ID: MA-EX-APM-01-005-009 | PROVENANCE: ORIGINAL -->
-9. Simplifica $(P\lor P)\land Q$.
 
-<!-- ID: MA-EX-APM-01-005-010 | PROVENANCE: ORIGINAL -->
-10. Simplifica $P\lor\neg P$ y clasifica el resultado.
+**8.** Simplifica $P\lor F$.
 
-<!-- ID: MA-EX-APM-01-005-011 | PROVENANCE: ORIGINAL -->
-11. Simplifica $P\land\neg P$ y clasifica el resultado.
 
-<!-- ID: MA-EX-APM-01-005-012 | PROVENANCE: ORIGINAL -->
-12. Simplifica $\neg\neg(P\lor Q)$.
+**9.** Simplifica $(P\lor P)\land Q$.
+
+
+**10.** Simplifica $P\lor\neg P$ y clasifica el resultado.
+
+
+**11.** Simplifica $P\land\neg P$ y clasifica el resultado.
+
+
+**12.** Simplifica $\neg\neg(P\lor Q)$.
 
 ## C. Reordenar y reagrupar estratégicamente
 
-<!-- ID: MA-EX-APM-01-005-013 | PROVENANCE: ORIGINAL -->
-13. Simplifica $(P\lor Q)\lor\neg P$ justificando los reordenamientos.
 
-<!-- ID: MA-EX-APM-01-005-014 | PROVENANCE: ORIGINAL -->
-14. Simplifica $(P\land Q)\land P$.
+**13.** Simplifica $(P\lor Q)\lor\neg P$ justificando los reordenamientos.
 
-<!-- ID: MA-EX-APM-01-005-015 | PROVENANCE: ORIGINAL -->
-15. Reordena $Q\lor(\neg P\lor P)$ para hacer visible una ley de complemento y simplifica.
 
-<!-- ID: MA-EX-APM-01-005-016 | PROVENANCE: ORIGINAL -->
-16. Simplifica $(Q\land\neg P)\land P$.
+**14.** Simplifica $(P\land Q)\land P$.
 
-<!-- ID: MA-EX-APM-01-005-017 | PROVENANCE: ORIGINAL -->
-17. Transforma $(P\lor Q)\lor(R\lor\neg Q)$ hasta una forma donde sea inmediata la simplificación.
 
-<!-- ID: MA-EX-APM-01-005-018 | PROVENANCE: ORIGINAL -->
-18. Explica por qué conmutatividad y asociatividad suelen funcionar como leyes **preparatorias** y da un ejemplo propio.
+**15.** Reordena $Q\lor(\neg P\lor P)$ para hacer visible una ley de complemento y simplifica.
+
+
+**16.** Simplifica $(Q\land\neg P)\land P$.
+
+
+**17.** Transforma $(P\lor Q)\lor(R\lor\neg Q)$ hasta una forma donde sea inmediata la simplificación.
+
+
+**18.** Explica por qué conmutatividad y asociatividad suelen funcionar como leyes **preparatorias** y da un ejemplo propio.
 
 ## D. De Morgan y negaciones anidadas
 
-<!-- ID: MA-EX-APM-01-005-019 | PROVENANCE: ORIGINAL -->
-19. Lleva $\neg(P\land Q)$ a una forma donde las negaciones afecten sólo a literales.
 
-<!-- ID: MA-EX-APM-01-005-020 | PROVENANCE: ORIGINAL -->
-20. Lleva $\neg(P\lor(Q\land R))$ a forma con negaciones sólo sobre literales.
+**19.** Lleva $\neg(P\land Q)$ a una forma donde las negaciones afecten sólo a literales.
 
-<!-- ID: MA-EX-APM-01-005-021 | PROVENANCE: ORIGINAL -->
-21. Simplifica $\neg\neg(\neg P\lor Q)$ dejando negaciones sólo sobre literales.
 
-<!-- ID: MA-EX-APM-01-005-022 | PROVENANCE: ORIGINAL -->
-22. Lleva $\neg[(P\lor Q)\land(\neg R\lor S)]$ a una forma donde cada negación afecte a una proposición atómica.
+**20.** Lleva $\neg(P\lor(Q\land R))$ a forma con negaciones sólo sobre literales.
 
-<!-- ID: MA-EX-APM-01-005-023 | PROVENANCE: ORIGINAL -->
-23. Decide si $\neg(P\land Q)\equiv\neg P\land\neg Q$. Si falla, produce una contra-valuación.
 
-<!-- ID: MA-EX-APM-01-005-024 | PROVENANCE: ORIGINAL -->
-24. Transforma $\neg[\neg P\lor\neg(Q\land R)]$ hasta una fórmula sin dobles negaciones y con negaciones sólo sobre literales.
+**21.** Simplifica $\neg\neg(\neg P\lor Q)$ dejando negaciones sólo sobre literales.
+
+
+**22.** Lleva $\neg[(P\lor Q)\land(\neg R\lor S)]$ a una forma donde cada negación afecte a una proposición atómica.
+
+
+**23.** Decide si $\neg(P\land Q)\equiv\neg P\land\neg Q$. Si falla, produce una contra-valuación.
+
+
+**24.** Transforma $\neg[\neg P\lor\neg(Q\land R)]$ hasta una fórmula sin dobles negaciones y con negaciones sólo sobre literales.
 
 ## E. Distributividad y absorción
 
-<!-- ID: MA-EX-APM-01-005-025 | PROVENANCE: ORIGINAL -->
-25. Lleva $P\land(Q\lor R)$ a una disyunción de conjunciones.
 
-<!-- ID: MA-EX-APM-01-005-026 | PROVENANCE: ORIGINAL -->
-26. Lleva $P\lor(Q\land R)$ a una conjunción de disyunciones.
+**25.** Lleva $P\land(Q\lor R)$ a una disyunción de conjunciones.
 
-<!-- ID: MA-EX-APM-01-005-027 | PROVENANCE: ORIGINAL -->
-27. Factoriza $(P\land Q)\lor(P\land R)$.
 
-<!-- ID: MA-EX-APM-01-005-028 | PROVENANCE: ORIGINAL -->
-28. Simplifica $P\lor(P\land Q)$ demostrando la absorción mediante leyes anteriores.
+**26.** Lleva $P\lor(Q\land R)$ a una conjunción de disyunciones.
 
-<!-- ID: MA-EX-APM-01-005-029 | PROVENANCE: ORIGINAL -->
-29. Simplifica $(Q\land P)\lor P$ haciendo visible primero el patrón de absorción.
 
-<!-- ID: MA-EX-APM-01-005-030 | PROVENANCE: ORIGINAL -->
-30. Simplifica $(P\lor Q)\land(P\lor\neg Q)$ sin tabla de verdad.
+**27.** Factoriza $(P\land Q)\lor(P\land R)$.
+
+
+**28.** Simplifica $P\lor(P\land Q)$ demostrando la absorción mediante leyes anteriores.
+
+
+**29.** Simplifica $(Q\land P)\lor P$ haciendo visible primero el patrón de absorción.
+
+
+**30.** Simplifica $(P\lor Q)\land(P\lor\neg Q)$ sin tabla de verdad.
 
 ## F. Eliminar implicaciones y bicondicionales
 
-<!-- ID: MA-EX-APM-01-005-031 | PROVENANCE: ORIGINAL -->
-31. Reescribe $P\Rightarrow Q$ usando sólo $\neg,\lor$.
 
-<!-- ID: MA-EX-APM-01-005-032 | PROVENANCE: ORIGINAL -->
-32. Reescribe $\neg(P\Rightarrow Q)$ usando sólo $\neg,\land,\lor$ y simplifica.
+**31.** Reescribe $P\Rightarrow Q$ usando sólo $\neg,\lor$.
 
-<!-- ID: MA-EX-APM-01-005-033 | PROVENANCE: ORIGINAL -->
-33. Reescribe $(P\Rightarrow Q)\land R$ sin $\Rightarrow$.
 
-<!-- ID: MA-EX-APM-01-005-034 | PROVENANCE: ORIGINAL -->
-34. Reescribe $P\Leftrightarrow Q$ en una FNC que use sólo $\neg,\land,\lor$.
+**32.** Reescribe $\neg(P\Rightarrow Q)$ usando sólo $\neg,\land,\lor$ y simplifica.
 
-<!-- ID: MA-EX-APM-01-005-035 | PROVENANCE: ORIGINAL -->
-35. Reescribe $P\Leftrightarrow Q$ en una FND que use sólo $\neg,\land,\lor$.
 
-<!-- ID: MA-EX-APM-01-005-036 | PROVENANCE: ORIGINAL -->
-36. Elimina $\Rightarrow$ y $\Leftrightarrow$ de $(P\Leftrightarrow Q)\Rightarrow R$ sin exigir todavía una forma normal final.
+**33.** Reescribe $(P\Rightarrow Q)\land R$ sin $\Rightarrow$.
+
+
+**34.** Reescribe $P\Leftrightarrow Q$ en una FNC que use sólo $\neg,\land,\lor$.
+
+
+**35.** Reescribe $P\Leftrightarrow Q$ en una FND que use sólo $\neg,\land,\lor$.
+
+
+**36.** Elimina $\Rightarrow$ y $\Leftrightarrow$ de $(P\Leftrightarrow Q)\Rightarrow R$ sin exigir todavía una forma normal final.
 
 ## G. Cadenas largas justificadas
 
-<!-- ID: MA-EX-APM-01-005-037 | PROVENANCE: ORIGINAL -->
-37. Simplifica $\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]$ mediante una cadena sistemática de **al menos ocho transformaciones justificadas** y llega a una sola literal.
 
-<!-- ID: MA-EX-APM-01-005-038 | PROVENANCE: ORIGINAL -->
-38. Demuestra por equivalencias, mediante una cadena de **8–15 transformaciones justificadas**, que $[(P\Rightarrow Q)\land(Q\Rightarrow R)\land P]\Rightarrow R$ es una tautología.
+**37.** Simplifica $\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]$ mediante una cadena sistemática de transformaciones justificadas y llega a una sola literal. Después compara con una ruta más económica y explica qué justificaciones has comprimido.
 
-<!-- ID: MA-EX-APM-01-005-039 | PROVENANCE: ORIGINAL -->
-39. Demuestra que $\neg(P\Leftrightarrow Q)\equiv(P\land\neg Q)\lor(\neg P\land Q)$ mediante **al menos ocho transformaciones explícitas**, eliminando conectivos paso a paso.
 
-<!-- ID: MA-EX-APM-01-005-040 | PROVENANCE: ORIGINAL -->
-40. Simplifica $[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]$ mediante **al menos ocho transformaciones explícitas** y clasifica la fórmula final.
+**38.** Demuestra por equivalencias, mediante una cadena de transformaciones justificadas, que $[(P\Rightarrow Q)\land(Q\Rightarrow R)\land P]\Rightarrow R$ es una tautología. Después compara con una ruta más económica y explica qué justificaciones has comprimido.
 
-<!-- ID: MA-EX-APM-01-005-041 | PROVENANCE: ORIGINAL -->
-41. Simplifica $(P\Rightarrow Q)\land(P\Rightarrow\neg Q)$ hasta una fórmula con una sola variable proposicional.
 
-<!-- ID: MA-EX-APM-01-005-042 | PROVENANCE: ORIGINAL -->
-42. Lleva $\neg[(P\Rightarrow Q)\lor(R\Rightarrow P)]$ mediante una cadena de **al menos ocho transformaciones justificadas** a una fórmula que use sólo literales, $\land$ y $\lor$, y simplifica todo lo posible.
+**39.** Demuestra que $\neg(P\Leftrightarrow Q)\equiv(P\land\neg Q)\lor(\neg P\land Q)$ mediante transformaciones explícitas y justificadas, eliminando conectivos paso a paso. Después compara con una ruta más económica y explica qué justificaciones has comprimido.
 
-<!-- ID: MA-EX-APM-01-005-043 | PROVENANCE: ORIGINAL -->
-43. Demuestra que $(P\Rightarrow(Q\land R))\equiv(P\Rightarrow Q)\land(P\Rightarrow R)$ mediante una cadena de equivalencias.
 
-<!-- ID: MA-EX-APM-01-005-044 | PROVENANCE: ORIGINAL -->
-44. Encuentra dos rutas distintas para simplificar $(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q)$: una por factorización estratégica y otra mediante una expansión o reagrupación diferente. Compara las longitudes.
+**40.** Simplifica $[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\lor[(\neg P\Rightarrow R)\land(\neg P\Rightarrow\neg R)]$ mediante transformaciones explícitas y justificadas y clasifica la fórmula final. Después compara con una ruta más económica y explica qué justificaciones has comprimido.
+
+
+**41.** Simplifica $(P\Rightarrow Q)\land(P\Rightarrow\neg Q)$ hasta una fórmula con una sola variable proposicional.
+
+
+**42.** Lleva $\neg[(P\Rightarrow Q)\lor(R\Rightarrow P)]$ mediante una cadena de transformaciones justificadas a una fórmula que use sólo literales, $\land$ y $\lor$, y simplifica todo lo posible. Después compara con una ruta más económica y explica qué justificaciones has comprimido.
+
+
+**43.** Demuestra que $(P\Rightarrow(Q\land R))\equiv(P\Rightarrow Q)\land(P\Rightarrow R)$ mediante una cadena de equivalencias.
+
+
+**44.** Encuentra dos rutas distintas para simplificar $(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q)$: una por factorización estratégica y otra mediante una expansión o reagrupación diferente. Compara las longitudes.
 
 ## H. Diagnóstico de derivaciones
 
-<!-- ID: MA-EX-APM-01-005-045 | PROVENANCE: ORIGINAL -->
-45. Encuentra el primer paso inválido:
+
+**45.** Encuentra el primer paso inválido:
 
 $$
 \neg(P\land Q)\equiv\neg P\land\neg Q\equiv\neg(Q\land P).
 $$
 
-<!-- ID: MA-EX-APM-01-005-046 | PROVENANCE: ORIGINAL -->
-46. Un estudiante escribe $P\lor(Q\land R)\equiv(P\lor Q)\land R$. Diagnostica la ley mal aplicada y corrige el paso.
 
-<!-- ID: MA-EX-APM-01-005-047 | PROVENANCE: ORIGINAL -->
-47. Encuentra el primer paso inválido:
+**46.** Un estudiante escribe $P\lor(Q\land R)\equiv(P\lor Q)\land R$. Diagnostica la ley mal aplicada y corrige el paso.
+
+
+**47.** Encuentra el primer paso inválido:
 
 $$
 P\Rightarrow Q\equiv P\lor Q\equiv Q\lor P.
 $$
 
-<!-- ID: MA-EX-APM-01-005-048 | PROVENANCE: ORIGINAL -->
-48. Un estudiante simplifica $P\lor(P\land Q)$ como $(P\lor P)\land Q\equiv P\land Q$. Localiza el error y repara la derivación.
 
-<!-- ID: MA-EX-APM-01-005-049 | PROVENANCE: ORIGINAL -->
-49. Un estudiante afirma que $(P\land Q)\lor(\neg P\land Q)\equiv P\lor\neg P\land Q$. Explica el problema de estructura/paréntesis y produce una derivación correcta.
+**48.** Un estudiante simplifica $P\lor(P\land Q)$ como $(P\lor P)\land Q\equiv P\land Q$. Localiza el error y repara la derivación.
 
-<!-- ID: MA-EX-APM-01-005-050 | PROVENANCE: ORIGINAL -->
-50. En una supuesta cadena de equivalencias aparece el paso $P\Rightarrow Q\to\neg P\lor Q$, escrito con una flecha de implicación entre fórmulas de la cadena. Explica por qué esa notación no expresa correctamente lo que se necesita en una cadena de equivalencias.
+
+**49.** Un estudiante afirma que $(P\land Q)\lor(\neg P\land Q)\equiv P\lor\neg P\land Q$. Explica el problema de estructura/paréntesis y produce una derivación correcta.
+
+
+**50.** En una supuesta cadena de equivalencias aparece el paso $P\Rightarrow Q\to\neg P\lor Q$, escrito con una flecha de implicación entre fórmulas de la cadena. Explica por qué esa notación no expresa correctamente lo que se necesita en una cadena de equivalencias.
 
 ## I. Forma normal disyuntiva
 
-<!-- ID: MA-EX-APM-01-005-051 | PROVENANCE: ORIGINAL -->
-51. Decide si $(P\land\neg Q)\lor(R\land Q)$ está en FND y justifica por definición.
 
-<!-- ID: MA-EX-APM-01-005-052 | PROVENANCE: ORIGINAL -->
-52. Decide si $P\land(Q\lor R)$ está en FND. Si no, conviértela a FND.
+**51.** Decide si $(P\land\neg Q)\lor(R\land Q)$ está en FND y justifica por definición.
 
-<!-- ID: MA-EX-APM-01-005-053 | PROVENANCE: ORIGINAL -->
-53. Obtén una FND de $P\land(Q\Rightarrow R)$.
 
-<!-- ID: MA-EX-APM-01-005-054 | PROVENANCE: ORIGINAL -->
-54. Obtén una FND de $\neg(P\Rightarrow Q)$.
+**52.** Decide si $P\land(Q\lor R)$ está en FND. Si no, conviértela a FND.
 
-<!-- ID: MA-EX-APM-01-005-055 | PROVENANCE: ORIGINAL -->
-55. Obtén una FND de $P\Leftrightarrow Q$.
 
-<!-- ID: MA-EX-APM-01-005-056 | PROVENANCE: ORIGINAL -->
-56. Lleva $(P\lor Q)\land R$ a FND y verifica que cada término final sea una conjunción de literales.
+**53.** Obtén una FND de $P\land(Q\Rightarrow R)$.
+
+
+**54.** Obtén una FND de $\neg(P\Rightarrow Q)$.
+
+
+**55.** Obtén una FND de $P\Leftrightarrow Q$.
+
+
+**56.** Lleva $(P\lor Q)\land R$ a FND y verifica que cada término final sea una conjunción de literales.
 
 ## J. Forma normal conjuntiva
 
-<!-- ID: MA-EX-APM-01-005-057 | PROVENANCE: ORIGINAL -->
-57. Decide si $(P\lor\neg Q)\land(R\lor Q)$ está en FNC y justifica.
 
-<!-- ID: MA-EX-APM-01-005-058 | PROVENANCE: ORIGINAL -->
-58. Decide si $P\lor(Q\land R)$ está en FNC. Si no, conviértela a FNC.
+**57.** Decide si $(P\lor\neg Q)\land(R\lor Q)$ está en FNC y justifica.
 
-<!-- ID: MA-EX-APM-01-005-059 | PROVENANCE: ORIGINAL -->
-59. Obtén una FNC de $P\Rightarrow(Q\land R)$.
 
-<!-- ID: MA-EX-APM-01-005-060 | PROVENANCE: ORIGINAL -->
-60. Obtén una FNC de $\neg(P\land Q)$.
+**58.** Decide si $P\lor(Q\land R)$ está en FNC. Si no, conviértela a FNC.
 
-<!-- ID: MA-EX-APM-01-005-061 | PROVENANCE: ORIGINAL -->
-61. Obtén una FNC de $P\Leftrightarrow Q$.
 
-<!-- ID: MA-EX-APM-01-005-062 | PROVENANCE: ORIGINAL -->
-62. Lleva $(P\land Q)\lor R$ a FNC y verifica la arquitectura final.
+**59.** Obtén una FNC de $P\Rightarrow(Q\land R)$.
+
+
+**60.** Obtén una FNC de $\neg(P\land Q)$.
+
+
+**61.** Obtén una FNC de $P\Leftrightarrow Q$.
+
+
+**62.** Lleva $(P\land Q)\lor R$ a FNC y verifica la arquitectura final.
 
 ## K. Formas canónicas desde tablas
 
-<!-- ID: MA-EX-APM-01-005-063 | PROVENANCE: ORIGINAL -->
-63. Construye la FND canónica de $P\lor Q$ a partir de sus filas verdaderas.
 
-<!-- ID: MA-EX-APM-01-005-064 | PROVENANCE: ORIGINAL -->
-64. Construye la FNC canónica de $P\land Q$ a partir de sus filas falsas.
+**63.** Construye la FND canónica de $P\lor Q$ a partir de sus filas verdaderas.
 
-<!-- ID: MA-EX-APM-01-005-065 | PROVENANCE: ORIGINAL -->
-65. Una fórmula $F(P,Q)$ es verdadera sólo en las filas $(V,F)$ y $(F,V)$. Construye su FND canónica.
 
-<!-- ID: MA-EX-APM-01-005-066 | PROVENANCE: ORIGINAL -->
-66. Para la misma fórmula del ejercicio 65, construye su FNC canónica.
+**64.** Construye la FNC canónica de $P\land Q$ a partir de sus filas falsas.
 
-<!-- ID: MA-EX-APM-01-005-067 | PROVENANCE: ORIGINAL -->
-67. La fórmula $G(P,Q,R)$ es falsa únicamente en la fila $(V,F,V)$. Construye su FNC canónica.
 
-<!-- ID: MA-EX-APM-01-005-068 | PROVENANCE: ORIGINAL -->
-68. Explica constructivamente por qué toda fórmula proposicional finita admite FND y FNC.
+**65.** Una fórmula $F(P,Q)$ es verdadera sólo en las filas $(V,F)$ y $(F,V)$. Construye su FND canónica.
+
+
+**66.** Para la misma fórmula del ejercicio 65, construye su FNC canónica.
+
+
+**67.** La fórmula $G(P,Q,R)$ es falsa únicamente en la fila $(V,F,V)$. Construye su FNC canónica.
+
+
+**68.** Explica constructivamente por qué toda fórmula proposicional finita admite FND y FNC.
 
 ## L. Síntesis y transferencia
 
-<!-- ID: MA-EX-APM-01-005-069 | PROVENANCE: ORIGINAL -->
-69. Sin que se indique el método, simplifica y clasifica
+
+**69.** Sin que se indique el método, simplifica y clasifica
 
 $$
 [(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\Rightarrow\neg P.
 $$
 
-<!-- ID: MA-EX-APM-01-005-070 | PROVENANCE: ORIGINAL -->
-70. Construye una fórmula en FND que sea verdadera exactamente cuando **exactamente una** de $P,Q,R$ sea verdadera.
 
-<!-- ID: MA-EX-APM-01-005-071 | PROVENANCE: ORIGINAL -->
-71. Construye una FNC que sea falsa exactamente cuando $P=V,Q=F,R=V$, y explica por qué una sola cláusula basta.
+**70.** Construye una fórmula en FND que sea verdadera exactamente cuando **exactamente una** de $P,Q,R$ sea verdadera.
 
-<!-- ID: MA-EX-APM-01-005-072 | PROVENANCE: ORIGINAL -->
-72. Compara dos estrategias para estudiar
+
+**71.** Construye una FNC que sea falsa exactamente cuando $P=V,Q=F,R=V$, y explica por qué una sola cláusula basta.
+
+
+**72.** Compara dos estrategias para estudiar
 
 $$
 (P\Leftrightarrow Q)\land(Q\Leftrightarrow R).
@@ -966,8 +1043,8 @@ Una debe partir de equivalencias algebraicas y otra de la tabla de verdad. Expli
 
 ## M. Problemas avanzados tipo prueba
 
-<!-- ID: MA-EX-APM-01-005-073 | PROVENANCE: ORIGINAL | LEVEL: E -->
-73. **Nivel E — prueba algebraica larga.** Demuestra, sin tabla de verdad, la **ley de consenso**
+
+**73.** **Nivel E — prueba algebraica larga.** Demuestra, sin tabla de verdad, la **ley de consenso**
 $$
 (P\land Q)\lor(\neg P\land R)\lor(Q\land R)
 \equiv
@@ -975,15 +1052,15 @@ $$
 $$
 La demostración debe hacer explícito por qué el término $Q\land R$ es redundante y contener una cadena suficientemente detallada de equivalencias justificadas.
 
-<!-- ID: MA-EX-APM-01-005-074 | PROVENANCE: ORIGINAL | LEVEL: E -->
-74. **Nivel E — resolución proposicional.** Demuestra algebraicamente que
+
+**74.** **Nivel E — resolución proposicional.** Demuestra algebraicamente que
 $$
 [(P\lor Q)\land(\neg P\lor R)]\Rightarrow(Q\lor R)
 $$
 es una tautología. No uses una tabla de verdad como método principal: elimina primero la implicación y lleva la fórmula, mediante equivalencias, hasta $V$.
 
-<!-- ID: MA-EX-APM-01-005-075 | PROVENANCE: ORIGINAL | LEVEL: F -->
-75. **Nivel F — formas normales y reducción.** Sea $M(P,Q,R)$ la fórmula que debe ser verdadera exactamente cuando **al menos dos** de $P,Q,R$ son verdaderas.
+
+**75.** **Nivel F — formas normales y reducción.** Sea $M(P,Q,R)$ la fórmula que debe ser verdadera exactamente cuando **al menos dos** de $P,Q,R$ son verdaderas.
 
 (a) Construye la FND canónica de $M$.  
 (b) Obtén y demuestra una FND reducida.  
@@ -991,15 +1068,15 @@ es una tautología. No uses una tabla de verdad como método principal: elimina 
 (d) Obtén y demuestra una FNC reducida.  
 (e) Demuestra algebraicamente, sin tabla, que tus formas reducidas FND y FNC son equivalentes.
 
-<!-- ID: MA-EX-APM-01-005-076 | PROVENANCE: ORIGINAL | LEVEL: F -->
-76. **Nivel F — normalización completa.** Simplifica mediante una cadena de al menos diez transformaciones justificadas
-$$
-F=\neg[(P\Leftrightarrow Q)\Rightarrow(R\lor\neg P)].
-$$
-Elimina primero $\Rightarrow$ y $\Leftrightarrow$, empuja todas las negaciones hasta literales y simplifica hasta una conjunción mínima. Explica por qué la forma final puede leerse simultáneamente como FND y como FNC.
 
-<!-- ID: MA-EX-APM-01-005-077 | PROVENANCE: ORIGINAL | LEVEL: F -->
-77. **Nivel F — ciclo de implicaciones.** Considera
+**76.** **Nivel F — normalización completa.** Simplifica mediante una cadena de transformaciones justificadas
+$$
+H=\neg[(P\Leftrightarrow Q)\Rightarrow(R\lor\neg P)].
+$$
+Elimina primero $\Rightarrow$ y $\Leftrightarrow$, empuja todas las negaciones hasta literales y simplifica hasta una conjunción mínima. Explica por qué la forma final puede leerse simultáneamente como FND y como FNC. Después compara con una ruta más económica y explica qué justificaciones has comprimido.
+
+
+**77.** **Nivel F — ciclo de implicaciones.** Considera
 $$
 G=(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow P).
 $$
@@ -1009,8 +1086,8 @@ $$
 (c) Determina exactamente qué valuaciones satisfacen $G$.  
 (d) Explica por qué $G$ expresa que $P,Q,R$ deben compartir valor de verdad.
 
-<!-- ID: MA-EX-APM-01-005-078 | PROVENANCE: ORIGINAL | LEVEL: G -->
-78. **Nivel G — teorema de cancelación booleana.** Sean $A,B,C$ fórmulas cualesquiera. Demuestra que si
+
+**78.** **Nivel G — teorema de cancelación booleana.** Sean $A,B,C$ fórmulas cualesquiera. Demuestra que si
 $$
 A\land C\equiv B\land C
 \qquad\text{y}\qquad
@@ -1020,8 +1097,8 @@ entonces necesariamente $A\equiv B$.
 
 Da dos demostraciones: una por valuaciones, separando los casos $C=V$ y $C=F$, y otra puramente algebraica. Finalmente muestra, con contraejemplos, que ninguna de las dos hipótesis por separado basta.
 
-<!-- ID: MA-EX-APM-01-005-079 | PROVENANCE: ORIGINAL | LEVEL: G -->
-79. **Nivel G — cuatro variables y dependencia estructural.** Sea
+
+**79.** **Nivel G — cuatro variables y dependencia estructural.** Sea
 $$
 H=(P\Leftrightarrow Q)\land(Q\Leftrightarrow\neg R)\land(R\Leftrightarrow S).
 $$
@@ -1031,8 +1108,8 @@ $$
 (c) Obtén una FNC compacta eliminando los bicondicionales.  
 (d) Justifica rigurosamente que las dos formas obtenidas son equivalentes a $H$.
 
-<!-- ID: MA-EX-APM-01-005-080 | PROVENANCE: ORIGINAL | LEVEL: G -->
-80. **Nivel G — síntesis tipo prueba.** Demuestra que
+
+**80.** **Nivel G — síntesis tipo prueba.** Demuestra que
 $$
 [(P\Rightarrow Q)\land(Q\Rightarrow R)\land(R\Rightarrow S)]
 \Rightarrow
@@ -1045,13 +1122,62 @@ es una tautología de dos maneras independientes:
 
 Concluye explicando qué estructura general de las implicaciones está haciendo visible el ejercicio.
 
+
+## N. Elegir la representación según el objetivo
+
+
+**81.** Sea $A=(P\land Q)\lor(P\land\neg Q)\lor R$, con $P,Q,R$ declaradas. Elige y construye una representación para cada objetivo: a) decidir rápidamente cuándo $A$ es falsa; b) enumerar exactamente todas sus filas verdaderas. Justifica la equivalencia, cuenta las apariciones de literales de ambas representaciones y explica por qué la escritura mayor puede ser la adecuada para el segundo objetivo.
+
+
+**82.** Para $B=(P\Leftrightarrow Q)\lor R$, obtén una FND y una FNC mediante leyes. Elige cuál hace más visible que $R=V$ basta para satisfacer $B$ y cuál expone los casos que pueden hacerla falsa. Compara sus apariciones de literales y aclara si esta comparación prueba un mínimo global.
+
+
+**83.** Considera $C=(P\Rightarrow Q)\land(P\Rightarrow R)$. Construye una FNC útil para auditar cada exigencia por separado y una FND compacta útil para describir cómo satisfacer $C$. Cuenta sus apariciones de literales y determina cuántos términos tendría su FND canónica respecto de $P,Q,R$. Justifica qué gana y qué pierde cada representación.
+
+
+## O. Variables declaradas y formas canónicas
+
+
+**84.** Construye las FND y FNC canónicas de $P\Leftrightarrow Q$ primero con $P,Q$ declaradas y después con $P,Q,R$ declaradas, en ese orden. Explica cómo el valor de $R$ cambia las filas y los tamaños sin cambiar la condición sobre $P,Q$. Verifica que las formas ampliadas se reducen a las originales.
+
+
+**85.** Una fórmula exige únicamente que $Q$ sea falsa. Construye sus FND y FNC canónicas con sólo $Q$ declarada y después con $P,Q$ declaradas. Indica cómo se leen las mismas filas si el orden de columnas se cambia a $Q,P$. ¿Cambiar el orden modifica el significado? ¿Qué tamaños tendrían ambas formas al declarar $P,Q,R$?
+
+
+**86.** Aplica la convención de constantes y listas vacías a una tautología y una contradicción: a) sin variables declaradas; b) con $P,Q$ declaradas. Indica cuántas valuaciones hay en cada contexto y cuántos términos o cláusulas aporta cada construcción canónica. Explica qué representa un término sin literales y una cláusula sin literales.
+
+
+## P. Alcance de una sustitución
+
+
+**87.** Un estudiante pretende eliminar «dos negaciones de $P$» en $D=\neg P\lor\neg(Q\lor\neg P)$ y obtiene $P\lor\neg Q$. Localiza el problema de alcance, simplifica correctamente y produce una valuación que refute el resultado propuesto. Indica a qué subfórmula sí se puede aplicar doble negación durante la reparación.
+
+
+**88.** En $E=(P\lor Q)\land((P\lor Q)\lor R)$, un estudiante dice «absorbo porque aparece $P$» y concluye $P$. Identifica el bloque que realmente cumple el patrón de absorción, repara la simplificación y refuta la respuesta del estudiante. Explica por qué una subfórmula compuesta puede ocupar el lugar de una letra en una ley.
+
+
+**89.** Audita el paso $\neg[(P\Rightarrow Q)\lor R]\equiv[(\neg P\Rightarrow\neg Q)\land\neg R]$. Decide qué subfórmula fue negada incorrectamente, da un contraejemplo y repara la fórmula hasta obtener literales. Comprueba la reparación describiendo exactamente la única fila verdadera.
+
+
+## Q. Diseñar desde la tabla prescrita
+
+
+**90.** Con las variables declaradas $P,Q,R$, diseña una fórmula verdadera exactamente en las filas $(V,V,F)$, $(V,F,F)$, $(F,V,V)$ y $(F,F,V)$. Construye ambas formas canónicas y una forma compacta. Explica qué variable puede cambiar sin alterar la verdad y justifica la equivalencia sin limitarte a una sola fila.
+
+
+**91.** Diseña una fórmula verdadera sólo en $(P,Q,R)=(V,F,V)$ y $(V,F,F)$. Construye su FND canónica, una FNC compacta y su FNC canónica completa. Justifica por qué es lícito eliminar una variable en la forma compacta y compara las apariciones de literales de las tres representaciones.
+
+
+**92.** Para las variables declaradas $P,Q,R,S$, diseña una fórmula sin constantes que no tenga ninguna fila falsa y otra que no tenga ninguna fila verdadera. Justifícalas mediante leyes, describe cómo construir sus formas canónicas sin escribir todos los bloques y calcula sus tamaños en apariciones de literales. Explica cómo interviene la convención de listas vacías.
+
+
 ---
 
 # Soluciones
 
 ## A. Reconocer equivalencia y no equivalencia
 
-<!-- ID: MA-SOL-APM-01-005-001 | FOR: MA-EX-APM-01-005-001 -->
+
 ### 1
 
 Construimos:
@@ -1067,7 +1193,7 @@ Las columnas finales coinciden. Por tanto,
 
 $P\Rightarrow Q\equiv\neg P\lor Q$.
 
-<!-- ID: MA-SOL-APM-01-005-002 | FOR: MA-EX-APM-01-005-002 -->
+
 ### 2
 
 No son equivalentes. Con $P=V,Q=F$,
@@ -1078,14 +1204,14 @@ pero $P\lor Q=V$.
 
 Una sola contra-valuación basta para refutar la equivalencia.
 
-<!-- ID: MA-SOL-APM-01-005-003 | FOR: MA-EX-APM-01-005-003 -->
+
 ### 3
 
 $P\Leftrightarrow Q$ es una **fórmula** cuyo valor depende de la valuación de $P,Q$.
 
-$P\equiv Q$ es una afirmación metalingüística: asegura que $P$ y $Q$ —entendidos aquí como fórmulas— tienen el mismo valor bajo toda valuación. Para proposiciones atómicas independientes, normalmente $P\not\equiv Q$.
+$P\equiv Q$ es una afirmación metalingüística: asegura que $P$ y $Q$ —entendidos aquí como fórmulas— tienen el mismo valor bajo toda valuación. Si $P$ y $Q$ son proposiciones atómicas distintas e independientes, no son lógicamente equivalentes: la valuación $P=V$, $Q=F$ las distingue.
 
-<!-- ID: MA-SOL-APM-01-005-004 | FOR: MA-EX-APM-01-005-004 -->
+
 ### 4
 
 | $P$ | $Q$ | $P\Rightarrow Q$ | $\neg Q$ | $\neg P$ | $\neg Q\Rightarrow\neg P$ |
@@ -1097,7 +1223,7 @@ $P\equiv Q$ es una afirmación metalingüística: asegura que $P$ y $Q$ —enten
 
 Las columnas relevantes son $V,F,V,V$ en ambos casos. Son equivalentes.
 
-<!-- ID: MA-SOL-APM-01-005-005 | FOR: MA-EX-APM-01-005-005 -->
+
 ### 5
 
 No. Con $P=V,Q=F$,
@@ -1106,7 +1232,7 @@ $P\Rightarrow Q=F$,
 
 mientras $Q\Rightarrow P=V$ porque su antecedente $Q$ es falso.
 
-<!-- ID: MA-SOL-APM-01-005-006 | FOR: MA-EX-APM-01-005-006 -->
+
 ### 6
 
 Por definición, $A\equiv B$ significa que para toda valuación $v$, $A$ y $B$ reciben el mismo valor.
@@ -1118,17 +1244,17 @@ El bicondicional $A\Leftrightarrow B$ es verdadero exactamente cuando sus compon
 
 ## B. Leyes básicas
 
-<!-- ID: MA-SOL-APM-01-005-007 | FOR: MA-EX-APM-01-005-007 -->
+
 ### 7
 
 $P\land V\equiv P$ por identidad de la conjunción.
 
-<!-- ID: MA-SOL-APM-01-005-008 | FOR: MA-EX-APM-01-005-008 -->
+
 ### 8
 
 $P\lor F\equiv P$ por identidad de la disyunción.
 
-<!-- ID: MA-SOL-APM-01-005-009 | FOR: MA-EX-APM-01-005-009 -->
+
 ### 9
 
 $$
@@ -1137,17 +1263,17 @@ $$
 
 por idempotencia de $\lor$.
 
-<!-- ID: MA-SOL-APM-01-005-010 | FOR: MA-EX-APM-01-005-010 -->
+
 ### 10
 
 $P\lor\neg P\equiv V$ por complemento. Es una tautología.
 
-<!-- ID: MA-SOL-APM-01-005-011 | FOR: MA-EX-APM-01-005-011 -->
+
 ### 11
 
 $P\land\neg P\equiv F$ por complemento. Es una contradicción.
 
-<!-- ID: MA-SOL-APM-01-005-012 | FOR: MA-EX-APM-01-005-012 -->
+
 ### 12
 
 Por doble negación aplicada a la subfórmula completa,
@@ -1156,7 +1282,7 @@ $\neg\neg(P\lor Q)\equiv P\lor Q$.
 
 ## C. Reordenar y reagrupar estratégicamente
 
-<!-- ID: MA-SOL-APM-01-005-013 | FOR: MA-EX-APM-01-005-013 -->
+
 ### 13
 
 $$
@@ -1170,7 +1296,7 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-014 | FOR: MA-EX-APM-01-005-014 -->
+
 ### 14
 
 $$
@@ -1185,7 +1311,7 @@ $$
 
 Se usaron asociatividad, conmutatividad e idempotencia.
 
-<!-- ID: MA-SOL-APM-01-005-015 | FOR: MA-EX-APM-01-005-015 -->
+
 ### 15
 
 $$
@@ -1197,7 +1323,7 @@ Q\lor(\neg P\lor P)
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-016 | FOR: MA-EX-APM-01-005-016 -->
+
 ### 16
 
 $$
@@ -1209,7 +1335,7 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-017 | FOR: MA-EX-APM-01-005-017 -->
+
 ### 17
 
 $$
@@ -1224,7 +1350,7 @@ $$
 
 Las dos primeras reescrituras condensan asociatividad y conmutatividad.
 
-<!-- ID: MA-SOL-APM-01-005-018 | FOR: MA-EX-APM-01-005-018 -->
+
 ### 18
 
 Conmutatividad y asociatividad no suelen eliminar conectivos; permiten colocar componentes en una posición útil para otra ley. Por ejemplo,
@@ -1235,14 +1361,14 @@ se reordena como $Q\lor(P\lor\neg P)$ para hacer visible $P\lor\neg P\equiv V$, 
 
 ## D. De Morgan y negaciones anidadas
 
-<!-- ID: MA-SOL-APM-01-005-019 | FOR: MA-EX-APM-01-005-019 -->
+
 ### 19
 
 $\neg(P\land Q)\equiv\neg P\lor\neg Q$.
 
 Las negaciones ya afectan sólo a literales.
 
-<!-- ID: MA-SOL-APM-01-005-020 | FOR: MA-EX-APM-01-005-020 -->
+
 ### 20
 
 $$
@@ -1253,14 +1379,14 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-021 | FOR: MA-EX-APM-01-005-021 -->
+
 ### 21
 
 La doble negación afecta a toda la subfórmula:
 
 $\neg\neg(\neg P\lor Q)\equiv\neg P\lor Q$.
 
-<!-- ID: MA-SOL-APM-01-005-022 | FOR: MA-EX-APM-01-005-022 -->
+
 ### 22
 
 $$
@@ -1272,7 +1398,7 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-023 | FOR: MA-EX-APM-01-005-023 -->
+
 ### 23
 
 No. Con $P=V,Q=F$:
@@ -1283,7 +1409,7 @@ pero $\neg P\land\neg Q=F\land V=F$.
 
 La ley correcta cambia $\land$ por $\lor$.
 
-<!-- ID: MA-SOL-APM-01-005-024 | FOR: MA-EX-APM-01-005-024 -->
+
 ### 24
 
 $$
@@ -1297,24 +1423,24 @@ $$
 
 ## E. Distributividad y absorción
 
-<!-- ID: MA-SOL-APM-01-005-025 | FOR: MA-EX-APM-01-005-025 -->
+
 ### 25
 
 $P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R)$.
 
-<!-- ID: MA-SOL-APM-01-005-026 | FOR: MA-EX-APM-01-005-026 -->
+
 ### 26
 
 $P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)$.
 
-<!-- ID: MA-SOL-APM-01-005-027 | FOR: MA-EX-APM-01-005-027 -->
+
 ### 27
 
 Por distributividad en sentido inverso,
 
 $(P\land Q)\lor(P\land R)\equiv P\land(Q\lor R)$.
 
-<!-- ID: MA-SOL-APM-01-005-028 | FOR: MA-EX-APM-01-005-028 -->
+
 ### 28
 
 Una derivación de absorción es:
@@ -1329,7 +1455,7 @@ P\lor(P\land Q)
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-029 | FOR: MA-EX-APM-01-005-029 -->
+
 ### 29
 
 $$
@@ -1341,7 +1467,7 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-030 | FOR: MA-EX-APM-01-005-030 -->
+
 ### 30
 
 Usamos la distributividad inversa en la forma $(A\lor B)\land(A\lor C)\equiv A\lor(B\land C)$:
@@ -1357,12 +1483,12 @@ $$
 
 ## F. Eliminar implicaciones y bicondicionales
 
-<!-- ID: MA-SOL-APM-01-005-031 | FOR: MA-EX-APM-01-005-031 -->
+
 ### 31
 
 $P\Rightarrow Q\equiv\neg P\lor Q$.
 
-<!-- ID: MA-SOL-APM-01-005-032 | FOR: MA-EX-APM-01-005-032 -->
+
 ### 32
 
 $$
@@ -1374,12 +1500,12 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-033 | FOR: MA-EX-APM-01-005-033 -->
+
 ### 33
 
 $(P\Rightarrow Q)\land R\equiv(\neg P\lor Q)\land R$.
 
-<!-- ID: MA-SOL-APM-01-005-034 | FOR: MA-EX-APM-01-005-034 -->
+
 ### 34
 
 $$
@@ -1390,7 +1516,7 @@ $$
 
 Ésta es una FNC.
 
-<!-- ID: MA-SOL-APM-01-005-035 | FOR: MA-EX-APM-01-005-035 -->
+
 ### 35
 
 El bicondicional es verdadero cuando ambos valores coinciden:
@@ -1399,7 +1525,7 @@ $P\Leftrightarrow Q\equiv(P\land Q)\lor(\neg P\land\neg Q)$.
 
 Ésta es una FND.
 
-<!-- ID: MA-SOL-APM-01-005-036 | FOR: MA-EX-APM-01-005-036 -->
+
 ### 36
 
 $$
@@ -1414,7 +1540,20 @@ Ya no aparecen $\Rightarrow$ ni $\Leftrightarrow$. Si se quisiera continuar haci
 
 ## G. Cadenas largas justificadas
 
-<!-- ID: MA-SOL-APM-01-005-037 | FOR: MA-EX-APM-01-005-037 -->
+Las soluciones 37–40 y 42 muestran rutas detalladas. Para compararlas con rutas económicas, en 37 y 40 puede simplificarse cada bloque de dos condicionales antes de desarrollar la negación o la disyunción exterior; en 38 puede justificarse semánticamente que las premisas fuerzan $R$; en 39 puede partirse de la FND del bicondicional y negar sus dos términos; en 42 basta observar que el primer condicional falso exige $P=V$ y el segundo falso exige $P=F$. La vía semántica sirve de control independiente y no sustituye una cadena algebraica cuando ésta se pide. En 76, la identidad $\neg(A\Rightarrow B)\equiv A\land\neg B$ y el bloque $P\land(P\Leftrightarrow Q)\equiv P\land Q$ permiten comprimir la ruta, conservando De Morgan, eliminación del bicondicional y las absorciones que justifican ese bloque. La comparación debe explicar esas razones, no añadir líneas para alcanzar una cuota.
+
+Rutas económicas de comparación:
+
+- **37.** $\neg[(P\Rightarrow Q)\land(P\Rightarrow\neg Q)]\equiv\neg[\neg P\lor(Q\land\neg Q)]\equiv\neg\neg P\equiv P$. Se comprimen eliminación de implicaciones, distributividad inversa, complemento e identidad.
+- **38.** El antecedente equivale a $P\land(\neg P\lor Q)\land(\neg Q\lor R)\equiv P\land Q\land R$: distribuir y eliminar los términos con complemento justifica cada reducción. La fórmula completa equivale entonces a $\neg(P\land Q\land R)\lor R\equiv\neg P\lor\neg Q\lor\neg R\lor R\equiv V$. Se comprimen eliminación de implicaciones, las reducciones del antecedente, De Morgan, complemento y dominación.
+- **39.** $\neg(P\Leftrightarrow Q)\equiv\neg[(\neg P\lor Q)\land(\neg Q\lor P)]\equiv(P\land\neg Q)\lor(Q\land\neg P)$. Se comprimen eliminación del bicondicional, De Morgan y dobles negaciones; conmutatividad da la forma pedida.
+- **40.** Sus bloques equivalen respectivamente a $\neg P$ y $P$, por eliminación de implicaciones, distributividad inversa y complemento. Su disyunción se reduce a $\neg P\lor P\equiv V$.
+- **42.** $\neg[(P\Rightarrow Q)\lor(R\Rightarrow P)]\equiv(P\land\neg Q)\land(R\land\neg P)\equiv F$. Se comprimen De Morgan, negación de cada implicación, reagrupación para exponer $P\land\neg P$ y dominación.
+- **76.** La fórmula equivale a $(P\Leftrightarrow Q)\land P\land\neg R\equiv P\land Q\land\neg R$. Para justificar el bloque comprimido, expandir el bicondicional en FND da $P\land[(P\land Q)\lor(\neg P\land\neg Q)]\equiv(P\land Q)\lor F\equiv P\land Q$, por distributividad, idempotencia y complemento. La otra compresión usa negación de implicación y De Morgan sobre $R\lor\neg P$.
+
+Estas rutas conservan las razones de las cadenas detalladas siguientes; su menor extensión no elimina ninguna condición de equivalencia.
+
+
 ### 37
 
 Aplicamos deliberadamente una sola transformación sustantiva por línea:
@@ -1447,7 +1586,7 @@ $$
 
 La ruta sistemática tiene diez transformaciones. Una ruta estratégica más corta sería factorizar antes de negar; ambas son correctas, pero ésta hace visible la disciplina de sustitución local.
 
-<!-- ID: MA-SOL-APM-01-005-038 | FOR: MA-EX-APM-01-005-038 -->
+
 ### 38
 
 Sea
@@ -1477,7 +1616,7 @@ En dos pasos usamos la identidad derivada $A\lor(\neg A\land B)\equiv A\lor B$, 
 
 **Cómo pensar este problema.** La fórmula expresa transitividad del razonamiento: si $P$ lleva a $Q$, $Q$ lleva a $R$ y además $P$ ocurre, entonces $R$ debe ocurrir. La derivación algebraica confirma esa estructura.
 
-<!-- ID: MA-SOL-APM-01-005-039 | FOR: MA-EX-APM-01-005-039 -->
+
 ### 39
 
 Partimos de la definición del bicondicional por dos condicionales y reemplazamos una subfórmula por vez:
@@ -1508,7 +1647,7 @@ $$
 
 La fórmula final dice exactamente que $P$ y $Q$ tienen valores distintos: uno verdadero y el otro falso.
 
-<!-- ID: MA-SOL-APM-01-005-040 | FOR: MA-EX-APM-01-005-040 -->
+
 ### 40
 
 Aplicamos los reemplazos de manera local para que la cadena sea auditable:
@@ -1548,7 +1687,7 @@ $$
 
 La fórmula es una **tautología**. Estructuralmente, el primer bloque equivale a $\neg P$ y el segundo a $P$; por eso su disyunción cubre todos los casos.
 
-<!-- ID: MA-SOL-APM-01-005-041 | FOR: MA-EX-APM-01-005-041 -->
+
 ### 41
 
 $$
@@ -1563,7 +1702,7 @@ $$
 
 La fórmula afirma, en efecto, que si $P$ obligara simultáneamente a $Q$ y a $\neg Q$, entonces $P$ no puede ser verdadero.
 
-<!-- ID: MA-SOL-APM-01-005-042 | FOR: MA-EX-APM-01-005-042 -->
+
 ### 42
 
 Aplicamos una transformación local por línea:
@@ -1596,7 +1735,7 @@ $$
 
 La contradicción tiene además una lectura semántica: para que $P\Rightarrow Q$ sea falsa necesitamos $P=V$, mientras para que $R\Rightarrow P$ sea falsa necesitamos $P=F$. Es imposible satisfacer ambas exigencias a la vez.
 
-<!-- ID: MA-SOL-APM-01-005-043 | FOR: MA-EX-APM-01-005-043 -->
+
 ### 43
 
 $$
@@ -1610,7 +1749,7 @@ $$
 
 Cada paso es reversible, por lo que tenemos equivalencia.
 
-<!-- ID: MA-SOL-APM-01-005-044 | FOR: MA-EX-APM-01-005-044 -->
+
 ### 44
 
 **Ruta 1: factorizar respecto de $P$.**
@@ -1646,7 +1785,7 @@ Las rutas tienen longitudes semejantes pero hacen visibles estructuras distintas
 
 ## H. Diagnóstico de derivaciones
 
-<!-- ID: MA-SOL-APM-01-005-045 | FOR: MA-EX-APM-01-005-045 -->
+
 ### 45
 
 El primer paso es inválido:
@@ -1659,7 +1798,7 @@ $\neg(P\land Q)\equiv\neg P\lor\neg Q$.
 
 Por ejemplo, con $P=V,Q=F$, la fórmula correcta vale $V$, mientras $\neg P\land\neg Q$ vale $F$.
 
-<!-- ID: MA-SOL-APM-01-005-046 | FOR: MA-EX-APM-01-005-046 -->
+
 ### 46
 
 Se aplicó distributividad de forma incompleta. La ley correcta es
@@ -1668,7 +1807,7 @@ $P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)$.
 
 El factor $P$ debe aparecer en **ambas** cláusulas.
 
-<!-- ID: MA-SOL-APM-01-005-047 | FOR: MA-EX-APM-01-005-047 -->
+
 ### 47
 
 El primer paso es inválido. La eliminación correcta de la implicación es
@@ -1679,7 +1818,7 @@ no $P\lor Q$.
 
 Con $P=V,Q=F$, el condicional vale $F$ y $P\lor Q$ vale $V$.
 
-<!-- ID: MA-SOL-APM-01-005-048 | FOR: MA-EX-APM-01-005-048 -->
+
 ### 48
 
 La distribución fue mal aplicada. De $P\lor(P\land Q)$ se obtiene
@@ -1698,7 +1837,7 @@ $$
 
 por idempotencia y absorción.
 
-<!-- ID: MA-SOL-APM-01-005-049 | FOR: MA-EX-APM-01-005-049 -->
+
 ### 49
 
 Sin paréntesis, $P\lor\neg P\land Q$ es ambiguo o depende de una convención de precedencia; además no muestra correctamente la factorización.
@@ -1714,7 +1853,7 @@ $$
 \end{aligned}
 $$
 
-<!-- ID: MA-SOL-APM-01-005-050 | FOR: MA-EX-APM-01-005-050 -->
+
 ### 50
 
 Una cadena de equivalencias necesita afirmar que cada fórmula puede sustituirse por la siguiente en ambas direcciones semánticamente. El símbolo apropiado es $\equiv$ en el metanivel de la derivación:
@@ -1725,7 +1864,7 @@ Escribir sólo una implicación entre las dos fórmulas afirmaría una relación
 
 ## I. Forma normal disyuntiva
 
-<!-- ID: MA-SOL-APM-01-005-051 | FOR: MA-EX-APM-01-005-051 -->
+
 ### 51
 
 Sí. Es una disyunción de dos términos conjuntivos:
@@ -1735,7 +1874,7 @@ Sí. Es una disyunción de dos términos conjuntivos:
 
 Cada componente de esos términos es un literal.
 
-<!-- ID: MA-SOL-APM-01-005-052 | FOR: MA-EX-APM-01-005-052 -->
+
 ### 52
 
 No está en FND porque contiene una disyunción dentro de una conjunción. Distribuimos:
@@ -1744,7 +1883,7 @@ $P\land(Q\lor R)\equiv(P\land Q)\lor(P\land R)$.
 
 La forma final sí es FND.
 
-<!-- ID: MA-SOL-APM-01-005-053 | FOR: MA-EX-APM-01-005-053 -->
+
 ### 53
 
 $$
@@ -1757,7 +1896,7 @@ $$
 
 Es FND.
 
-<!-- ID: MA-SOL-APM-01-005-054 | FOR: MA-EX-APM-01-005-054 -->
+
 ### 54
 
 Ya obtuvimos:
@@ -1766,7 +1905,7 @@ $\neg(P\Rightarrow Q)\equiv P\land\neg Q$.
 
 Un único término conjuntivo cuenta como FND.
 
-<!-- ID: MA-SOL-APM-01-005-055 | FOR: MA-EX-APM-01-005-055 -->
+
 ### 55
 
 Una FND natural es
@@ -1775,7 +1914,7 @@ $(P\land Q)\lor(\neg P\land\neg Q)$.
 
 Cada término representa uno de los dos casos en que $P,Q$ comparten valor de verdad.
 
-<!-- ID: MA-SOL-APM-01-005-056 | FOR: MA-EX-APM-01-005-056 -->
+
 ### 56
 
 $$
@@ -1787,7 +1926,7 @@ Los dos términos finales son conjunciones de literales, por lo que la fórmula 
 
 ## J. Forma normal conjuntiva
 
-<!-- ID: MA-SOL-APM-01-005-057 | FOR: MA-EX-APM-01-005-057 -->
+
 ### 57
 
 Sí. Es una conjunción de dos cláusulas disyuntivas:
@@ -1797,14 +1936,14 @@ Sí. Es una conjunción de dos cláusulas disyuntivas:
 
 Todos sus componentes son literales.
 
-<!-- ID: MA-SOL-APM-01-005-058 | FOR: MA-EX-APM-01-005-058 -->
+
 ### 58
 
 No está en FNC. Aplicamos distributividad:
 
 $P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)$.
 
-<!-- ID: MA-SOL-APM-01-005-059 | FOR: MA-EX-APM-01-005-059 -->
+
 ### 59
 
 $$
@@ -1817,7 +1956,7 @@ $$
 
 Es FNC.
 
-<!-- ID: MA-SOL-APM-01-005-060 | FOR: MA-EX-APM-01-005-060 -->
+
 ### 60
 
 Por De Morgan,
@@ -1826,7 +1965,7 @@ $\neg(P\land Q)\equiv\neg P\lor\neg Q$.
 
 Una sola cláusula disyuntiva cuenta como FNC.
 
-<!-- ID: MA-SOL-APM-01-005-061 | FOR: MA-EX-APM-01-005-061 -->
+
 ### 61
 
 Una FNC inmediata es
@@ -1835,7 +1974,7 @@ $(\neg P\lor Q)\land(\neg Q\lor P)$.
 
 Proviene de $(P\Rightarrow Q)\land(Q\Rightarrow P)$.
 
-<!-- ID: MA-SOL-APM-01-005-062 | FOR: MA-EX-APM-01-005-062 -->
+
 ### 62
 
 Distribuimos $R$ sobre la conjunción:
@@ -1846,7 +1985,7 @@ La forma final es una conjunción de dos cláusulas disyuntivas de literales.
 
 ## K. Formas canónicas desde tablas
 
-<!-- ID: MA-SOL-APM-01-005-063 | FOR: MA-EX-APM-01-005-063 -->
+
 ### 63
 
 La tabla de $P\lor Q$ es verdadera en $(V,V)$, $(V,F)$ y $(F,V)$.
@@ -1863,7 +2002,7 @@ $$(P\land Q)\lor(P\land\neg Q)\lor(\neg P\land Q).$$
 
 Se simplifica a $P\lor Q$, pero la forma canónica conserva explícitamente cada fila verdadera.
 
-<!-- ID: MA-SOL-APM-01-005-064 | FOR: MA-EX-APM-01-005-064 -->
+
 ### 64
 
 $P\land Q$ es falsa en $(V,F)$, $(F,V)$ y $(F,F)$.
@@ -1880,7 +2019,7 @@ $$(\neg P\lor Q)\land(P\lor\neg Q)\land(P\lor Q).$$
 
 Aunque se puede simplificar a $P\land Q$, ésa es la forma canónica obtenida directamente de las filas falsas.
 
-<!-- ID: MA-SOL-APM-01-005-065 | FOR: MA-EX-APM-01-005-065 -->
+
 ### 65
 
 Las filas verdaderas son $(V,F)$ y $(F,V)$. Por tanto,
@@ -1889,7 +2028,7 @@ $$(P\land\neg Q)\lor(\neg P\land Q).$$
 
 Es la FND canónica del XOR de dos variables.
 
-<!-- ID: MA-SOL-APM-01-005-066 | FOR: MA-EX-APM-01-005-066 -->
+
 ### 66
 
 La fórmula es falsa en $(V,V)$ y $(F,F)$.
@@ -1901,7 +2040,7 @@ Por tanto,
 
 $$(\neg P\lor\neg Q)\land(P\lor Q).$$
 
-<!-- ID: MA-SOL-APM-01-005-067 | FOR: MA-EX-APM-01-005-067 -->
+
 ### 67
 
 Queremos una cláusula falsa exactamente cuando $P=V,Q=F,R=V$.
@@ -1918,7 +2057,7 @@ $G\equiv\neg P\lor Q\lor\neg R$.
 
 Como sólo hay una fila falsa, una sola cláusula forma la FNC canónica.
 
-<!-- ID: MA-SOL-APM-01-005-068 | FOR: MA-EX-APM-01-005-068 -->
+
 ### 68
 
 Sea $F$ una fórmula con $n$ variables.
@@ -1931,7 +2070,7 @@ Los casos tautología y contradicción se representan por $V$ y $F$ respectivame
 
 ## L. Síntesis y transferencia
 
-<!-- ID: MA-SOL-APM-01-005-069 | FOR: MA-EX-APM-01-005-069 -->
+
 ### 69
 
 Sea
@@ -1958,7 +2097,7 @@ La fórmula es una tautología.
 
 **Cómo pensar este problema.** Antes de expandir el condicional exterior, conviene simplificar su antecedente. Esa decisión evita una expansión mucho mayor.
 
-<!-- ID: MA-SOL-APM-01-005-070 | FOR: MA-EX-APM-01-005-070 -->
+
 ### 70
 
 «Exactamente una» de $P,Q,R$ verdadera significa que ocurre uno de tres casos mutuamente excluyentes:
@@ -1975,7 +2114,7 @@ $$(P\land\neg Q\land\neg R)
 
 Es además la FND canónica relativa a esas tres filas verdaderas.
 
-<!-- ID: MA-SOL-APM-01-005-071 | FOR: MA-EX-APM-01-005-071 -->
+
 ### 71
 
 Para ser falsa exactamente en $(P,Q,R)=(V,F,V)$, una cláusula debe contener literales todos falsos en esa fila:
@@ -1984,7 +2123,7 @@ $\neg P\lor Q\lor\neg R$.
 
 En cualquier otra fila al menos uno de esos literales cambia a verdadero, por lo que la cláusula se vuelve verdadera. Una sola cláusula basta porque sólo queremos excluir una valuación.
 
-<!-- ID: MA-SOL-APM-01-005-072 | FOR: MA-EX-APM-01-005-072 -->
+
 ### 72
 
 La fórmula
@@ -2023,7 +2162,7 @@ La tabla revela de manera transparente **qué valuaciones** sobreviven. La vía 
 
 ## M. Problemas avanzados tipo prueba
 
-<!-- ID: MA-SOL-APM-01-005-073 | FOR: MA-EX-APM-01-005-073 -->
+
 ### 73
 
 Sea
@@ -2081,7 +2220,7 @@ $$
 
 La razón estructural es precisa: si $Q\land R$ es verdadera, entonces o bien $P$ es verdadera, en cuyo caso ya es verdadero $P\land Q$, o bien $P$ es falsa, en cuyo caso ya es verdadero $\neg P\land R$. El término de consenso no añade ninguna valuación nueva.
 
-<!-- ID: MA-SOL-APM-01-005-074 | FOR: MA-EX-APM-01-005-074 -->
+
 ### 74
 
 Partimos de
@@ -2155,7 +2294,7 @@ $$
 
 La lectura semántica subyacente es la regla de resolución: si $P\lor Q$ y $\neg P\lor R$ son verdaderas, el valor de $P$ obliga a que al menos una de $Q,R$ sea verdadera.
 
-<!-- ID: MA-SOL-APM-01-005-075 | FOR: MA-EX-APM-01-005-075 -->
+
 ### 75
 
 La condición “al menos dos verdaderas” se cumple en cuatro filas:
@@ -2224,7 +2363,7 @@ M\equiv&
 \end{aligned}
 $$
 
-**(d) FNC reducida.** Para que al menos dos sean verdaderas, no puede ocurrir que ninguna de las parejas tenga un miembro verdadero. Equivalentemente:
+**(d) FNC reducida.** Al menos dos son verdaderas si y sólo si ninguna pareja tiene sus dos componentes falsos. Si como máximo una es verdadera, las otras dos forman una pareja falsa; si una pareja tiene sus dos componentes falsos, queda como máximo una verdadera. Por tanto, cada una de las tres parejas debe tener al menos un miembro verdadero. Equivalentemente:
 
 $$
 \boxed{
@@ -2246,20 +2385,20 @@ $$
 
 Así las dos formas reducidas son equivalentes sin recurrir a una tabla.
 
-<!-- ID: MA-SOL-APM-01-005-076 | FOR: MA-EX-APM-01-005-076 -->
+
 ### 76
 
-Sea
+Para distinguir el nombre de la fórmula de la constante falsa $F$, usamos $H$. Sea
 
 $$
-F=\neg[(P\Leftrightarrow Q)\Rightarrow(R\lor\neg P)].
+H=\neg[(P\Leftrightarrow Q)\Rightarrow(R\lor\neg P)].
 $$
 
 Comenzamos usando $\neg(A\Rightarrow B)\equiv A\land\neg B$:
 
 $$
 \begin{aligned}
-F
+H
 &\equiv(P\Leftrightarrow Q)\land\neg(R\lor\neg P)\\
 &\equiv(P\Leftrightarrow Q)\land(\neg R\land\neg\neg P)\\
 &\equiv(P\Leftrightarrow Q)\land\neg R\land P.
@@ -2278,7 +2417,7 @@ Por tanto,
 
 $$
 \begin{aligned}
-F
+H
 &\equiv
 (\neg P\lor Q)\land(\neg Q\lor P)\land\neg R\land P\\
 &\equiv
@@ -2308,7 +2447,7 @@ $$
 Finalmente,
 
 $$
-\boxed{F\equiv P\land Q\land\neg R}.
+\boxed{H\equiv P\land Q\land\neg R}.
 $$
 
 Esta expresión es una **FND** porque es una disyunción de un solo término, y ese término es una conjunción de literales. También puede leerse como **FNC**:
@@ -2321,7 +2460,7 @@ es decir, una conjunción de tres cláusulas unitarias.
 
 La simplificación muestra además exactamente cuándo la fórmula original es verdadera: $P$ y $Q$ deben ser verdaderas y $R$ falsa.
 
-<!-- ID: MA-SOL-APM-01-005-077 | FOR: MA-EX-APM-01-005-077 -->
+
 ### 77
 
 Consideremos
@@ -2400,7 +2539,7 @@ $$
 
 **(d) Interpretación.** Si alguna proposición del ciclo es verdadera, las implicaciones fuerzan sucesivamente la verdad de las otras dos. Si alguna es falsa, recorrer el ciclo en sentido lógico impide que aparezca una combinación mixta estable. El ciclo completo obliga a que las tres compartan valor.
 
-<!-- ID: MA-SOL-APM-01-005-078 | FOR: MA-EX-APM-01-005-078 -->
+
 ### 78
 
 Supongamos
@@ -2493,7 +2632,7 @@ pero nuevamente $P\not\equiv Q$.
 
 Las dos hipótesis se complementan: una controla el caso $C=V$ y la otra el caso $C=F$.
 
-<!-- ID: MA-SOL-APM-01-005-079 | FOR: MA-EX-APM-01-005-079 -->
+
 ### 79
 
 La fórmula es
@@ -2589,7 +2728,7 @@ La FND canónica enumera exactamente las dos valuaciones que satisfacen simultá
 
 Por tanto ambas formas representan exactamente la misma función booleana que $H$.
 
-<!-- ID: MA-SOL-APM-01-005-080 | FOR: MA-EX-APM-01-005-080 -->
+
 ### 80
 
 Sea
@@ -2740,3 +2879,145 @@ $$
 $$
 
 La estructura general es la **transitividad encadenada de la implicación**: si la verdad de $P$ fuerza la de $Q$, la de $Q$ fuerza la de $R$ y la de $R$ fuerza la de $S$, entonces la verdad de $P$ fuerza necesariamente la de $S$.
+
+
+## N. Elegir la representación según el objetivo
+
+
+### 81
+Factorizamos los dos primeros términos: $A\equiv P\land(Q\lor\neg Q)\lor R\equiv P\lor R$. Esta cláusula, con dos apariciones de literales, permite leer que $A$ es falsa exactamente cuando $P=F,R=F$, sea cual sea $Q$.
+
+Para enumerar las filas verdaderas usamos la FND canónica:
+
+$(P\land Q\land R)\lor(P\land Q\land\neg R)\lor(P\land\neg Q\land R)\lor(P\land\neg Q\land\neg R)\lor(\neg P\land Q\land R)\lor(\neg P\land\neg Q\land R)$.
+
+Los cuatro primeros términos cubren todas las filas con $P=V$; los dos últimos cubren $P=F,R=V$. Son las seis filas verdaderas de $P\lor R$, sin duplicaciones. Cada término contiene tres literales, por lo que hay dieciocho apariciones. La forma grande no reduce el tamaño; identifica cada fila por separado, que es precisamente el segundo objetivo. No es necesario expandir la fórmula compacta para decidir sus casos falsos.
+
+
+### 82
+La expansión disyuntiva del bicondicional da $B\equiv(P\land Q)\lor(\neg P\land\neg Q)\lor R$, una FND de tres términos y cinco apariciones de literales. El término unitario $R$ hace visible que $R=V$ basta para satisfacerla.
+
+Usando la expansión conjuntiva y distribuyendo $R$:
+
+$B\equiv[(\neg P\lor Q)\land(\neg Q\lor P)]\lor R\equiv(\neg P\lor Q\lor R)\land(\neg Q\lor P\lor R)$.
+
+Esta FNC tiene dos cláusulas y seis apariciones de literales. La primera falla en $P=V,Q=F,R=F$; la segunda en $P=F,Q=V,R=F$. Son exactamente los dos casos de bicondicional falso y $R$ falso. Ambas formas son equivalentes por las leyes utilizadas. La FND tiene una aparición menos que esta FNC; eso compara dos escrituras concretas y no demuestra un mínimo entre todas las representaciones posibles.
+
+
+### 83
+Eliminar implicaciones da la FNC $(\neg P\lor Q)\land(\neg P\lor R)$, con cuatro apariciones. Sus dos cláusulas conservan visibles las dos exigencias: cuando $P$ es verdadero, se necesita $Q$ y también $R$.
+
+Por distributividad inversa, esa FNC equivale a $\neg P\lor(Q\land R)$, una FND de dos términos y tres apariciones. Sus alternativas son claras: basta que $P$ sea falso, o que $Q,R$ sean ambos verdaderos.
+
+Con $P=F$, las cuatro elecciones de $Q,R$ satisfacen la fórmula; con $P=V$, sólo $Q=V,R=V$ la satisface. Por tanto, la FND canónica tiene cinco términos de tres literales, con quince apariciones. Cada uno identifica una fila, mientras los dos términos compactos agrupan varias. La FNC separa exigencias; la FND compacta agrupa maneras de satisfacerlas; la canónica enumera cada posibilidad. Todas conservan el mismo comportamiento semántico.
+
+
+## O. Variables declaradas y formas canónicas
+
+
+### 84
+Con $P,Q$, la FND canónica es $(P\land Q)\lor(\neg P\land\neg Q)$, y la FNC canónica es $(\neg P\lor Q)\land(P\lor\neg Q)$. Cada una tiene dos bloques de dos literales, con cuatro apariciones.
+
+Al declarar también $R$, la FND canónica es
+
+$(P\land Q\land R)\lor(P\land Q\land\neg R)\lor(\neg P\land\neg Q\land R)\lor(\neg P\land\neg Q\land\neg R)$.
+
+La FNC canónica es
+
+$(\neg P\lor Q\lor\neg R)\land(\neg P\lor Q\lor R)\land(P\lor\neg Q\lor\neg R)\land(P\lor\neg Q\lor R)$.
+
+Cada fila previa se extiende con $R=V$ y $R=F$. Hay cuatro bloques de tres literales en cada forma, con doce apariciones. En la FND, factorizar cada pareja según $R\lor\neg R$ y usar complemento recupera los dos términos originales. En la FNC, cada pareja tiene la forma $(X\lor\neg R)\land(X\lor R)\equiv X\lor(\neg R\land R)\equiv X$, y recupera las dos cláusulas originales. $R$ figura en las formas canónicas ampliadas, pero su valor no decide la verdad del bicondicional.
+
+
+### 85
+Con sólo $Q$, ambas formas canónicas son $\neg Q$: un término o una cláusula de un literal.
+
+Con $P,Q$, las filas verdaderas son $(V,F)$ y $(F,F)$, y la FND es $(P\land\neg Q)\lor(\neg P\land\neg Q)$. Las filas falsas son $(V,V)$ y $(F,V)$, y la FNC es $(\neg P\lor\neg Q)\land(P\lor\neg Q)$. Cada forma tiene dos bloques y cuatro apariciones. Factorización y complemento reducen las dos a $\neg Q$.
+
+En el orden $Q,P$, las filas verdaderas se escriben $(F,V)$ y $(F,F)$; las falsas, $(V,V)$ y $(V,F)$. Cambia la posición de cada coordenada, no la condición «$Q$ falsa». Manteniendo identificadas las variables, las formas sólo requieren reordenar literales o bloques.
+
+Con $P,Q,R$, hay cuatro filas verdaderas y cuatro falsas. Cada forma canónica tiene cuatro bloques de tres literales, con doce apariciones. Las variables adicionales no alteran el significado; duplican las extensiones de cada fila previa.
+
+
+### 86
+Sin variables declaradas hay una única valuación, la asignación vacía: no queda ninguna elección por realizar. Una tautología es verdadera en ella, así que su FND canónica contiene un término sin literales, interpretado como una conjunción vacía, $V$; su FNC no tiene cláusulas y también se representa por $V$.
+
+Una contradicción es falsa en esa valuación. Su FND no tiene términos y se representa por $F$; su FNC contiene una cláusula sin literales, interpretada como una disyunción vacía, $F$. No deben confundirse «una cláusula vacía» y «ninguna cláusula»: la primera excluye la única valuación; la segunda no excluye ninguna.
+
+Con $P,Q$, hay cuatro valuaciones. La tautología tiene cuatro términos canónicos de dos literales en su FND y ninguna cláusula en su FNC. La contradicción tiene ningún término en su FND y cuatro cláusulas canónicas de dos literales en su FNC. Las formas no vacías tienen ocho apariciones de literales; las representaciones constantes tienen cero. Son las mismas verdades extremas sobre dos contextos de comparación distintos.
+
+
+## P. Alcance de una sustitución
+
+
+### 87
+Los signos de negación sobre las dos apariciones de $P$ no están anidados sobre una misma subfórmula. La doble negación exige el patrón $\neg\neg X$, no dos signos encontrados en lugares distintos.
+
+De Morgan sobre el segundo término da
+
+$D\equiv\neg P\lor(\neg Q\land\neg\neg P)\equiv\neg P\lor(\neg Q\land P)$.
+
+Ahora sí aparece la subfórmula $\neg\neg P$ dentro de ese término y puede reemplazarse por $P$. Distribuyendo:
+
+$\neg P\lor(\neg Q\land P)\equiv(\neg P\lor\neg Q)\land(\neg P\lor P)\equiv\neg P\lor\neg Q$.
+
+Con $P=V,Q=V$, el original vale $F$, mientras el resultado propuesto $P\lor\neg Q$ vale $V$. Ese caso refuta la sustitución. La reparación aplica cada ley a un bloque con la estructura exacta que exige.
+
+
+### 88
+La ley es $X\land(X\lor Y)\equiv X$. Aquí $X=P\lor Q$ y $Y=R$, de modo que $E\equiv P\lor Q$. No puede reemplazarse el bloque completo por una sola parte $P$.
+
+Con $P=F,Q=V,R=F$, ambos factores de $E$ son verdaderos, por lo que $E=V$, pero la respuesta propuesta $P$ vale $F$.
+
+La ley depende de los valores del bloque $X$, que pueden ser $V$ o $F$, y no de cuántos símbolos tenga dentro. Por eso el mismo esquema vale para una subfórmula compuesta. Precisamente por eso hay que conservar ese bloque entero al sustituir. El resultado $P\lor Q$ es una cláusula y, por tanto, una FNC de una cláusula; también es una FND de dos términos unitarios.
+
+
+### 89
+De Morgan sobre la disyunción exterior da $\neg(P\Rightarrow Q)\land\neg R$. El paso propuesto reemplaza la negación de todo el condicional por un condicional con ambos componentes negados. Esos bloques no son equivalentes.
+
+Con $P=F,Q=F,R=F$, el condicional $P\Rightarrow Q$ vale $V$, por lo que el original vale $F$. En cambio, $\neg P\Rightarrow\neg Q$ vale $V$ y $\neg R$ vale $V$, así que el resultado propuesto vale $V$.
+
+La reparación es
+
+$\neg[(P\Rightarrow Q)\lor R]\equiv\neg(P\Rightarrow Q)\land\neg R\equiv(P\land\neg Q)\land\neg R$.
+
+El último paso usa eliminación de implicación y De Morgan: $\neg(P\Rightarrow Q)\equiv P\land\neg Q$. La fórmula sólo es verdadera en $P=V,Q=F,R=F$, pues exige esos tres literales simultáneamente. Es una FND de un término y una FNC de tres cláusulas unitarias.
+
+
+## Q. Diseñar desde la tabla prescrita
+
+
+### 90
+Los cuatro minterminos dan la FND canónica
+
+$(P\land Q\land\neg R)\lor(P\land\neg Q\land\neg R)\lor(\neg P\land Q\land R)\lor(\neg P\land\neg Q\land R)$.
+
+Las filas falsas restantes son $(V,V,V),(V,F,V),(F,V,F),(F,F,F)$, por lo que la FNC canónica es
+
+$(\neg P\lor\neg Q\lor\neg R)\land(\neg P\lor Q\lor\neg R)\land(P\lor\neg Q\lor R)\land(P\lor Q\lor R)$.
+
+Agrupar las dos primeras filas verdaderas y las dos últimas por el valor de $Q$ simplifica la FND a $(P\land\neg R)\lor(\neg P\land R)$. La condición es que $P,R$ tengan valores distintos; $Q$ puede cambiar sin alterar la verdad.
+
+Cada mintermino selecciona exactamente su fila y cada cláusula canónica excluye exactamente una fila falsa. Esa descripción cubre las ocho valuaciones, no sólo un ejemplo. Las formas canónicas tienen doce apariciones cada una; la FND compacta tiene cuatro.
+
+
+### 91
+La FND canónica es $(P\land\neg Q\land R)\lor(P\land\neg Q\land\neg R)$. Al factorizar se obtiene $P\land\neg Q\land(R\lor\neg R)\equiv P\land\neg Q$.
+
+Esta última es una FNC de dos cláusulas unitarias. Eliminar $R$ es lícito porque, cuando $P=V,Q=F$, ambos valores de $R$ están permitidos, y cuando falla uno de esos requisitos, ninguno está permitido.
+
+Las seis filas falsas producen la FNC canónica
+
+$(\neg P\lor\neg Q\lor\neg R)\land(\neg P\lor\neg Q\lor R)\land(P\lor\neg Q\lor\neg R)\land(P\lor\neg Q\lor R)\land(P\lor Q\lor\neg R)\land(P\lor Q\lor R)$.
+
+Las cláusulas corresponden, en orden, a $(V,V,V),(V,V,F),(F,V,V),(F,V,F),(F,F,V),(F,F,F)$. La conjunción es falsa exactamente en esas filas y verdadera en las dos prescritas. La FND canónica tiene seis apariciones, la FNC compacta dos y la FNC canónica dieciocho. Ninguna de estas equivalencias autoriza eliminar una variable de un término aislado sin comprobar qué filas nuevas se aceptarían.
+
+
+### 92
+Una opción siempre verdadera es $T=(P\lor Q)\lor\neg(P\lor Q)$: complemento aplicado al bloque $P\lor Q$ da $T\equiv V$. Una opción siempre falsa es $K=(R\land S)\land\neg(R\land S)$: complemento sobre $R\land S$ da $K\equiv F$.
+
+Con cuatro variables declaradas hay dieciséis valuaciones. La FND canónica de $T$ incluye un mintermino por cada una: en cada bloque, las variables verdaderas se escriben sin negar y las falsas negadas. Son dieciséis términos de cuatro literales, con sesenta y cuatro apariciones. Su FNC canónica no tiene cláusulas y se representa por $V$.
+
+La FND canónica de $K$ no tiene términos y se representa por $F$. Su FNC canónica incluye una cláusula por cada valuación, negando las variables que valen $V$ y dejando positivas las que valen $F$. Son dieciséis cláusulas de cuatro literales, con sesenta y cuatro apariciones. Cada fila hace falsa su propia cláusula.
+
+Las constantes no aparecen en las fórmulas diseñadas, pero sí pueden aparecer en sus representaciones canónicas extremas conforme a la convención de §5.13. Las variables que no usa cada fórmula siguen interviniendo en la tabla declarada; su inclusión no cambia el comportamiento constante.
