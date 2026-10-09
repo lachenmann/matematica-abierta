@@ -15081,7 +15081,7 @@ $$
 \boxed{
 \text{conjunto de aproximantes}
 \to
-\supremo
+\text{supremo}
 \to
 \text{perturbaciones}
 \to
