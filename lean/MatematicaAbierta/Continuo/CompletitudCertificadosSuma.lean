@@ -285,9 +285,6 @@ theorem sumCertificateStage_eventually (eA eB : Code) (x y : ℝ)
       have ht' : 1 / (((t + 1 : ℕ) : ℚ)) <
           codedQuery i + codedQuery j - codedQuery z := by
         simpa only [Nat.cast_add, Nat.cast_one] using ht
-      have ht' : 1 / (((t + 1 : ℕ) : ℚ)) <
-          codedQuery z - (codedQuery i + codedQuery j) := by
-        simpa only [Nat.cast_add, Nat.cast_one] using ht
       linarith
     have hcomparison :
         sumStageComparison z i j (t + 1) = some true :=
@@ -337,6 +334,9 @@ theorem sumCertificateStage_eventually (eA eB : Code) (x y : ℝ)
     have hmargin :
         codedQuery i + codedQuery j + 1 / (((t + 1 : ℕ) : ℚ)) <
           codedQuery z := by
+      have ht' : 1 / (((t + 1 : ℕ) : ℚ)) <
+          codedQuery z - (codedQuery i + codedQuery j) := by
+        simpa only [Nat.cast_add, Nat.cast_one] using ht
       linarith
     have hcomparison :
         sumStageComparison z i j (t + 1) = some false :=
