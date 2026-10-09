@@ -65,8 +65,7 @@ Este capítulo introduce una regla de trabajo que permanecerá durante toda la c
 
 El propósito no es volver lento el cálculo. Es construir una fluidez más profunda: poder transformar con rapidez **porque entendemos qué estamos haciendo**.
 
----
-
+***
 ## 3.1. Una respuesta correcta puede contener un razonamiento incorrecto
 
 Consideremos el siguiente intento de resolver $x+4=9$:
@@ -111,8 +110,7 @@ Este contraste introduce dos preguntas que acompañarán todo el capítulo:
 
 Llegar a una respuesta correcta no basta para validar una cadena. Una solución matemática debe poder defender sus transformaciones.
 
----
-
+***
 ## 3.2. La igualdad permite sustituir iguales por iguales
 
 Si $A=B$, entonces $A$ y $B$ representan el mismo objeto o valor en el contexto considerado.
@@ -151,8 +149,7 @@ En una cadena de **ecuaciones**, queremos mantener el mismo conjunto de solucion
 
 Esa distinción será decisiva más adelante en el capítulo.
 
----
-
+***
 ## 3.3. Las leyes básicas de la suma y el producto
 
 Trabajaremos principalmente con números racionales y reales, donde disponemos de suma y multiplicación con propiedades muy familiares.
@@ -209,8 +206,7 @@ También tenemos $(a+b)c=ac+bc$, que puede verse como la misma ley combinada con
 
 La distributividad no es simplemente una regla para «sacar paréntesis». Es una relación profunda entre las dos operaciones.
 
----
-
+***
 ### Intercambiar no es reagrupar
 
 Uno de los errores conceptuales más frecuentes consiste en atribuir cualquier cambio de orden o paréntesis a una vaga «propiedad conmutativa».
@@ -242,8 +238,7 @@ $$
 
 La cadena es elemental, pero enseña una disciplina esencial: **nombrar la propiedad exacta**.
 
----
-
+***
 ## 3.4. Inversos: deshacer una operación
 
 Para cada número $a$ existe un número $-a$ tal que
@@ -298,8 +293,7 @@ La afirmación correcta, en $\mathbb Q$ o $\mathbb R$, es:
 
 La condición $a\neq0$ no es una nota al margen. Es parte de la afirmación matemática.
 
----
-
+***
 ## 3.5. Resta y división como operaciones derivadas
 
 La resta puede interpretarse mediante suma e inverso aditivo:
@@ -328,8 +322,7 @@ Al reducir resta y división a operaciones e inversos, disminuye la cantidad de 
 
 En lugar de aprender muchas recetas, podemos reconstruirlas a partir de unas pocas propiedades.
 
----
-
+***
 ## 3.6. Consecuencias que ya no deben memorizarse
 
 ### Primera consecuencia: $a\cdot0=0$
@@ -373,8 +366,7 @@ Este argumento ilustra una idea central:
 
 > una regla familiar puede ser una consecuencia necesaria de propiedades más fundamentales.
 
----
-
+***
 ### Reglas de signos como consecuencias
 
 #### El producto por un inverso aditivo
@@ -424,8 +416,7 @@ Entonces $a$ es el inverso aditivo de $-a$. Por tanto,
 
 $-(-a)=a$.
 
----
-
+***
 ### Cancelación aditiva y multiplicativa
 
 #### Cancelación aditiva
@@ -475,8 +466,7 @@ $$
 
 Recíprocamente, si cualquiera de los factores es cero, el producto es cero por la primera consecuencia de esta sección. La disponibilidad de inversos para los factores no nulos es esencial para esta demostración.
 
----
-
+***
 ## 3.7. Distributividad en ambos sentidos
 
 La igualdad
@@ -505,8 +495,7 @@ Ninguna forma es absolutamente superior. La pregunta correcta es:
 
 > ¿Qué forma hace visible la información que necesito?
 
----
-
+***
 ## 3.8. Expresiones equivalentes y dominio
 
 Recordemos las expresiones
@@ -542,8 +531,7 @@ Una transformación puede:
 
 La restricción debe viajar con el razonamiento.
 
----
-
+***
 ## 3.9. Transformar una ecuación no es lo mismo que transformar una expresión
 
 En una expresión buscamos conservar un valor.
@@ -578,8 +566,7 @@ La ecuación original tenía una sola solución. La nueva igualdad es verdadera 
 
 La transformación perdió toda la información.
 
----
-
+***
 ## 3.10. Transformaciones reversibles y transformaciones que pierden información
 
 Si $x=1$, entonces $x^2=1$.
@@ -604,8 +591,7 @@ Si la respuesta es no, debemos tratar la nueva condición con cautela y verifica
 
 La lógica formal de estas relaciones llegará más adelante. Por ahora basta reconocer la asimetría.
 
----
-
+***
 ### Dividir por una expresión exige saber que no es cero
 
 Supongamos que tenemos
@@ -630,8 +616,7 @@ Si no lo sabemos, la división puede eliminar casos importantes.
 
 Esta pregunta reaparecerá constantemente en ecuaciones, polinomios, matrices y estructuras abstractas.
 
----
-
+***
 ### Qué conserva cada transformación
 
 Antes de aceptar un paso conviene precisar qué se quiere conservar. El mismo factor puede ser seguro en una expresión y exigir una separación de casos en una ecuación.
@@ -650,8 +635,7 @@ El dominio no cambia silenciosamente para acomodar el procedimiento. Si el probl
 
 **Resolución.** La ecuación fraccionaria exige $x\neq2$. En ese dominio podemos cancelar el factor no nulo y obtener $x+1=3$, cuyo único candidato es $x=2$. El candidato está excluido: la ecuación original no tiene soluciones. La ecuación $x+1=3$ sobre todos los reales sí tiene la solución $2$. La simplificación conserva valores y soluciones **en el dominio original**; olvidar la restricción cambia el problema. Si la dificultad estuvo en identificar la entrada excluida, vuelve a §2.3; si estuvo en distinguir valor y solución, contrasta §§3.8–3.9.
 
----
-
+***
 ## 3.11. Cancelar no significa borrar símbolos
 
 Consideremos
@@ -690,8 +674,7 @@ La pregunta debe ser:
 
 > ¿Existe realmente un factor común y es no nulo en el dominio considerado?
 
----
-
+***
 ### Buscar el factor de todo el numerador
 
 Para cancelar, primero hay que identificar un producto completo. Consideremos
@@ -714,8 +697,7 @@ En $x=3$, la primera expresión vale $6$ y la segunda vale $11/2$. Este cálculo
 
 **Resolución.** En el primer caso, ambos sumandos tienen factor $x-1$: el numerador es $(x-1)(x+2+c)$ y el resultado es $x+2+c$, con $x\neq1$. En el segundo obtenemos $x+2+\frac c{x-1}$, con la misma restricción. Si $c=0$, las dos formas simplificadas coinciden; si $c\neq0$, coinciden solamente cuando $\frac c{x-1}=c$, es decir, cuando $x=2$. Esta coincidencia puntual no autoriza la cancelación propuesta para todo $x$. Para recuperar la factorización, vuelve a §3.7; para recuperar la condición sobre el inverso, vuelve a §§3.4–3.6.
 
----
-
+***
 ## 3.12. Cadenas justificadas: escribir álgebra como argumento
 
 Una cadena algebraica puede leerse como una demostración en miniatura.
@@ -745,8 +727,7 @@ Con la práctica, una cadena puede comprimirse. Pero la compresión es legítima
 
 La meta no es escribir siempre la versión más larga. La meta es poder defenderla.
 
----
-
+***
 ### Detallar y abreviar sin cambiar el argumento
 
 Un argumento detallado ayuda a reconocer sus mecanismos. Una vez comprendidos, puede escribirse una versión más breve que conserve las justificaciones decisivas.
@@ -775,8 +756,7 @@ En los ejercicios de cadenas detalladas, haz visibles las transformaciones que p
 
 **Resolución.** Una ruta detallada desarrolla: $5x-10-3x+6=8$; por agrupación y cálculo, $2x-4=8$; sumando $4$, $2x=12$; dividiendo por $2\neq0$, $x=6$. La ruta breve factoriza primero: $(5-3)(x-2)=8$, luego $2(x-2)=8$. Dividir por $2$ y sumar $2$ da $x=6$. Ambas rutas son reversibles. La verificación es $5(6-2)-3(6-2)=20-12=8$. Factorizar aprovecha el bloque repetido $x-2$ y evita desarrollar para volver a agrupar. Si no reconociste el bloque, vuelve a §3.7; si faltó justificar la división, vuelve a §3.9.
 
----
-
+***
 ## 3.13. Diagnóstico: encontrar el primer paso inválido
 
 Consideremos:
@@ -819,8 +799,7 @@ Un diagnóstico matemático debe poder señalar:
 
 Este modo de leer errores será esencial en demostraciones posteriores.
 
----
-
+***
 ## 3.14. Cierre — protocolo de transformación justificada
 
 Antes de transformar, preguntar:
@@ -842,8 +821,7 @@ No basta con mover símbolos hasta obtener una forma familiar.
 
 > **Transformar algebraicamente es reemplazar expresiones o condiciones mediante pasos cuya validez puede defenderse.**
 
----
-
+***
 # Ejercicios
 
 Todos los ejercicios son originales para *Álgebra para matemáticos*, calibrados con el corpus universitario y las fuentes rectoras del capítulo.
@@ -1087,8 +1065,7 @@ Luego determina qué soluciones de la ecuación final satisfacen la ecuación in
 **72.** Sean $a,b$ reales fijos. Resuelve $\frac{(x-a)(x-b)}{x-a}=0$ conservando el dominio, tanto si $a\neq b$ como si $a=b$. Compara cancelar el factor común con eliminar el denominador y resolver una ecuación producto. Diseña con estos parámetros un ejemplo que tenga una solución y otro que no tenga ninguna.
 
 
----
-
+***
 # Soluciones
 
 ## A. Identificar la propiedad

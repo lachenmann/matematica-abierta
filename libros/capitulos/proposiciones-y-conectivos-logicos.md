@@ -49,8 +49,7 @@ El objetivo no es convertir el lenguaje matemático en una colección de símbol
 
 > **La lógica proposicional separa el contenido de una afirmación de la forma en que su verdad depende de otras afirmaciones.**
 
----
-
+***
 ## 4.1. ¿Qué es una proposición?
 
 Consideremos estas expresiones:
@@ -75,8 +74,7 @@ Llamaremos **proposición** a una afirmación declarativa a la que, en el contex
 
 Más adelante estudiaremos sistemáticamente expresiones abiertas y cuantificadores. Por ahora basta reconocer la frontera.
 
----
-
+***
 ## 4.2. Proposición y valor de verdad no son lo mismo
 
 Una proposición es la afirmación; su **valor de verdad** es uno de dos valores:
@@ -114,8 +112,7 @@ En ese análisis, $P$ y $Q$ son **proposiciones atómicas** y la nueva afirmaci�
 
 La lógica proposicional abstrae del contenido interno de $P$ y $Q$ para estudiar cómo se combina su verdad.
 
----
-
+***
 ## 4.3. Negación y alcance
 
 La **negación** de $P$, escrita $\neg P$, es verdadera exactamente cuando $P$ es falsa.
@@ -151,8 +148,7 @@ Los paréntesis determinan el **alcance** de la negación.
 
 Todavía no transformaremos sistemáticamente una negación de una conjunción en otra fórmula. Esa será materia de C5. Aquí el objetivo es leer la estructura correcta.
 
----
-
+***
 ## 4.4. Conjunción: exigir dos condiciones
 
 La **conjunción** de $P$ y $Q$ se escribe
@@ -190,8 +186,7 @@ En matemática es frecuente que una afirmación requiera simultáneamente varias
 
 contiene una conjunción, aunque no aparezca el símbolo $\land$.
 
----
-
+***
 ## 4.5. Disyunción: al menos una condición
 
 La **disyunción** se escribe
@@ -221,8 +216,7 @@ $x=1$ o $x=-2$.
 
 No hay aquí una exigencia de exclusividad lógica; simplemente al menos una de las alternativas debe cumplirse.
 
----
-
+***
 ## 4.6. El condicional material
 
 La afirmación
@@ -264,8 +258,7 @@ Por ejemplo, «si $10$ es par, entonces $2+2=4$» tiene antecedente y consecuent
 
 La lógica proposicional registra condiciones de verdad, no mecanismos físicos de producción.
 
----
-
+***
 ### Un caso verdadero y una regla válida
 
 Fijemos un entero $n$ y llamemos $P$ a «$n$ es par» y $Q$ a «$n$ es múltiplo de $3$». Estas propiedades permiten realizar las cuatro filas del condicional con números concretos:
@@ -285,8 +278,7 @@ Hay una distinción cercana que conviene fijar desde ahora. Un **argumento** pro
 
 **Resolución.** La premisa es $P$ y la conclusión es $Q$. Para refutar el paso necesitamos $P=V,Q=F$, no un caso en que ambas sean verdaderas. El entero $2$ realiza esa valuación: es par y no es múltiplo de $3$. El paso propuesto no es válido. El condicional correspondiente a $n=6$ sigue siendo verdadero; lo que falla es usar ese caso para garantizar el paso para cualquier entero. Si buscaste un número impar como contraejemplo, vuelve a la fila $V,F$ de §4.6; si confundiste la afirmación con su valor, vuelve a §4.2.
 
----
-
+***
 ## 4.7. Condición suficiente y condición necesaria
 
 El condicional $P\Rightarrow Q$ puede expresarse de varias maneras.
@@ -331,8 +323,7 @@ $Q\Rightarrow P$.
 
 La dirección debe leerse desde la función lógica, no desde el orden de aparición de las palabras.
 
----
-
+***
 ### Traducir buscando el caso prohibido
 
 Las palabras «necesario» y «suficiente» pueden leerse mediante una misma pregunta: **¿qué combinación de verdad excluye la frase?**
@@ -354,8 +345,7 @@ Para leer una frase, identifica primero las afirmaciones completas; después det
 
 **Resolución.** La frase prohíbe $A=V,B=F$, así que se traduce $A\Rightarrow B$. Con «si»: «el entero es par si es múltiplo de $10$». No afirma $B\Rightarrow A$: el entero $2$ es par y no es múltiplo de $10$. La traducción y el examen matemático son tareas distintas: primero reproducimos lo que dice la frase; luego averiguamos si es verdadero. Si invertiste el condicional, vuelve a las lecturas «$P$ si $Q$» y «$P$ sólo si $Q$» de esta sección.
 
----
-
+***
 ## 4.8. Conversa, inversa y contraposición
 
 Partimos del condicional
@@ -400,8 +390,7 @@ En C5 aprenderemos a expresar este hecho mediante equivalencias y transformacion
 - conversa: «si es par, entonces es múltiplo de $4$» — falsa;
 - contraposición: «si no es par, entonces no es múltiplo de $4$» — verdadera cuando el original lo es.
 
----
-
+***
 ### Una dirección no concede la otra
 
 Sean $P$: «un entero fijado es múltiplo de $6$» y $Q$: «ese entero es múltiplo de $3$». El condicional $P\Rightarrow Q$ vale para cualquier entero: si $n=6k$, entonces $n=3(2k)$. La conversa $Q\Rightarrow P$ no tiene esa garantía; el entero $3$ cumple $Q$ y falla $P$.
@@ -414,8 +403,7 @@ El bicondicional pide que las dos direcciones se sostengan. En $n=12$, $P$ y $Q$
 
 **Resolución.** En $10$, $P=F$ y $Q=V$. El original $P\Rightarrow Q$ vale $V$; la conversa $Q\Rightarrow P$ vale $F$; la inversa $\neg P\Rightarrow\neg Q$ vale $F$; la contraposición $\neg Q\Rightarrow\neg P$ vale $V$; el bicondicional vale $F$. El caso refuta la conversa y la inversa como afirmaciones para todos los enteros, y refuta la doble dirección. Para justificar el original en general, si $n=4k$, entonces $n=2(2k)$ y es par. La tabla completa de §4.8 garantiza la coincidencia entre original y contraposición para cualquier valuación, no sólo para el entero $10$. Si cambiaste únicamente el orden o únicamente las negaciones, compara otra vez las tres fórmulas de esta sección.
 
----
-
+***
 ## 4.9. Bicondicional: poder ir en ambas direcciones
 
 El **bicondicional** se escribe
@@ -446,8 +434,7 @@ Si una condición $P$ lleva a $Q$ y también $Q$ lleva a $P$, el bicondicional r
 
 No usaremos todavía el símbolo $\Leftrightarrow$ como una señal para ejecutar cadenas largas de reescrituras. Ese uso algebraico comenzará en C5.
 
----
-
+***
 ## 4.10. Sintaxis, paréntesis y conectivo principal
 
 Una fórmula proposicional tiene estructura.
@@ -493,8 +480,7 @@ $(\neg P)\Rightarrow Q$ tiene como conectivo principal $\Rightarrow$.
 
 Los paréntesis no son decoración. Determinan qué fórmula estamos escribiendo.
 
----
-
+***
 ## 4.11. Tablas de verdad como semántica explícita
 
 Una tabla de verdad enumera sistemáticamente todas las posibles asignaciones de valores de verdad a las proposiciones atómicas.
@@ -547,8 +533,7 @@ no conviene adivinar la columna final. Construimos primero:
 
 La tabla hace explícita la semántica de la fórmula completa.
 
----
-
+***
 ## 4.12. Tautología, contradicción y contingencia
 
 Una fórmula es una **tautología** si es verdadera en todas las valuaciones.
@@ -583,8 +568,7 @@ La clasificación no depende del contenido concreto de $P$ y $Q$, sino de la for
 
 C5 desarrollará procedimientos de transformación que permitirán reconocer muchas de estas propiedades sin reconstruir siempre una tabla completa.
 
----
-
+***
 ## 4.13. Traducir entre lenguaje matemático y símbolos
 
 La simbolización no consiste en sustituir palabras mecánicamente. Debemos identificar la estructura.
@@ -643,8 +627,7 @@ puede verbalizarse:
 
 La dirección simbólica y la verbal deben entrenarse ambas.
 
----
-
+***
 ## 4.14. Cierre — leer una afirmación lógicamente
 
 Ante una afirmación matemática, podemos seguir este protocolo:
@@ -666,8 +649,7 @@ La pregunta final es:
 
 C4 nos enseña a leer esa arquitectura. En C5 aprenderemos a transformarla algebraicamente.
 
----
-
+***
 # Ejercicios
 
 Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y calibrados con el corpus rector del capítulo.
@@ -857,8 +839,7 @@ Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y cal
 **72.** Se tienen como premisas $P\Rightarrow Q$ y $P\Rightarrow R$, y se concluye $Q\Rightarrow R$. Encuentra todas las valuaciones que hacen verdaderas ambas premisas y falsa la conclusión. Realiza un contraejemplo con $P$: «un entero fijado es múltiplo de $12$», $Q$: «es múltiplo de $3$» y $R$: «es par». ¿Añadir $Q\Rightarrow P$ vuelve válido el argumento? Justifica sin leyes de reescritura.
 
 
----
-
+***
 # Soluciones
 
 ## A. Proposición, contexto y valor de verdad

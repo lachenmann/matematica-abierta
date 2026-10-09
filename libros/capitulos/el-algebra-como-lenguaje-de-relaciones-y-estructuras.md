@@ -68,8 +68,7 @@ Todavía no necesitamos poner un nombre técnico a esa propiedad. El objetivo es
 
 En capítulos posteriores estudiaremos de manera sistemática las leyes que justifican este tipo de observaciones. Aquí sólo queremos adquirir el hábito de mirar una operación como algo que **tiene comportamiento**.
 
----
-
+***
 ## 1.2. De muchos casos a una sola pregunta
 
 Supongamos que observamos
@@ -115,8 +114,7 @@ Todavía no hemos demostrado nada. Hemos realizado otra operación intelectual: 
 
 Ese paso es valioso, pero debe mantenerse separado de la demostración. Los ejemplos pueden sugerir una afirmación. No pueden, por sí solos, garantizar que la afirmación continúe siendo verdadera en todos los casos.
 
----
-
+***
 ## 1.3. Objetos, operaciones y relaciones
 
 Para leer álgebra con precisión necesitamos distinguir papeles diferentes dentro de una escritura matemática.
@@ -161,8 +159,7 @@ El hábito que queremos formar es el contrario:
 
 > Antes de transformar una escritura, identificar qué objetos aparecen, qué operaciones se realizan y qué relación se está afirmando.
 
----
-
+***
 ## 1.4. Una expresión no es una afirmación
 
 Comparemos tres escrituras:
@@ -192,8 +189,7 @@ También conviene distinguir entre:
 
 Más adelante estudiaremos formalmente proposiciones, variables, predicados y cuantificadores. En este capítulo no necesitamos todavía ese aparato. Sí necesitamos, desde ahora, una disciplina de lectura: **no manipular antes de saber qué tipo de cosa tenemos delante**.
 
----
-
+***
 ## 1.5. Patrones: descubrir no es demostrar
 
 Los patrones son una de las fuentes más fecundas de preguntas matemáticas.
@@ -243,8 +239,7 @@ Hay aquí una asimetría que utilizaremos durante toda la formación matemática
 
 Todavía no estudiaremos cómo construir ese argumento. Pero desde el primer capítulo debemos aprender a distinguir **evidencia**, **conjetura**, **contraejemplo** y **demostración**.
 
----
-
+***
 ## 1.6. Qué queremos decir aquí por “estructura”
 
 La palabra *estructura* será central en toda esta obra, pero sería un error tratarla desde el comienzo como si tuviera una definición elemental única y autosuficiente.
@@ -278,8 +273,7 @@ Más adelante estas preguntas conducirán a la teoría de grupos. Ahora no neces
 
 Los ejemplos concretos cumplen aquí una función de puente: permiten reconocer primero un comportamiento familiar y, sólo después, aislar los rasgos que pueden compararse entre contextos muy distintos.
 
----
-
+***
 ## 1.7. Transformar y preguntar qué permanece
 
 Una de las preguntas más poderosas de toda la matemática es:
@@ -306,8 +300,7 @@ Por ejemplo:
 
 Más adelante encontraremos invariantes mucho más profundos: dimensión, grado, orden, rango, clases de isomorfismo y otros. La pregunta elemental «¿qué cambia y qué permanece?» es la semilla de ese lenguaje.
 
----
-
+***
 ### Conservar una propiedad no significa conservarlo todo
 
 Comparemos dos cambios sobre el mismo par de números. Empezamos con $4$ y $9$. En el primero intercambiamos las entradas; en el segundo aumentamos la primera en $1$ y disminuimos la segunda en $1$.
@@ -370,8 +363,7 @@ En esta colección no utilizaremos representaciones visuales como adorno. Las us
 - hacer visible una transformación;
 - reconocer una estructura.
 
----
-
+***
 ### Lo que una tabla finita permite reconstruir
 
 Supongamos que sólo se nos entregan estos datos:
@@ -422,8 +414,7 @@ Cuando una pauta parece general, conviene preguntar:
 
 Generalizar matemáticamente no es adivinar una fórmula vistosa. Es formular con precisión una afirmación cuyo alcance conocemos.
 
----
-
+***
 ## 1.10. Leer algebraicamente
 
 Podemos reunir lo aprendido en una rutina de lectura.
@@ -447,8 +438,7 @@ No todas las preguntas serán útiles en cada problema. La rutina sirve para ins
 
 Éste es uno de los cambios centrales de la transición a la matemática universitaria. Cada vez habrá menos instrucciones del tipo «aplica esta fórmula» y más situaciones en las que debamos reconocer por nosotros mismos qué información es relevante y qué estructura organiza el problema.
 
----
-
+***
 ## 1.11. Síntesis
 
 El álgebra no comienza cuando aparecen letras. Comienza cuando una situación particular se convierte en objeto de comparación y generalización.
@@ -487,8 +477,7 @@ También preguntamos:
 
 > ¿qué clase de objeto estoy mirando?, ¿qué operación actúa?, ¿qué relación se afirma?, ¿qué patrón se repite?, ¿qué permanece y qué tendría que demostrar?
 
----
-
+***
 # Ejercicios
 
 Los ejercicios están ordenados por función matemática. No todos piden calcular; varios exigen explicar, comparar o decidir qué puede concluirse.
@@ -589,8 +578,7 @@ Los ejercicios están ordenados por función matemática. No todos piden calcula
 
 **36.** Escribe un párrafo matemático breve que responda: **¿qué diferencia hay entre resolver un cálculo y reconocer una estructura?** Tu respuesta debe mencionar al menos objetos, operaciones o relaciones, y generalidad.
 
----
-
+***
 ## G. Reglas distintas para los mismos datos
 
 

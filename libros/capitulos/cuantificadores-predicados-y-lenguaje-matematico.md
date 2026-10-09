@@ -49,7 +49,7 @@ La pregunta rectora del capítulo es:
 
 Salvo indicación contraria, los dominios que usemos serán no vacíos. No desarrollaremos todavía una teoría formal de lógica de primer orden; el objetivo es operativo y matemático: leer, escribir, negar y comparar afirmaciones cuantificadas con la precisión que exigirá todo el resto del libro.
 
----
+***
 ## 6.1. De una expresión abierta a una afirmación
 
 Comparemos tres escrituras:
@@ -282,8 +282,7 @@ Aquí hacemos una excepción explícita a la convención de dominios no vacíos:
 
 **Control resuelto.** En $D=\varnothing$, «todos los objetos satisfacen $P$» y «ningún objeto satisface $P$» son ambas verdaderas, mientras que «alguno satisface $P$» es falsa. No hay contradicción: los dos universales no afirman existencia. En un dominio no vacío, en cambio, no pueden ser ambos verdaderos. Al leer una cuantificación restringida, pregunta por separado si hay objetos que satisfagan la restricción y qué se afirma de ellos.
 
----
-
+***
 ## 6.8. Cuantificación restringida
 
 La notación
@@ -362,8 +361,7 @@ Para renombrar con seguridad, toma letras que no aparezcan en la fórmula. Prime
 
 **Control resuelto.** Con $D=\{0,1\}$ y el parámetro libre $y=0$, $\forall x\in D\,(x\le y)$ es falsa porque $1\nleq0$. La sustitución indebida $\forall y\in D\,(y\le y)$ es verdadera. Capturar el parámetro convirtió una comparación con un valor fijado en otra afirmación. El renombrado correcto es $\forall t\in D\,(t\le y)$, que conserva el contraejemplo $t=1$.
 
----
-
+***
 ## 6.10. Dos cuantificadores: el orden importa
 
 Cuando aparecen cuantificadores de distinto tipo, cambiar su orden puede cambiar radicalmente el significado.
@@ -414,8 +412,7 @@ Para una relación entre dos dominios finitos, representa cada primer objeto en 
 
 Cada fila tiene un testigo, y además $r$ sirve a ambas. Las dos fórmulas son verdaderas. Si cambiamos solamente $R(b,r)$ a falso, cada fila conserva algún testigo, pero ninguna columna sirve a ambas: la primera fórmula sigue siendo verdadera y la segunda pasa a falsa. Tener permiso para elegir según la fila no significa estar obligado a elegir testigos distintos; cuando hay una columna común, también podemos usarla en todas las filas. En dominios vacíos hay que volver a las definiciones de los cuantificadores, pues puede faltar una fila o una columna.
 
----
-
+***
 ## 6.11. Dependencia entre variables y elección de testigos
 
 En
@@ -495,8 +492,7 @@ Existencia, a lo sumo un testigo y exactamente un testigo son afirmaciones disti
 
 **Control resuelto.** En $D=\{0,1,2\}$, para $P_a(x):x<a$, hay cero testigos si $a=0$, uno si $a=1$ y dos si $a=2$. Por eso la afirmación $\exists!x\in D\,P_a(x)$ falla por falta de existencia en el primer caso y por falta de unicidad en el tercero. Su negación dice: ningún objeto satisface $P_a$, o hay dos objetos distintos que lo satisfacen. Si $D$ está vacío —excepción explícita a la convención inicial—, se cumple «a lo sumo uno», pero falla «existe exactamente uno».
 
----
-
+***
 ## 6.13. Traducir lenguaje matemático a símbolos
 
 La traducción correcta comienza identificando tres cosas:
@@ -634,9 +630,7 @@ $$
 
 A partir de ahora, expresiones como “para todo”, “existe” y “existe un único” dejarán de ser palabras de apoyo y se convertirán en parte visible de la estructura matemática.
 
----
-
-
+***
 ## Ejercicios del capítulo
 
 ### A — Predicados y dominios
@@ -951,8 +945,7 @@ A partir de ahora, expresiones como “para todo”, “existe” y “existe un
 
 **72.** Analiza la afirmación: “Para todo real $x$ existe un único real $y$ tal que $2y+x=0$”. (a) Escríbela simbólicamente; (b) decide su verdad; (c) identifica la dependencia de $y$; (d) escribe su negación sin usar $\exists!$.
 
----
-
+***
 #### M — Problemas tipo prueba
 
 Los siguientes ejercicios están pensados como problemas de evaluación escrita. Exigen desarrollo completo, control del alcance de los cuantificadores y justificación explícita de testigos, contraejemplos o dependencias.
@@ -1455,8 +1448,7 @@ $$
 
 En este caso la negación es falsa porque para cada $x$ existe exactamente el único valor $-x/2$.
 
----
-
+***
 ### Soluciones — M — Problemas tipo prueba
 
 
@@ -1644,8 +1636,7 @@ Entonces $x<z<y$. Como $z>x$, la condición universal exigiría $y\le z$, contra
 
 (e) Una negación exacta es: “Existe un real $x$ para el cual no existe exactamente un real $y$ que sea el menor real estrictamente mayor que $x$”. De hecho hemos probado algo más fuerte: para todo $x$ no existe ninguno.
 
----
-
+***
 ### Soluciones — N — Dominios, dependencia y fronteras de la unicidad
 
 
@@ -1712,8 +1703,7 @@ Entonces $x<z<y$. Como $z>x$, la condición universal exigiría $y\le z$, contra
 
 **Solución 96.** En el vacío $F$ es verdadera por el universal exterior: no se exige encontrar testigo para ningún $x$. $G$ es falsa porque su existencial exterior no tiene candidato, aunque la condición interior universal sería vacuamente verdadera para cualquier candidato si lo hubiera. En $\{a\}$ las dos son verdaderas: $y=a$ es el único testigo. En $\{a,b\}$, $F$ sigue siendo verdadera, porque para cada $x$ hay exactamente un $y=x$ en el dominio. $G$ es falsa por falta de existencia: ningún $y$ es simultáneamente igual a $a$ y a $b$. En este último caso hay a lo sumo un testigo común (de hecho cero), pero no exactamente uno. Los valores F/G son V/F, V/V y V/F.
 
----
-
+***
 ## Autoevaluación de salida
 
 Antes de continuar a C7, deberías poder responder afirmativamente:

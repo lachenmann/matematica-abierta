@@ -43,8 +43,7 @@ La dificultad no está en reconocer letras o signos. Está en comprender **qué 
 
 El objetivo de este capítulo es aprender a interpretar esos usos con precisión antes de estudiar, en el capítulo siguiente, qué leyes permiten transformar legítimamente una expresión en otra.
 
----
-
+***
 ## 2.1. Una letra no significa una sola cosa
 
 En la escuela es frecuente asociar automáticamente una letra con «el número que hay que encontrar». Esa interpretación sirve en problemas como $x+3=7$: allí $x$ funciona efectivamente como una **incógnita**.
@@ -91,8 +90,7 @@ La idea central es simple pero decisiva:
 
 > **Una letra es un símbolo. Su papel matemático depende del contexto.**
 
----
-
+***
 ## 2.2. Las expresiones tienen estructura interna
 
 Tomemos la expresión $3x^2-2x+5$.
@@ -126,8 +124,7 @@ Esto será central durante todo el libro. Una forma factorizada puede mostrar ra
 
 El álgebra no consiste únicamente en obtener una forma «más simple». Consiste muchas veces en elegir la forma que hace visible la propiedad que queremos estudiar.
 
----
-
+***
 ## 2.3. Sustituir y evaluar
 
 Si tenemos la expresión $x^2-3x+1$ y elegimos $x=2$, podemos **evaluarla** sustituyendo $2$ por $x$:
@@ -169,8 +166,7 @@ Llamaremos **dominio de interpretación**, de manera operativa, al conjunto de v
 
 Todavía no estamos definiendo formalmente una función. Estamos instalando un hábito previo: **ninguna expresión debe leerse separada de las condiciones que permiten interpretarla**.
 
----
-
+***
 ### El dominio puede cambiar el significado
 
 La expresión $x^2-2$ puede interpretarse para enteros, racionales, reales o números más amplios que estudiaremos después. La escritura es la misma, pero las preguntas que podemos hacer dependen del dominio.
@@ -190,8 +186,7 @@ Esto muestra que una fórmula por sí sola rara vez agota el significado matemá
 
 Cuando más adelante escribamos definiciones y teoremas, esas condiciones deberán quedar explícitas con mucho mayor rigor.
 
----
-
+***
 ### Una evaluación sin valor no es una igualdad falsa
 
 Antes de juzgar una igualdad, debemos comprobar que sus miembros representan valores en la entrada elegida. Considera
@@ -231,8 +226,7 @@ La teoría precisa de variables libres, variables ligadas, predicados y cuantifi
 
 Debemos leer la frase matemática completa.
 
----
-
+***
 ## 2.5. Parámetros: una familia dentro de una sola fórmula
 
 La expresión $ax+b$ contiene tres letras. Sin contexto, no sabemos cuál de ellas debe variar y cuáles deben permanecer fijas.
@@ -261,8 +255,7 @@ Si ahora fijamos $x=2$ y dejamos variar $a$, la expresión se convierte en $5+2a
 
 No existe una clasificación absoluta del símbolo. Existe una clasificación **dentro de una situación matemática concreta**.
 
----
-
+***
 ### Cambiar qué letra se fija cambia la pregunta
 
 En $(a+x)/(x-1)$ las letras no llegan con un papel permanente. Si fijamos $a=2$ y dejamos variar $x$, obtenemos $(2+x)/(x-1)$, con $x\neq1$. Si fijamos $x=2$ y dejamos variar $a$, obtenemos $(a+2)/1$, que puede evaluarse para cualquier real $a$. Cambian la letra que recorre entradas y la restricción de esas entradas.
@@ -332,8 +325,7 @@ afirma que, bajo las condiciones en que esas transformaciones sean válidas, tod
 
 En C3 estudiaremos precisamente **por qué** ciertos reemplazos son legítimos. Aquí basta entender qué está afirmando el signo igual cuando aparece.
 
----
-
+***
 ## 2.7. Igualdad particular, ecuación e identidad
 
 El mismo símbolo $=$ aparece en situaciones matemáticamente diferentes.
@@ -373,8 +365,7 @@ En cambio, $(x-y)(x+y)=x^2-y^2$ sí pretende valer para todo par de números rea
 
 Cuando el dominio cambie, debemos revisar qué operaciones están disponibles y para qué valores están definidas.
 
----
-
+***
 ## 2.8. Coincidir donde ambas expresiones existen no significa tener el mismo dominio
 
 Consideremos
@@ -410,8 +401,7 @@ Por eso las restricciones de dominio deben acompañar al razonamiento.
 
 Cuando resolvamos ecuaciones racionales, estudiemos funciones o tomemos límites, perder una restricción puede cambiar el problema.
 
----
-
+***
 ### Dominio natural y entradas permitidas por el contexto
 
 El dominio natural indica dónde las operaciones escritas pueden evaluarse. El dominio declarado indica qué entradas decide admitir el problema; debe estar contenido en el natural. Una expresión puede tener valor en una entrada que el contexto haya excluido.
@@ -464,8 +454,7 @@ Todavía no hemos establecido sistemáticamente las leyes que nos autorizan a pa
 
 Ésa será la tarea de C3.
 
----
-
+***
 ## 2.10. Errores de lectura que conviene detectar
 
 Los errores algebraicos no siempre provienen de cálculos difíciles. Muchos nacen de una mala interpretación de la escritura.
@@ -502,8 +491,7 @@ Comprobar que dos expresiones coinciden para $x=0,1,2,3,4$ no demuestra, por sí
 
 En $ax+b$, las letras $a,b,x$ no llegan etiquetadas como «parámetros» o «variables». Esa elección depende del contexto del problema.
 
----
-
+***
 ## 2.11. Una rutina de lectura simbólica
 
 Antes de manipular una escritura algebraica, conviene recorrer mentalmente esta secuencia:
@@ -524,8 +512,7 @@ Hasta aquí hemos aprendido a **interpretar**.
 
 Ahora estamos preparados para preguntar por la **legitimidad de las transformaciones**.
 
----
-
+***
 # Ejercicios
 
 Todos los ejercicios de este capítulo son originales para *Álgebra para matemáticos*, aunque su dificultad y tipología se calibran con el corpus universitario y los textos de referencia del capítulo.
@@ -659,8 +646,7 @@ Todos los ejercicios de este capítulo son originales para *Álgebra para matem�
 
 **42.** Escribe un párrafo matemático que explique por qué **interpretar correctamente una expresión debe preceder a transformarla**. Tu respuesta debe mencionar al menos variable, dominio, igualdad y alguna posible restricción.
 
----
-
+***
 ## J. Evaluar bajo restricciones superpuestas
 
 
