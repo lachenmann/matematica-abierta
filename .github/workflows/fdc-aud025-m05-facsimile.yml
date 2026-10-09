@@ -1,0 +1,80 @@
+name: FDC-AUD-025-M05 · 1872 source recovery
+
+on:
+  push:
+    branches:
+      - audit/fdc-aud025-m05-facsimiles-1872
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover-originals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch independently catalogued 1872 sources
+        shell: bash
+        run: |
+          mkdir -p fdc1872
+          python3 - <<'PY'
+          import hashlib, json, urllib.request
+          from datetime import datetime, timezone
+          sources = [
+            ("TUB_Aa_2043", "https://publikationsserver.tu-braunschweig.de/servlets/MCRFileNodeServlet/dbbs_derivate_00005740/Aa_2043.pdf"),
+            ("ETH_Rar22802", "https://www.e-rara.ch/zut/download/pdf/19451236"),
+            ("RCIN_2281", "https://rcin.org.pl/dlibra/publication/13029/edition/2281/content"),
+            ("ETH_iiif", "https://www.e-rara.ch/i3f/v20/19451236/manifest")
+          ]
+          results=[]
+          for name,url in sources:
+            row={"id":name,"url":url,"retrieval_utc":datetime.now(timezone.utc).isoformat(),"result":"UNVERIFIED"}
+            try:
+              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; FDC-AUD-025 source preservation)","Accept":"application/pdf,application/json,*/*"})
+              with urllib.request.urlopen(req,timeout=35) as resp:
+                payload=resp.read(35_000_001)
+                row.update(http_status=resp.status, content_type=resp.headers.get("Content-Type"),final_url=resp.url,received_bytes=len(payload))
+              if len(payload)>35_000_000: raise ValueError("byte limit exceeded")
+              row["sha256"]=hashlib.sha256(payload).hexdigest()
+              if payload[:4]==b"%PDF":
+                path=f"fdc1872/{name}.pdf"
+                open(path,"wb").write(payload)
+                row.update(result="PDF_BYTES_DOWNLOADED_IDENTITY_VISUAL_PENDING",local=path)
+              elif name=="ETH_iiif" and payload[:1] in (b"{",b"["):
+                path=f"fdc1872/{name}.json"
+                open(path,"wb").write(payload)
+                row.update(result="IIIF_JSON_DOWNLOADED",local=path)
+              else:
+                row.update(result="NOT_PDF",first16=payload[:16].hex())
+            except Exception as e:
+              row.update(result="DOWNLOAD_FAILED",error=f"{type(e).__name__}: {e}"[:500])
+            results.append(row)
+            print(name,row["result"],row.get("http_status"),row.get("received_bytes"),row.get("error",""))
+          open("fdc1872/MANIFEST_DOWNLOAD.json","w").write(json.dumps(results,ensure_ascii=False,indent=2)+"\n")
+          PY
+      - name: Render selected facsimile pages without OCR
+        shell: bash
+        run: |
+          for pdf in fdc1872/*.pdf; do
+            [ -f "$pdf" ] || continue
+            stem=$(basename "$pdf" .pdf)
+            pdfinfo "$pdf" | sed -n '1,18p' > "fdc1872/$stem-pdfinfo.txt" || true
+            pages=$(pdfinfo "$pdf" 2>/dev/null | awk '/^Pages:/ {print $2}')
+            if [ -n "$pages" ]; then
+              start=14
+              end=30
+              if [ "$pages" -lt "$start" ]; then start=1; fi
+              if [ "$pages" -lt "$end" ]; then end="$pages"; fi
+              mkdir -p "fdc1872/$stem-pages"
+              pdftoppm -f "$start" -l "$end" -r 180 -png "$pdf" "fdc1872/$stem-pages/p" 2>/dev/null || true
+            fi
+          done
+      - name: Archive primary bytes and page renders (not a collation)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FDC-AUD025-M05-1872-original-candidates
+          path: fdc1872/
+          retention-days: 30
+          if-no-files-found: error
