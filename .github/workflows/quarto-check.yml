@@ -70,6 +70,11 @@ jobs:
           node --check teoria/resultados/interactive/cauchy-schwarz.js
           node --check teoria/resultados/interactive/cauchy-schwarz-embed.js
 
+      - name: Check MA-ART-0017 display math and regression tests
+        run: |
+          python3 -m unittest discover -s tests -p 'test_ma_art_0017_math.py'
+          python3 tools/check_ma_art_0017_math.py
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
@@ -89,6 +94,9 @@ jobs:
       - name: Render affected pages or complete site and offline pilot
         run: python3 tools/smart_render.py build --offline-book MA-BOK-0005
 
+      - name: Verify rendered MA-ART-0017 MathJax
+        run: python3 tools/check_ma_art_0017_math.py --site-dir _site
+
       - name: MA-FIG C9 verify rendered HTML of registered pedagogical figures
         run: python3 tools/check_ma_fig_html.py --site-dir _site
 
@@ -97,6 +105,9 @@ jobs:
 
       - name: ANM C01 F01 F12 pilot semantic HTML and SVG-integrity QA
         run: python3 tools/check_anm_c01_pilot_html.py --site-dir _site
+
+      - name: ANM C01 all approved figures and internal links QA
+        run: python3 tools/check_anm_c01_semantic_html.py --site-dir _site
 
       - name: Verify laboratory assets and rendered page
         run: |
