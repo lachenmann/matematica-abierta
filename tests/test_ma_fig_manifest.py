@@ -23,5 +23,32 @@ class TestMaFigureScope(unittest.TestCase):
         scope = {"formal_treatise_prefixes":["libros/tratados/"], "formal_treatise_exact":[], "non_treatise_landing_exceptions":["libros/tratados/index.qmd"]}
         self.assertFalse(is_formal_treatise("libros/tratados/index.qmd",scope))
 
+
+    def test_no_false_positive_for_math(self):
+        from tools.check_ma_fig_manifest import FIGURE_MARKUP
+        self.assertIsNone(FIGURE_MARKUP.search("$ f(x)=x^2 $"))
+
+    def test_image_reference_is_detected(self):
+        from tools.check_ma_fig_manifest import FIGURE_MARKUP
+        self.assertIsNotNone(FIGURE_MARKUP.search("![Ejemplo](figura.svg)"))
+
+    def test_landing_navigation_is_not_figure(self):
+        from tools.check_ma_fig_manifest import FIGURE_MARKUP
+        self.assertIsNone(FIGURE_MARKUP.search('<link rel="icon" href="logo.svg">'))
+
+    def test_scope_main_registry_schema(self):
+        from tools.check_ma_fig_manifest import load_scope, ROOT
+        self.assertEqual(load_scope(ROOT)["schema_version"], 1)
+
+    def test_svg_plain_xml_allowed(self):
+        from tools.check_ma_fig_manifest import validate_svg
+        sample = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"/>'
+        self.assertEqual(validate_svg(sample, "unit"), [])
+
+    def test_svg_remote_dependency_denied(self):
+        from tools.check_ma_fig_manifest import validate_svg
+        sample = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><use href="external.svg"/></svg>'
+        self.assertTrue(validate_svg(sample, "unit"))
+
 if __name__ == "__main__":
     unittest.main()
