@@ -759,7 +759,7 @@ $$
 
 Por eso ningún racional $s$ con $s^2<2$ puede ser una cota superior de $S_2$: siempre podemos fabricar un elemento del conjunto que queda estrictamente a su derecha.
 
-*Referencia visual.* Véase la figura C00-F03 del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F03](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f03) del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-009}
 
@@ -841,7 +841,7 @@ $$
 
 Así, cualquier supuesto supremo racional $s$ con $s^2>2$ dejaría de ser la menor cota superior, porque acabamos de construir otra cota superior estrictamente menor.
 
-*Referencia visual.* Véase la figura C00-F03 del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F03](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f03) del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-010}
 
@@ -933,7 +933,7 @@ $$
 
 Toda la prueba ha permanecido en aritmética racional.
 
-*Referencia visual.* Véase la figura C00-F03 del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F03](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f03) del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-011}
 
@@ -1081,7 +1081,7 @@ $$
 
 ## §0.4. Construir una frontera sin tener el punto
 
-*Referencia visual.* Véase la figura C00-F03 del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F03](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f03) del texto principal, **Densidad sin completitud**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-013}
 
@@ -1206,7 +1206,7 @@ q\in A,
 q\in\mathbb Q.
 $$
 
-*Referencia visual.* Véase la figura C00-F04 del texto principal, **Una cortadura es un lado izquierdo racional**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F04](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f04) del texto principal, **Una cortadura es un lado izquierdo racional**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-014}
 
@@ -1451,7 +1451,7 @@ $$
 
 La construcción no ha introducido ninguna frontera externa. $A_2$ es literalmente un subconjunto de $\mathbb Q$, definido mediante desigualdades y operaciones racionales. Incluso el avance $q\mapsto q+\delta$ permanece enteramente dentro de $\mathbb Q$.
 
-*Referencia visual.* Véase la figura C00-F04 del texto principal, **Una cortadura es un lado izquierdo racional**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F04](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f04) del texto principal, **Una cortadura es un lado izquierdo racional**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-016}
 
@@ -1569,7 +1569,7 @@ $$
 
 El paso estructural decisivo es que la clausura hacia abajo convierte un único testigo $a\in A\setminus B$ en información sobre todos los elementos de $B$.
 
-*Referencia visual.* Véase la figura C00-F04 del texto principal, **Una cortadura es un lado izquierdo racional**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F04](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f04) del texto principal, **Una cortadura es un lado izquierdo racional**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-017}
 
@@ -1776,7 +1776,7 @@ Esto sitúa a $A_2$ en el orden por inclusión sin identificarla todavía con ni
 
 ## §0.5. Una copia de $\mathbb Q$ dentro del nuevo sistema
 
-*Referencia visual.* Véase la figura C00-F05 del texto principal, **La copia racional q↦q***, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F05](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f05) del texto principal, **La copia racional q↦q***, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-018}
 
@@ -1892,7 +1892,7 @@ $$
 
 En este punto hemos construido una aplicación desde $\mathbb Q$ hacia $\mathcal D$ y un subconjunto concreto $\mathcal Q^*$ de $\mathcal D$. Todavía no hemos identificado literalmente $\mathbb Q$ con esa imagen.
 
-*Referencia visual.* Véase la figura C00-F05 del texto principal, **La copia racional q↦q***, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F05](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f05) del texto principal, **La copia racional q↦q***, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-019}
 
@@ -2040,7 +2040,7 @@ $$
 
 La equivalencia de órdenes contiene más que una simple preservación: el orden de los racionales puede reconstruirse mirando únicamente las inclusiones entre sus imágenes.
 
-*Referencia visual.* Véase la figura C00-F05 del texto principal, **La copia racional q↦q***, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F05](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f05) del texto principal, **La copia racional q↦q***, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-020}
 
@@ -2475,7 +2475,7 @@ $$
 
 La última observación es lógica: una fórmula puede producir un subconjunto de $\mathbb Q$ sin producir una cortadura. Para definir una operación interna en $\mathcal D$ hacía falta demostrar la clausura del codominio.
 
-*Referencia visual.* Véase la figura C00-F06 del texto principal, **Aritmética I: suma, opuesto y cancelación**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F06](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f06) del texto principal, **Aritmética I: suma, opuesto y cancelación**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-023}
 
@@ -2607,7 +2607,7 @@ $$
 
 Al finalizar este ejercicio ya sabemos que la suma de cortaduras es interna, asociativa y conmutativa, que $0^*$ es su neutro y que la copia racional conserva la suma. Falta todavía construir y verificar los inversos aditivos, y toda la estructura multiplicativa continúa fuera de alcance.
 
-*Referencia visual.* Véase la figura C00-F06 del texto principal, **Aritmética I: suma, opuesto y cancelación**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F06](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f06) del texto principal, **Aritmética I: suma, opuesto y cancelación**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-024}
 
@@ -2716,7 +2716,7 @@ $$
 
 La desigualdad estricta es indispensable: excluye el punto extremo que haría aparecer un máximo. La definición conserva la convención esencial de toda cortadura: lado izquierdo sin punto final.
 
-*Referencia visual.* Véase la figura C00-F06 del texto principal, **Aritmética I: suma, opuesto y cancelación**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F06](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f06) del texto principal, **Aritmética I: suma, opuesto y cancelación**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-025}
 
@@ -2921,7 +2921,7 @@ El balance de dependencias es:
 
 La prueba no usa producto ni ninguna propiedad de completitud.
 
-*Nota visual.* El barrido racional por pasos de tamaño $h$ queda diferido a la versión Manim/web; la figura C00-F06 ofrece únicamente el contexto estático del lema de cruce.
+*Nota visual.* El barrido racional por pasos de tamaño $h$ queda diferido a la versión Manim/web; la figura [C00-F06](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f06) ofrece únicamente el contexto estático del lema de cruce.
 
 []{#MA-SOL-ANM-01-000-026}
 
@@ -3132,7 +3132,7 @@ y los mismos testigos $a,b$ muestran que $y\in A\cdot_+B$.
 
 Hasta aquí tenemos no vaciedad, presencia de $0$ y clausura inferior. Aún falta demostrar que el conjunto es propio y que carece de máximo; por eso todavía no declaramos clausura en $\mathcal D$.
 
-*Referencia visual.* Véase la figura C00-F11 del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F11](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f11) del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-028}
 
@@ -3276,7 +3276,7 @@ $$
 
 La densidad de $\mathbb Q$ se gasta exactamente en la ausencia de máximo del producto y, para la inclusión racional inversa, en la elección sucesiva de $a$ y $b$.
 
-*Referencia visual.* Véase la figura C00-F11 del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F11](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f11) del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-029}
 
@@ -3406,7 +3406,7 @@ El mapa de dependencias es:
 - **producto racional positivo:** permite extender $p^*q^*=(pq)^*$ a todos los signos;
 - **ausencia de máximo:** se usa para aproximar desde dentro un $x>0$ al demostrar que $1^*$ actúa como unidad.
 
-*Referencia visual.* Véase la figura C00-F11 del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F11](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f11) del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-030}
 
@@ -3632,7 +3632,7 @@ $$
 \left(\frac xa,\frac1s\right).
 $$
 
-*Referencia visual.* Véase la figura C00-F11 del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F11](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f11) del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-031}
 
@@ -4156,7 +4156,7 @@ No es legítimo convertir el primer certificado en el segundo sin una prueba adi
 
 ## §0.8. Sí existen: el supremo como unión
 
-*Referencia visual.* Véase la figura C00-F11 del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F11](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f11) del texto principal, **Aritmética II: producto, inverso y signos**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-033}
 
@@ -4240,7 +4240,7 @@ La trazabilidad de hipótesis es precisa:
 
 Todavía no hemos demostrado que $S$ sea supremo: sólo que el candidato vive dentro del dominio ordenado correcto.
 
-*Referencia visual.* Véase la figura C00-F07 del texto principal, **La unión que cierra la existencia**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F07](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f07) del texto principal, **La unión que cierra la existencia**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-034}
 
@@ -4334,7 +4334,7 @@ $$
 
 no al revés.
 
-*Referencia visual.* Véase la figura C00-F07 del texto principal, **La unión que cierra la existencia**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F07](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f07) del texto principal, **La unión que cierra la existencia**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-035}
 
@@ -4427,7 +4427,7 @@ $$
 
 sin la hipótesis de acotación superior.
 
-*Referencia visual.* Véase la figura C00-F07 del texto principal, **La unión que cierra la existencia**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F07](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f07) del texto principal, **La unión que cierra la existencia**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-036}
 
@@ -4518,7 +4518,7 @@ $$
 
 Esa segunda pregunta queda abierta para las secciones siguientes.
 
-*Referencias visuales.* Véanse las figuras [C00-F01 (**Existencia antes que unicidad**)](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f01) y C00-F07 (**La unión que cierra la existencia**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
+*Referencias visuales.* Véanse las figuras [C00-F01 (**Existencia antes que unicidad**)](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f01) y [C00-F07](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f07) (**La unión que cierra la existencia**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
 
 []{#MA-SOL-ANM-01-000-037}
 
@@ -4738,7 +4738,7 @@ Después de esta certificación podemos identificar notacionalmente $\mathbb Q$ 
 
 Nada de esta construcción ha usado completitud. La copia canónica de $\mathbb Q$ existe en todo cuerpo ordenado.
 
-*Referencia visual.* Véase la figura C00-F08 del texto principal, **De completitud a rejilla racional en F**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F08](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f08) del texto principal, **De completitud a rejilla racional en F**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-039}
 
@@ -4796,7 +4796,7 @@ $$
 
 no la falsa inferencia «todo cuerpo ordenado es arquimediano».
 
-*Referencia visual.* Véase la figura C00-F08 del texto principal, **De completitud a rejilla racional en F**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F08](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f08) del texto principal, **De completitud a rejilla racional en F**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-040}
 
@@ -4938,7 +4938,7 @@ El mapa de dependencias es preciso:
 
 No se ha supuesto densidad por analogía geométrica: se la ha deducido estructuralmente.
 
-*Referencia visual.* Véase la figura C00-F08 del texto principal, **De completitud a rejilla racional en F**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F08](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f08) del texto principal, **De completitud a rejilla racional en F**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-041}
 
@@ -5036,7 +5036,7 @@ $$
 
 La traza racional de un racional abstractamente incrustado reproduce exactamente la cortadura racional canónica. La compatibilidad aparece sin identificar a $F$ con el modelo concreto de Dedekind.
 
-*Referencia visual.* Véase la figura C00-F09 del texto principal, **Traza racional y reconstrucción**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F09](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f09) del texto principal, **Traza racional y reconstrucción**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-042}
 
@@ -5156,7 +5156,7 @@ entre dos modelos completos. Sólo hemos construido el código racional que perm
 
 ## §0.10. Únicos hasta isomorfismo
 
-*Referencia visual.* Véase la figura C00-F09 del texto principal, **Traza racional y reconstrucción**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F09](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f09) del texto principal, **Traza racional y reconstrucción**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-043}
 
@@ -5240,7 +5240,7 @@ $$
 
 No se elige una cota superior especial para definir el valor: una cota sólo certifica la hipótesis de acotación. Tampoco se elige entre varios supremos, porque el supremo de un subconjunto, cuando existe, es único. Así, $\phi(x)$ queda forzado por $x$ y por las estructuras de $F$ y $G$.
 
-*Referencia visual.* Véase la figura C00-F10 del texto principal, **Transporte canónico y unicidad**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F10](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f10) del texto principal, **Transporte canónico y unicidad**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-044}
 
@@ -5363,7 +5363,7 @@ La reconstrucción de §0.9 fuerza $x=y$. Luego $\phi$ es inyectiva.
 
 El resultado es más fuerte que decir que $\phi$ es creciente: para cada $x$, el subconjunto de racionales situado debajo de $x$ es exactamente el mismo subconjunto que queda debajo de $\phi(x)$ en $G$. Se transporta la posición racional completa.
 
-*Referencia visual.* Véase la figura C00-F10 del texto principal, **Transporte canónico y unicidad**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F10](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f10) del texto principal, **Transporte canónico y unicidad**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-045}
 
@@ -5459,7 +5459,7 @@ $$
 
 La composición recupera las trazas originales y, por tanto, los elementos originales. No se ha contado la cardinalidad de ningún modelo ni se ha escogido un preimagen de cada $y$ entre posibles candidatos: $\psi(y)$ está determinado canónicamente por la traza de $y$.
 
-*Referencia visual.* Véase la figura C00-F10 del texto principal, **Transporte canónico y unicidad**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F10](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f10) del texto principal, **Transporte canónico y unicidad**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-046}
 
@@ -5898,7 +5898,7 @@ $$
 
 Toda la aritmética queda así transportada desde la información racional, sin calcular directamente los supremos que definen las imágenes.
 
-*Referencia visual.* Véase la figura C00-F12 del texto principal, **La aritmética viaja con la traza**, como síntesis posterior de este argumento.
+*Referencia visual.* Véase la figura [C00-F12](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f12) del texto principal, **La aritmética viaja con la traza**, como síntesis posterior de este argumento.
 
 []{#MA-SOL-ANM-01-000-048}
 
@@ -6054,6 +6054,6 @@ $$
 
 Las cortaduras son una realización concreta. Lo que autoriza a hablar de **los números reales** sin imponer esa realización como ontología obligatoria es la estructura compartida: cuerpo ordenado completo, determinada hasta único isomorfismo.
 
-*Referencias visuales.* Véanse las figuras C00-F10 (**Transporte canónico y unicidad**) y C00-F12 (**La aritmética viaja con la traza**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
+*Referencias visuales.* Véanse las figuras [C00-F10](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f10) (**Transporte canónico y unicidad**) y [C00-F12](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f12) (**La aritmética viaja con la traza**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.md) · [Capítulo 0](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md) · [Ejercicios](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-ejercicios.md) · [Soluciones](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-soluciones.md) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales-microcontroles.md)
