@@ -1,0 +1,70 @@
+name: FDC-AUD-025-M06 · 1912 source access test
+
+on:
+  push:
+    branches: [audit/fdc-aud025-m06-1912-googlebooks]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  access-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve candidate 1912 printed witnesses, not OCR
+        shell: bash
+        run: |
+          mkdir -p audit1912
+          python3 - <<'PY'
+          from datetime import datetime, timezone
+          from hashlib import sha256
+          from pathlib import Path
+          import json, urllib.request, urllib.error
+          urls = {
+            "volume_metadata": "https://www.googleapis.com/books/v1/volumes/0tZbEZQAIp8C",
+            "book_html": "https://books.google.com/books?id=0tZbEZQAIp8C",
+            "book_pdf": "https://books.google.com/books/download/Stetigkeit_und_irrationale_Zahlen.pdf?id=0tZbEZQAIp8C&output=pdf",
+            "pg_19": "https://books.google.com/books/content?id=0tZbEZQAIp8C&pg=PA19&img=1&zoom=2&hl=en",
+            "pg_20": "https://books.google.com/books/content?id=0tZbEZQAIp8C&pg=PA20&img=1&zoom=2&hl=en",
+            "pg_1_control": "https://books.google.com/books/content?id=0tZbEZQAIp8C&pg=PA1&img=1&zoom=2&hl=en"
+          }
+          rows=[]
+          for label,url in urls.items():
+            rec={"label":label,"url":url,"utc":datetime.now(timezone.utc).isoformat()}
+            try:
+              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/119 Safari/537.36","Accept":"application/pdf,image/*,application/json,text/html,*/*"})
+              with urllib.request.urlopen(req,timeout=12) as resp:
+                b=resp.read(25000001)
+                rec.update(status=resp.status,content_type=resp.headers.get("Content-Type"),bytes=len(b))
+              if len(b)>25000000: raise ValueError("max byte size exceeded")
+              rec["sha256"]=sha256(b).hexdigest()
+              if b.startswith(b"%PDF-"):
+                ext=".pdf";rec["result"]="TRUE_PDF_BYTES_NOT_YET_VISUALLY_VERIFIED"
+              elif b[:4] in (b"\x89PNG",b"GIF8") or b[:3]==b"\xff\xd8\xff":
+                ext=".png" if b[:4]==b"\x89PNG" else ".jpg";rec["result"]="IMAGE_BYTES_NOT_YET_AUTHENTICATED"
+              elif label=="volume_metadata" and b.lstrip()[:1]==b"{":
+                ext=".json";rec["result"]="GOOGLE_VOLUME_METADATA"
+              else:
+                ext=".html";rec["result"]="NOT_PRIMARY_PDF_OR_IMAGE"
+              filename="audit1912/"+label+ext
+              Path(filename).write_bytes(b)
+              rec["local"]=filename
+            except Exception as ex:
+              rec.update(result="RETRIEVAL_FAILED",error=(type(ex).__name__+": "+str(ex))[:340])
+            print(label,rec["result"],rec.get("status"),rec.get("bytes"),rec.get("sha256","")[:16])
+            rows.append(rec)
+          photos=[r for r in rows if r["label"].startswith("pg_") and "sha256" in r]
+          if len(photos)>=2 and len({r["sha256"] for r in photos})==1:
+            print("ALL_PAGE_PHOTOS_IDENTICAL: cannot treat as distinct scanned pages")
+          Path("audit1912/manifest.json").write_text(json.dumps({"sources":rows,"page_image_distinct_sha_count":len(set(r["sha256"] for r in photos))},ensure_ascii=False,indent=2)+"\n")
+          PY
+      - name: Preserve source access evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FDC-AUD025-M06-1912-access
+          path: audit1912/
+          retention-days: 30
+          if-no-files-found: error
