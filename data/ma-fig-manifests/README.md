@@ -36,3 +36,26 @@ ejecución de notebooks, shortcodes dinámicos ni HTML producido después del
 render. Eso requiere una auditoría HTML y un inventario de activos posteriores.
 No crea, modifica ni exporta imágenes.
 
+
+
+## C9 — Puerta de auditoría del HTML generado
+
+El proceso ejecuta \`python3 tools/check_ma_fig_html.py --site-dir _site\`
+después del render Quarto. Para cada manifiesto
+\`READY_FOR_PUBLICATION\` o \`PUBLISHED\` comprueba que la página
+consumidora está en el HTML compilado, que existe exactamente una figura
+con la ruta del recurso declarado, que el recurso renderizado es idéntico
+al aprobado (bytes y SHA), que el atributo \`alt\` coincide con la ficha,
+que existe un \`figcaption\` que incluye la leyenda y que el ID
+\`figure_label\` (\`fig-...\`) está presente en la estructura HTML.
+
+El manifiesto **debe declarar** \`figure_label\` además de sus campos
+anteriores para poder superar C9. Los assets históricos sin manifiesto
+siguen excluidos de este control (registro previo no significa QA
+retroactivo). \`C9: PASS — 0 figuras\` no acredita auditoría de imágenes
+existentes: indica que no hubo registros elegibles.
+
+C9 no genera imágenes, no modifica HTML y no evalúa contraste visual,
+legibilidad real, maquetación móvil, código JS o recursos dinámicos.
+Estos controles corresponden al cierre visual de cada libro.
+
