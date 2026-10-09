@@ -345,7 +345,8 @@ def new_educational_image_references(root: Path, base: str, scope: dict,
             matches = [
                 m for m in manifests
                 if m.get("consumer_source") == consumer
-                and asset in (m.get("outputs") or {}).values()
+                and isinstance(m.get("outputs"), dict)
+                and asset in m["outputs"].values()
                 and m.get("document_class") ==
                 ("PEDAGOGICAL_BOOK" if consumer.startswith("libros/")
                  else "SITE_EDUCATIONAL")
