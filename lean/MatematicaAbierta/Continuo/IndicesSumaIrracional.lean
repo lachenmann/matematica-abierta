@@ -18,9 +18,10 @@ namespace Continuo.Indices
 open Set
 open scoped Pointwise
 
+set_option maxHeartbeats 1200000
+
 /-- Cualquier respuesta emitida por la etapa posee la semántica correcta
 de pertenencia a la suma puntual de los dos cortes principales. -/
-set_option maxHeartbeats 1200000 in
 theorem sumCertificateStage_answer_correct
     (eA eB : Code) (x y : ℝ)
     (hA : DecidesCut eA (lowerCut x))
