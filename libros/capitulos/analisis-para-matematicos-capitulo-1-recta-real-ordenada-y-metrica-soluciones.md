@@ -2161,11 +2161,9 @@ queda un espacio positivo entre los dos intervalos y también son disjuntos.
 
 Geométricamente, mantener fijo $r$ conserva el ancho de ambas ventanas; mover los centros sólo modifica su posición relativa. Se solapan cuando la separación entre centros es menor que la suma de los dos radios, que aquí vale $2r$.
 
-La figura C01-F12 concentra esta lectura en una sola comparación.
+La figura [C01-F12](#fig-anm-c01-f12) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F12.svg){fig-alt="Figura multipanel: bolas abiertas de igual radio que se solapan, tocan fronteras o se separan; una bola abierta incluida en otra; y dos intervalos cerrados que se tocan en un único punto."}
-
-*Figura C01-F12. La posición relativa de las fronteras controla solapamiento, inclusión y contacto límite de bolas y tolerancias.*
+![La posición relativa de las fronteras controla solapamiento, inclusión y contacto límite de bolas y tolerancias.](../../assets/books/anm/C01/C01-F12.svg){#fig-anm-c01-f12 fig-alt="Figura multipanel: bolas abiertas de igual radio que se solapan, tocan fronteras o se separan; una bola abierta incluida en otra; y dos intervalos cerrados que se tocan en un único punto."}
 
 []{#MA-SOL-ANM-01-001-032}
 
@@ -2299,7 +2297,7 @@ $$
 
 La fórmula tiene una lectura geométrica directa. Desde el centro $b$ debemos recorrer primero la separación $d(a,b)$ hasta llegar al centro de la bola pequeña y disponer todavía de un margen $r$ para alcanzar cualquiera de sus puntos. La suma $d(a,b)+r$ representa exactamente ese alcance máximo; para que toda la bola pequeña quepa dentro de la grande, dicho alcance no puede superar $s$.
 
-El panel de inclusión de la figura C01-F12 muestra esta misma condición como comparación de fronteras: el alcance total desde $b$ hasta el extremo más lejano de la bola pequeña no puede sobrepasar el radio $s$.
+El panel de inclusión de la figura [C01-F12](#fig-anm-c01-f12) muestra esta misma condición como comparación de fronteras: el alcance total desde $b$ hasta el extremo más lejano de la bola pequeña no puede sobrepasar el radio $s$.
 
 ## §1.7. Traducir entre orden, distancia y tolerancia
 
@@ -2677,7 +2675,7 @@ $$
 
 los intervalos se tocan en un solo punto, que pertenece a ambos porque las dos tolerancias usan $\le$.
 
-El panel de contacto cerrado de la figura C01-F12 contrasta este caso con el contacto de bolas abiertas: aquí el punto de tangencia sí pertenece a ambas regiones porque las desigualdades no son estrictas.
+El panel de contacto cerrado de la figura [C01-F12](#fig-anm-c01-f12) contrasta este caso con el contacto de bolas abiertas: aquí el punto de tangencia sí pertenece a ambas regiones porque las desigualdades no son estrictas.
 
 []{#MA-SOL-ANM-01-001-038}
 

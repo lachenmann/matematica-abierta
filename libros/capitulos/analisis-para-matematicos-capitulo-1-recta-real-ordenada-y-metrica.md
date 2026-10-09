@@ -67,11 +67,9 @@ $$
 
 y reflejemos toda la configuración respecto del origen. La orientación cambia: lo que estaba a la izquierda pasa a la derecha y viceversa. Sin embargo, las separaciones permanecen iguales. Más adelante demostraremos este hecho con una fórmula muy sencilla; ahora lo que nos interesa es la idea que el experimento descubre.
 
-La figura C01-F01 concentra esta lectura en una sola comparación.
+La figura [C01-F01](#fig-anm-c01-f01) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F01.svg){fig-alt="Dos rectas numéricas comparan una configuración x<y<z con su reflejo. Las distancias correspondientes se mantienen, mientras el orden de izquierda a derecha se invierte."}
-
-*Figura C01-F01. La reflexión conserva todas las separaciones pero invierte la orientación; orden y métrica interactúan sin contener exactamente la misma información.*
+![La reflexión conserva todas las separaciones pero invierte la orientación; orden y métrica interactúan sin contener exactamente la misma información.](../../assets/books/anm/C01/C01-F01.svg){#fig-anm-c01-f01 fig-alt="Dos rectas numéricas comparan una configuración x<y<z con su reflejo. Las distancias correspondientes se mantienen, mientras el orden de izquierda a derecha se invierte."}
 
 Así aparece nuestra primera conclusión estructural: **el orden sabe algo que la distancia no sabe**, porque distingue una orientación. Pero conviene no exagerar la separación. En $\mathbb R$, orden y distancia están tan bien coordinados que muchas veces podremos traducir exactamente una descripción en la otra. Los intervalos surgirán del orden y, unas páginas después, veremos que ciertas condiciones de distancia describen precisamente esos mismos intervalos.
 
