@@ -58,7 +58,7 @@ try {
             undefinedCommands:[...main.querySelectorAll('mjx-container')].filter(e=>
               e.querySelector('[mathcolor="red"]') ||
               [...e.querySelectorAll('mjx-mtext')].some(n=>n.style.color==='red') ||
-              /\\\\[A-Za-z]+/.test(e.textContent)
+              /\\[A-Za-z]+/.test(e.textContent)
             ).map(e=>e.textContent.slice(0,300)),
             failedImages:[...main.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.src),
             missingAlt:[...main.querySelectorAll('img')].filter(e=>!e.alt).length,
