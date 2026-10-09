@@ -170,9 +170,9 @@ $$
 \boxed{\text{Queremos un cuerpo ordenado completo que prolongue la aritmética racional.}}
 $$
 
-La figura C00-F01 concentra esta lectura en un único mapa visual.
+La figura [C00-F01](#fig-anm-c00-f01) concentra esta lectura en un único mapa visual.
 
-![C00-F01. La especificación abre la pregunta de existencia; la comparación estructural sólo aparece después de construir y verificar un modelo.](../../assets/books/anm/C00-F01.svg){#fig-anm-c00-f01 fig-alt="Mapa lógico con cuatro etapas: especificación, pregunta de existencia, construcción/verificación y comparación estructural; la apertura deja explícitamente la respuesta sin revelar."}
+![La especificación abre la pregunta de existencia; la comparación estructural sólo aparece después de construir y verificar un modelo.](../../assets/books/anm/C00-F01.svg){#fig-anm-c00-f01 fig-alt="Mapa lógico con cuatro etapas: especificación, pregunta de existencia, construcción/verificación y comparación estructural; la apertura deja explícitamente la respuesta sin revelar."}
 
 ### Especificar no es demostrar que existe
 
@@ -596,11 +596,9 @@ $$
 
 La notación inclusiva es, por tanto, una **economía estructural**.
 
-La figura C00-F02 concentra esta lectura en un único mapa visual.
+La figura [C00-F02](#fig-anm-c00-f02) concentra esta lectura en un único mapa visual.
 
-![Tres universos separados N, Z y Q con flechas inyectivas rotuladas por la estructura preservada y un segundo panel que distingue incrustación, imagen e identificación.](../../assets/books/anm/C00-F02.svg)
-
-*Figura C00-F02. Las ampliaciones se realizan mediante incrustaciones tipadas; identificar un sistema con su imagen es un segundo paso, no una inclusión literal previa.*
+![Las ampliaciones se realizan mediante incrustaciones tipadas; identificar un sistema con su imagen es un segundo paso, no una inclusión literal previa.](../../assets/books/anm/C00-F02.svg){#fig-anm-c00-f02 fig-alt="Tres universos separados N, Z y Q con flechas inyectivas rotuladas por la estructura preservada y un segundo panel que distingue incrustación, imagen e identificación."}
 
 ### El diagrama que realmente debemos leer
 
@@ -1016,11 +1014,9 @@ Así puede ocurrir que haya racionales arbitrariamente intercalados y, aun así,
 
 Ésta es la razón por la que no conviene representar $\mathbb Q$ como una recta con un agujero grande y visible. Su defecto no es macroscópico. Podemos acercarnos racionalmente tanto como queramos a ciertas fronteras y, sin embargo, la frontera requerida no pertenece al sistema.
 
-La figura C00-F03 concentra esta lectura en un único mapa visual.
+La figura [C00-F03](#fig-anm-c00-f03) concentra esta lectura en un único mapa visual.
 
-![Recta racional conceptual para S₂ y tres paneles: si s²<2 se avanza a la derecha dentro de S₂; si s²=2 no hay racional; si s²>2 se encuentra una cota superior menor.](../../assets/books/anm/C00-F03.svg)
-
-*Figura C00-F03. S₂ es no vacío y acotado en Q, pero todo candidato racional a supremo falla por uno de tres mecanismos.*
+![S₂ es no vacío y acotado en Q, pero todo candidato racional a supremo falla por uno de tres mecanismos.](../../assets/books/anm/C00-F03.svg){#fig-anm-c00-f03 fig-alt="Recta racional conceptual para S₂ y tres paneles: si s²<2 se avanza a la derecha dentro de S₂; si s²=2 no hay racional; si s²>2 se encuentra una cota superior menor."}
 
 ### El defecto está localizado
 
@@ -1428,11 +1424,9 @@ $$
 
 Una cortadura no es un racional, ni es todavía un «punto de la recta real» previamente existente. Es un conjunto de racionales con una estructura de orden que acabamos de construir.
 
-La figura C00-F04 concentra esta lectura en un único mapa visual.
+La figura [C00-F04](#fig-anm-c00-f04) concentra esta lectura en un único mapa visual.
 
-![Recta racional con una región izquierda marcada como A, frontera conceptual excluida y lista de las cuatro obligaciones: no vacío, propio, clausura inferior y ausencia de máximo.](../../assets/books/anm/C00-F04.svg)
-
-*Figura C00-F04. La cortadura es un subconjunto de Q; la frontera sólo codifica una posición y no es un punto primitivo del sistema.*
+![La cortadura es un subconjunto de Q; la frontera sólo codifica una posición y no es un punto primitivo del sistema.](../../assets/books/anm/C00-F04.svg){#fig-anm-c00-f04 fig-alt="Recta racional con una región izquierda marcada como A, frontera conceptual excluida y lista de las cuatro obligaciones: no vacío, propio, clausura inferior y ausencia de máximo."}
 
 ### Lo que todavía falta
 
@@ -1909,11 +1903,9 @@ $$
 
 hasta haber certificado también la estructura de cuerpo. Queremos que la notación inclusiva signifique al final exactamente lo mismo que significó en §0.2: una identificación sustentada por toda la estructura que pretendemos conservar, no sólo por una semejanza parcial.
 
-La figura C00-F05 concentra esta lectura en un único mapa visual.
+La figura [C00-F05](#fig-anm-c00-f05) concentra esta lectura en un único mapa visual.
 
-![Dos paneles muestran racionales p<q<r y sus cortaduras racionales anidadas; una banda final separa inyectividad y orden ya verificados de suma y producto todavía pendientes.](../../assets/books/anm/C00-F05.svg)
-
-*Figura C00-F05. El orden p<q<r se recupera como anidamiento p*⊊q*⊊r*, mientras la certificación algebraica permanece pendiente en §0.5.*
+![El orden p<q<r se recupera como anidamiento p*⊊q*⊊r*, mientras la certificación algebraica permanece pendiente en §0.5.](../../assets/books/anm/C00-F05.svg){#fig-anm-c00-f05 fig-alt="Dos paneles muestran racionales p<q<r y sus cortaduras racionales anidadas; una banda final separa inyectividad y orden ya verificados de suma y producto todavía pendientes."}
 
 ### Lo que hemos ganado y lo que falta
 
@@ -2856,11 +2848,9 @@ ORDERED_FIELD_EMBEDDING = NOT_YET_CERTIFIED
 
 Todavía no podemos llamar a $\iota_{\mathbb Q}$ una incrustación de cuerpos ordenados. Falta construir el producto en $\mathcal D$, demostrar sus leyes, identificar la unidad y construir los inversos multiplicativos.
 
-La figura C00-F06 concentra esta lectura en un único mapa visual.
+La figura [C00-F06](#fig-anm-c00-f06) concentra esta lectura en un único mapa visual.
 
-![Mapa de prueba con cuatro módulos: suma a+b, opuesto mediante s fuera de A y x<−s, un inset del lema de cruce a∈A y a+h∉A, y cancelación usando C+(−C)=0*.](../../assets/books/anm/C00-F06.svg)
-
-*Figura C00-F06. La estructura aditiva se construye por testigos racionales, racionales exteriores y el lema de cruce; el opuesto permite cancelar traslaciones.*
+![La estructura aditiva se construye por testigos racionales, racionales exteriores y el lema de cruce; el opuesto permite cancelar traslaciones.](../../assets/books/anm/C00-F06.svg){#fig-anm-c00-f06 fig-alt="Mapa de prueba con cuatro módulos: suma a+b, opuesto mediante s fuera de A y x<−s, un inset del lema de cruce a∈A y a+h∉A, y cancelación usando C+(−C)=0*."}
 
 ### Lo que hemos construido
 
@@ -4166,11 +4156,9 @@ ZERO_ONE = PRESERVED
 ADDITIVE_MULTIPLICATIVE_INVERSES = PRESERVED
 ```
 
-La figura C00-F11 reúne ahora la arquitectura multiplicativa completa, ya demostrada, y hace visible dónde intervienen el cono positivo, los signos y el inverso.
+La figura [C00-F11](#fig-anm-c00-f11) reúne ahora la arquitectura multiplicativa completa, ya demostrada, y hace visible dónde intervienen el cono positivo, los signos y el inverso.
 
-![Diagrama de flujo desde producto ingenuo hasta inverso general, matriz 2×2 de signos y lista de obligaciones: inversos, asociatividad, conmutatividad, distributividad y compatibilidad con el orden.](../../assets/books/anm/C00-F11.svg)
-
-*Figura C00-F11. El producto ingenuo falla; la construcción pasa al cono positivo, se extiende a todos los signos y sólo después cierra la estructura de cuerpo ordenado.*
+![El producto ingenuo falla; la construcción pasa al cono positivo, se extiende a todos los signos y sólo después cierra la estructura de cuerpo ordenado.](../../assets/books/anm/C00-F11.svg){#fig-anm-c00-f11 fig-alt="Diagrama de flujo desde producto ingenuo hasta inverso general, matriz 2×2 de signos y lista de obligaciones: inversos, asociatividad, conmutatividad, distributividad y compatibilidad con el orden."}
 
 ### Qué falta para responder «sí existen»
 
@@ -4776,11 +4764,9 @@ No necesitamos identificar todavía qué operación algebraica especial satisfac
 
 ### La figura lógica del cierre de existencia
 
-La figura C00-F07 concentra esta lectura en un único mapa visual.
+La figura [C00-F07](#fig-anm-c00-f07) concentra esta lectura en un único mapa visual.
 
-![Familia de cortaduras y su unión, con dos paneles de certificación: primero S pertenece a D —señalando dónde se usa la acotación— y después S es el supremo; al final se combinan cuerpo ordenado y propiedad del supremo.](../../assets/books/anm/C00-F07.svg)
-
-*Figura C00-F07. La unión es candidata a supremo sólo tras verificar por separado que pertenece a D y que es la menor cota superior.*
+![La unión es candidata a supremo sólo tras verificar por separado que pertenece a D y que es la menor cota superior.](../../assets/books/anm/C00-F07.svg){#fig-anm-c00-f07 fig-alt="Familia de cortaduras y su unión, con dos paneles de certificación: primero S pertenece a D —señalando dónde se usa la acotación— y después S es el supremo; al final se combinan cuerpo ordenado y propiedad del supremo."}
 
 El orden de lectura de este cierre debe quedar muy claro:
 
@@ -5472,11 +5458,9 @@ $$
 
 No hemos usado ninguna imagen intuitiva de «racionales muy juntos». La densidad se dedujo de propiedades estructurales precisas.
 
-La figura C00-F08 concentra esta lectura en un único mapa visual.
+La figura [C00-F08](#fig-anm-c00-f08) concentra esta lectura en un único mapa visual.
 
-![Cadena de seis nodos desde char F=0 hasta Q densa en F y dos escalas del cuerpo abstracto: primero localizar x entre enteros consecutivos y luego refinar con una malla racional entre x e y.](../../assets/books/anm/C00-F08.svg)
-
-*Figura C00-F08. La densidad racional en un cuerpo completo es una conclusión de característica cero, copia racional, arquimedianidad y localización.*
+![La densidad racional en un cuerpo completo es una conclusión de característica cero, copia racional, arquimedianidad y localización.](../../assets/books/anm/C00-F08.svg){#fig-anm-c00-f08 fig-alt="Cadena de seis nodos desde char F=0 hasta Q densa en F y dos escalas del cuerpo abstracto: primero localizar x entre enteros consecutivos y luego refinar con una malla racional entre x e y."}
 
 ### La información racional situada debajo de un elemento
 
@@ -5756,11 +5740,9 @@ $$
 }
 $$
 
-La figura C00-F09 concentra esta lectura en un único mapa visual.
+La figura [C00-F09](#fig-anm-c00-f09) concentra esta lectura en un único mapa visual.
 
-![Panel superior con x y varias imágenes racionales dentro de F, panel central con la cortadura Aₓ en Q y sus cuatro propiedades, y retorno a F mediante x=sup_F ι_F(Aₓ).](../../assets/books/anm/C00-F09.svg)
-
-*Figura C00-F09. x vive en F y Aₓ vive en Q; la traza racional registra la posición de x y la completitud permite reconstruirlo.*
+![x vive en F y Aₓ vive en Q; la traza racional registra la posición de x y la completitud permite reconstruirlo.](../../assets/books/anm/C00-F09.svg){#fig-anm-c00-f09 fig-alt="Panel superior con x y varias imágenes racionales dentro de F, panel central con la cortadura Aₓ en Q y sus cuatro propiedades, y retorno a F mediante x=sup_F ι_F(Aₓ)."}
 
 ### Dos elementos distintos no pueden tener la misma traza
 
@@ -7054,11 +7036,9 @@ $$
 }
 $$
 
-La figura C00-F12 resume por qué la misma traza racional obliga a transportar también la aritmética, una vez cerrados suma, producto y todos los casos de signo.
+La figura [C00-F12](#fig-anm-c00-f12) resume por qué la misma traza racional obliga a transportar también la aritmética, una vez cerrados suma, producto y todos los casos de signo.
 
-![Tres paneles: racionales fijos, caracterización de la suma por trazas y caracterización del producto en no negativos seguida por tres casos de signo y conclusión de multiplicatividad total.](../../assets/books/anm/C00-F12.svg)
-
-*Figura C00-F12. La misma traza racional obliga a que φ fije Q y preserve suma y producto; el producto se demuestra primero en no negativos y luego se cierran los tres casos de signo.*
+![La misma traza racional obliga a que φ fije Q y preserve suma y producto; el producto se demuestra primero en no negativos y luego se cierran los tres casos de signo.](../../assets/books/anm/C00-F12.svg){#fig-anm-c00-f12 fig-alt="Tres paneles: racionales fijos, caracterización de la suma por trazas y caracterización del producto en no negativos seguida por tres casos de signo y conclusión de multiplicatividad total."}
 
 ### Ya tenemos un isomorfismo de cuerpos ordenados
 
@@ -7309,11 +7289,9 @@ Las cortaduras son una realización.
 
 La estructura de cuerpo ordenado completo es lo que todas las realizaciones comparten.
 
-La figura C00-F10 concentra esta lectura en un único mapa visual.
+La figura [C00-F10](#fig-anm-c00-f10) concentra esta lectura en un único mapa visual.
 
-![Tres universos F, Q y G muestran x→Aₓ→φ(x) y el transporte simétrico y→A_y→ψ(y); un panel final distingue igualdad literal, existencia de isomorfismo y unicidad.](../../assets/books/anm/C00-F10.svg)
-
-*Figura C00-F10. El transporte F→G pasa por la traza racional común; el transporte simétrico produce la inversa y fuerza la unicidad del isomorfismo.*
+![El transporte F→G pasa por la traza racional común; el transporte simétrico produce la inversa y fuerza la unicidad del isomorfismo.](../../assets/books/anm/C00-F10.svg){#fig-anm-c00-f10 fig-alt="Tres universos F, Q y G muestran x→Aₓ→φ(x) y el transporte simétrico y→A_y→ψ(y); un panel final distingue igualdad literal, existencia de isomorfismo y unicidad."}
 
 El estado narrativo final es:
 
