@@ -54,6 +54,12 @@ try {
             math:main.querySelectorAll('mjx-container').length,
             sourceMath:main.querySelectorAll('.math').length,
             mathErrors:main.querySelectorAll('mjx-merror,merror,[data-mjx-error]').length,
+            // noUndefined renders unknown commands as red mtext, not merror.
+            undefinedCommands:[...main.querySelectorAll('mjx-container')].filter(e=>
+              e.querySelector('[mathcolor="red"]') ||
+              [...e.querySelectorAll('mjx-mtext')].some(n=>n.style.color==='red') ||
+              /\\[A-Za-z]+/.test(e.textContent)
+            ).map(e=>e.textContent.slice(0,300)),
             failedImages:[...main.querySelectorAll('img')].filter(e=>!e.complete||!e.naturalWidth).map(e=>e.src),
             missingAlt:[...main.querySelectorAll('img')].filter(e=>!e.alt).length,
             unresolved:main.querySelectorAll('.quarto-unresolved-ref').length,
@@ -61,7 +67,7 @@ try {
             overflowing:[...main.querySelectorAll('*')].filter(e=>!e.closest('.math,table,pre,[style*="overflow"]')).filter(e=>e.getBoundingClientRect().right>innerWidth+2).slice(0,10).map(e=>({tag:e.tagName,text:e.textContent.slice(0,100)}))};
         }));
         check.status=response.status();check.errors=[...errors];
-        check.pass=check.status===200&&check.pageWidth<=width+2&&check.math>0&&check.math===check.sourceMath&&check.mathErrors===0&&check.failedImages.length===0&&check.missingAlt===0&&check.unresolved===0&&check.duplicateIds.length===0&&check.overflowing.length===0&&errors.length===0;
+        check.pass=check.status===200&&check.pageWidth<=width+2&&check.math>0&&check.math===check.sourceMath&&check.mathErrors===0&&check.undefinedCommands.length===0&&check.failedImages.length===0&&check.missingAlt===0&&check.unresolved===0&&check.duplicateIds.length===0&&check.overflowing.length===0&&errors.length===0;
         const height=await page.evaluate(()=>document.documentElement.scrollHeight);
         for(const [part,y] of [['start',0],['middle',height/2],['end',height]]) {
           checkpoint('capture-'+part,row.chapter,width);

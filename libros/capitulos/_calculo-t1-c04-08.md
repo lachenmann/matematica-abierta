@@ -612,7 +612,7 @@ El error consiste en invertir la implicación:
 $$
 \boxed{
 L=F(L)
-\centernot\Longrightarrow
+\not\Longrightarrow
 x_n\to L.
 }
 $$
