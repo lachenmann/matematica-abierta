@@ -52,7 +52,7 @@ Supongamos que dos fórmulas producen exactamente la misma columna final en toda
 La disciplina será la misma que en C3: cada paso debe tener una ley, una dirección y un alcance precisos.
 
 ***
-## 5.1. De la coincidencia semántica a la equivalencia lógica
+## 5.1. De la coincidencia semántica a la equivalencia lógica {#apm-c05-s01}
 
 Consideremos las fórmulas $P\Rightarrow Q$ y $\neg Q\Rightarrow\neg P$. En C4 verificamos mediante tabla que sus columnas finales coinciden.
 
@@ -83,7 +83,7 @@ Para demostrar que $A\not\equiv B$ basta mucho menos: encontrar **una sola valua
 Ese patrón reaparecerá constantemente en matemática: una afirmación universal exige control global; un contraejemplo basta para refutarla.
 
 ***
-## 5.2. Una equivalencia es una regla de reemplazo
+## 5.2. Una equivalencia es una regla de reemplazo {#apm-c05-s02}
 
 La utilidad algebraica de $A\equiv B$ aparece cuando $A$ no está aislada, sino dentro de una fórmula mayor.
 
@@ -118,7 +118,7 @@ De manera semejante, la ley de absorción que veremos más adelante no se aplica
 Esta precisión de alcance será indispensable en cadenas largas.
 
 ***
-## 5.3. Leyes estructurales: identidad, dominación, idempotencia y complemento
+## 5.3. Leyes estructurales: identidad, dominación, idempotencia y complemento {#apm-c05-s03}
 
 Comenzamos con leyes sencillas que eliminan información redundante.
 
@@ -166,7 +166,7 @@ $$
 La simplificación no estaba visible al comienzo. Fue necesario factorizar $P$ para producir el complemento $Q\lor\neg Q$.
 
 ***
-## 5.4. Conmutatividad y asociatividad: preparar el terreno
+## 5.4. Conmutatividad y asociatividad: preparar el terreno {#apm-c05-s04}
 
 La conjunción y la disyunción son conmutativas:
 
@@ -202,7 +202,7 @@ $$
 El paso conceptual importante no es que podamos permutar símbolos, sino que sabemos **para qué** hacerlo.
 
 ***
-## 5.5. Leyes de De Morgan y control de negaciones
+## 5.5. Leyes de De Morgan y control de negaciones {#apm-c05-s05}
 
 Las leyes de De Morgan son:
 
@@ -253,7 +253,7 @@ Basta la valuación $P=V,Q=F$: la primera fórmula es verdadera y la segunda fal
 Una ley recordada con el conectivo equivocado deja de ser una equivalencia.
 
 ***
-## 5.6. Distributividad y factorización lógica
+## 5.6. Distributividad y factorización lógica {#apm-c05-s06}
 
 La lógica proposicional posee dos leyes distributivas:
 
@@ -288,7 +288,7 @@ $P\lor(Q\land R)\equiv(P\lor Q)\land(P\lor R)$.
 La fórmula resultante es una conjunción de disyunciones: ya tiene la arquitectura básica de una FNC.
 
 ***
-## 5.7. Absorción y simplificación estratégica
+## 5.7. Absorción y simplificación estratégica {#apm-c05-s07}
 
 Las leyes de absorción son:
 
@@ -327,7 +327,7 @@ $(P\land Q)\lor P\equiv P\lor(P\land Q)\equiv P$.
 Aquí reordenar no fue un fin: fue una preparación para reconocer absorción.
 
 ***
-## 5.8. Eliminar implicaciones y bicondicionales
+## 5.8. Eliminar implicaciones y bicondicionales {#apm-c05-s08}
 
 Las formas normales que estudiaremos se expresarán usando únicamente $\neg$, $\land$ y $\lor$. Por eso necesitamos eliminar $\Rightarrow$ y $\Leftrightarrow$.
 
@@ -377,7 +377,7 @@ Si buscamos FNC, la primera suele ahorrar trabajo.
 Ésta es una primera muestra de estrategia: una equivalencia puede ser correcta en varias formas, pero no todas son igualmente útiles para el objetivo presente.
 
 ***
-## 5.9. Cadenas largas de equivalencias
+## 5.9. Cadenas largas de equivalencias {#apm-c05-s09}
 
 Una cadena lógica extensa debe leerse como un argumento matemático. Cada enlace afirma que la fórmula de la izquierda puede reemplazarse por la de la derecha sin cambiar el valor de verdad bajo ninguna valuación.
 
@@ -421,7 +421,7 @@ Dos estudiantes pueden producir cadenas distintas y ambas ser correctas. La preg
 4. ¿la escritura permite auditar el razonamiento?
 
 ***
-## 5.10. Literales, términos y cláusulas
+## 5.10. Literales, términos y cláusulas {#apm-c05-s10}
 
 Para hablar de formas normales necesitamos algunas unidades estructurales.
 
@@ -452,7 +452,7 @@ Estas definiciones no dicen todavía que una fórmula sea normal. Nos entregan l
 Un término conjuntivo puede ser verdadero o falso según la valuación. Lo mismo una cláusula. Los nombres describen **estructura sintáctica**, no valor de verdad.
 
 ***
-## 5.11. Forma normal disyuntiva
+## 5.11. Forma normal disyuntiva {#apm-c05-s11}
 
 Una fórmula está en **forma normal disyuntiva (FND)** cuando es una disyunción de uno o más términos conjuntivos de literales.
 
@@ -498,7 +498,7 @@ $(P\land Q)\lor(P\land\neg Q)$
 está en FND, pero además se simplifica a $P$. Por tanto, estar en forma normal no garantiza ser la escritura más corta.
 
 ***
-## 5.12. Forma normal conjuntiva
+## 5.12. Forma normal conjuntiva {#apm-c05-s12}
 
 Una fórmula está en **forma normal conjuntiva (FNC)** cuando es una conjunción de una o más cláusulas disyuntivas de literales.
 
@@ -533,7 +533,7 @@ Para obtener FNC:
 Una fórmula puede tener una FND y una FNC equivalentes entre sí y con la fórmula original. No se trata de dos significados distintos, sino de dos representaciones normalizadas del mismo comportamiento semántico.
 
 ***
-## 5.13. Formas normales canónicas desde tablas de verdad
+## 5.13. Formas normales canónicas desde tablas de verdad {#apm-c05-s13}
 
 Las transformaciones algebraicas pueden requerir ingenio. La tabla de verdad ofrece, en cambio, un procedimiento universal.
 
@@ -609,10 +609,10 @@ Una escritura como $P\lor\neg P$ representa una tautología con literales, pero 
 
 **Control.** Para las variables declaradas $P,Q$, ¿puede $P\land\neg P$ ser una FND equivalente a una contradicción sin ser su FND canónica? ¿Qué ocurre con $P\lor\neg P$ como FNC de una tautología?
 
-**Resolución.** Sí. $P\land\neg P$ es un término conjuntivo de literales y, por tanto, una FND de un término; siempre es falso. No es la FND canónica, que no tiene términos verdaderos y se representa por $F$. Análogamente, $P\lor\neg P$ es una FNC de una cláusula siempre verdadera; no es la FNC canónica de la tautología, que no tiene cláusulas y se representa por $V$. Las formas normales ordinarias permiten esas escrituras; el procedimiento canónico selecciona exactamente las filas pertinentes. Si la dificultad estuvo en reconocer un término o una cláusula, vuelve a §§5.10–5.12; si estuvo en seleccionar filas, vuelve al comienzo de §5.13.
+**Resolución.** Sí. $P\land\neg P$ es un término conjuntivo de literales y, por tanto, una FND de un término; siempre es falso. No es la FND canónica, que no tiene términos verdaderos y se representa por $F$. Análogamente, $P\lor\neg P$ es una FNC de una cláusula siempre verdadera; no es la FNC canónica de la tautología, que no tiene cláusulas y se representa por $V$. Las formas normales ordinarias permiten esas escrituras; el procedimiento canónico selecciona exactamente las filas pertinentes. Si la dificultad estuvo en reconocer un término o una cláusula, vuelve a §[§5.10](algebra-de-proposiciones-y-formas-normales.md#apm-c05-s10)–5.12; si estuvo en seleccionar filas, vuelve al comienzo de [§5.13](algebra-de-proposiciones-y-formas-normales.md#apm-c05-s13).
 
 ***
-## 5.14. Normalizar no es minimizar
+## 5.14. Normalizar no es minimizar {#apm-c05-s14}
 
 Una **forma normal** cumple una arquitectura sintáctica determinada.
 
@@ -661,10 +661,10 @@ Antes de decir «esta forma es menor», declara qué comparas: apariciones de li
 
 **Control.** Sin enumerar todos los términos, compara los tamaños canónicos de $Q\lor R$ con las variables declaradas $Q,R$ y con $P,Q,R$.
 
-**Resolución.** Con $Q,R$, hay tres filas verdaderas y una falsa: la FND canónica tiene tres términos y seis apariciones de literales; la FNC canónica tiene una cláusula y dos apariciones. Al añadir $P$, las filas se duplican: seis términos de tres literales, con dieciocho apariciones, y dos cláusulas de tres literales, con seis apariciones. La fórmula compacta $Q\lor R$ sigue teniendo sólo dos apariciones y no depende de $P$. Si confundiste la cantidad de variables con las apariciones, compara §5.10 con el criterio fijado aquí; si omitiste la duplicación de filas, vuelve a §4.11.
+**Resolución.** Con $Q,R$, hay tres filas verdaderas y una falsa: la FND canónica tiene tres términos y seis apariciones de literales; la FNC canónica tiene una cláusula y dos apariciones. Al añadir $P$, las filas se duplican: seis términos de tres literales, con dieciocho apariciones, y dos cláusulas de tres literales, con seis apariciones. La fórmula compacta $Q\lor R$ sigue teniendo sólo dos apariciones y no depende de $P$. Si confundiste la cantidad de variables con las apariciones, compara [§5.10](algebra-de-proposiciones-y-formas-normales.md#apm-c05-s10) con el criterio fijado aquí; si omitiste la duplicación de filas, vuelve a [§4.11](proposiciones-y-conectivos-logicos.md#apm-c04-s11).
 
 ***
-## 5.15. Estrategias de transformación
+## 5.15. Estrategias de transformación {#apm-c05-s15}
 
 Conocer las leyes no basta. Una fórmula extensa puede admitir muchas transformaciones correctas, pero algunas nos alejan del objetivo.
 
@@ -734,10 +734,10 @@ El control semántico de ambas rutas puede hacerse separando los valores de $P$.
 
 **Control.** Simplifica $G\Rightarrow R$ sin expandir primero todo $G$. Da una FNC y comprueba la equivalencia por los casos que podrían hacer falso al condicional.
 
-**Resolución.** Como $G\equiv P$, podemos reemplazar el antecedente completo y obtener $P\Rightarrow R\equiv\neg P\lor R$. Una sola cláusula constituye una FNC. El original sólo es falso cuando $G=V,R=F$; como $G$ y $P$ coinciden en toda valuación, eso ocurre exactamente cuando $P=V,R=F$, la misma combinación que hace falsa a $\neg P\lor R$. El valor de $Q$ no altera el resultado. Si aplicaste una ley a símbolos dispersos, vuelve a §5.2; si no identificaste el antecedente, vuelve a §4.10.
+**Resolución.** Como $G\equiv P$, podemos reemplazar el antecedente completo y obtener $P\Rightarrow R\equiv\neg P\lor R$. Una sola cláusula constituye una FNC. El original sólo es falso cuando $G=V,R=F$; como $G$ y $P$ coinciden en toda valuación, eso ocurre exactamente cuando $P=V,R=F$, la misma combinación que hace falsa a $\neg P\lor R$. El valor de $Q$ no altera el resultado. Si aplicaste una ley a símbolos dispersos, vuelve a [§5.2](algebra-de-proposiciones-y-formas-normales.md#apm-c05-s02); si no identificaste el antecedente, vuelve a [§4.10](proposiciones-y-conectivos-logicos.md#apm-c04-s10).
 
 ***
-## 5.16. Cierre — protocolo de transformación proposicional
+## 5.16. Cierre — protocolo de transformación proposicional {#apm-c05-s16}
 
 Ante una fórmula extensa, preguntaremos:
 
@@ -2999,4 +2999,8 @@ Con cuatro variables declaradas hay dieciséis valuaciones. La FND canónica de 
 
 La FND canónica de $K$ no tiene términos y se representa por $F$. Su FNC canónica incluye una cláusula por cada valuación, negando las variables que valen $V$ y dejando positivas las que valen $F$. Son dieciséis cláusulas de cuatro literales, con sesenta y cuatro apariciones. Cada fila hace falsa su propia cláusula.
 
-Las constantes no aparecen en las fórmulas diseñadas, pero sí pueden aparecer en sus representaciones canónicas extremas conforme a la convención de §5.13. Las variables que no usa cada fórmula siguen interviniendo en la tabla declarada; su inclusión no cambia el comportamiento constante.
+Las constantes no aparecen en las fórmulas diseñadas, pero sí pueden aparecer en sus representaciones canónicas extremas conforme a la convención de [§5.13](algebra-de-proposiciones-y-formas-normales.md#apm-c05-s13). Las variables que no usa cada fórmula siguen interviniendo en la tabla declarada; su inclusión no cambia el comportamiento constante.
+
+***
+
+[← Capítulo 4](proposiciones-y-conectivos-logicos.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 6 →](cuantificadores-predicados-y-lenguaje-matematico.md)

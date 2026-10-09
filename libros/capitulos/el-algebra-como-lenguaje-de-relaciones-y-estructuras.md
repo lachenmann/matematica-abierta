@@ -33,7 +33,7 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-## 1.1. Una operación puede convertirse en objeto de estudio
+## 1.1. Una operación puede convertirse en objeto de estudio {#apm-c01-s01}
 
 Hay una diferencia entre **hacer una cuenta** y **estudiar una cuenta**.
 
@@ -69,7 +69,7 @@ Todavía no necesitamos poner un nombre técnico a esa propiedad. El objetivo es
 En capítulos posteriores estudiaremos de manera sistemática las leyes que justifican este tipo de observaciones. Aquí sólo queremos adquirir el hábito de mirar una operación como algo que **tiene comportamiento**.
 
 ***
-## 1.2. De muchos casos a una sola pregunta
+## 1.2. De muchos casos a una sola pregunta {#apm-c01-s02}
 
 Supongamos que observamos
 
@@ -115,7 +115,7 @@ Todavía no hemos demostrado nada. Hemos realizado otra operación intelectual: 
 Ese paso es valioso, pero debe mantenerse separado de la demostración. Los ejemplos pueden sugerir una afirmación. No pueden, por sí solos, garantizar que la afirmación continúe siendo verdadera en todos los casos.
 
 ***
-## 1.3. Objetos, operaciones y relaciones
+## 1.3. Objetos, operaciones y relaciones {#apm-c01-s03}
 
 Para leer álgebra con precisión necesitamos distinguir papeles diferentes dentro de una escritura matemática.
 
@@ -160,7 +160,7 @@ El hábito que queremos formar es el contrario:
 > Antes de transformar una escritura, identificar qué objetos aparecen, qué operaciones se realizan y qué relación se está afirmando.
 
 ***
-## 1.4. Una expresión no es una afirmación
+## 1.4. Una expresión no es una afirmación {#apm-c01-s04}
 
 Comparemos tres escrituras:
 
@@ -190,7 +190,7 @@ También conviene distinguir entre:
 Más adelante estudiaremos formalmente proposiciones, variables, predicados y cuantificadores. En este capítulo no necesitamos todavía ese aparato. Sí necesitamos, desde ahora, una disciplina de lectura: **no manipular antes de saber qué tipo de cosa tenemos delante**.
 
 ***
-## 1.5. Patrones: descubrir no es demostrar
+## 1.5. Patrones: descubrir no es demostrar {#apm-c01-s05}
 
 Los patrones son una de las fuentes más fecundas de preguntas matemáticas.
 
@@ -240,7 +240,7 @@ Hay aquí una asimetría que utilizaremos durante toda la formación matemática
 Todavía no estudiaremos cómo construir ese argumento. Pero desde el primer capítulo debemos aprender a distinguir **evidencia**, **conjetura**, **contraejemplo** y **demostración**.
 
 ***
-## 1.6. Qué queremos decir aquí por “estructura”
+## 1.6. Qué queremos decir aquí por “estructura” {#apm-c01-s06}
 
 La palabra *estructura* será central en toda esta obra, pero sería un error tratarla desde el comienzo como si tuviera una definición elemental única y autosuficiente.
 
@@ -274,7 +274,7 @@ Más adelante estas preguntas conducirán a la teoría de grupos. Ahora no neces
 Los ejemplos concretos cumplen aquí una función de puente: permiten reconocer primero un comportamiento familiar y, sólo después, aislar los rasgos que pueden compararse entre contextos muy distintos.
 
 ***
-## 1.7. Transformar y preguntar qué permanece
+## 1.7. Transformar y preguntar qué permanece {#apm-c01-s07}
 
 Una de las preguntas más poderosas de toda la matemática es:
 
@@ -317,9 +317,9 @@ Podemos proponer la pregunta general: ¿aumentar una entrada y disminuir la otra
 
 **Control.** Parte de $2,5$. Compara intercambiar las entradas con aumentar la primera en $2$ y disminuir la segunda en $2$. ¿Qué distingue la suma y qué distingue el producto? ¿Qué puedes concluir sobre todos los pares a partir de este control?
 
-**Solución.** El par inicial tiene suma $7$ y producto $10$. El intercambio produce $5,2$, con suma $7$ y producto $10$. El otro cambio produce $4,3$, con suma $7$ y producto $12$. La suma no distingue estas situaciones; el producto distingue el segundo cambio del intercambio. Hemos verificado este par, no todos los pares. Para reconocer qué estamos comparando, retoma §1.3, operaciones y relaciones; para precisar la fuerza de los datos, retoma §1.5, evidencia y conjetura.
+**Solución.** El par inicial tiene suma $7$ y producto $10$. El intercambio produce $5,2$, con suma $7$ y producto $10$. El otro cambio produce $4,3$, con suma $7$ y producto $12$. La suma no distingue estas situaciones; el producto distingue el segundo cambio del intercambio. Hemos verificado este par, no todos los pares. Para reconocer qué estamos comparando, retoma [§1.3](el-algebra-como-lenguaje-de-relaciones-y-estructuras.md#apm-c01-s03), operaciones y relaciones; para precisar la fuerza de los datos, retoma [§1.5](el-algebra-como-lenguaje-de-relaciones-y-estructuras.md#apm-c01-s05), evidencia y conjetura.
 
-## 1.8. Una idea, varias representaciones
+## 1.8. Una idea, varias representaciones {#apm-c01-s08}
 
 Una misma relación matemática puede presentarse de formas distintas.
 
@@ -380,9 +380,9 @@ No se trata de decidir cuál parece más natural. Si el único dato es la tabla,
 
 **Control.** Se agrega a la tabla la fila $3\mapsto8$. ¿Esto selecciona una de las dos reglas anteriores? ¿Prueba que no pueda existir ninguna otra regla compatible con las cuatro filas?
 
-**Solución.** Descarta la segunda regla y conserva la primera entre esos dos candidatos. No establece unicidad entre todas las reglas posibles. Por ejemplo, «duplica y suma $2$, excepto en la entrada $4$, donde entrega $100$» coincide en las cuatro filas y difiere en otra entrada. La comprobación adicional discrimina los candidatos comparados, pero no agota los que no fueron considerados. Si falta esta distinción, retoma §1.2, casos y conjetura, y §1.5, alcance de una comprobación finita. Después escribe por separado las filas observadas y la regla que estás proponiendo.
+**Solución.** Descarta la segunda regla y conserva la primera entre esos dos candidatos. No establece unicidad entre todas las reglas posibles. Por ejemplo, «duplica y suma $2$, excepto en la entrada $4$, donde entrega $100$» coincide en las cuatro filas y difiere en otra entrada. La comprobación adicional discrimina los candidatos comparados, pero no agota los que no fueron considerados. Si falta esta distinción, retoma [§1.2](el-algebra-como-lenguaje-de-relaciones-y-estructuras.md#apm-c01-s02), casos y conjetura, y [§1.5](el-algebra-como-lenguaje-de-relaciones-y-estructuras.md#apm-c01-s05), alcance de una comprobación finita. Después escribe por separado las filas observadas y la regla que estás proponiendo.
 
-## 1.9. Generalizar exige controlar el dominio de la afirmación
+## 1.9. Generalizar exige controlar el dominio de la afirmación {#apm-c01-s09}
 
 Consideremos la observación:
 
@@ -415,7 +415,7 @@ Cuando una pauta parece general, conviene preguntar:
 Generalizar matemáticamente no es adivinar una fórmula vistosa. Es formular con precisión una afirmación cuyo alcance conocemos.
 
 ***
-## 1.10. Leer algebraicamente
+## 1.10. Leer algebraicamente {#apm-c01-s10}
 
 Podemos reunir lo aprendido en una rutina de lectura.
 
@@ -439,7 +439,7 @@ No todas las preguntas serán útiles en cada problema. La rutina sirve para ins
 Éste es uno de los cambios centrales de la transición a la matemática universitaria. Cada vez habrá menos instrucciones del tipo «aplica esta fórmula» y más situaciones en las que debamos reconocer por nosotros mismos qué información es relevante y qué estructura organiza el problema.
 
 ***
-## 1.11. Síntesis
+## 1.11. Síntesis {#apm-c01-s11}
 
 El álgebra no comienza cuando aparecen letras. Comienza cuando una situación particular se convierte en objeto de comparación y generalización.
 
@@ -995,3 +995,7 @@ Con precio $p$, A se escribe $p-2$ y B se escribe $p-p/5$. Las frases indican re
 Los objetos son precios y cantidades retiradas; las operaciones son resta y, en B, división para calcular la quinta parte. La relación comparada es igualdad entre los precios finales. En $10$ coincide el resultado, pero los procedimientos no son el mismo; en $20$ se distinguen.
 
 Si se sabe que el procedimiento real debe ser A o B, una salida $18$ para precio $20$ selecciona A, y una salida $16$ selecciona B. Una salida diferente descartaría ambos candidatos. Sin esa restricción, dos filas no garantizan una regla única para otros precios. La tabla facilita comparar esos casos; las frases y expresiones conservan el procedimiento completo declarado. Para precios menores que $2$, A daría un resultado negativo: si el contexto lo prohíbe, haría falta restringir su aplicación, aunque los dos precios usados aquí son admisibles.
+
+***
+
+[Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 2 →](expresiones-variables-igualdad-e-identidad.md)

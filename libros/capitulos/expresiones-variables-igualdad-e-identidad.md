@@ -44,7 +44,7 @@ La dificultad no está en reconocer letras o signos. Está en comprender **qué 
 El objetivo de este capítulo es aprender a interpretar esos usos con precisión antes de estudiar, en el capítulo siguiente, qué leyes permiten transformar legítimamente una expresión en otra.
 
 ***
-## 2.1. Una letra no significa una sola cosa
+## 2.1. Una letra no significa una sola cosa {#apm-c02-s01}
 
 En la escuela es frecuente asociar automáticamente una letra con «el número que hay que encontrar». Esa interpretación sirve en problemas como $x+3=7$: allí $x$ funciona efectivamente como una **incógnita**.
 
@@ -91,7 +91,7 @@ La idea central es simple pero decisiva:
 > **Una letra es un símbolo. Su papel matemático depende del contexto.**
 
 ***
-## 2.2. Las expresiones tienen estructura interna
+## 2.2. Las expresiones tienen estructura interna {#apm-c02-s02}
 
 Tomemos la expresión $3x^2-2x+5$.
 
@@ -125,7 +125,7 @@ Esto será central durante todo el libro. Una forma factorizada puede mostrar ra
 El álgebra no consiste únicamente en obtener una forma «más simple». Consiste muchas veces en elegir la forma que hace visible la propiedad que queremos estudiar.
 
 ***
-## 2.3. Sustituir y evaluar
+## 2.3. Sustituir y evaluar {#apm-c02-s03}
 
 Si tenemos la expresión $x^2-3x+1$ y elegimos $x=2$, podemos **evaluarla** sustituyendo $2$ por $x$:
 
@@ -206,9 +206,9 @@ En $2$ hay dos números reales que no son iguales. En $1$ ni siquiera tenemos un
 
 **Control.** Compara $0/(x-2)=0$ en $x=3$ y en $x=2$. ¿El numerador cero elimina la restricción?
 
-**Solución.** En $3$, el cociente es $0/1=0$ y la igualdad es verdadera. En $2$, aparece $0/0$, que no representa un número real determinado. El numerador cero no autoriza dividir por cero. Si se confunden estos estados, retoma §2.2 para identificar cada división y §2.3 para comprobar cada denominador antes de evaluar.
+**Solución.** En $3$, el cociente es $0/1=0$ y la igualdad es verdadera. En $2$, aparece $0/0$, que no representa un número real determinado. El numerador cero no autoriza dividir por cero. Si se confunden estos estados, retoma [§2.2](expresiones-variables-igualdad-e-identidad.md#apm-c02-s02) para identificar cada división y [§2.3](expresiones-variables-igualdad-e-identidad.md#apm-c02-s03) para comprobar cada denominador antes de evaluar.
 
-## 2.4. Variables libres y contexto abierto
+## 2.4. Variables libres y contexto abierto {#apm-c02-s04}
 
 Consideremos la escritura $x^2+1$.
 
@@ -227,7 +227,7 @@ La teoría precisa de variables libres, variables ligadas, predicados y cuantifi
 Debemos leer la frase matemática completa.
 
 ***
-## 2.5. Parámetros: una familia dentro de una sola fórmula
+## 2.5. Parámetros: una familia dentro de una sola fórmula {#apm-c02-s05}
 
 La expresión $ax+b$ contiene tres letras. Sin contexto, no sabemos cuál de ellas debe variar y cuáles deben permanecer fijas.
 
@@ -269,9 +269,9 @@ No se ha resuelto una ecuación: se han organizado dos familias de evaluaciones.
 
 **Control.** Fija ahora $a=-1$ y deja variar $x$. Un borrador dice «queda $(x-1)/(x-1)$, que siempre vale $1$». ¿Qué palabra necesita corregirse?
 
-**Solución.** “Siempre” debe limitarse a $x\neq1$. En cada entrada admitida el numerador y denominador son el mismo número no nulo, por lo que el cociente vale $1$. En $x=1$, ambos son cero y no hay evaluación. Que el parámetro haga coincidir las partes no elimina el denominador. Recupera §2.1 para revisar los papeles de las letras y §2.3 para conservar las restricciones después de sustituir.
+**Solución.** “Siempre” debe limitarse a $x\neq1$. En cada entrada admitida el numerador y denominador son el mismo número no nulo, por lo que el cociente vale $1$. En $x=1$, ambos son cero y no hay evaluación. Que el parámetro haga coincidir las partes no elimina el denominador. Recupera [§2.1](expresiones-variables-igualdad-e-identidad.md#apm-c02-s01) para revisar los papeles de las letras y [§2.3](expresiones-variables-igualdad-e-identidad.md#apm-c02-s03) para conservar las restricciones después de sustituir.
 
-## 2.6. El signo igual no es una flecha
+## 2.6. El signo igual no es una flecha {#apm-c02-s06}
 
 Uno de los hábitos más resistentes de la aritmética escolar consiste en leer $=$ como «da» o «ahora viene el resultado».
 
@@ -326,7 +326,7 @@ afirma que, bajo las condiciones en que esas transformaciones sean válidas, tod
 En C3 estudiaremos precisamente **por qué** ciertos reemplazos son legítimos. Aquí basta entender qué está afirmando el signo igual cuando aparece.
 
 ***
-## 2.7. Igualdad particular, ecuación e identidad
+## 2.7. Igualdad particular, ecuación e identidad {#apm-c02-s07}
 
 El mismo símbolo $=$ aparece en situaciones matemáticamente diferentes.
 
@@ -366,7 +366,7 @@ En cambio, $(x-y)(x+y)=x^2-y^2$ sí pretende valer para todo par de números rea
 Cuando el dominio cambie, debemos revisar qué operaciones están disponibles y para qué valores están definidas.
 
 ***
-## 2.8. Coincidir donde ambas expresiones existen no significa tener el mismo dominio
+## 2.8. Coincidir donde ambas expresiones existen no significa tener el mismo dominio {#apm-c02-s08}
 
 Consideremos
 
@@ -418,9 +418,9 @@ Restringir una regla no cambia su fórmula, pero sí las entradas que estamos es
 
 **Control.** ¿Podemos declarar $x\le3$ como dominio completo de ambas expresiones sin modificar sus reglas? ¿Y $x<3$?
 
-**Solución.** El primer dominio incluye $3$, donde la primera expresión no tiene valor, así que no sirve para ambas. El segundo excluye $3$ y está contenido en los dos dominios naturales: en todas sus entradas ambas dan $1$. Para distinguir restricción contextual y operación imposible, vuelve a §2.3; para reconocer qué cambia al quitar entradas, vuelve a C1 §1.8, información conservada por una representación.
+**Solución.** El primer dominio incluye $3$, donde la primera expresión no tiene valor, así que no sirve para ambas. El segundo excluye $3$ y está contenido en los dos dominios naturales: en todas sus entradas ambas dan $1$. Para distinguir restricción contextual y operación imposible, vuelve a [§2.3](expresiones-variables-igualdad-e-identidad.md#apm-c02-s03); para reconocer qué cambia al quitar entradas, vuelve a C1 [§1.8](el-algebra-como-lenguaje-de-relaciones-y-estructuras.md#apm-c01-s08), información conservada por una representación.
 
-## 2.9. Una misma cantidad puede tener formas diferentes
+## 2.9. Una misma cantidad puede tener formas diferentes {#apm-c02-s09}
 
 Comparemos $2(x+3)$ y $2x+6$.
 
@@ -455,7 +455,7 @@ Todavía no hemos establecido sistemáticamente las leyes que nos autorizan a pa
 Ésa será la tarea de C3.
 
 ***
-## 2.10. Errores de lectura que conviene detectar
+## 2.10. Errores de lectura que conviene detectar {#apm-c02-s10}
 
 Los errores algebraicos no siempre provienen de cálculos difíciles. Muchos nacen de una mala interpretación de la escritura.
 
@@ -492,7 +492,7 @@ Comprobar que dos expresiones coinciden para $x=0,1,2,3,4$ no demuestra, por sí
 En $ax+b$, las letras $a,b,x$ no llegan etiquetadas como «parámetros» o «variables». Esa elección depende del contexto del problema.
 
 ***
-## 2.11. Una rutina de lectura simbólica
+## 2.11. Una rutina de lectura simbólica {#apm-c02-s11}
 
 Antes de manipular una escritura algebraica, conviene recorrer mentalmente esta secuencia:
 
@@ -1066,3 +1066,7 @@ $$
 $a,b$ son parámetros fijos y $x$ recorre entradas reales. El primer dominio excluye sólo $a$; el segundo, sólo $b$. En cada uno, el término añadido vale cero y el resultado es $x$.
 
 Como $a\neq b$, en $x=a$ la primera expresión no tiene valor y la segunda sí, con resultado $a$. En $x=b$ sucede lo contrario: la primera da $b$ y la segunda no existe. En las entradas distintas de ambos parámetros, las dos dan el mismo valor $x$, pero tienen dominios naturales diferentes. Si $a=b$, las expresiones y los dominios coinciden; siguen excluyendo ese valor común. Una igualdad de resultados sobre la parte compartida no basta para borrar la restricción que el parámetro determina.
+
+***
+
+[← Capítulo 1](el-algebra-como-lenguaje-de-relaciones-y-estructuras.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 3 →](leyes-de-las-operaciones-y-transformaciones-justificadas.md)

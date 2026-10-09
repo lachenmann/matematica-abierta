@@ -50,7 +50,7 @@ El objetivo no es convertir el lenguaje matemático en una colección de símbol
 > **La lógica proposicional separa el contenido de una afirmación de la forma en que su verdad depende de otras afirmaciones.**
 
 ***
-## 4.1. ¿Qué es una proposición?
+## 4.1. ¿Qué es una proposición? {#apm-c04-s01}
 
 Consideremos estas expresiones:
 
@@ -75,7 +75,7 @@ Llamaremos **proposición** a una afirmación declarativa a la que, en el contex
 Más adelante estudiaremos sistemáticamente expresiones abiertas y cuantificadores. Por ahora basta reconocer la frontera.
 
 ***
-## 4.2. Proposición y valor de verdad no son lo mismo
+## 4.2. Proposición y valor de verdad no son lo mismo {#apm-c04-s02}
 
 Una proposición es la afirmación; su **valor de verdad** es uno de dos valores:
 
@@ -113,7 +113,7 @@ En ese análisis, $P$ y $Q$ son **proposiciones atómicas** y la nueva afirmaci�
 La lógica proposicional abstrae del contenido interno de $P$ y $Q$ para estudiar cómo se combina su verdad.
 
 ***
-## 4.3. Negación y alcance
+## 4.3. Negación y alcance {#apm-c04-s03}
 
 La **negación** de $P$, escrita $\neg P$, es verdadera exactamente cuando $P$ es falsa.
 
@@ -149,7 +149,7 @@ Los paréntesis determinan el **alcance** de la negación.
 Todavía no transformaremos sistemáticamente una negación de una conjunción en otra fórmula. Esa será materia de C5. Aquí el objetivo es leer la estructura correcta.
 
 ***
-## 4.4. Conjunción: exigir dos condiciones
+## 4.4. Conjunción: exigir dos condiciones {#apm-c04-s04}
 
 La **conjunción** de $P$ y $Q$ se escribe
 
@@ -187,7 +187,7 @@ En matemática es frecuente que una afirmación requiera simultáneamente varias
 contiene una conjunción, aunque no aparezca el símbolo $\land$.
 
 ***
-## 4.5. Disyunción: al menos una condición
+## 4.5. Disyunción: al menos una condición {#apm-c04-s05}
 
 La **disyunción** se escribe
 
@@ -217,7 +217,7 @@ $x=1$ o $x=-2$.
 No hay aquí una exigencia de exclusividad lógica; simplemente al menos una de las alternativas debe cumplirse.
 
 ***
-## 4.6. El condicional material
+## 4.6. El condicional material {#apm-c04-s06}
 
 La afirmación
 
@@ -276,10 +276,10 @@ Hay una distinción cercana que conviene fijar desde ahora. Un **argumento** pro
 
 **Control.** Un estudiante observa que $6$ es par y múltiplo de $3$ y afirma: «a partir de que un entero es par, puedo concluir que es múltiplo de $3$». Identifica la premisa y la conclusión, y presenta el caso que decide la validez de ese paso.
 
-**Resolución.** La premisa es $P$ y la conclusión es $Q$. Para refutar el paso necesitamos $P=V,Q=F$, no un caso en que ambas sean verdaderas. El entero $2$ realiza esa valuación: es par y no es múltiplo de $3$. El paso propuesto no es válido. El condicional correspondiente a $n=6$ sigue siendo verdadero; lo que falla es usar ese caso para garantizar el paso para cualquier entero. Si buscaste un número impar como contraejemplo, vuelve a la fila $V,F$ de §4.6; si confundiste la afirmación con su valor, vuelve a §4.2.
+**Resolución.** La premisa es $P$ y la conclusión es $Q$. Para refutar el paso necesitamos $P=V,Q=F$, no un caso en que ambas sean verdaderas. El entero $2$ realiza esa valuación: es par y no es múltiplo de $3$. El paso propuesto no es válido. El condicional correspondiente a $n=6$ sigue siendo verdadero; lo que falla es usar ese caso para garantizar el paso para cualquier entero. Si buscaste un número impar como contraejemplo, vuelve a la fila $V,F$ de [§4.6](proposiciones-y-conectivos-logicos.md#apm-c04-s06); si confundiste la afirmación con su valor, vuelve a [§4.2](proposiciones-y-conectivos-logicos.md#apm-c04-s02).
 
 ***
-## 4.7. Condición suficiente y condición necesaria
+## 4.7. Condición suficiente y condición necesaria {#apm-c04-s07}
 
 El condicional $P\Rightarrow Q$ puede expresarse de varias maneras.
 
@@ -346,7 +346,7 @@ Para leer una frase, identifica primero las afirmaciones completas; después det
 **Resolución.** La frase prohíbe $A=V,B=F$, así que se traduce $A\Rightarrow B$. Con «si»: «el entero es par si es múltiplo de $10$». No afirma $B\Rightarrow A$: el entero $2$ es par y no es múltiplo de $10$. La traducción y el examen matemático son tareas distintas: primero reproducimos lo que dice la frase; luego averiguamos si es verdadero. Si invertiste el condicional, vuelve a las lecturas «$P$ si $Q$» y «$P$ sólo si $Q$» de esta sección.
 
 ***
-## 4.8. Conversa, inversa y contraposición
+## 4.8. Conversa, inversa y contraposición {#apm-c04-s08}
 
 Partimos del condicional
 
@@ -401,10 +401,10 @@ El bicondicional pide que las dos direcciones se sostengan. En $n=12$, $P$ y $Q$
 
 **Control.** Para $P$: «el entero es múltiplo de $4$» y $Q$: «es par», evalúa el original, la conversa, la inversa, la contraposición y el bicondicional en $n=10$. Explica qué revela el caso y qué debe justificarse de forma general.
 
-**Resolución.** En $10$, $P=F$ y $Q=V$. El original $P\Rightarrow Q$ vale $V$; la conversa $Q\Rightarrow P$ vale $F$; la inversa $\neg P\Rightarrow\neg Q$ vale $F$; la contraposición $\neg Q\Rightarrow\neg P$ vale $V$; el bicondicional vale $F$. El caso refuta la conversa y la inversa como afirmaciones para todos los enteros, y refuta la doble dirección. Para justificar el original en general, si $n=4k$, entonces $n=2(2k)$ y es par. La tabla completa de §4.8 garantiza la coincidencia entre original y contraposición para cualquier valuación, no sólo para el entero $10$. Si cambiaste únicamente el orden o únicamente las negaciones, compara otra vez las tres fórmulas de esta sección.
+**Resolución.** En $10$, $P=F$ y $Q=V$. El original $P\Rightarrow Q$ vale $V$; la conversa $Q\Rightarrow P$ vale $F$; la inversa $\neg P\Rightarrow\neg Q$ vale $F$; la contraposición $\neg Q\Rightarrow\neg P$ vale $V$; el bicondicional vale $F$. El caso refuta la conversa y la inversa como afirmaciones para todos los enteros, y refuta la doble dirección. Para justificar el original en general, si $n=4k$, entonces $n=2(2k)$ y es par. La tabla completa de [§4.8](proposiciones-y-conectivos-logicos.md#apm-c04-s08) garantiza la coincidencia entre original y contraposición para cualquier valuación, no sólo para el entero $10$. Si cambiaste únicamente el orden o únicamente las negaciones, compara otra vez las tres fórmulas de esta sección.
 
 ***
-## 4.9. Bicondicional: poder ir en ambas direcciones
+## 4.9. Bicondicional: poder ir en ambas direcciones {#apm-c04-s09}
 
 El **bicondicional** se escribe
 
@@ -435,7 +435,7 @@ Si una condición $P$ lleva a $Q$ y también $Q$ lleva a $P$, el bicondicional r
 No usaremos todavía el símbolo $\Leftrightarrow$ como una señal para ejecutar cadenas largas de reescrituras. Ese uso algebraico comenzará en C5.
 
 ***
-## 4.10. Sintaxis, paréntesis y conectivo principal
+## 4.10. Sintaxis, paréntesis y conectivo principal {#apm-c04-s10}
 
 Una fórmula proposicional tiene estructura.
 
@@ -481,7 +481,7 @@ $(\neg P)\Rightarrow Q$ tiene como conectivo principal $\Rightarrow$.
 Los paréntesis no son decoración. Determinan qué fórmula estamos escribiendo.
 
 ***
-## 4.11. Tablas de verdad como semántica explícita
+## 4.11. Tablas de verdad como semántica explícita {#apm-c04-s11}
 
 Una tabla de verdad enumera sistemáticamente todas las posibles asignaciones de valores de verdad a las proposiciones atómicas.
 
@@ -534,7 +534,7 @@ no conviene adivinar la columna final. Construimos primero:
 La tabla hace explícita la semántica de la fórmula completa.
 
 ***
-## 4.12. Tautología, contradicción y contingencia
+## 4.12. Tautología, contradicción y contingencia {#apm-c04-s12}
 
 Una fórmula es una **tautología** si es verdadera en todas las valuaciones.
 
@@ -569,7 +569,7 @@ La clasificación no depende del contenido concreto de $P$ y $Q$, sino de la for
 C5 desarrollará procedimientos de transformación que permitirán reconocer muchas de estas propiedades sin reconstruir siempre una tabla completa.
 
 ***
-## 4.13. Traducir entre lenguaje matemático y símbolos
+## 4.13. Traducir entre lenguaje matemático y símbolos {#apm-c04-s13}
 
 La simbolización no consiste en sustituir palabras mecánicamente. Debemos identificar la estructura.
 
@@ -628,7 +628,7 @@ puede verbalizarse:
 La dirección simbólica y la verbal deben entrenarse ambas.
 
 ***
-## 4.14. Cierre — leer una afirmación lógicamente
+## 4.14. Cierre — leer una afirmación lógicamente {#apm-c04-s14}
 
 Ante una afirmación matemática, podemos seguir este protocolo:
 
@@ -1299,3 +1299,7 @@ La conclusión $Q\Rightarrow R$ es falsa sólo si $Q=V,R=F$. Con esos valores, p
 El entero $3$ realiza ese caso: no es múltiplo de $12$, sí es múltiplo de $3$ y no es par. Las dos implicaciones iniciales son verdaderas incluso como reglas generales sobre enteros, pero eso no hace que ser múltiplo de $3$ baste para ser par. Tener una misma condición suficiente para dos propiedades no vuelve a una de esas propiedades suficiente para la otra.
 
 Si añadimos $Q\Rightarrow P$, supongamos que todas las premisas son verdaderas. Si $Q=F$, la conclusión $Q\Rightarrow R$ es verdadera. Si $Q=V$, la nueva premisa obliga a $P=V$, y $P\Rightarrow R$ obliga a $R=V$, por lo que la conclusión también es verdadera. Los dos casos de $Q$ cubren todas las valuaciones: el argumento ampliado sí es válido. No se ha supuesto verdadera la nueva premisa para los enteros del ejemplo; se ha analizado qué garantiza la estructura cuando todas sus premisas son verdaderas.
+
+***
+
+[← Capítulo 3](leyes-de-las-operaciones-y-transformaciones-justificadas.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 5 →](algebra-de-proposiciones-y-formas-normales.md)

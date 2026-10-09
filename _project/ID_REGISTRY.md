@@ -9,7 +9,7 @@
 | Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0183 |
+| Capítulo | MA-BCH-0202 |
 | Curso | MA-CRS-0002 |
 | Libro | MA-BOK-0014 |
 
@@ -344,3 +344,31 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 |---|---|---|---|---|
 | MA-ART-0016 | article | La construcción de los reales: existencia, unicidad y dos caminos de demostración | `blog/la-construccion-de-los-reales-existencia-unicidad-y-dos-caminos.md` | published |
 | MA-BOK-0013 | book | La construcción de los reales | `libros/otros/la-construccion-de-los-reales.md` | published; edition-study M18 v05; external review and audiovisual collation pending |
+
+
+
+## APM — Tomo I completo, 2026-10-09
+
+C1–C7 conservan sus IDs públicos. C8–C26 usan el siguiente bloque disponible; se preservan los IDs editoriales históricos, independientes de la posición visible.
+
+| ID público | Tipo | ID editorial | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0183 | book-chapter | MA-BCH-APM-01-008 | `libros/capitulos/algebra-para-matematicos-capitulo-8-relaciones-y-relaciones-de-equivalencia.md` | published |
+| MA-BCH-0184 | book-chapter | MA-BCH-APM-01-009 | `libros/capitulos/algebra-para-matematicos-capitulo-9-funciones-composicion-e-inversas.md` | published |
+| MA-BCH-0185 | book-chapter | MA-BCH-APM-01-010 | `libros/capitulos/algebra-para-matematicos-capitulo-10-como-se-demuestra.md` | published |
+| MA-BCH-0186 | book-chapter | MA-BCH-APM-01-011 | `libros/capitulos/algebra-para-matematicos-capitulo-11-induccion-buen-orden-y-recursion.md` | published |
+| MA-BCH-0187 | book-chapter | MA-BCH-APM-01-012 | `libros/capitulos/algebra-para-matematicos-capitulo-12-sumas-productos-e-identidades-finitas.md` | published |
+| MA-BCH-0188 | book-chapter | MA-BCH-APM-01-013 | `libros/capitulos/algebra-para-matematicos-capitulo-13-coeficientes-binomiales-y-teorema-del-binomio.md` | published |
+| MA-BCH-0189 | book-chapter | MA-BCH-APM-01-014 | `libros/capitulos/algebra-para-matematicos-capitulo-14-los-enteros-y-la-divisibilidad.md` | published |
+| MA-BCH-0190 | book-chapter | MA-BCH-APM-01-015 | `libros/capitulos/algebra-para-matematicos-capitulo-15-maximo-comun-divisor-y-algoritmo-de-euclides.md` | published |
+| MA-BCH-0191 | book-chapter | MA-BCH-APM-01-016 | `libros/capitulos/algebra-para-matematicos-capitulo-16-numeros-primos-y-factorizacion.md` | published |
+| MA-BCH-0192 | book-chapter | MA-BCH-APM-01-017 | `libros/capitulos/algebra-para-matematicos-capitulo-17-congruencias-y-aritmetica-modular.md` | published |
+| MA-BCH-0193 | book-chapter | MA-BCH-APM-01-023 | `libros/capitulos/algebra-para-matematicos-capitulo-18-potencias-exponentes-racionales-y-radicales.md` | published |
+| MA-BCH-0194 | book-chapter | MA-BCH-APM-01-024 | `libros/capitulos/algebra-para-matematicos-capitulo-19-identidades-productos-notables-y-factorizacion.md` | published |
+| MA-BCH-0195 | book-chapter | MA-BCH-APM-01-025 | `libros/capitulos/algebra-para-matematicos-capitulo-20-fracciones-algebraicas-y-expresiones-racionales.md` | published |
+| MA-BCH-0196 | book-chapter | MA-BCH-APM-01-018 | `libros/capitulos/algebra-para-matematicos-capitulo-21-ecuaciones-equivalencias-y-conjuntos-solucion.md` | published |
+| MA-BCH-0197 | book-chapter | MA-BCH-APM-01-019 | `libros/capitulos/algebra-para-matematicos-capitulo-22-orden-e-inequaciones.md` | published |
+| MA-BCH-0198 | book-chapter | MA-BCH-APM-01-026 | `libros/capitulos/algebra-para-matematicos-capitulo-23-funciones-exponenciales-y-logaritmos.md` | published |
+| MA-BCH-0199 | book-chapter | MA-BCH-APM-01-020 | `libros/capitulos/algebra-para-matematicos-capitulo-24-polinomios-operaciones-y-division.md` | published |
+| MA-BCH-0200 | book-chapter | MA-BCH-APM-01-021 | `libros/capitulos/algebra-para-matematicos-capitulo-25-raices-factores-e-irreducibilidad-elemental.md` | published |
+| MA-BCH-0201 | book-chapter | MA-BCH-APM-01-022 | `libros/capitulos/algebra-para-matematicos-capitulo-26-numeros-complejos-y-el-horizonte-de-las-ecuaciones.md` | published |

@@ -50,7 +50,7 @@ La pregunta rectora del capítulo es:
 Salvo indicación contraria, los dominios que usemos serán no vacíos. No desarrollaremos todavía una teoría formal de lógica de primer orden; el objetivo es operativo y matemático: leer, escribir, negar y comparar afirmaciones cuantificadas con la precisión que exigirá todo el resto del libro.
 
 ***
-## 6.1. De una expresión abierta a una afirmación
+## 6.1. De una expresión abierta a una afirmación {#apm-c06-s01}
 
 Comparemos tres escrituras:
 
@@ -80,7 +80,7 @@ La lección inicial es sencilla pero decisiva:
 
 > **Una fórmula con variables libres no es, en general, una afirmación completa. Para obtener una proposición debemos fijar valores o ligar las variables mediante cuantificadores.**
 
-## 6.2. Predicados y dominio de discurso
+## 6.2. Predicados y dominio de discurso {#apm-c06-s02}
 
 El predicado no vive aislado del conjunto de objetos que estamos autorizados a considerar. Ese conjunto se llama **dominio**, **universo de discurso** o simplemente universo.
 
@@ -112,7 +112,7 @@ es verdadera si el dominio es $\{0,1\}$, pero falsa sobre $\mathbb R$, pues $x=\
 
 El dominio no es un detalle externo: forma parte del significado matemático de la afirmación.
 
-## 6.3. Variables libres y variables ligadas
+## 6.3. Variables libres y variables ligadas {#apm-c06-s03}
 
 Una variable es **libre** cuando todavía no está controlada por un cuantificador dentro de la expresión considerada. Es **ligada** cuando un cuantificador determina su alcance.
 
@@ -139,7 +139,7 @@ tienen el mismo significado. Cambiar el nombre de una variable ligada es inocuo 
 
 Más adelante veremos un error típico: renombrar una variable ligada con el mismo nombre de una variable libre puede cambiar el significado al **capturarla**.
 
-## 6.4. El cuantificador universal
+## 6.4. El cuantificador universal {#apm-c06-s04}
 
 El símbolo $\forall$ se lee “para todo” o “para cada”. La afirmación
 
@@ -171,7 +171,7 @@ $$
 
 Se lee: “para todo $x$ del dominio, si $x$ cumple $A$, entonces cumple $B$”. Los objetos que no satisfacen $A$ no constituyen contraejemplos, porque en ellos el antecedente es falso.
 
-## 6.5. Refutar un universal: el poder de un contraejemplo
+## 6.5. Refutar un universal: el poder de un contraejemplo {#apm-c06-s05}
 
 Hay una asimetría fundamental entre demostrar y refutar una afirmación universal.
 
@@ -195,7 +195,7 @@ Un contraejemplo debe respetar exactamente el dominio y las hipótesis. Si la af
 
 Encontrar cinco casos en los que una propiedad funciona puede sugerir una conjetura. No demuestra una afirmación universal. En cambio, encontrar un solo caso en el que falla sí decide la cuestión en sentido negativo.
 
-## 6.6. El cuantificador existencial
+## 6.6. El cuantificador existencial {#apm-c06-s06}
 
 El símbolo $\exists$ se lee “existe al menos uno”. La afirmación
 
@@ -221,7 +221,7 @@ En matemática avanzada existen demostraciones de existencia que no construyen e
 
 Para mostrar que $\exists x\in D\;P(x)$ es falsa debemos establecer que **ningún** elemento del dominio funciona. La mera frase “no encontré ninguno” no es un argumento.
 
-## 6.7. Negar cuantificadores
+## 6.7. Negar cuantificadores {#apm-c06-s07}
 
 Éste es uno de los núcleos del capítulo.
 
@@ -283,7 +283,7 @@ Aquí hacemos una excepción explícita a la convención de dominios no vacíos:
 **Control resuelto.** En $D=\varnothing$, «todos los objetos satisfacen $P$» y «ningún objeto satisface $P$» son ambas verdaderas, mientras que «alguno satisface $P$» es falsa. No hay contradicción: los dos universales no afirman existencia. En un dominio no vacío, en cambio, no pueden ser ambos verdaderos. Al leer una cuantificación restringida, pregunta por separado si hay objetos que satisfagan la restricción y qué se afirma de ellos.
 
 ***
-## 6.8. Cuantificación restringida
+## 6.8. Cuantificación restringida {#apm-c06-s08}
 
 La notación
 
@@ -323,7 +323,7 @@ $$
 \neg[\exists x\in A\;P(x)]\equiv\forall x\in A\;\neg P(x).
 $$
 
-## 6.9. Alcance, paréntesis y variables
+## 6.9. Alcance, paréntesis y variables {#apm-c06-s09}
 
 Todo cuantificador tiene un **alcance**: la parte de la fórmula sobre la cual actúa.
 
@@ -362,7 +362,7 @@ Para renombrar con seguridad, toma letras que no aparezcan en la fórmula. Prime
 **Control resuelto.** Con $D=\{0,1\}$ y el parámetro libre $y=0$, $\forall x\in D\,(x\le y)$ es falsa porque $1\nleq0$. La sustitución indebida $\forall y\in D\,(y\le y)$ es verdadera. Capturar el parámetro convirtió una comparación con un valor fijado en otra afirmación. El renombrado correcto es $\forall t\in D\,(t\le y)$, que conserva el contraejemplo $t=1$.
 
 ***
-## 6.10. Dos cuantificadores: el orden importa
+## 6.10. Dos cuantificadores: el orden importa {#apm-c06-s10}
 
 Cuando aparecen cuantificadores de distinto tipo, cambiar su orden puede cambiar radicalmente el significado.
 
@@ -413,7 +413,7 @@ Para una relación entre dos dominios finitos, representa cada primer objeto en 
 Cada fila tiene un testigo, y además $r$ sirve a ambas. Las dos fórmulas son verdaderas. Si cambiamos solamente $R(b,r)$ a falso, cada fila conserva algún testigo, pero ninguna columna sirve a ambas: la primera fórmula sigue siendo verdadera y la segunda pasa a falsa. Tener permiso para elegir según la fila no significa estar obligado a elegir testigos distintos; cuando hay una columna común, también podemos usarla en todas las filas. En dominios vacíos hay que volver a las definiciones de los cuantificadores, pues puede faltar una fila o una columna.
 
 ***
-## 6.11. Dependencia entre variables y elección de testigos
+## 6.11. Dependencia entre variables y elección de testigos {#apm-c06-s11}
 
 En
 
@@ -445,7 +445,7 @@ Esta idea anticipa un tema futuro: una regla que asigna a cada entrada una salid
 
 De $\forall x\exists y\,R(x,y)$ no se sigue automáticamente que haya un único $y$ para cada $x$, ni que la elección sea canónica. La afirmación promete existencia local, nada más.
 
-## 6.12. “Existe un único”: el cuantificador de unicidad
+## 6.12. “Existe un único”: el cuantificador de unicidad {#apm-c06-s12}
 
 La notación
 
@@ -493,7 +493,7 @@ Existencia, a lo sumo un testigo y exactamente un testigo son afirmaciones disti
 **Control resuelto.** En $D=\{0,1,2\}$, para $P_a(x):x<a$, hay cero testigos si $a=0$, uno si $a=1$ y dos si $a=2$. Por eso la afirmación $\exists!x\in D\,P_a(x)$ falla por falta de existencia en el primer caso y por falta de unicidad en el tercero. Su negación dice: ningún objeto satisface $P_a$, o hay dos objetos distintos que lo satisfacen. Si $D$ está vacío —excepción explícita a la convención inicial—, se cumple «a lo sumo uno», pero falla «existe exactamente uno».
 
 ***
-## 6.13. Traducir lenguaje matemático a símbolos
+## 6.13. Traducir lenguaje matemático a símbolos {#apm-c06-s13}
 
 La traducción correcta comienza identificando tres cosas:
 
@@ -535,7 +535,7 @@ donde $C(n)$ significa “$n$ es un cuadrado perfecto”.
 
 No debemos traducir palabra por palabra: debemos traducir **estructura por estructura**.
 
-## 6.14. Traducir símbolos a lenguaje matemático
+## 6.14. Traducir símbolos a lenguaje matemático {#apm-c06-s14}
 
 La dirección inversa exige la misma disciplina. Consideremos
 
@@ -571,7 +571,7 @@ $$
 
 se lee: “existe un entero $m$ tal que, para todo entero $n$, se cumple $m+n=n$”. La afirmación resulta verdadera porque $m=0$ funciona para todos los $n$.
 
-## 6.15. Diagnóstico de errores de cuantificación
+## 6.15. Diagnóstico de errores de cuantificación {#apm-c06-s15}
 
 Los errores más importantes de este capítulo no son de cálculo, sino de significado.
 
@@ -601,7 +601,7 @@ Mover paréntesis o renombrar variables puede ligar una variable que antes era l
 
 Ante una solución dudosa conviene localizar **el primer paso donde cambia el significado**, no sólo el lugar donde aparece un resultado falso.
 
-## 6.16. Cierre — protocolo de lectura cuantificada
+## 6.16. Cierre — protocolo de lectura cuantificada {#apm-c06-s16}
 
 Cuando encuentres una afirmación con variables y cuantificadores, utiliza esta rutina:
 
@@ -1720,3 +1720,7 @@ Antes de continuar a C7, deberías poder responder afirmativamente:
 - ¿puedo traducir afirmaciones de complejidad media en ambos sentidos?
 
 Si alguna respuesta es negativa, vuelve primero a las secciones 6.7, 6.9–6.11 y a los ejercicios de los bloques E, G, H y L. Son los puntos de mayor transferencia del capítulo.
+
+***
+
+[← Capítulo 5](algebra-de-proposiciones-y-formas-normales.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 7 →](conjuntos-y-algebra-de-conjuntos.md)

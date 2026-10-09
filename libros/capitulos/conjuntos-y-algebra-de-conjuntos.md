@@ -52,7 +52,7 @@ La pregunta rectora será:
 No construiremos una teoría axiomática de conjuntos. Trabajaremos con el lenguaje de conjuntos que necesita la matemática universitaria elemental, manteniendo clara la frontera entre uso operativo y fundamentos.
 
 ***
-## 7.1. ¿Qué es un conjunto en este libro?
+## 7.1. ¿Qué es un conjunto en este libro? {#apm-c07-s01}
 
 Escribiremos conjuntos con letras como $A,B,C$ y sus elementos con símbolos como $a,b,x$. La expresión
 
@@ -89,7 +89,7 @@ Si $A=\{1,2,3\}$, entonces $2\in A$. En cambio, $\{2\}\subseteq A$. Las dos afir
 Esta diferencia será una de las disciplinas notacionales centrales del capítulo.
 
 ***
-## 7.2. Describir un conjunto: extensión y comprensión
+## 7.2. Describir un conjunto: extensión y comprensión {#apm-c07-s02}
 
 Un conjunto finito pequeño puede describirse por **extensión**, enumerando sus elementos:
 
@@ -130,7 +130,7 @@ es simplemente $\{-1,1\}$.
 Reconocer que dos descripciones distintas producen los mismos elementos será el punto de partida de la igualdad extensional.
 
 ***
-## 7.3. Igualdad extensional
+## 7.3. Igualdad extensional {#apm-c07-s03}
 
 Dos conjuntos son iguales cuando tienen exactamente los mismos elementos. Operativamente:
 
@@ -157,7 +157,7 @@ Si $A=\{1,2,3\}$ y $B=\{1,2,4\}$, el elemento $3$ muestra que $A\ne B$ porque $3
 Esta idea es el análogo conjuntista del contraejemplo lógico.
 
 ***
-## 7.4. El conjunto vacío y los conjuntos unitarios
+## 7.4. El conjunto vacío y los conjuntos unitarios {#apm-c07-s04}
 
 El **conjunto vacío**, denotado por $\varnothing$, es el conjunto que no contiene elementos.
 
@@ -196,7 +196,7 @@ Para listar los elementos, empieza por las llaves exteriores. El conjunto $E=\{\
 **Control resuelto.** ¿Son iguales $\varnothing$, $\{\varnothing\}$ y $\{\{\varnothing\}\}$? No. El primero tiene cero elementos y los otros dos tienen uno. Para distinguir estos últimos, la cantidad de elementos no basta: $\varnothing$ pertenece al segundo y no al tercero, cuyo único elemento es $\{\varnothing\}$. La regla de inclusión pide examinar los elementos del conjunto situado a la izquierda; la regla de pertenencia pregunta si ese conjunto entero aparece como un elemento a la derecha. Por eso en la tabla la misma expresión puede ser un subconjunto sin ser un elemento.
 
 ***
-## 7.5. Subconjuntos e inclusión
+## 7.5. Subconjuntos e inclusión {#apm-c07-s05}
 
 Decimos que $A$ es **subconjunto** de $B$, y escribimos $A\subseteq B$, cuando todo elemento de $A$ pertenece también a $B$:
 
@@ -225,7 +225,7 @@ La última afirmación puede resultar extraña hasta recordar su forma lógica. 
 Cuando $A\subseteq B$ y $A\ne B$, diremos que $A$ es un subconjunto propio de $B$. Evitaremos depender de convenciones tipográficas variables para $\subset$ y escribiremos las dos condiciones cuando sea importante.
 
 ***
-## 7.6. Igualdad por doble inclusión
+## 7.6. Igualdad por doble inclusión {#apm-c07-s06}
 
 La extensionalidad proporciona un criterio extremadamente útil:
 
@@ -259,7 +259,7 @@ La conclusión es $A=B$.
 El patrón de doble inclusión aparecerá muchas veces en matemática posterior.
 
 ***
-## 7.7. El conjunto potencia
+## 7.7. El conjunto potencia {#apm-c07-s07}
 
 Dado un conjunto $A$, su **conjunto potencia** es el conjunto de todos los subconjuntos de $A$:
 
@@ -292,7 +292,7 @@ $$
 No desarrollaremos todavía una teoría de cardinalidad; sólo utilizaremos este hecho para conjuntos finitos.
 
 ***
-## 7.8. Unión e intersección
+## 7.8. Unión e intersección {#apm-c07-s08}
 
 La **unión** de $A$ y $B$ contiene los elementos que pertenecen a por lo menos uno de ellos:
 
@@ -321,7 +321,7 @@ $A\cap B=\{3,4\}$.
 No contamos dos veces los elementos comunes porque un conjunto registra pertenencia, no multiplicidad.
 
 ***
-## 7.9. Diferencia y complemento
+## 7.9. Diferencia y complemento {#apm-c07-s09}
 
 La **diferencia** $A\setminus B$ contiene los elementos de $A$ que no pertenecen a $B$:
 
@@ -350,7 +350,7 @@ Por ejemplo, si $A=\{1,2\}$, su complemento en $U=\{1,2,3\}$ es $\{3\}$; en $V=\
 El complemento es la traducción conjuntista de la negación respecto de un dominio fijado.
 
 ***
-## 7.10. Diferencia simétrica
+## 7.10. Diferencia simétrica {#apm-c07-s10}
 
 La **diferencia simétrica** de $A$ y $B$ contiene los elementos que pertenecen exactamente a uno de los dos conjuntos:
 
@@ -375,7 +375,7 @@ $x\in A\triangle B$
 corresponde a «$P$ o $Q$, pero no ambos». La diferencia simétrica es una versión conjuntista de la disyunción exclusiva.
 
 ***
-## 7.11. Leyes del álgebra de conjuntos
+## 7.11. Leyes del álgebra de conjuntos {#apm-c07-s11}
 
 Fijemos un universo $U$. Las operaciones de unión, intersección y complemento satisfacen leyes que recuerdan exactamente al álgebra proposicional.
 
@@ -430,7 +430,7 @@ $$
 Estas leyes no forman una lista arbitraria. Todas pueden leerse elemento a elemento como equivalencias lógicas.
 
 ***
-## 7.12. De la lógica a los conjuntos
+## 7.12. De la lógica a los conjuntos {#apm-c07-s12}
 
 Fijemos un universo $U$ y conjuntos $A,B\subseteq U$. Para cada $x\in U$, escribamos $P(x)$ para la afirmación $x\in A$ y $Q(x)$ para la afirmación $x\in B$.
 
@@ -475,7 +475,7 @@ Tomemos $U=\{1,2\}$, $A=\{1\}$ y $B=\varnothing$. En $x=2$, la implicación $x\i
 No estamos afirmando que un conjunto sea literalmente una proposición. La condición «$x$ pertenece al conjunto resultante» tiene una estructura lógica; cuando pasamos a una relación entre conjuntos, cuantificamos sobre los elementos. Esta distinción explica cómo reutilizar el álgebra de proposiciones sin confundir una comprobación puntual con una afirmación universal.
 
 ***
-## 7.13. Probar identidades de conjuntos
+## 7.13. Probar identidades de conjuntos {#apm-c07-s13}
 
 Hay al menos tres métodos útiles.
 
@@ -513,7 +513,7 @@ Un dibujo particular puede ayudar a reconocer una región y a proponer una igual
 Para escoger método, lee la forma del objetivo. Una igualdad entre expresiones de pertenencia suele admitir una cadena de equivalencias; una inclusión pide una implicación para un elemento arbitrario; una descripción de todas las soluciones exige necesidad y suficiencia. En una doble inclusión podemos seguir rutas diferentes en cada dirección. En una cadena de equivalencias, cada paso debe ser reversible: una implicación aislada no alcanza para concluir igualdad.
 
 ***
-## 7.14. Producto cartesiano y pares ordenados
+## 7.14. Producto cartesiano y pares ordenados {#apm-c07-s14}
 
 Un **par ordenado** $(a,b)$ registra dos componentes en orden. En general,
 
@@ -558,7 +558,7 @@ Si $A$ tiene $m$ elementos y $B$ tiene $n$, entonces $A\times B$ tiene $mn$ pare
 El producto cartesiano será el punto de partida de C8, donde estudiaremos relaciones. Aquí nos detenemos antes de esa definición.
 
 ***
-## 7.15. Errores estructurales frecuentes
+## 7.15. Errores estructurales frecuentes {#apm-c07-s15}
 
 ### Error 1: confundir $\in$ con $\subseteq$
 
@@ -597,7 +597,7 @@ $A\times B$ no suele coincidir con $B\times A$.
 La visualización ayuda, pero la prueba debe controlar la definición para todos los elementos pertinentes.
 
 ***
-## 7.16. Protocolo de lectura conjuntista
+## 7.16. Protocolo de lectura conjuntista {#apm-c07-s16}
 
 Antes de transformar una expresión de conjuntos, preguntar:
 
@@ -1631,3 +1631,7 @@ La descripción es $\{Y\in\mathcal P(A):Y\cap(A\setminus B)\ne\varnothing\}$. Si
 ### 96
 
 La igualdad es verdadera. Usamos doble inclusión con un par arbitrario $(a,b)$. Si está en el lado izquierdo, $a\in A$ y $b\in B$, pero no se cumplen conjuntamente $a\in C$ y $b\in D$. Si $a\notin C$, está en $(A\setminus C)\times B$. Si $a\in C$, necesariamente $b\notin D$, y está en $(A\cap C)\times(B\setminus D)$. Recíprocamente, un par del primer producto está en $A\times B$ y fuera de $C\times D$ porque su primera coordenada no está en $C$; un par del segundo está en $A\times B$ y fuera de $C\times D$ porque su segunda coordenada no está en $D$. Así se obtienen ambas inclusiones. No se eligió un elemento de un conjunto sin tener ya un par que garantizara su pertenencia: el argumento cubre conjuntos vacíos, y ambos lados carecen de pares cuando $A$ o $B$ está vacío.
+
+***
+
+[← Capítulo 6](cuantificadores-predicados-y-lenguaje-matematico.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 8 →](algebra-para-matematicos-capitulo-8-relaciones-y-relaciones-de-equivalencia.md)

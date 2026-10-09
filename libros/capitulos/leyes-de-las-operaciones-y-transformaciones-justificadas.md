@@ -66,7 +66,7 @@ Este capítulo introduce una regla de trabajo que permanecerá durante toda la c
 El propósito no es volver lento el cálculo. Es construir una fluidez más profunda: poder transformar con rapidez **porque entendemos qué estamos haciendo**.
 
 ***
-## 3.1. Una respuesta correcta puede contener un razonamiento incorrecto
+## 3.1. Una respuesta correcta puede contener un razonamiento incorrecto {#apm-c03-s01}
 
 Consideremos el siguiente intento de resolver $x+4=9$:
 
@@ -111,7 +111,7 @@ Este contraste introduce dos preguntas que acompañarán todo el capítulo:
 Llegar a una respuesta correcta no basta para validar una cadena. Una solución matemática debe poder defender sus transformaciones.
 
 ***
-## 3.2. La igualdad permite sustituir iguales por iguales
+## 3.2. La igualdad permite sustituir iguales por iguales {#apm-c03-s02}
 
 Si $A=B$, entonces $A$ y $B$ representan el mismo objeto o valor en el contexto considerado.
 
@@ -150,7 +150,7 @@ En una cadena de **ecuaciones**, queremos mantener el mismo conjunto de solucion
 Esa distinción será decisiva más adelante en el capítulo.
 
 ***
-## 3.3. Las leyes básicas de la suma y el producto
+## 3.3. Las leyes básicas de la suma y el producto {#apm-c03-s03}
 
 Trabajaremos principalmente con números racionales y reales, donde disponemos de suma y multiplicación con propiedades muy familiares.
 
@@ -239,7 +239,7 @@ $$
 La cadena es elemental, pero enseña una disciplina esencial: **nombrar la propiedad exacta**.
 
 ***
-## 3.4. Inversos: deshacer una operación
+## 3.4. Inversos: deshacer una operación {#apm-c03-s04}
 
 Para cada número $a$ existe un número $-a$ tal que
 
@@ -294,7 +294,7 @@ La afirmación correcta, en $\mathbb Q$ o $\mathbb R$, es:
 La condición $a\neq0$ no es una nota al margen. Es parte de la afirmación matemática.
 
 ***
-## 3.5. Resta y división como operaciones derivadas
+## 3.5. Resta y división como operaciones derivadas {#apm-c03-s05}
 
 La resta puede interpretarse mediante suma e inverso aditivo:
 
@@ -323,7 +323,7 @@ Al reducir resta y división a operaciones e inversos, disminuye la cantidad de 
 En lugar de aprender muchas recetas, podemos reconstruirlas a partir de unas pocas propiedades.
 
 ***
-## 3.6. Consecuencias que ya no deben memorizarse
+## 3.6. Consecuencias que ya no deben memorizarse {#apm-c03-s06}
 
 ### Primera consecuencia: $a\cdot0=0$
 
@@ -467,7 +467,7 @@ $$
 Recíprocamente, si cualquiera de los factores es cero, el producto es cero por la primera consecuencia de esta sección. La disponibilidad de inversos para los factores no nulos es esencial para esta demostración.
 
 ***
-## 3.7. Distributividad en ambos sentidos
+## 3.7. Distributividad en ambos sentidos {#apm-c03-s07}
 
 La igualdad
 
@@ -496,7 +496,7 @@ Ninguna forma es absolutamente superior. La pregunta correcta es:
 > ¿Qué forma hace visible la información que necesito?
 
 ***
-## 3.8. Expresiones equivalentes y dominio
+## 3.8. Expresiones equivalentes y dominio {#apm-c03-s08}
 
 Recordemos las expresiones
 
@@ -532,7 +532,7 @@ Una transformación puede:
 La restricción debe viajar con el razonamiento.
 
 ***
-## 3.9. Transformar una ecuación no es lo mismo que transformar una expresión
+## 3.9. Transformar una ecuación no es lo mismo que transformar una expresión {#apm-c03-s09}
 
 En una expresión buscamos conservar un valor.
 
@@ -567,7 +567,7 @@ La ecuación original tenía una sola solución. La nueva igualdad es verdadera 
 La transformación perdió toda la información.
 
 ***
-## 3.10. Transformaciones reversibles y transformaciones que pierden información
+## 3.10. Transformaciones reversibles y transformaciones que pierden información {#apm-c03-s10}
 
 Si $x=1$, entonces $x^2=1$.
 
@@ -633,10 +633,10 @@ El dominio no cambia silenciosamente para acomodar el procedimiento. Si el probl
 
 **Control.** Resuelve $\frac{(x-2)(x+1)}{x-2}=3$ y compara el resultado con el de $x+1=3$ planteada para todos los reales. Explica qué conserva la simplificación.
 
-**Resolución.** La ecuación fraccionaria exige $x\neq2$. En ese dominio podemos cancelar el factor no nulo y obtener $x+1=3$, cuyo único candidato es $x=2$. El candidato está excluido: la ecuación original no tiene soluciones. La ecuación $x+1=3$ sobre todos los reales sí tiene la solución $2$. La simplificación conserva valores y soluciones **en el dominio original**; olvidar la restricción cambia el problema. Si la dificultad estuvo en identificar la entrada excluida, vuelve a §2.3; si estuvo en distinguir valor y solución, contrasta §§3.8–3.9.
+**Resolución.** La ecuación fraccionaria exige $x\neq2$. En ese dominio podemos cancelar el factor no nulo y obtener $x+1=3$, cuyo único candidato es $x=2$. El candidato está excluido: la ecuación original no tiene soluciones. La ecuación $x+1=3$ sobre todos los reales sí tiene la solución $2$. La simplificación conserva valores y soluciones **en el dominio original**; olvidar la restricción cambia el problema. Si la dificultad estuvo en identificar la entrada excluida, vuelve a [§2.3](expresiones-variables-igualdad-e-identidad.md#apm-c02-s03); si estuvo en distinguir valor y solución, contrasta §[§3.8](leyes-de-las-operaciones-y-transformaciones-justificadas.md#apm-c03-s08)–3.9.
 
 ***
-## 3.11. Cancelar no significa borrar símbolos
+## 3.11. Cancelar no significa borrar símbolos {#apm-c03-s11}
 
 Consideremos
 
@@ -695,10 +695,10 @@ En $x=3$, la primera expresión vale $6$ y la segunda vale $11/2$. Este cálculo
 
 **Control.** Simplifica $\frac{(x-1)(x+2)+(x-1)c}{x-1}$, donde $c$ es un real fijo. ¿Qué cambia si el último sumando del numerador se sustituye por $c$?
 
-**Resolución.** En el primer caso, ambos sumandos tienen factor $x-1$: el numerador es $(x-1)(x+2+c)$ y el resultado es $x+2+c$, con $x\neq1$. En el segundo obtenemos $x+2+\frac c{x-1}$, con la misma restricción. Si $c=0$, las dos formas simplificadas coinciden; si $c\neq0$, coinciden solamente cuando $\frac c{x-1}=c$, es decir, cuando $x=2$. Esta coincidencia puntual no autoriza la cancelación propuesta para todo $x$. Para recuperar la factorización, vuelve a §3.7; para recuperar la condición sobre el inverso, vuelve a §§3.4–3.6.
+**Resolución.** En el primer caso, ambos sumandos tienen factor $x-1$: el numerador es $(x-1)(x+2+c)$ y el resultado es $x+2+c$, con $x\neq1$. En el segundo obtenemos $x+2+\frac c{x-1}$, con la misma restricción. Si $c=0$, las dos formas simplificadas coinciden; si $c\neq0$, coinciden solamente cuando $\frac c{x-1}=c$, es decir, cuando $x=2$. Esta coincidencia puntual no autoriza la cancelación propuesta para todo $x$. Para recuperar la factorización, vuelve a [§3.7](leyes-de-las-operaciones-y-transformaciones-justificadas.md#apm-c03-s07); para recuperar la condición sobre el inverso, vuelve a §[§3.4](leyes-de-las-operaciones-y-transformaciones-justificadas.md#apm-c03-s04)–3.6.
 
 ***
-## 3.12. Cadenas justificadas: escribir álgebra como argumento
+## 3.12. Cadenas justificadas: escribir álgebra como argumento {#apm-c03-s12}
 
 Una cadena algebraica puede leerse como una demostración en miniatura.
 
@@ -754,10 +754,10 @@ En los ejercicios de cadenas detalladas, haz visibles las transformaciones que p
 
 **Control.** Presenta una ruta detallada y una breve para $5(x-2)-3(x-2)=8$. ¿Qué ventaja tiene reconocer un factor común?
 
-**Resolución.** Una ruta detallada desarrolla: $5x-10-3x+6=8$; por agrupación y cálculo, $2x-4=8$; sumando $4$, $2x=12$; dividiendo por $2\neq0$, $x=6$. La ruta breve factoriza primero: $(5-3)(x-2)=8$, luego $2(x-2)=8$. Dividir por $2$ y sumar $2$ da $x=6$. Ambas rutas son reversibles. La verificación es $5(6-2)-3(6-2)=20-12=8$. Factorizar aprovecha el bloque repetido $x-2$ y evita desarrollar para volver a agrupar. Si no reconociste el bloque, vuelve a §3.7; si faltó justificar la división, vuelve a §3.9.
+**Resolución.** Una ruta detallada desarrolla: $5x-10-3x+6=8$; por agrupación y cálculo, $2x-4=8$; sumando $4$, $2x=12$; dividiendo por $2\neq0$, $x=6$. La ruta breve factoriza primero: $(5-3)(x-2)=8$, luego $2(x-2)=8$. Dividir por $2$ y sumar $2$ da $x=6$. Ambas rutas son reversibles. La verificación es $5(6-2)-3(6-2)=20-12=8$. Factorizar aprovecha el bloque repetido $x-2$ y evita desarrollar para volver a agrupar. Si no reconociste el bloque, vuelve a [§3.7](leyes-de-las-operaciones-y-transformaciones-justificadas.md#apm-c03-s07); si faltó justificar la división, vuelve a [§3.9](leyes-de-las-operaciones-y-transformaciones-justificadas.md#apm-c03-s09).
 
 ***
-## 3.13. Diagnóstico: encontrar el primer paso inválido
+## 3.13. Diagnóstico: encontrar el primer paso inválido {#apm-c03-s13}
 
 Consideremos:
 
@@ -800,7 +800,7 @@ Un diagnóstico matemático debe poder señalar:
 Este modo de leer errores será esencial en demostraciones posteriores.
 
 ***
-## 3.14. Cierre — protocolo de transformación justificada
+## 3.14. Cierre — protocolo de transformación justificada {#apm-c03-s14}
 
 Antes de transformar, preguntar:
 
@@ -1694,3 +1694,7 @@ Si $a\neq b$, el candidato pertenece al dominio y es la única solución. Si $a=
 Eliminar el denominador es reversible sobre $x\neq a$ y conduce a $(x-a)(x-b)=0$. Como el primer factor no puede ser cero en ese dominio, sólo puede anularse $x-b$; se obtienen los mismos casos. Resolver el producto sobre todos los reales y aceptar $a$ olvidaría la exclusión inicial. Cuando $a=b$, ese olvido convertiría un problema sin soluciones en uno con una solución inadmisible.
 
 Con $a=1,b=4$, la ecuación $\frac{(x-1)(x-4)}{x-1}=0$ tiene sólo $x=4$; la sustitución produce $0/3=0$. Con $a=b=1$, $\frac{(x-1)^2}{x-1}=0$ no tiene soluciones: fuera de $1$ vale $x-1\neq0$, y en $1$ no está definida. Los dos ejemplos comprueban que la relación entre los parámetros afecta la admisibilidad del candidato, sin alterar la regla de cancelación.
+
+***
+
+[← Capítulo 2](expresiones-variables-igualdad-e-identidad.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 4 →](proposiciones-y-conectivos-logicos.md)
