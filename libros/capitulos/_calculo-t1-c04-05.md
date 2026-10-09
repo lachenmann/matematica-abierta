@@ -289,7 +289,7 @@ Así,
 $$
 \boxed{
 a_n<b_n\text{ eventualmente}
-\quad\centernot\Longrightarrow\quad
+\quad\not\Longrightarrow\quad
 A<B.
 }
 $$

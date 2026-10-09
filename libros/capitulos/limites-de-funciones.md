@@ -4111,7 +4111,7 @@ Así,
 $$
 \boxed{
 f(x)<g(x)\text{ localmente}
-\quad\centernot\Longrightarrow\quad
+\quad\not\Longrightarrow\quad
 L<M.
 }
 $$

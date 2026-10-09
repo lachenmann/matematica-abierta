@@ -2020,7 +2020,7 @@ Así,
 
 $$
 \boxed{
-\text{acotada}\centernot\Longrightarrow\text{convergente}.
+\text{acotada}\not\Longrightarrow\text{convergente}.
 }
 $$
 
@@ -2106,13 +2106,13 @@ Tenemos entonces dos contraejemplos complementarios:
 
 $$
 \boxed{
-\text{convergente}\centernot\Longrightarrow\text{monótona},
+\text{convergente}\not\Longrightarrow\text{monótona},
 }
 $$
 
 $$
 \boxed{
-\text{acotada}\centernot\Longrightarrow\text{convergente}.
+\text{acotada}\not\Longrightarrow\text{convergente}.
 }
 $$
 :::
@@ -2146,11 +2146,11 @@ Pero no podemos añadir las flechas recíprocas sin hipótesis adicionales.
 En particular:
 
 $$
-\text{acotada}\centernot\Longrightarrow\text{convergente},
+\text{acotada}\not\Longrightarrow\text{convergente},
 $$
 
 $$
-\text{convergente}\centernot\Longrightarrow\text{monótona}.
+\text{convergente}\not\Longrightarrow\text{monótona}.
 $$
 
 Y la unicidad no afirma existencia: decir que **si** existe un límite entonces es único no demuestra que una sucesión dada converja.
@@ -3263,7 +3263,7 @@ Así,
 $$
 \boxed{
 a_n<b_n\text{ eventualmente}
-\quad\centernot\Longrightarrow\quad
+\quad\not\Longrightarrow\quad
 A<B.
 }
 $$
@@ -5059,7 +5059,7 @@ Así,
 $$
 \boxed{
 \text{creciente}
-\centernot\Longrightarrow
+\not\Longrightarrow
 \text{convergente}.
 }
 $$
@@ -5079,7 +5079,7 @@ Por tanto,
 $$
 \boxed{
 \text{acotada}
-\centernot\Longrightarrow
+\not\Longrightarrow
 \text{convergente}.
 }
 $$
@@ -5809,7 +5809,7 @@ El error consiste en invertir la implicación:
 $$
 \boxed{
 L=F(L)
-\centernot\Longrightarrow
+\not\Longrightarrow
 x_n\to L.
 }
 $$

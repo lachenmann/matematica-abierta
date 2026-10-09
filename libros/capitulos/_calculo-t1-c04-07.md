@@ -479,7 +479,7 @@ Así,
 $$
 \boxed{
 \text{creciente}
-\centernot\Longrightarrow
+\not\Longrightarrow
 \text{convergente}.
 }
 $$
@@ -499,7 +499,7 @@ Por tanto,
 $$
 \boxed{
 \text{acotada}
-\centernot\Longrightarrow
+\not\Longrightarrow
 \text{convergente}.
 }
 $$

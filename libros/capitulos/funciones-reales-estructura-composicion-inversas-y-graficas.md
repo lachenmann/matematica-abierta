@@ -5731,7 +5731,7 @@ Por tanto,
 $$
 \boxed{
 \text{no decreciente}
-\centernot\Longrightarrow
+\not\Longrightarrow
 \text{inyectiva}.}
 $$
 

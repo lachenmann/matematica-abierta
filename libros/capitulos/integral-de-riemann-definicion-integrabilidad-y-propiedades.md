@@ -4000,7 +4000,7 @@ Así,
 $$
 \boxed{
 \text{acotada}
-\centernot\Longrightarrow
+\not\Longrightarrow
 \text{Riemann integrable}.
 }
 $$
@@ -4086,7 +4086,7 @@ Por tanto,
 $$
 \boxed{
 \|P_n\|\to0
-\centernot\Longrightarrow
+\not\Longrightarrow
 U(f,P_n)-L(f,P_n)\to0
 }
 $$

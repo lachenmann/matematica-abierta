@@ -639,7 +639,7 @@ Así,
 
 $$
 \boxed{
-\text{acotada}\centernot\Longrightarrow\text{convergente}.
+\text{acotada}\not\Longrightarrow\text{convergente}.
 }
 $$
 
@@ -725,13 +725,13 @@ Tenemos entonces dos contraejemplos complementarios:
 
 $$
 \boxed{
-\text{convergente}\centernot\Longrightarrow\text{monótona},
+\text{convergente}\not\Longrightarrow\text{monótona},
 }
 $$
 
 $$
 \boxed{
-\text{acotada}\centernot\Longrightarrow\text{convergente}.
+\text{acotada}\not\Longrightarrow\text{convergente}.
 }
 $$
 :::
@@ -765,11 +765,11 @@ Pero no podemos añadir las flechas recíprocas sin hipótesis adicionales.
 En particular:
 
 $$
-\text{acotada}\centernot\Longrightarrow\text{convergente},
+\text{acotada}\not\Longrightarrow\text{convergente},
 $$
 
 $$
-\text{convergente}\centernot\Longrightarrow\text{monótona}.
+\text{convergente}\not\Longrightarrow\text{monótona}.
 $$
 
 Y la unicidad no afirma existencia: decir que **si** existe un límite entonces es único no demuestra que una sucesión dada converja.

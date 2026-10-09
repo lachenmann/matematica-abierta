@@ -2919,7 +2919,7 @@ pero $w$ cambia de signo. Por tanto,
 
 $$
 \int w>0
-\centernot\Longrightarrow
+\not\Longrightarrow
 w\ge0.
 $$
 

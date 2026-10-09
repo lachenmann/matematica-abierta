@@ -190,6 +190,18 @@ jobs:
           python3 -m playwright install --with-deps chromium
           python3 tests/offline_parity_browser.py --site _site --output .ma-build/offline-parity
 
+      - name: Verify every calculation book formula in Chromium
+        run: python3 tests/calculo_math_browser.py --site _site
+
+      - name: Preserve calculation book MathJax evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculo-math-qa
+          path: .ma-build/calculo-math/
+          retention-days: 7
+          if-no-files-found: warn
+
       - name: Preserve offline parity evidence
         if: always()
         uses: actions/upload-artifact@v4
