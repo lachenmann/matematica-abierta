@@ -1,0 +1,72 @@
+name: FDC-AUD-025-M06 · 1912 signed facsimile retrieval
+
+on:
+  push:
+    branches: [audit/fdc-aud025-m06-1912-googlebooks]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retrieve-1912:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Download genuine PDF from Google Books signed public link
+        shell: bash
+        run: |
+          mkdir -p print1912
+          python3 - <<'PY'
+          from datetime import datetime, timezone
+          import html, hashlib, json, re, urllib.request
+          from pathlib import Path
+          record={"utc":datetime.now(timezone.utc).isoformat(),"id":"0tZbEZQAIp8C","state":"NOT_DOWNLOADED","no_ocr_used":True}
+          page="https://books.google.com/books?id=0tZbEZQAIp8C"
+          def get(url,limit,seconds=40):
+            req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/119 Safari/537.36","Accept":"application/pdf,text/html,*/*"})
+            with urllib.request.urlopen(req,timeout=seconds) as f:
+              return f.status,f.headers.get("Content-Type"),f.read(limit+1)
+          try:
+            status,ct,body=get(page,600000,20)
+            record.update(page_status=status,page_content_type=ct,page_sha256=hashlib.sha256(body).hexdigest())
+            links=re.findall(r'href="(https://books\.google\.com/books/download/[^"]*?\.pdf\?[^"]+)"',body.decode("utf-8","replace"))
+            pdfs=[html.unescape(x) for x in links if "id=0tZbEZQAIp8C" in x and "sig=" in x]
+            record["signed_pdf_link_found"]=bool(pdfs)
+            if not pdfs: raise ValueError("No signed public PDF link in source HTML")
+            status,ct,b=get(pdfs[0],50000000,55)
+            record.update(pdf_status=status,pdf_content_type=ct,pdf_bytes=len(b),pdf_sha256=hashlib.sha256(b).hexdigest(),pdf_magic=b[:12].hex())
+            if len(b)>50000000: raise ValueError("PDF beyond 50 MB")
+            if not b.startswith(b"%PDF-"): raise ValueError("Signed link did not return PDF bytes")
+            Path("print1912/Dedekind_Stetigkeit_1912_GoogleBooks_0tZbEZQAIp8C.pdf").write_bytes(b)
+            record["state"]="PDF_BYTES_VERIFIED_VISUAL_EDITION_PENDING"
+          except Exception as ex:
+            record.update(state="DOWNLOAD_FAILED",error=str(type(ex).__name__)+": "+str(ex)[:350])
+          print("PDF_STATUS",record["state"],record.get("pdf_status"),record.get("pdf_bytes"),record.get("error",""))
+          Path("print1912/manifest.json").write_text(json.dumps(record,ensure_ascii=False,indent=2)+"\n")
+          PY
+      - name: Render title and §6 candidate pages
+        shell: bash
+        run: |
+          pdf=print1912/Dedekind_Stetigkeit_1912_GoogleBooks_0tZbEZQAIp8C.pdf
+          if [ -f "$pdf" ]; then
+            pdfinfo "$pdf" > print1912/pdfinfo.txt
+            pages=$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')
+            mkdir -p print1912/pages
+            end=5
+            if [ "$pages" -lt "$end" ]; then end="$pages"; fi
+            pdftoppm -f 1 -l "$end" -r 170 -png "$pdf" print1912/pages/title >/dev/null 2>&1 || true
+            start=17
+            end=26
+            if [ "$pages" -lt "$start" ]; then start=1; fi
+            if [ "$pages" -lt "$end" ]; then end="$pages"; fi
+            pdftoppm -f "$start" -l "$end" -r 230 -png "$pdf" print1912/pages/section6 >/dev/null 2>&1 || true
+          fi
+      - name: Preserve bytes and renders
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FDC-AUD025-M06-1912-original-pdf
+          path: print1912/
+          retention-days: 30
+          if-no-files-found: error
