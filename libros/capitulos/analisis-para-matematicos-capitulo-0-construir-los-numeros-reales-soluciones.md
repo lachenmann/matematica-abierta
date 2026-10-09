@@ -4518,7 +4518,7 @@ $$
 
 Esa segunda pregunta queda abierta para las secciones siguientes.
 
-*Referencias visuales.* Véanse las figuras C00-F01 (**Existencia antes que unicidad**) y C00-F07 (**La unión que cierra la existencia**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
+*Referencias visuales.* Véanse las figuras [C00-F01 (**Existencia antes que unicidad**)](analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.md#fig-anm-c00-f01) y C00-F07 (**La unión que cierra la existencia**) del texto principal para sintetizar, respectivamente, las capas de este cierre.
 
 []{#MA-SOL-ANM-01-000-037}
 
