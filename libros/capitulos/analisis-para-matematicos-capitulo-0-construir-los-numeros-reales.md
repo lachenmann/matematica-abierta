@@ -172,9 +172,7 @@ $$
 
 La figura C00-F01 concentra esta lectura en un único mapa visual.
 
-![Mapa lógico con cuatro etapas: especificación, pregunta de existencia, construcción/verificación y comparación estructural; la apertura deja explícitamente la respuesta sin revelar.](../../assets/books/anm/C00-F01.svg)
-
-*Figura C00-F01. La especificación abre la pregunta de existencia; la comparación estructural sólo aparece después de construir y verificar un modelo.*
+![C00-F01. La especificación abre la pregunta de existencia; la comparación estructural sólo aparece después de construir y verificar un modelo.](../../assets/books/anm/C00-F01.svg){#fig-anm-c00-f01 fig-alt="Mapa lógico con cuatro etapas: especificación, pregunta de existencia, construcción/verificación y comparación estructural; la apertura deja explícitamente la respuesta sin revelar."}
 
 ### Especificar no es demostrar que existe
 
