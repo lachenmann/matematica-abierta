@@ -6,6 +6,9 @@ import argparse
 import hashlib
 import json
 import re
+import posixpath
+from collections import Counter
+from urllib.parse import unquote, urlsplit
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -225,6 +228,139 @@ def diff_formal_additions(root: Path, base: str, scope: dict) -> list[str]:
     return errors
 
 
+
+# C8: require an approved manifest for every NEW local static image reference.
+# Preserve legacy references in educational Markdown/Quarto.
+MD_IMAGE_RE = re.compile(r'!\[[^\]\n]*\]\(\s*(?:<([^>\n]+)>|([^\s)]+))', re.I)
+MD_REFERENCE_IMAGE_RE = re.compile(r'!\[[^\]\n]*\]\[[^\]\n]*\]', re.I)
+HTML_IMAGE_RE = re.compile(
+    r'<img\b[^>]*?\bsrc\s*=\s*(?:"([^"]+)"|\'([^\']+)\'|([^\s>]+))',
+    re.I | re.S,
+)
+EDUCATIONAL_PREFIXES = (
+    "libros/", "conceptos/", "teoria/", "cursos/", "problemas/",
+    "blog/", "explorar/",
+)
+
+
+def educational_source(path: str, scope: dict) -> bool:
+    return (path.endswith((".qmd", ".md"))
+            and path.startswith(EDUCATIONAL_PREFIXES)
+            and not is_formal_treatise(path, scope))
+
+
+def strip_nonrendered(text: str) -> str:
+    """Exclude Markdown code fences and HTML comments from static image checks."""
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+    result = []
+    active = None
+    for line in text.splitlines(keepends=True):
+        match = re.match(r"^\s*(\x60{3,}|~{3,})", line)
+        if match:
+            marker = match.group(1)
+            if active is None:
+                active = marker
+            elif marker[0] == active[0] and len(marker) >= len(active):
+                active = None
+            result.append("\n")
+        elif active is None:
+            result.append(line)
+        else:
+            result.append("\n")
+    return "".join(result)
+
+
+def image_references(text: str) -> list[str]:
+    """Extract local/remote static image targets without opening any images."""
+    body = strip_nonrendered(text)
+    refs = [next(part for part in m.groups() if part is not None)
+            for m in MD_IMAGE_RE.finditer(body)]
+    refs.extend(next(part for part in m.groups() if part is not None)
+                for m in HTML_IMAGE_RE.finditer(body))
+    refs.extend("__UNRESOLVED_REFERENCE_STYLE_IMAGE__"
+                for _ in MD_REFERENCE_IMAGE_RE.finditer(body))
+    return refs
+
+
+def normalize_illustration_ref(ref: str, consumer: str) -> str:
+    """Canonical repository target; refuse external/ambiguous image URLs."""
+    if ref == "__UNRESOLVED_REFERENCE_STYLE_IMAGE__":
+        raise ValueError("reference-style image requires explicit parser support")
+    raw = ref.strip()
+    if not raw or raw.startswith("//") or "\\" in raw:
+        raise ValueError("unsupported or external image URL")
+    url = urlsplit(raw)
+    if url.scheme or url.netloc or not url.path:
+        raise ValueError("external or empty image URL")
+    path = unquote(url.path)
+    if "\x00" in path or "\\" in path:
+        raise ValueError("invalid image path")
+    if path.startswith("/"):
+        output = posixpath.normpath(path.lstrip("/"))
+    else:
+        output = posixpath.normpath(posixpath.join(posixpath.dirname(consumer), path))
+    if output in {"", ".", ".."} or output.startswith("../"):
+        raise ValueError("image reference escapes repository")
+    return output
+
+
+def new_educational_image_references(root: Path, base: str, scope: dict,
+                                     manifests: list[dict]) -> list[str]:
+    """Require manifests for added teaching figures, grandfathering old references."""
+    if not re.fullmatch(r"[0-9a-f]{40}", base):
+        return ["C8-MANIFEST: --base requires a 40-character commit SHA"]
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", "--diff-filter=ACMR", "--no-renames",
+         base, "HEAD", "--"],
+        cwd=root, capture_output=True, text=True, check=True,
+    ).stdout.splitlines()
+    issues: list[str] = []
+    for consumer in changed:
+        if not educational_source(consumer, scope):
+            continue
+        current_file = root / consumer
+        if not current_file.is_file():
+            continue
+        previous = subprocess.run(
+            ["git", "show", f"{base}:{consumer}"],
+            cwd=root, capture_output=True, text=True,
+        )
+        old_text = previous.stdout if previous.returncode == 0 else ""
+        after_text = current_file.read_text(encoding="utf-8-sig")
+
+        def refs(content: str) -> Counter:
+            result = Counter()
+            for raw in image_references(content):
+                try:
+                    result[normalize_illustration_ref(raw, consumer)] += 1
+                except ValueError as exc:
+                    result[f"INVALID:{raw}:{exc}"] += 1
+            return result
+
+        extra = refs(after_text) - refs(old_text)
+        for asset, count in extra.items():
+            if asset.startswith("INVALID:"):
+                issues.append(f"C8-MANIFEST: {consumer}: {asset[8:]}")
+                continue
+            matches = [
+                m for m in manifests
+                if m.get("consumer_source") == consumer
+                and isinstance(m.get("outputs"), dict)
+                and asset in m["outputs"].values()
+                and m.get("document_class") ==
+                ("PEDAGOGICAL_BOOK" if consumer.startswith("libros/")
+                 else "SITE_EDUCATIONAL")
+                and m.get("status") in {"READY_FOR_PUBLICATION", "PUBLISHED"}
+            ]
+            if len(matches) != 1:
+                issues.append(
+                    f"C8-MANIFEST: {consumer}: new illustration {asset}"
+                    f" ({count} new reference(s)) requires exactly one"
+                    " publication-ready manifest with matching output and consumer"
+                )
+    return issues
+
+
 def check(root: Path, base: str | None = None) -> list[str]:
     scope = load_scope(root)
     errors = []
@@ -244,6 +380,16 @@ def check(root: Path, base: str | None = None) -> list[str]:
             errors.append(f"{entry.name}: invalid JSON: {exc}")
     if base:
         errors.extend(diff_formal_additions(root, base, scope))
+        manifests_for_refs = []
+        for entry in entries:
+            try:
+                data = json.loads(entry.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    manifests_for_refs.append(data)
+            except (json.JSONDecodeError, UnicodeDecodeError):
+                pass
+        errors.extend(new_educational_image_references(root, base, scope,
+                                                       manifests_for_refs))
     return errors
 
 
