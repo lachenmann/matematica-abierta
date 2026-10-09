@@ -20,6 +20,7 @@ open scoped Pointwise
 
 /-- Cualquier respuesta emitida por la etapa posee la semántica correcta
 de pertenencia a la suma puntual de los dos cortes principales. -/
+set_option maxHeartbeats 1200000 in
 theorem sumCertificateStage_answer_correct
     (eA eB : Code) (x y : ℝ)
     (hA : DecidesCut eA (lowerCut x))
@@ -29,19 +30,24 @@ theorem sumCertificateStage_answer_correct
     b = true ↔ codedQuery z ∈ lowerCut x + lowerCut y := by
   cases b with
   | true =>
-      have hmem : codedQuery z ∈ lowerCut x + lowerCut y :=
-        sumCertificateStage_true_correct _ x y hA hB h
-      simp [hmem]
+      constructor
+      · intro _
+        exact sumCertificateStage_true_correct
+          (((eA, eB), z), n) x y hA hB h
+      · intro _
+        rfl
   | false =>
-      have hstrict : x + y < (codedQuery z : ℝ) :=
-        sumCertificateStage_false_correct _ x y hA hB h
-      have hnot : codedQuery z ∉ lowerCut x + lowerCut y := by
-        intro hmem
+      constructor
+      · intro hfalse
+        cases hfalse
+      · intro hmem
+        have hstrict : x + y < (codedQuery z : ℝ) :=
+          sumCertificateStage_false_correct
+            (((eA, eB), z), n) x y hA hB h
         rw [lowerCut_add] at hmem
         have hbelow : (codedQuery z : ℝ) < x + y :=
           (lowerCut_mem_iff _ (x + y)).mp hmem
-        exact (lt_asymm hstrict hbelow)
-      simp [hnot]
+        exact (lt_asymm hstrict hbelow).elim
 
 /-- B5: un único transformador primitivamente recursivo de códigos
 construye un decididor total de la suma para CUALQUIER pareja de índices
