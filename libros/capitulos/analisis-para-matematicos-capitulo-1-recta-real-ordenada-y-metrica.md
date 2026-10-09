@@ -207,11 +207,9 @@ $$
 
 No hay que memorizar cuatro dibujos separados. La notación está diciendo exactamente qué ocurre en cada frontera: un corchete incluye el extremo correspondiente; un paréntesis lo excluye.
 
-La figura C01-F02 concentra esta lectura en una sola comparación.
+La figura [C01-F02](#fig-anm-c01-f02) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F02.svg){fig-alt="Cuatro rectas alineadas muestran (a,b), [a,b], (a,b] y [a,b), con extremos abiertos o cerrados y sus desigualdades equivalentes."}
-
-*Figura C01-F02. Paréntesis y corchetes registran exactamente si cada frontera satisface una desigualdad estricta o no estricta.*
+![Paréntesis y corchetes registran exactamente si cada frontera satisface una desigualdad estricta o no estricta.](../../assets/books/anm/C01/C01-F02.svg){#fig-anm-c01-f02 fig-alt="Cuatro rectas alineadas muestran (a,b), [a,b], (a,b] y [a,b), con extremos abiertos o cerrados y sus desigualdades equivalentes."}
 
 Conviene detenernos en una posible confusión. Acabamos de usar las palabras «abierto» y «cerrado», pero todavía no estamos hablando de conjuntos abiertos y cerrados en sentido topológico. Por ahora son simplemente los nombres tradicionales de estos tipos de intervalo. La teoría general que explica esas palabras vendrá más adelante.
 
@@ -433,11 +431,9 @@ $$
 |x-a|=\text{distancia de }x\text{ al centro }a.
 $$
 
-La figura C01-F03 concentra esta lectura en una sola comparación.
+La figura [C01-F03](#fig-anm-c01-f03) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F03.svg){fig-alt="Tres paneles muestran la distancia de x al origen, la distancia de x a un centro a y la distancia entre dos puntos x e y; el tercer panel distingue resta orientada de longitud no orientada."}
-
-*Figura C01-F03. El paso |x| → |x−a| → d(x,y)=|x−y| elimina gradualmente una referencia privilegiada y conserva la idea de medir separación.*
+![El paso |x| → |x−a| → d(x,y)=|x−y| elimina gradualmente una referencia privilegiada y conserva la idea de medir separación.](../../assets/books/anm/C01/C01-F03.svg){#fig-anm-c01-f03 fig-alt="Tres paneles muestran la distancia de x al origen, la distancia de x a un centro a y la distancia entre dos puntos x e y; el tercer panel distingue resta orientada de longitud no orientada."}
 
 Probemos con un ejemplo. Si elegimos $a=3$, entonces los puntos $7$ y $-1$ están en lados distintos de $3$, pero
 
@@ -508,7 +504,7 @@ $$
 
 Esto coincide con la geometría que esperamos: recorrer el segmento desde $x$ hasta $y$ o desde $y$ hasta $x$ cambia el sentido del recorrido, no su longitud.
 
-La tercera escena de la figura C01-F03 ya anticipaba esta simetría: $x-y$ y $y-x$ cambian de signo al invertir el sentido, mientras $|x-y|$ conserva la misma longitud.
+La tercera escena de la figura [C01-F03](#fig-anm-c01-f03) ya anticipaba esta simetría: $x-y$ y $y-x$ cambian de signo al invertir el sentido, mientras $|x-y|$ conserva la misma longitud.
 
 ### ¿Qué debe cumplir una distancia?
 
@@ -699,11 +695,9 @@ que es estrictamente mayor que la distancia directa $d(1,7)=6$. Para visitar $10
 
 Esta diferencia entre **avanzar sin retroceso** y **salirse del segmento para volver** contiene toda la geometría del caso de igualdad.
 
-La figura C01-F05 concentra esta lectura en una sola comparación.
+La figura [C01-F05](#fig-anm-c01-f05) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F05.svg){fig-alt="Tres paneles comparan el caso y entre x y z con y situado a la izquierda o a la derecha. La ruta pasando por y tiene la misma longitud sólo en el primer caso y es mayor en los otros dos."}
-
-*Figura C01-F05. En la recta hay igualdad triangular exactamente cuando $y$ está entre los extremos; fuera del segmento aparece recorrido redundante.*
+![En la recta hay igualdad triangular exactamente cuando $y$ está entre los extremos; fuera del segmento aparece recorrido redundante.](../../assets/books/anm/C01/C01-F05.svg){#fig-anm-c01-f05 fig-alt="Tres paneles comparan el caso y entre x y z con y situado a la izquierda o a la derecha. La ruta pasando por y tiene la misma longitud sólo en el primer caso y es mayor en los otros dos."}
 
 ### Cuando $y$ está entre los extremos
 
@@ -878,11 +872,9 @@ $$
 
 La igualdad de conjuntos merece leerse en ambas direcciones. Si $x$ está a menos de $r$ unidades de $a$, entonces queda entre $a-r$ y $a+r$; y si queda entre esas dos fronteras, entonces su distancia a $a$ es menor que $r$.
 
-La figura C01-F06 concentra esta lectura en una sola comparación.
+La figura [C01-F06](#fig-anm-c01-f06) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F06.svg){fig-alt="Recta numérica centrada en a con extremos abiertos a-r y a+r, ambos a distancia r del centro, y cadena de equivalencias entre distancia, valor absoluto y desigualdad doble."}
-
-*Figura C01-F06. En ℝ, d(x,a)<r selecciona exactamente los puntos del intervalo abierto (a−r,a+r); las fronteras quedan fuera porque están a distancia r.*
+![En ℝ, d(x,a)<r selecciona exactamente los puntos del intervalo abierto (a−r,a+r); las fronteras quedan fuera porque están a distancia r.](../../assets/books/anm/C01/C01-F06.svg){#fig-anm-c01-f06 fig-alt="Recta numérica centrada en a con extremos abiertos a-r y a+r, ambos a distancia r del centro, y cadena de equivalencias entre distancia, valor absoluto y desigualdad doble."}
 
 ### El centro localiza; el radio controla el margen
 
@@ -920,11 +912,9 @@ $$
 
 y, más generalmente, un radio mayor permite una separación mayor en ambos sentidos. El intervalo se ensancha simétricamente respecto del centro.
 
-La figura C01-F07 concentra esta lectura en una sola comparación.
+La figura [C01-F07](#fig-anm-c01-f07) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F07.svg){fig-alt="Dos paneles: el primero compara dos bolas de igual radio y centros distintos; el segundo compara dos bolas del mismo centro y radios diferentes."}
-
-*Figura C01-F07. Mover el centro traslada la bola sin cambiar su anchura; aumentar el radio ensancha la región simétricamente alrededor del mismo centro.*
+![Mover el centro traslada la bola sin cambiar su anchura; aumentar el radio ensancha la región simétricamente alrededor del mismo centro.](../../assets/books/anm/C01/C01-F07.svg){#fig-anm-c01-f07 fig-alt="Dos paneles: el primero compara dos bolas de igual radio y centros distintos; el segundo compara dos bolas del mismo centro y radios diferentes."}
 
 Por eso resulta útil pensar en la bola como una **ventana** alrededor de $a$: mover $a$ desplaza la ventana; aumentar $r$ la abre; disminuir $r$ la estrecha. Pero conviene conservar la jerarquía correcta. «Ventana» es una imagen; la definición matemática es
 
@@ -1135,11 +1125,9 @@ $$
 
 De nuevo, la diferencia entre $>$ y $\ge$ sólo decide si los puntos frontera —aquellos cuya distancia a $a$ es exactamente $r$— quedan excluidos o incluidos.
 
-La figura C01-F08 concentra esta lectura en una sola comparación.
+La figura [C01-F08](#fig-anm-c01-f08) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F08.svg){fig-alt="Matriz de cuatro rectas con las regiones definidas por |x-a|<r, |x-a|<=r, |x-a|>r y |x-a|>=r, manteniendo fijos a y r."}
-
-*Figura C01-F08. Las condiciones <, ≤, > y ≥ combinan dos decisiones: cerca o lejos del centro y frontera excluida o incluida.*
+![Las condiciones <, ≤, > y ≥ combinan dos decisiones: cerca o lejos del centro y frontera excluida o incluida.](../../assets/books/anm/C01/C01-F08.svg){#fig-anm-c01-f08 fig-alt="Matriz de cuatro rectas con las regiones definidas por |x-a|<r, |x-a|<=r, |x-a|>r y |x-a|>=r, manteniendo fijos a y r."}
 
 ### Dos decisiones que conviene separar
 
@@ -1325,11 +1313,9 @@ $$
 
 La izquierda y la derecha se intercambian.
 
-La figura C01-F09 concentra esta lectura en una sola comparación.
+La figura [C01-F09](#fig-anm-c01-f09) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F09.svg){fig-alt="Cuatro paneles muestran una traslación, una escala positiva, una reflexión y el caso lambda cero, indicando en cada caso qué ocurre con el orden y con las distancias."}
-
-*Figura C01-F09. Traslación, escala positiva, reflexión y λ=0 afectan de manera distinta orden y métrica; preservar distancia exacta no es lo mismo que escalarla uniformemente.*
+![Traslación, escala positiva, reflexión y λ=0 afectan de manera distinta orden y métrica; preservar distancia exacta no es lo mismo que escalarla uniformemente.](../../assets/books/anm/C01/C01-F09.svg){#fig-anm-c01-f09 fig-alt="Cuatro paneles muestran una traslación, una escala positiva, una reflexión y el caso lambda cero, indicando en cada caso qué ocurre con el orden y con las distancias."}
 
 Éste es el ejemplo que termina de separar las dos estructuras. Si conociéramos únicamente todas las distancias entre los puntos de una configuración, no podríamos distinguir esa configuración de su imagen reflejada. Las separaciones serían idénticas, aunque la orientación hubiese cambiado por completo.
 
