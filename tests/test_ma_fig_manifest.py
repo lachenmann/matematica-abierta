@@ -15,5 +15,13 @@ class TestMaFigureScope(unittest.TestCase):
         with self.assertRaises(ValueError):
             checked_path(Path("/tmp"),"../outside.md","test")
 
+    def test_formal_fallback(self):
+        scope = {"formal_treatise_prefixes":[], "formal_treatise_exact":[], "non_treatise_landing_exceptions":[]}
+        self.assertTrue(is_formal_treatise("libros/otros/tratado-futuro.qmd",scope))
+
+    def test_treatise_landing_exception(self):
+        scope = {"formal_treatise_prefixes":["libros/tratados/"], "formal_treatise_exact":[], "non_treatise_landing_exceptions":["libros/tratados/index.qmd"]}
+        self.assertFalse(is_formal_treatise("libros/tratados/index.qmd",scope))
+
 if __name__ == "__main__":
     unittest.main()
