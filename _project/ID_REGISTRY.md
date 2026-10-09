@@ -6,12 +6,12 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0016 |
+| Artículo | MA-ART-0017 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0183 |
 | Curso | MA-CRS-0002 |
-| Libro | MA-BOK-0013 |
+| Libro | MA-BOK-0014 |
 
 ## IDs asignados
 
@@ -337,3 +337,10 @@ La reserva TF inicial MA-BCH-0099…0116 sólo existía en la rama de borrador. 
 | MA-BCH-0180 | book-chapter | MA-BCH-ANM-01-005-EJERCICIOS | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-ejercicios.md` | published |
 | MA-BCH-0181 | book-chapter | MA-BCH-ANM-01-005-SOLUCIONES | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-soluciones.md` | published |
 | MA-BCH-0182 | book-chapter | MA-BCH-ANM-01-005-MICROCONTROLES | `libros/capitulos/analisis-para-matematicos-capitulo-5-sucesiones-y-comportamiento-eventual-microcontroles.md` | published |
+
+## CDR — monografía complementaria de ANM, 2026-10-09
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-ART-0016 | article | La construcción de los reales: existencia, unicidad y dos caminos de demostración | `blog/la-construccion-de-los-reales-existencia-unicidad-y-dos-caminos.md` | published |
+| MA-BOK-0013 | book | La construcción de los reales | `libros/otros/la-construccion-de-los-reales.md` | published; edition-study M18 v05; external review and audiovisual collation pending |
