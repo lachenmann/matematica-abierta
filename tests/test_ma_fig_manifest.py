@@ -142,5 +142,38 @@ class TestManifestValidation(unittest.TestCase):
             (directory/name).write_text(json.dumps(self.manifest))
         self.assertIn("duplicate figure_id"," ".join(check(self.root)))
 
+
+class TestFormalSourceDiff(unittest.TestCase):
+    def _exercise_diff(self, extra):
+        import subprocess
+        import tempfile
+        from tools.check_ma_fig_manifest import diff_formal_additions
+        with tempfile.TemporaryDirectory() as place:
+            root=Path(place)
+            file=root / "libros/otros/tratado-funciones/capitulo-01.qmd"
+            file.parent.mkdir(parents=True)
+            file.write_text("# Capítulo\n")
+            def git(*args):
+                return subprocess.run(("git",*args),cwd=root,check=True,
+                    capture_output=True,text=True).stdout.strip()
+            git("init","-q")
+            git("config","user.name","QA")
+            git("config","user.email","qa@example.invalid")
+            git("add",".")
+            git("commit","-qm","base")
+            base=git("rev-parse","HEAD")
+            file.write_text("# Capítulo\n"+extra)
+            git("add",".")
+            git("commit","-qm","change")
+            scope={"formal_treatise_prefixes":["libros/otros/tratado-funciones/"],
+                "formal_treatise_exact":[],"non_treatise_landing_exceptions":[]}
+            return diff_formal_additions(root,base,scope)
+
+    def test_formal_diagram_is_rejected_in_git_diff(self):
+        self.assertIn("C0-SCOPE"," ".join(self._exercise_diff("![Ejemplo](archivo.svg)\n")))
+
+    def test_equation_is_not_a_diagram_in_git_diff(self):
+        self.assertEqual(self._exercise_diff("$ x^2+y^2=1 $\n"), [])
+
 if __name__ == "__main__":
     unittest.main()
