@@ -1648,11 +1648,9 @@ El factor $2$ tiene una interpretación precisa. Si $y<x$, para visitar $y$ desd
 
 Por eso $E(y)$ mide exactamente la longitud adicional causada por el retroceso.
 
-La figura C01-F11 concentra esta lectura en una sola comparación.
+La figura [C01-F11](#fig-anm-c01-f11) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F11.svg){fig-alt="Gráfico por tramos de E(y): una meseta igual a cero entre x y z y dos ramas lineales crecientes hacia afuera."}
-
-*Figura C01-F11. El exceso $E(y)$ es cero sobre $[x,z]$ y crece linealmente con pendiente de magnitud $2$ cuando $y$ sale del segmento.*
+![El exceso $E(y)$ es cero sobre $[x,z]$ y crece linealmente con pendiente de magnitud $2$ cuando $y$ sale del segmento.](../../assets/books/anm/C01/C01-F11.svg){#fig-anm-c01-f11 fig-alt="Gráfico por tramos de E(y): una meseta igual a cero entre x y z y dos ramas lineales crecientes hacia afuera."}
 
 []{#MA-SOL-ANM-01-001-026}
 
@@ -2799,11 +2797,9 @@ $$
 
 La diferencia con las bolas es estructural. En una bola $B(a,r)$ sólo hay un umbral superior: aumentar $r$ admite todos los puntos anteriores y algunos nuevos. En $A_t$, en cambio, aumentar $t$ mueve hacia afuera tanto el umbral interior como el exterior. Algunos puntos nuevos entran por fuera, mientras otros que antes eran admisibles quedan demasiado cerca y salen por dentro. Por eso la familia no es anidada.
 
-La figura C01-F13 concentra esta lectura en una sola comparación.
+La figura [C01-F13](#fig-anm-c01-f13) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F13.svg){fig-alt="Dos paneles comparan las bandas métricas A_t y A_s en la recta y los intervalos de distancias (t,2t] y (s,2s] en un eje auxiliar."}
-
-*Figura C01-F13. En A_t={x: t<d(x,a)≤2t}, aumentar t mueve los dos umbrales; por eso la familia no es monótona por inclusión y A_t∩A_s es vacía exactamente cuando s≥2t.*
+![En A_t={x: t<d(x,a)≤2t}, aumentar t mueve los dos umbrales; por eso la familia no es monótona por inclusión y A_t∩A_s es vacía exactamente cuando s≥2t.](../../assets/books/anm/C01/C01-F13.svg){#fig-anm-c01-f13 fig-alt="Dos paneles comparan las bandas métricas A_t y A_s en la recta y los intervalos de distancias (t,2t] y (s,2s] en un eje auxiliar."}
 
 ## §1.8. Qué ve el orden y qué ve la distancia
 
@@ -3279,8 +3275,6 @@ Por tanto, toda isometría de la recta posee una orientación global coherente: 
 
 Este resultado cierra el hilo conceptual del capítulo. Las distancias determinan la geometría de la recta **hasta una elección global de orientación**. Una vez fijado dónde está el origen de la imagen y cuál de las dos orientaciones elegimos, no queda libertad adicional.
 
-La figura C01-F14 concentra esta lectura en una sola comparación.
+La figura [C01-F14](#fig-anm-c01-f14) concentra esta lectura en una sola comparación.
 
-![](../../assets/books/anm/C01/C01-F14.svg){fig-alt="Diagrama de flujo de la prueba: se define G(x)=F(x)-F(0), se obtiene G(0)=0 y |G(x)|=|x|, se fuerza un signo global y aparecen las dos formas F(x)=x+c o F(x)=-x+c."}
-
-*Figura C01-F14. Tras normalizar F(0), toda isometría fija el origen y sólo puede elegir un signo global: las dos ramas finales son traslación o reflexión seguida de traslación.*
+![Tras normalizar F(0), toda isometría fija el origen y sólo puede elegir un signo global: las dos ramas finales son traslación o reflexión seguida de traslación.](../../assets/books/anm/C01/C01-F14.svg){#fig-anm-c01-f14 fig-alt="Diagrama de flujo de la prueba: se define G(x)=F(x)-F(0), se obtiene G(0)=0 y |G(x)|=|x|, se fuerza un signo global y aparecen las dos formas F(x)=x+c o F(x)=-x+c."}

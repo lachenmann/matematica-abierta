@@ -1,4 +1,4 @@
-"""Regression tests for C01 F01/F12 Quarto pilot; graphics are never produced."""
+"""Regression tests for C01 figures, including the preserved F01/F12 pilot."""
 import hashlib
 import json
 import unittest
@@ -30,9 +30,11 @@ class C01PilotTests(unittest.TestCase):
         self.assertGreater(len(matches[0][2]), 50)
         self.assertNotIn("*Figura C01-F12.", self.solutions)
 
-    def test_original_ten_figure_sources_are_untouched(self):
-        self.assertEqual(self.chapter.count('svg){fig-alt="'), 7)
-        self.assertEqual(self.solutions.count('svg){fig-alt="'), 3)
+    def test_full_chapter_rollout_retains_pilot_and_12_figures(self):
+        self.assertEqual(self.chapter.count('svg){#fig-anm-c01-'), 8)
+        self.assertEqual(self.solutions.count('svg){#fig-anm-c01-'), 4)
+        self.assertEqual(self.chapter.count('svg){fig-alt="'), 0)
+        self.assertEqual(self.solutions.count('svg){fig-alt="'), 0)
 
     def test_all_twelve_approved_svgs_remain_byte_identical(self):
         hashes = self.registry["all_existing_svg_sha256"]
