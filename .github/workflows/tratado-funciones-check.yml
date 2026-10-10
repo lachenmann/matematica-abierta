@@ -1,0 +1,64 @@
+name: Tratado de funciones publication QA
+on:
+  pull_request:
+    paths:
+      - 'libros/otros/tratado-funciones/**'
+      - 'libros/index.qmd'
+      - 'libros/otros/index.qmd'
+      - 'libros/tratados/index.qmd'
+      - 'references.bib'
+      - 'tests/tratado_funciones_static.py'
+      - 'tests/tratado_funciones_browser.cjs'
+      - '.github/workflows/tratado-funciones-check.yml'
+permissions:
+  contents: read
+jobs:
+  draft-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate derivative structure
+        run: python tests/tratado_funciones_static.py
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Render publication candidate
+        run: |
+          quarto render libros/otros/tratado-funciones --to html
+          quarto render libros/index.qmd --to html
+          quarto render libros/otros/index.qmd --to html
+          quarto render libros/tratados/index.qmd --to html
+          quarto render teoria/resultados/index.qmd --to html
+          quarto render teoria/metodos/index.qmd --to html
+      - name: Validate rendered anchors
+        run: python tests/tratado_funciones_static.py --html
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependencies
+        run: |
+          npm install --prefix "$RUNNER_TEMP/tf-browser" playwright@1.62.1
+          "$RUNNER_TEMP/tf-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Check desktop and mobile rendering
+        env:
+          NODE_PATH: ${{ runner.temp }}/tf-browser/node_modules
+        run: |
+          python -m http.server 8765 --directory _site > "$RUNNER_TEMP/tf-server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tests/tratado_funciones_browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tratado-funciones-browser-evidence
+          path: browser-evidence
+          retention-days: 7
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tratado-funciones-draft-review
+          path: _site
+          retention-days: 7

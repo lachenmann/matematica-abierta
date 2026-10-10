@@ -1,0 +1,203 @@
+---
+title: Matriz transversal de hipótesis y fronteras fundacionales
+document-id: TF-HYP-0001
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-HYP-0001
+source-version: 1.0.3
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-HYP-0001
+    locator: HYPOTHESIS_MATRIX.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Revisión del 2026-09-26
+Se reconcilia F1 y se separan las ramas `Top ⇒ Reg` y `Top + complementación ⇒ Bool`. La aprobación autoral de 2026-09-21 corresponde a la taxonomía original; esta revisión documental no registra una nueva aprobación específica.
+:::
+
+
+
+::: {.callout-note}
+## Alcance y método
+Esta matriz **sintetiza las hipótesis explícitas y el alcance de resultados existentes**; no es una demostración adicional, no reemplaza las pruebas originales y no aprueba por sí sola la estructura de 18 capítulos, que obtuvo autorización autoral independiente el 2026-09-21. Cada fila indica el conjunto de supuestos **usados en la prueba citada**, no necesariamente un sistema axiomático mínimo independiente. «Sin AC» significa que esa prueba no lo invoca; «sin algoritmo» significa que no lo construye, no que se haya demostrado su imposibilidad en cualquier contexto. Las citas externas se separan de los resultados internos. Revisión basada en TF-AUD-0001, grafo reconciliado y los manuscritos 1–16.
+:::
+
+
+## 1. Leyenda y ejes de auditoría
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Símbolo / estado | Lectura exacta |
+|---|---|
+| `Cat` | Identidades y composición (`TF-AX-00001`/`TF-AX-00002`). |
+| `FL` | Límites finitos: terminal, productos y pullbacks (`TF-THM-00023`). |
+| `Reg` | `FL` + paquete regular explícito `TF-AX-00008`; no incluye exactitud de Barr, elección ni Ω. |
+| `Top` | `FL` + exponenciales + clasificador de subobjetos: marco de topos elemental. |
+| `Bool` | `Top` + complementación de todos los subobjetos (lógica interna booleana). |
+| `ZF` | Teoría de conjuntos clásica usada como metateoría, sin AC salvo indicación expresa. |
+| `AC-Reg` | `TF-AX-00009`, sólo como **axioma opcional** en los resultados que lo citan. |
+| `Eff` | Máquina, numeración, nombre o realizador proporcionado explícitamente; no se infiere de la existencia de una flecha. |
+| `Pequeña` | Condición de tamaño para conjuntos de índices/objetos y colímites, según el capítulo. |
+| `Lean: no` | Resultado no cubierto por una declaración Lean acreditada en los informes disponibles. |
+| `Lean: parcial` | Sólo un caso o fragmento coincide con la declaración Lean compilada; ver informe específico. |
+
+:::
+
+
+**Dos vías de lectura:** (a) usar sólo la base declarada junto a cada resultado; (b) usar el paquete acumulativo de los capítulos 1–3. La posibilidad de demostrar en (b) una hipótesis que en (a) se asume no autoriza a describir el axioma de (a) como independiente. Tampoco autoriza a insertar una prueba inexistente en el registro.
+
+## 2. Capa estructural: flechas, relaciones y elección
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Resultado/contrato | Hipótesis usadas y frontera lógica | Elección, efectividad y tamaño | Evidencia y cobertura Lean |
+|---|---|---|---|
+| Identidades y composición | `Cat`; axiomas primitivos, no teoremas reconstruidos. | Sin AC; sin algoritmo; clases de flechas según tamaño. | `TF-AX-00001`/`00002`, [cap. 1](capitulo-01.qmd). **Lean: no**. |
+| Gráfica de una flecha, caracterización por proyección | `Cat` + producto binario (`TF-AX-00004`); $\gamma_f=\langle1_A,f\rangle$, proyección iso ⇔ gráfica. | Sin AC; unicidad mediante inversa, no selección; sin algoritmo. | `TF-THM-00004`/`00005`, cap. 1. **Lean: `00004` y `00005` acreditados en PR #144**; F1 documentó `00005` y [apéndice D](apendice-d.qmd) reconoce `graphStructural_mono` para `00004` sobre el mismo código compilado. No implica auditoría de axiomas metateóricos ni algoritmo. |
+| Exponencial y evaluación | Objeto terminal, productos, exponenciales (`TF-AX-00003`–`00005`); existencia de $B^A$ no se deduce sólo de `Cat`. | Sin AC; objeto exponencial no ofrece cómputo de evaluación. | `TF-THM-00006`, [cap. 1](capitulo-01.qmd). **Lean: no**. |
+| Igualdad por puntos globales | El terminal debe ser **generador**; no se deduce de terminal + productos + exponenciales. | Sin AC; igualdad matemática, no decisor. | `TF-THM-00007`, `TF-CEX-00001`, [cap. 2](capitulo-02.qmd). **Lean: no**. |
+| Igualdad por elementos generalizados | `Cat` con identidades; tomar como sonda $X=A$, $a=1_A$ cuando proceda. | Sin AC ni procedimiento de decisión. | `TF-THM-00009`, cap. 2. **Lean: no**. |
+| Subobjetos, características y cuantificación de pertenencia | `FL` + clasificador `TF-AX-00007`; $\operatorname{Sub}(X)\cong\operatorname{Hom}(X,\Omega)$, sin exigir Bool. | Sin AC ni algoritmo para decidir la característica. Tamaños de subobjetos según metateoría. | `TF-THM-00018`/`00019`, [cap. 3](capitulo-03.qmd). **Lean: no**. |
+| Límites finitos desde terminal, productos y pullbacks | `TF-AX-00003`, `00004`, `00006` dan igualadores y límites finitos. | Sin AC; construcción por universalidad, no cómputo. | `TF-THM-00023`, [cap. 4](capitulo-04.qmd). **Lean: no**. |
+| Factorización imagen y estabilidad por cambio de base | Ruta **Reg**: `FL` + `TF-AX-00008` como paquete explícito; no se requieren Ω ni exponenciales para las pruebas presentadas. | Sin AC; imagen no proporciona selector ni algoritmo. | `TF-THM-00024`/`00025`, cap. 4 v1.0.1. **Lean: no**. |
+| Topos elemental implica regularidad | `Top` con todas sus hipótesis acumuladas. **Teorema externo importado**, no prueba interna de este libro. | No se añade AC. No atribuir `TF-THM` ni Lean. | Nota §4.2 y §4.5 cap. 4; Todd Trimble, [prueba externa](https://ncatlab.org/toddtrimble/published/An%2Belementary%2Bapproach%2Bto%2Belementary%2Btopos%2Btheory). **Lean: no**. |
+| Composición de relaciones mediante imágenes | `Reg`, productos de pares y pullbacks de testigos; asociatividad usa estabilidad de epis regulares. | Sin AC; relaciones no requieren escoger testigo intermedio; precaución de tamaño para Rel. | `TF-DEF-00015`, `TF-THM-00027`–`00029`, cap. 4. **Lean: no**. |
+| Relación total + univaluada → gráfica | `Reg`, proyección epi regular **y** mono ⇒ iso; se recupera $f=qp^{-1}$. | **Elección única sin AC**; no cubre relaciones multivaluadas. | `TF-THM-00033`, [cap. 5](capitulo-05.qmd). **Lean: no**. |
+| Selector de relación total | `Reg`; selector ⇔ sección de primera proyección; la totalidad sola no basta. | `AC-Reg` sólo para selección de **todas** las relaciones. Contraejemplo estructural en grupos. | `TF-THM-00034`–`00036`, `TF-CEX-00003`, cap. 5. **Lean: no**. |
+| Formulaciones de elección en ZF | `ZF`; equivalencia entre selección universal y secciones de sobreyecciones como principios comparados, **sin presuponer AC**. | La prueba de equivalencia no adopta el axioma comparado. | `TF-THM-00038`, cap. 5. **Lean: no**. |
+
+:::
+
+
+::: {.callout-warning}
+## Implicación no probada dentro del tratado
+El paso `Top ⇒ Reg` figura como resultado externo. Las pruebas categóricas de §4 usan directamente `Reg`. `TF-AX-00009` queda opcional y no es consecuencia de `Reg`: `TF-CEX-00003` registra el obstáculo. El contraste no autoriza afirmar que todo epi regular se secciona por existir su imagen.
+:::
+
+
+## 3. Capa de parcialidad y lógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Resultado/contrato | Hipótesis usadas y frontera lógica | Elección, efectividad y tamaño | Evidencia y cobertura Lean |
+|---|---|---|---|
+| Aplicación parcial y categoría $\mathbf{Par}(\mathcal C)$ | `FL` (puede trabajarse con los pullbacks pertinentes); spans con brazo mono, cociente por isomorfismos de spans; composición mediante pullback. | Sin Reg, AC, Ω ni cómputo requerido; tamaño de clases de spans controlado. | `TF-DEF-00021`, `TF-THM-00041`–`00044`, [cap. 6](capitulo-06.qmd). **Lean: no**. |
+| Extensión conjuntista de aplicación parcial | `ZF`; si $B\ne\varnothing$ existe prolongación de cualquier $u:D\to B$ a $A$, fijando un solo $b_0$ fuera de $D$; casos vacíos explícitos. | **Sin AC**; ninguna continuidad ni computabilidad inferida. | `TF-THM-00048`, `TF-EXA-00010`, cap. 6. **Lean: no**. |
+| Extensiones sujetas a fibras variables | `ZF`; enunciado del capítulo que compara extensión restringida a $R_a\ne\varnothing$ con AC. | Es aquí donde aparece una familia de elecciones; no confundir con extensión libre mediante $b_0$. | `TF-THM-00050`, cap. 6. **Lean: no**. |
+| Predicado del dominio y restricción | `FL` para dominio y pullback; `Top`/Ω para $\delta_\alpha:A\to\Omega$. La composición debe restringir antes de evaluar. | Sin AC; característica no significa prueba decidible del dominio. | `TF-DEF-00027`/`00028`, `TF-THM-00052`–`00055`, [cap. 7](capitulo-07.qmd). **Lean: no**. |
+| Clasificador parcial $L(B)$ | `Top`: $L(B)$ construido como objeto de subobjetos de $B$ con a lo sumo un elemento; $L(1)\cong\Omega$. | Sin AC; ni algoritmo de pertenencia ni decidibilidad de indefinición. | `TF-THM-00062`/`00063`, [cap. 8](capitulo-08.qmd). **Lean: no**. |
+| $L(B)\cong B\sqcup1$ | `ZF` en Set clásico; para todos los objetos de un topos, `Bool` y estructura de coproductos del topos. Un topos no booleano da contraejemplo. | Sin AC; el símbolo $\bot$ es etiqueta matemática, no algoritmo. | `TF-THM-00064`–`00066`, `TF-CEX-00007`, cap. 8. **Lean: no**. |
+| Composición de codificaciones parciales | En `Top`, mónada $L$ y fórmula clasificadora; en Set clásico, Kleisli para $B\sqcup1$, no composición ordinaria. | Sin AC ni computabilidad por sí sola. | `TF-THM-00068`, `TF-THM-00110`, [cap. 14](capitulo-14.qmd). **Lean: no** para Kleisli general. |
+
+:::
+
+
+**No implicaciones controladas:** subobjeto existente $\not\Rightarrow$ dominio complementado; clasificador $\not\Rightarrow$ procedimiento de decisión; mapa parcial $\not\Rightarrow$ extensión total con estructura adicional; suma $B\sqcup1$ $\not\Rightarrow$ clasificador en topoi arbitrarios. Contraejemplos: `TF-CEX-00004`, `00006`, `00007`, `00009`.
+
+## 4. Capa efectiva, igualdad y diagonalización
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Resultado/contrato | Hipótesis usadas y frontera lógica | Elección, efectividad y tamaño | Evidencia y cobertura Lean |
+|---|---|---|---|
+| Dominio de una función parcialmente computable | Máquina de Turing con parada exacta (`TF-DEF-00035`) y enumeración efectiva. | Dominio c.e., no necesariamente decidible; no confundir con realizador bajo promesa. | `TF-THM-00069`/`00071`, [cap. 9](capitulo-09.qmd). **Lean: no**. |
+| Totalización etiquetada computable | Función parcialmente computable con contrato de parada exacta; etiquetas distinguen definida/indefinida. | Existe totalización etiquetada computable **si y sólo si** el dominio es decidible; no se deduce de extensión conjuntista. | `TF-THM-00073`, cap. 9. **Lean: no**. |
+| Realizador bajo promesa y traductores de nombres | Representaciones fijadas y realizadores del capítulo 9; cambiar la representación requiere mapas computables adecuados. | Ningún decisor de dominio se infiere del mero realizador bajo promesa. | `TF-DEF-00038`/`00039`, `TF-THM-00075`–`00077`, `TF-CEX-00010`, cap. 9. **Lean: no**. |
+| Equivalencia extensional de programas | Numeración efectiva de funciones parciales y reducción del problema de parada. | No decidible, ni c.e. ni co-c.e. en la clase general; códigos iguales sintácticamente es otra relación. | `TF-THM-00080`–`00083`, [cap. 10](capitulo-10.qmd). **Lean: no**. |
+| Igualdad certificada sobre un conjunto finito | Dominio exhaustivamente enumerado, evaluación terminante y decisiones de pertenencia explicitadas según el teorema. | En ese fragmento es decidible; no extrapolar a funciones arbitrarias o reales. | `TF-THM-00084`, cap. 10. **Lean: no**. |
+| Evaluador universal parcial y diagonal total | Numeración efectiva, simulador parcial y diagonalización; un intérprete parcial puede existir, un evaluador total computable exhaustivo de todas las funciones totales computables no. | Sin AC; **diferencia de contratos de terminación**, no imposibilidad de intérprete en general. | `TF-THM-00092`–`00095`, [cap. 11](capitulo-11.qmd). **Lean: no** para esos teoremas computacionales. |
+| Diagonal y punto fijo estructural | Familias $U:A\times A\to B$ representadas por puntos bajo las hipótesis explícitas y endomapa $s:B\to B$ sin punto fijo. | Sin cómputo ni AC; no convertir epi categórico en sobreyectividad de puntos. | `TF-THM-00088`/`00089` completos en alcance de [PR #101](https://github.com/lachenmann/matematica-abierta/pull/101); `TF-THM-00090` sólo versión predicativa. Informe 011. |
+| Diagonal reindexada | $U:P\times A\to B$, función $q:A\to P$ **sobreyectiva** y $s$ sin punto fijo. | Sobreyectividad no puede omitirse; no diagonal $f(f)$ mal tipada. | `TF-THM-00098`, [cap. 12](capitulo-12.qmd). **Lean: cubierto por dos declaraciones de PR #108**, ver informe 012. |
+| Teorema de recursión de Kleene | Numeración efectiva **con especialización $s$-$m$-$n$** como hipótesis explícita. | Obtiene equivalencia extensional de programas, no identidad de índices. | `TF-THM-00100`, cap. 12. **Lean: no**; PR #108 no lo certifica. |
+
+:::
+
+
+## 5. Comparación de formalismos, Yoneda y tamaño
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Resultado/contrato | Hipótesis usadas y frontera lógica | Elección, efectividad y tamaño | Evidencia y cobertura Lean |
+|---|---|---|---|
+| Traducción entre gráficas, flechas y términos tipados | Productos/exponenciales, reglas beta y eta donde se indican; distinguir equivalencia semántica e identidad de códigos. | Sin AC; demostración conjuntista no acredita una CCC arbitraria. | `TF-THM-00102`–`00104`, [cap. 13](capitulo-13.qmd). **Lean: Set solamente en PR #111**, ver informe 013. |
+| Extracción de selección desde testigo dependiente | Datos de tipo $\prod_a\sum_b R(a,b)$ suministrados; la mera existencia proposicional no se sustituye por esos datos. | Sin AC cuando el dato dependiente **ya existe**; no declara AC para ZF ni para topoi arbitrarios. | `TF-DEF-00058`, `TF-THM-00107`, cap. 13. **Lean: no**. |
+| Equivalencia categórica con representantes | Funtor pleno/fiel/esencialmente sobreyectivo **más representantes e isomorfismos suministrados** para construir cuasiinverso. | No introducir AC por elección de representantes no suministrados; no computabilidad automática. | `TF-THM-00109`, [cap. 14](capitulo-14.qmd). **Lean: no**. |
+| Equivalencia computable de nombres | Traductores computables en ambos sentidos, realizadores adecuados; una biyección sola es insuficiente. | Requiere datos efectivos; contraejemplo con nombres biyectivos no equivalentes computablemente. | `TF-THM-00111`, `TF-CEX-00019`, cap. 14. **Lean: fragmento de transporte para funciones totales, traductores NO certificados computables en PR #118**. |
+| Recuperar flechas por Yoneda | Categoría localmente pequeña y condiciones de tamaño del capítulo; naturalidad de transformaciones y evaluación en identidad. | Sin AC; no confundir con generador terminal ni algoritmo de igualdad. | `TF-THM-00117`–`00120`, [cap. 15](capitulo-15.qmd). **Lean: instancias Set de nodos 00120 y 00123**, no Yoneda general (PR #122). |
+| Categoría de elementos y densidad | Base **pequeña**, $\mathbf{Set}$ y colímites puntuales de prehaces; cocono canónico y su propiedad universal. | Sin AC en las pruebas del manuscrito; no proporciona algoritmo de colímite ni significa representabilidad. | `TF-THM-00124`–`00133`, `TF-CEX-00022`, [cap. 16](capitulo-16.qmd). **Lean: sólo categoría terminal y contraejemplo finito (PR #125)**. |
+
+:::
+
+
+## 6. Diagrama de implicaciones con estado de prueba
+
+```text
+Cat + terminal + productos + pullbacks
+                │ TF-THM-00023 (demostrado en el manuscrito)
+                ▼
+           límites finitos
+             ├── + TF-AX-00008 asumido ──► Reg ──► imágenes estables / Rel(C)
+             │                              TF-THM-00025 / 00028
+             └── + exponenciales + Ω ──► Top
+                                         ├── teorema EXTERNO ──► Reg
+                                         │   (referencia enlazada; no prueba interna)
+                                         └── + todos los subobjetos complementados
+                                              └──► Bool ──► L(B) ≅ B ⊔ 1
+                                                             TF-THM-00065
+
+Reg + TF-AX-00009 [OPCIONAL] ──► secciones de todo epi regular
+                                 TF-THM-00036
+Reg solamente ─/─► sección de todo epi regular (TF-CEX-00003)
+
+ZF + relación funcional total ──► función única SIN AC (TF-THM-00039)
+ZF + relación total general ─/─► selector sin una hipótesis general adicional
+
+existencia categórica ─/─► computabilidad sin representaciones/realizadores
+isomorfismo de nombres ─/─► traductor computable (TF-CEX-00019)
+```
+
+**Corrección tipográfica pendiente en edición final:** las dos últimas flechas con barra son **no implicaciones**, no mapas construidos. El rótulo «isomorfismo de nombres» significa aquí una biyección semántica entre codificaciones, no una equivalencia computable. En el árbol, el retorno de `Top` a `Reg` cita un resultado externo; no debe introducirse como teorema nuevo sin aportar su prueba.
+
+## 7. Preguntas para auditar una nueva comparación
+
+1. ¿Los dos lados tienen exactamente la misma clase de objetos y la misma igualdad, o sólo una interpretación de uno en otro?
+2. ¿El paso reclama elementos elegidos, una existencia proposicional, o datos explícitos de sección?
+3. ¿Su carácter constructivo procede de la prueba dada o de una propiedad no documentada de la metateoría?
+4. ¿El resultado exige un tamaño de dominio que no se ha establecido para la categoría considerada?
+5. ¿Hay datos de programa y representación o sólo un isomorfismo matemático?
+6. ¿La declaración Lean acredita el enunciado entero, un caso Set, un modelo terminal o un fragmento?
+7. ¿Qué contraejemplo del corpus muestra que una hipótesis no se puede omitir sin alterar la conclusión?
+
+## 8. Límites y mantenimiento
+
+Esta es una **matriz transversal global** que conserva la función de orientación inicialmente asignada a A-05. [TF-CAT-017](capitulo-17.qmd) desarrolla ahora las comparaciones en exposición argumentada con fuentes, límites y pruebas de recuperación. **Ninguna fila agrega resultados a los 269 registros actuales.** Todo cambio de hipótesis sustantivo exige reapertura controlada del nodo original; los documentos administrativos no se cuentan como teoremas.
+
+**Validación autoral (2026-09-21):** aprobada la taxonomía de esta matriz como uno de los cuatro preliminares. La arquitectura de 18 capítulos fue aprobada expresamente mediante una decisión autoral independiente el 2026-09-21. **Estado editorial (2026-10-02):** el mapa exhaustivo de los 133 teoremas está publicado en el Apéndice B; la revisión de referencias externas y bibliografía, los ejemplos desarrollados del Apéndice C, la revisión de enlaces y la publicación web quedan cerrados para esta edición. La cobertura Lean sigue siendo parcial y se registra separadamente en el Apéndice D; no condiciona el cierre editorial.
+
+::: {.tf-navigation}
+[← Anterior](convenciones.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-01.qmd)
+:::

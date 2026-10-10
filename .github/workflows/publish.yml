@@ -1,0 +1,95 @@
+name: Quarto Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      full_render:
+        description: Forzar compilación completa
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+
+concurrency:
+  group: quarto-publish
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Install offline resource validator
+        run: python3 -m pip install -r tools/requirements-offline.txt
+
+      - name: Generate public mobile catalog
+        run: python3 tools/generate_app_catalog.py
+
+      - name: Check MA-ART-0017 display math before publishing
+        run: python3 tools/check_ma_art_0017_math.py
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+
+      - name: Restore last published complete state
+        id: site-base
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            _site
+            .quarto
+            .ma-build/base.json
+          key: ${{ runner.os }}-ma-site-v1-quarto-1.10.18-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-ma-site-v1-quarto-1.10.18-
+
+      - name: Render affected pages or complete site
+        env:
+          MA_FORCE_FULL: ${{ github.event.inputs.full_render || 'false' }}
+        run: python3 tools/smart_render.py build --offline-book MA-BOK-0005
+
+      - name: Verify rendered MA-ART-0017 MathJax before publishing
+        run: python3 tools/check_ma_art_0017_math.py --site-dir _site
+
+      - name: Verify canonical book layout
+        run: python3 tools/check_book_layout.py --site-dir _site
+
+      - name: Publish rendered site to GitHub Pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+          render: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Seal successfully published output and final Quarto state
+        run: python3 tools/smart_render.py seal
+
+      - name: Save state only after successful publication
+        if: steps.site-base.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            _site
+            .quarto
+            .ma-build/base.json
+          key: ${{ steps.site-base.outputs.cache-primary-key }}
+
+      - name: Preserve build decision and timing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ma-publish-build-report
+          path: .ma-build/report.json
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: warn

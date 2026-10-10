@@ -1,0 +1,298 @@
+---
+title: Capítulo 7. Restricciones, predicados de definición y lógica interna
+document-id: TF-CAT-007
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-007
+source-version: 1.0.1
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-007
+    locator: TF-CAT-007 - Restricciones predicados de definicion y logica interna.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0123
+content-type: book-chapter
+source-id: TF-T1-C07
+description: 'Tratado fundacional de la teoría de funciones: capítulo 7, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: límites finitos para spans, restricciones, composición e igualdad; clasificador
+  TF-AX-00007 sólo para predicados característicos; regularidad TF-AX-00008 para imágenes
+  existenciales; estructura de topos elemental bajo límites finitos + exponenciales
+  + clasificador para lógica de Heyting
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Pregunta rectora
+¿Cómo expresar «esta aplicación parcial está definida en este argumento» sin transformarla en una función total ni suponer que podemos decidir su dominio? ¿Qué añade el clasificador de subobjetos y qué lógica admite una categoría que lo posee?
+:::
+
+
+**Contrato y procedencia.** Retomamos los spans con brazo monomórfico, el dominio efectivo, su orden de extensión y la composición por producto fibrado del [capítulo 6](capitulo-06.qmd); las gráficas, subobjetos y características del [capítulo 3](capitulo-03.qmd); y las imágenes del [capítulo 4](capitulo-04.qmd). Se distinguen tres paquetes **no intercambiables**: (F) límites finitos, suficientes para restricciones y dominios; (C) un clasificador de subobjetos, requerido para características hacia $\Omega$; (R) regularidad, requerida para imágenes existenciales. Para enunciar lógica interna de Heyting empleamos explícitamente la combinación de límites finitos, exponenciales y clasificador: un **topos elemental**. Ninguna parte de (C) o (R) se atribuye automáticamente a (F). No asumimos elección ni decidibilidad.
+
+## 7.1. El predicado de definición como una flecha
+
+Consideremos $\alpha:A\rightharpoonup B$ representada por $A\xleftarrow{m}D\xrightarrow{u}B$, con $m$ mono. Hay que distinguir el subobjeto $[m]$ de una fórmula o un algoritmo para reconocer sus elementos. El clasificador permite pasar del primero a una flecha lógica, no a un programa.
+
+<a id="TF-DEF-00027"></a>
+
+**Definición 7.1.1 — Predicado característico del dominio** <!-- result-id: TF-DEF-00027; depends-on: TF-DEF-00021, TF-DEF-00022, TF-AX-00007 -->
+
+Bajo el axioma del clasificador de subobjetos, definimos el *predicado de definición* de $\alpha$ como la única flecha $\delta_\alpha:A\to\Omega$ cuyo pullback de $\mathsf{true}:1\rightarrowtail\Omega$ es $m:D\rightarrowtail A$:
+
+$$
+\begin{array}{ccc}
+D&\longrightarrow&1\\
+\scriptstyle m\downarrow&&\downarrow\scriptstyle\mathsf{true}\\
+A&\xrightarrow{\delta_\alpha}&\Omega.
+\end{array} \tag{7.1}
+$$
+
+La flecha $\delta_\alpha$ depende sólo de la clase del dominio $[m]$, y **no** contiene información sobre los valores de $u$. En ausencia de clasificador sigue existiendo $[m]$; sólo deja de estar garantizada su representación mediante $A\to\Omega$.
+
+<a id="TF-THM-00052"></a>
+
+**Teorema 7.1.2 — Verdad parametrizada y equivalencia de dominios** <!-- result-id: TF-THM-00052; depends-on: TF-DEF-00027, TF-THM-00018, TF-THM-00019, TF-DEF-00007 -->
+
+Para toda flecha $x:X\to A$, son equivalentes: (i) $x$ factoriza por $m$; (ii) $\delta_\alpha x=\mathsf{true}\,!_X$. Para aplicaciones parciales paralelas $\alpha,\beta$ se cumple
+
+$$\delta_\alpha=\delta_\beta\quad\Longleftrightarrow\quad\operatorname{dom}(\alpha)=\operatorname{dom}(\beta).\tag{7.2}$$
+
+*Demostración.* Por la propiedad universal del cuadrado (7.1), dar $\widetilde x:X\to D$ con $m\widetilde x=x$ equivale a dar una flecha $X\to1$ —necesariamente $!_X$— que hace conmutar las dos composiciones a $\Omega$. Esto prueba (i)$\Leftrightarrow$(ii). La biyección entre subobjetos de $A$ y flechas $A\to\Omega$, establecida en el Teorema 3.3.2, prueba (7.2). $\square$
+
+::: {.callout-note}
+## Lectura cognitiva
+La fórmula $\delta_\alpha x=\mathsf{true}\,!_X$ se refiere a **elementos generalizados** $x:X\to A$, no sólo a puntos $1\to A$. Así no reintroduce inadvertidamente el axioma «$1$ es generador» que el capítulo 2 mostró que puede fallar.
+:::
+
+
+## 7.2. Restricción y composición: primero el dominio, luego el valor
+
+<a id="TF-DEF-00028"></a>
+
+**Definición 7.2.1 — Restricción a un subobjeto** <!-- result-id: TF-DEF-00028; depends-on: TF-DEF-00021, TF-DEF-00024, TF-AX-00006, TF-THM-00017 -->
+
+Dada una aplicación parcial $\alpha=[m:D\rightarrowtail A,u:D\to B]$ y un subobjeto $q:Q\rightarrowtail A$, formamos el pullback
+
+$$P=D\times_A Q,\qquad p:P\to D,\quad r:P\to Q,\quad mp=qr.$$
+
+La *restricción de $\alpha$ por $q$*, escrita $\alpha\upharpoonright q$, es el span $A\xleftarrow{qr}P\xrightarrow{up}B$. Su dominio es $[m]\wedge[q]$, la intersección por pullback. Conservamos el **dominio declarado $A$**. La notación $\alpha|_Q:Q\rightharpoonup B$ designaría en cambio la aplicación parcial tipada sobre $Q$, representada por $(r,up)$: son flechas con tipos diferentes.
+
+<a id="TF-THM-00053"></a>
+
+**Teorema 7.2.2 — Leyes de restricción y maximalidad** <!-- result-id: TF-THM-00053; depends-on: TF-DEF-00028, TF-THM-00017, TF-DEF-00024, TF-THM-00045 -->
+
+Si $q:Q\rightarrowtail A$ y $s:S\rightarrowtail A$, entonces, como aplicaciones parciales de $A$ en $B$,
+
+$$\operatorname{dom}(\alpha\upharpoonright q)=[m]\wedge[q],\qquad
+(\alpha\upharpoonright q)\upharpoonright s
+=\alpha\upharpoonright(q\wedge s).\tag{7.3}$$
+
+Además $\alpha\upharpoonright q\preceq\alpha$, y $\alpha\upharpoonright q$ es la **mayor**, según $\preceq$, entre las aplicaciones $\gamma\preceq\alpha$ cuyo dominio satisface $\operatorname{dom}(\gamma)\le[q]$.
+
+*Demostración.* La primera igualdad es la definición del encuentro de subobjetos como pullback (Teorema 3.2.5). Los dominios de las dos restricciones sucesivas y de la restricción por el encuentro son límites de los mismos tres monos $m,q,s$ sobre $A$: la universalidad de los productos fibrados proporciona un isomorfismo compatible con el valor $u$, de modo que representan el mismo span. El mediador $p:P\to D$ prueba $\alpha\upharpoonright q\preceq\alpha$. Para la maximalidad, si $\gamma=[k:K\rightarrowtail A,w]$ y $\gamma\preceq\alpha$, hay $i:K\to D$ con $mi=k$ y $ui=w$; la inclusión $[k]\le[q]$ proporciona $j:K\to Q$ con $qj=k$. El par $(i,j)$ induce una única flecha $K\to P$ que factoriza el dominio y preserva el valor. Por ello $\gamma\preceq\alpha\upharpoonright q$. $\square$
+
+<a id="TF-THM-00054"></a>
+
+**Teorema 7.2.3 — Dominio exacto de una composición parcial** <!-- result-id: TF-THM-00054; depends-on: TF-DEF-00023, TF-DEF-00022, TF-DEF-00028, TF-THM-00016 -->
+
+Sean $\alpha=[A\xleftarrow m D\xrightarrow u B]$ y $\beta=[B\xleftarrow n E\xrightarrow v C]$. Si $p:P=D\times_B E\to D$ es el pullback de $n$ por $u$, entonces
+
+$$\operatorname{dom}(\beta\circ_{\mathrm{par}}\alpha)
+=[mp]=m_!\bigl(u^*[n]\bigr),\tag{7.4}$$
+
+donde $m_!$ significa **composición de monomorfismos** $[p]\mapsto[mp]$ en los subobjetos de $A$; no designa aquí el operador de imagen regular, cuya existencia no se necesita. Bajo el clasificador,
+
+$$\delta_{\beta\circ_{\mathrm{par}}\alpha}=\chi_{mp}.\tag{7.5}$$
+
+*Demostración.* Por el Teorema 6.2.1 el span compuesto tiene brazo de dominio $mp:P\to A$. Como $p$ es pullback de un mono, es mono; su compuesto con $m$ también. La preimagen $u^*[n]$ está representada por $p$, y la composición de ese mono con $m$ representa precisamente el subobjeto $[mp]$. Su característica única es $\chi_{mp}$. $\square$
+
+**Advertencia de tipado.** La heurística $\delta_\alpha(a)\land\delta_\beta(\alpha(a))$ es válida **bajo la condición previa** de que $\alpha(a)$ esté definido. No es una composición ordinaria $\delta_\beta\circ\alpha$ en $\mathcal C$, pues $\alpha$ no es una flecha total $A\to B$. El pullback de (7.4) formaliza exactamente la condición de evaluación legítima.
+
+<a id="TF-THM-00055"></a>
+
+**Teorema 7.2.4 — Sustitución por una aplicación total** <!-- result-id: TF-THM-00055; depends-on: TF-DEF-00027, TF-DEF-00023, TF-THM-00016, TF-THM-00019 -->
+
+Para $t:X\to A$ total y $\alpha:A\rightharpoonup B$, el dominio de $\alpha\circ_{\mathrm{par}}J(t)$ es $t^*\operatorname{dom}(\alpha)$. Si existe clasificador,
+
+$$\delta_{\alpha\circ_{\mathrm{par}}J(t)}=\delta_\alpha\circ t.\tag{7.6}$$
+
+*Demostración.* La composición con $J(t)=[1_X,t]$ se define por el pullback de $m$ a lo largo de $t$. Por definición, su mono de dominio representa $t^*[m]$. La naturalidad de los clasificadores, Teorema 3.3.3, identifica su característica con $\chi_m t=\delta_\alpha t$. $\square$
+
+## 7.3. Igualdad de valores y conjunción de predicados
+
+<a id="TF-DEF-00029"></a>
+
+**Definición 7.3.1 — Predicado de coincidencia** <!-- result-id: TF-DEF-00029; depends-on: TF-THM-00023, TF-AX-00004, TF-DEF-00003, TF-AX-00007 -->
+
+Para dos flechas totales $f,g:X\to B$, su igualador $e:\operatorname{Eq}(f,g)\rightarrowtail X$ se obtiene como pullback de la diagonal $\Delta_B:B\rightarrowtail B\times B$ a lo largo de $\langle f,g\rangle$. Con clasificador, la característica $\epsilon_{f,g}=\chi_e:X\to\Omega$ es el *predicado de coincidencia*. Su construcción sólo usa límites finitos; $\Omega$ sólo se requiere para expresarlo como característica.
+
+<a id="TF-THM-00056"></a>
+
+**Teorema 7.3.2 — Igualdad de aplicaciones parciales por dominio y valores** <!-- result-id: TF-THM-00056; depends-on: TF-DEF-00021, TF-DEF-00022, TF-DEF-00029, TF-THM-00042 -->
+
+Para aplicaciones parciales paralelas $\alpha=[m:D\rightarrowtail A,u]$ y $\beta=[n:E\rightarrowtail A,v]$, formemos $I=D\times_A E$, con $p:I\to D$ y $q:I\to E$, y el igualador $k:K\rightarrowtail I$ de $up$ y $vq$. Entonces
+
+$$\alpha=\beta\quad\Longleftrightarrow\quad [m]=[n]\ \text{y}\ [k]=[1_I].\tag{7.7}$$
+
+Cuando hay clasificador, la primera condición equivale a $\delta_\alpha=\delta_\beta$; la segunda, a $\epsilon_{up,vq}=\mathsf{true}\,!_I$.
+
+*Demostración.* Si los spans son equivalentes mediante $i:D\xrightarrow{\sim}E$, el isomorfismo del pullback identifica $I$ con $D$, y $up=vq$ porque $u=vi$. Su igualador es la identidad salvo isomorfismo. A la inversa, la igualdad $[m]=[n]$ determina un isomorfismo $i:D\xrightarrow{\sim}E$ con $ni=m$; bajo el isomorfismo $I\cong D$ inducido por $(1_D,i)$, la hipótesis $[k]=[1_I]$ implica $u=vi$. Luego los spans son equivalentes. Las dos equivalencias con características proceden de la clasificación y de que el igualador es maximal exactamente cuando sus dos flechas coinciden. $\square$
+
+<a id="TF-THM-00057"></a>
+
+**Teorema 7.3.3 — La conjunción clasifica la intersección** <!-- result-id: TF-THM-00057; depends-on: TF-AX-00007, TF-AX-00004, TF-THM-00017, TF-THM-00019 -->
+
+Bajo el clasificador, existe una flecha canónica $\wedge:\Omega\times\Omega\to\Omega$ tal que, para monos $m:D\rightarrowtail A$ y $n:E\rightarrowtail A$,
+
+$$\chi_{[m]\wedge[n]}=\wedge\,\langle\chi_m,\chi_n\rangle.\tag{7.8}$$
+
+*Demostración.* En $\Omega\times\Omega$, tomemos las preimágenes $S_1=\pi_1^*[\mathsf{true}]$ y $S_2=\pi_2^*[\mathsf{true}]$, y formemos su intersección $S=S_1\wedge S_2$ por pullback. Definimos $\wedge=\chi_S$. La preimagen de $S$ por $\langle\chi_m,\chi_n\rangle$ es la intersección de las preimágenes de $\mathsf{true}$ por cada característica, es decir $[m]\wedge[n]$. Por unicidad del clasificador, la flecha que lo clasifica es la de (7.8). $\square$
+
+No se ha supuesto aquí la ley del tercero excluido: la conjunción sólo emplea intersecciones y universalidad. Tampoco se deduce de esta flecha que toda característica adopte exclusivamente dos valores globales.
+
+## 7.4. Existencia y proyección: lo que añade la regularidad
+
+<a id="TF-DEF-00030"></a>
+
+**Definición 7.4.1 — Interpretación existencial por imagen** <!-- result-id: TF-DEF-00030; depends-on: TF-DEF-00016, TF-THM-00025, TF-THM-00031 -->
+
+En una categoría regular y para $t:X\to Y$, la operación $\exists_t:\operatorname{Sub}(X)\to\operatorname{Sub}(Y)$ envía $[s:S\rightarrowtail X]$ a la imagen regular de $ts:S\to Y$. El Teorema 4.4.2 ya demostró que $\exists_t\dashv t^*$: **no lo renumeramos ni lo presentamos como teorema nuevo**. La lectura lógica de $\exists_t$ es «existe un testigo en la fibra de $t$»; no proporciona automáticamente una sección o selector.
+
+<a id="TF-THM-00058"></a>
+
+**Teorema 7.4.2 — Cuantificación existencial sucesiva** <!-- result-id: TF-THM-00058; depends-on: TF-DEF-00030, TF-THM-00031, TF-THM-00016 -->
+
+Si $X\xrightarrow{t}Y\xrightarrow{s}Z$ son flechas de una categoría regular, entonces
+
+$$\exists_{st}=\exists_s\circ\exists_t:\operatorname{Sub}(X)\to\operatorname{Sub}(Z).\tag{7.9}$$
+
+*Demostración.* Para subobjetos $U\in\operatorname{Sub}(X)$ y $W\in\operatorname{Sub}(Z)$, usamos dos veces la adjunción de imagen/preimagen:
+
+$$\exists_s\exists_t(U)\le W
+\Longleftrightarrow\exists_t(U)\le s^*(W)
+\Longleftrightarrow U\le t^*s^*(W)
+\Longleftrightarrow U\le(st)^*(W)
+\Longleftrightarrow\exists_{st}(U)\le W.$$
+
+Antisimetría en el orden de subobjetos da (7.9). No elegimos un testigo para cada fibra. $\square$
+
+<a id="TF-THM-00059"></a>
+
+**Teorema 7.4.3 — El dominio es la proyección existencial de la gráfica** <!-- result-id: TF-THM-00059; depends-on: TF-THM-00041, TF-DEF-00030, TF-THM-00025, TF-DEF-00022 -->
+
+Si $\mathcal C$ es regular y $\alpha=[m:D\rightarrowtail A,u:D\to B]$, entonces, con $r=\langle m,u\rangle:D\rightarrowtail A\times B$,
+
+$$\exists_{\pi_A}([r])=[m]=\operatorname{dom}(\alpha).\tag{7.10}$$
+
+*Demostración.* La imagen que define el lado izquierdo es la de $\pi_A r=m$. Como $m$ ya es monomorfismo, su factorización imagen puede tomarse como $D\xrightarrow{1_D}D\xrightarrow m A$, y la unicidad de las imágenes identifica su subobjeto con $[m]$. La prueba no usa elección y tampoco afirma que cada argumento de $A$ tenga valor. $\square$
+
+<a id="TF-THM-00060"></a>
+
+**Teorema 7.4.4 — Totalidad y comparación lógica de dominios** <!-- result-id: TF-THM-00060; depends-on: TF-DEF-00027, TF-DEF-00022, TF-THM-00052, TF-DEF-00024, TF-THM-00042 -->
+
+Bajo clasificador, $\alpha$ es total si y sólo si $\delta_\alpha=\mathsf{true}\,!_A$. Si $\alpha\preceq\beta$, entonces $\operatorname{dom}(\alpha)\le\operatorname{dom}(\beta)$, pero **la recíproca es falsa**: dos funciones totales distintas $A\to B$ poseen el mismo predicado de definición y ninguna extiende a la otra como función parcial.
+
+*Demostración.* Totalidad equivale a $[m]=[1_A]$ por la Definición 6.1.3, y sus características son iguales por el Teorema 7.1.2. Si $\alpha\preceq\beta$, el mediador de la Definición 6.3.1 factoriza el mono de dominio de $\alpha$ por el de $\beta$, luego hay inclusión de subobjetos. Para el contraejemplo interno, en $\mathbf{Set}$ tomemos $A=\{*\}$ y $B=\{0,1\}$, con funciones $f(*)=0$ y $g(*)=1$: sus dominios son ambos $A$, pero los spans $[1_A,f]$ y $[1_A,g]$ no están relacionados por extensión salvo igualdad, que no se cumple. $\square$
+
+## 7.5. La lógica interna no es automáticamente clásica
+
+<a id="TF-DEF-00031"></a>
+
+**Definición 7.5.1 — Complementación y decidibilidad interna de un dominio** <!-- result-id: TF-DEF-00031; depends-on: TF-DEF-00009, TF-THM-00017, TF-AX-00005, TF-AX-00007 -->
+
+En un **topos elemental** (límites finitos, exponenciales y clasificador), los órdenes $\operatorname{Sub}(A)$ poseen estructura de álgebras de Heyting. Escribimos $\neg U$ para el pseudocomplemento del subobjeto $U$; $U$ se denomina *complementado* o *decidible en la lógica interna* si $U\vee\neg U=\top_A$. Equivalentemente, existe un subobjeto complementario $V$ con $U\wedge V=\bot_A$ y $U\vee V=\top_A$. Esta equivalencia corresponde a las leyes de las álgebras de Heyting; la existencia general de la estructura de Heyting es un resultado **estándar de teoría de topoi usado con el paquete de topos explícito**, no una deducción de los límites finitos solos.
+
+**Precisión fundacional.** «Decidible en lógica interna» significa que se demuestra una disyunción interna. No afirma sin datos adicionales que podamos escribir un algoritmo externo que, dada una representación de cualquier elemento, termine y devuelva sí o no. Tampoco se debe reemplazar $\Omega$ por el conjunto externo $\{0,1\}$ en un topos arbitrario. La construcción plena de $\Rightarrow,\forall$ y los clasificadores de aplicaciones parciales se reserva al capítulo siguiente.
+
+<a id="TF-CEX-00006"></a>
+
+**Contraejemplo 7.5.2 — Un topos con un subobjeto no complementado** <!-- result-id: TF-CEX-00006; depends-on: TF-DEF-00031, TF-DEF-00009, TF-AX-00007 -->
+
+Sea $\mathcal E=\mathbf{Set}^{\mathbf 2}$, donde $\mathbf 2$ es la categoría $0\to1$. Un objeto de $\mathcal E$ es una flecha de conjuntos $X_0\to X_1$ y una flecha entre tales objetos es un cuadrado conmutativo. Es un topos elemental: caso particular del hecho establecido de que las categorías de funtores $\mathbf{Set}^{\mathcal I}$ para $\mathcal I$ pequeña son topoi. El terminal $T$ es el diagrama $\{*\}\xrightarrow{1}\{*\}$. Los subobjetos de $T$ son exactamente
+
+$$\bot=(\varnothing\to\varnothing),\qquad
+U=(\varnothing\to\{*\}),\qquad
+\top=(\{*\}\to\{*\}),$$
+
+porque una subtransformación debe respetar la flecha $0\to1$. Forman una cadena estricta $\bot<U<\top$. El único subobjeto cuya intersección con $U$ es $\bot$ es $\bot$ mismo, pero $U\vee\bot=U\ne\top$. Por tanto $U$ **no tiene complemento**; $\neg U=\bot$ y $U\vee\neg U\ne\top$. Un clasificador de subobjetos puede existir sin que los predicados sean bivalentes o estén complementados. $\square$
+
+<a id="TF-EXA-00011"></a>
+
+**Ejemplo 7.5.3 — Una característica conjuntista no decide el problema de parada** <!-- result-id: TF-EXA-00011; depends-on: TF-DEF-00027, TF-CEX-00005, TF-EXA-00007 -->
+
+En $\mathbf{Set}$ clásico, el dominio $H=\{e\in\mathbb N:\varphi_e(e)\downarrow\}$ de la función diagonal parcial del Contraejemplo 6.5.2 tiene característica conjuntista $\chi_H:\mathbb N\to\{0,1\}$, por separación y clasificación de subobjetos. Sin embargo, la demostración diagonal del capítulo anterior muestra que $H$ no es decidible. En una presentación computacional de $\mathbb N$, $\chi_H$ **no es una función computable**. La existencia del morfismo como función de conjuntos y su realizabilidad algorítmica son afirmaciones diferentes.
+
+<a id="TF-EXA-00012"></a>
+
+**Ejemplo 7.5.4 — Dominio, restricción y composición finitos** <!-- result-id: TF-EXA-00012; depends-on: TF-DEF-00028, TF-THM-00054, TF-THM-00057 -->
+
+En $\mathbf{Set}$, sea $A=\{0,1,2\}$, $B=\{a,b\}$, $C=\{c\}$. Definimos $\alpha:A\rightharpoonup B$ por $\alpha(0)=a$, $\alpha(2)=b$ y sin valor en $1$. Definimos $\beta:B\rightharpoonup C$ sólo en $\{b\}$, con $\beta(b)=c$. Entonces $\operatorname{dom}(\alpha)=\{0,2\}$, $\operatorname{dom}(\beta)=\{b\}$ y $\operatorname{dom}(\beta\alpha)=\{2\}$; la composición vale $c$ en $2$. Si restringimos $\alpha$ por $Q=\{0,1\}$, su dominio pasa a ser $\{0\}$ y el valor sigue siendo $a$. Las características indican exactamente la pertenencia a estos subconjuntos; aquí pueden tabularse por tratarse de conjuntos finitos presentados explícitamente.
+
+::: {.callout-note}
+## Lectura desarrollada de las demostraciones
+En el Teorema 7.2.2, la maximalidad se obtiene mediante la única flecha $K\to P=D\times_AQ$ inducida por el par $(i,j)$: $i:K\to D$ procede de $\gamma\preceq\alpha$ y $j:K\to Q$ de $[k]\le[q]$; el mediador conserva simultáneamente dominio y valor. La igualdad $\delta_\alpha=\delta_\beta$ sólo identifica los dominios efectivos; para concluir $\alpha=\beta$ hace falta además la coincidencia de valores en el dominio común, expresada por el igualador maximal del Teorema 7.3.2.
+
+En la cuantificación sucesiva, la cadena
+$
+\exists_s\exists_t(U)\le W
+\Longleftrightarrow \exists_t(U)\le s^*(W)
+\Longleftrightarrow U\le t^*s^*(W)
+\Longleftrightarrow U\le(st)^*(W)
+\Longleftrightarrow \exists_{st}(U)\le W
+$
+usa dos veces la adjunción imagen/preimagen y, en el paso central, la functorialidad de la preimagen; la antisimetría concluye la igualdad de operadores. En el topos de flechas, los subobjetos del terminal son exactamente $\bot=(\varnothing\to\varnothing)$, $U=(\varnothing\to1)$ y $\top=(1\to1)$; $U$ no tiene complemento porque el único subobjeto disjunto de él es $\bot$ y $U\vee\bot=U\ne\top$. Finalmente, la característica conjuntista $\chi_H:\mathbb N\to\{0,1\}$ existe como función matemática por separación, pero no existe un algoritmo que la calcule: existencia de la característica y decidibilidad efectiva son contratos distintos.
+:::
+
+
+## 7.6. Auditoría matemática, fundacional y pedagógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Dimensión | Resultado de la auditoría |
+|---|---|
+| Identidad | Los nuevos resultados conservan IDs estables distintos del ID documental `TF-CAT-007`; las referencias visibles usan números editoriales. |
+| Paquetes axiomáticos | Restricción, igualadores y dominios requieren límites finitos; $\delta$ y $\wedge$ requieren clasificador; $\exists$ requiere regularidad; Heyting requiere el paquete de topos. |
+| Elección | Ninguna construcción del capítulo requiere una elección de testigos por fibra. El símbolo $\exists$ denota imagen, no selector. |
+| Lógica clásica | Las demostraciones categóricas se basan en universalidad; el modelo de conjuntos y la formulación de indecidibilidad usan la metateoría indicada. |
+| Igualdad | El igualador y (7.7) proporcionan criterios formales, pero no un algoritmo de igualdad. |
+| Dominio | El predicado $\delta_\alpha$ sólo clasifica $[m]$; pierde información sobre el valor $u$. |
+| Efectividad | Una flecha total $A\to\Omega$ puede ser no computable en una representación; las características no confieren decidibilidad algorítmica. |
+| No bivalencia | El topos de flechas exhibe un subobjeto no complementado sin cuestionar la existencia de $\Omega$. |
+| Tamaño | Los conjuntos de subobjetos dependen de condiciones de tamaño de la categoría; usamos la notación $\operatorname{Sub}(A)$ sin postularlos como objetos internos fuera del marco de topos. |
+| Publicación | Fuente maestra Markdown; sin prueba Lean ni publicación en GitHub/Quarto. |
+
+:::
+
+
+## 7.7. Fuentes y originalidad
+
+La clasificación de subobjetos y su estabilidad por pullback fueron establecidas en el capítulo 3; la construcción de funciones parciales y la diagonalización en el capítulo 6. Como referencias externas de control, no como fuentes de originalidad, véanse [Colin McLarty, *Elementary Categories, Elementary Toposes*, capítulo «Basics»](https://academic.oup.com/book/54033/chapter/422208156), para la definición de topos; [Todd Trimble, *An elementary approach to elementary topos theory*](https://ncatlab.org/toddtrimble/published/An%2Belementary%2Bapproach%2Bto%2Belementary%2Btopos%2Btheory), para la lógica y los adjuntos de preimagen; y [David I. Spivak, *Category Theory for Scientists*, sección 5.2.1](https://ocw.mit.edu/courses/18-s996-category-theory-for-scientists-spring-2013/9cf51d1394fc107baa6764d553dd0bb6_MIT18_S996S13_textbook.pdf), para categorías de funtores y clasificadores. La secuencia expositiva y el control de hipótesis pertenecen a este proyecto; los teoremas categóricos generales son resultados establecidos.
+
+**Síntesis.** Quedan diferenciados el dominio como subobjeto, su característica lógica, la restricción, la composición guardada por pullback y la interpretación existencial por imagen. La lógica interna del topos no se identifica con un algoritmo ni se supone clásica. Se reserva `TF-CAT-008 — Clasificadores de aplicaciones parciales y objetos de levantamiento` como próximo documento. No se ha formalizado en Lean ni publicado en web.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-06.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-08.qmd)
+:::

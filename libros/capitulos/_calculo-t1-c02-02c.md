@@ -1,0 +1,2125 @@
+### La parte de orden: empezar por la positividad
+
+Sea $F$ un cuerpo. Supongamos que se ha distinguido un subconjunto
+
+$$
+F_+\subseteq F,
+$$
+
+cuyos elementos llamaremos **positivos**, y que satisface las propiedades siguientes.
+
+1. **(O1) Clausura de los positivos bajo la suma.** Si $a,b\in F_+$, entonces
+   $$
+   a+b\in F_+.
+   $$
+2. **(O2) Clausura de los positivos bajo el producto.** Si $a,b\in F_+$, entonces
+   $$
+   ab\in F_+.
+   $$
+3. **(O3) Tricotomía respecto de cero.** Para cada $a\in F$ ocurre exactamente una de las tres posibilidades
+   $$
+   a=0,
+   \qquad
+   a\in F_+,
+   \qquad
+   -a\in F_+.
+   $$
+
+Diremos entonces que
+
+$$
+a>0
+\iff
+a\in F_+,
+$$
+
+y
+
+$$
+a<0
+\iff
+-a\in F_+.
+$$
+
+Para comparar dos elementos cualesquiera definimos
+
+$$
+\boxed{
+ a<b
+ \iff
+ b-a>0.
+}
+$$
+
+Equivalentemente,
+
+$$
+a>b
+\iff
+a-b>0.
+$$
+
+Un cuerpo equipado con una elección de positivos que satisface (O1)--(O3), y con el orden definido de esta manera, se llama **cuerpo ordenado**.
+
+En este libro asumiremos que $\mathbb R$ posee esta estructura. Obsérvese que todavía no hemos introducido ninguna propiedad de completitud.
+
+::: {.callout-note title="Por qué esta formulación es útil"}
+También es posible presentar un cuerpo ordenado tomando la relación $<$ como dato primitivo y postulando directamente tricotomía, transitividad y compatibilidad con las operaciones.
+
+Aquí preferimos comenzar por los positivos porque hace visible una dependencia más profunda: varias propiedades que en la escuela suelen aparecer como «reglas de las desigualdades» pueden demostrarse a partir de solo tres exigencias sobre $F_+$.
+:::
+
+### De la tricotomía respecto de cero a la tricotomía entre dos números
+
+La condición (O3) habla de un solo número y de su relación con $0$. Sin embargo, basta aplicarla a la **diferencia** de dos números para comparar cualquier par.
+
+Dados $a,b\in F$, apliquemos (O3) a
+
+$$
+b-a.
+$$
+
+Exactamente una de estas posibilidades ocurre:
+
+$$
+b-a=0,
+\qquad
+b-a>0,
+\qquad
+-(b-a)>0.
+$$
+
+Hagamos explícita la primera equivalencia. Por definición de resta,
+
+$$
+b-a=0
+\iff
+b+(-a)=0.
+$$
+
+Si sumamos $a$ a ambos miembros, obtenemos
+
+$$
+\bigl(b+(-a)\bigr)+a=0+a.
+$$
+
+Ahora,
+
+$$
+\begin{aligned}
+\bigl(b+(-a)\bigr)+a
+&=b+\bigl((-a)+a\bigr) && \text{(asociatividad)}\\
+&=b+0 && \text{(inverso aditivo)}\\
+&=b && \text{(neutro aditivo)},
+\end{aligned}
+$$
+
+mientras que, por conmutatividad y neutro aditivo,
+
+$$
+0+a=a+0=a.
+$$
+
+Por tanto, $b-a=0$ implica $b=a$, es decir, $a=b$. Recíprocamente, si $a=b$, entonces por sustitución
+
+$$
+b-a=a-a=a+(-a)=0.
+$$
+
+Así,
+
+$$
+b-a=0
+\iff
+a=b.
+$$
+
+La segunda posibilidad,
+
+$$
+b-a>0,
+$$
+
+equivale por definición a
+
+$$
+a<b.
+$$
+
+Para la tercera conviene justificar también la identidad que cambia el orden de la diferencia. Usando la regla ya demostrada para el inverso de una suma,
+
+$$
+\begin{aligned}
+-(b-a)
+&=-\bigl(b+(-a)\bigr)\\
+&=(-b)+\bigl(-(-a)\bigr)\\
+&=(-b)+a\\
+&=a+(-b)\\
+&=a-b.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+-(b-a)>0
+\iff
+a-b>0
+\iff
+b<a.
+$$
+
+En consecuencia, para cualesquiera $a,b\in F$, exactamente una de las afirmaciones
+
+$$
+\boxed{
+ a<b,
+ \qquad
+ a=b,
+ \qquad
+ b<a
+}
+$$
+
+es verdadera.
+
+Esta es la **tricotomía del orden**.
+
+En particular, no puede ocurrir simultáneamente
+
+$$
+a<b
+\quad\text{y}\quad
+b<a.
+$$
+
+Tampoco puede cumplirse $a<a$, porque por definición exigiría
+
+$$
+a-a>0.
+$$
+
+Pero
+
+$$
+a-a=a+(-a)=0,
+$$
+
+y (O3), al afirmar que exactamente una de sus tres alternativas ocurre, excluye que $0$ sea positivo.
+
+### La transitividad también se demuestra
+
+Supongamos
+
+$$
+a<b
+\qquad\text{y}\qquad
+b<c.
+$$
+
+Por definición,
+
+$$
+b-a>0
+\qquad\text{y}\qquad
+c-b>0.
+$$
+
+La clausura de los positivos bajo la suma da
+
+$$
+(b-a)+(c-b)>0.
+$$
+
+Ahora hacemos explícita la reducción algebraica del miembro izquierdo:
+
+$$
+\begin{aligned}
+(b-a)+(c-b)
+&=\bigl(b+(-a)\bigr)+\bigl(c+(-b)\bigr)\\
+&=\bigl((-a)+c\bigr)+\bigl(b+(-b)\bigr)
+&& \text{(asociatividad y conmutatividad)}\\
+&=\bigl((-a)+c\bigr)+0 && \text{(inverso aditivo)}\\
+&=(-a)+c && \text{(neutro aditivo)}\\
+&=c+(-a) && \text{(conmutatividad)}\\
+&=c-a && \text{(definición de resta)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales, de
+
+$$
+(b-a)+(c-b)>0
+$$
+
+obtenemos entonces
+
+$$
+c-a>0.
+$$
+
+Y, por definición del orden,
+
+$$
+\boxed{a<c.}
+$$
+
+Así, la transitividad de $<$ no ha sido añadida como un cuarto axioma independiente: sale de (O1), de las reglas algebraicas ya demostradas y de la manera en que definimos la comparación mediante diferencias.
+
+::: {.callout-important title="Una idea estructural que conviene retener"}
+Para comparar $a$ y $b$ estudiamos el signo de
+
+$$
+b-a.
+$$
+
+Este patrón aparecerá constantemente en análisis. Muchas preguntas acerca de dos cantidades se convierten en preguntas acerca del signo, el tamaño o el valor absoluto de su diferencia.
+:::
+
+### Del orden estricto al orden débil
+
+Definiremos
+
+$$
+a\le b
+$$
+
+como abreviatura de
+
+$$
+a<b
+\quad\text{o}\quad
+a=b.
+$$
+
+Análogamente,
+
+$$
+a\ge b
+\iff
+b\le a.
+$$
+
+Las palabras **positivo**, **negativo**, **no negativo** y **no positivo** son entonces comparaciones con $0$:
+
+$$
+a>0,
+\qquad
+a<0,
+\qquad
+a\ge0,
+\qquad
+a\le0.
+$$
+
+La relación $\le$ hereda ahora las propiedades de un orden. Conviene verificarlas una vez.
+
+**Reflexividad.** Para todo $a$, sabemos que $a=a$. Por la definición
+
+$$
+a\le a
+\iff
+a<a\quad\text{o}\quad a=a,
+$$
+
+la segunda alternativa es verdadera. Por tanto,
+
+$$
+a\le a.
+$$
+
+**Antisimetría.** Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+b\le a.
+$$
+
+Si $a=b$, no hay nada que demostrar. Supongamos entonces $a\ne b$. La definición de $\le$ obliga en ese caso a que
+
+$$
+a<b
+\qquad\text{y}\qquad
+b<a,
+$$
+
+pero la tricotomía demuestra que esas dos desigualdades no pueden ser simultáneamente verdaderas. Por tanto, la suposición $a\ne b$ es imposible y necesariamente
+
+$$
+a=b.
+$$
+
+**Transitividad.** Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+b\le c.
+$$
+
+Si $a=b$, la segunda desigualdad da directamente $a\le c$ por sustitución. Si $b=c$, la primera da $a\le c$. En el caso restante tenemos
+
+$$
+a<b
+\qquad\text{y}\qquad
+b<c,
+$$
+
+y la transitividad del orden estricto ya demostrada produce
+
+$$
+a<c,
+$$
+
+de donde, por definición, $a\le c$.
+
+Así, $\le$ es reflexiva, antisimétrica y transitiva. Estas propiedades serán especialmente importantes en §1.3, cuando hablemos de cotas superiores e inferiores.
+
+### Las reglas de desigualdad son teoremas
+
+Ya podemos obtener sistemáticamente las reglas que necesitaremos durante todo el tratado.
+
+::: {#prp-t1-0007}
+**Leyes básicas de desigualdad en un cuerpo ordenado.** Sean $a,b,c,d\in\mathbb R$.
+
+1. **Traslación del orden.** Para todo $c$,
+   $$
+   a<b
+   \iff
+   a+c<b+c,
+   $$
+   y también
+   $$
+   a\le b
+   \iff
+   a+c\le b+c.
+   $$
+2. **Suma de desigualdades.** Si $a<b$ y $c<d$, entonces
+   $$
+   a+c<b+d.
+   $$
+   La versión correspondiente con $\le$ también es válida.
+3. **Multiplicación por un no negativo.** Si $a\le b$ y $c\ge0$, entonces
+   $$
+   ac\le bc.
+   $$
+   Si además $a<b$ y $c>0$, entonces
+   $$
+   ac<bc.
+   $$
+4. **Multiplicación por un no positivo.** Si $a\le b$ y $c\le0$, entonces
+   $$
+   ac\ge bc.
+   $$
+   Si además $a<b$ y $c<0$, entonces
+   $$
+   ac>bc.
+   $$
+5. **Signo del inverso.** Si $a\ne0$, entonces $a$ y $a^{-1}$ tienen el mismo signo:
+   $$
+   a>0\iff a^{-1}>0,
+   \qquad
+   a<0\iff a^{-1}<0.
+   $$
+6. **División y orden.** Si $c>0$, entonces
+   $$
+   a<b
+   \iff
+   \frac ac<\frac bc.
+   $$
+   Si $c<0$, entonces
+   $$
+   a<b
+   \iff
+   \frac ac>\frac bc.
+   $$
+7. **Orden de los recíprocos positivos.** Si
+   $$
+   0<a<b,
+   $$
+   entonces
+   $$
+   0<\frac1b<\frac1a.
+   $$
+8. **Signo de un producto.** Se tiene
+   $$
+   ab>0
+   \iff
+   (a>0\ \text{y}\ b>0)
+   \ \text{o}\\
+   (a<0\ \text{y}\ b<0),
+   $$
+   y
+   $$
+   ab<0
+   \iff
+   (a>0\ \text{y}\ b<0)
+   \ \text{o}\\
+   (a<0\ \text{y}\ b>0).
+   $$
+9. **Cuadrados.** Para todo $a\in\mathbb R$,
+   $$
+   a^2\ge0,
+   $$
+   y si $a\ne0$, entonces
+   $$
+   a^2>0.
+   $$
+10. **El cuadrado preserva el orden en los no negativos.** Si
+   $$
+   0\le a\le b,
+   $$
+   entonces
+   $$
+   a^2\le b^2.
+   $$
+:::
+
+::: {.callout-note title="Idea de la prueba"}
+Las diez afirmaciones no son reglas independientes.
+
+La demostración se apoya repetidamente en cuatro movimientos:
+
+1. traducir $a<b$ a la positividad de $b-a$;
+2. usar la clausura de los positivos bajo suma o producto;
+3. utilizar las identidades algebraicas ya demostradas en la primera parte de §1.1;
+4. traducir nuevamente una positividad en una desigualdad.
+
+El caso de los inversos añade una observación crucial: para dividir una desigualdad necesitamos saber el **signo del divisor**, no solo que sea distinto de cero.
+:::
+
+**Demostración.**
+
+Para la parte 1, comencemos haciendo explícita la identidad algebraica que sostiene la traslación del orden. Por definición de resta y por la regla ya demostrada para el inverso de una suma,
+
+$$
+\begin{aligned}
+(b+c)-(a+c)
+&=(b+c)+\bigl(-(a+c)\bigr)\\
+&=(b+c)+\bigl((-a)+(-c)\bigr)\\
+&=b+\bigl((-a)+(c+(-c))\bigr)
+&& \text{(asociatividad y conmutatividad)}\\
+&=b+\bigl((-a)+0\bigr)
+&& \text{(inverso aditivo)}\\
+&=b+(-a)
+&& \text{(neutro aditivo)}\\
+&=b-a
+&& \text{(definición de resta)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales,
+
+$$
+b-a>0
+\iff
+(b+c)-(a+c)>0.
+$$
+
+Traduciendo ambos extremos mediante la definición del orden, obtenemos
+
+$$
+a<b
+\iff
+a+c<b+c.
+$$
+
+La versión débil también merece hacerse explícita. Supongamos primero $a\le b$. Si $a=b$, entonces
+
+$$
+a+c=b+c
+$$
+
+por sustitución, y por tanto $a+c\le b+c$. Si $a<b$, la equivalencia estricta recién demostrada da igualmente $a+c<b+c$, luego $a+c\le b+c$. Así,
+
+$$
+a\le b
+\Longrightarrow
+a+c\le b+c.
+$$
+
+Recíprocamente, supongamos $a+c\le b+c$. Si $a+c=b+c$, la cancelación aditiva ya demostrada da $a=b$. Si $a+c<b+c$, la equivalencia estricta anterior, usada de derecha a izquierda, da $a<b$. En ambos casos,
+
+$$
+a\le b.
+$$
+
+Por consiguiente,
+
+$$
+a\le b
+\iff
+a+c\le b+c.
+$$
+
+Para la parte 2, supongamos primero
+
+$$
+a<b
+\qquad\text{y}\qquad
+c<d.
+$$
+
+Por la parte 1, podemos trasladar la primera desigualdad sumando $c$:
+
+$$
+a+c<b+c.
+$$
+
+Del mismo modo, trasladamos $c<d$ sumando $b$:
+
+$$
+b+c<b+d.
+$$
+
+Ahora la transitividad del orden estricto da
+
+$$
+a+c<b+c<b+d,
+$$
+
+y por tanto
+
+$$
+\boxed{a+c<b+d.}
+$$
+
+La versión con orden débil se obtiene sin introducir una regla nueva. Si
+
+$$
+a\le b
+\qquad\text{y}\qquad
+c\le d,
+$$
+
+la parte 1 da
+
+$$
+a+c\le b+c
+$$
+
+y
+
+$$
+b+c\le b+d.
+$$
+
+Como ya demostramos que $\le$ es transitiva,
+
+$$
+\boxed{a+c\le b+d.}
+$$
+
+Consideremos ahora la parte 3. Supongamos primero
+
+$$
+a<b
+\qquad\text{y}\qquad
+c>0.
+$$
+
+Por definición del orden,
+
+$$
+b-a>0.
+$$
+
+Como $c>0$, la clausura de los positivos bajo el producto, (O2), da
+
+$$
+c(b-a)>0.
+$$
+
+Hagamos explícita la expresión que aparece a la izquierda. Por definición de resta, distributividad y las reglas de signos ya demostradas,
+
+$$
+\begin{aligned}
+c(b-a)
+&=c\bigl(b+(-a)\bigr)\\
+&=cb+c(-a) && \text{(distributividad)}\\
+&=cb+(-(ca)) && \text{(regla de signos)}\\
+&=bc+(-(ac)) && \text{(conmutatividad)}\\
+&=bc-ac && \text{(definición de resta)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales, de
+
+$$
+c(b-a)>0
+$$
+
+obtenemos
+
+$$
+bc-ac>0.
+$$
+
+Y como
+
+$$
+ac<bc
+\iff
+bc-ac>0,
+$$
+
+concluimos
+
+$$
+\boxed{ac<bc.}
+$$
+
+Pasemos a la versión no estricta. Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+c\ge0.
+$$
+
+Por definición,
+
+$$
+a\le b
+\iff
+a<b\ \text{o}\ a=b,
+$$
+
+mientras que
+
+$$
+c\ge0
+\iff
+c>0\ \text{o}\ c=0.
+$$
+
+Si $a=b$, la sustitución da
+
+$$
+ac=bc.
+$$
+
+Si $c=0$, entonces @exm-t1-0040 da
+
+$$
+ac=a0=0
+\qquad\text{y}\qquad
+bc=b0=0,
+$$
+
+de modo que nuevamente $ac=bc$.
+
+En el único caso restante,
+
+$$
+a<b
+\qquad\text{y}\qquad
+c>0,
+$$
+
+acabamos de demostrar que
+
+$$
+ac<bc.
+$$
+
+Por tanto, en todos los casos,
+
+$$
+\boxed{ac\le bc.}
+$$
+
+Para la parte 4, supongamos primero
+
+$$
+a<b
+\qquad\text{y}\qquad
+c<0.
+$$
+
+Por la definición de número negativo,
+
+$$
+-c>0.
+$$
+
+Podemos entonces aplicar la parte 3 al factor positivo $-c$:
+
+$$
+a(-c)<b(-c).
+$$
+
+Las reglas de signos ya demostradas dan
+
+$$
+a(-c)=-(ac)
+\qquad\text{y}\qquad
+b(-c)=-(bc),
+$$
+
+de modo que, por sustitución de iguales por iguales,
+
+$$
+-ac<-bc.
+$$
+
+Ahora trasladamos esta desigualdad sumando $ac+bc$ a ambos miembros. Por la parte 1,
+
+$$
+(-ac)+(ac+bc)<(-bc)+(ac+bc).
+$$
+
+Reducimos cada miembro por separado. En el izquierdo,
+
+$$
+\begin{aligned}
+(-ac)+(ac+bc)
+&=\bigl((-ac)+ac\bigr)+bc && \text{(asociatividad)}\\
+&=0+bc && \text{(inverso aditivo)}\\
+&=bc && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+En el derecho,
+
+$$
+\begin{aligned}
+(-bc)+(ac+bc)
+&=ac+\bigl((-bc)+bc\bigr)
+&& \text{(asociatividad y conmutatividad)}\\
+&=ac+0 && \text{(inverso aditivo)}\\
+&=ac && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+\boxed{bc<ac},
+$$
+
+o, equivalentemente,
+
+$$
+\boxed{ac>bc}.
+$$
+
+Pasemos a la versión débil. Supongamos
+
+$$
+a\le b
+\qquad\text{y}\qquad
+c\le0.
+$$
+
+Por definición,
+
+$$
+a\le b
+\iff
+a<b\ \text{o}\ a=b,
+$$
+
+y
+
+$$
+c\le0
+\iff
+c<0\ \text{o}\ c=0.
+$$
+
+Si $a=b$, la sustitución da
+
+$$
+ac=bc.
+$$
+
+Si $c=0$, entonces @exm-t1-0040 da
+
+$$
+ac=a0=0
+\qquad\text{y}\qquad
+bc=b0=0,
+$$
+
+y nuevamente $ac=bc$.
+
+En el único caso restante,
+
+$$
+a<b
+\qquad\text{y}\qquad
+c<0,
+$$
+
+acabamos de demostrar que
+
+$$
+ac>bc.
+$$
+
+Por tanto, en todos los casos,
+
+$$
+\boxed{ac\ge bc.}
+$$
+
+Antes de estudiar inversos conviene establecer un hecho pequeño pero decisivo:
+
+$$
+\boxed{1>0.}
+$$
+
+Como $1\ne0$, la tricotomía (O3), aplicada al elemento $1$, excluye la alternativa $1=0$. Por tanto, exactamente una de las dos afirmaciones
+
+$$
+1>0
+\qquad\text{o}\qquad
+-1>0
+$$
+
+puede ser verdadera. Supongamos, para obtener una contradicción, que
+
+$$
+-1>0.
+$$
+
+Como el producto de dos positivos es positivo, (O2) da
+
+$$
+(-1)(-1)>0.
+$$
+
+Por las reglas de signos ya demostradas,
+
+$$
+(-1)(-1)=1.
+$$
+
+Sustituyendo iguales por iguales en la desigualdad anterior obtenemos
+
+$$
+1>0.
+$$
+
+Tendríamos entonces simultáneamente
+
+$$
+1>0
+\qquad\text{y}\qquad
+-1>0,
+$$
+
+lo que contradice la exclusividad de (O3) aplicada a $1$. La suposición $-1>0$ es, por tanto, imposible. Como una de las dos alternativas debe cumplirse, concluimos
+
+$$
+\boxed{1>0.}
+$$
+
+Probemos ahora la parte 5. Comencemos con la implicación
+
+$$
+a>0
+\Longrightarrow
+a^{-1}>0.
+$$
+
+Supongamos $a>0$. En particular, $a\ne0$, por lo que existe $a^{-1}$; además, @prp-t1-0026 garantiza
+
+$$
+a^{-1}\ne0.
+$$
+
+Aplicando (O3) a $a^{-1}$ y excluyendo el caso $a^{-1}=0$, queda exactamente una de las posibilidades
+
+$$
+a^{-1}>0
+\qquad\text{o}\qquad
+-a^{-1}>0.
+$$
+
+Supongamos que ocurriera la segunda. Como $a>0$ y $-a^{-1}>0$, (O2) implicaría
+
+$$
+a(-a^{-1})>0.
+$$
+
+Ahora reducimos algebraicamente ese producto:
+
+$$
+\begin{aligned}
+a(-a^{-1})
+&=-(aa^{-1}) && \text{(regla de signos)}\\
+&=-1 && \text{(inverso multiplicativo)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales obtendríamos
+
+$$
+-1>0.
+$$
+
+Pero ya demostramos $1>0$, y (O3) aplicada a $1$ prohíbe que $1$ y $-1$ sean positivos simultáneamente. Luego la alternativa $-a^{-1}>0$ es imposible y necesariamente
+
+$$
+a^{-1}>0.
+$$
+
+Esto prueba
+
+$$
+a>0
+\Longrightarrow
+a^{-1}>0.
+$$
+
+La dirección recíproca también debe quedar explícita. Supongamos
+
+$$
+a^{-1}>0.
+$$
+
+Aplicamos la implicación recién demostrada al elemento $a^{-1}$. Obtenemos
+
+$$
+(a^{-1})^{-1}>0.
+$$
+
+Por @prp-t1-0026,
+
+$$
+(a^{-1})^{-1}=a,
+$$
+
+y por sustitución concluimos
+
+$$
+a>0.
+$$
+
+Por tanto,
+
+$$
+\boxed{a>0\iff a^{-1}>0.}
+$$
+
+Pasemos al signo negativo. Supongamos primero
+
+$$
+a<0.
+$$
+
+Entonces $a\ne0$ y, por definición de número negativo,
+
+$$
+-a>0.
+$$
+
+La equivalencia positiva que acabamos de demostrar, aplicada a $-a$, da
+
+$$
+(-a)^{-1}>0.
+$$
+
+Para identificar este inverso, observemos primero que
+
+$$
+\begin{aligned}
+(-a)(-a^{-1})
+&=aa^{-1} && \text{(regla de signos)}\\
+&=1 && \text{(inverso multiplicativo)}.
+\end{aligned}
+$$
+
+Así, $-a^{-1}$ es un inverso multiplicativo de $-a$. Como el inverso multiplicativo es único,
+
+$$
+(-a)^{-1}=-a^{-1}.
+$$
+
+Sustituyendo esta igualdad en $(-a)^{-1}>0$, obtenemos
+
+$$
+-a^{-1}>0.
+$$
+
+Por definición de número negativo, esto equivale a
+
+$$
+a^{-1}<0.
+$$
+
+Hemos probado entonces
+
+$$
+a<0
+\Longrightarrow
+a^{-1}<0.
+$$
+
+Para la recíproca, supongamos
+
+$$
+a^{-1}<0.
+$$
+
+Aplicamos la implicación negativa recién demostrada al elemento $a^{-1}$. Entonces
+
+$$
+(a^{-1})^{-1}<0.
+$$
+
+Usando nuevamente
+
+$$
+(a^{-1})^{-1}=a,
+$$
+
+concluimos
+
+$$
+a<0.
+$$
+
+Por tanto,
+
+$$
+\boxed{a<0\iff a^{-1}<0.}
+$$
+
+Probemos ahora la parte 6. Aquí la división no introduce una regla nueva: por definición, dividir por $c$ significa multiplicar por $c^{-1}$, y la parte 5 nos permite determinar el signo de ese inverso.
+
+Supongamos primero
+
+$$
+c>0.
+$$
+
+Entonces $c\ne0$, de modo que los cocientes están definidos, y la parte 5 da
+
+$$
+c^{-1}>0.
+$$
+
+Si
+
+$$
+a<b,
+$$
+
+podemos multiplicar ambos miembros por el número positivo $c^{-1}$. Por la parte 3,
+
+$$
+ac^{-1}<bc^{-1}.
+$$
+
+Por definición de cociente,
+
+$$
+ac^{-1}=\frac ac
+\qquad\text{y}\qquad
+bc^{-1}=\frac bc,
+$$
+
+de modo que
+
+$$
+\frac ac<\frac bc.
+$$
+
+Así hemos probado una dirección:
+
+$$
+a<b
+\Longrightarrow
+\frac ac<\frac bc.
+$$
+
+Para la recíproca, supongamos
+
+$$
+\frac ac<\frac bc.
+$$
+
+Por definición de cociente,
+
+$$
+ac^{-1}<bc^{-1}.
+$$
+
+Como $c>0$, multiplicar ambos miembros por $c$ conserva el sentido de la desigualdad:
+
+$$
+(ac^{-1})c<(bc^{-1})c.
+$$
+
+Reducimos ambos miembros usando asociatividad, inverso multiplicativo y neutro:
+
+$$
+\begin{aligned}
+(ac^{-1})c
+&=a(c^{-1}c) && \text{(asociatividad)}\\
+&=a1 && \text{(inverso multiplicativo)}\\
+&=a && \text{(neutro multiplicativo)},
+\end{aligned}
+$$
+
+y, del mismo modo,
+
+$$
+\begin{aligned}
+(bc^{-1})c
+&=b(c^{-1}c)\\
+&=b1\\
+&=b.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales obtenemos
+
+$$
+a<b.
+$$
+
+Por tanto, cuando $c>0$,
+
+$$
+\boxed{
+a<b
+\iff
+\frac ac<\frac bc.
+}
+$$
+
+Consideremos ahora
+
+$$
+c<0.
+$$
+
+De nuevo $c\ne0$, y la parte 5 da
+
+$$
+c^{-1}<0.
+$$
+
+Si $a<b$, la parte 4 aplicada al factor negativo $c^{-1}$ invierte el orden:
+
+$$
+ac^{-1}>bc^{-1}.
+$$
+
+Por definición de cociente,
+
+$$
+\frac ac>\frac bc.
+$$
+
+Así,
+
+$$
+a<b
+\Longrightarrow
+\frac ac>\frac bc.
+$$
+
+Para demostrar la recíproca, supongamos
+
+$$
+\frac ac>\frac bc.
+$$
+
+Por definición de cociente, esto significa
+
+$$
+ac^{-1}>bc^{-1},
+$$
+
+o, escrito con el símbolo $<$,
+
+$$
+bc^{-1}<ac^{-1}.
+$$
+
+Como $c<0$, la parte 4 permite multiplicar esta última desigualdad por $c$ e invertir el orden:
+
+$$
+(bc^{-1})c>(ac^{-1})c.
+$$
+
+Las mismas reducciones algebraicas anteriores dan
+
+$$
+b>a,
+$$
+
+que equivale a
+
+$$
+a<b.
+$$
+
+Por consiguiente, cuando $c<0$,
+
+$$
+\boxed{
+a<b
+\iff
+\frac ac>\frac bc.
+}
+$$
+
+La hipótesis sobre el signo de $c$ cumple, por tanto, dos funciones distintas: garantiza que $c\ne0$, de modo que la división esté definida, y determina si al multiplicar por $c^{-1}$ el orden se conserva o se invierte.
+
+Para la parte 7, supongamos
+
+$$
+0<a<b.
+$$
+
+En particular,
+
+$$
+a>0
+\qquad\text{y}\qquad
+b>0.
+$$
+
+Por (O2), el producto de estos dos números positivos también es positivo:
+
+$$
+ab>0.
+$$
+
+Así, $ab\ne0$, existe $(ab)^{-1}$ y, por la parte 5,
+
+$$
+(ab)^{-1}>0.
+$$
+
+Podemos entonces multiplicar la desigualdad
+
+$$
+a<b
+$$
+
+por la cantidad positiva $(ab)^{-1}$. La parte 3 da
+
+$$
+a(ab)^{-1}<b(ab)^{-1}.
+$$
+
+Ahora hacemos explícita la simplificación de ambos miembros. Por @prp-t1-0026,
+
+$$
+(ab)^{-1}=a^{-1}b^{-1}.
+$$
+
+En el miembro izquierdo,
+
+$$
+\begin{aligned}
+a(ab)^{-1}
+&=a(a^{-1}b^{-1}) && \text{(inverso de un producto)}\\
+&=(aa^{-1})b^{-1} && \text{(asociatividad)}\\
+&=1b^{-1} && \text{(inverso multiplicativo)}\\
+&=b^{-1} && \text{(neutro multiplicativo)}.
+\end{aligned}
+$$
+
+En el miembro derecho,
+
+$$
+\begin{aligned}
+b(ab)^{-1}
+&=b(a^{-1}b^{-1}) && \text{(inverso de un producto)}\\
+&=a^{-1}(bb^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=a^{-1}1 && \text{(inverso multiplicativo)}\\
+&=a^{-1} && \text{(neutro multiplicativo)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales en la desigualdad anterior obtenemos
+
+$$
+\boxed{b^{-1}<a^{-1}}.
+$$
+
+Falta incorporar el extremo izquierdo de la cadena. Como $a>0$ y $b>0$, la parte 5 aplicada por separado a ambos números da
+
+$$
+a^{-1}>0
+\qquad\text{y}\qquad
+b^{-1}>0.
+$$
+
+En particular,
+
+$$
+0<b^{-1}<a^{-1}.
+$$
+
+Finalmente, por definición de cociente,
+
+$$
+\frac1b=1b^{-1}=b^{-1}
+\qquad\text{y}\qquad
+\frac1a=1a^{-1}=a^{-1}.
+$$
+
+Por sustitución concluimos
+
+$$
+\boxed{0<\frac1b<\frac1a}.
+$$
+
+La inversión del orden no procede de una nueva regla especial para recíprocos: aparece porque hemos multiplicado $a<b$ por el número positivo $(ab)^{-1}$ y después hemos reducido algebraicamente los dos productos resultantes.
+
+Probemos la parte 8. Comencemos por la equivalencia para un producto positivo. Supongamos
+
+$$
+ab>0.
+$$
+
+En particular, $ab\ne0$. Si $a=0$ o $b=0$, @prp-t1-0027 daría $ab=0$, en contradicción con $ab>0$. Por tanto,
+
+$$
+a\ne0
+\qquad\text{y}\qquad
+b\ne0.
+$$
+
+La tricotomía aplicada a $a$ deja entonces exactamente dos posibilidades:
+
+$$
+a>0
+\qquad\text{o}\qquad
+a<0.
+$$
+
+Como $a\ne0$, podemos dividir por $a$. Conviene registrar primero las simplificaciones que utilizaremos. Por definición de cociente,
+
+$$
+\begin{aligned}
+\frac{ab}{a}
+&=(ab)a^{-1}\\
+&=b(aa^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=b1 && \text{(inverso multiplicativo)}\\
+&=b && \text{(neutro multiplicativo)},
+\end{aligned}
+$$
+
+mientras que
+
+$$
+\frac0a=0a^{-1}=0
+$$
+
+por definición de cociente y @exm-t1-0040.
+
+Si $a>0$, de $0<ab$ y la parte 6 obtenemos
+
+$$
+\frac0a<\frac{ab}{a}.
+$$
+
+Las reducciones anteriores dan
+
+$$
+0<b,
+$$
+
+es decir,
+
+$$
+b>0.
+$$
+
+Si $a<0$, dividir $0<ab$ por el número negativo $a$ invierte el sentido:
+
+$$
+\frac0a>\frac{ab}{a}.
+$$
+
+Por las mismas reducciones,
+
+$$
+0>b,
+$$
+
+es decir,
+
+$$
+b<0.
+$$
+
+Hemos demostrado
+
+$$
+ab>0
+\Longrightarrow
+(a>0\ \text{y}\ b>0)
+\ \text{o}\
+(a<0\ \text{y}\ b<0).
+$$
+
+Probemos la recíproca. Si $a>0$ y $b>0$, (O2) da directamente
+
+$$
+ab>0.
+$$
+
+Si $a<0$ y $b<0$, entonces
+
+$$
+-a>0
+\qquad\text{y}\qquad
+-b>0.
+$$
+
+Por (O2),
+
+$$
+(-a)(-b)>0.
+$$
+
+Las reglas de signos ya demostradas dan
+
+$$
+(-a)(-b)=ab.
+$$
+
+Por sustitución de iguales por iguales,
+
+$$
+ab>0.
+$$
+
+En consecuencia,
+
+$$
+\boxed{
+ab>0
+\iff
+(a>0\ \text{y}\ b>0)
+\ \text{o}\
+(a<0\ \text{y}\ b<0).
+}
+$$
+
+Consideremos ahora un producto negativo. Supongamos
+
+$$
+ab<0.
+$$
+
+Nuevamente $ab\ne0$. Si $a=0$ o $b=0$, @prp-t1-0027 implicaría $ab=0$, contradicción. Luego
+
+$$
+a\ne0
+\qquad\text{y}\qquad
+b\ne0.
+$$
+
+La tricotomía aplicada a $a$ deja otra vez los dos casos $a>0$ y $a<0$.
+
+Si $a>0$, la parte 6 aplicada a $ab<0$ permite dividir por $a$ sin cambiar el sentido:
+
+$$
+\frac{ab}{a}<\frac0a.
+$$
+
+Usando las reducciones ya establecidas,
+
+$$
+b<0.
+$$
+
+Si $a<0$, dividir por $a$ invierte el sentido:
+
+$$
+\frac{ab}{a}>\frac0a,
+$$
+
+de donde
+
+$$
+b>0.
+$$
+
+Por tanto,
+
+$$
+ab<0
+\Longrightarrow
+(a>0\ \text{y}\ b<0)
+\ \text{o}\
+(a<0\ \text{y}\ b>0).
+$$
+
+Falta la recíproca. Supongamos primero
+
+$$
+a>0
+\qquad\text{y}\qquad
+b<0.
+$$
+
+Entonces $-b>0$ y, por (O2),
+
+$$
+a(-b)>0.
+$$
+
+Como la regla de signos da
+
+$$
+a(-b)=-(ab),
+$$
+
+por sustitución obtenemos
+
+$$
+-(ab)>0.
+$$
+
+Por definición de número negativo, esto equivale a
+
+$$
+ab<0.
+$$
+
+Si, en cambio,
+
+$$
+a<0
+\qquad\text{y}\qquad
+b>0,
+$$
+
+entonces $-a>0$ y (O2) da
+
+$$
+(-a)b>0.
+$$
+
+La regla de signos
+
+$$
+(-a)b=-(ab)
+$$
+
+produce de nuevo
+
+$$
+-(ab)>0,
+$$
+
+y por tanto
+
+$$
+ab<0.
+$$
+
+Concluimos
+
+$$
+\boxed{
+ab<0
+\iff
+(a>0\ \text{y}\ b<0)
+\ \text{o}\
+(a<0\ \text{y}\ b>0).
+}
+$$
+
+El signo de un producto queda así determinado por una dicotomía estructural: factores con el mismo signo producen un producto positivo y factores con signos opuestos producen un producto negativo. No hemos añadido una nueva regla de signos; la hemos deducido de la tricotomía, de las leyes del orden y de las identidades algebraicas ya demostradas.
+
+Para la parte 9 consideremos los tres casos que proporciona la tricotomía.
+
+Si
+
+$$
+a=0,
+$$
+
+entonces, por @exm-t1-0040,
+
+$$
+a^2=aa=00=0.
+$$
+
+Supongamos ahora
+
+$$
+a>0.
+$$
+
+Entonces ambos factores de
+
+$$
+a^2=aa
+$$
+
+son positivos, y (O2) da
+
+$$
+a^2>0.
+$$
+
+Finalmente, supongamos
+
+$$
+a<0.
+$$
+
+Por definición de número negativo,
+
+$$
+-a>0.
+$$
+
+Aplicando (O2) a los dos factores positivos $-a$,
+
+$$
+(-a)(-a)>0.
+$$
+
+Hagamos explícita la identidad algebraica que permite volver al cuadrado de $a$. Por definición de cuadrado y por la regla de signos ya demostrada,
+
+$$
+\begin{aligned}
+(-a)^2
+&=(-a)(-a)\\
+&=aa && \text{(producto de dos opuestos)}\\
+&=a^2 && \text{(definición de cuadrado)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales en $(-a)^2>0$, obtenemos
+
+$$
+a^2>0.
+$$
+
+Hemos cubierto las tres posibilidades de la tricotomía. Si $a=0$, el cuadrado es $0$; si $a>0$ o $a<0$, el cuadrado es estrictamente positivo. Por tanto, para todo $a\in\mathbb R$,
+
+$$
+\boxed{a^2\ge0}.
+$$
+
+Falta hacer explícito cuándo puede ocurrir la igualdad. Ya vimos que
+
+$$
+a=0
+\Longrightarrow
+a^2=0.
+$$
+
+Recíprocamente, supongamos
+
+$$
+a^2=0.
+$$
+
+Por definición de cuadrado,
+
+$$
+aa=0.
+$$
+
+La ley del producto nulo, @prp-t1-0027, afirma que al menos uno de los dos factores debe ser $0$. Como ambos factores son el mismo número $a$, necesariamente
+
+$$
+a=0.
+$$
+
+Así,
+
+$$
+\boxed{a^2=0\iff a=0}.
+$$
+
+En particular, si $a\ne0$, la tricotomía excluye el primer caso y deja $a>0$ o $a<0$; en ambos ya demostramos que
+
+$$
+\boxed{a^2>0}.
+$$
+
+Finalmente, probemos la parte 10. Supongamos
+
+$$
+0\le a\le b.
+$$
+
+La hipótesis contiene dos desigualdades:
+
+$$
+0\le a
+\qquad\text{y}\qquad
+a\le b.
+$$
+
+Por transitividad de $\le$,
+
+$$
+0\le b.
+$$
+
+Ahora trasladamos $a\le b$ sumando $-a$ a ambos miembros. Por la parte 1,
+
+$$
+a+(-a)\le b+(-a).
+$$
+
+Reduciendo ambos miembros mediante inverso aditivo y definición de resta,
+
+$$
+\boxed{0\le b-a}.
+$$
+
+Para obtener la segunda cantidad no negativa utilizamos la parte 2 en su versión débil. De
+
+$$
+0\le a
+\qquad\text{y}\qquad
+0\le b
+$$
+
+se sigue
+
+$$
+0+0\le a+b.
+$$
+
+Como $0+0=0$,
+
+$$
+\boxed{0\le a+b}.
+$$
+
+Tenemos, por tanto, dos factores no negativos:
+
+$$
+0\le b-a
+\qquad\text{y}\qquad
+0\le a+b.
+$$
+
+Aplicamos la parte 3 a la desigualdad $0\le b-a$ con el factor no negativo $a+b$. Obtenemos
+
+$$
+0(a+b)\le(b-a)(a+b).
+$$
+
+Por @exm-t1-0040,
+
+$$
+0(a+b)=0,
+$$
+
+y así
+
+$$
+0\le(b-a)(a+b).
+$$
+
+Hagamos explícita ahora la factorización que convierte este producto en una diferencia de cuadrados. Por definición de resta, distributividad, conmutatividad y las reglas de signos,
+
+$$
+\begin{aligned}
+(b-a)(a+b)
+&=\bigl(b+(-a)\bigr)(a+b)\\
+&=b(a+b)+(-a)(a+b) && \text{(distributividad)}\\
+&=(ba+b^2)+\bigl((-a)a+(-a)b\bigr) && \text{(distributividad)}\\
+&=(ab+b^2)+\bigl(-(a^2)+(-(ab))\bigr)
+&& \text{(conmutatividad y reglas de signos)}\\
+&=b^2+\bigl(ab+(-(ab))\bigr)+(-(a^2))
+&& \text{(asociatividad y conmutatividad)}\\
+&=b^2+0+(-(a^2)) && \text{(inverso aditivo)}\\
+&=b^2-a^2 && \text{(neutro y definición de resta)}.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales,
+
+$$
+0\le b^2-a^2.
+$$
+
+Finalmente trasladamos esta desigualdad sumando $a^2$ a ambos miembros. La parte 1 da
+
+$$
+0+a^2\le(b^2-a^2)+a^2.
+$$
+
+Reducimos:
+
+$$
+\begin{aligned}
+0+a^2&=a^2,\\
+(b^2-a^2)+a^2
+&=\bigl(b^2+(-(a^2))\bigr)+a^2\\
+&=b^2+\bigl(-(a^2)+a^2\bigr) && \text{(asociatividad)}\\
+&=b^2+0 && \text{(inverso aditivo)}\\
+&=b^2 && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Por tanto,
+
+$$
+\boxed{a^2\le b^2}.
+$$
+
+Esto demuestra las diez afirmaciones. $\blacksquare$
+
+::: {.callout-note title="Después de la prueba"}
+La proposición muestra que hay tres preguntas diferentes antes de «cancelar» un factor en una desigualdad:
+
+1. ¿es el factor distinto de cero?;
+2. ¿es positivo?;
+3. ¿es negativo?
+
+En una **igualdad**, para cancelar multiplicativamente basta la no nulidad.
+
+En una **desigualdad**, la no nulidad no basta: el signo decide si el orden se conserva o se invierte. Si además queremos dividir, la hipótesis de signo cumple simultáneamente dos funciones: garantiza que el divisor no sea $0$ y determina qué ocurre con el sentido del orden.
+:::
+
+### Una pequeña tabla de control
+
+Las reglas anteriores pueden condensarse, una vez demostradas, en la tabla siguiente. Añadimos la columna «Fundamento» para recordar que ninguna fila introduce un axioma nuevo.
+
+| Operación aplicada a ambos miembros | Hipótesis | Efecto sobre $<$ | Fundamento |
+|---|---|---|---|
+| sumar $c$ | ninguna | conserva el sentido | parte 1 |
+| restar $c$ | ninguna | conserva el sentido | parte 1 aplicada a $-c$ |
+| multiplicar por $c$ | $c>0$ | conserva el sentido | parte 3 |
+| multiplicar por $c$ | $c<0$ | invierte el sentido | parte 4 |
+| dividir por $c$ | $c>0$ | conserva el sentido | partes 5 y 6 |
+| dividir por $c$ | $c<0$ | invierte el sentido | partes 5 y 6 |
+
+La fila de la resta no requiere una regla independiente: restar $c$ significa sumar $-c$, y la parte 1 vale para cualquier elemento del cuerpo, sin hipótesis de signo.
+
+También conviene aislar el caso excluido de las filas multiplicativas estrictas. Si $a<b$ y $c=0$, entonces @exm-t1-0040 da
+
+$$
+ac=a0=0
+\qquad\text{y}\qquad
+bc=b0=0.
+$$
+
+Por tanto,
+
+$$
+ac=bc,
+$$
+
+no $ac<bc$ ni $ac>bc$. Una desigualdad estricta colapsa a igualdad al multiplicar ambos miembros por $0$.
+
+La tabla es, pues, una herramienta de cálculo **derivada**. Su contenido ya está demostrado en @prp-t1-0007.
+
+### Una regla que necesitaremos al estudiar el hueco racional
+
+Supongamos que $a$ y $b$ son no negativos y que
+
+$$
+b\le a.
+$$
+
+Las hipótesis pueden reunirse como
+
+$$
+0\le b\le a.
+$$
+
+La parte 10 de @prp-t1-0007 afirma que, si $0\le u\le v$, entonces
+
+$$
+u^2\le v^2.
+$$
+
+Particularizamos ahora esa afirmación tomando
+
+$$
+u=b,
+\qquad
+v=a.
+$$
+
+Como sus hipótesis son precisamente $0\le b\le a$, obtenemos
+
+$$
+\boxed{b^2\le a^2}.
+$$
+
+Así, la regla que utilizaremos después no es una intuición acerca de que «los cuadrados crecen», sino una aplicación directa de la monotonía del cuadrado ya demostrada en los no negativos. Será esencial en §1.4 para comparar los racionales situados a ambos lados de la ecuación $x^2=2$.
+
+Esta relectura muestra una ventaja del método axiomático. Podemos auditar una demostración preguntando:
+
+> ¿qué propiedad estructural autoriza este paso?
+
+En pruebas más largas, esa pregunta ayuda a distinguir una manipulación legítima de una inferencia que solo «parece razonable».
+
+### Una desigualdad no es una ecuación: los pasos deben ser reversibles
+
+Consideremos la desigualdad
+
+$$
+3x-7<8.
+$$
+
+Antes de transformarla, fijemos una hipótesis que suele quedar implícita. Ya demostramos que $1>0$. Por (O1),
+
+$$
+2=1+1>0
+$$
+
+y nuevamente
+
+$$
+3=2+1>0.
+$$
+
+Por tanto, multiplicar o dividir una desigualdad por $3$ conserva su sentido.
+
+**Primera dirección.** Supongamos
+
+$$
+3x-7<8.
+$$
+
+Por la parte 1 de @prp-t1-0007 podemos sumar $7$ a ambos miembros:
+
+$$
+(3x-7)+7<8+7.
+$$
+
+Reducimos el miembro izquierdo haciendo explícita la resta como suma con inverso:
+
+$$
+\begin{aligned}
+(3x-7)+7
+&=\bigl(3x+(-7)\bigr)+7\\
+&=3x+\bigl((-7)+7\bigr) && \text{(asociatividad)}\\
+&=3x+0 && \text{(inverso aditivo)}\\
+&=3x && \text{(neutro aditivo)}.
+\end{aligned}
+$$
+
+Como $8+7=15$, obtenemos
+
+$$
+3x<15.
+$$
+
+Ahora usamos la parte 6 de @prp-t1-0007. Puesto que $3>0$, dividir por $3$ conserva el orden:
+
+$$
+\frac{3x}{3}<\frac{15}{3}.
+$$
+
+Las dos fracciones se reducen mediante la definición de cociente. En el miembro izquierdo,
+
+$$
+\begin{aligned}
+\frac{3x}{3}
+&=(3x)3^{-1}\\
+&=x(33^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=x1 && \text{(inverso multiplicativo)}\\
+&=x && \text{(neutro multiplicativo)}.
+\end{aligned}
+$$
+
+Y, como $15=3\cdot5$,
+
+$$
+\begin{aligned}
+\frac{15}{3}
+&=(3\cdot5)3^{-1}\\
+&=5(33^{-1}) && \text{(asociatividad y conmutatividad)}\\
+&=5.
+\end{aligned}
+$$
+
+Por sustitución de iguales por iguales concluimos
+
+$$
+\boxed{x<5}.
+$$
+
+Hemos probado hasta aquí solamente
+
+$$
+3x-7<8
+\Longrightarrow
+x<5.
+$$
+
+**Dirección recíproca.** Supongamos ahora
+
+$$
+x<5.
+$$
+
+Como $3>0$, la parte 3 de @prp-t1-0007 permite multiplicar ambos miembros por $3$ sin invertir el orden:
+
+$$
+3x<3\cdot5=15.
+$$
+
+A continuación aplicamos la parte 1 sumando $-7$ a ambos miembros:
+
+$$
+3x+(-7)<15+(-7).
+$$
+
+Por definición de resta y por la aritmética de los enteros,
+
+$$
+3x+(-7)=3x-7
+\qquad\text{y}\qquad
+15+(-7)=8.
+$$
+
+Por tanto,
+
+$$
+3x-7<8.
+$$
+
+Hemos demostrado también
+
+$$
+x<5
+\Longrightarrow
+3x-7<8.
+$$
+
+Juntando ambas implicaciones,
+
+$$
+\boxed{
+3x-7<8
+\iff
+x<5.
+}
+$$
+
+Ahora sí podemos afirmar que el conjunto de soluciones de la desigualdad original es exactamente
+
+$$
+(-\infty,5).
+$$
+
+La diferencia entre una implicación y una equivalencia es esencial: una cadena que solo avanza en un sentido puede producir una **condición necesaria** sin haber caracterizado todavía todas las soluciones.
+
+Esta pequeña auditoría anticipa una regla importante para resolver inecuaciones:
+
+$$
+\boxed{
+\text{una cadena de transformaciones encuentra el conjunto solución solo si controlamos cuáles pasos son reversibles.}
+}
+$$

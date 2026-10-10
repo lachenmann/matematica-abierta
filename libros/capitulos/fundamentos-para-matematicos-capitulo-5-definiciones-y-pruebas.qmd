@@ -1,0 +1,652 @@
+---
+title: "Capítulo 5 — ¿Cómo se convierten las definiciones en herramientas de prueba?"
+description: "Fundamentos para matemáticos: capítulo 5, con ejercicios y soluciones desarrolladas."
+content-id: MA-BCH-0082
+content-type: book-chapter
+collection: PM-FUN
+editorial-project: FND
+book-id: MA-BOK-0008
+source-id: FND-T1-C05
+editorial-id: MA-BCH-FND-01-005
+source-version: v02
+status: published
+date-created: 2026-09-26
+date-modified: 2026-10-08
+areas: [fundamentos]
+level: fundamental
+topics: [razonamiento-matematico, lenguaje-matematico]
+prerequisites: [MA-BCH-0081]
+related: [MA-BOK-0008]
+provenance:
+  type: original
+  sources:
+    - "Manuscrito FND-T1-C05, v02; notas bibliográficas en la página del libro."
+license: GFDL-1.3-or-later
+---
+
+[Índice del libro](../para-matematicos/fundamentos-para-matematicos.qmd)
+
+En el capítulo anterior, afirmar que una relación era una función nos obligaba a comprobar existencia y unicidad de una salida para cada entrada. No bastaba reconocer un dibujo familiar. La definición decía exactamente qué información debíamos tener y qué podía faltar.
+
+Ahora estudiaremos ese mecanismo como una herramienta general. Ante una palabra nueva —«estable», «invertible», «cuerpo»— necesitamos aprender dos movimientos: extraer consecuencias de que un objeto satisfaga una definición y averiguar qué habría que demostrar para que la satisfaga. Una misma definición interviene de modos distintos según esté entre los datos o en la conclusión.
+
+La pregunta de este capítulo será **¿cómo pasar de un nombre matemático a condiciones con las que podamos razonar?** Comenzaremos con conjuntos y funciones ya conocidos. Después leeremos una definición axiomática completa: la de cuerpo. Ese laboratorio mostrará por qué algunas reglas algebraicas se aceptan como punto de partida y otras necesitan prueba, aunque todas resulten familiares.
+
+Usaremos como conocimientos de entrada la aritmética escolar de los enteros y racionales y las leyes usuales de los números reales. Cuando trabajemos con un cuerpo arbitrario, cada paso se justificará mediante sus axiomas o resultados previamente demostrados. No construiremos aquí los sistemas numéricos desde primeros principios.
+
+## 5.1. Una definición tiene dos direcciones de uso
+
+Sea $A$ un conjunto y sea $f:A\to A$ una función. Diremos que un subconjunto $S\subseteq A$ es **estable bajo $f$** cuando
+
+$$
+\forall x\in S\;(f(x)\in S).
+$$
+
+Intuitivamente, aplicar $f$ a una entrada de $S$ no nos saca de $S$. Hemos fijado un término para una condición precisa. No hemos dicho todavía qué subconjuntos la cumplen.
+
+**Usar la definición como hipótesis.** Si sabemos que $S$ es estable y disponemos de $a\in S$, podemos concluir $f(a)\in S$. El dato general proporciona información sobre una entrada particular. Pero no permite concluir $f(a)=a$: permanecer en un conjunto no significa permanecer en el mismo punto.
+
+**Usarla como objetivo.** Si queremos demostrar que $S$ es estable, debemos comenzar con un $x\in S$ arbitrario y justificar $f(x)\in S$. Comprobarlo únicamente para un elemento especial de $S$ no prueba la condición universal.
+
+Por ejemplo, con $A=\mathbb Z$, $f(n)=n+2$ y
+
+$$
+S=\{n\in\mathbb Z:n\ge3\},
+$$
+
+tomamos $n\in S$. Entonces $n\ge3$, de modo que $f(n)=n+2\ge5\ge3$; además, $n+2$ es entero. Por definición de $S$, $f(n)\in S$. Como no fijamos ningún valor especial de $n$, queda probada la estabilidad.
+
+La estructura del argumento fue:
+
+$$
+\begin{aligned}
+n\in S&\Longrightarrow n\ge3\\
+&\Longrightarrow f(n)\ge3\\
+&\Longrightarrow f(n)\in S.
+\end{aligned}
+$$
+
+Desplegamos la definición de $S$ al entrar y la recuperamos al salir. La definición de estabilidad organiza el argumento completo.
+
+::: {.callout-important title="Hipótesis y objetivo"}
+Una definición del tipo «un objeto admisible $x$ tiene la propiedad $P$ cuando cumple $Q(x)$» fija una equivalencia entre $P(x)$ y $Q(x)$ en ese dominio. Desde la hipótesis $P(x)$ podemos obtener $Q(x)$; para alcanzar el objetivo $P(x)$ basta probar $Q(x)$.
+
+Esta lectura de una **definición** no convierte en bicondicional cualquier «si» de un teorema. En un resultado, cada dirección requiere la prueba correspondiente.
+:::
+
+**Comprobación.** Si $S$ es estable bajo $f$ y $a\in S$, ¿podemos afirmar que $f(f(a))\in S$? ¿Debemos suponer que $f(a)=a$?
+
+**Respuesta razonada.** La primera aplicación de la definición da $f(a)\in S$. Aplicándola otra vez a esa entrada, obtenemos $f(f(a))\in S$. No hemos identificado las entradas: sólo hemos utilizado dos veces una propiedad universal. La expresión compuesta tiene sentido porque $f:A\to A$.
+
+## 5.2. Ejemplos, no-ejemplos y objetos que quizá no existan
+
+Una definición que reúne varias condiciones exige cumplirlas **todas**. Para producir un no-ejemplo basta incumplir una, pero debemos señalar cuál. Ante una condición cuantificada, conviene recuperar el dominio y la forma de negarla.
+
+Para la estabilidad bajo $f:A\to A$, los conjuntos $\varnothing$ y $A$ siempre cumplen la definición. En el primer caso no hay entradas que puedan violarla; en el segundo, que $f(x)\in A$ forma parte de declarar $f:A\to A$. Son ejemplos útiles porque impiden añadir silenciosamente la exigencia de que $S$ sea no vacío o propio.
+
+Con $f(n)=n+2$ sobre $\mathbb Z$, el subconjunto $T=\{3,4\}$ no es estable: $3\in T$, pero $f(3)=5\notin T$. Este solo testigo refuta la universal. Por eso, para un $S\subseteq A$ ya fijado,
+
+$$
+\begin{gathered}
+S\text{ no es estable bajo }f\\
+\Longleftrightarrow\\
+\exists x\in S\;(f(x)\notin S).
+\end{gathered}
+$$
+
+No sería una negación correcta exigir que **todas** las entradas salieran de $S$. Una universal falla en cuanto aparece una excepción.
+
+Hay otra precaución: **dar un nombre no demuestra existencia**. Podemos llamar «entero dominante» a un entero $d$ que cumpla $n\le d$ para todo $n\in\mathbb Z$. La condición es precisa, pero ningún entero la satisface: si $d$ fuera candidato, el entero $d+1$ sería mayor que él. Definir una clase de objetos puede dar una clase vacía.
+
+El problema es aún más delicado si intentamos introducir **un objeto determinado** mediante una descripción. La frase «sea $r$ la raíz real de $r^2=1$» no selecciona un único real: tanto $1$ como $-1$ cumplen la condición. La frase «sea $r$ la raíz real positiva de $r^2=1$» sí lo hace. La existencia la proporciona $1$; si $r>0$ y $r^2=1$, la factorización $(r-1)(r+1)=0$ en los reales, con $r+1>0$, obliga a $r=1$. Aquí utilizamos aritmética real conocida; más adelante derivaremos el principio del producto nulo desde axiomas abstractos.
+
+**Comprobación.** Para $f:A\to A$ y $a\in A$, ¿cuándo es estable el singleton $\{a\}$?
+
+**Respuesta razonada.** Su única entrada es $a$. La definición exige $f(a)\in\{a\}$, que equivale a $f(a)=a$. Así, un singleton es estable exactamente cuando su elemento es un punto fijo, es decir, una entrada que la función deja sin cambio. Esto no significa que todos los elementos de un conjunto estable deban ser puntos fijos.
+
+## 5.3. Definiciones, resultados e hipótesis de trabajo
+
+Una **definición** fija significado. Un **teorema** afirma un resultado y exige justificación desde los puntos de partida disponibles. Un **lema** es un resultado utilizado como apoyo para otro; un **corolario**, una consecuencia obtenida a partir de un resultado anterior. Esas etiquetas describen el papel de una afirmación en la exposición, no grados diferentes de verdad o de rigor.
+
+La palabra **proposición** tiene además dos usos que conviene distinguir. En los capítulos iniciales nombraba un enunciado interpretado con valor de verdad. Como encabezado de una exposición —«Proposición»— suele anunciar un resultado demostrado, igual que «Teorema», con una diferencia editorial de énfasis. El contexto permite saber cuál de los dos usos está en juego.
+
+Veamos cómo una definición se convierte en una pequeña cadena de resultados.
+
+**Lema.** Si $S,T\subseteq A$ son estables bajo $f:A\to A$, entonces $S\cap T$ es estable bajo $f$.
+
+**Estrategia.** El objetivo es universal: partiremos de una entrada arbitraria de la intersección. Su pertenencia nos permitirá utilizar las dos hipótesis de estabilidad.
+
+**Demostración.** Sea $x\in S\cap T$. Entonces $x\in S$ y $x\in T$. Como cada conjunto es estable, $f(x)\in S$ y $f(x)\in T$. Por definición de intersección, $f(x)\in S\cap T$. Esto vale para cualquier entrada de la intersección, por lo que ésta es estable. Si la intersección es vacía, la condición universal también se cumple. $\square$
+
+**Corolario.** Si $S$, $T$ y $U$ son estables bajo la misma función, entonces $(S\cap T)\cap U$ es estable.
+
+**Demostración.** El lema da primero la estabilidad de $S\cap T$. Podemos aplicarlo otra vez a ese conjunto y a $U$. $\square$
+
+La segunda prueba no necesita volver a abrir toda la definición: usa un resultado cuya demostración ya está disponible. Una prueba puede apoyarse en definiciones, hipótesis y teoremas, pero debe conservar el origen de cada paso.
+
+Las hipótesis «misma función» y «subconjuntos de $A$» no son decoración. Si cambiamos de función durante el argumento, la segunda condición de estabilidad podría no informar sobre el valor $f(x)$ que necesitamos. Y si una expresión no está definida para la entrada elegida, ni siquiera hemos construido una afirmación interpretable.
+
+**Comprobación.** En la prueba del lema, ¿por qué no bastaría saber únicamente que $S$ es estable?
+
+**Respuesta razonada.** De $x\in S\cap T$ y la estabilidad de $S$ sólo obtenemos $f(x)\in S$. Todavía falta $f(x)\in T$. Por ejemplo, con $A=S=\mathbb Z$, $f(n)=n+1$ y $T=\{0\}$, la intersección es $\{0\}$ y no es estable. Se satisface la única hipótesis de estabilidad que conservamos, pero falla la conclusión.
+
+## 5.4. Reformular una definición exige conservar su alcance
+
+La condición de estabilidad puede escribirse de otra manera:
+
+$$
+S\text{ es estable bajo }f\quad\Longleftrightarrow\quad f(S)\subseteq S.
+$$
+
+**Demostración.** Supongamos primero que $S$ es estable. Si $y\in f(S)$, por definición de imagen existe $x\in S$ con $y=f(x)$. La estabilidad da $y\in S$; por tanto, $f(S)\subseteq S$. Recíprocamente, supongamos esa inclusión y tomemos $x\in S$. Su valor pertenece a $f(S)$ y, por la inclusión, a $S$. Ésta es la condición de estabilidad. $\square$
+
+La equivalencia conecta dos escrituras ya definidas. Podemos elegir la que haga más transparente una prueba, porque conocemos cómo pasar en ambas direcciones.
+
+En cambio, reemplazar la inclusión por $f(S)=S$ cambia la condición. La igualdad exige además que cada elemento de $S$ sea alcanzado desde una entrada de $S$. Con $f(n)=n+1$ sobre los enteros y
+
+$$
+S=\{n\in\mathbb Z:n\ge0\},
+$$
+
+tenemos $f(S)=\{n\in\mathbb Z:n\ge1\}\subsetneq S$. El conjunto es estable, pero $0\in S$ no se alcanza desde una entrada no negativa. La nueva condición sería más fuerte.
+
+Para comprobar una reformulación debemos mirar tanto los símbolos como los cuantificadores. La condición $\forall x\in S\;f(x)\in S$ permite que distintos elementos tengan imágenes distintas; no equivale a $\exists y\in S\;\forall x\in S\;f(x)=y$, que pide un valor común y además exige que $S$ sea no vacío. El conjunto vacío separa inmediatamente ambas frases.
+
+**Comprobación.** Si $f(S)=S$, ¿es estable $S$? ¿Queda justificada la recíproca?
+
+**Respuesta razonada.** La igualdad implica $f(S)\subseteq S$, así que sí hay estabilidad. La recíproca es falsa por el ejemplo anterior. Una dirección válida no basta para intercambiar definiciones; se necesitan ambas.
+
+## 5.5. Los axiomas de cuerpo: definir una estructura mediante leyes
+
+Una operación binaria sobre $F$ es una función $F\times F\to F$. Declarar su dominio y codominio significa que a cada par de elementos de $F$ le corresponde un único elemento de $F$. Como vimos en C04, eso es más información que escribir un símbolo entre dos letras.
+
+**Un control previo: el cierre de las operaciones.**
+
+No basta que una fórmula pueda calcularse en un conjunto más grande para que describa una **operación binaria sobre $F$**. Primero hay que comprobar que el resultado permanezca en $F$ para *todos* los pares de entradas de $F\times F$. Ésta es la condición de **cierre**. Sólo después corresponde examinar leyes como la asociatividad o la existencia de neutros e inversos.
+
+Consideremos $F=\mathbb Q\setminus\{0\}$ y tratemos de usar la suma racional ordinaria como operación $F\times F\to F$. Aunque $1,-1\in F$, se cumple
+
+$$
+1+(-1)=0\notin F.
+$$
+
+La suma es una operación legítima sobre $\mathbb Q$, pero su restricción a estas entradas **no** es una operación binaria *sobre $F$*, porque hay parejas cuyo resultado sale de ese conjunto. La familiaridad de la fórmula no sustituye la verificación de su codominio. De hecho, aquí ni siquiera hemos llegado al problema de si existirían inversos: ha fallado un dato anterior de la estructura propuesta.
+
+**Comprobación.** Si $E=\{0,1\}$ y usamos la suma y el producto habituales de enteros, ¿tenemos dos operaciones binarias $E\times E\to E$?
+
+**Respuesta razonada.** No. El producto sí tiene sus valores en $E$: los únicos productos posibles son $0$ y $1$. En cambio, $1+1=2\notin E$. La suma ordinaria no está cerrada en $E$; modificarla, por ejemplo definiendo otra suma, sería estudiar una estructura distinta y obligaría a declarar la nueva regla antes de comprobar sus axiomas.
+
+Un **cuerpo** será un conjunto $F$ con operaciones $+$ y $\cdot$ de $F\times F$ en $F$ y elementos distinguidos $0,1\in F$, que satisfacen las leyes siguientes. Escribiremos $ab$ para $a\cdot b$.
+
+::: {.callout-important title="Definición de cuerpo"}
+Para todos $a,b,c\in F$:
+
+**Leyes aditivas**
+
+$$
+\begin{aligned}
+(a+b)+c&=a+(b+c), & a+b&=b+a,\\
+a+0&=a.
+\end{aligned}
+$$
+
+Para cada $a\in F$ existe algún $u\in F$ tal que $a+u=0$.
+
+**Leyes multiplicativas**
+
+$$
+\begin{aligned}
+(ab)c&=a(bc), & ab&=ba,\\
+a1&=a.
+\end{aligned}
+$$
+
+Para cada $a\in F$ **distinto de $0$** existe algún $v\in F$ tal que $av=1$.
+
+**Compatibilidad y no trivialidad**
+
+$$
+a(b+c)=ab+ac,\qquad 0\ne1.
+$$
+:::
+
+La conmutatividad proporciona también $0+a=a$ y $1a=a$. Permite obtener la distributividad por el otro lado:
+
+$$
+(b+c)a=a(b+c)=ab+ac=ba+ca.
+$$
+
+En esta presentación esa segunda distributividad es una consecuencia breve; podríamos haber elegido una lista equivalente que la incluyera explícitamente. Lo esencial es declarar qué lista utilizamos y justificar las equivalencias cuando importan.
+
+Los inversos se postulan mediante **existencia**, no mediante existencia única. Todavía no escribiremos $-a$ ni $a^{-1}$ como si la unicidad estuviera probada: compararemos candidatos en la sección siguiente. La hipótesis $a\ne0$ pertenece sólo al axioma de inverso multiplicativo; todo elemento, incluido $0$, tiene inverso aditivo.
+
+Llamamos **axiomas de cuerpo** a estas condiciones porque son puntos de partida cuando trabajamos con un cuerpo arbitrario. Pero, si nos dan operaciones concretas y queremos demostrar que forman un cuerpo, esos mismos axiomas se convierten en obligaciones que hay que verificar. El papel lógico depende de la tarea: podemos suponer que estamos en una estructura de cierta clase o demostrar que un candidato pertenece a ella.
+
+No aparecen en la lista ni un orden $<$ ni una propiedad de completitud. Tampoco se han postulado $a0=0$, cancelación, reglas de signos o ausencia de productos nulos con factores no nulos. Aunque esas expresiones recuerden hechos escolares, dentro de este laboratorio deben derivarse.
+
+**Comprobación.** Escribe el axioma de inverso multiplicativo con cuantificadores e identifica quién puede depender de quién.
+
+**Respuesta razonada.** Su forma es
+
+$$
+\forall a\in F\;\bigl(a\ne0\Longrightarrow
+\exists v\in F\;(av=1)\bigr).
+$$
+
+Primero se fija $a$; cuando es no nulo, el testigo $v$ puede depender de él. No se exige un único $v$ común para todos los $a$, ni se permite aplicar la existencia al caso $a=0$.
+
+## 5.6. Unicidad y cancelación: ordenar las dependencias
+
+Antes de calcular con inversos como objetos determinados, tenemos que justificar que dos candidatos coinciden. La estrategia general será comparar los candidatos usando las propiedades que ambos cumplen. No usaremos una cancelación multiplicativa cuya prueba aún no hemos dado.
+
+### Los neutros son únicos
+
+Supongamos que $e\in F$ también es neutro aditivo, es decir, que $a+e=a$ para todo $a\in F$. Al elegir $a=0$ obtenemos $0+e=0$. Por otro lado, el neutro $0$ y la conmutatividad dan $0+e=e$. Luego $e=0$.
+
+Si $j\in F$ también cumple $aj=a$ para todo $a$, al elegir $a=1$ obtenemos $1j=1$. Como $1$ es el neutro multiplicativo y el producto es conmutativo, $1j=j$. Por tanto, $j=1$.
+
+La comparación sólo necesitó las propiedades de los candidatos y la posibilidad de usarlos como entradas. No necesitó dividir ni restar.
+
+### Los inversos aditivos son únicos
+
+Fijemos $a\in F$ y supongamos $a+u=0$ y $a+v=0$. Entonces
+
+$$
+\begin{aligned}
+u&=u+0\\
+ &=u+(a+v)\\
+ &=(u+a)+v\\
+ &=0+v=v.
+\end{aligned}
+$$
+
+Usamos neutro, la ecuación de $v$, asociatividad y la ecuación de $u$ junto con conmutatividad. Existencia y unicidad justifican escribir **$-a$** para ese elemento. Definimos también $b-a:=b+(-a)$.
+
+Ahora podemos demostrar **cancelación aditiva**. Si $a+b=a+c$, sumamos $-a$ a ambos lados y reagrupamos:
+
+$$
+\begin{aligned}
+(-a)+(a+b)&=((-a)+a)+b\\
+&=0+b=b,
+\end{aligned}
+$$
+
+y del otro lado obtenemos $c$. Así, $b=c$. La igualdad se preserva al aplicar la misma operación a ambos miembros; la asociatividad explica por qué podemos eliminar el término común. La recíproca, $b=c\Rightarrow a+b=a+c$, se sigue de sustituir iguales.
+
+### Los inversos multiplicativos son únicos
+
+Sea $a\ne0$. Si $au=1$ y $av=1$, tenemos
+
+$$
+u=u1=u(av)=(ua)v=1v=v.
+$$
+
+La demostración usa asociatividad, conmutatividad, neutro y las ecuaciones de los candidatos. Como el axioma garantiza su existencia para $a\ne0$, podemos denotar el único inverso por **$a^{-1}$**. En este libro no asignamos por esta notación un inverso multiplicativo a $0$.
+
+Podemos probar ahora **cancelación multiplicativa con factor no nulo**. Si $a\ne0$ y $ab=ac$, multiplicamos ambos lados por $a^{-1}$:
+
+$$
+a^{-1}(ab)=(a^{-1}a)b=1b=b,
+$$
+
+y análogamente obtenemos $c$ en el otro miembro. Luego $b=c$. La hipótesis $a\ne0$ se utilizó al disponer de $a^{-1}$; no puede borrarse al final.
+
+**Lectura de la prueba.** No hemos justificado la unicidad de los inversos mediante cancelación multiplicativa: hicimos primero la comparación directa de candidatos y después dedujimos la cancelación. Éste es el orden de dependencias que evita un argumento circular.
+
+**Comprobación.** ¿Por qué sería insuficiente demostrar $au=av=1$ y escribir a continuación «cancelamos $a$, luego $u=v$» si estuviéramos usando esa unicidad para introducir y justificar la propia regla de cancelación?
+
+**Respuesta razonada.** Estaríamos utilizando como herramienta el resultado cuya justificación depende de lo que intentamos probar. La cadena $u=u(av)=(ua)v=v$ evita ese círculo y sólo usa axiomas ya disponibles. Si la cancelación se hubiera demostrado antes por otra vía independiente, sí podría usarse; hay que conocer sus dependencias, no prohibirla por su nombre.
+
+## 5.7. El cero y los signos se deducen
+
+### Absorción del cero y prohibición de invertirlo
+
+Fijemos $a\in F$ y escribamos $t=a0$. Como $0+0=0$, la distributividad da
+
+$$
+t=a0=a(0+0)=a0+a0=t+t.
+$$
+
+Podemos escribir el miembro izquierdo como $t+0$. La cancelación **aditiva**, ya demostrada, aplicada a $t+0=t+t$, da $0=t$. Por tanto, $a0=0$; por conmutatividad, también $0a=0$.
+
+Esto prueba que $0$ no posee inverso multiplicativo. Si algún $v$ satisficiera $0v=1$, la absorción del cero daría simultáneamente $0v=0$, de donde $0=1$, contra la no trivialidad. No hemos dividido por cero para concluir que no se puede hacerlo.
+
+### Opuesto del opuesto y producto con un signo
+
+La igualdad $a+(-a)=0$ y la conmutatividad muestran que $a$ es un inverso aditivo de $-a$. Por unicidad,
+
+$$
+-(-a)=a.
+$$
+
+De igual manera, $-0=0$, porque $0+0=0$.
+
+Para identificar $(-a)b$, buscaremos una propiedad que lo caracterice. La distributividad y la absorción del cero dan
+
+$$
+ab+(-a)b=(a+(-a))b=0b=0.
+$$
+
+Así, $(-a)b$ es un inverso aditivo de $ab$. Por la unicidad establecida,
+
+$$
+(-a)b=-(ab).
+$$
+
+La conmutatividad permite obtener también $a(-b)=-(ab)$. En particular, con $a=1$ en la primera identidad,
+
+$$
+(-1)b=-(1b)=-b.
+$$
+
+No dijimos que $(-1)b=-b$ fuera cierto «por la regla de los signos»: acabamos de justificar esa regla desde leyes anteriores.
+
+### Dos signos y una conclusión general
+
+Aplicando las identidades ya probadas en el orden indicado,
+
+$$
+(-a)(-b)=-(a(-b))=-(-(ab))=ab.
+$$
+
+La primera igualdad usa la regla para un signo en el primer factor; la segunda, la regla para el segundo; la tercera, el opuesto del opuesto. Como ahora podemos localizar cada herramienta, la cadena no oculta una dependencia circular.
+
+También obtenemos el **principio del producto nulo**:
+
+$$
+ab=0\quad\Longleftrightarrow\quad a=0\ \text{o}\ b=0.
+$$
+
+Si $ab=0$, distinguimos dos casos. Si $a=0$, ya tenemos una alternativa. Si $a\ne0$, la igualdad $ab=0=a0$ permite cancelar $a$ y concluir $b=0$. Recíprocamente, cualquiera de las dos igualdades $a=0$ o $b=0$ hace nulo el producto por absorción. La distinción de casos permite usar un resultado condicionado sin suponer gratuitamente su hipótesis.
+
+**Comprobación.** ¿Se puede cancelar el factor común $0$ en $0\cdot0=0\cdot1$?
+
+**Respuesta razonada.** Ambos miembros son $0$, pero cancelar produciría $0=1$, que contradice un axioma. La regla sólo vale con factor común no nulo. Este ejemplo satisface la igualdad inicial y muestra por qué conservar la condición es indispensable.
+
+## 5.8. Un cuerpo no incluye automáticamente un orden
+
+### Modelos conocidos y un no-ejemplo
+
+Con las operaciones usuales, $\mathbb Q$ y $\mathbb R$ son cuerpos. En esta etapa tomamos sus leyes aritméticas elementales como conocimiento de entrada, no como resultados construidos desde teoría de conjuntos. Para los racionales, el inverso de un elemento no nulo $p/q$, con $p,q\in\mathbb Z$, $q\ne0$ y $p\ne0$, es $q/p$; pertenece de nuevo a $\mathbb Q$ y su producto con $p/q$ es $1$. Para los reales se dispone análogamente del recíproco de todo elemento no nulo.
+
+Los enteros, con sus operaciones usuales, no forman un cuerpo. El elemento $2\ne0$ no tiene inverso multiplicativo entero. Si $n\le0$, entonces $2n\le0$; si $n\ge1$, entonces $2n\ge2$. En ninguno de los dos casos se obtiene $2n=1$. Un solo incumplimiento de un axioma basta para descartar el candidato; no hace falta que todos fallen.
+
+### Los complejos, presentados mediante pares
+
+Podemos reconocer otro modelo sin suponer un orden para sus elementos. Consideremos $\mathbb R^2$ con
+
+$$
+(a,b)+(c,d):=(a+c,b+d),
+$$
+
+$$
+(a,b)(c,d):=(ac-bd,ad+bc),
+$$
+
+y constantes $0=(0,0)$ y $1=(1,0)$. A este sistema lo llamamos $\mathbb C$.
+
+Las operaciones producen pares de reales. La suma es asociativa y conmutativa componente a componente, su neutro es $(0,0)$ y el opuesto de $(a,b)$ es $(-a,-b)$. El producto es conmutativo porque las expresiones $ac-bd$ y $ad+bc$ no cambian al intercambiar los pares, usando conmutatividad real; su neutro es $(1,0)$.
+
+Para la asociatividad multiplicativa, si $z=(a,b)$, $w=(c,d)$ y $u=(e,h)$, expandir ambos productos $(zw)u$ y $z(wu)$ da el mismo par $(P,Q)$, donde
+
+$$
+\begin{aligned}
+P&=ace-bde-adh-bch,\\
+Q&=ach-bdh+ade+bce.
+\end{aligned}
+$$
+
+La distributividad se comprueba igualando componentes: tanto $z(w+u)$ como $zw+zu$ tienen primera componente $ac+ae-bd-bh$ y segunda $ad+ah+bc+be$. Finalmente, $(0,0)\ne(1,0)$ porque $0\ne1$ en los reales.
+
+Si $(a,b)\ne(0,0)$, el real $a^2+b^2$ es positivo: los cuadrados reales son no negativos y al menos uno es positivo. En particular, es no nulo y tiene recíproco real. El par
+
+$$
+\left(\frac{a}{a^2+b^2},\frac{-b}{a^2+b^2}\right)
+$$
+
+es un inverso multiplicativo: la primera componente del producto es $(a^2+b^2)/(a^2+b^2)=1$ y la segunda es $(-ab+ba)/(a^2+b^2)=0$. Hemos verificado la última condición que faltaba. Por tanto, estas operaciones forman un cuerpo.
+
+Aquí el orden de los **reales** ayudó a verificar que un denominador real era no nulo. No hemos introducido por eso un orden sobre el cuerpo de pares.
+
+### Qué habría que añadir para hablar de cuerpo ordenado
+
+Un **cuerpo ordenado** es un cuerpo $F$ provisto además de una relación $<$ que sea un orden estricto total y compatible con las operaciones. Por orden estricto total entendemos transitividad y que, para cualesquiera $a,b$, se cumpla exactamente una de las alternativas $a<b$, $a=b$ o $b<a$. La compatibilidad exige:
+
+$$
+a<b\Longrightarrow a+c<b+c,
+$$
+
+para todos $a,b,c$, y
+
+$$
+0<a\ \text{y}\ 0<b\Longrightarrow 0<ab.
+$$
+
+Estas condiciones son información adicional. En un cuerpo ordenado, el cuadrado de un elemento no nulo es positivo. Si $a>0$, lo da la compatibilidad multiplicativa. Si $a<0$, sumando $-a$ obtenemos $0<-a$, por lo que $0<(-a)^2=a^2$. La tricotomía cubre ambos casos cuando $a\ne0$. En particular, $0<1^2=1$ y, sumando $-1$, resulta $-1<0$.
+
+En $\mathbb C$, el elemento $i=(0,1)$ cumple $i^2=(-1,0)=-1$ y es no nulo. Si existiera un orden compatible con la estructura de cuerpo, su cuadrado sería positivo. Pero acabamos de demostrar que $-1$ sería negativo. La tricotomía impide ambas cosas. Por tanto, **$\mathbb C$ es un cuerpo que no admite un orden de cuerpo**. Esto no prohíbe ordenar sus pares de alguna manera; prohíbe que ese orden satisfaga simultáneamente las compatibilidades indicadas.
+
+**Comprobación.** ¿De la hipótesis «$F$ es un cuerpo» podemos concluir $a^2>0$ para todo $a\ne0$?
+
+**Respuesta razonada.** No: esa hipótesis ni siquiera declara una relación $>$ sobre $F$. La conclusión es válida en un cuerpo **ordenado**, con el orden y las compatibilidades anteriores. Los complejos muestran además que no basta intentar añadir cualquier orden a todo cuerpo. Debemos verificar qué estructura está disponible antes de formular una desigualdad.
+
+## 5.9. Ejercicios: leer una condición y decidir qué hacer con ella
+
+Antes de comenzar, escribe qué datos están fijados y qué definición permite interpretar la conclusión. En las pruebas sobre un cuerpo arbitrario puedes usar los resultados de §§5.6–5.7, indicando dónde intervienen.
+
+### Familia I. Traducción y control de definiciones
+
+**Ejercicio 1. Negar sin exigir demasiado.** Sean $f:A\to A$ y $S\subseteq A$. Escribe con cuantificadores la estabilidad de $S$ y su negación. Describe qué debe proporcionarse para probar cada una. Explica qué sucede cuando $S=\varnothing$.
+
+**Ejercicio 2. Dos órdenes de cuantificadores.** Compara las afirmaciones
+
+$$
+\forall a\in F\;\bigl(a\ne0\Longrightarrow\exists v\in F\;(av=1)\bigr)
+$$
+
+y
+
+$$
+\exists v\in F\;\forall a\in F\;(a\ne0\Longrightarrow av=1).
+$$
+
+Explica cuál aparece en la definición de cuerpo. Decide si la segunda vale en $\mathbb Q$, comprobando las entradas $a=1$ y $a=2$.
+
+**Ejercicio 3. ¿Dato o resultado?** Con la lista exacta de §5.5, clasifica las siguientes afirmaciones: (a) $a(b+c)=ab+ac$; (b) todo $a$ tiene un único inverso aditivo; (c) $a0=0$; (d) $0\ne1$; (e) $ab=ac\Rightarrow b=c$. Para las que no sean axiomas, señala un resultado previo que las justifique o una hipótesis que falte.
+
+### Familia II. Reparación de argumentos
+
+**Ejercicio 4. Una cancelación indiscriminada.** Se escribe: «En un cuerpo, si $ax=ay$, multiplicamos por $a^{-1}$ y obtenemos $x=y$». Localiza la omisión, produce un contraejemplo a la afirmación sin condiciones y escribe una versión correcta con su prueba.
+
+**Ejercicio 5. Unicidad supuesta.** Para probar que el inverso aditivo es único, alguien escribe: «Si $a+u=0$ y $a+v=0$, entonces $u=-a=v$, porque $-a$ es el inverso de $a$». Explica por qué esta justificación no sirve para establecer por primera vez la unicidad. Reemplázala por una prueba que compare $u$ y $v$ sin usar la notación $-a$.
+
+**Ejercicio 6. Una desigualdad sin estructura.** Se propone: «En cualquier cuerpo, el cuadrado de un elemento no nulo es mayor que cero; por eso $x^2=-1$ nunca tiene solución». Identifica la hipótesis omitida y repara el enunciado. Explica qué demuestra el ejemplo de $i\in\mathbb C$ y qué no demuestra acerca de posibles órdenes sobre un conjunto de pares.
+
+### Familia III. Ejemplos, no-ejemplos y existencia
+
+**Ejercicio 7. Tres comportamientos de una definición.** Para $A=\mathbb Z$ y $f(n)=0$, encuentra: (a) un subconjunto no vacío $S$ con $f(S)=S$; (b) un subconjunto estable $T$ con $f(T)\subsetneq T$; (c) un subconjunto no estable $U$. Justifica las tres decisiones. ¿El conjunto vacío es estable? ¿Cumple $f(\varnothing)=\varnothing$?
+
+**Ejercicio 8. Nombrar no proporciona un testigo.** Se llama «real excepcional» a un real $r$ que cumpla $r^2+1=0$. ¿Existe alguno? Justifica la respuesta y distingue entre definir una propiedad y afirmar que hay un objeto que la satisface. ¿Qué cambia si se usa la misma ecuación sobre $\mathbb C$?
+
+**Ejercicio 9. ¿Por qué pedir $0\ne1$?** En el conjunto $E=\{e\}$ define $e+e=e$ y $ee=e$, y toma como constantes $0_E=1_E=e$. Comprueba todas las condiciones de §5.5 salvo $0\ne1$. Examina expresamente el axioma de inverso multiplicativo, en vez de decir que «es obvio». ¿Es un cuerpo bajo nuestra definición?
+
+### Familia IV. Demostraciones guiadas
+
+**Ejercicio 10. Unir conjuntos estables.** Demuestra que si $S,T\subseteq A$ son estables bajo $f:A\to A$, entonces $S\cup T$ es estable. Guía: toma una entrada arbitraria de la unión, considera las alternativas de su pertenencia y aplica en cada caso la hipótesis adecuada. ¿Necesitas que los conjuntos sean disjuntos?
+
+**Ejercicio 11. Resolver y verificar.** Sean $F$ un cuerpo, $a,b\in F$ y $a\ne0$. Demuestra que la ecuación $ax=b$ tiene una única solución en $F$. Guía: construye un candidato mediante el inverso, comprueba la ecuación y compara dos soluciones. Después clasifica las soluciones cuando $a=0$, distinguiendo $b=0$ y $b\ne0$.
+
+**Ejercicio 12. Invertir de nuevo.** Sea $a\ne0$ en un cuerpo. Prueba primero que $a^{-1}\ne0$, usando absorción del cero y $0\ne1$. Después demuestra $(a^{-1})^{-1}=a$ mediante la unicidad del inverso. Señala por qué la primera parte es necesaria para escribir la segunda expresión.
+
+### Familia V. Elección autónoma de método
+
+**Ejercicio 13. Una función sobre un cuerpo.** Sean $a,b\in F$ y $a\ne0$. Define $g:F\to F$ mediante $g(x)=ax+b$. Decide si $g$ es biyectiva. Si lo es, construye una función inversa y verifica que recupera las entradas en ambas direcciones. No presupongas que $F$ sea ordenado ni que sus elementos sean reales.
+
+**Ejercicio 14. El símbolo cambia, la obligación permanece.** Sobre $\mathbb Q$ define una operación $x\star y=x+y+1$, donde el lado derecho usa la suma racional usual. Determina un neutro bilateral para $\star$ y, para cada $x$, un elemento $u$ con $x\star u=u\star x=e$, donde $e$ es ese neutro. Comprueba también asociatividad. Explica por qué imponer $x\star u=0$ sería una pregunta distinta.
+
+**Ejercicio 15. Cuando toda parte es estable.** Sea $f:A\to A$. Demuestra la equivalencia entre: (a) todo subconjunto $S\subseteq A$ es estable bajo $f$; (b) $f(x)=x$ para todo $x\in A$; (c) $f(S)=S$ para todo $S\subseteq A$. Trata el caso $A=\varnothing$ y explica por qué, aunque la estabilidad de un solo conjunto no exige igualdad con su imagen, la condición universal de (a) sí fuerza (c).
+
+## 5.10. Soluciones desarrolladas
+
+### Solución 1. Negar sin exigir demasiado
+
+La estabilidad se escribe $\forall x\in S\;(f(x)\in S)$; su negación es $\exists x\in S\;(f(x)\notin S)$. Para la primera hay que justificar la pertenencia de la imagen de una entrada **arbitraria**; para la segunda basta exhibir una entrada de $S$ cuya imagen quede fuera y comprobar ambas pertenencias.
+
+Si $S=\varnothing$, la universal es verdadera y la existencial falsa: no existe una entrada que pueda actuar como contraejemplo. No necesitamos construir $f(x)$ para un supuesto elemento del vacío. El método lo determina la forma lógica de la condición.
+
+### Solución 2. Dos órdenes de cuantificadores
+
+La primera afirmación es el axioma: permite elegir el inverso después de conocer $a$. La segunda exige un mismo $v$ que sirva para todos los elementos no nulos. Si valiera en $\mathbb Q$, al sustituir $a=1$ tendríamos $v=1$; al sustituir $a=2$, tendríamos $2v=1$, incompatible con $v=1$ porque $2\ne1$ en $\mathbb Q$. Por tanto, allí es falsa.
+
+La estrategia fue confrontar dos instancias del supuesto testigo uniforme. No afirmamos que la segunda fórmula sea falsa en absolutamente toda estructura; el ejemplo racional basta para mostrar que no es una exigencia de la definición general de cuerpo.
+
+### Solución 3. ¿Dato o resultado?
+
+(a) es el axioma de distributividad y (d) el de no trivialidad. (b) es un resultado: la existencia está en la lista, pero la unicidad se demostró comparando candidatos en §5.6. (c) se dedujo en §5.7 mediante distributividad y cancelación aditiva.
+
+(e), tal como está, no es válida para todos los factores: falta $a\ne0$. La versión con esa hipótesis es la cancelación multiplicativa de §5.6. Con $a=0$, $b=0$ y $c=1$, la igualdad inicial es verdadera y la conclusión falsa. Clasificar una frase exige atender a su formulación exacta, no sólo reconocer su nombre.
+
+### Solución 4. Una cancelación indiscriminada
+
+La existencia de $a^{-1}$ exige $a\ne0$. Si $a=0$, $x=0$ y $y=1$, entonces $ax=ay=0$, pero $x\ne y$.
+
+La reparación es: «Si $a\ne0$ y $ax=ay$, entonces $x=y$». Bajo esa hipótesis, el axioma proporciona el inverso, y
+
+$$
+\begin{aligned}
+x&=1x=(a^{-1}a)x=a^{-1}(ax)\\
+ &=a^{-1}(ay)=(a^{-1}a)y\\
+ &=1y=y.
+\end{aligned}
+$$
+
+Cada reagrupación usa asociatividad. El contraejemplo y la prueba cumplen funciones distintas: el primero detecta que la condición no puede omitirse; la segunda demuestra que la condición añadida basta.
+
+### Solución 5. Unicidad supuesta
+
+El argumento identifica sin justificación cada candidato con un objeto ya seleccionado como «el» inverso. Eso presupone precisamente que todos los candidatos coinciden. Para establecer la unicidad por primera vez, partimos sólo de $a+u=0$ y $a+v=0$ y escribimos
+
+$$
+\begin{aligned}
+u&=u+0=u+(a+v)\\
+ &=(u+a)+v=0+v=v.
+\end{aligned}
+$$
+
+La conmutatividad permite usar $u+a=0$; la asociatividad permite reagrupar. Ningún paso emplea notación que requiera la unicidad pendiente. Después de esta comparación y de la existencia axiomática sí podemos introducir $-a$.
+
+### Solución 6. Una desigualdad sin estructura
+
+Se omitió que el cuerpo esté provisto de un orden compatible. La reparación es: «En un cuerpo ordenado, todo cuadrado no nulo es positivo; en consecuencia, $x^2=-1$ no tiene solución».
+
+En efecto, $0<1$ y por traslación $-1<0$. Si $x=0$, su cuadrado es $0\ne-1$. Si $x\ne0$, su cuadrado es positivo por la prueba de §5.8 y no puede ser $-1$. Los casos cubren todos los elementos.
+
+El complejo $i$ satisface $i^2=-1$, por lo que refuta la pretendida prohibición en todo cuerpo. También impide un orden **compatible con sus operaciones**. No demuestra que el conjunto de pares no pueda recibir otra relación de orden; lo que falla es la exigencia conjunta de orden y compatibilidad algebraica.
+
+### Solución 7. Tres comportamientos de una definición
+
+Podemos elegir $S=\{0\}$, $T=\{0,2\}$ y $U=\{2\}$. Como la función es constante cero, $f(S)=\{0\}=S$ y $f(T)=\{0\}\subsetneq T$. Esto hace estable a $T$, aunque no recupere todos sus elementos como valores. En cambio, $2\in U$ y $f(2)=0\notin U$, de modo que $U$ no es estable.
+
+El vacío sí es estable y su imagen es vacía. La imagen reúne valores procedentes de entradas del conjunto; sin entradas no reúne ningún valor, aunque la fórmula global de la función sea constante. Es importante no escribir erróneamente $f(\varnothing)=\{0\}$.
+
+### Solución 8. Nombrar no proporciona un testigo
+
+No existe tal real. Para cualquier $r\in\mathbb R$, tenemos $r^2\ge0$, luego $r^2+1\ge1>0$. La definición describe una propiedad que ningún real cumple; no produce un testigo por haber introducido un nombre.
+
+En $\mathbb C$ sí existen ejemplos: $i^2+1=0$ y también $(-i)^2+1=i^2+1=0$, usando la regla de dos signos. No necesitamos afirmar aquí que sean los únicos para responder a la pregunta de existencia. El cambio de dominio altera qué objetos pueden satisfacer la ecuación.
+
+### Solución 9. ¿Por qué pedir $0\ne1$?
+
+Toda operación escrita con elementos de $E$ produce $e$, así que las operaciones están bien definidas y son internas. Las dos asociaciones de una suma o producto, y ambos órdenes de sus factores, dan $e$. También las dos expresiones de la distributividad dan $e$.
+
+Las constantes elegidas actúan como neutros porque $e+e=e$ y $ee=e$. El propio $e$ es un inverso aditivo de la única entrada, pues $e+e=e=0_E$. El axioma de inverso multiplicativo tiene forma condicional para las entradas distintas de $0_E$: no hay ninguna, de modo que la condición universal se cumple vacíamente.
+
+Falla exactamente la no trivialidad: $0_E=1_E$. Por ello no es un cuerpo según nuestra definición. La conclusión se obtiene comprobando condiciones, no descartando el ejemplo por parecer demasiado pequeño.
+
+### Solución 10. Unir conjuntos estables
+
+Sea $x\in S\cup T$. Si $x\in S$, su imagen pertenece a $S$ por estabilidad y, por tanto, a $S\cup T$. Si $x\notin S$, la pertenencia a la unión obliga a $x\in T$; entonces $f(x)\in T\subseteq S\cup T$. En todos los casos, la imagen permanece en la unión, que es estable.
+
+No hace falta disjunción de conjuntos. Cuando $x$ pertenece a ambos, cualquiera de las dos hipótesis sirve; no hay conflicto. La elección de casos viene de la disyunción en la definición de unión, a diferencia de la conjunción que organizó la prueba para la intersección.
+
+### Solución 11. Resolver y verificar
+
+Como $a\ne0$, existe $a^{-1}\in F$. Tomamos $x=a^{-1}b$, que pertenece a $F$ por cierre del producto. Entonces
+
+$$
+ax=a(a^{-1}b)=(aa^{-1})b=1b=b.
+$$
+
+El candidato es una solución. Si $x$ e $y$ fueran dos soluciones, tendríamos $ax=b=ay$ y la cancelación con $a\ne0$ daría $x=y$. Esto prueba unicidad, además de existencia.
+
+Si $a=0$ y $b=0$, todo $x\in F$ es solución por absorción del cero. No hay unicidad, pues al menos $0$ y $1$ son distintos. Si $a=0$ y $b\ne0$, ninguna entrada satisface $0x=b$, ya que el miembro izquierdo siempre vale $0$. Clasificar primero los casos evita aplicar una fórmula que no está definida en todos ellos.
+
+### Solución 12. Invertir de nuevo
+
+Si $a^{-1}=0$, entonces $aa^{-1}=a0=0$. Pero la propiedad del inverso dice $aa^{-1}=1$, de donde $0=1$, contradicción. Por tanto, $a^{-1}\ne0$ y existe su inverso multiplicativo.
+
+La conmutatividad da $a^{-1}a=aa^{-1}=1$. Así, $a$ es un candidato a inverso de $a^{-1}$. Por unicidad, $(a^{-1})^{-1}=a$. El primer paso legitima la expresión que aparece en el segundo; encontrar una fórmula familiar no autoriza omitir su condición de existencia.
+
+### Solución 13. Una función sobre un cuerpo
+
+La función está bien definida porque $ax+b\in F$. Si $g(x)=g(y)$, entonces $ax+b=ay+b$; cancelando aditivamente $b$ obtenemos $ax=ay$, y cancelando el factor no nulo $a$ concluimos $x=y$. Por tanto, $g$ es inyectiva.
+
+Para $t\in F$ arbitrario, elegimos $x=a^{-1}(t-b)$. La distributividad, la asociatividad y las identidades de inversos dan
+
+$$
+\begin{aligned}
+g(x)&=a(a^{-1}(t-b))+b\\
+&=(t-b)+b=t.
+\end{aligned}
+$$
+
+Así, es sobreyectiva y, por ambas propiedades, biyectiva. Definimos $h:F\to F$ por $h(t)=a^{-1}(t-b)$. La igualdad anterior verifica $g(h(t))=t$. En la otra dirección,
+
+$$
+\begin{aligned}
+h(g(x))&=a^{-1}((ax+b)-b)\\
+&=a^{-1}(ax)=x.
+\end{aligned}
+$$
+
+Hemos comprobado ambas recuperaciones sin usar un orden. La idea de elegir $x$ proviene de leer la ecuación $ax+b=t$ como una obligación y deshacer las operaciones con resultados ya justificados.
+
+### Solución 14. El símbolo cambia, la obligación permanece
+
+El neutro debe satisfacer $x\star e=x$ y $e\star x=x$. La primera ecuación se traduce en $x+e+1=x$, que obliga a $e=-1$ en los racionales. Comprobamos las dos direcciones: $x\star(-1)=x-1+1=x$ y $(-1)\star x=-1+x+1=x$.
+
+Para hallar $u$, usamos ahora el neutro correcto:
+
+$$
+x\star u=-1\quad\Longleftrightarrow\quad x+u+1=-1.
+$$
+
+El candidato es $u=-x-2$. Sustituirlo da $x\star u=-1$ y $u\star x=-1$. La asociatividad se comprueba expandiendo:
+
+$$
+(x\star y)\star z=x+y+z+2=x\star(y\star z).
+$$
+
+La operación es interna porque suma racionales. Pedir $x\star u=0$ sería pedir otro valor final: daría $u=-x-1$, que no es un inverso respecto del neutro $-1$. El nombre «inverso» depende de la operación y de su neutro, no del aspecto del símbolo $0$ de la aritmética usual.
+
+### Solución 15. Cuando toda parte es estable
+
+**De (a) a (b).** Fijemos $x\in A$. El singleton $\{x\}$ es un subconjunto de $A$ y, por (a), es estable. Por tanto, $f(x)\in\{x\}$, lo que significa $f(x)=x$.
+
+**De (b) a (c).** Para cualquier $S\subseteq A$, si $y\in f(S)$ existe $x\in S$ con $y=f(x)=x$; luego $y\in S$. Recíprocamente, si $y\in S$, entonces $f(y)=y$ y esa entrada muestra que $y\in f(S)$. Por doble inclusión, $f(S)=S$.
+
+**De (c) a (a).** Para cualquier $S$, la igualdad $f(S)=S$ implica $f(S)\subseteq S$; por la equivalencia de §5.4, $S$ es estable. Las tres implicaciones cierran el ciclo y prueban equivalencia.
+
+Si $A=\varnothing$, la única función $A\to A$ es la vacía y el único subconjunto es $\varnothing$. (a) se cumple por estabilidad del vacío; (b), por vacuidad de su universal; (c), por $f(\varnothing)=\varnothing$. La prueba general sigue siendo válida.
+
+La clave fue poder escoger **cada singleton**. La estabilidad de un conjunto aislado no ofrece esa información. Al cuantificar sobre todos los subconjuntos, la hipótesis se vuelve mucho más fuerte y fuerza que cada entrada sea un punto fijo.
+
+### De las definiciones a la arquitectura de las demostraciones
+
+En este capítulo hemos usado definiciones para extraer datos, fijar objetivos, construir ejemplos y localizar errores. El laboratorio de cuerpos mostró que incluso reglas conocidas necesitan un lugar preciso en la cadena de razones: una existencia no implica por sí sola unicidad; una cancelación tiene hipótesis; una desigualdad exige un orden.
+
+En el capítulo 6 organizaremos las formas de demostración que ya hemos utilizado: prueba directa, dos direcciones de una equivalencia, casos, contraposición, contradicción, existencia y unicidad. Su estudio partirá de una disciplina que ahora podemos aplicar: antes de elegir una estrategia, saber exactamente qué dicen los datos y qué obliga a demostrar la conclusión.
+
+---
+
+[← Capítulo 4](fundamentos-para-matematicos-capitulo-4-conjuntos-relaciones-y-funciones.qmd) · [Índice del libro y bibliografía](../para-matematicos/fundamentos-para-matematicos.qmd) · [Capítulo 6 →](fundamentos-para-matematicos-capitulo-6-demostraciones.qmd)

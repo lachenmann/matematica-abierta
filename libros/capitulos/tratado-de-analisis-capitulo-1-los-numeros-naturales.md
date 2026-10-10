@@ -1,0 +1,63 @@
+---
+title: "Tratado de análisis — Capítulo 1: Los números naturales"
+description: "Construcción conjuntista de los números naturales: axioma de infinito, omega, inducción, Peano, recursión, suma, producto, orden natural, balance estructural, notas bibliográficas y transición hacia los enteros."
+author: "Gustav A. Tachek"
+content-id: MA-BCH-0007
+content-type: book-chapter
+book-id: MA-BOK-0003
+status: published
+date-created: 2026-09-13
+date-modified: 2026-09-19
+areas:
+  - fundamentos
+  - analisis
+level: avanzado
+topics:
+  - numeros-naturales
+  - teoria-de-conjuntos
+  - induccion
+  - peano
+  - recursion
+  - adicion
+  - multiplicacion
+  - orden
+  - buen-orden
+prerequisites:
+  - MA-BCH-0005
+related:
+  - MA-BOK-0003
+  - MA-BCH-0005
+  - MA-BCH-0006
+provenance:
+  type: original
+  sources: []
+license: GFDL-1.3-or-later
+---
+
+# Capítulo 1 — Los números naturales
+
+[**← Volver al Tratado de análisis**](../otros/tratado-de-analisis.md) · [**Capítulo anterior**](tratado-de-analisis-capitulo-0-fundamento-logico-y-conjuntista.md) · [**Capítulo siguiente**](tratado-de-analisis-capitulo-2-los-numeros-enteros.md)
+
+*Parte I — Fundamentos y construcción de los reales*
+
+---
+
+{{< include _tratado-cap1-00.md >}}
+
+{{< include _tratado-cap1-01.md >}}
+
+{{< include _tratado-cap1-02.md >}}
+
+{{< include _tratado-cap1-03.md >}}
+
+{{< include _tratado-cap1-04.md >}}
+
+{{< include _tratado-cap1-05.md >}}
+
+{{< include _tratado-cap1-06.md >}}
+
+{{< include _tratado-cap1-07.md >}}
+
+{{< include _tratado-cap1-08.md >}}
+
+{{< include _tratado-cap1-09.md >}}

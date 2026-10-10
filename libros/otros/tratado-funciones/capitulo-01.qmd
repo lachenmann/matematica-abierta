@@ -1,0 +1,273 @@
+---
+title: Capítulo 1. Reconstrucción axiomática de la función desde las aplicaciones
+document-id: TF-CAT-001
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-001
+source-version: 1.0.3
+date-modified: '2026-10-01'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-001
+    locator: TF-CAT-001 - Reconstruccion axiomatica desde las aplicaciones.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0117
+content-type: book-chapter
+source-id: TF-T1-C01
+description: 'Tratado fundacional de la teoría de funciones: capítulo 1, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: teoría elemental de categorías; lógica subyacente con igualdad; objetos
+  y flechas dados
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Propósito
+Investigar qué puede demostrarse sobre aplicaciones, gráficas y objetos de funciones sin definir inicialmente una función como conjunto de pares ordenados. El experimento no niega la teoría de conjuntos: registra la estructura necesaria y mantiene explícita la metateoría.
+:::
+
+
+## 1.1. Pregunta rectora y marco lógico
+
+Habitualmente se presenta una función mediante pares ordenados. Podemos invertir el orden de la construcción: considerar primitivas las aplicaciones y su composición, y preguntar cómo recuperar su gráfica. La distinción evita confundir el objeto matemático con una de sus codificaciones. Trabajaremos con el concepto ordinario de **categoría**, sin afirmar que todas sus flechas sean funciones conjuntistas ni que el lenguaje categórico sea autosuficiente sin metateoría.
+
+Los datos de una categoría $\mathcal C$ son objetos, flechas $f:A\to B$ dotadas de dominio y codominio, una identidad $1_A:A\to A$ por objeto y una composición $g\circ f:A\to C$ para cada par $f:A\to B$, $g:B\to C$. La composición está definida para los pares composables y sus extremos son los declarados. Asumimos que la lógica subyacente admite igualdad de flechas.
+
+<a id="TF-AX-00001"></a>
+
+**Axioma 1.1.1 — Asociatividad** <!-- result-id: TF-AX-00001 -->
+
+Para $f:A\to B$, $g:B\to C$ y $h:C\to D$,
+
+$$
+h\circ(g\circ f)=(h\circ g)\circ f.
+$$
+
+<a id="TF-AX-00002"></a>
+
+**Axioma 1.1.2 — Identidades** <!-- result-id: TF-AX-00002 -->
+
+Para toda $f:A\to B$,
+
+$$
+f\circ1_A=f=1_B\circ f.
+$$
+
+<a id="TF-THM-00001"></a>
+
+**Teorema 1.1.3 — Unicidad de la identidad** <!-- result-id: TF-THM-00001; depends-on: TF-AX-00002 -->
+
+Si $e,e':A\to A$ satisfacen ambas leyes de identidad para las flechas incidentes en $A$, entonces $e=e'$.
+
+*Demostración.* Dado que $e$ actúa como identidad izquierda de $e'$, $e\circ e'=e'$. Como $e'$ actúa como identidad derecha de $e$, $e\circ e'=e$. Por transitividad, $e=e'$. $\square$
+
+<a id="TF-DEF-00001"></a>
+
+**Definición 1.1.4 — Isomorfismo** <!-- result-id: TF-DEF-00001; depends-on: TF-AX-00002 -->
+
+Una flecha $f:A\to B$ es un *isomorfismo* cuando existe $g:B\to A$ con
+
+$$
+g\circ f=1_A,\qquad f\circ g=1_B.
+$$
+
+<a id="TF-THM-00002"></a>
+
+**Teorema 1.1.5 — Unicidad de la inversa** <!-- result-id: TF-THM-00002; depends-on: TF-DEF-00001, TF-AX-00001, TF-AX-00002 -->
+
+Si $g$ y $h$ son inversas de $f:A\to B$, entonces $g=h$.
+
+*Demostración.* Las leyes de identidad, la hipótesis de que $h$ es inversa derecha, la asociatividad y la hipótesis de que $g$ es inversa izquierda proporcionan sucesivamente
+
+$$
+g=g\circ1_B=g\circ(f\circ h)=(g\circ f)\circ h=1_A\circ h=h.
+$$
+
+$\square$
+
+::: {.callout-warning}
+## Frontera del sistema
+Estos axiomas no caracterizan las funciones entre conjuntos. Por ejemplo, un grupo no trivial, visto como categoría con un solo objeto y los elementos del grupo como flechas, satisface asociatividad e identidades. Las flechas de una categoría general no son necesariamente funciones conjuntistas.
+:::
+
+
+## 1.2. Objetos terminales y elementos
+
+<a id="TF-AX-00003"></a>
+
+**Axioma 1.2.1 — Existencia de un objeto terminal** <!-- result-id: TF-AX-00003 -->
+
+Existe un objeto $1$ tal que para cada objeto $A$ existe exactamente una flecha $!_A:A\to1$.
+
+<a id="TF-DEF-00002"></a>
+
+**Definición 1.2.2 — Elemento global** <!-- result-id: TF-DEF-00002; depends-on: TF-AX-00003 -->
+
+Un elemento global de $A$ es una flecha $a:1\to A$ desde un objeto terminal elegido. En la categoría ordinaria de conjuntos, estas flechas se corresponden con los elementos del conjunto $A$.
+
+<a id="TF-THM-00003"></a>
+
+**Teorema 1.2.3 — Los objetos terminales son únicos salvo isomorfismo único** <!-- result-id: TF-THM-00003; depends-on: TF-AX-00003, TF-DEF-00001, TF-AX-00002 -->
+
+Si $1$ y $1'$ son terminales, existe un único isomorfismo $u:1\to1'$.
+
+*Demostración.* Por terminalidad de $1'$ existe una única $u:1\to1'$, y por terminalidad de $1$ una única $v:1'\to1$. Tanto $v\circ u$ como $1_1$ son flechas $1\to1$; la terminalidad de $1$ obliga a $v\circ u=1_1$. Del mismo modo, $u\circ v=1_{1'}$. Por la Definición 1.1.4, $u$ es un isomorfismo. Es único como flecha $1\to1'$ por terminalidad. $\square$
+
+La ausencia de elementos globales **no** implica por sí misma que un objeto sea inicial. Como contraejemplo, considérese la categoría asociada al orden $0<a<1$, con una flecha $x\to y$ exactamente cuando $x\le y$. El objeto $1$ es terminal; no hay flecha $1\to a$, pero $a$ no es inicial porque no existe flecha $a\to0$.
+
+## 1.3. Productos y la gráfica de una aplicación
+
+<a id="TF-AX-00004"></a>
+
+**Axioma 1.3.1 — Productos binarios** <!-- result-id: TF-AX-00004 -->
+
+Para cada par $A,B$ existe un objeto $A\times B$ y flechas $\pi_A:A\times B\to A$ y $\pi_B:A\times B\to B$ tales que, para todo $X$ y $u:X\to A$, $v:X\to B$, existe una única flecha $\langle u,v\rangle:X\to A\times B$ con
+
+$$
+\pi_A\circ\langle u,v\rangle=u,\qquad
+\pi_B\circ\langle u,v\rangle=v.
+$$
+
+<a id="TF-DEF-00003"></a>
+
+**Definición 1.3.2 — Monomorfismo** <!-- result-id: TF-DEF-00003; depends-on: [] -->
+
+Una flecha $m:R\to S$ es monomorfismo si, para todo $X$ y $u,v:X\to R$,
+
+$$
+m\circ u=m\circ v\ \Longrightarrow\ u=v.
+$$
+
+<a id="TF-THM-00004"></a>
+
+**Teorema 1.3.3 — La gráfica es un monomorfismo** <!-- result-id: TF-THM-00004; depends-on: TF-AX-00002, TF-AX-00004, TF-DEF-00003 -->
+
+Para $f:A\to B$ definimos $\gamma_f:=\langle1_A,f\rangle:A\to A\times B$. La flecha $\gamma_f$ es monomorfismo.
+
+*Demostración.* Por la propiedad universal del producto, $\pi_A\circ\gamma_f=1_A$. Si $\gamma_f\circ u=\gamma_f\circ v$ con $u,v:X\to A$, al componer por $\pi_A$ obtenemos $1_A\circ u=1_A\circ v$. Las identidades dan $u=v$. $\square$
+
+<a id="TF-THM-00005"></a>
+
+**Teorema 1.3.4 — Caracterización estructural de las gráficas** <!-- result-id: TF-THM-00005; depends-on: TF-THM-00004, TF-AX-00004, TF-DEF-00001 -->
+
+Sea $m:R\rightarrowtail A\times B$ un monomorfismo y $p:=\pi_A\circ m:R\to A$. El subobjeto representado por $m$ es la gráfica de alguna flecha $f:A\to B$ **si y solo si** $p$ es un isomorfismo. Aquí «el mismo subobjeto» significa que existe un isomorfismo de dominios que conmuta con las flechas hacia $A\times B$.
+
+*Demostración.* Supongamos que $p$ es un isomorfismo. Definamos $f:=\pi_B\circ m\circ p^{-1}:A\to B$. La propiedad universal del producto y las definiciones de $p$ y $f$ dan
+
+$$
+\gamma_f\circ p
+=\langle1_A,f\rangle\circ p
+=\langle p,\pi_B\circ m\rangle
+=m.
+$$
+
+Como $p$ es isomorfismo, $m$ y $\gamma_f$ representan el mismo subobjeto. Recíprocamente, si $m=\gamma_f\circ i$ para algún isomorfismo $i:R\to A$, entonces $p=\pi_A\circ\gamma_f\circ i=1_A\circ i=i$, que es isomorfismo. $\square$
+
+**Comprobación conjuntista.** En la categoría de conjuntos, un subobjeto $R\hookrightarrow A\times B$ equivale a un subconjunto de $A\times B$ salvo isomorfismo. La proyección $R\to A$ es biyectiva exactamente cuando cada $a\in A$ aparece en un único par $(a,b)\in R$. De este modo reaparece la condición
+
+$$
+\forall a\in A\ \exists!b\in B\ ((a,b)\in R).
+$$
+
+No se ha utilizado elección: la existencia y unicidad del valor suministran una proyección invertible.
+
+::: {.callout-note}
+## Prueba de estrés: el codominio no está contenido en la gráfica
+Las aplicaciones $(\{0\},\{0\},\{(0,0)\})$ y $(\{0\},\{0,1\},\{(0,0)\})$ comparten gráfica conjuntista, pero no codominio. Bajo la convención con extremos explícitos, son flechas diferentes; la primera es sobreyectiva y la segunda no. Este ejemplo no introduce una definición adicional de aplicación categórica: contrasta codificaciones en $\mathbf{Set}$.
+:::
+
+
+## 1.4. Exponenciales: representar internamente todas las aplicaciones
+
+Los productos permiten construir la flecha gráfica de una aplicación ya dada. No garantizan por sí mismos un objeto que represente la colección de todas las aplicaciones $A\to B$. Para esto introducimos otro requisito.
+
+<a id="TF-AX-00005"></a>
+
+**Axioma 1.4.1 — Exponenciales** <!-- result-id: TF-AX-00005 -->
+
+Para cualesquiera $A,B$ existe un objeto $B^A$ y una evaluación $\operatorname{ev}:B^A\times A\to B$ tales que, para cada $h:X\times A\to B$, existe una única $\lambda h:X\to B^A$ que cumple
+
+$$
+\operatorname{ev}\circ(\lambda h\times1_A)=h.
+$$
+
+La flecha $\lambda h\times1_A$ se obtiene por la propiedad universal del producto.
+
+<a id="TF-THM-00006"></a>
+
+**Teorema 1.4.2 — Las aplicaciones como elementos del exponencial** <!-- result-id: TF-THM-00006; depends-on: TF-AX-00002, TF-AX-00003, TF-AX-00004, TF-AX-00005 -->
+
+Hay una biyección canónica
+
+$$
+\operatorname{Hom}(A,B)\cong\operatorname{Hom}(1,B^A).
+$$
+
+*Demostración.* La propiedad universal del exponencial para $X=1$ establece una correspondencia mutuamente inversa entre flechas $1\times A\to B$ y flechas $1\to B^A$. Por otra parte, la proyección $\pi_A:1\times A\to A$ es un isomorfismo: su inversa es $\langle!_A,1_A\rangle:A\to1\times A$, y las igualdades de inversa se deducen de las propiedades universales del terminal y el producto. Precomponer con ese isomorfismo identifica $\operatorname{Hom}(1\times A,B)$ con $\operatorname{Hom}(A,B)$, lo que da la biyección anunciada. $\square$
+
+Esta afirmación **no** identifica necesariamente $B^A$ con un conjunto de funciones en una categoría arbitraria. Caracteriza un objeto por su propiedad universal. El conjunto de homomorfismos $\operatorname{Hom}(A,B)$ se entiende aquí metateóricamente; si la categoría es grande, la expresión denota en general una clase de flechas y la correspondencia puede requerir convenciones de tamaño. El teorema puede leerse flecha a flecha sin postular que toda esa colección sea un conjunto.
+
+## 1.5. Frontera del experimento
+
+No hemos demostrado que una categoría cualquiera sea la categoría de conjuntos. Para desarrollar fundamentos categóricos de conjuntos al estilo ETCS deben añadirse principios que distingan a los conjuntos ordinarios de otras categorías; entre ellos intervienen, en las formulaciones usuales, límites finitos, exponenciales, un clasificador de subobjetos, condiciones de buena punteación, un objeto de números naturales y elección. La formulación precisa y la comparación de fuerza con ZFC requieren un estudio axiomático separado.
+
+En particular, la **extensionalidad por elementos globales**
+
+$$
+\left[\forall a:1\to A,\quad f\circ a=g\circ a\right]\Longrightarrow f=g
+$$
+
+no se deduce de los axiomas tratados en este capítulo. Su examen es el siguiente nodo, `TF-CAT-002`.
+
+## 1.6. Auditoría de dependencias y limitaciones
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Resultado | Dependencias directas |
+|---|---|
+| Unicidad de la identidad | Identidades |
+| Unicidad de la inversa | Isomorfismo, asociatividad, identidades |
+| Terminales únicos salvo isomorfismo único | Terminalidad, isomorfismo, identidades |
+| Gráfica monomórfica | Productos, identidades, monomorfismo |
+| Caracterización de gráficas | Productos, isomorfismos, construcción de gráfica |
+| Elementos de $B^A$ | Terminal, productos, exponenciales |
+
+:::
+
+
+**Auditoría fundacional:** ninguna de las seis demostraciones utiliza elección, tercero excluido sustantivo, números naturales ni infinitud. Las construcciones son canónicas *dentro de una categoría con las estructuras postuladas*. No se afirma que sus objetos o sus flechas sean computables en el sentido de Turing, ni se presupone decidibilidad de igualdad de flechas. Los cinco enunciados rotulados como axiomas son hipótesis de estructura, no teoremas derivados.
+
+**QA matemática y editorial:** se verificaron tipos/dominios de las composiciones, uso previo de definiciones, ambas direcciones de la caracterización de gráficas y caso de terminalidad; `TF-THM-00005` dispone de formalización verificada e integrada por PR #144 (F1); la auditoría del [apéndice D](apendice-d.qmd) identifica además `graphStructural_mono` como prueba completa de `TF-THM-00004` en esa misma PR. Es una correspondencia nueva de código ya comprobado, sin compilación nueva. Los demás resultados no reciben certificación por este hecho. Véase informe F1. Se corrigió la colisión entre el identificador documental provisional `TF-CAT-001` y la numeración informal `TF-CAT-001…008` de la redacción en conversación: esta última se conserva únicamente como referencia histórica en el registro; los nodos del manuscrito usan IDs globales `TF-AX-*`, `TF-DEF-*` y `TF-THM-*`.
+
+## 1.7. Fuentes y procedencia
+
+El texto matemático y las demostraciones son una redacción propia de resultados estándar; no se reivindica originalidad de los teoremas categóricos. El cotejo de fuente primaria se apoya en los siguientes ejemplares de la colección personal:
+
+- F. William Lawvere y Robert Rosebrugh, *Sets for Mathematics* (Cambridge University Press, 2003), capítulos 1 (§§1.1–1.5), 3 (§3.3, gráficas y productos) y 5 (exponenciales). Ejemplar en Drive (referencia privada; véase la bibliografía pública).
+- Herbert B. Enderton, *Elements of Set Theory* (Academic Press, 1977), capítulo 3, «Relations and Functions», especialmente pp. 42–44. Ejemplar en Drive (referencia privada; véase la bibliografía pública).
+- MA-PED v1.0; MATH-FAP-0001; MATH-REF-0001; MA-WEB-FLOW-0001.
+
+::: {.tf-navigation}
+[← Anterior](matriz-hipotesis.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-02.qmd)
+:::

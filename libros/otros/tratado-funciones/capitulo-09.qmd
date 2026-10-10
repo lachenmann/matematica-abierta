@@ -1,0 +1,283 @@
+---
+title: Capítulo 9. Dominio decidible, computabilidad y representaciones efectivas
+document-id: TF-CAT-009
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-009
+source-version: 1.0.4
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-009
+    locator: TF-CAT-009 - Dominio decidible computabilidad y representaciones efectivas.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0125
+content-type: book-chapter
+source-id: TF-T1-C09
+description: 'Tratado fundacional de la teoría de funciones: capítulo 9, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: computabilidad de Turing clásica sobre N en secciones 9.1–9.4; teoría
+  de espacios representados y realizadores Tipo 2 en secciones 9.5–9.6; comparación
+  explícita con los clasificadores categóricos, no deducción de efectividad desde
+  axiomas categóricos
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Problema rector
+Un objeto categórico puede representar cada función parcial sin ofrecer un procedimiento para evaluar su valor o reconocer si existe. ¿Qué estructura computacional adicional permite hablar con rigor de algoritmos? ¿Cómo cambian las afirmaciones sobre el dominio cuando sustituimos una máquina que se detiene exactamente en él por un realizador que sólo debe comportarse correctamente sobre entradas prometidas?
+:::
+
+
+**Contrato de continuidad.** El [capítulo 6](capitulo-06.qmd) definió las aplicaciones parciales y sus extensiones; el [capítulo 7](capitulo-07.qmd) distinguió las características lógicas de los procedimientos de decisión; el [capítulo 8](capitulo-08.qmd) construyó clasificadores y explicó por qué la flecha total hacia $L(B)$ no es necesariamente computable. No repetimos estos resultados ni cambiamos el significado de sus IDs. Aquí se añaden **datos efectivos**: primero una numeración convencional de máquinas sobre $\mathbb N$; luego representaciones y realizadores sobre $\mathbb N^{\mathbb N}$. El puente entre ambas capas será un teorema bajo representaciones concretas, **no** una identificación silenciosa de definiciones.
+
+## 9.1. Qué significa computar una función parcial
+
+<a id="TF-DEF-00035"></a>
+
+**Definición 9.1.1 — Función parcial computable sobre los naturales** <!-- result-id: TF-DEF-00035; depends-on: TF-DEF-00021, TF-DEF-00022 -->
+
+Fijamos una codificación efectiva de programas de Turing y de pares de naturales, con una máquina universal. Una función parcial $f:\mathbb N\rightharpoonup\mathbb N$ es *parcial computable* (en el sentido de parada exacta) si existe un programa $M$ tal que, para cada $n$:
+
+- si $n\in D=\operatorname{dom}(f)$, $M(n)$ termina y devuelve $f(n)$;
+- si $n\notin D$, $M(n)$ no termina.
+
+Escribiremos $\varphi_e$ para la función del programa con índice $e$ y $\varphi_e(n)\downarrow$ para su terminación. Una función computable *total* es la que posee un programa que termina en todas las entradas. La representación por un span y su igualdad matemática pertenecen a los capítulos anteriores; un **índice de programa** es información adicional y no se identifica con la propia función: programas distintos pueden calcular la misma función.
+
+<a id="TF-DEF-00036"></a>
+
+**Definición 9.1.2 — Conjuntos semidecidibles y decidibles** <!-- result-id: TF-DEF-00036; depends-on: TF-DEF-00035 -->
+
+$D\subseteq\mathbb N$ es *computablemente enumerable* (c.e.) si existe un procedimiento que enumera exactamente sus elementos, permitiendo repeticiones y que no emita ninguno si $D=\varnothing$; equivalentemente, hay un reconocedor que termina precisamente en los elementos de $D$. Es *decidible* si su función característica $\chi_D:\mathbb N\to\{0,1\}$ es total computable. La equivalencia se comprueba mediante simulación escalonada de reconocedores sobre todas las entradas, y en el otro sentido buscando la entrada en la enumeración hasta que aparezca. Una respuesta afirmativa eventual no constituye una decisión negativa.
+
+<a id="TF-THM-00069"></a>
+
+**Teorema 9.1.3 — Dominio semidecidible** <!-- result-id: TF-THM-00069; depends-on: TF-DEF-00035, TF-DEF-00036 -->
+
+El dominio de toda función parcial computable $f:\mathbb N\rightharpoonup\mathbb N$ es c.e.
+
+*Demostración.* En la entrada $n$ simulamos el programa de $f$ y aceptamos si se detiene. Por la condición exacta de la definición, este reconocedor se detiene si y sólo si $n\in\operatorname{dom}(f)$. Para una enumeración sin argumento, en la etapa $s$ simulamos durante $s$ pasos cada entrada $n\le s$ y emitimos las entradas cuya ejecución se haya detenido: todo miembro del dominio aparece en alguna etapa y ninguno ajeno puede aparecer. $\square$
+
+<a id="TF-THM-00070"></a>
+
+**Teorema 9.1.4 — Criterio efectivo por la gráfica** <!-- result-id: TF-THM-00070; depends-on: TF-DEF-00035, TF-DEF-00036, TF-THM-00069, TF-THM-00004 -->
+
+Una función parcial conjuntista $f:\mathbb N\rightharpoonup\mathbb N$ es parcial computable si y sólo si su gráfica $G_f=\{(n,m):n\in\operatorname{dom}(f),\ f(n)=m\}$ es c.e. bajo una codificación computable de pares.
+
+*Demostración.* Si un programa calcula $f$, efectuamos la simulación escalonada anterior y, cada vez que una ejecución $f(n)$ se detiene con salida $m$, enumeramos $(n,m)$. Recíprocamente, dada una enumeración de $G_f$, al recibir $n$ examinamos sucesivamente sus pares hasta hallar alguno cuya primera coordenada sea $n$, y entonces devolvemos su segunda coordenada. Si $n$ pertenece al dominio, aparece un par y el algoritmo termina; si no pertenece, nunca aparece. La **unicidad del segundo componente**, porque se trata de la gráfica de una función y no de una relación multivaluada, hace inequívoca la salida. No se elige un elemento arbitrario de una fibra. $\square$
+
+<a id="TF-THM-00071"></a>
+
+**Teorema 9.1.5 — Cualquier conjunto c.e. puede ser un dominio** <!-- result-id: TF-THM-00071; depends-on: TF-DEF-00036, TF-DEF-00035 -->
+
+Para $D\subseteq\mathbb N$ son equivalentes: (i) $D$ es c.e.; (ii) existe una función parcial computable $f$ con $\operatorname{dom}(f)=D$. Podemos exigir que $f(n)=0$ siempre que esté definida.
+
+*Demostración.* (ii)$\Rightarrow$(i) es el Teorema 9.1.3. Si $D$ es c.e., ejecutamos su enumerador hasta que aparezca la entrada $n$; entonces devolvemos $0$. Si $D$ es vacío, nunca se devuelve nada. La máquina se detiene exactamente en $D$. $\square$
+
+<a id="TF-CEX-00008"></a>
+
+**Contraejemplo 9.1.6 — El conjunto de parada no es decidible** <!-- result-id: TF-CEX-00008; depends-on: TF-DEF-00035, TF-DEF-00036, TF-THM-00069 -->
+
+Sea $K=\{e:\varphi_e(e)\downarrow\}$. Por simulación universal, $K$ es c.e. Supongamos que existe un programa total que decide $K$. Construyamos un programa $Q(n)$ que consulta al decisor y **se detiene exactamente cuando el decisor responde que $n\notin K$** (en el otro caso entra en bucle). Si $d$ es un índice de $Q$, tenemos
+
+$$d\in K\iff Q(d)\downarrow\iff d\notin K,$$
+
+contradicción. Por tanto $K$ es c.e. e indecidible. Su complemento no es c.e.: si $K$ y su complemento fueran c.e., simularíamos sus dos reconocedores en paralelo hasta que uno terminara y decidiríamos $K$. Esta prueba es una diagonalización sobre la numeración de programas, no una apelación a «cálculos muy largos». $\square$
+
+::: {.callout-note}
+## Dónde entra la divergencia exacta
+El contrato de divergencia fuera del dominio se usa en el Teorema 9.1.3 cuando el reconocedor se detiene **si y sólo si** la entrada pertenece a $\operatorname{dom}(f)$, y en el Teorema 9.1.4, en sentido inverso, cuando la búsqueda de un par $(n,m)$ en la gráfica no termina si tal par no existe. Un realizador bajo promesa no posee este contrato: fuera de los nombres válidos de argumentos del dominio puede terminar, divergir o producir datos irrelevantes. Esta diferencia será decisiva en §9.5.
+:::
+
+
+## 9.2. Extensión computable y decisión del dominio son problemas distintos
+
+<a id="TF-DEF-00037"></a>
+
+**Definición 9.2.1 — Extensión total computable** <!-- result-id: TF-DEF-00037; depends-on: TF-DEF-00024, TF-DEF-00035, TF-THM-00048 -->
+
+Para $f:\mathbb N\rightharpoonup\mathbb N$, una *extensión total computable* es una función total computable $g:\mathbb N\to\mathbb N$ tal que $g(n)=f(n)$ para cada $n\in\operatorname{dom}(f)$. Fuera de ese dominio la extensión puede adoptar **cualquier** valor natural. No se le exige informar si la función original estaba definida; esa exigencia sería otra operación.
+
+<a id="TF-THM-00072"></a>
+
+**Teorema 9.2.2 — Dominio decidible permite extensión computable** <!-- result-id: TF-THM-00072; depends-on: TF-DEF-00037, TF-DEF-00036, TF-DEF-00035, TF-THM-00048 -->
+
+Si $f:\mathbb N\rightharpoonup\mathbb N$ es parcial computable y su dominio $D$ es decidible, entonces posee una extensión total computable.
+
+*Demostración.* Elegimos el valor explícito $0\in\mathbb N$ y calculamos
+
+$$g(n)=\begin{cases}f(n),&\chi_D(n)=1,\\0,&\chi_D(n)=0.\end{cases}\tag{9.1}$$
+
+Primero ejecutamos el decisor de $D$, que siempre termina. Si responde afirmativamente, ejecutamos el programa de $f$, que termina precisamente porque $n\in D$; si responde negativamente, devolvemos $0$. Así $g$ termina siempre y coincide con $f$ en $D$. La existencia puramente conjuntista de la extensión del Teorema 6.4.3 no proporciona por sí misma esta máquina: aquí usamos decisor y programa. $\square$
+
+<a id="TF-CEX-00009"></a>
+
+**Contraejemplo 9.2.3 — Extensión total no implica dominio decidible** <!-- result-id: TF-CEX-00009; depends-on: TF-CEX-00008, TF-THM-00071, TF-DEF-00037 -->
+
+Definamos $f_K(n)=0$ cuando $n\in K$ e indefinida fuera de $K$. Por el Teorema 9.1.5 es parcial computable, y su dominio es indecidible. Sin embargo, la función total computable $g(n)=0$ la extiende. La extensión **olvida** dónde estaba definida la función original. $\square$
+
+<a id="TF-THM-00073"></a>
+
+**Teorema 9.2.4 — Criterio exacto para la totalización etiquetada** <!-- result-id: TF-THM-00073; depends-on: TF-DEF-00035, TF-DEF-00036, TF-DEF-00037, TF-THM-00064, TF-CEX-00009 -->
+
+Sea $f:\mathbb N\rightharpoonup\mathbb N$ parcial computable. Definamos su totalización matemática hacia la suma disjunta con etiquetas decidibles,
+
+$$\widetilde f:\mathbb N\to\mathbb N\sqcup\{\bot\},\qquad
+\widetilde f(n)=\begin{cases}\mathsf{valor}(f(n)),&n\in D,\\\mathsf{indefinido},&n\notin D.\end{cases}\tag{9.2}$$
+
+Con la codificación habitual, en la que leer la etiqueta termina y distingue ambos sumandos, $\widetilde f$ es **total computable si y sólo si $D$ es decidible**.
+
+*Demostración.* Si $\widetilde f$ es computable, calculamos su salida y leemos su etiqueta: devuelve «valor» exactamente en $D$, por lo que decide $D$. En sentido inverso, usamos el decisor de $D$; si contesta no, devolvemos la etiqueta $\bot$ y terminamos; si contesta sí, computamos $f(n)$, que entonces termina, y devolvemos su valor etiquetado. Ambas ramas terminan. La hipótesis «$f$ parcial computable» es necesaria para esta dirección; saber solamente que $D$ es decidible **no** permite calcular valores arbitrarios de $f$. $\square$
+
+Este teorema no contradice $L(\mathbb N)\cong\mathbb N\sqcup1$ en $\mathbf{Set}$ (Teorema 8.3.1). Dicho isomorfismo clasifica **funciones como objetos matemáticos**; la computabilidad de una flecha particular depende de la codificación efectiva escogida.
+
+## 9.3. Composición y cierre efectivo
+
+<a id="TF-THM-00074"></a>
+
+**Teorema 9.3.1 — Composición de funciones parciales computables** <!-- result-id: TF-THM-00074; depends-on: TF-DEF-00035, TF-DEF-00023, TF-THM-00054, TF-THM-00069 -->
+
+Si $f,g:\mathbb N\rightharpoonup\mathbb N$ son parciales computables, también lo es $g\circ_{\mathrm{par}}f$, y
+
+$$\operatorname{dom}(g\circ_{\mathrm{par}}f)=\{n:n\in\operatorname{dom}(f)\ \text{y}\ f(n)\in\operatorname{dom}(g)\}.\tag{9.3}$$
+
+*Demostración.* Sobre entrada $n$, simulamos el programa de $f(n)$. Si termina con $m$, iniciamos el programa de $g(m)$ y devolvemos su resultado si termina. La ejecución conjunta termina exactamente cuando terminan ambas etapas, lo que da (9.3). Por el Teorema 9.1.3 su dominio es c.e. La ecuación de dominios es el caso concreto del pullback del Teorema 7.2.3, no una evaluación ilegal de $g$ cuando $f$ carece de valor. $\square$
+
+## 9.4. Los códigos importan: de objetos a nombres
+
+<a id="TF-DEF-00038"></a>
+
+**Definición 9.4.1 — Espacio representado y realizador** <!-- result-id: TF-DEF-00038; depends-on: TF-DEF-00007, TF-DEF-00035, TF-THM-00064 -->
+
+Un *espacio representado* es un par $\mathbf X=(X,\delta_X)$ con una aplicación parcial **sobreyectiva** $\delta_X:\subseteq\mathbb N^{\mathbb N}\to X$. Una secuencia infinita $p$ con $\delta_X(p)=x$ es un *nombre* de $x$. Para $f:\subseteq X\to Y$, una función parcial sobre nombres $F:\subseteq\mathbb N^{\mathbb N}\to\mathbb N^{\mathbb N}$ es un *realizador* si, para **todo** nombre válido $p$ de **todo** $x\in\operatorname{dom}(f)$, $F(p)$ está definida, es nombre válido de $f(x)$ y
+
+$$\delta_Y(F(p))=f(\delta_X(p)).\tag{9.4}$$
+
+Llamamos a $f$ *computable respecto de las representaciones* si posee un realizador computable de Tipo 2: una máquina que transforma flujos de entrada en flujos de salida, produciendo cada símbolo de una salida válida tras tiempo finito, para todas las entradas a las que obliga (9.4). **Fuera de los nombres de argumentos de $\operatorname{dom}(f)$, la definición no impone comportamiento alguno a $F$.** Esta convención estándar de realizadores de funciones parciales **no** equivale a exigir que una máquina se detenga exactamente en el dominio como en la Definición 9.1.1. Las computabilidades de las dos capas no se identifican hasta probarlo para representaciones concretas.
+
+<a id="TF-THM-00075"></a>
+
+**Teorema 9.4.2 — Los nombres pueden diferir sin alterar el valor** <!-- result-id: TF-THM-00075; depends-on: TF-DEF-00038, TF-THM-00009, TF-DEF-00004 -->
+
+Si $F$ realiza una función univaluada $f$ y $\delta_X(p)=\delta_X(q)=x\in\operatorname{dom}(f)$, entonces
+
+$$\delta_Y(F(p))=\delta_Y(F(q))=f(x),\tag{9.5}$$
+
+aunque las secuencias $p,q$ o $F(p),F(q)$ pueden ser distintas.
+
+*Demostración.* Aplicamos (9.4) una vez a $p$ y otra a $q$. Ambos miembros derechos son $f(x)$. La definición no exige igualdad sintáctica de nombres: la equivalencia es respecto de $\delta_Y$. Este argumento es extensionalidad semántica, no un algoritmo para decidir si dos nombres designan el mismo objeto. $\square$
+
+<a id="TF-DEF-00039"></a>
+
+**Definición 9.4.3 — Traductor computable entre representaciones** <!-- result-id: TF-DEF-00039; depends-on: TF-DEF-00038 -->
+
+Si $\delta,\delta'$ representan el mismo conjunto $X$, diremos que $\delta$ *se traduce computablemente* a $\delta'$ si hay un operador computable $T$ sobre secuencias tal que, para cada nombre $p$ válido de $\delta$, $T(p)$ es un nombre válido de $\delta'$ del mismo objeto: $\delta'(T(p))=\delta(p)$. Si hay traductores computables en ambos sentidos, llamamos a las representaciones *efectivamente equivalentes*. No suponemos que un traductor esté definido sobre entradas inválidas.
+
+<a id="TF-THM-00076"></a>
+
+**Teorema 9.4.4 — Transporte correcto de computabilidad** <!-- result-id: TF-THM-00076; depends-on: TF-DEF-00038, TF-DEF-00039, TF-THM-00075 -->
+
+Sea $f:\subseteq X\to Y$ computable respecto de $(\delta_X,\delta_Y)$. Si existen traductores computables $S$ desde una nueva representación $\delta'_X$ a $\delta_X$ y $T$ desde $\delta_Y$ a una nueva representación $\delta'_Y$, entonces $f$ es computable respecto de $(\delta'_X,\delta'_Y)$. En particular, la equivalencia efectiva de las representaciones en dominio y codominio preserva la computabilidad en ambos sentidos.
+
+*Demostración.* Si $F$ realiza $f$ inicialmente, tomamos $F'=T\circ F\circ S$. Para cualquier nombre $p$ válido de $x\in\operatorname{dom}(f)$, $S(p)$ es nombre de $x$, $F(S(p))$ es nombre de $f(x)$ y $T$ conserva ese objeto. Composición de operadores computables de Tipo 2 da un operador computable y $\delta'_Y(F'(p))=f(\delta'_X(p))$. Intercambiando representaciones obtenemos la afirmación bilateral. El sentido de **cada** traductor es indispensable. $\square$
+
+*Ejemplo de la necesidad de controlar la representación.* Sea $h:\mathbb N\to\mathbb N$ la involución que intercambia $2n$ con $2n+1$ cuando $n\in K$ y los deja fijos cuando $n\notin K$. Es biyectiva, pero no computable: conocer $h(2n)$ decidiría $K$. Con $\delta_{\mathbb N}(p)=p(0)$ para el dominio y la representación de codominio $\delta_h(p)=h(p(0))$, la función conjuntista $h$ posee el realizador computable identidad $F(p)=p$, porque $\delta_h(F(p))=h(\delta_{\mathbb N}(p))$. Con las representaciones habituales en **ambos** lados no es computable. No afirmamos que $\delta_h$ sea efectivamente equivalente a la usual; este es justamente el dato que falta.
+
+<a id="TF-THM-00077"></a>
+
+**Teorema 9.4.5 — Puente para los naturales discretamente representados, con una advertencia** <!-- result-id: TF-THM-00077; depends-on: TF-DEF-00038, TF-DEF-00035, TF-THM-00075 -->
+
+Fijemos $\delta_{\mathbb N}(p)=p(0)$, una representación total del discreto $\mathbb N$. Si $f:\mathbb N\rightharpoonup\mathbb N$ es parcial computable según 9.1.1, entonces es computable por realizador de Tipo 2 bajo $\delta_{\mathbb N}$. Para funciones *totales*, ambas nociones coinciden. Para funciones parciales no se afirma el recíproco, y la obstrucción se identifica en el contraejemplo siguiente.
+
+*Demostración.* De un programa que calcula $f$ obtenemos un realizador que lee el primer símbolo $n$ del nombre de entrada, ejecuta el programa de $f(n)$ y, si termina con $m$, emite la secuencia constante $m,m,\ldots$. Satisface (9.4). Si $f$ es total y $F$ es realizador computable, damos a $F$ el nombre constante $n,n,\ldots$ y esperamos el primer símbolo de salida; como $n\in\operatorname{dom}(f)$, debe aparecer en tiempo finito y vale $f(n)$. Esto es un algoritmo total. Para funciones parciales, el mismo procedimiento permite computar correctamente los valores *bajo promesa* $n\in\operatorname{dom}(f)$, pero puede terminar igualmente fuera del dominio: no asegura la divergencia exacta exigida en 9.1.1. El contraejemplo siguiente certifica la falla. $\square$
+
+<a id="TF-CEX-00010"></a>
+
+**Contraejemplo 9.4.6 — Un realizador computable no enumera necesariamente el dominio** <!-- result-id: TF-CEX-00010; depends-on: TF-CEX-00008, TF-DEF-00038, TF-THM-00077, TF-THM-00071 -->
+
+Tomemos $D=\mathbb N\setminus K$, que no es c.e. por 9.1.6, y definamos la función parcial conjuntista $f(n)=0$ para $n\in D$, indefinida fuera. El operador **total** $F(p)=0^\omega$, que ignora la entrada y emite sólo ceros, realiza $f$ respecto de $\delta_{\mathbb N}$. En efecto, sobre todo nombre de un $n\in D$, su salida nombra $0$; fuera de $D$, el contrato del realizador guarda silencio. Por ello $f$ es computable como mapa parcial *con promesa* entre espacios representados, pero no puede ser parcial computable con parada exacta sobre $\mathbb N$: de serlo, $D$ sería c.e. según 9.1.3. **No se debe transferir la semidecidibilidad del dominio de una categoría de programas de parada a cualquier categoría de funciones realizables.** $\square$
+
+<a id="TF-THM-00078"></a>
+
+**Teorema 9.4.7 — Los programas parciales de parada forman una categoría efectiva** <!-- result-id: TF-THM-00078; depends-on: TF-DEF-00035, TF-THM-00074, TF-THM-00043, TF-THM-00044 -->
+
+Con un único objeto $\mathbb N$ (o con objetos discretos efectivamente codificados), identidades totales computables y como flechas las **funciones parciales computables extensionales**, la composición habitual está bien definida y es asociativa, y las identidades cumplen las leyes de unidad. Se obtiene una subcategoría de la categoría de aplicaciones parciales de conjuntos restringida a esos objetos; no todas las flechas conjuntistas pertenecen a ella.
+
+*Demostración.* La identidad $n\mapsto n$ se calcula y termina en toda entrada. El Teorema 9.3.1 asegura que la composición de flechas parciales computables permanece en la colección. Las igualdades asociativa y de unidad son igualdades de aplicaciones parciales: sus dominios y valores se identifican mediante las leyes del Teorema 6.2.2 (o por el orden de terminación de las máquinas). Al considerar flechas como funciones, no como programas sintácticos, la composición es independiente del índice elegido. Existen flechas conjuntistas fuera de esta subcategoría, como la característica total de $K$: si fuera computable, decidiríamos $K$, contradiciendo 9.1.6. $\square$
+
+**Advertencia de tamaño y presentación.** La colección de programas es enumerable, aunque la de funciones $\mathbb N\to\mathbb N$ no lo es en la metateoría clásica: dada cualquier sucesión de funciones totales $g_0,g_1,\dots$, la función $d(n)=g_n(n)+1$ no aparece en ella. Esto aporta otro motivo por el cual el exponencial conjuntista $\mathbb N^{\mathbb N}$ no puede identificarse con la colección de programas efectivos. La subcategoría efectiva no hereda automáticamente los clasificadores de subobjetos ni los exponenciales del ambiente: exigir que sus objetos/flechas permanezcan dentro de ella requiere demostraciones independientes.
+
+## 9.5. Ejemplos trabajados y lectura inversa
+
+<a id="TF-EXA-00015"></a>
+
+**Ejemplo 9.5.1 — Dominio de parada, valores constantes y etiquetas** <!-- result-id: TF-EXA-00015; depends-on: TF-CEX-00008, TF-CEX-00009, TF-THM-00073 -->
+
+La función $f_K(n)=0$ si $\varphi_n(n)\downarrow$ y sin valor en otro caso es parcial computable: simulamos $\varphi_n(n)$ y devolvemos $0$ al detenerse. Su dominio $K$ es c.e. indecidible. La extensión total constante $g(n)=0$ es computable. El clasificador conjuntista $\widetilde f_K(n)=\mathsf{valor}(0)$ si $n\in K$ y $\bot$ en otro caso existe, pero no puede computarse con etiquetas distinguibles: permitiría decidir $K$. El *valor* puede ser trivial y la *información de definición* imposible de decidir.
+
+<a id="TF-EXA-00016"></a>
+
+**Ejemplo 9.5.2 — Un dominio decidible que sí admite etiqueta efectiva** <!-- result-id: TF-EXA-00016; depends-on: TF-THM-00072, TF-THM-00073, TF-DEF-00036 -->
+
+Sea $h:\mathbb N\rightharpoonup\mathbb N$, $h(2k)=k$ e indefinida en los impares. Su dominio es decidible por la paridad. El algoritmo etiquetado calcula $\mathsf{valor}(n/2)$ si $n$ es par y $\bot$ si es impar. La extensión total $g(n)=\lfloor n/2\rfloor$ coincide con $h$ en los pares; también existirían otras extensiones. La diferencia informativa es exacta: la salida etiquetada conserva la frontera del dominio —distingue valor de indefinición—, mientras que la extensión $g$ sólo conserva los valores sobre el dominio original y no permite recuperar por sí sola dónde $h$ estaba definida.
+
+::: {.callout-note}
+## Cinco comprobaciones desarrolladas
+La implicación «gráfica c.e. $\Rightarrow$ función parcial computable» se realiza buscando en la enumeración el primer par $(n,m)$ con la entrada requerida; la univaluación garantiza que cualquier par encontrado posee el mismo segundo componente y, por tanto, que la salida está bien definida. La existencia de una extensión computable no decide el dominio porque la extensión puede devolver el mismo valor dentro y fuera de él, como ocurre con $f_K$ y la función total constante cero.
+
+En (9.2), primero termina siempre el decisor de pertenencia al dominio. Si responde negativamente, se devuelve $\bot$ de inmediato; si responde afirmativamente, se ejecuta $f(n)$, que termina precisamente porque ya se estableció $n\in D$. Para la representación $\delta_{\mathbb N}(p)=p(0)$, dos secuencias distintas pueden nombrar el mismo natural: por ejemplo, la secuencia constante $3,3,3,\ldots$ y otra con primer término $3$ y términos posteriores diferentes tienen el mismo valor representado sin ser la misma secuencia. Finalmente, el realizador total constante de 9.4.6 termina también fuera del dominio semántico prometido; su conjunto de terminación no coincide con el dominio de la función representada y, por ello, el Teorema 9.1.3 no puede aplicarse para concluir que ese dominio sea c.e.
+:::
+
+
+## 9.6. Auditoría matemática, fundacional y pedagógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Dimensión | Control explícito |
+|---|---|
+| Identidad | IDs `TF-DEF-00035…00039`, `TF-THM-00069…00078`, `TF-CEX-00008…00010` y `TF-EXA-00015…00016`, no rótulos `TF-CAT-*` como resultados. |
+| Capas | Funciones matemáticas: spans/Set; algoritmos sobre naturales: máquina con parada exacta; espacios representados: realizadores bajo promesa. No se permutan definiciones. |
+| Hipótesis | Numeración efectiva y simulación universal explícitas. Totalización etiquetada: codificación de suma distinguible y, para el sentido inverso, programa de valores de $f$. |
+| Elección | No se usa AC; simulación, enumeración y valor alternativo $0$ son operaciones explícitas. |
+| Clásica | Modelo usual de máquinas y diagonalización. Ninguna ley categórica adquiere computabilidad por ser demostrable. |
+| Semidecisión | Dominio c.e. se demuestra sólo para función parcial con parada exacta; falla para realizadores de dominio prometido. |
+| Extensión | Totalizar sin etiqueta y totalizar indicando definición son problemas diferentes; ni siquiera una extensión total computable determina el dominio de la función original. |
+| Igualdad | Números y etiquetas tienen igualdad computable; no se afirma decisión de equivalencia extensional de programas ni igualdad de objetos representados generales. |
+| Tamaño | $\mathbb N^{\mathbb N}$ y conjuntos de funciones son totalidades de la metateoría, no colecciones enumeradas de algoritmos. |
+| QA | Auditoría de dependencias e IDs; revisión manual de demostraciones; sin Lean ni web. |
+
+:::
+
+
+## 9.7. Fuentes de control y aportación editorial
+
+La definición clásica de funciones parciales computables, dominios c.e. y diagonalización se coteja con Herbert B. Enderton, [*Computability Theory: An Introduction to Recursion Theory* (Academic Press, 2011)](https://www.sciencedirect.com/book/monograph/9780123849588/computability-theory), en particular los capítulos 1–4; el antiguo checklist docente de CS363 de Shanghai Jiao Tong University se retira como referencia primaria porque su enlace directo ya no es estable. Para la teoría de computabilidad sobre nombres, [Klaus Weihrauch, *Computable Analysis: An Introduction* (Springer, 2000)](https://link.springer.com/book/10.1007/978-3-642-56999-9) y Arno Pauly y Florian Steinberg, [*Comparing Representations for Function Spaces in Computable Analysis*](https://link.springer.com/article/10.1007/s00224-016-9745-6), *Theory of Computing Systems* 62 (2018), pp. 557–582, DOI 10.1007/s00224-016-9745-6 fijan las definiciones de representaciones y realizadores. Las pruebas de este capítulo son reconstrucciones explícitas bajo convenciones declaradas; no reclamamos originalidad de los teoremas de computabilidad. La distinción entre semidecisión por parada exacta y realizabilidad parcial bajo promesa es un límite de **definiciones**, no una contradicción matemática.
+
+**Cierre.** Una función parcial computable en el modelo de parada tiene dominio c.e., pero éste puede ser indecidible; una extensión total computable no remedia esa indecidibilidad. Si además exigimos una etiqueta computable de definición, el dominio debe ser decidible y basta que lo sea cuando ya sabemos computar los valores en él. En espacios representados, la computabilidad requiere datos de nombres y realizadores; su convención para dominios parciales es distinta y puede computar bajo promesa sobre dominios no c.e.
+
+**Alcance bibliográfico de la edición de cierre (30-09-2026).** Los capítulos 1–4 de Enderton y 3–4 de Weihrauch son referencias de contexto; no se acredita aquí una nueva colación fina de esos capítulos. Para el contrato de representación/realizador se cotejó Pauly–Steinberg §1.2, Def. 1 (pp. 3–4 del PDF anticipado). Las definiciones y pruebas anteriores son explícitas; véase [la bibliografía del tratado](bibliografia.qmd) para los pasajes efectivamente consultados. Esta precisión no cambia resultados, hipótesis ni cobertura Lean.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-08.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-10.qmd)
+:::

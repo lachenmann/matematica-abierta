@@ -1,0 +1,819 @@
+---
+title: "El teorema de De Moivre: potencias, rotaciones y raíces complejas"
+subtitle: "Potencias, rotaciones y raíces complejas"
+description: "Demostración del teorema de De Moivre, interpretación geométrica, potencias complejas, raíces n-ésimas, raíces de la unidad e identidades de ángulo múltiple."
+content-id: MA-ART-0012
+content-type: article
+status: published
+draft: false
+date-created: 2026-09-30
+date-modified: 2026-10-01
+areas:
+  - algebra
+  - numeros-complejos
+  - trigonometria
+topics:
+  - teorema-de-moivre
+  - forma-polar
+  - potencias-complejas
+  - raices-complejas
+  - raices-de-la-unidad
+level: intermedio
+style-standard: MA_STYLE_v1.7
+pedagogical-standard: MA-PED_v1.0
+related:
+  - MA-ART-0011
+publication-target: "teoria/resultados/teorema-de-moivre.qmd"
+publication-state: "published; derivado web de MA-ART-0012 con QA matemático, histórico, MA-STYLE y notación PASS; aparato visual 4/4 PASS"
+provenance:
+  type: original-synthesis
+  note: "Derivado web de la fuente maestra de Obsidian MA-ART-0012; la fuente canónica permanece en la bóveda privada."
+license: GFDL-1.3-or-later
+---
+
+# El teorema de De Moivre
+
+## Potencias, rotaciones y raíces complejas
+
+Tomemos un número complejo situado sobre el círculo unitario,
+
+$$
+z=\cos\theta+i\sin\theta.
+$$
+
+Elevarlo al cuadrado parece, a primera vista, una operación puramente algebraica. Sin embargo,
+
+$$
+\begin{aligned}
+z^2
+&=(\cos\theta+i\sin\theta)^2\\
+&=\cos^2\theta-\sin^2\theta+2i\sin\theta\cos\theta\\
+&=\cos(2\theta)+i\sin(2\theta).
+\end{aligned}
+$$
+
+La potencia ha duplicado el ángulo. Si multiplicamos una tercera vez por el mismo número, aparece $3\theta$; si repetimos el proceso $n$ veces, aparece $n\theta$.
+
+Ese patrón es el contenido del **teorema de De Moivre**:
+
+$$
+\boxed{
+(\cos\theta+i\sin\theta)^n
+=
+\cos(n\theta)+i\sin(n\theta)
+}
+$$
+
+para todo entero $n$.
+
+La fórmula condensa una idea geométrica de gran alcance: en el círculo unitario, **multiplicar números complejos suma ángulos**, de modo que tomar una potencia entera repite una misma rotación. A partir de esa observación podremos calcular potencias aparentemente incómodas, obtener fórmulas trigonométricas de ángulo múltiple y resolver de manera sistemática ecuaciones como
+
+$$
+w^n=z.
+$$
+
+Ese mismo mecanismo explica por qué el teorema funciona como punto de encuentro entre álgebra, trigonometría y geometría compleja: una operación algebraica —la multiplicación— se traduce en una transformación geométrica —la rotación— y queda descrita por funciones trigonométricas.
+
+## 1. La multiplicación compleja suma ángulos {#dm-multiplicacion}
+
+Antes de elevar nada a una potencia, conviene entender qué ocurre al multiplicar dos puntos del círculo unitario. Sean
+
+$$
+z_1=\cos\alpha+i\sin\alpha,
+\qquad
+z_2=\cos\beta+i\sin\beta.
+$$
+
+Entonces
+
+$$
+\begin{aligned}
+z_1z_2
+&=(\cos\alpha+i\sin\alpha)(\cos\beta+i\sin\beta)\\
+&=\cos\alpha\cos\beta-\sin\alpha\sin\beta\\
+&\quad+i(\sin\alpha\cos\beta+\cos\alpha\sin\beta).
+\end{aligned}
+$$
+
+Las fórmulas de adición transforman esta expresión en
+
+$$
+\boxed{
+z_1z_2
+=
+\cos(\alpha+\beta)+i\sin(\alpha+\beta).
+}
+$$
+
+La cuenta algebraica tiene una lectura geométrica inmediata. Cada factor tiene módulo $1$; el producto conserva ese módulo y suma los argumentos.
+
+En forma abreviada, si definimos
+
+$$
+C(\theta)=\cos\theta+i\sin\theta,
+$$
+
+entonces
+
+$$
+\boxed{C(\alpha)C(\beta)=C(\alpha+\beta).}
+$$
+
+Esta ley multiplicativa contiene ya el mecanismo de De Moivre. Elevar $C(\theta)$ a una potencia positiva significa repetir el mismo factor; cada nueva multiplicación añade otro $\theta$ al argumento. La demostración formal sólo tendrá que convertir esa observación en una inducción.
+
+::: {.callout-tip title="Visualización interactiva · MA-DM-01"}
+Modifica $\alpha$ y $\beta$ para observar cómo $C(\alpha)C(\beta)=C(\alpha+\beta)$. El arco aplicado muestra exactamente el giro aportado por el segundo factor. **La exploración visual complementa la demostración; no la sustituye.**
+:::
+
+<iframe src="interactive/de-moivre-01-multiplicar-sumar-angulos.html" title="Visualización de la multiplicación de números complejos de módulo uno como suma de ángulos" loading="lazy" style="width:100%;min-height:900px;border:1px solid #8097ac;border-radius:8px" referrerpolicy="no-referrer"></iframe>
+
+[**Abrir la visualización en una página independiente**](interactive/de-moivre-01-multiplicar-sumar-angulos.html)
+
+## 2. El teorema {#dm-teorema}
+
+**Teorema (De Moivre).** Para todo $\theta\in\mathbb R$ y todo entero $n\in\mathbb Z$,
+
+$$
+(\cos\theta+i\sin\theta)^n
+=
+\cos(n\theta)+i\sin(n\theta).
+$$
+
+La formulación para enteros incluye tres situaciones que conviene distinguir:
+
+1. $n>0$: potencias obtenidas por multiplicación repetida;
+2. $n=0$: ambos lados valen $1$;
+3. $n<0$: aparecen potencias recíprocas.
+
+La parte positiva contiene la idea principal. La extensión a enteros negativos utiliza que todo punto del círculo unitario es distinto de cero y que su inverso corresponde al ángulo opuesto.
+
+## 3. Demostración para exponentes naturales {#dm-demostracion-naturales}
+
+La demostración por inducción sigue exactamente el mecanismo descubierto en §1. El caso inicial fija la fórmula para una sola copia de $C(\theta)$; el paso inductivo añade una copia más y utiliza una única vez la ley $C(\alpha)C(\beta)=C(\alpha+\beta)$. Así podremos distinguir con claridad qué aporta la inducción y dónde intervienen las fórmulas de adición.
+
+### 3.1. Caso inicial {#dm-caso-inicial}
+
+Para $n=1$,
+
+$$
+(\cos\theta+i\sin\theta)^1
+=
+\cos\theta+i\sin\theta,
+$$
+
+que coincide con
+
+$$
+\cos(1\theta)+i\sin(1\theta).
+$$
+
+### 3.2. Paso inductivo {#dm-paso-inductivo}
+
+Supongamos que para cierto $n\ge1$ se cumple
+
+$$
+(\cos\theta+i\sin\theta)^n
+=
+\cos(n\theta)+i\sin(n\theta).
+$$
+
+Multiplicamos una vez más por $\cos\theta+i\sin\theta$:
+
+$$
+\begin{aligned}
+(\cos\theta+i\sin\theta)^{n+1}
+&=(\cos(n\theta)+i\sin(n\theta))(\cos\theta+i\sin\theta)\\
+&=\cos((n+1)\theta)+i\sin((n+1)\theta),
+\end{aligned}
+$$
+
+porque el producto de dos factores de la forma $C(\cdot)$ suma sus ángulos.
+
+Por inducción,
+
+$$
+\boxed{
+(\cos\theta+i\sin\theta)^n
+=
+\cos(n\theta)+i\sin(n\theta)
+}
+$$
+
+para todo $n\in\mathbb N_{>0}$.
+
+El caso $n=0$ se obtiene de inmediato:
+
+$$
+(\cos\theta+i\sin\theta)^0=1
+=
+\cos(0)+i\sin(0).
+$$
+
+## 4. Extensión a exponentes enteros negativos {#dm-negativos}
+
+Sea $m>0$. Como
+
+$$
+(\cos\theta+i\sin\theta)(\cos\theta-i\sin\theta)
+=\cos^2\theta+\sin^2\theta=1,
+$$
+
+tenemos
+
+$$
+(\cos\theta+i\sin\theta)^{-1}
+=
+\cos\theta-i\sin\theta
+=
+\cos(-\theta)+i\sin(-\theta).
+$$
+
+Entonces
+
+$$
+\begin{aligned}
+(\cos\theta+i\sin\theta)^{-m}
+&=\left((\cos\theta+i\sin\theta)^{-1}\right)^m\\
+&=(\cos(-\theta)+i\sin(-\theta))^m\\
+&=\cos(-m\theta)+i\sin(-m\theta).
+\end{aligned}
+$$
+
+Esto completa la demostración para todo $n\in\mathbb Z$.
+
+Conviene observar qué ingredientes fueron necesarios: las fórmulas de adición, inducción y la identidad $\cos^2\theta+\sin^2\theta=1$. La fórmula de Euler no es necesaria para esta demostración.
+
+## 5. Qué significa geométricamente una potencia {#dm-geometria}
+
+El teorema puede leerse directamente en el plano complejo. Si
+
+$$
+z=\cos\theta+i\sin\theta,
+$$
+
+entonces **multiplicar por $z$** rota cualquier número complejo no nulo un ángulo $\theta$ y, como $|z|=1$, conserva su módulo. De Moivre afirma que
+
+$$
+z^n=\cos(n\theta)+i\sin(n\theta),
+$$
+
+de modo que multiplicar sucesivamente por $z$ $n$ veces acumula una rotación total de $n\theta$. Esta formulación evita confundir el número $z$ con la transformación geométrica que produce la multiplicación por $z$.
+
+La sucesión
+
+$$
+1,z,z^2,z^3,\ldots
+$$
+
+es, por tanto, una órbita angular:
+
+$$
+0,\theta,2\theta,3\theta,\ldots
+$$
+
+considerada módulo $2\pi$.
+
+Aquí aparece una bifurcación interesante. Si $\theta/(2\pi)$ es racional, la órbita acaba repitiéndose y contiene sólo un número finito de puntos. Si $\theta/(2\pi)$ es irracional, ninguna potencia positiva vuelve exactamente al punto inicial. Este segundo fenómeno anticipa ideas de dinámica y equidistribución, aunque su estudio completo pertenece a otro contexto.
+
+::: {.callout-tip title="Visualización interactiva · MA-DM-02"}
+Explora la sucesión $1,z,z^2,\ldots$ y compara órbitas periódicas con un prefijo del caso irracional. Las cuerdas sólo codifican el orden de visita. **La exploración visual complementa la demostración; no la sustituye.**
+:::
+
+<iframe src="interactive/de-moivre-02-potencias-orbita-rotacion.html" title="Órbita de las potencias de un número complejo sobre el círculo unitario" loading="lazy" style="width:100%;min-height:940px;border:1px solid #8097ac;border-radius:8px" referrerpolicy="no-referrer"></iframe>
+
+[**Abrir la visualización en una página independiente**](interactive/de-moivre-02-potencias-orbita-rotacion.html)
+
+## 6. La forma polar general {#dm-forma-polar}
+
+Hasta ahora el módulo $1$ nos permitió aislar la parte rotacional. Para pasar a un complejo arbitrario debemos reincorporar la escala radial. Sea
+
+$$
+z=r(\cos\theta+i\sin\theta),
+\qquad r\ge0.
+$$
+
+Para $n\in\mathbb N_{>0}$,
+
+$$
+\begin{aligned}
+z^n
+&=r^n(\cos\theta+i\sin\theta)^n\\
+&=r^n(\cos(n\theta)+i\sin(n\theta)).
+\end{aligned}
+$$
+
+Así obtenemos la forma general:
+
+$$
+\boxed{
+\left[r(\cos\theta+i\sin\theta)\right]^n
+=
+r^n\bigl(\cos(n\theta)+i\sin(n\theta)\bigr).
+}
+$$
+
+La geometría se separa en dos operaciones:
+
+- el módulo pasa de $r$ a $r^n$;
+- el argumento pasa de $\theta$ a $n\theta$.
+
+Esta separación es precisamente lo que vuelve tan eficiente el cálculo de potencias complejas.
+
+## 7. Primer ejemplo: calcular $(1+i)^8$ {#dm-ejemplo-potencia}
+
+En forma cartesiana, desarrollar $(1+i)^8$ mediante el binomio es posible, pero la estructura polar simplifica el problema.
+
+Como
+
+$$
+1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),
+$$
+
+De Moivre da
+
+$$
+\begin{aligned}
+(1+i)^8
+&=(\sqrt2)^8
+\left(\cos\left(8\cdot\frac\pi4\right)
++i\sin\left(8\cdot\frac\pi4\right)\right)\\
+&=16(\cos(2\pi)+i\sin(2\pi))\\
+&=16.
+\end{aligned}
+$$
+
+El ejemplo separa con nitidez las dos tareas de la forma polar: el módulo produce el factor $(\sqrt2)^8=16$, mientras que el argumento acumula ocho giros de $\pi/4$ y regresa a $2\pi$. Esa separación es la ventaja operativa que utilizaremos ahora en el problema inverso de las raíces.
+
+## 8. Resolver $w^n=z$: De Moivre leído al revés {#dm-raices}
+
+Una de las aplicaciones más importantes consiste en invertir el problema. Fijemos $n\in\mathbb N_{>0}$. Dado
+
+$$
+z=r(\cos\theta+i\sin\theta),
+\qquad r>0,
+$$
+
+buscamos todos los números $w$ tales que
+
+$$
+w^n=z.
+$$
+
+Escribamos
+
+$$
+w=\rho(\cos\varphi+i\sin\varphi).
+$$
+
+Por De Moivre,
+
+$$
+w^n
+=\rho^n(\cos(n\varphi)+i\sin(n\varphi)).
+$$
+
+Para que esto coincida con $z$, necesitamos
+
+$$
+\rho^n=r
+$$
+
+y
+
+$$
+n\varphi=\theta+2\pi k,
+\qquad k\in\mathbb Z.
+$$
+
+Por tanto,
+
+$$
+\rho=r^{1/n}
+$$
+
+y
+
+$$
+\varphi=\frac{\theta+2\pi k}{n}.
+$$
+
+Las soluciones son
+
+$$
+\boxed{
+w_k
+=r^{1/n}
+\left(
+\cos\frac{\theta+2\pi k}{n}
++i\sin\frac{\theta+2\pi k}{n}
+\right),
+\qquad
+k=0,1,\ldots,n-1.
+}
+$$
+
+¿Por qué bastan esos $n$ valores? Porque aumentar $k$ en $n$ suma $2\pi$ al argumento de $w$, lo que representa el mismo número complejo. Además, si $0\le j<k\le n-1$, la diferencia entre los argumentos correspondientes es
+
+$$
+\frac{2\pi(k-j)}{n},
+$$
+
+que está estrictamente entre $0$ y $2\pi$; por tanto, esos dos argumentos no son congruentes módulo $2\pi$. Así, los $n$ valores listados son distintos.
+
+Las raíces tienen además una geometría muy rígida. Todas poseen el mismo módulo $r^{1/n}$ y sus argumentos difieren en
+
+$$
+\frac{2\pi}{n}.
+$$
+
+Por ello las raíces están igualmente espaciadas sobre ese círculo. Si $n\ge3$, son los vértices de un polígono regular de $n$ lados centrado en el origen; si $n=2$, forman un par de puntos antipodales.
+
+::: {.callout-tip title="Visualización interactiva · MA-DM-03"}
+Varía $r$, $\theta$ y $n$ para ver simultáneamente el dato $z=rC(\theta)$ y todas las soluciones de $w^n=z$. La raíz seleccionada muestra su argumento y la comprobación de la potencia. **La exploración visual complementa la demostración; no la sustituye.**
+:::
+
+<iframe src="interactive/de-moivre-03-raices-n-esimas-regulares.html" title="Raíces n-ésimas de un número complejo distribuidas regularmente sobre un círculo" loading="lazy" style="width:100%;min-height:1020px;border:1px solid #8097ac;border-radius:8px" referrerpolicy="no-referrer"></iframe>
+
+[**Abrir la visualización en una página independiente**](interactive/de-moivre-03-raices-n-esimas-regulares.html)
+
+## 9. Ejemplo: las raíces cúbicas de $8i$ {#dm-ejemplo-raices}
+
+Escribimos
+
+$$
+8i=8\left(\cos\frac\pi2+i\sin\frac\pi2\right).
+$$
+
+Las raíces cúbicas tienen módulo
+
+$$
+8^{1/3}=2
+$$
+
+y argumentos
+
+$$
+\frac{\pi/2+2\pi k}{3}
+=
+\frac\pi6+\frac{2\pi k}{3},
+\qquad k=0,1,2.
+$$
+
+Así,
+
+$$
+w_0=2\left(\cos\frac\pi6+i\sin\frac\pi6\right)=\sqrt3+i,
+$$
+
+$$
+w_1=2\left(\cos\frac{5\pi}6+i\sin\frac{5\pi}6\right)=-\sqrt3+i,
+$$
+
+y
+
+$$
+w_2=2\left(\cos\frac{3\pi}2+i\sin\frac{3\pi}2\right)=-2i.
+$$
+
+Los tres puntos forman un triángulo equilátero centrado en el origen.
+
+## 10. Las raíces de la unidad {#dm-raices-unidad}
+
+Fijemos nuevamente $n\in\mathbb N_{>0}$ y tomemos
+
+$$
+z=1=\cos(0)+i\sin(0).
+$$
+
+Las soluciones de
+
+$$
+w^n=1
+$$
+
+son
+
+$$
+\boxed{
+\omega_k
+=\cos\frac{2\pi k}{n}
++i\sin\frac{2\pi k}{n},
+\qquad k=0,1,\ldots,n-1.
+}
+$$
+
+Son las **raíces $n$-ésimas de la unidad**. Geométricamente están igualmente espaciadas sobre el círculo unitario. Para $n\ge3$ forman los vértices de un polígono regular; para $n=2$ son los dos puntos antipodales $1$ y $-1$.
+
+Además, si definimos
+
+$$
+\omega=\cos\frac{2\pi}{n}+i\sin\frac{2\pi}{n},
+$$
+
+entonces todas las raíces se obtienen como
+
+$$
+1,\omega,\omega^2,\ldots,\omega^{n-1}.
+$$
+
+De Moivre muestra de inmediato que
+
+$$
+\omega^n=1.
+$$
+
+Como los $\omega_k$ son precisamente las $n$ raíces distintas del polinomio $x^n-1$, obtenemos la factorización
+
+$$
+x^n-1
+=
+\prod_{k=0}^{n-1}(x-\omega_k).
+$$
+
+Aquí la geometría del círculo pasa directamente al álgebra del polinomio: los puntos igualmente espaciados son exactamente sus ceros y, para $n\ge3$, forman los vértices de un polígono regular. Esta estructura reaparecerá en álgebra, análisis de Fourier discreto y teoría de ecuaciones.
+
+::: {.callout-tip title="Visualización interactiva · MA-DM-04"}
+Recorre las raíces mediante la acción discreta «multiplicar por $\omega$». El círculo, el ciclo de índices y la factorización de $x^n-1$ describen el mismo conjunto desde tres perspectivas. **La exploración visual complementa la demostración; no la sustituye.**
+:::
+
+<iframe src="interactive/de-moivre-04-raices-unidad-estructura-ciclica.html" title="Raíces n-ésimas de la unidad y su estructura cíclica bajo multiplicación por omega" loading="lazy" style="width:100%;min-height:980px;border:1px solid #8097ac;border-radius:8px" referrerpolicy="no-referrer"></iframe>
+
+[**Abrir la visualización en una página independiente**](interactive/de-moivre-04-raices-unidad-estructura-ciclica.html)
+
+## 11. Fórmulas de ángulo múltiple a partir del binomio {#dm-angulo-multiple}
+
+De Moivre permite generar identidades trigonométricas de manera sistemática. Para $n=3$,
+
+$$
+(\cos\theta+i\sin\theta)^3
+=
+\cos(3\theta)+i\sin(3\theta).
+$$
+
+Expandiendo el lado izquierdo,
+
+$$
+\begin{aligned}
+(\cos\theta+i\sin\theta)^3
+&=\cos^3\theta
++3i\cos^2\theta\sin\theta\\
+&\quad-3\cos\theta\sin^2\theta
+-i\sin^3\theta.
+\end{aligned}
+$$
+
+Al comparar partes reales,
+
+$$
+\cos(3\theta)
+=\cos^3\theta-3\cos\theta\sin^2\theta.
+$$
+
+Usando $\sin^2\theta=1-\cos^2\theta$,
+
+$$
+\boxed{\cos(3\theta)=4\cos^3\theta-3\cos\theta.}
+$$
+
+Al comparar partes imaginarias,
+
+$$
+\sin(3\theta)
+=3\cos^2\theta\sin\theta-\sin^3\theta,
+$$
+
+y con $\cos^2\theta=1-\sin^2\theta$,
+
+$$
+\boxed{\sin(3\theta)=3\sin\theta-4\sin^3\theta.}
+$$
+
+El procedimiento se extiende a cualquier entero positivo $n$. La expansión binomial de
+
+$$
+(\cos\theta+i\sin\theta)^n
+$$
+
+separa automáticamente términos reales e imaginarios y produce fórmulas para $\cos(n\theta)$ y $\sin(n\theta)$.
+
+## 12. Una segunda demostración mediante la fórmula de Euler {#dm-euler}
+
+En [«La fórmula de Euler»](../../blog/formula-de-euler-historia-derivacion-geometria.qmd) se estableció
+
+$$
+e^{i\theta}=\cos\theta+i\sin\theta.
+$$
+
+Una vez disponible esa identidad, De Moivre se obtiene en una línea para todo entero $n$:
+
+$$
+\begin{aligned}
+(\cos\theta+i\sin\theta)^n
+&=(e^{i\theta})^n\\
+&=e^{in\theta}\\
+&=\cos(n\theta)+i\sin(n\theta).
+\end{aligned}
+$$
+
+Esta prueba es más breve, aunque lógicamente depende de una teoría más amplia de la exponencial compleja. La demostración de §§1–4 conserva interés propio porque obtiene el teorema directamente desde las fórmulas de adición trigonométricas. Comparar ambas pruebas también muestra qué aporta la nueva representación: la prueba elemental exhibe el mecanismo angular paso a paso; la exponencial compleja encapsula ese mecanismo en la ley $e^{z+w}=e^ze^w$.
+
+La relación entre ambos resultados puede organizarse así:
+
+$$
+\boxed{
+\text{fórmulas de adición}
+\Longrightarrow
+\text{De Moivre para }n\in\mathbb Z
+}
+$$
+
+mientras que, una vez construida la exponencial compleja,
+
+$$
+\boxed{
+\text{fórmula de Euler}
++
+e^{z+w}=e^ze^w
+\Longrightarrow
+\text{De Moivre inmediatamente}.
+}
+$$
+
+## 13. Hasta dónde llega la fórmula {#dm-alcance}
+
+El exponente entero es una parte esencial del enunciado elemental. Si escribimos de manera informal
+
+$$
+(\cos\theta+i\sin\theta)^a
+\stackrel{?}{=}
+\cos(a\theta)+i\sin(a\theta)
+$$
+
+para un número real o complejo arbitrario $a$, aparecen nuevas dificultades.
+
+La razón es que un número complejo posee argumentos que difieren en múltiplos de $2\pi$. Para definir potencias no enteras mediante logaritmos debemos escoger ramas, y el resultado puede volverse multivaluado. Por ejemplo, las soluciones de
+
+$$
+w^2=1
+$$
+
+son $1$ y $-1$. Escribir simplemente $1^{1/2}=1$ selecciona una raíz y oculta la otra.
+
+Para exponentes enteros este problema desaparece porque
+
+$$
+e^{in(\theta+2\pi k)}
+=e^{in\theta}e^{i2\pi nk}
+=e^{in\theta}.
+$$
+
+El factor adicional siempre vale $1$. Por eso la potencia entera está bien definida independientemente del argumento escogido para representar el número complejo.
+
+## 14. Contexto histórico {#dm-historia}
+
+Abraham de Moivre (1667–1754) trabajó en una época en que la representación trigonométrica de cantidades complejas todavía se estaba consolidando. Las historias modernas de la matemática consultadas coinciden en una cronología prudente: **una fórmula estrechamente relacionada aparece en un trabajo de De Moivre de 1707**, mientras que la forma hoy familiar
+
+$$
+(\cos\theta+i\sin\theta)^n
+=
+\cos(n\theta)+i\sin(n\theta)
+$$
+
+**aparece en un trabajo publicado en 1722**. Por ello, este artículo no presenta 1707 como fecha de publicación de la fórmula moderna en su forma habitual.
+
+También conviene separar la historia del resultado de la historia de su nombre. En 1707 William Jones ya se refirió a un «Theorem» de De Moivre, y una reseña de ese mismo año utilizó la expresión latina *Theorema Moivræanum*; sin embargo, esas denominaciones se referían a **otro teorema**, no a la identidad trigonométrica que hoy lleva su nombre. Según la historia terminológica recogida por MacTutor a partir de D. E. Smith, las expresiones «De Moivre's formula» y «De Moivre's theorem» aplicadas a la fórmula actual no parecen haber entrado en uso general hasta comienzos del siglo XIX. Entre los testimonios ingleses allí documentados aparecen «Demoivre's formula» en 1809 y «Demoivre's theorem» en 1812.
+
+El resultado pertenece así a la etapa previa a la formulación sistemática de la exponencial compleja por Euler. Desde una perspectiva moderna, De Moivre y Euler describen una misma estructura desde dos entradas distintas: la multiplicación trigonométrica del círculo unitario y la ley exponencial.
+
+## 15. Errores previsibles {#dm-errores}
+
+1. **Olvidar el módulo.** Para $z=r(\cos\theta+i\sin\theta)$, la potencia contiene $r^n$. La fórmula de módulo $1$ no puede aplicarse directamente si $r\ne1$.
+2. **Usar grados dentro de una fórmula analítica sin control de unidades.** Las identidades trigonométricas siguen siendo válidas si se trabaja coherentemente, pero la conexión con la exponencial compleja y con el análisis utiliza naturalmente radianes.
+3. **Buscar una única raíz $n$-ésima.** Si $z\ne0$, la ecuación $w^n=z$ posee exactamente $n$ raíces complejas distintas.
+4. **Repetir sólo el argumento principal al calcular raíces.** Hay que partir de $\theta+2\pi k$, no únicamente de una representación angular.
+5. **Tomar $k=0,\ldots,n$ al listar raíces.** Los valores $k=0$ y $k=n$ producen la misma raíz.
+6. **Aplicar la fórmula sin más a exponentes no enteros.** Las potencias fraccionarias o complejas requieren controlar ramas del logaritmo.
+7. **Confundir el teorema con una identidad puramente trigonométrica.** Su contenido incluye la estructura multiplicativa de los números complejos y explica geométricamente por qué aparecen los ángulos múltiples.
+8. **Usar la fórmula de Euler en una prueba que pretende derivar después la fórmula de Euler desde De Moivre.** El orden lógico debe declararse para evitar circularidad.
+
+## 16. Actividades de reconstrucción y transferencia {#dm-actividades}
+
+**A. Reconstrucción algebraica.** Multiplica $C(\alpha)C(\beta)$ y señala exactamente dónde intervienen las fórmulas de adición de seno y coseno.
+
+**B. Inducción.** Redacta la demostración de De Moivre para $n\in\mathbb N_{>0}$ sin usar la fórmula de Euler.
+
+**C. Exponentes negativos.** Demuestra directamente que
+
+$$
+C(\theta)^{-m}=C(-m\theta)
+$$
+
+para $m\in\mathbb N_{>0}$.
+
+**D. Potencias.** Calcula $(\sqrt3+i)^6$ usando forma polar y verifica el resultado por una segunda vía.
+
+**E. Raíces.** Encuentra las cuatro soluciones de $w^4=-16$ y represéntalas geométricamente.
+
+**F. Raíces de la unidad.** Demuestra que la suma de todas las raíces $n$-ésimas de la unidad es $0$ para $n>1$.
+
+**G. Ángulo múltiple.** Usa De Moivre y el binomio para obtener una fórmula para $\cos(4\theta)$ en términos de $\cos\theta$.
+
+**H. Órbita angular.** Si $\theta=2\pi/7$, determina cuántos puntos distintos aparecen en $1,z,z^2,\ldots$. Repite el problema con $\theta=4\pi/7$.
+
+**I. Diagnóstico de ramas.** Explica por qué la notación $z^{1/n}$ necesita una convención si pretende designar una sola función compleja.
+
+**J. Conexión con Euler.** Partiendo de $e^{i\theta}=\cos\theta+i\sin\theta$, demuestra De Moivre y enumera qué propiedades de la exponencial utilizaste.
+
+## 17. Síntesis {#dm-sintesis}
+
+El teorema de De Moivre parte de una propiedad elemental de la multiplicación compleja:
+
+$$
+C(\alpha)C(\beta)=C(\alpha+\beta).
+$$
+
+La potencia entera repite esa ley y produce
+
+$$
+C(\theta)^n=C(n\theta).
+$$
+
+En el círculo unitario, el resultado convierte multiplicación repetida en rotación repetida. En forma polar general separa el cálculo de una potencia en dos movimientos simples:
+
+$$
+r\mapsto r^n,
+\qquad
+\theta\mapsto n\theta.
+$$
+
+Leído en sentido inverso, permite resolver $w^n=z$ y explica por qué las raíces complejas se distribuyen uniformemente sobre un círculo. Aplicado al binomio, genera identidades de ángulo múltiple. Aplicado a $z=1$, organiza las raíces de la unidad como vértices de polígonos regulares.
+
+La fórmula de Euler ofrece después una síntesis aún más compacta:
+
+$$
+C(\theta)=e^{i\theta}.
+$$
+
+Entonces De Moivre aparece como una manifestación de la ley exponencial. La demostración elemental conserva, sin embargo, una ventaja pedagógica decisiva: permite ver el mecanismo directamente en la multiplicación compleja antes de introducir una teoría analítica más amplia.
+
+## 18. Preguntas frecuentes {#dm-faq}
+
+### ¿El teorema vale sólo para números del círculo unitario? {#dm-faq-circulo}
+
+La forma básica sí se escribe para $\cos\theta+i\sin\theta$, cuyo módulo es $1$. Para un complejo general en forma polar,
+
+$$
+z=r(\cos\theta+i\sin\theta),
+$$
+
+se obtiene
+
+$$
+z^n=r^n(\cos(n\theta)+i\sin(n\theta)).
+$$
+
+### ¿Por qué aparecen exactamente $n$ raíces de $z\ne0$? {#dm-faq-raices}
+
+Porque los argumentos
+
+$$
+\frac{\theta+2\pi k}{n}
+$$
+
+producen $n$ clases distintas módulo $2\pi$ cuando $k=0,\ldots,n-1$. A partir de $k=n$ las soluciones empiezan a repetirse.
+
+### ¿El teorema depende de la fórmula de Euler? {#dm-faq-euler}
+
+No. Puede demostrarse directamente con las fórmulas de adición y una inducción. La fórmula de Euler proporciona una demostración posterior mucho más breve.
+
+### ¿Qué ocurre con $n=0$? {#dm-faq-cero}
+
+El lado izquierdo es $1$ y el derecho es
+
+$$
+\cos(0)+i\sin(0)=1.
+$$
+
+### ¿Qué ocurre con $n<0$? {#dm-faq-negativos}
+
+Como $|\cos\theta+i\sin\theta|=1$, el número posee inverso y éste corresponde al ángulo $-\theta$. La fórmula se extiende entonces a todos los enteros negativos.
+
+### ¿Puedo usarla para calcular una raíz cuadrada compleja? {#dm-faq-raiz-cuadrada}
+
+Sí, pero al invertir la potencia hay que conservar todas las posibilidades angulares. Para $w^2=z$ aparecen dos raíces separadas por un ángulo de $\pi$.
+
+### ¿Las raíces de la unidad siempre están igualmente espaciadas? {#dm-faq-poligono}
+
+Sí. Todas tienen módulo $1$ y sus argumentos consecutivos difieren en $2\pi/n$. Para $n\ge3$ son los vértices de un polígono regular; para $n=2$ forman un par antipodal, y para $n=1$ sólo aparece la raíz $1$.
+
+### ¿Por qué la fórmula es importante fuera de la trigonometría? {#dm-faq-importancia}
+
+Porque organiza la multiplicación y las potencias en el plano complejo. De ella surgen la geometría de las raíces, las raíces de la unidad y conexiones posteriores con polinomios, transformadas discretas y análisis armónico.
+
+## 19. Fuentes y lecturas {#dm-fuentes}
+
+- MacTutor History of Mathematics, «Abraham de Moivre (1667–1754)»: distingue la fórmula relacionada de 1707 de la forma familiar publicada en 1722. https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/
+- MacTutor History of Mathematics, «Trigonometric functions»: sitúa la publicación de la fórmula familiar de De Moivre en 1722 dentro del desarrollo de la trigonometría compleja. https://mathshistory.st-andrews.ac.uk/HistTopics/Trigonometric_functions/
+- MacTutor, «Earliest Known Uses of Some of the Words of Mathematics (D)»: documenta que el uso de «De Moivre's theorem» en 1707 se refería a otro resultado y que la denominación moderna aplicada a esta fórmula se generalizó a comienzos del siglo XIX; registra usos ingleses en 1809 («formula») y 1812 («theorem»). https://mathshistory.st-andrews.ac.uk/Miller/mathword/d/
+- De Moivre, Abraham, *Miscellanea analytica de seriebus et quadraturis* (1730). Edición digital de dominio público consultable en Google Books.
+- [«La fórmula de Euler: historia, derivación y geometría de $e^{i\theta}$»](../../blog/formula-de-euler-historia-derivacion-geometria.qmd), especialmente §2 sobre De Moivre y la multiplicación como suma de ángulos.

@@ -1,0 +1,330 @@
+---
+title: "Tratado moderno de Álgebra"
+description: "Tratado formal completo de álgebra: 40 capítulos y tres interfaces, desde operaciones y grupos hasta álgebra lineal, multilinealidad y producto tensorial."
+author: "Gustav A. Tachek"
+content-id: MA-BOK-0007
+content-type: book
+status: published
+date-created: 2026-09-14
+date-modified: 2026-10-02
+areas:
+  - algebra
+  - fundamentos
+level: avanzado
+topics:
+  - estructuras-algebraicas
+  - operaciones-binarias
+  - semigrupos
+  - monoides
+  - grupos
+  - homomorfismos
+  - isomorfismos
+  - cocientes
+  - anillos
+  - cuerpos
+  - estructuras-ordenadas
+  - espacios-vectoriales
+  - algebra-multilineal
+  - producto-tensorial
+prerequisites: []
+related:
+  - MA-BCH-0021
+  - MA-BCH-0022
+  - MA-BCH-0023
+  - MA-BCH-0024
+  - MA-BCH-0025
+  - MA-BCH-0026
+  - MA-BCH-0027
+  - MA-BCH-0028
+  - MA-BCH-0030
+  - MA-BCH-0032
+  - MA-BCH-0033
+  - MA-BCH-0034
+  - MA-BCH-0035
+  - MA-BCH-0036
+  - MA-BCH-0037
+  - MA-BCH-0038
+  - MA-BCH-0039
+  - MA-BCH-0040
+  - MA-BCH-0041
+  - MA-BCH-0042
+  - MA-BCH-0043
+  - MA-BCH-0044
+  - MA-BCH-0045
+  - MA-BCH-0046
+  - MA-BCH-0047
+  - MA-BCH-0048
+  - MA-BCH-0049
+  - MA-BCH-0050
+  - MA-BCH-0062
+  - MA-BCH-0135
+  - MA-BCH-0136
+  - MA-BCH-0137
+  - MA-BCH-0138
+  - MA-BCH-0139
+  - MA-BCH-0140
+  - MA-BCH-0141
+  - MA-BCH-0142
+  - MA-BCH-0143
+  - MA-BCH-0144
+  - MA-BCH-0145
+  - MA-BCH-0146
+  - MA-BCH-0147
+  - MA-BCH-0148
+provenance:
+  type: original
+  sources: []
+license: GFDL-1.3-or-later
+---
+
+Este tratado construye de manera deductivamente explícita las estructuras algebraicas que sirven de infraestructura reutilizable para la matemática posterior. La edición web reúne el tratado completo: 40 capítulos y tres interfaces fundacionales, con definiciones, hipótesis y demostraciones desarrolladas.
+
+La arquitectura avanza desde operaciones binarias, magmas, semigrupos, monoides y grupos hacia subestructuras, morfismos, núcleos, imágenes, cocientes e isomorfismos; después continúa con anillos, cuerpos y estructuras ordenadas, y culmina en espacios vectoriales, dualidad algebraica y la construcción del producto tensorial.
+
+## Prefacio
+
+Este tratado nace de una convicción: **el álgebra se comprende mejor cuando las estructuras no aparecen como nombres ya hechos, sino como respuestas precisas a problemas matemáticos concretos**.
+
+Es fácil aprender una lista de objetos —magmas, semigrupos, monoides, grupos, anillos, cuerpos, espacios vectoriales— y memorizar los axiomas que los definen. Es más difícil, y también más importante, comprender por qué esas estructuras se organizan en una jerarquía, qué información añade cada nuevo axioma, qué propiedades sobreviven al pasar a subestructuras o cocientes y qué significa realmente afirmar que dos objetos son iguales, isomorfos o relacionados por un homomorfismo.
+
+La intención de este libro es reconstruir esa arquitectura con cuidado.
+
+No queremos que expresiones como «sea $G$ un grupo» o «consideremos el cociente $G/N$» funcionen como cajas negras. Cuando utilicemos una estructura deberá estar claro qué datos la constituyen, qué leyes han sido demostradas o postuladas, qué operaciones están bien definidas y de qué resultados anteriores depende cada paso. Del mismo modo, cuando una teoría posterior invoque un resultado algebraico, deberá ser posible volver hasta su lugar de origen y reconstruir la cadena deductiva que lo sostiene.
+
+El principio general del tratado puede formularse así:
+
+> **Ninguna estructura, operación o propiedad se utilizará antes de haber sido definida, construida o demostrada, salvo aquello que pertenezca expresamente al fundamento declarado.**
+
+Esta disciplina no pretende convertir el álgebra en una sucesión de verificaciones burocráticas. Su propósito es precisamente el contrario: hacer visible la lógica interna que permite que, una vez establecidos los cimientos, grandes familias de argumentos puedan reutilizarse con extraordinaria economía.
+
+El álgebra moderna es, en buena medida, el estudio de esa economía. Una misma idea puede reaparecer en contextos muy distintos porque lo decisivo no son siempre los elementos concretos, sino las relaciones que preservan las operaciones y las leyes. El paso desde una operación binaria hasta un grupo; desde un grupo hasta sus subgrupos, homomorfismos y cocientes; desde allí hasta anillos, cuerpos, espacios vectoriales y construcciones multilineales no será tratado como una colección de temas independientes. Queremos mostrarlo como una arquitectura de estructuras que se extienden, se restringen, se transportan y se comparan.
+
+Por eso tendrán un lugar central los **morfismos**. Una estructura algebraica no queda plenamente comprendida sólo por los objetos que contiene, sino también por las aplicaciones que respetan su organización. Núcleo, imagen, cociente e isomorfismo aparecerán así no como artificios técnicos aislados, sino como partes de una misma pregunta: **¿qué información conserva una transformación y qué información identifica?**
+
+La misma precaución se aplicará a las identificaciones habituales. Dos estructuras isomorfas no serán declaradas literalmente iguales por comodidad. Una operación restringida no será confundida silenciosamente con la operación ambiente cuando sus dominios y codominios sean distintos. Un cociente no adquirirá una operación hasta que se haya probado que ésta es independiente de los representantes. Estas distinciones pueden parecer minuciosas al comienzo; más adelante evitan ambigüedades precisamente allí donde la teoría se vuelve más abstracta.
+
+El tratado cumple además una función intermedia dentro de una biblioteca matemática mayor. Parte de su infraestructura será reutilizada por otros tratados, en particular por el *Tratado moderno de Análisis*. Esto obliga a una disciplina adicional: las dependencias entre obras deben ser explícitas y acíclicas. Cuando otro tratado importe un resultado algebraico, queremos que importe una pieza cerrada y auditable, no una cadena de supuestos implícitos.
+
+Las demostraciones destinadas al lector seguirán siendo demostraciones matemáticas humanas. Procuraremos que sean completas, pero también legibles: que indiquen la idea del argumento, hagan visibles las hipótesis realmente utilizadas y distingan los pasos conceptuales de las manipulaciones rutinarias. La notación debe comprimir el pensamiento, no sustituirlo.
+
+Detrás del texto existe además una infraestructura de control: registros de resultados, grafos de dependencias, auditorías de notación y fundamento, clasificación explícita del uso del axioma de elección y, cuando aporte valor, verificación formal asistida por computadora. Estas capas permiten controlar una obra extensa, pero no constituyen por sí mismas la exposición.
+
+La regla editorial es sencilla:
+
+$$
+\boxed{
+\text{la formalización controla la arquitectura}
+\qquad\text{y}\qquad
+\text{la demostración explica la matemática}
+}
+$$
+
+También las fuentes bibliográficas cumplen un papel preciso. Este tratado no sigue una obra única ni traduce un texto previo. Los libros consultados sirven para contrastar definiciones, comparar arquitecturas, examinar variantes de prueba, revisar convenciones y situar históricamente determinados desarrollos. Ninguna afirmación se considerará demostrada por aparecer en una referencia: todo resultado que forme parte de la cadena deductiva del tratado deberá quedar justificado dentro de ella o importado explícitamente desde una interfaz ya cerrada.
+
+Nuestro ideal puede resumirse en otra fórmula:
+
+$$
+\boxed{
+\text{abstracción suficiente para reutilizar}
+\; + \;
+\text{precisión suficiente para auditar}
+\; + \;
+\text{claridad suficiente para comprender}
+}
+$$
+
+Si este libro logra que el lector vea detrás de cada estructura no una lista de axiomas, sino una organización matemática cuya necesidad, alcance y relaciones pueden reconstruirse, habrá cumplido su propósito principal.
+
+---
+
+## Cómo leer este libro
+
+Este libro ha sido escrito como un **tratado formal**, pero no como un manual de formalización simbólica. La palabra *tratado* indica aquí una forma de ordenar el conocimiento: cada noción debe aparecer cuando están disponibles los datos necesarios para definirla; cada teorema debe utilizar únicamente resultados anteriores o dependencias explícitamente importadas; y cada estructura nueva debe mostrar con claridad qué hereda, qué añade y qué permite hacer.
+
+El hilo conductor inicial puede representarse así:
+
+$$
+\text{operación}
+\longrightarrow
+\text{magma}
+\longrightarrow
+\text{semigrupo}
+\longrightarrow
+\text{monoide}
+\longrightarrow
+\text{grupo},
+$$
+
+pero esa cadena es sólo el comienzo. Muy pronto aparecerá una segunda dirección:
+
+$$
+\text{estructura}
+\longrightarrow
+\text{subestructura}
+\longrightarrow
+\text{morfismo}
+\longrightarrow
+\text{núcleo e imagen}
+\longrightarrow
+\text{cociente}
+\longrightarrow
+\text{isomorfía}.
+$$
+
+Una forma útil de leer el tratado consiste en seguir simultáneamente ambas direcciones: **qué axiomas construyen una estructura** y **qué transformaciones permiten compararla con otras**.
+
+No es necesario leer todas las páginas con la misma intensidad.
+
+En una **primera lectura**, conviene seguir las motivaciones, las definiciones, los enunciados principales y los comentarios que explican qué nueva posibilidad queda abierta después de cada resultado. El objetivo es reconocer la arquitectura general antes de inspeccionar cada unión entre sus piezas.
+
+En una **segunda lectura**, las demostraciones pasan al primer plano. Allí conviene preguntarse qué hipótesis se usan realmente. La asociatividad, por ejemplo, no debe invocarse por reflejo; el neutro no debe suponerse donde todavía no existe; la conmutatividad no puede infiltrarse en un argumento destinado a grupos generales. Buena parte del aprendizaje algebraico consiste en desarrollar sensibilidad hacia esas dependencias.
+
+Existe además una **lectura de auditoría**. Los resultados formales poseen identificadores estables del tipo
+
+$$
+\texttt{TALG-DEF-00031},
+\qquad
+\texttt{TALG-THM-00005},
+\qquad
+\texttt{TALG-PRF-00033}.
+$$
+
+Estos identificadores no son contenido que el lector deba memorizar. Funcionan como coordenadas persistentes. Permiten localizar una definición o una demostración, registrar exactamente de qué depende un resultado y conservar referencias estables aunque cambie la organización editorial de los capítulos.
+
+Quien quiera estudiar la teoría de manera convencional puede ignorarlos casi por completo. Quien quiera reconstruir una cadena deductiva, auditar una prueba o comprobar la relación entre este tratado y otra obra de la biblioteca dispone con ellos de una segunda cartografía.
+
+El **grafo de dependencias** cumple una función semejante. Una demostración publicada debe poder leerse como matemática ordinaria; el grafo, en cambio, responde a otra pregunta: qué resultados deben estar cerrados antes de que esa demostración sea legítima. Esta distinción es especialmente importante en una obra extensa, donde una circularidad puede quedar escondida detrás de conceptos familiares.
+
+También conviene distinguir tres relaciones que en la práctica suelen mezclarse:
+
+1. **igualdad**, que afirma identidad dentro del marco conjuntista adoptado;
+2. **isomorfía**, que afirma equivalencia estructural mediante una aplicación adecuada;
+3. **identificación convencional**, que puede adoptarse posteriormente por comodidad una vez demostrada la relación que la autoriza.
+
+Este tratado será deliberadamente cuidadoso con ese orden. Una estructura isomorfa a otra no será reemplazada silenciosamente por ella. Una subestructura llevará la operación apropiadamente restringida. Un cociente será primero un conjunto de clases y sólo después, cuando corresponda, una estructura algebraica con operaciones bien definidas.
+
+Algo parecido ocurre con los nombres familiares. Que una construcción sea estándar no significa que pueda usarse antes de tiempo. El primer teorema de isomorfía, una base de un espacio vectorial o un cuerpo de fracciones pueden ser conocidos de antemano por el lector; dentro de la arquitectura del tratado sólo estarán disponibles cuando todas sus dependencias hayan sido establecidas.
+
+El tratamiento del **axioma de elección** merece una mención especial. No se utilizará silenciosamente. Cuando un resultado dependa de alguna forma de elección —por ejemplo, en argumentos posteriores sobre bases o principios maximales— esa dependencia deberá quedar declarada. Mientras una construcción pueda realizarse sin elección global de representantes o sin seleccionar simultáneamente elementos de una familia, preferiremos la construcción explícita.
+
+Las herramientas de verificación formal se utilizarán con el mismo criterio. Una certificación asistida puede detectar errores, comprobar cadenas inferenciales o reforzar puntos especialmente delicados. Pero el lector no necesitará ejecutar un asistente de pruebas para entender el libro. La exposición principal debe contener la matemática necesaria para comprender por qué un resultado es verdadero.
+
+La bibliografía tampoco funciona como una lista de autoridades que sustituyan a la argumentación. Algunas obras servirán como control estructural, otras ofrecerán variantes de demostración, historia o notación. El uso efectivo de una fuente se registrará por separado de las dependencias matemáticas internas. De este modo puede saberse tanto **de dónde proviene una influencia editorial** como **de qué teorema depende realmente una prueba**.
+
+Este diseño hace que ciertas partes iniciales avancen despacio. La lentitud es deliberada. Definir con precisión una restricción, probar la unicidad de un neutro o verificar la buena definición de una operación cociente puede parecer excesivo cuando esos hechos ya son familiares. Sin embargo, cada uno de ellos se convierte después en infraestructura reutilizable. El costo se paga una sola vez; la ganancia reaparece en muchos capítulos.
+
+A medida que el tratado avance hacia anillos, cuerpos, estructuras ordenadas, espacios vectoriales y álgebra multilineal, la cantidad de conceptos aumentará, pero no queremos que aumente en la misma proporción la cantidad de supuestos tácitos. La abstracción debe permitir precisamente lo contrario: reutilizar resultados generales en contextos nuevos sin volver a demostrar lo que la estructura ya garantiza.
+
+Por eso, junto a la pregunta habitual
+
+$$
+\text{«¿qué podemos demostrar?»},
+$$
+
+este libro mantendrá constantemente otras tres:
+
+$$
+\boxed{
+\text{«¿qué estructura estamos usando?»}
+\qquad
+\text{«¿qué se preserva?»}
+\qquad
+\text{«¿de qué depende?»}
+}
+$$
+
+Aprender álgebra consiste en gran medida en aprender a reconocer esas preguntas incluso cuando la notación cambia y los objetos concretos son diferentes.
+
+## Edición web completa
+
+**Edición del 2 de octubre de 2026:** están disponibles los **capítulos 1–40 y las tres interfaces fundacionales**, incluida la interfaz inicial presentada como capítulo 0. Son **43 unidades matemáticas**, además del prefacio y la guía de lectura.
+
+::: {.talg-parts-table}
+
+| Parte | Unidades | Contenido |
+|---|---|---|
+| [Parte 0 — Fundamentos y lenguaje](#parte-0) | Tres interfaces fundacionales | Funciones, inversas, equivalencias y cocientes |
+| [Parte I — Operaciones y estructuras](#parte-i) | Capítulo 1 | Operaciones binarias, magmas y asociatividad |
+| [Parte II — Monoides y grupos](#parte-ii) | Capítulos 2–13 | Subgrupos, morfismos, normalidad, cocientes e isomorfía |
+| [Parte III — Anillos y dominios](#parte-iii) | Capítulos 14–21 | Unidades, ideales, cocientes y dominios íntegros |
+| [Parte IV — Cuerpos](#parte-iv) | Capítulos 22–24 | Subcuerpos, morfismos y cuerpo de fracciones |
+| [Parte V — Estructuras ordenadas](#parte-v) | Capítulos 25–28 | Grupos, anillos y cuerpos ordenados; arquimedianidad |
+| [Parte VI — Construcciones y transporte](#parte-vi) | Capítulos 29–31 | Productos, isomorfías superiores, correspondencia y descenso |
+| [Parte VII — Espacios vectoriales](#parte-vii) | Capítulos 32–37 | Subespacios, bases, dimensión finita, mapas lineales, cocientes y dualidad |
+| [Parte VIII — Álgebra multilineal básica](#parte-viii) | Capítulos 38–40 | Bilinealidad, multilinealidad, formas y producto tensorial |
+
+:::
+
+Las referencias de lectura usan números editoriales; los identificadores estables se conservan como anclas para recorrer las dependencias. Cada capítulo presenta sus definiciones, hipótesis y demostraciones, con los fundamentos y usos del axioma de elección declarados donde corresponden.
+
+## Contenido del tratado
+
+### Parte 0 — Fundamentos y lenguaje {#parte-0}
+
+1. [**Capítulo 0 — Interfaz fundacional para Álgebra**](../capitulos/tratado-de-algebra-capitulo-0-interfaz-fundacional.md) (`MA-BCH-0021`) — establece la interfaz explícita con el fundamento lógico-conjuntista: pares ordenados, productos cartesianos, funciones, identidad y composición; verifica la ausencia de circularidad y deja habilitada la definición formal de operación binaria.
+2. [**Interfaz funcional II — Biyectividad e inversas**](../capitulos/tratado-de-algebra-interfaz-funcional-biyectividad-inversas.md) (`MA-BCH-0022`) — incorpora inyectividad, sobreyectividad, biyectividad y función inversa; separa explícitamente la biyectividad de la compatibilidad algebraica y prepara la noción de isomorfismo.
+3. [**Interfaz fundacional III — Relaciones de equivalencia y cocientes**](../capitulos/tratado-de-algebra-relaciones-equivalencia-cocientes.md) (`MA-BCH-0023`) — incorpora relaciones de equivalencia, clases y conjuntos cociente; fija la distinción entre representante y clase y exige pruebas explícitas de buena definición para operaciones sobre cocientes.
+
+### Parte I — Operaciones y estructuras {#parte-i}
+
+4. [**Capítulo 1 — Operaciones binarias y estructuras elementales**](../capitulos/tratado-de-algebra-capitulo-1-operaciones-binarias-estructuras-elementales.md) (`MA-BCH-0024`) — inicia la Parte I con la definición de operación binaria interna, la notación infija, el magma como estructura mínima y la asociatividad como primera ley algebraica.
+
+### Parte II — Monoides y grupos {#parte-ii}
+
+5. [**Capítulo 2 — Semigrupos**](../capitulos/tratado-de-algebra-capitulo-2-semigrupos.md) (`MA-BCH-0025`) — abre la Parte II definiendo el semigrupo como magma asociativo y separa lo que la asociatividad permite de las propiedades que todavía no se han introducido.
+6. [**Capítulo 3 — Elementos neutros y monoides**](../capitulos/tratado-de-algebra-capitulo-3-elementos-neutros-y-monoides.md) (`MA-BCH-0026`) — distingue neutros izquierdo, derecho y bilateral; demuestra la coincidencia de neutros laterales y la unicidad del neutro sin usar asociatividad; define monoide como semigrupo con neutro bilateral.
+7. [**Capítulo 4 — Inversos y grupos**](../capitulos/tratado-de-algebra-capitulo-4-inversos-y-grupos.md) (`MA-BCH-0027`) — distingue inversos izquierdo, derecho y bilateral; demuestra mediante asociatividad que los inversos laterales coinciden y que el inverso es único; define grupo como monoide en el que todo elemento posee inverso bilateral.
+8. [**Capítulo 5 — Conmutatividad y grupos abelianos**](../capitulos/tratado-de-algebra-capitulo-5-conmutatividad-y-grupos-abelianos.md) (`MA-BCH-0028`) — introduce la conmutatividad como una ley independiente de una operación binaria y define el grupo abeliano como grupo con operación conmutativa, cerrando la primera jerarquía estructural del tratado.
+9. [**Capítulo 6 — Subestructuras y criterio de subgrupo**](../capitulos/tratado-de-algebra-capitulo-6-subestructuras-y-criterio-de-subgrupo.md) (`MA-BCH-0030`) — construye la restricción canónica de una operación a subconjuntos cerrados, define submagmas, subsemigrupos, submonoides y subgrupos y demuestra el criterio de subgrupo de una sola condición.
+10. [**Capítulo 7 — Homomorfismos de magmas, monoides y grupos**](../capitulos/tratado-de-algebra-capitulo-7-homomorfismos-de-magmas-monoides-y-grupos.md) (`MA-BCH-0032`) — introduce la noción de homomorfismo desde magmas hasta grupos, demuestra estabilidad bajo identidad y composición y prueba que, en grupos, la preservación del neutro y de los inversos se deduce de la preservación de la operación.
+11. [**Capítulo 8 — Isomorfismos**](../capitulos/tratado-de-algebra-capitulo-8-isomorfismos.md) (`MA-BCH-0033`) — define isomorfismos como homomorfismos biyectivos, demuestra estabilidad bajo inversas, identidades y composición, introduce la relación de isomorfía y la distingue de la igualdad literal.
+12. [**Capítulo 9 — Núcleo e imagen de homomorfismos de grupos**](../capitulos/tratado-de-algebra-capitulo-9-nucleo-e-imagen-de-homomorfismos-de-grupos.md) (`MA-BCH-0034`) — construye núcleo e imagen como subgrupos canónicos de un homomorfismo y caracteriza la inyectividad mediante el núcleo trivial y la sobreyectividad mediante la imagen total.
+13. [**Capítulo 10 — Subgrupos normales**](../capitulos/tratado-de-algebra-capitulo-10-subgrupos-normales.md) (`MA-BCH-0035`) — introduce la normalidad mediante conjugación y demuestra la normalidad de núcleos y de subgrupos de grupos abelianos.
+14. [**Capítulo 11 — Clases laterales y caracterización de la normalidad**](../capitulos/tratado-de-algebra-capitulo-11-clases-laterales-y-caracterizacion-de-la-normalidad.md) (`MA-BCH-0036`) — construye clases laterales y conecta su igualdad con la normalidad.
+15. [**Capítulo 12 — Cocientes de grupos**](../capitulos/tratado-de-algebra-capitulo-12-cocientes-de-grupos.md) (`MA-BCH-0037`) — construye grupos cociente y la proyección canónica después de demostrar la buena definición del producto.
+16. [**Capítulo 13 — Primer teorema de isomorfía para grupos**](../capitulos/tratado-de-algebra-capitulo-13-primer-teorema-de-isomorfia-para-grupos.md) (`MA-BCH-0038`) — identifica el cociente por el núcleo con la estructura inducida sobre la imagen.
+
+### Parte III — Anillos y dominios {#parte-iii}
+
+17. [**Capítulo 14 — Anillos**](../capitulos/tratado-de-algebra-capitulo-14-anillos.md) (`MA-BCH-0039`) — abre la teoría de anillos asociativos unitarios y desarrolla sus primeras leyes estructurales.
+18. [**Capítulo 15 — Unidades de un anillo**](../capitulos/tratado-de-algebra-capitulo-15-unidades-de-un-anillo.md) (`MA-BCH-0040`) — construye el conjunto y el grupo de unidades de un anillo.
+19. [**Capítulo 16 — No trivialidad y divisores de cero**](../capitulos/tratado-de-algebra-capitulo-16-no-trivialidad-y-divisores-de-cero.md) (`MA-BCH-0041`) — introduce no trivialidad, divisores de cero laterales y criterios de cancelación.
+20. [**Capítulo 17 — Subanillos y homomorfismos de anillos**](../capitulos/tratado-de-algebra-capitulo-17-subanillos-y-homomorfismos-de-anillos.md) (`MA-BCH-0042`) — fija la convención unital de subanillos y morfismos y estudia su núcleo e imagen.
+21. [**Capítulo 18 — Ideales**](../capitulos/tratado-de-algebra-capitulo-18-ideales.md) (`MA-BCH-0043`) — introduce ideales laterales y bilaterales y su relación con núcleos.
+22. [**Capítulo 19 — Cocientes de anillos**](../capitulos/tratado-de-algebra-capitulo-19-cocientes-de-anillos.md) (`MA-BCH-0044`) — construye congruencias y operaciones bien definidas sobre clases módulo un ideal.
+23. [**Capítulo 20 — Isomorfismos y primer teorema de isomorfía para anillos**](../capitulos/tratado-de-algebra-capitulo-20-isomorfismos-y-primer-teorema-de-isomorfia-para-anillos.md) (`MA-BCH-0045`) — desarrolla la isomorfía de anillos y su primer teorema fundamental.
+24. [**Capítulo 21 — Dominios íntegros**](../capitulos/tratado-de-algebra-capitulo-21-dominios-integros.md) (`MA-BCH-0046`) — define dominios íntegros y sus caracterizaciones mediante producto nulo y cancelación.
+
+### Parte IV — Cuerpos {#parte-iv}
+
+25. [**Capítulo 22 — Cuerpos y subcuerpos**](../capitulos/tratado-de-algebra-capitulo-22-cuerpos-y-subcuerpos.md) (`MA-BCH-0047`) — introduce cuerpos y subcuerpos sobre la infraestructura anular previa.
+26. [**Capítulo 23 — Homomorfismos de cuerpos**](../capitulos/tratado-de-algebra-capitulo-23-homomorfismos-de-cuerpos.md) (`MA-BCH-0048`) — especializa los homomorfismos de anillos y demuestra la inyectividad automática entre cuerpos.
+27. [**Capítulo 24 — Cuerpo de fracciones de un dominio íntegro**](../capitulos/tratado-de-algebra-capitulo-24-cuerpo-de-fracciones-de-un-dominio-integro.md) (`MA-BCH-0049`) — construye el cuerpo de fracciones sin elección global de representantes y establece la inmersión canónica del dominio.
+
+### Parte V — Estructuras ordenadas {#parte-v}
+
+28. [**Capítulo 25 — Grupos ordenados**](../capitulos/tratado-de-algebra-capitulo-25-grupos-ordenados.md) (`MA-BCH-0050`) — abre la Parte V con compatibilidad entre orden y operación de grupo y la reconstrucción mediante conos.
+29. [**Capítulo 26 — Anillos ordenados**](../capitulos/tratado-de-algebra-capitulo-26-anillos-ordenados.md) (`MA-BCH-0062`) — estudia la compatibilidad multiplicativa del orden y las hipótesis necesarias para las desigualdades estrictas.
+30. [**Capítulo 27 — Cuerpos ordenados**](../capitulos/tratado-de-algebra-capitulo-27-cuerpos-ordenados.md) (`MA-BCH-0135`) — Capítulo del Tratado moderno de Álgebra dedicado a cuerpos ordenados, inversos, división y comparación de cocientes.
+31. [**Capítulo 28 — Propiedades arquimedianas**](../capitulos/tratado-de-algebra-capitulo-28-propiedades-arquimedianas.md) (`MA-BCH-0136`) — Capítulo del Tratado moderno de Álgebra dedicado a numerales internos, arquimedianidad, cambios de escala y recíprocos pequeños.
+
+### Parte VI — Construcciones y transporte {#parte-vi}
+
+32. [**Capítulo 29 — Productos directos y propiedades universales**](../capitulos/tratado-de-algebra-capitulo-29-productos-directos-y-propiedades-universales.md) (`MA-BCH-0137`) — Capítulo del Tratado moderno de Álgebra dedicado a productos directos y propiedades universales de productos, cocientes y cuerpos de fracciones.
+33. [**Capítulo 30 — Teoremas de isomorfía superiores y correspondencia**](../capitulos/tratado-de-algebra-capitulo-30-teoremas-de-isomorfia-superiores-y-correspondencia.md) (`MA-BCH-0138`) — Capítulo del Tratado moderno de Álgebra dedicado a los segundos y terceros teoremas de isomorfía y a la correspondencia de subgrupos e ideales en cocientes.
+34. [**Capítulo 31 — Descenso y transporte de estructura**](../capitulos/tratado-de-algebra-capitulo-31-descenso-y-transporte-de-estructura.md) (`MA-BCH-0139`) — Capítulo del Tratado moderno de Álgebra dedicado al descenso de homomorfismos entre cocientes y al transporte de subestructuras mediante isomorfismos.
+
+### Parte VII — Espacios vectoriales {#parte-vii}
+
+35. [**Capítulo 32 — Espacios vectoriales: definición y ejemplos**](../capitulos/tratado-de-algebra-capitulo-32-espacios-vectoriales-definicion-y-ejemplos.md) (`MA-BCH-0140`) — Definición de espacio vectorial sobre un cuerpo, identidades escalares y construcción de espacios de funciones y potencias finitas.
+36. [**Capítulo 33 — Subespacios y generación**](../capitulos/tratado-de-algebra-capitulo-33-subespacios-y-generacion.md) (`MA-BCH-0141`) — Criterio de subespacio, sumas finitas y construcción del subespacio generado, con sus propiedades de minimalidad, intersección y suma.
+37. [**Capítulo 34 — Independencia lineal y bases**](../capitulos/tratado-de-algebra-capitulo-34-independencia-lineal-y-bases.md) (`MA-BCH-0142`) — Independencia lineal, coordenadas de soporte finito, extracción y extensión finitas de bases y existencia general bajo la hipótesis adicional de Zorn.
+38. [**Capítulo 35 — Dimensión finita**](../capitulos/tratado-de-algebra-capitulo-35-dimension-finita.md) (`MA-BCH-0143`) — Intercambio finito, dimensión natural bien definida, criterios de base, finitud de subespacios y fórmula de dimensión para sumas y sumas directas internas.
+39. [**Capítulo 36 — Aplicaciones lineales**](../capitulos/tratado-de-algebra-capitulo-36-aplicaciones-lineales.md) (`MA-BCH-0144`) — Linealidad, núcleo e imagen, espacio libre de soporte finito, extensión sobre una base dada y fórmula de rango-nulidad en dimensión finita.
+40. [**Capítulo 37 — Cocientes y dualidad elemental**](../capitulos/tratado-de-algebra-capitulo-37-cocientes-y-dualidad-elemental.md) (`MA-BCH-0145`) — Cocientes vectoriales, factorización lineal, dual algebraico, base dual, evaluación canónica y aniquiladores en dimensión finita.
+
+### Parte VIII — Álgebra multilineal básica {#parte-viii}
+
+41. [**Capítulo 38 — Aplicaciones bilineales**](../capitulos/tratado-de-algebra-capitulo-38-aplicaciones-bilineales.md) (`MA-BCH-0146`) — Bilinealidad, operaciones puntuales, expansión finita, ejemplos y especificación única por valores sobre dos bases dadas.
+42. [**Capítulo 39 — Multilinealidad y formas**](../capitulos/tratado-de-algebra-capitulo-39-multilinealidad-y-formas.md) (`MA-BCH-0147`) — Aplicaciones multilineales de aridad positiva y finita, especificación por bases dadas, formas simétricas y alternantes, y la excepción de característica dos.
+43. [**Capítulo 40 — Infraestructura tensorial mínima**](../capitulos/tratado-de-algebra-capitulo-40-infraestructura-tensorial-minima.md) (`MA-BCH-0148`) — Construcción del producto tensorial por cociente, aplicación canónica, tensores puros, propiedad universal, mapas inducidos y bases tensoriales dadas.

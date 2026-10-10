@@ -1,0 +1,356 @@
+---
+title: Capítulo 17. Matriz de hipótesis y criterios de comparación
+document-id: TF-CAT-017
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-017
+source-version: 1.0.0
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-017
+    locator: TF-CAT-017 - Matriz de hipotesis y criterios de comparacion.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0133
+content-type: book-chapter
+source-id: TF-T1-C17
+description: 'Tratado fundacional de la teoría de funciones: capítulo 17, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: 'síntesis de contratos locales: categorías, topoi, ZF clásico y representaciones
+  efectivas; no se identifican sus metateorías'
+choice-use: ninguno añadido; elección regular sólo como principio opcional comparado
+---
+
+[Índice del tratado](index.qmd)
+
+Una misma expresión puede ocultar problemas distintos. «Recuperar una función» puede significar reconstruir una flecha desde su gráfica, escoger un valor en cada fibra de una relación, extraer un programa a partir de una especificación o determinar una transformación natural por su acción sobre sondas. Las respuestas de los capítulos anteriores dependen de qué datos se suministran y de qué se exige conservar.
+
+Este capítulo organiza esas respuestas. Su tarea es hacer visibles las condiciones que permiten pasar de una presentación a otra y los puntos en los que el paso se interrumpe. Reúne resultados ya registrados, desarrolla dos recorridos de prueba y distingue las comparaciones matemáticas de sus posibles realizaciones computables. No añade nodos al registro ni afirma reconstruir por completo ZF, una teoría de tipos o la teoría de topoi.
+
+## 17.1. Mapa de marcos: qué se asume en cada recorrido
+
+### 17.1.1. La base local de un resultado
+
+La base de una demostración es el conjunto de datos e hipótesis que esa demostración utiliza. No tiene por qué coincidir con todo lo introducido antes en el libro. Por ejemplo, para formar la gráfica $\langle 1_A,f\rangle$ necesitamos el producto $A\times B$; para componer relaciones mediante imágenes usamos el paquete regular; para disponer de una característica $A\to\Omega$ de cada subobjeto necesitamos un clasificador.
+
+Adoptaremos las abreviaturas de [las convenciones fundacionales](convenciones.qmd), con el siguiente alcance.
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Marco | Datos o hipótesis | Lo que no incorpora por definición |
+|---|---|---|
+| $\mathrm{Cat}$ | Objetos, flechas, identidades y composición asociativa | Productos, imágenes, lógica booleana o algoritmos |
+| $\mathrm{FL}$ | Límites finitos | Clasificador de subobjetos, exponenciales o selección |
+| $\mathrm{Reg}$ | Límites finitos y paquete de factorizaciones por epis regulares y monos, con la estabilidad requerida | Elección regular, exponenciales o clasificador |
+| $\mathrm{Top}$ | Límites finitos, exponenciales y clasificador de subobjetos | Booleanidad o elección regular |
+| $\mathrm{Bool}$ | Un topos elemental cuyos subobjetos están complementados | Algoritmos para calcular características |
+| ZF | Teoría de conjuntos con lógica clásica, sin añadir AC por defecto | Que toda especificación determine un procedimiento efectivo |
+| Marco efectivo | Modelo de máquina o realizador y representaciones fijadas | Una estructura categórica universal independiente de esos datos |
+
+:::
+
+
+El término «regular» tiene aquí el sentido fijado en el capítulo 4. Para un cotejo externo de la definición y de la composición relacional pueden consultarse Heunen y Tull, *Categories of relations as models of quantum theory*, §2, definición 2.1 y definición 2.3, pp. 3–4 del [manuscrito de los autores](https://www.cs.ox.ac.uk/people/chris.heunen/publications/2015/regular/regular.pdf). Esta referencia apoya ese uso delimitado; no importa al tratado el desarrollo posterior sobre teoría cuántica.
+
+«No incorpora por definición» no significa que se haya demostrado independencia axiomática. La ausencia de una estructura en la lista de supuestos no basta para probar que no pueda deducirse de ellos. Esa cuestión necesita un argumento o un modelo de separación.
+
+### 17.1.2. Dos rutas compatibles
+
+El Teorema 4.1.1 (TF-THM-00023) construye los límites finitos desde terminal, productos y productos fibrados. Sobre esa base se puede asumir directamente regularidad y desarrollar imágenes y relaciones. También se puede trabajar en un topos elemental. Este segundo paquete implica regularidad por un resultado externo:
+
+> **Resultado externo utilizado.** Todo topos elemental es una categoría regular. Fuente: Todd Trimble, *An elementary approach to elementary topos theory*, teorema cuyo enunciado es «A topos is a regular category», con su demostración inmediatamente siguiente, en el tramo sobre cocientes y exactitud; [texto del autor](https://ncatlab.org/toddtrimble/published/An%2Belementary%2Bapproach%2Bto%2Belementary%2Btopos%2Btheory). Consulta de ese pasaje: 26-09-2026. Se importa este resultado con referencia localizada; no se registra como demostración propia ni como resultado Lean del tratado.
+
+El mapa debe mantener separadas las dos ampliaciones:
+
+$$
+\mathrm{FL}+\text{paquete regular}\;\Longrightarrow\;\mathrm{Reg},
+\qquad
+\mathrm{FL}+\text{exponenciales}+\Omega=\mathrm{Top}
+\;\Longrightarrow\;\mathrm{Reg},
+$$
+
+$$
+\mathrm{Top}+\text{complementación de todos los subobjetos}
+=\mathrm{Bool}.
+$$
+
+La última línea conserva la hipótesis de topos. No sustituye $\mathrm{Top}$ por $\mathrm{Reg}$. Asimismo, la ruta regular del capítulo 4 no presenta su axioma como independiente del paquete acumulado de topos: aísla las hipótesis que usa la prueba.
+
+### 17.1.3. Teoría objeto y metateoría
+
+En un argumento interno a una categoría, «sin elección» significa que no se postula una sección de toda cobertura ni se introduce una familia de representantes arbitrarios como hipótesis. Al representar esa matemática dentro de otra teoría pueden aparecer decisiones de codificación y principios de la metateoría.
+
+Por ello hay dos preguntas diferentes: ¿qué supone el teorema sobre la categoría?, y ¿qué axiomas usa la implementación de ese teorema? La primera se responde con el enunciado y su demostración; la segunda exige inspeccionar la formalización y sus dependencias. Una construcción declarada no computable en Lean no añade automáticamente elección a la teoría objeto, y una prueba categórica sin AC no certifica por sí sola la ausencia de dependencias metateóricas.
+
+## 17.2. Qué significa cada correspondencia
+
+### 17.2.1. Extremos, representantes y evaluación
+
+Para comparar funciones fijamos primero sus extremos. En $\mathbf{Set}$, las aplicaciones de dominio $\{0\}$, valor $0$ y codominios respectivos $\{0\}$ y $\{0,1\}$ tienen la misma gráfica desnuda como conjunto de pares. Sólo la primera es sobreyectiva. Ésta es la prueba de estrés de §1.3: la gráfica permite reconstruir la flecha cuando el ambiente $A\times B$ está fijado.
+
+En una categoría, una relación es un subobjeto de $A\times B$. Dos monos $m:R\rightarrowtail A\times B$ y $n:S\rightarrowtail A\times B$ representan el mismo subobjeto si existe un isomorfismo $i:R\to S$ con $n i=m$. La igualdad de subobjetos no exige que $R=S$ literalmente.
+
+Análogamente, una aplicación parcial se presenta mediante un span
+
+$$
+A\xleftarrow{m}D\xrightarrow{u}B,\qquad m\text{ mono}.
+$$
+
+Dos presentaciones son equivalentes mediante un isomorfismo de dominios que hace conmutar ambos brazos. Cambiar el dominio efectivo dentro de $A$, en cambio, cambia la aplicación parcial aunque coincidan todos los valores donde ambas están definidas. Véanse la Definición 6.1.1 y los resultados de §6.2, [capítulo 6](capitulo-06.qmd).
+
+### 17.2.2. Cinco contratos de comparación
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Comparación | Dato de ida y vuelta | Identidad que debe comprobarse | Conservación acreditada |
+|---|---|---|---|
+| Flecha y gráfica | $f\mapsto\gamma_f$; $m\mapsto q p^{-1}$ cuando $p$ es iso | Recuperación de $f$; igualdad de subobjetos | Flecha con extremos fijados |
+| Dos spans parciales | Isomorfismo de dominios sobre ambos extremos | Conmutación de los dos brazos | Dominio como subobjeto y valores |
+| Parcial y codificación levantada | Clasificador y pullback del mapa universal | Recuperación del span hasta isomorfismo | Parcialidad; composición con la ley levantada pertinente |
+| Flecha y familia de sondas | $f\mapsto(g\mapsto fg)$; evaluación en $1_A$ | Naturalidad y dos recuperaciones inversas | Toda la flecha, con el control de tamaño correspondiente |
+| Representaciones efectivas | Traductores de nombres en las direcciones necesarias | Conmutación con las aplicaciones de representación | Computabilidad sólo si los traductores requeridos son computables |
+
+:::
+
+
+Las tres primeras filas se desarrollan en los capítulos 1, 6, 8 y 14; la cuarta en 13 y 15; la quinta en 9 y 14. La tabla identifica qué debe verificarse: sus justificaciones se concretan en §17.3 y §17.5.
+
+Un isomorfismo de objetos y una equivalencia de categorías tampoco son lo mismo. El Teorema 14.1.2 (TF-THM-00109) construye el cuasiinverso a partir de un funtor pleno y fiel y de representantes e isomorfismos **suministrados** para los objetos del destino. La mera frase «esencialmente sobreyectivo» no proporciona esos datos de forma simultánea sin examinar la selección involucrada.
+
+### 17.2.3. La composición también forma parte del contrato
+
+En conjuntos clásicos, una aplicación parcial $A\rightharpoonup B$ puede codificarse por $\widehat f:A\to B\sqcup\{\bot\}$. Si también $\widehat g:B\to C\sqcup\{\bot\}$, la expresión $\widehat g\circ\widehat f$ no tiene los tipos de una composición ordinaria: el codominio de $\widehat f$ no es el dominio de $\widehat g$.
+
+La composición correcta propaga la indefinición:
+
+$$
+(\widehat g\star\widehat f)(a)=
+\begin{cases}
+\bot,&\widehat f(a)=\bot,\\
+\widehat g(b),&\widehat f(a)=b\text{ en la componente }B.
+\end{cases}
+$$
+
+Es la composición de la Definición 14.2.1 y el Teorema 14.2.2 (TF-THM-00110). Una biyección entre presentaciones que ignore esta ley sólo compara datos; todavía no acredita la comparación estructural que necesitamos.
+
+## 17.3. Matriz argumentada de implicaciones y límites
+
+En esta sección, «hipótesis» significa las usadas en el resultado citado. No se afirma que constituyan siempre la axiomatización mínima. Cada remisión conserva el enunciado completo de su capítulo de origen.
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Obligación | Marco y afirmación | Respaldo exacto | Límite que controla |
+|---|---|---|---|
+| O17-01 | Terminal, productos y pullbacks permiten límites finitos | Teorema 4.1.1, TF-THM-00023 | No añade imágenes regulares por la sola construcción |
+| O17-02 | Topos elemental implica categoría regular | Teorema externo de Trimble localizado en §17.1.2 | No afirmar independencia del paquete regular respecto del topos |
+| O17-03 | Un mono $m:R\to A\times B$ representa una gráfica si y sólo si $p=\pi_A m$ es iso | Teorema 1.3.4, TF-THM-00005; recorrido §17.5.1 | Se mantienen $A$, $B$ y la igualdad de subobjetos |
+| O17-04 | En categoría regular, total y univaluada equivale a gráfica de una flecha única | Teorema 5.1.3, TF-THM-00033 | Totalidad sin unicidad no basta |
+| O17-05 | Selector equivale a sección de la primera proyección | Teorema 5.2.2, TF-THM-00034 | Regularidad sola no da todas las secciones: Contraejemplo 5.2.7, TF-CEX-00003 |
+| O17-06 | En ZF, existencia única sobre conjuntos determina una función sin AC | Teorema 5.3.3, TF-THM-00039 | No proporciona necesariamente algoritmo: Ejemplo 5.4.2, TF-EXA-00007 |
+| O17-07 | Un topos admite clasificador parcial $L(B)$; $L(1)\cong\Omega$ | Teoremas 8.2.2–8.2.3, TF-THM-00062/00063 | Tener clasificador no significa que los valores de verdad sean dos |
+| O17-08 | En un topos booleano, la comparación canónica $B\sqcup1\to L(B)$ es iso; en $B=1$, ser iso caracteriza booleanidad | Teoremas 8.4.2–8.4.3, TF-THM-00065/00066 | Fallo explícito en Contraejemplo 8.4.4, TF-CEX-00007 |
+| O17-09 | Para $f:\mathbb N\rightharpoonup\mathbb N$ parcialmente computable con parada exacta y etiquetas decidibles, la totalización etiquetada es computable si y sólo si su dominio es decidible | Teorema TF-THM-00073 de §9.2 | El contrato bajo promesa es distinto |
+| O17-10 | Traductores computables adecuados transportan realizadores | Teorema 14.3.3, TF-THM-00111 | Biyectividad semántica no basta: Contraejemplo 14.3.4, TF-CEX-00019 |
+| O17-11 | Una codificación computable total del cociente extensional con igualdad decidible es imposible en la clase general considerada | Teorema 14.4.2, TF-THM-00112, a partir de TF-THM-00080 | No excluye fragmentos finitos con certificados |
+| O17-12 | Las transformaciones $yA\Rightarrow yB$ recuperan exactamente las flechas $A\to B$ | Teoremas 15.2.2 y 15.2.5, TF-THM-00117/00120; recorrido §17.5.2 | Exige naturalidad, no sólo componentes biyectivas |
+| O17-13 | Sobre base pequeña, todo prehaz es un colímite canónico de representables | Teorema 16.2.3, TF-THM-00127 | No todo prehaz es representable: Contraejemplo 16.5.1, TF-CEX-00022 |
+
+:::
+
+
+Los rótulos O17 son localizadores de obligaciones de lectura y cotejo. No son nuevos IDs de resultados matemáticos.
+
+### 17.3.1. Por qué la unicidad cambia el problema
+
+Despleguemos O17-04, usando los Teoremas 4.2.2 y 5.1.3 (TF-THM-00024 y TF-THM-00033). Para $r:R\rightarrowtail A\times B$, escribimos $p=\pi_A r$ y $q=\pi_B r$. Totalidad significa que $p$ es epi regular; univaluación, que es mono.
+
+El argumento de que un epi regular y mono es iso se puede leer directamente. Si $p$ es coigualador de $a,b:S\rightrightarrows R$, entonces $pa=pb$. La monicidad de $p$ da $a=b$. Por ello $1_R$ coiguala $a,b$, y la universalidad de $p$ proporciona $t:A\to R$ con $tp=1_R$. Además,
+
+$$
+(pt)p=p(tp)=p=1_Ap.
+$$
+
+Como $p$ es epi, $pt=1_A$. Así $t=p^{-1}$. El criterio de gráficas reconstruye $f=q p^{-1}$ y determina la flecha de forma única. Ésta es una relectura de resultados existentes, no un axioma de elección añadido.
+
+La relación $\{(0,a),(0,b)\}$, con $a\ne b$, es total sobre $\{0\}$ pero su proyección no es mono. Existen selectores particulares, pero ninguno queda determinado de manera única por la relación. El Ejemplo 5.1.4 separa exactamente esos dos problemas.
+
+### 17.3.2. Dónde falla un selector compatible con la estructura
+
+El Contraejemplo 5.2.7 utiliza $\mathbb Z\to\mathbb Z/2\mathbb Z$. Una sección que sea homomorfismo tendría que enviar el elemento de orden dos a un entero de orden divisor de dos, necesariamente cero. La composición no podría ser la identidad del cociente.
+
+Escoger los representantes conjuntistas $0$ y $1$ sí da una sección como función de conjuntos, pero no como homomorfismo. La conclusión es que el contrato de estructura importa: un selector en la categoría de conjuntos no resuelve automáticamente el problema en grupos.
+
+### 17.3.3. Tres significados diferentes de «no basta»
+
+La tabla contiene tres clases de advertencia. En O17-04 hay un contraejemplo elemental a la omisión de una hipótesis. En O17-11 hay un teorema de imposibilidad bajo un modelo efectivo y una clase de programas determinados. En otras filas sólo se dice que la prueba no entrega un algoritmo.
+
+Estas frases no son intercambiables. «No se construyó un algoritmo» no demuestra que ninguno exista. «No existe en este marco» necesita el resultado de imposibilidad o el contraejemplo que respalda esa afirmación. Esta distinción deberá conservarse en toda síntesis del tratado.
+
+## 17.4. Elección, complementación, algoritmos y tamaño
+
+### 17.4.1. Un valor único y una familia de opciones
+
+En ZF clásico, una relación $R\subseteq A\times B$ con un único valor para cada $a\in A$ ya especifica la gráfica completa. No hay una elección arbitraria entre candidatos. El Teorema 5.3.3 establece la función correspondiente.
+
+Si sólo sabemos que cada fibra es no vacía, el problema cambia. El Teorema 5.3.2 compara precisamente las formulaciones de AC mediante familias no vacías, secciones de sobreyecciones y selectores de relaciones totales. Demostrar la equivalencia de esas formulaciones no equivale a adoptarlas como axiomas.
+
+También es diferente recibir un testigo dependiente como dato: una familia que ya asigna a cada $a$ un par formado por un valor y una prueba de relación. Extraer su primera componente usa los datos recibidos; no transforma sin más una existencia proposicional en ese dato. Ésta es la distinción de §13.4.
+
+### 17.4.2. Complementar un dominio y decidirlo
+
+En un topos, sustituir $L(B)$ por $B\sqcup1$ exige las condiciones de §8.4. El caso $B=1$ detecta el obstáculo: si la comparación canónica $1\sqcup1\to\Omega$ es iso, la característica de cada subobjeto permite descomponer el ambiente en dos partes complementarias. Recíprocamente, la booleanidad permite esa clasificación por las dos componentes. Se usa la comparación canónica, no una biyección externa de colecciones de nombres.
+
+En conjuntos clásicos todo subconjunto tiene complemento, pero su pertenencia no tiene por qué ser decidible por una máquina. Para una función parcialmente computable $f:\mathbb N\rightharpoonup\mathbb N$, con contrato de parada exacta y la codificación habitual de etiquetas decidibles, el Teorema 9.2.4 (TF-THM-00073) precisa el paso adicional. Si un algoritmo total devuelve valor o etiqueta de indefinición, inspeccionar la etiqueta decide el dominio. Si el dominio es decidible, primero se decide pertenencia; fuera se devuelve la etiqueta y dentro se ejecuta el cálculo parcial, que termina por la pertenencia ya establecida.
+
+La prueba explica ambos sentidos. No se extiende automáticamente a un realizador bajo promesa, cuyo comportamiento fuera de los nombres válidos o del dominio prometido puede quedar sin especificar.
+
+### 17.4.3. Transportar valores y transportar programas
+
+El cambio de coordenadas por biyecciones permite transportar funciones como objetos matemáticos. Para transportar procedimientos necesitamos los traductores computables adecuados.
+
+El Contraejemplo 14.3.4 lo muestra con una permutación $p$ de los naturales: intercambia $2n$ y $2n+1$ exactamente cuando $n$ pertenece al conjunto de parada diagonal. Es una involución, pero calcular $p(2n)$ decidiría ese conjunto. Las representaciones identidad y $p$ son biyectivas; cualquier traductor entre ellas debe calcular precisamente $p$. La biyección existe y el traductor computable requerido no.
+
+En consecuencia, una afirmación de «equivalencia» debe indicar qué conserva: objetos, valores, composición, testigos, algoritmos o decisiones de igualdad. No se añaden automáticamente las últimas propiedades por haber probado las primeras.
+
+### 17.4.4. La escala de las sondas
+
+Para escribir $yA(X)=\operatorname{Hom}_{\mathcal C}(X,A)$ como conjunto se requiere pequeñez local. Para formar sin reservas una categoría de prehaces y colímites sobre todos los objetos relevantes hace falta, además, fijar el universo o una condición de pequeñez suficiente.
+
+El capítulo 16 trabaja con base pequeña. La categoría de elementos tiene entonces un conjunto de objetos formado a partir de los pares $(c,x)$ con $x\in F(c)$; sus flechas también se reúnen en un conjunto. Esto permite aplicar las construcciones conjuntistas de colímites del propio capítulo. Pasar a una base grande exige un contrato nuevo de tamaño; no se justifica sólo porque la fórmula del colímite siga siendo escribible.
+
+La densidad ensambla representables. No afirma que cada prehaz sea uno de ellos. En la categoría terminal, el único representable tiene un elemento; el prehaz de dos elementos es el coproducto de dos copias de aquél y no es representable. Así se verifica el límite de O17-13 sin contradecir la densidad.
+
+## 17.5. Dos recorridos de prueba guiada
+
+### 17.5.1. De la función conjuntista a la flecha recuperada
+
+Fijemos conjuntos $A,B$ y una función $f:A\to B$. Su gráfica es
+
+$$
+\Gamma_f=\{(a,f(a)):a\in A\}\subseteq A\times B.
+$$
+
+La proyección $p:\Gamma_f\to A$ tiene inversa $i(a)=(a,f(a))$. Si $q:\Gamma_f\to B$ es la segunda proyección, entonces $q i=f$. La existencia de la inversa conserva a la vez el dominio, el valor y la unicidad del valor.
+
+Ahora ocultemos los elementos y conservemos sólo la estructura que usó ese cálculo. En una categoría con el producto pertinente, para un mono $m:R\to A\times B$ ponemos $p=\pi_A m$ y $q=\pi_B m$. Si $p$ es iso, definimos $f=q p^{-1}$. Las dos proyecciones de $\gamma_f p$ son
+
+$$
+\pi_A\gamma_f p=p,\qquad
+\pi_B\gamma_f p=f p=q p^{-1}p=q.
+$$
+
+Por universalidad del producto, $\gamma_f p=m$. Como $p$ es iso, los monos representan el mismo subobjeto.
+
+En sentido inverso, si $m=\gamma_f i$ para un isomorfismo $i:R\to A$, entonces
+
+$$
+p=\pi_A\gamma_f i=1_A i=i,
+$$
+
+de modo que $p$ es iso y $q p^{-1}=f$. Las dos traducciones recuperan los datos en el sentido apropiado: igualdad de flechas y equivalencia de representantes de subobjetos. Es el Teorema 1.3.4.
+
+**Lectura de la prueba.** El paso decisivo es pasar de las dos igualdades de componentes a una igualdad de flechas mediante el producto. No se ha escogido un valor de cada fibra. En la variante regular, totalidad y univaluación proporcionan la invertibilidad por §17.3.1.
+
+**Casos límite.** Si $A=\varnothing$, la gráfica de la función vacía es vacía y $p$ es la identidad del vacío. Si $B=\varnothing$ y $A\ne\varnothing$, no hay función total ni relación total de ese tipo. No debe introducirse un valor por defecto para ocultar esa imposibilidad.
+
+
+### 17.5.2. De una flecha a una familia natural, y regreso
+
+Sea $\mathcal C$ localmente pequeña y trabajemos con el control de universo de §15.2; para evitar cuestiones de clases puede suponerse aquí que $\mathcal C$ es pequeña. Una flecha $f:A\to B$ determina para cada objeto $X$ la función
+
+$$
+\alpha_X:\operatorname{Hom}(X,A)\to\operatorname{Hom}(X,B),
+\qquad
+\alpha_X(g)=fg.
+$$
+
+Si $u:Y\to X$, la asociatividad da
+
+$$
+\alpha_Y(gu)=f(gu)=(fg)u=\alpha_X(g)u.
+$$
+
+Ésta es exactamente la naturalidad. En sentido inverso, dada una transformación natural $\alpha:yA\Rightarrow yB$, tomamos
+
+$$
+f=\alpha_A(1_A):A\to B.
+$$
+
+Para cualquier $g:X\to A$, aplicamos la naturalidad al mapa $g$ y al elemento $1_A$:
+
+$$
+\alpha_X(g)=\alpha_A(1_A)g=fg.
+$$
+
+Por tanto toda la transformación queda determinada por $f$. Si comenzamos por una flecha, evaluar su familia en $1_A$ devuelve $f1_A=f$; si comenzamos por la transformación, la fórmula anterior devuelve cada componente. Éste es el caso representable del Lema de Yoneda de §15.2, TF-THM-00117 y TF-THM-00120.
+
+**Lectura de la prueba.** La identidad es el dato de prueba que fuerza la recuperación. La naturalidad transporta ese dato a todas las sondas. Observar únicamente puntos $1\to A$ no ofrece siempre lo mismo: necesita la condición generadora estudiada en el capítulo 2.
+
+
+**Límite efectivo.** Evaluar en la identidad es una fórmula de recuperación de un dato natural ya suministrado. No resuelve por sí mismo cómo codificar todas las componentes, comprobar naturalidad o decidir igualdad de transformaciones.
+
+## 17.6. Auditoría de las afirmaciones de conservación
+
+### 17.6.1. Lo que se conserva y lo que exige otra prueba
+
+Los dos recorridos anteriores permiten recuperar exactamente una flecha. Sus contratos son distintos: el primero pasa por productos e isomorfismos de representantes; el segundo por funtores Hom y naturalidad. Ambos proporcionan existencia y unicidad en sus respectivos marcos. Ninguno declara computables todas las flechas.
+
+Antes de trasladar una afirmación entre presentaciones deben verificarse los extremos, la noción de igualdad, las dos recuperaciones y la ley de composición que se quiere conservar. Después se examinan, por separado, elección, complementación, tamaño y efectividad. Si una comparación requiere traductores computables, su existencia matemática no basta. Si requiere una estructura natural, una colección de biyecciones sin naturalidad tampoco basta: véase TF-CEX-00020 en §15.1.
+
+El diagrama de dependencias sirve para localizar premisas; sus aristas de prerrequisito de formulación y las referencias a axiomas negados en contraejemplos no deben interpretarse todas como implicaciones deductivas. La conclusión de cada comparación procede de su demostración, no de la sola presencia de una arista.
+
+### 17.6.2. Correspondencia con la formalización disponible
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Resultado usado en la síntesis | Alcance formal documentado |
+|---|---|
+| TF-THM-00005 | Criterio categórico general para el producto binario pertinente, recuperación, unicidad e invariancia; F1 integrado por PR #144 |
+| TF-THM-00033 | Prueba editorial; F2 pendiente |
+| TF-THM-00102 | Dos componentes de gráficas como predicados, sustitución y composición, integrados por PR #111; no todo el nodo compuesto |
+| TF-THM-00103/00104 | Instancias Set de beta/eta; no una CCC arbitraria |
+| TF-THM-00111 | Fragmento de transporte semántico; la formalización citada no certifica computabilidad de traductores |
+| TF-THM-00120 | Instancias Set del informe 015; no el Yoneda categórico general |
+| TF-THM-00127 | Instancia de categoría terminal del informe 016; no densidad general |
+| Topos implica regularidad | Referencia matemática externa; sin certificación Lean atribuida por este capítulo |
+
+:::
+
+
+Esta tabla remite a F1 y a los informes 013, 014, 015 y 016. La auditoría metateórica automatizada de F1 permanece como objetivo de formalización, no como requisito de cierre editorial. La síntesis no añade código ni convierte la formalización de un modelo en prueba de todos los modelos.
+
+### 17.6.3. Salida y continuidad
+
+Las trece obligaciones de §17.3 tienen respaldo interno localizado o una fuente externa expresamente delimitada. Los recorridos reproducen argumentos de resultados existentes; los casos didácticos asociados se desarrollan en el Apéndice C como ejemplos, sin convertirse en nuevos nodos matemáticos. No se introducen nuevos teoremas, axiomas ni identificadores de resultados.
+
+La matriz permite responder, para una comparación concreta, qué datos hacen posible la traducción, qué igualdad se obtiene, qué estructura se conserva y qué obstáculo impide fortalecer la conclusión. Con ella queda articulado el paso a TF-CAT-018, que responde de forma integrada a la pregunta inicial mediante los marcos y límites ya establecidos.
+
+### Fuentes y control editorial del capítulo
+
+- Fuente interna: capítulos 1–16 y los nodos/localizadores citados; registro y grafo. El capítulo sintetiza esos resultados, sin reclamar originalidad matemática.
+- Marcos y continuidad: [convenciones](convenciones.qmd), [matriz preliminar](matriz-hipotesis.qmd) y [el mapa del tratado](index.qmd).
+- Fuentes externas cotejadas para este tramo: Trimble, teorema localizado en §17.1.2; Heunen–Tull, §2, definiciones 2.1 y 2.3. No se afirma lectura integral de sus obras ni cierre del inventario bibliográfico global.
+- Revisión: extremos y composiciones de las dos recuperaciones; casos vacíos; distinción entre unicidad y selección; booleanidad reteniendo el marco de topos; exigencias efectivas y de tamaño; existencia de los IDs citados y conservación del registro de 269 nodos.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-16.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-18.qmd)
+:::

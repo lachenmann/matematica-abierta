@@ -1,0 +1,56 @@
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>

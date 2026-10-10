@@ -1,0 +1,53 @@
+"""Validate the complete CPM web release, including preserved public identities."""
+from pathlib import Path
+import hashlib, json, re
+
+root = Path(__file__).resolve().parents[1]
+manifest = json.loads((root/'data/cpm-tome-i-manifest.json').read_text())
+rows = manifest['chapters']
+assert len(rows) == 20
+owners = {}
+exercise_ids, solution_ids = [], []
+images = set()
+all_ids = []
+for path in list(root.rglob('*.md')) + list(root.rglob('*.qmd')):
+    if '.git' not in path.parts and not any(p.startswith('_site') for p in path.parts):
+        all_ids += re.findall(r'^content-id: (MA-\w+-\d+)', path.read_text(), re.M)
+assert len(all_ids) == len(set(all_ids)), 'duplicate public content ID'
+for row in rows:
+    path = root/row['path']
+    source = path.read_text()
+    sources = [path] + [root/p['path'] for p in row.get('pages', [])]
+    source = '\n'.join(p.read_text() for p in sources)
+    assert re.search(r'^content-id: '+row['content_id']+'$', source, re.M)
+    assert not re.search(r'(?<![\w])@(?:sec|def|thm|lem|prp|cor|exm|exr|sol|fig)-', source)
+    assert not any(x in source for x in ['sediment://', 'sandbox:', '../90 - Assets/'])
+    anchors = re.findall(r'\{#([\w-]+)', source)
+    for anchor in anchors:
+        assert anchor not in owners, anchor
+        owners[anchor] = next(p for p in sources if '{#'+anchor in p.read_text())
+    ex = re.findall(r'\{#exr-t1-(\d+)', source)
+    sol = re.findall(r'\{#sol-t1-(\d+)', source)
+    assert len(ex) == len(sol) == 40 and ex == sol
+    exercise_ids += ex
+    solution_ids += sol
+    for image in re.findall(r'../../assets/books/cpm-tomo-i/([^>\s)]+\.png)', source):
+        assert (root/'assets/books/cpm-tomo-i'/image).is_file()
+        images.add(image)
+assert len(owners) == manifest['anchor_count'] + sum(len(r.get('pages', [])) > 0 for r in rows)
+assert sorted(map(int, exercise_ids)) == list(range(36, 836))
+assert exercise_ids == solution_ids and len(images) == manifest['figure_count']
+for row in rows:
+  for relative in [row['path']] + [p['path'] for p in row.get('pages', [])]:
+    source = (root/relative).read_text()
+    for file, anchor in re.findall(r'\]\(([^)#]*)#([\w-]+)\)', source):
+        assert anchor in owners, anchor
+        expected = (root/relative).parent/file if file else root/relative
+        if expected == root/rows[0]['path'] and anchor in rows[0].get('anchor_routes', {}):
+            expected = expected.parent/rows[0]['anchor_routes'][anchor].replace('.html', '.md')
+        assert expected == owners[anchor], (row['chapter'], anchor)
+hub = (root/'libros/para-matematicos/calculo-para-matematicos.md').read_text()
+assert 'Publicación progresiva' not in hub
+assert all('../capitulos/'+Path(r['path']).name in hub for r in rows)
+print(f"PASS: 20 chapters, 800 matched pairs, {len(owners)} anchors, {len(images)} images, all reference destinations, unique public IDs")
+

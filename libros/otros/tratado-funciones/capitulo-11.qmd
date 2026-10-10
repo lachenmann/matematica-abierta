@@ -1,0 +1,225 @@
+---
+title: Capítulo 11. Evaluación universal y diagonalización de funciones
+document-id: TF-CAT-011
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-011
+source-version: 1.0.3
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-011
+    locator: TF-CAT-011 - Evaluacion universal y diagonalizacion de funciones.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0127
+content-type: book-chapter
+source-id: TF-T1-C11
+description: 'Tratado fundacional de la teoría de funciones: capítulo 11, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: evaluación y exponenciales de TF-CAT-001–002; subobjetos y objeto potencia
+  de TF-CAT-003; programas parciales de TF-CAT-009; igualdad extensional de TF-CAT-010
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Pregunta rectora
+¿Cuándo puede una familia de funciones evaluarse mediante una sola aplicación universal? ¿Qué impide que sus parámetros nombren *todas* las aplicaciones y qué cambia al permitir la indefinición?
+:::
+
+
+**Contrato de continuidad.** Las exponenciales y su evaluación se introdujeron en [el capítulo 1](capitulo-01.qmd) y [el 2](capitulo-02.qmd). Las aplicaciones parciales y la composición parcial están fijadas en [el 6](capitulo-06.qmd). Los programas y sus índices tienen el significado exacto establecido en [el 9](capitulo-09.qmd); la equivalencia extensional, el conjunto diagonal de parada y los límites de decisión se desarrollaron en [el 10](capitulo-10.qmd). Este capítulo no identifica los objetos de códigos con *todas* las funciones: la relación entre ambas clases será siempre una hipótesis explícita.
+
+## 11.1. Una familia no es necesariamente la totalidad de las funciones
+
+<a id="TF-DEF-00045"></a>
+
+**Definición 11.1.1 — Familia evaluable y sus secciones** <!-- result-id: TF-DEF-00045; depends-on: TF-THM-00006, TF-THM-00010, TF-DEF-00008 -->
+
+Sean conjuntos $P,A,B$ y $U:P\times A\to B$. Para $p\in P$ escribimos $U_p:A\to B$, $U_p(a)=U(p,a)$. La *familia evaluada* por $U$ es $\mathcal F_U=\{U_p:p\in P\}\subseteq B^A$; $U$ es *universal para una clase* $\mathcal F\subseteq B^A$ si $\mathcal F_U=\mathcal F$. Esto **no** significa universal para todo $B^A$ a menos que así se enuncie. El mapa de denominación es $\nu_U:P\to B^A$, $p\mapsto U_p$, y es sobreyectivo exactamente cuando $U$ nombra todas las funciones $A\to B$.
+
+En una categoría cartesianamente cerrada, la misma noción de familia se presenta por $U:P\times A\to B$ y su transpuesta $\widehat U:P\to B^A$. La evaluación $\mathrm{ev}:B^A\times A\to B$ siempre existe bajo los axiomas del capítulo 1, pero ello **no proporciona** una epimorfía $P\to B^A$ para un objeto de programas $P$ escogido de antemano.
+
+<a id="TF-THM-00088"></a>
+
+**Teorema 11.1.2 — Lema diagonal sin hipótesis de computabilidad** <!-- result-id: TF-THM-00088; depends-on: TF-DEF-00045, TF-THM-00009 -->
+
+Sea $U:A\times A\to B$ una familia total, y $s:B\to B$ una aplicación *sin puntos fijos*: $s(b)\ne b$ para todo $b\in B$. La función $d:A\to B$ definida por
+
+$$d(a):=s\bigl(U(a,a)\bigr)\tag{11.1}$$
+
+no es ninguna sección $U_p$. En consecuencia $\nu_U:A\to B^A$ no es sobreyectiva.
+
+*Demostración.* La expresión (11.1) define una función total porque $U$ y $s$ son totales. Fijado $p\in A$, la evaluación en $p$ produce
+
+$$d(p)=s(U(p,p))\ne U(p,p)=U_p(p).$$
+
+Así $d\ne U_p$ por extensionalidad de funciones; como $p$ era arbitrario, $d\notin\mathcal F_U$. La aplicación que envía $p$ a su sección no cubre $B^A$. No se necesita elegir simultáneamente valores: $d$ está explícitamente definida. $\square$
+
+<a id="TF-THM-00089"></a>
+
+**Teorema 11.1.3 — Principio de punto fijo, forma conjuntista** <!-- result-id: TF-THM-00089; depends-on: TF-DEF-00045, TF-THM-00088 -->
+
+Si $\nu_U:A\to B^A$ es sobreyectiva, entonces *toda* aplicación $s:B\to B$ posee un punto fijo.
+
+*Demostración.* Construyamos $g(a)=s(U(a,a))$. Por sobreyectividad hay $p\in A$ tal que $U_p=g$. Tomando $b=U(p,p)$ obtenemos
+
+$$b=U_p(p)=g(p)=s(U(p,p))=s(b).$$
+
+La existencia del representante $p$ procede de la hipótesis para la única función $g$ que hemos construido; no presupone una función de elección de representantes para todas las funciones. $\square$
+
+La afirmación de 11.1.2 es la contraposición de 11.1.3, pero damos ambas pruebas para enseñar los dos recorridos: construir una función ausente y construir un punto fijo.
+
+<a id="TF-THM-00090"></a>
+
+**Teorema 11.1.4 — Cantor desde la diagonal** <!-- result-id: TF-THM-00090; depends-on: TF-THM-00088, TF-DEF-00012, TF-EXA-00002 -->
+
+Para cualquier conjunto $A$, ninguna función $h:A\to\mathcal P(A)$ es sobreyectiva.
+
+*Demostración.* Definamos $R(a,x)$ como «$x\in h(a)$» y $D=\{x\in A:x\notin h(x)\}$. Si $h$ fuese sobreyectiva, existiría $p$ tal que $h(p)=D$. Entonces
+
+$$p\in D\iff p\notin h(p)\iff p\notin D,$$
+
+contradicción. Equivalentemente, identificar un subconjunto con su predicado característico permite aplicar 11.1.2 al conmutador de valores booleanos, que carece de puntos fijos. La comprensión empleada es **separación sobre el conjunto previo $A$**, no una comprensión irrestricta de todos los objetos. $\square$
+
+<a id="TF-EXA-00019"></a>
+
+**Ejemplo 11.1.5 — Una tabla finita** <!-- result-id: TF-EXA-00019; depends-on: TF-DEF-00045, TF-THM-00088 -->
+
+Sea $A=B=\{0,1\}$ y $U(0,x)=0$, $U(1,x)=x$. La familia contiene solamente la función constante cero y la identidad, mientras que $B^A$ tiene cuatro funciones. Con $s(b)=1-b$, la diagonal vale $d(0)=1$ y $d(1)=0$, es decir, la negación: difiere de la sección $0$ en $0$ y de la sección $1$ en $1$. Si se sustituye $U$ por una familia parcial, falla precisamente la garantía de que $U(a,a)$ esté definido; sin ese valor no se obtiene una diagonal total mediante la misma fórmula.
+
+## 11.2. La versión categórica: la sobreyectividad sobre puntos es una hipótesis
+
+<a id="TF-DEF-00046"></a>
+
+**Definición 11.2.1 — Denominación débilmente sobreyectiva por puntos** <!-- result-id: TF-DEF-00046; depends-on: TF-AX-00003, TF-AX-00004, TF-AX-00005, TF-DEF-00002, TF-THM-00006 -->
+
+Sea $\mathcal C$ cartesianamente cerrada, con terminal $1$, y $\widehat U:A\to B^A$. Decimos que $\widehat U$ es *débilmente sobreyectiva por puntos* si para toda flecha $g:A\to B$ existe una flecha $p:1\to A$ tal que
+
+$$g=\mathrm{ev}\circ\langle\widehat U\circ p\circ!_A,\mathrm{id}_A\rangle,\tag{11.2}$$
+
+donde $!_A:A\to1$. Es decir, $g$ es la sección $a\mapsto U(p,a)$ de un parámetro **global**. Este enunciado no equivale a afirmar sin más que $\widehat U$ sea epimorfismo categórico; tal sustitución requeriría hipótesis adicionales sobre levantamiento de puntos.
+
+<a id="TF-THM-00091"></a>
+
+**Teorema 11.2.2 — Punto fijo de Lawvere, con hipótesis exactas** <!-- result-id: TF-THM-00091; depends-on: TF-DEF-00046, TF-AX-00003, TF-AX-00004, TF-AX-00005, TF-THM-00010 -->
+
+Si $\widehat U:A\to B^A$ es débilmente sobreyectiva por puntos, entonces para cada endomorfismo $s:B\to B$ existe $b:1\to B$ tal que $s\circ b=b$.
+
+*Demostración.* Sea $U=\mathrm{ev}\circ(\widehat U\times\mathrm{id}_A):A\times A\to B$ y $\Delta_A=\langle\mathrm{id}_A,\mathrm{id}_A\rangle:A\to A\times A$. Definamos $g=s\circ U\circ\Delta_A:A\to B$. Por (11.2), hay $p:1\to A$ que representa $g$, esto es, $g=U\circ\langle p\circ!_A,\mathrm{id}_A\rangle$. Pongamos $b=U\circ\langle p,p\rangle:1\to B$. Precomponiendo la ecuación de $g$ por $p$ obtenemos
+
+$$s\circ b=g\circ p=U\circ\langle p,p\rangle=b.$$
+
+No se ha evaluado fuera de ningún dominio: todas las flechas aquí son totales. No usamos que $1$ sea generador ni que todo epimorfismo se escinda. $\square$
+
+<a id="TF-CEX-00013"></a>
+
+**Contraejemplo 11.2.3 — Un epi sin levantamiento de un punto** <!-- result-id: TF-CEX-00013; depends-on: TF-DEF-00046, TF-CEX-00001, TF-AX-00008 -->
+
+En $C_2\text{-}\mathbf{Set}$ consideremos la órbita libre $G=\{0,1\}$ con acción que intercambia ambos elementos. La aplicación equivariante $q:G\to1$ es sobreyectiva subyacente y epimorfismo regular (es cociente de su par núcleo), pero no existe sección equivariante $1\to G$: dicha flecha enviaría el único punto a un elemento fijo, inexistente. Así, ser epi no garantiza poder levantar puntos globales. El teorema anterior no permite reemplazar «débilmente sobreyectiva por puntos» por «epi» sin justificación.
+
+## 11.3. Universalidad computacional y la frontera de la parcialidad
+
+<a id="TF-DEF-00047"></a>
+
+**Definición 11.3.1 — Evaluador universal parcial efectivo** <!-- result-id: TF-DEF-00047; depends-on: TF-DEF-00035, TF-DEF-00036, TF-DEF-00040, TF-THM-00078 -->
+
+Fijemos exactamente la numeración efectiva $e\mapsto\varphi_e$ de aplicaciones parcialmente computables $\mathbb N\rightharpoonup\mathbb N$ del capítulo 9. Un evaluador universal parcial es la función parcial
+
+$$V:\mathbb N\times\mathbb N\rightharpoonup\mathbb N,\qquad V(e,n)\simeq\varphi_e(n),\tag{11.3}$$
+
+computable mediante una sola máquina, donde $\simeq$ exige *igualdad de dominios y de valores*, no sólo igualdad cuando ambas partes terminan. «Universal» aquí significa universal entre **las funciones parciales computables indexadas**, no entre todas las funciones conjuntistas $\mathbb N\to\mathbb N$, ni total como función de dos variables.
+
+<a id="TF-THM-00092"></a>
+
+**Teorema 11.3.2 — Existencia de un evaluador universal parcial** <!-- result-id: TF-THM-00092; depends-on: TF-DEF-00047, TF-DEF-00035, TF-THM-00069 -->
+
+Para la codificación efectiva de máquinas usada en el capítulo 9, existe un $V$ como (11.3).
+
+*Demostración constructiva en el modelo de máquinas.* Una máquina intérprete recibe $(e,n)$, decodifica la descripción de la máquina $e$ y simula sucesivamente sus configuraciones con entrada $n$. Si la máquina simulada termina con resultado $y$, el intérprete termina con $y$; si no termina, el intérprete tampoco lo hace. Las transiciones de una máquina de Turing y su codificación son operaciones finitas efectivas, de modo que esta simulación única computa una función parcial. Por definición de la numeración, su sección con parámetro $e$ coincide exactamente con $\varphi_e$, tanto en dominio como en valores. Los códigos inválidos, si existen, reciben la conducta fijada para ellos por la numeración; no los tratamos tácitamente como máquinas que terminan. Esta prueba depende de la existencia de un simulador efectivo para la **codificación concreta** fijada en el capítulo 9, no de la sola posibilidad conjuntista de enumerar programas. $\square$
+
+<a id="TF-THM-00093"></a>
+
+**Teorema 11.3.3 — No hay enumerador universal total computable de las funciones totales computables** <!-- result-id: TF-THM-00093; depends-on: TF-THM-00088, TF-DEF-00047, TF-DEF-00035 -->
+
+No existe función $T:\mathbb N^2\to\mathbb N$ que sea simultáneamente (i) total computable y (ii) enumere todas las funciones totales computables $\mathbb N\to\mathbb N$ mediante sus secciones $T_e(n)=T(e,n)$.
+
+*Demostración.* Si existiera, $d(n)=T(n,n)+1$ sería total computable por composición de algoritmos totales. Por (ii), para algún índice $j$ se tendría $d=T_j$. Evaluando en $j$ se obtiene $T(j,j)+1=T(j,j)$, absurdo en $\mathbb N$. La frase «total computable» en (i) es esencial para deducir que $d$ pertenece a la clase que (ii) pretende enumerar. Esto no afirma que las funciones totales computables no puedan enumerarse *con una numeración no efectiva* ni que no puedan aparecer entre las secciones parcialmente computables de $V$. $\square$
+
+<a id="TF-THM-00094"></a>
+
+**Teorema 11.3.4 — Qué ocurre con la diagonal parcial** <!-- result-id: TF-THM-00094; depends-on: TF-THM-00092, TF-DEF-00047, TF-THM-00093 -->
+
+Definamos la aplicación parcial computable $h(n)\simeq V(n,n)+1$, con dominio exacto $\{n:V(n,n)\downarrow\}$. Existe un índice $j$ tal que $\varphi_j=h$ y necesariamente $V(j,j)\uparrow$.
+
+*Demostración.* El algoritmo de $h$ simula $V(n,n)$, y sólo si termina suma uno; por ello $h$ es parcialmente computable y tiene algún índice $j$. Si $V(j,j)$ terminara con valor $y$, se seguiría $\varphi_j(j)=y$ por universalidad y $h(j)=y+1$ por definición, pero $h=\varphi_j$ exigiría $y=y+1$, imposible. Por tanto $V(j,j)$ no termina; entonces $h(j)$ tampoco termina, y las dos funciones coinciden ahí como exige la igualdad parcial. El caso indefinido impide la contradicción, no la universalidad. $\square$
+
+<a id="TF-THM-00095"></a>
+
+**Teorema 11.3.5 — Ningún algoritmo decide la diagonal de parada** <!-- result-id: TF-THM-00095; depends-on: TF-THM-00092, TF-DEF-00047, TF-CEX-00008, TF-THM-00094 -->
+
+Sea $K=\{n:V(n,n)\downarrow\}$. Bajo la numeración efectiva fijada, $K$ es computablemente enumerable pero no decidible.
+
+*Demostración.* La simulación de $V(n,n)$ semidecide pertenencia, de modo que $K$ es c.e. Supongamos que el indicador total computable $k$ decidiera $K$. Entonces la función
+
+$$g(n)=\begin{cases}V(n,n)+1,& k(n)=1,\\0,& k(n)=0\end{cases}$$
+
+sería **total computable**: en el primer caso la garantía $n\in K$ asegura terminación de la simulación; en el segundo no se ejecuta $V$. Por universalidad existe $j$ con $g=\varphi_j$. Si $j\notin K$, $V(j,j)$ está indefinido mientras que $g(j)$ está definido, contradicción con $g=\varphi_j$. Si $j\in K$, ambos están definidos y $g(j)=V(j,j)+1\ne V(j,j)=\varphi_j(j)$, otra contradicción. Luego $k$ no existe. Este resultado reconstruye el límite del capítulo 9 con el evaluador fijado y no debe contarse como una nueva hipótesis de indecidibilidad. $\square$
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R4 -->
+::: {.callout-note}
+## De la diagonal básica a la reindexación
+`TF-THM-00088` trata la diagonal de una evaluación total con el mismo conjunto de índices y argumentos; `TF-THM-00092`–`00095` estudian por separado la universalidad **parcial computable**. [El capítulo 12](capitulo-12.qmd) permite índices $P$ y argumentos $A$ distintos mediante una reindexación **sobreyectiva** $q:A\to P$ (`TF-THM-00098`), y explica por qué el argumento no requiere una expresión sin tipo como $f(f)$. La nueva sobreyectividad es una hipótesis del refuerzo, no un dato que el capítulo 11 hubiera omitido. Mapa del recorrido.
+:::
+
+
+## 11.4. Interpretación, casos límite y lectura de las pruebas
+
+<a id="TF-EXA-00020"></a>
+
+**Ejemplo 11.4.1 — La condición sin puntos fijos no es decorativa** <!-- result-id: TF-EXA-00020; depends-on: TF-THM-00089, TF-THM-00091 -->
+
+Para $A=B=1$, el único mapa $1\to1^1$ es sobreyectivo, y el único endomorfismo de $B$ es la identidad, que posee un punto fijo. El principio de punto fijo no prohíbe la universalidad cuando $B$ carece de un endomorfismo sin puntos fijos. Si $B=\varnothing$ y $A=\varnothing$, también debe revisarse el exponente $B^A$: éste tiene la función vacía como elemento, aunque $B$ no tenga elementos. Las demostraciones anteriores siguen siendo correctas porque no inventan puntos globales.
+
+<a id="TF-EXA-00021"></a>
+
+**Ejemplo 11.4.2 — Tres contratos distintos** <!-- result-id: TF-EXA-00021; depends-on: TF-DEF-00045, TF-DEF-00047, TF-THM-00092, TF-THM-00093, TF-THM-00094 -->
+
+(1) $\mathrm{ev}:B^A\times A\to B$ es total para *todas las funciones* porque sus parámetros son ya funciones, sin afirmación sobre codificación o computabilidad. (2) $V(e,n)$ simula *todos los programas parciales* desde códigos efectivos; es computable como aplicación parcial, no como total. (3) Un algoritmo total $T(e,n)$ no puede tener secciones que incluyan todas las funciones totales computables. Las tres afirmaciones no se contradicen: cambian el universo de parámetros, el contrato de definición y la noción de efectividad.
+
+**Lectura desarrollada.** En 11.1.2 la totalidad de $U$ garantiza que $U(a,a)$ exista para cada $a$ y permite definir $d(a)=s(U(a,a))$. La hipótesis $s(b)\ne b$ se usa al evaluar una supuesta igualdad $d=U_p$ en el propio índice $p$: produciría $s(U(p,p))=U(p,p)$. Esta evaluación prueba una desigualdad matemática de funciones; no requiere ni proporciona un algoritmo general de igualdad.
+
+En 11.3.4 desaparece el paso que en la diagonal total forzaba dos valores incompatibles: $V(j,j)$ puede divergir y entonces $h(j)$ diverge también, de modo que no aparecen simultáneamente $y$ y $y+1$. En el teorema de Lawvere de 11.2.2, la hipótesis decisiva es que la flecha considerada quede representada por un **punto global concreto** del objeto de parámetros; una mera epimorfía categórica no suministra por sí sola ese punto ni reemplaza el dato de representación.
+
+### Auditoría fundacional y de formalización
+
+- **Paquetes:** §§11.1 y 11.3 tienen lectura conjuntista; §11.2 requiere terminal, productos y exponenciales. No se presume que $1$ sea generador, que todos los epi sean regulares ni que haya elección.
+- **Alcance de universalidad:** jamás se identifica «enumerar computables» con «enumerar todas las funciones». La diagonal abstracta no contiene una afirmación de computabilidad si ésta no se introduce explícitamente.
+- **Contradicciones aparentes:** los argumentos totales difieren necesariamente en un argumento de cada sección; en el caso parcial puede coincidir la indefinición en el índice diagonal.
+- **Fuentes y dependencias:** el mecanismo abstracto se relaciona con F. W. Lawvere, *Diagonal arguments and cartesian closed categories* (1969; reimpresión con comentario de autor en *Reprints in Theory and Applications of Categories*, n.º 15 (2006), pp. 1–13, Teorema 1.1 y Corolario 1.2, p. 5), <https://tac.mta.ca/tac/reprints/index.html>, entrada 15. Para la universalidad computable parcial y la prueba diagonal contra la universalidad total: *Stanford Encyclopedia of Philosophy*, «Recursive Functions», §§3.1–3.2, <https://plato.stanford.edu/entries/recursive-functions/>. Ambas referencias orientan y permiten cotejar; los pasos y su alcance se escriben aquí explícitamente.
+- **Lean:** la PR [#101](https://github.com/lachenmann/matematica-abierta/pull/101) se integró tras CI satisfactorio del SHA `f776929d2707cdc299233da3950364b69c695e27`: cubre `TF-THM-00088` y `TF-THM-00089` mediante pruebas completas explícitas y `TF-THM-00090` en su versión **predicativa**; el puente entre predicados y conjuntos potencia no está formalizado como teorema adicional. Ni el intérprete de Turing ni el teorema categórico de Lawvere se consideran formalizados. Estado, dependencias y enlaces: LEAN_VERIFICATION_REPORT.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-10.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-12.qmd)
+:::

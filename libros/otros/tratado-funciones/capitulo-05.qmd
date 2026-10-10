@@ -1,0 +1,258 @@
+---
+title: Capítulo 5. Funciones, relaciones totales y principios de elección
+document-id: TF-CAT-005
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-005
+source-version: 1.0.1
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-005
+    locator: TF-CAT-005 - Funciones relaciones totales y principios de eleccion.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0121
+content-type: book-chapter
+source-id: TF-T1-C05
+description: 'Tratado fundacional de la teoría de funciones: capítulo 5, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: categoría regular según TF-AX-00008; principio de elección regular sólo
+  cuando se invoca TF-AX-00009; reconstrucciones conjuntistas específicamente en ZF
+  clásico
+choice-use: none en teoremas 5.1–5.2 y elección única; TF-AX-00009 asumido sólo en
+  implicaciones explícitas; equivalencias conjuntistas 5.3 en ZF
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Pregunta rectora
+¿En qué condiciones un enunciado «para cada argumento existe un valor» determina una aplicación, y cuándo sería necesario elegir simultáneamente uno entre varios valores? Separaremos cobertura del dominio, unicidad, existencia de sección, existencia efectiva y principios de elección. La existencia de una relación no equivale a la de su selector.
+:::
+
+
+**Contrato fundacional.** Usamos las aplicaciones y gráficas de [capítulo 1](capitulo-01.qmd), la extensionalidad y sus restricciones del [capítulo 2](capitulo-02.qmd), los subobjetos y productos fibrados de [capítulo 3](capitulo-03.qmd), y las imágenes, epimorfismos regulares y composición relacional de [capítulo 4](capitulo-04.qmd). El marco categórico es **regular**, conforme a `TF-AX-00008`. No introducimos elección en silencio. La propiedad `TF-AX-00009` sólo se admite como hipótesis en los resultados que la mencionan. Los ejemplos en conjuntos se desarrollan en **ZF clásico**, sin presuponer AC salvo donde se afirma explícitamente.
+
+## 5.1. Tres propiedades que no deben confundirse
+
+Sea $r:R\rightarrowtail A\times B$ una relación, con $p=\pi_A r:R\to A$ y $q=\pi_B r:R\to B$. Las propiedades siguientes son invariantes bajo isomorfismo del representante sobre $A\times B$.
+
+<a id="TF-DEF-00017"></a>
+
+**Definición 5.1.1 — Totalidad regular** <!-- result-id: TF-DEF-00017; depends-on: TF-DEF-00010, TF-DEF-00014, TF-AX-00008 -->
+
+La relación $R:A\rightsquigarrow B$ es *total* (o *entera*) si $p:R\twoheadrightarrow A$ es un **epimorfismo regular**. No sustituimos esta condición por la mera epimorfía en una categoría regular arbitraria: existen epimorfismos que no son regulares. En $\mathbf{Set}$, la condición expresa $\forall a\in A\,\exists b\in B\ R(a,b)$.
+
+<a id="TF-DEF-00018"></a>
+
+**Definición 5.1.2 — Univaluación** <!-- result-id: TF-DEF-00018; depends-on: TF-DEF-00003, TF-DEF-00010 -->
+
+La relación es *univaluada* si $p:R\to A$ es monomorfismo. Esto significa que, dadas $u,v:X\to R$, la igualdad $pu=pv$ implica $u=v$. En conjuntos, equivale a que cada argumento se relacione con **a lo sumo un** valor; por sí sola no exige que se relacione con alguno.
+
+<a id="TF-THM-00033"></a>
+
+**Teorema 5.1.3 — Criterio estructural de función total** <!-- result-id: TF-THM-00033; depends-on: TF-DEF-00017, TF-DEF-00018, TF-THM-00024, TF-THM-00005, TF-THM-00029 -->
+
+Para una relación $r:R\rightarrowtail A\times B$ son equivalentes: (i) es total y univaluada; (ii) $p:R\to A$ es isomorfismo; (iii) $[r]$ es la gráfica de una única flecha $f:A\to B$. En tal caso $f=q p^{-1}$.
+
+*Demostración.* Si (i), $p$ es regular epi y mono; `TF-THM-00024(c)` lo hace isomorfismo, y por tanto (ii). Si (ii), por `TF-THM-00005` el mono $r$ representa la gráfica de $f=q p^{-1}$, demostrando (iii). Si (iii), la primera proyección de $\gamma_f=\langle1_A,f\rangle$ es $1_A$; como $r$ difiere de ella sólo por un isomorfismo de representantes, $p$ también es isomorfismo. Por último, la unicidad de $f$ procede de la fidelidad de gráficas `TF-THM-00029`. $\square$
+
+Este teorema recupera `TF-THM-00030` en forma de equivalencias, sin cambiarlo ni duplicar su número: ofrece una caracterización y una lectura pedagógica nuevas.
+
+<a id="TF-EXA-00005"></a>
+
+**Ejemplo 5.1.4 — Totalidad sin unicidad** <!-- result-id: TF-EXA-00005; depends-on: TF-DEF-00017, TF-DEF-00018 -->
+
+En conjuntos, sean $A=\{0\}$, $B=\{a,b\}$ y $R=\{(0,a),(0,b)\}\subseteq A\times B$. La primera proyección $p:R\to A$ es sobreyectiva y por tanto epi regular; no es inyectiva, de modo que no es mono. Podemos escoger $a$ o $b$, pero **la relación todavía no determina una única aplicación**. La sola totalidad nunca debe describirse como «una función multivaluada» sin aclarar que estamos usando una relación, no una flecha $A\to B$ del núcleo.
+
+## 5.2. De una relación total a una función: una sección
+
+<a id="TF-DEF-00019"></a>
+
+**Definición 5.2.1 — Selector de una relación** <!-- result-id: TF-DEF-00019; depends-on: TF-DEF-00010, TF-THM-00004, TF-DEF-00009 -->
+
+Un *selector* de $r:R\rightarrowtail A\times B$ es una flecha $s:A\to B$ cuya gráfica $[\gamma_s]$ está contenida en $[r]$ como subobjeto de $A\times B$. En términos de representantes, existe una flecha $t:A\to R$ tal que
+
+$$r\,t=\langle1_A,s\rangle.$$
+
+Dicha $t$, si existe, es única por monicidad de $r$. Un selector es una elección *global y uniforme como aplicación*, no una elección computable por definición.
+
+<a id="TF-THM-00034"></a>
+
+**Teorema 5.2.2 — Selector si y sólo si sección** <!-- result-id: TF-THM-00034; depends-on: TF-DEF-00019, TF-DEF-00017, TF-AX-00004, TF-DEF-00009 -->
+
+Una relación $r:R\rightarrowtail A\times B$ admite selector si y sólo si su primera proyección $p:R\to A$ admite sección $t:A\to R$ con $pt=1_A$. La correspondencia envía $t$ a $s=qt$ y un selector $s$ al único $t$ que factoriza su gráfica por $r$.
+
+*Demostración.* Si $pt=1_A$, entonces
+
+$$rt=\langle pt,qt\rangle=\langle1_A,qt\rangle=\gamma_{qt},$$
+
+por lo que $s=qt$ es selector. Recíprocamente, si $rt=\gamma_s$, proyectar sobre $A$ da $pt=1_A$. Si dos $t$ produjeran el mismo $s$, sus imágenes por $r$ coincidirían y, siendo $r$ mono, serían iguales. Estas construcciones son inversas por unicidad. No se ha supuesto regularidad ni elección para esta equivalencia: bastan los productos y el representante monomórfico. $\square$
+
+<a id="TF-DEF-00020"></a>
+
+**Definición 5.2.3 — Objeto proyectivo respecto de coberturas regulares** <!-- result-id: TF-DEF-00020; depends-on: TF-DEF-00014, TF-AX-00008 -->
+
+Un objeto $A$ es *proyectivo respecto de epimorfismos regulares* si para cada $e:E\twoheadrightarrow X$ y cada $a:A\to X$ existe $\widetilde a:A\to E$ con $e\widetilde a=a$. Una sección de $e:E\twoheadrightarrow A$ es precisamente un levantamiento de $1_A$.
+
+<a id="TF-THM-00035"></a>
+
+**Teorema 5.2.4 — Caracterización relacional de los objetos proyectivos** <!-- result-id: TF-THM-00035; depends-on: TF-DEF-00020, TF-THM-00034, TF-DEF-00017, TF-DEF-00010 -->
+
+Un objeto $A$ es proyectivo respecto de epimorfismos regulares si y sólo si **toda relación total cuyo dominio declarado sea $A$ admite un selector**, cualquiera que sea su codominio.
+
+*Demostración.* Si $A$ es proyectivo, para una relación total $r:R\rightarrowtail A\times B$ su proyección $p:R\twoheadrightarrow A$ admite levantamiento $t:A\to R$ de $1_A$; `TF-THM-00034` produce el selector $qt$.
+
+Para el recíproco, sea $e:E\twoheadrightarrow X$ un regular epi y $a:A\to X$. El cambio de base de $e$ por $a$ produce $p:P=A\times_XE\twoheadrightarrow A$, nuevamente epi regular por `TF-AX-00008`. Formemos la relación
+
+$$r=\langle p,\pi_E\rangle:P\longrightarrow A\times E.$$
+
+Esta flecha es mono: si sus dos componentes coinciden, la propiedad universal del pullback iguala las flechas hacia $P$. Por hipótesis la relación total que representa tiene selector; `TF-THM-00034` da sección $t:A\to P$ de $p$. Definamos $\widetilde a=\pi_Et:A\to E$. La conmutatividad del pullback implica $e\widetilde a=a\,pt=a$. Así $A$ es proyectivo. $\square$
+
+<a id="TF-AX-00009"></a>
+
+**Axioma 5.2.5 — Elección regular categórica (hipótesis opcional)** <!-- result-id: TF-AX-00009; depends-on: TF-DEF-00014, TF-AX-00008 -->
+
+Denominamos *AC regular* al principio adicional
+
+$$\boxed{\forall e:E\twoheadrightarrow A\ \exists t:A\to E\quad et=1_A.} \tag{5.1}$$
+
+Aquí las flechas cuantificadas son **epimorfismos regulares**; no se afirma que cualquier epi arbitrario sea regular. Este axioma no forma parte de la definición de categoría regular, y no será incorporado al contrato general de los capítulos 1–4.
+
+<a id="TF-THM-00036"></a>
+
+**Teorema 5.2.6 — Equivalencias del axioma de elección regular** <!-- result-id: TF-THM-00036; depends-on: TF-AX-00009, TF-THM-00035, TF-THM-00034, TF-DEF-00020 -->
+
+Para una categoría regular son equivalentes: (i) todos los epimorfismos regulares admiten sección; (ii) todos los objetos son proyectivos respecto de epimorfismos regulares; (iii) toda relación total admite una función selectora.
+
+*Demostración.* (i)$\Rightarrow$(ii): ante $e:E\twoheadrightarrow X$ y $a:A\to X$, una sección $t:X\to E$ da $\widetilde a=ta$. (ii)$\Rightarrow$(i): para $e:E\twoheadrightarrow A$, proyectividad de $A$ levanta $1_A$, produciendo la sección. La equivalencia (ii)$\Leftrightarrow$(iii) se obtiene aplicando `TF-THM-00035` a todos los objetos. De manera directa, (iii)$\Rightarrow$(i) aplica la relación mono $\langle e,1_E\rangle:E\rightarrowtail A\times E$ a cualquier epi regular $e:E\twoheadrightarrow A$; el selector proporciona sección de $e$. $\square$
+
+<a id="TF-CEX-00003"></a>
+
+**Contraejemplo 5.2.7 — Una categoría regular sin elección regular** <!-- result-id: TF-CEX-00003; depends-on: TF-AX-00008, TF-AX-00009, TF-THM-00034 -->
+
+En la categoría $\mathbf{Grp}$ de grupos y homomorfismos, la proyección $e:\mathbb Z\twoheadrightarrow\mathbb Z/2\mathbb Z$ es un epimorfismo regular: es el coigualador de la inclusión $2\mathbb Z\hookrightarrow\mathbb Z$ y el homomorfismo cero $2\mathbb Z\to\mathbb Z$. Si tuviese sección homomórfica $t:\mathbb Z/2\mathbb Z\to\mathbb Z$, la imagen del elemento de orden dos tendría orden divisor de dos en $\mathbb Z$, por lo que sería cero; entonces $et$ sería cero, no la identidad. Por tanto **no hay sección**. $\mathbf{Grp}$ es una categoría regular (categoría de modelos de una teoría algebraica finitaria). La relación $\langle e,1_{\mathbb Z}\rangle:\mathbb Z\rightarrowtail(\mathbb Z/2\mathbb Z)\times\mathbb Z$ es total pero no tiene selector homomórfico. La ausencia de elección aquí no es una contradicción con la posibilidad conjuntista de escoger representantes $0$ y $1$: esa selección no respeta la estructura de grupo.
+
+## 5.3. Elección única frente a elección arbitraria
+
+<a id="TF-THM-00037"></a>
+
+**Teorema 5.3.1 — Elección única y naturalidad por cambio de base** <!-- result-id: TF-THM-00037; depends-on: TF-THM-00033, TF-THM-00016, TF-AX-00006 -->
+
+Si una relación total $r:R\rightarrowtail A\times B$ es univaluada, admite un único selector $f=qp^{-1}$. Para cada $g:A'\to A$, su relación preimagen mediante $g\times1_B:A'\times B\to A\times B$ es también total y univaluada, y su selector es $f\circ g$.
+
+*Demostración.* Por `TF-THM-00033`, $p$ es isomorfismo y $r$ es la gráfica de $f$. Si $s$ es selector, su gráfica está incluida en la de $f$; proyectando el factor de inclusión sobre $A$ obtenemos identidad y sobre $B$ obtenemos $s=f$. Para el cambio de base, el producto fibrado del mono $r$ por $g\times1_B$ describe exactamente los pares $(a',b)$ con $(g(a'),b)$ en $R$, en lenguaje de elementos generalizados. Por estabilidad de pullbacks, su proyección sobre $A'$ es el cambio de base del isomorfismo $p$, y por tanto es isomorfismo. La segunda componente de la flecha resultante corresponde a $q p^{-1}g=fg$. No se elige ningún testigo: cada uno viene determinado por el inverso único de $p$. $\square$
+
+La unicidad elimina la ambigüedad de selección, **no** transforma automáticamente $f$ en un algoritmo ni decide la igualdad de sus valores.
+
+<a id="TF-THM-00038"></a>
+
+**Teorema 5.3.2 — Tres formulaciones equivalentes de AC en ZF** <!-- result-id: TF-THM-00038; depends-on: TF-DEF-00019, TF-THM-00034, TF-DEF-00017 -->
+
+Sobre **ZF con lógica clásica**, son equivalentes: (a) para cualquier familia de conjuntos no vacíos $(B_i)_{i\in I}$ existe una función $c$ con $c(i)\in B_i$; (b) toda sobreyección entre conjuntos tiene inversa por la derecha; (c) toda relación total entre conjuntos contiene la gráfica de una función con el mismo dominio.
+
+*Demostración.* (a)$\Rightarrow$(b): para una sobreyección $e:E\to A$, las fibras $E_a=\{x\in E:e(x)=a\}$ forman una familia indexada de conjuntos no vacíos (por separación y reemplazo de ZF). Una función de elección $t(a)\in E_a$ satisface $et=1_A$.
+
+(b)$\Rightarrow$(c): para $R\subseteq A\times B$ total, $p:R\to A$ es sobreyectiva. Una sección $t:A\to R$ determina $s=qt$ y $(a,s(a))\in R$ para todo $a$, por `TF-THM-00034`.
+
+(c)$\Rightarrow$(a): sea $(B_i)_{i\in I}$ una familia de conjuntos no vacíos y sea $B=\bigcup_{i\in I}B_i$. Formemos por separación $R=\{(i,b)\in I\times B:b\in B_i\}$. Es total; su selector $c:I\to B$ satisface $c(i)\in B_i$. Si $I=\varnothing$, la función vacía satisface la conclusión sin efectuar elección. Todas las construcciones de productos, uniones y relaciones son de ZF; el principio adicional interviene exactamente en los pasos que piden secciones/selectores arbitrarios. $\square$
+
+<a id="TF-THM-00039"></a>
+
+**Teorema 5.3.3 — La existencia única define una función en ZF, sin AC** <!-- result-id: TF-THM-00039; depends-on: TF-THM-00033, TF-DEF-00010 -->
+
+Sean $A,B$ conjuntos y $\varphi(x,y,\vec z)$ una **fórmula del lenguaje de ZF con parámetros conjuntos**. Supongamos
+
+$$\forall a\in A\ \exists!b\in B\ \varphi(a,b,\vec z).\tag{5.2}$$
+
+Entonces existe un único grafo $F\subseteq A\times B$ de una aplicación total $A\to B$ cuyas parejas satisfacen $\varphi$; no se necesita AC.
+
+*Demostración.* El conjunto $A\times B$ existe en ZF. El esquema de separación produce
+
+$$F=\{(a,b)\in A\times B:\varphi(a,b,\vec z)\}.$$
+
+La existencia en (5.2) hace sobreyectiva la primera proyección $F\to A$; la unicidad la hace inyectiva. Por tanto es biyectiva (y, categóricamente, epi regular y mono), de modo que el Teorema 5.1.3 identifica $F$ con la gráfica de una función $A\to B$. Otra gráfica con exactamente las mismas parejas sería igual a $F$ por extensionalidad de conjuntos. No hay selección entre alternativas: cada fibra contiene un solo elemento. $\square$
+
+::: {.callout-warning}
+## Alcance de la especificación
+Una regla en lenguaje natural no es automáticamente una fórmula de ZF; una expresión $f(x)=1/x$ no define función total $\mathbb R\to\mathbb R$ sin tratar $x=0$; y la prueba (5.2) no ofrece en general un procedimiento para calcular $b$ a partir de $a$. Dominio y codominio son parte de la especificación.
+:::
+
+
+<a id="TF-EXA-00006"></a>
+
+**Ejemplo 5.3.4 — Selección explícita de una relación no univaluada** <!-- result-id: TF-EXA-00006; depends-on: TF-DEF-00019, TF-DEF-00017, TF-DEF-00018 -->
+
+En el contexto usual de los reales, $A=\mathbb R_{\ge0}$, $B=\mathbb R$ y $R(x,y)\iff y^2=x$ definen una relación total. Para $x>0$ hay dos valores $y$, así que $R$ no es univaluada. La función $s(x)=\sqrt{x}$, definida como la única raíz **no negativa**, es un selector explícito. El teorema de existencia y unicidad de raíces no negativas depende de la teoría adoptada de los reales, pero **esta selección particular no invoca AC**: poseemos una regla adicional que elimina la ambigüedad. Conviene comparar con la elección arbitraria simultánea exigida por todas las familias de fibras.
+
+## 5.4. Estabilidad, límites y efectividad
+
+<a id="TF-THM-00040"></a>
+
+**Teorema 5.4.1 — La elección ya realizada es estable por sustitución** <!-- result-id: TF-THM-00040; depends-on: TF-THM-00034, TF-AX-00006, TF-AX-00008 -->
+
+Si una relación total $R:A\rightsquigarrow B$ tiene selector $s:A\to B$ y $g:A'\to A$, su relación preimagen $R'=(g\times1_B)^*R$ es total y admite selector $sg:A'\to B$. Esta conclusión **no requiere** el axioma de elección regular.
+
+*Demostración.* Una sección $t:A\to R$ de $p:R\to A$ está dada por `TF-THM-00034`. Formemos $P=A'\times_AR$ con proyección $p':P\to A'$ y segunda proyección $u:P\to R$. La propiedad universal de este pullback proporciona una flecha $t':A'\to P$ a partir del par $(1_{A'},tg)$, pues $p(tg)=g$. Luego $p't'=1_{A'}$. El representante inducido $P\rightarrowtail A'\times B$ tiene segunda proyección $qu$, por lo que su selector es $qu t'=qtg=sg$. La estabilidad regular de $p'$ también asegura la totalidad de $R'$. $\square$
+
+<a id="TF-EXA-00007"></a>
+
+**Ejemplo 5.4.2 — Función única que no es computable** <!-- result-id: TF-EXA-00007; depends-on: TF-THM-00039 -->
+
+Trabajando en ZF clásico, fijemos una enumeración efectiva de programas de Turing $M_n$. Definamos $h:\mathbb N\to\{0,1\}$ por $h(n)=1$ si $M_n$ termina al recibir $n$, y $h(n)=0$ en caso contrario. La lógica clásica determina un valor **único** para cada $n$; separación forma su gráfica sin usar AC. Sin embargo $h$ no es computable: si un programa $H$ calculase $h$, podríamos construir un programa $D$ que con entrada $n$ termina cuando $H(n)=0$ y entra en bucle cuando $H(n)=1$. Sea $d$ el índice de $D$. Entonces $D(d)$ terminaría si y sólo si $h(d)=0$, mientras que por definición $h(d)=1$ si y sólo si $D(d)$ termina, contradicción. La distinción entre existencia de función, unicidad de valor y realización efectiva es, pues, matemática y no una cuestión de vocabulario.
+
+<a id="TF-EXA-00008"></a>
+
+**Ejemplo 5.4.3 — Dominios y conjuntos vacíos** <!-- result-id: TF-EXA-00008; depends-on: TF-THM-00039, TF-DEF-00017, TF-DEF-00019 -->
+
+En $\mathbf{Set}$, para $A=\varnothing$ y cualquier $B$ existe una única función $\varnothing\to B$, representada por la relación vacía. Para $A\ne\varnothing$ y $B=\varnothing$ no existe relación total $A\rightsquigarrow B$, pues $R\subseteq A\times\varnothing=\varnothing$ no puede proyectarse sobre todo $A$. Estos casos no requieren AC. En una categoría regular arbitraria no trasladamos la expresión conjuntista «vacío» sin haber especificado un objeto inicial y sus propiedades.
+
+## 5.5. Auditoría fundacional y pedagógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Dimensión de control | Resultado de esta redacción |
+|---|---|
+| Marco | Categoría regular de `TF-AX-00008`. El clasificador `TF-AX-00007`, los exponenciales `TF-AX-00005` y un objeto de números naturales no se usan en las equivalencias categóricas. |
+| Qué se construye | Un selector $s$ equivale a una sección concreta $t$ de la primera proyección; el teorema de existencia de selector exige que tal sección exista. |
+| Existencia y testigos | Totalidad = epi regular, no sección. Univaluación adicional da inversa canónica; una sección de un epi no univaluado es dato adicional. |
+| Elección | En §5.2 se enuncia `TF-AX-00009` como principio opcional. Ninguna demostración anterior lo presupone. En §5.3 se prueban equivalencias en ZF, no se afirma que ZF demuestre AC. |
+| Lógica | Las pruebas categóricas se formulan sin tercero excluido. El ejemplo de halting usa lógica clásica explícita para definir una función característica total. |
+| Efectividad | Una sección abstracta no equivale a algoritmo; el ejemplo `TF-EXA-00007` muestra una función clásica total y univaluada no computable. |
+| Igualdad/decidibilidad | Ninguna afirmación de decidibilidad de la igualdad de flechas o de pertenencia a subobjetos. |
+| Tamaño e infinitud | Las colecciones de objetos y flechas requieren precauciones metateóricas; familias arbitrarias y naturales se invocan sólo donde se declaran. |
+| Verificación | Demostraciones revisadas manualmente; no se atribuye formalización Lean a los resultados de este capítulo. La edición web del tratado está publicada. |
+
+:::
+
+
+
+
+## 5.6. Referencias y originalidad
+
+Las equivalencias del axioma de elección y las nociones de relación total y proyectividad son resultados clásicos; **no se reivindica originalidad de los teoremas**. La aportación editorial de este capítulo es separar sus contratos axiomáticos, presentar pruebas verificables y conservar un grafo de dependencias explícito. Se cotejaron: F. W. Lawvere y R. Rosebrugh, *Sets for Mathematics* (2003), capítulo 4, especialmente §§4.2–4.3, pp. 80–84, copia de la biblioteca Drive (referencia privada; véase la bibliografía pública) y [edición Cambridge](https://www.cambridge.org/core/books/abs/sets-for-mathematics/colimits-epimorphisms-and-the-axiom-of-choice/CEC84E7960DC4C3B629F36ABC0D4FAAB); Stanford Encyclopedia of Philosophy, [*The Axiom of Choice*](https://plato.stanford.edu/archives/sum2025/entries/axiom-choice/), equivalencias AC1–AC4; [nLab, *choice object*](https://ncatlab.org/nlab/show/choice%2Bobject) y [*axiom of choice*](https://ncatlab.org/nlab/show/axiom%2Bof%2Bchoice), para el vocabulario categórico y sus variantes; [*Notes on regular, exact and additive categories*](https://sites.uclouvain.be/ctat2014/RegularCategories.pdf), para la distinción epi/epi regular y sus propiedades.
+
+**Síntesis.** Queda establecido que la existencia única de valores recupera una función por un isomorfismo canónico, mientras que la existencia de múltiples valores requiere un selector adicional, cuya disponibilidad universal equivale a un principio de elección.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-04.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-06.qmd)
+:::

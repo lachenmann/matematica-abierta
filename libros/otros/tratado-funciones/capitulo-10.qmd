@@ -1,0 +1,302 @@
+---
+title: Capítulo 10. Igualdad efectiva, equivalencia extensional y límites de decisión
+document-id: TF-CAT-010
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-010
+source-version: 1.0.2
+date-modified: '2026-10-02'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-010
+    locator: TF-CAT-010 - Igualdad efectiva equivalencia extensional y limites de
+      decision.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0126
+content-type: book-chapter
+source-id: TF-T1-C10
+description: 'Tratado fundacional de la teoría de funciones: capítulo 10, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: capítulos 1–9; índices de máquinas de Turing sobre N para §§10.1–10.4;
+  nombres de Cauchy rápidos en §10.5; no se infiere efectividad a partir de igualdad
+  categórica
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Pregunta rectora
+¿Qué significa demostrar que dos funciones son iguales si sólo contamos con sus programas, descripciones o nombres? ¿Cuándo puede un algoritmo decidir esa igualdad y por qué la extensionalidad matemática no equivale a la existencia de un decisor?
+:::
+
+
+**Contrato de continuidad.** La igualdad de flechas y su contraste con igualdad sobre puntos se establecieron en [el capítulo 2](capitulo-02.qmd). Las aplicaciones parciales como spans y la igualdad de dominio y valor se fijaron en [el capítulo 6](capitulo-06.qmd) y [el capítulo 7](capitulo-07.qmd). [El capítulo 9](capitulo-09.qmd) definió el modelo de programas con parada exacta, el conjunto de parada $K$, las funciones realizables bajo promesa y las representaciones. Aquí **no se cambia ninguna de esas definiciones**: añadimos problemas de decisión para códigos de máquinas, para funciones totales bajo promesa y para nombres de objetos representados. Los tres son problemas formalmente distintos.
+
+## 10.1. Igualdad de códigos e igualdad de aplicaciones
+
+<a id="TF-DEF-00040"></a>
+
+**Definición 10.1.1 — Igualdad sintáctica y equivalencia extensional** <!-- result-id: TF-DEF-00040; depends-on: TF-DEF-00035, TF-DEF-00021, TF-THM-00075 -->
+
+Fijemos la numeración efectiva del capítulo 9. Los naturales $e,d$ son *índices*; $e=d$ significa igualdad del código numérico. Escribimos
+
+$$e\equiv_{\mathrm{ext}}d\quad\Longleftrightarrow\quad\varphi_e=\varphi_d$$
+
+cuando las dos aplicaciones parciales tienen el mismo dominio y, en él, los mismos valores. En fórmulas:
+
+$$\varphi_e=\varphi_d\iff\forall n\bigl[(\varphi_e(n)\downarrow\leftrightarrow\varphi_d(n)\downarrow)\land(\varphi_e(n)\downarrow\Rightarrow\varphi_e(n)=\varphi_d(n))\bigr].\tag{10.1}$$
+
+La implicación $e=d\Rightarrow e\equiv_{\mathrm{ext}}d$ es inmediata; la recíproca no está garantizada. La igualdad de códigos es decidible como igualdad de naturales. La igualdad matemática de funciones está fijada sin apelar a algoritmos.
+
+<a id="TF-THM-00079"></a>
+
+**Teorema 10.1.2 — Cociente extensional y composición** <!-- result-id: TF-THM-00079; depends-on: TF-DEF-00040, TF-THM-00078, TF-THM-00074 -->
+
+$\equiv_{\mathrm{ext}}$ es una relación de equivalencia. Si $e\equiv_{\mathrm{ext}}e'$ y $d\equiv_{\mathrm{ext}}d'$, entonces
+
+$$\varphi_d\circ_{\mathrm{par}}\varphi_e=\varphi_{d'}\circ_{\mathrm{par}}\varphi_{e'}.$$
+
+En consecuencia, la composición del capítulo 9 se define inequívocamente sobre clases extensionales de programas, aunque no exista un algoritmo que decida cuándo dos códigos pertenecen a una clase común.
+
+*Demostración.* Reflexividad, simetría y transitividad proceden de la igualdad de spans que representan las funciones. Para la compatibilidad, los dominios de los dos compuestos son, respectivamente, los $n$ donde el primer programa tiene valor y el segundo está definido en ese valor. Ambas condiciones coinciden por igualdad de los dominios y de los valores de cada pareja de funciones. Cuando se cumplen, coinciden los valores compuestos. Así se obtiene igualdad de funciones parciales. No se elige un representante canónico ni se decide la equivalencia. $\square$
+
+<a id="TF-EXA-00017"></a>
+
+**Ejemplo 10.1.3 — Dos programas diferentes para la identidad** <!-- result-id: TF-EXA-00017; depends-on: TF-DEF-00040, TF-THM-00079 -->
+
+Considérense dos códigos de programas distintos, uno que devuelve su entrada inmediatamente y otro que ejecuta primero una instrucción redundante y después la devuelve. En una codificación de textos de programas que distingue ambos textos, los índices son distintos, pero ambos programas calculan $\operatorname{id}_{\mathbb N}$. Esto muestra por qué el cociente extensional no es una mera corrección de formato del código. En una numeración que repita códigos incluso podría haber otros motivos de multiplicidad; la prueba sólo necesita esta pareja explícita de programas distintos.
+
+::: {.callout-note}
+## Lectura efectiva de (10.1)
+La fórmula (10.1) define una relación matemática, no un algoritmo. Cuantifica sobre infinitas entradas y exige comparar tanto valores como comportamiento de terminación; el capítulo 9 mostró que esa información no es decidible uniformemente a partir de índices de programas. La extensionalidad especifica qué significa igualdad, pero no proporciona un procedimiento para reconocerla.
+:::
+
+
+## 10.2. La equivalencia de programas no es decidible
+
+<a id="TF-DEF-00041"></a>
+
+**Definición 10.2.1 — Problema de equivalencia de índices y semidecisión** <!-- result-id: TF-DEF-00041; depends-on: TF-DEF-00040, TF-DEF-00036, TF-CEX-00008 -->
+
+Definimos el conjunto de pares de índices equivalentes
+
+$$E=\{\langle e,d\rangle:\varphi_e=\varphi_d\}.\tag{10.2}$$
+
+Un *decisor uniforme* de $E$ es una máquina total que responde sí o no correctamente a toda pareja. Un semidecisor de $E$ termina exactamente en sus miembros; un semidecisor de la **inequivalencia** termina exactamente fuera de $E$. No confundiremos una prueba de inequivalencia hallada por ejecución finita con una decisión completa de inequivalencia en el caso parcial: que un programa termine y el otro no termine no puede verificarse por una espera finita arbitraria.
+
+<a id="TF-THM-00080"></a>
+
+**Teorema 10.2.2 — La equivalencia parcial no es c.e. ni co-c.e.** <!-- result-id: TF-THM-00080; depends-on: TF-DEF-00041, TF-CEX-00008, TF-DEF-00035 -->
+
+$E$ no es computablemente enumerable y su complemento tampoco lo es. En particular, no es decidible.
+
+*Demostración.* Fijemos códigos explícitos $b$ para la función parcial vacía $\bot$ (un programa que nunca termina) y $z$ para la función total constante cero. Para cada índice $e$, un compilador efectivo produce el código $h(e)$ de este programa: en entrada $n$, simular $\varphi_e(e)$; si termina, devolver $0$, y, si no termina, seguir simulando. Es una construcción uniforme porque sólo inserta el numeral $e$ en un programa de plantilla. Por tanto
+
+$$\varphi_{h(e)}=\begin{cases}z,&e\in K,\\\bot,&e\notin K.\end{cases}\tag{10.3}$$
+
+Aquí $z$ y $\bot$ designan también sus funciones, según el contexto. De (10.3) obtenemos
+
+$$e\notin K\iff\langle h(e),b\rangle\in E;\qquad
+ e\notin K\iff\langle h(e),z\rangle\notin E.\tag{10.4}$$
+
+Si $E$ fuese c.e., reconoceríamos $\mathbb N\setminus K$ calculando $h(e)$ y alimentando el reconocedor de $E$ con el primer par. Si su complemento fuese c.e., lo reconoceríamos mediante el segundo par. Ambos procedimientos contradicen el Contraejemplo 9.1.6, que demuestra que $\mathbb N\setminus K$ no es c.e. La afirmación de indecidibilidad es consecuencia inmediata. $\square$
+
+<a id="TF-THM-00081"></a>
+
+**Teorema 10.2.3 — Ninguna batería finita de entradas certifica la igualdad universal** <!-- result-id: TF-THM-00081; depends-on: TF-DEF-00040, TF-DEF-00035 -->
+
+Para todo conjunto finito $S\subseteq\mathbb N$ existen dos funciones totales computables que coinciden en cada entrada de $S$ y son distintas. Incluso si se ejecutan sin error todos los tests de $S$, la igualdad sobre $\mathbb N$ no se sigue de ellos.
+
+*Demostración.* Elegimos efectivamente $k\notin S$; por ejemplo, $k=1+\max S$ cuando $S$ no está vacío y $k=0$ si es vacío. Definimos $f(n)=0$ para todo $n$, y $g(n)=1$ si $n=k$, $g(n)=0$ en otro caso. Son funciones totales computables; coinciden en $S$ pero difieren en $k$. El resultado no prohíbe certificaciones deductivas específicas; sólo refuta la inferencia desde **un número finito de ejemplos de entrada**. $\square$
+
+## 10.3. Promesa de totalidad, observación y teorema de Rice
+
+<a id="TF-THM-00082"></a>
+
+**Teorema 10.3.1 — Igualdad de programas totales bajo promesa** <!-- result-id: TF-THM-00082; depends-on: TF-DEF-00041, TF-CEX-00008, TF-THM-00081 -->
+
+Si se nos promete que $\varphi_e$ y $\varphi_d$ son totales, su **desigualdad** es semidecidible mediante un algoritmo uniforme, pero su igualdad no es semidecidible ni decidible, incluso restringida a esa promesa. «Semidecidible bajo promesa» no afirma que el algoritmo reconozca correctamente todas las parejas que incluyan programas parciales.
+
+*Demostración.* Para reconocer desigualdad bajo promesa, simulamos por etapas las ejecuciones de ambos programas en entradas $0,1,\ldots,s$ y aceptamos si encontramos una entrada donde ambas terminan con salidas diferentes. Con programas totales, si las funciones difieren, tal entrada existe y ambas ejecuciones acabarán; si coinciden no habrá aceptación. Para probar que la igualdad prometida **no** es semidecidible, transformamos cada $e$ efectivamente en el índice de una función total
+
+$$g_e(n)=\begin{cases}1,&\text{si }\varphi_e(e)\text{ termina durante los primeros }n\text{ pasos},\\0,&\text{en otro caso}.\end{cases}\tag{10.5}$$
+
+El cálculo sólo simula un número finito de pasos, por lo que $g_e$ es total, sea cual fuere $e$. Si $z(n)=0$, tenemos $g_e=z$ exactamente cuando $e\notin K$. Un semidecisor de igualdad para parejas prometidas totales reconocería $\mathbb N\setminus K$, contradicción. Un decisor la semidecidiría y también es imposible. $\square$
+
+<a id="TF-DEF-00042"></a>
+
+**Definición 10.3.2 — Propiedad extensional de índices** <!-- result-id: TF-DEF-00042; depends-on: TF-DEF-00040, TF-DEF-00041 -->
+
+Un conjunto $P\subseteq\mathbb N$ de índices es *extensional* si $\varphi_e=\varphi_d$ implica $(e\in P\leftrightarrow d\in P)$. Es *no trivial* si $P\neq\varnothing$ y $P\neq\mathbb N$. Se trata de una propiedad de la función calculada, no de la longitud, el texto, el tiempo de ejecución ni el nombre de un programa.
+
+<a id="TF-THM-00083"></a>
+
+**Teorema 10.3.3 — Rice, reconstrucción con la función vacía** <!-- result-id: TF-THM-00083; depends-on: TF-DEF-00042, TF-CEX-00008, TF-THM-00080 -->
+
+Toda propiedad extensional no trivial de las funciones parciales computables posee un conjunto de índices indecidible.
+
+*Demostración.* Sea $P$ extensional y no trivial; llamemos $\bot$ a la función vacía. Si $\bot\notin P$, fijamos una función parcial computable $u\in P$ con código conocido $a$. Para cada índice $e$ construimos uniformemente un programa $q_e(x)$ que simula $\varphi_e(e)$ y, únicamente si la simulación termina, ejecuta el programa $a$ sobre $x$ reproduciendo su terminación y su salida. Si $e\notin K$, $q_e=\bot\notin P$; si $e\in K$, $q_e=u\in P$. Un decisor de $P$ aplicado al código compilado de $q_e$ decidiría $K$.
+
+Si, en cambio, $\bot\in P$, elegimos una función parcial computable $u\notin P$, cuya existencia asegura la no trivialidad, y usamos **la misma plantilla**. Ahora $q_e\in P$ exactamente si $e\notin K$; un decisor también decidiría $K$, negando el Contraejemplo 9.1.6. El compilador se obtiene al insertar el índice $e$ y el código fijo $a$ en un programa finito; no es necesario escoger una familia infinita de testigos. $\square$
+
+<a id="TF-CEX-00011"></a>
+
+**Contraejemplo 10.3.4 — Rice no prohíbe propiedades sintácticas decidibles** <!-- result-id: TF-CEX-00011; depends-on: TF-DEF-00042, TF-THM-00083, TF-EXA-00017 -->
+
+En una codificación efectiva de textos de programas, «el texto empieza por una instrucción redundante específica» es decidible inspeccionando el código. Pero al insertar o eliminar esa instrucción en un programa sin alterar su comportamiento, podemos obtener dos códigos de la misma función con respuestas diferentes. La propiedad no es extensional: no satisface la hipótesis del Teorema 10.3.3. Tampoco concluimos que todo resultado sobre programas finitos, sistemas restringidos o programas acompañados de certificados sea imposible; Rice concierne a **la clase completa de funciones parciales computables y propiedades extensionales no triviales**.
+
+## 10.4. Igualdad decidible bajo certificados explícitos
+
+<a id="TF-DEF-00043"></a>
+
+**Definición 10.4.1 — Presentación finita certificada** <!-- result-id: TF-DEF-00043; depends-on: TF-DEF-00036, TF-THM-00073, TF-DEF-00041 -->
+
+Un problema de comparación de funciones parciales $f,g:A\rightharpoonup\mathbb N$ está *finitamente certificado* si disponemos (i) de una lista **exhaustiva y efectiva** de los elementos de $A$; (ii) de algoritmos totales de pertenencia a $\operatorname{dom}(f)$ y $\operatorname{dom}(g)$, y (iii) de procedimientos que terminan y calculan cada valor cuando el decisor correspondiente responde «definido». Estas condiciones son **datos suministrados**; la sola finitud conjuntista de $A$ y la existencia abstracta de dos programas no implican un acceso uniforme a todos esos certificados.
+
+<a id="TF-THM-00084"></a>
+
+**Teorema 10.4.2 — Decisión por comparación exhaustiva certificada** <!-- result-id: TF-THM-00084; depends-on: TF-DEF-00043, TF-DEF-00040, TF-THM-00073, TF-THM-00056 -->
+
+En una presentación finita certificada, la igualdad de $f$ y $g$ es decidible.
+
+*Demostración.* Recorremos la lista finita y exhaustiva de $A$. En cada $a$ ejecutamos los dos decisores de dominio. Si difieren, devolvemos «distintas». Si ambos responden «indefinido», continuamos. Si ambos responden «definido», ejecutamos los procedimientos de valores, que terminan por la hipótesis (iii), y comparamos los naturales obtenidos. Una discrepancia da «distintas»; al terminar la lista sin discrepancias, devolvemos «iguales». El algoritmo acaba porque hay un número finito de entradas y todos los subprocedimientos utilizados en ellas terminan. La corrección es exactamente la igualdad de dominios y valores del Teorema 7.3.2. $\square$
+
+::: {.callout-note}
+## Alcance del resultado
+**No** hemos demostrado que «la equivalencia de programas sobre un conjunto finito sea siempre decidible». Si no se suministra información de terminación, decidir incluso si un único programa está definido en la única entrada de $A=\{0\}$ puede codificar el problema de parada. El certificado no es un detalle decorativo: es la hipótesis que hace terminar el algoritmo.
+:::
+
+
+
+<!-- editorial-crossref: TF-XREF-0001; route: R3 -->
+::: {.callout-note}
+## Tres usos distintos de «equivalencia extensional»
+`TF-DEF-00040` compara índices de **programas parciales** y `TF-THM-00080` establece límites de semidecisión en ese modelo. [El capítulo 12](capitulo-12.qmd) introduce $p\sim_U r$ para una familia de **secciones totales** (`TF-DEF-00051`) y distingue cociente semántico de códigos; [el capítulo 14](capitulo-14.qmd) compara **representaciones** mediante traductores y realizadores computables (`TF-DEF-00063`, `TF-THM-00111`). Ni una igualdad matemática ni una biyección de nombres constituyen, sin datos efectivos, un decisor o un traductor computable. Mapa del recorrido.
+:::
+
+
+## 10.5. De los códigos de programas a los nombres de números reales
+
+<a id="TF-DEF-00044"></a>
+
+**Definición 10.5.1 — Igualdad de objetos bajo representación y nombres rápidos** <!-- result-id: TF-DEF-00044; depends-on: TF-DEF-00038, TF-THM-00075, TF-DEF-00039 -->
+
+Para un espacio representado $(X,\delta)$, la relación de igualdad sobre nombres válidos es
+
+$$p\sim_\delta q\quad\Longleftrightarrow\quad\delta(p)=\delta(q).\tag{10.6}$$
+
+Su igualdad como secuencias $p=q$ es una cuestión diferente. Para $X=\mathbb R$ trabajaremos con una representación explícita por *nombres de Cauchy rápidos*: un nombre proporciona racionales $r_n$ ($n\ge1$) con
+
+$$|r_n-x|\le 2^{-n}\qquad\text{para todo }n\ge1.\tag{10.7}$$
+
+Un *nombre computable* es un algoritmo que devuelve el racional $r_n$ dado $n$. En la comparación de nombres, sólo se exige corrección para entradas que cumplan (10.7); el conjunto de códigos de nombres válidos no se declara decidible.
+
+<a id="TF-THM-00085"></a>
+
+**Teorema 10.5.2 — Desigualdad semidecidible, igualdad real indecidible** <!-- result-id: TF-THM-00085; depends-on: TF-DEF-00044, TF-CEX-00008, TF-DEF-00036 -->
+
+Dados dos nombres computables de Cauchy rápidos para $x,y\in\mathbb R$, y bajo la promesa de validez de ambos nombres: (i) $x\neq y$ es semidecidible; (ii) $x=y$ no es semidecidible ni decidible uniformemente a partir de los índices de sus nombres.
+
+*Demostración.* En (i), calculamos $r_n,s_n$ y aceptamos tan pronto como
+
+$$|r_n-s_n|>2^{1-n}.\tag{10.8}$$
+
+Si se cumple, la desigualdad triangular y (10.7) dan $|x-y|\ge|r_n-s_n|-2^{1-n}>0$. Si $x\ne y$, sea $\varepsilon=|x-y|>0$. Para $n$ suficientemente grande, $|r_n-s_n|\ge\varepsilon-2^{1-n}>2^{1-n}$, y el reconocedor terminará.
+
+Para (ii), construimos uniformemente, dado $e$, un nombre computable de un real $x_e$. En la etapa $n$ simulamos $\varphi_e(e)$ durante $n$ pasos. Si terminó por primera vez en el paso $t\le n$ (numerado desde $t=1$), emitimos $r_n=2^{-t}$; en otro caso emitimos $r_n=0$. Definimos matemáticamente $x_e=2^{-t}$ si alguna vez termina en el paso $t$, y $x_e=0$ si nunca termina. Si aún no ha terminado en la etapa $n$ pero lo hará más tarde, el error es $2^{-t}\le2^{-n}$; en los restantes casos es cero. Por tanto (10.7) vale siempre y el algoritmo da un nombre rápido uniforme. Como
+
+$$x_e=0\quad\Longleftrightarrow\quad e\notin K,\tag{10.9}$$
+
+un semidecisor de igualdad de nombres válidos, aplicado a este nombre y al nombre constante de cero, reconocería $\mathbb N\setminus K$. Contradicción. Un decisor de igualdad sería también semidecisor. No se empleó una supuesta representación por expansión decimal única. $\square$
+
+<a id="TF-CEX-00012"></a>
+
+**Contraejemplo 10.5.3 — La igualdad de racionales no decide la de sus límites** <!-- result-id: TF-CEX-00012; depends-on: TF-THM-00085, TF-DEF-00044 -->
+
+Cada racional $r_n$ de un nombre rápido puede compararse exactamente con cero. En el nombre de $x_e$ del Teorema 10.5.2, todos los racionales observados antes del eventual paso $t$ son cero, independientemente de si el programa parará después. Ningún examen finito de esos datos permite concluir que el límite sea cero. La sucesión de racionales es efectivamente calculable; la igualdad de su límite sigue siendo indecidible uniformemente. Esto refuta el paso injustificado «todas las aproximaciones son racionales decidibles, luego la igualdad de números reales es decidible».
+
+<a id="TF-THM-00086"></a>
+
+**Teorema 10.5.4 — No existe normalizador computable universal de índices extensionales** <!-- result-id: TF-THM-00086; depends-on: TF-THM-00080, TF-DEF-00040, TF-DEF-00041 -->
+
+No existe una función total computable $N:\mathbb N\to\mathbb N$ tal que, para todos los índices $e,d$,
+
+$$N(e)=N(d)\quad\Longleftrightarrow\quad\varphi_e=\varphi_d.\tag{10.10}$$
+
+*Demostración.* Si existiese $N$, calcularíamos $N(e)$ y $N(d)$ y decidiríamos la equivalencia extensional comparando sus dos números, operación decidible. Esto contradice el Teorema 10.2.2. La afirmación prohíbe un *código canónico numérico computable para todas las clases extensionales*; no prohíbe normalizaciones de subclases con hipótesis adicionales ni la existencia conjuntista de cocientes. $\square$
+
+<a id="TF-EXA-00018"></a>
+
+**Ejemplo 10.5.5 — Un caso efectivo con dominio finito y valores certificados** <!-- result-id: TF-EXA-00018; depends-on: TF-DEF-00043, TF-THM-00084, TF-THM-00085 -->
+
+Sean $A=\{0,1,2\}$, $f(0)=7$, $f(2)=4$ e indefinida en $1$, y $g(0)=7$, $g(2)=5$ e indefinida en $1$. Sus dominios se deciden por una tabla finita suministrada. Comparamos en $0$ (coinciden), $1$ (ambas indefinidas) y $2$ (discrepan); concluimos que $f\ne g$. Sustituir el valor $g(2)$ por $4$ certificaría la igualdad exhaustivamente. Una tabla finita **completa** es distinta de una colección finita de muestras de una función sobre $\mathbb N$.
+
+## 10.6. Límite de las construcciones categóricas
+
+<a id="TF-THM-00087"></a>
+
+**Teorema 10.6.1 — Clasificar igualdad no equivale a decidirla** <!-- result-id: TF-THM-00087; depends-on: TF-THM-00018, TF-DEF-00029, TF-THM-00062, TF-THM-00080, TF-THM-00085 -->
+
+La existencia de igualadores, de características hacia $\Omega$ o de un clasificador de funciones parciales $L(B)$ **no implica**, por sí sola, un algoritmo de igualdad para flechas o valores codificados. En particular, esos objetos existen en $\mathbf{Set}$, mientras que la igualdad extensional de funciones parciales computables y la igualdad de reales computables no son decidibles bajo las presentaciones efectivas anteriores.
+
+*Demostración.* En $\mathbf{Set}$ existen igualadores de toda pareja de funciones, características de todos los subconjuntos y el levantamiento $L(B)\cong B\sqcup1$ por los capítulos 3, 7 y 8. Las funciones parciales computables son funciones de conjuntos; sus índices son números y la igualdad extensional de sus funciones es el predicado $E$ del Teorema 10.2.2, demostrado indecidible. Análogamente, los reales y la diagonal del subconjunto de parejas iguales existen conjuntistamente; el Teorema 10.5.2 impide computar una prueba algorítmica uniforme de su igualdad a partir de los nombres descritos. Si las construcciones categóricas bastasen para proporcionar esos algoritmos, contradiríamos ambos teoremas. Por tanto, efectividad exige datos adicionales de presentación y procedimientos, nunca inferibles de la mera universalidad categórica. $\square$
+
+::: {.callout-note}
+## Lectura desarrollada de las demostraciones
+Las dos reducciones de (10.4) separan exactamente las dos no-semidecidibilidades: $e\notin K\Longleftrightarrow\langle h(e),b\rangle\in E$ muestra que, si $E$ fuera c.e., también lo sería $\mathbb N\setminus K$; $e\notin K\Longleftrightarrow\langle h(e),z\rangle\notin E$ muestra lo mismo suponiendo c.e. el complemento de $E$. La promesa de totalidad del Teorema 10.3.1 garantiza que, cuando dos funciones difieren, las dos ejecuciones sobre una entrada testigo acabarán y sus valores podrán compararse; sin esa promesa, una diferencia puede consistir en terminación frente a divergencia.
+
+En la prueba de Rice, la función vacía $\bot$ es el comportamiento de referencia cuando la simulación diagonal no termina; según pertenezca o no a la propiedad extensional $P$, se escoge la otra función fija en el lado opuesto y la misma plantilla reduce $K$ o su complemento. En una presentación finita certificada se necesitan tres datos: una lista efectiva exhaustiva de $A$, decisores totales de los dos dominios y procedimientos que terminen y calculen los valores en las entradas declaradas definidas.
+
+Para el nombre $x_e$, mientras el programa aún no ha sido observado detenerse en la etapa $n$, si termina después en el paso $t>n$ el error es $2^{-t}\le2^{-n}$; una vez observado el paso $t$, el nombre emite el valor $2^{-t}$ y el error es cero. Por último, un igualador matemático especifica un subobjeto mediante una propiedad universal; no incluye, por esa sola estructura, un procedimiento que decida si una representación concreta pertenece a dicho subobjeto.
+:::
+
+
+## 10.7. Auditoría matemática, fundacional y pedagógica
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Dimensión | Control explícito |
+|---|---|
+| Identificadores | Nuevos `TF-DEF-00040…00044`, `TF-THM-00079…00087`, `TF-CEX-00011…00012` y `TF-EXA-00017…00018`; el ID de capítulo no es ID de resultado. |
+| Supuestos | Numeración efectiva y compilación de plantillas; $K$ y su complemento del capítulo 9; nombre rápido de Cauchy con error uniforme. |
+| Capa de igualdad | Código numérico, función parcial en Set, par de índices prometidos totales y dos nombres reales no se confunden. |
+| Lógica | Las pruebas de imposibilidad usan contradicción clásica sobre máquinas concretas; no se incorpora axioma de elección. |
+| Extensionalidad | Es igualdad matemática definida en §10.1, no un algoritmo ni una normalización efectiva. |
+| Semidecisión | $E$ ni c.e. ni co-c.e.; funciones totales sólo bajo promesa: inequivalencia c.e.; desigualdad real con nombres válidos: c.e. |
+| Casos positivos | Igualdad sintáctica y comparación finita certificada, sin aseverar resultados para programas arbitrarios sobre dominio finito. |
+| Representaciones | Los nombres válidos y sus valores son distintos; no se decide la validez de códigos arbitrarios por hipótesis. |
+| Tamaño | $\mathbb N$, códigos, funciones, sucesiones y $\mathbb R$ se interpretan en la metateoría declarada; no se identifican función y código. |
+| QA | Revisión matemática manual y registro deductivo; no formalización Lean; no publicación GitHub/Quarto. |
+
+:::
+
+
+## 10.8. Fuentes de control y originalidad
+
+Las pruebas de diagonalización y el marco de programas se contrastan con la [*Stanford Encyclopedia of Philosophy*, «Recursive Functions»](https://plato.stanford.edu/entries/recursive-functions/), especialmente su tratamiento de conjuntos de índices y el teorema de Rice, y [«Computability and Complexity»](https://plato.stanford.edu/entries/computability/). Para la igualdad en espacios representados, véase [Weihrauch, Wu y Ding, «Absolutely non-computable predicates and functions in analysis»](https://www.cambridge.org/core/journals/mathematical-structures-in-computer-science/article/abs/absolutely-noncomputable-predicates-and-functions-in-analysis/635322003116C1575614BB2D36B777B4), además del *Computable Analysis* de Weihrauch citado en el capítulo 9. Son referencias de contraste; las reducciones (10.3)–(10.9) se desarrollan en detalle aquí. No se reclama originalidad de los teoremas clásicos.
+
+**Síntesis.** La igualdad extensional del tratado es plenamente significativa incluso cuando resulta indecidible o no semidecidible para códigos efectivos. Lo decisivo es declarar el contrato: algoritmos sobre todos los programas, algoritmos bajo promesa o comparación dentro de una subclase acompañada de certificados.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-09.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-11.qmd)
+:::

@@ -1,0 +1,393 @@
+---
+title: Capítulo 3. Relaciones, subobjetos y clasificación
+document-id: TF-CAT-003
+status: published
+draft: false
+toc: true
+format:
+  html:
+    css: tratado.css
+book-id: MA-BOK-0011
+editorial-project: TF
+editorial-id: TF-CAT-003
+source-version: 1.0.2
+date-modified: '2026-10-01'
+areas:
+- fundamentos
+level: avanzado
+topics:
+- funciones
+- teoria-de-categorias
+- computabilidad
+related:
+- MA-BOK-0011
+provenance:
+  type: original
+  sources:
+  - cite: TF-CAT-003
+    locator: TF-CAT-003 - Relaciones subobjetos y clasificacion.md
+    role: exposition
+    note: Derivado controlado del Markdown canónico; véase la bibliografía y el manifiesto
+      de fuentes.
+license: GFDL-1.3-or-later
+content-id: MA-BCH-0119
+content-type: book-chapter
+source-id: TF-T1-C03
+description: 'Tratado fundacional de la teoría de funciones: capítulo 3, con hipótesis,
+  pruebas y límites de formalización explícitos.'
+foundation: categorías con productos; límites por pullback desde §3.2; clasificador
+  de subobjetos sólo desde §3.3; ejemplos conjuntistas en ZF clásico
+choice-use: none
+---
+
+[Índice del tratado](index.qmd)
+
+::: {.callout-note}
+## Pregunta rectora
+Construimos una gráfica a partir de una flecha en el Capítulo 1 y estudiamos en el Capítulo 2 cuándo las flechas se distinguen por sus puntos o evaluaciones. Ahora invertimos la perspectiva: ¿cómo describir una relación sin asumir de entrada que sea una función y qué hipótesis permiten representar todas las relaciones mediante flechas características?
+:::
+
+
+**Contrato fundacional.** Conservamos los datos categóricos, los productos, los monomorfismos y las gráficas de [Capítulo 1](capitulo-01.qmd). Las nociones de elemento global y generalizado se toman de [Capítulo 2](capitulo-02.qmd). No inferimos que una categoría cualquiera sea $\mathbf{Set}$ ni que posea todas las construcciones conjuntistas. Cuando aparece $\operatorname{Sub}(X)$ como conjunto o $\operatorname{Hom}(X,Y)$ como conjunto se presupone la hipótesis de tamaño correspondiente; en general son colecciones de la metateoría.
+
+## 3.1. Un subconjunto sin pertenencia primitiva
+
+<a id="TF-DEF-00009"></a>
+
+**Definición 3.1.1 — Subobjeto** <!-- result-id: TF-DEF-00009; depends-on: TF-DEF-00003 -->
+
+Un *representante de subobjeto* de $X$ es un monomorfismo $m:U\rightarrowtail X$. Los representantes $m:U\to X$ y $n:V\to X$ se identifican cuando hay un isomorfismo $i:U\to V$ con $n\circ i=m$. Denotamos la clase de equivalencia por $[m]$ y la colección de estas clases por $\operatorname{Sub}(X)$. Escribimos
+
+$$
+[m]\le[n]\quad\Longleftrightarrow\quad \exists u:U\to V\ \text{tal que }n\circ u=m.
+\tag{3.1}
+$$
+
+La clase de equivalencia no presupone un conjunto de *todos* los subobjetos. La expresión $\operatorname{Sub}(X)$ se interpreta con la precaución de tamaño correspondiente.
+
+<a id="TF-THM-00013"></a>
+
+**Teorema 3.1.2 — Orden de los subobjetos** <!-- result-id: TF-THM-00013; depends-on: TF-DEF-00009, TF-DEF-00003 -->
+
+La relación (3.1) está bien definida sobre clases de isomorfismo y es un orden parcial.
+
+*Demostración.* Cambiar $m$ y $n$ por representantes isomorfos sólo compone el factor $u$ con los isomorfismos y sus inversos, sin alterar la existencia de la factorización. La reflexividad corresponde a $1_U$, y la transitividad a la composición de los factores. Para la antisimetría, supongamos $m=n\circ u$ y $n=m\circ v$. Así,
+
+$$
+m=m\circ(v\circ u),\qquad n=n\circ(u\circ v).
+$$
+
+La monicidad de $m$ y $n$ da $v\circ u=1_U$ y $u\circ v=1_V$; luego $u$ es un isomorfismo y $[m]=[n]$. $\square$
+
+<a id="TF-DEF-00010"></a>
+
+**Definición 3.1.3 — Relación de $A$ en $B$** <!-- result-id: TF-DEF-00010; depends-on: TF-DEF-00009, TF-AX-00004 -->
+
+Cuando existe el producto $A\times B$, una *relación* de $A$ en $B$ es un subobjeto
+
+$$
+r:R\rightarrowtail A\times B.
+\tag{3.2}
+$$
+
+Su dominio y codominio relacionales quedan declarados por $A$ y $B$. En $\mathbf{Set}$, (3.2) corresponde a un subconjunto de $A\times B$, y no se le exige totalidad ni unicidad de segundo componente.
+
+<a id="TF-THM-00014"></a>
+
+**Teorema 3.1.4 — Toda aplicación determina una relación gráfica** <!-- result-id: TF-THM-00014; depends-on: TF-DEF-00010, TF-THM-00004 -->
+
+Toda flecha $f:A\to B$ determina la relación $[\gamma_f]$ representada por
+
+$$
+\gamma_f=\langle1_A,f\rangle:A\rightarrowtail A\times B.
+$$
+
+*Demostración.* El Teorema 1.3.3 establece que $\gamma_f$ es monomorfismo. Por la Definición 3.1.3 su clase representa una relación. $\square$
+
+::: {.callout-note}
+## Prueba de estrés
+Para $A=\{0\}$ y $B=\{0,1\}$, la relación vacía es un subobjeto de $A\times B$ y no es la gráfica de una aplicación total $A\to B$. La relación $\{(0,0),(0,1)\}$ tampoco es una gráfica, ahora por falta de unicidad. La relación $\{(0,0)\}$ sí lo es. El criterio exacto para distinguirlas sigue siendo el Teorema 1.3.4: la proyección del representante relacional a $A$ ha de ser un isomorfismo.
+:::
+
+
+## 3.2. Límites por cambio de base: preimágenes e intersección
+
+Los productos no garantizan la existencia de preimágenes categóricas de subobjetos. Explicitamos por ello un axioma nuevo.
+
+<a id="TF-AX-00006"></a>
+
+**Axioma 3.2.1 — Existencia de productos fibrados** <!-- result-id: TF-AX-00006 -->
+
+Para cualquier par $f:X\to Z$ y $g:Y\to Z$, existe un objeto $P$ y flechas $p:P\to X$, $q:P\to Y$ con $f\circ p=g\circ q$ tales que, para cualquier $a:T\to X$ y $b:T\to Y$ con $f\circ a=g\circ b$, hay una única $w:T\to P$ que cumple $p\circ w=a$ y $q\circ w=b$. Llamamos $P=X\times_ZY$ al *producto fibrado* (*pullback*), siempre hasta isomorfismo compatible con las proyecciones.
+
+<a id="TF-DEF-00011"></a>
+
+**Definición 3.2.2 — Preimagen de un subobjeto** <!-- result-id: TF-DEF-00011; depends-on: TF-DEF-00009, TF-AX-00006 -->
+
+Para $m:U\rightarrowtail Y$ y $f:X\to Y$, construimos un producto fibrado
+
+$$
+\begin{array}{ccc}
+P &\xrightarrow{q}& U\\
+\scriptstyle p\downarrow &&\downarrow\scriptstyle m\\
+X&\xrightarrow{f}&Y.
+\end{array}
+\tag{3.3}
+$$
+
+Una vez probada la monicidad de $p$, su clase se denomina $f^*[m]$, *preimagen* de $[m]$ por $f$.
+
+<a id="TF-THM-00015"></a>
+
+**Teorema 3.2.3 — Una preimagen es un subobjeto** <!-- result-id: TF-THM-00015; depends-on: TF-AX-00006, TF-DEF-00003, TF-DEF-00011 -->
+
+La flecha $p:P\to X$ de (3.3) es monomorfismo; la preimagen es independiente, salvo el isomorfismo pertinente, de las elecciones de representantes y productos fibrados.
+
+*Demostración.* Sean $u,v:T\to P$ y supongamos $p\circ u=p\circ v$. Por conmutatividad,
+
+$$
+m\circ q\circ u=f\circ p\circ u=f\circ p\circ v=m\circ q\circ v.
+$$
+
+La monicidad de $m$ da $q\circ u=q\circ v$. Las dos componentes de $u$ y $v$ coinciden; por la unicidad del producto fibrado, $u=v$. La independencia se obtiene usando la propiedad universal para producir flechas entre dos productos fibrados del mismo diagrama; al aplicarla en ambas direcciones, sus composiciones deben ser las identidades. Si se sustituye $m$ por $m'$ isomorfo sobre $Y$, se transporta el mismo argumento por ese isomorfismo. $\square$
+
+<a id="TF-THM-00016"></a>
+
+**Teorema 3.2.4 — Leyes de la preimagen** <!-- result-id: TF-THM-00016; depends-on: TF-DEF-00011, TF-THM-00015, TF-AX-00006 -->
+
+Para $X\xrightarrow{f}Y\xrightarrow{g}Z$ y $[m]\in\operatorname{Sub}(Z)$,
+
+$$
+1_Z^*[m]=[m],\qquad (g\circ f)^*[m]=f^*(g^*[m]).
+\tag{3.4}
+$$
+
+Además, $f^*$ preserva el orden de los subobjetos.
+
+*Demostración.* El cuadrado con $1_Z$ es un producto fibrado con objeto $U$ y proyección $m$. Para la segunda igualdad, sea $m:U\rightarrowtail Z$; construyamos $Q:=Y\times_ZU$ y $P:=X\times_YQ$. Dar una flecha $T\to P$ equivale, por las dos propiedades universales, a dar $a:T\to X$ y $b:T\to U$ con $g\circ f\circ a=m\circ b$. Es exactamente la propiedad universal de $X\times_ZU$. La unicidad produce un isomorfismo de los representantes sobre $X$, lo que demuestra (3.4). Finalmente, una factorización $m=n\circ u$ se transporta mediante la propiedad universal a una flecha entre sus productos fibrados sobre $X$; por definición del orden, $f^*[m]\le f^*[n]$. $\square$
+
+<a id="TF-THM-00017"></a>
+
+**Teorema 3.2.5 — Intersección como producto fibrado** <!-- result-id: TF-THM-00017; depends-on: TF-DEF-00009, TF-AX-00006, TF-THM-00015 -->
+
+Si $m:U\rightarrowtail X$ y $n:V\rightarrowtail X$, el producto fibrado $P=U\times_XV$ determina el ínfimo de $[m]$ y $[n]$ en $\operatorname{Sub}(X)$:
+
+$$
+[m]\wedge[n]=[m\circ p]=[n\circ q].
+\tag{3.5}
+$$
+
+*Demostración.* El cuadrado del producto fibrado da $m\circ p=n\circ q=:k$. La flecha $p$ es mono porque es preimagen del mono $n$; por composición, $k$ también es mono. Las factorizaciones por $m$ y $n$ prueban que $[k]$ es cota inferior. Si $w:T\rightarrowtail X$ es otra cota inferior, existen $a:T\to U$ y $b:T\to V$ con $m\circ a=w=n\circ b$. El producto fibrado produce $c:T\to P$ y entonces $k\circ c=w$, de modo que $[w]\le[k]$. $\square$
+
+**Lectura pedagógica.** En $\mathbf{Set}$, (3.3) es la preimagen ordinaria y (3.5) recupera la intersección de subconjuntos. No hemos supuesto una operación universal de *unión*: su existencia necesita un argumento distinto.
+
+## 3.3. Clasificación: convertir cada subobjeto en una flecha
+
+<a id="TF-AX-00007"></a>
+
+**Axioma 3.3.1 — Clasificador de subobjetos** <!-- result-id: TF-AX-00007; depends-on: TF-AX-00003, TF-AX-00006 -->
+
+Postulamos un objeto $\Omega$ y una flecha $\mathsf{true}:1\to\Omega$ tales que para cada monomorfismo $m:U\rightarrowtail X$ existe una única flecha $\chi_m:X\to\Omega$ para la cual el cuadrado
+
+$$
+\begin{array}{ccc}
+U&\xrightarrow{!_U}&1\\
+\scriptstyle m\downarrow&&\downarrow\scriptstyle\mathsf{true}\\
+X&\xrightarrow{\chi_m}&\Omega
+\end{array}
+\tag{3.6}
+$$
+
+es un producto fibrado. La flecha $\chi_m$ se llama *característica* o *clasificadora* del subobjeto. La unicidad se refiere a la propiedad completa de producto fibrado, no sólo a la conmutatividad del cuadrado. Este axioma se añade: **no se deduce** de terminal, productos, exponenciales y productos fibrados.
+
+<a id="TF-THM-00018"></a>
+
+**Teorema 3.3.2 — Representación de los subobjetos** <!-- result-id: TF-THM-00018; depends-on: TF-AX-00007, TF-DEF-00009, TF-AX-00006 -->
+
+Para cada $X$, el clasificador determina una correspondencia biyectiva, interpretada en la metateoría,
+
+$$
+\operatorname{Sub}(X)\ \cong\ \operatorname{Hom}_{\mathcal C}(X,\Omega),
+\qquad [m]\longmapsto\chi_m.
+\tag{3.7}
+$$
+
+*Demostración.* Si $m$ y $m'$ representan el mismo subobjeto, un isomorfismo de dominios conmuta sobre $X$, por lo que trasladar el cuadrado (3.6) a ese representante conserva su propiedad universal. La unicidad de la clasificadora da $\chi_m=\chi_{m'}$: la aplicación de (3.7) está bien definida. Dada $\chi:X\to\Omega$, el producto fibrado de $\mathsf{true}$ a lo largo de $\chi$ existe por el Axioma 3.2.1 y su proyección a $X$ es monomorfismo por el Teorema 3.2.3; el axioma clasificador asegura que su flecha característica es precisamente $\chi$. Recíprocamente, el producto fibrado obtenido de $\chi_m$ representa el mismo subobjeto que $m$ por la unicidad de productos fibrados. Ambas asignaciones son inversas. $\square$
+
+::: {.callout-warning}
+## Tamaños
+La correspondencia (3.7) puede leerse clase a clase sin postular que todos los subobjetos formen inicialmente un conjunto. En una categoría localmente pequeña, $\operatorname{Hom}(X,\Omega)$ sí es un conjunto; entonces (3.7) muestra que los subobjetos de $X$ están parametrizados por un conjunto, esto es, que la categoría está bien potenciada (*well-powered*).
+:::
+
+
+<a id="TF-THM-00019"></a>
+
+**Teorema 3.3.3 — Naturalidad de las características** <!-- result-id: TF-THM-00019; depends-on: TF-THM-00018, TF-THM-00016, TF-AX-00007 -->
+
+Para $f:X\to Y$ y $m:U\rightarrowtail Y$,
+
+$$
+\chi_{f^*[m]}=\chi_m\circ f.
+\tag{3.8}
+$$
+
+*Demostración.* El cuadrado que representa $f^*[m]$ es el producto fibrado de $m$ a lo largo de $f$. El cuadrado clasificador de $m$ es el producto fibrado de $\mathsf{true}$ a lo largo de $\chi_m$. Al componer los dos productos fibrados, la propiedad universal —como en la demostración de (3.4)— muestra que el cuadrado exterior es un producto fibrado de $\mathsf{true}$ a lo largo de $\chi_m\circ f$. Por unicidad de la flecha característica, ésta es $\chi_{f^*[m]}$. $\square$
+
+<a id="TF-EXA-00002"></a>
+
+**Ejemplo 3.3.4 — El clasificador en $\mathbf{Set}$** <!-- result-id: TF-EXA-00002; depends-on: TF-AX-00007, TF-THM-00018 -->
+
+En la categoría clásica de conjuntos, tomamos $\Omega=\{0,1\}$ y $\mathsf{true}:1\to\Omega$ con valor $1$. Cada subconjunto $U\subseteq X$ tiene función característica
+
+$$
+\chi_U(x)=\begin{cases}1,&x\in U,\\0,&x\notin U.\end{cases}
+$$
+
+La preimagen de $\{1\}$ por $\chi_U$ es exactamente $U$, de modo que el cuadrado clasificador es un producto fibrado. Toda flecha que produzca ese cuadrado tiene valor $1$ exactamente en $U$ y, puesto que $\Omega$ tiene sólo los dos valores $0$ y $1$, coincide con $\chi_U$. Cada mono conjuntista es isomorfo sobre $X$ a la inclusión de su imagen, así que quedan clasificados todos los monomorfismos. **Auditoría:** definir $\chi_U$ para todo subconjunto arbitrario por esta dicotomía utiliza la lógica clásica en el modelo $\mathbf{Set}$; para conjuntos constructivos con pertenencia indecidible no debe asumirse automáticamente esa misma fórmula con codominio discreto $2$.
+
+<a id="TF-CEX-00002"></a>
+
+**Contraejemplo 3.3.5 — $\mathbf{Pos}$ no posee clasificador de todos los monos** <!-- result-id: TF-CEX-00002; depends-on: TF-AX-00007, TF-DEF-00003, TF-AX-00004, TF-AX-00005, TF-AX-00006 -->
+
+Sea $\mathbf{Pos}$ la categoría de conjuntos parcialmente ordenados y aplicaciones monótonas. Tiene terminal unitario, productos con orden componente a componente y productos fibrados con orden heredado del producto. También tiene exponenciales: $B^A$ es el conjunto de aplicaciones monótonas $A\to B$ con orden puntual; la evaluación y la currificación son monótonas y cumplen la propiedad universal.
+
+Sean $D=\{p,q\}$ con el *orden discreto* (ningún par distinto es comparable) y $C=\{p<q\}$ con el orden de dos elementos en cadena. La función subyacente identidad $i:D\to C$ es monótona e inyectiva, luego es un monomorfismo de $\mathbf{Pos}$: cualquier par de flechas que coincida tras $i$ ya coincide punto a punto.
+
+Supongamos que un clasificador $\mathsf{true}:1\to\Omega$ clasificara a $i$. La conmutatividad de su cuadrado obligaría a $\chi_i(i(p))=\mathsf{true}(*)=\chi_i(i(q))$. Como $i$ es sobreyectiva sobre el conjunto subyacente de $C$, $\chi_i$ sería la flecha constante de valor $\mathsf{true}(*)$. El producto fibrado de $\mathsf{true}$ a lo largo de esa flecha constante es, por la propiedad universal, la identidad $1_C:C\to C$ (con el orden completo de $C$). Si también $i$ fuera dicho producto fibrado, la unicidad de productos fibrados forzaría que $i$ fuera isomorfismo. Pero su inversa conjuntista $C\to D$ no es monótona, pues $p<q$ en $C$ y $p\not\le q$ en $D$. Contradicción. $\square$
+
+::: {.callout-note}
+## Consecuencia del contraejemplo
+Incluso terminal, productos, exponenciales **y** productos fibrados no implican la existencia de un clasificador de todos los monomorfismos. La condición es genuinamente adicional. No hay que confundir monomorfismo en $\mathbf{Pos}$ (inyectivo y monótono) con inclusión que refleja el orden.
+:::
+
+
+## 3.4. Caracterizar una función por su relación clasificadora
+
+<a id="TF-THM-00020"></a>
+
+**Teorema 3.4.1 — Igualdad de funciones por sus características gráficas** <!-- result-id: TF-THM-00020; depends-on: TF-THM-00005, TF-THM-00018, TF-THM-00014 -->
+
+Si la categoría satisface los axiomas anteriores y $f,g:A\to B$, entonces
+
+$$
+f=g\quad\Longleftrightarrow\quad
+\chi_{\gamma_f}=\chi_{\gamma_g}:A\times B\to\Omega.
+\tag{3.9}
+$$
+
+*Demostración.* Si $f=g$, sus flechas gráficas coinciden y también sus clasificadoras por unicidad. Supongamos recíprocamente que las clasificadoras coinciden. Por el Teorema 3.3.2, los monos $\gamma_f$ y $\gamma_g$ representan el mismo subobjeto de $A\times B$, por lo que existe un isomorfismo $u:A\to A$ con $\gamma_g\circ u=\gamma_f$. Al componer con $\pi_A$, obtenemos $u=1_A$, pues $\pi_A\circ\gamma_f=\pi_A\circ\gamma_g=1_A$. Al componer entonces con $\pi_B$ resulta $g=f$. $\square$
+
+La implicación no exige que el terminal sea generador: compara flechas características completas, no sus valores sobre puntos globales.
+
+<a id="TF-DEF-00012"></a>
+
+**Definición 3.4.2 — Objeto potencia, cuando existe** <!-- result-id: TF-DEF-00012; depends-on: TF-AX-00005, TF-AX-00007 -->
+
+Si la categoría posee el exponencial $\Omega^A$, escribimos
+
+$$
+\mathcal P(A):=\Omega^A.
+$$
+
+El nombre *objeto potencia* alude a su función clasificadora. No se identifica por definición con un conjunto de partes construido mediante pertenencia.
+
+<a id="TF-THM-00021"></a>
+
+**Teorema 3.4.3 — El objeto potencia representa familias de relaciones** <!-- result-id: TF-THM-00021; depends-on: TF-DEF-00012, TF-THM-00018, TF-AX-00005 -->
+
+Para todo objeto $X$, hay correspondencias naturales en $X$:
+
+$$
+\operatorname{Sub}(X\times A)
+\cong\operatorname{Hom}(X\times A,\Omega)
+\cong\operatorname{Hom}(X,\Omega^A).
+\tag{3.10}
+$$
+
+En particular, $\operatorname{Sub}(A)\cong\operatorname{Hom}(1,\Omega^A)$, usando $1\times A\cong A$.
+
+*Demostración.* La primera correspondencia es la clasificación (3.7) aplicada a $X\times A$; la segunda es la propiedad universal del exponencial del Axioma 1.4.1. Ambas son invertibles por los teoremas y axiomas correspondientes. La naturalidad de la primera frente a $k:Y\to X$ es (3.8) para $k\times1_A$; la de la segunda se verifica al transponer: $\lambda(h\circ(k\times1_A))=(\lambda h)\circ k$, ya que ambas flechas satisfacen la misma ecuación de evaluación y la transpuesta es única. Para $X=1$ usamos el isomorfismo del producto con el terminal del Teorema 1.4.2. $\square$
+
+**Interpretación.** El objeto $\Omega^A$ permite tratar subobjetos de $A$ como sus elementos globales y las familias de subobjetos de $A$ parametrizadas por $X$ como flechas $X\to\Omega^A$. Esta caracterización no suministra por sí misma algoritmos para decidir pertenencia.
+
+## 3.5. La composición de relaciones exige todavía otra operación
+
+<a id="TF-DEF-00013"></a>
+
+**Definición 3.5.1 — Composición de relaciones en $\mathbf{Set}$** <!-- result-id: TF-DEF-00013; depends-on: TF-DEF-00010 -->
+
+Para $R\subseteq A\times B$ y $S\subseteq B\times C$ definimos
+
+$$
+S\circ R:=\{(a,c)\in A\times C:\exists b\in B\ ((a,b)\in R\land(b,c)\in S)\}.
+\tag{3.11}
+$$
+
+Esta es una definición en el *modelo conjuntista*, no una afirmación de que la operación esté disponible en toda categoría con productos fibrados.
+
+<a id="TF-EXA-00003"></a>
+
+**Ejemplo 3.5.2 — El producto fibrado solo no da la relación compuesta** <!-- result-id: TF-EXA-00003; depends-on: TF-DEF-00013, TF-AX-00006 -->
+
+Sea $A=\{a\}$, $B=\{b_1,b_2\}$, $C=\{c\}$ y tomemos $R=\{(a,b_1),(a,b_2)\}$ y $S=\{(b_1,c),(b_2,c)\}$. El producto fibrado $P=R\times_BS$ tiene dos elementos distintos, correspondientes a los testigos $b_1$ y $b_2$, mientras que la flecha inducida
+
+$$
+t:P\longrightarrow A\times C
+$$
+
+envía ambos al mismo par $(a,c)$. Por tanto $t$ **no es monomorfismo** y no representa directamente una relación. En $\mathbf{Set}$ tomamos su *imagen*, aquí el subconjunto $\{(a,c)\}$; se han olvidado los testigos repetidos sin elegir uno de ellos.
+
+<a id="TF-THM-00022"></a>
+
+**Teorema 3.5.3 — Asociatividad de la composición conjuntista** <!-- result-id: TF-THM-00022; depends-on: TF-DEF-00013 -->
+
+Para $R\subseteq A\times B$, $S\subseteq B\times C$ y $T\subseteq C\times D$,
+
+$$
+T\circ(S\circ R)=(T\circ S)\circ R.
+$$
+
+*Demostración.* Para todo $(a,d)\in A\times D$,
+
+$$
+\begin{aligned}
+(a,d)\in T\circ(S\circ R)
+&\Longleftrightarrow \exists c\in C\ \exists b\in B\bigl(R(a,b)\land S(b,c)\land T(c,d)\bigr)\\
+&\Longleftrightarrow \exists b\in B\ \exists c\in C\bigl(R(a,b)\land S(b,c)\land T(c,d)\bigr)\\
+&\Longleftrightarrow (a,d)\in(T\circ S)\circ R.
+\end{aligned}
+$$
+
+La equivalencia se obtiene reordenando testigos existenciales y conjunciones; no se elige una función global de testigos. Por extensionalidad conjuntista de las relaciones, los dos subconjuntos son iguales. $\square$
+
+**Límite categórico del capítulo.** En una categoría con productos y pullbacks podemos formar $P=R\times_BS$ y $t:P\to A\times C$; no podemos inferir que $t$ sea mono ni que exista una imagen apropiada para convertirlo en subobjeto. Un marco estándar que permite efectuar esta construcción de manera estable y demostrar su asociatividad es el de las *categorías regulares*: disponen de límites finitos y de factorizaciones imagen mediante epimorfismos regulares estables por cambio de base. No asumimos regularidad aquí ni trasladamos sin prueba el Teorema 3.5.3 a categorías arbitrarias.
+
+## 3.6. Auditoría de fundamentos, dependencias y pedagogía
+
+::: {.tf-table role="region" tabindex="0" aria-label="Tabla matemática desplazable"}
+
+| Construcción | Hipótesis nuevas | Resultado autorizado | Lo que no autoriza |
+|---|---|---|---|
+| Relación $R\rightarrowtail A\times B$ | Ninguna fuera de productos y monos | Representar relaciones hasta isomorfismo | Componerlas automáticamente |
+| Preimagen e intersección | Pullbacks, `TF-AX-00006` | Leyes (3.4), ínfimos (3.5) | Todas las uniones o imágenes |
+| Clasificación | Clasificador, `TF-AX-00007` | (3.7), (3.8), (3.9) | Decidibilidad de subobjetos |
+| Potencias | Clasificador y exponenciales | (3.10) | Algoritmos de pertenencia |
+| Composición en $\mathbf{Set}$ | Semántica conjuntista e imagen | Asociación con testigos existenciales | Composición general sin imágenes estables |
+
+:::
+
+
+El contraejemplo de $\mathbf{Pos}$ acredita que los nuevos axiomas no son una consecuencia oculta de los anteriores. Las demostraciones estructurales sólo utilizan propiedades universales y lógica de igualdad; el ejemplo $\mathbf{Set}$ usa lógica clásica para decidir la dicotomía de una característica hacia $2$. Ningún teorema afirma computabilidad ni decidibilidad de igualdad o pertenencia. Las hom-colecciones y las subcolecciones se interpretan metateóricamente con precauciones de tamaño; cuando son conjuntos se dice expresamente. Las afirmaciones estándar sobre categorías regulares se registran como referencia para el siguiente tramo, no como teoremas demostrados aquí.
+
+**Control de notación:** $\operatorname{Sub}(X)$ son clases de monos sobre $X$; $\chi_m$ clasifica un subobjeto; $\gamma_f$ es la flecha gráfica; $\Omega$ no es necesariamente $\{0,1\}$; $\mathcal P(A)$ sólo denota $\Omega^A$ bajo la hipótesis de existencia indicada. La palabra «igualdad» no implica decidibilidad. La representación de una relación no debe confundirse con su predicado de pertenencia en una lógica externa.
+
+## 3.7. Fuentes y cotejo
+
+- F. William Lawvere y Robert Rosebrugh, *Sets for Mathematics*, Cambridge University Press, 2003, cap. 2 (§§2.2–2.5: monos, partes, aplicaciones características, preimagen), cap. 3 (§§3.3–3.5: gráficas, igualadores y pullbacks) y cap. 8 (objetos potencia). Fuente de referencia en la biblioteca: [bibliografía pública](bibliografia.qmd) El orden de axiomas, las auditorías y la selección de demostraciones constituyen nuestra reconstrucción, no una transcripción del texto.
+- nLab, «Subobject classifier»: <https://ncatlab.org/nlab/show/subobject+classifier> (definición universal; representabilidad y naturalidad de $\operatorname{Sub}$; advertencias sobre lógica interna). Se cita como recurso de contraste, no como fundamento axiomático oculto.
+- Chris Heunen y Sean Tull, *Categories of Relations as Models of Quantum Theory* (2015, §2; DOI: [10.4204/EPTCS.195.18](https://doi.org/10.4204/EPTCS.195.18)), explicación de imágenes en composición relacional y estabilidad: <https://www.cs.ox.ac.uk/people/chris.heunen/publications/2015/regular/regular.pdf>. La teoría completa de relaciones regulares queda aplazada al siguiente nodo.
+- Contraejemplo $\mathbf{Pos}$ construido aquí por cálculo directo; referencia de contraste: <https://math.stackexchange.com/questions/1650277/subobject-classifier-for-partial-orders>. El argumento completo se ha incluido, de modo que no depende de aceptar sin prueba la respuesta externa.
+
+::: {.tf-navigation}
+[← Anterior](capitulo-02.qmd) · [Índice del tratado](index.qmd) · [Siguiente →](capitulo-04.qmd)
+:::

@@ -1,0 +1,92 @@
+name: MA-Lean · tests del motor
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'MA-Lean/*.py'
+      - 'MA-Lean/engine/**'
+      - 'MA-Lean/adapters/**'
+      - 'MA-Lean/profiles/**'
+      - 'MA-Lean/mapeos/**'
+      - 'MA-Lean/exercises/**'
+      - 'MA-Lean/tests/**'
+      - 'lean/MatematicaAbierta/MCL/**'
+      - 'lean/MatematicaAbierta.lean'
+      - '.github/workflows/ma-lean.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'MA-Lean/*.py'
+      - 'MA-Lean/engine/**'
+      - 'MA-Lean/adapters/**'
+      - 'MA-Lean/profiles/**'
+      - 'MA-Lean/mapeos/**'
+      - 'MA-Lean/exercises/**'
+      - 'MA-Lean/tests/**'
+      - 'lean/MatematicaAbierta/MCL/**'
+      - 'lean/MatematicaAbierta.lean'
+      - '.github/workflows/ma-lean.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python unit tests
+        env:
+          PYTHONPATH: MA-Lean
+        run: python -m unittest discover -s MA-Lean/tests -v
+
+  mcl-u00-l01-formal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install canonical Lean environment
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          build: false
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+
+      - name: MA-Lean formal audit for MCL-U00-L01
+        env:
+          PYTHONPATH: MA-Lean
+        run: |
+          python -m adapters.mcl_formal             --mapping MA-Lean/mapeos/MCL/MCL-U00-L01.json             --profile MA-Lean/profiles/mcl.json             --repo-root .             --output /tmp/MCL-U00-L01-formal-audit.json
+
+      - name: Runner accepts canonical P1 solution
+        env:
+          PYTHONPATH: MA-Lean
+        run: |
+          printf 'rfl\n' > /tmp/mcl-solution.lean
+          python -m adapters.mcl_runner             --spec MA-Lean/exercises/MCL/U00/L01.json             --exercise MCL-U00-L01-E04             --solution-file /tmp/mcl-solution.lean             --lean-root lean
+
+      - name: Runner separates kernel correctness from pedagogy
+        env:
+          PYTHONPATH: MA-Lean
+        run: |
+          printf 'simp\n' > /tmp/mcl-simp.lean
+          set +e
+          python -m adapters.mcl_runner             --spec MA-Lean/exercises/MCL/U00/L01.json             --exercise MCL-U00-L01-E04             --solution-file /tmp/mcl-simp.lean             --lean-root lean > /tmp/mcl-simp-result.json
+          code=$?
+          set -e
+          test "$code" -eq 2
+          python - <<'PY'
+          import json
+          data=json.load(open('/tmp/mcl-simp-result.json',encoding='utf-8'))
+          assert data['kernel_accepts'] is True
+          assert data['pedagogical_policy_accepts'] is False
+          assert data['outcome']=='kernel_correct_policy_rejected'
+          PY

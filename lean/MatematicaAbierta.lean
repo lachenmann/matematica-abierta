@@ -1,0 +1,39 @@
+import MatematicaAbierta.PrimerosResultados
+import MatematicaAbierta.DesigualdadTriangular
+import MatematicaAbierta.ConsecuenciasCuerpo
+import MatematicaAbierta.CauchySchwarz
+import MatematicaAbierta.CauchySchwarzFinito
+import MatematicaAbierta.TeoriaDeFunciones.Diagonalizacion
+import MatematicaAbierta.TeoriaDeFunciones.Reindexacion
+import MatematicaAbierta.TeoriaDeFunciones.Correspondencias
+import MatematicaAbierta.TeoriaDeFunciones.GraficasEstructurales
+import MatematicaAbierta.TeoriaDeFunciones.SemanticaEquivalencia
+import MatematicaAbierta.TeoriaDeFunciones.NaturalidadSondas
+import MatematicaAbierta.TeoriaDeFunciones.DensidadTerminal
+import MatematicaAbierta.Continuo.ProgramaTransparente
+import MatematicaAbierta.Continuo.SimulacionAcotada
+import MatematicaAbierta.Continuo.PrimerExito
+import MatematicaAbierta.Continuo.ComputabilidadAproximante
+import MatematicaAbierta.Continuo.NombresRaiz
+import MatematicaAbierta.Continuo.DecididoresCortes
+import MatematicaAbierta.Continuo.TerminacionCortes
+import MatematicaAbierta.Continuo.IndicesCortes
+import MatematicaAbierta.Continuo.SemanticaComparadorCortes
+import MatematicaAbierta.Continuo.DecididoresCortesEfectivos
+import MatematicaAbierta.Continuo.SumaCortesReduccion
+import MatematicaAbierta.Continuo.ContradiccionUniforme
+import MatematicaAbierta.Continuo.NoPertenenciaUniforme
+import MatematicaAbierta.Continuo.EtapasUniformes
+import MatematicaAbierta.Continuo.CertificadosSumaEfectivos
+import MatematicaAbierta.Continuo.SemanticaCertificadosSuma
+import MatematicaAbierta.Continuo.PrimitividadCertificadosSuma
+import MatematicaAbierta.Continuo.CompletitudCertificadosSuma
+import MatematicaAbierta.Continuo.IndicesSumaIrracional
+import MatematicaAbierta.MCL.U00.L01_Proposiciones
+import MatematicaAbierta.MCL.U00.L02_Igualdad
+
+/-!
+# Matemática Abierta: biblioteca formal
+Este módulo importa las demostraciones completas que deben comprobarse en CI.
+Cada módulo nuevo debe incorporarse aquí para que `lake build` lo verifique.
+-/
