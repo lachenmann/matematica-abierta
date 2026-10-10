@@ -167,9 +167,54 @@ theorem bounded_monotone_stabilizes (c : ℕ → ℕ) (M : ℕ)
   obtain ⟨S, hs⟩ := he
   exact ⟨S, fun t ht => Nat.le_antisymm (hs t) (hc ht)⟩
 
+/-- Only the finite prefix is formed; no set of all range values is used. -/
+def seenBelow (f : ℕ → ℕ) (n s : ℕ) : Finset ℕ :=
+  ((Finset.range s).image f).filter (fun j => j ≤ n)
+
+ theorem seenBelow_mono (f : ℕ → ℕ) (n s t : ℕ) (hst : s ≤ t) :
+    seenBelow f n s ⊆ seenBelow f n t := by
+  intro j hj
+  simp only [seenBelow, Finset.mem_filter, Finset.mem_image, Finset.mem_range] at hj ⊢
+  obtain ⟨⟨i, hi, hij⟩, hjn⟩ := hj
+  exact ⟨⟨i, lt_of_lt_of_le hi hst, hij⟩, hjn⟩
+
+ theorem seenBelow_card_bound (f : ℕ → ℕ) (n s : ℕ) :
+    (seenBelow f n s).card ≤ n + 1 := by
+  have hsub : seenBelow f n s ⊆ Finset.range (n + 1) := by
+    intro j hj
+    have hjn := (Finset.mem_filter.mp hj).2
+    exact Finset.mem_range.mpr (by omega)
+  simpa using Finset.card_le_card hsub
+
+ theorem finite_range_stabilizes (f : ℕ → ℕ) (n : ℕ) :
+    ∃ S, ∀ j, j ≤ n → ((∃ i, f i = j) ↔ ∃ i, i < S ∧ f i = j) := by
+  have hc : Monotone (fun s => (seenBelow f n s).card) := by
+    intro s t hst
+    exact Finset.card_le_card (seenBelow_mono f n s t hst)
+  obtain ⟨S, hs⟩ := bounded_monotone_stabilizes
+    (fun s => (seenBelow f n s).card) (n + 1) hc (seenBelow_card_bound f n)
+  refine ⟨S, ?_⟩
+  intro j hjn
+  constructor
+  · rintro ⟨i, hij⟩
+    let t := max S (i + 1)
+    have hSt : S ≤ t := le_max_left _ _
+    have hi : i < t := lt_of_lt_of_le (Nat.lt_succ_self i) (le_max_right _ _)
+    have heq : seenBelow f n S = seenBelow f n t :=
+      Finset.eq_of_subset_of_card_le (seenBelow_mono f n S t hSt) (le_of_eq (hs t hSt))
+    have hmem : j ∈ seenBelow f n t := by
+      simp only [seenBelow, Finset.mem_filter, Finset.mem_image, Finset.mem_range]
+      exact ⟨⟨i, hi, hij⟩, hjn⟩
+    rw [← heq] at hmem
+    exact (Finset.mem_image.mp (Finset.mem_filter.mp hmem).1).imp
+      (fun k hk => ⟨Finset.mem_range.mp hk.1, hk.2⟩)
+  · rintro ⟨i, _, hij⟩
+    exact ⟨i, hij⟩
+
 #print axioms residue_of_band
 #print axioms decoded_iff_range
 #print axioms positiveRead_iff_not_negativeRead
 #print axioms positiveRead_iff_range
 #print axioms bounded_monotone_stabilizes
+#print axioms finite_range_stabilizes
 end MatematicaAbierta.Continuo.ReversionModular
