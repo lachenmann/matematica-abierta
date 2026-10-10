@@ -47,6 +47,16 @@ lemma partialSum_nonneg (b : Bits) (n : ℕ) : 0 ≤ partialSum b n := by
   have h := partialSum_mono b (Nat.zero_le n)
   simpa [partialSum] using h
 
+/-- The added stage zero does not change the essay's positive-stage definition. -/
+theorem mem_binaryCut_iff_positive_stage (b : Bits) (q : ℚ) :
+    q ∈ binaryCut b ↔ ∃ n, 1 ≤ n ∧ q < partialSum b n := by
+  constructor
+  · rintro ⟨n, hn⟩
+    refine ⟨n + 1, by omega, ?_⟩
+    exact lt_of_lt_of_le hn (partialSum_mono b (Nat.le_succ n))
+  · rintro ⟨n, _, hn⟩
+    exact ⟨n, hn⟩
+
 lemma tail_bound (b : Bits) (k n : ℕ) (hkn : k ≤ n) :
     partialSum b n ≤ partialSum b k + (2 / 3 : ℚ) * (weight k - weight n) := by
   induction n, hkn using Nat.le_induction with
@@ -140,6 +150,7 @@ def toLowerCut (b : Bits) : {A : Set ℚ // IsLowerCut A} :=
   intro b c h
   exact binaryCut_injective (congrArg Subtype.val h)
 
+#print axioms mem_binaryCut_iff_positive_stage
 #print axioms binaryCut_isLowerCut
 #print axioms binaryCut_injective
 #print axioms toLowerCut_injective
