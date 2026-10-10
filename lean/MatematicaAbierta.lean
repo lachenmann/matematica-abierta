@@ -10,6 +10,7 @@ import MatematicaAbierta.TeoriaDeFunciones.GraficasEstructurales
 import MatematicaAbierta.TeoriaDeFunciones.SemanticaEquivalencia
 import MatematicaAbierta.TeoriaDeFunciones.NaturalidadSondas
 import MatematicaAbierta.TeoriaDeFunciones.DensidadTerminal
+import MatematicaAbierta.Continuo.ReversionModular
 import MatematicaAbierta.Continuo.ProgramaTransparente
 import MatematicaAbierta.Continuo.SimulacionAcotada
 import MatematicaAbierta.Continuo.PrimerExito
