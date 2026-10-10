@@ -42,7 +42,7 @@ class ANMC00SemanticContract(unittest.TestCase):
 
     def test_c00_fullsize_reader_links_are_scoped_and_accessible(self):
         script = (ROOT / "assets/includes/ma-reader-controls.html").read_text(encoding="utf-8")
-        self.assertIn("main.querySelectorAll('div[id^=\\\"fig-anm-c00-f\\\"]')", script)
+        self.assertIn("""main.querySelectorAll('div[id^="fig-anm-c00-f"]')""", script)
         self.assertIn("const expected = '../../assets/books/anm/C00-'", script)
         self.assertIn("if (src !== expected) return", script)
         self.assertIn("container.querySelector('.ma-anm-c00-fullsize')", script)
