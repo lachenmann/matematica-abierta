@@ -1,3 +1,7 @@
+import MatematicaAbierta.Continuo.CalculoRCA
+import MatematicaAbierta.Continuo.TrazasInduccionRCA
+import MatematicaAbierta.Continuo.ConstruccionBaseTrazaRCA
+import MatematicaAbierta.Continuo.PuenteCertificadoRCA
 import MatematicaAbierta.PrimerosResultados
 import MatematicaAbierta.DesigualdadTriangular
 import MatematicaAbierta.ConsecuenciasCuerpo
