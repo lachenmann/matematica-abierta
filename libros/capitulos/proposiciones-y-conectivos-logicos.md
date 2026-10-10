@@ -9,7 +9,7 @@ source-id: APM-T1-C04
 editorial-id: MA-BCH-APM-01-004
 status: published
 date-created: 2026-09-12
-date-modified: 2026-09-12
+date-modified: 2026-10-09
 areas:
   - algebra
   - fundamentos
@@ -37,9 +37,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# 4. Proposiciones y conectivos lógicos
-
-
 En el capítulo anterior aprendimos a preguntar qué autoriza una transformación algebraica y si un paso puede revertirse. Decíamos, por ejemplo:
 
 > si una ecuación implica otra, el paso puede ser válido sin ser reversible.
@@ -52,9 +49,8 @@ El objetivo no es convertir el lenguaje matemático en una colección de símbol
 
 > **La lógica proposicional separa el contenido de una afirmación de la forma en que su verdad depende de otras afirmaciones.**
 
----
-
-## 4.1. ¿Qué es una proposición?
+***
+## 4.1. ¿Qué es una proposición? {#apm-c04-s01}
 
 Consideremos estas expresiones:
 
@@ -78,9 +74,8 @@ Llamaremos **proposición** a una afirmación declarativa a la que, en el contex
 
 Más adelante estudiaremos sistemáticamente expresiones abiertas y cuantificadores. Por ahora basta reconocer la frontera.
 
----
-
-## 4.2. Proposición y valor de verdad no son lo mismo
+***
+## 4.2. Proposición y valor de verdad no son lo mismo {#apm-c04-s02}
 
 Una proposición es la afirmación; su **valor de verdad** es uno de dos valores:
 
@@ -117,9 +112,8 @@ En ese análisis, $P$ y $Q$ son **proposiciones atómicas** y la nueva afirmaci�
 
 La lógica proposicional abstrae del contenido interno de $P$ y $Q$ para estudiar cómo se combina su verdad.
 
----
-
-## 4.3. Negación y alcance
+***
+## 4.3. Negación y alcance {#apm-c04-s03}
 
 La **negación** de $P$, escrita $\neg P$, es verdadera exactamente cuando $P$ es falsa.
 
@@ -154,9 +148,8 @@ Los paréntesis determinan el **alcance** de la negación.
 
 Todavía no transformaremos sistemáticamente una negación de una conjunción en otra fórmula. Esa será materia de C5. Aquí el objetivo es leer la estructura correcta.
 
----
-
-## 4.4. Conjunción: exigir dos condiciones
+***
+## 4.4. Conjunción: exigir dos condiciones {#apm-c04-s04}
 
 La **conjunción** de $P$ y $Q$ se escribe
 
@@ -193,9 +186,8 @@ En matemática es frecuente que una afirmación requiera simultáneamente varias
 
 contiene una conjunción, aunque no aparezca el símbolo $\land$.
 
----
-
-## 4.5. Disyunción: al menos una condición
+***
+## 4.5. Disyunción: al menos una condición {#apm-c04-s05}
 
 La **disyunción** se escribe
 
@@ -224,9 +216,8 @@ $x=1$ o $x=-2$.
 
 No hay aquí una exigencia de exclusividad lógica; simplemente al menos una de las alternativas debe cumplirse.
 
----
-
-## 4.6. El condicional material
+***
+## 4.6. El condicional material {#apm-c04-s06}
 
 La afirmación
 
@@ -267,9 +258,28 @@ Por ejemplo, «si $10$ es par, entonces $2+2=4$» tiene antecedente y consecuent
 
 La lógica proposicional registra condiciones de verdad, no mecanismos físicos de producción.
 
----
+***
+### Un caso verdadero y una regla válida
 
-## 4.7. Condición suficiente y condición necesaria
+Fijemos un entero $n$ y llamemos $P$ a «$n$ es par» y $Q$ a «$n$ es múltiplo de $3$». Estas propiedades permiten realizar las cuatro filas del condicional con números concretos:
+
+| $n$ | $P$ | $Q$ | $P\Rightarrow Q$ | Lectura del caso |
+|---:|---|---|---|---|
+| $6$ | V | V | V | Se cumple el antecedente y también el consecuente |
+| $2$ | V | F | F | Se cumple el antecedente, pero falla el consecuente |
+| $3$ | F | V | V | El caso no cumple el antecedente |
+| $5$ | F | F | V | El caso tampoco cumple el antecedente |
+
+En $n=6$, el condicional es verdadero. Ese hecho no autoriza la regla general «si un entero es par, entonces es múltiplo de $3$»: $n=2$ la refuta. Tampoco los casos $3$ y $5$ permiten concluir que su antecedente sea verdadero; sólo muestran que no ocurrió la combinación que hace falso al condicional.
+
+Hay una distinción cercana que conviene fijar desde ahora. Un **argumento** propone obtener una conclusión a partir de unas premisas. Para revisar su validez proposicional buscamos una valuación que haga verdaderas todas las premisas y falsa la conclusión. Si existe, el argumento no es válido; si ninguna valuación lo permite, es válido. Esta prueba examina todas las combinaciones de verdad, no sólo un ejemplo favorable. Más adelante estudiaremos cómo organizar demostraciones completas; aquí trabajamos únicamente con la semántica de estos conectivos.
+
+**Control.** Un estudiante observa que $6$ es par y múltiplo de $3$ y afirma: «a partir de que un entero es par, puedo concluir que es múltiplo de $3$». Identifica la premisa y la conclusión, y presenta el caso que decide la validez de ese paso.
+
+**Resolución.** La premisa es $P$ y la conclusión es $Q$. Para refutar el paso necesitamos $P=V,Q=F$, no un caso en que ambas sean verdaderas. El entero $2$ realiza esa valuación: es par y no es múltiplo de $3$. El paso propuesto no es válido. El condicional correspondiente a $n=6$ sigue siendo verdadero; lo que falla es usar ese caso para garantizar el paso para cualquier entero. Si buscaste un número impar como contraejemplo, vuelve a la fila $V,F$ de [§4.6](proposiciones-y-conectivos-logicos.md#apm-c04-s06); si confundiste la afirmación con su valor, vuelve a [§4.2](proposiciones-y-conectivos-logicos.md#apm-c04-s02).
+
+***
+## 4.7. Condición suficiente y condición necesaria {#apm-c04-s07}
 
 El condicional $P\Rightarrow Q$ puede expresarse de varias maneras.
 
@@ -313,9 +323,30 @@ $Q\Rightarrow P$.
 
 La dirección debe leerse desde la función lógica, no desde el orden de aparición de las palabras.
 
----
+***
+### Traducir buscando el caso prohibido
 
-## 4.8. Conversa, inversa y contraposición
+Las palabras «necesario» y «suficiente» pueden leerse mediante una misma pregunta: **¿qué combinación de verdad excluye la frase?**
+
+Sean $P$: «un entero fijado es múltiplo de $6$» y $Q$: «ese entero es múltiplo de $3$».
+
+| Frase | Caso que prohíbe | Simbolización |
+|---|---|---|
+| Ser múltiplo de $6$ basta para ser múltiplo de $3$ | $P=V,Q=F$ | $P\Rightarrow Q$ |
+| Ser múltiplo de $3$ es necesario para ser múltiplo de $6$ | $P=V,Q=F$ | $P\Rightarrow Q$ |
+| Es múltiplo de $6$ sólo si es múltiplo de $3$ | $P=V,Q=F$ | $P\Rightarrow Q$ |
+| Es múltiplo de $3$ si es múltiplo de $6$ | $P=V,Q=F$ | $P\Rightarrow Q$ |
+
+Todas dicen que no puede cumplirse $P$ mientras falla $Q$. Ninguna excluye $P=F,Q=V$: el entero $3$ es múltiplo de $3$ y no es múltiplo de $6$. Por eso que una condición sea necesaria no significa que sea suficiente.
+
+Para leer una frase, identifica primero las afirmaciones completas; después determina qué condición no puede faltar cuando la otra ocurre. Si la frase habla de dos requisitos unidos por «y», conserva ambos dentro del consecuente antes de evaluar el condicional.
+
+**Control.** Sean $A$: «un entero fijado es múltiplo de $10$» y $B$: «ese entero es par». Traduce «ser par es necesario para ser múltiplo de $10$» y escribe una frase con «si» que mantenga la dirección. ¿La traducción afirma también que ser par basta?
+
+**Resolución.** La frase prohíbe $A=V,B=F$, así que se traduce $A\Rightarrow B$. Con «si»: «el entero es par si es múltiplo de $10$». No afirma $B\Rightarrow A$: el entero $2$ es par y no es múltiplo de $10$. La traducción y el examen matemático son tareas distintas: primero reproducimos lo que dice la frase; luego averiguamos si es verdadero. Si invertiste el condicional, vuelve a las lecturas «$P$ si $Q$» y «$P$ sólo si $Q$» de esta sección.
+
+***
+## 4.8. Conversa, inversa y contraposición {#apm-c04-s08}
 
 Partimos del condicional
 
@@ -359,9 +390,21 @@ En C5 aprenderemos a expresar este hecho mediante equivalencias y transformacion
 - conversa: «si es par, entonces es múltiplo de $4$» — falsa;
 - contraposición: «si no es par, entonces no es múltiplo de $4$» — verdadera cuando el original lo es.
 
----
+***
+### Una dirección no concede la otra
 
-## 4.9. Bicondicional: poder ir en ambas direcciones
+Sean $P$: «un entero fijado es múltiplo de $6$» y $Q$: «ese entero es múltiplo de $3$». El condicional $P\Rightarrow Q$ vale para cualquier entero: si $n=6k$, entonces $n=3(2k)$. La conversa $Q\Rightarrow P$ no tiene esa garantía; el entero $3$ cumple $Q$ y falla $P$.
+
+En ese mismo caso $n=3$, la inversa $\neg P\Rightarrow\neg Q$ también falla: no ser múltiplo de $6$ no obliga a dejar de ser múltiplo de $3$. En cambio, la contraposición $\neg Q\Rightarrow\neg P$ conserva la columna de verdad del original. No propone recorrer la flecha al revés sin más: cambia la dirección y niega **ambas** condiciones.
+
+El bicondicional pide que las dos direcciones se sostengan. En $n=12$, $P$ y $Q$ son verdaderas y el bicondicional vale $V$; en $n=3$, sus valores son distintos y vale $F$. Por tanto, un caso con coincidencia de valores no demuestra que las condiciones sean necesarias y suficientes para todos los enteros.
+
+**Control.** Para $P$: «el entero es múltiplo de $4$» y $Q$: «es par», evalúa el original, la conversa, la inversa, la contraposición y el bicondicional en $n=10$. Explica qué revela el caso y qué debe justificarse de forma general.
+
+**Resolución.** En $10$, $P=F$ y $Q=V$. El original $P\Rightarrow Q$ vale $V$; la conversa $Q\Rightarrow P$ vale $F$; la inversa $\neg P\Rightarrow\neg Q$ vale $F$; la contraposición $\neg Q\Rightarrow\neg P$ vale $V$; el bicondicional vale $F$. El caso refuta la conversa y la inversa como afirmaciones para todos los enteros, y refuta la doble dirección. Para justificar el original en general, si $n=4k$, entonces $n=2(2k)$ y es par. La tabla completa de [§4.8](proposiciones-y-conectivos-logicos.md#apm-c04-s08) garantiza la coincidencia entre original y contraposición para cualquier valuación, no sólo para el entero $10$. Si cambiaste únicamente el orden o únicamente las negaciones, compara otra vez las tres fórmulas de esta sección.
+
+***
+## 4.9. Bicondicional: poder ir en ambas direcciones {#apm-c04-s09}
 
 El **bicondicional** se escribe
 
@@ -391,9 +434,8 @@ Si una condición $P$ lleva a $Q$ y también $Q$ lleva a $P$, el bicondicional r
 
 No usaremos todavía el símbolo $\Leftrightarrow$ como una señal para ejecutar cadenas largas de reescrituras. Ese uso algebraico comenzará en C5.
 
----
-
-## 4.10. Sintaxis, paréntesis y conectivo principal
+***
+## 4.10. Sintaxis, paréntesis y conectivo principal {#apm-c04-s10}
 
 Una fórmula proposicional tiene estructura.
 
@@ -438,9 +480,8 @@ $(\neg P)\Rightarrow Q$ tiene como conectivo principal $\Rightarrow$.
 
 Los paréntesis no son decoración. Determinan qué fórmula estamos escribiendo.
 
----
-
-## 4.11. Tablas de verdad como semántica explícita
+***
+## 4.11. Tablas de verdad como semántica explícita {#apm-c04-s11}
 
 Una tabla de verdad enumera sistemáticamente todas las posibles asignaciones de valores de verdad a las proposiciones atómicas.
 
@@ -492,9 +533,8 @@ no conviene adivinar la columna final. Construimos primero:
 
 La tabla hace explícita la semántica de la fórmula completa.
 
----
-
-## 4.12. Tautología, contradicción y contingencia
+***
+## 4.12. Tautología, contradicción y contingencia {#apm-c04-s12}
 
 Una fórmula es una **tautología** si es verdadera en todas las valuaciones.
 
@@ -528,9 +568,8 @@ La clasificación no depende del contenido concreto de $P$ y $Q$, sino de la for
 
 C5 desarrollará procedimientos de transformación que permitirán reconocer muchas de estas propiedades sin reconstruir siempre una tabla completa.
 
----
-
-## 4.13. Traducir entre lenguaje matemático y símbolos
+***
+## 4.13. Traducir entre lenguaje matemático y símbolos {#apm-c04-s13}
 
 La simbolización no consiste en sustituir palabras mecánicamente. Debemos identificar la estructura.
 
@@ -588,9 +627,8 @@ puede verbalizarse:
 
 La dirección simbólica y la verbal deben entrenarse ambas.
 
----
-
-## 4.14. Cierre — leer una afirmación lógicamente
+***
+## 4.14. Cierre — leer una afirmación lógicamente {#apm-c04-s14}
 
 Ante una afirmación matemática, podemos seguir este protocolo:
 
@@ -611,150 +649,197 @@ La pregunta final es:
 
 C4 nos enseña a leer esa arquitectura. En C5 aprenderemos a transformarla algebraicamente.
 
----
-
+***
 # Ejercicios
 
 Todos los ejercicios han sido redactados para *Álgebra para matemáticos* y calibrados con el corpus rector del capítulo.
 
 ## A. Proposición, contexto y valor de verdad
 
-1. Decide cuáles de las siguientes expresiones son proposiciones: «$9$ es primo», «$5+7$», «¿$8$ es par?», «$2^5=32$».
+**1.** Decide cuáles de las siguientes expresiones son proposiciones: «$9$ es primo», «$5+7$», «¿$8$ es par?», «$2^5=32$».
 
-2. Explica por qué «$x^2=4$» no determina por sí sola una proposición si $x$ no ha sido fijado.
+**2.** Explica por qué «$x^2=4$» no determina por sí sola una proposición si $x$ no ha sido fijado.
 
-3. Si se declara $x=2$, determina el valor de verdad de «$x^2=4$».
+**3.** Si se declara $x=2$, determina el valor de verdad de «$x^2=4$».
 
-4. Decide si «Todo triángulo tiene tres lados» es una proposición y señala su valor de verdad.
+**4.** Decide si «Todo triángulo tiene tres lados» es una proposición y señala su valor de verdad.
 
-5. Decide si «Encuentra todos los divisores de $18$» es una proposición. Justifica.
+**5.** Decide si «Encuentra todos los divisores de $18$» es una proposición. Justifica.
 
-6. Da un ejemplo de una expresión abierta que se convierta en proposición al fijar una variable.
+**6.** Da un ejemplo de una expresión abierta que se convierta en proposición al fijar una variable.
 
-7. Sea $P$: «$21$ es múltiplo de $7$». Indica qué es $P$ y cuál es su valor de verdad.
+**7.** Sea $P$: «$21$ es múltiplo de $7$». Indica qué es $P$ y cuál es su valor de verdad.
 
-8. Explica la diferencia entre una proposición y su valor de verdad.
+**8.** Explica la diferencia entre una proposición y su valor de verdad.
 
 ## B. Atomicidad, negación, conjunción y disyunción
 
-9. Sean $P$: «$12$ es par» y $Q$: «$12$ es múltiplo de $3$». Escribe en símbolos «$12$ es par y múltiplo de $3$».
+**9.** Sean $P$: «$12$ es par» y $Q$: «$12$ es múltiplo de $3$». Escribe en símbolos «$12$ es par y múltiplo de $3$».
 
-10. Con las mismas $P,Q$, determina el valor de verdad de $P\land Q$.
+**10.** Con las mismas $P,Q$, determina el valor de verdad de $P\land Q$.
 
-11. Sea $R$: «$12$ es primo». Determina los valores de $P\land R$ y $P\lor R$.
+**11.** Sea $R$: «$12$ es primo». Determina los valores de $P\land R$ y $P\lor R$.
 
-12. Si $P$ es falsa, ¿qué valor tiene $\neg P$? Explica.
+**12.** Si $P$ es falsa, ¿qué valor tiene $\neg P$? Explica.
 
-13. Explica la diferencia estructural entre $\neg(P\land Q)$ y $(\neg P)\land Q$ sin transformar ninguna de las dos fórmulas.
+**13.** Explica la diferencia estructural entre $\neg(P\land Q)$ y $(\neg P)\land Q$ sin transformar ninguna de las dos fórmulas.
 
-14. Construye la tabla de verdad de $P\lor Q$ y señala en qué fila es falsa.
+**14.** Construye la tabla de verdad de $P\lor Q$ y señala en qué fila es falsa.
 
-15. Explica por qué la disyunción lógica es inclusiva.
+**15.** Explica por qué la disyunción lógica es inclusiva.
 
-16. Da una frase cotidiana en la que «o» suene exclusiva y explica por qué no debe identificarse automáticamente con $\lor$.
+**16.** Da una frase cotidiana en la que «o» suene exclusiva y explica por qué no debe identificarse automáticamente con $\lor$.
 
 ## C. El condicional y su lenguaje
 
-17. Construye la tabla de verdad de $P\Rightarrow Q$.
+**17.** Construye la tabla de verdad de $P\Rightarrow Q$.
 
-18. ¿Cuál es la única valuación que hace falso $P\Rightarrow Q$?
+**18.** ¿Cuál es la única valuación que hace falso $P\Rightarrow Q$?
 
-19. Explica por qué una valuación con $P=F$ no constituye un contraejemplo a $P\Rightarrow Q$.
+**19.** Explica por qué una valuación con $P=F$ no constituye un contraejemplo a $P\Rightarrow Q$.
 
-20. Sea $P$: «$n$ es múltiplo de $8$» y $Q$: «$n$ es par». Expresa «si $n$ es múltiplo de $8$, entonces es par».
+**20.** Sea $P$: «$n$ es múltiplo de $8$» y $Q$: «$n$ es par». Expresa «si $n$ es múltiplo de $8$, entonces es par».
 
-21. En $P\Rightarrow Q$, identifica antecedente y consecuente.
+**21.** En $P\Rightarrow Q$, identifica antecedente y consecuente.
 
-22. Traduce «$P$ es suficiente para $Q$» a símbolos.
+**22.** Traduce «$P$ es suficiente para $Q$» a símbolos.
 
-23. Traduce «$Q$ es necesaria para $P$» a símbolos.
+**23.** Traduce «$Q$ es necesaria para $P$» a símbolos.
 
-24. Traduce «$P$ sólo si $Q$» a símbolos.
+**24.** Traduce «$P$ sólo si $Q$» a símbolos.
 
-25. Traduce «$P$ si $Q$» a símbolos.
+**25.** Traduce «$P$ si $Q$» a símbolos.
 
-26. Explica por qué «$P$ sólo si $Q$» y «$P$ si $Q$» tienen direcciones distintas.
+**26.** Explica por qué «$P$ sólo si $Q$» y «$P$ si $Q$» tienen direcciones distintas.
 
-27. Si «ser múltiplo de $12$» es suficiente para «ser múltiplo de $3$», identifica antecedente y consecuente.
+**27.** Si «ser múltiplo de $12$» es suficiente para «ser múltiplo de $3$», identifica antecedente y consecuente.
 
-28. Escribe una afirmación matemática verdadera de la forma $P\Rightarrow Q$ donde no exista una relación causal entre $P$ y $Q$.
+**28.** Escribe una afirmación matemática verdadera de la forma $P\Rightarrow Q$ donde no exista una relación causal entre $P$ y $Q$.
 
 ## D. Conversa, inversa, contraposición y bicondicional
 
-29. Dado $P\Rightarrow Q$, escribe su conversa.
+**29.** Dado $P\Rightarrow Q$, escribe su conversa.
 
-30. Dado $P\Rightarrow Q$, escribe su inversa.
+**30.** Dado $P\Rightarrow Q$, escribe su inversa.
 
-31. Dado $P\Rightarrow Q$, escribe su contraposición.
+**31.** Dado $P\Rightarrow Q$, escribe su contraposición.
 
-32. Para «si un entero es múltiplo de $4$, entonces es par», escribe la conversa y decide si es verdadera.
+**32.** Para «si un entero es múltiplo de $4$, entonces es par», escribe la conversa y decide si es verdadera.
 
-33. Escribe la contraposición de la afirmación anterior y explica su significado.
+**33.** Escribe la contraposición de la afirmación anterior y explica su significado.
 
-34. Mediante una tabla de verdad, comprueba que $P\Rightarrow Q$ y $\neg Q\Rightarrow\neg P$ tienen la misma columna final.
+**34.** Mediante una tabla de verdad, comprueba que $P\Rightarrow Q$ y $\neg Q\Rightarrow\neg P$ tienen la misma columna final.
 
-35. Construye la tabla de verdad de $P\Leftrightarrow Q$.
+**35.** Construye la tabla de verdad de $P\Leftrightarrow Q$.
 
-36. Explica en palabras qué significa afirmar que $P$ es condición necesaria y suficiente para $Q$.
+**36.** Explica en palabras qué significa afirmar que $P$ es condición necesaria y suficiente para $Q$.
 
 ## E. Sintaxis y estructura
 
-37. Identifica el conectivo principal de $P\lor(Q\land R)$.
+**37.** Identifica el conectivo principal de $P\lor(Q\land R)$.
 
-38. Identifica el conectivo principal de $(P\lor Q)\land R$.
+**38.** Identifica el conectivo principal de $(P\lor Q)\land R$.
 
-39. En $\neg(P\Rightarrow Q)$, identifica el alcance de la negación y el conectivo principal.
+**39.** En $\neg(P\Rightarrow Q)$, identifica el alcance de la negación y el conectivo principal.
 
-40. En $(\neg P)\Rightarrow Q$, identifica el conectivo principal y compara la estructura con la del ejercicio anterior.
+**40.** En $(\neg P)\Rightarrow Q$, identifica el conectivo principal y compara la estructura con la del ejercicio anterior.
 
-41. Dibuja un árbol sintáctico simple para $(P\land Q)\Rightarrow R$.
+**41.** Dibuja un árbol sintáctico simple para $(P\land Q)\Rightarrow R$.
 
-42. Inserta paréntesis de dos maneras distintas en $P\lor Q\land R$ para obtener dos estructuras diferentes.
+**42.** Inserta paréntesis de dos maneras distintas en $P\lor Q\land R$ para obtener dos estructuras diferentes.
 
 ## F. Tablas de verdad
 
-43. Construye la tabla de verdad de $\neg P\lor Q$.
+**43.** Construye la tabla de verdad de $\neg P\lor Q$.
 
-44. Construye la tabla de verdad de $(P\land Q)\Rightarrow P$.
+**44.** Construye la tabla de verdad de $(P\land Q)\Rightarrow P$.
 
-45. Construye la tabla de verdad de $P\Rightarrow(P\lor Q)$.
+**45.** Construye la tabla de verdad de $P\Rightarrow(P\lor Q)$.
 
-46. Construye la tabla de verdad de $(P\lor Q)\land\neg P$.
+**46.** Construye la tabla de verdad de $(P\lor Q)\land\neg P$.
 
-47. Construye la tabla de verdad de $(P\land Q)\Leftrightarrow Q$.
+**47.** Construye la tabla de verdad de $(P\land Q)\Leftrightarrow Q$.
 
-48. Construye la tabla de verdad de $P\lor(Q\land R)$ usando ocho filas.
+**48.** Construye la tabla de verdad de $P\lor(Q\land R)$ usando ocho filas.
 
-49. Construye la tabla de verdad de $(P\lor Q)\land R$ y compárala con la del ejercicio 48. ¿Coinciden siempre?
+**49.** Construye la tabla de verdad de $(P\lor Q)\land R$ y compárala con la del ejercicio 48. ¿Coinciden siempre?
 
-50. Construye la tabla de verdad de $(P\Rightarrow Q)\land(Q\Rightarrow R)$.
+**50.** Construye la tabla de verdad de $(P\Rightarrow Q)\land(Q\Rightarrow R)$.
 
 ## G. Tautología, contradicción y contingencia
 
-51. Clasifica $P\lor\neg P$ mediante tabla de verdad.
+**51.** Clasifica $P\lor\neg P$ mediante tabla de verdad.
 
-52. Clasifica $P\land\neg P$ mediante tabla de verdad.
+**52.** Clasifica $P\land\neg P$ mediante tabla de verdad.
 
-53. Clasifica $P\Rightarrow Q$.
+**53.** Clasifica $P\Rightarrow Q$.
 
-54. Clasifica $(P\land Q)\Rightarrow P$.
+**54.** Clasifica $(P\land Q)\Rightarrow P$.
 
-55. Clasifica $(P\Leftrightarrow Q)\land P$.
+**55.** Clasifica $(P\Leftrightarrow Q)\land P$.
 
 ## H. Traducción, diagnóstico y síntesis
 
-56. Sean $P$: «$n$ es divisible por $6$» y $Q$: «$n$ es divisible por $3$». Simboliza «ser divisible por $3$ es necesario para ser divisible por $6$».
+**56.** Sean $P$: «$n$ es divisible por $6$» y $Q$: «$n$ es divisible por $3$». Simboliza «ser divisible por $3$ es necesario para ser divisible por $6$».
 
-57. Sean $P$: «$n$ es par» y $Q$: «$n$ es múltiplo de $4$». Un estudiante traduce «$n$ es par sólo si es múltiplo de $4$» como $Q\Rightarrow P$. Diagnostica el error y escribe la traducción correcta.
+**57.** Sean $P$: «$n$ es par» y $Q$: «$n$ es múltiplo de $4$». Un estudiante traduce «$n$ es par sólo si es múltiplo de $4$» como $Q\Rightarrow P$. Diagnostica el error y escribe la traducción correcta.
 
-58. Verbaliza con precisión $(P\land Q)\Rightarrow(\neg R)$.
+**58.** Verbaliza con precisión $(P\land Q)\Rightarrow(\neg R)$.
 
-59. Para la fórmula $(P\lor Q)\Rightarrow R$, identifica sus componentes, conectivo principal, número de filas de su tabla y una valuación que la haga falsa.
+**59.** Para la fórmula $(P\lor Q)\Rightarrow R$, identifica sus componentes, conectivo principal, número de filas de su tabla y una valuación que la haga falsa.
 
-60. Explica en 8–12 líneas por qué la lógica proposicional es útil para leer matemáticas aunque todavía no sepamos transformar fórmulas mediante leyes de equivalencia. Debes mencionar estructura, valor de verdad, conectivo principal, condicional y tablas de verdad.
+**60.** Explica en 8–12 líneas por qué la lógica proposicional es útil para leer matemáticas aunque todavía no sepamos transformar fórmulas mediante leyes de equivalencia. Debes mencionar estructura, valor de verdad, conectivo principal, condicional y tablas de verdad.
 
----
 
+## I. Traducir condiciones sin invertirlas
+
+
+**61.** Sea $n$ un entero fijado, $P$: «$n$ es múltiplo de $12$» y $Q$: «$n$ es múltiplo de $4$». Simboliza «no puede ser múltiplo de $12$ sin ser múltiplo de $4$», indicando el caso que la frase excluye. Escribe después una verbalización con «suficiente», otra con «necesario» y otra con «sólo si». Explica qué dirección no está afirmada y da un entero que la refute.
+
+
+**62.** Sea $n$ un entero fijado. Denota por $R$ «$n$ es múltiplo de $12$», por $P$ «$n$ es par» y por $Q$ «$n$ es múltiplo de $3$». Traduce «ser múltiplo de $12$ basta para satisfacer a la vez las otras dos condiciones» y verbaliza la fórmula de regreso usando «necesario». ¿Se afirma que cumplir las otras dos condiciones basta para ser múltiplo de $12$? Responde con un entero concreto.
+
+
+**63.** Para un real fijado $x$, sean $P$: «$x>0$» y $Q$: «$x\neq0$». Traduce «para que sea positivo es necesario que no sea cero», y expresa la misma dirección con «si» y «sólo si». Un estudiante la reemplaza por «no ser cero es suficiente para ser positivo». Identifica qué caso refutaría cada frase y decide cuáles son verdaderas para cualquier real.
+
+
+## J. Refutar una inferencia mediante una valuación
+
+
+**64.** Un argumento tiene premisas $P\Rightarrow Q$ y $Q$, y conclusión $P$. Construye una valuación que haga verdaderas las dos premisas y falsa la conclusión. Realízala con $P$: «un entero fijado es múltiplo de $8$» y $Q$: «es múltiplo de $4$». Compara el argumento con uno que use las premisas $P\Rightarrow Q$ y $P$ para concluir $Q$.
+
+
+**65.** Se propone concluir $R$ a partir de $P\Rightarrow(Q\lor R)$ y $\neg Q$. Busca una valuación que refute el argumento. Después añade la premisa $P$ y decide si todavía puede haber un contraejemplo. Explica qué información faltaba, sin transformar fórmulas mediante leyes de equivalencia.
+
+
+**66.** Un estudiante usa $P\lor Q$ y $P$ como premisas y concluye $\neg Q$. Construye una valuación que refute el paso y un ejemplo con propiedades de un entero que la realice. ¿Añadir la premisa «no se cumplen ambas» repararía el argumento? Justifica mediante los valores de verdad.
+
+
+## K. Paréntesis y alcance de los conectivos
+
+
+**67.** Compara $A=P\Rightarrow(Q\land R)$ y $B=(P\Rightarrow Q)\land R$. Indica el conectivo principal y las subfórmulas inmediatas de cada una. Construye las ocho filas de verdad y determina exactamente en cuáles difieren. Explica por qué un valor verdadero de $A$ puede coexistir con un valor falso de $B$.
+
+
+**68.** Sean $A=\neg(P\Rightarrow Q)$ y $B=(\neg P)\Rightarrow Q$. Localiza el alcance de la negación en ambas, construye sus cuatro filas y encuentra todas las valuaciones que las distinguen. Decide si basta observar una fila en que coinciden para considerar intercambiables las fórmulas.
+
+
+**69.** Compara $A=(P\Leftrightarrow Q)\Rightarrow R$ y $B=P\Leftrightarrow(Q\Rightarrow R)$. Identifica qué afirma cada conectivo principal, construye las ocho filas y señala exactamente los casos que distinguen las fórmulas. Verbaliza ambas conservando sus agrupaciones.
+
+
+## L. Verdad de un caso y validez de un argumento
+
+
+**70.** Sean $P$: «un entero fijado es par» y $Q$: «es múltiplo de $3$». En $n=6$, evalúa el condicional $(P\lor Q)\Rightarrow P$. Después decide si el argumento con premisa $P\lor Q$ y conclusión $P$ es válido. Construye su tabla y un caso aritmético que decida la pregunta. Explica por qué las dos respuestas no se contradicen.
+
+
+**71.** Analiza el argumento con premisas $P\Rightarrow Q$ y $P$, y conclusión $Q$. Construye una tabla que muestre cuándo todas las premisas son verdaderas y decide su validez. Luego fija $P$: «$7$ es par» y $Q$: «$7$ es múltiplo de $3$». ¿La falsedad de la conclusión en ese caso invalida el argumento? Explica qué condición exige un contraejemplo.
+
+
+**72.** Se tienen como premisas $P\Rightarrow Q$ y $P\Rightarrow R$, y se concluye $Q\Rightarrow R$. Encuentra todas las valuaciones que hacen verdaderas ambas premisas y falsa la conclusión. Realiza un contraejemplo con $P$: «un entero fijado es múltiplo de $12$», $Q$: «es múltiplo de $3$» y $R$: «es par». ¿Añadir $Q\Rightarrow P$ vuelve válido el argumento? Justifica sin leyes de reescritura.
+
+
+***
 # Soluciones
 
 ## A. Proposición, contexto y valor de verdad
@@ -1077,3 +1162,144 @@ Las proposiciones atómicas son $P,Q,R$. El conectivo principal es $\Rightarrow$
 Respuesta modelo:
 
 La lógica proposicional permite hacer visible la **estructura** de una afirmación sin depender de su contenido particular. Cada proposición tiene un **valor de verdad**, pero una fórmula compuesta depende además de cómo se conectan sus partes. Identificar el **conectivo principal** permite saber cuál es la operación lógica que organiza toda la fórmula. En un **condicional**, distinguir antecedente y consecuente evita invertir hipótesis y conclusiones o confundir condición necesaria con suficiente. Las **tablas de verdad** convierten estas reglas en un procedimiento explícito: muestran qué ocurre bajo todas las valuaciones posibles. Esto permite detectar contraejemplos, comparar fórmulas y clasificar tautologías o contradicciones. Antes de aprender a transformar fórmulas algebraicamente, debemos ser capaces de leer con precisión qué fórmula tenemos delante y qué significa su verdad.
+
+
+## I. Traducir condiciones sin invertirlas
+
+
+### 61
+La frase excluye $P=V,Q=F$, por lo que expresa $P\Rightarrow Q$. Tres verbalizaciones son: «ser múltiplo de $12$ es suficiente para ser múltiplo de $4$»; «ser múltiplo de $4$ es necesario para ser múltiplo de $12$»; «$n$ es múltiplo de $12$ sólo si es múltiplo de $4$».
+
+El original se justifica porque $n=12k$ implica $n=4(3k)$. No afirma $Q\Rightarrow P$, es decir, no dice que ser múltiplo de $4$ baste para ser múltiplo de $12$. El entero $4$ tiene $Q=V,P=F$ y refuta esa dirección. Esa misma valuación no refuta el original: su antecedente es falso.
+
+
+### 62
+La traducción es $R\Rightarrow(P\land Q)$: el consecuente es la conjunción completa. Una verbalización con «necesario» es «ser par y ser múltiplo de $3$ son requisitos necesarios para ser múltiplo de $12$». También puede decirse que cada uno de esos requisitos es necesario, sin suprimir el otro de la frase original.
+
+Si $n=12k$, entonces $n=2(6k)$ y $n=3(4k)$, por lo que ambas condiciones se cumplen. La fórmula no afirma $(P\land Q)\Rightarrow R$. Para $n=6$, $P=V,Q=V,R=F$: satisface los dos requisitos pero no es múltiplo de $12$. Por tanto, esos requisitos juntos tampoco bastan en este ejemplo.
+
+
+### 63
+La primera frase expresa $P\Rightarrow Q$. Con «si»: «$x$ no es cero si $x$ es positivo»; con «sólo si»: «$x$ es positivo sólo si no es cero». Su único caso refutador sería $P=V,Q=F$, es decir, un real positivo que fuese cero; no existe tal real.
+
+La frase del estudiante expresa $Q\Rightarrow P$. Su caso refutador es $Q=V,P=F$. El real $-1$ lo realiza: no es cero y no es positivo. Las tres primeras verbalizaciones son verdaderas para cualquier real; el reemplazo es falso como afirmación general. En $x=1$ ambas direcciones son verdaderas, pero ese caso favorable no elimina el contraejemplo $-1$.
+
+
+## J. Refutar una inferencia mediante una valuación
+
+
+### 64
+Para que la conclusión $P$ sea falsa, ponemos $P=F$. La segunda premisa exige $Q=V$. Con esos valores, $P\Rightarrow Q=V$, así que las dos premisas son verdaderas y la conclusión falsa: el argumento no es válido.
+
+El entero $4$ realiza el caso: es múltiplo de $4$ y no de $8$. La regla general «todo múltiplo de $8$ es múltiplo de $4$» es verdadera; aun así, no permite regresar desde $Q$ a $P$.
+
+En el argumento comparado, tener $P=V$ y $P\Rightarrow Q=V$ obliga a $Q=V$, pues con $Q=F$ el condicional sería falso. No existe una valuación con ambas premisas verdaderas y conclusión falsa. Ese segundo argumento sí es válido. La diferencia es qué extremo de la dirección se aporta como premisa.
+
+
+### 65
+Ponemos $P=F,Q=F,R=F$. El condicional vale $V$ porque su antecedente es falso, y $\neg Q$ vale $V$. La conclusión $R$ vale $F$. Por tanto, el argumento con sólo las dos premisas iniciales no es válido.
+
+Si añadimos $P$ como premisa, toda valuación relevante debe tener $P=V$. Para que $P\Rightarrow(Q\lor R)$ sea verdadero, la disyunción debe ser verdadera. La premisa $\neg Q$ exige $Q=F$, y una disyunción con ese primer componente sólo puede ser verdadera si $R=V$. No queda un caso con todas las premisas verdaderas y conclusión falsa; el argumento ampliado sí es válido.
+
+La información faltante era que se cumplía el antecedente. Saber que una de las alternativas es falsa no permite invocar el consecuente de un condicional cuyo antecedente no está establecido.
+
+
+### 66
+La valuación $P=V,Q=V$ hace verdaderas las dos premisas $P\lor Q$ y $P$, pero falsa la conclusión $\neg Q$. La disyunción inclusiva permite precisamente que ambas sean verdaderas. Un ejemplo es $P$: «$n$ es par», $Q$: «$n$ es múltiplo de $3$», con $n=6$.
+
+La premisa adicional «no se cumplen ambas» se escribe $\neg(P\land Q)$. Si además $P=V$, la conjunción sería verdadera cuando $Q=V$, contradiciendo esa nueva premisa. Por tanto, toda valuación que haga verdaderas las tres premisas tiene $Q=F$ y $\neg Q=V$. El argumento reparado es válido. La exclusión se añadió expresamente; no estaba contenida en el símbolo $\lor$.
+
+
+## K. Paréntesis y alcance de los conectivos
+
+
+### 67
+En $A$, el principal es $\Rightarrow$ y sus componentes inmediatos son $P$ y $Q\land R$. En $B$, el principal es $\land$ y sus componentes son $P\Rightarrow Q$ y $R$.
+
+| $P$ | $Q$ | $R$ | $Q\land R$ | $P\Rightarrow Q$ | $A$ | $B$ |
+|---|---|---|---|---|---|---|
+| V | V | V | V | V | V | V |
+| V | V | F | F | V | F | F |
+| V | F | V | F | F | F | F |
+| V | F | F | F | F | F | F |
+| F | V | V | V | V | V | V |
+| F | V | F | F | V | V | F |
+| F | F | V | F | V | V | V |
+| F | F | F | F | V | V | F |
+
+Difieren exactamente cuando $P=F$ y $R=F$, con cualquiera de los dos valores de $Q$. En esos casos, $A$ es un condicional de antecedente falso y vale $V$; $B$ es una conjunción que exige $R$ y vale $F$. Cambiar los paréntesis hizo que $R$ dejara de formar parte del consecuente y pasara a ser una exigencia de toda la fórmula.
+
+
+### 68
+En $A$, la negación afecta al condicional completo y es el conectivo principal. En $B$, sólo niega $P$; el principal es el condicional.
+
+| $P$ | $Q$ | $P\Rightarrow Q$ | $\neg P$ | $A$ | $B$ |
+|---|---|---|---|---|---|
+| V | V | V | F | F | V |
+| V | F | F | F | V | V |
+| F | V | V | V | F | V |
+| F | F | V | V | F | F |
+
+Difieren en $P=V,Q=V$ y en $P=F,Q=V$, es decir, cuando $Q=V$, sea cual sea $P$. Coinciden en las otras dos filas, pero eso no autoriza reemplazar una por otra para cualquier valuación. Basta una fila distinta para refutar esa pretensión; para justificar coincidencia general tendría que coincidir la columna completa.
+
+
+### 69
+En $A$, el principal es $\Rightarrow$: «si $P$ y $Q$ tienen el mismo valor de verdad, entonces $R$». En $B$, el principal es $\Leftrightarrow$: «$P$ si y sólo si se cumple que, si $Q$, entonces $R$». En la segunda, se compara el valor de $P$ con el del condicional entero.
+
+| $P$ | $Q$ | $R$ | $P\Leftrightarrow Q$ | $Q\Rightarrow R$ | $A$ | $B$ |
+|---|---|---|---|---|---|---|
+| V | V | V | V | V | V | V |
+| V | V | F | V | F | F | F |
+| V | F | V | F | V | V | V |
+| V | F | F | F | V | V | V |
+| F | V | V | F | V | V | F |
+| F | V | F | F | F | V | V |
+| F | F | V | V | V | V | F |
+| F | F | F | V | V | F | F |
+
+Difieren exactamente cuando $P=F,R=V$, con cualquiera de los valores de $Q$. Allí el consecuente verdadero hace verdadero a $A$; en $B$, el condicional $Q\Rightarrow R$ es verdadero y tiene valor distinto de $P$, por lo que el bicondicional es falso. Las otras seis filas coinciden, pero no hacen equivalentes las fórmulas en todas las valuaciones.
+
+
+## L. Verdad de un caso y validez de un argumento
+
+
+### 70
+En $n=6$, $P=V,Q=V$, así que el condicional vale $V$.
+
+| $P$ | $Q$ | Premisa $P\lor Q$ | Conclusión $P$ | $(P\lor Q)\Rightarrow P$ |
+|---|---|---|---|---|
+| V | V | V | V | V |
+| V | F | V | V | V |
+| F | V | V | F | F |
+| F | F | F | F | V |
+
+La tercera fila tiene premisa verdadera y conclusión falsa, de modo que el argumento no es válido. El entero $3$ realiza esa fila: es múltiplo de $3$ y no es par.
+
+No hay contradicción entre las respuestas. La evaluación en $6$ describe una valuación particular. La validez del argumento exige que ninguna valuación con premisa verdadera tenga conclusión falsa. La tabla muestra que la fórmula condicional es contingente, no una garantía para cualquier valuación.
+
+
+### 71
+La tabla es:
+
+| $P$ | $Q$ | Premisa $P\Rightarrow Q$ | Premisa $P$ | Todas las premisas verdaderas | Conclusión $Q$ |
+|---|---|---|---|---|---|
+| V | V | V | V | V | V |
+| V | F | F | V | F | F |
+| F | V | V | F | F | V |
+| F | F | V | F | F | F |
+
+Sólo la primera fila hace verdaderas todas las premisas; allí la conclusión también es verdadera. No hay contraejemplo y el argumento es válido.
+
+Para las afirmaciones sobre $7$, $P=F,Q=F$ y $P\Rightarrow Q=V$. La conclusión es falsa, pero también es falsa una premisa, $P$. Eso no refuta la validez. Un contraejemplo exige simultáneamente todas las premisas verdaderas y la conclusión falsa. La validez preserva la verdad cuando las premisas son verdaderas; no convierte en verdaderas las premisas ni garantiza una conclusión verdadera cuando alguna premisa falla.
+
+
+### 72
+La conclusión $Q\Rightarrow R$ es falsa sólo si $Q=V,R=F$. Con esos valores, para que la premisa $P\Rightarrow R$ sea verdadera se necesita $P=F$. La otra premisa $P\Rightarrow Q$ entonces vale $V$. Por tanto, existe exactamente una valuación refutadora: $P=F,Q=V,R=F$.
+
+El entero $3$ realiza ese caso: no es múltiplo de $12$, sí es múltiplo de $3$ y no es par. Las dos implicaciones iniciales son verdaderas incluso como reglas generales sobre enteros, pero eso no hace que ser múltiplo de $3$ baste para ser par. Tener una misma condición suficiente para dos propiedades no vuelve a una de esas propiedades suficiente para la otra.
+
+Si añadimos $Q\Rightarrow P$, supongamos que todas las premisas son verdaderas. Si $Q=F$, la conclusión $Q\Rightarrow R$ es verdadera. Si $Q=V$, la nueva premisa obliga a $P=V$, y $P\Rightarrow R$ obliga a $R=V$, por lo que la conclusión también es verdadera. Los dos casos de $Q$ cubren todas las valuaciones: el argumento ampliado sí es válido. No se ha supuesto verdadera la nueva premisa para los enteros del ejemplo; se ha analizado qué garantiza la estructura cuando todas sus premisas son verdaderas.
+
+***
+
+[← Capítulo 3](leyes-de-las-operaciones-y-transformaciones-justificadas.md) · [Tomo I](../para-matematicos/algebra-para-matematicos.md) · [Capítulo 5 →](algebra-de-proposiciones-y-formas-normales.md)

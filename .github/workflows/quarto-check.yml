@@ -217,6 +217,18 @@ jobs:
           python3 -m playwright install --with-deps chromium
           python3 tests/offline_parity_browser.py --site _site --output .ma-build/offline-parity
 
+      - name: APM Tomo I full desktop and phone composition QA
+        run: python3 tests/apm_tome_browser.py
+
+      - name: Preserve APM visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apm-tome-i-visual-qa
+          path: .ma-build/apm-visual/
+          retention-days: 7
+          if-no-files-found: error
+
       - name: Preserve offline parity evidence
         if: always()
         uses: actions/upload-artifact@v4
