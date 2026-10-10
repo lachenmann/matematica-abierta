@@ -194,7 +194,7 @@ Un complejo representa un real si y sólo si su parte imaginaria es cero, porque
 
 
 
-![Plano complejo con ejes a la misma escala: 2+i ocupa (2,1); 1 está en (1,0), i en (0,1) y 0 en el origen.](../../assets/books/apm-tomo-i/T1-C26_FIG_01_v01.svg)
+![Plano complejo con ejes a la misma escala: 2+i ocupa (2,1); 1 está en (1,0), i en (0,1) y 0 en el origen.](../../assets/books/apm-tomo-i/T1-C26_FIG_01_v01.svg){#fig-apm-c26-01 fig-alt="Plano complejo con ejes a la misma escala: 2+i ocupa (2,1); 1 está en (1,0), i en (0,1) y 0 en el origen."}
 
 **Figura 26.1.** El punto $2+i$ tiene coordenadas $(2,1)$. Las líneas discontinuas permiten leer cada componente sobre su eje. La unidad de longitud es la misma en ambos ejes; la coordenada vertical es el real $1$, mientras que el punto del eje vertical se escribe $i$.
 
@@ -404,7 +404,7 @@ En el plano de pares, $(a,b)$ pasa a $(a,-b)$: la conjugación es la reflexión 
 
 
 
-![El punto z=2+i está en (2,1), su conjugado en (2,-1) y su opuesto en (-2,-1); las flechas parten del origen.](../../assets/books/apm-tomo-i/T1-C26_FIG_02_v01.svg)
+![El punto z=2+i está en (2,1), su conjugado en (2,-1) y su opuesto en (-2,-1); las flechas parten del origen.](../../assets/books/apm-tomo-i/T1-C26_FIG_02_v01.svg){#fig-apm-c26-02 fig-alt="El punto z=2+i está en (2,1), su conjugado en (2,-1) y su opuesto en (-2,-1); las flechas parten del origen."}
 
 **Figura 26.2.** Para $z=2+i$, el conjugado $2-i$ conserva la coordenada horizontal y cambia la vertical. El opuesto $-2-i$ cambia ambas. La reflexión respecto del eje real y la simetría respecto del origen dan puntos diferentes porque $\operatorname{Re}(z)\ne0$.
 
@@ -578,7 +578,7 @@ Para distancias, tomemos $z-w=(z-v)+(v-w)$. La desigualdad anterior produce $d(z
 
 
 
-![Suma de z=2+i y w=-1+2i: el desplazamiento w se traslada al extremo de z y llega a z+w=1+3i; una flecha directa une el origen con la suma.](../../assets/books/apm-tomo-i/T1-C26_FIG_03_v01.svg)
+![Suma de z=2+i y w=-1+2i: el desplazamiento w se traslada al extremo de z y llega a z+w=1+3i; una flecha directa une el origen con la suma.](../../assets/books/apm-tomo-i/T1-C26_FIG_03_v01.svg){#fig-apm-c26-03 fig-alt="Suma de z=2+i y w=-1+2i: el desplazamiento w se traslada al extremo de z y llega a z+w=1+3i; una flecha directa une el origen con la suma."}
 
 **Figura 26.3.** Con $z=2+i$ y $w=-1+2i$, la suma es $1+3i$. La flecha de $w$ trasladada conserva sus componentes $(-1,2)$. El camino de dos desplazamientos mide $|z|+|w|=2\sqrt5$, mientras que el directo mide $|z+w|=\sqrt{10}<2\sqrt5$. La figura ilustra un caso estricto; el argumento anterior demuestra la cota para cualquier pareja.
 
@@ -828,7 +828,7 @@ Multiplicar un punto por $r\operatorname{cis}\alpha$ equivale a girarlo $\alpha$
 
 
 
-![Multiplicar z=2+i por i lleva (2,1) a (-1,2) mediante un giro antihorario de pi/2; multiplicar después por 2 lleva ese punto a (-2,4).](../../assets/books/apm-tomo-i/T1-C26_FIG_04_v01.svg)
+![Multiplicar z=2+i por i lleva (2,1) a (-1,2) mediante un giro antihorario de pi/2; multiplicar después por 2 lleva ese punto a (-2,4).](../../assets/books/apm-tomo-i/T1-C26_FIG_04_v01.svg){#fig-apm-c26-04 fig-alt="Multiplicar z=2+i por i lleva (2,1) a (-1,2) mediante un giro antihorario de pi/2; multiplicar después por 2 lleva ese punto a (-2,4)."}
 
 **Figura 26.4.** La multiplicación por $2i$ se puede efectuar en dos pasos: $iz=-1+2i$ y $2iz=-2+4i$. El giro antihorario de $\pi/2$ conserva el módulo $\sqrt5$; la dilatación posterior lo duplica a $2\sqrt5$. El arco indica el giro, y las flechas radiales permiten comparar las distancias.
 
@@ -910,7 +910,7 @@ Cuando $w\ne0$, todas las raíces tienen radio $\rho$ y las direcciones consecut
 
 
 
-![Cuatro puntos sobre la circunferencia de radio 2: z0=(raíz de 2,raíz de 2), z1=(-raíz de 2,raíz de 2), z2=(-raíz de 2,-raíz de 2), z3=(raíz de 2,-raíz de 2); forman un cuadrado.](../../assets/books/apm-tomo-i/T1-C26_FIG_05_v01.svg)
+![Cuatro puntos sobre la circunferencia de radio 2: z0=(raíz de 2,raíz de 2), z1=(-raíz de 2,raíz de 2), z2=(-raíz de 2,-raíz de 2), z3=(raíz de 2,-raíz de 2); forman un cuadrado.](../../assets/books/apm-tomo-i/T1-C26_FIG_05_v01.svg){#fig-apm-c26-05 fig-alt="Cuatro puntos sobre la circunferencia de radio 2: z0=(raíz de 2,raíz de 2), z1=(-raíz de 2,raíz de 2), z2=(-raíz de 2,-raíz de 2), z3=(raíz de 2,-raíz de 2); forman un cuadrado."}
 
 **Figura 26.5.** Las raíces de $z^4=-16$ del control anterior tienen módulo $2$ y argumentos $\pi/4$, $3\pi/4$, $5\pi/4$ y $7\pi/4$. Se enumeran en sentido antihorario desde $z_0=\sqrt2+\sqrt2 i$. La separación angular es $\pi/2$ y los cuatro puntos forman un cuadrado. La igualdad de escalas conserva esa forma; la exhaustividad proviene de la prueba de [§26.12](algebra-para-matematicos-capitulo-26-numeros-complejos-y-el-horizonte-de-las-ecuaciones.md#apm-c26-s12).
 
