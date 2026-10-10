@@ -31,6 +31,29 @@ inductive Certificate (Γ : Context) : Poly → Poly → Type where
 def Holds (ρ : ℕ → ℕ) (Γ : Context) : Prop :=
   ∀ p q, (p, q) ∈ Γ → MvPolynomial.eval ρ p ≤ MvPolynomial.eval ρ q
 
+/-- Uniform interpretation, not restricted to the standard natural numbers.
+This verifies the finite rules in any ordered commutative semiring. It is not
+a soundness theorem for the still absent second-order RCA₀ calculus. -/
+def HoldsIn {R : Type*} [CommSemiring R] [PartialOrder R]
+    (ρ : ℕ → R) (Γ : Context) : Prop :=
+  ∀ p q, (p, q) ∈ Γ →
+    MvPolynomial.eval₂ (Nat.castRingHom R) ρ p ≤
+      MvPolynomial.eval₂ (Nat.castRingHom R) ρ q
+
+theorem Certificate.soundIn {R : Type*} [CommSemiring R] [PartialOrder R]
+    [IsOrderedRing R] {Γ : Context} {p q : Poly} (c : Certificate Γ p q)
+    (ρ : ℕ → R) (h : HoldsIn ρ Γ) :
+    MvPolynomial.eval₂ (Nat.castRingHom R) ρ p ≤
+      MvPolynomial.eval₂ (Nat.castRingHom R) ρ q := by
+  induction c with
+  | hypothesis hm => exact h _ _ hm
+  | reflexive p => exact le_rfl
+  | transitive _ _ ih₁ ih₂ => exact le_trans ih₁ ih₂
+  | addLeft r _ ih =>
+      simpa [add_comm] using (add_le_add_left ih (MvPolynomial.eval₂ (Nat.castRingHom R) ρ r))
+  | scale k _ ih => simpa using mul_le_mul_of_nonneg_left ih (Nat.cast_nonneg (α := R) k)
+  | transport hp hq _ ih => simpa only [← hp, ← hq] using ih
+
 theorem Certificate.sound {Γ : Context} {p q : Poly} (c : Certificate Γ p q)
     (ρ : ℕ → ℕ) (h : Holds ρ Γ) : MvPolynomial.eval ρ p ≤ MvPolynomial.eval ρ q := by
   induction c with
@@ -77,6 +100,7 @@ theorem successor_bound (U D B : ℕ) (hu : 3 * U + 2 ≤ 2 * D) (hb : B ≤ 1) 
 
 #print axioms successorCertificate
 #print axioms successor_bound
+#print axioms Certificate.soundIn
 
 end
 end MatematicaAbierta.Continuo.CertificadosOrdenFinito
