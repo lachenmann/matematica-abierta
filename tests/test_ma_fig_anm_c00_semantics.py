@@ -33,8 +33,9 @@ class ANMC00SemanticContract(unittest.TestCase):
             self.assertFalse(m[1].startswith(id + "."))
         self.assertNotRegex(self.chapter, r"(?m)^\*Figura C00-F\d\d\.")
 
-    def test_original_graphics_retain_canonical_bytes(self):
-        for id, sha in self.registry["original_svg_sha256"].items():
+    def test_approved_graphics_match_current_canonical_bytes(self):
+        self.assertEqual(len(self.registry["original_svg_sha256"]), 12)
+        for id, sha in self.registry["current_svg_sha256"].items():
             resource = ROOT / "assets/books/anm" / (id + ".svg")
             self.assertTrue(resource.is_file(), id)
             self.assertEqual(hashlib.sha256(resource.read_bytes()).hexdigest(), sha)
