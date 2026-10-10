@@ -60,7 +60,8 @@ lemma partialSum_lt_two_thirds (b : Bits) (n : ℕ) :
     partialSum b n < (2 / 3 : ℚ) := by
   have h := tail_bound b 0 n (Nat.zero_le n)
   have hp := weight_pos n
-  simp [partialSum, weight] at h
+  have hw0 : weight 0 = 1 := by norm_num [weight]
+  simp only [partialSum, hw0] at h
   linarith
 
  theorem binaryCut_isLowerCut (b : Bits) : IsLowerCut (binaryCut b) := by
@@ -111,7 +112,7 @@ lemma one_bit_includes_separator (b : Bits) (k : ℕ) (hb : b k = true) :
   by_contra hbc
   have hex : ∃ k, b k ≠ c k := by
     by_contra hn
-    push_neg at hn
+    push Not at hn
     exact hbc (funext hn)
   let k := Nat.find hex
   have hk : b k ≠ c k := Nat.find_spec hex
