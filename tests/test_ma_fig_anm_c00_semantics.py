@@ -33,11 +33,30 @@ class ANMC00SemanticContract(unittest.TestCase):
             self.assertFalse(m[1].startswith(id + "."))
         self.assertNotRegex(self.chapter, r"(?m)^\*Figura C00-F\d\d\.")
 
-    def test_original_graphics_retain_canonical_bytes(self):
-        for id, sha in self.registry["original_svg_sha256"].items():
+    def test_approved_graphics_match_current_canonical_bytes(self):
+        self.assertEqual(len(self.registry["original_svg_sha256"]), 12)
+        for id, sha in self.registry["current_svg_sha256"].items():
             resource = ROOT / "assets/books/anm" / (id + ".svg")
             self.assertTrue(resource.is_file(), id)
             self.assertEqual(hashlib.sha256(resource.read_bytes()).hexdigest(), sha)
+
+    def test_c00_fullsize_reader_links_are_scoped_and_accessible(self):
+        script = (ROOT / "assets/includes/ma-reader-controls.html").read_text(encoding="utf-8")
+        self.assertIn("""main.querySelectorAll('div[id^="fig-anm-c00-f"]')""", script)
+        self.assertIn("const expected = '../../assets/books/anm/C00-'", script)
+        self.assertIn("if (src !== expected) return", script)
+        self.assertIn("container.querySelector('.ma-anm-c00-fullsize')", script)
+        self.assertIn("link.href = src", script)
+        self.assertIn("link.target = '_blank'", script)
+        self.assertIn("link.rel = 'noopener noreferrer'", script)
+        self.assertIn("link.setAttribute('aria-label'", script)
+
+    def test_c00_fullsize_controls_are_print_safe(self):
+        css = (ROOT / "assets/books/anm/reader.css").read_text(encoding="utf-8")
+        self.assertIn("#quarto-document-content .ma-anm-c00-fullsize", css)
+        self.assertIn("min-height: 44px", css)
+        self.assertIn(".ma-anm-c00-fullsize a:focus-visible", css)
+        self.assertRegex(css, r"(?s)@media print\s*\{\s*#quarto-document-content \.ma-anm-c00-fullsize\s*\{ display: none !important; \}")
 
     def test_all_35_solution_references_are_deep_links(self):
         links = list(SOURCE_LINK_RE.finditer(self.solutions))

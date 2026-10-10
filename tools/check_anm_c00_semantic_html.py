@@ -56,7 +56,7 @@ def audit(root: Path, site: Path) -> tuple[dict, list[str]]:
     solutions = (root / SOLUTIONS).read_text(encoding="utf-8")
     registry = json.loads((root / REGISTRY).read_text(encoding="utf-8"))
     ids = registry["figure_order"]
-    canon = registry["original_svg_sha256"]
+    canon = registry["current_svg_sha256"]
     candidates = [
         dict(caption=m[1], id=m[2], anchor=m[3], alt=m[4])
         for m in FIG_RE.finditer(source)
