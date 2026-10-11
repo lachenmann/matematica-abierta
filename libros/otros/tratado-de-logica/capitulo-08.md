@@ -617,8 +617,11 @@ $$
 \qquad \operatorname{Sat}_{\mathfrak A}(\varnothing)=A^X.
 $$
 
-> [!note] Lectura exacta
-> Una estructura y una asignación que satisfacen $\Gamma$ deben satisfacer **todos sus miembros bajo la misma asignación**. No basta que cada fórmula tenga alguna asignación realizadora posiblemente diferente.
+::: {.callout-note}
+## Lectura exacta
+
+Una estructura y una asignación que satisfacen $\Gamma$ deben satisfacer **todos sus miembros bajo la misma asignación**. No basta que cada fórmula tenga alguna asignación realizadora posiblemente diferente.
+:::
 
 ## 8.23. Intersección, monotonía y soporte libre
 
@@ -685,8 +688,11 @@ Para probar la cuarta, fijemos **un** modelo $\mathfrak A$ de $S$ y un único $a
 
 Si la clase de todos los modelos fuera un conjunto $K$, la unión de los universos de sus miembros sería un conjunto $U$ por reemplazo y unión. Para **todo** conjunto $z$, tendríamos $(a_0,z)\in A_z\subseteq U$. Por separación, el subconjunto $\{u\in U:(\exists z)\;u=(a_0,z)\}$ sería un conjunto; mediante reemplazo y segunda proyección obtendríamos el conjunto de **todos los conjuntos** $z$, contradicción con ZF. Luego la clase de modelos, cuando no es vacía, es propia. $\square$
 
-> [!important] Control fundacional
-> Las expresiones $\operatorname{Mod}_\tau(S)$ y «para toda estructura» se entienden como abreviaciones de fórmulas metateóricas con una variable de estructura. No se realiza una unión o intersección conjuntista sobre la clase propia de todas las estructuras.
+::: {.callout-important}
+## Control fundacional
+
+Las expresiones $\operatorname{Mod}_\tau(S)$ y «para toda estructura» se entienden como abreviaciones de fórmulas metateóricas con una variable de estructura. No se realiza una unión o intersección conjuntista sobre la clase propia de todas las estructuras.
+:::
 
 ## 8.26. Consecuencia y validez de primer orden
 

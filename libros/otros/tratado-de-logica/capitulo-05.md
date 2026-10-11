@@ -126,8 +126,11 @@ $$
 
 La formación se efectúa sobre conjuntos: cada `T_k` es un conjunto y cada paso utiliza productos **finitos**, uniones indexadas por `\omega` y separación/reemplazo en `ZF`. No se introduce elección. La unión satisface las dos cláusulas, y todo conjunto de expresiones que las satisfaga contiene cada `T_k` por inducción; de ahí la minimalidad. La secuencia de etapas proporciona una medida bien fundada de **altura de construcción** para la inducción del §5.6, sin prejuzgar un teorema general de recursión sobre términos (Capítulo 6).
 
-> [!important] Restricción tipada
-> `f(t_1,\ldots,t_m)` sólo es término cuando el símbolo `f` tiene exactamente aridad `m` y cada argumento es término. Por ejemplo, si `f\in F_2`, las expresiones `f(x_0)` y `f(x_0,x_1,x_2)` no son términos.
+::: {.callout-important}
+## Restricción tipada
+
+`f(t_1,\ldots,t_m)` sólo es término cuando el símbolo `f` tiene exactamente aridad `m` y cada argumento es término. Por ejemplo, si `f\in F_2`, las expresiones `f(x_0)` y `f(x_0,x_1,x_2)` no son términos.
+:::
 
 ## 5.5. Legibilidad única de términos
 
@@ -170,8 +173,11 @@ $$
 
 Usamos la sucesión `T_k` de [TLOG-DEF-00024](#tlog-def-00024). Mostramos por inducción ordinaria sobre `k` que cada elemento de `T_k` satisface `P`. En `T_0`, todo elemento es una variable o un término nulario, y la tesis corresponde respectivamente a las condiciones 1 y 2 con `n=0`. Para el paso, si `t\in T_{k+1}`, o ya pertenece a `T_k`, o es `f(t_1,\ldots,t_n)` con `n\ge 1` y cada `t_i\in T_k`. En el segundo caso las hipótesis inductivas dan `P(t_i)` y la cláusula 2 da `P(t)`. Por tanto la propiedad vale en cada etapa y, como `\operatorname{Tm}_\tau=\bigcup_{k<\omega}T_k`, vale para todo término. `\square`
 
-> [!important] Diferencia de método
-> Una **prueba** de `P(t)` por inducción no es una **definición** de una función sobre términos por recursión. El principio de existencia y unicidad para funciones recursivas, junto con sustitución de términos, se trabajará después de controlar sus condiciones de formación en el Capítulo 6.
+::: {.callout-important}
+## Diferencia de método
+
+Una **prueba** de `P(t)` por inducción no es una **definición** de una función sobre términos por recursión. El principio de existencia y unicidad para funciones recursivas, junto con sustitución de términos, se trabajará después de controlar sus condiciones de formación en el Capítulo 6.
+:::
 
 ## 5.7. Fórmulas atómicas
 

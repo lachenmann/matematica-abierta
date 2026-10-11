@@ -186,8 +186,11 @@ $$
 
 Cada línea anterior es un **esquema**, no una fórmula singular. Por ejemplo, `H1` autoriza una instancia para cada par ordenado de fórmulas $(\alpha,\beta)$.
 
-> [!important] Firma primitiva
-> Ninguna de $\land,\lor,\to,\leftrightarrow$ se introduce aquí como abreviatura definicional. Son las conectivas primitivas ya fijadas en `CPL`. Los esquemas `H4`–`H12` controlan deductivamente las conectivas adicionales al núcleo $\neg,\to$.
+::: {.callout-important}
+## Firma primitiva
+
+Ninguna de $\land,\lor,\to,\leftrightarrow$ se introduce aquí como abreviatura definicional. Son las conectivas primitivas ya fijadas en `CPL`. Los esquemas `H4`–`H12` controlan deductivamente las conectivas adicionales al núcleo $\neg,\to$.
+:::
 
 No se afirma todavía que estas instancias sean exactamente las fórmulas válidas derivables del cálculo. Eso pertenece a corrección y completitud.
 
@@ -288,13 +291,16 @@ $$
 
 significa que no existe tal derivación.
 
-> [!important] Separación de niveles
-> $$
-> \Gamma\vdash_{\mathsf H}\varphi
-> \neq
-> \Gamma\models_{\mathrm{CPL}}\varphi.
-> $$
-> La izquierda es existencia de una secuencia sintáctica finita del tipo definido en §3.4. La derecha cuantifica sobre valuaciones. Ninguna dirección entre ambas se presupone.
+::: {.callout-important}
+## Separación de niveles
+
+$$
+\Gamma\vdash_{\mathsf H}\varphi
+\neq
+\Gamma\models_{\mathrm{CPL}}\varphi.
+$$
+La izquierda es existencia de una secuencia sintáctica finita del tipo definido en §3.4. La derecha cuantifica sobre valuaciones. Ninguna dirección entre ambas se presupone.
+:::
 
 ## 3.6. Inducción sobre derivaciones
 
@@ -525,8 +531,11 @@ Aplicamos únicamente `H1`, `H2` y `MP`.
 
 Por tanto $\vdash_{\mathsf H}\alpha\to\alpha$. $\square$
 
-> [!note] Función del lema
-> La autoimplicación no se toma como axioma adicional. Se deriva de la base ya fijada y será el caso no trivial de premisa descargada en el teorema de deducción.
+::: {.callout-note}
+## Función del lema
+
+La autoimplicación no se toma como axioma adicional. Se deriva de la base ya fijada y será el caso no trivial de premisa descargada en el teorema de deducción.
+:::
 
 ## 3.13. Teorema de deducción
 
@@ -662,8 +671,11 @@ $$
 
 Quedan demostradas ambas direcciones. $\square$
 
-> [!important] Naturaleza del resultado
-> El teorema de deducción transforma derivaciones en derivaciones. No afirma ni utiliza ninguna relación semántica. En particular, no depende de corrección ni de completitud.
+::: {.callout-important}
+## Naturaleza del resultado
+
+El teorema de deducción transforma derivaciones en derivaciones. No afirma ni utiliza ninguna relación semántica. En particular, no depende de corrección ni de completitud.
+:::
 
 ## 3.14. Reglas derivadas básicas
 
@@ -800,8 +812,11 @@ $$
 
 Todas las reglas son, por tanto, admisibles en $\mathsf H_{\mathrm{CPL}}$. $\square$
 
-> [!note] Regla derivada
-> “Admisible” significa aquí que toda instancia cuyas premisas son derivables tiene conclusión derivable en el cálculo ya fijado. No se añade ninguna nueva regla primitiva a $\mathsf H_{\mathrm{CPL}}$.
+::: {.callout-note}
+## Regla derivada
+
+“Admisible” significa aquí que toda instancia cuyas premisas son derivables tiene conclusión derivable en el cálculo ya fijado. No se añade ninguna nueva regla primitiva a $\mathsf H_{\mathrm{CPL}}$.
+:::
 
 ## 3.15. Internalización finita de premisas
 

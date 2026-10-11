@@ -118,8 +118,11 @@ Por [TLOG-MTH-00004](capitulo-02.md#tlog-mth-00004), el valor de cada instancia 
 
 En todos los casos el valor es $1$. Como $v$ era arbitraria, toda instancia axiomática es válida por [TLOG-DEF-00014](capitulo-02.md#tlog-def-00014). $\square$
 
-> [!important] Alcance
-> Esta prueba verifica la **validez semántica** de los axiomas ya elegidos. No demuestra que toda fórmula válida sea axioma ni que toda fórmula válida sea derivable.
+::: {.callout-important}
+## Alcance
+
+Esta prueba verifica la **validez semántica** de los axiomas ya elegidos. No demuestra que toda fórmula válida sea axioma ni que toda fórmula válida sea derivable.
+:::
 
 ## 4.2. Preservación semántica de modus ponens
 
@@ -240,12 +243,15 @@ $$
 
 $\square$
 
-> [!important] Dirección demostrada
-> El resultado establece solamente
-> $$
-> \vdash_{\mathsf H}\ \Longrightarrow\ \models_{\mathrm{CPL}}.
-> $$
-> La flecha inversa es el teorema de completitud y todavía no está disponible.
+::: {.callout-important}
+## Dirección demostrada
+
+El resultado establece solamente
+$$
+\vdash_{\mathsf H}\ \Longrightarrow\ \models_{\mathrm{CPL}}.
+$$
+La flecha inversa es el teorema de completitud y todavía no está disponible.
+:::
 
 ## 4.4. Consecuencia para teoremas sin premisas
 
@@ -368,8 +374,11 @@ Para $\Gamma\subseteq\mathrm{Fm}_{\mathrm{CPL}}$:
 
 La fórmula $\bot_{\mathrm{CPL}}$ no añade un símbolo nuevo al lenguaje objeto. Es una abreviación metateórica de una fórmula concreta de `CPL`.
 
-> [!important] Frontera
-> Consistencia deductiva y satisfacibilidad no se identifican por definición. Su equivalencia será una consecuencia de corrección + existencia de modelos.
+::: {.callout-important}
+## Frontera
+
+Consistencia deductiva y satisfacibilidad no se identifican por definición. Su equivalencia será una consecuencia de corrección + existencia de modelos.
+:::
 
 ## 4.10. Núcleo clásico derivado de $\mathsf H_{\mathrm{CPL}}$
 
@@ -763,8 +772,11 @@ $$
 
 es inconsistente. Si $\Delta\supsetneq T$, elija $\psi\in\Delta\setminus T$; entonces $T\cup\{\psi\}\subseteq\Delta$, y la monotonía vuelve inconsistente a $\Delta$. Por tanto $T$ es maximalmente consistente. $\square$
 
-> [!important] Fundamento
-> La prueba usa recursión sobre $\omega$ y finitariedad de las derivaciones. No usa el lema de Zorn ni introduce una hipótesis global de elección en $\mathsf M_{\mathrm{ext}}$.
+::: {.callout-important}
+## Fundamento
+
+La prueba usa recursión sobre $\omega$ y finitariedad de las derivaciones. No usa el lema de Zorn ni introduce una hipótesis global de elección en $\mathsf M_{\mathrm{ext}}$.
+:::
 
 ## 4.13. Valuación canónica
 
@@ -943,8 +955,11 @@ $$
 
 La contraposición metateórica concluye la tesis. $\square$
 
-> [!important] Fuerza del resultado
-> No se ha supuesto que $\Gamma$ sea finito. La finitud entra únicamente en la naturaleza de cada derivación concreta y en la construcción enumerable de Lindenbaum.
+::: {.callout-important}
+## Fuerza del resultado
+
+No se ha supuesto que $\Gamma$ sea finito. La finitud entra únicamente en la naturaleza de cada derivación concreta y en la construcción enumerable de Lindenbaum.
+:::
 
 ## 4.16. Adecuación, finitariedad semántica y compacidad
 
@@ -1006,12 +1021,15 @@ $$
 
 por lo que $\Gamma_0$ no puede ser satisfacible, contradicción. $\square$
 
-> [!important] Distinción de significado
-> La equivalencia
-> $$
-> \Gamma\vdash\varphi\iff\Gamma\models\varphi
-> $$
-> es **extensional**: las dos relaciones tienen los mismos pares $(\Gamma,\varphi)$ en este sistema. Sus definiciones y niveles siguen siendo distintos: una cuantifica sobre derivaciones finitas y la otra sobre valuaciones.
+::: {.callout-important}
+## Distinción de significado
+
+La equivalencia
+$$
+\Gamma\vdash\varphi\iff\Gamma\models\varphi
+$$
+es **extensional**: las dos relaciones tienen los mismos pares $(\Gamma,\varphi)$ en este sistema. Sus definiciones y niveles siguen siendo distintos: una cuantifica sobre derivaciones finitas y la otra sobre valuaciones.
+:::
 
 ## 4.17. Ejemplo desarrollado — del valor semántico a la prueba
 

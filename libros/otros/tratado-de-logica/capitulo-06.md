@@ -255,8 +255,11 @@ Si $h_k$ está definido, conservamos sus valores en $T_k$. A cada término nuevo
 
 La unión $h:=\bigcup_{k<\omega}h_k$ es una función con dominio $\operatorname{Tm}_\tau$ y satisface ambas cláusulas: todos los argumentos de cualquier aplicación están en una etapa común y finita. Si $h'$ satisface las mismas cláusulas, $h'(x)=h(x)$ en las variables y constantes. La inducción estructural [TLOG-MTH-00014](capitulo-05.md#tlog-mth-00014) propaga la igualdad desde los argumentos a cada aplicación funcional, luego $h'=h$. Todas las etapas, grafos y uniones se obtienen en ZF. $\square$
 
-> [!note] Alcance
-> El principio de inducción de §5.6 demuestra propiedades de funciones **ya definidas**; este metateorema demuestra que los datos recursivos compatibles determinan efectivamente una función y que no pueden determinar dos. Esa diferencia es indispensable para la sustitución.
+::: {.callout-note}
+## Alcance
+
+El principio de inducción de §5.6 demuestra propiedades de funciones **ya definidas**; este metateorema demuestra que los datos recursivos compatibles determinan efectivamente una función y que no pueden determinar dos. Esa diferencia es indispensable para la sustitución.
+:::
 
 ## 6.11. Recursión estructural sobre fórmulas
 
@@ -371,8 +374,11 @@ $$
 
 Para $n=0$, ambos miembros son la unión vacía y valen $\varnothing$. Para $n>0$, sólo se reordenan uniones **finitas**; la ecuación de soporte de $t$ justifica la última igualdad. Como $\operatorname{Var}_\tau(t)$ es finito y cada $\sigma(x)$ es un término finito, también lo es la unión. $\square$
 
-> [!important] Límite de interpretación
-> La fórmula es una identidad de conjuntos de nombres presentes en un **término**. No afirma que las variables de $\sigma(x)$ conserven su condición libre cuando se introduzcan dentro de una fórmula cuantificada.
+::: {.callout-important}
+## Límite de interpretación
+
+La fórmula es una identidad de conjuntos de nombres presentes en un **término**. No afirma que las variables de $\sigma(x)$ conserven su condición libre cuando se introduzcan dentro de una fórmula cuantificada.
+:::
 
 ## 6.15. Identidad, composición y carácter simultáneo
 
@@ -569,8 +575,11 @@ Este paso cambia la declaración del cuantificador exterior y, **sólo** dentro 
 
 Un **paso alfa contextual** reemplaza una única subfórmula cuantificada de la forma anterior en cualquier dirección de un árbol de fórmula, dejando iguales los demás nodos. Definimos $\varphi\equiv_\alpha\chi$ si existe una cadena **finita** de fórmulas desde $\varphi$ hasta $\chi$ en la que cada par consecutivo está relacionado por un paso alfa contextual en uno u otro sentido. Se permite la cadena de longitud cero. Por construcción, $\equiv_\alpha$ es una relación **reflexiva, simétrica y transitiva** y es una congruencia respecto de todos los constructores de fórmula. No es igualdad literal de expresiones ni se le atribuye aún equivalencia semántica, que exige la teoría de modelos de los capítulos posteriores.
 
-> [!important] Firmeza de la condición de frescura
-> En una matriz $\psi=\forall y\,P(x)$, el nombre $y$ no está libre, pero sí aparece como **declarador**. Sustituir ingenuamente $x$ por $y$ produciría captura. Por eso la condición $y\notin\operatorname{FV}(\psi)$ es demasiado débil para **este paso literal**; aquí exigimos $y\notin\operatorname{Names}(\psi)$.
+::: {.callout-important}
+## Firmeza de la condición de frescura
+
+En una matriz $\psi=\forall y\,P(x)$, el nombre $y$ no está libre, pero sí aparece como **declarador**. Sustituir ingenuamente $x$ por $y$ produciría captura. Por eso la condición $y\notin\operatorname{FV}(\psi)$ es demasiado débil para **este paso literal**; aquí exigimos $y\notin\operatorname{Names}(\psi)$.
+:::
 
 ## 6.24. Lo que conserva el renombrado alfa
 
@@ -853,8 +862,11 @@ Las variables libres de un código son precisamente los nombres de sus hojas $\m
 
 Para el caso simple $\sigma_{x,t}$, el único término no idéntico de su tabla es $t$ en $x$. Si $y=x$, el cuantificador queda protegido y no altera su matriz; si $y\ne x$ y $x\notin\operatorname{FV}(\psi)$, ambas operaciones son la identidad en esa rama. Si $x\in\operatorname{FV}(\psi)$, el test $y\in C_\sigma(\psi;y)$ equivale a $y\in\operatorname{Var}(t)$: las otras imágenes activas son variables que ya figuran en $\operatorname{Names}(\psi)$ y ninguna es $y$. En ese caso, el conjunto de nombres prohibidos para $\operatorname{fresh}$ coincide con el de §6.25, porque $x\in\operatorname{Names}(\psi)$. La inducción identifica las matrices transformadas; las cláusulas coinciden **token por token**. $\square$
 
-> [!note] Alcance
-> La localidad literal depende de esta política concreta de elegir $\operatorname{fresh}$ sólo a partir de los nombres de la matriz y de las **imágenes activas**. No debe generalizarse sin prueba a una implementación que inspeccione el soporte infinito de $\sigma$, ni sustituirse por la afirmación de que cualquier política de frescura produce la misma cadena.
+::: {.callout-note}
+## Alcance
+
+La localidad literal depende de esta política concreta de elegir $\operatorname{fresh}$ sólo a partir de los nombres de la matriz y de las **imágenes activas**. No debe generalizarse sin prueba a una implementación que inspeccione el soporte infinito de $\sigma$, ni sustituirse por la afirmación de que cualquier política de frescura produce la misma cadena.
+:::
 
 ## 6.32. Compatibilidad alfa e identidad
 

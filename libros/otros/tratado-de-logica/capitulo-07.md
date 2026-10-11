@@ -370,8 +370,11 @@ $$
 
 **Demostración.** La primera afirmación se obtiene de la segunda: por la definición de reducto, las interpretaciones de todos los símbolos funcionales de $\tau$ son idénticas en $\mathfrak A$ y $\mathfrak B$, y la asignación es la misma. Para la forma general, la existencia del conjunto finito $\operatorname{FSym}(t)$ procede de la finitud del árbol de término; no es necesario exigir finitud de la signatura completa. Aplicamos inducción estructural. En una hoja variable $x$, las dos evaluaciones son $s(x)$ y $r(x)$, iguales por acuerdo sobre el soporte. Si $t=f(t_1,\ldots,t_n)$, cada $\operatorname{FSym}(t_i)$ está contenido en $\operatorname{FSym}(t)$ y cada $\operatorname{Var}(t_i)$ en $\operatorname{Var}(t)$. Las hipótesis inductivas igualan los valores de los argumentos. La operación $f^{\mathfrak A_1}=f^{\mathfrak A_2}$ actúa sobre la misma tupla en ambos casos, de modo que iguala los valores del término compuesto. Para $n=0$, se comparan las mismas operaciones nularias sobre $()$; tampoco interviene asignación. $\square$
 
-> [!note] Frontera conceptual
-> Esta invariancia sólo se refiere a **denotaciones de términos**. Una fórmula relacional puede distinguir dos estructuras que asignen relaciones diferentes al mismo símbolo, aun cuando todos los términos tengan la misma interpretación. La satisfacción de tales fórmulas no está definida todavía.
+::: {.callout-note}
+## Frontera conceptual
+
+Esta invariancia sólo se refiere a **denotaciones de términos**. Una fórmula relacional puede distinguir dos estructuras que asignen relaciones diferentes al mismo símbolo, aun cuando todos los términos tengan la misma interpretación. La satisfacción de tales fórmulas no está definida todavía.
+:::
 
 ## 7.15. Aplicaciones entre estructuras: homomorfismos y embeddings
 

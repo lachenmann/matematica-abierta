@@ -515,8 +515,11 @@ El símbolo siguiente queda entonces determinado, de modo que $\circ=\star$, y l
 
 Así, cada constructor binario es inyectivo y las imágenes de constructores binarios distintos son disjuntas. Los tres casos son mutuamente excluyentes y la definición inductiva [TLOG-DEF-00007](#tlog-def-00007) garantiza que agotan todas las fórmulas. $\square$
 
-> [!important] Consecuencia
-> Desde este punto, hablar de **conectivo principal**, **constituyente inmediato** o **árbol sintáctico** de una fórmula compuesta es inequívoco.
+::: {.callout-important}
+## Consecuencia
+
+Desde este punto, hablar de **conectivo principal**, **constituyente inmediato** o **árbol sintáctico** de una fórmula compuesta es inequívoco.
+:::
 
 ## 1.12. Recursión estructural
 

@@ -106,8 +106,11 @@ Quedan fijadas por la tabla:
 
 La columna de $f_{\neg}$ depende sólo de $a$; la repetición de filas sirve únicamente para presentar todas las funciones en una tabla común.
 
-> [!important] Distinción de nivel
-> Los símbolos $\neg,\land,\lor,\to,\leftrightarrow$ son signos del **lenguaje objeto** cuando forman parte de una fórmula. Las funciones $f_{\neg},f_{\land},f_{\lor},f_{\to},f_{\leftrightarrow}$ viven en la **metateoría** y asignan valores en $\mathbf 2$. No son el mismo objeto.
+::: {.callout-important}
+## Distinción de nivel
+
+Los símbolos $\neg,\land,\lor,\to,\leftrightarrow$ son signos del **lenguaje objeto** cuando forman parte de una fórmula. Las funciones $f_{\neg},f_{\land},f_{\lor},f_{\to},f_{\leftrightarrow}$ viven en la **metateoría** y asignan valores en $\mathbf 2$. No son el mismo objeto.
+:::
 
 En particular,
 
@@ -204,8 +207,11 @@ $$
 
 Todas las funciones requeridas por el teorema de recursión están definidas por [TLOG-CNV-00005](#tlog-cnv-00005), y el dato atómico $g=v$ está tipado por [TLOG-DEF-00010](#tlog-def-00010). Por tanto existe una única función $\widehat v$ que satisface las cinco cláusulas recursivas. $\square$
 
-> [!note] Por qué usamos $\widehat v$
-> Algunos textos reutilizan el símbolo $v$ para la valuación atómica y para su extensión. TLOG mantiene inicialmente $v$ y $\widehat v$ separados para que dominio y construcción sean recuperables. Más adelante podrá omitirse el sombrero cuando no exista riesgo de ambigüedad.
+::: {.callout-note}
+## Por qué usamos $\widehat v$
+
+Algunos textos reutilizan el símbolo $v$ para la valuación atómica y para su extensión. TLOG mantiene inicialmente $v$ y $\widehat v$ separados para que dominio y construcción sean recuperables. Más adelante podrá omitirse el sombrero cuando no exista riesgo de ambigüedad.
+:::
 
 ## 2.4. Satisfacción bajo una valuación
 
@@ -348,8 +354,11 @@ $$
 
 Por inducción estructural, el resultado vale para toda fórmula. La equivalencia de satisfacción es inmediata por [TLOG-DEF-00011](#tlog-def-00011). $\square$
 
-> [!important] Consecuencia metodológica
-> Aunque TLOG define las valuaciones sobre todo $\mathrm{PV}$, el valor de una fórmula sólo depende de las variables que efectivamente aparecen en ella. Esta propiedad permitirá trabajar con tablas finitas sin cambiar la definición global de valuación.
+::: {.callout-important}
+## Consecuencia metodológica
+
+Aunque TLOG define las valuaciones sobre todo $\mathrm{PV}$, el valor de una fórmula sólo depende de las variables que efectivamente aparecen en ella. Esta propiedad permitirá trabajar con tablas finitas sin cambiar la definición global de valuación.
+:::
 
 ## 2.6. Ejemplo desarrollado — evaluar no es demostrar
 
@@ -469,13 +478,16 @@ $$
 
 La definición cuantifica metateóricamente sobre fórmulas ya construidas. No convierte $\Gamma$ en una fórmula del lenguaje objeto.
 
-> [!note] El conjunto vacío de premisas
-> Toda valuación satisface $\varnothing$, pues la condición universal sobre sus miembros es vacua. Por tanto
-> $$
-> \operatorname{Mod}_{\mathrm{CPL}}(\varnothing)
-> =
-> \mathrm{Val}_{\mathrm{CPL}}.
-> $$
+::: {.callout-note}
+## El conjunto vacío de premisas
+
+Toda valuación satisface $\varnothing$, pues la condición universal sobre sus miembros es vacua. Por tanto
+$$
+\operatorname{Mod}_{\mathrm{CPL}}(\varnothing)
+=
+\mathrm{Val}_{\mathrm{CPL}}.
+$$
+:::
 
 ## 2.11. Satisfacibilidad
 
@@ -575,13 +587,16 @@ $$
 \operatorname{Mod}_{\mathrm{CPL}}(\varphi).
 $$
 
-> [!important] Separación obligatoria
-> $$
-> \Gamma\models\varphi
-> \neq
-> \Gamma\vdash\varphi.
-> $$
-> La primera expresión acaba de recibir una definición semántica. La segunda quedará reservada para derivabilidad en un cálculo proposicional. Cualquier relación posterior entre ambas requerirá teoremas de corrección y completitud.
+::: {.callout-important}
+## Separación obligatoria
+
+$$
+\Gamma\models\varphi
+\neq
+\Gamma\vdash\varphi.
+$$
+La primera expresión acaba de recibir una definición semántica. La segunda quedará reservada para derivabilidad en un cálculo proposicional. Cualquier relación posterior entre ambas requerirá teoremas de corrección y completitud.
+:::
 
 ## 2.14. Equivalencia semántica
 
@@ -880,8 +895,11 @@ $$
 $$
 La recíproca es inmediata, pues $\overline a$ extiende a $a$. $\square$
 
-> [!important] Consecuencia
-> La infinitud de $\mathrm{PV}$ no obliga a inspeccionar infinitas valuaciones distintas al evaluar una entrada finita. Toda la información semántica pertinente queda comprimida en las $2^{|W|}$ filas sobre su soporte finito.
+::: {.callout-important}
+## Consecuencia
+
+La infinitud de $\mathrm{PV}$ no obliga a inspeccionar infinitas valuaciones distintas al evaluar una entrada finita. Toda la información semántica pertinente queda comprimida en las $2^{|W|}$ filas sobre su soporte finito.
+:::
 
 ## 2.25. Decidibilidad semántica finitaria
 
@@ -919,8 +937,11 @@ Por [TLOG-MTH-00005](#tlog-mth-00005), esas filas agotan todos los comportamient
 
 Cada prueba es, por tanto, una inspección finita exhaustiva. $\square$
 
-> [!warning] Alcance exacto de “decidible”
-> Este resultado no afirma que la consecuencia desde un conjunto arbitrario e infinito de premisas pueda decidirse mediante una sola tabla finita. Tampoco introduce todavía la teoría general de computabilidad del tratado ni hace una claim de complejidad óptima. Establece únicamente un procedimiento explícito y terminante para los problemas semánticos finitos enumerados arriba.
+::: {.callout-warning}
+## Alcance exacto de “decidible”
+
+Este resultado no afirma que la consecuencia desde un conjunto arbitrario e infinito de premisas pueda decidirse mediante una sola tabla finita. Tampoco introduce todavía la teoría general de computabilidad del tratado ni hace una claim de complejidad óptima. Establece únicamente un procedimiento explícito y terminante para los problemas semánticos finitos enumerados arriba.
+:::
 
 ## 2.26. Ejemplo desarrollado — una tabla, dos controles semánticos
 
