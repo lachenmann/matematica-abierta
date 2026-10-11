@@ -82,7 +82,7 @@ def preservesSegmentClosed : Proof []
     (.allN 8 (.allN 9 (.allN 3 (.allN 4 (.allN 30 (.allN 31
       (.imp allFactors segmentPreserved))))))) :=
   .allI 8 rfl (.allI 9 rfl (.allI 3 rfl (.allI 4 rfl (.allI 30 rfl (.allI 31 rfl
-    preservesSegment))))))
+    preservesSegment)))))
 
 example : allFactors.bounded = true := by decide
 example : segmentPreserved.bounded = true := by decide
