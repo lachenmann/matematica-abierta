@@ -125,10 +125,43 @@ def traceToInduction : Proof []
       (.imp finiteTraceMatrix (.allN 0 (guardedInvariant (.var 0)))))) :=
   .impI (.impI (.impI invariantFromTrace))
 
+/-- H04-04.e: each selector graph is single-valued, derived from pairing
+decoding and beta uniqueness. No totality or numeric code existence follows. -/
+def graphSingleValued (c : Channel) : Proof []
+    (.imp (originalSpec c) (.allN 0 (.allN 1 (.allN 2
+      (.imp (.conj (.member (pair (.var 0) (.var 1)) (graphSet c))
+          (.member (pair (.var 0) (.var 2)) (graphSet c)))
+        (.eq (.var 1) (.var 2))))))) := by
+  apply Proof.impI
+  apply Proof.allI 0 (by cases c <;> decide)
+  apply Proof.allI 1 (by cases c <;> decide)
+  apply Proof.allI 2 (by cases c <;> decide)
+  apply Proof.impI
+  have hs : Proof
+      [.conj (.member (pair (.var 0) (.var 1)) (graphSet c))
+        (.member (pair (.var 0) (.var 2)) (graphSet c)),originalSpec c] (originalSpec c) := push hyp
+  have hn := Proof.impE (closed (renameSpecification c)) hs
+  have hu := Proof.impE (Proof.impE (closed (decodeGraph c .current .u)) hn) (Proof.andL hyp)
+  have hv := Proof.impE (Proof.impE (closed (decodeGraph c .current .d)) hn) (Proof.andR hyp)
+  have he : Proof
+      [.conj (.member (pair (.var 0) (.var 1)) (graphSet c))
+        (.member (pair (.var 0) (.var 2)) (graphSet c)),originalSpec c]
+      (.imp (beta (codeA c) (codeB c) (.var 0) (.var 1))
+        (.imp (beta (codeA c) (codeB c) (.var 0) (.var 2)) (.eq (.var 1) (.var 2)))) := by
+    let a := codeA c
+    let b := codeB c
+    cases c <;> exact Proof.allE 19 (.var 2) (by decide)
+      (Proof.allE 18 (.var 1) (by decide)
+        (Proof.allE 0 (.var 0) (by decide)
+          (Proof.allE 9 b (by decide)
+            (Proof.allE 8 a (by decide) (closed betaUniqueFresh)))))
+  exact .impE (.impE he (.andR (.andR hu))) (.andR (.andR hv))
+
 #print axioms baseFromTrace
 #print axioms stepFromTrace
 #print axioms traceToGraphProperties
 #print axioms traceToInduction
+#print axioms graphSingleValued
 #eval ("trace_to_graphs", profile traceToGraphProperties)
 #eval ("trace_to_guarded_induction", profile traceToInduction)
 end MatematicaAbierta.Continuo.PropiedadesTrazaRCA
