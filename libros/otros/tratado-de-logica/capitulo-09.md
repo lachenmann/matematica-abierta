@@ -77,13 +77,13 @@ Para $\varphi,\psi\in\operatorname{Fm}_\tau$, $x\in X$ y $t\in\operatorname{Tm}_
 
 $$
 \begin{aligned}
-\tag{Q1} &\forall x\,\varphi\to\varphi[t/x]_{\mathrm{lit}},\\
-\tag{Q2} &\varphi[t/x]_{\mathrm{lit}}\to\exists x\,\varphi,\\
-\tag{Q3} &\forall x(\varphi\to\psi)\to
+\text{(Q1)} &\forall x\,\varphi\to\varphi[t/x]_{\mathrm{lit}},\\
+\text{(Q2)} &\varphi[t/x]_{\mathrm{lit}}\to\exists x\,\varphi,\\
+\text{(Q3)} &\forall x(\varphi\to\psi)\to
   (\forall x\,\varphi\to\forall x\,\psi),\\
-\tag{Q4} &\varphi\to\forall x\,\varphi
+\text{(Q4)} &\varphi\to\forall x\,\varphi
   \qquad (x\notin\operatorname{FV}_\tau(\varphi)),\\
-\tag{Q5} &\exists x\,\varphi\leftrightarrow\neg\forall x\,\neg\varphi.
+\text{(Q5)} &\exists x\,\varphi\leftrightarrow\neg\forall x\,\neg\varphi.
 \end{aligned}
 $$
 
@@ -304,7 +304,7 @@ $$
 \boxed{h[\Delta]\vdash_{\mathsf H_\tau^{=}}h(\theta).}
 $$
 
-En particular, **toda instancia de una tautología proposicional** obtenida al reemplazar proposiciones atómicas por fórmulas arbitrarias de primer orden es un teorema del cálculo $\mathsf H_\tau^{=}$, ya que la completitud proposicional $[TLOG-MTH-00013](capitulo-04.md#tlog-mth-00013)$ permite disponer de una prueba de su esquema en $\mathsf H_{\mathrm{CPL}}$. Esta afirmación es *proposicional*: no declara demostrada la completitud de primer orden.
+En particular, **toda instancia de una tautología proposicional** obtenida al reemplazar proposiciones atómicas por fórmulas arbitrarias de primer orden es un teorema del cálculo $\mathsf H_\tau^{=}$, ya que la completitud proposicional [TLOG-MTH-00013](capitulo-04.md#tlog-mth-00013) permite disponer de una prueba de su esquema en $\mathsf H_{\mathrm{CPL}}$. Esta afirmación es *proposicional*: no declara demostrada la completitud de primer orden.
 
 **Demostración.** Tomemos una prueba proposicional finita $(\theta_0,\ldots,\theta_n)$. La imagen $(h(\theta_0),\ldots,h(\theta_n))$ es también una sucesión finita. Una línea-premisa cae en $h[\Delta]$; una instancia de cualquiera de los doce esquemas `H1`–`H12` se transforma en la correspondiente instancia de $\operatorname{Ax}^{\mathrm{prop}}_\tau$, incluida entre los axiomas por §9.5; y una aplicación de modus ponens se conserva porque $h(\alpha\to\beta)=h(\alpha)\to h(\beta)$. Por inducción sobre las líneas se obtiene la derivación requerida. Si $\theta$ es tautología, su derivación desde $\varnothing$ proviene del capítulo 4; aplicamos la primera parte con $\Delta=\varnothing$. Sólo se transforman secuencias sintácticas finitas, sin interpretar estructuras ni usar elección. $\square$
 

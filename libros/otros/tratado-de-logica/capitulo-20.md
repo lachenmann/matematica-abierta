@@ -94,7 +94,7 @@ El numeral insertado es cerrado, por tanto seguro aunque aparezcan ligadores lla
 
 **Lema.** Para cada i se obtiene efectivamente un representante aritmético $\Theta_i(u,v)$ de $D_i$, con sólo u,v libres. Para todo c externo y $d=D_i(c)$,
 $$
-\mathrm{PA}\vdash\forall v(\Theta_i(\bar c,v)\leftrightarrow v=\bar d).\tag{R_i(c)}
+\mathrm{PA}\vdash\forall v(\Theta_i(\bar c,v)\leftrightarrow v=\bar d).\tag{$R_i(c)$}
 $$
 Se pueden elegir u,v en posiciones distintas prescritas y todos los ligadores frescos respecto de cualquier conjunto finito de nombres. $\Theta_i$ puede obtenerse de la fórmula Σ1 de su programa RM; después de cambios alfa se entiende como una copia demostrablemente equivalente a ella.
 
